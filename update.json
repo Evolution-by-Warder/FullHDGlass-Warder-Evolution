@@ -1,6 +1,6 @@
 {
   "version": "1.0",
   "package_url": "https://github.com/PiconHub-Warder/FullHDGlass17-Warder-Evolution/releases/download/v1.0/enigma2-skin-fullhdglass17-warder-evolution_1.0_all.ipk",
-  "sha256": "7ebc761f460b7ab1635596c8befb90c0516a99ad9c0aae98f459234d8e1e8a62",
-  "changelog": "Initial FullHDGlass17 Warder Evolution release: Python 3 cleanup, safer packaging, repaired menu icons, modernized weather and GitHub-based self-updater."
+  "sha256": "1633b1543bb54491b6aa4ef2ec7271a7a11c063acbee90c529a940a2976dc3c6",
+  "changelog": "Initial FullHDGlass17 Warder Evolution release: Python 3 cleanup, safer packaging, repaired menu icons, modernized weather, GitHub-based self-updater, and migration of recovered skin assets from legacy FTP to HTTPS with SHA-256 verification."
 }
