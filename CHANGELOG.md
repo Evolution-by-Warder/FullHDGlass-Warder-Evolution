@@ -11,7 +11,9 @@
 - Removed the obsolete MSN weather fallback and modernized weather HTTPS access.
 - Replaced the original FTP skin updater with the Warder GitHub update service.
 - Added HTTPS package download, version comparison and SHA256 package verification.
-- Replaced legacy FTP downloads for recovered FullHDGlass17 assets with the Warder GitHub asset catalog.
+- Migrated downloadable FullHDGlass17 runtime assets to the Warder GitHub asset catalog.
 - Added SHA-256 verification for every downloaded Warder asset before extraction.
 - Removed embedded legacy FTP credentials from the plugin.
-- Preserved the existing external satellite/channel picon download path for categories not present in the recovered FTP snapshot.
+- Removed the legacy rotating PayPal donation banner from the setup header.
+- Preserved original FullHDGlass17 author credits; Warder identifies only the Evolution continuation and new maintenance work.
+- Preserved the existing external satellite/channel picon download path for categories not supplied by the Warder asset catalog.
