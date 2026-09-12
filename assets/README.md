@@ -32,4 +32,4 @@ This directory describes the downloadable asset families used by FullHDGlass17 W
 26. 7zip helper binaries (`7zip-aa`, `7zip-a`, `7zip-m`, `7zip-s` depending on CPU)
 27. Large ChannelSelection icons (`CHSPiconbig`)
 
-Runtime downloads are delivered over HTTPS and indexed by the Warder asset manifest. Private preservation archives and internal backup provenance are intentionally kept outside this public repository.
+Runtime downloads are delivered over HTTPS and indexed by the Warder asset manifest.
