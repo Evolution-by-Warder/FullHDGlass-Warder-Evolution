@@ -132,22 +132,22 @@
     "7zip-a": {
       "filename": "7zip-arm.zip",
       "url": "https://github.com/PiconHub-Warder/FullHDGlass17-Warder-Evolution/releases/download/v1.0/7zip-arm.zip",
-      "size": 582508,
-      "sha256": "634508e627fed5156968863161935d5689def5da2fbc5c31e544dd19c0cdb72f",
+      "size": 431273,
+      "sha256": "ecf9553a4893f841dfc55e67000585a122867ca382ef3a281ae7a15bcca7d849",
       "root": "7z"
     },
     "7zip-aa": {
       "filename": "7zip-aarch64.zip",
       "url": "https://github.com/PiconHub-Warder/FullHDGlass17-Warder-Evolution/releases/download/v1.0/7zip-aarch64.zip",
-      "size": 566634,
-      "sha256": "f7b708158530218ac824932130156b00b90f8cb4c12d57d0741f99d9386fc150",
+      "size": 507559,
+      "sha256": "b7a8b47cc54c401811dd5a893bf8299cda028da2f828532523691e3c5f7b562d",
       "root": "7z"
     },
     "7zip-m": {
       "filename": "7zip-mipsel.zip",
       "url": "https://github.com/PiconHub-Warder/FullHDGlass17-Warder-Evolution/releases/download/v1.0/7zip-mipsel.zip",
-      "size": 564450,
-      "sha256": "56451441b83af5927819608139fc4a40ba1b536f73701638397867bd98fff915",
+      "size": 491266,
+      "sha256": "789d817f4363b47efb8ef4d00938f49838210724cfbfe5b519f744e540b79594",
       "root": "7z"
     }
   }
