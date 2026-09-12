@@ -1,8 +1,8 @@
-# FullHDGlass17 legacy downloadable assets
+# FullHDGlass17 Warder Evolution downloadable assets
 
-This directory tracks the downloadable asset families used by the original FullHDGlass17 Download menu. The original plugin fetched these from `ftp.hdglass.eu`.
+This directory describes the downloadable asset families used by FullHDGlass17 Warder Evolution.
 
-## Legacy download families
+## Download families
 
 1. Channel picons 400x240 (`picon_400x240`)
 2. Channel picons 220x132 (`picon_220x132`)
@@ -32,14 +32,4 @@ This directory tracks the downloadable asset families used by the original FullH
 26. 7zip helper binaries (`7zip-aa`, `7zip-a`, `7zip-m`, `7zip-s` depending on CPU)
 27. Large ChannelSelection icons (`CHSPiconbig`)
 
-## Legacy server status
-
-As of 2026-09-12 the legacy host `ftp.hdglass.eu` does not resolve from the migration environment, so a direct complete mirror cannot currently be produced from the original FTP host.
-
-Public historical references confirm that these assets were intended to be downloaded through the FullHDGlass17 Download menu and were maintained separately from the skin package.
-
-## Warder Evolution plan
-
-Recovered asset archives will be stored under this tree and indexed by a machine-readable manifest. FullHDGlass17 Warder Evolution will use HTTPS/GitHub instead of embedded FTP credentials.
-
-No legacy FTP credentials will be retained in the Warder Evolution codebase.
+Runtime downloads are delivered over HTTPS and indexed by the Warder asset manifest. Private preservation archives and internal backup provenance are intentionally kept outside this public repository.
