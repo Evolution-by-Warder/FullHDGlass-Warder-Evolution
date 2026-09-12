@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "note": "Read-only preservation of user-captured original HDGlass FTP snapshot. Files kept byte-for-byte.",
+  "parts": [
+    {
+      "path": "archive/original-ftp/HDGlass-FTP-snapshot-part1.zip",
+      "size": 114116454,
+      "sha256": "dd5b48f17a0fe6cf8a212e724385f540e6110801f4695c759f94b5371a9b954c"
+    },
+    {
+      "path": "archive/original-ftp/HDGlass-FTP-snapshot-part2.zip",
+      "size": 421084629,
+      "sha256": "bccdb953826ada0a1d7416699bce65b84e587c0facba50faf7f551222fbf171d"
+    }
+  ]
+}
