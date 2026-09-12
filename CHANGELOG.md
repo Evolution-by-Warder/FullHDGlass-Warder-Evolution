@@ -17,3 +17,7 @@
 - Removed the legacy rotating PayPal donation banner from the setup header.
 - Preserved original FullHDGlass17 author credits; Warder identifies only the Evolution continuation and new maintenance work.
 - Preserved the existing external satellite/channel picon download path for categories not supplied by the Warder asset catalog.
+- Kept the package identity `enigma2-skin-fullhdglass17`, so an existing FullHDGlass17 installation is upgraded in place and remains registered in the system package manager.
+- Kept `/usr/share/enigma2/hd_glass17/skin.xml` as the standard Enigma2 skin entry, so FullHDGlass17 remains available in Skin Setup / appearance selection.
+- Preserved `/etc/enigma2/settings`, `/etc/enigma2/skin_user.xml`, and the generated FullHDGlass17 user overlay during upgrades.
+- Marked `/etc/enigma2/skin_user-hdg17.xml` as a package configuration file and prevented removal cleanup from running during upgrade transitions.
