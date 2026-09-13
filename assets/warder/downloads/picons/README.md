@@ -11,4 +11,4 @@ Clean Warder layout for downloadable picon-related asset packs.
 - `cam/black/`
 - `cam/white/`
 
-The binary ZIP payloads are tracked by `../../assets-manifest.json` and are intended to be published as release/download assets without modifying their original bytes.
+The binary ZIP payloads are tracked by `../../assets-manifest.json` and are served directly from the repository through raw GitHub URLs. GitHub Releases are not used for runtime assets.
