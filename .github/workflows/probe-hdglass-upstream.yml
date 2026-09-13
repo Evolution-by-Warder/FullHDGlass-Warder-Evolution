@@ -1,0 +1,32 @@
+name: Probe HDGlass upstream package
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/probe-hdglass-upstream.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch public installer and discover package URL
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 --connect-timeout 15 --max-time 60 \
+            'http://dreambox4u.com/emilnabil237/skins/skin-fullhdglass17/installer.sh' \
+            -o /tmp/installer.sh
+          echo 'installer-bytes:' $(wc -c </tmp/installer.sh)
+          python3 - <<'PY'
+          import re
+          text=open('/tmp/installer.sh','r',errors='ignore').read()
+          urls=re.findall(r'https?://[^\"\x27\s]+', text)
+          print('urls-found:', len(urls))
+          for u in urls:
+              if any(x in u.lower() for x in ('.ipk','.deb','.zip','fullhdglass')):
+                  print('candidate:', u)
+          PY
