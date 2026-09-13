@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "package_url": "https://github.com/PiconHub-Warder/FullHDGlass17-Warder-Evolution/releases/download/v1.0/enigma2-skin-fullhdglass17-warder-evolution_1.0_all.ipk",
-  "sha256": "7129c37eafc426d2ed1b1798f4a0b25e1b4a8fbaa23d69a0b50c795cf5c856be",
-  "changelog": "Initial FullHDGlass17 Warder Evolution release: Python 3 cleanup, safer packaging, repaired menu icons, modernized weather, GitHub-based self-updater, HTTPS asset delivery with SHA-256 verification, removal of the legacy rotating donation banner, preserved original author credits, and upgrade-safe preservation of existing FullHDGlass17 settings while remaining registered as the standard enigma2-skin-fullhdglass17 package."
+  "version": "1.0.1",
+  "package_url": "https://github.com/PiconHub-Warder/FullHDGlass17-Warder-Evolution/releases/download/v1.0/enigma2-skin-fullhdglass17-warder-evolution_1.0.1-historyfix_all.ipk",
+  "sha256": "945ae9759284087b2b9e1b820e70289cbe136427f3233399cb327b314bcaf2f0",
+  "changelog": "FullHDGlass17 Warder Evolution 1.0.1: fixed Slovak History display on Python 3 by converting history.txtSk from legacy CP1250 encoding to UTF-8."
 }
