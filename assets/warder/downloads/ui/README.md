@@ -1,6 +1,6 @@
 # UI asset packs
 
-Clean Warder layout for downloadable FullHDGlass17 interface resources.
+Clean Warder layout for downloadable FullHDGlass interface resources.
 
 - `help/` — setup/help screen images
 - `menu-icons/` — standard menu icon pack
