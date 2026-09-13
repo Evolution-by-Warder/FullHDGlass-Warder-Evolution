@@ -1,4 +1,4 @@
-Runtime FullHDGlass17 Warder Evolution picon ZIP assets are stored directly in this repository and downloaded through raw GitHub URLs.
+Runtime FullHDGlass Warder Evolution picon ZIP assets are stored directly in this repository and downloaded through raw GitHub URLs.
 
 Canonical layout:
 - providers/
