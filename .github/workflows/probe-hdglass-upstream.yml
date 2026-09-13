@@ -21,12 +21,14 @@ jobs:
             'http://dreambox4u.com/emilnabil237/skins/skin-fullhdglass17/installer.sh' \
             -o /tmp/installer.sh
           echo 'installer-bytes:' $(wc -c </tmp/installer.sh)
+          echo '--- package-related installer lines ---'
+          grep -Ei 'wget|curl|\.ipk|\.deb|\.zip|package|version|fullhdglass' /tmp/installer.sh || true
+          echo '--- discovered URL-like tokens ---'
           python3 - <<'PY'
           import re
           text=open('/tmp/installer.sh','r',errors='ignore').read()
-          urls=re.findall(r'https?://[^\"\x27\s]+', text)
-          print('urls-found:', len(urls))
-          for u in urls:
-              if any(x in u.lower() for x in ('.ipk','.deb','.zip','fullhdglass')):
-                  print('candidate:', u)
+          for token in re.findall(r'[^\s\"\x27]+', text):
+              low=token.lower()
+              if 'fullhdglass' in low or '.ipk' in low or '.deb' in low or '.zip' in low:
+                  print(token)
           PY
