@@ -1,57 +1,19 @@
-name: Publish FullHDGlass17 Warder Evolution v1.0
+name: Remove legacy GitHub Release
 
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/publish-v1-release.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  release:
+  remove-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Create v1.0 release when missing
+      - name: Delete v1.0 release and tag
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
-          if gh release view v1.0 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Release v1.0 already exists"
-          else
-            gh release create v1.0 \
-              --repo "$GITHUB_REPOSITORY" \
-              --target "$GITHUB_SHA" \
-              --title "FullHDGlass17 Warder Evolution v1.0" \
-              --notes "Initial FullHDGlass17 Warder Evolution release."
-          fi
-
-      - name: Show expected release assets
-        run: |
-          cat <<'EOF'
-          enigma2-skin-fullhdglass17-warder-evolution_1.0_all.ipk
-          piconProv-220x132.zip
-          piconSat-220x132.zip
-          piconProv-black.zip
-          piconSat-black.zip
-          piconCam-black.zip
-          piconWeather-black.zip
-          piconProv-white.zip
-          piconSat-white.zip
-          piconCam-white.zip
-          piconWeather-white.zip
-          help.zip
-          icon-sets-preview.zip
-          extra-screens.zip
-          menu-icons.zip
-          menu-icons-big.zip
-          weather-icons.zip
-          weather-icons-animated.zip
-          channel-selection-big.zip
-          7zip-arm.zip
-          7zip-aarch64.zip
-          7zip-mipsel.zip
-          EOF
+          gh release delete v1.0 --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes || true
