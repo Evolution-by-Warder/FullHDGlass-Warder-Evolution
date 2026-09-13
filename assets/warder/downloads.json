@@ -1,151 +1,151 @@
 {
-  "schema": 1,
+  "schema": 2,
   "project": "FullHDGlass17 Warder Evolution",
-  "release": "v1.0",
+  "delivery": "raw-github",
   "assets": {
     "piconProv-220": {
       "filename": "piconProv-220x132.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconProv-220x132.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/220x132/piconProv_220x132.zip",
       "size": 11481399,
       "sha256": "93ef555cf09d49a72188c477949d948feaf6416a0fcff047600d36b3a96e4b8f",
       "root": "piconProv_220x132"
     },
     "piconSat-220": {
       "filename": "piconSat-220x132.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconSat-220x132.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/satellites/220x132/piconSat_220x132.zip",
       "size": 780076,
       "sha256": "4e8c7d8095aa2c79a30eb1b9af05f4107758a515a31246565da13a6f05da1d5d",
       "root": "piconSat_220x132"
     },
     "piconProv-b": {
       "filename": "piconProv-black.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconProv-black.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/black/piconProv.zip",
       "size": 11990269,
       "sha256": "f693c2d70866a1b7161046a0e3fd74610b4785673e9ad11f2fa5cefbd6d1e13f",
       "root": "piconProv"
     },
     "piconSat-b": {
       "filename": "piconSat-black.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconSat-black.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/satellites/black/piconSat.zip",
       "size": 2244970,
       "sha256": "6458bdf32db1dddd21ecf8894864e130d5c5535fcfe7fe2681509ad7b0958d8a",
       "root": "piconSat"
     },
     "piconCam-b": {
       "filename": "piconCam-black.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconCam-black.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/cam/black/piconCam.zip",
       "size": 441325,
       "sha256": "4b58f66f0f235f0f002a9b27e34881df8670ff214c47fad224a6bdbc6194721e",
       "root": "piconCam"
     },
     "piconWeather-b": {
       "filename": "piconWeather-black.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconWeather-black.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/weather/info/black/picWeaInf.zip",
       "size": 784030,
       "sha256": "903867aacb435cdfd174cf45162eb074c65efcbfe8297215e3966647aa6d8451",
       "root": "picWeaInf"
     },
     "piconProv-w": {
       "filename": "piconProv-white.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconProv-white.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/white/piconProv.zip",
       "size": 13974289,
       "sha256": "ebff6f537720da39410741cb13abcce0be6a1f822264f516a291a2e70c889cff",
       "root": "piconProv"
     },
     "piconSat-w": {
       "filename": "piconSat-white.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconSat-white.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/satellites/white/piconSat.zip",
       "size": 2421870,
       "sha256": "539cda4f3f599f5e3f2b6e6690a4625fc5c678bdfb46cb9b1b68622d28b08b2b",
       "root": "piconSat"
     },
     "piconCam-w": {
       "filename": "piconCam-white.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconCam-white.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/cam/white/piconCam.zip",
       "size": 462373,
       "sha256": "25599f341f3763e4946c8d52bbc997ccf1af46c4b89332ddf3beaca4f8d5752e",
       "root": "piconCam"
     },
     "piconWeather-w": {
       "filename": "piconWeather-white.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/piconWeather-white.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/weather/info/white/picWeaInf.zip",
       "size": 809091,
       "sha256": "69159f3f839ceb01ef4cf1b2cfb6994c6326dcc1090609709d401b18087aa30b",
       "root": "picWeaInf"
     },
     "help": {
       "filename": "help.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/help.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip",
       "size": 22221948,
       "sha256": "872d59dfccf090344a37ed46e277dd091cd9ec671db128fa421c748f4f6eb8ef",
       "root": "g17_setup_pict"
     },
     "icon_sets_preview": {
       "filename": "icon-sets-preview.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/icon-sets-preview.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/more_icons.zip",
       "size": 21922884,
       "sha256": "0fca8510b5e1e7dd600548f706553b83a3993e91077382aba4c6363278eac230",
       "root": "more_icons"
     },
     "extraScreens": {
       "filename": "extra-screens.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/extra-screens.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/extra-screens/extraScreens17.zip",
       "size": 6222716,
       "sha256": "4ee70909ce4cffdcc893922fa568d315fd21f7fff052cec8cb57965240ae4e17",
       "root": "extraScreens17"
     },
     "menuicons": {
       "filename": "menu-icons.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/menu-icons.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons/menuIcons.zip",
       "size": 10562375,
       "sha256": "adb0a5dab3e3cd32574b3f626a119fa23fdabb6127ff1626c7e3b26042a5681a",
       "root": "menuIcons"
     },
     "menuiconsbig": {
       "filename": "menu-icons-big.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/menu-icons-big.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip",
       "size": 139527756,
       "sha256": "753165942823bfab024295e6c210503e581a52b86fa531bae120b2ef667902a7",
       "root": "menuIconsBig"
     },
     "weatherIconsN": {
       "filename": "weather-icons.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/weather-icons.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/weather/icons-alt/weatherIcons.zip",
       "size": 15471278,
       "sha256": "f61fdcbe02f946d7c585c65494a6de043fb344e5583d9d0bf617f32c7ea5df08",
       "root": "weatherIcons"
     },
     "animWeatherIcons": {
       "filename": "weather-icons-animated.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/weather-icons-animated.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/weather/animated/animIconWeather.zip",
       "size": 6819954,
       "sha256": "6efe2177469a2da3d130158691d7a6c881ea4656e2bc6b3f1b9c8c26f553f721",
       "root": "animIconWeather"
     },
     "CHSPiconbig": {
       "filename": "channel-selection-big.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/channel-selection-big.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/channel-selection-big/picon_BQT.zip",
       "size": 26444226,
       "sha256": "a0dbe0159036fa9ca5af27b46f874dccd15b6d27db85fe294984367931badd4d",
       "root": "picon_BQT"
     },
     "7zip-a": {
       "filename": "7zip-arm.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/7zip-arm.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/tools/7zip/7zip-arm.zip",
       "size": 431273,
       "sha256": "ecf9553a4893f841dfc55e67000585a122867ca382ef3a281ae7a15bcca7d849",
       "root": "7z"
     },
     "7zip-aa": {
       "filename": "7zip-aarch64.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/7zip-aarch64.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/tools/7zip/7zip-aarch64.zip",
       "size": 507559,
       "sha256": "b7a8b47cc54c401811dd5a893bf8299cda028da2f828532523691e3c5f7b562d",
       "root": "7z"
     },
     "7zip-m": {
       "filename": "7zip-mipsel.zip",
-      "url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/7zip-mipsel.zip",
+      "url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/tools/7zip/7zip-mipsel.zip",
       "size": 491266,
       "sha256": "789d817f4363b47efb8ef4d00938f49838210724cfbfe5b519f744e540b79594",
       "root": "7z"
