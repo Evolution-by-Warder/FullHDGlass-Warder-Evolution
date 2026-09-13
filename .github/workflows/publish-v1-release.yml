@@ -1,4 +1,4 @@
-name: Publish FullHDGlass Warder Evolution v1.0
+name: Remove GitHub Release
 
 on:
   push:
@@ -9,14 +9,11 @@ permissions:
   contents: write
 
 jobs:
-  publish-release:
+  remove-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Ensure v1.0 release exists
+      - name: Remove v1.0 release and tag
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release view v1.0 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
-          gh release create v1.0 --repo "$GITHUB_REPOSITORY" \
-            --title "FullHDGlass17 Warder Evolution v1.0" \
-            --notes "FullHDGlass17 Warder Evolution release line."
+          gh release delete v1.0 --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes || true
