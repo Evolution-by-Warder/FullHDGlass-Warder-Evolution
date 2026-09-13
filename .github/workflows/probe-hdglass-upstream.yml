@@ -14,21 +14,20 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch public installer and discover package URL
+      - name: Probe public mirror
         run: |
           set -euo pipefail
-          curl -fL --retry 3 --connect-timeout 15 --max-time 60 \
-            'http://dreambox4u.com/emilnabil237/skins/skin-fullhdglass17/installer.sh' \
-            -o /tmp/installer.sh
+          BASE='http://dreambox4u.com/emilnabil237/skins/skin-fullhdglass17'
+          curl -fL --retry 3 --connect-timeout 15 --max-time 60 "$BASE/installer.sh" -o /tmp/installer.sh
+          curl -L --retry 2 --connect-timeout 15 --max-time 60 "$BASE/" -o /tmp/index.html || true
           echo 'installer-bytes:' $(wc -c </tmp/installer.sh)
-          echo '--- package-related installer lines ---'
+          echo 'index-bytes:' $(wc -c </tmp/index.html 2>/dev/null || echo 0)
+          echo '--- package lines ---'
           grep -Ei 'wget|curl|\.ipk|\.deb|\.zip|package|version|fullhdglass' /tmp/installer.sh || true
-          echo '--- discovered URL-like tokens ---'
-          python3 - <<'PY'
-          import re
-          text=open('/tmp/installer.sh','r',errors='ignore').read()
-          for token in re.findall(r'[^\s\"\x27]+', text):
-              low=token.lower()
-              if 'fullhdglass' in low or '.ipk' in low or '.deb' in low or '.zip' in low:
-                  print(token)
-          PY
+          echo '--- mirror links ---'
+          grep -Eo 'href=["'"'][^"'"']+["'"']' /tmp/index.html 2>/dev/null | head -100 || true
+          echo '--- candidate optional asset paths ---'
+          for p in hdg17 piconProv-b piconSat-b piconCam-b piconWeather-b; do
+            code=$(curl -L -s -o /tmp/probe -w '%{http_code}' --max-time 20 "$BASE/$p/" || true)
+            echo "$p HTTP $code bytes $(wc -c </tmp/probe 2>/dev/null || echo 0)"
+          done
