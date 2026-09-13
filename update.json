@@ -1,6 +1,6 @@
 {
   "version": "1.0.1",
-  "package_url": "https://github.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0/enigma2-skin-fullhdglass17-warder-evolution_1.0.1-historyfix_all.ipk",
+  "package_url": "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.1-historyfix_all.ipk",
   "sha256": "945ae9759284087b2b9e1b820e70289cbe136427f3233399cb327b314bcaf2f0",
   "changelog": "FullHDGlass17 Warder Evolution 1.0.1: fixed Slovak History display on Python 3 by converting history.txtSk from legacy CP1250 encoding to UTF-8."
 }
