@@ -1,12 +1,12 @@
-# FullHDGlass17 Warder Evolution
+# FullHDGlass Warder Evolution
 
-Modern continuation and evolution of the FullHDGlass17 Enigma2 skin, maintained by Warder.
+Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by Warder.
 
 ## Project status
 
-This repository is the official home of **FullHDGlass17 Warder Evolution**.
+This repository is the official home of **FullHDGlass Warder Evolution**.
 
-The project preserves the character and visual identity of FullHDGlass17 while modernizing its internals for current Enigma2 environments.
+The project preserves the character and visual identity of FullHDGlass while modernizing its internals for current Enigma2 environments.
 
 ### Current modernization work
 
@@ -19,8 +19,8 @@ The project preserves the character and visual identity of FullHDGlass17 while m
 
 ## Versioning
 
-The Warder Evolution branch starts a new release line at **1.0** rather than continuing the original FullHDGlass17 version numbering.
+The Warder Evolution branch starts a new release line at **1.0** rather than continuing the original FullHDGlass version numbering.
 
 ## Credits
 
-FullHDGlass17 Warder Evolution is based on the original FullHDGlass17 skin. Credit for the original project and design belongs to its original author(s). Warder Evolution is an independently maintained modernization and continuation.
+FullHDGlass Warder Evolution is based on the original FullHDGlass skin. Credit for the original project and design belongs to its original author(s). Warder Evolution is an independently maintained modernization and continuation.
