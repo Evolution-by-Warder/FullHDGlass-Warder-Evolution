@@ -1,6 +1,6 @@
-# FullHDGlass17 Warder Evolution downloadable assets
+# FullHDGlass Warder Evolution downloadable assets
 
-This directory describes the downloadable asset families used by FullHDGlass17 Warder Evolution.
+This directory describes the downloadable asset families used by FullHDGlass Warder Evolution.
 
 ## Download families
 
