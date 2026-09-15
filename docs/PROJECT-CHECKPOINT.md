@@ -13,6 +13,12 @@ Purpose: durable recovery checkpoint so the project can be resumed exactly after
 - Published 1.0.4 baseline commit: `57fb8e5ae86bb46b0f91e2b614c2f6db649a6989`.
 - Latest branding/update-text commit at checkpoint time: `665527299043fef079d75079d412c28cee8dd7e3`.
 
+## LOCKED — approved graphics and structure
+
+Existing approved skin graphics, visual layout, element dimensions, coordinates/positions, screen composition and established directory/runtime structure are **LOCKED**. ChatGPT, Work, automation or a future recovery session must NOT independently redesign, redraw, regenerate, resize, reposition, reorganize, rename, replace or otherwise "improve" them.
+
+New work must adapt to the already approved design and structure — the approved design/structure must not be changed merely to accommodate new work. Any intentional change to approved graphics, layout, dimensions, coordinates or structural organization requires **Štefan's explicit approval first**. No inferred permission and no silent optimization.
+
 ## Binding compatibility rule — DO NOT RENAME
 
 The following legacy/runtime identifiers containing `17` are compatibility identifiers and MUST remain unchanged unless a future migration is deliberately designed and tested:
@@ -71,4 +77,4 @@ The project is **ACTIVE / IN DEVELOPMENT**, not finished. Version 1.0.4 is the s
 
 ## Recovery rule
 
-If chat/context is lost: start by reading this checkpoint, inspect current `main`, compare changes after commit `665527299043fef079d75079d412c28cee8dd7e3`, and preserve all binding compatibility/authorship/updater rules above. Do not restart the project from the original HDGlass source and do not rename the legacy `17` runtime identifiers merely to match visible branding.
+If chat/context is lost: start by reading this checkpoint, inspect current `main`, compare changes after commit `665527299043fef079d75079d412c28cee8dd7e3`, and preserve all LOCKED graphics/structure, binding compatibility/authorship/updater rules above. Do not restart the project from the original HDGlass source, do not redesign approved graphics/layout without Štefan's explicit approval, and do not rename the legacy `17` runtime identifiers merely to match visible branding.
