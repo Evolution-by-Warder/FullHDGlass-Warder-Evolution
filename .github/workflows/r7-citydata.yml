@@ -47,7 +47,8 @@ jobs:
           city+=['','# Czechia']; ewea+=['','# Czechia']
           for r in sorted(cz,key=lambda x:str(x['NAZEV']).casefold()):
               name=str(r['NAZEV']).strip(); district=om.get(str(r.get('OKRES_KOD','')).strip(),'')
-              code=str(r.get('KOD','')).strip()\n              display=name if czcnt[name]==1 else '%s (%s, %s)'%(name,district or str(r.get('OKRES_KOD','')).strip(),code)
+              code=str(r.get('KOD','')).strip()
+              display=name if czcnt[name]==1 else '%s (%s, %s)'%(name,district or str(r.get('OKRES_KOD','')).strip(),code)
               city.append('om|%s|%s|CZ|%s|'%(display,name,district))
               ewea.append('q|%s|CZ||Czechia|%s'%(name,(district if czcnt[name]==1 else '%s [%s]'%(district,code))))
           open('work/r7/city_Code-17.txt','w',encoding='utf-8',newline='\n').write('\n'.join(city)+'\n')
