@@ -1,0 +1,58 @@
+name: r7 city data build
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  citydata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build authoritative SK+CZ city list
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://services.cuzk.cz/sestavy/cis/UI_OBEC.zip -o /tmp/UI_OBEC.zip
+          curl -fsSL https://services.cuzk.cz/sestavy/cis/UI_OKRES.zip -o /tmp/UI_OKRES.zip
+          mkdir -p /tmp/obec /tmp/okres
+          unzip -q /tmp/UI_OBEC.zip -d /tmp/obec
+          unzip -q /tmp/UI_OKRES.zip -d /tmp/okres
+          python3 - <<'PY'
+          import csv,glob,collections,os
+          def read_csv(pattern):
+              p=glob.glob(pattern)[0]
+              raw=open(p,'rb').read()
+              for enc in ('utf-8-sig','cp1250','latin1'):
+                  try: text=raw.decode(enc); break
+                  except UnicodeDecodeError: pass
+              sample=text[:4096]
+              delim=';' if sample.count(';')>=sample.count(',') else ','
+              return list(csv.DictReader(text.splitlines(),delimiter=delim))
+          obce=read_csv('/tmp/obec/*')
+          okresy=read_csv('/tmp/okres/*')
+          om={str(r.get('KOD','')).strip():str(r.get('NAZEV','')).strip() for r in okresy}
+          active=[]
+          for r in obce:
+              name=str(r.get('NAZEV','')).strip()
+              if not name: continue
+              end=str(r.get('PLATI_DO','')).strip()
+              if end: continue
+              active.append(r)
+          assert len(active)==6258, 'Unexpected active Czech municipality count: %d' % len(active)
+          cnt=collections.Counter(str(r['NAZEV']).strip() for r in active)
+          sk=open('work/r7/slovakia-city-list.txt',encoding='utf-8').read().splitlines()
+          sklines=[x for x in sk if x.startswith('om|')]
+          assert len(sklines)==4208
+          out=['# Slovakia']+sklines+['','# Czechia']
+          for r in sorted(active,key=lambda x:str(x['NAZEV']).casefold()):
+              name=str(r['NAZEV']).strip(); district=om.get(str(r.get('OKRES_KOD','')).strip(),'')
+              display=name if cnt[name]==1 else '%s (%s)'%(name,district or str(r.get('OKRES_KOD','')).strip())
+              out.append('om|%s|%s|CZ|%s|'%(display,name,district))
+          open('work/r7/city_Code-17.txt','w',encoding='utf-8',newline='\n').write('\n'.join(out)+'\n')
+          print('SK',len(sklines),'CZ',len(active),'TOTAL',len(sklines)+len(active))
+          PY
+          sha256sum work/r7/city_Code-17.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r7-city-data
+          path: work/r7/city_Code-17.txt
