@@ -1,0 +1,4212 @@
+# FullHDGlass17 9.50-r7 - Slovakia complete municipality/locality source
+# source: gunsoft/obce-okresy-kraje-slovenska JSON/villages.json
+# records: 4208
+# format: om|display|search|country|district|postal
+om|Ábelová|Ábelová|SK||985 13
+om|Abovce|Abovce|SK||980 44
+om|Abrahám|Abrahám|SK||925 45
+om|Abrahámovce (059 72)|Abrahámovce|SK||059 72
+om|Abrahámovce (086 41)|Abrahámovce|SK||086 41
+om|Abramová|Abramová|SK||038 22
+om|Abranovce|Abranovce|SK||082 52
+om|Adamovské Kochanovce|Adamovské Kochanovce|SK||913 05
+om|Adidovce|Adidovce|SK||067 32
+om|Albínov|Albínov|SK||078 01
+om|Alekšince|Alekšince|SK||951 22
+om|Alexandrov Dvor|Alexandrov Dvor|SK||951 34
+om|Alžbetin Dvor|Alžbetin Dvor|SK||900 42
+om|Amadeho Kračany|Amadeho Kračany|SK||930 03
+om|Aňala|Aňala|SK||946 51
+om|Aňalské Záhrady|Aňalské Záhrady|SK||946 51
+om|Andač|Andač|SK||951 42
+om|Andice|Andice|SK||031 01
+om|Andovce|Andovce|SK||941 23
+om|Andrejová|Andrejová|SK||086 37
+om|Andrejovka|Andrejovka|SK||065 43
+om|Arad|Arad|SK||943 42
+om|Ardanovce|Ardanovce|SK||956 06
+om|Ardovo|Ardovo|SK||049 55
+om|Arma|Arma|SK||935 41
+om|Arnutovce|Arnutovce|SK||053 13
+om|Báb|Báb|SK||951 34
+om|Babie|Babie|SK||094 31
+om|Babín|Babín|SK||029 52
+om|Babin Potok|Babin Potok|SK||082 67
+om|Babiná|Babiná|SK||962 61
+om|Babindol|Babindol|SK||951 53
+om|Babinec|Babinec|SK||980 26
+om|Babiše|Babiše|SK||013 54
+om|Babkov|Babkov|SK||013 11
+om|Babulicov Vrch|Babulicov Vrch|SK||916 13
+om|Báč|Báč|SK||930 30
+om|Bačala|Bačala|SK||951 15
+om|Bačka|Bačka|SK||076 84
+om|Bačkov|Bačkov|SK||076 61
+om|Bačkovík|Bačkovík|SK||044 45
+om|Báčovce|Báčovce|SK||962 68
+om|Bacúch|Bacúch|SK||976 64
+om|Bacúrov|Bacúrov|SK||962 61
+om|Baďan|Baďan|SK||969 01
+om|Bádice|Bádice|SK||951 46
+om|Badín|Badín|SK||976 32
+om|Báhoň|Báhoň|SK||900 84
+om|Bajany|Bajany|SK||072 54
+om|Bajč|Bajč|SK||946 54
+om|Bajerov|Bajerov|SK||082 41
+om|Bajerovce|Bajerovce|SK||082 73
+om|Bajka|Bajka|SK||935 51
+om|Bajtava|Bajtava|SK||943 65
+om|Baka|Baka|SK||930 04
+om|Bakta|Bakta|SK||979 01
+om|Baláže|Baláže|SK||976 11
+om|Baldovce|Baldovce|SK||053 04
+om|Balog nad Ipľom|Balog nad Ipľom|SK||991 11
+om|Baloň|Baloň|SK||930 08
+om|Balvany|Balvany|SK||946 01
+om|Baňa|Baňa|SK||091 01
+om|Baňa Lucia|Baňa Lucia|SK||044 25
+om|Banka|Banka|SK||921 01
+om|Banky (969 01)|Banky|SK||969 01
+om|Banky (972 25)|Banky|SK||972 25
+om|Bánov|Bánov|SK||941 01
+om|Bánová|Bánová|SK||010 04
+om|Bánovce nad Bebravou|Bánovce nad Bebravou|SK||
+om|Bánovce nad Ondavou|Bánovce nad Ondavou|SK||072 04
+om|Banská|Banská|SK||972 48
+om|Banská Belá|Banská Belá|SK||966 15
+om|Banská Bystrica|Banská Bystrica|SK||
+om|Banská Hodruša|Banská Hodruša|SK||966 63
+om|Banská Štiavnica|Banská Štiavnica|SK||
+om|Banské|Banské|SK||094 12
+om|Banský Studenec|Banský Studenec|SK||969 01
+om|Bara|Bara|SK||076 32
+om|Barca|Barca|SK||982 51
+om|Bardejov|Bardejov|SK||085 01
+om|Bardejovská Nová Ves|Bardejovská Nová Ves|SK||085 01
+om|Bardejovská Zábava|Bardejovská Zábava|SK||085 01
+om|Bardejovské Kúpele|Bardejovské Kúpele|SK||086 31
+om|Bardoňovo|Bardoňovo|SK||941 49
+om|Bartošova Lehôtka|Bartošova Lehôtka|SK||967 01
+om|Bartošovce|Bartošovce|SK||086 42
+om|Baška|Baška|SK||040 16
+om|Baškovce (067 23)|Baškovce|SK||067 23
+om|Baškovce (073 01)|Baškovce|SK||073 01
+om|Bašovce|Bašovce|SK||922 01
+om|Baštín|Baštín|SK||956 18
+om|Batizovce|Batizovce|SK||059 35
+om|Bátka|Bátka|SK||980 21
+om|Bátorová|Bátorová|SK||991 26
+om|Bátorove Kosihy|Bátorove Kosihy|SK||946 34
+om|Bátovce|Bátovce|SK||935 03
+om|Becherov|Becherov|SK||086 35
+om|Beckov|Beckov|SK||916 38
+om|Beckovská Vieska|Beckovská Vieska|SK||916 31
+om|Bečov|Bečov|SK||974 01
+om|Beharovce|Beharovce|SK||053 05
+om|Behynce (956 07)|Behynce|SK||956 07
+om|Behynce (982 01)|Behynce|SK||982 01
+om|Beketfa|Beketfa|SK||930 34
+om|Belá (013 05)|Belá|SK||013 05
+om|Belá (943 53)|Belá|SK||943 53
+om|Belá - Dulice|Belá - Dulice|SK||038 11
+om|Belá nad Cirochou|Belá nad Cirochou|SK||067 81
+om|Beladice|Beladice|SK||951 75
+om|Belejov|Belejov|SK||018 03
+om|Belejovce|Belejovce|SK||089 01
+om|Belek|Belek|SK||941 48
+om|Belín|Belín|SK||980 01
+om|Belina|Belina|SK||986 01
+om|Belince|Belince|SK||956 12
+om|Bellova Ves|Bellova Ves|SK||930 52
+om|Beloveža|Beloveža|SK||086 14
+om|Beluj|Beluj|SK||969 01
+om|Beluša|Beluša|SK||018 61
+om|Belža|Belža|SK||044 58
+om|Beňadiková|Beňadiková|SK||032 04
+om|Beňadikovce|Beňadikovce|SK||090 42
+om|Beňadovo|Beňadovo|SK||029 63
+om|Beňatina|Beňatina|SK||072 64
+om|Beniakovce|Beniakovce|SK||044 42
+om|Benice (031 01)|Benice|SK||031 01
+om|Benice (038 42)|Benice|SK||038 42
+om|Benkova Potôň|Benkova Potôň|SK||930 36
+om|Benkovce|Benkovce|SK||094 02
+om|Beňov|Beňov|SK||014 01
+om|Beňova Lehota|Beňova Lehota|SK||026 01
+om|Beňuš|Beňuš|SK||976 64
+om|Beňušovce|Beňušovce|SK||031 01
+om|Bernátovce|Bernátovce|SK||044 13
+om|Bernolákovo|Bernolákovo|SK||900 27
+om|Bertotovce|Bertotovce|SK||082 35
+om|Beša (076 72)|Beša|SK||076 72
+om|Beša (935 36)|Beša|SK||935 36
+om|Bešeňov|Bešeňov|SK||941 41
+om|Bešeňová|Bešeňová|SK||034 83
+om|Besné|Besné|SK||018 02
+om|Betlanovce|Betlanovce|SK||053 15
+om|Betlenovce|Betlenovce|SK||071 01
+om|Betliar|Betliar|SK||049 21
+om|Bezdedov - Vieska|Bezdedov - Vieska|SK||020 01
+om|Bežovce|Bežovce|SK||072 53
+om|Bidovce|Bidovce|SK||044 45
+om|Biel|Biel|SK||076 41
+om|Biela|Biela|SK||027 05
+om|Biela Voda|Biela Voda|SK||972 29
+om|Biele Vody (053 76)|Biele Vody|SK||053 76
+om|Biele Vody (976 53)|Biele Vody|SK||976 53
+om|Bielovce|Bielovce|SK||935 74
+om|Biely Kostol|Biely Kostol|SK||919 34
+om|Biely Potok|Biely Potok|SK||034 03
+om|Bijacovce|Bijacovce|SK||053 06
+om|Bílkove Humence|Bílkove Humence|SK||908 77
+om|Bíňa|Bíňa|SK||943 56
+om|Bindt|Bindt|SK||053 32
+om|Bíňovce|Bíňovce|SK||919 07
+om|Biskupice (911 01)|Biskupice|SK||911 01
+om|Biskupice (957 01)|Biskupice|SK||957 01
+om|Biskupice (986 01)|Biskupice|SK||986 01
+om|Biskupová|Biskupová|SK||956 07
+om|Bitarová|Bitarová|SK||010 04
+om|Blahová|Blahová|SK||930 52
+om|Blatná na Ostrove|Blatná na Ostrove|SK||930 32
+om|Blatná Polianka|Blatná Polianka|SK||072 44
+om|Blatné|Blatné|SK||900 82
+om|Blatné Remety|Blatné Remety|SK||072 44
+om|Blatné Revištia|Blatné Revištia|SK||072 43
+om|Blatnica|Blatnica|SK||038 15
+om|Blažice|Blažice|SK||044 16
+om|Blažkov|Blažkov|SK||023 02
+om|Blažková|Blažková|SK||023 11
+om|Blažovce|Blažovce|SK||038 44
+om|Blesovce|Blesovce|SK||956 01
+om|Blhovce|Blhovce|SK||980 32
+om|Bobot|Bobot|SK||913 25
+om|Bobotská Lehota|Bobotská Lehota|SK||913 25
+om|Bobrov|Bobrov|SK||029 42
+om|Bobrovček|Bobrovček|SK||032 21
+om|Bobrovec|Bobrovec|SK||032 21
+om|Bobrovník|Bobrovník|SK||032 23
+om|Bočiar|Bočiar|SK||044 57
+om|Bodice|Bodice|SK||031 01
+om|Bodíky|Bodíky|SK||930 31
+om|Bodiná|Bodiná|SK||018 15
+om|Bodok|Bodok|SK||956 08
+om|Bodorová|Bodorová|SK||038 45
+om|Bodov|Bodov|SK||903 01
+om|Bodovce|Bodovce|SK||082 66
+om|Bodovka - Krivosúd|Bodovka - Krivosúd|SK||913 11
+om|Bodružal|Bodružal|SK||090 05
+om|Bodza|Bodza|SK||946 16
+om|Bodzianske Lúky|Bodzianske Lúky|SK||946 14
+om|Bogliarka|Bogliarka|SK||086 04
+om|Bohatá|Bohatá|SK||947 03
+om|Bohdanovce|Bohdanovce|SK||044 16
+om|Bohdanovce nad Trnavou|Bohdanovce nad Trnavou|SK||919 09
+om|Boheľov|Boheľov|SK||929 01
+om|Bohunice (018 52)|Bohunice|SK||018 52
+om|Bohunice (919 30)|Bohunice|SK||919 30
+om|Bohunice (935 05)|Bohunice|SK||935 05
+om|Bohúňovo|Bohúňovo|SK||049 12
+om|Bojná|Bojná|SK||956 01
+om|Bojnice|Bojnice|SK||972 01
+om|Bojnice - kúpele|Bojnice - kúpele|SK||972 01
+om|Bojničky|Bojničky|SK||920 55
+om|Bokroš|Bokroš|SK||946 39
+om|Bokša|Bokša|SK||091 01
+om|Boľ|Boľ|SK||076 53
+om|Boldog|Boldog|SK||925 26
+om|Boleráz|Boleráz|SK||919 08
+om|Bolešov|Bolešov|SK||018 53
+om|Boliarov|Boliarov|SK||044 47
+om|Boľkovce|Boľkovce|SK||984 01
+om|Borčany|Borčany|SK||956 36
+om|Borčice|Borčice|SK||018 53
+om|Borcová|Borcová|SK||038 44
+om|Borda|Borda|SK||044 45
+om|Borinka|Borinka|SK||900 32
+om|Bôrka|Bôrka|SK||049 42
+om|Borov|Borov|SK||068 01
+om|Borová|Borová|SK||919 61
+om|Borovce|Borovce|SK||922 09
+om|Borša|Borša|SK||076 32
+om|Borský Mikuláš|Borský Mikuláš|SK||908 77
+om|Borský Peter|Borský Peter|SK||908 77
+om|Borský Svätý Jur|Borský Svätý Jur|SK||908 79
+om|Bory|Bory|SK||935 87
+om|Bošáca|Bošáca|SK||913 07
+om|Bošany|Bošany|SK||956 18
+om|Bošianska Neporadza|Bošianska Neporadza|SK||913 26
+om|Boťany|Boťany|SK||076 43
+om|Bottovo|Bottovo|SK||980 41
+om|Božčice|Božčice|SK||076 62
+om|Bracovce|Bracovce|SK||072 05
+om|Brádno|Brádno|SK||982 67
+om|Branč|Branč|SK||951 13
+om|Branovo|Branovo|SK||941 31
+om|Bratislava|Bratislava|SK||
+om|Bratislava - Čunovo|Bratislava - Čunovo|SK||851 10
+om|Bratislava - Devín|Bratislava - Devín|SK||841 10
+om|Bratislava - Devínska Nová Ves|Bratislava - Devínska Nová Ves|SK||
+om|Bratislava - Dúbravka|Bratislava - Dúbravka|SK||
+om|Bratislava - Jarovce|Bratislava - Jarovce|SK||851 10
+om|Bratislava - Karlova Ves|Bratislava - Karlova Ves|SK||
+om|Bratislava - Lamač|Bratislava - Lamač|SK||841 03
+om|Bratislava - Nové Mesto|Bratislava - Nové Mesto|SK||
+om|Bratislava - Petržalka|Bratislava - Petržalka|SK||
+om|Bratislava - Podunajské Biskupice|Bratislava - Podunajské Biskupice|SK||821 06
+om|Bratislava - Rača|Bratislava - Rača|SK||
+om|Bratislava - Rusovce|Bratislava - Rusovce|SK||851 10
+om|Bratislava - Ružinov|Bratislava - Ružinov|SK||
+om|Bratislava - Staré Mesto|Bratislava - Staré Mesto|SK||
+om|Bratislava - Vajnory|Bratislava - Vajnory|SK||831 07
+om|Bratislava - Vrakuňa|Bratislava - Vrakuňa|SK||821 07
+om|Bratislava - Záhorská Bystrica|Bratislava - Záhorská Bystrica|SK||841 06
+om|Bratkovica|Bratkovica|SK||962 05
+om|Braväcovo|Braväcovo|SK||976 64
+om|Brdárka|Brdárka|SK||049 34
+om|Brehov|Brehov|SK||076 05
+om|Brehy|Brehy|SK||968 01
+om|Brekov|Brekov|SK||066 01
+om|Brestina|Brestina|SK||985 53
+om|Brestov (066 01)|Brestov|SK||066 01
+om|Brestov (082 05)|Brestov|SK||082 05
+om|Brestov nad Laborcom|Brestov nad Laborcom|SK||067 01
+om|Brestovany|Brestovany|SK||919 27
+om|Brestové|Brestové|SK||916 42
+om|Brestovec (907 01)|Brestovec|SK||907 01
+om|Brestovec (946 17)|Brestovec|SK||946 17
+om|Bretejovce|Bretejovce|SK||082 03
+om|Bretka|Bretka|SK||980 46
+om|Breza|Breza|SK||029 53
+om|Brezany (010 04)|Brezany|SK||010 04
+om|Brezany (972 12)|Brezany|SK||972 12
+om|Brežany|Brežany|SK||082 41
+om|Brezina|Brezina|SK||076 12
+om|Breziny|Breziny|SK||962 61
+om|Breznica|Breznica|SK||091 01
+om|Breznička (091 01)|Breznička|SK||091 01
+om|Breznička (985 02)|Breznička|SK||985 02
+om|Brezno|Brezno|SK||
+om|Brezolupy|Brezolupy|SK||957 01
+om|Brezov|Brezov|SK||087 01
+om|Brezová pod Bradlom|Brezová pod Bradlom|SK||906 13
+om|Brezovec|Brezovec|SK||067 73
+om|Brezovica (028 01)|Brezovica|SK||028 01
+om|Brezovica (082 74)|Brezovica|SK||082 74
+om|Brezovička|Brezovička|SK||082 74
+om|Brezovka|Brezovka|SK||086 11
+om|Brhlovce|Brhlovce|SK||935 02
+om|Briestenné|Briestenné|SK||018 22
+om|Brieštie|Brieštie|SK||038 22
+om|Brišovka|Brišovka|SK||029 57
+om|Brnice|Brnice|SK||032 23
+om|Brodno|Brodno|SK||010 14
+om|Brodské|Brodské|SK||908 85
+om|Brodzany|Brodzany|SK||958 42
+om|Bršlica|Bršlica|SK||013 54
+om|Bruchačka|Bruchačka|SK||976 51
+om|Brunovce|Brunovce|SK||916 25
+om|Brusnica|Brusnica|SK||090 31
+om|Brusník (982 65)|Brusník|SK||982 65
+om|Brusník (991 01)|Brusník|SK||991 01
+om|Brusno (972 32)|Brusno|SK||972 32
+om|Brusno (976 62)|Brusno|SK||976 62
+om|Brusno - kúpele|Brusno - kúpele|SK||976 62
+om|Brutovce|Brutovce|SK||053 73
+om|Bruty|Bruty|SK||943 55
+om|Brvnište|Brvnište|SK||018 12
+om|Brzotín|Brzotín|SK||049 51
+om|Búč|Búč|SK||946 35
+om|Bučany|Bučany|SK||919 28
+om|Bučina|Bučina|SK||029 57
+om|Bučkovec|Bučkovec|SK||916 42
+om|Buclovany|Buclovany|SK||086 43
+om|Bučuháza|Bučuháza|SK||931 01
+om|Budatín|Budatín|SK||010 03
+om|Budatínska Lehota|Budatínska Lehota|SK||023 36
+om|Budča|Budča|SK||962 33
+om|Budička|Budička|SK||962 34
+om|Budikovany|Budikovany|SK||980 23
+om|Budimír|Budimír|SK||044 43
+om|Budiná|Budiná|SK||985 12
+om|Budince|Budince|SK||076 77
+om|Budiš|Budiš|SK||038 23
+om|Budkovce|Budkovce|SK||072 15
+om|Budmerice|Budmerice|SK||900 86
+om|Budulov|Budulov|SK||045 01
+om|Budzín|Budzín|SK||082 71
+om|Buglovce|Buglovce|SK||053 04
+om|Bujakovo|Bujakovo|SK||977 01
+om|Buková (013 61)|Buková|SK||013 61
+om|Buková (919 10)|Buková|SK||919 10
+om|Bukovce|Bukovce|SK||090 22
+om|Bukovec (044 20)|Bukovec|SK||044 20
+om|Bukovec (906 14)|Bukovec|SK||906 14
+om|Bukovec (991 02)|Bukovec|SK||991 02
+om|Bukovina (032 23)|Bukovina|SK||032 23
+om|Bukovina (966 01)|Bukovina|SK||966 01
+om|Bukovina (968 01)|Bukovina|SK||968 01
+om|Bukovinka (053 14)|Bukovinka|SK||053 14
+om|Bukovinka (985 51)|Bukovinka|SK||985 51
+om|Bulhary|Bulhary|SK||986 01
+om|Bunde|Bunde|SK||082 33
+om|Bunetice|Bunetice|SK||044 47
+om|Bunkovce|Bunkovce|SK||072 44
+om|Bušince|Bušince|SK||991 22
+om|Bušovce|Bušovce|SK||059 93
+om|Búštelek|Búštelek|SK||930 39
+om|Butty|Butty|SK||022 04
+om|Buzica|Buzica|SK||044 73
+om|Buzice|Buzice|SK||044 13
+om|Buzitka|Buzitka|SK||985 41
+om|Byšta|Byšta|SK||076 13
+om|Byster|Byster|SK||044 41
+om|Bystrá (090 23)|Bystrá|SK||090 23
+om|Bystrá (977 01)|Bystrá|SK||977 01
+om|Bystrany|Bystrany|SK||053 62
+om|Bystré|Bystré|SK||094 34
+om|Bystričany|Bystričany|SK||972 45
+om|Bystrička (038 04)|Bystrička|SK||038 04
+om|Bystrička (946 38)|Bystrička|SK||946 38
+om|Bystrička (985 24)|Bystrička|SK||985 24
+om|Bytča|Bytča|SK||014 01
+om|Bytčica|Bytčica|SK||010 09
+om|Bžany|Bžany|SK||090 33
+om|Bzenica|Bzenica|SK||966 01
+om|Bzenov|Bzenov|SK||082 42
+om|Bzince|Bzince|SK||956 05
+om|Bzince pod Javorinou|Bzince pod Javorinou|SK||916 11
+om|Bziny|Bziny|SK||026 01
+om|Bzovík|Bzovík|SK||962 41
+om|Bzovská Lehôtka|Bzovská Lehôtka|SK||962 62
+om|Čab|Čab|SK||951 24
+om|Cabaj|Cabaj|SK||951 17
+om|Cabaj - Čápor|Cabaj - Čápor|SK||951 17
+om|Čabalovce|Čabalovce|SK||067 16
+om|Čabiny|Čabiny|SK||067 02
+om|Cabov|Cabov|SK||094 14
+om|Čabradský Vrbovok|Čabradský Vrbovok|SK||962 51
+om|Čachtice|Čachtice|SK||916 21
+om|Čačín|Čačín|SK||974 01
+om|Čáčov|Čáčov|SK||905 01
+om|Čadca|Čadca|SK||
+om|Čadca - Kyčerka|Čadca - Kyčerka|SK||022 04
+om|Čadečka|Čadečka|SK||022 01
+om|Čajakovo|Čajakovo|SK||935 61
+om|Čajkov|Čajkov|SK||935 24
+om|Čaka|Čaka|SK||935 68
+om|Čakajovce|Čakajovce|SK||951 43
+om|Čakanovce (044 45)|Čakanovce|SK||044 45
+om|Čakanovce (985 58)|Čakanovce|SK||985 58
+om|Čakany|Čakany|SK||930 40
+om|Čaklov|Čaklov|SK||094 35
+om|Cakov|Cakov|SK||980 42
+om|Čalovec|Čalovec|SK||946 02
+om|Čamovce|Čamovce|SK||986 01
+om|Čaňa|Čaňa|SK||044 14
+om|Čankov|Čankov|SK||934 01
+om|Čápor|Čápor|SK||951 17
+om|Čaradice|Čaradice|SK||953 01
+om|Čáry|Čáry|SK||908 43
+om|Častá|Častá|SK||900 89
+om|Částa|Částa|SK||946 03
+om|Častkov|Častkov|SK||906 04
+om|Častkovce|Častkovce|SK||916 27
+om|Čata|Čata|SK||935 63
+om|Čataj|Čataj|SK||900 83
+om|Čavoj|Čavoj|SK||972 29
+om|Čebovce|Čebovce|SK||991 25
+om|Čečehov|Čečehov|SK||072 11
+om|Čečejovce|Čečejovce|SK||044 71
+om|Čechánky|Čechánky|SK||985 45
+om|Čechová|Čechová|SK||930 34
+om|Čechy|Čechy|SK||941 32
+om|Čechynce|Čechynce|SK||951 07
+om|Čečínska Potôň|Čečínska Potôň|SK||930 36
+om|Cejkov|Cejkov|SK||076 05
+om|Čekovce|Čekovce|SK||962 41
+om|Čeľadice|Čeľadice|SK||951 03
+om|Čeľadince|Čeľadince|SK||956 16
+om|Čeláre|Čeláre|SK||991 22
+om|Čelkova Lehota|Čelkova Lehota|SK||018 16
+om|Čelovce (082 14)|Čelovce|SK||082 14
+om|Čelovce (991 41)|Čelovce|SK||991 41
+om|Čeľovce|Čeľovce|SK||076 17
+om|Celulózka|Celulózka|SK||010 01
+om|Čemerné|Čemerné|SK||093 03
+om|Cemjata|Cemjata|SK||080 01
+om|Čenkesfa|Čenkesfa|SK||929 01
+om|Čenkov|Čenkov|SK||943 52
+om|Čenkovce|Čenkovce|SK||930 39
+om|Čereňany|Čereňany|SK||972 46
+om|Čerenčany|Čerenčany|SK||979 01
+om|Čergov|Čergov|SK||945 01
+om|Čerhát|Čerhát|SK||945 04
+om|Čerhov|Čerhov|SK||076 81
+om|Čerín|Čerín|SK||974 01
+om|Čermáň|Čermáň|SK||949 01
+om|Čermany|Čermany|SK||956 08
+om|Černík|Černík|SK||941 05
+om|Cernina|Cernina|SK||090 16
+om|Černina|Černina|SK||067 23
+om|Černochov|Černochov|SK||076 32
+om|Černochov Vrch|Černochov Vrch|SK||916 01
+om|Černová|Černová|SK||034 06
+om|Cerová (906 33)|Cerová|SK||906 33
+om|Cerová (972 48)|Cerová|SK||972 48
+om|Ceroviny|Ceroviny|SK||951 24
+om|Cerovo|Cerovo|SK||962 52
+om|Čertižné|Čertižné|SK||067 52
+om|Červeň|Červeň|SK||985 02
+om|Červená Skala|Červená Skala|SK||976 71
+om|Červená Voda|Červená Voda|SK||083 01
+om|Červeňany (049 64)|Červeňany|SK||049 64
+om|Červeňany (991 01)|Červeňany|SK||991 01
+om|Červenica|Červenica|SK||082 07
+om|Červenica pri Sabinove|Červenica pri Sabinove|SK||082 56
+om|Červeník|Červeník|SK||920 42
+om|Červený Hrádok|Červený Hrádok|SK||951 82
+om|Červený Kameň (018 56)|Červený Kameň|SK||018 56
+om|Červený Kameň (900 89)|Červený Kameň|SK||900 89
+om|Červený Kláštor|Červený Kláštor|SK||059 06
+om|Červený Kláštor - kúpele|Červený Kláštor - kúpele|SK||059 06
+om|České Brezovo|České Brezovo|SK||985 03
+om|Cestice|Cestice|SK||044 71
+om|Cetuna|Cetuna|SK||916 11
+om|Chalmová|Chalmová|SK||972 45
+om|Chanava|Chanava|SK||980 44
+om|Chľaba|Chľaba|SK||943 65
+om|Chladná Studňa|Chladná Studňa|SK||985 26
+om|Chlebnice|Chlebnice|SK||027 55
+om|Chlmec|Chlmec|SK||067 41
+om|Chmeľnica|Chmeľnica|SK||064 01
+om|Chmeľov|Chmeľov|SK||082 15
+om|Chmeľová|Chmeľová|SK||086 33
+om|Chmeľovec|Chmeľovec|SK||082 12
+om|Chmiňany|Chmiňany|SK||082 33
+om|Chminianska Nová Ves|Chminianska Nová Ves|SK||082 33
+om|Chminianske Jakubovany|Chminianske Jakubovany|SK||082 33
+om|Choča|Choča|SK||951 76
+om|Chocholná|Chocholná|SK||913 04
+om|Choňkovce|Choňkovce|SK||072 63
+om|Chorvatice|Chorvatice|SK||935 84
+om|Chorvátsky Grob|Chorvátsky Grob|SK||900 25
+om|Chorváty|Chorváty|SK||044 02
+om|Chotár|Chotár|SK||968 01
+om|Chotča|Chotča|SK||090 21
+om|Chotín|Chotín|SK||946 31
+om|Chrabrany|Chrabrany|SK||955 01
+om|Chrámec|Chrámec|SK||980 42
+om|Chrasť|Chrasť|SK||946 54
+om|Chrasť nad Hornádom|Chrasť nad Hornádom|SK||053 63
+om|Chrašťany|Chrašťany|SK||951 75
+om|Chrastince|Chrastince|SK||991 08
+om|Chrastné|Chrastné|SK||044 44
+om|Chrenová|Chrenová|SK||949 01
+om|Chrenovec - Brusno|Chrenovec - Brusno|SK||972 32
+om|Chropov|Chropov|SK||908 64
+om|Chrťany|Chrťany|SK||991 21
+om|Chtelnica|Chtelnica|SK||922 05
+om|Chudá Lehota|Chudá Lehota|SK||956 38
+om|Chvalová|Chvalová|SK||982 62
+om|Chvatimech|Chvatimech|SK||976 81
+om|Chvojnica (906 06)|Chvojnica|SK||906 06
+om|Chvojnica (972 13)|Chvojnica|SK||972 13
+om|Chym|Chym|SK||044 74
+om|Chynorany|Chynorany|SK||956 33
+om|Chyzerovce|Chyzerovce|SK||953 01
+om|Chyžné|Chyžné|SK||049 18
+om|Čiakov|Čiakov|SK||013 54
+om|Čičarovce|Čičarovce|SK||076 71
+om|Čičava|Čičava|SK||093 01
+om|Čičmany|Čičmany|SK||013 15
+om|Číčov|Číčov|SK||946 19
+om|Čierna|Čierna|SK||076 43
+om|Čierna Hora|Čierna Hora|SK||053 33
+om|Čierna Lehota (049 36)|Čierna Lehota|SK||049 36
+om|Čierna Lehota (956 53)|Čierna Lehota|SK||956 53
+om|Čierna nad Tisou|Čierna nad Tisou|SK||076 43
+om|Čierna Voda|Čierna Voda|SK||925 06
+om|Čierne (013 55)|Čierne|SK||013 55
+om|Čierne (023 13)|Čierne|SK||023 13
+om|Čierne (023 56)|Čierne|SK||023 56
+om|Čierne Kľačany|Čierne Kľačany|SK||953 05
+om|Čierne nad Topľou|Čierne nad Topľou|SK||094 34
+om|Čierne Pole|Čierne Pole|SK||079 01
+om|Čierny Balog|Čierny Balog|SK||976 52
+om|Čierny Brod|Čierny Brod|SK||925 08
+om|Čierny Chrbát|Čierny Chrbát|SK||946 03
+om|Čierny Potok|Čierny Potok|SK||980 31
+om|Čierny Váh|Čierny Váh|SK||032 33
+om|Čifáre|Čifáre|SK||951 61
+om|Cífer|Cífer|SK||919 43
+om|Cigeľ|Cigeľ|SK||971 01
+om|Cigeľka|Cigeľka|SK||086 02
+om|Cigla|Cigla|SK||086 37
+om|Čiky|Čiky|SK||941 11
+om|Čilistov|Čilistov|SK||931 01
+om|Čiližská Radvaň|Čiližská Radvaň|SK||930 08
+om|Cimenná|Cimenná|SK||956 37
+om|Čimhová|Čimhová|SK||027 12
+om|Cinobaňa|Cinobaňa|SK||985 22
+om|Čirč|Čirč|SK||065 42
+om|Číž|Číž|SK||980 43
+om|Číž - kúpele|Číž - kúpele|SK||980 43
+om|Čižatice|Čižatice|SK||044 47
+om|Čoltovo|Čoltovo|SK||049 12
+om|Čremošné|Čremošné|SK||039 01
+om|Čučma|Čučma|SK||048 01
+om|Čukalovce|Čukalovce|SK||067 35
+om|Čukárska Paka|Čukárska Paka|SK||930 51
+om|Čuklasovce|Čuklasovce|SK||956 54
+om|Cunín|Cunín|SK||908 48
+om|Ďačov|Ďačov|SK||082 71
+om|Dačov Lom|Dačov Lom|SK||991 35
+om|Daletice|Daletice|SK||082 63
+om|Dancov Potok|Dancov Potok|SK||076 12
+om|Danišovce|Danišovce|SK||053 22
+om|Ďanová|Ďanová|SK||038 42
+om|Ďapalovce|Ďapalovce|SK||094 05
+om|Dargov|Dargov|SK||076 61
+om|Davidov|Davidov|SK||093 03
+om|Debraď|Debraď|SK||045 01
+om|Dechtice|Dechtice|SK||919 53
+om|Dedačov|Dedačov|SK||067 12
+om|Dedina Mládeže|Dedina Mládeže|SK||946 03
+om|Dedinka|Dedinka|SK||941 50
+om|Dedinka pri Dunaji|Dedinka pri Dunaji|SK||900 29
+om|Dedinky|Dedinky|SK||049 73
+om|Dekýš|Dekýš|SK||969 01
+om|Delava|Delava|SK||053 75
+om|Demandice|Demandice|SK||935 85
+om|Demänová (029 57)|Demänová|SK||029 57
+om|Demänová (031 01)|Demänová|SK||031 01
+om|Demänovská Dolina|Demänovská Dolina|SK||031 01
+om|Demjata|Demjata|SK||082 13
+om|Demkovská|Demkovská|SK||027 05
+om|Dešná|Dešná|SK||020 54
+om|Detrík|Detrík|SK||094 31
+om|Detva|Detva|SK||962 12
+om|Detva - sídlisko|Detva - sídlisko|SK||962 12
+om|Detvianska Huta|Detvianska Huta|SK||962 05
+om|Devičany|Devičany|SK||935 04
+om|Devičie|Devičie|SK||962 65
+om|Dežerice|Dežerice|SK||957 03
+om|Diaková|Diaková|SK||038 02
+om|Diakovce|Diakovce|SK||925 81
+om|Didka|Didka|SK||022 01
+om|Diel|Diel|SK||985 53
+om|Diva|Diva|SK||943 42
+om|Diviacka Nová Ves|Diviacka Nová Ves|SK||972 24
+om|Diviaky|Diviaky|SK||039 01
+om|Diviaky nad Nitricou|Diviaky nad Nitricou|SK||972 25
+om|Divín|Divín|SK||985 52
+om|Divina|Divina|SK||013 31
+om|Divinka|Divinka|SK||013 31
+om|Divínske Lazy|Divínske Lazy|SK||985 52
+om|Dlhá|Dlhá|SK||919 01
+om|Dlhá Lúka (032 23)|Dlhá Lúka|SK||032 23
+om|Dlhá Lúka (085 01)|Dlhá Lúka|SK||085 01
+om|Dlhá nad Kysucou|Dlhá nad Kysucou|SK||023 54
+om|Dlhá nad Oravou|Dlhá nad Oravou|SK||027 55
+om|Dlhá nad Váhom|Dlhá nad Váhom|SK||927 05
+om|Dlhá Ves|Dlhá Ves|SK||049 55
+om|Dlhé Klčovo|Dlhé Klčovo|SK||094 13
+om|Dlhé nad Cirochou|Dlhé nad Cirochou|SK||067 82
+om|Dlhé Pole|Dlhé Pole|SK||013 32
+om|Dlhé Stráže|Dlhé Stráže|SK||054 01
+om|Dlhoňa|Dlhoňa|SK||090 02
+om|Dlžín|Dlžín|SK||972 26
+om|Dobogov (935 56)|Dobogov|SK||935 56
+om|Dobogov (044 71)|Dobogov|SK||044 71
+om|Dobrá (076 41)|Dobrá|SK||076 41
+om|Dobrá (914 01)|Dobrá|SK||914 01
+om|Dobrá Niva|Dobrá Niva|SK||962 61
+om|Dobrá Voda|Dobrá Voda|SK||919 54
+om|Dobrá Voľa|Dobrá Voľa|SK||053 61
+om|Dobrianky|Dobrianky|SK||094 23
+om|Dobroč (976 52)|Dobroč|SK||976 52
+om|Dobroč (985 53)|Dobroč|SK||985 53
+om|Dobročná|Dobročná|SK||972 27
+om|Dobrohošť|Dobrohošť|SK||930 31
+om|Dobroslava|Dobroslava|SK||090 01
+om|Dobrý Potok|Dobrý Potok|SK||985 26
+om|Dobšiná|Dobšiná|SK||049 25
+om|Dobšinská Ľadová Jaskyňa|Dobšinská Ľadová Jaskyňa|SK||049 71
+om|Dobšinská Maša|Dobšinská Maša|SK||049 73
+om|Dohňany|Dohňany|SK||020 51
+om|Dojč|Dojč|SK||906 02
+om|Doľany (053 02)|Doľany|SK||053 02
+om|Doľany (900 88)|Doľany|SK||900 88
+om|Dolina (027 05)|Dolina|SK||027 05
+om|Dolina (082 38)|Dolina|SK||082 38
+om|Dolinka|Dolinka|SK||991 28
+om|Dolinky (013 62)|Dolinky|SK||013 62
+om|Dolinky (020 53)|Dolinky|SK||020 53
+om|Dolinky (962 63)|Dolinky|SK||962 63
+om|Dolná Breznica|Dolná Breznica|SK||020 61
+om|Dolná Bzová|Dolná Bzová|SK||985 51
+om|Dolná Krupá|Dolná Krupá|SK||919 65
+om|Dolná Lehota (027 41)|Dolná Lehota|SK||027 41
+om|Dolná Lehota (976 98)|Dolná Lehota|SK||976 98
+om|Dolná Mariková|Dolná Mariková|SK||018 02
+om|Dolná Mičiná|Dolná Mičiná|SK||974 01
+om|Dolná Môlča|Dolná Môlča|SK||974 01
+om|Dolná Poruba|Dolná Poruba|SK||914 43
+om|Dolná Potôň|Dolná Potôň|SK||930 02
+om|Dolná Seč|Dolná Seč|SK||935 31
+om|Dolná Streda|Dolná Streda|SK||925 63
+om|Dolná Strehová|Dolná Strehová|SK||991 02
+om|Dolná Štubňa|Dolná Štubňa|SK||039 01
+om|Dolná Súča|Dolná Súča|SK||913 32
+om|Dolná Tižina|Dolná Tižina|SK||013 04
+om|Dolná Trnávka|Dolná Trnávka|SK||966 21
+om|Dolná Ves|Dolná Ves|SK||967 01
+om|Dolná Závrská|Dolná Závrská|SK||913 33
+om|Dolná Ždaňa|Dolná Ždaňa|SK||966 01
+om|Dolné Breziny|Dolné Breziny|SK||962 61
+om|Dolné Chlebany|Dolné Chlebany|SK||956 31
+om|Dolné Držkovce|Dolné Držkovce|SK||956 54
+om|Dolné Dubové|Dolné Dubové|SK||919 52
+om|Dolné Hámre|Dolné Hámre|SK||966 61
+om|Dolné Janíky|Dolné Janíky|SK||930 39
+om|Dolné Jaseno|Dolné Jaseno|SK||038 02
+om|Dolné Kočkovce|Dolné Kočkovce|SK||020 01
+om|Dolné Košariská|Dolné Košariská|SK||906 15
+om|Dolné Krškany|Dolné Krškany|SK||949 05
+om|Dolné Lefantovce|Dolné Lefantovce|SK||951 45
+om|Dolné Lelovce|Dolné Lelovce|SK||972 43
+om|Dolné Lovčice|Dolné Lovčice|SK||919 27
+om|Dolné Mladonice|Dolné Mladonice|SK||962 41
+om|Dolné Motešice|Dolné Motešice|SK||913 26
+om|Dolné Naštice|Dolné Naštice|SK||957 01
+om|Dolné Obdokovce|Dolné Obdokovce|SK||951 02
+om|Dolné Orešany|Dolné Orešany|SK||919 02
+om|Dolné Otrokovce|Dolné Otrokovce|SK||920 61
+om|Dolné Ozorovce|Dolné Ozorovce|SK||957 01
+om|Dolné Plachtince|Dolné Plachtince|SK||991 24
+om|Dolné Príbelce|Dolné Príbelce|SK||991 25
+om|Dolné Rykynčice|Dolné Rykynčice|SK||962 55
+om|Dolné Saliby|Dolné Saliby|SK||925 02
+om|Dolné Semerovce|Dolné Semerovce|SK||935 85
+om|Dolné Sľažany|Dolné Sľažany|SK||951 71
+om|Dolné Srnie|Dolné Srnie|SK||916 41
+om|Dolné Strháre|Dolné Strháre|SK||991 03
+om|Dolné Trhovište|Dolné Trhovište|SK||920 61
+om|Dolné Turovce|Dolné Turovce|SK||935 81
+om|Dolné Vestenice|Dolné Vestenice|SK||972 23
+om|Dolné Zahorany|Dolné Zahorany|SK||985 42
+om|Dolné Zelenice|Dolné Zelenice|SK||920 52
+om|Dolný Badín|Dolný Badín|SK||962 51
+om|Dolný Bar|Dolný Bar|SK||930 14
+om|Dolný Chotár|Dolný Chotár|SK||925 41
+om|Dolný Ďur|Dolný Ďur|SK||935 34
+om|Dolný Harmanec|Dolný Harmanec|SK||976 03
+om|Dolný Hričov|Dolný Hričov|SK||013 41
+om|Dolný Jalšovík|Dolný Jalšovík|SK||962 41
+om|Dolný Jatov|Dolný Jatov|SK||941 10
+om|Dolný Jelenec|Dolný Jelenec|SK||976 02
+om|Dolný Kalník|Dolný Kalník|SK||038 02
+om|Dolný Kubín|Dolný Kubín|SK||026 01
+om|Dolný Les|Dolný Les|SK||072 13
+om|Dolný Lieskov|Dolný Lieskov|SK||018 21
+om|Dolný Lopašov|Dolný Lopašov|SK||922 04
+om|Dolný Moštenec|Dolný Moštenec|SK||017 01
+om|Dolný Ohaj|Dolný Ohaj|SK||941 43
+om|Dolný Pial|Dolný Pial|SK||935 37
+om|Dolný Smokovec|Dolný Smokovec|SK||059 81
+om|Dolný Štál|Dolný Štál|SK||930 10
+om|Dolný Štefanov|Dolný Štefanov|SK||027 44
+om|Dolný Tisovník|Dolný Tisovník|SK||962 75
+om|Dolný Turček|Dolný Turček|SK||038 48
+om|Dolný Vadičov|Dolný Vadičov|SK||023 45
+om|Dolný Vinodol|Dolný Vinodol|SK||951 06
+om|Doma|Doma|SK||900 44
+om|Domadice|Domadice|SK||935 87
+om|Domaníky|Domaníky|SK||962 65
+om|Domaniža|Domaniža|SK||018 16
+om|Domaňovce|Domaňovce|SK||053 02
+om|Domaša|Domaša|SK||935 61
+om|Donovaly|Donovaly|SK||976 39
+om|Dora|Dora|SK||985 41
+om|Dovalovo|Dovalovo|SK||033 01
+om|Drábsko|Drábsko|SK||976 53
+om|Drahňov|Drahňov|SK||076 74
+om|Drahošanka|Drahošanka|SK||022 01
+om|Drahovce|Drahovce|SK||922 41
+om|Dravce|Dravce|SK||053 14
+om|Dražice|Dražice|SK||980 23
+om|Dražkovce|Dražkovce|SK||038 02
+om|Dražovce|Dražovce|SK||949 01
+om|Drážovce|Drážovce|SK||962 68
+om|Driečna|Driečna|SK||090 23
+om|Drienčany|Drienčany|SK||980 23
+om|Drienica|Drienica|SK||083 01
+om|Drienov|Drienov|SK||082 04
+om|Drienovec|Drienovec|SK||044 01
+om|Drienovo|Drienovo|SK||962 51
+om|Drienovská Nová Ves|Drienovská Nová Ves|SK||082 01
+om|Drietoma|Drietoma|SK||913 03
+om|Drňa|Drňa|SK||980 03
+om|Drnava (049 42)|Drnava|SK||049 42
+om|Drnava (991 02)|Drnava|SK||991 02
+om|Družstevná pri Hornáde|Družstevná pri Hornáde|SK||044 31
+om|Drženice|Drženice|SK||935 03
+om|Držkovce|Držkovce|SK||982 62
+om|Ďubákovo|Ďubákovo|SK||985 07
+om|Dubie (024 01)|Dubie|SK||024 01
+om|Dubie (086 45)|Dubie|SK||086 45
+om|Dubinné|Dubinné|SK||086 12
+om|Dubková|Dubková|SK||020 55
+om|Dubnica|Dubnica|SK||972 01
+om|Dubnica nad Váhom|Dubnica nad Váhom|SK||018 41
+om|Dubnička|Dubnička|SK||957 03
+om|Dubník (082 07)|Dubník|SK||082 07
+om|Dubník (941 35)|Dubník|SK||941 35
+om|Dubno|Dubno|SK||980 35
+om|Dubodiel|Dubodiel|SK||913 23
+om|Dubová (090 11)|Dubová|SK||090 11
+om|Dubová (900 90)|Dubová|SK||900 90
+om|Dubová (976 97)|Dubová|SK||976 97
+om|Dubovany|Dubovany|SK||922 08
+om|Dubovce|Dubovce|SK||908 62
+om|Dubové (038 23)|Dubové|SK||038 23
+om|Dubové (962 61)|Dubové|SK||962 61
+om|Dubovec|Dubovec|SK||980 41
+om|Dubovica|Dubovica|SK||082 71
+om|Dúbrava (032 12)|Dúbrava|SK||032 12
+om|Dúbrava (053 05)|Dúbrava|SK||053 05
+om|Dúbrava (067 73)|Dúbrava|SK||067 73
+om|Dúbrava (082 06)|Dúbrava|SK||082 06
+om|Dúbrava (913 33)|Dúbrava|SK||913 33
+om|Dúbrava (991 02)|Dúbrava|SK||991 02
+om|Dúbravica|Dúbravica|SK||976 33
+om|Dúbravka|Dúbravka|SK||072 15
+om|Dúbravy|Dúbravy|SK||962 12
+om|Duchenec|Duchenec|SK||962 52
+om|Ducové|Ducové|SK||922 21
+om|Dudince|Dudince|SK||962 71
+om|Dukovce|Dukovce|SK||086 44
+om|Dulice|Dulice|SK||038 11
+om|Dulov|Dulov|SK||018 52
+om|Duľov|Duľov|SK||029 63
+om|Ďulov Dvor|Ďulov Dvor|SK||945 01
+om|Dulova Ves|Dulova Ves|SK||082 52
+om|Dulovce|Dulovce|SK||946 56
+om|Dulovo|Dulovo|SK||980 21
+om|Dunajov|Dunajov|SK||023 02
+om|Dunajská Lužná|Dunajská Lužná|SK||900 42
+om|Dunajská Streda|Dunajská Streda|SK||929 01
+om|Dunajský Klátov|Dunajský Klátov|SK||930 21
+om|Duplín|Duplín|SK||091 01
+om|Ďurčiná|Ďurčiná|SK||015 01
+om|Ďurďoš|Ďurďoš|SK||094 31
+om|Ďurďošík|Ďurďošík|SK||044 45
+om|Ďurďové|Ďurďové|SK||018 22
+om|Ďurkov|Ďurkov|SK||044 19
+om|Ďurková|Ďurková|SK||065 41
+om|Ďurkovce|Ďurkovce|SK||991 27
+om|Dúžava|Dúžava|SK||979 01
+om|Dvor Mikuláš|Dvor Mikuláš|SK||941 35
+om|Dvorany nad Nitrou|Dvorany nad Nitrou|SK||956 11
+om|Dvorec (038 45)|Dvorec|SK||038 45
+om|Dvorec (956 55)|Dvorec|SK||956 55
+om|Dvorianky|Dvorianky|SK||076 62
+om|Dvorníky (044 02)|Dvorníky|SK||044 02
+om|Dvorníky (920 56)|Dvorníky|SK||920 56
+om|Dvorníky (962 68)|Dvorníky|SK||962 68
+om|Dvorníky - Včeláre|Dvorníky - Včeláre|SK||044 02
+om|Dvorníky nad Nitricou|Dvorníky nad Nitricou|SK||972 22
+om|Dvory nad Žitavou|Dvory nad Žitavou|SK||941 31
+om|Dyčka|Dyčka|SK||952 01
+om|Egreš|Egreš|SK||075 01
+om|Eliášovce|Eliášovce|SK||930 38
+om|Etreho Kračany|Etreho Kračany|SK||930 03
+om|Fačkov|Fačkov|SK||013 15
+om|Fajtov|Fajtov|SK||976 52
+om|Falkušovce|Falkušovce|SK||072 05
+om|Fančová|Fančová|SK||972 46
+om|Farná|Farná|SK||935 66
+om|Fejséš|Fejséš|SK||077 01
+om|Fekišovce|Fekišovce|SK||072 33
+om|Fiačice|Fiačice|SK||032 14
+om|Figa|Figa|SK||982 51
+om|Fijaš|Fijaš|SK||087 01
+om|Fiľakovo|Fiľakovo|SK||986 01
+om|Fiľakovské Kľačany|Fiľakovské Kľačany|SK||986 01
+om|Fiľakovské Kováče|Fiľakovské Kováče|SK||986 01
+om|Filice|Filice|SK||058 01
+om|Filier|Filier|SK||982 66
+om|Filipovo|Filipovo|SK||976 64
+om|Fintice|Fintice|SK||082 16
+om|Flajšová|Flajšová|SK||029 57
+om|Folkušová|Folkušová|SK||038 42
+om|Forbaky - Klukany|Forbaky - Klukany|SK||013 32
+om|Forbasy|Forbasy|SK||065 01
+om|Francovce|Francovce|SK||087 01
+om|Frička|Frička|SK||086 02
+om|Fričkovce|Fričkovce|SK||086 42
+om|Fričovce|Fričovce|SK||082 37
+om|Fulianka|Fulianka|SK||082 12
+om|Furmanec|Furmanec|SK||082 67
+om|Gabčíkovo|Gabčíkovo|SK||930 05
+om|Gaboltov|Gaboltov|SK||086 02
+om|Gajary|Gajary|SK||900 61
+om|Gajdoš|Gajdoš|SK||072 43
+om|Galanta|Galanta|SK||924 01
+om|Galovany|Galovany|SK||032 11
+om|Gáň|Gáň|SK||924 01
+om|Gánovce|Gánovce|SK||058 01
+om|Gápel|Gápel|SK||972 28
+om|Gaškovce|Gaškovce|SK||020 53
+om|Gašparovo|Gašparovo|SK||976 64
+om|Gbeľany|Gbeľany|SK||013 02
+om|Gbelce|Gbelce|SK||943 42
+om|Gbely|Gbely|SK||908 45
+om|Geča|Geča|SK||044 10
+om|Geča č. 107-110|Geča č. 107-110|SK||044 14
+om|Gelnica|Gelnica|SK||056 01
+om|Gemer|Gemer|SK||982 01
+om|Gemerček|Gemerček|SK||980 31
+om|Gemerská Hôrka|Gemerská Hôrka|SK||049 12
+om|Gemerská Panica|Gemerská Panica|SK||980 46
+om|Gemerská Poloma|Gemerská Poloma|SK||049 22
+om|Gemerská Ves|Gemerská Ves|SK||982 62
+om|Gemerské Dechtáre|Gemerské Dechtáre|SK||980 04
+om|Gemerské Michalovce|Gemerské Michalovce|SK||982 52
+om|Gemerské Teplice|Gemerské Teplice|SK||049 16
+om|Gemerský Jablonec|Gemerský Jablonec|SK||980 35
+om|Gemerský Milhosť|Gemerský Milhosť|SK||049 16
+om|Gemerský Sad|Gemerský Sad|SK||049 13
+om|Géňa|Géňa|SK||934 01
+om|Geraltov|Geraltov|SK||082 67
+om|Gerlachov (059 42)|Gerlachov|SK||059 42
+om|Gerlachov (086 04)|Gerlachov|SK||086 04
+om|Giglovce|Giglovce|SK||094 05
+om|Giraltovce|Giraltovce|SK||087 01
+om|Girovce|Girovce|SK||094 06
+om|Glabušovce|Glabušovce|SK||991 22
+om|Gočaltovo|Gočaltovo|SK||049 32
+om|Gočovo|Gočovo|SK||049 24
+om|Golianovo|Golianovo|SK||951 08
+om|Gomboš|Gomboš|SK||044 55
+om|Gondovo|Gondovo|SK||935 25
+om|Gorazdov|Gorazdov|SK||951 31
+om|Gortva|Gortva|SK||980 02
+om|Gôtovany|Gôtovany|SK||032 14
+om|Grajciar|Grajciar|SK||044 57
+om|Granč - Petrovce|Granč - Petrovce|SK||053 05
+om|Gregorova Vieska|Gregorova Vieska|SK||985 56
+om|Gregorovce (082 66)|Gregorovce|SK||082 66
+om|Gregorovce (982 52)|Gregorovce|SK||982 52
+om|Gribov|Gribov|SK||090 22
+om|Grodzin|Grodzin|SK||094 31
+om|Grúne|Grúne|SK||027 05
+om|Gruzovce|Gruzovce|SK||067 22
+om|Gúg|Gúg|SK||941 23
+om|Gyňov|Gyňov|SK||044 14
+om|Habovka|Habovka|SK||027 32
+om|Habura|Habura|SK||067 52
+om|Hačava (044 02)|Hačava|SK||044 02
+om|Hačava (981 01)|Hačava|SK||981 01
+om|Hadoše|Hadoše|SK||018 02
+om|Hadovce|Hadovce|SK||945 01
+om|Hadušovce|Hadušovce|SK||053 13
+om|Hadviga|Hadviga|SK||038 22
+om|Hágy|Hágy|SK||059 04
+om|Háj (039 01)|Háj|SK||039 01
+om|Háj (044 02)|Háj|SK||044 02
+om|Hájiky - Maky|Hájiky - Maky|SK||987 01
+om|Hajná Nová Ves|Hajná Nová Ves|SK||956 03
+om|Hajnáčka|Hajnáčka|SK||980 33
+om|Hájniky|Hájniky|SK||962 31
+om|Hájske|Hájske|SK||951 33
+om|Hajtovka|Hajtovka|SK||065 45
+om|Haláčovce|Haláčovce|SK||956 55
+om|Halič|Halič|SK||985 11
+om|Haligovce|Haligovce|SK||065 34
+om|Haluzice|Haluzice|SK||913 07
+om|Hámor|Hámor|SK||976 66
+om|Hámre (053 33)|Hámre|SK||053 33
+om|Hámre (913 21)|Hámre|SK||913 21
+om|Hámre - Dolné Hámre|Hámre - Dolné Hámre|SK||966 61
+om|Hámre - Horné Hámre|Hámre - Horné Hámre|SK||966 71
+om|Hamuliakovo|Hamuliakovo|SK||900 43
+om|Handlová|Handlová|SK||972 51
+om|Hanigovce|Hanigovce|SK||082 56
+om|Haniska (044 57)|Haniska|SK||044 57
+om|Haniska (080 01)|Haniska|SK||080 01
+om|Hanková|Hanková|SK||049 34
+om|Hankovce (067 12)|Hankovce|SK||067 12
+om|Hankovce (086 46)|Hankovce|SK||086 46
+om|Hanušovce nad Topľou|Hanušovce nad Topľou|SK||094 31
+om|Harakovce|Harakovce|SK||053 05
+om|Harhaj|Harhaj|SK||086 45
+om|Harichovce|Harichovce|SK||053 01
+om|Harmanec|Harmanec|SK||976 03
+om|Harmónia|Harmónia|SK||900 01
+om|Harvelka|Harvelka|SK||023 05
+om|Hatalov|Hatalov|SK||072 16
+om|Hatné|Hatné|SK||018 02
+om|Havaj|Havaj|SK||090 23
+om|Havka|Havka|SK||061 01
+om|Havran|Havran|SK||906 04
+om|Havranec|Havranec|SK||090 02
+om|Havrania|Havrania|SK||027 05
+om|Havrania Dolina|Havrania Dolina|SK||053 76
+om|Hažín|Hažín|SK||072 34
+om|Hažín nad Cirochou|Hažín nad Cirochou|SK||067 83
+om|Hažlín|Hažlín|SK||086 14
+om|Heďbeneéte|Heďbeneéte|SK||929 01
+om|Helcmanovce|Helcmanovce|SK||055 63
+om|Heľpa|Heľpa|SK||976 68
+om|Henckovce|Henckovce|SK||049 23
+om|Henclová|Henclová|SK||053 33
+om|Hencovce|Hencovce|SK||093 02
+om|Hendrichovce|Hendrichovce|SK||082 35
+om|Herľany|Herľany|SK||044 45
+om|Herman|Herman|SK||985 53
+om|Hermanovce|Hermanovce|SK||082 35
+om|Hermanovce nad Topľou|Hermanovce nad Topľou|SK||094 34
+om|Hertník|Hertník|SK||086 42
+om|Hervartov|Hervartov|SK||086 22
+om|Hetméň|Hetméň|SK||927 01
+om|Hiadeľ|Hiadeľ|SK||976 61
+om|Hincovce|Hincovce|SK||053 63
+om|Hladovka|Hladovka|SK||027 13
+om|Hlavice|Hlavice|SK||023 22
+om|Hlboké (018 03)|Hlboké|SK||018 03
+om|Hlboké (906 31)|Hlboké|SK||906 31
+om|Hlboké nad Váhom|Hlboké nad Váhom|SK||014 01
+om|Hlinené|Hlinené|SK||023 54
+om|Hliník (032 23)|Hliník|SK||032 23
+om|Hliník (945 01)|Hliník|SK||945 01
+om|Hliník nad Hronom|Hliník nad Hronom|SK||966 01
+om|Hliník nad Váhom|Hliník nad Váhom|SK||014 01
+om|Hlinné|Hlinné|SK||094 35
+om|Hlivištia|Hlivištia|SK||073 01
+om|Hlohovec|Hlohovec|SK||
+om|Hloža|Hloža|SK||018 61
+om|Hniezdne|Hniezdne|SK||065 01
+om|Hnilčík|Hnilčík|SK||053 32
+om|Hnilec|Hnilec|SK||053 75
+om|Hnojné|Hnojné|SK||072 33
+om|Hnúšťa|Hnúšťa|SK||981 01
+om|Hodejov|Hodejov|SK||980 31
+om|Hodejovec|Hodejovec|SK||980 02
+om|Hodkovce (044 21)|Hodkovce|SK||044 21
+om|Hodkovce (053 61)|Hodkovce|SK||053 61
+om|Hodruša - Hámre|Hodruša - Hámre|SK||966 61
+om|Hodulov Vrch|Hodulov Vrch|SK||916 14
+om|Hokovce|Hokovce|SK||935 84
+om|Holanovo|Holanovo|SK||947 01
+om|Holčíkovce|Holčíkovce|SK||094 05
+om|Holiare|Holiare|SK||946 16
+om|Holíč|Holíč|SK||908 51
+om|Holice|Holice|SK||930 34
+om|Holiša|Holiša|SK||985 57
+om|Holotka|Holotka|SK||951 42
+om|Holumnica|Holumnica|SK||059 94
+om|Honce|Honce|SK||049 32
+om|Hontianska Vrbica|Hontianska Vrbica|SK||935 55
+om|Hontianske Moravce|Hontianske Moravce|SK||962 71
+om|Hontianske Nemce|Hontianske Nemce|SK||962 65
+om|Hontianske Tesáre|Hontianske Tesáre|SK||962 68
+om|Hontianske Trsťany|Hontianske Trsťany|SK||935 86
+om|Horelica|Horelica|SK||022 01
+om|Horenická Hôrka|Horenická Hôrka|SK||020 61
+om|Hôrka|Hôrka|SK||059 12
+om|Hôrka nad Váhom|Hôrka nad Váhom|SK||916 32
+om|Hôrky|Hôrky|SK||010 04
+om|Horňa|Horňa|SK||073 01
+om|Horná Breznica|Horná Breznica|SK||020 61
+om|Horná Dolina|Horná Dolina|SK||906 05
+om|Horná Hriňová|Horná Hriňová|SK||962 05
+om|Horná Kráľová|Horná Kráľová|SK||951 32
+om|Horná Krupá|Horná Krupá|SK||919 65
+om|Horná Lehota (027 41)|Horná Lehota|SK||027 41
+om|Horná Lehota (976 81)|Horná Lehota|SK||976 81
+om|Horná Mariková|Horná Mariková|SK||018 03
+om|Horná Mičiná|Horná Mičiná|SK||974 01
+om|Horná Môlča|Horná Môlča|SK||974 01
+om|Horná Poruba|Horná Poruba|SK||018 35
+om|Horná Potôň|Horná Potôň|SK||930 36
+om|Horná Potôň - Lúky|Horná Potôň - Lúky|SK||930 52
+om|Horná Seč|Horná Seč|SK||935 31
+om|Horná Streda|Horná Streda|SK||916 24
+om|Horná Strehová|Horná Strehová|SK||991 02
+om|Horná Štubňa|Horná Štubňa|SK||038 46
+om|Horná Súča|Horná Súča|SK||913 33
+om|Horná Tižina|Horná Tižina|SK||013 06
+om|Horná Trnávka|Horná Trnávka|SK||966 01
+om|Horná Ves (967 01)|Horná Ves|SK||967 01
+om|Horná Ves (972 48)|Horná Ves|SK||972 48
+om|Horná Závrská|Horná Závrská|SK||913 33
+om|Horná Ždaňa|Horná Ždaňa|SK||966 04
+om|Horná Zlatná|Horná Zlatná|SK||946 12
+om|Horňany|Horňany|SK||913 24
+om|Horné Breziny|Horné Breziny|SK||962 61
+om|Horné Chlebany|Horné Chlebany|SK||956 31
+om|Horné Držkovce|Horné Držkovce|SK||956 54
+om|Horné Dubové|Horné Dubové|SK||919 65
+om|Horné Hámre|Horné Hámre|SK||966 71
+om|Horné Janíky|Horné Janíky|SK||930 39
+om|Horné Jaseno|Horné Jaseno|SK||038 02
+om|Horné Kočkovce|Horné Kočkovce|SK||020 01
+om|Horné Košariská|Horné Košariská|SK||906 15
+om|Horné Krškany|Horné Krškany|SK||949 05
+om|Horné Lefantovce|Horné Lefantovce|SK||951 45
+om|Horné Lelovce|Horné Lelovce|SK||972 71
+om|Horné Lovčice|Horné Lovčice|SK||919 27
+om|Horné Mladonice|Horné Mladonice|SK||962 43
+om|Horné Motešice|Horné Motešice|SK||913 26
+om|Horné Mýto|Horné Mýto|SK||930 13
+om|Horné Naštice|Horné Naštice|SK||956 41
+om|Horné Obdokovce|Horné Obdokovce|SK||956 08
+om|Horné Orešany|Horné Orešany|SK||919 03
+om|Horné Otrokovce|Horné Otrokovce|SK||920 62
+om|Horné Ozorovce|Horné Ozorovce|SK||957 03
+om|Horné Plachtince|Horné Plachtince|SK||991 24
+om|Horné Príbelce|Horné Príbelce|SK||991 25
+om|Horné Pršany|Horné Pršany|SK||974 05
+om|Horné Rykynčice|Horné Rykynčice|SK||962 55
+om|Horné Saliby|Horné Saliby|SK||925 03
+om|Horné Saliby - časť Hrušov|Horné Saliby - časť Hrušov|SK||925 02
+om|Horné Semerovce|Horné Semerovce|SK||935 84
+om|Horné Sľažany|Horné Sľažany|SK||951 71
+om|Horné Srnie|Horné Srnie|SK||914 42
+om|Horné Štitáre|Horné Štitáre|SK||956 03
+om|Horné Strháre|Horné Strháre|SK||991 03
+om|Horné Trhovište|Horné Trhovište|SK||920 66
+om|Horné Turovce|Horné Turovce|SK||935 81
+om|Horné Vestenice|Horné Vestenice|SK||972 22
+om|Horné Zahorany|Horné Zahorany|SK||980 26
+om|Horné Zelenice|Horné Zelenice|SK||920 52
+om|Horný Badín|Horný Badín|SK||962 51
+om|Horný Bar|Horný Bar|SK||930 33
+om|Horný Čepeň|Horný Čepeň|SK||926 01
+om|Horný Ďur|Horný Ďur|SK||935 34
+om|Horný Hričov|Horný Hričov|SK||013 42
+om|Horný Jalšovík|Horný Jalšovík|SK||962 41
+om|Horný Jatov|Horný Jatov|SK||925 71
+om|Horný Jelenec|Horný Jelenec|SK||976 02
+om|Horný Kalník|Horný Kalník|SK||038 02
+om|Horný Lieskov|Horný Lieskov|SK||018 21
+om|Horný Moštenec|Horný Moštenec|SK||017 01
+om|Horný Ohaj|Horný Ohaj|SK||952 01
+om|Horný Pial|Horný Pial|SK||935 37
+om|Horný Smokovec|Horný Smokovec|SK||062 01
+om|Horný Štefanov|Horný Štefanov|SK||027 44
+om|Horný Tisovník|Horný Tisovník|SK||962 75
+om|Horný Turček|Horný Turček|SK||038 48
+om|Horný Vadičov|Horný Vadičov|SK||023 45
+om|Horný Vinodol|Horný Vinodol|SK||951 06
+om|Horovce (020 62)|Horovce|SK||020 62
+om|Horovce (072 02)|Horovce|SK||072 02
+om|Horša|Horša|SK||934 01
+om|Hoste|Hoste|SK||925 45
+om|Hostice|Hostice|SK||980 04
+om|Hostie|Hostie|SK||951 94
+om|Hoštiná|Hoštiná|SK||020 01
+om|Hostišovce|Hostišovce|SK||980 23
+om|Hosťová|Hosťová|SK||951 02
+om|Hosťovce (044 02)|Hosťovce|SK||044 02
+om|Hosťovce (951 91)|Hosťovce|SK||951 91
+om|Hostovice|Hostovice|SK||067 35
+om|Hozelec|Hozelec|SK||059 11
+om|Hrabičov|Hrabičov|SK||966 78
+om|Hrabkov|Hrabkov|SK||082 33
+om|Hrabová Roztoka|Hrabová Roztoka|SK||067 73
+om|Hrabovčík|Hrabovčík|SK||089 01
+om|Hrabové|Hrabové|SK||014 01
+om|Hrabovec|Hrabovec|SK||086 11
+om|Hrabovec nad Laborcom|Hrabovec nad Laborcom|SK||067 01
+om|Hrabovka (020 01)|Hrabovka|SK||020 01
+om|Hrabovka (913 32)|Hrabovka|SK||913 32
+om|Hrabovo|Hrabovo|SK||985 01
+om|Hrabské|Hrabské|SK||086 06
+om|Hrabušice|Hrabušice|SK||053 15
+om|Hrachovište|Hrachovište|SK||916 16
+om|Hrachovo|Hrachovo|SK||980 52
+om|Hradisko (059 71)|Hradisko|SK||059 71
+om|Hradisko (082 67)|Hradisko|SK||082 67
+om|Hradisko (090 42)|Hradisko|SK||090 42
+om|Hradište (958 54)|Hradište|SK||958 54
+om|Hradište (985 25)|Hradište|SK||985 25
+om|Hradište pod Vrátnom|Hradište pod Vrátnom|SK||906 12
+om|Hradištská Moľva|Hradištská Moľva|SK||072 06
+om|Hradná|Hradná|SK||013 52
+om|Hrádok|Hrádok|SK||916 33
+om|Hraň|Hraň|SK||076 03
+om|Hraničné|Hraničné|SK||065 22
+om|Hranovnica|Hranovnica|SK||059 16
+om|Hrašné|Hrašné|SK||916 14
+om|Hrašovík|Hrašovík|SK||044 42
+om|Hrboltová|Hrboltová|SK||034 01
+om|Hrčeľ|Hrčeľ|SK||076 15
+om|Hrhov|Hrhov|SK||049 44
+om|Hriadky|Hriadky|SK||076 22
+om|Hričovské Podhradie|Hričovské Podhradie|SK||013 41
+om|Hriňová|Hriňová|SK||962 05
+om|Hrišovce|Hrišovce|SK||053 51
+om|Hrkáč|Hrkáč|SK||982 62
+om|Hrkovce|Hrkovce|SK||936 01
+om|Hrlica|Hrlica|SK||982 66
+om|Hrnčiarky|Hrnčiarky|SK||985 22
+om|Hrnčiarovce nad Parnou|Hrnčiarovce nad Parnou|SK||919 35
+om|Hrnčiarové|Hrnčiarové|SK||916 12
+om|Hrnčiarska Ves|Hrnčiarska Ves|SK||980 13
+om|Hrnčiarske Zalužany|Hrnčiarske Zalužany|SK||980 12
+om|Hrochoť|Hrochoť|SK||976 37
+om|Hromoš|Hromoš|SK||065 45
+om|Hronec|Hronec|SK||976 45
+om|Hronovce|Hronovce|SK||935 61
+om|Hronsek|Hronsek|SK||976 31
+om|Hronská Breznica|Hronská Breznica|SK||966 11
+om|Hronská Dúbrava|Hronská Dúbrava|SK||966 11
+om|Hronské Kľačany|Hronské Kľačany|SK||935 29
+om|Hronské Kosihy|Hronské Kosihy|SK||935 27
+om|Hronský Beňadik|Hronský Beňadik|SK||966 53
+om|Hrubá Borša|Hrubá Borša|SK||925 23
+om|Hrubá Strana|Hrubá Strana|SK||916 11
+om|Hruboňovo|Hruboňovo|SK||951 25
+om|Hrubov|Hrubov|SK||067 23
+om|Hrubý Buk|Hrubý Buk|SK||023 52
+om|Hrubý Šúr|Hrubý Šúr|SK||903 01
+om|Hrušov (049 43)|Hrušov|SK||049 43
+om|Hrušov (076 37)|Hrušov|SK||076 37
+om|Hrušov (991 42)|Hrušov|SK||991 42
+om|Hrušovany|Hrušovany|SK||956 13
+om|Hrušové|Hrušové|SK||916 11
+om|Hrušovo|Hrušovo|SK||980 25
+om|Hruštín|Hruštín|SK||029 52
+om|Hubice|Hubice|SK||930 39
+om|Hubina|Hubina|SK||922 21
+om|Hubošovce|Hubošovce|SK||082 66
+om|Hubová|Hubová|SK||034 91
+om|Hubovo|Hubovo|SK||980 50
+om|Hucín|Hucín|SK||049 13
+om|Hudcovce|Hudcovce|SK||067 45
+om|Hul|Hul|SK||941 44
+om|Humenné|Humenné|SK||066 01
+om|Huncovce|Huncovce|SK||059 92
+om|Hunkovce (076 62)|Hunkovce|SK||076 62
+om|Hunkovce (090 03)|Hunkovce|SK||090 03
+om|Hurbanova Dolina|Hurbanova Dolina|SK||906 13
+om|Hurbanova Ves|Hurbanova Ves|SK||903 01
+om|Hurbanovce|Hurbanovce|SK||941 50
+om|Hurbanovo|Hurbanovo|SK||
+om|Husák|Husák|SK||072 51
+om|Husarik|Husarik|SK||022 04
+om|Husiná|Husiná|SK||985 42
+om|Hutka|Hutka|SK||086 36
+om|Huty|Huty|SK||027 32
+om|Hviezdoslavov|Hviezdoslavov|SK||930 41
+om|Hvozdnica|Hvozdnica|SK||013 56
+om|Hybe|Hybe|SK||032 31
+om|Hýľov|Hýľov|SK||044 12
+om|Igram|Igram|SK||900 84
+om|Ihľany|Ihľany|SK||059 94
+om|Ihráč|Ihráč|SK||967 01
+om|Ihrište|Ihrište|SK||020 01
+om|Iľanovo|Iľanovo|SK||031 01
+om|Ilava|Ilava|SK||019 01
+om|Iliaš|Iliaš|SK||974 05
+om|Iliašov|Iliašov|SK||991 07
+om|Iliašovce|Iliašovce|SK||053 11
+om|Iliavka|Iliavka|SK||019 01
+om|Ilija|Ilija|SK||969 01
+om|Imeľ|Imeľ|SK||946 52
+om|Imrov Kopec|Imrov Kopec|SK||991 21
+om|Iňa|Iňa|SK||935 35
+om|Iňačovce|Iňačovce|SK||072 11
+om|Inovce|Inovce|SK||072 64
+om|Ipeľ|Ipeľ|SK||985 26
+om|Ipeľka|Ipeľka|SK||985 41
+om|Ipeľské Predmostie|Ipeľské Predmostie|SK||991 10
+om|Ipeľské Úľany|Ipeľské Úľany|SK||935 82
+om|Ipeľský Sokolec|Ipeľský Sokolec|SK||935 75
+om|Istebné|Istebné|SK||027 53
+om|Istebník|Istebník|SK||911 05
+om|Ivachnová|Ivachnová|SK||034 83
+om|Ivančiná|Ivančiná|SK||038 45
+om|Ivanice|Ivanice|SK||980 42
+om|Ivanišovo|Ivanišovo|SK||985 51
+om|Ivanka pri Dunaji|Ivanka pri Dunaji|SK||900 28
+om|Ivanka pri Nitre|Ivanka pri Nitre|SK||951 12
+om|Ivanovce|Ivanovce|SK||913 05
+om|Iviny|Iviny|SK||962 12
+om|Iža|Iža|SK||946 39
+om|Ižipovce|Ižipovce|SK||032 23
+om|Ižkovce|Ižkovce|SK||076 72
+om|Ižop|Ižop|SK||932 01
+om|Jabloň|Jabloň|SK||067 13
+om|Jablonec|Jablonec|SK||900 86
+om|Jablonica|Jablonica|SK||906 32
+om|Jablonka|Jablonka|SK||906 21
+om|Jablonov|Jablonov|SK||053 03
+om|Jablonov nad Turňou|Jablonov nad Turňou|SK||049 43
+om|Jabloňovce|Jabloňovce|SK||935 06
+om|Jablonové (013 52)|Jablonové|SK||013 52
+om|Jablonové (900 54)|Jablonové|SK||900 54
+om|Jabriková|Jabriková|SK||976 34
+om|Jacovce|Jacovce|SK||956 21
+om|Jahodná|Jahodná|SK||930 21
+om|Jahodníky|Jahodníky|SK||036 01
+om|Jaklovce|Jaklovce|SK||055 61
+om|Jakovany|Jakovany|SK||083 01
+om|Jakub|Jakub|SK||974 01
+om|Jakubany|Jakubany|SK||065 12
+om|Jakubov|Jakubov|SK||900 63
+om|Jakubova Voľa|Jakubova Voľa|SK||082 56
+om|Jakubovany (032 04)|Jakubovany|SK||032 04
+om|Jakubovany (083 01)|Jakubovany|SK||083 01
+om|Jakušovce|Jakušovce|SK||090 31
+om|Jalakšová|Jalakšová|SK||935 03
+om|Jalná|Jalná|SK||966 11
+om|Jalová|Jalová|SK||067 61
+om|Jalovec (032 21)|Jalovec|SK||032 21
+om|Jalovec (972 31)|Jalovec|SK||972 31
+om|Jalšové|Jalšové|SK||922 31
+om|Jalšovík|Jalšovík|SK||962 41
+om|Jamník (033 01)|Jamník|SK||033 01
+om|Jamník (053 22)|Jamník|SK||053 22
+om|Janice|Janice|SK||980 42
+om|Janík|Janík|SK||044 05
+om|Janíkovce|Janíkovce|SK||949 07
+om|Janíky|Janíky|SK||930 39
+om|Jankovce|Jankovce|SK||067 24
+om|Jánošíková|Jánošíková|SK||900 42
+om|Jánošíkovo na Ostrove|Jánošíkovo na Ostrove|SK||930 10
+om|Jánošovka|Jánošovka|SK||976 52
+om|Janov|Janov|SK||082 42
+om|Janova Lehota|Janova Lehota|SK||966 24
+om|Janova Ves|Janova Ves|SK||958 44
+om|Janovce|Janovce|SK||086 41
+om|Jánovce (059 13)|Jánovce|SK||059 13
+om|Jánovce (925 22)|Jánovce|SK||925 22
+om|Janovík|Janovík|SK||082 03
+om|Jarabá|Jarabá|SK||977 01
+om|Jarabina|Jarabina|SK||065 31
+om|Jarná|Jarná|SK||919 43
+om|Jarok (937 01)|Jarok|SK||937 01
+om|Jarok (951 48)|Jarok|SK||951 48
+om|Jarovnice|Jarovnice|SK||082 63
+om|Jasenica|Jasenica|SK||018 17
+om|Jasenie|Jasenie|SK||976 75
+om|Jasenov (066 01)|Jasenov|SK||066 01
+om|Jasenov (072 42)|Jasenov|SK||072 42
+om|Jasenová|Jasenová|SK||026 01
+om|Jasenovce|Jasenovce|SK||094 05
+om|Jasenové|Jasenové|SK||013 19
+om|Jasenovo (038 22)|Jasenovo|SK||038 22
+om|Jasenovo (962 05)|Jasenovo|SK||962 05
+om|Jasenovská|Jasenovská|SK||029 57
+om|Jaslovce|Jaslovce|SK||919 30
+om|Jaslovské Bohunice|Jaslovské Bohunice|SK||919 30
+om|Jaslovské Bohunice-Atómová elektráreň|Jaslovské Bohunice-Atómová elektráreň|SK||919 31
+om|Jasov|Jasov|SK||044 23
+om|Jašov Vrch|Jašov Vrch|SK||962 25
+om|Jasová|Jasová|SK||941 34
+om|Jastrabá|Jastrabá|SK||967 01
+om|Jastrabie Kračany|Jastrabie Kračany|SK||930 03
+om|Jastrabie nad Topľou|Jastrabie nad Topľou|SK||094 35
+om|Jastrabie pri Michalovciach|Jastrabie pri Michalovciach|SK||072 11
+om|Jatov|Jatov|SK||941 10
+om|Javorec|Javorec|SK||906 05
+om|Javorina (059 56)|Javorina|SK||059 56
+om|Javorina (976 53)|Javorina|SK||976 53
+om|Javorinka|Javorinka|SK||925 01
+om|Javorová|Javorová|SK||023 22
+om|Jazernica|Jazernica|SK||038 44
+om|Jazviny|Jazviny|SK||916 01
+om|Jedlinka|Jedlinka|SK||086 36
+om|Jedľové Kostoľany|Jedľové Kostoľany|SK||951 96
+om|Jedľovník|Jedľovník|SK||023 55
+om|Jelenec|Jelenec|SK||951 73
+om|Jelka|Jelka|SK||925 23
+om|Jelšava|Jelšava|SK||049 16
+om|Jelšavská Teplica|Jelšavská Teplica|SK||049 16
+om|Jelšovce|Jelšovce|SK||951 43
+om|Jelšovec|Jelšovec|SK||985 32
+om|Jenkovce|Jenkovce|SK||072 52
+om|Jergaly|Jergaly|SK||976 02
+om|Jesenské (935 36)|Jesenské|SK||935 36
+om|Jesenské (980 02)|Jesenské|SK||980 02
+om|Ješkova Ves|Ješkova Ves|SK||958 45
+om|Ješkova Ves nad Nitricou|Ješkova Ves nad Nitricou|SK||972 25
+om|Jestice|Jestice|SK||980 04
+om|Jezersko|Jezersko|SK||059 04
+om|Jovice|Jovice|SK||049 45
+om|Jovsa|Jovsa|SK||072 32
+om|Jur nad Hronom|Jur nad Hronom|SK||935 57
+om|Jurkova Voľa|Jurkova Voľa|SK||089 01
+om|Jurová|Jurová|SK||930 04
+om|Jurské|Jurské|SK||059 94
+om|Jurský Chlm|Jurský Chlm|SK||943 52
+om|Juskova Voľa|Juskova Voľa|SK||094 12
+om|Kačanov|Kačanov|SK||072 05
+om|Kače|Kače|SK||065 22
+om|Kajal|Kajal|SK||925 92
+om|Kaľamenová|Kaľamenová|SK||038 22
+om|Kalameny|Kalameny|SK||034 82
+om|Kaľava|Kaľava|SK||053 42
+om|Kalinčiakovo|Kalinčiakovo|SK||934 01
+om|Kalinka|Kalinka|SK||962 25
+om|Kalinkovo|Kalinkovo|SK||900 43
+om|Kalinov (023 02)|Kalinov|SK||023 02
+om|Kalinov (068 01)|Kalinov|SK||068 01
+om|Kalinovo|Kalinovo|SK||985 01
+om|Kalná|Kalná|SK||935 32
+om|Kalná nad Hronom|Kalná nad Hronom|SK||935 32
+om|Kalná Roztoka|Kalná Roztoka|SK||067 72
+om|Kalnica|Kalnica|SK||935 32
+om|Kálnica|Kálnica|SK||916 37
+om|Kalnište|Kalnište|SK||087 01
+om|Kalonda|Kalonda|SK||985 31
+om|Kaloša|Kaloša|SK||982 52
+om|Kalša|Kalša|SK||044 18
+om|Kaluža|Kaluža|SK||072 36
+om|Kamanová|Kamanová|SK||956 12
+om|Kameňany|Kameňany|SK||049 62
+om|Kamenec|Kamenec|SK||934 01
+om|Kamenec pod Vtáčnikom|Kamenec pod Vtáčnikom|SK||972 44
+om|Kamenica|Kamenica|SK||082 71
+om|Kamenica nad Cirochou|Kamenica nad Cirochou|SK||067 83
+om|Kamenica nad Hronom|Kamenica nad Hronom|SK||943 65
+om|Kameničany|Kameničany|SK||018 54
+om|Kameničná|Kameničná|SK||946 01
+om|Kamenín|Kamenín|SK||943 57
+om|Kamenná Poruba (013 14)|Kamenná Poruba|SK||013 14
+om|Kamenná Poruba (093 03)|Kamenná Poruba|SK||093 03
+om|Kamenné Kosihy|Kamenné Kosihy|SK||991 27
+om|Kamenný Chotár|Kamenný Chotár|SK||935 02
+om|Kamenný Most|Kamenný Most|SK||943 58
+om|Kamenný Vrch|Kamenný Vrch|SK||992 01
+om|Kamienka (065 32)|Kamienka|SK||065 32
+om|Kamienka (067 83)|Kamienka|SK||067 83
+om|Kanaš|Kanaš|SK||082 21
+om|Kanianka|Kanianka|SK||972 17
+om|Kapince|Kapince|SK||951 24
+om|Kapišová|Kapišová|SK||090 01
+om|Kaplna|Kaplna|SK||900 84
+om|Kapoňa|Kapoňa|SK||076 84
+om|Kapušany|Kapušany|SK||082 12
+om|Kapušianske Kľačany|Kapušianske Kľačany|SK||079 01
+om|Kapušianske Vojkovce|Kapušianske Vojkovce|SK||079 01
+om|Kardošova Vieska|Kardošova Vieska|SK||018 16
+om|Karlov Dvor|Karlov Dvor|SK||076 33
+om|Karlová|Karlová|SK||038 15
+om|Karná|Karná|SK||067 45
+om|Karolína|Karolína|SK||937 01
+om|Kašov|Kašov|SK||076 02
+om|Kašova Lehôtka|Kašova Lehôtka|SK||962 34
+om|Katarínska Huta|Katarínska Huta|SK||985 22
+om|Kátlina|Kátlina|SK||018 02
+om|Kátlovce|Kátlovce|SK||919 55
+om|Kátov|Kátov|SK||908 49
+om|Katúň|Katúň|SK||053 04
+om|Kava|Kava|SK||945 01
+om|Kazimír|Kazimír|SK||076 13
+om|Keblov - Zárieč|Keblov - Zárieč|SK||013 32
+om|Kéč|Kéč|SK||946 19
+om|Kecerovce|Kecerovce|SK||044 47
+om|Kecerovské Kostoľany|Kecerovské Kostoľany|SK||044 47
+om|Kecerovské Pekľany|Kecerovské Pekľany|SK||044 47
+om|Kecerovský Lipovec|Kecerovský Lipovec|SK||044 47
+om|Kechnec|Kechnec|SK||044 58
+om|Kečkovce|Kečkovce|SK||090 11
+om|Kečovo|Kečovo|SK||049 55
+om|Kendereš|Kendereš|SK||94110
+om|Kendice|Kendice|SK||082 01
+om|Kesovce|Kesovce|SK||980 45
+om|Keť|Keť|SK||935 64
+om|Kevice|Kevice|SK||038 45
+om|Kežmarok|Kežmarok|SK||060 01
+om|Kežmarské Žľaby|Kežmarské Žľaby|SK||059 60
+om|Kiarov|Kiarov|SK||991 06
+om|Kinčeš|Kinčeš|SK||076 62
+om|Kírť|Kírť|SK||991 22
+om|Kišovce|Kišovce|SK||059 12
+om|Kľačany (920 64)|Kľačany|SK||920 64
+om|Kľačany (956 02)|Kľačany|SK||956 02
+om|Kľačany (966 11)|Kľačany|SK||966 11
+om|Kľače|Kľače|SK||013 19
+om|Kľačno (972 15)|Kľačno|SK||972 15
+om|Kľačno (034 01)|Kľačno|SK||034 01
+om|Kladzany|Kladzany|SK||094 21
+om|Kľak|Kľak|SK||966 77
+om|Klasov|Klasov|SK||951 53
+om|Klastava|Klastava|SK||969 01
+om|Kláštor pod Znievom|Kláštor pod Znievom|SK||038 43
+om|Klátova Nová Ves|Klátova Nová Ves|SK||958 44
+om|Klčov|Klčov|SK||053 02
+om|Klčovany|Klčovany|SK||919 08
+om|Kleňany|Kleňany|SK||991 10
+om|Klenov|Klenov|SK||082 44
+om|Klenová|Klenová|SK||067 72
+om|Klenovec|Klenovec|SK||980 55
+om|Klieština|Klieština|SK||018 02
+om|Klin (023 22)|Klin|SK||023 22
+om|Klin (029 41)|Klin|SK||029 41
+om|Klin nad Bodrogom|Klin nad Bodrogom|SK||076 31
+om|Klíž|Klíž|SK||958 45
+om|Klížska Nemá|Klížska Nemá|SK||946 19
+om|Klížske Hradište|Klížske Hradište|SK||958 45
+om|Klobušice|Klobušice|SK||019 01
+om|Klokoč|Klokoč|SK||962 25
+om|Klokočina|Klokočina|SK||949 11
+om|Klokočov (023 22)|Klokočov|SK||023 22
+om|Klokočov (072 36)|Klokočov|SK||072 36
+om|Klubina|Klubina|SK||023 04
+om|Kľučiareň|Kľučiareň|SK||925 71
+om|Kľúčiarove Kračany|Kľúčiarove Kračany|SK||930 03
+om|Kľúčové|Kľúčové|SK||914 41
+om|Kľúčovec|Kľúčovec|SK||930 07
+om|Kluknava|Kluknava|SK||053 51
+om|Kľušov|Kľušov|SK||086 22
+om|Kľušovská Zábava|Kľušovská Zábava|SK||086 22
+om|Kmeťovce|Kmeťovce|SK||935 03
+om|Kmeťovo|Kmeťovo|SK||941 62
+om|Kňažia|Kňažia|SK||026 01
+om|Kobeliarovo|Kobeliarovo|SK||049 23
+om|Kobylnice|Kobylnice|SK||087 01
+om|Kobyly|Kobyly|SK||086 22
+om|Koceľovce|Koceľovce|SK||049 35
+om|Kochanovce (066 01)|Kochanovce|SK||066 01
+om|Kochanovce (086 46)|Kochanovce|SK||086 46
+om|Kochanovce (913 05)|Kochanovce|SK||913 05
+om|Kochnáč|Kochnáč|SK||956 54
+om|Kociha|Kociha|SK||980 52
+om|Kočín|Kočín|SK||922 04
+om|Kočovce|Kočovce|SK||916 31
+om|Kocurany|Kocurany|SK||972 02
+om|Kocurice|Kocurice|SK||921 01
+om|Kojatice|Kojatice|SK||082 32
+om|Kojatická Dolina|Kojatická Dolina|SK||082 32
+om|Kojšov|Kojšov|SK||055 52
+om|Kokava nad Rimavicou|Kokava nad Rimavicou|SK||985 05
+om|Kokošovce|Kokošovce|SK||082 52
+om|Kokšov - Bakša|Kokšov - Bakša|SK||044 13
+om|Kolačkov|Kolačkov|SK||065 11
+om|Kolačno|Kolačno|SK||958 41
+om|Koláre|Koláre|SK||991 09
+om|Kolárovice|Kolárovice|SK||013 54
+om|Kolárovo|Kolárovo|SK||946 03
+om|Kolbasov|Kolbasov|SK||067 66
+om|Kolbovce|Kolbovce|SK||090 31
+om|Kolibabovce|Kolibabovce|SK||072 61
+om|Kolíňany|Kolíňany|SK||951 78
+om|Kolinovce|Kolinovce|SK||053 42
+om|Kolónia (076 42)|Kolónia|SK||076 42
+om|Kolónia (929 01)|Kolónia|SK||929 01
+om|Kolónia (930 35)|Kolónia|SK||930 35
+om|Kolónia (943 56)|Kolónia|SK||943 56
+om|Kolonica|Kolonica|SK||067 61
+om|Kolta|Kolta|SK||941 33
+om|Komanica|Komanica|SK||072 15
+om|Komárany|Komárany|SK||093 01
+om|Komárno (1505)|Komárno|SK||
+om|Komárno (962 05)|Komárno|SK||962 05
+om|Komárov|Komárov|SK||086 11
+om|Komárovce (044 55)|Komárovce|SK||044 55
+om|Komárovce (073 01)|Komárovce|SK||073 01
+om|Komjatice|Komjatice|SK||941 06
+om|Komjatná|Komjatná|SK||034 96
+om|Komoča|Komoča|SK||941 21
+om|Komov|Komov|SK||976 52
+om|Končitá|Končitá|SK||027 05
+om|Koniarovce|Koniarovce|SK||956 13
+om|Konkoľ|Konkoľ|SK||947 01
+om|Konrádovce|Konrádovce|SK||980 32
+om|Konská (013 13)|Konská|SK||013 13
+om|Konská (032 04)|Konská|SK||032 04
+om|Konské|Konské|SK||038 52
+om|Koňuš|Koňuš|SK||072 63
+om|Kopanice (023 56)|Kopanice|SK||023 56
+om|Kopanice (966 61)|Kopanice|SK||966 61
+om|Kopčany|Kopčany|SK||908 48
+om|Kopec|Kopec|SK||018 31
+om|Kopernica|Kopernica|SK||967 01
+om|Koplotovce|Koplotovce|SK||920 01
+om|Kopráš|Kopráš|SK||049 16
+om|Koprivnica|Koprivnica|SK||086 43
+om|Kordíky|Kordíky|SK||976 34
+om|Korejovce|Korejovce|SK||090 05
+om|Korňa|Korňa|SK||023 21
+om|Kornica|Kornica|SK||023 22
+om|Koromľa|Koromľa|SK||072 62
+om|Korunková|Korunková|SK||090 31
+om|Korytárky|Korytárky|SK||962 04
+om|Korytné (013 54)|Korytné|SK||013 54
+om|Korytné (053 05)|Korytné|SK||053 05
+om|Korytnica - kúpele|Korytnica - kúpele|SK||034 73
+om|Koš|Koš|SK||972 41
+om|Košariská|Košariská|SK||906 15
+om|Košarovce|Košarovce|SK||094 06
+om|Košeca|Košeca|SK||018 64
+om|Košecké Podhradie|Košecké Podhradie|SK||018 31
+om|Košecké Rovné|Košecké Rovné|SK||018 32
+om|Košice|Košice|SK||
+om|Košice - Barca|Košice - Barca|SK||040 17
+om|Košice - Dargovských Hrdinov|Košice - Dargovských Hrdinov|SK||
+om|Košice - Džungľa|Košice - Džungľa|SK||
+om|Košice - Juh|Košice - Juh|SK||
+om|Košice - Kavečany|Košice - Kavečany|SK||040 01
+om|Košice - Košická Nová Ves|Košice - Košická Nová Ves|SK||040 14
+om|Košice - Krásna|Košice - Krásna|SK||040 18
+om|Košice - Lorinčík|Košice - Lorinčík|SK||040 11
+om|Košice - Luník IX|Košice - Luník IX|SK||
+om|Košice - Myslava|Košice - Myslava|SK||040 16
+om|Košice - Nad Jazerom|Košice - Nad Jazerom|SK||
+om|Košice - Pereš|Košice - Pereš|SK||040 11
+om|Košice - Poľov|Košice - Poľov|SK||040 15
+om|Košice - Šaca|Košice - Šaca|SK||040 15
+om|Košice - Šebastovce|Košice - Šebastovce|SK||040 17
+om|Košice - Sever|Košice - Sever|SK||
+om|Košice - Sídlisko KVP|Košice - Sídlisko KVP|SK||
+om|Košice - Sídlisko Ťahanovce|Košice - Sídlisko Ťahanovce|SK||
+om|Košice - Staré Mesto|Košice - Staré Mesto|SK||040 01
+om|Košice - Ťahanovce|Košice - Ťahanovce|SK||040 13
+om|Košice - Vyšné Opátske|Košice - Vyšné Opátske|SK||040 01
+om|Košice - Západ|Košice - Západ|SK||040 11
+om|Košice - Železiarne|Košice - Železiarne|SK||044 54
+om|Košická Belá|Košická Belá|SK||044 65
+om|Košická Polianka|Košická Polianka|SK||044 41
+om|Košické Oľšany|Košické Oľšany|SK||044 42
+om|Košický Klečenov|Košický Klečenov|SK||044 45
+om|Kosihovce|Kosihovce|SK||991 25
+om|Kosihy nad Ipľom|Kosihy nad Ipľom|SK||991 11
+om|Koškovce|Koškovce|SK||067 12
+om|Košolná|Košolná|SK||919 01
+om|Kosorín|Kosorín|SK||966 24
+om|Košťany|Košťany|SK||044 13
+om|Košťany nad Turcom|Košťany nad Turcom|SK||038 41
+om|Kostiviarska|Kostiviarska|SK||974 01
+om|Kostivrch|Kostivrch|SK||968 01
+om|Kostoľany nad Hornádom|Kostoľany nad Hornádom|SK||044 31
+om|Kostoľany pod Tribečom|Kostoľany pod Tribečom|SK||951 77
+om|Kostolec|Kostolec|SK||017 05
+om|Kostolište|Kostolište|SK||900 62
+om|Kostolná|Kostolná|SK||962 12
+om|Kostolná - Záriečie|Kostolná - Záriečie|SK||913 04
+om|Kostolná Gala|Kostolná Gala|SK||930 34
+om|Kostolná pri Dunaji|Kostolná pri Dunaji|SK||903 01
+om|Kostolná Ves|Kostolná Ves|SK||972 26
+om|Kostolné|Kostolné|SK||916 13
+om|Kostolné Kračany|Kostolné Kračany|SK||930 03
+om|Kostolné Mitice|Kostolné Mitice|SK||913 22
+om|Kostolné Moravce|Kostolné Moravce|SK||962 71
+om|Kostolný Sek|Kostolný Sek|SK||942 01
+om|Košúty (036 01)|Košúty|SK||036 01
+om|Košúty (925 09)|Košúty|SK||925 09
+om|Kotelnica|Kotelnica|SK||946 54
+om|Kotešová|Kotešová|SK||013 61
+om|Kotmanová|Kotmanová|SK||985 53
+om|Kotrčiná Lúčka|Kotrčiná Lúčka|SK||013 02
+om|Kováčov|Kováčov|SK||943 65
+om|Kováčová (049 42)|Kováčová|SK||049 42
+om|Kováčová (962 37)|Kováčová|SK||962 37
+om|Kováčovce|Kováčovce|SK||991 06
+om|Koválov|Koválov|SK||906 03
+om|Koválovec|Koválovec|SK||908 63
+om|Kovarce|Kovarce|SK||956 15
+om|Kožany|Kožany|SK||086 12
+om|Kozárovce|Kozárovce|SK||935 22
+om|Kozelec|Kozelec|SK||065 45
+om|Kozelník|Kozelník|SK||966 15
+om|Kozí Vrbovok|Kozí Vrbovok|SK||962 41
+om|Kozinská|Kozinská|SK||027 05
+om|Kožuchov|Kožuchov|SK||076 01
+om|Kožuchovce|Kožuchovce|SK||090 22
+om|Kračúnovce|Kračúnovce|SK||087 01
+om|Krahule|Krahule|SK||967 01
+om|Krajná Bystrá|Krajná Bystrá|SK||090 05
+om|Krajná Poľana|Krajná Poľana|SK||090 05
+om|Krajná Porúbka|Krajná Porúbka|SK||090 05
+om|Krajné|Krajné|SK||916 16
+om|Krajné Čierno|Krajné Čierno|SK||090 03
+om|Krakovany|Krakovany|SK||922 02
+om|Kráľ|Kráľ|SK||980 45
+om|Králik|Králik|SK||982 01
+om|Králiky|Králiky|SK||976 34
+om|Kráľka|Kráľka|SK||946 03
+om|Kráľov Brod|Kráľov Brod|SK||925 41
+om|Kráľová (960 01)|Kráľová|SK||960 01
+om|Kráľová (974 05)|Kráľová|SK||974 05
+om|Kráľova Lehota|Kráľova Lehota|SK||032 33
+om|Kráľová nad Váhom|Kráľová nad Váhom|SK||925 91
+om|Kráľová pri Senci|Kráľová pri Senci|SK||900 50
+om|Kraľovany|Kraľovany|SK||027 51
+om|Kráľovce (044 44)|Kráľovce|SK||044 44
+om|Kráľovce (962 65)|Kráľovce|SK||962 65
+om|Kráľovce - Krnišov|Kráľovce - Krnišov|SK||962 65
+om|Kráľovianky|Kráľovianky|SK||931 01
+om|Kráľovičová|Kráľovičová|SK||935 84
+om|Kráľovičove Kračany|Kráľovičove Kračany|SK||930 03
+om|Kráľovský Chlmec|Kráľovský Chlmec|SK||077 01
+om|Krám|Krám|SK||976 52
+om|Kraskovo|Kraskovo|SK||980 26
+om|Krásna (980 51)|Krásna|SK||980 51
+om|Krásna (985 41)|Krásna|SK||985 41
+om|Krásna Hôrka|Krásna Hôrka|SK||027 44
+om|Krásna Lúka|Krásna Lúka|SK||082 73
+om|Krásna Ves|Krásna Ves|SK||956 53
+om|Krasňany|Krasňany|SK||013 03
+om|Krásno|Krásno|SK||958 43
+om|Krásno nad Kysucou|Krásno nad Kysucou|SK||023 02
+om|Krásnohorská Dlhá Lúka|Krásnohorská Dlhá Lúka|SK||049 45
+om|Krásnohorské Podhradie|Krásnohorské Podhradie|SK||049 41
+om|Krásnovce|Krásnovce|SK||072 01
+om|Krásny Brod|Krásny Brod|SK||068 01
+om|Krásny Dub|Krásny Dub|SK||913 33
+om|Krátke Kesy|Krátke Kesy|SK||946 32
+om|Kravany (059 18)|Kravany|SK||059 18
+om|Kravany (076 61)|Kravany|SK||076 61
+om|Kravany nad Dunajom|Kravany nad Dunajom|SK||946 36
+om|Kravárska|Kravárska|SK||013 32
+om|Krčava|Krčava|SK||072 51
+om|Kremná|Kremná|SK||065 22
+om|Kremnica|Kremnica|SK||967 01
+om|Kremnička|Kremnička|SK||974 05
+om|Kremnické Bane|Kremnické Bane|SK||967 01
+om|Krišľovce|Krišľovce|SK||090 31
+om|Krišovská Liesková|Krišovská Liesková|SK||079 01
+om|Kristy|Kristy|SK||072 55
+om|Krivá|Krivá|SK||027 55
+om|Krivá Oľka|Krivá Oľka|SK||067 04
+om|Kriváň|Kriváň|SK||962 04
+om|Krivany|Krivany|SK||082 71
+om|Krivé|Krivé|SK||086 04
+om|Krivec I|Krivec I|SK||962 05
+om|Krivec II|Krivec II|SK||962 05
+om|Krivoklát|Krivoklát|SK||018 52
+om|Krivošťany|Krivošťany|SK||072 22
+om|Krivosúd - Bodovka|Krivosúd - Bodovka|SK||913 11
+om|Kríž nad Váhom|Kríž nad Váhom|SK||916 26
+om|Krížany|Krížany|SK||079 01
+om|Kríže|Kríže|SK||086 04
+om|Krížny Vrch|Krížny Vrch|SK||934 01
+om|Krížová Ves|Krížová Ves|SK||059 01
+om|Krížovany|Krížovany|SK||082 33
+om|Križovany nad Dudváhom|Križovany nad Dudváhom|SK||919 24
+om|Krížový Dvor|Krížový Dvor|SK||946 19
+om|Krkošky|Krkošky|SK||022 04
+om|Krmeš|Krmeš|SK||032 13
+om|Krná|Krná|SK||985 25
+om|Krnča|Krnča|SK||956 19
+om|Krné|Krné|SK||962 12
+om|Krnišov|Krnišov|SK||962 65
+om|Krokava|Krokava|SK||982 67
+om|Krompachy|Krompachy|SK||053 42
+om|Krpeľany|Krpeľany|SK||038 54
+om|Krškany|Krškany|SK||934 01
+om|Krtovce|Krtovce|SK||956 03
+om|Kručov|Kručov|SK||090 32
+om|Krupina|Krupina|SK||963 01
+om|Krušetnica|Krušetnica|SK||029 54
+om|Krušinec|Krušinec|SK||091 01
+om|Krušovce|Krušovce|SK||956 31
+om|Kružlov|Kružlov|SK||086 04
+om|Kružlová|Kružlová|SK||090 02
+om|Kružlovská Huta|Kružlovská Huta|SK||086 04
+om|Kružná|Kružná|SK||049 51
+om|Kružno|Kružno|SK||979 01
+om|Kšinná|Kšinná|SK||956 41
+om|Kubáňovo|Kubáňovo|SK||935 75
+om|Kubíková|Kubíková|SK||013 05
+om|Kubínska|Kubínska|SK||029 57
+om|Kubrá|Kubrá|SK||911 01
+om|Kubrica|Kubrica|SK||911 01
+om|Kucany|Kucany|SK||076 75
+om|Kuchyňa|Kuchyňa|SK||900 52
+om|Kučín (086 12)|Kučín|SK||086 12
+om|Kučín (094 21)|Kučín|SK||094 21
+om|Kuklov|Kuklov|SK||908 78
+om|Kuková|Kuková|SK||086 44
+om|Kukučínov|Kukučínov|SK||937 01
+om|Kunerad|Kunerad|SK||013 13
+om|Kunešov|Kunešov|SK||967 01
+om|Kunov|Kunov|SK||905 01
+om|Kunova Teplica|Kunova Teplica|SK||049 32
+om|Kuraľany|Kuraľany|SK||935 64
+om|Kurima|Kurima|SK||086 12
+om|Kurimany|Kurimany|SK||054 01
+om|Kurimka|Kurimka|SK||090 16
+om|Kurinec|Kurinec|SK||979 01
+om|Kurov|Kurov|SK||086 04
+om|Kurtáň|Kurtáň|SK||986 01
+om|Kusín|Kusín|SK||072 32
+om|Kútniky|Kútniky|SK||929 01
+om|Kúty (908 01)|Kúty|SK||908 01
+om|Kúty (971 01)|Kúty|SK||971 01
+om|Kuzmice (076 12)|Kuzmice|SK||076 12
+om|Kuzmice (956 21)|Kuzmice|SK||956 21
+om|Kvačany (032 23)|Kvačany|SK||032 23
+om|Kvačany (082 41)|Kvačany|SK||082 41
+om|Kvakovce|Kvakovce|SK||094 02
+om|Kvašov|Kvašov|SK||020 62
+om|Kvetnica|Kvetnica|SK||058 01
+om|Kvetoslavov|Kvetoslavov|SK||930 41
+om|Kýčerka|Kýčerka|SK||022 04
+om|Kyjatice|Kyjatice|SK||980 54
+om|Kyjov|Kyjov|SK||065 48
+om|Kykula|Kykula|SK||913 04
+om|Kynceľová|Kynceľová|SK||974 01
+om|Kynceľove Kračany|Kynceľove Kračany|SK||930 03
+om|Kynek|Kynek|SK||949 01
+om|Kysak|Kysak|SK||044 81
+om|Kyselica|Kyselica|SK||930 30
+om|Kysihýbel|Kysihýbel|SK||969 01
+om|Kysta|Kysta|SK||076 02
+om|Kysuca|Kysuca|SK||976 53
+om|Kysucké Nové Mesto|Kysucké Nové Mesto|SK||
+om|Kysucký Lieskovec|Kysucký Lieskovec|SK||023 34
+om|Kyzka|Kyzka|SK||022 04
+om|Láb|Láb|SK||900 67
+om|Lackov|Lackov|SK||962 44
+om|Lacková|Lacková|SK||065 01
+om|Lackovce|Lackovce|SK||066 01
+om|Laclavá|Laclavá|SK||038 22
+om|Lačnov|Lačnov|SK||082 36
+om|Lada|Lada|SK||082 12
+om|Ladce|Ladce|SK||018 63
+om|Ladice|Ladice|SK||951 77
+om|Ladislavov Dvor|Ladislavov Dvor|SK||934 01
+om|Ladmovce|Ladmovce|SK||076 34
+om|Ladomerská Vieska|Ladomerská Vieska|SK||965 01
+om|Ladomirov|Ladomirov|SK||067 71
+om|Ladomirová|Ladomirová|SK||090 03
+om|Ladunkov|Ladunkov|SK||022 04
+om|Ladzany|Ladzany|SK||962 65
+om|Lakšárska Nová Ves|Lakšárska Nová Ves|SK||908 76
+om|Lalinok|Lalinok|SK||013 31
+om|Lančár|Lančár|SK||922 04
+om|Lándor|Lándor|SK||945 01
+om|Lány|Lány|SK||023 04
+om|Lascov|Lascov|SK||086 45
+om|Laskár (038 43)|Laskár|SK||038 43
+om|Laskár (972 71)|Laskár|SK||972 71
+om|Laškovce|Laškovce|SK||072 01
+om|Lastomír|Lastomír|SK||072 37
+om|Lastovce|Lastovce|SK||076 14
+om|Látkovce|Látkovce|SK||957 01
+om|Látky|Látky|SK||985 45
+om|Lazany (038 43)|Lazany|SK||038 43
+om|Lazany (972 11)|Lazany|SK||972 11
+om|Lažany|Lažany|SK||082 32
+om|Lazisko|Lazisko|SK||032 11
+om|Lažteky|Lažteky|SK||962 63
+om|Lazy pod Makytou|Lazy pod Makytou|SK||020 55
+om|Lechnica|Lechnica|SK||059 06
+om|Lednica|Lednica|SK||020 63
+om|Lednické Rovne|Lednické Rovne|SK||020 61
+om|Lefantovce|Lefantovce|SK||951 45
+om|Legnava|Legnava|SK||065 46
+om|Lehnice|Lehnice|SK||930 37
+om|Lehota|Lehota|SK||951 36
+om|Lehota nad Rimavicou|Lehota nad Rimavicou|SK||980 53
+om|Lehota pod Vtáčnikom|Lehota pod Vtáčnikom|SK||972 42
+om|Lehôtka|Lehôtka|SK||985 11
+om|Lehôtka pod Brehmi|Lehôtka pod Brehmi|SK||966 01
+om|Lehotská|Lehotská|SK||029 57
+om|Lekárovce|Lekárovce|SK||072 54
+om|Leľa|Leľa|SK||943 65
+om|Leles|Leles|SK||076 84
+om|Lemešany|Lemešany|SK||082 03
+om|Lenartov|Lenartov|SK||086 06
+om|Lenartovce|Lenartovce|SK||980 44
+om|Lendak|Lendak|SK||059 07
+om|Lenka|Lenka|SK||980 50
+om|Lentvora|Lentvora|SK||985 13
+om|Leopoldov|Leopoldov|SK||920 41
+om|Lesenice|Lesenice|SK||991 08
+om|Lesíček|Lesíček|SK||082 07
+om|Lesné|Lesné|SK||071 01
+om|Lesné Kračany|Lesné Kračany|SK||930 03
+om|Lesnica|Lesnica|SK||065 33
+om|Lešť|Lešť|SK||962 63
+om|Leštiny|Leštiny|SK||026 01
+om|Letanovce|Letanovce|SK||053 13
+om|Letničie|Letničie|SK||908 44
+om|Leváre|Leváre|SK||982 62
+om|Levice|Levice|SK||
+om|Levkuška|Levkuška|SK||982 62
+om|Levoča|Levoča|SK||054 01
+om|Levočská Dolina|Levočská Dolina|SK||054 01
+om|Levočské Lúky|Levočské Lúky|SK||054 01
+om|Ležiachov|Ležiachov|SK||038 42
+om|Libichava|Libichava|SK||956 38
+om|Ličartovce|Ličartovce|SK||082 03
+om|Licince|Licince|SK||049 14
+om|Lidér Tejed|Lidér Tejed|SK||929 01
+om|Liesek|Liesek|SK||027 12
+om|Lieskov - Dolný Lieskov|Lieskov - Dolný Lieskov|SK||018 21
+om|Lieskov - Horný Lieskov|Lieskov - Horný Lieskov|SK||018 21
+om|Lieskov - Podskalie|Lieskov - Podskalie|SK||018 22
+om|Lieskov - Tŕstie|Lieskov - Tŕstie|SK||018 22
+om|Liesková|Liesková|SK||079 01
+om|Lieskovany|Lieskovany|SK||053 21
+om|Lieskové|Lieskové|SK||906 33
+om|Lieskové - Zemianske Lieskové|Lieskové - Zemianske Lieskové|SK||913 05
+om|Lieskovec (067 45)|Lieskovec|SK||067 45
+om|Lieskovec (962 21)|Lieskovec|SK||962 21
+om|Liešno|Liešno|SK||038 22
+om|Liešťany|Liešťany|SK||972 27
+om|Lietava|Lietava|SK||013 18
+om|Lietavská Lúčka|Lietavská Lúčka|SK||013 11
+om|Lietavská Svinná|Lietavská Svinná|SK||013 11
+om|Lietavská Závadka|Lietavská Závadka|SK||013 18
+om|Likavka|Likavka|SK||034 95
+om|Likier|Likier|SK||981 01
+om|Limbach|Limbach|SK||900 91
+om|Lipany|Lipany|SK||082 71
+om|Lipník (935 21)|Lipník|SK||935 21
+om|Lipník (972 32)|Lipník|SK||972 32
+om|Lipníky|Lipníky|SK||082 12
+om|Lipníky - Podhrabina|Lipníky - Podhrabina|SK||082 15
+om|Lipová (086 12)|Lipová|SK||086 12
+om|Lipová (941 02)|Lipová|SK||941 02
+om|Lipovany|Lipovany|SK||985 31
+om|Lipovce|Lipovce|SK||082 36
+om|Lipovce - chaty|Lipovce - chaty|SK||082 36
+om|Lipové|Lipové|SK||946 14
+om|Lipovec (038 61)|Lipovec|SK||038 61
+om|Lipovec (980 23)|Lipovec|SK||980 23
+om|Lipovník (049 42)|Lipovník|SK||049 42
+om|Lipovník (956 01)|Lipovník|SK||956 01
+om|Liptovská Anna|Liptovská Anna|SK||032 23
+om|Liptovská Kokava|Liptovská Kokava|SK||032 44
+om|Liptovská Lúžna|Liptovská Lúžna|SK||034 72
+om|Liptovská Ondrašová|Liptovská Ondrašová|SK||031 05
+om|Liptovská Osada|Liptovská Osada|SK||034 73
+om|Liptovská Porúbka|Liptovská Porúbka|SK||033 01
+om|Liptovská Sielnica|Liptovská Sielnica|SK||032 23
+om|Liptovská Štiavnica|Liptovská Štiavnica|SK||034 01
+om|Liptovská Teplá|Liptovská Teplá|SK||034 83
+om|Liptovská Teplička|Liptovská Teplička|SK||059 40
+om|Liptovské Beharovce|Liptovské Beharovce|SK||032 21
+om|Liptovské Kľačany|Liptovské Kľačany|SK||032 14
+om|Liptovské Matiašovce|Liptovské Matiašovce|SK||032 23
+om|Liptovské Revúce|Liptovské Revúce|SK||034 74
+om|Liptovské Sliače|Liptovské Sliače|SK||034 84
+om|Liptovský Hrádok|Liptovský Hrádok|SK||033 01
+om|Liptovský Ján|Liptovský Ján|SK||032 03
+om|Liptovský Michal|Liptovský Michal|SK||034 83
+om|Liptovský Mikuláš|Liptovský Mikuláš|SK||
+om|Liptovský Ondrej|Liptovský Ondrej|SK||032 04
+om|Liptovský Peter|Liptovský Peter|SK||033 01
+om|Liptovský Trnovec|Liptovský Trnovec|SK||031 01
+om|Lisková|Lisková|SK||034 81
+om|Lišov|Lišov|SK||962 71
+om|Litava|Litava|SK||962 44
+om|Litmanová|Litmanová|SK||065 31
+om|Livina|Livina|SK||956 32
+om|Livinské Opatovce|Livinské Opatovce|SK||956 32
+om|Livov|Livov|SK||086 05
+om|Livovská Huta|Livovská Huta|SK||086 05
+om|Lodno|Lodno|SK||023 34
+om|Lok|Lok|SK||935 38
+om|Lokca|Lokca|SK||029 51
+om|Lom nad Rimavicou|Lom nad Rimavicou|SK||976 53
+om|Lomná|Lomná|SK||029 54
+om|Lomné|Lomné|SK||090 33
+om|Lomnica|Lomnica|SK||972 27
+om|Lomnička|Lomnička|SK||065 03
+om|Lonec|Lonec|SK||962 63
+om|Lontov|Lontov|SK||935 75
+om|Lopašov|Lopašov|SK||908 63
+om|Lopej|Lopej|SK||976 98
+om|Lopúchov|Lopúchov|SK||086 41
+om|Lopušná|Lopušná|SK||023 36
+om|Lopušné Pažite - Lopušná|Lopušné Pažite - Lopušná|SK||023 36
+om|Lopušné Pažite - Pažite|Lopušné Pažite - Pažite|SK||023 36
+om|Lošonec|Lošonec|SK||919 04
+om|Lovča|Lovča|SK||966 21
+om|Lovce|Lovce|SK||951 92
+om|Lovčica|Lovčica|SK||966 23
+om|Lovčica - Trubín|Lovčica - Trubín|SK||966 23
+om|Lovinobaňa|Lovinobaňa|SK||985 54
+om|Ložín|Ložín|SK||072 05
+om|Lozorno|Lozorno|SK||900 55
+om|Ľubá|Ľubá|SK||943 53
+om|Ľubeľa|Ľubeľa|SK||032 14
+om|Lubeník|Lubeník|SK||049 18
+om|Ľubianka|Ľubianka|SK||972 47
+om|Ľubica|Ľubica|SK||059 71
+om|Ľubienka|Ľubienka|SK||985 07
+om|Ľubietová|Ľubietová|SK||976 55
+om|Lubina|Lubina|SK||916 12
+om|Ľubiša|Ľubiša|SK||067 11
+om|Ľubochňa|Ľubochňa|SK||034 91
+om|Ľuborča|Ľuborča|SK||914 41
+om|Ľuboreč|Ľuboreč|SK||985 11
+om|Ľuboriečka|Ľuboriečka|SK||991 02
+om|Ľubotice|Ľubotice|SK||080 06
+om|Ľubotín|Ľubotín|SK||065 41
+om|Ľubovec|Ľubovec|SK||082 42
+om|Lúč na Ostrove|Lúč na Ostrove|SK||930 03
+om|Lučatín|Lučatín|SK||976 61
+om|Lučenec|Lučenec|SK||
+om|Lúčina|Lúčina|SK||082 07
+om|Lučivná|Lučivná|SK||059 31
+om|Lúčka (049 42)|Lúčka|SK||049 42
+om|Lúčka (053 03)|Lúčka|SK||053 03
+om|Lúčka (082 71)|Lúčka|SK||082 71
+om|Lúčka (087 01)|Lúčka|SK||087 01
+om|Lučkovce|Lučkovce|SK||072 03
+om|Lúčky (034 82)|Lúčky|SK||034 82
+om|Lúčky (072 34)|Lúčky|SK||072 34
+om|Lúčky (967 01)|Lúčky|SK||967 01
+om|Lúčky - kúpele|Lúčky - kúpele|SK||034 82
+om|Lúčnica nad Žitavou|Lúčnica nad Žitavou|SK||951 88
+om|Ludanice|Ludanice|SK||956 11
+om|Ľudovítov|Ľudovítov|SK||941 11
+om|Ľudovítová|Ľudovítová|SK||951 44
+om|Ludrová|Ludrová|SK||034 71
+om|Ľudvikov dvor|Ľudvikov dvor|SK||040 15
+om|Luhyňa|Luhyňa|SK||076 14
+om|Lúka|Lúka|SK||916 33
+om|Lukačovce|Lukačovce|SK||067 24
+om|Lukáčovce|Lukáčovce|SK||951 23
+om|Lukavica (086 21)|Lukavica|SK||086 21
+om|Lukavica (962 31)|Lukavica|SK||962 31
+om|Lukavica (966 81)|Lukavica|SK||966 81
+om|Lukov|Lukov|SK||086 05
+om|Lukové|Lukové|SK||962 21
+om|Lukovištia|Lukovištia|SK||980 26
+om|Lúky (013 31)|Lúky|SK||013 31
+om|Lúky (020 53)|Lúky|SK||020 53
+om|Lúky (946 14)|Lúky|SK||946 14
+om|Lula|Lula|SK||935 35
+om|Lupoč|Lupoč|SK||985 11
+om|Luskovica|Luskovica|SK||916 16
+om|Lutila|Lutila|SK||966 22
+om|Ľutina|Ľutina|SK||082 57
+om|Lutiše|Lutiše|SK||013 05
+om|Ľutov|Ľutov|SK||957 03
+om|Lužany|Lužany|SK||956 07
+om|Lužany pri Topli|Lužany pri Topli|SK||087 01
+om|Lužianky|Lužianky|SK||951 41
+om|Lysá nad Dunajcom|Lysá nad Dunajcom|SK||061 01
+om|Lysá pod Makytou|Lysá pod Makytou|SK||020 54
+om|Lysica|Lysica|SK||013 05
+om|Machalovce|Machalovce|SK||059 13
+om|Machulince|Machulince|SK||951 93
+om|Mačonáš|Mačonáš|SK||925 41
+om|Macov|Macov|SK||930 32
+om|Mačov|Mačov|SK||972 25
+om|Mad|Mad|SK||930 14
+om|Madačka|Madačka|SK||985 13
+om|Madérét|Madérét|SK||930 28
+om|Madočany|Madočany|SK||034 83
+om|Madunice|Madunice|SK||922 42
+om|Madzín|Madzín|SK||013 62
+om|Magnezitovce|Magnezitovce|SK||049 16
+om|Magurka|Magurka|SK||032 15
+om|Majcichov|Majcichov|SK||919 22
+om|Majdan|Majdan|SK||082 57
+om|Majer (094 31)|Majer|SK||094 31
+om|Majer (974 01)|Majer|SK||974 01
+om|Majere (061 01)|Majere|SK||061 01
+om|Majere (935 05)|Majere|SK||935 05
+om|Majeríčky|Majeríčky|SK||906 05
+om|Majerka|Majerka|SK||059 94
+om|Majerovce|Majerovce|SK||094 09
+om|Makov|Makov|SK||023 56
+om|Makovce|Makovce|SK||090 23
+om|Malá Bara|Malá Bara|SK||076 32
+om|Malá Baračka|Malá Baračka|SK||935 36
+om|Malá Budafa|Malá Budafa|SK||930 34
+om|Malá Bytča|Malá Bytča|SK||014 01
+om|Malá Čalomija|Malá Čalomija|SK||991 08
+om|Malá Čausa|Malá Čausa|SK||971 01
+om|Malá Čierna|Malá Čierna|SK||015 01
+om|Malá Dolina|Malá Dolina|SK||985 53
+om|Malá Domaša|Malá Domaša|SK||094 02
+om|Malá Franková|Malá Franková|SK||059 78
+om|Malá Hradná|Malá Hradná|SK||956 54
+om|Malá Ida|Malá Ida|SK||044 20
+om|Malá Iža|Malá Iža|SK||945 01
+om|Malá Lehota (966 42)|Malá Lehota|SK||966 42
+om|Malá Lehota (972 42)|Malá Lehota|SK||972 42
+om|Malá Lodina|Malá Lodina|SK||044 32
+om|Malá Lúč|Malá Lúč|SK||930 03
+om|Malá Mača|Malá Mača|SK||925 21
+om|Malá Maňa|Malá Maňa|SK||941 45
+om|Malá Mužla|Malá Mužla|SK||943 52
+om|Malá nad Hronom|Malá nad Hronom|SK||943 65
+om|Malá Paka|Malá Paka|SK||930 51
+om|Malá Poľana|Malá Poľana|SK||090 24
+om|Malá Tŕňa|Malá Tŕňa|SK||076 82
+om|Malá Ves|Malá Ves|SK||984 01
+om|Malá Vieska|Malá Vieska|SK||044 31
+om|Malachov|Malachov|SK||974 05
+om|Malacky|Malacky|SK||901 01
+om|Málaš|Málaš|SK||935 67
+om|Malatiná|Malatiná|SK||026 01
+om|Malatíny|Malatíny|SK||032 15
+om|Malčice|Malčice|SK||072 06
+om|Malcov|Malcov|SK||086 06
+om|Malé Bedzany|Malé Bedzany|SK||955 01
+om|Malé Bielice|Malé Bielice|SK||958 04
+om|Malé Bierovce|Malé Bierovce|SK||913 05
+om|Malé Blahovo|Malé Blahovo|SK||929 01
+om|Malé Borové|Malé Borové|SK||027 32
+om|Malé Chlievany|Malé Chlievany|SK||957 01
+om|Malé Chyndice|Malé Chyndice|SK||951 54
+om|Malé Dvorany|Malé Dvorany|SK||956 01
+om|Malé Dvorníky|Malé Dvorníky|SK||929 01
+om|Malé Hoste|Malé Hoste|SK||956 37
+om|Malé Košecké Podhradie|Malé Košecké Podhradie|SK||018 31
+om|Malé Kosihy|Malé Kosihy|SK||943 61
+om|Malé Kozmálovce|Malé Kozmálovce|SK||935 21
+om|Malé Krškany|Malé Krškany|SK||934 01
+om|Malé Kršteňany|Malé Kršteňany|SK||958 03
+om|Malé Lednice|Malé Lednice|SK||018 16
+om|Malé Leváre|Malé Leváre|SK||908 74
+om|Malé Ludince|Malé Ludince|SK||937 01
+om|Malé Orvište|Malé Orvište|SK||922 01
+om|Malé Ostratice|Malé Ostratice|SK||956 34
+om|Malé Ozorovce|Malé Ozorovce|SK||078 01
+om|Malé Raškovce|Malé Raškovce|SK||072 17
+om|Malé Ripňany|Malé Ripňany|SK||956 07
+om|Malé Stankovce|Malé Stankovce|SK||913 11
+om|Malé Straciny|Malé Straciny|SK||990 01
+om|Malé Teriakovce|Malé Teriakovce|SK||980 51
+om|Malé Trakany|Malé Trakany|SK||076 42
+om|Malé Uherce|Malé Uherce|SK||958 03
+om|Malé Vozokany|Malé Vozokany|SK||951 82
+om|Malé Zalužice|Malé Zalužice|SK||072 34
+om|Malé Zálužie|Malé Zálužie|SK||951 24
+om|Malé Zlievce|Malé Zlievce|SK||991 22
+om|Málinec|Málinec|SK||985 26
+om|Malinô Brdo|Malinô Brdo|SK||034 01
+om|Malinová|Malinová|SK||972 13
+om|Malinovec|Malinovec|SK||935 87
+om|Malinovo|Malinovo|SK||900 45
+om|Malužiná|Malužiná|SK||032 34
+om|Malý Báb|Malý Báb|SK||951 34
+om|Malý Biel|Malý Biel|SK||900 24
+om|Malý Bysterec|Malý Bysterec|SK||026 01
+om|Malý Čepčín|Malý Čepčín|SK||038 45
+om|Malý Cetín|Malý Cetín|SK||951 07
+om|Malý Horeš|Malý Horeš|SK||076 52
+om|Malý Jatov|Malý Jatov|SK||941 10
+om|Malý Kamenec|Malý Kamenec|SK||076 36
+om|Malý Kiar|Malý Kiar|SK||934 01
+om|Malý Kolačín|Malý Kolačín|SK||018 51
+om|Malý Krtíš|Malý Krtíš|SK||990 01
+om|Malý Lapáš|Malý Lapáš|SK||951 04
+om|Malý Lég|Malý Lég|SK||930 37
+om|Malý Lipník|Malý Lipník|SK||065 46
+om|Malý Madaras|Malý Madaras|SK||900 44
+om|Malý Ostrov|Malý Ostrov|SK||946 03
+om|Malý Pesek|Malý Pesek|SK||937 01
+om|Malý Ruskov|Malý Ruskov|SK||075 01
+om|Malý Šariš|Malý Šariš|SK||080 01
+om|Malý Slavkov|Malý Slavkov|SK||060 01
+om|Malý Slivník|Malý Slivník|SK||082 67
+om|Malženice|Malženice|SK||919 29
+om|Maňa|Maňa|SK||941 45
+om|Mangútovo|Mangútovo|SK||962 05
+om|Mankovce|Mankovce|SK||951 91
+om|Marček|Marček|SK||013 32
+om|Marcelová|Marcelová|SK||946 32
+om|Margecany|Margecany|SK||055 01
+om|Marhaň|Marhaň|SK||086 45
+om|Marianka|Marianka|SK||900 33
+om|Markovce|Markovce|SK||072 06
+om|Markuška|Markuška|SK||049 34
+om|Markušovce|Markušovce|SK||053 21
+om|Maršová|Maršová|SK||013 51
+om|Martin|Martin|SK||036 01
+om|Martin nad Žitavou|Martin nad Žitavou|SK||953 01
+om|Martinček|Martinček|SK||034 95
+om|Martinová (951 88)|Martinová|SK||951 88
+om|Martinová (980 41)|Martinová|SK||980 41
+om|Martovce|Martovce|SK||947 01
+om|Marušová|Marušová|SK||935 33
+om|Maša|Maša|SK||985 22
+om|Mašková|Mašková|SK||985 11
+om|Maškovce|Maškovce|SK||067 32
+om|Maslovce|Maslovce|SK||930 39
+om|Masníkovo|Masníkovo|SK||930 36
+om|Maštinec|Maštinec|SK||987 01
+om|Matejovce|Matejovce|SK||059 51
+om|Matejovce nad Hornádom|Matejovce nad Hornádom|SK||053 21
+om|Matejovec|Matejovec|SK||916 16
+om|Matiaška|Matiaška|SK||094 31
+om|Matiašovce|Matiašovce|SK||059 04
+om|Matovce|Matovce|SK||090 42
+om|Maťovské Vojkovce|Maťovské Vojkovce|SK||079 01
+om|Matušíková|Matušíková|SK||972 28
+om|Matúškovo|Matúškovo|SK||925 01
+om|Matysová|Matysová|SK||065 46
+om|Mazorníkovo|Mazorníkovo|SK||977 03
+om|Mečedelovce|Mečedelovce|SK||053 14
+om|Mechenice|Mechenice|SK||951 46
+om|Medné|Medné|SK||020 61
+om|Meďov|Meďov|SK||071 01
+om|Medovarce|Medovarce|SK||962 65
+om|Medvecké|Medvecké|SK||935 41
+om|Medvedie|Medvedie|SK||090 05
+om|Medveďov|Medveďov|SK||930 07
+om|Medveďovo|Medveďovo|SK||976 52
+om|Medvedzie|Medvedzie|SK||027 44
+om|Medzany|Medzany|SK||082 21
+om|Medzev|Medzev|SK||044 25
+om|Medzianky|Medzianky|SK||094 31
+om|Medzibrod|Medzibrod|SK||976 96
+om|Medzibrodie|Medzibrodie|SK||065 22
+om|Medzibrodie nad Oravou|Medzibrodie nad Oravou|SK||026 01
+om|Medzihradné|Medzihradné|SK||026 01
+om|Medzilaborce|Medzilaborce|SK||068 01
+om|Melčice|Melčice|SK||913 05
+om|Melek|Melek|SK||952 01
+om|Meliata|Meliata|SK||049 12
+om|Mengusovce|Mengusovce|SK||059 36
+om|Merašice|Merašice|SK||920 61
+om|Merník|Merník|SK||094 23
+om|Merovce|Merovce|SK||962 71
+om|Mestečko|Mestečko|SK||020 52
+om|Mestisko|Mestisko|SK||090 41
+om|Mičakovce|Mičakovce|SK||087 01
+om|Michajlov|Michajlov|SK||067 73
+om|Michal na Ostrove|Michal na Ostrove|SK||930 35
+om|Michal nad Žitavou|Michal nad Žitavou|SK||941 62
+om|Michaľany|Michaľany|SK||076 14
+om|Michalková|Michalková|SK||962 61
+om|Michalok|Michalok|SK||094 23
+om|Michalová|Michalová|SK||976 57
+om|Michalovce|Michalovce|SK||071 01
+om|Mierovo|Mierovo|SK||930 41
+om|Miezgovce|Miezgovce|SK||957 01
+om|Miháľov|Miháľov|SK||085 01
+om|Miklušovce|Miklušovce|SK||082 44
+om|Mikolčany|Mikolčany|SK||049 13
+om|Miková|Miková|SK||090 24
+om|Mikšová|Mikšová|SK||014 01
+om|Mikula|Mikula|SK||937 01
+om|Mikulášov|Mikulášov|SK||908 76
+om|Mikulášov Sad|Mikulášov Sad|SK||946 34
+om|Mikulášová|Mikulášová|SK||086 36
+om|Mikušovce (018 57)|Mikušovce|SK||018 57
+om|Mikušovce (984 01)|Mikušovce|SK||984 01
+om|Milhosť|Milhosť|SK||044 58
+om|Milhostov|Milhostov|SK||075 01
+om|Milinovice|Milinovice|SK||929 01
+om|Milochov|Milochov|SK||017 06
+om|Miloslavov|Miloslavov|SK||900 42
+om|Milošová|Milošová|SK||022 01
+om|Milovaná|Milovaná|SK||071 01
+om|Milpoš|Milpoš|SK||082 71
+om|Miňovce|Miňovce|SK||090 32
+om|Mirkovce|Mirkovce|SK||082 06
+om|Miroľa|Miroľa|SK||090 05
+om|Miškech Dedinka|Miškech Dedinka|SK||916 12
+om|Mládzovo|Mládzovo|SK||985 02
+om|Mláky|Mláky|SK||985 45
+om|Mliečany|Mliečany|SK||929 01
+om|Mliečno|Mliečno|SK||931 01
+om|Mlyňany|Mlyňany|SK||951 76
+om|Mlynárce|Mlynárce|SK||949 01
+om|Mlynárovce|Mlynárovce|SK||090 16
+om|Mlynčeky|Mlynčeky|SK||059 76
+om|Mlynica|Mlynica|SK||059 91
+om|Mlynky|Mlynky|SK||053 76
+om|Mlynský Sek|Mlynský Sek|SK||941 02
+om|Mníchova Lehota|Mníchova Lehota|SK||913 21
+om|Mníšany|Mníšany|SK||049 16
+om|Mníšek nad Hnilcom|Mníšek nad Hnilcom|SK||055 64
+om|Mníšek nad Popradom|Mníšek nad Popradom|SK||065 22
+om|Moča|Moča|SK||946 37
+om|Močarany|Močarany|SK||071 01
+om|Močarmany|Močarmany|SK||082 53
+om|Močenok|Močenok|SK||951 31
+om|Mochovce elektráreň|Mochovce elektráreň|SK||935 39
+om|Močiar|Močiar|SK||969 82
+om|Močiare|Močiare|SK||020 62
+om|Močidlá|Močidlá|SK||072 51
+om|Močidľany|Močidľany|SK||082 63
+om|Modlatín|Modlatín|SK||018 03
+om|Modra|Modra|SK||900 01
+om|Modra nad Cirochou|Modra nad Cirochou|SK||067 82
+om|Modranka|Modranka|SK||917 05
+om|Modrany|Modrany|SK||946 33
+om|Modrová|Modrová|SK||916 35
+om|Modrovka|Modrovka|SK||916 35
+om|Modrý Kameň|Modrý Kameň|SK||992 01
+om|Mojín|Mojín|SK||979 01
+om|Mojmírovce|Mojmírovce|SK||951 15
+om|Mojš|Mojš|SK||010 01
+om|Mojšová Lúčka|Mojšová Lúčka|SK||010 01
+om|Mojtín|Mojtín|SK||020 72
+om|Mojzesovo|Mojzesovo|SK||941 04
+om|Mokrá Lúka|Mokrá Lúka|SK||050 01
+om|Mokraď|Mokraď|SK||026 01
+om|Mokrance|Mokrance|SK||045 01
+om|Mokroluh|Mokroluh|SK||086 01
+om|Mokrý Háj|Mokrý Háj|SK||908 65
+om|Môlča|Môlča|SK||974 01
+om|Moldava nad Bodvou|Moldava nad Bodvou|SK||045 01
+om|Moravany|Moravany|SK||072 03
+om|Moravany nad Váhom|Moravany nad Váhom|SK||922 21
+om|Moravské Kračany|Moravské Kračany|SK||930 03
+om|Moravské Lieskové|Moravské Lieskové|SK||916 42
+om|Moravský Svätý Ján|Moravský Svätý Ján|SK||908 71
+om|Morovno|Morovno|SK||972 31
+om|Moškovec|Moškovec|SK||038 44
+om|Mošovce (038 21)|Mošovce|SK||038 21
+om|Mošovce (916 26)|Mošovce|SK||916 26
+om|Most pri Bratislave|Most pri Bratislave|SK||900 46
+om|Moštenica|Moštenica|SK||976 13
+om|Mostište|Mostište|SK||020 51
+om|Mostová|Mostová|SK||925 07
+om|Mošurov|Mošurov|SK||082 67
+om|Motešice|Motešice|SK||913 26
+om|Môťová|Môťová|SK||960 01
+om|Motyčky|Motyčky|SK||976 02
+om|Mrázovce|Mrázovce|SK||090 34
+om|Mrzáčka|Mrzáčka|SK||029 57
+om|Mučín|Mučín|SK||985 31
+om|Mudroňovo|Mudroňovo|SK||946 32
+om|Mudrovce|Mudrovce|SK||044 47
+om|Muľa|Muľa|SK||991 22
+om|Muľka|Muľka|SK||985 31
+om|Muráň|Muráň|SK||049 01
+om|Muránska Dlhá Lúka|Muránska Dlhá Lúka|SK||050 01
+om|Muránska Huta|Muránska Huta|SK||049 01
+om|Muránska Lehota|Muránska Lehota|SK||049 01
+om|Muránska Zdychava|Muránska Zdychava|SK||050 01
+om|Mútňanská Píla|Mútňanská Píla|SK||029 63
+om|Mútne|Mútne|SK||029 63
+om|Mužla|Mužla|SK||943 52
+om|Myjava|Myjava|SK||
+om|Myslenice|Myslenice|SK||902 03
+om|Myslina|Myslina|SK||066 01
+om|Mýtna|Mýtna|SK||985 53
+om|Mýtna Nová Ves|Mýtna Nová Ves|SK||956 11
+om|Mýtne Ludany|Mýtne Ludany|SK||935 56
+om|Mýto pod Ďumbierom|Mýto pod Ďumbierom|SK||976 44
+om|Nacina Ves|Nacina Ves|SK||072 21
+om|Nadabula|Nadabula|SK||048 01
+om|Nadlice|Nadlice|SK||956 32
+om|Ňagov|Ňagov|SK||068 01
+om|Naháč|Naháč|SK||919 65
+om|Nálepkovo|Nálepkovo|SK||053 33
+om|Námestovo|Námestovo|SK||029 01
+om|Nána|Nána|SK||943 60
+om|Nandraž|Nandraž|SK||049 61
+om|Ňárad|Ňárad|SK||930 06
+om|Návojovce|Návojovce|SK||958 04
+om|Nebojsa|Nebojsa|SK||924 01
+om|Nechválova Polianka|Nechválova Polianka|SK||067 33
+om|Necpaly|Necpaly|SK||038 12
+om|Nedanovce|Nedanovce|SK||958 43
+om|Nedašovce|Nedašovce|SK||956 35
+om|Neded|Neded|SK||925 85
+om|Nededza|Nededza|SK||013 02
+om|Nedelište|Nedelište|SK||985 13
+om|Nedožery|Nedožery|SK||972 12
+om|Nedožery - Brezany|Nedožery - Brezany|SK||972 12
+om|Nekyje na Ostrove|Nekyje na Ostrove|SK||930 25
+om|Nemce|Nemce|SK||974 01
+om|Nemčice|Nemčice|SK||955 01
+om|Nemčiňany|Nemčiňany|SK||951 81
+om|Nemcovce (082 12)|Nemcovce|SK||082 12
+om|Nemcovce (086 12)|Nemcovce|SK||086 12
+om|Nemecká|Nemecká|SK||976 97
+om|Nemečky|Nemečky|SK||956 22
+om|Nemešany|Nemešany|SK||053 02
+om|Nemšová|Nemšová|SK||914 41
+om|Nenince|Nenince|SK||991 26
+om|Neporadza (913 26)|Neporadza|SK||913 26
+om|Neporadza (980 45)|Neporadza|SK||980 45
+om|Neresnica|Neresnica|SK||960 01
+om|Nesluša|Nesluša|SK||023 41
+om|Nesvady|Nesvady|SK||946 51
+om|Neverice|Neverice|SK||951 72
+om|Nevidzany (951 62)|Nevidzany|SK||951 62
+om|Nevidzany (972 27)|Nevidzany|SK||972 27
+om|Nevoľné|Nevoľné|SK||967 01
+om|Nezbudská Lúčka|Nezbudská Lúčka|SK||013 24
+om|Niereše|Niereše|SK||082 06
+om|Nimnica|Nimnica|SK||020 71
+om|Nitra|Nitra|SK||
+om|Nitra - Staré Mesto|Nitra - Staré Mesto|SK||949 01
+om|Nitra nad Ipľom|Nitra nad Ipľom|SK||985 57
+om|Nitrianska Blatnica|Nitrianska Blatnica|SK||956 05
+om|Nitrianska Streda|Nitrianska Streda|SK||956 16
+om|Nitrianske Hrnčiarovce|Nitrianske Hrnčiarovce|SK||951 01
+om|Nitrianske Pravno|Nitrianske Pravno|SK||972 13
+om|Nitrianske Rudno|Nitrianske Rudno|SK||972 26
+om|Nitrianske Sučany|Nitrianske Sučany|SK||972 21
+om|Nitriansky Hrádok|Nitriansky Hrádok|SK||942 01
+om|Nitrica|Nitrica|SK||972 22
+om|Nixbrod|Nixbrod|SK||934 01
+om|Nižná (027 43)|Nižná|SK||027 43
+om|Nižná (922 06)|Nižná|SK||922 06
+om|Nižná Boca|Nižná Boca|SK||032 34
+om|Nižná Hutka|Nižná Hutka|SK||040 18
+om|Nižná Jablonka|Nižná Jablonka|SK||067 34
+om|Nižná Jedľová|Nižná Jedľová|SK||089 01
+om|Nižná Kaloša|Nižná Kaloša|SK||982 52
+om|Nižná Kamenica|Nižná Kamenica|SK||044 45
+om|Nižná Korňa|Nižná Korňa|SK||023 21
+om|Nižná Myšľa|Nižná Myšľa|SK||044 15
+om|Nižná Olšava|Nižná Olšava|SK||090 32
+om|Nižná Pisaná|Nižná Pisaná|SK||090 01
+om|Nižná Pokoradz|Nižná Pokoradz|SK||979 01
+om|Nižná Polianka|Nižná Polianka|SK||086 36
+om|Nižná Revúca|Nižná Revúca|SK||034 74
+om|Nižná Rybnica|Nižná Rybnica|SK||073 01
+om|Nižná Šebastová|Nižná Šebastová|SK||080 06
+om|Nižná Sitnica|Nižná Sitnica|SK||094 07
+om|Nižná Slaná|Nižná Slaná|SK||049 23
+om|Nižná Šuňava|Nižná Šuňava|SK||059 39
+om|Nižná Vladiča|Nižná Vladiča|SK||090 23
+om|Nižná Voľa|Nižná Voľa|SK||086 21
+om|Nižné Kamence|Nižné Kamence|SK||013 06
+om|Nižné Ladičkovce|Nižné Ladičkovce|SK||067 11
+om|Nižné Matiašovce|Nižné Matiašovce|SK||032 23
+om|Nižné Nemecké|Nižné Nemecké|SK||072 52
+om|Nižné Raslavice|Nižné Raslavice|SK||086 41
+om|Nižné Repaše|Nižné Repaše|SK||053 71
+om|Nižné Ružbachy|Nižné Ružbachy|SK||065 02
+om|Nižné Valice|Nižné Valice|SK||982 52
+om|Nižnoslanská Baňa|Nižnoslanská Baňa|SK||049 23
+om|Nižný Čaj|Nižný Čaj|SK||044 16
+om|Nižný Hrabovec|Nižný Hrabovec|SK||094 21
+om|Nižný Hrušov|Nižný Hrušov|SK||094 22
+om|Nižný Kelčov|Nižný Kelčov|SK||023 55
+om|Nižný Klátov|Nižný Klátov|SK||044 12
+om|Nižný Komárnik|Nižný Komárnik|SK||090 05
+om|Nižný Kručov|Nižný Kručov|SK||093 01
+om|Nižný Lánec|Nižný Lánec|SK||044 73
+om|Nižný Medzev|Nižný Medzev|SK||044 25
+om|Nižný Mirošov|Nižný Mirošov|SK||090 11
+om|Nižný Orlík|Nižný Orlík|SK||090 11
+om|Nižný Skálnik|Nižný Skálnik|SK||980 52
+om|Nižný Slavkov|Nižný Slavkov|SK||082 75
+om|Nižný Sliač|Nižný Sliač|SK||034 84
+om|Nižný Tvarožec|Nižný Tvarožec|SK||086 02
+om|Nižný Žipov|Nižný Žipov|SK||076 17
+om|Nolčovo|Nolčovo|SK||038 54
+om|Norovce|Norovce|SK||956 38
+om|Nosice|Nosice|SK||020 01
+om|Nová Baňa|Nová Baňa|SK||968 01
+om|Nová Bašta|Nová Bašta|SK||980 34
+om|Nová Bošáca|Nová Bošáca|SK||913 08
+om|Nová Bystrica|Nová Bystrica|SK||023 05
+om|Nová Dedina|Nová Dedina|SK||935 25
+om|Nová Dedinka|Nová Dedinka|SK||900 29
+om|Nová Dubnica|Nová Dubnica|SK||018 51
+om|Nová Kelča|Nová Kelča|SK||094 04
+om|Nová Lehota (916 35)|Nová Lehota|SK||916 35
+om|Nová Lehota (972 51)|Nová Lehota|SK||972 51
+om|Nová Lesná|Nová Lesná|SK||059 86
+om|Nová Lipnica|Nová Lipnica|SK||900 42
+om|Nová Ľubovňa|Nová Ľubovňa|SK||065 11
+om|Nová Maša|Nová Maša|SK||976 69
+om|Nová Osada (943 42)|Nová Osada|SK||943 42
+om|Nová Osada (945 01)|Nová Osada|SK||945 01
+om|Nová Polhora|Nová Polhora|SK||044 44
+om|Nová Polianka (059 83)|Nová Polianka|SK||059 83
+om|Nová Polianka (089 01)|Nová Polianka|SK||089 01
+om|Nová Sedlica|Nová Sedlica|SK||067 68
+om|Nová Stráž|Nová Stráž|SK||945 04
+om|Nová Trstená|Nová Trstená|SK||947 03
+om|Nová Ves|Nová Ves|SK||991 05
+om|Nová Ves nad Váhom|Nová Ves nad Váhom|SK||916 31
+om|Nová Ves nad Žitavou|Nová Ves nad Žitavou|SK||951 51
+om|Nová Ves pri Dunaji|Nová Ves pri Dunaji|SK||900 29
+om|Nová Vieska|Nová Vieska|SK||943 42
+om|Nová Vieska pri Bodrogu|Nová Vieska pri Bodrogu|SK||076 35
+om|Nováčany (044 21)|Nováčany|SK||044 21
+om|Nováčany (049 13)|Nováčany|SK||049 13
+om|Nováky|Nováky|SK||972 71
+om|Nové Hony|Nové Hony|SK||985 42
+om|Nové Košariská|Nové Košariská|SK||900 42
+om|Nové Mesto nad Váhom|Nové Mesto nad Váhom|SK||915 01
+om|Nové Osady|Nové Osady|SK||925 22
+om|Nové Sady|Nové Sady|SK||951 24
+om|Nové Zámky|Nové Zámky|SK||940 02
+om|Novosad|Novosad|SK||076 02
+om|Novoť|Novoť|SK||029 55
+om|Novotský Duľov|Novotský Duľov|SK||029 63
+om|Novoveská Huta|Novoveská Huta|SK||053 31
+om|Nový Diel|Nový Diel|SK||946 54
+om|Nový Dvor|Nový Dvor|SK||935 77
+om|Nový Gúg|Nový Gúg|SK||940 02
+om|Nový Majer|Nový Majer|SK||075 01
+om|Nový Ruskov|Nový Ruskov|SK||075 01
+om|Nový Sad|Nový Sad|SK||985 41
+om|Nový Salaš|Nový Salaš|SK||044 17
+om|Nový Smokovec|Nový Smokovec|SK||062 01
+om|Nový Svet (903 01)|Nový Svet|SK||903 01
+om|Nový Svet (985 45)|Nový Svet|SK||985 45
+om|Nový Tekov|Nový Tekov|SK||935 33
+om|Nový Život|Nový Život|SK||930 38
+om|Nozdrovice|Nozdrovice|SK||018 64
+om|Nýrovce|Nýrovce|SK||935 67
+om|Obeckov|Obeckov|SK||991 05
+om|Obid|Obid|SK||943 04
+om|Obišovce|Obišovce|SK||044 81
+om|Oblazov|Oblazov|SK||013 61
+om|Oborín|Oborín|SK||076 75
+om|Obručná|Obručná|SK||985 58
+om|Obručné|Obručné|SK||065 42
+om|Obsolovce|Obsolovce|SK||956 08
+om|Obyce|Obyce|SK||951 95
+om|Ochodnica|Ochodnica|SK||023 35
+om|Ochtiná|Ochtiná|SK||049 35
+om|Očkov|Očkov|SK||916 22
+om|Očová|Očová|SK||962 23
+om|Odorín|Odorín|SK||053 22
+om|Ohrady|Ohrady|SK||930 12
+om|Ohradzany|Ohradzany|SK||067 22
+om|Okánikovo|Okánikovo|SK||946 21
+om|Okoč|Okoč|SK||930 28
+om|Okoličná na Ostrove|Okoličná na Ostrove|SK||946 13
+om|Okoličné|Okoličné|SK||031 04
+om|Okrúhle|Okrúhle|SK||090 42
+om|Okružná|Okružná|SK||082 12
+om|Olcnava|Olcnava|SK||053 61
+om|Oľdza|Oľdza|SK||930 39
+om|Olejníkov|Olejníkov|SK||082 57
+om|Olešná|Olešná|SK||023 52
+om|Olichov|Olichov|SK||951 87
+om|Oľka|Oľka|SK||067 04
+om|Olováry|Olováry|SK||991 22
+om|Oľšavce|Oľšavce|SK||086 46
+om|Oľšavica|Oľšavica|SK||053 73
+om|Oľšavka (053 61)|Oľšavka|SK||053 61
+om|Oľšavka (090 22)|Oľšavka|SK||090 22
+om|Olšina|Olšina|SK||075 01
+om|Oľšinkov|Oľšinkov|SK||067 16
+om|Oľšov|Oľšov|SK||082 76
+om|Olšovany|Olšovany|SK||044 19
+om|Omastiná|Omastiná|SK||956 41
+om|Omšenie|Omšenie|SK||914 43
+om|Onča|Onča|SK||076 52
+om|Ondavka|Ondavka|SK||086 36
+om|Ondavské Matiašovce|Ondavské Matiašovce|SK||094 01
+om|Ondrašová|Ondrašová|SK||038 22
+om|Ondrašovce|Ondrašovce|SK||082 33
+om|Ondrej|Ondrej|SK||059 12
+om|Ondrej nad Hronom|Ondrej nad Hronom|SK||976 62
+om|Ondrejovce|Ondrejovce|SK||935 51
+om|Ondrochov|Ondrochov|SK||941 02
+om|Opátka|Opátka|SK||044 65
+om|Opatová (911 01)|Opatová|SK||911 01
+om|Opatová (935 25)|Opatová|SK||935 25
+om|Opatová (984 01)|Opatová|SK||984 01
+om|Opatovce|Opatovce|SK||913 11
+om|Opatovce - Výčapy|Opatovce - Výčapy|SK||951 44
+om|Opatovce nad Nitrou|Opatovce nad Nitrou|SK||972 02
+om|Opatové Moravce|Opatové Moravce|SK||962 71
+om|Opatovská Nová Ves|Opatovská Nová Ves|SK||991 07
+om|Opatovský Sokolec|Opatovský Sokolec|SK||930 28
+om|Opava|Opava|SK||991 25
+om|Opiná|Opiná|SK||044 47
+om|Opoj|Opoj|SK||919 32
+om|Oponice|Oponice|SK||956 14
+om|Oravce|Oravce|SK||976 33
+om|Orávka|Orávka|SK||980 42
+om|Oravská Jasenica|Oravská Jasenica|SK||029 64
+om|Oravská Lesná|Oravská Lesná|SK||029 57
+om|Oravská Polhora|Oravská Polhora|SK||029 47
+om|Oravská Poruba|Oravská Poruba|SK||027 54
+om|Oravské Veselé|Oravské Veselé|SK||029 62
+om|Oravský Biely Potok|Oravský Biely Potok|SK||027 42
+om|Oravský Podzámok|Oravský Podzámok|SK||027 41
+om|Ordzovany|Ordzovany|SK||053 06
+om|Orechová|Orechová|SK||072 51
+om|Orechová Potôň|Orechová Potôň|SK||930 02
+om|Orechová Potôň - Lúky|Orechová Potôň - Lúky|SK||930 52
+om|Orechové|Orechové|SK||911 05
+om|Orešany|Orešany|SK||956 06
+om|Oreské (072 23)|Oreské|SK||072 23
+om|Oreské (908 63)|Oreské|SK||908 63
+om|Orkucany|Orkucany|SK||083 01
+om|Orlov|Orlov|SK||065 43
+om|Orlové|Orlové|SK||017 01
+om|Orovnica|Orovnica|SK||966 52
+om|Ortáše|Ortáše|SK||044 44
+om|Ortov|Ortov|SK||072 14
+om|Ortuťová|Ortuťová|SK||086 12
+om|Osádka|Osádka|SK||026 01
+om|Osadné|Osadné|SK||067 34
+om|Oščadnica|Oščadnica|SK||023 01
+om|Osikov|Osikov|SK||086 42
+om|Oškerda|Oškerda|SK||023 32
+om|Oslany|Oslany|SK||972 47
+om|Osrblie|Osrblie|SK||976 45
+om|Ostrá Lúka|Ostrá Lúka|SK||962 61
+om|Ostrany|Ostrany|SK||980 26
+om|Ostratice|Ostratice|SK||956 34
+om|Ostrov (072 55)|Ostrov|SK||072 55
+om|Ostrov (922 01)|Ostrov|SK||922 01
+om|Ostrovany|Ostrovany|SK||082 22
+om|Ostrý Grúň|Ostrý Grúň|SK||966 77
+om|Osturňa|Osturňa|SK||059 79
+om|Osušie|Osušie|SK||991 02
+om|Osuské|Osuské|SK||906 12
+om|Otrhánky|Otrhánky|SK||956 55
+om|Otročok|Otročok|SK||982 62
+om|Ovčiarsko|Ovčiarsko|SK||010 04
+om|Ovčie|Ovčie|SK||082 38
+om|Ožďany|Ožďany|SK||980 11
+om|Ozdín|Ozdín|SK||985 24
+om|Pác|Pác|SK||919 43
+om|Pača|Pača|SK||049 41
+om|Pačérok|Pačérok|SK||946 03
+om|Padáň|Padáň|SK||929 01
+om|Padarovce|Padarovce|SK||980 23
+om|Paderovce|Paderovce|SK||919 30
+om|Pagaňov|Pagaňov|SK||018 03
+om|Pakostov|Pakostov|SK||094 07
+om|Palárikovo|Palárikovo|SK||941 11
+om|Palcmanská Maša|Palcmanská Maša|SK||053 76
+om|Palín|Palín|SK||072 13
+om|Palota|Palota|SK||068 01
+om|Paľovce|Paľovce|SK||925 92
+om|Palúdzka|Palúdzka|SK||031 01
+om|Paňa|Paňa|SK||951 05
+om|Panické Dravce|Panické Dravce|SK||985 32
+om|Paňovce|Paňovce|SK||044 71
+om|Papča|Papča|SK||980 23
+om|Papín|Papín|SK||067 33
+om|Paprad|Paprad|SK||916 01
+om|Papradno|Papradno|SK||018 13
+om|Parchovany|Parchovany|SK||076 62
+om|Parihuzovce|Parihuzovce|SK||067 35
+om|Párnica|Párnica|SK||026 01
+om|Párovské Háje|Párovské Háje|SK||949 01
+om|Partizánska Ľupča|Partizánska Ľupča|SK||032 15
+om|Partizánske|Partizánske|SK||
+om|Partizánske - Šípok|Partizánske - Šípok|SK||
+om|Paseky|Paseky|SK||985 45
+om|Pasiečka|Pasiečka|SK||020 53
+om|Pašková|Pašková|SK||049 32
+om|Paština Závada|Paština Závada|SK||013 41
+om|Pastovce|Pastovce|SK||935 74
+om|Pastovník|Pastovník|SK||065 44
+om|Pastuchov|Pastuchov|SK||920 63
+om|Pata|Pata|SK||925 53
+om|Pataš|Pataš|SK||929 01
+om|Patince|Patince|SK||946 39
+om|Pavčina Lehota|Pavčina Lehota|SK||031 01
+om|Pavel|Pavel|SK||945 04
+om|Pavľany|Pavľany|SK||053 71
+om|Pavlice|Pavlice|SK||919 42
+om|Pavlová|Pavlová|SK||943 59
+om|Pavlova Ves|Pavlova Ves|SK||032 21
+om|Pavlovce (094 31)|Pavlovce|SK||094 31
+om|Pavlovce (980 01)|Pavlovce|SK||980 01
+om|Pavlovce nad Uhom|Pavlovce nad Uhom|SK||072 14
+om|Pavlovo|Pavlovo|SK||076 35
+om|Pažiť|Pažiť|SK||958 03
+om|Pažite|Pažite|SK||023 36
+om|Pčoliné|Pčoliné|SK||067 35
+om|Pečeňady|Pečeňady|SK||922 07
+om|Pečeňany|Pečeňany|SK||956 36
+om|Pečenice|Pečenice|SK||935 03
+om|Pečovská Nová Ves|Pečovská Nová Ves|SK||082 56
+om|Peder|Peder|SK||044 05
+om|Peklina|Peklina|SK||013 41
+om|Perín|Perín|SK||044 74
+om|Perín - Chym|Perín - Chym|SK||044 74
+om|Perkovce|Perkovce|SK||951 26
+om|Pernek|Pernek|SK||900 53
+om|Petkovce|Petkovce|SK||094 33
+om|Peťov|Peťov|SK||991 06
+om|Peťovka|Peťovka|SK||913 26
+om|Petrikovce|Petrikovce|SK||072 06
+om|Petrová (027 05)|Petrová|SK||027 05
+om|Petrová (086 02)|Petrová|SK||086 02
+om|Petrova Lehota|Petrova Lehota|SK||913 26
+om|Petrova Ves|Petrova Ves|SK||908 44
+om|Petrovany|Petrovany|SK||082 53
+om|Petrovce (072 62)|Petrovce|SK||072 62
+om|Petrovce (094 31)|Petrovce|SK||094 31
+om|Petrovce (980 35)|Petrovce|SK||980 35
+om|Petrovce nad Laborcom|Petrovce nad Laborcom|SK||071 01
+om|Petrovec|Petrovec|SK||985 01
+om|Petrovice|Petrovice|SK||013 53
+om|Petrovo|Petrovo|SK||049 35
+om|Pežerňa|Pežerňa|SK||935 55
+om|Pezinok|Pezinok|SK||
+om|Pichne|Pichne|SK||069 01
+om|Piesky|Piesky|SK||072 04
+om|Piesok (900 01)|Piesok|SK||900 01
+om|Piesok (976 81)|Piesok|SK||976 81
+om|Piešť I|Piešť I|SK||962 12
+om|Piešť II|Piešť II|SK||962 12
+om|Piešťany|Piešťany|SK||921 01
+om|Pikovce|Pikovce|SK||059 72
+om|Píla (900 89)|Píla|SK||900 89
+om|Píla (966 81)|Píla|SK||966 81
+om|Píla (985 53)|Píla|SK||985 53
+om|Pilhov|Pilhov|SK||065 22
+om|Pilhovčík|Pilhovčík|SK||065 22
+om|Pinciná|Pinciná|SK||984 01
+om|Pinkovce|Pinkovce|SK||072 54
+om|Pinkove Kračany|Pinkove Kračany|SK||930 03
+om|Piskorovce|Piskorovce|SK||094 05
+om|Pitelová|Pitelová|SK||966 11
+om|Pláne (013 53)|Pláne|SK||013 53
+om|Pláne (072 22)|Pláne|SK||072 22
+om|Plášťovce|Plášťovce|SK||935 82
+om|Plavé Vozokany|Plavé Vozokany|SK||935 69
+om|Plaveč|Plaveč|SK||065 44
+om|Plavecké Podhradie|Plavecké Podhradie|SK||906 36
+om|Plavecký Mikuláš|Plavecký Mikuláš|SK||906 35
+om|Plavecký Peter|Plavecký Peter|SK||906 35
+om|Plavecký Štvrtok|Plavecký Štvrtok|SK||900 68
+om|Plavnica|Plavnica|SK||065 45
+om|Plechotice|Plechotice|SK||075 01
+om|Pleš|Pleš|SK||985 31
+om|Plešivá|Plešivá|SK||027 05
+om|Plešivec|Plešivec|SK||049 11
+om|Plevník - Drienové|Plevník - Drienové|SK||018 26
+om|Pliešovce|Pliešovce|SK||962 63
+om|Ploské (044 44)|Ploské|SK||044 44
+om|Ploské (982 65)|Ploské|SK||982 65
+om|Ploštín|Ploštín|SK||031 01
+om|Pobedim|Pobedim|SK||916 23
+om|Pôbišovo|Pôbišovo|SK||976 64
+om|Počarová|Počarová|SK||018 15
+om|Pochabany|Pochabany|SK||956 38
+om|Počúvadlianske Jazero|Počúvadlianske Jazero|SK||969 01
+om|Počúvadlo|Počúvadlo|SK||969 01
+om|Pod Braniskom|Pod Braniskom|SK||082 37
+om|Pódafa|Pódafa|SK||929 01
+om|Podbanské|Podbanské|SK||032 42
+om|Podbiel|Podbiel|SK||027 42
+om|Podbranč|Podbranč|SK||906 05
+om|Podbrezová|Podbrezová|SK||976 81
+om|Podčičva|Podčičva|SK||094 09
+om|Podháj|Podháj|SK||036 01
+om|Podhájska|Podhájska|SK||941 48
+om|Podholie|Podholie|SK||976 64
+om|Podhorany (059 93)|Podhorany|SK||059 93
+om|Podhorany (082 12)|Podhorany|SK||082 12
+om|Podhorany (951 46)|Podhorany|SK||951 46
+om|Podhorie (013 18)|Podhorie|SK||013 18
+om|Podhorie (018 54)|Podhorie|SK||018 54
+om|Podhorie (018 61)|Podhorie|SK||018 61
+om|Podhorie (906 11)|Podhorie|SK||906 11
+om|Podhorie (969 82)|Podhorie|SK||969 82
+om|Podhoroď|Podhoroď|SK||072 64
+om|Podhrabina|Podhrabina|SK||082 15
+om|Podhradie (038 52)|Podhradie|SK||038 52
+om|Podhradie (955 01)|Podhradie|SK||955 01
+om|Podhradie (972 42)|Podhradie|SK||972 42
+om|Podhradík|Podhradík|SK||080 06
+om|Podjavorie (pri Lešti)|Podjavorie (pri Lešti)|SK||962 63
+om|Podjavorie (pri Pliešovci)|Podjavorie (pri Pliešovci)|SK||962 63
+om|Podjavorník|Podjavorník|SK||018 13
+om|Podkonice|Podkonice|SK||976 13
+om|Podkriváň|Podkriváň|SK||985 51
+om|Podkylava|Podkylava|SK||916 16
+om|Podlavice|Podlavice|SK||974 01
+om|Podlipníky|Podlipníky|SK||094 31
+om|Podlužany (935 27)|Podlužany|SK||935 27
+om|Podlužany (956 52)|Podlužany|SK||956 52
+om|Podmanín|Podmanín|SK||017 01
+om|Podolie|Podolie|SK||916 22
+om|Podolínec|Podolínec|SK||065 03
+om|Podpílie|Podpílie|SK||065 41
+om|Podproč|Podproč|SK||053 73
+om|Podrečany|Podrečany|SK||985 54
+om|Podsadek|Podsadek|SK||064 01
+om|Podskalie|Podskalie|SK||018 22
+om|Podspády|Podspády|SK||059 56
+om|Podtureň|Podtureň|SK||033 01
+om|Podvažie (017 04)|Podvažie|SK||017 04
+om|Podvažie (018 52)|Podvažie|SK||018 52
+om|Podvrch|Podvrch|SK||916 16
+om|Podvysoká|Podvysoká|SK||023 57
+om|Podzámčok|Podzámčok|SK||962 61
+om|Podzámok (065 44)|Podzámok|SK||065 44
+om|Podzámok (906 05)|Podzámok|SK||906 05
+om|Podzávoz|Podzávoz|SK||022 01
+om|Pohorelá|Pohorelá|SK||976 69
+om|Pohorelská Maša|Pohorelská Maša|SK||976 69
+om|Pohranice|Pohranice|SK||951 02
+om|Pohronská Polhora|Pohronská Polhora|SK||976 56
+om|Pohronský Bukovec|Pohronský Bukovec|SK||976 62
+om|Pohronský Ruskov|Pohronský Ruskov|SK||935 62
+om|Pokryváč|Pokryváč|SK||026 01
+om|Poľanovce|Poľanovce|SK||053 05
+om|Poľany|Poľany|SK||076 84
+om|Polerieka|Polerieka|SK||038 22
+om|Poliakovce|Poliakovce|SK||086 11
+om|Polianka|Polianka|SK||907 01
+om|Polianky|Polianky|SK||985 45
+om|Polichno|Polichno|SK||985 13
+om|Polina|Polina|SK||982 62
+om|Polkanová (č.d.1,2,3)|Polkanová (č.d.1,2,3)|SK||974 01
+om|Polkanová (ostatné čísla)|Polkanová (ostatné čísla)|SK||976 02
+om|Polníky|Polníky|SK||913 32
+om|Poľný Kesov|Poľný Kesov|SK||951 15
+om|Polom|Polom|SK||981 01
+om|Poloma|Poloma|SK||082 73
+om|Polomka|Polomka|SK||976 66
+om|Polomy|Polomy|SK||962 63
+om|Poltár|Poltár|SK||987 01
+om|Poluvsie (013 13)|Poluvsie|SK||013 13
+om|Poluvsie (972 16)|Poluvsie|SK||972 16
+om|Pondelok|Pondelok|SK||980 13
+om|Pongrácovce|Pongrácovce|SK||053 05
+om|Ponická Huta|Ponická Huta|SK||976 33
+om|Ponická Lehôtka|Ponická Lehôtka|SK||976 33
+om|Poniky|Poniky|SK||976 33
+om|Poprad|Poprad|SK||058 01
+om|Poproč (044 24)|Poproč|SK||044 24
+om|Poproč (982 67)|Poproč|SK||982 67
+om|Popudinské Močidľany|Popudinské Močidľany|SK||908 61
+om|Poráč|Poráč|SK||053 23
+om|Poriadie|Poriadie|SK||906 22
+om|Porostov|Porostov|SK||072 55
+om|Poruba|Poruba|SK||972 11
+om|Poruba pod Vihorlatom|Poruba pod Vihorlatom|SK||072 32
+om|Porúbka (013 11)|Porúbka|SK||013 11
+om|Porúbka (067 41)|Porúbka|SK||067 41
+om|Porúbka (072 61)|Porúbka|SK||072 61
+om|Porúbka (086 12)|Porúbka|SK||086 12
+om|Poša|Poša|SK||094 21
+om|Posádka|Posádka|SK||920 56
+om|Póšfa|Póšfa|SK||930 34
+om|Potôčky|Potôčky|SK||091 01
+om|Potočok|Potočok|SK||991 22
+om|Potok (023 56)|Potok|SK||023 56
+om|Potok (034 83)|Potok|SK||034 83
+om|Potok (982 67)|Potok|SK||982 67
+om|Potoky (013 62)|Potoky|SK||013 62
+om|Potoky (082 71)|Potoky|SK||082 71
+om|Potoky (091 01)|Potoky|SK||091 01
+om|Potônské Lúky|Potônské Lúky|SK||930 52
+om|Pôtor|Pôtor|SK||991 03
+om|Potvorice|Potvorice|SK||916 25
+om|Považany|Považany|SK||916 26
+om|Považská Bystrica|Považská Bystrica|SK||
+om|Považská Teplá|Považská Teplá|SK||017 05
+om|Považské Podhradie|Považské Podhradie|SK||017 04
+om|Považský Chlmec|Považský Chlmec|SK||010 03
+om|Povina|Povina|SK||023 33
+om|Povoda|Povoda|SK||929 01
+om|Povrazník|Povrazník|SK||976 55
+om|Pozba|Pozba|SK||941 51
+om|Pozdišovce|Pozdišovce|SK||072 01
+om|Praha|Praha|SK||985 11
+om|Prakovce|Prakovce|SK||055 62
+om|Prašice|Prašice|SK||956 22
+om|Prašník|Prašník|SK||922 11
+om|Pravenec|Pravenec|SK||972 16
+om|Pravica|Pravica|SK||991 21
+om|Pravotice|Pravotice|SK||956 35
+om|Praznov|Praznov|SK||017 01
+om|Práznovce|Práznovce|SK||955 01
+om|Prečín|Prečín|SK||018 15
+om|Predajná|Predajná|SK||976 63
+om|Predjastrabie|Predjastrabie|SK||013 55
+om|Predmier (013 51)|Predmier|SK||013 51
+om|Predmier (023 54)|Predmier|SK||023 54
+om|Predná Hora|Predná Hora|SK||049 01
+om|Predné Halny|Predné Halny|SK||977 01
+om|Prejta|Prejta|SK||018 41
+om|Prenčov|Prenčov|SK||969 73
+om|Preseľany|Preseľany|SK||956 12
+om|Preseľany nad Ipľom|Preseľany nad Ipľom|SK||936 01
+om|Prešov|Prešov|SK||
+om|Prestavlky|Prestavlky|SK||966 01
+om|Príbelce|Príbelce|SK||991 25
+om|Pribeník|Pribeník|SK||076 51
+om|Pribeta|Pribeta|SK||946 55
+om|Pribiš|Pribiš|SK||027 41
+om|Pribišská|Pribišská|SK||029 57
+om|Príboj|Príboj|SK||991 01
+om|Príbovce|Príbovce|SK||038 42
+om|Pribylina|Pribylina|SK||032 42
+om|Priechod|Priechod|SK||976 11
+om|Priekopa (038 61)|Priekopa|SK||038 61
+om|Priekopa (072 61)|Priekopa|SK||072 61
+om|Prieloh|Prieloh|SK||991 02
+om|Priepasné|Priepasné|SK||906 15
+om|Prietrž|Prietrž|SK||906 11
+om|Prietržka|Prietržka|SK||908 49
+om|Prievaly|Prievaly|SK||906 34
+om|Prievidza|Prievidza|SK||971 01
+om|Prievidza - Kopanice|Prievidza - Kopanice|SK||971 01
+om|Prievidza - Necpaly|Prievidza - Necpaly|SK||971 01
+om|Prievidza - Píly|Prievidza - Píly|SK||971 01
+om|Prievidza - Staré Mesto|Prievidza - Staré Mesto|SK||971 01
+om|Prievidza - Štvrte|Prievidza - Štvrte|SK||971 01
+om|Prievrana|Prievrana|SK||987 01
+om|Prihradzany|Prihradzany|SK||049 14
+om|Príkra|Príkra|SK||090 05
+om|Prílepy|Prílepy|SK||953 05
+om|Primovce|Primovce|SK||059 12
+om|Príslop|Príslop|SK||067 66
+om|Prituľany|Prituľany|SK||094 08
+om|Proč|Proč|SK||082 14
+om|Prochot|Prochot|SK||966 04
+om|Prosačov|Prosačov|SK||094 31
+om|Prosiek|Prosiek|SK||032 23
+om|Prosné|Prosné|SK||018 01
+om|Prostredná Môlča|Prostredná Môlča|SK||974 01
+om|Prostredný Hámor|Prostredný Hámor|SK||053 76
+om|Prša|Prša|SK||985 41
+om|Pruské|Pruské|SK||018 52
+om|Prusy|Prusy|SK||957 03
+om|Pružina|Pružina|SK||018 22
+om|Psiare|Psiare|SK||966 53
+om|Pstriná|Pstriná|SK||090 05
+om|Pstruša|Pstruša|SK||962 12
+om|Pšurnovice|Pšurnovice|SK||014 01
+om|Ptičie|Ptičie|SK||067 41
+om|Ptrukša|Ptrukša|SK||076 77
+om|Púchov|Púchov|SK||020 01
+om|Pucov|Pucov|SK||026 01
+om|Pukanec|Pukanec|SK||935 05
+om|Pušovce|Pušovce|SK||082 14
+om|Pustá Ves|Pustá Ves|SK||922 11
+om|Pusté|Pusté|SK||976 52
+om|Pusté Čemerné|Pusté Čemerné|SK||072 22
+om|Pusté Pole|Pusté Pole|SK||065 41
+om|Pusté Sady|Pusté Sady|SK||925 54
+om|Pusté Úľany|Pusté Úľany|SK||925 28
+om|Pustý Chotár|Pustý Chotár|SK||951 75
+om|Rabča|Rabča|SK||029 44
+om|Rabčice|Rabčice|SK||029 45
+om|Račice|Račice|SK||972 22
+om|Rad|Rad|SK||076 37
+om|Radatice|Radatice|SK||082 42
+om|Radava|Radava|SK||941 47
+om|Radimov|Radimov|SK||908 47
+om|Radiša|Radiša|SK||956 41
+om|Radnovce|Radnovce|SK||980 42
+om|Radobica|Radobica|SK||972 48
+om|Radoľa|Radoľa|SK||023 36
+om|Radoma|Radoma|SK||090 42
+om|Radošina|Radošina|SK||956 05
+om|Radošovce (908 63)|Radošovce|SK||908 63
+om|Radošovce (919 30)|Radošovce|SK||919 30
+om|Radôstka|Radôstka|SK||023 04
+om|Radvaň|Radvaň|SK||974 05
+om|Radvaň nad Dunajom|Radvaň nad Dunajom|SK||946 38
+om|Radvaň nad Laborcom|Radvaň nad Laborcom|SK||067 01
+om|Radvanovce|Radvanovce|SK||094 31
+om|Radzovce|Radzovce|SK||985 58
+om|Rafajovce|Rafajovce|SK||094 05
+om|Rajčany|Rajčany|SK||956 32
+om|Rajec|Rajec|SK||015 01
+om|Rajecká Lesná|Rajecká Lesná|SK||013 15
+om|Rajecké Teplice|Rajecké Teplice|SK||013 13
+om|Rakoľuby|Rakoľuby|SK||916 31
+om|Rákoš (044 16)|Rákoš|SK||044 16
+om|Rákoš (049 61)|Rákoš|SK||049 61
+om|Rákošská Baňa|Rákošská Baňa|SK||049 61
+om|Raková|Raková|SK||023 51
+om|Rakovčík|Rakovčík|SK||089 01
+om|Rakovec (053 76)|Rakovec|SK||053 76
+om|Rakovec (956 41)|Rakovec|SK||956 41
+om|Rakovec (962 65)|Rakovec|SK||962 65
+om|Rakovec nad Ondavou|Rakovec nad Ondavou|SK||072 03
+om|Rakovice|Rakovice|SK||922 08
+om|Rakovnica|Rakovnica|SK||049 31
+om|Rakovo|Rakovo|SK||038 42
+om|Rakša|Rakša|SK||039 01
+om|Rakúsy|Rakúsy|SK||059 76
+om|Rakytník|Rakytník|SK||980 21
+om|Rakytovce|Rakytovce|SK||974 05
+om|Rankovce|Rankovce|SK||044 45
+om|Rapovce|Rapovce|SK||985 31
+om|Rašice|Rašice|SK||982 62
+om|Raslavice|Raslavice|SK||086 41
+om|Rasochov|Rasochov|SK||919 05
+om|Rašov|Rašov|SK||013 51
+om|Rastice|Rastice|SK||930 39
+om|Rastislavice|Rastislavice|SK||941 10
+om|Ratka|Ratka|SK||986 01
+om|Ratková|Ratková|SK||982 65
+om|Ratkovce|Ratkovce|SK||920 42
+om|Ratkovo|Ratkovo|SK||038 54
+om|Ratkovská Lehota|Ratkovská Lehota|SK||982 65
+om|Ratkovská Suchá|Ratkovská Suchá|SK||982 67
+om|Ratkovská Zdychava|Ratkovská Zdychava|SK||982 67
+om|Ratkovské Bystré|Ratkovské Bystré|SK||982 66
+om|Ratnovce|Ratnovce|SK||922 31
+om|Ratvaj|Ratvaj|SK||082 66
+om|Ražňany|Ražňany|SK||082 61
+om|Ráztočno|Ráztočno|SK||972 31
+om|Ráztoka (018 03)|Ráztoka|SK||018 03
+om|Ráztoka (976 97)|Ráztoka|SK||976 97
+om|Ráztoky (013 62)|Ráztoky|SK||013 62
+om|Ráztoky (027 05)|Ráztoky|SK||027 05
+om|Ráztoky (053 32)|Ráztoky|SK||053 32
+om|Reca (č. 380,381,383,384))|Reca (č. 380,381,383,384))|SK||903 01
+om|Reca (ostatné čísla)|Reca (ostatné čísla)|SK||925 26
+om|Regetovka|Regetovka|SK||086 33
+om|Rejdová|Rejdová|SK||049 26
+om|Reľov|Reľov|SK||059 04
+om|Remata|Remata|SK||972 51
+om|Remeniny|Remeniny|SK||094 31
+om|Remetské Hámre|Remetské Hámre|SK||072 41
+om|Renčišov|Renčišov|SK||082 63
+om|Repákovci|Repákovci|SK||913 33
+om|Repejov|Repejov|SK||067 04
+om|Repište|Repište|SK||966 03
+om|Repištia|Repištia|SK||982 65
+om|Rešica|Rešica|SK||044 73
+om|Rešov|Rešov|SK||086 21
+om|Revišné|Revišné|SK||027 54
+om|Revištské Podzámčie|Revištské Podzámčie|SK||966 81
+om|Revúca|Revúca|SK||050 01
+om|Revúčka|Revúčka|SK||050 01
+om|Revúcka Lehota|Revúcka Lehota|SK||049 18
+om|Richnava|Richnava|SK||053 51
+om|Richvald|Richvald|SK||085 01
+om|Ridzina|Ridzina|SK||072 16
+om|Riečka|Riečka|SK||980 45
+om|Riečka, ostatné ulice|Riečka, ostatné ulice|SK||974 01
+om|Riečka, ulica Nevoľné|Riečka, ulica Nevoľné|SK||976 34
+om|Riečky|Riečky|SK||023 22
+om|Riečnica|Riečnica|SK||023 05
+om|Rieka|Rieka|SK||022 01
+om|Rimavská Baňa|Rimavská Baňa|SK||980 53
+om|Rimavská Píla|Rimavská Píla|SK||980 61
+om|Rimavská Seč|Rimavská Seč|SK||980 42
+om|Rimavská Sobota|Rimavská Sobota|SK||979 01
+om|Rimavské Brezovo|Rimavské Brezovo|SK||980 54
+om|Rimavské Janovce|Rimavské Janovce|SK||980 01
+om|Rimavské Zalužany|Rimavské Zalužany|SK||980 53
+om|Rišňovce|Rišňovce|SK||951 21
+om|Rochovce|Rochovce|SK||049 36
+om|Rohov|Rohov|SK||906 04
+om|Rohovce|Rohovce|SK||930 30
+om|Rohožnica|Rohožnica|SK||935 34
+om|Rohožník (094 07)|Rohožník|SK||094 07
+om|Rohožník (906 38)|Rohožník|SK||906 38
+om|Rojkov|Rojkov|SK||034 92
+om|Rokycany|Rokycany|SK||082 41
+om|Rokytov|Rokytov|SK||086 01
+om|Rokytov pri Humennom|Rokytov pri Humennom|SK||067 13
+om|Rokytovce|Rokytovce|SK||068 01
+om|Rosina|Rosina|SK||013 22
+om|Roškovce (053 02)|Roškovce|SK||053 02
+om|Roškovce (067 02)|Roškovce|SK||067 02
+om|Roštár|Roštár|SK||049 35
+om|Rovensko|Rovensko|SK||905 01
+om|Rovinka|Rovinka|SK||900 41
+om|Rovňany|Rovňany|SK||985 24
+om|Rovné (018 03)|Rovné|SK||018 03
+om|Rovné (067 32)|Rovné|SK||067 32
+om|Rovné (090 16)|Rovné|SK||090 16
+om|Rovné (982 67)|Rovné|SK||982 67
+om|Rozbehy|Rozbehy|SK||906 33
+om|Rozhanovce|Rozhanovce|SK||044 42
+om|Rozina|Rozina|SK||937 01
+om|Rožkovany|Rožkovany|SK||082 71
+om|Rozložná|Rozložná|SK||049 32
+om|Rožňava|Rožňava|SK||048 01
+om|Rožňavská Baňa|Rožňavská Baňa|SK||048 01
+om|Rožňavské Bystré|Rožňavské Bystré|SK||049 31
+om|Rožňová Neporadza|Rožňová Neporadza|SK||913 26
+om|Rožňové Mitice|Rožňové Mitice|SK||913 22
+om|Roztoky|Roztoky|SK||090 11
+om|Rozvadze|Rozvadze|SK||913 11
+om|Rúbaň|Rúbaň|SK||941 36
+om|Rudica|Rudica|SK||972 48
+om|Rudina|Rudina|SK||023 31
+om|Rudinka|Rudinka|SK||023 31
+om|Rudinská|Rudinská|SK||023 31
+om|Rudlov|Rudlov|SK||094 35
+om|Rudlová|Rudlová|SK||974 11
+om|Rudná|Rudná|SK||048 01
+om|Rudňany|Rudňany|SK||053 23
+om|Rudnianska Lehota|Rudnianska Lehota|SK||972 26
+om|Rudník (044 23)|Rudník|SK||044 23
+om|Rudník (906 23)|Rudník|SK||906 23
+om|Rudno|Rudno|SK||038 22
+om|Rudno nad Hronom|Rudno nad Hronom|SK||966 51
+om|Rumanová|Rumanová|SK||951 37
+om|Rumince|Rumince|SK||980 50
+om|Runina|Runina|SK||067 65
+om|Ruská|Ruská|SK||076 77
+om|Ruská Bystrá|Ruská Bystrá|SK||072 64
+om|Ruská Kajňa|Ruská Kajňa|SK||094 07
+om|Ruská Nová Ves|Ruská Nová Ves|SK||080 05
+om|Ruská Poruba|Ruská Poruba|SK||094 08
+om|Ruská Voľa|Ruská Voľa|SK||094 31
+om|Ruská Voľa nad Popradom|Ruská Voľa nad Popradom|SK||065 42
+om|Ruská Volová|Ruská Volová|SK||067 72
+om|Ruské Pekľany|Ruské Pekľany|SK||082 42
+om|Ruskov|Ruskov|SK||044 19
+om|Ruskovce (072 42)|Ruskovce|SK||072 42
+om|Ruskovce (956 54)|Ruskovce|SK||956 54
+om|Ruský Hrabovec|Ruský Hrabovec|SK||072 64
+om|Ruský Potok|Ruský Potok|SK||067 66
+om|Ružbachy - kúpele|Ružbachy - kúpele|SK||065 02
+om|Ružiná|Ružiná|SK||985 52
+om|Ružindol|Ružindol|SK||919 61
+om|Ružomberok|Ružomberok|SK||
+om|Ružová dolina|Ružová dolina|SK||919 01
+om|Ružová Osada|Ružová Osada|SK||985 42
+om|Rybany|Rybany|SK||956 36
+om|Rybáre|Rybáre|SK||962 31
+om|Rybárie|Rybárie|SK||023 22
+om|Rybárpole|Rybárpole|SK||034 01
+om|Rybky|Rybky|SK||906 04
+om|Rybník (935 23)|Rybník|SK||935 23
+om|Rybník (982 65)|Rybník|SK||982 65
+om|Rybníky|Rybníky|SK||916 11
+om|Rychňava|Rychňava|SK||969 01
+om|Rykynčice|Rykynčice|SK||962 55
+om|Sabinov|Sabinov|SK||083 01
+om|Sabová|Sabová|SK||979 01
+om|Sačurov|Sačurov|SK||094 13
+om|Sádočné|Sádočné|SK||018 16
+om|Sádok|Sádok|SK||958 44
+om|Sady nad Torysou|Sady nad Torysou|SK||044 41
+om|Šahy|Šahy|SK||936 01
+om|Šajby|Šajby|SK||972 41
+om|Šajdíkove Humence|Šajdíkove Humence|SK||906 07
+om|Šaľa|Šaľa|SK||
+om|Salajka|Salajka|SK||985 03
+om|Šalgočka|Šalgočka|SK||925 54
+om|Šalgovce|Šalgovce|SK||956 06
+om|Šalgovík|Šalgovík|SK||080 01
+om|Salka|Salka|SK||943 61
+om|Šalková|Šalková|SK||974 01
+om|Šalov|Šalov|SK||935 71
+om|Salvátor|Salvátor|SK||082 36
+om|Šamaja|Šamaja|SK||022 01
+om|Šambron|Šambron|SK||065 45
+om|Šamorín|Šamorín|SK||931 01
+om|Sampor|Sampor|SK||962 31
+om|Šamudovce|Šamudovce|SK||072 01
+om|Šance|Šance|SK||916 42
+om|Šandal|Šandal|SK||091 01
+om|Šándorhalma|Šándorhalma|SK||935 33
+om|Šankovce|Šankovce|SK||982 62
+om|Santovka|Santovka|SK||935 87
+om|Sap|Sap|SK||930 06
+om|Šapinec|Šapinec|SK||090 42
+om|Šára|Šára|SK||985 32
+om|Šarbov|Šarbov|SK||090 05
+om|Šarišská Poruba|Šarišská Poruba|SK||082 12
+om|Šarišská Trstená|Šarišská Trstená|SK||082 14
+om|Šarišské Bohdanovce|Šarišské Bohdanovce|SK||082 05
+om|Šarišské Čierne|Šarišské Čierne|SK||086 37
+om|Šarišské Dravce|Šarišské Dravce|SK||082 73
+om|Šarišské Jastrabie|Šarišské Jastrabie|SK||065 48
+om|Šarišské Lúky|Šarišské Lúky|SK||080 06
+om|Šarišské Lužianky|Šarišské Lužianky|SK||082 32
+om|Šarišské Michaľany|Šarišské Michaľany|SK||082 22
+om|Šarišské Sokolovce|Šarišské Sokolovce|SK||082 66
+om|Šarišský Štiavnik|Šarišský Štiavnik|SK||090 42
+om|Šarkan|Šarkan|SK||943 42
+om|Šarovce|Šarovce|SK||935 52
+om|Sása (930 37)|Sása|SK||930 37
+om|Sása (962 62)|Sása|SK||962 62
+om|Sása (982 65)|Sása|SK||982 65
+om|Sasinkovo|Sasinkovo|SK||920 65
+om|Sásová|Sásová|SK||974 11
+om|Šašová|Šašová|SK||086 12
+om|Šášovské Podhradie|Šášovské Podhradie|SK||965 01
+om|Šaštín|Šaštín|SK||908 41
+om|Šaštín - Stráže|Šaštín - Stráže|SK||908 41
+om|Savčina|Savčina|SK||018 52
+om|Šávoľ|Šávoľ|SK||985 41
+om|Sazdice|Sazdice|SK||935 85
+om|Sebechleby|Sebechleby|SK||962 66
+om|Sebedín|Sebedín|SK||974 01
+om|Sebedín - Bečov|Sebedín - Bečov|SK||974 01
+om|Sebedražie|Sebedražie|SK||972 05
+om|Šebešťanová|Šebešťanová|SK||017 04
+om|Seč|Seč|SK||972 26
+om|Sečianky|Sečianky|SK||991 10
+om|Sečovce|Sečovce|SK||078 01
+om|Sečovská Polianka|Sečovská Polianka|SK||094 14
+om|Sedliacka Dubová|Sedliacka Dubová|SK||027 55
+om|Sedlice|Sedlice|SK||082 43
+om|Sedličná|Sedličná|SK||913 11
+om|Sedliská|Sedliská|SK||094 09
+om|Sedmerovec|Sedmerovec|SK||018 54
+om|Sejkov|Sejkov|SK||072 51
+om|Sekule|Sekule|SK||908 80
+om|Seľany|Seľany|SK||991 27
+om|Selce (962 51)|Selce|SK||962 51
+om|Selce (976 11)|Selce|SK||976 11
+om|Selce (980 13)|Selce|SK||980 13
+om|Selec|Selec|SK||913 36
+om|Seleška|Seleška|SK||044 71
+om|Selešťany|Selešťany|SK||991 06
+om|Selice|Selice|SK||925 72
+om|Šelpice|Šelpice|SK||919 09
+om|Semerovo|Semerovo|SK||941 32
+om|Semeteš|Semeteš|SK||023 55
+om|Šemetkovce|Šemetkovce|SK||090 03
+om|Šemša|Šemša|SK||044 21
+om|Seňa|Seňa|SK||044 58
+om|Senec|Senec|SK||903 01
+om|Seniakovce|Seniakovce|SK||082 03
+om|Senica (905 01)|Senica|SK||905 01
+om|Senica (974 01)|Senica|SK||974 01
+om|Šenkvice|Šenkvice|SK||900 81
+om|Senné (072 13)|Senné|SK||072 13
+om|Senné (991 01)|Senné|SK||991 01
+om|Senohrad|Senohrad|SK||962 43
+om|Sereď|Sereď|SK||926 01
+om|Setechov|Setechov|SK||013 53
+om|Severná|Severná|SK||080 06
+om|Šiatorská Bukovinka|Šiatorská Bukovinka|SK||985 58
+om|Šiba|Šiba|SK||086 22
+om|Šíd|Šíd|SK||986 01
+om|Sielnica|Sielnica|SK||962 31
+om|Sigord|Sigord|SK||082 52
+om|Sihelné|Sihelné|SK||029 46
+om|Sihelník|Sihelník|SK||022 04
+om|Sihla|Sihla|SK||976 53
+om|Sikenica|Sikenica|SK||937 01
+om|Sikenička|Sikenička|SK||943 59
+om|Sila|Sila|SK||951 24
+om|Siladice|Siladice|SK||920 52
+om|Silica|Silica|SK||049 52
+om|Silická Brezová|Silická Brezová|SK||049 11
+om|Silická Jablonica|Silická Jablonica|SK||049 43
+om|Šimonovce|Šimonovce|SK||980 03
+om|Šindliar|Šindliar|SK||082 36
+om|Šintava|Šintava|SK||925 51
+om|Šipice|Šipice|SK||962 68
+om|Šípkov|Šípkov|SK||956 53
+om|Šípkové|Šípkové|SK||922 03
+om|Šipošovské Kračany|Šipošovské Kračany|SK||930 03
+om|Širákov|Širákov|SK||991 27
+om|Sirk|Sirk|SK||049 64
+om|Širkovce|Širkovce|SK||980 02
+om|Sirník|Sirník|SK||076 03
+om|Široká|Široká|SK||027 41
+om|Široké|Široké|SK||082 37
+om|Šišov|Šišov|SK||956 38
+om|Sitnianska|Sitnianska|SK||969 01
+om|Sitnianska Lehôtka|Sitnianska Lehôtka|SK||962 65
+om|Sitník|Sitník|SK||091 01
+om|Šivetice|Šivetice|SK||049 14
+om|Skačany|Skačany|SK||958 53
+om|Skala|Skala|SK||913 31
+om|Skalica (909 01)|Skalica|SK||909 01
+om|Skalica (976 81)|Skalica|SK||976 81
+om|Skalité|Skalité|SK||023 14
+om|Skalka nad Váhom|Skalka nad Váhom|SK||913 31
+om|Skalská Nová Ves|Skalská Nová Ves|SK||913 31
+om|Skároš|Skároš|SK||044 11
+om|Skerešovo|Skerešovo|SK||982 62
+om|Sklabiná|Sklabiná|SK||991 05
+om|Sklabiňa|Sklabiňa|SK||038 03
+om|Sklabinský Podzámok|Sklabinský Podzámok|SK||038 03
+om|Sklené|Sklené|SK||038 47
+om|Sklené Teplice|Sklené Teplice|SK||966 03
+om|Skliarovo|Skliarovo|SK||962 12
+om|Škoruby|Škoruby|SK||013 54
+om|Škrabáka|Škrabáka|SK||022 04
+om|Skrabské|Skrabské|SK||094 33
+om|Škriavnik|Škriavnik|SK||991 25
+om|Škrípov|Škrípov|SK||972 28
+om|Skubín|Skubín|SK||974 01
+om|Skýcov|Skýcov|SK||951 85
+om|Sládkovičovo|Sládkovičovo|SK||925 21
+om|Slaná Lehota|Slaná Lehota|SK||987 01
+om|Slančík|Slančík|SK||044 17
+om|Slanec (044 17)|Slanec|SK||044 17
+om|Slanec (962 05)|Slanec|SK||962 05
+om|Slanická Osada|Slanická Osada|SK||029 01
+om|Slanská Huta|Slanská Huta|SK||044 17
+om|Slanské Nové Mesto|Slanské Nové Mesto|SK||044 18
+om|Slaská|Slaská|SK||966 22
+om|Slatina|Slatina|SK||935 84
+om|Slatina nad Bebravou|Slatina nad Bebravou|SK||956 53
+om|Slatinka|Slatinka|SK||962 01
+om|Slatinka nad Bebravou|Slatinka nad Bebravou|SK||956 53
+om|Slatinské Lazy|Slatinské Lazy|SK||962 25
+om|Slatvina|Slatvina|SK||053 61
+om|Slavec|Slavec|SK||049 11
+om|Slavkovce|Slavkovce|SK||072 17
+om|Slavnica|Slavnica|SK||018 54
+om|Slavoška|Slavoška|SK||049 34
+om|Slavošovce|Slavošovce|SK||049 36
+om|Sľažany|Sľažany|SK||951 71
+om|Slepčany|Slepčany|SK||951 52
+om|Sliač|Sliač|SK||962 31
+om|Sliač - kúpele|Sliač - kúpele|SK||962 31
+om|Sliačska Podpoľana|Sliačska Podpoľana|SK||962 25
+om|Sliepkovce|Sliepkovce|SK||072 37
+om|Slivník|Slivník|SK||076 12
+om|Slizké|Slizké|SK||980 23
+om|Slopkov|Slopkov|SK||013 54
+om|Slopná|Slopná|SK||018 21
+om|Slovany|Slovany|SK||038 43
+om|Slovenská Kajňa|Slovenská Kajňa|SK||094 02
+om|Slovenská Ľupča|Slovenská Ľupča|SK||976 13
+om|Slovenská Nová Ves|Slovenská Nová Ves|SK||919 42
+om|Slovenská Ves|Slovenská Ves|SK||059 02
+om|Slovenská Volová|Slovenská Volová|SK||067 22
+om|Slovenské Ďarmoty|Slovenské Ďarmoty|SK||991 07
+om|Slovenské Kľačany|Slovenské Kľačany|SK||991 02
+om|Slovenské Krivé|Slovenské Krivé|SK||067 13
+om|Slovenské Nové Mesto|Slovenské Nové Mesto|SK||076 33
+om|Slovenské Pole|Slovenské Pole|SK||925 41
+om|Slovenské Pravno|Slovenské Pravno|SK||038 22
+om|Slovenský Grob|Slovenský Grob|SK||900 26
+om|Slovinky|Slovinky|SK||053 40
+om|Šmigovec|Šmigovec|SK||067 73
+om|Smilno|Smilno|SK||086 33
+om|Smižany|Smižany|SK||053 11
+om|Smolenice|Smolenice|SK||919 04
+om|Smolenická Nová Ves|Smolenická Nová Ves|SK||919 04
+om|Smolinské|Smolinské|SK||908 42
+om|Smolnícka Huta|Smolnícka Huta|SK||055 65
+om|Smolník|Smolník|SK||055 66
+om|Smrdáky|Smrdáky|SK||906 03
+om|Smrečany|Smrečany|SK||032 05
+om|Snakov|Snakov|SK||086 06
+om|Snežnica|Snežnica|SK||023 32
+om|Snina|Snina|SK||069 01
+om|Snohy|Snohy|SK||962 05
+om|Soblahov|Soblahov|SK||913 38
+om|Soboš|Soboš|SK||090 42
+om|Sobotište|Sobotište|SK||906 05
+om|Sobôtka|Sobôtka|SK||979 01
+om|Sobrance|Sobrance|SK||073 01
+om|Sobranecké Kúpele|Sobranecké Kúpele|SK||073 01
+om|Socovce|Socovce|SK||038 43
+om|Sokoľ|Sokoľ|SK||044 31
+om|Sokoľany|Sokoľany|SK||044 57
+om|Sokolce|Sokolce|SK||946 17
+om|Sokolce - lúky|Sokolce - lúky|SK||946 14
+om|Sokolníky|Sokolníky|SK||951 46
+om|Sokolovce|Sokolovce|SK||922 31
+om|Soľ|Soľ|SK||094 35
+om|Solčany|Solčany|SK||956 17
+om|Solčianky|Solčianky|SK||956 38
+om|Solivar|Solivar|SK||080 05
+om|Solka|Solka|SK||972 13
+om|Soľné|Soľné|SK||013 62
+om|Soľnička|Soľnička|SK||076 53
+om|Soľník|Soľník|SK||090 31
+om|Sološnica|Sološnica|SK||906 37
+om|Šoltýska|Šoltýska|SK||985 07
+om|Somorova Ves|Somorova Ves|SK||972 25
+om|Somotor|Somotor|SK||076 35
+om|Sopkovce|Sopkovce|SK||067 22
+om|Šopora|Šopora|SK||022 01
+om|Šoporňa|Šoporňa|SK||925 52
+om|Sotina|Sotina|SK||905 01
+om|Špačince|Špačince|SK||919 51
+om|Špania Dolina|Špania Dolina|SK||974 01
+om|Španie Pole|Španie Pole|SK||980 23
+om|Spišská Belá|Spišská Belá|SK||059 01
+om|Spišská Nová Ves|Spišská Nová Ves|SK||
+om|Spišská Sobota|Spišská Sobota|SK||058 01
+om|Spišská Stará Ves|Spišská Stará Ves|SK||061 01
+om|Spišská Teplica|Spišská Teplica|SK||059 34
+om|Spišské Bystré|Spišské Bystré|SK||059 18
+om|Spišské Hanušovce|Spišské Hanušovce|SK||059 04
+om|Spišské Podhradie|Spišské Podhradie|SK||053 04
+om|Spišské Tomášovce|Spišské Tomášovce|SK||052 01
+om|Spišské Vlachy|Spišské Vlachy|SK||053 61
+om|Spišský Hrhov|Spišský Hrhov|SK||053 02
+om|Spišský Hrušov|Spišský Hrušov|SK||053 63
+om|Spišský Štiavnik|Spišský Štiavnik|SK||059 14
+om|Spišský Štvrtok|Spišský Štvrtok|SK||053 14
+om|Srňacie|Srňacie|SK||026 01
+om|Šrobárová|Šrobárová|SK||946 32
+om|Stakčín|Stakčín|SK||067 61
+om|Stakčínska Roztoka|Stakčínska Roztoka|SK||067 61
+om|Štále|Štále|SK||968 01
+om|Stanáková|Stanáková|SK||972 28
+om|Stanča|Stanča|SK||076 16
+om|Stankovany|Stankovany|SK||034 92
+om|Stankovce (072 21)|Stankovce|SK||072 21
+om|Stankovce (076 61)|Stankovce|SK||076 61
+om|Stará Bašta|Stará Bašta|SK||980 34
+om|Stará Bystrica|Stará Bystrica|SK||023 04
+om|Stará Gala|Stará Gala|SK||930 34
+om|Stará Halič|Stará Halič|SK||985 11
+om|Stará Huta (962 25)|Stará Huta|SK||962 25
+om|Stará Huta (968 01)|Stará Huta|SK||968 01
+om|Stará Kremnička|Stará Kremnička|SK||965 01
+om|Stará Lehota|Stará Lehota|SK||916 35
+om|Stará Lesná|Stará Lesná|SK||059 52
+om|Stará Ľubovňa|Stará Ľubovňa|SK||064 01
+om|Stará Myjava|Stará Myjava|SK||907 01
+om|Stará Turá|Stará Turá|SK||916 01
+om|Stará Voda|Stará Voda|SK||053 34
+om|Staré|Staré|SK||072 23
+om|Staré Hory|Staré Hory|SK||976 02
+om|Starina|Starina|SK||065 46
+om|Starňa|Starňa|SK||982 01
+om|Starý Hrádok|Starý Hrádok|SK||935 56
+om|Starý Smokovec|Starý Smokovec|SK||062 01
+om|Starý Tekov|Starý Tekov|SK||935 26
+om|Staškov|Staškov|SK||023 53
+om|Staškovce|Staškovce|SK||090 23
+om|Stebnícka Huta|Stebnícka Huta|SK||086 33
+om|Stebník|Stebník|SK||086 33
+om|Štefan|Štefan|SK||941 37
+om|Štefanov|Štefanov|SK||906 45
+om|Štefanov nad Oravou|Štefanov nad Oravou|SK||027 44
+om|Štefanová|Štefanová|SK||900 86
+om|Štefanovce (082 35)|Štefanovce|SK||082 35
+om|Štefanovce (094 01)|Štefanovce|SK||094 01
+om|Štefanovičová|Štefanovičová|SK||951 15
+om|Štefanská Huta|Štefanská Huta|SK||053 51
+om|Štefultov|Štefultov|SK||969 01
+om|Štefurov|Štefurov|SK||090 42
+om|Šterusy|Šterusy|SK||922 03
+om|Štiavnička (034 01)|Štiavnička|SK||034 01
+om|Štiavnička (976 81)|Štiavnička|SK||976 81
+om|Štiavnické Bane|Štiavnické Bane|SK||969 81
+om|Štiavnik|Štiavnik|SK||013 55
+om|Štiefleje|Štiefleje|SK||972 48
+om|Štitáre|Štitáre|SK||951 01
+om|Štítnik|Štítnik|SK||049 32
+om|Štôla|Štôla|SK||059 37
+om|Stolečné (013 32)|Stolečné|SK||013 32
+om|Stolečné (018 03)|Stolečné|SK||018 03
+om|Štoliansko|Štoliansko|SK||962 05
+om|Štós|Štós|SK||044 26
+om|Štós - kúpele|Štós - kúpele|SK||044 26
+om|Stošice|Stošice|SK||031 04
+om|Stotince|Stotince|SK||059 94
+om|Stožok|Stožok|SK||962 12
+om|Stráňany|Stráňany|SK||065 33
+om|Stráňavy|Stráňavy|SK||013 25
+om|Stráne pod Tatrami|Stráne pod Tatrami|SK||059 76
+om|Stránska|Stránska|SK||982 51
+om|Stránske|Stránske|SK||013 13
+om|Stratená|Stratená|SK||049 71
+om|Stráža|Stráža|SK||013 04
+om|Stráže nad Myjavou|Stráže nad Myjavou|SK||908 41
+om|Stráže pod Tatrami|Stráže pod Tatrami|SK||058 01
+om|Strážky|Strážky|SK||059 01
+om|Strážne|Strážne|SK||076 52
+om|Strážov|Strážov|SK||010 01
+om|Strážske|Strážske|SK||072 22
+om|Štrba|Štrba|SK||059 38
+om|Štrbské Pleso|Štrbské Pleso|SK||059 85
+om|Strečno|Strečno|SK||013 24
+om|Streda nad Bodrogom|Streda nad Bodrogom|SK||076 31
+om|Stredná Revúca|Stredná Revúca|SK||034 74
+om|Stredné Plachtince|Stredné Plachtince|SK||991 24
+om|Stredné Turovce|Stredné Turovce|SK||935 81
+om|Stredný Sliač|Stredný Sliač|SK||034 84
+om|Strekov|Strekov|SK||941 37
+om|Strelenka|Strelenka|SK||020 54
+om|Strelnice|Strelnice|SK||982 62
+om|Strelníky|Strelníky|SK||976 55
+om|Stretava|Stretava|SK||072 13
+om|Stretavka|Stretavka|SK||072 13
+om|Streženice|Streženice|SK||020 01
+om|Striežovce|Striežovce|SK||980 25
+om|Strihovce|Strihovce|SK||067 73
+om|Štrkovec (925 52)|Štrkovec|SK||925 52
+om|Štrkovec (980 45)|Štrkovec|SK||980 45
+om|Stročín|Stročín|SK||089 01
+om|Stropkov|Stropkov|SK||091 01
+om|Štubne|Štubne|SK||976 02
+om|Studená|Studená|SK||980 34
+om|Studené|Studené|SK||900 46
+om|Studenec (053 04)|Studenec|SK||053 04
+om|Studenec (972 28)|Studenec|SK||972 28
+om|Studienka|Studienka|SK||908 75
+om|Studničná|Studničná|SK||034 96
+om|Stuľany|Stuľany|SK||086 43
+om|Stupava|Stupava|SK||900 31
+om|Stupné|Stupné|SK||018 12
+om|Štúrová|Štúrová|SK||946 13
+om|Štúrovo|Štúrovo|SK||
+om|Štvrtok|Štvrtok|SK||913 05
+om|Štvrtok na Ostrove|Štvrtok na Ostrove|SK||930 40
+om|Sučany|Sučany|SK||038 52
+om|Suchá|Suchá|SK||090 23
+om|Suchá Dolina|Suchá Dolina|SK||082 43
+om|Suchá Hora|Suchá Hora|SK||027 13
+om|Suchá nad Parnou|Suchá nad Parnou|SK||919 01
+om|Sucháň|Sucháň|SK||991 35
+om|Suché|Suché|SK||071 01
+om|Suché Brezovo|Suché Brezovo|SK||991 03
+om|Suchohrad|Suchohrad|SK||900 64
+om|Sudince|Sudince|SK||962 71
+om|Súdovce|Súdovce|SK||962 71
+om|Šuja|Šuja|SK||015 01
+om|Sukov|Sukov|SK||067 02
+om|Šuľa|Šuľa|SK||991 01
+om|Suľany|Suľany|SK||951 25
+om|Šuľany|Šuľany|SK||930 33
+om|Šulekovo|Šulekovo|SK||920 03
+om|Sulín|Sulín|SK||065 46
+om|Súľov|Súľov|SK||013 52
+om|Súlovce|Súlovce|SK||956 14
+om|Šumiac|Šumiac|SK||976 71
+om|Šuňava|Šuňava|SK||059 39
+om|Šurany|Šurany|SK||942 01
+om|Šurianky|Šurianky|SK||951 26
+om|Šurice|Šurice|SK||980 33
+om|Šúrovce|Šúrovce|SK||919 25
+om|Súš|Súš|SK||916 01
+om|Sušany|Sušany|SK||980 12
+om|Sútor|Sútor|SK||980 01
+om|Šutovce|Šutovce|SK||972 01
+om|Šútovo|Šútovo|SK||038 54
+om|Švábolka|Švábolka|SK||976 69
+om|Švábovce|Švábovce|SK||059 12
+om|Svarín|Svarín|SK||032 33
+om|Svätá Mária|Svätá Mária|SK||076 35
+om|Svätoplukovo|Svätoplukovo|SK||951 16
+om|Svätuš|Svätuš|SK||072 55
+om|Svätuša|Svätuša|SK||941 48
+om|Svätuše|Svätuše|SK||076 83
+om|Svätý Anton|Svätý Anton|SK||969 72
+om|Svätý Jur|Svätý Jur|SK||900 21
+om|Svätý Kríž (032 11)|Svätý Kríž|SK||032 11
+om|Svätý Kríž (935 25)|Svätý Kríž|SK||935 25
+om|Svätý Martin|Svätý Martin|SK||903 01
+om|Svätý Peter|Svätý Peter|SK||946 57
+om|Svederník|Svederník|SK||013 32
+om|Švedlár|Švedlár|SK||053 34
+om|Sverepec|Sverepec|SK||017 01
+om|Sveržov|Sveržov|SK||086 02
+om|Svetlá|Svetlá|SK||980 52
+om|Svetlice|Svetlice|SK||067 16
+om|Svidnička|Svidnička|SK||090 02
+om|Svidník|Svidník|SK||089 01
+om|Svinia|Svinia|SK||082 32
+om|Svinica|Svinica|SK||044 45
+om|Svinice|Svinice|SK||076 37
+om|Svinná|Svinná|SK||913 24
+om|Svit|Svit|SK||059 21
+om|Svodín|Svodín|SK||943 54
+om|Svodov|Svodov|SK||937 01
+om|Švošov|Švošov|SK||034 91
+om|Svrbice|Svrbice|SK||956 06
+om|Svrčinovec|Svrčinovec|SK||023 12
+om|Švrčkov Jarok|Švrčkov Jarok|SK||906 05
+om|Sykavka|Sykavka|SK||053 76
+om|Tachty|Tachty|SK||980 34
+om|Ťahyňa|Ťahyňa|SK||072 14
+om|Tajná|Tajná|SK||952 01
+om|Tajov|Tajov|SK||976 34
+om|Taľka|Taľka|SK||082 12
+om|Tanečník|Tanečník|SK||029 57
+om|Ťapešovo|Ťapešovo|SK||029 51
+om|Ťapkové|Ťapkové|SK||922 08
+om|Tarnov|Tarnov|SK||086 01
+om|Tašuľa|Tašuľa|SK||072 52
+om|Tatranská Javorina|Tatranská Javorina|SK||059 56
+om|Tatranská Kotlina|Tatranská Kotlina|SK||059 54
+om|Tatranská Lesná|Tatranská Lesná|SK||059 60
+om|Tatranská Lomnica|Tatranská Lomnica|SK||059 60
+om|Tatranská Polianka|Tatranská Polianka|SK||062 01
+om|Tatranská Štrba|Tatranská Štrba|SK||059 41
+om|Tatranské Matliare|Tatranské Matliare|SK||059 60
+om|Tatranské Zruby|Tatranské Zruby|SK||062 01
+om|Tehla|Tehla|SK||935 35
+om|Tekolďany|Tekolďany|SK||920 62
+om|Tekovská Breznica|Tekovská Breznica|SK||966 52
+om|Tekovská Nová Ves|Tekovská Nová Ves|SK||935 25
+om|Tekovské Lužany|Tekovské Lužany|SK||935 41
+om|Tekovské Nemce|Tekovské Nemce|SK||966 54
+om|Tekovský Hrádok|Tekovský Hrádok|SK||935 51
+om|Telgárt|Telgárt|SK||976 73
+om|Telince|Telince|SK||951 61
+om|Temeš|Temeš|SK||972 29
+om|Teplá|Teplá|SK||969 82
+om|Tepličany|Tepličany|SK||044 31
+om|Teplička|Teplička|SK||052 01
+om|Teplička nad Váhom|Teplička nad Váhom|SK||013 01
+om|Tepličky|Tepličky|SK||920 66
+om|Teplý Vrch|Teplý Vrch|SK||980 23
+om|Terany|Terany|SK||962 68
+om|Terchová|Terchová|SK||013 06
+om|Teriakovce|Teriakovce|SK||080 05
+om|Terňa|Terňa|SK||082 67
+om|Tesáre|Tesáre|SK||956 21
+om|Tesáre nad Žitavou|Tesáre nad Žitavou|SK||951 76
+om|Tesárske Mlyňany|Tesárske Mlyňany|SK||951 76
+om|Tešedíkovo|Tešedíkovo|SK||925 82
+om|Tešmák|Tešmák|SK||936 01
+om|Tiba|Tiba|SK||049 12
+om|Tibava|Tibava|SK||073 01
+om|Tichá Voda|Tichá Voda|SK||053 33
+om|Tichý Potok|Tichý Potok|SK||082 74
+om|Timoradza|Timoradza|SK||956 52
+om|Tisinec|Tisinec|SK||091 01
+om|Tisovec|Tisovec|SK||980 61
+om|Tlmače|Tlmače|SK||935 21
+om|Tlstá Hora|Tlstá Hora|SK||018 54
+om|Töböréte|Töböréte|SK||929 01
+om|Točnica|Točnica|SK||985 22
+om|Tokajík|Tokajík|SK||090 34
+om|Tomášikovo|Tomášikovo|SK||925 04
+om|Tomášov|Tomášov|SK||900 44
+om|Tomášovce (980 21)|Tomášovce|SK||980 21
+om|Tomášovce (985 56)|Tomášovce|SK||985 56
+om|Tomčany|Tomčany|SK||036 01
+om|Tôň|Tôň|SK||946 15
+om|Tonkovce|Tonkovce|SK||930 38
+om|Topoľa|Topoľa|SK||067 65
+om|Topoľany|Topoľany|SK||071 01
+om|Topoľčany|Topoľčany|SK||
+om|Topoľčianky|Topoľčianky|SK||951 93
+om|Topolecká|Topolecká|SK||916 01
+om|Topoľnica|Topoľnica|SK||925 92
+om|Topoľníky|Topoľníky|SK||930 11
+om|Topoľovka|Topoľovka|SK||067 45
+om|Toporec|Toporec|SK||059 95
+om|Tornaľa|Tornaľa|SK||982 01
+om|Torysa|Torysa|SK||082 76
+om|Torysky|Torysky|SK||053 71
+om|Tovarné|Tovarné|SK||094 01
+om|Tovarnianska Polianka|Tovarnianska Polianka|SK||094 01
+om|Tovarníky|Tovarníky|SK||955 01
+om|Trakovice|Trakovice|SK||919 33
+om|Trávnica|Trávnica|SK||941 46
+om|Trávnik|Trávnik|SK||946 19
+om|Trebatice|Trebatice|SK||922 10
+om|Trebejov|Trebejov|SK||044 81
+om|Trebeľovce|Trebeľovce|SK||985 31
+om|Trebichava|Trebichava|SK||956 53
+om|Trebišov|Trebišov|SK||075 01
+om|Trebostovo|Trebostovo|SK||038 41
+om|Trebušovce|Trebušovce|SK||991 27
+om|Trenč|Trenč|SK||985 32
+om|Trenčianska Teplá|Trenčianska Teplá|SK||914 01
+om|Trenčianska Turná|Trenčianska Turná|SK||913 21
+om|Trenčianska Závada|Trenčianska Závada|SK||914 41
+om|Trenčianske Bohuslavice|Trenčianske Bohuslavice|SK||913 07
+om|Trenčianske Jastrabie|Trenčianske Jastrabie|SK||913 22
+om|Trenčianske Mitice|Trenčianske Mitice|SK||913 22
+om|Trenčianske Stankovce|Trenčianske Stankovce|SK||913 11
+om|Trenčianske Teplice|Trenčianske Teplice|SK||914 51
+om|Trenčín|Trenčín|SK||
+om|Trhová Hradská|Trhová Hradská|SK||930 13
+om|Trhovište|Trhovište|SK||072 04
+om|Trhyňa|Trhyňa|SK||937 01
+om|Trnava|Trnava|SK||
+om|Trnavá Hora|Trnavá Hora|SK||966 11
+om|Trnava pri Laborci|Trnava pri Laborci|SK||072 31
+om|Trnávka (078 01)|Trnávka|SK||078 01
+om|Trnávka (913 33)|Trnávka|SK||913 33
+om|Trnávka (930 32)|Trnávka|SK||930 32
+om|Tŕnie|Tŕnie|SK||962 34
+om|Trnkov|Trnkov|SK||082 12
+om|Trnové|Trnové|SK||010 01
+om|Trnovec|Trnovec|SK||908 51
+om|Trnovec nad Váhom|Trnovec nad Váhom|SK||925 71
+om|Trnovo|Trnovo|SK||038 41
+om|Tročany|Tročany|SK||086 41
+om|Trojačka|Trojačka|SK||023 56
+om|Trpín|Trpín|SK||962 44
+om|Trsťany (044 45)|Trsťany|SK||044 45
+om|Trsťany (053 63)|Trsťany|SK||053 63
+om|Trstená|Trstená|SK||028 01
+om|Trstená na Ostrove|Trstená na Ostrove|SK||930 04
+om|Trstené|Trstené|SK||032 21
+om|Trstené pri Hornáde|Trstené pri Hornáde|SK||044 11
+om|Trstice|Trstice|SK||925 42
+om|Tŕstie|Tŕstie|SK||018 22
+om|Trstín|Trstín|SK||919 05
+om|Trubín|Trubín|SK||966 23
+om|Tuchyňa|Tuchyňa|SK||018 55
+om|Tuhár|Tuhár|SK||985 12
+om|Tuhrina|Tuhrina|SK||082 07
+om|Tulčík|Tulčík|SK||082 13
+om|Tunežice|Tunežice|SK||018 63
+om|Tupá|Tupá|SK||935 84
+om|Turá|Turá|SK||935 51
+om|Turá Lúka|Turá Lúka|SK||907 03
+om|Turany|Turany|SK||038 53
+om|Turany nad Ondavou|Turany nad Ondavou|SK||090 33
+om|Turček|Turček|SK||038 48
+om|Turčianky|Turčianky|SK||958 44
+om|Turčianska Štiavnička|Turčianska Štiavnička|SK||038 51
+om|Turčianske Jaseno|Turčianske Jaseno|SK||038 02
+om|Turčianske Kľačany|Turčianske Kľačany|SK||038 61
+om|Turčianske Teplice|Turčianske Teplice|SK||039 01
+om|Turčiansky Ďur|Turčiansky Ďur|SK||038 43
+om|Turčiansky Michal|Turčiansky Michal|SK||039 01
+om|Turčiansky Peter|Turčiansky Peter|SK||038 41
+om|Turčok|Turčok|SK||049 18
+om|Turcovce|Turcovce|SK||067 23
+om|Turecká|Turecká|SK||976 02
+om|Tureň|Tureň|SK||903 01
+om|Turíčky|Turíčky|SK||985 22
+om|Turie|Turie|SK||013 12
+om|Turík|Turík|SK||034 83
+om|Turkov|Turkov|SK||023 54
+om|Turňa nad Bodvou|Turňa nad Bodvou|SK||044 02
+om|Turnianska Nová Ves|Turnianska Nová Ves|SK||044 02
+om|Turová|Turová|SK||962 34
+om|Turzovka|Turzovka|SK||023 54
+om|Tušice|Tušice|SK||072 02
+om|Tušická Nová Ves|Tušická Nová Ves|SK||072 02
+om|Tužina|Tužina|SK||972 14
+om|Tvarožná (032 23)|Tvarožná|SK||032 23
+om|Tvarožná (059 71)|Tvarožná|SK||059 71
+om|Tvrdomestice|Tvrdomestice|SK||956 22
+om|Tvrdošín|Tvrdošín|SK||027 44
+om|Tvrdošovce|Tvrdošovce|SK||941 10
+om|U Hluška|U Hluška|SK||022 01
+om|U Holých|U Holých|SK||023 11
+om|U Kľukov|U Kľukov|SK||023 11
+om|U Kordišov|U Kordišov|SK||023 11
+om|U Polievkov|U Polievkov|SK||023 11
+om|U Rulcov|U Rulcov|SK||023 11
+om|U Siheľnika|U Siheľnika|SK||022 01
+om|Ubľa|Ubľa|SK||067 73
+om|Úbrež|Úbrež|SK||072 42
+om|Udavské|Udavské|SK||067 31
+om|Uderiná|Uderiná|SK||985 54
+om|Udiča|Udiča|SK||018 01
+om|Udička|Udička|SK||018 03
+om|Údol|Údol|SK||065 45
+om|Uhliská|Uhliská|SK||935 05
+om|Úhorná|Úhorná|SK||055 66
+om|Uhorská Ves|Uhorská Ves|SK||032 03
+om|Uhorské|Uhorské|SK||985 25
+om|Uhrovec|Uhrovec|SK||956 41
+om|Uhrovské Podhradie|Uhrovské Podhradie|SK||956 41
+om|Újazd|Újazd|SK||913 31
+om|Uľanka|Uľanka|SK||974 01
+om|Úľany nad Žitavou|Úľany nad Žitavou|SK||941 03
+om|Ulič|Ulič|SK||067 67
+om|Uličské Krivé|Uličské Krivé|SK||067 67
+om|Uloža|Uloža|SK||053 71
+om|Uňatín|Uňatín|SK||962 41
+om|Unín|Unín|SK||908 46
+om|Upohlav|Upohlav|SK||018 01
+om|Úpor|Úpor|SK||076 16
+om|Urmince|Urmince|SK||956 02
+om|Ústie nad Priehradou|Ústie nad Priehradou|SK||028 01
+om|Úsvit|Úsvit|SK||059 11
+om|Utekáč|Utekáč|SK||985 06
+om|Uzovce|Uzovce|SK||082 66
+om|Uzovská Panica|Uzovská Panica|SK||980 22
+om|Uzovské Pekľany|Uzovské Pekľany|SK||082 63
+om|Uzovský Šalgov|Uzovský Šalgov|SK||082 61
+om|Vaďovce|Vaďovce|SK||916 13
+om|Vagrinec|Vagrinec|SK||090 03
+om|Váhovce|Váhovce|SK||925 62
+om|Vajka nad Žitavou|Vajka nad Žitavou|SK||951 88
+om|Vajkovce|Vajkovce|SK||044 43
+om|Vajsková|Vajsková|SK||976 98
+om|Valaliky|Valaliky|SK||044 13
+om|Valaská|Valaská|SK||976 46
+om|Valaská Belá|Valaská Belá|SK||972 28
+om|Valaská Dubová|Valaská Dubová|SK||034 96
+om|Valaškovce|Valaškovce|SK||066 01
+om|Valča|Valča|SK||038 35
+om|Valentová (038 43)|Valentová|SK||038 43
+om|Valentová (976 02)|Valentová|SK||976 02
+om|Valentovce|Valentovce|SK||067 01
+om|Valice|Valice|SK||982 52
+om|Valkovce|Valkovce|SK||090 42
+om|Vaľkovňa|Vaľkovňa|SK||976 69
+om|Vaľkovo|Vaľkovo|SK||985 03
+om|Vaniškovce|Vaniškovce|SK||086 41
+om|Vaňovka|Vaňovka|SK||029 52
+om|Vápeník|Vápeník|SK||090 02
+om|Varadka|Varadka|SK||086 36
+om|Varechovce|Varechovce|SK||090 23
+om|Varhaňovce|Varhaňovce|SK||082 05
+om|Varín|Varín|SK||013 03
+om|Varov Šúr|Varov Šúr|SK||919 25
+om|Vasiľov|Vasiľov|SK||029 51
+om|Vavrečka|Vavrečka|SK||029 01
+om|Vavrinec|Vavrinec|SK||094 31
+om|Vavrišovo|Vavrišovo|SK||032 42
+om|Važec|Važec|SK||032 61
+om|Včeláre|Včeláre|SK||044 02
+om|Včelince|Včelince|SK||980 50
+om|Včelinec|Včelinec|SK||979 01
+om|Véč|Véč|SK||076 35
+om|Večelkov|Večelkov|SK||980 34
+om|Vechec|Vechec|SK||094 12
+om|Vék|Vék|SK||947 01
+om|Veľaty|Veľaty|SK||076 15
+om|Velčice (913 04)|Velčice|SK||913 04
+om|Velčice (951 71)|Velčice|SK||951 71
+om|Veličná|Veličná|SK||027 54
+om|Veľká|Veľká|SK||058 01
+om|Veľká Bara|Veľká Bara|SK||076 32
+om|Veľká Budafa|Veľká Budafa|SK||930 34
+om|Veľká Bytča|Veľká Bytča|SK||014 01
+om|Veľká Čalomija|Veľká Čalomija|SK||991 09
+om|Veľká Čausa|Veľká Čausa|SK||971 01
+om|Veľká Čierna|Veľká Čierna|SK||015 01
+om|Veľká Dolina (951 15)|Veľká Dolina|SK||951 15
+om|Veľká Dolina (985 53)|Veľká Dolina|SK||985 53
+om|Veľká Franková|Veľká Franková|SK||059 78
+om|Veľká Gúta|Veľká Gúta|SK||946 03
+om|Veľká Hradná|Veľká Hradná|SK||913 24
+om|Veľká Ida|Veľká Ida|SK||044 55
+om|Veľká Lehota (966 41)|Veľká Lehota|SK||966 41
+om|Veľká Lehota (972 42)|Veľká Lehota|SK||972 42
+om|Veľká Lesná|Veľká Lesná|SK||065 34
+om|Veľká Lodina|Veľká Lodina|SK||044 81
+om|Veľká Lomnica|Veľká Lomnica|SK||059 52
+om|Veľká Lúč|Veľká Lúč|SK||930 03
+om|Veľká Lúka|Veľká Lúka|SK||962 31
+om|Veľká Mača|Veľká Mača|SK||925 32
+om|Veľká Maňa|Veľká Maňa|SK||941 45
+om|Veľká nad Ipľom|Veľká nad Ipľom|SK||985 32
+om|Veľká Paka|Veľká Paka|SK||930 51
+om|Veľká Suchá|Veľká Suchá|SK||980 13
+om|Veľká Tŕňa|Veľká Tŕňa|SK||076 82
+om|Veľká Ves (951 13)|Veľká Ves|SK||951 13
+om|Veľká Ves (985 01)|Veľká Ves|SK||985 01
+om|Veľká Ves nad Ipľom|Veľká Ves nad Ipľom|SK||991 10
+om|Veľké Bedzany|Veľké Bedzany|SK||955 01
+om|Veľké Bielice|Veľké Bielice|SK||958 04
+om|Veľké Bierovce|Veľké Bierovce|SK||913 11
+om|Veľké Blahovo|Veľké Blahovo|SK||930 01
+om|Veľké Borové|Veľké Borové|SK||027 32
+om|Veľké Chlievany|Veľké Chlievany|SK||956 55
+om|Veľké Chyndice|Veľké Chyndice|SK||951 54
+om|Veľké Dálovce|Veľké Dálovce|SK||985 32
+om|Veľké Dravce|Veľké Dravce|SK||985 42
+om|Veľké Držkovce|Veľké Držkovce|SK||956 54
+om|Veľké Dvorany|Veľké Dvorany|SK||956 01
+om|Veľké Dvorníky|Veľké Dvorníky|SK||929 01
+om|Veľké Hoste|Veľké Hoste|SK||956 38
+om|Veľké Kapušany|Veľké Kapušany|SK||079 01
+om|Veľké Košecké Podhradie|Veľké Košecké Podhradie|SK||018 31
+om|Veľké Kosihy|Veľké Kosihy|SK||946 21
+om|Veľké Kostoľany|Veľké Kostoľany|SK||922 07
+om|Veľké Kozmálovce|Veľké Kozmálovce|SK||935 21
+om|Veľké Krškany|Veľké Krškany|SK||934 01
+om|Veľké Kršteňany|Veľké Kršteňany|SK||958 03
+om|Veľké Leváre|Veľké Leváre|SK||908 73
+om|Veľké Lovce|Veľké Lovce|SK||941 42
+om|Veľké Ludince|Veľké Ludince|SK||935 65
+om|Veľké Orvište|Veľké Orvište|SK||922 01
+om|Veľké Ostratice|Veľké Ostratice|SK||956 34
+om|Veľké Ozorovce|Veľké Ozorovce|SK||078 01
+om|Veľké Pole|Veľké Pole|SK||966 74
+om|Veľké Raškovce|Veľké Raškovce|SK||076 75
+om|Veľké Revištia|Veľké Revištia|SK||072 43
+om|Veľké Ripňany|Veľké Ripňany|SK||956 07
+om|Veľké Rovné|Veľké Rovné|SK||013 62
+om|Veľké Slemence|Veľké Slemence|SK||076 77
+om|Veľké Stankovce|Veľké Stankovce|SK||913 11
+om|Veľké Straciny|Veľké Straciny|SK||990 01
+om|Veľké Teriakovce|Veľké Teriakovce|SK||980 51
+om|Veľké Trakany|Veľké Trakany|SK||076 42
+om|Veľké Turovce|Veľké Turovce|SK||935 81
+om|Veľké Uherce|Veľké Uherce|SK||958 41
+om|Veľké Úľany|Veľké Úľany|SK||925 22
+om|Veľké Vozokany|Veľké Vozokany|SK||951 82
+om|Veľké Zalužice|Veľké Zalužice|SK||072 34
+om|Veľké Zálužie|Veľké Zálužie|SK||951 35
+om|Veľké Zlievce|Veľké Zlievce|SK||991 23
+om|Veľkrop|Veľkrop|SK||091 01
+om|Veľký Báb|Veľký Báb|SK||951 34
+om|Veľký Biel|Veľký Biel|SK||900 24
+om|Veľký Blh|Veľký Blh|SK||980 22
+om|Veľký Bysterec|Veľký Bysterec|SK||026 01
+om|Veľký Čepčín|Veľký Čepčín|SK||038 45
+om|Veľký Cetín|Veľký Cetín|SK||951 05
+om|Veľký Ďur|Veľký Ďur|SK||935 34
+om|Veľký Dvor|Veľký Dvor|SK||937 01
+om|Veľký Folkmar|Veľký Folkmar|SK||055 51
+om|Veľký Grob|Veľký Grob|SK||925 27
+om|Veľký Harčáš|Veľký Harčáš|SK||945 01
+om|Veľký Horeš|Veľký Horeš|SK||076 52
+om|Veľký Kamenec|Veľký Kamenec|SK||076 36
+om|Veľký Klíž|Veľký Klíž|SK||958 45
+om|Veľký Kolačín|Veľký Kolačín|SK||018 51
+om|Veľký Krtíš|Veľký Krtíš|SK||990 01
+om|Veľký Kýr|Veľký Kýr|SK||941 07
+om|Veľký Lapáš|Veľký Lapáš|SK||951 04
+om|Veľký Lég|Veľký Lég|SK||930 37
+om|Veľký Lél|Veľký Lél|SK||946 12
+om|Veľký Lipník|Veľký Lipník|SK||065 33
+om|Veľký Lom|Veľký Lom|SK||991 03
+om|Veľký Meder|Veľký Meder|SK||932 01
+om|Veľký Ostrov|Veľký Ostrov|SK||946 03
+om|Veľký Pesek|Veľký Pesek|SK||937 01
+om|Veľký Ruskov|Veľký Ruskov|SK||075 01
+om|Veľký Šariš|Veľký Šariš|SK||082 21
+om|Veľký Slavkov|Veľký Slavkov|SK||059 91
+om|Veľký Slivník|Veľký Slivník|SK||082 67
+om|Veľopolie|Veľopolie|SK||067 31
+om|Velušovce|Velušovce|SK||955 01
+om|Vernár|Vernár|SK||059 17
+om|Veselá|Veselá|SK||935 52
+om|Veselé|Veselé|SK||922 08
+om|Veterná Poruba|Veterná Poruba|SK||031 04
+om|Vidiná|Vidiná|SK||985 59
+om|Vidov Vrch|Vidov Vrch|SK||962 63
+om|Vidová|Vidová|SK||049 11
+om|Vidovany|Vidovany|SK||908 62
+om|Vieska (908 63)|Vieska|SK||908 63
+om|Vieska (916 26)|Vieska|SK||916 26
+om|Vieska (930 02)|Vieska|SK||930 02
+om|Vieska (965 01)|Vieska|SK||965 01
+om|Vieska (972 45)|Vieska|SK||972 45
+om|Vieska (991 02)|Vieska|SK||991 02
+om|Vieska - Bezdedov|Vieska - Bezdedov|SK||020 01
+om|Vieska nad Blhom|Vieska nad Blhom|SK||980 21
+om|Vieska nad Žitavou|Vieska nad Žitavou|SK||951 52
+om|Vígľaš|Vígľaš|SK||962 02
+om|Vígľašská Huta|Vígľašská Huta|SK||962 25
+om|Vikartovce|Vikartovce|SK||059 19
+om|Vinica|Vinica|SK||991 28
+om|Vinice|Vinice|SK||979 01
+om|Viničky|Viničky|SK||076 31
+om|Viničné|Viničné|SK||900 23
+om|Vinné|Vinné|SK||072 31
+om|Vinodol|Vinodol|SK||951 06
+om|Vinohrádok|Vinohrádok|SK||901 01
+om|Vinohrady nad Váhom|Vinohrady nad Váhom|SK||925 55
+om|Vinosady|Vinosady|SK||902 01
+om|Violín|Violín|SK||946 02
+om|Virt|Virt|SK||946 38
+om|Vislanka|Vislanka|SK||065 41
+om|Vislava|Vislava|SK||090 21
+om|Višňov|Višňov|SK||076 61
+om|Višňové (013 23)|Višňové|SK||013 23
+om|Višňové (013 55)|Višňové|SK||013 55
+om|Višňové (916 16)|Višňové|SK||916 16
+om|Višňové (982 62)|Višňové|SK||982 62
+om|Visolaje|Visolaje|SK||018 61
+om|Vištuk|Vištuk|SK||900 85
+om|Vitálišovce|Vitálišovce|SK||031 04
+om|Vitanová|Vitanová|SK||027 12
+om|Víťaz|Víťaz|SK||082 38
+om|Víťazovce|Víťazovce|SK||067 24
+om|Vítkovce|Vítkovce|SK||053 63
+om|Vlača|Vlača|SK||094 31
+om|Vlachovo|Vlachovo|SK||049 24
+om|Vlachy|Vlachy|SK||032 13
+om|Vladiča|Vladiča|SK||090 23
+om|Vlašky|Vlašky|SK||032 13
+om|Vlčany|Vlčany|SK||925 84
+om|Vlčí Vrch|Vlčí Vrch|SK||913 33
+om|Vlčkovany|Vlčkovany|SK||908 62
+om|Vlčkovce|Vlčkovce|SK||919 23
+om|Vlčkovo|Vlčkovo|SK||957 03
+om|Vlčovo|Vlčovo|SK||985 26
+om|Vlkanová|Vlkanová|SK||976 31
+om|Vlkanovo|Vlkanovo|SK||946 54
+om|Vlkas|Vlkas|SK||941 44
+om|Vlkolínec|Vlkolínec|SK||034 03
+om|Vlkov|Vlkov|SK||018 03
+om|Vlková|Vlková|SK||059 72
+om|Vlkovce|Vlkovce|SK||059 71
+om|Vlky|Vlky|SK||900 44
+om|Vlkyňa|Vlkyňa|SK||980 44
+om|Voderady|Voderady|SK||919 42
+om|Vojany|Vojany|SK||076 72
+om|Vojčice|Vojčice|SK||076 22
+om|Vojka|Vojka|SK||076 83
+om|Vojka nad Dunajom|Vojka nad Dunajom|SK||930 31
+om|Vojkovce|Vojkovce|SK||053 61
+om|Vojňany|Vojňany|SK||059 02
+om|Vojnatina|Vojnatina|SK||072 61
+om|Vojtechovce|Vojtechovce|SK||930 38
+om|Vojtovce|Vojtovce|SK||091 01
+om|Vojty|Vojty|SK||022 01
+om|Voľa|Voľa|SK||072 21
+om|Volica|Volica|SK||067 01
+om|Volkovce|Volkovce|SK||951 87
+om|Voznica|Voznica|SK||966 81
+om|Vozokany (925 05)|Vozokany|SK||925 05
+om|Vozokany (956 05)|Vozokany|SK||956 05
+om|Vozokany nad Hronom|Vozokany nad Hronom|SK||935 61
+om|Vráble|Vráble|SK||952 01
+om|Vrádište|Vrádište|SK||908 49
+om|Vrakúň|Vrakúň|SK||930 25
+om|Vranie|Vranie|SK||010 14
+om|Vranov|Vranov|SK||093 01
+om|Vranov nad Topľou|Vranov nad Topľou|SK||
+om|Vrbany|Vrbany|SK||972 24
+om|Vrbina|Vrbina|SK||930 08
+om|Vrbnica|Vrbnica|SK||072 16
+om|Vrbov|Vrbov|SK||059 72
+om|Vrbová nad Váhom|Vrbová nad Váhom|SK||945 01
+om|Vrbovce|Vrbovce|SK||906 06
+om|Vrbovce nad Rimavou|Vrbovce nad Rimavou|SK||980 52
+om|Vrbové|Vrbové|SK||922 03
+om|Vŕbovec|Vŕbovec|SK||071 01
+om|Vrbovka|Vrbovka|SK||991 06
+om|Vrchdobroč|Vrchdobroč|SK||962 05
+om|Vrchpredmier|Vrchpredmier|SK||023 22
+om|Vrchrieka|Vrchrieka|SK||023 55
+om|Vrchslatina|Vrchslatina|SK||976 53
+om|Vrchteplá|Vrchteplá|SK||017 05
+om|Vrícko|Vrícko|SK||038 31
+om|Vršatské Podhradie|Vršatské Podhradie|SK||018 52
+om|Vrtižer|Vrtižer|SK||017 05
+om|Vrútky|Vrútky|SK||038 61
+om|Všechsvätých|Všechsvätých|SK||044 13
+om|Vtáčkovce|Vtáčkovce|SK||044 47
+om|Výborná|Výborná|SK||059 02
+om|Vybúchanec|Vybúchanec|SK||071 01
+om|Výčapky|Výčapky|SK||951 25
+om|Výčapy - Opatovce|Výčapy - Opatovce|SK||951 44
+om|Východná|Východná|SK||032 32
+om|Vychylovka|Vychylovka|SK||023 05
+om|Vydraň|Vydraň|SK||068 01
+om|Vydrany|Vydrany|SK||930 16
+om|Vydrná|Vydrná|SK||020 53
+om|Vydrník|Vydrník|SK||059 14
+om|Vydrovo|Vydrovo|SK||976 52
+om|Vydumanec|Vydumanec|SK||080 01
+om|Vyhne|Vyhne|SK||966 02
+om|Výrava|Výrava|SK||067 16
+om|Vyšehradné|Vyšehradné|SK||972 13
+om|Vysielač|Vysielač|SK||080 01
+om|Vyškovce|Vyškovce|SK||090 21
+om|Vyškovce nad Ipľom|Vyškovce nad Ipľom|SK||935 77
+om|Vyšná Boca|Vyšná Boca|SK||032 34
+om|Vyšná Hutka|Vyšná Hutka|SK||040 18
+om|Vyšná Jablonka|Vyšná Jablonka|SK||067 34
+om|Vyšná Jedľová|Vyšná Jedľová|SK||089 01
+om|Vyšná Kaloša|Vyšná Kaloša|SK||982 52
+om|Vyšná Kamenica|Vyšná Kamenica|SK||044 45
+om|Vyšná Korňa|Vyšná Korňa|SK||023 21
+om|Vyšná Myšľa|Vyšná Myšľa|SK||044 15
+om|Vyšná Olšava|Vyšná Olšava|SK||090 32
+om|Vyšná Pisaná|Vyšná Pisaná|SK||090 01
+om|Vyšná Pokoradz|Vyšná Pokoradz|SK||979 01
+om|Vyšná Polianka|Vyšná Polianka|SK||086 36
+om|Vyšná Revúca|Vyšná Revúca|SK||034 74
+om|Vyšná Rybnica|Vyšná Rybnica|SK||072 41
+om|Vyšná Šebastová|Vyšná Šebastová|SK||080 06
+om|Vyšná Sitnica|Vyšná Sitnica|SK||094 07
+om|Vyšná Slaná|Vyšná Slaná|SK||049 26
+om|Vyšná Vladiča|Vyšná Vladiča|SK||090 23
+om|Vyšná Voľa|Vyšná Voľa|SK||086 21
+om|Vyšné Hágy|Vyšné Hágy|SK||059 84
+om|Vyšné Ladičkovce|Vyšné Ladičkovce|SK||067 11
+om|Vyšné Matiašovce|Vyšné Matiašovce|SK||032 23
+om|Vyšné nad Hronom|Vyšné nad Hronom|SK||935 31
+om|Vyšné Nemecké|Vyšné Nemecké|SK||072 51
+om|Vyšné Raslavice|Vyšné Raslavice|SK||086 41
+om|Vyšné Remety|Vyšné Remety|SK||072 41
+om|Vyšné Repaše|Vyšné Repaše|SK||053 71
+om|Vyšné Revištia|Vyšné Revištia|SK||072 43
+om|Vyšné Ružbachy|Vyšné Ružbachy|SK||065 02
+om|Vyšné Valice|Vyšné Valice|SK||982 52
+om|Vyšný Čaj|Vyšný Čaj|SK||044 16
+om|Vyšný Hrabovec|Vyšný Hrabovec|SK||090 34
+om|Vyšný Hrušov|Vyšný Hrušov|SK||067 32
+om|Vyšný Kazimír|Vyšný Kazimír|SK||094 09
+om|Vyšný Kelčov|Vyšný Kelčov|SK||023 55
+om|Vyšný Klátov|Vyšný Klátov|SK||044 12
+om|Vyšný Komárnik|Vyšný Komárnik|SK||090 05
+om|Vyšný Koniec|Vyšný Koniec|SK||023 54
+om|Vyšný Kručov|Vyšný Kručov|SK||086 45
+om|Vyšný Kubín|Vyšný Kubín|SK||026 01
+om|Vyšný Lánec|Vyšný Lánec|SK||044 74
+om|Vyšný Medzev|Vyšný Medzev|SK||044 25
+om|Vyšný Mirošov|Vyšný Mirošov|SK||090 11
+om|Vyšný Orlík|Vyšný Orlík|SK||090 11
+om|Vyšný Skálnik|Vyšný Skálnik|SK||980 52
+om|Vyšný Slavkov|Vyšný Slavkov|SK||053 73
+om|Vyšný Sliač|Vyšný Sliač|SK||034 84
+om|Vyšný Tvarožec|Vyšný Tvarožec|SK||086 02
+om|Vyšný Žipov|Vyšný Žipov|SK||094 33
+om|Vysočany|Vysočany|SK||956 35
+om|Vysocký Dvor|Vysocký Dvor|SK||072 14
+om|Vysoká (082 74)|Vysoká|SK||082 74
+om|Vysoká (969 01)|Vysoká|SK||969 01
+om|Vysoká nad Kysucou|Vysoká nad Kysucou|SK||023 55
+om|Vysoká nad Uhom|Vysoká nad Uhom|SK||072 14
+om|Vysoká pri Morave|Vysoká pri Morave|SK||900 66
+om|Vysoké Tatry|Vysoké Tatry|SK||062 01
+om|Žabany|Žabany|SK||071 01
+om|Žabica|Žabica|SK||962 05
+om|Zábiedovo|Zábiedovo|SK||028 01
+om|Záblatie|Záblatie|SK||911 06
+om|Žabokreky|Žabokreky|SK||038 40
+om|Žabokreky nad Nitrou|Žabokreky nad Nitrou|SK||958 52
+om|Záborie|Záborie|SK||038 03
+om|Záborské|Záborské|SK||082 53
+om|Zábrež|Zábrež|SK||027 54
+om|Zabudišová|Zabudišová|SK||913 07
+om|Zacharovce|Zacharovce|SK||979 01
+om|Zádiel (032 23)|Zádiel|SK||032 23
+om|Zádiel (044 02)|Zádiel|SK||044 02
+om|Zadné Halny|Zadné Halny|SK||977 01
+om|Zádor|Zádor|SK||980 42
+om|Žadovica|Žadovica|SK||916 16
+om|Zádubnie|Zádubnie|SK||010 03
+om|Zahájnica|Zahájnica|SK||053 33
+om|Záhor|Záhor|SK||072 53
+om|Záhorce|Záhorce|SK||991 06
+om|Záhorčie|Záhorčie|SK||966 81
+om|Záhorie|Záhorie|SK||901 01
+om|Záhorská Ves|Záhorská Ves|SK||900 65
+om|Záhrada|Záhrada|SK||955 01
+om|Záhradné|Záhradné|SK||082 16
+om|Záhrb|Záhrb|SK||968 01
+om|Zaježová|Zaježová|SK||962 63
+om|Zákamenné|Zákamenné|SK||029 56
+om|Žakarovce|Žakarovce|SK||055 71
+om|Zákopčie|Zákopčie|SK||023 11
+om|Žakovce|Žakovce|SK||059 73
+om|Žakýl|Žakýl|SK||969 82
+om|Zákysučie|Zákysučie|SK||023 02
+om|Zalaba|Zalaba|SK||937 01
+om|Zálesie (059 04)|Zálesie|SK||059 04
+om|Zálesie (900 28)|Zálesie|SK||900 28
+om|Žalobín|Žalobín|SK||094 03
+om|Zalužice|Zalužice|SK||072 34
+om|Zamarovce|Zamarovce|SK||911 05
+om|Zámostie|Zámostie|SK||976 97
+om|Zámutov|Zámutov|SK||094 15
+om|Zapriechody|Zapriechody|SK||962 12
+om|Zárieč - Keblov|Zárieč - Keblov|SK||013 32
+om|Záriečie|Záriečie|SK||020 52
+om|Žarnov (013 62)|Žarnov|SK||013 62
+om|Žarnov (044 02)|Žarnov|SK||044 02
+om|Žarnovica|Žarnovica|SK||966 81
+om|Žarnovická Huta|Žarnovická Huta|SK||966 81
+om|Záskalie (017 05)|Záskalie|SK||017 05
+om|Záskalie (026 01)|Záskalie|SK||026 01
+om|Žaškov|Žaškov|SK||027 21
+om|Zástranie|Zástranie|SK||010 03
+om|Zatín|Zatín|SK||076 53
+om|Žatkovce|Žatkovce|SK||082 67
+om|Zátoka|Zátoka|SK||023 55
+om|Záturčie|Záturčie|SK||036 01
+om|Závada (054 01)|Závada|SK||054 01
+om|Závada (094 08)|Závada|SK||094 08
+om|Závada (951 87)|Závada|SK||951 87
+om|Závada (955 01)|Závada|SK||955 01
+om|Závada (991 21)|Závada|SK||991 21
+om|Závada pod Čiernym vrchom|Závada pod Čiernym vrchom|SK||956 41
+om|Závadka (053 33)|Závadka|SK||053 33
+om|Závadka (066 01)|Závadka|SK||066 01
+om|Závadka (072 33)|Závadka|SK||072 33
+om|Závadka (082 67)|Závadka|SK||082 67
+om|Závadka nad Hronom|Závadka nad Hronom|SK||976 67
+om|Zavar|Zavar|SK||919 26
+om|Závažná Poruba|Závažná Poruba|SK||032 02
+om|Závod|Závod|SK||908 72
+om|Závodie (010 04)|Závodie|SK||010 04
+om|Závodie (023 54)|Závodie|SK||023 54
+om|Závodie (065 46)|Závodie|SK||065 46
+om|Zázrivá|Zázrivá|SK||027 05
+om|Zbehňov|Zbehňov|SK||078 01
+om|Zbehy (916 16)|Zbehy|SK||916 16
+om|Zbehy (951 42)|Zbehy|SK||951 42
+om|Žbince|Žbince|SK||072 16
+om|Zboj|Zboj|SK||067 68
+om|Zbojné|Zbojné|SK||067 13
+om|Zbora|Zbora|SK||020 51
+om|Zborov|Zborov|SK||086 33
+om|Zborov nad Bystricou|Zborov nad Bystricou|SK||023 03
+om|Zbrojníky|Zbrojníky|SK||935 55
+om|Zbudská Belá|Zbudská Belá|SK||067 01
+om|Zbudské Dlhé|Zbudské Dlhé|SK||067 12
+om|Zbudza|Zbudza|SK||072 23
+om|Zbyňov|Zbyňov|SK||013 19
+om|Ždaňa|Ždaňa|SK||044 11
+om|Ždiar|Ždiar|SK||059 55
+om|Zdoba|Zdoba|SK||044 41
+om|Žehňa|Žehňa|SK||082 06
+om|Žehra|Žehra|SK||053 61
+om|Zelené|Zelené|SK||987 01
+om|Zeleneč|Zeleneč|SK||919 21
+om|Zelený Háj|Zelený Háj|SK||947 01
+om|Železná Breznica|Železná Breznica|SK||962 34
+om|Železník (049 64)|Železník|SK||049 64
+om|Železník (087 01)|Železník|SK||087 01
+om|Železnô|Železnô|SK||032 15
+om|Želiezovce|Želiezovce|SK||937 01
+om|Želmanovce|Želmanovce|SK||086 44
+om|Želobudza|Želobudza|SK||962 12
+om|Želovce|Želovce|SK||991 06
+om|Žemberovce|Žemberovce|SK||935 02
+om|Zemianska Dedina|Zemianska Dedina|SK||027 43
+om|Zemianska Olča|Zemianska Olča|SK||946 14
+om|Zemianska Závada|Zemianska Závada|SK||018 15
+om|Zemianske Kostoľany|Zemianske Kostoľany|SK||972 43
+om|Zemianske Lieskové|Zemianske Lieskové|SK||913 05
+om|Zemianske Mitice|Zemianske Mitice|SK||913 22
+om|Zemianske Podhradie|Zemianske Podhradie|SK||913 07
+om|Zemianske Sady|Zemianske Sady|SK||925 54
+om|Zemiansky Kvašov|Zemiansky Kvašov|SK||017 07
+om|Zemiansky Vrbovok|Zemiansky Vrbovok|SK||962 41
+om|Žemliare|Žemliare|SK||935 57
+om|Zemné|Zemné|SK||941 22
+om|Zemplín|Zemplín|SK||076 34
+om|Zemplínska Nová Ves|Zemplínska Nová Ves|SK||076 16
+om|Zemplínska Šírava|Zemplínska Šírava|SK||072 36
+om|Zemplínska Široká|Zemplínska Široká|SK||072 13
+om|Zemplínska Teplica|Zemplínska Teplica|SK||076 64
+om|Zemplínske Hámre|Zemplínske Hámre|SK||067 77
+om|Zemplínske Hradište|Zemplínske Hradište|SK||076 01
+om|Zemplínske Jastrabie|Zemplínske Jastrabie|SK||076 05
+om|Zemplínske Kopčany|Zemplínske Kopčany|SK||072 17
+om|Zemplínsky Branč|Zemplínsky Branč|SK||076 02
+om|Zemplínsky Klečenov|Zemplínsky Klečenov|SK||076 16
+om|Žiar (032 05)|Žiar|SK||032 05
+om|Žiar (982 01)|Žiar|SK||982 01
+om|Žiar nad Hronom|Žiar nad Hronom|SK||965 01
+om|Žibritov|Žibritov|SK||963 01
+om|Žihárec|Žihárec|SK||925 83
+om|Žihľava (985 45)|Žihľava|SK||985 45
+om|Žihľava (991 03)|Žihľava|SK||991 03
+om|Žikava|Žikava|SK||951 92
+om|Žilina|Žilina|SK||
+om|Žilinská Lehota|Žilinská Lehota|SK||010 01
+om|Zimná Studňa|Zimná Studňa|SK||082 12
+om|Žíp|Žíp|SK||980 21
+om|Žipov|Žipov|SK||082 41
+om|Žirany|Žirany|SK||951 74
+om|Žírovce|Žírovce|SK||044 45
+om|Žitava|Žitava|SK||946 38
+om|Žitavany|Žitavany|SK||951 97
+om|Žitavce|Žitavce|SK||952 01
+om|Žitná|Žitná|SK||956 41
+om|Žitná - Radiša|Žitná - Radiša|SK||956 41
+om|Zlámaná|Zlámaná|SK||023 55
+om|Zlatá Baňa|Zlatá Baňa|SK||082 52
+om|Zlatá Idka|Zlatá Idka|SK||044 61
+om|Zlatá Osada|Zlatá Osada|SK||945 01
+om|Zlaté|Zlaté|SK||086 01
+om|Zlaté Klasy|Zlaté Klasy|SK||930 39
+om|Zlaté Moravce|Zlaté Moravce|SK||
+om|Zlatná na Ostrove|Zlatná na Ostrove|SK||946 12
+om|Zlatník|Zlatník|SK||094 33
+om|Zlatníky|Zlatníky|SK||956 37
+om|Zlatno (951 91)|Zlatno|SK||951 91
+om|Zlatno (976 69)|Zlatno|SK||976 69
+om|Zlatno (985 03)|Zlatno|SK||985 03
+om|Zlatovce|Zlatovce|SK||911 05
+om|Zliechov|Zliechov|SK||018 32
+om|Žlkovce|Žlkovce|SK||920 42
+om|Zobor|Zobor|SK||949 01
+om|Zohor|Zohor|SK||900 51
+om|Zolná|Zolná|SK||962 21
+om|Zombor|Zombor|SK||991 22
+om|Žrnové|Žrnové|SK||018 03
+om|Zubák|Zubák|SK||020 64
+om|Zuberec|Zuberec|SK||027 32
+om|Zubné|Zubné|SK||067 33
+om|Zubria|Zubria|SK||985 51
+om|Zubrohlava|Zubrohlava|SK||029 43
+om|Župčany|Župčany|SK||080 01
+om|Župkov|Župkov|SK||966 71
+om|Zvolen|Zvolen|SK||
+om|Zvolenská Slatina|Zvolenská Slatina|SK||962 01
+om|Zvončín|Zvončín|SK||919 01
