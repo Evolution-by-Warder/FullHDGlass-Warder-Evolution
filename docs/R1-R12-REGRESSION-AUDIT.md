@@ -106,3 +106,7 @@ TEST4 workflow run `36873574739` on exact commit
 
 Receiver validation is still required for dynamic GUI behaviour. Static/CI PASS is not a substitute
 for receiver confirmation.
+
+## TEST4 r4 revalidation
+
+After adding explicit r4 Open-Meteo regression assertions, workflow run `36875836272` on commit `9c605e3623bbcb0de953b47be118b68c796523af` completed successfully. The cumulative r1-r12 gate, 11,010-location/51-country gate, lifecycle, runtime safety, XML and package integrity gates all PASS. Rebuilt TEST4 IPK SHA256: `b0f804929f189fab66f4f0c720a488cdd82c0dce358cbd876774e5412b02a9f6`; artifact ID `11168722243`; artifact ZIP SHA256 `42a71e19c5378381215111fad1c13c76f672f7096ed2c71604ecaa44f6e49fb0`.
