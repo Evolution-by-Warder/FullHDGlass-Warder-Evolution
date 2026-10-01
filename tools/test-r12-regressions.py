@@ -448,3 +448,8 @@ assert 'graph_servicetitle_mode.value = "picon"' in PLUGIN
 assert 'graph_piconwidth.value = 60' in PLUGIN
 assert 'MessageBox.TYPE_INFO, 5, enable_input=False' in PLUGIN
 assert 'warderRestartTimer.start(3000, True)' in PLUGIN
+
+# TEST27: suppress OpenATV window-decoration bouquet title only for GraphicalEPGPIG.
+assert 'def warderEPGSelectionSetTitle(self, title, *args, **kwargs):' in PLUGIN
+assert 'getattr(self, "skinName", None) == "GraphicalEPGPIG"' in PLUGIN
+assert 'title = ""' in PLUGIN

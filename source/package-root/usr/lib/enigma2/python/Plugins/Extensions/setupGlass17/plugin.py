@@ -974,6 +974,21 @@ def chckPMS():
 				w = True
 	return w
 ##########################################################################################################################
+# Warder GraphicalEPGPIG title suppression. OpenATV sets the current bouquet via
+# Screen.setTitle(), which is rendered by the desktop window decoration outside
+# the skin screen. Keep the override scoped to our PIG graphical guide only.
+WarderEPGSelection_setTitle = None
+try:
+	from Screens.EpgSelection import EPGSelection as WarderEPGSelection
+	WarderEPGSelection_setTitle = WarderEPGSelection.setTitle
+	def warderEPGSelectionSetTitle(self, title, *args, **kwargs):
+		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
+			title = ""
+		return WarderEPGSelection_setTitle(self, title, *args, **kwargs)
+	WarderEPGSelection.setTitle = warderEPGSelectionSetTitle
+except Exception:
+	pass
+
 def startHdg17(reason, **kwargs):
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		# Warder native graphical EPG: picons only, compact service column.
