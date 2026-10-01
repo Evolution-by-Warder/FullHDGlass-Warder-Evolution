@@ -1937,15 +1937,16 @@ def chckPath(path):
 			if tmp[x] != "":
 				p += "/" + tmp[x]
 				if not os.path.exists(p):
-					system("mkdir " + p)
-	else: # remove old dirs
-		for x in ['piconWeather']:
-			if os.path.exists(path+"/"+x):
-				system("rm -rf  " + path + "/"+x+"/*")
-				system("rmdir " + path + "/"+x)
+					try:
+						os.mkdir(p)
+					except OSError:
+						return False
 	for x in allpicons:
 		if not os.path.exists(path+"/"+x):
-			system("mkdir " + path + "/"+x)
+			try:
+				os.mkdir(path+"/"+x)
+			except OSError:
+				pass
 			if not os.path.exists(path+"/"+x):
 				msg = False
 	return msg
