@@ -3091,13 +3091,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_mainmenu-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3120,13 +3115,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_information-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3149,13 +3139,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_setup-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3178,13 +3163,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_scan-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3207,13 +3187,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_system-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3236,13 +3211,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_harddisk-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3265,13 +3235,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 <screen name="menu_shutdown-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
@@ -3294,13 +3259,8 @@
   }
   </convert>
   </widget>
-  <widget source="menu" render="Listbox" position="1005,810" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
-    <convert type="TemplatedMultiContent">
-  {"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-  "fonts": [gFont("Prive3", 30)],
-  "itemHeight": 52
-  }
-</convert>
+  <widget source="menu" render="Label" position="1005,810" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
 </widget>
 </screen>
 		<screen name="Menu-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
@@ -3452,14 +3412,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3484,14 +3439,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3516,14 +3466,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3548,14 +3493,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3580,14 +3520,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3612,14 +3547,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3644,14 +3574,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3676,14 +3601,9 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="975,960" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 12), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 52
-				}
-			</convert>
-		</widget>
+    <widget source="menu" render="Label" position="975,960" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="990,120" zPosition="-1" size="810,810" alphatest="on">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
@@ -3886,14 +3806,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -3918,14 +3833,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -3950,14 +3860,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -3982,14 +3887,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4014,14 +3914,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4046,14 +3941,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4078,14 +3968,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4110,14 +3995,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1350,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4156,14 +4036,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4201,14 +4076,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4246,14 +4116,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4291,14 +4156,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4336,14 +4196,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4381,14 +4236,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4426,14 +4276,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>
@@ -4471,14 +4316,9 @@
 				}
 	  </convert>
     </widget>
-    <widget source="menu"  render="Listbox" position="990,975" size="840,60" backgroundColor="black" selectionPixmap="hd_glass17/buttons/selected-menu.png" zPosition="11" enableWrapAround="1" scrollbarMode="showNever" transparent="1" >
-     <convert type="TemplatedMultiContent">
-				{"template": [ MultiContentEntryText(pos = (0, 7), size = (840, 45), flags = RT_HALIGN_CENTER, text = 0) ],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 60
-				}
-	  </convert>
-	</widget>
+    <widget source="menu" render="Label" position="990,975" size="840,60" zPosition="11" font="Prive3;30" halign="center" valign="center" backgroundColor="black" transparent="1">
+  <convert type="g17MenuCurrentText">Current</convert>
+</widget>
     <widget source="menu" render="g17MenuEntry2" position="1357,162" pictType="2" zPosition="-1" size="502,810" alphatest="on">
 	  <convert type="g17GenerateMenuEntry2">entryID</convert>
 	</widget>

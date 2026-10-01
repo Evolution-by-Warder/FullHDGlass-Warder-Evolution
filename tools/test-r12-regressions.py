@@ -284,6 +284,19 @@ for token in (
 ):
     assert token in PLUGIN, token
 
+# r11/r12 PIG menu navigation fix: PIG variants 3/10/11/13 must not bind
+# a second Listbox to the same menu source. The mirrored current item is a Label.
+HDG = open(os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml"), "r", encoding="utf-8").read()
+for suffix in ("3", "10", "11", "13"):
+    for screen in ("Menu", "menu_mainmenu", "menu_information", "menu_setup", "menu_scan", "menu_system", "menu_harddisk", "menu_shutdown"):
+        start = HDG.find('<screen name="%s-%s"' % (screen, suffix))
+        assert start >= 0, (screen, suffix)
+        end = HDG.find("</screen>", start)
+        block = HDG[start:end]
+        assert block.count('source="menu" render="Listbox"') == 1, (screen, suffix)
+        assert block.count('source="menu" render="Label"') == 1, (screen, suffix)
+        assert 'g17MenuCurrentText' in block, (screen, suffix)
+
 # Infobar/EPG event integration retained from r12: service start, event update,
 # user weather overlay and timeout handling must remain wired.
 for token in (
