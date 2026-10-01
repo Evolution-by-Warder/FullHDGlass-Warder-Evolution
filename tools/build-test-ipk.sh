@@ -66,7 +66,7 @@ rm -f "$OUT"
   ar rcs "$OUT" debian-binary control.tar.gz data.tar.gz
 )
 
-test "$(ar t "$OUT" | tr '\\n' ' ')" = "debian-binary control.tar.gz data.tar.gz "
+test "$(ar t "$OUT" | tr '\n' ' ')" = "debian-binary control.tar.gz data.tar.gz "
 (
   cd "$OUTDIR"
   sha256sum "$(basename "$OUT")" > "$(basename "$OUT").sha256"
