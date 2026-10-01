@@ -3209,10 +3209,15 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
-# Active ExtraInfo17 instance for live weather refresh after city change.\nG17_EXTRAINFO_INSTANCE = None\n\nclass ExtraInfo17(Screen):
+# Active ExtraInfo17 instance for live weather refresh after city change.
+G17_EXTRAINFO_INSTANCE = None
+
+class ExtraInfo17(Screen):
 				
 	def __init__(self, session):
+		global G17_EXTRAINFO_INSTANCE
 		Screen.__init__(self, session)
+		G17_EXTRAINFO_INSTANCE = self
 		self.skin = fromCfg()
 		self.session = session								
 		self.allCaids = {
@@ -4064,6 +4069,17 @@ class SpecialScreen(Screen):
 		try:
 			os.remove("/tmp/ecm.info")
 		except OSError:
+			pass
+
+	def refreshWeatherNow(self):
+		"""Refresh the active Infobar weather after changing the configured city."""
+		if not self.enaWeainf:
+			return
+		try:
+			if self.clrMemTimer.isActive():
+				self.clrMemTimer.stop()
+			self.clrMemTimer.startLongTimer(1)
+		except:
 			pass
 
 	def clearMem(self):
@@ -9292,4 +9308,3 @@ class dirBrowser(Screen):
 		if self["filelist"].canDescent():
 			self["filelist"].descent()
 			self.updTitle()					
-					\t\tglobal G17_EXTRAINFO_INSTANCE\n\tdef refreshWeatherNow(self):\n\t\t\"\"\"Refresh the active Infobar weather after changing the configured city.\"\"\"\n\t\tif not self.enaWeainf:\n\t\t\treturn\n\t\ttry:\n\t\t\tif self.clrMemTimer.isActive():\n\t\t\t\tself.clrMemTimer.stop()\n\t\t\tself.clrMemTimer.startLongTimer(1)\n\t\texcept:\n\t\t\tpass\n\n
