@@ -477,31 +477,93 @@ class selectCity(Screen):
 		
 	def select(self):
 		selection = self['list'].getCurrent()
-		if selection:
-			self.close(str(selection[1]))
-		self.exit()
+		if selection and selection[1] not in ("x", "__country__"):
+			value = selection[1]
+			if value.startswith("q|"):
+				try:
+					p = value.split("|")
+					city, cc, country = p[1], p[2], p[4]
+					url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({'name': city, 'count': 10, 'language': 'en', 'countryCode': cc, 'format': 'json'})
+					req = Request(url, headers={'User-Agent': 'FullHDGlass17-Warder-Evolution/1.0.5-test5'})
+					r = urlopen(req, timeout=12)
+					try: raw = r.read()
+					finally:
+						try: r.close()
+						except: pass
+					if not isinstance(raw, str): raw = raw.decode('utf-8', 'replace')
+					results = json.loads(raw).get('results') or []
+					if not results: raise Exception("Location not found: " + city)
+					want = city.lower(); hit = None
+					for x in results:
+						if str(x.get('name','')).lower() == want: hit = x; break
+					if hit is None: hit = results[0]
+					name=hit.get('name',city); lat=hit.get('latitude'); lon=hit.get('longitude'); admin=hit.get('admin1','')
+					value2 = "c|%s|%s|%s|%s|%s" % (name, lat, lon, country, admin)
+					f=open(self.fileName,'r'); txt=f.read(); f.close(); txt=txt.replace(value,value2,1)
+					f=open(self.fileName,'w'); f.write(txt); f.close(); value=value2
+				except Exception as e:
+					Writelog("bundled city resolve: %s" % e); return
+			self.close(str(value))
 		
 	def mainFnc(self,w="",d=False):
 		self.setWindowTitle()
 		self.list = []
 		allLines = []
+		cityNo = 0
 		try:
 			with open(self.fileName, "r") as f:
 				lines = [x.strip() for x in f.readlines() if x.strip() and x.strip() != "None"]
+			# Upgrade an older flat q| list in place to the r12 country-section layout.
+			if lines and not any(x.startswith("#") for x in lines):
+				groups = {}
+				for value in lines:
+					if "|" in value and len(value.split("|")) >= 6:
+						p = value.split("|")
+						country = p[4] or p[2]
+						groups.setdefault(country, []).append(value)
+				order = [c for c in ("Slovakia", "Czechia") if c in groups]
+				order += sorted([c for c in groups if c not in order], key=lambda x: x.lower())
+				lines = []
+				for country in order:
+					lines.append("# " + country)
+					lines.extend(sorted(groups[country], key=lambda v: v.split("|")[1].lower()))
 			for value in lines:
-				valid = ('|' in value and len(value.split('|')) >= 6) or (',' in value and len(value.split(',')) == 4)
+				if value.startswith("#"):
+					country = value[1:].strip()
+					if country:
+						if self.list:
+							self.list.append(("", "__country__"))
+						self.list.append((country.upper(), "__country__"))
+						cityNo = 0
+					allLines.append(value)
+					continue
+				valid = ('|' in value and len(value.split('|')) >= 6 and value.split('|')[0] in ('c','q')) or (',' in value and len(value.split(',')) == 4)
 				if not valid:
 					continue
 				if d and value == w:
 					continue
 				allLines.append(value)
 				if '|' in value:
-					p = value.split('|'); label = p[1] + (", " + p[5] if p[5] else "") + (", " + p[4] if p[4] else "")
+					p = value.split('|')
+					label = p[1] + (", " + p[5] if p[5] else "")
 				else:
 					p = value.split(','); label = p[2]
-				self.list.append((str(len(self.list)+1) + ".    " + label, value))
+				cityNo += 1
+				self.list.append((str(cityNo) + ".    " + label, value))
+			cleanLines = []
+			for i, value in enumerate(allLines):
+				if value.startswith("#"):
+					hasCity = False
+					for nxt in allLines[i + 1:]:
+						if nxt.startswith("#"):
+							break
+						if nxt.strip():
+							hasCity = True; break
+					if not hasCity:
+						continue
+				cleanLines.append(value)
 			with open(self.fileName, "w") as f:
-				f.write(("\n".join(allLines) + "\n") if allLines else "None\n")
+				f.write(("\n".join(cleanLines) + "\n") if cleanLines else "None\n")
 		except Exception as e:
 			Writelog("city list: %s" % e)
 		if not self.list:
@@ -511,7 +573,7 @@ class selectCity(Screen):
 	def blueKey(self):
 		if config.plugins.setupGlass17.par151.value == "0":
 			selection = self['list'].getCurrent()
-			if selection and selection[1] != "x":
+			if selection and selection[1] not in ("x", "__country__"):
 				self.mainFnc(selection[1])
 
 	def redKey(self):
