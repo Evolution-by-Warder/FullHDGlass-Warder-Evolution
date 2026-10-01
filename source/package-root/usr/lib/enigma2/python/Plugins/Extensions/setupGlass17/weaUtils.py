@@ -5,6 +5,7 @@ try:
 except: pass
 import os
 import codecs
+import json
 import time as time1
 from datetime import date, time
 import math
@@ -296,6 +297,27 @@ def windDir(deg):
 	except: return 'N'
 
 _OPENMETEO_CACHE = {}
+_OPENMETEO_CACHE_FILE = "/etc/enigma2/fullhdglass17-openmeteo-cache.json"
+
+def _loadOpenMeteoCache():
+	try:
+		with open(_OPENMETEO_CACHE_FILE, "r") as f:
+			data = json.load(f)
+		if isinstance(data, dict):
+			for key, item in data.items():
+				if isinstance(item, list) and len(item) == 2:
+					_OPENMETEO_CACHE[key] = (float(item[0]), item[1])
+	except: pass
+
+def _saveOpenMeteoCache():
+	try:
+		tmp = _OPENMETEO_CACHE_FILE + ".tmp"
+		with open(tmp, "w") as f:
+			json.dump(dict((k, [v[0], v[1]]) for k, v in _OPENMETEO_CACHE.items()), f)
+		os.rename(tmp, _OPENMETEO_CACHE_FILE)
+	except: pass
+
+_loadOpenMeteoCache()
 
 def openMeteo(city, unit='C', days=6):
 	try:
@@ -352,6 +374,10 @@ def openMeteo(city, unit='C', days=6):
 		p={'latitude':lat,'longitude':lon,'timezone':'auto','forecast_days':max(1,min(int(days),10)),'current':'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,surface_pressure,wind_speed_10m,wind_direction_10m,visibility','daily':'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,wind_speed_10m_max,wind_direction_10m_dominant','temperature_unit':'fahrenheit' if uf else 'celsius','wind_speed_unit':'mph' if uf else 'kmh'}
 		d=get('https://api.open-meteo.com/v1/forecast?'+urlencode(p)); d['_location']=loc
 		_OPENMETEO_CACHE[ckey] = (time1.time(), d)
+		_saveOpenMeteoCache()
 		return d
 	except Exception as e:
+		cached = _OPENMETEO_CACHE.get(ckey)
+		if cached:
+			return cached[1]
 		raise e
