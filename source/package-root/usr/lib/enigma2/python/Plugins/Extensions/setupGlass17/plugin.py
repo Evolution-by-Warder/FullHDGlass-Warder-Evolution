@@ -230,7 +230,7 @@ ALL_CFG = [
 		'User info type','Permanent user info','Act/next event','Neutrino','Bitrate limit','','','','','OLED off',    
 		'Black/white','Audio type','','Style','Title color','EPG list font size','Mute transparency','Sat names only','Translation','Display CW0/1',
 		'Volume x-pos.','Volume y-pos.','Font size event','EPG selection type','Ignore timeout','Animated Weather Icons','Net connect','Clearmem','Encoding-user','Empty icons in menu type icons',
-		'','ChannelSel 2xOK','Anim in menu type icons','screensaver in radio mode','Spinner','Animated icons eWeather','Service scan long list','PIG type','MenuIcons','',
+		'','ChannelSel 2xOK','Anim in menu type icons','screensaver in radio mode','','Animated icons eWeather','Service scan long list','PIG type','MenuIcons','',
 		'Weather nextCity','IconsWeather','Special info timeout','ECM refresh','Update','Text rolling','Delay text rolling','Special info extensions','CH. name type','Address','Provider','Temp/RPM','CPU/Mem','Temp.HDD',
 		'Special info mainmenu','Weather units','Weather reloading time','Weather provider','','','wea-autoreconnect time','Show yesterday',
 		'Warm color','Cold color','Fair color','Warm temperature','Cold temperature','Ewea city','','','Show astro(eWea)','D.icon CAM','D.icon type',
@@ -420,7 +420,7 @@ config.plugins.setupGlass17.par61 = ConfigText("0", False) # used for ok option 
 config.plugins.setupGlass17.par62 = ConfigYesNo(default = False) # enable ChannelSel patch 2xOK
 config.plugins.setupGlass17.par63 = ConfigYesNo(default = False) # enable anim for menu: Icons Bar
 config.plugins.setupGlass17.par64 = ConfigYesNo(default = False) # enable screensaver in radio mode  
-config.plugins.setupGlass17.par65 = ConfigYesNo(default = True) # spinner
+config.plugins.setupGlass17.par65 = NoSave(ConfigYesNo(default = False)) # retired spinner setting; compatibility placeholder only
 config.plugins.setupGlass17.par66 = ConfigYesNo(default = False) # animated ewea
 config.plugins.setupGlass17.par67 = ConfigYesNo(default = False) # service scan long list
 config.plugins.setupGlass17.par68 = ConfigSelection(default="0", choices = [("0",_("with frame")),("1",_("big"))]) # PIG type
@@ -717,7 +717,7 @@ def autoHdd():
 									if len(b) == 3 and b.startswith("sd"):
 										break
 							a.close()
-							os.system("rm -rf /tmp/sd")
+							try:\n\t\t\t\t\t\t\t\tos.remove("/tmp/sd")\n\t\t\t\t\t\t\texcept OSError:\n\t\t\t\t\t\t\t\tpass
 							if len(b) == 3 and b.startswith("sd"):
 								return "/dev/"+b
 		except: pass   	
@@ -2802,7 +2802,7 @@ class AutoStartChck17():
 				self.session.open(MessageBox, _("GUI will now be restarted to activate restored options:") + "\n" + msg, MessageBox.TYPE_INFO, 5)				
 			except: pass
 			self.start_timerExec.start(4000, True)
-		system("rm -rf " + SHAREPATH + "hd_glass17/icons/about1.png")
+		try:\n\t\t\tos.remove(SHAREPATH + "hd_glass17/icons/about1.png")\n\t\texcept OSError:\n\t\t\tpass
 
 	def rstnow(self):
 		if XCPU != "sh4":
@@ -3222,7 +3222,7 @@ class ExtraInfo17(Screen):
 			self.enaProvSat = True
 		self.enaWeainf = config.plugins.setupGlass17.par8.value in ("3","4","5","6") and self.enaProvSat
 		if (config.plugins.setupGlass17.par58.value and ECL) or self.enaWeainf:
-			system("rm -rf "+XML_FILE)
+			try:\n\t\t\t\tos.remove(XML_FILE)\n\t\t\texcept OSError:\n\t\t\t\tpass
 			self.wConsole = wConsole()
 			self.refreshValue = 900
 			self.count = 0
@@ -3929,7 +3929,7 @@ class ExtraInfo17(Screen):
 		self['caidPids'].hide()
 		self['caidPids_back'].hide()
 		self['caidPids_end'].hide()
-		system("rm -rf /tmp/ecm.info")
+		try:\n\t\t\tos.remove("/tmp/ecm.info")\n\t\texcept OSError:\n\t\t\tpass
 
 	def clearMem(self):
 		self.clrMemTimer.stop()
@@ -6597,8 +6597,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			filename = "139-"+TF(config.plugins.setupGlass17.par139.value)
 		elif t == config.plugins.setupGlass17.par142:
 			filename = "142-"+TF(config.plugins.setupGlass17.par142.value)
-		elif t == config.plugins.setupGlass17.par65:
-			filename = "6517-"+TF(config.plugins.setupGlass17.par65.value)
 		elif t == config.plugins.setupGlass17.par143:
 			filename = "143n-"+TF(config.plugins.setupGlass17.par143.value)
 		elif t == config.plugins.setupGlass17.par184:
@@ -7788,8 +7786,13 @@ class downloadMenu(Screen):
 					for x in f:
 						total += 1
 						if self.chck(x):
-							system("rm -rf %s/%s" % (actDir, x))
-							if not os.path.isfile("%s/%s" % (actDir, x)):
+							candidate = os.path.join(actDir, x)
+							try:
+								if os.path.isfile(candidate) or os.path.islink(candidate):
+									os.unlink(candidate)
+							except OSError:
+								pass
+							if not os.path.lexists(candidate):
 								numPict += 1
 			self.dwnLoop(_("SUCCESSFUL")+": "+_("Total:") + " " + str(total) + ", " + _("Deleted:") + " " + str(numPict))	
 		
