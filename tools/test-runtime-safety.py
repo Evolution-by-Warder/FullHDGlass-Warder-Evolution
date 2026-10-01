@@ -50,6 +50,12 @@ if plugin.count(asset_prefix) < 2 or "unsafe asset redirect" not in plugin:
     fail("plugin.py: Warder asset payload channel/redirect guards missing")
 if "if isATV:" not in plugin[plugin.find("def chnlSelPatch"):plugin.find("def writeStyleCfg")]:
     fail("plugin.py: OpenATV ChannelSelection patch guard missing")
+menu_guard = plugin[plugin.find("def setMenuPyo"):plugin.find("def chckPath")]
+if "if isATV:" not in menu_guard:
+    fail("plugin.py: OpenATV Menu.py ownership guard missing")
+encoding_guard = plugin[plugin.find("def setEncodingUser"):plugin.find("def setCFGoff")]
+if "if isATV:" not in encoding_guard:
+    fail("plugin.py: OpenATV encoding.conf ownership guard missing")
 official_packages = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
 if plugin.count(official_packages) < 2:
     fail("plugin.py: updater is not pinned at both metadata and pre-install gates")
