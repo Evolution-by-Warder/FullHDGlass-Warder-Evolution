@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 20
-Purpose: large cumulative r1-r12 cleanup batch; detach retired provider/API lifecycle, modernize legacy help text, retain Open-Meteo localization, complete r12/PIG/weather/Warder regression gates.
+Revision: 21
+Purpose: deep cumulative r1-r12 weather localization batch; unify Classic/Enhanced WMO vocabulary, complete shipped language catalogs, compile PO to MO deterministically, retain provider/PIG/Opkg/lifecycle/safety gates.
