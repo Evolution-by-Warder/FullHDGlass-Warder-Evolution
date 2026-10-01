@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test20
-Revision: 76
-Purpose: Re-run TEST20 after repairing workflow/test-gate text generation. Package metadata remains Version 1.0.5-test20-1; runtime/updater identity remains 1.0.5-test20. No weather or PIG implementation changes.
+Candidate: 1.0.5-test21
+Revision: 77
+Purpose: Add the missing OpenATV MessageBoxModal skin definition used by MediaScanner before OpkgInstaller. Match the established FullHDGlass17 MessageBox visual language; do not alter the already approved OpkgInstaller, TEST18 weather, TEST19 PIG, or TEST20 package-version behavior.

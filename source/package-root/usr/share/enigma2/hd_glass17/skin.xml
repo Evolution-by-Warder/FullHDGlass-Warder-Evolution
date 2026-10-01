@@ -950,6 +950,12 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     </applet>
   </screen>
 
+  <screen name="MessageBoxModal" position="center,center" size="1400,550" title="Message">
+    <widget name="text" position="110,30" size="1240,150" font="Prive3;33" zPosition="1" />
+    <widget name="icon" position="15,30" size="79,79" pixmaps="hd_glass17/icons/input_question.png,hd_glass17/icons/input_info.png,hd_glass17/icons/input_info.png,hd_glass17/icons/input_error.png,hd_glass17/icons/input_info.png" alphatest="blend" conditional="icon" scale="1" transparent="1" />
+    <widget name="list" position="50,210" size="1300,280" font="Regular;34" itemHeight="50" zPosition="2" scrollbarMode="showOnDemand" transparent="1" />
+  </screen>
+
   <screen name="MessageBox-template">
     <widget name="text" position="110,30" size="1040,150" font="Prive3;33" zPosition="1" />
     <widget name="icon" position="15,30" size="79,79" pixmaps="hd_glass17/icons/input_question.png,hd_glass17/icons/input_info.png,hd_glass17/icons/input_info.png,hd_glass17/icons/input_error.png,hd_glass17/icons/input_info.png" alphatest="blend" conditional="icon" scale="1" transparent="1" />
