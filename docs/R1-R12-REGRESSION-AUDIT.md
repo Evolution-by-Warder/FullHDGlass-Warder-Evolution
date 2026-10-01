@@ -9,19 +9,27 @@ OpenATV/Python modernization.
 
 - r7, r9, r10 and r12: preserved SK/EN changelog files are available.
 - r8 and r11: maintainer-published changelogs were recovered from the FullHDGlass17 forum thread.
-- r1-r6: separate standalone changelog files were not present in the available Library/forum search.
-  Their cumulative end state is therefore verified against the supplied original r12 IPK instead of
-  inventing missing release notes. r7 explicitly requires preservation of the working r6 weather
-  fixes, including current temperature and static weather icon support in Infobar.
+- r4: a preserved maintainer audit note explicitly covers the original open/_exit behaviour, all Open-Meteo UI setText() updates, city/region/country, city-search results, saving the selected location, WMO descriptions, dates, sunrise/sunset, wind and Open-Meteo error text.
+- r1-r3 and r5-r6: separate standalone changelog files were not present in the available sources. Their cumulative end state is therefore verified against the supplied original r12 IPK instead of inventing missing release notes. r7 explicitly requires preservation of the working r6 weather fixes, including current temperature and static weather icon support in Infobar.
 
 ## Cumulative requirements now guarded
 
-### r1-r6 inherited baseline
+### r1-r3 inherited baseline
 - Preserve the original FullHDGlass17 visual/GUI structure and legacy functionality represented by r12.
-- Preserve the working weather fixes inherited by r7, including current temperature and static
-  weather icon support in Infobar.
 - Do not reintroduce obsolete/insecure network or destructive lifecycle implementation merely to
   match old source; preserve the functional result with Warder-safe implementation.
+
+### r4
+- Preserve the original Open-Meteo screen open/exit lifecycle.
+- Preserve the Open-Meteo UI update path (setText() outputs) represented by the r12 implementation.
+- Preserve city, region/country and city-search result handling.
+- Preserve saving the selected location.
+- Preserve WMO condition descriptions, dates, sunrise/sunset, wind and other weather values.
+- Preserve a visible Open-Meteo error message instead of an unhandled exception.
+
+### r5-r6 inherited baseline
+- Preserve the cumulative weather fixes carried forward into r7.
+- Preserve working current temperature and static weather icon support in Infobar.
 
 ### r7
 - Open-Meteo location management.
