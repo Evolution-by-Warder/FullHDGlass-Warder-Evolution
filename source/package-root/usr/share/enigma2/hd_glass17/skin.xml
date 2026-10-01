@@ -3045,7 +3045,20 @@ if IS_VU:
     <widget name="label" position="15,105" size="1350,600" font="Prive3;30" />
   </screen>
 	<!-- VideoWizard Anfang -->
-	<screen name="VideoWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" >
+	  <!-- Current OpenATV WizardInstall / InstallWizard compatibility. -->
+  <screen name="WizardInstall" position="center,180" size="1500,720" title="Installation wizard">
+    <widget name="config" position="45,45" size="1410,630" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+  </screen>
+  <screen name="InstallWizard" position="center,180" size="1500,720" title="Installation wizard">
+    <widget name="config" position="45,45" size="1410,630" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+  </screen>
+  <screen name="WizardInstallSmallBox" position="center,center" size="900,300" title="Small Box Preparation">
+    <widget source="status" render="Label" position="45,70" size="810,160" font="Prive3;31" halign="center" valign="center" transparent="1" />
+  </screen>
+  <screen name="InstallWizardSmallBox" position="center,center" size="900,300" title="Small Box Preparation">
+    <widget source="status" render="Label" position="45,70" size="810,160" font="Prive3;31" halign="center" valign="center" transparent="1" />
+  </screen>
+<screen name="VideoWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" >
 		<widget name="text" position="649,75" size="930,405" font="Regular;34" />
 		<widget source="list" render="Listbox" position="720,450" size="435,300" scrollbarMode="showOnDemand" enableWrapAround="1" >
 			<convert type="StringList" />
