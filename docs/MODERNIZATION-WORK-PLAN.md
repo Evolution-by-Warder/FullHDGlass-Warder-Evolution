@@ -365,3 +365,23 @@ Results:
 - static presence audit confirms all 16 CAM screen names reviewed in this batch resolve in Warder skin.xml.
 - global duplicate-name audit reports pre-existing duplicate screen names elsewhere in the historical skin/plugin sections; no new CAM duplicate was introduced. These legacy duplicates require a separate precedence/ownership audit before removal.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## Duplicate ownership + storage utility batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Audited all duplicate screen names reported by the static skin inventory and rechecked current ImageBackup, FlashManager, SwapManager, SDswap and DeviceManager runtime coverage.
+
+Duplicate ownership results:
+- ChannelSelection_summary, MenuSummary, InfoBarMoviePlayerSummary, DVDSummary, SetupSummary, SimpleSummary and g17SetupSummary pairs are intentional display-ID variants (`id="1"` / `id="2"`) for different front-panel displays; they are not redundant and remain untouched.
+- duplicate RSS reader screens and EPGRefreshConfiguration were true same-name/same-target historical alternatives without hardware IDs. The redundant second definitions were removed, retaining the Warder/Prive variants.
+- FilterListScreen remains an unresolved plugin-ownership collision between a generic filter layout and a VideoDB full-screen layout. It was deliberately not removed until plugin ownership/precedence is proven.
+- PlaylistItemSetup was not actually duplicated; the previous duplicate report came from the broad historical audit context.
+
+Storage/system results:
+- current ImageBackup, FlashOnline/FlashImage, Swap and DeviceManager contracts remain covered.
+- DeviceManager Setup-derived action/setup classes remain on common Setup.
+- added a direct Warder FHD `SDswap` screen for the current runtime red/green/yellow NAND/SD switching actions.
+- DevicesPanelSummary is a front-panel summary using SetupSummary behavior and does not require a new full-screen layout.
+- no item in this batch is marked RECEIVER PASS.
