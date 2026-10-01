@@ -1,4 +1,4 @@
-FullHDGlass17 Warder Evolution TEST build request
-Candidate: 1.0.5-test2
-Purpose: branch-local CI trigger; main remains untouched.
-Request revision: 11
+Warder TEST build request
+Candidate: 1.0.5-test3
+Revision: 12
+Purpose: restore cumulative FullHDGlass17 r1-r12 fixes and improvements on Warder modernization baseline.
