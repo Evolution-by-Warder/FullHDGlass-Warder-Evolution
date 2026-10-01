@@ -218,3 +218,29 @@ for token in (
     "self.warderInstallContainer.execute(*cmd)",
 ):
     assert token in PLUGIN, token
+
+
+# r11/r12 PIG menu behaviour, not just symbol presence.
+menu_select = PLUGIN[PLUGIN.find("def menusel("):PLUGIN.find("def listDir(")]
+for variant, code in (("with PIG","3"), ("simply PIG","10"), ("PIG2","11"), ("PIG4","13")):
+    assert '"%s":"%s"' % (variant, code) in menu_select, variant
+pig_change = PLUGIN[PLUGIN.find("def changePIGres("):PLUGIN.find("def changeScreenXml(")]
+for token in ('session.VideoPicture', 'position="157,166"', 'position="66,120"', 'size="697,435"', 'size="882,528"'):
+    assert token in pig_change, token
+screen_change = PLUGIN[PLUGIN.find("def changeScreenXml("):PLUGIN.find("def setTypeIcos(")]
+for screen in ("menu_mainmenu", "menu_information", "menu_setup", "menu_scan", "menu_system", "menu_harddisk", "menu_shutdown", "Menu"):
+    assert '"%s"' % screen in screen_change, screen
+assert 'new in ("12","13")' in screen_change
+pig_font = PLUGIN[PLUGIN.find("def chckPigFont("):PLUGIN.find("def chMT(")]
+for token in ("changePIGres()", "cChannelsel()", "changeChF()", "setFontEventEpgsel("):
+    assert token in pig_font, token
+
+# r12 OpenATV software/package-manager skin surfaces. Opkg must expose both
+# red Close and blue Log sources; installer/log screens must remain present.
+opkg = re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</screen>', SKIN).group(0)
+for token in ('source="key_red"', 'source="key_blue"', 'name="log"', 'name="activityslider"'):
+    assert token in opkg, token
+for screen in ("OPKGMenu", "OPKGSource", "OpkgInstaller", "IpkgInstaller", "SoftwareManagerInfo",
+               "SoftwareManagerSetup", "SoftwareUpdate", "RunSoftwareUpdate",
+               "PackageAction", "PackageActionLog", "LogManager", "LogManagerViewLog"):
+    assert re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN), screen
