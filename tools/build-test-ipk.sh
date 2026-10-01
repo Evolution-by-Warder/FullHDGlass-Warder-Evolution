@@ -26,7 +26,7 @@ esac
 
 test "$PKG" = "enigma2-skin-fullhdglass17"
 case "$PKGVER" in
-  *"warder$RUNTIMEVER") ;;
+  *"+warder$RUNTIMEVER") ;;
   *) echo "Control/runtime TEST version mismatch: $PKGVER vs $RUNTIMEVER" >&2; exit 2 ;;
 esac
 
