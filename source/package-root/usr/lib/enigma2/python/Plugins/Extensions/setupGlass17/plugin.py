@@ -1762,7 +1762,7 @@ def chnlSelChck():
 ##########################################################################################################################
 def chnlSelPatch(direct=True):
 	if not direct and fileExists(CHANSEL_FILE) and fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		system("cp -f %s %s" % (CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE))
+		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
 		return True
 	elif not direct:
 		return False	
@@ -1773,7 +1773,7 @@ def chnlSelPatch(direct=True):
 		return True
 	elif txCH == 2:
 		return False
-	system("cp -f %s %s" % (CHANSEL_FILE, CHANSEL_FILE.replace(".py","-ori17.py")))
+	shutil.copy2(CHANSEL_FILE, CHANSEL_FILE.replace(".py","-ori17.py"))
 	if not fileExists(CHANSEL_FILE) or not fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
 		system("rm -rf %s" % (CHANSEL_FILE.replace(".py","-ori2.py")))
 		return False
@@ -1823,8 +1823,11 @@ def chnlSelPatch(direct=True):
 	r.close() 
 	ena = chnlSelChck()
 	if ena == 0:
-		system("cp -f %s %s" % (CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE))
-		system("rm -rf %s" % (CHANSEL_FILE.replace(".py","-ori17.py")))
+		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
+		try:
+			os.remove(CHANSEL_FILE.replace(".py","-ori17.py"))
+		except OSError:
+			pass
 	elif ena == 1:
 		return True
 	return False
@@ -2103,8 +2106,13 @@ def setTypeIcos(num):
 	for x in allIcons:
 		fileName = config.plugins.setupGlass17.par39.value + "/more_icons/i_type-" + str(num) + "/" + x + ".png"
 		if fileExists(fileName):
-			system("rm -rf " + SKINPATH + "icons/" + x + ".png")
-			system("cp " + fileName + " " + SKINPATH + "icons/" + x + ".png")
+			destination = SKINPATH + "icons/" + x + ".png"
+			try:
+				if os.path.lexists(destination):
+					os.unlink(destination)
+				shutil.copy2(fileName, destination)
+			except OSError:
+				pass
 	return True
 ##########################################################################################################################
 def setTypePicon():
@@ -2167,9 +2175,13 @@ def setCFGoff(v=62):
 	configfile.save()
 
 def setOledXml(what, d=USERXML):
-	system("rm -rf " + d)
-	system("cp -f %s %s" % (what, d))
-	return True
+	try:
+		if os.path.lexists(d):
+			os.unlink(d)
+		shutil.copy2(what, d)
+		return True
+	except OSError:
+		return False
 
 def chckUserHdg():
 	ena = False
@@ -6300,7 +6312,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
       			
 	def eraseAnswerNow(self, answer):
 		if answer:
-			system("rm -rf %s/poster/*.*" % config.plugins.setupGlass17.par39.value)
+			poster_dir = os.path.join(config.plugins.setupGlass17.par39.value, "poster")
+			for name in listDir(poster_dir) or []:
+				candidate = os.path.join(poster_dir, name)
+				try:
+					if os.path.isfile(candidate) or os.path.islink(candidate):
+						os.unlink(candidate)
+				except OSError:
+					pass
 			self.session.open(MessageBox, _("Erase finished successfully!"), MessageBox.TYPE_INFO, 6)
 
 	def doNothing(self):
