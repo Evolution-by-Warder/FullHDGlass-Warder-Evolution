@@ -9,7 +9,7 @@ on:
       - .github/TEST-BUILD-REQUEST
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-test-ipk:
@@ -78,6 +78,44 @@ jobs:
           trap 'rm -rf "$TMP"' EXIT
           (cd "$TMP" && ar x "$GITHUB_WORKSPACE/$IPK")
           tar -tzf "$TMP/data.tar.gz" > packages/test/PAYLOAD-LIST.txt
+
+      - name: Publish TEST package for receiver updater
+        if: success()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          IPK="$(find packages/test -maxdepth 1 -type f -name '*_all.ipk' -print -quit)"
+          test -n "$IPK"
+          SHA="$(sha256sum "$IPK" | awk '{print $1}')"
+          NAME="$(basename "$IPK")"
+          VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin warder-modernization-work
+          git checkout -B warder-modernization-work origin/warder-modernization-work
+          mkdir -p packages/test
+          cp "$IPK" "packages/test/$NAME"
+          printf '%s  %s\n' "$SHA" "$NAME" > "packages/test/$NAME.sha256"
+          python3 - "$VERSION" "$NAME" "$SHA" <<'PY'
+          import json, sys
+          version, name, sha = sys.argv[1:]
+          data = {
+              "version": version,
+              "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/" + name,
+              "sha256": sha,
+              "changelog": "FullHDGlass17 - Warder Evolution TEST: current verified development build."
+          }
+          with open("update-test.json", "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+              f.write("\n")
+          PY
+          git add "packages/test/$NAME" "packages/test/$NAME.sha256" update-test.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish verified TEST package $VERSION [skip ci]"
+            git push origin HEAD:warder-modernization-work
+          fi
 
       - name: Upload TEST artifact
         uses: actions/upload-artifact@v4
