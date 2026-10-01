@@ -67,10 +67,7 @@ try:
 			_ = gettext.Catalog('weather', PLUGINPATH + 'locale', weather_language).gettext
 except: pass
 if os.path.isfile(PLUGINPATH + "wea.log"):
-	try:
-		os.remove(PLUGINPATH + "wea.log")
-	except OSError:
-		pass
+	os.system("rm -rf "+PLUGINPATH + "wea.log")
 ENA_ANIM = False
 try:
 	if config.plugins.setupGlass17.par56.value:
@@ -374,58 +371,19 @@ class WeatherScreen(Screen):
 			else:
 				return UNKNOWN_STATE
 		def download_xml():
+			os.system("rm -rf %s" % XML_FILE)
 			try:
-				os.remove(XML_FILE)
-			except OSError:
-				pass
-			er = ""
-			if netChck():
 				self.units = chckUnit()
-				req = config.plugins.setupGlass17.par13.value[1:]
-				data = None
-				if not req.startswith("wc:"):						
-					req = quote(config.plugins.setupGlass17.par13.getText())
-				if ENA_MSN:
-					if req.startswith("wc:") or req.startswith("fr:"):
-						req = "wealocations="+req
-					else:						
-						req = "weasearchstr="+req
-					req = "https://weather.service.msn.com/data.aspx?src=outlook&weadegreetype=%s&culture=en-us&%s" % (self.units.upper(), req)
-				else:
-					apkey = "&appid=" + config.plugins.setupGlass17.par228.value
-					req = "q=%s" % quote(config.plugins.setupGlass17.par13.getText())
-					if self.units.upper() == "F":
-						u = "imperial"
-					else:
-						u = "metric"					
-					req = "https://api.openweathermap.org/data/2.5/weather?%s&lang=%s&units=%s%s" % (req, WLANG, u, apkey)
-					self.req = "https://api.openweathermap.org/data/2.5/forecast?&lon=%s&lat=%s&units=" + "%s&exclude=hourly,minutely,current&lang=%s%s" % (u,WLANG,apkey)
-				try:
-					response = urlopen(req, timeout = 10)
-				except HTTPError as e:
-					er = _('Error') + ": " + str(e)
-				except URLError as e:
-					er = _('Error') + ": " + str(e)
-				except: er = _('Error') + ": " + _("Website data reading timeout")
-				else:
-					data = response.read()
-					response.close()
-				if data is not None:			
-					if ISP38:
-						try:
-							data = data.decode("ascii", "ignore")
-						except: 
-							data = data.decode("utf-8", "ignore")	            					
-					localFile = open(XML_FILE, 'w')											
-					localFile.write(data)
-					localFile.close()				
-					if ENA_MSN:					
-						self.data = data									
-				elif er == "":
-					er = _('Error') + ": " + _("None data received from website")
-			else:
-				return _('Error') + ": " + _("Website is not responding")
-			return er.replace('>','').replace('<','')
+				d = openMeteo(config.plugins.setupGlass17.par13.value if str(config.plugins.setupGlass17.par13.value).startswith("om|") else config.plugins.setupGlass17.par13.getText(), self.units, 6)
+				try: import simplejson as _json
+				except: import json as _json
+				raw = _json.dumps(d)
+				if not ISP38 and isinstance(raw, unicode): raw = raw.encode('utf-8')
+				if ISP38 and isinstance(raw, str): raw = raw.encode('utf-8')
+				f = open(XML_FILE, 'wb'); f.write(raw); f.close()
+				return ""
+			except Exception as e:
+				return _('Error') + ": Open-Meteo - " + weaText(e)
 		self.weaTimer.stop()
 		if not self.enaNC:
 			return
@@ -519,134 +477,31 @@ class WeatherScreen(Screen):
 					self.weather_dict["date0"] = str("%s, %s" % (ignZero(d[0].getAttribute("observationtime")[:5]),parse_line(d[0].getAttribute("shortday"), 'day')))	
 					self.timeUpdate = str("%s %s" % (ignZero(d[0].getAttribute("observationtime")[:5]),fixDate((d[0].getAttribute("date")).replace("-"," "))))
 		else:
-			idx = 1
 			w_directPix = 'X'
-			req = open(XML_FILE).read()
 			try:
-				if ISP38:	
-					r = simplejson.loads(req)
-				else:
-					r = simplejson.loads(fixUtf8(req))
-				self.weather_dict['country'] = r.get("sys",{}).get("country",UNKNOWN_STATE)
-				self.weather_dict['sunrise'] = ignZero(strftime("%H:%M",localtime(r.get("sys",{}).get("sunrise",""))))
-				self.weather_dict['sunset'] = ignZero(strftime("%H:%M",localtime(r.get("sys",{}).get("sunset",""))))
-				if self.units.upper() == "F":
-					units_dict['wind'] = 'mps'
-					units_dict['visibility'] = 'miles'
-					units_dict['pressure'] = "mbar"
-				else:
-					units_dict['wind'] = 'm/s'
-					units_dict['visibility'] = 'km'
-					units_dict['pressure'] = "hPa"
-				self.weather_dict['wind'] = "%.1f" % r.get("wind",{}).get("speed",0)
-				direct = int(r.get("wind",{}).get("deg",0))
-				if direct >= 0 and direct <= 28:
-					w_direct = _('N')
-					w_directPix = 'N'
-				elif direct >= 29 and direct <= 62:
-					w_direct = _('NE')
-					w_directPix = 'NE'
-				elif direct >= 63 and direct <= 117:
-					w_direct = _('E')
-					w_directPix = 'E'
-				elif direct >= 118 and direct <= 152:
-					w_direct = _('SE')
-					w_directPix = 'SE'
-				elif direct >= 153 and direct <= 207:
-					w_direct = _('S')
-					w_directPix = 'S'
-				elif direct >= 208 and direct <= 242:
-					w_direct = _('SW')
-					w_directPix = 'SW'
-				elif direct >= 243 and direct <= 297:
-					w_direct = _('W')
-					w_directPix = 'W'
-				elif direct >= 298 and direct <= 332:
-					w_direct = _('NW')
-					w_directPix = 'NW'
-				else:
-					w_direct = _('N')
-					w_directPix = 'N'
-				self.weather_dict['wind_direction'] = w_direct
-				self.weather_dict['humidity'] = str(r.get("main",{}).get("humidity",0)) + " %"
-				self.weather_dict['visibility'] = str(r.get("visibility",0)/1000)
-				self.weather_dict['pressure'] = str(r.get("main",{}).get("pressure",0))
-				ttmp = float(self.weather_dict['pressure'])
-				if units_dict['pressure'] == "hPa" and ttmp > 10000: 
-					self.weather_dict['pressure'] = str(int(ttmp / 33.8638866667))
-				self.weather_dict['date0'] = ignZero(strftime("%H:%M",localtime(r["dt"])))
-				self.weather_dict['text0'] = fixUtf8(r.get("weather",[{}])[0].get("description",""))
-				idI = str(r.get("weather",[{}])[0].get("id","0"))
-				i = r.get("weather",[{}])[0].get("icon","")
-				self.weather_dict['picon0'] = nigttime(chckWidI(i,idI))
-				self.weather_dict['temp0'] = str(int(round(r.get("main",{}).get("temp",0))))
-				self.weather_dict["long"] = str(r.get("coord",{}).get("lon",0))
-				self.weather_dict["lat"] = str(r.get("coord",{}).get("lat",0))
-			except: pass
-			if self.weather_dict["long"] != UNKNOWN_STATE and self.weather_dict["lat"] != UNKNOWN_STATE:
-				idx = 1
-				req = Request(self.req % (self.weather_dict["long"], self.weather_dict["lat"]))
-				data = None
-				try:
-					response = urlopen(req, timeout = 10)
-				except HTTPError as e:
-					pass
-				except URLError as e:
-					pass
-				except: pass
-				else:
-					data = response.read()
-					response.close()
-				try:
-					if data is not None:
-						if ISP38:	
-							r = simplejson.loads(data)
-						else:
-							r=simplejson.loads(fixUtf8(data))
-#						Writelog(r)
-						tmin = 999  
-						tmax = -999
-						text = None
-						for xx in r["list"]:  
-							tmin = min(tmin, xx["main"]["temp_min"])
-							tmax = max(tmax, xx["main"]["temp_max"])
-							self.weather_dict['templow%s' % idx] = "%d" % tmin
-							self.weather_dict['temp%s' % idx] = "%d" % tmax
-							if "15:00:00" in xx["dt_txt"]:  
-								idI = str(xx["weather"][0]["id"])
-								x = xx["weather"][0]["icon"] + ".png"
-								self.weather_dict['picon%s' % idx] = nigttime(chckWidI(x,idI))
-								text = xx["weather"][0]["description"]
-								self.weather_dict['text%s' % idx] = fixUtf8(xx["weather"][0]["description"])
-							if "18:00:00" in xx["dt_txt"]:  
-								idI = str(xx["weather"][0]["id"])
-								x = xx["weather"][0]["icon"] + ".png"
-								self.weather_dict['picon%s' % idx] = nigttime(chckWidI(x,idI))
-								text = text if text else xx["weather"][0]["description"]
-								self.weather_dict['text%s' % idx] = fixUtf8(text)                                
-							if "21:00:00" in xx["dt_txt"]:  
-								idI = str(xx["weather"][0]["id"])
-								x = xx["weather"][0]["icon"] + ".png"
-								self.weather_dict['picon%s' % idx] = nigttime(chckWidI(x,idI))
-								text = text if text else xx["weather"][0]["description"]
-								self.weather_dict['text%s' % idx] = fixUtf8(text)
-								t = localtime(xx["dt"])                                   
-								self.weather_dict['date%s' % idx] = fixDate(strftime("%Y %m %d",localtime(xx["dt"])))
-								tmin = 888 
-								tmax = -888
-								text = None
-								idx += 1
-#						if r.get("daily",None) != None:
-#							for i in r.get("daily",[]):
-#								self.weather_dict['temp%s' % idx] = "%d" % round(i.get("temp",{}).get("max",""))
-#								self.weather_dict['templow%s' % idx] =  "%d" % round(i.get("temp",{}).get("min",""))
-#								self.weather_dict['date%s' % idx] = fixDate(strftime("%Y %m %d",localtime(i["dt"])))
-#								x = i.get("weather",[{}])[0].get("icon","") + ".png"
-#								self.weather_dict['text%s' % idx] = fixUtf8(i.get("weather",[{}])[0].get("description",""))
-#								idI = str(i.get("weather",[{}])[0].get("id","0"))
-#								self.weather_dict['picon%s' % idx] = nigttime(chckWidI(x,idI))
-#								idx += 1
-				except: pass
+				raw = open(XML_FILE, 'rb').read()
+				if not ISP38: raw = raw.decode('utf-8')
+				r = simplejson.loads(raw)
+				cur=r.get('current',{}); daily=r.get('daily',{}); loc=r.get('_location',{})
+				self.weather_dict['city']=weaText(loc.get('name',config.plugins.setupGlass17.par13.getText())); self.weather_dict['country']=weaText(loc.get('country',''))
+				self.weather_dict['lat']=str(loc.get('latitude',r.get('latitude',0))); self.weather_dict['long']=str(loc.get('longitude',r.get('longitude',0)))
+				self.weather_dict['temp0']=str(int(round(float(cur.get('temperature_2m',0))))); self.weather_dict['feelslike']=temperature_fix(str(int(round(float(cur.get('apparent_temperature',0))))))
+				self.weather_dict['humidity']=str(cur.get('relative_humidity_2m',0))+' %'; self.weather_dict['pressure']=str(int(round(float(cur.get('surface_pressure',0)))))
+				self.weather_dict['visibility']='%.1f' % (float(cur.get('visibility',0) or 0)/1000.0)
+				wd=windDir(cur.get('wind_direction_10m',0)); self.weather_dict['wind_direction']=_(wd); w_directPix=wd; self.weather_dict['wind']='%.1f' % float(cur.get('wind_speed_10m',0) or 0)
+				units_dict={'wind':('mph' if self.units.upper()=='F' else 'km/h'),'visibility':'km','pressure':'hPa'}
+				code=cur.get('weather_code',-1); self.weather_dict['text0']=weaText(wmoText(code)); self.weather_dict['picon0']=nigttime(wmoPicon(code,not bool(cur.get('is_day',1))))
+				tm=weaText(cur.get('time','')).split('T')[-1][:5]; self.weather_dict['date0']=ignZero(tm) if tm else UNKNOWN_STATE; self.timeUpdate=self.weather_dict['date0']
+				sr=daily.get('sunrise') or []; ss=daily.get('sunset') or []
+				if sr: self.weather_dict['sunrise']=ignZero(weaText(sr[0]).split('T')[-1][:5])
+				if ss: self.weather_dict['sunset']=ignZero(weaText(ss[0]).split('T')[-1][:5])
+				for n in range(1,6):
+					if n >= len(daily.get('time',[])): break
+					self.weather_dict['date%s'%n]=fixDate(weaText(daily['time'][n]).replace('-',' ')); self.weather_dict['temp%s'%n]=str(int(round(float(daily['temperature_2m_max'][n])))); self.weather_dict['templow%s'%n]=str(int(round(float(daily['temperature_2m_min'][n]))))
+					c=daily['weather_code'][n]; self.weather_dict['text%s'%n]=weaText(wmoText(c)); self.weather_dict['picon%s'%n]=nigttime(wmoPicon(c,False))
+			except Exception as e:
+				Writelog('Open-Meteo panel: %s' % e)
+
 		if self.weather_dict['date0'] != UNKNOWN_STATE:
 			try:
 				self.weather_dict['city'] = config.plugins.setupGlass17.par13.getText()
