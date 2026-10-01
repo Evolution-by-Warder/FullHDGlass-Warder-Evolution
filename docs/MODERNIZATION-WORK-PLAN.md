@@ -280,3 +280,20 @@ Results:
 - `AutoVideoMode` is a runtime event screen without visual widgets. `AutoVideoModeLabel` has only `content` and `restxt`; no new full-screen layout was introduced without a confirmed current default-skin placement requirement.
 - existing VideoSetup, InputDeviceSelection, SkinSelection, QuickMenu and ButtonSetup family layouts were retained where already present.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV EPG / movie / timer / dialogs / information batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current OpenATV ChannelSelection, EPG, MovieSelection, recording/timer, MessageBox/ChoiceBox/TextBox/VirtualKeyboard and Information screen families.
+
+Results:
+- current `SingleEPG` intentionally selects `EPGSelection`; no duplicate layout required.
+- current `EPGBouquetSelector` falls back to `BouquetSelector`; a Warder alias was added so the current preferred screen name resolves directly while preserving the established visual layout.
+- ChannelSelectionSetup, MovieSelectionSetup, RecordingSettings, SchedulerEdit, RecordTimerEdit and InstantRecordTimerEdit are current `Setup` derivatives; common Warder Setup remains authoritative.
+- legacy TimerEntry/TimerLog wrappers map to the current Timers implementation; existing Warder timer overview/log coverage remains in place.
+- current ChoiceBoxNew intentionally selects `ChoiceBox`; existing Warder ChoiceBox remains authoritative.
+- current Information subclasses all fall back to `Information`, but many add MENU/INFO/yellow/blue actions. Dedicated Warder FHD aliases were added for the full current Information family so every preferred current skin name resolves directly while retaining the generic information geometry and complete action row.
+- `InformationPicture` remains separately specialized for image display.
+- no item in this batch is marked RECEIVER PASS.
