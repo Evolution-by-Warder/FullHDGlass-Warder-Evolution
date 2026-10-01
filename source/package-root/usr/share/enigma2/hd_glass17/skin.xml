@@ -1513,11 +1513,12 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <eLabel text="Exit" font="Prive3;32" position="0,830" size="750,50" halign="center" foregroundColor="red" backgroundColor="background" transparent="1" />
     <eLabel text="Save" font="Prive3;32" position="750,830" size="750,50" halign="center" foregroundColor="green" backgroundColor="background" transparent="1" />
   </screen>
-  <screen name="NumberZap" position="center,525" size="600,90" title="Channel">
-    <widget name="channel" position="45,22" size="195,42" font="Prive3;33" />
-    <widget name="number" position="285,22" size="120,42" halign="right" font="Prive3;33" />
-  </screen>
-<screen name="NameZap" position="center,center" size="405,90" title="Channel">
+  <screen name="NumberZap" position="center,465" size="900,180" title="Channel">
+    <widget name="channel" position="45,25" size="210,42" font="Prive3;33" />
+    <widget name="number" position="270,25" size="150,42" halign="right" font="Prive3;33" />
+    <widget name="servicenumber" position="270,25" size="150,42" halign="right" font="Prive3;33" />
+    <widget name="servicename" position="45,90" size="810,50" font="Prive3;36" halign="center" valign="center" />
+  </screen><screen name="NameZap" position="center,center" size="405,90" title="Channel">
 			<widget name="name" position="4,22" size="396,37" halign="left" font="Prive3;33" />
 		</screen>
   <screen name="NumericalTextInputHelpDialog" position="522,630" size="906,246" zPosition="2" backgroundColor="un202020" flags="wfNoBorder">
@@ -1716,7 +1717,9 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="scan_state" position="45,155" size="1410,65" zPosition="2" font="Prive3;34" halign="center" valign="center" />
     <widget name="pass" position="45,155" size="1410,65" font="Prive3;34" halign="center" valign="center" />
     <widget name="scan_progress" position="120,235" size="1260,24" pixmap="hd_glass17/slider/slider_main.png" />
-    <widget name="servicelist" position="45,290" size="1410,565" font="Prive3;34" itemHeight="45" selectionDisabled="1" scrollbarMode="showOnDemand" />
+    <widget name="servicelist" position="45,290" size="1410,500" font="Prive3;34" itemHeight="45" selectionDisabled="1" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="120,825" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="810,825" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="Setup" position="center,90" size="1650,900" title="Setup">
     <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
