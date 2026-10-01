@@ -1608,6 +1608,8 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   </screen>
   <screen name="Setup" position="center,90" size="1650,900" title="Setup">
     <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />
+    <widget name="footnote" position="45,780" size="1560,30" font="Prive3;24" halign="center" valign="center" foregroundColor="grey" transparent="1" />
     <widget source="key_red" render="Label" position="105,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="green" transparent="1" />
   </screen>
