@@ -7857,4 +7857,10 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="30,795" size="330,45" font="Prive3;28" foregroundColor="red" halign="center" /><widget source="key_green" render="Label" position="375,795" size="330,45" font="Prive3;28" foregroundColor="green" halign="center" /><widget source="key_yellow" render="Label" position="720,795" size="330,45" font="Prive3;28" foregroundColor="yellow" halign="center" /><widget source="key_blue" render="Label" position="1065,795" size="330,45" font="Prive3;28" foregroundColor="blue" halign="center" />
     <widget source="key_OK" render="Label" position="30,855" size="270,42" font="Prive3;25" halign="center" /><widget source="key_entitlements" render="Label" position="315,855" size="420,42" font="Prive3;25" halign="center" /><widget source="key_menu" render="Label" position="1305,855" size="180,42" font="Prive3;25" halign="center" /><widget source="key_exit" render="Label" position="1500,855" size="210,42" font="Prive3;25" halign="center" />
   </screen>
+  <screen name="SDswap" position="center,210" size="1350,660" title="Switch NAND and SD card">
+    <widget source="Title" render="Label" position="45,30" size="1260,55" font="Prive3;34" halign="center" />
+    <widget source="key_red" render="Label" position="90,120" size="330,45" font="Prive3;30" foregroundColor="red" halign="center" />
+    <widget source="key_green" render="Label" position="510,120" size="330,45" font="Prive3;30" foregroundColor="green" halign="center" />
+    <widget source="key_yellow" render="Label" position="930,120" size="330,45" font="Prive3;30" foregroundColor="yellow" halign="center" />
+  </screen>
 </skin>
