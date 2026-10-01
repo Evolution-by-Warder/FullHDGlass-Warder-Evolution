@@ -714,9 +714,12 @@ def spinnerOnOff():
 		target = os.path.realpath(spinner)
 		if target != os.path.realpath(legacy):
 			return ""
+		# Never remove the legacy symlink unless the saved image spinner is
+		# actually available to restore in the same operation.
+		if not os.path.isdir(original):
+			return _("System spinner restore failed") + "\n"
 		os.unlink(spinner)
-		if os.path.isdir(original):
-			os.rename(original, spinner)
+		os.rename(original, spinner)
 		return _("System spinner restored") + "\n"
 	except OSError:
 		return _("System spinner restore failed") + "\n"
