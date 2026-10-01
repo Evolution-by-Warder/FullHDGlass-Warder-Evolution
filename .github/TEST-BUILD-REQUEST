@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test20
-Revision: 75
-Purpose: Fix OpenATV/opkg TEST-version presentation without touching receiver-verified TEST18 weather or TEST19 PIG behavior. Package metadata uses Version 1.0.5-test20-1 so opkg's final-hyphen revision split retains visible version 1.0.5-test20; runtime/updater identity remains 1.0.5-test20.
+Revision: 76
+Purpose: Re-run TEST20 after repairing workflow/test-gate text generation. Package metadata remains Version 1.0.5-test20-1; runtime/updater identity remains 1.0.5-test20. No weather or PIG implementation changes.
