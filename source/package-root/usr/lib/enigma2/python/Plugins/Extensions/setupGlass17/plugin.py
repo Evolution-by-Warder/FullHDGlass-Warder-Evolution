@@ -8023,11 +8023,14 @@ class downloadMenu(Screen):
 					subPath = "%s/%s" % (typeGrf, i)
 					if os.path.exists(("/tmp/%s" % subPath)):
 						if not os.path.exists((config.plugins.setupGlass17.par39.value + "/" + subPath)):
-							system("mkdir " + config.plugins.setupGlass17.par39.value + "/" + subPath)
+							os.makedirs(config.plugins.setupGlass17.par39.value + "/" + subPath, exist_ok=True)
 						x1, x2 = self.cprmFiles(subPath)
 						numPict += x1
 						total += x2
-				system("rmdir /tmp/%s" % typeGrf)
+				try:
+					os.rmdir("/tmp/%s" % typeGrf)
+				except OSError:
+					pass
 			else:
 				numPict, total = self.cprmFiles(root)
 			if numPict-total == 0:
@@ -8042,7 +8045,10 @@ class downloadMenu(Screen):
 		if internet():
 			if ENAFINDER:
 				for x in range(0,len(k)):
-					system("rm -rf /tmp/a.7z")
+					try:
+						os.remove("/tmp/a.7z")
+					except OSError:
+						pass
 					url  = 'https://picon.cz/download/%s/' % k[x][1] 
 					headers = {'User-Agent':'FHDG17','Referer':url}
 					try:
@@ -8061,7 +8067,10 @@ class downloadMenu(Screen):
 							ret, ret1 = self.getFreeSpace()
 							if ret > size and ret1 > (size/2):
 								system("/usr/bin/7z_g e -o/tmp/%s /tmp/a.7z" % Ddir)
-								system("rm -rf /tmp/a.7z")
+								try:
+								os.remove("/tmp/a.7z")
+							except OSError:
+								pass
 								numPict, total = self.cprmFiles(Ddir)
 								if total == 0:
 									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", 0 " + _("file(s) downloaded/updated.")+"\n"
@@ -8073,7 +8082,10 @@ class downloadMenu(Screen):
 								tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+ "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)+"\n"
 						else:
 							tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!") + " 0 " + _("file(s) downloaded/updated.")+"\n"
-							system("rm -rf /tmp/a.7z")
+							try:
+								os.remove("/tmp/a.7z")
+							except OSError:
+								pass
 					else:
 						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!")+"\n"
 			else:
@@ -8093,7 +8105,12 @@ class downloadMenu(Screen):
 		if f:
 			for x in f:
 				if not self.enaSelectsat or ".png" in x:
-					system("cp -f %s%s/%s %s/%s/%s" % (self.zzz, what, x.replace(" ","\\ ").replace("&","\\&"), config.plugins.setupGlass17.par39.value, destDir, x.replace(" ","\\ ").replace("&","\\&")))
+					source = os.path.join(self.zzz, what, x)
+					destination = os.path.join(config.plugins.setupGlass17.par39.value, destDir, x)
+					try:
+						shutil.copy2(source, destination)
+					except OSError:
+						pass
 					total += 1
 					if fileExists("%s/%s/%s" % (config.plugins.setupGlass17.par39.value, destDir, x)):
 						numPict += 1
@@ -8116,7 +8133,7 @@ class downloadMenu(Screen):
 		tmp = ""
 		path = config.plugins.setupGlass17.par39.value
 		if not os.path.exists((path+"/more_icons/scr_prew")):
-			system("mkdir " + path + "/more_icons/scr_prew")
+			os.makedirs(path + "/more_icons/scr_prew", exist_ok=True)
 		numPict = 0
 		total = 0
 		for i in range(1,MAXSCREENS):
@@ -8134,11 +8151,10 @@ class downloadMenu(Screen):
 		for i in range(1,MAXICONS):
 			if os.path.exists(("/tmp/more_icons/i_type-"+str(i))):
 				if not os.path.exists((path+"/more_icons/i_type-"+str(i))):
-					system("mkdir " + path + "/more_icons/i_type-"+str(i))
+					os.makedirs(path + "/more_icons/i_type-"+str(i), exist_ok=True)
 				for tt in allIcons:
 					system(("cp -f /tmp/more_icons/i_type-"+str(i)+"/"+tt+".png"+" "+path+"/more_icons/i_type-"+str(i)+"/"+tt+".png"))
-				system(("rm -rf /tmp/more_icons/i_type-"+str(i)+"/*.*"))
-				system(("rmdir /tmp/more_icons/i_type-"+str(i)))
+				shutil.rmtree("/tmp/more_icons/i_type-"+str(i), ignore_errors=True)
 				system(("cp -f /tmp/more_icons/scr_prew/icons-"+str(i)+".png "+path+"/more_icons/scr_prew/icons-"+str(i)+".png"))
 				if checkIcons(i):
 					tmp += _("SUCCESSFUL")+": "+_("Icons type") + " " + str(i) + "\n"
