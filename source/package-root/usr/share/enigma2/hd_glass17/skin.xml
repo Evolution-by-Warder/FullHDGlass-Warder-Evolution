@@ -2593,6 +2593,10 @@ if IS_VU:
     <widget source="ServiceList_info" render="Label" position="15,180" size="1320,375" zPosition="2" font="Prive3;30" transparent="1" />
     <eLabel name="new eLabel" position="0,787" size="1350,3" backgroundColor="grey" />
   </screen>
+  <screen name="AutoVideoModeLabel" position="center,60" size="900,150" flags="wfNoBorder" backgroundColor="transpBlack">
+    <widget name="content" position="30,20" size="840,55" font="Prive3;34" halign="center" valign="center" transparent="1" />
+    <widget name="restxt" position="30,80" size="840,45" font="Prive3;28" halign="center" valign="center" foregroundColor="grey" transparent="1" />
+  </screen>
   <screen name="VideoSetup" position="135,150" size="1650,840" backgroundColor="background" title="VideoSetup">
     <ePixmap pixmap="hd_glass17/icons/clock.png" position="30,21" zPosition="3" size="21,21" alphatest="on" />
     <widget source="global.CurrentTime" render="Label" position="67,15" size="120,30" font="Prive3;28" halign="left" foregroundColor="white" backgroundColor="background" transparent="1">
