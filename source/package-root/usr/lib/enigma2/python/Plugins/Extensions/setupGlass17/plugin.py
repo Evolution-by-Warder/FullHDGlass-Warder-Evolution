@@ -672,17 +672,27 @@ del oledT
 del chsT
 
 def spinnerOnOff():
-	if config.plugins.setupGlass17.par65.value:
-		if not os.path.islink(SHAREPATH+"skin_default/spinner"):
-			system("mv -f /usr/share/enigma2/skin_default/spinner /usr/share/enigma2/skin_default/spinner-ori")
-			if os.path.isdir("/usr/share/enigma2/skin_default/spinner-ori"):
-				system("ln -s /usr/share/enigma2/hd_glass17/skin_default/spinner /usr/share/enigma2/skin_default")
-		else:
+	"""Retire the legacy FullHDGlass spinner override.
+
+	The skin no longer replaces the image-provided spinner.  Keep this helper
+	only as an upgrade compatibility repair for installations where an older
+	FullHDGlass version left its symlink behind.
+	"""
+	spinner = os.path.join(SHAREPATH, "skin_default", "spinner")
+	original = os.path.join(SHAREPATH, "skin_default", "spinner-ori")
+	legacy = os.path.join(SHAREPATH, "hd_glass17", "skin_default", "spinner")
+	if not os.path.islink(spinner):
+		return ""
+	try:
+		target = os.path.realpath(spinner)
+		if target != os.path.realpath(legacy):
 			return ""
-	elif os.path.islink(SHAREPATH+"skin_default/spinner"):
-		system("rm -rf /usr/share/enigma2/skin_default/spinner")
-		system("mv -f /usr/share/enigma2/skin_default/spinner-ori /usr/share/enigma2/skin_default/spinner")
-	return _("Full HD GLass17 spinner") + "\n"					
+		os.unlink(spinner)
+		if os.path.isdir(original):
+			os.rename(original, spinner)
+		return _("System spinner restored") + "\n"
+	except OSError:
+		return _("System spinner restore failed") + "\n"
 					
 def autoHdd():
 	if config.plugins.setupGlass17.par22.value == "A":
@@ -905,10 +915,6 @@ def chckPMS():
 def startHdg17(reason, **kwargs):
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		enaOKstart = True                                                                                     
-		if config.plugins.setupGlass17.par65.value and os.path.isfile(SHAREPATH+"hd_glass17/skin_default/spinner/wait1.png") and os.path.isfile(SHAREPATH+"hd_glass17/spinner/wait1.png"):
-			if os.path.getsize(SHAREPATH+"hd_glass17/skin_default/spinner/wait1.png") != os.path.getsize(SHAREPATH+"hd_glass17/spinner/wait1.png"):
-				for x in range(1,19):
-					system("cp -f %shd_glass17/spinner/wait%s.png %shd_glass17/skin_default/spinner/wait%s.png" % (SHAREPATH, x, SHAREPATH, x))
 		if not fileExists(SKINPATH + "icons/about1.png"):
 			if config.plugins.setupGlass17.par15.value != "0" and chckUserHdg():       
 				enaOKstart = False
@@ -6199,8 +6205,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % _("Calculation of channel numbers"), config.plugins.setupGlass17.par126))
 				self.list.append(getConfigListEntry(S0 % _("Enable CAID PIDs"), config.plugins.setupGlass17.par26))                                                            
 				self.list.append(getConfigListEntry(S0 % _("Neutrino keymap"), config.plugins.setupGlass17.par34))                        
-				if os.path.isfile(SHAREPATH+"skin_default/spinner/wait1.png"):
-					self.list.append(getConfigListEntry(S0 % _("Full HD Glass17 spinner"), config.plugins.setupGlass17.par65))
 				self.list.append(getConfigListEntry(S0 % _("Localization of the skin"), config.plugins.setupGlass17.par49))            
 				if ECL:
 					self.list.append(getConfigListEntry(S0 % _("Enable Clear memory"), config.plugins.setupGlass17.par58))      
@@ -7258,8 +7262,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			config.plugins.setupGlass17.par182.value = autoTypeHdd()
 		if self.d[65] != config.plugins.setupGlass17.par141.value:
 			msg += _("Path to satellites.xml") + "\n"
-		if self.d[33] != config.plugins.setupGlass17.par65.value:
-			msg += spinnerOnOff()
 		if self.d[28] != config.plugins.setupGlass17.par56.value:
 			msg += _("Animated Weather Icons") + "\n"
 		if self.d[35] != config.plugins.setupGlass17.par66.value:
