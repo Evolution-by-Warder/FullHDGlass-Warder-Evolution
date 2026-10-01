@@ -483,3 +483,15 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - OSDCalibration intentionally owns a pixel-perfect resolution-aware embedded skin and is left untouched.
 - current wizard compatibility names WizardInstall/InstallWizard, WizardStart/StartWizard, WizardLanguage and WizardVideo/VideoWizard are already present.
 - no RECEIVER PASS is claimed.
+
+
+## Core-screen post-reconciliation gate — 2026-10-01
+
+Status: **PASS — RUNTIME TEST STILL REQUIRED**
+
+- skin now contains 618 screen definitions / 611 unique names.
+- duplicate-name set is unchanged and limited to the seven previously audited front-panel summary families.
+- zero `forgroundColor` misspellings remain.
+- FlashManager, Dishpip and NetworkInadynLog each occur exactly once.
+- all directly referenced internal Warder pixmap/background/selection assets resolve to files in the package tree.
+- no RECEIVER PASS is claimed.
