@@ -1,0 +1,341 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-07 11:27+0200\n"
+"PO-Revision-Date: 2021-07-07 11:27+0200\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...N/A..."
+
+msgid "Sun"
+msgstr "Duminica"
+
+msgid "Mon"
+msgstr "Luni"
+
+msgid "Tue"
+msgstr "Marti"
+
+msgid "Wed"
+msgstr "Miercuri"
+
+msgid "Thu"
+msgstr "Joi"
+
+msgid "Fri"
+msgstr "Vineri"
+
+msgid "Sat"
+msgstr "Sambata"
+
+msgid "January"
+msgstr "Ianuarie"
+
+msgid "February"
+msgstr "Februarie"
+
+msgid "March"
+msgstr "Martie"
+
+msgid "April"
+msgstr "Aprilie"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "Jun"
+msgstr "Iunie"
+
+msgid "Jul"
+msgstr "Iulie"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "Septembrie"
+
+msgid "October"
+msgstr "Octobrie"
+
+msgid "November"
+msgstr "Noiembrie"
+
+msgid "December"
+msgstr "Decembrie"
+
+msgid "Light Snow Shower"
+msgstr "Ploaie cu Soare"
+
+msgid "Fog"
+msgstr "Ceață"
+
+msgid "Sunny"
+msgstr "Soare"
+
+msgid "Cloudy"
+msgstr "Cer noros"
+
+msgid "Light Rain with Thunder"
+msgstr "Ploua putin cu Traznete"
+
+msgid "Drizzle"
+msgstr "Burniță"
+
+msgid "Showers in the Vicinity"
+msgstr "Ploi de vara în apropiere"
+
+msgid "Rain Shower"
+msgstr "Ploua putin"
+
+msgid "Thunderstorm"
+msgstr "Furtuna"
+
+msgid "Thunder in the Vicinity"
+msgstr "Traznete în apropiere"
+
+msgid "Thundershowers"
+msgstr "Ploaie cu traznete"
+
+msgid "Light Drizzle"
+msgstr "Burnita"
+
+msgid "Thunder"
+msgstr "Traznete"
+
+msgid "Light Rain Shower"
+msgstr "Ploua putin"
+
+msgid "Isolated Thunderstorms"
+msgstr "trazneste izolat"
+
+msgid "Scattered Thunderstorms"
+msgstr "Furtuni împrastiate"
+
+msgid "AM"
+msgstr "AM"
+
+msgid "PM"
+msgstr "PM"
+
+msgid "Mostly Clear"
+msgstr "In mare parte senin"
+
+msgid "Snow"
+msgstr "Ninge"
+
+msgid "Thunderstorms"
+msgstr "Furtuna"
+
+msgid "Wind"
+msgstr "Vant"
+
+msgid "Showers"
+msgstr "Ploi de vara"
+
+msgid "Rain"
+msgstr "Ploaie"
+
+msgid "Mostly Sunny"
+msgstr "Majoritate timpului SOARE"
+
+msgid "Clear"
+msgstr "Senin"
+
+msgid "Partly Cloudy"
+msgstr "Partial Noros"
+
+msgid "Mostly Cloudy"
+msgstr "Majoritatea zilei Noros"
+
+msgid "Scattered Showers"
+msgstr "Ploi ușoare"
+
+msgid "Few Showers"
+msgstr "Ploi"
+
+msgid "Light Rain"
+msgstr "Tentativa de Ploaie"
+
+msgid "Fair"
+msgstr "Vreme Normala"
+
+msgid "Scattered Snow Showers"
+msgstr "Averse de ninsoare împrăștiate"
+
+msgid "Wintry Mix"
+msgstr "Mix de iarnă"
+
+msgid "Ice"
+msgstr "Gheață"
+
+msgid "Breezy"
+msgstr "Răcoros"
+
+msgid "Freezing Drizzle"
+msgstr "Înghețarea Burniță"
+
+msgid "Freezing Rain"
+msgstr "Ploaie inghetata"
+
+msgid "Wind direction"
+msgstr "Directia Vantului"
+
+msgid "Location"
+msgstr ""
+
+msgid "Humidity"
+msgstr "Umiditate"
+
+msgid "Visibility"
+msgstr "Vizibilitate"
+
+msgid "Geo position"
+msgstr "Poziție geo"
+
+msgid "Pressure"
+msgstr "Presiune atmosferica"
+
+msgid "Feels like"
+msgstr "Feels like"
+
+msgid "City"
+msgstr "Oras"
+
+msgid "Sunrise"
+msgstr "Răsărit de soare"
+
+msgid "Sunset"
+msgstr "Apus de soare"
+
+msgid "Update"
+msgstr "Actualiza"
+
+msgid "Error"
+msgstr "Eroare"
+
+msgid "Website data reading timeout"
+msgstr ""
+
+msgid "None data received from website"
+msgstr ""
+
+msgid "Website is not responding"
+msgstr ""
+
+msgid "is not defined"
+msgstr "nu este definit"
+
+msgid "NW"
+msgstr "Nord-Vest"
+
+msgid "SW"
+msgstr "Sud-Vest"
+
+msgid "SE"
+msgstr "Sud-Est"
+
+msgid "NE"
+msgstr "Nord-Est"
+
+msgid "S"
+msgstr "Sud"
+
+msgid "N"
+msgstr "Nord"
+
+msgid "W"
+msgstr "Vest"
+
+msgid "E"
+msgstr "Est"
+
+msgid "Mishmash in the data"
+msgstr ""
+
+msgid "Weather"
+msgstr "Vreme"
+
+msgid "Attempt"
+msgstr ""
+
+msgid "time to reconnect"
+msgstr "timp de reconectare"
+
+msgid "Clear sky"
+msgstr "Cer senin"
+
+msgid "Mainly clear"
+msgstr "Predominant senin"
+
+msgid "Partly cloudy"
+msgstr "Parțial noros"
+
+msgid "Overcast"
+msgstr "Acoperit"
+
+msgid "Depositing rime fog"
+msgstr "Ceață cu chiciură"
+
+msgid "Dense drizzle"
+msgstr "Burniță densă"
+
+msgid "Slight rain"
+msgstr "Ploaie slabă"
+
+msgid "Heavy rain"
+msgstr "Ploaie puternică"
+
+msgid "Heavy freezing rain"
+msgstr "Ploaie înghețată puternică"
+
+msgid "Slight snow"
+msgstr "Ninsoare slabă"
+
+msgid "Heavy snow"
+msgstr "Ninsoare puternică"
+
+msgid "Snow grains"
+msgstr "Grăunțe de zăpadă"
+
+msgid "Rain showers"
+msgstr "Averse de ploaie"
+
+msgid "Heavy rain showers"
+msgstr "Averse puternice de ploaie"
+
+msgid "Snow showers"
+msgstr "Averse de ninsoare"
+
+msgid "Heavy snow showers"
+msgstr "Averse puternice de ninsoare"
+
+msgid "Thunderstorm with hail"
+msgstr "Furtună cu grindină"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Furtună cu grindină puternică"
+
+msgid "Unknown"
+msgstr "Necunoscut"
+
+msgid "Light drizzle"
+msgstr "Burniță slabă"
+
+msgid "Freezing drizzle"
+msgstr "Burniță înghețată"
+
+msgid "Freezing rain"
+msgstr "Ploaie înghețată"

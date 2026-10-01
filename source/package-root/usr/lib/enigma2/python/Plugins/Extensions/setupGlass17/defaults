@@ -1,0 +1,200 @@
+Icons type: 1
+Bitrate: False
+Address in ecm: True
+Enabled Extra infobar: True
+Enabled Enhanced infobar: 1
+Extra screen: 1
+Menu type: List
+Second picon type: 0
+Special info x-pos.: 960
+Special info y-pos.: 150
+Special info type: n
+Standard Infobar type: 1
+OLED type: 0
+Bar background: False
+Ecmline info type: 0
+Volume type: 1
+Channel sel. type: 1
+ECMline, btr, CPU/Mem, Fan color: AutoColors
+HDD wake up: False
+Path to hdd: /dev/sda
+HDD state: False
+Display nighttime icons: True
+Full bitrate: False
+CAID PIDs: False
+Fade in/out: False
+Fade speed: 5
+Fade in: False
+Typewriting: False
+User info type: e
+Permanent user info: False
+Act/next event: False
+Neutrino: False
+Bitrate limit: 17500
+OLED off: False
+Black/white: Black
+Audio type: True
+Style: 1
+Title color: #006cbcf0
+EPG list font size: 0
+Mute transparency: True 
+Sat names only: False
+Translation: True
+Display CW0/1: False
+Volume x-pos.: 1200
+Volume y-pos.: 120
+Font size event: 0
+EPG selection type: 1
+Ignore timeout: 0
+Animated Weather Icons: False
+Net connect: 3
+Clearmem: False
+Encoding-user: False
+Empty icons in menu type icons: True
+ChannelSel 2xOK: False
+Anim in menu type icons: True
+screensaver in radio mode: False
+Animated icons eWeather: False
+Service scan long list: False
+PIG type: 0
+MenuIcons: 1
+Weather nextCity: False
+IconsWeather: 1
+Special info timeout: False
+ECM refresh: 6
+Update: True
+Text rolling: Autostop
+Delay text rolling: 8
+Special info extensions: n
+CH. name type: 1
+Address: 204.79.197.203
+Provider: True
+Temp/RPM: False
+CPU/Mem: False
+Temp.HDD: False
+Special info mainmenu: True
+Weather units: c
+Weather reloading time: 15
+Weather provider: MSN
+wea-autoreconnect time: 10
+Show yesterday: True
+Warm color: AutoColors
+Cold color: AutoColors
+Fair color: None
+Warm temperature: 20
+Cold temperature: 1
+Ewea city: cEUR|SK|LO001|BANSKA BYSTRICA|
+Show astro(eWea): True
+D.icon CAM: True
+D.icon type: True
+Number of tuners: 0
+Active tuner color: #00d100
+B. active tuner color: #ecb100
+Standby tuner color: #0077ff
+Missing tuner color: #777777
+Desc. color: #cdcdcd
+Desc. selected color: #6cbcf0
+Ch. name selected color: #6cbcf0
+Recording tuner color: #dd0000
+Recording and live tuner color: #dd00ff
+Recording icon: True
+Bitrate color: AutoColors
+ECM color: AutoColors
+Chsel. name color: #dddddd
+ECM labels color: AutoColors
+ECM values color: AutoColors
+Progressive detection: True
+TP type color: AutoColors
+TP info color: AutoColors
+Video resolution color: AutoColors
+User def. path: /media/usb/
+Path to picons: /media/usb
+Ch. num. calculating: 0
+Date format ext. infobar: D
+Date color: AutoColors
+Time color: AutoColors
+Seconds color: AutoColors
+Date format others: D
+Date format ch.sel.: D
+Date format menu: D
+Date format infobar: D
+Ch. name color: AutoColors
+Event now color: AutoColors
+Event next color: AutoColors
+Ign. leading 0: True
+Hide missing and standby tuners: False
+Path to satellites.xml: /etc/tuxbox/
+Remaining time in extra EPG: True
+OpenWeatherMap more days forecast: True
+HDG conf path: /usr/share/enigma2/hd_glass17/
+Service name font size: 0
+Service info font size: 0
+CH. line Height: 0
+Ext. desc. font size: 0
+Warm temperature F: 68
+Cold temperature F: 33
+Ewea units: c
+Listbox Bigger: 36
+Listbox Big: 33
+Listbox Medium: 30
+Listbox Small: 28
+Listbox Smaller: 26
+Weather anim. speed: 50
+Ewea anim. speed: 50
+Movieplayer infobar HDD state: True
+Enable Animations: True
+Picon Animation: g17_Anim_1
+Second Picon Animation: None
+ECM line Animation: None
+Menu Icons Animation: None
+Ch.sel Icons Animation: None
+TP info/type Animation: None
+Tuner info: T
+Animated WeaInf Icons: False
+WeaInf anim. speed: 50
+Weather type special: 3
+Weather type user: 1
+Weather title type: d
+Wea/ewea date color: AutoColors
+Wea/ewea state color: AutoColors
+Wea UV color: AutoColors
+Wea wind color: AutoColors
+Reference separating char: a
+Netatmo stations: a
+Netatmo stations switch time: 10
+Extra Screen Offset: 0
+10 days switch time: 10
+Ewea date format: %A %d.%m.%Y
+Weather date format: %A  %d %B %Y
+D.icon tuner: True
+Ign. leading 0 date: True
+Bitratecalc.so: True
+On/Off pixmap: True
+Unknown CAID: True
+CI informations: True
+ECM from current displayed channel: True
+Show PID in ECM line: True
+Show CHID in ECM line: True
+Show poster: False
+Poster x-position: 900
+Poster y-position: 400
+Poster size: 185,278
+Poster animation: None
+Poster provider: a
+Poster search delay: 3
+Removing current Poster: True
+VTi SplitScreen: 1
+Net Speed: 0
+Net speed x-position: 1000
+Net speed y-position: 100
+Net speed color: AutoColors
+Progress bar background color: AutoColors
+Progress bar foreground color: AutoColors
+Progress bar pixmap: True
+Hide SNR/AGC (Q/S) if value is 0: False
+Movie Selection type: 1
+IPTV Radio Detection: True
+Net Speed type: 1
+Extended Number ZAP: 5
+Weather API-Key OpenWeatherMap: -
+EventView type: 1

@@ -1,0 +1,343 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-07 11:20+0200\n"
+"PO-Revision-Date: 2021-07-07 11:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...N/A..."
+
+msgid "Sun"
+msgstr "Neděle"
+
+msgid "Mon"
+msgstr "Pondělí"
+
+msgid "Tue"
+msgstr "Úterý"
+
+msgid "Wed"
+msgstr "Středa"
+
+msgid "Thu"
+msgstr "Čtvrtek"
+
+msgid "Fri"
+msgstr "Pátek"
+
+msgid "Sat"
+msgstr "Sobota"
+
+msgid "January"
+msgstr "Leden"
+
+msgid "February"
+msgstr "Únor"
+
+msgid "March"
+msgstr "Březen"
+
+msgid "April"
+msgstr "Duben"
+
+msgid "May"
+msgstr "Květen"
+
+msgid "Jun"
+msgstr "Červen"
+
+msgid "Jul"
+msgstr "Červenec"
+
+msgid "August"
+msgstr "Srpen"
+
+msgid "September"
+msgstr "Září"
+
+msgid "October"
+msgstr "Říjen"
+
+msgid "November"
+msgstr "Listopad"
+
+msgid "December"
+msgstr "Prosinec"
+
+msgid "Light Snow Shower"
+msgstr "Slabé sněhánky"
+
+msgid "Fog"
+msgstr "Mlha"
+
+msgid "Sunny"
+msgstr "Skoro Jasno"
+
+msgid "Cloudy"
+msgstr "Zataženo"
+
+msgid "Light Rain with Thunder"
+msgstr "Slabý déšť s hřměním"
+
+msgid "Drizzle"
+msgstr "Mrholení"
+
+msgid "Showers in the Vicinity"
+msgstr "Přeháňky v okolí"
+
+msgid "Rain Shower"
+msgstr "Déšť přeháňky"
+
+msgid "Thunderstorm"
+msgstr "Bouřky"
+
+msgid "Thunder in the Vicinity"
+msgstr "Bouřky v okolí"
+
+msgid "Thundershowers"
+msgstr "Možné bouřky s mrholením"
+
+msgid "Light Drizzle"
+msgstr "Slabé mrholení"
+
+msgid "Thunder"
+msgstr "Možný výskyt bouřek"
+
+msgid "Light Rain Shower"
+msgstr "Slabý déšť"
+
+msgid "Isolated Thunderstorms"
+msgstr "Lokální bouřky"
+
+msgid "Scattered Thunderstorms"
+msgstr "Ojedinělé bouřky"
+
+msgid "AM"
+msgstr "Dopoledne"
+
+msgid "PM"
+msgstr "Odpoledne"
+
+msgid "Mostly Clear"
+msgstr "Mírná oblačnost"
+
+msgid "Snow"
+msgstr "Sněžení"
+
+msgid "Thunderstorms"
+msgstr "Bouřky"
+
+msgid "Wind"
+msgstr "Vítr"
+
+msgid "Showers"
+msgstr "Přeháňky"
+
+msgid "Rain"
+msgstr "Déšť"
+
+msgid "Mostly Sunny"
+msgstr "Mírná oblačnost"
+
+msgid "Clear"
+msgstr "Jasno"
+
+msgid "Partly Cloudy"
+msgstr "Polojasno"
+
+msgid "Mostly Cloudy"
+msgstr "Skoro zataženo"
+
+msgid "Scattered Showers"
+msgstr "Ojedinělé přeháňky"
+
+msgid "Few Showers"
+msgstr "Dešťové přeháňky"
+
+msgid "Light Rain"
+msgstr "Slabý déšť"
+
+msgid "Fair"
+msgstr "Jasno/skoro jasno"
+
+msgid "Scattered Snow Showers"
+msgstr "Rozptýlené sněhové přeháňky"
+
+msgid "Wintry Mix"
+msgstr "Zimní mix"
+
+msgid "Ice"
+msgstr "Led"
+
+msgid "Breezy"
+msgstr "Svěží"
+
+msgid "Freezing Drizzle"
+msgstr "Mrznoucí mrholení"
+
+msgid "Freezing Rain"
+msgstr "Mrznoucí déšť"
+
+msgid "Wind direction"
+msgstr "Směr větru"
+
+msgid "Location"
+msgstr "Poloha"
+
+msgid "Humidity"
+msgstr "Vlhkost"
+
+msgid "Visibility"
+msgstr "Viditelnost"
+
+msgid "Geo position"
+msgstr "Geo pozice"
+
+msgid "Pressure"
+msgstr "Tlak"
+
+msgid "Feels like"
+msgstr "Pocitová"
+
+msgid "City"
+msgstr "Město/Obec"
+
+msgid "Sunrise"
+msgstr "Východ slunce"
+
+msgid "Sunset"
+msgstr "Západ slunce"
+
+msgid "Update"
+msgstr "Aktualizace"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Website data reading timeout"
+msgstr "Při čtení webové stránky vypršel časový limit"
+
+msgid "None data received from website"
+msgstr "Nepřenesena žádná data z webové stránky"
+
+msgid "Website is not responding"
+msgstr "Webová stránka neodpovídá"
+
+msgid "is not defined"
+msgstr "není definováno"
+
+msgid "NW"
+msgstr "Severozápadní"
+
+msgid "SW"
+msgstr "Jihozápadní"
+
+msgid "SE"
+msgstr "Jihovýchodní"
+
+msgid "NE"
+msgstr "Severovýchodní"
+
+msgid "S"
+msgstr "Jižní"
+
+msgid "N"
+msgstr "Severní"
+
+msgid "W"
+msgstr "Západní"
+
+msgid "E"
+msgstr "Východní"
+
+msgid "Mishmash in the data"
+msgstr "Chyby v datech"
+
+msgid "Weather"
+msgstr "Počasí"
+
+msgid "Attempt"
+msgstr "Pokus"
+
+msgid "time to reconnect"
+msgstr "čas do znovupřipojení"
+
+
+
+msgid "Clear sky"
+msgstr "Jasná obloha"
+
+msgid "Mainly clear"
+msgstr "Převážně jasno"
+
+msgid "Partly cloudy"
+msgstr "Polojasno"
+
+msgid "Overcast"
+msgstr "Zataženo"
+
+msgid "Depositing rime fog"
+msgstr "Mrznoucí mlha"
+
+msgid "Dense drizzle"
+msgstr "Husté mrholení"
+
+msgid "Slight rain"
+msgstr "Slabý déšť"
+
+msgid "Heavy rain"
+msgstr "Silný déšť"
+
+msgid "Heavy freezing rain"
+msgstr "Silný mrznoucí déšť"
+
+msgid "Slight snow"
+msgstr "Slabé sněžení"
+
+msgid "Heavy snow"
+msgstr "Silné sněžení"
+
+msgid "Snow grains"
+msgstr "Sněhová zrna"
+
+msgid "Rain showers"
+msgstr "Dešťové přeháňky"
+
+msgid "Heavy rain showers"
+msgstr "Silné dešťové přeháňky"
+
+msgid "Snow showers"
+msgstr "Sněhové přeháňky"
+
+msgid "Heavy snow showers"
+msgstr "Silné sněhové přeháňky"
+
+msgid "Thunderstorm with hail"
+msgstr "Bouřka s kroupami"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Bouřka se silným krupobitím"
+
+msgid "Unknown"
+msgstr "Neznámé"
+
+msgid "Light drizzle"
+msgstr "Slabé mrholení"
+
+msgid "Freezing drizzle"
+msgstr "Mrznoucí mrholení"
+
+msgid "Freezing rain"
+msgstr "Mrznoucí déšť"

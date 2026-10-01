@@ -1,0 +1,341 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-07 11:27+0200\n"
+"PO-Revision-Date: 2022-08-08 19:25+0300\n"
+"Last-Translator: \n"
+"Language-Team: shamann@pobox.sk\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...Н/Д..."
+
+msgid "Sun"
+msgstr "Воскресенье"
+
+msgid "Mon"
+msgstr "Понедельник"
+
+msgid "Tue"
+msgstr "Вторник"
+
+msgid "Wed"
+msgstr "Среда"
+
+msgid "Thu"
+msgstr "Четверг"
+
+msgid "Fri"
+msgstr "Пятница"
+
+msgid "Sat"
+msgstr "Суббота"
+
+msgid "January"
+msgstr "Январь"
+
+msgid "February"
+msgstr "Февраль"
+
+msgid "March"
+msgstr "Март"
+
+msgid "April"
+msgstr "Апрель"
+
+msgid "May"
+msgstr "Май"
+
+msgid "Jun"
+msgstr "Июнь"
+
+msgid "Jul"
+msgstr "Июль"
+
+msgid "August"
+msgstr "Август"
+
+msgid "September"
+msgstr "Сентябрь"
+
+msgid "October"
+msgstr "Октябрь"
+
+msgid "November"
+msgstr "Ноябрь"
+
+msgid "December"
+msgstr "Декабрь"
+
+msgid "Light Snow Shower"
+msgstr "Легкий снег с дождем"
+
+msgid "Fog"
+msgstr "Tуман"
+
+msgid "Sunny"
+msgstr "Солнечно"
+
+msgid "Cloudy"
+msgstr "Облачно"
+
+msgid "Light Rain with Thunder"
+msgstr "Легкий дождь с Громовой"
+
+msgid "Drizzle"
+msgstr "Mелкий дождь"
+
+msgid "Showers in the Vicinity"
+msgstr "Ливни в окрестности"
+
+msgid "Rain Shower"
+msgstr "Легкий дождь"
+
+msgid "Thunderstorm"
+msgstr "Грозa"
+
+msgid "Thunder in the Vicinity"
+msgstr "Гром в окрестности"
+
+msgid "Thundershowers"
+msgstr "Гром с дождем"
+
+msgid "Light Drizzle"
+msgstr "Небольшая изморось"
+
+msgid "Thunder"
+msgstr "Гром"
+
+msgid "Light Rain Shower"
+msgstr "Легкий дождь"
+
+msgid "Isolated Thunderstorms"
+msgstr "Oтдельные грозы"
+
+msgid "Scattered Thunderstorms"
+msgstr "Временами грозы"
+
+msgid "AM"
+msgstr "AM"
+
+msgid "PM"
+msgstr "PM"
+
+msgid "Mostly Clear"
+msgstr "Переменная облачность"
+
+msgid "Snow"
+msgstr "Снег"
+
+msgid "Thunderstorms"
+msgstr "Грозы"
+
+msgid "Wind"
+msgstr "Ветер"
+
+msgid "Showers"
+msgstr "Ливни"
+
+msgid "Rain"
+msgstr "Дождь"
+
+msgid "Mostly Sunny"
+msgstr "Преимущественно солнечно"
+
+msgid "Clear"
+msgstr "Ясно"
+
+msgid "Partly Cloudy"
+msgstr "Небольшая облачность"
+
+msgid "Mostly Cloudy"
+msgstr "Переменная облачность"
+
+msgid "Scattered Showers"
+msgstr "Мелкий дождь"
+
+msgid "Few Showers"
+msgstr "Незначительные осадки"
+
+msgid "Light Rain"
+msgstr "Легкий дождь"
+
+msgid "Fair"
+msgstr "Ясно"
+
+msgid "Scattered Snow Showers"
+msgstr "Pассеянные ливневый снег"
+
+msgid "Wintry Mix"
+msgstr "зимний микс"
+
+msgid "Ice"
+msgstr "лед"
+
+msgid "Breezy"
+msgstr "свежий"
+
+msgid "Freezing Drizzle"
+msgstr "Изморозь"
+
+msgid "Freezing Rain"
+msgstr "Ледяной дождь"
+
+msgid "Wind direction"
+msgstr "Направ. ветра"
+
+msgid "Location"
+msgstr "Расположение"
+
+msgid "Humidity"
+msgstr "Влажность"
+
+msgid "Visibility"
+msgstr "Видимость"
+
+msgid "Geo position"
+msgstr "Гео позиция"
+
+msgid "Pressure"
+msgstr "Давление"
+
+msgid "Feels like"
+msgstr "Чувствуется"
+
+msgid "City"
+msgstr "Город"
+
+msgid "Sunrise"
+msgstr "Bосход солнца"
+
+msgid "Sunset"
+msgstr "Заход солнца"
+
+msgid "Update"
+msgstr "Oбновление"
+
+msgid "Error"
+msgstr "ошибка"
+
+msgid "Website data reading timeout"
+msgstr "Тайм-аут получения данных с сайта"
+
+msgid "None data received from website"
+msgstr "Данных с веб-сайта не получено"
+
+msgid "Website is not responding"
+msgstr "Веб-сайт не отвечает"
+
+msgid "is not defined"
+msgstr "не определен"
+
+msgid "NW"
+msgstr "СЗ"
+
+msgid "SW"
+msgstr "ЮЗ"
+
+msgid "SE"
+msgstr "ЮВ"
+
+msgid "NE"
+msgstr "СВ"
+
+msgid "S"
+msgstr "Ю"
+
+msgid "N"
+msgstr "С"
+
+msgid "W"
+msgstr "З"
+
+msgid "E"
+msgstr "В"
+
+msgid "Mishmash in the data"
+msgstr "Путаница в данных"
+
+msgid "Weather"
+msgstr "Погода"
+
+msgid "Attempt"
+msgstr "Попытка"
+
+msgid "time to reconnect"
+msgstr "время обновления"
+
+msgid "Clear sky"
+msgstr "Ясно"
+
+msgid "Mainly clear"
+msgstr "Преимущественно ясно"
+
+msgid "Partly cloudy"
+msgstr "Переменная облачность"
+
+msgid "Overcast"
+msgstr "Пасмурно"
+
+msgid "Depositing rime fog"
+msgstr "Изморозевый туман"
+
+msgid "Dense drizzle"
+msgstr "Сильная морось"
+
+msgid "Slight rain"
+msgstr "Слабый дождь"
+
+msgid "Heavy rain"
+msgstr "Сильный дождь"
+
+msgid "Heavy freezing rain"
+msgstr "Сильный ледяной дождь"
+
+msgid "Slight snow"
+msgstr "Слабый снег"
+
+msgid "Heavy snow"
+msgstr "Сильный снег"
+
+msgid "Snow grains"
+msgstr "Снежная крупа"
+
+msgid "Rain showers"
+msgstr "Ливневый дождь"
+
+msgid "Heavy rain showers"
+msgstr "Сильный ливневый дождь"
+
+msgid "Snow showers"
+msgstr "Снегопад"
+
+msgid "Heavy snow showers"
+msgstr "Сильный снегопад"
+
+msgid "Thunderstorm with hail"
+msgstr "Гроза с градом"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Гроза с сильным градом"
+
+msgid "Unknown"
+msgstr "Неизвестно"
+
+msgid "Light drizzle"
+msgstr "Слабая морось"
+
+msgid "Freezing drizzle"
+msgstr "Ледяная морось"
+
+msgid "Freezing rain"
+msgstr "Ледяной дождь"

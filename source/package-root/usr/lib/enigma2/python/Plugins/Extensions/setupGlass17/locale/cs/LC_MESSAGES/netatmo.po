@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: netatmo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-26 17:43+0100\n"
+"PO-Revision-Date: 2021-11-26 17:43+0100\n"
+"Last-Translator: \n"
+"Language-Team: shamann@pobox.sk\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "Outdoor"
+msgstr "Venkovní"
+
+msgid "Wind"
+msgstr "Vítr"
+
+msgid "Rain"
+msgstr "Déšť"
+
+msgid "Indoor"
+msgstr "Vnitřní"
+
+msgid "ENE"
+msgstr "VSV"
+
+msgid "ESE"
+msgstr "VJV"
+
+msgid "WNW"
+msgstr "ZSZ"
+
+msgid "WSW"
+msgstr "ZJZ"
+
+msgid "SSE"
+msgstr "JJV"
+
+msgid "SW"
+msgstr "JZ"
+
+msgid "SSW"
+msgstr "JJZ"
+
+msgid "SE"
+msgstr "JV"
+
+msgid "NW"
+msgstr "SZ"
+
+msgid "NNW"
+msgstr "SSZ"
+
+msgid "NNE"
+msgstr "SSV"
+
+msgid "NE"
+msgstr "SV"
+
+msgid "S"
+msgstr "J"
+
+msgid "W"
+msgstr "Z"
+
+msgid "N"
+msgstr "S"
+
+msgid "E"
+msgstr "V"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "No Netatmo station detected"
+msgstr "Nebyla detekována žádná stanice Netatmo"
+
+msgid "Name"
+msgstr "Jméno"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Main station"
+msgstr "Hlavní stanice"
+
+msgid "Temperature"
+msgstr "Teplota"
+
+msgid "Humidity"
+msgstr "Vlhkost"
+
+msgid "Noise"
+msgstr "Hluk"
+
+msgid "Co2"
+msgstr "Co2"
+
+msgid "Wifi Status"
+msgstr "Stav Wifi"
+
+msgid "Index"
+msgstr "Index"
+
+msgid "Pressure"
+msgstr "Tlak"
+
+msgid "Rainfall"
+msgstr "Srážky"
+
+msgid "Summary 1 Hour"
+msgstr "Celkem za 1 hodinu"
+
+msgid "Summary 24 Hours"
+msgstr "Celkem za 24 hodin"
+
+msgid "Wind Strength"
+msgstr "Síla větru"
+
+msgid "Wind Angle"
+msgstr "Směr větru"
+
+msgid "Gust Strength"
+msgstr "Síla poryvu"
+
+msgid "Gust Angle"
+msgstr "Směr poryvu"
+
+msgid "Dew Point"
+msgstr "Rosný bod"
+
+msgid "RF Status"
+msgstr "Stav RF"
+
+msgid "Baterry"
+msgstr "Baterie"
