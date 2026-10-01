@@ -557,3 +557,15 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - floating-point divisions intentionally used for scaling, astronomy, network-rate calculation, orbital decimal display and MiniTV framebuffer scaling were retained.
 - no visual design, original authorship, package identity, main branch or locked 1.0.4 artifact was changed.
 - no RECEIVER PASS is claimed.
+
+
+## Package lifecycle + updater hardening — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- audited package identity and lifecycle scripts. The package remains `enigma2-skin-fullhdglass17`, runtime skin path remains `/usr/share/enigma2/hd_glass17`, and the generated `/etc/enigma2/skin_user-hdg17.xml` overlay is declared as a conffile and additionally preserved/restored across upgrades.
+- confirmed lifecycle scripts do not delete `/etc/enigma2/settings`, do not perform broad `rm -rf` cleanup, do not remove picon directories and do not replace the image spinner.
+- confirmed updater remains raw GitHub HTTPS + SHA256 + `eConsoleAppContainer`; it does not use `Screens.Console`.
+- hardened update metadata validation: package downloads are now accepted only from HTTPS URLs and only when the manifest provides an exact 64-character hexadecimal SHA256. The install path revalidates these invariants and checksum comparison is mandatory rather than optional.
+- `update.json` still points to the locked 1.0.4 package and its approved SHA256; no release metadata was advanced during modernization work.
+- no RECEIVER PASS is claimed.
