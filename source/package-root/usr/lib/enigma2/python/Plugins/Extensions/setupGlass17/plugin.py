@@ -6946,12 +6946,16 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		url = "%s%scb=%d" % (url, sep, int(time1.time()))
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion(), "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
 		with urlopen(req, timeout=12) as response:
+			if not str(response.geturl()).startswith("https://"):
+				raise ValueError("unsafe manifest redirect")
 			return json.loads(response.read().decode("utf-8"))
 
 	def _warderDownload(self, url, target):
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion()})
 		sha = hashlib.sha256()
 		with urlopen(req, timeout=30) as response, open(target, "wb") as out:
+			if not str(response.geturl()).startswith("https://"):
+				raise ValueError("unsafe package redirect")
 			while True:
 				chunk = response.read(128 * 1024)
 				if not chunk:
@@ -6981,7 +6985,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			changelog = str(manifest.get("changelog", "")).strip()
 			if not new_version:
 				raise ValueError("missing version")
-			if package_url and not package_url.startswith("https://"):
+			if package_url and not package_url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"):
 				raise ValueError("unsafe package URL")
 			if package_url and not re.match(r"^[0-9a-f]{64}$", sha256):
 				raise ValueError("missing or invalid SHA256")
