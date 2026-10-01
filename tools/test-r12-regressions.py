@@ -251,7 +251,8 @@ for token in (
     'def _warderInstallPoll(self):',
     "def _warderInstallFinished(",
     'MessageBox.TYPE_ERROR, 15',
-    'restartbox.setTitle(_("Restart GUI now?"))',
+    'GUI will restart automatically in 3 seconds.',
+    'self.warderRestartTimer.start(3000, True)',
 ):
     assert token in PLUGIN, token
 
@@ -430,3 +431,8 @@ assert 'source="session.VideoPicture" render="Pig"' in pig24 and 'zPosition="3"'
 assert 'NumberOfRows="15"' in pig24
 assert 'position="135,387"' in pig24 and 'position="15,423" size="1845,495"' in pig24
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
+
+# TEST25: remove duplicate top bouquet title from PIG guide and keep current time there.
+pig25 = re.search(r'<screen\\b[^>]*name="GraphicalEPGPIG"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'source="Title" render="Label"' not in pig25
+assert 'source="global.CurrentTime" render="Label" position="30,12"' in pig25

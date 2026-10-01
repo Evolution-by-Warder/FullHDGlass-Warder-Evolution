@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test24
-Revision: 88
-Purpose: Trigger TEST24 after normalized regression gate.
+Candidate: 1.0.5-test25
+Revision: 89
+Purpose: TEST25 clean GraphicalEPGPIG header and automatic 3-second GUI restart after successful update.

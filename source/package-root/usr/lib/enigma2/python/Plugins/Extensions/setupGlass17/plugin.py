@@ -7226,8 +7226,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		installed = self.readVersion()
 		exitCode = getattr(self, "warderInstallExitCode", -1)
 		if exitCode == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
-			restartbox = self.session.openWithCallback(self.rstAnswer, MessageBox, _("Update finished successfully!") + "\n\n" + _("Do you want restart GUI to activate version") + " " + installed + " " + _("now?"), MessageBox.TYPE_YESNO)
-			restartbox.setTitle(_("Restart GUI now?"))
+			self.warderRestartBox = self.session.open(MessageBox, _("Update finished successfully!") + "\n\n" + _("GUI will restart automatically in 3 seconds.") + "\n" + installed, MessageBox.TYPE_INFO, 3, enable_input=False)
+			self.warderRestartTimer = eTimer()
+			try:
+				self.warderRestartTimer_conn = self.warderRestartTimer.timeout.connect(self.sDr)
+			except AttributeError:
+				self.warderRestartTimer.timeout.get().append(self.sDr)
+			self.warderRestartTimer.start(3000, True)
 		else:
 			out = "".join(getattr(self, "warderInstallOutput", []))
 			if len(out) > 5000:

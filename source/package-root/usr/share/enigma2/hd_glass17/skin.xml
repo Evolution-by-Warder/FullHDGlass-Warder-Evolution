@@ -7913,8 +7913,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   </screen>
 
   <screen name="GraphicalEPGPIG" position="15,15" size="1890,1050" backgroundColor="black" title="FullHDGlass Graphical Guide">
-    <widget source="Title" render="Label" position="30,12" size="420,42" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" position="465,12" size="150,42" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="30,12" size="180,42" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1575,12" size="270,42" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1" />
     <eLabel position="30,60" size="555,315" zPosition="0" backgroundColor="black" />
     <widget source="session.VideoPicture" render="Pig" position="33,63" size="549,309" zPosition="3" backgroundColor="#ff000000" />
