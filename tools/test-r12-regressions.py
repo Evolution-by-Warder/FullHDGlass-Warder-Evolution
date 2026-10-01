@@ -16,6 +16,10 @@ sk = [x for x in rows if x.split("|")[3] == "SK"]
 cz = [x for x in rows if x.split("|")[3] == "CZ"]
 assert len(sk) == 4208, len(sk)
 assert len(cz) == 6258, len(cz)
+assert len(rows) == 11010, len(rows)
+country_codes = {x.split("|")[3] for x in rows if len(x.split("|")) > 3 and x.split("|")[3]}
+assert len(country_codes) == 51, len(country_codes)
+assert {"SK", "CZ", "AT", "DE", "PL", "HU", "GB", "VA"}.issubset(country_codes)
 assert "om|Rišňovce|" in CITY
 assert "unicodedata.normalize" in PLUGIN
 assert "_citySearchKey" in PLUGIN
@@ -24,6 +28,9 @@ assert "weather.service.msn.com/find.aspx" not in PLUGIN
 assert 'country|' in PLUGIN
 assert '/etc/city_Code-17.txt' in PLUGIN
 assert "Open-Meteo city search" in PLUGIN
+assert '"group|SK"' in PLUGIN and '"Slovensko"' in PLUGIN
+assert '"group|CZ"' in PLUGIN and '"Česko"' in PLUGIN
+assert '"group|EUROPE"' in PLUGIN and '"Krajiny Európy"' in PLUGIN
 assert "def openMeteo(" in WEAUTILS
 assert "openMeteo(" in WEATHER
 assert "Classic Open-Meteo" in PLUGIN
@@ -34,7 +41,7 @@ assert 'endswith(" station")' in EWEATHER
 assert "str(tmp).strip() not in lines" in PLUGIN
 assert '<screen name="ScreenSaver" position="0,0" size="1920,1080"' in SKIN
 assert 'name="picture" position="0,0" size="1280,720"' in SKIN
-for screen in ("menu_mainmenu", "menu_information", "menu_setup", "menu_scan", "menu_system", "menu_harddisk", "menu_shutdown"):
+for screen in ("Menu", "menu_mainmenu", "menu_information", "menu_setup", "menu_scan", "menu_system", "menu_harddisk", "menu_shutdown"):
     m = re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN)
     assert m, screen
     assert len(re.findall(r'render="Listbox"', m.group(0))) == 1, screen
@@ -42,4 +49,4 @@ assert '<screen name="Opkg"' in SKIN
 assert 'source="key_red"' in re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="key_blue"' in re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</screen>', SKIN).group(0)
 print("r1-r12 regression gate: PASS")
-print("weather locations: SK=%d CZ=%d TOTAL=%d" % (len(sk), len(cz), len(rows)))
+print("weather locations: SK=%d CZ=%d TOTAL=%d COUNTRIES=%d" % (len(sk), len(cz), len(rows), len(country_codes)))
