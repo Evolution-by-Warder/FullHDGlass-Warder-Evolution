@@ -6949,13 +6949,19 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		return ret
 
 	def _warderVersionTuple(self, value):
-		"""Return a numeric tuple suitable for comparing Warder Evolution versions."""
+		"""Compare Warder versions with TEST prereleases below the matching stable."""
 		try:
 			value = str(value).strip().lstrip("vV")
-			parts = re.findall(r"\d+", value)
-			return tuple(int(x) for x in parts[:4]) or (0,)
-		except Exception:
-			return (0,)
+			match = re.match(r"^(\d+)\.(\d+)\.(\d+)(?:-test(\d+))?$", value, re.IGNORECASE)
+			if not match:
+				return (0, 0, 0, 0, 0)
+			major, minor, patch = (int(match.group(i)) for i in (1, 2, 3))
+			test_no = match.group(4)
+			if test_no is None:
+				return (major, minor, patch, 1, 0)
+			return (major, minor, patch, 0, int(test_no))
+		except (TypeError, ValueError):
+			return (0, 0, 0, 0, 0)
 
 	def _warderFetchJson(self, url):
 		sep = "&" if "?" in url else "?"
