@@ -2167,8 +2167,13 @@ def setTypeIcos(num):
 	for x in allIcons:
 		fileName = config.plugins.setupGlass17.par39.value + "/more_icons/i_type-" + str(num) + "/" + x + ".png"
 		if fileExists(fileName):
-			system("rm -rf " + SKINPATH + "icons/" + x + ".png")
-			system("cp " + fileName + " " + SKINPATH + "icons/" + x + ".png")
+			destination = SKINPATH + "icons/" + x + ".png"
+			try:
+				if os.path.lexists(destination):
+					os.unlink(destination)
+				shutil.copy2(fileName, destination)
+			except OSError:
+				pass
 	return True
 ##########################################################################################################################
 def setTypePicon():
@@ -2231,9 +2236,13 @@ def setCFGoff(v=62):
 	configfile.save()
 
 def setOledXml(what, d=USERXML):
-	system("rm -rf " + d)
-	system("cp -f %s %s" % (what, d))
-	return True
+	try:
+		if os.path.lexists(d):
+			os.unlink(d)
+		shutil.copy2(what, d)
+		return True
+	except OSError:
+		return False
 
 def chckUserHdg():
 	ena = False
@@ -8534,8 +8543,7 @@ class downloadMenu(Screen):
 					os.makedirs(path + "/more_icons/i_type-"+str(i), exist_ok=True)
 				for tt in allIcons:
 					system(("cp -f /tmp/more_icons/i_type-"+str(i)+"/"+tt+".png"+" "+path+"/more_icons/i_type-"+str(i)+"/"+tt+".png"))
-				system(("rm -rf /tmp/more_icons/i_type-"+str(i)+"/*.*"))
-				system(("rmdir /tmp/more_icons/i_type-"+str(i)))
+				shutil.rmtree("/tmp/more_icons/i_type-"+str(i), ignore_errors=True)
 				system(("cp -f /tmp/more_icons/scr_prew/icons-"+str(i)+".png "+path+"/more_icons/scr_prew/icons-"+str(i)+".png"))
 				if checkIcons(i):
 					tmp += _("SUCCESSFUL")+": "+_("Icons type") + " " + str(i) + "
