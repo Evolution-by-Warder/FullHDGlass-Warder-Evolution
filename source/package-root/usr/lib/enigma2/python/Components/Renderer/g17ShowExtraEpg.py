@@ -187,7 +187,7 @@ class g17ShowExtraEpg(Renderer):
 													self.testSizeLabel.setText(tmp)
 													h = self.testSizeLabel.calculateSize().height()
 													if h > self.lineHeight_desc:
-														k = (h / self.lineHeight_desc)
+														k = h / float(self.lineHeight_desc)
 														if k > 1:
 															pos = int(len(tmp) / k)
 															tmp = tmp[:pos]
