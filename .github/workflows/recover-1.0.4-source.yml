@@ -1,15 +1,10 @@
 name: Recover 1.0.4 runtime source
 
 on:
-  push:
-    branches:
-      - warder-modernization-work
-    paths:
-      - .github/workflows/recover-1.0.4-source.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   recover:
@@ -86,16 +81,11 @@ jobs:
             grep -RniE 'spinner|wait[0-9]*\.png' source/package-root source/control || true
           } > source/BASELINE-INVENTORY.md
 
-      - name: Commit recovered baseline
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "Warder Evolution Automation"
-          git config user.email "actions@users.noreply.github.com"
-          git add source
-          if git diff --cached --quiet; then
-            echo "No source changes to commit."
-            exit 0
-          fi
-          git commit -m "source: recover verified 1.0.4 runtime baseline"
-          git push origin HEAD:warder-modernization-work
+      - name: Archive recovered baseline for inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass17-stable-1.0.4-recovered-source
+          path: |
+            source/
+          if-no-files-found: error
+          retention-days: 7
