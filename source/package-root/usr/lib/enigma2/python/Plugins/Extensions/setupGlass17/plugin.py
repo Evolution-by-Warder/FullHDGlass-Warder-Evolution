@@ -451,7 +451,7 @@ config.plugins.setupGlass17.par84 = ConfigYesNo(default = False) # Temp.HDD
 config.plugins.setupGlass17.par85 = ConfigYesNo(default = True) # special info main menu
 config.plugins.setupGlass17.par86 = ConfigSelection(default="c", choices = [("0","(my_)city_Code"),("c",DG+"C"),("f",DG+"F")]) # weather units
 config.plugins.setupGlass17.par87 = ConfigSelection(default="15", choices = [("5","5"),("10","10"),("15","15"),("20","20"),("25","25"),("30","30"),("45","45"),("60","60")]) # reloading time weather
-config.plugins.setupGlass17.par88 = ConfigSelection(default="OpenWea", choices = [("OpenWea","OpenWeatherMap")]) # weather provider; MSN retired
+config.plugins.setupGlass17.par88 = NoSave(ConfigSelection(default="OpenMeteo", choices = [("OpenMeteo","Open-Meteo")])) # compatibility placeholder; provider UI retired
 config.plugins.setupGlass17.par89 = NoSave(ConfigText("", False)) # last city weather
 config.plugins.setupGlass17.par90 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # find city
 config.plugins.setupGlass17.par91 = ConfigSelection(default="10", choices = [("0",_("disabled")),("5","5"),("10","10"),("15","15"),("20","20")]) # autoreconnect time
@@ -667,14 +667,8 @@ ch_help = getCitiesCode()
 config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help) # weather location
 
 def readAPIkey():
-	ret = ""
-	s = "/etc/openweathermap.api"
-	if os.path.isfile(s):
-		f = open(s, 'r')
-		ret = f.readline().strip()
-		ret = ret.replace("\n","").replace(" ","").replace("\t","")
-	if ret != "" and ret != config.plugins.setupGlass17.par228.value: 
-		config.plugins.setupGlass17.par228.value = ret 
+	# Compatibility shim only. Open-Meteo requires no API key and the legacy
+	# OpenWeatherMap key must not affect the Warder weather path.
 	return True
 
 ch_help = readAPIkey()
