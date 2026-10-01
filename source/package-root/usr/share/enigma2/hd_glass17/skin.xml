@@ -7372,4 +7372,20 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_green" render="Label" position="420,705" size="360,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
     <widget source="key_yellow" render="Label" position="810,705" size="360,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
   </screen>
+
+  <screen name="NetworkMountsOverview" position="center,180" size="1650,720" title="Network Mounts Overview">
+    <widget source="mountList" render="Listbox" position="30,30" size="1590,570" scrollbarMode="showOnDemand">
+      <template name="Default" fonts="Prive3;30,Prive3;25" itemHeight="75">
+        <mode name="default">
+          <text index="ShareName" position="0,0" size="780,40" font="0" padding="5,0" verticalAlignment="center" />
+          <text index="Description" position="30,40" size="750,35" font="1" foregroundColor="grey" padding="5,0" verticalAlignment="center" />
+          <text index="Mounted" position="810,0" size="300,75" font="0" padding="5,0" verticalAlignment="center" />
+          <text index="Active" position="1140,0" size="420,75" font="0" horizontalAlignment="right" padding="5,0" verticalAlignment="center" />
+        </mode>
+      </template>
+    </widget>
+    <widget source="key_red" render="Label" position="30,630" size="360,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="420,630" size="360,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="810,630" size="360,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+  </screen>
 </skin>
