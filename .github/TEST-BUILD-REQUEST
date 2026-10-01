@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 41
-Purpose: enforce Warder-only opkg and runtime version 1.0.5-test5 with no legacy 9.50+warder prefix.
+Revision: 42
+Purpose: strict r12 country-first parity: Slovakia, Czechia, then every remaining country directly; complete Enhanced Weather country/city database; Warder-only package version.
