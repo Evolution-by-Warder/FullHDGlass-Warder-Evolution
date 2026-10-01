@@ -93,7 +93,6 @@ from keymapparser import readKeymap
 from xml.etree.cElementTree import parse, fromstring
 from Components.Sources.StaticText import StaticText
 from Components.g17SelectionList import SelectionList
-from Screens.Console import Console
 import gettext
 from Components.Sources.CanvasSource import CanvasSource
 from Plugins.Extensions.setupGlass17.txt import helpTxt, SATLIST
