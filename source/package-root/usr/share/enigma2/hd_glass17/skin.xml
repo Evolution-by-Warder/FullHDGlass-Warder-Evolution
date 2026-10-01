@@ -7349,4 +7349,27 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <screen name="PictureInPicture" position="1200,90" zPosition="-1" size="600,450" flags="wfNoBorder">
     <widget name="video" position="0,0" size="600,338" backgroundColor="transparent" />
   </screen>
+
+  <screen name="NetworkWiFiActivator" position="center,360" size="1200,360" title="Wi-Fi Activator">
+    <widget name="status" position="45,30" size="1110,225" font="Prive3;32" halign="center" valign="center" />
+    <widget source="key_red" render="Label" position="45,285" size="360,45" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
+  </screen>
+  <screen name="NetworkWiFiScan" position="center,150" size="1650,780" title="Wi-Fi Scan">
+    <widget source="list" render="Listbox" position="30,30" size="1590,585" scrollbarMode="showOnDemand">
+      <template name="Default" fonts="Prive3;30,Prive3;27" itemHeight="52">
+        <mode name="default">
+          <text index="Name" position="0,0" size="650,52" font="0" padding="5,0" verticalAlignment="center" />
+          <text index="Percentage" position="670,0" size="100,52" font="1" horizontalAlignment="right" verticalAlignment="center" />
+          <text index="dBm" position="790,0" size="150,52" font="1" horizontalAlignment="right" verticalAlignment="center" />
+          <text index="Encryption" position="970,0" size="300,52" font="1" horizontalAlignment="center" verticalAlignment="center" />
+          <text index="Channel" position="1290,0" size="130,52" font="1" horizontalAlignment="center" verticalAlignment="center" />
+          <text index="Frequency" position="1430,0" size="160,52" font="1" horizontalAlignment="right" verticalAlignment="center" />
+        </mode>
+      </template>
+    </widget>
+    <widget name="description" position="30,630" size="1590,45" font="Prive3;28" valign="center" />
+    <widget source="key_red" render="Label" position="30,705" size="360,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="420,705" size="360,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="810,705" size="360,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+  </screen>
 </skin>
