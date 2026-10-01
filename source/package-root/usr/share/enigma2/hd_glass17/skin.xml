@@ -1841,7 +1841,8 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget source="key_red" render="Label" position="245,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
     <widget source="key_yellow" render="Label" position="945,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
     <widget source="key_blue" render="Label" position="1295,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
-  </screen>  <screen name="TimerSelection" position="135,150" size="1650,900" title="Timer selection">
+  </screen>
+  <screen name="TimerSelection" position="135,150" size="1650,900" title="Timer selection">
     <widget name="timerlist" position="15,30" size="1620,840" itemHeight="105" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="VideoFinetune" position="0,0" size="1920,1080" backgroundColor="transpBlack">
