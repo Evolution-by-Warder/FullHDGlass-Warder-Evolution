@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test25
-Revision: 90
-Purpose: Trigger corrected TEST25 EPG and updater validation.
+Revision: 91
+Purpose: Trigger TEST25 after final gate regex normalization.
