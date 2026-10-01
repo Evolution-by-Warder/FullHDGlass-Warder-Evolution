@@ -657,22 +657,22 @@
     <widget name="statuspic" pixmaps="hd_glass17/buttons/button_green.png,hd_glass17/buttons/button_green_off.png" position="165,532" zPosition="10" size="22,24" transparent="1" alphatest="on" />
   </screen>
   <!-- Audio selection -->
-  <screen name="AudioSelection" position="center,240" size="1290,660" title="Audio">
-    <widget name="config" position="75,15" size="1200,320" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget source="key_red" render="Pixmap" pixmap="hd_glass17/buttons/key_red.png" position="15,15" size="52,37" alphatest="on">
+  <screen name="AudioSelection" position="center,120" size="1500,840" title="Audio">
+    <widget name="config" position="90,30" size="1380,350" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Pixmap" pixmap="hd_glass17/buttons/key_red.png" position="25,30" size="52,37" alphatest="on">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="Pixmap" pixmap="hd_glass17/buttons/key_green.png" position="15,52" size="52,37" alphatest="on">
+    <widget source="key_green" render="Pixmap" pixmap="hd_glass17/buttons/key_green.png" position="25,77" size="52,37" alphatest="on">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_yellow" render="Pixmap" pixmap="hd_glass17/buttons/key_yellow.png" position="15,90" size="52,37" alphatest="on">
+    <widget source="key_yellow" render="Pixmap" pixmap="hd_glass17/buttons/key_yellow.png" position="25,124" size="52,37" alphatest="on">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="Pixmap" pixmap="hd_glass17/buttons/key_blue.png" position="15,127" size="52,37" alphatest="on">
+    <widget source="key_blue" render="Pixmap" pixmap="hd_glass17/buttons/key_blue.png" position="25,171" size="52,37" alphatest="on">
       <convert type="ConditionalShowHide" />
     </widget>
-    <eLabel position="0,333" zPosition="10" size="1290,3" backgroundColor="white" transparent="0" />
-    <widget source="streams" render="Listbox" scrollbarMode="showOnDemand" position="15,345" size="1260,320" zPosition="3" transparent="1">
+    <eLabel position="0,405" zPosition="10" size="1500,3" backgroundColor="white" transparent="0" />
+    <widget source="streams" render="Listbox" scrollbarMode="showOnDemand" position="25,425" size="1450,390" zPosition="3" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"templates":
 					{"default": (40, [ 
@@ -697,11 +697,11 @@
     </widget>
   </screen>
   <!-- Bouquet selector -->
-  <screen name="BouquetSelector" position="center,center" size="1200,720" title="Choose bouquet">
-    <widget name="menu" position="30,20" size="1140,680" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+  <screen name="BouquetSelector" position="center,center" size="1500,840" title="Choose bouquet">
+    <widget name="menu" position="30,30" size="1440,780" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
   </screen>
-  <screen name="ChannelContextMenu" position="center,center" size="1200,720" title="Channellist menu">
-    <widget name="menu" position="30,20" size="1140,680" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+  <screen name="ChannelContextMenu" position="center,center" size="1500,840" title="Channellist menu">
+    <widget name="menu" position="30,30" size="1440,780" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
   </screen>
 
   <screen name="ChannelSelection" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
@@ -1491,12 +1491,12 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
   <screen name="NetworkSetup" position="center,180" size="1350,720" title="Network Setup">
     <widget name="menu" position="45,45" size="1260,630" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
-  <screen name="NimSelection" position="center,253" size="1200,690" title="Choose Tuner">
-    <widget source="nimlist" render="Listbox" position="0,0" size="1200,690">
+  <screen name="NimSelection" position="center,120" size="1500,840" title="Choose Tuner">
+    <widget source="nimlist" render="Listbox" position="0,0" size="1500,840">
       <convert type="TemplatedMultiContent">
 				{"template": [
-						MultiContentEntryText(pos = (15, 7), size = (1170, 37), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the nim name,
-						MultiContentEntryText(pos = (75, 52), size = (1050, 105), font = 1, flags = RT_HALIGN_LEFT, text = 2), # index 2 is a description of the nim settings,
+						MultiContentEntryText(pos = (15, 7), size = (1470, 37), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the nim name,
+						MultiContentEntryText(pos = (75, 52), size = (1350, 105), font = 1, flags = RT_HALIGN_LEFT, text = 2), # index 2 is a description of the nim settings,
 					],
 				 "fonts": [gFont("Regular", 33), gFont("Regular", 25)],
 				 "itemHeight": 172
@@ -1504,10 +1504,10 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
 			</convert>
     </widget>
   </screen>
-  <screen name="NimSetup" position="center,center" size="1200,800" title="Reception Settings">
-    <widget name="config" position="10,10" size="1180,720" font="Prive3;33" itemHeight="40" />
-    <eLabel text="Exit" font="Prive3;32" position="0,740" size="600,50" halign="center" foregroundColor="red" backgroundColor="background" transparent="1" />
-    <eLabel text="Save" font="Prive3;32" position="600,740" size="600,50" halign="center" foregroundColor="green" backgroundColor="background" transparent="1" />
+  <screen name="NimSetup" position="center,center" size="1500,900" title="Reception Settings">
+    <widget name="config" position="20,20" size="1460,790" font="Prive3;33" itemHeight="40" />
+    <eLabel text="Exit" font="Prive3;32" position="0,830" size="750,50" halign="center" foregroundColor="red" backgroundColor="background" transparent="1" />
+    <eLabel text="Save" font="Prive3;32" position="750,830" size="750,50" halign="center" foregroundColor="green" backgroundColor="background" transparent="1" />
   </screen>
   <screen name="NumberZap" position="center,525" size="600,90" title="Channel">
     <widget name="channel" position="45,22" size="195,42" font="Prive3;33" />
@@ -1667,10 +1667,10 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="config" position="45,30" size="1410,690" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
     <widget name="introduction" position="45,750" size="1410,55" font="Prive3;32" halign="center" />
   </screen>
-  <screen name="ScanSimple" position="center,195" size="1380,750" title="Service scan">
-    <widget name="header" position="15,15" size="1350,37" font="Prive3;34" />
-    <widget name="config" position="15,82" size="1350,520" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget name="footer" position="15,697" size="1350,37" font="Prive3;33" halign="center" />
+  <screen name="ScanSimple" position="center,120" size="1500,840" title="Service scan">
+    <widget name="header" position="25,25" size="1450,45" font="Prive3;34" />
+    <widget name="config" position="25,90" size="1450,630" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget name="footer" position="25,770" size="1450,45" font="Prive3;33" halign="center" />
   </screen>
   <screen name="ServiceInfoSimple" position="center,150" size="1800,840" title="Serviceinfo">
     <widget name="infolist" position="10,10" size="1780,760" font="Prive4;32" itemHeight="40" selectionDisabled="1" scrollbarMode="showOnDemand" />
