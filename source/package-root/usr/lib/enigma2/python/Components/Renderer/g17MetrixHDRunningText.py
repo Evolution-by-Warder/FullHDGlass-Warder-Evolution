@@ -182,7 +182,7 @@ class g17MetrixHDRunningText(Renderer):
 		# test for auto correction text height:
 		if self.direction in (TOP,BOTTOM):
 			from enigma import fontRenderClass
-			flh = int(fontRenderClass.getInstance().getLineHeight(self.txfont) or self.txfont.pointSize/6 + self.txfont.pointSize)
+			flh = int(fontRenderClass.getInstance().getLineHeight(self.txfont) or self.txfont.pointSize // 6 + self.txfont.pointSize)
 			self.test_label.setText("WQq")
 			if flh > self.test_label.calculateSize().height():
 				self.lineHeight = flh
@@ -231,7 +231,7 @@ class g17MetrixHDRunningText(Renderer):
 		self.mStop = None
 		# text height correction if necessary:
 		if self.lineHeight and self.direction in (TOP,BOTTOM):
-			text_height = max(text_height, (text_height + self.lineHeight - 1) / self.lineHeight * self.lineHeight)
+			text_height = max(text_height, (text_height + self.lineHeight - 1) // self.lineHeight * self.lineHeight)
 		
 #		self.type =		0 - NONE; 1 - RUNNING; 2 - SWIMMING; 3 - AUTO(???)
 #		self.direction =	0 - LEFT; 1 - RIGHT;   2 - TOP;      3 - BOTTOM
@@ -271,7 +271,7 @@ class g17MetrixHDRunningText(Renderer):
 						self.mStep = (self.direction == RIGHT) and abs(self.mStep) or -abs(self.mStep)
 				else:
 					if text_width == self.W:
-						text_width += max(2, text_width/20)
+						text_width += max(2, text_width // 20)
 					self.A = self.W - text_width
 					self.B = self.X
 					if self.halign == LEFT:
@@ -316,7 +316,7 @@ class g17MetrixHDRunningText(Renderer):
 						self.mStep = abs(self.mStep)
 				else:
 					if text_height == self.H:
-						text_height += max(2, text_height/40)
+						text_height += max(2, text_height // 40)
 					self.A = self.H - text_height
 					self.B = self.Y
 					if self.direction == TOP:
