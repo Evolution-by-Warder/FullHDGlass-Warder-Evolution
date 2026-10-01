@@ -1812,6 +1812,8 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="1813,204" size="1,486" backgroundColor="un1a58a6" />
     <eLabel position="975,204" size="840,1" backgroundColor="un1a58a6" />
     <eLabel position="975,690" size="840,1" backgroundColor="un1a58a6" />
+    <widget name="currenttext" position="120,675" size="1680,30" font="Prive3;25" halign="center" transparent="1" />
+    <widget name="titletext" position="360,712" size="70,45" font="Prive3;30" valign="top" foregroundColor="darkgrey" transparent="1" />
     <widget name="title" position="435,712" size="1050,45" font="Prive3;39" valign="top" halign="center" transparent="1" backgroundColor="black" />
     <eLabel position="435,772" size="1050,1" backgroundColor="un1a58a6" />
     <widget name="coverArt" pixmap="hd_glass17/no_coverArt.png" position="183,705" size="174,210" />
@@ -1819,6 +1821,8 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="artist" position="615,787" size="870,37" font="Prive3;30" valign="top" backgroundColor="black" transparent="1" />
     <widget name="albumtext" position="450,832" size="150,37" font="Prive3;30" valign="top" foregroundColor="darkgrey" backgroundColor="black" transparent="1" />
     <widget name="album" position="615,832" size="870,37" font="Prive3;30" valign="top" backgroundColor="black" transparent="1" />
+    <widget name="genretext" position="450,922" size="150,37" font="Prive3;30" valign="top" foregroundColor="darkgrey" backgroundColor="black" transparent="1" />
+    <widget name="genre" position="615,922" size="870,37" font="Prive3;30" valign="top" backgroundColor="black" transparent="1" />
     <widget name="yeartext" position="450,877" size="150,37" font="Prive3;30" valign="top" foregroundColor="darkgrey" backgroundColor="black" transparent="1" />
     <widget name="year" position="615,877" size="870,37" font="Prive3;30" valign="top" backgroundColor="black" transparent="1" />
     <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1354,795" size="600,37" font="Prive3;27" halign="center" backgroundColor="transpBlack" foregroundColor="un1a58a6" transparent="1" />
