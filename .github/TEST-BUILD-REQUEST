@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 19
-Purpose: full cumulative weather cleanup: Open-Meteo-only runtime, retired provider/API remnants isolated, Enhanced Weather compass localization, r4/r7-r12 regression gates retained.
+Revision: 20
+Purpose: large cumulative r1-r12 cleanup batch; detach retired provider/API lifecycle, modernize legacy help text, retain Open-Meteo localization, complete r12/PIG/weather/Warder regression gates.
