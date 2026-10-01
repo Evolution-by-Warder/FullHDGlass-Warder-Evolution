@@ -1833,16 +1833,15 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget source="key_yellow" render="Label" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
     <widget source="key_blue" render="Label" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
     <widget source="key_help" render="Label" position="1510,720" size="110,37" font="Prive3;27" halign="right" transparent="1" />
-  </screen>  <screen name="TimerSanityConflict" position="135,150" size="1650,840" title="Timer sanity error">
-    <widget name="list" position="15,15" font="Prive3;33" itemHeight="40" size="1620,375" scrollbarMode="showOnDemand" />
-    <widget name="timer1" position="15,67" size="795,337" scrollbarMode="showNever" />
-    <widget name="timer2" position="840,67" size="795,337" scrollbarMode="showNever" />
-    <widget name="key_red" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
-    <widget name="key_green" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
-    <widget name="key_yellow" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
-    <widget name="key_blue" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   </screen>
-  <screen name="TimerSelection" position="135,150" size="1650,900" title="Timer selection">
+  <screen name="TimerSanityConflict" position="135,150" size="1650,840" title="Timer sanity error">
+    <widget name="timerlist" position="15,30" size="1620,610" itemHeight="105" scrollbarMode="showOnDemand" />
+    <widget name="description" position="30,655" size="1590,95" font="Prive3;30" />
+    <widget source="key_info" render="Label" position="30,772" size="200,42" font="Prive3;30" halign="left" transparent="1" />
+    <widget source="key_red" render="Label" position="245,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_yellow" render="Label" position="945,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1295,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>  <screen name="TimerSelection" position="135,150" size="1650,900" title="Timer selection">
     <widget name="timerlist" position="15,30" size="1620,840" itemHeight="105" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="VideoFinetune" position="0,0" size="1920,1080" backgroundColor="transpBlack">
