@@ -1645,7 +1645,7 @@ def setONOFF():
 		except: pass
 	return ena
 ##########################################################################################################################
-WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads.json"
+WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads.json"
 
 def getWarderAssets():
 	"""Load the Warder download catalog over HTTPS without reusing a stale cache entry.
@@ -1657,6 +1657,8 @@ def getWarderAssets():
 		url = "%s%scb=%d" % (WARDER_ASSET_MANIFEST_URL, sep, int(time1.time()))
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.2", "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
 		with urlopen(req, timeout=15) as response:
+			if not str(response.geturl()).startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/"):
+				raise ValueError("unsafe asset manifest redirect")
 			data = json.loads(response.read().decode("utf-8"))
 		assets = data.get("assets", {})
 		if not isinstance(assets, dict):
