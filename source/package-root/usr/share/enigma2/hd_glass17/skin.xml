@@ -7481,4 +7481,13 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_menu" render="Label" position="1290,750" size="180,45" font="Prive3;26" halign="center" transparent="1" />
     <widget source="key_info" render="Label" position="1490,750" size="180,45" font="Prive3;26" halign="center" transparent="1" />
   </screen>
+  <screen name="InformationPicture" position="center,120" size="1500,840" title="Picture Information">
+    <widget name="Image" position="0,0" size="0,0" conditional="Image" />
+    <widget name="name" position="30,25" size="1440,50" font="Prive3;32" halign="center" transparent="1" valign="center" />
+    <widget name="picture" position="30,90" size="1440,630" alphatest="blend" scaleFlags="scaleCenter" transparent="1" />
+    <widget source="key_red" render="Label" position="30,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="585,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="1140,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+
 </skin>
