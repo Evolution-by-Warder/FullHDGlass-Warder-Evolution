@@ -44,4 +44,18 @@ grep -Fx './usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version' "$TM
 ACTUAL_RUNTIME="$(tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version | tr -d '\r\n')"
 test "$ACTUAL_RUNTIME" = "$EXPECTED_RUNTIME"
 
+# Verify that the receiver payload contains freshly compiled r10 weather translations.
+tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/sk/LC_MESSAGES/weather.mo > "$TMP/weather-sk.mo"
+tar -xOzf "$TMP/data.tar.gz" ./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/sk/LC_MESSAGES/eWeather.mo > "$TMP/eWeather-sk.mo"
+python3 - "$TMP/weather-sk.mo" "$TMP/eWeather-sk.mo" <<'PY'
+import gettext, sys
+for path in sys.argv[1:]:
+    with open(path, "rb") as handle:
+        catalog = gettext.GNUTranslations(handle)
+    assert catalog.gettext("Overcast") == "Zamračené", path
+    assert catalog.gettext("Partly cloudy") == "Čiastočne oblačno", path
+    assert catalog.gettext("Thunderstorm") == "Búrka", path
+print("Compiled Slovak weather catalogs: PASS")
+PY
+
 echo "TEST IPK integrity: PASS ($ACTUAL_RUNTIME)"
