@@ -3458,24 +3458,24 @@ if IS_VU:
 		<ePixmap pixmap="buttons/key_info.png" position="1142,0" size="52,37" alphatest="blend" transparent="1"/>
 		<widget name="key_green" position="0,615" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" backgroundColor="background" transparent="1"/>
 	</screen>
-	<screen name="TranslationInfo" position="center,center" size="630,525" title="Translation">
-		<eLabel position="15,30" size="570,34" font="Regular;34" text="Translation:"/>
-		<widget source="TranslatorName" render="Label" position="15,82" size="570,30" font="Regular;30"/>
-		<widget source="TranslationInfo" render="Label" position="15,150" size="570,375" font="Regular;30"/>
+	<screen name="TranslationInfo" position="center,150" size="1500,780" title="Translation">
+		<eLabel position="45,45" size="1410,48" font="Regular;36" text="Translation:"/>
+		<widget source="TranslatorName" render="Label" position="45,115" size="1410,45" font="Regular;32"/>
+		<widget source="TranslationInfo" render="Label" position="45,195" size="1410,525" font="Regular;31"/>
 	</screen>
-	<screen name="SystemMemoryInfo" position="center,center" size="840,630">
-		<widget source="lab1" render="Label" position="45,0" size="687,40" font="Regular;36" transparent="0" zPosition="2"/>
-		<widget source="lab2" render="Label" position="45,45" size="687,37" font="Regular;28" transparent="0" zPosition="2"/>
-		<widget name="AboutScrollLabel" position="45,85" size="687,540" font="Regular;30" transparent="0" zPosition="1" scrollbarMode="showOnDemand"/>
+	<screen name="SystemMemoryInfo" position="center,120" size="1500,840">
+		<widget source="lab1" render="Label" position="45,30" size="1410,48" font="Regular;36" transparent="0" zPosition="2"/>
+		<widget source="lab2" render="Label" position="45,88" size="1410,42" font="Regular;30" transparent="0" zPosition="2"/>
+		<widget name="AboutScrollLabel" position="45,150" size="1410,630" font="Regular;31" transparent="0" zPosition="1" scrollbarMode="showOnDemand"/>
 	</screen>
-	<screen name="SystemNetworkInfo" position="center,center" size="840,750">
-		<widget name="AboutScrollLabel" position="45,0" size="687,570" valign="left" font="Regular;30" transparent="1"/>
-		<ePixmap pixmap="div-h.png" position="0,600" zPosition="1" size="840,3"/>
-		<widget source="IFtext" render="Label" position="45,607" size="180,31" zPosition="10" font="Regular;30" halign="left" transparent="1" backgroundColor="background"/>
-		<widget source="IF" render="Label" position="195,607" size="900,31" zPosition="10" font="Regular;30" halign="left" transparent="1" backgroundColor="background"/>
-		<widget source="Statustext" render="Label" position="45,637" size="172,31" zPosition="10" font="Regular;30" halign="left" transparent="1" backgroundColor="background"/>
-		<widget name="statuspic" pixmaps="hd_glass17/buttons/button_green.png,hd_glass17/buttons/button_green_off.png" position="195,645" zPosition="10" size="22,24" transparent="1" alphatest="on"/>
-		<widget source="key_red" render="Label" position="0,690" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" backgroundColor="background" transparent="1"/>
+	<screen name="SystemNetworkInfo" position="center,90" size="1500,900">
+		<widget name="AboutScrollLabel" position="45,30" size="1410,660" valign="left" font="Regular;31" transparent="1" scrollbarMode="showOnDemand"/>
+		<ePixmap pixmap="div-h.png" position="45,710" zPosition="1" size="1410,3"/>
+		<widget source="IFtext" render="Label" position="45,730" size="270,40" zPosition="10" font="Regular;30" halign="left" transparent="1" backgroundColor="background"/>
+		<widget source="IF" render="Label" position="315,730" size="1140,40" zPosition="10" font="Regular;30" halign="left" transparent="1" backgroundColor="background"/>
+		<widget source="Statustext" render="Label" position="45,780" size="270,40" zPosition="10" font="Regular;30" halign="left" transparent="1" backgroundColor="background"/>
+		<widget name="statuspic" pixmaps="hd_glass17/buttons/button_green.png,hd_glass17/buttons/button_green_off.png" position="315,786" zPosition="10" size="22,24" transparent="1" alphatest="on"/>
+		<widget source="key_red" render="Label" position="45,835" zPosition="1" size="300,48" font="Regular;30" halign="center" valign="center" foregroundColor="red" backgroundColor="background" transparent="1"/>
 	</screen>
 	<screen name="Devices" position="center,center" size="950,825">
 		<widget source="TunerHeader" render="Label" position="10,0" size="940,37" font="Regular;30" transparent="0" zPosition="1"/>
@@ -3488,18 +3488,18 @@ if IS_VU:
 	<screen name="AboutReleaseNotes" position="center,center" size="840,825">
 		<widget name="list" position="0,0" size="840,800" font="Prive3;33" itemHeight="40" foregroundColor="#00b3b3b3" backgroundColor="background" transparent="0"/>
 	</screen>
-  <screen name="About" position="center,225" size="900,690" title="About">
-    <eLabel text="Image: " position="16,30" size="870,42" font="Prive3;33" halign="center" />
-    <widget source="EnigmaVersion" render="Label" position="16,90" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="ImageVersion" render="Label" position="16,135" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="FPVersion" render="Label" position="16,180" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="TunerHeader" render="Label" position="16,225" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="Tuner0" render="Label" position="16,285" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="Tuner1" render="Label" position="16,337" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="Tuner2" render="Label" position="16,390" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="Tuner3" render="Label" position="16,442" size="870,37" font="Prive3;30" halign="center" />
-    <widget source="HDDHeader" render="Label" position="16,517" size="870,42" font="Prive3;33" halign="center" />
-    <widget source="hddA" render="Label" position="16,577" size="870,75" font="Prive3;30" halign="center" />
+    <screen name="About" position="center,120" size="1500,840" title="About">
+    <eLabel text="Image: " position="45,35" size="1410,48" font="Prive3;36" halign="center" />
+    <widget source="EnigmaVersion" render="Label" position="45,105" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="ImageVersion" render="Label" position="45,160" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="FPVersion" render="Label" position="45,215" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="TunerHeader" render="Label" position="45,280" size="1410,42" font="Prive3;32" halign="center" />
+    <widget source="Tuner0" render="Label" position="45,340" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="Tuner1" render="Label" position="45,395" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="Tuner2" render="Label" position="45,450" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="Tuner3" render="Label" position="45,505" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="HDDHeader" render="Label" position="45,585" size="1410,48" font="Prive3;34" halign="center" />
+    <widget source="hddA" render="Label" position="45,650" size="1410,120" font="Prive3;31" halign="center" />
   </screen>
 	<!-- 7 Delite Extra Infobar  -->
       <screen name="Nab_ExtraInfobar" flags="wfNoBorder" position="0,0" size="0,0" title="Black Hole" backgroundColor="transparent"  >
