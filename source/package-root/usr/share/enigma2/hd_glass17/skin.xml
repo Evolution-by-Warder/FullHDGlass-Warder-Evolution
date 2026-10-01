@@ -7766,4 +7766,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
   </screen>
+<screen name="EPGBouquetSelector" position="center,center" size="1500,840" title="Choose bouquet">
+    <widget name="menu" position="30,30" size="1440,780" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+  </screen>
 </skin>
