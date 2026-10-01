@@ -428,3 +428,16 @@ Results:
 - direct current coverage was confirmed for LogManager/LogManagerViewLog, PiPSetup/PictureInPicture, QuickMenu, NimSetup/NimSelection/SelectSatsEntryScreen, ScanSetup/ScanSimple, ScriptRunner, Swap, TaskList/TaskListScreen and TaskView/JobView.
 - `TimeDateInput` is a legacy third-party compatibility screen with a small explicit `config` + red/green contract. It is recorded as a fallback-gap candidate, but no speculative override was added in this batch.
 - no RECEIVER PASS is claimed.
+
+
+## Input compatibility reconciliation — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- audited current OpenATV AudioSelection, ChoiceBox, Ci, Console, DVD, EventView, HelpMenu, InputBox, LocationBox, MessageBox, TimeDateInput and MinuteInput ownership/skinName behavior.
+- confirmed `SubtitleSelection -> AudioSelection` and `PermanentPinEntry -> ParentalControlChangePin/Setup`; no duplicate aliases were added.
+- added FHD `PinInputPopup` using the verified current `service/text/tries/input` contract.
+- added FHD `TimeDateInput` using the verified current `config`, `key_red` and `key_green` sources; this closes the recorded third-party compatibility fallback gap.
+- added FHD `MinuteInput` using its verified current `minutes` widget contract.
+- `HelpMenu` remains under active review because current `ShowRemoteControl` dynamically creates remote-control indicator widgets; it must not be replaced by a partial speculative layout.
+- no RECEIVER PASS is claimed.
