@@ -401,3 +401,14 @@ Results:
 - asset gate: all 137 unique skin.xml pixmap/backgroundPixmap/selectionPixmap references under `hd_glass17/` resolve to files present in the branch tree.
 - the static scan also found 11 historical `forgroundColor` misspellings. These are queued for targeted ownership/context correction rather than blind global replacement.
 - this gate does not constitute XML parser/runtime or receiver acceptance; no RECEIVER PASS is claimed.
+
+
+## Static gate follow-up — VideoDB attributes + core batch — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- corrected all 11 remaining historical `forgroundColor` misspellings in the VideoDB block to the current Enigma2/OpenATV `foregroundColor` attribute; current OpenATV `lib/python/skin.py` was checked before changing the attributes.
+- reviewed the next OpenATV core batch against current master: BoxPortal, ButtonSetup, CronTimer, FactoryReset, FixedMenu, FlashExpander, HDMICEC, HarddiskSetup, ImageBackup and InputDeviceSetup.
+- FactoryReset, FlashExpander, HDMICECSetup, KeyboardSelection, InputDeviceSetup and RemoteControlType are Setup-derived in current OpenATV and intentionally remain on the shared Warder Setup unless a verified specialized runtime requirement appears.
+- InputDeviceSelection, HarddiskSelection, ImageBackup, BoxPortal, ButtonSetup/ButtonSetupSelect, CronTimers and FixedMenu already have direct or appropriate shared coverage in the current skin.
+- no RECEIVER PASS is claimed.
