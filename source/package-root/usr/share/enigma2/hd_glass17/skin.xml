@@ -1269,6 +1269,10 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
 	</parameters>
   <screen name="MovieSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="background">
     <widget name="freeDiskSpace" position="60,60" size="1800,40" font="Prive4;34" backgroundColor="background" valign="center" halign="center" transparent="1" />
+    <widget name="DescriptionBorder" position="58,808" size="1804,162" zPosition="0" transparent="1" />
+    <widget name="movie_sort" position="1770,60" size="60,40" zPosition="6" alphatest="on" />
+    <widget name="movie_off" position="1700,60" size="60,40" zPosition="6" alphatest="on" />
+    <widget name="TrashcanSize" position="1450,60" size="240,40" font="Prive4;30" halign="right" valign="center" transparent="1" />
     <widget name="waitingtext" position="60,120" size="1800,600" zPosition="4" font="Prive4;38" backgroundColor="background" halign="center" valign="center" />
     <widget name="chosenletter" position="60,120" size="1800,600" zPosition="5" font="Prive4;80" halign="center" valign="center" transparent="1" />
     <widget name="list" position="60,120" size="1800,600" font="Prive4;34" itemHeight="75" zPosition="2" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
