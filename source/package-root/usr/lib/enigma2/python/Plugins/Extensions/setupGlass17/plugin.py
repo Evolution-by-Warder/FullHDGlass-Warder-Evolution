@@ -7800,9 +7800,11 @@ class downloadMenu(Screen):
 	def exit(self):
 		if not self.ena:
 			return
-		self.dwnTimer = None
+		if self.dwnTimer is not None and self.dwnTimer.isActive():
+			self.dwnTimer.stop()
 		self.dwnTimer_conn = None
-		self.close()			
+		self.dwnTimer = None
+		self.close()
 
 	def reactivate(self):
 		self.toDown = False
