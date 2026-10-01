@@ -269,7 +269,7 @@ class mainmenu(Screen):
 			return "3200"
 
 		def fetch_json(url):
-			req = Request(url, headers={'User-Agent': 'FullHDGlass17/9.51-modern2'})
+			req = Request(url, headers={'User-Agent': 'FullHDGlass17/9.50-r10-Warder'})
 			with urlopen(req, timeout=12) as response:
 				raw = response.read()
 			if not isinstance(raw, str):
@@ -277,10 +277,10 @@ class mainmenu(Screen):
 			return json.loads(raw)
 
 		def resolve_location(value):
-			# New format: c|City|lat|lon|country|admin. Old AccuWeather entries are migrated automatically.
+			# r9/r10 migration: accept the current coordinate format and legacy Enhanced Weather entries.
 			if value and '|' in value:
 				p = value.split('|')
-				if len(p) >= 6:
+				if len(p) >= 6 and p[2] and p[3]:
 					return p[1], float(p[2]), float(p[3]), p[4], p[5]
 			city = "Bratislava"
 			if value and ',' in value:
@@ -289,9 +289,17 @@ class mainmenu(Screen):
 					city = p[2].strip()
 			elif config.plugins.setupGlass17.par13.getText() not in ("", "None"):
 				city = config.plugins.setupGlass17.par13.getText()
-			url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({'name': city, 'count': 1, 'language': WLANG[:2], 'format': 'json'})
+			# Old Enhanced Weather records can end in the literal word "station".
+			if city.lower().endswith(" station"):
+				city = city[:-8].strip()
+			url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({'name': city, 'count': 10, 'language': WLANG[:2], 'format': 'json'})
 			g = fetch_json(url)
-			r = (g.get('results') or [])[0]
+			rows = g.get('results') or []
+			if not rows:
+				raise ValueError("City not found: " + city)
+			r = rows[0]
+			if r.get('latitude') is None or r.get('longitude') is None:
+				raise ValueError("Incomplete location data: " + city)
 			return r.get('name', city), float(r['latitude']), float(r['longitude']), r.get('country', ''), r.get('admin1', '')
 
 		try:
