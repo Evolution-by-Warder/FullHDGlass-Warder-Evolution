@@ -263,3 +263,20 @@ Changes and decisions:
 - existing Task/Job and Opkg/package-feed layouts were retained where the current runtime contract is already represented;
 - `PowerLost` is not a Screen class and therefore requires no skin definition;
 - no item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV UI / locale / plugin-management batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current OpenATV HDMI-CEC, video mode, input-device, locale, date/time, parental-control, sleep-timer, skin-selection, plugin-browser, quick-menu and button-setup runtime contracts.
+
+Results:
+- HDMI-CEC, keyboard/input-device/remote-control, locale settings, date/time, parental control, sleep timer and plugin-browser setup classes are current `Setup` derivatives where appropriate; the common Warder Setup layout remains authoritative.
+- added a dedicated current `LocaleSelection` FHD screen with indexed flag/native/name/package/status list contract and current action labels.
+- existing Warder PluginBrowser/List/Grid layouts already represent the current browser contract and were retained.
+- added dedicated FHD `PackageAction` and `PackageActionLog` layouts; current `PluginAction` and `PluginActionLog` intentionally fall back to those skin names.
+- `PackageActionSummary` / `PluginBrowserSummary` remain front-panel summary contracts, not full-screen modernization targets.
+- `AutoVideoMode` is a runtime event screen without visual widgets. `AutoVideoModeLabel` has only `content` and `restxt`; no new full-screen layout was introduced without a confirmed current default-skin placement requirement.
+- existing VideoSetup, InputDeviceSelection, SkinSelection, QuickMenu and ButtonSetup family layouts were retained where already present.
+- no item in this batch is marked RECEIVER PASS.
