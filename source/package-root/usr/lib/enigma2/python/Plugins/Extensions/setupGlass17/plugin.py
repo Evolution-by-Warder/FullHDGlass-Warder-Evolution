@@ -9094,6 +9094,8 @@ class cityFinder(Screen):
 					line = raw.strip()
 					if line.startswith("# "):
 						currentName = line[2:].strip()
+						if currentName == "SK": currentName = "Slovakia"
+						elif currentName == "CZ": currentName = "Czechia"
 						continue
 					x = _cityLine(raw)
 					if not x:
