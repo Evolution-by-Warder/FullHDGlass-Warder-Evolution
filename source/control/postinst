@@ -25,6 +25,7 @@ copy_default_if_missing /etc/hddtemp-deff17.db /etc/hddtemp.db
 # These files are FullHDGlass17 defaults. Keep an existing user/image file intact.
 copy_default_if_missing /etc/lcstrings-def17.list /etc/lcstrings.list
 copy_default_if_missing /etc/city_Code-17.txt /etc/city_Code.txt
+copy_default_if_missing /etc/ewea_city_Code-17.txt /etc/ewea_city_Code.txt
 copy_default_if_missing /etc/iptvprov-def17.list /etc/iptvprov.list
 
 # The package name remains enigma2-skin-fullhdglass17, so opkg/dpkg records
