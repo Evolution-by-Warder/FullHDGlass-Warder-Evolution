@@ -328,7 +328,7 @@ class mainmenu(Screen):
 			realfeel = fmt_temp(cur.get('apparent_temperature'))
 			hum = str(cur.get('relative_humidity_2m', DEFAULT_V)) + "%"
 			wd = wind_dir(cur.get('wind_direction_10m', 0))
-			wind = str(int(round(float(cur.get('wind_speed_10m', 0))))) + self.Wunits['speed'] + ", " + wd
+			wind = str(int(round(float(cur.get('wind_speed_10m', 0))))) + self.Wunits['speed'] + ", " + _(wd)
 			vis = cur.get('visibility')
 			vis = ("%.1f km" % (float(vis)/1000.0)) if vis not in (None, DEFAULT_V) else DEFAULT_V
 			self["now2"].setText("%s\\n%s\\n%s\\n%s\\n%s" % (realfeel, hum, wind, vis, DEFAULT_V))
@@ -356,7 +356,7 @@ class mainmenu(Screen):
 					except Exception: pass
 					ws = d.get('wind_speed_10m_max', [])[i]
 					wdir = wind_dir(d.get('wind_direction_10m_dominant', [])[i])
-					self["windspeed_%s" % i].setText(str(int(round(float(ws)))) + self.Wunits['speed'] + ", " + wdir)
+					self["windspeed_%s" % i].setText(str(int(round(float(ws)))) + self.Wunits['speed'] + ", " + _(wdir))
 					wfile = PLUGINPATH + 'pict/' + wdir + '.png'
 					if os.path.isfile(wfile): self["wDir_%s" % i].instance.setPixmapFromFile(wfile)
 					uv = d.get('uv_index_max', [])[i]
