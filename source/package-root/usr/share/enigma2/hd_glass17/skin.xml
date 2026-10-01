@@ -7287,4 +7287,33 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="45,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="480,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="green" transparent="1" />
   </screen>
+
+  <screen name="TaskList" position="center,240" size="1500,600" title="Task List">
+    <widget source="tasklist" render="Listbox" position="30,30" size="1440,465" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">
+        {"template":[
+          MultiContentEntryText(pos=(20,0),size=(900,45),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1),
+          MultiContentEntryText(pos=(20,45),size=(330,45),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=2),
+          MultiContentEntryProgress(pos=(375,55),size=(840,24),percent=-3),
+          MultiContentEntryText(pos=(1240,45),size=(170,45),font=0,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER,text=4)
+        ],"fonts":[gFont("Prive3",30)],"itemHeight":90}
+      </convert>
+    </widget>
+    <widget source="key_red" render="Label" position="30,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="green" transparent="1" />
+  </screen>
+  <screen name="TaskListScreen" position="center,240" size="1500,600" title="Task List">
+    <widget source="tasklist" render="Listbox" position="30,30" size="1440,465" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">
+        {"template":[
+          MultiContentEntryText(pos=(20,0),size=(900,45),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1),
+          MultiContentEntryText(pos=(20,45),size=(330,45),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=2),
+          MultiContentEntryProgress(pos=(375,55),size=(840,24),percent=-3),
+          MultiContentEntryText(pos=(1240,45),size=(170,45),font=0,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER,text=4)
+        ],"fonts":[gFont("Prive3",30)],"itemHeight":90}
+      </convert>
+    </widget>
+    <widget source="key_red" render="Label" position="30,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="green" transparent="1" />
+  </screen>
 </skin>
