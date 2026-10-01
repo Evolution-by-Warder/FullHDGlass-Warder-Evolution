@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 37
-Purpose: restore r12 live Infobar weather refresh after city changes, enforce regression coverage, and standardize visible FullHDGlass17 - Warder Evolution branding.
+Revision: 38
+Purpose: corrected r12 live Infobar weather refresh implementation, regression coverage, and official FullHDGlass17 - Warder Evolution branding.
