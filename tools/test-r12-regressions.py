@@ -128,4 +128,6 @@ assert "return False" in chckpath
 spinner = PLUGIN[PLUGIN.find("def spinnerOnOff("):PLUGIN.find("def autoHdd(")]
 assert "if not os.path.islink(spinner):" in spinner
 assert "target != os.path.realpath(legacy)" in spinner
+assert "if not os.path.isdir(original):" in spinner
+assert spinner.find("if not os.path.isdir(original):") < spinner.find("os.unlink(spinner)")
 assert "os.unlink(spinner)" in spinner
