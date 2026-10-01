@@ -45,15 +45,24 @@ if find "$WORK" -type d -name __pycache__ -print -quit | grep -q . || find "$WOR
 fi
 
 OUT="$OUTDIR/enigma2-skin-fullhdglass17-warder-evolution_${RUNTIMEVER}_all.ipk"
-if command -v opkg-build >/dev/null 2>&1; then
-  opkg-build "$WORK" "$OUT"
-elif command -v dpkg-deb >/dev/null 2>&1; then
-  dpkg-deb --build --root-owner-group "$WORK" "$OUT"
-else
-  echo "Need opkg-build or dpkg-deb to build the test IPK." >&2
-  exit 4
-fi
+BUILD="$WORK/.ipk-build"
+mkdir -p "$BUILD"
+printf '2.0\\n' > "$BUILD/debian-binary"
+(
+  cd "$WORK/CONTROL"
+  tar --format=gnu --owner=0 --group=0 -czf "$BUILD/control.tar.gz" .
+)
+(
+  cd "$WORK"
+  tar --format=gnu --owner=0 --group=0 --exclude='./CONTROL' --exclude='./.ipk-build' -czf "$BUILD/data.tar.gz" .
+)
+rm -f "$OUT"
+(
+  cd "$BUILD"
+  ar -r "$OUT" debian-binary control.tar.gz data.tar.gz
+)
 
+test "$(ar t "$OUT" | tr '\\n' ' ')" = "debian-binary control.tar.gz data.tar.gz "
 sha256sum "$OUT" > "$OUT.sha256"
 echo "Built TEST package only:"
 cat "$OUT.sha256"
