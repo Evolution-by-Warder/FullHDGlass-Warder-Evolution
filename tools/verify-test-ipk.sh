@@ -16,7 +16,7 @@ IPK_ABS="$(CDPATH= cd -- "$(dirname -- "$IPK")" && pwd)/$(basename "$IPK")"
   cd "$TMP"
   ar x "$IPK_ABS"
 )
-test "$(cat "$TMP/debian-binary")" = "2.0"
+test "$(tr -d '\\r\\n' < "$TMP/debian-binary")" = "2.0"
 (
   cd "$(dirname "$IPK_ABS")"
   sha256sum -c "$(basename "$IPK_ABS").sha256"
