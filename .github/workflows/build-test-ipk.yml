@@ -40,6 +40,7 @@ jobs:
           chmod +x tools/test-package-lifecycle.sh tools/test-runtime-safety.py
           ./tools/test-package-lifecycle.sh
           python3 tools/test-runtime-safety.py
+          python3 tools/test-version-order.py
 
       - name: Build TEST IPK
         shell: bash
