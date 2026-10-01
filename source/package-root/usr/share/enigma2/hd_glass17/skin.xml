@@ -7571,4 +7571,29 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="45,690" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_green" render="Label" position="435,690" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
   </screen>
+  <screen name="LocaleSelection" position="center,120" size="1650,840" title="Locale / Language Selection">
+    <widget name="icons" position="0,0" size="45,40" pixmaps="icons/lock_off.png,icons/lock_on.png,icons/lock_error.png" alphatest="blend" />
+    <widget source="locales" render="Listbox" position="30,30" size="1590,630" enableWrapAround="1" scrollbarMode="showOnDemand">
+      <templates><template name="Default" fonts="Prive3;30" itemHeight="48"><mode name="default"><pixmap index="Flag" position="15,6" size="90,36" alpha="blend" scale="centerScaled" /><text index="Native" position="135,0" size="600,48" font="0" horizontalAlignment="left" verticalAlignment="center" /><text index="Name" position="750,0" size="510,48" font="0" horizontalAlignment="left" verticalAlignment="center" /><text index="Package" position="1275,0" size="180,48" font="0" horizontalAlignment="left" verticalAlignment="center" /><pixmap index="Status" position="1485,5" size="45,40" alpha="blend" scale="centerScaled" /></mode></template></templates>
+    </widget>
+    <widget source="description" render="Label" position="30,675" size="1590,45" font="Prive3;27" />
+    <widget source="key_red" render="Label" position="30,765" size="270,45" font="Prive3;29" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="315,765" size="270,45" font="Prive3;29" foregroundColor="green" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="600,765" size="270,45" font="Prive3;29" foregroundColor="yellow" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1275,765" size="105,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1395,765" size="105,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1515,765" size="105,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="PackageAction" position="center,120" size="1650,840" title="Package Action">
+    <widget source="plugins" render="Listbox" position="30,30" size="1590,585" scrollbarMode="showOnDemand" />
+    <widget name="quickselect" position="30,30" size="1590,585" font="Prive3;100" foregroundColor="yellow" halign="center" valign="center" transparent="1" zPosition="2" />
+    <widget name="description" position="30,630" size="1590,90" font="Prive3;27" valign="center" />
+    <widget source="key_red" render="Label" position="30,765" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="420,765" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="810,765" size="360,45" font="Prive3;30" foregroundColor="yellow" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="PackageActionLog" position="center,120" size="1650,840" title="Package Action Log">
+    <widget name="log" position="30,30" size="1590,690" font="Prive3;28" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="30,765" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
 </skin>
