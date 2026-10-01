@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 50
-Purpose: verified direct GitHub TEST updates plus persistent last-known Open-Meteo cache across Enigma2 GUI restarts.
+Revision: 51
+Purpose: immediate Infobar weather on skin startup and city change, city-keyed persistent cache, direct GitHub TEST updates.
