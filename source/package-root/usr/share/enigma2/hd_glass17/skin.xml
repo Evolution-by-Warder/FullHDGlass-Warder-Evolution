@@ -2272,6 +2272,20 @@ if IS_VU:
     <widget source="value" render="Label" position="0,32" size="96,32" font="Prive3;10" />
   </screen>
   <!-- Inputbox -->
+  <screen name="PinInputPopup" position="center,center" size="900,330" title="PIN code needed">
+    <widget name="service" position="30,25" size="840,45" font="Prive3;30" halign="center" />
+    <widget name="text" position="30,85" size="840,45" font="Prive3;30" halign="center" />
+    <widget name="tries" position="30,145" size="840,45" font="Prive3;28" halign="center" foregroundColor="grey" />
+    <widget name="input" position="30,215" size="840,70" font="Prive3;48" halign="center" />
+  </screen>
+  <screen name="TimeDateInput" position="center,center" size="900,360" title="Date/time input">
+    <widget name="config" position="45,45" size="810,150" font="Prive3;33" itemHeight="50" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,270" size="360,48" font="Prive3;31" foregroundColor="red" halign="center" transparent="1" />
+    <widget source="key_green" render="Label" position="495,270" size="360,48" font="Prive3;31" foregroundColor="green" halign="center" transparent="1" />
+  </screen>
+  <screen name="MinuteInput" position="center,center" size="600,150" title="Seek">
+    <widget name="minutes" position="45,45" size="510,60" halign="center" valign="center" font="Prive3;40" />
+  </screen>
   <screen name="InputBox" position="center,495" size="825,150" title="Input">
     <widget name="text" position="15,22" size="795,45" font="Prive3;33" />
     <widget name="input" position="15,82" size="795,45" font="Prive3;30" />
