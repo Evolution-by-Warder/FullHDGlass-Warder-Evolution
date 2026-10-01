@@ -1987,6 +1987,30 @@ def chckPath(path):
 				msg = False
 	return msg
 ##########################################################################################################################
+def _atomicWriteText(path, data):
+	"""Replace a text file atomically, preserving its mode when possible."""
+	directory = os.path.dirname(path) or "."
+	tmp = os.path.join(directory, ".%s.warder-tmp" % os.path.basename(path))
+	mode = None
+	try:
+		if os.path.exists(path):
+			mode = os.stat(path).st_mode & 0o7777
+		with open(tmp, "w") as handle:
+			handle.write(data)
+			handle.flush()
+			os.fsync(handle.fileno())
+		if mode is not None:
+			os.chmod(tmp, mode)
+		os.replace(tmp, path)
+		return True
+	except OSError:
+		try:
+			os.remove(tmp)
+		except OSError:
+			pass
+		return False
+
+##########################################################################################################################
 def windowStyle(what, color):
 	allLines = ""
 	allstyles = ['b_b','b_bl','b_br','b_l','b_r','b_tl','b_tr','b_t']
@@ -2001,9 +2025,8 @@ def windowStyle(what, color):
 				ena = False
 		allLines = allLines + line
 	r.close()
-	r = open(SKINXML,"w")
-	r.write(allLines)
-	r.close()
+	if not _atomicWriteText(SKINXML, allLines):
+		return False
 	for x in allstyles:
 		shutil.copy2(os.path.join(SKINPATH, "style", what, x + ".png"), os.path.join(SKINPATH, "general", x + ".png"))
 	return True
@@ -2019,9 +2042,7 @@ def standbyOledOnOff():
 				line = line.replace("position=\"200,", "position=\"0,")
 		allLines = allLines + line
 	r.close()
-	r = open(USERXML,"w")
-	r.write(allLines)
-	r.close()
+	_atomicWriteText(USERXML, allLines)
 ##########################################################################################################################
 def getServiceInfoValue(info, what, ref=None):
 	v = ref and info.getInfo(ref, what) or info.getInfo(what)
@@ -2073,9 +2094,7 @@ def changeSkinXml(what, new="1", old="1", oled=False):
 		r.close()
 		if allLines.find("</skin>") == -1:
 			allLines += "\n</skin>\n"		
-		r = open(f,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(f, allLines)
 	except: pass
 	return True
 ##########################################################################################################################    		
@@ -2541,6 +2560,12 @@ def lbs():
 	return _("Listbox font size") + "\n"
 
 def chckFifo():
+	# Modern OpenATV owns Screens/ServiceScan.py; never rewrite image Python.
+	if isATV:
+		config.plugins.setupGlass17.par67.value = False
+		config.plugins.setupGlass17.par67.save()
+		configfile.save()
+		return False
 	f = SCREENSPATH + "ServiceScan.py"
 	if os.path.isfile(f):
 		allLines = ""
