@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 21
-Purpose: deep cumulative r1-r12 weather localization batch; unify Classic/Enhanced WMO vocabulary, complete shipped language catalogs, compile PO to MO deterministically, retain provider/PIG/Opkg/lifecycle/safety gates.
+Revision: 22
+Purpose: verify compiled receiver payload after full r10 weather localization; assert Slovak Classic/Enhanced MO catalogs inside the final IPK plus all cumulative r1-r12/Warder gates.
