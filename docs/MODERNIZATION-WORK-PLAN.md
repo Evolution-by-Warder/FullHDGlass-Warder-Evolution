@@ -468,3 +468,18 @@ Status: **PASS WITH RUNTIME TEST PENDING**
 - internal asset reference recheck found no missing Warder skin asset. PositionGauge `pointer="hd_glass17/pointer.png:13,3"` uses the Enigma2 pointer syntax (asset plus hotspot coordinates); the actual `hd_glass17/pointer.png` file is present.
 - external DreamExplorer pointer remains plugin-owned and was not copied or rewritten.
 - no RECEIVER PASS is claimed.
+
+
+## Remaining OpenATV core-screen reconciliation — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- audited the remaining current OpenATV core screen families not covered by the earlier passes: backup/restore, button/CCcam, device/storage, flash/multiboot, locale/input devices, network services/mounts, OSCam/opkg, parental control, recording/software update, swap/tasks, timers/timeshift and wizard families.
+- added FHD `FlashManager` using its verified current list/description/color/help contract; existing `FlashOnline` remains separately preserved.
+- added FHD `Dishpip` using the current rotor/tuner widget contract while preserving the existing `Dish` screen.
+- added `NetworkInadynLog` compatibility layout matching the verified current `NetworkLogScreen` infotext contract and runtime fallback order.
+- confirmed BackupScreen/RestoreScreen and BackupHelper deliberately use tiny/zero-size embedded worker screens and should not be converted into visible dialogs.
+- confirmed DevicesPanelSummary aliases to SetupSummary; ChkrootInit aliases to KexecInit; QuadPiP aliases to PictureInPicture; PackageFeedEditor inherits VirtualKeyboard; no duplicate layouts were added for those cases.
+- OSDCalibration intentionally owns a pixel-perfect resolution-aware embedded skin and is left untouched.
+- current wizard compatibility names WizardInstall/InstallWizard, WizardStart/StartWizard, WizardLanguage and WizardVideo/VideoWizard are already present.
+- no RECEIVER PASS is claimed.
