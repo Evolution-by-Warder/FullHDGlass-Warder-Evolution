@@ -316,3 +316,8 @@ for screen in ("OPKGMenu", "OPKGSource", "OpkgInstaller", "IpkgInstaller", "Soft
 WEAUTILS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py").read_text(encoding="utf-8")
 for token in ('_OPENMETEO_CACHE_FILE = "/etc/enigma2/fullhdglass17-openmeteo-cache.json"', 'def _loadOpenMeteoCache():', 'def _saveOpenMeteoCache():', '_loadOpenMeteoCache()', '_saveOpenMeteoCache()', 'cached = _OPENMETEO_CACHE.get(ckey)'):
     assert token in WEAUTILS, token
+
+# Infobar weather must not wait behind the legacy 30-second startup timer.
+assert 'if self.enaWeainf:\n\t\t\t\t\tself.refreshWeatherNow()' in PLUGIN
+assert 'self.clrMemTimer.startLongTimer(1)' not in PLUGIN[PLUGIN.index('def refreshWeatherNow'):PLUGIN.index('def clearMem', PLUGIN.index('def refreshWeatherNow'))]
+assert 'self.clearMem()' in PLUGIN[PLUGIN.index('def refreshWeatherNow'):PLUGIN.index('def clearMem', PLUGIN.index('def refreshWeatherNow'))]
