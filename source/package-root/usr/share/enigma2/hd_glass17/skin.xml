@@ -1495,27 +1495,23 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
   </screen>
   <!-- Network adapter selection -->
-  <screen name="NetworkAdapterSelection" position="center,270" size="840,600" title="Select Network Adapter">
-    <widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Prive3;27" halign="center" valign="center" foregroundColor="red" transparent="1" />
-    <widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Prive3;27" halign="center" valign="center" foregroundColor="green" transparent="1" />
-    <widget source="key_yellow" render="Label" position="420,0" zPosition="1" size="210,60" font="Prive3;27" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
-    <widget source="key_blue" render="Label" position="630,0" zPosition="1" size="210,60" font="Prive3;27" halign="center" valign="center" foregroundColor="blue" transparent="1" />
-    <widget source="list" render="Listbox" position="7,75" size="825,420" zPosition="10" scrollbarMode="showOnDemand">
+  <screen name="NetworkAdapterSelection" position="center,120" size="1500,840" title="Select Network Adapter">
+    <widget source="key_red" render="Label" position="45,20" size="330,55" font="Prive3;29" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,20" size="330,55" font="Prive3;29" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="765,20" size="330,55" font="Prive3;29" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1125,20" size="330,55" font="Prive3;29" halign="center" valign="center" foregroundColor="blue" transparent="1" />
+    <widget source="list" render="Listbox" position="45,95" size="1410,600" zPosition="10" scrollbarMode="showOnDemand">
       <convert type="TemplatedMultiContent">
-        <!--  iface, name, description, interfacepng, defaultpng, activepng, divpng  -->
-				{"template": [
-						MultiContentEntryText(pos = (127, 9), size = (660, 42), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_TOP, text = 1), # index 1 is the interfacename
-						MultiContentEntryText(pos = (127, 64), size = (660, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, text = 2), # index 2 is the description
-						MultiContentEntryPixmapAlphaTest(pos = (3, 12), size = (81, 81), png = 3), # index 3 is the interface pixmap
-						MultiContentEntryPixmapAlphaTest(pos = (94, 69), size = (23, 24), png = 4), # index 4 is the default pixmap
-					],
-				"fonts": [gFont("Prive3", 42),gFont("Prive3", 30)],
-				"itemHeight": 105
-				}
-			</convert>
+        {"template": [
+          MultiContentEntryText(pos = (145, 10), size = (1180, 44), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_TOP, text = 1),
+          MultiContentEntryText(pos = (145, 62), size = (1180, 32), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, text = 2),
+          MultiContentEntryPixmapAlphaTest(pos = (15, 12), size = (81, 81), png = 3),
+          MultiContentEntryPixmapAlphaTest(pos = (108, 69), size = (23, 24), png = 4),
+        ], "fonts": [gFont("Prive3", 42),gFont("Prive3", 30)], "itemHeight": 105}
+      </convert>
     </widget>
-    <ePixmap pixmap="hd_glass17/div-h.png" position="0,510" zPosition="1" size="840,3" />
-    <widget source="introduction" render="Label" position="0,525" size="840,75" zPosition="10" font="Prive3;31" halign="center" valign="center" backgroundColor="un25062748" transparent="1" />
+    <ePixmap pixmap="hd_glass17/div-h.png" position="45,715" zPosition="1" size="1410,3" />
+    <widget source="introduction" render="Label" position="45,735" size="1410,75" zPosition="10" font="Prive3;31" halign="center" valign="center" transparent="1" />
   </screen>
   <!-- Network adapter test Black = "#000000" Grey = "#8c8c93" Green = "#1cff1c" Red = #f23d21-->
   <screen name="NetworkAdapterTest" position="center,center" size="900,550" backgroundColor="background" title="Network test...">
@@ -1552,8 +1548,8 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="EditSettings_Text" position="600,500" size="300,40" zPosition="2" font="Prive4;32" valign="center" halign="center" transparent="1" foregroundColors="#000000,#8c8c93,#0064c7" />
   </screen> 
   <!-- Network setup -->
-  <screen name="NetworkSetup" position="center,322" size="690,495" title="Network Setup">
-    <widget name="menu" position="15,15" size="660,465" font="Prive3;33" itemHeight="40" />
+  <screen name="NetworkSetup" position="center,180" size="1350,720" title="Network Setup">
+    <widget name="menu" position="45,45" size="1260,630" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="NimSelection" position="center,253" size="1200,690" title="Choose Tuner">
     <widget source="nimlist" render="Listbox" position="0,0" size="1200,690">
@@ -2027,23 +2023,20 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <eLabel position="0,615" zPosition="10" size="1200,2" backgroundColor="white" transparent="0" />
 			<widget source="introduction" render="Label" position="0,620" zPosition="10" size="1200,45" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
 		</screen>
-				<screen name="PacketManager" position="center,center" size="795,630" title="Packet manager" >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget source="list" render="Listbox" position="7,75" size="780,547" scrollbarMode="showOnDemand">
-				<convert type="TemplatedMultiContent">
-					{"template": [
-							MultiContentEntryText(pos = (7, 1), size = (660, 42), font=0, flags = RT_HALIGN_LEFT, text = 0), # index 0 is the name
-							MultiContentEntryText(pos = (7, 39), size = (660, 30), font=1, flags = RT_HALIGN_LEFT, text = 2), # index 2 is the description
-							MultiContentEntryPixmapAlphaTest(pos = (667, 3), size = (77, 77), png = 4), # index 4 is the status pixmap
-							MultiContentEntryPixmapAlphaTest(pos = (7, 75), size = (765, 3), png = 5), # index 4 is the div pixmap
-						],
-					"fonts": [gFont("Regular", 33),gFont("Regular", 21)],
-					"itemHeight": 78
-					}
-				</convert>
-			</widget>
-		</screen>
+  <screen name="PacketManager" position="center,120" size="1500,840" title="Packet manager">
+    <widget source="key_red" render="Label" position="45,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="list" render="Listbox" position="45,90" size="1410,705" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">
+        {"template": [
+          MultiContentEntryText(pos = (15, 3), size = (1230, 42), font=0, flags = RT_HALIGN_LEFT, text = 0),
+          MultiContentEntryText(pos = (15, 43), size = (1230, 30), font=1, flags = RT_HALIGN_LEFT, text = 2),
+          MultiContentEntryPixmapAlphaTest(pos = (1290, 3), size = (77, 77), png = 4),
+          MultiContentEntryPixmapAlphaTest(pos = (15, 78), size = (1350, 3), png = 5),
+        ], "fonts": [gFont("Regular", 33),gFont("Regular", 23)], "itemHeight": 84}
+      </convert>
+    </widget>
+  </screen>
   <screen name="UpdatePlugin" position="center,285" size="825,570" title="Software update">
     <widget name="activityslider" position="187,105" size="450,12" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
     <widget name="slider" position="37,540" size="750,7" />
