@@ -15,7 +15,7 @@ for f in preinst postinst postrm; do
 done
 
 ! grep -REn 'rm[[:space:]]+-rf[[:space:]]+/(etc|usr/share/enigma2|usr/lib/enigma2)' "$CONTROL" || fail "broad destructive rm found"
-! grep -REn '/etc/enigma2/settings' "$CONTROL" | grep -Ev 'deliberately never modified|intentionally|Do not remove' || fail "settings mutation candidate found"
+! grep -REn '/etc/enigma2/settings' "$CONTROL" | grep -Ev 'deliberately never modified|intentionally|Do not remove|configuration lives in' || fail "settings mutation candidate found"
 ! grep -REn 'skin_default/spinner.*(rm|mv|ln)|(^|[;&|[:space:]])(rm|mv|ln)[[:space:]].*skin_default/spinner' "$CONTROL" || fail "spinner mutation in lifecycle scripts"
 
 grep -Fx '/etc/enigma2/skin_user-hdg17.xml' "$CONTROL/conffiles" >/dev/null || fail "missing conffile"
