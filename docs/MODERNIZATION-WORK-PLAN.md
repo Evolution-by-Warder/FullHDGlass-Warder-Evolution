@@ -624,3 +624,16 @@ Status: **BUILD WORKFLOW READY — EXECUTION PENDING**
 - no stable updater metadata or `main` content was changed. Workflow execution/artifact generation is still pending; no BUILD PASS or RECEIVER PASS is claimed until the run actually succeeds.
 
 - build-format hardening follow-up: removed the `dpkg-deb` fallback so a TEST file cannot merely be named `.ipk` while inheriting host-specific Debian compression. The builder now emits the classic opkg-compatible ar member order `debian-binary`, `control.tar.gz`, `data.tar.gz`; CI opens that archive directly and verifies control metadata, lifecycle scripts, conffiles, payload listing and SHA256.
+
+
+## Runtime safety batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- audited high-risk runtime surfaces across the 63 packaged Python modules, with focused review of setupGlass17, classic/enhanced weather and system-info code.
+- `G17_UserInfo.py`: replaced shell-form HDD temperature pipelines and temporary-file `df -h` redirection with argument-vector `subprocess.check_output` calls and in-memory parsing.
+- `weather.py`: replaced legacy shell `rm -rf` deletion of the weather log/XML cache with scoped `os.remove` guarded by `OSError` handling.
+- Warder asset downloads now require an exact lowercase 64-hex SHA256, HTTPS for every selected URL/part, a basename-only filename and a traversal-safe root before download; download execution repeats the SHA/HTTPS validation defensively.
+- existing safe ZIP extraction was confirmed to reject absolute/traversal paths and archive-created symlinks before extraction.
+- spinner audit confirmed the destructive legacy override is already retired: `par65` is a non-persistent false compatibility placeholder and the remaining helper only restores the image spinner when an older FullHDGlass symlink specifically targets the legacy skin spinner.
+- added `tools/test-runtime-safety.py`; TEST CI now rejects TLS-verification bypasses, shell `rm -rf`, `shell=True`, dynamic eval/exec, updater regression to `Screens.Console`, missing eConsole/HTTPS/SHA/ZIP guards, and reintroduction of the removed system-info/weather shell paths.
