@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test13
-Revision: 63
-Purpose: Fix OpenATV modal crash after updater progress dialog by deferring the success/error result dialog until the progress MessageBox has closed and the setup screen is modal again.
+Candidate: 1.0.5-test14
+Revision: 64
+Purpose: Diagnostic no-functional-change build to reproduce the TEST13 updater post-install crash with OpenATV Enigma2 debug logging enabled and capture the exact traceback.
