@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
 Revision: 23
-Purpose: strict r12 parity sweep; restore missing EventViewContextMenu, retain complete weather/PIG/Opkg/localization/lifecycle baseline and deterministic MO compilation.
+Purpose: authoritative supplied-r12 parity pass; guard original r12 functional surface across setup, PIG/PIG2/PIG4, Classic/Enhanced Weather, city management, picons, updater/config restore and Open-Meteo helpers while retaining Warder modernization.
