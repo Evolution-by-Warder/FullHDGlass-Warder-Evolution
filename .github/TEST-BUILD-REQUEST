@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test18
-Revision: 71
+Revision: 72
 Purpose: Port the weather-city quick selector lifecycle directly from the authoritative FullHDGlass17 9.50-r12 package: native ChoiceBox, r12 callback/invalidate behavior, preserved left/right switching, and r12 save-time immediate live weather refresh without GUI restart.
