@@ -8045,11 +8045,17 @@ class downloadMenu(Screen):
 		if internet():
 			if ENAFINDER:
 				for x in range(0,len(k)):
+					archive = "/tmp/a.7z"
+					extract_dir = os.path.realpath(os.path.join("/tmp", Ddir))
+					if not (extract_dir == "/tmp" or extract_dir.startswith("/tmp/")):
+						tmp += _("ERROR")+": ("+Ddir+ ") "+_("Invalid extraction path")+"\n"
+						continue
 					try:
-						os.remove("/tmp/a.7z")
+						os.remove(archive)
 					except OSError:
 						pass
-					url  = 'https://picon.cz/download/%s/' % k[x][1] 
+					shutil.rmtree(extract_dir, ignore_errors=True)
+					url = 'https://picon.cz/download/%s/' % k[x][1]
 					headers = {'User-Agent':'FHDG17','Referer':url}
 					try:
 						cookie_jar = cookielib.CookieJar()
@@ -8058,19 +8064,30 @@ class downloadMenu(Screen):
 						req = Request(url, data=None, headers=headers)
 						handler = urlopen(req, timeout=15)
 						data = handler.read()
-						with open("/tmp/a.7z", 'wb') as f:
+						with open(archive, 'wb') as f:
 							f.write(data)
-					except: pass
-					if os.path.isfile("/tmp/a.7z"):
-						size = 1.0*os.path.getsize("/tmp/a.7z")/(1024*1024)
+					except Exception:
+						data = b""
+					if os.path.isfile(archive):
+						size = 1.0*os.path.getsize(archive)/(1024*1024)
 						if size != 0:
 							ret, ret1 = self.getFreeSpace()
 							if ret > size and ret1 > (size/2):
-								system("/usr/bin/7z_g e -o/tmp/%s /tmp/a.7z" % Ddir)
+								os.makedirs(extract_dir, exist_ok=True)
+								cmd = ["/usr/bin/7z_g", "e", "-y", "-o%s" % extract_dir, archive]
 								try:
-								os.remove("/tmp/a.7z")
-							except OSError:
-								pass
+									import subprocess
+									extract_ok = subprocess.call(cmd) == 0
+								except (OSError, ValueError):
+									extract_ok = False
+								try:
+									os.remove(archive)
+								except OSError:
+									pass
+								if not extract_ok:
+									shutil.rmtree(extract_dir, ignore_errors=True)
+									tmp += _("ERROR")+": ("+Ddir+ ") "+_("Archive extraction failed")+"\n"
+									continue
 								numPict, total = self.cprmFiles(Ddir)
 								if total == 0:
 									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", 0 " + _("file(s) downloaded/updated.")+"\n"
@@ -8083,7 +8100,7 @@ class downloadMenu(Screen):
 						else:
 							tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!") + " 0 " + _("file(s) downloaded/updated.")+"\n"
 							try:
-								os.remove("/tmp/a.7z")
+								os.remove(archive)
 							except OSError:
 								pass
 					else:
