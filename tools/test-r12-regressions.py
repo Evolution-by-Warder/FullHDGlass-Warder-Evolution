@@ -202,6 +202,16 @@ for fn, guard in (
     block = PLUGIN[PLUGIN.find(fn):PLUGIN.find("################################################################", PLUGIN.find(fn) + 20)]
     assert guard in block, fn
 
+# Warder updater has isolated stable and TEST GitHub channels. TEST builds may
+# update directly from the development branch without weakening stable trust.
+for token in (
+    '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"',
+    '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json"',
+    '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/"',
+    'if "-test" in self.readVersion():',
+):
+    assert token in PLUGIN, token
+
 # Warder updater trust boundary and r12 installation-result behaviour.
 for token in (
     'manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"',
