@@ -6977,7 +6977,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if not config.plugins.setupGlass17.par75.value and not ena:
 			return
 
-		manifest_url = "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/update.json"
+		manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"
 		try:
 			manifest = self._warderFetchJson(manifest_url)
 			new_version = str(manifest.get("version", "")).strip()
