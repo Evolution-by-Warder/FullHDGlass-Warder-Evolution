@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 22
-Purpose: verify compiled receiver payload after full r10 weather localization; assert Slovak Classic/Enhanced MO catalogs inside the final IPK plus all cumulative r1-r12/Warder gates.
+Revision: 23
+Purpose: strict r12 parity sweep; restore missing EventViewContextMenu, retain complete weather/PIG/Opkg/localization/lifecycle baseline and deterministic MO compilation.
