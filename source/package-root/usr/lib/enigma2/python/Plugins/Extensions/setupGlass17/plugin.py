@@ -9025,13 +9025,17 @@ class weatherCitySelector(Screen):
 			self.items.append(item)
 		self["list"] = thumbList(self.items)
 		self["list"].l.setItemHeight(45)
-		if self.items:
-			self["list"].instance.moveSelectionTo(currentIndex)
+		self.currentIndex = currentIndex
+		self.onLayoutFinish.append(self._restoreSelection)
 		self["actions"] = ActionMap(["SetupActions", "DirectionActions", "ColorActions"], {
 			"ok": self.select, "green": self.select, "cancel": self.close, "red": self.close,
 			"up": self["list"].up, "down": self["list"].down,
 			"left": self["list"].pageUp, "right": self["list"].pageDown,
 		}, -1)
+
+	def _restoreSelection(self):
+		if self.items and self["list"].instance is not None:
+			self["list"].instance.moveSelectionTo(self.currentIndex)
 
 	def select(self):
 		selection = self["list"].getCurrent()
