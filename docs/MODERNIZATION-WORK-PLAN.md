@@ -661,3 +661,13 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - OpenATV now explicitly refuses the legacy FullHDGlass 2xOK mechanism that rewrites image-owned `/usr/lib/enigma2/python/Screens/ChannelSelection.py`; the old config flag is disabled instead. Non-OpenATV compatibility code is retained pending platform-specific validation.
 - both the infobar legacy MSN weather request and classic weather fallback now require HTTPS; the generic infobar downloader no longer accepts cleartext HTTP URLs.
 - regression gates now cover obsolete repository ownership, asset manifest/payload path pinning, asset redirect validation, OpenATV ChannelSelection protection and classic/infobar MSN HTTPS transport.
+
+
+## OpenATV image ownership batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- `setMenuPyo()` now refuses the legacy runtime replacement of image-owned `Screens/Menu.py` on OpenATV. Legacy code remains available only for non-OpenATV compatibility review.
+- `setEncodingUser()` now refuses runtime replacement of image-owned `encoding.conf` on OpenATV and disables the legacy option instead.
+- architecture helper activation no longer deletes active helper files before copying the selected packaged variant; failed selection therefore cannot leave the receiver without the previous helper.
+- TEST runtime-safety gate now requires the OpenATV Menu.py and encoding.conf ownership guards in addition to the existing ChannelSelection.py guard.
