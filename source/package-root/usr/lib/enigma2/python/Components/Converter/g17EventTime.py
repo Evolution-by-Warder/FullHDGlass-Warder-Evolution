@@ -32,7 +32,7 @@ class g17EventTime(Poll, Converter, object):
 			t = localtime(what)
 			return ({True:"%2d" % t.tm_hour, False:"%02d" % t.tm_hour}[ign]) + ":%02d" % t.tm_min
 		def conv_to_min(what):
-			return ({True:"%d min" % (what / 60), False:"%02d min" % (what / 60)}[ign])
+			return ({True:"%d min" % (what // 60), False:"%02d min" % (what // 60)}[ign])
 		event = self.source.event
 		if event is None:
 			return "--"			
