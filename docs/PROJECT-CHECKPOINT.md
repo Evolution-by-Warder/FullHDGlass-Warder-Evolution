@@ -133,3 +133,16 @@ This section supersedes older development-status/TODO text above where they conf
 - SHA256: `32ed703e06955c7e2675b5997ea10fc510e7269aeb71b5d327fe17b5e1b1869c`.
 - Extracted final IPK verified: control `Version: 1.0.5-test20-1`; payload runtime version `1.0.5-test20`; `update-test.json` version `1.0.5-test20`.
 - CI/static/package validation is PASS. Receiver validation of the corrected opkg display is still pending and must not be marked PASS until physically confirmed.
+
+
+## TEST20 receiver acceptance — 2026-10-01
+
+Physical receiver validation on GigaBlue Quad 4K Pro / OpenATV completed successfully.
+
+- Downloaded published TEST20 package successfully: 11,422,940 bytes.
+- Receiver install output explicitly reported: `Upgrading enigma2-skin-fullhdglass17 (1.0.5-test19) to enigma2-skin-fullhdglass17 (1.0.5-test20) on root`.
+- Upgrade preserved existing settings; the differing conffile was safely placed at `/etc/enigma2/skin_user-hdg17.xml-opkg` rather than overwriting the user's active file.
+- GUI restarted with `init 4 && init 3` and returned normally.
+- `opkg status enigma2-skin-fullhdglass17` reports `Version: 1.0.5-test20-1` and `Status: install ok installed`.
+- **TEST20 package-version correction: RECEIVER PASS.** The earlier TEST19 display defect is closed.
+- TEST18 weather/city PASS and TEST19 all-four-PIG-variants PASS remain locked; TEST20 made packaging/version-gate changes only.

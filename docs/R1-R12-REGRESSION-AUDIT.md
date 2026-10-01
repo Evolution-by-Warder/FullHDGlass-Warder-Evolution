@@ -178,3 +178,8 @@ The TEST package gate now distinguishes the skin runtime/updater identity from o
 ### TEST20 CI result
 
 Workflow #80 / run `36923438508` completed SUCCESS on commit `815e097ef80b8a14ead21af806af649bbdb8d906`. The final published TEST20 IPK SHA256 is `32ed703e06955c7e2675b5997ea10fc510e7269aeb71b5d327fe17b5e1b1869c`. Final-package inspection confirms control `Version: 1.0.5-test20-1` and runtime `1.0.5-test20`. Receiver confirmation remains separate.
+
+
+### TEST20 physical receiver result
+
+GigaBlue Quad 4K Pro / OpenATV receiver validation is **PASS**. The real install transition was displayed as `1.0.5-test19 -> 1.0.5-test20`, GUI restarted normally, and installed package status reports raw control version `1.0.5-test20-1` with `install ok installed`. This closes the package-version presentation regression without reopening the already receiver-approved TEST18 weather/city or TEST19 PIG behavior.
