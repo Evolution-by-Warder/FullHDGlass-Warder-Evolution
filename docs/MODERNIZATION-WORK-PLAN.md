@@ -739,3 +739,49 @@ Status: **CI BUILD PASS — RECEIVER TEST STILL REQUIRED**
 - verified TEST IPK: `enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test1_all.ipk`, SHA256 `0332484843ffc6ddcf049a4b3b6cc7e63c6bbe00cc4892686f373e2119def0b4`.
 - uploaded CI artifact `fullhdglass17-warder-evolution-TEST` has artifact ID `11163528358`, archive SHA256 `78243f3199078408441e12951f6cecd0f557612fcc0279ac3baef1624c1ef4c0`, and contains the IPK, portable checksum sidecar and payload list.
 - stable `update.json` remains `1.0.4` and the successful TEST build is not advertised as stable. RECEIVER PASS remains pending real Enigma2 installation/runtime validation.
+
+
+## Cumulative FullHDGlass17 9.50-r1 through r12 restoration — TEST3
+
+Status: **CI PASS — RECEIVER TEST REQUIRED**
+
+The TEST2 receiver boot exposed that bootability alone was not sufficient evidence that the cumulative
+9.50-r1..r12 feature set had survived the Warder modernization. A dedicated regression restoration
+pass was therefore completed before further receiver acceptance.
+
+Restored/preserved in `1.0.5-test3`:
+
+- r5-r10 Open-Meteo helpers and Classic Weather Open-Meteo path.
+- Country-first weather location workflow with local search and Open-Meteo online fallback.
+- Case- and diacritic-insensitive city/municipality search.
+- Packaged full location database: Slovakia 4,208 + Czechia 6,258 = 10,466 records.
+- Existing `/etc/my_city_Code.txt` remains user-owned; the complete packaged database is read from
+  `/etc/city_Code-17.txt`, avoiding destructive replacement of user/image data.
+- Obsolete Provider/API-key rows are hidden from the weather UI while legacy config keys remain for
+  compatibility.
+- r9/r10 Enhanced Weather migration guards: legacy city extraction, trailing `station` cleanup,
+  empty geocoding response validation, incomplete coordinate validation, and meaningful errors.
+- r11 navigation invariant retained: the principal menu screens use one active Listbox; passive
+  display elements do not become competing navigation targets.
+- r12 Opkg installation screen controls retained, and the obsolete FullHDGlass17 custom spinner
+  remains absent.
+- TEST2 OpenATV ScreenSaver fix retained (1920x1080 screen with a smaller movable 1280x720 picture).
+
+Permanent regression gate: `tools/test-r12-regressions.py`.
+The TEST workflow runs this gate together with Python compilation, XML parsing, lifecycle tests,
+runtime-safety tests, version-order tests, package build and package integrity verification.
+
+TEST3 CI evidence:
+
+- Workflow run: `36871367931`
+- Exact commit: `afe07666afa65afb10cd1517cc8942f34f2fbe82`
+- Result: SUCCESS
+- Regression gate: `r1-r12 regression gate: PASS`
+- Location gate: `SK=4208 CZ=6258 TOTAL=10466`
+- Package: `enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test3_all.ipk`
+- Package SHA256: `7a40e2d11132909e3cdf3b436261c171617783c7a61e70a84dc0cf0bd100028b`
+- Artifact: `fullhdglass17-warder-evolution-TEST`, ID `11166999368`
+- Artifact ZIP SHA256: `b90779709dd19917bb1a9cab5160b4c6eeb19e10b09578d59f3034c9758db97f`
+
+Stable `1.0.4` and `update.json` remain untouched. `main` remains untouched.
+Receiver acceptance is still required before any stable promotion.
