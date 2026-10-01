@@ -647,7 +647,7 @@ def getCitiesCode():
 	choicelist = []
 	fileName = "/etc/my_city_Code.txt"
 	if not os.path.isfile(fileName):
-		fileName = "/etc/city_Code.txt"
+		fileName = "/etc/city_Code-17.txt" if os.path.isfile("/etc/city_Code-17.txt") else "/etc/city_Code.txt"
 	try:
 		with open(fileName, "r") as f:
 			for line in f:
@@ -9083,7 +9083,8 @@ class cityFinder(Screen):
 	def _loadLocalCities(self):
 		cities = []
 		try:
-			with open("/etc/city_Code.txt", "r") as f:
+			db = "/etc/city_Code-17.txt" if os.path.isfile("/etc/city_Code-17.txt") else "/etc/city_Code.txt"
+			with open(db, "r") as f:
 				for raw in f:
 					x = _cityLine(raw)
 					if not x:
