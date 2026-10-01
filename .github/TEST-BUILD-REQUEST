@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test22
-Revision: 82
-Purpose: Re-run TEST22 after correcting all literal regex escapes.
+Revision: 83
+Purpose: Validate TEST22 after normalized raw regex literals.
