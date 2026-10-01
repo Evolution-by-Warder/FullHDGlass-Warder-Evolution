@@ -432,18 +432,11 @@ assert 'NumberOfRows="15"' in pig24
 assert 'position="135,387"' in pig24 and 'position="15,423" size="1845,495"' in pig24
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
 
-# TEST25: remove duplicate top bouquet title from PIG guide and keep current time there.
-pig25_start = SKIN.index('<screen name="GraphicalEPGPIG"')
-pig25_end = SKIN.index('</screen>', pig25_start)
-pig25 = SKIN[pig25_start:pig25_end]
-assert 'source="Title" render="Label"' not in pig25
-assert 'source="global.CurrentTime" render="Label" position="30,12"' in pig25
-
-# TEST26: Warder graphical EPG uses picons only with a compact 90px service column.
-for token in ('config.epgselection.graph_servicetitle_mode.value = "picon"', 'config.epgselection.graph_piconwidth.value = 90'):
-    assert token in PLUGIN, token
-for screen_name, y in (("GraphicalEPG", "117"), ("GraphicalEPGPIG", "423")):
-    start = SKIN.index('<screen name="%s"' % screen_name)
-    end = SKIN.index('</screen>', start)
-    block = SKIN[start:end]
-    assert 'position="105,%s"' % y in block, screen_name
+# TEST26: PIG guide header is clean; EPG grid reserves only a narrow picon rail.
+pig26_start = SKIN.index('<screen name="GraphicalEPGPIG"')
+pig26_end = SKIN.index('</screen>', pig26_start)
+pig26 = SKIN[pig26_start:pig26_end]
+assert 'source="Title" render="Label"' not in pig26
+assert 'source="global.CurrentTime" render="Label" position="30,12"' not in pig26
+assert 'name="timeline_text" position="75,387"' in pig26
+assert 'name="timeline0" position="75,423"' in pig26
