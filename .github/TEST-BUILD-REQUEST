@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 23
-Purpose: authoritative supplied-r12 parity pass; guard original r12 functional surface across setup, PIG/PIG2/PIG4, Classic/Enhanced Weather, city management, picons, updater/config restore and Open-Meteo helpers while retaining Warder modernization.
+Revision: 24
+Purpose: authoritative r12 parity validation with modernized entry-point mapping; preserve r12 behavior while allowing Warder implementation replacements.
