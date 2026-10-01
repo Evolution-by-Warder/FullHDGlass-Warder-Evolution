@@ -2771,16 +2771,9 @@ class AutoStartChck17():
 			x = open(x, "r").read()
 			if x.find("key_3") == -1:
 				x = changeSkinXml("MultiQuickButton")
-		if os.path.isfile(SHAREPATH+"spinner/wait1.png"):
-			system("rm -rf "+SHAREPATH+"hd_glass17/skin_default/spinner/*")
-			system("rm -rf "+SHAREPATH+"hd_glass17/spinner/*")
-			system("rmdir "+SHAREPATH+"hd_glass17/skin_default/spinner")
-			system("rmdir "+SHAREPATH+"hd_glass17/spinner")
-			config.plugins.setupGlass17.par65.value = False
-			config.plugins.setupGlass17.par65.save()
-			configfile.save()
-		elif os.path.isfile(SHAREPATH+"skin_default/spinner/wait1.png") and config.plugins.setupGlass17.par65.value:
-			msg += spinnerOnOff()			
+		# Upgrade compatibility only: undo a legacy FullHDGlass spinner symlink
+		# if an older installation left it active. Never replace the image spinner.
+		msg += spinnerOnOff()
 		if not config.plugins.setupGlass17.par47.value:
 			msg += chMT()
 		if config.plugins.setupGlass17.par157.value != "0" or config.plugins.setupGlass17.par156.value != "0" or config.plugins.setupGlass17.par155.value != "0" or config.plugins.setupGlass17.par154.value != "0" or config.plugins.setupGlass17.par153.value != "0":
