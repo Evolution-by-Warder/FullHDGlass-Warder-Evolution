@@ -709,18 +709,15 @@ def autoHdd():
 							return "/dev/"+b
 						elif b == "dis":
 							b = (((((x.split("/media/hdd")[0]).strip()).split("/dev/disk/")[1]).strip()).split(" ")[0]).strip()
-							os.system("blkid > /tmp/sd")
-							a = open("/tmp/sd", "r")	
-							for i in a.readlines():
+							try:
+								blkid_output = subprocess.check_output(["blkid"], universal_newlines=True)
+							except (OSError, subprocess.CalledProcessError):
+								blkid_output = ""
+							for i in blkid_output.splitlines():
 								if i.find(b) != -1:
 									b = (((i.split(":")[0]).strip()).split("/dev/")[1]).strip()[:3]
 									if len(b) == 3 and b.startswith("sd"):
 										break
-							a.close()
-							try:
-								os.remove("/tmp/sd")
-							except OSError:
-								pass
 							if len(b) == 3 and b.startswith("sd"):
 								return "/dev/"+b
 		except: pass   	
@@ -1990,7 +1987,7 @@ def windowStyle(what, color):
 	r.write(allLines)
 	r.close()
 	for x in allstyles:
-		system(("cp -f %sstyle/%s/%s.png %sgeneral/%s.png" % (SKINPATH, what, x, SKINPATH, x)))
+		shutil.copy2(os.path.join(SKINPATH, "style", what, x + ".png"), os.path.join(SKINPATH, "general", x + ".png"))
 	return True
 ##########################################################################################################################			
 def standbyOledOnOff():
@@ -4007,10 +4004,13 @@ class ExtraInfo17(Screen):
 	def clearMem(self):
 		self.clrMemTimer.stop()
 		if (config.plugins.setupGlass17.par58.value and ECL) and self.refreshValue == 900:
-			for x in range(1,4):
-				system("/sbin/sysctl vm.drop_caches=%s" % x)
-				system("sync")
-				system("echo 3 > /proc/sys/vm/drop_caches")
+			try:
+				if hasattr(os, "sync"):
+					os.sync()
+				with open("/proc/sys/vm/drop_caches", "w") as cache_control:
+					cache_control.write("3\n")
+			except OSError:
+				pass
 		self.refreshValue = 900
 		if self.enaWeainf:
 			txt = '--'+DG
@@ -8190,7 +8190,7 @@ class downloadMenu(Screen):
 		total = 0
 		for i in range(1,MAXSCREENS):
 			if fileExists(("/tmp/more_icons/scr_prew/screen-"+str(i)+".png")):
-				system(("cp -f /tmp/more_icons/scr_prew/screen-"+str(i)+".png "+path+"/more_icons/scr_prew/screen-"+str(i)+".png"))
+				shutil.copy2("/tmp/more_icons/scr_prew/screen-" + str(i) + ".png", path + "/more_icons/scr_prew/screen-" + str(i) + ".png")
 				total += 1
 				if fileExists((path+"/more_icons/scr_prew/screen-"+str(i)+".png")):
 					numPict += 1
@@ -8205,9 +8205,9 @@ class downloadMenu(Screen):
 				if not os.path.exists((path+"/more_icons/i_type-"+str(i))):
 					os.makedirs(path + "/more_icons/i_type-"+str(i), exist_ok=True)
 				for tt in allIcons:
-					system(("cp -f /tmp/more_icons/i_type-"+str(i)+"/"+tt+".png"+" "+path+"/more_icons/i_type-"+str(i)+"/"+tt+".png"))
+					shutil.copy2("/tmp/more_icons/i_type-" + str(i) + "/" + tt + ".png", path + "/more_icons/i_type-" + str(i) + "/" + tt + ".png")
 				shutil.rmtree("/tmp/more_icons/i_type-"+str(i), ignore_errors=True)
-				system(("cp -f /tmp/more_icons/scr_prew/icons-"+str(i)+".png "+path+"/more_icons/scr_prew/icons-"+str(i)+".png"))
+				shutil.copy2("/tmp/more_icons/scr_prew/icons-" + str(i) + ".png", path + "/more_icons/scr_prew/icons-" + str(i) + ".png")
 				if checkIcons(i):
 					tmp += _("SUCCESSFUL")+": "+_("Icons type") + " " + str(i) + "\n"
 				else:
