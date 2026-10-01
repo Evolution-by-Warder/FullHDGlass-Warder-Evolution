@@ -38,7 +38,7 @@ if os.path.isfile('/etc/lcstrings.list') is True:
 	myfile.close()
 
 def chMSN():
-	# MSN weather.service.msn.com is retired; use OpenWeatherMap.
+	# Compatibility shim: all Warder weather data now comes from Open-Meteo.
 	return False
 	
 def toLocale(s):
@@ -76,14 +76,8 @@ def netChck(a=None):
 		chck.settimeout(0.8)
 		ena = False
 		if a is None:
-			ena = chMSN()
-			a = ({False: 'openweathermap.org', True:'weather.service.msn.com'}[ena])
-		b = not bool(chck.connect_ex((a, 80)))
-		if not ena:
-			return b
-		elif not b:
-			return not bool(chck.connect_ex(('www.msn.com', 80)))
-		return b 
+			a = 'api.open-meteo.com'
+		return not bool(chck.connect_ex((a, 443))) 
 	except: pass
 	return False
     
