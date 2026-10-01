@@ -569,3 +569,5 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - hardened update metadata validation: package downloads are now accepted only from HTTPS URLs and only when the manifest provides an exact 64-character hexadecimal SHA256. The install path revalidates these invariants and checksum comparison is mandatory rather than optional.
 - `update.json` still points to the locked 1.0.4 package and its approved SHA256; no release metadata was advanced during modernization work.
 - no RECEIVER PASS is claimed.
+
+- follow-up gate removed the final unused `Screens.Console` import from setupGlass17; command execution that remains in the plugin uses `Components.Console` where appropriate, while the Warder package updater itself remains on `eConsoleAppContainer`.
