@@ -38,7 +38,11 @@ jobs:
           import xml.etree.ElementTree as ET
           from pathlib import Path
           for p in Path("source/package-root").rglob("*.xml"):
-              ET.parse(p)
+              if p.name == "hdg17Screens.xml":
+                  # Intentional Enigma2 fragment with multiple top-level screen nodes.
+                  ET.fromstring("<skin>\\n" + p.read_text(encoding="utf-8") + "\\n</skin>")
+              else:
+                  ET.parse(p)
           print("XML parse gate: PASS")
           PY
           bash -n source/control/preinst source/control/postinst source/control/postrm tools/build-test-ipk.sh tools/test-package-lifecycle.sh
