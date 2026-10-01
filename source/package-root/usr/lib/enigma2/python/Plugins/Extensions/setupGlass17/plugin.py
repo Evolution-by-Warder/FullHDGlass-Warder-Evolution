@@ -132,10 +132,14 @@ def Writelog(txt):
 	log = PLUGINPATH+"g17.txt"
 	if os.path.isfile(log):
 		if os.path.getsize(log) > 1000000:
-			try:\n\t\t\t\tos.remove(log)\n\t\t\texcept OSError:\n\t\t\t\tpass
+			try:
+				os.remove(log)
+			except OSError:
+				pass
 	try:
 		f = open(log,"a")
-		f.write("%s\n" % str(txt))
+		f.write("%s
+" % str(txt))
 		f.close()
 	except IOError: pass
 ##########################################################################################################################
@@ -194,7 +198,8 @@ def chckVersion(ff="ViX"):
 isATV = chckVersion("openATV")
 HDDTMP = "/media/hdd/hdg_tmp"
 NO_TUN = _("No tuner data")
-ER_F = _(" failed") + " !!!\n"
+ER_F = _(" failed") + " !!!
+"
 DSC = '/tmp/.doscam/doscam.version'
 NCM = '/tmp/.ncam/ncam.version'
 GCM = '/tmp/.gcam/gcam.version'
@@ -218,11 +223,17 @@ MAXSCREENS = 100
 IS800SE = 'dm800se' in HardwareInfo().get_device_name()
 IS820 = 'dm820' in HardwareInfo().get_device_name()
 MAXICONS = 31
-POSTER = '<widget render="g17Poster" source="session.Event_Now" position="%s,%s" size="%s" backgroundColor="transparent" zPosition="0" transparent="0" />\n'
-NETSPEED = '<ePixmap position="%s,%s" size="270,50" pixmap="hd_glass17/icons/netspeed.png" zPosition="7" alphatest="off" />\n<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="%s,%s" size="190,50" zPosition="8" font="Regular2;26" noWrap="1" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1"/>\n'
-NETSPEEDT = '<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="%s,%s" size="220,40" zPosition="8" font="Prive3;27" noWrap="1" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" transparent="1"/>\n'
+POSTER = '<widget render="g17Poster" source="session.Event_Now" position="%s,%s" size="%s" backgroundColor="transparent" zPosition="0" transparent="0" />
+'
+NETSPEED = '<ePixmap position="%s,%s" size="270,50" pixmap="hd_glass17/icons/netspeed.png" zPosition="7" alphatest="off" />
+<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="%s,%s" size="190,50" zPosition="8" font="Regular2;26" noWrap="1" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1"/>
+'
+NETSPEEDT = '<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="%s,%s" size="220,40" zPosition="8" font="Prive3;27" noWrap="1" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" transparent="1"/>
+'
 FCAID = ["4AF4","4B63","4B24","4B64","4A70","4AEA","4AE1","4AE0","4ABF","4AEE","4AFC","2710","5581","1010","1702","1722","1762","4AD0","4AD1","1EC0","44A0","4AB0"]
-CLR = '\n..............\n..............'
+CLR = '
+..............
+..............'
 ALL_CFG = [
 		'Icons type','Bitrate','Address in ecm','Enabled Extra infobar','Enabled Enhanced infobar','Extra screen','Menu type','Second picon type','','Special info x-pos.',
 		'Special info y-pos.','Special info type','Weather location','Standard Infobar type','OLED type','Bar background','Ecmline info type','Volume type','Channel sel. type','ECMline, btr, CPU/Mem, Fan color',
@@ -642,7 +653,8 @@ def readAPIkey():
 	if os.path.isfile(s):
 		f = open(s, 'r')
 		ret = f.readline().strip()
-		ret = ret.replace("\n","").replace(" ","").replace("\t","")
+		ret = ret.replace("
+","").replace(" ","").replace("	","")
 	if ret != "" and ret != config.plugins.setupGlass17.par228.value: 
 		config.plugins.setupGlass17.par228.value = ret 
 	return True
@@ -693,9 +705,11 @@ def spinnerOnOff():
 		os.unlink(spinner)
 		if os.path.isdir(original):
 			os.rename(original, spinner)
-		return _("System spinner restored") + "\n"
+		return _("System spinner restored") + "
+"
 	except OSError:
-		return _("System spinner restore failed") + "\n"
+		return _("System spinner restore failed") + "
+"
 					
 def autoHdd():
 	if config.plugins.setupGlass17.par22.value == "A":
@@ -1380,7 +1394,8 @@ def chckPiconSize():
 	try:
 		from Screens.G17screens import g17_extraScreen	
 		tmp = g17_extraScreen.get(str(config.plugins.setupGlass17.par6.value))
-		typeScr = tmp.split("\n")
+		typeScr = tmp.split("
+")
 		for i in typeScr:
 			if '"g17picon"' in i:
 				tmp = (i.split('size="')[1]).split('"')[0]
@@ -1403,7 +1418,8 @@ def fromCfgB(w=True):
 			if tmp.find("bitrate_info") != -1:
 				return True
 		else:
-			tmp = tmp.split("\n")
+			tmp = tmp.split("
+")
 			for i in tmp:
 				if '<widget source="session.Event_Now" render="Progress"' in i and not 'pixmap="' in i:
 					return True
@@ -1429,7 +1445,8 @@ def fromCfg():
 		typeScr = typeScr.replace("</screen>", isOk + "</screen>")
 	tmp = typeScr
 	if config.plugins.setupGlass17.par137.value != "AutoColors" or config.plugins.setupGlass17.par136.value != "AutoColors" or config.plugins.setupGlass17.par135.value != "AutoColors" or config.plugins.setupGlass17.par128.value != "AutoColors" or config.plugins.setupGlass17.par129.value != "AutoColors" or config.plugins.setupGlass17.par130.value != "AutoColors":
-		typeScr = tmp.split("\n")
+		typeScr = tmp.split("
+")
 		tmp = ""
 		buff = ""
 		isOk = False
@@ -1453,49 +1470,66 @@ def fromCfg():
 				buff = i
 			elif 'g17ClockToText' in i and isOk:
 				if config.plugins.setupGlass17.par130.value != "AutoColors" and ('>Format::%S<' in i or '>Format:%S<' in i):
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par130.value) + i + "\n"
+					tmp += setFcolor(buff,config.plugins.setupGlass17.par130.value) + i + "
+"
 					isOk = False
 				elif config.plugins.setupGlass17.par129.value != "AutoColors":
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par129.value) + i + "\n"
+					tmp += setFcolor(buff,config.plugins.setupGlass17.par129.value) + i + "
+"
 					isOk = False
 				else:
-					tmp += buff + "\n" + i + "\n"
+					tmp += buff + "
+" + i + "
+"
 					isOk = False
 			elif ('"ServiceName">Name<' in i or '"g17ServiceNum">Number' in i) and isOk2:
 				if config.plugins.setupGlass17.par135.value != "AutoColors":
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par135.value) + i + "\n"
+					tmp += setFcolor(buff,config.plugins.setupGlass17.par135.value) + i + "
+"
 					isOk2 = False
 				else:
-					tmp += buff + "\n" + i + "\n"
+					tmp += buff + "
+" + i + "
+"
 					isOk2 = False
 			elif ('g17EventTime' in i or '="EventName' in i) and (isOk3 or isOk4):
 				if config.plugins.setupGlass17.par136.value != "AutoColors" and isOk3:
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par136.value) + i + "\n"
+					tmp += setFcolor(buff,config.plugins.setupGlass17.par136.value) + i + "
+"
 					isOk3 = False
 				elif config.plugins.setupGlass17.par137.value != "AutoColors" and isOk4:
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par137.value) + i + "\n"
+					tmp += setFcolor(buff,config.plugins.setupGlass17.par137.value) + i + "
+"
 					isOk4 = False
 				else:
-					tmp += buff + "\n" + i + "\n"
+					tmp += buff + "
+" + i + "
+"
 					isOk4 = False
 					isOk3 = False
 			else:
-				tmp += ({True:buff + "\n", False:""}[isOk or isOk2 or isOk3 or isOk4]) + i + "\n"
+				tmp += ({True:buff + "
+", False:""}[isOk or isOk2 or isOk3 or isOk4]) + i + "
+"
 				isOk = False
 				isOk2 = False
 				isOk3 = False
 				isOk4 = False
 	if config.plugins.setupGlass17.par183.value != "0":
 		tt = int(config.plugins.setupGlass17.par183.value)
-		typeScr = tmp.split("\n")
+		typeScr = tmp.split("
+")
 		tmp = ""
 		for i in typeScr:
 			if not '<screen' in i and ' position="' in i: 
-				tmp += calcY(tt,i,' position="') + "\n"
+				tmp += calcY(tt,i,' position="') + "
+"
 			else:
-				tmp += i + "\n"
+				tmp += i + "
+"
 	if ENA_SLIDER[0] or ENA_SLIDER[1]:
-		typeScr = tmp.split("\n")
+		typeScr = tmp.split("
+")
 		tmp = ""
 		tt = '<widget source="session.Event_Now" render="Progress"'
 		for i in typeScr:
@@ -1529,9 +1563,11 @@ def fromCfg():
 						else:		
 							isOk = "#1546AF"
 						i = setFcolor(i,isOk,True)
-			tmp += i + "\n"
+			tmp += i + "
+"
 	if config.plugins.setupGlass17.par223.value:
-		typeScr = tmp.split("\n")
+		typeScr = tmp.split("
+")
 		tmp = ""
 		for i in typeScr:
 			if ('<eLabel ' in i and 'text="' in i and ('"-"' in i or ':' in i)) or ('<ePixmap ' in i and ('slider/sig' in i or 'icons/bar_back' in i)):
@@ -1539,15 +1575,20 @@ def fromCfg():
 					isOk = i.replace('<eLabel ','<widget source="session.FrontendStatus" render="FixedLabel" ')
 				else:
 					isOk = i.replace('<ePixmap ','<widget source="session.FrontendStatus" render="Pixmap" ')
-				isOk = isOk.replace('/>','>\n')
+				isOk = isOk.replace('/>','>
+')
 				if 'SNR' in i.upper() or 'Q' in i or '"-"' in i:
 					isOk2 = 'SnrNum'
 				elif 'BER' in i.upper():
 					isOk2 = 'BerNum'
 				else:
 					isOk2 = 'AgcNum'
-				i = isOk + '<convert type="g17ExtraSource">%s</convert>\n<convert type="ValueRange">1,65536</convert>\n<convert type="ConditionalShowHide" />\n</widget>' % isOk2
-			tmp += i + "\n"
+				i = isOk + '<convert type="g17ExtraSource">%s</convert>
+<convert type="ValueRange">1,65536</convert>
+<convert type="ConditionalShowHide" />
+</widget>' % isOk2
+			tmp += i + "
+"
 	return setSideECM(tmp)
 
 def calcY(xs,dd,d,o=None):
@@ -1567,7 +1608,8 @@ def calcY(xs,dd,d,o=None):
 def parseEcmInfoLine(line,what=":"):
 	if line.__contains__(what):
 		line = line.split(what)[1]
-		line = line.replace("\n", "")
+		line = line.replace("
+", "")
 		return " ".join(line.strip().split())
 	else:
 		return ""
@@ -1691,7 +1733,8 @@ def checkScreen(numScr):
 			f = listDir(path)
 		from Screens.G17screens import g17_extraScreen	
 		tmp = g17_extraScreen.get(str(numScr))
-		tmp = tmp.split("\n")
+		tmp = tmp.split("
+")
 		for line in tmp:
 			if line.__contains__('<screen name="ExtraInfo17"') or line.__contains__('</screen>'):
 				isOk += 1
@@ -1762,7 +1805,7 @@ def chnlSelChck():
 ##########################################################################################################################
 def chnlSelPatch(direct=True):
 	if not direct and fileExists(CHANSEL_FILE) and fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		system("cp -f %s %s" % (CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE))
+		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
 		return True
 	elif not direct:
 		return False	
@@ -1773,9 +1816,12 @@ def chnlSelPatch(direct=True):
 		return True
 	elif txCH == 2:
 		return False
-	system("cp -f %s %s" % (CHANSEL_FILE, CHANSEL_FILE.replace(".py","-ori17.py")))
+	shutil.copy2(CHANSEL_FILE, CHANSEL_FILE.replace(".py","-ori17.py"))
 	if not fileExists(CHANSEL_FILE) or not fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		system("rm -rf %s" % (CHANSEL_FILE.replace(".py","-ori2.py")))
+		try:
+			os.remove(CHANSEL_FILE.replace(".py","-ori2.py"))
+		except OSError:
+			pass
 		return False
 	r = open(CHANSEL_FILE, "r")
 	ena = False
@@ -1789,7 +1835,10 @@ def chnlSelPatch(direct=True):
 			breakRead = True
 			break
 		if ena and line.__contains__("				self.zap()"):
-			line = line.replace("				self.zap()","				old = self.session.nav.getCurrentlyPlayingServiceReference()\n				self.session.nav.playService(ref)\n				if old is None or ref == old:\n					self.zap(forced=True)")
+			line = line.replace("				self.zap()","				old = self.session.nav.getCurrentlyPlayingServiceReference()
+				self.session.nav.playService(ref)
+				if old is None or ref == old:
+					self.zap(forced=True)")
 		elif ena and line.__contains__("				self.asciiOff()"):
 			line = line.replace("				self.asciiOff()","					self.asciiOff()")
 		elif ena and line.__contains__("				self.close(ref)"):
@@ -1806,7 +1855,10 @@ def chnlSelPatch(direct=True):
 			elif ena3 and secondWrite == 2: 
 				ena = False
 		elif ena2 and line.__contains__("		self.close(None)"):
-			line = line.replace("		self.close(None)","		lastservice=eServiceReference(self.lastservice.value)\n		if lastservice.valid():\n			self.session.nav.playService(lastservice) #revert\n		self.close(None)")
+			line = line.replace("		self.close(None)","		lastservice=eServiceReference(self.lastservice.value)
+		if lastservice.valid():
+			self.session.nav.playService(lastservice) #revert
+		self.close(None)")
 			ena2 = False
 		if line.__contains__("if not root or not (root.flags & eServiceReference.isGroup):"):
 			ena = True
@@ -1824,7 +1876,10 @@ def chnlSelPatch(direct=True):
 	ena = chnlSelChck()
 	if ena == 0:
 		system("cp -f %s %s" % (CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE))
-		system("rm -rf %s" % (CHANSEL_FILE.replace(".py","-ori17.py")))
+		try:
+			os.remove(CHANSEL_FILE.replace(".py","-ori17.py"))
+		except OSError:
+			pass
 	elif ena == 1:
 		return True
 	return False
@@ -1836,13 +1891,16 @@ def writeStyleCfg(scrNum, num):
 		found = False
 		f = open(SCREENSPATH + "g17Screens.cfg","r")
 		for x in f.readlines():
-			if x.replace("\n", "").startswith(str(scrNum)+"-"):
-				allLines += str(scrNum)+"-"+str(num)+"\n"
+			if x.replace("
+", "").startswith(str(scrNum)+"-"):
+				allLines += str(scrNum)+"-"+str(num)+"
+"
 				found = True
 			else:	
 				allLines += x
 		if not found:
-			allLines += str(scrNum)+"-"+str(num)+"\n"
+			allLines += str(scrNum)+"-"+str(num)+"
+"
 		f.close()
 		f = open(SCREENSPATH + "g17Screens.cfg","w")
 		f.write(allLines)
@@ -1877,7 +1935,8 @@ def checkStyleFull(scrNum,cfg=False):
 	try:
 		f = open(SCREENSPATH + "g17Screens.cfg","r")
 		for x in f.readlines():
-			if x.replace("\n", "").startswith(str(scrNum)+"-"):
+			if x.replace("
+", "").startswith(str(scrNum)+"-"):
 				x = x.strip().split("-")
 				style = int(x[1])
 				break	
@@ -1905,7 +1964,8 @@ def readcolorStyle(num):
 	color = "#006cbcf0"
 	try:
 		f = open("%sstyle/%s/title_color.cfg" % (SKINPATH, num),"r").readline()
-		f = f.replace("\n", "").strip().split()[0] 
+		f = f.replace("
+", "").strip().split()[0] 
 		if len(f) == 9:
 			color = int(f.replace("#", "0x"), 16)
 			color = f
@@ -1973,7 +2033,8 @@ def windowStyle(what, color):
 			ena = True
 		if ena:
 			if line.__contains__("<color name=\"WindowTitleForeground"):
-				line = "    <color name=\"WindowTitleForeground\" color=\""+color+"\" />\n"
+				line = "    <color name=\"WindowTitleForeground\" color=\""+color+"\" />
+"
 				ena = False
 		allLines = allLines + line
 	r.close()
@@ -2042,13 +2103,16 @@ def changeSkinXml(what, new="1", old="1", oled=False):
 								break
 					s.close()
 				else:
-					if not ena1 and line != "\n":
+					if not ena1 and line != "
+":
  							allLines += line                       
 					if ena1 and line.__contains__("</screen>"):                        
  							ena1 = False
 		r.close()
 		if allLines.find("</skin>") == -1:
-			allLines += "\n</skin>\n"		
+			allLines += "
+</skin>
+"		
 		r = open(f,"w")
 		r.write(allLines)
 		r.close()
@@ -2185,10 +2249,12 @@ def chckUserHdg():
 def setOledMore(msg=""):
 	x = setOledXml(USERHDG)
 	if config.plugins.setupGlass17.par15.value != "1":		
-		msg += _("OLED type") + "\n"
+		msg += _("OLED type") + "
+"
 		x = changeScreenXml("oled", config.plugins.setupGlass17.par15.value)
 	if config.plugins.setupGlass17.par40.value:	
-		msg += _("Set OLED off in Standby") + "\n"
+		msg += _("Set OLED off in Standby") + "
+"
 		standbyOledOnOff()
 	return msg
 
@@ -2203,7 +2269,8 @@ def getTemp(dev):
 			tta = x % dev
 			temp = popen(tta).readline()
 			if "smartctl" in tta:
-				tmp1 = int((temp.strip().split("-")[1]).replace("\n","").replace("\t","").replace(" ",""))
+				tmp1 = int((temp.strip().split("-")[1]).replace("
+","").replace("	","").replace(" ",""))
 			else:
 				tmp1 = int(temp.strip().split(" ")[0])
 		except: pass
@@ -2468,7 +2535,8 @@ def lbs():
 		r.write(allLines)
 		r.close()
 	except: pass
-	return _("Listbox font size") + "\n"
+	return _("Listbox font size") + "
+"
 
 def chckFifo():
 	f = SCREENSPATH + "ServiceScan.py"
@@ -2484,13 +2552,17 @@ def chckFifo():
 						ena = True
 						if line.__contains__('len ='):
 							tt = calc(line,'len =',({True:"122", False:"10"}[a]),')')
-							if not "\n" in tt:
-								tt += "\n"
+							if not "
+" in tt:
+								tt += "
+"
 							allLines += tt
 						elif line.__contains__('len='):
 							tt = calc(line,'len=',({True:"122", False:"10"}[a]),')')
-							if not "\n" in tt:
-								tt += "\n"
+							if not "
+" in tt:
+								tt += "
+"
 							allLines += tt
 						else:
 							allLines += line
@@ -2523,7 +2595,8 @@ def chMT():
 	if config.plugins.setupGlass17.par47.value:
 		x = "1"
 	system("cp -f %smute-%s.png %smute.png " % (SKINPATH, x, SKINPATH))
-	return _("Mute picture transparency") + "\n"
+	return _("Mute picture transparency") + "
+"
 ##########################################################################################################################
 class AutoStartChck17():
 	def __init__(self):
@@ -2573,7 +2646,8 @@ class AutoStartChck17():
 			system("rm -rf /usr/bin/hdd_temp_hdg17")
 			system("cp -f /usr/bin/btrGen17-%s /usr/bin/btrGen17" % XCPU)
 			system("cp -f /usr/bin/hdd_temp_hdg17-%s /usr/bin/hdd_temp_hdg17" % XCPU)
-			msg += _("Set binaries") + "\n"
+			msg += _("Set binaries") + "
+"
 		ver, x = readHWtype()
 		isOk = ver != "Dream Multimedia"
 		if (os.path.exists(PYTHONPATH+'Plugins/PLi') or isATV) and not isOk:
@@ -2646,26 +2720,31 @@ class AutoStartChck17():
 		if (isOk != "1" and isOk != "?") or color != "#006cbcf0":
 			x = windowStyle(isOk, color)
 			msg += _("Style:")+str(config.plugins.setupGlass17.par44.value)
-			msg += ", " + _("Title color:")+str(config.plugins.setupGlass17.par45.value) + "\n"
+			msg += ", " + _("Title color:")+str(config.plugins.setupGlass17.par45.value) + "
+"
 			tmp = True
 		if config.plugins.setupGlass17.par41.value != "Black":		
-			msg += _("Picon default, marker, next ...") + ": " + _("White") + "\n"
+			msg += _("Picon default, marker, next ...") + ": " + _("White") + "
+"
 			setTypePicon()
 		if config.plugins.setupGlass17.par1.value != 1:
 			if checkIcons(config.plugins.setupGlass17.par1.value):
 				x = setTypeIcos(config.plugins.setupGlass17.par1.value)
-				msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"
+				msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "
+"
 			else:
 				config.plugins.setupGlass17.par1.value = 1                                              
 				config.plugins.setupGlass17.par1.save()
 				configfile.save()
 		if config.plugins.setupGlass17.par7.value != "List":			
 			if not config.plugins.setupGlass17.par7.value == "Icons" and not config.plugins.setupGlass17.par7.value == "Icons Right" and not config.plugins.setupGlass17.par7.value == "Icons Bar":
-				msg += _("Menu type") + "\n"
+				msg += _("Menu type") + "
+"
 				x = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
 			elif chckPMS():
 				if setMenuPyo():
-					msg += _("Menu type") + "\n"
+					msg += _("Menu type") + "
+"
 					x = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
 				else:
 					config.plugins.setupGlass17.par7.value = "List"
@@ -2673,30 +2752,38 @@ class AutoStartChck17():
 					configfile.save()
 		if config.plugins.setupGlass17.par4.value:	
 			x = changeSkinXml("InfoBar","3")
-			msg += _("Permanent Extra Infobar") + "\n"
+			msg += _("Permanent Extra Infobar") + "
+"
 		elif config.plugins.setupGlass17.par14.value != "1":		
-			msg += _("Standard Infobar type") + "\n"
+			msg += _("Standard Infobar type") + "
+"
 			x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
 		x = chckUserHdg()
 		if config.plugins.setupGlass17.par15.value != "0":       
 			msg = setOledMore(msg)
 		if config.plugins.setupGlass17.par18.value != "1":		
-			msg += _("Volume type") + "\n"
+			msg += _("Volume type") + "
+"
 			x = changeSkinXml("Volume", config.plugins.setupGlass17.par18.value)
 			x = changeSkinXml("Mute")
 		if chckVolMute():
-			msg += _("Set Volume and Mute positions") + "\n"
+			msg += _("Set Volume and Mute positions") + "
+"
 		if isATV or config.plugins.setupGlass17.par19.value != "35":		
-			msg += _("Channel selection type") + "\n"
+			msg += _("Channel selection type") + "
+"
 			x = changeSkinXml("ChannelSelection", config.plugins.setupGlass17.par19.value)
 		if config.plugins.setupGlass17.par224.value != "1":		
-			msg += _("Movie selection type") + "\n"
+			msg += _("Movie selection type") + "
+"
 			x = changeSkinXml("MovieSelection", config.plugins.setupGlass17.par224.value)
 		if config.plugins.setupGlass17.par54.value != "7":		
-			msg += _("EPG selection type") + "\n"
+			msg += _("EPG selection type") + "
+"
 			x = changeSkinXml("EPGSelection", config.plugins.setupGlass17.par54.value)
 		if config.plugins.setupGlass17.par229.value != "1":		
-			msg += _("EventView type") + "\n"
+			msg += _("EventView type") + "
+"
 			x = changeSkinXml("EventView", config.plugins.setupGlass17.par229.value)
 		if ISVTI:
 			for i in ("TaskListScreen","VTIPasswdScreen","VTISubMenu","VTIStatusListMenu","VTIMainMenu","AudioZap","PictureInPicture","AnimationSetupScreen"):
@@ -2705,13 +2792,17 @@ class AutoStartChck17():
 		x = chckPigFont(2)
 		if x != "":		
 			if "p" in x: 
-				msg += _("PIG type") + "\n"            
+				msg += _("PIG type") + "
+"            
 			if "f" in x:
-				msg += _("Extendend description font size") + "\n"
+				msg += _("Extendend description font size") + "
+"
 			if "c" in x:
-				msg += _("Channel selection type")+" ("+_("color") + ")\n"
+				msg += _("Channel selection type")+" ("+_("color") + ")
+"
 			if "o" in x:
-				msg += _("Channel selection font size") + "\n"
+				msg += _("Channel selection font size") + "
+"
 		if config.plugins.setupGlass17.par46.value != "0":
 			x = setFontListEpg(config.plugins.setupGlass17.par46.value)
 			msg += _("EPG list font size")                      
@@ -2720,7 +2811,8 @@ class AutoStartChck17():
 			if chckPlBrowser('name="Tuner"'):
 				x = "3"			
 			x = changeSkinXml("Dish",x)
-			msg += _("Dish screen") + "\n"
+			msg += _("Dish screen") + "
+"
 		if isATV:
 			for i in ("PositionerSetup","SleepTimerEdit","PluginBrowserList"):
 				x = changeSkinXml(i)	
@@ -2731,7 +2823,8 @@ class AutoStartChck17():
 			x = changeSkinXml("About","2")
 		if chckPlBrowser('subs_notselected":'): 		
 			x = changeSkinXml("AudioSelection")
-			msg += _("AudioSelection") + "\n"
+			msg += _("AudioSelection") + "
+"
 		if os.path.exists("/usr/lib/python2.7") or ISP38:
 			if not fileExists('/etc/bhversion') and not os.path.exists("/etc/bpversion") and not os.path.exists(SHAREPATH + "PLi-HD") and not ISVTI and not chckSkytec():			
 				ttt = "2"
@@ -2742,7 +2835,8 @@ class AutoStartChck17():
 				elif isATV and ISP38:
 					x = changeSkinXml("PluginBrowser", "4")
 				if chckPlBrowser():
-					msg += _("Set PluginBrowser - OE 2.0") + "\n"
+					msg += _("Set PluginBrowser - OE 2.0") + "
+"
 					x = changeSkinXml("PluginBrowser", ttt)
 			if chckVersion("openbh"):
 				x = changeSkinXml("PluginBrowser", "3")
@@ -2750,7 +2844,8 @@ class AutoStartChck17():
 				x = changeSkinXml("MessageBox-template", "1")
 		if config.plugins.setupGlass17.par59.value and not os.path.exists('/etc/dpkg'):
 			x = setEncodingUser()
-			msg += _("Set user encoding.conf") + "\n" 
+			msg += _("Set user encoding.conf") + "
+" 
 		else:
 			setCFGoff(59)
 		if config.plugins.setupGlass17.par62.value:
@@ -2758,17 +2853,21 @@ class AutoStartChck17():
 				x = chnlSelChck()
 				if x == 0:
 					if chnlSelPatch():
-						msg += _("ChannelSelection 2xOK") + "\n" 
+						msg += _("ChannelSelection 2xOK") + "
+" 
 					else:
 						setCFGoff()
 				elif x == 3:
-					msg += _("ChannelSelection 2xOK") + "\n"
+					msg += _("ChannelSelection 2xOK") + "
+"
 			else:
 				setCFGoff()
 		if chckScroll20():
-			msg += _("Enable windowstylescrollbar") + "\n" 
+			msg += _("Enable windowstylescrollbar") + "
+" 
 		if setONOFF():
-			msg += _("On/Off icons") + "\n"
+			msg += _("On/Off icons") + "
+"
 		try:
 			for ii in ["skin_default.xml","skin.xml","skin_default/skin.xml"]:
 				if os.path.isfile(SHAREPATH + ii):
@@ -2793,16 +2892,19 @@ class AutoStartChck17():
 			msg += lbs()
 		if EFIFO and config.plugins.setupGlass17.par67.value:
 			if chckFifo():
-				msg += _("Service scan long list") + "\n"
+				msg += _("Service scan long list") + "
+"
 		if config.plugins.setupGlass17.par227.value != "5":
-			msg += _('Extended Number ZAP Picon Size') + "\n"
+			msg += _('Extended Number ZAP Picon Size') + "
+"
 			if config.plugins.setupGlass17.par227.value == "0":
 				x = changeSkinXml("NumberZapExt", chckPiconSize())
 			else:
 				x = changeSkinXml("NumberZapExt", config.plugins.setupGlass17.par227.value)
 		if msg != "":
 			try:
-				self.session.open(MessageBox, _("GUI will now be restarted to activate restored options:") + "\n" + msg, MessageBox.TYPE_INFO, 5)				
+				self.session.open(MessageBox, _("GUI will now be restarted to activate restored options:") + "
+" + msg, MessageBox.TYPE_INFO, 5)				
 			except: pass
 			self.start_timerExec.start(4000, True)
 		try:
@@ -2922,10 +3024,24 @@ class SpecialScreen(Screen):
 		self.e = ECM_LABELS
 		if not config.plugins.setupGlass17.par50.value:
 			self.c += CLR
-			self.e += "\nCW0:\nCW1:"
+			self.e += "
+CW0:
+CW1:"
 		self['ecm_items'] = Label(self.e)
 		self['ecm_Values'] = Label(self.c)
-		self['tp_items'] = Label("Video PID:\nAudio PID:\nPCR PID:\nPMT PID:\nTXT PID:\nSID:\nTSID:\nONID:\nVideo Format:\nVideo Size:\nAudio Type:\nAudio Tracks:\nSubtitles:")
+		self['tp_items'] = Label("Video PID:
+Audio PID:
+PCR PID:
+PMT PID:
+TXT PID:
+SID:
+TSID:
+ONID:
+Video Format:
+Video Size:
+Audio Type:
+Audio Tracks:
+Subtitles:")
 		self['tp_Values'] = Label(CLRTP)
 		self.__firstInit = True
 		self.__sleep = False
@@ -3086,7 +3202,19 @@ class SpecialScreen(Screen):
 					tmp = len(tmp)
 			if tmp and tmp > 0:
 				isSubtitles = _("yes")
-			self['tp_Values'].setText(d[0] + "\n" + d[1] + "\n" + d[2] + "\n" + d[3] + "\n" + d[4] + "\n" + d[5] + "\n" + d[6] + "\n" + d[7] + "\n" + iswide + "\n" + d[8] + "\n" + ac + "\n" + str(num) + "\n" + isSubtitles)   		 
+			self['tp_Values'].setText(d[0] + "
+" + d[1] + "
+" + d[2] + "
+" + d[3] + "
+" + d[4] + "
+" + d[5] + "
+" + d[6] + "
+" + d[7] + "
+" + iswide + "
+" + d[8] + "
+" + ac + "
+" + str(num) + "
+" + isSubtitles)   		 
 			del d
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
@@ -3714,7 +3842,8 @@ class ExtraInfo17(Screen):
 		elif fileExists('/sys/devices/virtual/thermal/thermal_zone0/temp'):
 			try:
 				idx = open('/sys/devices/virtual/thermal/thermal_zone0/temp').read()[:2]
-				ret = "CPU Temp.: " + idx.replace('\n', '') + DG
+				ret = "CPU Temp.: " + idx.replace('
+', '') + DG
 			except: pass
 		try:
 			allsensors = sensors.getSensorsList(sensors.TYPE_FAN_RPM)
@@ -3889,7 +4018,8 @@ class ExtraInfo17(Screen):
 			if ISP38:
 				str = str.decode("ascii")
 			cmddata = str.split(" ")
-			tmp = cmddata[3].split("\n")
+			tmp = cmddata[3].split("
+")
 			tmp1 = cmddata[6]
 			if int(tmp[0]) > int(config.plugins.setupGlass17.par35.value):
 				self.stopBitrateNow(_("Btr: too high - stopped"))
@@ -4131,7 +4261,8 @@ class ExtraInfo17(Screen):
 					for x in range(0, len(caidpids)):
 						c = "%0.4X" % int(caidpids[x][0])
 						p = "%0.4X" % int(caidpids[x][1])
-						tt = "%s : %s\n" % (c,p)
+						tt = "%s : %s
+" % (c,p)
 						if "-0001" in tt or "-1" in tt:
 							no_error = False
 							break
@@ -4212,13 +4343,15 @@ class ExtraInfo17(Screen):
 				what = what[idx+1:]
 			return what
 		def cutMe(c):
-			c = c.replace("\n","")
+			c = c.replace("
+","")
 			if len(c) > 21:
 				if c[-1] == ")": 
 					c = "%s..)" % c[:21]
 				else:
 					c = "%s.." % c[:21]
-			return c + "\n"
+			return c + "
+"
 		def setEcmTime(t):
 			t = t.strip()
 			if not "." in t:
@@ -4226,7 +4359,8 @@ class ExtraInfo17(Screen):
 					t =  "%s.%s" % (t[0], t[1:])
 				elif t.isdigit():
 					t =  "0.%003d" % int(t)
-			return t + "\n"
+			return t + "
+"
 		def setCaid(t):
 			if t in FCAID:
 				return t
@@ -4235,7 +4369,10 @@ class ExtraInfo17(Screen):
 		def convCaid(caid):
 			if caid.startswith("18"):
 				coding = "Nagravision"
-			elif caid in ["1702\n","1722\n","1762\n"]:
+			elif caid in ["1702
+","1722
+","1762
+"]:
 				coding = "Betacrypt"
 			elif caid.startswith("01"):
 				coding = "Seca"
@@ -4253,32 +4390,49 @@ class ExtraInfo17(Screen):
 				coding="Conax"
 			elif caid.startswith("0D"):
 				coding="Cryptoworks"
-			elif caid in ["4AE1\n","4AE0\n","44A0\n"]:
+			elif caid in ["4AE1
+","4AE0
+","44A0
+"]:
 				coding="DRE-crypt"
-			elif caid == "4ABF\n":
+			elif caid == "4ABF
+":
 				coding="DGCrypt"
-			elif caid == "4AEE\n":
+			elif caid == "4AEE
+":
 				coding="Bulcrypt"
-			elif caid in ["4AD1\n","4AD0\n"]:
+			elif caid in ["4AD1
+","4AD0
+"]:
 				coding="XCrypt"
-			elif caid == "4AFC\n":
+			elif caid == "4AFC
+":
 				coding="Panaccess"
-			elif caid == "4A70\n":
+			elif caid == "4A70
+":
 				coding="Dreamcrypt"
-			elif caid in ["4AEA\n","4B24\n","1EC0\n"]:
+			elif caid in ["4AEA
+","4B24
+","1EC0
+"]:
 				coding="CryptoGuard"
-			elif caid == "4B63\n":
+			elif caid == "4B63
+":
 				coding="RedCrypter"
-			elif caid == "4B64\n":
+			elif caid == "4B64
+":
 				coding="TVkey"
-			elif caid == "4AF4\n":
+			elif caid == "4AF4
+":
 				coding="MDC"
-			elif caid == "4347\n":
+			elif caid == "4347
+":
 				coding="CryptOn"
 			elif caid.startswith("09"):
 				coding="Videoguard"
 			elif caid.startswith("55"):
-				if caid == "5581\n":
+				if caid == "5581
+":
 					coding="Bulcrypt"
 				else:
 					coding="Griffin"
@@ -4286,15 +4440,19 @@ class ExtraInfo17(Screen):
 				coding="Biss"
 			elif caid.startswith("56") or caid.startswith("17"):
 				coding="Verimatrix"
-			elif caid == "2710\n":
+			elif caid == "2710
+":
 				coding="Exset"
 			elif caid.startswith("0E"):
 				coding="PowerVU"
-			elif caid == "1010\n":
+			elif caid == "1010
+":
 				coding="Tandberg"
-			elif caid == "4AB0\n":
+			elif caid == "4AB0
+":
 				coding="Sky-Pilot"
-			elif caid == "FFFF\n":
+			elif caid == "FFFF
+":
 				coding="Constant-CW"
 			else:
 				coding="Unknown"
@@ -4314,12 +4472,15 @@ class ExtraInfo17(Screen):
 			tmp.close
 		except:
 			content = ""
-		lines = content.split("\n")
-		caid=provider=pid=using=prot=adress=hops=share=ecmTime=coding=typecam=provid=cw0=cw1=chid="..............\n"
+		lines = content.split("
+")
+		caid=provider=pid=using=prot=adress=hops=share=ecmTime=coding=typecam=provid=cw0=cw1=chid="..............
+"
 		config.plugins.setupGlass17.par195.value = ""
 		typeCAviaCam2 = ""
 		isEmu = ""
-		oscVersion = "\n"
+		oscVersion = "
+"
 		doscam = ""
 		if content != "":
 			typcm = False
@@ -4332,43 +4493,59 @@ class ExtraInfo17(Screen):
 							chid = chid.split(",")[0]
 					else:
 						chid = line.split(":")[1] 
-					chid = chckIdx(chid.upper()) + "\n"
+					chid = chckIdx(chid.upper()) + "
+"
 				if line.startswith("protocol:"):
-					prot = parseEcmInfoLine(line) + "\n"
+					prot = parseEcmInfoLine(line) + "
+"
 					if "constcw" in prot:
 						isEmu = "emu" 
 						typeCAviaCam2 = "emu"
 				elif line.startswith("CW0:") or line.startswith("cw0:"):
-					cw0 = fixCW(line.split(":")[1])+"\n" 
+					cw0 = fixCW(line.split(":")[1])+"
+" 
 				elif line.startswith("CW1") or line.startswith("cw1:"):
-					cw1 = fixCW(line.split(":")[1])+"\n"
+					cw1 = fixCW(line.split(":")[1])+"
+"
 				if line.startswith("Service:"):
-					typecam = "Wicardd\n"
-				elif line.startswith("=====") and typecam == "..............\n":
-					typecam = "Mgcamd\n"
+					typecam = "Wicardd
+"
+				elif line.startswith("=====") and typecam == "..............
+":
+					typecam = "Mgcamd
+"
 					typcm = True
-				elif typecam == "..............\n":
-					typecam = "CCcam\n"
-				elif typecam == "CCcam\n" and line.startswith("reader:"):
-					typecam = "OScam\n"
-				elif typecam == "CCcam\n" and line.startswith("FROM:"):
-					typecam = "Camd3\n"
+				elif typecam == "..............
+":
+					typecam = "CCcam
+"
+				elif typecam == "CCcam
+" and line.startswith("reader:"):
+					typecam = "OScam
+"
+				elif typecam == "CCcam
+" and line.startswith("FROM:"):
+					typecam = "Camd3
+"
 				if line.startswith("caid:") or line.startswith("====") or line.startswith("CAID ") or line.startswith("CAID:"):
 					if line.startswith("===="):
 						caid = str(parseEcmInfoLine(line,"CaID")).upper()
 						caid = chckIdx(caid)
-						caid = caid[:4]+"\n"
+						caid = caid[:4]+"
+"
 					elif line.startswith("CAID "):
 						caid = str(line.split(' ')[1].split())
 						caid = caid[2:-2]
 						caid = chckIdx(caid.upper())
-						caid = caid[:4]+"\n"
+						caid = caid[:4]+"
+"
 					else:
 						caid = str(parseEcmInfoLine(line)).upper()
 						caid = chckIdx(caid)
 						if len(caid) == 3:
 							caid = "0%s" % caid
-						caid = caid + "\n"
+						caid = caid + "
+"
 					dyntmpcaid = setCaid(caid[:-1])
 					coding = convCaid(caid)
 				if line.startswith("provid:") or line.startswith("CAID ") or line.startswith("SysID"):
@@ -4376,23 +4553,29 @@ class ExtraInfo17(Screen):
 						provid = str(line.split(' ')[5].split())
 						provid = provid[2:-2]
 						provid = chckIdx(provid.upper())
-						provid += "\n"
+						provid += "
+"
 					elif line.startswith("SysID"):
 						provid = str(line.split(' ')[1].split())
 						provid = provid[2:-2]
-						provid = provid.upper() + "\n"
+						provid = provid.upper() + "
+"
 					else:
 						provid = parseEcmInfoLine(line)
 						provid = provid.upper()
-						provid = provid[2:] + "\n"
+						provid = provid[2:] + "
+"
 				elif line.startswith("provider:") or line.startswith("prov: ") or line.startswith("Provider:"):
-					provider = parseEcmInfoLine(line) + "\n"
+					provider = parseEcmInfoLine(line) + "
+"
 					if provider.__contains__("key:"):
 						idx = provider.index("key:")
-						provider = provider[:idx] + "\n"
+						provider = provider[:idx] + "
+"
 					if provider.__contains__(","):
 						idx = provider.index(",")
-						provider = provider[:idx] + "\n"
+						provider = provider[:idx] + "
+"
 					if provider.__contains__("0X") or provider.__contains__("0x"):
 						provider = chckIdx(provider.upper())
 					provider = cutMe(provider)
@@ -4411,29 +4594,41 @@ class ExtraInfo17(Screen):
 						pid = "00%s" % pid
 					if len(pid) == 3:
 						pid = "0%s" % pid
-					pid += "\n"
+					pid += "
+"
 				if line.startswith("using:") or line.startswith("source:") or line.startswith("reader:") or line.startswith("decode:"):
 					if line.startswith("source:"):
 						using = str(line.split(' ')[1].split())
-						using = using[2:-2] + "\n"
+						using = using[2:-2] + "
+"
 					elif line.startswith("decode:"):
 						if typcm:
-							typecam = "Mgcamd\n"
+							typecam = "Mgcamd
+"
 						else:
-							typecam = "Gbox\n"
+							typecam = "Gbox
+"
 						if line.__contains__("slot") or line.__contains__("Local"):
-							using = "Cardreader\n"
+							using = "Cardreader
+"
 						elif line.__contains__("Internal"):
-							using = "Emu\n"
-							typecam = "Gbox\n"
+							using = "Emu
+"
+							typecam = "Gbox
+"
 						elif line.__contains__("com"):
-							using = parseEcmInfoLine(line) + "\n"
+							using = parseEcmInfoLine(line) + "
+"
 						else:
-							using = "Network\n"
+							using = "Network
+"
 					else:
-						using = parseEcmInfoLine(line) + "\n"
-						if using == "sci\n":
-							using = "Cardreader\n"
+						using = parseEcmInfoLine(line) + "
+"
+						if using == "sci
+":
+							using = "Cardreader
+"
 					using = cutMe(using)
 					if line.__contains__("emu") or line.__contains__("Internal"):
 						isEmu = "emu" 
@@ -4442,65 +4637,89 @@ class ExtraInfo17(Screen):
 					if line.startswith("source: net"):
 						idex = line.index("(")
 						adress = line[idex:]
-						adress = adress.replace("\n", "")
+						adress = adress.replace("
+", "")
 						adress = str(adress.split(' ')[2].split())
-						adress = adress[2:-3] + "\n"
+						adress = adress[2:-3] + "
+"
 					elif line.startswith("source: emu") or line.startswith("decode:"):
-						adress = "..............\n"
+						adress = "..............
+"
 						if line.startswith("decode:") and not using.__contains__("com"): 
-							adress = parseEcmInfoLine(line) + "\n"
+							adress = parseEcmInfoLine(line) + "
+"
 					else:
-						adress = parseEcmInfoLine(line) + "\n"
-						if adress == "/dev/sci0\n":
+						adress = parseEcmInfoLine(line) + "
+"
+						if adress == "/dev/sci0
+":
 							if IS800SE:
-								adress = "Upper slot \n"
+								adress = "Upper slot 
+"
 							else:
-								adress = "Lower slot \n"
-						elif adress == "/dev/sci1\n":
+								adress = "Lower slot 
+"
+						elif adress == "/dev/sci1
+":
 							if IS800SE:
-								adress = "Lower slot \n"
+								adress = "Lower slot 
+"
 							else:
-								adress = "Upper slot \n"
+								adress = "Upper slot 
+"
 						elif adress.__contains__("local"):
-							adress = "Local slot\n"
+							adress = "Local slot
+"
 						elif coding == "Unknown":
-							adress = "..............\n"
+							adress = "..............
+"
 					adress = cutMe(adress)
 					if isEmu == "":
-						if (using.__contains__("com") and typecam == "Gbox\n") or adress.__contains__("127.0.0.1") or adress.__contains__("slot") or adress.__contains__("local") or (line.startswith("decode:") and (line.__contains__("slot") or line.__contains__("Local"))):
+						if (using.__contains__("com") and typecam == "Gbox
+") or adress.__contains__("127.0.0.1") or adress.__contains__("slot") or adress.__contains__("local") or (line.startswith("decode:") and (line.__contains__("slot") or line.__contains__("Local"))):
 							typeCAviaCam2 = "crd"
 						elif line.__contains__("emu"):
 							typeCAviaCam2 = "emu"
-						elif (adress != "..............\n" and using != "unsupported CAs\n") or (line.startswith("decode:") and line.__contains__("Network")):
+						elif (adress != "..............
+" and using != "unsupported CAs
+") or (line.startswith("decode:") and line.__contains__("Network")):
 							typeCAviaCam2 = "net"
 					else:
 						typeCAviaCam2 = "emu"					
 				elif line.startswith("hops:"):
-					hops = parseEcmInfoLine(line) + "\n"
+					hops = parseEcmInfoLine(line) + "
+"
 				elif line.startswith("prov:") and "dist:" in line and "," in line:
 					l = ""
 					for ii in line.split(","):
 						if "prov:" in ii:
-							provid = chckIdx((parseEcmInfoLine(ii)).upper()) + "\n"
+							provid = chckIdx((parseEcmInfoLine(ii)).upper()) + "
+"
 						if "dist:" in ii:
 							hops = parseEcmInfoLine(ii)
 						if "slot:" in ii:
 							l += ", Slot: " + parseEcmInfoLine(ii)
 						if "level:" in ii:
 							l += ", Level: " + parseEcmInfoLine(ii)
-					if not "\n" in hops:
-						hops += l + "\n"
+					if not "
+" in hops:
+						hops += l + "
+"
 				if line.startswith("share:") or line.startswith("source:"):
 					if line.startswith("source: net"):
 						idex = line.index("(")
 						share = line[idex:]
-						share = share.replace("\n", "")
+						share = share.replace("
+", "")
 						share = share.split(' ')[0].strip()
-						share = share[3:-2] + "\n"
+						share = share[3:-2] + "
+"
 					elif line.startswith("source: emu"):
-						share = "..............\n"
+						share = "..............
+"
 					else:
-						share = parseEcmInfoLine(line) + "\n"
+						share = parseEcmInfoLine(line) + "
+"
 					share = cutMe(share)
 				elif line.startswith("response:") or line.startswith("ecm time:") or line.startswith("Time:(") or line.startswith("Time: (") or line.startswith("1") or line.startswith("2") or line.startswith("3") or line.startswith("4") or line.startswith("5") or line.startswith("6") or line.startswith("7") or line.startswith("8") or line.startswith("9"):
 					if line.startswith("ecm time:") or line.startswith("response:"):
@@ -4516,7 +4735,8 @@ class ExtraInfo17(Screen):
 				elif line.startswith("response time:"):
 					ecmTime = line.strip().split("e:")[1]				
 					if "(" in ecmTime:
-						adress = cutMe((ecmTime.strip().split("(")[1]).replace(")","").replace("\n",""))				
+						adress = cutMe((ecmTime.strip().split("(")[1]).replace(")","").replace("
+",""))				
 						typeCAviaCam2 = "net"
 						using = cutMe(((ecmTime.strip().split("(")[0]).strip().split("decoded by")[1])[1:])
 					else:            
@@ -4526,52 +4746,72 @@ class ExtraInfo17(Screen):
 						elif "upper" in using.lower() or "lower" in using.lower():
 							typeCAviaCam2 = "crd"
 					ecmTime = ecmTime.strip().split("ms")[0]
-				if line.startswith("Signature OK") and typecam == "CCcam\n":
-					typecam = "Mgcamd\n"
-				if (line.startswith("Time:(") or line.startswith("Time: (")) and typecam == "Mgcamd\n":
-					typecam = "Mbox\n"
-			if typecam != "OScam\n":
+				if line.startswith("Signature OK") and typecam == "CCcam
+":
+					typecam = "Mgcamd
+"
+				if (line.startswith("Time:(") or line.startswith("Time: (")) and typecam == "Mgcamd
+":
+					typecam = "Mbox
+"
+			if typecam != "OScam
+":
 				try:
 					ax = typecam
 					for f in popen("ps -ef").readlines():
 						f = f.upper()
 						if f.find("OSCAM") != -1:
-							typecam = "OScam\n"
+							typecam = "OScam
+"
 							break
 						elif f.find("GCAM") != -1 and f.find("MGCAMD") == -1:
-							typecam = "Gcam\n"
+							typecam = "Gcam
+"
 							break
 						elif f.find("NCAM") != -1:
-							typecam = "Ncam\n"
+							typecam = "Ncam
+"
 							break
 					if ax == typecam:
 						for f in popen("ps").readlines():
 							f = f.upper()
 							if f.find("OSCAM") != -1:
-								typecam = "OScam\n"
+								typecam = "OScam
+"
 								break
 							elif f.find("GCAM") != -1 and f.find("MGCAMD") == -1:
-								typecam = "Gcam\n"
+								typecam = "Gcam
+"
 								break
 							elif f.find("NCAM") != -1:
-								typecam = "Ncam\n"
+								typecam = "Ncam
+"
 								break
 				except: pass
-			if typecam == "Gbox\n" and using == "Network\n":
+			if typecam == "Gbox
+" and using == "Network
+":
 				try:
 					f = open("/tmp/share.info","r")
 					for l in f.readlines():
-						l = l.replace("\n", "").strip().split(" ") 
+						l = l.replace("
+", "").strip().split(" ") 
 						if len(l) == 10:
 							if provider[:-1] == parseEcmInfoLine(l[9]) and l[5].startswith(caid[:-1]): 
-								adress = l[3] + "\n"
+								adress = l[3] + "
+"
 								adress = cutMe(adress)
-								hops = "%s, %s, %s\n" % (l[6], l[7], l[8]) 
-								share = "%s, %s\n" % (l[5], l[9])
+								hops = "%s, %s, %s
+" % (l[6], l[7], l[8]) 
+								share = "%s, %s
+" % (l[5], l[9])
 								break
 					f.close()
 				except: pass
-			elif (typecam in ("OScam\n","Ncam\n","Gcam\n")) and (os.path.isfile(GCM) or os.path.isfile(NCM) or os.path.isfile("/tmp/oscam.version") or os.path.isfile("/tmp/.oscam/oscam.version") or os.path.isfile(DSC)):
+			elif (typecam in ("OScam
+","Ncam
+","Gcam
+")) and (os.path.isfile(GCM) or os.path.isfile(NCM) or os.path.isfile("/tmp/oscam.version") or os.path.isfile("/tmp/.oscam/oscam.version") or os.path.isfile(DSC)):
 				oscfile = "/tmp/.oscam/oscam.version"
 				if os.path.isfile("/tmp/oscam.version"):
 					oscfile = "/tmp/oscam.version"
@@ -4583,73 +4823,111 @@ class ExtraInfo17(Screen):
 							ax = l					
 							oscfile = xi
 				if "ncam" in oscfile:
-					typecam = "Ncam\n"
+					typecam = "Ncam
+"
 				elif "gcam" in oscfile:
-					typecam = "Gcam\n"
+					typecam = "Gcam
+"
 				try:
 					f = open(oscfile,"r")
 					for l in f.readlines(): 
 						if l.startswith("Version:"):
 							if "Rev." in l:
 								if "ymod" in l:
-									oscVersion = " (ymod" + (l.replace("\n","").split("ymod")[1]).split(" ")[0] + ")\n"
+									oscVersion = " (ymod" + (l.replace("
+","").split("ymod")[1]).split(" ")[0] + ")
+"
 								else:
 									idx = l.index("Rev.") 
-									oscVersion = " (" + l[idx+4:].replace("\n","").strip() + ")\n"
+									oscVersion = " (" + l[idx+4:].replace("
+","").strip() + ")
+"
 							elif "-r" in l:
 								idx = l.index("-r") 
-								oscVersion = " (" + l[idx+2:].replace("\n","").strip() + ")\n"
+								oscVersion = " (" + l[idx+2:].replace("
+","").strip() + ")
+"
 							if "(0)" in oscVersion:
 								idx = l.index("ymodv")
-								oscVersion = " (" + l[idx+5:].replace("\n","").replace("Rev. 0","").strip() + ")\n"
+								oscVersion = " (" + l[idx+5:].replace("
+","").replace("Rev. 0","").strip() + ")
+"
 							elif "emu" in oscVersion:     
 								oscVersion = oscVersion.replace("-r16-GS","")
 							elif "DOSC" in l:
 								idx = l.index("DOSC") 
-								oscVersion = " (" + l[idx+7:].replace("\n","").strip() + ")\n"							
+								oscVersion = " (" + l[idx+7:].replace("
+","").strip() + ")
+"							
 								doscam = "D"
 							if not "(" in oscVersion:
-								oscVersion = " (" + (l.split("Version:")[1]).replace("ncam-","").replace("gcam-","").replace("\n","").strip() + ")\n"
+								oscVersion = " (" + (l.split("Version:")[1]).replace("ncam-","").replace("gcam-","").replace("
+","").strip() + ")
+"
 							break
 					f.close()
 					if "(" in oscVersion and "-" in oscVersion and "." in oscVersion:
 						oscVersion = oscVersion.replace("(","").replace(")","")          					
 					oscVersion = (cutMe("xxxxxxx"+oscVersion)).replace("xxxxxxx","")
 				except: pass
-			elif typecam == "CCcam\n" and ecmTime == "..............\n" and adress == "..............\n":
-				typecam = "Scam\n"
-			if provider == "Unknown\n":
-				provider = "..............\n"
+			elif typecam == "CCcam
+" and ecmTime == "..............
+" and adress == "..............
+":
+				typecam = "Scam
+"
+			if provider == "Unknown
+":
+				provider = "..............
+"
 			tmpline = ""
-			if ecmTime != "..............\n":
+			if ecmTime != "..............
+":
 				ecmTime = setEcmTime(ecmTime)
-			if using == "unsupported CAs\n":
+			if using == "unsupported CAs
+":
 				tmpline = _("Unsuported CA found, no correct ECM info !!!")
 			else:
-				if typecam != "..............\n":
+				if typecam != "..............
+":
 					tmpline = "CAM: " + typecam[:-1]
-				if caid != "..............\n":
+				if caid != "..............
+":
 					tmpline = tmpline + ", CAID: " + caid[:-1]
 				if config.plugins.setupGlass17.par3.value:
-					if adress != "..............\n":
+					if adress != "..............
+":
 						tmpline = tmpline + ", Source: " + adress[:-1]
-					if using != "..............\n" and adress == "..............\n":
+					if using != "..............
+" and adress == "..............
+":
 						tmpline = tmpline + ", Source: " + using[:-1]
-					if using != "..............\n" and typecam == "OScam\n":
+					if using != "..............
+" and typecam == "OScam
+":
 						tmpline = tmpline + ", Using: " + using[:-1]
 				else:
-					adress = "..............\n"
-				if provid != "..............\n" and typecam == "Gbox\n":
+					adress = "..............
+"
+				if provid != "..............
+" and typecam == "Gbox
+":
 					tmpline = tmpline + ", ProvId: " + provid[:-1]
-				if provider != "..............\n" and typecam == "Gbox\n":
+				if provider != "..............
+" and typecam == "Gbox
+":
 					tmpline = tmpline + ", Provider: " + provider[:-1]
-				if pid != "..............\n" and config.plugins.setupGlass17.par196.value:
+				if pid != "..............
+" and config.plugins.setupGlass17.par196.value:
 					tmpline = tmpline + ", PID: " + pid[:-1]
-				if chid != "..............\n" and config.plugins.setupGlass17.par197.value:
+				if chid != "..............
+" and config.plugins.setupGlass17.par197.value:
 					tmpline += ", CHID: " + chid[:-1]
-				if hops != "..............\n":
+				if hops != "..............
+":
 					tmpline = tmpline + ", Hops: " + hops[:-1]
-				if ecmTime != "..............\n":
+				if ecmTime != "..............
+":
 					tmpline = tmpline + ", Time: " + ecmTime[:-1]
 			if not config.plugins.setupGlass17.par193.value or caid[:-1] + " : " + pid[:-1] in self.allCaidPid:
 				self.caidLineTxt = self.CaidsChck((caid[:-1]))
@@ -4657,10 +4935,13 @@ class ExtraInfo17(Screen):
 				self.ecmLineShowFnc() 						
 				typecam = doscam+typecam
 				provider, provid = self.chid(provider, provid, chid)
-				config.plugins.setupGlass17.par38.value = (typecam.replace("Mgc","MGc").replace("\n",oscVersion)+caid+provider+provid+pid+using+prot+adress+hops+share+ecmTime+coding)
+				config.plugins.setupGlass17.par38.value = (typecam.replace("Mgc","MGc").replace("
+",oscVersion)+caid+provider+provid+pid+using+prot+adress+hops+share+ecmTime+coding)
 				if config.plugins.setupGlass17.par50.value:
-					config.plugins.setupGlass17.par38.value += "\n"+cw0+cw1
-				config.plugins.setupGlass17.par194.value = "\n"+cw0+cw1
+					config.plugins.setupGlass17.par38.value += "
+"+cw0+cw1
+				config.plugins.setupGlass17.par194.value = "
+"+cw0+cw1
 				self['ecmValues'].setText(config.plugins.setupGlass17.par38.value)
 				config.plugins.setupGlass17.par178.value = typeCAviaCam2
 				if self.typecam != typecam or self.forceUpd:
@@ -4670,11 +4951,13 @@ class ExtraInfo17(Screen):
 						if not os.path.isfile(oscVersion):
 							oscVersion = SKINPATH+"icons/missing-fs8.png"
 						self["piconCam"].instance.setPixmapFromFile(oscVersion)
-					if typecam != "..............\n":
+					if typecam != "..............
+":
 						self["Dcam"].instance.setPixmapFromFile((SKINPATH + "icons/" + typecam[:-1] + "-fs8.png"))
 					else:
 						self["Dcam"].hide()
-				if ((self.tstca != coding or self.typeCAviaCam != typeCAviaCam2) and (using != "unsupported CAs\n")) or self.forceUpd:
+				if ((self.tstca != coding or self.typeCAviaCam != typeCAviaCam2) and (using != "unsupported CAs
+")) or self.forceUpd:
 					self.forceUpd = False
 					self.tstca = coding 
 					self.picCamShow(coding, False)
@@ -4684,7 +4967,9 @@ class ExtraInfo17(Screen):
 					try:
 						share = caid[:-1] + " : " + pid[:-1]
 						if share in self.allCaidPid:
-							self['caidPids'].setText(("\n"+self.allCaidPid.replace((share+"\n"),"")))
+							self['caidPids'].setText(("
+"+self.allCaidPid.replace((share+"
+"),"")))
 							self['active_caidPid'].setText(share)
 							self['active_caidPid'].show()
 					except: pass
@@ -4726,13 +5011,19 @@ class ExtraInfo17(Screen):
 			self['ecmValues'].setText(config.plugins.setupGlass17.par38.value)
 			self['ecmlabels'].setText(ECM_LABELS)
 		else:
-			caid += "\n"
+			caid += "
+"
 			coding = convCaid(caid)
 			provider, provid = self.chid(provider, provid, chid)
-			config.plugins.setupGlass17.par38.value = "CAM\n"+caid+provider+provid+pid+using+"\n"+prot+adress+"\n"+hops+share+ecmTime+coding
+			config.plugins.setupGlass17.par38.value = "CAM
+"+caid+provider+provid+pid+using+"
+"+prot+adress+"
+"+hops+share+ecmTime+coding
 			if config.plugins.setupGlass17.par50.value:
-				config.plugins.setupGlass17.par38.value += "\n"+cw0+cw1
-			config.plugins.setupGlass17.par194.value = "\n"+cw0+cw1
+				config.plugins.setupGlass17.par38.value += "
+"+cw0+cw1
+			config.plugins.setupGlass17.par194.value = "
+"+cw0+cw1
 			self['ecmValues'].setText(config.plugins.setupGlass17.par38.value)
 			self.picCamShow(coding,False)
 			oscVersion = config.plugins.setupGlass17.par39.value + "/piconCam/CAM-fs8.png"
@@ -4748,12 +5039,15 @@ class ExtraInfo17(Screen):
 			except: pass
       				
 	def chid(self, a, b, c):
-		if c != "..............\n":
-			if a == "..............\n":
+		if c != "..............
+":
+			if a == "..............
+":
 				a = c
 				config.plugins.setupGlass17.par195.value = "Prov.:"
 				self['ecmlabels'].setText(ECM_LABELS.replace("Prov.:","CHID:"))
-			elif b == "..............\n":
+			elif b == "..............
+":
 				b = c
 				config.plugins.setupGlass17.par195.value = "PrvID:"
 				self['ecmlabels'].setText(ECM_LABELS.replace("PrvID:","CHID:"))
@@ -6300,7 +6594,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
       			
 	def eraseAnswerNow(self, answer):
 		if answer:
-			system("rm -rf %s/poster/*.*" % config.plugins.setupGlass17.par39.value)
+			poster_dir = os.path.join(config.plugins.setupGlass17.par39.value, "poster")
+			for name in listDir(poster_dir) or []:
+				candidate = os.path.join(poster_dir, name)
+				try:
+					if os.path.isfile(candidate) or os.path.islink(candidate):
+						os.unlink(candidate)
+				except OSError:
+					pass
 			self.session.open(MessageBox, _("Erase finished successfully!"), MessageBox.TYPE_INFO, 6)
 
 	def doNothing(self):
@@ -6774,7 +7075,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		else:
 			from Screens.G17screens import g17_extraScreen	
 			tmp = g17_extraScreen.get(str(config.plugins.setupGlass17.par6.value))
-			tmp = tmp.split("\n")
+			tmp = tmp.split("
+")
 			for i in tmp:
 				if "g17TunersLabel" in i:
 					self.isTunerLabel = True
@@ -6900,18 +7202,24 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				raise ValueError("missing version")
 		except Exception as err:
 			if ena:
-				self.session.open(MessageBox, _("Error reading version info!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 8)
+				self.session.open(MessageBox, _("Error reading version info!") + "
+
+" + str(err), MessageBox.TYPE_ERROR, 8)
 			return
 
 		current = self.readVersion()
 		if self._warderVersionTuple(new_version) <= self._warderVersionTuple(current):
 			if ena:
-				self.session.open(MessageBox, _("You have actual version installed, no update needed.") + "\n\n" + current, MessageBox.TYPE_INFO, 6)
+				self.session.open(MessageBox, _("You have actual version installed, no update needed.") + "
+
+" + current, MessageBox.TYPE_INFO, 6)
 			return
 
 		if not package_url:
 			if ena:
-				self.session.open(MessageBox, _("New version:") + " " + new_version + "\n\n" + _("Download is not available yet."), MessageBox.TYPE_INFO, 8)
+				self.session.open(MessageBox, _("New version:") + " " + new_version + "
+
+" + _("Download is not available yet."), MessageBox.TYPE_INFO, 8)
 			return
 
 		self.warderUpdate = {
@@ -6922,8 +7230,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		}
 		msg = _("New version:") + " " + new_version + " " + _("detected") + "."
 		if changelog:
-			msg += "\n\n" + changelog
-		msg += "\n\n" + _("Do you want to update now?")
+			msg += "
+
+" + changelog
+		msg += "
+
+" + _("Do you want to update now?")
 		box = self.session.openWithCallback(self.updCont, MessageBox, msg, MessageBox.TYPE_YESNO)
 		box.setTitle("FullHDGlass17 Warder Evolution")
 
@@ -6951,10 +7263,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					os.remove(target)
 				except Exception:
 					pass
-				self.session.open(MessageBox, _("Downloaded package checksum does not match!") + "\n\nSHA256: " + actual_sha, MessageBox.TYPE_ERROR, 10)
+				self.session.open(MessageBox, _("Downloaded package checksum does not match!") + "
+
+SHA256: " + actual_sha, MessageBox.TYPE_ERROR, 10)
 				return
 		except Exception as err:
-			self.session.open(MessageBox, _("Error while downloading file!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 8)
+			self.session.open(MessageBox, _("Error while downloading file!") + "
+
+" + str(err), MessageBox.TYPE_ERROR, 8)
 			return
 
 		if filename.endswith(".deb"):
@@ -6974,17 +7290,23 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.warderInstallContainer.appClosed.append(self._warderInstallFinished)
 		except Exception as err:
 			self._warderInstallCleanup()
-			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
+			self.session.open(MessageBox, _("Error while updating to new version!!!") + "
+
+" + str(err), MessageBox.TYPE_ERROR, 10)
 			return
 		try:
 			started = self.warderInstallContainer.execute(cmd)
 		except Exception as err:
 			self._warderInstallCleanup()
-			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
+			self.session.open(MessageBox, _("Error while updating to new version!!!") + "
+
+" + str(err), MessageBox.TYPE_ERROR, 10)
 			return
 		if started:
 			self._warderInstallCleanup()
-			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + _("Installer could not be started."), MessageBox.TYPE_ERROR, 10)
+			self.session.open(MessageBox, _("Error while updating to new version!!!") + "
+
+" + _("Installer could not be started."), MessageBox.TYPE_ERROR, 10)
 
 	def _warderInstallData(self, data):
 		try:
@@ -7005,7 +7327,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		target_version = getattr(self, "warderUpdate", {}).get("version", "")
 		installed = self.readVersion()
 		if int(exitCode) == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
-			restartbox = self.session.openWithCallback(self.rstAnswer, MessageBox, _("Update finished successfully!") + "\n\n" + _("Do you want restart GUI to activate version") + " " + installed + " " + _("now?"), MessageBox.TYPE_YESNO)
+			restartbox = self.session.openWithCallback(self.rstAnswer, MessageBox, _("Update finished successfully!") + "
+
+" + _("Do you want restart GUI to activate version") + " " + installed + " " + _("now?"), MessageBox.TYPE_YESNO)
 			restartbox.setTitle(_("Restart GUI now?"))
 		else:
 			out = "".join(getattr(self, "warderInstallOutput", []))
@@ -7013,7 +7337,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				out = out[-5000:]
 			msg = _("Error while updating to new version!!!") + " " + target_version
 			if out.strip():
-				msg += "\n\n" + out.strip()
+				msg += "
+
+" + out.strip()
 			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 15)
 		self.warderInstallContainer = None
 
@@ -7038,7 +7364,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.session.open(MessageBox, _("The file satellites.xml do not exists in selected dir"), MessageBox.TYPE_ERROR, 5)
 
 	def save(self):
-		msg = _("GUI will now be restarted to activate changes in:") + "\n"
+		msg = _("GUI will now be restarted to activate changes in:") + "
+"
 		msgScr = ""
 		tmp = False
 		if self.d[39] != config.plugins.setupGlass17.par80.value:
@@ -7048,7 +7375,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if self.d[17] != config.plugins.setupGlass17.par40.value:
 			xxx = _("Set OLED off in Standby")
 			if self.d[4] != "0":	
-				msg += xxx + "\n"
+				msg += xxx + "
+"
 				standbyOledOnOff()
 			else:
 				self.session.open(MessageBox, xxx + ER_F, MessageBox.TYPE_ERROR, 5)
@@ -7059,7 +7387,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				if not xxx:
 					self.session.open(MessageBox, _("ChannelSelection 2xOK") + ER_F, MessageBox.TYPE_ERROR, 5)
 					return			
-				msg += _("ChannelSelection 2xOK") + "\n"
+				msg += _("ChannelSelection 2xOK") + "
+"
 			else:
 				setCFGoff()
 		if config.plugins.setupGlass17.par125.value != self.d[55] or config.plugins.setupGlass17.par124.value != self.d[64]:
@@ -7072,20 +7401,23 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if ((config.plugins.setupGlass17.par7.value == "Icons" or self.d[5] == "Icons") and (config.plugins.setupGlass17.par7.value == "Icons Bar" or self.d[5] == "Icons Bar")) \
 			or ((config.plugins.setupGlass17.par7.value == "Icons" or self.d[5] == "Icons") and (config.plugins.setupGlass17.par7.value == "Icons Right" or self.d[5] == "Icons Right")) \
 			or ((config.plugins.setupGlass17.par7.value == "Icons Right" or self.d[5] == "Icons Right") and (config.plugins.setupGlass17.par7.value == "Icons Bar" or self.d[5] == "Icons Bar")):
-				msg += _("Menu type") + "\n"
+				msg += _("Menu type") + "
+"
 			elif config.plugins.setupGlass17.par7.value == "Icons" or self.d[5] == "Icons" or config.plugins.setupGlass17.par7.value == "Icons Right" or self.d[5] == "Icons Right" or config.plugins.setupGlass17.par7.value == "Icons Bar" or self.d[5] == "Icons Bar":
 				ttmp = "orig17"
 				if config.plugins.setupGlass17.par7.value == "Icons" or config.plugins.setupGlass17.par7.value == "Icons Right" or config.plugins.setupGlass17.par7.value == "Icons Bar": 
 					ttmp = "new17"
 				if setMenuPyo(ttmp):
-					msg += _("Menu type") + "\n"
+					msg += _("Menu type") + "
+"
 					xxx = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
 				else:
 					msg = _("Menu type") + ": " + str(config.plugins.setupGlass17.par7.value) + ER_F
 					self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 5)
 					return
 			else:
-				msg += _("Menu type") + "\n"
+				msg += _("Menu type") + "
+"
 				xxx = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
 		if config.plugins.setupGlass17.par27.value and not os.path.exists(("/proc/stb/video/alpha")):
 			msg = _("Fade cannot be used, alhpa file missing!!!")
@@ -7099,16 +7431,20 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if not ECL:
 				config.plugins.setupGlass17.par58.value = False
 			else:
-				msg += _("Set Clear memory") + "\n"
+				msg += _("Set Clear memory") + "
+"
 		if self.d[30] != config.plugins.setupGlass17.par59.value:
 			if config.plugins.setupGlass17.par59.value:
 				x = setEncodingUser()
-				msg += _("Set user encoding.conf") + "\n" 
+				msg += _("Set user encoding.conf") + "
+" 
 			else:
 				x = setEncodingUser(False)
-				msg += _("Set original encoding.conf") + "\n"
+				msg += _("Set original encoding.conf") + "
+"
 			if not x:
-				self.session.open(MessageBox, (msg.replace("\n","").replace(_("GUI will now be restarted to activate changes in:"),"") + ER_F), MessageBox.TYPE_ERROR, 5)
+				self.session.open(MessageBox, (msg.replace("
+","").replace(_("GUI will now be restarted to activate changes in:"),"") + ER_F), MessageBox.TYPE_ERROR, 5)
 				return
 		if self.d[8] != config.plugins.setupGlass17.par6.value:
 			isOk = checkScreen(config.plugins.setupGlass17.par6.value)
@@ -7128,7 +7464,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)
 				return
 			self.d[7] = config.plugins.setupGlass17.par1.value
-			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"	
+			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "
+"	
 			config.plugins.setupGlass17.par1.save()
 			x = setTypeIcos(self.d[7])
 		if self.d[18] != config.plugins.setupGlass17.par44.value or self.d[19] != config.plugins.setupGlass17.par45.value:
@@ -7137,55 +7474,73 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				x = windowStyle(isOk, color)
 				if msgScr == "":
 					msg += _("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", "
-				msg += _("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + ", " + _("Title color:") + " " + str(config.plugins.setupGlass17.par45.value) + "\n"
+				msg += _("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + ", " + _("Title color:") + " " + str(config.plugins.setupGlass17.par45.value) + "
+"
 			else:
-				msg = (_("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + " " + _("is incorrect, style will not be changed!!!") + "\n\n" + _("Save again to apply all setup changes without style change"))
+				msg = (_("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + " " + _("is incorrect, style will not be changed!!!") + "
+
+" + _("Save again to apply all setup changes without style change"))
 				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)				
 				self.d[18] = config.plugins.setupGlass17.par44.value
 				self.d[19] = config.plugins.setupGlass17.par45.value
 				return
 		if self.d[16] != config.plugins.setupGlass17.par41.value:		
-			msg += _("Picon default, marker, next ...") + ": " + config.plugins.setupGlass17.par41.value + "\n"
+			msg += _("Picon default, marker, next ...") + ": " + config.plugins.setupGlass17.par41.value + "
+"
 			setTypePicon()
 		if (self.d[38] != config.plugins.setupGlass17.par71.value) and ("w" in config.plugins.setupGlass17.par12.value or "w" in config.plugins.setupGlass17.par31.value):
-			msg += _("Enable next city in Weather") + "\n"
+			msg += _("Enable next city in Weather") + "
+"
 		if self.d[6] != config.plugins.setupGlass17.par4.value:
-			msg += _("Permanent Extra Infobar") + "\n"
+			msg += _("Permanent Extra Infobar") + "
+"
 			if config.plugins.setupGlass17.par4.value:
 				x = changeSkinXml("InfoBar","3")
 			else:
 				x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
-				msg += _("Standard Infobar type") + "\n"
+				msg += _("Standard Infobar type") + "
+"
 		elif not config.plugins.setupGlass17.par4.value and self.d[11] != config.plugins.setupGlass17.par14.value:	
-			msg += _("Standard Infobar type") + "\n"
+			msg += _("Standard Infobar type") + "
+"
 			x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
 		if self.d[3] != config.plugins.setupGlass17.par12.value:
-			msg += _("Special Info type") + "\n"
+			msg += _("Special Info type") + "
+"
 		if self.d[9] != config.plugins.setupGlass17.par31.value:
-			msg += _("User info type") + "\n"
+			msg += _("User info type") + "
+"
 		if self.d[15] != config.plugins.setupGlass17.par23.value:
-			msg += _("HDD/SSD state") + "\n"
+			msg += _("HDD/SSD state") + "
+"
 		if self.d[14] != config.plugins.setupGlass17.par34.value:
-			msg += _("Neutrino keymap") + "\n"
+			msg += _("Neutrino keymap") + "
+"
 		if self.d[23] != config.plugins.setupGlass17.par49.value:
-			msg += _("Localization of the skin") + "\n"
+			msg += _("Localization of the skin") + "
+"
 		if self.d[10] != config.plugins.setupGlass17.par33.value:
-			msg += _("User info act./next switching") + "\n"
+			msg += _("User info act./next switching") + "
+"
 		if self.d[1] != config.plugins.setupGlass17.par88.value:
-			msg += _("Provider")+" (%s)" % _("Weather") + "\n"
+			msg += _("Provider")+" (%s)" % _("Weather") + "
+"
 		xxx = False
 		if self.d[12] != config.plugins.setupGlass17.par18.value:
-			msg += _("Volume type") + "\n"
+			msg += _("Volume type") + "
+"
 			xxx = True
 		if self.d[24] != config.plugins.setupGlass17.par51.value or self.d[25] != config.plugins.setupGlass17.par52.value:
-			msg += _("Set Volume and Mute positions") + "\n"
+			msg += _("Set Volume and Mute positions") + "
+"
 			xxx = True
 		if xxx:
 			xxx = changeSkinXml("Volume", config.plugins.setupGlass17.par18.value)
 			xxx = changeSkinXml("Mute")
 			xxx = chckVolMute()
 		if self.d[13] != config.plugins.setupGlass17.par19.value:
-			msg += _("Channel selection type") + "\n"
+			msg += _("Channel selection type") + "
+"
 			xxx = changeSkinXml("ChannelSelection", config.plugins.setupGlass17.par19.value)
 			x = chckPigFont()
 		else:
@@ -7197,10 +7552,12 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					x = chckPigFont()
 				else:
 					x = changeChF()
-				msg += _("Channel selection font size") + "\n"
+				msg += _("Channel selection font size") + "
+"
 			if eee and (self.d[45] != config.plugins.setupGlass17.par109.value or self.d[46] != config.plugins.setupGlass17.par110.value or self.d[47] != config.plugins.setupGlass17.par111.value or self.d[48] != config.plugins.setupGlass17.par117.value):
 				x = cChannelsel(self.d[45],self.d[46],self.d[47],self.d[48])
-				msg += _("Channel selection type")+" ("+_("color") + ")\n"
+				msg += _("Channel selection type")+" ("+_("color") + ")
+"
 		if self.d[4] != config.plugins.setupGlass17.par15.value:
 			if config.plugins.setupGlass17.par15.value == "0":
 				xxx = setOledXml(USERORI)
@@ -7209,16 +7566,21 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				xxx = setOledMore()
 			else:
 				xxx = changeScreenXml("oled", config.plugins.setupGlass17.par15.value, self.d[4])
-			msg += _("OLED type") + "\n"
+			msg += _("OLED type") + "
+"
 		if self.d[37] != config.plugins.setupGlass17.par68.value:						
-			msg += _("PIG type") + "\n"            
+			msg += _("PIG type") + "
+"            
 			xxx = changePIGres()			
 		if self.d[22] != config.plugins.setupGlass17.par48.value:
-			msg += _("Show Satellite position in TP info") + "\n"			
+			msg += _("Show Satellite position in TP info") + "
+"			
 		if self.d[34] != config.plugins.setupGlass17.par64.value:
-			msg += _("RadioScreenSaver") + "\n"		
+			msg += _("RadioScreenSaver") + "
+"		
 		if config.plugins.setupGlass17.par54.value != self.d[27]:		
-			msg += _("EPG selection type") + "\n"
+			msg += _("EPG selection type") + "
+"
 			x = changeSkinXml("EPGSelection", config.plugins.setupGlass17.par54.value)
 			x = chckPigFont(1)
 		elif self.d[26] != config.plugins.setupGlass17.par53.value:
@@ -7227,134 +7589,187 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				x = chckPigFont(1)
 			else:			
 				x = setFontEventEpgsel(config.plugins.setupGlass17.par53.value)
-			msg += _("Extendend description font size") + "\n"
+			msg += _("Extendend description font size") + "
+"
 		if config.plugins.setupGlass17.par46.value != self.d[20]:
 			if config.plugins.setupGlass17.par46.value == "0":
 				x = setFontListEpg("32")
 			else:
 				x = setFontListEpg(config.plugins.setupGlass17.par46.value)
-			msg += _("EPG list font size") + "\n"
+			msg += _("EPG list font size") + "
+"
 		if config.plugins.setupGlass17.par55.value != self.d[31] and self.d[31] == "2":
 			config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
 		if self.d[2] != config.plugins.setupGlass17.par78.value and (self.d[2] == "n" or config.plugins.setupGlass17.par78.value == "n"):
-			msg += _("Special Info type") + " ("+_("extensions")+")" + "\n"
+			msg += _("Special Info type") + " ("+_("extensions")+")" + "
+"
 		if self.d[42] != config.plugins.setupGlass17.par92.value:
-			msg += _("Show yesterday") + "\n"
+			msg += _("Show yesterday") + "
+"
 		if self.d[43] != config.plugins.setupGlass17.par93.value:
-			msg += _("Warm")+" ("+_("color") + ")\n"
+			msg += _("Warm")+" ("+_("color") + ")
+"
 		if self.d[44] != config.plugins.setupGlass17.par94.value:
-			msg += _("Cold")+" ("+_("color") + ")\n"
+			msg += _("Cold")+" ("+_("color") + ")
+"
 		if self.d[49] != config.plugins.setupGlass17.par114.value:
-			msg += _("Show recording icon") + "\n"
+			msg += _("Show recording icon") + "
+"
 		if self.d[50] != config.plugins.setupGlass17.par118.value:
-			msg += _("ECM Labels")+" ("+_("color") + ")\n"
+			msg += _("ECM Labels")+" ("+_("color") + ")
+"
 		if self.d[51] != config.plugins.setupGlass17.par119.value:
-			msg += _("ECM Values")+" ("+_("color") + ")\n"
+			msg += _("ECM Values")+" ("+_("color") + ")
+"
 		if self.d[52] != config.plugins.setupGlass17.par121.value:
-			msg += _("TP type")+" ("+_("color") + ")\n"
+			msg += _("TP type")+" ("+_("color") + ")
+"
 		if self.d[53] != config.plugins.setupGlass17.par122.value:
-			msg += _("TP info")+" ("+_("color") + ")\n"
+			msg += _("TP info")+" ("+_("color") + ")
+"
 		if self.d[54] != config.plugins.setupGlass17.par123.value:
-			msg += _("Video resolution")+" ("+_("color") + ")\n"
+			msg += _("Video resolution")+" ("+_("color") + ")
+"
 		if self.d[56] != config.plugins.setupGlass17.par126.value:
-			msg += _("Calculation of channel numbers") + "\n"
+			msg += _("Calculation of channel numbers") + "
+"
 		if self.d[57] != config.plugins.setupGlass17.par128.value:
-			msg += _("Date") +" ("+_("color") + ")\n"
+			msg += _("Date") +" ("+_("color") + ")
+"
 		if self.d[58] != config.plugins.setupGlass17.par129.value:
-			msg += _("Time") +" ("+_("color") + ")\n"
+			msg += _("Time") +" ("+_("color") + ")
+"
 		if self.d[59] != config.plugins.setupGlass17.par130.value:
-			msg += _("Seconds") +" ("+_("color") + ")\n"
+			msg += _("Seconds") +" ("+_("color") + ")
+"
 		if self.d[60] != config.plugins.setupGlass17.par135.value:
-			msg += _("Channel name") +" ("+_("color") + ")\n"
+			msg += _("Channel name") +" ("+_("color") + ")
+"
 		if self.d[61] != config.plugins.setupGlass17.par136.value:
-			msg += _("Event now") +" ("+_("color") + ")\n"
+			msg += _("Event now") +" ("+_("color") + ")
+"
 		if self.d[62] != config.plugins.setupGlass17.par137.value:
-			msg += _("Event next") +" ("+_("color") + ")\n"
+			msg += _("Event next") +" ("+_("color") + ")
+"
 		if self.d[63] != config.plugins.setupGlass17.par22.value:
 			config.plugins.setupGlass17.par140.value = autoHdd()	
 			config.plugins.setupGlass17.par182.value = autoTypeHdd()
 		if self.d[65] != config.plugins.setupGlass17.par141.value:
-			msg += _("Path to satellites.xml") + "\n"
+			msg += _("Path to satellites.xml") + "
+"
 		if self.d[28] != config.plugins.setupGlass17.par56.value:
-			msg += _("Animated Weather Icons") + "\n"
+			msg += _("Animated Weather Icons") + "
+"
 		if self.d[35] != config.plugins.setupGlass17.par66.value:
-			msg += _("Animated Weather Icons") + "\n" 
+			msg += _("Animated Weather Icons") + "
+" 
 		if self.d[83] != config.plugins.setupGlass17.par169.value:
-			msg += _("Animated Weather Icons") + "\n" 
+			msg += _("Animated Weather Icons") + "
+" 
 		if self.d[21] != config.plugins.setupGlass17.par47.value:
 			msg += chMT()
 		if self.d[74] != config.plugins.setupGlass17.par157.value or self.d[73] != config.plugins.setupGlass17.par156.value or self.d[72] != config.plugins.setupGlass17.par155.value or self.d[71] != config.plugins.setupGlass17.par154.value or self.d[70] != config.plugins.setupGlass17.par153.value:
 			msg += lbs()
 		if self.d[36] != config.plugins.setupGlass17.par67.value:
 			x = chckFifo()
-			msg += _("Service scan long list") + "\n"
+			msg += _("Service scan long list") + "
+"
 		if (config.plugins.setupGlass17.par8.value != "3" and self.d[75] == "3") or (config.plugins.setupGlass17.par8.value == "3" and self.d[75] != "3") or (config.plugins.setupGlass17.par8.value in ("0","1","2") and self.d[75] in ("4","5","6")) or (self.d[75] in ("0","1","2") and config.plugins.setupGlass17.par8.value in ("4","5","6")):
-			msg += _("Second picon type") + "\n"			
+			msg += _("Second picon type") + "
+"			
 		if config.plugins.setupGlass17.par203.value != self.d[97] or config.plugins.setupGlass17.par165.value != self.d[80] or self.d[81] != config.plugins.setupGlass17.par166.value or config.plugins.setupGlass17.par161.value != self.d[76] or self.d[77] != config.plugins.setupGlass17.par162.value or self.d[78] != config.plugins.setupGlass17.par163.value or self.d[79] != config.plugins.setupGlass17.par164.value or self.d[82] != config.plugins.setupGlass17.par167.value:
-			msg += _("Animation") + "\n"
+			msg += _("Animation") + "
+"
 		if self.d[84] != config.plugins.setupGlass17.par171.value:
-			msg += "("+_("SPECIAL INFO")+") " + _("Type") + "\n" 
+			msg += "("+_("SPECIAL INFO")+") " + _("Type") + "
+" 
 		if self.d[85] != config.plugins.setupGlass17.par172.value:
-			msg += "("+_("USER INFO")+") " + _("Type") + "\n"
+			msg += "("+_("USER INFO")+") " + _("Type") + "
+"
 		if self.d[86] != config.plugins.setupGlass17.par174.value:
-			msg += "("+_("WEATHER")+") " + _("Date") +" ("+_("color") + ")\n"
+			msg += "("+_("WEATHER")+") " + _("Date") +" ("+_("color") + ")
+"
 		if self.d[87] != config.plugins.setupGlass17.par175.value:
-			msg += "("+_("WEATHER")+") " + _("State") +" ("+_("color") + ")\n"
+			msg += "("+_("WEATHER")+") " + _("State") +" ("+_("color") + ")
+"
 		if self.d[88] != config.plugins.setupGlass17.par180.value:
-			msg += _("NETATMO") + "\n"
+			msg += _("NETATMO") + "
+"
 		if self.d[89] != config.plugins.setupGlass17.par183.value:
-			msg += _("Vertical Offset") + "\n"
+			msg += _("Vertical Offset") + "
+"
 		if self.d[90] != config.plugins.setupGlass17.par143.value:
-			msg += _("10 days forecast") + "\n"
+			msg += _("10 days forecast") + "
+"
 		if self.d[91] != config.plugins.setupGlass17.par189.value:
-			msg += _("Enable eBitrateCalculator") + "\n"
+			msg += _("Enable eBitrateCalculator") + "
+"
 		if self.d[92] != config.plugins.setupGlass17.par190.value:
 			if setONOFF():
-				msg += _("On/Off icons") + "\n"
+				msg += _("On/Off icons") + "
+"
 		if self.d[0] != config.plugins.setupGlass17.par50.value:
-			msg += _("Display CW0/1 in Side bar") + "\n"
+			msg += _("Display CW0/1 in Side bar") + "
+"
 		if self.d[93] != config.plugins.setupGlass17.par198.value:
-			msg += _("Poster") + "\n"
+			msg += _("Poster") + "
+"
 		if self.d[94] != config.plugins.setupGlass17.par200.value or self.d[95] != config.plugins.setupGlass17.par201.value:
-			msg += _("Poster") + "/" + _("Set Position") + "\n"
+			msg += _("Poster") + "/" + _("Set Position") + "
+"
 		if self.d[96] != config.plugins.setupGlass17.par202.value:
-			msg += _("Poster") + "/" + _("Size") + "\n"
+			msg += _("Poster") + "/" + _("Size") + "
+"
 		if self.d[98] != config.plugins.setupGlass17.par207.value:
-			msg += _("Poster") + "/" + _("Removing current Poster") + "\n"
+			msg += _("Poster") + "/" + _("Removing current Poster") + "
+"
 		if self.d[99] != config.plugins.setupGlass17.par208.value:
 			x = changeSkinXml("SplitScreen", config.plugins.setupGlass17.par208.value)
-			msg += _("VTi SplitScreen") + "\n"
+			msg += _("VTi SplitScreen") + "
+"
 		if (self.d[100] == "0" and config.plugins.setupGlass17.par209.value != "0") or (self.d[100] != "0" and config.plugins.setupGlass17.par209.value == "0"):
-			msg += _("Network speed") + "\n"
+			msg += _("Network speed") + "
+"
 		if self.d[101] != config.plugins.setupGlass17.par210.value or self.d[102] != config.plugins.setupGlass17.par211.value:
-			msg += _("Network speed") + "/" + _("Set Position") + "\n"
+			msg += _("Network speed") + "/" + _("Set Position") + "
+"
 		if self.d[103] != config.plugins.setupGlass17.par213.value:
-			msg += _("Network speed")+" ("+_("color") + ")\n"
+			msg += _("Network speed")+" ("+_("color") + ")
+"
 		if self.d[104] != config.plugins.setupGlass17.par214.value:
-			msg += _("Progress bar foreground")+" ("+_("color") + ")\n"
+			msg += _("Progress bar foreground")+" ("+_("color") + ")
+"
 		if self.d[105] != config.plugins.setupGlass17.par215.value:
-			msg += _("Progress bar background")+" ("+_("color") + ")\n"
+			msg += _("Progress bar background")+" ("+_("color") + ")
+"
 		if self.d[106] != config.plugins.setupGlass17.par222.value:
-			msg += _("Progress bar pixmap") + "\n"
+			msg += _("Progress bar pixmap") + "
+"
 		if self.d[107] != config.plugins.setupGlass17.par223.value:
-			msg += _("Hide SNR/AGC (Q/S) if value is 0") + "\n"
+			msg += _("Hide SNR/AGC (Q/S) if value is 0") + "
+"
 		if self.d[108] != config.plugins.setupGlass17.par224.value:		
-			msg += _("Movie selection type") + "\n"
+			msg += _("Movie selection type") + "
+"
 			x = changeSkinXml("MovieSelection", config.plugins.setupGlass17.par224.value)
 			x = chckPigFont(1)
 		if self.d[109] != config.plugins.setupGlass17.par226.value:
-			msg += _("Network speed")+" ("+_("Type") + ")\n"
+			msg += _("Network speed")+" ("+_("Type") + ")
+"
 		if self.d[110] != config.plugins.setupGlass17.par227.value:
-			msg += _('Extended Number ZAP Picon Size') + "\n"
+			msg += _('Extended Number ZAP Picon Size') + "
+"
 			if config.plugins.setupGlass17.par227.value == "0":
 				x = changeSkinXml("NumberZapExt", chckPiconSize())
 			else:
 				x = changeSkinXml("NumberZapExt", config.plugins.setupGlass17.par227.value)
 		if config.plugins.setupGlass17.par229.value != self.d[111]:		
-			msg += _("EventView type") + "\n"
+			msg += _("EventView type") + "
+"
 			x = changeSkinXml("EventView", config.plugins.setupGlass17.par229.value)
 			x = chckPigFont(1)
-		if msg != _("GUI will now be restarted to activate changes in:") + "\n":                                                                                            
+		if msg != _("GUI will now be restarted to activate changes in:") + "
+":                                                                                            
 			try:
 				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 8)
 			except: pass
@@ -7386,7 +7801,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 						idx = int(str(i[0]).replace("par",""))
 						if idx == x:
 							cfg = i[1].getValue()
-							allLines += "%s: %s\n" % (ALL_CFG[x-1], cfg)
+							allLines += "%s: %s
+" % (ALL_CFG[x-1], cfg)
 							i[1].save()
 							break
 			if allLines != "":
@@ -7444,7 +7860,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					for x in range(1, len(ALL_CFG)+1):
 						if ALL_CFG[x-1] != "" and tmp[0] == ALL_CFG[x-1]:
 							ena = True
-							tmp[1] = tmp[1].replace("\n","")
+							tmp[1] = tmp[1].replace("
+","")
 							tmp[1] = str(tmp[1].strip())
 							typeValue = tmp[1]								
 							if x in [1,6,10,11,44,51,52,69,72,96,97,149,150,158,159,170,200,201,210,211] and not self.isNum(tmp[1]):
@@ -7503,7 +7920,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
 			if isOk != "?":
 				x = windowStyle(isOk, color)
-				msg = _("GUI will now be restarted to activate changes in:") + "\n\n" + _("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + ", " + _("Title color:") + " " + str(config.plugins.setupGlass17.par45.value) + "\n"
+				msg = _("GUI will now be restarted to activate changes in:") + "
+
+" + _("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + ", " + _("Title color:") + " " + str(config.plugins.setupGlass17.par45.value) + "
+"
 				gotoRestart(msg)
 			else:
 				self.exitNow()
@@ -7815,7 +8235,8 @@ class downloadMenu(Screen):
 			self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),txt)
 		else:
 			if txt != "":
-				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "\n"
+				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "
+"
 			ena = True
 			self.enaSelectsat = False
 			for x in self.menuListAll:
@@ -7872,7 +8293,8 @@ class downloadMenu(Screen):
 		if ret > size and ret1 > (size/2):
 			self.downloadPicons(filename)
 			return
-		msg = "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)
+		msg = "%s(%s/%s)MB:
+%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)
 		self.dwnLoop(_("ERROR")+": "+str(msg))
 
 	def _safeExtractZip(self, archive, destination):
@@ -8028,22 +8450,31 @@ class downloadMenu(Screen):
 								system("rm -rf /tmp/a.7z")
 								numPict, total = self.cprmFiles(Ddir)
 								if total == 0:
-									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", 0 " + _("file(s) downloaded/updated.")+"\n"
+									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", 0 " + _("file(s) downloaded/updated.")+"
+"
 								elif numPict-total == 0:
-									tmp += _("SUCCESSFUL")+": ("+Ddir+ ") "+k[x][0]+", "+ _("Total:") + " " + str(total) + " " + _("file(s) downloaded/updated.")+"\n"
+									tmp += _("SUCCESSFUL")+": ("+Ddir+ ") "+k[x][0]+", "+ _("Total:") + " " + str(total) + " " + _("file(s) downloaded/updated.")+"
+"
 								else:
-									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", " + str(total-numPict) + " " + _("file(s) from") + " " + str(total)+"\n"
+									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", " + str(total-numPict) + " " + _("file(s) from") + " " + str(total)+"
+"
 							else:
-								tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+ "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)+"\n"
+								tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+ "%s(%s/%s)MB:
+%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)+"
+"
 						else:
-							tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!") + " 0 " + _("file(s) downloaded/updated.")+"\n"
+							tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!") + " 0 " + _("file(s) downloaded/updated.")+"
+"
 							system("rm -rf /tmp/a.7z")
 					else:
-						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!")+"\n"
+						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!")+"
+"
 			else:
-				tmp += _("ERROR")+": "+_("Loading URL tools failed")+"\n"
+				tmp += _("ERROR")+": "+_("Loading URL tools failed")+"
+"
 		else:
-			tmp += _("ERROR")+": "+_("Internet connection failed")+"\n"
+			tmp += _("ERROR")+": "+_("Internet connection failed")+"
+"
 		if tmp != "":
 			self.dwnLoop(tmp[:-1])
 		else:
@@ -8080,7 +8511,7 @@ class downloadMenu(Screen):
 		tmp = ""
 		path = config.plugins.setupGlass17.par39.value
 		if not os.path.exists((path+"/more_icons/scr_prew")):
-			system("mkdir " + path + "/more_icons/scr_prew")
+			os.makedirs(path + "/more_icons/scr_prew", exist_ok=True)
 		numPict = 0
 		total = 0
 		for i in range(1,MAXSCREENS):
@@ -8091,23 +8522,27 @@ class downloadMenu(Screen):
 					numPict += 1
 		if total != 0:
 			if numPict-total == 0:
-				tmp = _("SUCCESSFUL")+": "+_("Previews downloaded successfully!") + "\n"
+				tmp = _("SUCCESSFUL")+": "+_("Previews downloaded successfully!") + "
+"
 			else:
-				tmp = _("ERROR")+": "+_("Previews:") + " " + str(total-numPict) + " " + _("file(s) from") + " " + str(total) + "\n"
+				tmp = _("ERROR")+": "+_("Previews:") + " " + str(total-numPict) + " " + _("file(s) from") + " " + str(total) + "
+"
 		global allIcons
 		for i in range(1,MAXICONS):
 			if os.path.exists(("/tmp/more_icons/i_type-"+str(i))):
 				if not os.path.exists((path+"/more_icons/i_type-"+str(i))):
-					system("mkdir " + path + "/more_icons/i_type-"+str(i))
+					os.makedirs(path + "/more_icons/i_type-"+str(i), exist_ok=True)
 				for tt in allIcons:
 					system(("cp -f /tmp/more_icons/i_type-"+str(i)+"/"+tt+".png"+" "+path+"/more_icons/i_type-"+str(i)+"/"+tt+".png"))
 				system(("rm -rf /tmp/more_icons/i_type-"+str(i)+"/*.*"))
 				system(("rmdir /tmp/more_icons/i_type-"+str(i)))
 				system(("cp -f /tmp/more_icons/scr_prew/icons-"+str(i)+".png "+path+"/more_icons/scr_prew/icons-"+str(i)+".png"))
 				if checkIcons(i):
-					tmp += _("SUCCESSFUL")+": "+_("Icons type") + " " + str(i) + "\n"
+					tmp += _("SUCCESSFUL")+": "+_("Icons type") + " " + str(i) + "
+"
 				else:
-					tmp += _("ERROR")+": "+_("Icons type") + " " + str(i) + "\n"				
+					tmp += _("ERROR")+": "+_("Icons type") + " " + str(i) + "
+"				
 		self.rmTmp()
 		if tmp != "":
 			self.dwnLoop(tmp[:-1])
@@ -8393,7 +8828,8 @@ class selectScreenShowed(Screen):
 					self["scr_preview"].instance.setPixmapFromFile((SKINPATH + "no-preview.png"))        
 				from Screens.G17screens import g17_extraScreen	
 				tmp = g17_extraScreen.get(str(tmp[0]))
-				tmp = tmp.split("\n")
+				tmp = tmp.split("
+")
 				for i in tmp:
 					if "g17picon" in i:
 						tmp2 = (i.split('size="')[1]).split('"')[0]
@@ -8601,14 +9037,16 @@ class historyScreen(Screen):
 		self.setWindowTitle(txt)
 		try:
 			if a:
-				f = self.new.split("\n")
+				f = self.new.split("
+")
 				color=int("0xdddddd", 16)
 				xOff = 32
 			else:
 				xOff = 0
 				f = open(f, 'r').readlines()
 			for x in f: 
-				tt = x.replace("\n","")
+				tt = x.replace("
+","")
 				if tt != "" and len(tt) > 0:
 					item = [tt]
 					if a:
@@ -8672,7 +9110,19 @@ class SelectPosition(Screen):
 			</screen>""" 
 			self['ecm_items'] = Label(ECM_LABELS)
 			self['ecm_Values'] = Label(CLRDATA)
-			self['tp_items'] = Label("Video PID:\nAudio PID:\nPCR PID:\nPMT PID:\nTXT PID:\nSID:\nTSID:\nONID:\nV. Format:\nV. Size:\nAudio Type:\nA. Tracks:\nSubtitles:")
+			self['tp_items'] = Label("Video PID:
+Audio PID:
+PCR PID:
+PMT PID:
+TXT PID:
+SID:
+TSID:
+ONID:
+V. Format:
+V. Size:
+Audio Type:
+A. Tracks:
+Subtitles:")
 			self['tp_Values'] = Label(CLRTP)
 			self.valueX = config.plugins.setupGlass17.par10.value
 			self.valueY = config.plugins.setupGlass17.par11.value
@@ -8864,7 +9314,8 @@ class cityFinder(Screen):
 			if self.chckLine(newline):
 				self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)			
 			else:
-				newline = ' '.join((newline).strip().split()) + '\n'
+				newline = ' '.join((newline).strip().split()) + '
+'
 				if newline != self.oldLine:
 					self.citylist[self.selectedLine] = newline
 					self.writeMCC()
@@ -8965,7 +9416,8 @@ class cityFinder(Screen):
 	def chckLine(self, tmp):
 		err = True
 		try:
-			tmp = (' '.join((tmp).strip().split()) + '\n').strip().split("-")
+			tmp = (' '.join((tmp).strip().split()) + '
+').strip().split("-")
 			if (len(tmp) == 2 and (tmp[1].isdigit() or tmp[1].startswith("wc:") or tmp[1].startswith("fr:"))) or (len(tmp) == 3 and (tmp[1].isdigit() or tmp[1].startswith("wc:") or tmp[1].startswith("fr:")) and tmp[2].lower() in ["c","f"]):
 				err = False    
 		except: pass
@@ -8974,7 +9426,8 @@ class cityFinder(Screen):
 	def appMCC(self, tmp):    			
 		try:
 			f = open("/etc/my_city_Code.txt","a")
-			f.write("%s\n" % str(tmp))
+			f.write("%s
+" % str(tmp))
 			f.close()
 		except IOError: pass
 		f = open("/etc/my_city_Code.txt","r").read()
