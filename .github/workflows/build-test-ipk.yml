@@ -93,10 +93,7 @@ jobs:
           VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin warder-modernization-work
-          git checkout -B warder-modernization-work origin/warder-modernization-work
           mkdir -p packages/test
-          cp "$IPK" "packages/test/$NAME"
           printf '%s  %s\n' "$SHA" "$NAME" > "packages/test/$NAME.sha256"
           python3 - "$VERSION" "$NAME" "$SHA" <<'PY'
           import json, sys
