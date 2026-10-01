@@ -3,7 +3,7 @@
 #    Weather for Enigma2
 #    Coded by shamann (c)2021
 #
-#    xml from http://weather.service.msn.com
+#    weather data provided by Open-Meteo
 #    sunset, sunrise calculated by NOAA formula
 #    This program is free software; you can redistribute it and/or
 #    modify it under the terms of the GNU General Public License
