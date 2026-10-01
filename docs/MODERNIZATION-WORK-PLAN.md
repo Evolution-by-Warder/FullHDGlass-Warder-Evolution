@@ -713,3 +713,15 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - bitrate helper startup now passes `/usr/bin/btrGen17` and all stream-derived parameters as separate `eConsoleAppContainer.execute()` argv values instead of constructing one command string.
 - Warder updater installation now passes `opkg`/`dpkg` and the verified local package path as separate argv values; manual shell quoting and command-string execution were removed.
 - runtime-safety regression gate rejects return of shell-string execution for both bitrate helper and updater installer.
+
+
+## Final runtime/CI convergence batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — BUILD/RECEIVER TEST STILL REQUIRED**
+
+- broad high-risk runtime scan of the primary setupGlass17/weather/system-info/menu modules found no remaining active shell execution and no active cleartext HTTP endpoint; the only `http://` match in the focused set is a historical comment.
+- enhanced Open-Meteo weather now stops its pending wait timer before screen exit; the download menu likewise stops an active download-loop timer before dropping timer references.
+- TEST CI checkout is pinned to `${{ github.sha }}` so a manually dispatched build cannot silently package a later moving branch HEAD.
+- native IPK builder now writes numeric root ownership explicitly, uses `ar rcs`, and produces a portable SHA256 sidecar containing only the package basename.
+- builder and verifier both require exact pairing between runtime `1.0.5-test1` and opkg control suffix `warder1.0.5-test1`; verifier checks the portable checksum from the package directory.
+- no RECEIVER PASS or BUILD PASS is claimed until the workflow produces and verifies the actual IPK artifact.
