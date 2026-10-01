@@ -40,7 +40,13 @@ if 'stat.S_ISLNK(mode)' not in plugin or "ZIP path traversal rejected" not in pl
 if "install_opener(" in plugin:
     fail("plugin.py: downloader must not replace the process-global urllib opener")
 if "http://weather.service.msn.com/" in plugin:
-    fail("plugin.py: city lookup regressed to cleartext HTTP")
+    fail("plugin.py: MSN weather transport regressed to cleartext HTTP")
+if "PiconHub-Warder/FullHDGlass-Warder-Evolution" in plugin:
+    fail("plugin.py: obsolete Warder repository owner returned")
+if "unsafe asset manifest redirect" not in plugin:
+    fail("plugin.py: official asset manifest redirect guard missing")
+if "if isATV:" not in plugin[plugin.find("def chnlSelPatch"):plugin.find("def writeStyleCfg")]:
+    fail("plugin.py: OpenATV ChannelSelection patch guard missing")
 official_packages = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
 if plugin.count(official_packages) < 2:
     fail("plugin.py: updater is not pinned at both metadata and pre-install gates")
@@ -60,6 +66,8 @@ if "system(tta)" in userinfo or "df -h > /tmp/" in userinfo:
 weather = (pkg / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather.py").read_text(encoding="utf-8")
 if re.search(r"(?:os\.)?system\s*\(\s*['\"]rm\s+-rf", weather):
     fail("weather.py: legacy shell deletion returned")
+if "http://weather.service.msn.com/" in weather:
+    fail("weather.py: classic MSN fallback regressed to cleartext HTTP")
 
 if errors:
     print("\n".join("FAIL: " + e for e in errors), file=sys.stderr)
