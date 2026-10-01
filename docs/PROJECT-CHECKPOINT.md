@@ -114,3 +114,12 @@ This section supersedes older development-status/TODO text above where they conf
 1. Investigate why `opkg` reports `1.0.5` rather than `1.0.5-test19`, while preserving the updater/version ordering behavior.
 2. Continue systematic r1-r12 regression review from exact r12, without reopening already receiver-verified TEST18 weather or TEST19 PIG behavior unless evidence of regression appears.
 3. Keep updater behavior: auto-check only after opening FullHDGlass17 settings (not receiver boot/skin startup), with the established delayed/modal-safe flow.
+
+## TEST20 package-version correction — candidate, not receiver-verified yet
+
+- TEST18 weather/city and TEST19 PIG receiver PASS checkpoints remain locked and unchanged.
+- CI #78 artifact was independently extracted and verified by SHA256 `82771315e88a63e058eb08557ef67194f022653f0be6288450a7b24402b67731`; its embedded control really contains `Version: 1.0.5-test19`. Therefore the TEST19 builder/publication did not strip the suffix.
+- Root cause is opkg version parsing/presentation: the final hyphen component is package revision. With `1.0.5-test19`, opkg parses base version `1.0.5` and revision `test19`; the target OpenATV install message exposed only the base part.
+- TEST20 changes package metadata only: runtime/updater identity is `1.0.5-test20`, while IPK control metadata is `Version: 1.0.5-test20-1`. This leaves `1.0.5-test20` in opkg's base-version component and uses numeric package revision `1`.
+- Build/verification gates now explicitly enforce the separation between runtime/updater version and package metadata version. Package filename remains keyed to runtime identity: `..._1.0.5-test20_all.ipk`.
+- TEST20 must not be marked receiver PASS until the physical GigaBlue confirms the opkg presentation and normal operation.

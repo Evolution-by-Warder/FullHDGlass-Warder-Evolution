@@ -25,10 +25,15 @@ case "$RUNTIMEVER" in
 esac
 
 test "$PKG" = "enigma2-skin-fullhdglass17"
+EXPECTED_PKGVER="${RUNTIMEVER}-1"
 case "$PKGVER" in
-  "$RUNTIMEVER") ;;
-  *) echo "Control/runtime TEST version mismatch: $PKGVER vs $RUNTIMEVER" >&2; exit 2 ;;
+  "$EXPECTED_PKGVER") ;;
+  *) echo "Control/runtime TEST package version mismatch: $PKGVER vs $EXPECTED_PKGVER" >&2; exit 2 ;;
 esac
+
+# opkg treats the final hyphen component as package revision. Keep a numeric
+# revision after the visible TEST identity so OpenATV reports 1.0.5-testXX
+# rather than reducing the visible version to 1.0.5.
 
 # Compile gettext catalogs from authoritative PO sources before staging.
 # This prevents stale MO files from hiding r10 language fixes on receivers.

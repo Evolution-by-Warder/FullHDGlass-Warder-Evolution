@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test19
-Revision: 74
-Purpose: Restore the authoritative r11/r12 menu navigation fix for all PIG menu variants (with PIG, simply PIG, PIG2, PIG4): keep exactly one navigable menu Listbox and render the mirrored current entry as g17MenuCurrentText Label across Menu and all submenu screens.
+Candidate: 1.0.5-test20
+Revision: 75
+Purpose: Fix OpenATV/opkg TEST-version presentation without touching receiver-verified TEST18 weather or TEST19 PIG behavior. Package metadata uses Version 1.0.5-test20-1 so opkg's final-hyphen revision split retains visible version 1.0.5-test20; runtime/updater identity remains 1.0.5-test20.

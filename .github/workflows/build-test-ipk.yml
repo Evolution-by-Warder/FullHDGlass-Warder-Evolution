@@ -33,7 +33,103 @@ jobs:
         run: |
           set -euo pipefail
           test "$(sed -n 's/^Package:[[:space:]]*//p' source/control/control | head -n1)" = "enigma2-skin-fullhdglass17"
-          grep -Eq '^Version: .*[-.]test[0-9A-Za-z.-]*$' source/control/control
+          grep -Eq '^Version: [0-9]+[.][0-9]+[.][0-9]+-test[0-9]+-[0-9]+
+          grep -Eq -- '-test' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
+          test "$(cat update.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')" = "1.0.4"
+          ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .
+          ! find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -print -quit | grep -q .
+          python3 -m compileall -q -f source/package-root/usr/lib/enigma2/python
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          for p in Path("source/package-root").rglob("*.xml"):
+              if p.name == "hdg17Screens.xml":
+                  # Intentional Enigma2 fragment with multiple top-level screen nodes.
+                  ET.fromstring("<skin>\\n" + p.read_text(encoding="utf-8") + "\\n</skin>")
+              else:
+                  ET.parse(p)
+          print("XML parse gate: PASS")
+          PY
+          bash -n source/control/preinst source/control/postinst source/control/postrm tools/build-test-ipk.sh tools/test-package-lifecycle.sh
+          chmod +x tools/test-package-lifecycle.sh tools/test-runtime-safety.py
+          ./tools/test-package-lifecycle.sh
+          python3 tools/test-runtime-safety.py
+          python3 tools/test-version-order.py
+          python3 tools/test-r12-regressions.py
+
+      - name: Build TEST IPK
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x tools/build-test-ipk.sh
+          ./tools/build-test-ipk.sh
+
+      - name: Inspect built package
+        shell: bash
+        run: |
+          set -euo pipefail
+          PACKAGE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
+          RUNTIME_VERSION="$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
+          IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${RUNTIME_VERSION}_all.ipk"
+          test -f "$IPK"
+          chmod +x tools/verify-test-ipk.sh
+          ./tools/verify-test-ipk.sh "$IPK" "$RUNTIME_VERSION" "$PACKAGE_VERSION"
+          TMP="$(mktemp -d)"
+          trap 'rm -rf "$TMP"' EXIT
+          (cd "$TMP" && ar x "$GITHUB_WORKSPACE/$IPK")
+          tar -tzf "$TMP/data.tar.gz" > packages/test/PAYLOAD-LIST.txt
+
+      - name: Publish TEST package for receiver updater
+        if: success()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
+          VERSION="$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
+          test "$PACKAGE_VERSION" = "$VERSION-1"
+          IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${VERSION}_all.ipk"
+          test -f "$IPK"
+          SHA="$(sha256sum "$IPK" | awk '{print $1}')"
+          NAME="$(basename "$IPK")"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p packages/test
+          printf '%s  %s\n' "$SHA" "$NAME" > "packages/test/$NAME.sha256"
+          python3 - "$VERSION" "$NAME" "$SHA" <<'PY'
+          import json, sys
+          version, name, sha = sys.argv[1:]
+          data = {
+              "version": version,
+              "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/" + name,
+              "sha256": sha,
+              "changelog": "FullHDGlass17 - Warder Evolution TEST: current verified development build."
+          }
+          with open("update-test.json", "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+              f.write("\n")
+          PY
+          git add -f "packages/test/$NAME" "packages/test/$NAME.sha256"
+          git add update-test.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish verified TEST package $VERSION [skip ci]"
+            git push origin HEAD:warder-modernization-work
+          fi
+
+      - name: Upload TEST artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass17-warder-evolution-TEST
+          path: |
+            packages/test/*.ipk
+            packages/test/*.sha256
+            packages/test/PAYLOAD-LIST.txt
+          if-no-files-found: error
+          retention-days: 14
+ source/control/control
           grep -Eq -- '-test' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
           test "$(cat update.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')" = "1.0.4"
           ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .

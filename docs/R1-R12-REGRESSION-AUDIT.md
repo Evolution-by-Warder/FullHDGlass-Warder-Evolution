@@ -170,3 +170,7 @@ on exact commit `f4b8d05e6fd1e76094bc44ff9b95c4c4fe6f8cc7`: **SUCCESS**.
 - artifact ZIP SHA256: `31147522776798828f40cdd8eb5d86e9f8cc2f285eca86e7cb7794bd683c0366`
 
 Receiver validation remains separate and is required before any receiver PASS is recorded.
+
+## TEST20 packaging regression guard
+
+The TEST package gate now distinguishes the skin runtime/updater identity from opkg's package revision syntax. Runtime/updater versions retain `1.0.5-testXX`; IPK control metadata appends numeric revision `-1`, so the final hyphen is reserved for opkg package revision and the visible/base version remains `1.0.5-testXX`. This is packaging-only and must not alter the receiver-verified TEST18 weather or TEST19 PIG implementation.
