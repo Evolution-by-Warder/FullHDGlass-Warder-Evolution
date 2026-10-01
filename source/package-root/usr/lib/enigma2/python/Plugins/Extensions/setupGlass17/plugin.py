@@ -847,7 +847,7 @@ def startSetup17(menuid, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		if menuid == "setup":
-			ret.append((_("Full HD Glass17 Setup"), main, "FHD_Glass17_Setup", 99))
+			ret.append((_("FullHDGlass17 - Warder Evolution"), main, "FHD_Glass17_Setup", 99))
 		elif menuid == "mainmenu":
 			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
 				ret.append((config.plugins.setupGlass17.par78.getText()+" (FHDG 17)", main17, str(config.plugins.setupGlass17.par78.value), 44))
@@ -856,7 +856,7 @@ def startSetup17(menuid, **kwargs):
 def Plugins(path, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		ret = [ PluginDescriptor(name="setupGlass17", description=_("Full HD Glass17 Setup"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
+		ret = [ PluginDescriptor(name="setupGlass17", description=_("FullHDGlass17 - Warder Evolution"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
 							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
 		if config.plugins.setupGlass17.par78.value != "n":
 			ret.append(PluginDescriptor(name=config.plugins.setupGlass17.par78.getText()+" (FHDG 17)",where = PluginDescriptor.WHERE_EXTENSIONSMENU,fnc = main17))
@@ -6991,13 +6991,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			manifest = self._warderFetchJson(manifest_url)
 			new_version = str(manifest.get("version", "")).strip()
 			package_url = str(manifest.get("package_url", "")).strip()
-			# Compatibility with manifests written before the repository moved from
-			# PiconHub-Warder to Evolution-by-Warder. Never download from the legacy
-			# namespace: normalize it to the single official package channel first.
-			legacy_prefix = "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/packages/"
-			official_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
-			if package_url.startswith(legacy_prefix):
-				package_url = official_prefix + package_url[len(legacy_prefix):]
 			sha256 = str(manifest.get("sha256", "")).strip().lower()
 			changelog = str(manifest.get("changelog", "")).strip()
 			if not new_version:
