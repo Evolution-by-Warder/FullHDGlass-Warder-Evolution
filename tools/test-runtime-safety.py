@@ -95,6 +95,13 @@ userinfo = (pkg / "usr/lib/enigma2/python/Screens/G17_UserInfo.py").read_text(en
 if "system(tta)" in userinfo or "df -h > /tmp/" in userinfo:
     fail("G17_UserInfo.py: legacy shell probe returned")
 
+enhanced_weather = (pkg / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py").read_text(encoding="utf-8")
+if "self.waitTimer.stop()" not in enhanced_weather[enhanced_weather.find("def exit(self)"):enhanced_weather.find("def blueKey")]:
+    fail("E_weather.py: wait timer cleanup missing on exit")
+download_exit = plugin[plugin.find("class Glass17Download"):plugin.find("class Glass17DownLoad")]
+if download_exit and "self.dwnTimer.stop()" not in download_exit:
+    fail("plugin.py: download-menu timer cleanup missing")
+
 weather = (pkg / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather.py").read_text(encoding="utf-8")
 if re.search(r"(?:os\.)?system\s*\(\s*['\"]rm\s+-rf", weather):
     fail("weather.py: legacy shell deletion returned")
