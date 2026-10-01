@@ -779,10 +779,11 @@ def setPathFiles(chck=True):
 		else:
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par125.value + "/hdg17_files"
 		if chck and ENA_SYM:
-			links = ["/picon", "/usr/share/enigma2/picon"]
-			if ENA_D == 'debpkg':
-				links.append("/usr/share/enigma2/picon_50x30")
-			else:
+			# Warder may manage its legacy root/removable-media convenience links,
+			# but /usr/share/enigma2 is image/package-manager owned on OpenATV.
+			# Never create, replace or retarget picon links there.
+			links = ["/picon"]
+			if ENA_D != 'debpkg':
 				links.append("/media/usb/picon")
 			for x in ("/picons/piconHD", "/picons/piconlcd"):
 				# Never replace a real image/user directory. Only manage symlinks.
