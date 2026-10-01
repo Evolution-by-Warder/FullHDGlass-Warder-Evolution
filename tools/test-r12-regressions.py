@@ -387,6 +387,17 @@ assert 'def _warderCloseProgress(self):' in PLUGIN
 assert 'self._warderCloseProgress()' in PLUGIN
 
 
+# TEST23 FullHD graphical guide: fullscreen and complete graph/PIG placement contract.
+for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
+    block = re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN).group(0)
+    assert 'position="15,15"' in block and 'size="1890,1050"' in block, screen
+    for n in range(6):
+        assert 'name="timeline%d"' % n in block, (screen, n)
+    for token in ('name="bouquetlist"', 'name="primetime"', 'name="change_bouquet"', 'name="jump"', 'name="page"'):
+        assert token in block, (screen, token)
+pig23 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
+assert 'source="session.VideoPicture" render="Pig"' in pig23
+
 # Current OpenATV EPG/RDS skin-name compatibility added in TEST22.
 for screen in ("QuickEPG", "GraphicalEPG", "GraphicalEPGPIG", "GraphicalInfoBarEPG", "RassInteractive"):
     assert re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN), screen
