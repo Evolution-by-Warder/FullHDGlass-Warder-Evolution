@@ -344,3 +344,10 @@ for token in ('_OPENMETEO_CACHE_FILE = "/etc/enigma2/fullhdglass17-openmeteo-cac
 assert 'if self.enaWeainf:\n\t\t\t\t\tself.refreshWeatherNow()' in PLUGIN
 assert 'self.clrMemTimer.startLongTimer(1)' not in PLUGIN[PLUGIN.index('def refreshWeatherNow'):PLUGIN.index('def clearMem', PLUGIN.index('def refreshWeatherNow'))]
 assert 'self.clearMem()' in PLUGIN[PLUGIN.index('def refreshWeatherNow'):PLUGIN.index('def clearMem', PLUGIN.index('def refreshWeatherNow'))]
+
+# Setup-open automatic updater contract
+assert '_warderAutoUpdateCheck' in plugin
+assert 'self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)' in plugin
+assert 'self.updatechckact(False, automatic=True)' in plugin
+assert 'if not automatic and not config.plugins.setupGlass17.par75.value and not ena:' in plugin
+assert 'self.updatechckact(True)' in plugin

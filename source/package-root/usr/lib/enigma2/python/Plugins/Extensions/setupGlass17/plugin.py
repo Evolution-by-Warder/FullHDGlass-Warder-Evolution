@@ -5915,9 +5915,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.start_rst.timeout.get().append(self.saving)
 		self.delayTimer = eTimer()
 		try:
-			self.delayTimer_conn = self.delayTimer.timeout.connect(self.updatechckact)
+			self.delayTimer_conn = self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)
 		except AttributeError:
-			self.delayTimer.timeout.get().append(self.updatechckact)
+			self.delayTimer.timeout.get().append(self._warderAutoUpdateCheck)
 		if ENA_ANIM:
 			self.animTimer = eTimer()
 			try:
@@ -7003,7 +7003,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				sha.update(chunk)
 		return sha.hexdigest().lower()
 
-	def updatechckact(self, ena=False):
+	def _warderAutoUpdateCheck(self):
+		"""Silent one-shot update check only after FullHDGlass17 setup is opened."""
+		self.updatechckact(False, automatic=True)
+
+	def updatechckact(self, ena=False, automatic=False):
 		"""Check the official Warder Evolution GitHub update manifest.
 
 		The legacy rotating donation banner is intentionally disabled. The setup
@@ -7012,7 +7016,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.delayTimer.stop()
 		self.showDonate = False
 		self.stateDonate = False
-		if not config.plugins.setupGlass17.par75.value and not ena:
+		if not automatic and not config.plugins.setupGlass17.par75.value and not ena:
 			return
 
 		manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"
