@@ -622,3 +622,5 @@ Status: **BUILD WORKFLOW READY — EXECUTION PENDING**
 - workflow preflight verifies package identity, TEST versioning, locked stable `update.json` version 1.0.4, absence of committed bytecode, Python compilation, XML parsing and lifecycle/build shell syntax; generated compile bytecode is removed before packaging.
 - workflow builds through the guarded `tools/build-test-ipk.sh`, inspects package metadata/payload, verifies the SHA256 sidecar and uploads the IPK + checksum + payload listing as a 14-day TEST artifact.
 - no stable updater metadata or `main` content was changed. Workflow execution/artifact generation is still pending; no BUILD PASS or RECEIVER PASS is claimed until the run actually succeeds.
+
+- build-format hardening follow-up: removed the `dpkg-deb` fallback so a TEST file cannot merely be named `.ipk` while inheriting host-specific Debian compression. The builder now emits the classic opkg-compatible ar member order `debian-binary`, `control.tar.gz`, `data.tar.gz`; CI opens that archive directly and verifies control metadata, lifecycle scripts, conffiles, payload listing and SHA256.
