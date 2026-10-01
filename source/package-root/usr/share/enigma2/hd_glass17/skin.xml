@@ -1803,10 +1803,10 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="scan_progress" position="78,260" size="745,21" pixmap="hd_glass17/slider/slider_main.png" />
     <widget name="servicelist" position="30,312" size="840,450" font="Prive3;33" itemHeight="40" selectionDisabled="1" scrollbarMode="showOnDemand" />
   </screen>
-  <screen name="Setup" position="center,150" size="1350,840" title="Setup">
-    <widget name="config" position="30,90" size="1290,640" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget source="key_red" render="Label" position="114,769" size="502,42" font="Prive3;33" halign="center" zPosition="2" foregroundColor="red" transparent="1" />
-    <widget source="key_green" render="Label" position="733,769" size="502,42" font="Prive3;33" halign="center" zPosition="2" foregroundColor="green" transparent="1" />
+  <screen name="Setup" position="center,90" size="1650,900" title="Setup">
+    <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="105,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="SimpleChannelSelection" position="135,150" size="1650,840" title="Channel Selection">
     <widget name="list" position="15,30" size="1620,720" serviceNameFont="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
@@ -1815,9 +1815,9 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="key_yellow" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   </screen>
-  <screen name="SkinSelector" position="center,195" size="1200,750" title="Choose your Skin">
-    <widget name="SkinList" position="15,15" size="675,680" scrollbarMode="showOnDemand" font="Prive3;33" itemHeight="40" />
-    <widget name="Preview" position="750,210" size="420,315" alphatest="on" />
+  <screen name="SkinSelector" position="center,120" size="1650,840" title="Choose your Skin">
+    <widget name="SkinList" position="30,30" size="900,750" scrollbarMode="showOnDemand" font="Prive3;34" itemHeight="45" />
+    <widget name="Preview" position="990,180" size="600,450" alphatest="on" />
   </screen>
   <screen name="Standby" position="0,0" size="1920,1080" title="Standby" flags="wfNoBorder" />
   <screen name="StartWizard" position="center,195" size="900,750" title="Welcome...">
