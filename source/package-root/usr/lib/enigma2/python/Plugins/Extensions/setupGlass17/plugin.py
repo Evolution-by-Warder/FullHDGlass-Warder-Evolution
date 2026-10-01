@@ -9029,7 +9029,7 @@ class cityFinder(Screen):
 		self.list = []
 		if what != "":
 			data = None
-			req = Request('https://weather.service.msn.com/find.aspx?outputview=search&weasearchstr=%s&culture=en-US&src=outlook' % quote(what), headers={'User-Agent': 'FullHDGlass17-Warder-Evolution/%s' % self.readVersion()})
+			req = Request('https://weather.service.msn.com/find.aspx?outputview=search&weasearchstr=%s&culture=en-US&src=outlook' % quote(what), headers={'User-Agent': 'FullHDGlass17-Warder-Evolution'})
 			try:
 				response = urlopen(req, timeout = 5)
 			except HTTPError as e:
