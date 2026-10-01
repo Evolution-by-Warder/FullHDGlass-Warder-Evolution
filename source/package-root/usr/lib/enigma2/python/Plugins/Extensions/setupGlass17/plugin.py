@@ -7025,7 +7025,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		url = info.get("url", "")
 		version = info.get("version", "")
 		expected_sha = info.get("sha256", "").lower()
-		if not url or not version or not url.startswith("https://") or not re.match(r"^[0-9a-f]{64}$", expected_sha):
+		if not url or not version or not url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/") or not re.match(r"^[0-9a-f]{64}$", expected_sha):
 			self.session.open(MessageBox, _("Error while downloading file!") + "\n\n" + _("Invalid update metadata."), MessageBox.TYPE_ERROR, 6)
 			return
 		filename = os.path.basename(url.split("?", 1)[0]) or ("fullhdglass17-warder-evolution_%s_all.ipk" % version)
