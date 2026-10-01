@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 47
-Purpose: strict r12 parity with aligned updater regression gates and automatic verified GitHub TEST publication.
+Revision: 48
+Purpose: verified r12 parity and direct GitHub TEST updater publication without CI worktree replacement.
