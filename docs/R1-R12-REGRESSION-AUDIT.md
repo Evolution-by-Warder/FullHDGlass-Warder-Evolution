@@ -132,3 +132,41 @@ Workflow run `36879533776` on exact build commit
 - artifact ZIP SHA256: `4e4d37e74993f6981c544916f5cc636d83b8c2b779aecfdbc3a7f733cb828392`
 
 Receiver validation remains required for the rendered weather text and dynamic UI behaviour.
+
+
+## Current Warder parity checkpoint
+
+The later TEST4 audit series additionally locked the following r11/r12 and OpenATV ownership
+behaviour into permanent CI regression checks:
+
+- all four PIG menu variants retain their r12 menu IDs and PIG geometry switching;
+- all eight affected menu screens remain present with one navigational Listbox;
+- Infobar service-start/event-update weather integration remains wired;
+- standard picon discovery/fallback remains available without Warder creating or retargeting
+  image-owned `/usr/share/enigma2/picon*` links;
+- a blank/corrupt legacy picon path cannot crash setupGlass17;
+- legacy spinner repair is non-destructive and only runs when the saved image spinner exists;
+- setup save/restore remains available and generated FullHDGlass state uses atomic writes;
+- upgrade/reinstall lifecycle preserves Enigma2 settings and the FullHDGlass user overlay;
+- Opkg/package-manager screens retain the r12 software-installation surface, including the Opkg
+  red and blue key sources and log widget;
+- Warder updater uses argv-safe opkg/dpkg execution, SHA256 verification, and both the requested
+  package URL and the final redirected URL must stay inside the official Warder `main/packages/`
+  channel.
+
+Latest fully green build before the PIG/Opkg parity-gate extension: workflow run `36884898392`
+on exact commit `f4b8d05e6fd1e76094bc44ff9b95c4c4fe6f8cc7`: **SUCCESS**.
+
+- r1-r12 regression gate: PASS
+- locations: SK=4208, CZ=6258, TOTAL=11010, COUNTRIES=51
+- lifecycle static semantics: PASS
+- package lifecycle guardrail: PASS
+- runtime safety guardrail: PASS
+- XML parse gate: PASS
+- TEST IPK integrity: PASS
+- package: `enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test4_all.ipk`
+- package SHA256: `3a7ebd5c22be1e8cb1b5c7b3ae1bc05cc069b948264fb4106bcbf036ea0fae19`
+- artifact ID: `11174635755`
+- artifact ZIP SHA256: `31147522776798828f40cdd8eb5d86e9f8cc2f285eca86e7cb7794bd683c0366`
+
+Receiver validation remains separate and is required before any receiver PASS is recorded.
