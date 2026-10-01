@@ -2657,10 +2657,7 @@ if IS_VU:
 		<widget source="key_yellow" render="Label" position="960,787" size="375,45" font="Regular;36" foregroundColor="yellow" backgroundColor="background" halign="left" />
 	</screen>
   <!-- StartupToStandby -->
-  <screen name="StartupToStandbyConfiguration" title="Configure StartupToStandby" position="255,180" size="1380,780">
-    <eLabel position="1,1" size="1377,3" backgroundColor="grey" zPosition="5" />
-    <widget name="config" position="15,5" size="1350,760" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" enableWrapAround="1" />
-  </screen>
+  
   <!-- RSS -->
   <screen name="RSSEntryView" position="255,180" size="1380,780" title="Simple RSS Reader">
     <eLabel position="1,1" size="1377,3" backgroundColor="grey" zPosition="5" />
