@@ -672,6 +672,10 @@
     <widget source="key_blue" render="Pixmap" pixmap="hd_glass17/buttons/key_blue.png" position="25,171" size="52,37" alphatest="on">
       <convert type="ConditionalShowHide" />
     </widget>
+    <widget name="key_left" position="25,365" size="40,40" alphatest="on" />
+    <widget name="key_right" position="1435,365" size="40,40" alphatest="on" />
+    <widget name="switchdescription" position="90,365" size="1320,40" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />
+    <widget source="summary_description" render="Label" position="0,0" size="0,0" transparent="1" />
     <eLabel position="0,405" zPosition="10" size="1500,3" backgroundColor="white" transparent="0" />
     <widget source="streams" render="Listbox" scrollbarMode="showOnDemand" position="25,425" size="1450,390" zPosition="3" transparent="1">
       <convert type="TemplatedMultiContent">
