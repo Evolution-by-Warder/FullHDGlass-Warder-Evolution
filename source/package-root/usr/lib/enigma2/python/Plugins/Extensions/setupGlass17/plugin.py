@@ -1930,6 +1930,9 @@ def readcolorStyle(num):
 	return color
 ##########################################################################################################################
 def setMenuPyo(what="new17"):
+	# Modern OpenATV owns Screens/Menu.py. Do not swap image Python modules at runtime.
+	if isATV:
+		return False
 	whatOld = "orig17"
 	if what == "orig17":
 		whatOld = "new17"
@@ -2170,6 +2173,10 @@ class thumbList2(MenuList):
 			self.l.setItemHeight(97)						
 ##########################################################################################################################
 def setEncodingUser(direction=True):
+	# encoding.conf belongs to the image on OpenATV; keep the legacy option inert.
+	if isATV:
+		setCFGoff(59)
+		return False
 	state = False
 	if direction:
 		if fileExists(ENC_U):      		
@@ -2634,17 +2641,13 @@ class AutoStartChck17():
 		msg = ""
 		ver = '1.0.0'
 		if XCPU != "mipsel":
-			for target in ("/usr/bin/btrGen17", "/usr/bin/hdd_temp_hdg17"):
-				try:
-					os.remove(target)
-				except OSError:
-					pass
+			# Select architecture helpers without deleting package-owned variants.
 			try:
 				shutil.copy2("/usr/bin/btrGen17-%s" % XCPU, "/usr/bin/btrGen17")
 				shutil.copy2("/usr/bin/hdd_temp_hdg17-%s" % XCPU, "/usr/bin/hdd_temp_hdg17")
+				msg += _("Set binaries") + "\n"
 			except OSError:
 				pass
-			msg += _("Set binaries") + "\n"
 		ver, x = readHWtype()
 		isOk = ver != "Dream Multimedia"
 		# Seed the generated FullHDGlass17 overlay only on first use.
