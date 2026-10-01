@@ -599,11 +599,30 @@ class selectCity(Screen):
 	def callbackNewCity(self, ret):
 		if ret != "x":
 			try:
-				f = open(self.fileName,"a")
-				f.write(ret+"\n")		
-				f.close()
-			except: pass				
-			self.mainFnc()				
+				parts = str(ret).split("|")
+				country = parts[4].strip() if len(parts) >= 6 else ""
+				with open(self.fileName, "r") as f:
+					lines = [x.rstrip("\\n") for x in f.readlines() if x.strip() and x.strip() != "None"]
+				if country:
+					header = "# " + country
+					if header in lines:
+						insert_at = lines.index(header) + 1
+						while insert_at < len(lines) and not lines[insert_at].startswith("#"):
+							insert_at += 1
+					else:
+						if lines:
+							lines.append("")
+						lines.append(header)
+						insert_at = len(lines)
+					if ret not in lines:
+						lines.insert(insert_at, ret)
+				elif ret not in lines:
+					lines.append(ret)
+				with open(self.fileName, "w") as f:
+					f.write("\\n".join(lines) + "\\n")
+			except Exception as e:
+				Writelog("city insert: %s" % e)
+			self.mainFnc()
 				
 class addSelectCity(Screen):
 	skin = """<screen position="center,center" size="1500,920" title="Select city">
