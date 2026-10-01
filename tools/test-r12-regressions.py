@@ -143,3 +143,29 @@ assert "target != os.path.realpath(legacy)" in spinner
 assert "if not os.path.isdir(original):" in spinner
 assert spinner.find("if not os.path.isdir(original):") < spinner.find("os.unlink(spinner)")
 assert "os.unlink(spinner)" in spinner
+
+
+# OpenATV ownership boundary: legacy controls that would rewrite image-owned
+# ChannelSelection.py or encoding.conf must not be exposed on modern OpenATV.
+assert "if not isATV and os.path.isfile(CHANSEL_FILE):" in PLUGIN
+assert 'if not isATV and not os.path.exists(\'/etc/dpkg\'):' in PLUGIN
+for fn, guard in (
+    ("def chnlSelPatch(", "if isATV:"),
+    ("def setEncodingUser(", "if isATV:"),
+    ("def setMenuPyo(", "if isATV:"),
+):
+    block = PLUGIN[PLUGIN.find(fn):PLUGIN.find("################################################################", PLUGIN.find(fn) + 20)]
+    assert guard in block, fn
+
+# Warder updater trust boundary and r12 installation-result behaviour.
+for token in (
+    'manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"',
+    'package_url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/")',
+    're.match(r"^[0-9a-f]{64}$", sha256)',
+    "actual_sha != expected_sha",
+    'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
+    "def _warderInstallFinished(",
+    'MessageBox.TYPE_ERROR, 15',
+    'restartbox.setTitle(_("Restart GUI now?"))',
+):
+    assert token in PLUGIN, token
