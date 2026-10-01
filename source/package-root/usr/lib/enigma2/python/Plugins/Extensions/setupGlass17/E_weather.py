@@ -450,6 +450,10 @@ class selectCity(Screen):
 		Screen.__init__(self, session)
 		self.list = []
 		self.fileName = "/etc/ewea_city_Code.txt"
+		self.cityLevel = "countries"
+		self.activeCountry = None
+		self.countryOrder = []
+		self.countryCities = {}
 		self["key_green"] = Label(_("Select City"))
 		self["key_yellow"] = Label(_("Add City")+" (TXT)")
 		self["key_red"] = Label(_("Delete City"))
@@ -469,7 +473,12 @@ class selectCity(Screen):
 		})    
 		self.onLayoutFinish.append(self.mainFnc)
 
-	def exit(self): 
+	def exit(self):
+		if self.cityLevel == "cities":
+			self.cityLevel = "countries"
+			self.activeCountry = None
+			self.mainFnc()
+			return
 		self.close('x')
 		
 	def setWindowTitle(self):
@@ -477,14 +486,22 @@ class selectCity(Screen):
 		
 	def select(self):
 		selection = self['list'].getCurrent()
-		if selection and selection[1] not in ("x", "__country__"):
+		if not selection or selection[1] == "x":
+			return
+		if self.cityLevel == "countries":
+			if selection[1].startswith("__country__|"):
+				self.activeCountry = selection[1].split("|", 1)[1]
+				self.cityLevel = "cities"
+				self.mainFnc()
+			return
+		if selection[1] != "__country__":
 			value = selection[1]
 			if value.startswith("q|"):
 				try:
 					p = value.split("|")
 					city, cc, country = p[1], p[2], p[4]
 					url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({'name': city, 'count': 10, 'language': 'en', 'countryCode': cc, 'format': 'json'})
-					req = Request(url, headers={'User-Agent': 'FullHDGlass17-Warder-Evolution/1.0.5-test5'})
+					req = Request(url, headers={'User-Agent': 'FullHDGlass17-Warder-Evolution/1.0.5-test6'})
 					r = urlopen(req, timeout=12)
 					try: raw = r.read()
 					finally:
@@ -505,15 +522,14 @@ class selectCity(Screen):
 					Writelog("bundled city resolve: %s" % e); return
 			self.close(str(value))
 		
-	def mainFnc(self,w="",d=False):
-		self.setWindowTitle()
-		self.list = []
+	def _loadCitySections(self):
+		self.countryOrder = []
+		self.countryCities = {}
 		allLines = []
-		cityNo = 0
 		try:
 			with open(self.fileName, "r") as f:
 				lines = [x.strip() for x in f.readlines() if x.strip() and x.strip() != "None"]
-			# Upgrade an older flat q| list in place to the r12 country-section layout.
+			# Upgrade old flat location lists without changing current user selections.
 			if lines and not any(x.startswith("#") for x in lines):
 				groups = {}
 				for value in lines:
@@ -527,45 +543,51 @@ class selectCity(Screen):
 				for country in order:
 					lines.append("# " + country)
 					lines.extend(sorted(groups[country], key=lambda v: v.split("|")[1].lower()))
+			country = None
 			for value in lines:
 				if value.startswith("#"):
 					country = value[1:].strip()
-					if country:
-						if self.list:
-							self.list.append(("", "__country__"))
-						self.list.append((country.upper(), "__country__"))
-						cityNo = 0
+					if country and country not in self.countryCities:
+						self.countryOrder.append(country)
+						self.countryCities[country] = []
 					allLines.append(value)
 					continue
 				valid = ('|' in value and len(value.split('|')) >= 6 and value.split('|')[0] in ('c','q')) or (',' in value and len(value.split(',')) == 4)
-				if not valid:
-					continue
-				if d and value == w:
-					continue
-				allLines.append(value)
+				if valid and country:
+					self.countryCities[country].append(value)
+					allLines.append(value)
+		except Exception as e:
+			Writelog("city list: %s" % e)
+		return allLines
+
+	def mainFnc(self,w="",d=False):
+		self.setWindowTitle()
+		self.list = []
+		allLines = self._loadCitySections()
+		if d and w:
+			allLines = [value for value in allLines if value != w]
+			try:
+				with open(self.fileName, "w") as f:
+					f.write(("\\n".join(allLines) + "\\n") if allLines else "None\\n")
+			except Exception as e:
+				Writelog("city delete: %s" % e)
+			allLines = self._loadCitySections()
+		if self.cityLevel == "countries":
+			for country in self.countryOrder:
+				self.list.append((country, "__country__|" + country))
+			self.setTitle(_("Select City") + ": " + _("Select country"))
+		elif self.cityLevel == "cities" and self.activeCountry:
+			cityNo = 0
+			for value in self.countryCities.get(self.activeCountry, []):
+				cityNo += 1
 				if '|' in value:
 					p = value.split('|')
 					label = p[1] + (", " + p[5] if p[5] else "")
 				else:
-					p = value.split(','); label = p[2]
-				cityNo += 1
+					p = value.split(',')
+					label = p[2]
 				self.list.append((str(cityNo) + ".    " + label, value))
-			cleanLines = []
-			for i, value in enumerate(allLines):
-				if value.startswith("#"):
-					hasCity = False
-					for nxt in allLines[i + 1:]:
-						if nxt.startswith("#"):
-							break
-						if nxt.strip():
-							hasCity = True; break
-					if not hasCity:
-						continue
-				cleanLines.append(value)
-			with open(self.fileName, "w") as f:
-				f.write(("\n".join(cleanLines) + "\n") if cleanLines else "None\n")
-		except Exception as e:
-			Writelog("city list: %s" % e)
+			self.setTitle(_("Select City") + ": " + self.activeCountry)
 		if not self.list:
 			self.list = [(_('None city founded'), 'x')]
 		self['list'].list = self.list

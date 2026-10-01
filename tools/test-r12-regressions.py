@@ -24,6 +24,12 @@ country_codes = {x.split("|")[3] for x in rows if len(x.split("|")) > 3 and x.sp
 assert len(country_codes) == 51, len(country_codes)
 assert {"SK", "CZ", "AT", "DE", "PL", "HU", "GB", "VA"}.issubset(country_codes)
 assert "om|Rišňovce|" in CITY
+classic_loader = PLUGIN[PLUGIN.index("def _loadLocalCities(self):"):PLUGIN.index("def _onlineCitySearch(self", PLUGIN.index("def _loadLocalCities(self):"))]
+assert 'if currentName == "SK": currentName = "Slovakia"' in classic_loader
+assert 'elif currentName == "CZ": currentName = "Czechia"' in classic_loader
+assert 'self.countryNames[country] = currentName' in classic_loader
+assert 'currentName = "SK"' not in classic_loader
+assert 'currentName = "CZ"' not in classic_loader
 
 # Warder must expose the complete r12 country/city surface in Enhanced Weather too.
 # Derive it deterministically from the authoritative r12 Classic database.
@@ -41,19 +47,34 @@ with tempfile.TemporaryDirectory() as tmp:
     assert {"SK", "CZ", "AT", "DE", "PL", "HU", "GB", "VA"}.issubset(ewea_codes)
     assert all(len(x.split("|")) == 6 for x in ewea_rows)
     assert all(x.split("|")[0] == "q" for x in ewea_rows)
+    ewea_headings = [x[2:].strip() for x in ewea_bytes.decode("utf-8").splitlines() if x.startswith("# ")]
+    assert len(ewea_headings) == 51, len(ewea_headings)
+    assert ewea_headings[:2] == ["Slovakia", "Czechia"], ewea_headings[:2]
+    assert ewea_headings[-1] == "Vatican City"
 
 POSTINST = (ROOT / "source/control/postinst").read_text(encoding="utf-8")
 BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
 assert 'copy_default_if_missing /etc/ewea_city_Code-17.txt /etc/ewea_city_Code.txt' in POSTINST
 assert 'generate-ewea-city.py' in BUILD_TEST
 assert 'self.fileName = "/etc/ewea_city_Code.txt"' in EWEATHER
-# r12 Enhanced Weather city selector layout: country heading, cities below it,
-# blank separator, next country; country must not be repeated on every city row.
-for token in ('value.startswith("#")', 'self.list.append((country.upper(), "__country__"))',
-              'self.list.append(("", "__country__"))', 'cityNo = 0',
-              'label = p[1] + (", " + p[5] if p[5] else "")',
-              'not any(x.startswith("#") for x in lines)'):
+# Warder Enhanced Weather selector is genuinely country-first: the first screen
+# contains only the 51 country rows; OK enters one country's cities; Back returns.
+for token in ('self.cityLevel = "countries"', 'self.activeCountry = None',
+              'self.countryOrder = []', 'self.countryCities = {}',
+              'if self.cityLevel == "countries":',
+              'self.list.append((country, "__country__|" + country))',
+              'self.cityLevel = "cities"', 'self.mainFnc()',
+              'if self.cityLevel == "cities":',
+              'self.cityLevel = "countries"',
+              'for value in self.countryCities.get(self.activeCountry, [])',
+              'label = p[1] + (", " + p[5] if p[5] else "")'):
     assert token in EWEATHER, token
+select_start = EWEATHER.index("def select(self):")
+main_start = EWEATHER.index("def mainFnc(self", select_start)
+selector = EWEATHER[select_start:EWEATHER.index("def blueKey(self):", main_start)]
+assert 'selection[1].startswith("__country__|")' in selector
+assert 'self.close(str(value))' in selector
+assert 'self.list.append((country.upper(), "__country__"))' not in selector
 assert '# Slovakia' in ewea_bytes.decode("utf-8")
 assert '# Czechia' in ewea_bytes.decode("utf-8")
 assert '# Albania' in ewea_bytes.decode("utf-8")

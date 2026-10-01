@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test5
-Revision: 51
-Purpose: immediate Infobar weather on skin startup and city change, city-keyed persistent cache, direct GitHub TEST updates.
+Candidate: 1.0.5-test6
+Revision: 52
+Purpose: Classic full country names and true country-first Enhanced Weather selector with permanent r12 regression gates.
