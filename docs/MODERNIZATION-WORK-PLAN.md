@@ -385,3 +385,19 @@ Storage/system results:
 - added a direct Warder FHD `SDswap` screen for the current runtime red/green/yellow NAND/SD switching actions.
 - DevicesPanelSummary is a front-panel summary using SetupSummary behavior and does not require a new full-screen layout.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## Plugin ownership + global static gate — 2026-10-01
+
+Status: **STATIC GATE PARTIAL PASS — RECEIVER TEST REQUIRED**
+
+Resolved the remaining known same-target plugin precedence conflicts and ran a broader skin.xml static inventory.
+
+Results:
+- both historical `FilterListScreen` definitions belong to the VideoDB skin block, but the later 1920x1080 definition is the coherent member of the full-screen VideoDB suite and uses the packaged `hd_glass17/videodb/*` assets. The obsolete 800x550 definition was removed.
+- the same precedence issue existed for `PlaylistItemSetup`: the old narrow legacy definition was removed and the coherent 1920x1080 VideoDB definition retained.
+- the old empty self-closing `SubtitleDisplay` placeholder was removed; the current functional full-screen definition with the runtime `subtitles` widget remains authoritative.
+- after cleanup, remaining duplicate screen names are intentional front-panel display variants using `id="1"` and `id="2"`.
+- asset gate: all 137 unique skin.xml pixmap/backgroundPixmap/selectionPixmap references under `hd_glass17/` resolve to files present in the branch tree.
+- the static scan also found 11 historical `forgroundColor` misspellings. These are queued for targeted ownership/context correction rather than blind global replacement.
+- this gate does not constitute XML parser/runtime or receiver acceptance; no RECEIVER PASS is claimed.
