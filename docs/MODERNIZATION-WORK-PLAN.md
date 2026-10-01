@@ -717,22 +717,25 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 
 ## Final runtime/CI convergence batch — 2026-10-01
 
-Status: **STATIC HARDENING PASS — BUILD/RECEIVER TEST STILL REQUIRED**
+Status: **BUILD PASS — RECEIVER TEST STILL REQUIRED**
 
 - broad high-risk runtime scan of the primary setupGlass17/weather/system-info/menu modules found no remaining active shell execution and no active cleartext HTTP endpoint; the only `http://` match in the focused set is a historical comment.
 - enhanced Open-Meteo weather now stops its pending wait timer before screen exit; the download menu likewise stops an active download-loop timer before dropping timer references.
 - TEST CI checkout is pinned to `${{ github.sha }}` so a manually dispatched build cannot silently package a later moving branch HEAD.
 - native IPK builder now writes numeric root ownership explicitly, uses `ar rcs`, and produces a portable SHA256 sidecar containing only the package basename.
 - builder and verifier both require exact pairing between runtime `1.0.5-test1` and opkg control suffix `warder1.0.5-test1`; verifier checks the portable checksum from the package directory.
-- no RECEIVER PASS or BUILD PASS is claimed until the workflow produces and verifies the actual IPK artifact.
+- CI BUILD PASS confirmed by GitHub Actions run `36866572183` at exact branch commit `a544379e7b87f8c2b3c4e63023780342f82cf72c`; RECEIVER PASS remains intentionally unclaimed.
 
 
 ## Release-consistency blocker closure — 2026-10-01
 
-Status: **STATIC RELEASE GATES READY — ACTUAL CI BUILD NOT YET RUN**
+Status: **CI BUILD PASS — RECEIVER TEST STILL REQUIRED**
 
 - fixed Warder updater version ordering so TEST prereleases sort below their matching stable release: `1.0.4 < 1.0.5-test1 < 1.0.5-test2 < 1.0.5 < 1.0.6`; `v1.0.5` equals `1.0.5` and malformed versions fall back safely.
 - added `tools/test-version-order.py` and wired it into TEST CI.
 - rebuilt `tools/verify-test-ipk.sh` cleanly after the release-consistency audit detected a malformed/duplicated verifier body; checksum, package identity, control/runtime version pairing, conffile, lifecycle scripts, payload essentials and bytecode exclusion are checked once in deterministic order.
 - rechecked TEST builder/workflow and stable `update.json`; stable remains `1.0.4` with its locked SHA256 and no TEST advertisement.
-- current HEAD has no workflow run yet; therefore BUILD PASS remains intentionally unclaimed until the manual TEST workflow is dispatched on `warder-modernization-work`.
+- GitHub Actions run `36866572183` completed successfully on `warder-modernization-work` at exact commit `a544379e7b87f8c2b3c4e63023780342f82cf72c`: static preflight PASS, TEST IPK build PASS, integrity verifier PASS (`1.0.5-test1`), and artifact upload PASS.
+- verified TEST IPK: `enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test1_all.ipk`, SHA256 `0332484843ffc6ddcf049a4b3b6cc7e63c6bbe00cc4892686f373e2119def0b4`.
+- uploaded CI artifact `fullhdglass17-warder-evolution-TEST` has artifact ID `11163528358`, archive SHA256 `78243f3199078408441e12951f6cecd0f557612fcc0279ac3baef1624c1ef4c0`, and contains the IPK, portable checksum sidecar and payload list.
+- stable `update.json` remains `1.0.4` and the successful TEST build is not advertised as stable. RECEIVER PASS remains pending real Enigma2 installation/runtime validation.
