@@ -814,16 +814,16 @@ self.instance.move(ePoint((1920-wsizex)/2, (1080-wsizey)/2))
     <widget name="arrowup" pixmap="hd_glass17/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on" />
     <widget name="arrowup2" pixmap="hd_glass17/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on" />
   </screen>
-  <screen name="DefaultWizard" position="center,193" size="900,753" title="Welcome...">
-    <widget name="wizard" pixmap="hd_glass17/wizard.png" position="90,30" zPosition="10" size="165,261" transparent="1" alphatest="on" />
-    <widget name="text" position="345,75" size="510,405" font="Prive3;34" />
-    <ePixmap pixmap="hd_glass17/buttons/button_red.png" position="60,334" size="22,24" alphatest="on" />
-    <widget name="languagetext" position="105,330" size="180,45" font="Prive3;30" />
-    <widget source="list" render="Listbox" position="30,450" size="840,300" scrollbarMode="showOnDemand">
+  <screen name="DefaultWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder">
+    <widget name="wizard" pixmap="hd_glass17/wizard.png" position="480,75" zPosition="10" size="165,261" transparent="1" alphatest="on" />
+    <widget name="text" position="690,75" size="900,360" font="Prive3;34" />
+    <ePixmap pixmap="hd_glass17/buttons/button_red.png" position="480,337" size="22,24" alphatest="on" />
+    <widget name="languagetext" position="515,330" size="210,45" font="Prive3;30" />
+    <widget source="list" render="Listbox" position="690,465" size="900,390" scrollbarMode="showOnDemand" enableWrapAround="1">
       <convert type="StringList" />
     </widget>
-    <widget name="config" zPosition="1" position="30,450" font="Prive3;33" itemHeight="40" size="840,320" scrollbarMode="showOnDemand" />
-    <widget name="rc" pixmap="hd_glass17/rc.png" position="900,753" zPosition="10" size="231,706" transparent="1" alphatest="on" />
+    <widget name="config" zPosition="1" position="690,465" font="Prive3;34" itemHeight="45" size="900,390" scrollbarMode="showOnDemand" transparent="1" enableWrapAround="1" />
+    <widget name="rc" pixmap="hd_glass17/rc.png" position="165,75" zPosition="10" size="231,750" transparent="1" alphatest="on" />
     <widget name="arrowdown" pixmap="hd_glass17/arrowdown.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on" />
     <widget name="arrowup" pixmap="hd_glass17/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on" />
     <widget name="arrowup2" pixmap="hd_glass17/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on" />
