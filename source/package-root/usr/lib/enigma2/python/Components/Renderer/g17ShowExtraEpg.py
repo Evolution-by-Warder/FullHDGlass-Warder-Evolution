@@ -67,7 +67,7 @@ class g17ShowExtraEpg(Renderer):
 		self.testSizeLabel.setVAlign(eLabel.alignTop)
 		self.testSizeLabel.setHAlign(eLabel.alignLeft)
 		self.testSizeLabel.setNoWrap(1)
-		tmp = int(fontRenderClass.getInstance().getLineHeight(self.used_font) or self.used_font.pointSize/6 + self.used_font.pointSize)
+		tmp = int(fontRenderClass.getInstance().getLineHeight(self.used_font) or self.used_font.pointSize // 6 + self.used_font.pointSize)
 		self.testSizeLabel.setText("WQq")
 		self.lineHeight = self.testSizeLabel.calculateSize().height()
 		if tmp > self.lineHeight:
@@ -76,7 +76,7 @@ class g17ShowExtraEpg(Renderer):
 		self.timeWidth = self.testSizeLabel.calculateSize().width()+10
 		self.testSizeLabel.setText("")
 		self.testSizeLabel.setFont(self.desc_font)
-		tmp = int(fontRenderClass.getInstance().getLineHeight(self.desc_font) or self.desc_font.pointSize/6 + self.desc_font.pointSize)
+		tmp = int(fontRenderClass.getInstance().getLineHeight(self.desc_font) or self.desc_font.pointSize // 6 + self.desc_font.pointSize)
 		try:
 			self.testSizeLabel.setText("\x8e"+"yg")
 		except:
@@ -136,9 +136,9 @@ class g17ShowExtraEpg(Renderer):
 											if x == 0:
 												pos = int(epgList[x][1]) + int(epgList[x][2]) - int(time())
 												if pos > 0:
-													tmp = " +%d min" % (pos / 60)
+													tmp = " +%d min" % (pos // 60)
 											else:
-												tmp = " %d min" % (int(epgList[x][2]) / 60)
+												tmp = " %d min" % (int(epgList[x][2]) // 60)
 										if tmp != "":
 											self.testSizeLabel.setText(tmp)
 											h = self.testSizeLabel.calculateSize().width() + 5
