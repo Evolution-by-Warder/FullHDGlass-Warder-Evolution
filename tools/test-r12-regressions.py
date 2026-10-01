@@ -275,8 +275,11 @@ for token in (
     "def refreshWeatherNow(self):",
     "def _setWeatherCityChoices(selected=None):",
     "def _refreshLiveWeather():",
-    "def _selectWeatherCity(self):",
-    "def _weatherCitySelected(self, value):",
+    "def openWeatherCityChoice(self):",
+    "def weatherCityChoiceSelected(self, answer):",
+    "self.session.openWithCallback(self.weatherCityChoiceSelected, ChoiceBox",
+    "self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value",
+    "if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:",
     "G17_EXTRAINFO_INSTANCE.refreshWeatherNow()",
 ):
     assert token in PLUGIN, token
