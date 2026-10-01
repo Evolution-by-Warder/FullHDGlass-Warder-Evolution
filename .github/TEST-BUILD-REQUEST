@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test7
-Revision: 54
+Revision: 55
 Purpose: Fix real receiver updater eConsoleAppContainer argv semantics; preserve opkg/dpkg executable as argv[0] and gate it permanently.
