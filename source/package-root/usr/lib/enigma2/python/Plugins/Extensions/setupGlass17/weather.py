@@ -390,7 +390,7 @@ class WeatherScreen(Screen):
 						req = "wealocations="+req
 					else:						
 						req = "weasearchstr="+req
-					req = "http://weather.service.msn.com/data.aspx?src=outlook&weadegreetype=%s&culture=en-us&%s" % (self.units.upper(), req)
+					req = "https://weather.service.msn.com/data.aspx?src=outlook&weadegreetype=%s&culture=en-us&%s" % (self.units.upper(), req)
 				else:
 					apkey = "&appid=" + config.plugins.setupGlass17.par228.value
 					req = "q=%s" % quote(config.plugins.setupGlass17.par13.getText())
