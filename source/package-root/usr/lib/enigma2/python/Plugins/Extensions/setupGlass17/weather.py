@@ -67,7 +67,10 @@ try:
 			_ = gettext.Catalog('weather', PLUGINPATH + 'locale', weather_language).gettext
 except: pass
 if os.path.isfile(PLUGINPATH + "wea.log"):
-	os.system("rm -rf "+PLUGINPATH + "wea.log")
+	try:
+		os.remove(PLUGINPATH + "wea.log")
+	except OSError:
+		pass
 ENA_ANIM = False
 try:
 	if config.plugins.setupGlass17.par56.value:
@@ -371,7 +374,10 @@ class WeatherScreen(Screen):
 			else:
 				return UNKNOWN_STATE
 		def download_xml():
-			os.system("rm -rf %s" % XML_FILE)
+			try:
+				os.remove(XML_FILE)
+			except OSError:
+				pass
 			er = ""
 			if netChck():
 				self.units = chckUnit()
