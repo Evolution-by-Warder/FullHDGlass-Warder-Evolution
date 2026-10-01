@@ -51,10 +51,19 @@ jobs:
           set -euo pipefail
           IPK="$(find packages/test -maxdepth 1 -type f -name '*_all.ipk' -print -quit)"
           test -n "$IPK"
-          dpkg-deb --info "$IPK"
-          dpkg-deb --contents "$IPK" > packages/test/PAYLOAD-LIST.txt
-          dpkg-deb --field "$IPK" Package | grep -Fx 'enigma2-skin-fullhdglass17'
-          dpkg-deb --field "$IPK" Version | grep -F -- '-test'
+          test "$(ar t "$IPK" | tr '\\n' ' ')" = "debian-binary control.tar.gz data.tar.gz "
+          TMP="$(mktemp -d)"
+          trap 'rm -rf "$TMP"' EXIT
+          (cd "$TMP" && ar x "$GITHUB_WORKSPACE/$IPK")
+          test "$(cat "$TMP/debian-binary")" = "2.0"
+          tar -tzf "$TMP/data.tar.gz" > packages/test/PAYLOAD-LIST.txt
+          tar -xOzf "$TMP/control.tar.gz" ./control > "$TMP/control"
+          grep -Fx 'Package: enigma2-skin-fullhdglass17' "$TMP/control"
+          grep -E '^Version: .*[-.]test' "$TMP/control"
+          tar -tzf "$TMP/control.tar.gz" | grep -Fx './conffiles'
+          tar -tzf "$TMP/control.tar.gz" | grep -Fx './preinst'
+          tar -tzf "$TMP/control.tar.gz" | grep -Fx './postinst'
+          tar -tzf "$TMP/control.tar.gz" | grep -Fx './postrm'
           sha256sum -c "$IPK.sha256"
 
       - name: Upload TEST artifact
