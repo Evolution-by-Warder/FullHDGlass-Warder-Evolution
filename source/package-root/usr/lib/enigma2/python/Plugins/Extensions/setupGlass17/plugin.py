@@ -1970,8 +1970,12 @@ def setMenuPyo(what="new17"):
 	return True
 ##########################################################################################################################
 def chckPath(path):
-	path = path.strip()
-	if path[len(path)-1] == "/":
+	# A blank/corrupt legacy picon base path must fail safely instead of
+	# indexing an empty string and crashing setupGlass17.
+	path = (path or "").strip()
+	if not path or path == "/":
+		return False
+	if path.endswith("/"):
 		path = path[:-1]
 	allpicons = ['poster','picon_BQT','picWeaInf','animIconWeather','piconProv','piconProv_220x132','piconSat','piconSat_220x132','piconCam','menuIconsBig','picon_50x30','picon','picon_220x132','picon_400x240','piconOled','g17_setup_pict','more_icons','extraScreens17','menuIcons','weatherIcons','ZZPicon']	
 	msg = True
