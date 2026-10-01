@@ -22,6 +22,9 @@ import time as time1
 import re, os
 import json
 import hashlib
+import shutil
+import stat
+import zipfile
 from urllib.request import Request, urlopen
 ENACI = False
 try:
@@ -129,7 +132,7 @@ def Writelog(txt):
 	log = PLUGINPATH+"g17.txt"
 	if os.path.isfile(log):
 		if os.path.getsize(log) > 1000000:
-			system("rm -rf "+log)
+			try:\n\t\t\t\tos.remove(log)\n\t\t\texcept OSError:\n\t\t\t\tpass
 	try:
 		f = open(log,"a")
 		f.write("%s\n" % str(txt))
@@ -734,32 +737,38 @@ def autoTypeHdd():
 config.plugins.setupGlass17.par182.value = autoTypeHdd()
 ####################################################
 def setPathFiles(chck=True):
-	def makelnk(i):
-		system("ln -s %s/picon %s" % (config.plugins.setupGlass17.par39.value, i))
+	def makelnk(link_path):
+		target = os.path.join(config.plugins.setupGlass17.par39.value, "picon")
+		try:
+			if not os.path.lexists(link_path):
+				os.symlink(target, link_path)
+		except OSError:
+			pass
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		if config.plugins.setupGlass17.par125.value == "0":
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par124.value + "hdg17_files"
 		else:
 			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par125.value + "/hdg17_files"
 		if chck and ENA_SYM:
-			chck = ["/picon","/usr/share/enigma2/picon"]
+			links = ["/picon", "/usr/share/enigma2/picon"]
 			if ENA_D == 'debpkg':
-				chck.append("/usr/share/enigma2/picon_50x30")		
+				links.append("/usr/share/enigma2/picon_50x30")
 			else:
-				chck.append("/media/usb/picon")
-			for x in ("/picons/piconHD","/picons/piconlcd"):
-				if os.path.isdir(x):
-					system("rm -rf %s" % x)
-					chck.append(x)
-				elif os.path.islink(x):
-					chck.append(x)
-			for x in chck:
-				if os.path.islink(x):	
+				links.append("/media/usb/picon")
+			for x in ("/picons/piconHD", "/picons/piconlcd"):
+				# Never replace a real image/user directory. Only manage symlinks.
+				if os.path.islink(x):
+					links.append(x)
+			for x in links:
+				if os.path.islink(x):
 					a = os.readlink(x)
-					if a.find(config.plugins.setupGlass17.par39.value) == -1 and (a.find("/hdg17_files") != -1 or a.find("/hdg18_files") != -1):	
-						system("rm -rf "+x)
+					if config.plugins.setupGlass17.par39.value not in a and ("/hdg17_files" in a or "/hdg18_files" in a):
+						try:
+							os.unlink(x)
+						except OSError:
+							continue
 						makelnk(x)
-				else:
+				elif not os.path.lexists(x):
 					makelnk(x)
 setPathFiles()
 ENAFINDER = False
@@ -7851,13 +7860,31 @@ class downloadMenu(Screen):
 		msg = "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)
 		self.dwnLoop(_("ERROR")+": "+str(msg))
 
+	def _safeExtractZip(self, archive, destination):
+		"""Extract a ZIP without path traversal or archive-created symlinks."""
+		dest = os.path.realpath(destination)
+		with zipfile.ZipFile(archive, "r") as zf:
+			for info in zf.infolist():
+				name = info.filename.replace("\\", "/")
+				if not name or name.startswith("/") or name.startswith("../") or "/../" in ("/" + name):
+					raise ValueError("unsafe ZIP path")
+				mode = (info.external_attr >> 16) & 0xFFFF
+				if stat.S_ISLNK(mode):
+					raise ValueError("ZIP symlink entry rejected")
+				target = os.path.realpath(os.path.join(dest, name))
+				if target != dest and not target.startswith(dest + os.sep):
+					raise ValueError("ZIP path traversal rejected")
+			for info in zf.infolist():
+				zf.extract(info, dest)
+
 	def rmTmp(self):
-		system("rm -rf /tmp/more_icons/*")
-		system("rmdir /tmp/more_icons")
+		shutil.rmtree("/tmp/more_icons", ignore_errors=True)
 
 	def rmTmp2(self,a,b):
-		system('rm -rf %s%s/*' % (a,b))
-		system('rmdir %s%s' % (a,b))
+		path = os.path.realpath(os.path.join(a, b))
+		base = os.path.realpath(a)
+		if path != base and path.startswith(base + os.sep):
+			shutil.rmtree(path, ignore_errors=True)
 				
 	def downloadPicons(self, what):
 		state = False
@@ -7894,18 +7921,31 @@ class downloadMenu(Screen):
 			root = str(asset.get("root", what[:-4]))
 			if os.path.exists(self.zzz + root):
 				self.rmTmp2(self.zzz, root)
-			system("unzip %s%s -d %s" % (self.zzz, what, self.zzz[:-1]))
-			system("rm -rf %s%s" % (self.zzz, what))
-			if os.path.isfile(self.zzz + what) or not os.path.exists((self.zzz + root)):
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				system("rm -rf %s%s" % (self.zzz, what))
+			try:
+				self._safeExtractZip(target, self.zzz[:-1])
+			except Exception:
+				try:
+					os.remove(target)
+				except OSError:
+					pass
 				if os.path.exists(self.zzz + root):
 					self.rmTmp2(self.zzz, root)
+				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
+				return
+			try:
+				os.remove(target)
+			except OSError:
+				pass
+			if not os.path.exists(self.zzz + root):
+				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
 				return
 			if "7z" in self.type_download:
 				# Original archive extracts to /tmp/7z/7z_g.
-				system("cp -f /tmp/7z/7z_g /usr/bin/7z_g")
-				system("chmod 755 /usr/bin/7z_g")
+				try:
+					shutil.copy2("/tmp/7z/7z_g", "/usr/bin/7z_g")
+					os.chmod("/usr/bin/7z_g", 0o755)
+				except OSError:
+					pass
 				self.rmTmp2(self.zzz, root)
 				numPict = 0
 				if os.path.isfile("/usr/bin/7z_g"):
