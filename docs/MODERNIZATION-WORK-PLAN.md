@@ -348,3 +348,20 @@ Changes and decisions:
 - current CCcamInfo and OSCamInfo were identified as a significant direct-coverage gap. Added Warder FHD layouts for CCcam main/ECM/text/submenu/server views and OSCam capabilities/log/entitlement-detail views from their exact runtime widget contracts.
 - additional complex CCcam/OSCam list screens remain queued for contract-specific templates rather than receiving blind generic layouts.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV CAM management completion batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Completed current OpenATV CCcamInfo / OSCamInfo / SoftcamSetup runtime reconciliation.
+
+Results:
+- completed direct Warder FHD coverage for CCcam Share View, Remote Receiver, Extended Shares, Config Switcher and Menu Configuration screens in addition to the previously added main/ECM/info/submenu/server screens.
+- completed OSCam direct coverage with the main `OSCamInfo` dashboard, entitlements, entitlement details, capabilities and log screens.
+- modernized the existing Warder `SoftcamSetup` to a 1500x840 FHD layout while preserving the current OpenATV `config` and live ECM `info` widgets.
+- the Softcam action row now exposes the current runtime red/green base Setup actions, yellow Restart action and blue Info action; Info opens the native OSCamInfo or CCcamInfo path selected by current OpenATV.
+- CardserverSetup remains a Setup-derived screen; AutocamSetup and StreamRelaySetup remain on the common Setup contract with their current yellow/blue dynamic actions.
+- static presence audit confirms all 16 CAM screen names reviewed in this batch resolve in Warder skin.xml.
+- global duplicate-name audit reports pre-existing duplicate screen names elsewhere in the historical skin/plugin sections; no new CAM duplicate was introduced. These legacy duplicates require a separate precedence/ownership audit before removal.
+- no item in this batch is marked RECEIVER PASS.
