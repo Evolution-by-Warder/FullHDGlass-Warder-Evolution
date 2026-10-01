@@ -1985,52 +1985,32 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget source="status" render="Label" position="60,190" size="1230,90" font="Prive3;30" halign="center" valign="center" />
     <ePixmap position="450,310" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
   </screen>
-		<screen name="PluginDetails" position="center,center" size="900,660" title="Plugin details" >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget source="author" render="Label" position="15,75" size="750,37" zPosition="10" font="Regular;31" transparent="1" />
-			<widget name="statuspic" position="825,60" size="72,72" alphatest="on"/>
-			<widget name="divpic" position="0,120" size="900,3" alphatest="on"/>
-			<widget name="detailtext" position="15,135" size="405,495" zPosition="10" font="Regular;31" transparent="1" halign="left" valign="top"/>
-			<widget name="screenshot" position="435,135" size="450,495" alphatest="on"/>
-		</screen>  
-  		<screen name="PluginManagerHelp" position="center,center" size="840,675" title="Plugin manager help" >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="list" render="Listbox" position="7,75" size="825,525" scrollbarMode="showOnDemand" selectionDisabled="1">
-				<convert type="TemplatedMultiContent">
-					{"template": [
-							MultiContentEntryText(pos = (75, 0), size = (810, 39), font=0, flags = RT_HALIGN_LEFT, text = 0), # index 0 is the name
-							MultiContentEntryText(pos = (75, 40), size = (810, 43), font=1, flags = RT_HALIGN_LEFT, text = 1), # index 1 is the state
-							MultiContentEntryPixmapAlphaTest(pos = (0, 1), size = (72, 72), png = 2), # index 2 is the status pixmap
-							MultiContentEntryPixmapAlphaTest(pos = (0, 72), size = (825, 3), png = 3), # index 3 is the div pixmap
-						],
-					"fonts": [gFont("Regular", 36),gFont("Regular", 33)],
-					"itemHeight": 75
-					}
-				</convert>
-			</widget>
-			<ePixmap pixmap="skin_default/div-h.png" position="0,606" zPosition="10" size="840,3" transparent="1" alphatest="on" />
-			<widget source="status" render="Label" position="7,612" zPosition="10" size="825,66" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
-		</screen>
-		<screen name="PluginManagerInfo" position="center,center" size="840,675" title="Plugin manager activity information" >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget source="list" render="Listbox" position="7,75" size="825,525" scrollbarMode="showOnDemand" selectionDisabled="1">
-				<convert type="TemplatedMultiContent">
-					{"template": [
-							MultiContentEntryText(pos = (75, 0), size = (810, 39), font=0, flags = RT_HALIGN_LEFT, text = 0), # index 0 is the name
-							MultiContentEntryText(pos = (75, 40), size = (810, 43), font=1, flags = RT_HALIGN_LEFT, text = 1), # index 1 is the state
-							MultiContentEntryPixmapAlphaTest(pos = (0, 1), size = (72, 72), png = 2), # index 2 is the status pixmap
-							MultiContentEntryPixmapAlphaTest(pos = (0, 72), size = (825, 3), png = 3), # index 3 is the div pixmap
-						],
-					"fonts": [gFont("Regular", 36),gFont("Regular", 33)],
-					"itemHeight": 75
-					}
-				</convert>
-			</widget>
-			<ePixmap pixmap="skin_default/div-h.png" position="0,606" zPosition="10" size="840,3" transparent="1" alphatest="on" />
-			<widget source="status" render="Label" position="7,612" zPosition="10" size="825,66" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
-		</screen>
+		<screen name="PluginDetails" position="center,120" size="1500,840" title="Plugin details">
+    <widget source="key_red" render="Label" position="45,30" zPosition="1" size="330,55" font="Regular;31" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,30" zPosition="1" size="330,55" font="Regular;31" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="author" render="Label" position="45,105" size="1260,45" zPosition="10" font="Regular;32" transparent="1" />
+    <widget name="statuspic" position="1380,90" size="72,72" alphatest="on" />
+    <widget name="divpic" position="45,165" size="1410,3" alphatest="on" />
+    <widget name="detailtext" position="45,195" size="690,585" zPosition="10" font="Regular;31" transparent="1" halign="left" valign="top" />
+    <widget name="screenshot" position="765,195" size="690,585" alphatest="on" />
+  </screen>  
+  		<screen name="PluginManagerHelp" position="center,120" size="1500,840" title="Plugin manager help">
+    <widget source="key_red" render="Label" position="45,20" zPosition="1" size="330,55" font="Regular;31" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="list" render="Listbox" position="75,95" size="1350,600" scrollbarMode="showOnDemand" selectionDisabled="1">
+      <convert type="TemplatedMultiContent">{"template":[MultiContentEntryText(pos=(90,0),size=(1200,39),font=0,flags=RT_HALIGN_LEFT,text=0),MultiContentEntryText(pos=(90,40),size=(1200,43),font=1,flags=RT_HALIGN_LEFT,text=1),MultiContentEntryPixmapAlphaTest(pos=(0,1),size=(72,72),png=2),MultiContentEntryPixmapAlphaTest(pos=(0,81),size=(1320,3),png=3)],"fonts":[gFont("Regular",36),gFont("Regular",33)],"itemHeight":84}</convert>
+    </widget>
+    <ePixmap pixmap="skin_default/div-h.png" position="75,715" zPosition="10" size="1350,3" transparent="1" alphatest="on" />
+    <widget source="status" render="Label" position="75,730" zPosition="10" size="1350,75" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
+  </screen>
+		<screen name="PluginManagerInfo" position="center,120" size="1500,840" title="Plugin manager activity information">
+    <widget source="key_red" render="Label" position="45,20" zPosition="1" size="330,55" font="Regular;31" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,20" zPosition="1" size="330,55" font="Regular;31" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="list" render="Listbox" position="75,95" size="1350,600" scrollbarMode="showOnDemand" selectionDisabled="1">
+      <convert type="TemplatedMultiContent">{"template":[MultiContentEntryText(pos=(90,0),size=(1200,39),font=0,flags=RT_HALIGN_LEFT,text=0),MultiContentEntryText(pos=(90,40),size=(1200,43),font=1,flags=RT_HALIGN_LEFT,text=1),MultiContentEntryPixmapAlphaTest(pos=(0,1),size=(72,72),png=2),MultiContentEntryPixmapAlphaTest(pos=(0,81),size=(1320,3),png=3)],"fonts":[gFont("Regular",36),gFont("Regular",33)],"itemHeight":84}</convert>
+    </widget>
+    <ePixmap pixmap="skin_default/div-h.png" position="75,715" zPosition="10" size="1350,3" transparent="1" alphatest="on" />
+    <widget source="status" render="Label" position="75,730" zPosition="10" size="1350,75" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
+  </screen>
   <screen name="SoftwareManagerInfo" position="center,120" size="1500,840" title="SoftwareManager information">
     <widget source="key_red" render="Label" position="45,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="405,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
