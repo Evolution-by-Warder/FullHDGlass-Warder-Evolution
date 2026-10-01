@@ -1858,10 +1858,7 @@ def writeStyleCfg(scrNum, num):
 		if not found:
 			allLines += str(scrNum)+"-"+str(num)+"\n"
 		f.close()
-		f = open(SCREENSPATH + "g17Screens.cfg","w")
-		f.write(allLines)
-		f.close()
-		state = True
+		state = _atomicWriteText(SCREENSPATH + "g17Screens.cfg", allLines)
 	except: pass
 	return state
 ##########################################################################################################################
@@ -7498,9 +7495,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							i[1].save()
 							break
 			if allLines != "":
-				r = open(config.plugins.setupGlass17.par144.value+"hdg17.conf","w")
-				r.write(allLines)
-				r.close()
+				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
 		configfile.save()
 		config.plugins.setupGlass17.par43.value = True
@@ -9030,11 +9025,9 @@ class cityFinder(Screen):
 		
 	def writeMCC(self):
 		try:
-			f = open("/etc/my_city_Code.txt", 'w')
-			for x in self.citylist:
-				f.writelines(x)
-			f.close()
-		except: pass    
+			_atomicWriteText("/etc/my_city_Code.txt", "".join(self.citylist))
+		except Exception:
+			pass
 		self.generateData()  
                    		
 	def findCityAnswer(self, name):
@@ -9128,12 +9121,13 @@ class cityFinder(Screen):
 		except: pass
 		return err
 
-	def appMCC(self, tmp):    			
+	def appMCC(self, tmp):
 		try:
-			f = open("/etc/my_city_Code.txt","a")
-			f.write("%s\n" % str(tmp))
-			f.close()
-		except IOError: pass
+			path = "/etc/my_city_Code.txt"
+			old = open(path, "r").read() if os.path.exists(path) else ""
+			_atomicWriteText(path, old + "%s\\n" % str(tmp))
+		except (IOError, OSError):
+			pass
 		f = open("/etc/my_city_Code.txt","r").read()
 		if f.find(tmp) != -1: 
 			self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
