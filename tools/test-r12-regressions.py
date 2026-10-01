@@ -119,10 +119,13 @@ for variant in ('"with PIG":"3"', '"simply PIG":"10"', '"PIG2":"11"', '"PIG4":"1
 
 
 # Picon/runtime path parity and Warder ownership safety.
-# r12 supports the standard Enigma2 picon path, while Warder may link it to
-# its private hdg17_files store only when the image/user path does not exist.
+# Keep legacy convenience links outside /usr/share/enigma2, but never create
+# or retarget image/package-manager-owned picon paths on OpenATV.
 setpath = PLUGIN[PLUGIN.find("def setPathFiles("):PLUGIN.find("ENAFINDER =")]
-assert 'links = ["/picon", "/usr/share/enigma2/picon"]' in setpath
+assert 'links = ["/picon"]' in setpath
+assert 'links.append("/media/usb/picon")' in setpath
+assert '"/usr/share/enigma2/picon"' not in setpath
+assert '"/usr/share/enigma2/picon_50x30"' not in setpath
 assert "elif not os.path.lexists(x):" in setpath
 assert "if os.path.islink(x):" in setpath
 assert "os.unlink(x)" in setpath
