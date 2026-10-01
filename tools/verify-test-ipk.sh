@@ -27,7 +27,7 @@ grep -Fx 'Package: enigma2-skin-fullhdglass17' "$TMP/control"
 grep -Eq '^Version: 9\.50\+warder.*-test[0-9A-Za-z.-]*$' "$TMP/control"
 CONTROL_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' "$TMP/control" | head -n1)"
 case "$CONTROL_VERSION" in
-  *"warder$EXPECTED_RUNTIME") ;;
+  "$EXPECTED_RUNTIME") ;;
   *) echo "Control/runtime TEST version mismatch: $CONTROL_VERSION vs $EXPECTED_RUNTIME" >&2; exit 4 ;;
 esac
 
