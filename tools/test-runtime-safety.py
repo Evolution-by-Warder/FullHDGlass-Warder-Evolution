@@ -61,6 +61,10 @@ if "if isATV:" not in fifo_guard:
     fail("plugin.py: OpenATV ServiceScan.py ownership guard missing")
 if "def _atomicWriteText(" not in plugin or 'open(SKINXML,"w")' in plugin or "open(SKINXML, 'w')" in plugin:
     fail("plugin.py: generated skin.xml writes must remain atomic")
+if 'open(CHANSEL_FILE,"w")' in plugin or "open(CHANSEL_FILE, 'w')" in plugin:
+    fail("plugin.py: legacy ChannelSelection compatibility write must remain atomic")
+if 'cmd = "btrGen17 ' in plugin or "self.container.execute(cmd)" in plugin:
+    fail("plugin.py: bitrate helper execution regressed to shell-string form")
 for direct_write in (
     'open(SCREENSPATH + "g17Screens.cfg","w")',
     'open(config.plugins.setupGlass17.par144.value+"hdg17.conf","w")',
