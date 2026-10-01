@@ -58,6 +58,9 @@ assert '# Slovakia' in ewea_bytes.decode("utf-8")
 assert '# Czechia' in ewea_bytes.decode("utf-8")
 assert '# Albania' in ewea_bytes.decode("utf-8")
 assert '# Vatican City' in ewea_bytes.decode("utf-8")
+# Manual Enhanced Weather additions must be inserted into the matching country section.
+for token in ('country = parts[4].strip()', 'header = "# " + country', 'lines.insert(insert_at, ret)', 'Writelog("city insert: %s" % e)'):
+    assert token in EWEATHER, token
 
 assert "unicodedata.normalize" in PLUGIN
 assert "_citySearchKey" in PLUGIN
