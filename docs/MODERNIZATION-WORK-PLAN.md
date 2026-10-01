@@ -315,3 +315,20 @@ Results:
 - `HideVBILine` and `AutoVideoMode` have no skin widgets and do not require decorative definitions.
 - SecondInfoBar requires separate receiver-facing visual review before changing its established FullHDGlass behavior; no blind replacement was made.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV wizard / location / logs / standby / network helpers batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current Console, HarddiskSetup, LocationBox, LogManager, NetworkSetup, ServiceScan, Standby, Wizard, fallback-tuner and SoftcamSetup screen contracts.
+
+Results:
+- added direct current-name aliases for `PlaybackLocationBox` and `TimeshiftLocationBox` using the established Warder LocationBox geometry.
+- added direct current-name aliases `WizardStart`, `WizardLanguage` and `WizardVideo` over the existing FullHDGlass StartWizard/VideoWizard layouts, preserving the established wizard visual character while resolving current OpenATV preferred names.
+- added dedicated Warder FHD `LogManager` and `LogManagerViewLog` layouts from their current runtime widgets.
+- NetworkAdapterSetup, NetworkWiFiSetup, DNSSettings, SetupFallbacktuner, CardserverSetup, AutocamSetup and StreamRelaySetup are current Setup derivatives and continue through the common Warder Setup contract.
+- NetworkInformation derives from the already-covered InformationNetwork family.
+- Standby2 intentionally selects `Standby`; TryQuitMainloop is a MessageBox specialization or zero-size runtime helper and was not duplicated.
+- existing Console, HarddiskSelection, ServiceScan, WizardInstall and SoftcamSetup coverage was retained.
+- no item in this batch is marked RECEIVER PASS.
