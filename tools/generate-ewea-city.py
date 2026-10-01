@@ -12,7 +12,12 @@ def generate(source):
     first = True
     for row in rows:
         if row.startswith("#"):
-            country = row[1:].strip()
+            header = row[1:].strip()
+            # Ignore descriptive file headers; only country section headers
+            # are followed by om| rows and/or are ISO section labels.
+            if header.startswith("FullHDGlass17 ") or header.startswith("Format:"):
+                continue
+            country = {"SK": "Slovakia", "CZ": "Czechia"}.get(header, header)
             if country:
                 if not first:
                     output.append("")
