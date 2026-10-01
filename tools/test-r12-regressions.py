@@ -25,9 +25,8 @@ assert len(country_codes) == 51, len(country_codes)
 assert {"SK", "CZ", "AT", "DE", "PL", "HU", "GB", "VA"}.issubset(country_codes)
 assert "om|Rišňovce|" in CITY
 
-# r12 Enhanced Weather used its own q|... SK/CZ city database. Keep that
-# exact data surface, but derive it deterministically from the authoritative
-# Classic Weather database so the two sources cannot drift.
+# Warder must expose the complete r12 country/city surface in Enhanced Weather too.
+# Derive it deterministically from the authoritative r12 Classic database.
 generator = ROOT / "tools/generate-ewea-city.py"
 with tempfile.TemporaryDirectory() as tmp:
     generated = Path(tmp) / "ewea_city_Code-17.txt"
@@ -37,6 +36,9 @@ with tempfile.TemporaryDirectory() as tmp:
     assert len([x for x in ewea_rows if x.split("|")[2] == "SK"]) == 4208
     assert len([x for x in ewea_rows if x.split("|")[2] == "CZ"]) == 6258
     assert "q|Rišňovce|SK||Slovakia|Nitra" in ewea_rows
+    ewea_codes = {x.split("|")[2] for x in ewea_rows}
+    assert len(ewea_codes) == 51, len(ewea_codes)
+    assert {"SK", "CZ", "AT", "DE", "PL", "HU", "GB", "VA"}.issubset(ewea_codes)
     assert all(len(x.split("|")) == 6 for x in ewea_rows)
     assert all(x.split("|")[0] == "q" for x in ewea_rows)
 
@@ -54,6 +56,8 @@ for token in ('value.startswith("#")', 'self.list.append((country.upper(), "__co
     assert token in EWEATHER, token
 assert '# Slovakia' in ewea_bytes.decode("utf-8")
 assert '# Czechia' in ewea_bytes.decode("utf-8")
+assert '# Albania' in ewea_bytes.decode("utf-8")
+assert '# Vatican City' in ewea_bytes.decode("utf-8")
 
 assert "unicodedata.normalize" in PLUGIN
 assert "_citySearchKey" in PLUGIN
@@ -62,9 +66,10 @@ assert "weather.service.msn.com/find.aspx" not in PLUGIN
 assert 'country|' in PLUGIN
 assert '/etc/city_Code-17.txt' in PLUGIN
 assert "Open-Meteo city search" in PLUGIN
-assert '"group|SK"' in PLUGIN and '"Slovensko"' in PLUGIN
-assert '"group|CZ"' in PLUGIN and '"Česko"' in PLUGIN
-assert '"group|EUROPE"' in PLUGIN and '"Krajiny Európy"' in PLUGIN
+assert '"group|EUROPE"' not in PLUGIN
+assert '"Krajiny Európy"' not in PLUGIN
+assert 'item = ["country|" + country]' in PLUGIN
+assert 'for country in seen:' in PLUGIN
 # r4 Open-Meteo behaviour preserved by the cumulative r12 reference.
 assert "def openMeteo(" in WEAUTILS
 for token in (
