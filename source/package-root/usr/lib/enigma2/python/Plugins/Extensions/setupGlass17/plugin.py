@@ -20,6 +20,7 @@ from Components.NimManager import nimmanager
 from Components.FileList import FileList
 import time as time1
 import re, os
+import unicodedata
 import json
 import hashlib
 import shutil
@@ -615,28 +616,50 @@ config.plugins.setupGlass17.par101 = ConfigYesNo(default = True) #
 ENA_MSN = chMSN()
 ECM_LABELS, CLRDATA, CLRTP = readECMlabels()
        
-def getCitiesCode():
+def _cityLine(line):
+	line = (line or "").strip()
+	if not line or line.startswith("#"):
+		return None
+	if line.startswith("om|"):
+		p = line.split("|")
+		if len(p) >= 4 and p[1] and p[2] and p[3]:
+			display = p[1]
+			query = "|".join((p + ["", ""])[2:6])
+			return ("om|" + query, display, line)
+	tmp = line.split("-")
 	def ch(w):
 		return w.isdigit() or w.startswith("wc:") or w.startswith("fr:")
-	choicelist = [] 
+	if len(tmp) == 2 and ch(tmp[1]):
+		return ("c" + tmp[1], tmp[0], line)
+	if len(tmp) == 3 and ch(tmp[1]) and tmp[2].lower() in ("c", "f"):
+		return (tmp[2].lower() + tmp[1], tmp[0], line)
+	return None
+
+def _citySearchKey(value):
+	try:
+		value = unicodedata.normalize("NFKD", str(value))
+		value = "".join(ch for ch in value if not unicodedata.combining(ch))
+	except Exception:
+		value = str(value)
+	return value.casefold().strip()
+
+def getCitiesCode():
+	choicelist = []
 	fileName = "/etc/my_city_Code.txt"
 	if not os.path.isfile(fileName):
 		fileName = "/etc/city_Code.txt"
 	try:
-		f = open(fileName,"r")
-		for i in f.readlines():
-			tmp = i.strip().split("-")
-			if len(tmp) == 2 and ch(tmp[1]):
-				if not ISP38:
-					tmp[0] = tmp[0].encode("utf-8")
-				choicelist.append(("c"+tmp[1], tmp[0]))
-			elif len(tmp) == 3 and ch(tmp[1]) and tmp[2].lower() in ["c","f"]:
-				if not ISP38:
-					tmp[0] = tmp[0].encode("utf-8")
-				choicelist.append((tmp[2].lower()+tmp[1], tmp[0]))
-		f.close()
-	except: pass
-	if len(choicelist) == 0:
+		with open(fileName, "r") as f:
+			for line in f:
+				x = _cityLine(line)
+				if x:
+					name = x[1]
+					if not ISP38:
+						name = name.encode("utf-8")
+					choicelist.append((x[0], name))
+	except Exception:
+		pass
+	if not choicelist:
 		choicelist.append(("None", "None"))
 	return choicelist
 
@@ -9000,12 +9023,24 @@ class cityFinder(Screen):
 		
 	def save(self):
 		if self.findC:
-			selection = self['list'].getCurrent()
+			selection = self["list"].getCurrent()
 			if selection and str(selection[0]) != "*":
-				self.appMCC(str(selection[0]))			
-		else:	    
-			self.session.openWithCallback(self.addNewLine, InputBox, title=self.allLabels[5], text="                                                 ", maxSize=50, type=Input.TEXT)
-		
+				value = str(selection[0])
+				if value.startswith("country|"):
+					country = value.split("|", 1)[1]
+					self.list = []
+					for cc, display, raw in self._loadLocalCities():
+						if cc == country:
+							item = [raw]
+							item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display))
+							self.list.append(item)
+					self["list"].l.setList(self.list)
+					self.setWindowTitle(": " + country)
+				else:
+					self.appMCC(value)
+		else:
+			self.session.openWithCallback(self.addNewLine, InputBox, title=self.allLabels[5], text="                                                 ", maxSize=120, type=Input.TEXT)
+
 	def editMCC(self):
 		if self.findC:
 			self["key_yellow"].setText(self.allLabels[1])   
@@ -9045,75 +9080,105 @@ class cityFinder(Screen):
 			return		
 		self.generateData(name.strip())
 
-	def generateData(self, what=""):
-		tmp = ""
-		er = None
-		self.list = []
-		if what != "":
-			data = None
-			req = Request('https://weather.service.msn.com/find.aspx?outputview=search&weasearchstr=%s&culture=en-US&src=outlook' % quote(what), headers={'User-Agent': 'FullHDGlass17-Warder-Evolution'})
-			try:
-				response = urlopen(req, timeout = 5)
-			except HTTPError as e:
-				er = _('Error') + ": " + str(e)
-			except URLError as e:
-				er = _('Error') + ": " + str(e)
-			except: er = _('Error') + ": " + _("Website data reading timeout")
+	def _loadLocalCities(self):
+		cities = []
+		try:
+			with open("/etc/city_Code.txt", "r") as f:
+				for raw in f:
+					x = _cityLine(raw)
+					if not x:
+						continue
+					country = ""
+					if raw.startswith("om|"):
+						p = raw.strip().split("|")
+						country = p[3].upper() if len(p) > 3 else ""
+					cities.append((country, x[1], x[2]))
+		except Exception as e:
+			Writelog("city database: %s" % e)
+		return cities
+
+	def _onlineCitySearch(self, what):
+		result = []
+		try:
+			if ISP38:
+				from urllib.parse import urlencode
 			else:
-				data = response.read()
-				response.close()
-			if data is not None:
-				if ISP38:
-					try:				
-						data = data.decode("ascii", "ignore")
-					except: 
-						data = data.decode("utf-8", "ignore")
-				try:
-					root = fromstring(data)
-					for childs in root:
-						if childs.tag == 'weather':
-							if ISP38:
-								name = childs.attrib.get('weatherlocationname')
-								wc = childs.attrib.get('weatherlocationcode')
-							else:
-								name = childs.attrib.get('weatherlocationname').encode('utf-8', 'ignore')
-								wc = childs.attrib.get('weatherlocationcode').encode('utf-8', 'ignore')
-							if "wc:" in wc or "fr:" in wc:
-								item = ["%s-%s" % (what,wc)]
-								item.append(MultiContentEntryText(pos=(0, 0), size=(790, 45), backcolor_sel=int('0x11000000', 16), backcolor =int('0x31000000', 16)))
-								item.append(MultiContentEntryText(pos=(0, 3), size=(790, 37), font=2, color_sel=int('0x00d100', 16), color=int('0xff3300', 16), text=name))
-								self.list.append(item)
-				except: pass
-			self.setWindowTitle(": "+what)
+				from urllib import urlencode
+			url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({"name": what, "count": 20, "language": WLANG[:2], "format": "json"})
+			raw = urlopen(Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5"}), timeout=8).read()
+			if not isinstance(raw, str):
+				raw = raw.decode("utf-8", "replace")
+			for loc in (json.loads(raw).get("results") or []):
+				name = loc.get("name") or ""
+				cc = (loc.get("country_code") or "").upper()
+				admin = loc.get("admin1") or ""
+				postal = ""
+				pcs = loc.get("postcodes") or []
+				if isinstance(pcs, list) and pcs:
+					postal = str(pcs[0])
+				if name and cc:
+					value = "om|%s|%s|%s|%s|%s" % (name, name, cc, admin, postal)
+					label = name + (", " + admin if admin else "") + (", " + cc if cc else "")
+					result.append((label, value))
+		except Exception as e:
+			Writelog("Open-Meteo city search: %s" % e)
+		return result
+
+	def generateData(self, what=""):
+		self.list = []
+		local = self._loadLocalCities()
+		needle = _citySearchKey(what)
+		if needle:
+			for country, display, value in local:
+				if needle in _citySearchKey(display):
+					item = [value]
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display + ((" [" + country + "]") if country else "")))
+					self.list.append(item)
+			if not self.list:
+				for label, value in self._onlineCitySearch(what):
+					item = [value]
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
+					self.list.append(item)
+			self.setWindowTitle(": " + what)
 		else:
-			try:
-				self.citylist = []
-				self.list2 = []
-				flines = open("/etc/my_city_Code.txt", 'r')
-				for line in flines:
+			countries = sorted(set(x[0] for x in local if x[0]))
+			if countries:
+				for country in countries:
+					item = ["country|" + country]
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0xffcc00",16), color=int("0xffcc00",16), text=country))
+					self.list.append(item)
+			else:
+				for country, display, value in local:
+					item = [value]
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display))
+					self.list.append(item)
+		self.citylist = []
+		self.list2 = []
+		try:
+			with open("/etc/my_city_Code.txt", "r") as f:
+				for line in f:
 					self.citylist.append(line)
+					x = _cityLine(line)
+					display = x[1] if x else line.strip()
 					item = [line]
-					item.append(MultiContentEntryText(pos=(0, 0), size=(620, 37), font=2, color_sel=int('0x00d100', 16), color=int('0xffcc00', 16), text=line))
+					item.append(MultiContentEntryText(pos=(0, 0), size=(620, 37), font=2, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=display))
 					self.list2.append(item)
-				flines.close()				
-			except: pass
-			if len(self.list2) == 0:
-				item = ["*"]
-				item.append(MultiContentEntryText(pos=(0, 0), size=(620, 33), font=0, color_sel=int('0xff3300', 16), text=("***  "+_("None city detected")+" !!!  ***")))
-				self.list2.append(item)
-			self['myCity'].l.setList(self.list2)
-			if self.findC:
-				self['myCity'].selectionEnabled(0)
-		tmp = None
-		if len(self.list) == 0:
-			txt = "***  "+ _("None city detected") +" !!!  ***"
-			if er is not None:
-				txt = er		
+		except Exception:
+			pass
+		if not self.list2:
 			item = ["*"]
-			item.append(MultiContentEntryText(pos=(15, 0), size=(600, 33), font=0, color_sel=int('0xff3300', 16), text=txt))
+			item.append(MultiContentEntryText(pos=(0, 0), size=(620, 33), font=0, color_sel=int("0xff3300",16), text=("***  " + _("None city detected") + " !!!  ***")))
+			self.list2.append(item)
+		self["myCity"].l.setList(self.list2)
+		if self.findC:
+			self["myCity"].selectionEnabled(0)
+		if not self.list:
+			item = ["*"]
+			item.append(MultiContentEntryText(pos=(15, 0), size=(760, 33), font=0, color_sel=int("0xff3300",16), text=("***  " + _("None city detected") + " !!!  ***")))
 			self.list.append(item)
-		self['list'].l.setList(self.list)
-		self['list'].l.setItemHeight(45)
+		self["list"].l.setList(self.list)
+		self["list"].l.setItemHeight(45)
+
 
 	def addNewLine(self, tmp):
 		if tmp is not None and tmp != "":
@@ -9123,28 +9188,30 @@ class cityFinder(Screen):
 				self.appMCC(tmp)       
             			
 	def chckLine(self, tmp):
-		err = True
 		try:
-			tmp = (' '.join((tmp).strip().split()) + '\n').strip().split("-")
-			if (len(tmp) == 2 and (tmp[1].isdigit() or tmp[1].startswith("wc:") or tmp[1].startswith("fr:"))) or (len(tmp) == 3 and (tmp[1].isdigit() or tmp[1].startswith("wc:") or tmp[1].startswith("fr:")) and tmp[2].lower() in ["c","f"]):
-				err = False    
-		except: pass
-		return err
+			return _cityLine(" ".join(str(tmp).strip().split())) is None
+		except Exception:
+			return True
 
 	def appMCC(self, tmp):
 		path = "/etc/my_city_Code.txt"
 		written = False
 		try:
 			old = open(path, "r").read() if os.path.exists(path) else ""
-			written = _atomicWriteText(path, old + "%s\n" % str(tmp))
+			lines = [x.strip() for x in old.splitlines() if x.strip()]
+			if str(tmp).strip() not in lines:
+				written = _atomicWriteText(path, old + ("" if not old or old.endswith("\n") else "\n") + "%s\n" % str(tmp).strip())
+			else:
+				written = True
 		except (IOError, OSError):
 			pass
 		f = open(path, "r").read() if os.path.exists(path) else ""
-		if written and f.find(tmp) != -1: 
+		if written and f.find(str(tmp).strip()) != -1:
 			self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
 			self.generateData()
-		else:           
-			self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)					
+		else:
+			self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)
+
       
 class dirBrowser(Screen):      
          
