@@ -346,8 +346,8 @@ assert 'self.clrMemTimer.startLongTimer(1)' not in PLUGIN[PLUGIN.index('def refr
 assert 'self.clearMem()' in PLUGIN[PLUGIN.index('def refreshWeatherNow'):PLUGIN.index('def clearMem', PLUGIN.index('def refreshWeatherNow'))]
 
 # Setup-open automatic updater contract
-assert '_warderAutoUpdateCheck' in plugin
-assert 'self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)' in plugin
-assert 'self.updatechckact(False, automatic=True)' in plugin
-assert 'if not automatic and not config.plugins.setupGlass17.par75.value and not ena:' in plugin
-assert 'self.updatechckact(True)' in plugin
+assert '_warderAutoUpdateCheck' in PLUGIN
+assert 'self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)' in PLUGIN
+assert 'self.updatechckact(False, automatic=True)' in PLUGIN
+assert 'if not automatic and not config.plugins.setupGlass17.par75.value and not ena:' in PLUGIN
+assert 'self.updatechckact(True)' in PLUGIN
