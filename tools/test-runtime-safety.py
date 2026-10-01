@@ -86,10 +86,12 @@ if plugin.count(official_packages) < 2:
 if "unsafe manifest redirect" not in plugin or "unsafe package redirect" not in plugin:
     fail("plugin.py: updater HTTPS redirect guards missing")
 download_guard = plugin[plugin.find("def _warderDownload"):plugin.find("def updatechckact")]
-if 'official_package_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"' not in download_guard:
-    fail("plugin.py: updater download channel prefix missing")
-if "response.geturl()).startswith(official_package_prefix)" not in download_guard:
-    fail("plugin.py: updater package redirect escaped official channel")
+stable_pkg = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
+test_pkg = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/"
+if "official_package_prefixes = (" not in download_guard or stable_pkg not in download_guard or test_pkg not in download_guard:
+    fail("plugin.py: updater stable/TEST download channel prefixes missing")
+if "any(str(response.geturl()).startswith(x) for x in official_package_prefixes)" not in download_guard:
+    fail("plugin.py: updater package redirect escaped official channels")
 if '"/usr/bin/7z_g"' in plugin or "'/usr/bin/7z_g'" in plugin:
     fail("plugin.py: downloaded 7zip helper escaped FullHDGlass runtime ownership")
 if 'SEVENZIP = os.path.join(PLUGINPATH, "bin", "7z_g")' not in plugin:
@@ -124,11 +126,11 @@ if errors:
 print("Runtime safety guardrail: PASS")
 
 
-# Warder updater must keep one official authority while remaining compatible
-# with manifests created before the repository namespace move.
-assert 'official_manifest = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"' in plugin
-assert 'if str(url) != official_manifest:' in plugin
-assert 'if final_url != official_manifest:' in plugin
+# Warder updater must keep stable and TEST authorities explicit and isolated.
+assert '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"' in plugin
+assert '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json"' in plugin
+assert 'if str(url) not in official_manifests:' in plugin
+assert 'if final_url not in official_manifests:' in plugin
 assert "PiconHub-Warder/FullHDGlass-Warder-Evolution" not in plugin
 assert 'FullHDGlass17 - Warder Evolution' in plugin
-assert 'response.geturl()).startswith(official_package_prefix)' in plugin
+assert 'any(str(response.geturl()).startswith(x) for x in official_package_prefixes)' in plugin
