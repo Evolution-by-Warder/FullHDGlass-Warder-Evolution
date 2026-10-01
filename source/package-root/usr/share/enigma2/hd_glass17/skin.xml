@@ -7778,4 +7778,89 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <screen name="VideoMode" position="center,150" size="900,180" flags="wfNoBorder" backgroundColor="transparent" zPosition="10">
     <widget name="videomode" position="0,0" size="900,180" font="Prive3;42" halign="center" valign="center" transparent="1" />
   </screen>
+<screen name="PlaybackLocationBox" position="135,105" size="1650,870" title="Select Location">
+    <widget name="text" position="30,20" size="1590,45" font="Prive3;34" />
+    <widget name="fileheading" position="30,80" size="900,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="target" position="30,125" size="1200,45" font="Prive3;34" valign="center" />
+    <widget name="targetfreespace" position="1245,125" size="375,45" font="Prive3;30" halign="right" valign="center" />
+    <widget name="filelist" position="30,180" size="1590,350" scrollbarMode="showOnDemand" />
+    <widget name="bookmarkheading" position="30,545" size="1590,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="bookmarklist" position="30,590" size="1590,150" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget name="quickselect" position="30,745" size="1590,40" font="Prive3;30" halign="center" />
+    <widget source="key_red" render="Label" position="30,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="840,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1245,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+<screen name="TimeshiftLocationBox" position="135,105" size="1650,870" title="Select Location">
+    <widget name="text" position="30,20" size="1590,45" font="Prive3;34" />
+    <widget name="fileheading" position="30,80" size="900,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="target" position="30,125" size="1200,45" font="Prive3;34" valign="center" />
+    <widget name="targetfreespace" position="1245,125" size="375,45" font="Prive3;30" halign="right" valign="center" />
+    <widget name="filelist" position="30,180" size="1590,350" scrollbarMode="showOnDemand" />
+    <widget name="bookmarkheading" position="30,545" size="1590,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="bookmarklist" position="30,590" size="1590,150" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget name="quickselect" position="30,745" size="1590,40" font="Prive3;30" halign="center" />
+    <widget source="key_red" render="Label" position="30,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="840,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1245,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+<screen name="WizardStart" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" >
+		<widget name="text" position="649,75" size="930,405" font="Regular;34" />
+		<widget source="list" render="Listbox" position="720,450" size="675,300" scrollbarMode="showOnDemand" enableWrapAround="1">
+			<convert type="StringList" />
+		</widget>
+		<widget name="config" position="495,450" zPosition="10" font="Prive3;33" itemHeight="40" size="750,280" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
+		<widget name="wizard" pixmap="/usr/share/enigma2/skin_default/wizard.png" position="480,75" zPosition="10" size="165,261" transparent="1" alphatest="on"/>
+		<ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/button_red.png" position="480,337" zPosition="0" size="22,24" transparent="1" alphatest="on" />
+		<widget name="languagetext" position="502,337" size="142,45" font="Regular;27" />
+		<widget name="rc" pixmaps="/usr/share/enigma2/hd_glass17/rc.png,hd_glass17/rcold.png" position="165,75" zPosition="10" size="231,750" transparent="1" alphatest="on"/>
+		<widget name="arrowdown" pixmap="/usr/share/enigma2/skin_default/arrowdown.png" position="0,0" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowdown2" pixmap="/usr/share/enigma2/skin_default/arrowdown.png" position="0,0" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowup" pixmap="/usr/share/enigma2/skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowup2" pixmap="/usr/share/enigma2/skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+	</screen>
+<screen name="WizardLanguage" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" >
+		<widget name="text" position="649,75" size="930,405" font="Regular;34" />
+		<widget source="list" render="Listbox" position="720,450" size="675,300" scrollbarMode="showOnDemand" enableWrapAround="1">
+			<convert type="StringList" />
+		</widget>
+		<widget name="config" position="495,450" zPosition="10" font="Prive3;33" itemHeight="40" size="750,280" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
+		<widget name="wizard" pixmap="/usr/share/enigma2/skin_default/wizard.png" position="480,75" zPosition="10" size="165,261" transparent="1" alphatest="on"/>
+		<ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/button_red.png" position="480,337" zPosition="0" size="22,24" transparent="1" alphatest="on" />
+		<widget name="languagetext" position="502,337" size="142,45" font="Regular;27" />
+		<widget name="rc" pixmaps="/usr/share/enigma2/hd_glass17/rc.png,hd_glass17/rcold.png" position="165,75" zPosition="10" size="231,750" transparent="1" alphatest="on"/>
+		<widget name="arrowdown" pixmap="/usr/share/enigma2/skin_default/arrowdown.png" position="0,0" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowdown2" pixmap="/usr/share/enigma2/skin_default/arrowdown.png" position="0,0" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowup" pixmap="/usr/share/enigma2/skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowup2" pixmap="/usr/share/enigma2/skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+	</screen>
+<screen name="WizardVideo" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" >
+		<widget name="text" position="649,75" size="930,405" font="Regular;34" />
+		<widget source="list" render="Listbox" position="720,450" size="435,300" scrollbarMode="showOnDemand" enableWrapAround="1" >
+			<convert type="StringList" />
+		</widget>
+		<widget name="config" position="495,450" zPosition="10" font="Prive3;33" itemHeight="40" size="660,300" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
+		<widget name="wizard" pixmap="/usr/share/enigma2/skin_default/wizard.png" position="480,75" zPosition="10" size="165,261" transparent="1" alphatest="on"/>
+		<ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/button_red.png" position="480,337" zPosition="0" size="22,24" transparent="1" alphatest="on" />
+		<widget name="languagetext" position="502,337" size="142,45" font="Regular;27" />
+		<widget name="portpic" pixmap="/usr/lib/enigma2/python/Plugins/SystemPlugins/Videomode/Scart.png" position="495,450" zPosition="10" size="225,225" transparent="1" alphatest="on"/>
+		<widget name="rc" pixmaps="/usr/share/enigma2/hd_glass17/rc.png,hd_glass17/rcold.png" position="165,75" zPosition="10" size="231,750" transparent="1" alphatest="on"/>
+		<widget name="arrowdown" pixmap="/usr/share/enigma2/skin_default/arrowdown.png" position="0,0" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowdown2" pixmap="/usr/share/enigma2/skin_default/arrowdown.png" position="0,0" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowup" pixmap="/usr/share/enigma2/skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+		<widget name="arrowup2" pixmap="/usr/share/enigma2/skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" transparent="1" alphatest="on"/>
+	</screen>
+  <screen name="LogManager" position="center,120" size="1650,840" title="Log Manager">
+    <widget name="list" position="30,30" size="1590,615" scrollbarMode="showOnDemand" />
+    <widget name="LogsSize" position="30,660" size="1590,45" font="Prive3;28" halign="right" />
+    <widget name="key_red" position="30,765" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1" />
+    <widget name="key_green" position="420,765" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1" />
+    <widget name="key_yellow" position="810,765" size="360,45" font="Prive3;30" foregroundColor="yellow" halign="center" transparent="1" />
+    <widget name="key_blue" position="1200,765" size="360,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" />
+  </screen>
+  <screen name="LogManagerViewLog" position="center,120" size="1650,840" title="View Log">
+    <widget name="list" position="30,30" size="1590,780" font="Prive3;27" scrollbarMode="showOnDemand" />
+  </screen>
 </skin>
