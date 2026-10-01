@@ -5719,7 +5719,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   </screen>
  
   <screen name="PosterwallTop" position="0,0" size="1920,1080" flags="wfNoBorder" title="Movies" backgroundColor="#FF000000">
-    <widget name="title" font="Regular; 26" position="50,880" size="940,40" transparent="0" forgroundColor="#00FFA400" backgroundColor="#30000000" zPosition="9" />
+    <widget name="title" font="Regular; 26" position="50,880" size="940,40" transparent="0" foregroundColor="#00FFA400" backgroundColor="#30000000" zPosition="9" />
     <widget name="page" font="Regular; 26" position="1740,880" size="120,40" halign="right" transparent="0" foregroundColor="#00FFFFFF" backgroundColor="#30000000" zPosition="9" />
     <eLabel text="GENRES" position="50,920" size="150,30" font="Regular; 26" foregroundColor="#0010B3D2" transparent="0" backgroundColor="#30000000" />
     <widget name="genre" position="50,952" size="300,45" zPosition="3" font="Regular; 26" transparent="0" backgroundColor="#30000000" noWrap="1" />
@@ -5754,7 +5754,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   </screen>
  
   <screen name="PosterwallTopThumb" position="0,0" size="1920,1080" flags="wfNoBorder" title="Movies" backgroundColor="#FF000000">
-    <widget name="title" font="Regular; 26" position="50,880" size="940,40" transparent="0" forgroundColor="#00FFA400" backgroundColor="#30000000" zPosition="9" />
+    <widget name="title" font="Regular; 26" position="50,880" size="940,40" transparent="0" foregroundColor="#00FFA400" backgroundColor="#30000000" zPosition="9" />
     <widget name="page" font="Regular; 26" position="1740,880" size="120,40" halign="right" transparent="0" foregroundColor="#00FFFFFF" backgroundColor="#30000000" zPosition="9" />
     <eLabel text="GENRES" position="50,920" size="150,30" font="Regular; 26" foregroundColor="#0010B3D2" transparent="0" backgroundColor="#30000000" />
     <widget name="genre" position="50,952" size="300,45" zPosition="3" font="Regular; 26" transparent="0" backgroundColor="#30000000" noWrap="1" />
@@ -5790,7 +5790,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
  
   <screen name="PosterwallTopThumbRight" position="0,0" size="1920,1080" flags="wfNoBorder" title="Movies" backgroundColor="#FF000000">
     <eLabel backgroundColor="#30000000" position="0,570" size="1920,510" zPosition="-1" />
-    <widget name="title" font="Regular;24" position="50,585" size="500,50" transparent="0" forgroundColor="#00FFA400" backgroundColor="#30000000" nowrap="1" />
+    <widget name="title" font="Regular;24" position="50,585" size="500,50" transparent="0" foregroundColor="#00FFA400" backgroundColor="#30000000" nowrap="1" />
     <widget name="audio_icons" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/dts1.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/ac3.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/stereo.png" position="50,645" size="85,30" transparent="0" alphatest="on" zPosition="3" />
     <widget name="definition" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/hd.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/sd.png" position="145,645" size="51,30" transparent="0" alphatest="on" zPosition="3" />
     <widget name="resolution" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/wide.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/4_3.png" position="201,645" size="51,30" transparent="0" alphatest="on" zPosition="3" />
@@ -5825,7 +5825,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
  
   <screen name="CoverflowPosterMovies" position="0,0" size="1920,1080" flags="wfNoBorder" title="Movies" backgroundColor="#FF000000">
     <eLabel backgroundColor="#30000000" position="0,0" size="1920,70" zPosition="-1" />
-    <widget name="title" font="Regular; 26" position="50,25" size="590,40" transparent="0" forgroundColor="#00FFA400" backgroundColor="#80000000" zPosition="5" />
+    <widget name="title" font="Regular; 26" position="50,25" size="590,40" transparent="0" foregroundColor="#00FFA400" backgroundColor="#80000000" zPosition="5" />
     <widget name="audio_icons" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/dts1.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/ac3.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/stereo.png" position="1260,30" size="85,30" transparent="0" alphatest="on" zPosition="3" />
     <widget name="definition" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/hd.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/sd.png" position="1355,30" size="51,30" transparent="0" alphatest="on" zPosition="3" />
     <widget name="resolution" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/wide.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/4_3.png" position="1415,30" size="51,30" transparent="0" alphatest="on" zPosition="3" />
@@ -5840,7 +5840,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
  
   <screen name="HighListMovies" position="0,0" size="1920,1080" flags="wfNoBorder" title="Movies" backgroundColor="#FF000000">
     <eLabel backgroundColor="#30000000" position="0,570" size="1920,510" zPosition="-1" />
-    <widget name="title" font="Regular; 26" position="50,580" size="900,50" transparent="0" forgroundColor="#00FFA400" backgroundColor="#30000000" />
+    <widget name="title" font="Regular; 26" position="50,580" size="900,50" transparent="0" foregroundColor="#00FFA400" backgroundColor="#30000000" />
     <widget name="audio_icons" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/dts1.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/ac3.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/stereo.png" position="50,640" size="85,30" transparent="0" alphatest="on" zPosition="3" />
     <widget name="definition" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/hd.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/sd.png" position="145,640" size="51,30" transparent="0" alphatest="on" zPosition="3" />
     <widget name="resolution" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/wide.png,/usr/lib/enigma2/python/Plugins/Extensions/VideoDB/icons/4_3.png" position="201,640" size="51,30" transparent="0" alphatest="on" zPosition="3" />
@@ -6048,7 +6048,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget render="Label" source="key_green" position="695,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
         <widget render="Label" source="key_yellow" position="995,982" size="260,40" zPosition="5" valign="center" halign="center" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
         <widget render="Label" source="key_blue" position="1295,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
-        <widget name="headertext" position="360,155" zPosition="1" size="1230,40" font="Regular; 26" transparent="1" forgroundColor="#00FFA400" backgroundColor="#00232323" />
+        <widget name="headertext" position="360,155" zPosition="1" size="1230,40" font="Regular; 26" transparent="1" foregroundColor="#00FFA400" backgroundColor="#00232323" />
         <widget name="list" position="360,210" zPosition="2" size="1230,720" scrollbarMode="showOnDemand" transparent="0" backgroundColor="#00232323" />
         <widget name="overview" position="360,210" size="1230,720" zPosition="3" font="Regular;26" transparent="0" backgroundColor="#00232323" />
         <widget name="statustext" position="360,210" size="1230,720" zPosition="2" font="Regular;28" transparent="0" backgroundColor="#00232323" valign="center" halign="center" />
@@ -6065,7 +6065,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget render="Label" source="key_green" position="695,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
         <widget render="Label" source="key_yellow" position="995,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
         <widget render="Label" source="key_blue" position="1295,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
-        <widget name="headertext" position="360,155" zPosition="1" size="1230,40" font="Regular; 26" transparent="1" forgroundColor="#00FFA400" backgroundColor="#00232323" />
+        <widget name="headertext" position="360,155" zPosition="1" size="1230,40" font="Regular; 26" transparent="1" foregroundColor="#00FFA400" backgroundColor="#00232323" />
         <widget name="list" position="360,210" zPosition="2" size="1230,720" scrollbarMode="showOnDemand" transparent="1" backgroundColor="#00232323" />
       </screen>
      
@@ -6088,7 +6088,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget render="Label" source="key_green" position="695,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
         <widget render="Label" source="key_yellow" position="995,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
         <widget render="Label" source="key_blue" position="1295,982" size="260,40" zPosition="5" valign="center" halign="left" backgroundColor="#00232323" font="Regular;28" transparent="1" foregroundColor="#00EEEEEE" />
-        <widget name="headertext" position="360,155" zPosition="1" size="1230,40" font="Regular; 26" transparent="1" forgroundColor="#00FFA400" backgroundColor="#00232323" />
+        <widget name="headertext" position="360,155" zPosition="1" size="1230,40" font="Regular; 26" transparent="1" foregroundColor="#00FFA400" backgroundColor="#00232323" />
         <widget name="list" position="360,155" zPosition="2" size="1230,800" scrollbarMode="showOnDemand" transparent="0" backgroundColor="#00232323" />
         <widget name="poster" zPosition="2" position="365,220" size="185,278" alphatest="on" />
         <widget name="overview" position="595,210" size="980,400" zPosition="3" font="Regular; 30" transparent="0" backgroundColor="#00232323" />
@@ -6117,7 +6117,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <ePixmap alphatest="on" pixmap="hd_glass17/videodb/green.png" position="675,990" size="10,25" />
         <widget backgroundColor="#00232323" font="Regular;28" foregroundColor="#00EEEEEE" halign="left" position="395,982" render="Label" size="260,40" source="key_red" transparent="1" valign="center" zPosition="1" />
         <widget backgroundColor="#00232323" font="Regular;28" foregroundColor="#00EEEEEE" halign="left" position="695,982" render="Label" size="260,40" source="key_green" transparent="1" valign="center" zPosition="1" />
-        <widget font="Regular; 28" name="target" position="360,160" size="1230,40" transparent="1" valign="center" backgroundColor="#00232323" forgroundColor="#00FFA400" />
+        <widget font="Regular; 28" name="target" position="360,160" size="1230,40" transparent="1" valign="center" backgroundColor="#00232323" foregroundColor="#00FFA400" />
         <widget name="filelist" position="360,220" scrollbarMode="showOnDemand" size="1230,720" transparent="1" zPosition="1" />
       </screen>
      
@@ -6199,13 +6199,13 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget backgroundColor="#00232323" font="Regular;28" foregroundColor="#00EEEEEE" halign="left" position="995,982" render="Label" size="260,40" source="key_yellow" transparent="1" valign="center" zPosition="1" />
         <widget backgroundColor="#00232323" font="Regular;28" foregroundColor="#00EEEEEE" halign="left" position="1295,982" render="Label" size="260,40" source="key_blue" transparent="1" valign="center" zPosition="1" />
         <widget name="list" transparent="1" zPosition="2" position="360,160" size="1230,720" scrollbarMode="showNever" />
-        <widget name="page" font="Regular;26" position="360,910" size="1230,40" halign="right" transparent="0" forgroundColor="#00FFA400" backgroundColor="#00232323" />
+        <widget name="page" font="Regular;26" position="360,910" size="1230,40" halign="right" transparent="0" foregroundColor="#00FFA400" backgroundColor="#00232323" />
       </screen>
      
       <screen name="MovieEventView" position="0,0" size="1920,1080" flags="wfNoBorder" title="Movie Info" backgroundColor="#FF000000">
         <ePixmap pixmap="hd_glass17/videodb/bgmain.png" position="0, 0" size="1920,1080" transparent="0" zPosition="-1" />
         <widget name="poster" zPosition="5" position="360,160" size="240,356" />
-        <widget name="headertext" position="360,77" size="1230,40" font="Regular; 30" valign="center" zPosition="1" forgroundColor="#00FFA400" transparent="1" backgroundColor="#00232323" noWrap="1" />
+        <widget name="headertext" position="360,77" size="1230,40" font="Regular; 30" valign="center" zPosition="1" foregroundColor="#00FFA400" transparent="1" backgroundColor="#00232323" noWrap="1" />
         <widget name="overview" position="640,160" size="950,360" zPosition="5" font="Regular; 26" transparent="0" backgroundColor="#00232323" />
         <widget name="misc" position="640,540" size="950,230" zPosition="2" font="Regular; 26" transparent="0" backgroundColor="#00232323" foregroundColor="#0010B3D2" />
         <widget name="datetime" font="Regular; 26" position="360,982" size="300,40" zPosition="5" transparent="0" backgroundColor="#00232323" foregroundColor="#0086E60E" />
