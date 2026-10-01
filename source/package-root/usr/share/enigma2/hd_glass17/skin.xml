@@ -1484,12 +1484,12 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="key_blue" position="1245,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="blue" />
   </screen>
   <!-- TextBox -->
-  <screen name="NameserverSetup" position="center,center" size="900,800" title="Nameserver Setup">
-    <widget name="config" position="10,10" size="880,600" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget source="introduction" render="Label" position="10,650" size="880,80" zPosition="10" font="Prive3;31" halign="center" valign="center" backgroundColor="un25062748" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+  <screen name="NameserverSetup" position="center,120" size="1500,840" title="Nameserver Setup">
+    <widget name="config" position="45,30" size="1410,650" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget source="introduction" render="Label" position="45,695" size="1410,65" zPosition="10" font="Prive3;31" halign="center" valign="center" transparent="1" />
+    <widget font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="45,775" size="450,45" valign="center" halign="center" transparent="1" />
+    <widget font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="525,775" size="450,45" valign="center" halign="center" transparent="1" />
+    <widget font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="1005,775" size="450,45" valign="center" halign="center" transparent="1" />
   </screen>
   <!-- Network adapter selection -->
   <screen name="NetworkAdapterSelection" position="center,120" size="1500,840" title="Select Network Adapter">
@@ -1753,28 +1753,16 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <eLabel position="988,1019" size="397,1" backgroundColor="#FFD600" zPosition="5" transparent="0" />
     <eLabel position="1443,1019" size="397,1" backgroundColor="#0091EA" zPosition="5" transparent="0" />
   </screen>
-  <screen name="ServiceScan" position="center,center" size="900,790" title="Service Scan">
-    <widget source="FrontendInfo" render="Pixmap" pixmap="hd_glass17/icons/scan-s.png" position="22,10" size="96,96" transparent="1" alphatest="on">
-      <convert type="FrontendInfo">TYPE</convert>
-      <convert type="ValueRange">0,0</convert>
-      <convert type="ConditionalShowHide" />
-    </widget>
-    <widget source="FrontendInfo" render="Pixmap" pixmap="hd_glass17/icons/scan-c.png" position="22,10" size="96,96" transparent="1" alphatest="on">
-      <convert type="FrontendInfo">TYPE</convert>
-      <convert type="ValueRange">1,1</convert>
-      <convert type="ConditionalShowHide" />
-    </widget>
-    <widget source="FrontendInfo" render="Pixmap" pixmap="hd_glass17/icons/scan-t.png" position="22,10" size="96,96" transparent="1" alphatest="on">
-      <convert type="FrontendInfo">TYPE</convert>
-      <convert type="ValueRange">2,2</convert>
-      <convert type="ConditionalShowHide" />
-    </widget>
-    <widget name="network" position="150,37" size="645,37" font="Prive3;33" />
-    <widget name="transponder" position="150,82" size="645,37" font="Prive3;33" />
-    <widget name="scan_state" position="30,157" size="840,90" zPosition="2" font="Prive3;33" halign="center" valign="center" />
-    <widget name="pass" position="30,157" size="840,90" font="Prive3;33" halign="center" valign="center" />
-    <widget name="scan_progress" position="78,260" size="745,21" pixmap="hd_glass17/slider/slider_main.png" />
-    <widget name="servicelist" position="30,312" size="840,450" font="Prive3;33" itemHeight="40" selectionDisabled="1" scrollbarMode="showOnDemand" />
+  <screen name="ServiceScan" position="center,90" size="1500,900" title="Service Scan">
+    <widget source="FrontendInfo" render="Pixmap" pixmap="hd_glass17/icons/scan-s.png" position="60,35" size="96,96" transparent="1" alphatest="on"><convert type="FrontendInfo">TYPE</convert><convert type="ValueRange">0,0</convert><convert type="ConditionalShowHide" /></widget>
+    <widget source="FrontendInfo" render="Pixmap" pixmap="hd_glass17/icons/scan-c.png" position="60,35" size="96,96" transparent="1" alphatest="on"><convert type="FrontendInfo">TYPE</convert><convert type="ValueRange">1,1</convert><convert type="ConditionalShowHide" /></widget>
+    <widget source="FrontendInfo" render="Pixmap" pixmap="hd_glass17/icons/scan-t.png" position="60,35" size="96,96" transparent="1" alphatest="on"><convert type="FrontendInfo">TYPE</convert><convert type="ValueRange">2,2</convert><convert type="ConditionalShowHide" /></widget>
+    <widget name="network" position="210,35" size="1200,42" font="Prive3;34" />
+    <widget name="transponder" position="210,85" size="1200,42" font="Prive3;34" />
+    <widget name="scan_state" position="45,155" size="1410,65" zPosition="2" font="Prive3;34" halign="center" valign="center" />
+    <widget name="pass" position="45,155" size="1410,65" font="Prive3;34" halign="center" valign="center" />
+    <widget name="scan_progress" position="120,235" size="1260,24" pixmap="hd_glass17/slider/slider_main.png" />
+    <widget name="servicelist" position="45,290" size="1410,565" font="Prive3;34" itemHeight="45" selectionDisabled="1" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="Setup" position="center,90" size="1650,900" title="Setup">
     <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
@@ -3397,11 +3385,11 @@ if IS_VU:
     <widget name="target" position="885,172" size="900,42" backgroundColor="background" transparent="1" font="Prive3;36" />
     <widget name="filelist" position="885,247" size="900,675" itemHeight="30" backgroundColor="background" transparent="1" enableWrapAround="1" scrollbarMode="showOnDemand" />
   </screen>			
-	<screen name="RecordPathsSettings" position="center,center" size="1050,600" title="Recording paths">
-		<widget name="config" position="15,0" size="1020,500" font="Prive3;33" itemHeight="40" transparent="1" zPosition="3"/>
-    <widget foregroundColor="red" font="Regular;40" halign="center" source="key_red" render="Label" position="85,510" size="397,66" transparent="1" valign="center" zPosition="6"/>
-		<widget foregroundColor="green" font="Regular;40" halign="center" source="key_green" render="Label" position="567,510" size="397,66" transparent="1" valign="center" zPosition="6"/>
-		</screen>
+	<screen name="RecordPathsSettings" position="center,120" size="1500,840" title="Recording paths">
+    <widget name="config" position="45,30" size="1410,690" font="Prive3;34" itemHeight="45" transparent="1" zPosition="3" scrollbarMode="showOnDemand" />
+    <widget foregroundColor="red" font="Regular;34" halign="center" source="key_red" render="Label" position="180,755" size="480,55" transparent="1" valign="center" zPosition="6" />
+    <widget foregroundColor="green" font="Regular;34" halign="center" source="key_green" render="Label" position="840,755" size="480,55" transparent="1" valign="center" zPosition="6" />
+  </screen>
 	<screen name="DMC_MainMenu" position="center,center" size="585,360" backgroundColor="background" title="MediaCenter Main menu">
     <widget source="menu" render="Listbox" position="30,30" size="525,300" zPosition="3" foregroundColorSelected="#00ff9000" backgroundColorSelected="#00000000" enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
