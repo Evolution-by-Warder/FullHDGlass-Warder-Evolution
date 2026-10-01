@@ -244,3 +244,22 @@ Results:
 - `PiconSettings` derives from current `Setup`; no duplicate standalone layout is required.
 - legacy `RestartNetwork` explicitly selects skin name `DUMMY`; a zero-size Warder `DUMMY` compatibility screen is provided, while current `RestartNetworkNew` uses the Processing singleton.
 - No item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV tuner / update / restore batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current OpenATV runtime contracts for CI, Auto DiSEqC, scan/tuner configuration, backup/restore, software update, task/job screens, Opkg/package feeds, factory reset and power-loss handling.
+
+Changes and decisions:
+- added dedicated Warder FHD `AutoDiseqc` and `SelectSatsEntryScreen` layouts from current runtime widget contracts;
+- added current `SoftwareUpdate` FHD layout including feed traffic-light widgets, feed message, activity slider and indexed templated package list;
+- added current `RunSoftwareUpdate` FHD progress/log layout;
+- `SoftwareUpdateSummary` intentionally reuses the existing Setup-summary `entry` / `value` contract; no duplicate full-screen layout added;
+- modernized current backup/restore helper UI with dedicated `installedPlugins` and `RestorePlugins` FHD layouts;
+- `BackupScreen` and `RestoreScreen` are intentionally zero-size execution helpers in current OpenATV and were not visually expanded;
+- current CI PIN, FactoryReset and multiple service/setup classes intentionally resolve through the common `Setup` contract;
+- existing Task/Job and Opkg/package-feed layouts were retained where the current runtime contract is already represented;
+- `PowerLost` is not a Screen class and therefore requires no skin definition;
+- no item in this batch is marked RECEIVER PASS.
