@@ -4079,59 +4079,21 @@ class ExtraInfo17(Screen):
 			self.count += 1
 			if netChck():
 				self.units = chckUnit()
-				req = config.plugins.setupGlass17.par13.value[1:]
-				if not req.startswith("wc:"):						
-					req = quote(config.plugins.setupGlass17.par13.getText())
-				if ENA_MSN:
-					if req.startswith("wc:") or req.startswith("fr:"):
-						req = "wealocations="+req
-					else:						
-						req = "weasearchstr="+req
-					req = "https://weather.service.msn.com/data.aspx?src=outlook&weadegreetype=%s&culture=en-us&%s" % (self.units.upper(), req)
-				else:
-					apkey = "&appid=" + config.plugins.setupGlass17.par228.value
-					req = "q=%s" % quote(config.plugins.setupGlass17.par13.getText())
-					if self.units.upper() == "F":
-						u = "imperial"
-					else:
-						u = "metric"					
-					req = "https://api.openweathermap.org/data/2.5/weather?%s&lang=%s&units=%s%s" % (req, WLANG, u, apkey)
-				if ENA_MSN or (not ENA_MSN and len(config.plugins.setupGlass17.par228.value) > 20):
-					if not os.path.isfile(XML_FILE):
-						self.dwnW(req)
-					if os.path.isfile(XML_FILE):
-						if int((time1.time() - os.stat(XML_FILE).st_mtime)/60) >= int(config.plugins.setupGlass17.par87.value) or os.path.getsize(XML_FILE) < 300:
-							self.dwnW(req)
-						if os.path.getsize(XML_FILE) > 300:
-							if ENA_MSN:
-								try:
-									req = open(XML_FILE).read()
-									for line in req.split("/>"):			
-										if '<current' in line:
-											txt = temperature_fix(line.split('temperature')[1].split('"')[1],False)
-											png = nigttime(line.split('skycode')[1].split('"')[1])	
-											break
-								except:	pass
-							else:
-								try:
-									import simplejson
-								except:
-									import json as simplejson
-								try:
-									req = open(XML_FILE).read()
-									if ISP38:
-										r = simplejson.loads(req)
-									else:
-										r = simplejson.loads(fixUtf8(req))
-									if r.get("name",None) != None:
-										idI = str(r.get("weather",[{}])[0].get("id","0"))
-										i = r.get("weather",[{}])[0].get("icon","")
-										png = nigttime(chckWidI(i,idI)) 
-										txt = temperature_fix(str(int(round(r.get("main",{}).get("temp",0)))),False) 	
-								except: pass
-						elif self.count < 5:					
-							self.refreshValue = 30
-					elif self.count < 5:
+				try:
+					city_ref = config.plugins.setupGlass17.par13.value
+					if not str(city_ref).startswith("om|"):
+						city_ref = config.plugins.setupGlass17.par13.getText()
+					data = openMeteo(city_ref, self.units, 1)
+					cur = data.get("current", {})
+					code = cur.get("weather_code")
+					if code is not None:
+						png = wmoPicon(code, not bool(cur.get("is_day", 1)))
+					if cur.get("temperature_2m") is not None:
+						txt = temperature_fix(str(int(round(float(cur.get("temperature_2m"))))), False)
+					self.refreshValue = max(60, int(config.plugins.setupGlass17.par87.value) * 60)
+				except Exception as e:
+					Writelog("Classic Open-Meteo: %s" % e)
+					if self.count < 5:
 						self.refreshValue = 30
 					if self.count > 10:
 						self.count = 0
@@ -6263,12 +6225,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("Animation speed (ms)"), config.plugins.setupGlass17.par158))
 				self.list.append(getConfigListEntry(S0 % _("Display nighttime icons"), config.plugins.setupGlass17.par24))
 				self.list.append(getConfigListEntry(S0 % _("Enable next city in Weather"), config.plugins.setupGlass17.par71))
-				self.list.append(getConfigListEntry(S0 % _("Provider"), config.plugins.setupGlass17.par88))        
-				if config.plugins.setupGlass17.par88.value == "OpenWea":
-					self.list.append(getConfigListEntry(S0 % _("API-Key OpenWeatherMap"), config.plugins.setupGlass17.par228))
-					self.list.append(getConfigListEntry(S0 % _("Forecast for more days"), config.plugins.setupGlass17.par143))
-					if config.plugins.setupGlass17.par143.value:
-						self.list.append(getConfigListEntry(S0 % _("More days switch time"), config.plugins.setupGlass17.par184))
+				# r10: provider/API-key UI is obsolete; Open-Meteo is the built-in provider.
+				self.list.append(getConfigListEntry(S0 % _("Forecast for more days"), config.plugins.setupGlass17.par143))
+				if config.plugins.setupGlass17.par143.value:
+					self.list.append(getConfigListEntry(S0 % _("More days switch time"), config.plugins.setupGlass17.par184))
 				else:
 					self.list.append(getConfigListEntry(S0 % _("Show yesterday"), config.plugins.setupGlass17.par92))
 				if ENAFINDER:
