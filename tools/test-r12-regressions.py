@@ -385,3 +385,30 @@ assert '_("Please wait.")' in PLUGIN
 assert 'enable_input=False' in PLUGIN
 assert 'def _warderCloseProgress(self):' in PLUGIN
 assert 'self._warderCloseProgress()' in PLUGIN
+
+
+# Current OpenATV EPG/RDS skin-name compatibility added in TEST22.
+for screen in ("QuickEPG", "GraphicalEPG", "GraphicalEPGPIG", "GraphicalInfoBarEPG", "RassInteractive"):
+    assert re.search(r'<screen\\b[^>]*name="%s"[\\s\\S]*?</screen>' % screen, SKIN), screen
+for screen in ("GraphicalEPG", "GraphicalEPGPIG", "GraphicalInfoBarEPG"):
+    block = re.search(r'<screen\\b[^>]*name="%s"[\\s\\S]*?</screen>' % screen, SKIN).group(0)
+    for token in ('name="timeline_text"', 'name="list"', 'name="timeline_now"'):
+        assert token in block, (screen, token)
+for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
+    block = re.search(r'<screen\\b[^>]*name="%s"[\\s\\S]*?</screen>' % screen, SKIN).group(0)
+    for token in ('name="lab1"', 'name="key_red"', 'name="key_green"', 'name="key_yellow"', 'name="key_blue"'):
+        assert token in block, (screen, token)
+pigepg = re.search(r'<screen\\b[^>]*name="GraphicalEPGPIG"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'source="session.VideoPicture" render="Pig"' in pigepg
+quickepg = re.search(r'<screen\\b[^>]*name="QuickEPG"[\\s\\S]*?</screen>', SKIN).group(0)
+for token in ('source="Service"', 'source="session.RecordState"', 'name="list"'):
+    assert token in quickepg, token
+rass = re.search(r'<screen\\b[^>]*name="RassInteractive"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'name="Marker"' in rass
+for n in range(1, 10):
+    assert 'name="subpages_%d"' % n in rass, n
+# FullHDGlass RDS overlay must stay transparent so OpenATV DABSlideDisplay
+# (zPosition -20) can remain visible behind the radio text UI.
+rds = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'backgroundColor="transparent"' in rds
+assert 'zPosition="-2"' in rds

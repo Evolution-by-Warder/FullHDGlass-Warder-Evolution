@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test21
-Revision: 79
-Purpose: Re-run TEST21 after repairing its regression-gate regex. Add the missing OpenATV MessageBoxModal skin definition used by MediaScanner before OpkgInstaller. Match the established FullHDGlass17 MessageBox visual language; do not alter the already approved OpkgInstaller, TEST18 weather, TEST19 PIG, or TEST20 package-version behavior.
+Candidate: 1.0.5-test22
+Revision: 80
+Purpose: Consolidated OpenATV compatibility candidate. Add native FullHDGlass17 skins for current QuickEPG, GraphicalEPG, GraphicalEPGPIG and GraphicalInfoBarEPG contracts; add the missing RassInteractive surface and preserve the transparent RDS overlay required by OpenATV DABSlideDisplay, including Dreambox DM900/DM920 fallback behavior. Retain all receiver-approved TEST18 weather, TEST19 PIG, TEST20 package-version and TEST21 MessageBoxModal/Opkg behavior.

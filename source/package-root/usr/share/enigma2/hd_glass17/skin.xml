@@ -7881,4 +7881,75 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <screen name="EventViewContextMenu" position="center,240" size="820,640" title="EventViewContextMenu">
 <widget name="menu" position="20,20" size="780,600" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
 </screen>
+  <!-- Warder/OpenATV compatibility: current EpgSelection skin names. -->
+  <screen name="QuickEPG" position="0,720" size="1920,360" backgroundColor="transpBlack" flags="wfNoBorder" title="InfoBar">
+    <widget source="global.CurrentTime" render="Label" position="90,24" size="150,45" font="Prive4;33" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
+    <widget source="Service" render="Label" position="260,24" size="1180,45" font="Prive4;33" foregroundColor="#cdcdcd" halign="center" transparent="1"><convert type="ServiceName">Name</convert></widget>
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1450,24" size="390,45" font="Prive4;27" foregroundColor="#cdcdcd" halign="right" transparent="1" />
+    <widget source="session.RecordState" render="Pixmap" pixmap="hd_glass17/icons/i_rec-n.png" position="1780,88" size="39,72" alphatest="on"><convert type="g17ConditionalShowHide">Blink</convert></widget>
+    <widget source="Service" render="Picon" position="90,105" size="150,90" transparent="1" alphatest="on"><convert type="ServiceName">Reference</convert></widget>
+    <widget name="list" position="270,105" size="1470,180" font="Prive3;33" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
+  </screen>
+
+  <screen name="GraphicalEPG" position="120,108" size="1680,864" backgroundColor="black" title="Electronic Program Guide">
+    <widget source="Title" render="Label" position="75,15" size="1050,45" font="Prive4;33" foregroundColor="#cdcdcd" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1170,15" size="150,45" font="Prive4;33" halign="right" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1335,15" size="270,45" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1" />
+    <widget name="timeline_text" position="15,72" size="1650,45" backgroundColor="black" transparent="1" />
+    <widget name="lab1" position="15,117" size="1650,510" font="Prive3;33" halign="center" valign="center" backgroundColor="black" />
+    <widget name="list" position="15,117" size="1650,510" font="Prive3;30" scrollbarMode="showNever" transparent="1" />
+    <widget name="timeline_now" position="15,117" zPosition="2" size="28,510" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
+    <widget source="Event" render="Label" position="30,648" size="1620,45" font="Prive3;33" foregroundColor="white" transparent="1"><convert type="EventName">Name</convert></widget>
+    <widget source="Event" render="Label" position="30,699" size="1620,90" font="Prive3;27" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert></widget>
+    <widget name="key_red" position="15,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget name="key_green" position="427,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget name="key_yellow" position="839,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget name="key_blue" position="1251,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+
+  <screen name="GraphicalEPGPIG" position="120,108" size="1680,864" backgroundColor="black" title="Electronic Program Guide">
+    <widget source="Title" render="Label" position="75,15" size="900,45" font="Prive4;33" foregroundColor="#cdcdcd" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1170,15" size="150,45" font="Prive4;33" halign="right" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1335,15" size="270,45" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1" />
+    <widget source="Event" render="Label" position="30,75" size="990,45" font="Prive3;33" foregroundColor="white" transparent="1"><convert type="EventName">Name</convert></widget>
+    <widget source="Event" render="Label" position="30,126" size="990,150" font="Prive3;27" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert></widget>
+    <eLabel position="1080,75" size="555,315" backgroundColor="grey" />
+    <widget source="session.VideoPicture" render="Pig" position="1083,78" size="549,309" backgroundColor="black" />
+    <widget name="timeline_text" position="15,405" size="1650,45" backgroundColor="black" transparent="1" />
+    <widget name="lab1" position="15,450" size="1650,285" font="Prive3;33" halign="center" valign="center" backgroundColor="black" />
+    <widget name="list" position="15,450" size="1650,285" font="Prive3;30" scrollbarMode="showNever" transparent="1" />
+    <widget name="timeline_now" position="15,450" zPosition="2" size="28,285" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
+    <widget name="key_red" position="15,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget name="key_green" position="427,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget name="key_yellow" position="839,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget name="key_blue" position="1251,810" size="397,42" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+
+  <screen name="GraphicalInfoBarEPG" position="0,720" size="1920,360" backgroundColor="transpBlack" flags="wfNoBorder" title="InfoBar">
+    <widget source="global.CurrentTime" render="Label" position="90,24" size="150,45" font="Prive4;33" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
+    <widget source="Title" render="Label" position="260,24" size="1180,45" font="Prive4;33" foregroundColor="#cdcdcd" halign="center" transparent="1" />
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1450,24" size="390,45" font="Prive4;27" foregroundColor="#cdcdcd" halign="right" transparent="1" />
+    <widget source="session.RecordState" render="Pixmap" pixmap="hd_glass17/icons/i_rec-n.png" position="1780,75" size="39,72" alphatest="on"><convert type="g17ConditionalShowHide">Blink</convert></widget>
+    <widget name="lab1" position="60,105" size="1800,180" font="Prive3;33" halign="center" valign="center" backgroundColor="black" />
+    <widget name="timeline_text" position="60,105" size="1800,45" backgroundColor="black" transparent="1" />
+    <widget name="list" position="60,150" size="1800,135" font="Prive3;30" scrollbarMode="showNever" transparent="1" />
+    <widget name="timeline_now" position="60,150" zPosition="2" size="28,135" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
+  </screen>
+
+  <screen name="RassInteractive" position="150,270" size="150,413" backgroundColor="transpBlack" flags="wfNoBorder">
+    <ePixmap pixmap="hd_glass17/icons/rass_logo.png" position="37,0" size="75,31" transparent="1" alphatest="on" />
+    <eLabel text="Index" position="54,38" size="90,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" />
+    <eLabel text="0" position="8,38" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" />
+    <widget name="Marker" position="32,38" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" />
+    <eLabel text="1" position="8,76" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_1" position="53,76" size="54,30" alphatest="on" />
+    <eLabel text="2" position="8,114" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_2" position="53,114" size="54,30" alphatest="on" />
+    <eLabel text="3" position="8,152" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_3" position="53,152" size="54,30" alphatest="on" />
+    <eLabel text="4" position="8,190" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_4" position="53,190" size="54,30" alphatest="on" />
+    <eLabel text="5" position="8,228" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_5" position="53,228" size="54,30" alphatest="on" />
+    <eLabel text="6" position="8,266" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_6" position="53,266" size="54,30" alphatest="on" />
+    <eLabel text="7" position="8,304" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_7" position="53,304" size="54,30" alphatest="on" />
+    <eLabel text="8" position="8,342" size="24,38" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_8" position="53,342" size="54,30" alphatest="on" />
+    <eLabel text="9" position="8,380" size="24,33" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_9" position="53,380" size="54,30" alphatest="on" />
+  </screen>
+
 </skin>
