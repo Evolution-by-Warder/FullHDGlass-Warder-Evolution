@@ -142,7 +142,7 @@ def Writelog(txt):
 				pass
 	try:
 		f = open(log,"a")
-		f.write("%s\\t\tG17_EXTRAINFO_INSTANCE = self\\t\tself._weatherCityAtOpen = config.plugins.setupGlass17.par13.value\\t\tif self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:\n\t\t\ttry:\n\t\t\t\tif G17_EXTRAINFO_INSTANCE is not None:\n\t\t\t\t\tG17_EXTRAINFO_INSTANCE.refreshWeatherNow()\n\t\t\texcept:\n\t\t\t\tpass\n\t\t\tself._weatherCityAtOpen = config.plugins.setupGlass17.par13.value\nnnn" % str(txt))
+		f.write("%s\\n" % str(txt))
 		f.close()
 	except IOError: pass
 ##########################################################################################################################
@@ -667,6 +667,28 @@ def getCitiesCode():
 
 ch_help = getCitiesCode()
 config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help) # weather location
+
+def _setWeatherCityChoices(selected=None):
+	"""Reload /etc/my_city_Code.txt while preserving or explicitly selecting a city."""
+	choices = getCitiesCode()
+	values = [x[0] for x in choices]
+	wanted = selected if selected in values else config.plugins.setupGlass17.par13.value
+	if wanted not in values:
+		wanted = choices[0][0]
+	try:
+		config.plugins.setupGlass17.par13.setChoices(choices, default=wanted)
+	except Exception:
+		config.plugins.setupGlass17.par13 = ConfigSelection(default=wanted, choices=choices)
+	config.plugins.setupGlass17.par13.value = wanted
+	return wanted
+
+def _refreshLiveWeather():
+	"""Push a city change to the active Infobar without restarting Enigma2."""
+	try:
+		if G17_EXTRAINFO_INSTANCE is not None:
+			G17_EXTRAINFO_INSTANCE.refreshWeatherNow()
+	except Exception as e:
+		Writelog("weather live refresh: %s" % e)
 
 def readAPIkey():
 	# Compatibility shim only. Open-Meteo requires no API key and the legacy
@@ -6343,10 +6365,21 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self["key_red"].setText(_("Exit"))
                      		
 	def reloadCities(self,a=None):
-		ch_help = getCitiesCode()
-		config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help)
-		ch_help = readAPIkey()
+		_setWeatherCityChoices()
 		self.runSetup()
+
+	def _selectWeatherCity(self):
+		self.session.openWithCallback(self._weatherCitySelected, weatherCitySelector, config.plugins.setupGlass17.par13.value)
+
+	def _weatherCitySelected(self, value):
+		if not value:
+			return
+		selected = _setWeatherCityChoices(value)
+		config.plugins.setupGlass17.par13.value = selected
+		config.plugins.setupGlass17.par13.save()
+		configfile.save()
+		self.runSetup()
+		_refreshLiveWeather()
 
 	def ActivateselectedFnc(self):
 		if self.isMainMenu:
@@ -6373,6 +6406,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.session.openWithCallback(self.dirConf, dirBrowser, config.plugins.setupGlass17.par144.value)
 			elif t == config.plugins.setupGlass17.par141:
 				self.session.openWithCallback(self.satxmlConf, dirBrowser, config.plugins.setupGlass17.par141.value)
+			elif t == config.plugins.setupGlass17.par13:
+				self._selectWeatherCity()
 			elif t == config.plugins.setupGlass17.par90:
 				self.session.openWithCallback(self.reloadCities, cityFinder)
 			elif t == config.plugins.setupGlass17.par199:
@@ -8966,6 +9001,43 @@ class SelectPosition(Screen):
 			config.plugins.setupGlass17.par11.value = self.valueY
 		self.close()
 ##########################################################################################################################
+class weatherCitySelector(Screen):
+	"""OK-driven selector for cities already present in /etc/my_city_Code.txt."""
+
+	skin = """
+	<screen name="weatherCitySelector" position="center,center" size="900,700" title="Weather for City" backgroundColor="background">
+		<widget name="list" position="25,25" size="850,590" scrollbarMode="showOnDemand" backgroundColor="background"/>
+		<widget name="key_red" position="25,635" size="400,50" valign="center" halign="center" font="Prive3;32" transparent="1" foregroundColor="red"/>
+		<widget name="key_green" position="475,635" size="400,50" valign="center" halign="center" font="Prive3;32" transparent="1" foregroundColor="green"/>
+	</screen>"""
+
+	def __init__(self, session, current=None):
+		Screen.__init__(self, session)
+		self["key_red"] = Label(_("Cancel"))
+		self["key_green"] = Label(_("Select"))
+		self.items = []
+		currentIndex = 0
+		for value, label in getCitiesCode():
+			item = [value]
+			item.append(MultiContentEntryText(pos=(15, 0), size=(820, 42), font=2, color_sel=int("0xff9c00",16), text=str(label)))
+			if value == current:
+				currentIndex = len(self.items)
+			self.items.append(item)
+		self["list"] = thumbList(self.items)
+		self["list"].l.setItemHeight(45)
+		if self.items:
+			self["list"].instance.moveSelectionTo(currentIndex)
+		self["actions"] = ActionMap(["SetupActions", "DirectionActions", "ColorActions"], {
+			"ok": self.select, "green": self.select, "cancel": self.close, "red": self.close,
+			"up": self["list"].up, "down": self["list"].down,
+			"left": self["list"].pageUp, "right": self["list"].pageDown,
+		}, -1)
+
+	def select(self):
+		selection = self["list"].getCurrent()
+		self.close(str(selection[0]) if selection and str(selection[0]) != "None" else None)
+
+
 class cityFinder(Screen):   
 
 	skin = """
@@ -9266,6 +9338,12 @@ class cityFinder(Screen):
 			pass
 		f = open(path, "r").read() if os.path.exists(path) else ""
 		if written and f.find(str(tmp).strip()) != -1:
+			selected = _cityLine(str(tmp).strip())
+			if selected:
+				_setWeatherCityChoices(selected[0])
+				config.plugins.setupGlass17.par13.save()
+				configfile.save()
+				_refreshLiveWeather()
 			self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
 			self.generateData()
 		else:

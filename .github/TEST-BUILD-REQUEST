@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test14
-Revision: 65
-Purpose: Diagnostic no-functional-change build to reproduce the TEST13 updater post-install crash with OpenATV Enigma2 debug logging enabled and capture the exact traceback. Workflow verification now checks the candidate VERSION dynamically.
+Candidate: 1.0.5-test15
+Revision: 66
+Purpose: Restore r12-style OK city selection from my_city_Code.txt and refresh Infobar weather immediately after selecting or adding a city, without GUI restart.
