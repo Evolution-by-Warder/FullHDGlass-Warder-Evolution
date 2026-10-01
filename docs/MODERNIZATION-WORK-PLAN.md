@@ -163,3 +163,21 @@ The current production and receiver-validation target remains **1920x1080 Full H
 ## Integration rule
 
 All new Warder Evolution functionality and all applicable fixes discovered during legacy FullHDGlass maintenance are to be integrated into this working line in controlled batches. Do not blindly copy a legacy patch: reconcile it with the Warder Evolution source, current OpenATV APIs, non-destructive package lifecycle rules, and the resolution-readiness rule above. Each integrated batch must remain traceable in Git and must pass the applicable static checks before receiver testing.
+
+
+## Execution batch 1 — source recovery before code changes
+
+Status: **IN PROGRESS**
+
+Repository reconciliation confirms that the current default branch does not expose the unpacked Enigma2 runtime source tree: the post-1.0.4 changes are documentation, manifests, assets and updater metadata, while the stable runtime implementation is carried by the packaged 1.0.4 IPK. Therefore implementation work must not invent source paths or reconstruct screens from memory.
+
+Required sequence for this batch:
+
+1. Recover/unpack the exact stable 1.0.4 package payload as the implementation baseline.
+2. Verify package payload identity and preserve all binding runtime identifiers.
+3. Import the recovered source into the working line in a clearly documented source tree without changing runtime behavior.
+4. Run a baseline static inventory before functional edits: XML screens, Python modules, control scripts, graphics/assets and compatibility symlinks.
+5. Apply the already-known repair set only after baseline recovery: menu-source compatibility, safe package upgrade lifecycle, user-data preservation, safe archive extraction, non-destructive picon handling, Python 3 cleanup, and custom-spinner retirement after dependency/use audit.
+6. Then continue the full screen/FHD audit and DAB+ work.
+
+No release version bump is permitted merely for source recovery. Receiver-visible behavior changes remain test-build work until the GigaBlue/OpenATV acceptance pass is complete.
