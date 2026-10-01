@@ -763,7 +763,8 @@ self.autoResize()
     <widget source="key_green" render="Label" position="435,772" size="390,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
     <widget source="key_yellow" render="Label" position="840,772" size="390,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
     <widget source="key_help" render="Label" position="1450,772" size="170,42" font="Prive3;27" halign="right" transparent="1" />
-  </screen>  <screen name="clockDisplay" position="center,345" size="510,450">
+  </screen>
+  <screen name="clockDisplay" position="center,345" size="510,450">
     <widget name="okbutton" position="30,30" size="450,60" />
     <widget name="theClock" position="30,105" size="450,75" />
     <widget name="title" position="30,195" size="450,75" />
