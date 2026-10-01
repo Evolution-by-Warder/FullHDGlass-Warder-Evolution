@@ -495,3 +495,16 @@ Status: **PASS — RUNTIME TEST STILL REQUIRED**
 - FlashManager, Dishpip and NetworkInadynLog each occur exactly once.
 - all directly referenced internal Warder pixmap/background/selection assets resolve to files in the package tree.
 - no RECEIVER PASS is claimed.
+
+
+## setupGlass17 runtime / custom component audit — 2026-10-01
+
+Status: **STATIC REVIEW IN PROGRESS — RECEIVER TEST REQUIRED**
+
+- inventoried all packaged setupGlass17 Python screens and their embedded-skin ownership. The plugin intentionally owns a mixture of full-HD setup screens, compact selectors/positioning overlays and dynamically generated screens; these must not be mechanically moved into the global skin.
+- confirmed the current OpenATV `Components.Element.cached` decorator remains available, so the custom converter family's cached-property usage is valid.
+- audited the first custom renderer/converter batches for Python-2-only constructs and obsolete timer/navigation patterns. No `has_key`, `iteritems`, `xrange`, `unicode` or `basestring` use was found in the checked batches.
+- `NavigationInstance.instance` remains a current OpenATV-supported global and is therefore not rewritten in g17EmptyEpg/g17Prov.
+- legacy `eTimer.timeout.get().append(...)` occurs only as compatibility fallback behind the modern `.timeout.connect(...)` path in the checked renderer code; it is retained intentionally for cross-image compatibility.
+- setupGlass17 embedded layouts use the expected Enigma2 `halign`/`valign` skin attributes and contain no `forgroundColor` typo.
+- no RECEIVER PASS is claimed.
