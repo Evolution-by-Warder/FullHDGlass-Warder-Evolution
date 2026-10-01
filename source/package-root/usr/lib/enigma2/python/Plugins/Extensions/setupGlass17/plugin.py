@@ -1766,6 +1766,12 @@ def chnlSelChck():
 	return 0
 ##########################################################################################################################
 def chnlSelPatch(direct=True):
+	# Warder Evolution safety rule: never patch image-owned ChannelSelection.py
+	# on modern OpenATV. Preserve the legacy setting for old configurations,
+	# but disable it instead of modifying core Enigma2 Python at runtime.
+	if isATV:
+		setCFGoff(62)
+		return False
 	if not direct and fileExists(CHANSEL_FILE) and fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
 		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
 		return True
