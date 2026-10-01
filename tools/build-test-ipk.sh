@@ -30,6 +30,13 @@ case "$PKGVER" in
   *) echo "Control/runtime TEST version mismatch: $PKGVER vs $RUNTIMEVER" >&2; exit 2 ;;
 esac
 
+# Compile gettext catalogs from authoritative PO sources before staging.
+# This prevents stale MO files from hiding r10 language fixes on receivers.
+command -v msgfmt >/dev/null 2>&1 || { echo "ERROR: msgfmt is required to build translated weather catalogs" >&2; exit 1; }
+find "$PAYLOAD/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale" -type f -name '*.po' -print | sort | while IFS= read -r po; do
+  msgfmt --check -o "${po%.po}.mo" "$po"
+done
+
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT HUP INT TERM
 mkdir -p "$WORK/CONTROL" "$OUTDIR"
