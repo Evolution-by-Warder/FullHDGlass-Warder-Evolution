@@ -7490,4 +7490,36 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_blue" render="Label" position="1140,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1"><convert type="ConditionalShowHide" /></widget>
   </screen>
 
+  <screen name="MultiBootManager" position="center,210" size="1500,660" title="MultiBoot Manager">
+    <widget name="slotlist" position="30,30" size="1440,390" scrollbarMode="showOnDemand" />
+    <widget name="description" position="30,435" size="1440,105" font="Prive3;27" valign="bottom" />
+    <widget source="key_red" render="Label" position="30,570" size="210,45" font="Prive3;28" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="255,570" size="210,45" font="Prive3;28" foregroundColor="green" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="480,570" size="210,45" font="Prive3;28" foregroundColor="yellow" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="705,570" size="210,45" font="Prive3;28" foregroundColor="blue" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1050,570" size="120,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_text" render="Label" position="1185,570" size="120,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1320,570" size="120,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="KexecInit" position="center,240" size="1500,600" title="Kexec MultiBoot Manager">
+    <widget name="description" position="45,30" size="1410,435" font="Prive3;30" valign="center" />
+    <widget source="key_red" render="Label" position="45,510" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="435,510" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1320,510" size="135,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="FlashImage" position="center,360" size="1500,360" title="Flash Image">
+    <widget name="header" position="45,30" size="1410,55" font="Prive3;34" valign="center" />
+    <widget name="info" position="45,100" size="1410,165" font="Prive3;30" valign="center" />
+    <widget name="progress" position="45,300" size="1410,30" />
+  </screen>
+  <screen name="uShareSelection" position="center,150" size="1500,780" title="Select Folders">
+    <widget name="checkList" position="30,30" size="1440,600" font="Prive3;30" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="30,690" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1" />
+    <widget source="key_green" render="Label" position="420,690" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1" />
+    <widget source="key_yellow" render="Label" position="810,690" size="360,45" font="Prive3;30" foregroundColor="yellow" halign="center" transparent="1" />
+  </screen>
+  <screen name="NetworkLogScreen" position="center,150" size="1500,780" title="Network Log">
+    <widget name="infotext" position="30,30" size="1440,720" font="Prive3;29" scrollbarMode="showOnDemand" />
+  </screen>
+  <screen name="DUMMY" position="center,center" size="0,0" flags="wfNoBorder" />
 </skin>
