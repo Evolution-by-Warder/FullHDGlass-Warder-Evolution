@@ -5759,7 +5759,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.mainMenuIdx = 0
 		self.d = []
 		self.d.append(config.plugins.setupGlass17.par50.getValue())
-		self.d.append(config.plugins.setupGlass17.par88.getValue())
+		self.d.append(None) # retired weather provider slot kept for snapshot index compatibility
 		self.d.append(config.plugins.setupGlass17.par78.getValue())
 		self.d.append(config.plugins.setupGlass17.par12.getValue())
 		self.d.append(config.plugins.setupGlass17.par15.getValue())
@@ -5903,8 +5903,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.runSetup()
 		elif t in (config.plugins.setupGlass17.par14, config.plugins.setupGlass17.par4):
 			self.chckTunerLabel()
-		elif t == config.plugins.setupGlass17.par88:
-			self.reloadCities()	
       		
 	def keyLeft(self):
 		if not self.isMainMenu:
@@ -6510,8 +6508,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			filename = "65-"+str(config.plugins.setupGlass17.par86.value)
 		elif t == config.plugins.setupGlass17.par87:
 			filename = "66-0"
-		elif t == config.plugins.setupGlass17.par88:
-			filename = "67-"+({"MSN":"1", "OpenWea":"0"}[config.plugins.setupGlass17.par88.value])
 		elif t == config.plugins.setupGlass17.par71:
 			filename = "52-"+TF(config.plugins.setupGlass17.par71.value)
 		elif t == config.plugins.setupGlass17.par31:
@@ -6792,8 +6788,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				filename = "227-0"
 			else:
 				filename = "227-" + config.plugins.setupGlass17.par227.value
-		elif t == config.plugins.setupGlass17.par228:
-			filename = "228-0"
 		elif t == config.plugins.setupGlass17.par229:                             
 			filename = "229-"+config.plugins.setupGlass17.par229.value
 		if t in (config.plugins.setupGlass17.par203,config.plugins.setupGlass17.par167,config.plugins.setupGlass17.par166,config.plugins.setupGlass17.par165,config.plugins.setupGlass17.par162,config.plugins.setupGlass17.par163,config.plugins.setupGlass17.par164):
@@ -7261,8 +7255,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			msg += _("Localization of the skin") + "\n"
 		if self.d[10] != config.plugins.setupGlass17.par33.value:
 			msg += _("User info act./next switching") + "\n"
-		if self.d[1] != config.plugins.setupGlass17.par88.value:
-			msg += _("Provider")+" (%s)" % _("Weather") + "\n"
 		xxx = False
 		if self.d[12] != config.plugins.setupGlass17.par18.value:
 			msg += _("Volume type") + "\n"
