@@ -2,7 +2,7 @@
 set -u
 
 echo "******************************************************************"
-echo "*                F u l l  H D  G l a s s  1 7                   *"
+echo "*              FullHDGlass17 - Warder Evolution                 *"
 echo "******************************************************************"
 
 # Preserve the generated FullHDGlass17 user overlay across upgrades.
