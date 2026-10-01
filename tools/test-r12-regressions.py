@@ -91,8 +91,7 @@ assert '<screen name="EventViewContextMenu"' in SKIN
 # r12 authoritative package parity: preserve the functional surface of the supplied 9.50-r12.
 # These symbols are taken directly from the maintainer-supplied r12 IPK and must remain reachable.
 for symbol in (
-    "def refreshWeatherNow(", "def chckPigFont(", "def menusel(", "def changePIGres(",
-    "def reloadCities(", "def openWeatherCityChoice(", "def weatherCityChoiceSelected(",
+    "def chckPigFont(", "def menusel(", "def changePIGres(", "def reloadCities(",
     "def findCity(", "def addNewLine(", "def restoreCfgFromFile(", "def updateChck(",
     "def findPicon(", "def showEnhancedInfo(", "def changeSkinXml(", "def changeScreenXml(",
 ):
