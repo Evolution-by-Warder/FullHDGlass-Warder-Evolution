@@ -543,3 +543,17 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - fixed the same integer-formatting issue in `g17extServiceName` for frequency, symbol rate and orbital-position text. These expressions feed `%d` and therefore must not produce Python-3 floats.
 - no visual geometry, original authorship, package identity, main branch or locked 1.0.4 artifact was changed.
 - no RECEIVER PASS is claimed.
+
+
+## Renderer numeric + weather transport audit — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- continued the full Python 3 numeric audit across custom renderers rather than limiting it to converters.
+- fixed integer-only EPG minute formatting and font fallback arithmetic in `g17ShowExtraEpg`; its description truncation ratio is now explicitly floating-point only where proportional division is intended.
+- fixed `g17ShowTP` symbol-rate formatting so Python 3 does not leak a decimal `.0` into the transponder text.
+- fixed `g17MetrixHDRunningText` line-height/page geometry arithmetic to preserve the original Python 2 integer-coordinate behavior on Python 3.
+- reviewed Open-Meteo and classic WeatherScreen HTTP bytes/text handling. Open-Meteo explicitly decodes responses; the classic current Python 3 path decodes the cached current-weather response before text-file output, while JSON forecast parsing accepts its bytes response. No speculative transport rewrite was made.
+- floating-point divisions intentionally used for scaling, astronomy, network-rate calculation, orbital decimal display and MiniTV framebuffer scaling were retained.
+- no visual design, original authorship, package identity, main branch or locked 1.0.4 artifact was changed.
+- no RECEIVER PASS is claimed.
