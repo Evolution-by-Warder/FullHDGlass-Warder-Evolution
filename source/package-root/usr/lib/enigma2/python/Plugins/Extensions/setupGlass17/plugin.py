@@ -3445,7 +3445,12 @@ class ExtraInfo17(Screen):
 				self.enaIcoTun = self["tuner"].instance.size().width() != 0
 			except: pass
 			if (config.plugins.setupGlass17.par58.value and ECL) or self.enaWeainf:
-				self.clrMemTimer.startLongTimer(30)
+				# r12 behaviour: weather is populated as soon as the Infobar layout is ready.
+				# Do not leave N/A visible behind the old 30-second startup timer.
+				if self.enaWeainf:
+					self.refreshWeatherNow()
+				else:
+					self.clrMemTimer.startLongTimer(30)
 			self.cpu_count = 0
 			self.maxDynX = self.posX_DynIco - (7*self.widthDynIco)
 			self.x_dyn_pos = self.posX_DynIco - 30
@@ -4072,13 +4077,15 @@ class ExtraInfo17(Screen):
 			pass
 
 	def refreshWeatherNow(self):
-		"""Refresh the active Infobar weather after changing the configured city."""
+		"""Refresh active Infobar weather immediately for the configured city."""
 		if not self.enaWeainf:
 			return
 		try:
 			if self.clrMemTimer.isActive():
 				self.clrMemTimer.stop()
-			self.clrMemTimer.startLongTimer(1)
+			# Run now. The city-keyed cache makes startup instant when last-known
+			# data exists, while a changed city can never inherit another city's data.
+			self.clearMem()
 		except:
 			pass
 
