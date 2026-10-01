@@ -169,3 +169,14 @@ for token in (
     'restartbox.setTitle(_("Restart GUI now?"))',
 ):
     assert token in PLUGIN, token
+
+
+# Picon compatibility without taking ownership of OpenATV's /usr/share/enigma2.
+set_path = PLUGIN[PLUGIN.find("def setPathFiles("):PLUGIN.find("setPathFiles()", PLUGIN.find("def setPathFiles("))]
+assert 'links = ["/picon"]' in set_path
+assert 'links.append("/media/usb/picon")' in set_path
+assert '"/usr/share/enigma2/picon"' not in set_path
+assert '"/usr/share/enigma2/picon_50x30"' not in set_path
+find_picon = PLUGIN[PLUGIN.find("def findPicon("):PLUGIN.find("def showDyn_EMM_ECM(", PLUGIN.find("def findPicon("))]
+for fallback in ("picon_400x240", "picon_220x132", "piconSat", "piconProv"):
+    assert fallback in find_picon, fallback
