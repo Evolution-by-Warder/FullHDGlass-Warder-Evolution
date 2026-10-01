@@ -7920,16 +7920,16 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="Event" render="Label" position="795,66" size="180,39" font="Prive3;30" foregroundColor="#e5b243" transparent="1"><convert type="EventTime">EndTime</convert><convert type="ClockToText">Format:- %H:%M</convert></widget>
     <widget source="Event" render="Label" position="990,66" size="855,42" font="Prive3;33" foregroundColor="#e5b243" transparent="1"><convert type="EventName">Name</convert></widget>
     <widget source="Event" render="Label" position="615,117" size="1230,246" font="Prive3;27" foregroundColor="#cdcdcd" transparent="1"><convert type="EventName">ExtendedDescription</convert></widget>
-    <widget name="timeline_text" position="105,387" size="1755,36" backgroundColor="black" transparent="1" />
+    <widget name="timeline_text" position="75,387" size="1755,36" backgroundColor="black" transparent="1" />
     <widget name="lab1" position="15,423" size="1845,495" font="Prive3;30" halign="center" valign="center" backgroundColor="black" />
     <widget name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15" scrollbarMode="showNever" transparent="1" />
-    <widget name="timeline0" position="105,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
-    <widget name="timeline1" position="105,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
-    <widget name="timeline2" position="105,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
-    <widget name="timeline3" position="105,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
-    <widget name="timeline4" position="105,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
-    <widget name="timeline5" position="105,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
-    <widget name="timeline_now" position="105,423" zPosition="2" size="28,495" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
+    <widget name="timeline0" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline1" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline2" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline3" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline4" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline5" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline_now" position="75,423" zPosition="2" size="28,495" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
     <widget name="bouquetlist" position="15,423" size="1845,495" scrollbarMode="showNever" transparent="1" />
     <widget name="primetime" position="30,930" size="255,33" font="Prive3;22" transparent="1" /><widget name="change_bouquet" position="300,930" size="330,33" font="Prive3;22" transparent="1" /><widget name="jump" position="645,930" size="330,33" font="Prive3;22" transparent="1" /><widget name="page" position="990,930" size="330,33" font="Prive3;22" transparent="1" />
     <widget name="key_red" position="15,990" size="450,42" font="Prive3;27" halign="center" foregroundColor="red" transparent="1" /><widget name="key_green" position="480,990" size="450,42" font="Prive3;27" halign="center" foregroundColor="green" transparent="1" /><widget name="key_yellow" position="945,990" size="450,42" font="Prive3;27" halign="center" foregroundColor="yellow" transparent="1" /><widget name="key_blue" position="1410,990" size="450,42" font="Prive3;27" halign="center" foregroundColor="blue" transparent="1" />
