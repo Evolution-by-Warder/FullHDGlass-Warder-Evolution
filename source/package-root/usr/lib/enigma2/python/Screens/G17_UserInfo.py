@@ -6,6 +6,7 @@ try:
 except: pass
 from Components.Harddisk import harddiskmanager
 import os
+import subprocess
 from Components.ServiceEventTracker import ServiceEventTracker
 from Tools.Directories import fileExists
 from os import system
@@ -447,29 +448,38 @@ class UserInfo17(Screen):
 		self["HDDTemperature"].setText(t)
 
 	def getTemp(self, dev):
-		tmp1 = 0                                                 
+		tmp1 = 0
 		if dev != "None":
-			tt = '/tmp/b.tmp'
-			what = ['smartctl -a %s | grep Temperature > %s','/usr/bin/hdd_temp_hdg17 -q -n %s > %s','hddtemp -n -q %s > %s']
+			commands = [
+				("smartctl", ["smartctl", "-a", dev]),
+				("helper", ["/usr/bin/hdd_temp_hdg17", "-q", "-n", dev]),
+				("hddtemp", ["hddtemp", "-n", "-q", dev]),
+			]
 			if config.plugins.setupGlass17.par21.value:
-				what.append('/usr/bin/hdd_temp_hdg17 -q -n -w %s > %s')
-				what.append('hddtemp -q -n -w %s > %s')
-			for x in what:
+				commands.extend([
+					("helper", ["/usr/bin/hdd_temp_hdg17", "-q", "-n", "-w", dev]),
+					("hddtemp", ["hddtemp", "-q", "-n", "-w", dev]),
+				])
+			for kind, command in commands:
 				try:
-					tta = x % (dev, tt)
-					system(tta)
-					f = open(tt, 'r')
-					temp = f.readlines()
-					if "smartctl" in tta:
-						tmp1 = int((temp[0].strip().split("-")[1]).replace("\n","").replace("\t","").replace(" ",""))
+					output = subprocess.check_output(command, universal_newlines=True, stderr=subprocess.STDOUT)
+					if kind == "smartctl":
+						for line in output.splitlines():
+							if "Temperature" not in line:
+								continue
+							values = re.findall(r"-?\\d+", line)
+							if values:
+								tmp1 = int(values[-1])
+								break
 					else:
-						tmp1 = int(temp[0].strip().split(" ")[0])
-					f.close()
-				except: pass
-				system('rm -rf '+tt)
+						values = re.findall(r"-?\\d+", output)
+						if values:
+							tmp1 = int(values[0])
+				except (OSError, subprocess.CalledProcessError, ValueError):
+					tmp1 = 0
 				if tmp1 != 0:
 					break
-		return tmp1	
+		return tmp1
 
 	def getCPUInfo(self):
 		self.cpuTimer.stop()
@@ -582,14 +592,16 @@ class UserInfo17(Screen):
 		self['mem_bar'].setValue(int(ramperc))
 		
 	def getSpaceInfo(self):
-		os.system('df -h > /tmp/tempinfo.tmp')
 		usbperc = hddperc = rootperc = sdperc = 0                                                            
 		usbsumm = "USB:\n.... \n.... \n.... \n...."
 		sdsumm = "SD/CF:\n.... \n.... \n.... \n...."
 		hddsumm = config.plugins.setupGlass17.par182.value+":\n.... \n.... \n.... \n...."
-		if fileExists('/tmp/tempinfo.tmp'):
-			f = open('/tmp/tempinfo.tmp', 'r')
-			for line in f.readlines():
+		try:
+			df_lines = subprocess.check_output(["df", "-h"], universal_newlines=True, stderr=subprocess.STDOUT).splitlines()
+		except (OSError, subprocess.CalledProcessError):
+			df_lines = []
+		if df_lines:
+			for line in df_lines:
 				line = line.replace('part1', ' ')
 				parts = line.strip().split()
 				totsp = len(parts) - 1
@@ -609,8 +621,6 @@ class UserInfo17(Screen):
 					if strview.isdigit():
 						hddperc = int(parts[totsp-1].replace('%', ''))
 						hddsumm = config.plugins.setupGlass17.par182.value+":\n" + parts[totsp-4] + "B\n" +  parts[totsp-2] + "B\n" + parts[totsp-3] + "B\n" + parts[totsp-1]
-			f.close()
-			os.remove('/tmp/tempinfo.tmp')
 		self["sd"].setText(sdsumm)
 		self["usb"].setText(usbsumm)
 		self["hdd"].setText(hddsumm)
