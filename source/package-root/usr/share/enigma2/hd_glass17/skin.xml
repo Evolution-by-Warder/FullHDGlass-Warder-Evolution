@@ -7872,4 +7872,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_blue" render="Label" position="975,750" size="300,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" />
     <widget source="key_help" render="Label" position="1290,750" size="300,45" font="Prive3;30" halign="center" transparent="1" />
   </screen>
+  <screen name="EventViewContextMenu" position="center,240" size="820,640" title="EventViewContextMenu">
+<widget name="menu" position="20,20" size="780,600" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+</screen>
 </skin>
