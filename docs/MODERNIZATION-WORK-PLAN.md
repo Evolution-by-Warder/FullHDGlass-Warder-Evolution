@@ -610,3 +610,15 @@ Status: **BUILD-READY — TEST VERSION 1.0.5-test1 — RECEIVER PASS NOT CLAIMED
 - added `tools/build-test-ipk.sh`, which refuses to build unless both package and runtime versions contain `-test`, refuses unexpected package identity, rejects packaged Python bytecode artifacts, stages lifecycle metadata, builds with `opkg-build` or `dpkg-deb`, and emits a SHA256 sidecar.
 - expected test artifact name: `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test1_all.ipk`.
 - this checkpoint is build-ready only. A generated IPK must still pass archive/control/payload inspection before receiver installation, and only the physical GigaBlue Quad 4K Pro / OpenATV 8.x test can establish RECEIVER PASS.
+
+
+## Reproducible TEST package build path — 2026-10-01
+
+Status: **BUILD WORKFLOW READY — EXECUTION PENDING**
+
+- verified the exact working-branch Git tree is complete and non-truncated: 1,490 tree entries total, including 1,310 package/control blobs (~16.9 MB).
+- direct connector materialization cannot safely reconstruct the package because binary repository blobs (PNG/font/MO and similar) are intentionally not exposed as UTF-8 file content. No lossy or text-only reconstruction is permitted.
+- added `.github/workflows/build-test-ipk.yml` on `warder-modernization-work` only. It is manual `workflow_dispatch` and refuses to run as the package job unless the ref is the working branch.
+- workflow preflight verifies package identity, TEST versioning, locked stable `update.json` version 1.0.4, absence of committed bytecode, Python compilation, XML parsing and lifecycle/build shell syntax; generated compile bytecode is removed before packaging.
+- workflow builds through the guarded `tools/build-test-ipk.sh`, inspects package metadata/payload, verifies the SHA256 sidecar and uploads the IPK + checksum + payload listing as a 14-day TEST artifact.
+- no stable updater metadata or `main` content was changed. Workflow execution/artifact generation is still pending; no BUILD PASS or RECEIVER PASS is claimed until the run actually succeeds.
