@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 42
-Purpose: strict r12 country-first parity: Slovakia, Czechia, then every remaining country directly; complete Enhanced Weather country/city database; Warder-only package version.
+Revision: 43
+Purpose: strict r12 country parity, country-aware manual city insertion, complete Enhanced Weather database, Warder-only package version and Git updater readiness.
