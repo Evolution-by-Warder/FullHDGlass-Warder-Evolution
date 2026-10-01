@@ -725,3 +725,14 @@ Status: **STATIC HARDENING PASS — BUILD/RECEIVER TEST STILL REQUIRED**
 - native IPK builder now writes numeric root ownership explicitly, uses `ar rcs`, and produces a portable SHA256 sidecar containing only the package basename.
 - builder and verifier both require exact pairing between runtime `1.0.5-test1` and opkg control suffix `warder1.0.5-test1`; verifier checks the portable checksum from the package directory.
 - no RECEIVER PASS or BUILD PASS is claimed until the workflow produces and verifies the actual IPK artifact.
+
+
+## Release-consistency blocker closure — 2026-10-01
+
+Status: **STATIC RELEASE GATES READY — ACTUAL CI BUILD NOT YET RUN**
+
+- fixed Warder updater version ordering so TEST prereleases sort below their matching stable release: `1.0.4 < 1.0.5-test1 < 1.0.5-test2 < 1.0.5 < 1.0.6`; `v1.0.5` equals `1.0.5` and malformed versions fall back safely.
+- added `tools/test-version-order.py` and wired it into TEST CI.
+- rebuilt `tools/verify-test-ipk.sh` cleanly after the release-consistency audit detected a malformed/duplicated verifier body; checksum, package identity, control/runtime version pairing, conffile, lifecycle scripts, payload essentials and bytecode exclusion are checked once in deterministic order.
+- rechecked TEST builder/workflow and stable `update.json`; stable remains `1.0.4` with its locked SHA256 and no TEST advertisement.
+- current HEAD has no workflow run yet; therefore BUILD PASS remains intentionally unclaimed until the manual TEST workflow is dispatched on `warder-modernization-work`.
