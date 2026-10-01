@@ -50,19 +50,22 @@ mkdir -p "$BUILD"
 printf '2.0\\n' > "$BUILD/debian-binary"
 (
   cd "$WORK/CONTROL"
-  tar --format=gnu --owner=0 --group=0 -czf "$BUILD/control.tar.gz" .
+  tar --format=gnu --owner=0 --group=0 --numeric-owner -czf "$BUILD/control.tar.gz" .
 )
 (
   cd "$WORK"
-  tar --format=gnu --owner=0 --group=0 --exclude='./CONTROL' --exclude='./.ipk-build' -czf "$BUILD/data.tar.gz" .
+  tar --format=gnu --owner=0 --group=0 --numeric-owner --exclude='./CONTROL' --exclude='./.ipk-build' -czf "$BUILD/data.tar.gz" .
 )
 rm -f "$OUT"
 (
   cd "$BUILD"
-  ar -r "$OUT" debian-binary control.tar.gz data.tar.gz
+  ar rcs "$OUT" debian-binary control.tar.gz data.tar.gz
 )
 
 test "$(ar t "$OUT" | tr '\\n' ' ')" = "debian-binary control.tar.gz data.tar.gz "
-sha256sum "$OUT" > "$OUT.sha256"
+(
+  cd "$OUTDIR"
+  sha256sum "$(basename "$OUT")" > "$(basename "$OUT").sha256"
+)
 echo "Built TEST package only:"
 cat "$OUT.sha256"
