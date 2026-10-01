@@ -41,6 +41,13 @@ WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT HUP INT TERM
 mkdir -p "$WORK/CONTROL" "$OUTDIR"
 cp -a "$PAYLOAD"/. "$WORK"/
+
+# r12 parity: ship the Enhanced Weather SK/CZ database alongside the Classic
+# Weather database. It is deterministically derived from city_Code-17.txt so
+# both databases stay synchronized without maintaining duplicate source data.
+python3 "$ROOT/tools/generate-ewea-city.py" \
+    "$PAYLOAD/etc/city_Code-17.txt" "$WORK/etc/ewea_city_Code-17.txt"
+
 cp "$CONTROL/control" "$WORK/CONTROL/control"
 for f in conffiles preinst postinst postrm; do
   if [ -f "$CONTROL/$f" ]; then
