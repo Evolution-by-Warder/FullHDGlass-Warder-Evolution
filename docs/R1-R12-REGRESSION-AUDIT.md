@@ -174,3 +174,7 @@ Receiver validation remains separate and is required before any receiver PASS is
 ## TEST20 packaging regression guard
 
 The TEST package gate now distinguishes the skin runtime/updater identity from opkg's package revision syntax. Runtime/updater versions retain `1.0.5-testXX`; IPK control metadata appends numeric revision `-1`, so the final hyphen is reserved for opkg package revision and the visible/base version remains `1.0.5-testXX`. This is packaging-only and must not alter the receiver-verified TEST18 weather or TEST19 PIG implementation.
+
+### TEST20 CI result
+
+Workflow #80 / run `36923438508` completed SUCCESS on commit `815e097ef80b8a14ead21af806af649bbdb8d906`. The final published TEST20 IPK SHA256 is `32ed703e06955c7e2675b5997ea10fc510e7269aeb71b5d327fe17b5e1b1869c`. Final-package inspection confirms control `Version: 1.0.5-test20-1` and runtime `1.0.5-test20`. Receiver confirmation remains separate.

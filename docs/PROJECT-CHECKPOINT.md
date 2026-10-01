@@ -123,3 +123,13 @@ This section supersedes older development-status/TODO text above where they conf
 - TEST20 changes package metadata only: runtime/updater identity is `1.0.5-test20`, while IPK control metadata is `Version: 1.0.5-test20-1`. This leaves `1.0.5-test20` in opkg's base-version component and uses numeric package revision `1`.
 - Build/verification gates now explicitly enforce the separation between runtime/updater version and package metadata version. Package filename remains keyed to runtime identity: `..._1.0.5-test20_all.ipk`.
 - TEST20 must not be marked receiver PASS until the physical GigaBlue confirms the opkg presentation and normal operation.
+
+### TEST20 CI publication status
+
+- Corrected workflow commit: `815e097ef80b8a14ead21af806af649bbdb8d906`.
+- GitHub Actions build #80 / run `36923438508`: **SUCCESS**.
+- CI publication commit: `7b69e392c3c96ca811d46d300f8c939e273d5b73`.
+- Published package: `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test20_all.ipk`.
+- SHA256: `32ed703e06955c7e2675b5997ea10fc510e7269aeb71b5d327fe17b5e1b1869c`.
+- Extracted final IPK verified: control `Version: 1.0.5-test20-1`; payload runtime version `1.0.5-test20`; `update-test.json` version `1.0.5-test20`.
+- CI/static/package validation is PASS. Receiver validation of the corrected opkg display is still pending and must not be marked PASS until physically confirmed.
