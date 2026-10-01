@@ -441,3 +441,17 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - added FHD `MinuteInput` using its verified current `minutes` widget contract.
 - `HelpMenu` remains under active review because current `ShowRemoteControl` dynamically creates remote-control indicator widgets; it must not be replaced by a partial speculative layout.
 - no RECEIVER PASS is claimed.
+
+
+## Playback / video / utility reconciliation — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- audited current OpenATV PVRState, Playback, Processing, ScreenSaver, SkinSelection, Standby, SubtitleDisplay, TagEditor, Toast, UnhandledKey, VideoMode, VirtualKeyBoard, VolumeControl and Wizard modules.
+- confirmed PlaybackSettings, SkinSelection and VolumeAdjustSettings are Setup-derived and remain on shared Warder Setup.
+- confirmed ScreenSaver runtime fallback `[ScreenSaver, Screensaver]`, VirtualKeyboard/VirtualKeyBoard compatibility and existing direct coverage for the active PVR/timeshift, processing, standby, subtitle, tag, toast, unhandled-key and virtual keyboard screens.
+- added FHD `AutoVideoModeLabel` for the current autostart-instantiated resolution notification using its verified `content/restxt` widget contract.
+- `AutoVideoMode` itself has no GUI widgets and is not given a speculative external screen.
+- `VolumeAdjustServiceSelection` has a current embedded skin and fallback aliases; no duplicate external override was added without a demonstrated need.
+- Wizard family remains a specialized runtime path and is not collapsed into generic Setup.
+- no RECEIVER PASS is claimed.
