@@ -925,8 +925,8 @@ self.instance.move(ePoint((1920-wsizex)/2, (1080-wsizey)/2))
     <widget name="key_red" position="145,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
     <widget name="key_green" position="1137,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
   </screen>
-  <screen name="HarddiskSelection" position="center,195" size="900,750" title="Select HDD">
-    <widget name="hddlist" position="15,18" size="870,712" />
+  <screen name="HarddiskSelection" position="center,120" size="1500,840" title="Select HDD">
+    <widget name="hddlist" position="45,45" size="1410,750" />
   </screen>
   <screen name="HarddiskSetup" position="510,201" size="900,753" title="Harddisk">
     <widget name="model" position="15,30" size="870,42" font="Prive3;30" halign="center" />
@@ -935,20 +935,17 @@ self.instance.move(ePoint((1920-wsizex)/2, (1080-wsizey)/2))
     <widget name="initializetext" position="15,690" size="870,45" zPosition="1" font="Prive3;27" halign="center" transparent="1" foregroundColor="red" />
     <widget name="initialize" pixmap="hd_glass17/buttons/red.png" position="0,0" size="0,0" />
   </screen>
-  <screen name="HarddiskWait" position="center,195" size="900,750">
-    <widget name="wait" position="15,18" size="870,712" font="Prive3;34" />
+  <screen name="HarddiskWait" position="center,120" size="1500,840">
+    <widget name="wait" position="45,45" size="1410,750" font="Prive3;34" />
   </screen>
-  <screen name="LanguageSelection" position="center,195" size="900,750" title="Language selection">
-    <widget source="languages" render="Listbox" position="0,3" size="900,750" scrollbarMode="showOnDemand">
+  <screen name="LanguageSelection" position="center,120" size="1500,840" title="Language selection">
+    <widget source="languages" render="Listbox" position="45,30" size="1410,780" scrollbarMode="showOnDemand">
       <convert type="TemplatedMultiContent">
-				{"template": [
-				MultiContentEntryText(pos = (120, 15), size = (300, 75), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the language name,
-				MultiContentEntryPixmap(pos = (15, 7), size = (90, 60), png = 2), # index 2 is the pixmap
-				],
-				"fonts": [gFont("Prive3", 30)],
-				"itemHeight": 75
-				}
-			</convert>
+        {"template": [
+          MultiContentEntryText(pos = (135, 15), size = (1170, 75), flags = RT_HALIGN_LEFT, text = 1),
+          MultiContentEntryPixmap(pos = (15, 7), size = (90, 60), png = 2),
+        ], "fonts": [gFont("Prive3", 31)], "itemHeight": 75}
+      </convert>
     </widget>
   </screen>
   <screen name="MessageBox" position="center,232" size="1400,550" title="Message">
@@ -1591,14 +1588,14 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="key0" position="303,183" size="300,60" font="Console;27" halign="center" valign="center" />
     <widget name="help2" position="603,183" size="300,60" font="Console;30" halign="center" valign="center" />
   </screen>
-  <screen name="ParentalControlChangePin" position="center,195" size="900,750" title="Change pin code">
-    <widget name="config" position="15,10" size="870,720" font="Prive3;33" itemHeight="40" />
+  <screen name="ParentalControlChangePin" position="center,120" size="1500,840" title="Change pin code">
+    <widget name="config" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
-  <screen name="ParentalControlEditor" position="center,195" size="900,750" title="Parental control services Editor">
-    <widget name="servicelist" position="15,18" size="870,712" font="Prive3;33" itemHeight="40" />
+  <screen name="ParentalControlEditor" position="center,120" size="1500,840" title="Parental control services Editor">
+    <widget name="servicelist" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
-  <screen name="ParentalControlSetup" position="center,195" size="900,750" title="Parental control setup">
-    <widget name="config" position="15,10" size="870,720" font="Prive3;33" itemHeight="40" />
+  <screen name="ParentalControlSetup" position="center,120" size="1500,840" title="Parental control setup">
+    <widget name="config" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
 
   <screen name="PluginBrowser" position="0,0" size="1920,1080" backgroundColor="background" title="Plugin browser">
@@ -1743,9 +1740,9 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="config" position="15,247" size="870,360" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
     <widget name="introduction" position="0,0" size="0,0" font="Prive3;34" />
   </screen>
-  <screen name="ScanSetup" position="center,195" size="900,750" title="Service scan">
-    <widget name="config" position="15,15" size="870,640" font="Prive3;33" itemHeight="40" />
-    <widget name="introduction" position="15,690" size="870,42" font="Prive3;33" halign="center" />
+  <screen name="ScanSetup" position="center,120" size="1500,840" title="Service scan">
+    <widget name="config" position="45,30" size="1410,690" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget name="introduction" position="45,750" size="1410,55" font="Prive3;32" halign="center" />
   </screen>
   <screen name="ScanSimple" position="center,195" size="1380,750" title="Service scan">
     <widget name="header" position="15,15" size="1350,37" font="Prive3;34" />
@@ -1856,8 +1853,8 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
       <convert type="ServiceName">Name</convert>
     </widget>
   </screen>
-  <screen name="Subtitles" position="center,195" size="900,750" title="Subtitle selection">
-    <widget name="config" position="30,30" zPosition="1" font="Prive3;33" itemHeight="40" size="840,680" scrollbarMode="showOnDemand" />
+  <screen name="Subtitles" position="center,120" size="1500,840" title="Subtitle selection">
+    <widget name="config" position="45,45" zPosition="1" font="Prive3;34" itemHeight="45" size="1410,750" scrollbarMode="showOnDemand" />
   </screen>
 	<screen backgroundColor="transparent" flags="wfNoBorder" name="SubtitleDisplay" position="0,0" size="1920,1080" zPosition="-1" />
   <screen name="TimerEdit" position="135,150" size="1650,840" title="Timer Edit">
