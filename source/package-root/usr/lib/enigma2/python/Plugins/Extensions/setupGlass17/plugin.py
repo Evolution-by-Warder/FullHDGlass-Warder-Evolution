@@ -1618,9 +1618,7 @@ def chckScroll20():
 					line = line.replace("!--", "").replace("--", "")
 				allLines = allLines + line
 			r.close()
-			r = open(SKINXML,"w")
-			r.write(allLines)
-			r.close()
+			_atomicWriteText(SKINXML, allLines)
 		except: pass
 	return ena		
 ##########################################################################################################################
@@ -1640,9 +1638,7 @@ def setONOFF():
 						ena = True
 				allLines += line
 			r.close()
-			r = open(SKINXML,"w")
-			r.write(allLines)
-			r.close()
+			_atomicWriteText(SKINXML, allLines)
 		except: pass
 	return ena
 ##########################################################################################################################
@@ -2122,9 +2118,7 @@ def changePIGres():
 			else:
 				ena = False
 		r.close()
-		r = open(SKINXML,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(SKINXML, allLines)
 	except: pass
 	return "p"
 ##########################################################################################################################
@@ -2311,9 +2305,7 @@ def chckVolMute():
 					line = line.replace('position="1200,120"',newData)
 				allLines += line
 			r.close()
-			r = open(SKINXML,"w")
-			r.write(allLines)
-			r.close()
+			_atomicWriteText(SKINXML, allLines)
 			return True
 		except: pass
 	return False
@@ -2334,9 +2326,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				ena = False
 			allLines += line
 		r.close()
-		r = open(SKINXML,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(SKINXML, allLines)
 	except: pass
 	return "c"
 		
@@ -2382,9 +2372,7 @@ def changeChF():
 			else:
 				allLines += line
 		r.close()
-		r = open(SKINXML,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(SKINXML, allLines)
 	except: pass
 	return "o"
    	
@@ -2466,9 +2454,7 @@ def setFontEventEpgsel(val):
 				line = line.replace('name="list"','name="list" setEventItemFont="Prive4;30"')
 			allLines += line
 		r.close()
-		r = open(SKINXML,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(SKINXML, allLines)
 	except: pass
 	return "f"
 	
@@ -2486,9 +2472,7 @@ def setFontListEpg(val):
 			else:
 				allLines += line
 		r.close()
-		r = open(SKINXML,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(SKINXML, allLines)
 	except: pass
 	return "el"
 
@@ -2553,9 +2537,7 @@ def lbs():
 			elif line.__contains__('</components>'):
 				ena2 = False
 		r.close()
-		r = open(SKINXML,"w")
-		r.write(allLines)
-		r.close()
+		_atomicWriteText(SKINXML, allLines)
 	except: pass
 	return _("Listbox font size") + "\n"
 
@@ -2595,9 +2577,7 @@ def chckFifo():
 					allLines += line
 			r.close()
 			if ena:
-				r = open(f,"w")
-				r.write(allLines)
-				r.close()
+				_atomicWriteText(f, allLines)
 		except: pass
 	return ena
 
