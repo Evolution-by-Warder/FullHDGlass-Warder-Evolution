@@ -2614,16 +2614,21 @@ class AutoStartChck17():
 			msg += _("Set binaries") + "\n"
 		ver, x = readHWtype()
 		isOk = ver != "Dream Multimedia"
-		if (os.path.exists(PYTHONPATH+'Plugins/PLi') or isATV) and not isOk:
-			try:
-				shutil.copy2("/etc/enigma2/skin_user-17%s.xml" % ({False:'2', True:'3'}[IS800SE or "dm820" in x]), USERHDG)
-			except OSError:
-				pass
-		elif isOk:
-			try:
-				shutil.copy2("/etc/enigma2/skin_user-172.xml", USERHDG)
-			except OSError:
-				pass
+		# Seed the generated FullHDGlass17 overlay only on first use.
+		# Existing USERHDG is user state (and a package conffile) and must survive
+		# GUI restarts, package upgrades and hardware detection.
+		if not os.path.exists(USERHDG):
+			if (os.path.exists(PYTHONPATH+'Plugins/PLi') or isATV) and not isOk:
+				template = "/etc/enigma2/skin_user-17%s.xml" % ({False:'2', True:'3'}[IS800SE or "dm820" in x])
+			elif isOk:
+				template = "/etc/enigma2/skin_user-172.xml"
+			else:
+				template = None
+			if template and os.path.isfile(template):
+				try:
+					shutil.copy2(template, USERHDG)
+				except OSError:
+					pass
 		for i in ("sh4","arm","aarch64"):
 			for target in ("/usr/bin/btrGen17-%s" % i, "/usr/bin/hdd_temp_hdg17-%s" % i):
 				try:
