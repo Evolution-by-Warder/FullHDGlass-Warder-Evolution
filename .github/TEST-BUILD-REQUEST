@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test9
-Revision: 58
-Purpose: Fix OpenATV opkg 0.10.0/libsolv argv order verified on GigaBlue Quad 4K Pro: global force options must precede install sub-command.
+Candidate: 1.0.5-test10
+Revision: 59
+Purpose: Version-only receiver updater end-to-end validation from installed TEST9; no functional runtime changes.
