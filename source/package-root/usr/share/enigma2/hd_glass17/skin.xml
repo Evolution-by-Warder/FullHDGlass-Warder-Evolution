@@ -625,28 +625,26 @@
    </screen>
    
   <!-- Adapter setup -->
-  <screen name="AdapterSetup" position="center,210" size="840,720" title="Network Setup">
-    <widget source="key_red" render="Label" position="15,652" zPosition="2" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
-    <widget source="key_blue" render="Label" position="427,652" zPosition="2" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
-    <widget name="config" position="15,0" size="810,240" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget source="DNS1text" render="Label" position="15,262" size="285,31" zPosition="1" font="Prive3;28" halign="left" valign="center" backgroundColor="un25062748" transparent="1" />
-    <widget source="DNS2text" render="Label" position="15,300" size="285,31" zPosition="1" font="Prive3;28" halign="left" valign="center" backgroundColor="un25062748" transparent="1" />
-    <widget source="DNS1" render="Label" position="607,262" size="217,31" zPosition="1" font="Prive3;27" halign="right" valign="center" backgroundColor="un25062748" transparent="1" />
-    <widget source="DNS2" render="Label" position="607,300" size="217,31" zPosition="1" font="Prive3;27" halign="right" valign="center" backgroundColor="un25062748" transparent="1" />
-    <widget source="introduction" render="Label" position="0,352" size="840,33" font="Prive3;30" halign="center" />
-    <widget source="IPtext" render="Label" position="180,397" size="285,31" zPosition="1" font="Prive3;28" />
-    <widget source="Netmasktext" render="Label" position="180,435" size="285,31" zPosition="1" font="Prive3;28" />
-    <widget source="Gatewaytext" render="Label" position="180,472" size="285,31" zPosition="1" font="Prive3;28" />
-    <widget source="IP" render="Label" position="480,397" size="285,31" zPosition="1" font="Prive3;28" />
-    <widget source="Mask" render="Label" position="480,435" size="285,31" zPosition="1" font="Prive3;28" />
-    <widget source="Gateway" render="Label" position="480,472" size="285,31" zPosition="1" font="Prive3;28" />
-    <widget source="Adaptertext" render="Label" position="15,532" size="180,31" zPosition="10" font="Prive3;30" halign="left" backgroundColor="un25062748" transparent="1" />
-    <widget source="Adapter" render="Label" position="180,532" size="600,31" zPosition="10" font="Prive3;30" halign="left" backgroundColor="un25062748" transparent="1" />
-    <widget source="introduction2" render="Label" position="15,585" size="810,31" zPosition="10" font="Prive3;33" halign="center" backgroundColor="un25062748" transparent="1" />
-    <widget source="VKeyIcon" render="Pixmap" pixmap="hd_glass17/buttons/key_text.png" position="15,585" zPosition="10" size="52,37" transparent="1" alphatest="on">
-      <convert type="ConditionalShowHide" />
-    </widget>
-    <widget name="HelpWindow" pixmap="hd_glass17/vkey_icon.png" position="240,472" zPosition="1" size="1,1" transparent="1" alphatest="on" />
+  <screen name="AdapterSetup" position="center,90" size="1500,900" title="Network Setup">
+    <widget name="config" position="45,30" size="1410,315" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget source="DNS1text" render="Label" position="90,370" size="420,38" zPosition="1" font="Prive3;30" halign="left" valign="center" transparent="1" />
+    <widget source="DNS2text" render="Label" position="90,415" size="420,38" zPosition="1" font="Prive3;30" halign="left" valign="center" transparent="1" />
+    <widget source="DNS1" render="Label" position="990,370" size="420,38" zPosition="1" font="Prive3;30" halign="right" valign="center" transparent="1" />
+    <widget source="DNS2" render="Label" position="990,415" size="420,38" zPosition="1" font="Prive3;30" halign="right" valign="center" transparent="1" />
+    <widget source="introduction" render="Label" position="45,470" size="1410,42" font="Prive3;31" halign="center" />
+    <widget source="IPtext" render="Label" position="300,535" size="390,38" zPosition="1" font="Prive3;30" />
+    <widget source="Netmasktext" render="Label" position="300,580" size="390,38" zPosition="1" font="Prive3;30" />
+    <widget source="Gatewaytext" render="Label" position="300,625" size="390,38" zPosition="1" font="Prive3;30" />
+    <widget source="IP" render="Label" position="765,535" size="435,38" zPosition="1" font="Prive3;30" />
+    <widget source="Mask" render="Label" position="765,580" size="435,38" zPosition="1" font="Prive3;30" />
+    <widget source="Gateway" render="Label" position="765,625" size="435,38" zPosition="1" font="Prive3;30" />
+    <widget source="Adaptertext" render="Label" position="90,690" size="240,38" zPosition="10" font="Prive3;31" halign="left" transparent="1" />
+    <widget source="Adapter" render="Label" position="345,690" size="1065,38" zPosition="10" font="Prive3;31" halign="left" transparent="1" />
+    <widget source="introduction2" render="Label" position="90,745" size="1320,42" zPosition="10" font="Prive3;32" halign="center" transparent="1" />
+    <widget source="VKeyIcon" render="Pixmap" pixmap="hd_glass17/buttons/key_text.png" position="90,745" zPosition="10" size="52,37" transparent="1" alphatest="on"><convert type="ConditionalShowHide" /></widget>
+    <widget name="HelpWindow" pixmap="hd_glass17/vkey_icon.png" position="300,625" zPosition="1" size="1,1" transparent="1" alphatest="on" />
+    <widget source="key_red" render="Label" position="180,825" zPosition="2" size="480,50" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_blue" render="Label" position="840,825" zPosition="2" size="480,50" font="Prive3;32" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
   <screen name="AdapterSetupConfiguration" position="center,120" size="1500,840" title="Network Configuration...">
     <widget source="key_red" render="Label" position="525,765" size="450,50" font="Prive3;32" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
@@ -1511,38 +1509,16 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget source="introduction" render="Label" position="45,735" size="1410,75" zPosition="10" font="Prive3;31" halign="center" valign="center" transparent="1" />
   </screen>
   <!-- Network adapter test Black = "#000000" Grey = "#8c8c93" Green = "#1cff1c" Red = #f23d21-->
-  <screen name="NetworkAdapterTest" position="center,center" size="900,550" backgroundColor="background" title="Network test...">
-    <widget name="Adaptertext" position="15,105" size="180,31" zPosition="1" font="Prive3;28" foregroundColors="#8c8c93,#1cff1c" />
-    <widget name="Adapter" position="195,105" size="405,31" zPosition="1" font="Prive3;28" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" />
-    <widget name="AdapterInfo_Text" position="660,105" size="165,31" zPosition="2" font="Prive3;28" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" />
-    <widget name="AdapterInfo" position="660,105" zPosition="2" size="165,31" transparent="1" />
-    <widget name="AdapterInfo_OK" pixmap="hd_glass17/icons/lock_on.png" position="600,97" size="57,46" alphatest="on" zPosition="2" />
-    <widget name="Networktext" position="15,180" size="180,31" zPosition="1" font="Prive3;28" foregroundColors="#8c8c93,#1cff1c" />
-    <widget name="Network" position="240,180" size="360,31" zPosition="1" font="Prive3;28" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" />
-    <widget name="NetworkInfo_Text" position="660,180" size="165,31" zPosition="2" font="Prive3;28" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" />
-    <widget name="NetworkInfo" position="660,180" zPosition="2" size="165,31" transparent="1" />
-    <widget name="NetworkInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="600,172" size="57,46" alphatest="on" zPosition="2" />
-    <widget name="Dhcptext" position="15,255" size="180,31" zPosition="1" font="Prive3;28" foregroundColors="#8c8c93,#1cff1c" />
-    <widget name="Dhcp" position="240,255" size="360,31" zPosition="1" font="Prive3;28" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" />
-    <widget name="DhcpInfo_Text" position="660,255" size="165,31" zPosition="2" font="Prive3;28" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" />
-    <widget name="DhcpInfo" position="660,255" zPosition="2" size="165,31" transparent="1" />
-    <widget name="DhcpInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="600,247" size="57,46" alphatest="on" zPosition="2" />
-    <widget name="IPtext" position="15,330" size="180,31" zPosition="1" font="Prive3;28" foregroundColors="#8c8c93,#1cff1c" />
-    <widget name="IP" position="240,330" size="360,31" zPosition="1" font="Prive3;28" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" />
-    <widget name="IPInfo_Text" position="660,330" size="165,31" zPosition="2" font="Prive3;28" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" />
-    <widget name="IPInfo" position="660,330" zPosition="2" size="165,31" transparent="1" />
-    <widget name="IPInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="600,322" size="57,46" alphatest="on" zPosition="2" />
-    <widget name="DNStext" position="15,405" size="180,31" zPosition="1" font="Prive3;28" foregroundColors="#8c8c93,#1cff1c" />
-    <widget name="DNS" position="240,405" size="360,31" zPosition="1" font="Prive3;28" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" />
-    <widget name="DNSInfo_Text" position="660,405" size="165,31" zPosition="2" font="Prive3;28" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" />
-    <widget name="DNSInfo" position="660,405" zPosition="2" size="165,31" transparent="1" />
-    <widget name="DNSInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="600,397" size="57,46" alphatest="on" zPosition="2" />
-    <widget name="InfoTextBorder" pixmap="hd_glass17/border_info.png" position="15,75" zPosition="20" size="825,450" alphatest="on" />
-    <widget name="InfoText" position="22,82" size="811,435" zPosition="25" font="Prive3;31" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,500" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,500" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget name="EditSettingsButton" pixmaps="hd_glass17/buttons/blue.png,hd_glass17/buttons/blue_pressed.png" position="637,500" zPosition="1" size="0,0" transparent="1" alphatest="on" />
-    <widget name="EditSettings_Text" position="600,500" size="300,40" zPosition="2" font="Prive4;32" valign="center" halign="center" transparent="1" foregroundColors="#000000,#8c8c93,#0064c7" />
+  <screen name="NetworkAdapterTest" position="center,120" size="1500,840" backgroundColor="background" title="Network test...">
+    <widget name="Adaptertext" position="120,105" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" />
+    <widget name="Adapter" position="420,105" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" />
+    <widget name="AdapterInfo_Text" position="1110,105" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="AdapterInfo" position="1110,105" zPosition="2" size="240,38" transparent="1" /><widget name="AdapterInfo_OK" pixmap="hd_glass17/icons/lock_on.png" position="1020,97" size="57,46" alphatest="on" zPosition="2" />
+    <widget name="Networktext" position="120,200" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" /><widget name="Network" position="420,200" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" /><widget name="NetworkInfo_Text" position="1110,200" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="NetworkInfo" position="1110,200" zPosition="2" size="240,38" transparent="1" /><widget name="NetworkInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="1020,192" size="57,46" alphatest="on" zPosition="2" />
+    <widget name="Dhcptext" position="120,295" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" /><widget name="Dhcp" position="420,295" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" /><widget name="DhcpInfo_Text" position="1110,295" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="DhcpInfo" position="1110,295" zPosition="2" size="240,38" transparent="1" /><widget name="DhcpInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="1020,287" size="57,46" alphatest="on" zPosition="2" />
+    <widget name="IPtext" position="120,390" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" /><widget name="IP" position="420,390" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" /><widget name="IPInfo_Text" position="1110,390" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="IPInfo" position="1110,390" zPosition="2" size="240,38" transparent="1" /><widget name="IPInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="1020,382" size="57,46" alphatest="on" zPosition="2" />
+    <widget name="DNStext" position="120,485" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" /><widget name="DNS" position="420,485" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" /><widget name="DNSInfo_Text" position="1110,485" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="DNSInfo" position="1110,485" zPosition="2" size="240,38" transparent="1" /><widget name="DNSInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="1020,477" size="57,46" alphatest="on" zPosition="2" />
+    <widget name="InfoTextBorder" pixmap="hd_glass17/border_info.png" position="75,70" zPosition="20" size="1350,570" alphatest="on" /><widget name="InfoText" position="90,85" size="1320,540" zPosition="25" font="Prive3;31" />
+    <widget source="key_red" render="Label" foregroundColor="red" position="120,750" size="360,50" font="Prive4;32" valign="center" halign="center" transparent="1" /><widget source="key_green" render="Label" foregroundColor="green" position="570,750" size="360,50" font="Prive4;32" valign="center" halign="center" transparent="1" /><widget name="EditSettingsButton" pixmaps="hd_glass17/buttons/blue.png,hd_glass17/buttons/blue_pressed.png" position="0,0" zPosition="1" size="0,0" transparent="1" alphatest="on" /><widget name="EditSettings_Text" position="1020,750" size="360,50" zPosition="2" font="Prive4;32" valign="center" halign="center" transparent="1" foregroundColors="#000000,#8c8c93,#0064c7" />
   </screen> 
   <!-- Network setup -->
   <screen name="NetworkSetup" position="center,180" size="1350,720" title="Network Setup">
