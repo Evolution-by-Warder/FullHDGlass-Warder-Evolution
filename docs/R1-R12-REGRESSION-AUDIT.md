@@ -183,3 +183,7 @@ Workflow #80 / run `36923438508` completed SUCCESS on commit `815e097ef80b8a14ea
 ### TEST20 physical receiver result
 
 GigaBlue Quad 4K Pro / OpenATV receiver validation is **PASS**. The real install transition was displayed as `1.0.5-test19 -> 1.0.5-test20`, GUI restarted normally, and installed package status reports raw control version `1.0.5-test20-1` with `install ok installed`. This closes the package-version presentation regression without reopening the already receiver-approved TEST18 weather/city or TEST19 PIG behavior.
+
+
+### TEST21 physical receiver result — PASS (2026-10-01)
+GigaBlue Quad 4K Pro / OpenATV 8.x confirmed the previously missing OpenATV MediaScanner `MessageBoxModal` is now skinned consistently with FullHDGlass17. The real local-extension workflow was visually checked through media selection, “The following files were found...” modal and the existing installer list. The installer screen was not changed. User explicitly approved the result as OK. TEST21 is locked as RECEIVER / VISUAL PASS; TEST18–TEST20 remain locked.

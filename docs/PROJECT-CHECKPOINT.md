@@ -146,3 +146,14 @@ Physical receiver validation on GigaBlue Quad 4K Pro / OpenATV completed success
 - `opkg status enigma2-skin-fullhdglass17` reports `Version: 1.0.5-test20-1` and `Status: install ok installed`.
 - **TEST20 package-version correction: RECEIVER PASS.** The earlier TEST19 display defect is closed.
 - TEST18 weather/city PASS and TEST19 all-four-PIG-variants PASS remain locked; TEST20 made packaging/version-gate changes only.
+
+
+## TEST21 — OpenATV MediaScanner MessageBoxModal — RECEIVER / VISUAL PASS (2026-10-01)
+- Physical receiver: GigaBlue Quad 4K Pro / OpenATV 8.x.
+- TEST21 installed over TEST20; existing FullHDGlass17 settings preserved.
+- CI #83 completed successfully; published TEST21 SHA256: `3acfc75d73ac70db5cb136c7b03f1dabe1aea8b449fb12040889d09aa5e7b46b`.
+- Verified real workflow: Software management -> Install local extensions -> media selection -> MediaScanner modal -> OpkgInstaller list.
+- `MessageBoxModal` now uses FullHDGlass17 visual language instead of generic image fallback. Question icon, message text and selectable list render correctly.
+- Existing `OpkgInstaller` screen remained unchanged and visually correct.
+- User explicitly approved the receiver result as OK. TEST21 is RECEIVER / VISUAL PASS.
+- Locked prior passes remain valid: TEST18 weather/city, TEST19 PIG variants, TEST20 package-version metadata.
