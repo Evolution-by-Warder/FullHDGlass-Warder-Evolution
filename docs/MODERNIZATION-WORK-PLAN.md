@@ -692,3 +692,14 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - generated OLED/user XML rewrite paths touched by the same helpers now use atomic replacement as well.
 - OpenATV now refuses the legacy `Service scan long list` mechanism that rewrites image-owned `Screens/ServiceScan.py`; the legacy option is disabled instead.
 - TEST runtime-safety gate now rejects direct write-mode opens of `SKINXML` and requires the OpenATV ServiceScan ownership guard.
+
+
+## Atomic user/config state batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- migrated `g17Screens.cfg` style-selection state to atomic replacement.
+- migrated exported `hdg17.conf` FullHDGlass configuration snapshots to atomic replacement.
+- migrated city-list edit and append operations for `/etc/my_city_Code.txt` to atomic replacement; append success is reported only after the atomic commit succeeds and the resulting file contains the requested entry.
+- corrected the city append newline during post-change verification before the TEST candidate reached CI/receiver testing.
+- TEST runtime-safety gate now rejects reintroduction of direct truncate/append writes for these FullHDGlass state files.
