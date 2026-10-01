@@ -6945,11 +6945,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			return (0, 0, 0, 0, 0)
 
 	def _warderFetchJson(self, url):
+		official_manifest = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"
+		if str(url) != official_manifest:
+			raise ValueError("unsafe manifest URL")
 		sep = "&" if "?" in url else "?"
 		url = "%s%scb=%d" % (url, sep, int(time1.time()))
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion(), "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
 		with urlopen(req, timeout=12) as response:
-			if not str(response.geturl()).startswith("https://"):
+			final_url = str(response.geturl()).split("?", 1)[0]
+			if final_url != official_manifest:
 				raise ValueError("unsafe manifest redirect")
 			return json.loads(response.read().decode("utf-8"))
 
@@ -6987,6 +6991,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			manifest = self._warderFetchJson(manifest_url)
 			new_version = str(manifest.get("version", "")).strip()
 			package_url = str(manifest.get("package_url", "")).strip()
+			# Compatibility with manifests written before the repository moved from
+			# PiconHub-Warder to Evolution-by-Warder. Never download from the legacy
+			# namespace: normalize it to the single official package channel first.
+			legacy_prefix = "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/packages/"
+			official_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
+			if package_url.startswith(legacy_prefix):
+				package_url = official_prefix + package_url[len(legacy_prefix):]
 			sha256 = str(manifest.get("sha256", "")).strip().lower()
 			changelog = str(manifest.get("changelog", "")).strip()
 			if not new_version:
