@@ -243,6 +243,7 @@ for token in (
     're.match(r"^[0-9a-f]{64}$", sha256)',
     "actual_sha != expected_sha",
     'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
+    'self.warderInstallContainer.execute(cmd[0], *cmd)',
     "def _warderInstallFinished(",
     'MessageBox.TYPE_ERROR, 15',
     'restartbox.setTitle(_("Restart GUI now?"))',
@@ -303,7 +304,7 @@ for token in (
     '_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)',
     'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
     'cmd = ["dpkg", "-i", "--force-overwrite", target]',
-    "self.warderInstallContainer.execute(*cmd)",
+    "self.warderInstallContainer.execute(cmd[0], *cmd)",
 ):
     assert token in PLUGIN, token
 

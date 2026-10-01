@@ -7117,7 +7117,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
 			return
 		try:
-			started = self.warderInstallContainer.execute(*cmd)
+			started = self.warderInstallContainer.execute(cmd[0], *cmd)
 		except Exception as err:
 			self._warderInstallCleanup()
 			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)

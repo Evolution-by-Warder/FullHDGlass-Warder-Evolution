@@ -66,9 +66,9 @@ if 'open(CHANSEL_FILE,"w")' in plugin or "open(CHANSEL_FILE, 'w')" in plugin:
     fail("plugin.py: legacy ChannelSelection compatibility write must remain atomic")
 if 'cmd = "btrGen17 ' in plugin or "self.container.execute(cmd)" in plugin:
     fail("plugin.py: bitrate helper execution regressed to shell-string form")
-if 'cmd = "opkg install ' in plugin or 'cmd = "dpkg -i ' in plugin or "warderInstallContainer.execute(cmd)" in plugin:
-    fail("plugin.py: updater installer execution regressed to shell-string form")
-version_cmp = plugin[plugin.find("def _warderVersionTuple"):plugin.find("def _warderFetchJson")]
+if 'cmd = "opkg install ' in plugin or 'cmd = "dpkg -i ' in plugin or "warderInstallContainer.execute(cmd)" in plugin or "warderInstallContainer.execute(*cmd)" in plugin:
+    fail("plugin.py: updater installer execution must preserve executable as argv[0]")
+if "warderInstallContainer.execute(cmd[0], *cmd)" not in plugin:\n    fail("plugin.py: eConsoleAppContainer updater must pass executable both as command and argv[0]")\nversion_cmp = plugin[plugin.find("def _warderVersionTuple"):plugin.find("def _warderFetchJson")]
 for required in ('(?:-test(\\d+))?', 'return (major, minor, patch, 1, 0)', 'return (major, minor, patch, 0, int(test_no))'):
     if required not in version_cmp:
         fail("plugin.py: prerelease-aware Warder version ordering missing")

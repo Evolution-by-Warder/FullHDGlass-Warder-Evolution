@@ -74,7 +74,7 @@ jobs:
           IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${VERSION}_all.ipk"
           test -f "$IPK"
           chmod +x tools/verify-test-ipk.sh
-          ./tools/verify-test-ipk.sh "$IPK" 1.0.5-test6
+          ./tools/verify-test-ipk.sh "$IPK" 1.0.5-test7
           TMP="$(mktemp -d)"
           trap 'rm -rf "$TMP"' EXIT
           (cd "$TMP" && ar x "$GITHUB_WORKSPACE/$IPK")

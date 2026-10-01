@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test6
-Revision: 53
-Purpose: Classic full country names and true country-first Enhanced Weather selector; version-exact TEST package verification.
+Candidate: 1.0.5-test7
+Revision: 54
+Purpose: Fix real receiver updater eConsoleAppContainer argv semantics; preserve opkg/dpkg executable as argv[0] and gate it permanently.
