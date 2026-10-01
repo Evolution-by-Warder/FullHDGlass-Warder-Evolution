@@ -348,7 +348,11 @@ assert 'self.clearMem()' in PLUGIN[PLUGIN.index('def refreshWeatherNow'):PLUGIN.
 # Setup-open automatic updater contract
 assert '_warderAutoUpdateCheck' in PLUGIN
 assert 'self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)' in PLUGIN
+assert 'self.onLayoutFinish.append(self._warderStartAutoUpdateCheck)' in PLUGIN
+assert 'def _warderStartAutoUpdateCheck(self):' in PLUGIN
+assert 'self.delayTimer.start(3000, True)' in PLUGIN
 assert 'self.updatechckact(False, automatic=True)' in PLUGIN
+assert 'self.firststart = False\n\t\t\tself.delayTimer.start(3000, True)' not in PLUGIN
 assert 'if not automatic and not config.plugins.setupGlass17.par75.value and not ena:' in PLUGIN
 assert 'self.updatechckact(True)' in PLUGIN
 

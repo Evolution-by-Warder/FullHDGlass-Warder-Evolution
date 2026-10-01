@@ -5928,6 +5928,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self._changedEntry()
 		except: pass
 		self.onLayoutFinish.append(self.chckTunerLabel)
+		self.onLayoutFinish.append(self._warderStartAutoUpdateCheck)
 		self.onShow.append(self.doMyHelpWindow)
 			
 	def chckSetup(self):
@@ -6900,8 +6901,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self["description"].setText(self.textShowInfo)
 		if self.firststart:
 			self["config"].onSelectionChanged.append(self.doMyHelpWindow)
-			self.firststart = False
-			self.delayTimer.start(3000, True)			
+			self.firststart = False			
 			try:
 				self["help_pict"].instance.setScale(1)
 			except: pass
@@ -7002,6 +7002,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				out.write(chunk)
 				sha.update(chunk)
 		return sha.hexdigest().lower()
+
+	def _warderStartAutoUpdateCheck(self):
+		"""Start the silent one-shot check only after the setup screen layout exists."""
+		self.delayTimer.stop()
+		self.delayTimer.start(3000, True)
 
 	def _warderAutoUpdateCheck(self):
 		"""Silent one-shot update check only after FullHDGlass17 setup is opened."""
