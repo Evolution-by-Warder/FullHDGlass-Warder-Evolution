@@ -199,6 +199,7 @@ def chckVersion(ff="ViX"):
 	return what
 isATV = chckVersion("openATV")
 HDDTMP = "/media/hdd/hdg_tmp"
+SEVENZIP = os.path.join(PLUGINPATH, "bin", "7z_g")
 NO_TUN = _("No tuner data")
 ER_F = _(" failed") + " !!!\n"
 DSC = '/tmp/.doscam/doscam.version'
@@ -7866,7 +7867,7 @@ class downloadMenu(Screen):
 			return
 		tmp = self['list'].getSelectedIndex()
 		if '***' in self.menuListAll[tmp][1]:
-			if not os.path.isfile("/usr/bin/7z_g"):
+			if not os.path.isfile(SEVENZIP):
 				self.session.open(historyScreen, _("Result"),_("ERROR")+": "+_('Tool 7zip is missing, you can download it from DOWNLOAD MENU'))
 			else:
 				self.session.openWithCallback(self.satSelcallback, satSelectorScr, self.menuListAll[tmp][2])
@@ -8071,13 +8072,14 @@ class downloadMenu(Screen):
 			if "7z" in self.type_download:
 				# Original archive extracts to /tmp/7z/7z_g.
 				try:
-					shutil.copy2("/tmp/7z/7z_g", "/usr/bin/7z_g")
-					os.chmod("/usr/bin/7z_g", 0o755)
+					os.makedirs(os.path.dirname(SEVENZIP), exist_ok=True)
+					shutil.copy2("/tmp/7z/7z_g", SEVENZIP)
+					os.chmod(SEVENZIP, 0o755)
 				except OSError:
 					pass
 				self.rmTmp2(self.zzz, root)
 				numPict = 0
-				if os.path.isfile("/usr/bin/7z_g"):
+				if os.path.isfile(SEVENZIP):
 					numPict = 1
 				total = 1
 			elif "icon_sets_preview" in self.type_download:
@@ -8156,7 +8158,7 @@ class downloadMenu(Screen):
 							ret, ret1 = self.getFreeSpace()
 							if ret > size and ret1 > (size/2):
 								os.makedirs(extract_dir, exist_ok=True)
-								cmd = ["/usr/bin/7z_g", "e", "-y", "-o%s" % extract_dir, archive]
+								cmd = [SEVENZIP, "e", "-y", "-o%s" % extract_dir, archive]
 								try:
 									extract_ok = subprocess.call(cmd) == 0
 								except (OSError, ValueError):
