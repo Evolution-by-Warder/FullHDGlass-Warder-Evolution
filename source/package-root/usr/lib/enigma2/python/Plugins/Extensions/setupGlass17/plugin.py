@@ -3570,12 +3570,14 @@ class ExtraInfo17(Screen):
 			hpdArm = "/usr/sbin/hdparm"
 		if hpdArm != "":
 			try:
-				for f in popen(hpdArm+" -C "+dev).readlines():
-					if f.find("active") != -1 or f.find("idle") != -1:				
+				output = subprocess.check_output([hpdArm, "-C", dev], universal_newlines=True, stderr=subprocess.STDOUT)
+				for f in output.splitlines():
+					if f.find("active") != -1 or f.find("idle") != -1:
 						where = "active"
-					elif f.find("standby") != -1:				
+					elif f.find("standby") != -1:
 						where = "standby"
-			except: pass
+			except (OSError, subprocess.CalledProcessError):
+				pass
 		if config.plugins.setupGlass17.par182.value == "SSD":
 			return where+"_s"
 		else:
@@ -4594,7 +4596,11 @@ class ExtraInfo17(Screen):
 			if typecam != "OScam\n":
 				try:
 					ax = typecam
-					for f in popen("ps -ef").readlines():
+					try:
+						process_lines = subprocess.check_output(["ps", "-ef"], universal_newlines=True).splitlines()
+					except (OSError, subprocess.CalledProcessError):
+						process_lines = subprocess.check_output(["ps"], universal_newlines=True).splitlines()
+					for f in process_lines:
 						f = f.upper()
 						if f.find("OSCAM") != -1:
 							typecam = "OScam\n"
@@ -4605,18 +4611,6 @@ class ExtraInfo17(Screen):
 						elif f.find("NCAM") != -1:
 							typecam = "Ncam\n"
 							break
-					if ax == typecam:
-						for f in popen("ps").readlines():
-							f = f.upper()
-							if f.find("OSCAM") != -1:
-								typecam = "OScam\n"
-								break
-							elif f.find("GCAM") != -1 and f.find("MGCAMD") == -1:
-								typecam = "Gcam\n"
-								break
-							elif f.find("NCAM") != -1:
-								typecam = "Ncam\n"
-								break
 				except: pass
 			if typecam == "Gbox\n" and using == "Network\n":
 				try:
