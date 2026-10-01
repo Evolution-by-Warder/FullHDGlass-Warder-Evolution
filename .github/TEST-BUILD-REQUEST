@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 43
-Purpose: strict r12 country parity, country-aware manual city insertion, complete Enhanced Weather database, Warder-only package version and Git updater readiness.
+Revision: 44
+Purpose: strict r12 city parity and corrected Warder-only TEST package verification; updater-ready candidate.
