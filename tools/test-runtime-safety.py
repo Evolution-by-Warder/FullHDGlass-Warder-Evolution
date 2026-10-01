@@ -28,8 +28,6 @@ for p in pkg.rglob("*.py"):
 plugin = (pkg / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
 if "from Screens.Console" in plugin:
     fail("plugin.py: updater must not use Screens.Console")
-if "eConsoleAppContainer" not in plugin:
-    fail("plugin.py: updater eConsoleAppContainer missing")
 if "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json" not in plugin:
     fail("plugin.py: authoritative HTTPS updater manifest missing")
 if 're.match(r"^[0-9a-f]{64}$", expected)' not in plugin:
@@ -68,8 +66,8 @@ if 'cmd = "btrGen17 ' in plugin or "self.container.execute(cmd)" in plugin:
     fail("plugin.py: bitrate helper execution regressed to shell-string form")
 if 'cmd = "opkg install ' in plugin or 'cmd = "dpkg -i ' in plugin or "warderInstallContainer.execute(" in plugin:
     fail("plugin.py: updater installer execution must preserve executable as argv[0]")
-if "warderInstallContainer.execute(cmd[0], *cmd)" not in plugin:
-    fail("plugin.py: eConsoleAppContainer updater must pass executable both as command and argv[0]")
+if "warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)" not in plugin:
+    fail("plugin.py: updater must execute exact package-manager argv via subprocess.Popen")
 version_cmp = plugin[plugin.find("def _warderVersionTuple"):plugin.find("def _warderFetchJson")]
 for required in ('(?:-test(\\d+))?', 'return (major, minor, patch, 1, 0)', 'return (major, minor, patch, 0, int(test_no))'):
     if required not in version_cmp:
