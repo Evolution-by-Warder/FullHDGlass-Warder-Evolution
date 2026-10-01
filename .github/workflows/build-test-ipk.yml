@@ -108,7 +108,8 @@ jobs:
               json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
               f.write("\n")
           PY
-          git add "packages/test/$NAME" "packages/test/$NAME.sha256" update-test.json
+          git add -f "packages/test/$NAME" "packages/test/$NAME.sha256"
+          git add update-test.json
           if ! git diff --cached --quiet; then
             git commit -m "Publish verified TEST package $VERSION [skip ci]"
             git push origin HEAD:warder-modernization-work
