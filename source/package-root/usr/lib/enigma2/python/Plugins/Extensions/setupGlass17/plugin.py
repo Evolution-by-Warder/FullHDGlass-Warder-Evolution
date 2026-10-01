@@ -1829,9 +1829,8 @@ def chnlSelPatch(direct=True):
 	r.close()
 	if breakRead:
 		return False
-	r = open(CHANSEL_FILE,"w")
-	r.write(allLines)
-	r.close() 
+	if not _atomicWriteText(CHANSEL_FILE, allLines):
+		return False
 	ena = chnlSelChck()
 	if ena == 0:
 		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
@@ -3934,10 +3933,13 @@ class ExtraInfo17(Screen):
 									a = str(streamdata["adapter"]) + " "
 				except:
 					pass
-				cmd = "btrGen17 %s%s %s %s" % (a, str(demux), str(vpid), str(apid))
+				cmd = ["/usr/bin/btrGen17"]
+				if XCPU == "arm":
+					cmd.append(str(streamdata.get("adapter", 0)))
+				cmd.extend([str(demux), str(vpid), str(apid)])
 				self["bitrate_info"].setText(_("Starting Bitrate"))
 				self["bitrate_info"].color2(config.plugins.setupGlass17.par115.value)
-				self.container.execute(cmd)
+				self.container.execute(*cmd)
 				if XCPU == "arm":
 					if self.restartBtrTimer.isActive():
 						self.restartBtrTimer.stop()
