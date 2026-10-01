@@ -38,7 +38,7 @@ if os.path.isfile('/etc/lcstrings.list') is True:
 	myfile.close()
 
 def chMSN():
-	# MSN weather.service.msn.com is retired; FullHDGlass17 now always uses OpenWeatherMap.
+	# MSN weather.service.msn.com is retired; use OpenWeatherMap.
 	return False
 	
 def toLocale(s):
@@ -265,3 +265,97 @@ def dewpoint(Tc=0, RH=93, minRH=(0, 0.075)[0]):
 	return str(int(DewPoint))
 
 		
+# Open-Meteo compatibility helpers (FullHDGlass17 9.50-r5)
+def weaText(v):
+	try:
+		if not ISP38 and isinstance(v, unicode):
+			return v.encode('utf-8')
+	except: pass
+	if v is None: return ''
+	return str(v)
+
+def wmoPicon(code, night=False):
+	try: code = int(code)
+	except: return '3200'
+	if code == 0: return '31' if night else '32'
+	if code == 1: return '33' if night else '34'
+	if code == 2: return '29' if night else '30'
+	if code == 3: return '26'
+	if code in (45,48): return '20'
+	if code in (51,53,55,56,57): return '11'
+	if code in (61,63,65,66,67,80,81,82): return '12'
+	if code in (71,73,75,77,85,86): return '13'
+	if code == 95: return '4'
+	if code in (96,99): return '3'
+	return '3200'
+
+def wmoText(code):
+	texts={0:'Clear',1:'Mostly Sunny',2:'Partly Cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Light Drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing Drizzle',57:'Freezing Drizzle',61:'Light Rain',63:'Rain',65:'Heavy Rain',66:'Freezing Rain',67:'Freezing Rain',71:'Light Snow Shower',73:'Snow',75:'Snow',77:'Snow',80:'Rain Shower',81:'Rain Shower',82:'Rain Shower',85:'Snow Showers',86:'Snow Showers',95:'Thunderstorm',96:'Thunderstorms',99:'Thunderstorms'}
+	try: return _(texts.get(int(code),'...N/A...'))
+	except: return _('...N/A...')
+
+def windDir(deg):
+	dirs=('N','NE','E','SE','S','SW','W','NW')
+	try: return dirs[int((float(deg)+22.5)//45)%8]
+	except: return 'N'
+
+_OPENMETEO_CACHE = {}
+
+def openMeteo(city, unit='C', days=6):
+	try:
+		# Reuse the last successful Open-Meteo response inside Enigma2.
+		# This prevents the Infobar from starting with N/A while a second
+		# identical geocoding/forecast request is still in progress.
+		ckey = ('%s' % (city or '')).strip().lower() + '|' + str(unit).upper() + '|' + str(days)
+		cached = _OPENMETEO_CACHE.get(ckey)
+		if cached and (time1.time() - cached[0]) < 600:
+			return cached[1]
+		if ISP38:
+			from urllib.request import Request, urlopen
+			from urllib.parse import urlencode
+		else:
+			from urllib2 import Request, urlopen
+			from urllib import urlencode
+		try: import simplejson as _json
+		except: import json as _json
+		def get(url):
+			r=urlopen(Request(url,headers={'User-Agent':'FullHDGlass17/9.50-r5'}),timeout=12)
+			try: raw=r.read()
+			finally:
+				try:r.close()
+				except:pass
+			if not ISP38:
+				try: raw=raw.decode('utf-8')
+				except: pass
+			elif not isinstance(raw,str): raw=raw.decode('utf-8','replace')
+			return _json.loads(raw)
+		city=city.strip() if city else ''
+		if not city or city == 'None': raise ValueError('City is not defined')
+		search_name=city; country=''; district=''; postal=''
+		if city.startswith('om|'):
+			parts=city.split('|')
+			search_name=parts[1] if len(parts)>1 else ''
+			country=parts[2] if len(parts)>2 else ''
+			district=parts[3] if len(parts)>3 else ''
+			postal=parts[4] if len(parts)>4 else ''
+		gp={'name':search_name,'count':100 if (district or postal) else 1,'language':WLANG[:2],'format':'json'}
+		if country: gp['countryCode']=country
+		g=get('https://geocoding-api.open-meteo.com/v1/search?'+urlencode(gp))
+		rs=g.get('results') or []
+		if not rs: raise ValueError('City not found')
+		loc=rs[0]
+		if district or postal:
+			dl=district.lower()
+			pc=postal.replace(' ','')
+			for rr in rs:
+				admin=(' '.join([str(rr.get('admin1','')),str(rr.get('admin2','')),str(rr.get('admin3','')),str(rr.get('admin4',''))])).lower()
+				rp=str(rr.get('postcodes',''))+str(rr.get('postcode',''))
+				if (not dl or dl in admin) and (not pc or pc in rp.replace(' ','')):
+					loc=rr; break
+		lat=float(loc['latitude']); lon=float(loc['longitude']); uf=str(unit).upper()=='F'
+		p={'latitude':lat,'longitude':lon,'timezone':'auto','forecast_days':max(1,min(int(days),10)),'current':'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,surface_pressure,wind_speed_10m,wind_direction_10m,visibility','daily':'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,wind_speed_10m_max,wind_direction_10m_dominant','temperature_unit':'fahrenheit' if uf else 'celsius','wind_speed_unit':'mph' if uf else 'kmh'}
+		d=get('https://api.open-meteo.com/v1/forecast?'+urlencode(p)); d['_location']=loc
+		_OPENMETEO_CACHE[ckey] = (time1.time(), d)
+		return d
+	except Exception as e:
+		raise e
