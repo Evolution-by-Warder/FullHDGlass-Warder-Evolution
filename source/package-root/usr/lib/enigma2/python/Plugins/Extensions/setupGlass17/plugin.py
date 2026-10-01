@@ -9127,7 +9127,7 @@ class cityFinder(Screen):
 					self.list.append(item)
 			self.setWindowTitle(": " + what)
 		elif self.cityLevel == "root":
-			for value, label in (("group|SK", _("Slovakia")), ("group|CZ", _("Czechia")), ("group|EUROPE", _("Countries of Europe"))):
+			for value, label in (("group|SK", "Slovensko"), ("group|CZ", "Česko"), ("group|EUROPE", "Krajiny Európy")):
 				item = [value]
 				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=label))
 				self.list.append(item)
@@ -9138,7 +9138,7 @@ class cityFinder(Screen):
 				item = ["country|" + country]
 				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=self.countryNames.get(country, country)))
 				self.list.append(item)
-			self.setWindowTitle(": " + _("Countries of Europe"))
+			self.setWindowTitle(": Krajiny Európy")
 		else:
 			for country, display, value in local:
 				if country == self.activeCountry:
