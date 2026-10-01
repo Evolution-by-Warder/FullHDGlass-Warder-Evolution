@@ -273,7 +273,10 @@ for token in (
     "global G17_EXTRAINFO_INSTANCE",
     "G17_EXTRAINFO_INSTANCE = self",
     "def refreshWeatherNow(self):",
-    "self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value",
+    "def _setWeatherCityChoices(selected=None):",
+    "def _refreshLiveWeather():",
+    "def _selectWeatherCity(self):",
+    "def _weatherCitySelected(self, value):",
     "G17_EXTRAINFO_INSTANCE.refreshWeatherNow()",
 ):
     assert token in PLUGIN, token
