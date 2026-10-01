@@ -213,6 +213,18 @@ for fallback in ("picon_400x240", "picon_220x132", "piconSat", "piconProv"):
     assert fallback in find_picon, fallback
 
 
+# r12 live weather refresh after a city change: the active ExtraInfo17 instance
+# must be reachable from setup saving, and the refresh must be scheduled without GUI restart.
+for token in (
+    "G17_EXTRAINFO_INSTANCE = None",
+    "global G17_EXTRAINFO_INSTANCE",
+    "G17_EXTRAINFO_INSTANCE = self",
+    "def refreshWeatherNow(self):",
+    "self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value",
+    "G17_EXTRAINFO_INSTANCE.refreshWeatherNow()",
+):
+    assert token in PLUGIN, token
+
 # Infobar/EPG event integration retained from r12: service start, event update,
 # user weather overlay and timeout handling must remain wired.
 for token in (
