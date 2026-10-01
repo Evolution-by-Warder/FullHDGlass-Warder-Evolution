@@ -7596,4 +7596,174 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget name="log" position="30,30" size="1590,690" font="Prive3;28" scrollbarMode="showOnDemand" />
     <widget source="key_red" render="Label" position="30,765" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
   </screen>
+  <screen name="InformationBenchmark" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationBuild" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationCommit" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationDebug" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationDistribution" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationGeolocation" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationMemory" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationMultiBoot" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationNetwork" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationReceiver" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationService" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationStorage" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationStreaming" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationSystem" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationTranslation" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationTuner" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
+  <screen name="InformationTesting" position="center,90" size="1650,900" title="Information">
+    <widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+  </screen>
 </skin>
