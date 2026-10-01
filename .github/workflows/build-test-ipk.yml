@@ -36,7 +36,9 @@ jobs:
               ET.parse(p)
           print("XML parse gate: PASS")
           PY
-          bash -n source/control/preinst source/control/postinst source/control/postrm tools/build-test-ipk.sh
+          bash -n source/control/preinst source/control/postinst source/control/postrm tools/build-test-ipk.sh tools/test-package-lifecycle.sh
+          chmod +x tools/test-package-lifecycle.sh
+          ./tools/test-package-lifecycle.sh
 
       - name: Build TEST IPK
         shell: bash
