@@ -982,7 +982,7 @@ def startHdg17(reason, **kwargs):
 			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_servicetitle_mode"):
 				config.epgselection.graph_servicetitle_mode.value = "picon"
 			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_piconwidth"):
-				config.epgselection.graph_piconwidth.value = 90
+				config.epgselection.graph_piconwidth.value = 60
 		except Exception:
 			pass
 		enaOKstart = True                                                                                     
@@ -7235,7 +7235,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		installed = self.readVersion()
 		exitCode = getattr(self, "warderInstallExitCode", -1)
 		if exitCode == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
-			self.warderRestartBox = self.session.open(MessageBox, _("Update finished successfully!") + "\n\n" + _("GUI will restart automatically in 3 seconds.") + "\n" + installed, MessageBox.TYPE_INFO, 3, enable_input=False)
+			self.warderRestartBox = self.session.open(MessageBox, _("Update finished successfully!") + "\n\n" + _("GUI will restart automatically in 3 seconds.") + "\n" + installed, MessageBox.TYPE_INFO, 5, enable_input=False)
 			self.warderRestartTimer = eTimer()
 			try:
 				self.warderRestartTimer_conn = self.warderRestartTimer.timeout.connect(self.sDr)

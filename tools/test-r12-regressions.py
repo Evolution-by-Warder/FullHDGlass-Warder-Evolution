@@ -440,3 +440,11 @@ assert 'source="Title" render="Label"' not in pig26
 assert 'source="global.CurrentTime" render="Label" position="30,12"' not in pig26
 assert 'name="timeline_text" position="75,387"' in pig26
 assert 'name="timeline0" position="75,423"' in pig26
+
+
+# TEST26 runtime policy: picon-only native graphical EPG and restart dialog outlives 3s restart timer.
+PLUGIN = (ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
+assert 'graph_servicetitle_mode.value = "picon"' in PLUGIN
+assert 'graph_piconwidth.value = 60' in PLUGIN
+assert 'MessageBox.TYPE_INFO, 5, enable_input=False' in PLUGIN
+assert 'warderRestartTimer.start(3000, True)' in PLUGIN
