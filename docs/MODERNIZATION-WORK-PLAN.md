@@ -181,3 +181,33 @@ Required sequence for this batch:
 6. Then continue the full screen/FHD audit and DAB+ work.
 
 No release version bump is permitted merely for source recovery. Receiver-visible behavior changes remain test-build work until the GigaBlue/OpenATV acceptance pass is complete.
+
+
+## Execution batch 2 — resolved project rules and validation matrix
+
+Status: **ACTIVE**
+
+The 2026-09-15 checkpoint's blanket geometry lock is superseded only where Štefan has now explicitly approved functional modernization: graphics keep their established visual character, while layout geometry, typography and asset resolution/format may be changed when required by current Enigma2/OpenATV behavior, readability, FHD use, or future resolution readiness. Binding runtime identifiers, authorship rules and updater architecture remain locked.
+
+### Mandatory repair matrix for the next implementation package
+
+| Area | Required result | Validation |
+| --- | --- | --- |
+| Menu source compatibility | no obsolete source dependency that can raise SkinError on current OpenATV | open all menu families + log check |
+| PIG menu variants | exactly one navigational menu list; helper/current-selection display must be passive | PIG/PIG2/PIG4 navigation |
+| Opkg screen | current named widgets for activity/package/status/progress/log; Close/Log usable | package operation on receiver |
+| Package lifecycle | upgrade must not run destructive remove cleanup; defaults must not overwrite existing config | clean install + upgrade + force reinstall + uninstall |
+| User data | preserve compatible weather/city/provider/skin settings | compare settings before/after upgrade |
+| Picon handling | preserve user dirs/files and unrelated symlinks | filesystem before/after diff |
+| Archive extraction | reject traversal/symlink abuse and partial/corrupt success | negative archive tests |
+| Python 3 | no known invalid regex/SyntaxWarning and no obsolete active constructs found by static pass | compile/static pass |
+| Spinner | audit all references first; remove obsolete FullHDGlass custom-spinner override and unused assets only after dependency check; leave OpenATV/Enigma2 system spinner in control | source/asset reference scan + install/upgrade + GUI restart |
+| Weather/cities | retain existing Open-Meteo/city behavior and immediate refresh | functional regression test |
+| DAB+ | investigate native current Enigma2/OpenATV slide/background mechanism without copying Metrix visuals | real DAB+ service test |
+| FHD screens | modernize obsolete/crowded geometry and fonts while preserving Warder visual identity | 1920x1080 screen audit |
+| Future resolution | avoid unnecessary FHD-only assumptions; keep derivable high-quality assets where practical | source review; no WQHD support claim yet |
+| Updater | keep raw GitHub + SHA256 + eConsoleAppContainer architecture | end-to-end update test |
+
+### Release discipline
+
+The next implementation output is a **test build**, not a stable release. Stable 1.0.4 remains rollback/recovery baseline until the complete static gate and real GigaBlue Quad 4K Pro / OpenATV 8.x acceptance matrix pass and Štefan explicitly approves publication.
