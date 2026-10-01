@@ -87,6 +87,7 @@ from Components.Pixmap import *
 from Tools.Directories import fileExists
 from ServiceReference import ServiceReference
 from Screens.MessageBox import MessageBox
+from Screens.ChoiceBox import ChoiceBox
 from Screens.InfoBarGenerics import InfoBarPlugins
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmap, MultiContentEntryPixmapAlphaTest
@@ -6379,10 +6380,19 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.runSetup()
 
 	def _selectWeatherCity(self):
-		self.session.openWithCallback(self._weatherCitySelected, weatherCitySelector, config.plugins.setupGlass17.par13.value)
+		choices = []
+		for value, label in getCitiesCode():
+			if str(value) != "None":
+				choices.append((str(label), str(value)))
+		if choices:
+			self.session.openWithCallback(self._weatherCitySelected, ChoiceBox, title=_("Weather for City"), list=choices)
 
-	def _weatherCitySelected(self, value):
-		if not value:
+	def _weatherCitySelected(self, choice):
+		if not choice:
+			return
+		try:
+			value = choice[1]
+		except Exception:
 			return
 		selected = _setWeatherCityChoices(value)
 		config.plugins.setupGlass17.par13.value = selected

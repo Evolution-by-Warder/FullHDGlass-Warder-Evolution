@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test16
-Revision: 69
-Purpose: Complete r12-style weather city UX: OK opens the city selector, left/right no longer changes Weather for City, selection is restored safely after layout, and confirmed city triggers immediate live weather refresh without GUI restart.
+Candidate: 1.0.5-test17
+Revision: 70
+Purpose: Replace the custom weather-city popup with Enigma2 native ChoiceBox after receiver-confirmed close crash; keep OK-driven city selection, disabled left/right switching, and immediate live weather refresh.
