@@ -143,7 +143,7 @@ for screen in ("Menu", "menu_mainmenu", "menu_information", "menu_setup", "menu_
     assert m, screen
     assert len(re.findall(r'render="Listbox"', m.group(0))) == 1, screen
 assert '<screen name="MessageBoxModal"' in SKIN
-modal = re.search(r'<screen\\b[^>]*name="MessageBoxModal"[\\s\\S]*?</screen>', SKIN).group(0)
+modal = re.search(r'<screen\b[^>]*name="MessageBoxModal"[\s\S]*?</screen>', SKIN).group(0)
 for token in ('name="text"', 'name="icon"', 'name="list"', 'input_question.png', 'scrollbarMode="showOnDemand"'):
     assert token in modal, token
 assert '<screen name="Opkg"' in SKIN
