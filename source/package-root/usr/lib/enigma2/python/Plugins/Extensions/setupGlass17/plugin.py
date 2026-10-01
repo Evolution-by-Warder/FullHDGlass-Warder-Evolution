@@ -142,7 +142,7 @@ def Writelog(txt):
 				pass
 	try:
 		f = open(log,"a")
-		f.write("%s\n" % str(txt))
+		f.write("%s\\t\tG17_EXTRAINFO_INSTANCE = self\\t\tself._weatherCityAtOpen = config.plugins.setupGlass17.par13.value\\t\tif self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:\n\t\t\ttry:\n\t\t\t\tif G17_EXTRAINFO_INSTANCE is not None:\n\t\t\t\t\tG17_EXTRAINFO_INSTANCE.refreshWeatherNow()\n\t\t\texcept:\n\t\t\t\tpass\n\t\t\tself._weatherCityAtOpen = config.plugins.setupGlass17.par13.value\nnnn" % str(txt))
 		f.close()
 	except IOError: pass
 ##########################################################################################################################
@@ -3209,7 +3209,7 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
-class ExtraInfo17(Screen):
+# Active ExtraInfo17 instance for live weather refresh after city change.\nG17_EXTRAINFO_INSTANCE = None\n\nclass ExtraInfo17(Screen):
 				
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -9292,4 +9292,4 @@ class dirBrowser(Screen):
 		if self["filelist"].canDescent():
 			self["filelist"].descent()
 			self.updTitle()					
-					
+					\t\tglobal G17_EXTRAINFO_INSTANCE\n\tdef refreshWeatherNow(self):\n\t\t\"\"\"Refresh the active Infobar weather after changing the configured city.\"\"\"\n\t\tif not self.enaWeainf:\n\t\t\treturn\n\t\ttry:\n\t\t\tif self.clrMemTimer.isActive():\n\t\t\t\tself.clrMemTimer.stop()\n\t\t\tself.clrMemTimer.startLongTimer(1)\n\t\texcept:\n\t\t\tpass\n\n
