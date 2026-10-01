@@ -717,7 +717,10 @@ def autoHdd():
 									if len(b) == 3 and b.startswith("sd"):
 										break
 							a.close()
-							try:\n\t\t\t\t\t\t\t\tos.remove("/tmp/sd")\n\t\t\t\t\t\t\texcept OSError:\n\t\t\t\t\t\t\t\tpass
+							try:
+								os.remove("/tmp/sd")
+							except OSError:
+								pass
 							if len(b) == 3 and b.startswith("sd"):
 								return "/dev/"+b
 		except: pass   	
@@ -2802,7 +2805,10 @@ class AutoStartChck17():
 				self.session.open(MessageBox, _("GUI will now be restarted to activate restored options:") + "\n" + msg, MessageBox.TYPE_INFO, 5)				
 			except: pass
 			self.start_timerExec.start(4000, True)
-		try:\n\t\t\tos.remove(SHAREPATH + "hd_glass17/icons/about1.png")\n\t\texcept OSError:\n\t\t\tpass
+		try:
+			os.remove(SHAREPATH + "hd_glass17/icons/about1.png")
+		except OSError:
+			pass
 
 	def rstnow(self):
 		if XCPU != "sh4":
@@ -3222,7 +3228,10 @@ class ExtraInfo17(Screen):
 			self.enaProvSat = True
 		self.enaWeainf = config.plugins.setupGlass17.par8.value in ("3","4","5","6") and self.enaProvSat
 		if (config.plugins.setupGlass17.par58.value and ECL) or self.enaWeainf:
-			try:\n\t\t\t\tos.remove(XML_FILE)\n\t\t\texcept OSError:\n\t\t\t\tpass
+			try:
+				os.remove(XML_FILE)
+			except OSError:
+				pass
 			self.wConsole = wConsole()
 			self.refreshValue = 900
 			self.count = 0
@@ -3929,7 +3938,10 @@ class ExtraInfo17(Screen):
 		self['caidPids'].hide()
 		self['caidPids_back'].hide()
 		self['caidPids_end'].hide()
-		try:\n\t\t\tos.remove("/tmp/ecm.info")\n\t\texcept OSError:\n\t\t\tpass
+		try:
+			os.remove("/tmp/ecm.info")
+		except OSError:
+			pass
 
 	def clearMem(self):
 		self.clrMemTimer.stop()
