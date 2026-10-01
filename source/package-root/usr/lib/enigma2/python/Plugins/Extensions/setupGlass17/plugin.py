@@ -7100,7 +7100,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if filename.endswith(".deb"):
 			cmd = ["dpkg", "-i", "--force-overwrite", target]
 		else:
-			cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]
+			cmd = ["opkg", "--force-reinstall", "--force-overwrite", "install", target]
 
 		# Package-manager argv must be passed unchanged. subprocess.Popen avoids
 		# Enigma2 eConsoleAppContainer argv[0] differences between images.

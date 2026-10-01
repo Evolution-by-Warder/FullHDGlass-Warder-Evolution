@@ -242,7 +242,7 @@ for token in (
     'not any(package_url.startswith(x) for x in official_prefixes)',
     're.match(r"^[0-9a-f]{64}$", sha256)',
     "actual_sha != expected_sha",
-    'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
+    'cmd = ["opkg", "--force-reinstall", "--force-overwrite", "install", target]',
     'self.warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)',
     'def _warderInstallPoll(self):',
     "def _warderInstallFinished(",
@@ -303,7 +303,7 @@ for token in (
     "def saving(",
     "def restoreCfgFromFile(",
     '_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)',
-    'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
+    'cmd = ["opkg", "--force-reinstall", "--force-overwrite", "install", target]',
     'cmd = ["dpkg", "-i", "--force-overwrite", target]',
     "self.warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)",
 ):

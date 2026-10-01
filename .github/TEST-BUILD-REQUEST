@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test8
-Revision: 57
-Purpose: Replace image-dependent eConsoleAppContainer package install with exact shell-free subprocess argv execution after real receiver TEST7 failure.
+Candidate: 1.0.5-test9
+Revision: 58
+Purpose: Fix OpenATV opkg 0.10.0/libsolv argv order verified on GigaBlue Quad 4K Pro: global force options must precede install sub-command.
