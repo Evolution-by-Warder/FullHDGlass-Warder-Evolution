@@ -45,6 +45,15 @@ BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
 assert 'copy_default_if_missing /etc/ewea_city_Code-17.txt /etc/ewea_city_Code.txt' in POSTINST
 assert 'generate-ewea-city.py' in BUILD_TEST
 assert 'self.fileName = "/etc/ewea_city_Code.txt"' in EWEATHER
+# r12 Enhanced Weather city selector layout: country heading, cities below it,
+# blank separator, next country; country must not be repeated on every city row.
+for token in ('value.startswith("#")', 'self.list.append((country.upper(), "__country__"))',
+              'self.list.append(("", "__country__"))', 'cityNo = 0',
+              'label = p[1] + (", " + p[5] if p[5] else "")',
+              'not any(x.startswith("#") for x in lines)'):
+    assert token in EWEATHER, token
+assert '# Slovakia' in ewea_bytes.decode("utf-8")
+assert '# Czechia' in ewea_bytes.decode("utf-8")
 
 assert "unicodedata.normalize" in PLUGIN
 assert "_citySearchKey" in PLUGIN
