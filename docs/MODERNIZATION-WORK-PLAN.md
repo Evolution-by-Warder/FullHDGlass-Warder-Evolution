@@ -582,3 +582,18 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - corrected only the repository owner component of the locked 1.0.4 `package_url`; version `1.0.4`, package filename and approved SHA256 `9ceb1713fa237d39f13b4baf728852323086205528c5622df7def58b5812c0bd` remain unchanged.
 - no stable release was created and `main` was not modified.
 - no RECEIVER PASS is claimed.
+
+
+## Package lifecycle final gate / test-build boundary — 2026-10-01
+
+Status: **STATIC/PACKAGE GATE PASS — TEST PACKAGE VERSION REQUIRES EXPLICIT APPROVAL**
+
+- package identity remains `enigma2-skin-fullhdglass17`; runtime compatibility identifiers and `/usr/share/enigma2/hd_glass17` ownership remain unchanged.
+- `/etc/enigma2/skin_user-hdg17.xml` remains a conffile and is preserved across upgrades; lifecycle scripts leave `/etc/enigma2/settings`, user picon directories and image spinner ownership untouched.
+- preinst/postinst/postrm were re-read from the working branch; no destructive wildcard cleanup or broad picon/spinner removal is present, and postrm exits without cleanup for package-upgrade lifecycle states.
+- updater source remains raw GitHub HTTPS + mandatory 64-hex SHA256 + `eConsoleAppContainer`; no `Screens.Console` updater path was reintroduced.
+- updater and `update.json` now use the authoritative `Evolution-by-Warder/FullHDGlass-Warder-Evolution` raw repository path. Locked 1.0.4 version, filename and approved SHA256 are unchanged.
+- the final updater-source gate found and fixed a literal escaped-newline corruption in `Writelog()` that would have produced invalid Python source. A follow-up scan found no remaining source-level `:\\n\\t`, `;\\n\\t` or `pass\\n\\t` corruption patterns in `plugin.py`.
+- global skin geometry/assets were not changed by the package-lifecycle batch; the previously completed 618/611 screen gate, seven intentional front-panel duplicate families, zero `forgroundColor` typos, zero missing internal assets and zero packaged bytecode-artifact results therefore remain applicable.
+- no stable release was created, `main` was not modified and no RECEIVER PASS is claimed.
+- the source tree is ready for a TEST IPK build boundary, but the locked runtime/package version remains 1.0.4. Creating a distinguishable test package requires an explicit approved test-version identifier rather than silently mutating the locked 1.0.4 identity.
