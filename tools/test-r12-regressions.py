@@ -215,7 +215,10 @@ for token in (
 # Warder updater trust boundary and r12 installation-result behaviour.
 for token in (
     'manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"',
-    'package_url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/")',
+    'official_prefixes = (',
+    '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",',
+    '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",',
+    'not any(package_url.startswith(x) for x in official_prefixes)',
     're.match(r"^[0-9a-f]{64}$", sha256)',
     "actual_sha != expected_sha",
     'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
