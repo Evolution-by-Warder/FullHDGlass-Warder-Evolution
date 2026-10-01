@@ -6486,7 +6486,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
 <widget name="key_blue" position="500,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
 </screen>
-<screen name="EventViewContextMenu" position="center,240" size="820,640" title="EventViewContextMenu">
+<screen name="EventViewContextMenuChoiceBox" position="center,240" size="820,640" title="Event View Context Menu">
 <widget name="menu" position="20,20" size="780,600" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
 </screen>
 <screen name="SoftwareUpdateChoices" position="center,center" size="820,850" title="SoftwareUpdateChoices">
