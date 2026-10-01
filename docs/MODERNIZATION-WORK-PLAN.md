@@ -146,3 +146,20 @@ The following are not evidenced as completed by the 1.0.4 checkpoint and therefo
 6. real GigaBlue Quad 4K Pro / OpenATV 8.x acceptance testing before the next stable release.
 
 Do not publish a new stable version until these work items have been reconciled and the relevant receiver tests pass.
+
+
+## Resolution and asset modernization rule
+
+The current production and receiver-validation target remains **1920x1080 Full HD**, but new work must avoid creating an unnecessary FHD-only dead end.
+
+- Preserve the established FullHDGlass/Warder Evolution visual identity; do not redesign graphics merely for novelty.
+- Layout geometry is maintainable code: screen size, widget coordinates, font size, row height, spacing, list widths and other geometry may be changed whenever required for readability, current OpenATV content, accessibility, or compatibility.
+- Existing raster assets may be repaired, rescaled, regenerated at a technically appropriate resolution, or converted to a more suitable format when necessary for clean rendering or future resolution profiles. Preserve their visual character unless an intentional redesign is separately approved.
+- Prefer source/master assets with enough quality to derive multiple output resolutions instead of repeatedly upscaling already-small runtime files.
+- Keep resolution-dependent geometry and assets separable wherever practical so a future **2560x1440 (WQHD)** profile can be introduced without rewriting skin logic or changing runtime compatibility identifiers.
+- Do not claim WQHD runtime support until it is implemented and tested on a suitable Enigma2/OpenATV target. The requirement now is architectural readiness.
+- When touching a screen for another fix, also check whether its geometry, fonts and assets create avoidable obstacles to a future higher-resolution profile.
+
+## Integration rule
+
+All new Warder Evolution functionality and all applicable fixes discovered during legacy FullHDGlass maintenance are to be integrated into this working line in controlled batches. Do not blindly copy a legacy patch: reconcile it with the Warder Evolution source, current OpenATV APIs, non-destructive package lifecycle rules, and the resolution-readiness rule above. Each integrated batch must remain traceable in Git and must pass the applicable static checks before receiver testing.
