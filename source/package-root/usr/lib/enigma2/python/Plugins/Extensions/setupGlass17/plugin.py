@@ -7014,7 +7014,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			msg += "\n\n" + changelog
 		msg += "\n\n" + _("Do you want to update now?")
 		box = self.session.openWithCallback(self.updCont, MessageBox, msg, MessageBox.TYPE_YESNO)
-		box.setTitle("FullHDGlass17 Warder Evolution")
+		box.setTitle("FullHDGlass17 - Warder Evolution")
 
 	def updCont(self, answer):
 		if not answer:
