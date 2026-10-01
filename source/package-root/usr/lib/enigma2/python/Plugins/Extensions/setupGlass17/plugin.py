@@ -2124,7 +2124,10 @@ def setTypeIcos(num):
 def setTypePicon():
 	what = ({"Black":"", "White":"w"}[config.plugins.setupGlass17.par41.value])
 	for x in ("marker","bouquet","next","picon_default","buttons/nopicon","piconWdef","icons/75"):
-		system("cp -f %s%s-%sdef.png %s%s.png" % (SKINPATH, x, what, SKINPATH, x))
+		try:
+			shutil.copy2("%s%s-%sdef.png" % (SKINPATH, x, what), "%s%s.png" % (SKINPATH, x))
+		except OSError:
+			pass
 ##########################################################################################################################
 def ShowHideViaKey():
 	if keyManage.TunerTest() and keyManage.dialogKey is not None:
@@ -2548,7 +2551,10 @@ def chMT():
 	x = "2"
 	if config.plugins.setupGlass17.par47.value:
 		x = "1"
-	system("cp -f %smute-%s.png %smute.png " % (SKINPATH, x, SKINPATH))
+	try:
+		shutil.copy2("%smute-%s.png" % (SKINPATH, x), "%smute.png" % SKINPATH)
+	except OSError:
+		pass
 	return _("Mute picture transparency") + "\n"
 ##########################################################################################################################
 class AutoStartChck17():
@@ -2600,20 +2606,35 @@ class AutoStartChck17():
 					os.remove(target)
 				except OSError:
 					pass
-			system("cp -f /usr/bin/btrGen17-%s /usr/bin/btrGen17" % XCPU)
-			system("cp -f /usr/bin/hdd_temp_hdg17-%s /usr/bin/hdd_temp_hdg17" % XCPU)
+			try:
+				shutil.copy2("/usr/bin/btrGen17-%s" % XCPU, "/usr/bin/btrGen17")
+				shutil.copy2("/usr/bin/hdd_temp_hdg17-%s" % XCPU, "/usr/bin/hdd_temp_hdg17")
+			except OSError:
+				pass
 			msg += _("Set binaries") + "\n"
 		ver, x = readHWtype()
 		isOk = ver != "Dream Multimedia"
 		if (os.path.exists(PYTHONPATH+'Plugins/PLi') or isATV) and not isOk:
-			system("cp -f /etc/enigma2/skin_user-17%s.xml " % ({False:'2', True:'3'}[IS800SE or "dm820" in x]) + USERHDG)
+			try:
+				shutil.copy2("/etc/enigma2/skin_user-17%s.xml" % ({False:'2', True:'3'}[IS800SE or "dm820" in x]), USERHDG)
+			except OSError:
+				pass
 		elif isOk:
-			system("cp -f /etc/enigma2/skin_user-172.xml " + USERHDG)
+			try:
+				shutil.copy2("/etc/enigma2/skin_user-172.xml", USERHDG)
+			except OSError:
+				pass
 		for i in ("sh4","arm","aarch64"):
-			system("rm -rf /usr/bin/btrGen17-%s" % i)
-			system("rm -rf /usr/bin/hdd_temp_hdg17-%s" % i)
-		system("rm -rf /etc/enigma2/skin_user-172.xml")
-		system("rm -rf /etc/enigma2/skin_user-173.xml")
+			for target in ("/usr/bin/btrGen17-%s" % i, "/usr/bin/hdd_temp_hdg17-%s" % i):
+				try:
+					os.remove(target)
+				except OSError:
+					pass
+		for target in ("/etc/enigma2/skin_user-172.xml", "/etc/enigma2/skin_user-173.xml"):
+			try:
+				os.remove(target)
+			except OSError:
+				pass
 		if (isOk and ver != "Unknown") or (not isOk and ("dm920" in x or "dm900" in x or x == "one" or x == "two")):
 			if ver == "AZbox":
 				ver = "Zbox"
@@ -2640,9 +2661,15 @@ class AutoStartChck17():
 					ver = "o"
 				elif x == "two":
 					ver = "t"
-			system("cp -f %smenu/box-%s.png %smenu/box.png" % (SKINPATH, ver[0], SKINPATH))
+			try:
+				shutil.copy2("%smenu/box-%s.png" % (SKINPATH, ver[0]), "%smenu/box.png" % SKINPATH)
+			except OSError:
+				pass
 		for x in ["A", "V", "Z", "C", "D", "U", "S", "9", "4", "0", "o", "t", "e"]:  
-			system("rm -rf %smenu/box-%s.png" % (SKINPATH, x))
+			try:
+				os.remove("%smenu/box-%s.png" % (SKINPATH, x))
+			except OSError:
+				pass
 		isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, False)
 		x = str(config.plugins.setupGlass17.par44.value)
 		if isOk != x:
@@ -7789,7 +7816,10 @@ class downloadMenu(Screen):
 
 	def setWdir(self):
 		if not os.path.exists(HDDTMP):
-			system("mkdir %s" % HDDTMP)
+			try:
+				os.makedirs(HDDTMP, exist_ok=True)
+			except OSError:
+				pass
 		return ({False:"/tmp/",True:"%s/" % HDDTMP}['big' in self.type_download or 'ZZPicon' in self.type_download or '400' in self.type_download])
 
 	def doSelection(self):
