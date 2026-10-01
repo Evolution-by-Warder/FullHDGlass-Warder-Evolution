@@ -284,9 +284,11 @@ def wmoPicon(code, night=False):
 	return '3200'
 
 def wmoText(code):
-	texts={0:'Clear',1:'Mostly Sunny',2:'Partly Cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Light Drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing Drizzle',57:'Freezing Drizzle',61:'Light Rain',63:'Rain',65:'Heavy Rain',66:'Freezing Rain',67:'Freezing Rain',71:'Light Snow Shower',73:'Snow',75:'Snow',77:'Snow',80:'Rain Shower',81:'Rain Shower',82:'Rain Shower',85:'Snow Showers',86:'Snow Showers',95:'Thunderstorm',96:'Thunderstorms',99:'Thunderstorms'}
-	try: return _(texts.get(int(code),'...N/A...'))
-	except: return _('...N/A...')
+	# Keep Classic Weather and Enhanced Weather on the same Open-Meteo/WMO
+	# vocabulary so the active Enigma2 language catalog can translate both.
+	texts={0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Depositing rime fog',51:'Light drizzle',53:'Drizzle',55:'Dense drizzle',56:'Freezing drizzle',57:'Freezing drizzle',61:'Slight rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Heavy freezing rain',71:'Slight snow',73:'Snow',75:'Heavy snow',77:'Snow grains',80:'Rain showers',81:'Rain showers',82:'Heavy rain showers',85:'Snow showers',86:'Heavy snow showers',95:'Thunderstorm',96:'Thunderstorm with hail',99:'Thunderstorm with heavy hail'}
+	try: return _(texts.get(int(code),'Unknown'))
+	except: return _('Unknown')
 
 def windDir(deg):
 	dirs=('N','NE','E','SE','S','SW','W','NW')
