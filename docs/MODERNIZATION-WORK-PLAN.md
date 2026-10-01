@@ -571,3 +571,14 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - no RECEIVER PASS is claimed.
 
 - follow-up gate removed the final unused `Screens.Console` import from setupGlass17; command execution that remains in the plugin uses `Components.Console` where appropriate, while the Warder package updater itself remains on `eConsoleAppContainer`.
+
+
+## Package URL authority correction — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- revalidated the updater and locked 1.0.4 manifest against the repository that now owns the project: `Evolution-by-Warder/FullHDGlass-Warder-Evolution`.
+- corrected the updater manifest raw URL from the obsolete `PiconHub-Warder` repository path to `Evolution-by-Warder`; transport remains raw GitHub HTTPS and the installer remains `eConsoleAppContainer`.
+- corrected only the repository owner component of the locked 1.0.4 `package_url`; version `1.0.4`, package filename and approved SHA256 `9ceb1713fa237d39f13b4baf728852323086205528c5622df7def58b5812c0bd` remain unchanged.
+- no stable release was created and `main` was not modified.
+- no RECEIVER PASS is claimed.
