@@ -7963,10 +7963,12 @@ class downloadMenu(Screen):
 		except Exception:
 			self.dwnLoop(_("ERROR")+": "+_("Invalid Warder download catalog entry."))
 			return
-		valid_parts = isinstance(parts, list) and len(parts) > 0 and all(str(x).startswith("https://") for x in parts)
+		official_asset_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"
+		valid_parts = isinstance(parts, list) and len(parts) > 0 and all(str(x).startswith(official_asset_prefix) for x in parts)
 		valid_sha = re.match(r"^[0-9a-f]{64}$", sha256) is not None
 		valid_filename = bool(filename) and os.path.basename(filename) == filename and filename not in (".", "..")
-		if (not url.startswith("https://") and not valid_parts) or not valid_sha or not valid_filename or "/" in root or "\\" in root or ".." in root:
+		valid_url = (not url) or url.startswith(official_asset_prefix)
+		if (not valid_url or (not url and not valid_parts)) or not valid_sha or not valid_filename or "/" in root or "\\" in root or ".." in root:
 			self.dwnLoop(_("ERROR")+": "+_("Unsafe Warder download catalog entry."))
 			return
 		self.warderAsset = asset
@@ -8013,13 +8015,16 @@ class downloadMenu(Screen):
 			expected = str(asset["sha256"]).lower()
 			parts = asset.get("parts", [])
 			urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
-			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(url.startswith("https://") for url in urls):
+			official_asset_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"
+			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(url.startswith(official_asset_prefix) for url in urls):
 				raise ValueError("unsafe asset metadata")
 			h = hashlib.sha256()
 			with open(target, "wb") as out:
 				for url in urls:
-					req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.2"})
+					req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5-test1"})
 					with urlopen(req, timeout=45) as response:
+						if not str(response.geturl()).startswith(official_asset_prefix):
+							raise ValueError("unsafe asset redirect")
 						while True:
 							chunk = response.read(1024 * 128)
 							if not chunk:
