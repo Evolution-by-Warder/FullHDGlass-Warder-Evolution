@@ -830,15 +830,15 @@ self.autoResize()
     <widget name="now_button_sel" pixmap="hd_glass17/epg_now.png" position="0,15" zPosition="3" size="1650,52" alphatest="on" />
     <widget name="next_button_sel" pixmap="hd_glass17/epg_next.png" position="0,15" zPosition="3" size="1650,52" alphatest="on" />
     <widget name="more_button_sel" pixmap="hd_glass17/epg_more.png" position="0,15" zPosition="3" size="1650,52" alphatest="on" />
-    <widget name="now_text" position="48,25" zPosition="4" size="375,37" text="NOW" font="Prive3;30" halign="center" backgroundColor="transpBlack" transparent="1" />
-    <widget name="next_text" position="423,25" zPosition="4" size="375,37" text="NEXT" font="Prive3;30" halign="center" backgroundColor="transpBlack" transparent="1" />
-    <widget name="more_text" position="798,25" zPosition="4" size="375,37" text="MORE" font="Prive3;30" halign="center" backgroundColor="transpBlack" transparent="1" />
-    <widget name="date" position="1320,22" size="300,42" font="Prive3;36" valign="center" halign="right" backgroundColor="transpBlack" transparent="1" />
-    <widget name="list" position="15,82" font="Prive3;33" itemHeight="40" size="1620,675" scrollbarMode="showOnDemand" />
-    <widget name="key_red" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
-    <widget name="key_green" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
-    <widget name="key_yellow" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
-    <widget name="key_blue" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+    <widget name="now_text" position="48,25" zPosition="4" size="375,37" text="NOW" font="Prive3;30" halign="center" transparent="1" />
+    <widget name="next_text" position="423,25" zPosition="4" size="375,37" text="NEXT" font="Prive3;30" halign="center" transparent="1" />
+    <widget name="more_text" position="798,25" zPosition="4" size="375,37" text="MORE" font="Prive3;30" halign="center" transparent="1" />
+    <widget name="date" position="1320,22" size="300,42" font="Prive3;36" valign="center" halign="right" transparent="1" />
+    <widget name="list" position="15,82" size="1620,675" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
   <screen name="EventView" position="center,150" size="1650,840" title="Eventview">
     <widget name="channel" position="60,15" size="510,37" font="Prive3;34" transparent="1" />
