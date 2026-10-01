@@ -1,6 +1,6 @@
 # FullHDGlass Warder Evolution — PROJECT CHECKPOINT
 
-Updated: 2026-09-15
+Updated: 2026-10-01
 Purpose: durable recovery checkpoint so the project can be resumed exactly after loss of chat/context.
 
 ## Current stable baseline
@@ -78,3 +78,14 @@ The project is **ACTIVE / IN DEVELOPMENT**, not finished. Version 1.0.4 is the s
 ## Recovery rule
 
 If chat/context is lost: start by reading this checkpoint, inspect current `main`, compare changes after commit `665527299043fef079d75079d412c28cee8dd7e3`, and preserve all LOCKED graphics/structure, binding compatibility/authorship/updater rules above. Do not restart the project from the original HDGlass source, do not redesign approved graphics/layout without Štefan's explicit approval, and do not rename the legacy `17` runtime identifiers merely to match visible branding.
+
+
+## Current TEST candidate — 2026-10-01
+
+- Stable recovery baseline remains **1.0.4** and is not replaced by development work.
+- Working branch: `warder-modernization-work`.
+- Current receiver-test candidate identity: runtime **1.0.5-test1**, package version **9.50+warder1.0.5-test1**.
+- Stable `update.json` remains pinned to 1.0.4; TEST packages are not published through the stable updater channel.
+- TEST packaging is guarded by `tools/build-test-ipk.sh`, `tools/verify-test-ipk.sh`, `tools/test-package-lifecycle.sh` and `.github/workflows/build-test-ipk.yml`.
+- The legacy 1.0.4 source-recovery workflow is now manual/read-only and uploads its recovered tree only as a temporary artifact. It must never overwrite the modernized `source/` tree.
+- Static/build success is not receiver acceptance. Only physical validation on the target GigaBlue Quad 4K Pro / OpenATV 8.x may establish RECEIVER PASS.
