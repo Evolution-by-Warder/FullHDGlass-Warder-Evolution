@@ -21,6 +21,13 @@ jobs:
         with:
           ref: ${{ github.sha }}
 
+      - name: Install gettext compiler
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gettext
+
       - name: Static package preflight
         shell: bash
         run: |
