@@ -2527,6 +2527,7 @@ if IS_VU:
     <widget position="1245,777" size="397,42" source="key_blue" font="Prive3;33" foregroundColor="blue" render="Label" halign="center" transparent="1" zPosition="3" />
     <widget name="config" position="30,75" size="1590,400" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
     <widget source="introduction" render="Label" position="15,435" size="1620,37" zPosition="10" font="Prive3;31" halign="center" valign="center" backgroundColor="background" transparent="1" />
+    <widget source="description" render="Label" position="30,500" size="1590,105" zPosition="10" font="Prive3;29" halign="center" valign="center" foregroundColor="grey" backgroundColor="background" transparent="1" />
     <ePixmap position="600,420" size="450,309" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
   </screen>
   <screen name="VideoEnhancementPreview" position="center,420" size="855,300" backgroundColor="background" title="VideoEnhancementPreview" flags="wfBorder">
