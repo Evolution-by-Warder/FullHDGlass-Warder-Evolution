@@ -2341,11 +2341,7 @@ if IS_VU:
     <eLabel position="0,777" size="900,3" backgroundColor="grey" />
     <widget name="key_green" position="262,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="green" />
   </screen>
-  <screen name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-3" backgroundColor="transparent" flags="wfNoBorder">
-    <widget name="RassLogo" pixmap="hd_glass17/icons/rass_logo.png" position="150,877" size="75,31" />
-    <widget name="RadioText" position="150,930" size="1620,45" font="Prive3;36" noWrap="1" backgroundColor="background" />
-    <widget name="RtpText" position="150,975" size="1620,45" font="Prive3;36" halign="right" noWrap="1" backgroundColor="background" />
-  </screen>
+  
   <screen name="User_script_info" position="510,150" size="900,840" backgroundColor="background" title="User Script/Info">
     <widget name="liste" position="15,15" size="870,750" scrollbarMode="showOnDemand" transparent="1" />
     <eLabel position="0,777" size="900,3" backgroundColor="grey" />
