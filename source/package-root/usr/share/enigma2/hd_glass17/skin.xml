@@ -757,10 +757,13 @@
 self.autoResize()
     </applet>
   </screen>
-  <screen name="Console" position="center,150" size="1650,840" title="Command execution...">
-    <widget name="text" position="30,30" size="1590,780" font="Console;31" />
-  </screen>
-  <screen name="clockDisplay" position="center,345" size="510,450">
+  <screen name="Console" position="center,120" size="1650,840" title="Command execution...">
+    <widget name="text" position="30,30" size="1590,700" font="Console;31" />
+    <widget source="key_red" render="Label" position="30,772" size="390,42" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,772" size="390,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="840,772" size="390,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_help" render="Label" position="1450,772" size="170,42" font="Prive3;27" halign="right" transparent="1" />
+  </screen>  <screen name="clockDisplay" position="center,345" size="510,450">
     <widget name="okbutton" position="30,30" size="450,60" />
     <widget name="theClock" position="30,105" size="450,75" />
     <widget name="title" position="30,195" size="450,75" />
@@ -1560,7 +1563,8 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget source="key_blue" render="Label" position="960,772" size="300,42" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
     <widget source="key_menu" render="Label" position="1275,772" size="170,42" font="Prive3;27" halign="center" transparent="1" />
     <widget source="key_help" render="Label" position="1460,772" size="170,42" font="Prive3;27" halign="center" transparent="1" />
-  </screen>  <screen name="PluginDownloadBrowser" position="0,0" size="1920,1080" backgroundColor="background" title="Downloadable plugins">
+  </screen>
+  <screen name="PluginDownloadBrowser" position="0,0" size="1920,1080" backgroundColor="background" title="Downloadable plugins">
     <widget name="list" position="190,200" size="1540,720" font="Prive3;33" itemHeight="80" scrollbarMode="showOnDemand" />
 	<widget source="Title" render="Label" position="98,46" size="700,45" font="Prive4;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
