@@ -37,6 +37,16 @@ if 'not all(url.startswith("https://") for url in urls)' not in plugin:
     fail("plugin.py: Warder asset HTTPS validation missing")
 if 'stat.S_ISLNK(mode)' not in plugin or "ZIP path traversal rejected" not in plugin:
     fail("plugin.py: safe ZIP extraction guards missing")
+if "install_opener(" in plugin:
+    fail("plugin.py: downloader must not replace the process-global urllib opener")
+if "http://weather.service.msn.com/" in plugin:
+    fail("plugin.py: city lookup regressed to cleartext HTTP")
+for owned in (
+    '/etc/enigma2/skin_user-172.xml',
+    '/etc/enigma2/skin_user-173.xml',
+):
+    if ('os.remove("' + owned + '")') in plugin or ("os.remove('" + owned + "')") in plugin:
+        fail("plugin.py: runtime deletes package-owned file " + owned)
 
 userinfo = (pkg / "usr/lib/enigma2/python/Screens/G17_UserInfo.py").read_text(encoding="utf-8")
 if "system(tta)" in userinfo or "df -h > /tmp/" in userinfo:
