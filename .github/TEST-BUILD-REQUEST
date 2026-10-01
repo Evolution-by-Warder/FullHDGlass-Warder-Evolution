@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 25
-Purpose: r12 parity validation after picon-path crash guard and non-destructive legacy spinner recovery hardening; preserve standard Enigma2 picon compatibility and image-owned files.
+Revision: 26
+Purpose: authoritative r12 behavior-parity validation after Enhanced Weather regression-gate correction, picon-path crash guard, and non-destructive legacy spinner recovery hardening.
