@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 40
-Purpose: restore exact r12 Enhanced Weather country-grouped city selector, migrate flat city lists, preserve live weather refresh, and enforce parity gates.
+Revision: 41
+Purpose: enforce Warder-only opkg and runtime version 1.0.5-test5 with no legacy 9.50+warder prefix.
