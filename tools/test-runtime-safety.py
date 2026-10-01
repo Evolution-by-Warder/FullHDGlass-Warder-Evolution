@@ -85,6 +85,11 @@ if plugin.count(official_packages) < 2:
     fail("plugin.py: updater is not pinned at both metadata and pre-install gates")
 if "unsafe manifest redirect" not in plugin or "unsafe package redirect" not in plugin:
     fail("plugin.py: updater HTTPS redirect guards missing")
+download_guard = plugin[plugin.find("def _warderDownload"):plugin.find("def updatechckact")]
+if 'official_package_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"' not in download_guard:
+    fail("plugin.py: updater download channel prefix missing")
+if "response.geturl()).startswith(official_package_prefix)" not in download_guard:
+    fail("plugin.py: updater package redirect escaped official channel")
 if '"/usr/bin/7z_g"' in plugin or "'/usr/bin/7z_g'" in plugin:
     fail("plugin.py: downloaded 7zip helper escaped FullHDGlass runtime ownership")
 if 'SEVENZIP = os.path.join(PLUGINPATH, "bin", "7z_g")' not in plugin:
