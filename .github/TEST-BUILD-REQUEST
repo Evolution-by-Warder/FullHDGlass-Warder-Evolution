@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 16
-Purpose: full r12 reference audit baseline; restore all 51-country weather data, Slovensko/Cesko/Krajiny Europy hierarchy, and cumulative r1-r12 regression gates including all eight r11 PIG menu screens.
+Revision: 17
+Purpose: rerun TEST4 after explicit r4 Open-Meteo regression coverage; preserve cumulative r1-r12 reference, complete 51-country weather hierarchy, r11 PIG fixes, r12 Opkg/spinner fixes, and Warder safety gates.
