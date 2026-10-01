@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test4
-Revision: 36
-Purpose: single Evolution-by-Warder update authority, official FullHDGlass17 - Warder Evolution branding, and r12 city parity.
+Candidate: 1.0.5-test5
+Revision: 37
+Purpose: restore r12 live Infobar weather refresh after city changes, enforce regression coverage, and standardize visible FullHDGlass17 - Warder Evolution branding.
