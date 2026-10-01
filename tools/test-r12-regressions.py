@@ -180,3 +180,21 @@ assert '"/usr/share/enigma2/picon_50x30"' not in set_path
 find_picon = PLUGIN[PLUGIN.find("def findPicon("):PLUGIN.find("def showDyn_EMM_ECM(", PLUGIN.find("def findPicon("))]
 for fallback in ("picon_400x240", "picon_220x132", "piconSat", "piconProv"):
     assert fallback in find_picon, fallback
+
+
+# Infobar/EPG event integration retained from r12: service start, event update,
+# user weather overlay and timeout handling must remain wired.
+for token in (
+    "InfoBarPlugins.__init__ = hdg17inicialize",
+    "iPlayableService.evStart: self.serviceStartNow17",
+    "iPlayableService.evUpdatedEventInfo: self.serviceStartNow173",
+    "self.onShow.append(self.serviceStartNow172)",
+    "from Plugins.Extensions.setupGlass17.weather import WeatherScreen",
+    "self.g17dialogUser = self.session.instantiateDialog(WeatherScreen",
+    "def serviceStartNow17(",
+    "def serviceStartNow172(",
+    "def serviceStartNow173(",
+    "def controlWindow17(",
+    "def hideWindow17(",
+):
+    assert token in PLUGIN, token
