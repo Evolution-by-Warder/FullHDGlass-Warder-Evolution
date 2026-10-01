@@ -204,3 +204,17 @@ for token in (
     "def hideWindow17(",
 ):
     assert token in PLUGIN, token
+
+
+# Setup/config and updater parity: user configuration remains Enigma2-owned,
+# restore/save paths stay available, and updates use package-manager argv.
+for token in (
+    "configfile.save()",
+    "def saving(",
+    "def restoreCfgFromFile(",
+    '_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)',
+    'cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]',
+    'cmd = ["dpkg", "-i", "--force-overwrite", target]',
+    "self.warderInstallContainer.execute(*cmd)",
+):
+    assert token in PLUGIN, token
