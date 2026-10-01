@@ -6599,14 +6599,14 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <widget name="list" position="20,20" size="820,600" font="Regular;28" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1"/>
 <widget name="text" position="20,700" size="780,80" font="Regular;28" halign="center" backgroundColor="#16000000" transparent="1"/>
 </screen> 	
-	<screen name="FlashOnline" position="center,center" size="1200,860" title="Flash Online" backgroundColor="background" >
-    <widget name="list" position="10,0" size="1180,400" font="Prive4;30" itemHeight="40" enableWrapAround="1" backgroundColor="background" scrollbarMode="showOnDemand" transparent="1"/>
-    <widget source="description" render="Label" position="10,410" size="1180,400" font="Prive4;30" backgroundColor="background" valign="center" halign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,820" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,820" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,820" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,820" size="300,40" valign="center" halign="center" transparent="1" />
-	</screen> 	
+	<screen name="FlashOnline" position="center,120" size="1650,840" title="Flash Online">
+    <widget name="list" position="30,30" size="1590,480" scrollbarMode="showOnDemand" />
+    <widget source="description" render="Label" position="30,525" size="1590,180" font="Prive3;29" valign="center" halign="center" transparent="1" />
+    <widget source="key_red" render="Label" position="30,750" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1" />
+    <widget source="key_green" render="Label" position="420,750" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1" />
+    <widget source="key_yellow" render="Label" position="810,750" size="360,45" font="Prive3;30" foregroundColor="yellow" halign="center" transparent="1" />
+    <widget source="key_blue" render="Label" position="1200,750" size="360,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" />
+  </screen> 	
 	<screen name="DeviceBrowser" position="center,center" size="1200,800" title="Please select target medium" backgroundColor="background" >
     <widget source="message" render="Label" position="10,10" size="1180,40" font="Prive4;30"  halign="center" transparent="1"/>
     <widget name="filelist" position="10,60" size="1180,680" font="Prive4;30" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1"/>
