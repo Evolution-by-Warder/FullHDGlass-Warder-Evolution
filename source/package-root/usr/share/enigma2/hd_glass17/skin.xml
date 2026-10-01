@@ -1843,8 +1843,10 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
 			<widget name="text" position="10,75" size="1680,37" font="Regular;26" backgroundColor="background" foregroundColor="#cccccc" />
 		</screen>
 				<screen name="IpkgInstaller" position="center,center" size="1200,675" title="Install extensions" >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="600,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="600,0" zPosition="1" size="600,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="300,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+			<widget source="key_green" render="Label" position="300,0" zPosition="1" size="300,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+			<widget source="key_yellow" render="Label" position="600,0" zPosition="1" size="300,60" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+			<widget source="key_blue" render="Label" position="900,0" zPosition="1" size="300,60" font="Regular;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
 			<widget name="list" position="7,75" font="Prive3;32" itemHeight="50" size="1200,540" />
     <eLabel position="0,615" zPosition="10" size="1200,2" backgroundColor="white" transparent="0" />
 			<widget source="introduction" render="Label" position="0,620" zPosition="10" size="1200,45" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
