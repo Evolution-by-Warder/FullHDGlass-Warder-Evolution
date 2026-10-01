@@ -129,7 +129,6 @@ print("Runtime safety guardrail: PASS")
 assert 'official_manifest = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"' in plugin
 assert 'if str(url) != official_manifest:' in plugin
 assert 'if final_url != official_manifest:' in plugin
-assert 'legacy_prefix = "https://raw.githubusercontent.com/PiconHub-Warder/FullHDGlass-Warder-Evolution/main/packages/"' in plugin
-assert 'official_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"' in plugin
-assert 'package_url = official_prefix + package_url[len(legacy_prefix):]' in plugin
+assert "PiconHub-Warder/FullHDGlass-Warder-Evolution" not in plugin
+assert 'FullHDGlass17 - Warder Evolution' in plugin
 assert 'response.geturl()).startswith(official_package_prefix)' in plugin
