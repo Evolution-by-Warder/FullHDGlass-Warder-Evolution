@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test14
-Revision: 64
-Purpose: Diagnostic no-functional-change build to reproduce the TEST13 updater post-install crash with OpenATV Enigma2 debug logging enabled and capture the exact traceback.
+Revision: 65
+Purpose: Diagnostic no-functional-change build to reproduce the TEST13 updater post-install crash with OpenATV Enigma2 debug logging enabled and capture the exact traceback. Workflow verification now checks the candidate VERSION dynamically.
