@@ -4134,8 +4134,9 @@ class ExtraInfo17(Screen):
 		self.clrMemTimer.startLongTimer(self.refreshValue)
 
 	def dwnW(self,req):
-		cmd = "wget -P /tmp -T2 '%s' -O %s" % (req,XML_FILE)
-		self.wConsole.ePopen(cmd)
+		if not isinstance(req, str) or not req.startswith(("http://", "https://")):
+			return
+		self.wConsole.ePopen(["wget", "-T", "2", req, "-O", XML_FILE])
 		
 	def animTimerEvent(self):
 		self.timerpics.stop()
