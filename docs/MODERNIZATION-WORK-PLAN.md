@@ -332,3 +332,19 @@ Results:
 - Standby2 intentionally selects `Standby`; TryQuitMainloop is a MessageBox specialization or zero-size runtime helper and was not duplicated.
 - existing Console, HarddiskSelection, ServiceScan, WizardInstall and SoftcamSetup coverage was retained.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV remaining core utilities + CAM information batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current OpenATV BoxPortal, CronTimer, DVD, Dish, FixedMenu, FlashExpander, Help/Input, OSDCalibration, Playback, QuadPiP, RTL-SDR, SD swap, Scart, ScreenSaver, TagEditor, Time/Timeshift, Toast, UnhandledKey, VolumeControl, CCcamInfo, OSCamInfo, ImageBackup, SwapManager and storage helpers.
+
+Changes and decisions:
+- added direct Warder FHD coverage for BoxPortal, CronTimers, FixedMenu, XMLHelp, ScreenSaver, TagEditor, ToastScreen and UnhandledKey.
+- CronTimersConfig, FlashExpander, OSDCalibration, PlaybackSettings, RTLSDRSetup, Time, TimeshiftSettings and volume-adjust settings are Setup-derived and remain on the common Warder Setup contract.
+- QuadPiP intentionally selects PictureInPicture; existing Warder PiP geometry remains authoritative.
+- existing DVDPlayer/ChapterZap, Dish, InputBox, NumericalTextInputHelpDialog, Mute/Volume, ImageBackup and Swap coverage was retained.
+- current CCcamInfo and OSCamInfo were identified as a significant direct-coverage gap. Added Warder FHD layouts for CCcam main/ECM/text/submenu/server views and OSCam capabilities/log/entitlement-detail views from their exact runtime widget contracts.
+- additional complex CCcam/OSCam list screens remain queued for contract-specific templates rather than receiving blind generic layouts.
+- no item in this batch is marked RECEIVER PASS.
