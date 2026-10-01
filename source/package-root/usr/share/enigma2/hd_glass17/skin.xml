@@ -1664,6 +1664,14 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="key_red" render="Label" position="105,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="green" transparent="1" />
   </screen>
+  <screen name="SkinSelection" position="center,90" size="1650,900" title="Skin Settings">
+    <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />
+    <widget name="preview" position="1110,450" size="450,300" alphatest="on" />
+    <widget name="footnote" position="45,780" size="1560,30" font="Prive3;24" halign="center" valign="center" foregroundColor="grey" transparent="1" />
+    <widget source="key_red" render="Label" position="105,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="green" transparent="1" />
+  </screen>
   <screen name="SimpleChannelSelection" position="135,150" size="1650,840" title="Channel Selection">
     <widget name="list" position="15,30" size="1620,700" serviceNameFont="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
     <widget source="key_red" render="Label" position="245,772" size="500,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
