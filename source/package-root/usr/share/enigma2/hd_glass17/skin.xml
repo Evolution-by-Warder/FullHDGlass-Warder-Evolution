@@ -7222,4 +7222,60 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 				<widget name="chBouq"  position="315,173" size="550,45" halign="left"  font="Regular;36" noWrap="1" />
 			</screen>
 
+
+  <!-- Warder Evolution: current OpenATV runtime screens -->
+  <screen name="DeviceManager" position="center,135" size="1650,810" title="Device Manager">
+    <widget source="devicelist" render="Listbox" position="30,30" size="1590,555" scrollbarMode="showOnDemand">
+      <templates>
+        <template name="Default" fonts="Prive3;30,Prive3;34" itemHeight="45">
+          <mode name="default">
+            <text index="Device" position="51,0" size="330,45" font="0" />
+            <text index="DeviceIndent" position="78,0" size="330,45" font="0" />
+            <text index="Description" position="675,0" size="600,45" font="0" verticalAlignment="top" horizontalAlignment="left" />
+            <text index="Size" position="1320,0" size="270,45" font="0" verticalAlignment="top" horizontalAlignment="right" />
+            <text index="PartitionSeparator" position="9,9" size="45,45" font="1" verticalAlignment="center" />
+            <pixmap index="Image" position="0,0" size="45,45" alpha="blend" scale="centerScaled" />
+          </mode>
+        </template>
+      </templates>
+    </widget>
+    <eLabel position="30,600" size="1590,1" backgroundColor="grey" />
+    <widget name="description" position="30,615" size="1590,90" font="Prive3;30" valign="top" />
+    <widget source="key_red" render="Label" position="15,735" size="390,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="420,735" size="390,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="825,735" size="390,45" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1230,735" size="390,45" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+
+  <screen name="FileCommanderPictureViewer" position="0,0" size="1920,1080" flags="wfNoBorder" title="File Commander Picture Viewer">
+    <eLabel position="0,0" size="1920,1080" backgroundColor="black" />
+    <widget name="image" position="0,0" size="1920,1080" alphatest="on" zPosition="1" />
+    <widget source="message" render="Label" position="30,1020" size="1740,40" font="Prive3;30" foregroundColor="green" transparent="1" valign="bottom" zPosition="2" />
+    <widget name="status" position="1785,1025" size="30,30" pixmap="icons/record.png" alphatest="blend" zPosition="2" />
+    <widget name="icon" position="1830,1025" size="30,30" pixmap="icons/ico_mp_play.png" alphatest="blend" zPosition="2" />
+    <widget name="infolabels" position="30,30" size="375,900" font="Prive3;28" foregroundColor="green" halign="right" transparent="1" zPosition="3" />
+    <widget name="infodata" position="420,30" size="1470,900" font="Prive3;28" foregroundColor="green" halign="left" transparent="1" zPosition="3" />
+  </screen>
+
+  <screen name="FileCommanderImageViewer" position="0,0" size="1920,1080" flags="wfNoBorder" title="File Commander Picture Viewer">
+    <eLabel position="0,0" size="1920,1080" backgroundColor="black" />
+    <widget name="image" position="0,0" size="1920,1080" alphatest="on" zPosition="1" />
+    <widget source="message" render="Label" position="30,1020" size="1740,40" font="Prive3;30" foregroundColor="green" transparent="1" valign="bottom" zPosition="2" />
+    <widget name="status" position="1785,1025" size="30,30" pixmap="icons/record.png" alphatest="blend" zPosition="2" />
+    <widget name="icon" position="1830,1025" size="30,30" pixmap="icons/ico_mp_play.png" alphatest="blend" zPosition="2" />
+    <widget name="infolabels" position="30,30" size="375,900" font="Prive3;28" foregroundColor="green" halign="right" transparent="1" zPosition="3" />
+    <widget name="infodata" position="420,30" size="1470,900" font="Prive3;28" foregroundColor="green" halign="left" transparent="1" zPosition="3" />
+  </screen>
+
+  <screen name="SeekBar" position="center,60" size="1500,90" flags="wfNoBorder">
+    <widget name="target" position="15,20" size="165,45" font="Prive3;30" halign="right" transparent="1" valign="center" />
+    <widget source="session.CurrentService" render="PositionGauge" position="195,25" size="1110,35" transparent="1">
+      <convert type="ServicePosition">Gauge</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Progress" position="195,39" size="1110,8" borderWidth="0" zPosition="1">
+      <convert type="ServicePosition">Position</convert>
+    </widget>
+    <widget name="cursor" position="0,0" size="12,27" pixmap="sliders/position_arrow.png" alphatest="blend" zPosition="2" />
+    <widget name="length" position="1320,20" size="165,45" font="Prive3;30" transparent="1" valign="center" />
+  </screen>
 </skin>
