@@ -3073,7 +3073,7 @@
 
 <screen name="Menu-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3102,7 +3102,7 @@
 </screen>
 <screen name="menu_mainmenu-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3131,7 +3131,7 @@
 </screen>
 <screen name="menu_information-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3160,7 +3160,7 @@
 </screen>
 <screen name="menu_setup-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3189,7 +3189,7 @@
 </screen>
 <screen name="menu_scan-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3218,7 +3218,7 @@
 </screen>
 <screen name="menu_system-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3247,7 +3247,7 @@
 </screen>
 <screen name="menu_harddisk-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3276,7 +3276,7 @@
 </screen>
 <screen name="menu_shutdown-10" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
   <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-  <widget source="title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
+  <widget source="Title" render="Label" position="60,135" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1" />
   <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
     <convert type="g17ClockToText">Default</convert>
   </widget>
@@ -3304,7 +3304,7 @@
 </widget>
 </screen>
 		<screen name="Menu-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3320,7 +3320,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_mainmenu-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3336,7 +3336,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_information-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3352,7 +3352,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_setup-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3368,7 +3368,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_scan-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3384,7 +3384,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_system-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3400,7 +3400,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_harddisk-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3416,7 +3416,7 @@
 		<widget source="menu" render="g17showDev" position="742,340" size="200,60" zPosition="2" alphatest="off"/> 
 	</screen>
 		<screen name="menu_shutdown-7" position="center,262" size="1065,618" backgroundColor="background" title="Main menu">  
-		<widget source="title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+		<widget source="Title" render="Label" position="30,45" size="590,55" font="Regular;42" valign="top" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
 		<widget source="menu" render="Listbox" position="30,120" size="590,367" zPosition="3" enableWrapAround="1" selectionPixmap="hd_glass17/buttons/selectedX-fs8.png" scrollbarMode="showNever" transparent="1">
 			<convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (33, 7), size = (557, 45), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3434,7 +3434,7 @@
 
   <screen name="Menu-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3466,7 +3466,7 @@
   </screen>
   <screen name="menu_mainmenu-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3498,7 +3498,7 @@
   </screen>
   <screen name="menu_information-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3530,7 +3530,7 @@
   </screen>
   <screen name="menu_setup-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3562,7 +3562,7 @@
   </screen>
   <screen name="menu_scan-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3594,7 +3594,7 @@
   </screen>
   <screen name="menu_system-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3626,7 +3626,7 @@
   </screen>
   <screen name="menu_harddisk-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3658,7 +3658,7 @@
   </screen>
   <screen name="menu_shutdown-3" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-		<widget source="title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+		<widget source="Title" render="Label" position="66,663" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3689,7 +3689,7 @@
 		</widget>
   </screen>
   <screen name="Menu-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3703,7 +3703,7 @@
 		</widget>
   </screen>
   <screen name="menu_mainmenu-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3717,7 +3717,7 @@
 		</widget>
   </screen>
   <screen name="menu_information-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3731,7 +3731,7 @@
 		</widget>
   </screen>
   <screen name="menu_setup-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3745,7 +3745,7 @@
 		</widget>
   </screen>
   <screen name="menu_scan-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3759,7 +3759,7 @@
 		</widget>
   </screen>
   <screen name="menu_system-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3773,7 +3773,7 @@
 		</widget>
   </screen>
   <screen name="menu_harddisk-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3787,7 +3787,7 @@
 		</widget>
   </screen>
   <screen name="menu_shutdown-2" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -3868,7 +3868,7 @@
 	</screen>                 
   <screen name="menu_mainmenu-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3900,7 +3900,7 @@
   </screen>
   <screen name="menu_information-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3932,7 +3932,7 @@
   </screen>
   <screen name="menu_setup-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3964,7 +3964,7 @@
   </screen>
   <screen name="menu_scan-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -3996,7 +3996,7 @@
   </screen>
   <screen name="menu_harddisk-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4028,7 +4028,7 @@
   </screen>
   <screen name="menu_shutdown-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4060,7 +4060,7 @@
   </screen>
   <screen name="menu_system-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4092,7 +4092,7 @@
   </screen>
   <screen name="Menu-11" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4125,7 +4125,7 @@
 
   <screen name="menu_mainmenu-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4170,7 +4170,7 @@
   </screen>
   <screen name="menu_information-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4215,7 +4215,7 @@
   </screen>
   <screen name="menu_setup-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4260,7 +4260,7 @@
   </screen>
   <screen name="menu_scan-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4305,7 +4305,7 @@
   </screen>
   <screen name="menu_system-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4350,7 +4350,7 @@
   </screen>
   <screen name="menu_harddisk-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4395,7 +4395,7 @@
   </screen>
   <screen name="menu_shutdown-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4440,7 +4440,7 @@
   </screen>
   <screen name="Menu-13" position="0,0" size="1920,1080" backgroundColor="black" flags="wfNoBorder" title="Main menu">
     <ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
-    <widget source="title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
+    <widget source="Title" render="Label" position="996,120" size="882,39" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;34" transparent="1"/>
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,45" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -4484,7 +4484,7 @@
 	</widget>
   </screen>	
   <screen name="menu_mainmenu-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,89" size="705,720" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4500,7 +4500,7 @@
 		</widget>
   </screen>
   <screen name="menu_information-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4516,7 +4516,7 @@
 		</widget>
   </screen>
   <screen name="menu_setup-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4532,7 +4532,7 @@
 		</widget>
   </screen>
   <screen name="menu_scan-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4548,7 +4548,7 @@
 		</widget>
   </screen>
   <screen name="menu_system-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4564,7 +4564,7 @@
 		</widget>
   </screen>
   <screen name="menu_harddisk-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4580,7 +4580,7 @@
 		</widget>
   </screen>
   <screen name="menu_shutdown-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -4596,7 +4596,7 @@
 		</widget>
   </screen>
   <screen name="Menu-14" position="center,center" size="1252,809" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="50,10" size="810,60" font="Prive4;51" halign="left" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="0,120" size="705,660" zPosition="3" foregroundColorSelected="orange" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l_orangetransp.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 6), size = (645, 60), flags = RT_HALIGN_LEFT, text = 0) ],
