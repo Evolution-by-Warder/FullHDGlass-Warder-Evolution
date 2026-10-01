@@ -2654,17 +2654,9 @@ class AutoStartChck17():
 					shutil.copy2(template, USERHDG)
 				except OSError:
 					pass
-		for i in ("sh4","arm","aarch64"):
-			for target in ("/usr/bin/btrGen17-%s" % i, "/usr/bin/hdd_temp_hdg17-%s" % i):
-				try:
-					os.remove(target)
-				except OSError:
-					pass
-		for target in ("/etc/enigma2/skin_user-172.xml", "/etc/enigma2/skin_user-173.xml"):
-			try:
-				os.remove(target)
-			except OSError:
-				pass
+		# Keep packaged architecture helpers and overlay templates installed.
+		# They are package-owned files and may be needed again after hardware/image
+		# changes; deleting them at runtime also breaks package-manager ownership.
 		if (isOk and ver != "Unknown") or (not isOk and ("dm920" in x or "dm900" in x or x == "one" or x == "two")):
 			if ver == "AZbox":
 				ver = "Zbox"
