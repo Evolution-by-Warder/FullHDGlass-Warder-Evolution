@@ -211,3 +211,19 @@ The 2026-09-15 checkpoint's blanket geometry lock is superseded only where Štef
 ### Release discipline
 
 The next implementation output is a **test build**, not a stable release. Stable 1.0.4 remains rollback/recovery baseline until the complete static gate and real GigaBlue Quad 4K Pro / OpenATV 8.x acceptance matrix pass and Štefan explicitly approves publication.
+
+
+## Current OpenATV DAB+ source reconciliation — 2026-10-01
+
+Status: **SOURCE/STATIC PASS — RECEIVER TEST REQUIRED**
+
+Current OpenATV implements DAB slideshow handling natively through `DABSlideDisplay` in `Screens/RdsDisplay.py`, instantiated by `InfoBarRdsDecoder`. It reads the service preview image, scales the slide in GUI space, and calls `reserveRadioTextArea()` against the active `RdsInfoDisplay`.
+
+Warder Evolution already defines the runtime widgets required by current `RdsInfoDisplay`: `RadioText`, `RtpText`, and `RassLogo`. Its full-screen 1920x1080 RDS layout provides a stable radio-text boundary for the native DAB slide display.
+
+Therefore:
+- do not add a legacy DAB renderer, file-copy hack, MPEG still-picture workaround, or Metrix-specific implementation;
+- keep current OpenATV's native `DABSlideDisplay` in control;
+- preserve the Warder RDS visual character;
+- real DAB+ service validation remains mandatory on the receiver, including SLS appearance, station changes, fallback/no-slide behavior, and RDS text coexistence;
+- this finding is not a RECEIVER PASS.
