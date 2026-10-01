@@ -6961,26 +6961,32 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			return (0, 0, 0, 0, 0)
 
 	def _warderFetchJson(self, url):
-		official_manifest = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"
-		if str(url) != official_manifest:
+		official_manifests = (
+			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json",
+			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json",
+		)
+		if str(url) not in official_manifests:
 			raise ValueError("unsafe manifest URL")
 		sep = "&" if "?" in url else "?"
 		url = "%s%scb=%d" % (url, sep, int(time1.time()))
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion(), "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
 		with urlopen(req, timeout=12) as response:
 			final_url = str(response.geturl()).split("?", 1)[0]
-			if final_url != official_manifest:
+			if final_url not in official_manifests:
 				raise ValueError("unsafe manifest redirect")
 			return json.loads(response.read().decode("utf-8"))
 
 	def _warderDownload(self, url, target):
-		official_package_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
-		if not str(url).startswith(official_package_prefix):
+		official_package_prefixes = (
+			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",
+			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",
+		)
+		if not any(str(url).startswith(x) for x in official_package_prefixes):
 			raise ValueError("unsafe package URL")
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion()})
 		sha = hashlib.sha256()
 		with urlopen(req, timeout=30) as response, open(target, "wb") as out:
-			if not str(response.geturl()).startswith(official_package_prefix):
+			if not any(str(response.geturl()).startswith(x) for x in official_package_prefixes):
 				raise ValueError("unsafe package redirect")
 			while True:
 				chunk = response.read(128 * 1024)
@@ -7003,6 +7009,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			return
 
 		manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"
+		if "-test" in self.readVersion():
+			manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json"
 		try:
 			manifest = self._warderFetchJson(manifest_url)
 			new_version = str(manifest.get("version", "")).strip()
@@ -7011,7 +7019,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			changelog = str(manifest.get("changelog", "")).strip()
 			if not new_version:
 				raise ValueError("missing version")
-			if package_url and not package_url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"):
+			official_prefixes = (
+				"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",
+				"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",
+			)
+			if package_url and not any(package_url.startswith(x) for x in official_prefixes):
 				raise ValueError("unsafe package URL")
 			if package_url and not re.match(r"^[0-9a-f]{64}$", sha256):
 				raise ValueError("missing or invalid SHA256")
@@ -7051,7 +7063,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		url = info.get("url", "")
 		version = info.get("version", "")
 		expected_sha = info.get("sha256", "").lower()
-		if not url or not version or not url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/") or not re.match(r"^[0-9a-f]{64}$", expected_sha):
+		official_prefixes = (
+			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",
+			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",
+		)
+		if not url or not version or not any(url.startswith(x) for x in official_prefixes) or not re.match(r"^[0-9a-f]{64}$", expected_sha):
 			self.session.open(MessageBox, _("Error while downloading file!") + "\n\n" + _("Invalid update metadata."), MessageBox.TYPE_ERROR, 6)
 			return
 		filename = os.path.basename(url.split("?", 1)[0]) or ("fullhdglass17-warder-evolution_%s_all.ipk" % version)
