@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test17
-Revision: 70
-Purpose: Replace the custom weather-city popup with Enigma2 native ChoiceBox after receiver-confirmed close crash; keep OK-driven city selection, disabled left/right switching, and immediate live weather refresh.
+Candidate: 1.0.5-test18
+Revision: 71
+Purpose: Port the weather-city quick selector lifecycle directly from the authoritative FullHDGlass17 9.50-r12 package: native ChoiceBox, r12 callback/invalidate behavior, preserved left/right switching, and r12 save-time immediate live weather refresh without GUI restart.

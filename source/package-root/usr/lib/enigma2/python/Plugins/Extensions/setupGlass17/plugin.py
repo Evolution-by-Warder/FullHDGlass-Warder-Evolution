@@ -5930,6 +5930,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.stateDonate = False
 		self.isTunerLabel = False
 		self.rst = False
+		self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		self.firststart = True
 		self.start_rst = eTimer()
 		try:
@@ -5963,11 +5964,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
       		
 	def keyLeft(self):
 		if not self.isMainMenu:
-			try:
-				if self["config"].getCurrent()[1] == config.plugins.setupGlass17.par13:
-					return
-			except:
-				pass
 			ConfigListScreen.keyLeft(self)
 			self.chckSetup()
 		else:
@@ -5975,11 +5971,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	def keyRight(self):
 		if not self.isMainMenu:
-			try:
-				if self["config"].getCurrent()[1] == config.plugins.setupGlass17.par13:
-					return
-			except:
-				pass
 			ConfigListScreen.keyRight(self)
 			self.chckSetup()
 		else:
@@ -6376,30 +6367,28 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self["key_red"].setText(_("Exit"))
                      		
 	def reloadCities(self,a=None):
-		_setWeatherCityChoices()
+		ch_help = getCitiesCode()
+		config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help)
+		ch_help = readAPIkey()
 		self.runSetup()
 
-	def _selectWeatherCity(self):
+	def openWeatherCityChoice(self):
 		choices = []
-		for value, label in getCitiesCode():
-			if str(value) != "None":
-				choices.append((str(label), str(value)))
-		if choices:
-			self.session.openWithCallback(self._weatherCitySelected, ChoiceBox, title=_("Weather for City"), list=choices)
+		for value, name in getCitiesCode():
+			if value != "None":
+				choices.append((name, value))
+		if not choices:
+			return
+		self.session.openWithCallback(self.weatherCityChoiceSelected, ChoiceBox, title=_("Weather location"), list=choices)
 
-	def _weatherCitySelected(self, choice):
-		if not choice:
+	def weatherCityChoiceSelected(self, answer):
+		if answer is None:
 			return
 		try:
-			value = choice[1]
-		except Exception:
-			return
-		selected = _setWeatherCityChoices(value)
-		config.plugins.setupGlass17.par13.value = selected
-		config.plugins.setupGlass17.par13.save()
-		configfile.save()
-		self.runSetup()
-		_refreshLiveWeather()
+			config.plugins.setupGlass17.par13.value = answer[1]
+			self["config"].invalidateCurrent()
+		except:
+			pass
 
 	def ActivateselectedFnc(self):
 		if self.isMainMenu:
@@ -6427,7 +6416,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			elif t == config.plugins.setupGlass17.par141:
 				self.session.openWithCallback(self.satxmlConf, dirBrowser, config.plugins.setupGlass17.par141.value)
 			elif t == config.plugins.setupGlass17.par13:
-				self._selectWeatherCity()
+				self.openWeatherCityChoice()
 			elif t == config.plugins.setupGlass17.par90:
 				self.session.openWithCallback(self.reloadCities, cityFinder)
 			elif t == config.plugins.setupGlass17.par199:
@@ -7622,6 +7611,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
 		configfile.save()
+		if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:
+			_refreshLiveWeather()
+			self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
 		config.plugins.setupGlass17.par43.value = True
 		if self.rst:
 			self.sDr()
