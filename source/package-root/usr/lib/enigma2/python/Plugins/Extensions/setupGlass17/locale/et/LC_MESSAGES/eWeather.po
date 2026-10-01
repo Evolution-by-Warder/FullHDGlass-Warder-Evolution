@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass16\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-21 11:10+0100\n"
+"PO-Revision-Date: 2017-12-17 11:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: shamann@pobox.sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: et\n"
+"X-Poedit-SearchPath-0: c:/temp/to_locale\n"
+
+msgid "Forecast for"
+msgstr "Ilmaennustus"
+
+msgid "Nighttime"
+msgstr "öösel"
+
+msgid "Updated at"
+msgstr "Uuendatud kell"
+
+msgid "City"
+msgstr "Linn"
+
+msgid "Latitude"
+msgstr "Laiuskraad"
+
+msgid "Longtitude"
+msgstr "Pikkuskraad"
+
+msgid "Pressure"
+msgstr "Rõhk"
+
+msgid "Realfeel"
+msgstr "Tajutav temp."
+
+msgid "Humidity"
+msgstr "Niiskus"
+
+msgid "Wind"
+msgstr "Tuul"
+
+msgid "Visibility"
+msgstr "Nähtavus"
+
+msgid "Precip"
+msgstr "Sademehulk"
+
+msgid "Uvindex"
+msgstr "UV-indeks"
+
+msgid "sun"
+msgstr "Päike"
+
+msgid "moon"
+msgstr "Kuu"
+
+msgid "mercury"
+msgstr "Merkuur"
+
+msgid "venus"
+msgstr "Veenus"
+
+msgid "mars"
+msgstr "Marss"
+
+msgid "jupiter"
+msgstr "Jupiter"
+
+msgid "saturn"
+msgstr "Saturn"
+
+msgid "uranus"
+msgstr "Uraan"
+
+msgid "neptune"
+msgstr "Neptuun"
+
+msgid "pluto"
+msgstr "Pluuto"
+
+msgid "Steady"
+msgstr "Stabiilne"
+
+msgid "N"
+msgstr "Põhja-"
+
+msgid "Sunday"
+msgstr "Pühapäev"
+
+msgid "Saturday"
+msgstr "Laupäev"
+
+msgid "Tuesday"
+msgstr "Teisipäev"
+
+msgid "Monday"
+msgstr "Esmaspäev"
+
+msgid "Thursday"
+msgstr "Neljapäev"
+
+msgid "Wednesday"
+msgstr "Kolmapäev"
+
+msgid "Friday"
+msgstr "Reede"
+
+msgid "NE"
+msgstr "Kirdepoolne"
+
+msgid "SE"
+msgstr "Kagu-"
+
+msgid "warmer"
+msgstr "soojem"
+
+msgid "Daytime"
+msgstr "päeval"
+
+msgid "----"
+msgstr "----"
+
+msgid "Low"
+msgstr "Madal"
+
+msgid "sunny"
+msgstr "Päikeseline"
+
+msgid "S"
+msgstr "Lõunapoolne"
+
+msgid "Change city"
+msgstr "Muuda linn"
+
+msgid "Rising"
+msgstr "Tõuseb"
+
+msgid "Please enter a city name"
+msgstr "Sisesta linna nimi"
+
+msgid "Select city"
+msgstr "Vali linn"
+
+msgid "ESE"
+msgstr "Ida-kagu"
+
+msgid "ENE"
+msgstr "Idaloe"
+
+msgid "W"
+msgstr "Lääne-"
+
+msgid "sunshine"
+msgstr "päikeseline"
+
+msgid "SW"
+msgstr "Edela-"
+
+msgid "WSW"
+msgstr "Lääneloe"
+
+msgid "WNW"
+msgstr "Idaloe"
+
+msgid "Location"
+msgstr "Asukoht"
+
+msgid "Very high"
+msgstr "Väga kõrge"
+
+msgid "sun and clouds"
+msgstr "päike ja pilved"
+
+msgid "thunderstorm"
+msgstr "Äikesevihm"
+
+msgid "thunderstorms"
+msgstr "Äikesevihmad"
+
+msgid "thundershower"
+msgstr "Äikesevihm"
+
+msgid "ice"
+msgstr "jää"
+
+msgid "very hot"
+msgstr "Väga kuum"
+
+msgid "windy"
+msgstr "tuuline"
+
+msgid "Change Units to"
+msgstr "Muuda mõõtühikud"
+
+msgid "sunlit"
+msgstr "Päikeseküllane"
+
+msgid "then showers"
+msgstr "seejärel hooti tugevad sademed"
+
+msgid "fog"
+msgstr "Udu"
+
+msgid "snow"
+msgstr "Lumi"
+
+msgid "breezy"
+msgstr "tuuline"
+
+msgid "then some sun"
+msgstr "seejärel päikest"
+
+msgid "warm"
+msgstr "warm"
+
+msgid "then t-storms"
+msgstr "then t-storms"
+

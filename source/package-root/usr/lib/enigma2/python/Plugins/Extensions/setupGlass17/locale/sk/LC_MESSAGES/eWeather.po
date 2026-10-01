@@ -1,0 +1,6287 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: enhanced weather\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-27 11:17+0100\n"
+"PO-Revision-Date: 2019-01-27 11:19+0100\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: sk_SK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "to rain"
+msgstr "dážď"
+
+msgid "a p.m. snow shower in spots"
+msgstr "popoludní občasne snehové prehánky"
+
+msgid "a passing flurry late"
+msgstr "neskôr metelica"
+
+msgid "sleet and freezing rain late"
+msgstr "neskôr prehánky a mrznúci dážď"
+
+msgid "a chance for snow"
+msgstr "miestami snehové prehánky"
+
+msgid "a little wintry mix"
+msgstr "zimný mix"
+
+msgid "turning colder in the morning"
+msgstr "ráno ochladenie"
+
+msgid "a few flurries"
+msgstr "občasne metelica"
+
+msgid "a few snowflakes late"
+msgstr "občasne sneženie"
+
+msgid "snow and rain in the morning"
+msgstr "zrána sneženie a dážď"
+
+msgid "a couple of a.m. snow showers"
+msgstr "ráno občasne snehové prehánky"
+
+msgid "a couple of p.m. snow showers"
+msgstr "popoludní občasne snehové prehánky"
+
+msgid "perhaps snow late"
+msgstr "neskôr sneženie"
+
+msgid "a snow squall early"
+msgstr "čoskoro snehová búrka"
+
+msgid "a snow squall late"
+msgstr "neskôr snehová búrka"
+
+msgid "a little snow in the evening"
+msgstr "večer mierne sneženie"
+
+msgid "a snow shower late"
+msgstr "neskôr snehové prehánky"
+
+msgid "a morning flurry"
+msgstr "zrána metelica"
+
+msgid "comfortable"
+msgstr "príjemne"
+
+msgid "remaining warm"
+msgstr "ustupujúce teplo"
+
+msgid "pleasantly warm"
+msgstr "príjemne teplo"
+
+msgid "beautiful"
+msgstr "pekne"
+
+msgid "a p.m. shower or thunderstorm"
+msgstr "popoludní prehánky a búrky"
+
+msgid "delightful"
+msgstr "príjemne"
+
+msgid "a couple of heavy t-storms"
+msgstr "miestami silné búrky"
+
+msgid "a p.m. shower in the area"
+msgstr "popoludní miestami mrholenie"
+
+msgid "a quick shower"
+msgstr "slabé prehánky"
+
+msgid "a morning shower or t-storm"
+msgstr "miestami zrána prehánky alebo búrky"
+
+msgid "nice"
+msgstr "pekne"
+
+msgid "pleasant"
+msgstr "príjemne"
+
+msgid "a damaging thunderstorm"
+msgstr "extrémne búrky"
+
+msgid "a p.m. thunderstorm or two"
+msgstr "popoludní miestami búrky"
+
+msgid "a few strong p.m. t-storms"
+msgstr "popoludní silné búrky"
+
+msgid "a severe thunderstorm"
+msgstr "miestami búrky"
+
+msgid "an a.m. thunderstorm in spots"
+msgstr "dopoludnia búrky"
+
+msgid "seasonably warm"
+msgstr "teplo"
+
+msgid "a shower or t-storm early"
+msgstr "čoskoro búrky"
+
+msgid "an a.m. thunderstorm or two"
+msgstr "dopoludnia miestami búrky"
+
+msgid "very warm"
+msgstr "veľmi teplo"
+
+msgid "mild"
+msgstr "mierny vietor"
+
+msgid "a shower or t-storm"
+msgstr "prehánky alebo búrky"
+
+msgid "a p.m. thunderstorm in spots"
+msgstr "popoludní búrky"
+
+msgid "partly sunny and seasonable"
+msgstr "miestami väčšinou zamračené"
+
+msgid "breezy and pleasant"
+msgstr "veterno a príjemne"
+
+msgid "not as cool"
+msgstr "ochladenie"
+
+msgid "a snow squall in the evening"
+msgstr "večer snehová búrka"
+
+msgid "chilly with some sun"
+msgstr "mrazivo a polojasno"
+
+msgid "cold with periods of sun"
+msgstr "chladno a striedavo slnečno"
+
+msgid "mixed with snow early"
+msgstr "čoskoro sneženie a dážď"
+
+msgid "breezy and cold"
+msgstr "veterno a chladno"
+
+msgid "blowing snow"
+msgstr "zvírené sneženie"
+
+msgid "snow late in the p.m."
+msgstr "neskôr popoludní sneženie"
+
+msgid "breezy and quite cold"
+msgstr "veterno a veľmi chladno"
+
+msgid "very cold with snow"
+msgstr "veľmi chladno so snežením"
+
+msgid "cloudy with snow showers late"
+msgstr "zamračené so snehovými prehánkami"
+
+msgid "cold with snow"
+msgstr "chladno a sneženie"
+
+msgid "cold with snow at times"
+msgstr "chladno so snehovými prehánkami"
+
+msgid "late snow showers"
+msgstr "neskôr snehové prehánky"
+
+msgid "snow at times"
+msgstr "občasné sneženie"
+
+msgid "low clouds and not as cold"
+msgstr "nízka oblačnosť a nie chladno"
+
+msgid "late rain"
+msgstr "neskôr dážď"
+
+msgid "clearing and very cold"
+msgstr "jasno a veľmi chladno"
+
+msgid "cloudy and very cold"
+msgstr "oblačno a veľmi chladno"
+
+msgid "but cold"
+msgstr "ale chladno"
+
+msgid "windy with periods of snow"
+msgstr "veterno a občasne sneženie"
+
+msgid "clear and quite cold"
+msgstr "jasno a veľmi chladno"
+
+msgid "cloudy and not as cool"
+msgstr "oblačno a nie chladno"
+
+msgid "snow and rain late"
+msgstr "neskôr sheh a dážď"
+
+msgid "not as cold with clearing"
+msgstr "nie chladno a vyjasňovanie"
+
+msgid "cloudy and milder"
+msgstr "oblačno a mierne"
+
+msgid "sunshine and not as cold"
+msgstr "slnečno ale nie chladno"
+
+msgid "mostly cloudy and very cold"
+msgstr "väčšinou zamračené a veľmi chladno"
+
+msgid "turning out clear and frigid"
+msgstr "vyjasni sa a mrazivo"
+
+msgid "sunny and very cold"
+msgstr "slnečno a veľmi chladno"
+
+msgid "partly sunny and very cold"
+msgstr "polojasno a veľmi chladno"
+
+msgid "windy and frigid"
+msgstr "veterno a mrazivo"
+
+msgid "windy and very cold"
+msgstr "veterno a veľmi chladno"
+
+msgid "brisk and very cold"
+msgstr "mrazivo a veľmi chladno"
+
+msgid "partly sunny and quite cold"
+msgstr "prevažne jasno a chladno"
+
+msgid "frigid with a bit of snow"
+msgstr "mrazivo a snehové prehánky"
+
+msgid "frigid with some sun"
+msgstr "mrazivo a polojasno"
+
+msgid "mostly sunny and quite cold"
+msgstr "prevažne jasno a chladno"
+
+msgid "mainly clear and very cold"
+msgstr "prevažne jasno a veľmi chladno"
+
+msgid "an afternoon snow showers"
+msgstr "popoludní snehové prehánky"
+
+msgid "mostly cloudy and frigid"
+msgstr "väčšinou zamračené a mrazivo"
+
+msgid "frigid with periods of snow"
+msgstr "mrazivo a snehové prehánky"
+
+msgid "cloudy and frigid"
+msgstr "chladno a mrazivo"
+
+msgid "quite cold"
+msgstr "veľmi chladno"
+
+msgid "cold with icy mix"
+msgstr "chladno a dážď a ľad"
+
+msgid "some ice early"
+msgstr "poľadovica"
+
+msgid "overcast and frigid"
+msgstr "zamračené a mrazivo"
+
+msgid "breezy and very cold"
+msgstr "veterno a veľmi chladno"
+
+msgid "cloudy and bitterly cold"
+msgstr "oblačno a mrazivo"
+
+msgid "mostly sunny and very cold"
+msgstr "prevažne jasno a veľmi chladno"
+
+msgid "brisk and cold"
+msgstr "mrazivo a chladno"
+
+msgid "brisk and chilly"
+msgstr "ostro a mrazivo"
+
+msgid "bitterly cold with clearing"
+msgstr "mrazivy chlad a vyjasňovanie"
+
+msgid "frigid with increasing clouds"
+msgstr "arktický chlad so zvyšujúcou sa oblačnosťou"
+
+msgid "but very cold"
+msgstr "veľmi chladno"
+
+msgid "rather cloudy and very cold"
+msgstr "polooblačno a veľmi chladno"
+
+msgid "very cold with clouds and sun"
+msgstr "veľmi chladno a polojasno"
+
+msgid "very cold with snow at times"
+msgstr "veľmi chladno so snehovými prehánkami"
+
+msgid "partly sunny and frigid"
+msgstr "polojasno a arktický chlad"
+
+msgid "mainly cloudy and frigid"
+msgstr "väčšinou zamračené a mrazivo"
+
+msgid "partly cloudy and very cold"
+msgstr "polojasno a veľmi chladno"
+
+msgid "a bit of evening snow"
+msgstr "miestami večerné sneženie"
+
+msgid "afternoon flurries"
+msgstr "popoludní metelica"
+
+msgid "then flurries"
+msgstr "potom metelica"
+
+msgid "chilly with a little snow"
+msgstr "mrazivo s občasnym miernym snežením"
+
+msgid "very cold"
+msgstr "veľmi chladno"
+
+msgid "overcast with a bit of snow"
+msgstr "zamračené občasné sneženie"
+
+msgid "a snow shower this afternoon"
+msgstr "popoludní snehové prehánky"
+
+msgid "rain to snow"
+msgstr "dážď a sneh"
+
+msgid "a little wintry mix late"
+msgstr "mix zimného počasia"
+
+msgid "p.m. snow showers"
+msgstr "popoludní snehové prehánky"
+
+msgid "a wintry mix late"
+msgstr "mix zimného počasia"
+
+msgid "watch for ice late"
+msgstr "poľadovica"
+
+msgid "then a bit of ice"
+msgstr "potom poľadovica"
+
+msgid "a bit of snow and ice later"
+msgstr "neskôr sneženie a poľadovica"
+
+msgid "evening snow showers"
+msgstr "večer snehové prehánky"
+
+msgid "overcast and seasonably cold"
+msgstr "zamračené a chladno"
+
+msgid "variably cloudy and chilly"
+msgstr "premenlivo zamračené a mrazivo"
+
+msgid "a few flurries in the morning"
+msgstr "zrána miestami mrholenie"
+
+msgid "cloudy and seasonably cool"
+msgstr "zamračené a chladno"
+
+msgid "cloudy with snow tapering off"
+msgstr "oblačno s ustupujúcim snežením"
+
+msgid "snow tapering to flurries"
+msgstr "ustupujúce sneženie potom metelica"
+
+msgid "frigid with tapering off"
+msgstr "mrazivo a doznievajúce sneženie"
+
+msgid "frigid with patchy clouds"
+msgstr "mrazivo a občas oblačno"
+
+msgid "snow tapering off"
+msgstr "doznievajúce sneženie"
+
+msgid "rain and snow"
+msgstr "dážď a sneh"
+
+msgid "snow and rain"
+msgstr "sheh a dážď"
+
+msgid "snow showers in the morning"
+msgstr "ráno snehové prehánky"
+
+msgid "wet snow"
+msgstr "sneženie"
+
+msgid "breezy and mild"
+msgstr "sviežo a mierny vietor"
+
+msgid "snow in the evening"
+msgstr "večer sneženie"
+
+msgid "snow of varying rates"
+msgstr "občasné snehové prehánky"
+
+msgid "morning snow showers"
+msgstr "ranné snehové prehánky"
+
+msgid "clouds with snow late"
+msgstr "neskôr zamračené so snežením"
+
+msgid "snow late this morning"
+msgstr "zrána miestami sneženie"
+
+msgid "some snow"
+msgstr "občasne sneženie"
+
+msgid "freezing fog this morning"
+msgstr "zrána mrznúca hmla"
+
+msgid "mostly cloudy and milder"
+msgstr "väčšinou zamračené a mierne"
+
+msgid "a little snow this afternoon"
+msgstr "popoludní občasné sneženie"
+
+msgid "afternoon snow showers"
+msgstr "popoludní snehové prehánky"
+
+msgid "windy with snow"
+msgstr "veterno so snežením"
+
+msgid "breezy with periods of snow"
+msgstr "veterno s občasným snežením"
+
+msgid "snow much of the time"
+msgstr "vačšinou sneženie"
+
+msgid "periods of snow and rain"
+msgstr "shehové a dážďové prehánky"
+
+msgid "breezy with snow"
+msgstr "veterno so snežením"
+
+msgid "late snow"
+msgstr "neskôr sneženie"
+
+msgid "mainly cloudy with flurries"
+msgstr "polooblačno a miestami metelica"
+
+msgid "p.m. snow"
+msgstr "popoludní sneženie"
+
+msgid "rain mixing in"
+msgstr "dážďivo"
+
+msgid "then snow"
+msgstr "potom sneženie"
+
+msgid "rather cloudy and not as cold"
+msgstr "miestami oblačno a nie chladno"
+
+msgid "a flurry in the p.m."
+msgstr "popoludní metelica"
+
+msgid "cloudy with a flurry"
+msgstr "oblačno a silný vietor"
+
+msgid "cooler with a little snow"
+msgstr "chladnejšie s občasným snežením"
+
+msgid "a bit of ice and rain"
+msgstr "občasne mrznúci dážď"
+
+msgid "rather cloudy with rain late"
+msgstr "neskôr oblačno a dážď"
+
+msgid "a little icy mix early"
+msgstr "čoskoro mrznúci dážď"
+
+msgid "afternoon snow"
+msgstr "popoludní sneženie"
+
+msgid "an a.m. rain and sleet shower"
+msgstr "ráno dážďové alebo snehové prehánky"
+
+msgid "periods of wet snow"
+msgstr "striedavo sneženie"
+
+msgid "late-night snow"
+msgstr "neskôr v noci sneženie"
+
+msgid "a little icy mix in the a.m."
+msgstr "zrána poľadovica"
+
+msgid "breezy and mild with rain"
+msgstr "sviežo a veterno s dažďom"
+
+msgid "snow and sleet at times"
+msgstr "občasne sneženie a sneh s dažďom"
+
+msgid "breezy in the afternoon"
+msgstr "popoludní veterno"
+
+msgid "evening rain and drizzle"
+msgstr "večer dážď a mrholenie"
+
+msgid "then ice"
+msgstr "potom poľadovica"
+
+msgid "warmer late"
+msgstr "neskôr oteplenie"
+
+msgid "a wintry mix this morning"
+msgstr "ráno zimný mix"
+
+msgid "a bit of snow in the evening"
+msgstr "večer sneženie"
+
+msgid "becoming partly cloudy"
+msgstr "postupne polooblačno"
+
+msgid "a bit of wintry mix"
+msgstr "mix zimného počasia"
+
+msgid "cloudy with snow"
+msgstr "zamračené a sneženie"
+
+msgid "p.m. flurries"
+msgstr "popoludní metelica"
+
+msgid "early snow"
+msgstr "čoskoro sneženie"
+
+msgid "rain and ice in the evening"
+msgstr "večer daždivo a poľadovica"
+
+msgid "a wintry mix in the morning"
+msgstr "dopoludnia zimný mix"
+
+msgid "milder with clouds and sun"
+msgstr "mierne s mrakmi a slnkom"
+
+msgid "milder with low clouds"
+msgstr "mierne s nízkou oblačnosťou"
+
+msgid "a bit of rain and sleet later"
+msgstr "trochu dážďa a sneženie"
+
+msgid "snow showers this evening"
+msgstr "večer snehové prehánky"
+
+msgid "a bit of ice in the morning"
+msgstr "zrána poľadovica"
+
+msgid "a bit of snow and sleet late"
+msgstr "neskôr mierne sneženie"
+
+msgid "Add City"
+msgstr "Pridať mesto"
+
+msgid "Delete City"
+msgstr "Zmazať mesto"
+
+msgid "Change Temperature Unit"
+msgstr "Zmeniť jednotku teploty"
+
+msgid "chilly with variable clouds"
+msgstr "mrazivo, občasne polooblačno"
+
+msgid "a little icy mix this morning"
+msgstr "zrána poľadovica"
+
+msgid "on-and-off snow"
+msgstr "striedavo sneženie"
+
+msgid "patchy fog freezing late"
+msgstr "neskôr mrznúca hmla"
+
+msgid "dull and dreary"
+msgstr "nepríjemne a prehánky"
+
+msgid "a snow squall in the p.m."
+msgstr "snehová búrka popoludní"
+
+msgid "partly sunny with flurries"
+msgstr "polojasno a metelica"
+
+msgid "cloudy with snow showers"
+msgstr "zamračené so snehovými prehánkami"
+
+msgid "mostly sunny and chilly"
+msgstr "polojasno a mrazivo"
+
+msgid "colder with periods of sun"
+msgstr "chladnejšie a striedavo slnečno"
+
+msgid "decreasing clouds and colder"
+msgstr "zmenšená oblačnosť a chladnejšie"
+
+msgid "clouds breaking and chilly"
+msgstr "polooblačno a mrazivo"
+
+msgid "windy and cold"
+msgstr "veterno a chladno"
+
+msgid "chilly with partial sunshine"
+msgstr "mrazivo s čiastočným slnečným svitom"
+
+msgid "chilly whit partial sunshine"
+msgstr "mrazivo s čiastočným slnečným svitom"
+
+msgid "chilly whit some sun"
+msgstr "mrazivo a polojasno"
+
+msgid "then sun"
+msgstr "potom slnečno"
+
+msgid "an evening shower in the area"
+msgstr "večer lokálne prehánky"
+
+msgid "cold whit rain and drizzle"
+msgstr "chladno s dážďom a mrholením"
+
+msgid "breezy and cool"
+msgstr "sviežo a chladno"
+
+msgid "becoming cloudy and mild"
+msgstr "zväčšujúca sa oblačnosť a mierne"
+
+msgid "a p.m. t-storm"
+msgstr "popoludní búrky"
+
+msgid "warm and humid with clearing"
+msgstr "teplo a vlhko s vyjasňovaním"
+
+msgid "then rain"
+msgstr "potom dážď"
+
+msgid "a strong t-storm late"
+msgstr "neskôr v noci silné búrky"
+
+msgid "a t-storm late"
+msgstr "neskôr búrky"
+
+msgid "a t-storm around late"
+msgstr "neskôr miestami búrky"
+
+msgid "warm and hamid"
+msgstr "teplo a vlhko"
+
+msgid "breezy and nice"
+msgstr "sviežo a pekne"
+
+msgid "Forecast for"
+msgstr "Predpoveď pre"
+
+msgid "Nighttime"
+msgstr "Noc"
+
+msgid "Updated at"
+msgstr "Aktualizácia o"
+
+msgid "City"
+msgstr "Mesto"
+
+msgid "Latitude"
+msgstr "Zem. šírka"
+
+msgid "Longtitude"
+msgstr "Zem. dĺžka"
+
+msgid "Pressure"
+msgstr "Tlak"
+
+msgid "Realfeel"
+msgstr "Pocitovo"
+
+msgid "Humidity"
+msgstr "Vlhkosť"
+
+msgid "Wind"
+msgstr "Vietor"
+
+msgid "Visibility"
+msgstr "Viditeľnosť"
+
+msgid "Precip"
+msgstr "Zrážky"
+
+msgid "Uvindex"
+msgstr "UV index"
+
+msgid "sun"
+msgstr "Slnko"
+
+msgid "moon"
+msgstr "Mesiac"
+
+msgid "mercury"
+msgstr "Merkúr"
+
+msgid "venus"
+msgstr "Venuša"
+
+msgid "mars"
+msgstr "Mars"
+
+msgid "jupiter"
+msgstr "Jupiter"
+
+msgid "saturn"
+msgstr "Saturn"
+
+msgid "uranus"
+msgstr "Urán"
+
+msgid "neptune"
+msgstr "Neptún"
+
+msgid "pluto"
+msgstr "Pluto"
+
+msgid "Steady"
+msgstr "stály"
+
+msgid "Moderate"
+msgstr "mierny"
+
+msgid "partly sunny"
+msgstr "čiastočne slnečno"
+
+msgid "N"
+msgstr "S"
+
+msgid "variable clouds with a shower"
+msgstr "občasne zamračené s prehánkami"
+
+msgid "partly sunny with a shower"
+msgstr "jasno občas prehánky"
+
+msgid "Sunday"
+msgstr "Nedeľa"
+
+msgid "Saturday"
+msgstr "Sobota"
+
+msgid "Tuesday"
+msgstr "Utorok"
+
+msgid "Monday"
+msgstr "Pondelok"
+
+msgid "Thursday"
+msgstr "Štvrtok"
+
+msgid "Wednesday"
+msgstr "Streda"
+
+msgid "Friday"
+msgstr "Piatok"
+
+msgid "NE"
+msgstr "SV"
+
+msgid "NNE"
+msgstr "SSV"
+
+msgid "showers around"
+msgstr "občasné prehánky"
+
+msgid "a shower and t-storm around"
+msgstr "prehánky a občasne búrky"
+
+msgid "spotty afternoon showers"
+msgstr "miestami popoludňajšie prehánky"
+
+msgid "mostly cloudy with a shower"
+msgstr "väčšinou zamračené s prehánkami"
+
+msgid "mostly cloudy with a t-storm"
+msgstr "väčšinou zamračené a búrky"
+
+msgid "SE"
+msgstr "JV"
+
+msgid "mostly cloudy"
+msgstr "väčšinou zamračené"
+
+msgid "a couple of showers"
+msgstr "občasne prehánky"
+
+msgid "warmer"
+msgstr "teplejšie"
+
+msgid "a shower in the p.m."
+msgstr "popoludní mrholenie"
+
+msgid "Daytime"
+msgstr "Deň"
+
+msgid "----"
+msgstr "----"
+
+msgid "partly cloudy"
+msgstr "čiastočne oblačno"
+
+msgid "clear"
+msgstr "bezoblačná obloha"
+
+msgid "partly cloudy with a shower"
+msgstr "čiastočne oblačno s prehánkami"
+
+msgid "overcast with occasional rain"
+msgstr "zamračené s občasným dažďom"
+
+msgid "overcast"
+msgstr "zamračené"
+
+msgid "Low"
+msgstr "Nízky"
+
+msgid "sunny"
+msgstr "slnečno"
+
+msgid "S"
+msgstr "J"
+
+msgid "Change city"
+msgstr "Zmeniť mesto"
+
+msgid "Rising"
+msgstr "stúpajúci"
+
+msgid "Please enter a city name"
+msgstr "Zadaj, prosím, meno mesta"
+
+msgid "None city founded"
+msgstr "Žiadne mesto nebolo nájdené"
+
+msgid "Select City"
+msgstr "Zvoľ mesto"
+
+msgid "spotty showers"
+msgstr "miestami prehánky"
+
+msgid "sun and some clouds"
+msgstr "slnečno a občasne mraky"
+
+msgid "E"
+msgstr "V"
+
+msgid "SSW"
+msgstr "JJZ"
+
+msgid "sunshine and some clouds"
+msgstr "slnečno a občasne zamračené"
+
+msgid "periods of clouds and sun"
+msgstr "striedavo mraky a slnko"
+
+msgid "warmer with clouds and sun"
+msgstr "teplejšie s mrakmi a slnkom"
+
+msgid "NNW"
+msgstr "SSZ"
+
+msgid "partly sunny and hot"
+msgstr "oblačnosť a horúco"
+
+msgid "ESE"
+msgstr "VJV"
+
+msgid "ENE"
+msgstr "VSV"
+
+msgid "sunny and very warm"
+msgstr "slnečno a veľmi teplo"
+
+msgid "times of clouds and sun"
+msgstr "striedavo mraky a slnko"
+
+msgid "sunny and unseasonably hot"
+msgstr "slnečno a nezvyčajne horúco"
+
+msgid "blazing sunshine and warmer"
+msgstr "páliace slnko a horúco"
+
+msgid "hot with sunshine"
+msgstr "horúco a slnečno"
+
+msgid "rain/snow"
+msgstr "dážď/sneh"
+
+msgid "partly sunny and milder"
+msgstr "oblačnosť a príjemne"
+
+msgid "breezy with clouds and sun"
+msgstr "sviežo s mrakmi a slnkom"
+
+msgid "mostly sunny"
+msgstr "prevažne jasno"
+
+msgid "W"
+msgstr "Z"
+
+msgid "more clouds than sun"
+msgstr "viac zamračené ako slnečno"
+
+msgid "chilly with rain"
+msgstr "mrazivo a dážď"
+
+msgid "partly sunny and chilly"
+msgstr "polooblačno a mrazivo"
+
+msgid "Decreasing"
+msgstr "klesajúci"
+
+msgid "clouds and sun"
+msgstr "oblačno a slnečno"
+
+msgid "cloudy with a few showers"
+msgstr "zamračené a miestami prehánky"
+
+msgid "rain and drizzle"
+msgstr "dážď a mrholenie"
+
+msgid "sunshine"
+msgstr "slnečno"
+
+msgid "SW"
+msgstr "JZ"
+
+msgid "NW"
+msgstr "SZ"
+
+msgid "cloudy with a chance of rain"
+msgstr "zamračené s možnosťou zrážok"
+
+msgid "chance of a shower"
+msgstr "možnosť prehánok"
+
+msgid "a little morning rain"
+msgstr "trocha ranného dážďa"
+
+msgid "sunny to partly cloudy"
+msgstr "slnečno až oblačno"
+
+msgid "increasing amounts of sun"
+msgstr "zvyšujúce sa množstvo slnka"
+
+msgid "rain and drizzle in the p.m."
+msgstr "dážď a mrholenie popoludní"
+
+msgid "cloudy with a touch of rain"
+msgstr "zamračené s nádychom dažďa"
+
+msgid "SSE"
+msgstr "JJV"
+
+msgid "WSW"
+msgstr "ZJZ"
+
+msgid "cloudy"
+msgstr "zamračené"
+
+msgid "rain"
+msgstr "dážď"
+
+msgid "increasing cloudiness"
+msgstr "zväčšujúca sa oblačnosť"
+
+msgid "sunshine and patchy clouds"
+msgstr "slnečno a občasne zamračené"
+
+msgid "some sun"
+msgstr "slnečno"
+
+msgid "then turning cloudy"
+msgstr "potom sa zmení na oblačno"
+
+msgid "partly sunny and mild"
+msgstr "polooblačno a mierne"
+
+msgid "an afternoon shower in spots"
+msgstr "miestami popoludňajšie prehánky"
+
+msgid "WNW"
+msgstr "ZSZ"
+
+msgid "nice and warm"
+msgstr "pekne a teplejšie"
+
+msgid "low clouds"
+msgstr "nízka oblačnosť"
+
+msgid "mostly sunny and pleasant"
+msgstr "prevažne jasno a príjemne"
+
+msgid "partly sunny and cooler"
+msgstr "polooblačno a chladnejšie"
+
+msgid "partly sunny and warm"
+msgstr "čiastočne slnečno a teplo"
+
+msgid "partial sunshine"
+msgstr "polojasno"
+
+msgid "plenty of sunshine"
+msgstr "dostatok slnečného svitu"
+
+msgid "turning out clear"
+msgstr "vyjasni sa"
+
+msgid "mainly clear"
+msgstr "prevažne jasno"
+
+msgid "considerable cloudiness"
+msgstr "značná oblačnosť"
+
+msgid "some sun with a stray shower"
+msgstr "jasno občas prehánky"
+
+msgid "variably cloudy"
+msgstr "občasne zamračené"
+
+msgid "a t-storm"
+msgstr "búrky"
+
+msgid "variable cloudiness"
+msgstr "občasne zamračené"
+
+msgid "Location"
+msgstr "Poloha"
+
+msgid "Very high"
+msgstr "Veľmi vysoký"
+
+msgid "sunshine and unseasonably hot"
+msgstr "slnečno a nezvyčajne horúco"
+
+msgid "a thunderstorm in spots"
+msgstr "miestami búrky"
+
+msgid "mostly sunny and nice"
+msgstr "prevažne jasno a pekne"
+
+msgid "a morning shower"
+msgstr "ranné prehánky"
+
+msgid "variable clouds"
+msgstr "polooblačno"
+
+msgid "becoming clear"
+msgstr "postupne sa vyjasní"
+
+msgid "clear to partly cloudy"
+msgstr "slnečno až polojasno"
+
+msgid "a thunderstorm this morning"
+msgstr "zrána miestami búrky"
+
+msgid "clouds and sun with a shower"
+msgstr "polooblačno s prehánkami"
+
+msgid "rather cloudy with a shower"
+msgstr "skôr oblačno s prehánkami"
+
+msgid "periods of sun"
+msgstr "striedavo slnečno"
+
+msgid "a little rain"
+msgstr "občasne dážď"
+
+msgid "a thunderstorm this afternoon"
+msgstr "popoludní miestami búrky"
+
+msgid "a t-storm late this afternoon"
+msgstr "neskôr popoludní búrky"
+
+msgid "patchy clouds"
+msgstr "čiastočne oblačno"
+
+msgid "cloudy with rain tapering off"
+msgstr "oblačno s dažďom"
+
+msgid "a couple of evening showers"
+msgstr "pár večerných prehánok"
+
+msgid "plenty of clouds"
+msgstr "veľmi zamračené"
+
+msgid "cooler"
+msgstr "chladno"
+
+msgid "light rain"
+msgstr "jemný dážď"
+
+msgid "a passing shower or two"
+msgstr "občasné prehánky"
+
+msgid "mostly sunny and comfortable"
+msgstr "prevažne jasno a príjemne"
+
+msgid "sunny and pleasant"
+msgstr "slnečno a príjemne"
+
+msgid "a passing afternoon shower"
+msgstr "miestami popoludňajšie prehánky"
+
+msgid "cloudy with a little rain"
+msgstr "zamračené s občasnym dažďom"
+
+msgid "cloudy to partly sunny"
+msgstr "zamračené až čiastočne slnečno"
+
+msgid "rather cloudy"
+msgstr "miestami oblačno"
+
+msgid "sun mixing with clouds"
+msgstr "slnečno a občasne mraky"
+
+msgid "cooler with periods of sun"
+msgstr "chladnejšie a striedavo slnečno"
+
+msgid "cloudy with a passing shower"
+msgstr "zamračené občasne prehánky"
+
+msgid "beautiful with sun and clouds"
+msgstr "krásne so slnkom a mrakmi"
+
+msgid "partly sunny and warmer"
+msgstr "čiastočne slnečno a teplejšie"
+
+msgid "mostly sunny and very warm"
+msgstr "slnečno a veľmi teplo"
+
+msgid "turning cloudy"
+msgstr "polooblačno"
+
+msgid "sun and clouds"
+msgstr "slnečno a občas zamračené"
+
+msgid "a thunderstorm in the area"
+msgstr "miestami búrky"
+
+msgid "couple of thunderstorms"
+msgstr "občasné búrky"
+
+msgid "mainly cloudy with a t-storm"
+msgstr "väčšinou zamračené s búrkami"
+
+msgid "an afternoon t-storm or two"
+msgstr "popoludňajšie búrky"
+
+msgid "cloudy with a stray t-storm"
+msgstr "zamračené a búrky"
+
+msgid "partly sunny with a t-storm"
+msgstr "polojasno občasne búrky"
+
+msgid "cloudy with a thunderstorm"
+msgstr "zamračené a búrky"
+
+msgid "a morning t-storm in spots"
+msgstr "zrána lokálne búrky"
+
+msgid "cloudy with spotty showers"
+msgstr "zamračené s niekoľkými prehánkami"
+
+msgid "clouds"
+msgstr "zamračené"
+
+msgid "mostly sunny and breezy"
+msgstr "prevažne jasno a sviežo"
+
+msgid "cloudy and breezy"
+msgstr "oblačno a sviežo"
+
+msgid "strong afternoon t-storms"
+msgstr "silné popoludňajšie prehánky"
+
+msgid "plenty of sun"
+msgstr "dostatok slnka"
+
+msgid "not as hot with a shower"
+msgstr "nie horúco s prehánkami"
+
+msgid "a t-storm around in the p.m."
+msgstr "popoludní  lokálne búrky"
+
+msgid "sunshine and very warm"
+msgstr "slnečno a veľmi teplo"
+
+msgid "sunny and remaining very warm"
+msgstr "slnečno a veľmi teplo"
+
+msgid "turning cloudy and hot"
+msgstr "zamračí sa a horúco"
+
+msgid "a strong afternoon t-storm"
+msgstr "silné popoludňajšie búrky"
+
+msgid "comfortable with some sun"
+msgstr "pohodlne a slnečno"
+
+msgid "partly sunny and comfortable"
+msgstr "oblačnosť a príjemne"
+
+msgid "a t-storm in the afternoon"
+msgstr "popoludní  búrky"
+
+msgid "a strong t-storm in spots"
+msgstr "silné lokálne búrky"
+
+msgid "partly sunny and pleasant"
+msgstr "prevažne jasno a príjemne"
+
+msgid "clouds and sunshine"
+msgstr "miestami oblačno a slnečno"
+
+msgid "sun and areas of high clouds"
+msgstr "slnečno a vysoká oblčnosť"
+
+msgid "thunderstorm"
+msgstr "búrky"
+
+msgid "a shower or t-storm in spots"
+msgstr "prehánky a lokálne búrky"
+
+msgid "periods of sun with a t-storm"
+msgstr "striedavo slnečno a búrky"
+
+msgid "some rain and a thunderstorm"
+msgstr "občasný dážď a búrky"
+
+msgid "an afternoon shower"
+msgstr "popoludňajšie prehánky"
+
+msgid "breezy and cooler with rain"
+msgstr "sviežo a chladnejšie s dažďom"
+
+msgid "morning rain"
+msgstr "ráno dážď"
+
+msgid "pleasant with clouds and sun"
+msgstr "príjemne s mrakmi a slnkom"
+
+msgid "rain and a thunderstorm"
+msgstr "dážď a búrky"
+
+msgid "t-storms possible in the a.m."
+msgstr "možné búrky dopoludnia"
+
+msgid "a few showers"
+msgstr "občasne prehánky"
+
+msgid "sunny and comfortable"
+msgstr "slnečno a príjemne"
+
+msgid "a passing morning shower"
+msgstr "miestami ranné prehánky"
+
+msgid "pleasant with some sun"
+msgstr "príjemne a slnečno"
+
+msgid "a shower in the afternoon"
+msgstr "popoludní  mrholenie"
+
+msgid "brilliant sunshine"
+msgstr "krásne slnečno"
+
+msgid "partly sunny and very warm"
+msgstr "čiastočne slnečno a veľmi teplo"
+
+msgid "a stray afternoon t-storm"
+msgstr "miestami popoludňajšie búrky"
+
+msgid "partly sunny and less humid"
+msgstr "čiastočne slnečno a nízska vlhkosť"
+
+msgid "cloudy with a shower or two"
+msgstr "zamračené s občasnými prehánkami"
+
+msgid "a few afternoon showers"
+msgstr "miestami popoludňajšie prehánky"
+
+msgid "clouds breaking for some sun"
+msgstr "polojasno až slnečno"
+
+msgid "spotty morning showers"
+msgstr "lokálne ranné prehánky"
+
+msgid "nice with sunshine"
+msgstr "pekne a slnečno"
+
+msgid "rain tapering off"
+msgstr "doznievajúci dážď"
+
+msgid "brief afternoon showers"
+msgstr "krátke popoludňajšie prehánky"
+
+msgid "very warm with hazy sunshine"
+msgstr "veľmi teplo s hmlistým slnkom"
+
+msgid "mostly clear"
+msgstr "prevažne jasno"
+
+msgid "partly sunny and nice"
+msgstr "oblačnosť a pekne"
+
+msgid "mostly cloudy and very warm"
+msgstr "oblačno a veľmi teplo"
+
+msgid "mostly sunny and less humid"
+msgstr "prevažne jasno s nízkou vlhkosťou"
+
+msgid "sunny and not as warm"
+msgstr "slnečno a nie veľmi teplo"
+
+msgid "humid with periods of sun"
+msgstr "vlhko a striedavo slnečno"
+
+msgid "a p.m. t-storm in spots"
+msgstr "popoludní  miestami búrky"
+
+msgid "some sun with a thunderstorm"
+msgstr "polojasno občas búrky"
+
+msgid "hazy sun"
+msgstr "zahmlené slnko"
+
+msgid "increasing clouds"
+msgstr "zvyšujúce sa množstvo mrakov"
+
+msgid "very warm with sunshine"
+msgstr "veľmi teplo a slnečno"
+
+msgid "sunshine mixing with clouds"
+msgstr "slnečno a občasne zamračené"
+
+msgid "intervals of clouds and sun"
+msgstr "striedavo mraky a slnko"
+
+msgid "clearing and spotty showers"
+msgstr "jasno a miestami prehánky"
+
+msgid "hazy sunshine"
+msgstr "zahmlený slnečný svit"
+
+msgid "sun through high clouds"
+msgstr "slnečno a vysoká oblačnosť"
+
+msgid "a shower"
+msgstr "prehánky"
+
+msgid "pleasant with sunny intervals"
+msgstr "príjemne a polooblačno"
+
+msgid "some sun with a shower"
+msgstr "jasno s prehánkami"
+
+msgid "a.m. showers"
+msgstr "dopoludnia prehánky"
+
+msgid "an a.m. shower"
+msgstr "dopoludnia prehánky"
+
+msgid "mostly cloudy with a t-shower"
+msgstr "väčšinou zamračené s búrkami"
+
+msgid "sun and clouds with a t-storm"
+msgstr "slnečno, zamračené a búrky"
+
+msgid "pleasant with plenty of sun"
+msgstr "príjemne s dostatkom slnka"
+
+msgid "cooler with a thunderstorm"
+msgstr "chladnejšie s búrkami"
+
+msgid "clouds and sun with a t-storm"
+msgstr "oblačno a slnečno s búrkami"
+
+msgid "a couple of afternoon showers"
+msgstr "pár poobedných prehánok"
+
+msgid "clouds giving way to some sun"
+msgstr "postupné vyjasňovanie"
+
+msgid "a shower around"
+msgstr "miestami prehánky"
+
+msgid "pleasant with sunshine"
+msgstr "príjemne so slnečným svitom"
+
+msgid "a p.m. shower in places"
+msgstr "popoludní  mrholenie"
+
+msgid "rain in the afternoon"
+msgstr "popoludní  dážď"
+
+msgid "sunny and beautiful"
+msgstr "slnečno a pekne"
+
+msgid "a blend of sun and clouds"
+msgstr "zmes slnka a mrakov"
+
+msgid "very warm with plenty of sun"
+msgstr "veľmi horúco s dostatkom slnka"
+
+msgid "nice with plenty of sun"
+msgstr "pekne a množstvo slnečného svitu"
+
+msgid "clouds and breaks of sun"
+msgstr "oblačnosť a prerušovaná slnkom"
+
+msgid "clearing"
+msgstr "bezoblačná obloha"
+
+msgid "hazy sunshine and very warm"
+msgstr "zahmlený slnečný svit a veľmi teplo"
+
+msgid "mostly sunny and hot"
+msgstr "polojasno a horúco"
+
+msgid "sunny and hot"
+msgstr "slnečno a horúco"
+
+msgid "pleasant with sun and clouds"
+msgstr "príjemne a polooblačno"
+
+msgid "a bit of morning rain"
+msgstr "trochu ranného dážďa"
+
+msgid "some brightening"
+msgstr "vyjasňovanie"
+
+msgid "periods of rain"
+msgstr "daždivo"
+
+msgid "some sun with a shower or two"
+msgstr "jasno občas prehánky"
+
+msgid "an afternoon thundershower"
+msgstr "miestami popoludňajšie búrky a prehánky"
+
+msgid "a couple of p.m. t-showers"
+msgstr "občasné búrky a prehánky"
+
+msgid "downpours in the afternoon"
+msgstr "lejaky v popoludňajších hodinách"
+
+msgid "high clouds and pleasant"
+msgstr "vysoká oblačnosť a príjemne"
+
+msgid "sunny and pleasantly warm"
+msgstr "slnečno a príjemne teplo"
+
+msgid "sunny and remaining warm"
+msgstr "slnečno a ustupujúce teplo"
+
+msgid "breezy with clearing"
+msgstr "sviežo a jasno"
+
+msgid "a stray morning thunderstorm"
+msgstr "doznievajúce búrky ráno"
+
+msgid "a passing shower"
+msgstr "prechádzajúce prehánky"
+
+msgid "a brief afternoon shower"
+msgstr "krátke popoludňajšie prehánky"
+
+msgid "a stray afternoon shower"
+msgstr "občasné popoludňajšie prehánky"
+
+msgid "heavy showers in the morning"
+msgstr "silné prehánky ráno"
+
+msgid "occasional afternoon rain"
+msgstr "miestami popoludňajší dážď"
+
+msgid "cooler with a few showers"
+msgstr "chladno a miestami prehánkami"
+
+msgid "sunshine and warmer"
+msgstr "slnečný svit a teplo"
+
+msgid "mostly sunny and summerlike"
+msgstr "prevažne jasno"
+
+msgid "hot with periods of sun"
+msgstr "horúco a striedavo slnečno"
+
+msgid "partly sunny and not as hot"
+msgstr "oblačnosť a nie horúco"
+
+msgid "mostly sunny and hotter"
+msgstr "prevažne jasno a horúco"
+
+msgid "periods of sun with a shower"
+msgstr "miestami slnečno s prehánkami"
+
+msgid "a brief shower or two"
+msgstr "občasné prehánky"
+
+msgid "nice with periods of sun"
+msgstr "pekne a striedavo slnečno"
+
+msgid "low clouds and warmer"
+msgstr "nízka oblačnosť a teplo"
+
+msgid "cloudy and not as hot"
+msgstr "oblačno a nie horúco"
+
+msgid "very warm with clouds and sun"
+msgstr "veľmi teplo s mrakmi a slnkom"
+
+msgid "sunny with low humidity"
+msgstr "slnečno s nízkou vlhkosťou"
+
+msgid "overcast with a thunderstorm"
+msgstr "oblačno s búrkou"
+
+msgid "some sun with a quick shower"
+msgstr "polojasno občas prehánky"
+
+msgid "cloudy with showers around"
+msgstr "zamračené s prehánkami"
+
+msgid "rain and drizzle in the a.m."
+msgstr "dážď a mrholenie dopoludnia"
+
+msgid "light rain shower"
+msgstr "slabé dažďové prehánky"
+
+msgid "partly sunny and breezy"
+msgstr "čiastočne slnečno a sviežo"
+
+msgid "very warm with some sun"
+msgstr "veľmi teplo a polojasno"
+
+msgid "increasing cloudiness and hot"
+msgstr "zväčšujúca sa oblačnosť a horúco"
+
+msgid "not as hot with some sun"
+msgstr "polojasno a nie horúco"
+
+msgid "mostly cloudy and hotter"
+msgstr "väčšinou zamračené s horúco"
+
+msgid "not as warm"
+msgstr "nie teplo"
+
+msgid "mild with plenty of sunshine"
+msgstr "mierne s dostatkom slnečného svitu"
+
+msgid "cloudy and colder"
+msgstr "oblačnosť a chladnejšie"
+
+msgid "warmer with partial sunshine"
+msgstr "teplo s čiastočným slnečným svitom"
+
+msgid "some sun with a stray t-storm"
+msgstr "polojasno občas búrky"
+
+msgid "beautiful with plenty of sun"
+msgstr "krásne s množstvom slnka"
+
+msgid "mostly cloudy and comfortable"
+msgstr "väčšinou zamračené a príjemne"
+
+msgid "brief showers"
+msgstr "občasne prehánky"
+
+msgid "colder in the afternoon"
+msgstr "popoludní chladno"
+
+msgid "a bit of afternoon rain"
+msgstr "občasný popoludnajší dážď"
+
+msgid "mostly sunny and warmer"
+msgstr "zamračené a teplo"
+
+msgid "partly sunny and summerlike"
+msgstr "polojasne a pocitovo ako v lete"
+
+msgid "cloudy with a shower"
+msgstr "zamračené s prehánkami"
+
+msgid "delightful with sunshine"
+msgstr "príjemne so slnečným svitom"
+
+msgid "cloudy and warm"
+msgstr "oblačno a teplo"
+
+msgid "remaining cloudy"
+msgstr "doznievajúca oblačnosť"
+
+msgid "on-and-off rain and drizzle"
+msgstr "dážď a mrholenie"
+
+msgid "cool with periods of rain"
+msgstr "príjemne a miestami dážď"
+
+msgid "delightful with some sun"
+msgstr "lohodne a slnečno"
+
+msgid "p.m. downpours"
+msgstr "popoludní lejaky"
+
+msgid "mostly sunny and windy"
+msgstr "prevažne jasno a veterno"
+
+msgid "showers around in the p.m."
+msgstr "popoludní prehánky"
+
+msgid "a shower in the morning"
+msgstr "ráno mrholenie"
+
+msgid "mainly cloudy"
+msgstr "prevažne oblačno"
+
+msgid "sunshine and pleasant"
+msgstr "slnečný svit a príjemne"
+
+msgid "a strong t-storm"
+msgstr "silné búrky"
+
+msgid "clouds limiting sun"
+msgstr "oblačno a polojasno"
+
+msgid "clouds limiting sunshine"
+msgstr "oblačno a polojasno"
+
+msgid "times of sun and clouds"
+msgstr "striedavo mraky a slnko"
+
+msgid "clouds yielding to sun"
+msgstr "postupne slnečno"
+
+msgid "clearing and pleasant"
+msgstr "jasno a príjemne"
+
+msgid "sunny intervals"
+msgstr "polojasno až jasno"
+
+msgid "warm with plenty of sunshine"
+msgstr "teplo a množstvo slnečného svitu"
+
+msgid "hot with considerable clouds"
+msgstr "horúco so značnými mraky"
+
+msgid "pleasant and warmer"
+msgstr "príjemne a teplo"
+
+msgid "mostly sunny and warm"
+msgstr "čiastočne slnečno a teplo"
+
+msgid "cloudy with showers"
+msgstr "zamračené s prehánkami"
+
+msgid "some sunshine with a shower"
+msgstr "slnečný svit a občas prehánky"
+
+msgid "an afternoon thunderstorm"
+msgstr "popoludňajšie búrky"
+
+msgid "sun and clouds with a shower"
+msgstr "občasne zamračené s prehánkami"
+
+msgid "a morning t-storm in the area"
+msgstr "zrána lokálne búrky"
+
+msgid "occasional rain and a t-storm"
+msgstr "občasný dážď a búrky"
+
+msgid "occasional rain"
+msgstr "občasný dážď"
+
+msgid "a thundershower in spots"
+msgstr "miestami búrky s mrholením"
+
+msgid "sunny and nice"
+msgstr "jasno a pekne"
+
+msgid "cloudy with a shower in spots"
+msgstr "zamračené a miestami prehánkami"
+
+msgid "hot with clouds and sunshine"
+msgstr "horúco s oblačnosťou a slnečným svitom"
+
+msgid "hot with clouds and sun"
+msgstr "horúco s oblačnosťou a slnkom"
+
+msgid "warm with some sun"
+msgstr "teplo a slnečno"
+
+msgid "breezy and warm with some sun"
+msgstr "sviežo a teplo so slnkom"
+
+msgid "mild with partial sunshine"
+msgstr "mierne s čiastočným slnečným svitom"
+
+msgid "cooler with periods of rain"
+msgstr "chladno s občasným dažďom"
+
+msgid "some sun with showers around"
+msgstr "jasno občas prehánky"
+
+msgid "pleasant with clouds breaking"
+msgstr "príjemne a polooblačno"
+
+msgid "cloudy and mild"
+msgstr "oblačno a mierne"
+
+msgid "mild with clouds and sun"
+msgstr "mierne s mrakmi a slnkom"
+
+msgid "a strong t-storm possible"
+msgstr "možné silné búrky"
+
+msgid "strong thunderstorms possible"
+msgstr "možné silné búrky"
+
+msgid "some clouds"
+msgstr "polooblačnosť"
+
+msgid "a little rain in the morning"
+msgstr "trochu ráno dáždivo"
+
+msgid "a t-storm possible"
+msgstr "pravdepodobnosť búrok"
+
+msgid "partly sunny and delightful"
+msgstr "oblačno a príjemne"
+
+msgid "partly sunny and beautiful"
+msgstr "oblačno a príjemne"
+
+msgid "unseasonably hot"
+msgstr "nezvyčajne horúco"
+
+msgid "summerlike"
+msgstr "teplo ako v lete"
+
+msgid "nice with plenty of sunshine"
+msgstr "pekne a dostatok slnečného svitu"
+
+msgid "abundant sunshine"
+msgstr "množstvo slnečného svitu"
+
+msgid "mostly sunny and beautiful"
+msgstr "prevažne jasno a príjemne"
+
+msgid "cloudy with occasional rain"
+msgstr "zamračené s občasným dažďom"
+
+msgid "downpours in the a.m."
+msgstr "dopoludnia lejaky"
+
+msgid "warmer with increasing clouds"
+msgstr "telo so zvyšujúcou sa oblačnosťou"
+
+msgid "a touch of morning rain"
+msgstr "zrána dážď"
+
+msgid "turning out cloudy"
+msgstr "vyjasni sa"
+
+msgid "nice with clouds and sun"
+msgstr "pekne s mrakmi a slnkom"
+
+msgid "cloudy and humid with showers"
+msgstr "oblačno a vlhko s prehánkami"
+
+msgid "partly sunny and humid"
+msgstr "polooblačno a vlhko"
+
+msgid "a morning t-storm"
+msgstr "ranné búrky"
+
+msgid "hot with plenty of sun"
+msgstr "horúco a slnečno"
+
+msgid "episodes of sunshine"
+msgstr "polojasno"
+
+msgid "blowing dust"
+msgstr "zvírený prach"
+
+msgid "blowing dust with high clouds"
+msgstr "zvírený prach a vysoká oblačnosť"
+
+msgid "showers and a heavier t-storm"
+msgstr "prehánky a silné búrky"
+
+msgid "cooler with a shower in spots"
+msgstr "chladno a prehánky"
+
+msgid "not as warm with some sun"
+msgstr "nie veľmi teplo a polojasno"
+
+msgid "cloudy and comfortable"
+msgstr "zamračené a príjemne"
+
+msgid "sunshine and humid"
+msgstr "slnečný svit a vlhko"
+
+msgid "partly sunny and cool"
+msgstr "polojasno a príjemne"
+
+msgid "an afternoon shower or two"
+msgstr "miestami popoludňajšie prehánky"
+
+msgid "windy with plenty of sunshine"
+msgstr "veterno a dostatok slnečného svitu"
+
+msgid "thickening clouds"
+msgstr "hustnúca oblačnosť"
+
+msgid "a thick cloud cover"
+msgstr "silná oblačnosť"
+
+msgid "downpours in the morning"
+msgstr "lejaky v dopoludňajších hodinách"
+
+msgid "a little afternoon rain"
+msgstr "popoludní občasný dážď"
+
+msgid "sunlit and pleasant"
+msgstr "jasno a príjemne"
+
+msgid "a couple of morning t-storms"
+msgstr "pár ranných búrok"
+
+msgid "a strong morning thunderstorm"
+msgstr "ráno silné búrky"
+
+msgid "decreasing clouds"
+msgstr "ubúdajúca oblačnosť"
+
+msgid "mostly sunny with a t-storm"
+msgstr "prevažne jasno a búrky"
+
+msgid "sunlit and very warm"
+msgstr "slnečno a veľmi teplo"
+
+msgid "a heavy t-storm in the p.m."
+msgstr "popoludní silné búrky"
+
+msgid "hot with hazy sunshine"
+msgstr "horúco s hmlistým slnečným svitom"
+
+msgid "not as warm with a t-storm"
+msgstr "nie horúco a búrky"
+
+msgid "breezy with variable clouds"
+msgstr "sviežo a občasné mraky"
+
+msgid "turning sunny and nice"
+msgstr "revažne jasno a pekne"
+
+msgid "warm with clouds limiting sun"
+msgstr "teplo a polojasno"
+
+msgid "mostly cloudy and cooler"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "cloudy with a quick shower"
+msgstr "zamračené a občasne prehánky"
+
+msgid "cloudy most of the time"
+msgstr "väčšinou oblačno"
+
+msgid "very hot with a few showers"
+msgstr "veľmi horúco s občasnými prehánkami"
+
+msgid "a stray thunderstorm"
+msgstr "miestami búrky"
+
+msgid "a thunderstorm or two"
+msgstr "miestami búrky"
+
+msgid "a t-storm around in the a.m."
+msgstr "miestami dopoludnia búrky"
+
+msgid "occasional rain and drizzle"
+msgstr "občasný dážď a mrholenie"
+
+msgid "a couple of showers possible"
+msgstr "občasne prehánky"
+
+msgid "a t-storm or two"
+msgstr "búrky"
+
+msgid "mostly sunny and humid"
+msgstr "prevažne jasno a vlhko"
+
+msgid "very warm with high clouds"
+msgstr "veľmi teplo s vysokou oblačnosťou"
+
+msgid "afternoon thunderstorms"
+msgstr "popoludní búrky"
+
+msgid "a shower or thunderstorm"
+msgstr "prehánky a búrky"
+
+msgid "a p.m. t-storm in the area"
+msgstr "lokálne búrky"
+
+msgid "hot with high clouds"
+msgstr "horúco s vysokou oblačnosťou"
+
+msgid "windy and cooler with rain"
+msgstr "veterno a chladnejšie s dažďom"
+
+msgid "decreasing clouds and warmer"
+msgstr "zmenšená oblačnosť a teplo"
+
+msgid "a heavy shower in the morning"
+msgstr "silné mrholenie zrána"
+
+msgid "sunny and breezy"
+msgstr "slnečno a sviežo"
+
+msgid "becoming cloudy and very warm"
+msgstr "zväčšujúca sa oblačnosť a veľmi teplo"
+
+msgid "turning sunny and pleasant"
+msgstr "prevažne jasno a príjemne"
+
+msgid "mainly cloudy and warm"
+msgstr "čiastočne oblačno a teplo"
+
+msgid "sunshine and a few clouds"
+msgstr "slnečný svit a občasne mraky"
+
+msgid "cooler with a shower"
+msgstr "chladnejšie s prehánkami"
+
+msgid "cloudy with a bit of rain"
+msgstr "zamračené s občasným dažďom"
+
+msgid "summerlike with some sun"
+msgstr "teplo ako v lete a polojasno"
+
+msgid "variable clouds with showers"
+msgstr "občasne zamračené s prehánkami"
+
+msgid "mostly cloudy and warmer"
+msgstr "väčšinou zamračené a teplo"
+
+msgid "a t-storm in spots"
+msgstr "miestami búrky"
+
+msgid "mostly sunny with a shower"
+msgstr "polojasno občas prehánky"
+
+msgid "sunny intervals with a shower"
+msgstr "jasno občas prehánky"
+
+msgid "mostly cloudy and humid"
+msgstr "väčšinou zamračené a vlhko"
+
+msgid "turning colder this afternoon"
+msgstr "popoludní ochladenie"
+
+msgid "variably cloudy with a shower"
+msgstr "občasne zamračené s prehánkami"
+
+msgid "sunny and warmer"
+msgstr "slnečno a teplo"
+
+msgid "mild with periods of sun"
+msgstr "mierne a striedavo slnečno"
+
+msgid "mostly cloudy and summerlike"
+msgstr "väčšinou zamračené s pocitom leta"
+
+msgid "brilliant sunshine and hot"
+msgstr "silný slnečný svit a horúco"
+
+msgid "sunshine and hot"
+msgstr "slnečný svit a horúco"
+
+msgid "hot with abundant sunshine"
+msgstr "horúco so slnečným svitom"
+
+msgid "windy with a shower or two"
+msgstr "veterno s niekoľkými prehánkami"
+
+msgid "overcast with a shower"
+msgstr "oblačno s prehánkami"
+
+msgid "abundant sunshine and hot"
+msgstr "slnečno a horúco"
+
+msgid "mostly sunny and very hot"
+msgstr "prevažne jasno a veľmi horúco"
+
+msgid "clouding up"
+msgstr "postupne zamračené"
+
+msgid "sunshine and nice"
+msgstr "jasno a pekne"
+
+msgid "cloudy and humid"
+msgstr "oblačno a vlhko"
+
+msgid "humid with low clouds"
+msgstr "vlhko s nízkou oblačnosťou"
+
+msgid "clearing and warmer"
+msgstr "jasno a teplo"
+
+msgid "gusty thunderstorms possible"
+msgstr "miestami nárazový dážď"
+
+msgid "very warm with periods of sun"
+msgstr "veľmi teplo a polojasno"
+
+msgid "times of clouds and sunshine"
+msgstr "striedavo oblačno a slnečno"
+
+msgid "some sun with a brief shower"
+msgstr "jasno občas prehánky"
+
+msgid "mainly cloudy and very warm"
+msgstr "prevažne zamračené a veľmi teplo"
+
+msgid "t-storms"
+msgstr "búrky"
+
+msgid "sunshine with a shower"
+msgstr "jasno občas prehánky"
+
+msgid "cooler with sun and clouds"
+msgstr "chladno, slnečno a občasne mraky"
+
+msgid "cooler with a stray shower"
+msgstr "chladno občas prehánky"
+
+msgid "becoming cloudy"
+msgstr "postupne zamračené"
+
+msgid "some sun with spotty showers"
+msgstr "polojasno občas prehánky"
+
+msgid "sunshine and delightful"
+msgstr "slnečný svit a príjemne"
+
+msgid "moderate rain"
+msgstr "mierny dážď"
+
+msgid "heavy rain and a thunderstorm"
+msgstr "silný dážď a búrky"
+
+msgid "sunny and not as cool"
+msgstr "slnečno ale nie príjemne"
+
+msgid "considerable clouds"
+msgstr "značná oblačnosť"
+
+msgid "mild with sun and some clouds"
+msgstr "mierne so slnkom a občasne mraky"
+
+msgid "pleasant with some sunshine"
+msgstr "príjemne a polojasno"
+
+msgid "warmer with a thunderstorm"
+msgstr "teplo s búrkov"
+
+msgid "sunny and mild"
+msgstr "slnečno a mierne"
+
+msgid "warmer with plenty of sun"
+msgstr "teplo s dostatkom slnkom"
+
+msgid "more sun than clouds"
+msgstr "viac slnka ako oblakov"
+
+msgid "showers in the afternoon"
+msgstr "popoludní prehánky"
+
+msgid "cooler with a passing shower"
+msgstr "chladno občas prehánky"
+
+msgid "cloudy with a stray shower"
+msgstr "zamračené s občasnými prehánkami"
+
+msgid "hazy sun and very warm"
+msgstr "zahmlené slnko a veľmi teplo"
+
+msgid "clearing and hot"
+msgstr "jasno a horúco"
+
+msgid "sun followed by some clouds"
+msgstr "slnečno postupne zamračené"
+
+msgid "cool with rain and drizzle"
+msgstr "príjemne s dážďom a mrholením"
+
+msgid "sunny and delightful"
+msgstr "slnečno a príjemne"
+
+msgid "cooler with rain and drizzle"
+msgstr "dážď, mrholenie a príjemne"
+
+msgid "overcast and very warm"
+msgstr "zamračené a veľmi teplo"
+
+msgid "hot with increasing clouds"
+msgstr "horúco so zväčšujúcou sa oblačnosťou"
+
+msgid "mostly cloudy and very hot"
+msgstr "väčšinou zamračené a veľmi horúco"
+
+msgid "mostly sunny and not as hot"
+msgstr "prevažne jasno a nie horúco"
+
+msgid "brilliant sunshine and warm"
+msgstr "slnečno a teplo"
+
+msgid "rather cloudy and very warm"
+msgstr "občasné mraky a veľmi teplo"
+
+msgid "cooler with clouds and sun"
+msgstr "chladno s mrakmi a slnkom"
+
+msgid "hot with brilliant sunshine"
+msgstr "horúco so slnečným svitom"
+
+msgid "clouds rolling in"
+msgstr "postupne sa vyjasní"
+
+msgid "a little rain this morning"
+msgstr "zrána dáždivo"
+
+msgid "hot with more sun than clouds"
+msgstr "horúco a polojasno"
+
+msgid "mostly cloudy and hot"
+msgstr "prevažne oblačno a horúco"
+
+msgid "mainly cloudy and hot"
+msgstr "zväčšená oblačnosť a horúco"
+
+msgid "partly to mostly sunny"
+msgstr "polojasno až oblačno"
+
+msgid "turning sunny and hot"
+msgstr "vyjasní sa a horúco"
+
+msgid "partly sunny and windy"
+msgstr "polooblačnosť a veterno"
+
+msgid "cool with some sun"
+msgstr "príjemne a slnečno"
+
+msgid "cooler with spotty showers"
+msgstr "chladno miestami prehánky"
+
+msgid "mainly cloudy with a shower"
+msgstr "prevažne oblačno s prehánkami"
+
+msgid "cloudy with a t-storm or two"
+msgstr "zamračené občasne búrky"
+
+msgid "thunderstorms"
+msgstr "búrky"
+
+msgid "rain shower"
+msgstr "dažďové prehánky"
+
+msgid "cooler with showers around"
+msgstr "chladno a občasné prehánky"
+
+msgid "warm with plenty of sun"
+msgstr "teplo a slnečno"
+
+msgid "some sun with showers"
+msgstr "poloasno občas prehánky"
+
+msgid "morning showers"
+msgstr "ranné prehánky"
+
+msgid "thundershower"
+msgstr "búrky s prehánkami"
+
+msgid "a stray thundershower"
+msgstr "rozptýlené búrkové prehánky"
+
+msgid "rain and drizzle this morning"
+msgstr "zrána dážď a mrholenie"
+
+msgid "mostly cloudy with showers"
+msgstr "väčšinou zamračené s prehánkami"
+
+msgid "partly sunny and not as warm"
+msgstr "čiastočne slnečno a nie veľmi teplo"
+
+msgid "a shower in spots"
+msgstr "miestami prehánky"
+
+msgid "cloudy and warm with a shower"
+msgstr "teplo a oblačno s prehánkami"
+
+msgid "showers around in the morning"
+msgstr "ráno občasné prehánky"
+
+msgid "more sunshine than clouds"
+msgstr "viac slnečného svitu ako oblačnosti"
+
+msgid "warmer with a shower in spots"
+msgstr "teplo a miestami prehánky"
+
+msgid "cloudy and cold"
+msgstr "oblačno a chladno"
+
+msgid "sunshine and remaining warm"
+msgstr "slnečno a teplo"
+
+msgid "nice and warm with sunshine"
+msgstr "pekne a teplo"
+
+msgid "a morning shower in places"
+msgstr "lokálne ranné prehánky"
+
+msgid "turning sunny and beautiful"
+msgstr "slnečno a pekne"
+
+msgid "nice with sun"
+msgstr "pekne a slnečno"
+
+msgid "areas of low clouds"
+msgstr "miestami nízka oblačnosť"
+
+msgid "warm with clouds and sun"
+msgstr "teplo s mrakmi a slnkom"
+
+msgid "mostly cloudy and warm"
+msgstr "väčšinou zamračené a teplo"
+
+msgid "cooler with downpours"
+msgstr "chladnejšie s lejakmi"
+
+msgid "fog in the a.m."
+msgstr "dopoludnia hmla"
+
+msgid "rather cloudy with a t-storm"
+msgstr "skôr oblačno s búrkami"
+
+msgid "turning cloudy and very warm"
+msgstr "postupne oblačno a veľmi teplo"
+
+msgid "a stray afternoon t-shower"
+msgstr "miestami popoludňajšie prehánky/búrky"
+
+msgid "low clouds and colder"
+msgstr "nízka oblačnosť a chladno"
+
+msgid "ice"
+msgstr "ľad"
+
+msgid "mostly sunny and mild"
+msgstr "polojasno a mierne"
+
+msgid "clouds and showers around"
+msgstr "oblačno a občasné prehánky"
+
+msgid "a couple of morning showers"
+msgstr "pár ranných prehánok"
+
+msgid "cooler with showers"
+msgstr "chladno s  prehánkami"
+
+msgid "sunshine with low humidity"
+msgstr "slnečný svit s nízkou vlhkosťou"
+
+msgid "dense fog"
+msgstr "hustá hmla"
+
+msgid "some sun with low humidity"
+msgstr "jasno s nízkou vlhkosťou"
+
+msgid "mostly cloudy and mild"
+msgstr "väčšinou zamračené a mierne"
+
+msgid "delightful with plenty of sun"
+msgstr "príjemne s množstvom slnka"
+
+msgid "hot with plenty of sunshine"
+msgstr "horúco s dostatkom slnečného svitu"
+
+msgid "light fog"
+msgstr "jemná hmla"
+
+msgid "spotty showers in the morning"
+msgstr "zrána mrholenie"
+
+msgid "beautiful with sunshine"
+msgstr "slnečný svit a príjemne"
+
+msgid "hotter with a thunderstorm"
+msgstr "teplejšie s búrkou"
+
+msgid "overcast with spotty showers"
+msgstr "oblačno občas prehánky"
+
+msgid "increasing clouds and warm"
+msgstr "zväčšujúca sa oblačnosť a teplo"
+
+msgid "sunshine and beautiful"
+msgstr "slnečný svit a príjemne"
+
+msgid "plenty of clouds with showers"
+msgstr "väčšinou oblačno s prehánkami"
+
+msgid "a shower in places"
+msgstr "prehánky"
+
+msgid "breezy with partial sunshine"
+msgstr "sviežo a čiastočný slnečný svit"
+
+msgid "brief showers in the morning"
+msgstr "občasne zrána prehánky"
+
+msgid "showers and thunderstorms"
+msgstr "prehánky a búrky"
+
+msgid "heavy rain"
+msgstr "silný dážď"
+
+msgid "a downpour in the afternoon"
+msgstr "popoludní miestami lejaky"
+
+msgid "a stray morning shower"
+msgstr "občasné ranné prehánky"
+
+msgid "nice with partial sunshine"
+msgstr "pekne a čiastočný slnečný svit"
+
+msgid "sunny and seasonably warm"
+msgstr "slnečno a nezvyčajne teplo"
+
+msgid "mostly cloudy and cool"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "downpours"
+msgstr "lejaky"
+
+msgid "spotty showers this afternoon"
+msgstr "popoludní miestami prehánky"
+
+msgid "windy with decreasing clouds"
+msgstr "veterno so znižujúcou sa oblačnosťou"
+
+msgid "warmer with high clouds"
+msgstr "teplo s vysokou oblačnosťou"
+
+msgid "warmer with a passing shower"
+msgstr "teplo občas prehánky"
+
+msgid "high clouds and very warm"
+msgstr "vysoká oblačnosť a veľmi teplo"
+
+msgid "a few morning showers"
+msgstr "ranné prehánky"
+
+msgid "nice with brilliant sunshine"
+msgstr "pekne s jasným slnečným svitom"
+
+msgid "warmer with some sun"
+msgstr "teplo a polojasno"
+
+msgid "high clouds and cooler"
+msgstr "vysoká oblačnosť a chladno"
+
+msgid "not as warm with a shower"
+msgstr "nie teplo s prehánkami"
+
+msgid "heavy thunderstorms"
+msgstr "silné búrky"
+
+msgid "turning cloudy and warm"
+msgstr "zamračené a teplo"
+
+msgid "some sun with a few showers"
+msgstr "jasno občas prehánky"
+
+msgid "shower and thunderstorm"
+msgstr "prehánky a búrky"
+
+msgid "mostly cloudy and windy"
+msgstr "väčšinou zamračené a veterno"
+
+msgid "cloudy and very warm"
+msgstr "oblačno a veľmi teplo"
+
+msgid "clouds breaking"
+msgstr "poloblačno"
+
+msgid "showers"
+msgstr "prehánky"
+
+msgid "a stray shower in the morning"
+msgstr "zrána prehánky"
+
+msgid "mild with sun and clouds"
+msgstr "mierne teplo a polooblačno"
+
+msgid "an afternoon t-storm"
+msgstr "popoludňajšie búrky"
+
+msgid "not as warm with high clouds"
+msgstr "nie teplo s vysokou oblačnosťou"
+
+msgid "clearing and warm"
+msgstr "pekne a teplo"
+
+msgid "humid with clouds and sun"
+msgstr "vlhko s mrakmi a slnkom"
+
+msgid "humid with partial sunshine"
+msgstr "vlhko s čiastočným slnečným svitom"
+
+msgid "nice with some sun"
+msgstr "pekne a slnečno"
+
+msgid "very hot"
+msgstr "veľmi horúco"
+
+msgid "turning cloudy and mild"
+msgstr "mierne a polooblačno"
+
+msgid "cloudy and cooler"
+msgstr "oblačnosť a chladno"
+
+msgid "a brief shower this afternoon"
+msgstr "zrána miestami prehánky"
+
+msgid "cooler with partial sunshine"
+msgstr "chladno a čiastočný slnečný svit"
+
+msgid "mostly cloudy and breezy"
+msgstr "väčšinou zamračené a sviežo"
+
+msgid "turning cloudy and warmer"
+msgstr "polooblačno a teplo"
+
+msgid "a stray a.m. t-storm"
+msgstr "miestami dopoludnia búrky"
+
+msgid "nice with abundant sunshine"
+msgstr "pekne so slnečným svitom"
+
+msgid "sun and areas of low clouds"
+msgstr "slnečno a miestami nízka oblačnosť"
+
+msgid "cool with clouds and sun"
+msgstr "príjemne a polooblačno"
+
+msgid "drizzle"
+msgstr "mrholenie"
+
+msgid "mostly sunny and delightful"
+msgstr "prevažne jasno a príjemne"
+
+msgid "pleasant with periods of sun"
+msgstr "príjemne a striedavo slnečno"
+
+msgid "hotter with a stray t-storm"
+msgstr "horúco občas búrky"
+
+msgid "a thunderstorm"
+msgstr "búrky"
+
+msgid "a thunderstorm possible"
+msgstr "miestami búrky"
+
+msgid "cool with clouds breaking"
+msgstr "príjemne s občasnou oblačnosťou"
+
+msgid "abundant sunshine and nice"
+msgstr "pekne a slnečno"
+
+msgid "not as hot"
+msgstr "nie horúco"
+
+msgid "fog will lift this morning"
+msgstr "hmla sa zdvihne ráno"
+
+msgid "a shower or two"
+msgstr "prehánky"
+
+msgid "sun yielding to clouds"
+msgstr "slnečno neskôr zamračené"
+
+msgid "shower"
+msgstr "prehánky"
+
+msgid "overcast and warm"
+msgstr "oblačno a teplo"
+
+msgid "very windy"
+msgstr "veľmi veterno"
+
+msgid "increasing clouds and hot"
+msgstr "zvyšujúca sa oblačnosť a horúco"
+
+msgid "windy in the a.m."
+msgstr "dopoludnia veterno"
+
+msgid "high clouds"
+msgstr "vysoká oblačnosť"
+
+msgid "hazy sunshine and hot"
+msgstr "hmlistý slnečný svit a horúco"
+
+msgid "a bit of rain in the morning"
+msgstr "trochu daždivo zrána"
+
+msgid "sunshine and hotter"
+msgstr "slnečný svit a horúco"
+
+msgid "warm with abundant sunshine"
+msgstr "teplo s množstvom slnečného svitu"
+
+msgid "a shower in the a.m."
+msgstr "dopoludnia prehánky"
+
+msgid "hot with variable cloudiness"
+msgstr "horúco a občasne zamračené"
+
+msgid "variable clouds with t-storms"
+msgstr "občasne zamračené s búrkami"
+
+msgid "windy"
+msgstr "veterno"
+
+msgid "summerlike with sunshine"
+msgstr "slnečno ako v lete"
+
+msgid "sunny and not as hot"
+msgstr "slnečno ale nie horúco"
+
+msgid "warmer with a heavy t-storm"
+msgstr "teplejšie s ťažkými t-búrkami"
+
+msgid "very warm with lots of sun"
+msgstr "veľmi teplo s množstvom slnka"
+
+msgid "cooler with a shower or two"
+msgstr "chladnejšie s občasnými prehánkami"
+
+msgid "cooler with some brightening"
+msgstr "chladnejšie s postupným vyjasňovaním"
+
+msgid "hot with variable clouds"
+msgstr "horúco a občasné mraky"
+
+msgid "sunshine with a stray shower"
+msgstr "slnečno a občas prehánky"
+
+msgid "hot with some sun"
+msgstr "horúco a polooblačno"
+
+msgid "cloudy with a strong t-storm"
+msgstr "zamračené a búrky"
+
+msgid "windy with plenty of sun"
+msgstr "veterno s dostatkom slnka"
+
+msgid "breezy with high clouds"
+msgstr "sviežo s vysokou oblačnosťou"
+
+msgid "humid with periods of rain"
+msgstr "vlhko a občasne dážď"
+
+msgid "overcast with a stray t-storm"
+msgstr "zamračené a občasné búrky"
+
+msgid "beautiful with clouds and sun"
+msgstr "krásne s mrakmi a slnkom"
+
+msgid "mist"
+msgstr "hmla"
+
+msgid "Change Units to"
+msgstr "Zmeniť jednotky na"
+
+msgid "sunny and cooler"
+msgstr "slnečno a chladnejšie"
+
+msgid "a bit of rain"
+msgstr "miestami dážď"
+
+msgid "an a.m. shower or two"
+msgstr "dopoludnia mrholenie"
+
+msgid "some sun with a little rain"
+msgstr "polojasno s jemným dažďom"
+
+msgid "sunny and warm"
+msgstr "slnečno a teplo"
+
+msgid "hazy"
+msgstr "hmlisto"
+
+msgid "windy this afternoon"
+msgstr "popoludní veterno"
+
+msgid "low clouds and breezy"
+msgstr "nízka oblačnosť a sviežo"
+
+msgid "cooler with thunderstorms"
+msgstr "chladnejšie s búrkami"
+
+msgid "cloudy with a stray t-shower"
+msgstr "zamračené a miestami prehánkami"
+
+msgid "beautiful with some sun"
+msgstr "príjemne a polojasno"
+
+msgid "nice and warm with some sun"
+msgstr "pekne, teplo a polojasno"
+
+msgid "some sunshine"
+msgstr "slnečno"
+
+msgid "windy with showers"
+msgstr "veterno s prehánkami"
+
+msgid "windy with occasional rain"
+msgstr "veterno s občasným dažďom"
+
+msgid "hazy sunshine and less humid"
+msgstr "hmlistý slnečný svit a nízka vlhkosť"
+
+msgid "foggy"
+msgstr "hmlisto"
+
+msgid "morning downpours"
+msgstr "ranné lejaky"
+
+msgid "cloudy and not as warm"
+msgstr "oblačno a nie veľmi teplo"
+
+msgid "cooler with a touch of rain"
+msgstr "chladno s pocitom dažďa"
+
+msgid "low clouds may break"
+msgstr "nízka oblačnosť"
+
+msgid "showers late this morning"
+msgstr "zrána miestami mrholenie"
+
+msgid "cloudy with a thundershower"
+msgstr "zamračené s búrkovým mrholením"
+
+msgid "breezy with some sun"
+msgstr "sviežo a polojasno"
+
+msgid "afternoon showers"
+msgstr "popoludní prehánky"
+
+msgid "cloudy and cool with a shower"
+msgstr "oblačno a príjemne s prehánkami"
+
+msgid "mostly cloudy and not as warm"
+msgstr "väčšinou zamračené a nie teplo"
+
+msgid "cooler with rain tapering off"
+msgstr "chladno s občasným dažďom"
+
+msgid "cooler with occasional rain"
+msgstr "chladno s občasným dažďom"
+
+msgid "cloudy with heavy showers"
+msgstr "zamračené so silnými prehánkami"
+
+msgid "cloudy with a t-storm"
+msgstr "zamračené a búrky"
+
+msgid "cooler with rain"
+msgstr "chladno a dážď"
+
+msgid "a morning shower in spots"
+msgstr "zrána lokálne prehánky"
+
+msgid "cloudy and less humid"
+msgstr "oblačno a nízka vlhkosť"
+
+msgid "more clouds than sunshine"
+msgstr "viac mrakov potom slnečný svit"
+
+msgid "cloudy and warmer"
+msgstr "zamračené a teplo"
+
+msgid "less humid with some sun"
+msgstr "nízka vlhkosť a polojasno"
+
+msgid "some brightening and humid"
+msgstr "vyjasňovanie a vlhko"
+
+msgid "variably cloudy and humid"
+msgstr "polooblačno a vlhko"
+
+msgid "abundant sunshine and warmer"
+msgstr "slnečno a teplo"
+
+msgid "becoming windier and cooler"
+msgstr "postupne veternejšie a chladnejšie"
+
+msgid "a t-storm in the p.m."
+msgstr "popoludní búrky"
+
+msgid "dull and dreary with showers"
+msgstr "nepríjemne a prehánky"
+
+msgid "clearing and very warm"
+msgstr "jasno a veľmi teplo"
+
+msgid "cool with decreasing clouds"
+msgstr "príjemne s ustupujúcou oblačnosťou"
+
+msgid "breezy with sunny intervals"
+msgstr "sviežo a polooblačno"
+
+msgid "a morning shower in the area"
+msgstr "ráno lokálne prehánky"
+
+msgid "a few showers in the morning"
+msgstr "zrána miestami mrholenie"
+
+msgid "cloudy with times of rain"
+msgstr "zamračené miestami dážď"
+
+msgid "rain becoming steadier"
+msgstr "vytrvalý dážď"
+
+msgid "sunny and pleasantly cool"
+msgstr "slnečno a príjemne chladno"
+
+msgid "sunny and hotter"
+msgstr "slnečno a horúco"
+
+msgid "cloudy with rain and drizzle"
+msgstr "oblačno, dážď a mrholenie"
+
+msgid "very hot with some sun"
+msgstr "veľmi horúco a polojasno"
+
+msgid "brilliant sunshine and nice"
+msgstr "pekne a slnečno"
+
+msgid "hotter with abundant sunshine"
+msgstr "horúco a slnečno"
+
+msgid "hot with some sunshine"
+msgstr "horúco a polojasno"
+
+msgid "mainly cloudy and summerlike"
+msgstr "veľká oblačnosť a pocitovo ako leto"
+
+msgid "summerlike with a shower"
+msgstr "pocitovo ako v lete a prehánky"
+
+msgid "comfortable with sunshine"
+msgstr "pohodlne a slnečný svit"
+
+msgid "humid with some sun"
+msgstr "vlhko a polojasno"
+
+msgid "rainy spells in the morning"
+msgstr "dopoludnia daždivo"
+
+msgid "sunshine and cooler"
+msgstr "slnečný svit a chladno"
+
+msgid "cooler with clouds breaking"
+msgstr "chladno a občasne zamračené"
+
+msgid "showers around this afternoon"
+msgstr "popoludní miestami prehánky"
+
+msgid "some sun with a thundershower"
+msgstr "polojasno občas búrkové prehánky"
+
+msgid "warm with increasing clouds"
+msgstr "teplo so zvyšujúcou sa oblačnosťou"
+
+msgid "rather cloudy and warmer"
+msgstr "miestami oblačno a teplo"
+
+msgid "a stray a.m. t-shower"
+msgstr "miestami búrky s mrholením"
+
+msgid "brief morning showers"
+msgstr "občasné ranné prehánky"
+
+msgid "hotter with sunshine"
+msgstr "horúco a slnečno"
+
+msgid "a thunderstorm around"
+msgstr "miestami búrky"
+
+msgid "periods of rain and a t-storm"
+msgstr "striedavo dážď a búrky"
+
+msgid "a thunderstorm in the morning"
+msgstr "zrána miestami búrky"
+
+msgid "warm with sunny intervals"
+msgstr "teplo a polooblačno"
+
+msgid "a little a.m. rain"
+msgstr "dopoludnia trocha dážďa"
+
+msgid "sunny and windy"
+msgstr "slnečno a veterno"
+
+msgid "turning cloudy and summerlike"
+msgstr "zmenšujúca sa oblačnosť a pocitovo ako v lete"
+
+msgid "pleasantly warm with sunshine"
+msgstr "príjemne teplo so slnečným svitom"
+
+msgid "low clouds and humid"
+msgstr "nízka oblačnosť a vlhko"
+
+msgid "cloudy with thunderstorms"
+msgstr "zamračené a búrky"
+
+msgid "breezy this morning"
+msgstr "dopoludnia sviežo"
+
+msgid "rain at times"
+msgstr "občasný dážď"
+
+msgid "warmer with low clouds"
+msgstr "teplejšie s nízkou oblačnosťou"
+
+msgid "a touch of rain"
+msgstr "jemný dážď"
+
+msgid "warmer with sunny intervals"
+msgstr "teplo a polooblačno"
+
+msgid "humid with clouds breaking"
+msgstr "vlhko s občasnou oblačnosťou"
+
+msgid "cloudy and cool with showers"
+msgstr "zamračené, príjemne s prehánkami"
+
+msgid "hot with sun"
+msgstr "horúco so slnečno"
+
+msgid "a morning thunderstorm"
+msgstr "ráno búrky"
+
+msgid "humid with rain and drizzle"
+msgstr "vlhko, dážď a mrholenie"
+
+msgid "hot with more clouds than sun"
+msgstr "horúco a polooblačno"
+
+msgid "rather cloudy and summerlike"
+msgstr "miestami zamračené s pocitom leta"
+
+msgid "sunshine and not as hot"
+msgstr "slnečno ale nie horúco"
+
+msgid "nice with sun and some clouds"
+msgstr "pekne slnečno a občasne mraky"
+
+msgid "sunlit"
+msgstr "slnečno"
+
+msgid "windy with a little rain"
+msgstr "veterno s ľahkým dažďom"
+
+msgid "a shower late this afternoon"
+msgstr "neskôr popoludní prehánky"
+
+msgid "warm with variable clouds"
+msgstr "teplo a občasné mraky"
+
+msgid "a.m. rain"
+msgstr "dopoludnia dážď"
+
+msgid "cooler with heavy showers"
+msgstr "chladno so slnými prehánkami"
+
+msgid "sunny and cool"
+msgstr "slnečno a chladno"
+
+msgid "colder with showers around"
+msgstr "chladno a miestami prehánky"
+
+msgid "a couple of morning t-showers"
+msgstr "zrána miestami búrkové prehánky"
+
+msgid "a morning shower or two"
+msgstr "miestami ranné prehánky"
+
+msgid "sunshine with a thunderstorm"
+msgstr "slnečný svit a búrky"
+
+msgid "a passing shower this morning"
+msgstr "miestami ranné prehánky"
+
+msgid "lots of sun"
+msgstr "veľmi slnečno"
+
+msgid "cloudy and hot"
+msgstr "oblačno a horúco"
+
+msgid "partly sunny and hotter"
+msgstr "polojasno a horúco"
+
+msgid "turning cloudy and less humid"
+msgstr "malá oblačnosť a nízka vlhkosť"
+
+msgid "warmer with abundant sunshine"
+msgstr "teplo s dostatkom slnka"
+
+msgid "turning sunny"
+msgstr "polojasno až jasno"
+
+msgid "warm and humid with some sun"
+msgstr "teplo, vlhko a polojasno"
+
+msgid "heavy morning rain"
+msgstr "zrána silný dážď"
+
+msgid "cooler with rain at times"
+msgstr "chladno a miestami dážď"
+
+msgid "rain and a t-storm"
+msgstr "dážď a búrky"
+
+msgid "much colder"
+msgstr "oveľa chladnejšie"
+
+msgid "low clouds breaking"
+msgstr "prerušovaná nízka oblačnosť"
+
+msgid "warm with sun"
+msgstr "teplo a slnečno"
+
+msgid "colder"
+msgstr "chladno"
+
+msgid "milder"
+msgstr "miernejšie"
+
+msgid "abundant sunshine and breezy"
+msgstr "sviežo a slnečno"
+
+msgid "low humidity with some sun"
+msgstr "nízka vlhkosť a polojasno"
+
+msgid "a strong thunderstorm"
+msgstr "silné búrky"
+
+msgid "strong thunderstorms"
+msgstr "silné búrky"
+
+msgid "warmer with spotty showers"
+msgstr "teplo miestami prehánky"
+
+msgid "nice with periods of sunshine"
+msgstr "pekne, striedavo slnečno"
+
+msgid "light snow shower"
+msgstr "snehové prehánky"
+
+msgid "low clouds break for some sun"
+msgstr "nízka oblačnosť a polojasno"
+
+msgid "cooler with decreasing clouds"
+msgstr "chladno so znižujúcou sa oblačnosťou"
+
+msgid "sun followed by clouds"
+msgstr "slnečno a následne zamračené"
+
+msgid "clouds break for sun"
+msgstr "polooblačno"
+
+msgid "increasing clouds and hotter"
+msgstr "zväčšujúca sa oblačnosť a horúco"
+
+msgid "summerlike with a few showers"
+msgstr "pocitovo ako v lete s občas prehánky"
+
+msgid "a stray t-storm"
+msgstr "miestami búrky"
+
+msgid "sunshine and less humid"
+msgstr "slnečný svit a nízka vlhkosť"
+
+msgid "sunny and less humid"
+msgstr "slnečno a nízka vlhkosť"
+
+msgid "hotter with plenty of sun"
+msgstr "horúco a veľmi slnečno"
+
+msgid "very warm with sun and clouds"
+msgstr "veľmi teplo s mrakmi a slnkom"
+
+msgid "some sun with a t-storm"
+msgstr "polojasno občas búrky"
+
+msgid "not as hot with a t-storm"
+msgstr "nie veľmi horúco a búrky"
+
+msgid "mild with thickening clouds"
+msgstr "mierne so zvyšujúcou sa oblačnosťou"
+
+msgid "milder with periods of sun"
+msgstr "mierne a polojasno"
+
+msgid "warmer with sun"
+msgstr "teplo a slnečno"
+
+msgid "a morning thunderstorm or two"
+msgstr "zrána miestami búrky"
+
+msgid "strong t-storms"
+msgstr "silné búrky"
+
+msgid "decreasing clouds and humid"
+msgstr "zmenšujúca sa oblačnosť a vlhko"
+
+msgid "afternoon rain"
+msgstr "popoludní dážď"
+
+msgid "high clouds and warmer"
+msgstr "vysoká oblačnosť teplo"
+
+msgid "afternoon thundershowers"
+msgstr "popoludňajšie búrkové prehánky"
+
+msgid "cooler with a stray t-shower"
+msgstr "chladno občas búrkové prehánky"
+
+msgid "hot with partial sunshine"
+msgstr "horúco s čiastočným slnečným svitom"
+
+msgid "heavy thunderstorm"
+msgstr "silné búrky"
+
+msgid "nice with clouds and sunshine"
+msgstr "pekne s mrakmi a slnkom"
+
+msgid "warm with sun and clouds"
+msgstr "teplo, slnečno a občasne zamračené"
+
+msgid "warm with clouds and sunshine"
+msgstr "teplo, slnečno a občasne zamračené"
+
+msgid "cooler with low clouds"
+msgstr "chladno s nízkou oblačnosťou"
+
+msgid "warmer with a shower or two"
+msgstr "teplo s občasnými prehánkami"
+
+msgid "a stray t-shower"
+msgstr "miestami búrkové prehánky"
+
+msgid "a gusty breeze with clearing"
+msgstr "nárazový vietor a bezoblačne"
+
+msgid "clouds and limited sun"
+msgstr "polooblačno"
+
+msgid "warm with decreasing clouds"
+msgstr "teplo so zmenšujúcou sa oblačnosťou"
+
+msgid "mostly cloudy and not as hot"
+msgstr "prevažne oblačno a nie horúco"
+
+msgid "areas of fog in the morning"
+msgstr "zrána miestami hmlisto"
+
+msgid "windy in the morning"
+msgstr "dopoludnia veterno"
+
+msgid "windy in the afternoon"
+msgstr "popoludní veterno"
+
+msgid "variably cloudy with showers"
+msgstr "občasne zamračené s prehánkami"
+
+msgid "humid with cloudy spells"
+msgstr "vlhko s občasnou oblačnosťou"
+
+msgid "hot with sunny intervals"
+msgstr "horúco a polooblačno"
+
+msgid "sunshine and very hot"
+msgstr "slnečný svit a veľmi teplo"
+
+msgid "very hot with clouds and sun"
+msgstr "veľmi horúco s mrakmi a slnkom"
+
+msgid "nice with sunny intervals"
+msgstr "pekne a polojasno"
+
+msgid "not as cool with clearing"
+msgstr "nie príjemne a jasno"
+
+msgid "rather cloudy with showers"
+msgstr "skôr oblačno s prehánkami"
+
+msgid "a cooling t-storm in the p.m."
+msgstr "popoludní búrky s ochladením"
+
+msgid "rather cloudy and mild"
+msgstr "skôr oblačno a mierne"
+
+msgid "turning cloudy and colder"
+msgstr "ubúdajúca oblačnosť a chladno"
+
+msgid "warmer with a stray shower"
+msgstr "teplo občas prehánky"
+
+msgid "cool with clearing"
+msgstr "príjemne a jasno"
+
+msgid "breezy and nice with sunshine"
+msgstr "sviežo a pekne so slnečným svitom"
+
+msgid "thunderstorms this morning"
+msgstr "zrána búrky"
+
+msgid "sunny much of the time"
+msgstr "vačšinou jasno"
+
+msgid "high clouds and summerlike"
+msgstr "vysoká oblačnosť a pocitovo ako v lete"
+
+msgid "occasional morning rain"
+msgstr "občasný ranný dážď"
+
+msgid "milder with sun"
+msgstr "mierne a slnečno"
+
+msgid "colder with spotty showers"
+msgstr "chladno miestami prehánky"
+
+msgid "low humidity with sunshine"
+msgstr "nízka vlhkosť so slnečným svitom"
+
+msgid "warmer with sunshine"
+msgstr "teplo so slnečným svitom"
+
+msgid "breezy with sunshine"
+msgstr "sviežo so slnečným svitom"
+
+msgid "not as warm with rain"
+msgstr "nie teplo s dažďom"
+
+msgid "breezy with rain"
+msgstr "sviežo s dažďom"
+
+msgid "decreasing clouds and breezy"
+msgstr "zmenšujúca sa oblačnosť a sviežo"
+
+msgid "warmer with sun and clouds"
+msgstr "teplo a občasne zamračené"
+
+msgid "turning sunny and summerlike"
+msgstr "prevažne jasno a pocitovo ako v lete"
+
+msgid "cool with partial sunshine"
+msgstr "príjemne a čiastočný slnečný svit"
+
+msgid "a p.m. t-storm possible"
+msgstr "popoludní miestami búrky"
+
+msgid "cloudy and windy"
+msgstr "oblačno a veterno"
+
+msgid "chance of a thunderstorm"
+msgstr "pravdepodobne búrky"
+
+msgid "periods of sunshine"
+msgstr "polojasno"
+
+msgid "a bit of snow and rain"
+msgstr "trochu shehu a dážďa"
+
+msgid "nice with sun and clouds"
+msgstr "slnečno a občasne mraky"
+
+msgid "warmer with periods of sun"
+msgstr "teplejšie a striedavo slnečno"
+
+msgid "partly sunny and not as cool"
+msgstr "polojasno a nie chladno"
+
+msgid "warm with periods of sun"
+msgstr "teplo a polojasno"
+
+msgid "clouds breaking and very warm"
+msgstr "polooblačno a veľmi teplo"
+
+msgid "sunshine and not as warm"
+msgstr "slnečno a nie teplo"
+
+msgid "clearing and not as warm"
+msgstr "pekne ale nie teplo"
+
+msgid "chance for rain"
+msgstr "možnosť dažďa"
+
+msgid "warmer with some sunshine"
+msgstr "teplejšie so slnečným svitom"
+
+msgid "showers in the morning"
+msgstr "zrána mrholenie"
+
+msgid "a strong a.m. t-storm"
+msgstr "silné ranné búrky"
+
+msgid "mostly sunny and cooler"
+msgstr "polojasno a chladnejšie"
+
+msgid "turning cloudy and hotter"
+msgstr "občasne oblačno a horúco"
+
+msgid "breezy in the a.m."
+msgstr "sviežo dopoludnia"
+
+msgid "a little rain this afternoon"
+msgstr "popoludní občasný dážď"
+
+msgid "humid with variable clouds"
+msgstr "vlhko a polojasno"
+
+msgid "cold with clouds and sun"
+msgstr "chladno a polojasno"
+
+msgid "windy with a passing shower"
+msgstr "veterno s prehánkami"
+
+msgid "windy with clouds and sun"
+msgstr "veterno a polojasno"
+
+msgid "cloudy and windy with showers"
+msgstr "oblačno a veterno s prehánkami"
+
+msgid "windy with periods of rain"
+msgstr "veterno a občasne dážď"
+
+msgid "less humid with plenty of sun"
+msgstr "nízka vlhkosť a slnečno"
+
+msgid "low clouds and cool"
+msgstr "nízka oblačnosť a chladno"
+
+msgid "clouds and a t-storm in spots"
+msgstr "oblačno a miestami búrky"
+
+msgid "not as warm with showers"
+msgstr "nie teplo a prehánky"
+
+msgid "increasing clouds and warmer"
+msgstr "zväčšujúca sa oblačnosť a teplo"
+
+msgid "hot with clearing"
+msgstr "horúco a jasno"
+
+msgid "clearing and summerlike"
+msgstr "jasno a pocitovo ako v lete"
+
+msgid "overcast with a few showers"
+msgstr "zamračené miestami prehánky"
+
+msgid "still cloudy"
+msgstr "zamračené"
+
+msgid "sunshine and summerlike"
+msgstr "slnečný svit a pocitovo ako v lete"
+
+msgid "windy with rain and a t-storm"
+msgstr "veterno s dažďom a búrky"
+
+msgid "hotter with blazing sunshine"
+msgstr "horúco s jasným slnečným svitom"
+
+msgid "mostly sunny and not as warm"
+msgstr "polojasno a nie teplo"
+
+msgid "breezy with plenty of sun"
+msgstr "sviežo a slnečno"
+
+msgid "turning cloudy with a shower"
+msgstr "skôr oblačno s prehánkami"
+
+msgid "a heavy afternoon t-storm"
+msgstr "silné popoludňajšie búrky"
+
+msgid "milder with increasing clouds"
+msgstr "mierne so zvyšujúcou sa oblačnosťou"
+
+msgid "overcast with a little rain"
+msgstr "zamračené s jemným dažďom"
+
+msgid "turning cloudy and very hot"
+msgstr "zamračí sa a veľmi horúco"
+
+msgid "humid with a t-storm in spots"
+msgstr "vhko a miestami búrky"
+
+msgid "very warm with hazy sun"
+msgstr "veľmi teplo zo zahmleným slnkom"
+
+msgid "clouds and a stray t-storm"
+msgstr "zamračené a miestami búrky"
+
+msgid "not as warm with morning rain"
+msgstr "nie teplo a z rána dážď"
+
+msgid "some brightening and warm"
+msgstr "vyjasňovanie a teplo"
+
+msgid "overcast with showers around"
+msgstr "zamračené a občasné prehánky"
+
+msgid "a heavy thunderstorm"
+msgstr "silné búrky"
+
+msgid "low clouds and cooler"
+msgstr "nízka oblačnosť a chladno"
+
+msgid "clouds giving way to sun"
+msgstr "postupné vyjasňovanie"
+
+msgid "humid with rain"
+msgstr "vlhko a dážď"
+
+msgid "humid with rain and a t-storm"
+msgstr "vlhko, búrky a dážď"
+
+msgid "becoming cloudy and hot"
+msgstr "zväčšujúca sa oblačnosť a horúco"
+
+msgid "a brief t-storm in the p.m."
+msgstr "popoludní občasne búrky"
+
+msgid "hot and humid with some sun"
+msgstr "horúco, vlhko a polojasno"
+
+msgid "a little morning snow"
+msgstr "zrána sneženie"
+
+msgid "breezy with sun and clouds"
+msgstr "sviežo a občasne zamračené"
+
+msgid "rain/drizzle"
+msgstr "dážď alebo mrholenie"
+
+msgid "variably cloudy and very warm"
+msgstr "občas zamračené a veľmi teplo"
+
+msgid "very windy this morning"
+msgstr "zrána veľmi veterno"
+
+msgid "breezy with rain and drizzle"
+msgstr "sviežo, dážď a mrholenie"
+
+msgid "a touch of afternoon rain"
+msgstr "popoludní miestami dážď"
+
+msgid "hazy clouds"
+msgstr "hmlistá oblačnosť"
+
+msgid "hotter with a t-storm around"
+msgstr "horúco a lokálne búrky"
+
+msgid "sunny and milder"
+msgstr "slnečno a mierne"
+
+msgid "mild with sunny intervals"
+msgstr "mierne a polojasno"
+
+msgid "a little afternoon snow"
+msgstr "popoludní sneženie"
+
+msgid "chilly with plenty of sun"
+msgstr "mrazivo a slnečno"
+
+msgid "remaining cloudy and warmer"
+msgstr "zmenšujúca sa oblačnosť a teplo"
+
+msgid "mostly cloudy with a downpour"
+msgstr "väčšinou zamračené s lejakmi"
+
+msgid "a downpour this morning"
+msgstr "lejaky v dopoludňajších hodinách"
+
+msgid "cloudy and becoming rainy"
+msgstr "oblačno až daždivo"
+
+msgid "cooler with some sun"
+msgstr "chladno a polojasno"
+
+msgid "showers of rain and snow"
+msgstr "dažďové prehánky a sneženie"
+
+msgid "brief a.m. showers"
+msgstr "občasne prehánky dopoludnia"
+
+msgid "mainly cloudy with showers"
+msgstr "väčšinou zamračené s prehánkami"
+
+msgid "mostly cloudy and chilly"
+msgstr "väčšinou zamračené a mrazivo"
+
+msgid "abundant sunshine and warm"
+msgstr "slnečno a teplo"
+
+msgid "cooler with a little rain"
+msgstr "chladno s občasným dažďom"
+
+msgid "hotter"
+msgstr "horúco"
+
+msgid "winds gradually subsiding"
+msgstr "vietor postupne odoznie"
+
+msgid "beautiful with periods of sun"
+msgstr "krásne a polojasno"
+
+msgid "cloudy with a heavy shower"
+msgstr "zamračené so silnými prehánkami"
+
+msgid "heavy rain shower"
+msgstr "silné dažďové prehánky"
+
+msgid "milder with brief showers"
+msgstr "mierne občas prehánky"
+
+msgid "remaining warm with some sun"
+msgstr "ubúdajúce teplo a polojasno"
+
+msgid "mild with abundant sunshine"
+msgstr "mierne so slnečným svitom"
+
+msgid "hot with decreasing clouds"
+msgstr "horúco so zmenšujúcou sa oblačnosťou"
+
+msgid "seasonably warm with sunshine"
+msgstr "teplo so slnečným svitom"
+
+msgid "cooler with a thundershower"
+msgstr "chladnejšie s búrkovými prehánkami"
+
+msgid "turning cloudy and cooler"
+msgstr "zväčšujúca sa oblačnosť a chladno"
+
+msgid "warmer with a shower"
+msgstr "teplo občas prehánky"
+
+msgid "mild with some sun"
+msgstr "mierne a polojasno"
+
+msgid "windy with showers around"
+msgstr "veterno miestami prehánkami"
+
+msgid "windy with a stray shower"
+msgstr "veterno miestami prehánkami"
+
+msgid "overcast with showers"
+msgstr "zamračené s prehánkami"
+
+msgid "a heavy t-storm in the a.m."
+msgstr "dopoludnia silné búrky"
+
+msgid "remaining cloudy with showers"
+msgstr "zmenšená oblačnosť s prehánkami"
+
+msgid "warm with variable cloudiness"
+msgstr "teplo a občasná oblačnosť"
+
+msgid "mainly cloudy and cooler"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "warm with some brightening"
+msgstr "teplo s postupným vyjasňovaním"
+
+msgid "a few showers this afternoon"
+msgstr "popoludní miestami prehánky"
+
+msgid "a shower possible"
+msgstr "možné prehánky"
+
+msgid "clouds breaking and beautiful"
+msgstr "polooblačno a pekne"
+
+msgid "low clouds and chilly"
+msgstr "nízka oblačnosť a mrazivo"
+
+msgid "chilly with clouds and sun"
+msgstr "mrazivo a polojasno"
+
+msgid "windy with brilliant sunshine"
+msgstr "veterno so slnečným svitom"
+
+msgid "high clouds and breezy"
+msgstr "vysoká oblačnosť a sviežo"
+
+msgid "hot with sun and some clouds"
+msgstr "horúco a občasne zamračene"
+
+msgid "warm with occasional rain"
+msgstr "teplo s občasným dažďom"
+
+msgid "warmer with clearing"
+msgstr "teplo a jasno"
+
+msgid "not as warm this afternoon"
+msgstr "popoludní nie teplo"
+
+msgid "warmer with a brief shower"
+msgstr "teplo občas prehánky"
+
+msgid "a brief shower"
+msgstr "občasne prehánky"
+
+msgid "windy this morning"
+msgstr "zrána veterno"
+
+msgid "periods of rain this morning"
+msgstr "trochu daždivo zrána"
+
+msgid "cool with occasional rain"
+msgstr "príjemne s občasným dažďom"
+
+msgid "a shower late this morning"
+msgstr "zrána neskôr prehánky"
+
+msgid "sunshine and pleasantly warm"
+msgstr "slnečno a príjemne teplo"
+
+msgid "heavy afternoon showers"
+msgstr "silné popoludňajšie prehánky"
+
+msgid "warmer with a stray t-storm"
+msgstr "teplo miestami búrky"
+
+msgid "mostly cloudy and not as cool"
+msgstr "prevažne zamračené a nie chladno"
+
+msgid "an a.m. flurry"
+msgstr "dopoludnia príval dažďa"
+
+msgid "turning colder this morning"
+msgstr "ráno ochladenie"
+
+msgid "high clouds and nice"
+msgstr "vysoká oblačnosť a pekne"
+
+msgid "cloudy with downpours"
+msgstr "zamračené s lejakmi"
+
+msgid "cloudy with a shower possible"
+msgstr "zamračené a miestami prehánkami"
+
+msgid "overcast with a bit of rain"
+msgstr "zamračené občasný dážď"
+
+msgid "breezy and colder with rain"
+msgstr "sviežo a chladnejšie s dažďom"
+
+msgid "cloudy with afternoon rain"
+msgstr "zamračené s popoludňajším dažďom"
+
+msgid "overcast with a shower or two"
+msgstr "zamračené občas prehánky"
+
+msgid "sunshine and comfortable"
+msgstr "slnečno a veľmi príjemne"
+
+msgid "clouds yielding to some sun"
+msgstr "postupne slnečno"
+
+msgid "cool with periods of sun"
+msgstr "príjemne a striedavo slnečno"
+
+msgid "high clouds and hot"
+msgstr "vysoká oblačnosť a horúco"
+
+msgid "warmer with clouds"
+msgstr "teplejšie s oblačnosťou"
+
+msgid "mostly sunny and cool"
+msgstr "polojasno a chladno"
+
+msgid "cloudy spells with a t-storm"
+msgstr "väčšinou zamračené a búrky"
+
+msgid "humid"
+msgstr "vlhko"
+
+msgid "cloudy with rain beginning"
+msgstr "oblačno s dažďom"
+
+msgid "hot with rain and drizzle"
+msgstr "horúco, dážď a mrholenie"
+
+msgid "still cloudy with showers"
+msgstr "zamračené s prehánkami"
+
+msgid "variably cloudy with t-storms"
+msgstr "občasne zamračené s búrkami"
+
+msgid "decreasing clouds and cooler"
+msgstr "zmenšená oblačnosť a chladno"
+
+msgid "cooler with a shower possible"
+msgstr "chladno miestami prehánky"
+
+msgid "afternoon t-storms"
+msgstr "popoludní búrky"
+
+msgid "sunshine and seasonably warm"
+msgstr "slnečno a nezvyčajne teplo"
+
+msgid "very hot with high clouds"
+msgstr "veľmi horúco a vysoká oblačnosť"
+
+msgid "heavy a.m. showers"
+msgstr "dopoludnia silné prehánky"
+
+msgid "milder with thickening clouds"
+msgstr "mierne s hustnúcou oblačnosťou"
+
+msgid "overcast and windy"
+msgstr "zamračené a veterno"
+
+msgid "very warm and humid with rain"
+msgstr "veľmi teplo, vlhko a dážď"
+
+msgid "hot with clouds rolling in"
+msgstr "horúco s ubúdajúcou oblačnosťou"
+
+msgid "cloudy and cool"
+msgstr "oblačno a chladno"
+
+msgid "clearing and showers around"
+msgstr "jasno občasné prehánky"
+
+msgid "breezy with decreasing clouds"
+msgstr "sviežo so zmenšujúcou sa oblačnosťou"
+
+msgid "pleasant and not as cool"
+msgstr "pekne ale nie chladno"
+
+msgid "turning sunny and delightful"
+msgstr "slnečno a veľmi príjemne"
+
+msgid "pleasantly warm with some sun"
+msgstr "príjemne teplo a slnečno"
+
+msgid "not as warm with rain ending"
+msgstr "nie teplo s doznievajúcim dažďom"
+
+msgid "becoming windier and colder"
+msgstr "veterno a chladno"
+
+msgid "increasingly windy"
+msgstr "silnejúci vietor"
+
+msgid "cool with low clouds"
+msgstr "príjemne s nízkou oblačnosťou"
+
+msgid "a snow squall in the morning"
+msgstr "snehová búrka v dopoludňajších hodinách"
+
+msgid "a shower in the area"
+msgstr "miestami mrholenie"
+
+msgid "mostly cloudy with t-storms"
+msgstr "väčšinou zamračené a búrky"
+
+msgid "sunshine and mild"
+msgstr "slnečno a mierne"
+
+msgid "clearing and cooler"
+msgstr "jasno a chladno"
+
+msgid "cloudy with rain ending"
+msgstr "oblačno s dažďom"
+
+msgid "mild with variable cloudiness"
+msgstr "mierne a občasne zamračené"
+
+msgid "cool with rain"
+msgstr "príjemne a dážď"
+
+msgid "clouds breaking and pleasant"
+msgstr "vyjasnenie a príjemne"
+
+msgid "windy and cooler"
+msgstr "veterno a chladnejšie"
+
+msgid "still cloudy and warmer"
+msgstr "zamračené a teplo"
+
+msgid "a brief morning shower or two"
+msgstr "občasné ranné prehánky"
+
+msgid "overcast with brief showers"
+msgstr "zamračené sobčasnými prehánkami"
+
+msgid "sunlit and comfortable"
+msgstr "slnečno a príjemne"
+
+msgid "clouds and sun with showers"
+msgstr "polooblačno s prehánkami"
+
+msgid "cooler with variable clouds"
+msgstr "chladno a polooblačno"
+
+msgid "partly sunny and very hot"
+msgstr "polojasno a veľmi horúco"
+
+msgid "very windy in the morning"
+msgstr "zrána veľmi veterno"
+
+msgid "rain in the morning"
+msgstr "ráno dážď"
+
+msgid "rather cloudy and hot"
+msgstr "polooblačno a horúco"
+
+msgid "decreasing clouds and warm"
+msgstr "zmenšená oblačnosť a teplo"
+
+msgid "hot with sun and clouds"
+msgstr "horúco a polooblačno"
+
+msgid "increasing clouds and milder"
+msgstr "zväčšujúca sa oblačnosť a mierne"
+
+msgid "a gusty morning breeze"
+msgstr "nárazový vietor"
+
+msgid "showers late this afternoon"
+msgstr "neskôr popoludní prehánky"
+
+msgid "cloudy with a brief shower"
+msgstr "zamračené s občasnými prehánkami"
+
+msgid "a shower this afternoon"
+msgstr "popoludní prehánky"
+
+msgid "a p.m. rain or snow shower"
+msgstr "popoludní dážď a snehové prehánky"
+
+msgid "turning cloudy and milder"
+msgstr "postupne oblačno a mierne"
+
+msgid "couple of showers"
+msgstr "častejšie prehánky"
+
+msgid "warmer with showers"
+msgstr "teplejšie občas prehánky"
+
+msgid "breezy in the morning"
+msgstr "svieže ráno"
+
+msgid "a t-shower in spots"
+msgstr "miestami búrkové prehánky"
+
+msgid "cooler with a brief shower"
+msgstr "chladno občas prehánky"
+
+msgid "mild with clouds and sunshine"
+msgstr "mierne a polooblačno"
+
+msgid "a couple of t-showers"
+msgstr "viacero búrkových prehánok"
+
+msgid "cooler with a stray t-storm"
+msgstr "chladno občas búrky"
+
+msgid "strong winds subsiding"
+msgstr "silný vietor postupne odoznie"
+
+msgid "windy with spotty showers"
+msgstr "veterno s lokálnymi prehánkami"
+
+msgid "becoming cloudy and cooler"
+msgstr "oblačnosť a chladno"
+
+msgid "partly sunny with a t-shower"
+msgstr "polojasno občas búrkové prehánky"
+
+msgid "variably cloudy and breezy"
+msgstr "sviežo a polooblačno"
+
+msgid "chilly with low clouds"
+msgstr "mrazivo a nízka oblačnosť"
+
+msgid "cooler with sunny intervals"
+msgstr "chladno a polooblačno"
+
+msgid "cooler with high clouds"
+msgstr "chladno s vysokou oblačnosťou"
+
+msgid "an a.m. rain or snow shower"
+msgstr "dopoludnia dážď a snehové prehánky"
+
+msgid "sunny and cooler but pleasant"
+msgstr "slnečno a chladno ale príjemne"
+
+msgid "a downpour in the morning"
+msgstr "lejaky v dopoludňajších hodinách"
+
+msgid "windy with sunshine"
+msgstr "veterno so slnečným svitom"
+
+msgid "sunshine with a thundershower"
+msgstr "jasno a búrkové prehánky"
+
+msgid "mostly sunny and milder"
+msgstr "väčšinou oblačno a mierne"
+
+msgid "cooler with sun"
+msgstr "chladno a slnečno"
+
+msgid "warm with plenty of clouds"
+msgstr "teplo a hustá oblačnosť"
+
+msgid "increasing clouds and humid"
+msgstr "zväčšujúca sa oblačnosť a vlhko"
+
+msgid "turning out cloudy and warmer"
+msgstr "zmenšujúca sa oblačnosť a teplo"
+
+msgid "thunderstorms this afternoon"
+msgstr "popoludni búrky"
+
+msgid "cool with plenty of sun"
+msgstr "príjemne a slnečno"
+
+msgid "rain ending"
+msgstr "končiaci dážď"
+
+msgid "a shower late"
+msgstr "neskôr prehánky"
+
+msgid "a touch of evening rain"
+msgstr "miestami večerný dážď"
+
+msgid "then showers"
+msgstr "neskôr prehánky"
+
+msgid "mild with periods of rain"
+msgstr "mierne a občasne dážď"
+
+msgid "High"
+msgstr "Vysoký"
+
+msgid "clear and warm"
+msgstr "jasno a teplo"
+
+msgid "an a.m. t-storm"
+msgstr "dopoludnia búrky"
+
+msgid "a t-storm late this morning"
+msgstr "zrána neskôr búrky"
+
+msgid "mainly clear and mild"
+msgstr "prevažne jasno a mierne"
+
+msgid "partly cloudy and mild"
+msgstr "väčšinou zamračené a mierne"
+
+msgid "showers around late"
+msgstr "neskôr občasné prehánky"
+
+msgid "overcast and mild"
+msgstr "zamračené a mierne"
+
+msgid "partly cloudy and colder"
+msgstr "väčšinou zamračené a chladnejšie"
+
+msgid "a shower early"
+msgstr "miestami prehánky"
+
+msgid "mainly clear with a shower"
+msgstr "prevažne jasno občas prehánky"
+
+msgid "clouds and spotty showers"
+msgstr "zamračené miestami prehánkami"
+
+msgid "cold with clearing"
+msgstr "chladno a jasno"
+
+msgid "clear and cold"
+msgstr "jasno a chladno"
+
+msgid "mostly cloudy and colder"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "partly cloudy and cold"
+msgstr "polojasno a chladno"
+
+msgid "mainly clear and cold"
+msgstr "prevažne jasno a chladno"
+
+msgid "clear and very warm"
+msgstr "jasno a veľmi teplo"
+
+msgid "chilly with patchy clouds"
+msgstr "mrazivo a miestami oblačnosť"
+
+msgid "cloudy with a shower late"
+msgstr "zamračené a neskôr prehánky"
+
+msgid "clear and dry"
+msgstr "jasno a sucho"
+
+msgid "a strong thunderstorm early"
+msgstr "čoskoro silné búrky"
+
+msgid "a thunderstorm around early"
+msgstr "čoskoro miestami búrky"
+
+msgid "partly cloudy and very warm"
+msgstr "občasne zamračené a veľmi teplo"
+
+msgid "mainly clear and very warm"
+msgstr "prevažne jasno a veľmi teplo"
+
+msgid "a strong evening thunderstorm"
+msgstr "večer silné búrky"
+
+msgid "a couple of evening t-storms"
+msgstr "pár večerných búrok"
+
+msgid "turning out clear and chilly"
+msgstr "vyjasni sa a mrazivo"
+
+msgid "clear and chilly"
+msgstr "jasno a mrazivo"
+
+msgid "a thunderstorm in spots early"
+msgstr "čoskoro miestami búrky"
+
+msgid "showers late"
+msgstr "neskôr prehánky"
+
+msgid "some rain and a t-storm late"
+msgstr "neskôr občasný dážď a búrky"
+
+msgid "brief showers late"
+msgstr "neskôr občasne prehánky"
+
+msgid "clearing and a stray t-storm"
+msgstr "jasno a miestami búrky"
+
+msgid "cloudy with showers late"
+msgstr "zamračené a neskôr prehánky"
+
+msgid "mostly cloudy and cold"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "rain and drizzle late"
+msgstr "neskôr dážď a mrholenie"
+
+msgid "heavy showers early"
+msgstr "čoskoro výdatné prehánky"
+
+msgid "a thunderstorm in spots late"
+msgstr "neskôr miestami búrky"
+
+msgid "a strong late-night t-storm"
+msgstr "silné nočné búrky"
+
+msgid "very warm with patchy clouds"
+msgstr "veľmi teplo s občasnou oblačnosťou"
+
+msgid "mainly clear and warm"
+msgstr "prevažne jasno a teplo"
+
+msgid "clear and cool"
+msgstr "jasno a chladno"
+
+msgid "clear and humid"
+msgstr "jasno a vlhko"
+
+msgid "mainly cloudy and humid"
+msgstr "prevažne oblačno a vlhko"
+
+msgid "patchy clouds and humid"
+msgstr "občasne zamračené a vlhko"
+
+msgid "mainly clear and humid"
+msgstr "prevažne jasno a vlhko"
+
+msgid "overcast and humid"
+msgstr "zamračené a vlhko"
+
+msgid "a touch of late-night rain"
+msgstr "miestami nočný dážď"
+
+msgid "brief showers early"
+msgstr "čoskoro občasne prehánky"
+
+msgid "a strong thunderstorm late"
+msgstr "neskôr silné búrky"
+
+msgid "a stray thunderstorm late"
+msgstr "neskôr miestami búrky"
+
+msgid "mainly clear and cool"
+msgstr "prevažne jasno a chladno"
+
+msgid "some clouds with a shower"
+msgstr "polojasno s prehánkami"
+
+msgid "clear and very humid"
+msgstr "jasno a veľmi vlhko"
+
+msgid "partly cloudy with a t-storm"
+msgstr "čiastočne zamračené a búrky"
+
+msgid "early showers"
+msgstr "čoskoro prehánky"
+
+msgid "a shower in the area late"
+msgstr "neskôr miestami prehánky"
+
+msgid "clear and cooler"
+msgstr "jasno a chladno"
+
+msgid "late-night rain"
+msgstr "nočný dážď"
+
+msgid "brief late-night showers"
+msgstr "krátke nočné prehánky"
+
+msgid "a passing late-night shower"
+msgstr "miestami nočné prehánky"
+
+msgid "a couple of t-storms late"
+msgstr "neskôr miestami  búrky"
+
+msgid "heavy t-storms late"
+msgstr "neskôr silné búrky"
+
+msgid "clear and colder"
+msgstr "jasno a chladno"
+
+msgid "patchy clouds and very warm"
+msgstr "občasne zamračené a veľmi teplo"
+
+msgid "partly cloudy and chilly"
+msgstr "čiastočne zamračené a mrazivo"
+
+msgid "a stray evening thunderstorm"
+msgstr "miestami večerné búrky"
+
+msgid "cloudy with thundershowers"
+msgstr "zamračené s búrkovým mrholením"
+
+msgid "a little rain in the evening"
+msgstr "večer jemný dážď"
+
+msgid "a couple of showers late"
+msgstr "neskôr občasne prehánky"
+
+msgid "a late-night shower or two"
+msgstr "nočné občasné prehánky"
+
+msgid "breezy early"
+msgstr "neskôr sviežo"
+
+msgid "cloudy with a t-storm late"
+msgstr "zamračené a neskôr búrky"
+
+msgid "mainly clear and cooler"
+msgstr "väčšinou jasno a chladno"
+
+msgid "turning out clear and warm"
+msgstr "zmenšujúca sa oblačnosť a teplo"
+
+msgid "spotty showers late"
+msgstr "neskôr miestami prehánky"
+
+msgid "clear and mild"
+msgstr "jasno a mierne"
+
+msgid "partly cloudy and warm"
+msgstr "čiastočne oblačno a teplo"
+
+msgid "a stray t-storm this evening"
+msgstr "večer miestami búrky"
+
+msgid "an evening t-storm in spots"
+msgstr "večer lokálne búrky"
+
+msgid "a shower or two early"
+msgstr "čoskoro prehánky"
+
+msgid "a thunderstorm this evening"
+msgstr "večer miestami búrky"
+
+msgid "showers around this evening"
+msgstr "večer miestami prehánky"
+
+msgid "spotty evening showers"
+msgstr "večer lokálne prehánky"
+
+msgid "not as cool late"
+msgstr "neskôr nie príjemne"
+
+msgid "rising temperatures late"
+msgstr "neskôr stúpajúca teplota"
+
+msgid "overcast and becoming rainy"
+msgstr "oblačno až daždivo"
+
+msgid "heavy rain developing"
+msgstr "silný dážď"
+
+msgid "heavy evening rain"
+msgstr "večer silný dážď"
+
+msgid "showers around in the evening"
+msgstr "večer občasné prehánky"
+
+msgid "humid with patchy clouds"
+msgstr "vlhko a občas oblačno"
+
+msgid "increasing amounts of clouds"
+msgstr "zväčšujúca sa oblčnosť"
+
+msgid "rather cloudy and cooler"
+msgstr "polooblačno a chladno"
+
+msgid "rain and drizzle early"
+msgstr "čoskoro dážď a mrholenie"
+
+msgid "a stray t-storm early"
+msgstr "čoskoro miestami búrky"
+
+msgid "a few late-night showers"
+msgstr "miestami nočné prehánky"
+
+msgid "humid with increasing clouds"
+msgstr "vlhko so zvyšujúcou sa oblačnosťou"
+
+msgid "a late-night t-storm in spots"
+msgstr "silné lokálne búrky neskôr v noci"
+
+msgid "some rain and a t-storm early"
+msgstr "čoskoro občasný dážď a búrky"
+
+msgid "clouds with a shower late"
+msgstr "neskôr zamračené s prehánkami"
+
+msgid "a thunderstorm around late"
+msgstr "neskôr miestami búrky"
+
+msgid "mainly clear and chilly"
+msgstr "prevažne jasno a mrazivo"
+
+msgid "an evening thundershower"
+msgstr "miestami večerné búrky a prehánky"
+
+msgid "a little late-night rain"
+msgstr "v noci občasný dážď"
+
+msgid "a little evening rain"
+msgstr "v noci občasný dážďa"
+
+msgid "partly cloudy and humid"
+msgstr "čiastočne zamračené a vlhko"
+
+msgid "mainly clear and very humid"
+msgstr "prevažne jasno a veľmi vlhko"
+
+msgid "turning clear"
+msgstr "vyjasni sa"
+
+msgid "an evening shower or t-storm"
+msgstr "miestami večer prehánky alebo búrky"
+
+msgid "rain and a thunderstorm late"
+msgstr "neskôr dážď a búrky"
+
+msgid "an evening t-storm or two"
+msgstr "večer miestami búrky"
+
+msgid "late-night showers"
+msgstr "neskôr v noci prehánky"
+
+msgid "windy early"
+msgstr "čoskoro veterno"
+
+msgid "clouds and a few showers"
+msgstr "oblačno s prehánkami"
+
+msgid "partly cloudy and windy"
+msgstr "väčšinou zamračené a veterno"
+
+msgid "occasional rain late"
+msgstr "neskôr občasný dážď"
+
+msgid "thunderstorms late"
+msgstr "neskôr búrky"
+
+msgid "an evening thunderstorm"
+msgstr "večer búrky"
+
+msgid "mainly cloudy and chilly"
+msgstr "väčšinou zamračené a mrazivo"
+
+msgid "spotty late-night showers"
+msgstr "miestami neskôr v noci prehánky"
+
+msgid "a t-shower in spots early"
+msgstr "čoskoro miestami búrky"
+
+msgid "very warm with clearing"
+msgstr "veľmi teplo a jasno"
+
+msgid "partly to mostly cloudy"
+msgstr "polojasno až oblačno"
+
+msgid "a late-night shower"
+msgstr "neskôr v noci prehánky"
+
+msgid "partly cloudy and cool"
+msgstr "občasne zamračené a chladno"
+
+msgid "a t-storm around this evening"
+msgstr "večer lokálne búrky"
+
+msgid "partly cloudy and very humid"
+msgstr "občasne zamračené a veľmi vlhko"
+
+msgid "clear and much colder"
+msgstr "jasno a oveľa chladnejšie"
+
+msgid "downpours early"
+msgstr "čoskoro lejaky"
+
+msgid "patchy clouds and chilly"
+msgstr "občasná oblačnosť a mrazivo"
+
+msgid "a few evening showers"
+msgstr "večer občas prehánky"
+
+msgid "a thundershower late"
+msgstr "neskôr búrky s prehánkami"
+
+msgid "early rain"
+msgstr "čoskoro dážď"
+
+msgid "heavy evening thunderstorms"
+msgstr "večer silné búrky"
+
+msgid "patchy clouds with a shower"
+msgstr "čiastočne oblačno s prehánkami"
+
+msgid "overcast with showers late"
+msgstr "zamračené, neskôr s prehánkami"
+
+msgid "patchy clouds and warm"
+msgstr "miestami oblačno a teplo"
+
+msgid "heavy showers late"
+msgstr "neskôr silné prehánky"
+
+msgid "a thunderstorm or two late"
+msgstr "neskôr miestami búrky"
+
+msgid "mild with increasing clouds"
+msgstr "mierne so zvyšujúcou sa oblačnosťou"
+
+msgid "a heavy t-storm early"
+msgstr "čoskoro silné búrky"
+
+msgid "clear and warmer"
+msgstr "jasno a teplo"
+
+msgid "mainly clear and not as warm"
+msgstr "väčšinou jasno ale nie teplo"
+
+msgid "turning cloudy and humid"
+msgstr "polooblačno a vlhko"
+
+msgid "showers around early"
+msgstr "čoskoro občasné prehánky"
+
+msgid "mainly clear and warmer"
+msgstr "prevažne jasno a teplo"
+
+msgid "chilly with periods of rain"
+msgstr "mrazivo a miestami dážď"
+
+msgid "periods of rain late"
+msgstr "neskôr daždivo"
+
+msgid "a bit of evening rain"
+msgstr "miestami večerný dážď"
+
+msgid "becoming clear and chilly"
+msgstr "postupne sa vyjasní a mrazivo"
+
+msgid "a thundershower in spots late"
+msgstr "neskôr lokálne búrky s mrholením"
+
+msgid "a couple of t-showers late"
+msgstr "neskôr viacero búrkových prehánok"
+
+msgid "a couple of strong t-storms"
+msgstr "miestami silné búrky"
+
+msgid "heavy showers in the evening"
+msgstr "večer silné prehánky"
+
+msgid "fog"
+msgstr "hmla"
+
+msgid "a thundershower"
+msgstr "búrky s prehánkami"
+
+msgid "considerable clouds and humid"
+msgstr "značná oblačnosť a vlhko"
+
+msgid "brilliant sunshine and warmer"
+msgstr "slnečno a teplo"
+
+msgid "rainy times in the afternoon"
+msgstr "popoludní miestami dážď"
+
+msgid "not as warm with low clouds"
+msgstr "nie teplo s nízkou oblačnosťou"
+
+msgid "mostly clear with a shower"
+msgstr "prevažne jasno občas prehánky"
+
+msgid "a thunderstorm in the evening"
+msgstr "večer búrky"
+
+msgid "colder with snow and rain"
+msgstr "chladno, sneh a dážď"
+
+msgid "windy and humid with rain"
+msgstr "veterno a vlhko s dažďom"
+
+msgid "a heavy morning shower or two"
+msgstr "miestami silné ranné prehánky"
+
+msgid "heavy showers this morning"
+msgstr "silné prehánky ráno"
+
+msgid "cooler with clearing"
+msgstr "chladno a jasno"
+
+msgid "overcast with a brief shower"
+msgstr "zamračené sobčasnými prehánkami"
+
+msgid "cloudy with a downpour late"
+msgstr "zamračené a neskôr lejaky"
+
+msgid "breezy and nice with some sun"
+msgstr "sviežo a teplo, slnečno"
+
+msgid "a couple of t-showers early"
+msgstr "čoskoro viacero búrkových prehánok"
+
+msgid "clouds breaking with a shower"
+msgstr "polooblačno s prehánkami"
+
+msgid "not as warm with downpours"
+msgstr "nie teplo a lejaky"
+
+msgid "low clouds followed by sun"
+msgstr "nízka oblačnosť a polojasno"
+
+msgid "a downpour early"
+msgstr "čoskoro lejaky"
+
+msgid "becoming cloudy and warm"
+msgstr "zväčšujúca sa oblačnosť a teplo"
+
+msgid "late downpours"
+msgstr "neskôr lejaky"
+
+msgid "warmer with some brightening"
+msgstr "teplo a polojasno"
+
+msgid "a quick afternoon shower"
+msgstr "popoludňajšie prehánky"
+
+msgid "becoming cloudy with a shower"
+msgstr "prevažne oblačno s prehánkami"
+
+msgid "low clouds breaking and humid"
+msgstr "nízka oblačnosť a vlhko"
+
+msgid "cool with increasing clouds"
+msgstr "príjemne so zväčšujúcou sa oblačnosťou"
+
+msgid "be advised for strong winds"
+msgstr "silný vietor"
+
+msgid "humid with plenty of sunshine"
+msgstr "vlhko a polojasno"
+
+msgid "otherwise"
+msgstr "inak"
+
+msgid "cool with patchy clouds"
+msgstr "príjemne a miestami oblačnosť"
+
+msgid "colder with a little rain"
+msgstr "chladno s občasným dažďom"
+
+msgid "drizzle/rain"
+msgstr "mrholenie alebo dážď"
+
+msgid "showers this morning"
+msgstr "zrána miestami prehánky"
+
+msgid "late-night thunderstorms"
+msgstr "neskôr v noci búrky"
+
+msgid "mostly cloudy with downpours"
+msgstr "väčšinou zamračené s lejakmi"
+
+msgid "showers and thunderstorm"
+msgstr "prehánky a búrky"
+
+msgid "clear and unseasonably cold"
+msgstr "jasno a nezvyčajne chladno"
+
+msgid "clearing and humid"
+msgstr "jasno a vlhko"
+
+msgid "a bit of late-night rain"
+msgstr "miestami nočný dážď"
+
+msgid "times of rain"
+msgstr "daždivo"
+
+msgid "rather cloudy and chilly"
+msgstr "skôr oblačno a mrazivo"
+
+msgid "a shower or two late"
+msgstr "miestami prehánky"
+
+msgid "warm with patchy clouds"
+msgstr "teplo s občasnou oblačnosťou"
+
+msgid "hot with periods of sunshine"
+msgstr "horúco a striedavo slnečno"
+
+msgid "cloudy with late-night rain"
+msgstr "zamračené a neskôr v noci dážď"
+
+msgid "cloudy with downpours late"
+msgstr "zamračené a neskôr lejaky"
+
+msgid "a late-night shower in places"
+msgstr "neskôr v noci lokálne prehánky"
+
+msgid "partly cloudy and breezy"
+msgstr "sviežo a polooblačno"
+
+msgid "a little rain late"
+msgstr "neskôr jemný dážď"
+
+msgid "heavy t-storms early"
+msgstr "čoskoro silné búrky"
+
+msgid "mild with considerable clouds"
+msgstr "mierne so silnou oblačnosťou"
+
+msgid "colder with a stray shower"
+msgstr "chladno občas prehánky"
+
+msgid "rain and drizzle this evening"
+msgstr "večer dážď a mrholenie"
+
+msgid "a thundershower on the prowl"
+msgstr "miestami búrky s mrholením"
+
+msgid "a drenching t-storm early"
+msgstr "čoskoro miestami búrky"
+
+msgid "colder with occasional rain"
+msgstr "chladno s občasným dažďom"
+
+msgid "increasing clouds and chilly"
+msgstr "zväčšujúca sa oblačnosť a mrazivo"
+
+msgid "brief showers in the evening"
+msgstr "večer občasne prehánky"
+
+msgid "chilly with rain and drizzle"
+msgstr "mrazivo, dážď a mrholenie"
+
+msgid "cloudy and chilly"
+msgstr "oblačno a mrazivo"
+
+msgid "mainly cloudy and colder"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "colder with increasing clouds"
+msgstr "chladno so zvyšujúcou sa oblačnosťou"
+
+msgid "cold with increasing clouds"
+msgstr "chladno so zväčšujúcou sa oblačnosťou"
+
+msgid "rain and a thunderstorm early"
+msgstr "čoskoro dážď a búrky"
+
+msgid "strong late-night t-storms"
+msgstr "silné nočné búrky"
+
+msgid "cloudy with heavy rain late"
+msgstr "zamračené a neskôr silný dážď"
+
+msgid "a passing shower late"
+msgstr "neskôr miestami prehánky"
+
+msgid "breezy with increasing clouds"
+msgstr "sviežo so zväčšujúcou sa oblačnosťou"
+
+msgid "becoming cloudy and warmer"
+msgstr "zväčšujúca sa oblačnosť a teplo"
+
+msgid "some brightening and warmer"
+msgstr "vyjasňovanie a teplo"
+
+msgid "hotter with partial sunshine"
+msgstr "horúco s čiastočným slnečným svitom"
+
+msgid "chance of a little p.m. rain"
+msgstr "popoludní pravdepodobne dážď"
+
+msgid "warmer with a bit of rain"
+msgstr "teplo a občasný dážď"
+
+msgid "clouds breaking for sun"
+msgstr "polooblačno"
+
+msgid "humid with sunny intervals"
+msgstr "vlhko a polojasno"
+
+msgid "clouds with downpours late"
+msgstr "zamračené a neskôr lejaky"
+
+msgid "humid with rain at times"
+msgstr "vlhko a občasne dážď"
+
+msgid "cloudy and very humid"
+msgstr "oblačno a veľmi vlhko"
+
+msgid "mostly clear and humid"
+msgstr "prevažne jasno a vlhko"
+
+msgid "sunshine with a stray t-storm"
+msgstr "slnečno a občas búrky"
+
+msgid "nice with variable clouds"
+msgstr "pekne a polooblačno"
+
+msgid "mild with plenty of clouds"
+msgstr "mierne a hustá oblačnosť"
+
+msgid "showers in the evening"
+msgstr "večer prehánky"
+
+msgid "a couple of evening t-showers"
+msgstr "pár večerných búrkových prehánok"
+
+msgid "a little rain early"
+msgstr "čoskoro jemný dážď"
+
+msgid "an evening shower or two"
+msgstr "miestami večer prehánky"
+
+msgid "mostly clear and cold"
+msgstr "prevažne jasno a chladno"
+
+msgid "a drenching shower late"
+msgstr "neskôr prudké prehánky"
+
+msgid "mostly clear and very warm"
+msgstr "prevažne jasno a veľmi teplo"
+
+msgid "cooler with plenty of sun"
+msgstr "chladno a slnečno"
+
+msgid "cool with rain and a t-storm"
+msgstr "príjemne s dažďom a búrky"
+
+msgid "very hot with sunshine"
+msgstr "veľmi horúco a slnečno"
+
+msgid "rather cloudy and not as warm"
+msgstr "miestami oblačno a nie teplo"
+
+msgid "clouds and warm with a shower"
+msgstr "teplo a oblačno s prehánkami"
+
+msgid "cold with patchy clouds"
+msgstr "chladno a miestami oblačnosť"
+
+msgid "showers early in the morning"
+msgstr "zrána mrholenie"
+
+msgid "rather cloudy and cool"
+msgstr "polooblačno a príjemne"
+
+msgid "clearing and nice"
+msgstr "jasno a pekne"
+
+msgid "nice with clouds"
+msgstr "pekne a zamračené"
+
+msgid "some sun with a gusty breeze"
+msgstr "polojasno a nárazový vietor"
+
+msgid "cooler with a t-storm or two"
+msgstr "chladnejšie s občasnými búrkami"
+
+msgid "clear and seasonably warm"
+msgstr "jasno a nezvyčajne teplo"
+
+msgid "mostly cloudy and seasonable"
+msgstr "väčšinou zamračené"
+
+msgid "a t-storm early"
+msgstr "čoskoro búrky"
+
+msgid "strong evening thunderstorms"
+msgstr "večer silné búrky"
+
+msgid "colder with a few showers"
+msgstr "chladno a miestami prehánkami"
+
+msgid "occasional evening rain"
+msgstr "večer občasný dážď"
+
+msgid "patchy clouds and mild"
+msgstr "občasne zamračené a mierne"
+
+msgid "mild with patchy clouds"
+msgstr "mierne a občas oblačno"
+
+msgid "mostly cloudy with rain late"
+msgstr "väčšinou zamračené a neskôr dážď"
+
+msgid "early downpours"
+msgstr "čoskoro lejaky"
+
+msgid "some sun with a cool breeze"
+msgstr "jasno a príjemný vánok"
+
+msgid "sunny and remaining cool"
+msgstr "slnečno a ustupujúci chlad"
+
+msgid "clouds rolling in and humid"
+msgstr "postupne sa zamračí a vlhko"
+
+msgid "partly cloudy and cooler"
+msgstr "čiastočne zamračené a chladnejšie"
+
+msgid "warmer with showers around"
+msgstr "teplo a miestami prehánky"
+
+msgid "cool with sun and some clouds"
+msgstr "príjemne na slnku a občasne zamračene"
+
+msgid "a few showers this evening"
+msgstr "večer miestami prehánky"
+
+msgid "occasional late-night rain"
+msgstr "miestami v noci dážď"
+
+msgid "a bit of rain this evening"
+msgstr "večer miestami daždivo"
+
+msgid "clear and breezy"
+msgstr "jasno a sviežo"
+
+msgid "rainy times in the morning"
+msgstr "zrána daždivo"
+
+msgid "cloudy with a bit of ice late"
+msgstr "zamračené a poľadovica"
+
+msgid "a few showers in the evening"
+msgstr "večer miestami prehánky"
+
+msgid "not as warm with clearing"
+msgstr "nie teplo ale jasno"
+
+msgid "variably cloudy and pleasant"
+msgstr "príjemne a polooblačno"
+
+msgid "overcast and cooler"
+msgstr "oblačno a príjemne"
+
+msgid "clear and seasonably cool"
+msgstr "jasno a príjemne"
+
+msgid "breezy with periods of rain"
+msgstr "sviežo a občasne dážď"
+
+msgid "clear and not as warm"
+msgstr "jasno ale nie teplo"
+
+msgid "mostly cloudy and less humid"
+msgstr "väčšinou zamračené a menej vlhko"
+
+msgid "cloudy and seasonably warm"
+msgstr "zamračené a teplo"
+
+msgid "warm with clearing"
+msgstr "teplo a jasno"
+
+msgid "a brief t-storm early"
+msgstr "čoskoro občasne búrky"
+
+msgid "an afternoon shower possible"
+msgstr "miestami popoludňajšie prehánky"
+
+msgid "showers early this morning"
+msgstr "zrána prehánky"
+
+msgid "rain late in the afternoon"
+msgstr "neskôr popoludní dážď"
+
+msgid "cool with areas of low clouds"
+msgstr "príjemne s nízkou oblačnosťou"
+
+msgid "rainy times late"
+msgstr "neskôr občasný dážď"
+
+msgid "a thunderstorm early"
+msgstr "čoskoro búrky"
+
+msgid "mainly clear and much colder"
+msgstr "väčšinou jasno a dosť chladno"
+
+msgid "variably cloudy and warmer"
+msgstr "občas zamračené a teplo"
+
+msgid "some sun with occasional rain"
+msgstr "polojasno s občasným dažďom"
+
+msgid "evening showers"
+msgstr "večer občas prehánky"
+
+msgid "cool with sunny intervals"
+msgstr "príjemne a polooblačno"
+
+msgid "heavy afternoon rain"
+msgstr "popoludní silný dážď"
+
+msgid "some sun returning"
+msgstr "polojasno až jasno"
+
+msgid "heavy morning showers"
+msgstr "ráno silné  prehánky"
+
+msgid "mainly cloudy and cold"
+msgstr "väčšinou zamračené a chladno"
+
+msgid "very warm with clouds"
+msgstr "veľmi teplo s oblačnosťou"
+
+msgid "a few showers late"
+msgstr "neskôr občasne prehánky"
+
+msgid "low clouds with a flurry late"
+msgstr "nízka oblačnosť a neskôr metelica"
+
+msgid "pleasant with lots of sun"
+msgstr "príjemne s dostatkom slnka"
+
+msgid "a rain or snow shower early"
+msgstr "čoskoro dážďové a snehové prehánky"
+
+msgid "snow"
+msgstr "sneženie"
+
+msgid "becoming clear and very warm"
+msgstr "vyjasňovanie a veľmi teplo"
+
+msgid "fog to sun"
+msgstr "hmlisto až slnečno"
+
+msgid "a shower toward dawn"
+msgstr "prehánky za úsvitu"
+
+msgid "windy with increasing clouds"
+msgstr "veterno so zväčšujúcou sa oblačnosťou"
+
+msgid "overcast with a shower late"
+msgstr "zamračené, neskôr s prehánkami"
+
+msgid "overcast with heavy showers"
+msgstr "zamračené so silnými prehánkami"
+
+msgid "warm with rain and drizzle"
+msgstr "teplo, dážď a mrholenie"
+
+msgid "mainly clear and breezy"
+msgstr "prevažne jasno a sviežo"
+
+msgid "fog in the morning"
+msgstr "ráno hmla"
+
+msgid "cool with plenty of sunshine"
+msgstr "príjemne s dostatkom slnečného svitu"
+
+msgid "breezy and cool with some sun"
+msgstr "sviežo a príjemne, slnečno"
+
+msgid "clearing and chilly"
+msgstr "jasno a mrazivo"
+
+msgid "cloudy with afternoon showers"
+msgstr "zamračené a miestami popoludní prehánky"
+
+msgid "turning cloudy with a t-storm"
+msgstr "skôr oblačno a búrky"
+
+msgid "cloudy with a t-storm around"
+msgstr "zamračené občasne lokálne búrky"
+
+msgid "a bit of rain in the evening"
+msgstr "večer daždivo"
+
+msgid "heavy morning thunderstorms"
+msgstr "ráno silné búrky"
+
+msgid "becoming clear and warm"
+msgstr "postupné vyjasňovanie a teplo"
+
+msgid "breezy with patchy clouds"
+msgstr "sviežo s občasnou oblačnosťou"
+
+msgid "partly cloudy and much colder"
+msgstr "čiastočne zamračené a oveľa chladnejšie"
+
+msgid "a bit of rain late"
+msgstr "neskôr miestami dážď"
+
+msgid "a thunderstorm late"
+msgstr "neskôr búrky"
+
+msgid "low clouds and mild"
+msgstr "nízka oblačnosť a mierne"
+
+msgid "clouding up with a shower"
+msgstr "zamračí sa a prehánky"
+
+msgid "a couple of downpours late"
+msgstr "neskôr občasne lejaky"
+
+msgid "overcast and chilly"
+msgstr "zamračené a mrazivo"
+
+msgid "rather cloudy and warm"
+msgstr "miestami oblačno a teplo"
+
+msgid "warmer with variable clouds"
+msgstr "teplo a občasné mraky"
+
+msgid "warm with clouds breaking"
+msgstr "teplo a polooblačno"
+
+msgid "low clouds and remaining cool"
+msgstr "nízka oblačnosť a príjemne"
+
+msgid "a stray shower late"
+msgstr "neskôr miestami prehánky"
+
+msgid "damp early"
+msgstr "čoskoro dusno"
+
+msgid "cool with sun and clouds"
+msgstr "príjemne, slnečno a občasne mraky"
+
+msgid "evening thunderstorms"
+msgstr "večer búrky"
+
+msgid "a t-storm late this evening"
+msgstr "večer neskôr búrky"
+
+msgid "a stray thunderstorm early"
+msgstr "čoskoro miestami búrky"
+
+msgid "warmer with a few showers"
+msgstr "teplo občas prehánky"
+
+msgid "sunlit and warmer"
+msgstr "slnečno a teplo"
+
+msgid "a heavy afternoon shower"
+msgstr "silné popoludňajšie prehánky"
+
+msgid "showers this evening"
+msgstr "večer prehánky"
+
+msgid "chance for a thunderstorm"
+msgstr "pravdepodobne búrky"
+
+msgid "variably cloudy and cooler"
+msgstr "mieatami zamračené a príjemne"
+
+msgid "becoming clear with a shower"
+msgstr "vyjasnenie s prehánkami"
+
+msgid "sunny and humid"
+msgstr "slnečno a vlhko"
+
+msgid "chilly with increasing clouds"
+msgstr "mrazivo so zvyšujúcou sa oblačnosťou"
+
+msgid "overcast with late-night rain"
+msgstr "zamračené s jemným dažďom v noci"
+
+msgid "colder with rain"
+msgstr "chladno a dážď"
+
+msgid "early t-showers"
+msgstr "čoskoro búrkové prehánky"
+
+msgid "pleasant with variable clouds"
+msgstr "príjemne a občasná oblačnosť"
+
+msgid "sunshine and warm"
+msgstr "slnečný svit a teplo"
+
+msgid "considerable clouds and warm"
+msgstr "značná oblačnosť a teplo"
+
+msgid "sunshine and breezy"
+msgstr "slnečno a sviežo"
+
+msgid "low clouds with rain late"
+msgstr "nízka oblačnosť a neskôr dážď"
+
+msgid "overcast with a touch of rain"
+msgstr "zamračené občasný dážď"
+
+msgid "turning clear and very warm"
+msgstr "postupne jasno a veľmi teplo"
+
+msgid "clouds and showers"
+msgstr "oblačno s prehánkami"
+
+msgid "remaining cool with some sun"
+msgstr "ubúdajúce teplo a polojasno"
+
+msgid "chilly with clearing"
+msgstr "mrazivo a jasno"
+
+msgid "an evening shower"
+msgstr "večer prehánky"
+
+msgid "clearing and mild"
+msgstr "jasno a mierne"
+
+msgid "t-storms in the afternoon"
+msgstr "popoludní búrky"
+
+msgid "a shower in places late"
+msgstr "neskôr miestami prehánky"
+
+msgid "heavy rain in the afternoon"
+msgstr "popoludni silný dážď"
+
+msgid "a stray late-night t-storm"
+msgstr "miestami nočné búrky"
+
+msgid "blazing sunshine and hot"
+msgstr "veľmi slnečno a horúco"
+
+msgid "turning sunny and very warm"
+msgstr "postupne slnečno a veľmi teplo"
+
+msgid "clouds and very warm"
+msgstr "oblačno a veľmi teplo"
+
+msgid "mainly clear and colder"
+msgstr "väčšinou jasno a chladno"
+
+msgid "turning out clear and cold"
+msgstr "vyjasni sa a chladno"
+
+msgid "heavy showers this evening"
+msgstr "večer silné prehánky"
+
+msgid "decreasing clouds and cool"
+msgstr "zmenšená oblačnosť a príjemne"
+
+msgid "a couple of evening downpours"
+msgstr "pár večerných lejakov"
+
+msgid "overcast with rain late"
+msgstr "zamračené, neskôr dážď"
+
+msgid "variably cloudy and nice"
+msgstr "mieatami zamračené a pekne"
+
+msgid "a few t-storms"
+msgstr "miestami búrky"
+
+msgid "cooler with increasing clouds"
+msgstr "príjemne so zvyšujúcou sa oblačnosťou"
+
+msgid "rain in the evening"
+msgstr "večer dážď"
+
+msgid "becoming cloudy and chilly"
+msgstr "postupne sa zamračí a mrazivo"
+
+msgid "remaining warm with sunshine"
+msgstr "ubúdajúce teplo a jasno"
+
+msgid "a thick cloud cover and hot"
+msgstr "silná oblačnosť a horúco"
+
+msgid "warm with partial sunshine"
+msgstr "teplo s čiastočným slnečným svitom"
+
+msgid "sunlit and unseasonably hot"
+msgstr "slnečno a horúco"
+
+msgid "clouds and warm"
+msgstr "oblačno a teplo"
+
+msgid "heavy t-storms"
+msgstr "silné búrky"
+
+msgid "a flurry early"
+msgstr "čoskoro prívaly dažďa"
+
+msgid "rather cloudy and breezy"
+msgstr "miestami oblačno a sviežo"
+
+msgid "rather cloudy and humid"
+msgstr "polooblačno a vlhko"
+
+msgid "a couple of thundershowers"
+msgstr "občasné búrkové prehánky"
+
+msgid "breezy with lots of sun"
+msgstr "sviežo a slnečno"
+
+msgid "hazy sun and hot"
+msgstr "hmlistý slnečný svit a horúco"
+
+msgid "hazy and very warm"
+msgstr "hmlisto a veľmi teplo"
+
+msgid "cloudy with blowing dust"
+msgstr "zamračené a zvírený prach"
+
+msgid "warm with high clouds"
+msgstr "teplo s vysokou oblačnosťou"
+
+msgid "very hot with a shower"
+msgstr "veľmi horúco s prehánkami"
+
+msgid "a few a.m. showers"
+msgstr "dopoludnia občasne prehánky"
+
+msgid "heavy rain and a t-storm late"
+msgstr "neskôr silný dážď a búrky"
+
+msgid "a shower in spots late"
+msgstr "neskôr miestami prehánky"
+
+msgid "sunlit and delightful"
+msgstr "slnečno a príjemne"
+
+msgid "cold"
+msgstr "chladno"
+
+msgid "mostly cloudy and misty late"
+msgstr "väčšinou zamračené a neskôr hmla"
+
+msgid "a late-night shower in spots"
+msgstr "lokálne prehánky neskôr v noci"
+
+msgid "early thunderstorms"
+msgstr "čoskoro búrky"
+
+msgid "turning cloudy and chilly"
+msgstr "postupne oblačno a mrazivo"
+
+msgid "clearing and a few showers"
+msgstr "jasno s prehánkami"
+
+msgid "spotty drizzle in the morning"
+msgstr "zrána miestami mrholenie"
+
+msgid "rain and snow showers"
+msgstr "dážď a snehové prehánky"
+
+msgid "mostly clear and chilly"
+msgstr "prevažne jasno a mrazivo"
+
+msgid "evening downpours"
+msgstr "večer lejaky"
+
+msgid "overcast with a stray shower"
+msgstr "zamračené miestami s prehánkami"
+
+msgid "a thunderstorm or two early"
+msgstr "čoskoro miestami búrky"
+
+msgid "becoming cloudy and humid"
+msgstr "zväčšujúca sa oblačnosť a vlhko"
+
+msgid "sunny with a gusty breeze"
+msgstr "slnečno a nárazový vietor"
+
+msgid "turning sunny and humid"
+msgstr "vyjasní sa a vlhko"
+
+msgid "brilliant sunshine and hotter"
+msgstr "silný slnečný svit a horúco"
+
+msgid "rain at times in the evening"
+msgstr "večer daždivo"
+
+msgid "a brief shower in the morning"
+msgstr "občasne zrána prehánky"
+
+msgid "hot with hazy sun"
+msgstr "horúco s hmlistým slnečným svitom"
+
+msgid "mostly clear and cool"
+msgstr "prevažne jasno a príjemne"
+
+msgid "downpours in the evening"
+msgstr "večer lejaky"
+
+msgid "not as warm in the afternoon"
+msgstr "popoludní nie teplo"
+
+msgid "humid with some brightening"
+msgstr "vlhko a polojasno"
+
+msgid "a severe afternoon t-storm"
+msgstr "miestami popoludňajšie búrky"
+
+msgid "chance for a strong t-storm"
+msgstr "pravdepodobne búrky"
+
+msgid "overcast with downpours"
+msgstr "zamračené s lejakmi"
+
+msgid "some clouds with a t-storm"
+msgstr "polooblačno a búrky"
+
+msgid "brilliant sunshine and breezy"
+msgstr "slnečno a sviežo"
+
+msgid "a rain or snow shower late"
+msgstr "neskôr dážďové a snehové prehánky"
+
+msgid "rain and snow shower"
+msgstr "dážď a snehové prehánky"
+
+msgid "humid with thickening clouds"
+msgstr "vlhko so zvyšujúcou sa oblačnosťou"
+
+msgid "warm with sunshine"
+msgstr "teplo so slnečným svitom"
+
+msgid "rain this morning"
+msgstr "zrána dážď"
+
+msgid "clearing and cold"
+msgstr "jasno a chladno"
+
+msgid "cloudy with a heavy t-storm"
+msgstr "zamračené a silné búrky"
+
+msgid "turning sunny and cooler"
+msgstr "prevažne jasno a príjemne"
+
+msgid "heavy afternoon thunderstorms"
+msgstr "silné popoludňajšie búrky"
+
+msgid "clearing and colder"
+msgstr "jasno a chladno"
+
+msgid "partly cloudy and seasonable"
+msgstr "väčšinou zamračené"
+
+msgid "continued cloudy"
+msgstr "zamračené"
+
+msgid "hazy and humid"
+msgstr "hmlisto a vlhko"
+
+msgid "hazy and seasonably warm"
+msgstr "hmlisto a teplo"
+
+msgid "very windy this evening"
+msgstr "večer veľmi veterno"
+
+msgid "a drenching thunderstorm late"
+msgstr "neskôr silné búrky"
+
+msgid "humid with plenty of clouds"
+msgstr "vlhko a hustá oblačnosť"
+
+msgid "humid with clouds"
+msgstr "vlhko a zamračené"
+
+msgid "summerlike with a t-storm"
+msgstr "pocitovo ako v lete a búrky"
+
+msgid "breezy with periods of sun"
+msgstr "sviežo a polojasno"
+
+msgid "a late-night thunderstorm"
+msgstr "neskôr v noci búrky"
+
+msgid "thunderstorms in the evening"
+msgstr "večer búrky"
+
+msgid "mostly cloudy and very humid"
+msgstr "väčšinou zamračené a veľmi vlhko"
+
+msgid "becoming clear and cool"
+msgstr "postupne sa vyjasní a príjemne"
+
+msgid "a p.m. shower"
+msgstr "popoludní prehánky"
+
+msgid "cloudy with pouring rain late"
+msgstr "zamračené a neskôr silný dážď"
+
+msgid "overcast with heavy rain late"
+msgstr "zamračené, neskôr silný dážď"
+
+msgid "continued cloudy with showers"
+msgstr "zamračené s prehánkami"
+
+msgid "evening thundershowers"
+msgstr "miestami večerné búrky a prehánky"
+
+msgid "rain tapering to showers"
+msgstr "dážď a neskôr prehánky"
+
+msgid "patchy clouds and cool"
+msgstr "občasná oblačnosť a príjemne"
+
+msgid "hazy and warm"
+msgstr "hmlisto a teplo"
+
+msgid "downpours in the p.m."
+msgstr "popoludní lejaky"
+
+msgid "a bit of snow and rain late"
+msgstr "neskôr sheh a dážď"
+
+msgid "evening rain"
+msgstr "večer dážď"
+
+msgid "cloudy with t-storms"
+msgstr "zamračené a búrky"
+
+msgid "hazy and unseasonably hot"
+msgstr "hmlisto a horúco"
+
+msgid "hazy sun and unseasonably hot"
+msgstr "hmlisto a horúco"
+
+msgid "hot with blazing sunshine"
+msgstr "horúco s jasným slnečným svitom"
+
+msgid "overcast with a quick shower"
+msgstr "oblačno s prehánkami"
+
+msgid "clouds and becoming rainy"
+msgstr "oblačno až daždivo"
+
+msgid "heavy a.m. rain"
+msgstr "dopoludnia silný dážď"
+
+msgid "windy with some sun"
+msgstr "veterno a polojasno"
+
+msgid "morning thunderstorms"
+msgstr "ráno búrky"
+
+msgid "breezy and hot with sunshine"
+msgstr "sviežo a horúco so slnečným svitom"
+
+msgid "a late-night t-storm or two"
+msgstr "nočné občasné búrky"
+
+msgid "sunny with a warm breeze"
+msgstr "slnečno a teplý vietor"
+
+msgid "cloudy and mild with a shower"
+msgstr "oblačno a mierne s prehánkami"
+
+msgid "windy with a shower in spots"
+msgstr "veterno a miestami prehánkami"
+
+msgid "turning sunny and not as warm"
+msgstr "slnečno a nie teplo"
+
+msgid "brief evening showers"
+msgstr "občasné večerné prehánky"
+
+msgid "a t-shower in the afternoon"
+msgstr "popoludní búrkové prehánky"
+
+msgid "overcast with a thundershower"
+msgstr "oblačno s búrkovou prehánkou"
+
+msgid "not as warm but pleasant"
+msgstr "nie teplo ale príjemne"
+
+msgid "a rain and sleet shower late"
+msgstr "neskôr dážďové prehánky"
+
+msgid "lots of sun with a shower"
+msgstr "miestami slnečno s prehánkami"
+
+msgid "overcast with a t-storm late"
+msgstr "zamračené, neskôr s búrkou"
+
+msgid "cloudy and remaining warm"
+msgstr "oblačno a ustupujúce teplo"
+
+msgid "becoming clear and cooler"
+msgstr "ustupujúca oblačnosť a príjemne"
+
+msgid "becoming clear and cold"
+msgstr "postupne sa vyjasní a chladno"
+
+msgid "mostly cloudy with mist late"
+msgstr "väčšinou zamračené a neskôr hmla"
+
+msgid "cooler with plenty of clouds"
+msgstr "príjemne a polooblačno"
+
+msgid "humid with high clouds"
+msgstr "vlhko s vysokou oblačnosťou"
+
+msgid "becoming clear and mild"
+msgstr "postupne sa vyjasní a mierne"
+
+msgid "turning out clear and mild"
+msgstr "vyjasni sa a mierne"
+
+msgid "a shower this morning"
+msgstr "zrána prehánky"
+
+msgid "overcast with rain developing"
+msgstr "zamračené, neskôr dážď"
+
+msgid "rain becoming heavier"
+msgstr "vytrvalý silnejší dážď"
+
+msgid "windy and cooler with showers"
+msgstr "veterno a príjemne s prehánkami"
+
+msgid "a shower in the evening"
+msgstr "večer prehánky"
+
+msgid "mainly cloudy and warmer"
+msgstr "čiastočne oblačno a teplo"
+
+msgid "cloudy with rain developing"
+msgstr "oblačno s dažďom"
+
+msgid "warm with some sun returning"
+msgstr "teplo a opäť slnečno"
+
+msgid "strong thunderstorms late"
+msgstr "neskôr silné búrky"
+
+msgid "some clouds with rain late"
+msgstr "oblačnosť a neskôr dážď"
+
+msgid "nice with variable cloudiness"
+msgstr "pekne a polooblačno"
+
+msgid "cloudy with a little snow"
+msgstr "zamračené s občasnym miernym snežením"
+
+msgid "a little snow"
+msgstr "mierne sneženie"
+
+msgid "mainly later"
+msgstr "hlavne neskôr"
+
+msgid "a bit of snow in the morning"
+msgstr "zrána sneženie"
+
+msgid "a bit of snow early"
+msgstr "čoskoro sneženie"
+
+msgid "a snow shower"
+msgstr "snehové prehánky"
+
+msgid "a little late-night snow"
+msgstr "neskôr v noci občasné sneženie"
+
+msgid "clear and frigid"
+msgstr "jasno a veľmi mrazivo"
+
+msgid "cloudy with a few flurries"
+msgstr "zamračené a miestami metelica"
+
+msgid "cloudy with rain and ice late"
+msgstr "oblačno, dážď a ľad neskôr"
+
+msgid "then clouds"
+msgstr "potom oblačno"
+
+msgid "bitterly cold with low clouds"
+msgstr "mrazivo s nízkou oblačnosťou"
+
+msgid "not as cold with low clouds"
+msgstr "nie chladno s nízkou oblačnosťou"
+
+msgid "cold with low clouds"
+msgstr "chladno s nízkou oblačnosťou"
+
+msgid "colder with low clouds"
+msgstr "chladno s nízkou oblačnosťou"
+
+msgid "bitterly cold in the evening"
+msgstr "večer mrazivo"
+
+msgid "cloudy and turning colder"
+msgstr "oblačno a chladnejšie"
+
+msgid "low clouds and bitterly cold"
+msgstr "nízka oblačnosť a mrazivo"
+
+msgid "rising temperatures"
+msgstr "stúpajúca teplota"
+
+msgid "heavy showers this afternoon"
+msgstr "popoludní silné prehánky"
+
+msgid "a touch of rain late"
+msgstr "neskôr dážď"
+
+msgid "a morning rain or snow shower"
+msgstr "zrána dážď a snehové prehánky"
+
+msgid "heavy rain tapering off"
+msgstr "doznievajúci silný dážď"
+
+msgid "some brightening and hot"
+msgstr "vyjasňovanie a horúco"
+
+msgid "turning sunny and very hot"
+msgstr "vyjasní sa a veľmi horúco"
+
+msgid "turning cloudy and breezy"
+msgstr "polooblačno a sviežo"
+
+msgid "colder with a shower or two"
+msgstr "chladnejšie s občasnými prehánkami"
+
+msgid "turning cloudy and pleasant"
+msgstr "zamračí sa a príjemne"
+
+msgid "summerlike with high clouds"
+msgstr "príjemne s vysokou oblačnosťou"
+
+msgid "clearing and unseasonably hot"
+msgstr "jasno a horúco"
+
+msgid "cooler with rain beginning"
+msgstr "príjemne s dažďom"
+
+msgid "overcast and not as warm"
+msgstr "oblačno a nie teplo"
+
+msgid "summerlike with lots of sun"
+msgstr "teplo ako v lete a slnečno"
+
+msgid "areas of low clouds and fog"
+msgstr "miestami nízka oblačnosť a hmla"
+
+msgid "snow and rain this morning"
+msgstr "zrána dážď a sneženie"
+
+msgid "a brief shower or two late"
+msgstr "občasné prehánky"
+
+msgid "mostly cloudy and misty"
+msgstr "väčšinou zamračené a hmla"
+
+msgid "warmer with decreasing clouds"
+msgstr "teplo so zmenšujúcou sa oblačnosťou"
+
+msgid "low clouds and spotty showers"
+msgstr "nízka oblačnosť a miestami prehánkami"
+
+msgid "cool with variable cloudiness"
+msgstr "príjemne a občasne zamračené"
+
+msgid "showers late in the afternoon"
+msgstr "neskôr popoludní prehánky"
+
+msgid "sunlit and beautiful"
+msgstr "slnečno a pekne"
+
+msgid "a rain or snow shower"
+msgstr "dážď a snehové prehánky"
+
+msgid "summerlike with hazy sun"
+msgstr "hmlistý slnečný svit"
+
+msgid "patchy clouds and breezy"
+msgstr "sviežo a polooblačno"
+
+msgid "windy with a shower in places"
+msgstr "veterno a miestami prehánkami"
+
+msgid "becoming cloudy and breezy"
+msgstr "zväčšujúca sa oblačnosť a sviežo"
+
+msgid "thickening clouds and hot"
+msgstr "hustnúca sa oblačnosť a horúco"
+
+msgid "milder with periods of rain"
+msgstr "mierne a občasne dážď"
+
+msgid "turning out clear and breezy"
+msgstr "zmenšujúca sa oblačnosť a sviežo"
+
+msgid "increasing clouds and cool"
+msgstr "zväčšujúca sa oblačnosť a príjemne"
+
+msgid "hazy sun and summerlike"
+msgstr "hmlistý slnečný svit"
+
+msgid "chance of a little a.m. rain"
+msgstr "dopoludnia pravdepodobne dážď"
+
+msgid "a drenching morning shower"
+msgstr "miestami ranné prehánky"
+
+msgid "spotty drizzle this morning"
+msgstr "zrána miestami mrholenie"
+
+msgid "ground fog"
+msgstr "prízemná hmla"
+
+msgid "hazy with a t-storm in spots"
+msgstr "hmlisto a miestami búrky"
+
+msgid "mostly clear and cooler"
+msgstr "prevažne jasno a príjemne"
+
+msgid "cloudy and remaining cool"
+msgstr "oblačno a príjemne"
+
+msgid "high clouds and warm"
+msgstr "vysoká oblačnosť a teplo"
+
+msgid "heavy t-storms in the evening"
+msgstr "večer silné prehánky"
+
+msgid "a brief evening shower or two"
+msgstr "občasné večerné prehánky"
+
+msgid "cloudy and hot with a t-storm"
+msgstr "oblačno a horúco s búrkami"
+
+msgid "spotty showers this morning"
+msgstr "zrána miestami prehánky"
+
+msgid "a strong t-storm this evening"
+msgstr "večer silné  búrky"
+
+msgid "rain at times late"
+msgstr "neskôr občasný dážď"
+
+msgid "downpours this evening"
+msgstr "večer lejaky"
+
+msgid "cool with a thick cloud cover"
+msgstr "príjemne a silná oblačnosť"
+
+msgid "brief showers this afternoon"
+msgstr "popoludní miestami prehánky"
+
+msgid "a shower or heavy t-storm"
+msgstr "prehánky alebo silné búrky"
+
+msgid "overcast with downpours late"
+msgstr "zamračené a neskôr lejaky"
+
+msgid "cold with plenty of clouds"
+msgstr "chladno a polooblačno"
+
+msgid "sun giving way to clouds"
+msgstr "slnečno a občasne mraky"
+
+msgid "considerable clouds and mild"
+msgstr "značná oblačnosť a mierne"
+
+msgid "becoming cloudy and cold"
+msgstr "postupne oblačno a chladno"
+
+msgid "mostly cloudy with t-showers"
+msgstr "väčšinou zamračené s prehánkami"
+
+msgid "low clouds and fog"
+msgstr "nízka oblačnosť a hmla"
+
+msgid "cool with thickening clouds"
+msgstr "príjemne so zvyšujúcou sa oblačnosťou"
+
+msgid "cooler with morning showers"
+msgstr "príjemne s rannými prehánkami"
+
+msgid "patchy clouds and cold"
+msgstr "občasná oblačnosť a chladno"
+
+msgid "clearing and cool"
+msgstr "jasno a príjemne"
+
+msgid "overcast with thunderstorms"
+msgstr "oblačno s búrkou"
+
+msgid "mostly clear and mild"
+msgstr "prevažne jasno a mierne"
+
+msgid "mainly cloudy and cool"
+msgstr "väčšinou zamračené a príjemne"
+
+msgid "hazy and remaining very warm"
+msgstr "hmlisto a veľmi teplo"
+
+msgid "spotty showers in the evening"
+msgstr "večer miestami prehánky"
+
+msgid "breezy and cooler with clouds"
+msgstr "sviežo a príjemne s oblačnosťou"
+
+msgid "showers of rain and snow late"
+msgstr "dažďové prehánky a neskôr sneženie"
+
+msgid "evening showers and t-storms"
+msgstr "večer prehánky a búrky"
+
+msgid "heavy late-night rain"
+msgstr "silný nočný dážď"
+
+msgid "a bit of rain and snow"
+msgstr "neskôr miestami dážď a sneh"
+
+msgid "clearing with a shower late"
+msgstr "jasno a neskôr prehánky"
+
+msgid "low clouds and frigid"
+msgstr "nízka oblačnosť a mrazivo"
+
+msgid "partly cloudy and frigid"
+msgstr "väčšinou zamračené a mrazivo"
+
+msgid "very hot with hazy sun"
+msgstr "veľmi horúco s hmlistým slnečným svitom"
+
+msgid "nice with some sunshine"
+msgstr "pekne a slnečno"
+
+msgid "turning cloudy with rain late"
+msgstr "skôr oblačno a neskôr dážď"
+
+msgid "mild with plenty of sun"
+msgstr "mierne s dostatkom slnečného svitu"
+
+msgid "a bit of afternoon snow"
+msgstr "miestami popoludní sneženie"
+
+msgid "a bit of morning snow"
+msgstr "miestami ráno sneženie"
+
+msgid "cloudy with a bit of snow"
+msgstr "zamračené s občasným snežením"
+
+msgid "snow showers late"
+msgstr "neskôr miestami snehové prehánky"
+
+msgid "breezy"
+msgstr "sviežo"
+
+msgid "a little evening snow"
+msgstr "večer sneženie"
+
+msgid "frigid in the evening"
+msgstr "večer silný mráz"
+
+msgid "cloudy and seasonably cold"
+msgstr "zamračené a chladno"
+
+msgid "much colder with low clouds"
+msgstr "veľmi chladno s nízkou oblačnosťou"
+
+msgid "frigid with low clouds"
+msgstr "veľmi mrazivo s nízkou oblačnosťou"
+
+msgid "colder in the morning"
+msgstr "zrána chladnejšie"
+
+msgid "cool with variable clouds"
+msgstr "príjemne a polooblačno"
+
+msgid "not as warm with a t-shower"
+msgstr "nie teplo s prehánkami"
+
+msgid "clear with a gusty breeze"
+msgstr "jasno a nárazový vietor"
+
+msgid "mostly sunny with a t-shower"
+msgstr "polojasno občas prehánky"
+
+msgid "mainly clear with a t-storm"
+msgstr "väčšinou jasno občas s búrkami"
+
+msgid "warmer with periods of rain"
+msgstr "teplejšie a striedavo slnečno"
+
+msgid "a t-storm in the area late"
+msgstr "neskôr lokálne prehánky"
+
+msgid "showers possible"
+msgstr "možné prehánky"
+
+msgid "morning t-showers"
+msgstr "ranné prehánky"
+
+msgid "very windy in the a.m."
+msgstr "dopoludnia veľmi veterno"
+
+msgid "overcast and seasonably warm"
+msgstr "zamračené a teplo"
+
+msgid "cloudy with brief showers"
+msgstr "zamračené s občasnými prehánkami"
+
+msgid "cool"
+msgstr "príjemne"
+
+msgid "then a shower"
+msgstr "neskôr prehánky"
+
+msgid "strong late"
+msgstr "neskôr silnejšie"
+
+msgid "humid with plenty of sun"
+msgstr "vlhko s dostatkom slnečného svitu"
+
+msgid "partly sunny and very humid"
+msgstr "polooblačno a veľmi vlhko"
+
+msgid "warm and humid"
+msgstr "teplo a vlhko"
+
+msgid "showers and heavy t-storms"
+msgstr "prehánky a silné búrky"
+
+msgid "then some sun"
+msgstr "potom slnečno"
+
+msgid "breezy and humid"
+msgstr "sviežo a vlhko"
+
+msgid "some sun with a heavy t-storm"
+msgstr "polojasno a silné búrky"
+
+msgid "warm"
+msgstr "teplejšie"
+
+msgid "a heavy t-storm"
+msgstr "silné búrky"
+
+msgid "then t-storms"
+msgstr "potom silné búrky"
+
+msgid "some sun and pleasant"
+msgstr "slnečno a príjemne"
+
+msgid "sunny and very humid"
+msgstr "slnečno a veľmi vlhko"
+
+msgid "mostly sunny and very humid"
+msgstr "prevažne jasno a veľmi vlhko"
+
+msgid "chilly with periods of sun"
+msgstr "mrazivo a miestami slnečno"
+
+msgid "chilly"
+msgstr "mrazivo"
+
+msgid "still cloudy with a shower"
+msgstr "stále zamračené s prehánkami"
+
+msgid "chilly with occasional rain"
+msgstr "mrazivo a občasný dážď"
+
+msgid "cold with areas of low clouds"
+msgstr "chladno s nízkou oblačnosťou"
+
+msgid "a bit of snow"
+msgstr "občasne sneženie"
+
+msgid "a bit of rain and sleet"
+msgstr "trochu dážďa a dážď so snehom"
+
+msgid "cold with sun"
+msgstr "chladno a slnečno"
+
+msgid "high clouds and chilly"
+msgstr "vysoká oblačnosť a mrazivo"
+
+msgid "morning flurries"
+msgstr "ráno metelica"
+
+msgid "cloudy with rain"
+msgstr "oblačno s dažďom"
+
+msgid "rain to ice"
+msgstr "dážď a ľad"
+
+msgid "mostly cloudy with rain"
+msgstr "väčšinou zamračené a dážď"
+
+msgid "a rain and sleet shower"
+msgstr "dážďové alebo snehové prehánky"
+
+msgid "early flurries"
+msgstr "skoro ráno metelica"
+
+msgid "cold with snow and rain"
+msgstr "chladno, sneh a dážď"
+
+msgid "chilly with snow and rain"
+msgstr "mrazivo, sneh a dážď"
+
+msgid "partly sunny and cold"
+msgstr "polojasno a chladno"
+
+msgid "colder with snow"
+msgstr "chladnejšie a sneženie"
+
+msgid "a.m. flurries"
+msgstr "dopoludnia metelica"
+
+msgid "partly sunny and colder"
+msgstr "polooblačno a chladnejšie"
+
+msgid "light snow"
+msgstr "snehové prehánky"
+
+msgid "up to 1in"
+msgstr "do 5 cm"
+
+msgid "cold with clouds breaking"
+msgstr "chladno s rozpadávajúcou sa oblačnosťou"
+
+msgid "clear and very cold"
+msgstr "jasno a veľmi chladno"
+
+msgid "mainly early"
+msgstr "zrána prevažne jasno"
+
+msgid "a bit of ice early"
+msgstr "zrána trochu ľadu"
+
+msgid "chilly with sun and clouds"
+msgstr "mrazivo a polooblačno"
+
+msgid "a bit of snow late"
+msgstr "neskôr občasne sneženie"
+
+msgid "mainly clear and frigid"
+msgstr "prevažne jasno a arktický chlad"
+
+msgid "rain and snow showers late"
+msgstr "neskôr dážď a snehové prehánky"
+
+msgid "heavy rain and ice late"
+msgstr "neskôr silný dážď a poľadovica"
+
+msgid "cloudy and not as cold"
+msgstr "oblačno a nie chladno"
+
+msgid "a bit of rain and ice late"
+msgstr "neskôr miestami dážď a poľadovica"
+
+msgid "morning snow"
+msgstr "zrána sneženie"
+
+msgid "mild with sunshine"
+msgstr "veterno a slnečno"
+
+msgid "colder with some sun"
+msgstr "ochladenie a polojasno"
+
+msgid "colder with partial sunshine"
+msgstr "ochladenie a polojasno"
+
+msgid "mostly cloudy with snow late"
+msgstr "väčšinou zamračené a neskôr sneženie"
+
+msgid "intermittent snow"
+msgstr "miestami sneženie"
+
+msgid "colder with snow showers"
+msgstr "ochladenie a miestami snehové prehánky"
+
+msgid "late flurries"
+msgstr "neskôr večer metelica"
+
+msgid "snow showers"
+msgstr "snehové prehánky"
+
+msgid "partly cloudy with flurries"
+msgstr "polooblačno a miestami metelica"
+
+msgid "mostly cloudy with flurries"
+msgstr "väčšinou zamračené a metelica"
+
+msgid "a bit of late-night snow"
+msgstr "miestami neskôr v noci sneženie"
+
+msgid "periods of snow"
+msgstr "striedavo sneženie"
+
+msgid "low clouds and fog and cooler"
+msgstr "nízka oblačnosť s hmlou a chladno"
+
+msgid "patchy low clouds and fog"
+msgstr "nízka oblačnosť a hmla"
+
+msgid "cloudy with a few snowflakes"
+msgstr "zamračené a miestami snehové prehánky"
+
+msgid "cloudy with flurries"
+msgstr "zamračené a metelica"
+
+msgid "a snow shower in the p.m."
+msgstr "popoludní snehové prehánky"
+
+msgid "rising temperatures early"
+msgstr "stúpajúca teplota čoskoro"
+
+msgid "early snow showers"
+msgstr "čoskoro snehové prehánky"
+
+msgid "a couple of snow showers late"
+msgstr "neskôr občasne snehové prehánky"
+
+msgid "sunshine with a snow shower"
+msgstr "jasno občas snehové prehánky"
+
+msgid "milder with a shower in spots"
+msgstr "miernejšie a miestami prehánky"
+
+msgid "a bit of ice"
+msgstr "poľadovica"
+
+msgid "mostly sunny and colder"
+msgstr "polojasno a chladnejšie"
+
+msgid "windy with a bit of ice"
+msgstr "veterno a poľadovica"
+
+msgid "a snow shower around late"
+msgstr "neskôr občasné snehové prehánky"
+
+msgid "a bit of ice late"
+msgstr "neskôr v noci poľadovica"
+
+msgid "cloudy with a snow shower"
+msgstr "zamračené so snehovými prehánkami"
+
+msgid "mostly sunny and not as cold"
+msgstr "prevažne jasno a oteplenie"
+
+msgid "a couple of snow showers"
+msgstr "občasne snehové prehánky"
+
+msgid "areas of low clouds and cold"
+msgstr "miestami nízka oblačnosť a chladno"
+
+msgid "becoming clear and colder"
+msgstr "ustupujúca oblačnosť a ochladenie"
+
+msgid "increasing clouds and cold"
+msgstr "zväčšujúca sa oblačnosť a chladno"
+
+msgid "a little snow at times"
+msgstr "mierne sneženie"
+
+msgid "patchy freezing fog"
+msgstr "kopovitá mrznúca hmla"
+
+msgid "cloudy with a flurry or two"
+msgstr "zamračené s občasným nárazovým vetrom"
+
+msgid "Enhanced Weather"
+msgstr "Rozšírené počasie"
+
+msgid "areas of fog"
+msgstr "miestami hmla"
+
+msgid "freezing early"
+msgstr "zrána mrznúca hmla"
+
+msgid "a morning snow shower around"
+msgstr "zrána občasné snehové prehánky"
+
+msgid "overcast with a little snow"
+msgstr "zamračené a občasné snehové prehánky"
+
+msgid "low clouds and freezing fog"
+msgstr "nízka oblačnosť a mrznúca hmla"
+
+msgid "freezing fog"
+msgstr "mrznúca hmla"
+
+msgid "a little snow and sleet early"
+msgstr "čoskoro mierne sneženie a jemný dážď"
+
+msgid "colder with a few snowflakes"
+msgstr "chladno a miestami snehové prehánky"
+
+msgid "patchy fog"
+msgstr "miestami hmla"
+
+msgid "a couple of flurries"
+msgstr "občasne miestami metelica"
+
+msgid "a bit of ice in the afternoon"
+msgstr "popoludní poľadovica"
+
+msgid "a flurry late"
+msgstr "neskôr metelica"
+
+msgid "cold with plenty of sunshine"
+msgstr "chladno s dostatkom slnečného svitu"
+
+msgid "cloudy with a flurry late"
+msgstr "chladno a neskôr metelica"
+
+msgid "sunshine and seasonably cold"
+msgstr "slnečno a nezvyčajne chladno"
+
+msgid "sunny and seasonably cold"
+msgstr "slnečno a nezvyčajne chladno"
+
+msgid "remaining cloudy and cold"
+msgstr "postupne oblačno a chladno"
+
+msgid "cloudy with snow and ice"
+msgstr "oblačno, sneh a dážď a ľad"
+
+msgid "cloudy with flurries late"
+msgstr "zamračené a metelica"
+
+msgid "cloudy with snow at times"
+msgstr "zamračené so snehovými prehánkami"
+
+msgid "mostly cloudy with an icy mix"
+msgstr "väčšinou zamračené a dážď a ľad"
+
+msgid "colder with snow at times"
+msgstr "chladnejšie so snehovými prehánkami"
+
+msgid "partly sunny and not as cold"
+msgstr "polojasno a nie chladno"
+
+msgid "rather cloudy and cold"
+msgstr "polooblačno a chladno"
+
+msgid "a little snow at times late"
+msgstr "večer občasne mierne sneženie"
+
+msgid "not as cold with flurries"
+msgstr "nie chladno a silný vietor"
+
+msgid "frigid"
+msgstr "arktický chlad"
+
+msgid "a snow shower with low clouds"
+msgstr "snehové prehánky s nízkou oblačnosťou"
+
+msgid "overcast with snow showers"
+msgstr "zamračené so snehovými prehánkami"
+
+msgid "occasional snow and flurries"
+msgstr "občasné sneženie a silný vietor"
+
+msgid "a wintry mix"
+msgstr "mix zimného počasia"
+
+msgid "not as cold with snow showers"
+msgstr "oteplenie a snehové prehánky"
+
+msgid "frigid with clouds and sun"
+msgstr "arktický chlad, jasno až polojasno"
+
+msgid "sunny and cold"
+msgstr "slnečno a chladno"
+
+msgid "snow showers in the afternoon"
+msgstr "popoludní snehové prehánky"
+
+msgid "very cold with a few flurries"
+msgstr "veľmi chladno a miestami metelica"
+
+msgid "mostly sunny and frigid"
+msgstr "polojasno a arktický chlad"
+
+msgid "sunshine and bitterly cold"
+msgstr "slnečno a nezvyčajne chladno"
+
+msgid "cloudy with a bit of ice"
+msgstr "zamračené a poľadovica"
+
+msgid "clear and bitterly cold"
+msgstr "jasno a veľmi chladno"
+
+msgid "a little snow early"
+msgstr "čoskoro snehové prehánky"
+
+msgid "mostly sunny and cold"
+msgstr "prevažne jasno a chladno"
+
+msgid "patchy clouds and frigid"
+msgstr "miestami zamračené a mrazivo"
+
+msgid "chilly with periods of snow"
+msgstr "mrazivo a miestami sneženie"
+
+msgid "bitterly cold"
+msgstr "veľmi chladno"
+
+msgid "cold with considerable clouds"
+msgstr "chlodno s rozsiahlou oblačnosťou"
+
+msgid "overcast with flurries"
+msgstr "zamračené a metelica"
+
+msgid "sunshine and cold"
+msgstr "slnečný svit a chladno"
+
+msgid "a little snow late"
+msgstr "neskôr mierne sneženie"
+
+msgid "cold with clouds and sunshine"
+msgstr "chladno a polooblačno"
+
+msgid "cold with variable clouds"
+msgstr "chladno a polooblačno"
+
+msgid "a snow shower in the morning"
+msgstr "ráno snehové prehánky"
+
+msgid "turning cloudy and cold"
+msgstr "pribúdajúca oblačnosť a chladno"
+
+msgid "a snow shower around"
+msgstr "občasné snehové prehánky"
+
+msgid "cold with some sun"
+msgstr "chladno a polojasno"
+
+msgid "flurries"
+msgstr "metelica"
+
+msgid "cold with partial sunshine"
+msgstr "chladno a polojasno"
+
+msgid "overcast and cold"
+msgstr "oblačno a chladno"
+
+msgid "but chilly"
+msgstr "ale mrazivo"
+
+msgid "fog forming"
+msgstr "tvoriaca sa hmla"
+
+msgid "freezing late"
+msgstr "neskôr mrznútie"
+
+msgid "sunny and not as cold"
+msgstr "slnečno ale nie chladno"
+
+msgid "cloudy with a stray flurry"
+msgstr "zamračené s občasnou metelicou"
+
+msgid "a little snow and sleet late"
+msgstr "neskôr mierne sneženie a jemný dážď"
+
+msgid "rain and snow showers early"
+msgstr "čoskoro dážď a snehové prehánky"
+
+msgid "clouds and fog"
+msgstr "oblačno a hmla"
+
+msgid "mostly cloudy and not as cold"
+msgstr "prevažne zamračené a nie chladno"
+
+msgid "watch for ice early"
+msgstr "zrána poľadovica"
+
+msgid "low clouds and cold"
+msgstr "nízka oblačnosť a chladno"
+
+msgid "colder with a little snow"
+msgstr "chladnejšie s občasným snežením"
+
+msgid "not as cold with some sun"
+msgstr "nie chladno a polojasno"
+
+msgid "not as cold"
+msgstr "nie chladno"
+
+msgid "snow late this afternoon"
+msgstr "neskôr popoludní sneženie"
+
+msgid "ice and rain at times"
+msgstr "občasný dážď a sneh"
+
+msgid "a snow shower this evening"
+msgstr "večer snehové prehánky"
+
+msgid "colder with a snow squall"
+msgstr "chladnejšie a sneženie"
+
+msgid "colder with a bit of snow"
+msgstr "chladnejšie s občasným snežením"

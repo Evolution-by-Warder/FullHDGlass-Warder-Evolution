@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: weather - hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-07 11:25+0200\n"
+"PO-Revision-Date: 2021-07-07 11:25+0200\n"
+"Last-Translator: \n"
+"Language-Team: ni_hao_1@hotmail.comk\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...N/B..."
+
+msgid "Sun"
+msgstr "zondag"
+
+msgid "Mon"
+msgstr "maandag"
+
+msgid "Tue"
+msgstr "dinsdag"
+
+msgid "Wed"
+msgstr "woensdag"
+
+msgid "Thu"
+msgstr "donderdag"
+
+msgid "Fri"
+msgstr "vrijdag"
+
+msgid "Sat"
+msgstr "zaterdag"
+
+msgid "January"
+msgstr "januari"
+
+msgid "February"
+msgstr "februari"
+
+msgid "March"
+msgstr "maart"
+
+msgid "April"
+msgstr "april"
+
+msgid "May"
+msgstr "mei"
+
+msgid "Jun"
+msgstr "juni"
+
+msgid "Jul"
+msgstr "juli"
+
+msgid "August"
+msgstr "augustus"
+
+msgid "September"
+msgstr "september"
+
+msgid "October"
+msgstr "oktober"
+
+msgid "November"
+msgstr "november"
+
+msgid "December"
+msgstr "december"
+
+msgid "Light Snow Shower"
+msgstr "Lichte sneeuwbuien"
+
+msgid "Fog"
+msgstr "Mistig"
+
+msgid "Sunny"
+msgstr "Zonnig"
+
+msgid "Cloudy"
+msgstr "Bewolkt"
+
+msgid "Light Rain with Thunder"
+msgstr "Lichte regen met onweer"
+
+msgid "Drizzle"
+msgstr "Motregen"
+
+msgid "Showers in the Vicinity"
+msgstr "Hier en daar buien"
+
+msgid "Rain Shower"
+msgstr "Lichte regen"
+
+msgid "Thunderstorm"
+msgstr "Onweer"
+
+msgid "Thunder in the Vicinity"
+msgstr "Hier en daar onweer"
+
+msgid "Thundershowers"
+msgstr "Onweer met buien"
+
+msgid "Light Drizzle"
+msgstr "Lichte motregen"
+
+msgid "Thunder"
+msgstr "Onweer"
+
+msgid "Light Rain Shower"
+msgstr "Kleine regenbuien"
+
+msgid "Isolated Thunderstorms"
+msgstr "Onweersbuien"
+
+msgid "Scattered Thunderstorms"
+msgstr "Lichte onweersbuien"
+
+msgid "AM"
+msgstr "'s Morgens"
+
+msgid "PM"
+msgstr "'s Middags"
+
+msgid "Mostly Clear"
+msgstr "Overwegend helder"
+
+msgid "Snow"
+msgstr "Sneeuw"
+
+msgid "Thunderstorms"
+msgstr "Onweer"
+
+msgid "Wind"
+msgstr "Wind"
+
+msgid "Showers"
+msgstr "Buiig"
+
+msgid "Rain"
+msgstr "Regen"
+
+msgid "Mostly Sunny"
+msgstr "Overwegend zonnig"
+
+msgid "Clear"
+msgstr "Heldere hemel"
+
+msgid "Partly Cloudy"
+msgstr "Gedeeltelijk bewolkt"
+
+msgid "Mostly Cloudy"
+msgstr "Overwegend bewolkt"
+
+msgid "Scattered Showers"
+msgstr "Verspreide buien"
+
+msgid "Few Showers"
+msgstr "Enkele buien"
+
+msgid "Light Rain"
+msgstr "Lichte regen"
+
+msgid "Fair"
+msgstr "Gedeeltelijk zonnig"
+
+msgid "Scattered Snow Showers"
+msgstr "Verspreide sneeuwbuien"
+
+msgid "Wintry Mix"
+msgstr "Winterse mix"
+
+msgid "Ice"
+msgstr "IJzel"
+
+msgid "Breezy"
+msgstr "Winderig"
+
+msgid "Freezing Drizzle"
+msgstr "IJzel"
+
+msgid "Freezing Rain"
+msgstr "IJskoude regen"
+
+msgid "Wind direction"
+msgstr "Windrichting"
+
+msgid "Location"
+msgstr "Plaats"
+
+msgid "Humidity"
+msgstr "Vochtigheid"
+
+msgid "Visibility"
+msgstr "Zicht"
+
+msgid "Geo position"
+msgstr "Geo positie"
+
+msgid "Pressure"
+msgstr "Druk"
+
+msgid "Feels like"
+msgstr "Voelt als"
+
+msgid "City"
+msgstr "Stad"
+
+msgid "Sunrise"
+msgstr "Zonsopkomst"
+
+msgid "Sunset"
+msgstr "Zonsondergang"
+
+msgid "Update"
+msgstr "Actualiseren"
+
+msgid "Error"
+msgstr "Fout"
+
+msgid "Website data reading timeout"
+msgstr "Timeout tijdens lezen website gegevens"
+
+msgid "None data received from website"
+msgstr "Geen gegevens van website ontvangen"
+
+msgid "Website is not responding"
+msgstr "Website reageert niet"
+
+msgid "is not defined"
+msgstr "is niet gedefinieerd"
+
+msgid "NW"
+msgstr "Noordwest"
+
+msgid "SW"
+msgstr "Zuidwest"
+
+msgid "SE"
+msgstr "Zuidoost"
+
+msgid "NE"
+msgstr "Noordoost"
+
+msgid "S"
+msgstr "Zuid"
+
+msgid "N"
+msgstr "Noord"
+
+msgid "W"
+msgstr "West"
+
+msgid "E"
+msgstr "Oost"
+
+msgid "Mishmash in the data"
+msgstr "Mengelmoes in de gegevens"
+
+msgid "Weather"
+msgstr "Weer"
+
+msgid "Attempt"
+msgstr "Poging"
+
+msgid "time to reconnect"
+msgstr "tijd om opnieuw te verbinden"

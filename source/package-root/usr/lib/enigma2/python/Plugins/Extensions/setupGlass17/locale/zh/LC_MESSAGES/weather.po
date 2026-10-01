@@ -1,0 +1,398 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-25 10:46+0100\n"
+"PO-Revision-Date: 2022-03-25 10:46+0100\n"
+"Last-Translator: lexlong <lexlong2007@163.com>\n"
+"Language-Team: shamann@pobox.sk\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...N/A..."
+
+msgid "Sun"
+msgstr "星期天"
+
+msgid "Mon"
+msgstr "周一"
+
+msgid "Tue"
+msgstr "星期二"
+
+msgid "Wed"
+msgstr "星期三"
+
+msgid "Thu"
+msgstr "星期四"
+
+msgid "Fri"
+msgstr "星期五"
+
+msgid "Sat"
+msgstr "星期六"
+
+msgid "January"
+msgstr "一月"
+
+msgid "February"
+msgstr "二月"
+
+msgid "March"
+msgstr "三月"
+
+msgid "April"
+msgstr "四月"
+
+msgid "May"
+msgstr "五月"
+
+msgid "Jun"
+msgstr "六月"
+
+msgid "Jul"
+msgstr "七月"
+
+msgid "August"
+msgstr "八月"
+
+msgid "September"
+msgstr "九月"
+
+msgid "October"
+msgstr "十月"
+
+msgid "November"
+msgstr "十一月"
+
+msgid "December"
+msgstr "十二月"
+
+msgid "Light Snow Shower"
+msgstr "小雪阵雨"
+
+msgid "Fog"
+msgstr "雾"
+
+msgid "Sunny"
+msgstr "晴朗的"
+
+msgid "Cloudy"
+msgstr "多云"
+
+msgid "Light Rain with Thunder"
+msgstr "雷雨"
+
+msgid "Drizzle"
+msgstr "下蒙蒙细雨"
+
+msgid "Showers in the Vicinity"
+msgstr "附近有阵雨"
+
+msgid "Rain Shower"
+msgstr "阵雨"
+
+msgid "Thunderstorm"
+msgstr "雷雨"
+
+msgid "Thunder in the Vicinity"
+msgstr "附近打雷"
+
+msgid "Thundershowers"
+msgstr "雷雨"
+
+msgid "Light Drizzle"
+msgstr "小雨"
+
+msgid "Thunder"
+msgstr "雷声"
+
+msgid "Light Rain Shower"
+msgstr "小雨阵雨"
+
+msgid "Isolated Thunderstorms"
+msgstr "孤立雷暴"
+
+msgid "Scattered Thunderstorms"
+msgstr "零星雷暴"
+
+msgid "AM"
+msgstr "上午"
+
+msgid "PM"
+msgstr "PM"
+
+msgid "Mostly Clear"
+msgstr "基本清楚"
+
+msgid "Snow"
+msgstr "雪"
+
+msgid "Thunderstorms"
+msgstr "雷暴"
+
+msgid "Wind"
+msgstr "风"
+
+msgid "Showers"
+msgstr "阵雨"
+
+msgid "Rain"
+msgstr "雨"
+
+msgid "Mostly Sunny"
+msgstr "多为晴天"
+
+msgid "Clear"
+msgstr "晴"
+
+msgid "Partly Cloudy"
+msgstr "部分多云"
+
+msgid "Mostly Cloudy"
+msgstr "多云"
+
+msgid "Scattered Showers"
+msgstr "零星阵雨"
+
+msgid "Few Showers"
+msgstr "很少阵雨"
+
+msgid "Light Rain"
+msgstr "小雨"
+
+msgid "Fair"
+msgstr "风和日丽"
+
+msgid "Scattered Snow Showers"
+msgstr "零星阵雪"
+
+msgid "Wintry Mix"
+msgstr "冬季混音"
+
+msgid "Ice"
+msgstr "冰"
+
+msgid "Breezy"
+msgstr "微风"
+
+msgid "Freezing Drizzle"
+msgstr "冻雨"
+
+msgid "Freezing Rain"
+msgstr "冻雨"
+
+msgid "Wind direction"
+msgstr "风向"
+
+msgid "Location"
+msgstr "位置"
+
+msgid "Humidity"
+msgstr "湿度"
+
+msgid "Visibility"
+msgstr "能见度"
+
+msgid "Geo position"
+msgstr "地理位置"
+
+msgid "Pressure"
+msgstr "压力"
+
+msgid "Feels like"
+msgstr "体感温度"
+
+msgid "City"
+msgstr "城市"
+
+msgid "Sunrise"
+msgstr "日出"
+
+msgid "Sunset"
+msgstr "日落"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Website data reading timeout"
+msgstr "网站数据读取超时"
+
+msgid "None data received from website"
+msgstr "未收到来自网站的数据"
+
+msgid "Website is not responding"
+msgstr "网站没有响应"
+
+msgid "is not defined"
+msgstr "未定义"
+
+msgid "NW"
+msgstr "西北"
+
+msgid "SW"
+msgstr "西南"
+
+msgid "SE"
+msgstr "东南方"
+
+msgid "NE"
+msgstr "东北方"
+
+msgid "S"
+msgstr "南"
+
+msgid "N"
+msgstr "北"
+
+msgid "W"
+msgstr "西"
+
+msgid "E"
+msgstr "东"
+
+msgid "Mishmash in the data"
+msgstr "数据混乱"
+
+msgid "Weather"
+msgstr "天气"
+
+msgid "Attempt"
+msgstr "尝试"
+
+msgid "time to reconnect"
+msgstr "重新连接的时间"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

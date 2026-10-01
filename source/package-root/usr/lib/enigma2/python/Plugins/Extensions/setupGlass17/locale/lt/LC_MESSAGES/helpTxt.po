@@ -1,0 +1,743 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17 help\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-10 19:34+0100\n"
+"PO-Revision-Date: 2022-08-08 19:11+0300\n"
+"Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
+"Language-Team: Vytenis P. <vyteniui@gmail.com>\n"
+"Language: lt_LT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "free"
+msgstr "laisvi"
+
+msgid "TP info is not detected"
+msgstr "Transponderio info neaptikta"
+
+msgid "Reference is not detected"
+msgstr "Nuorodos neaptikta"
+
+msgid "No EPG data available"
+msgstr "EPG duomenų nėra"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Palaukite, duomenys perskaitomi ir apdorojami"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Paspaudę 'OK' mygtukus, galėsite pasirinkti mėgiamą katalogą."
+
+msgid ""
+"Autocolor - use definition from skin.xml or g17Screens.py; selected color - "
+"display with selected color"
+msgstr ""
+"automatinė - spalva, nurodyta skin.xml, arba g17Screens.py; bet kuri "
+"pasirinkta - pasirinktos spalvos užrašai"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "visų palydovų ir SK/CZ antžeminiai kanalai"
+
+msgid "No plugin Netatmo installed"
+msgstr "Neįdiegtas Netatmo įskiepis"
+
+msgid "Your API-key"
+msgstr "Jūsų API raktas"
+
+msgid ""
+"The layout is selected automatically calculating by picon size in the infobar"
+msgstr ""
+"Išdėstymas parenkamas automatiškai, atsižvelgiant į piktogramos dydį "
+"infojuostoje"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Dabartinio tinklo greičio matavimas išjungtas"
+
+msgid ""
+"Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Dabartinio tinklo greičio matavimas įjungtas ir rodomas kb/s"
+
+msgid ""
+"Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Dabartinio tinklo greičio matavimas įjungtas ir rodomas Mb/s"
+
+msgid "Poster is displayed if exists"
+msgstr "Jei yra, rodomas plakatas"
+
+msgid ""
+"Currently displayed Poster will be erased after press long \"OK\" and do not "
+"displayed back again"
+msgstr ""
+"Dabar rodomas plakatas bus ištrintas po ilgo paspaudimo 'Gerai' ir daugiau "
+"nebebus rodomas"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Plakatų paieška interneto filmų duomenų bazėje (IMDb)"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Plakatų paieška filmų duomenų bazėje (TMDb)"
+
+msgid ""
+"Poster search from \"Internet Movie Database (IMDb) if not found then search "
+"from \"The Movie Database (TMDb)\""
+msgstr ""
+"Plakatų paieška nterneto filmų duomenų bazėje (IMDb), jei nebus, tada "
+"ieškoti filmų duomenų bazėje (TMDb)\""
+
+msgid "Poster search is started with selected delay"
+msgstr "Plakato ieška pradedama pasirinktu uždelsimu"
+
+msgid "Poster is displayed with the selected size"
+msgstr "Plakatas rodomas pasirinkto dydžio"
+
+msgid ""
+"ECM info is displayed from all channels - current displayed, background "
+"recording, streaming etc."
+msgstr ""
+"ECM informacija rodoma iš visų kanalų - dabar rodomas, įrašomas fone, "
+"transliuojamas ir kt."
+
+msgid "ECM info is displayed from current channel"
+msgstr "ECM informacija rodoma iš dabar rodomo kanalo"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr ""
+"Bitų srautas apskaičiuojamas naudojant įtrauktą bitų dažnio dvejetainę "
+"rekišmę"
+
+msgid ""
+"Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr ""
+"Bitų srautas apskaičiuojamas naudojant bitų srauto kalkuliatorių iš "
+"BitrateViewer įskiepio"
+
+msgid ""
+"All available stations with their modules are displayed one by one with "
+"defined switching time"
+msgstr ""
+"Visos galimos stotys su savo moduliais rodomos po vieną nustatytu perjungimo "
+"laiku"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Informacija rodoma iš stoties, pasirinktos Netatmo įskiepyje"
+
+msgid "Time in seconds"
+msgstr "Laikas sekundėmis"
+
+msgid "Real tuner data are displayed"
+msgstr "Rodomi realūs imtuvo duomenys"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Rodomi transponderio informacijos duomenys"
+
+msgid "Animations are disabled"
+msgstr "Animacija išjungta"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Pasirinkta animacija bus pritaikyta pasirinktam objektui"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Nerodyti informacijos apie HDD/SSD būklę"
+
+msgid ""
+"HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer "
+"infobar"
+msgstr ""
+"EMC ir filmų grotuvo infojuostoje rodoma HDD/SSD temperatūra, dydis ir "
+"laisva vieta"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Rodomi tik 10 paskutinių ieškomų kanalų"
+
+msgid ""
+"Searched channels are displayed as long list and you can browse in the list"
+msgstr "Ieškomi kanalai rodomi ilgu sąrašu, kuriame galima naršyti"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "Animuotų piktogramų atnaujinimo dažnis (numatytasis - 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Pritaikyti visuose ekranuose, kur naudojamas sąrašas"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Nakties piktogramos pakeičiamos dienos piktogramomis"
+
+msgid "Nighttime icons are displayed"
+msgstr "Bus rodomos nakties piktogramos"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Pasirinktai funkcijai atverti, spauskite 'OK' mygtuką"
+
+msgid "Spinner will be used as default from image"
+msgstr "Bus naudojamas atvaizde numatytasis 'užimta' suktukas"
+
+msgid ""
+"Spinner will be used from Full HD Glass17. Original spinner is moved to dir "
+"spinner-ori"
+msgstr ""
+"Bus naudojamas FHD Glass17 'užimta' suktukas. Numatytasis perkeliamas į "
+"katalogą spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "EPG sąrašas bus rodomas pasirinkto šrifto dydžio"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "Kanalų pasirinkime nenaudoti PiP"
+
+msgid ""
+"PIP types of channel selections are available but it can generate GSOD in "
+"some images"
+msgstr ""
+"Kanalų pasirinkime naudojamas PiP, bet kai kuriuose atvaizduose galimas "
+"žalias lūžio langas"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Katalogas, kur saugomas failas satellites.xml"
+
+msgid ""
+"Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Katalogas esamai FHDG konfigūracijai saugoti (hdg17.conf failas)"
+
+msgid "Display forecast for 5 days"
+msgstr "Rodyti 5 dienų orų prognozę"
+
+msgid ""
+"Display forecast for 10 days at first 5 days after timeout of switch time "
+"display next 5 days"
+msgstr ""
+"Rodyti orų prognozę 10 dienų, po pirmų 5 dienų, po pauzės rodyti kitas 5 "
+"dienas"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Pasirodo informacija apie planetų, saulės, ir mėnulio padėtį"
+
+msgid "Sorry, help info is missing"
+msgstr "Atleiskite, informacijos apie šią parinktį dar nėra"
+
+msgid "Info is displayed with defined color"
+msgstr "Informacija rodoma vartotojo pasirinktos spalvos"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Informacija rodoma automatiškai parinktos spalvos"
+
+msgid "Show extra screen only"
+msgstr "Rodyti papildomos informacijos langą"
+
+msgid "None special info is selected"
+msgstr "Specinformacijos nepasirinkta"
+
+msgid "Show extra infobar only"
+msgstr "Rodyti tik išplėstinę infojuostą"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Rodyti išplėstinę infojuostą su šoniniu infolangu"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1 - greičiausias, 10 - lėčiausias"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "Infojuosta pasirodys ir išnyks iškart, be efektų"
+
+msgid ""
+"Infobar (dis)appears from full/defined transparency to defined(full) "
+"transparency"
+msgstr ""
+"Infojuosta keisis nuo pilnai išblukusios iki pilnai matomos ir vėl pilnai "
+"išbluks"
+
+msgid ""
+"Infobar appears immediately and disapears from defined to full transparency"
+msgstr "Infojuosta pasirodys iškart ir išnyks po truputį skaidrėdama"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr ""
+"Rodyti išplėstinę infojuostą ir 2x 'OK', kad rodyti \"vartotojo informaciją\""
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr ""
+"Vartotojui rodoma informacija atveriama 2x paspaudus 'OK', uždaroma kartu su "
+"papildoma infojuosta"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr ""
+"Vartotojui rodoma informacija atveriama 2x paspaudus 'OK', uždaroma, "
+"paspaudus 'OK', arba 'EXIT'"
+
+msgid "Show actual event(EPG) only"
+msgstr "Rodyti tik dabartinio įvykio EPG"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "Ilgu '>' paspaudimu perjungsite tarp šio ir sekančio įvykių EPG"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Papildomame lange rodyti ECM PID informaciją"
+
+msgid "Show events name in infobar as static text"
+msgstr "Įvykio pavadinimą infojuostoje rodyti, kaip statinį tekstą"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr ""
+"Įvykio pavadinimą infojuostoje parodyti raidė po raidės, lyg spausdinant"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Rodyti OLED parinktį, numatytą atvaizde"
+
+msgid ""
+"Display \"Btr too high - stopped\" if realtime bitrate is higher as the set "
+"value"
+msgstr ""
+"Rodyti \"Bitų srautas per didelis - išjungiama\", kai bitų srautas viršija "
+"nurodytą reikšmę"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr ""
+"Naudokite, jeigu jūsų atvaizdas naudoja įprastinį Enigma2 mygtukų išdėstymą"
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "Naudokite, jeigu jūsų atvaizdas naudoja \"Neutrino\" mygtukų išdėstymą"
+
+msgid "Show messages in default language - english"
+msgstr "Pranešimus rodyti numatytąja kalba (anglų)"
+
+msgid ""
+"Show localized messages autodetected from active OSD setting of language"
+msgstr ""
+"Rodyti lokalizuotus pranešimus, kalbą nustačius pagal parinktis atvaizde"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "Infojuosta išnyks po sistemos nustatymuose nurodyto laiko"
+
+msgid ""
+"Infobar activated by switching between channels disappears after a defined "
+"timeout in system settings. Infobar activated press \"OK\" appears "
+"permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr ""
+"Infojuosta, pasirodžiusi perjungiant kanalą, išnyks po numatyto sistemos "
+"nustatymuose laiko. Infojuosta, pasirodžiusi paspaudus 'OK', neišnyks, kol "
+"nepaspausite 'OK', arba 'EXIT'"
+
+msgid ""
+"Infobar activated press \"OK\" appears permanently but disappears press "
+"\"exit\" or \"OK\""
+msgstr ""
+"Infojuosta pasirodys, paspaudus 'OK' ir išnyks tik paspaudus 'EXIT', arba "
+"'OK'"
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Tikrinti prisijungimo prie nurodyto IP adreso galimybę"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "HDD/SSD prižadinimą valdys atvaizdo nuostatos"
+
+msgid ""
+"Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is "
+"sleeping"
+msgstr ""
+"HDD/SSD prižadinti, jei kuri nors tarnyba negali atlikti užduoties, kai HDD/"
+"SSD miega"
+
+msgid ""
+"auto - autodetection of tuners presented in box; value (1-19) - display "
+"selected numbers of tuners"
+msgstr ""
+"automatiškai - esamų imtuvų automatinis aptikimas; 1-19 - pasirenkamas "
+"imtuvų skaičius"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Nerodyti mirksinčios \"R\" infojuostoje"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Įrašo metu infojuostoje rodyti mirksinčią \"R\""
+
+msgid "Leave memory management untouched"
+msgstr "Neliesti atminties valdymo"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Atpažinti AC3/Dolby visuose galimuose garso takeliuose"
+
+msgid ""
+"Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio "
+"track"
+msgstr ""
+"Atpažinti AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg naudojamame garso "
+"takelyje"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Automatiškas atminties atlaisvinimas atliekamas kas 3 min."
+
+msgid ""
+"IP Address used for network status check - available connection to the "
+"Internet"
+msgstr ""
+"IP addresas, naudojamas tinklo ryšio funkcionalumui ir inteneto prieinamumui "
+"tikrinti"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Naudojamas veikiančio atvaizdo encoding.conf"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Naudojamas encoding-user.conf, esantis /usr/share/enigma2"
+
+msgid "Channel selection works with standard functionality"
+msgstr ""
+"Kanalų pasirinkimas veikia įprastu būdu - paspaudus 'OK' ant reikiamo kanalo"
+
+msgid ""
+"Press \"OK\" - activate selected channel and channel selection no appear "
+"then press \"OK\" - disappear channel selection or press \"exit\" revert on "
+"last playd channel before activating Channel selection"
+msgstr ""
+"Paspaudus 'OK', įjungiamas pasirinktas kanalas, bet nerodomas ekrane, kol "
+"antrąkart nepaspaudžiamas 'OK'. Paspaudę 'EXIT', iš šio lango sugrįšite į "
+"kanalą, žiūrėtą iki kanalų pasirinkimo atvėrimo"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Kad pasirinkti veiksmą be animacijos, spauskite 'OK'"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Norimai animacijai paleisti prieš ją pasirenkant, spauskite 'OK'"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Rodyti sąrankoje pasirinkto miesto orus"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Spauskite '>', kad pamatyti orus kitame mieste"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr ""
+"'Help' mygtuku atvertas specialiosios informacijos langas uždarys "
+"pakartotinai paspaudus 'Help'"
+
+msgid ""
+"Special info screen (activated press \"help\") disappear automatically after "
+"20s"
+msgstr ""
+"'Help' mygtuku atvertas specialiosios informacijos langas po 20 sek. uždarys "
+"pats"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Informaciją iš ecm.info atnaujinti kas nurodytą (sek.) laiką"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Išjungti naujų HDG16 versijų automatinį tikrinimą"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Įjungti naujų HDG16 versijų automatinį tikrinimą"
+
+msgid "Static text - no scrolling"
+msgstr "Tik statiškas tekstas"
+
+msgid ""
+"Roll up at end of text and stop wait selected seconds (text roll delay) then "
+"roll down back"
+msgstr "Tekstą praslinkti iki galo, palaukti nurodytą laiką ir slinkti atgal"
+
+msgid "Roll up at end of text and stop"
+msgstr "Tekstą praslinkti iki galo ir sustabdyti"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Teksto slinkimas pradedamas po skin.xml nurodyto laiko"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Teksto slinkimas pradedamas po nurodyto laiko (sek.)"
+
+msgid "Show channel name only"
+msgstr "Rodyti tik kanalo pavadinimą"
+
+msgid "Show number and channel name"
+msgstr "Rodyti kanalo numerį ir pavadinimą"
+
+msgid "Show satellite position and channel name"
+msgstr "Rodyti palydovo padėtį ir kanalo pavadinimą"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Rodyti kanalo numerį pavadinimą ir palydovo padėtį"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Infojuostoje nerodyti informacijos apie tiekėją"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Infojuostoje rodyti informaciją apie tiekėją"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr ""
+"Infojuostoje nerodyti informacijos apie temperatūrą ir aušintuvo apsukas"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Infojuostoje rodyti informaciją apie temperatūrą ir aušintuvo apsukas"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr ""
+"Infojuostoje nerodyti informacijos apie procesoriaus ir atminties panaudojimą"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr ""
+"Infojuostoje rodyti informaciją apie procesoriaus ir atminties panaudojimą"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Infojuostoje nerodyti informacijos apie HDD/SSD temperatūrą"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Infojuostoje rodyti informaciją apie HDD/SSD temperatūrą"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "Nerodyti pagrindiniame meniu specialiosios informacijos plėtinių"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Specialiosios informacijos plėtinius rodyti pagrindiniame meniu"
+
+msgid ""
+"Temperature will be displayed with units defined in my_city_Code.txt or "
+"city_Code.txt"
+msgstr ""
+"Temperatūra bus rodoma vienetais, nurodytais my_city_Code.txt, arba "
+"city_Code.txt failuose"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "Temperatūra bus rodoma vienetais, nurodytais eWea_city_Code.txt faile"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Temperatūra bus rodoma pagal Celsijų"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Temperatūra bus rodoma pagal Farenheitą"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Orų duomenų atnaujinimo intervalas (minutėmis)"
+
+msgid ""
+"Reading weather data from OpenWeatherMap but you have to enter your API-key "
+"from registration on the website openweathermap.org (Registration and base "
+"API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr ""
+"Kad imti orų duomenis iš OpenWeatherMap, jūs turite įvesti savo API raktą, "
+"gautą po registracijos svetainėje openweathermap.org (registracija ir "
+"pagrindinis API raktas yra nemokami). Jis nuskaitomas iš /etc/openweathermap."
+"api"
+
+msgid "Reading weather data from MSN website"
+msgstr "Orų duomenys gaunami iš MSN puslapio"
+
+msgid "\"Find a city\" is disabled"
+msgstr "Miesto pasirinkimas išjungtas"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "Miesto pasirinkimas išjungtas plėtinių sąraše"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "Miesto pasirinkimas išjungtas pagrindiniame meniu"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Esant klaidoms, nebandyti gauti orų informacijos iš tiekėjų"
+
+msgid ""
+"Autoreconnect - try get data from provider if an error is detected - try "
+"with cycle in selected time while data are not ok"
+msgstr ""
+"Esant klaidoms, bandyti gauti informaciją automatiškai nurodytais laiko "
+"tarpais"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Rodyti šiandienos ir artimiausių 3 dienų  prognozę"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Rodyti vakardienos, šiandienos ir artimiausių 3 dienų  prognozę"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Aukšta temperatūra rodoma automatiškai parinkta spalva"
+
+msgid "High temperature appear in selected color"
+msgstr "Aukšta temperatūra rodoma pasirinkta spalva"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Žema temperatūra rodoma automatiškai parinkta spalva"
+
+msgid "Low temperature appear in selected color"
+msgstr "Žema temperatūra rodoma pasirinkta spalva"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr ""
+"Šalta/šilta temperatūra rodoma pasirinktos spalvos (Šalta/šilta spalva)"
+
+msgid ""
+"Cold temperature is higher as settings of \"Cold temperature\" or/and Warm "
+"temperature is lower as \"Warm temperature\""
+msgstr ""
+"Šalčio temperatūra aukštesnė už \"Šaltos temperatūros\" reikšmę, ar/ir "
+"šilumos temperatūra žemesnė už \"Šiltos temperatūros\" reikšmę"
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Šiltos temperatūros ribų intervalas: 15-40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Šaltos temperatūros ribų intervalas: 1-14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Šiltos temperatūros ribų intervalas: 58-104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Šaltos temperatūros ribų intervalas: 33-57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "Branduolio tvarkyklių aptiktas HDD/SSD"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Kelias į visas saugomas piktogramas - piktogramos, fonai ir kt."
+
+msgid ""
+"User defined path to all required directories like picon, piconProv and more."
+msgstr "Kelias į visas saugomas piktogramas - piktogramos, fonai ir kt."
+
+msgid ""
+"Channel numbers are calculated at enigma start so any change in channels "
+"order have no effect to channel numbers"
+msgstr ""
+"Kanalų numeriai priskiriami enigma2 paleidimo metu, t.y. joks kanalų tvarkos "
+"pakeitimas neturės įtakos kanalo numeriui"
+
+msgid ""
+"Channel number is calculated after switching between channels always so "
+"every change in channel order is applied on calculation of channel number"
+msgstr ""
+"Kanalų numeriai priskiriami perjungiant kanalus, todėl bet koks kanalų "
+"tvarkos pakeitimas iškart pakeis ir kanalų numerius"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Bus naudojamas datos formatas, numatytas vartotojo aplinkos temoje"
+
+msgid "Date format will be used as follow"
+msgstr "Bus naudojamas datos formatas, kaip pavyzdyje žemiau"
+
+msgid "Channel logos with white background"
+msgstr "Kanalų piktogramos baltame fone"
+
+msgid "Channel logos with black background"
+msgstr "Kanalų piktogramos juodame fone"
+
+msgid "Channel logos for OLED display"
+msgstr "Kanalų piktogramos OLED ekranui"
+
+msgid "Provider logos with white background"
+msgstr "Tiekėjų piktogramos baltame fone"
+
+msgid "Provider logos with black background"
+msgstr "Tiekėjų piktogramos juodame fone"
+
+msgid "Satellite logos with white background"
+msgstr "Palydovų piktogramos baltame fone"
+
+msgid "Satellite logos with black background"
+msgstr "Palydovų piktogramos juodame fone"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "CA ir Emu piktogramos baltame fone"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "CA ir Emu piktogramos juodame fone"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Aplinkos temos parinkties peržiūra ir paaiškinkmas"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Papildomų langų peržiūra ir piktogramos, naudojamos infojuostoje"
+
+msgid ""
+"Graphics used in extra screen and after download it you get more choices of "
+"Extra screen"
+msgstr ""
+"Papildomų langų grafika - parsisiuntę, turėsite daugiau papildomų langų "
+"pasirinkimų"
+
+msgid "Icons used in some menu types"
+msgstr "Piktogramos, naudojamos kai kuriuose meniu variantuose"
+
+msgid "Big icons used in some menu types"
+msgstr "Didelės piktogramos, naudojamos kai kuriuose meniu variantuose"
+
+msgid ""
+"Weather icons used in special and user info types: Weather, Weather light a "
+"Extended weather"
+msgstr ""
+"Orų piktogramos, naudojamos spec. ir vartotojo informacijoje - orai, trumpa/"
+"išplėstinė versija"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr ""
+"Jeigu pasirinkta, kaip antroji infojuostoje rodoma balta orų piktograma"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr ""
+"Jeigu pasirinkta, kaip antroji infojuostoje rodoma juoda orų piktograma"
+
+msgid "Animated icons will be displayed"
+msgstr "Bus rodomos animuotos piktogramos"
+
+msgid "Static icons will be displayed"
+msgstr "Bus rodomos statiškos piktogramos"
+
+msgid ""
+"Animated Weather icons used in: Infobar, Special, User info type Weather or "
+"Enhanced Weather "
+msgstr ""
+"Animuotos orų piktogramos naudojamos: infojuostoje, specialioje ir vartotojo "
+"orų, ar išplėstinių orų informacijoje "
+
+msgid "Channel logos with picture background"
+msgstr "Kanalų piktogramos su paveikslėliu fone"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "tik Skylink ir Freesat kanalams"
+
+msgid "Channel logos with transparent background"
+msgstr "Kanalų piktogramos skaidriame fone"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Įrankis, reikalingas piktogramų paketams išskleisti"
+
+msgid "Provider logos with transparent background"
+msgstr "Tiekėjų piktogramos skaidriame fone"
+
+msgid "Satellite logos with transparent background"
+msgstr "Palydovų piktogramos skaidriame fone"
+
+msgid ""
+"Channelselection icons with transparent background used in some "
+"Channelselecion types"
+msgstr ""
+"Kanalo pasirinkimo piktogramos su skaidriu fonu, naudojamos kai kuriuose "
+"kanalo pasirinkimo tipuose"
+
+msgid "New Moon"
+msgstr "Jaunatis"
+
+msgid "First Quarter"
+msgstr "Pirmasis ketvirtis"
+
+msgid "Waxing Crescent"
+msgstr "Jaunatis"
+
+msgid "Waxing Moon"
+msgstr "Priešpilnis"
+
+msgid "Full Moon"
+msgstr "Pilnatis"
+
+msgid "Waning Moon"
+msgstr "Delčia"
+
+msgid "Waning Crescent"
+msgstr "Delčios pabaiga"
+
+msgid "Last Quarter"
+msgstr "Paskutinis ketvirtis"

@@ -1,0 +1,1342 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: fhd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-15 17:00+0100\n"
+"PO-Revision-Date: 2022-01-15 17:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "No tuner data"
+msgstr "Nessun segnale"
+
+msgid " failed"
+msgstr " fallito"
+
+msgid "AutoColors"
+msgstr "Colori Auto"
+
+msgid "White"
+msgstr "Bianco"
+
+msgid "Green"
+msgstr "Verde"
+
+msgid "Orange"
+msgstr "Arancione"
+
+msgid "Red"
+msgstr "Rosso"
+
+msgid "Purple"
+msgstr "Purple"
+
+msgid "Gray"
+msgstr "Grigio"
+
+msgid "Blue"
+msgstr "Blu"
+
+msgid "Yellow"
+msgstr "Giallo"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Type"
+msgstr ""
+
+msgid "from image"
+msgstr "from image"
+
+msgid "G17 (Ch. Name)"
+msgstr ""
+
+msgid "Default"
+msgstr "Default"
+
+msgid "only Picon"
+msgstr "only Picon"
+
+msgid "only Time"
+msgstr "only Time"
+
+msgid "VU+ (Ch. Name)"
+msgstr "VU+ (Ch. Name)"
+
+msgid "VU+ (Act. event)"
+msgstr "VU+ (Act. event)"
+
+msgid "VU+ (Ch. Name + Act. event)"
+msgstr "VU+ (Ch. Name + Act. event)"
+
+msgid "G17 (Act. event)"
+msgstr ""
+
+msgid "G17 (Ch. Name + Act. event)"
+msgstr ""
+
+msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
+msgstr ""
+
+msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
+msgstr ""
+
+msgid "VU+ Ultimo"
+msgstr "VU+ Ultimo"
+
+msgid "Picon and Time"
+msgstr "Picon and Time"
+
+msgid "Default 2"
+msgstr "Default 2"
+
+msgid "VU+ Duo2 Snr,Agc"
+msgstr "VU+ Duo2 Snr,Agc"
+
+msgid "VU+ Duo2 Snr,Agc,RPM,Temp."
+msgstr "VU+ Duo2 Snr,Agc,RPM,Temp."
+
+msgid "VU+ 4k Snr,Agc"
+msgstr "VU+ 4k Snr,Agc"
+
+msgid "Duo2 Snr,Agc,RPM,Temp. 2"
+msgstr "Duo2 Snr,Agc,RPM,Temp. 2"
+
+msgid "Classical"
+msgstr "Classical"
+
+msgid "with ZZPicon"
+msgstr "with ZZPicon"
+
+msgid "with Picon 400x240"
+msgstr ""
+
+msgid "Glass17"
+msgstr ""
+
+msgid "Glass17(+next event)"
+msgstr ""
+
+msgid "with PIG(+next event)"
+msgstr "with PIG(+next event)"
+
+msgid "Glass17(+next, date)"
+msgstr ""
+
+msgid "New style"
+msgstr "New style"
+
+msgid "New style with PIG"
+msgstr "New style with PIG"
+
+msgid "PIG(+next event,left)"
+msgstr "PIG(+next event,left)"
+
+msgid "PIG(+act,next,left)"
+msgstr "PIG(+act,next,left)"
+
+msgid "The Core 88"
+msgstr "The Core 88"
+
+msgid "PIG(+several event)"
+msgstr "PIG(+several event)"
+
+msgid "G17(+several event)"
+msgstr ""
+
+msgid "New style(+several event)"
+msgstr "New style(+several event)"
+
+msgid "PIG(+act,several,left)"
+msgstr "PIG(+act,several,left)"
+
+msgid "with PIG"
+msgstr "with PIG"
+
+msgid "G17 events"
+msgstr ""
+
+msgid "Big Icons"
+msgstr ""
+
+msgid "Poster"
+msgstr ""
+
+msgid "PIG + PIP"
+msgstr "PIG + PIP"
+
+msgid "PIP"
+msgstr "PIP"
+
+msgid "yes"
+msgstr "yes"
+
+msgid "no"
+msgstr "no"
+
+msgid "Icons"
+msgstr "Icone"
+
+msgid "Icons Right"
+msgstr "Icons Right"
+
+msgid "List"
+msgstr "List"
+
+msgid "List and Icon"
+msgstr "List and Icon"
+
+msgid "Icons Bar"
+msgstr "Icons Bar"
+
+msgid "simply PIG"
+msgstr "simply PIG"
+
+msgid "Sat and Prov"
+msgstr "Sat and Prov"
+
+msgid "only Sat"
+msgstr "only Sat"
+
+msgid "only Prov"
+msgstr "only Prov"
+
+msgid "only Weather"
+msgstr ""
+
+msgid "Sat and Weather"
+msgstr ""
+
+msgid "Prov and Weather"
+msgstr ""
+
+msgid "Sat, Prov and Weather"
+msgstr ""
+
+msgid "InfoECM by Duri"
+msgstr "InfoECM da Duri"
+
+msgid "None"
+msgstr "nessuno"
+
+msgid "Weather"
+msgstr "Tempo"
+
+msgid "Standard"
+msgstr ""
+
+msgid "Simple"
+msgstr ""
+
+msgid "Ecminfo only"
+msgstr "Ecminfo only"
+
+msgid "Ecminfo and CAID"
+msgstr "Ecminfo and CAID"
+
+msgid "CAID and SID"
+msgstr "CAID and SID"
+
+msgid "SID only"
+msgstr "SID only"
+
+msgid "CAID, SID, VPID"
+msgstr ""
+
+msgid "Percentage"
+msgstr "Percentage"
+
+msgid "Colored gauge"
+msgstr "Colored gauge"
+
+msgid "System info"
+msgstr "System info"
+
+msgid "Event - extended description"
+msgstr "Event - extended description"
+
+msgid "Side infobar"
+msgstr "Side infobar"
+
+msgid "Event and side infobar"
+msgstr "Event and side infobar"
+
+msgid "Event - now and next"
+msgstr "Event - now and next"
+
+msgid "Event now/next and side infobar"
+msgstr "Event now/next and side infobar"
+
+msgid "Black"
+msgstr "Nero"
+
+msgid "with PIG(+ch.name,number)"
+msgstr "with PIG(+ch.name,number)"
+
+msgid "no time"
+msgstr "no time"
+
+msgid "with internet check"
+msgstr "with internet check"
+
+msgid "with frame"
+msgstr "with frame"
+
+msgid "big"
+msgstr "big"
+
+msgid "Autostop"
+msgstr "Autostop"
+
+msgid "Roll back"
+msgstr "Roll back"
+
+msgid "Enhanced Weather"
+msgstr "Meteo migliorata"
+
+msgid "Satellite"
+msgstr "satellitare"
+
+msgid "Name"
+msgstr "nome"
+
+msgid "Number"
+msgstr "numero"
+
+msgid "disabled"
+msgstr "disabled"
+
+msgid "User defined path"
+msgstr ""
+
+msgid "Static"
+msgstr ""
+
+msgid "Dynamic"
+msgstr ""
+
+msgid "Animation"
+msgstr ""
+
+msgid "Transponder data"
+msgstr ""
+
+msgid "Real tuner data"
+msgstr ""
+
+msgid "All available"
+msgstr ""
+
+msgid "Selected in Netatmo plugin"
+msgstr ""
+
+msgid "IMDb"
+msgstr ""
+
+msgid "TMDb"
+msgstr ""
+
+msgid "Transparent"
+msgstr ""
+
+msgid "Full HD GLass17 spinner"
+msgstr ""
+
+msgid "Full HD Glass17 Setup"
+msgstr ""
+
+msgid ""
+"Sorry, \"ftp\" is unavailable yet, check your internet connection or "
+"firewall settings !!!"
+msgstr ""
+"Spiacente, ftp non e' ancora disponibile, controlla la tua connessione "
+"internet o i settaggi firewall!!"
+
+msgid "OLED type"
+msgstr "Tipo di OLED"
+
+msgid "Set OLED off in Standby"
+msgstr "Imposta OLED off in Standby"
+
+msgid "Listbox font size"
+msgstr ""
+
+msgid "Mute picture transparency"
+msgstr ""
+
+msgid "Set binaries"
+msgstr "Imposta binario"
+
+msgid "Style:"
+msgstr "Stile:"
+
+msgid "Title color:"
+msgstr "Colore titolo:"
+
+msgid "Picon default, marker, next ..."
+msgstr ""
+
+msgid "Icons type"
+msgstr "Tipo Icone"
+
+msgid "Menu type"
+msgstr "Tipo di Menu"
+
+msgid "Permanent Extra Infobar"
+msgstr ""
+
+msgid "Standard Infobar type"
+msgstr ""
+
+msgid "Volume type"
+msgstr "Tipo Volume"
+
+msgid "Set Volume and Mute positions"
+msgstr "Impostare il volume e le posizioni Mute"
+
+msgid "Channel selection type"
+msgstr "Tipo di Channel Selection"
+
+msgid "Movie selection type"
+msgstr ""
+
+msgid "EPG selection type"
+msgstr "Tipo di Simple EPG"
+
+msgid "EventView type"
+msgstr ""
+
+msgid "PIG type"
+msgstr "Tipo PIG"
+
+msgid "Extendend description font size"
+msgstr ""
+
+msgid "color"
+msgstr "colore"
+
+msgid "Channel selection font size"
+msgstr ""
+
+msgid "EPG list font size"
+msgstr ""
+
+msgid "Dish screen"
+msgstr "Dish screen"
+
+msgid "AudioSelection"
+msgstr "AudioSelection"
+
+msgid "Set PluginBrowser - OE 2.0"
+msgstr "Seleziona PluginBrowser - OE 2.0"
+
+msgid "Set user encoding.conf"
+msgstr "Seleziona user encoding.conf"
+
+msgid "ChannelSelection 2xOK"
+msgstr "ChannelSelection 2xOK:"
+
+msgid "Enable windowstylescrollbar"
+msgstr "Abilita windowstylescrollbar"
+
+msgid "On/Off icons"
+msgstr ""
+
+msgid "Service scan long list"
+msgstr ""
+
+msgid "Extended Number ZAP Picon Size"
+msgstr ""
+
+msgid "GUI will now be restarted to activate restored options:"
+msgstr "GUI sarà ora riavviata per attivare il ripristino delle opzioni:"
+
+msgid "GUI will now be restarted, updated files founded !!!"
+msgstr "GUI sarà ora riavviata, files di aggiornamento trovati !!!"
+
+msgid "ECM and TP Status"
+msgstr ""
+
+msgid "No data"
+msgstr "Nessun dato"
+
+msgid "No info from Cam"
+msgstr "Nessuna info dalla Cam"
+
+msgid "Bitrate Stopped"
+msgstr "Bitrate Arrestato"
+
+msgid "No info about Caids"
+msgstr "Nessuna info sui Caid"
+
+msgid "Free To Air"
+msgstr "In Chiaro"
+
+msgid "Starting Bitrate"
+msgstr "Avvio Bitrate"
+
+msgid "Bitrate"
+msgstr "Bitrate"
+
+msgid "Btr: too high - stopped"
+msgstr "Btr: troppo alto - arrestato"
+
+msgid "Bitrate stopped"
+msgstr "Bitrate arrestato"
+
+msgid "Preparing Bitrate"
+msgstr "Preparazione Bitrate"
+
+msgid "Error reading CaIds !!!"
+msgstr "Errore in lettura CAId !!!"
+
+msgid "Unsuported CA found, no correct ECM info !!!"
+msgstr "Trovato CA non supportato, informazioni ECM non corrette !!!"
+
+msgid "Available:"
+msgstr "Disponibile:"
+
+msgid "Used:"
+msgstr "In uso:"
+
+msgid "Remaining:"
+msgstr "Rimanente:"
+
+msgid "Radio"
+msgstr ""
+
+msgid "Streaming service"
+msgstr "servizio di streaming"
+
+msgid "IP stream"
+msgstr "IP stream"
+
+msgid "Save"
+msgstr "Salva"
+
+msgid "Cancel"
+msgstr "Cancella"
+
+msgid "Download menu"
+msgstr "Download menu"
+
+msgid "Changelog"
+msgstr "Changelog"
+
+msgid "Update"
+msgstr ""
+
+msgid "Restore config"
+msgstr "Ripristino configurazione"
+
+msgid "Reset all settings of FHDG 17"
+msgstr ""
+
+msgid "ECM"
+msgstr "ECM"
+
+msgid "EXTRA INFOBAR"
+msgstr ""
+
+msgid "INFOBAR"
+msgstr "INFOBAR"
+
+msgid "POSTER"
+msgstr ""
+
+msgid "HDD/SSD"
+msgstr "HDD/SSD"
+
+msgid "NETWORK"
+msgstr "NETWORK"
+
+msgid "MENU"
+msgstr "MENU"
+
+msgid "CHANNEL SELECTION"
+msgstr "SELEZIONE CANALE"
+
+msgid "EPG SELECTION"
+msgstr ""
+
+msgid "EVENT VIEW"
+msgstr ""
+
+msgid "SPECIAL INFO"
+msgstr "INFO SPECIALE"
+
+msgid "USER INFO"
+msgstr "INFO UTENTE"
+
+msgid "NETATMO"
+msgstr ""
+
+msgid "OLED"
+msgstr "OLED"
+
+msgid "TUNER"
+msgstr "TUNER"
+
+msgid "ENHANCED WEATHER"
+msgstr "ENHANCED WEATHER"
+
+msgid "WEATHER"
+msgstr "TEMPO"
+
+msgid "PATHS"
+msgstr ""
+
+msgid "VOLUME"
+msgstr ""
+
+msgid "LISTBOX FONT SIZE"
+msgstr ""
+
+msgid "ANIMATIONS"
+msgstr ""
+
+msgid "OTHER"
+msgstr "ALTRO"
+
+msgid "Color(s)"
+msgstr ""
+
+msgid "ECM line type"
+msgstr "Tipo di ECM line"
+
+msgid "ECM refresh time"
+msgstr "ECM tempo di refresh"
+
+msgid "Enable show address in ECM info"
+msgstr "Abilita mostra indirizzo in ECM info"
+
+msgid "ECM info from current displayed channel only"
+msgstr ""
+
+msgid "Display CW0/1 in Side bar"
+msgstr ""
+
+msgid "Show PID in ECM line"
+msgstr ""
+
+msgid "Show CHID in ECM line"
+msgstr ""
+
+msgid "ECM line"
+msgstr "ECM line"
+
+msgid "ECM Labels"
+msgstr "ECM Labels"
+
+msgid "ECM Values"
+msgstr "ECM Values"
+
+msgid "Enable Enhanced Infobar"
+msgstr "Abilita Infobar Maggiore"
+
+msgid "Vertical Offset"
+msgstr ""
+
+msgid "Date format"
+msgstr ""
+
+msgid "Second picon type"
+msgstr "Tipo di picon secondario"
+
+msgid "Animated Weather Icons"
+msgstr ""
+
+msgid "Animation speed (ms)"
+msgstr ""
+
+msgid "Enable icon"
+msgstr ""
+
+msgid "Enable icon of Unknown CAID"
+msgstr ""
+
+msgid "Audio type of current track"
+msgstr "Audio type of current track"
+
+msgid "Progressive/Interlace detection"
+msgstr "Progressive/Interlace detection"
+
+msgid "Tuner info"
+msgstr ""
+
+msgid "Hide SNR/AGC (Q/S) if value is 0"
+msgstr ""
+
+msgid "CI info"
+msgstr ""
+
+msgid "Enable full bitrate info"
+msgstr "Abilita informazioni complete bitrate"
+
+msgid "Bitrate auto stop limit"
+msgstr "Bitrate auto stop limit"
+
+msgid "Enable eBitrateCalculator"
+msgstr ""
+
+msgid "Show Satellite position in TP info"
+msgstr "Mostra Posizione Satellite in info TP"
+
+msgid "Provider"
+msgstr "Provider"
+
+msgid "Temp/RPM"
+msgstr "Temp/RPM"
+
+msgid "CPU/Mem"
+msgstr "CPU/Mem"
+
+msgid "Temp. HDD/SSD"
+msgstr "Temp. HDD/SSD"
+
+msgid "Progress bar pixmap"
+msgstr ""
+
+msgid "Progress bar background pixmap"
+msgstr ""
+
+msgid "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/Mem, RPM/Temp, Provider"
+
+msgid "TP type"
+msgstr "TP type"
+
+msgid "TP info"
+msgstr "TP info"
+
+msgid "Video resolution"
+msgstr "Video resolution"
+
+msgid "Date"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Seconds"
+msgstr ""
+
+msgid "Channel name"
+msgstr "Channel name"
+
+msgid "Event now"
+msgstr ""
+
+msgid "Event next"
+msgstr ""
+
+msgid "Progress bar foreground"
+msgstr ""
+
+msgid "Progress bar background"
+msgstr ""
+
+msgid "Enable typewriting"
+msgstr "Abilita dattilografia"
+
+msgid "Ignore infobar timeout"
+msgstr "Ignora tempo di attesa per infobar"
+
+msgid "Enable fade"
+msgstr "Abilita dissolvenza"
+
+msgid "Speed of fade"
+msgstr "Velocità dissolvenza"
+
+msgid "Enable fade in"
+msgstr "Abilita dissolvenza in ingresso"
+
+msgid "Show recording icon"
+msgstr "Show recording icon"
+
+msgid "Channel name type"
+msgstr "Tipo Nome canale"
+
+msgid "Set Position"
+msgstr "Seleziona Posizione"
+
+msgid "Size"
+msgstr ""
+
+msgid "Search delay (s)"
+msgstr ""
+
+msgid "Erase poster cache"
+msgstr ""
+
+msgid "Removing current Poster"
+msgstr ""
+
+msgid "Movieplayer infobar HDD/SSD state"
+msgstr ""
+
+msgid "Enable HDD/SSD power state check"
+msgstr "Abilita controllo stato HDD/SSD"
+
+msgid "Wake up HDD/SSD if needed"
+msgstr "Svegliatevi HDD/SSD se necessario"
+
+msgid "Enable control of network status"
+msgstr "Abilita controllo stato della rete"
+
+msgid "IP Address"
+msgstr "indirizzo IP"
+
+msgid "Network speed"
+msgstr ""
+
+msgid "Menu Icons"
+msgstr "Menu Icone"
+
+msgid "Enable empty icons in Menu type - Icons"
+msgstr "Abilita icone vuote tipo Menu - Icone"
+
+msgid "Enable Animation (Menu: Icons/Icons Bar)"
+msgstr "Abilita animazione (Menu: Icons/Icons Bar)"
+
+msgid "Display remaining time in extra EPG"
+msgstr ""
+
+msgid "Text rolling type"
+msgstr "Tipo Text Ritardo"
+
+msgid "Text rolling start delay"
+msgstr "Text Ritardo partenza lanciata"
+
+msgid "Service name font size"
+msgstr ""
+
+msgid "Service info font size"
+msgstr ""
+
+msgid "Line height"
+msgstr ""
+
+msgid "EPG Description"
+msgstr "EPG Description"
+
+msgid "EPG Description - selected"
+msgstr "EPG Description - selected"
+
+msgid "Channel name - selected"
+msgstr "Channel name - selected"
+
+msgid "Enable Special info timeout"
+msgstr "Abilita Offerta speciale timeout"
+
+msgid "extensions"
+msgstr "estensioni"
+
+msgid "Special info in main menu"
+msgstr "Offerta speciale a menu principale"
+
+msgid "Enable Permanent User info"
+msgstr "Abilita Informazioni Utente Permanenti"
+
+msgid "User info act./next switching"
+msgstr "User info act./next switching"
+
+msgid "Station"
+msgstr ""
+
+msgid "Stations switch time"
+msgstr ""
+
+msgid "Enable OLED off in standby"
+msgstr "Abilita OLED off in standby"
+
+msgid "Number of tuners"
+msgstr "Numero di tuneri"
+
+msgid "Hide tuner in standby or missing tuner"
+msgstr ""
+
+msgid "Active"
+msgstr "Attivo"
+
+msgid "Active in the background"
+msgstr "attiva in background"
+
+msgid "Standby mode"
+msgstr "Modalità standby"
+
+msgid "Missing"
+msgstr "Mancanti"
+
+msgid "Recording"
+msgstr "Recording"
+
+msgid "Recording and live"
+msgstr "Recording and live"
+
+msgid "Show Astronomical Information"
+msgstr "Show Astronomical Information"
+
+msgid "Temperature unit"
+msgstr ""
+
+msgid "UV index"
+msgstr ""
+
+msgid "Wind speed"
+msgstr ""
+
+msgid "Weather Title"
+msgstr ""
+
+msgid "Weather location"
+msgstr "Previsioni per città"
+
+msgid "Error"
+msgstr "Errore"
+
+msgid "Reconnect time"
+msgstr "ricollegare tempo"
+
+msgid "Display nighttime icons"
+msgstr ""
+
+msgid "Enable next city in Weather"
+msgstr "Attiva accanto a città Meteo"
+
+msgid "API-Key OpenWeatherMap"
+msgstr ""
+
+msgid "Forecast for more days"
+msgstr ""
+
+msgid "More days switch time"
+msgstr ""
+
+msgid "Show yesterday"
+msgstr ""
+
+msgid "Find a city"
+msgstr "Trova una città"
+
+msgid "Weather Icons"
+msgstr "Icone meteo"
+
+msgid "State"
+msgstr ""
+
+msgid "Warm"
+msgstr "Caldo"
+
+msgid "Cold"
+msgstr "Freddo"
+
+msgid "Fair"
+msgstr "Giusto"
+
+msgid "temperature"
+msgstr "temperatura"
+
+msgid "Picons/Icons path"
+msgstr "Path Picons/Icons"
+
+msgid "FHDG Configuration file"
+msgstr ""
+
+msgid "Path to satellites.xml"
+msgstr ""
+
+msgid "Bigger"
+msgstr ""
+
+msgid "Big"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Small"
+msgstr ""
+
+msgid "Smaller"
+msgstr ""
+
+msgid "Enable Animations"
+msgstr ""
+
+msgid "(Infobar) Picon"
+msgstr ""
+
+msgid "(Infobar) Second Picon"
+msgstr ""
+
+msgid "(Infobar) Poster"
+msgstr ""
+
+msgid "(Infobar) ECM line"
+msgstr ""
+
+msgid "(Infobar) TP info/type"
+msgstr ""
+
+msgid "(Menu) Big Icons/Icons"
+msgstr ""
+
+msgid "(Channel selection) picon/Prov/Sat"
+msgstr ""
+
+msgid "VTi SplitScreen"
+msgstr ""
+
+msgid "Reference separating char"
+msgstr ""
+
+msgid "Ignore leading 0 in time"
+msgstr ""
+
+msgid "Ignore leading 0 in date"
+msgstr ""
+
+msgid "Calculation of channel numbers"
+msgstr ""
+
+msgid "Enable CAID PIDs"
+msgstr "Abilita CAID PIDs"
+
+msgid "Neutrino keymap"
+msgstr "Keymap Neutrino"
+
+msgid "Full HD Glass17 spinner"
+msgstr ""
+
+msgid "Localization of the skin"
+msgstr "Localizzazione della skin"
+
+msgid "Enable Clear memory"
+msgstr "Abilita Clear memory"
+
+msgid "Enable user encoding.conf"
+msgstr "Abilita user encoding.conf"
+
+msgid "RadioScreenSaver"
+msgstr "RadioScreenSaver"
+
+msgid "IPTV Radio Detection"
+msgstr ""
+
+msgid "Exit"
+msgstr "Esci"
+
+msgid "now?"
+msgstr "adesso?"
+
+msgid "Erase finished successfully!"
+msgstr ""
+
+msgid "Color Sample"
+msgstr "Color Sample"
+
+msgid "Version:"
+msgstr "Versione:"
+
+msgid "Extra Screen"
+msgstr "Extra Screen"
+
+msgid ""
+"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr ""
+"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+
+msgid "None files detected!"
+msgstr "Nessun file rilevato!"
+
+msgid "Error reading version info!"
+msgstr "Errore in lettura info versione!"
+
+msgid "New version:"
+msgstr "Nuova versione:"
+
+msgid "detected"
+msgstr "rilevata"
+
+msgid "You have actual version installed, no update needed."
+msgstr ""
+"La versione più recente è attualmente installata, nessun aggiornamento "
+"necessario."
+
+msgid "Installing package:"
+msgstr "Installazione pacchetto:"
+
+msgid "Error while downloading file!"
+msgstr "Errore durante il download file!"
+
+msgid "Update finished successfully!"
+msgstr "Aggiornamento completato con successo!"
+
+msgid "Do you want restart GUI to activate version"
+msgstr "Vuoi riavviare la GUI per attivare la versione"
+
+msgid "Restart GUI now?"
+msgstr "Riavvia GUI adesso?"
+
+msgid "Error while updating to new version!!!"
+msgstr "Errore durante l'aggiornamento alla nuova versione!!!"
+
+msgid "The file satellites.xml do not exists in selected dir"
+msgstr ""
+
+msgid "GUI will now be restarted to activate changes in:"
+msgstr "GUI sarà adesso riavviata per abilitare le modifiche effettuate:"
+
+msgid "Sorry, cannot create dir on path:"
+msgstr "Spiacente, impossibile creare dir in path:"
+
+msgid "Fade cannot be used, alhpa file missing!!!"
+msgstr "Dissolvenza non disponibile, alpha file mancante!!!"
+
+msgid "HDD/SSD power state check is not available for SH4"
+msgstr "Stato attivita' HDD/SSD non disponibile per SH4"
+
+msgid "Set Clear memory"
+msgstr "Seleziona Clear memory"
+
+msgid "Set original encoding.conf"
+msgstr "Seleziona original encoding.conf"
+
+msgid "is incorrect, please, select existing/correct screen !!!"
+msgstr "non corretto, per favore selezionare screen esistente/corretta !!!"
+
+msgid "is incorrect, please, select correct icons !!!"
+msgstr "non corrette, per favore seleziona icone corrette !!!"
+
+msgid "is incorrect, style will not be changed!!!"
+msgstr "non corretto, lo stile non verrà modificato!!!"
+
+msgid "Save again to apply all setup changes without style change"
+msgstr "Salva di nuovo per applicare tutti i cambiamenti senza cambio di stile"
+
+msgid "Special Info type"
+msgstr "Informazioni di tipo speciale"
+
+msgid "User info type"
+msgstr "User info type"
+
+msgid "HDD/SSD state"
+msgstr "Stato HDD/SSD"
+
+msgid "10 days forecast"
+msgstr ""
+
+msgid "Do you want restart GUI to activate the screen:"
+msgstr "Vuoi riavviare la GUI per abilitare le schermate:"
+
+msgid "Config loaded successfully!"
+msgstr "Configurazione caricato correttamente"
+
+msgid "Welcome in setup"
+msgstr "Benvenuto in configurazione"
+
+msgid "Wait for the file downloads to complete"
+msgstr ""
+
+msgid "Select"
+msgstr "Seleziona"
+
+msgid "Cleaning Picons"
+msgstr "Pulizia Picons"
+
+msgid "Start Download"
+msgstr ""
+
+msgid "picon white"
+msgstr ""
+
+msgid "picon black"
+msgstr ""
+
+msgid "picon 400x240"
+msgstr ""
+
+msgid "picon 220x132"
+msgstr ""
+
+msgid "piconProv 220x132"
+msgstr ""
+
+msgid "piconSat 220x132"
+msgstr ""
+
+msgid "piconProv black"
+msgstr ""
+
+msgid "piconSat black"
+msgstr ""
+
+msgid "piconCam black"
+msgstr ""
+
+msgid "piconWeather black"
+msgstr ""
+
+msgid "piconProv white"
+msgstr ""
+
+msgid "piconSat white"
+msgstr ""
+
+msgid "piconCam white"
+msgstr ""
+
+msgid "piconWeather white"
+msgstr ""
+
+msgid "picon OLED"
+msgstr ""
+
+msgid "ZZPicon"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Set of icons and prewievs"
+msgstr ""
+
+msgid "ExtraScreens graphics"
+msgstr ""
+
+msgid "Menu icons"
+msgstr ""
+
+msgid "Weather icons"
+msgstr ""
+
+msgid "Channelselection icons"
+msgstr ""
+
+msgid "Result"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
+
+msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
+msgstr ""
+
+msgid "SUCCESSFUL"
+msgstr ""
+
+msgid "Total:"
+msgstr "Totali:"
+
+msgid "Deleted:"
+msgstr "Cancellato:"
+
+msgid "Sorry, too low free space"
+msgstr "Siamo spiacenti, troppo bassa di spazio libero"
+
+msgid "Required"
+msgstr "necessario"
+
+msgid "Free"
+msgstr "disponibile"
+
+msgid "failed"
+msgstr "fallita"
+
+msgid "file(s) downloaded/updated."
+msgstr "file scaricati/aggiornati."
+
+msgid "file(s) from"
+msgstr "file da"
+
+msgid "Loading URL tools failed"
+msgstr ""
+
+msgid "Internet connection failed"
+msgstr ""
+
+msgid "Unknown error detected, try again!!!"
+msgstr "Errore sconosciuto rilevato, riprova!!!"
+
+msgid "Previews downloaded successfully!"
+msgstr "Preview scaricate con successo!"
+
+msgid "Previews:"
+msgstr "Preview:"
+
+msgid "Delete"
+msgstr "Cancellare"
+
+msgid "Edit color"
+msgstr "Modifica colore"
+
+msgid "Style menu"
+msgstr "Stile menu"
+
+msgid "Sorry, you have entered a wrong color:"
+msgstr "Spiacente, colore inserito non corretto:"
+
+msgid "Sorry, writing color:"
+msgstr "Spiacente, scrittura colore:"
+
+msgid "failed !!!"
+msgstr "fallita !!!"
+
+msgid "Color:"
+msgstr "Colore:"
+
+msgid "writed successfully !!!"
+msgstr "scritto con successo!!!"
+
+msgid "Sorry, write to g17Screens.cfg failed !!!"
+msgstr ""
+
+msgid "Changes writed successfully !!!"
+msgstr "Modifiche salvate con successo!!!"
+
+msgid "Edit"
+msgstr "Modifica"
+
+msgid "Picon path"
+msgstr ""
+
+msgid "Choose Icons"
+msgstr "Seleziona Icone"
+
+msgid "No Changelog info !!!"
+msgstr "Nessuna info Changelog!!!"
+
+msgid "Edit line"
+msgstr "Modifica la linea"
+
+msgid "Delete line"
+msgstr "eliminare la linea"
+
+msgid "Add line"
+msgstr "aggiungere la linea"
+
+msgid "up"
+msgstr "su"
+
+msgid "down"
+msgstr "giù"
+
+msgid "Please enter a city name"
+msgstr "Si prega di inserire il nome della città"
+
+msgid "Website data reading timeout"
+msgstr ""
+
+msgid "None city detected"
+msgstr "Nessuna città rilevato"

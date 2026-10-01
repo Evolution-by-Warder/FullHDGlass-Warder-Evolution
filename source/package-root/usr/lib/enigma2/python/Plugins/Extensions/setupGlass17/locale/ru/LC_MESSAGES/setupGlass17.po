@@ -1,0 +1,1350 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: fhd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-15 17:01+0100\n"
+"PO-Revision-Date: 2022-08-08 19:23+0300\n"
+"Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
+"Language-Team: shamann@pobox.sk\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "No tuner data"
+msgstr "Нет данных тюнера"
+
+msgid " failed"
+msgstr "не удалось"
+
+msgid "AutoColors"
+msgstr "цвет авто"
+
+msgid "White"
+msgstr "белый"
+
+msgid "Green"
+msgstr "зеленый"
+
+msgid "Orange"
+msgstr "оранжевый"
+
+msgid "Red"
+msgstr "красный"
+
+msgid "Purple"
+msgstr "пурпурный"
+
+msgid "Gray"
+msgstr "серый"
+
+msgid "Blue"
+msgstr "синий"
+
+msgid "Yellow"
+msgstr "желтый"
+
+msgid "Auto"
+msgstr "авто"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "from image"
+msgstr "из имиджа"
+
+msgid "G17 (Ch. Name)"
+msgstr "G17 (назв.канала)"
+
+msgid "Default"
+msgstr "по умолчанию"
+
+msgid "only Picon"
+msgstr "только пиконы"
+
+msgid "only Time"
+msgstr "только время"
+
+msgid "VU+ (Ch. Name)"
+msgstr "VU+(назв.канала)"
+
+msgid "VU+ (Act. event)"
+msgstr "VU+(акт.событие)"
+
+msgid "VU+ (Ch. Name + Act. event)"
+msgstr "VU+(назв.канала+акт.событие)"
+
+msgid "G17 (Act. event)"
+msgstr "G17(акт.событие)"
+
+msgid "G17 (Ch. Name + Act. event)"
+msgstr "G17(назв.канала+акт.событие)"
+
+msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
+msgstr "G17(верх:назв.канала, низ:акт.событие)"
+
+msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
+msgstr "G17(верх:назв.канала, низ:SNR и AGC)"
+
+msgid "VU+ Ultimo"
+msgstr "VU+ Ultimo"
+
+msgid "Picon and Time"
+msgstr "Пикон и время"
+
+msgid "Default 2"
+msgstr "по умолчанию 2"
+
+msgid "VU+ Duo2 Snr,Agc"
+msgstr "VU+ Duo2 Snr,Agc"
+
+msgid "VU+ Duo2 Snr,Agc,RPM,Temp."
+msgstr "VU+ Duo2 Snr,Agc,об/мин,Темп."
+
+msgid "VU+ 4k Snr,Agc"
+msgstr "VU+ 4k Snr,Agc"
+
+msgid "Duo2 Snr,Agc,RPM,Temp. 2"
+msgstr "Duo2 Snr,Agc,об/мин,Темп.2"
+
+msgid "Classical"
+msgstr "Класический"
+
+msgid "with ZZPicon"
+msgstr "с ZZPicon"
+
+msgid "with Picon 400x240"
+msgstr "с пиконами 400x240"
+
+msgid "Glass17"
+msgstr "Glass17"
+
+msgid "Glass17(+next event)"
+msgstr "G17(+след.событие)"
+
+msgid "with PIG(+next event)"
+msgstr "с PIG(+след.событие)"
+
+msgid "Glass17(+next, date)"
+msgstr "Glass17(+след.+дата)"
+
+msgid "New style"
+msgstr "Новый стиль"
+
+msgid "New style with PIG"
+msgstr "Новый стиль с PIG"
+
+msgid "PIG(+next event,left)"
+msgstr "PIG(+след.событие+осталось)"
+
+msgid "PIG(+act,next,left)"
+msgstr "PIG(+акт.,след.,осталось)"
+
+msgid "The Core 88"
+msgstr "The Core 88"
+
+msgid "PIG(+several event)"
+msgstr "PIG(+несколько событий)"
+
+msgid "G17(+several event)"
+msgstr "G17(+несколько событий)"
+
+msgid "New style(+several event)"
+msgstr "Новый стиль(+несколько событий)"
+
+msgid "PIG(+act,several,left)"
+msgstr "PIG(+aкт.,несколько,осталось)"
+
+msgid "with PIG"
+msgstr "с PIG"
+
+msgid "G17 events"
+msgstr "События G17"
+
+msgid "Big Icons"
+msgstr "Большие иконки"
+
+msgid "Poster"
+msgstr "Постер"
+
+msgid "PIG + PIP"
+msgstr "PIG + PIP"
+
+msgid "PIP"
+msgstr "PIP"
+
+msgid "yes"
+msgstr "да"
+
+msgid "no"
+msgstr "нет"
+
+msgid "Icons"
+msgstr "Иконки"
+
+msgid "Icons Right"
+msgstr "Иконки справа"
+
+msgid "List"
+msgstr "Список"
+
+msgid "List and Icon"
+msgstr "Список и Иконка"
+
+msgid "Icons Bar"
+msgstr "Иконки в линию"
+
+msgid "simply PIG"
+msgstr "только PIG"
+
+msgid "Sat and Prov"
+msgstr "Сат. и пров."
+
+msgid "only Sat"
+msgstr "только сат."
+
+msgid "only Prov"
+msgstr "только пров."
+
+msgid "only Weather"
+msgstr "только погода"
+
+msgid "Sat and Weather"
+msgstr "Сат. и погода"
+
+msgid "Prov and Weather"
+msgstr "Пров. и погода"
+
+msgid "Sat, Prov and Weather"
+msgstr "Сат., пров. и погода"
+
+msgid "InfoECM by Duri"
+msgstr "InfoECM по Дури"
+
+msgid "None"
+msgstr "ни один"
+
+msgid "Weather"
+msgstr "Погода"
+
+msgid "Standard"
+msgstr "Cтандарт"
+
+msgid "Simple"
+msgstr "Простое"
+
+msgid "Ecminfo only"
+msgstr "только ECM инфо"
+
+msgid "Ecminfo and CAID"
+msgstr "ECM инфо и CAID"
+
+msgid "CAID and SID"
+msgstr "CAID и SID"
+
+msgid "SID only"
+msgstr "только SID"
+
+msgid "CAID, SID, VPID"
+msgstr "CAID, SID, VPID"
+
+msgid "Percentage"
+msgstr "Проценты"
+
+msgid "Colored gauge"
+msgstr "Цветной индикатор"
+
+msgid "System info"
+msgstr "О системе"
+
+msgid "Event - extended description"
+msgstr "Расширенное описание события"
+
+msgid "Side infobar"
+msgstr "Боковой инфобар"
+
+msgid "Event and side infobar"
+msgstr "Событие и боковой инфобар"
+
+msgid "Event - now and next"
+msgstr "Текущ. событие и след."
+
+msgid "Event now/next and side infobar"
+msgstr "Текущ. событие, след. и боковой инфобар"
+
+msgid "Black"
+msgstr "черный"
+
+msgid "with PIG(+ch.name,number)"
+msgstr "с PIG(+назв.,номер канала)"
+
+msgid "no time"
+msgstr "без времени"
+
+msgid "with internet check"
+msgstr "с проверкой интернета"
+
+msgid "with frame"
+msgstr "в рамке"
+
+msgid "big"
+msgstr "большой"
+
+msgid "Autostop"
+msgstr "автостоп"
+
+msgid "Roll back"
+msgstr "Откат назат"
+
+msgid "Enhanced Weather"
+msgstr "Расширенная погода"
+
+msgid "Satellite"
+msgstr "Спутник"
+
+msgid "Name"
+msgstr "название"
+
+msgid "Number"
+msgstr "номер"
+
+msgid "disabled"
+msgstr "отключено"
+
+msgid "User defined path"
+msgstr "Путь, определенный пользователем"
+
+msgid "Static"
+msgstr "Статический"
+
+msgid "Dynamic"
+msgstr "Динамический"
+
+msgid "Animation"
+msgstr "Анимация"
+
+msgid "Transponder data"
+msgstr "Данные от транспондера"
+
+msgid "Real tuner data"
+msgstr "Данные из тюнера"
+
+msgid "All available"
+msgstr "Все доступные"
+
+msgid "Selected in Netatmo plugin"
+msgstr "Указанный в плагине Netatmo"
+
+msgid "IMDb"
+msgstr "IMDb"
+
+msgid "TMDb"
+msgstr "TMDb"
+
+msgid "Transparent"
+msgstr "Прозрачный"
+
+msgid "Full HD GLass17 spinner"
+msgstr "Спиннер FHD Glass17"
+
+msgid "Full HD Glass17 Setup"
+msgstr "Настройка FHD Glass17"
+
+msgid ""
+"Sorry, \"ftp\" is unavailable yet, check your internet connection or "
+"firewall settings !!!"
+msgstr ""
+"К сожалению FTP сейчас не доступно, проверьте ваше интернет соединение или "
+"настройки фаервола!!!"
+
+msgid "OLED type"
+msgstr "Тип OLED"
+
+msgid "Set OLED off in Standby"
+msgstr "Выключить OLED в режиме ожидания"
+
+msgid "Listbox font size"
+msgstr "Размер шрифта в окне списка"
+
+msgid "Mute picture transparency"
+msgstr "Прозрачность картинки откл. звука"
+
+msgid "Set binaries"
+msgstr "Установить бинарные файлы"
+
+msgid "Style:"
+msgstr "Стиль:"
+
+msgid "Title color:"
+msgstr "Цвет названия:"
+
+msgid "Picon default, marker, next ..."
+msgstr "Цвет фона системных значков"
+
+msgid "Icons type"
+msgstr "Тип иконок"
+
+msgid "Menu type"
+msgstr "Тип окна меню"
+
+msgid "Permanent Extra Infobar"
+msgstr "Постоянный экстраинфобар"
+
+msgid "Standard Infobar type"
+msgstr "Тип стандартного инфобара"
+
+msgid "Volume type"
+msgstr "Тип уровня звука"
+
+msgid "Set Volume and Mute positions"
+msgstr "Выбор позиции уровня и откл. звука"
+
+msgid "Channel selection type"
+msgstr "Тип окна Выбор каналов"
+
+msgid "Movie selection type"
+msgstr "Тип выбора фильма"
+
+msgid "EPG selection type"
+msgstr "Тип окна Выбор ЕПГ"
+
+msgid "EventView type"
+msgstr "Тип вида события"
+
+msgid "PIG type"
+msgstr "Выбор PIG"
+
+msgid "Extendend description font size"
+msgstr "Размер шрифта расширенного описания"
+
+msgid "color"
+msgstr "цвет"
+
+msgid "Channel selection font size"
+msgstr "Размер шрифта выбора канала"
+
+msgid "EPG list font size"
+msgstr "Размер шрифта списка телегида"
+
+msgid "Dish screen"
+msgstr "Экран торелки"
+
+msgid "AudioSelection"
+msgstr "Выбор аудио"
+
+msgid "Set PluginBrowser - OE 2.0"
+msgstr "установка PluginBrowser - OE 2.0"
+
+msgid "Set user encoding.conf"
+msgstr "Использовать encoding.conf пользователя"
+
+msgid "ChannelSelection 2xOK"
+msgstr "Окно Выбор Каналов с 2xOK"
+
+msgid "Enable windowstylescrollbar"
+msgstr "Включить стиль окна для полосы прокрутки"
+
+msgid "On/Off icons"
+msgstr "Значки вкл/выкл"
+
+msgid "Service scan long list"
+msgstr "Длинный список сканирования каналов"
+
+msgid "Extended Number ZAP Picon Size"
+msgstr "Размер пиконов при цифровом переключении"
+
+msgid "GUI will now be restarted to activate restored options:"
+msgstr ""
+"Необходимо перезагрузить пользовательский интерфейс для активации опций "
+"восстановления:"
+
+msgid "GUI will now be restarted, updated files founded !!!"
+msgstr ""
+"Пользовательский интерфейс будет перезагружен сейчас, найдены файлы для "
+"обновления !!!"
+
+msgid "ECM and TP Status"
+msgstr "Статус ECM и TP"
+
+msgid "No data"
+msgstr "Нет данных"
+
+msgid "No info from Cam"
+msgstr "Нет информации из CAM"
+
+msgid "Bitrate Stopped"
+msgstr "Битрейт остановлен"
+
+msgid "No info about Caids"
+msgstr "Нет информации о Caid"
+
+msgid "Free To Air"
+msgstr "Не кодирован"
+
+msgid "Starting Bitrate"
+msgstr "Запуск битрейта"
+
+msgid "Bitrate"
+msgstr "Битрейт"
+
+msgid "Btr: too high - stopped"
+msgstr "Битрейт: слишком высоко - остановлено"
+
+msgid "Bitrate stopped"
+msgstr "Битрейт остановлен"
+
+msgid "Preparing Bitrate"
+msgstr "Подготовка Битрейта"
+
+msgid "Error reading CaIds !!!"
+msgstr "Ошибка чтения CaId!!!"
+
+msgid "Unsuported CA found, no correct ECM info !!!"
+msgstr "Найден не поддерживаемый CA , нет корректной ECM инфо !!!"
+
+msgid "Available:"
+msgstr "Доступно:"
+
+msgid "Used:"
+msgstr "Использовано:"
+
+msgid "Remaining:"
+msgstr "Осталось:"
+
+msgid "Radio"
+msgstr "Радио"
+
+msgid "Streaming service"
+msgstr "Потоковое служба"
+
+msgid "IP stream"
+msgstr "IP поток"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Cancel"
+msgstr "Сброс"
+
+msgid "Download menu"
+msgstr "Меню загрузки"
+
+msgid "Changelog"
+msgstr "Список изменений"
+
+msgid "Update"
+msgstr "Обновление скина"
+
+msgid "Restore config"
+msgstr "Bосстановить конфигурацию"
+
+msgid "Reset all settings of FHDG 17"
+msgstr "Сброс всех настроек FHDG 17"
+
+msgid "ECM"
+msgstr "ECM"
+
+msgid "EXTRA INFOBAR"
+msgstr "ДОП.ИНФОБАР"
+
+msgid "INFOBAR"
+msgstr "ИНФОБАР"
+
+msgid "POSTER"
+msgstr "ПОСТЕР"
+
+msgid "HDD/SSD"
+msgstr "HDD/SSD"
+
+msgid "NETWORK"
+msgstr "СЕТЬ"
+
+msgid "MENU"
+msgstr "МЕНЮ"
+
+msgid "CHANNEL SELECTION"
+msgstr "ВЫБОР КАНАЛА"
+
+msgid "EPG SELECTION"
+msgstr "ВЫБОР EPG"
+
+msgid "EVENT VIEW"
+msgstr "ВИД СОБЫТИЯ"
+
+msgid "SPECIAL INFO"
+msgstr "СПЕЦИНФОРМАЦИЯ"
+
+msgid "USER INFO"
+msgstr "ИНФОРМАЦИЯ ПОЛЬЗОВАТЕЛЯ"
+
+msgid "NETATMO"
+msgstr "NETATMO"
+
+msgid "OLED"
+msgstr "OLED"
+
+msgid "TUNER"
+msgstr "ТЮНЕР"
+
+msgid "ENHANCED WEATHER"
+msgstr "РАСШИР. ПОГОДА"
+
+msgid "WEATHER"
+msgstr "ПОГОДА"
+
+msgid "PATHS"
+msgstr "ПУТИ"
+
+msgid "VOLUME"
+msgstr "ЗВУК"
+
+msgid "LISTBOX FONT SIZE"
+msgstr "РАЗМЕР ШРИФТА В СПИСКАХ"
+
+msgid "ANIMATIONS"
+msgstr "АНИМАЦИЯ"
+
+msgid "OTHER"
+msgstr "ДРУГИЕ"
+
+msgid "Color(s)"
+msgstr "цвет"
+
+msgid "ECM line type"
+msgstr "Тип ECM строки"
+
+msgid "ECM refresh time"
+msgstr "Время обновления ECM"
+
+msgid "Enable show address in ECM info"
+msgstr "Включить показ адреса в ECM инфо"
+
+msgid "ECM info from current displayed channel only"
+msgstr "Информация ECM только текущего отображаемого канала"
+
+msgid "Display CW0/1 in Side bar"
+msgstr "Отображать CW0/1 на боковой панели"
+
+msgid "Show PID in ECM line"
+msgstr "Отображать PID в ECM"
+
+msgid "Show CHID in ECM line"
+msgstr "Отображать CHID в ECM"
+
+msgid "ECM line"
+msgstr "Строка ECM"
+
+msgid "ECM Labels"
+msgstr "Надписи ECM"
+
+msgid "ECM Values"
+msgstr "Данные ECM"
+
+msgid "Enable Enhanced Infobar"
+msgstr "Включить расширенный инфобар"
+
+msgid "Vertical Offset"
+msgstr "Вертикальное смещение"
+
+msgid "Date format"
+msgstr "Формат даты"
+
+msgid "Second picon type"
+msgstr "Тип второго пикона"
+
+msgid "Animated Weather Icons"
+msgstr "Анимированные иконы погоды"
+
+msgid "Animation speed (ms)"
+msgstr "Скорость анимации (в мс)"
+
+msgid "Enable icon"
+msgstr "Включить иконы"
+
+msgid "Enable icon of Unknown CAID"
+msgstr "Показать значок неизвестного CAID"
+
+msgid "Audio type of current track"
+msgstr "Тип аудио данного трека"
+
+msgid "Progressive/Interlace detection"
+msgstr "Обнаружение Progressive/Interlace"
+
+msgid "Tuner info"
+msgstr "О тюнере"
+
+msgid "Hide SNR/AGC (Q/S) if value is 0"
+msgstr "Скрыть SNR/AGC (Q/S), если значение равно '0'"
+
+msgid "CI info"
+msgstr "Информация о CI"
+
+msgid "Enable full bitrate info"
+msgstr "Полная информация о битрейте"
+
+msgid "Bitrate auto stop limit"
+msgstr "Ограничение автостоп битрейта"
+
+msgid "Enable eBitrateCalculator"
+msgstr "Включить eBitrateCalculator"
+
+msgid "Show Satellite position in TP info"
+msgstr "Показывать позицию спутника в TP инфо"
+
+msgid "Provider"
+msgstr "Провайдер"
+
+msgid "Temp/RPM"
+msgstr "Темп. / об/мин"
+
+msgid "CPU/Mem"
+msgstr "Процессор/память"
+
+msgid "Temp. HDD/SSD"
+msgstr "Темп. HDD/SSD"
+
+msgid "Progress bar pixmap"
+msgstr "Отображение прогресс бара"
+
+msgid "Progress bar background pixmap"
+msgstr "Отображение фона прогресс бара"
+
+msgid "CPU/Mem, RPM/Temp, Provider"
+msgstr "Процессор/память,об/мин,темп.,провайд."
+
+msgid "TP type"
+msgstr "Тип TP"
+
+msgid "TP info"
+msgstr "TP информация"
+
+msgid "Video resolution"
+msgstr "Разрешение"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Time"
+msgstr "Время"
+
+msgid "Seconds"
+msgstr "Секунды"
+
+msgid "Channel name"
+msgstr "Название канала"
+
+msgid "Event now"
+msgstr "Текущее событие"
+
+msgid "Event next"
+msgstr "Следующее событие"
+
+msgid "Progress bar foreground"
+msgstr "Прогресс бар"
+
+msgid "Progress bar background"
+msgstr "Фон прогресс бара"
+
+msgid "Enable typewriting"
+msgstr "Включить эфект печатной машинки"
+
+msgid "Ignore infobar timeout"
+msgstr "Игнорировать таймаут инфобара"
+
+msgid "Enable fade"
+msgstr "Включить затухание"
+
+msgid "Speed of fade"
+msgstr "Скорость затухания"
+
+msgid "Enable fade in"
+msgstr "Включить затухание в"
+
+msgid "Show recording icon"
+msgstr "Показывать значок записи"
+
+msgid "Channel name type"
+msgstr "С названием канала отображать"
+
+msgid "Set Position"
+msgstr "Настройка позиции"
+
+msgid "Size"
+msgstr "Размер"
+
+msgid "Search delay (s)"
+msgstr "Задержка поиска (сек.)"
+
+msgid "Erase poster cache"
+msgstr "Удаление кэша постеров"
+
+msgid "Removing current Poster"
+msgstr "Удаление данного постера"
+
+msgid "Movieplayer infobar HDD/SSD state"
+msgstr "Состояние жесткого диска в инфобаре MoviePlayer'а"
+
+msgid "Enable HDD/SSD power state check"
+msgstr "Включить проверку статуса HDD/SSD"
+
+msgid "Wake up HDD/SSD if needed"
+msgstr "При необходимости разбудить HDD/SSD"
+
+msgid "Enable control of network status"
+msgstr "Включить контроль статуса сети"
+
+msgid "IP Address"
+msgstr "IP-адрес для проверки"
+
+msgid "Network speed"
+msgstr "Скорость сети"
+
+msgid "Menu Icons"
+msgstr "Меню иконок"
+
+msgid "Enable empty icons in Menu type - Icons"
+msgstr "Включить пустые иконки в Меню - Иконки"
+
+msgid "Enable Animation (Menu: Icons/Icons Bar)"
+msgstr "Включить анимацию (Меню: Иконки/Иконки в линию)"
+
+msgid "Display remaining time in extra EPG"
+msgstr "Оставшееся время в дополнительном EPG"
+
+msgid "Text rolling type"
+msgstr "Тип прокатки текста"
+
+msgid "Text rolling start delay"
+msgstr "Задержка пуска прокатки текста"
+
+msgid "Service name font size"
+msgstr "Размер шрифта наименований каналов"
+
+msgid "Service info font size"
+msgstr "Размер шрифта информации каналов"
+
+msgid "Line height"
+msgstr "Высота строки"
+
+msgid "EPG Description"
+msgstr "Описание EPG"
+
+msgid "EPG Description - selected"
+msgstr "Описание EPG - выбранный"
+
+msgid "Channel name - selected"
+msgstr "Название канала - выбранный"
+
+msgid "Enable Special info timeout"
+msgstr "Включить тайм-аут  специнформации"
+
+msgid "extensions"
+msgstr "расширения"
+
+msgid "Special info in main menu"
+msgstr "Специнформация в главном меню"
+
+msgid "Enable Permanent User info"
+msgstr "Информацию пользователя не закрывать"
+
+msgid "User info act./next switching"
+msgstr "Переключать текущее/следующее"
+
+msgid "Station"
+msgstr "Станция"
+
+msgid "Stations switch time"
+msgstr "Время переключения станций"
+
+msgid "Enable OLED off in standby"
+msgstr "Отключить OLED в режиме ожидания"
+
+msgid "Number of tuners"
+msgstr "Количество тюнеров"
+
+msgid "Hide tuner in standby or missing tuner"
+msgstr "Скрыть недостающий, или неработающий тюнер"
+
+msgid "Active"
+msgstr "активный"
+
+msgid "Active in the background"
+msgstr "активный в фоновом режиме"
+
+msgid "Standby mode"
+msgstr "в режиме ожидания"
+
+msgid "Missing"
+msgstr "отсутствует"
+
+msgid "Recording"
+msgstr "записывает"
+
+msgid "Recording and live"
+msgstr "записывает и транслирует"
+
+msgid "Show Astronomical Information"
+msgstr "Показывать астрономическую информацию"
+
+msgid "Temperature unit"
+msgstr "Единица измерения температуры"
+
+msgid "UV index"
+msgstr "УФ-индекс"
+
+msgid "Wind speed"
+msgstr "Скорость ветра"
+
+msgid "Weather Title"
+msgstr "Заголовок погоды"
+
+msgid "Weather location"
+msgstr "Местоположение погоды"
+
+msgid "Error"
+msgstr "ошибка"
+
+msgid "Reconnect time"
+msgstr "Подключиться заново"
+
+msgid "Display nighttime icons"
+msgstr "Отображать ночные иконки"
+
+msgid "Enable next city in Weather"
+msgstr "Включить следующий город в Погоде"
+
+msgid "API-Key OpenWeatherMap"
+msgstr "OpenWeatherMap API ключ"
+
+msgid "Forecast for more days"
+msgstr "Прогноз на большее количество дней"
+
+msgid "More days switch time"
+msgstr "Большее количество дней"
+
+msgid "Show yesterday"
+msgstr "Показывает вчера"
+
+msgid "Find a city"
+msgstr "Найти город"
+
+msgid "Weather Icons"
+msgstr "Иконки погоды"
+
+msgid "State"
+msgstr "Состояние"
+
+msgid "Warm"
+msgstr "Тепло"
+
+msgid "Cold"
+msgstr "Холодно"
+
+msgid "Fair"
+msgstr "ясная погода"
+
+msgid "temperature"
+msgstr "температура"
+
+msgid "Picons/Icons path"
+msgstr "Путь к пиконам/иконкам"
+
+msgid "FHDG Configuration file"
+msgstr "Файл конфигурации FHDG"
+
+msgid "Path to satellites.xml"
+msgstr "Путь к satellites.xml"
+
+msgid "Bigger"
+msgstr "Более крупный"
+
+msgid "Big"
+msgstr "Крупный"
+
+msgid "Medium"
+msgstr "Средний"
+
+msgid "Small"
+msgstr "Мелкий"
+
+msgid "Smaller"
+msgstr "Самый мелкий"
+
+msgid "Enable Animations"
+msgstr "Включить анимацию"
+
+msgid "(Infobar) Picon"
+msgstr "(Инфобар) Пикон"
+
+msgid "(Infobar) Second Picon"
+msgstr "(Инфобар) Второй пикон"
+
+msgid "(Infobar) Poster"
+msgstr "(Инфобар) Постер"
+
+msgid "(Infobar) ECM line"
+msgstr "(Инфобар) ECM строка"
+
+msgid "(Infobar) TP info/type"
+msgstr "(Инфобар) TP инфо/тип"
+
+msgid "(Menu) Big Icons/Icons"
+msgstr "(Меню) Большие иконки/иконки"
+
+msgid "(Channel selection) picon/Prov/Sat"
+msgstr "(Выбор канала) Пикон/Пров./Сат."
+
+msgid "VTi SplitScreen"
+msgstr "VTi Сплит-Скрин"
+
+msgid "Reference separating char"
+msgstr "Символ разделения ссылок"
+
+msgid "Ignore leading 0 in time"
+msgstr "Игнорировать первую '0'цифру во времени"
+
+msgid "Ignore leading 0 in date"
+msgstr "Игнорировать начальный 0 в дате"
+
+msgid "Calculation of channel numbers"
+msgstr "Расчет номеров каналов"
+
+msgid "Enable CAID PIDs"
+msgstr "Включить CAID PIDs"
+
+msgid "Neutrino keymap"
+msgstr "Раскладка Нейтрино"
+
+msgid "Full HD Glass17 spinner"
+msgstr "Спиннер FHD Glass17"
+
+msgid "Localization of the skin"
+msgstr "Локализация скина"
+
+msgid "Enable Clear memory"
+msgstr "Включить очистку памяти"
+
+msgid "Enable user encoding.conf"
+msgstr "Включить encoding.conf пользователя"
+
+msgid "RadioScreenSaver"
+msgstr "Радиозаставка"
+
+msgid "IPTV Radio Detection"
+msgstr "Обнаружение IPTV радио"
+
+msgid "Exit"
+msgstr "Выход"
+
+msgid "now?"
+msgstr "сейчас?"
+
+msgid "Erase finished successfully!"
+msgstr "Стирание выполнено успешно!"
+
+msgid "Color Sample"
+msgstr "Образец цвета"
+
+msgid "Version:"
+msgstr "Версия:"
+
+msgid "Extra Screen"
+msgstr "Доп.экран"
+
+msgid ""
+"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr ""
+"Страница: www.hdglass16.eu, Для пожертвований: счет PayPal \"hd_glass@pobox."
+"sk\""
+
+msgid "None files detected!"
+msgstr "Файлы не найдены!"
+
+msgid "Error reading version info!"
+msgstr "Ошибка чтения информации о версии!"
+
+msgid "New version:"
+msgstr "Новая версия:"
+
+msgid "detected"
+msgstr "обнаружена"
+
+msgid "You have actual version installed, no update needed."
+msgstr "У вас установлена актуальная версия, нет необходимости обновлять."
+
+msgid "Installing package:"
+msgstr "установка пакета:"
+
+msgid "Error while downloading file!"
+msgstr "Ошибка при скачивании файлов!"
+
+msgid "Update finished successfully!"
+msgstr "Обновление успешно завершено!"
+
+msgid "Do you want restart GUI to activate version"
+msgstr ""
+"Вы хотите перезагрузить интерфейс пользователя для активации новой версии"
+
+msgid "Restart GUI now?"
+msgstr "Перезагрузить интерфейс пользователя сейчас?"
+
+msgid "Error while updating to new version!!!"
+msgstr "Ошибка при обновлении на новую версию!!!"
+
+msgid "The file satellites.xml do not exists in selected dir"
+msgstr "В указанном каталоге сatellites.xml нет"
+
+msgid "GUI will now be restarted to activate changes in:"
+msgstr ""
+"Необходимо перезагрузить интерфейс пользователя для применения изменений в:"
+
+msgid "Sorry, cannot create dir on path:"
+msgstr "К сожалению нельзя создать папку по этому пути:"
+
+msgid "Fade cannot be used, alhpa file missing!!!"
+msgstr "Затухание не может быть использовано, alhpa файл отсутствует!!!"
+
+msgid "HDD/SSD power state check is not available for SH4"
+msgstr "Проверка статуса HDD/SSD не доступна для  SH4"
+
+msgid "Set Clear memory"
+msgstr "Установить очистку памяти"
+
+msgid "Set original encoding.conf"
+msgstr "Установить оригинальный encoding.conf"
+
+msgid "is incorrect, please, select existing/correct screen !!!"
+msgstr "неправильный , пожалуйста, выберите существующий/правильный экран !!!"
+
+msgid "is incorrect, please, select correct icons !!!"
+msgstr "не правильные, пожалуйста, выберите правилные иконки!!!"
+
+msgid "is incorrect, style will not be changed!!!"
+msgstr "неправильный, стиль не будет изменен!!!"
+
+msgid "Save again to apply all setup changes without style change"
+msgstr ""
+"Сохранить снова для применения всех изменений настроек без изменения стиля"
+
+msgid "Special Info type"
+msgstr "Тип специнформации"
+
+msgid "User info type"
+msgstr "Тип информации"
+
+msgid "HDD/SSD state"
+msgstr "HDD/SSD статус"
+
+msgid "10 days forecast"
+msgstr "Прогноз на 10 дней"
+
+msgid "Do you want restart GUI to activate the screen:"
+msgstr "Вы хотите презагрузить интерфейс пользователя для активации экрана:"
+
+msgid "Config loaded successfully!"
+msgstr "Конфигурация успешно загружен"
+
+msgid "Welcome in setup"
+msgstr "Добро пожаловать в настройки"
+
+msgid "Wait for the file downloads to complete"
+msgstr "Дождитесь завершения загрузки файлов"
+
+msgid "Select"
+msgstr "Выбор"
+
+msgid "Cleaning Picons"
+msgstr "уборка Picons"
+
+msgid "Start Download"
+msgstr "Начало загрузки"
+
+msgid "picon white"
+msgstr "пиконы белые"
+
+msgid "picon black"
+msgstr "пиконы черные"
+
+msgid "picon 400x240"
+msgstr "пиконы 400x240"
+
+msgid "picon 220x132"
+msgstr "пиконы 220x132"
+
+msgid "piconProv 220x132"
+msgstr "пиконы провайдера 220x132"
+
+msgid "piconSat 220x132"
+msgstr "пиконы сателлита 220x132"
+
+msgid "piconProv black"
+msgstr "пиконы провайдера черные"
+
+msgid "piconSat black"
+msgstr "пиконы сателлита черные"
+
+msgid "piconCam black"
+msgstr "пиконы эмул. черные"
+
+msgid "piconWeather black"
+msgstr "пиконы погоды черные"
+
+msgid "piconProv white"
+msgstr "пиконы провайдера белые"
+
+msgid "piconSat white"
+msgstr "пиконы сателлита белые"
+
+msgid "piconCam white"
+msgstr "пиконы эмул. белые"
+
+msgid "piconWeather white"
+msgstr "пиконы погоды белые"
+
+msgid "picon OLED"
+msgstr "пиконы OLED"
+
+msgid "ZZPicon"
+msgstr "ZZпиконы"
+
+msgid "Help"
+msgstr "Помощь"
+
+msgid "Set of icons and prewievs"
+msgstr "Набор иконок и картинок предпросмотра"
+
+msgid "ExtraScreens graphics"
+msgstr "графика ЭкстраЭкранов"
+
+msgid "Menu icons"
+msgstr "Иконки меню"
+
+msgid "Weather icons"
+msgstr "Иконки погоды"
+
+msgid "Channelselection icons"
+msgstr "Иконки выбора канала"
+
+msgid "Result"
+msgstr "Результат"
+
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
+msgstr "Инструмент 7zip отсутствует, вы можете скачать его в МЕНЮ ЗАГРУЗКИ"
+
+msgid "SUCCESSFUL"
+msgstr "УСПЕШНО"
+
+msgid "Total:"
+msgstr "Всего:"
+
+msgid "Deleted:"
+msgstr "Yдален:"
+
+msgid "Sorry, too low free space"
+msgstr "К сожалению, слишком мало свободного места"
+
+msgid "Required"
+msgstr "требуется"
+
+msgid "Free"
+msgstr "свободно"
+
+msgid "failed"
+msgstr "не удалась"
+
+msgid "file(s) downloaded/updated."
+msgstr "файл(ов) загружено/обновлено."
+
+msgid "file(s) from"
+msgstr "файл(ов) из"
+
+msgid "Loading URL tools failed"
+msgstr "Не удалось загрузить инструменты URL-адресов"
+
+msgid "Internet connection failed"
+msgstr "Сбой подключения к интернету"
+
+msgid "Unknown error detected, try again!!!"
+msgstr "Обнаружена неизвестная ошибка, повторите попытку!!!"
+
+msgid "Previews downloaded successfully!"
+msgstr "Предпросмотр загружен успешно!"
+
+msgid "Previews:"
+msgstr "Предпросмотр:"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Edit color"
+msgstr "Редактировать цвет"
+
+msgid "Style menu"
+msgstr "Стиль меню"
+
+msgid "Sorry, you have entered a wrong color:"
+msgstr "К сожалению вы ввели неверный цвет:"
+
+msgid "Sorry, writing color:"
+msgstr "К сожалению запись цвета:"
+
+msgid "failed !!!"
+msgstr "не удалась !!!"
+
+msgid "Color:"
+msgstr "Цвет:"
+
+msgid "writed successfully !!!"
+msgstr "записан успешно !!!"
+
+msgid "Sorry, write to g17Screens.cfg failed !!!"
+msgstr "Извините, записать в g17Screens.cfg не удалось!!!"
+
+msgid "Changes writed successfully !!!"
+msgstr "Изменения записаны успешно !!!"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Picon path"
+msgstr "Путь к пиконам"
+
+msgid "Choose Icons"
+msgstr "Выбор Иконок"
+
+msgid "No Changelog info !!!"
+msgstr "Нет списка изменений !!!"
+
+msgid "Edit line"
+msgstr "Редактировать линия"
+
+msgid "Delete line"
+msgstr "Удалить строку"
+
+msgid "Add line"
+msgstr "Добавить строку"
+
+msgid "up"
+msgstr "вверх"
+
+msgid "down"
+msgstr "вниз"
+
+msgid "Please enter a city name"
+msgstr "Пожалуйста, введите название города"
+
+msgid "Website data reading timeout"
+msgstr "Сайт на запросы не отвечает"
+
+msgid "None city detected"
+msgstr "Городов не обнаружено"
