@@ -1982,18 +1982,18 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
 				</convert>
     </widget>
   </screen>
-  <screen name="Opkg" position="center,285" size="825,570" title="Software update">
-    <widget name="activityslider" position="187,105" size="450,12" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
-    <widget name="slider" position="37,540" size="750,7" />
-    <widget source="package" render="Label" position="7,7" size="810,90" font="Prive3;27" halign="center" valign="center" />
-    <widget source="status" render="Label" position="7,124" size="810,90" font="Prive3;27" halign="center" valign="center" />
-    <ePixmap position="187,216" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
+  <screen name="Opkg" position="center,180" size="1350,720" title="Software update">
+    <widget name="activityslider" position="300,155" size="750,15" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
+    <widget name="slider" position="75,675" size="1200,8" />
+    <widget source="package" render="Label" position="60,35" size="1230,90" font="Prive3;30" halign="center" valign="center" />
+    <widget source="status" render="Label" position="60,190" size="1230,90" font="Prive3;30" halign="center" valign="center" />
+    <ePixmap position="450,310" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
   </screen>
-  		<screen name="OPKGMenu" position="center,center" size="840,600" title="Select upgrade source to edit." >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget name="filelist" position="7,75" size="825,510" scrollbarMode="showOnDemand" />
-		</screen>
+  <screen name="OPKGMenu" position="center,150" size="1350,780" title="Select upgrade source to edit.">
+    <widget source="key_red" render="Label" position="45,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget name="filelist" position="45,95" size="1260,640" scrollbarMode="showOnDemand" />
+  </screen>
 <screen name="OPKGSource" position="center,center" size="1700,120" title="Edit upgrade source url." >
          <widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
          <widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
@@ -2006,11 +2006,11 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <eLabel position="0,615" zPosition="10" size="1200,2" backgroundColor="white" transparent="0" />
 			<widget source="introduction" render="Label" position="0,620" zPosition="10" size="1200,45" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
 		</screen>
-  		<screen name="IPKGMenu" position="center,center" size="840,600" title="Select upgrade source to edit." >
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget name="filelist" position="7,75" size="825,510" scrollbarMode="showOnDemand" />
-		</screen>
+  <screen name="IPKGMenu" position="center,150" size="1350,780" title="Select upgrade source to edit.">
+    <widget source="key_red" render="Label" position="45,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget name="filelist" position="45,95" size="1260,640" scrollbarMode="showOnDemand" />
+  </screen>
 				<screen name="IPKGSource" position="center,center" size="1700,120" title="Edit upgrade source url." >
 			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
 			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
@@ -2037,12 +2037,12 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
       </convert>
     </widget>
   </screen>
-  <screen name="UpdatePlugin" position="center,285" size="825,570" title="Software update">
-    <widget name="activityslider" position="187,105" size="450,12" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
-    <widget name="slider" position="37,540" size="750,7" />
-    <widget source="package" render="Label" position="7,7" size="810,90" font="Prive3;27" halign="center" valign="center" />
-    <widget source="status" render="Label" position="7,124" size="810,90" font="Prive3;27" halign="center" valign="center" />
-    <ePixmap position="187,216" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
+  <screen name="UpdatePlugin" position="center,180" size="1350,720" title="Software update">
+    <widget name="activityslider" position="300,155" size="750,15" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
+    <widget name="slider" position="75,675" size="1200,8" />
+    <widget source="package" render="Label" position="60,35" size="1230,90" font="Prive3;30" halign="center" valign="center" />
+    <widget source="status" render="Label" position="60,190" size="1230,90" font="Prive3;30" halign="center" valign="center" />
+    <ePixmap position="450,310" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
   </screen>
 		<screen name="PluginDetails" position="center,center" size="900,660" title="Plugin details" >
 			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
@@ -2090,33 +2090,24 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
 			<ePixmap pixmap="skin_default/div-h.png" position="0,606" zPosition="10" size="840,3" transparent="1" alphatest="on" />
 			<widget source="status" render="Label" position="7,612" zPosition="10" size="825,66" halign="center" valign="center" font="Regular;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
 		</screen>
-		<screen name="SoftwareManagerInfo" position="center,center" size="840,660" title="SoftwareManager information">
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget source="key_yellow" render="Label" position="420,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
-			<widget source="key_blue" render="Label" position="630,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
-			<widget source="list" render="Listbox" position="7,75" size="825,510" scrollbarMode="showOnDemand" selectionDisabled="0">
-				<convert type="TemplatedMultiContent">
-					{"template": [
-							MultiContentEntryText(pos = (7, 0), size = (810, 39), font=0, flags = RT_HALIGN_LEFT | RT_HALIGN_CENTER, text = 0), # index 0 is the name
-						],
-					"fonts": [gFont("Regular", 36),gFont("Regular", 33)],
-					"itemHeight": 39
-					}
-				</convert>
-			</widget>
-			<ePixmap pixmap="skin_default/div-h.png" position="0,600" zPosition="1" size="840,3" />
-			<widget source="introduction" render="Label" position="7,615" size="825,45" zPosition="10" font="Regular;31" halign="center" valign="center" backgroundColor="#25062748" transparent="1" />
-		</screen>  
-  		<screen name="SoftwareManagerSetup" position="center,center" size="840,660" title="SoftwareManager setup">
-			<widget source="key_red" render="Label" position="0,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-			<widget source="key_green" render="Label" position="210,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-			<widget source="key_yellow" render="Label" position="420,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
-			<widget source="key_blue" render="Label" position="630,0" zPosition="1" size="210,60" font="Regular;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
-			<widget name="config" position="7,75" size="825,520" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-			<ePixmap pixmap="skin_default/div-h.png" position="0,600" zPosition="1" size="840,3" />
-			<widget source="introduction" render="Label" position="7,615" size="825,45" zPosition="10" font="Regular;31" halign="center" valign="center" backgroundColor="#25062748" transparent="1" />
-		</screen>
+  <screen name="SoftwareManagerInfo" position="center,120" size="1500,840" title="SoftwareManager information">
+    <widget source="key_red" render="Label" position="45,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="765,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1125,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
+    <widget source="list" render="Listbox" position="45,90" size="1410,650" scrollbarMode="showOnDemand" selectionDisabled="0"><convert type="TemplatedMultiContent">{"template": [MultiContentEntryText(pos = (15, 3), size = (1365, 43), font=0, flags = RT_HALIGN_LEFT, text = 0)], "fonts": [gFont("Regular", 34)], "itemHeight": 46}</convert></widget>
+    <ePixmap pixmap="skin_default/div-h.png" position="45,755" zPosition="1" size="1410,3" />
+    <widget source="introduction" render="Label" position="45,770" size="1410,55" zPosition="10" font="Regular;30" halign="center" valign="center" transparent="1" />
+  </screen>
+  <screen name="SoftwareManagerSetup" position="center,120" size="1500,840" title="SoftwareManager setup">
+    <widget source="key_red" render="Label" position="45,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="765,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1125,15" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
+    <widget name="config" position="45,90" size="1410,650" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <ePixmap pixmap="skin_default/div-h.png" position="45,755" zPosition="1" size="1410,3" />
+    <widget source="introduction" render="Label" position="45,770" size="1410,55" zPosition="10" font="Regular;30" halign="center" valign="center" transparent="1" />
+  </screen>
 		<screen name="ImageWizard" position="center,center" size="1080,864" title="Welcome..." >
 			<widget name="text" position="229,60" size="510,495" font="Regular;33" />
 			<widget source="list" render="Listbox" position="64,510" size="735,270" scrollbarMode="showOnDemand" >
