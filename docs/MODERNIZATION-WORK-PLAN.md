@@ -520,3 +520,14 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - modernized `setupGlass17/py38.py`: removed its unnecessary external `six` dependency, uses native Python 3 `dict.items()` and `chr()`, corrected the script/style DOTALL regex for current Python `re`, and removed an invalid text `.decode()` fallback.
 - this change does not alter screen geometry, skin authorship, package identity or the locked 1.0.4 artifact.
 - no RECEIVER PASS is claimed.
+
+
+## Weather ownership + package hygiene audit — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- verified weather runtime ownership before removing any legacy provider code: `weather.py/WeatherScreen` remains actively instantiated for the classic FullHDGlass17 weather modes, while `E_weather.py/mainmenu` is a separate enhanced Open-Meteo path. OpenWeatherMap code is therefore still runtime-active and is not removed as dead code.
+- MSN branches are effectively disabled by `chMSN() == False`, but broad removal is deferred until the classic WeatherScreen data contract is deliberately migrated; no speculative provider cleanup was performed.
+- found and removed an accidentally packaged `setupGlass17/__pycache__/plugin.cpython-313.pyc` build artifact from the Architecture: all package tree.
+- added repository `.gitignore` rules for `__pycache__/`, `*.py[cod]` and `*$py.class` to prevent generated Python bytecode from re-entering future packages.
+- no RECEIVER PASS is claimed.
