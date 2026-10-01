@@ -273,3 +273,60 @@ msgstr "Tentative"
 
 msgid "time to reconnect"
 msgstr "temps de reconnection"
+
+msgid "Clear sky"
+msgstr "Ciel dégagé"
+
+msgid "Mainly clear"
+msgstr "Généralement dégagé"
+
+msgid "Partly cloudy"
+msgstr "Partiellement nuageux"
+
+msgid "Overcast"
+msgstr "Couvert"
+
+msgid "Depositing rime fog"
+msgstr "Brouillard givrant"
+
+msgid "Dense drizzle"
+msgstr "Bruine forte"
+
+msgid "Slight rain"
+msgstr "Pluie faible"
+
+msgid "Heavy rain"
+msgstr "Forte pluie"
+
+msgid "Heavy freezing rain"
+msgstr "Forte pluie verglaçante"
+
+msgid "Slight snow"
+msgstr "Faibles chutes de neige"
+
+msgid "Heavy snow"
+msgstr "Fortes chutes de neige"
+
+msgid "Snow grains"
+msgstr "Neige en grains"
+
+msgid "Rain showers"
+msgstr "Averses de pluie"
+
+msgid "Heavy rain showers"
+msgstr "Fortes averses de pluie"
+
+msgid "Snow showers"
+msgstr "Averses de neige"
+
+msgid "Heavy snow showers"
+msgstr "Fortes averses de neige"
+
+msgid "Thunderstorm with hail"
+msgstr "Orage avec grêle"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Orage avec forte grêle"
+
+msgid "Unknown"
+msgstr "Inconnu"
