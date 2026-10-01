@@ -87,3 +87,21 @@ print("weather locations: SK=%d CZ=%d TOTAL=%d COUNTRIES=%d" % (len(sk), len(cz)
 
 # r12 visual/functional baseline: this context menu must not disappear during modernization.
 assert '<screen name="EventViewContextMenu"' in SKIN
+
+# r12 authoritative package parity: preserve the functional surface of the supplied 9.50-r12.
+# These symbols are taken directly from the maintainer-supplied r12 IPK and must remain reachable.
+for symbol in (
+    "def refreshWeatherNow(", "def chckPigFont(", "def menusel(", "def changePIGres(",
+    "def reloadCities(", "def openWeatherCityChoice(", "def weatherCityChoiceSelected(",
+    "def findCity(", "def addNewLine(", "def restoreCfgFromFile(", "def updateChck(",
+    "def findPicon(", "def showEnhancedInfo(", "def changeSkinXml(", "def changeScreenXml(",
+):
+    assert symbol in PLUGIN, symbol
+for symbol in ("def changeCity(", "def download_xml(", "def resetWeather_values(", "def fixDate("):
+    assert symbol in WEATHER, symbol
+for symbol in ("def resolve_location(", "def geocode_legacy(", "def changeCityAnswer(", "def callbackNewCity("):
+    assert symbol in EWEATHER, symbol
+for symbol in ("def calcSun(", "def dewpoint(", "def wmoPicon(", "def wmoText(", "def windDir(", "def openMeteo("):
+    assert symbol in WEAUTILS, symbol
+for variant in ('"with PIG":"3"', '"simply PIG":"10"', '"PIG2":"11"', '"PIG4":"13"'):
+    assert variant in PLUGIN, variant
