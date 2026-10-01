@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test15
-Revision: 66
-Purpose: Restore r12-style OK city selection from my_city_Code.txt and refresh Infobar weather immediately after selecting or adding a city, without GUI restart.
+Revision: 67
+Purpose: Restore r12-style OK city selection from my_city_Code.txt and refresh Infobar weather immediately after selecting or adding a city, without GUI restart. Regression gate aligned with the TEST15 implementation.
