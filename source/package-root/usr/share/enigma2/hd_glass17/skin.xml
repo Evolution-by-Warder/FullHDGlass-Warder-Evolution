@@ -1551,13 +1551,17 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="help2" position="603,183" size="300,60" font="Console;30" halign="center" valign="center" />
   </screen>
   <screen name="ParentalControlChangePin" position="center,120" size="1500,840" title="Change pin code">
-    <widget name="config" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget name="config" position="45,45" size="1410,675" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="120,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="810,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="ParentalControlEditor" position="center,120" size="1500,840" title="Parental control services Editor">
     <widget name="servicelist" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="ParentalControlSetup" position="center,120" size="1500,840" title="Parental control setup">
-    <widget name="config" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget name="config" position="45,45" size="1410,675" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="120,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="810,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
   </screen>
 
   <screen name="PluginBrowser" position="135,120" size="1650,840" title="Plugin Browser">
@@ -1741,11 +1745,9 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget source="key_green" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="SimpleChannelSelection" position="135,150" size="1650,840" title="Channel Selection">
-    <widget name="list" position="15,30" size="1620,720" serviceNameFont="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget name="key_red" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
-    <widget name="key_green" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
-    <widget name="key_yellow" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
-    <widget name="key_blue" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+    <widget name="list" position="15,30" size="1620,700" serviceNameFont="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="245,772" size="500,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="905,772" size="500,42" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="SkinSelector" position="center,120" size="1650,840" title="Choose your Skin">
     <widget name="SkinList" position="30,30" size="900,750" scrollbarMode="showOnDemand" font="Prive3;34" itemHeight="45" />
