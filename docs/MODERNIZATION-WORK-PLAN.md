@@ -455,3 +455,16 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - `VolumeAdjustServiceSelection` has a current embedded skin and fallback aliases; no duplicate external override was added without a demonstrated need.
 - Wizard family remains a specialized runtime path and is not collapsed into generic Setup.
 - no RECEIVER PASS is claimed.
+
+
+## Post-change global static gate — 2026-10-01
+
+Status: **PASS WITH RUNTIME TEST PENDING**
+
+- current skin contains 615 screen definitions / 608 unique names.
+- the only duplicate names are the seven previously audited front-panel summary families: ChannelSelection_summary, MenuSummary, InfoBarMoviePlayerSummary, DVDSummary, SetupSummary, SimpleSummary and g17SetupSummary; their id variants remain intentionally preserved.
+- zero `forgroundColor` misspellings remain.
+- all newly added PinInputPopup, TimeDateInput, MinuteInput and AutoVideoModeLabel names occur exactly once.
+- internal asset reference recheck found no missing Warder skin asset. PositionGauge `pointer="hd_glass17/pointer.png:13,3"` uses the Enigma2 pointer syntax (asset plus hotspot coordinates); the actual `hd_glass17/pointer.png` file is present.
+- external DreamExplorer pointer remains plugin-owned and was not copied or rewritten.
+- no RECEIVER PASS is claimed.
