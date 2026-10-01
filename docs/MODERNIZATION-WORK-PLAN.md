@@ -531,3 +531,15 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - found and removed an accidentally packaged `setupGlass17/__pycache__/plugin.cpython-313.pyc` build artifact from the Architecture: all package tree.
 - added repository `.gitignore` rules for `__pycache__/`, `*.py[cod]` and `*$py.class` to prevent generated Python bytecode from re-entering future packages.
 - no RECEIVER PASS is claimed.
+
+
+## Custom converter Python 3 runtime reconciliation — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- compared Warder custom converter behavior with current OpenATV converter contracts instead of treating legacy timer callbacks as automatically obsolete; current OpenATV still supports the callback-list path.
+- aligned `g17ConditionalShowHide` with current ConditionalShowHide semantics: an unavailable boolean source is hidden rather than shown, semicolon/comma token separators are accepted, numeric blink intervals are honored, and converter change propagation is retained. The FullHDGlass17 `par114` behavior remains intact.
+- fixed Python-2 integer-division assumptions in `g17ClockToText` and `g17EventTime`; minute/duration formatting now uses integer division on Python 3.
+- fixed the same integer-formatting issue in `g17extServiceName` for frequency, symbol rate and orbital-position text. These expressions feed `%d` and therefore must not produce Python-3 floats.
+- no visual geometry, original authorship, package identity, main branch or locked 1.0.4 artifact was changed.
+- no RECEIVER PASS is claimed.
