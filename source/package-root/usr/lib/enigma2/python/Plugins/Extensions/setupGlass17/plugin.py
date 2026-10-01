@@ -8985,14 +8985,8 @@ class cityFinder(Screen):
 			self['myCity'].selectionEnabled(0)
 			self["key_green"].setText(self.allLabels[4])
 		elif self.cityLevel == "cities":
-			if self.activeCountry in ("SK", "CZ"):
-				self.cityLevel = "root"
-			else:
-				self.cityLevel = "europe"
-			self.activeCountry = None
-			self.generateData()
-		elif self.cityLevel == "europe":
 			self.cityLevel = "root"
+			self.activeCountry = None
 			self.generateData()
 		else:
 			self.close(0)
@@ -9019,16 +9013,7 @@ class cityFinder(Screen):
 			if not selection or str(selection[0]) == "*":
 				return
 			value = str(selection[0])
-			if value == "group|SK":
-				self.cityLevel, self.activeCountry = "cities", "SK"
-				self.generateData()
-			elif value == "group|CZ":
-				self.cityLevel, self.activeCountry = "cities", "CZ"
-				self.generateData()
-			elif value == "group|EUROPE":
-				self.cityLevel, self.activeCountry = "europe", None
-				self.generateData()
-			elif value.startswith("country|"):
+			if value.startswith("country|"):
 				self.cityLevel, self.activeCountry = "cities", value.split("|", 1)[1]
 				self.generateData()
 			else:
@@ -9146,18 +9131,17 @@ class cityFinder(Screen):
 					self.list.append(item)
 			self.setWindowTitle(": " + what)
 		elif self.cityLevel == "root":
-			for value, label in (("group|SK", "Slovensko"), ("group|CZ", "Česko"), ("group|EUROPE", "Krajiny Európy")):
-				item = [value]
-				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=label))
-				self.list.append(item)
-			self.setWindowTitle()
-		elif self.cityLevel == "europe":
-			countries = sorted(set(x[0] for x in local if x[0] and x[0] not in ("SK", "CZ")), key=lambda cc: _citySearchKey(self.countryNames.get(cc, cc)))
-			for country in countries:
+			# r12 authority: show every country directly. The database itself keeps
+			# Slovakia first, Czechia second, followed by the remaining countries.
+			seen = []
+			for country, display, value in local:
+				if country and country not in seen:
+					seen.append(country)
+			for country in seen:
 				item = ["country|" + country]
 				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=self.countryNames.get(country, country)))
 				self.list.append(item)
-			self.setWindowTitle(": Krajiny Európy")
+			self.setWindowTitle(": " + _("Select country"))
 		else:
 			for country, display, value in local:
 				if country == self.activeCountry:
