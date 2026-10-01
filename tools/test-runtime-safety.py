@@ -45,6 +45,9 @@ if "PiconHub-Warder/FullHDGlass-Warder-Evolution" in plugin:
     fail("plugin.py: obsolete Warder repository owner returned")
 if "unsafe asset manifest redirect" not in plugin:
     fail("plugin.py: official asset manifest redirect guard missing")
+asset_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"
+if plugin.count(asset_prefix) < 2 or "unsafe asset redirect" not in plugin:
+    fail("plugin.py: Warder asset payload channel/redirect guards missing")
 if "if isATV:" not in plugin[plugin.find("def chnlSelPatch"):plugin.find("def writeStyleCfg")]:
     fail("plugin.py: OpenATV ChannelSelection patch guard missing")
 official_packages = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
