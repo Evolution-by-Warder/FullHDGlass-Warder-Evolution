@@ -6531,7 +6531,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 </screen> 	
 	<screen name="FlashOnline" position="center,center" size="1200,860" title="Flash Online" backgroundColor="background" >
     <widget name="list" position="10,0" size="1180,400" font="Prive4;30" itemHeight="40" enableWrapAround="1" backgroundColor="background" scrollbarMode="showOnDemand" transparent="1"/>
-    <widget name="description" position="10,410" size="1180,400" font="Prive4;30" itemHeight="40" enableWrapAround="1" backgroundColor="background" scrollbarMode="showOnDemand" transparent="1"/>
+    <widget source="description" render="Label" position="10,410" size="1180,400" font="Prive4;30" backgroundColor="background" valign="center" halign="center" transparent="1"/>
     <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,820" size="300,40" valign="center" halign="center" transparent="1" />
     <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,820" size="300,40" valign="center" halign="center" transparent="1" />
     <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,820" size="300,40" valign="center" halign="center" transparent="1" />
