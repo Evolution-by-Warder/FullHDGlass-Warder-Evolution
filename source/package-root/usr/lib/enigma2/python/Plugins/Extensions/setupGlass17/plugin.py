@@ -7960,7 +7960,9 @@ class downloadMenu(Screen):
 			self.dwnLoop(_("ERROR")+": "+_("Invalid Warder download catalog entry."))
 			return
 		valid_parts = isinstance(parts, list) and len(parts) > 0 and all(str(x).startswith("https://") for x in parts)
-		if (not url.startswith("https://") and not valid_parts) or len(sha256) != 64 or "/" in root or ".." in root:
+		valid_sha = re.match(r"^[0-9a-f]{64}$", sha256) is not None
+		valid_filename = bool(filename) and os.path.basename(filename) == filename and filename not in (".", "..")
+		if (not url.startswith("https://") and not valid_parts) or not valid_sha or not valid_filename or "/" in root or "\\" in root or ".." in root:
 			self.dwnLoop(_("ERROR")+": "+_("Unsafe Warder download catalog entry."))
 			return
 		self.warderAsset = asset
@@ -8007,6 +8009,8 @@ class downloadMenu(Screen):
 			expected = str(asset["sha256"]).lower()
 			parts = asset.get("parts", [])
 			urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
+			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(url.startswith("https://") for url in urls):
+				raise ValueError("unsafe asset metadata")
 			h = hashlib.sha256()
 			with open(target, "wb") as out:
 				for url in urls:
