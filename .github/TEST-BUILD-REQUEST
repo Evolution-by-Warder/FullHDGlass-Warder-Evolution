@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 17
-Purpose: rerun TEST4 after explicit r4 Open-Meteo regression coverage; preserve cumulative r1-r12 reference, complete 51-country weather hierarchy, r11 PIG fixes, r12 Opkg/spinner fixes, and Warder safety gates.
+Revision: 18
+Purpose: revalidate TEST4 after completing Slovak Open-Meteo WMO translations for Classic and Enhanced Weather and adding locale regression gates.
