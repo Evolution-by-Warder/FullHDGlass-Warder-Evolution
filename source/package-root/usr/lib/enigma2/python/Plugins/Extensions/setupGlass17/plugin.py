@@ -7102,37 +7102,39 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		else:
 			cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]
 
-		# Run the installer silently. On success the restart question appears
-		# immediately; command output is only shown when installation fails.
+		# Package-manager argv must be passed unchanged. subprocess.Popen avoids
+		# Enigma2 eConsoleAppContainer argv[0] differences between images.
 		self.warderInstallOutput = []
-		self.warderInstallContainer = eConsoleAppContainer()
 		try:
-			self.warderInstallContainer.dataAvail.append(self._warderInstallData)
-		except Exception:
-			pass
-		try:
-			self.warderInstallContainer.appClosed.append(self._warderInstallFinished)
+			self.warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 		except Exception as err:
 			self._warderInstallCleanup()
 			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
 			return
+		self.warderInstallTimer = eTimer()
 		try:
-			started = self.warderInstallContainer.execute(cmd[0], *cmd)
-		except Exception as err:
-			self._warderInstallCleanup()
-			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
-			return
-		if started:
-			self._warderInstallCleanup()
-			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + _("Installer could not be started."), MessageBox.TYPE_ERROR, 10)
+			self.warderInstallTimer_conn = self.warderInstallTimer.timeout.connect(self._warderInstallPoll)
+		except AttributeError:
+			self.warderInstallTimer.timeout.get().append(self._warderInstallPoll)
+		self.warderInstallTimer.start(250, True)
 
-	def _warderInstallData(self, data):
+	def _warderInstallPoll(self):
+		process = getattr(self, "warderInstallProcess", None)
+		if process is None:
+			return
+		exitCode = process.poll()
+		if exitCode is None:
+			self.warderInstallTimer.start(250, True)
+			return
 		try:
-			if isinstance(data, bytes):
-				data = data.decode("utf-8", "replace")
-			self.warderInstallOutput.append(str(data))
+			out = process.communicate()[0]
+			if isinstance(out, bytes):
+				out = out.decode("utf-8", "replace")
+			self.warderInstallOutput.append(str(out))
 		except Exception:
 			pass
+		self.warderInstallProcess = None
+		self._warderInstallFinished(exitCode)
 
 	def _warderInstallCleanup(self):
 		try:
@@ -7155,7 +7157,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if out.strip():
 				msg += "\n\n" + out.strip()
 			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 15)
-		self.warderInstallContainer = None
+		self.warderInstallProcess = None
 
 	def rstAnswer(self, answer):
 		if answer:
