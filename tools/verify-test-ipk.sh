@@ -24,7 +24,7 @@ test "$(tr -d '\\r\\n' < "$TMP/debian-binary")" = "2.0"
 
 tar -xOzf "$TMP/control.tar.gz" ./control > "$TMP/control"
 grep -Fx 'Package: enigma2-skin-fullhdglass17' "$TMP/control"
-grep -Eq '^Version: 9\.50\+warder.*-test[0-9A-Za-z.-]*$' "$TMP/control"
+grep -Eq '^Version: [0-9]+[.][0-9]+[.][0-9]+-test[0-9A-Za-z.-]*$' "$TMP/control"
 CONTROL_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' "$TMP/control" | head -n1)"
 case "$CONTROL_VERSION" in
   "$EXPECTED_RUNTIME") ;;
