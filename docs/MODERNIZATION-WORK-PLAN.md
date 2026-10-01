@@ -671,3 +671,13 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - `setEncodingUser()` now refuses runtime replacement of image-owned `encoding.conf` on OpenATV and disables the legacy option instead.
 - architecture helper activation no longer deletes active helper files before copying the selected packaged variant; failed selection therefore cannot leave the receiver without the previous helper.
 - TEST runtime-safety gate now requires the OpenATV Menu.py and encoding.conf ownership guards in addition to the existing ChannelSelection.py guard.
+
+
+## Private helper ownership batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- the downloadable 7zip helper no longer installs itself into image-owned `/usr/bin/7z_g` outside opkg ownership.
+- helper downloads are now stored under the FullHDGlass setup plugin runtime (`setupGlass17/bin/7z_g`) and picon.cz archive extraction uses that private path.
+- existing architecture helpers shipped by the IPK remain package-owned under `/usr/bin`; only the separately downloaded optional helper was moved.
+- runtime-safety regression gate rejects any return of the downloaded `/usr/bin/7z_g` path and requires the private FullHDGlass helper location.
