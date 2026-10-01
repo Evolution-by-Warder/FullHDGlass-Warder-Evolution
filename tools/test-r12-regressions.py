@@ -104,3 +104,28 @@ for symbol in ("def calcSun(", "def dewpoint(", "def wmoPicon(", "def wmoText(",
     assert symbol in WEAUTILS, symbol
 for variant in ('"with PIG":"3"', '"simply PIG":"10"', '"PIG2":"11"', '"PIG4":"13"'):
     assert variant in PLUGIN, variant
+
+
+# Picon/runtime path parity and Warder ownership safety.
+# r12 supports the standard Enigma2 picon path, while Warder may link it to
+# its private hdg17_files store only when the image/user path does not exist.
+setpath = PLUGIN[PLUGIN.find("def setPathFiles("):PLUGIN.find("ENAFINDER =")]
+assert 'links = ["/picon", "/usr/share/enigma2/picon"]' in setpath
+assert "elif not os.path.lexists(x):" in setpath
+assert "if os.path.islink(x):" in setpath
+assert "os.unlink(x)" in setpath
+assert "elif not os.path.lexists(x):\n\t\t\t\t\tmakelnk(x)" in setpath
+assert '"/hdg17_files" in a or "/hdg18_files" in a' in setpath
+
+# A blank/corrupt legacy picon base path must not crash setupGlass17.
+chckpath = PLUGIN[PLUGIN.find("def chckPath("):PLUGIN.find("def _atomicWriteText(")]
+assert 'path = (path or "").strip()' in chckpath
+assert 'if not path or path == "/":' in chckpath
+assert "return False" in chckpath
+
+# The retired spinner helper may repair only the exact legacy FullHDGlass
+# symlink; it must leave a normal image-owned spinner and unrelated symlinks alone.
+spinner = PLUGIN[PLUGIN.find("def spinnerOnOff("):PLUGIN.find("def autoHdd(")]
+assert "if not os.path.islink(spinner):" in spinner
+assert "target != os.path.realpath(legacy)" in spinner
+assert "os.unlink(spinner)" in spinner
