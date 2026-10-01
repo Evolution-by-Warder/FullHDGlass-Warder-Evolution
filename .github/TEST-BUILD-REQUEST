@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test25
-Revision: 92
-Purpose: Trigger TEST25 with escape-proof literal regression gate.
+Candidate: 1.0.5-test26
+Revision: 93
+Purpose: TEST26 picon-only graphical EPG with compact service column; validate TEST25 automatic restart.

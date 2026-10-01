@@ -438,3 +438,12 @@ pig25_end = SKIN.index('</screen>', pig25_start)
 pig25 = SKIN[pig25_start:pig25_end]
 assert 'source="Title" render="Label"' not in pig25
 assert 'source="global.CurrentTime" render="Label" position="30,12"' in pig25
+
+# TEST26: Warder graphical EPG uses picons only with a compact 90px service column.
+for token in ('config.epgselection.graph_servicetitle_mode.value = "picon"', 'config.epgselection.graph_piconwidth.value = 90'):
+    assert token in PLUGIN, token
+for screen_name, y in (("GraphicalEPG", "117"), ("GraphicalEPGPIG", "423")):
+    start = SKIN.index('<screen name="%s"' % screen_name)
+    end = SKIN.index('</screen>', start)
+    block = SKIN[start:end]
+    assert 'position="105,%s"' % y in block, screen_name

@@ -976,6 +976,15 @@ def chckPMS():
 ##########################################################################################################################
 def startHdg17(reason, **kwargs):
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# Warder native graphical EPG: picons only, compact service column.
+		# Keep this scoped to FullHDGlass17 session start and tolerate images without these OpenATV keys.
+		try:
+			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_servicetitle_mode"):
+				config.epgselection.graph_servicetitle_mode.value = "picon"
+			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_piconwidth"):
+				config.epgselection.graph_piconwidth.value = 90
+		except Exception:
+			pass
 		enaOKstart = True                                                                                     
 		if not fileExists(SKINPATH + "icons/about1.png"):
 			if config.plugins.setupGlass17.par15.value != "0" and chckUserHdg():       
