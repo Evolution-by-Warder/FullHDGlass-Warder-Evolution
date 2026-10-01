@@ -1887,6 +1887,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="slider" position="75,675" size="1200,8" />
     <widget source="package" render="Label" position="60,35" size="1230,90" font="Prive3;30" halign="center" valign="center" />
     <widget source="status" render="Label" position="60,190" size="1230,90" font="Prive3;30" halign="center" valign="center" />
+    <widget name="log" position="60,300" size="1230,315" font="Prive3;27" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="60,630" size="300,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_blue" render="Label" position="990,630" size="300,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
     <ePixmap position="450,310" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
   </screen>
   <screen name="OPKGMenu" position="center,150" size="1350,780" title="Select upgrade source to edit.">
