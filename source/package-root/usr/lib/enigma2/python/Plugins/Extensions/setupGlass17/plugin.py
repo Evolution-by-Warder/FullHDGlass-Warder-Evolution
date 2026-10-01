@@ -75,7 +75,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 from skin import parseColor
 from Screens.InputBox import InputBox
 from Components.Input import Input
-from os import system, statvfs, listdir
+from os import statvfs, listdir
 from Screens.Standby import TryQuitMainloop
 from Tools.HardwareInfo import HardwareInfo
 from Components.Pixmap import *
@@ -279,11 +279,11 @@ ENA_SYM = True
 if ISVTI:
 	ENA_SYM = False
 ENA_D = 'mipsel'
-RSTCMD = 'killall -9 enigma2'
+RSTCMD = ['killall', '-9', 'enigma2']
 ENA_P_CH = False
 ENA_I_T = False
 if os.path.exists('/etc/dpkg'):
-	RSTCMD = 'systemctl restart enigma2'
+	RSTCMD = ['systemctl', 'restart', 'enigma2']
 	ENA_D = 'debpkg'
 	try:
 		from Components.Renderer.g17TunersLabel import getTunerDesc
@@ -2873,9 +2873,9 @@ class AutoStartChck17():
 			try:
 				quitMainloop(3)
 			except: 
-				system(RSTCMD)
+				subprocess.call(RSTCMD)
 		else:
-			system(RSTCMD)  
+			subprocess.call(RSTCMD)  
 
 	def updateChck(self, session):
 		self.session = session
@@ -7468,9 +7468,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			try:
 				self.session.open(TryQuitMainloop, 3)
 			except: 
-				system(RSTCMD)
+				subprocess.call(RSTCMD)
 		else:
-			system(RSTCMD)
+			subprocess.call(RSTCMD)
 
 	def isNum(self, txt):
 		try:
