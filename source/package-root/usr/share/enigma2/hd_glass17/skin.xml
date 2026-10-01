@@ -7427,4 +7427,58 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_green" render="Label" position="420,735" size="360,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
     <widget source="key_yellow" render="Label" position="810,735" size="360,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
   </screen>
+
+  <screen name="NetworkOverview" position="center,120" size="1740,840" title="Network Overview">
+    <widget source="adapterList" render="Listbox" position="30,30" size="1680,390" scrollbarMode="showOnDemand">
+      <template name="Default" fonts="enigma2icons;38,Prive3;29,Prive3;24" itemHeight="78">
+        <rowtemplate>
+          <text index="AdapterName" position="0,0" size="360,78" font="1" foregroundColor="grey" verticalAlignment="center" />
+          <text index="StatusText" position="380,0" size="250,78" font="1" foregroundColor="grey" verticalAlignment="center" />
+          <text index="MAC" position="650,0" size="330,78" font="2" foregroundColor="grey" verticalAlignment="center" />
+          <text index="IPAddress" position="1000,0" size="260,78" font="2" foregroundColor="grey" verticalAlignment="center" />
+          <text index="Gateway" position="1280,0" size="250,78" font="2" foregroundColor="grey" verticalAlignment="center" />
+          <text index="Speed" position="1540,0" size="140,78" font="2" foregroundColor="grey" horizontalAlignment="right" verticalAlignment="center" />
+        </rowtemplate>
+        <rowtemplate>
+          <text index="AdapterGlyph" position="0,0" size="70,78" font="0" horizontalAlignment="center" verticalAlignment="center" />
+          <text index="AdapterName" position="85,0" size="300,42" font="1" verticalAlignment="center" />
+          <text index="AdapterType" position="85,42" size="300,36" font="2" foregroundColor="grey" verticalAlignment="center" />
+          <text index="InternetGlyph" position="400,0" size="70,78" font="0" horizontalAlignment="center" verticalAlignment="center" />
+          <text index="StatusText" position="485,0" size="250,42" font="2" foregroundColor="+StatusColor" foregroundColorSelected="+StatusColorSelected" verticalAlignment="center" />
+          <text index="ConnectionText" position="485,42" size="250,36" font="2" verticalAlignment="center" />
+          <text index="MAC" position="750,0" size="300,78" font="2" verticalAlignment="center" />
+          <text index="IPAddress" position="1065,0" size="230,78" font="2" verticalAlignment="center" />
+          <text index="Gateway" position="1310,0" size="220,78" font="2" verticalAlignment="center" />
+          <text index="Speed" position="1540,0" size="140,78" font="2" horizontalAlignment="right" verticalAlignment="center" />
+        </rowtemplate>
+      </template>
+    </widget>
+    <widget source="savedLabel" render="Label" position="30,435" size="1680,40" font="Prive3;27" foregroundColor="grey" />
+    <widget source="savedList" render="Listbox" position="30,485" size="1680,225" scrollbarMode="showOnDemand">
+      <template name="Default" fonts="Prive3;28,Prive3;24,enigma2icons;28" itemHeight="55">
+        <rowtemplate>
+          <text index="SSID" position="0,0" size="430,55" font="0" foregroundColor="grey" verticalAlignment="center" />
+          <text index="StatusText" position="450,0" size="180,55" font="0" foregroundColor="grey" verticalAlignment="center" />
+          <text index="BSSID" position="650,0" size="350,55" font="1" foregroundColor="grey" verticalAlignment="center" />
+          <text index="Frequency" position="1020,0" size="210,55" font="1" foregroundColor="grey" verticalAlignment="center" />
+          <text index="Channel" position="1250,0" size="180,55" font="1" foregroundColor="grey" verticalAlignment="center" />
+          <text index="Encryption" position="1450,0" size="230,55" font="1" foregroundColor="grey" horizontalAlignment="right" verticalAlignment="center" />
+        </rowtemplate>
+        <rowtemplate>
+          <text index="SSID" position="0,0" size="430,55" font="0" verticalAlignment="center" />
+          <text index="StatusGlyph" position="450,0" size="180,55" font="2" foregroundColor="+StatusColor" foregroundColorSelected="+StatusColorSelected" horizontalAlignment="center" verticalAlignment="center" />
+          <text index="BSSID" position="650,0" size="350,55" font="1" verticalAlignment="center" />
+          <text index="Frequency" position="1020,0" size="210,55" font="1" verticalAlignment="center" />
+          <text index="Channel" position="1250,0" size="180,55" font="1" verticalAlignment="center" />
+          <text index="Encryption" position="1450,0" size="230,55" font="1" horizontalAlignment="right" verticalAlignment="center" />
+        </rowtemplate>
+      </template>
+    </widget>
+    <widget source="key_red" render="Label" position="30,750" size="300,45" font="Prive3;28" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="345,750" size="300,45" font="Prive3;28" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="660,750" size="300,45" font="Prive3;28" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="975,750" size="300,45" font="Prive3;28" halign="center" foregroundColor="blue" transparent="1" />
+    <widget source="key_menu" render="Label" position="1290,750" size="180,45" font="Prive3;26" halign="center" transparent="1" />
+    <widget source="key_info" render="Label" position="1490,750" size="180,45" font="Prive3;26" halign="center" transparent="1" />
+  </screen>
 </skin>
