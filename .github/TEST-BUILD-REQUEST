@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test16
-Revision: 68
-Purpose: Fix weather city selector crash by restoring selection only after widget instance exists on layout finish; preserve TEST15 city selection and live weather refresh behavior.
+Revision: 69
+Purpose: Complete r12-style weather city UX: OK opens the city selector, left/right no longer changes Weather for City, selection is restored safely after layout, and confirmed city triggers immediate live weather refresh without GUI restart.

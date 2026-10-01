@@ -5962,6 +5962,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
       		
 	def keyLeft(self):
 		if not self.isMainMenu:
+			try:
+				if self["config"].getCurrent()[1] == config.plugins.setupGlass17.par13:
+					return
+			except:
+				pass
 			ConfigListScreen.keyLeft(self)
 			self.chckSetup()
 		else:
@@ -5969,6 +5974,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	def keyRight(self):
 		if not self.isMainMenu:
+			try:
+				if self["config"].getCurrent()[1] == config.plugins.setupGlass17.par13:
+					return
+			except:
+				pass
 			ConfigListScreen.keyRight(self)
 			self.chckSetup()
 		else:
