@@ -433,6 +433,8 @@ assert 'position="135,387"' in pig24 and 'position="15,423" size="1845,495"' in 
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
 
 # TEST25: remove duplicate top bouquet title from PIG guide and keep current time there.
-pig25 = re.search(r'<screen\\b[^>]*name="GraphicalEPGPIG"[\\s\\S]*?</screen>', SKIN).group(0)
+pig25_start = SKIN.index('<screen name="GraphicalEPGPIG"')
+pig25_end = SKIN.index('</screen>', pig25_start)
+pig25 = SKIN[pig25_start:pig25_end]
 assert 'source="Title" render="Label"' not in pig25
 assert 'source="global.CurrentTime" render="Label" position="30,12"' in pig25
