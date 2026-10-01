@@ -6987,6 +6987,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			changelog = str(manifest.get("changelog", "")).strip()
 			if not new_version:
 				raise ValueError("missing version")
+			if package_url and not package_url.startswith("https://"):
+				raise ValueError("unsafe package URL")
+			if package_url and not re.match(r"^[0-9a-f]{64}$", sha256):
+				raise ValueError("missing or invalid SHA256")
 		except Exception as err:
 			if ena:
 				self.session.open(MessageBox, _("Error reading version info!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 8)
@@ -7023,8 +7027,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		url = info.get("url", "")
 		version = info.get("version", "")
 		expected_sha = info.get("sha256", "").lower()
-		if not url or not version:
-			self.session.open(MessageBox, _("Error while downloading file!"), MessageBox.TYPE_ERROR, 6)
+		if not url or not version or not url.startswith("https://") or not re.match(r"^[0-9a-f]{64}$", expected_sha):
+			self.session.open(MessageBox, _("Error while downloading file!") + "\n\n" + _("Invalid update metadata."), MessageBox.TYPE_ERROR, 6)
 			return
 		filename = os.path.basename(url.split("?", 1)[0]) or ("fullhdglass17-warder-evolution_%s_all.ipk" % version)
 		if not (filename.endswith(".ipk") or filename.endswith(".deb")):
@@ -7035,7 +7039,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if os.path.exists(target):
 				os.remove(target)
 			actual_sha = self._warderDownload(url, target)
-			if expected_sha and actual_sha != expected_sha:
+			if actual_sha != expected_sha:
 				try:
 					os.remove(target)
 				except Exception:
