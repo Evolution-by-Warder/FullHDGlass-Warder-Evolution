@@ -25,6 +25,7 @@ import hashlib
 import shutil
 import stat
 import zipfile
+import subprocess
 from urllib.request import Request, urlopen
 ENACI = False
 try:
