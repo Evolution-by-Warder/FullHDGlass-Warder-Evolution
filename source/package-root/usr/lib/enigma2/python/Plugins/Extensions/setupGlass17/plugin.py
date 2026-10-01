@@ -26,7 +26,10 @@ import shutil
 import stat
 import zipfile
 import subprocess
-from urllib.request import Request, urlopen
+try:
+	from urllib.request import Request, urlopen
+except ImportError:
+	from urllib2 import Request, urlopen
 ENACI = False
 try:
 	from enigma import eDVBCI_UI
@@ -8115,12 +8118,17 @@ class downloadMenu(Screen):
 						opener = build_opener(HTTPCookieProcessor(cookie_jar))
 						install_opener(opener)
 						req = Request(url, data=None, headers=headers)
-						handler = urlopen(req, timeout=15)
-						data = handler.read()
-						with open(archive, 'wb') as f:
-							f.write(data)
+						with urlopen(req, timeout=15) as handler, open(archive, 'wb') as f:
+							while True:
+								chunk = handler.read(1024 * 128)
+								if not chunk:
+									break
+								f.write(chunk)
 					except Exception:
-						data = b""
+						try:
+							os.remove(archive)
+						except OSError:
+							pass
 					if os.path.isfile(archive):
 						size = 1.0*os.path.getsize(archive)/(1024*1024)
 						if size != 0:
