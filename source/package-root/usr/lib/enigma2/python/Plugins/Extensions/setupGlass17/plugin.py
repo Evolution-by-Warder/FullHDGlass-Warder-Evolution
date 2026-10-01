@@ -7065,9 +7065,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			return
 
 		if filename.endswith(".deb"):
-			cmd = "dpkg -i --force-overwrite '%s'" % target.replace("'", "'\\''")
+			cmd = ["dpkg", "-i", "--force-overwrite", target]
 		else:
-			cmd = "opkg install --force-reinstall --force-overwrite '%s'" % target.replace("'", "'\\''")
+			cmd = ["opkg", "install", "--force-reinstall", "--force-overwrite", target]
 
 		# Run the installer silently. On success the restart question appears
 		# immediately; command output is only shown when installation fails.
@@ -7084,7 +7084,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
 			return
 		try:
-			started = self.warderInstallContainer.execute(cmd)
+			started = self.warderInstallContainer.execute(*cmd)
 		except Exception as err:
 			self._warderInstallCleanup()
 			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
