@@ -1196,39 +1196,33 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   <screen name="MovieContextMenu" position="center,center" size="900,600" title="Movielist menu">
     <widget name="menu" position="30,20" size="840,560" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
   </screen>
-  <screen name="MovieLocationBox" position="135,135" size="1650,870">
-    <widget name="text" position="15,37" size="1620,40" font="Prive3;34" />
-    <eLabel position="15,75" size="30,63" backgroundColor="darkgrey" />
-    <widget name="target" position="45,97" size="1590,40" valign="center" font="Prive3;36" foregroundColor="black" backgroundColor="darkgrey" />
-    <widget name="filelist" position="45,150" zPosition="1" size="1590,345" scrollbarMode="showOnDemand" selectionDisabled="1" />
-    <eLabel position="15,517" size="30,63" backgroundColor="darkgrey" />
-    <widget name="textbook" position="45,540" size="1590,40" valign="center" font="Prive3;36" foregroundColor="black" backgroundColor="darkgrey" />
-    <widget name="booklist" position="45,592" zPosition="2" size="1590,200" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget name="key_red" position="30,810" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="red" />
-    <widget name="key_green" position="435,810" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="green" />
-    <widget name="key_yellow" position="840,810" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="yellow" />
-    <widget name="key_blue" position="1245,810" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="blue" />
-    <widget name="red" position="0,0" size="0,0" />
-    <widget name="green" position="0,0" size="0,0" />
-    <widget name="yellow" position="0,0" size="0,0" />
-    <widget name="blue" position="0,0" size="0,0" />
+  <screen name="MovieLocationBox" position="135,105" size="1650,870" title="Select Location">
+    <widget name="text" position="30,20" size="1590,45" font="Prive3;34" />
+    <widget name="fileheading" position="30,80" size="900,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="target" position="30,125" size="1200,45" font="Prive3;34" valign="center" />
+    <widget name="targetfreespace" position="1245,125" size="375,45" font="Prive3;30" halign="right" valign="center" />
+    <widget name="filelist" position="30,180" size="1590,350" scrollbarMode="showOnDemand" />
+    <widget name="bookmarkheading" position="30,545" size="1590,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="bookmarklist" position="30,590" size="1590,150" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget name="quickselect" position="30,745" size="1590,40" font="Prive3;30" halign="center" />
+    <widget source="key_red" render="Label" position="30,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="840,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1245,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
-  <screen name="LocationBox" position="135,150" size="1650,850">
-    <widget name="text" position="15,15" size="1620,40" font="Prive3;34" />
-    <eLabel position="15,75" size="30,40" backgroundColor="darkgrey" />
-    <widget name="target" position="45,75" size="1590,40" valign="center" font="Prive3;36" foregroundColor="black" backgroundColor="darkgrey" />
-    <widget name="filelist" position="45,127" zPosition="1" size="1590,345" scrollbarMode="showOnDemand" selectionDisabled="1" />
-    <eLabel position="15,517" size="30,40" backgroundColor="darkgrey" />
-    <widget name="textbook" position="45,517" size="1590,40" valign="center" font="Prive3;36" foregroundColor="black" backgroundColor="darkgrey" />
-    <widget name="booklist" position="45,570" zPosition="2" size="1590,200" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
-    <widget name="key_red" position="7,790" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
-    <widget name="key_green" position="420,790" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
-    <widget name="key_yellow" position="832,790" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
-    <widget name="key_blue" position="1245,790" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
-    <widget name="red" position="0,0" size="0,0" />
-    <widget name="green" position="0,0" size="0,0" />
-    <widget name="yellow" position="0,0" size="0,0" />
-    <widget name="blue" position="0,0" size="0,0" />
+  <screen name="LocationBox" position="135,105" size="1650,870" title="Select Location">
+    <widget name="text" position="30,20" size="1590,45" font="Prive3;34" />
+    <widget name="fileheading" position="30,80" size="900,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="target" position="30,125" size="1200,45" font="Prive3;34" valign="center" />
+    <widget name="targetfreespace" position="1245,125" size="375,45" font="Prive3;30" halign="right" valign="center" />
+    <widget name="filelist" position="30,180" size="1590,350" scrollbarMode="showOnDemand" />
+    <widget name="bookmarkheading" position="30,545" size="1590,40" font="Prive3;30" foregroundColor="grey" />
+    <widget name="bookmarklist" position="30,590" size="1590,150" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget name="quickselect" position="30,745" size="1590,40" font="Prive3;30" halign="center" />
+    <widget source="key_red" render="Label" position="30,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="435,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="840,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1245,800" size="375,45" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
 	<parameters>
 		<parameter name="MovieListProgressBarXtraYOffsetVTIStyle" value="10" />
