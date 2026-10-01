@@ -1,0 +1,69 @@
+name: Build Warder TEST IPK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-ipk:
+    if: github.ref == 'refs/heads/warder-modernization-work'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact branch commit
+        uses: actions/checkout@v4
+        with:
+          ref: warder-modernization-work
+
+      - name: Static package preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(sed -n 's/^Package:[[:space:]]*//p' source/control/control | head -n1)" = "enigma2-skin-fullhdglass17"
+          grep -Eq '^Version: .*[-.]test[0-9A-Za-z.-]*$' source/control/control
+          grep -Eq -- '-test' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
+          test "$(cat update.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')" = "1.0.4"
+          ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .
+          ! find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -print -quit | grep -q .
+          python3 -m compileall -q -f source/package-root/usr/lib/enigma2/python
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+          find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          for p in Path("source/package-root").rglob("*.xml"):
+              ET.parse(p)
+          print("XML parse gate: PASS")
+          PY
+          bash -n source/control/preinst source/control/postinst source/control/postrm tools/build-test-ipk.sh
+
+      - name: Build TEST IPK
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x tools/build-test-ipk.sh
+          ./tools/build-test-ipk.sh
+
+      - name: Inspect built package
+        shell: bash
+        run: |
+          set -euo pipefail
+          IPK="$(find packages/test -maxdepth 1 -type f -name '*_all.ipk' -print -quit)"
+          test -n "$IPK"
+          dpkg-deb --info "$IPK"
+          dpkg-deb --contents "$IPK" > packages/test/PAYLOAD-LIST.txt
+          dpkg-deb --field "$IPK" Package | grep -Fx 'enigma2-skin-fullhdglass17'
+          dpkg-deb --field "$IPK" Version | grep -F -- '-test'
+          sha256sum -c "$IPK.sha256"
+
+      - name: Upload TEST artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass17-warder-evolution-TEST
+          path: |
+            packages/test/*.ipk
+            packages/test/*.sha256
+            packages/test/PAYLOAD-LIST.txt
+          if-no-files-found: error
+          retention-days: 14
