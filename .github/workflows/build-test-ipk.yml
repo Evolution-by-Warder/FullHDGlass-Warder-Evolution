@@ -2,6 +2,11 @@ name: Build Warder TEST IPK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - warder-modernization-work
+    paths:
+      - .github/TEST-BUILD-REQUEST
 
 permissions:
   contents: read
