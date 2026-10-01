@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test4
-Revision: 18
-Purpose: revalidate TEST4 after completing Slovak Open-Meteo WMO translations for Classic and Enhanced Weather and adding locale regression gates.
+Revision: 19
+Purpose: full cumulative weather cleanup: Open-Meteo-only runtime, retired provider/API remnants isolated, Enhanced Weather compass localization, r4/r7-r12 regression gates retained.
