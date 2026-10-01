@@ -98,8 +98,20 @@ for symbol in (
     assert symbol in PLUGIN, symbol
 for symbol in ("def changeCity(", "def download_xml(", "def resetWeather_values(", "def fixDate("):
     assert symbol in WEATHER, symbol
-for symbol in ("def resolve_location(", "def geocode_legacy(", "def changeCityAnswer(", "def callbackNewCity("):
+# Enhanced Weather may modernize the old geocode_legacy helper, but the r9/r10
+# migration behaviour itself is mandatory: legacy station names must resolve via
+# Open-Meteo, empty/incomplete results must be guarded, and the city editor path
+# must remain reachable.
+for symbol in ("def resolve_location(", "def changeCityAnswer(", "def callbackNewCity("):
     assert symbol in EWEATHER, symbol
+for token in (
+    "geocoding-api.open-meteo.com/v1/search",
+    "if not rows:",
+    "Incomplete location data:",
+    'endswith(" station")',
+    "config.plugins.setupGlass17.par98.value = new_loc",
+):
+    assert token in EWEATHER, token
 for symbol in ("def calcSun(", "def dewpoint(", "def wmoPicon(", "def wmoText(", "def windDir(", "def openMeteo("):
     assert symbol in WEAUTILS, symbol
 for variant in ('"with PIG":"3"', '"simply PIG":"10"', '"PIG2":"11"', '"PIG4":"13"'):
