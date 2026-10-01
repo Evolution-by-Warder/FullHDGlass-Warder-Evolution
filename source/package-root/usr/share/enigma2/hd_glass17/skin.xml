@@ -648,15 +648,15 @@
     </widget>
     <widget name="HelpWindow" pixmap="hd_glass17/vkey_icon.png" position="240,472" zPosition="1" size="1,1" transparent="1" alphatest="on" />
   </screen>
-  <screen name="AdapterSetupConfiguration" position="center,262" size="1065,618" title="Network Configuration...">
-    <widget source="key_red" render="Label" position="273,538" size="502,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
-    <widget name="menulist" position="30,30" size="480,300" font="Prive3;33" itemHeight="40" zPosition="10" scrollbarMode="showOnDemand" />
-    <ePixmap position="561,19" size="450,309" pixmap="hd_glass17/menu/box.png" zPosition="1" alphatest="blend" />
-    <widget source="description" render="Label" position="30,363" size="990,165" font="Prive3;27" halign="center" valign="center" backgroundColor="un25062748" foregroundColor="grey" transparent="1" />
-    <widget source="IFtext" render="Label" position="220,330" size="180,33" zPosition="10" font="Prive3;30" halign="right" backgroundColor="un25062748" transparent="1" />
-    <widget source="IF" render="Label" position="410,330" size="620,33" zPosition="10" font="Prive3;30" halign="left" backgroundColor="un25062748" transparent="1" />
-    <widget source="Statustext" render="Label" position="31,330" size="172,31" zPosition="10" font="Prive3;30" halign="left" backgroundColor="un25062748" transparent="1" />
-    <widget name="statuspic" pixmaps="hd_glass17/buttons/button_green.png,hd_glass17/buttons/button_green_off.png" position="187,336" zPosition="10" size="22,24" transparent="1" alphatest="on" />
+  <screen name="AdapterSetupConfiguration" position="center,120" size="1500,840" title="Network Configuration...">
+    <widget source="key_red" render="Label" position="525,765" size="450,50" font="Prive3;32" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
+    <widget name="menulist" position="45,45" size="690,480" font="Prive3;34" itemHeight="45" zPosition="10" scrollbarMode="showOnDemand" />
+    <ePixmap position="900,45" size="450,309" pixmap="hd_glass17/menu/box.png" zPosition="1" alphatest="blend" />
+    <widget source="description" render="Label" position="45,570" size="1410,150" font="Prive3;30" halign="center" valign="center" foregroundColor="grey" transparent="1" />
+    <widget source="IFtext" render="Label" position="210,525" size="240,38" zPosition="10" font="Prive3;31" halign="right" transparent="1" />
+    <widget source="IF" render="Label" position="465,525" size="900,38" zPosition="10" font="Prive3;31" halign="left" transparent="1" />
+    <widget source="Statustext" render="Label" position="45,525" size="150,38" zPosition="10" font="Prive3;31" halign="left" transparent="1" />
+    <widget name="statuspic" pixmaps="hd_glass17/buttons/button_green.png,hd_glass17/buttons/button_green_off.png" position="165,532" zPosition="10" size="22,24" transparent="1" alphatest="on" />
   </screen>
   <!-- Audio selection -->
   <screen name="AudioSelection" position="center,240" size="1290,660" title="Audio">
@@ -2110,30 +2110,15 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="restore" position="0,0" size="0,0" />
     <widget name="backup" position="0,0" size="0,0" />
   </screen>
-  <screen name="PluginManager" position="center,center" size="990,675" title="Extensions management">
-    <widget source="key_red" render="Label" position="0,615" zPosition="1" size="247,60" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
-    <widget source="key_green" render="Label" position="247,615" zPosition="1" size="247,60" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
-    <widget source="key_yellow" render="Label" position="495,615" zPosition="1" size="247,60" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
-    <widget source="key_blue" render="Label" position="742,615" zPosition="1" size="247,60" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
-    <widget source="list" render="Listbox" position="75,75" size="840,540" scrollbarMode="showOnDemand">
-      <convert type="TemplatedMultiContent">
-				{"templates":
-					{"default": (76,[
-							MultiContentEntryText(pos = (0, 1), size = (705, 36), font=0, flags = RT_HALIGN_LEFT, text = 0), # index 0 is the name
-							MultiContentEntryText(pos = (30, 37), size = (675, 36), font=1, flags = RT_HALIGN_LEFT, text = 2), # index 2 is the description
-							MultiContentEntryPixmapAlphaTest(pos = (712, 0), size = (72, 72), png = 5), # index 5 is the status pixmap
-						]),
-					"category": (60,[
-							MultiContentEntryText(pos = (45, 0), size = (725, 33), font=0, flags = RT_HALIGN_LEFT, text = 0), # index 0 is the name
-							MultiContentEntryText(pos = (75, 33), size = (725, 24), font=2, flags = RT_HALIGN_LEFT, text = 1), # index 1 is the description
-						])
-					},
-					"fonts": [gFont("Prive3", 33),gFont("Prive3", 25),gFont("Prive3", 24)],
-					"itemHeight": 78
-				}
-				</convert>
+  <screen name="PluginManager" position="center,90" size="1500,900" title="Extensions management">
+    <widget source="status" render="Label" position="45,20" zPosition="10" size="1410,60" halign="center" valign="center" font="Prive3;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
+    <widget source="list" render="Listbox" position="75,95" size="1350,690" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">{"templates":{"default":(84,[MultiContentEntryText(pos=(0,1),size=(1180,38),font=0,flags=RT_HALIGN_LEFT,text=0),MultiContentEntryText(pos=(30,40),size=(1150,36),font=1,flags=RT_HALIGN_LEFT,text=2),MultiContentEntryPixmapAlphaTest(pos=(1230,5),size=(72,72),png=5)]),"category":(66,[MultiContentEntryText(pos=(45,0),size=(1200,36),font=0,flags=RT_HALIGN_LEFT,text=0),MultiContentEntryText(pos=(75,36),size=(1170,27),font=2,flags=RT_HALIGN_LEFT,text=1)])},"fonts":[gFont("Prive3",34),gFont("Prive3",27),gFont("Prive3",25)],"itemHeight":84}</convert>
     </widget>
-    <widget source="status" render="Label" position="0,0" zPosition="10" size="990,75" halign="center" valign="center" font="Prive3;33" transparent="1" shadowColor="black" shadowOffset="-1,-1" />
+    <widget source="key_red" render="Label" position="45,820" zPosition="1" size="330,55" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="405,820" zPosition="1" size="330,55" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="765,820" zPosition="1" size="330,55" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1125,820" zPosition="1" size="330,55" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" transparent="1" />
   </screen>
   <screen name="WebIfConfigScreen" position="135,150" size="1650,840" title="Main Setup">
     <widget name="config" position="15,22" size="1620,720" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
