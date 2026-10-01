@@ -3438,6 +3438,18 @@ if IS_VU:
 			</convert>
     </widget>
 	</screen>
+	<!-- OpenATV 8.x InformationBase: shared FHD geometry for current Information* screens. -->
+	<screen name="Information" position="center,90" size="1650,900" title="Information">
+		<widget name="Image" position="45,45" size="360,270" conditional="Image" alphatest="blend"/>
+		<widget name="information" position="45,45" size="1560,750" font="Regular;31" splitPosition="610" scrollbarMode="showOnDemand"/>
+		<widget source="key_red" render="Label" position="45,825" size="270,52" foregroundColor="red" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+		<widget source="key_green" render="Label" position="330,825" size="270,52" foregroundColor="green" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+		<widget source="key_yellow" render="Label" position="615,825" size="270,52" foregroundColor="yellow" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+		<widget source="key_blue" render="Label" position="900,825" size="270,52" foregroundColor="blue" font="Regular;30" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+		<widget source="key_menu" render="Label" position="1245,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+		<widget source="key_info" render="Label" position="1365,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+		<widget source="key_help" render="Label" position="1485,825" size="105,52" font="Regular;25" halign="center" valign="center" transparent="1"><convert type="ConditionalShowHide"/></widget>
+	</screen>
 	<screen name="AboutOE" position="center,center" size="1205,690">
 		<widget source="lab1" render="Label" position="40,0" size="1290,37" font="Regular;36" transparent="1"/>
 		<widget source="lab2" render="Label" position="40,45" size="1290,37" font="Regular;28" transparent="1"/>
