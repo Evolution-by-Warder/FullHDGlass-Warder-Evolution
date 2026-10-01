@@ -597,3 +597,16 @@ Status: **STATIC/PACKAGE GATE PASS — TEST PACKAGE VERSION REQUIRES EXPLICIT AP
 - global skin geometry/assets were not changed by the package-lifecycle batch; the previously completed 618/611 screen gate, seven intentional front-panel duplicate families, zero `forgroundColor` typos, zero missing internal assets and zero packaged bytecode-artifact results therefore remain applicable.
 - no stable release was created, `main` was not modified and no RECEIVER PASS is claimed.
 - the source tree is ready for a TEST IPK build boundary, but the locked runtime/package version remains 1.0.4. Creating a distinguishable test package requires an explicit approved test-version identifier rather than silently mutating the locked 1.0.4 identity.
+
+
+## Receiver TEST build 1 — 2026-10-01
+
+Status: **BUILD-READY — TEST VERSION 1.0.5-test1 — RECEIVER PASS NOT CLAIMED**
+
+- explicit approval was received to create a distinguishable TEST version while keeping stable 1.0.4 locked.
+- runtime test version is `1.0.5-test1`; opkg package version is `9.50+warder1.0.5-test1`.
+- package identity remains `enigma2-skin-fullhdglass17`; runtime skin path/name and compatibility identifiers are unchanged.
+- stable `update.json` intentionally remains on 1.0.4 and its approved SHA256; the test build is not advertised through the stable updater channel.
+- added `tools/build-test-ipk.sh`, which refuses to build unless both package and runtime versions contain `-test`, refuses unexpected package identity, rejects packaged Python bytecode artifacts, stages lifecycle metadata, builds with `opkg-build` or `dpkg-deb`, and emits a SHA256 sidecar.
+- expected test artifact name: `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test1_all.ipk`.
+- this checkpoint is build-ready only. A generated IPK must still pass archive/control/payload inspection before receiver installation, and only the physical GigaBlue Quad 4K Pro / OpenATV 8.x test can establish RECEIVER PASS.
