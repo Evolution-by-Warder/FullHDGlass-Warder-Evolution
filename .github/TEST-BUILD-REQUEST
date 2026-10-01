@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 49
-Purpose: verified r12 parity and intentional publication of CI-verified TEST package plus manifest for direct receiver updates.
+Revision: 50
+Purpose: verified direct GitHub TEST updates plus persistent last-known Open-Meteo cache across Enigma2 GUI restarts.
