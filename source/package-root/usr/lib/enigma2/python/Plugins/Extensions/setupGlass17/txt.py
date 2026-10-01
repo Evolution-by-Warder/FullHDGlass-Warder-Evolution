@@ -35,7 +35,7 @@ A1T1 = _('Autocolor - use definition from skin.xml or g17Screens.py; selected co
 A1T2 = ' ('+_('Channels from all satelitte positions and sk/cz terrestrial channels')+')'
 NETATMO = _('No plugin Netatmo installed')
 helpTxt = {
-'228-0' : _('Your API-key'),
+'228-0' : _('Legacy weather API key (unused; Open-Meteo needs no API key)'),
 '227-0' : _('The layout is selected automatically calculating by picon size in the infobar'),
 '209-0' : _('Measurement of current network speed is disabled'),
 '209-1' : _('Measurement of current network speed is enabled and is displayed in kb/s'),
@@ -67,8 +67,8 @@ helpTxt = {
 '024-0' : _('Nighttime icons are replaced by daytime icons'),
 '024-1' : _('Nighttime icons are displayed'),
 'ok-1' : _('Press button "OK" to activate selected function'),
-'6517-0' : _('Spinner will be used as default from image'),
-'6517-1' : _('Spinner will be used from Full HD Glass17. Original spinner is moved to dir spinner-ori'),
+'6517-0' : _('System spinner provided by the image is used'),
+'6517-1' : _('Legacy FullHDGlass17 custom spinner is retired; the image spinner is preserved'),
 '460-0' : _('EPG list will be displayed with selected font size'),
 '5017-0' : _('PIP types of channel selections are unavailable'),
 '5017-1' : _('PIP types of channel selections are available but it can generate GSOD in some images'),
@@ -164,8 +164,8 @@ helpTxt = {
 '65-c' : _('Temperature will be displayed in Celsius'),
 '65-f' : _('Temperature will be displayed in Fahrenheit'),
 '66-0' : _('Reconnect time for reading weather data from website in minutes'),
-'67-0' : _('Reading weather data from OpenWeatherMap but you have to enter your API-key from registration on the website openweathermap.org (Registration and base API-key is free) and can be readed from /etc/openweathermap.api'),
-'67-1' : _('Reading weather data from MSN website'),
+'67-0' : _('Weather data is provided by Open-Meteo; no API key is required'),
+'67-1' : _('Legacy weather provider setting is no longer used'),
 '90-0' : _('"Find a city" is disabled'),
 '90-1' : _('"Find a city" is disabled in extensions list'),
 '90-2' : _('"Find a city" is disabled in main menu'),
