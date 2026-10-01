@@ -1775,7 +1775,10 @@ def chnlSelPatch(direct=True):
 		return False
 	shutil.copy2(CHANSEL_FILE, CHANSEL_FILE.replace(".py","-ori17.py"))
 	if not fileExists(CHANSEL_FILE) or not fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		system("rm -rf %s" % (CHANSEL_FILE.replace(".py","-ori2.py")))
+		try:
+			os.remove(CHANSEL_FILE.replace(".py","-ori2.py"))
+		except OSError:
+			pass
 		return False
 	r = open(CHANSEL_FILE, "r")
 	ena = False
@@ -1933,10 +1936,13 @@ def setMenuPyo(what="new17"):
 			h18 = path + "-new18" + x
 			if fileExists(f):
 				if "orig" in whatOld and (not fileExists(h16) or (fileExists(h16) and os.path.getsize(h16) != os.path.getsize(f))) and (not fileExists(h18) or (fileExists(h18) and os.path.getsize(h18) != os.path.getsize(f))):
-					system("cp -f %s %s-%s%s" % (f, path, whatOld, x))
-				system("rm -rf %s" % f)
+					shutil.copy2(f, "%s-%s%s" % (path, whatOld, x))
+				try:
+					os.remove(f)
+				except OSError:
+					pass
 			if fileExists(path + "-" + what + x):
-				system("cp -f %s-%s%s %s" % (path, what, x, f))
+				shutil.copy2("%s-%s%s" % (path, what, x), f)
 	return True
 ##########################################################################################################################
 def chckPath(path):
@@ -2154,14 +2160,22 @@ def setEncodingUser(direction=True):
 	if direction:
 		if fileExists(ENC_U):      		
 			if not fileExists(ENC_O):
-				system("cp -f " + ENC_C + " " + ENC_O)
-			system("rm -rf " + ENC_C)
-			system("cp -f " + ENC_U + " " + ENC_C)
+				shutil.copy2(ENC_C, ENC_O)
+			try:
+				if os.path.lexists(ENC_C):
+					os.unlink(ENC_C)
+				shutil.copy2(ENC_U, ENC_C)
+			except OSError:
+				return False
 			state = True
 	else:
 		if fileExists(ENC_O):      		
-			system("rm -rf " + ENC_C)
-			system("cp -f " + ENC_O + " " + ENC_C)
+			try:
+				if os.path.lexists(ENC_C):
+					os.unlink(ENC_C)
+				shutil.copy2(ENC_O, ENC_C)
+			except OSError:
+				return False
 			state = True
 	return state
 ##########################################################################################################################
@@ -2581,8 +2595,11 @@ class AutoStartChck17():
 		msg = ""
 		ver = '1.0.0'
 		if XCPU != "mipsel":
-			system("rm -rf /usr/bin/btrGen17")
-			system("rm -rf /usr/bin/hdd_temp_hdg17")
+			for target in ("/usr/bin/btrGen17", "/usr/bin/hdd_temp_hdg17"):
+				try:
+					os.remove(target)
+				except OSError:
+					pass
 			system("cp -f /usr/bin/btrGen17-%s /usr/bin/btrGen17" % XCPU)
 			system("cp -f /usr/bin/hdd_temp_hdg17-%s /usr/bin/hdd_temp_hdg17" % XCPU)
 			msg += _("Set binaries") + "\n"
