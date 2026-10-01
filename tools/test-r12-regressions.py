@@ -311,3 +311,8 @@ for screen in ("OPKGMenu", "OPKGSource", "OpkgInstaller", "IpkgInstaller", "Soft
                "SoftwareManagerSetup", "SoftwareUpdate", "RunSoftwareUpdate",
                "PackageAction", "PackageActionLog", "LogManager", "LogManagerViewLog"):
     assert re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN), screen
+
+# Infobar weather must retain last-known Open-Meteo data across GUI restarts.
+WEAUTILS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py").read_text(encoding="utf-8")
+for token in ('_OPENMETEO_CACHE_FILE = "/etc/enigma2/fullhdglass17-openmeteo-cache.json"', 'def _loadOpenMeteoCache():', 'def _saveOpenMeteoCache():', '_loadOpenMeteoCache()', '_saveOpenMeteoCache()', 'cached = _OPENMETEO_CACHE.get(ckey)'):
+    assert token in WEAUTILS, token
