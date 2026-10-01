@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import hashlib
 import re
+import subprocess
+import sys
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PKG = ROOT / "source/package-root"
@@ -21,6 +25,27 @@ country_codes = {x.split("|")[3] for x in rows if len(x.split("|")) > 3 and x.sp
 assert len(country_codes) == 51, len(country_codes)
 assert {"SK", "CZ", "AT", "DE", "PL", "HU", "GB", "VA"}.issubset(country_codes)
 assert "om|Rišňovce|" in CITY
+
+# r12 Enhanced Weather used its own q|... SK/CZ city database. Keep that
+# exact data surface, but derive it deterministically from the authoritative
+# Classic Weather database so the two sources cannot drift.
+generator = ROOT / "tools/generate-ewea-city.py"
+with tempfile.TemporaryDirectory() as tmp:
+    generated = Path(tmp) / "ewea_city_Code-17.txt"
+    subprocess.check_call([sys.executable, str(generator), str(PKG / "etc/city_Code-17.txt"), str(generated)])
+    ewea_bytes = generated.read_bytes()
+    assert hashlib.sha256(ewea_bytes).hexdigest() == "063af4eb43c55ebadf172bacf96e1085f66e2bf2c3d285a484e9251a32a2e89c"
+    ewea_rows = [x for x in ewea_bytes.decode("utf-8").splitlines() if x.startswith("q|")]
+    assert len([x for x in ewea_rows if x.split("|")[2] == "SK"]) == 4208
+    assert len([x for x in ewea_rows if x.split("|")[2] == "CZ"]) == 6258
+    assert "q|Rišňovce|SK||Slovakia|Nitra" in ewea_rows
+
+POSTINST = (ROOT / "source/control/postinst").read_text(encoding="utf-8")
+BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
+assert 'copy_default_if_missing /etc/ewea_city_Code-17.txt /etc/ewea_city_Code.txt' in POSTINST
+assert 'generate-ewea-city.py' in BUILD_TEST
+assert 'self.fileName = "/etc/ewea_city_Code.txt"' in EWEATHER
+
 assert "unicodedata.normalize" in PLUGIN
 assert "_citySearchKey" in PLUGIN
 assert "geocoding-api.open-meteo.com/v1/search" in PLUGIN
