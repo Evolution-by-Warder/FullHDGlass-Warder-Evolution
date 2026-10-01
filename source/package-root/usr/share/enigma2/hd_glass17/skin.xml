@@ -1518,7 +1518,21 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="number" position="270,25" size="150,42" halign="right" font="Prive3;33" />
     <widget name="servicenumber" position="270,25" size="150,42" halign="right" font="Prive3;33" />
     <widget name="servicename" position="45,90" size="810,50" font="Prive3;36" halign="center" valign="center" />
-  </screen><screen name="NameZap" position="center,center" size="405,90" title="Channel">
+  </screen>
+  <screen name="NumberZapWithName" position="center,465" size="900,180" title="Channel">
+    <widget name="channel" position="45,25" size="210,42" font="Prive3;33" />
+    <widget name="number" position="270,25" size="150,42" halign="right" font="Prive3;33" />
+    <widget name="servicenumber" position="270,25" size="150,42" halign="right" font="Prive3;33" />
+    <widget name="servicename" position="45,90" size="810,50" font="Prive3;36" halign="center" valign="center" />
+  </screen>
+  <screen name="NumberZapPicon" position="center,435" size="1050,240" title="Channel">
+    <widget source="Service" render="Picon" position="45,45" size="180,108" alphatest="on" />
+    <widget name="channel" position="270,35" size="210,42" font="Prive3;33" />
+    <widget name="number" position="495,35" size="150,42" halign="right" font="Prive3;33" />
+    <widget name="servicenumber" position="495,35" size="150,42" halign="right" font="Prive3;33" />
+    <widget name="servicename" position="270,105" size="735,60" font="Prive3;36" halign="left" valign="center" />
+  </screen>
+  <screen name="NameZap" position="center,center" size="405,90" title="Channel">
 			<widget name="name" position="4,22" size="396,37" halign="left" font="Prive3;33" />
 		</screen>
   <screen name="NumericalTextInputHelpDialog" position="522,630" size="906,246" zPosition="2" backgroundColor="un202020" flags="wfNoBorder">
