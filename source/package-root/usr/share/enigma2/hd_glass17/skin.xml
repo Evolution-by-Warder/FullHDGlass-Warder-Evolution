@@ -1776,6 +1776,42 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     <widget name="end" position="1062,225" size="108,52" font="Prive3;37" />
     <widget name="apply" position="315,360" size="375,52" />
   </screen>
+  <!-- Native OpenATV timer overview names. TimerEditList remains below as the legacy fallback. -->
+  <screen name="TimerOverview" position="135,150" size="1650,840" title="Timer Overview">
+    <widget name="timerlist" position="15,30" size="1620,610" itemHeight="105" scrollbarMode="showOnDemand" />
+    <widget name="description" position="30,655" size="1590,95" font="Prive3;30" />
+    <widget source="key_info" render="Label" position="30,772" size="200,42" font="Prive3;30" halign="left" transparent="1" />
+    <widget source="key_red" render="Label" position="245,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="595,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="945,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1295,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+  <screen name="SchedulerOverview" position="135,150" size="1650,840" title="Scheduler Overview">
+    <widget name="timerlist" position="15,30" size="1620,610" itemHeight="105" scrollbarMode="showOnDemand" />
+    <widget name="description" position="30,655" size="1590,95" font="Prive3;30" />
+    <widget source="key_info" render="Label" position="30,772" size="200,42" font="Prive3;30" halign="left" transparent="1" />
+    <widget source="key_red" render="Label" position="245,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="595,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="945,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1295,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+  <screen name="RecordTimerOverview" position="135,150" size="1650,840" title="RecordTimer Overview">
+    <widget name="timerlist" position="15,30" size="1620,610" itemHeight="105" scrollbarMode="showOnDemand" />
+    <widget name="description" position="30,655" size="1590,95" font="Prive3;30" />
+    <widget source="key_info" render="Label" position="30,772" size="200,42" font="Prive3;30" halign="left" transparent="1" />
+    <widget source="key_red" render="Label" position="245,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="595,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="945,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1295,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+  <screen name="ConflictTimerOverview" position="135,150" size="1650,840" title="ConflictTimer Overview">
+    <widget name="timerlist" position="15,30" size="1620,610" itemHeight="105" scrollbarMode="showOnDemand" />
+    <widget name="description" position="30,655" size="1590,95" font="Prive3;30" />
+    <widget source="key_info" render="Label" position="30,772" size="200,42" font="Prive3;30" halign="left" transparent="1" />
+    <widget source="key_red" render="Label" position="245,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_yellow" render="Label" position="945,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1295,772" size="335,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
   <screen name="TimerEditList" position="135,150" size="1650,840" title="Timer Editor">
     <widget name="timerlist" position="15,30" size="1620,735" itemHeight="105" scrollbarMode="showOnDemand" />
     <widget name="key_red" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
