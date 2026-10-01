@@ -425,7 +425,7 @@ assert 'backgroundColor="transparent"' in rds
 assert 'zPosition="-2"' in rds
 
 # TEST24 Cool-like PIG guide geometry.
-pig24 = re.search(r'<screen\\b[^>]*name="GraphicalEPGPIG"[\\s\\S]*?</screen>', SKIN).group(0)
+pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pig24 and 'zPosition="3"' in pig24
 assert 'NumberOfRows="15"' in pig24
 assert 'position="135,387"' in pig24 and 'position="15,423" size="1845,495"' in pig24
