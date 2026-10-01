@@ -8921,7 +8921,10 @@ class cityFinder(Screen):
 		self['myCity'] = thumbList(self.citylist)	
 		self['list'].l.setItemHeight(301)
 		self['info'] = Label(_("up")+"/"+_("down")+" P+/- or Bqt +/-")
-		self.findC = True		
+		self.findC = True
+		self.cityLevel = "root"
+		self.activeCountry = None
+		self.countryNames = {}
 		self.selectedLine = None
 		self.oldLine = None
 		self["actions"] = ActionMap(['WizardActions', 'ColorActions','VirtualKeyboardActions','ChannelSelectBaseActions'],
@@ -8956,15 +8959,25 @@ class cityFinder(Screen):
 
 	def exit(self):
 		if not self.findC:
-			self["key_yellow"].setText(self.allLabels[0])   
+			self["key_yellow"].setText(self.allLabels[0])
 			self["key_blue"].setText(self.allLabels[2])
 			self.findC = True
-			self['list'].selectionEnabled(1)       
-			self['myCity'].selectionEnabled(0)  
+			self['list'].selectionEnabled(1)
+			self['myCity'].selectionEnabled(0)
 			self["key_green"].setText(self.allLabels[4])
+		elif self.cityLevel == "cities":
+			if self.activeCountry in ("SK", "CZ"):
+				self.cityLevel = "root"
+			else:
+				self.cityLevel = "europe"
+			self.activeCountry = None
+			self.generateData()
+		elif self.cityLevel == "europe":
+			self.cityLevel = "root"
+			self.generateData()
 		else:
-			self.close(0)		
-		
+			self.close(0)
+
 	def KeyText(self):
 		from Screens.VirtualKeyBoard import VirtualKeyBoard
 		if self.findC:
@@ -8984,20 +8997,23 @@ class cityFinder(Screen):
 	def save(self):
 		if self.findC:
 			selection = self["list"].getCurrent()
-			if selection and str(selection[0]) != "*":
-				value = str(selection[0])
-				if value.startswith("country|"):
-					country = value.split("|", 1)[1]
-					self.list = []
-					for cc, display, raw in self._loadLocalCities():
-						if cc == country:
-							item = [raw]
-							item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display))
-							self.list.append(item)
-					self["list"].l.setList(self.list)
-					self.setWindowTitle(": " + country)
-				else:
-					self.appMCC(value)
+			if not selection or str(selection[0]) == "*":
+				return
+			value = str(selection[0])
+			if value == "group|SK":
+				self.cityLevel, self.activeCountry = "cities", "SK"
+				self.generateData()
+			elif value == "group|CZ":
+				self.cityLevel, self.activeCountry = "cities", "CZ"
+				self.generateData()
+			elif value == "group|EUROPE":
+				self.cityLevel, self.activeCountry = "europe", None
+				self.generateData()
+			elif value.startswith("country|"):
+				self.cityLevel, self.activeCountry = "cities", value.split("|", 1)[1]
+				self.generateData()
+			else:
+				self.appMCC(value)
 		else:
 			self.session.openWithCallback(self.addNewLine, InputBox, title=self.allLabels[5], text="                                                 ", maxSize=120, type=Input.TEXT)
 
@@ -9042,17 +9058,25 @@ class cityFinder(Screen):
 
 	def _loadLocalCities(self):
 		cities = []
+		self.countryNames = {}
 		try:
 			db = "/etc/city_Code-17.txt" if os.path.isfile("/etc/city_Code-17.txt") else "/etc/city_Code.txt"
+			currentName = ""
 			with open(db, "r") as f:
 				for raw in f:
+					line = raw.strip()
+					if line.startswith("# "):
+						currentName = line[2:].strip()
+						continue
 					x = _cityLine(raw)
 					if not x:
 						continue
 					country = ""
-					if raw.startswith("om|"):
-						p = raw.strip().split("|")
+					if line.startswith("om|"):
+						p = line.split("|")
 						country = p[3].upper() if len(p) > 3 else ""
+					if country and currentName:
+						self.countryNames[country] = currentName
 					cities.append((country, x[1], x[2]))
 		except Exception as e:
 			Writelog("city database: %s" % e)
@@ -9093,7 +9117,8 @@ class cityFinder(Screen):
 			for country, display, value in local:
 				if needle in _citySearchKey(display):
 					item = [value]
-					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display + ((" [" + country + "]") if country else "")))
+					label = display + ((" [" + self.countryNames.get(country, country) + "]") if country else "")
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
 					self.list.append(item)
 			if not self.list:
 				for label, value in self._onlineCitySearch(what):
@@ -9101,18 +9126,26 @@ class cityFinder(Screen):
 					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
 					self.list.append(item)
 			self.setWindowTitle(": " + what)
+		elif self.cityLevel == "root":
+			for value, label in (("group|SK", _("Slovakia")), ("group|CZ", _("Czechia")), ("group|EUROPE", _("Countries of Europe"))):
+				item = [value]
+				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=label))
+				self.list.append(item)
+			self.setWindowTitle()
+		elif self.cityLevel == "europe":
+			countries = sorted(set(x[0] for x in local if x[0] and x[0] not in ("SK", "CZ")), key=lambda cc: _citySearchKey(self.countryNames.get(cc, cc)))
+			for country in countries:
+				item = ["country|" + country]
+				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=self.countryNames.get(country, country)))
+				self.list.append(item)
+			self.setWindowTitle(": " + _("Countries of Europe"))
 		else:
-			countries = sorted(set(x[0] for x in local if x[0]))
-			if countries:
-				for country in countries:
-					item = ["country|" + country]
-					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0xffcc00",16), color=int("0xffcc00",16), text=country))
-					self.list.append(item)
-			else:
-				for country, display, value in local:
+			for country, display, value in local:
+				if country == self.activeCountry:
 					item = [value]
 					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display))
 					self.list.append(item)
+			self.setWindowTitle(": " + self.countryNames.get(self.activeCountry, self.activeCountry or ""))
 		self.citylist = []
 		self.list2 = []
 		try:
@@ -9139,6 +9172,7 @@ class cityFinder(Screen):
 			self.list.append(item)
 		self["list"].l.setList(self.list)
 		self["list"].l.setItemHeight(45)
+		self["key_blue"].setText(self.allLabels[2])
 
 
 	def addNewLine(self, tmp):
