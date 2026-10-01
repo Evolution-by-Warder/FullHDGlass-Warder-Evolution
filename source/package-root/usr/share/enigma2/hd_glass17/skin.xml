@@ -7281,4 +7281,10 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget name="cursor" position="0,0" size="12,27" pixmap="sliders/position_arrow.png" alphatest="blend" zPosition="2" />
     <widget name="length" position="1320,20" size="165,45" font="Prive3;30" transparent="1" valign="center" />
   </screen>
+
+  <screen name="PackageFeedSelection" position="center,240" size="1350,600" title="Package Feed Selection">
+    <widget name="feeds" position="45,30" size="1260,465" font="Prive3;32" itemHeight="42" scrollbarMode="showOnDemand" />
+    <widget source="key_red" render="Label" position="45,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="480,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="green" transparent="1" />
+  </screen>
 </skin>
