@@ -841,14 +841,14 @@ self.autoResize()
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   </screen>
   <screen name="EventView" position="center,150" size="1650,840" title="Eventview">
-    <widget name="channel" position="60,15" size="510,37" font="Prive3;34"  backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-    <widget name="datetime" position="570,15" size="510,37" font="Prive3;34" halign="center"  backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-    <widget name="duration" position="1080,15" size="510,37" font="Prive3;34" halign="right"  backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-    <widget name="epg_description" position="60,90" size="1560,660" font="Prive4;34" backgroundColor="transpBlack" transparent="1" />
-    <widget name="key_red" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
-    <widget name="key_green" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
-    <widget name="key_yellow" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
-    <widget name="key_blue" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+    <widget name="channel" position="60,15" size="510,37" font="Prive3;34" transparent="1" />
+    <widget name="datetime" position="570,15" size="510,37" font="Prive3;34" halign="center" transparent="1" />
+    <widget name="duration" position="1080,15" size="510,37" font="Prive3;34" halign="right" transparent="1" />
+    <widget name="epg_description" position="60,90" size="1560,650" font="Prive4;34" transparent="1" />
+    <widget source="key_red" render="Label" position="7,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="832,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1245,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
   <screen name="GraphMultiEPG" position="120,135" size="1680,864" title="Electronic Program Guide">
     <widget name="timeline_text" position="0,15" size="1200,45" backgroundColor="black" transparent="1" />
@@ -1266,26 +1266,20 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
 		<parameter name="MovieListMinimalTitle" value="0,6,1300,40" />
 		<parameter name="MovieListMinimalLength" value="1300,6,400,40" />
 	</parameters>
-	<screen name="MovieSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="background">
-		<widget name="freeDiskSpace" position="60,60" size="1800,40" font="Prive4;34" backgroundColor="background" valign="center" halign="center" transparent="1" />
-		<widget name="waitingtext" position="60,120" size="1800,500" zPosition="4" font="Prive4;38" backgroundColor="background" halign="center" valign="center" />
-		<widget name="list" position="60,120" size="1800,600" font="Prive4;34" itemHeight="75" zPosition="2" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
-		<eLabel position="60,740" size="1800,2" zPosition="1" transparent="0" backgroundColor="grey"/>
-		<widget source="Service" render="Label" position="60,760" zPosition="1" foregroundColor="yellow" size="1800,40" font="Prive4;35" halign="right" backgroundColor="background" transparent="1">
-		<convert type="ServiceTime">Duration</convert>
-		<convert type="ClockToText">AsLength</convert>
-		</widget>
-		<widget source="Service" render="Label" position="60,760" zPosition="2" foregroundColor="green" size="500,40" font="Prive4;34" valign="top" halign="left" backgroundColor="background" transparent="1">
-		<convert type="MovieInfo">RecordServiceName</convert>
-		</widget>
-		<widget source="Service" render="Label" position="60,810" zPosition="1" size="1800,158" font="Prive4;32" valign="top" backgroundColor="background" transparent="1">
-		<convert type="EventName">ExtendedDescription</convert>
-		</widget>
-    <widget name="key_red" position="0,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="red" />
-    <widget name="key_green" position="480,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="green" />
-    <widget name="key_yellow" position="960,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="yellow" />
-    <widget name="key_blue" position="1440,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="blue" />
-	</screen>
+  <screen name="MovieSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="background">
+    <widget name="freeDiskSpace" position="60,60" size="1800,40" font="Prive4;34" backgroundColor="background" valign="center" halign="center" transparent="1" />
+    <widget name="waitingtext" position="60,120" size="1800,600" zPosition="4" font="Prive4;38" backgroundColor="background" halign="center" valign="center" />
+    <widget name="chosenletter" position="60,120" size="1800,600" zPosition="5" font="Prive4;80" halign="center" valign="center" transparent="1" />
+    <widget name="list" position="60,120" size="1800,600" font="Prive4;34" itemHeight="75" zPosition="2" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
+    <eLabel position="60,740" size="1800,2" zPosition="1" backgroundColor="grey" />
+    <widget source="Service" render="Label" position="60,760" zPosition="1" foregroundColor="yellow" size="1800,40" font="Prive4;35" halign="right" transparent="1"><convert type="ServiceTime">Duration</convert><convert type="ClockToText">AsLength</convert></widget>
+    <widget source="Service" render="Label" position="60,760" zPosition="2" foregroundColor="green" size="500,40" font="Prive4;34" halign="left" transparent="1"><convert type="MovieInfo">RecordServiceName</convert></widget>
+    <widget source="Service" render="Label" position="60,810" zPosition="1" size="1800,158" font="Prive4;32" valign="top" transparent="1"><convert type="EventName">ExtendedDescription</convert></widget>
+    <widget source="key_red" render="Label" position="0,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="480,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="960,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1440,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="blue" transparent="1" />
+  </screen>
   <!-- SuomipoekaMenu Anfang -->
   <screen name="SuomipoekaMenu" position="135,150" size="1650,840" title="SuomipoekaMenu">
     <widget name="config" position="15,5" size="1620,760" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
