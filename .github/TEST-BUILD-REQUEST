@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test25
-Revision: 89
-Purpose: TEST25 clean GraphicalEPGPIG header and automatic 3-second GUI restart after successful update.
+Revision: 90
+Purpose: Trigger corrected TEST25 EPG and updater validation.
