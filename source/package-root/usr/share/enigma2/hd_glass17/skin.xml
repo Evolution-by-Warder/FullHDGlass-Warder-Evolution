@@ -5711,25 +5711,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget name="ci1_text" position="526,951" size="867,42" backgroundColor="black" valign="center" halign="left" zPosition="4" foregroundColor="yellow" font="Regular;30"/>
       </screen>
 <!-- videodb -->
-  <screen  name="PlaylistItemSetup" position="0,0" backgroundColor="#FF000000" flags="wfNoBorder" title="VideoDB Playlist">
-    <eLabel backgroundColor="#0066FF" position="10,10" size="830,80" zPosition="-1" />
-    <eLabel position="10,100" size="830,860" zPosition="-1" />
-    <eLabel backgroundColor="#0066FF" position="10,970" size="830,100" zPosition="-1" />
-    <eLabel backgroundColor="#333333" position="28,22" size="102,15" />
-    <eLabel backgroundColor="#333333" position="28,42" size="102,15" />
-    <eLabel backgroundColor="#333333" position="28,62" size="102,15" />
-    <widget backgroundColor="#0066FF" font="Regular;47" foregroundColor="#00FFFF" position="150,25" render="Label" size="690,52" source="Title" />
-    <widget enableWrapAround="1" name="config" position="20,120" scrollbarMode="showOnDemand" size="810,810" />
-    <ePixmap pixmap="hd_glass17/skin_default/buttons/key_red.png" position="20,975" size="20,40" />
-    <ePixmap pixmap="hd_glass17/skin_default/buttons/key_green.png" position="20,1025" size="20,40" />
-    <ePixmap pixmap="hd_glass17/skin_default/buttons/key_yellow.png" position="350,975" size="20,40" />
-    <ePixmap pixmap="hd_glass17/skin_default/buttons/key_blue.png" position="350,1025" size="20,40" />
-    <widget backgroundColor="#0066FF" font="Regular;32" foregroundColor="#00FFFF" halign="left" position="50,975" render="Label" size="300,40" source="key_red" />
-    <widget backgroundColor="#0066FF" font="Regular;32" foregroundColor="#00FFFF" halign="left" position="50,1025" render="Label" size="300,40" source="key_green" />
-    <widget backgroundColor="#0066FF" font="Regular;32" foregroundColor="#00FFFF" halign="left" position="380,975" render="Label" size="300,40" source="key_yellow" />
-    <widget backgroundColor="#0066FF" font="Regular;32" foregroundColor="#00FFFF" halign="left" position="380,1025" render="Label" size="300,40" source="key_blue" />
-    <ePixmap pixmap="hd_glass17/skin_default/buttons/key_exit.png" position="750,1025" size="80,40" />
-    </screen>
+  
    
   <screen name="TVCoverflow2D" position="0,0" size="1920,1080" flags="wfNoBorder" title="TV Series" backgroundColor="#FF000000">
     <eLabel backgroundColor="#30000000" position="0,1010" size="1920,70" zPosition="-1" />
