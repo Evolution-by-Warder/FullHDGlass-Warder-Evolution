@@ -6954,10 +6954,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			return json.loads(response.read().decode("utf-8"))
 
 	def _warderDownload(self, url, target):
+		official_package_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
+		if not str(url).startswith(official_package_prefix):
+			raise ValueError("unsafe package URL")
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion()})
 		sha = hashlib.sha256()
 		with urlopen(req, timeout=30) as response, open(target, "wb") as out:
-			if not str(response.geturl()).startswith("https://"):
+			if not str(response.geturl()).startswith(official_package_prefix):
 				raise ValueError("unsafe package redirect")
 			while True:
 				chunk = response.read(128 * 1024)
