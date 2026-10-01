@@ -7316,4 +7316,29 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="30,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="435,525" size="390,45" font="Prive3;32" halign="center" foregroundColor="green" transparent="1" />
   </screen>
+
+  <screen name="TaskView" position="center,300" size="1500,480" title="Task View">
+    <widget source="name" render="Label" position="30,25" size="1440,50" font="Prive3;34" />
+    <widget source="task" render="Label" position="30,85" size="1440,45" font="Prive3;30" />
+    <widget source="progress" render="Progress" position="30,145" size="1440,35" borderWidth="2" />
+    <widget source="progress" render="Label" position="30,145" size="1440,35" font="Prive3;28" halign="center" transparent="1" zPosition="1"><convert type="ProgressToText" /></widget>
+    <widget source="status" render="Label" position="30,195" size="1440,45" font="Prive3;30" />
+    <widget name="config" position="30,250" size="1440,60" font="Prive3;30" itemHeight="45" />
+    <widget source="key_red" render="Label" position="30,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="390,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="750,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1110,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+  <screen name="JobView" position="center,300" size="1500,480" title="Task View">
+    <widget source="name" render="Label" position="30,25" size="1440,50" font="Prive3;34" />
+    <widget source="task" render="Label" position="30,85" size="1440,45" font="Prive3;30" />
+    <widget source="progress" render="Progress" position="30,145" size="1440,35" borderWidth="2" />
+    <widget source="progress" render="Label" position="30,145" size="1440,35" font="Prive3;28" halign="center" transparent="1" zPosition="1"><convert type="ProgressToText" /></widget>
+    <widget source="status" render="Label" position="30,195" size="1440,45" font="Prive3;30" />
+    <widget name="config" position="30,250" size="1440,60" font="Prive3;30" itemHeight="45" />
+    <widget source="key_red" render="Label" position="30,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+    <widget source="key_green" render="Label" position="390,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="750,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget source="key_blue" render="Label" position="1110,390" size="330,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
 </skin>
