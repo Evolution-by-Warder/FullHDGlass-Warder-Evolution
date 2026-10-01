@@ -412,3 +412,19 @@ Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
 - FactoryReset, FlashExpander, HDMICECSetup, KeyboardSelection, InputDeviceSetup and RemoteControlType are Setup-derived in current OpenATV and intentionally remain on the shared Warder Setup unless a verified specialized runtime requirement appears.
 - InputDeviceSelection, HarddiskSelection, ImageBackup, BoxPortal, ButtonSetup/ButtonSetupSelect, CronTimers and FixedMenu already have direct or appropriate shared coverage in the current skin.
 - no RECEIVER PASS is claimed.
+
+
+## Core Screens reconciliation batch — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+Current OpenATV master was checked for LogManager, OSDCalibration, ParentalControlSetup, PiPSetup, QuadPiP, QuickMenu, RTLSDRSetup, Recording, RestartNetwork, Satconfig, ScanSetup, ScriptRunner, SetupFallbacktuner, SleepTimer, SwapManager, TaskList, TaskView, Time and TimeDateInput.
+
+Results:
+- `OSDCalibration` intentionally carries its own resolution-specific embedded pixel-accurate skin and explicitly refuses the standard Setup skin; no external override was added.
+- `RTLSDRSetup`, `RecordingSettings`, `SetupFallbacktuner`, `SleepTimer` and `Time` are current Setup-derived screens and remain on the shared Warder Setup path.
+- `ParentalControlSetup` and `ParentalControlChangePin` already expose Setup fallback in their current runtime skinName lists.
+- `QuadPiP` deliberately uses `PictureInPicture`; `RestartNetwork` deliberately uses runtime skinName `DUMMY`.
+- direct current coverage was confirmed for LogManager/LogManagerViewLog, PiPSetup/PictureInPicture, QuickMenu, NimSetup/NimSelection/SelectSatsEntryScreen, ScanSetup/ScanSimple, ScriptRunner, Swap, TaskList/TaskListScreen and TaskView/JobView.
+- `TimeDateInput` is a legacy third-party compatibility screen with a small explicit `config` + red/green contract. It is recorded as a fallback-gap candidate, but no speculative override was added in this batch.
+- no RECEIVER PASS is claimed.
