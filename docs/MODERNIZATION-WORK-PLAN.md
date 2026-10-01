@@ -703,3 +703,13 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - migrated city-list edit and append operations for `/etc/my_city_Code.txt` to atomic replacement; append success is reported only after the atomic commit succeeds and the resulting file contains the requested entry.
 - corrected the city append newline during post-change verification before the TEST candidate reached CI/receiver testing.
 - TEST runtime-safety gate now rejects reintroduction of direct truncate/append writes for these FullHDGlass state files.
+
+
+## Command execution and legacy patch safety batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- the retained non-OpenATV ChannelSelection compatibility patch now commits its modified Python source atomically instead of truncating the live image file before validation; OpenATV remains fully blocked from this legacy patch.
+- bitrate helper startup now passes `/usr/bin/btrGen17` and all stream-derived parameters as separate `eConsoleAppContainer.execute()` argv values instead of constructing one command string.
+- Warder updater installation now passes `opkg`/`dpkg` and the verified local package path as separate argv values; manual shell quoting and command-string execution were removed.
+- runtime-safety regression gate rejects return of shell-string execution for both bitrate helper and updater installer.
