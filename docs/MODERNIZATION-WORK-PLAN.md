@@ -508,3 +508,15 @@ Status: **STATIC REVIEW IN PROGRESS — RECEIVER TEST REQUIRED**
 - legacy `eTimer.timeout.get().append(...)` occurs only as compatibility fallback behind the modern `.timeout.connect(...)` path in the checked renderer code; it is retained intentionally for cross-image compatibility.
 - setupGlass17 embedded layouts use the expected Enigma2 `halign`/`valign` skin attributes and contain no `forgroundColor` typo.
 - no RECEIVER PASS is claimed.
+
+
+## Python 3 helper modernization — 2026-10-01
+
+Status: **STATIC REVIEW PASS — RECEIVER TEST REQUIRED**
+
+- completed the next custom renderer/converter compatibility pass and verified that every `g17*` renderer/converter referenced directly by the global skin exists in the package tree.
+- retained legacy custom components that are not referenced by the global skin because they can be selected dynamically by FullHDGlass17 extra-screen/style/runtime paths; no destructive cleanup was performed.
+- confirmed the two `unichr()` fallbacks in g17ServiceNum/g17HDDstate are guarded by `ISP38 == False`; current Python 3/OpenATV execution imports `DG` from the Python-3 helper instead.
+- modernized `setupGlass17/py38.py`: removed its unnecessary external `six` dependency, uses native Python 3 `dict.items()` and `chr()`, corrected the script/style DOTALL regex for current Python `re`, and removed an invalid text `.decode()` fallback.
+- this change does not alter screen geometry, skin authorship, package identity or the locked 1.0.4 artifact.
+- no RECEIVER PASS is claimed.
