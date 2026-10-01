@@ -11,9 +11,10 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT HUP INT TERM
 
 test "$(ar t "$IPK" | tr '\n' ' ')" = "debian-binary control.tar.gz data.tar.gz "
+IPK_ABS="$(CDPATH= cd -- "$(dirname -- "$IPK")" && pwd)/$(basename "$IPK")"
 (
   cd "$TMP"
-  ar x "$OLDPWD/$IPK"
+  ar x "$IPK_ABS"
 )
 test "$(cat "$TMP/debian-binary")" = "2.0"
 (
