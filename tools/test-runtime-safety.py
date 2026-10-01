@@ -56,6 +56,11 @@ if "if isATV:" not in menu_guard:
 encoding_guard = plugin[plugin.find("def setEncodingUser"):plugin.find("def setCFGoff")]
 if "if isATV:" not in encoding_guard:
     fail("plugin.py: OpenATV encoding.conf ownership guard missing")
+fifo_guard = plugin[plugin.find("def chckFifo"):plugin.find("def chckPigFont")]
+if "if isATV:" not in fifo_guard:
+    fail("plugin.py: OpenATV ServiceScan.py ownership guard missing")
+if "def _atomicWriteText(" not in plugin or 'open(SKINXML,"w")' in plugin or "open(SKINXML, 'w')" in plugin:
+    fail("plugin.py: generated skin.xml writes must remain atomic")
 official_packages = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
 if plugin.count(official_packages) < 2:
     fail("plugin.py: updater is not pinned at both metadata and pre-install gates")
