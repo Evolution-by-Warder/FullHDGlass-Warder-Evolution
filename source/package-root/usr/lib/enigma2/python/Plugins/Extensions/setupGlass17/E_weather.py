@@ -395,15 +395,18 @@ class mainmenu(Screen):
 		except: pass
 		self.animTimer.start(a)
 
-	def exit(self):        							
+	def exit(self):
+		if self.waitTimer is not None and self.waitTimer.isActive():
+			self.waitTimer.stop()
 		if ENA_ANIM:
 			if self.animTimer.isActive():
 				self.animTimer.stop()
-			self.pics = None	
-			self.slide = None		
+			self.pics = None
+			self.slide = None
+			self.animTimer_conn = None
 		self.waitTimer_conn = None
 		self.waitTimer = None
-		self.close()			
+		self.close()
 
 	def blueKey(self):
 		if ENAACC:
