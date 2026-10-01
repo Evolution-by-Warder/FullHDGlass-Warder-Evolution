@@ -50,6 +50,7 @@ jobs:
           ./tools/test-package-lifecycle.sh
           python3 tools/test-runtime-safety.py
           python3 tools/test-version-order.py
+          python3 tools/test-r12-regressions.py
 
       - name: Build TEST IPK
         shell: bash
