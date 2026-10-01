@@ -5,11 +5,11 @@ from Components.config import config
 class g17ConditionalShowHide(Converter, object):
 	def __init__(self, argstr):
 		Converter.__init__(self, argstr)
-		args = argstr.split(',')
+		args = [x.strip() for x in argstr.replace(';', ',').split(',')]
 		self.invert = "Invert" in args
 		self.blink = "Blink" in args
+		self.blinktime = next((int(x) for x in args if x.isdigit()), 500)
 		if self.blink:
-			self.blinktime = 500
 			self.timer = eTimer()
 			self.timer.callback.append(self.blinkFunc)
 		else:
@@ -34,7 +34,7 @@ class g17ConditionalShowHide(Converter, object):
 	def calcVisibility(self):
 		b = self.source.boolean
 		if b is None:
-			return True
+			b = False
 		b ^= self.invert
 		return b
 
@@ -52,6 +52,7 @@ class g17ConditionalShowHide(Converter, object):
 		else:
 			for x in self.downstream_elements:
 				x.visible = vis
+		Converter.changed(self, what)
 
 	def connectDownstream(self, downstream):
 		Converter.connectDownstream(self, downstream)
