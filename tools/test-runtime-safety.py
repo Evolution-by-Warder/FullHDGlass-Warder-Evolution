@@ -41,6 +41,11 @@ if "install_opener(" in plugin:
     fail("plugin.py: downloader must not replace the process-global urllib opener")
 if "http://weather.service.msn.com/" in plugin:
     fail("plugin.py: city lookup regressed to cleartext HTTP")
+official_packages = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
+if plugin.count(official_packages) < 2:
+    fail("plugin.py: updater is not pinned at both metadata and pre-install gates")
+if "unsafe manifest redirect" not in plugin or "unsafe package redirect" not in plugin:
+    fail("plugin.py: updater HTTPS redirect guards missing")
 for owned in (
     '/etc/enigma2/skin_user-172.xml',
     '/etc/enigma2/skin_user-173.xml',
