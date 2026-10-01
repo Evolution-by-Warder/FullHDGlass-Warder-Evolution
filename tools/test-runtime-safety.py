@@ -61,6 +61,14 @@ if "if isATV:" not in fifo_guard:
     fail("plugin.py: OpenATV ServiceScan.py ownership guard missing")
 if "def _atomicWriteText(" not in plugin or 'open(SKINXML,"w")' in plugin or "open(SKINXML, 'w')" in plugin:
     fail("plugin.py: generated skin.xml writes must remain atomic")
+for direct_write in (
+    'open(SCREENSPATH + "g17Screens.cfg","w")',
+    'open(config.plugins.setupGlass17.par144.value+"hdg17.conf","w")',
+    'open("/etc/my_city_Code.txt", \'w\')',
+    'open("/etc/my_city_Code.txt","a")',
+):
+    if direct_write in plugin:
+        fail("plugin.py: non-atomic FullHDGlass state write returned: " + direct_write)
 official_packages = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"
 if plugin.count(official_packages) < 2:
     fail("plugin.py: updater is not pinned at both metadata and pre-install gates")
