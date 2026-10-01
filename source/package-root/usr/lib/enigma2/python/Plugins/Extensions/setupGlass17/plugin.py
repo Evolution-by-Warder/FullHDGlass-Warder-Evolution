@@ -9122,14 +9122,15 @@ class cityFinder(Screen):
 		return err
 
 	def appMCC(self, tmp):
+		path = "/etc/my_city_Code.txt"
+		written = False
 		try:
-			path = "/etc/my_city_Code.txt"
 			old = open(path, "r").read() if os.path.exists(path) else ""
-			_atomicWriteText(path, old + "%s\\n" % str(tmp))
+			written = _atomicWriteText(path, old + "%s\n" % str(tmp))
 		except (IOError, OSError):
 			pass
-		f = open("/etc/my_city_Code.txt","r").read()
-		if f.find(tmp) != -1: 
+		f = open(path, "r").read() if os.path.exists(path) else ""
+		if written and f.find(tmp) != -1: 
 			self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
 			self.generateData()
 		else:           
