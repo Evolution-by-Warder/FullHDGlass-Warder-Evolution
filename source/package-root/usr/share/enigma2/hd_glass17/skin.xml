@@ -7862,7 +7862,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_green" render="Label" position="510,120" size="330,45" font="Prive3;30" foregroundColor="green" halign="center" />
     <widget source="key_yellow" render="Label" position="930,120" size="330,45" font="Prive3;30" foregroundColor="yellow" halign="center" />
   </screen>
-</skin>  <screen name="FlashManager" position="center,120" size="1650,840" title="Flash Manager">
+  <screen name="FlashManager" position="center,120" size="1650,840" title="Flash Manager">
     <widget name="list" position="30,30" size="1590,480" scrollbarMode="showOnDemand" />
     <widget source="description" render="Label" position="30,525" size="1590,180" font="Prive3;29" valign="center" halign="center" transparent="1" />
     <widget source="key_red" render="Label" position="30,750" size="300,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1" />
@@ -7871,4 +7871,4 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_blue" render="Label" position="975,750" size="300,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" />
     <widget source="key_help" render="Label" position="1290,750" size="300,45" font="Prive3;30" halign="center" transparent="1" />
   </screen>
-
+</skin>
