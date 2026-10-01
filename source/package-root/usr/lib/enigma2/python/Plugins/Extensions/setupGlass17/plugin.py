@@ -7164,10 +7164,24 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			pass
 
 	def _warderInstallFinished(self, exitCode):
+		# Closing the modal progress MessageBox and opening the result dialog in the
+		# same callback crashes newer OpenATV (the setup screen is not modal again
+		# until the next GUI event-loop turn). Defer the result dialog explicitly.
 		self._warderInstallCleanup()
+		self.warderInstallExitCode = int(exitCode)
+		self.warderInstallProcess = None
+		self.warderResultTimer = eTimer()
+		try:
+			self.warderResultTimer_conn = self.warderResultTimer.timeout.connect(self._warderShowInstallResult)
+		except AttributeError:
+			self.warderResultTimer.timeout.get().append(self._warderShowInstallResult)
+		self.warderResultTimer.start(250, True)
+
+	def _warderShowInstallResult(self):
 		target_version = getattr(self, "warderUpdate", {}).get("version", "")
 		installed = self.readVersion()
-		if int(exitCode) == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
+		exitCode = getattr(self, "warderInstallExitCode", -1)
+		if exitCode == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
 			restartbox = self.session.openWithCallback(self.rstAnswer, MessageBox, _("Update finished successfully!") + "\n\n" + _("Do you want restart GUI to activate version") + " " + installed + " " + _("now?"), MessageBox.TYPE_YESNO)
 			restartbox.setTitle(_("Restart GUI now?"))
 		else:
@@ -7178,7 +7192,6 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if out.strip():
 				msg += "\n\n" + out.strip()
 			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 15)
-		self.warderInstallProcess = None
 
 	def rstAnswer(self, answer):
 		if answer:

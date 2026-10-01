@@ -68,6 +68,8 @@ if 'cmd = "opkg install ' in plugin or 'cmd = "dpkg -i ' in plugin or "warderIns
     fail("plugin.py: updater installer execution must preserve executable as argv[0]")
 if "warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)" not in plugin:
     fail("plugin.py: updater must execute exact package-manager argv via subprocess.Popen")
+if "def _warderShowInstallResult(self):" not in plugin or "self.warderResultTimer.start(250, True)" not in plugin:
+    fail("plugin.py: updater result dialog must be deferred until progress modal is closed")
 version_cmp = plugin[plugin.find("def _warderVersionTuple"):plugin.find("def _warderFetchJson")]
 for required in ('(?:-test(\\d+))?', 'return (major, minor, patch, 1, 0)', 'return (major, minor, patch, 0, int(test_no))'):
     if required not in version_cmp:

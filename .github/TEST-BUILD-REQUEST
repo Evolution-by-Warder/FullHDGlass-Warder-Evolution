@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test12
-Revision: 62
-Purpose: Fix setup-open automatic update trigger by starting the one-shot timer from onLayoutFinish instead of doMyHelpWindow; preserve TEST11 updater progress dialog.
+Candidate: 1.0.5-test13
+Revision: 63
+Purpose: Fix OpenATV modal crash after updater progress dialog by deferring the success/error result dialog until the progress MessageBox has closed and the setup screen is modal again.
