@@ -353,7 +353,9 @@ if isATV or os.path.isfile(SHAREPATH + "PLi-FullHD/skin.xml") or os.path.isfile(
 for x in aall:
 	chsT.append(x)
 E2OK = False
-if os.path.isfile(CHANSEL_FILE):
+# The legacy ChannelSelection 2xOK feature rewrites image-owned Python.
+# Warder Evolution must never offer or activate that patch on OpenATV.
+if not isATV and os.path.isfile(CHANSEL_FILE):
 	try:
 		cpu = open(CHANSEL_FILE, 'r').read()
 		if cpu.find('self.closePiG()') == -1 and cpu.find('__close:') == -1:
@@ -6297,7 +6299,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % _("Localization of the skin"), config.plugins.setupGlass17.par49))            
 				if ECL:
 					self.list.append(getConfigListEntry(S0 % _("Enable Clear memory"), config.plugins.setupGlass17.par58))      
-				if not os.path.exists('/etc/dpkg'):
+				if not isATV and not os.path.exists('/etc/dpkg'):
 					self.list.append(getConfigListEntry(S0 % _("Enable user encoding.conf"), config.plugins.setupGlass17.par59))          
 				if ENA_ONOFF:
 					self.list.append(getConfigListEntry(S0 % _("On/Off icons"), config.plugins.setupGlass17.par190))
