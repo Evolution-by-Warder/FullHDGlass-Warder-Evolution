@@ -143,7 +143,7 @@ class g17ShowTP(VariableText, Renderer):
 						if fec == "x":
 							fec = dataTP.get("code_rate_lp","x")
 						if "symbol_rate" in sname:
-							sr = "%s  " % (int(sname["symbol_rate"])/1000)
+							sr = "%s  " % (int(sname["symbol_rate"]) // 1000)
 						if "orbital_position" in sname:	
 							numSat = sname["orbital_position"]
 							if numSat > 1800:
