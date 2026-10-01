@@ -172,7 +172,10 @@ for token in (
 
 
 # Picon compatibility without taking ownership of OpenATV's /usr/share/enigma2.
-set_path = PLUGIN[PLUGIN.find("def setPathFiles("):PLUGIN.find("setPathFiles()", PLUGIN.find("def setPathFiles("))]
+set_path_start = PLUGIN.find("def setPathFiles(")
+set_path_end = PLUGIN.find("ENAFINDER = False", set_path_start)
+assert set_path_start >= 0 and set_path_end > set_path_start
+set_path = PLUGIN[set_path_start:set_path_end]
 assert 'links = ["/picon"]' in set_path
 assert 'links.append("/media/usb/picon")' in set_path
 assert '"/usr/share/enigma2/picon"' not in set_path
