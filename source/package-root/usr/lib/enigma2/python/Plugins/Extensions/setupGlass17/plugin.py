@@ -780,11 +780,11 @@ setPathFiles()
 ENAFINDER = False
 try:
 	if ISP38:
-		from urllib.request import Request, urlopen, build_opener, install_opener, HTTPCookieProcessor
+		from urllib.request import Request, urlopen, build_opener, HTTPCookieProcessor
 		from urllib.error import URLError, HTTPError
 		import http.cookiejar as cookielib
 	else:
-		from urllib2 import Request, urlopen, URLError, HTTPError, build_opener, install_opener, HTTPCookieProcessor
+		from urllib2 import Request, urlopen, URLError, HTTPError, build_opener, HTTPCookieProcessor
 		import cookielib
 	ENAFINDER = True
 except: pass
@@ -8126,9 +8126,8 @@ class downloadMenu(Screen):
 					try:
 						cookie_jar = cookielib.CookieJar()
 						opener = build_opener(HTTPCookieProcessor(cookie_jar))
-						install_opener(opener)
 						req = Request(url, data=None, headers=headers)
-						with urlopen(req, timeout=15) as handler, open(archive, 'wb') as f:
+						with opener.open(req, timeout=15) as handler, open(archive, 'wb') as f:
 							while True:
 								chunk = handler.read(1024 * 128)
 								if not chunk:
@@ -9030,7 +9029,7 @@ class cityFinder(Screen):
 		self.list = []
 		if what != "":
 			data = None
-			req = Request('http://weather.service.msn.com/find.aspx?outputview=search&weasearchstr=%s&culture=en-US&src=outlook' % quote(what))
+			req = Request('https://weather.service.msn.com/find.aspx?outputview=search&weasearchstr=%s&culture=en-US&src=outlook' % quote(what), headers={'User-Agent': 'FullHDGlass17-Warder-Evolution/%s' % self.readVersion()})
 			try:
 				response = urlopen(req, timeout = 5)
 			except HTTPError as e:
