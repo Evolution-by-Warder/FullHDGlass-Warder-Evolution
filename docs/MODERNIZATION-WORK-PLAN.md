@@ -297,3 +297,21 @@ Results:
 - current Information subclasses all fall back to `Information`, but many add MENU/INFO/yellow/blue actions. Dedicated Warder FHD aliases were added for the full current Information family so every preferred current skin name resolves directly while retaining the generic information geometry and complete action row.
 - `InformationPicture` remains separately specialized for image display.
 - no item in this batch is marked RECEIVER PASS.
+
+
+## OpenATV subtitle / event / playback overlay batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current OpenATV AudioSelection, SubtitleDisplay, EventView, PVRState and InfoBarGenerics visual/runtime contracts.
+
+Results:
+- `SubtitleSelection` intentionally selects the existing `AudioSelection` skin; no duplicate screen required.
+- added a dedicated full-screen transparent `SubtitleDisplay` overlay using the current single `subtitles` widget contract.
+- current EventViewSimple / EventViewEPGSelect / EventViewMovieEvent all resolve to the existing Warder `EventView`; its current channel/datetime/duration/EPG/action widgets remain the shared authority.
+- existing Warder PVRState and TimeshiftState definitions were retained.
+- `ExtensionsList` is a ChoiceBox specialization and continues through ChoiceBox fallback.
+- added dedicated current `BufferIndicator` and `VideoMode` overlay definitions from their exact current runtime widget contracts.
+- `HideVBILine` and `AutoVideoMode` have no skin widgets and do not require decorative definitions.
+- SecondInfoBar requires separate receiver-facing visual review before changing its established FullHDGlass behavior; no blind replacement was made.
+- no item in this batch is marked RECEIVER PASS.
