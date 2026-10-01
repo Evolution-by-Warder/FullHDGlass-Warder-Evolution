@@ -681,3 +681,14 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - helper downloads are now stored under the FullHDGlass setup plugin runtime (`setupGlass17/bin/7z_g`) and picon.cz archive extraction uses that private path.
 - existing architecture helpers shipped by the IPK remain package-owned under `/usr/bin`; only the separately downloaded optional helper was moved.
 - runtime-safety regression gate rejects any return of the downloaded `/usr/bin/7z_g` path and requires the private FullHDGlass helper location.
+
+
+## Atomic skin-state and ServiceScan ownership batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- added `_atomicWriteText()` for generated FullHDGlass text/XML state: writes are flushed/fsynced to a same-directory temporary file, original mode is preserved where available, then `os.replace()` commits atomically; failed writes remove the temporary file instead of truncating the live skin.
+- migrated generated `skin.xml` rewrite paths to atomic replacement, including window style, scrollbar/on-off compatibility, PIG geometry, volume/mute placement, ChannelSelection presentation, EPG/list fonts and related generated skin transformations.
+- generated OLED/user XML rewrite paths touched by the same helpers now use atomic replacement as well.
+- OpenATV now refuses the legacy `Service scan long list` mechanism that rewrites image-owned `Screens/ServiceScan.py`; the legacy option is disabled instead.
+- TEST runtime-safety gate now rejects direct write-mode opens of `SKINXML` and requires the OpenATV ServiceScan ownership guard.
