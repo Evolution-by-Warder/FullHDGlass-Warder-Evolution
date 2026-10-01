@@ -1598,6 +1598,16 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="Goto" position="8,213" size="75,27" zPosition="1" font="Prive3;24" halign="left" transparent="1" />
     <widget name="posGoto" position="86,210" size="102,30" zPosition="1" font="Prive3;27" halign="left" transparent="1" />
   </screen>
+  <screen name="Dishpip" flags="wfNoBorder" position="1530,150" size="195,240" title="Dish" zPosition="9" backgroundColor="transparent">
+    <widget name="Dishpixmap" pixmap="hd_glass17/icons/dish.png" position="0,0" size="195,240" alphatest="off" />
+    <widget name="turnTime" position="8,0" size="180,30" zPosition="1" font="Prive3;27" halign="right" transparent="1" />
+    <widget name="From" position="8,156" size="75,27" zPosition="1" font="Prive3;24" halign="left" transparent="1" />
+    <widget name="posFrom" position="86,153" size="102,30" zPosition="1" font="Prive3;27" halign="left" transparent="1" />
+    <widget name="Goto" position="8,183" size="75,27" zPosition="1" font="Prive3;24" halign="left" transparent="1" />
+    <widget name="posGoto" position="86,180" size="102,30" zPosition="1" font="Prive3;27" halign="left" transparent="1" />
+    <widget name="Tuner" position="8,210" size="75,27" zPosition="1" font="Prive3;22" halign="left" transparent="1" />
+    <widget name="tunerName" position="86,207" size="102,30" zPosition="1" font="Prive3;23" halign="left" transparent="1" />
+  </screen>
 
 	<screen name="PVRState" position="105,105" zPosition="8" size="225,45" backgroundColor="transpBlack" flags="wfNoBorder">
 		<widget name="state" position="0,0" size="225,45" font="Regular;37" halign="center" backgroundColor="transpBlack" foregroundColor="white" />
@@ -7849,4 +7859,13 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_green" render="Label" position="510,120" size="330,45" font="Prive3;30" foregroundColor="green" halign="center" />
     <widget source="key_yellow" render="Label" position="930,120" size="330,45" font="Prive3;30" foregroundColor="yellow" halign="center" />
   </screen>
-</skin>
+</skin>  <screen name="FlashManager" position="center,120" size="1650,840" title="Flash Manager">
+    <widget name="list" position="30,30" size="1590,480" scrollbarMode="showOnDemand" />
+    <widget source="description" render="Label" position="30,525" size="1590,180" font="Prive3;29" valign="center" halign="center" transparent="1" />
+    <widget source="key_red" render="Label" position="30,750" size="300,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1" />
+    <widget source="key_green" render="Label" position="345,750" size="300,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1" />
+    <widget source="key_yellow" render="Label" position="660,750" size="300,45" font="Prive3;30" foregroundColor="yellow" halign="center" transparent="1" />
+    <widget source="key_blue" render="Label" position="975,750" size="300,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" />
+    <widget source="key_help" render="Label" position="1290,750" size="300,45" font="Prive3;30" halign="center" transparent="1" />
+  </screen>
+
