@@ -89,3 +89,28 @@ If chat/context is lost: start by reading this checkpoint, inspect current `main
 - TEST packaging is guarded by `tools/build-test-ipk.sh`, `tools/verify-test-ipk.sh`, `tools/test-package-lifecycle.sh` and `.github/workflows/build-test-ipk.yml`.
 - The legacy 1.0.4 source-recovery workflow is now manual/read-only and uploads its recovered tree only as a temporary artifact. It must never overwrite the modernized `source/` tree.
 - Static/build success is not receiver acceptance. Only physical validation on the target GigaBlue Quad 4K Pro / OpenATV 8.x may establish RECEIVER PASS.
+
+
+## CURRENT TEST CHECKPOINT — 2026-10-01 — TEST19
+
+This section supersedes older development-status/TODO text above where they conflict. Stable 1.0.4 remains the rollback baseline; current active development is TEST19.
+
+- Working branch: `warder-modernization-work`. `main` is TABU: no writes, merges, rebases or force-pushes. No force-push/rebase anywhere.
+- Exact FullHDGlass17 9.50-r12 is the functional authority for r1-r12 behavior. Preserve all r1-r12 fixes; do not invent replacement behavior where r12 already defines it.
+- Primary receiver: GigaBlue Quad 4K Pro / OpenATV 8.x. Default picon path: `/usr/share/enigma2/picon/`.
+- TEST18 weather-city flow is receiver-verified PASS: city selector works; confirming a city does not crash; selected city's weather data/icon/temperature refresh immediately in the skin without GUI restart. Keep this behavior locked unless explicitly changing it.
+- TEST19 restores the r11/r12 PIG menu-navigation fix for all four variants: `with PIG`, `simply PIG`, `PIG2`, `PIG4`. Root cause of TEST18 regression was two `Listbox` widgets bound to `source="menu"` on each PIG screen. Authoritative r12 uses one navigable menu `Listbox` plus one display-only `Label` using `g17MenuCurrentText`.
+- The TEST19 source change covers 32 PIG screen definitions: four PIG variants across `Menu`, `menu_mainmenu`, `menu_information`, `menu_setup`, `menu_scan`, `menu_system`, `menu_harddisk`, `menu_shutdown`.
+- TEST19 PIG navigation is receiver-verified PASS on GigaBlue Quad 4K Pro for all four PIG variants, including menu/submenu movement.
+- TEST19 source implementation commit: `6413f6e713ef421cdc044426ca07f8e67028b3fe`. Regression-gate correction commit: `c198111c1a298a95ca39cc84c1d361f7f5e9d2a9`.
+- GitHub Actions build #78 / run `36920908109` completed successfully. CI publication advanced branch HEAD to `258b684615977345cbf9f26239b302e75be93499` before this checkpoint update.
+- Published package: `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test19_all.ipk`. SHA256: `82771315e88a63e058eb08557ef67194f022653f0be6288450a7b24402b67731`. `update-test.json` points to TEST19.
+- Receiver installation was performed manually through Telnet because TEST18 PIG navigation prevented reaching the updater. Download succeeded (11,422,936 bytes), then `opkg --force-reinstall --force-overwrite install /tmp/test19.ipk` and `init 4 && init 3` were used.
+- Important remaining issue: receiver `opkg` output during TEST19 installation displayed upgrade target as `enigma2-skin-fullhdglass17 (1.0.5)`, despite repository control/version files containing `1.0.5-test19`. Investigate and fix package version normalization/metadata next. Do not treat this as solved yet.
+- Receiver-testing rule: never mark a receiver feature PASS without actual user receiver output/screenshot/confirmation. Shell testing instructions must be one short command at a time.
+
+### Immediate next work
+
+1. Investigate why `opkg` reports `1.0.5` rather than `1.0.5-test19`, while preserving the updater/version ordering behavior.
+2. Continue systematic r1-r12 regression review from exact r12, without reopening already receiver-verified TEST18 weather or TEST19 PIG behavior unless evidence of regression appears.
+3. Keep updater behavior: auto-check only after opening FullHDGlass17 settings (not receiver boot/skin startup), with the established delayed/modal-safe flow.
