@@ -110,3 +110,25 @@ for receiver confirmation.
 ## TEST4 r4 revalidation
 
 After adding explicit r4 Open-Meteo regression assertions, workflow run `36875836272` on commit `9c605e3623bbcb0de953b47be118b68c796523af` completed successfully. The cumulative r1-r12 gate, 11,010-location/51-country gate, lifecycle, runtime safety, XML and package integrity gates all PASS. Rebuilt TEST4 IPK SHA256: `b0f804929f189fab66f4f0c720a488cdd82c0dce358cbd876774e5412b02a9f6`; artifact ID `11168722243`; artifact ZIP SHA256 `42a71e19c5378381215111fad1c13c76f672f7096ed2c71604ecaa44f6e49fb0`.
+
+## TEST4 full weather localization validation
+
+The r10 language requirement is now enforced end-to-end rather than only at Python source level.
+Classic Weather and Enhanced Weather share one canonical Open-Meteo/WMO vocabulary. Every non-English
+weather catalog shipped by FullHDGlass17 contains the complete guarded WMO vocabulary; Enhanced
+Weather catalogs are guarded likewise. The TEST builder recompiles every PO catalog to MO before
+staging the package, preventing stale binary catalogs from reaching a receiver.
+
+Workflow run `36879533776` on exact build commit
+`dee61c163fc6e66cf372806c2caea1c116494e8e`: **SUCCESS**.
+
+- r1-r12 regression gate: PASS
+- locations: SK=4208, CZ=6258, TOTAL=11010, COUNTRIES=51
+- compiled Slovak Classic/Enhanced Weather catalogs inside final IPK: PASS
+- lifecycle/runtime/XML/version/package integrity gates: PASS
+- package: `enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test4_all.ipk`
+- package SHA256: `e366d9b51f6b592040a7365d0135732b4d3c1c56653fc712f8744a8f5c745d8c`
+- artifact ID: `11170761103`
+- artifact ZIP SHA256: `4e4d37e74993f6981c544916f5cc636d83b8c2b779aecfdbc3a7f733cb828392`
+
+Receiver validation remains required for the rendered weather text and dynamic UI behaviour.
