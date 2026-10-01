@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test25
-Revision: 91
-Purpose: Trigger TEST25 after final gate regex normalization.
+Revision: 92
+Purpose: Trigger TEST25 with escape-proof literal regression gate.
