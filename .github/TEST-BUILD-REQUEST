@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test3
-Revision: 15
-Purpose: cumulative FullHDGlass17 r1-r12 restoration with Open-Meteo, complete SK/CZ locations, Enhanced Weather migration guards, PIG/Opkg/ScreenSaver regression gates.
+Candidate: 1.0.5-test4
+Revision: 16
+Purpose: full r12 reference audit baseline; restore all 51-country weather data, Slovensko/Cesko/Krajiny Europy hierarchy, and cumulative r1-r12 regression gates including all eight r11 PIG menu screens.
