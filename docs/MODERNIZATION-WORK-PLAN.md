@@ -227,3 +227,20 @@ Therefore:
 - preserve the Warder RDS visual character;
 - real DAB+ service validation remains mandatory on the receiver, including SLS appearance, station changes, fallback/no-slide behavior, and RDS text coexistence;
 - this finding is not a RECEIVER PASS.
+
+
+## OpenATV system utilities batch — 2026-10-01
+
+Status: **SOURCE/STATIC REVIEW — RECEIVER TEST REQUIRED**
+
+Reviewed current OpenATV screen contracts for DAB scan, Device Manager, Flash Manager, MultiBoot Manager, Network Services, Picon Settings and network restart.
+
+Results:
+- `DABScan` deliberately aliases `ServiceScan`; existing Warder `ServiceScan` remains authoritative.
+- Device-manager action/mount/setup classes derive from current `Setup`; existing Warder `Setup` remains the fallback. The dedicated current `DeviceManager` screen was already present.
+- `FlashOnline` was reconciled to current `FlashManager` widgets and modernized to the Warder FHD geometry; `FlashImage` now has a dedicated Warder FHD screen.
+- `MultiBootManager` and `KexecInit` embedded low-resolution OpenATV layouts now have dedicated Warder FHD screens. Slot-manager subclasses continue to use current `Setup`.
+- `uShareSelection` and `NetworkLogScreen` now have dedicated Warder FHD screens. Network service setup classes continue to use the common current `Setup` contract.
+- `PiconSettings` derives from current `Setup`; no duplicate standalone layout is required.
+- legacy `RestartNetwork` explicitly selects skin name `DUMMY`; a zero-size Warder `DUMMY` compatibility screen is provided, while current `RestartNetworkNew` uses the Processing singleton.
+- No item in this batch is marked RECEIVER PASS.
