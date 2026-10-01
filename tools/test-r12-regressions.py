@@ -35,11 +35,11 @@ assert "str(tmp).strip() not in lines" in PLUGIN
 assert '<screen name="ScreenSaver" position="0,0" size="1920,1080"' in SKIN
 assert 'name="picture" position="0,0" size="1280,720"' in SKIN
 for screen in ("menu_mainmenu", "menu_information", "menu_setup", "menu_scan", "menu_system", "menu_harddisk", "menu_shutdown"):
-    m = re.search(r'<screen\\b[^>]*name="%s"[\\s\\S]*?</screen>' % screen, SKIN)
+    m = re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN)
     assert m, screen
     assert len(re.findall(r'render="Listbox"', m.group(0))) == 1, screen
 assert '<screen name="Opkg"' in SKIN
-assert 'source="key_red"' in re.search(r'<screen\\b[^>]*name="Opkg"[\\s\\S]*?</screen>', SKIN).group(0)
-assert 'source="key_blue"' in re.search(r'<screen\\b[^>]*name="Opkg"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'source="key_red"' in re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</screen>', SKIN).group(0)
+assert 'source="key_blue"' in re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</screen>', SKIN).group(0)
 print("r1-r12 regression gate: PASS")
 print("weather locations: SK=%d CZ=%d TOTAL=%d" % (len(sk), len(cz), len(rows)))
