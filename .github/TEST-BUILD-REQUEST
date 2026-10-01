@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test5
-Revision: 39
-Purpose: corrected runtime version file plus r12 live Infobar weather refresh and official branding.
+Revision: 40
+Purpose: restore exact r12 Enhanced Weather country-grouped city selector, migrate flat city lists, preserve live weather refresh, and enforce parity gates.
