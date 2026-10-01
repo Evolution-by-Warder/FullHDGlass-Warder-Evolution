@@ -62,9 +62,9 @@ class g17ClockToText(Converter, object):
 				ign = False
 		except: pass
 		if self.type == self.IN_MINUTES:
-			return ({True:"%d min" % (time / 60), False:"%02d min" % (time / 60)}[ign])
+			return ({True:"%d min" % (time // 60), False:"%02d min" % (time // 60)}[ign])
 		elif self.type == self.AS_LENGTH:
-			return ({True:"%d" % (time / 60), False:"%02d" % (time / 60)}[ign]) + ":%02d" % time % 60
+			return ({True:"%d" % (time // 60), False:"%02d" % (time // 60)}[ign]) + ":%02d" % time % 60
 		elif self.type == self.TIMESTAMP:
 			return str(time)		
 		t = localtime(time)		
