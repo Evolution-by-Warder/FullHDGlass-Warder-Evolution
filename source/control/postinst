@@ -33,7 +33,7 @@ copy_default_if_missing /etc/iptvprov-def17.list /etc/iptvprov.list
 # /usr/share/enigma2/hd_glass17/skin.xml keeps it visible in Enigma2 Skin Setup.
 
 echo "************************************************"
-echo "Install/upgrade finished, enjoy Full HD Glass 17 Warder Evolution!"
+echo "Install/upgrade finished: FullHDGlass17 - Warder Evolution"
 echo "Existing FullHDGlass17 settings were preserved."
 echo "Please restart GUI to activate changes."
 echo "************************************************"
