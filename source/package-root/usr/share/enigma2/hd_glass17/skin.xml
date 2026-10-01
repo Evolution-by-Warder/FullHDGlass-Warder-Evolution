@@ -403,7 +403,7 @@
   </screen>
 
   <screen name="Menu" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -417,7 +417,7 @@
 		</widget>
   </screen>
   <screen name="menu_mainmenu" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -431,7 +431,7 @@
 		</widget>
   </screen>
   <screen name="menu_information" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -445,7 +445,7 @@
 		</widget>
   </screen>
   <screen name="menu_setup" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -459,7 +459,7 @@
 		</widget>
   </screen>
   <screen name="menu_scan" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -473,7 +473,7 @@
 		</widget>
   </screen>
   <screen name="menu_system" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -487,7 +487,7 @@
 		</widget>
   </screen>
   <screen name="menu_harddisk" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -501,7 +501,7 @@
 		</widget>
   </screen>
   <screen name="menu_shutdown" position="135,150" size="1657,843" backgroundColor="background" title="Main menu">
-    <widget source="title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
+    <widget source="Title" render="Label" position="7,30" size="810,60" font="Prive4;51" halign="center" transparent="1" foregroundColor="grey" shadowColor="#1A58A6" shadowOffset="-2,-1" />
     <widget source="menu" render="Listbox" position="60,112" size="705,650" zPosition="3" foregroundColorSelected="white" backgroundColorSelected="background" selectionPixmap="hd_glass17/buttons/selected-menu-l.png"  enableWrapAround="1" scrollbarMode="showNever" transparent="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (57, 5), size = (645, 50), flags = RT_HALIGN_LEFT, text = 0) ],
@@ -517,7 +517,7 @@
 
   <screen name="AllMenuIconsRight" position="center,0" size="1920,1080" title="Main menu" backgroundColor="black">
     <ePixmap position="63,76" size="654,93" pixmap="hd_glass17/menu/title_frame.png" zPosition="0" transparent="1" alphatest="on" />
-    <widget source="title" render="Label" position="90,93" size="600,60" zPosition="3" valign="center" halign="center" font="Regular;45" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-2" transparent="1" />
+    <widget source="Title" render="Label" position="90,93" size="600,60" zPosition="3" valign="center" halign="center" font="Regular;45" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-2" transparent="1" />
     <ePixmap position="63,198" size="654,439" pixmap="hd_glass17/menu/pig_frame.png" zPosition="0" transparent="1" alphatest="off" />
     <widget source="session.VideoPicture" render="Pig" position="90,225" size="600,385" zPosition="1" backgroundColor="#ff000000" />
     <ePixmap position="165,660" size="450,309" pixmap="hd_glass17/menu/box.png" zPosition="3" alphatest="blend" />
@@ -561,7 +561,7 @@
      
   <screen name="AllMenuIcons" position="center,0" size="1920,1080" title="Main menu" backgroundColor="black">
     <ePixmap position="1173,76" size="654,93" pixmap="hd_glass17/menu/title_frame.png" zPosition="0" transparent="1" alphatest="on" />
-    <widget source="title" render="Label" position="1200,93" size="600,60" zPosition="3" valign="center" halign="center" font="Regular;45" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-2" transparent="1" />
+    <widget source="Title" render="Label" position="1200,93" size="600,60" zPosition="3" valign="center" halign="center" font="Regular;45" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-2" transparent="1" />
     <ePixmap position="1173,198" size="654,439" pixmap="hd_glass17/menu/pig_frame.png" zPosition="0" transparent="1" alphatest="off" />
     <widget source="session.VideoPicture" render="Pig" position="1200,225" size="600,385" zPosition="1" backgroundColor="#ff000000" />
     <ePixmap position="1275,660" size="450,309" pixmap="hd_glass17/menu/box.png" zPosition="3" alphatest="blend" />
@@ -605,7 +605,7 @@
 
   <screen name="BarMenuIcons" position="0,0" size="1920,1080" title="Main menu" backgroundColor="transparent">
     <ePixmap position="0,0" size="1920,1080" pixmap="hd_glass17/menu/menubar-fs8.png" zPosition="0" transparent="1" alphatest="off" />
-    <widget source="title" render="Label" position="694,724" size="532,36" zPosition="1" valign="center" halign="center" font="Regular;30" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" transparent="1" />
+    <widget source="Title" render="Label" position="694,724" size="532,36" zPosition="1" valign="center" halign="center" font="Regular;30" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" transparent="1" />
         <ePixmap position="871,780" size="177,177" pixmap="hd_glass17/menu/icon_frame.png" zPosition="3" transparent="1" alphatest="blend" />
         <ePixmap position="871,780" size="177,177" pixmap="hd_glass17/menu/ico-start.png" zPosition="1" transparent="1" alphatest="off" />
         <widget name="Ico1" position="90,780" size="177,177" zPosition="2" transparent="1" alphatest="blend" />
@@ -4619,7 +4619,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget backgroundColor="background" font="Regular;33" name="detailtext" position="45,97" size="1230,675" transparent="1"/>
     </screen>
   <screen name="CutListContextMenu" position="center,center" size="510,600" title="CutList menu">
-    <widget font="Regular;34" position="7,15" render="Label" size="495,52" source="title" />
+    <widget font="Regular;34" position="7,15" render="Label" size="495,52" source="Title" />
     <widget position="7,70" render="Listbox" scrollbarMode="showOnDemand" size="495,500" source="menu">
      <convert type="TemplatedMultiContent">
 			{"template":[
@@ -5481,7 +5481,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 
 <!-- EnhancedMovieCenter Menu -->
 <screen name="MovieMenu" position="center,center" size="1200,740" title="EMC menu">
-	<widget source="title" render="Label" position="0,10" size="1200,50" font="Prive4;40" halign="center" />
+	<widget source="Title" render="Label" position="0,10" size="1200,50" font="Prive4;40" halign="center" />
 	<widget source="menu" render="Listbox" position="10,80" size="1180,640" scrollbarMode="showOnDemand" enableWrapAround="1">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (0, 0), size = (1180, 40), flags = RT_HALIGN_LEFT, text = 0) ],"fonts": [gFont("Prive4", 32)],"itemHeight": 40}
@@ -6211,7 +6211,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
  
   <screen name="FilterListScreen" position="center,center" size="800,550" flags="wfNoBorder" title="Filter">
     <eLabel backgroundColor="#80000000" position="0,0" size="800,550" zPosition="-1" />
-    <widget render="Label" source="title" position="5,5" size="790,40" zPosition="5" valign="center" font="Regular;24" foregroundColor="white" backgroundColor="#80000000" />
+    <widget render="Label" source="Title" position="5,5" size="790,40" zPosition="5" valign="center" font="Regular;24" foregroundColor="white" backgroundColor="#80000000" />
     <ePixmap position="0,50" zPosition="4" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
     <ePixmap position="150,50" zPosition="4" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
     <ePixmap position="300,50" zPosition="4" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
