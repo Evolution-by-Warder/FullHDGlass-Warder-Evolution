@@ -4056,7 +4056,7 @@ class ExtraInfo17(Screen):
 						req = "wealocations="+req
 					else:						
 						req = "weasearchstr="+req
-					req = "http://weather.service.msn.com/data.aspx?src=outlook&weadegreetype=%s&culture=en-us&%s" % (self.units.upper(), req)
+					req = "https://weather.service.msn.com/data.aspx?src=outlook&weadegreetype=%s&culture=en-us&%s" % (self.units.upper(), req)
 				else:
 					apkey = "&appid=" + config.plugins.setupGlass17.par228.value
 					req = "q=%s" % quote(config.plugins.setupGlass17.par13.getText())
@@ -4139,7 +4139,7 @@ class ExtraInfo17(Screen):
 		self.clrMemTimer.startLongTimer(self.refreshValue)
 
 	def dwnW(self,req):
-		if not isinstance(req, str) or not req.startswith(("http://", "https://")):
+		if not isinstance(req, str) or not req.startswith("https://"):
 			return
 		self.wConsole.ePopen(["wget", "-T", "2", req, "-O", XML_FILE])
 		
