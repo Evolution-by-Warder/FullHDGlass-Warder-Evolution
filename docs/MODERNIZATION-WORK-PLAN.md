@@ -111,3 +111,38 @@ Every useful defect, compatibility weakness or obsolete mechanism discovered whi
 ## Release discipline
 
 Do not call a development build a release merely because static/build checks pass. Real receiver testing and explicit approval are required before promoting a new release checkpoint.
+
+
+## Baseline reconciliation — 2026-10-01
+
+Repository inspection confirms that the existing Warder Evolution implementation must be continued rather than rebuilt.
+
+- Stable recovery baseline: **1.0.4**.
+- Stable package: `packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.4_all.ipk`.
+- Published 1.0.4 commit: `57fb8e5ae86bb46b0f91e2b614c2f6db649a6989`.
+- Current main contains 15 commits after that publication; they are documentation/branding/runtime-URL/checkpoint updates and must be preserved.
+- Current repository checkpoint explicitly requires continuation from 1.0.4 and forbids restarting from original HDGlass source.
+- Compatibility identifiers containing `17` remain binding and must not be renamed casually.
+- Current updater architecture (raw GitHub assets + eConsoleAppContainer) is preserved unless a deliberate replacement is designed and approved.
+
+### Conflict resolved for modernization work
+
+The old checkpoint locks approved graphics/layout/coordinates. The new project requirement is to repair screens whose legacy geometry is no longer suitable for current OpenATV 8.x. Therefore:
+
+- existing approved visual identity and graphics remain the design baseline;
+- geometry is **not** to be changed arbitrarily;
+- geometry/layout changes are permitted where the exhaustive screen audit demonstrates overlap, clipping, unreadable density, obsolete screen dimensions, or incompatibility with current OpenATV;
+- such changes must preserve Warder Evolution visual identity and be receiver-tested before release.
+
+### Missing work versus the 1.0.4 baseline
+
+The following are not evidenced as completed by the 1.0.4 checkpoint and therefore remain active work:
+
+1. exhaustive screen inventory with PASS/FIXED/NEEDS TEST/NOT APPLICABLE status;
+2. FHD modernization of obsolete/crowded system and information screens;
+3. DAB+ station artwork/slide support review and implementation;
+4. carry-forward of post-r12 legacy findings: current Menu source compatibility, safe postinst/postrm lifecycle, non-destructive defaults/user-data handling, picon/symlink preservation, safe archive extraction, Python 3 warning cleanup, and spinner legacy audit;
+5. complete static/build validation gate for the current source tree;
+6. real GigaBlue Quad 4K Pro / OpenATV 8.x acceptance testing before the next stable release.
+
+Do not publish a new stable version until these work items have been reconciled and the relevant receiver tests pass.
