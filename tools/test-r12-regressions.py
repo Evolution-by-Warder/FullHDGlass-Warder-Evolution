@@ -31,7 +31,41 @@ assert "Open-Meteo city search" in PLUGIN
 assert '"group|SK"' in PLUGIN and '"Slovensko"' in PLUGIN
 assert '"group|CZ"' in PLUGIN and '"Česko"' in PLUGIN
 assert '"group|EUROPE"' in PLUGIN and '"Krajiny Európy"' in PLUGIN
+# r4 Open-Meteo behaviour preserved by the cumulative r12 reference.
 assert "def openMeteo(" in WEAUTILS
+for token in (
+    "geocoding-api.open-meteo.com/v1/search",
+    "api.open-meteo.com/v1/forecast",
+    "temperature_2m",
+    "relative_humidity_2m",
+    "apparent_temperature",
+    "weather_code",
+    "surface_pressure",
+    "wind_speed_10m",
+    "wind_direction_10m",
+    "visibility",
+    "sunrise",
+    "sunset",
+):
+    assert token in WEAUTILS, token
+for field in (
+    "weather_dict['city']",
+    "weather_dict['country']",
+    "weather_dict['lat']",
+    "weather_dict['long']",
+    "weather_dict['wind']",
+    "weather_dict['wind_direction']",
+    "weather_dict['sunrise']",
+    "weather_dict['sunset']",
+):
+    assert field in WEATHER, field
+assert "wmoText(" in WEATHER
+assert "Error" in WEATHER and "Open-Meteo" in WEATHER
+assert "Weather_values'].setText" in WEATHER
+assert "Weather_sunrise'].setText" in WEATHER
+assert "Weather_sunset'].setText" in WEATHER
+assert "Weather_state%s' % ii].setText" in WEATHER
+assert "Weather_Date%s' % ii].setText" in WEATHER
 assert "openMeteo(" in WEATHER
 assert "Classic Open-Meteo" in PLUGIN
 assert '_("Provider"), config.plugins.setupGlass17.par88' not in PLUGIN
