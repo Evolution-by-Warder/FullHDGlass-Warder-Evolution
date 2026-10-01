@@ -70,8 +70,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          IPK="$(find packages/test -maxdepth 1 -type f -name '*_all.ipk' -print -quit)"
-          test -n "$IPK"
+          VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
+          IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${VERSION}_all.ipk"
+          test -f "$IPK"
           chmod +x tools/verify-test-ipk.sh
           ./tools/verify-test-ipk.sh "$IPK" 1.0.5-test6
           TMP="$(mktemp -d)"
@@ -86,11 +87,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          IPK="$(find packages/test -maxdepth 1 -type f -name '*_all.ipk' -print -quit)"
-          test -n "$IPK"
+          VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
+          IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${VERSION}_all.ipk"
+          test -f "$IPK"
           SHA="$(sha256sum "$IPK" | awk '{print $1}')"
           NAME="$(basename "$IPK")"
-          VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p packages/test
