@@ -650,3 +650,14 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - manifest and package downloads reject redirects whose final URL is not HTTPS; SHA256 verification remains mandatory.
 - `tools/test-runtime-safety.py` now permanently guards the urllib opener isolation, HTTPS city lookup, package-owned template preservation, official updater package channel and HTTPS redirect checks.
 - packaged control scripts and `/usr/bin` helper binaries retain executable Git modes; no permission repair was required.
+
+
+## Core ownership and legacy network isolation batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- corrected the Warder asset manifest owner from obsolete `PiconHub-Warder` to `Evolution-by-Warder` and pinned its final redirect to the official raw GitHub asset path.
+- asset payload URLs/parts are now restricted to the official `Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/` path; redirects outside that path are rejected before payload bytes are accepted, with SHA256 still mandatory.
+- OpenATV now explicitly refuses the legacy FullHDGlass 2xOK mechanism that rewrites image-owned `/usr/lib/enigma2/python/Screens/ChannelSelection.py`; the old config flag is disabled instead. Non-OpenATV compatibility code is retained pending platform-specific validation.
+- both the infobar legacy MSN weather request and classic weather fallback now require HTTPS; the generic infobar downloader no longer accepts cleartext HTTP URLs.
+- regression gates now cover obsolete repository ownership, asset manifest/payload path pinning, asset redirect validation, OpenATV ChannelSelection protection and classic/infobar MSN HTTPS transport.
