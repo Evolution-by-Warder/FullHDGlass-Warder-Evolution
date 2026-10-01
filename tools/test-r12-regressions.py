@@ -351,3 +351,10 @@ assert 'self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)' in PLUGIN
 assert 'self.updatechckact(False, automatic=True)' in PLUGIN
 assert 'if not automatic and not config.plugins.setupGlass17.par75.value and not ena:' in PLUGIN
 assert 'self.updatechckact(True)' in PLUGIN
+
+# Updater UX: keep user informed while update is running.
+assert 'self.warderProgressBox = self.session.open(MessageBox, _("Updating...")' in PLUGIN
+assert '_("Please wait.")' in PLUGIN
+assert 'enable_input=False' in PLUGIN
+assert 'def _warderCloseProgress(self):' in PLUGIN
+assert 'self._warderCloseProgress()' in PLUGIN

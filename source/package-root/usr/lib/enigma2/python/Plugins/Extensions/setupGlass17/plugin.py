@@ -7085,6 +7085,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if not (filename.endswith(".ipk") or filename.endswith(".deb")):
 			filename = "fullhdglass17-warder-evolution_%s_all.ipk" % version
 		self.fileName = filename
+		self.warderProgressBox = self.session.open(MessageBox, _("Updating...") + "\n\n" + _("Please wait."), MessageBox.TYPE_INFO, timeout=0, enable_input=False)
+		self.warderProgressBox.setTitle("FullHDGlass17 - Warder Evolution")
 		target = "/tmp/" + filename
 		try:
 			if os.path.exists(target):
@@ -7140,7 +7142,17 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.warderInstallProcess = None
 		self._warderInstallFinished(exitCode)
 
+	def _warderCloseProgress(self):
+		box = getattr(self, "warderProgressBox", None)
+		if box is not None:
+			try:
+				box.close()
+			except Exception:
+				pass
+		self.warderProgressBox = None
+
 	def _warderInstallCleanup(self):
+		self._warderCloseProgress()
 		try:
 			os.remove("/tmp/" + self.fileName)
 		except Exception:

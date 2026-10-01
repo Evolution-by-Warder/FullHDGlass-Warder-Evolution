@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test10
-Revision: 60
-Purpose: Receiver updater end-to-end validation from installed TEST9 plus silent one-shot update check when FullHDGlass17 settings are opened; never at box/GUI startup.
+Candidate: 1.0.5-test11
+Revision: 61
+Purpose: Keep a non-interactive Updating/Please wait dialog visible throughout download, SHA256 verification and package installation; close it only before success/error result.
