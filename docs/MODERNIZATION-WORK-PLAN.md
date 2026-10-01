@@ -637,3 +637,16 @@ Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
 - existing safe ZIP extraction was confirmed to reject absolute/traversal paths and archive-created symlinks before extraction.
 - spinner audit confirmed the destructive legacy override is already retired: `par65` is a non-persistent false compatibility placeholder and the remaining helper only restores the image spinner when an older FullHDGlass symlink specifically targets the legacy skin spinner.
 - added `tools/test-runtime-safety.py`; TEST CI now rejects TLS-verification bypasses, shell `rm -rf`, `shell=True`, dynamic eval/exec, updater regression to `Screens.Console`, missing eConsole/HTTPS/SHA/ZIP guards, and reintroduction of the removed system-info/weather shell paths.
+
+
+## Runtime ownership and updater transport batch — 2026-10-01
+
+Status: **STATIC HARDENING PASS — RECEIVER TEST STILL REQUIRED**
+
+- legacy picon.cz cookie handling no longer installs a process-global urllib opener; cookies are isolated to the single downloader request.
+- legacy city search was moved from cleartext HTTP to HTTPS without coupling the city editor to the updater class.
+- startup no longer deletes package-owned architecture helper variants or `skin_user-172.xml` / `skin_user-173.xml` templates after installation. Hardware-specific active helper selection remains intact while opkg ownership stays coherent.
+- updater package URLs are now restricted to the official raw GitHub `Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/` channel both when parsing the manifest and immediately before installation.
+- manifest and package downloads reject redirects whose final URL is not HTTPS; SHA256 verification remains mandatory.
+- `tools/test-runtime-safety.py` now permanently guards the urllib opener isolation, HTTPS city lookup, package-owned template preservation, official updater package channel and HTTPS redirect checks.
+- packaged control scripts and `/usr/bin` helper binaries retain executable Git modes; no permission repair was required.
