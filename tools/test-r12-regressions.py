@@ -84,3 +84,6 @@ assert 'source="key_red"' in re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</scre
 assert 'source="key_blue"' in re.search(r'<screen\b[^>]*name="Opkg"[\s\S]*?</screen>', SKIN).group(0)
 print("r1-r12 regression gate: PASS")
 print("weather locations: SK=%d CZ=%d TOTAL=%d COUNTRIES=%d" % (len(sk), len(cz), len(rows), len(country_codes)))
+
+# r12 visual/functional baseline: this context menu must not disappear during modernization.
+assert '<screen name="EventViewContextMenu"' in SKIN
