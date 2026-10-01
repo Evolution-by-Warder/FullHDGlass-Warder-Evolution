@@ -135,7 +135,10 @@ def Writelog(txt):
 	log = PLUGINPATH+"g17.txt"
 	if os.path.isfile(log):
 		if os.path.getsize(log) > 1000000:
-			try:\n\t\t\t\tos.remove(log)\n\t\t\texcept OSError:\n\t\t\t\tpass
+			try:
+				os.remove(log)
+			except OSError:
+				pass
 	try:
 		f = open(log,"a")
 		f.write("%s\n" % str(txt))
