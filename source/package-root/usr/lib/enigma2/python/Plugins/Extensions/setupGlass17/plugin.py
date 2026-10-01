@@ -2219,23 +2219,45 @@ def setOledMore(msg=""):
 	return msg
 
 def getTemp(dev):
-	tmp1 = 0                                                 
-	what = ['smartctl -a %s | grep Temperature','/usr/bin/hdd_temp_hdg17 -q -n %s','hddtemp -n -q %s']
-	if config.plugins.setupGlass17.par21.value:
-		what.append('/usr/bin/hdd_temp_hdg17 -q -n -w %s')
-		what.append('hddtemp -q -n -w %s')
-	for x in what:
-		try:
-			tta = x % dev
-			temp = popen(tta).readline()
-			if "smartctl" in tta:
-				tmp1 = int((temp.strip().split("-")[1]).replace("\n","").replace("\t","").replace(" ",""))
-			else:
-				tmp1 = int(temp.strip().split(" ")[0])
-		except: pass
-		if tmp1 != 0:
+	tmp1 = 0
+	commands = []
+	for smartctl in ("/usr/sbin/smartctl", "/sbin/smartctl", "/usr/bin/smartctl"):
+		if os.path.isfile(smartctl):
+			commands.append(("smartctl", [smartctl, "-a", dev]))
 			break
-	return tmp1				
+	if os.path.isfile("/usr/bin/hdd_temp_hdg17"):
+		commands.append(("hddtemp", ["/usr/bin/hdd_temp_hdg17", "-q", "-n", dev]))
+	commands.append(("hddtemp", ["hddtemp", "-n", "-q", dev]))
+	if config.plugins.setupGlass17.par21.value:
+		if os.path.isfile("/usr/bin/hdd_temp_hdg17"):
+			commands.append(("hddtemp", ["/usr/bin/hdd_temp_hdg17", "-q", "-n", "-w", dev]))
+		commands.append(("hddtemp", ["hddtemp", "-q", "-n", "-w", dev]))
+	for kind, command in commands:
+		try:
+			output = subprocess.check_output(command, universal_newlines=True, stderr=subprocess.STDOUT)
+			if kind == "smartctl":
+				for line in output.splitlines():
+					if "Temperature" not in line:
+						continue
+					values = re.findall(r"(?<![\w.-])-?\d+(?![\w.-])", line)
+					for value in reversed(values):
+						candidate = int(value)
+						if 1 <= candidate <= 125:
+							tmp1 = candidate
+							break
+					if tmp1:
+						break
+			else:
+				match = re.search(r"-?\d+", output.strip())
+				if match:
+					candidate = int(match.group(0))
+					if 1 <= candidate <= 125:
+						tmp1 = candidate
+		except (OSError, subprocess.CalledProcessError, ValueError):
+			pass
+		if tmp1:
+			break
+	return tmp1
 
 def chckVolMute():
 	if config.plugins.setupGlass17.par51.value != 1200 or config.plugins.setupGlass17.par52.value != 120:
@@ -8105,7 +8127,6 @@ class downloadMenu(Screen):
 								os.makedirs(extract_dir, exist_ok=True)
 								cmd = ["/usr/bin/7z_g", "e", "-y", "-o%s" % extract_dir, archive]
 								try:
-									import subprocess
 									extract_ok = subprocess.call(cmd) == 0
 								except (OSError, ValueError):
 									extract_ok = False
