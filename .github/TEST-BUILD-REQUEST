@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test66
-Revision: 205
-Purpose: receiver-confirmed TEST65 corrections: real graphical selected-event assets, suppress generated timeline date cell, remove failed Program Info cap/spinner-freeze workaround; retain TEST64 picon.
+Candidate: 1.0.5-test67
+Revision: 206
+Purpose: receiver-confirmed TEST66 EPG PASS; remove actually-persisting legacy Program Info spinner suppression/state restore and failed corner cap; retain EPG selection and TEST64 picon.

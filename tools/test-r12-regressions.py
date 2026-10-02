@@ -702,8 +702,8 @@ assert 'name="timeline_text" position="15,387" size="1845,36" backgroundColor="#
 # Spinner suppression must happen before opening Program Info, not inside the screen,
 # so a busy frame cannot already be painted/frozen in the upper-right corner.
 red_handler = PLUGIN.split('def warderEPGSelectionRedButtonPressed(self):', 1)[1].split('WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed', 1)[0]
-assert 'setSpinnerOnOff(0)' in red_handler
-assert '_warderProgramInfoSpinnerWasEnabled' in red_handler
+assert 'setSpinnerOnOff(0)' not in red_handler
+assert '_warderProgramInfoSpinnerWasEnabled' not in red_handler
 assert 'self.onClose.append(self._restoreMetadataSpinner)' not in program_info
 # Provider first-hit path uses one multi-search instead of six serial movie/tv searches.
 assert '/search/multi?' in META
@@ -722,11 +722,11 @@ assert 'timeout=2.5' in META
 assert 'search_deadline = time.time() + 3.0' in META
 assert 'timeout=max(0.25, min(1.0, remaining))' in META
 assert 'if not self._metadataDone:' in program_info
-assert 'setSpinnerOnOff(0)' in program_info
+assert 'setSpinnerOnOff(0)' not in program_info
 
 # TEST63: receiver showed a stale busy-spinner framebuffer tile at the extreme upper-right.
 # Keep the fix local to PROGRAM INFO: an opaque Warder-owned cap masks that reserved corner.
-assert '<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosition="20" />' in program_info
+assert '<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosition="20" />' not in program_info
 
 # TEST64: larger station picon centred in Program Info left column.
 assert 'name="stationPicon" position="125,425" size="180,90"' in program_info

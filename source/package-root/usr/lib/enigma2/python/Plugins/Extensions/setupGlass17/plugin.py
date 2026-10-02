@@ -184,8 +184,6 @@ class WarderProgramInfo(Screen):
 		<widget name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" />
 		<eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
-		<!-- Opaque Warder-owned cap masks any stale Enigma2 busy-spinner framebuffer tile. -->
-		<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosition="20" />
 		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="125,425" size="180,90" zPosition="3" alphatest="blend" />
@@ -273,12 +271,6 @@ class WarderProgramInfo(Screen):
 		self.onLayoutFinish.append(self._startMetadataLookup)
 
 	def _startMetadataLookup(self):
-		# Keep Enigma2 busy spinner suppressed while silent metadata lookup runs.
-		try:
-			if setSpinnerOnOff is not None:
-				setSpinnerOnOff(0)
-		except Exception:
-			pass
 		if not self._metadataTitle or warderProgramLookup is None:
 			return
 		def worker():
@@ -295,11 +287,6 @@ class WarderProgramInfo(Screen):
 
 	def _pollMetadataLookup(self):
 		if not self._metadataDone:
-			try:
-				if setSpinnerOnOff is not None:
-					setSpinnerOnOff(0)
-			except Exception:
-				pass
 			return
 		self._metadataTimer.stop()
 		meta = self._metadataResult or {}
@@ -1244,13 +1231,6 @@ try:
 
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderProgramInfoClosed(self, action=None):
-		try:
-			spinnerWasEnabled = getattr(self, "_warderProgramInfoSpinnerWasEnabled", None)
-			if spinnerWasEnabled is not None and setSpinnerOnOff is not None:
-				setSpinnerOnOff(1 if spinnerWasEnabled else 0)
-		except Exception:
-			pass
-		self._warderProgramInfoSpinnerWasEnabled = None
 		if action == "green": return self.RecordTimerQuestion(True)
 		if action == "yellow": return self.enterDateTime()
 		if action == "blue": return self.openEPGSearch()
@@ -1268,14 +1248,6 @@ try:
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
 				if event is not None:
-					spinnerWasEnabled = None
-					try:
-						spinnerWasEnabled = bool(config.usage.show_spinner.value)
-						if setSpinnerOnOff is not None and spinnerWasEnabled:
-							setSpinnerOnOff(0)
-					except Exception:
-						spinnerWasEnabled = None
-					self._warderProgramInfoSpinnerWasEnabled = spinnerWasEnabled
 					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
 			except Exception as e:
 				Writelog("WarderProgramInfo open: %s" % e)
