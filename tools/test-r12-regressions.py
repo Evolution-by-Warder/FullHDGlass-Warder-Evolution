@@ -735,4 +735,6 @@ assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
 assert 'name="timeline_text" position="15,387" size="1845,36"' in pigepg
 assert 'EntryBackgroundColorSelected="#d69600"' in pigepg
 assert 'EntryBackgroundColorNowSelected="#d69600"' in pigepg
-\n# TEST66: hide only TimelineText generated 60px date cell; time labels remain native.\nassert '<eLabel position="15,387" size="60,36" backgroundColor="#242424" zPosition="3" />' in pigepg\n
+
+# TEST66: hide only TimelineText generated 60px date cell; time labels remain native.
+assert '<eLabel position="15,387" size="60,36" backgroundColor="#242424" zPosition="3" />' in pigepg
