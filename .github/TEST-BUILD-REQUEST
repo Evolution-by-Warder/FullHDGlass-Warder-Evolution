@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test73
-Revision: 214
-Purpose: restore the missing pre-TEST58 Regular;34 font on MessageBox-template and physically verify normal FullHD Yes/No choice size while preserving TEST71 Program Info PASS.
+Candidate: 1.0.5-test74
+Revision: 215
+Purpose: validation-only version bump so installed TEST73 renders the updater Yes/No dialog; no runtime GUI changes.
