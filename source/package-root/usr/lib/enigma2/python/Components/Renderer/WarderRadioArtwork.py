@@ -24,6 +24,7 @@ class WarderRadioArtwork(Renderer):
     def __init__(self):
         Renderer.__init__(self)
         self._key = ""
+        self._requestedKey = ""
         self._result = None
         self._busy = False
         self._picload = None
@@ -162,6 +163,9 @@ class WarderRadioArtwork(Renderer):
             self._key = key
             if self.instance:
                 self.instance.hide()
-            if key and not self._busy:
-                self._request(artist, title, key)
+        if not key:
+            self._requestedKey = ""
+        elif not self._busy and key != self._requestedKey:
+            self._requestedKey = key
+            self._request(artist, title, key)
         self._timer.start(1200, False)

@@ -799,3 +799,8 @@ assert 'threading.Thread' in RADIO_ART and 'timeout=2.5' in RADIO_ART
 assert '!= wantArtist or cls._norm(item.get("trackName")) != wantTitle' in RADIO_ART
 assert 'WarderRdsInfoDisplay' not in PLUGIN
 assert 'config.misc.radiopic.value' not in PLUGIN
+
+# TEST82: rapid RadioText changes must queue the current exact track after an older worker finishes.
+assert 'self._requestedKey = ""' in RADIO_ART
+assert 'elif not self._busy and key != self._requestedKey:' in RADIO_ART
+assert 'self._requestedKey = key' in RADIO_ART

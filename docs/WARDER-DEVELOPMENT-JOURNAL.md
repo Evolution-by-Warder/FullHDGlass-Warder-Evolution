@@ -300,3 +300,7 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST81 CI #227 correction (2026-10-02): static preflight stopped before package build because tools/test-r12-regressions.py contained a literal backslash-n before RADIO_ART, producing SyntaxError. Product/skin/renderer code was not implicated. Corrected only that test-file newline plus this journal entry; TEST81 functional implementation is unchanged.
 
 - TEST81 CI retrigger (2026-10-02): revision 225 changes only TEST-BUILD-REQUEST so GitHub Actions reruns TEST81 after the #227 regression-test newline correction. Functional Radio/DAB implementation remains byte-for-byte unchanged.
+
+- TEST81 CI PASS (2026-10-02): corrected run #228 completed successfully from bd3735ae42151ba067ffa3831e115c2cc500c626. Published 1.0.5-test81; IPK SHA-256 f03893a30868f7cb909a99c6c18180b953eaebabb2c48f6c965824758c70f699; publishing HEAD 0c795d6aa9d992ebe32d399c8ae4d6419015733f; artifact 11248494575. Physical install intentionally withheld because review found a rapid-track-change request race.
+
+- TEST82 Radio artwork race hardening candidate (2026-10-02): keeps native RdsInfoDisplay untouched and changes only the isolated WarderRadioArtwork request state. _requestedKey is separate from current _key so a track arriving while a prior lookup is busy is requested on the next poll after the worker completes; a completed no-match is not repeatedly queried. Exact artist+track matching and DAB SLS/radio.mvi fallback behavior remain unchanged. Receiver verification pending.

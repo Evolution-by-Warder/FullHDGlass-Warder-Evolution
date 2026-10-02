@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test81
-Revision: 225
-Purpose: Add exact current-song album artwork as an isolated skin Renderer, never by monkey-patching native OpenATV RdsInfoDisplay. Renderer polls native RDS RadioText, accepts only explicit artist-title separators, performs asynchronous iTunes song search, and displays artwork only when normalized artist AND track match exactly. No exact match => renderer stays hidden, preserving native DAB SLS; passive radio.mvi remains final fallback. Record TEST80 physical PASS: both GUI restarts and TV-to-RADIO passed on GigaBlue Quad 4K Pro / OpenATV 8.0.2 with live date/time, Warder branding, station picon/name, song, DAB metadata and provider visible.
+Candidate: 1.0.5-test82
+Revision: 226
+Purpose: Harden the isolated exact Radio artwork renderer against rapid track changes. Track identity and requested lookup identity are now separate: if RadioText changes while an older asynchronous lookup is busy, the current track is requested immediately after that worker finishes. A completed no-match is not retried every 1.2 seconds. Exact normalized artist AND track matching, native DAB SLS fallback, passive radio.mvi fallback, and untouched native OpenATV RdsInfoDisplay remain unchanged. TEST80 remains the receiver-proven Radio/DAB UI checkpoint.
