@@ -393,7 +393,10 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
     block = re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN).group(0)
     assert 'position="15,15"' in block and 'size="1890,1050"' in block, screen
     for n in range(6):
-        assert 'name="timeline%d"' % n in block, (screen, n)
+        if screen == "GraphicalEPGPIG":
+            assert ('name="timeline%d"' % n) not in block, (screen, n)
+        else:
+            assert 'name="timeline%d"' % n in block, (screen, n)
     required = ['name="bouquetlist"']
     if screen == "GraphicalEPG":
         required += ['name="primetime"', 'name="change_bouquet"', 'name="jump"', 'name="page"']
