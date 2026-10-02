@@ -8,6 +8,10 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.InfoBar import InfoBar
 from Components.ServiceEventTracker import ServiceEventTracker
 from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxPythonMultiContent, eListbox, gFont, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
+try:
+	from enigma import setSpinnerOnOff
+except Exception:
+	setSpinnerOnOff = None
 import Screens.InfoBar
 from Tools.Transponder import ConvertToHumanReadable
 try:
@@ -261,6 +265,8 @@ class WarderProgramInfo(Screen):
 		self._metadataDone = False
 		self._metadataTimer = eTimer()
 		self._metadataTimer.callback.append(self._pollMetadataLookup)
+		self._metadataSpinnerWasEnabled = None
+		self.onClose.append(self._restoreMetadataSpinner)
 		serviceName = self._serviceName(service, self._serviceRef)
 		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
@@ -269,6 +275,12 @@ class WarderProgramInfo(Screen):
 	def _startMetadataLookup(self):
 		if not self._metadataTitle or warderProgramLookup is None:
 			return
+		try:
+			self._metadataSpinnerWasEnabled = bool(config.usage.show_spinner.value)
+			if setSpinnerOnOff is not None and self._metadataSpinnerWasEnabled:
+				setSpinnerOnOff(0)
+		except Exception:
+			self._metadataSpinnerWasEnabled = None
 		def worker():
 			try:
 				self._metadataResult = warderProgramLookup(self._metadataTitle, self._metadataContext)
@@ -285,6 +297,7 @@ class WarderProgramInfo(Screen):
 		if not self._metadataDone:
 			return
 		self._metadataTimer.stop()
+		self._restoreMetadataSpinner()
 		meta = self._metadataResult or {}
 		try:
 			self._artworkPath = meta.get("artwork_path") or ""
@@ -300,6 +313,14 @@ class WarderProgramInfo(Screen):
 			self._loadProgramArtwork()
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata apply: %s" % e)
+
+	def _restoreMetadataSpinner(self):
+		try:
+			if self._metadataSpinnerWasEnabled is not None and setSpinnerOnOff is not None:
+				setSpinnerOnOff(1 if self._metadataSpinnerWasEnabled else 0)
+		except Exception:
+			pass
+		self._metadataSpinnerWasEnabled = None
 
 	def _loadProgramArtwork(self):
 		try:

@@ -443,7 +443,7 @@ assert 'zPosition="-2"' in rds
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pig24 and 'zPosition="3"' in pig24
 assert 'NumberOfRows="15"' in pig24
-assert 'name="timeline_text" position="75,387" size="1755,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
+assert 'name="timeline_text" position="75,387" size="1785,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
 
 # TEST26: PIG guide header is clean; EPG grid reserves only a narrow picon rail.
@@ -452,7 +452,7 @@ pig26_end = SKIN.index('</screen>', pig26_start)
 pig26 = SKIN[pig26_start:pig26_end]
 assert 'source="Title" render="Label"' not in pig26
 assert 'source="global.CurrentTime" render="Label" position="30,12"' not in pig26
-assert 'name="timeline_text" position="75,387" size="1755,36"' in pig26
+assert 'name="timeline_text" position="75,387" size="1785,36"' in pig26
 assert 'name="timeline0"' not in pig26
 assert 'name="timeline_now" position="75,423"' in pig26
 
@@ -618,7 +618,7 @@ assert "source=\"session.VideoPicture\" render=\"Pig\"" not in program_info
 for token in (
     'position="15,15" size="1890,1050"',
     'source="session.VideoPicture" render="Pig" position="33,63" size="549,309"',
-    'name="timeline_text" position="75,387" size="1755,36"',
+    'name="timeline_text" position="75,387" size="1785,36"',
     'name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15"',
     'name="timeline_now" position="75,423" zPosition="2" size="28,495"',
     'name="bouquetlist" position="15,423" size="1845,495"',
@@ -671,11 +671,11 @@ assert 'format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42"' in epg_pi
 assert 'position="435,12" size="210,42"' in epg_pig and 'ClockToText">WithSeconds' in epg_pig
 assert 'FullHDGlass17 · Warder Evolution' in epg_pig
 assert 'text="EPG" position="15,387"' not in epg_pig
-assert 'name="timeline_text" position="75,387" size="1755,36"' in epg_pig
+assert 'name="timeline_text" position="75,387" size="1785,36"' in epg_pig
 
 # TEST58: EPG keeps timeline labels aligned while extending only the visual strip over picon column.
-assert '<eLabel position="15,387" size="60,36" backgroundColor="#505050"' in pigepg
-assert 'name="timeline_text" position="75,387" size="1755,36"' in pigepg
+assert '<eLabel position="15,387" size="1845,36" backgroundColor="#505050"' in pigepg
+assert 'name="timeline_text" position="75,387" size="1785,36"' in pigepg
 # TEST58: TMDB lookup runs off GUI thread; result is applied by eTimer on GUI thread.
 assert 'import threading' in PLUGIN
 assert 'threading.Thread(target=worker)' in PLUGIN
@@ -692,3 +692,11 @@ assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42
 assert 'CACHE_SCHEMA = "v4"' in META
 assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in META
 assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko Slovensko má talent" if '_provider_base_title_for_test' in globals() else True
+
+# TEST59: one continuous EPG timeline strip and temporary metadata-spinner suppression/restoration.
+assert '<eLabel position="15,387" size="1845,36" backgroundColor="#505050"' in pigepg
+assert 'name="timeline_text" position="75,387" size="1785,36" backgroundColor="#505050"' in pigepg
+assert 'from enigma import setSpinnerOnOff' in PLUGIN
+assert 'self.onClose.append(self._restoreMetadataSpinner)' in PLUGIN
+assert 'setSpinnerOnOff(0)' in PLUGIN
+assert 'self._restoreMetadataSpinner()' in PLUGIN
