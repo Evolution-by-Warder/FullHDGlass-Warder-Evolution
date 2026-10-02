@@ -178,10 +178,6 @@ def lookup(title, context=""):
     result["artwork_path"] = _artworkPath(result)
     _writeCache(title, result)
     return result
-, '', value, flags=re.I)
-    # EPG season/edition suffix without episode number, e.g. "Česko Slovensko má talent X".
-    # Strip only a standalone trailing Roman numeral; exact matching still applies to the base title.
-    value = re.sub(r'\s+[IVXLCDM]{1,8}\s*
 
 def _cachePath(title):
     key = re.sub(r'[^a-z0-9]+', '_', _norm(title)).strip('_')[:100] or "empty"

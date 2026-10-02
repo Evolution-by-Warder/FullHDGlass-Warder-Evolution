@@ -184,3 +184,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 compatibility fix from r12.2 field report: removed explicit font="Regular;34" from the list widgets in MessageBox and MessageBox-template. Current OpenATV reference MessageBox templates leave the list font to the Enigma2 list component; this avoids the reported GSOD path while preserving geometry/itemHeight. MessageBoxModal is intentionally unchanged because the report and shared template path concern only MessageBox and MessageBox-template.
 
 - TEST58 CI fix: repaired malformed _baseTitle regex introduced by the Roman-edition normalization commit; restored complete SxxExx rule plus standalone trailing Roman numeral rule. No fuzzy title matching added.
+
+- TEST58 CI cleanup: removed the stale malformed tail left at EOF by the earlier failed regex replacement. _baseTitle remains defined once in its proper location; provider now compiles cleanly by inspection.
