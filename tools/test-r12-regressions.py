@@ -485,7 +485,7 @@ for token in (
     '("key_yellow", _("Goto Date/Time"))',
     '("key_blue", _("EPG Search"))',
     'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys',
-    'return self.infoKeyPressed()',
+    'self.session.open(WarderProgramInfo, event, service)',
     'return self.RecordTimerQuestion(True)',
     'return self.enterDateTime()',
     'return self.openEPGSearch()',
