@@ -1095,7 +1095,7 @@ try:
 	def _warderGraphicalEPGLabels(self):
 		if not _warderGraphicalEPGPIG(self):
 			return
-		for key, text in (("key_red", "PROGRAM INFO"), ("key_green", _("Add Timer")), ("key_yellow", _("Prejsť na dátum/čas")), ("key_blue", _("EPG Search"))):
+		for key, text in (("key_red", "PROGRAM INFO"), ("key_green", _("Add Timer")), ("key_yellow", _("Goto Date/Time")), ("key_blue", _("EPG Search"))):
 			try:
 				self[key].setText(text)
 			except Exception:
