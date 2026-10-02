@@ -596,7 +596,7 @@ for token in (
     'for language in ("sk-SK", "cs-CZ", "en-US"):',
     '/search/multi?',
     'query_title = _baseTitle(title)',
-    '_norm(candidate) == wanted',
+    'any(_norm(name or "") == wanted for name in names)',
     'ranked[0][0] < 2',
     'append_to_response=external_ids',
     '"provider_id": str(item.get("id") or "")',
