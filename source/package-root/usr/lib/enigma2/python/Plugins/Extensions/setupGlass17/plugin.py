@@ -270,6 +270,22 @@ class WarderProgramInfo(Screen):
 		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
 		self.onLayoutFinish.append(self._startMetadataLookup)
+		self.onShown.append(self._suppressCoreSpinner)
+		self.onClose.append(self._restoreCoreSpinner)
+
+	def _suppressCoreSpinner(self):
+		try:
+			if setSpinnerOnOff is not None:
+				setSpinnerOnOff(0)
+		except Exception:
+			pass
+
+	def _restoreCoreSpinner(self):
+		try:
+			if setSpinnerOnOff is not None:
+				setSpinnerOnOff(1 if config.usage.show_spinner.value else 0)
+		except Exception:
+			pass
 
 	def _closeProgramInfo(self, *retVal):
 		self._metadataClosed = True

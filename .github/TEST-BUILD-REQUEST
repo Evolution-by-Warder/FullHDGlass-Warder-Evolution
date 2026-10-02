@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test68
-Revision: 207
-Purpose: receiver-confirmed TEST67 Program Info lifecycle bug: make first EXIT/RED close immediately and stop metadata polling; retain confirmed EPG selection and picon geometry.
+Candidate: 1.0.5-test69
+Revision: 208
+Purpose: suppress confirmed OpenATV core busy spinner only while Warder Program Info is open, restore configured state on close, and restore readable MessageBox Yes/No font; retain EPG PASS state.
