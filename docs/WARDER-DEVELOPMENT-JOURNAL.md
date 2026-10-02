@@ -208,3 +208,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST59 version sync: runtime Warder version marker advanced from 1.0.5-test58 to 1.0.5-test59 to match control/build candidate.
 
 - Receiver feedback after TEST58: aligned PROGRAM INFO station value with the metadata value column by moving channel x=245 to x=225 and widening it to 235. This addresses the visible 20px right shift of the station value. Physical receiver verification pending.
+
+- TEST59 station alignment regression guard: updated the remaining stale TEST51 assertion to the receiver-requested channel geometry x=225 / width=235. Runtime layout already had this geometry; no runtime behavior changed in this commit.
