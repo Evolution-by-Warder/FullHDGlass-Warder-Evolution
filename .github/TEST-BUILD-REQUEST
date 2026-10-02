@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test86
-Revision: 236
+Revision: 237
 Purpose: Receiver-proven exact metadata compatibility: safely canonicalize only explicit featuring-credit relocation between `Artist feat. Guest` + `Title` and `Artist` + `Title (feat. Guest)`. Main artist, base title and guest must all match exactly after normalization. No ampersand aliasing, no Edit/Remix stripping, no fuzzy/random artwork. TEST85 diagnostics retained.
