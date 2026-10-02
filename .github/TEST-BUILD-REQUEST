@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test38
-Revision: 129
+Revision: 130
 Purpose: TEST38 localizes GraphicalEPGPIG and PROGRAM INFO action labels from the active Enigma2 language, replaces the programme-artwork placeholder with the existing FullHDGlass g17Poster2 renderer, and includes the DreamOS preinstall/eTimer compatibility fix. Preserve the accepted TEST37 geometry, live-video translucent background, real station picon, EPG-authoritative text, picon-only guide layout, and all r12 upgrade/GSOD regression guards.
