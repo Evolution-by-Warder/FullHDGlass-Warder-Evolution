@@ -594,6 +594,7 @@ for token in (
     'def _baseTitle(title):',
     'CACHE_SCHEMA = "v4"',
     'for language in ("cs-CZ", "sk-SK", "en-US"):',
+    '/search/multi?',
     'query_title = _baseTitle(title)',
     '_norm(candidate) == wanted',
     'ranked[0][0] < 2',
@@ -674,7 +675,7 @@ assert 'text="EPG" position="15,387"' not in epg_pig
 assert 'name="timeline_text" position="75,387" size="1785,36"' in epg_pig
 
 # TEST58: EPG keeps timeline labels aligned while extending only the visual strip over picon column.
-assert '<eLabel position="15,387" size="1845,36" backgroundColor="#505050"' in pigepg
+assert '<eLabel position="15,387" size="1845,36" backgroundColor="#242424"' in pigepg
 assert 'name="timeline_text" position="75,387" size="1785,36"' in pigepg
 # TEST58: TMDB lookup runs off GUI thread; result is applied by eTimer on GUI thread.
 assert 'import threading' in PLUGIN
@@ -693,10 +694,17 @@ assert 'CACHE_SCHEMA = "v4"' in META
 assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in META
 assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko Slovensko má talent" if '_provider_base_title_for_test' in globals() else True
 
-# TEST59: one continuous EPG timeline strip and temporary metadata-spinner suppression/restoration.
-assert '<eLabel position="15,387" size="1845,36" backgroundColor="#505050"' in pigepg
-assert 'name="timeline_text" position="75,387" size="1785,36" backgroundColor="#505050"' in pigepg
-assert 'from enigma import setSpinnerOnOff' in PLUGIN
-assert 'self.onClose.append(self._restoreMetadataSpinner)' in PLUGIN
-assert 'setSpinnerOnOff(0)' in PLUGIN
-assert 'self._restoreMetadataSpinner()' in PLUGIN
+# TEST60: one continuous FullHDGlass-style timeline strip; no flat TEST59 grey bar.
+assert '<eLabel position="15,387" size="1845,36" backgroundColor="#242424"' in pigepg
+assert '<eLabel position="15,387" size="1845,2" backgroundColor="#6a6a6a"' in pigepg
+assert '<eLabel position="15,420" size="1845,3" backgroundColor="#101010"' in pigepg
+assert 'name="timeline_text" position="75,387" size="1785,36" backgroundColor="#242424"' in pigepg
+# Spinner suppression must happen before opening Program Info, not inside the screen,
+# so a busy frame cannot already be painted/frozen in the upper-right corner.
+red_handler = PLUGIN.split('def warderEPGSelectionRedButtonPressed(self):', 1)[1].split('WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed', 1)[0]
+assert 'setSpinnerOnOff(0)' in red_handler
+assert '_warderProgramInfoSpinnerWasEnabled' in red_handler
+assert 'self.onClose.append(self._restoreMetadataSpinner)' not in program_info
+# Provider first-hit path uses one multi-search instead of six serial movie/tv searches.
+assert '/search/multi?' in META
+assert '/search/%s?' not in META

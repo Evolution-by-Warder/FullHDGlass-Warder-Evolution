@@ -106,17 +106,23 @@ def lookup(title, context=""):
     query_title = _baseTitle(title)
     wanted = _norm(query_title)
     matches = []
-    # Localized EPG titles must resolve by exact localized title; never accept fuzzy results.
-    for media in ("movie", "tv"):
-        for language in ("cs-CZ", "sk-SK", "en-US"):
-            try:
-                data = _fetch("https://api.themoviedb.org/3/search/%s?api_key=%s&language=%s&query=%s" % (media, TMDB_KEY, language, quote_plus(query_title)))
-                for item in data.get("results", [])[:5]:
-                    candidate = item.get("title") or item.get("name") or item.get("original_title") or item.get("original_name") or ""
-                    if wanted and _norm(candidate) == wanted:
-                        matches.append((media, item))
-            except Exception:
-                continue
+    # Fast exact matching: TMDB multi-search checks movie + TV together.
+    # Try the EPG's primary locale first and only fall back when no exact
+    # candidate exists, avoiding the previous six serial search requests.
+    for language in ("cs-CZ", "sk-SK", "en-US"):
+        try:
+            data = _fetch("https://api.themoviedb.org/3/search/multi?api_key=%s&language=%s&query=%s" % (TMDB_KEY, language, quote_plus(query_title)))
+            for item in data.get("results", [])[:10]:
+                media = item.get("media_type")
+                if media not in ("movie", "tv"):
+                    continue
+                candidate = item.get("title") or item.get("name") or item.get("original_title") or item.get("original_name") or ""
+                if wanted and _norm(candidate) == wanted:
+                    matches.append((media, item))
+        except Exception:
+            continue
+        if matches:
+            break
     if not matches:
         _writeCache(title, {})
         return {}

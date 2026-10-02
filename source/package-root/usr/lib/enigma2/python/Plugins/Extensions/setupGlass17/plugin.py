@@ -265,8 +265,6 @@ class WarderProgramInfo(Screen):
 		self._metadataDone = False
 		self._metadataTimer = eTimer()
 		self._metadataTimer.callback.append(self._pollMetadataLookup)
-		self._metadataSpinnerWasEnabled = None
-		self.onClose.append(self._restoreMetadataSpinner)
 		serviceName = self._serviceName(service, self._serviceRef)
 		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
@@ -275,12 +273,6 @@ class WarderProgramInfo(Screen):
 	def _startMetadataLookup(self):
 		if not self._metadataTitle or warderProgramLookup is None:
 			return
-		try:
-			self._metadataSpinnerWasEnabled = bool(config.usage.show_spinner.value)
-			if setSpinnerOnOff is not None and self._metadataSpinnerWasEnabled:
-				setSpinnerOnOff(0)
-		except Exception:
-			self._metadataSpinnerWasEnabled = None
 		def worker():
 			try:
 				self._metadataResult = warderProgramLookup(self._metadataTitle, self._metadataContext)
@@ -297,7 +289,6 @@ class WarderProgramInfo(Screen):
 		if not self._metadataDone:
 			return
 		self._metadataTimer.stop()
-		self._restoreMetadataSpinner()
 		meta = self._metadataResult or {}
 		try:
 			self._artworkPath = meta.get("artwork_path") or ""
@@ -313,14 +304,6 @@ class WarderProgramInfo(Screen):
 			self._loadProgramArtwork()
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata apply: %s" % e)
-
-	def _restoreMetadataSpinner(self):
-		try:
-			if self._metadataSpinnerWasEnabled is not None and setSpinnerOnOff is not None:
-				setSpinnerOnOff(1 if self._metadataSpinnerWasEnabled else 0)
-		except Exception:
-			pass
-		self._metadataSpinnerWasEnabled = None
 
 	def _loadProgramArtwork(self):
 		try:
@@ -1265,7 +1248,15 @@ try:
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
 				if event is not None:
-					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
+					return spinnerWasEnabled = None
+	try:
+		spinnerWasEnabled = bool(config.usage.show_spinner.value)
+		if setSpinnerOnOff is not None and spinnerWasEnabled:
+			setSpinnerOnOff(0)
+	except Exception:
+		spinnerWasEnabled = None
+	self._warderProgramInfoSpinnerWasEnabled = spinnerWasEnabled
+	self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
 			except Exception as e:
 				Writelog("WarderProgramInfo open: %s" % e)
 			return None
