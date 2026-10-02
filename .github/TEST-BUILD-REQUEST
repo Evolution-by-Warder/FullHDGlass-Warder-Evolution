@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test58
-Revision: 177
+Revision: 178
 Purpose: CI regression alignment for intentional GraphicalEPGPIG warder_key_* isolation; Repair invalid TEST48 provider; invalidate stale negative artwork cache; exact localized episodic-title matching; verified backdrop-first/poster-fallback artwork; retain Warder-owned GraphicalEPGPIG PROGRAM INFO colour sources and approved EPG geometry.

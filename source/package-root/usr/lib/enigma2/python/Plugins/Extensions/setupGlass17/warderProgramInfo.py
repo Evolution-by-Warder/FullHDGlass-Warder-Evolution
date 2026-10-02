@@ -36,7 +36,10 @@ def _baseTitle(title):
     value = (title or "").strip()
     # Common EPG episode suffixes: "Přátelé VI (10)" and "Series S06E10".
     value = re.sub(r'\s+[IVXLCDM]+\s*\(\d+\)\s*$', '', value, flags=re.I)
-    value = re.sub(r'\s+S\d{1,2}E\d{1,3}\s*
+    value = re.sub(r'\s+S\d{1,2}E\d{1,3}\s*$', '', value, flags=re.I)
+    # Standalone Roman numeral may be an EPG season/edition marker, e.g. "... talent X".
+    value = re.sub(r'\s+[IVXLCDM]{1,8}\s*$', '', value, flags=re.I)
+    return value.strip() or (title or "").strip()
 
 def _cachePath(title):
     key = re.sub(r'[^a-z0-9]+', '_', _norm(title)).strip('_')[:100] or "empty"
