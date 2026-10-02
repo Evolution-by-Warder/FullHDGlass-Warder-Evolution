@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test61
-Revision: 195
+Revision: 196
 Purpose: TEST60 receiver corrections: preserve receiver-approved EPG timeline; remove rating placeholder fragment; speed cold metadata lookup; support exact broadcaster subtitle aliases such as Baywatch - Pobrežná hliadka without fuzzy matching.

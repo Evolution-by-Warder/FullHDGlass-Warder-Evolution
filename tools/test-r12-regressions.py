@@ -641,7 +641,7 @@ assert 'name="stationLabel" position="50,520" size="190,34" font="Prive3;24"' in
 assert 'name="channel" position="225,520" size="235,34" font="Prive4;24"' in program_info
 assert 'name="durationLabel" position="50,675"' in program_info
 assert 'name="broadcastLabel" position="50,714"' in program_info
-assert 'CACHE_SCHEMA = "v4"' in PROVIDER
+assert 'CACHE_SCHEMA = "v5"' in PROVIDER
 
 # TEST52 stable PROGRAM INFO metadata rows.
 for field in ("genreMeta", "yearMeta", "countryMeta"):
@@ -690,7 +690,7 @@ assert 'name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregrou
 assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24"' in program_info
 
 # TEST58: safe EPG edition suffix normalization, while retaining exact TMDB base-title matching.
-assert 'CACHE_SCHEMA = "v4"' in META
+assert 'CACHE_SCHEMA = "v5"' in META
 assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in META
 assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko Slovensko má talent" if '_provider_base_title_for_test' in globals() else True
 

@@ -224,3 +224,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST61 CI revision 194: Actions #198 stopped in static regression preflight because one legacy assertion still expected the old cs-CZ → sk-SK locale order. Updated that guard to the TEST61 sk-SK → cs-CZ → en-US contract; runtime code unchanged. Retriggered TEST61.
 
 - TEST61 CI revision 195: Actions #199 found a second stale provider regression token (`_norm(candidate) == wanted`) after TEST61 expanded exact matching across TMDB localized/original title/name fields. Updated the guard to the new exact `any(_norm(name or "") == wanted for name in names)` contract. Runtime unchanged; TEST61 retriggered.
+
+- TEST61 CI revision 196: Actions #200 found the final stale cache-schema regression assertion still pinned to v4. Updated all remaining TEST regression expectations to cache schema v5. Runtime unchanged; TEST61 retriggered.
