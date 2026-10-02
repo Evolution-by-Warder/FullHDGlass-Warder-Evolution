@@ -552,10 +552,32 @@ assert '<eLabel text="PROGRAM INFO"' not in pigepg
 assert 'source="key_red" render="Label"' in pigepg
 
 
-# TEST39: PROGRAM INFO must remain the Warder feature name (legacy gettext must not rename it to CSFD),
-# and Program Info bottom actions are StaticText Sources so OpenATV renders them reliably.
-assert 'if text == "PROGRAM INFO":' in PLUGIN
-assert 'return "PROGRAM INFO"' in PLUGIN[PLUGIN.index('def _warderUiText(text):'):PLUGIN.index('class WarderProgramInfo', PLUGIN.index('def _warderUiText(text):'))]
+
+# TEST39/40 receiver contract: every Warder colour-key caption follows active Enigma2 OSD language.
+# Warder-owned translations take precedence over legacy FullHDGlass gettext to avoid collisions (PROGRAM INFO -> CSFD).
+uihelper = PLUGIN[PLUGIN.index('def _warderUiText(text):'):PLUGIN.index('class WarderProgramInfo', PLUGIN.index('def _warderUiText(text):'))]
+assert 'lang = config.osd.language.value.split("_")[0].lower()' in uihelper
+assert '"sk": {"PROGRAM INFO": "INFO O PROGRAME"' in uihelper
+assert '"cs": {"PROGRAM INFO": "INFO O PROGRAMU"' in uihelper
+assert 'if text in warder.get(lang, {}):' in uihelper
+assert 'return warder[lang][text]' in uihelper
+assert 'if text == "PROGRAM INFO":' not in uihelper
 for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
     assert ('source="%s" render="Label"' % key) in program_info, key
     assert ('self["%s"] = StaticText("")' % key) in program_info, key
+# Approved Program Info reference: large translucent FullHDGlass panel, cyan top accent,
+# real programme poster at upper-left, title/station/time header, narrow authoritative metadata,
+# large EPG description, and four visible bottom action bars.
+for token in (
+    'position="20,20" size="1730,2" backgroundColor="#38c7e8"',
+    'source="posterTitle" render="g17Poster2" position="38,85" size="479,260"',
+    'name="title" position="560,80" size="1095,62"',
+    'name="stationPicon" position="560,154" size="92,55"',
+    'name="description" position="665,425" size="1040,335"',
+    'position="625,415" size="2,345"',
+    'position="25,820" size="395,62" backgroundColor="transpBlack3"',
+    'position="465,820" size="395,62" backgroundColor="transpBlack3"',
+    'position="905,820" size="395,62" backgroundColor="transpBlack3"',
+    'position="1345,820" size="395,62" backgroundColor="transpBlack3"',
+):
+    assert token in program_info, token

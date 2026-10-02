@@ -148,15 +148,7 @@ def Writelog(txt):
 	except IOError: pass
 ##########################################################################################################################
 def _warderUiText(text):
-	"""Use FullHDGlass translations first; provide Warder SK/CZ strings for new UI text."""
-	if text == "PROGRAM INFO":
-		return "PROGRAM INFO"
-	try:
-		translated = _(text)
-		if translated and translated != text:
-			return translated
-	except Exception:
-		pass
+	"""Warder UI strings follow the active Enigma2 OSD language without legacy gettext collisions."""
 	try:
 		lang = config.osd.language.value.split("_")[0].lower()
 	except Exception:
@@ -165,7 +157,15 @@ def _warderUiText(text):
 		"sk": {"PROGRAM INFO": "INFO O PROGRAME", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:"},
 		"cs": {"PROGRAM INFO": "INFO O PROGRAMU", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Duration:": "Délka:", "Broadcast:": "Vysílání:"}
 	}
-	return warder.get(lang, {}).get(text, text)
+	if text in warder.get(lang, {}):
+		return warder[lang][text]
+	try:
+		translated = _(text)
+		if translated and translated != text:
+			return translated
+	except Exception:
+		pass
+	return text
 
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
@@ -173,16 +173,15 @@ class WarderProgramInfo(Screen):
 	<screen name="WarderProgramInfo" position="75,65" size="1770,950" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
 		<widget source="session.VideoPicture" render="Pig" position="0,0" size="1770,950" zPosition="-10" backgroundColor="transparent" />
 		<eLabel position="18,18" size="1734,914" backgroundColor="transpBlack3" zPosition="-5" />
-		<eLabel position="20,20" size="1730,2" backgroundColor="#707070" />
-		<widget name="now" position="1260,38" size="445,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="20,20" size="1730,2" backgroundColor="#38c7e8" zPosition="1" />
+		<widget name="now" position="1240,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,72" size="505,286" backgroundColor="transpBlack" />
 		<widget source="posterTitle" render="g17Poster2" position="38,85" size="479,260" zPosition="2" transparent="1" />
 		<widget name="title" position="560,80" size="1095,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="560,154" size="92,55" zPosition="3" alphatest="blend" />
 		<widget name="channel" position="675,157" size="980,48" font="Prive4;34" foregroundColor="#ffffff" transparent="1" />
 		<widget name="when" position="675,220" size="980,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="duration" position="675,270" size="980,40" font="Prive3;29" foregroundColor="#e5b243" transparent="1" />
-		<widget name="short" position="560,320" size="1095,55" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
+		<widget name="short" position="560,300" size="1095,58" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,392" size="1720,2" backgroundColor="#707070" />
 		<widget name="stationLabel" position="50,425" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="service" position="285,425" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
@@ -193,19 +192,19 @@ class WarderProgramInfo(Screen):
 		<eLabel position="625,415" size="2,345" backgroundColor="#707070" />
 		<widget name="description" position="665,425" size="1040,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
-		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" />
+		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
 		<widget source="keyRed" render="Label" position="25,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
-		<eLabel position="465,820" size="395,62" backgroundColor="transpBlack3" />
+		<eLabel position="465,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
 		<widget source="keyGreen" render="Label" position="465,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
-		<eLabel position="905,820" size="395,62" backgroundColor="transpBlack3" />
+		<eLabel position="905,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
 		<widget source="keyYellow" render="Label" position="905,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
-		<eLabel position="1345,820" size="395,62" backgroundColor="transpBlack3" />
+		<eLabel position="1345,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
 		<widget source="keyBlue" render="Label" position="1345,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "duration", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel"):
+		for name in ("now", "title", "channel", "when", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
@@ -231,7 +230,6 @@ class WarderProgramInfo(Screen):
 				begin = int(event.getBeginTime()); duration = int(event.getDuration())
 				startDate = time1.strftime("%d.%m.%Y", time1.localtime(begin)); startTime = time1.strftime("%H:%M", time1.localtime(begin)); endTime = time1.strftime("%H:%M", time1.localtime(begin + duration)); minutes = duration // 60
 				self["when"].setText("%s   %s - %s  (%d min)" % (startDate, startTime, endTime, minutes))
-				self["duration"].setText("")
 				self["durationMeta"].setText("%d min" % minutes)
 				self["broadcast"].setText("%s\n%s - %s" % (startDate, startTime, endTime))
 			except Exception: pass

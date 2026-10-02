@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test39
-Revision: 135
-Purpose: TEST39 fixes the receiver-confirmed TEST38 UI regressions: GraphicalEPGPIG red action stays exactly PROGRAM INFO instead of being renamed by the legacy CSFD gettext entry, and WarderProgramInfo bottom RED/GREEN/YELLOW/BLUE captions use reliable StaticText source/render Label widgets. Preserve accepted GraphicalEPGPIG geometry, Program Info geometry/content, poster artwork, live-video translucent background, station picon, EPG-authoritative text, DreamOS compatibility, updater behaviour, and all r12 upgrade/GSOD regression guards.
+Candidate: 1.0.5-test40
+Revision: 136
+Purpose: TEST40 completes Warder PROGRAM INFO against the maintainer-approved reference: large translucent FullHDGlass panel over live video, cyan top accent, genuine FullHDGlass programme poster in the upper-left when available, amber title, station picon/name, EPG-authoritative date/time/duration, narrow reliable metadata column, large description, and four visible bottom actions. All colour-key captions follow the active Enigma2 OSD language; Warder-owned translations take precedence for new strings so legacy CSFD gettext cannot hijack PROGRAM INFO. Never invent metadata and never use a station picon as programme artwork. Preserve accepted GraphicalEPGPIG geometry, DreamOS compatibility, updater behaviour, and all r12 upgrade/GSOD regression guards.
