@@ -722,7 +722,15 @@ assert 'timeout=2.5' in META
 assert 'search_deadline = time.time() + 3.0' in META
 assert 'timeout=max(0.25, min(1.0, remaining))' in META
 assert 'if not self._metadataDone:' in program_info
-# TEST69 deliberately suppresses the OpenATV core spinner while Program Info is visible.\nassert 'def _suppressCoreSpinner(self):' in program_info\nassert 'setSpinnerOnOff(0)' in program_info\nassert 'def _restoreCoreSpinner(self):' in program_info
+# TEST70: do not manipulate global gRC spinner state. While metadata is pending,
+# a lightweight visible clock repaint keeps gRC from reaching its no-paint busy-tile path.
+assert 'setSpinnerOnOff' not in program_info
+assert 'def _suppressCoreSpinner(self):' not in program_info
+assert 'self._metadataTimer.start(500, False)' in program_info
+assert 'self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))' in program_info
+# Close must win the first key event and immediately hide before deferred Screen.close processing.
+assert '}, -2)' in program_info
+assert 'self.hide()' in program_info
 
 # TEST63: receiver showed a stale busy-spinner framebuffer tile at the extreme upper-right.
 # Keep the fix local to PROGRAM INFO: an opaque Warder-owned cap masks that reserved corner.

@@ -8,10 +8,6 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.InfoBar import InfoBar
 from Components.ServiceEventTracker import ServiceEventTracker
 from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxPythonMultiContent, eListbox, gFont, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
-try:
-	from enigma import setSpinnerOnOff
-except Exception:
-	setSpinnerOnOff = None
 import Screens.InfoBar
 from Tools.Transponder import ConvertToHumanReadable
 try:
@@ -239,7 +235,7 @@ class WarderProgramInfo(Screen):
 		self["keyGreen"].setText(_warderUiText("Add Timer"))
 		self["keyYellow"].setText(_warderUiText("Goto Date/Time"))
 		self["keyBlue"].setText(_warderUiText("EPG Search"))
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self._closeProgramInfo, "cancel": self._closeProgramInfo, "red": self._closeProgramInfo, "green": lambda: self._closeProgramInfo("green"), "yellow": lambda: self._closeProgramInfo("yellow"), "blue": lambda: self._closeProgramInfo("blue")}, -1)
+		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self._closeProgramInfo, "cancel": self._closeProgramInfo, "red": self._closeProgramInfo, "green": lambda: self._closeProgramInfo("green"), "yellow": lambda: self._closeProgramInfo("yellow"), "blue": lambda: self._closeProgramInfo("blue")}, -2)
 		self._serviceRef = self._normaliseServiceRef(service)
 		self["nowDate"].setText(time1.strftime("%A  %d.%m.%Y", time1.localtime()))
 		self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
@@ -270,27 +266,14 @@ class WarderProgramInfo(Screen):
 		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
 		self.onLayoutFinish.append(self._startMetadataLookup)
-		self.onShown.append(self._suppressCoreSpinner)
-		self.onClose.append(self._restoreCoreSpinner)
-
-	def _suppressCoreSpinner(self):
-		try:
-			if setSpinnerOnOff is not None:
-				setSpinnerOnOff(0)
-		except Exception:
-			pass
-
-	def _restoreCoreSpinner(self):
-		try:
-			if setSpinnerOnOff is not None:
-				setSpinnerOnOff(1 if config.usage.show_spinner.value else 0)
-		except Exception:
-			pass
-
 	def _closeProgramInfo(self, *retVal):
 		self._metadataClosed = True
 		try:
 			self._metadataTimer.stop()
+		except Exception:
+			pass
+		try:
+			self.hide()
 		except Exception:
 			pass
 		return self.close(*retVal)
@@ -308,13 +291,20 @@ class WarderProgramInfo(Screen):
 		thread = threading.Thread(target=worker)
 		thread.daemon = True
 		thread.start()
-		self._metadataTimer.start(100, False)
+		self._metadataTimer.start(500, False)
 
 	def _pollMetadataLookup(self):
 		if self._metadataClosed:
 			self._metadataTimer.stop()
 			return
 		if not self._metadataDone:
+			# Keep a tiny real repaint heartbeat while the worker is pending. OpenATV gRC
+			# shows its busy tile after a long no-paint interval; this prevents that
+			# without manipulating global spinner state or blocking remote-key input.
+			try:
+				self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
+			except Exception:
+				pass
 			return
 		self._metadataTimer.stop()
 		meta = self._metadataResult or {}
