@@ -1,5 +1,5 @@
 Warder TEST build request
 Candidate: 1.0.5-test29
-Revision: 104
+Revision: 105
 Purpose: TEST29 fix GraphicalEPGPIG color-key rendering: render OpenATV StaticText key sources and label red EPG INFO.
 Preserve TEST24/26/27 accepted EPG behavior and TEST28 action mappings.
