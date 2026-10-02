@@ -204,3 +204,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 regression cleanup: removed stale undefined PROGRAM_INFO_PROVIDER alias in favor of the existing META provider source and corrected async worker assertion to inspect PLUGIN, where the Program Info class implementation actually lives. No runtime code changed.
 
 - TEST59 receiver corrections from physical TEST58 screenshots: rebuilt GraphicalEPGPIG timeline header as one continuous 1845px #505050 strip from x=15 to the same right edge as the EPG list, while keeping timeline text aligned at x=75 and extending it to x=1860. PROGRAM INFO now temporarily suppresses the Enigma2 global busy spinner only while the background TMDB metadata worker is active and restores the user setting both when lookup completes and when the screen closes; this targets the upper-right spinner fragment seen on the receiver without disabling the user setting permanently. Package control advanced to 1.0.5-test59-1.
+
+- TEST59 version sync: runtime Warder version marker advanced from 1.0.5-test58 to 1.0.5-test59 to match control/build candidate.
