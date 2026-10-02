@@ -196,3 +196,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 async metadata regression guard: replaced stale synchronous warderProgramLookup assertion with guards for the intentional non-blocking worker call and eTimer polling. This preserves the busy/spinner fix instead of forcing the old GUI-blocking implementation.
 
 - TEST58 CI syntax fix: converted accidentally literal \\n sequences in the three async metadata regression assertions into real Python newlines. No production/runtime code changed.
+
+- TEST58 async metadata guard correction: matched the actual worker function name used by production code (worker, not _worker). Production code unchanged; guard now verifies threading.Thread(target=worker), daemon start and timer polling path.
