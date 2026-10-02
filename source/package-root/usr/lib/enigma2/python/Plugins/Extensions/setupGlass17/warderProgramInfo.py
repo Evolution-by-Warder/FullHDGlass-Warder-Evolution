@@ -85,9 +85,20 @@ def lookup(title, context=""):
     unique = {}
     for media, item in matches:
         unique[(media, item.get("id"))] = (media, item)
-    if len(unique) != 1:
-        return {}
-    media, item = list(unique.values())[0]
+    candidates = list(unique.values())
+    if len(candidates) == 1:
+        media, item = candidates[0]
+    else:
+        words = set(x for x in _norm(context).split() if len(x) >= 5)
+        ranked = []
+        for cmedia, citem in candidates:
+            hay = _norm(citem.get("overview") or "")
+            score = sum(1 for word in words if word in hay)
+            ranked.append((score, cmedia, citem))
+        ranked.sort(key=lambda x: x[0], reverse=True)
+        if not ranked or ranked[0][0] < 2 or (len(ranked) > 1 and ranked[0][0] == ranked[1][0]):
+            return {}
+        media, item = ranked[0][1], ranked[0][2]
     date = item.get("release_date") if media == "movie" else item.get("first_air_date")
     year = date[:4] if date and len(date) >= 4 else ""
     countries = item.get("origin_country") or []
