@@ -653,3 +653,9 @@ for i in range(6):
     assert ('name="timeline%d"' % i) not in epg_pig
 assert 'name="timeline_now" position="75,423" zPosition="2" size="28,495"' in epg_pig
 assert 'position="615,117" size="1230,246" font="Prive3;31" foregroundColor="#eeeeee"' in epg_pig
+
+# TEST55 GraphicalEPGPIG header/left timeline cap.
+assert 'format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42"' in epg_pig
+assert 'position="435,12" size="210,42"' in epg_pig and 'ClockToText">WithSeconds' in epg_pig
+assert 'FullHDGlass17 · Warder Evolution' in epg_pig
+assert 'text="EPG" position="15,387" size="60,36"' in epg_pig
