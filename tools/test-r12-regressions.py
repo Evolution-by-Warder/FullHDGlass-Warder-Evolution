@@ -592,7 +592,7 @@ META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProg
 for token in (
     'def lookup(title, context=""):',
     'def _baseTitle(title):',
-    'CACHE_SCHEMA = "v3"',
+    'CACHE_SCHEMA = "v4"',
     'for language in ("cs-CZ", "sk-SK", "en-US"):',
     'query_title = _baseTitle(title)',
     '_norm(candidate) == wanted',
@@ -640,7 +640,7 @@ assert 'name="stationLabel" position="50,520" size="190,34" font="Prive3;24"' in
 assert 'name="channel" position="245,520" size="215,34" font="Prive4;24"' in program_info
 assert 'name="durationLabel" position="50,675"' in program_info
 assert 'name="broadcastLabel" position="50,714"' in program_info
-assert 'CACHE_SCHEMA = "v3"' in PROVIDER
+assert 'CACHE_SCHEMA = "v4"' in PROVIDER
 
 # TEST52 stable PROGRAM INFO metadata rows.
 for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
