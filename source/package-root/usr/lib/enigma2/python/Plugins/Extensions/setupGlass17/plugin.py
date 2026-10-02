@@ -173,13 +173,13 @@ class WarderProgramInfo(Screen):
 		<eLabel position="625,415" size="2,345" backgroundColor="#707070" />
 		<widget name="description" position="665,425" size="1040,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
-		<eLabel position="25,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" />
 		<eLabel text="Zavrieť" position="25,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
-		<eLabel position="465,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel position="465,820" size="395,62" backgroundColor="transpBlack3" />
 		<eLabel text="Pridať časovač" position="465,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
-		<eLabel position="905,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel position="905,820" size="395,62" backgroundColor="transpBlack3" />
 		<eLabel text="Goto Date/Time" position="905,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
-		<eLabel position="1345,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel position="1345,820" size="395,62" backgroundColor="transpBlack3" />
 		<eLabel text="EPG Search" position="1345,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="#3388dd" transparent="1" />
 	</screen>"""
 
