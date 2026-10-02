@@ -192,3 +192,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 provider cleanup completed deterministically: truncated all content after the first complete canonical lookup() implementation. Verified exactly one _cachePath and one lookup definition remain; removes both duplicated provider copies that CI showed at lines ~181 and ~321.
 
 - TEST58 regression alignment: CI now reaches all Python/XML/runtime/r1-r12 gates successfully. Updated remaining stale Program Info geometry assertions to the intentional TEST58 footer/description layout (description 490px, divider y=940, button background y=955, label y=963).
+
+- TEST58 async metadata regression guard: replaced stale synchronous warderProgramLookup assertion with guards for the intentional non-blocking worker call and eTimer polling. This preserves the busy/spinner fix instead of forcing the old GUI-blocking implementation.
