@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test42
-Revision: 138
-Purpose: TEST42 begins the reliable external PROGRAM INFO enrichment path by hardening the existing FullHDGlass g17Poster2 provider. TMDB artwork is accepted only when one of the first five search results has an exact normalized title match; the old blind result-0 poster selection is forbidden. Keep the existing poster cache and IMDb fallback. No live PIG, no station-picon artwork, no invented metadata. Preserve active-language colour keys, approved GraphicalEPGPIG geometry, DreamOS compatibility, updater behaviour, and all r12 regression guards.
+Candidate: 1.0.5-test43
+Revision: 139
+Purpose: TEST43 records ČSFD + IMDb + TMDB as approved PROGRAM INFO external sources and adds the first silent cached metadata provider. TMDB metadata is accepted only for one unique exact normalized title match; ambiguous/fuzzy/network failures degrade to EPG-only. Populate only verified genre/year/country/rating. Preserve programme poster rules, no live PIG, no fake picon artwork, active-language labels, GraphicalEPGPIG geometry, DreamOS compatibility and all r12 guards.

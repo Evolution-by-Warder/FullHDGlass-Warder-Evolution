@@ -594,3 +594,11 @@ assert "def normTitle(v):" in poster2
 assert "for candidate in data['results'][:5]:" in poster2
 assert "normTitle(candidateTitle) == wanted" in poster2
 assert "ww = data['results'][0]['poster_path']" not in poster2
+
+# TEST43: external Program Info metadata is silent, cached and exact-title gated; EPG-only fallback is safe.
+META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
+for token in ("def lookup(title):", "norm(candidate) == wanted", "CACHE_DIR", '"provider": "TMDB"', '"genre":', '"year":', '"country":', '"rating":'):
+    assert token in META, token
+assert "warderProgramLookup(event.getEventName() or \"\")" in PLUGIN
+for token in ('name="genreMeta"', 'name="yearCountryMeta"', 'name="ratingMeta"'):
+    assert token in program_info, token
