@@ -271,6 +271,12 @@ class WarderProgramInfo(Screen):
 		self.onLayoutFinish.append(self._startMetadataLookup)
 
 	def _startMetadataLookup(self):
+		# Keep Enigma2 busy spinner suppressed while silent metadata lookup runs.
+		try:
+			if setSpinnerOnOff is not None:
+				setSpinnerOnOff(0)
+		except Exception:
+			pass
 		if not self._metadataTitle or warderProgramLookup is None:
 			return
 		def worker():
@@ -287,6 +293,11 @@ class WarderProgramInfo(Screen):
 
 	def _pollMetadataLookup(self):
 		if not self._metadataDone:
+			try:
+				if setSpinnerOnOff is not None:
+					setSpinnerOnOff(0)
+			except Exception:
+				pass
 			return
 		self._metadataTimer.stop()
 		meta = self._metadataResult or {}

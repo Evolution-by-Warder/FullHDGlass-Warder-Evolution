@@ -592,7 +592,7 @@ META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProg
 for token in (
     'def lookup(title, context=""):',
     'def _baseTitle(title):',
-    'CACHE_SCHEMA = "v5"',
+    'CACHE_SCHEMA = "v6"',
     'for language in ("sk-SK", "cs-CZ", "en-US"):',
     '/search/multi?',
     'query_title = _baseTitle(title)',
@@ -641,7 +641,7 @@ assert 'name="stationLabel" position="50,520" size="190,34" font="Prive3;24"' in
 assert 'name="channel" position="225,520" size="235,34" font="Prive4;24"' in program_info
 assert 'name="durationLabel" position="50,675"' in program_info
 assert 'name="broadcastLabel" position="50,714"' in program_info
-assert 'CACHE_SCHEMA = "v5"' in PROVIDER
+assert 'CACHE_SCHEMA = "v6"' in PROVIDER
 
 # TEST52 stable PROGRAM INFO metadata rows.
 for field in ("genreMeta", "yearMeta", "countryMeta"):
@@ -690,7 +690,7 @@ assert 'name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregrou
 assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24"' in program_info
 
 # TEST58: safe EPG edition suffix normalization, while retaining exact TMDB base-title matching.
-assert 'CACHE_SCHEMA = "v5"' in META
+assert 'CACHE_SCHEMA = "v6"' in META
 assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in META
 assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko Slovensko má talent" if '_provider_base_title_for_test' in globals() else True
 
@@ -717,3 +717,9 @@ assert 'series_hint = any(word in context_norm.split() for word in ("serial", "s
 assert 'for field in ("genreMeta", "yearMeta", "countryMeta"):' in program_info
 assert 'for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):' not in program_info
 assert 'timeout=2.5' in META
+
+# TEST62: unresolved metadata is bounded and must not expose Enigma2 busy spinner.
+assert 'search_deadline = time.time() + 3.0' in META
+assert 'timeout=max(0.25, min(1.0, remaining))' in META
+assert 'if not self._metadataDone:' in program_info
+assert 'setSpinnerOnOff(0)' in program_info

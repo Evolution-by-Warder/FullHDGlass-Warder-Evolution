@@ -15,7 +15,7 @@ except ImportError:
 
 TMDB_KEY = "3c3efcf47c3577558812bb9d64019d65"
 CACHE_DIR = "/tmp/fullhdglass17-warder-programinfo"
-CACHE_SCHEMA = "v5"
+CACHE_SCHEMA = "v6"
 GENRES = {
     12:"Adventure",14:"Fantasy",16:"Animation",18:"Drama",27:"Horror",28:"Action",35:"Comedy",
     36:"History",37:"Western",53:"Thriller",80:"Crime",99:"Documentary",878:"Science Fiction",
@@ -64,8 +64,8 @@ def _writeCache(title, data):
     except Exception:
         pass
 
-def _fetch(url):
-    raw = urlopen(url, timeout=2.5).read()
+def _fetch(url, timeout=2.5):
+    raw = urlopen(url, timeout=timeout).read()
     if not isinstance(raw, str):
         raw = raw.decode("utf-8", "ignore")
     return json.loads(raw)
@@ -115,14 +115,18 @@ def lookup(title, context=""):
                 query_titles.insert(0, primary)
             break
     matches = []
+    search_deadline = time.time() + 3.0
     # Fast exact matching: TMDB multi-search checks movie + TV together.
     # Try the EPG's primary locale first and only fall back when no exact
     # candidate exists, avoiding the previous six serial search requests.
     for language in ("sk-SK", "cs-CZ", "en-US"):
         for search_title in query_titles:
+            remaining = search_deadline - time.time()
+            if remaining <= 0:
+                break
             wanted = _norm(search_title)
             try:
-                data = _fetch("https://api.themoviedb.org/3/search/multi?api_key=%s&language=%s&query=%s" % (TMDB_KEY, language, quote_plus(search_title)))
+                data = _fetch("https://api.themoviedb.org/3/search/multi?api_key=%s&language=%s&query=%s" % (TMDB_KEY, language, quote_plus(search_title)), timeout=max(0.25, min(1.0, remaining)))
                 for item in data.get("results", [])[:10]:
                     media = item.get("media_type")
                     if media not in ("movie", "tv"):
