@@ -796,7 +796,7 @@ assert 'position="680,145" size="560,560"' in SKIN
 assert 'class WarderRadioArtwork(Renderer):' in RADIO_ART
 assert 'iRdsDecoder.RadioText' in RADIO_ART
 assert 'threading.Thread' in RADIO_ART and 'timeout=2.5' in RADIO_ART
-assert '!= wantArtist or cls._norm(item.get("trackName")) != wantTitle' in RADIO_ART
+assert "gotArtist != wantArtist or gotTitle != wantTitle" in RADIO_ART
 assert 'WarderRdsInfoDisplay' not in PLUGIN
 assert 'config.misc.radiopic.value' not in PLUGIN
 
