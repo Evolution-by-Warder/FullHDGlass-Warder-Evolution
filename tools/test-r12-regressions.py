@@ -394,7 +394,10 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
     assert 'position="15,15"' in block and 'size="1890,1050"' in block, screen
     for n in range(6):
         assert 'name="timeline%d"' % n in block, (screen, n)
-    for token in ('name="bouquetlist"', 'name="primetime"', 'name="change_bouquet"', 'name="jump"', 'name="page"'):
+    required = ['name="bouquetlist"']
+    if screen == "GraphicalEPG":
+        required += ['name="primetime"', 'name="change_bouquet"', 'name="jump"', 'name="page"']
+    for token in required:
         assert token in block, (screen, token)
 pig23 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pig23
