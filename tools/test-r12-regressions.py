@@ -465,7 +465,8 @@ assert 'getattr(self, "skinName", None) == "GraphicalEPGPIG"' in PLUGIN
 assert 'title = ""' in PLUGIN
 
 # TEST28: FullHDGlass GraphicalEPGPIG color-key row and scoped actions.
-assert 'source="key_red" render="Label" position="30,930" size="420,42"' in SKIN
+assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pig26
+assert 'source="key_red" render="Label" position="30,930" size="420,42"' not in pig26
 assert 'name="primetime" position="30,930"' not in SKIN
 assert 'def warderEPGSelectionRedButtonPressed(self):' in PLUGIN
 assert 'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)' in PLUGIN
@@ -473,20 +474,21 @@ assert 'graph_green.value = "timer"' in PLUGIN
 assert 'graph_yellow.value = "gotodatetime"' in PLUGIN
 assert 'graph_blue.value = "epgsearch"' in PLUGIN
 
-# TEST29: OpenATV key_red/green/yellow/blue are StaticText Sources, so the PIG skin must render them as sources.
-for key in ("green", "yellow", "blue"):
-    assert ('source="key_%s" render="Label"' % key) in pig26, key
-assert 'source="key_red" render="Label" position="30,930" size="420,42"' in pig26
+# TEST29/TEST48+: GraphicalEPGPIG uses Warder-owned StaticText sources so
+# OpenATV/legacy key_* refresh cannot replace PROGRAM INFO with CSFD.
+for key in ("red", "green", "yellow", "blue"):
+    assert ('source="warder_key_%s" render="Label"' % key) in pig26, key
+    assert ('source="key_%s" render="Label"' % key) not in pig26, key
 assert 'def warderEPGSelectionInit(self, *args, **kwargs):' in PLUGIN
-assert '("key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
+assert '("warder_key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
 
 
 # TEST30: FullHDGlass GraphicalEPGPIG colour labels and handlers must stay paired.
 for token in (
-    '("key_red", _warderUiText("PROGRAM INFO"))',
-    '("key_green", _warderUiText("Add Timer"))',
-    '("key_yellow", _warderUiText("Goto Date/Time"))',
-    '("key_blue", _warderUiText("EPG Search"))',
+    '("warder_key_red", _warderUiText("PROGRAM INFO"))',
+    '("warder_key_green", _warderUiText("Add Timer"))',
+    '("warder_key_yellow", _warderUiText("Goto Date/Time"))',
+    '("warder_key_blue", _warderUiText("EPG Search"))',
     'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys',
     'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)',
     'return self.RecordTimerQuestion(True)',
@@ -512,7 +514,8 @@ assert 'position="625,415" size="2,345"' in program_info
 assert 'name="description" position="665,425" size="1040,335"' in program_info
 assert 'position="25,820" size="395,62" backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
-assert 'source="key_red" render="Label" position="30,930" size="420,42"' in SKIN
+assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pig26
+assert 'source="key_red" render="Label" position="30,930" size="420,42"' not in pig26
 
 # Package upgrade safety inherited from the original r12 DreamOS GSOD investigation.
 POSTRM = (ROOT / "source/control/postrm").read_text(encoding="utf-8")
