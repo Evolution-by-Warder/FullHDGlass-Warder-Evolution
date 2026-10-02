@@ -830,3 +830,7 @@ assert 'def _titleCommaIdentity' in RADIO_ART
 assert '.replace(",", "")' in RADIO_ART
 assert 'gotArtist == wantArtist' in RADIO_ART
 assert '_titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)' in RADIO_ART
+
+# TEST88: fast RADIO-entry acquisition, then lighter steady polling.
+assert "self._timer.start(100, True)" in RADIO_ART
+assert "self._timer.start(250 if not key else 750, True)" in RADIO_ART
