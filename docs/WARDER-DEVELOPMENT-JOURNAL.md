@@ -200,3 +200,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 async metadata guard correction: matched the actual worker function name used by production code (worker, not _worker). Production code unchanged; guard now verifies threading.Thread(target=worker), daemon start and timer polling path.
 
 - TEST58 metadata cache regression alignment: updated stale guard from CACHE_SCHEMA v3 to the intentional v4. v4 is required so prior negative cache entries cannot hide the new Roman-edition title normalization.
+
+- TEST58 regression cleanup: removed stale undefined PROGRAM_INFO_PROVIDER alias in favor of the existing META provider source and corrected async worker assertion to inspect PLUGIN, where the Program Info class implementation actually lives. No runtime code changed.

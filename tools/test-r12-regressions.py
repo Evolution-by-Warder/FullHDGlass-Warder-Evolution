@@ -678,7 +678,7 @@ assert '<eLabel position="15,387" size="60,36" backgroundColor="#505050"' in pig
 assert 'name="timeline_text" position="75,387" size="1755,36"' in pigepg
 # TEST58: TMDB lookup runs off GUI thread; result is applied by eTimer on GUI thread.
 assert 'import threading' in PLUGIN
-assert 'threading.Thread(target=worker)' in program_info
+assert 'threading.Thread(target=worker)' in PLUGIN
 assert 'self._metadataTimer.callback.append(self._pollMetadataLookup)' in program_info
 assert 'self.onLayoutFinish.append(self._startMetadataLookup)' in program_info
 assert 'self.onLayoutFinish.append(self._loadProgramArtwork)' not in program_info
@@ -689,6 +689,6 @@ assert 'name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregrou
 assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24"' in program_info
 
 # TEST58: safe EPG edition suffix normalization, while retaining exact TMDB base-title matching.
-assert 'CACHE_SCHEMA = "v4"' in PROGRAM_INFO_PROVIDER
-assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in PROGRAM_INFO_PROVIDER
+assert 'CACHE_SCHEMA = "v4"' in META
+assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in META
 assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko Slovensko má talent" if '_provider_base_title_for_test' in globals() else True
