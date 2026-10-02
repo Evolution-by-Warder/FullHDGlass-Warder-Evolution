@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test67
-Revision: 206
-Purpose: receiver-confirmed TEST66 EPG PASS; remove actually-persisting legacy Program Info spinner suppression/state restore and failed corner cap; retain EPG selection and TEST64 picon.
+Candidate: 1.0.5-test68
+Revision: 207
+Purpose: receiver-confirmed TEST67 Program Info lifecycle bug: make first EXIT/RED close immediately and stop metadata polling; retain confirmed EPG selection and picon geometry.

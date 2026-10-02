@@ -738,3 +738,10 @@ assert 'EntryBackgroundColorNowSelected="#d69600"' in pigepg
 
 # TEST66: hide only TimelineText generated 60px date cell; time labels remain native.
 assert '<eLabel position="15,387" size="60,36" backgroundColor="#242424" zPosition="3" />' in pigepg
+
+# TEST68: Program Info close is independent of asynchronous metadata completion.
+assert '"cancel": self._closeProgramInfo' in program_info
+assert '"red": self._closeProgramInfo' in program_info
+assert 'def _closeProgramInfo(self, *retVal):' in program_info
+assert 'self._metadataClosed = True' in program_info
+assert 'if self._metadataClosed:' in program_info

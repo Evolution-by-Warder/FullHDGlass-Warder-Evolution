@@ -239,7 +239,7 @@ class WarderProgramInfo(Screen):
 		self["keyGreen"].setText(_warderUiText("Add Timer"))
 		self["keyYellow"].setText(_warderUiText("Goto Date/Time"))
 		self["keyBlue"].setText(_warderUiText("EPG Search"))
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close, "green": lambda: self.close("green"), "yellow": lambda: self.close("yellow"), "blue": lambda: self.close("blue")}, -1)
+		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self._closeProgramInfo, "cancel": self._closeProgramInfo, "red": self._closeProgramInfo, "green": lambda: self._closeProgramInfo("green"), "yellow": lambda: self._closeProgramInfo("yellow"), "blue": lambda: self._closeProgramInfo("blue")}, -1)
 		self._serviceRef = self._normaliseServiceRef(service)
 		self["nowDate"].setText(time1.strftime("%A  %d.%m.%Y", time1.localtime()))
 		self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
@@ -263,12 +263,21 @@ class WarderProgramInfo(Screen):
 		self._metadataContext = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""])) if event is not None else ""
 		self._metadataResult = None
 		self._metadataDone = False
+		self._metadataClosed = False
 		self._metadataTimer = eTimer()
 		self._metadataTimer.callback.append(self._pollMetadataLookup)
 		serviceName = self._serviceName(service, self._serviceRef)
 		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
 		self.onLayoutFinish.append(self._startMetadataLookup)
+
+	def _closeProgramInfo(self, *retVal):
+		self._metadataClosed = True
+		try:
+			self._metadataTimer.stop()
+		except Exception:
+			pass
+		return self.close(*retVal)
 
 	def _startMetadataLookup(self):
 		if not self._metadataTitle or warderProgramLookup is None:
@@ -286,6 +295,9 @@ class WarderProgramInfo(Screen):
 		self._metadataTimer.start(100, False)
 
 	def _pollMetadataLookup(self):
+		if self._metadataClosed:
+			self._metadataTimer.stop()
+			return
 		if not self._metadataDone:
 			return
 		self._metadataTimer.stop()
