@@ -585,7 +585,7 @@ assert 'position="25,940" size="1840,2" backgroundColor="#707070"' in program_in
 assert 'position="25,955" size="420,62" backgroundColor="transpBlack3"' in program_info
 assert 'warderProgramLookup(self._metadataTitle, self._metadataContext)' in PLUGIN
 assert 'threading.Thread(target=worker)' in PLUGIN
-assert 'self._metadataTimer.start(100, False)' in PLUGIN
+assert 'self._metadataTimer.start(500, False)' in PLUGIN
 assert 'self["durationMeta"].setText("%d min" % minutes)' in program_info
 
 META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
