@@ -168,14 +168,28 @@ class g17Poster2(Renderer):
 				info = ""
 				url = None
 				if imdb in ("a","m") and url is None:
+					def normTitle(v):
+						try:
+							v = v.lower().replace("+", " ")
+							v = re.sub(r'[^\\w]+', ' ', v, flags=re.UNICODE)
+							return re.sub(r'\\s+', ' ', v).strip()
+						except:
+							return ""
+					wanted = normTitle(image)
 					for x in ("movie","tv","multi"):
 						data = json.load(urllibXX2.urlopen("https://api.themoviedb.org/3/search/%s?api_key=3c3efcf47c3577558812bb9d64019d65&query=%s" % (x, quote_plus(image, safe='+'))))
 						if 'results' in data and len(data['results']) != 0 and data['total_results'] != 0:
-							ww = None
-							if 'poster_path' in data['results'][0]:
-								ww = data['results'][0]['poster_path'] 
-							elif 'poster_path' in data['results'][0]['known_for'][0]:
-								ww = data['results'][0]['known_for'][0]['poster_path']
+							matched = None
+							for candidate in data['results'][:5]:
+								candidateTitle = candidate.get('title') or candidate.get('name') or candidate.get('original_title') or candidate.get('original_name') or ""
+								if wanted and normTitle(candidateTitle) == wanted:
+									matched = candidate
+									break
+							if matched is None:
+								continue
+							ww = matched.get('poster_path')
+							if ww is None and matched.get('known_for'):
+								ww = matched['known_for'][0].get('poster_path')
 							if ww:
 								url = downNow("https://image.tmdb.org/t/p/w500%s" % ww)
 							if url is not None:

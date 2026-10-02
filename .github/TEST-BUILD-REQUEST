@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test41
-Revision: 137
-Purpose: TEST41 corrects the approved PROGRAM INFO media contract: the upper-left media is a real programme image/poster resolved by the existing FullHDGlass poster pipeline from the selected EPG title; it is never live PIG video and never a station picon substitute. The rest of the screen remains the approved translucent FullHDGlass information panel. External enrichment may later add matched CSFD/IMDb metadata only when the match is reliable; uncertain fields remain empty. All colour-key captions follow the active Enigma2 OSD language. Preserve GraphicalEPGPIG geometry, DreamOS compatibility, updater behaviour, and r12 upgrade/GSOD guards.
+Candidate: 1.0.5-test42
+Revision: 138
+Purpose: TEST42 begins the reliable external PROGRAM INFO enrichment path by hardening the existing FullHDGlass g17Poster2 provider. TMDB artwork is accepted only when one of the first five search results has an exact normalized title match; the old blind result-0 poster selection is forbidden. Keep the existing poster cache and IMDb fallback. No live PIG, no station-picon artwork, no invented metadata. Preserve active-language colour keys, approved GraphicalEPGPIG geometry, DreamOS compatibility, updater behaviour, and all r12 regression guards.

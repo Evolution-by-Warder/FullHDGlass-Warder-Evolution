@@ -587,3 +587,10 @@ assert 'source="session.VideoPicture" render="Pig"' not in program_info
 assert 'source="posterTitle" render="g17Poster2"' in program_info
 assert 'self["posterTitle"].setText(eventName)' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
+
+# TEST42: existing FullHDGlass poster provider must not blindly use the first TMDB result.
+poster2 = open("source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster2.py", "r").read()
+assert "def normTitle(v):" in poster2
+assert "for candidate in data['results'][:5]:" in poster2
+assert "normTitle(candidateTitle) == wanted" in poster2
+assert "ww = data['results'][0]['poster_path']" not in poster2

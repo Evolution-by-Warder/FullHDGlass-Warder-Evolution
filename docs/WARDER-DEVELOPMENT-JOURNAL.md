@@ -63,12 +63,13 @@ Visual authority is the maintainer-supplied reference screenshot (2026-10-02).
 - TEST38: attempted localization and FullHDGlass poster renderer. Receiver test exposed two regressions: GraphicalEPGPIG RED became CSFD because of legacy gettext collision; Program Info bottom captions disappeared.
 - TEST39 commit `a0024e9c6a65d84ff9368ffb47fa60e889e729ff`: bottom captions converted to StaticText source/render Label; temporarily hardcoded PROGRAM INFO. This hardcoding was immediately rejected as contrary to language policy.
 - TEST40 commit `9cc195941125b56b0efd5e1622f1cd63a12b5823`: restored environment-language policy and moved Program Info closer to approved reference.
-- TEST41 commit `1b81852437d5692eceeac53d7b454abb56efd8db`: removed live PIG from PROGRAM INFO. Programme artwork remains through the existing `g17Poster2` title-driven renderer. This is **not yet sufficient** as the final CSFD/IMDb enrichment implementation.
+- TEST41 commit `1b81852437d5692eceeac53d7b454abb56efd8db`: removed live PIG from PROGRAM INFO. Programme artwork remains through the existing `g17Poster2` title-driven renderer.
+- TEST42: inspected the actual FullHDGlass poster pipeline. `g17Poster2` already has cache plus TMDB and IMDb poster lookup; its TMDB path previously trusted result #1 blindly. TEST42 adds an exact normalized-title gate across the first five TMDB results before any poster is downloaded. This is the first external-enrichment reliability guard; metadata enrichment is still pending.
 - DreamOS compatibility fix already present: tolerant preinst layout detection and eTimer `timeout.connect` with legacy callback fallback.
 - Original FullHDGlass17 DreamOS-compatible r12.2 IPK/DEB were separately rebuilt from user-supplied r12.1 packages; receiver PASS is not assumed without hardware confirmation.
 
 ## Current state at this checkpoint
-Current development target is TEST41 lineage.
+Current development target is TEST42 lineage.
 Known intended code state:
 - PROGRAM INFO contains no `session.VideoPicture` Pig.
 - Programme-artwork widget uses `posterTitle` / `g17Poster2`.
@@ -119,4 +120,4 @@ After CI publishes the next TEST package, verify on GigaBlue Quad 4K Pro:
 10. Never call something receiver-PASS until the maintainer physically confirms it.
 
 ## Next action
-Implement P0 external PROGRAM INFO enrichment after inspecting the existing FullHDGlass poster/cache and IMDb/CSFD-related code. Do not redesign GraphicalEPGPIG and do not reintroduce live PIG.
+Continue P0 external PROGRAM INFO enrichment: add a shared cached metadata result for reliably matched programme titles and feed only verified fields into WarderProgramInfo. Existing inspection established that FullHDGlass already ships TMDB/IMDb poster lookup in g17Poster2; reuse this infrastructure rather than adding a competing poster downloader. Do not redesign GraphicalEPGPIG and do not reintroduce live PIG.
