@@ -190,7 +190,7 @@ class WarderProgramInfo(Screen):
 		<widget name="service" position="285,425" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
 		<widget name="genreMeta" position="50,470" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
 		<widget name="yearCountryMeta" position="50,510" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
-		<widget name="ratingMeta" position="50,550" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
+		<widget name="ratingMeta" position="50,550" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />\n\t\t<widget name="runtimeMeta" position="50,585" size="535,30" font="Prive3;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="durationLabel" position="50,600" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="durationMeta" position="285,600" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
 		<widget name="broadcastLabel" position="50,650" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
@@ -210,7 +210,7 @@ class WarderProgramInfo(Screen):
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel", "genreMeta", "yearCountryMeta", "ratingMeta"):
+		for name in ("now", "title", "channel", "when", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel", "genreMeta", "yearCountryMeta", "ratingMeta", "runtimeMeta"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
