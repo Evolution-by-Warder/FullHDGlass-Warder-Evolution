@@ -45,7 +45,7 @@ class WarderRadioArtwork(Renderer):
 
     def changed(self, what):
         if self.instance is not None and not self._timer.isActive():
-            self._timer.start(1200, False)
+            self._timer.start(100, True)
 
     @staticmethod
     def _norm(value):
@@ -210,4 +210,4 @@ class WarderRadioArtwork(Renderer):
         elif not self._busy and key != self._requestedKey:
             self._requestedKey = key
             self._request(artist, title, key)
-        self._timer.start(1200, False)
+        self._timer.start(250 if not key else 750, True)
