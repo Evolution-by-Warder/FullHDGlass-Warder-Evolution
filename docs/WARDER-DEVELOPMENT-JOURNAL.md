@@ -180,3 +180,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 metadata normalization: physical receiver exposed EPG title “Česko Slovensko má talent X”. Added conservative stripping of a standalone trailing Roman-numeral edition/season suffix before TMDB search, while retaining exact normalized base-title matching (no fuzzy acceptance). Cache schema bumped v3→v4 so earlier negative cache entries cannot mask the corrected lookup.
 
 - TEST58 CI guard maintenance: aligned remaining historical PROGRAM INFO separator assertion with approved 490px content height; runtime/design unchanged.
+
+- TEST58 compatibility fix from r12.2 field report: removed explicit font="Regular;34" from the list widgets in MessageBox and MessageBox-template. Current OpenATV reference MessageBox templates leave the list font to the Enigma2 list component; this avoids the reported GSOD path while preserving geometry/itemHeight. MessageBoxModal is intentionally unchanged because the report and shared template path concern only MessageBox and MessageBox-template.
