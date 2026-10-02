@@ -1,5 +1,5 @@
 Warder TEST build request
 Candidate: 1.0.5-test32
-Revision: 110
+Revision: 111
 Purpose: TEST32 introduces FullHDGlass-owned WarderProgramInfo for RED: direct selected-event details in our own clean UI, with no external plugin UI or search chooser. EPG data is always the reliable base; enrichment can be added behind this screen.
 Preserve accepted GraphicalEPGPIG geometry and GREEN/YELLOW/BLUE actions.
