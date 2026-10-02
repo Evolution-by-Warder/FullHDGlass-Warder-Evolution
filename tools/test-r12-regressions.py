@@ -443,7 +443,7 @@ assert 'zPosition="-2"' in rds
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pig24 and 'zPosition="3"' in pig24
 assert 'NumberOfRows="15"' in pig24
-assert 'name="timeline_text" position="75,387" size="1785,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
+assert 'name="timeline_text" position="15,387" size="1845,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
 
 # TEST26: PIG guide header is clean; EPG grid reserves only a narrow picon rail.
@@ -452,7 +452,7 @@ pig26_end = SKIN.index('</screen>', pig26_start)
 pig26 = SKIN[pig26_start:pig26_end]
 assert 'source="Title" render="Label"' not in pig26
 assert 'source="global.CurrentTime" render="Label" position="30,12"' not in pig26
-assert 'name="timeline_text" position="75,387" size="1785,36"' in pig26
+assert 'name="timeline_text" position="15,387" size="1845,36"' in pig26
 assert 'name="timeline0"' not in pig26
 assert 'name="timeline_now" position="75,423"' in pig26
 
@@ -619,7 +619,7 @@ assert "source=\"session.VideoPicture\" render=\"Pig\"" not in program_info
 for token in (
     'position="15,15" size="1890,1050"',
     'source="session.VideoPicture" render="Pig" position="33,63" size="549,309"',
-    'name="timeline_text" position="75,387" size="1785,36"',
+    'name="timeline_text" position="15,387" size="1845,36"',
     'name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15"',
     'name="timeline_now" position="75,423" zPosition="2" size="28,495"',
     'name="bouquetlist" position="15,423" size="1845,495"',
@@ -672,11 +672,11 @@ assert 'format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42"' in epg_pi
 assert 'position="435,12" size="210,42"' in epg_pig and 'ClockToText">WithSeconds' in epg_pig
 assert 'FullHDGlass17 · Warder Evolution' in epg_pig
 assert 'text="EPG" position="15,387"' not in epg_pig
-assert 'name="timeline_text" position="75,387" size="1785,36"' in epg_pig
+assert 'name="timeline_text" position="15,387" size="1845,36"' in epg_pig
 
 # TEST58: EPG keeps timeline labels aligned while extending only the visual strip over picon column.
 assert '<eLabel position="15,387" size="1845,36" backgroundColor="#242424"' in pigepg
-assert 'name="timeline_text" position="75,387" size="1785,36"' in pigepg
+assert 'name="timeline_text" position="15,387" size="1845,36"' in pigepg
 # TEST58: TMDB lookup runs off GUI thread; result is applied by eTimer on GUI thread.
 assert 'import threading' in PLUGIN
 assert 'threading.Thread(target=worker)' in PLUGIN
@@ -698,7 +698,7 @@ assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko
 assert '<eLabel position="15,387" size="1845,36" backgroundColor="#242424"' in pigepg
 assert '<eLabel position="15,387" size="1845,2" backgroundColor="#6a6a6a"' in pigepg
 assert '<eLabel position="15,420" size="1845,3" backgroundColor="#101010"' in pigepg
-assert 'name="timeline_text" position="75,387" size="1785,36" backgroundColor="#242424"' in pigepg
+assert 'name="timeline_text" position="15,387" size="1845,36" backgroundColor="#242424"' in pigepg
 # Spinner suppression must happen before opening Program Info, not inside the screen,
 # so a busy frame cannot already be painted/frozen in the upper-right corner.
 red_handler = PLUGIN.split('def warderEPGSelectionRedButtonPressed(self):', 1)[1].split('WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed', 1)[0]
@@ -730,3 +730,8 @@ assert '<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosit
 
 # TEST64: larger station picon centred in Program Info left column.
 assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
+
+# TEST65: timeline owns the picon/date rail so the date is not clipped into a stray "Dn"; selected event is amber.
+assert 'name="timeline_text" position="15,387" size="1845,36"' in pigepg
+assert 'EntryBackgroundColorSelected="#d69600"' in pigepg
+assert 'EntryBackgroundColorNowSelected="#d69600"' in pigepg
