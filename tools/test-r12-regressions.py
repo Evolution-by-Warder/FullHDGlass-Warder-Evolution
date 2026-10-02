@@ -480,7 +480,7 @@ assert '("key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
 
 # TEST30: FullHDGlass GraphicalEPGPIG colour labels and handlers must stay paired.
 for token in (
-    '("key_red", "PROGRAM INFO")',
+    '("key_red", _warderUiText("PROGRAM INFO"))',
     '("key_green", _("Add Timer"))',
     '("key_yellow", _("Goto Date/Time"))',
     '("key_blue", _("EPG Search"))',
