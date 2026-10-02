@@ -509,7 +509,7 @@ assert 'position="625,415" size="2,345"' in program_info
 assert 'name="description" position="665,425" size="1040,335"' in program_info
 assert 'position="25,820" size="395,62" backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
-assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
+assert 'source="key_red" render="Label" position="30,930" size="420,42"' in SKIN
 
 # Package upgrade safety inherited from the original r12 DreamOS GSOD investigation.
 POSTRM = (ROOT / "source/control/postrm").read_text(encoding="utf-8")
