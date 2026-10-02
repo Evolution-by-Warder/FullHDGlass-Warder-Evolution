@@ -184,13 +184,21 @@ class WarderProgramInfo(Screen):
 		<widget name="stationPicon" position="50,445" size="92,55" zPosition="3" alphatest="blend" />
 		<widget name="stationLabel" position="50,515" size="190,38" font="Prive3;27" foregroundColor="#3388dd" transparent="1" />
 		<widget name="channel" position="245,515" size="215,38" font="Prive4;27" foregroundColor="#dddddd" transparent="1" />
+		<widget name="genreLabel" position="50,555" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="genreMeta" position="225,555" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="yearLabel" position="50,588" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="yearMeta" position="225,588" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="countryLabel" position="50,621" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="countryMeta" position="225,621" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="ratingLabel" position="50,654" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="ratingMeta" position="225,654" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="when" position="560,170" size="1095,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="short" position="560,235" size="1095,105" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,420" size="1720,2" backgroundColor="#707070" />
-		<widget name="durationLabel" position="50,565" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="durationMeta" position="225,565" size="235,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<widget name="broadcastLabel" position="50,615" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="broadcast" position="225,615" size="235,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
+		<widget name="durationLabel" position="50,692" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="durationMeta" position="225,692" size="235,34" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<widget name="broadcastLabel" position="50,729" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="broadcast" position="225,729" size="235,48" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="500,440" size="2,320" backgroundColor="#707070" />
 		<widget name="description" position="535,440" size="1170,320" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
@@ -206,7 +214,7 @@ class WarderProgramInfo(Screen):
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel"):
+		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "genreLabel", "genreMeta", "yearLabel", "yearMeta", "countryLabel", "countryMeta", "ratingLabel", "ratingMeta", "durationLabel", "broadcastLabel"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
@@ -214,6 +222,12 @@ class WarderProgramInfo(Screen):
 		self["stationPicon"] = Pixmap()
 		self._artworkPath = ""
 		self["stationLabel"].setText(_warderUiText("Station name:"))
+		self["genreLabel"].setText(_warderUiText("Genre:"))
+		self["yearLabel"].setText(_warderUiText("Year:"))
+		self["countryLabel"].setText(_warderUiText("Country:"))
+		self["ratingLabel"].setText(_warderUiText("Rating:"))
+		for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
+			self[field].setText("-")
 		self["durationLabel"].setText(_warderUiText("Duration:"))
 		self["broadcastLabel"].setText(_warderUiText("Broadcast:"))
 		self["keyRed"].setText(_warderUiText("Close"))
@@ -244,6 +258,10 @@ class WarderProgramInfo(Screen):
 				context = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""]))
 				meta = warderProgramLookup(event.getEventName() or "", context)
 				self._artworkPath = meta.get("artwork_path") or ""
+				if meta.get("genre"): self["genreMeta"].setText(meta["genre"])
+				if meta.get("year"): self["yearMeta"].setText(meta["year"])
+				if meta.get("country"): self["countryMeta"].setText(meta["country"])
+				if meta.get("rating"): self["ratingMeta"].setText("%s (%s)" % (meta["rating"], meta.get("provider", "")))
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata: %s" % e)
 		serviceName = self._serviceName(service, self._serviceRef)

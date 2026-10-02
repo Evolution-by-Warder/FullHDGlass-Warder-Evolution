@@ -566,8 +566,8 @@ assert 'self["programArtwork"].instance.setPixmap(pix)' in program_info
 assert 'self["programArtwork"].instance.setScale(1)' in program_info
 assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
-assert 'name="stationPicon" position="50,350"' in program_info
-assert 'name="channel" position="160,354"' in program_info
+assert 'name="stationPicon" position="50,445"' in program_info
+assert 'name="channel" position="245,515"' in program_info
 assert 'name="description" position="535,440" size="1170,320"' in program_info
 assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
 assert 'name="service"' not in program_info
@@ -630,6 +630,11 @@ assert 'name="programArtwork" position="38,85" size="479,260"' in program_info
 assert 'name="stationPicon" position="50,445" size="92,55"' in program_info
 assert 'name="stationLabel" position="50,515" size="190,38"' in program_info
 assert 'name="channel" position="245,515" size="215,38"' in program_info
-assert 'name="durationLabel" position="50,565"' in program_info
-assert 'name="broadcastLabel" position="50,615"' in program_info
+assert 'name="durationLabel" position="50,692"' in program_info
+assert 'name="broadcastLabel" position="50,729"' in program_info
 assert 'CACHE_SCHEMA = "v3"' in PROVIDER
+
+# TEST52 stable PROGRAM INFO metadata rows.
+for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
+    assert ('name="%s"' % field) in program_info
+assert 'self[field].setText("-")' in program_info
