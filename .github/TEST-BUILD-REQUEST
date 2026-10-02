@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test43
-Revision: 139
-Purpose: TEST43 records ČSFD + IMDb + TMDB as approved PROGRAM INFO external sources and adds the first silent cached metadata provider. TMDB metadata is accepted only for one unique exact normalized title match; ambiguous/fuzzy/network failures degrade to EPG-only. Populate only verified genre/year/country/rating. Preserve programme poster rules, no live PIG, no fake picon artwork, active-language labels, GraphicalEPGPIG geometry, DreamOS compatibility and all r12 guards.
+Candidate: 1.0.5-test44
+Revision: 140
+Purpose: TEST44 improves reliable PROGRAM INFO matching. Exact normalized title remains mandatory. EPG description may disambiguate only multiple exact-title candidates; weak or tied context produces no enrichment. Retain TMDB provider ID for later detail and IMDb cross-verification. Approved sources remain CSFD, IMDb and TMDB. Preserve no-live-PIG/no-fake-picon rules, active-language labels, approved GraphicalEPGPIG geometry, DreamOS compatibility and r12 guards.

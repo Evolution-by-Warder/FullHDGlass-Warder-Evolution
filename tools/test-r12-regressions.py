@@ -602,3 +602,10 @@ for token in ("def lookup(title):", "norm(candidate) == wanted", "CACHE_DIR", '"
 assert "warderProgramLookup(event.getEventName() or \"\")" in PLUGIN
 for token in ('name="genreMeta"', 'name="yearCountryMeta"', 'name="ratingMeta"'):
     assert token in program_info, token
+
+# TEST44: EPG context disambiguates only already exact-title candidates.
+META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
+assert 'def lookup(title, context=""):' in META
+assert 'ranked[0][0] < 2' in META
+assert '"provider_id": str(item.get("id") or "")' in META
+assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN

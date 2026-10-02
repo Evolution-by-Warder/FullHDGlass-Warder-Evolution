@@ -245,7 +245,8 @@ class WarderProgramInfo(Screen):
 			except Exception: pass
 		try:
 			if event is not None and warderProgramLookup is not None:
-				meta = warderProgramLookup(event.getEventName() or "")
+				context = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""]))
+				meta = warderProgramLookup(event.getEventName() or "", context)
 				if meta.get("genre"):
 					self["genreMeta"].setText("%s %s" % (_warderUiText("Genre:"), meta["genre"]))
 				parts = []
