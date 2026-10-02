@@ -571,8 +571,8 @@ assert 'self["programArtwork"].instance.setPixmap(pix)' in program_info
 assert 'self["programArtwork"].instance.setScale(1)' in program_info
 assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
-assert 'name="stationPicon" position="50,445"' in program_info
-assert 'name="channel" position="245,515"' in program_info
+assert 'name="stationPicon" position="50,435" size="120,72"' in program_info
+assert 'name="channel" position="245,520" size="215,34" font="Prive4;24"' in program_info
 assert 'name="description" position="535,425" size="1300,440"' in program_info
 assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
 assert 'name="service"' not in program_info

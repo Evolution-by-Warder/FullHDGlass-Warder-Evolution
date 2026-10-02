@@ -168,3 +168,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST57 CI revision 169: Actions #171 passed XML/lifecycle/runtime/version/main r1-r12 gates and stopped only on the historical TEST24 timeline_text x-position guard. Aligned it to the approved TEST56 receiver correction (timeline_text x=15 width=1815) while keeping the 15-row grid at 15,423 / 1845x495. No runtime/design change; same TEST57 candidate.
 
 - TEST57 CI revision 170: Actions #172 progressed through the same gates and exposed one more historical TEST26 timeline_text x=75 assertion. Updated that stale guard to the approved TEST56 x=15 / width=1815 geometry. Test-only correction; no runtime/design change.
+
+- TEST57 CI revision 171: Actions #173 reached the PROGRAM INFO regression block and exposed two older TEST53 geometry assertions for stationPicon (50,445) and channel (245,515). Updated them to the receiver-requested TEST56 geometry: picon 50,435 / 120x72 and channel 245,520 / 215x34 / 24pt. Test-only correction; runtime remains TEST57.
