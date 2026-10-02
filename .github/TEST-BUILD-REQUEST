@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test74
-Revision: 215
-Purpose: validation-only version bump so installed TEST73 renders the updater Yes/No dialog; no runtime GUI changes.
+Revision: 216
+Purpose: retrigger validation-only TEST74 build so installed TEST73 renders the updater Yes/No dialog; no runtime GUI changes.
