@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test46
-Revision: 147
+Revision: 148
 Purpose: Batch PROGRAM INFO enrichment checkpoint. Correct exact-title/context matching; fetch verified TMDB detail and external IMDb ID; expose reliable genre/year/country/rating/runtime; preserve EPG authority and safe network fallback. Approved external sources remain CSFD, IMDb and TMDB. No live PIG, no station-picon artwork, no GraphicalEPGPIG geometry change.
