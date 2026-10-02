@@ -184,6 +184,8 @@ class WarderProgramInfo(Screen):
 		<widget name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" />
 		<eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
+		<!-- Opaque Warder-owned cap masks any stale Enigma2 busy-spinner framebuffer tile. -->
+		<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosition="20" />
 		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="50,435" size="120,72" zPosition="3" alphatest="blend" />

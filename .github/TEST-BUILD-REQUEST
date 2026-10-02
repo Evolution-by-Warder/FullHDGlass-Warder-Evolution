@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test62
-Revision: 197
-Purpose: TEST61 receiver correction: preserve receiver-approved EPG and fast exact matches; bound unresolved TMDB search to 3 seconds and suppress Enigma2 busy spinner during silent Program Info metadata lookup.
+Candidate: 1.0.5-test63
+Revision: 198
+Purpose: TEST62 receiver correction: mask the stale Enigma2 busy-spinner framebuffer tile at the extreme upper-right of Warder Program Info; preserve EPG, TMDB matching, artwork and all approved geometry.

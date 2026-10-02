@@ -723,3 +723,7 @@ assert 'search_deadline = time.time() + 3.0' in META
 assert 'timeout=max(0.25, min(1.0, remaining))' in META
 assert 'if not self._metadataDone:' in program_info
 assert 'setSpinnerOnOff(0)' in program_info
+
+# TEST63: receiver showed a stale busy-spinner framebuffer tile at the extreme upper-right.
+# Keep the fix local to PROGRAM INFO: an opaque Warder-owned cap masks that reserved corner.
+assert '<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosition="20" />' in program_info
