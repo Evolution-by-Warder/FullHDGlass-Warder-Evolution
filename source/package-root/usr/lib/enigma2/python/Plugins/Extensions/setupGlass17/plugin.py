@@ -147,6 +147,44 @@ def Writelog(txt):
 		f.close()
 	except IOError: pass
 ##########################################################################################################################
+class WarderProgramInfo(Screen):
+	"""FullHDGlass-owned programme detail. Uses selected EPG data directly; enrichment stays optional."""
+	skin = """
+	<screen name="WarderProgramInfo" position="center,center" size="1740,900" title="PROGRAM INFO" backgroundColor="transpBlack">
+		<widget name="title" position="45,35" size="1200,55" font="Prive4;42" foregroundColor="#e5b243" transparent="1" />
+		<widget name="channel" position="45,105" size="900,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
+		<widget name="when" position="960,105" size="735,42" font="Prive3;30" halign="right" foregroundColor="#e5b243" transparent="1" />
+		<eLabel position="45,165" size="1650,2" backgroundColor="#707070" />
+		<widget name="short" position="45,195" size="1650,105" font="Prive3;30" foregroundColor="#ffffff" transparent="1" />
+		<widget name="description" position="45,325" size="1650,450" font="Prive4;31" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel text="Zavrieť" position="45,825" size="390,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+	</screen>"""
+
+	def __init__(self, session, event=None, service=None):
+		Screen.__init__(self, session)
+		self["title"] = Label("")
+		self["channel"] = Label("")
+		self["when"] = Label("")
+		self["short"] = Label("")
+		self["description"] = Label("")
+		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close}, -1)
+		if event is not None:
+			try: self["title"].setText(event.getEventName() or "")
+			except Exception: pass
+			try:
+				begin = int(event.getBeginTime())
+				duration = int(event.getDuration())
+				self["when"].setText(time1.strftime("%d.%m.%Y  %H:%M", time1.localtime(begin)) + " - " + time1.strftime("%H:%M", time1.localtime(begin + duration)) + "  (%d min)" % (duration // 60))
+			except Exception: pass
+			try: self["short"].setText(event.getShortDescription() or "")
+			except Exception: pass
+			try: self["description"].setText(event.getExtendedDescription() or event.getShortDescription() or "")
+			except Exception: pass
+		if service is not None:
+			try: self["channel"].setText(ServiceReference(service).getServiceName() or "")
+			except Exception: pass
+
+##########################################################################################################################
 def readHWtype():
 	brand = "Unknown"  
 	model = "Unknown"	
@@ -1016,8 +1054,14 @@ try:
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):
-			# Open the selected event directly. No IMDb/CSFD search or result chooser:
-			# the red key is a simple, deterministic programme-information action.
+			try:
+				cur = self["list%s" % self.activeList].getCurrent()
+				event = cur[0] if cur else None
+				service = cur[1] if cur and len(cur) > 1 else None
+				if event is not None:
+					return self.session.open(WarderProgramInfo, event, service)
+			except Exception:
+				pass
 			return self.infoKeyPressed()
 		return WarderEPGSelection_redButtonPressed(self)
 	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
