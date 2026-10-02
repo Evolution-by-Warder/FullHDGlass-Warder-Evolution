@@ -443,7 +443,7 @@ assert 'zPosition="-2"' in rds
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pig24 and 'zPosition="3"' in pig24
 assert 'NumberOfRows="15"' in pig24
-assert 'name="timeline_text" position="15,387" size="1815,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
+assert 'name="timeline_text" position="75,387" size="1755,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
 
 # TEST26: PIG guide header is clean; EPG grid reserves only a narrow picon rail.
@@ -452,7 +452,7 @@ pig26_end = SKIN.index('</screen>', pig26_start)
 pig26 = SKIN[pig26_start:pig26_end]
 assert 'source="Title" render="Label"' not in pig26
 assert 'source="global.CurrentTime" render="Label" position="30,12"' not in pig26
-assert 'name="timeline_text" position="15,387" size="1815,36"' in pig26
+assert 'name="timeline_text" position="75,387" size="1755,36"' in pig26
 assert 'name="timeline0"' not in pig26
 assert 'name="timeline_now" position="75,423"' in pig26
 
@@ -516,7 +516,7 @@ assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'foregroundColor="#3388dd"' in program_info
 assert 'backgroundColor="transpBlack3"' in program_info
 assert '<eLabel position="500,425" size="2,440" backgroundColor="#707070" />' in program_info
-assert 'name="description" position="535,425" size="1300,440"' in program_info
+assert 'name="description" position="535,425" size="1300,490"' in program_info
 assert 'position="25,925" size="420,62" backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pig26
@@ -581,7 +581,8 @@ for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 assert 'for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):' in program_info
 assert 'self[name] = StaticText("")' in program_info
 assert 'backgroundColor="#38c7e8"' not in program_info
-assert 'position="25,925" size="420,62" backgroundColor="transpBlack3"' in program_info
+assert 'position="25,940" size="1840,2" backgroundColor="#707070"' in program_info
+assert 'position="25,955" size="420,62" backgroundColor="transpBlack3"' in program_info
 assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN
 assert 'self["durationMeta"].setText("%d min" % minutes)' in program_info
 
@@ -615,7 +616,7 @@ assert "source=\"session.VideoPicture\" render=\"Pig\"" not in program_info
 for token in (
     'position="15,15" size="1890,1050"',
     'source="session.VideoPicture" render="Pig" position="33,63" size="549,309"',
-    'name="timeline_text" position="15,387" size="1815,36"',
+    'name="timeline_text" position="75,387" size="1755,36"',
     'name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15"',
     'name="timeline_now" position="75,423" zPosition="2" size="28,495"',
     'name="bouquetlist" position="15,423" size="1845,495"',
@@ -668,4 +669,14 @@ assert 'format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42"' in epg_pi
 assert 'position="435,12" size="210,42"' in epg_pig and 'ClockToText">WithSeconds' in epg_pig
 assert 'FullHDGlass17 · Warder Evolution' in epg_pig
 assert 'text="EPG" position="15,387"' not in epg_pig
-assert 'name="timeline_text" position="15,387" size="1815,36"' in epg_pig
+assert 'name="timeline_text" position="75,387" size="1755,36"' in epg_pig
+
+# TEST58: EPG keeps timeline labels aligned while extending only the visual strip over picon column.
+assert '<eLabel position="15,387" size="60,36" backgroundColor="#505050"' in pigepg
+assert 'name="timeline_text" position="75,387" size="1755,36"' in pigepg
+# TEST58: TMDB lookup runs off GUI thread; result is applied by eTimer on GUI thread.
+assert 'import threading' in PLUGIN
+assert 'threading.Thread(target=worker)' in program_info
+assert 'self._metadataTimer.callback.append(self._pollMetadataLookup)' in program_info
+assert 'self.onLayoutFinish.append(self._startMetadataLookup)' in program_info
+assert 'self.onLayoutFinish.append(self._loadProgramArtwork)' not in program_info

@@ -20,6 +20,7 @@ from Components.NimManager import nimmanager
 from Components.FileList import FileList
 import time as time1
 import re, os
+import threading
 import unicodedata
 import json
 import hashlib
@@ -197,17 +198,17 @@ class WarderProgramInfo(Screen):
 		<widget name="durationMeta" position="225,675" size="235,34" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
 		<widget name="broadcastLabel" position="50,714" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="broadcast" position="225,714" size="235,82" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="500,425" size="2,440" backgroundColor="#707070" />
-		<widget name="description" position="535,425" size="1300,440" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,890" size="1840,2" backgroundColor="#707070" />
-		<eLabel position="25,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyRed" render="Label" position="25,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
-		<eLabel position="490,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyGreen" render="Label" position="490,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
-		<eLabel position="955,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyYellow" render="Label" position="955,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
-		<eLabel position="1420,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyBlue" render="Label" position="1420,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
+		<eLabel position="500,425" size="2,490" backgroundColor="#707070" />
+		<widget name="description" position="535,425" size="1300,490" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,940" size="1840,2" backgroundColor="#707070" />
+		<eLabel position="25,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyRed" render="Label" position="25,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
+		<eLabel position="490,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyGreen" render="Label" position="490,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
+		<eLabel position="955,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyYellow" render="Label" position="955,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
+		<eLabel position="1420,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyBlue" render="Label" position="1420,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
@@ -251,26 +252,51 @@ class WarderProgramInfo(Screen):
 			except Exception: pass
 			try: self["description"].setText(event.getExtendedDescription() or event.getShortDescription() or "")
 			except Exception: pass
-		try:
-			if event is not None and warderProgramLookup is not None:
-				context = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""]))
-				meta = warderProgramLookup(event.getEventName() or "", context)
-				self._artworkPath = meta.get("artwork_path") or ""
-				if meta.get("genre"): self["genreMeta"].setText(meta["genre"])
-				if meta.get("year"): self["yearMeta"].setText(meta["year"])
-				if meta.get("country"): self["countryMeta"].setText(meta["country"])
-				if meta.get("rating"):
-					rating_text = str(meta["rating"]).strip()
-					rating = float(rating_text.split("/", 1)[0].strip())
-					filled = max(0, min(5, int(round(rating / 2.0))))
-					self["ratingStars"].setText("★" * filled + "☆" * (5 - filled))
-					self["ratingMeta"].setText("%s · %s" % (rating_text, meta.get("provider", "TMDB")))
-		except Exception as e:
-			Writelog("WarderProgramInfo metadata: %s" % e)
+		self._metadataTitle = event.getEventName() or "" if event is not None else ""
+		self._metadataContext = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""])) if event is not None else ""
+		self._metadataResult = None
+		self._metadataDone = False
+		self._metadataTimer = eTimer()
+		self._metadataTimer.callback.append(self._pollMetadataLookup)
 		serviceName = self._serviceName(service, self._serviceRef)
 		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
-		self.onLayoutFinish.append(self._loadProgramArtwork)
+		self.onLayoutFinish.append(self._startMetadataLookup)
+
+	def _startMetadataLookup(self):
+		if not self._metadataTitle or warderProgramLookup is None:
+			return
+		def worker():
+			try:
+				self._metadataResult = warderProgramLookup(self._metadataTitle, self._metadataContext)
+			except Exception as e:
+				Writelog("WarderProgramInfo metadata: %s" % e)
+				self._metadataResult = {}
+			self._metadataDone = True
+		thread = threading.Thread(target=worker)
+		thread.daemon = True
+		thread.start()
+		self._metadataTimer.start(100, False)
+
+	def _pollMetadataLookup(self):
+		if not self._metadataDone:
+			return
+		self._metadataTimer.stop()
+		meta = self._metadataResult or {}
+		try:
+			self._artworkPath = meta.get("artwork_path") or ""
+			if meta.get("genre"): self["genreMeta"].setText(meta["genre"])
+			if meta.get("year"): self["yearMeta"].setText(meta["year"])
+			if meta.get("country"): self["countryMeta"].setText(meta["country"])
+			if meta.get("rating"):
+				rating_text = str(meta["rating"]).strip()
+				rating = float(rating_text.split("/", 1)[0].strip())
+				filled = max(0, min(5, int(round(rating / 2.0))))
+				self["ratingStars"].setText("★" * filled + "☆" * (5 - filled))
+				self["ratingMeta"].setText("%s · %s" % (rating_text, meta.get("provider", "TMDB")))
+			self._loadProgramArtwork()
+		except Exception as e:
+			Writelog("WarderProgramInfo metadata apply: %s" % e)
 
 	def _loadProgramArtwork(self):
 		try:
