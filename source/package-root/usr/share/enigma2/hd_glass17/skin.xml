@@ -1601,6 +1601,8 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
       <convert type="g17ClockToText">Format::%S</convert>
     </widget>
     <eLabel text="FullHDGlass17 · Warder Evolution" position="1120,27" size="730,52" font="Prive4;32" halign="right" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+    <!-- TEST81: isolated exact artwork renderer. Hidden on no exact match, leaving native DAB SLS visible. -->
+    <widget source="session.CurrentService" render="WarderRadioArtwork" position="680,145" size="560,560" zPosition="4" alphatest="blend" />
     <widget name="RassLogo" pixmap="hd_glass17/icons/rass_logo.png" position="150,877" size="75,31" />
     <eLabel position="20,900" size="1880,155" backgroundColor="transpBlack3" zPosition="1" />
     <widget source="session.CurrentService" render="g17PicRef" position="80,925" size="180,105" zPosition="3" transparent="1" alphatest="on">

@@ -13,7 +13,7 @@ SKIN = (PKG / "usr/share/enigma2/hd_glass17/skin.xml").read_text(encoding="utf-8
 WEAUTILS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py").read_text(encoding="utf-8")
 WEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather.py").read_text(encoding="utf-8")
 EWEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py").read_text(encoding="utf-8")
-PROVIDER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
+PROVIDER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")\nRADIO_ART = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py").read_text(encoding="utf-8")
 
 rows = [x for x in CITY.splitlines() if x.startswith("om|")]
 sk = [x for x in rows if x.split("|")[3] == "SK"]
@@ -787,3 +787,14 @@ for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution'
     assert token in rds80, token
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
     assert token not in rds80 and token not in PLUGIN, token
+
+
+# TEST81 isolated Radio/DAB artwork renderer: exact match only, no native-screen monkey patch.
+assert 'render="WarderRadioArtwork"' in SKIN
+assert 'position="680,145" size="560,560"' in SKIN
+assert 'class WarderRadioArtwork(Renderer):' in RADIO_ART
+assert 'iRdsDecoder.RadioText' in RADIO_ART
+assert 'threading.Thread' in RADIO_ART and 'timeout=2.5' in RADIO_ART
+assert '!= wantArtist or cls._norm(item.get("trackName")) != wantTitle' in RADIO_ART
+assert 'WarderRdsInfoDisplay' not in PLUGIN
+assert 'config.misc.radiopic.value' not in PLUGIN
