@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test79
-Revision: 222
-Purpose: Receiver-proven emergency recovery from TEST76/77 Radio/DAB boot loop. Remove the TEST76 RdsInfoDisplay Python monkey-patch and its warder* GUI widgets, restore the minimal native RdsInfoDisplay skin that physically boots on GigaBlue Quad 4K Pro / OpenATV 8.0.2, keep protected MultiEPG/Program Info/TMDB/MessageBox behavior unchanged, and retain packaged hd_glass17/radio.mvi only as a passive build asset until Radio/DAB is redesigned without monkey-patching the native startup screen.
+Candidate: 1.0.5-test80
+Revision: 223
+Purpose: First safe Radio/DAB feature step after receiver-proven TEST79 recovery. Keep OpenATV Screens.RdsDisplay.RdsInfoDisplay Python class completely untouched; add only skin-supported global time/date, Warder branding, CurrentService picon/name/provider and the native RadioText/RtpText/RassLogo widgets. Preserve native DABSlideDisplay/SLS behind the overlay and passive hd_glass17/radio.mvi fallback. Record TEST79 physical reboot and TV-to-RADIO PASS on GigaBlue Quad 4K Pro / OpenATV 8.0.2.

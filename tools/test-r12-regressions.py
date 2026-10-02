@@ -779,3 +779,11 @@ for token in (
 BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
 for token in ("generate-warder-radio-background.py", "hd_glass17/radio.mvi", "ffmpeg"):
     assert token in BUILD_TEST, token
+
+
+# TEST80 safe Radio/DAB skin-only overlay. Never reintroduce the native RdsInfoDisplay monkey-patch.
+rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
+for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', 'source="session.CurrentService"', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
+    assert token in rds80, token
+for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
+    assert token not in rds80 and token not in PLUGIN, token
