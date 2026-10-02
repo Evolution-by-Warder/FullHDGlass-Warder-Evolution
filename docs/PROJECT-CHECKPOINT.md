@@ -211,3 +211,38 @@ Continue from this branch HEAD and make the next TEST build (normally TEST29) fi
 Preserve every locked TEST24/26/27 behavior. Run CI and publish through the established test workflow, then validate on the physical GigaBlue Quad 4K Pro. Never claim receiver PASS from XML/static tests.
 
 After EPG footer acceptance, next major feature: General Radio Artwork for DVB radio + DAB+ + IPTV/internet radio where metadata exists, while preserving the already-working DAB+ slideshow.
+
+
+## Shared Warder asset backend — architecture locked 2026-10-02
+
+This is a project rule, not a FullHDGlass17-only implementation detail.
+
+- Trezor contains the authoritative 100% preservation copy of the old FullHDGlass17 FTP. **Do not modify or reorganize the Trezor originals.**
+- The old FTP directory layout is historical source material only. It MUST NOT dictate the new public Git layout.
+- Runtime assets are to be migrated from Trezor to a logical, consistent, reusable Warder Git asset hierarchy intended for multiple consumers, including FullHDGlass17, PiconHub and future Warder plugins.
+- Do not duplicate the same canonical asset merely because several plugins consume it. Consumers must resolve shared assets through stable manifest IDs/metadata.
+- The common hierarchy must separate asset class and variants, e.g. service picons, provider picons, satellite picons, CAM picons, terrestrial DVB-T/T2, skin-specific UI, weather and shared helpers. Picon variants should consistently distinguish transparent/black/white and dimensions where applicable.
+- The manifest/catalog is the stable runtime contract. Each downloadable item should expose a stable ID plus type/category, variant/dimensions where relevant, version/revision, SHA256, size, canonical URL/parts and compatibility metadata when needed.
+- FullHDGlass17 runtime must ultimately have no dependency on the obsolete FTP. All legacy FTP/server download paths are to be audited and redirected to the Warder HTTPS/Git manifest/backend.
+- Migration phase 1 is preservation: map 100% of old FTP functionality/data from the Trezor source to the new backend and verify old-source -> canonical-asset -> manifest -> plugin coverage 1:1.
+- Migration phase 2 is modernization: update stale content separately. Current DVB-T/T2 picons are the expected area most likely to need fresh data; do not mix this content update with preservation migration.
+- Existing receiver/user picons and settings must not be deleted or overwritten arbitrarily by this migration.
+- Existing assets currently under `assets/warder/downloads/` and `downloads.json` are an intermediate implementation. Reorganize them only through a controlled migration with manifest compatibility so existing TEST/update behavior is not broken.
+- Target conceptual layout:
+  - `assets/picons/services/{transparent,black,white}/`
+  - `assets/picons/providers/{transparent,black,white}/`
+  - `assets/picons/satellites/{transparent,black,white}/`
+  - `assets/picons/cam/{transparent,black,white}/`
+  - `assets/picons/terrestrial/{dvb-t,dvb-t2}/`
+  - `assets/skin/fullhdglass17/...`
+  - `assets/shared/{weather,helpers,...}/`
+- PiconHub should consume the same canonical picon assets rather than maintaining a FullHDGlass17-specific duplicate set.
+
+### Work order
+1. Finish and receiver-validate TEST29 GraphicalEPGPIG footer.
+2. Inventory every legacy FullHDGlass17 download/FTP endpoint and every preserved Trezor asset.
+3. Produce a 1:1 migration map and identify genuinely missing/current-content gaps.
+4. Build the shared Warder asset hierarchy + manifest compatibility layer.
+5. Redirect FullHDGlass17 downloads to the shared backend and regression-test all download menu functions.
+6. Update DVB-T/T2 content as a separate modernization pass.
+7. Continue with General Radio Artwork and remaining final compatibility/release audit.
