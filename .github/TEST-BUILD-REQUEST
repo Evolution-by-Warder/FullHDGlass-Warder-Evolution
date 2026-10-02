@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test85
-Revision: 232
+Revision: 233
 Purpose: Add isolated /tmp diagnostics for exact radio artwork lookup so receiver testing identifies lookup, exact-match, download, or decode failure without relaxing exact artist-and-track matching. TEST84 JPEG validation and all native DAB/passive fallbacks remain unchanged.
