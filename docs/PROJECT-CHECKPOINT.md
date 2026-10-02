@@ -157,3 +157,57 @@ Physical receiver validation on GigaBlue Quad 4K Pro / OpenATV completed success
 - Existing `OpkgInstaller` screen remained unchanged and visually correct.
 - User explicitly approved the receiver result as OK. TEST21 is RECEIVER / VISUAL PASS.
 - Locked prior passes remain valid: TEST18 weather/city, TEST19 PIG variants, TEST20 package-version metadata.
+
+
+## Night checkpoint — 2026-10-02 — TEST22 through TEST28
+
+This is the authoritative continuation point. Do not restart completed analysis.
+
+### Locked receiver passes
+- TEST22: OpenATV compatibility screens QuickEPG, GraphicalEPG, GraphicalEPGPIG, GraphicalInfoBarEPG and RassInteractive — receiver install/runtime PASS.
+- TEST23: native FullHD graphical EPG fullscreen worked; PIG was gray.
+- TEST24: GraphicalEPGPIG LIVE PIG fixed; fullscreen and 15 EPG rows work — RECEIVER PASS.
+- TEST25: installed; introduced automatic GUI restart after successful updater install; initial 3s MessageBox/eTimer race was subsequently hardened.
+- TEST26: updater automatic GUI restart physically confirmed; failed update must not auto-restart. RECEIVER PASS. EPG LIVE PIG, 15 rows, event detail, current green/future dark and selection also confirmed.
+- TEST27: RECEIVER PASS. Removed duplicate top-left bouquet title such as `SK - CZ`; LIVE PIG, 15 rows, narrow picon-only rail, event grid, event detail and updater behavior remained correct.
+- TEST27 runtime `1.0.5-test27`; SHA256 `1bb41f3e8b648be1f493d29127c0de289f5afc288cc6e4f1db01810ae3b9a373`; publication commit `3b6e2f14d54a3569407d53e2338d1828f3353560`.
+
+### GraphicalEPGPIG behavior to preserve
+- FullHDGlass startup sets OpenATV GraphicalEPG service-title mode to `picon` and picon width 60 via runtime `.value` only; no `save()`.
+- Bouquet/title suppression is scoped to FullHDGlass17 GraphicalEPGPIG through the patched `EPGSelection.setTitle()`.
+- Do not restore station names beside picons or the top-left bouquet title.
+- Target remains FullHDGlass design, LIVE PIG top-left, selected-event detail top-right, 15 rows, narrow picon-only rail, grid immediately after picons, current event green, future dark, clear selection and current-time line.
+
+### TEST28 — CI PASS / published, but receiver FAIL for bottom action row
+Intended footer:
+- RED = selected-event description via `infoKeyPressed()`.
+- GREEN = timer (`graph_green = "timer"`).
+- YELLOW = prime time (`graph_yellow = "gotoprimetime"`).
+- BLUE = EPG Search (`graph_blue = "epgsearch"`).
+- Overrides are scoped to FullHDGlass17 GraphicalEPGPIG/runtime and non-persistent.
+- Skin XML contains `key_red`, `key_green`, `key_yellow`, `key_blue` at y=930 and intentionally removes old `primetime`, `change_bouquet`, `jump`, `page` widgets from GraphicalEPGPIG.
+
+TEST28 build history:
+- `11293609d63f31b6ea00efe291c1c8edb44152c0` initial build; regression failure after broad skin replacement.
+- `e025179e93ddd9ded7f9d56c8c074670a5c3dd20` repaired screen scope.
+- `a944dc80defac7aeaae76205c156b5ad16a29978` partial regression alignment.
+- `e9e85bfea3ba2ceee81c4c9696e33affd06c2a63` scoped legacy footer gate to non-PIG GraphicalEPG.
+- `eef74937702ea12a7b4d4e15cde50e5c36bb2af8` restored all four key widgets; CI run `36944491321` SUCCESS.
+- publication commit `afc33192dc343a9c8f6558a652fa42a7182e090f`.
+- runtime `1.0.5-test28`; package SHA256 `213d1e74168e0b057c201e2178eba4124b8ce2e3cbf7a40b53180fbbdbe194e1`.
+
+Updater note:
+- TEST27 briefly reported itself current immediately after TEST28 publication although repository manifest already had TEST28. A later check succeeded without code changes. Treat as transient raw/manifest caching unless it recurs.
+
+Physical TEST28 result:
+- GraphicalEPGPIG still renders correctly (LIVE PIG, event detail, 15 rows, picon-only grid).
+- The entire intended bottom colored action row is absent on the physical GigaBlue. User supplied a current receiver screenshot on 2026-10-02 proving no red/green/yellow/blue labels render.
+- Therefore **TEST28 bottom action row = RECEIVER FAIL**. TEST28 is NOT receiver PASS.
+- XML presence alone is insufficient: OpenATV is not populating/rendering these `key_*` widgets in this screen as assumed.
+
+### Exact next task
+Continue from this branch HEAD and make the next TEST build (normally TEST29) fixing the physically missing bottom action row. Investigate the real OpenATV GraphicalEPGPIG source/action-label lifecycle rather than merely repositioning the XML widgets. Receiver acceptance requires all four visible and functional: red event description, green timer, yellow prime time, blue EPG Search.
+
+Preserve every locked TEST24/26/27 behavior. Run CI and publish through the established test workflow, then validate on the physical GigaBlue Quad 4K Pro. Never claim receiver PASS from XML/static tests.
+
+After EPG footer acceptance, next major feature: General Radio Artwork for DVB radio + DAB+ + IPTV/internet radio where metadata exists, while preserving the already-working DAB+ slideshow.
