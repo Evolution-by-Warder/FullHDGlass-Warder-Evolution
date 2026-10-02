@@ -66,11 +66,11 @@ Visual authority is the maintainer-supplied reference screenshot (2026-10-02).
 - TEST41 commit `1b81852437d5692eceeac53d7b454abb56efd8db`: removed live PIG from PROGRAM INFO. Programme artwork remains through the existing `g17Poster2` title-driven renderer.
 - TEST42: inspected the actual FullHDGlass poster pipeline. `g17Poster2` already has cache plus TMDB and IMDb poster lookup; its TMDB path previously trusted result #1 blindly. TEST42 adds an exact normalized-title gate across the first five TMDB results before any poster is downloaded. This is the first external-enrichment reliability guard; metadata enrichment is still pending.
 - TEST43: added a silent cached PROGRAM INFO metadata provider using the already-approved TMDB source. It rejects fuzzy matches and ambiguous exact-name movie/TV collisions; only a unique exact normalized title can populate genre/year/country/rating. Provider/network failure returns EPG-only data without GSOD. ČSFD and IMDb remain approved sources for subsequent provider expansion.
-- TEST44: exact-title collisions can now be disambiguated with EPG short/extended description. Context is allowed to choose only among candidates whose normalized title already matches exactly; weak/tied context returns no external enrichment. TMDB provider ID is retained for later detail and IMDb cross-verification.\n- DreamOS compatibility fix already present: tolerant preinst layout detection and eTimer `timeout.connect` with legacy callback fallback.
+- TEST44 correction commit `54cba4f96c35f0e460b5f84a431184b10402d94a`: the provider now really disambiguates multiple exact-title candidates using EPG-description overlap. A weak or tied contextual result returns no external enrichment. This corrects the implementation mismatch found by the mandatory HEAD audit. Provider-ID/detail enrichment remains the next step.\n- DreamOS compatibility fix already present: tolerant preinst layout detection and eTimer `timeout.connect` with legacy callback fallback.
 - Original FullHDGlass17 DreamOS-compatible r12.2 IPK/DEB were separately rebuilt from user-supplied r12.1 packages; receiver PASS is not assumed without hardware confirmation.
 
 ## Current state at this checkpoint
-Current development target is TEST44 lineage.
+Current development target is corrected TEST44 lineage.
 Known intended code state:
 - PROGRAM INFO contains no `session.VideoPicture` Pig.
 - Programme-artwork widget uses `posterTitle` / `g17Poster2`.
@@ -121,4 +121,4 @@ After CI publishes the next TEST package, verify on GigaBlue Quad 4K Pro:
 10. Never call something receiver-PASS until the maintainer physically confirms it.
 
 ## Next action
-Continue P0 external PROGRAM INFO enrichment: query verified TMDB detail/external IDs after the exact/context match, retain IMDb ID for cross-provider verification, then expand to IMDb/ČSFD where technically reliable. Approved sources remain ČSFD, IMDb and TMDB. Approved sources are ČSFD, IMDb and TMDB. Do not redesign GraphicalEPGPIG and do not reintroduce live PIG.
+Continue P0 external PROGRAM INFO enrichment from corrected TEST44: after the verified exact/context match, add provider ID and TMDB detail/external IDs, then use IMDb ID for reliable cross-provider enrichment and connect artwork to that same verified identity. Approved sources remain ČSFD, IMDb and TMDB. Do not redesign GraphicalEPGPIG and do not reintroduce live PIG.
