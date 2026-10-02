@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test82
-Revision: 226
-Purpose: Harden the isolated exact Radio artwork renderer against rapid track changes. Track identity and requested lookup identity are now separate: if RadioText changes while an older asynchronous lookup is busy, the current track is requested immediately after that worker finishes. A completed no-match is not retried every 1.2 seconds. Exact normalized artist AND track matching, native DAB SLS fallback, passive radio.mvi fallback, and untouched native OpenATV RdsInfoDisplay remain unchanged. TEST80 remains the receiver-proven Radio/DAB UI checkpoint.
+Candidate: 1.0.5-test83
+Revision: 227
+Purpose: Accept the receiver-proven BAYERN 3 RadioText form `Artist: Track` in the isolated artwork parser while retaining strict exact normalized artist AND track matching. Existing spaced dash separators remain supported. No fuzzy/random artwork, no native RdsInfoDisplay monkey patch, and DAB SLS/passive radio.mvi fallback behavior remain unchanged. TEST82 receiver checkpoint confirmed stable Radio mode and correct no-false-artwork behavior.

@@ -804,3 +804,7 @@ assert 'config.misc.radiopic.value' not in PLUGIN
 assert 'self._requestedKey = ""' in RADIO_ART
 assert 'elif not self._busy and key != self._requestedKey:' in RADIO_ART
 assert 'self._requestedKey = key' in RADIO_ART
+
+# TEST83: receiver-proven BAYERN 3 RadioText uses an explicit colon separator.
+assert 'for sep in (" - ", " – ", " — ", ": "):' in RADIO_ART
+assert '!= wantArtist or cls._norm(item.get("trackName")) != wantTitle' in RADIO_ART

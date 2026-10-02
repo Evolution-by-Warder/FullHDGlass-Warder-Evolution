@@ -62,7 +62,7 @@ class WarderRadioArtwork(Renderer):
     @staticmethod
     def _split(text):
         text = (text or "").strip()
-        for sep in (" - ", " – ", " — "):
+        for sep in (" - ", " – ", " — ", ": "):
             if sep in text:
                 artist, title = text.split(sep, 1)
                 if artist.strip() and title.strip():
