@@ -99,7 +99,12 @@ def lookup(title, context=""):
         if not ranked or ranked[0][0] < 2 or (len(ranked) > 1 and ranked[0][0] == ranked[1][0]):
             return {}
         media, item = ranked[0][1], ranked[0][2]
-    date = item.get("release_date") if media == "movie" else item.get("first_air_date")
+    detail = {}
+    try:
+        detail = _fetch("https://api.themoviedb.org/3/%s/%s?api_key=%s&append_to_response=external_ids" % (media, item.get("id"), TMDB_KEY))
+    except Exception:
+        pass
+    date = (detail.get("release_date") if media == "movie" else detail.get("first_air_date")) or (item.get("release_date") if media == "movie" else item.get("first_air_date"))
     year = date[:4] if date and len(date) >= 4 else ""
     countries = item.get("origin_country") or []
     genres = [GENRES[x] for x in item.get("genre_ids", []) if x in GENRES]
