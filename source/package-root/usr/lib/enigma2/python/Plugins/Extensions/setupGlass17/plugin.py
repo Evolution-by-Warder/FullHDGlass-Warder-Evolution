@@ -179,24 +179,24 @@ class WarderProgramInfo(Screen):
 		<widget name="now" position="1360,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
-		<widget name="stationPicon" position="50,445" size="92,55" zPosition="3" alphatest="blend" />
-		<widget name="stationLabel" position="50,515" size="190,38" font="Prive3;27" foregroundColor="#3388dd" transparent="1" />
-		<widget name="channel" position="245,515" size="215,38" font="Prive4;27" foregroundColor="#dddddd" transparent="1" />
-		<widget name="genreLabel" position="50,555" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="genreMeta" position="225,555" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="yearLabel" position="50,588" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="yearMeta" position="225,588" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="countryLabel" position="50,621" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="countryMeta" position="225,621" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="stationPicon" position="50,435" size="120,72" zPosition="3" alphatest="blend" />
+		<widget name="stationLabel" position="50,520" size="190,34" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="channel" position="245,520" size="215,34" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="genreLabel" position="50,560" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="genreMeta" position="225,560" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="yearLabel" position="50,593" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="yearMeta" position="225,593" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="countryLabel" position="50,626" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
+		<widget name="countryMeta" position="225,626" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="ratingStars" position="1390,105" size="430,45" font="Prive4;34" halign="right" foregroundColor="#e53935" transparent="1" />
 		<widget name="ratingMeta" position="1390,155" size="430,36" font="Prive4;27" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<widget name="when" position="580,170" size="760,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="short" position="580,235" size="1220,120" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,405" size="1840,2" backgroundColor="#707070" />
-		<widget name="durationLabel" position="50,692" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="durationMeta" position="225,692" size="235,34" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<widget name="broadcastLabel" position="50,729" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="broadcast" position="225,729" size="235,48" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
+		<widget name="durationLabel" position="50,675" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="durationMeta" position="225,675" size="235,34" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<widget name="broadcastLabel" position="50,714" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="broadcast" position="225,714" size="235,82" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="500,425" size="2,440" backgroundColor="#707070" />
 		<widget name="description" position="535,425" size="1300,440" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,890" size="1840,2" backgroundColor="#707070" />

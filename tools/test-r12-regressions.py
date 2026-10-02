@@ -632,11 +632,11 @@ assert 'return None' in red_handler
 # TEST51 receiver screenshot correction: one title style, artwork field, station block below divider.
 assert '"PROGRAM INFO": "Info o programe"' in PLUGIN
 assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
-assert 'name="stationPicon" position="50,445" size="92,55"' in program_info
-assert 'name="stationLabel" position="50,515" size="190,38"' in program_info
-assert 'name="channel" position="245,515" size="215,38"' in program_info
-assert 'name="durationLabel" position="50,692"' in program_info
-assert 'name="broadcastLabel" position="50,729"' in program_info
+assert 'name="stationPicon" position="50,435" size="120,72"' in program_info
+assert 'name="stationLabel" position="50,520" size="190,34" font="Prive3;24"' in program_info
+assert 'name="channel" position="245,520" size="215,34" font="Prive4;24"' in program_info
+assert 'name="durationLabel" position="50,675"' in program_info
+assert 'name="broadcastLabel" position="50,714"' in program_info
 assert 'CACHE_SCHEMA = "v3"' in PROVIDER
 
 # TEST52 stable PROGRAM INFO metadata rows.
@@ -664,4 +664,5 @@ assert 'position="615,117" size="1230,246" font="Prive3;31" foregroundColor="#ee
 assert 'format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42"' in epg_pig
 assert 'position="435,12" size="210,42"' in epg_pig and 'ClockToText">WithSeconds' in epg_pig
 assert 'FullHDGlass17 · Warder Evolution' in epg_pig
-assert 'text="EPG" position="15,387" size="60,36"' in epg_pig
+assert 'text="EPG" position="15,387"' not in epg_pig
+assert 'name="timeline_text" position="15,387" size="1815,36"' in epg_pig
