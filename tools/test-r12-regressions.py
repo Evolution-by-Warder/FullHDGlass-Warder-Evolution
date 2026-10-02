@@ -595,17 +595,24 @@ assert "for candidate in data['results'][:5]:" in poster2
 assert "normTitle(candidateTitle) == wanted" in poster2
 assert "ww = data['results'][0]['poster_path']" not in poster2
 
-# TEST43: external Program Info metadata is silent, cached and exact-title gated; EPG-only fallback is safe.
+# TEST43-46: verified Program Info provider contract.
 META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
-for token in ("def lookup(title):", "norm(candidate) == wanted", "CACHE_DIR", '"provider": "TMDB"', '"genre":', '"year":', '"country":', '"rating":'):
+for token in (
+    'def lookup(title, context=""):',
+    '_norm(candidate) == wanted',
+    'ranked[0][0] < 2',
+    'append_to_response=external_ids',
+    '"provider_id": str(item.get("id") or "")',
+    '"imdb_id": imdb_id',
+    '"runtime": str(runtime or "")',
+    '"provider": "TMDB"',
+    '"genre":',
+    '"year":',
+    '"country":',
+    '"rating":',
+):
     assert token in META, token
-assert "warderProgramLookup(event.getEventName() or \"\")" in PLUGIN
-for token in ('name="genreMeta"', 'name="yearCountryMeta"', 'name="ratingMeta"'):
-    assert token in program_info, token
-
-# TEST44: EPG context disambiguates only already exact-title candidates.
-META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
-assert 'def lookup(title, context=""):' in META
-assert 'ranked[0][0] < 2' in META
-assert '"provider_id": str(item.get("id") or "")' in META
 assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN
+for token in ('name="genreMeta"', 'name="yearCountryMeta"', 'name="ratingMeta"', 'name="runtimeMeta"'):
+    assert token in program_info, token
+assert 'self["runtimeMeta"].setText("%s %s min"' in program_info
