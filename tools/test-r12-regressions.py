@@ -811,3 +811,6 @@ assert '!= wantArtist or cls._norm(item.get("trackName")) != wantTitle' in RADIO
 
 # TEST84: downloaded artwork must validate the real JPEG SOI bytes.
 assert "payload.startswith(bytes((255, 216)))" in RADIO_ART
+
+# TEST84: downloaded artwork must validate the real JPEG SOI bytes.
+assert "payload.startswith(bytes((255, 216)))" in RADIO_ART
