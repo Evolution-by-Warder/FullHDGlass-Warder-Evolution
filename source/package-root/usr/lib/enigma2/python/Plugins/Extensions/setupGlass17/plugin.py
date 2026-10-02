@@ -1113,6 +1113,7 @@ try:
 		if action == "green": return self.RecordTimerQuestion(True)
 		if action == "yellow": return self.enterDateTime()
 		if action == "blue": return self.openEPGSearch()
+	WarderEPGSelection.warderProgramInfoClosed = warderProgramInfoClosed
 
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):

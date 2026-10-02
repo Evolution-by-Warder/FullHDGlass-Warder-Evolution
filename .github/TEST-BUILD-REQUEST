@@ -1,5 +1,5 @@
 Warder TEST build request
 Candidate: 1.0.5-test35
-Revision: 118
+Revision: 119
 Purpose: TEST35 refines the approved FullHDGlass PROGRAM INFO from the real TEST34 receiver result. It removes the unreliable second PIG from the modal detail screen, uses the selected service's real picon as the preview fallback, resolves OpenATV ServiceReference wrappers so STANICA is populated, preserves EPG-authoritative title/time/duration/description data, and keeps all four colour-key actions functional.
 Preserve accepted GraphicalEPGPIG geometry/actions and the original r12 upgrade/GSOD guard. Unknown metadata must remain hidden.
