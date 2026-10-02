@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test40
-Revision: 136
-Purpose: TEST40 completes Warder PROGRAM INFO against the maintainer-approved reference: large translucent FullHDGlass panel over live video, cyan top accent, genuine FullHDGlass programme poster in the upper-left when available, amber title, station picon/name, EPG-authoritative date/time/duration, narrow reliable metadata column, large description, and four visible bottom actions. All colour-key captions follow the active Enigma2 OSD language; Warder-owned translations take precedence for new strings so legacy CSFD gettext cannot hijack PROGRAM INFO. Never invent metadata and never use a station picon as programme artwork. Preserve accepted GraphicalEPGPIG geometry, DreamOS compatibility, updater behaviour, and all r12 upgrade/GSOD regression guards.
+Candidate: 1.0.5-test41
+Revision: 137
+Purpose: TEST41 corrects the approved PROGRAM INFO media contract: the upper-left media is a real programme image/poster resolved by the existing FullHDGlass poster pipeline from the selected EPG title; it is never live PIG video and never a station picon substitute. The rest of the screen remains the approved translucent FullHDGlass information panel. External enrichment may later add matched CSFD/IMDb metadata only when the match is reliable; uncertain fields remain empty. All colour-key captions follow the active Enigma2 OSD language. Preserve GraphicalEPGPIG geometry, DreamOS compatibility, updater behaviour, and r12 upgrade/GSOD guards.

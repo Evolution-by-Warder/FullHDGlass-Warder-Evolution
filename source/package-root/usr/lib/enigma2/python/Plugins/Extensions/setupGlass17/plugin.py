@@ -171,7 +171,6 @@ class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
 	<screen name="WarderProgramInfo" position="75,65" size="1770,950" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
-		<widget source="session.VideoPicture" render="Pig" position="0,0" size="1770,950" zPosition="-10" backgroundColor="transparent" />
 		<eLabel position="18,18" size="1734,914" backgroundColor="transpBlack3" zPosition="-5" />
 		<eLabel position="20,20" size="1730,2" backgroundColor="#38c7e8" zPosition="1" />
 		<widget name="now" position="1240,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
