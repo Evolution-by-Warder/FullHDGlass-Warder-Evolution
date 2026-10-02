@@ -503,8 +503,12 @@ assert 'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgra
 assert 'WarderEPGSelection.warderProgramInfoClosed = warderProgramInfoClosed' in PLUGIN
 assert 'getattr(service, "ref", None)' in PLUGIN
 program_info = PLUGIN.split('class WarderProgramInfo(Screen):', 1)[1].split('def readHWtype', 1)[0]
-assert 'render="Pig"' not in program_info
+assert 'source="session.VideoPicture" render="Pig"' in program_info
+assert 'for name in ("preview", "stationPicon")' not in program_info
+assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'from Components.Renderer.Picon import getPiconName' in program_info
+assert 'foregroundColor="#3388dd"' in program_info
+assert 'backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
 

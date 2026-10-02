@@ -150,32 +150,37 @@ def Writelog(txt):
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
-	<screen name="WarderProgramInfo" position="center,70" size="1780,940" title="PROGRAM INFO" backgroundColor="transpBlack">
-		<eLabel position="30,20" size="1720,2" backgroundColor="#707070" />
-		<widget name="now" position="1280,32" size="455,38" font="Prive3;27" halign="right" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel position="45,62" size="535,302" backgroundColor="#181818" />
-		<widget name="preview" position="58,75" size="509,276" zPosition="3" alphatest="blend" />
-		<widget name="stationPicon" position="615,122" size="135,81" zPosition="3" alphatest="blend" />
-		<widget name="title" position="615,55" size="1090,58" font="Prive4;44" foregroundColor="#e5b243" transparent="1" />
-		<widget name="channel" position="775,128" size="930,42" font="Prive3;31" foregroundColor="#ffffff" transparent="1" />
-		<widget name="when" position="775,178" size="930,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
-		<widget name="duration" position="775,228" size="930,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="short" position="615,286" size="1090,72" font="Prive3;29" foregroundColor="#ffffff" transparent="1" />
-		<eLabel position="45,388" size="1690,2" backgroundColor="#707070" />
-		<eLabel text="STANICA" position="45,420" size="430,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
-		<widget name="service" position="45,463" size="470,45" font="Prive4;29" foregroundColor="#ffffff" transparent="1" />
-		<eLabel text="DĹŽKA" position="45,526" size="430,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
-		<widget name="durationMeta" position="45,569" size="470,45" font="Prive4;29" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel text="VYSIELANIE" position="45,632" size="430,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
-		<widget name="broadcast" position="45,675" size="470,70" font="Prive4;28" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel position="545,420" size="2,355" backgroundColor="#707070" />
-		<eLabel text="POPIS" position="590,420" size="1145,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
-		<widget name="description" position="590,463" size="1145,312" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel position="45,805" size="1690,2" backgroundColor="#707070" />
-		<eLabel text="Zavrieť" position="45,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="red" transparent="1" />
-		<eLabel text="Pridať časovač" position="465,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="green" transparent="1" />
-		<eLabel text="Goto Date/Time" position="885,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="yellow" transparent="1" />
-		<eLabel text="EPG Search" position="1305,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="blue" transparent="1" />
+	<screen name="WarderProgramInfo" position="75,65" size="1770,950" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
+		<widget source="session.VideoPicture" render="Pig" position="0,0" size="1770,950" zPosition="-10" backgroundColor="transparent" />
+		<eLabel position="18,18" size="1734,914" backgroundColor="transpBlack3" zPosition="-5" />
+		<eLabel position="20,20" size="1730,2" backgroundColor="#707070" />
+		<widget name="now" position="1260,38" size="445,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,72" size="505,286" backgroundColor="transpBlack" />
+		<widget name="preview" position="38,85" size="479,260" zPosition="2" alphatest="blend" />
+		<widget name="title" position="560,80" size="1095,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
+		<widget name="stationPicon" position="560,154" size="92,55" zPosition="3" alphatest="blend" />
+		<widget name="channel" position="675,157" size="980,48" font="Prive4;34" foregroundColor="#ffffff" transparent="1" />
+		<widget name="when" position="675,220" size="980,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="duration" position="675,270" size="980,40" font="Prive3;29" foregroundColor="#e5b243" transparent="1" />
+		<widget name="short" position="560,320" size="1095,55" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,392" size="1720,2" backgroundColor="#707070" />
+		<eLabel text="Stanica:" position="50,425" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="service" position="285,425" size="360,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<eLabel text="Dĺžka:" position="50,485" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="durationMeta" position="285,485" size="360,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<eLabel text="Vysielanie:" position="50,545" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="broadcast" position="285,545" size="360,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="690,415" size="2,345" backgroundColor="#707070" />
+		<widget name="description" position="735,425" size="970,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
+		<eLabel position="25,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel text="Zavrieť" position="25,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+		<eLabel position="465,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel text="Pridať časovač" position="465,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+		<eLabel position="905,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel text="Goto Date/Time" position="905,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+		<eLabel position="1345,820" size="395,62" backgroundColor="transpGrey" />
+		<eLabel text="EPG Search" position="1345,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="#3388dd" transparent="1" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
@@ -186,14 +191,17 @@ class WarderProgramInfo(Screen):
 		self["stationPicon"] = Pixmap()
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close, "green": lambda: self.close("green"), "yellow": lambda: self.close("yellow"), "blue": lambda: self.close("blue")}, -1)
 		self._serviceRef = self._normaliseServiceRef(service)
-		self["now"].setText(time1.strftime("%d.%m.%Y  %H:%M", time1.localtime()))
+		self["now"].setText(time1.strftime("%A  %d. %b %Y  %H:%M", time1.localtime()))
 		if event is not None:
 			try: self["title"].setText(event.getEventName() or "")
 			except Exception: pass
 			try:
 				begin = int(event.getBeginTime()); duration = int(event.getDuration())
 				startDate = time1.strftime("%d.%m.%Y", time1.localtime(begin)); startTime = time1.strftime("%H:%M", time1.localtime(begin)); endTime = time1.strftime("%H:%M", time1.localtime(begin + duration)); minutes = duration // 60
-				self["when"].setText("%s   %s - %s" % (startDate, startTime, endTime)); self["duration"].setText("%d min" % minutes); self["durationMeta"].setText("%d min" % minutes); self["broadcast"].setText("%s\n%s - %s" % (startDate, startTime, endTime))
+				self["when"].setText("%s   %s - %s  (%d min)" % (startDate, startTime, endTime, minutes))
+				self["duration"].setText("")
+				self["durationMeta"].setText("%d min" % minutes)
+				self["broadcast"].setText("%s\n%s - %s" % (startDate, startTime, endTime))
 			except Exception: pass
 			try: self["short"].setText(event.getShortDescription() or "")
 			except Exception: pass
@@ -234,10 +242,10 @@ class WarderProgramInfo(Screen):
 		try:
 			from Components.Renderer.Picon import getPiconName
 			picon = getPiconName(self._serviceRef.toString())
-			if picon and os.path.isfile(picon):
-				for name in ("preview", "stationPicon"):
-					if self[name].instance is not None:
-						self[name].instance.setScale(1); self[name].instance.setPixmapFromFile(picon); self[name].show()
+			if picon and os.path.isfile(picon) and self["stationPicon"].instance is not None:
+				self["stationPicon"].instance.setScale(1)
+				self["stationPicon"].instance.setPixmapFromFile(picon)
+				self["stationPicon"].show()
 		except Exception as e:
 			Writelog("WarderProgramInfo picon: %s" % e)
 
