@@ -60,6 +60,12 @@ class WarderRadioArtwork(Renderer):
         return " ".join(value.split())
 
     @classmethod
+    def _titleCommaIdentity(cls, value):
+        # Receiver-proven metadata compatibility only: commas may be omitted by RDS.
+        # No other punctuation, suffix, word, or version information is removed.
+        return cls._norm(value).replace(",", "")
+
+    @classmethod
     def _featIdentity(cls, artist, title):
         artistNorm, titleNorm = cls._norm(artist), cls._norm(title)
         marker = " feat. "
@@ -122,6 +128,8 @@ class WarderRadioArtwork(Renderer):
         for item in results:
             gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
             exact = gotArtist == wantArtist and gotTitle == wantTitle
+            if not exact and gotArtist == wantArtist:
+                exact = cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)
             if not exact:
                 wantFeat = cls._featIdentity(artist, title)
                 gotFeat = cls._featIdentity(item.get("artistName"), item.get("trackName"))
