@@ -986,21 +986,72 @@ try:
 			title = ""
 		return WarderEPGSelection_setTitle(self, title, *args, **kwargs)
 	WarderEPGSelection.setTitle = warderEPGSelectionSetTitle
+	def _warderGraphicalEPGPIG(self):
+		return config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG"
+
+	def _warderGraphicalEPGLabels(self):
+		if not _warderGraphicalEPGPIG(self):
+			return
+		for key, text in (("key_red", "PROGRAM INFO"), ("key_green", _("Add Timer")), ("key_yellow", _("Goto Date/Time")), ("key_blue", _("EPG Search"))):
+			try:
+				self[key].setText(text)
+			except Exception:
+				pass
+
 	WarderEPGSelection_init = WarderEPGSelection.__init__
 	def warderEPGSelectionInit(self, *args, **kwargs):
 		WarderEPGSelection_init(self, *args, **kwargs)
-		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
-			try:
-				self["key_red"].setText("EPG INFO")
-			except Exception:
-				pass
+		_warderGraphicalEPGLabels(self)
 	WarderEPGSelection.__init__ = warderEPGSelectionInit
+
+	# OpenATV refreshes StaticText colour-key sources after construction. Re-apply
+	# the FullHDGlass labels afterwards so the visible label always matches the handler.
+	WarderEPGSelection_RefreshColouredKeys = WarderEPGSelection.RefreshColouredKeys
+	def warderEPGSelectionRefreshColouredKeys(self, *args, **kwargs):
+		result = WarderEPGSelection_RefreshColouredKeys(self, *args, **kwargs)
+		_warderGraphicalEPGLabels(self)
+		return result
+	WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys
+
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderEPGSelectionRedButtonPressed(self):
-		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
+		if _warderGraphicalEPGPIG(self):
+			# Prefer OpenATV's native IMDb integration for richer programme/movie
+			# information. If the plugin is unavailable, always fall back to the
+			# selected event's native EPG detail instead of showing a dead action.
+			try:
+				from Plugins.Extensions.IMDb.plugin import IMDB
+				cur = self["list%s" % self.activeList].getCurrent()
+				event = cur[0] if cur else None
+				name = event.getEventName() if event is not None else ""
+				if name:
+					return self.session.open(IMDB, name, False)
+			except Exception:
+				pass
 			return self.infoKeyPressed()
 		return WarderEPGSelection_redButtonPressed(self)
 	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
+
+	WarderEPGSelection_greenButtonPressed = WarderEPGSelection.greenButtonPressed
+	def warderEPGSelectionGreenButtonPressed(self):
+		if _warderGraphicalEPGPIG(self):
+			return self.RecordTimerQuestion(True)
+		return WarderEPGSelection_greenButtonPressed(self)
+	WarderEPGSelection.greenButtonPressed = warderEPGSelectionGreenButtonPressed
+
+	WarderEPGSelection_yellowButtonPressed = WarderEPGSelection.yellowButtonPressed
+	def warderEPGSelectionYellowButtonPressed(self):
+		if _warderGraphicalEPGPIG(self):
+			return self.enterDateTime()
+		return WarderEPGSelection_yellowButtonPressed(self)
+	WarderEPGSelection.yellowButtonPressed = warderEPGSelectionYellowButtonPressed
+
+	WarderEPGSelection_blueButtonPressed = WarderEPGSelection.blueButtonPressed
+	def warderEPGSelectionBlueButtonPressed(self):
+		if _warderGraphicalEPGPIG(self):
+			return self.openEPGSearch()
+		return WarderEPGSelection_blueButtonPressed(self)
+	WarderEPGSelection.blueButtonPressed = warderEPGSelectionBlueButtonPressed
 except Exception:
 	pass
 
@@ -1017,7 +1068,7 @@ def startHdg17(reason, **kwargs):
 				if hasattr(config.epgselection, "graph_green"):
 					config.epgselection.graph_green.value = "timer"
 				if hasattr(config.epgselection, "graph_yellow"):
-					config.epgselection.graph_yellow.value = "gotoprimetime"
+					config.epgselection.graph_yellow.value = "gotodatetime"
 				if hasattr(config.epgselection, "graph_blue"):
 					config.epgselection.graph_blue.value = "epgsearch"
 		except Exception:

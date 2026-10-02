@@ -475,3 +475,20 @@ for key in ("red", "green", "yellow", "blue"):
     assert ('source="key_%s" render="Label"' % key) in pig26, key
 assert 'def warderEPGSelectionInit(self, *args, **kwargs):' in PLUGIN
 assert 'self["key_red"].setText("EPG INFO")' in PLUGIN
+
+
+# TEST30: FullHDGlass GraphicalEPGPIG colour labels and handlers must stay paired.
+for token in (
+    '("key_red", "PROGRAM INFO")',
+    '("key_green", _("Add Timer"))',
+    '("key_yellow", _("Goto Date/Time"))',
+    '("key_blue", _("EPG Search"))',
+    'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys',
+    'from Plugins.Extensions.IMDb.plugin import IMDB',
+    'return self.infoKeyPressed()',
+    'return self.RecordTimerQuestion(True)',
+    'return self.enterDateTime()',
+    'return self.openEPGSearch()',
+    'config.epgselection.graph_yellow.value = "gotodatetime"',
+):
+    assert token in PLUGIN, token

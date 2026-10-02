@@ -1,5 +1,5 @@
 Warder TEST build request
-Candidate: 1.0.5-test29
-Revision: 106
-Purpose: TEST29 fix GraphicalEPGPIG color-key rendering: render OpenATV StaticText key sources and label red EPG INFO.
-Preserve TEST24/26/27 accepted EPG behavior and TEST28 action mappings.
+Candidate: 1.0.5-test30
+Revision: 107
+Purpose: TEST30 complete GraphicalEPGPIG colour actions: PROGRAM INFO with IMDb/native EPG fallback, Timer, Goto Date/Time, EPG Search; keep labels synchronized after OpenATV refresh.
+Preserve TEST24/26/27/29 accepted EPG geometry, LIVE PIG, picon-only rail and visible source-rendered footer.
