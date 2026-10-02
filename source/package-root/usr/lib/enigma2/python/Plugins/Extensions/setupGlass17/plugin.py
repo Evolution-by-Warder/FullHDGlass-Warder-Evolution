@@ -1231,6 +1231,13 @@ try:
 
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderProgramInfoClosed(self, action=None):
+		try:
+			spinnerWasEnabled = getattr(self, "_warderProgramInfoSpinnerWasEnabled", None)
+			if spinnerWasEnabled is not None and setSpinnerOnOff is not None:
+				setSpinnerOnOff(1 if spinnerWasEnabled else 0)
+		except Exception:
+			pass
+		self._warderProgramInfoSpinnerWasEnabled = None
 		if action == "green": return self.RecordTimerQuestion(True)
 		if action == "yellow": return self.enterDateTime()
 		if action == "blue": return self.openEPGSearch()
@@ -1248,15 +1255,15 @@ try:
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
 				if event is not None:
-					return spinnerWasEnabled = None
-	try:
-		spinnerWasEnabled = bool(config.usage.show_spinner.value)
-		if setSpinnerOnOff is not None and spinnerWasEnabled:
-			setSpinnerOnOff(0)
-	except Exception:
-		spinnerWasEnabled = None
-	self._warderProgramInfoSpinnerWasEnabled = spinnerWasEnabled
-	self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
+					spinnerWasEnabled = None
+					try:
+						spinnerWasEnabled = bool(config.usage.show_spinner.value)
+						if setSpinnerOnOff is not None and spinnerWasEnabled:
+							setSpinnerOnOff(0)
+					except Exception:
+						spinnerWasEnabled = None
+					self._warderProgramInfoSpinnerWasEnabled = spinnerWasEnabled
+					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
 			except Exception as e:
 				Writelog("WarderProgramInfo open: %s" % e)
 			return None
