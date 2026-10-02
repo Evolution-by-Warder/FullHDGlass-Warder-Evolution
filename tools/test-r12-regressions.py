@@ -443,7 +443,7 @@ assert 'zPosition="-2"' in rds
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pig24 and 'zPosition="3"' in pig24
 assert 'NumberOfRows="15"' in pig24
-assert ('position="135,387"' in pig24 or 'position="75,387"' in pig24) and 'position="15,423" size="1845,495"' in pig24
+assert 'name="timeline_text" position="15,387" size="1815,36"' in pig24 and 'position="15,423" size="1845,495"' in pig24
 assert 'type="EventTime">StartTime' in pig24 and 'type="EventTime">EndTime' in pig24
 
 # TEST26: PIG guide header is clean; EPG grid reserves only a narrow picon rail.
