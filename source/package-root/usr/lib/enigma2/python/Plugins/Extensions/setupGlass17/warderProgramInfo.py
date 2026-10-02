@@ -110,6 +110,7 @@ def lookup(title, context=""):
     genres = [GENRES[x] for x in item.get("genre_ids", []) if x in GENRES]
     result = {
         "provider": "TMDB",
+        "provider_id": str(item.get("id") or ""),
         "media_type": media,
         "year": year,
         "country": ", ".join(countries),
