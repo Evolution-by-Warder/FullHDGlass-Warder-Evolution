@@ -414,7 +414,11 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
     assert 'name="lab1"' in block, screen
     for key in ("red", "green", "yellow", "blue"):
         if screen == "GraphicalEPGPIG":
-            assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
+            if key == "red":
+                # Warder owns RED visually; external plugins must not overwrite PROGRAM INFO.
+                assert '<eLabel text="PROGRAM INFO"' in block, (screen, key)
+            else:
+                assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
         else:
             assert ('name="key_%s"' % key) in block, (screen, key)
 pigepg = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
