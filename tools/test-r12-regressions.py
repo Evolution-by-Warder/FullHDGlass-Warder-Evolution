@@ -542,8 +542,8 @@ assert "self.timer_conn = None" in COND
 # Warder-owned labels follow active OSD language and must never collide with legacy CSFD gettext/state.
 uihelper = PLUGIN[PLUGIN.index('def _warderUiText(text):'):PLUGIN.index('class WarderProgramInfo', PLUGIN.index('def _warderUiText(text):'))]
 assert 'lang = config.osd.language.value.split("_")[0].lower()' in uihelper
-assert '"sk": {"PROGRAM INFO": "INFO O PROGRAME"' in uihelper
-assert '"cs": {"PROGRAM INFO": "INFO O PROGRAMU"' in uihelper
+assert '"sk": {"PROGRAM INFO": "Info o programe"' in uihelper
+assert '"cs": {"PROGRAM INFO": "Info o programu"' in uihelper
 assert 'if text in warder.get(lang, {}):' in uihelper
 assert 'return warder[lang][text]' in uihelper
 assert 'if text == "PROGRAM INFO":' not in uihelper
@@ -569,7 +569,7 @@ assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'name="stationPicon" position="50,350"' in program_info
 assert 'name="channel" position="160,354"' in program_info
 assert 'name="description" position="535,440" size="1170,320"' in program_info
-assert 'name="stationLabel"' not in program_info
+assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
 assert 'name="service"' not in program_info
 for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
     assert ('source="%s" render="Label"' % key) in program_info, key
@@ -623,3 +623,13 @@ red_handler = PLUGIN.split('def warderEPGSelectionRedButtonPressed(self):', 1)[1
 assert 'WarderProgramInfo, event, service' in red_handler
 assert 'self.infoKeyPressed()' not in red_handler
 assert 'return None' in red_handler
+
+# TEST51 receiver screenshot correction: one title style, artwork field, station block below divider.
+assert '"PROGRAM INFO": "Info o programe"' in PLUGIN
+assert 'name="programArtwork" position="38,85" size="479,260"' in program_info
+assert 'name="stationPicon" position="50,445" size="92,55"' in program_info
+assert 'name="stationLabel" position="50,515" size="190,38"' in program_info
+assert 'name="channel" position="245,515" size="215,38"' in program_info
+assert 'name="durationLabel" position="50,565"' in program_info
+assert 'name="broadcastLabel" position="50,615"' in program_info
+assert 'CACHE_SCHEMA = "v3"' in PROVIDER

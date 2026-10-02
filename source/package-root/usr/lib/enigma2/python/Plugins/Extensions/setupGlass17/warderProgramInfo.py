@@ -15,7 +15,7 @@ except ImportError:
 
 TMDB_KEY = "3c3efcf47c3577558812bb9d64019d65"
 CACHE_DIR = "/tmp/fullhdglass17-warder-programinfo"
-CACHE_SCHEMA = "v2"
+CACHE_SCHEMA = "v3"
 GENRES = {
     12:"Adventure",14:"Fantasy",16:"Animation",18:"Drama",27:"Horror",28:"Action",35:"Comedy",
     36:"History",37:"Western",53:"Thriller",80:"Crime",99:"Documentary",878:"Science Fiction",

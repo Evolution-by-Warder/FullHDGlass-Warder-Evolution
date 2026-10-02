@@ -158,8 +158,8 @@ def _warderUiText(text):
 	except Exception:
 		lang = "en"
 	warder = {
-		"sk": {"PROGRAM INFO": "INFO O PROGRAME", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Genre:": "Žáner:", "Year:": "Rok:", "Country:": "Krajina:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:", "Rating:": "Hodnotenie:"},
-		"cs": {"PROGRAM INFO": "INFO O PROGRAMU", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Genre:": "Žánr:", "Year:": "Rok:", "Country:": "Země:", "Duration:": "Délka:", "Broadcast:": "Vysílání:", "Rating:": "Hodnocení:"}
+		"sk": {"PROGRAM INFO": "Info o programe", "Station name:": "Názov stanice:", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Genre:": "Žáner:", "Year:": "Rok:", "Country:": "Krajina:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:", "Rating:": "Hodnotenie:"},
+		"cs": {"PROGRAM INFO": "Info o programu", "Station name:": "Název stanice:", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Genre:": "Žánr:", "Year:": "Rok:", "Country:": "Země:", "Duration:": "Délka:", "Broadcast:": "Vysílání:", "Rating:": "Hodnocení:"}
 	}
 	if text in warder.get(lang, {}):
 		return warder[lang][text]
@@ -181,18 +181,16 @@ class WarderProgramInfo(Screen):
 		<eLabel position="25,72" size="505,286" backgroundColor="transpBlack" />
 		<widget name="programArtwork" position="38,85" size="479,260" zPosition="2" alphatest="blend" />
 		<widget name="title" position="560,80" size="1095,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
-		<widget name="stationPicon" position="50,350" size="92,55" zPosition="3" alphatest="blend" />
-		<widget name="channel" position="160,354" size="355,48" font="Prive4;31" foregroundColor="#ffffff" transparent="1" />
+		<widget name="stationPicon" position="50,445" size="92,55" zPosition="3" alphatest="blend" />
+		<widget name="stationLabel" position="50,515" size="190,38" font="Prive3;27" foregroundColor="#3388dd" transparent="1" />
+		<widget name="channel" position="245,515" size="215,38" font="Prive4;27" foregroundColor="#dddddd" transparent="1" />
 		<widget name="when" position="560,170" size="1095,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="short" position="560,235" size="1095,105" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,420" size="1720,2" backgroundColor="#707070" />
-		<widget name="genreMeta" position="50,445" size="410,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
-		<widget name="yearCountryMeta" position="50,485" size="410,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
-		<widget name="ratingMeta" position="50,525" size="410,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />\n\t\t<widget name="runtimeMeta" position="50,565" size="410,30" font="Prive3;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="durationLabel" position="50,610" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="durationMeta" position="225,610" size="235,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<widget name="broadcastLabel" position="50,660" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="broadcast" position="225,660" size="235,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
+		<widget name="durationLabel" position="50,565" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="durationMeta" position="225,565" size="235,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<widget name="broadcastLabel" position="50,615" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="broadcast" position="225,615" size="235,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="500,440" size="2,320" backgroundColor="#707070" />
 		<widget name="description" position="535,440" size="1170,320" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
@@ -208,13 +206,14 @@ class WarderProgramInfo(Screen):
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "durationLabel", "broadcastLabel", "genreMeta", "yearCountryMeta", "ratingMeta", "runtimeMeta"):
+		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
 		self["programArtwork"] = Pixmap()
 		self["stationPicon"] = Pixmap()
 		self._artworkPath = ""
+		self["stationLabel"].setText(_warderUiText("Station name:"))
 		self["durationLabel"].setText(_warderUiText("Duration:"))
 		self["broadcastLabel"].setText(_warderUiText("Broadcast:"))
 		self["keyRed"].setText(_warderUiText("Close"))
@@ -245,16 +244,6 @@ class WarderProgramInfo(Screen):
 				context = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""]))
 				meta = warderProgramLookup(event.getEventName() or "", context)
 				self._artworkPath = meta.get("artwork_path") or ""
-				if meta.get("genre"):
-					self["genreMeta"].setText("%s %s" % (_warderUiText("Genre:"), meta["genre"]))
-				parts = []
-				if meta.get("year"): parts.append("%s %s" % (_warderUiText("Year:"), meta["year"]))
-				if meta.get("country"): parts.append("%s %s" % (_warderUiText("Country:"), meta["country"]))
-				self["yearCountryMeta"].setText("   ".join(parts))
-				if meta.get("rating"):
-					self["ratingMeta"].setText("%s %s (%s)" % (_warderUiText("Rating:"), meta["rating"], meta.get("provider","")))
-				if meta.get("runtime"):
-					self["runtimeMeta"].setText("%s %s min" % (_warderUiText("Runtime:"), meta["runtime"]))
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata: %s" % e)
 		serviceName = self._serviceName(service, self._serviceRef)
