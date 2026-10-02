@@ -148,40 +148,63 @@ def Writelog(txt):
 	except IOError: pass
 ##########################################################################################################################
 class WarderProgramInfo(Screen):
-	"""FullHDGlass-owned programme detail. Uses selected EPG data directly; enrichment stays optional."""
+	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
-	<screen name="WarderProgramInfo" position="center,150" size="1650,840" title="PROGRAM INFO" backgroundColor="transpBlack">
-		<widget name="title" position="60,30" size="1530,55" font="Prive4;42" foregroundColor="#e5b243" transparent="1" />
-		<widget name="channel" position="60,100" size="720,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
-		<widget name="when" position="795,100" size="795,42" font="Prive3;30" halign="right" foregroundColor="#e5b243" transparent="1" />
-		<eLabel position="60,160" size="1530,2" backgroundColor="#707070" />
-		<widget name="short" position="60,190" size="1530,75" font="Prive3;30" foregroundColor="#ffffff" transparent="1" />
-		<widget name="description" position="60,285" size="1530,405" font="Prive4;31" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel text="Zavrieť" position="60,755" size="390,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+	<screen name="WarderProgramInfo" position="center,90" size="1740,900" title="PROGRAM INFO" backgroundColor="transpBlack">
+		<eLabel position="30,20" size="1680,2" backgroundColor="#707070" />
+		<widget source="session.VideoPicture" render="Pig" position="45,55" size="510,287" zPosition="3" backgroundColor="black" />
+		<widget name="title" position="600,55" size="1065,58" font="Prive4;44" foregroundColor="#e5b243" transparent="1" />
+		<widget name="channel" position="600,125" size="675,42" font="Prive3;31" foregroundColor="#ffffff" transparent="1" />
+		<widget name="when" position="600,178" size="1065,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
+		<widget name="duration" position="600,230" size="510,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="short" position="600,285" size="1065,70" font="Prive3;29" foregroundColor="#ffffff" transparent="1" />
+		<eLabel position="45,375" size="1650,2" backgroundColor="#707070" />
+		<eLabel text="PROGRAM" position="45,405" size="420,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
+		<widget name="eventname" position="45,455" size="465,48" font="Prive4;32" foregroundColor="#ffffff" transparent="1" />
+		<eLabel text="STANICA" position="45,525" size="420,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
+		<widget name="service" position="45,575" size="465,48" font="Prive4;31" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel text="ČAS" position="45,645" size="420,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
+		<widget name="timeinfo" position="45,695" size="465,48" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel position="540,405" size="2,345" backgroundColor="#707070" />
+		<eLabel text="POPIS" position="585,405" size="1110,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
+		<widget name="description" position="585,455" size="1110,295" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel text="Zavrieť" position="45,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+		<eLabel text="Časovač" position="465,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+		<eLabel text="EPG" position="885,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+		<eLabel text="Hľadať" position="1305,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		self["title"] = Label("")
-		self["channel"] = Label("")
-		self["when"] = Label("")
-		self["short"] = Label("")
-		self["description"] = Label("")
+		for name in ("title", "channel", "when", "duration", "short", "eventname", "service", "timeinfo", "description"):
+			self[name] = Label("")
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close}, -1)
+		event_name = ""
+		service_name = ""
 		if event is not None:
-			try: self["title"].setText(event.getEventName() or "")
+			try:
+				event_name = event.getEventName() or ""
+				self["title"].setText(event_name)
+				self["eventname"].setText(event_name)
 			except Exception: pass
 			try:
 				begin = int(event.getBeginTime())
 				duration = int(event.getDuration())
-				self["when"].setText(time1.strftime("%d.%m.%Y  %H:%M", time1.localtime(begin)) + " - " + time1.strftime("%H:%M", time1.localtime(begin + duration)) + "  (%d min)" % (duration // 60))
+				start = time1.strftime("%d.%m.%Y  %H:%M", time1.localtime(begin))
+				end = time1.strftime("%H:%M", time1.localtime(begin + duration))
+				self["when"].setText(start + "  -  " + end)
+				self["duration"].setText("%d min" % (duration // 60))
+				self["timeinfo"].setText(time1.strftime("%H:%M", time1.localtime(begin)) + " - " + end)
 			except Exception: pass
 			try: self["short"].setText(event.getShortDescription() or "")
 			except Exception: pass
 			try: self["description"].setText(event.getExtendedDescription() or event.getShortDescription() or "")
 			except Exception: pass
 		if service is not None:
-			try: self["channel"].setText(ServiceReference(service).getServiceName() or "")
+			try:
+				service_name = ServiceReference(service).getServiceName() or ""
+				self["channel"].setText(service_name)
+				self["service"].setText(service_name)
 			except Exception: pass
 
 ##########################################################################################################################
