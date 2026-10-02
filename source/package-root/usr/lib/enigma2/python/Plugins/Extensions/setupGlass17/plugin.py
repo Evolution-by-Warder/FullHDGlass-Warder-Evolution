@@ -178,7 +178,7 @@ class WarderProgramInfo(Screen):
 		Screen.__init__(self, session)
 		for name in ("title", "channel", "when", "duration", "short", "eventname", "service", "timeinfo", "description"):
 			self[name] = Label("")
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close}, -1)
+		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close, "green": lambda: self.close("green"), "yellow": lambda: self.close("yellow"), "blue": lambda: self.close("blue")}, -1)
 		event_name = ""
 		service_name = ""
 		if event is not None:
@@ -202,7 +202,8 @@ class WarderProgramInfo(Screen):
 			except Exception: pass
 		if service is not None:
 			try:
-				service_name = ServiceReference(service).getServiceName() or ""
+				service_ref = service if isinstance(service, eServiceReference) else eServiceReference(str(service))
+				service_name = ServiceReference(service_ref).getServiceName() or ""
 				self["channel"].setText(service_name)
 				self["service"].setText(service_name)
 			except Exception: pass
@@ -1075,6 +1076,15 @@ try:
 	WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys
 
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
+
+def warderProgramInfoClosed(self, action=None):
+	if action == "green":
+		return self.RecordTimerQuestion(True)
+	if action == "yellow":
+		return self.enterDateTime()
+	if action == "blue":
+		return self.openEPGSearch()
+WarderEPGSelection.warderProgramInfoClosed = warderProgramInfoClosed
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):
 			try:
@@ -1082,7 +1092,7 @@ try:
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
 				if event is not None:
-					return self.session.open(WarderProgramInfo, event, service)
+					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
 			except Exception:
 				pass
 			return self.infoKeyPressed()
