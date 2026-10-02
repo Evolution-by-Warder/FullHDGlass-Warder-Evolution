@@ -238,3 +238,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST66 CI #207: static preflight stopped on a regression-file syntax typo: the appended TEST66 guard contained literal backslash-n text. Runtime/package sources were not implicated. Corrected only the regression guard formatting and retriggered TEST66; receiver verification remains pending.
 
 - TEST66 CI #208: complete static preflight and r1-r12 regression gate PASS. Build then correctly rejected a control/runtime version mismatch (control 1.0.5-test66-1, runtime 1.0.5-test66). Synced the runtime version marker to 1.0.5-test66-1 and retriggered the same TEST66 candidate; no runtime/visual behavior changed. Receiver verification pending.
+
+- TEST66 CI #209: static preflight and r1-r12 gate PASS. Build script confirms runtime version must be the visible TEST identity and derives the numeric package revision itself (`EXPECTED_PKGVER=${RUNTIMEVER}-1`). Reverted the mistaken runtime marker from 1.0.5-test66-1 to 1.0.5-test66 and retriggered. No runtime/visual behavior changed; receiver verification pending.
