@@ -268,3 +268,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST74 CI retrigger: initial Revision 215 commit did not start an Actions run. Bumped only TEST-BUILD-REQUEST to Revision 216; no runtime/package version/GUI behavior changed.
 
 - TEST74 complete-tree recovery: rebuilt the candidate from the verified complete TEST73 source tree and overlaid only TEST74 package identity, build request, and journal. This restores `.github/workflows` and all project content without changing runtime GUI behavior. No force push/rebase used.
+
+- Receiver physical PASS: with TEST73 installed, the updater prompt offering TEST74 renders the Yes/No choices at the intended normal FullHD size. User screenshot confirmed `Áno`/`Nie` are now correct. This validates the restored pre-TEST58 `font="Regular;34"` behavior for the effective MessageBox template. TEST74 itself was not required for this validation; the dialog was rendered by installed TEST73. Keep this MessageBox font configuration protected.
