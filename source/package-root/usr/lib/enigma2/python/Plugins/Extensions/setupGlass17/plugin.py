@@ -179,24 +179,22 @@ class WarderProgramInfo(Screen):
 		<eLabel position="20,20" size="1730,2" backgroundColor="#38c7e8" zPosition="1" />
 		<widget name="now" position="1240,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,72" size="505,286" backgroundColor="transpBlack" />
-		<widget source="posterTitle" render="g17Poster2" position="38,85" size="479,260" zPosition="2" transparent="1" />
+		<widget name="programArtwork" position="38,85" size="479,260" zPosition="2" alphatest="blend" />
 		<widget name="title" position="560,80" size="1095,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
-		<widget name="stationPicon" position="560,154" size="92,55" zPosition="3" alphatest="blend" />
-		<widget name="channel" position="675,157" size="980,48" font="Prive4;34" foregroundColor="#ffffff" transparent="1" />
-		<widget name="when" position="675,220" size="980,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="short" position="560,300" size="1095,58" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,392" size="1720,2" backgroundColor="#707070" />
-		<widget name="stationLabel" position="50,425" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="service" position="285,425" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<widget name="genreMeta" position="50,470" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
-		<widget name="yearCountryMeta" position="50,510" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
-		<widget name="ratingMeta" position="50,550" size="535,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />\n\t\t<widget name="runtimeMeta" position="50,585" size="535,30" font="Prive3;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="durationLabel" position="50,600" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="durationMeta" position="285,600" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<widget name="broadcastLabel" position="50,650" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="broadcast" position="285,650" size="300,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="625,415" size="2,345" backgroundColor="#707070" />
-		<widget name="description" position="665,425" size="1040,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
+		<widget name="stationPicon" position="50,350" size="92,55" zPosition="3" alphatest="blend" />
+		<widget name="channel" position="160,354" size="355,48" font="Prive4;31" foregroundColor="#ffffff" transparent="1" />
+		<widget name="when" position="560,170" size="1095,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="short" position="560,235" size="1095,105" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,420" size="1720,2" backgroundColor="#707070" />
+		<widget name="genreMeta" position="50,445" size="410,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
+		<widget name="yearCountryMeta" position="50,485" size="410,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />
+		<widget name="ratingMeta" position="50,525" size="410,34" font="Prive3;25" foregroundColor="#dddddd" transparent="1" />\n\t\t<widget name="runtimeMeta" position="50,565" size="410,30" font="Prive3;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="durationLabel" position="50,610" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="durationMeta" position="225,610" size="235,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<widget name="broadcastLabel" position="50,660" size="170,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="broadcast" position="225,660" size="235,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="500,440" size="2,320" backgroundColor="#707070" />
+		<widget name="description" position="535,440" size="1170,320" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
 		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
 		<widget source="keyRed" render="Label" position="25,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
@@ -210,13 +208,13 @@ class WarderProgramInfo(Screen):
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel", "genreMeta", "yearCountryMeta", "ratingMeta", "runtimeMeta"):
+		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "durationLabel", "broadcastLabel", "genreMeta", "yearCountryMeta", "ratingMeta", "runtimeMeta"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
-		self["posterTitle"] = StaticText("")
+		self["programArtwork"] = Pixmap()
 		self["stationPicon"] = Pixmap()
-		self["stationLabel"].setText(_warderUiText("Station:"))
+		self._artworkPath = ""
 		self["durationLabel"].setText(_warderUiText("Duration:"))
 		self["broadcastLabel"].setText(_warderUiText("Broadcast:"))
 		self["keyRed"].setText(_warderUiText("Close"))
@@ -230,7 +228,6 @@ class WarderProgramInfo(Screen):
 			try:
 				eventName = event.getEventName() or ""
 				self["title"].setText(eventName)
-				self["posterTitle"].setText(eventName)
 			except Exception: pass
 			try:
 				begin = int(event.getBeginTime()); duration = int(event.getDuration())
@@ -247,6 +244,7 @@ class WarderProgramInfo(Screen):
 			if event is not None and warderProgramLookup is not None:
 				context = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""]))
 				meta = warderProgramLookup(event.getEventName() or "", context)
+				self._artworkPath = meta.get("artwork_path") or ""
 				if meta.get("genre"):
 					self["genreMeta"].setText("%s %s" % (_warderUiText("Genre:"), meta["genre"]))
 				parts = []
@@ -260,8 +258,24 @@ class WarderProgramInfo(Screen):
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata: %s" % e)
 		serviceName = self._serviceName(service, self._serviceRef)
-		self["channel"].setText(serviceName); self["service"].setText(serviceName)
+		self["channel"].setText(serviceName)
 		self.onLayoutFinish.append(self._loadServicePicon)
+		self.onLayoutFinish.append(self._loadProgramArtwork)
+
+	def _loadProgramArtwork(self):
+		try:
+			if self._artworkPath and os.path.isfile(self._artworkPath):
+				pix = LoadPixmap(path=self._artworkPath)
+				if pix is not None:
+					self["programArtwork"].instance.setPixmap(pix)
+					self["programArtwork"].show()
+					return
+		except Exception as e:
+			Writelog("WarderProgramInfo artwork: %s" % e)
+		try:
+			self["programArtwork"].hide()
+		except Exception:
+			pass
 
 	def _normaliseServiceRef(self, service):
 		if service is None: return None

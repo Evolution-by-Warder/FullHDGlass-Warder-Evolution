@@ -60,12 +60,34 @@ def _fetch(url):
         raw = raw.decode("utf-8", "ignore")
     return json.loads(raw)
 
+def _artworkPath(data):
+    provider_id = str(data.get("provider_id") or "")
+    remote = data.get("backdrop_path") or data.get("poster_path") or ""
+    if not provider_id or not remote:
+        return ""
+    try:
+        if not os.path.isdir(CACHE_DIR):
+            os.makedirs(CACHE_DIR)
+        dest = os.path.join(CACHE_DIR, "tmdb_%s.jpg" % provider_id)
+        if os.path.isfile(dest) and os.path.getsize(dest) > 1000:
+            return dest
+        raw = urlopen("https://image.tmdb.org/t/p/w780%s" % remote, timeout=4).read()
+        if raw and len(raw) > 1000:
+            with open(dest, "wb") as f:
+                f.write(raw)
+            return dest
+    except Exception:
+        pass
+    return ""
+
 def lookup(title, context=""):
     """Return verified external metadata or {}. Never return a fuzzy/first-result guess."""
     if not title:
         return {}
     cached = _readCache(title)
     if cached is not None:
+        if cached and not cached.get("artwork_path"):
+            cached["artwork_path"] = _artworkPath(cached)
         return cached
     wanted = _norm(title)
     matches = []
@@ -135,5 +157,6 @@ def lookup(title, context=""):
         "poster_path": detail.get("poster_path") or item.get("poster_path") or "",
         "backdrop_path": detail.get("backdrop_path") or item.get("backdrop_path") or ""
     }
+    result["artwork_path"] = _artworkPath(result)
     _writeCache(title, result)
     return result

@@ -122,3 +122,6 @@ After CI publishes the next TEST package, verify on GigaBlue Quad 4K Pro:
 
 ## Next action
 Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwork lookup with artwork from the same verified provider identity/cache; then use retained IMDb ID for cross-provider enrichment and add ČSFD only with reliable matching. After static regression/CI passes, publish one consolidated receiver-test package rather than many tiny tests. Approved sources remain ČSFD, IMDb and TMDB. Do not redesign GraphicalEPGPIG and do not reintroduce live PIG.
+
+- TEST46 CI publication verified: `1.0.5-test46`, SHA-256 `620b0ccc716063c817a6ecf6532dd92fcce0cca64772286012c385514fc39252`; receiver screenshot showed the programme-artwork area still empty and redundant station identity beside the title/lower metadata layout too wide.
+- TEST47 batch implements the maintainer screenshot correction: PROGRAM INFO artwork now comes only from the same verified TMDB provider identity/cache (backdrop preferred, poster fallback); station picon + station name moved directly below artwork; duplicate lower Station/service row removed; left metadata column narrowed and description expanded to x=535 width=1170. GraphicalEPGPIG remains untouched. Package/runtime `1.0.5-test47`, CI revision 149. Receiver PASS pending physical test.

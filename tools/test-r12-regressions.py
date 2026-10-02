@@ -617,3 +617,18 @@ assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN
 for token in ('name="genreMeta"', 'name="yearCountryMeta"', 'name="ratingMeta"', 'name="runtimeMeta"'):
     assert token in program_info, token
 assert 'self["runtimeMeta"].setText("%s %s min"' in program_info
+
+# TEST47: verified artwork and approved PROGRAM INFO geometry.
+assert 'def _artworkPath(data):' in META
+assert 'provider_id = str(data.get("provider_id") or "")' in META
+assert 'data.get("backdrop_path") or data.get("poster_path")' in META
+assert 'result["artwork_path"] = _artworkPath(result)' in META
+assert 'name="programArtwork"' in program_info
+assert 'render="g17Poster2"' not in program_info
+assert 'self._artworkPath = meta.get("artwork_path") or ""' in program_info
+assert 'self["programArtwork"].instance.setPixmap(pix)' in program_info
+assert 'name="stationPicon" position="50,350"' in program_info
+assert 'name="channel" position="160,354"' in program_info
+assert 'name="description" position="535,440" size="1170,320"' in program_info
+assert 'name="stationLabel"' not in program_info
+assert 'name="service"' not in program_info
