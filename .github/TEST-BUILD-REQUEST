@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test84
-Revision: 230
+Revision: 231
 Purpose: Accept valid downloaded exact-match JPEG artwork. Keep TEST83 colon parsing, strict exact artist and track matching, native RdsInfoDisplay isolation, and DAB/passive fallback behavior unchanged.
