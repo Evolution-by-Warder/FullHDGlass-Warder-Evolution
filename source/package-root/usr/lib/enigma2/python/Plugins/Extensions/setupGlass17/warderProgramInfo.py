@@ -60,7 +60,7 @@ def _fetch(url):
         raw = raw.decode("utf-8", "ignore")
     return json.loads(raw)
 
-def lookup(title):
+def lookup(title, context=""):
     """Return verified external metadata or {}. Never return a fuzzy/first-result guess."""
     if not title:
         return {}
@@ -81,7 +81,7 @@ def lookup(title):
     if not matches:
         _writeCache(title, {})
         return {}
-    # Ambiguous exact-name movie/TV collisions are intentionally rejected unless one result is unique.
+    # Exact-name collisions may only be resolved by EPG description context; fuzzy titles stay forbidden.
     unique = {}
     for media, item in matches:
         unique[(media, item.get("id"))] = (media, item)
