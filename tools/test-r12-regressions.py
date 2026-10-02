@@ -550,3 +550,12 @@ for token in (
 assert 'self["preview"] = Pixmap()' not in PLUGIN
 assert '<eLabel text="PROGRAM INFO"' not in pigepg
 assert 'source="key_red" render="Label"' in pigepg
+
+
+# TEST39: PROGRAM INFO must remain the Warder feature name (legacy gettext must not rename it to CSFD),
+# and Program Info bottom actions are StaticText Sources so OpenATV renders them reliably.
+assert 'if text == "PROGRAM INFO":' in PLUGIN
+assert 'return "PROGRAM INFO"' in PLUGIN[PLUGIN.index('def _warderUiText(text):'):PLUGIN.index('class WarderProgramInfo', PLUGIN.index('def _warderUiText(text):'))]
+for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
+    assert ('source="%s" render="Label"' % key) in program_info, key
+    assert ('self["%s"] = StaticText("")' % key) in program_info, key

@@ -149,6 +149,8 @@ def Writelog(txt):
 ##########################################################################################################################
 def _warderUiText(text):
 	"""Use FullHDGlass translations first; provide Warder SK/CZ strings for new UI text."""
+	if text == "PROGRAM INFO":
+		return "PROGRAM INFO"
 	try:
 		translated = _(text)
 		if translated and translated != text:
@@ -192,19 +194,21 @@ class WarderProgramInfo(Screen):
 		<widget name="description" position="665,425" size="1040,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
 		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" />
-		<widget name="keyRed" position="25,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+		<widget source="keyRed" render="Label" position="25,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
 		<eLabel position="465,820" size="395,62" backgroundColor="transpBlack3" />
-		<widget name="keyGreen" position="465,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+		<widget source="keyGreen" render="Label" position="465,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
 		<eLabel position="905,820" size="395,62" backgroundColor="transpBlack3" />
-		<widget name="keyYellow" position="905,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+		<widget source="keyYellow" render="Label" position="905,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
 		<eLabel position="1345,820" size="395,62" backgroundColor="transpBlack3" />
-		<widget name="keyBlue" position="1345,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="#3388dd" transparent="1" />
+		<widget source="keyBlue" render="Label" position="1345,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "duration", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel", "keyRed", "keyGreen", "keyYellow", "keyBlue"):
+		for name in ("now", "title", "channel", "when", "duration", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel"):
 			self[name] = Label("")
+		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
+			self[name] = StaticText("")
 		self["posterTitle"] = StaticText("")
 		self["stationPicon"] = Pixmap()
 		self["stationLabel"].setText(_warderUiText("Station:"))
