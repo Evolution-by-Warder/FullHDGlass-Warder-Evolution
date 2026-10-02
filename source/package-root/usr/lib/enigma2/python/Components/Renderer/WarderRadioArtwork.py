@@ -34,7 +34,7 @@ class WarderRadioArtwork(Renderer):
     def postWidgetCreate(self, instance):
         Renderer.postWidgetCreate(self, instance)
         instance.hide()
-        self._timer.start(1200, False)
+        # Fast acquisition on RADIO entry; settle to a light poll once metadata is present.\n        self._timer.start(100, True)
 
     def preWidgetRemove(self, instance):
         try:
