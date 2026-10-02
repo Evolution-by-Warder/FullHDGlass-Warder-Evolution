@@ -986,6 +986,12 @@ try:
 			title = ""
 		return WarderEPGSelection_setTitle(self, title, *args, **kwargs)
 	WarderEPGSelection.setTitle = warderEPGSelectionSetTitle
+	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
+	def warderEPGSelectionRedButtonPressed(self):
+		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
+			return self.infoKeyPressed()
+		return WarderEPGSelection_redButtonPressed(self)
+	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
 except Exception:
 	pass
 
@@ -998,6 +1004,13 @@ def startHdg17(reason, **kwargs):
 				config.epgselection.graph_servicetitle_mode.value = "picon"
 			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_piconwidth"):
 				config.epgselection.graph_piconwidth.value = 60
+			if hasattr(config, "epgselection"):
+				if hasattr(config.epgselection, "graph_green"):
+					config.epgselection.graph_green.value = "timer"
+				if hasattr(config.epgselection, "graph_yellow"):
+					config.epgselection.graph_yellow.value = "gotoprimetime"
+				if hasattr(config.epgselection, "graph_blue"):
+					config.epgselection.graph_blue.value = "epgsearch"
 		except Exception:
 			pass
 		enaOKstart = True                                                                                     

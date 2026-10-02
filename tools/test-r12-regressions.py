@@ -453,3 +453,12 @@ assert 'warderRestartTimer.start(3000, True)' in PLUGIN
 assert 'def warderEPGSelectionSetTitle(self, title, *args, **kwargs):' in PLUGIN
 assert 'getattr(self, "skinName", None) == "GraphicalEPGPIG"' in PLUGIN
 assert 'title = ""' in PLUGIN
+
+# TEST28: FullHDGlass GraphicalEPGPIG color-key row and scoped actions.
+assert 'position="30,930" size="420,42"' in SKIN and 'name="key_red"' in SKIN
+assert 'name="primetime" position="30,930"' not in SKIN
+assert 'def warderEPGSelectionRedButtonPressed(self):' in PLUGIN
+assert 'return self.infoKeyPressed()' in PLUGIN
+assert 'graph_green.value = "timer"' in PLUGIN
+assert 'graph_yellow.value = "gotoprimetime"' in PLUGIN
+assert 'graph_blue.value = "epgsearch"' in PLUGIN
