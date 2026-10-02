@@ -814,3 +814,8 @@ assert "payload.startswith(bytes((255, 216)))" in RADIO_ART
 
 # TEST84: downloaded artwork must validate the real JPEG SOI bytes.
 assert "payload.startswith(bytes((255, 216)))" in RADIO_ART
+
+# TEST85: diagnostic-only radio artwork trace must remain isolated in /tmp.
+assert "/tmp/warder-radio-artwork.log" in RADIO_ART
+assert 'cls._diag("NO_EXACT' in RADIO_ART
+assert 'self._diag("ERROR' in RADIO_ART
