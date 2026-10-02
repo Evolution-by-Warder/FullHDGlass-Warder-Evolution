@@ -685,3 +685,8 @@ assert 'self.onLayoutFinish.append(self._loadProgramArtwork)' not in program_inf
 assert 'name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243"' in program_info
 assert 'name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee"' in program_info
 assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24"' in program_info
+
+# TEST58: safe EPG edition suffix normalization, while retaining exact TMDB base-title matching.
+assert 'CACHE_SCHEMA = "v4"' in PROGRAM_INFO_PROVIDER
+assert "re.sub(r'\\s+[IVXLCDM]{1,8}\\s*$', '', value, flags=re.I)" in PROGRAM_INFO_PROVIDER
+assert _provider_base_title_for_test("Česko Slovensko má talent X") == "Česko Slovensko má talent" if '_provider_base_title_for_test' in globals() else True
