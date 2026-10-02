@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test74
-Revision: 217
-Purpose: validation-only TEST74 build from complete TEST73 tree so installed TEST73 renders the updater Yes/No dialog; no runtime GUI changes.
+Candidate: 1.0.5-test75
+Revision: 218
+Purpose: Radio/DAB modernization stage 1 - Warder header and DAB slideshow-compatible radio display shell; protected EPG/Program Info/TMDB/MessageBox unchanged.

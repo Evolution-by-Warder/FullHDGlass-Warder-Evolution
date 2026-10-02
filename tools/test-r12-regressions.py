@@ -758,3 +758,9 @@ assert 'if self._metadataClosed:' in program_info
 assert 'if getattr(self, "_warderProgramInfoOpen", False):' in PLUGIN
 assert 'self._warderProgramInfoOpen = True' in PLUGIN
 assert 'self._warderProgramInfoOpen = False' in PLUGIN
+
+
+# TEST75 Radio/DAB shell: preserve OpenATV's transparent DAB SLS layer while adding Warder identity.
+rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
+for token in ('FullHDGlass17 · Warder Evolution', 'Format:%A  %d.%m.%Y', 'Format:%H:%M:%S', 'name="RadioText"', 'name="RtpText"', 'backgroundColor="transparent"'):
+    assert token in rds, token

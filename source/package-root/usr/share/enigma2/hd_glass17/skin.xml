@@ -1591,9 +1591,20 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     </widget>
   </screen>
   <screen name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent" flags="wfNoBorder">
+    <!-- Warder Radio/DAB: keep the centre transparent so OpenATV DABSlideDisplay can render native SLS artwork behind us. -->
+    <eLabel position="15,15" size="1890,55" backgroundColor="transpBlack3" zPosition="1" />
+    <widget source="global.CurrentTime" render="Label" position="40,23" size="360,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" zPosition="2">
+      <convert type="ClockToText">Format:%A  %d.%m.%Y</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="420,23" size="220,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" zPosition="2">
+      <convert type="ClockToText">Format:%H:%M:%S</convert>
+    </widget>
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1190,20" size="680,45" font="Prive4;30" halign="right" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
     <widget name="RassLogo" pixmap="hd_glass17/icons/rass_logo.png" position="150,877" size="75,31" />
-    <widget name="RadioText" position="150,930" size="1620,45" font="Prive3;36" noWrap="1" backgroundColor="transpBlack" />
-    <widget name="RtpText" position="150,975" size="1620,45" font="Prive3;36" halign="right" noWrap="1" backgroundColor="transpBlack" />
+    <eLabel position="110,915" size="1700,2" backgroundColor="#707070" zPosition="2" />
+    <eLabel position="110,925" size="1700,115" backgroundColor="transpBlack3" zPosition="1" />
+    <widget name="RadioText" position="130,938" size="1660,48" font="Prive4;34" noWrap="1" foregroundColor="#eeeeee" backgroundColor="transpBlack3" zPosition="3" />
+    <widget name="RtpText" position="130,992" size="1660,38" font="Prive3;28" halign="right" noWrap="1" foregroundColor="#cccccc" backgroundColor="transpBlack3" zPosition="3" />
   </screen>
   <!-- Dish -->
   <screen name="Dish" flags="wfNoBorder" position="1530,150" size="195,240" title="Dish" zPosition="9" backgroundColor="transparent">
