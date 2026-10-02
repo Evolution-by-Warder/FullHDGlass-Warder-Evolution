@@ -194,3 +194,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 regression alignment: CI now reaches all Python/XML/runtime/r1-r12 gates successfully. Updated remaining stale Program Info geometry assertions to the intentional TEST58 footer/description layout (description 490px, divider y=940, button background y=955, label y=963).
 
 - TEST58 async metadata regression guard: replaced stale synchronous warderProgramLookup assertion with guards for the intentional non-blocking worker call and eTimer polling. This preserves the busy/spinner fix instead of forcing the old GUI-blocking implementation.
+
+- TEST58 CI syntax fix: converted accidentally literal \\n sequences in the three async metadata regression assertions into real Python newlines. No production/runtime code changed.
