@@ -216,3 +216,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST60 CI revision 191: Actions #195 stopped at Python compile preflight because the initial spinner-before-open edit malformed the RED handler (invalid `return spinnerWasEnabled = None`). Rebuilt the complete Warder PROGRAM INFO close/RED-handler block with correct indentation and spinner restore lifecycle. No design/provider/geometry change; same TEST60 candidate.
 
 - TEST60 CI retrigger revision 191: bumped TEST-BUILD-REQUEST after the syntax-only RED-handler repair so the corrected candidate is rebuilt and republished by the TEST workflow. Receiver verification remains pending.
+
+- TEST60 CI revision 192: Actions #196 passed the complete static preflight, then correctly rejected packaging because the runtime version file still declared 1.0.5-test59-1 while control declared 1.0.5-test60-1. Synced the runtime version marker to 1.0.5-test60-1 and retriggered the same TEST60 candidate. No runtime behavior or visual geometry changed.
