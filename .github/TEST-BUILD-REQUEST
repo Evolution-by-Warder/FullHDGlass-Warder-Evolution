@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test75
-Revision: 218
-Purpose: Radio/DAB modernization stage 1 - Warder header and DAB slideshow-compatible radio display shell; protected EPG/Program Info/TMDB/MessageBox unchanged.
+Candidate: 1.0.5-test76
+Revision: 219
+Purpose: Radio mode real integration - Warder radio.mvi fallback plus exact current-song album artwork, station picon and dynamic metadata; DAB SLS retained as fallback.

@@ -1591,22 +1591,23 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     </widget>
   </screen>
   <screen name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent" flags="wfNoBorder">
-    <!-- Warder Radio/DAB: keep the centre transparent so OpenATV DABSlideDisplay can render native SLS artwork behind us. -->
-    <eLabel position="15,15" size="1890,55" backgroundColor="transpBlack3" zPosition="1" />
-    <widget source="global.CurrentTime" render="Label" position="40,23" size="360,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" zPosition="2">
-      <convert type="ClockToText">Format:%A  %d.%m.%Y</convert>
-    </widget>
-    <widget source="global.CurrentTime" render="Label" position="420,23" size="220,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" zPosition="2">
-      <convert type="ClockToText">Format:%H:%M:%S</convert>
-    </widget>
-    <eLabel text="FullHDGlass17 · Warder Evolution" position="1190,20" size="680,45" font="Prive4;30" halign="right" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+    <!-- Warder Radio/DAB: exact album cover overlays native SLS only when matched; otherwise SLS/radio.mvi remains visible. -->
+    <eLabel position="15,15" size="1890,70" backgroundColor="transpBlack3" zPosition="1" />
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="390,46" font="Prive4;34" foregroundColor="#e5b243" transparent="1" zPosition="2"><convert type="ClockToText">Format:%A  %d.%m.%Y</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="450,25" size="250,46" font="Prive4;34" foregroundColor="#eeeeee" transparent="1" zPosition="2"><convert type="ClockToText">Format:%H:%M:%S</convert></widget>
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1140,22" size="730,50" font="Prive4;32" halign="right" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+    <widget name="warderAlbumCover" position="650,145" size="620,620" zPosition="5" alphatest="blend" scaleFlags="centerScaled" />
     <widget name="RassLogo" pixmap="hd_glass17/icons/rass_logo.png" position="150,877" size="75,31" />
-    <eLabel position="110,915" size="1700,2" backgroundColor="#707070" zPosition="2" />
-    <eLabel position="110,925" size="1700,115" backgroundColor="transpBlack3" zPosition="1" />
-    <widget name="RadioText" position="130,938" size="1660,48" font="Prive4;34" noWrap="1" foregroundColor="#eeeeee" backgroundColor="transpBlack3" zPosition="3" />
-    <widget name="RtpText" position="130,992" size="1660,38" font="Prive3;28" halign="right" noWrap="1" foregroundColor="#cccccc" backgroundColor="transpBlack3" zPosition="3" />
-  </screen>
-  <!-- Dish -->
+    <eLabel position="110,900" size="1700,2" backgroundColor="#707070" zPosition="2" />
+    <eLabel position="110,912" size="1700,135" backgroundColor="transpBlack3" zPosition="1" />
+    <widget name="warderStationPicon" position="135,930" size="180,90" zPosition="4" alphatest="blend" scaleFlags="centerScaled" />
+    <widget name="warderArtist" position="340,925" size="1000,38" font="Prive4;31" noWrap="1" foregroundColor="#eeeeee" transparent="1" zPosition="4" />
+    <widget name="warderTrack" position="340,965" size="1000,44" font="Prive4;35" noWrap="1" foregroundColor="#e5b243" transparent="1" zPosition="4" />
+    <widget name="warderAlbumMeta" position="340,1010" size="1000,28" font="Prive3;24" noWrap="1" foregroundColor="#aaaaaa" transparent="1" zPosition="4" />
+    <widget name="warderStation" position="1360,928" size="430,34" font="Prive4;27" halign="right" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="4" />
+    <widget name="RadioText" position="340,950" size="1000,50" font="Prive4;34" noWrap="1" foregroundColor="#eeeeee" backgroundColor="transpBlack3" zPosition="3" />
+    <widget name="RtpText" position="1360,978" size="430,48" font="Prive3;27" halign="right" noWrap="1" foregroundColor="#3388dd" backgroundColor="transpBlack3" zPosition="3" />
+  </screen>  <!-- Dish -->
   <screen name="Dish" flags="wfNoBorder" position="1530,150" size="195,240" title="Dish" zPosition="9" backgroundColor="transparent">
     <widget name="Dishpixmap" pixmap="hd_glass17/icons/dish.png" position="0,0" size="195,240" alphatest="off" />
     <widget name="turnTime" position="8,0" size="180,30" zPosition="1" font="Prive3;27" halign="right" transparent="1" />

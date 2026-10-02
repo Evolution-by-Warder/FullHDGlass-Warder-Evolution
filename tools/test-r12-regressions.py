@@ -764,3 +764,12 @@ assert 'self._warderProgramInfoOpen = False' in PLUGIN
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in ('FullHDGlass17 · Warder Evolution', 'Format:%A  %d.%m.%Y', 'Format:%H:%M:%S', 'name="RadioText"', 'name="RtpText"', 'backgroundColor="transparent"'):
     assert token in rds, token
+
+
+# TEST76 Radio mode: skin owns a generated radio.mvi and exact song-cover UI.
+for token in ('name="warderAlbumCover"', 'name="warderStationPicon"', 'name="warderArtist"', 'name="warderTrack"', 'name="warderStation"'):
+    assert token in SKIN, token
+for token in ('_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged'):
+    assert token in PLUGIN, token
+assert 'generate-warder-radio-background.py' in BUILD_TEST
+assert 'radio.mvi' in BUILD_TEST

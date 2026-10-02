@@ -47,6 +47,15 @@ trap 'rm -rf "$WORK"' EXIT HUP INT TERM
 mkdir -p "$WORK/CONTROL" "$OUTDIR"
 cp -a "$PAYLOAD"/. "$WORK"/
 
+# Warder Radio/DAB background generated from the approved visual direction.
+python3 "$ROOT/tools/generate-warder-radio-background.py" \
+    "$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.png"
+command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
+ffmpeg -y -loglevel error \
+    -i "$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.png" \
+    -frames:v 1 -c:v mpeg2video -q:v 5 -f mpeg2video \
+    "$WORK/usr/share/enigma2/hd_glass17/radio.mvi"
+
 # r12 parity: ship the Enhanced Weather SK/CZ database alongside the Classic
 # Weather database. It is deterministically derived from city_Code-17.txt so
 # both databases stay synchronized without maintaining duplicate source data.
