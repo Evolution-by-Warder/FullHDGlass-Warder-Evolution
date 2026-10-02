@@ -469,7 +469,7 @@ assert 'title = ""' in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
 assert 'name="primetime" position="30,930"' not in SKIN
 assert 'def warderEPGSelectionRedButtonPressed(self):' in PLUGIN
-assert 'self.session.open(WarderProgramInfo, event, service)' in PLUGIN
+assert 'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)' in PLUGIN
 assert 'graph_green.value = "timer"' in PLUGIN
 assert 'graph_yellow.value = "gotodatetime"' in PLUGIN
 assert 'graph_blue.value = "epgsearch"' in PLUGIN
@@ -489,7 +489,7 @@ for token in (
     '("key_yellow", _("Goto Date/Time"))',
     '("key_blue", _("EPG Search"))',
     'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys',
-    'self.session.open(WarderProgramInfo, event, service)',
+    'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)',
     'return self.RecordTimerQuestion(True)',
     'return self.enterDateTime()',
     'return self.openEPGSearch()',
@@ -499,7 +499,12 @@ for token in (
 
 # TEST31: red key is direct programme information, never an external search/chooser.
 assert 'class WarderProgramInfo(Screen):' in PLUGIN
-assert 'self.session.open(WarderProgramInfo, event, service)' in PLUGIN
+assert 'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)' in PLUGIN
+assert 'WarderEPGSelection.warderProgramInfoClosed = warderProgramInfoClosed' in PLUGIN
+assert 'getattr(service, "ref", None)' in PLUGIN
+program_info = PLUGIN.split('class WarderProgramInfo(Screen):', 1)[1].split('def readHWtype', 1)[0]
+assert 'render="Pig"' not in program_info
+assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
 
