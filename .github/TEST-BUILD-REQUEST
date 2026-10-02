@@ -1,5 +1,5 @@
 Warder TEST build request
-Candidate: 1.0.5-test28
-Revision: 103
-Purpose: TEST28 FullHDGlass GraphicalEPGPIG colored actions: red event detail, green timer, yellow prime time, blue EPG search.
-TEST26 final picon-only/updater validation
+Candidate: 1.0.5-test29
+Revision: 104
+Purpose: TEST29 fix GraphicalEPGPIG color-key rendering: render OpenATV StaticText key sources and label red EPG INFO.
+Preserve TEST24/26/27 accepted EPG behavior and TEST28 action mappings.

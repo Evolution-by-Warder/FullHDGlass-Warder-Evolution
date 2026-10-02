@@ -986,6 +986,15 @@ try:
 			title = ""
 		return WarderEPGSelection_setTitle(self, title, *args, **kwargs)
 	WarderEPGSelection.setTitle = warderEPGSelectionSetTitle
+	WarderEPGSelection_init = WarderEPGSelection.__init__
+	def warderEPGSelectionInit(self, *args, **kwargs):
+		WarderEPGSelection_init(self, *args, **kwargs)
+		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
+			try:
+				self["key_red"].setText("EPG INFO")
+			except Exception:
+				pass
+	WarderEPGSelection.__init__ = warderEPGSelectionInit
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderEPGSelectionRedButtonPressed(self):
 		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
