@@ -165,13 +165,13 @@ class WarderProgramInfo(Screen):
 		<widget name="short" position="560,320" size="1095,55" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,392" size="1720,2" backgroundColor="#707070" />
 		<eLabel text="Stanica:" position="50,425" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="service" position="285,425" size="360,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<widget name="service" position="285,425" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
 		<eLabel text="Dĺžka:" position="50,485" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="durationMeta" position="285,485" size="360,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
+		<widget name="durationMeta" position="285,485" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
 		<eLabel text="Vysielanie:" position="50,545" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="broadcast" position="285,545" size="360,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="690,415" size="2,345" backgroundColor="#707070" />
-		<widget name="description" position="735,425" size="970,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
+		<widget name="broadcast" position="285,545" size="300,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="625,415" size="2,345" backgroundColor="#707070" />
+		<widget name="description" position="665,425" size="1040,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
 		<eLabel position="25,820" size="395,62" backgroundColor="transpGrey" />
 		<eLabel text="Zavrieť" position="25,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
