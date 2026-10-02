@@ -1,0 +1,1344 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: fhd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-15 17:00+0100\n"
+"PO-Revision-Date: 2022-08-08 19:18+0300\n"
+"Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
+"Language-Team: Vytenis Pulokas <vyteniui@gmail.com>  <<shamann@pobox.sk>>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "No tuner data"
+msgstr "Imtuvo duomenų nėra"
+
+msgid " failed"
+msgstr " nepavyko"
+
+msgid "AutoColors"
+msgstr "automatinė"
+
+msgid "White"
+msgstr "balta"
+
+msgid "Green"
+msgstr "žalia"
+
+msgid "Orange"
+msgstr "oranžinė"
+
+msgid "Red"
+msgstr "raudona"
+
+msgid "Purple"
+msgstr "purpurinė"
+
+msgid "Gray"
+msgstr "pilka"
+
+msgid "Blue"
+msgstr "mėlyna"
+
+msgid "Yellow"
+msgstr "geltona"
+
+msgid "Auto"
+msgstr "automatiškai"
+
+msgid "Type"
+msgstr "Tipas"
+
+msgid "from image"
+msgstr "numatytas sistemos"
+
+msgid "G17 (Ch. Name)"
+msgstr "G17 (kanalas)"
+
+msgid "Default"
+msgstr "numatyta"
+
+msgid "only Picon"
+msgstr "tik piktograma"
+
+msgid "only Time"
+msgstr "tik laikas"
+
+msgid "VU+ (Ch. Name)"
+msgstr "Vu+ (kanalas)"
+
+msgid "VU+ (Act. event)"
+msgstr "Vu+ (dabart. įv.)"
+
+msgid "VU+ (Ch. Name + Act. event)"
+msgstr "Vu+ (kanalas+dabart. įv.)"
+
+msgid "G17 (Act. event)"
+msgstr "G17 (dabart. įv.)"
+
+msgid "G17 (Ch. Name + Act. event)"
+msgstr "G17 (kanalas+dabart. įv.)"
+
+msgid "G17 (Top:Ch. Name, Bottom:Act. event)"
+msgstr "G17(virš.: kanalas, apač.: dab.įv.)"
+
+msgid "G17 (Top:Ch. Name, Bottom:Snr and Agc)"
+msgstr "G17(virš.: kanalas, apač.: SNR/AGC)"
+
+msgid "VU+ Ultimo"
+msgstr "Vu+ Ultimo"
+
+msgid "Picon and Time"
+msgstr "piktograma ir laikas"
+
+msgid "Default 2"
+msgstr "numatyta 2"
+
+msgid "VU+ Duo2 Snr,Agc"
+msgstr "Vu+ Duo2 SNR+AGC"
+
+msgid "VU+ Duo2 Snr,Agc,RPM,Temp."
+msgstr "Vu+ Duo2 SNR+AGC+aps.+°C"
+
+msgid "VU+ 4k Snr,Agc"
+msgstr "Vu+ 4K SNR+AGC"
+
+msgid "Duo2 Snr,Agc,RPM,Temp. 2"
+msgstr "Vu+ Duo2 SNR+AGC+aps.+°C2"
+
+msgid "Classical"
+msgstr "klasikinis"
+
+msgid "with ZZPicon"
+msgstr "su didele piktograma"
+
+msgid "with Picon 400x240"
+msgstr "su 400x240 piktograma"
+
+msgid "Glass17"
+msgstr "Glass17"
+
+msgid "Glass17(+next event)"
+msgstr "Glass17 (+kitas įv.)"
+
+msgid "with PIG(+next event)"
+msgstr "su PiG (+kitas įv.)"
+
+msgid "Glass17(+next, date)"
+msgstr "Glass17(+kitas, data)"
+
+msgid "New style"
+msgstr "naujo stiliaus"
+
+msgid "New style with PIG"
+msgstr "naujo stiliaus su PiG"
+
+msgid "PIG(+next event,left)"
+msgstr "PiG (+kitas įv., liko)"
+
+msgid "PIG(+act,next,left)"
+msgstr "PiG (+šis, kitas, liko)"
+
+msgid "The Core 88"
+msgstr "Core 88"
+
+msgid "PIG(+several event)"
+msgstr "PiG (+keli įvykiai)"
+
+msgid "G17(+several event)"
+msgstr "G17(+keli įvykiai)"
+
+msgid "New style(+several event)"
+msgstr "naujo stiliaus (+keli įv.)"
+
+msgid "PIG(+act,several,left)"
+msgstr "PiG (+šis, keletas, liko)"
+
+msgid "with PIG"
+msgstr "su PiG"
+
+msgid "G17 events"
+msgstr "Glass17 įvykiai"
+
+msgid "Big Icons"
+msgstr "Didelės piktogramos"
+
+msgid "Poster"
+msgstr "Plakatas"
+
+msgid "PIG + PIP"
+msgstr "PiG + PiP"
+
+msgid "PIP"
+msgstr "PiP"
+
+msgid "yes"
+msgstr "taip"
+
+msgid "no"
+msgstr "ne"
+
+msgid "Icons"
+msgstr "piktogramos"
+
+msgid "Icons Right"
+msgstr "piktogramos dešinėje"
+
+msgid "List"
+msgstr "sąrašas"
+
+msgid "List and Icon"
+msgstr "sąrašas ir piktograma"
+
+msgid "Icons Bar"
+msgstr "piktogramų juosta"
+
+msgid "simply PIG"
+msgstr "vien tik PiG"
+
+msgid "Sat and Prov"
+msgstr "palydovas ir tiekėjas"
+
+msgid "only Sat"
+msgstr "tik palydovas"
+
+msgid "only Prov"
+msgstr "tik tiekėjas"
+
+msgid "only Weather"
+msgstr "tik orai"
+
+msgid "Sat and Weather"
+msgstr "palydovas ir orai"
+
+msgid "Prov and Weather"
+msgstr "Tiekėjas ir orai"
+
+msgid "Sat, Prov and Weather"
+msgstr "Palydovas, tiekėjas ir orai"
+
+msgid "InfoECM by Duri"
+msgstr "Duri InfoECM"
+
+msgid "None"
+msgstr "joks"
+
+msgid "Weather"
+msgstr "orai"
+
+msgid "Standard"
+msgstr "įprastinis"
+
+msgid "Simple"
+msgstr "Paprastas"
+
+msgid "Ecminfo only"
+msgstr "tik ECMinfo"
+
+msgid "Ecminfo and CAID"
+msgstr "ECMinfo ir CAID"
+
+msgid "CAID and SID"
+msgstr "CAID ir SID"
+
+msgid "SID only"
+msgstr "tik SID"
+
+msgid "CAID, SID, VPID"
+msgstr "CAID, SID, VPID"
+
+msgid "Percentage"
+msgstr "procentai"
+
+msgid "Colored gauge"
+msgstr "spalvotas indikatorius"
+
+msgid "System info"
+msgstr "Sistemos info"
+
+msgid "Event - extended description"
+msgstr "išplėstinis įvykio aprašymas"
+
+msgid "Side infobar"
+msgstr "šoninė infojuosta"
+
+msgid "Event and side infobar"
+msgstr "įv. ir šon. infojuosta"
+
+msgid "Event - now and next"
+msgstr "šis ir sekantis įvykiai"
+
+msgid "Event now/next and side infobar"
+msgstr "dabar/kitas ir šon. infojuosta"
+
+msgid "Black"
+msgstr "juoda"
+
+msgid "with PIG(+ch.name,number)"
+msgstr "su PiG (+kan.pavad. ir Nr.)"
+
+msgid "no time"
+msgstr "neuždaryti"
+
+msgid "with internet check"
+msgstr "tikrinti interneto ryšį"
+
+msgid "with frame"
+msgstr "rėmelyje"
+
+msgid "big"
+msgstr "didelės"
+
+msgid "Autostop"
+msgstr "gale stabdyti"
+
+msgid "Roll back"
+msgstr "grįžti atgal"
+
+msgid "Enhanced Weather"
+msgstr "orai - išplėstinis"
+
+msgid "Satellite"
+msgstr "palydovas"
+
+msgid "Name"
+msgstr "pavadinimas"
+
+msgid "Number"
+msgstr "numeris"
+
+msgid "disabled"
+msgstr "išjungta"
+
+msgid "User defined path"
+msgstr "Vartotojo nurodytas kelias"
+
+msgid "Static"
+msgstr "statinis"
+
+msgid "Dynamic"
+msgstr "dinaminis"
+
+msgid "Animation"
+msgstr "Animacija"
+
+msgid "Transponder data"
+msgstr "transponderio duomenys"
+
+msgid "Real tuner data"
+msgstr "duomenys iš imtuvo"
+
+msgid "All available"
+msgstr "Visi galimi"
+
+msgid "Selected in Netatmo plugin"
+msgstr "Pasirinkta Netatmo įskiepyje"
+
+msgid "IMDb"
+msgstr "IMDb"
+
+msgid "TMDb"
+msgstr "TMDb"
+
+msgid "Transparent"
+msgstr "Skaidrus"
+
+msgid "Full HD GLass17 spinner"
+msgstr "FHD Glass17 suktukas"
+
+msgid "Full HD Glass17 Setup"
+msgstr "FHD Glass17 sąranka"
+
+msgid ""
+"Sorry, \"ftp\" is unavailable yet, check your internet connection or "
+"firewall settings !!!"
+msgstr ""
+"Atleiskite, ftp nepasiekiamas. Tikrinkite tinklo ryšį, arba ugniasienės "
+"nustatymus !!!"
+
+msgid "OLED type"
+msgstr "Vidinis ekranėlis rodys"
+
+msgid "Set OLED off in Standby"
+msgstr "Budėjime OLED išjungtas"
+
+msgid "Listbox font size"
+msgstr "Sąrašo šrifto dydis"
+
+msgid "Mute picture transparency"
+msgstr "Išjungto garso paveikslėlio fonas"
+
+msgid "Set binaries"
+msgstr "Nustatyti dvejetainius"
+
+msgid "Style:"
+msgstr "Stilius:"
+
+msgid "Title color:"
+msgstr "Pavadinimo spalva:"
+
+msgid "Picon default, marker, next ..."
+msgstr "Sistemos piktogramų fono spalva"
+
+msgid "Icons type"
+msgstr "Piktogramos tipas"
+
+msgid "Menu type"
+msgstr "Meniu lango išvaizda"
+
+msgid "Permanent Extra Infobar"
+msgstr "Pastovi papildoma infojuosta"
+
+msgid "Standard Infobar type"
+msgstr "Įprastinės infojuostos tipas"
+
+msgid "Volume type"
+msgstr "Garso paveikslėlio tipas"
+
+msgid "Set Volume and Mute positions"
+msgstr "Nustatyti garso ir nutildymo pozicijas"
+
+msgid "Channel selection type"
+msgstr "Kanalų pasirinkimo lango tipas"
+
+msgid "Movie selection type"
+msgstr "Filmo pasirinkimo būdas"
+
+msgid "EPG selection type"
+msgstr "EPG lango tipas"
+
+msgid "EventView type"
+msgstr "Įvykių peržiūros tipas"
+
+msgid "PIG type"
+msgstr "PiG tipas"
+
+msgid "Extendend description font size"
+msgstr "Išplėstinio aprašymo šrifto dydis"
+
+msgid "color"
+msgstr "spalva"
+
+msgid "Channel selection font size"
+msgstr "Šrifto dydis kanalų pasirinkime"
+
+msgid "EPG list font size"
+msgstr "EPG sąrašo šrifto dydis"
+
+msgid "Dish screen"
+msgstr "Lėkštės ekranas"
+
+msgid "AudioSelection"
+msgstr "Garso pasirinkimai"
+
+msgid "Set PluginBrowser - OE 2.0"
+msgstr "Nustatyti įskiepių naršyklę - OE 2,0"
+
+msgid "Set user encoding.conf"
+msgstr "Naudoti vartotojo encoding.conf"
+
+msgid "ChannelSelection 2xOK"
+msgstr "Kanalo pasirinkimas su 2x'OK'"
+
+msgid "Enable windowstylescrollbar"
+msgstr "Leisti prasukimo juostą lange"
+
+msgid "On/Off icons"
+msgstr "Piktogramos Įj./Išj."
+
+msgid "Service scan long list"
+msgstr "Kanalų paieška ilgu sąrašu"
+
+msgid "Extended Number ZAP Picon Size"
+msgstr "Piktogramų dydis, perjungiant kanalą skaičiais"
+
+msgid "GUI will now be restarted to activate restored options:"
+msgstr "Kad aktyvuoti atkurtas reikšmes, grafinė aplinka pasileis iš naujo:"
+
+msgid "GUI will now be restarted, updated files founded !!!"
+msgstr "Rasti atnaujinti failai, grafinė aplinka pasileis iš naujo !!!"
+
+msgid "ECM and TP Status"
+msgstr "ECM ir TP būsena"
+
+msgid "No data"
+msgstr "Duomenų nėra"
+
+msgid "No info from Cam"
+msgstr "Nėra informacijos iš Cam"
+
+msgid "Bitrate Stopped"
+msgstr "Bitų dažnis nerodomas"
+
+msgid "No info about Caids"
+msgstr "Nėra informacijos apie CAID"
+
+msgid "Free To Air"
+msgstr "Nekoduota"
+
+msgid "Starting Bitrate"
+msgstr "Pradinis bitų dažnis"
+
+msgid "Bitrate"
+msgstr "Bitų dažnis"
+
+msgid "Btr: too high - stopped"
+msgstr "Btr: per didelis - sustabdyta"
+
+msgid "Bitrate stopped"
+msgstr "Bitų dažnis nerodomas"
+
+msgid "Preparing Bitrate"
+msgstr "Bitų dažnis ruošiamas"
+
+msgid "Error reading CaIds !!!"
+msgstr "Klaida, skaitant CAID !!!"
+
+msgid "Unsuported CA found, no correct ECM info !!!"
+msgstr "Nepalaikoma CA , nėra teisingos ECM informacijos !!!"
+
+msgid "Available:"
+msgstr "Prieinama:"
+
+msgid "Used:"
+msgstr "Naudojama:"
+
+msgid "Remaining:"
+msgstr "Liko:"
+
+msgid "Radio"
+msgstr "Radijas"
+
+msgid "Streaming service"
+msgstr "Transliacija"
+
+msgid "IP stream"
+msgstr "IP srautas"
+
+msgid "Save"
+msgstr "Išsaugoti"
+
+msgid "Cancel"
+msgstr "Atšaukti"
+
+msgid "Download menu"
+msgstr "Atsisiuntimų meniu"
+
+msgid "Changelog"
+msgstr "Pakeitimų žurnalas"
+
+msgid "Update"
+msgstr "Atnaujinimas"
+
+msgid "Restore config"
+msgstr "Atkurti konfigūraciją"
+
+msgid "Reset all settings of FHDG 17"
+msgstr "Atkurti numatytus parametrus"
+
+msgid "ECM"
+msgstr "ECM"
+
+msgid "EXTRA INFOBAR"
+msgstr "IŠPL.INFOJUOSTA"
+
+msgid "INFOBAR"
+msgstr "INFOJUOSTA"
+
+msgid "POSTER"
+msgstr "PLAKATAS"
+
+msgid "HDD/SSD"
+msgstr "HDD/SSD"
+
+msgid "NETWORK"
+msgstr "TINKLAS"
+
+msgid "MENU"
+msgstr "MENIU"
+
+msgid "CHANNEL SELECTION"
+msgstr "KANALO PASIRINKIMAS"
+
+msgid "EPG SELECTION"
+msgstr "EPG PASIRINKIMAI"
+
+msgid "EVENT VIEW"
+msgstr "ĮVYKIO PERŽIŪRA"
+
+msgid "SPECIAL INFO"
+msgstr "SPECIALIOJI INFORMACIJA"
+
+msgid "USER INFO"
+msgstr "VARTOTOJO INFORMACIJA"
+
+msgid "NETATMO"
+msgstr "NETATMO"
+
+msgid "OLED"
+msgstr "OLED"
+
+msgid "TUNER"
+msgstr "IMTUVAS"
+
+msgid "ENHANCED WEATHER"
+msgstr "ORAI - IŠPLĖSTINIS"
+
+msgid "WEATHER"
+msgstr "ORAI"
+
+msgid "PATHS"
+msgstr "KELIAI"
+
+msgid "VOLUME"
+msgstr "GARSAS"
+
+msgid "LISTBOX FONT SIZE"
+msgstr "SĄRAŠO ŠRIFTO DYDIS"
+
+msgid "ANIMATIONS"
+msgstr "ANIMACIJA"
+
+msgid "OTHER"
+msgstr "KITA"
+
+msgid "Color(s)"
+msgstr "spalva"
+
+msgid "ECM line type"
+msgstr "ECM eilutės tipas"
+
+msgid "ECM refresh time"
+msgstr "ECM atnaujinimo intervalas"
+
+msgid "Enable show address in ECM info"
+msgstr "Rodyti adresą prie ECM info"
+
+msgid "ECM info from current displayed channel only"
+msgstr "ECM informacija tik iš dabar rodomo kanalo"
+
+msgid "Display CW0/1 in Side bar"
+msgstr "Šoninėje juostoje rodyti CW0/1"
+
+msgid "Show PID in ECM line"
+msgstr "ECM eilutėje rodyti PID"
+
+msgid "Show CHID in ECM line"
+msgstr "ECM eilutėje rodyti CHID"
+
+msgid "ECM line"
+msgstr "ECM eilutė"
+
+msgid "ECM Labels"
+msgstr "ECM antraštės"
+
+msgid "ECM Values"
+msgstr "ECM reikšmės"
+
+msgid "Enable Enhanced Infobar"
+msgstr "Rodyti papildomą išplėstinę infojuostą"
+
+msgid "Vertical Offset"
+msgstr "Vertikalus poslinkis"
+
+msgid "Date format"
+msgstr "Datos formatas"
+
+msgid "Second picon type"
+msgstr "Antros piktogramos tipas"
+
+msgid "Animated Weather Icons"
+msgstr "Animuotos orų piktogramos"
+
+msgid "Animation speed (ms)"
+msgstr "Animacijos greitis (ms)"
+
+msgid "Enable icon"
+msgstr "Rodyti piktogramą"
+
+msgid "Enable icon of Unknown CAID"
+msgstr "Rodyti nežinomo CAID piktogramą"
+
+msgid "Audio type of current track"
+msgstr "Esamo garso takelio tipas"
+
+msgid "Progressive/Interlace detection"
+msgstr "Puseilio/pilnaeilio režimų aptikimas"
+
+msgid "Tuner info"
+msgstr "Imtuvo informacija"
+
+msgid "Hide SNR/AGC (Q/S) if value is 0"
+msgstr "Nerodyti SNR/AGC (Q/S), jei reikšmė yra '0'"
+
+msgid "CI info"
+msgstr "CI informacija"
+
+msgid "Enable full bitrate info"
+msgstr "Pilna informacija apie bitų dažnį"
+
+msgid "Bitrate auto stop limit"
+msgstr "Bitų dažnio autostabdymo riba"
+
+msgid "Enable eBitrateCalculator"
+msgstr "Naudoti elektroninį bitų srauto kalkuliatorių"
+
+msgid "Show Satellite position in TP info"
+msgstr "Rodyti palydovo poziciją TP informacijoje"
+
+msgid "Provider"
+msgstr "Tiekėjas"
+
+msgid "Temp/RPM"
+msgstr "Temperatūra / Apsukos"
+
+msgid "CPU/Mem"
+msgstr "CPU / RAM informacija"
+
+msgid "Temp. HDD/SSD"
+msgstr "HDD/SSD temperatūra"
+
+msgid "Progress bar pixmap"
+msgstr "Eigos juostos atvaizdavimas"
+
+msgid "Progress bar background pixmap"
+msgstr "Eigos juostos fono atvaizdavimas"
+
+msgid "CPU/Mem, RPM/Temp, Provider"
+msgstr "CPU/RAM, temp./aps., tiekėjas"
+
+msgid "TP type"
+msgstr "Transponderio tipas"
+
+msgid "TP info"
+msgstr "Transponderio informacija"
+
+msgid "Video resolution"
+msgstr "Vaizdo raiška"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Time"
+msgstr "Laikas"
+
+msgid "Seconds"
+msgstr "Sekundės"
+
+msgid "Channel name"
+msgstr "Kanalo pavadinimas"
+
+msgid "Event now"
+msgstr "Dabartinis įvykis"
+
+msgid "Event next"
+msgstr "Sekantis įvykis"
+
+msgid "Progress bar foreground"
+msgstr "Eigos juosta"
+
+msgid "Progress bar background"
+msgstr "Eigos juostos fonas"
+
+msgid "Enable typewriting"
+msgstr "Įjungti animacijoje mašinraštį"
+
+msgid "Ignore infobar timeout"
+msgstr "Ignoruoti infojuostos sisteminį nustatymą"
+
+msgid "Enable fade"
+msgstr "Įjungti infojuostos išblukimą"
+
+msgid "Speed of fade"
+msgstr "Išblukimo greitis"
+
+msgid "Enable fade in"
+msgstr "Įjungti išryškėjimą"
+
+msgid "Show recording icon"
+msgstr "Rodyti įrašymo piktogramą"
+
+msgid "Channel name type"
+msgstr "Informacija prie kanalo"
+
+msgid "Set Position"
+msgstr "Nustatyti poziciją"
+
+msgid "Size"
+msgstr "Dydis"
+
+msgid "Search delay (s)"
+msgstr "Paieškos delsa (sek.)"
+
+msgid "Erase poster cache"
+msgstr "Valyti plakatų laikinąją talpyklą"
+
+msgid "Removing current Poster"
+msgstr "Šis plakatas pašalinamas"
+
+msgid "Movieplayer infobar HDD/SSD state"
+msgstr "HDD/SSD būklė filmų grotuvo infojuostoje"
+
+msgid "Enable HDD/SSD power state check"
+msgstr "Rodyti HDD/SSD būklę infojuostoje"
+
+msgid "Wake up HDD/SSD if needed"
+msgstr "Prižadinti HDD/SSD, jei reikia"
+
+msgid "Enable control of network status"
+msgstr "Įjungti tinklo būsenos kontrolę"
+
+msgid "IP Address"
+msgstr "IP adresas interneto ryšiui tikrinti"
+
+msgid "Network speed"
+msgstr "Tinklo greitis"
+
+msgid "Menu Icons"
+msgstr "Meniu piktogramos"
+
+msgid "Enable empty icons in Menu type - Icons"
+msgstr "Rodyti tuščias piktogramas meniu - piktogramos"
+
+msgid "Enable Animation (Menu: Icons/Icons Bar)"
+msgstr "Rodyti animaciją (Meniu: piktogramos)"
+
+msgid "Display remaining time in extra EPG"
+msgstr "Rodyti likusį laiką papildomame EPG"
+
+msgid "Text rolling type"
+msgstr "Teksto eilutės bėgimo būdas"
+
+msgid "Text rolling start delay"
+msgstr "Teksto eilutės bėgimo delsa"
+
+msgid "Service name font size"
+msgstr "Kanalo pavadinimo šrifto dydis"
+
+msgid "Service info font size"
+msgstr "Kanalo informacijos šrifto dydis"
+
+msgid "Line height"
+msgstr "Linijos aukštis"
+
+msgid "EPG Description"
+msgstr "EPG aprašymas"
+
+msgid "EPG Description - selected"
+msgstr "Pasirinkto EPG aprašymas"
+
+msgid "Channel name - selected"
+msgstr "Pasirinkto kanalo pavadinimas"
+
+msgid "Enable Special info timeout"
+msgstr "Su 'Help' atvertas spec.info langas uždarys pats"
+
+msgid "extensions"
+msgstr "iš plėtinio"
+
+msgid "Special info in main menu"
+msgstr "Spec. informacija pagrindiniame meniu"
+
+msgid "Enable Permanent User info"
+msgstr "Neišjungti vartotojui rodomos informacijos"
+
+msgid "User info act./next switching"
+msgstr "Vartotojo informacijos dabar/vėliau perjungimas"
+
+msgid "Station"
+msgstr "Stotis"
+
+msgid "Stations switch time"
+msgstr "Stočių perjungimo laikas"
+
+msgid "Enable OLED off in standby"
+msgstr "Budėjimo režime išjungti"
+
+msgid "Number of tuners"
+msgstr "Imtuvų skaičius"
+
+msgid "Hide tuner in standby or missing tuner"
+msgstr "Nerodyti šiuo metu neveikiančių imtuvų"
+
+msgid "Active"
+msgstr "Veikiantis"
+
+msgid "Active in the background"
+msgstr "Veikiantis fone"
+
+msgid "Standby mode"
+msgstr "Budėjimo režime"
+
+msgid "Missing"
+msgstr "Trūkstamas"
+
+msgid "Recording"
+msgstr "Įrašantis"
+
+msgid "Recording and live"
+msgstr "Įrašantis ir transliuojantis"
+
+msgid "Show Astronomical Information"
+msgstr "Rodyti astronomijos informaciją"
+
+msgid "Temperature unit"
+msgstr "Temperatūros vienetai"
+
+msgid "UV index"
+msgstr "UV indeksas"
+
+msgid "Wind speed"
+msgstr "Vėjo greitis"
+
+msgid "Weather Title"
+msgstr "Orų pavadinimas"
+
+msgid "Weather location"
+msgstr "Orų prognozės miestas"
+
+msgid "Error"
+msgstr "jei klaida"
+
+msgid "Reconnect time"
+msgstr "Pakartotinai jungtis po"
+
+msgid "Display nighttime icons"
+msgstr "Rodyti nakties piktogramas"
+
+msgid "Enable next city in Weather"
+msgstr "Rodyti Oruose kitą miestą"
+
+msgid "API-Key OpenWeatherMap"
+msgstr "Orų API raktas OpenWeatherMap puslapyje"
+
+msgid "Forecast for more days"
+msgstr "Prognozė didesniam dienų skaičiui"
+
+msgid "More days switch time"
+msgstr "Daugiau dienų perjungimo laikas"
+
+msgid "Show yesterday"
+msgstr "Rodyti vakardieną"
+
+msgid "Find a city"
+msgstr "Pasirinkti miestą galima"
+
+msgid "Weather Icons"
+msgstr "Orų piktogramos"
+
+msgid "State"
+msgstr "Būklė"
+
+msgid "Warm"
+msgstr "Šilta"
+
+msgid "Cold"
+msgstr "Šalta"
+
+msgid "Fair"
+msgstr "Giedra"
+
+msgid "temperature"
+msgstr "temperatūra"
+
+msgid "Picons/Icons path"
+msgstr "Kelias į piktogramas"
+
+msgid "FHDG Configuration file"
+msgstr "FHDG konfigūracijos failas"
+
+msgid "Path to satellites.xml"
+msgstr "Kelias į satellites.xml"
+
+msgid "Bigger"
+msgstr "Dar didesnis"
+
+msgid "Big"
+msgstr "Didelis"
+
+msgid "Medium"
+msgstr "Vidutinis"
+
+msgid "Small"
+msgstr "Smulkus"
+
+msgid "Smaller"
+msgstr "Dar smulkesnis"
+
+msgid "Enable Animations"
+msgstr "Naudoti animaciją"
+
+msgid "(Infobar) Picon"
+msgstr "Piktograma (infojuostoje)"
+
+msgid "(Infobar) Second Picon"
+msgstr "Antroji piktograma (infojuostoje)"
+
+msgid "(Infobar) Poster"
+msgstr "Plakatas (infojuostoje)"
+
+msgid "(Infobar) ECM line"
+msgstr "ECM eilutė (infojuostoje)"
+
+msgid "(Infobar) TP info/type"
+msgstr "Transponderio informacija (infojuostoje)"
+
+msgid "(Menu) Big Icons/Icons"
+msgstr "Didelės piktogramos/piktogramos (meniu)"
+
+msgid "(Channel selection) picon/Prov/Sat"
+msgstr "Piktograma/tiekėjas/palydovas (kanalų pasirinkime)"
+
+msgid "VTi SplitScreen"
+msgstr "VTi perskirtas ekranas"
+
+msgid "Reference separating char"
+msgstr "Nuorodas skiriantis simbolis"
+
+msgid "Ignore leading 0 in time"
+msgstr "Ignoruoti pradinį '0' laiko atvaizdavime"
+
+msgid "Ignore leading 0 in date"
+msgstr "Ignoruoti pradinį '0' datoje"
+
+msgid "Calculation of channel numbers"
+msgstr "Kanalų numerių atvaizdavimas"
+
+msgid "Enable CAID PIDs"
+msgstr "Rodyti CAID PID"
+
+msgid "Neutrino keymap"
+msgstr "Neutrino klaviatūra:"
+
+msgid "Full HD Glass17 spinner"
+msgstr "FHD Glass17 suktukas"
+
+msgid "Localization of the skin"
+msgstr "Temos lokalizacija"
+
+msgid "Enable Clear memory"
+msgstr "Įjungti atminties išvalymą"
+
+msgid "Enable user encoding.conf"
+msgstr "Įjungti vartotojo encoding.conf"
+
+msgid "RadioScreenSaver"
+msgstr "Radijo užsklanda"
+
+msgid "IPTV Radio Detection"
+msgstr "IPTV radijo aptikimas"
+
+msgid "Exit"
+msgstr "Uždaryti"
+
+msgid "now?"
+msgstr "dabar?"
+
+msgid "Erase finished successfully!"
+msgstr "Ištrinta sėkmingai!"
+
+msgid "Color Sample"
+msgstr "spalvos pavyzdys"
+
+msgid "Version:"
+msgstr "Versija:"
+
+msgid "Extra Screen"
+msgstr "Papildomas ekranas"
+
+msgid ""
+"Website: www.hdglass16.eu, Donation: PayPal account \"hd_glass@pobox.sk\""
+msgstr ""
+"Puslapis: www.hdglass16.eu, Parama: PayPal sąskaita \"hd_glass@pobox.sk\""
+
+msgid "None files detected!"
+msgstr "Failų  neaptikta!"
+
+msgid "Error reading version info!"
+msgstr "Klaida, skaitant versijos info!"
+
+msgid "New version:"
+msgstr "Nauja versija:"
+
+msgid "detected"
+msgstr "aptikta"
+
+msgid "You have actual version installed, no update needed."
+msgstr "Jūsų įdiegta versija - naujausia, nėra ką atnaujinti."
+
+msgid "Installing package:"
+msgstr "Įdiegiamas paketas:"
+
+msgid "Error while downloading file!"
+msgstr "Failo parsisiuntimo klaida!"
+
+msgid "Update finished successfully!"
+msgstr "Atnaujinti baigtas sėkmingai!"
+
+msgid "Do you want restart GUI to activate version"
+msgstr "Ar norite paleisti grafinę aplinką iš naujo, kad aktyvuoti šią versiją"
+
+msgid "Restart GUI now?"
+msgstr "Paleisti grafinę aplinką iš naujo dabar?"
+
+msgid "Error while updating to new version!!!"
+msgstr "Versijos atnaujinimo klaida!!!"
+
+msgid "The file satellites.xml do not exists in selected dir"
+msgstr "Pasirinktame kataloge failo satellites.xml nėra"
+
+msgid "GUI will now be restarted to activate changes in:"
+msgstr "Kad aktyvuoti šiuos pakeitimus, grafinė aplinka pasileis iš naujo:"
+
+msgid "Sorry, cannot create dir on path:"
+msgstr "Atleiskite, nepavyko sukurti katalogo keliu:"
+
+msgid "Fade cannot be used, alhpa file missing!!!"
+msgstr "Negalima panaudoti blukimo, trūksta alhpa failo !!!"
+
+msgid "HDD/SSD power state check is not available for SH4"
+msgstr "HDD/SSD galios būklės patikrinimas SH4 negalimas"
+
+msgid "Set Clear memory"
+msgstr "Nustatyti atminties išvalymą"
+
+msgid "Set original encoding.conf"
+msgstr "Naudoti originalų encoding.conf"
+
+msgid "is incorrect, please, select existing/correct screen !!!"
+msgstr "neteisingas, pasirinkit realų/teisingą ekraną !!!"
+
+msgid "is incorrect, please, select correct icons !!!"
+msgstr "neteisingos, pasirinkite teisingas piktogramas !!!"
+
+msgid "is incorrect, style will not be changed!!!"
+msgstr "neteisingas, stilius pakeistas nebus!!!"
+
+msgid "Save again to apply all setup changes without style change"
+msgstr ""
+"Kad pritaikyti visus diegimo pakeitimus be stiliaus pasikeitimo, išsaugoti "
+"vėl"
+
+msgid "Special Info type"
+msgstr "Spec. informacijos tipas"
+
+msgid "User info type"
+msgstr "Vartotojui rodoma informacija"
+
+msgid "HDD/SSD state"
+msgstr "HDD/SSD būklė"
+
+msgid "10 days forecast"
+msgstr "10 dienų prognozė"
+
+msgid "Do you want restart GUI to activate the screen:"
+msgstr "Ar norite paleisti grafinę aplinką iš naujo, kad aktyvuoti ekraną:"
+
+msgid "Config loaded successfully!"
+msgstr "Konfigūracija sėkmingai įkelta!"
+
+msgid "Welcome in setup"
+msgstr "Sveiki atvykę į sąranką"
+
+msgid "Wait for the file downloads to complete"
+msgstr "Palaukite, kol failai bus pilnai parsiųsti"
+
+msgid "Select"
+msgstr "Pasirinkti"
+
+msgid "Cleaning Picons"
+msgstr "Piktogramų valymas"
+
+msgid "Start Download"
+msgstr "Parsiuntimo pradžia"
+
+msgid "picon white"
+msgstr "Baltos piktogramos"
+
+msgid "picon black"
+msgstr "Juodos piktogramos"
+
+msgid "picon 400x240"
+msgstr "400x240 piktogramos"
+
+msgid "picon 220x132"
+msgstr "220x132 piktogramos"
+
+msgid "piconProv 220x132"
+msgstr "220x132 tiekėjų piktogramos"
+
+msgid "piconSat 220x132"
+msgstr "220x132 palydovų piktogramos"
+
+msgid "piconProv black"
+msgstr "Juodos tiekėjų piktogramos"
+
+msgid "piconSat black"
+msgstr "Juodos palydovų piktogramos"
+
+msgid "piconCam black"
+msgstr "Juodos Emu piktogramos"
+
+msgid "piconWeather black"
+msgstr "Juodos orų piktogramos"
+
+msgid "piconProv white"
+msgstr "Baltos tiekėjų piktogramos"
+
+msgid "piconSat white"
+msgstr "Baltos palydovų piktogramos"
+
+msgid "piconCam white"
+msgstr "Baltos Emu piktogramos"
+
+msgid "piconWeather white"
+msgstr "Baltos orų piktogramos"
+
+msgid "picon OLED"
+msgstr "OLED piktogramos"
+
+msgid "ZZPicon"
+msgstr "ZZ piktogramos"
+
+msgid "Help"
+msgstr "Žinynas"
+
+msgid "Set of icons and prewievs"
+msgstr "Piktogramų ir vaizdų apžvalgai rinkinys"
+
+msgid "ExtraScreens graphics"
+msgstr "Papildomų ekranų grafika"
+
+msgid "Menu icons"
+msgstr "Meniu piktogramos"
+
+msgid "Weather icons"
+msgstr "Orų piktogramos"
+
+msgid "Channelselection icons"
+msgstr "Kanalo pasirinkimo piktogramos"
+
+msgid "Result"
+msgstr "Rezultatas"
+
+msgid "ERROR"
+msgstr "KLAIDA"
+
+msgid "Tool 7zip is missing, you can download it from DOWNLOAD MENU"
+msgstr "Trūksta įrankio 7zip, kurį galite atsisiųsti iš ATSISIUNTIMO MENIU"
+
+msgid "SUCCESSFUL"
+msgstr "SĖKMINGAI"
+
+msgid "Total:"
+msgstr "Iš viso:"
+
+msgid "Deleted:"
+msgstr "Pašalinta:"
+
+msgid "Sorry, too low free space"
+msgstr "Atleiskite, trūksta laisvos vietos"
+
+msgid "Required"
+msgstr "Reikalinga"
+
+msgid "Free"
+msgstr "Laisva"
+
+msgid "failed"
+msgstr "nepavyko"
+
+msgid "file(s) downloaded/updated."
+msgstr "failas (-ai) atsisiųsti/atnaujinti."
+
+msgid "file(s) from"
+msgstr "failas (-ai) iš"
+
+msgid "Loading URL tools failed"
+msgstr "Nepavyko įkelti internetinio puslapio įrankių"
+
+msgid "Internet connection failed"
+msgstr "Interneto ryšio klaida"
+
+msgid "Unknown error detected, try again!!!"
+msgstr "Įvyko nežinoma klaida, bandykite dar kartą!"
+
+msgid "Previews downloaded successfully!"
+msgstr "Peržiūros ekranai atsisiųsti sėkmingai!"
+
+msgid "Previews:"
+msgstr "Peržiūros:"
+
+msgid "Delete"
+msgstr "Pašalinti"
+
+msgid "Edit color"
+msgstr "Redaguoti spalvas"
+
+msgid "Style menu"
+msgstr "Meniu stilius"
+
+msgid "Sorry, you have entered a wrong color:"
+msgstr "Atleiskite, įvedėte klaidingą spalvą:"
+
+msgid "Sorry, writing color:"
+msgstr "Atleiskite, rašant spalvą:"
+
+msgid "failed !!!"
+msgstr "nepavyko !!!"
+
+msgid "Color:"
+msgstr "Spalva:"
+
+msgid "writed successfully !!!"
+msgstr "įrašyti sėkmingai !!!"
+
+msgid "Sorry, write to g17Screens.cfg failed !!!"
+msgstr "Atleiskite, rašyti į g17Screens.cfg nepavyko!!!"
+
+msgid "Changes writed successfully !!!"
+msgstr "Pakeitimai įrašyti sėkmingai !!!"
+
+msgid "Edit"
+msgstr "Redaguoti"
+
+msgid "Picon path"
+msgstr "Kelias į piktogramas"
+
+msgid "Choose Icons"
+msgstr "Pasirinkti piktogramas"
+
+msgid "No Changelog info !!!"
+msgstr "Pasikeitimų žurnalo nėra !!!"
+
+msgid "Edit line"
+msgstr "Redagavimo linija"
+
+msgid "Delete line"
+msgstr "Šalinti eilutę"
+
+msgid "Add line"
+msgstr "Pridėti eilutę"
+
+msgid "up"
+msgstr "aukštyn"
+
+msgid "down"
+msgstr "žemyn"
+
+msgid "Please enter a city name"
+msgstr "Nurodykite miestą"
+
+msgid "Website data reading timeout"
+msgstr "Svetainė į užklausą neatsako"
+
+msgid "None city detected"
+msgstr "Miestų neaptikta"

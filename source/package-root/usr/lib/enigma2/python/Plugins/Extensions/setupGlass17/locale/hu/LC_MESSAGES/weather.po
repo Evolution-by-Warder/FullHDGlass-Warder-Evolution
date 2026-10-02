@@ -1,0 +1,341 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-07 11:25+0200\n"
+"PO-Revision-Date: 2021-07-07 11:25+0200\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...N/A..."
+
+msgid "Sun"
+msgstr "Vasárnap"
+
+msgid "Mon"
+msgstr "Hétfő"
+
+msgid "Tue"
+msgstr "Kedd"
+
+msgid "Wed"
+msgstr "Szerda"
+
+msgid "Thu"
+msgstr "Csütörtök"
+
+msgid "Fri"
+msgstr "Péntek"
+
+msgid "Sat"
+msgstr "Szombat"
+
+msgid "January"
+msgstr "Január"
+
+msgid "February"
+msgstr "Február"
+
+msgid "March"
+msgstr "Március"
+
+msgid "April"
+msgstr "Április"
+
+msgid "May"
+msgstr "Május"
+
+msgid "Jun"
+msgstr "Június"
+
+msgid "Jul"
+msgstr "Július"
+
+msgid "August"
+msgstr "Augusztus"
+
+msgid "September"
+msgstr "Szeptember"
+
+msgid "October"
+msgstr "Október"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+msgid "Light Snow Shower"
+msgstr "Gyenge havazás"
+
+msgid "Fog"
+msgstr "Ködös"
+
+msgid "Sunny"
+msgstr "Napos"
+
+msgid "Cloudy"
+msgstr "Felhős"
+
+msgid "Light Rain with Thunder"
+msgstr "Könnyű eső mennydörgés"
+
+msgid "Drizzle"
+msgstr "Ködszitálás"
+
+msgid "Showers in the Vicinity"
+msgstr "Záporok a közelben"
+
+msgid "Rain Shower"
+msgstr "Felhőszakadás"
+
+msgid "Thunderstorm"
+msgstr "Zivatar"
+
+msgid "Thunder in the Vicinity"
+msgstr "Helyenként zivatar"
+
+msgid "Thundershowers"
+msgstr "Felhős"
+
+msgid "Light Drizzle"
+msgstr "Gyenge ködszitálás"
+
+msgid "Thunder"
+msgstr "Mennydörgés"
+
+msgid "Light Rain Shower"
+msgstr "Gyenge eső"
+
+msgid "Isolated Thunderstorms"
+msgstr "Elszigetelt viharok"
+
+msgid "Scattered Thunderstorms"
+msgstr "Elszórtan zivatarok"
+
+msgid "AM"
+msgstr "Délelőtt"
+
+msgid "PM"
+msgstr "Délután"
+
+msgid "Mostly Clear"
+msgstr "Többnyire tiszta"
+
+msgid "Snow"
+msgstr "Havazás"
+
+msgid "Thunderstorms"
+msgstr "Zivatarok"
+
+msgid "Wind"
+msgstr "Szél"
+
+msgid "Showers"
+msgstr "Záporok"
+
+msgid "Rain"
+msgstr "Eső"
+
+msgid "Mostly Sunny"
+msgstr "Túlnyomóan napos"
+
+msgid "Clear"
+msgstr "Tiszta ég"
+
+msgid "Partly Cloudy"
+msgstr "Közepesen felhős"
+
+msgid "Mostly Cloudy"
+msgstr "Helyenként felhős"
+
+msgid "Scattered Showers"
+msgstr "Elszórtan zápor"
+
+msgid "Few Showers"
+msgstr "Gyenge zápor"
+
+msgid "Light Rain"
+msgstr "Csendes eső"
+
+msgid "Fair"
+msgstr "Derült"
+
+msgid "Scattered Snow Showers"
+msgstr "Szétszórt havazás"
+
+msgid "Wintry Mix"
+msgstr "Téli mix"
+
+msgid "Ice"
+msgstr "Jég"
+
+msgid "Breezy"
+msgstr "Szellős"
+
+msgid "Freezing Drizzle"
+msgstr "Ónos szitálás"
+
+msgid "Freezing Rain"
+msgstr "Fagyott eső"
+
+msgid "Wind direction"
+msgstr "Szélirány"
+
+msgid "Location"
+msgstr ""
+
+msgid "Humidity"
+msgstr "Páratartalom"
+
+msgid "Visibility"
+msgstr "Látótávolság"
+
+msgid "Geo position"
+msgstr "Geo helyzetben"
+
+msgid "Pressure"
+msgstr "Nyomás"
+
+msgid "Feels like"
+msgstr "Feels like"
+
+msgid "City"
+msgstr "Város"
+
+msgid "Sunrise"
+msgstr "Napkelte"
+
+msgid "Sunset"
+msgstr "Napnyugta"
+
+msgid "Update"
+msgstr "Frissítés"
+
+msgid "Error"
+msgstr "Hiba"
+
+msgid "Website data reading timeout"
+msgstr ""
+
+msgid "None data received from website"
+msgstr ""
+
+msgid "Website is not responding"
+msgstr ""
+
+msgid "is not defined"
+msgstr "nincs meghatározva"
+
+msgid "NW"
+msgstr "Északnyugati"
+
+msgid "SW"
+msgstr "Délnyugati"
+
+msgid "SE"
+msgstr "Délkeleti"
+
+msgid "NE"
+msgstr "Északkeleti"
+
+msgid "S"
+msgstr "Déli"
+
+msgid "N"
+msgstr "Északi"
+
+msgid "W"
+msgstr "Nyugati"
+
+msgid "E"
+msgstr "Keleti"
+
+msgid "Mishmash in the data"
+msgstr ""
+
+msgid "Weather"
+msgstr "Időjárás"
+
+msgid "Attempt"
+msgstr ""
+
+msgid "time to reconnect"
+msgstr "frissítésig"
+
+msgid "Clear sky"
+msgstr "Tiszta égbolt"
+
+msgid "Mainly clear"
+msgstr "Többnyire derült"
+
+msgid "Partly cloudy"
+msgstr "Részben felhős"
+
+msgid "Overcast"
+msgstr "Borult"
+
+msgid "Depositing rime fog"
+msgstr "Zúzmarás köd"
+
+msgid "Dense drizzle"
+msgstr "Erős szitálás"
+
+msgid "Slight rain"
+msgstr "Gyenge eső"
+
+msgid "Heavy rain"
+msgstr "Erős eső"
+
+msgid "Heavy freezing rain"
+msgstr "Erős ónos eső"
+
+msgid "Slight snow"
+msgstr "Gyenge havazás"
+
+msgid "Heavy snow"
+msgstr "Erős havazás"
+
+msgid "Snow grains"
+msgstr "Hódara"
+
+msgid "Rain showers"
+msgstr "Zápor"
+
+msgid "Heavy rain showers"
+msgstr "Erős zápor"
+
+msgid "Snow showers"
+msgstr "Hózápor"
+
+msgid "Heavy snow showers"
+msgstr "Erős hózápor"
+
+msgid "Thunderstorm with hail"
+msgstr "Zivatar jégesővel"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Zivatar erős jégesővel"
+
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+msgid "Light drizzle"
+msgstr "Gyenge szitálás"
+
+msgid "Freezing drizzle"
+msgstr "Ónos szitálás"
+
+msgid "Freezing rain"
+msgstr "Ónos eső"

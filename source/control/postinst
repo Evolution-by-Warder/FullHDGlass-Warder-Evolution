@@ -1,0 +1,40 @@
+#!/bin/sh
+set -u
+
+copy_default_if_missing() {
+    src="$1"
+    dst="$2"
+    if [ -f "$src" ] && [ ! -e "$dst" ]; then
+        cp -f "$src" "$dst"
+    fi
+}
+
+# Restore the user's generated FullHDGlass17 overlay after an upgrade.
+# /etc/enigma2/settings and /etc/enigma2/skin_user.xml are intentionally
+# not package-owned and are left untouched, preserving all saved choices
+# including the currently selected skin.
+if [ -f /tmp/skin_user-hdg17.xml.warder-upgrade ]; then
+    cp -pf /tmp/skin_user-hdg17.xml.warder-upgrade /etc/enigma2/skin_user-hdg17.xml 2>/dev/null || true
+    rm -f /tmp/skin_user-hdg17.xml.warder-upgrade
+fi
+
+# Install legacy data only when the image does not already provide it.
+copy_default_if_missing /usr/share/misc/hddtemp-deff17.db /usr/share/misc/hddtemp.db
+copy_default_if_missing /etc/hddtemp-deff17.db /etc/hddtemp.db
+
+# These files are FullHDGlass17 defaults. Keep an existing user/image file intact.
+copy_default_if_missing /etc/lcstrings-def17.list /etc/lcstrings.list
+copy_default_if_missing /etc/city_Code-17.txt /etc/city_Code.txt
+copy_default_if_missing /etc/ewea_city_Code-17.txt /etc/ewea_city_Code.txt
+copy_default_if_missing /etc/iptvprov-def17.list /etc/iptvprov.list
+
+# The package name remains enigma2-skin-fullhdglass17, so opkg/dpkg records
+# Warder Evolution as an upgrade of the existing skin package. The installed
+# /usr/share/enigma2/hd_glass17/skin.xml keeps it visible in Enigma2 Skin Setup.
+
+echo "************************************************"
+echo "Install/upgrade finished: FullHDGlass17 - Warder Evolution"
+echo "Existing FullHDGlass17 settings were preserved."
+echo "Please restart GUI to activate changes."
+echo "************************************************"
+exit 0
