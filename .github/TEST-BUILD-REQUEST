@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test69
-Revision: 209
-Purpose: suppress confirmed OpenATV core busy spinner only while Warder Program Info is open, restore configured state on close, and restore readable MessageBox Yes/No font; retain EPG PASS state.
+Candidate: 1.0.5-test70
+Revision: 210
+Purpose: keep Program Info responsive with a lightweight repaint heartbeat while async TMDB is pending, remove ineffective global spinner manipulation, and make first EXIT/RED visibly close immediately; retain approved EPG and Program Info geometry.
