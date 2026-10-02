@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test88
-Revision: 239
+Revision: 240
 Purpose: Prioritize RADIO startup responsiveness. First artwork metadata read at 100 ms, 250 ms acquisition polling until valid song metadata, then 750 ms steady polling. Network remains asynchronous; TEST86/87 exact safety rules and native RDS/DAB remain unchanged.
