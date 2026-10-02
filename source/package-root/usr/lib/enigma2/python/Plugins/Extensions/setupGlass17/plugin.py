@@ -174,13 +174,11 @@ def _warderUiText(text):
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
-	<screen name="WarderProgramInfo" position="75,65" size="1770,950" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
-		<eLabel position="18,18" size="1734,914" backgroundColor="transpBlack3" zPosition="-5" />
-		<eLabel position="20,20" size="1730,2" backgroundColor="#38c7e8" zPosition="1" />
-		<widget name="now" position="1240,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,72" size="505,286" backgroundColor="transpBlack" />
-		<widget name="programArtwork" position="38,85" size="479,260" zPosition="2" alphatest="blend" />
-		<widget name="title" position="560,80" size="1095,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
+	<screen name="WarderProgramInfo" position="15,15" size="1890,1050" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
+		<eLabel position="18,18" size="1854,1014" backgroundColor="transpBlack3" zPosition="-5" />
+		<widget name="now" position="1360,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
+		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="50,445" size="92,55" zPosition="3" alphatest="blend" />
 		<widget name="stationLabel" position="50,515" size="190,38" font="Prive3;27" foregroundColor="#3388dd" transparent="1" />
 		<widget name="channel" position="245,515" size="215,38" font="Prive4;27" foregroundColor="#dddddd" transparent="1" />
@@ -190,31 +188,31 @@ class WarderProgramInfo(Screen):
 		<widget name="yearMeta" position="225,588" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="countryLabel" position="50,621" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
 		<widget name="countryMeta" position="225,621" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="ratingLabel" position="50,654" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="ratingMeta" position="225,654" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="when" position="560,170" size="1095,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="short" position="560,235" size="1095,105" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,420" size="1720,2" backgroundColor="#707070" />
+		<widget name="ratingStars" position="1390,105" size="430,45" font="Prive4;34" halign="right" foregroundColor="#e53935" transparent="1" />
+		<widget name="ratingMeta" position="1390,155" size="430,36" font="Prive4;27" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<widget name="when" position="580,170" size="760,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="short" position="580,235" size="1220,120" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,405" size="1840,2" backgroundColor="#707070" />
 		<widget name="durationLabel" position="50,692" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="durationMeta" position="225,692" size="235,34" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
 		<widget name="broadcastLabel" position="50,729" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="broadcast" position="225,729" size="235,48" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="500,440" size="2,320" backgroundColor="#707070" />
-		<widget name="description" position="535,440" size="1170,320" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
-		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyRed" render="Label" position="25,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
-		<eLabel position="465,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyGreen" render="Label" position="465,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
-		<eLabel position="905,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyYellow" render="Label" position="905,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
-		<eLabel position="1345,820" size="395,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyBlue" render="Label" position="1345,828" size="395,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
+		<eLabel position="500,425" size="2,440" backgroundColor="#707070" />
+		<widget name="description" position="535,425" size="1300,440" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
+		<eLabel position="25,890" size="1840,2" backgroundColor="#707070" />
+		<eLabel position="25,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyRed" render="Label" position="25,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
+		<eLabel position="490,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyGreen" render="Label" position="490,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
+		<eLabel position="955,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyYellow" render="Label" position="955,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
+		<eLabel position="1420,925" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
+		<widget source="keyBlue" render="Label" position="1420,933" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "genreLabel", "genreMeta", "yearLabel", "yearMeta", "countryLabel", "countryMeta", "ratingLabel", "ratingMeta", "durationLabel", "broadcastLabel"):
+		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "genreLabel", "genreMeta", "yearLabel", "yearMeta", "countryLabel", "countryMeta", "ratingStars", "ratingMeta", "durationLabel", "broadcastLabel"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
@@ -225,8 +223,8 @@ class WarderProgramInfo(Screen):
 		self["genreLabel"].setText(_warderUiText("Genre:"))
 		self["yearLabel"].setText(_warderUiText("Year:"))
 		self["countryLabel"].setText(_warderUiText("Country:"))
-		self["ratingLabel"].setText(_warderUiText("Rating:"))
 		for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
+
 			self[field].setText("-")
 		self["durationLabel"].setText(_warderUiText("Duration:"))
 		self["broadcastLabel"].setText(_warderUiText("Broadcast:"))
@@ -261,7 +259,11 @@ class WarderProgramInfo(Screen):
 				if meta.get("genre"): self["genreMeta"].setText(meta["genre"])
 				if meta.get("year"): self["yearMeta"].setText(meta["year"])
 				if meta.get("country"): self["countryMeta"].setText(meta["country"])
-				if meta.get("rating"): self["ratingMeta"].setText("%s (%s)" % (meta["rating"], meta.get("provider", "")))
+				if meta.get("rating"):
+					rating = float(meta["rating"])
+					filled = max(0, min(5, int(round(rating / 2.0))))
+					self["ratingStars"].setText("★" * filled + "☆" * (5 - filled))
+					self["ratingMeta"].setText("%s: %s/10 (%s)" % (_warderUiText("Rating:").rstrip(":"), meta["rating"], meta.get("provider", "")))
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata: %s" % e)
 		serviceName = self._serviceName(service, self._serviceRef)

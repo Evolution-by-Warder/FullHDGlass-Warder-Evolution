@@ -511,8 +511,8 @@ assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'foregroundColor="#3388dd"' in program_info
 assert 'backgroundColor="transpBlack3"' in program_info
 assert '<eLabel position="500,440" size="2,320" backgroundColor="#707070" />' in program_info
-assert 'name="description" position="535,440" size="1170,320"' in program_info
-assert 'position="25,820" size="395,62" backgroundColor="transpBlack3"' in program_info
+assert 'name="description" position="535,425" size="1300,440"' in program_info
+assert 'position="25,925" size="420,62" backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pig26
 assert 'source="key_red" render="Label" position="30,930" size="420,42"' not in pig26
@@ -560,7 +560,7 @@ program_info = PLUGIN.split('class WarderProgramInfo(Screen):', 1)[1].split('def
 assert 'source="session.VideoPicture" render="Pig"' not in program_info
 assert 'render="g17Poster2"' not in program_info
 assert 'posterTitle' not in program_info
-assert 'name="programArtwork" position="38,85" size="479,260"' in program_info
+assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
 assert 'self._artworkPath = meta.get("artwork_path") or ""' in program_info
 assert 'self["programArtwork"].instance.setPixmap(pix)' in program_info
 assert 'self["programArtwork"].instance.setScale(1)' in program_info
@@ -568,15 +568,15 @@ assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'name="stationPicon" position="50,445"' in program_info
 assert 'name="channel" position="245,515"' in program_info
-assert 'name="description" position="535,440" size="1170,320"' in program_info
+assert 'name="description" position="535,425" size="1300,440"' in program_info
 assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
 assert 'name="service"' not in program_info
 for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
     assert ('source="%s" render="Label"' % key) in program_info, key
 assert 'for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):' in program_info
 assert 'self[name] = StaticText("")' in program_info
-assert 'position="20,20" size="1730,2" backgroundColor="#38c7e8"' in program_info
-assert 'position="25,820" size="395,62" backgroundColor="transpBlack3"' in program_info
+assert 'backgroundColor="#38c7e8"' not in program_info
+assert 'position="25,925" size="420,62" backgroundColor="transpBlack3"' in program_info
 assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN
 assert 'self["durationMeta"].setText("%d min" % minutes)' in program_info
 
@@ -626,7 +626,7 @@ assert 'return None' in red_handler
 
 # TEST51 receiver screenshot correction: one title style, artwork field, station block below divider.
 assert '"PROGRAM INFO": "Info o programe"' in PLUGIN
-assert 'name="programArtwork" position="38,85" size="479,260"' in program_info
+assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
 assert 'name="stationPicon" position="50,445" size="92,55"' in program_info
 assert 'name="stationLabel" position="50,515" size="190,38"' in program_info
 assert 'name="channel" position="245,515" size="215,38"' in program_info
@@ -638,3 +638,12 @@ assert 'CACHE_SCHEMA = "v3"' in PROVIDER
 for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
     assert ('name="%s"' % field) in program_info
 assert 'self[field].setText("-")' in program_info
+
+# TEST53 visual consolidation.
+assert '<screen name="WarderProgramInfo" position="15,15" size="1890,1050"' in program_info
+assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
+assert '<eLabel position="25,72" size="505,286" backgroundColor="transpBlack"' not in program_info
+assert 'name="ratingStars" position="1390,105"' in program_info
+assert 'name="description" position="535,425" size="1300,440"' in program_info
+assert 'position="25,890" size="1840,2"' in program_info
+assert 'position="25,933" size="420,46"' in program_info
