@@ -147,6 +147,24 @@ def Writelog(txt):
 		f.close()
 	except IOError: pass
 ##########################################################################################################################
+def _warderUiText(text):
+	"""Use FullHDGlass translations first; provide Warder SK/CZ strings for new UI text."""
+	try:
+		translated = _(text)
+		if translated and translated != text:
+			return translated
+	except Exception:
+		pass
+	try:
+		lang = config.osd.language.value.split("_")[0].lower()
+	except Exception:
+		lang = "en"
+	warder = {
+		"sk": {"PROGRAM INFO": "INFO O PROGRAME", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:"},
+		"cs": {"PROGRAM INFO": "INFO O PROGRAMU", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Duration:": "Délka:", "Broadcast:": "Vysílání:"}
+	}
+	return warder.get(lang, {}).get(text, text)
+
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
@@ -156,7 +174,7 @@ class WarderProgramInfo(Screen):
 		<eLabel position="20,20" size="1730,2" backgroundColor="#707070" />
 		<widget name="now" position="1260,38" size="445,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,72" size="505,286" backgroundColor="transpBlack" />
-		<widget name="preview" position="38,85" size="479,260" zPosition="2" alphatest="blend" />
+		<widget source="posterTitle" render="g17Poster2" position="38,85" size="479,260" zPosition="2" transparent="1" />
 		<widget name="title" position="560,80" size="1095,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="560,154" size="92,55" zPosition="3" alphatest="blend" />
 		<widget name="channel" position="675,157" size="980,48" font="Prive4;34" foregroundColor="#ffffff" transparent="1" />
@@ -164,36 +182,46 @@ class WarderProgramInfo(Screen):
 		<widget name="duration" position="675,270" size="980,40" font="Prive3;29" foregroundColor="#e5b243" transparent="1" />
 		<widget name="short" position="560,320" size="1095,55" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,392" size="1720,2" backgroundColor="#707070" />
-		<eLabel text="Stanica:" position="50,425" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="stationLabel" position="50,425" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="service" position="285,425" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<eLabel text="Dĺžka:" position="50,485" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="durationLabel" position="50,485" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="durationMeta" position="285,485" size="300,40" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<eLabel text="Vysielanie:" position="50,545" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
+		<widget name="broadcastLabel" position="50,545" size="225,40" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
 		<widget name="broadcast" position="285,545" size="300,78" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="625,415" size="2,345" backgroundColor="#707070" />
 		<widget name="description" position="665,425" size="1040,335" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,785" size="1720,2" backgroundColor="#707070" />
 		<eLabel position="25,820" size="395,62" backgroundColor="transpBlack3" />
-		<eLabel text="Zavrieť" position="25,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+		<widget name="keyRed" position="25,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
 		<eLabel position="465,820" size="395,62" backgroundColor="transpBlack3" />
-		<eLabel text="Pridať časovač" position="465,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
+		<widget name="keyGreen" position="465,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
 		<eLabel position="905,820" size="395,62" backgroundColor="transpBlack3" />
-		<eLabel text="Goto Date/Time" position="905,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
+		<widget name="keyYellow" position="905,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
 		<eLabel position="1345,820" size="395,62" backgroundColor="transpBlack3" />
-		<eLabel text="EPG Search" position="1345,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="#3388dd" transparent="1" />
+		<widget name="keyBlue" position="1345,828" size="395,46" font="Prive3;30" halign="center" foregroundColor="#3388dd" transparent="1" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "duration", "short", "service", "durationMeta", "broadcast", "description"):
+		for name in ("now", "title", "channel", "when", "duration", "short", "service", "durationMeta", "broadcast", "description", "stationLabel", "durationLabel", "broadcastLabel", "keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = Label("")
-		self["preview"] = Pixmap()
+		self["posterTitle"] = StaticText("")
 		self["stationPicon"] = Pixmap()
+		self["stationLabel"].setText(_warderUiText("Station:"))
+		self["durationLabel"].setText(_warderUiText("Duration:"))
+		self["broadcastLabel"].setText(_warderUiText("Broadcast:"))
+		self["keyRed"].setText(_warderUiText("Close"))
+		self["keyGreen"].setText(_warderUiText("Add Timer"))
+		self["keyYellow"].setText(_warderUiText("Goto Date/Time"))
+		self["keyBlue"].setText(_warderUiText("EPG Search"))
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close, "green": lambda: self.close("green"), "yellow": lambda: self.close("yellow"), "blue": lambda: self.close("blue")}, -1)
 		self._serviceRef = self._normaliseServiceRef(service)
 		self["now"].setText(time1.strftime("%A  %d. %b %Y  %H:%M", time1.localtime()))
 		if event is not None:
-			try: self["title"].setText(event.getEventName() or "")
+			try:
+				eventName = event.getEventName() or ""
+				self["title"].setText(eventName)
+				self["posterTitle"].setText(eventName)
 			except Exception: pass
 			try:
 				begin = int(event.getBeginTime()); duration = int(event.getDuration())
@@ -1095,7 +1123,7 @@ try:
 	def _warderGraphicalEPGLabels(self):
 		if not _warderGraphicalEPGPIG(self):
 			return
-		for key, text in (("key_red", "PROGRAM INFO"), ("key_green", _("Add Timer")), ("key_yellow", _("Goto Date/Time")), ("key_blue", _("EPG Search"))):
+		for key, text in (("key_red", _warderUiText("PROGRAM INFO")), ("key_green", _warderUiText("Add Timer")), ("key_yellow", _warderUiText("Goto Date/Time")), ("key_blue", _warderUiText("EPG Search"))):
 			try:
 				self[key].setText(text)
 			except Exception:

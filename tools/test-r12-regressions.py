@@ -414,11 +414,7 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
     assert 'name="lab1"' in block, screen
     for key in ("red", "green", "yellow", "blue"):
         if screen == "GraphicalEPGPIG":
-            if key == "red":
-                # Warder owns RED visually; external plugins must not overwrite PROGRAM INFO.
-                assert '<eLabel text="PROGRAM INFO"' in block, (screen, key)
-            else:
-                assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
+            assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
         else:
             assert ('name="key_%s"' % key) in block, (screen, key)
 pigepg = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
@@ -534,3 +530,23 @@ COND = (PKG / "usr/lib/enigma2/python/Components/Converter/g17ConditionalShowHid
 assert "self.timer.timeout.connect(self.blinkFunc)" in COND
 assert "self.timer.callback.append(self.blinkFunc)" in COND
 assert "self.timer_conn = None" in COND
+
+
+# TEST38 Program Info: action labels follow the active Enigma2 language and
+# artwork uses FullHDGlass' existing poster renderer. A station picon is never
+# substituted into the programme-artwork area.
+for token in (
+    'def _warderUiText(text):',
+    '_warderUiText("PROGRAM INFO")',
+    '_warderUiText("Close")',
+    '_warderUiText("Add Timer")',
+    '_warderUiText("Goto Date/Time")',
+    '_warderUiText("EPG Search")',
+    'self["posterTitle"] = StaticText("")',
+    'self["posterTitle"].setText(eventName)',
+    'source="posterTitle" render="g17Poster2"',
+):
+    assert token in PLUGIN, token
+assert 'self["preview"] = Pixmap()' not in PLUGIN
+assert '<eLabel text="PROGRAM INFO"' not in pigepg
+assert 'source="key_red" render="Label"' in pigepg
