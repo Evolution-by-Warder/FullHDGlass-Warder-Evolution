@@ -1558,18 +1558,6 @@ except Exception as e:
 
 def startHdg17(reason, **kwargs):
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		# TEST77: force the FullHDGlass17-owned Warder Radio/DAB picture whenever
-		# OpenATV enters audio-only radio mode. This replaces the generic image
-		# without touching the system-wide default for other skins.
-		try:
-			warderRadioPic = "/usr/share/enigma2/hd_glass17/radio.mvi"
-			if hasattr(config, "misc") and hasattr(config.misc, "radiopic"):
-				config.misc.radiopic.value = warderRadioPic
-			if hasattr(config, "misc") and hasattr(config.misc, "showradiopic"):
-				config.misc.showradiopic.value = True
-		except Exception as e:
-			Writelog("WarderRadio radiopic: %s" % e)
-
 		# Warder native graphical EPG: picons only, compact service column.
 		# Keep this scoped to FullHDGlass17 session start and tolerate images without these OpenATV keys.
 		try:

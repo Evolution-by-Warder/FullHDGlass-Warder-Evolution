@@ -775,13 +775,14 @@ assert 'generate-warder-radio-background.py' in BUILD_TEST
 assert 'radio.mvi' in BUILD_TEST
 
 
-# TEST77: OpenATV radio mode must use the Warder-owned generated radio.mvi.
+# TEST78: TEST77 receiver boot-loop recovery. Do not mutate OpenATV radio-picture
+# config at session start; OpenATV resolves radio.mvi from the active GUI skin.
 for token in (
     'warderRadioPic = "/usr/share/enigma2/hd_glass17/radio.mvi"',
     'config.misc.radiopic.value = warderRadioPic',
     'config.misc.showradiopic.value = True',
 ):
-    assert token in PLUGIN, token
+    assert token not in PLUGIN, token
 BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
 for token in ("generate-warder-radio-background.py", "hd_glass17/radio.mvi", "ffmpeg"):
     assert token in BUILD_TEST, token
