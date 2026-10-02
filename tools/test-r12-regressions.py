@@ -411,8 +411,12 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG", "GraphicalInfoBarEPG"):
         assert token in block, (screen, token)
 for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
     block = re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN).group(0)
-    for token in ('name="lab1"', 'name="key_red"', 'name="key_green"', 'name="key_yellow"', 'name="key_blue"'):
-        assert token in block, (screen, token)
+    assert 'name="lab1"' in block, screen
+    for key in ("red", "green", "yellow", "blue"):
+        if screen == "GraphicalEPGPIG":
+            assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
+        else:
+            assert ('name="key_%s"' % key) in block, (screen, key)
 pigepg = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pigepg
 quickepg = re.search(r'<screen\b[^>]*name="QuickEPG"[\s\S]*?</screen>', SKIN).group(0)
