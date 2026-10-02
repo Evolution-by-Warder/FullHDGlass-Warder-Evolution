@@ -188,8 +188,8 @@ class WarderProgramInfo(Screen):
 		<widget name="yearMeta" position="225,593" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="countryLabel" position="50,626" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
 		<widget name="countryMeta" position="225,626" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="ratingStars" position="1390,105" size="430,45" font="Prive4;34" halign="right" foregroundColor="#e53935" transparent="1" />
-		<widget name="ratingMeta" position="1390,155" size="430,36" font="Prive4;27" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<widget name="ratingStars" position="1390,105" size="430,45" font="Prive4;36" halign="right" foregroundColor="#e53935" transparent="1" />
+		<widget name="ratingMeta" position="1390,152" size="430,36" font="Prive4;25" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<widget name="when" position="580,170" size="760,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="short" position="580,235" size="1220,120" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,405" size="1840,2" backgroundColor="#707070" />
@@ -260,10 +260,11 @@ class WarderProgramInfo(Screen):
 				if meta.get("year"): self["yearMeta"].setText(meta["year"])
 				if meta.get("country"): self["countryMeta"].setText(meta["country"])
 				if meta.get("rating"):
-					rating = float(meta["rating"])
+					rating_text = str(meta["rating"]).strip()
+					rating = float(rating_text.split("/", 1)[0].strip())
 					filled = max(0, min(5, int(round(rating / 2.0))))
 					self["ratingStars"].setText("★" * filled + "☆" * (5 - filled))
-					self["ratingMeta"].setText("%s: %s/10 (%s)" % (_warderUiText("Rating:").rstrip(":"), meta["rating"], meta.get("provider", "")))
+					self["ratingMeta"].setText("%s · %s" % (rating_text, meta.get("provider", "TMDB")))
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata: %s" % e)
 		serviceName = self._serviceName(service, self._serviceRef)

@@ -648,7 +648,10 @@ assert 'self[field].setText("-")' in program_info
 assert '<screen name="WarderProgramInfo" position="15,15" size="1890,1050"' in program_info
 assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
 assert '<eLabel position="25,72" size="505,286" backgroundColor="transpBlack"' not in program_info
-assert 'name="ratingStars" position="1390,105"' in program_info
+assert 'name="ratingStars" position="1390,105" size="430,45" font="Prive4;36"' in program_info
+assert 'name="ratingMeta" position="1390,152" size="430,36" font="Prive4;25"' in program_info
+assert 'rating_text.split("/", 1)[0].strip()' in PLUGIN
+assert 'self["ratingMeta"].setText("%s · %s"' in PLUGIN
 assert 'name="description" position="535,425" size="1300,440"' in program_info
 assert 'position="25,890" size="1840,2"' in program_info
 assert 'position="25,933" size="420,46"' in program_info
