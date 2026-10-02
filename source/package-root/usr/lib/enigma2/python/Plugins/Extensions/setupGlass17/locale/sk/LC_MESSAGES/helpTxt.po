@@ -1,0 +1,743 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-10 19:34+0100\n"
+"PO-Revision-Date: 2021-11-10 19:35+0100\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: sk_SK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "free"
+msgstr "voľné"
+
+msgid "TP info is not detected"
+msgstr "Info o TP nebolo detekované"
+
+msgid "Reference is not detected"
+msgstr "Reference nebolo detekované"
+
+msgid "No EPG data available"
+msgstr "EPG data nie sú dostupné"
+
+msgid "Please wait for the reading and processing of data"
+msgstr "Počkajte na čítanie a spracovanie dát"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "Po stlačení \"OK\" si môžete zvoliť adresár."
+
+msgid ""
+"Autocolor - use definition from skin.xml or g17Screens.py; selected color - "
+"display with selected color"
+msgstr ""
+"Automatická farba - použije definíciu zo skin.xml alebo g17Screens.py; "
+"zvolená farba - zabrazí sa v zvolenej farbe"
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "Kanály zo všetkých satelitov a sk/cz kanály pozemného vysielania"
+
+msgid "No plugin Netatmo installed"
+msgstr "Plugin Netatmo nie je nainštalovaný"
+
+msgid "Your API-key"
+msgstr "Tvoje API-key"
+
+msgid ""
+"The layout is selected automatically calculating by picon size in the infobar"
+msgstr ""
+"Vzhľad sa vyberá automaticky a vypočíta sa podľa veľkosti picon-u v "
+"informačnom paneli"
+
+msgid "Measurement of current network speed is disabled"
+msgstr "Meranie aktuálnej rýchlosti siete je zakázané"
+
+msgid ""
+"Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "Meranie aktuálnej rýchlosti siete je povolené a zobrazuje sa v kb/s"
+
+msgid ""
+"Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "Meranie aktuálnej rýchlosti siete je povolené a zobrazuje sa v Mb/s"
+
+msgid "Poster is displayed if exists"
+msgstr "Ak existuje, zobrazí sa Poster"
+
+msgid ""
+"Currently displayed Poster will be erased after press long \"OK\" and do not "
+"displayed back again"
+msgstr ""
+"Aktuálne zobrazený Poster sa po dlhom stlačení tlačidla „OK“ vymaže a už sa "
+"znova nezobrazí"
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "Vyhľadávanie posterov z „Internet Movie Database (IMDb)“"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "Vyhľadávanie posterov z „The Movie Database (TMDb)“"
+
+msgid ""
+"Poster search from \"Internet Movie Database (IMDb) if not found then search "
+"from \"The Movie Database (TMDb)\""
+msgstr ""
+"Vyhľadávanie Posterov z „Internetovej filmovej databázy (IMDb)“, ak sa "
+"nenájde, potom vyhľadáva z „The Movie Database (TMDb)“"
+
+msgid "Poster search is started with selected delay"
+msgstr "Vyhľadávanie posterov sa spustí s vybraným oneskorením"
+
+msgid "Poster is displayed with the selected size"
+msgstr "Poster sa zobrazí s vybranou veľkosťou"
+
+msgid ""
+"ECM info is displayed from all channels - current displayed, background "
+"recording, streaming etc."
+msgstr ""
+"Informácie ECM sa zobrazujú zo všetkých kanálov - aktuálne zobrazené, "
+"nahrávanie na pozadí, streamovanie atď."
+
+msgid "ECM info is displayed from current channel"
+msgstr "Informácie ECM sa zobrazujú z aktuálneho kanála"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "Bitrate  sa vypočíta pomocou priloženého binárneho bitrate"
+
+msgid ""
+"Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "Bitrate sa vypočíta pomocou eBitrateCalculator z pluginu BitrateViewer"
+
+msgid ""
+"All available stations with their modules are displayed one by one with "
+"defined switching time"
+msgstr ""
+"Všetky dostupné stanice so svojimi modulmi sa zobrazujú jedna po druhej s "
+"definovanou dobou prepnutia"
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "Informácie sa zobrazujú zo zvolenej stanice v plugine Netatmo"
+
+msgid "Time in seconds"
+msgstr "Čas v sekundách"
+
+msgid "Real tuner data are displayed"
+msgstr "Zobrazia sa skutočné data z tunera"
+
+msgid "Data are displayed from Transponder information"
+msgstr "Data sú zobrazené z informacií transpondéru"
+
+msgid "Animations are disabled"
+msgstr "Animácie sú zakázané"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "Vybrané animácie sa aplikujú na vybrané objekty"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "Nezobrazujú sa informácie o stave HDD/SSD"
+
+msgid ""
+"HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer "
+"infobar"
+msgstr ""
+"Teplota, veľkosť a voľné miesto HDD/SSD sa zobrazuje v infobare EMC a "
+"Movieplayer-a"
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "Zobrazí sa len posledných 10 vyhľadaných kanálov"
+
+msgid ""
+"Searched channels are displayed as long list and you can browse in the list"
+msgstr ""
+"Vyhľadané kanály sa zobrazia ako dlhý zoznam a možeš listovať v zozname"
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr ""
+"Čas obnovy medzi snímkami animovanej ikony (predvolená hodnota je 50 ms)"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "Aplikuje sa vo všetkých obrazovkách kde je listbox použitý"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "Ikony pre noc sú nahradené ikonami pre deň"
+
+msgid "Nighttime icons are displayed"
+msgstr "Zobrazia sa nočné ikony"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "Po stlačení \"OK\" sa spustí zvolená funkcia"
+
+msgid "Spinner will be used as default from image"
+msgstr "Spinner bude použitý ako predvolený z image"
+
+msgid ""
+"Spinner will be used from Full HD Glass17. Original spinner is moved to dir "
+"spinner-ori"
+msgstr ""
+"Spinner bude použitý ako z Full HD Glass17. Pôvodný sa presunie do dir "
+"spinner-ori"
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "EPG list sa zobrazí s nastavenou veľkosťou fontu"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "PIP typy výberu kanálov sú nedostupné"
+
+msgid ""
+"PIP types of channel selections are available but it can generate GSOD in "
+"some images"
+msgstr ""
+"PIP typy výberu kanálov sú dostupné ale môžu spôsobiť pád (GSOD) v "
+"niektorých images"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "Adresár kde je umiestnený súbor: satellites.xml"
+
+msgid ""
+"Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr "Adresár kde bude uložená aktálna konfigurácia FHDG (súbor: hdg17.conf)"
+
+msgid "Display forecast for 5 days"
+msgstr "Zobraz predpoveď na 5 dní"
+
+msgid ""
+"Display forecast for 10 days at first 5 days after timeout of switch time "
+"display next 5 days"
+msgstr ""
+"Zobraz predpoveď na 10 dní, najprv na 5 dní a po uplynuti časového limitu "
+"prepnutie na ďalšich 5 dní"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "Zobrazí sa info o východe, západe planét, slnka a mesiaca"
+
+msgid "Sorry, help info is missing"
+msgstr "Nápoveda neobsahuje žiaden bližší popis o aktuálnej voľbe"
+
+msgid "Info is displayed with defined color"
+msgstr "Info sa zobrazí s definovanou farbou"
+
+msgid "Info is displayed with autoselected color"
+msgstr "Info sa zobrazí s automaticky nastavenou farbou"
+
+msgid "Show extra screen only"
+msgstr "Zobrazí sa len Extra Infobar"
+
+msgid "None special info is selected"
+msgstr "Nie je zvolené žiadne špeciálne info"
+
+msgid "Show extra infobar only"
+msgstr "Zobrazí sa len Extra Infobar"
+
+msgid "Show side bar and extra infobar only"
+msgstr "Zobrazí sa len bočná infolišta a Extra infobar"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1- rýchlejšie, 10 - pomalšie"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "Infobar sa zobrazí okamžite a zmizne okamžite"
+
+msgid ""
+"Infobar (dis)appears from full/defined transparency to defined(full) "
+"transparency"
+msgstr ""
+"Infobar sa (ne)zobrazí z plnej/navolenej priehľadnosti do navolenej/plnej "
+"priehľadnosti"
+
+msgid ""
+"Infobar appears immediately and disapears from defined to full transparency"
+msgstr ""
+"Infobar sa zobrazí okamžite a zmizne z navolenej do plnej priehľadnosti"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "Zobrazi sa Infobar a po stlačení 2x\"OK\" sa zobrazí User info"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr ""
+"Zobrazí sa User info po stlačení 2x\"OK\" a zmizne spolu s Extra Infobarom"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr ""
+"Zobrazí sa User info po stlačení 2x\"OK\" a zmizne po stlačení \"OK\" alebo "
+"\"exit\""
+
+msgid "Show actual event(EPG) only"
+msgstr "Zobrazí sa popis aktuálneho programu z EPG"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr ""
+"Po dlhom stlačení \">\" prepína popis k programu z EPG medzi aktuálnym a "
+"nasledujúcim"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "Zobrazi sa ECM PID info spolu s Extra Infobarom"
+
+msgid "Show events name in infobar as static text"
+msgstr "Zobrazia sa názvy programov v infobare ako statický text"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr ""
+"Zobrazia sa názvy programov v infobare postupne znak po znaku s efektom "
+"písacieho stroja"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "Vzhľad OLED sa zobrazí podľa definície z \"image\""
+
+msgid ""
+"Display \"Btr too high - stopped\" if realtime bitrate is higher as the set "
+"value"
+msgstr ""
+"Zobrazí sa \"Btr je príliš vysoký - zastavený\" ak reálny bitrate je vyšší "
+"ako nastavená hodnota"
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr ""
+"Použi len ak v tvojom \"image\" je mapovanie tlačidiel diaľkového ovládania "
+"je nastavené na \"štandard Enigma2\""
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr ""
+"Použi len ak v tvojom \"image\" je mapovanie tlačítiek ďiaľkového ovládania "
+"je nastavené na \"typ Neutrino\""
+
+msgid "Show messages in default language - english"
+msgstr "Všetky popisy a oznamy sa zobrazia v predvolenom jazyku - angličtina"
+
+msgid ""
+"Show localized messages autodetected from active OSD setting of language"
+msgstr ""
+"Všetky popisy a oznamy sa zobrazia v automaticky detekovanom jazyku podľa "
+"nastavení jazyka OSD"
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "Infobar zmizne po definovanom čase v nastavení systému"
+
+msgid ""
+"Infobar activated by switching between channels disappears after a defined "
+"timeout in system settings. Infobar activated press \"OK\" appears "
+"permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr ""
+"Infobar aktivovaný po prepnutí medzi kanálmy zmizne po definovanom čase v "
+"nastavení systému. Infobar aktivovaný po stlačení \"OK\" sa zobrazí "
+"permanentne ale môže byť zrušený stlačením \"exit\" alebo \"OK\""
+
+msgid ""
+"Infobar activated press \"OK\" appears permanently but disappears press "
+"\"exit\" or \"OK\""
+msgstr ""
+"Infobar aktivovaný po stačení \"OK\" sa zobrazí permanentne ale zmizne po "
+"stlačení \"exit\" or \"OK\""
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "Skontroluje pripojenie na bod v internete definovaný IP adresou"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "Zobudenie HDD/SSD je spravované len z \"image\""
+
+msgid ""
+"Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is "
+"sleeping"
+msgstr ""
+"Zobudenie HDD/SSD je možné ak niektorá funkcia nemôže získať potrebné info "
+"ak je HDD/SSD v pohotovostnom stave"
+
+msgid ""
+"auto - autodetection of tuners presented in box; value (1-19) - display "
+"selected numbers of tuners"
+msgstr ""
+"auto - automatická detekcia obsadených tunerov v box-e; hodnota (1-19) - "
+"zobrazí sa zvolený počet tunerov"
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "Nezobrazí sa blikajúca ikona \"R\" v infobare"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "Zobrazí sa blikajúca ikona \"R\" v infobare"
+
+msgid "Leave memory management untouched"
+msgstr "Správa obsadenia pamäte bude neaktívna"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "Detekcia AC3/Dolby vo všetkých vysielaných zvukových stopách"
+
+msgid ""
+"Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio "
+"track"
+msgstr ""
+"Detekcia AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg v aktuálne "
+"zvolenej zvukovej stope"
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "Automatické čistenie pamäte - čas obnovy 3 minúty"
+
+msgid ""
+"IP Address used for network status check - available connection to the "
+"Internet"
+msgstr ""
+"IP adresa použitá na kontrolu stavu siete - dostupné pripojenie na Internet"
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "Použije originálny encoding.conf z \"image\""
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "Použije encoding-user.conf umiestnený v /usr/share/enigma2"
+
+msgid "Channel selection works with standard functionality"
+msgstr "Výber kanálov funguje podľa štandardnej funkcionality"
+
+msgid ""
+"Press \"OK\" - activate selected channel and channel selection no appear "
+"then press \"OK\" - disappear channel selection or press \"exit\" revert on "
+"last playd channel before activating Channel selection"
+msgstr ""
+"Po stlačení \"OK\" - aktivuje sa práve zvolený kanál a výber kanálov zostane "
+"aktívny potom po stlačení \"OK\" - zmizne výber kanálov alebo po stlačení "
+"\"exit\" dôjde k prepnutiu na kanál aktívny pred aktiváciou výberu kanálov"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "Po stlačení \"OK\" sa spustí zvolená položka bez animácie"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "Po stlačení \"OK\" sa spustí animácia pred aktiváciou zvolenej položky"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "Zobrazí počasie pre nastavené mesto v Nastaveniach HDG"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "Po stačení \">\" zobrazí počasie pre ďalšie mesto"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr ""
+"Špeciálne info (aktivované po stlačení \"help\") sa stratí automaticky po "
+"stlačení \"help\""
+
+msgid ""
+"Special info screen (activated press \"help\") disappear automatically after "
+"20s"
+msgstr ""
+"Špeciálne info (aktivované po stlačení \"help\") sa stratí automaticky po 20 "
+"sekundách"
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "Čas obnovy znovunačítania info zo súboru ecm.info"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "Zakáže automatickú kontrolu novej verzie HDG"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "Povolí automatickú kontrolu novej verzie HDG"
+
+msgid "Static text - no scrolling"
+msgstr "Statický text bez rolovania"
+
+msgid ""
+"Roll up at end of text and stop wait selected seconds (text roll delay) then "
+"roll down back"
+msgstr ""
+"Roluje hore do konca textu, zastaví sa, počka zvolený čas v sekundách potom "
+"roluje dole späť"
+
+msgid "Roll up at end of text and stop"
+msgstr "Roluje hore do konca textu a zastaví sa"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "Rolovanie textu začne so zvoleným oneskorením v skin.xml"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "Rolovanie textu začne so zvoleným oneskorením v sekundách"
+
+msgid "Show channel name only"
+msgstr "Zobrazí len názov kanálu"
+
+msgid "Show number and channel name"
+msgstr "Zobrazí sa číslo a názov kanálu"
+
+msgid "Show satellite position and channel name"
+msgstr "Zobrazí pozíciu satelitu a názov kanálu"
+
+msgid "Show number, satellite position and channel name"
+msgstr "Zobrazí číslo, pozíciu satelitu a názov kanálu"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "Nezobrazí sa žiadne info o \"Poskytovateľovi\" v  infobare"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "Zobrazí sa info o \"Poskytovateľovi\" v  infobare"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "Nezobrazí sa žiadne info o \"Teplote a otáčkach\" v  infobare"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "Zobrazí sa info o \"Teplote a otáčkach\" v  infobare"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Nezobrazí sa žiadne info o \"záťaži CPU a využití pamäte\" v  infobare"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "Zobrazí sa info o \"záťaži CPU a využití pamäte\" v  infobare"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Nezobrazí sa žiadne info o \"Teplote HDD/SSD\" v  infobare"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "Zobrazí sa info o \"Teplote HDD/SSD\" v  infobare"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "Nezobrazí zvolené špeciálne info \"rozšírenia\" v hlavnom menu"
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "Zobraz špeciálne info \"rozšírenia\" v hlavnom menu"
+
+msgid ""
+"Temperature will be displayed with units defined in my_city_Code.txt or "
+"city_Code.txt"
+msgstr ""
+"Teplota sa bude zobrazovať v jednotkách definovaných v my_city_Code.txt "
+"alebo  city_Code.txt"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr ""
+"Teplota sa bude zobrazovať v jednotkách definovaných v ewea_city_Code.txt"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "Teplota sa bude zobrazovať v jednotkách Celzius"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "Teplota sa bude zobrazovať v jednotkách Fahrenheit"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "Čas znovupripojenia načítania dát z web-u poskytovateľa v minútach"
+
+msgid ""
+"Reading weather data from OpenWeatherMap but you have to enter your API-key "
+"from registration on the website openweathermap.org (Registration and base "
+"API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr ""
+"Čítanie údajov o počasí z OpenWeatherMap, ale musíte zadať svoj API kľúč po "
+"registrácii na webe openweathermap.org (registrácia a základný API kľúč je "
+"zadarmo) a je možné ho načítať z /etc/openweathermap.api"
+
+msgid "Reading weather data from MSN website"
+msgstr "Načítanie dát počasia z web-u MSN"
+
+msgid "\"Find a city\" is disabled"
+msgstr "\"Nájdi mesto\" je zakázané"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "\"Nájdi mesto\" je zakázané zobraziť v rozšíreniach"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "\"Nájdi mesto\" je zakázané zobraziť v hlavnom menu"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "Nepokusí sa získať data od poskytovateľa ak je detekovaná chyba"
+
+msgid ""
+"Autoreconnect - try get data from provider if an error is detected - try "
+"with cycle in selected time while data are not ok"
+msgstr ""
+"Automatické pripojenie - pokusí sa získať data od poskytovateľa ak je "
+"detekovaná chyba - skúša dookola v zvolenom čase pokiaľ získane data nie sú "
+"v poriadku"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "Zobrazí sa predpoveď pre dnešok a ďalšie 3 dni"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "Zobrazí sa predpoveď pre včerajšok, dnešok a ďalšie 3 dni"
+
+msgid "High temperature appear in Autocolor"
+msgstr "Automaticky sa nastaví farba pre vysokú teplotu"
+
+msgid "High temperature appear in selected color"
+msgstr "Vysoká teplota sa zobrazí v zvolenej farbe"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "Automaticky sa nastaví farba pre nízku teplotu"
+
+msgid "Low temperature appear in selected color"
+msgstr "Nízka teplota sa zobrazí v zvolenej farbe"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr ""
+"Teplota pre chladno/veľmi teplo až horúco sa zobrazí v zvolenej farbe "
+"(chladno/teplo farba)"
+
+msgid ""
+"Cold temperature is higher as settings of \"Cold temperature\" or/and Warm "
+"temperature is lower as \"Warm temperature\""
+msgstr ""
+"Teplota pre chladno je vyššia ako nastavenie \"Teplota chladu\" alebo/a "
+"Teplota pre veľmi teplo až horúco je nižšia ako \"Teplota veľmi teplo až "
+"horúco\""
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "Rozsah pre hranicu veľmi teplo až horúco: 15-40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "Rozsah pre hranicu nízkej teploty: 1-14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "Rozsah pre hranicu veľmi teplo až horúco: 58-104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "Rozsah pre hranicu nízkej teploty: 33-57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "HDD/SSD detekované kernelom ako zariadenie"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "Cesta ku všetkým potrebným adresárom ako napr. picon, piconProv a iné."
+
+msgid ""
+"User defined path to all required directories like picon, piconProv and more."
+msgstr "Cesta ku všetkým potrebným adresárom ako napr. picon, piconProv a iné."
+
+msgid ""
+"Channel numbers are calculated at enigma start so any change in channels "
+"order have no effect to channel numbers"
+msgstr ""
+"Čísla kanálov sú vypočítané po štarte enigmy takže zmena v poradí kanálov "
+"nemá žiaden vplyv na čísla kanálov"
+
+msgid ""
+"Channel number is calculated after switching between channels always so "
+"every change in channel order is applied on calculation of channel number"
+msgstr ""
+"Číslo kanálu je vypočítané po každom prepnutí medzi kanálmi takže akákoľvek "
+"zmena v poradí kanálov sa uplatní vo výpočte"
+
+msgid "Date format will be used from definition in skin part"
+msgstr "Formát dátumu bude použitý z definície v skin časti"
+
+msgid "Date format will be used as follow"
+msgstr "Formát dátumu bude použitý nasledujúcim spôsobom"
+
+msgid "Channel logos with white background"
+msgstr "Logá kanálov na bielom pozadí"
+
+msgid "Channel logos with black background"
+msgstr "Logá kanálov na čiernom pozadí"
+
+msgid "Channel logos for OLED display"
+msgstr "Logá kanálov určené pre OLED display"
+
+msgid "Provider logos with white background"
+msgstr "Logá providerov na bielom pozadí"
+
+msgid "Provider logos with black background"
+msgstr "Logá providerov na čiernom pozadí"
+
+msgid "Satellite logos with white background"
+msgstr "Logá satelitov na bielom pozadí"
+
+msgid "Satellite logos with black background"
+msgstr "Logá satelitov na čiernom pozadí"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "Logá kódovacich systémov a Softcamov na bielom pozadí"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "Logá kódovacich systémov a Softcamov na čiernom pozadí"
+
+msgid "Selected option previews in setup of skin"
+msgstr "Náhľad zvolenej voľby v nastavení skinu"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "Náhľady Extra screenov a sady ikon použitých v infobare"
+
+msgid ""
+"Graphics used in extra screen and after download it you get more choices of "
+"Extra screen"
+msgstr ""
+"Grafika použitá v Extra screenoch a po stiahnutí umožní získať viac volieb "
+"výberu Extra screenov"
+
+msgid "Icons used in some menu types"
+msgstr "Ikony použité v niektorých typoch menu"
+
+msgid "Big icons used in some menu types"
+msgstr "Veľké ikony použité v niektorých typoch menu"
+
+msgid ""
+"Weather icons used in special and user info types: Weather, Weather light a "
+"Extended weather"
+msgstr ""
+"Ikony počasia použité v špeciálnom a user info typoch: počasie, počasie 2 a "
+"rozšírené počasie"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr ""
+"piconWeather biely použitý ako typ druhého piconu v infobare, ak je zvolený"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr ""
+"piconWeather čierny použitý ako typ druhého piconu v infobare, ak je zvolený"
+
+msgid "Animated icons will be displayed"
+msgstr "Zobrazia sa animované ikony"
+
+msgid "Static icons will be displayed"
+msgstr "Zobrazia sa statické ikony"
+
+msgid ""
+"Animated Weather icons used in: Infobar, Special, User info type Weather or "
+"Enhanced Weather "
+msgstr ""
+"Animované ikony počasia použité v: infobare, špeciálnom, user info type "
+"počasie alebo rozšírené počasie"
+
+msgid "Channel logos with picture background"
+msgstr "Logá kanálov s obrázkovým pozadím"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "Balík len Skylink a Freesat kanálov"
+
+msgid "Channel logos with transparent background"
+msgstr "Logá kanálov s transparentným pozadím"
+
+msgid "Tool needed to extract picon packages"
+msgstr "Nástroj potrebný k rozbaleniu balíkov picon"
+
+msgid "Provider logos with transparent background"
+msgstr "Logá providerov s transparentným pozadím"
+
+msgid "Satellite logos with transparent background"
+msgstr "Logá satelitov s transparentným pozadím"
+
+msgid ""
+"Channelselection icons with transparent background used in some "
+"Channelselecion types"
+msgstr "Ikony pre výber kanálov použité v niektorých typoch výberu kanálov"
+
+msgid "New Moon"
+msgstr "Nov"
+
+msgid "First Quarter"
+msgstr "Prvá štvrtina"
+
+msgid "Waxing Crescent"
+msgstr "Dorastajúci polmesiac"
+
+msgid "Waxing Moon"
+msgstr "Dorastajúci mesiac"
+
+msgid "Full Moon"
+msgstr "Spln"
+
+msgid "Waning Moon"
+msgstr "Ubúdajúci mesiac"
+
+msgid "Waning Crescent"
+msgstr "Ubúdajúci polmesiac"
+
+msgid "Last Quarter"
+msgstr "Posledná štvrtina"

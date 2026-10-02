@@ -1,0 +1,345 @@
+from Components.HTMLComponent import HTMLComponent
+from Components.GUIComponent import GUIComponent
+from Components.config import KEY_LEFT, KEY_RIGHT, KEY_HOME, KEY_END, KEY_0, KEY_DELETE, KEY_BACKSPACE, KEY_OK, KEY_TOGGLEOW, KEY_ASCII, KEY_TIMEOUT, KEY_NUMBERS, ConfigElement, ConfigText, ConfigPassword
+from Components.ActionMap import NumberActionMap, ActionMap
+from enigma import eListbox, eListboxPythonConfigContent, eTimer
+from Screens.MessageBox import MessageBox
+
+class ConfigList(HTMLComponent, GUIComponent, object):
+	def __init__(self, list, session = None):
+		GUIComponent.__init__(self)
+		self.l = eListboxPythonConfigContent()
+		self.l.setSeperation(800)
+		try:
+			self.l.setDividerHeight(1)
+		except: pass
+		self.timer = eTimer()
+		self._headers = []
+		self.list = list
+		self.onSelectionChanged = [ ]
+		self.current = None
+		self.session = session
+
+	def execBegin(self):
+		try:
+			self.timer_conn = self.timer.timeout.connect(self.timeout)
+		except AttributeError:
+			self.timer.callback.append(self.timeout)		
+		
+	def execEnd(self):
+		try:
+			self.timer_conn = None
+		except: 
+			self.timer.callback.remove(self.timeout)
+			
+	def toggle(self):
+		selection = self.getCurrent()
+		selection[1].toggle()
+		self.invalidateCurrent()
+
+	def handleKey(self, key):
+		selection = self.getCurrent()
+		if selection and selection[1].enabled:
+			selection[1].handleKey(key)
+			self.invalidateCurrent()
+			if key in KEY_NUMBERS:
+				self.timer.start(1000, 1)
+
+	def getCurrent(self):
+		return self.l.getCurrentSelection()
+	
+	def getCurrentIndex(self):
+		return self.l.getCurrentSelectionIndex()
+	
+	def setCurrentIndex(self, index):
+		if self.instance is not None:
+			self.instance.moveSelectionTo(index)
+			
+	def invalidateCurrent(self):
+		self.l.invalidateEntry(self.l.getCurrentSelectionIndex())
+
+	def invalidate(self, entry):
+		# when the entry to invalidate does not exist, just ignore the request.
+		# this eases up conditional setup screens a lot.
+		if entry in self.__list:
+			self.l.invalidateEntry(self.__list.index(entry))
+
+	GUI_WIDGET = eListbox
+	
+	def selectionChanged(self):
+		if isinstance(self.current,tuple) and len(self.current) > 1:
+			self.current[1].onDeselect(self.session)
+		self.current = self.getCurrent()
+		if isinstance(self.current,tuple) and len(self.current) > 1:
+			self.current[1].onSelect(self.session)
+		else:
+			return
+		for x in self.onSelectionChanged:
+			x()
+
+	def postWidgetCreate(self, instance):
+		try:
+			self.selectionChanged_conn = instance.selectionChanged.connect(self.selectionChanged)
+		except: 
+			instance.selectionChanged.get().append(self.selectionChanged)
+		instance.setContent(self.l)
+	
+	def preWidgetRemove(self, instance):
+		if isinstance(self.current,tuple) and len(self.current) > 1:
+			self.current[1].onDeselect(self.session)
+		try:
+			instance.selectionChanged.get().remove(self.selectionChanged)
+		except: 
+			self.selectionChanged_conn = None
+		instance.setContent(None)
+
+	def setList(self, l):
+		self.timer.stop()
+		self.__list = l
+		self.l.setList(self.__list)
+		self._headers = []
+		if l is not None:
+			index = 0
+			for x in l:
+				if len(x) < 2:
+					self._headers.append(index)
+				else:
+					assert isinstance(x[1], ConfigElement), "entry in ConfigList " + str(x[1]) + " must be a ConfigElement"
+				index += 1
+
+	def pageUp(self):
+		self.instance.moveSelection(eListbox.pageUp)
+
+	def pageDown(self):
+		self.instance.moveSelection(eListbox.pageDown)
+
+	def jumpToNextSection(self):
+		index = self.getCurrentIndex()
+		maxlen = len(self.__list)
+		while index < maxlen - 1:
+			index += 1
+			if index in self._headers:
+				if index + 1 < maxlen:
+					self.setCurrentIndex(index + 1)
+					return
+				else:
+					self.setCurrentIndex(index - 1)
+					return
+		if index == maxlen - 1:
+			self.setCurrentIndex(0)		
+			return
+		self.pageDown()
+
+	def jumpToPreviousSection(self):
+		index = self.getCurrentIndex() - 1
+		maxlen = len(self.__list)
+		while index >= 0 and maxlen > 0:
+			index -= 1
+			if index in self._headers:
+				if index + 1 < maxlen:
+					self.setCurrentIndex(index + 1)
+					return
+				else:
+					self.setCurrentIndex(index - 1)
+					return
+		if index == -1:
+			self.setCurrentIndex(maxlen - 1)		
+			return
+		self.pageUp()
+
+	def itemUp(self):
+		index = self.getCurrentIndex() + 1 
+		if index == len(self.__list):
+			index = 0
+		self.setCurrentIndex(index)				
+
+	def itemDown(self):
+		index = self.getCurrentIndex() - 1
+		if (index in self._headers and index == 0) or index == -1:
+			index = len(self.__list) - 1
+		elif index in self._headers:
+			index -= 1
+		self.setCurrentIndex(index)   	
+
+	def getList(self):
+		return self.__list
+
+	list = property(getList, setList)
+
+	def timeout(self):
+		self.handleKey(KEY_TIMEOUT)
+
+	def isChanged(self):
+		is_changed = False
+		for x in self.list:
+			if len(x) > 1:
+				is_changed |= x[1].isChanged()
+
+		return is_changed
+
+class ConfigListScreen:
+	def __init__(self, list, session = None, on_change = None):
+		self["config_actions_plus"] = NumberActionMap(["SetupActions", "InputAsciiActions", "KeyboardInputActions","PiPSetupActions"],
+		{
+			"gotAsciiCode": self.keyGotAscii,
+			"ok": self.keyOK,
+			"left": self.keyLeft,
+			"right": self.keyRight,
+			"up": self.keyDown,
+			"down": self.keyUp,
+			"home": self.keyHome,
+			"end": self.keyEnd,
+			"deleteForward": self.keyDelete,
+			"deleteBackward": self.keyBackspace,
+			"toggleOverwrite": self.keyToggleOW,
+			"size+" : self.keyPreviousSection,
+			"size-" : self.keyNextSection,
+			"1": self.keyNumberGlobal,
+			"2": self.keyNumberGlobal,
+			"3": self.keyNumberGlobal,
+			"4": self.keyNumberGlobal,
+			"5": self.keyNumberGlobal,
+			"6": self.keyNumberGlobal,
+			"7": self.keyNumberGlobal,
+			"8": self.keyNumberGlobal,
+			"9": self.keyNumberGlobal,
+			"0": self.keyNumberGlobal
+		}, -1) # to prevent left/right overriding the listbox
+
+		self["VirtualKB"] = ActionMap(["VirtualKeyboardActions"],
+		{
+			"showVirtualKeyboard": self.KeyText,
+		}, -2)
+		self["VirtualKB"].setEnabled(False)
+		
+		self["config"] = ConfigList(list, session = session)
+		
+		self.onConfigEntryChanged = []
+		if on_change:
+			self.onConfigEntryChanged.append(on_change)
+
+		if on_change is not None:
+			self.__changed = on_change
+		else:
+			self.__changed = lambda: None
+		
+		if not self.handleInputHelpers in self["config"].onSelectionChanged:
+			self["config"].onSelectionChanged.append(self.handleInputHelpers)
+
+	def _changedEntry(self):
+		for fnc in self.onConfigEntryChanged:
+			fnc()
+
+	def handleInputHelpers(self):
+		if self["config"].getCurrent() is not None:
+			if isinstance(self["config"].getCurrent()[1], ConfigText) or isinstance(self["config"].getCurrent()[1], ConfigPassword):
+				if "VKeyIcon" in self:
+					self["VirtualKB"].setEnabled(True)
+					self["VKeyIcon"].boolean = True
+				if "HelpWindow" in self:
+					if self["config"].getCurrent()[1].help_window.instance is not None:
+						from enigma import ePoint
+						self["config"].getCurrent()[1].help_window.instance.move(ePoint(44,440))
+			else:
+				if "VKeyIcon" in self:
+					self["VirtualKB"].setEnabled(False)
+					self["VKeyIcon"].boolean = False
+		else:
+			if "VKeyIcon" in self:
+				self["VirtualKB"].setEnabled(False)
+				self["VKeyIcon"].boolean = False
+
+	def KeyText(self):
+		from Screens.VirtualKeyBoard import VirtualKeyBoard
+		self.session.openWithCallback(self.VirtualKeyBoardCallback, VirtualKeyBoard, title = self["config"].getCurrent()[0], text = self["config"].getCurrent()[1].getValue())
+
+	def VirtualKeyBoardCallback(self, callback = None):
+		if callback is not None and len(callback):
+			self["config"].getCurrent()[1].setValue(callback)
+			self["config"].invalidate(self["config"].getCurrent())
+			
+	def keyOK(self):
+		self["config"].handleKey(KEY_OK)
+
+	def keyUp(self):
+		self["config"].itemUp()
+
+	def keyDown(self):
+		self["config"].itemDown()
+		
+	def keyLeft(self):
+		self["config"].handleKey(KEY_LEFT)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyRight(self):
+		self["config"].handleKey(KEY_RIGHT)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyHome(self):
+		self["config"].handleKey(KEY_HOME)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyEnd(self):
+		self["config"].handleKey(KEY_END)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyDelete(self):
+		self["config"].handleKey(KEY_DELETE)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyBackspace(self):
+		self["config"].handleKey(KEY_BACKSPACE)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyToggleOW(self):
+		self["config"].handleKey(KEY_TOGGLEOW)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyGotAscii(self):
+		self["config"].handleKey(KEY_ASCII)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyNumberGlobal(self, number):
+		self["config"].handleKey(KEY_0 + number)
+		self.__changed()
+		self._changedEntry()
+		
+	def keyPreviousSection(self):
+		self["config"].jumpToPreviousSection()
+
+	def keyNextSection(self):
+		self["config"].jumpToNextSection()
+
+	def saveAll(self):
+		for x in self["config"].list:
+			if len(x) > 1:
+				x[1].save()
+
+	# keySave and keyCancel are just provided in case you need them.
+	# you have to call them by yourself.
+	def keySave(self):
+		self.saveAll()
+		self.close()
+	
+	def cancelConfirm(self, result):
+		if not result:
+			return
+
+		for x in self["config"].list:
+			if len(x) > 1:
+				x[1].cancel()
+		self.close()
+
+	def keyCancel(self):
+		if self["config"].isChanged():
+			self.session.openWithCallback(self.cancelConfirm, MessageBox, _("Really close without saving settings?"))
+		else:
+			self.close()

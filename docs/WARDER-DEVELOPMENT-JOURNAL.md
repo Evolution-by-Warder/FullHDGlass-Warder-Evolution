@@ -266,3 +266,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST74 validation-only candidate: no runtime GUI code or skin geometry changed from TEST73. Version/build identity only, so a receiver after installing TEST73 can be offered TEST74 and the updater Yes/No confirmation will be rendered by the installed TEST73 MessageBox definitions. This is the valid physical test of the restored Regular;34 MessageBox-template font. TEST71 Program Info PASS remains protected. Receiver verification pending.
 
 - TEST74 CI retrigger: initial Revision 215 commit did not start an Actions run. Bumped only TEST-BUILD-REQUEST to Revision 216; no runtime/package version/GUI behavior changed.
+
+- TEST74 complete-tree recovery: rebuilt the candidate from the verified complete TEST73 source tree and overlaid only TEST74 package identity, build request, and journal. This restores `.github/workflows` and all project content without changing runtime GUI behavior. No force push/rebase used.

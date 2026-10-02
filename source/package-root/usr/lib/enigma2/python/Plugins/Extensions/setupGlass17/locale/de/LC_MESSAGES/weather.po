@@ -1,0 +1,341 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: weather - hd glass17\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-07 11:20+0200\n"
+"PO-Revision-Date: 2021-07-07 11:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: <shamann@pobox.sk>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "...N/A..."
+msgstr "...N/A..."
+
+msgid "Sun"
+msgstr "Sonntag"
+
+msgid "Mon"
+msgstr "Montag"
+
+msgid "Tue"
+msgstr "Dienstag"
+
+msgid "Wed"
+msgstr "Mittwoch"
+
+msgid "Thu"
+msgstr "Donnerstag"
+
+msgid "Fri"
+msgstr "Freitag"
+
+msgid "Sat"
+msgstr "Samstag"
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "März"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "Jun"
+msgstr "Juni"
+
+msgid "Jul"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+msgid "Light Snow Shower"
+msgstr "Schnee Nieselregen"
+
+msgid "Fog"
+msgstr "Nebel"
+
+msgid "Sunny"
+msgstr "Sonnig"
+
+msgid "Cloudy"
+msgstr "Bedeckt"
+
+msgid "Light Rain with Thunder"
+msgstr "Leichter Regen mit Gewitter"
+
+msgid "Drizzle"
+msgstr "Nieselregen"
+
+msgid "Showers in the Vicinity"
+msgstr "Nieselregen in der Nachbarschaft"
+
+msgid "Rain Shower"
+msgstr "Leichter Regen"
+
+msgid "Thunderstorm"
+msgstr "Gewitter"
+
+msgid "Thunder in the Vicinity"
+msgstr "Thunder in der Nachbarschaft"
+
+msgid "Thundershowers"
+msgstr "Donnert mit Nieselregen"
+
+msgid "Light Drizzle"
+msgstr "Heiter"
+
+msgid "Thunder"
+msgstr "Gewitter"
+
+msgid "Light Rain Shower"
+msgstr "Leichter Regen"
+
+msgid "Isolated Thunderstorms"
+msgstr "Vereinzelte Gewitter"
+
+msgid "Scattered Thunderstorms"
+msgstr "Vereinzelte Gewitter"
+
+msgid "AM"
+msgstr "Morgens"
+
+msgid "PM"
+msgstr "Nachmittags"
+
+msgid "Mostly Clear"
+msgstr "Überwiegend bewölkt"
+
+msgid "Snow"
+msgstr "Schneefall"
+
+msgid "Thunderstorms"
+msgstr "Gewitter"
+
+msgid "Wind"
+msgstr "Wind"
+
+msgid "Showers"
+msgstr "Nieselregen"
+
+msgid "Rain"
+msgstr "Regen"
+
+msgid "Mostly Sunny"
+msgstr "Überwiegend sonnig"
+
+msgid "Clear"
+msgstr "Wolkenlosen Himmel"
+
+msgid "Partly Cloudy"
+msgstr "Teilweise bedeckt"
+
+msgid "Mostly Cloudy"
+msgstr "Meistens bedeckt"
+
+msgid "Scattered Showers"
+msgstr "Vereinzelte Regenschauer"
+
+msgid "Few Showers"
+msgstr "Einige Schauer"
+
+msgid "Light Rain"
+msgstr "Leichter Regen"
+
+msgid "Fair"
+msgstr "Teilweise sonnig"
+
+msgid "Scattered Snow Showers"
+msgstr "Vereinzelt Schneeschauer"
+
+msgid "Wintry Mix"
+msgstr "Winterlichen Mix"
+
+msgid "Ice"
+msgstr "Eis"
+
+msgid "Breezy"
+msgstr "Luftig"
+
+msgid "Freezing Drizzle"
+msgstr "Gefrierender Nieselregen"
+
+msgid "Freezing Rain"
+msgstr "Gefrierender Regen"
+
+msgid "Wind direction"
+msgstr "Windrichtung"
+
+msgid "Location"
+msgstr ""
+
+msgid "Humidity"
+msgstr "Feuchtigkeit"
+
+msgid "Visibility"
+msgstr "Sichtweite"
+
+msgid "Geo position"
+msgstr "Geo Position"
+
+msgid "Pressure"
+msgstr "Druck"
+
+msgid "Feels like"
+msgstr "Feels like"
+
+msgid "City"
+msgstr "Stadt"
+
+msgid "Sunrise"
+msgstr "Sonnenaufgang"
+
+msgid "Sunset"
+msgstr "Sonnenuntergang"
+
+msgid "Update"
+msgstr "Aktualisierung"
+
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Website data reading timeout"
+msgstr ""
+
+msgid "None data received from website"
+msgstr ""
+
+msgid "Website is not responding"
+msgstr ""
+
+msgid "is not defined"
+msgstr "ist nicht definiert"
+
+msgid "NW"
+msgstr "Nordwest"
+
+msgid "SW"
+msgstr "Südwesten"
+
+msgid "SE"
+msgstr "Südosten"
+
+msgid "NE"
+msgstr "Nordöstlich"
+
+msgid "S"
+msgstr "Süden"
+
+msgid "N"
+msgstr "Nördlich"
+
+msgid "W"
+msgstr "Westlich"
+
+msgid "E"
+msgstr "Östlich"
+
+msgid "Mishmash in the data"
+msgstr ""
+
+msgid "Weather"
+msgstr "Wetter"
+
+msgid "Attempt"
+msgstr ""
+
+msgid "time to reconnect"
+msgstr "Ist Zeit, zum neu herunterladen"
+
+msgid "Clear sky"
+msgstr "Klarer Himmel"
+
+msgid "Mainly clear"
+msgstr "Überwiegend klar"
+
+msgid "Partly cloudy"
+msgstr "Teilweise bewölkt"
+
+msgid "Overcast"
+msgstr "Bedeckt"
+
+msgid "Depositing rime fog"
+msgstr "Raureifnebel"
+
+msgid "Dense drizzle"
+msgstr "Starker Nieselregen"
+
+msgid "Slight rain"
+msgstr "Leichter Regen"
+
+msgid "Heavy rain"
+msgstr "Starker Regen"
+
+msgid "Heavy freezing rain"
+msgstr "Starker gefrierender Regen"
+
+msgid "Slight snow"
+msgstr "Leichter Schneefall"
+
+msgid "Heavy snow"
+msgstr "Starker Schneefall"
+
+msgid "Snow grains"
+msgstr "Schneegriesel"
+
+msgid "Rain showers"
+msgstr "Regenschauer"
+
+msgid "Heavy rain showers"
+msgstr "Starke Regenschauer"
+
+msgid "Snow showers"
+msgstr "Schneeschauer"
+
+msgid "Heavy snow showers"
+msgstr "Starke Schneeschauer"
+
+msgid "Thunderstorm with hail"
+msgstr "Gewitter mit Hagel"
+
+msgid "Thunderstorm with heavy hail"
+msgstr "Gewitter mit starkem Hagel"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Light drizzle"
+msgstr "Leichter Nieselregen"
+
+msgid "Freezing drizzle"
+msgstr "Gefrierender Nieselregen"
+
+msgid "Freezing rain"
+msgstr "Gefrierender Regen"

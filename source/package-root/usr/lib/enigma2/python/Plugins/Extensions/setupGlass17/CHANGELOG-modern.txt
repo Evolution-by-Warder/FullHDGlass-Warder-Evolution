@@ -1,0 +1,21 @@
+FullHDGlass17 9.51-modern2 (2026-09-12)
+- Replaced broken Enhanced Weather AccuWeather HTML scraping with Open-Meteo JSON API.
+- Enhanced Weather no longer depends on BeautifulSoup or an API key.
+- Added Open-Meteo geocoding for Enhanced Weather city search and automatic migration of old city entries.
+- Added current conditions and 9-day forecast: apparent temperature, humidity, pressure, visibility, wind, UV, sunrise and sunset.
+- Replaced legacy AccuWeather condition parsing with WMO weather-code mapping to FullHDGlass17 icons.
+- Removed MSN as a selectable weather provider; weather.service.msn.com is retired.
+- Switched OpenWeatherMap current-weather calls from HTTP to HTTPS, including the duplicated plugin.py weather path.
+- Weather errors are now written to the FullHDGlass17 log instead of silently leaving a blank Enhanced Weather screen.
+
+FullHDGlass17 9.51-modern1 (2026-09-12)
+- Python 3 Menu implementation made canonical; removed obsolete duplicate Menu-new17-38.py.
+- Fixed undefined system() calls in Menu-new17.py.
+- Removed obsolete automatic overwrite of BlackHole SkinSelector from /tmp payload.
+- Removed process-wide HTTPS certificate verification bypass.
+- Hardened preinst/postinst/postrm scripts and corrected ori17 backup restoration names.
+- Installer no longer overwrites existing lcstrings.list, city_Code.txt or iptvprov.list.
+- Uninstaller no longer removes broad wildcard files from Enigma2 system directories.
+- Fixed Python regex escape warnings in maintained code paths.
+- Added missing menu icon assets: information, shutdown, gt_iptv_player_pro, setup,
+  video_menu, FHD_Glass17_Setup and extended, derived from native FullHDGlass17 artwork.

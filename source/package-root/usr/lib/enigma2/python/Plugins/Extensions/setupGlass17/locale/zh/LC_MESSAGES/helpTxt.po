@@ -1,0 +1,692 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: hd glass17 help\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-25 10:44+0100\n"
+"PO-Revision-Date: 2022-03-25 10:44+0100\n"
+"Last-Translator: lexlong <lexlong2007@163.com>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:/temp/to_locale\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "free"
+msgstr "免费"
+
+msgid "TP info is not detected"
+msgstr "未检测信息"
+
+msgid "Reference is not detected"
+msgstr "未检测到引用"
+
+msgid "No EPG data available"
+msgstr "您正在收看的节目暂无电子节目预告..."
+
+msgid "Please wait for the reading and processing of data"
+msgstr "请等待数据的读取和处理"
+
+msgid "Press button \"OK\" to select favorite directory."
+msgstr "按\"OK\"按钮选择收藏夹目录."
+
+msgid ""
+"Autocolor - use definition from skin.xml or g17Screens.py; selected color - "
+"display with selected color"
+msgstr ""
+
+msgid "Channels from all satelitte positions and sk/cz terrestrial channels"
+msgstr "来自所有卫星位置/cz地面通道的信道"
+
+msgid "No plugin Netatmo installed"
+msgstr "未安装Netatmo插件"
+
+msgid "Your API-key"
+msgstr ""
+
+msgid ""
+"The layout is selected automatically calculating by picon size in the infobar"
+msgstr ""
+
+msgid "Measurement of current network speed is disabled"
+msgstr "当前网络速度测量被禁用"
+
+#, fuzzy
+#| msgid "Measurement of current network speed is disabled"
+msgid ""
+"Measurement of current network speed is enabled and is displayed in kb/s"
+msgstr "当前网络速度测量被禁用"
+
+#, fuzzy
+#| msgid "Measurement of current network speed is disabled"
+msgid ""
+"Measurement of current network speed is enabled and is displayed in Mb/s"
+msgstr "当前网络速度测量被禁用"
+
+msgid "Poster is displayed if exists"
+msgstr "如果存在，则显示海报"
+
+msgid ""
+"Currently displayed Poster will be erased after press long \"OK\" and do not "
+"displayed back again"
+msgstr ""
+
+msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgstr "从\"互联网电影数据库（IMDb）\"搜索海报"
+
+msgid "Poster search from \"The Movie Database (TMDb)\""
+msgstr "从\"电影数据库（TMDb）\"搜索海报"
+
+#, fuzzy
+#| msgid "Poster search from \"Internet Movie Database (IMDb)\""
+msgid ""
+"Poster search from \"Internet Movie Database (IMDb) if not found then search "
+"from \"The Movie Database (TMDb)\""
+msgstr "从\"互联网电影数据库（IMDb）\"搜索海报"
+
+msgid "Poster search is started with selected delay"
+msgstr "海报搜索开始时选择延迟"
+
+msgid "Poster is displayed with the selected size"
+msgstr "海报以选定的尺寸显示"
+
+msgid ""
+"ECM info is displayed from all channels - current displayed, background "
+"recording, streaming etc."
+msgstr ""
+
+msgid "ECM info is displayed from current channel"
+msgstr "从当前通道显示发动机控制模块信息"
+
+msgid "Bitrate is calculated by using included bitrate binary"
+msgstr "使用包含的比特率二进制文件计算比特率"
+
+#, fuzzy
+#| msgid "Bitrate is calculated by using included bitrate binary"
+msgid ""
+"Bitrate is calculated by using eBitrateCalculator from plugin BitrateViewer"
+msgstr "使用包含的比特率二进制文件计算比特率"
+
+msgid ""
+"All available stations with their modules are displayed one by one with "
+"defined switching time"
+msgstr ""
+
+msgid "Info is displayed from Station selected in Netatmo plugin"
+msgstr "插件中选择的站点显示信息"
+
+msgid "Time in seconds"
+msgstr "时间（秒）"
+
+msgid "Real tuner data are displayed"
+msgstr "显示真实调谐器数据"
+
+msgid "Data are displayed from Transponder information"
+msgstr "数据显示来自收发器信息"
+
+msgid "Animations are disabled"
+msgstr "动画被禁用"
+
+msgid "Selected animations are applyied to selected objects"
+msgstr "选定的动画将应用于选定的对象"
+
+msgid "Do not display info about HDD/SSD state"
+msgstr "不显示有/SSD状态的信息"
+
+msgid ""
+"HDD/SSD temperature, size and free space is displayed in EMC and Movieplayer "
+"infobar"
+msgstr ""
+
+msgid "Last 10 searched channels are displayed only"
+msgstr "只显示最后10个搜索的频道"
+
+msgid ""
+"Searched channels are displayed as long list and you can browse in the list"
+msgstr ""
+
+msgid "Refresh time between frames of animated icon (default value is 50ms)"
+msgstr "动画图标帧间刷新时间（默认值50毫秒）"
+
+msgid "Apply to all screens where the listbox is used"
+msgstr "应用于使用列表框的所有屏幕"
+
+msgid "Nighttime icons are replaced by daytime icons"
+msgstr "夜间图标替换为日间图标"
+
+msgid "Nighttime icons are displayed"
+msgstr "显示夜间图标"
+
+msgid "Press button \"OK\" to activate selected function"
+msgstr "按\">\"按钮激活所选功能"
+
+msgid "Spinner will be used as default from image"
+msgstr "微调器将用作图像的默认值"
+
+msgid ""
+"Spinner will be used from Full HD Glass17. Original spinner is moved to dir "
+"spinner-ori"
+msgstr ""
+
+msgid "EPG list will be displayed with selected font size"
+msgstr "将显示带有选定字体大小列表"
+
+msgid "PIP types of channel selections are unavailable"
+msgstr "PIP类型的频道选择不可用"
+
+#, fuzzy
+#| msgid "PIP types of channel selections are unavailable"
+msgid ""
+"PIP types of channel selections are available but it can generate GSOD in "
+"some images"
+msgstr "PIP类型的频道选择不可用"
+
+msgid "Directory where is located the file: satellites.xml"
+msgstr "文件所在的目录:satellites.xml"
+
+msgid ""
+"Directory where will be saved actual configuration of FHDG (file: hdg17.conf)"
+msgstr ""
+
+msgid "Display forecast for 5 days"
+msgstr "显示5天的天气预测"
+
+#, fuzzy
+#| msgid "Display forecast for yesterday, today and next 3 days"
+msgid ""
+"Display forecast for 10 days at first 5 days after timeout of switch time "
+"display next 5 days"
+msgstr "显示昨天、今天和未3天的预测"
+
+msgid "Appears info about sunrise, sunset of planets, sun and moon"
+msgstr "出现关于日出，日落行星，太阳和月亮的信息"
+
+msgid "Sorry, help info is missing"
+msgstr "抱歉，缺少帮助信息"
+
+msgid "Info is displayed with defined color"
+msgstr "信息以定义的颜色显示"
+
+msgid "Info is displayed with autoselected color"
+msgstr "信息以自动选择的颜色显示"
+
+msgid "Show extra screen only"
+msgstr "仅显示额外屏幕"
+
+msgid "None special info is selected"
+msgstr "未选择特殊信息"
+
+msgid "Show extra infobar only"
+msgstr "仅显示额外的信息栏"
+
+msgid "Show side bar and extra infobar only"
+msgstr "仅显示侧栏和附加信息栏"
+
+msgid "1 - fastest, 10 - slowest"
+msgstr "1-最快最慢"
+
+msgid "Infobar appears immediately and disapears immediately"
+msgstr "信息栏立即出现并立即消失"
+
+msgid ""
+"Infobar (dis)appears from full/defined transparency to defined(full) "
+"transparency"
+msgstr ""
+
+#, fuzzy
+#| msgid "Infobar appears immediately and disapears immediately"
+msgid ""
+"Infobar appears immediately and disapears from defined to full transparency"
+msgstr "信息栏立即出现并立即消失"
+
+msgid "Show extra infobar and press 2xOK show User info"
+msgstr "显示第二信息栏并显示用户信息"
+
+msgid "Apears user info press 2x\"OK\" and disappears with extra infobar"
+msgstr "首次使用用户信息按 2x\"OK\" 和第二信息栏消失"
+
+msgid "Apears user info press 2x\"OK\" and disappears press \"OK\" or \"exit\""
+msgstr "首次使用用户信息按 2x\"OK\" 和消失按 \"OK\" or \"exit\""
+
+msgid "Show actual event(EPG) only"
+msgstr "仅显示当前电子节目预告"
+
+msgid "Press long \">\" switch between actual and next evet(EPG)"
+msgstr "长按按\">\"在当前事件和下一事件之间切换（EPG）"
+
+msgid "Display ECM PID info with extra infobar"
+msgstr "显示带有第二信息栏信息"
+
+msgid "Show events name in infobar as static text"
+msgstr "在信息栏中将事件名称显示为静态文本"
+
+msgid "Show events name in infobar char by char with typewritter effect"
+msgstr "使效果逐字符显中的事件名称"
+
+msgid "Show OLED design from \"image\" definition"
+msgstr "显示自\"图像\"的定义OLED设计"
+
+msgid ""
+"Display \"Btr too high - stopped\" if realtime bitrate is higher as the set "
+"value"
+msgstr ""
+
+msgid "Use only if in your image is keymapping set to \"standard Enigma2\""
+msgstr "仅当您的图像中键盘映射设置为\"Enigma2标准键盘\""
+
+msgid "Use only if in your image is keymapping set to \"Neutrino keymap type\""
+msgstr "仅当图像中的键映射设置为时使用\"Neutrino 键盘映射类型\""
+
+msgid "Show messages in default language - english"
+msgstr "以默认语英语显示邮件"
+
+msgid ""
+"Show localized messages autodetected from active OSD setting of language"
+msgstr ""
+
+msgid "Infobar disappears after a defined timeout in system settings"
+msgstr "信息栏在系统设置中定义的超时后消失"
+
+msgid ""
+"Infobar activated by switching between channels disappears after a defined "
+"timeout in system settings. Infobar activated press \"OK\" appears "
+"permanently but can be cancelled press \"exit\" or \"OK\""
+msgstr ""
+"通过在频道之间切换激活的信息栏在系统设置中定义的超时后消失. 信息栏激活的按键"
+"\"确定\"将永久出现, 但可以取消按\"退出\"或\"确定\""
+
+msgid ""
+"Infobar activated press \"OK\" appears permanently but disappears press "
+"\"exit\" or \"OK\""
+msgstr "信息栏激活的按键“确定”永久出现，但按键消失, 或 \"OK\""
+
+msgid "Check connection to the point in internet defined by IP adress"
+msgstr "检查地址定义点的连接"
+
+msgid "Wake up HDD/SSD is managing by image only"
+msgstr "唤/SSD仅按映像管理"
+
+msgid ""
+"Wake up HDD/SSD if any function cannot read requested info if HDD/SSD is "
+"sleeping"
+msgstr ""
+
+msgid ""
+"auto - autodetection of tuners presented in box; value (1-19) - display "
+"selected numbers of tuners"
+msgstr ""
+
+msgid "Do not display flashing icon \"R\" in infobar"
+msgstr "不在信息栏显示\"R\"图标并闪烁"
+
+msgid "Display flashing icon \"R\" in infobar"
+msgstr "在信息栏显示\"R\"图标并闪烁"
+
+msgid "Leave memory management untouched"
+msgstr "保持内存管理不变"
+
+msgid "Detecting AC3/Dolby in all available audio tracks"
+msgstr "在所有可用音频曲目中检AC3/Dolby"
+
+msgid ""
+"Detecting AC3/Dolby, Dolby Digital 5.1/2.0, DTS, AAC, Mpeg in current audio "
+"track"
+msgstr ""
+
+msgid "Automatic memory cleaning - refresh time: 3min"
+msgstr "自动内存清刷新时间"
+
+msgid ""
+"IP Address used for network status check - available connection to the "
+"Internet"
+msgstr ""
+
+msgid "Used to encoding.conf origin from active image"
+msgstr "用于编来自活动图像"
+
+msgid "Used to encoding-user.conf located in /usr/share/enigma2"
+msgstr "习惯于编用户配置位于/usr/share/enigma2"
+
+msgid "Channel selection works with standard functionality"
+msgstr "频道选择使用标准功能"
+
+msgid ""
+"Press \"OK\" - activate selected channel and channel selection no appear "
+"then press \"OK\" - disappear channel selection or press \"exit\" revert on "
+"last playd channel before activating Channel selection"
+msgstr ""
+"按\"确定\"-激活所选频道，不显示频道选择 然后按\"确定\"-取消频道选择或按\"退出"
+"\"恢复 激活频道选择之前的最后一个播放频道"
+
+msgid "Press \"OK\" to start selected item without animation"
+msgstr "按\">\"不使用动画启动选定项"
+
+msgid "Press \"OK\" to start animation before activating selected item"
+msgstr "按\">\"在激活选定项之前启动动画"
+
+msgid "Show Weather for selected city in the setup"
+msgstr "在设置中显示选定城市的天气"
+
+msgid "Press \">\" show Weather for next city"
+msgstr "按\">\" 显示下一个城市的天气"
+
+msgid "Special info screen (activated press \"help\") disappear press \"help\""
+msgstr "特殊信息屏幕（激活按\"帮助\"键）消失按\"帮助\""
+
+#, fuzzy
+#| msgid ""
+#| "Special info screen (activated press \"help\") disappear press \"help\""
+msgid ""
+"Special info screen (activated press \"help\") disappear automatically after "
+"20s"
+msgstr "特殊信息屏幕（激活按\"帮助\"键）消失按\"帮助\""
+
+msgid "Refresh time for reading ecm.info file"
+msgstr "阅读刷新时间电子控制模块信息文件"
+
+msgid "Disable autocheck of new version of the HDG"
+msgstr "禁用新版的自动检查"
+
+msgid "Enable autocheck of new version of the HDG"
+msgstr "启用新版的自动检查"
+
+msgid "Static text - no scrolling"
+msgstr "静态文无滚动"
+
+msgid ""
+"Roll up at end of text and stop wait selected seconds (text roll delay) then "
+"roll down back"
+msgstr ""
+
+msgid "Roll up at end of text and stop"
+msgstr "在文本结尾处上卷并停止"
+
+msgid "Text rolling starts with delay defined in skin.xml"
+msgstr "文本滚动从中定义的延迟开始 skin.xml"
+
+msgid "Text rolling starts with selected delay (s)"
+msgstr "文本滚动从选定的延迟开始(秒)"
+
+msgid "Show channel name only"
+msgstr "仅显示频道名称"
+
+msgid "Show number and channel name"
+msgstr "显示号码和频道名称"
+
+msgid "Show satellite position and channel name"
+msgstr "显示卫星位置和频道名称"
+
+msgid "Show number, satellite position and channel name"
+msgstr "显示号码,卫星位置和频道名称"
+
+msgid "None info about \"Provider\" in infobar"
+msgstr "信息栏中没有关于\"供应商\"的信息"
+
+msgid "Show info about \"Provider\" in infobar"
+msgstr "显示\"供应商\"有关的信息"
+
+msgid "None info about \"Temperature and RPM\" in infobar"
+msgstr "信息栏中没有关于\"温度和转速\"的信息"
+
+msgid "Show info about \"Temperature and RPM\" in infobar"
+msgstr "显示\"温度和转速\"有关的信息"
+
+msgid "None info about \"CPU usage and Memory usage\" in infobar"
+msgstr "信息栏中无关于\"CPU使用率和内存使用率\"的信息"
+
+msgid "Show info about \"CPU usage and Memory usage\" in infobar"
+msgstr "显示\"CPU使用率和内存使用率\"有关的信息"
+
+msgid "None info about \"Temperature HDD/SSD\" in infobar"
+msgstr "信息栏中的无关于\"HDD/SSD温度\"的信息"
+
+msgid "Show info about \"Temperature HDD/SSD\" in infobar"
+msgstr "显示\"HDD/SSD温度\"有关的信息"
+
+msgid "Do not display selected special info \"extensions\" in main menu"
+msgstr "不显示在主菜单中选择特殊信息\"扩展\""
+
+msgid "Display selected special info \"extensions\" in main menu"
+msgstr "显示在主菜单中选择特殊信息\"扩展\""
+
+#, fuzzy
+#| msgid ""
+#| "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgid ""
+"Temperature will be displayed with units defined in my_city_Code.txt or "
+"city_Code.txt"
+msgstr "温度将以埃瓦乌市定义的单位显代"
+
+msgid "Temperature will be displayed with units defined in eWea_city_Code.txt"
+msgstr "温度将以埃瓦乌市定义的单位显代"
+
+msgid "Temperature will be displayed in Celsius"
+msgstr "温度以摄氏度显示"
+
+msgid "Temperature will be displayed in Fahrenheit"
+msgstr "温度将以华氏度显示"
+
+msgid "Reconnect time for reading weather data from website in minutes"
+msgstr "从网站读取天气数据的重新连接时间（分钟）"
+
+msgid ""
+"Reading weather data from OpenWeatherMap but you have to enter your API-key "
+"from registration on the website openweathermap.org (Registration and base "
+"API-key is free) and can be readed from /etc/openweathermap.api"
+msgstr ""
+
+msgid "Reading weather data from MSN website"
+msgstr "网站读取天气数据"
+
+msgid "\"Find a city\" is disabled"
+msgstr "\"查找城市\"已禁用"
+
+msgid "\"Find a city\" is disabled in extensions list"
+msgstr "\"查找城市\"在扩展列表中被禁用"
+
+msgid "\"Find a city\" is disabled in main menu"
+msgstr "\"查找城市\"在菜单表中被禁用"
+
+msgid "Do not try get data from provider if an error is detected"
+msgstr "如果检测到错误，请不要尝试从提供程序获取数据"
+
+#, fuzzy
+#| msgid "Do not try get data from provider if an error is detected"
+msgid ""
+"Autoreconnect - try get data from provider if an error is detected - try "
+"with cycle in selected time while data are not ok"
+msgstr "如果检测到错误，请不要尝试从提供程序获取数据"
+
+msgid "Display forecast for today and next 3 days"
+msgstr "显示今天和未3天的预测"
+
+msgid "Display forecast for yesterday, today and next 3 days"
+msgstr "显示昨天、今天和未3天的预测"
+
+msgid "High temperature appear in Autocolor"
+msgstr "自动上色出现高温"
+
+msgid "High temperature appear in selected color"
+msgstr "所选颜色出现高温"
+
+msgid "Low temperature appear in Autocolor"
+msgstr "低温自动显色"
+
+msgid "Low temperature appear in selected color"
+msgstr "所选颜色出现低温"
+
+msgid "Cold/warm temperature appears in selected color (Cold/Warm color)"
+msgstr "冷/暖温度以选定颜色显示（冷/暖颜色）"
+
+msgid ""
+"Cold temperature is higher as settings of \"Cold temperature\" or/and Warm "
+"temperature is lower as \"Warm temperature\""
+msgstr ""
+
+msgid "Warm temperature limit range: 15-40"
+msgstr "温极限范围: 15-40"
+
+msgid "Cold temperature limit range: 1-14"
+msgstr "低温极限范围: 1-14"
+
+msgid "Warm temperature limit range: 58-104"
+msgstr "温极限范围: 58-104"
+
+msgid "Cold temperature limit range: 33-57"
+msgstr "低温极限范围: 33-57"
+
+msgid "HDD/SSD detected by kernel as device"
+msgstr "内核检测HDD/SSD作为设备"
+
+msgid "Path to all required directories like picon, piconProv and more."
+msgstr "指向所有必需目录（等）的路径."
+
+msgid ""
+"User defined path to all required directories like picon, piconProv and more."
+msgstr "用户定义的路径到所有必需的目录，如picon、piconProv等."
+
+msgid ""
+"Channel numbers are calculated at enigma start so any change in channels "
+"order have no effect to channel numbers"
+msgstr ""
+
+msgid ""
+"Channel number is calculated after switching between channels always so "
+"every change in channel order is applied on calculation of channel number"
+msgstr ""
+
+msgid "Date format will be used from definition in skin part"
+msgstr "日期格式将从外观部分的定义中使用"
+
+msgid "Date format will be used as follow"
+msgstr "日期格式如下"
+
+msgid "Channel logos with white background"
+msgstr "白色背景的频道徽标"
+
+msgid "Channel logos with black background"
+msgstr "黑色背景的频道徽标"
+
+msgid "Channel logos for OLED display"
+msgstr "OLED显示屏的频道徽标"
+
+msgid "Provider logos with white background"
+msgstr "白色背景的提供商徽标"
+
+msgid "Provider logos with black background"
+msgstr "黑色背景的提供商徽标"
+
+msgid "Satellite logos with white background"
+msgstr "白底卫星标志"
+
+msgid "Satellite logos with black background"
+msgstr "黑底卫星标志"
+
+msgid "CA system and SoftCam logos with white background"
+msgstr "加密系统和白底SoftCam徽标"
+
+msgid "CA system and SoftCam logos with black background"
+msgstr "加密系统和带黑色背景徽标"
+
+msgid "Selected option previews in setup of skin"
+msgstr "在皮肤设置中预览选定的选项"
+
+msgid "Extra screen previews and icon sets used in infobar"
+msgstr "信息栏中使用的额外屏幕预览和图标集"
+
+msgid ""
+"Graphics used in extra screen and after download it you get more choices of "
+"Extra screen"
+msgstr "图片使用在额外的屏幕和下载后，你可以得到更多的选择额外的屏幕"
+
+msgid "Icons used in some menu types"
+msgstr "某些菜单类型中使用的图标"
+
+msgid "Big icons used in some menu types"
+msgstr "某些菜单类型中使用的大图标"
+
+msgid ""
+"Weather icons used in special and user info types: Weather, Weather light a "
+"Extended weather"
+msgstr "在特殊和用户信息类型中使用的天气图标：天气，延长天气"
+
+msgid "piconWeather white used as second picon type in infobar if is selected"
+msgstr "piconWeather white用作信息栏中的第二类型（如果选中）"
+
+msgid "piconWeather black used as second picon type in infobar if is selected"
+msgstr "piconWeather黑色用作信息栏中的第二类型（如果选中）"
+
+msgid "Animated icons will be displayed"
+msgstr "将显示动画图标"
+
+msgid "Static icons will be displayed"
+msgstr "将显示静态图标"
+
+msgid ""
+"Animated Weather icons used in: Infobar, Special, User info type Weather or "
+"Enhanced Weather "
+msgstr "用于以下情况的动画天气图标：信息栏，特殊，用户信息类型天气或增强天气"
+
+msgid "Channel logos with picture background"
+msgstr "带图片背景的频道徽标"
+
+msgid "Package of Skylink and Freesat channels only"
+msgstr "仅频道套餐"
+
+msgid "Channel logos with transparent background"
+msgstr "透明背景的频道标识"
+
+msgid "Tool needed to extract picon packages"
+msgstr "提包所需的工具"
+
+msgid "Provider logos with transparent background"
+msgstr "透明背景的提供商徽标"
+
+msgid "Satellite logos with transparent background"
+msgstr "透明背景卫星标志"
+
+#, fuzzy
+#| msgid "Channel logos with transparent background"
+msgid ""
+"Channelselection icons with transparent background used in some "
+"Channelselecion types"
+msgstr "透明背景的频道标识"
+
+msgid "New Moon"
+msgstr ""
+
+msgid "First Quarter"
+msgstr ""
+
+msgid "Waxing Crescent"
+msgstr ""
+
+msgid "Waxing Moon"
+msgstr ""
+
+msgid "Full Moon"
+msgstr ""
+
+msgid "Waning Moon"
+msgstr ""
+
+msgid "Waning Crescent"
+msgstr ""
+
+msgid "Last Quarter"
+msgstr ""
+
+
+
+
+
+

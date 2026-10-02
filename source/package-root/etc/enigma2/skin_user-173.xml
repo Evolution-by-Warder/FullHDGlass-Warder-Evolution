@@ -1,0 +1,269 @@
+<skin>
+
+  <fonts>
+    <font filename="prive7.ttf" name="Prive3" scale="95" />
+    <font filename="nmsbd7.ttf" name="Regular" scale="100" />
+		<font filename="goodtime7.ttf" name="LCD2" scale="100" />
+  </fonts>
+
+  <screen name="InfoBarSummary-23" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Regular;35" halign="center" valign="center">
+      <convert type="g16ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-23" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Regular;35" halign="center" valign="center">
+      <convert type="g16ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-18" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.FrontendStatus" render="Label" noWrap="1" position="0,32" size="96,32" font="Prive3;24" halign="center" valign="bottom" zPosition="0">
+      <convert type="g17ExtraSource">SnrAgcOled</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-18" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="g17trpm" position="0,0" zPosition="1" size="96,64" font="Prive3;20" halign="center" valign="center"/>
+  </screen>
+  <screen name="InfoBarSummary-17" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.FrontendStatus" render="Label" noWrap="1" position="0,32" size="96,32" font="Prive3;24" halign="center" valign="bottom" zPosition="0">
+      <convert type="g17ExtraSource">SnrAgcOled</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-17" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-16" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.FrontendStatus" render="Label" noWrap="1" position="0,32" size="96,32" font="Prive3;24" halign="center" valign="bottom" zPosition="0">
+      <convert type="g17ExtraSource">SnrAgcOled</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-16" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="g17trpm" position="0,0" zPosition="1" size="96,64" font="Prive3;20" halign="center" valign="center"/>
+  </screen>
+  <screen name="InfoBarSummary-15" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.FrontendStatus" render="Label" noWrap="1" position="0,32" size="96,32" font="Prive3;24" halign="center" valign="bottom" zPosition="0">
+      <convert type="g17ExtraSource">SnrAgcOled</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-15" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+	<screen name="InfoBarSummary-14" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="5,0" zPosition="1" size="500,18" font="Prive3;16" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="g17RollName" noWrap="1" position="5,20" size="500,18" zPosition="0" font="Prive3;16" halign="left" valign="bottom">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Progress" position="5,40" size="87,4" borderWidth="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="0, 46" size="96, 20" font="Prive3; 17" halign="center" valign="top">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+    <widget source="session.RecordState" render="FixedLabel" text=" " position="0,46" zPosition="1" size="96, 20" font="Prive3; 18">
+      <convert type="ConfigEntryTest">config.usage.blinking_display_clock_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+	</screen>
+    <screen name="StandbySummary-14" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0, 3" size="96, 25" font="Prive3;18" halign="center" valign="top">
+      <convert type="g17ClockToText">Format:%d.%m.%Y</convert>
+    </widget>
+    <eLabel position="0,28" size="132,1" backgroundColor="white" />
+    <widget source="global.CurrentTime" render="Label" position="8,32" size="90,32" font="Prive3;26" halign="center" valign="top">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+    <widget source="session.RecordState" render="FixedLabel" position="8, 32" zPosition="1" size="90, 32" text=" ">
+      <convert type="ConfigEntryTest">config.usage.blinking_display_clock_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+  </screen>
+<screen name="InfoBarSummary-13" position="0,0" size="96,64">
+<widget source="session.CurrentService" render="g17PicRef2" path="piconOled" zPosition="2" position="0,0" size="96,64" >
+<convert type="ServiceName">Reference</convert>
+</widget>
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" zPosition="1" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+</screen>
+  <screen name="StandbySummary-13" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-12" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-12" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-11" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.FrontendStatus" render="Label" noWrap="1" position="0,32" size="96,32" font="Prive3;24" halign="center" valign="bottom" zPosition="0">
+      <convert type="g17ExtraSource">SnrAgcOled</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-11" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-10" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="g17RollName" noWrap="1" position="0,32" size="500,32" zPosition="0" font="Prive3;29" halign="left" valign="bottom">
+      <convert type="EventName">Name</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-10" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-9" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="700,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="g17ServiceNameEvent">NameAndEvent</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="0,32" size="96,32" zPosition="0" font="Prive3;31" halign="center" valign="bottom">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-9" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary-8" position="0,0" size="96,64">
+    <widget source="session.Event_Now" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="EventName">Name</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="0,32" size="96,32" zPosition="0" font="Prive3;31" halign="center" valign="bottom">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary-8" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>  
+<screen name="InfoBarSummary-7" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollerChar" position="0, 0" noWrap="1" size="132,32" font="Regular;25" valign="top">
+      <convert type="g17ServiceNameEvent">NameAndEvent</convert>
+    </widget>
+</screen>
+  <screen name="StandbySummary-7" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;16" halign="center" valign="center">
+      <convert type="g17ClockToText">Format:%H:%M %a %d/%m</convert>
+    </widget>
+  </screen>
+<screen name="InfoBarSummary-6" position="0,0" size="96,64">
+    <widget source="session.Event_Now" render="g17RollerChar" position="0, 0" noWrap="1" size="132,32" font="Regular;25" valign="top">
+      <convert type="EventName">Name</convert>
+    </widget>
+</screen>
+  <screen name="StandbySummary-6" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;16" halign="center" valign="center">
+      <convert type="g17ClockToText">Format:%H:%M %a %d/%m</convert>
+    </widget>
+  </screen>
+<screen name="InfoBarSummary-5" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollerChar" position="0, 0" size="96,32" font="Regular;19" noWrap="1" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+</screen>
+  <screen name="StandbySummary-5" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;16" halign="center" valign="center">
+      <convert type="g17ClockToText">Format:%H:%M %a %d/%m</convert>
+    </widget>
+  </screen>
+<screen name="InfoBarSummary-4" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,32" font="Prive3;19" halign="center" valign="center">
+      <convert type="g17ClockToText">WithSeconds</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="0,31" size="96,32" font="Prive3;15" halign="center" valign="center">
+      <convert type="ClockToText">Format:%d.%m.%Y</convert>
+    </widget>
+</screen>
+  <screen name="StandbySummary-4" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+<screen name="InfoBarSummary-3" position="0,0" size="96,64">
+<widget source="session.CurrentService" render="g17PicRef" path="piconOled" position="0,0" size="96,64" >
+<convert type="ServiceName">Reference</convert>
+</widget>
+</screen>
+  <screen name="StandbySummary-3" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+	<screen name="InfoBarSummary-2" position="0,0" size="96,64">
+		<widget source="session.CurrentService" render="Label" position="0,0" size="96,28" font="Prive3;16" halign="center" valign="center" >
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Progress" position="0,30" size="96,8" borderWidth="1" backgroundColor="dark">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="0,38" size="96,26" font="Prive3;32" halign="center" valign="center" foregroundColor="#FFFFFF" backgroundColor="#000000" >
+			<convert type="g17ClockToText">Default</convert>
+		</widget>
+		<widget source="session.RecordState" render="FixedLabel" text=" " position="0,38" zPosition="1" size="96,26">
+			<convert type="ConfigEntryTest">config.usage.blinking_display_clock_during_recording,True,CheckSourceBoolean</convert>
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+	</screen>
+    <screen name="StandbySummary-2" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0, 3" size="96, 25" font="Prive3;18" halign="center" valign="top">
+      <convert type="g17ClockToText">Format:%d.%m.%Y</convert>
+    </widget>
+    <eLabel position="0,28" size="132,1" backgroundColor="white" />
+    <widget source="global.CurrentTime" render="Label" position="8,32" size="90,32" font="Prive3;26" halign="center" valign="top">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+
+    <widget source="session.RecordState" render="FixedLabel" position="8, 32" zPosition="1" size="90, 32" text=" ">
+      <convert type="ConfigEntryTest">config.usage.blinking_display_clock_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarSummary" position="0,0" size="96,64">
+    <widget source="session.CurrentService" render="g17RollName" noWrap="1" position="0,0" zPosition="1" size="500,32" font="Prive3;28" halign="left" valign="top">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="0,32" size="96,32" zPosition="0" font="Prive3;31" halign="center" valign="bottom">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>
+  <screen name="StandbySummary" position="0,0" size="96,64">
+    <widget source="global.CurrentTime" render="Label" position="0,0" size="96,64" font="Prive3;26" halign="center" valign="center">
+      <convert type="g17ClockToText">Default</convert>
+    </widget>
+  </screen>    
+</skin>
+  
