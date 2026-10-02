@@ -509,6 +509,9 @@ assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'foregroundColor="#3388dd"' in program_info
 assert 'backgroundColor="transpBlack3"' in program_info
+assert 'position="625,415" size="2,345"' in program_info
+assert 'name="description" position="665,425" size="1040,335"' in program_info
+assert 'position="25,820" size="395,62" backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
 
