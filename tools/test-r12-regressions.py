@@ -462,7 +462,7 @@ assert 'getattr(self, "skinName", None) == "GraphicalEPGPIG"' in PLUGIN
 assert 'title = ""' in PLUGIN
 
 # TEST28: FullHDGlass GraphicalEPGPIG color-key row and scoped actions.
-assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
+assert 'source="key_red" render="Label" position="30,930" size="420,42"' in SKIN
 assert 'name="primetime" position="30,930"' not in SKIN
 assert 'def warderEPGSelectionRedButtonPressed(self):' in PLUGIN
 assert 'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)' in PLUGIN
