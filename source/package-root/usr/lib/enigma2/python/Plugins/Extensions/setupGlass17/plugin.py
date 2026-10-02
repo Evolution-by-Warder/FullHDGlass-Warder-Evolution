@@ -177,7 +177,9 @@ class WarderProgramInfo(Screen):
 	skin = """
 	<screen name="WarderProgramInfo" position="15,15" size="1890,1050" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
 		<eLabel position="18,18" size="1854,1014" backgroundColor="transpBlack3" zPosition="-5" />
-		<widget name="now" position="1360,38" size="465,42" font="Prive3;29" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<widget name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" />
+		<eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
 		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="50,435" size="120,72" zPosition="3" alphatest="blend" />
@@ -213,7 +215,7 @@ class WarderProgramInfo(Screen):
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("now", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "genreLabel", "genreMeta", "yearLabel", "yearMeta", "countryLabel", "countryMeta", "ratingStars", "ratingMeta", "durationLabel", "broadcastLabel"):
+		for name in ("nowDate", "nowTime", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "genreLabel", "genreMeta", "yearLabel", "yearMeta", "countryLabel", "countryMeta", "ratingStars", "ratingMeta", "durationLabel", "broadcastLabel"):
 			self[name] = Label("")
 		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
 			self[name] = StaticText("")
@@ -235,7 +237,8 @@ class WarderProgramInfo(Screen):
 		self["keyBlue"].setText(_warderUiText("EPG Search"))
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close, "green": lambda: self.close("green"), "yellow": lambda: self.close("yellow"), "blue": lambda: self.close("blue")}, -1)
 		self._serviceRef = self._normaliseServiceRef(service)
-		self["now"].setText(time1.strftime("%A  %d. %b %Y  %H:%M", time1.localtime()))
+		self["nowDate"].setText(time1.strftime("%A  %d.%m.%Y", time1.localtime()))
+		self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
 		if event is not None:
 			try:
 				eventName = event.getEventName() or ""

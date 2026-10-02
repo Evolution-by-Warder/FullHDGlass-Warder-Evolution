@@ -680,3 +680,8 @@ assert 'threading.Thread(target=worker)' in program_info
 assert 'self._metadataTimer.callback.append(self._pollMetadataLookup)' in program_info
 assert 'self.onLayoutFinish.append(self._startMetadataLookup)' in program_info
 assert 'self.onLayoutFinish.append(self._loadProgramArtwork)' not in program_info
+
+# TEST58 common visual language: PROGRAM INFO top header mirrors GraphicalEPGPIG.
+assert 'name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243"' in program_info
+assert 'name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee"' in program_info
+assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24"' in program_info
