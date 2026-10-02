@@ -178,3 +178,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 header refinement: PROGRAM INFO now uses the same top-line visual language as GraphicalEPGPIG: weekday/date in Warder gold at x=30, live-style HH:MM:SS clock at x=435, and FullHDGlass17 · Warder Evolution signature at upper right. Replaces the previous single right-aligned date/time field; no other TEST58 geometry changed.
 
 - TEST58 metadata normalization: physical receiver exposed EPG title “Česko Slovensko má talent X”. Added conservative stripping of a standalone trailing Roman-numeral edition/season suffix before TMDB search, while retaining exact normalized base-title matching (no fuzzy acceptance). Cache schema bumped v3→v4 so earlier negative cache entries cannot mask the corrected lookup.
+
+- TEST58 CI guard maintenance: aligned remaining historical PROGRAM INFO separator assertion with approved 490px content height; runtime/design unchanged.
