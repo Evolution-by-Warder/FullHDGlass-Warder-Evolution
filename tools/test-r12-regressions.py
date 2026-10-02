@@ -753,3 +753,8 @@ assert '"red": self._closeProgramInfo' in program_info
 assert 'def _closeProgramInfo(self, *retVal):' in program_info
 assert 'self._metadataClosed = True' in program_info
 assert 'if self._metadataClosed:' in program_info
+
+# TEST71: one RED event path must never stack duplicate Program Info screens.
+assert 'if getattr(self, "_warderProgramInfoOpen", False):' in PLUGIN
+assert 'self._warderProgramInfoOpen = True' in PLUGIN
+assert 'self._warderProgramInfoOpen = False' in PLUGIN

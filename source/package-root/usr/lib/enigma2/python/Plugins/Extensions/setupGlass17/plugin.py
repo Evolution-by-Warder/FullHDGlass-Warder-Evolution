@@ -1249,6 +1249,7 @@ try:
 
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderProgramInfoClosed(self, action=None):
+		self._warderProgramInfoOpen = False
 		if action == "green": return self.RecordTimerQuestion(True)
 		if action == "yellow": return self.enterDateTime()
 		if action == "blue": return self.openEPGSearch()
@@ -1256,6 +1257,10 @@ try:
 
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):
+			# One physical RED press can be delivered more than once by the EPG key path.
+			# Never stack two Program Info screens: the first close must reveal the EPG.
+			if getattr(self, "_warderProgramInfoOpen", False):
+				return None
 			# Warder contract: RED in our graphical EPG has exactly one destination:
 			# the local PROGRAM INFO screen for the currently selected EPG event.
 			# Never fall through to OpenATV/legacy info/CSFD handlers.
@@ -1266,7 +1271,12 @@ try:
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
 				if event is not None:
-					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
+					self._warderProgramInfoOpen = True
+					try:
+						return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
+					except Exception:
+						self._warderProgramInfoOpen = False
+						raise
 			except Exception as e:
 				Writelog("WarderProgramInfo open: %s" % e)
 			return None
