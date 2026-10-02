@@ -475,7 +475,7 @@ for key in ("green", "yellow", "blue"):
     assert ('source="key_%s" render="Label"' % key) in pig26, key
 assert 'source="key_red" render="Label" position="30,930" size="420,42"' in pig26
 assert 'def warderEPGSelectionInit(self, *args, **kwargs):' in PLUGIN
-assert '("key_red", "PROGRAM INFO")' in PLUGIN
+assert '("key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
 
 
 # TEST30: FullHDGlass GraphicalEPGPIG colour labels and handlers must stay paired.
