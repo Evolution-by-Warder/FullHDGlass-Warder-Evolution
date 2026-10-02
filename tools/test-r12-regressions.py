@@ -615,7 +615,7 @@ assert "source=\"session.VideoPicture\" render=\"Pig\"" not in program_info
 for token in (
     'position="15,15" size="1890,1050"',
     'source="session.VideoPicture" render="Pig" position="33,63" size="549,309"',
-    'name="timeline_text" position="75,387"',
+    'name="timeline_text" position="15,387" size="1815,36"',
     'name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15"',
     'name="timeline_now" position="75,423" zPosition="2" size="28,495"',
     'name="bouquetlist" position="15,423" size="1845,495"',

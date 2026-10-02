@@ -170,3 +170,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST57 CI revision 170: Actions #172 progressed through the same gates and exposed one more historical TEST26 timeline_text x=75 assertion. Updated that stale guard to the approved TEST56 x=15 / width=1815 geometry. Test-only correction; no runtime/design change.
 
 - TEST57 CI revision 171: Actions #173 reached the PROGRAM INFO regression block and exposed two older TEST53 geometry assertions for stationPicon (50,445) and channel (245,515). Updated them to the receiver-requested TEST56 geometry: picon 50,435 / 120x72 and channel 245,520 / 215x34 / 24pt. Test-only correction; runtime remains TEST57.
+
+- TEST57 CI revision 172: Actions #174 exposed the final duplicate approved-geometry lock still requiring timeline_text x=75. Updated it to TEST56 approved x=15 / 1815x36. No runtime/design change.
