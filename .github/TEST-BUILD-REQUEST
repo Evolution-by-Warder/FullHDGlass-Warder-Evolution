@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test60
-Revision: 190
+Revision: 191
 Purpose: TEST59 receiver corrections: replace flat grey GraphicalEPGPIG timeline with one continuous FullHDGlass-style dimensional strip; suppress busy spinner before opening Warder Program Info and restore on close; speed exact TMDB cold lookup via search/multi with locale fallback; preserve x=225 station alignment, artwork/rating and approved EPG geometry.
