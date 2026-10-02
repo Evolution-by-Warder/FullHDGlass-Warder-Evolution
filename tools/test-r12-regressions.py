@@ -588,7 +588,7 @@ META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProg
 for token in (
     'def lookup(title, context=""):',
     'def _baseTitle(title):',
-    'CACHE_SCHEMA = "v2"',
+    'CACHE_SCHEMA = "v3"',
     'for language in ("cs-CZ", "sk-SK", "en-US"):',
     'query_title = _baseTitle(title)',
     '_norm(candidate) == wanted',
