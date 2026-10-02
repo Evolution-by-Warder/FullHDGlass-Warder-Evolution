@@ -178,7 +178,6 @@ def lookup(title, context=""):
     result["artwork_path"] = _artworkPath(result)
     _writeCache(title, result)
     return result
-
 def _cachePath(title):
     key = re.sub(r'[^a-z0-9]+', '_', _norm(title)).strip('_')[:100] or "empty"
     return os.path.join(CACHE_DIR, CACHE_SCHEMA + "_" + key + ".json")

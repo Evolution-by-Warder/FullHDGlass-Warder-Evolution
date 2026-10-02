@@ -186,3 +186,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST58 CI fix: repaired malformed _baseTitle regex introduced by the Roman-edition normalization commit; restored complete SxxExx rule plus standalone trailing Roman numeral rule. No fuzzy title matching added.
 
 - TEST58 CI cleanup: removed the stale malformed tail left at EOF by the earlier failed regex replacement. _baseTitle remains defined once in its proper location; provider now compiles cleanly by inspection.
+
+- TEST58 provider structural repair: CI exposed a duplicated stale provider body appended after the valid lookup() return. Removed the entire duplicate tail and retained one canonical _cachePath/_readCache/.../lookup implementation. This addresses the repeated unmatched-parenthesis failures at shifting line numbers rather than patching individual fragments.
