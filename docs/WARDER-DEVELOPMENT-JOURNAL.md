@@ -156,3 +156,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST55 CI revision 163: Actions #165 again passed compile/XML/lifecycle/runtime/version/main r1-r12 gates and stopped only on the older TEST26 assertion requiring timeline0 at 75,423. TEST26 is aligned to the intentional TEST54+ visual contract: no static timeline0, but timeline_now must remain at 75,423. No runtime/design change; same TEST55 candidate.
 
 - TEST55 CI revision 164: Actions #166 passed XML/lifecycle/runtime/version and the main r1-r12 regression gate, then stopped on a stale TEST49 metadata assertion expecting CACHE_SCHEMA v2 while the provider is already intentionally v3. Guard aligned to the real v3 provider schema; no runtime/design/provider change. Same TEST55 candidate.
+
+- TEST55 CI revision 165: Actions #167 reached the later TEST51 guard and failed because the regression script referenced PROVIDER without defining it. Added the authoritative warderProgramInfo.py read at test initialization. This is test-harness-only; no runtime/design change. Same TEST55 candidate.
