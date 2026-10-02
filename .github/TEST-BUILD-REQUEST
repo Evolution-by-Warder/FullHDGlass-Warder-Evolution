@@ -1,5 +1,5 @@
 Warder TEST build request
-Candidate: 1.0.5-test33
-Revision: 116
-Purpose: TEST33 restyles FullHDGlass-owned PROGRAM INFO to the approved FullHDGlass dialog geometry while preserving direct selected-event EPG data and no external plugin UI/search chooser.
-Preserve accepted GraphicalEPGPIG geometry and GREEN/YELLOW/BLUE actions. Preserve the original r12 upgrade/GSOD guard.
+Candidate: 1.0.5-test34
+Revision: 117
+Purpose: TEST34 implements the approved FullHDGlass PROGRAM INFO layout: live PIG, event header, station/time data, structured information column, description area and FullHDGlass color-key footer. EPG remains authoritative and unknown metadata is not fabricated.
+Preserve accepted GraphicalEPGPIG geometry/actions and the original r12 upgrade/GSOD guard.
