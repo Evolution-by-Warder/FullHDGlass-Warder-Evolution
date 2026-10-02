@@ -564,7 +564,8 @@ assert 'return warder[lang][text]' in uihelper
 assert 'if text == "PROGRAM INFO":' not in uihelper
 for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
     assert ('source="%s" render="Label"' % key) in program_info, key
-    assert ('self["%s"] = StaticText("")' % key) in program_info, key
+assert 'for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):' in program_info
+assert 'self[name] = StaticText("")' in program_info
 # Approved Program Info reference: large translucent FullHDGlass panel, cyan top accent,
 # real programme poster at upper-left, title/station/time header, narrow authoritative metadata,
 # large EPG description, and four visible bottom action bars.
