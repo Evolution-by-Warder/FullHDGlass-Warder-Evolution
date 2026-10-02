@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test65
-Revision: 201
-Purpose: fix clipped timeline date fragment and make the selected GraphicalEPGPIG event clearly amber; retain TEST64 Program Info picon polish.
+Candidate: 1.0.5-test66
+Revision: 202
+Purpose: receiver-confirmed TEST65 corrections: real graphical selected-event assets, suppress generated timeline date cell, remove failed Program Info cap/spinner-freeze workaround; retain TEST64 picon.
