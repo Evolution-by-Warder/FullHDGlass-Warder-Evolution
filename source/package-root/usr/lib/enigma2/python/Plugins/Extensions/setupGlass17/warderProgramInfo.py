@@ -106,19 +106,34 @@ def lookup(title, context=""):
         pass
     date = (detail.get("release_date") if media == "movie" else detail.get("first_air_date")) or (item.get("release_date") if media == "movie" else item.get("first_air_date"))
     year = date[:4] if date and len(date) >= 4 else ""
-    countries = item.get("origin_country") or []
-    genres = [GENRES[x] for x in item.get("genre_ids", []) if x in GENRES]
+    if media == "movie":
+        countries = [x.get("iso_3166_1") for x in detail.get("production_countries", []) if x.get("iso_3166_1")]
+    else:
+        countries = detail.get("origin_country") or item.get("origin_country") or []
+    genres = [x.get("name") for x in detail.get("genres", []) if x.get("name")]
+    if not genres:
+        genres = [GENRES[x] for x in item.get("genre_ids", []) if x in GENRES]
+    ext = detail.get("external_ids") or {}
+    imdb_id = detail.get("imdb_id") or ext.get("imdb_id") or ""
+    runtime = detail.get("runtime")
+    if not runtime and media == "tv":
+        runtimes = detail.get("episode_run_time") or []
+        runtime = runtimes[0] if runtimes else None
+    vote = detail.get("vote_average", item.get("vote_average"))
+    votes = detail.get("vote_count", item.get("vote_count"))
     result = {
         "provider": "TMDB",
         "provider_id": str(item.get("id") or ""),
+        "imdb_id": imdb_id,
         "media_type": media,
         "year": year,
         "country": ", ".join(countries),
         "genre": ", ".join(genres),
-        "rating": ("%.1f/10" % float(item.get("vote_average"))) if item.get("vote_average") and int(item.get("vote_count") or 0) > 0 else "",
-        "overview": item.get("overview") or "",
-        "poster_path": item.get("poster_path") or "",
-        "backdrop_path": item.get("backdrop_path") or ""
+        "rating": ("%.1f/10" % float(vote)) if vote and int(votes or 0) > 0 else "",
+        "runtime": str(runtime or ""),
+        "overview": detail.get("overview") or item.get("overview") or "",
+        "poster_path": detail.get("poster_path") or item.get("poster_path") or "",
+        "backdrop_path": detail.get("backdrop_path") or item.get("backdrop_path") or ""
     }
     _writeCache(title, result)
     return result
