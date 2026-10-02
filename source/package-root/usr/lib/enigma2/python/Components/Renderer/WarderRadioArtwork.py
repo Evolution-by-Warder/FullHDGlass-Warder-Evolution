@@ -59,6 +59,19 @@ class WarderRadioArtwork(Renderer):
             value = value.lower()
         return " ".join(value.split())
 
+    @classmethod
+    def _featIdentity(cls, artist, title):
+        artistNorm, titleNorm = cls._norm(artist), cls._norm(title)
+        marker = " feat. "
+        if marker in artistNorm:
+            main, guest = artistNorm.split(marker, 1)
+            return main.strip(), titleNorm, guest.strip()
+        suffix = " (feat. "
+        if suffix in titleNorm and titleNorm.endswith(")"):
+            base, guest = titleNorm.rsplit(suffix, 1)
+            return artistNorm, base.strip(), guest[:-1].strip()
+        return "", "", ""
+
     @staticmethod
     def _split(text):
         text = (text or "").strip()
@@ -108,7 +121,12 @@ class WarderRadioArtwork(Renderer):
         cls._diag("LOOKUP artist=%r title=%r results=%d" % (artist, title, len(results)))
         for item in results:
             gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
-            if gotArtist != wantArtist or gotTitle != wantTitle:
+            exact = gotArtist == wantArtist and gotTitle == wantTitle
+            if not exact:
+                wantFeat = cls._featIdentity(artist, title)
+                gotFeat = cls._featIdentity(item.get("artistName"), item.get("trackName"))
+                exact = bool(wantFeat[0] and wantFeat == gotFeat)
+            if not exact:
                 cls._diag("REJECT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
                 continue
             cls._diag("EXACT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
