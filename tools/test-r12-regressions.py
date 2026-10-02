@@ -824,3 +824,9 @@ assert 'marker = " feat. "' in RADIO_ART
 assert 'suffix = " (feat. "' in RADIO_ART
 assert "wantFeat == gotFeat" in RADIO_ART
 assert 'marker = " & "' not in RADIO_ART
+
+# TEST87: comma-only title normalization is narrow and artist remains exact.
+assert 'def _titleCommaIdentity' in RADIO_ART
+assert '.replace(",", "")' in RADIO_ART
+assert 'gotArtist == wantArtist' in RADIO_ART
+assert '_titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)' in RADIO_ART
