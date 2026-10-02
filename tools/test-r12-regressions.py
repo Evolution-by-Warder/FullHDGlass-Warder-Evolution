@@ -593,7 +593,7 @@ for token in (
     'def lookup(title, context=""):',
     'def _baseTitle(title):',
     'CACHE_SCHEMA = "v5"',
-    'for language in ("cs-CZ", "sk-SK", "en-US"):',
+    'for language in ("sk-SK", "cs-CZ", "en-US"):',
     '/search/multi?',
     'query_title = _baseTitle(title)',
     '_norm(candidate) == wanted',
