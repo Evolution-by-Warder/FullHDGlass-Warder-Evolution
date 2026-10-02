@@ -465,14 +465,15 @@ assert 'title = ""' in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
 assert 'name="primetime" position="30,930"' not in SKIN
 assert 'def warderEPGSelectionRedButtonPressed(self):' in PLUGIN
-assert 'return self.infoKeyPressed()' in PLUGIN
+assert 'self.session.open(WarderProgramInfo, event, service)' in PLUGIN
 assert 'graph_green.value = "timer"' in PLUGIN
 assert 'graph_yellow.value = "gotodatetime"' in PLUGIN
 assert 'graph_blue.value = "epgsearch"' in PLUGIN
 
 # TEST29: OpenATV key_red/green/yellow/blue are StaticText Sources, so the PIG skin must render them as sources.
-for key in ("red", "green", "yellow", "blue"):
+for key in ("green", "yellow", "blue"):
     assert ('source="key_%s" render="Label"' % key) in pig26, key
+assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in pig26
 assert 'def warderEPGSelectionInit(self, *args, **kwargs):' in PLUGIN
 assert '("key_red", "PROGRAM INFO")' in PLUGIN
 
