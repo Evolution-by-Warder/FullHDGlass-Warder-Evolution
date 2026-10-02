@@ -498,3 +498,13 @@ assert 'class WarderProgramInfo(Screen):' in PLUGIN
 assert 'self.session.open(WarderProgramInfo, event, service)' in PLUGIN
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
+
+# Package upgrade safety inherited from the original r12 DreamOS GSOD investigation.
+POSTRM = (ROOT / "source/control/postrm").read_text(encoding="utf-8")
+assert 'upgrade|failed-upgrade|abort-upgrade|disappear)' in POSTRM
+assert POSTRM.index('upgrade|failed-upgrade|abort-upgrade|disappear)') < POSTRM.index('restore_backup')
+assert 'rm -rf /usr/share/enigma2/hd_glass17' not in POSTRM
+# The menu background referenced by r12 hdg17Screens must always ship in Warder payload.
+HDGSCREENS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml").read_text(encoding="utf-8")
+assert 'backgroundPixmap="hd_glass17/buttons/selected-menu_bgpixmap.png"' in HDGSCREENS
+assert (PKG / "usr/share/enigma2/hd_glass17/buttons/selected-menu_bgpixmap.png").is_file()
