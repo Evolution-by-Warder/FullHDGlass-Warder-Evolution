@@ -796,7 +796,7 @@ assert 'position="680,145" size="560,560"' in SKIN
 assert 'class WarderRadioArtwork(Renderer):' in RADIO_ART
 assert 'iRdsDecoder.RadioText' in RADIO_ART
 assert 'threading.Thread' in RADIO_ART and 'timeout=2.5' in RADIO_ART
-assert "gotArtist != wantArtist or gotTitle != wantTitle" in RADIO_ART
+assert "gotArtist == wantArtist and gotTitle == wantTitle" in RADIO_ART
 assert 'WarderRdsInfoDisplay' not in PLUGIN
 assert 'config.misc.radiopic.value' not in PLUGIN
 
@@ -818,3 +818,9 @@ assert "payload.startswith(bytes((255, 216)))" in RADIO_ART
 assert "/tmp/warder-radio-artwork.log" in RADIO_ART
 assert 'cls._diag("NO_EXACT' in RADIO_ART
 assert 'self._diag("ERROR' in RADIO_ART
+
+# TEST86: only explicit feat-credit relocation may extend exact matching.
+assert 'marker = " feat. "' in RADIO_ART
+assert 'suffix = " (feat. "' in RADIO_ART
+assert "wantFeat == gotFeat" in RADIO_ART
+assert 'marker = " & "' not in RADIO_ART
