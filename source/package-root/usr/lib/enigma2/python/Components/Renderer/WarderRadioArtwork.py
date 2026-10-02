@@ -88,6 +88,14 @@ class WarderRadioArtwork(Renderer):
             pass
         return path
 
+    @staticmethod
+    def _diag(message):
+        try:
+            with open("/tmp/warder-radio-artwork.log", "a") as out:
+                out.write(message + "\n")
+        except Exception:
+            pass
+
     @classmethod
     def _lookupExact(cls, artist, title, key):
         url = "https://itunes.apple.com/search?entity=song&limit=10&term=" + quote((artist + " " + title).encode("utf-8") if not isinstance(artist, str) else artist + " " + title)
@@ -96,9 +104,14 @@ class WarderRadioArtwork(Renderer):
         if not isinstance(raw, str):
             raw = raw.decode("utf-8", "replace")
         wantArtist, wantTitle = cls._norm(artist), cls._norm(title)
-        for item in json.loads(raw).get("results", []):
-            if cls._norm(item.get("artistName")) != wantArtist or cls._norm(item.get("trackName")) != wantTitle:
+        results = json.loads(raw).get("results", [])
+        cls._diag("LOOKUP artist=%r title=%r results=%d" % (artist, title, len(results)))
+        for item in results:
+            gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
+            if gotArtist != wantArtist or gotTitle != wantTitle:
+                cls._diag("REJECT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
                 continue
+            cls._diag("EXACT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
             art = (item.get("artworkUrl100") or "").replace("100x100bb", "600x600bb")
             if not art:
                 return ""
@@ -111,7 +124,9 @@ class WarderRadioArtwork(Renderer):
                 with open(tmp, "wb") as out:
                     out.write(payload)
                 os.rename(tmp, path)
+            cls._diag("READY path=%s" % path)
             return path
+        cls._diag("NO_EXACT artist=%r title=%r" % (artist, title))
         return ""
 
     def _request(self, artist, title, key):
@@ -122,7 +137,8 @@ class WarderRadioArtwork(Renderer):
             try:
                 cached = os.path.join(self._cacheDir(), hashlib.sha1(key.encode("utf-8")).hexdigest() + ".jpg")
                 path = cached if os.path.isfile(cached) else self._lookupExact(artist, title, key)
-            except Exception:
+            except Exception as err:
+                self._diag("ERROR %s: %s" % (err.__class__.__name__, err))
                 path = ""
             self._result = (key, path)
             self._busy = False
