@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test48
-Revision: 150
-Purpose: Receiver screenshot correction batch: Warder-owned GraphicalEPGPIG colour-key sources prevent legacy CSFD overwrite; localized episodic titles resolve exact TMDB identity; verified artwork scales into PROGRAM INFO; approved narrower metadata/wider description layout retained.
+Candidate: 1.0.5-test49
+Revision: 151
+Purpose: Repair invalid TEST48 provider; invalidate stale negative artwork cache; exact localized episodic-title matching; verified backdrop-first/poster-fallback artwork; retain Warder-owned GraphicalEPGPIG PROGRAM INFO colour sources and approved EPG geometry.

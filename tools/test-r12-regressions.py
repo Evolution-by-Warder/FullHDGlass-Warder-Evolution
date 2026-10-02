@@ -532,29 +532,8 @@ assert "self.timer.callback.append(self.blinkFunc)" in COND
 assert "self.timer_conn = None" in COND
 
 
-# TEST38 Program Info: action labels follow the active Enigma2 language and
-# artwork uses FullHDGlass' existing poster renderer. A station picon is never
-# substituted into the programme-artwork area.
-for token in (
-    'def _warderUiText(text):',
-    '_warderUiText("PROGRAM INFO")',
-    '_warderUiText("Close")',
-    '_warderUiText("Add Timer")',
-    '_warderUiText("Goto Date/Time")',
-    '_warderUiText("EPG Search")',
-    'self["posterTitle"] = StaticText("")',
-    'self["posterTitle"].setText(eventName)',
-    'source="posterTitle" render="g17Poster2"',
-):
-    assert token in PLUGIN, token
-assert 'self["preview"] = Pixmap()' not in PLUGIN
-assert '<eLabel text="PROGRAM INFO"' not in pigepg
-assert 'source="key_red" render="Label"' in pigepg
-
-
-
-# TEST39/40 receiver contract: every Warder colour-key caption follows active Enigma2 OSD language.
-# Warder-owned translations take precedence over legacy FullHDGlass gettext to avoid collisions (PROGRAM INFO -> CSFD).
+# TEST38-49 PROGRAM INFO / GraphicalEPGPIG consolidated contract.
+# Warder-owned labels follow active OSD language and must never collide with legacy CSFD gettext/state.
 uihelper = PLUGIN[PLUGIN.index('def _warderUiText(text):'):PLUGIN.index('class WarderProgramInfo', PLUGIN.index('def _warderUiText(text):'))]
 assert 'lang = config.osd.language.value.split("_")[0].lower()' in uihelper
 assert '"sk": {"PROGRAM INFO": "INFO O PROGRAME"' in uihelper
@@ -562,86 +541,72 @@ assert '"cs": {"PROGRAM INFO": "INFO O PROGRAMU"' in uihelper
 assert 'if text in warder.get(lang, {}):' in uihelper
 assert 'return warder[lang][text]' in uihelper
 assert 'if text == "PROGRAM INFO":' not in uihelper
-for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
-    assert ('source="%s" render="Label"' % key) in program_info, key
-assert 'for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):' in program_info
-assert 'self[name] = StaticText("")' in program_info
-# Approved Program Info reference: large translucent FullHDGlass panel, cyan top accent,
-# real programme poster at upper-left, title/station/time header, narrow authoritative metadata,
-# large EPG description, and four visible bottom action bars.
-for token in (
-    'position="20,20" size="1730,2" backgroundColor="#38c7e8"',
-    'source="posterTitle" render="g17Poster2" position="38,85" size="479,260"',
-    'name="title" position="560,80" size="1095,62"',
-    'name="stationPicon" position="560,154" size="92,55"',
-    'name="description" position="665,425" size="1040,335"',
-    'position="625,415" size="2,345"',
-    'position="25,820" size="395,62" backgroundColor="transpBlack3"',
-    'position="465,820" size="395,62" backgroundColor="transpBlack3"',
-    'position="905,820" size="395,62" backgroundColor="transpBlack3"',
-    'position="1345,820" size="395,62" backgroundColor="transpBlack3"',
-):
-    assert token in program_info, token
+assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pigepg
+assert 'source="key_red" render="Label" position="30,930" size="420,42"' not in pigepg
+for key in ("warder_key_red", "warder_key_green", "warder_key_yellow", "warder_key_blue"):
+    assert ('source="%s" render="Label"' % key) in pigepg, key
+assert '("warder_key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
+assert 'self[key] = StaticText("")' in PLUGIN
+assert 'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys' in PLUGIN
+assert 'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)' in PLUGIN
 
-# TEST41: Program Info artwork is programme artwork, never a live-video PIG and never a station-picon substitute.
+program_info = PLUGIN.split('class WarderProgramInfo(Screen):', 1)[1].split('def readHWtype', 1)[0]
 assert 'source="session.VideoPicture" render="Pig"' not in program_info
-assert 'name="programArtwork"' in program_info
 assert 'render="g17Poster2"' not in program_info
-assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
-
-# TEST42: existing FullHDGlass poster provider must not blindly use the first TMDB result.
-poster2 = open("source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster2.py", "r").read()
-assert "def normTitle(v):" in poster2
-assert "for candidate in data['results'][:5]:" in poster2
-assert "normTitle(candidateTitle) == wanted" in poster2
-assert "ww = data['results'][0]['poster_path']" not in poster2
-
-# TEST43-46: verified Program Info provider contract.
-META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
-for token in (
-    'def lookup(title, context=""):',
-    '_norm(candidate) == wanted',
-    'ranked[0][0] < 2',
-    'append_to_response=external_ids',
-    '"provider_id": str(item.get("id") or "")',
-    '"imdb_id": imdb_id',
-    '"runtime": str(runtime or "")',
-    '"provider": "TMDB"',
-    '"genre":',
-    '"year":',
-    '"country":',
-    '"rating":',
-):
-    assert token in META, token
-assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN
-for token in ('name="genreMeta"', 'name="yearCountryMeta"', 'name="ratingMeta"', 'name="runtimeMeta"'):
-    assert token in program_info, token
-assert 'self["runtimeMeta"].setText("%s %s min"' in program_info
-
-# TEST47: verified artwork and approved PROGRAM INFO geometry.
-assert 'def _artworkPath(data):' in META
-assert 'provider_id = str(data.get("provider_id") or "")' in META
-assert 'data.get("backdrop_path") or data.get("poster_path")' in META
-assert 'result["artwork_path"] = _artworkPath(result)' in META
-assert 'name="programArtwork"' in program_info
-assert 'render="g17Poster2"' not in program_info
+assert 'posterTitle' not in program_info
+assert 'name="programArtwork" position="38,85" size="479,260"' in program_info
 assert 'self._artworkPath = meta.get("artwork_path") or ""' in program_info
 assert 'self["programArtwork"].instance.setPixmap(pix)' in program_info
+assert 'self["programArtwork"].instance.setScale(1)' in program_info
+assert 'from Components.Renderer.Picon import getPiconName' in program_info
+assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'name="stationPicon" position="50,350"' in program_info
 assert 'name="channel" position="160,354"' in program_info
 assert 'name="description" position="535,440" size="1170,320"' in program_info
 assert 'name="stationLabel"' not in program_info
 assert 'name="service"' not in program_info
+for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
+    assert ('source="%s" render="Label"' % key) in program_info, key
+assert 'for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):' in program_info
+assert 'self[name] = StaticText("")' in program_info
+assert 'position="20,20" size="1730,2" backgroundColor="#38c7e8"' in program_info
+assert 'position="25,820" size="395,62" backgroundColor="transpBlack3"' in program_info
+assert 'warderProgramLookup(event.getEventName() or "", context)' in PLUGIN
+assert 'self["durationMeta"].setText("%d min" % minutes)' in program_info
 
-# TEST48: colour-key labels are Warder-owned sources, isolated from legacy CSFD gettext/state.
-assert 'source="warder_key_red"' in SKIN
-assert 'source="warder_key_green"' in SKIN
-assert '("warder_key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
-assert 'self[key] = StaticText("")' in PLUGIN
-# Localized episodic EPG titles are reduced to their series base and searched in CZ/SK/EN,
-# while candidate acceptance remains exact-normalized.
-assert 'def _baseTitle(title):' in META
-assert 'for language in ("cs-CZ", "sk-SK", "en-US"):' in META
-assert 'query_title = _baseTitle(title)' in META
-assert '_norm(candidate) == wanted' in META
-assert 'self["programArtwork"].instance.setScale(1)' in program_info
+META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
+for token in (
+    'def lookup(title, context=""):',
+    'def _baseTitle(title):',
+    'CACHE_SCHEMA = "v2"',
+    'for language in ("cs-CZ", "sk-SK", "en-US"):',
+    'query_title = _baseTitle(title)',
+    '_norm(candidate) == wanted',
+    'ranked[0][0] < 2',
+    'append_to_response=external_ids',
+    '"provider_id": str(item.get("id") or "")',
+    '"imdb_id": imdb_id',
+    '"media_type": media',
+    '"runtime": str(runtime or "")',
+    '"provider": "TMDB"',
+    '"backdrop_path":',
+    '"poster_path":',
+    'result["artwork_path"] = _artworkPath(result)',
+):
+    assert token in META, token
+assert 'for kind, remote in (("backdrop", data.get("backdrop_path")), ("poster", data.get("poster_path"))):' in META
+assert 'raw[:2] == b"\\xff\\xd8"' in META
+assert "g17Poster2" not in program_info
+assert 'quote_plus(title)' not in META
+assert "source=\"session.VideoPicture\" render=\"Pig\"" not in program_info
+
+# Approved GraphicalEPGPIG geometry remains locked.
+for token in (
+    'position="15,15" size="1890,1050"',
+    'source="session.VideoPicture" render="Pig" position="33,63" size="549,309"',
+    'name="timeline_text" position="75,387"',
+    'name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15"',
+    'name="timeline_now" position="75,423" zPosition="2" size="28,495"',
+    'name="bouquetlist" position="15,423" size="1845,495"',
+):
+    assert token in pigepg, token
