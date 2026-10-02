@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test71
-Revision: 212
-Purpose: prevent duplicate Program Info stacking from repeated RED delivery so one close returns directly to EPG; retain approved geometry and TEST70 metadata behavior.
+Candidate: 1.0.5-test72
+Revision: 213
+Purpose: publish a newer receiver-visible TEST candidate to physically verify the corrected FullHD MessageBox Yes/No font while preserving the TEST71 stable Program Info checkpoint.
