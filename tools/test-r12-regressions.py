@@ -654,6 +654,7 @@ assert 'position="25,890" size="1840,2"' in program_info
 assert 'position="25,933" size="420,46"' in program_info
 
 # TEST54 GraphicalEPGPIG visual cleanup: no static vertical grid lines; current-time marker remains; description is larger/brighter.
+epg_pig = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 for i in range(6):
     assert ('name="timeline%d"' % i) not in epg_pig
 assert 'name="timeline_now" position="75,423" zPosition="2" size="28,495"' in epg_pig
