@@ -571,7 +571,7 @@ assert 'self["programArtwork"].instance.setPixmap(pix)' in program_info
 assert 'self["programArtwork"].instance.setScale(1)' in program_info
 assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
-assert 'name="stationPicon" position="50,435" size="120,72"' in program_info
+assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
 assert 'name="channel" position="225,520" size="235,34" font="Prive4;24"' in program_info
 assert 'name="description" position="535,425" size="1300,490"' in program_info
 assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
@@ -727,3 +727,6 @@ assert 'setSpinnerOnOff(0)' in program_info
 # TEST63: receiver showed a stale busy-spinner framebuffer tile at the extreme upper-right.
 # Keep the fix local to PROGRAM INFO: an opaque Warder-owned cap masks that reserved corner.
 assert '<eLabel position="1815,12" size="55,55" backgroundColor="#050505" zPosition="20" />' in program_info
+
+# TEST64: larger station picon centred in Program Info left column.
+assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
