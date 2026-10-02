@@ -414,7 +414,10 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
     assert 'name="lab1"' in block, screen
     for key in ("red", "green", "yellow", "blue"):
         if screen == "GraphicalEPGPIG":
-            assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
+            # TEST48+: this screen deliberately isolates its colour captions from
+            # legacy/OpenATV key_* state so PROGRAM INFO cannot become CSFD.
+            assert ('source="warder_key_%s" render="Label"' % key) in block, (screen, key)
+            assert ('source="key_%s" render="Label"' % key) not in block, (screen, key)
         else:
             assert ('name="key_%s"' % key) in block, (screen, key)
 pigepg = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
