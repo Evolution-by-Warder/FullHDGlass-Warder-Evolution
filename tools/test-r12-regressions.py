@@ -773,3 +773,15 @@ for token in ('_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', 
     assert token in PLUGIN, token
 assert 'generate-warder-radio-background.py' in BUILD_TEST
 assert 'radio.mvi' in BUILD_TEST
+
+
+# TEST77: OpenATV radio mode must use the Warder-owned generated radio.mvi.
+for token in (
+    'warderRadioPic = "/usr/share/enigma2/hd_glass17/radio.mvi"',
+    'config.misc.radiopic.value = warderRadioPic',
+    'config.misc.showradiopic.value = True',
+):
+    assert token in PLUGIN, token
+BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
+for token in ("generate-warder-radio-background.py", "hd_glass17/radio.mvi", "ffmpeg"):
+    assert token in BUILD_TEST, token

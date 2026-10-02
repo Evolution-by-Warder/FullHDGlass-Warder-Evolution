@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test76
-Revision: 219
-Purpose: Radio mode real integration - Warder radio.mvi fallback plus exact current-song album artwork, station picon and dynamic metadata; DAB SLS retained as fallback.
+Candidate: 1.0.5-test77
+Revision: 220
+Purpose: Radio/DAB receiver test - explicitly select the generated hd_glass17/radio.mvi in OpenATV radio mode while retaining TEST76 exact artwork/SLS/live metadata logic.
