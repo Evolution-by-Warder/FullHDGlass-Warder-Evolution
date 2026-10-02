@@ -636,7 +636,7 @@ assert 'return None' in red_handler
 # TEST51 receiver screenshot correction: one title style, artwork field, station block below divider.
 assert '"PROGRAM INFO": "Info o programe"' in PLUGIN
 assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
-assert 'name="stationPicon" position="50,435" size="120,72"' in program_info
+assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
 assert 'name="stationLabel" position="50,520" size="190,34" font="Prive3;24"' in program_info
 assert 'name="channel" position="225,520" size="235,34" font="Prive4;24"' in program_info
 assert 'name="durationLabel" position="50,675"' in program_info
