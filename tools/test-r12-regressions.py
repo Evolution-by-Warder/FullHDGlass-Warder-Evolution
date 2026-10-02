@@ -592,7 +592,7 @@ META = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProg
 for token in (
     'def lookup(title, context=""):',
     'def _baseTitle(title):',
-    'CACHE_SCHEMA = "v4"',
+    'CACHE_SCHEMA = "v5"',
     'for language in ("cs-CZ", "sk-SK", "en-US"):',
     '/search/multi?',
     'query_title = _baseTitle(title)',
@@ -644,7 +644,7 @@ assert 'name="broadcastLabel" position="50,714"' in program_info
 assert 'CACHE_SCHEMA = "v4"' in PROVIDER
 
 # TEST52 stable PROGRAM INFO metadata rows.
-for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
+for field in ("genreMeta", "yearMeta", "countryMeta"):
     assert ('name="%s"' % field) in program_info
 assert 'self[field].setText("-")' in program_info
 
@@ -708,3 +708,12 @@ assert 'self.onClose.append(self._restoreMetadataSpinner)' not in program_info
 # Provider first-hit path uses one multi-search instead of six serial movie/tv searches.
 assert '/search/multi?' in META
 assert '/search/%s?' not in META
+
+# TEST61: localized broadcaster subtitle fallback remains exact and rating has no top-right dash placeholder.
+assert 'query_titles = [query_title]' in META
+assert 'for separator in (" - ", " – ", " — "):' in META
+assert 'any(_norm(name or "") == wanted for name in names)' in META
+assert 'series_hint = any(word in context_norm.split() for word in ("serial", "seriál", "series"))' in META
+assert 'for field in ("genreMeta", "yearMeta", "countryMeta"):' in program_info
+assert 'for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):' not in program_info
+assert 'timeout=2.5' in META

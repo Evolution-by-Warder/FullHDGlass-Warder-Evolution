@@ -15,7 +15,7 @@ except ImportError:
 
 TMDB_KEY = "3c3efcf47c3577558812bb9d64019d65"
 CACHE_DIR = "/tmp/fullhdglass17-warder-programinfo"
-CACHE_SCHEMA = "v4"
+CACHE_SCHEMA = "v5"
 GENRES = {
     12:"Adventure",14:"Fantasy",16:"Animation",18:"Drama",27:"Horror",28:"Action",35:"Comedy",
     36:"History",37:"Western",53:"Thriller",80:"Crime",99:"Documentary",878:"Science Fiction",
@@ -65,7 +65,7 @@ def _writeCache(title, data):
         pass
 
 def _fetch(url):
-    raw = urlopen(url, timeout=4).read()
+    raw = urlopen(url, timeout=2.5).read()
     if not isinstance(raw, str):
         raw = raw.decode("utf-8", "ignore")
     return json.loads(raw)
@@ -84,7 +84,7 @@ def _artworkPath(data):
             dest = os.path.join(CACHE_DIR, "tmdb_%s_%s.jpg" % (provider_id, kind))
             if os.path.isfile(dest) and os.path.getsize(dest) > 1000:
                 return dest
-            raw = urlopen("https://image.tmdb.org/t/p/w780%s" % remote, timeout=4).read()
+            raw = urlopen("https://image.tmdb.org/t/p/w780%s" % remote, timeout=2.5).read()
             if raw and len(raw) > 1000 and raw[:2] == b"\xff\xd8":
                 with open(dest, "wb") as f:
                     f.write(raw)
@@ -104,23 +104,36 @@ def lookup(title, context=""):
         return cached
 
     query_title = _baseTitle(title)
-    wanted = _norm(query_title)
+    # Some broadcasters append a translated/local subtitle after a spaced dash,
+    # e.g. "Baywatch - Pobrežná hliadka". TMDB stores the series as "Baywatch".
+    # This is not fuzzy matching: each generated query must still match TMDB exactly.
+    query_titles = [query_title]
+    for separator in (" - ", " – ", " — "):
+        if separator in query_title:
+            primary = query_title.split(separator, 1)[0].strip()
+            if len(primary) >= 3 and _norm(primary) != _norm(query_title):
+                query_titles.insert(0, primary)
+            break
     matches = []
     # Fast exact matching: TMDB multi-search checks movie + TV together.
     # Try the EPG's primary locale first and only fall back when no exact
     # candidate exists, avoiding the previous six serial search requests.
-    for language in ("cs-CZ", "sk-SK", "en-US"):
-        try:
-            data = _fetch("https://api.themoviedb.org/3/search/multi?api_key=%s&language=%s&query=%s" % (TMDB_KEY, language, quote_plus(query_title)))
-            for item in data.get("results", [])[:10]:
-                media = item.get("media_type")
-                if media not in ("movie", "tv"):
-                    continue
-                candidate = item.get("title") or item.get("name") or item.get("original_title") or item.get("original_name") or ""
-                if wanted and _norm(candidate) == wanted:
-                    matches.append((media, item))
-        except Exception:
-            continue
+    for language in ("sk-SK", "cs-CZ", "en-US"):
+        for search_title in query_titles:
+            wanted = _norm(search_title)
+            try:
+                data = _fetch("https://api.themoviedb.org/3/search/multi?api_key=%s&language=%s&query=%s" % (TMDB_KEY, language, quote_plus(search_title)))
+                for item in data.get("results", [])[:10]:
+                    media = item.get("media_type")
+                    if media not in ("movie", "tv"):
+                        continue
+                    names = (item.get("title"), item.get("name"), item.get("original_title"), item.get("original_name"))
+                    if wanted and any(_norm(name or "") == wanted for name in names):
+                        matches.append((media, item))
+            except Exception:
+                continue
+            if matches:
+                break
         if matches:
             break
     if not matches:
@@ -131,6 +144,13 @@ def lookup(title, context=""):
     for media, item in matches:
         unique[(media, item.get("id"))] = (media, item)
     candidates = list(unique.values())
+    # Strong EPG type evidence resolves same-title movie/TV collisions without fuzzy title matching.
+    context_norm = _norm(context)
+    series_hint = any(word in context_norm.split() for word in ("serial", "seriál", "series"))
+    if series_hint:
+        tv_candidates = [candidate for candidate in candidates if candidate[0] == "tv"]
+        if len(tv_candidates) == 1:
+            candidates = tv_candidates
     if len(candidates) == 1:
         media, item = candidates[0]
     else:

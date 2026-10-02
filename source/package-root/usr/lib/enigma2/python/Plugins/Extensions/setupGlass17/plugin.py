@@ -230,7 +230,7 @@ class WarderProgramInfo(Screen):
 		self["genreLabel"].setText(_warderUiText("Genre:"))
 		self["yearLabel"].setText(_warderUiText("Year:"))
 		self["countryLabel"].setText(_warderUiText("Country:"))
-		for field in ("genreMeta", "yearMeta", "countryMeta", "ratingMeta"):
+		for field in ("genreMeta", "yearMeta", "countryMeta"):
 
 			self[field].setText("-")
 		self["durationLabel"].setText(_warderUiText("Duration:"))
