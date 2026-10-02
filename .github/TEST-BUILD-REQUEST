@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test63
-Revision: 198
-Purpose: TEST62 receiver correction: mask the stale Enigma2 busy-spinner framebuffer tile at the extreme upper-right of Warder Program Info; preserve EPG, TMDB matching, artwork and all approved geometry.
+Candidate: 1.0.5-test64
+Revision: 199
+Purpose: receiver-requested Program Info polish: enlarge and horizontally centre the station picon; preserve EPG and metadata behavior.
