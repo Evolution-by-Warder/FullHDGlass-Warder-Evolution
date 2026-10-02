@@ -481,9 +481,9 @@ assert '("key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
 # TEST30: FullHDGlass GraphicalEPGPIG colour labels and handlers must stay paired.
 for token in (
     '("key_red", _warderUiText("PROGRAM INFO"))',
-    '("key_green", _("Add Timer"))',
-    '("key_yellow", _("Goto Date/Time"))',
-    '("key_blue", _("EPG Search"))',
+    '("key_green", _warderUiText("Add Timer"))',
+    '("key_yellow", _warderUiText("Goto Date/Time"))',
+    '("key_blue", _warderUiText("EPG Search"))',
     'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys',
     'self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)',
     'return self.RecordTimerQuestion(True)',
