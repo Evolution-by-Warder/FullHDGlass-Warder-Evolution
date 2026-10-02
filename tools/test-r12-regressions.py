@@ -462,7 +462,7 @@ assert 'getattr(self, "skinName", None) == "GraphicalEPGPIG"' in PLUGIN
 assert 'title = ""' in PLUGIN
 
 # TEST28: FullHDGlass GraphicalEPGPIG color-key row and scoped actions.
-assert 'source="key_red" render="Label" position="30,930" size="420,42"' in SKIN
+assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
 assert 'name="primetime" position="30,930"' not in SKIN
 assert 'def warderEPGSelectionRedButtonPressed(self):' in PLUGIN
 assert 'return self.infoKeyPressed()' in PLUGIN
@@ -484,7 +484,6 @@ for token in (
     '("key_yellow", _("Goto Date/Time"))',
     '("key_blue", _("EPG Search"))',
     'WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys',
-    'from Plugins.Extensions.IMDb.plugin import IMDB',
     'return self.infoKeyPressed()',
     'return self.RecordTimerQuestion(True)',
     'return self.enterDateTime()',
@@ -492,3 +491,8 @@ for token in (
     'config.epgselection.graph_yellow.value = "gotodatetime"',
 ):
     assert token in PLUGIN, token
+
+# TEST31: red key is direct programme information, never an external search/chooser.
+assert 'return self.infoKeyPressed()' in PLUGIN
+assert 'from Plugins.Extensions.IMDb.plugin import IMDB' not in PLUGIN
+assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN

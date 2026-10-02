@@ -1016,18 +1016,8 @@ try:
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):
-			# Prefer OpenATV's native IMDb integration for richer programme/movie
-			# information. If the plugin is unavailable, always fall back to the
-			# selected event's native EPG detail instead of showing a dead action.
-			try:
-				from Plugins.Extensions.IMDb.plugin import IMDB
-				cur = self["list%s" % self.activeList].getCurrent()
-				event = cur[0] if cur else None
-				name = event.getEventName() if event is not None else ""
-				if name:
-					return self.session.open(IMDB, name, False)
-			except Exception:
-				pass
+			# Open the selected event directly. No IMDb/CSFD search or result chooser:
+			# the red key is a simple, deterministic programme-information action.
 			return self.infoKeyPressed()
 		return WarderEPGSelection_redButtonPressed(self)
 	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
