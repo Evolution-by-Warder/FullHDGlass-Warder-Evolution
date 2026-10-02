@@ -517,7 +517,7 @@ assert 'foregroundColor="#3388dd"' in program_info
 assert 'backgroundColor="transpBlack3"' in program_info
 assert '<eLabel position="500,425" size="2,490" backgroundColor="#707070" />' in program_info
 assert 'name="description" position="535,425" size="1300,490"' in program_info
-assert 'position="25,925" size="420,62" backgroundColor="transpBlack3"' in program_info
+assert 'position="25,955" size="420,62" backgroundColor="transpBlack3"' in program_info
 assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert 'source="warder_key_red" render="Label" position="30,930" size="420,42"' in pig26
 assert 'source="key_red" render="Label" position="30,930" size="420,42"' not in pig26
@@ -573,7 +573,7 @@ assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'name="stationPicon" position="50,435" size="120,72"' in program_info
 assert 'name="channel" position="245,520" size="215,34" font="Prive4;24"' in program_info
-assert 'name="description" position="535,425" size="1300,440"' in program_info
+assert 'name="description" position="535,425" size="1300,490"' in program_info
 assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
 assert 'name="service"' not in program_info
 for key in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
@@ -653,9 +653,9 @@ assert 'name="ratingStars" position="1390,105" size="430,45" font="Prive4;36"' i
 assert 'name="ratingMeta" position="1390,152" size="430,36" font="Prive4;25"' in program_info
 assert 'rating_text.split("/", 1)[0].strip()' in PLUGIN
 assert 'self["ratingMeta"].setText("%s · %s"' in PLUGIN
-assert 'name="description" position="535,425" size="1300,440"' in program_info
-assert 'position="25,890" size="1840,2"' in program_info
-assert 'position="25,933" size="420,46"' in program_info
+assert 'name="description" position="535,425" size="1300,490"' in program_info
+assert 'position="25,940" size="1840,2"' in program_info
+assert 'position="25,963" size="420,46"' in program_info
 
 # TEST54 GraphicalEPGPIG visual cleanup: no static vertical grid lines; current-time marker remains; description is larger/brighter.
 epg_pig = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
