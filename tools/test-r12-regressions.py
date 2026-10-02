@@ -760,29 +760,22 @@ assert 'self._warderProgramInfoOpen = True' in PLUGIN
 assert 'self._warderProgramInfoOpen = False' in PLUGIN
 
 
-# TEST75 Radio/DAB shell: preserve OpenATV's transparent DAB SLS layer while adding Warder identity.
+# TEST79 receiver-proven Radio/DAB boot recovery.
+# OpenATV's native RdsInfoDisplay must not be monkey-patched during startup.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-for token in ('FullHDGlass17 · Warder Evolution', 'Format:%A  %d.%m.%Y', 'Format:%H:%M:%S', 'name="RadioText"', 'name="RtpText"', 'backgroundColor="transparent"'):
+for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"', 'backgroundColor="transparent"'):
     assert token in rds, token
-
-
-# TEST76 Radio mode: skin owns a generated radio.mvi and exact song-cover UI.
-for token in ('name="warderAlbumCover"', 'name="warderStationPicon"', 'name="warderArtist"', 'name="warderTrack"', 'name="warderStation"'):
-    assert token in SKIN, token
-for token in ('_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged'):
-    assert token in PLUGIN, token
-assert 'generate-warder-radio-background.py' in BUILD_TEST
-assert 'radio.mvi' in BUILD_TEST
-
-
-# TEST78: TEST77 receiver boot-loop recovery. Do not mutate OpenATV radio-picture
-# config at session start; OpenATV resolves radio.mvi from the active GUI skin.
+for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
+    assert token not in rds, token
+for token in ('WarderRdsInfoDisplay', '_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged', 'WarderRadio init'):
+    assert token not in PLUGIN, token
 for token in (
     'warderRadioPic = "/usr/share/enigma2/hd_glass17/radio.mvi"',
     'config.misc.radiopic.value = warderRadioPic',
     'config.misc.showradiopic.value = True',
 ):
     assert token not in PLUGIN, token
+# Keep radio.mvi passive packaging available while runtime integration is redesigned safely.
 BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
 for token in ("generate-warder-radio-background.py", "hd_glass17/radio.mvi", "ffmpeg"):
     assert token in BUILD_TEST, token

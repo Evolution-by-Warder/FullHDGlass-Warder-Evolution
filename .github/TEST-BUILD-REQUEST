@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test78
-Revision: 221
-Purpose: Emergency receiver recovery after TEST77 boot-loop. Remove TEST77 session-start config.misc.radiopic/showradiopic override; rely on OpenATV native active-skin radio.mvi resolution while retaining TEST76 Radio/DAB RdsInfoDisplay, exact artwork, SLS fallback and packaged hd_glass17/radio.mvi.
+Candidate: 1.0.5-test79
+Revision: 222
+Purpose: Receiver-proven emergency recovery from TEST76/77 Radio/DAB boot loop. Remove the TEST76 RdsInfoDisplay Python monkey-patch and its warder* GUI widgets, restore the minimal native RdsInfoDisplay skin that physically boots on GigaBlue Quad 4K Pro / OpenATV 8.0.2, keep protected MultiEPG/Program Info/TMDB/MessageBox behavior unchanged, and retain packaged hd_glass17/radio.mvi only as a passive build asset until Radio/DAB is redesigned without monkey-patching the native startup screen.
