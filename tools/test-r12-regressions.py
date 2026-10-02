@@ -585,8 +585,8 @@ for token in (
 
 # TEST41: Program Info artwork is programme artwork, never a live-video PIG and never a station-picon substitute.
 assert 'source="session.VideoPicture" render="Pig"' not in program_info
-assert 'source="posterTitle" render="g17Poster2"' in program_info
-assert 'self["posterTitle"].setText(eventName)' in program_info
+assert 'name="programArtwork"' in program_info
+assert 'render="g17Poster2"' not in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 
 # TEST42: existing FullHDGlass poster provider must not blindly use the first TMDB result.
@@ -632,3 +632,16 @@ assert 'name="channel" position="160,354"' in program_info
 assert 'name="description" position="535,440" size="1170,320"' in program_info
 assert 'name="stationLabel"' not in program_info
 assert 'name="service"' not in program_info
+
+# TEST48: colour-key labels are Warder-owned sources, isolated from legacy CSFD gettext/state.
+assert 'source="warder_key_red"' in SKIN
+assert 'source="warder_key_green"' in SKIN
+assert '("warder_key_red", _warderUiText("PROGRAM INFO"))' in PLUGIN
+assert 'self[key] = StaticText("")' in PLUGIN
+# Localized episodic EPG titles are reduced to their series base and searched in CZ/SK/EN,
+# while candidate acceptance remains exact-normalized.
+assert 'def _baseTitle(title):' in META
+assert 'for language in ("cs-CZ", "sk-SK", "en-US"):' in META
+assert 'query_title = _baseTitle(title)' in META
+assert '_norm(candidate) == wanted' in META
+assert 'self["programArtwork"].instance.setScale(1)' in program_info

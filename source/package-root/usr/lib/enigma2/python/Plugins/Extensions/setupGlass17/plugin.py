@@ -267,6 +267,7 @@ class WarderProgramInfo(Screen):
 			if self._artworkPath and os.path.isfile(self._artworkPath):
 				pix = LoadPixmap(path=self._artworkPath)
 				if pix is not None:
+					self["programArtwork"].instance.setScale(1)
 					self["programArtwork"].instance.setPixmap(pix)
 					self["programArtwork"].show()
 					return
@@ -1161,7 +1162,7 @@ try:
 	def _warderGraphicalEPGLabels(self):
 		if not _warderGraphicalEPGPIG(self):
 			return
-		for key, text in (("key_red", _warderUiText("PROGRAM INFO")), ("key_green", _warderUiText("Add Timer")), ("key_yellow", _warderUiText("Goto Date/Time")), ("key_blue", _warderUiText("EPG Search"))):
+		for key, text in (("warder_key_red", _warderUiText("PROGRAM INFO")), ("warder_key_green", _warderUiText("Add Timer")), ("warder_key_yellow", _warderUiText("Goto Date/Time")), ("warder_key_blue", _warderUiText("EPG Search"))):
 			try:
 				self[key].setText(text)
 			except Exception:
@@ -1170,6 +1171,9 @@ try:
 	WarderEPGSelection_init = WarderEPGSelection.__init__
 	def warderEPGSelectionInit(self, *args, **kwargs):
 		WarderEPGSelection_init(self, *args, **kwargs)
+		if _warderGraphicalEPGPIG(self):
+			for key in ("warder_key_red", "warder_key_green", "warder_key_yellow", "warder_key_blue"):
+				self[key] = StaticText("")
 		_warderGraphicalEPGLabels(self)
 	WarderEPGSelection.__init__ = warderEPGSelectionInit
 
