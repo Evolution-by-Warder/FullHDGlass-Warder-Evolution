@@ -105,7 +105,7 @@ class WarderRadioArtwork(Renderer):
             path = os.path.join(cls._cacheDir(), hashlib.sha1(key.encode("utf-8")).hexdigest() + ".jpg")
             if not os.path.isfile(path):
                 payload = urlopen(Request(art, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0"}), timeout=2.5).read()
-                if not payload or len(payload) <= 1024 or payload[:2] != b"\\xff\\xd8":
+                if not payload or len(payload) <= 1024 or not payload.startswith(bytes((255, 216))):
                     return ""
                 tmp = path + ".tmp"
                 with open(tmp, "wb") as out:
