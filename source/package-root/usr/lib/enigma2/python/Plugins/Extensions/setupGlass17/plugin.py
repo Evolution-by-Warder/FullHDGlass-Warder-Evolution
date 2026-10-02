@@ -188,7 +188,7 @@ class WarderProgramInfo(Screen):
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="50,435" size="120,72" zPosition="3" alphatest="blend" />
 		<widget name="stationLabel" position="50,520" size="190,34" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="channel" position="245,520" size="215,34" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
+		<widget name="channel" position="225,520" size="235,34" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="genreLabel" position="50,560" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
 		<widget name="genreMeta" position="225,560" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="yearLabel" position="50,593" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
