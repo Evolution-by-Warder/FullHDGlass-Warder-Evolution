@@ -150,63 +150,96 @@ def Writelog(txt):
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
-	<screen name="WarderProgramInfo" position="center,90" size="1740,900" title="PROGRAM INFO" backgroundColor="transpBlack">
-		<eLabel position="30,20" size="1680,2" backgroundColor="#707070" />
-		<widget source="session.VideoPicture" render="Pig" position="45,55" size="510,287" zPosition="3" backgroundColor="black" />
-		<widget name="title" position="600,55" size="1065,58" font="Prive4;44" foregroundColor="#e5b243" transparent="1" />
-		<widget name="channel" position="600,125" size="675,42" font="Prive3;31" foregroundColor="#ffffff" transparent="1" />
-		<widget name="when" position="600,178" size="1065,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
-		<widget name="duration" position="600,230" size="510,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="short" position="600,285" size="1065,70" font="Prive3;29" foregroundColor="#ffffff" transparent="1" />
-		<eLabel position="45,375" size="1650,2" backgroundColor="#707070" />
-		<eLabel text="PROGRAM" position="45,405" size="420,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
-		<widget name="eventname" position="45,455" size="465,48" font="Prive4;32" foregroundColor="#ffffff" transparent="1" />
-		<eLabel text="STANICA" position="45,525" size="420,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
-		<widget name="service" position="45,575" size="465,48" font="Prive4;31" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel text="ČAS" position="45,645" size="420,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
-		<widget name="timeinfo" position="45,695" size="465,48" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel position="540,405" size="2,345" backgroundColor="#707070" />
-		<eLabel text="POPIS" position="585,405" size="1110,42" font="Prive3;28" foregroundColor="#e5b243" transparent="1" />
-		<widget name="description" position="585,455" size="1110,295" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel text="Zavrieť" position="45,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
-		<eLabel text="Časovač" position="465,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" />
-		<eLabel text="EPG" position="885,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" />
-		<eLabel text="Hľadať" position="1305,820" size="390,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+	<screen name="WarderProgramInfo" position="center,70" size="1780,940" title="PROGRAM INFO" backgroundColor="transpBlack">
+		<eLabel position="30,20" size="1720,2" backgroundColor="#707070" />
+		<widget name="now" position="1280,32" size="455,38" font="Prive3;27" halign="right" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel position="45,62" size="535,302" backgroundColor="#181818" />
+		<widget name="preview" position="58,75" size="509,276" zPosition="3" alphatest="blend" />
+		<widget name="stationPicon" position="615,122" size="135,81" zPosition="3" alphatest="blend" />
+		<widget name="title" position="615,55" size="1090,58" font="Prive4;44" foregroundColor="#e5b243" transparent="1" />
+		<widget name="channel" position="775,128" size="930,42" font="Prive3;31" foregroundColor="#ffffff" transparent="1" />
+		<widget name="when" position="775,178" size="930,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
+		<widget name="duration" position="775,228" size="930,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="short" position="615,286" size="1090,72" font="Prive3;29" foregroundColor="#ffffff" transparent="1" />
+		<eLabel position="45,388" size="1690,2" backgroundColor="#707070" />
+		<eLabel text="STANICA" position="45,420" size="430,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
+		<widget name="service" position="45,463" size="470,45" font="Prive4;29" foregroundColor="#ffffff" transparent="1" />
+		<eLabel text="DĹŽKA" position="45,526" size="430,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
+		<widget name="durationMeta" position="45,569" size="470,45" font="Prive4;29" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel text="VYSIELANIE" position="45,632" size="430,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
+		<widget name="broadcast" position="45,675" size="470,70" font="Prive4;28" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel position="545,420" size="2,355" backgroundColor="#707070" />
+		<eLabel text="POPIS" position="590,420" size="1145,38" font="Prive3;27" foregroundColor="#e5b243" transparent="1" />
+		<widget name="description" position="590,463" size="1145,312" font="Prive4;30" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel position="45,805" size="1690,2" backgroundColor="#707070" />
+		<eLabel text="Zavrieť" position="45,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="red" transparent="1" />
+		<eLabel text="Pridať časovač" position="465,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="green" transparent="1" />
+		<eLabel text="Goto Date/Time" position="885,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="yellow" transparent="1" />
+		<eLabel text="EPG Search" position="1305,842" size="395,45" font="Prive3;29" halign="center" foregroundColor="blue" transparent="1" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
 		Screen.__init__(self, session)
-		for name in ("title", "channel", "when", "duration", "short", "eventname", "service", "timeinfo", "description"):
+		for name in ("now", "title", "channel", "when", "duration", "short", "service", "durationMeta", "broadcast", "description"):
 			self[name] = Label("")
+		self["preview"] = Pixmap()
+		self["stationPicon"] = Pixmap()
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self.close, "cancel": self.close, "red": self.close, "green": lambda: self.close("green"), "yellow": lambda: self.close("yellow"), "blue": lambda: self.close("blue")}, -1)
-		event_name = ""
-		service_name = ""
+		self._serviceRef = self._normaliseServiceRef(service)
+		self["now"].setText(time1.strftime("%d.%m.%Y  %H:%M", time1.localtime()))
 		if event is not None:
-			try:
-				event_name = event.getEventName() or ""
-				self["title"].setText(event_name)
-				self["eventname"].setText(event_name)
+			try: self["title"].setText(event.getEventName() or "")
 			except Exception: pass
 			try:
-				begin = int(event.getBeginTime())
-				duration = int(event.getDuration())
-				start = time1.strftime("%d.%m.%Y  %H:%M", time1.localtime(begin))
-				end = time1.strftime("%H:%M", time1.localtime(begin + duration))
-				self["when"].setText(start + "  -  " + end)
-				self["duration"].setText("%d min" % (duration // 60))
-				self["timeinfo"].setText(time1.strftime("%H:%M", time1.localtime(begin)) + " - " + end)
+				begin = int(event.getBeginTime()); duration = int(event.getDuration())
+				startDate = time1.strftime("%d.%m.%Y", time1.localtime(begin)); startTime = time1.strftime("%H:%M", time1.localtime(begin)); endTime = time1.strftime("%H:%M", time1.localtime(begin + duration)); minutes = duration // 60
+				self["when"].setText("%s   %s - %s" % (startDate, startTime, endTime)); self["duration"].setText("%d min" % minutes); self["durationMeta"].setText("%d min" % minutes); self["broadcast"].setText("%s\n%s - %s" % (startDate, startTime, endTime))
 			except Exception: pass
 			try: self["short"].setText(event.getShortDescription() or "")
 			except Exception: pass
 			try: self["description"].setText(event.getExtendedDescription() or event.getShortDescription() or "")
 			except Exception: pass
-		if service is not None:
-			try:
-				service_ref = service if isinstance(service, eServiceReference) else eServiceReference(str(service))
-				service_name = ServiceReference(service_ref).getServiceName() or ""
-				self["channel"].setText(service_name)
-				self["service"].setText(service_name)
-			except Exception: pass
+		serviceName = self._serviceName(service, self._serviceRef)
+		self["channel"].setText(serviceName); self["service"].setText(serviceName)
+		self.onLayoutFinish.append(self._loadServicePicon)
+
+	def _normaliseServiceRef(self, service):
+		if service is None: return None
+		try:
+			if isinstance(service, eServiceReference): return service
+		except Exception: pass
+		try:
+			ref = getattr(service, "ref", None)
+			if ref is not None: return ref
+		except Exception: pass
+		try:
+			if hasattr(service, "toString"): return eServiceReference(service.toString())
+		except Exception: pass
+		try: return eServiceReference(str(service))
+		except Exception: return None
+
+	def _serviceName(self, service, serviceRef):
+		try:
+			if service is not None and hasattr(service, "getServiceName"):
+				name = service.getServiceName() or ""
+				if name: return name.replace("\xc2\x86", "").replace("\xc2\x87", "")
+		except Exception: pass
+		try:
+			if serviceRef is not None: return (ServiceReference(serviceRef).getServiceName() or "").replace("\xc2\x86", "").replace("\xc2\x87", "")
+		except Exception: pass
+		return ""
+
+	def _loadServicePicon(self):
+		if self._serviceRef is None: return
+		try:
+			from Components.Renderer.Picon import getPiconName
+			picon = getPiconName(self._serviceRef.toString())
+			if picon and os.path.isfile(picon):
+				for name in ("preview", "stationPicon"):
+					if self[name].instance is not None:
+						self[name].instance.setScale(1); self[name].instance.setPixmapFromFile(picon); self[name].show()
+		except Exception as e:
+			Writelog("WarderProgramInfo picon: %s" % e)
 
 ##########################################################################################################################
 def readHWtype():
@@ -1076,25 +1109,20 @@ try:
 	WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys
 
 	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
+	def warderProgramInfoClosed(self, action=None):
+		if action == "green": return self.RecordTimerQuestion(True)
+		if action == "yellow": return self.enterDateTime()
+		if action == "blue": return self.openEPGSearch()
 
-def warderProgramInfoClosed(self, action=None):
-	if action == "green":
-		return self.RecordTimerQuestion(True)
-	if action == "yellow":
-		return self.enterDateTime()
-	if action == "blue":
-		return self.openEPGSearch()
-WarderEPGSelection.warderProgramInfoClosed = warderProgramInfoClosed
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):
 			try:
 				cur = self["list%s" % self.activeList].getCurrent()
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
-				if event is not None:
-					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
-			except Exception:
-				pass
+				if event is not None: return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
+			except Exception as e:
+				Writelog("WarderProgramInfo open: %s" % e)
 			return self.infoKeyPressed()
 		return WarderEPGSelection_redButtonPressed(self)
 	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
