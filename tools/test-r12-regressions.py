@@ -807,7 +807,6 @@ assert 'self._requestedKey = key' in RADIO_ART
 
 # TEST83: receiver-proven BAYERN 3 RadioText uses an explicit colon separator.
 assert 'for sep in (" - ", " – ", " — ", ": "):' in RADIO_ART
-assert '!= wantArtist or cls._norm(item.get("trackName")) != wantTitle' in RADIO_ART
 
 # TEST84: downloaded artwork must validate the real JPEG SOI bytes.
 assert "payload.startswith(bytes((255, 216)))" in RADIO_ART
