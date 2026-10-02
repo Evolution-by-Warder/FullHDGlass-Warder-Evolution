@@ -1,5 +1,5 @@
 Warder TEST build request
 Candidate: 1.0.5-test36
-Revision: 124
+Revision: 125
 Purpose: TEST36 aligns PROGRAM INFO with the maintainer-approved FullHDGlass mockup and the real TEST34 receiver screenshot. Use live video only as a full-screen background plane under a dark translucent FullHDGlass panel; never fake programme artwork with an enlarged station picon. Keep the real station picon beside the channel name, blue metadata labels, amber programme/time emphasis, a large description area, and four FullHDGlass-style action buttons. EPG remains authoritative and unavailable metadata stays absent.
 Preserve accepted GraphicalEPGPIG geometry/actions and the original r12 upgrade/GSOD guard.
