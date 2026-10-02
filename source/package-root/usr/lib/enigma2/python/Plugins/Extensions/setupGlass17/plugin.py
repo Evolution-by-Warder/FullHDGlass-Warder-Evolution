@@ -150,14 +150,14 @@ def Writelog(txt):
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. Uses selected EPG data directly; enrichment stays optional."""
 	skin = """
-	<screen name="WarderProgramInfo" position="center,center" size="1740,900" title="PROGRAM INFO" backgroundColor="transpBlack">
-		<widget name="title" position="45,35" size="1200,55" font="Prive4;42" foregroundColor="#e5b243" transparent="1" />
-		<widget name="channel" position="45,105" size="900,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
-		<widget name="when" position="960,105" size="735,42" font="Prive3;30" halign="right" foregroundColor="#e5b243" transparent="1" />
-		<eLabel position="45,165" size="1650,2" backgroundColor="#707070" />
-		<widget name="short" position="45,195" size="1650,105" font="Prive3;30" foregroundColor="#ffffff" transparent="1" />
-		<widget name="description" position="45,325" size="1650,450" font="Prive4;31" foregroundColor="#cdcdcd" transparent="1" />
-		<eLabel text="Zavrieť" position="45,825" size="390,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+	<screen name="WarderProgramInfo" position="center,150" size="1650,840" title="PROGRAM INFO" backgroundColor="transpBlack">
+		<widget name="title" position="60,30" size="1530,55" font="Prive4;42" foregroundColor="#e5b243" transparent="1" />
+		<widget name="channel" position="60,100" size="720,42" font="Prive3;30" foregroundColor="#cdcdcd" transparent="1" />
+		<widget name="when" position="795,100" size="795,42" font="Prive3;30" halign="right" foregroundColor="#e5b243" transparent="1" />
+		<eLabel position="60,160" size="1530,2" backgroundColor="#707070" />
+		<widget name="short" position="60,190" size="1530,75" font="Prive3;30" foregroundColor="#ffffff" transparent="1" />
+		<widget name="description" position="60,285" size="1530,405" font="Prive4;31" foregroundColor="#cdcdcd" transparent="1" />
+		<eLabel text="Zavrieť" position="60,755" size="390,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
 	</screen>"""
 
 	def __init__(self, session, event=None, service=None):
