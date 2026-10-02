@@ -7932,6 +7932,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget name="timeline_now" position="75,423" zPosition="2" size="28,495" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
     <widget name="bouquetlist" position="15,423" size="1845,495" scrollbarMode="showNever" transparent="1" />
     <widget name="key_red" position="30,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="red" transparent="1" />
+    <widget name="key_green" position="495,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="green" transparent="1" />
+    <widget name="key_yellow" position="960,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="yellow" transparent="1" />
+    <widget name="key_blue" position="1425,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
 
   <screen name="GraphicalInfoBarEPG" position="0,720" size="1920,360" backgroundColor="transpBlack" flags="wfNoBorder" title="InfoBar">
