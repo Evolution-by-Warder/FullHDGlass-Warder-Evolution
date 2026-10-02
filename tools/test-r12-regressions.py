@@ -452,7 +452,8 @@ pig26 = SKIN[pig26_start:pig26_end]
 assert 'source="Title" render="Label"' not in pig26
 assert 'source="global.CurrentTime" render="Label" position="30,12"' not in pig26
 assert 'name="timeline_text" position="75,387"' in pig26
-assert 'name="timeline0" position="75,423"' in pig26
+assert 'name="timeline0"' not in pig26
+assert 'name="timeline_now" position="75,423"' in pig26
 
 
 # TEST26 runtime policy: picon-only native graphical EPG and restart dialog outlives 3s restart timer.
