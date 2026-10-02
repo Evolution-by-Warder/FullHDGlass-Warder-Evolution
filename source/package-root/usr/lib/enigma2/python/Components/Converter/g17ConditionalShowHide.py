@@ -11,7 +11,11 @@ class g17ConditionalShowHide(Converter, object):
 		self.blinktime = next((int(x) for x in args if x.isdigit()), 500)
 		if self.blink:
 			self.timer = eTimer()
-			self.timer.callback.append(self.blinkFunc)
+			try:
+				self.timer_conn = self.timer.timeout.connect(self.blinkFunc)
+			except Exception:
+				self.timer_conn = None
+				self.timer.callback.append(self.blinkFunc)
 		else:
 			self.timer = None
 
@@ -67,4 +71,10 @@ class g17ConditionalShowHide(Converter, object):
 
 	def destroy(self):
 		if self.timer:
-			self.timer.callback.remove(self.blinkFunc)
+			try:
+				if self.timer_conn is not None:
+					self.timer_conn = None
+				elif self.blinkFunc in self.timer.callback:
+					self.timer.callback.remove(self.blinkFunc)
+			except Exception:
+				pass

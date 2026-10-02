@@ -524,3 +524,13 @@ assert 'rm -rf /usr/share/enigma2/hd_glass17' not in POSTRM
 HDGSCREENS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml").read_text(encoding="utf-8")
 assert 'backgroundPixmap="hd_glass17/buttons/selected-menu_bgpixmap.png"' in HDGSCREENS
 assert (PKG / "usr/share/enigma2/hd_glass17/buttons/selected-menu_bgpixmap.png").is_file()
+
+# DreamOS compatibility: do not reject valid Enigma2 layouts solely because skin_default/skin.xml is absent.
+PREINST = (ROOT / "source/control/preinst").read_text(encoding="utf-8")
+assert "/usr/lib/enigma2/python" in PREINST
+assert "DreamOS-compatible layout" in PREINST
+# DreamOS eTimer uses timeout.connect; retain callback fallback for older Enigma2 images.
+COND = (PKG / "usr/lib/enigma2/python/Components/Converter/g17ConditionalShowHide.py").read_text(encoding="utf-8")
+assert "self.timer.timeout.connect(self.blinkFunc)" in COND
+assert "self.timer.callback.append(self.blinkFunc)" in COND
+assert "self.timer_conn = None" in COND
