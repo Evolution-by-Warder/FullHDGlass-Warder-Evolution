@@ -254,7 +254,7 @@ class WarderProgramInfo(Screen):
 				if meta.get("country"): parts.append("%s %s" % (_warderUiText("Country:"), meta["country"]))
 				self["yearCountryMeta"].setText("   ".join(parts))
 				if meta.get("rating"):
-					self["ratingMeta"].setText("%s %s (%s)" % (_warderUiText("Rating:"), meta["rating"], meta.get("provider","")))
+					self["ratingMeta"].setText("%s %s (%s)" % (_warderUiText("Rating:"), meta["rating"], meta.get("provider","")))\n\t\t\t\tif meta.get("runtime"):\n\t\t\t\t\tself["runtimeMeta"].setText("%s %s min" % (_warderUiText("Runtime:"), meta["runtime"]))
 		except Exception as e:
 			Writelog("WarderProgramInfo metadata: %s" % e)
 		serviceName = self._serviceName(service, self._serviceRef)
