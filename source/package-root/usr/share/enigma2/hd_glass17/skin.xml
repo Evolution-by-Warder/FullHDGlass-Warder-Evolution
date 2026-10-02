@@ -7909,10 +7909,29 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget name="primetime" position="30,777" size="270,36" font="Prive3;24" transparent="1" /><widget name="change_bouquet" position="315,777" size="330,36" font="Prive3;24" transparent="1" /><widget name="jump" position="660,777" size="330,36" font="Prive3;24" transparent="1" /><widget name="page" position="1005,777" size="330,36" font="Prive3;24" transparent="1" />
     <widget source="Event" render="Label" position="30,825" size="1830,42" font="Prive3;33" foregroundColor="white" transparent="1"><convert type="EventName">Name</convert></widget>
     <widget source="Event" render="Label" position="30,873" size="1830,90" font="Prive3;27" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert></widget>
+    <widget name="key_red" position="15,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" /><widget name="key_green" position="480,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" /><widget name="key_yellow" position="945,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" /><widget name="key_blue" position="1410,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+  </screen>
+
+  <screen name="GraphicalEPGPIG" position="15,15" size="1890,1050" backgroundColor="black" title="FullHDGlass Graphical Guide">
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1575,12" size="270,42" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1" />
+    <eLabel position="30,60" size="555,315" zPosition="0" backgroundColor="black" />
+    <widget source="session.VideoPicture" render="Pig" position="33,63" size="549,309" zPosition="3" backgroundColor="#ff000000" />
+    <widget source="Event" render="Label" position="615,66" size="180,39" font="Prive3;30" foregroundColor="#e5b243" transparent="1"><convert type="EventTime">StartTime</convert><convert type="ClockToText" /></widget>
+    <widget source="Event" render="Label" position="795,66" size="180,39" font="Prive3;30" foregroundColor="#e5b243" transparent="1"><convert type="EventTime">EndTime</convert><convert type="ClockToText">Format:- %H:%M</convert></widget>
+    <widget source="Event" render="Label" position="990,66" size="855,42" font="Prive3;33" foregroundColor="#e5b243" transparent="1"><convert type="EventName">Name</convert></widget>
+    <widget source="Event" render="Label" position="615,117" size="1230,246" font="Prive3;27" foregroundColor="#cdcdcd" transparent="1"><convert type="EventName">ExtendedDescription</convert></widget>
+    <widget name="timeline_text" position="75,387" size="1755,36" backgroundColor="black" transparent="1" />
+    <widget name="lab1" position="15,423" size="1845,495" font="Prive3;30" halign="center" valign="center" backgroundColor="black" />
+    <widget name="list" position="15,423" size="1845,495" font="Prive3;27" NumberOfRows="15" scrollbarMode="showNever" transparent="1" />
+    <widget name="timeline0" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline1" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline2" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline3" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline4" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline5" position="75,423" zPosition="1" size="3,495" pixmap="hd_glass17/timeline.png" alphatest="on" />
+    <widget name="timeline_now" position="75,423" zPosition="2" size="28,495" pixmap="hd_glass17/timeline-now.png" alphatest="on" />
+    <widget name="bouquetlist" position="15,423" size="1845,495" scrollbarMode="showNever" transparent="1" />
     <widget name="key_red" position="30,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="red" transparent="1" />
-    <widget name="key_green" position="495,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="green" transparent="1" />
-    <widget name="key_yellow" position="960,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="yellow" transparent="1" />
-    <widget name="key_blue" position="1425,930" size="420,42" font="Prive3;27" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
 
   <screen name="GraphicalInfoBarEPG" position="0,720" size="1920,360" backgroundColor="transpBlack" flags="wfNoBorder" title="InfoBar">
