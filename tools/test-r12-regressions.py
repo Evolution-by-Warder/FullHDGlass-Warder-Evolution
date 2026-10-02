@@ -496,5 +496,5 @@ for token in (
 # TEST31: red key is direct programme information, never an external search/chooser.
 assert 'class WarderProgramInfo(Screen):' in PLUGIN
 assert 'self.session.open(WarderProgramInfo, event, service)' in PLUGIN
-assert 'from Plugins.Extensions.IMDb.plugin import IMDB' not in PLUGIN
+assert 'return self.session.open(IMDB, name, False)' not in PLUGIN
 assert '<eLabel text="PROGRAM INFO" position="30,930" size="420,42"' in SKIN
