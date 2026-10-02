@@ -616,3 +616,10 @@ for token in (
     'name="bouquetlist" position="15,423" size="1845,495"',
 ):
     assert token in pigepg, token
+
+# TEST50: RED in Warder GraphicalEPGPIG is a single-purpose PROGRAM INFO action.
+assert 'Never fall through to OpenATV/legacy info/CSFD handlers.' in PLUGIN
+red_handler = PLUGIN.split('def warderEPGSelectionRedButtonPressed(self):', 1)[1].split('WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed', 1)[0]
+assert 'WarderProgramInfo, event, service' in red_handler
+assert 'self.infoKeyPressed()' not in red_handler
+assert 'return None' in red_handler

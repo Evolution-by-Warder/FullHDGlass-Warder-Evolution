@@ -1195,14 +1195,20 @@ try:
 
 	def warderEPGSelectionRedButtonPressed(self):
 		if _warderGraphicalEPGPIG(self):
+			# Warder contract: RED in our graphical EPG has exactly one destination:
+			# the local PROGRAM INFO screen for the currently selected EPG event.
+			# Never fall through to OpenATV/legacy info/CSFD handlers.
 			try:
-				cur = self["list%s" % self.activeList].getCurrent()
+				active = getattr(self, "activeList", 1)
+				listing = self["list%s" % active]
+				cur = listing.getCurrent()
 				event = cur[0] if cur else None
 				service = cur[1] if cur and len(cur) > 1 else None
-				if event is not None: return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
+				if event is not None:
+					return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
 			except Exception as e:
 				Writelog("WarderProgramInfo open: %s" % e)
-			return self.infoKeyPressed()
+			return None
 		return WarderEPGSelection_redButtonPressed(self)
 	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
 
