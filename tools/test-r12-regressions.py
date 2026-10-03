@@ -962,7 +962,7 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 
 # TEST114: top-only runtime dialog solves InfoBar overlap without raising native RDS above ChannelSelection.
 assert 'class WarderRadioTopOverlay(Screen):' in PLUGIN
-assert 'instantiateDialog(WarderRadioTopOverlay, zPosition=1100)' in PLUGIN
+assert 'instantiateDialog(WarderRadioTopOverlay, zPosition=3000)' in PLUGIN
 assert 'if "ChannelSelection" in name:' in PLUGIN
 assert 'self.warderRadioTopSyncTimer.start(100, False)' in PLUGIN
 assert 'return bool(getattr(self, "shown", False))' in PLUGIN
