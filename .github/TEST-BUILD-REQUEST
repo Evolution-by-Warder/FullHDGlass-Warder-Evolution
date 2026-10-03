@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test91
-Revision: 248
-Purpose: Correlate the receiver-proven radio iPlayableService.evStart boundary with WarderRadioArtwork RENDERER_START, SERVICE, RADIOTEXT, SONG and REQUEST using one absolute epoch clock. Diagnostic-only; no matching-policy, native RDS/DAB, bouquet or service-selection change.
+Candidate: 1.0.5-test92
+Revision: 249
+Purpose: Restore the existing native-owned RdsInfoDisplay on the receiver-proven radio service-start boundary so the first TV-to-RADIO bouquet EXIT exposes the Warder overlay immediately; no native RDS monkey-patch or artwork-matching change.
