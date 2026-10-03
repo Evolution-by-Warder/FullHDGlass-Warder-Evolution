@@ -1016,7 +1016,7 @@ assert '<eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size
 assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33"' in PLUGIN
 
 # TEST122: use the exact TV ChannelSelection font alias/sizes rather than a Radio alias. This isolates alias/size rasterization as the physical sharpness variable.
-radio122 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+radio122 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'font="WarderRadio;' not in radio122
 assert radio122.count('font="Prive4;33"') >= 5
 assert radio122.count('font="Prive4;25"') >= 2
