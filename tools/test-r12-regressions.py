@@ -896,7 +896,7 @@ assert 'WARDER_GRAB_PATH = PLUGINPATH + "warder-grab"' in PLUGIN
 assert '_warderOpenWebifGrab.GRAB_PATH = WARDER_GRAB_PATH' in PLUGIN
 assert 'with open("/tmp/warder-radio-current", "w") as marker:' in service94
 assert 'marker.write("A" if is_radio else "TV")' in service94
-for token in ('REAL_GRAB = "/usr/bin/grab"', 'MASTER = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"', 'MARKER = "/tmp/warder-radio-current"', '"-s" not in args', '"-o" in args', '"-v" in args', 'passthrough()', '"ffmpeg", "-nostdin"', '"overlay=0:0:format=auto"'):
+for token in ('REAL_GRAB = "/usr/bin/grab"', 'MASTER = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"', 'MARKER = "/tmp/warder-radio-current"', '"-s" not in args', '"-o" in args', '"-v" in args', 'passthrough()', '"ffmpeg", "-nostdin"', 'overlay=0:0:format=auto'):
     assert token in WARDER_GRAB, token
 assert 'os.execv(REAL_GRAB, [REAL_GRAB] + sys.argv[1:])' in WARDER_GRAB
 assert 'WarderRdsInfoDisplay' not in PLUGIN
