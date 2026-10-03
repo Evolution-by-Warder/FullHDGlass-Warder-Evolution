@@ -116,12 +116,13 @@ try:
 	ENA_POSTER = True
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST100: native OpenWebif stays authoritative for TV and explicit modes.
+# TEST103: preserve native OpenWebif for TV/explicit modes; Radio All is completed at HTTP resource level.
 try:
 	from Plugins.Extensions.OpenWebif.controllers.models import grab as _warderOwiGrab
 	from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as _warderOwiGetUrlArg
-	_warderNativeGrabRequest = _warderOwiGrab.GrabRequest
-	def _warderRadioAwareGrabRequest(request, session):
+	from twisted.web import server as _warderTwistedServer
+	_warderNativeGrabRender = _warderOwiGrab.grabScreenshot.render
+	def _warderRadioGrabRender(self, request):
 		is_radio = False
 		try:
 			with open("/tmp/warder-radio-current", "r") as marker:
@@ -129,16 +130,35 @@ try:
 		except Exception:
 			pass
 		mode = _warderOwiGetUrlArg(request, "mode")
-		adapter = PLUGINPATH + "warder-grab"
-		if not is_radio or mode not in (None, "", "all") or not os.path.isfile(adapter):
-			return _warderNativeGrabRequest(request, session)
-		native_path = _warderOwiGrab.GRAB_PATH
+		if not is_radio or mode not in (None, "", "all"):
+			return _warderNativeGrabRender(self, request)
+		fmt = _warderOwiGetUrlArg(request, "format", "jpg")
+		if fmt not in ("jpg", "png", "bmp"):
+			fmt = "bmp"
+		master = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
+		osd = "/tmp/warder-radio-http-osd.png"
+		out = "/tmp/warder-radio-http." + fmt
 		try:
-			_warderOwiGrab.GRAB_PATH = adapter
-			return _warderNativeGrabRequest(request, session)
+			subprocess.check_call(["/usr/bin/grab", "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
+			cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
+			if fmt == "jpg": cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
+			elif fmt == "png": cmd += ["-vcodec", "png", out]
+			else: cmd += ["-vcodec", "bmp", out]
+			subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=12)
+			with open(out, "rb") as image:
+				payload = image.read()
+			if not payload:
+				raise IOError("empty Radio screenshot")
+			request.setHeader("Content-Type", "image/" + ("jpeg" if fmt == "jpg" else fmt))
+			request.setHeader("Content-Length", str(len(payload)))
+			return payload
+		except Exception:
+			return _warderNativeGrabRender(self, request)
 		finally:
-			_warderOwiGrab.GRAB_PATH = native_path
-	_warderOwiGrab.GrabRequest = _warderRadioAwareGrabRequest
+			for path in (osd, out):
+				try: os.unlink(path)
+				except Exception: pass
+	_warderOwiGrab.grabScreenshot.render = _warderRadioGrabRender
 except Exception:
 	pass
 config.plugins.setupGlass17 = ConfigSubsection()
