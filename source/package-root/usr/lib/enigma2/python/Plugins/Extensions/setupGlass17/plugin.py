@@ -1601,6 +1601,48 @@ def hdg17inicialize(self):
 def SpecialScreenWindow17(self):
 	ShowHideViaKey()
 
+# TEST107 TEMPORARY timing probe. Remove completely after this one receiver measurement.
+def _warderTest107Snapshot(self, start_epoch, sample_no):
+	try:
+		now = time1.time()
+		ref = self.session.nav.getCurrentlyPlayingServiceReference()
+		refstr = ref.toString() if ref is not None else ""
+		service = self.session.nav.getCurrentService()
+		info = service and service.info()
+		name = info and info.getName() or ""
+		provider = ""
+		try:
+			provider = info.getInfoString(iServiceInformation.sProvider) if info else ""
+		except Exception:
+			pass
+		rds = getattr(self, "rds_display", None)
+		radio_text = ""
+		rtp_text = ""
+		if rds is not None:
+			try: radio_text = rds["RadioText"].getText()
+			except Exception: pass
+			try: rtp_text = rds["RtpText"].getText()
+			except Exception: pass
+		with open("/tmp/warder-test107-timing.txt", "a") as out:
+			out.write("SNAP epoch=%.6f delta=%.3f n=%d rds=%s shown=%s name=%r provider=%r RadioText=%r RtpText=%r ref=%s\\n" % (now, now-start_epoch, sample_no, bool(rds), getattr(rds, "shown", None), name, provider, radio_text, rtp_text, refstr))
+	except Exception as error:
+		try:
+			with open("/tmp/warder-test107-timing.txt", "a") as out: out.write("SNAP_ERROR epoch=%.6f error=%r\\n" % (time1.time(), error))
+		except Exception: pass
+
+
+def _warderTest107Start(self):
+	try:
+		start = time1.time()
+		with open("/tmp/warder-test107-timing.txt", "w") as out: out.write("TEST107_START epoch=%.6f\\n" % start)
+		for n, delay in enumerate((0.0, 0.10, 0.25, 0.50, 0.75, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0)):
+			timer = threading.Timer(delay, _warderTest107Snapshot, args=(self, start, n))
+			timer.daemon = True
+			timer.start()
+	except Exception:
+		pass
+
+
 def serviceStartNow17(self):
 	if isinstance(self,InfoBar):
 		# TEST106: retry after OpenWebif has initialized; idempotent and receiver-proven class name.
@@ -1622,6 +1664,8 @@ def serviceStartNow17(self):
 		try:
 			fields = refstr.split(":")
 			is_radio = len(fields) > 2 and fields[2].upper() == "A"
+			if is_radio:
+				_warderTest107Start(self)
 			try:
 				with open("/tmp/warder-radio-current", "w") as marker:
 					marker.write("A" if is_radio else "TV")
