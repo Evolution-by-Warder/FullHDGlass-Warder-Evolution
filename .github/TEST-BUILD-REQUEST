@@ -1,3 +1,3 @@
-TEST134 emergency recovery from TEST133 restart loop
-Source+journal commit: 5efdbd6d20b0246bffb4376f99cb2d5bacf8d42d
-Fix only stale WarderRadioMultiContentProbe constructor references; no typography experiment.
+TEST135 Program Info parent-composition typography diagnostic
+Source+journal commit: 1753fd5591e70b1c5a05c97e7abd652fa942d970
+Retire TEST133 native-list probe; compare ordinary Prive4;33 Label on Program-Info-style composed parent at the stable Radio service-name row.
