@@ -794,10 +794,12 @@ for token in ("hd_glass17/radio.mvi", "ffmpeg"):
     assert token in BUILD_TEST, token
 
 
-# TEST80 safe Radio/DAB skin-only overlay. Never reintroduce the native RdsInfoDisplay monkey-patch.
-rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', 'source="session.CurrentService"', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
+# TEST80/TEST144: native RDS retains bottom Radio/DAB data only; TEST117 owns the top rail in ExtraInfo17.
+rds80 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+for token in ('source="session.CurrentService"', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
     assert token in rds80, token
+for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution'):
+    assert token not in rds80, token
 # TEST124 deliberately replaces the TEST80 ServiceName/Label field with the native service-list painter.
 assert '<convert type="ServiceName">Name</convert>' in rds80 or 'render="WarderRadioServiceText"' in rds80
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
@@ -878,7 +880,7 @@ assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transp
 assert 'render="WarderRadioArtwork" position="0,0" size="648,648"' in PLUGIN
 assert 'render="WarderRadioSpectrum" position="1443,25" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
-assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
+assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' not in radio
 assert 'Format::%S' not in radio
 
 # TEST93 packaging must use only the approved fixed production master.
@@ -932,7 +934,7 @@ assert 'WarderRdsInfoDisplay' not in PLUGIN
 
 # TEST96: Radio UI stays native FHD and OpenWebif JPEG preserves OSD text chroma detail.
 assert '<resolution xres="1920" yres="1080" bpp="32" />' in SKIN
-assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
+assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' not in radio
 assert 'Format::%H:%M:%S' not in radio
 assert '"-q:v", "2", output' in WARDER_GRAB
 assert 'timeout=8' in WARDER_GRAB
