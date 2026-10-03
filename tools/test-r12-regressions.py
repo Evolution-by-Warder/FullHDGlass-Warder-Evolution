@@ -960,19 +960,19 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST114: top-only runtime dialog solves InfoBar overlap without raising native RDS above ChannelSelection.
-assert 'class WarderRadioTopOverlay(Screen):' in PLUGIN
-assert 'instantiateDialog(WarderRadioTopOverlay, zPosition=3000)' in PLUGIN
-assert 'if "ChannelSelection" in name:' in PLUGIN
-assert 'self.warderRadioTopSyncTimer.start(100, False)' in PLUGIN
-assert 'return bool(getattr(self, "shown", False))' in PLUGIN
+# TEST117: Radio top rail is rendered inside the actual ExtraInfo17 runtime layer.
+assert 'warder_radio_top = """' in PLUGIN
+assert 'name="warderRadioDate" position="62,32"' in PLUGIN
+assert 'name="warderRadioTime" position="745,27"' in PLUGIN
+assert 'name="warderRadioBrand" position="1220,30"' in PLUGIN
+assert 'self["warderRadioDate"] = Label("")' in PLUGIN
+assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
+assert 'marker.read(8).strip() == "A"' in PLUGIN
+assert 'class WarderRadioTopOverlay(Screen):' not in PLUGIN
+assert 'warderRadioTopDialog' not in PLUGIN
+assert 'zPosition=3000' not in PLUGIN
 assert SKIN.count('render="WarderRadioInfoBarTop"') == 0
-service114 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
-radio114 = service114.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
-assert 'if is_radio:' in radio114 and 'rds.show()' in radio114
-assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio114
-
-
-# TEST116: top-only overlay sits above FullHDGlass auxiliary runtime dialogs; ChannelSelection suppression remains mandatory.
-assert 'WarderRadioTopOverlay, zPosition=3000' in PLUGIN
-assert 'if "ChannelSelection" in name:' in PLUGIN
+service117 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
+radio117 = service117.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
+assert 'if is_radio:' in radio117 and 'rds.show()' in radio117
+assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
