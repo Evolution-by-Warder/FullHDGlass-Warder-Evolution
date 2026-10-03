@@ -1,4 +1,4 @@
-TEST144 CI correction rebuild 3
+TEST144 CI correction rebuild 4
 Source runtime: c476530d4de9bc703f6a9a16f35661dae62d957c
-Regression audit: b409661aab0aa2361fbfe8f558bf3c5ce3d8a6aa
-CI #344 exposed stale TEST80/top-rail ownership guards; audited later Radio block in batch. Runtime/skin unchanged.
+Regression fix: f04510a8cb0c2ba04ac74d3259c920404811aafb
+Verified from new commit: RdsInfoDisplay regex uses single raw-regex escapes. Runtime/skin unchanged.
