@@ -1012,5 +1012,5 @@ assert 'DejaVuSans.ttf" name="WarderRadio"' not in SKIN
 
 # TEST121: match the physically sharp FullHDGlass17 TV rendering path. WarderRadio now aliases the exact TV face prive7.ttf at scale 100; top brand is optically equal to date at 30px.
 assert '<font filename="prive7.ttf" name="WarderRadio" scale="100" />' in SKIN
-assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;30"' in SKIN
+assert '<eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size="580,66" font="WarderRadio;30"' in SKIN
 assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;30"' in PLUGIN
