@@ -605,3 +605,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST139 CI #332 failed at Python compile only: the source contained literal `\\n\\t...` characters between probe.setNativeRds(rds) and probe.setService(...), producing SyntaxError at plugin.py:1695. Replace only those escaped literals with a real newline/indent. No runtime design change.
 
 - TEST139 CI #333: perform positional replacement of the single malformed setNativeRds/setService source line with two real Python lines. No runtime design change.
+
+- TEST139 CI #334: runtime plugin now compiles and all gates through version ordering pass. Failure is only test-r12-regressions.py:1053 containing literal escaped newline sequences in the newly added TEST139 assertions. Replace that malformed assertion line with four real Python assertion lines; runtime source unchanged.
