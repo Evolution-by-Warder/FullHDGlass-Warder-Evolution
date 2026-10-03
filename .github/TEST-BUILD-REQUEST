@@ -1,4 +1,3 @@
-TEST123 corrected-1
-CI-only TEST123 regex guard correction after run 37131739044. Radio UI/runtime compositing diagnostic unchanged.
-Guard fix commit: 8bf4a7ce097238f06ab055b945bdcb56e0e0b02f
-Journal commit: e0d3f02ace5c738f08bd166ca0848826d2c02d5a
+TEST124
+Native service-list painter diagnostic for Radio service-name sharpness. RadioText remains Label control; geometry/artwork/equalizer/TEST117 lifecycle locked.
+Source commit: 9c5f8b99a0ca5fb872445ac2ee01c56dcfb95a56
