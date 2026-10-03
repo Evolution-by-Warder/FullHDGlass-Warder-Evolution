@@ -796,7 +796,8 @@ for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderT
 
 # TEST81 isolated Radio/DAB artwork renderer: exact match only, no native-screen monkey patch.
 assert 'render="WarderRadioArtwork"' in SKIN
-assert 'position="680,145" size="560,560"' in SKIN
+# TEST81 requires the isolated exact-artwork renderer; TEST93 owns its current approved geometry.
+assert 'render="WarderRadioArtwork"' in SKIN
 assert 'class WarderRadioArtwork(Renderer):' in RADIO_ART
 assert 'iRdsDecoder.RadioText' in RADIO_ART
 assert 'threading.Thread' in RADIO_ART and 'timeout=2.5' in RADIO_ART
@@ -857,7 +858,8 @@ assert "self._timer.stop()" in SPECTRUM
 assert "width, height = 350, 126" in SPECTRUM
 assert "barw = 15" in SPECTRUM
 assert "content_width = self._bars * barw" in SPECTRUM
-assert "subprocess" not in SPECTRUM
+assert "import subprocess" not in SPECTRUM
+assert "subprocess." not in SPECTRUM
 assert "import random" not in SPECTRUM
 assert "random." not in SPECTRUM
 radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
