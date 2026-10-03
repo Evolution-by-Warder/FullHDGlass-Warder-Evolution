@@ -1000,8 +1000,12 @@ for token in (
 assert 'font="Regular2;33"' not in radio118
 
 # TEST119: physical TEST118 rejected prive7.ttf. Radio-only typography uses system DejaVu Sans via WarderRadio alias; geometry/lifecycle remain locked.
-assert '<font filename="DejaVuSans.ttf" name="WarderRadio" scale="100" />' in SKIN
+assert '<font filename="Inter[opsz,wght].ttf" name="WarderRadio" scale="100" />' in SKIN
 radio119 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'font="Prive4;' not in radio119
 assert 'font="Regular2;' not in radio119
 assert radio119.count('font="WarderRadio;') >= 7
+
+# TEST120: physical TEST119 improved but remained below the Warder Radio visual standard. Bundle Inter under OFL and keep the established WarderRadio alias/geometry.
+assert '<font filename="Inter[opsz,wght].ttf" name="WarderRadio" scale="100" />' in SKIN
+assert 'DejaVuSans.ttf" name="WarderRadio"' not in SKIN
