@@ -1,3 +1,3 @@
-TEST122
-Exact-TV typography-path diagnostic after TEST121 physical FAIL: active Radio text requests use native Prive4;33/25 directly, matching sharp ChannelSelection reference. TEST117 lifecycle/geometry preserved. No artwork/equalizer changes.
-Source commit: 950413bdb096b434119d63e434f121bb07c643ba
+TEST122 corrected
+CI-only retirement of superseded TEST119 Prive4-negative guard after run 37130266386. Runtime exact-TV typography diagnostic unchanged.
+Source commit: 2af93891f276b7b00d88f6f10725577672bb0a22
