@@ -1616,6 +1616,8 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="session.CurrentService" render="Label" position="1495,965" size="355,38" font="Prive3;27" halign="right" noWrap="1" foregroundColor="#e5b243" transparent="1" zPosition="3">
       <convert type="ServiceName">Provider</convert>
     </widget>
+    <!-- TEST93 candidate: lightweight decorative spectrum; visual effect only, not audio analysis. -->
+    <widget source="session.CurrentService" render="WarderRadioSpectrum" position="1560,918" size="250,120" zPosition="4" transparent="1" />
   </screen>  <!-- Dish -->
   <screen name="Dish" flags="wfNoBorder" position="1530,150" size="195,240" title="Dish" zPosition="9" backgroundColor="transparent">
     <widget name="Dishpixmap" pixmap="hd_glass17/icons/dish.png" position="0,0" size="195,240" alphatest="off" />
