@@ -533,3 +533,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST122 CI assertion correction (2026-10-03): run 37130266386 passed to the historical TEST119 guard and failed because that older experiment explicitly prohibited Prive4 in Radio. TEST122 intentionally tests the opposite hypothesis: exact direct Prive4 requests matching the physically sharp TV reference. Retired only that superseded negative guard; TEST122 positive Prive4 guards remain. Runtime/UI unchanged.
 
 - TEST122 second CI assertion correction (2026-10-03): run 37130434470 failed on the next historical TEST119 assertion requiring seven WarderRadio requests. TEST122 deliberately removes WarderRadio from active Radio widgets to test the exact direct TV alias. Retired that superseded count guard; positive TEST122 direct-Prive4 guards remain. Runtime/UI unchanged.
+
+- TEST122 third CI assertion correction (2026-10-03): run 37130704180 failed only because the newly added TEST122 RdsInfoDisplay regex was over-escaped, the same test-authoring class previously seen in TEST119. Corrected the guard literal to the proven single-escaped raw-regex form. Runtime/UI unchanged.
