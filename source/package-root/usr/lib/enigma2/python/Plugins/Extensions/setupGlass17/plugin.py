@@ -244,58 +244,6 @@ def _warderUiText(text):
 		pass
 	return text
 
-class WarderRadioCompositionProbe(Screen):
-	"""TEST140: transparent crisp composed Radio metadata layer; mirrors native RDS text without taking RDS ownership."""
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="1000,151" backgroundColor="transparent" flags="wfNoBorder">
-			<widget name="serviceName" position="0,0" size="720,42" font="Prive4;33" foregroundColor="#dddddd" transparent="1" valign="center" noWrap="1" />
-			<widget name="radioText" position="0,53" size="1000,52" font="Prive4;33" foregroundColor="#eeeeee" transparent="1" valign="center" noWrap="1" />
-			<widget name="rtpText" position="0,113" size="1000,38" font="Prive4;25" foregroundColor="#3388dd" transparent="1" valign="center" noWrap="1" />
-		</screen>"""
-		self["serviceName"] = Label("")
-		self["radioText"] = Label("")
-		self["rtpText"] = Label("")
-		self._nativeRds = None
-		self._mirrorTimer = eTimer()
-		try:
-			self._mirrorTimerConn = self._mirrorTimer.timeout.connect(self._mirrorNativeText)
-		except AttributeError:
-			self._mirrorTimer.timeout.get().append(self._mirrorNativeText)
-
-	def setNativeRds(self, rds):
-		self._nativeRds = rds
-
-	def setService(self, ref):
-		name = ""
-		try:
-			info = eServiceCenter.getInstance().info(ref)
-			if info is not None:
-				name = info.getName(ref) or ""
-		except Exception:
-			pass
-		self["serviceName"].setText(name)
-		self._mirrorNativeText()
-		self._mirrorTimer.start(250, False)
-
-	def stopMirror(self):
-		if self._mirrorTimer.isActive():
-			self._mirrorTimer.stop()
-		self["radioText"].setText("")
-		self["rtpText"].setText("")
-
-	def _mirrorNativeText(self):
-		rds = self._nativeRds
-		if rds is None:
-			return
-		for nativeName, localName in (("RadioText", "radioText"), ("RtpText", "rtpText")):
-			value = ""
-			try:
-				value = rds[nativeName].getText() or ""
-			except Exception:
-				pass
-			self[localName].setText(value)
-
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
@@ -1565,13 +1513,6 @@ def hdg17inicialize(self):
 		f = open(KMP_FILE, "r").read()
 		if f.find("LongOKPressed") != -1:
 			self["ShowHideActions"] = ActionMap( ["InfobarShowHideActions"] ,{"toggleShow": doNothing,"hide": doNothing,})
-		# TEST138: keep the proven crisp scoped composition independent of native RDS ownership.
-		if ENA_Z:
-			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe, zPosition=10)
-			self.warderRadioCompositionProbe.shown = False
-		else:
-			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe)
-		self.warderRadioCompositionProbe.hide()
 		if ENA_Z:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
 			self.g17dialog.shown = False
@@ -1687,11 +1628,6 @@ def serviceStartNow17(self):
 			except Exception:
 				pass
 			rds = getattr(self, "rds_display", None)
-			# TEST141: retire the TEST138-140 composition patch during native RDS backing A/B test.
-			probe = getattr(self, "warderRadioCompositionProbe", None)
-			if probe is not None:
-				probe.stopMirror()
-				probe.hide()
 			if rds is not None:
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.

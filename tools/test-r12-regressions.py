@@ -1050,14 +1050,9 @@ assert 'serviceItemHeight="42"' not in radio_cs133
 # TEST135 PHYSICAL PASS DIAGNOSTIC; TEST138 restores native depth and reuses the proven scoped composition.
 radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transpBlack2"' in radio136
-assert "class WarderRadioCompositionProbe(Screen):" in PLUGIN
-assert 'position="420,842" size="1000,151" backgroundColor="transparent"' in PLUGIN
-assert '<eLabel position="0,0" size="1000,151" backgroundColor="transpBlack3"' not in PLUGIN
-assert "probe.setNativeRds(rds)" not in PLUGIN
-assert "probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())" not in PLUGIN
-assert '("RadioText", "radioText")' in PLUGIN and '("RtpText", "rtpText")' in PLUGIN
-assert "probe.stopMirror()" in PLUGIN
-assert "probe.hide()" in PLUGIN
+# TEST142: TEST141 physically proved native opaque RDS composition; retire the diagnostic overlay completely.
+assert "class WarderRadioCompositionProbe(Screen):" not in PLUGIN
+assert "warderRadioCompositionProbe" not in PLUGIN
 assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio136
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio136
 assert 'name="RtpText" position="420,955" size="1000,38" font="Prive4;25"' in radio136
