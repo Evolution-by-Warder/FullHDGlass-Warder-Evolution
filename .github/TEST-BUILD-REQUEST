@@ -1,3 +1,3 @@
-TEST124 corrected-4
-CI-only correction of TEST124 renderer guard path to source/package-root. Runtime/UI unchanged.
-Guard+journal commit: 85b1349d346adde6c36bcd1e2f68b4fb35f65cc5
+TEST125 layer diagnostic
+Source+journal commit: a613f837d9b7478c945542fa4def1aeaaf5dc914
+Normal InfoBar Prive4;33 control versus locked Radio layers; TEST124 native painter retired.
