@@ -140,7 +140,7 @@ try:
 		out = "/tmp/warder-radio-http." + fmt
 		try:
 			subprocess.check_call(["/usr/bin/grab", "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
-			cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
+			ffmpeg = "/usr/bin/ffmpeg" if os.path.isfile("/usr/bin/ffmpeg") else "ffmpeg"\n\t\t\tcmd = [ffmpeg, "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
 			if fmt == "jpg": cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
 			elif fmt == "png": cmd += ["-vcodec", "png", out]
 			else: cmd += ["-vcodec", "bmp", out]
