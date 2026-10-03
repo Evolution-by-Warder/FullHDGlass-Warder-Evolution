@@ -1,4 +1,4 @@
 Warder TEST build request
-Candidate: 1.0.5-test89
-Revision: 245
-Purpose: Diagnose the remaining ~5 second TV-to-RADIO startup latency from the physical RADIO key handler, then renderer START, SERVICE, first RadioText, parsed SONG and REQUEST. Existing LOOKUP/READY trace completes the path. No matching-policy or native RDS/DAB change.
+Candidate: 1.0.5-test91
+Revision: 246
+Purpose: Correlate the receiver-proven radio iPlayableService.evStart boundary with WarderRadioArtwork RENDERER_START, SERVICE, RADIOTEXT, SONG and REQUEST using one absolute epoch clock. Diagnostic-only; no matching-policy, native RDS/DAB, bouquet or service-selection change.
