@@ -442,7 +442,7 @@ for n in range(1, 10):
 # (zPosition -20) can remain visible behind the radio text UI.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'backgroundColor="transparent"' in rds
-assert 'zPosition="-2"' in rds
+assert 'zPosition="1"' in rds  # TEST111: Radio rail must remain above normal InfoBar
 
 # TEST24 Cool-like PIG guide geometry.
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
