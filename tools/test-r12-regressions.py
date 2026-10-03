@@ -438,11 +438,11 @@ rass = re.search(r'<screen\b[^>]*name="RassInteractive"[\s\S]*?</screen>', SKIN)
 assert 'name="Marker"' in rass
 for n in range(1, 10):
     assert 'name="subpages_%d"' % n in rass, n
-# FullHDGlass RDS overlay must stay transparent so OpenATV DABSlideDisplay
-# (zPosition -20) can remain visible behind the radio text UI.
+# TEST141 diagnostic: native RdsInfoDisplay deliberately uses an opaque backing to isolate
+# whether transparent-surface composition causes the receiver typography blur.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'backgroundColor="transparent"' in rds
-# TEST136 intentionally tests compositor depth while retaining transparent DAB/SLS composition.
+assert 'backgroundColor="transpBlack2"' in rds
+# Native RDS depth remains receiver-proven zPosition=-2.
 assert 'zPosition="-2"' in rds  # TEST138 restores receiver-proven native RDS depth after TEST136 physical regression
 
 # TEST24 Cool-like PIG guide geometry.
