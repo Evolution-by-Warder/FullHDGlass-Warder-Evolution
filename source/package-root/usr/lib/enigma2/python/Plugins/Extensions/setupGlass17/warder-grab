@@ -60,7 +60,7 @@ try:
     elif fmt == "jpg":
         # OpenWebif requests JPEG quality 95. ffmpeg q=2 is the high-quality
         # single-frame equivalent used only for this radio fallback.
-        cmd += ["-f", "image2pipe", "-vcodec", "mjpeg", "-pix_fmt", "yuvj444p", "-q:v", "1", "-"]
+        cmd += ["-f", "image2pipe", "-vcodec", "mjpeg", "-q:v", "2", "-"]
     else:
         cmd += ["-f", "image2pipe", "-vcodec", "bmp", "-"]
     rc = subprocess.call(cmd)

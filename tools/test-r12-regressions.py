@@ -906,7 +906,8 @@ assert 'WarderRdsInfoDisplay' not in PLUGIN
 assert '<resolution xres="1920" yres="1080" bpp="32" />' in SKIN
 assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
 assert 'Format::%H:%M:%S' not in radio
-assert '"-pix_fmt", "yuvj444p", "-q:v", "1"' in WARDER_GRAB
+assert '"-q:v", "2", "-"' in WARDER_GRAB
+assert '"yuvj444p"' not in WARDER_GRAB
 
 
 # TEST97: Radio spectrum must start from renderer widget lifecycle, not depend only on Screen.onShow.
@@ -915,3 +916,9 @@ assert "def postWidgetCreate(self, instance):" in SPECTRUM
 assert "def preWidgetRemove(self, instance):" in SPECTRUM
 assert 'render="WarderRadioSpectrum"' in radio
 assert 'position="1470,838" size="350,126"' in radio
+
+# TEST98: right-bottom equalizer has a receiver-safe visible baseline inside the locked field.
+assert radio.count('backgroundColor="#1473ff"') >= 2
+assert radio.count('backgroundColor="#1ecdff"') >= 2
+assert 'position="1485,918" size="14,36"' in radio
+assert 'position="1808,896" size="14,58"' in radio

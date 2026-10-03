@@ -1615,6 +1615,25 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="RtpText" position="420,955" size="1000,38" font="Regular2;25" noWrap="1" foregroundColor="#3388dd" transparent="1" zPosition="3" />
 
     <!-- Right-bottom contract: decorative spectrum above real dynamic ServiceName/Provider; never hard-code DAB+/ARD BR. -->
+    <!-- Receiver-safe equalizer baseline: always visible even if custom renderer lifecycle is unavailable. -->
+    <eLabel position="1485,918" size="14,36" backgroundColor="#1473ff" zPosition="3" />
+    <eLabel position="1504,892" size="14,62" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1523,906" size="14,48" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1542,870" size="14,84" backgroundColor="#ffdc23" zPosition="3" />
+    <eLabel position="1561,884" size="14,70" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1580,850" size="14,104" backgroundColor="#ff9114" zPosition="3" />
+    <eLabel position="1599,876" size="14,78" backgroundColor="#ffdc23" zPosition="3" />
+    <eLabel position="1618,900" size="14,54" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1637,862" size="14,92" backgroundColor="#ff9114" zPosition="3" />
+    <eLabel position="1656,886" size="14,68" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1675,842" size="14,112" backgroundColor="#ff3018" zPosition="3" />
+    <eLabel position="1694,874" size="14,80" backgroundColor="#ffdc23" zPosition="3" />
+    <eLabel position="1713,898" size="14,56" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1732,866" size="14,88" backgroundColor="#ff9114" zPosition="3" />
+    <eLabel position="1751,910" size="14,44" backgroundColor="#1ecdff" zPosition="3" />
+    <eLabel position="1770,882" size="14,72" backgroundColor="#ffdc23" zPosition="3" />
+    <eLabel position="1789,914" size="14,40" backgroundColor="#1473ff" zPosition="3" />
+    <eLabel position="1808,896" size="14,58" backgroundColor="#1ecdff" zPosition="3" />
     <widget source="session.CurrentService" render="WarderRadioSpectrum" position="1470,838" size="350,126" zPosition="4" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="1470,978" size="350,38" font="Regular2;25" halign="center" noWrap="1" foregroundColor="#e5b243" transparent="1" zPosition="3">
       <convert type="ServiceName">Provider</convert>
