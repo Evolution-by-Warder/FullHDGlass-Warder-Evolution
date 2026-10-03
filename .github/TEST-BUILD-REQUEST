@@ -1,3 +1,3 @@
-TEST118 corrected
-CI-only correction: align stale TEST117 top-rail geometry assertions with intentional TEST118 Prive4 y=22 h=66 typography contract. Runtime/design unchanged.
-Source commit: 9af264e4365d9f9c369e7cc84b505e006f454a6c
+TEST119
+Radio typography correction after TEST118 physical FAIL: use Radio-only WarderRadio/DejaVuSans typography while preserving TEST118 alignment and TEST117 lifecycle. No artwork/equalizer changes.
+Source commit: 24c178d31752506ab0bf8cfb4b32f4a3f2869045
