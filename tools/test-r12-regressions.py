@@ -1035,7 +1035,7 @@ assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" vali
 radio124 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'render="WarderRadioServiceText" position="420,842" size="720,42" foregroundColor="#dddddd" foregroundColorSelected="#dddddd" transparent="1"' in radio124
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio124
-sharp = (ROOT / "usr/lib/enigma2/python/Components/Renderer/WarderRadioServiceText.py").read_text(encoding="utf-8")
+sharp = (ROOT / "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioServiceText.py").read_text(encoding="utf-8")
 assert "GUI_WIDGET = eListbox" in sharp
 assert "eListboxServiceContent()" in sharp
 assert "setElementFont(self.l.celServiceName, gFont(\"Prive4\", 33))" in sharp
