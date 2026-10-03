@@ -788,8 +788,10 @@ for token in ("hd_glass17/radio.mvi", "ffmpeg"):
 
 # TEST80 safe Radio/DAB skin-only overlay. Never reintroduce the native RdsInfoDisplay monkey-patch.
 rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', 'source="session.CurrentService"', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
+for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', 'source="session.CurrentService"', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
     assert token in rds80, token
+# TEST124 deliberately replaces the TEST80 ServiceName/Label field with the native service-list painter.
+assert '<convert type="ServiceName">Name</convert>' in rds80 or 'render="WarderRadioServiceText"' in rds80
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
     assert token not in rds80 and token not in PLUGIN, token
 
