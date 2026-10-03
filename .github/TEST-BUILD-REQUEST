@@ -1,3 +1,3 @@
-TEST124 corrected-1
-CI-only retirement of obsolete TEST80 ServiceName/Label literal guard after run 37132403016. TEST124 native renderer runtime/UI unchanged.
-Guard+journal commit: 07876d11c8f093dc4ca1432e81b4484b51da61e0
+TEST124 corrected-2
+CI-only retirement of all audited historical guards superseded by TEST124 native service-name painter. Runtime/UI unchanged.
+Guard+journal commit: 8974c54ca13a3bee6eae339d5ae68391f65c9689
