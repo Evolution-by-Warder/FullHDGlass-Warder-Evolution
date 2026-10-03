@@ -751,7 +751,7 @@
 		<widget source="global.CurrentTime" render="Label" position="790,5" size="100,40" font="Regular;30" halign="right" backgroundColor="background" transparent="1">
 			<convert type="ClockToText">Default</convert>
 		</widget>
-		<widget name="list" position="10,60" size="900,360" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background" serviceInfoFont="Regular;30" colorServiceDescription="grey" colorServiceDescriptionSelected="#d3d3d9" foregroundColorServiceNotAvail="grey" colorEventProgressbarBorder="grey" colorEventProgressbarBorderSelected="white" />
+		<widget name="list" position="10,60" size="900,360" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background" serviceNameFont="Prive4;33" serviceItemHeight="42" serviceInfoFont="Regular;30" colorServiceDescription="grey" colorServiceDescriptionSelected="#d3d3d9" foregroundColorServiceNotAvail="grey" colorEventProgressbarBorder="grey" colorEventProgressbarBorderSelected="white" />
 		<eLabel position="10,50" size="900,1" backgroundColor="grey" />
 		<eLabel position="10,430" size="900,1" backgroundColor="grey" />
 	</screen>
