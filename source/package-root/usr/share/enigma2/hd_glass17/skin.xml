@@ -1609,7 +1609,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="session.CurrentService" render="g17PicRef" position="70,852" size="280,160" zPosition="3" transparent="1" alphatest="on">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="3">
+    <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#dddddd" backgroundColor="#101820" transparent="0" zPosition="3">
       <convert type="ServiceName">Name</convert>
     </widget>
     <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1" zPosition="3" />

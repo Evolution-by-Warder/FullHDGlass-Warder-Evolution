@@ -1021,3 +1021,10 @@ assert 'font="WarderRadio;' not in radio122
 assert radio122.count('font="Prive4;33"') >= 5
 assert radio122.count('font="Prive4;25"') >= 2
 assert PLUGIN.count('font="Prive4;33"') >= 3
+
+
+# TEST123: isolate OSD-plane compositing on one representative Radio text field only.
+# Keep Prive4;33, colour and geometry unchanged; only BAYERN/service-name backing becomes opaque.
+radio123 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'position="420,842" size="720,42" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#dddddd" backgroundColor="#101820" transparent="0"' in radio123
+assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
