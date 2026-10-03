@@ -994,7 +994,7 @@ for token in (
 for token in (
     'name="warderRadioDate" position="62,22" size="610,66" font="WarderRadio;30" valign="center"',
     'name="warderRadioTime" position="745,22" size="340,66" font="WarderRadio;38" valign="center"',
-    'name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right"',
+    'name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;30" valign="center" halign="right"',
 ):
     assert token in PLUGIN, token
 assert 'font="Regular2;33"' not in radio118
