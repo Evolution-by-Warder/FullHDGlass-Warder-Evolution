@@ -1,4 +1,4 @@
 Warder TEST build request
 Candidate: 1.0.5-test93
-Revision: 250
-Purpose: Build the approved TEST93 classic Radio visual package from the exact SHA-pinned 1920x1080 production master, locked Radio layout coordinates, isolated exact-artwork renderer, decorative spectrum above the real dynamic provider field, and all TEST92 first-entry overlay protections.
+Revision: 251
+Purpose: Re-run TEST93 after correcting the spectrum regression guard false positive on documentation comments; runtime, approved SHA-pinned radio master, locked layout, TEST92 overlay recovery and exact-artwork behavior are unchanged.
