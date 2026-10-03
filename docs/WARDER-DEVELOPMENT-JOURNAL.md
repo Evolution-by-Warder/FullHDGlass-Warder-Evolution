@@ -629,3 +629,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST144 CI correction after Actions #343: preflight again passed XML/lifecycle/runtime/version and r1-r12 baseline, then exposed two adjacent stale TEST143 mask assertions at lines 445-446. Both are inverted to guard TEST144's intentional removal of the top/bottom masking eLabels. No runtime/skin/design change; bounded native RDS remains the architecture. Receiver PASS pending.
 
 - TEST144 CI correction after Actions #344: audited the later Radio regression section in one batch. TEST80 now requires native RDS bottom metadata and explicitly excludes the TEST117 top-rail clock/brand; all 2 later stale clock-in-RDS guards were inverted. TEST117 ExtraInfo17 top-rail guards remain intact. No runtime/skin/design change. Receiver PASS pending.
+
+- TEST144 CI #345 correction: fixed accidental double escaping in the TEST80/TEST144 RdsInfoDisplay regex. Test-only; runtime/skin unchanged. Receiver PASS pending.

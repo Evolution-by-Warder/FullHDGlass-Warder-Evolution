@@ -795,7 +795,7 @@ for token in ("hd_glass17/radio.mvi", "ffmpeg"):
 
 
 # TEST80/TEST144: native RDS retains bottom Radio/DAB data only; TEST117 owns the top rail in ExtraInfo17.
-rds80 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in ('source="session.CurrentService"', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
     assert token in rds80, token
 for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution'):
