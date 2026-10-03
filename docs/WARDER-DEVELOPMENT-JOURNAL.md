@@ -388,3 +388,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 
 
 - TEST95 package preparation (2026-10-03): static HEAD audit retained the isolated radio screenshot adapter and TEST94 lifecycle contract. Package identity advanced to runtime 1.0.5-test95 / control 1.0.5-test95-1. Build request remains deliberately separate so it can be the final branch movement before CI. Receiver PASS remains pending.
+
+- TEST95 preparation correction: runtime version file, rather than plugin.py, is the authoritative runtime identity and is advanced to 1.0.5-test95 before the final build request. No runtime behavior changed.
