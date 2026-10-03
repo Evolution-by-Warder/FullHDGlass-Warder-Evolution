@@ -577,7 +577,7 @@ assert 'self["programArtwork"].instance.setScale(1)' in program_info
 assert 'from Components.Renderer.Picon import getPiconName' in program_info
 assert 'self["stationPicon"].instance.setPixmapFromFile(picon)' in program_info
 assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
-assert 'name="channel" position="225,520" size="235,34" font="Prive4;24"' in program_info
+assert 'name="channel" position="225,520" size="235,34" font="WarderRadio;24"' in program_info
 assert 'name="description" position="535,425" size="1300,490"' in program_info
 assert 'self["stationLabel"].setText(_warderUiText("Station name:"))' in program_info
 assert 'name="service"' not in program_info
@@ -643,7 +643,7 @@ assert '"PROGRAM INFO": "Info o programe"' in PLUGIN
 assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
 assert 'name="stationPicon" position="125,425" size="180,90"' in program_info
 assert 'name="stationLabel" position="50,520" size="190,34" font="Prive3;24"' in program_info
-assert 'name="channel" position="225,520" size="235,34" font="Prive4;24"' in program_info
+assert 'name="channel" position="225,520" size="235,34" font="WarderRadio;24"' in program_info
 assert 'name="durationLabel" position="50,675"' in program_info
 assert 'name="broadcastLabel" position="50,714"' in program_info
 assert 'CACHE_SCHEMA = "v6"' in PROVIDER
@@ -658,7 +658,7 @@ assert '<screen name="WarderProgramInfo" position="15,15" size="1890,1050"' in p
 assert 'name="programArtwork" position="30,75" size="520,300"' in program_info
 assert '<eLabel position="25,72" size="505,286" backgroundColor="transpBlack"' not in program_info
 assert 'name="ratingStars" position="1390,105" size="430,45" font="Prive4;36"' in program_info
-assert 'name="ratingMeta" position="1390,152" size="430,36" font="Prive4;25"' in program_info
+assert 'name="ratingMeta" position="1390,152" size="430,36" font="WarderRadio;25"' in program_info
 assert 'rating_text.split("/", 1)[0].strip()' in PLUGIN
 assert 'self["ratingMeta"].setText("%s · %s"' in PLUGIN
 assert 'name="description" position="535,425" size="1300,490"' in program_info
@@ -690,9 +690,9 @@ assert 'self.onLayoutFinish.append(self._startMetadataLookup)' in program_info
 assert 'self.onLayoutFinish.append(self._loadProgramArtwork)' not in program_info
 
 # TEST58 common visual language: PROGRAM INFO top header mirrors GraphicalEPGPIG.
-assert 'name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243"' in program_info
-assert 'name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee"' in program_info
-assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24"' in program_info
+assert 'name="nowDate" position="30,12" size="390,42" font="WarderRadio;30" foregroundColor="#e5b243"' in program_info
+assert 'name="nowTime" position="435,12" size="210,42" font="WarderRadio;30" foregroundColor="#eeeeee"' in program_info
+assert 'text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="WarderRadio;24"' in program_info
 
 # TEST58: safe EPG edition suffix normalization, while retaining exact TMDB base-title matching.
 assert 'CACHE_SCHEMA = "v6"' in META
@@ -962,9 +962,9 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 
 # TEST117: Radio top rail is rendered inside the actual ExtraInfo17 runtime layer.
 assert 'warder_radio_top = """' in PLUGIN
-assert 'name="warderRadioDate" position="62,22" size="610,66" font="Prive4;30" valign="center"' in PLUGIN
-assert 'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;38" valign="center"' in PLUGIN
-assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right"' in PLUGIN
+assert 'name="warderRadioDate" position="62,22" size="610,66" font="WarderRadio;30" valign="center"' in PLUGIN
+assert 'name="warderRadioTime" position="745,22" size="340,66" font="WarderRadio;38" valign="center"' in PLUGIN
+assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right"' in PLUGIN
 assert 'self["warderRadioDate"] = Label("")' in PLUGIN
 assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
 assert 'marker.read(8).strip() == "A"' in PLUGIN
@@ -982,19 +982,26 @@ assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
 # and ExtraInfo17 so the temporary InfoBar phase and final Radio phase match exactly.
 radio118 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in (
-    'position="62,22" size="610,66" font="Prive4;30" valign="center"',
-    'position="745,22" size="340,66" font="Prive4;38" valign="center"',
-    'position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right"',
-    'position="420,842" size="720,42" font="Prive4;29" valign="center"',
-    'name="RadioText" position="420,895" size="1000,52" font="Prive4;32" valign="center"',
-    'name="RtpText" position="420,955" size="1000,38" font="Prive4;24" valign="center"',
-    'position="1470,978" size="350,38" font="Prive4;25" valign="center"',
+    'position="62,22" size="610,66" font="WarderRadio;30" valign="center"',
+    'position="745,22" size="340,66" font="WarderRadio;38" valign="center"',
+    'position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right"',
+    'position="420,842" size="720,42" font="WarderRadio;29" valign="center"',
+    'name="RadioText" position="420,895" size="1000,52" font="WarderRadio;32" valign="center"',
+    'name="RtpText" position="420,955" size="1000,38" font="WarderRadio;24" valign="center"',
+    'position="1470,978" size="350,38" font="WarderRadio;25" valign="center"',
 ):
     assert token in radio118, token
 for token in (
-    'name="warderRadioDate" position="62,22" size="610,66" font="Prive4;30" valign="center"',
-    'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;38" valign="center"',
-    'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right"',
+    'name="warderRadioDate" position="62,22" size="610,66" font="WarderRadio;30" valign="center"',
+    'name="warderRadioTime" position="745,22" size="340,66" font="WarderRadio;38" valign="center"',
+    'name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right"',
 ):
     assert token in PLUGIN, token
 assert 'font="Regular2;33"' not in radio118
+
+# TEST119: physical TEST118 rejected prive7.ttf. Radio-only typography uses system DejaVu Sans via WarderRadio alias; geometry/lifecycle remain locked.
+assert '<font filename="DejaVuSans.ttf" name="WarderRadio" scale="100" />' in SKIN
+radio119 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'font="Prive4;' not in radio119
+assert 'font="Regular2;' not in radio119
+assert radio119.count('font="WarderRadio;') >= 7
