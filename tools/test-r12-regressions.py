@@ -871,3 +871,7 @@ assert 'Format::%S' not in radio
 assert 'RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"' in BUILD_TEST
 assert 'image.size != (1920, 1080)' in BUILD_TEST
 assert 'generate-warder-radio-background.py' not in BUILD_TEST
+
+assert 'RADIO_MASTER_SHA256="2d1e26b6c097d167d51c8ba9850b16c093171ac07e69ef3d69f4cbd9cae4939d"' in BUILD_TEST
+assert 'ACTUAL_RADIO_MASTER_SHA256="$(sha256sum "$RADIO_MASTER"' in BUILD_TEST
+assert 'TEST93 radio master SHA-256 mismatch' in BUILD_TEST

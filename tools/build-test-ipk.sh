@@ -51,6 +51,13 @@ cp -a "$PAYLOAD"/. "$WORK"/
 # Never fall back to the retired synthetic generator: a missing/wrong master must fail CI.
 RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
 test -f "$RADIO_MASTER" || { echo "ERROR: approved TEST93 radio master missing: $RADIO_MASTER" >&2; exit 1; }
+RADIO_MASTER_SHA256="2d1e26b6c097d167d51c8ba9850b16c093171ac07e69ef3d69f4cbd9cae4939d"
+ACTUAL_RADIO_MASTER_SHA256="$(sha256sum "$RADIO_MASTER" | awk '{print $1}')"
+test "$ACTUAL_RADIO_MASTER_SHA256" = "$RADIO_MASTER_SHA256" || {
+  echo "ERROR: TEST93 radio master SHA-256 mismatch: $ACTUAL_RADIO_MASTER_SHA256" >&2
+  exit 1
+}
+echo "TEST93 radio master SHA-256: PASS $ACTUAL_RADIO_MASTER_SHA256"
 python3 - "$RADIO_MASTER" <<'PY'
 from PIL import Image
 import sys
