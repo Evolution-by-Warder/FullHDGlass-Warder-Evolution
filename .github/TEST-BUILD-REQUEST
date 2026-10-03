@@ -1,3 +1,3 @@
-TEST139 live RDS text composition retry 2
-Source/journal commit: a95723e9f027e15315198526b55cf94be58fa4cf
-CI #333 malformed line physically verified corrected to two Python lines; TEST139 runtime design unchanged.
+TEST139 live RDS text composition retry 3
+Source/journal commit: 09a58fdd1c69674e235ab5875efd854cdc95d309
+CI #334 runtime plugin compiled; fix only malformed TEST139 regression assertions, verified as four real Python lines.
