@@ -1547,12 +1547,20 @@ def serviceStartNow17(self):
 		# Do not replace or monkey-patch Screens.RdsDisplay.RdsInfoDisplay.
 		try:
 			fields = refstr.split(":")
-			if len(fields) > 2 and fields[2].upper() == "A":
-				rds = getattr(self, "rds_display", None)
-				if rds is not None:
+			is_radio = len(fields) > 2 and fields[2].upper() == "A"
+			rds = getattr(self, "rds_display", None)
+			if rds is not None:
+				if is_radio:
 					rds.show()
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
 						out.write("RADIO_OVERLAY_SHOW epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
+				else:
+					# TEST94: TEST92 must be symmetrical. The native-owned RDS dialog
+					# must not survive RADIO -> TV and bind its CurrentService widgets
+					# to the TV service after the normal TV infobar closes.
+					rds.hide()
+					with open("/tmp/warder-radio-service-events.log", "a") as out:
+						out.write("RADIO_OVERLAY_HIDE epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 		except Exception:
 			pass
 		if self.shown:
