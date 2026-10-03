@@ -1066,7 +1066,8 @@ try:
 		import cookielib
 	ENAFINDER = True
 except: pass
-Glass17__init__ = None                          
+Glass17__init__ = None
+_warderOriginalShowRadioButton = None                          
 FirstRun17 = False
 enaFadeOut17 = True
 enaFadeIn17 = True
@@ -1308,8 +1309,28 @@ except Exception:
 	pass
 
 
+def _warderRadioButtonTrace(self, *args, **kwargs):
+	try:
+		stamp = time1.time()
+		with open("/tmp/warder-radio-start", "w") as out:
+			out.write("%.6f\\n" % stamp)
+		with open("/tmp/warder-radio-artwork.log", "a") as out:
+			out.write("RADIO_BUTTON epoch=%.6f\\n" % stamp)
+	except Exception:
+		pass
+	return _warderOriginalShowRadioButton(self, *args, **kwargs)
+
+
 def startHdg17(reason, **kwargs):
 	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
+		# TEST89: timestamp the actual RADIO key handler before any mode-switch work.
+		global _warderOriginalShowRadioButton
+		try:
+			if _warderOriginalShowRadioButton is None:
+				_warderOriginalShowRadioButton = InfoBar.showRadioButton
+				InfoBar.showRadioButton = _warderRadioButtonTrace
+		except Exception:
+			pass
 		# Warder native graphical EPG: picons only, compact service column.
 		# Keep this scoped to FullHDGlass17 session start and tolerate images without these OpenATV keys.
 		try:
