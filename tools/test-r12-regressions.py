@@ -894,7 +894,9 @@ assert 'WarderRdsInfoDisplay' not in PLUGIN
 WARDER_GRAB = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-grab").read_text(encoding="utf-8")
 assert 'WARDER_GRAB_PATH = PLUGINPATH + "warder-grab"' not in PLUGIN
 assert '_warderOpenWebifGrab.GRAB_PATH = WARDER_GRAB_PATH' not in PLUGIN
-assert 'owiGrab.grabScreenshot.render = _warderRadioGrabRender' in PLUGIN
+assert 'grabClass = getattr(owiGrab, "GrabScreenshot", None)' in PLUGIN
+assert 'grabClass.render = _warderRadioGrabRender' in PLUGIN
+assert 'owiGrab.grabScreenshot.render' not in PLUGIN
 assert 'if not is_radio or mode not in (None, "", "all"):' in PLUGIN
 assert '_warderNativeGrabRender(self, request)' in PLUGIN
 assert 'request.setHeader("Content-Length", str(len(payload)))' in PLUGIN
@@ -949,3 +951,7 @@ assert 'import tempfile' in PLUGIN
 assert 'render-error:' in PLUGIN
 assert 'install-error:' in PLUGIN
 assert 'mode not in (None, "", "all")' in PLUGIN
+
+# TEST106: receiver probe proves /grab uses class GrabScreenshot.
+assert 'raise AttributeError("OpenWebif grab module has no GrabScreenshot class")' in PLUGIN
+assert 'installed GrabScreenshot.render' in PLUGIN

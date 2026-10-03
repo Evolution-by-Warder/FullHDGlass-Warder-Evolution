@@ -117,7 +117,7 @@ try:
 	ENA_POSTER = True
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST105: install OpenWebif Radio-All hook lazily at service-start.
+# TEST106: install OpenWebif Radio-All hook lazily against the receiver-proven GrabScreenshot class.
 _warderOwiHookInstalled = False
 _warderNativeGrabRender = None
 _warderOwiGetUrlArg = None
@@ -173,11 +173,14 @@ def _warderInstallOpenWebifGrabHook():
 		from Plugins.Extensions.OpenWebif.controllers.models import grab as owiGrab
 		from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as owiGetUrlArg
 		_warderOwiGetUrlArg = owiGetUrlArg
-		if owiGrab.grabScreenshot.render is not _warderRadioGrabRender:
-			_warderNativeGrabRender = owiGrab.grabScreenshot.render
-			owiGrab.grabScreenshot.render = _warderRadioGrabRender
+		grabClass = getattr(owiGrab, "GrabScreenshot", None)
+		if grabClass is None:
+			raise AttributeError("OpenWebif grab module has no GrabScreenshot class")
+		if grabClass.render is not _warderRadioGrabRender:
+			_warderNativeGrabRender = grabClass.render
+			grabClass.render = _warderRadioGrabRender
 		_warderOwiHookInstalled = True
-		with open("/tmp/warder-radio-webif-hook.log", "a") as log: log.write("%s installed\\n" % time1.strftime("%Y-%m-%d %H:%M:%S"))
+		with open("/tmp/warder-radio-webif-hook.log", "a") as log: log.write("%s installed GrabScreenshot.render\\n" % time1.strftime("%Y-%m-%d %H:%M:%S"))
 		return True
 	except Exception as error:
 		try:
@@ -1600,7 +1603,7 @@ def SpecialScreenWindow17(self):
 
 def serviceStartNow17(self):
 	if isinstance(self,InfoBar):
-		# TEST105: retry after OpenWebif has initialized; idempotent.
+		# TEST106: retry after OpenWebif has initialized; idempotent and receiver-proven class name.
 		_warderInstallOpenWebifGrabHook()
 		# TEST90/92: service-start is the reliable TV/RADIO transition boundary on this image.
 		refstr = ""

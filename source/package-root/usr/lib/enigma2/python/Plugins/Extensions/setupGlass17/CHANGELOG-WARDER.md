@@ -26,3 +26,7 @@
 - Keeps `/usr/share/enigma2/hd_glass17/skin.xml` as the standard Enigma2 skin entry, so the skin remains available in Skin Setup / appearance selection.
 - Preserves `/etc/enigma2/settings`, the active `/etc/enigma2/skin_user.xml`, and the generated FullHDGlass17 user overlay during upgrades.
 - Marks `/etc/enigma2/skin_user-hdg17.xml` as a configuration file and prevents removal cleanup from running during package upgrades.
+
+## 1.0.5-test106
+- Corrected the Radio OpenWebif /grab hook to the receiver-proven GrabScreenshot.render class on OpenWebif 2.4.0-git348.
+- Preserved native TV/explicit screenshot modes and isolated Radio All compositing/fallback behavior.
