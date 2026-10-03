@@ -857,10 +857,11 @@ assert "self._timer.stop()" in SPECTRUM
 assert "width, height = 350, 126" in SPECTRUM
 assert "barw = 15" in SPECTRUM
 assert "content_width = self._bars * barw" in SPECTRUM
-assert "import subprocess" not in SPECTRUM
-assert "subprocess." not in SPECTRUM
-assert "import random" not in SPECTRUM
-assert "random." not in SPECTRUM
+SPECTRUM_CODE = "\n".join(line for line in SPECTRUM.splitlines() if not line.lstrip().startswith("#"))
+assert "import subprocess" not in SPECTRUM_CODE
+assert "subprocess." not in SPECTRUM_CODE
+assert "import random" not in SPECTRUM_CODE
+assert "random." not in SPECTRUM_CODE
 radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
