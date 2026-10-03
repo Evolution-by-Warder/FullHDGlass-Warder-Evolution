@@ -245,11 +245,10 @@ def _warderUiText(text):
 	return text
 
 class WarderRadioCompositionProbe(Screen):
-	"""TEST139: crisp composed Radio metadata layer; mirrors native RDS text without taking RDS ownership."""
+	"""TEST140: transparent crisp composed Radio metadata layer; mirrors native RDS text without taking RDS ownership."""
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="1000,151" backgroundColor="transpBlack2" flags="wfNoBorder">
-			<eLabel position="0,0" size="1000,151" backgroundColor="transpBlack3" zPosition="-5" />
+		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="1000,151" backgroundColor="transparent" flags="wfNoBorder">
 			<widget name="serviceName" position="0,0" size="720,42" font="Prive4;33" foregroundColor="#dddddd" transparent="1" valign="center" noWrap="1" />
 			<widget name="radioText" position="0,53" size="1000,52" font="Prive4;33" foregroundColor="#eeeeee" transparent="1" valign="center" noWrap="1" />
 			<widget name="rtpText" position="0,113" size="1000,38" font="Prive4;25" foregroundColor="#3388dd" transparent="1" valign="center" noWrap="1" />
