@@ -1,3 +1,3 @@
-TEST136 native RdsInfoDisplay composition diagnostic - CI retry 2
-Source/journal commit: 6e622568d691a6aa4343a0444f1f76b63bc5825d
-Runtime unchanged; correct double-escaped regression regex only.
+TEST137 emergency setup crash fix
+Source/journal commit: 656c19b10428a66b7f9c66184f53551562edcb6a
+Restore eListboxPythonMultiContent import required by thumbList/thumbList2. Preserve TEST136 Radio compositor diagnostic unchanged.
