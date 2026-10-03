@@ -769,8 +769,10 @@ assert 'self._warderProgramInfoOpen = False' in PLUGIN
 # TEST79 receiver-proven Radio/DAB boot recovery.
 # OpenATV's native RdsInfoDisplay must not be monkey-patched during startup.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"', 'backgroundColor="transparent"'):
+for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"'):
     assert token in rds, token
+# TEST141 changes only the native backing for the compositor A/B diagnostic.
+assert 'backgroundColor="transpBlack2"' in rds
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
     assert token not in rds, token
 for token in ('WarderRdsInfoDisplay', '_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged', 'WarderRadio init'):
