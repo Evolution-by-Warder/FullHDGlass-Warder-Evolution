@@ -442,7 +442,7 @@ for n in range(1, 10):
 # (zPosition -20) can remain visible behind the radio text UI.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'backgroundColor="transparent"' in rds
-assert 'zPosition="1"' in rds  # TEST111: Radio rail must remain above normal InfoBar
+assert 'zPosition="-2"' in rds  # TEST112: preserve ChannelSelectionRadio and DAB/SLS layering
 
 # TEST24 Cool-like PIG guide geometry.
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
@@ -958,3 +958,7 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 
 
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
+# TEST112: only the normal InfoBar gets a Radio-only duplicate top rail; ChannelSelection remains unobscured.
+assert SKIN.count('render="WarderRadioInfoBarTop"') == 3
+assert 'mode="date"' in SKIN and 'mode="time"' in SKIN and 'mode="brand"' in SKIN
+assert (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoBarTop.py").is_file()
