@@ -836,5 +836,10 @@ assert "self._timer.start(100, True)" in RADIO_ART
 assert "self._timer.start(250 if not key else 750, True)" in RADIO_ART
 
 # TEST89: startup latency tracing must identify renderer start, service, RadioText, song and request stages.
-for token in ("START t=0.000", "SERVICE t=%.3f", "RADIOTEXT t=%.3f", "SONG t=%.3f", "REQUEST t=%.3f"):
+for token in ("RENDERER_START t=%.3f", "SERVICE t=%.3f", "RADIOTEXT t=%.3f", "SONG t=%.3f", "REQUEST t=%.3f"):
     assert token in RADIO_ART, token
+
+assert "_warderRadioButtonTrace" in PLUGIN
+assert "InfoBar.showRadioButton = _warderRadioButtonTrace" in PLUGIN
+assert "RADIO_BUTTON epoch=%.6f" in PLUGIN
+assert "/tmp/warder-radio-start" in PLUGIN and "/tmp/warder-radio-start" in RADIO_ART
