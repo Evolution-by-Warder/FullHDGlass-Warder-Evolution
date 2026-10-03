@@ -955,9 +955,3 @@ assert 'mode not in (None, "", "all")' in PLUGIN
 # TEST106: receiver probe proves /grab uses class GrabScreenshot.
 assert 'raise AttributeError("OpenWebif grab module has no GrabScreenshot class")' in PLUGIN
 assert 'installed GrabScreenshot.render' in PLUGIN
-
-# TEST107 TEMP diagnostic must be explicit and isolated to one /tmp file.
-assert 'def _warderTest107Start(self):' in PLUGIN
-assert 'def _warderTest107Snapshot(self, start_epoch, sample_no):' in PLUGIN
-assert '/tmp/warder-test107-timing.txt' in PLUGIN
-assert '_warderTest107Start(self)' in service94
