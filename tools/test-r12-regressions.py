@@ -1019,8 +1019,7 @@ assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33
 # TEST122: use the exact TV ChannelSelection font alias/sizes rather than a Radio alias. This isolates alias/size rasterization as the physical sharpness variable.
 radio122 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'font="WarderRadio;' not in radio122
-# TEST124 moves one Prive4;33 service-name field from XML into the native renderer.
-assert radio122.count('font="Prive4;33"') >= 4
+assert radio122.count('font="Prive4;33"') >= 5
 assert radio122.count('font="Prive4;25"') >= 2
 assert PLUGIN.count('font="Prive4;33"') >= 3
 
@@ -1031,11 +1030,4 @@ radio123 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SK
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
 
 
-# TEST124: compare native service-list text painting against the unchanged Radio Label path on the same screen.
-radio124 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'render="WarderRadioServiceText" position="420,842" size="720,42" foregroundColor="#dddddd" foregroundColorSelected="#dddddd" transparent="1"' in radio124
-assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio124
-sharp = (ROOT / "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioServiceText.py").read_text(encoding="utf-8")
-assert "GUI_WIDGET = eListbox" in sharp
-assert "eListboxServiceContent()" in sharp
-assert "setElementFont(self.l.celServiceName, gFont(\"Prive4\", 33))" in sharp
+# TEST124 physical FAIL: native one-row service-list diagnostic did not improve sharpness and is retired by TEST125.\n\n# TEST125: restore the clean Radio Label and add one Prive4;33 control on the normal InfoBar screen.\nradio125 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)\nassert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio125\nassert '<convert type="ServiceName">Name</convert>' in radio125\ninfobar125 = re.search(r'<screen\\b[^>]*name="InfoBar"[\\s\\S]*?</screen>', SKIN).group(0)\nassert '<eLabel text="TEST125 · Prive4;33 · FullHDGlass17" position="420,748" size="900,52" font="Prive4;33"' in infobar125\n
