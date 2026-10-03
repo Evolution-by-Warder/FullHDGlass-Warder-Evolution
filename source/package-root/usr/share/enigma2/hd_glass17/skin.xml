@@ -1595,7 +1595,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <!-- Top glass active area: x=27..1864, y=15..101. -->
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="4" position="62,32" size="610,52" font="Regular2;30" foregroundColor="#e5b243" transparent="1" zPosition="2" />
     <widget source="global.CurrentTime" render="Label" position="745,27" size="340,58" font="Regular2;38" foregroundColor="#eeeeee" transparent="1" zPosition="2">
-      <convert type="g17ClockToText">Format::%H:%M:%S</convert>
+      <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
     <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,30" size="580,50" font="Regular2;25" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
 

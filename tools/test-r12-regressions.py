@@ -900,3 +900,10 @@ for token in ('REAL_GRAB = "/usr/bin/grab"', 'MASTER = "/usr/share/enigma2/hd_gl
     assert token in WARDER_GRAB, token
 assert 'os.execv(REAL_GRAB, [REAL_GRAB] + sys.argv[1:])' in WARDER_GRAB
 assert 'WarderRdsInfoDisplay' not in PLUGIN
+
+
+# TEST96: Radio UI stays native FHD and OpenWebif JPEG preserves OSD text chroma detail.
+assert '<resolution xres="1920" yres="1080" bpp="32" />' in SKIN
+assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
+assert 'Format::%H:%M:%S' not in radio
+assert '"-pix_fmt", "yuvj444p", "-q:v", "1"' in WARDER_GRAB
