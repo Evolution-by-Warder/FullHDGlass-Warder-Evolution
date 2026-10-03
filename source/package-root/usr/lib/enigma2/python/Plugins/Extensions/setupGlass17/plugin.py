@@ -1692,7 +1692,8 @@ def serviceStartNow17(self):
 			if probe is not None:
 				if is_radio:
 					try:
-						probe.setNativeRds(rds)\n\t\t\t\t\t\tprobe.setService(self.session.nav.getCurrentlyPlayingServiceReference())
+						probe.setNativeRds(rds)
+						probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())
 					except Exception:
 						pass
 					probe.show()
