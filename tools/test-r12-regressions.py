@@ -441,7 +441,9 @@ for n in range(1, 10):
 # TEST141 diagnostic: native RdsInfoDisplay deliberately uses an opaque backing to isolate
 # whether transparent-surface composition causes the receiver typography blur.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'backgroundColor="transpBlack2"' in rds
+assert 'backgroundColor="transparent"' in rds
+assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' in rds
+assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' in rds
 # Native RDS depth remains receiver-proven zPosition=-2.
 assert 'zPosition="-2"' in rds  # TEST138 restores receiver-proven native RDS depth after TEST136 physical regression
 
@@ -772,7 +774,9 @@ rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).g
 for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"'):
     assert token in rds, token
 # TEST141 changes only the native backing for the compositor A/B diagnostic.
-assert 'backgroundColor="transpBlack2"' in rds
+assert 'backgroundColor="transparent"' in rds
+assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' in rds
+assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' in rds
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
     assert token not in rds, token
 for token in ('WarderRdsInfoDisplay', '_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged', 'WarderRadio init'):
@@ -1049,7 +1053,9 @@ assert 'serviceItemHeight="42"' not in radio_cs133
 
 # TEST135 PHYSICAL PASS DIAGNOSTIC; TEST138 restores native depth and reuses the proven scoped composition.
 radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transpBlack2"' in radio136
+assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent"' in radio136
+assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' in radio136
+assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' in radio136
 # TEST142: TEST141 physically proved native opaque RDS composition; retire the diagnostic overlay completely.
 assert "class WarderRadioCompositionProbe(Screen):" not in PLUGIN
 assert "warderRadioCompositionProbe" not in PLUGIN
