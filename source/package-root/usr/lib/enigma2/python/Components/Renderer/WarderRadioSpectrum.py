@@ -84,7 +84,21 @@ class WarderRadioSpectrum(Renderer):
                 self._peaks[i] = max(current, self._peaks[i] - 1)
         self._paint()
 
+    def postWidgetCreate(self, instance):
+        # Native RdsInfoDisplay does not reliably forward Screen onShow to
+        # custom renderers on all Enigma2 images. Start from widget creation.
+        self._running = True
+        self._paint()
+        self._timer.start(200)
+
+    def preWidgetRemove(self, instance):
+        self._running = False
+        self._timer.stop()
+
     def changed(self, what):
+        if self.instance is not None and not self._running:
+            self._running = True
+            self._timer.start(200)
         if self._running:
             self._paint()
 
