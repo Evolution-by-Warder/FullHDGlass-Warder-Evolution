@@ -1028,3 +1028,13 @@ assert PLUGIN.count('font="Prive4;33"') >= 3
 radio123 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'position="420,842" size="720,42" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#dddddd" backgroundColor="#101820" transparent="0"' in radio123
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
+
+
+# TEST124: compare native service-list text painting against the unchanged Radio Label path on the same screen.
+radio124 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
+assert 'render="WarderRadioServiceText" position="420,842" size="720,42" foregroundColor="#dddddd" foregroundColorSelected="#dddddd" transparent="1"' in radio124
+assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio124
+sharp = (ROOT / "usr/lib/enigma2/python/Components/Renderer/WarderRadioServiceText.py").read_text(encoding="utf-8")
+assert "GUI_WIDGET = eListbox" in sharp
+assert "eListboxServiceContent()" in sharp
+assert "setElementFont(self.l.celServiceName, gFont(\"Prive4\", 33))" in sharp
