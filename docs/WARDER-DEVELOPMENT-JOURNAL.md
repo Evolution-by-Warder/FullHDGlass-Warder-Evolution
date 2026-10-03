@@ -584,3 +584,6 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST135 PHYSICAL PASS DIAGNOSTIC (receiver screenshots, 2026-10-03): separately composed Prive4;33 dynamic BAYERN 3 is visibly crisp while native Radio text remains jagged. This rules out the font, size, dynamic setText and Radio mode as the shared cause and isolates the native fullscreen RdsInfoDisplay composition path.
 
 - TEST136: remove the TEST135 overlay and test the native layer itself. Change only RdsInfoDisplay zPosition from -2 to 0; keep transparent background, all existing widgets/coordinates/fonts, artwork, equalizer, RDS/TMDB/WebIF and TEST117 ownership unchanged. Physical receiver result is required before adopting this as a fix.
+
+
+- TEST136 CI #326 failed only at the historical TEST112 regression assertion that hard-coded RdsInfoDisplay zPosition=-2. All earlier preflight gates passed. This assertion conflicts directly with the single TEST136 diagnostic variable, so it is updated to require zPosition=0 while preserving the separate transparent-background/DAB-SLS guard. No runtime/source behavior is changed by this CI-only correction.

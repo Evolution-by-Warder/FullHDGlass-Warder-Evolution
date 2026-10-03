@@ -442,7 +442,8 @@ for n in range(1, 10):
 # (zPosition -20) can remain visible behind the radio text UI.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'backgroundColor="transparent"' in rds
-assert 'zPosition="-2"' in rds  # TEST112: preserve ChannelSelectionRadio and DAB/SLS layering
+# TEST136 intentionally tests compositor depth while retaining transparent DAB/SLS composition.
+assert 'zPosition="0"' in rds  # TEST136 diagnostic; physical Radio/ChannelSelection/TV regression required
 
 # TEST24 Cool-like PIG guide geometry.
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
