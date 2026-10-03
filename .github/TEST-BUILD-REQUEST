@@ -1,3 +1,3 @@
-TEST142 finalization after TEST141 physical compositor proof
-Source/journal commit: 46aab173670acf4645b5e65155323eba50e4f497
-Keep native RdsInfoDisplay zPosition=-2 + transpBlack2; remove retired TEST138-140 diagnostic probe completely.
+TEST143 bounded Radio compositor backing
+Source/journal commit: e94c0f49bbcd75599fff55e92925125ef55b99b6
+Restore fullscreen RdsInfoDisplay transparency; keep transpBlack2 only behind locked top and bottom active glass regions to remove TEST142 fullscreen haze while testing typography sharpness.
