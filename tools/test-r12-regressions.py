@@ -940,3 +940,12 @@ assert radio.count('backgroundColor="#1473ff"') >= 2
 assert radio.count('backgroundColor="#1ecdff"') >= 2
 assert 'position="1485,918" size="14,36"' in radio
 assert 'position="1808,896" size="14,58"' in radio
+
+# TEST105 lazy OpenWebif hook installation / diagnostics
+assert 'def _warderInstallOpenWebifGrabHook():' in PLUGIN
+assert '_warderInstallOpenWebifGrabHook()' in PLUGIN
+assert 'warder-radio-webif-hook.log' in PLUGIN
+assert 'import tempfile' in PLUGIN
+assert 'render-error:' in PLUGIN
+assert 'install-error:' in PLUGIN
+assert 'mode not in (None, "", "all")' in PLUGIN
