@@ -1,3 +1,3 @@
-TEST121 corrected-5
-CI-only native eLabel guard correction after run 37129431688. Runtime candidate unchanged.
-Source commit: 2caf83be4efd7e1616ff9083e9948045dbfe453d
+TEST122
+Exact-TV typography-path diagnostic after TEST121 physical FAIL: active Radio text requests use native Prive4;33/25 directly, matching sharp ChannelSelection reference. TEST117 lifecycle/geometry preserved. No artwork/equalizer changes.
+Source commit: 950413bdb096b434119d63e434f121bb07c643ba
