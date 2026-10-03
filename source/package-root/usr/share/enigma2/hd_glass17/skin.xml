@@ -196,7 +196,7 @@
     <font filename="ae_AlMateen7.ttf" name="Replacement" scale="110" replacement="1" />
     <font filename="nmsbd7.ttf" name="Console" scale="85" />
 		<font filename="goodtime7.ttf" name="LCD2" scale="100" />
-		<font filename="DejaVuSans.ttf" name="WarderRadio" scale="100" />
+		<font filename="Inter[opsz,wght].ttf" name="WarderRadio" scale="100" />
 		<alias name="ChoiceList" font="Prive4" size="32" height="45" />
 		<alias name="EPGList0" font="Prive4" size="30" />
 		<alias name="EPGList1" font="Prive4" size="30" />
