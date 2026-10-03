@@ -1,3 +1,3 @@
-TEST140 transparent composed Radio metadata layer
-Source/journal commit: 94968f5859f9947bb7439c5de357944711228db2
-TEST139 PHYSICAL PASS: service name + RadioText + RtpText crisp/live. TEST140 removes only the diagnostic black backing; physical transparency/sharpness verification pending.
+TEST141 native RdsInfoDisplay backing A/B diagnostic
+Source/journal commit: 9104e1104bbd1e69ead26d20123e0befd7ffbcc1
+TEST140 PHYSICAL FAIL as final overlay approach. Probe forced hidden; native RdsInfoDisplay alone uses transpBlack2 instead of transparent to test compositor sharpness.
