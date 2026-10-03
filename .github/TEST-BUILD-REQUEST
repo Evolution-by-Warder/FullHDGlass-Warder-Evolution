@@ -1,4 +1,4 @@
-TEST144 CI correction rebuild
+TEST144 CI correction rebuild 2
 Source runtime: c476530d4de9bc703f6a9a16f35661dae62d957c
-Regression/journal correction: 4d9546ac6b650490b91737e399bebfaec70423fb
-CI #342 failed only stale line 444 transparent-RDS assertion; runtime/skin unchanged.
+Regression corrections: 0efd5c89b4e912d14d7c0ac2bc2cc4655d43a232
+CI #343 exposed only stale TEST143 mask guards; runtime/skin unchanged.
