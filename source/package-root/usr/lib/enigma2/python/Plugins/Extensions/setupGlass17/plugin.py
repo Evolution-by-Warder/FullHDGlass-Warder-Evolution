@@ -2,13 +2,13 @@
 from Screens.Screen import Screen
 from Components.config import *
 from Components.Label import Label
-from Components.ServiceList import ServiceListLegacy
+from Components.GUIComponent import GUIComponent
 from Components.ActionMap import ActionMap
 from Components.g17ConfigList import ConfigListScreen, ConfigList
 from Plugins.Plugin import PluginDescriptor
 from Screens.InfoBar import InfoBar
 from Components.ServiceEventTracker import ServiceEventTracker
-from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxPythonMultiContent, eListbox, gFont, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
+from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, eListbox, gFont, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
 import Screens.InfoBar
 from Tools.Transponder import ConvertToHumanReadable
 try:
@@ -1517,11 +1517,11 @@ def hdg17inicialize(self):
 		if ENA_Z:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
 			self.g17dialog.shown = False
-			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioRootProbe, zPosition=1500)
+			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioMultiContentProbe, zPosition=1500)
 			self.warderRadioRootProbe.hide()
 		else:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
-			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioRootProbe)
+			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioMultiContentProbe)
 			self.warderRadioRootProbe.hide()
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
@@ -3735,24 +3735,44 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
-class WarderRadioRootProbe(Screen):
-	"""TEST131: native ServiceListLegacy fed from the persisted real Radio bouquet root."""
+class WarderRadioMultiContentProbe(Screen):
+	"""TEST132: native MultiContent TYPE_TEXT row without ServiceList state."""
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skin = '<screen name="WarderRadioRootProbe" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder"><widget name="list" position="420,842" size="720,42" serviceItemHeight="42" serviceNameFont="Prive4;33" foregroundColor="#dddddd" transparent="1" scrollbarMode="showNever" /></screen>'
-		self["list"] = ServiceListLegacy(self)
-		self.servicelist = self["list"]
+		self.skin = '<screen name="WarderRadioMultiContentProbe" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder"><widget name="list" position="420,842" size="720,42" transparent="1" scrollbarMode="showNever" /></screen>'
+		self["list"] = WarderRadioMultiContentList()
 
 	def setService(self, ref):
+		name = ""
 		try:
-			roots = [x for x in config.radio.lastroot.value.split(";") if x]
-			if not roots:
-				return
-			root = eServiceReference(roots[-1])
-			self.servicelist.setRoot(root)
-			self.servicelist.setCurrent(ref, adjust=False)
+			info = eServiceCenter.getInstance().info(ref)
+			name = info and info.getName(ref) or ""
 		except Exception:
 			pass
+		self["list"].setText(name)
+
+
+class WarderRadioMultiContentList(GUIComponent):
+	def __init__(self):
+		GUIComponent.__init__(self)
+		self.list = eListboxPythonMultiContent()
+		self.list.setFont(0, gFont("Prive4", 33))
+		self.list.setItemHeight(42)
+		self.list.setList([])
+
+	def setText(self, text):
+		self.list.setList([[(eListboxPythonMultiContent.TYPE_TEXT, 0, 0, 720, 42, 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, text)]])
+		if self.instance is not None:
+			self.instance.invalidate()
+
+	def postWidgetCreate(self, instance):
+		instance.setContent(self.list)
+
+	def preWidgetRemove(self, instance):
+		instance.setContent(None)
+
+	GUI_WIDGET = eListbox
+
 
 # Active ExtraInfo17 instance for live weather refresh after city change.
 G17_EXTRAINFO_INSTANCE = None

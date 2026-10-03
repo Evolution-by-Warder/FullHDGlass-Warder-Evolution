@@ -1038,19 +1038,18 @@ assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
 # TEST126 physical FAIL: clean same-desktop eLabel remained visibly jagged.
-# TEST127 physical INCONCLUSIVE: synthetic ServiceList had no populated real root.
-# TEST128 physical PASS: real ChannelSelectionRadio/ServiceListLegacy is visibly crisp.
-# TEST129 physical INCONCLUSIVE: synthetic addService probe did not render usable text.
-# TEST130 physical PASS: real ChannelSelectionRadio remains crisp with Prive4;33 and 42px row; geometry excluded.
-radio_cs131 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
-assert 'serviceNameFont="Prive4;33"' not in radio_cs131
-assert 'serviceItemHeight="42"' not in radio_cs131
+# TEST127/129/131 physical INCONCLUSIVE: synthetic ServiceList probes did not render usable service text.
+# TEST128/130 physical PASS: real ChannelSelectionRadio/ServiceListLegacy remains crisp.
+radio_cs132 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
+assert 'serviceNameFont="Prive4;33"' not in radio_cs132
+assert 'serviceItemHeight="42"' not in radio_cs132
 
-# TEST131: one-row native ServiceListLegacy uses persisted real Radio bouquet root and current service.
-assert 'from Components.ServiceList import ServiceListLegacy' in PLUGIN
-assert 'class WarderRadioRootProbe(Screen):' in PLUGIN
-assert 'config.radio.lastroot.value.split(";")' in PLUGIN
-assert 'self.servicelist.setRoot(root)' in PLUGIN
-assert 'self.servicelist.setCurrent(ref, adjust=False)' in PLUGIN
-assert 'serviceNameFont="Prive4;33"' in PLUGIN
-assert 'serviceItemHeight="42"' in PLUGIN
+# TEST132: native MultiContent TYPE_TEXT painter without ServiceList/root state.
+assert 'from Components.ServiceList import ServiceListLegacy' not in PLUGIN
+assert 'class WarderRadioMultiContentProbe(Screen):' in PLUGIN
+assert 'class WarderRadioMultiContentList(GUIComponent):' in PLUGIN
+assert 'eListboxPythonMultiContent.TYPE_TEXT' in PLUGIN
+assert 'self.list.setFont(0, gFont("Prive4", 33))' in PLUGIN
+assert 'self.list.setItemHeight(42)' in PLUGIN
+assert 'eServiceCenter.getInstance().info(ref)' in PLUGIN
+assert 'info.getName(ref)' in PLUGIN
