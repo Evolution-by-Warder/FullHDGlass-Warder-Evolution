@@ -1,3 +1,3 @@
-TEST110
-Refresh native Radio layer immediately at service start without closing the normal InfoBar; remove TEST109 probe; preserve TEST106 WebIF PASS and exact artwork policy.
-Source commit: cf87343e80929f23e4b386916319a755fd8f787c
+TEST110-CI2
+Rebuild TEST110 after exact CI IndentationError correction; runtime intent unchanged.
+Source commit: 2eecb4953d6c3541d705f25cdaaab420fcc29534
