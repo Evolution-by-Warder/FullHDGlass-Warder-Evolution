@@ -976,3 +976,25 @@ service117 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def servi
 radio117 = service117.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
 assert 'if is_radio:' in radio117 and 'rds.show()' in radio117
 assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
+
+# TEST118: Radio typography polish only. Keep TEST117 lifecycle, use the skin's native
+# Prive4 face and one shared vertically-centred top-rail geometry in both native RDS
+# and ExtraInfo17 so the temporary InfoBar phase and final Radio phase match exactly.
+radio118 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
+for token in (
+    'position="62,22" size="610,66" font="Prive4;30" valign="center"',
+    'position="745,22" size="340,66" font="Prive4;38" valign="center"',
+    'position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right"',
+    'position="420,842" size="720,42" font="Prive4;29" valign="center"',
+    'name="RadioText" position="420,895" size="1000,52" font="Prive4;32" valign="center"',
+    'name="RtpText" position="420,955" size="1000,38" font="Prive4;24" valign="center"',
+    'position="1470,978" size="350,38" font="Prive4;25" valign="center"',
+):
+    assert token in radio118, token
+for token in (
+    'name="warderRadioDate" position="62,22" size="610,66" font="Prive4;30" valign="center"',
+    'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;38" valign="center"',
+    'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right"',
+):
+    assert token in PLUGIN, token
+assert 'font="Regular2;33"' not in radio118
