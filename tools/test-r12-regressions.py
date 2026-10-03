@@ -895,7 +895,7 @@ WARDER_GRAB = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/war
 assert 'WARDER_GRAB_PATH = PLUGINPATH + "warder-grab"' not in PLUGIN
 assert '_warderOpenWebifGrab.GRAB_PATH = WARDER_GRAB_PATH' not in PLUGIN
 assert '_warderOwiGrab.GrabRequest = _warderRadioAwareGrabRequest' in PLUGIN
-assert 'if not is_radio or mode is not None or not os.path.isfile(adapter):' in PLUGIN
+assert 'if not is_radio or mode not in (None, "", "all") or not os.path.isfile(adapter):' in PLUGIN
 assert 'native_path = _warderOwiGrab.GRAB_PATH' in PLUGIN
 assert '_warderOwiGrab.GRAB_PATH = adapter' in PLUGIN
 assert '_warderOwiGrab.GRAB_PATH = native_path' in PLUGIN

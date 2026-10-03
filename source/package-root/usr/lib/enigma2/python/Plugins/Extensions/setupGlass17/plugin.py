@@ -130,7 +130,7 @@ try:
 			pass
 		mode = _warderOwiGetUrlArg(request, "mode")
 		adapter = PLUGINPATH + "warder-grab"
-		if not is_radio or mode is not None or not os.path.isfile(adapter):
+		if not is_radio or mode not in (None, "", "all") or not os.path.isfile(adapter):
 			return _warderNativeGrabRequest(request, session)
 		native_path = _warderOwiGrab.GRAB_PATH
 		try:
