@@ -1054,3 +1054,7 @@ assert 'self.l.setRoot(eServiceReference(), True)' in PLUGIN
 assert 'self.l.addService(ref)' in PLUGIN
 assert 'self.l.FillFinished()' in PLUGIN
 assert 'self.l.setElementFont(eListboxServiceContent.celServiceName, gFont("Prive4", 33))' in PLUGIN
+
+# TEST134 emergency recovery: TEST133 instantiated the retired class name and caused an Enigma2 restart loop.
+assert "WarderRadioMultiContentProbe" not in PLUGIN
+assert PLUGIN.count("WarderRadioServiceContentProbe") >= 3

@@ -1516,11 +1516,11 @@ def hdg17inicialize(self):
 		if ENA_Z:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
 			self.g17dialog.shown = False
-			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioMultiContentProbe, zPosition=1500)
+			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioServiceContentProbe, zPosition=1500)
 			self.warderRadioRootProbe.hide()
 		else:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
-			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioMultiContentProbe)
+			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioServiceContentProbe)
 			self.warderRadioRootProbe.hide()
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
