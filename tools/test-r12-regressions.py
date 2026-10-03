@@ -899,6 +899,10 @@ assert 'if not is_radio or mode not in (None, "", "all"):' in PLUGIN
 assert '_warderNativeGrabRender(self, request)' in PLUGIN
 assert 'request.setHeader("Content-Length", str(len(payload)))' in PLUGIN
 assert 'return payload' in PLUGIN
+assert 'tempfile.mkstemp(prefix="warder-radio-http-osd-"' in PLUGIN
+assert 'warder-radio-webif-error.log' in PLUGIN
+assert 'with open(master, "rb") as image:' in PLUGIN
+assert 'ffmpeg = "/usr/bin/ffmpeg"' in PLUGIN
 assert '_warderOwiGrab.GRAB_PATH = adapter' not in PLUGIN
 assert 'with open("/tmp/warder-radio-current", "w") as marker:' in service94
 assert 'marker.write("A" if is_radio else "TV")' in service94
