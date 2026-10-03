@@ -1037,11 +1037,13 @@ assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in rad
 assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
-# TEST126: a clean standalone Screen dialog on the same session desktop isolates overlay lifecycle/composition from RDS and ExtraInfo17.
-assert 'class WarderRadioLayerProbe(Screen):' in PLUGIN
-assert 'name="WarderRadioLayerProbe" position="0,0" size="1920,1080"' in PLUGIN
-assert 'font="Prive4;33"' in PLUGIN
-assert 'TEST126 · Prive4;33 · clean dialog' in PLUGIN
-assert 'instantiateDialog(WarderRadioLayerProbe, zPosition=1500)' in PLUGIN
-assert 'probe.show()' in PLUGIN
-assert 'probe.hide()' in PLUGIN
+# TEST126 physical FAIL: clean same-desktop standalone dialog still rendered Prive4;33 visibly jagged; dialog/RDS/ExtraInfo ownership is not the cause.
+assert 'WarderRadioLayerProbe' not in PLUGIN
+
+# TEST127: use the exact OpenATV ChannelSelection runtime component choice and its native applySkin/setFontsize path.
+assert 'from Components.ServiceList import ServiceList, ServiceListLegacy' in PLUGIN
+assert 'class WarderRadioServiceListProbe(Screen):' in PLUGIN
+assert 'config.channelSelection.screenStyle.value == "" or config.channelSelection.widgetStyle.value == ""' in PLUGIN
+assert 'ServiceListLegacy(self) if legacy else ServiceList(self)' in PLUGIN
+assert 'serviceNameFont="Prive4;33"' in PLUGIN
+assert 'instantiateDialog(WarderRadioServiceListProbe, zPosition=1500)' in PLUGIN
