@@ -1,3 +1,3 @@
-TEST112
-Restore safe native RDS z-order and show only the Radio top rail inside the normal InfoBar; preserve ChannelSelectionRadio, TEST106 WebIF, exact artwork and DAB/SLS fallback.
-Source commit: 8a6f303d8323c497a9c47560ba24e58856f42a15
+TEST113
+Use the existing receiver-proven /tmp/warder-radio-current service-start marker to gate the normal InfoBar's Radio-only top rail. Preserve RdsInfoDisplay zPosition=-2, ChannelSelectionRadio, TEST106 WebIF, exact artwork and DAB/SLS fallback.
+Source commit: 1d2e9304ecf90b68c6d5c4320b13225a24712aa6
