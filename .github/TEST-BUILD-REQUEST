@@ -1,3 +1,3 @@
-TEST120
-Radio typography candidate after TEST119 physical FAIL: bundled Inter under OFL, WarderRadio alias only, existing TEST118/119 geometry and TEST117 lifecycle preserved. No artwork/equalizer changes.
-Source commit: ff1fe4ade6db778ec96b50c6520c558b894cbfd9
+TEST121
+Radio sharpness reference build: WarderRadio follows exact native TV Prive4/prive7 scale-100 path; right branding 30px to match left date. TEST117 lifecycle and Radio geometry preserved. No artwork/equalizer changes.
+Source commit: e30cda51cff27734a9a4de748d2c85347abaa77b
