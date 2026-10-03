@@ -1516,12 +1516,8 @@ def hdg17inicialize(self):
 		if ENA_Z:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
 			self.g17dialog.shown = False
-			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe, zPosition=1500)
-			self.warderRadioCompositionProbe.hide()
 		else:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
-			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe)
-			self.warderRadioCompositionProbe.hide()
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
 				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173,
@@ -1636,10 +1632,6 @@ def serviceStartNow17(self):
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
 					rds.show()
-					probe = getattr(self, "warderRadioCompositionProbe", None)
-					if probe is not None:
-						probe.setService(ref)
-						probe.show()
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
 						out.write("RADIO_OVERLAY_SHOW epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 				else:
@@ -1647,9 +1639,6 @@ def serviceStartNow17(self):
 					# must not survive RADIO -> TV and bind its CurrentService widgets
 					# to the TV service after the normal TV infobar closes.
 					rds.hide()
-					probe = getattr(self, "warderRadioCompositionProbe", None)
-					if probe is not None:
-						probe.hide()
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
 						out.write("RADIO_OVERLAY_HIDE epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 		except Exception:
@@ -3734,27 +3723,6 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
-class WarderRadioCompositionProbe(Screen):
-	"""TEST135: Program-Info-style composed parent with an ordinary dynamic Label."""
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="720,42" backgroundColor="transpBlack2" flags="wfNoBorder">
-			<eLabel position="0,0" size="720,42" backgroundColor="transpBlack3" zPosition="-5" />
-			<widget name="serviceName" position="0,0" size="720,42" font="Prive4;33" foregroundColor="#eeeeee" transparent="1" valign="center" />
-		</screen>"""
-		self["serviceName"] = Label("")
-
-	def setService(self, ref):
-		name = ""
-		try:
-			info = eServiceCenter.getInstance().info(ref)
-			if info is not None:
-				name = info.getName(ref) or ""
-		except Exception:
-			pass
-		self["serviceName"].setText(name)
-
-
 # Active ExtraInfo17 instance for live weather refresh after city change.
 G17_EXTRAINFO_INSTANCE = None
 
