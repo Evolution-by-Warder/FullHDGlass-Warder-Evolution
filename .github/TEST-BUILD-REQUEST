@@ -1,3 +1,3 @@
-TEST109
-Build temporary Radio InfoBar/RDS lifecycle diagnostic; preserve TEST106 WebIF PASS and exact artwork policy.
-Source commit: e25a9e266619072c04bd8faec433a4bc0bede0bb
+TEST110
+Refresh native Radio layer immediately at service start without closing the normal InfoBar; remove TEST109 probe; preserve TEST106 WebIF PASS and exact artwork policy.
+Source commit: cf87343e80929f23e4b386916319a755fd8f787c
