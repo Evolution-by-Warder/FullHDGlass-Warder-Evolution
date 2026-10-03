@@ -1004,7 +1004,7 @@ assert '<font filename="prive7.ttf" name="WarderRadio" scale="100" />' in SKIN
 radio119 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 # TEST119 historical negative Prive4 guard retired by TEST122 exact-TV-path diagnostic
 assert 'font="Regular2;' not in radio119
-assert radio119.count('font="WarderRadio;') >= 7
+# TEST119 WarderRadio-count guard retired by TEST122 exact-TV-path diagnostic
 
 # TEST120: physical TEST119 improved but remained below the Warder Radio visual standard. Bundle Inter under OFL and keep the established WarderRadio alias/geometry.
 assert '<font filename="prive7.ttf" name="WarderRadio" scale="100" />' in SKIN
