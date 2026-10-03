@@ -1,3 +1,3 @@
-TEST108
-Build production Radio state after removing temporary TEST107 timing probe; preserve TEST106 WebIF PASS and exact artwork policy.
-Source commit: 8ffc5323f7232ce39a6d03a8ade481b5caf0214d
+TEST109
+Build temporary Radio InfoBar/RDS lifecycle diagnostic; preserve TEST106 WebIF PASS and exact artwork policy.
+Source commit: e25a9e266619072c04bd8faec433a4bc0bede0bb
