@@ -1,3 +1,3 @@
-TEST138 radio composition coexistence retry
-Source/journal commit: 8a40ea53fcb4e058bfe9974fef5cd8d9f671bf1f
-CI #330 exposed only stale TEST136 absence assertions. Remove those contradictory test-only guards; runtime TEST138 remains unchanged.
+TEST139 live RDS text composition
+Source/journal commit: 5684675ae089480a3b75403ecc06e8fdb065edab
+Expand the physically proven TEST138 bottom composed layer to mirror native RadioText/RtpText read-only; preserve native RDS ownership and zPosition=-2.
