@@ -1,3 +1,4 @@
-TEST144 root-cause Radio compositor fix
-Source/journal commit: c476530d4de9bc703f6a9a16f35661dae62d957c
-Remove fullscreen transparent RdsInfoDisplay and TEST143 masking bands. Native RDS becomes bounded opaque bottom metadata surface; TEST117 top rail remains in ExtraInfo17; exact artwork moves unchanged to bounded image-only z=-3 surface. Preserve absolute Radio geometry and InfoPanel depth.
+TEST144 CI correction rebuild
+Source runtime: c476530d4de9bc703f6a9a16f35661dae62d957c
+Regression/journal correction: 4d9546ac6b650490b91737e399bebfaec70423fb
+CI #342 failed only stale line 444 transparent-RDS assertion; runtime/skin unchanged.
