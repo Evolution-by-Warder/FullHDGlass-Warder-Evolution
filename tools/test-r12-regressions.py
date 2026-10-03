@@ -443,7 +443,7 @@ for n in range(1, 10):
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'backgroundColor="transparent"' in rds
 # TEST136 intentionally tests compositor depth while retaining transparent DAB/SLS composition.
-assert 'zPosition="0"' in rds  # TEST136 diagnostic; physical Radio/ChannelSelection/TV regression required
+assert 'zPosition="-2"' in rds  # TEST138 restores receiver-proven native RDS depth after TEST136 physical regression
 
 # TEST24 Cool-like PIG guide geometry.
 pig24 = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
@@ -1045,9 +1045,13 @@ radio_cs133 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</sc
 assert 'serviceNameFont="Prive4;33"' not in radio_cs133
 assert 'serviceItemHeight="42"' not in radio_cs133
 
-# TEST135 PHYSICAL PASS DIAGNOSTIC; TEST136 tests native RdsInfoDisplay compositor depth.
+# TEST135 PHYSICAL PASS DIAGNOSTIC; TEST138 restores native depth and reuses the proven scoped composition.
 radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="0" backgroundColor="transparent"' in radio136
+assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent"' in radio136
+assert "class WarderRadioCompositionProbe(Screen):" in PLUGIN
+assert 'position="420,842" size="720,42" backgroundColor="transpBlack2"' in PLUGIN
+assert "probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())" in PLUGIN
+assert "probe.show()" in PLUGIN and "probe.hide()" in PLUGIN
 assert "WarderRadioCompositionProbe" not in PLUGIN
 assert "warderRadioCompositionProbe" not in PLUGIN
 assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio136

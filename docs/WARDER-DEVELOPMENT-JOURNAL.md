@@ -593,3 +593,7 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 
 
 - TEST137 emergency setup crash fix (physical crash log 2026-10-03 19:58): opening FullHDGlass17 setup crashes in thumbList.__init__ with NameError: eListboxPythonMultiContent is not defined. The class is still used by legacy thumbList/thumbList2, but its enigma import was accidentally removed during the retired TEST132 MultiContent cleanup. Restore only eListboxPythonMultiContent to the existing enigma import and add a regression guard. No Radio TEST136 compositor, geometry, equalizer, artwork, RDS/TMDB/WebIF or settings behavior changes.
+
+
+- TEST137 PHYSICAL PASS / RECOVERY (receiver, 2026-10-03): FullHDGlass17 settings opens normally again after restoring the legacy eListboxPythonMultiContent import. Keep this fix.
+- TEST136 PHYSICAL FAIL (receiver screenshots, 2026-10-03): ChannelSelectionRadio remains crisp, but native stable-Radio date/time/branding, service name and RadioText remain jagged at RdsInfoDisplay zPosition=0. The InfoPanel also no longer appears, proving a layering regression. TEST138 therefore restores native RdsInfoDisplay zPosition=-2 and reintroduces only the TEST135 physically proven 720x42 Program-Info-style scoped composition over the service-name row. It follows the current Radio service through the existing TEST117/92 service-start lifecycle and hides on TV. This is a controlled coexistence test: native RDS ownership, InfoPanel, artwork, equalizer, DAB fallback, TMDB and WebIF remain otherwise unchanged. Receiver PASS pending.

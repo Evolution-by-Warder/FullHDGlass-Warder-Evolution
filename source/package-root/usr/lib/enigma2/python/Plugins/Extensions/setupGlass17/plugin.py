@@ -244,6 +244,26 @@ def _warderUiText(text):
 		pass
 	return text
 
+class WarderRadioCompositionProbe(Screen):
+	"""TEST138: scoped Program-Info-style composition over the native Radio service-name row."""
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="720,42" backgroundColor="transpBlack2" flags="wfNoBorder">
+			<eLabel position="0,0" size="720,42" backgroundColor="transpBlack3" zPosition="-5" />
+			<widget name="serviceName" position="0,0" size="720,42" font="Prive4;33" foregroundColor="#dddddd" transparent="1" valign="center" noWrap="1" />
+		</screen>"""
+		self["serviceName"] = Label("")
+
+	def setService(self, ref):
+		name = ""
+		try:
+			info = eServiceCenter.getInstance().info(ref)
+			if info is not None:
+				name = info.getName(ref) or ""
+		except Exception:
+			pass
+		self["serviceName"].setText(name)
+
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
 	skin = """
@@ -1513,6 +1533,13 @@ def hdg17inicialize(self):
 		f = open(KMP_FILE, "r").read()
 		if f.find("LongOKPressed") != -1:
 			self["ShowHideActions"] = ActionMap( ["InfobarShowHideActions"] ,{"toggleShow": doNothing,"hide": doNothing,})
+		# TEST138: keep the proven crisp scoped composition independent of native RDS ownership.
+		if ENA_Z:
+			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe, zPosition=10)
+			self.warderRadioCompositionProbe.shown = False
+		else:
+			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe)
+		self.warderRadioCompositionProbe.hide()
 		if ENA_Z:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
 			self.g17dialog.shown = False
@@ -1628,6 +1655,16 @@ def serviceStartNow17(self):
 			except Exception:
 				pass
 			rds = getattr(self, "rds_display", None)
+			probe = getattr(self, "warderRadioCompositionProbe", None)
+			if probe is not None:
+				if is_radio:
+					try:
+						probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())
+					except Exception:
+						pass
+					probe.show()
+				else:
+					probe.hide()
 			if rds is not None:
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
