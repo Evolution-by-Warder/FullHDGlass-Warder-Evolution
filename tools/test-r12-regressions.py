@@ -1037,13 +1037,12 @@ assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in rad
 assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
-# TEST126 physical FAIL: clean same-desktop standalone dialog still rendered Prive4;33 visibly jagged; dialog/RDS/ExtraInfo ownership is not the cause.
-assert 'WarderRadioLayerProbe' not in PLUGIN
+# TEST126 physical FAIL: clean same-desktop dialog remained visibly jagged.
+# TEST127 physical INCONCLUSIVE: real ServiceList probe had no populated root/list content, so no usable text rendered.
+assert 'WarderRadioServiceListProbe' not in PLUGIN
+assert 'from Components.ServiceList import ServiceList, ServiceListLegacy' not in PLUGIN
 
-# TEST127: use the exact OpenATV ChannelSelection runtime component choice and its native applySkin/setFontsize path.
-assert 'from Components.ServiceList import ServiceList, ServiceListLegacy' in PLUGIN
-assert 'class WarderRadioServiceListProbe(Screen):' in PLUGIN
-assert 'config.channelSelection.screenStyle.value == "" or config.channelSelection.widgetStyle.value == ""' in PLUGIN
-assert 'ServiceListLegacy(self) if legacy else ServiceList(self)' in PLUGIN
-assert 'serviceNameFont="Prive4;33"' in PLUGIN
-assert 'instantiateDialog(WarderRadioServiceListProbe, zPosition=1500)' in PLUGIN
+# TEST128: use the real OpenATV ChannelSelectionRadio, which forces ServiceListLegacy, and give its native list the exact TV service-name font/row height.
+radio_cs128 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
+assert 'serviceNameFont="Prive4;33"' in radio_cs128
+assert 'serviceItemHeight="37"' in radio_cs128
