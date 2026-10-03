@@ -1516,12 +1516,12 @@ def hdg17inicialize(self):
 		if ENA_Z:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
 			self.g17dialog.shown = False
-			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioServiceContentProbe, zPosition=1500)
-			self.warderRadioRootProbe.hide()
+			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe, zPosition=1500)
+			self.warderRadioCompositionProbe.hide()
 		else:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
-			self.warderRadioRootProbe = self.session.instantiateDialog(WarderRadioServiceContentProbe)
-			self.warderRadioRootProbe.hide()
+			self.warderRadioCompositionProbe = self.session.instantiateDialog(WarderRadioCompositionProbe)
+			self.warderRadioCompositionProbe.hide()
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
 				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173,
@@ -1636,7 +1636,7 @@ def serviceStartNow17(self):
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
 					rds.show()
-					probe = getattr(self, "warderRadioRootProbe", None)
+					probe = getattr(self, "warderRadioCompositionProbe", None)
 					if probe is not None:
 						probe.setService(ref)
 						probe.show()
@@ -1647,7 +1647,7 @@ def serviceStartNow17(self):
 					# must not survive RADIO -> TV and bind its CurrentService widgets
 					# to the TV service after the normal TV infobar closes.
 					rds.hide()
-					probe = getattr(self, "warderRadioRootProbe", None)
+					probe = getattr(self, "warderRadioCompositionProbe", None)
 					if probe is not None:
 						probe.hide()
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
@@ -3734,49 +3734,25 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
-class WarderRadioServiceContentProbe(Screen):
-	"""TEST133: direct eListboxServiceContent with exactly the current service; no bouquet/root."""
+class WarderRadioCompositionProbe(Screen):
+	"""TEST135: Program-Info-style composed parent with an ordinary dynamic Label."""
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skin = '<screen name="WarderRadioServiceContentProbe" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder"><widget name="list" position="420,842" size="720,42" transparent="1" scrollbarMode="showNever" /></screen>'
-		self["list"] = WarderRadioSingleServiceList()
+		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="720,42" backgroundColor="transpBlack2" flags="wfNoBorder">
+			<eLabel position="0,0" size="720,42" backgroundColor="transpBlack3" zPosition="-5" />
+			<widget name="serviceName" position="0,0" size="720,42" font="Prive4;33" foregroundColor="#eeeeee" transparent="1" valign="center" />
+		</screen>"""
+		self["serviceName"] = Label("")
 
 	def setService(self, ref):
-		self["list"].setService(ref)
-
-
-class WarderRadioSingleServiceList:
-	GUI_WIDGET = eListbox
-	def __init__(self):
-		self.instance = None
-		self.l = eListboxServiceContent()
-		self.l.setVisualMode(eListboxServiceContent.visModeComplex)
-		self.l.setItemHeight(42)
-		self.l.setElementPosition(eListboxServiceContent.celServiceName, eRect(0, 0, 720, 42))
-		self.l.setElementFont(eListboxServiceContent.celServiceName, gFont("Prive4", 33))
-
-	def execBegin(self):
-		pass
-	def execEnd(self):
-		pass
-	def onShow(self):
-		pass
-	def onHide(self):
-		pass
-	def applySkin(self, desktop, parent):
-		return True
-	def createWidget(self, parent):
-		return eListbox(parent)
-	def postWidgetCreate(self, instance):
-		self.instance = instance
-		instance.setContent(self.l)
-	def preWidgetRemove(self, instance):
-		instance.setContent(None)
-		self.instance = None
-	def setService(self, ref):
-		self.l.setRoot(eServiceReference(), True)
-		self.l.addService(ref)
-		self.l.FillFinished()
+		name = ""
+		try:
+			info = eServiceCenter.getInstance().info(ref)
+			if info is not None:
+				name = info.getName(ref) or ""
+		except Exception:
+			pass
+		self["serviceName"].setText(name)
 
 
 # Active ExtraInfo17 instance for live weather refresh after city change.

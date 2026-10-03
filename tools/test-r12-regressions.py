@@ -1044,17 +1044,14 @@ radio_cs133 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</sc
 assert 'serviceNameFont="Prive4;33"' not in radio_cs133
 assert 'serviceItemHeight="42"' not in radio_cs133
 
-# TEST133: direct native eListboxServiceContent, populated with only current service.
-# No bouquet/root lookup; this is the exact native service painter used by ServiceListLegacy.
-assert 'class WarderRadioMultiContentProbe(Screen):' not in PLUGIN
-assert 'eListboxPythonMultiContent.TYPE_TEXT' not in PLUGIN
-assert 'class WarderRadioServiceContentProbe(Screen):' in PLUGIN
-assert 'self.l = eListboxServiceContent()' in PLUGIN
-assert 'self.l.setRoot(eServiceReference(), True)' in PLUGIN
-assert 'self.l.addService(ref)' in PLUGIN
-assert 'self.l.FillFinished()' in PLUGIN
-assert 'self.l.setElementFont(eListboxServiceContent.celServiceName, gFont("Prive4", 33))' in PLUGIN
-
-# TEST134 emergency recovery: TEST133 instantiated the retired class name and caused an Enigma2 restart loop.
-assert "WarderRadioMultiContentProbe" not in PLUGIN
-assert PLUGIN.count("WarderRadioServiceContentProbe") >= 3
+# TEST133 PHYSICAL FAIL / CRASH; TEST134 PHYSICAL PASS / RECOVERY.
+# TEST135 retires the synthetic service-content probe and isolates Program Info parent composition.
+assert "WarderRadioServiceContentProbe" not in PLUGIN
+assert "WarderRadioSingleServiceList" not in PLUGIN
+assert "class WarderRadioCompositionProbe(Screen):" in PLUGIN
+assert 'name="WarderRadioCompositionProbe" position="420,842" size="720,42" backgroundColor="transpBlack2"' in PLUGIN
+assert 'backgroundColor="transpBlack3" zPosition="-5"' in PLUGIN
+assert 'name="serviceName" position="0,0" size="720,42" font="Prive4;33"' in PLUGIN
+assert 'self["serviceName"] = Label("")' in PLUGIN
+assert 'self["serviceName"].setText(name)' in PLUGIN
+assert PLUGIN.count("WarderRadioCompositionProbe") >= 3
