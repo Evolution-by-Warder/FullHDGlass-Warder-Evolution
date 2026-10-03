@@ -958,13 +958,15 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 
 
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
-# TEST112: only the normal InfoBar gets a Radio-only duplicate top rail; ChannelSelection remains unobscured.
-assert SKIN.count('render="WarderRadioInfoBarTop"') == 3
-assert 'mode="date"' in SKIN and 'mode="time"' in SKIN and 'mode="brand"' in SKIN
-assert (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoBarTop.py").is_file()
 
-# TEST113: InfoBar top rail uses the receiver-proven radio marker, not converted ServiceName text.
-RADIO_INFOBAR_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoBarTop.py").read_text(encoding="utf-8")
-assert 'open("/tmp/warder-radio-current", "r")' in RADIO_INFOBAR_TOP
-assert 'marker.read(8).strip() == "A"' in RADIO_INFOBAR_TOP
-assert 'self.source.text or ""' not in RADIO_INFOBAR_TOP
+
+# TEST114: top-only runtime dialog solves InfoBar overlap without raising native RDS above ChannelSelection.
+assert 'class WarderRadioTopOverlay(Screen):' in PLUGIN
+assert 'instantiateDialog(WarderRadioTopOverlay, zPosition=1100)' in PLUGIN
+assert 'if "ChannelSelection" in name:' in PLUGIN
+assert 'self.warderRadioTopSyncTimer.start(100, False)' in PLUGIN
+assert 'return bool(getattr(self, "shown", False))' in PLUGIN
+assert SKIN.count('render="WarderRadioInfoBarTop"') == 0
+service114 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
+radio114 = service114.split('if is_radio:', 1)[1].split('else:', 1)[0]
+assert 'rds.show()' in radio114 and 'rds.hide()' not in radio114
