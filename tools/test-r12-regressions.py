@@ -984,7 +984,7 @@ radio118 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SK
 for token in (
     'position="62,22" size="610,66" font="WarderRadio;30" valign="center"',
     'position="745,22" size="340,66" font="WarderRadio;38" valign="center"',
-    'position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right"',
+    'position="1220,22" size="580,66" font="WarderRadio;30" valign="center" halign="right"',
     'position="420,842" size="720,42" font="WarderRadio;29" valign="center"',
     'name="RadioText" position="420,895" size="1000,52" font="WarderRadio;32" valign="center"',
     'name="RtpText" position="420,955" size="1000,38" font="WarderRadio;24" valign="center"',
