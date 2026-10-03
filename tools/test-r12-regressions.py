@@ -1053,3 +1053,7 @@ assert "warderRadioCompositionProbe" not in PLUGIN
 assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio136
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio136
 assert 'name="RtpText" position="420,955" size="1000,38" font="Prive4;25"' in radio136
+
+# TEST137: setupGlass17 thumbList/2 require the native MultiContent listbox class at runtime.
+assert "eListboxPythonMultiContent, eListboxServiceContent" in PLUGIN
+assert "MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)" in PLUGIN

@@ -590,3 +590,6 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 
 
 - TEST136 CI #327 failed only because the newly added TEST136 screen-extraction regex was double-escaped and matched literal backslashes. Runtime source remains unchanged. Correct the regression to the established RdsInfoDisplay extraction form and retry CI.
+
+
+- TEST137 emergency setup crash fix (physical crash log 2026-10-03 19:58): opening FullHDGlass17 setup crashes in thumbList.__init__ with NameError: eListboxPythonMultiContent is not defined. The class is still used by legacy thumbList/thumbList2, but its enigma import was accidentally removed during the retired TEST132 MultiContent cleanup. Restore only eListboxPythonMultiContent to the existing enigma import and add a regression guard. No Radio TEST136 compositor, geometry, equalizer, artwork, RDS/TMDB/WebIF or settings behavior changes.

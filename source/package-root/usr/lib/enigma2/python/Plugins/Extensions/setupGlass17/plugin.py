@@ -7,7 +7,7 @@ from Components.g17ConfigList import ConfigListScreen, ConfigList
 from Plugins.Plugin import PluginDescriptor
 from Screens.InfoBar import InfoBar
 from Components.ServiceEventTracker import ServiceEventTracker
-from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxServiceContent, eListbox, gFont, eRect, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
+from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxPythonMultiContent, eListboxServiceContent, eListbox, gFont, eRect, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
 import Screens.InfoBar
 from Tools.Transponder import ConvertToHumanReadable
 try:
