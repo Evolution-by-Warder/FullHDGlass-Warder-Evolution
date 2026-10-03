@@ -2087,7 +2087,7 @@ def fromCfg():
 	warder_radio_top = """
 		<widget name="warderRadioDate" position="62,22" size="610,66" font="WarderRadio;30" valign="center" foregroundColor="#e5b243" transparent="1" />
 		<widget name="warderRadioTime" position="745,22" size="340,66" font="WarderRadio;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
-		<widget name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
+		<widget name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;30" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
 	"""
 	return tmp.replace("</screen>", warder_radio_top + "</screen>")
 
