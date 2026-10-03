@@ -987,7 +987,6 @@ for token in (
     'position="62,22" size="610,66" font="Prive4;33" valign="center"',
     'position="745,22" size="340,66" font="Prive4;33" valign="center"',
     'position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right"',
-    'position="420,842" size="720,42" font="Prive4;33" valign="center"',
     'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center"',
     'name="RtpText" position="420,955" size="1000,38" font="Prive4;25" valign="center"',
     'position="1470,978" size="350,38" font="Prive4;25" valign="center"',
@@ -1025,10 +1024,9 @@ assert radio122.count('font="Prive4;25"') >= 2
 assert PLUGIN.count('font="Prive4;33"') >= 3
 
 
-# TEST123: isolate OSD-plane compositing on one representative Radio text field only.
-# Keep Prive4;33, colour and geometry unchanged; only BAYERN/service-name backing becomes opaque.
+# TEST123 historical opaque service-name assertion retired by TEST124 native painter diagnostic.
+# Keep the unchanged RadioText control locked; TEST124 below owns the service-name path.
 radio123 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'position="420,842" size="720,42" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#dddddd" backgroundColor="#101820" transparent="0"' in radio123
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
 
 
