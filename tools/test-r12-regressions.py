@@ -962,3 +962,9 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 assert SKIN.count('render="WarderRadioInfoBarTop"') == 3
 assert 'mode="date"' in SKIN and 'mode="time"' in SKIN and 'mode="brand"' in SKIN
 assert (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoBarTop.py").is_file()
+
+# TEST113: InfoBar top rail uses the receiver-proven radio marker, not converted ServiceName text.
+RADIO_INFOBAR_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoBarTop.py").read_text(encoding="utf-8")
+assert 'open("/tmp/warder-radio-current", "r")' in RADIO_INFOBAR_TOP
+assert 'marker.read(8).strip() == "A"' in RADIO_INFOBAR_TOP
+assert 'self.source.text or ""' not in RADIO_INFOBAR_TOP

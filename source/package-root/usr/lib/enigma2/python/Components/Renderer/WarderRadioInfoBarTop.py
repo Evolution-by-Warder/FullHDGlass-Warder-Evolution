@@ -5,7 +5,7 @@ from Components.Renderer.Renderer import Renderer
 from Components.VariableText import VariableText
 from Components.config import config
 from enigma import eLabel, eTimer
-from time import localtime, strftime, time
+from time import localtime, strftime
 try:
 	from Plugins.Extensions.setupGlass17.weaUtils import toLocale
 except Exception:
@@ -51,10 +51,12 @@ class WarderRadioInfoBarTop(VariableText, Renderer):
 		self._refresh()
 
 	def _isRadio(self):
+		# TEST113: use the same service-start marker already proven by TEST95/106.
+		# TEST112 showed that the renderer's converted ServiceName source is not a
+		# reliable radio discriminator while the normal InfoBar is on-screen.
 		try:
-			ref = self.source.text or ""
-			fields = ref.split(":")
-			return len(fields) > 2 and fields[2].upper() == "A"
+			with open("/tmp/warder-radio-current", "r") as marker:
+				return marker.read(8).strip() == "A"
 		except Exception:
 			return False
 
