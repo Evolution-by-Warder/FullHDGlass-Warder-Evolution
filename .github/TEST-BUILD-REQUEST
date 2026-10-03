@@ -1,3 +1,3 @@
-TEST118
-Radio typography polish only: replace heavy Regular2 with existing Prive4 on Radio top/lower text; align date/time/branding on shared y=22 h=66 centered geometry. TEST117 lifecycle and all protected functional paths unchanged.
-Source commit: b15c60445deb964f122646c82fc4849362575b54
+TEST118 corrected
+CI-only correction: align stale TEST117 top-rail geometry assertions with intentional TEST118 Prive4 y=22 h=66 typography contract. Runtime/design unchanged.
+Source commit: 9af264e4365d9f9c369e7cc84b505e006f454a6c
