@@ -302,7 +302,7 @@
 		<pixmap name="ValuePixmap" filename="hd_glass17/slider/scrollbarslider2.png" />
 </windowstylescrollbar-->
 
-  <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">\n    <eLabel text="TEST125 · Prive4;33 · FullHDGlass17" position="420,748" size="900,52" font="Prive4;33" valign="center" foregroundColor="#eeeeee" transparent="1" zPosition="20" />
+  <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="off" />
     <widget position="315,822" size="757,52" source="session.CurrentService" render="Label" font="Prive3;39" valign="center" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ServiceNum">NumberAndName</convert>

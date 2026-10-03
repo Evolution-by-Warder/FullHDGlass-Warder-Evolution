@@ -1030,4 +1030,18 @@ radio123 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SK
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
 
 
-# TEST124 physical FAIL: native one-row service-list diagnostic did not improve sharpness and is retired by TEST125.\n\n# TEST125: restore the clean Radio Label and add one Prive4;33 control on the normal InfoBar screen.\nradio125 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)\nassert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio125\nassert '<convert type="ServiceName">Name</convert>' in radio125\ninfobar125 = re.search(r'<screen\\b[^>]*name="InfoBar"[\\s\\S]*?</screen>', SKIN).group(0)\nassert '<eLabel text="TEST125 · Prive4;33 · FullHDGlass17" position="420,748" size="900,52" font="Prive4;33"' in infobar125\n
+# TEST124 physical FAIL: native one-row service-list diagnostic did not improve sharpness and is retired.
+# TEST125 physical result: normal InfoBar probe was not visible in the persistent Radio state, proving it is not the active comparison layer.
+radio125 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
+assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio125
+assert '<convert type="ServiceName">Name</convert>' in radio125
+assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
+
+# TEST126: a clean standalone Screen dialog on the same session desktop isolates overlay lifecycle/composition from RDS and ExtraInfo17.
+assert 'class WarderRadioLayerProbe(Screen):' in PLUGIN
+assert 'name="WarderRadioLayerProbe" position="0,0" size="1920,1080"' in PLUGIN
+assert 'font="Prive4;33"' in PLUGIN
+assert 'TEST126 · Prive4;33 · clean dialog' in PLUGIN
+assert 'instantiateDialog(WarderRadioLayerProbe, zPosition=1500)' in PLUGIN
+assert 'probe.show()' in PLUGIN
+assert 'probe.hide()' in PLUGIN
