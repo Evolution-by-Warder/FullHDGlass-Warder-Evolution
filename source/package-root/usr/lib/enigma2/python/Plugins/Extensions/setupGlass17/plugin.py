@@ -28,6 +28,7 @@ import shutil
 import stat
 import zipfile
 import subprocess
+import tempfile
 try:
 	from urllib.request import Request, urlopen
 except ImportError:
@@ -116,70 +117,74 @@ try:
 	ENA_POSTER = True
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST104: preserve native OpenWebif for TV/explicit modes; Radio All is handled at HTTP resource level.
-try:
-	from Plugins.Extensions.OpenWebif.controllers.models import grab as _warderOwiGrab
-	from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as _warderOwiGetUrlArg
-	_warderNativeGrabRender = _warderOwiGrab.grabScreenshot.render
-	def _warderRadioGrabRender(self, request):
+# TEST105: install OpenWebif Radio-All hook lazily at service-start.
+_warderOwiHookInstalled = False
+_warderNativeGrabRender = None
+_warderOwiGetUrlArg = None
+
+def _warderRadioGrabRender(self, request):
+	global _warderNativeGrabRender, _warderOwiGetUrlArg
+	try:
+		with open("/tmp/warder-radio-current", "r") as marker:
+			is_radio = marker.read().strip() == "A"
+	except Exception:
 		is_radio = False
+	mode = _warderOwiGetUrlArg(request, "mode")
+	if not is_radio or mode not in (None, "", "all"):
+		return _warderNativeGrabRender(self, request)
+	fmt = _warderOwiGetUrlArg(request, "format") or "jpg"
+	if fmt not in ("jpg", "png", "bmp"):
+		fmt = "bmp"
+	master = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
+	fd, osd = tempfile.mkstemp(prefix="warder-radio-http-osd-", suffix=".png", dir="/tmp"); os.close(fd)
+	fd, out = tempfile.mkstemp(prefix="warder-radio-http-out-", suffix="." + fmt, dir="/tmp"); os.close(fd)
+	try:
+		subprocess.check_call(["/usr/bin/grab", "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
+		ffmpeg = "/usr/bin/ffmpeg" if os.path.isfile("/usr/bin/ffmpeg") else "ffmpeg"
+		cmd = [ffmpeg, "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
+		if fmt == "jpg": cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
+		elif fmt == "png": cmd += ["-vcodec", "png", out]
+		else: cmd += ["-vcodec", "bmp", out]
+		subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=12)
+		with open(out, "rb") as image: payload = image.read()
+		if not payload: raise IOError("empty Radio screenshot")
+		request.setHeader("Content-Type", "image/" + ("jpeg" if fmt == "jpg" else fmt))
+		request.setHeader("Content-Length", str(len(payload)))
+		return payload
+	except Exception as error:
 		try:
-			with open("/tmp/warder-radio-current", "r") as marker:
-				is_radio = marker.read().strip() == "A"
-		except Exception:
-			pass
-		mode = _warderOwiGetUrlArg(request, "mode")
-		if not is_radio or mode not in (None, "", "all"):
-			return _warderNativeGrabRender(self, request)
-		fmt = _warderOwiGetUrlArg(request, "format") or "jpg"
-		if fmt not in ("jpg", "png", "bmp"):
-			fmt = "bmp"
-		master = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
-		fd, osd = tempfile.mkstemp(prefix="warder-radio-http-osd-", suffix=".png", dir="/tmp")
-		os.close(fd)
-		fd, out = tempfile.mkstemp(prefix="warder-radio-http-out-", suffix="." + fmt, dir="/tmp")
-		os.close(fd)
+			with open("/tmp/warder-radio-webif-error.log", "a") as log: log.write("%s render-error: %r\\n" % (time1.strftime("%Y-%m-%d %H:%M:%S"), error))
+		except Exception: pass
 		try:
-			subprocess.check_call(["/usr/bin/grab", "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
-			ffmpeg = "/usr/bin/ffmpeg" if os.path.isfile("/usr/bin/ffmpeg") else "ffmpeg"
-			cmd = [ffmpeg, "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
-			if fmt == "jpg":
-				cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
-			elif fmt == "png":
-				cmd += ["-vcodec", "png", out]
-			else:
-				cmd += ["-vcodec", "bmp", out]
-			subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=12)
-			with open(out, "rb") as image:
-				payload = image.read()
-			if not payload:
-				raise IOError("empty Radio screenshot")
-			request.setHeader("Content-Type", "image/" + ("jpeg" if fmt == "jpg" else fmt))
-			request.setHeader("Content-Length", str(len(payload)))
+			with open(master, "rb") as image: payload = image.read()
+			request.setHeader("Content-Type", "image/jpeg"); request.setHeader("Content-Length", str(len(payload)))
 			return payload
-		except Exception as error:
-			try:
-				with open("/tmp/warder-radio-webif-error.log", "a") as log:
-					log.write("%s: %r\\n" % (time1.strftime("%Y-%m-%d %H:%M:%S"), error))
-			except Exception:
-				pass
-			try:
-				with open(master, "rb") as image:
-					payload = image.read()
-				request.setHeader("Content-Type", "image/jpeg")
-				request.setHeader("Content-Length", str(len(payload)))
-				return payload
-			except Exception:
-				return _warderNativeGrabRender(self, request)
-		finally:
-			for path in (osd, out):
-				try:
-					os.unlink(path)
-				except Exception:
-					pass
-	_warderOwiGrab.grabScreenshot.render = _warderRadioGrabRender
-except Exception:
-	pass
+		except Exception:
+			return _warderNativeGrabRender(self, request)
+	finally:
+		for path in (osd, out):
+			try: os.unlink(path)
+			except Exception: pass
+
+def _warderInstallOpenWebifGrabHook():
+	global _warderOwiHookInstalled, _warderNativeGrabRender, _warderOwiGetUrlArg
+	if _warderOwiHookInstalled: return True
+	try:
+		from Plugins.Extensions.OpenWebif.controllers.models import grab as owiGrab
+		from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as owiGetUrlArg
+		_warderOwiGetUrlArg = owiGetUrlArg
+		if owiGrab.grabScreenshot.render is not _warderRadioGrabRender:
+			_warderNativeGrabRender = owiGrab.grabScreenshot.render
+			owiGrab.grabScreenshot.render = _warderRadioGrabRender
+		_warderOwiHookInstalled = True
+		with open("/tmp/warder-radio-webif-hook.log", "a") as log: log.write("%s installed\\n" % time1.strftime("%Y-%m-%d %H:%M:%S"))
+		return True
+	except Exception as error:
+		try:
+			with open("/tmp/warder-radio-webif-hook.log", "a") as log: log.write("%s install-error: %r\\n" % (time1.strftime("%Y-%m-%d %H:%M:%S"), error))
+		except Exception: pass
+		return False
+
 config.plugins.setupGlass17 = ConfigSubsection()
 config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
 CH_LOG = "AllAboutNew"
@@ -1595,6 +1600,8 @@ def SpecialScreenWindow17(self):
 
 def serviceStartNow17(self):
 	if isinstance(self,InfoBar):
+		# TEST105: retry after OpenWebif has initialized; idempotent.
+		_warderInstallOpenWebifGrabHook()
 		# TEST90/92: service-start is the reliable TV/RADIO transition boundary on this image.
 		refstr = ""
 		try:
