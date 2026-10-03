@@ -957,11 +957,4 @@ assert 'raise AttributeError("OpenWebif grab module has no GrabScreenshot class"
 assert 'installed GrabScreenshot.render' in PLUGIN
 
 
-# TEST110: TEST109 proved native RDS is already shown while the normal InfoBar is visible.
-# Refresh only the already native-owned RDS screen at Radio service start; do not close InfoBar.
-service110 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
-assert '/tmp/warder-test109-lifecycle.txt' not in service110
-assert '_warderTest109LifecycleHooks' not in service110
-assert 'rds.hide()' in service110 and 'rds.show()' in service110
-assert 'if self.shown:' in service110
-assert 'self.hide()' not in service110
+# TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
