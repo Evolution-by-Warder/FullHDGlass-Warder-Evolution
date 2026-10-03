@@ -1,0 +1,73 @@
+#!/usr/bin/python3
+# TEST95 Warder OpenWebif radio screenshot adapter.
+# Native /usr/bin/grab is authoritative for TV/OSD/video/PiP/LCD.  Only an
+# OpenWebif-style stdout "all" grab while the current service is RADIO is
+# composited from the approved TEST93 master plus the live alpha OSD.
+import os
+import subprocess
+import sys
+import tempfile
+
+REAL_GRAB = "/usr/bin/grab"
+MASTER = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
+MARKER = "/tmp/warder-radio-current"
+
+def passthrough():
+    os.execv(REAL_GRAB, [REAL_GRAB] + sys.argv[1:])
+
+args = sys.argv[1:]
+try:
+    with open(MARKER, "r") as f:
+        is_radio = f.read().strip() == "A"
+except Exception:
+    is_radio = False
+
+# Scope the workaround strictly to OpenWebif's stdout full-screen capture.
+if (not is_radio or "-s" not in args or "-o" in args or "-v" in args
+        or "-i" in args or not os.path.isfile(MASTER)):
+    passthrough()
+
+fmt = "bmp"
+quality = "95"
+width = None
+if "-p" in args:
+    fmt = "png"
+elif "-j" in args:
+    fmt = "jpg"
+    try:
+        quality = args[args.index("-j") + 1]
+    except Exception:
+        pass
+if "-r" in args:
+    try:
+        width = int(args[args.index("-r") + 1])
+    except Exception:
+        width = None
+
+fd, osd = tempfile.mkstemp(prefix="warder-radio-osd-", suffix=".png", dir="/tmp")
+os.close(fd)
+try:
+    rc = subprocess.call([REAL_GRAB, "-q", "-o", "-p", osd])
+    if rc != 0:
+        passthrough()
+    filt = "[0:v][1:v]overlay=0:0:format=auto"
+    if width and width > 0:
+        filt += ",scale=%d:-2" % width
+    cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error",
+           "-i", MASTER, "-i", osd, "-filter_complex", filt, "-frames:v", "1"]
+    if fmt == "png":
+        cmd += ["-f", "image2pipe", "-vcodec", "png", "-"]
+    elif fmt == "jpg":
+        # OpenWebif requests JPEG quality 95. ffmpeg q=2 is the high-quality
+        # single-frame equivalent used only for this radio fallback.
+        cmd += ["-f", "image2pipe", "-vcodec", "mjpeg", "-q:v", "2", "-"]
+    else:
+        cmd += ["-f", "image2pipe", "-vcodec", "bmp", "-"]
+    rc = subprocess.call(cmd)
+    if rc != 0:
+        sys.exit(rc)
+finally:
+    try:
+        os.unlink(osd)
+    except Exception:
+        pass

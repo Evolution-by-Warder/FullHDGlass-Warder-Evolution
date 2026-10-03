@@ -888,3 +888,15 @@ assert 'rds.hide()' in service94
 assert 'RADIO_OVERLAY_SHOW epoch=%.6f ref=%s' in service94
 assert 'RADIO_OVERLAY_HIDE epoch=%.6f ref=%s' in service94
 assert 'WarderRdsInfoDisplay' not in PLUGIN
+
+
+# TEST95: OpenWebif radio screenshot workaround is isolated and fail-safe.
+WARDER_GRAB = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-grab").read_text(encoding="utf-8")
+assert 'WARDER_GRAB_PATH = PLUGINPATH + "warder-grab"' in PLUGIN
+assert '_warderOpenWebifGrab.GRAB_PATH = WARDER_GRAB_PATH' in PLUGIN
+assert 'with open("/tmp/warder-radio-current", "w") as marker:' in service94
+assert 'marker.write("A" if is_radio else "TV")' in service94
+for token in ('REAL_GRAB = "/usr/bin/grab"', 'MASTER = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"', 'MARKER = "/tmp/warder-radio-current"', '"-s" not in args', '"-o" in args', '"-v" in args', 'passthrough()', '"ffmpeg", "-nostdin"', '"overlay=0:0:format=auto"'):
+    assert token in WARDER_GRAB, token
+assert 'os.execv(REAL_GRAB, [REAL_GRAB] + sys.argv[1:])' in WARDER_GRAB
+assert 'WarderRdsInfoDisplay' not in PLUGIN
