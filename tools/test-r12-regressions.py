@@ -1049,8 +1049,8 @@ assert 'serviceItemHeight="42"' not in radio_cs133
 radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent"' in radio136
 assert "class WarderRadioCompositionProbe(Screen):" in PLUGIN
-assert 'position="420,842" size="720,42" backgroundColor="transpBlack2"' in PLUGIN
-assert "probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())" in PLUGIN
+assert 'position="420,842" size="1000,151" backgroundColor="transpBlack2"' in PLUGIN
+assert "probe.setNativeRds(rds)" in PLUGIN\nassert "probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())" in PLUGIN\nassert '("RadioText", "radioText")' in PLUGIN and '("RtpText", "rtpText")' in PLUGIN\nassert "probe.stopMirror()" in PLUGIN
 assert "probe.show()" in PLUGIN and "probe.hide()" in PLUGIN
 assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio136
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio136

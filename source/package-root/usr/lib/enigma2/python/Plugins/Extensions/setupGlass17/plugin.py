@@ -245,14 +245,27 @@ def _warderUiText(text):
 	return text
 
 class WarderRadioCompositionProbe(Screen):
-	"""TEST138: scoped Program-Info-style composition over the native Radio service-name row."""
+	"""TEST139: crisp composed Radio metadata layer; mirrors native RDS text without taking RDS ownership."""
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="720,42" backgroundColor="transpBlack2" flags="wfNoBorder">
-			<eLabel position="0,0" size="720,42" backgroundColor="transpBlack3" zPosition="-5" />
+		self.skin = """<screen name="WarderRadioCompositionProbe" position="420,842" size="1000,151" backgroundColor="transpBlack2" flags="wfNoBorder">
+			<eLabel position="0,0" size="1000,151" backgroundColor="transpBlack3" zPosition="-5" />
 			<widget name="serviceName" position="0,0" size="720,42" font="Prive4;33" foregroundColor="#dddddd" transparent="1" valign="center" noWrap="1" />
+			<widget name="radioText" position="0,53" size="1000,52" font="Prive4;33" foregroundColor="#eeeeee" transparent="1" valign="center" noWrap="1" />
+			<widget name="rtpText" position="0,113" size="1000,38" font="Prive4;25" foregroundColor="#3388dd" transparent="1" valign="center" noWrap="1" />
 		</screen>"""
 		self["serviceName"] = Label("")
+		self["radioText"] = Label("")
+		self["rtpText"] = Label("")
+		self._nativeRds = None
+		self._mirrorTimer = eTimer()
+		try:
+			self._mirrorTimerConn = self._mirrorTimer.timeout.connect(self._mirrorNativeText)
+		except AttributeError:
+			self._mirrorTimer.timeout.get().append(self._mirrorNativeText)
+
+	def setNativeRds(self, rds):
+		self._nativeRds = rds
 
 	def setService(self, ref):
 		name = ""
@@ -263,6 +276,26 @@ class WarderRadioCompositionProbe(Screen):
 		except Exception:
 			pass
 		self["serviceName"].setText(name)
+		self._mirrorNativeText()
+		self._mirrorTimer.start(250, False)
+
+	def stopMirror(self):
+		if self._mirrorTimer.isActive():
+			self._mirrorTimer.stop()
+		self["radioText"].setText("")
+		self["rtpText"].setText("")
+
+	def _mirrorNativeText(self):
+		rds = self._nativeRds
+		if rds is None:
+			return
+		for nativeName, localName in (("RadioText", "radioText"), ("RtpText", "rtpText")):
+			value = ""
+			try:
+				value = rds[nativeName].getText() or ""
+			except Exception:
+				pass
+			self[localName].setText(value)
 
 class WarderProgramInfo(Screen):
 	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
@@ -1659,11 +1692,12 @@ def serviceStartNow17(self):
 			if probe is not None:
 				if is_radio:
 					try:
-						probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())
+						probe.setNativeRds(rds)\n\t\t\t\t\t\tprobe.setService(self.session.nav.getCurrentlyPlayingServiceReference())
 					except Exception:
 						pass
 					probe.show()
 				else:
+					probe.stopMirror()
 					probe.hide()
 			if rds is not None:
 				if is_radio:
