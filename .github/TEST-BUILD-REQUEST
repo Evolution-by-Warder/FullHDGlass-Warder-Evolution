@@ -1,3 +1,4 @@
-TEST123
-Controlled Radio text compositing diagnostic. Only representative service-name backing changes; Prive4 typography, geometry, artwork, equalizer and TEST117 lifecycle remain locked.
-Source commit: 716225daaf3d8e59e213595561c3930a3137f589
+TEST123 corrected-1
+CI-only TEST123 regex guard correction after run 37131739044. Radio UI/runtime compositing diagnostic unchanged.
+Guard fix commit: 8bf4a7ce097238f06ab055b945bdcb56e0e0b02f
+Journal commit: e0d3f02ace5c738f08bd166ca0848826d2c02d5a
