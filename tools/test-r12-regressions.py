@@ -911,7 +911,11 @@ assert 'WarderRdsInfoDisplay' not in PLUGIN
 assert '<resolution xres="1920" yres="1080" bpp="32" />' in SKIN
 assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
 assert 'Format::%H:%M:%S' not in radio
-assert '"-q:v", "2", "-"' in WARDER_GRAB
+assert '"-q:v", "2", output' in WARDER_GRAB
+assert 'timeout=8' in WARDER_GRAB
+assert 'timeout=12' in WARDER_GRAB
+assert 'sys.stdout.buffer.write(image.read())' in WARDER_GRAB
+assert 'stdout=subprocess.DEVNULL' in WARDER_GRAB
 assert '"yuvj444p"' not in WARDER_GRAB
 
 
