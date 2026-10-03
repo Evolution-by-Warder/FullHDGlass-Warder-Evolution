@@ -1,4 +1,4 @@
-TEST144 CI correction rebuild 4
+TEST144 CI correction rebuild 5
 Source runtime: c476530d4de9bc703f6a9a16f35661dae62d957c
-Regression fix: f04510a8cb0c2ba04ac74d3259c920404811aafb
-Verified from new commit: RdsInfoDisplay regex uses single raw-regex escapes. Runtime/skin unchanged.
+Regression fix: 8de2cc3e3943022b1a9b3f7ba86aa3f56e1afe50
+Verified from new commit: artwork is forbidden in SKIN and required in WarderRadioArtworkDisplay PLUGIN path. Runtime/skin unchanged.
