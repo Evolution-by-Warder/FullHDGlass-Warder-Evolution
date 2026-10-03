@@ -795,7 +795,6 @@ for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderT
 
 
 # TEST81 isolated Radio/DAB artwork renderer: exact match only, no native-screen monkey patch.
-assert 'render="WarderRadioArtwork"' in SKIN
 # TEST81 requires the isolated exact-artwork renderer; TEST93 owns its current approved geometry.
 assert 'render="WarderRadioArtwork"' in SKIN
 assert 'class WarderRadioArtwork(Renderer):' in RADIO_ART
