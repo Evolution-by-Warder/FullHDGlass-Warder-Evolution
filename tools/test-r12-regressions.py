@@ -972,7 +972,7 @@ radio114 = service114.split('rds = getattr(self, "rds_display", None)', 1)[1].sp
 assert 'if is_radio:' in radio114 and 'rds.show()' in radio114
 assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio114
 
-# TEST115 temporary runtime-stack probe: one bounded receiver diagnostic file.
-assert '"/tmp/warder-test115-stack.txt"' in PLUGIN
-assert 'self._warderTest115Until = time1.time() + 12.0' in PLUGIN
-assert 'current=%s infobar_shown=%s top_allowed=%s top_shown=%s g17_shown=%s rds_shown=%s' in PLUGIN
+
+# TEST116: top-only overlay sits above FullHDGlass auxiliary runtime dialogs; ChannelSelection suppression remains mandatory.
+assert 'WarderRadioTopOverlay, zPosition=3000' in PLUGIN
+assert 'if "ChannelSelection" in name:' in PLUGIN

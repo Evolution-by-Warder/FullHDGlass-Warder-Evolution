@@ -1565,22 +1565,6 @@ def _warderRadioTopSync(self):
 	else:
 		if dialog.shown:
 			dialog.hide()
-	# TEST115 temporary lifecycle probe: sample the actual runtime stack only
-	# during the first 12 seconds after a Radio service-start.
-	until = getattr(self, "_warderTest115Until", 0)
-	if until and time1.time() <= until:
-		try:
-			cur = getattr(self.session, "current_dialog", None)
-			cur_name = cur.__class__.__name__ if cur is not None else "None"
-			g17 = getattr(self, "g17dialog", None)
-			rds = getattr(self, "rds_display", None)
-			with open("/tmp/warder-test115-stack.txt", "a") as out:
-				out.write("epoch=%.6f current=%s infobar_shown=%s top_allowed=%s top_shown=%s g17_shown=%s rds_shown=%s\\n" % (
-					time1.time(), cur_name, bool(getattr(self, "shown", False)), allowed,
-					bool(getattr(dialog, "shown", False)), bool(getattr(g17, "shown", False)),
-					bool(getattr(rds, "shown", False))))
-		except Exception:
-			pass
 
 def hdg17inicialize(self):
 	global FirstRun17
@@ -1610,7 +1594,7 @@ def hdg17inicialize(self):
 		# TEST114: separate top-only dialog. A short synchronizer keeps it off while
 		# ChannelSelectionRadio owns the foreground and shows it only with InfoBar.
 		try:
-			self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopOverlay, zPosition=1100)
+			self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopOverlay, zPosition=3000)
 		except Exception:
 			self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopOverlay)
 		self.warderRadioTopDialog.hide()
@@ -1724,15 +1708,6 @@ def serviceStartNow17(self):
 		try:
 			fields = refstr.split(":")
 			is_radio = len(fields) > 2 and fields[2].upper() == "A"
-			# TEST115 temporary probe window. Start clean for every Radio service-start.
-			if is_radio:
-				try:
-					os.unlink("/tmp/warder-test115-stack.txt")
-				except Exception:
-					pass
-				self._warderTest115Until = time1.time() + 12.0
-			else:
-				self._warderTest115Until = 0
 			try:
 				with open("/tmp/warder-radio-current", "w") as marker:
 					marker.write("A" if is_radio else "TV")
