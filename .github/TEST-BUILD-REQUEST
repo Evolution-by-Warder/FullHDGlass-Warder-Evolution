@@ -1,3 +1,3 @@
-TEST143 bounded Radio compositor backing
-Source/journal commit: e94c0f49bbcd75599fff55e92925125ef55b99b6
-Restore fullscreen RdsInfoDisplay transparency; keep transpBlack2 only behind locked top and bottom active glass regions to remove TEST142 fullscreen haze while testing typography sharpness.
+TEST144 root-cause Radio compositor fix
+Source/journal commit: c476530d4de9bc703f6a9a16f35661dae62d957c
+Remove fullscreen transparent RdsInfoDisplay and TEST143 masking bands. Native RDS becomes bounded opaque bottom metadata surface; TEST117 top rail remains in ExtraInfo17; exact artwork moves unchanged to bounded image-only z=-3 surface. Preserve absolute Radio geometry and InfoPanel depth.
