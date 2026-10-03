@@ -1531,6 +1531,15 @@ def SpecialScreenWindow17(self):
 
 def serviceStartNow17(self):
 	if isinstance(self,InfoBar):
+		# TEST90: service-start is the reliable TV/RADIO transition boundary on this image.
+		try:
+			ref = self.session.nav.getCurrentlyPlayingServiceReference()
+			refstr = ref.toString() if ref is not None else ""
+			stamp = time1.time()
+			with open("/tmp/warder-radio-service-events.log", "a") as out:
+				out.write("SERVICE_START epoch=%.6f ref=%s\\n" % (stamp, refstr))
+		except Exception:
+			pass
 		if self.shown:
 			if self.g17dialogTimer.isActive():
 				self.g17dialogTimer.stop()
