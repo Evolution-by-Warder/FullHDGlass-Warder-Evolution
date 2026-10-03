@@ -46,14 +46,16 @@ class WarderRadioSpectrum(Renderer):
         if self.instance is None:
             return
         self.instance.clear(gRGB(0, 0, 0, 255))
-        width, height = 250, 120
+        width, height = 350, 126
         gap = 4
-        barw = 9
+        barw = 15
         unit = 3
+        content_width = self._bars * barw + (self._bars - 1) * gap
+        left = max(0, (width - content_width) // 2)
         base = height - 5
         for i in range(self._bars):
             level = self._levels[i]
-            x = 4 + i * (barw + gap)
+            x = left + i * (barw + gap)
             for step in range(level):
                 y = base - ((step + 1) * unit)
                 self.instance.fillRect(eRect(x, y, barw, max(1, unit - 1)), self._color(step))
