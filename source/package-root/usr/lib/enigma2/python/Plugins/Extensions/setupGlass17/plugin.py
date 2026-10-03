@@ -1628,7 +1628,7 @@ def serviceStartNow17(self):
 			except Exception:
 				pass
 			rds = getattr(self, "rds_display", None)
-
+			if rds is not None:
 				if is_radio:
 					# TEST110: TEST109 proved native RDS is already shown while InfoBar is visible.
 					# Refresh the already-owned native screen after service start without hiding InfoBar.
