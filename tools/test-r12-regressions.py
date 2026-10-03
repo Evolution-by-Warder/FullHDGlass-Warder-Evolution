@@ -866,3 +866,8 @@ assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radi
 assert '<convert type="ServiceName">Provider</convert>' in radio
 assert '<convert type="g17ClockToText">Format::%H:%M:%S</convert>' in radio
 assert 'Format::%S' not in radio
+
+# TEST93 packaging must use only the approved fixed production master.
+assert 'RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"' in BUILD_TEST
+assert 'image.size != (1920, 1080)' in BUILD_TEST
+assert 'generate-warder-radio-background.py' not in BUILD_TEST

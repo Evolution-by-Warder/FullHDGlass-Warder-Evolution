@@ -47,12 +47,22 @@ trap 'rm -rf "$WORK"' EXIT HUP INT TERM
 mkdir -p "$WORK/CONTROL" "$OUTDIR"
 cp -a "$PAYLOAD"/. "$WORK"/
 
-# Warder Radio/DAB background generated from the approved visual direction.
-python3 "$ROOT/tools/generate-warder-radio-background.py" \
-    "$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.png"
+# TEST93: build radio.mvi only from the approved package-owned production master.
+# Never fall back to the retired synthetic generator: a missing/wrong master must fail CI.
+RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
+test -f "$RADIO_MASTER" || { echo "ERROR: approved TEST93 radio master missing: $RADIO_MASTER" >&2; exit 1; }
+python3 - "$RADIO_MASTER" <<'PY'
+from PIL import Image
+import sys
+path = sys.argv[1]
+with Image.open(path) as image:
+    if image.size != (1920, 1080):
+        raise SystemExit("ERROR: TEST93 radio master must be exactly 1920x1080, got %sx%s" % image.size)
+print("TEST93 radio master geometry: PASS 1920x1080")
+PY
 command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
 ffmpeg -y -loglevel error \
-    -i "$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.png" \
+    -i "$RADIO_MASTER" \
     -frames:v 1 -c:v mpeg2video -q:v 5 -f mpeg2video \
     "$WORK/usr/share/enigma2/hd_glass17/radio.mvi"
 
