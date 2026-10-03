@@ -1,3 +1,3 @@
-TEST138 radio composition coexistence
-Source/journal commit: d0f74e5db2ef28a2126f734a37a788b018722fc8
-Restore native RdsInfoDisplay zPosition=-2 after TEST136 physical layering regression. Reuse only the TEST135 physically proven scoped 720x42 composed service-name overlay; preserve TEST137 setup crash fix.
+TEST138 radio composition coexistence retry
+Source/journal commit: 8a40ea53fcb4e058bfe9974fef5cd8d9f671bf1f
+CI #330 exposed only stale TEST136 absence assertions. Remove those contradictory test-only guards; runtime TEST138 remains unchanged.
