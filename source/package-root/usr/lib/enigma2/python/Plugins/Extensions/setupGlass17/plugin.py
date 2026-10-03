@@ -2,13 +2,12 @@
 from Screens.Screen import Screen
 from Components.config import *
 from Components.Label import Label
-from Components.GUIComponent import GUIComponent
 from Components.ActionMap import ActionMap
 from Components.g17ConfigList import ConfigListScreen, ConfigList
 from Plugins.Plugin import PluginDescriptor
 from Screens.InfoBar import InfoBar
 from Components.ServiceEventTracker import ServiceEventTracker
-from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, RT_HALIGN_LEFT, RT_VALIGN_CENTER, eListboxPythonMultiContent, eListbox, gFont, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
+from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxServiceContent, eListbox, gFont, eRect, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
 import Screens.InfoBar
 from Tools.Transponder import ConvertToHumanReadable
 try:
@@ -3735,43 +3734,49 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
-class WarderRadioMultiContentProbe(Screen):
-	"""TEST132: native MultiContent TYPE_TEXT row without ServiceList state."""
+class WarderRadioServiceContentProbe(Screen):
+	"""TEST133: direct eListboxServiceContent with exactly the current service; no bouquet/root."""
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self.skin = '<screen name="WarderRadioMultiContentProbe" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder"><widget name="list" position="420,842" size="720,42" transparent="1" scrollbarMode="showNever" /></screen>'
-		self["list"] = WarderRadioMultiContentList()
+		self.skin = '<screen name="WarderRadioServiceContentProbe" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder"><widget name="list" position="420,842" size="720,42" transparent="1" scrollbarMode="showNever" /></screen>'
+		self["list"] = WarderRadioSingleServiceList()
 
 	def setService(self, ref):
-		name = ""
-		try:
-			info = eServiceCenter.getInstance().info(ref)
-			name = info and info.getName(ref) or ""
-		except Exception:
-			pass
-		self["list"].setText(name)
+		self["list"].setService(ref)
 
 
-class WarderRadioMultiContentList(GUIComponent):
+class WarderRadioSingleServiceList:
+	GUI_WIDGET = eListbox
 	def __init__(self):
-		GUIComponent.__init__(self)
-		self.list = eListboxPythonMultiContent()
-		self.list.setFont(0, gFont("Prive4", 33))
-		self.list.setItemHeight(42)
-		self.list.setList([])
+		self.instance = None
+		self.l = eListboxServiceContent()
+		self.l.setVisualMode(eListboxServiceContent.visModeComplex)
+		self.l.setItemHeight(42)
+		self.l.setElementPosition(eListboxServiceContent.celServiceName, eRect(0, 0, 720, 42))
+		self.l.setElementFont(eListboxServiceContent.celServiceName, gFont("Prive4", 33))
 
-	def setText(self, text):
-		self.list.setList([[(eListboxPythonMultiContent.TYPE_TEXT, 0, 0, 720, 42, 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, text)]])
-		if self.instance is not None:
-			self.instance.invalidate()
-
+	def execBegin(self):
+		pass
+	def execEnd(self):
+		pass
+	def onShow(self):
+		pass
+	def onHide(self):
+		pass
+	def applySkin(self, desktop, parent):
+		return True
+	def createWidget(self, parent):
+		return eListbox(parent)
 	def postWidgetCreate(self, instance):
-		instance.setContent(self.list)
-
+		self.instance = instance
+		instance.setContent(self.l)
 	def preWidgetRemove(self, instance):
 		instance.setContent(None)
-
-	GUI_WIDGET = eListbox
+		self.instance = None
+	def setService(self, ref):
+		self.l.setRoot(eServiceReference(), True)
+		self.l.addService(ref)
+		self.l.FillFinished()
 
 
 # Active ExtraInfo17 instance for live weather refresh after city change.

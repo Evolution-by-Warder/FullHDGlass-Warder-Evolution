@@ -1038,18 +1038,19 @@ assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
 # TEST126 physical FAIL: clean same-desktop eLabel remained visibly jagged.
-# TEST127/129/131 physical INCONCLUSIVE: synthetic ServiceList probes did not render usable service text.
-# TEST128/130 physical PASS: real ChannelSelectionRadio/ServiceListLegacy remains crisp.
-radio_cs132 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
-assert 'serviceNameFont="Prive4;33"' not in radio_cs132
-assert 'serviceItemHeight="42"' not in radio_cs132
+# TEST127/129/131/132 physical INCONCLUSIVE: synthetic probes did not render usable service text.
+# TEST128/130 physical PASS: real ChannelSelectionRadio/eListboxServiceContent remains crisp.
+radio_cs133 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
+assert 'serviceNameFont="Prive4;33"' not in radio_cs133
+assert 'serviceItemHeight="42"' not in radio_cs133
 
-# TEST132: native MultiContent TYPE_TEXT painter without ServiceList/root state.
-assert 'from Components.ServiceList import ServiceListLegacy' not in PLUGIN
-assert 'class WarderRadioMultiContentProbe(Screen):' in PLUGIN
-assert 'class WarderRadioMultiContentList(GUIComponent):' in PLUGIN
-assert 'eListboxPythonMultiContent.TYPE_TEXT' in PLUGIN
-assert 'self.list.setFont(0, gFont("Prive4", 33))' in PLUGIN
-assert 'self.list.setItemHeight(42)' in PLUGIN
-assert 'eServiceCenter.getInstance().info(ref)' in PLUGIN
-assert 'info.getName(ref)' in PLUGIN
+# TEST133: direct native eListboxServiceContent, populated with only current service.
+# No bouquet/root lookup; this is the exact native service painter used by ServiceListLegacy.
+assert 'class WarderRadioMultiContentProbe(Screen):' not in PLUGIN
+assert 'eListboxPythonMultiContent.TYPE_TEXT' not in PLUGIN
+assert 'class WarderRadioServiceContentProbe(Screen):' in PLUGIN
+assert 'self.l = eListboxServiceContent()' in PLUGIN
+assert 'self.l.setRoot(eServiceReference(), True)' in PLUGIN
+assert 'self.l.addService(ref)' in PLUGIN
+assert 'self.l.FillFinished()' in PLUGIN
+assert 'self.l.setElementFont(eListboxServiceContent.celServiceName, gFont("Prive4", 33))' in PLUGIN
