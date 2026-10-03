@@ -1628,38 +1628,12 @@ def serviceStartNow17(self):
 			except Exception:
 				pass
 			rds = getattr(self, "rds_display", None)
-			# TEST109 temporary lifecycle probe: log only, do not alter behaviour.
-			if is_radio:
-				probe = "/tmp/warder-test109-lifecycle.txt"
-				try:
-					with open(probe, "w") as out:
-						out.write("TEST109 RADIO LIFECYCLE PROBE\\n")
-				except Exception:
-					pass
-				def _test109log(event):
-					try:
-						with open(probe, "a") as out:
-							out.write("epoch=%.6f event=%s infobar_shown=%s rds_exists=%s rds_shown=%s ref=%s\\n" % (time1.time(), event, getattr(self, "shown", None), rds is not None, getattr(rds, "shown", None) if rds is not None else None, refstr))
-					except Exception:
-						pass
-				_test109log("SERVICE_START_BEFORE_RDS_SHOW")
-				if not getattr(self, "_warderTest109LifecycleHooks", False):
-					try:
-						self.onShow.append(lambda: _test109log("INFOBAR_ONSHOW"))
-						self.onHide.append(lambda: _test109log("INFOBAR_ONHIDE"))
-						if rds is not None:
-							rds.onShow.append(lambda: _test109log("RDS_ONSHOW"))
-							rds.onHide.append(lambda: _test109log("RDS_ONHIDE"))
-						self._warderTest109LifecycleHooks = True
-					except Exception:
-						_test109log("HOOK_ERROR")
-			if rds is not None:
+
 				if is_radio:
+					# TEST110: TEST109 proved native RDS is already shown while InfoBar is visible.
+					# Refresh the already-owned native screen after service start without hiding InfoBar.
+					rds.hide()
 					rds.show()
-					try:
-						_test109log("SERVICE_START_AFTER_RDS_SHOW")
-					except Exception:
-						pass
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
 						out.write("RADIO_OVERLAY_SHOW epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 				else:

@@ -957,8 +957,11 @@ assert 'raise AttributeError("OpenWebif grab module has no GrabScreenshot class"
 assert 'installed GrabScreenshot.render' in PLUGIN
 
 
-# TEST109 temporary Radio lifecycle probe: diagnostics only.
-service109 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
-for token in ('/tmp/warder-test109-lifecycle.txt', 'SERVICE_START_BEFORE_RDS_SHOW', 'SERVICE_START_AFTER_RDS_SHOW', 'INFOBAR_ONSHOW', 'INFOBAR_ONHIDE', 'RDS_ONSHOW', 'RDS_ONHIDE', '_warderTest109LifecycleHooks'):
-    assert token in service109, token
-assert 'rds.show()' in service109 and 'rds.hide()' in service109
+# TEST110: TEST109 proved native RDS is already shown while the normal InfoBar is visible.
+# Refresh only the already native-owned RDS screen at Radio service start; do not close InfoBar.
+service110 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
+assert '/tmp/warder-test109-lifecycle.txt' not in service110
+assert '_warderTest109LifecycleHooks' not in service110
+assert 'rds.hide()' in service110 and 'rds.show()' in service110
+assert 'if self.shown:' in service110
+assert 'self.hide()' not in service110
