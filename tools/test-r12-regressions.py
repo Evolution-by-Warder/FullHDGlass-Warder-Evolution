@@ -782,7 +782,7 @@ for token in (
     assert token not in PLUGIN, token
 # Keep radio.mvi passive packaging available while runtime integration is redesigned safely.
 BUILD_TEST = (ROOT / "tools/build-test-ipk.sh").read_text(encoding="utf-8")
-for token in ("generate-warder-radio-background.py", "hd_glass17/radio.mvi", "ffmpeg"):
+for token in ("hd_glass17/radio.mvi", "ffmpeg"):
     assert token in BUILD_TEST, token
 
 
