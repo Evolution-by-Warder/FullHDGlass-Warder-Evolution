@@ -1019,7 +1019,8 @@ assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33
 # TEST122: use the exact TV ChannelSelection font alias/sizes rather than a Radio alias. This isolates alias/size rasterization as the physical sharpness variable.
 radio122 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'font="WarderRadio;' not in radio122
-assert radio122.count('font="Prive4;33"') >= 5
+# TEST124 moves one Prive4;33 service-name field from XML into the native renderer.
+assert radio122.count('font="Prive4;33"') >= 4
 assert radio122.count('font="Prive4;25"') >= 2
 assert PLUGIN.count('font="Prive4;33"') >= 3
 
