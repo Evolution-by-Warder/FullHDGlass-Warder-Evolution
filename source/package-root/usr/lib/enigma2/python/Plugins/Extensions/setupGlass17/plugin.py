@@ -249,8 +249,8 @@ class WarderProgramInfo(Screen):
 	skin = """
 	<screen name="WarderProgramInfo" position="15,15" size="1890,1050" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
 		<eLabel position="18,18" size="1854,1014" backgroundColor="transpBlack3" zPosition="-5" />
-		<widget name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" />
+		<widget name="nowDate" position="30,12" size="390,42" font="WarderRadio;30" foregroundColor="#e5b243" transparent="1" />
+		<widget name="nowTime" position="435,12" size="210,42" font="WarderRadio;30" foregroundColor="#eeeeee" transparent="1" />
 		<eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
 		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
@@ -264,7 +264,7 @@ class WarderProgramInfo(Screen):
 		<widget name="countryLabel" position="50,626" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
 		<widget name="countryMeta" position="225,626" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
 		<widget name="ratingStars" position="1390,105" size="430,45" font="Prive4;36" halign="right" foregroundColor="#e53935" transparent="1" />
-		<widget name="ratingMeta" position="1390,152" size="430,36" font="Prive4;25" halign="right" foregroundColor="#dddddd" transparent="1" />
+		<widget name="ratingMeta" position="1390,152" size="430,36" font="WarderRadio;25" halign="right" foregroundColor="#dddddd" transparent="1" />
 		<widget name="when" position="580,170" size="760,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="short" position="580,235" size="1220,120" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
 		<eLabel position="25,405" size="1840,2" backgroundColor="#707070" />
@@ -2085,9 +2085,9 @@ def fromCfg():
 	# FullHDGlass runtime layer that is visible for the lifetime of the normal InfoBar.
 	tmp = setSideECM(tmp)
 	warder_radio_top = """
-		<widget name="warderRadioDate" position="62,22" size="610,66" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" />
-		<widget name="warderRadioTime" position="745,22" size="340,66" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
-		<widget name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
+		<widget name="warderRadioDate" position="62,22" size="610,66" font="WarderRadio;30" valign="center" foregroundColor="#e5b243" transparent="1" />
+		<widget name="warderRadioTime" position="745,22" size="340,66" font="WarderRadio;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
+		<widget name="warderRadioBrand" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
 	"""
 	return tmp.replace("</screen>", warder_radio_top + "</screen>")
 
