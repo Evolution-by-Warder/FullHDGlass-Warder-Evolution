@@ -116,16 +116,9 @@ try:
 	ENA_POSTER = True
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST95: OpenWebif's native grab cannot see the radio.mvi decoder plane on the
-# GigaBlue Quad 4K Pro. Redirect only OpenWebif's GRAB_PATH to a Warder wrapper;
-# the wrapper passes every non-radio/special capture straight to /usr/bin/grab.
-WARDER_GRAB_PATH = PLUGINPATH + "warder-grab"
-try:
-	from Plugins.Extensions.OpenWebif.controllers.models import grab as _warderOpenWebifGrab
-	if os.path.isfile(WARDER_GRAB_PATH):
-		_warderOpenWebifGrab.GRAB_PATH = WARDER_GRAB_PATH
-except Exception:
-	pass
+# TEST99 recovery: do not monkey-patch OpenWebif GRAB_PATH.
+# Receiver testing proved the process-global redirect can break screenshots
+# for both TV and Radio. OpenWebif therefore remains fully native/authoritative.
 config.plugins.setupGlass17 = ConfigSubsection()
 config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
 CH_LOG = "AllAboutNew"
