@@ -834,3 +834,7 @@ assert '_titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(ti
 # TEST88: fast RADIO-entry acquisition, then lighter steady polling.
 assert "self._timer.start(100, True)" in RADIO_ART
 assert "self._timer.start(250 if not key else 750, True)" in RADIO_ART
+
+# TEST89: startup latency tracing must identify renderer start, service, RadioText, song and request stages.
+for token in ("START t=0.000", "SERVICE t=%.3f", "RADIOTEXT t=%.3f", "SONG t=%.3f", "REQUEST t=%.3f"):
+    assert token in RADIO_ART, token
