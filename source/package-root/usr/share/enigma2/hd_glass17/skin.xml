@@ -1598,7 +1598,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="global.CurrentTime" render="Label" position="745,22" size="340,66" font="WarderRadio;38" valign="center" foregroundColor="#eeeeee" transparent="1" zPosition="2">
       <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
-    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size="580,66" font="WarderRadio;30" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
 
     <!-- Approved master center frame is not exactly square. Keep album artwork square and centered inside it: 648x648. -->
     <!-- TEST81 exact-artwork renderer remains isolated; hidden on no exact match, preserving native DAB SLS fallback. -->
