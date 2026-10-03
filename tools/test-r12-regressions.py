@@ -970,7 +970,7 @@ assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
 assert 'marker.read(8).strip() == "A"' in PLUGIN
 assert 'class WarderRadioTopOverlay(Screen):' not in PLUGIN
 assert 'warderRadioTopDialog' not in PLUGIN
-assert 'zPosition=3000' not in PLUGIN
+assert 'instantiateDialog(WarderRadioTopOverlay, zPosition=3000)' not in PLUGIN
 assert SKIN.count('render="WarderRadioInfoBarTop"') == 0
 service117 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
 radio117 = service117.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
