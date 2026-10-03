@@ -1,3 +1,3 @@
-TEST104-retry2
-parent=96a5049f872de0748feef3ac1ad0832d2dd5cb2b
-purpose=verified-radio-http-compositor-source-fix
+TEST104-clean
+parent=965c6e8e695a702997b645025619391236463616
+purpose=atomic-clean-radio-http-compositor-build
