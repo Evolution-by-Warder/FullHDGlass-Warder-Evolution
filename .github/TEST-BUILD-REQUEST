@@ -1,3 +1,3 @@
-TEST111
-Test Radio screen z-order over normal InfoBar; remove failed TEST110 hide/show refresh; preserve native RDS ownership, TEST106 WebIF PASS, exact artwork and DAB/SLS fallback.
-Source commit: 8fffb72655ac3053e23267953f2a6474bd7212f1
+TEST111-CI2
+Rebuild TEST111 after aligning the stale RDS z-order regression guard with the intentional zPosition=1 change; runtime intent unchanged.
+Source commit: e4360d5aa0b9ab0c65168c2696b25a3c77cd183b
