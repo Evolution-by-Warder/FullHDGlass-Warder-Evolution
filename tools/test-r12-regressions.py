@@ -321,6 +321,10 @@ for token in (
 ):
     assert token in PLUGIN, token
 
+# TEST92: radio evStart re-shows the existing native-owned RDS dialog without monkey-patching it.
+for token in ('fields[2].upper() == "A"', 'getattr(self, "rds_display", None)', 'rds.show()', 'RADIO_OVERLAY_SHOW epoch=%.6f'):
+    assert token in PLUGIN, token
+
 
 # Setup/config and updater parity: user configuration remains Enigma2-owned,
 # restore/save paths stay available, and updates use package-manager argv.
