@@ -46,28 +46,33 @@ if "-r" in args:
 
 fd, osd = tempfile.mkstemp(prefix="warder-radio-osd-", suffix=".png", dir="/tmp")
 os.close(fd)
+fd, output = tempfile.mkstemp(prefix="warder-radio-out-", suffix="." + fmt, dir="/tmp")
+os.close(fd)
 try:
     rc = subprocess.call([REAL_GRAB, "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
-    if rc != 0:
+    if rc != 0 or os.path.getsize(osd) == 0:
         passthrough()
     filt = "[0:v][1:v]overlay=0:0:format=auto"
     if width and width > 0:
         filt += ",scale=%d:-2" % width
-    cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error",
-           "-i", MASTER, "-i", osd, "-filter_complex", filt, "-frames:v", "1"]
+    cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", MASTER, "-i", osd, "-filter_complex", filt, "-frames:v", "1"]
     if fmt == "png":
-        cmd += ["-f", "image2pipe", "-vcodec", "png", "-"]
+        cmd += ["-vcodec", "png", output]
     elif fmt == "jpg":
-        # OpenWebif requests JPEG quality 95. ffmpeg q=2 is the high-quality
-        # single-frame equivalent used only for this radio fallback.
-        cmd += ["-f", "image2pipe", "-vcodec", "mjpeg", "-q:v", "2", "-"]
+        cmd += ["-vcodec", "mjpeg", "-q:v", "2", output]
     else:
-        cmd += ["-f", "image2pipe", "-vcodec", "bmp", "-"]
-    rc = subprocess.call(cmd)
-    if rc != 0:
-        sys.exit(rc)
+        cmd += ["-vcodec", "bmp", output]
+    rc = subprocess.call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=12)
+    if rc != 0 or os.path.getsize(output) == 0:
+        passthrough()
+    with open(output, "rb") as image:
+        sys.stdout.buffer.write(image.read())
+    sys.stdout.buffer.flush()
+except (subprocess.TimeoutExpired, OSError):
+    passthrough()
 finally:
-    try:
-        os.unlink(osd)
-    except Exception:
-        pass
+    for path in (osd, output):
+        try:
+            os.unlink(path)
+        except Exception:
+            pass
