@@ -116,11 +116,10 @@ try:
 	ENA_POSTER = True
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST103: preserve native OpenWebif for TV/explicit modes; Radio All is completed at HTTP resource level.
+# TEST104: preserve native OpenWebif for TV/explicit modes; Radio All is handled at HTTP resource level.
 try:
 	from Plugins.Extensions.OpenWebif.controllers.models import grab as _warderOwiGrab
 	from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as _warderOwiGetUrlArg
-	from twisted.web import server as _warderTwistedServer
 	_warderNativeGrabRender = _warderOwiGrab.grabScreenshot.render
 	def _warderRadioGrabRender(self, request):
 		is_radio = False
@@ -132,18 +131,24 @@ try:
 		mode = _warderOwiGetUrlArg(request, "mode")
 		if not is_radio or mode not in (None, "", "all"):
 			return _warderNativeGrabRender(self, request)
-		fmt = _warderOwiGetUrlArg(request, "format", "jpg")
+		fmt = _warderOwiGetUrlArg(request, "format") or "jpg"
 		if fmt not in ("jpg", "png", "bmp"):
 			fmt = "bmp"
 		master = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
-		osd = "/tmp/warder-radio-http-osd.png"
-		out = "/tmp/warder-radio-http." + fmt
+		fd, osd = tempfile.mkstemp(prefix="warder-radio-http-osd-", suffix=".png", dir="/tmp")
+		os.close(fd)
+		fd, out = tempfile.mkstemp(prefix="warder-radio-http-out-", suffix="." + fmt, dir="/tmp")
+		os.close(fd)
 		try:
 			subprocess.check_call(["/usr/bin/grab", "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
-			ffmpeg = "/usr/bin/ffmpeg" if os.path.isfile("/usr/bin/ffmpeg") else "ffmpeg"\n\t\t\tcmd = [ffmpeg, "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
-			if fmt == "jpg": cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
-			elif fmt == "png": cmd += ["-vcodec", "png", out]
-			else: cmd += ["-vcodec", "bmp", out]
+			ffmpeg = "/usr/bin/ffmpeg" if os.path.isfile("/usr/bin/ffmpeg") else "ffmpeg"
+			cmd = [ffmpeg, "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
+			if fmt == "jpg":
+				cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
+			elif fmt == "png":
+				cmd += ["-vcodec", "png", out]
+			else:
+				cmd += ["-vcodec", "bmp", out]
 			subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=12)
 			with open(out, "rb") as image:
 				payload = image.read()
@@ -152,12 +157,26 @@ try:
 			request.setHeader("Content-Type", "image/" + ("jpeg" if fmt == "jpg" else fmt))
 			request.setHeader("Content-Length", str(len(payload)))
 			return payload
-		except Exception:
-			return _warderNativeGrabRender(self, request)
+		except Exception as error:
+			try:
+				with open("/tmp/warder-radio-webif-error.log", "a") as log:
+					log.write("%s: %r\\n" % (time1.strftime("%Y-%m-%d %H:%M:%S"), error))
+			except Exception:
+				pass
+			try:
+				with open(master, "rb") as image:
+					payload = image.read()
+				request.setHeader("Content-Type", "image/jpeg")
+				request.setHeader("Content-Length", str(len(payload)))
+				return payload
+			except Exception:
+				return _warderNativeGrabRender(self, request)
 		finally:
 			for path in (osd, out):
-				try: os.unlink(path)
-				except Exception: pass
+				try:
+					os.unlink(path)
+				except Exception:
+					pass
 	_warderOwiGrab.grabScreenshot.render = _warderRadioGrabRender
 except Exception:
 	pass
