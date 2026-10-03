@@ -587,3 +587,6 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 
 
 - TEST136 CI #326 failed only at the historical TEST112 regression assertion that hard-coded RdsInfoDisplay zPosition=-2. All earlier preflight gates passed. This assertion conflicts directly with the single TEST136 diagnostic variable, so it is updated to require zPosition=0 while preserving the separate transparent-background/DAB-SLS guard. No runtime/source behavior is changed by this CI-only correction.
+
+
+- TEST136 CI #327 failed only because the newly added TEST136 screen-extraction regex was double-escaped and matched literal backslashes. Runtime source remains unchanged. Correct the regression to the established RdsInfoDisplay extraction form and retry CI.

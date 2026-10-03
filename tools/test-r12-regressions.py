@@ -1046,7 +1046,7 @@ assert 'serviceNameFont="Prive4;33"' not in radio_cs133
 assert 'serviceItemHeight="42"' not in radio_cs133
 
 # TEST135 PHYSICAL PASS DIAGNOSTIC; TEST136 tests native RdsInfoDisplay compositor depth.
-radio136 = re.search(r'<screen\\b[^>]*name="RdsInfoDisplay"[\\s\\S]*?</screen>', SKIN).group(0)
+radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="0" backgroundColor="transparent"' in radio136
 assert "WarderRadioCompositionProbe" not in PLUGIN
 assert "warderRadioCompositionProbe" not in PLUGIN
