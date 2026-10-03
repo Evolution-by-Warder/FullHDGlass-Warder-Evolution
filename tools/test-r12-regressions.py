@@ -955,3 +955,10 @@ assert 'mode not in (None, "", "all")' in PLUGIN
 # TEST106: receiver probe proves /grab uses class GrabScreenshot.
 assert 'raise AttributeError("OpenWebif grab module has no GrabScreenshot class")' in PLUGIN
 assert 'installed GrabScreenshot.render' in PLUGIN
+
+
+# TEST109 temporary Radio lifecycle probe: diagnostics only.
+service109 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
+for token in ('/tmp/warder-test109-lifecycle.txt', 'SERVICE_START_BEFORE_RDS_SHOW', 'SERVICE_START_AFTER_RDS_SHOW', 'INFOBAR_ONSHOW', 'INFOBAR_ONHIDE', 'RDS_ONSHOW', 'RDS_ONHIDE', '_warderTest109LifecycleHooks'):
+    assert token in service109, token
+assert 'rds.show()' in service109 and 'rds.hide()' in service109
