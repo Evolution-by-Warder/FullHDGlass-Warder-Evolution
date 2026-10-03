@@ -847,3 +847,18 @@ assert "_warderRadioButtonTrace" in PLUGIN
 assert "InfoBar.showRadioButton = _warderRadioButtonTrace" in PLUGIN
 assert "RADIO_BUTTON epoch=%.6f" in PLUGIN
 assert "/tmp/warder-radio-start" in PLUGIN and "/tmp/warder-radio-start" in RADIO_ART
+
+# TEST93 Radio visual contract: keep the lightweight decorative spectrum isolated,
+# preserve real Provider data below it, and keep the clock as one HH:MM:SS field.
+SPECTRUM = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioSpectrum.py").read_text(encoding="utf-8")
+assert "GUI_WIDGET = eCanvas" in SPECTRUM
+assert "self._timer.start(200)" in SPECTRUM
+assert "self._timer.stop()" in SPECTRUM
+assert "subprocess" not in SPECTRUM
+assert "random" not in SPECTRUM
+radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
+assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
+assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
+assert '<convert type="ServiceName">Provider</convert>' in radio
+assert '<convert type="g17ClockToText">Format::%H:%M:%S</convert>' in radio
+assert 'Format::%S' not in radio
