@@ -1,4 +1,3 @@
-Warder TEST build request
-Candidate: 1.0.5-test93
-Revision: 251
-Purpose: Re-run TEST93 after correcting the spectrum regression guard false positive on documentation comments; runtime, approved SHA-pinned radio master, locked layout, TEST92 overlay recovery and exact-artwork behavior are unchanged.
+TEST94
+parent=0b1dccc1c55e37e7452c89d84d57944d67be715d
+purpose=radio-to-tv-rds-lifecycle-cleanup
