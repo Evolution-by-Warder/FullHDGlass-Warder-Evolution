@@ -47,7 +47,7 @@ class WarderRadioArtwork(Renderer):
                 self._diagStart = buttonStart
         except Exception:
             pass
-        self._diag("RENDERER_START t=%.3f" % self._elapsed())
+        self._diag("RENDERER_START epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
         # Fast acquisition on RADIO entry; settle to a light poll once metadata is present.
         self._timer.start(100, True)
 
@@ -224,15 +224,15 @@ class WarderRadioArtwork(Renderer):
             service = None
         if service is not None and not self._diagService:
             self._diagService = True
-            self._diag("SERVICE t=%.3f" % self._elapsed())
+            self._diag("SERVICE epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
         radioText = self._radioText()
         if radioText and not self._diagRadio:
             self._diagRadio = True
-            self._diag("RADIOTEXT t=%.3f text=%r" % (self._elapsed(), radioText))
+            self._diag("RADIOTEXT epoch=%.6f t=%.3f text=%r" % (time.time(), self._elapsed(), radioText))
         artist, title = self._split(radioText)
         if artist and title and not self._diagSong:
             self._diagSong = True
-            self._diag("SONG t=%.3f artist=%r title=%r" % (self._elapsed(), artist, title))
+            self._diag("SONG epoch=%.6f t=%.3f artist=%r title=%r" % (time.time(), self._elapsed(), artist, title))
         key = self._norm(artist) + "|" + self._norm(title) if artist and title else ""
         if key != self._key:
             self._key = key
@@ -242,6 +242,6 @@ class WarderRadioArtwork(Renderer):
             self._requestedKey = ""
         elif not self._busy and key != self._requestedKey:
             self._requestedKey = key
-            self._diag("REQUEST t=%.3f artist=%r title=%r" % (self._elapsed(), artist, title))
+            self._diag("REQUEST epoch=%.6f t=%.3f artist=%r title=%r" % (time.time(), self._elapsed(), artist, title))
             self._request(artist, title, key)
         self._timer.start(250 if not key else 750, True)
