@@ -808,7 +808,8 @@ for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderT
 
 # TEST81 isolated Radio/DAB artwork renderer: exact match only, no native-screen monkey patch.
 # TEST81 requires the isolated exact-artwork renderer; TEST93 owns its current approved geometry.
-assert 'render="WarderRadioArtwork"' in SKIN
+assert 'render="WarderRadioArtwork"' not in SKIN
+assert 'render="WarderRadioArtwork" position="0,0" size="648,648"' in PLUGIN
 assert 'class WarderRadioArtwork(Renderer):' in RADIO_ART
 assert 'iRdsDecoder.RadioText' in RADIO_ART
 assert 'threading.Thread' in RADIO_ART and 'timeout=2.5' in RADIO_ART

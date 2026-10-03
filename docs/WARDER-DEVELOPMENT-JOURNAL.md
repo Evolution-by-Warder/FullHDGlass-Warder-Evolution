@@ -631,3 +631,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST144 CI correction after Actions #344: audited the later Radio regression section in one batch. TEST80 now requires native RDS bottom metadata and explicitly excludes the TEST117 top-rail clock/brand; all 2 later stale clock-in-RDS guards were inverted. TEST117 ExtraInfo17 top-rail guards remain intact. No runtime/skin/design change. Receiver PASS pending.
 
 - TEST144 CI #345 correction: fixed accidental double escaping in the TEST80/TEST144 RdsInfoDisplay regex. Test-only; runtime/skin unchanged. Receiver PASS pending.
+
+- TEST144 CI #346 correction: retired the stale TEST81 assertion requiring WarderRadioArtwork in skin.xml. TEST144 intentionally owns artwork in the separate bounded WarderRadioArtworkDisplay declared in plugin.py; regression now requires absence from SKIN and presence in PLUGIN. Existing later TEST144 geometry/display guards remain. Test-only change; runtime/skin unchanged. Receiver PASS pending.
