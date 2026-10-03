@@ -1052,8 +1052,6 @@ assert "class WarderRadioCompositionProbe(Screen):" in PLUGIN
 assert 'position="420,842" size="720,42" backgroundColor="transpBlack2"' in PLUGIN
 assert "probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())" in PLUGIN
 assert "probe.show()" in PLUGIN and "probe.hide()" in PLUGIN
-assert "WarderRadioCompositionProbe" not in PLUGIN
-assert "warderRadioCompositionProbe" not in PLUGIN
 assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio136
 assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio136
 assert 'name="RtpText" position="420,955" size="1000,38" font="Prive4;25"' in radio136
