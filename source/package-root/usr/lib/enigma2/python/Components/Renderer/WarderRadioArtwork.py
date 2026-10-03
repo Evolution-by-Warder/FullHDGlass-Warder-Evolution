@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import threading
+import time
 import unicodedata
 try:
     from urllib.parse import quote
@@ -30,6 +31,10 @@ class WarderRadioArtwork(Renderer):
         self._picload = None
         self._timer = eTimer()
         self._timer.callback.append(self._poll)
+        self._diagStart = None
+        self._diagService = False
+        self._diagRadio = False
+        self._diagSong = False
 
     def postWidgetCreate(self, instance):
         Renderer.postWidgetCreate(self, instance)
@@ -106,6 +111,9 @@ class WarderRadioArtwork(Renderer):
         except Exception:
             pass
         return path
+
+    def _elapsed(self):
+        return max(0.0, time.time() - self._diagStart) if self._diagStart is not None else 0.0
 
     @staticmethod
     def _diag(message):
@@ -199,7 +207,22 @@ class WarderRadioArtwork(Renderer):
             self._result = None
             if key == self._key:
                 self._showPath(path)
-        artist, title = self._split(self._radioText())
+        try:
+            nav = NavigationInstance.instance
+            service = nav and nav.getCurrentService()
+        except Exception:
+            service = None
+        if service is not None and not self._diagService:
+            self._diagService = True
+            self._diag("SERVICE t=%.3f" % self._elapsed())
+        radioText = self._radioText()
+        if radioText and not self._diagRadio:
+            self._diagRadio = True
+            self._diag("RADIOTEXT t=%.3f text=%r" % (self._elapsed(), radioText))
+        artist, title = self._split(radioText)
+        if artist and title and not self._diagSong:
+            self._diagSong = True
+            self._diag("SONG t=%.3f artist=%r title=%r" % (self._elapsed(), artist, title))
         key = self._norm(artist) + "|" + self._norm(title) if artist and title else ""
         if key != self._key:
             self._key = key
@@ -209,5 +232,6 @@ class WarderRadioArtwork(Renderer):
             self._requestedKey = ""
         elif not self._busy and key != self._requestedKey:
             self._requestedKey = key
+            self._diag("REQUEST t=%.3f artist=%r title=%r" % (self._elapsed(), artist, title))
             self._request(artist, title, key)
         self._timer.start(250 if not key else 750, True)
