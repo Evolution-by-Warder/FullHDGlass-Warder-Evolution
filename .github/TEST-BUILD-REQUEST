@@ -1,3 +1,3 @@
-TEST107
-Build one-test-only Radio startup timing probe; remove after receiver measurement.
-Source commit: 7a57bac172e6dd7ce66197f5e4bf943ec2222592
+TEST108
+Build production Radio state after removing temporary TEST107 timing probe; preserve TEST106 WebIF PASS and exact artwork policy.
+Source commit: 8ffc5323f7232ce39a6d03a8ade481b5caf0214d
