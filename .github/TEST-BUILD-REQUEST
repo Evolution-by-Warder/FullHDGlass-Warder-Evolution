@@ -1,3 +1,3 @@
-TEST124 corrected-3
-CI-only alignment of TEST122 XML font-count guard with TEST124 native Prive4;33 renderer. Runtime/UI unchanged.
-Guard+journal commit: 9fca47550d9be8104323b4dcdbfa89dcd9ec737a
+TEST124 corrected-4
+CI-only correction of TEST124 renderer guard path to source/package-root. Runtime/UI unchanged.
+Guard+journal commit: 85b1349d346adde6c36bcd1e2f68b4fb35f65cc5
