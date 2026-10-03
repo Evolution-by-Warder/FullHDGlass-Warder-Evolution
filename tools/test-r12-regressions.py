@@ -441,7 +441,7 @@ for n in range(1, 10):
 # TEST141 diagnostic: native RdsInfoDisplay deliberately uses an opaque backing to isolate
 # whether transparent-surface composition causes the receiver typography blur.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'backgroundColor="transparent"' in rds
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' in rds
 assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' in rds
 assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' in rds
 # Native RDS depth remains receiver-proven zPosition=-2.
