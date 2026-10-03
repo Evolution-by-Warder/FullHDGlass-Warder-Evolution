@@ -1,3 +1,3 @@
-TEST141 retry after stale regression correction
-Source/journal commit: d87dee808b493ab62786aa8eb976d0472b381197
-Runtime unchanged from TEST141; only stale regression expectation updated from transparent to transpBlack2 after CI #337.
+TEST141 retry after TEST79 regression alignment
+Source/journal commit: b65ae283c52534e0af88cbced5a0c723bb6d53e7
+Runtime unchanged; second legacy transparent backing expectation aligned to intentional TEST141 transpBlack2 diagnostic.
