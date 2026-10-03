@@ -39,7 +39,17 @@ class WarderRadioArtwork(Renderer):
     def postWidgetCreate(self, instance):
         Renderer.postWidgetCreate(self, instance)
         instance.hide()
-        # Fast acquisition on RADIO entry; settle to a light poll once metadata is present.\n        self._timer.start(100, True)
+        self._diagStart = time.time()
+        try:
+            with open("/tmp/warder-radio-start", "r") as src:
+                buttonStart = float(src.read().strip())
+            if 0.0 <= self._diagStart - buttonStart <= 30.0:
+                self._diagStart = buttonStart
+        except Exception:
+            pass
+        self._diag("RENDERER_START t=%.3f" % self._elapsed())
+        # Fast acquisition on RADIO entry; settle to a light poll once metadata is present.
+        self._timer.start(100, True)
 
     def preWidgetRemove(self, instance):
         try:
