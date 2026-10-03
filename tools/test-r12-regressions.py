@@ -773,10 +773,10 @@ assert 'self._warderProgramInfoOpen = False' in PLUGIN
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"'):
     assert token in rds, token
-# TEST141 changes only the native backing for the compositor A/B diagnostic.
-assert 'backgroundColor="transparent"' in rds
-assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' in rds
-assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' in rds
+# TEST144 root-cause compositor contract: native RDS is bounded/opaque, never fullscreen transparent.
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' in rds
+assert '<eLabel position="27,15" size="1837,86"' not in rds
+assert '<eLabel position="27,813" size="1837,222"' not in rds
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
     assert token not in rds, token
 for token in ('WarderRdsInfoDisplay', '_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged', 'WarderRadio init'):
@@ -872,8 +872,10 @@ assert "subprocess." not in SPECTRUM_CODE
 assert "import random" not in SPECTRUM_CODE
 assert "random." not in SPECTRUM_CODE
 radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
-assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
+assert 'class WarderRadioArtworkDisplay(Screen):' in PLUGIN
+assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent"' in PLUGIN
+assert 'render="WarderRadioArtwork" position="0,0" size="648,648"' in PLUGIN
+assert 'render="WarderRadioSpectrum" position="1443,25" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
 assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
 assert 'Format::%S' not in radio
@@ -944,13 +946,13 @@ SPECTRUM = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioSpectru
 assert "def postWidgetCreate(self, instance):" in SPECTRUM
 assert "def preWidgetRemove(self, instance):" in SPECTRUM
 assert 'render="WarderRadioSpectrum"' in radio
-assert 'position="1470,838" size="350,126"' in radio
+assert 'position="1443,25" size="350,126"' in radio
 
 # TEST98: right-bottom equalizer has a receiver-safe visible baseline inside the locked field.
 assert radio.count('backgroundColor="#1473ff"') >= 2
 assert radio.count('backgroundColor="#1ecdff"') >= 2
-assert 'position="1485,918" size="14,36"' in radio
-assert 'position="1808,896" size="14,58"' in radio
+assert 'position="1458,105" size="14,36"' in radio
+assert 'position="1781,83" size="14,58"' in radio
 
 # TEST105 lazy OpenWebif hook installation / diagnostics
 assert 'def _warderInstallOpenWebifGrabHook():' in PLUGIN
@@ -991,12 +993,9 @@ assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
 # and ExtraInfo17 so the temporary InfoBar phase and final Radio phase match exactly.
 radio118 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in (
-    'position="62,22" size="610,66" font="Prive4;33" valign="center"',
-    'position="745,22" size="340,66" font="Prive4;33" valign="center"',
-    'position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right"',
-    'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center"',
-    'name="RtpText" position="420,955" size="1000,38" font="Prive4;25" valign="center"',
-    'position="1470,978" size="350,38" font="Prive4;25" valign="center"',
+    'name="RadioText" position="393,82" size="1000,52" font="Prive4;33" valign="center"',
+    'name="RtpText" position="393,142" size="1000,38" font="Prive4;25" valign="center"',
+    'position="1443,165" size="350,38" font="Prive4;25" valign="center"',
 ):
     assert token in radio118, token
 for token in (
@@ -1026,7 +1025,7 @@ assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33
 # TEST122: use the exact TV ChannelSelection font alias/sizes rather than a Radio alias. This isolates alias/size rasterization as the physical sharpness variable.
 radio122 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'font="WarderRadio;' not in radio122
-assert radio122.count('font="Prive4;33"') >= 5
+assert radio122.count('font="Prive4;33"') >= 2
 assert radio122.count('font="Prive4;25"') >= 2
 assert PLUGIN.count('font="Prive4;33"') >= 3
 
@@ -1034,13 +1033,13 @@ assert PLUGIN.count('font="Prive4;33"') >= 3
 # TEST123 historical opaque service-name assertion retired by TEST124 native painter diagnostic.
 # Keep the unchanged RadioText control locked; TEST124 below owns the service-name path.
 radio123 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
+assert 'name="RadioText" position="393,82" size="1000,52" font="Prive4;33" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1"' in radio123
 
 
 # TEST124 physical FAIL: native one-row service-list diagnostic did not improve sharpness and is retired.
 # TEST125 physical result: normal InfoBar probe was not visible in the persistent Radio state, proving it is not the active comparison layer.
 radio125 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio125
+assert 'render="Label" position="393,29" size="720,42" font="Prive4;33"' in radio125
 assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
@@ -1053,16 +1052,23 @@ assert 'serviceItemHeight="42"' not in radio_cs133
 
 # TEST135 PHYSICAL PASS DIAGNOSTIC; TEST138 restores native depth and reuses the proven scoped composition.
 radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent"' in radio136
-assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' in radio136
-assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' in radio136
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' in radio136
+assert '<eLabel position="27,15" size="1837,86"' not in radio136
+assert '<eLabel position="27,813" size="1837,222"' not in radio136
 # TEST142: TEST141 physically proved native opaque RDS composition; retire the diagnostic overlay completely.
 assert "class WarderRadioCompositionProbe(Screen):" not in PLUGIN
 assert "warderRadioCompositionProbe" not in PLUGIN
-assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in radio136
-assert 'name="RadioText" position="420,895" size="1000,52" font="Prive4;33"' in radio136
-assert 'name="RtpText" position="420,955" size="1000,38" font="Prive4;25"' in radio136
+assert 'render="Label" position="393,29" size="720,42" font="Prive4;33"' in radio136
+assert 'name="RadioText" position="393,82" size="1000,52" font="Prive4;33"' in radio136
+assert 'name="RtpText" position="393,142" size="1000,38" font="Prive4;25"' in radio136
 
 # TEST137: setupGlass17 thumbList/2 require the native MultiContent listbox class at runtime.
 assert "eListboxPythonMultiContent, eListboxServiceContent" in PLUGIN
 assert "MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)" in PLUGIN
+
+# TEST144: eliminate the fullscreen transparent RDS compositor instead of covering it.
+assert 'class WarderRadioArtworkDisplay(Screen):' in PLUGIN
+assert 'self.warderRadioArtworkDialog = self.session.instantiateDialog(WarderRadioArtworkDisplay)' in PLUGIN
+assert 'art.show()' in service94 and 'art.hide()' in service94
+assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent"' in PLUGIN
+assert '<eLabel position="27,15" size="1837,86"' not in radio136

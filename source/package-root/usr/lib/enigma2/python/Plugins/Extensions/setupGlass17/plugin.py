@@ -1518,6 +1518,8 @@ def hdg17inicialize(self):
 			self.g17dialog.shown = False
 		else:
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
+		self.warderRadioArtworkDialog = self.session.instantiateDialog(WarderRadioArtworkDisplay)
+		self.warderRadioArtworkDialog.hide()
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
 				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173,
@@ -1630,8 +1632,11 @@ def serviceStartNow17(self):
 			rds = getattr(self, "rds_display", None)
 			if rds is not None:
 				if is_radio:
-					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
+					# TEST144: native RDS is now a bounded opaque metadata surface; artwork is image-only behind it.
 					rds.show()
+					art = getattr(self, "warderRadioArtworkDialog", None)
+					if art is not None:
+						art.show()
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
 						out.write("RADIO_OVERLAY_SHOW epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 				else:
@@ -1639,6 +1644,9 @@ def serviceStartNow17(self):
 					# must not survive RADIO -> TV and bind its CurrentService widgets
 					# to the TV service after the normal TV infobar closes.
 					rds.hide()
+					art = getattr(self, "warderRadioArtworkDialog", None)
+					if art is not None:
+						art.hide()
 					with open("/tmp/warder-radio-service-events.log", "a") as out:
 						out.write("RADIO_OVERLAY_HIDE epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 		except Exception:
@@ -3723,6 +3731,16 @@ class SpecialScreen(Screen):
 		if not self.__sleep:
 			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
 ##########################################################################################################################
+# TEST144: exact Radio artwork gets its own bounded image-only surface behind native RDS/InfoPanel.
+# This is not a masking layer: it has no backing and contains no text.
+class WarderRadioArtworkDisplay(Screen):
+	def __init__(self, session):
+		self.skin = """
+		<screen name="WarderRadioArtworkDisplay" position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent" flags="wfNoBorder">
+			<widget source="session.CurrentService" render="WarderRadioArtwork" position="0,0" size="648,648" zPosition="0" alphatest="blend" />
+		</screen>"""
+		Screen.__init__(self, session)
+
 # Active ExtraInfo17 instance for live weather refresh after city change.
 G17_EXTRAINFO_INSTANCE = None
 
