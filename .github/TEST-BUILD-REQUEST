@@ -1,3 +1,3 @@
-TEST137 emergency setup crash fix
-Source/journal commit: 656c19b10428a66b7f9c66184f53551562edcb6a
-Restore eListboxPythonMultiContent import required by thumbList/thumbList2. Preserve TEST136 Radio compositor diagnostic unchanged.
+TEST138 radio composition coexistence
+Source/journal commit: d0f74e5db2ef28a2126f734a37a788b018722fc8
+Restore native RdsInfoDisplay zPosition=-2 after TEST136 physical layering regression. Reuse only the TEST135 physically proven scoped 720x42 composed service-name overlay; preserve TEST137 setup crash fix.
