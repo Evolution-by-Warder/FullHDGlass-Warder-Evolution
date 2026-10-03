@@ -1687,18 +1687,11 @@ def serviceStartNow17(self):
 			except Exception:
 				pass
 			rds = getattr(self, "rds_display", None)
+			# TEST141: retire the TEST138-140 composition patch during native RDS backing A/B test.
 			probe = getattr(self, "warderRadioCompositionProbe", None)
 			if probe is not None:
-				if is_radio:
-					try:
-						probe.setNativeRds(rds)
-						probe.setService(self.session.nav.getCurrentlyPlayingServiceReference())
-					except Exception:
-						pass
-					probe.show()
-				else:
-					probe.stopMirror()
-					probe.hide()
+				probe.stopMirror()
+				probe.hide()
 			if rds is not None:
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
