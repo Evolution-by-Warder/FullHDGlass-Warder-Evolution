@@ -1,3 +1,3 @@
-TEST111-CI2
-Rebuild TEST111 after aligning the stale RDS z-order regression guard with the intentional zPosition=1 change; runtime intent unchanged.
-Source commit: e4360d5aa0b9ab0c65168c2696b25a3c77cd183b
+TEST112
+Restore safe native RDS z-order and show only the Radio top rail inside the normal InfoBar; preserve ChannelSelectionRadio, TEST106 WebIF, exact artwork and DAB/SLS fallback.
+Source commit: 8a6f303d8323c497a9c47560ba24e58856f42a15
