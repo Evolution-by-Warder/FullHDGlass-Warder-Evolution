@@ -1,3 +1,3 @@
-TEST114
-Replace failed static InfoBar Radio top widgets with a top-only runtime dialog shown only for Radio while InfoBar is visible and explicitly suppressed during ChannelSelection. Keep native RdsInfoDisplay at zPosition=-2 and preserve TEST106 WebIF, exact artwork and DAB/SLS fallback.
-Source commit: c2c0dd64969a681b055e0cf83c3d91b7c371c6c0
+TEST115
+Diagnostic-only bounded Radio runtime stack probe. Record current_dialog, InfoBar, TEST114 top overlay, g17dialog and native RDS visibility for 12 seconds after Radio service-start into /tmp/warder-test115-stack.txt. No new visual fix.
+Source commit: 272cbb2c7ca2bb0a397df309343acc403d70d6b3
