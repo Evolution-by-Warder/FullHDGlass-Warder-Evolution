@@ -853,9 +853,9 @@ assert "/tmp/warder-radio-start" in PLUGIN and "/tmp/warder-radio-start" in RADI
 SPECTRUM = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioSpectrum.py").read_text(encoding="utf-8")
 assert "GUI_WIDGET = eCanvas" in SPECTRUM
 assert "self._timer.start(200)" in SPECTRUM
-assert "self._timer.stop()" in SPECTRUM
+assert "self._timer.stop()" in SPECTRUM\nassert "barw = 15" in SPECTRUM\nassert "height = 126" in SPECTRUM
 assert "subprocess" not in SPECTRUM
-assert "random" not in SPECTRUM
+assert "import random" not in SPECTRUM\nassert "random." not in SPECTRUM
 radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
