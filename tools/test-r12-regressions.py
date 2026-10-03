@@ -1007,7 +1007,7 @@ assert 'font="Regular2;' not in radio119
 assert radio119.count('font="WarderRadio;') >= 7
 
 # TEST120: physical TEST119 improved but remained below the Warder Radio visual standard. Bundle Inter under OFL and keep the established WarderRadio alias/geometry.
-assert '<font filename="Inter[opsz,wght].ttf" name="WarderRadio" scale="100" />' in SKIN
+assert '<font filename="prive7.ttf" name="WarderRadio" scale="100" />' in SKIN
 assert 'DejaVuSans.ttf" name="WarderRadio"' not in SKIN
 
 # TEST121: match the physically sharp FullHDGlass17 TV rendering path. WarderRadio now aliases the exact TV face prive7.ttf at scale 100; top brand is optically equal to date at 30px.
