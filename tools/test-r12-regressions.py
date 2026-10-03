@@ -970,3 +970,8 @@ assert SKIN.count('render="WarderRadioInfoBarTop"') == 0
 service114 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
 radio114 = service114.split('if is_radio:', 1)[1].split('else:', 1)[0]
 assert 'rds.show()' in radio114 and 'rds.hide()' not in radio114
+
+# TEST115 temporary runtime-stack probe: one bounded receiver diagnostic file.
+assert '"/tmp/warder-test115-stack.txt"' in PLUGIN
+assert 'self._warderTest115Until = time1.time() + 12.0' in PLUGIN
+assert 'current=%s infobar_shown=%s top_allowed=%s top_shown=%s g17_shown=%s rds_shown=%s' in PLUGIN
