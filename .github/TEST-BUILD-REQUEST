@@ -1,3 +1,3 @@
-TEST121 corrected-3
-Native RdsInfoDisplay/ExtraInfo17 brand parity fixed at 30px after run 37129120371. TV-native prive7 sharpness path unchanged; no artwork/equalizer changes.
-Source commit: 717290679cd4e4232eafff8d03b3f9e1ce279ece
+TEST121 corrected-4
+CI-only native brand guard correction after run 37129281946. Runtime candidate unchanged: TV-native prive7 sharpness path, 30px date/brand parity.
+Source commit: e57076017e6398358579198d6a2d653bcc758624
