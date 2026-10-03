@@ -1037,12 +1037,18 @@ assert 'render="Label" position="420,842" size="720,42" font="Prive4;33"' in rad
 assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
-# TEST126 physical FAIL: clean same-desktop dialog remained visibly jagged.
-# TEST127 physical INCONCLUSIVE: real ServiceList probe had no populated root/list content, so no usable text rendered.
-assert 'WarderRadioServiceListProbe' not in PLUGIN
-assert 'from Components.ServiceList import ServiceList, ServiceListLegacy' not in PLUGIN
+# TEST126 physical FAIL: clean same-desktop eLabel remained visibly jagged.
+# TEST127 physical INCONCLUSIVE: synthetic ServiceList had no populated root/list content.
+# TEST128 physical PASS (diagnostic): real ChannelSelectionRadio/ServiceListLegacy text is visibly crisp; Radio->list->Radio lifecycle remains clean.
+radio_cs129 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
+assert 'serviceNameFont="Prive4;33"' not in radio_cs129
+assert 'serviceItemHeight="37"' not in radio_cs129
 
-# TEST128: use the real OpenATV ChannelSelectionRadio, which forces ServiceListLegacy, and give its native list the exact TV service-name font/row height.
-radio_cs128 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
-assert 'serviceNameFont="Prive4;33"' in radio_cs128
-assert 'serviceItemHeight="37"' in radio_cs128
+# TEST129: one populated native ServiceListLegacy entry overlays only the stable Radio service-name row.
+assert 'from Components.ServiceList import ServiceListLegacy' in PLUGIN
+assert 'class WarderRadioParaProbe(Screen):' in PLUGIN
+assert 'serviceNameFont="Prive4;33"' in PLUGIN
+assert 'self.servicelist.l.addService(ref)' in PLUGIN
+assert 'self.servicelist.l.FillFinished()' in PLUGIN
+assert 'instantiateDialog(WarderRadioParaProbe, zPosition=1500)' in PLUGIN
+assert 'probe.setService(ref)' in PLUGIN
