@@ -1,3 +1,3 @@
-TEST119
-Radio typography correction after TEST118 physical FAIL: use Radio-only WarderRadio/DejaVuSans typography while preserving TEST118 alignment and TEST117 lifecycle. No artwork/equalizer changes.
-Source commit: 24c178d31752506ab0bf8cfb4b32f4a3f2869045
+TEST119 corrected
+CI-only regression-guard scope correction after run 37126791566. Runtime Radio typography unchanged: WarderRadio/DejaVuSans, TEST118 alignment, TEST117 lifecycle.
+Source commit: ff23b8e21285bf674618e495f1502568c04674b5
