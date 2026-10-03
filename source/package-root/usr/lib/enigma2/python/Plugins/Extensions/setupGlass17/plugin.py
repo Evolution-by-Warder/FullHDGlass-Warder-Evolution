@@ -116,9 +116,31 @@ try:
 	ENA_POSTER = True
 except: pass
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST99 recovery: do not monkey-patch OpenWebif GRAB_PATH.
-# Receiver testing proved the process-global redirect can break screenshots
-# for both TV and Radio. OpenWebif therefore remains fully native/authoritative.
+# TEST100: native OpenWebif stays authoritative for TV and explicit modes.
+try:
+	from Plugins.Extensions.OpenWebif.controllers.models import grab as _warderOwiGrab
+	from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as _warderOwiGetUrlArg
+	_warderNativeGrabRequest = _warderOwiGrab.GrabRequest
+	def _warderRadioAwareGrabRequest(request, session):
+		is_radio = False
+		try:
+			with open("/tmp/warder-radio-current", "r") as marker:
+				is_radio = marker.read().strip() == "A"
+		except Exception:
+			pass
+		mode = _warderOwiGetUrlArg(request, "mode")
+		adapter = PLUGINPATH + "warder-grab"
+		if not is_radio or mode is not None or not os.path.isfile(adapter):
+			return _warderNativeGrabRequest(request, session)
+		native_path = _warderOwiGrab.GRAB_PATH
+		try:
+			_warderOwiGrab.GRAB_PATH = adapter
+			return _warderNativeGrabRequest(request, session)
+		finally:
+			_warderOwiGrab.GRAB_PATH = native_path
+	_warderOwiGrab.GrabRequest = _warderRadioAwareGrabRequest
+except Exception:
+	pass
 config.plugins.setupGlass17 = ConfigSubsection()
 config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
 CH_LOG = "AllAboutNew"

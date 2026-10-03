@@ -894,6 +894,11 @@ assert 'WarderRdsInfoDisplay' not in PLUGIN
 WARDER_GRAB = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-grab").read_text(encoding="utf-8")
 assert 'WARDER_GRAB_PATH = PLUGINPATH + "warder-grab"' not in PLUGIN
 assert '_warderOpenWebifGrab.GRAB_PATH = WARDER_GRAB_PATH' not in PLUGIN
+assert '_warderOwiGrab.GrabRequest = _warderRadioAwareGrabRequest' in PLUGIN
+assert 'if not is_radio or mode is not None or not os.path.isfile(adapter):' in PLUGIN
+assert 'native_path = _warderOwiGrab.GRAB_PATH' in PLUGIN
+assert '_warderOwiGrab.GRAB_PATH = adapter' in PLUGIN
+assert '_warderOwiGrab.GRAB_PATH = native_path' in PLUGIN
 assert 'with open("/tmp/warder-radio-current", "w") as marker:' in service94
 assert 'marker.write("A" if is_radio else "TV")' in service94
 for token in ('REAL_GRAB = "/usr/bin/grab"', 'MASTER = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"', 'MARKER = "/tmp/warder-radio-current"', '"-s" not in args', '"-o" in args', '"-v" in args', 'passthrough()', '"ffmpeg", "-nostdin"', 'overlay=0:0:format=auto'):
