@@ -196,6 +196,7 @@
     <font filename="ae_AlMateen7.ttf" name="Replacement" scale="110" replacement="1" />
     <font filename="nmsbd7.ttf" name="Console" scale="85" />
 		<font filename="goodtime7.ttf" name="LCD2" scale="100" />
+		<font filename="DejaVuSans.ttf" name="WarderRadio" scale="100" />
 		<alias name="ChoiceList" font="Prive4" size="32" height="45" />
 		<alias name="EPGList0" font="Prive4" size="30" />
 		<alias name="EPGList1" font="Prive4" size="30" />
@@ -342,7 +343,7 @@
       <convert type="EventTime">Duration</convert>
       <convert type="g17ClockToText">InMinutes</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="90,822" size="240,52" font="Prive4;24" valign="center" halign="center" transparent="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" zPosition="2">
+    <widget source="session.CurrentService" render="Label" position="90,822" size="240,52" font="WarderRadio;24" valign="center" halign="center" transparent="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" zPosition="2">
       <convert type="g17ServiceInfo">VideoResolution</convert>
     </widget>
 
@@ -724,13 +725,13 @@
     <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,330" zPosition="3" backgroundColor="#ff000000" />
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1067,24" size="645,45" font="Prive4;33" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1" />
     
-    <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="1150,455" zPosition="1" halign="block" size="685,240" font="Prive4;25" foregroundColor="white" backgroundColor="background" transparent="1">
+    <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="1150,455" zPosition="1" halign="block" size="685,240" font="WarderRadio;25" foregroundColor="white" backgroundColor="background" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert>
     </widget>    
     <widget position="1150,685" size="685,236" source="ServiceEvent" render="g17ShowExtraEpg" foregroundColorTime="grey" foregroundColorDescription="#cdcdcd" maxDescriptionLines="0" numEvents="8" font="Prive4;26" fontDescription="Prive4;26" foregroundColor="#cdcdcd" backgroundColor="background" zPosition="2" transparent="1" />     
     <eLabel position="60,943" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />         
-    <widget position="60,952" size="1065,30" source="ServiceEvent" render="g17ShowTP" font="Prive4;25" valign="center" halign="center" foregroundColor="un6cbcf0" zPosition="2" transparent="1" />
-    <widget position="1150,952" size="705,30" source="ServiceEvent" render="g17ShowReference" font="Prive4;25" valign="center" halign="center" foregroundColor="un6cbcf0" zPosition="2" transparent="1" />
+    <widget position="60,952" size="1065,30" source="ServiceEvent" render="g17ShowTP" font="WarderRadio;25" valign="center" halign="center" foregroundColor="un6cbcf0" zPosition="2" transparent="1" />
+    <widget position="1150,952" size="705,30" source="ServiceEvent" render="g17ShowReference" font="WarderRadio;25" valign="center" halign="center" foregroundColor="un6cbcf0" zPosition="2" transparent="1" />
     <widget source="key_red" render="Label" position="60,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
     <widget source="key_green" render="Label" position="528,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
     <widget source="key_yellow" render="Label" position="994,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
@@ -817,7 +818,7 @@ self.autoResize()
      <eLabel position="1838,131" size="2,492" backgroundColor="grey" zPosition="5" transparent="0" />
 		<widget source="session.VideoPicture" render="Pig" position="972,131" zPosition="1" size="866,492" backgroundColor="transparent" />
    <widget name="list" position="80,129" zPosition="3" itemHeight="50" size="870,500" backgroundColor="black" scrollbarMode="showOnDemand" />
-  <widget source="Event" font="Prive4;29" position="80,671" render="Label" size="1760,280" backgroundColor="black" halign="block" transparent="1">
+  <widget source="Event" font="WarderRadio;29" position="80,671" render="Label" size="1760,280" backgroundColor="black" halign="block" transparent="1">
     <convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert>
   </widget>
     <widget source="key_red" render="Label" position="60,984" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="#cdcdcd" zPosition="2" transparent="1" />
@@ -1282,14 +1283,14 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="DescriptionBorder" position="58,808" size="1804,162" zPosition="0" transparent="1" />
     <widget name="movie_sort" position="1770,60" size="60,40" zPosition="6" alphatest="on" />
     <widget name="movie_off" position="1700,60" size="60,40" zPosition="6" alphatest="on" />
-    <widget name="TrashcanSize" position="1450,60" size="240,40" font="Prive4;30" halign="right" valign="center" transparent="1" />
-    <widget name="waitingtext" position="60,120" size="1800,600" zPosition="4" font="Prive4;38" backgroundColor="background" halign="center" valign="center" />
+    <widget name="TrashcanSize" position="1450,60" size="240,40" font="WarderRadio;30" halign="right" valign="center" transparent="1" />
+    <widget name="waitingtext" position="60,120" size="1800,600" zPosition="4" font="WarderRadio;38" backgroundColor="background" halign="center" valign="center" />
     <widget name="chosenletter" position="60,120" size="1800,600" zPosition="5" font="Prive4;80" halign="center" valign="center" transparent="1" />
     <widget name="list" position="60,120" size="1800,600" font="Prive4;34" itemHeight="75" zPosition="2" backgroundColor="background" transparent="1" scrollbarMode="showOnDemand" enableWrapAround="1" />
     <eLabel position="60,740" size="1800,2" zPosition="1" backgroundColor="grey" />
     <widget source="Service" render="Label" position="60,760" zPosition="1" foregroundColor="yellow" size="1800,40" font="Prive4;35" halign="right" transparent="1"><convert type="ServiceTime">Duration</convert><convert type="ClockToText">AsLength</convert></widget>
     <widget source="Service" render="Label" position="60,760" zPosition="2" foregroundColor="green" size="500,40" font="Prive4;34" halign="left" transparent="1"><convert type="MovieInfo">RecordServiceName</convert></widget>
-    <widget source="Service" render="Label" position="60,810" zPosition="1" size="1800,158" font="Prive4;32" valign="top" transparent="1"><convert type="EventName">ExtendedDescription</convert></widget>
+    <widget source="Service" render="Label" position="60,810" zPosition="1" size="1800,158" font="WarderRadio;32" valign="top" transparent="1"><convert type="EventName">ExtendedDescription</convert></widget>
     <widget source="key_red" render="Label" position="0,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="480,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="green" transparent="1" />
     <widget source="key_yellow" render="Label" position="960,980" size="480,60" font="Prive3;33" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
@@ -1338,9 +1339,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   <screen name="NameserverSetup" position="center,120" size="1500,840" title="Nameserver Setup">
     <widget name="config" position="45,30" size="1410,650" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
     <widget source="introduction" render="Label" position="45,695" size="1410,65" zPosition="10" font="Prive3;31" halign="center" valign="center" transparent="1" />
-    <widget font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="45,775" size="450,45" valign="center" halign="center" transparent="1" />
-    <widget font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="525,775" size="450,45" valign="center" halign="center" transparent="1" />
-    <widget font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="1005,775" size="450,45" valign="center" halign="center" transparent="1" />
+    <widget font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="45,775" size="450,45" valign="center" halign="center" transparent="1" />
+    <widget font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="525,775" size="450,45" valign="center" halign="center" transparent="1" />
+    <widget font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="1005,775" size="450,45" valign="center" halign="center" transparent="1" />
   </screen>
   <!-- Network adapter selection -->
   <screen name="NetworkAdapterSelection" position="center,120" size="1500,840" title="Select Network Adapter">
@@ -1371,7 +1372,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="IPtext" position="120,390" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" /><widget name="IP" position="420,390" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" /><widget name="IPInfo_Text" position="1110,390" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="IPInfo" position="1110,390" zPosition="2" size="240,38" transparent="1" /><widget name="IPInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="1020,382" size="57,46" alphatest="on" zPosition="2" />
     <widget name="DNStext" position="120,485" size="270,38" zPosition="1" font="Prive3;30" foregroundColors="#8c8c93,#1cff1c" /><widget name="DNS" position="420,485" size="510,38" zPosition="1" font="Prive3;30" halign="center" foregroundColors="#8c8c93,#f23d21,#1cff1c" /><widget name="DNSInfo_Text" position="1110,485" size="240,38" zPosition="2" font="Prive3;30" transparent="1" foregroundColors="#8c8c93,#cccccc,#1cff1c" /><widget name="DNSInfo" position="1110,485" zPosition="2" size="240,38" transparent="1" /><widget name="DNSInfo_Check" pixmaps="hd_glass17/icons/lock_on.png,hd_glass17/icons/lock_error.png" position="1020,477" size="57,46" alphatest="on" zPosition="2" />
     <widget name="InfoTextBorder" pixmap="hd_glass17/border_info.png" position="75,70" zPosition="20" size="1350,570" alphatest="on" /><widget name="InfoText" position="90,85" size="1320,540" zPosition="25" font="Prive3;31" />
-    <widget source="key_red" render="Label" foregroundColor="red" position="120,750" size="360,50" font="Prive4;32" valign="center" halign="center" transparent="1" /><widget source="key_green" render="Label" foregroundColor="green" position="570,750" size="360,50" font="Prive4;32" valign="center" halign="center" transparent="1" /><widget name="EditSettingsButton" pixmaps="hd_glass17/buttons/blue.png,hd_glass17/buttons/blue_pressed.png" position="0,0" zPosition="1" size="0,0" transparent="1" alphatest="on" /><widget name="EditSettings_Text" position="1020,750" size="360,50" zPosition="2" font="Prive4;32" valign="center" halign="center" transparent="1" foregroundColors="#000000,#8c8c93,#0064c7" />
+    <widget source="key_red" render="Label" foregroundColor="red" position="120,750" size="360,50" font="WarderRadio;32" valign="center" halign="center" transparent="1" /><widget source="key_green" render="Label" foregroundColor="green" position="570,750" size="360,50" font="WarderRadio;32" valign="center" halign="center" transparent="1" /><widget name="EditSettingsButton" pixmaps="hd_glass17/buttons/blue.png,hd_glass17/buttons/blue_pressed.png" position="0,0" zPosition="1" size="0,0" transparent="1" alphatest="on" /><widget name="EditSettings_Text" position="1020,750" size="360,50" zPosition="2" font="WarderRadio;32" valign="center" halign="center" transparent="1" foregroundColors="#000000,#8c8c93,#0064c7" />
   </screen> 
   <!-- Network setup -->
   <screen name="NetworkSetup" position="center,180" size="1350,720" title="Network Setup">
@@ -1508,9 +1509,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   </screen>
   <screen name="PluginDownloadBrowser" position="0,0" size="1920,1080" backgroundColor="background" title="Downloadable plugins">
     <widget name="list" position="190,200" size="1540,720" font="Prive3;33" itemHeight="80" scrollbarMode="showOnDemand" />
-	<widget source="Title" render="Label" position="98,46" size="700,45" font="Prive4;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
-     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
+	<widget source="Title" render="Label" position="98,46" size="700,45" font="WarderRadio;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
+     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="WarderRadio;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="WarderRadio;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="80,1019" size="1760,1" backgroundColor="#A1A1A1" zPosition="5" transparent="0" />
@@ -1593,11 +1594,11 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   <screen name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST93 LAYOUT CONTRACT: coordinates are locked to the approved 1671x941 master scaled to 1920x1080. -->
     <!-- Top glass active area: x=27..1864, y=15..101. -->
-    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="4" position="62,22" size="610,66" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" zPosition="2" />
-    <widget source="global.CurrentTime" render="Label" position="745,22" size="340,66" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="4" position="62,22" size="610,66" font="WarderRadio;30" valign="center" foregroundColor="#e5b243" transparent="1" zPosition="2" />
+    <widget source="global.CurrentTime" render="Label" position="745,22" size="340,66" font="WarderRadio;38" valign="center" foregroundColor="#eeeeee" transparent="1" zPosition="2">
       <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
-    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size="580,66" font="Prive4;25" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size="580,66" font="WarderRadio;25" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
 
     <!-- Approved master center frame is not exactly square. Keep album artwork square and centered inside it: 648x648. -->
     <!-- TEST81 exact-artwork renderer remains isolated; hidden on no exact match, preserving native DAB SLS fallback. -->
@@ -1608,11 +1609,11 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="session.CurrentService" render="g17PicRef" position="70,852" size="280,160" zPosition="3" transparent="1" alphatest="on">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="Prive4;29" valign="center" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="3">
+    <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="WarderRadio;29" valign="center" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="3">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;32" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1" zPosition="3" />
-    <widget name="RtpText" position="420,955" size="1000,38" font="Prive4;24" valign="center" noWrap="1" foregroundColor="#3388dd" transparent="1" zPosition="3" />
+    <widget name="RadioText" position="420,895" size="1000,52" font="WarderRadio;32" valign="center" noWrap="1" foregroundColor="#eeeeee" transparent="1" zPosition="3" />
+    <widget name="RtpText" position="420,955" size="1000,38" font="WarderRadio;24" valign="center" noWrap="1" foregroundColor="#3388dd" transparent="1" zPosition="3" />
 
     <!-- Right-bottom contract: decorative spectrum above real dynamic ServiceName/Provider; never hard-code DAB+/ARD BR. -->
     <!-- Receiver-safe equalizer baseline: always visible even if custom renderer lifecycle is unavailable. -->
@@ -1635,7 +1636,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="1789,914" size="14,40" backgroundColor="#1473ff" zPosition="3" />
     <eLabel position="1808,896" size="14,58" backgroundColor="#1ecdff" zPosition="3" />
     <widget source="session.CurrentService" render="WarderRadioSpectrum" position="1470,838" size="350,126" zPosition="4" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="1470,978" size="350,38" font="Prive4;25" valign="center" halign="center" noWrap="1" foregroundColor="#e5b243" transparent="1" zPosition="3">
+    <widget source="session.CurrentService" render="Label" position="1470,978" size="350,38" font="WarderRadio;25" valign="center" halign="center" noWrap="1" foregroundColor="#e5b243" transparent="1" zPosition="3">
       <convert type="ServiceName">Provider</convert>
     </widget>
   </screen>  <!-- Dish -->
@@ -1689,7 +1690,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="footer" position="25,770" size="1450,45" font="Prive3;33" halign="center" />
   </screen>
   <screen name="ServiceInfoSimple" position="center,150" size="1800,840" title="Serviceinfo">
-    <widget name="infolist" position="10,10" size="1780,760" font="Prive4;32" itemHeight="40" selectionDisabled="1" scrollbarMode="showOnDemand" />
+    <widget name="infolist" position="10,10" size="1780,760" font="WarderRadio;32" itemHeight="40" selectionDisabled="1" scrollbarMode="showOnDemand" />
     <widget name="red" position="0,800" size="450,40" font="Prive3;33" valign="center" halign="center" foregroundColor="red" zPosition="2" transparent="1" />
     <widget name="green" position="450,800" size="450,40" font="Prive3;33" valign="center" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="yellow" position="900,800" size="450,40" font="Prive3;33" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
@@ -1697,9 +1698,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   </screen>
   <screen name="ServiceInfo" position="0,0" size="1920,1080" title="Serviceinfo">
     <widget name="infolist" position="190,200" size="1540,720" font="Prive4;28" itemHeight="45" selectionDisabled="1" scrollbarMode="showOnDemand" />
-	<widget source="Title" render="Label" position="98,46" size="700,45" font="Prive4;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
-     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
+	<widget source="Title" render="Label" position="98,46" size="700,45" font="WarderRadio;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
+     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="WarderRadio;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="WarderRadio;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="80,100" size="1760,1" backgroundColor="#A1A1A1" zPosition="5" transparent="0" />
@@ -2066,16 +2067,16 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
 			<widget name="arrowup2" pixmap="skin_default/arrowup.png" position="-100,-100" zPosition="11" size="55,105" alphatest="on" />
 		</screen>
 	<screen name="RestoreMenu" position="center,center" size="1200,800" title="Restore backups" backgroundColor="background" >
-    <widget backgroundColor="background" size="1180,700" font="Prive4;32" name="filelist" position="10,10" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" source="key_red" render="Label" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" source="key_green" render="Label" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" source="key_yellow" render="Label" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" size="1180,700" font="WarderRadio;32" name="filelist" position="10,10" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" source="key_red" render="Label" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" source="key_green" render="Label" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" source="key_yellow" render="Label" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="BackupSelection" position="center,center" size="1200,800" title="Select files/folders to backup" backgroundColor="background" >
-    <widget backgroundColor="background" size="1180,700" font="Prive4;32" name="checkList" position="10,10" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" source="key_red" render="Label" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" source="key_green" render="Label" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" source="key_yellow" render="Label" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" size="1180,700" font="WarderRadio;32" name="checkList" position="10,10" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" source="key_red" render="Label" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" source="key_green" render="Label" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" source="key_yellow" render="Label" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen>
   <screen name="BackupSetup" position="135,150" size="1650,840" title="Backup and Restore">
     <widget name="config" position="15,22" size="1620,720" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
@@ -2587,7 +2588,7 @@ if IS_VU:
     <eLabel position="0,0" size="900,3" backgroundColor="grey" zPosition="5" />
     <widget name="text" position="15,15" size="870,45" font="Prive3;37" transparent="1" />
     <eLabel position="0,67" size="900,3" backgroundColor="grey" zPosition="5" />
-    <widget name="entries" itemHeight="40" font="Prive4;32" position="15,82" size="870,600" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="entries" itemHeight="40" font="WarderRadio;32" position="15,82" size="870,600" scrollbarMode="showOnDemand" transparent="1" />
   </screen>
   <screen name="CAidSelect" position="510,201" size="900,753" backgroundColor="background" title="select CAId's">
     <widget name="list" position="7,15" font="Prive3;33" itemHeight="40" size="885,607" zPosition="3" scrollbarMode="showOnDemand" />
@@ -2600,12 +2601,12 @@ if IS_VU:
 		<widget name="title" position="15,15" size="870,37" font="Regular;34" />
 		<widget name="subtitle" position="15,82" size="870,37" font="Regular;34" />
 		<eLabel position="15,165" size="870,1" backgroundColor="grey" />
-		<widget name="entries" position="15,165" size="870,320" font="Prive4;32" itemHeight="40" scrollbarMode="showOnDemand" />
+		<widget name="entries" position="15,165" size="870,320" font="WarderRadio;32" itemHeight="40" scrollbarMode="showOnDemand" />
 		<eLabel position="15,498" size="870,1" backgroundColor="grey" />
 		<widget name="bottom" position="15,510" size="870,37" halign="center" font="Regular;34" />
 	</screen>
   <screen name="CIselectMainMenu" position="510,201" size="900,753" backgroundColor="background" title="CI Assignment">
-    <widget name="CiList" position="7,15" size="885,660" zPosition="3" font="Prive4;32" itemHeight="40" scrollbarMode="showOnDemand" />
+    <widget name="CiList" position="7,15" size="885,660" zPosition="3" font="WarderRadio;32" itemHeight="40" scrollbarMode="showOnDemand" />
     <eLabel position="0,690" size="900,3" backgroundColor="grey" />
     <widget source="key_red" render="Label" position="60,700" zPosition="2" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="465,700" zPosition="2" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="green" transparent="1" />
@@ -4559,9 +4560,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <ePixmap position="262,915" size="444,30" pixmap="hd_glass17/mp_dvr.png" alphatest="blend" />
 </screen>
 	<screen name="QuickMenu" position="0,0" size="1920,1080" backgroundColor="background" title="Quick Launch Menu">
-	<widget source="Title" render="Label" position="98,46" size="700,45" font="Prive4;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
-     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
+	<widget source="Title" render="Label" position="98,46" size="700,45" font="WarderRadio;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
+     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="WarderRadio;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="WarderRadio;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
 		<widget source="mainlist" render="Listbox" position="190,200" size="760,560" itemHeight="70" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black" foregroundColor="grey">
@@ -4713,14 +4714,14 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     </screen>
 	<screen name="DeviceManager2Message" position="center,center" size="1200,800" backgroundColor="background">
 		<widget name="messagepic" pixmaps="hd_glass17/icons/input_info.png,hd_glass17/icons/input_error.png,hd_glass17/icons/input_question.png" position="10,10" size="54,54" alphatest="blend"/>
-		<widget name="messagetype" position="80,10" size="1110,50" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" />
-		<widget name="messagetext" position="10,100" size="1180,690" font="Prive4;32" halign="center" valign="Top" backgroundColor="background" transparent="1" />
+		<widget name="messagetype" position="80,10" size="1110,50" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" />
+		<widget name="messagetext" position="10,100" size="1180,690" font="WarderRadio;32" halign="center" valign="Top" backgroundColor="background" transparent="1" />
 	</screen>
     <screen name="EPGPanel" position="center,center" size="1200,800" title="EPG Panel" backgroundColor="background" >
         <widget backgroundColor="background" enableWrapAround="1" name="config" position="10,10" font="Prive4;33" itemHeight="40" scrollbarMode="showOnDemand" size="1180,560" transparent="1" />
         <widget backgroundColor="background" font="Prive4;33" foregroundColor="grey" halign="center" valign="center" name="status" position="20,580" size="1160,120" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
     </screen>	
 	<screen name="MyPluginManager" title="Software Manager" position="center,center" size="1800,800" backgroundColor="background" >
 		<widget source="list" render="Listbox" transparent="1" backgroundColor="background" position="10,10" size="1780,700" scrollbarMode="showAlways"  >
@@ -4744,18 +4745,18 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget name="key_yellow" position="1200,750" size="600,40" font="Prive4;33" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
 	</screen>
 	<screen name="AutoShutDownConfiguration" position="center,center" size="1200,800" title="Auto ShutDown"  backgroundColor="background">
-		<widget name="buttonred" position="0,740" size="400,60" valign="center" halign="center" zPosition="2" foregroundColor="red" font="Prive4;32" backgroundColor="background" transparent="1" />
-		<widget name="buttongreen" position="400,740" size="400,60" valign="center" halign="center" zPosition="2" foregroundColor="green" font="Prive4;32" backgroundColor="background" transparent="1" />
-		<widget name="buttonyellow" position="800,740" size="400,60" valign="center" halign="center" zPosition="2" foregroundColor="yellow" font="Prive4;32" backgroundColor="background" transparent="1" />
-		<widget name="config" position="10,10" size="1180,700" font="Prive4;32" itemHeight="50" backgroundColor="background" transparent="1" enableWrapAround="1" />
+		<widget name="buttonred" position="0,740" size="400,60" valign="center" halign="center" zPosition="2" foregroundColor="red" font="WarderRadio;32" backgroundColor="background" transparent="1" />
+		<widget name="buttongreen" position="400,740" size="400,60" valign="center" halign="center" zPosition="2" foregroundColor="green" font="WarderRadio;32" backgroundColor="background" transparent="1" />
+		<widget name="buttonyellow" position="800,740" size="400,60" valign="center" halign="center" zPosition="2" foregroundColor="yellow" font="WarderRadio;32" backgroundColor="background" transparent="1" />
+		<widget name="config" position="10,10" size="1180,700" font="WarderRadio;32" itemHeight="50" backgroundColor="background" transparent="1" enableWrapAround="1" />
 	</screen>
 	<screen name="FastScanScreen" position="center,center" size="1200,800" backgroundColor="background" >
-		<widget name="config" position="10,10" size="1180,650" font="Prive4;32" itemHeight="50" backgroundColor="background" transparent="1" enableWrapAround="1" />
+		<widget name="config" position="10,10" size="1180,650" font="WarderRadio;32" itemHeight="50" backgroundColor="background" transparent="1" enableWrapAround="1" />
 		<widget name="introduction" position="10,700" size="1180,100" font="Regular;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
 	</screen>
 	<screen name="FastScanStatus" position="center,center" size="1200,300" title="Service Scan" backgroundColor="background">
 		<widget name="frontend" pixmap="hd_glass17/icons/scan-s.png" position="10,10" size="96,96" transparent="1" alphatest="blend" />
-		<widget name="scan_state" position="300,35" zPosition="2" size="600,40" font="Prive4;30" backgroundColor="background" transparent="1" />
+		<widget name="scan_state" position="300,35" zPosition="2" size="600,40" font="WarderRadio;30" backgroundColor="background" transparent="1" />
 		<widget name="scan_progress" position="10,200" size="1180,50" borderWidth="2" borderColor="#cccccc" backgroundColor="background" transparent="1" />
 	</screen>
 	<screen name="SATIPClient" position="center,center" size="1200,800" backgroundColor="background" >
@@ -4776,18 +4777,18 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 			</convert>
 		</widget>
 		<widget source="description" render="Label" position="10,700" size="1180,50" font="Regular;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="SATIPTuner" position="center,center" size="1200,800" backgroundColor="background" >
-		<widget name="config" position="10,0" size="1180,300" font="Prive4;32" itemHeight="50" backgroundColor="background" transparent="1" enableWrapAround="1" />
-		<widget source="description" render="Label" position="127,320" size="1180,360" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" />
-		<widget source="choices" render="Label" position="127,680" size="1180,70" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+		<widget name="config" position="10,0" size="1180,300" font="WarderRadio;32" itemHeight="50" backgroundColor="background" transparent="1" enableWrapAround="1" />
+		<widget source="description" render="Label" position="127,320" size="1180,360" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" />
+		<widget source="choices" render="Label" position="127,680" size="1180,70" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen>
 		<screen name="PositionerSetup" position="center,center" size="840,600" title="Positioner setup..." >
 			<widget name="list" font="Prive4;33" itemHeight="40" position="10,0" size="820,240" />
@@ -5411,11 +5412,11 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 
 <!-- EnhancedMovieCenter Setup -->
 <screen name="EnhancedMovieCenterMenu" position="center,center" size="1200,800" title="EnhancedMovieCenterMenu">
-	<widget name="config" position="10,0" size="1180,520" font="Prive4;32" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" />
+	<widget name="config" position="10,0" size="1180,520" font="WarderRadio;32" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" />
 	<eLabel position="0,540" size="1200,3" backgroundColor="#999999" zPosition="1" />
-	<widget source="help" render="Label" position="10,560" size="1180,160" font="Prive4;32" valign="center" halign="center" foregroundColor="#999999" />
-	<widget name="key_red" position="0,730" zPosition="1" size="600,60" font="Prive4;32" valign="center" halign="center" foregroundColor="red" transparent="1" />
-	<widget name="key_green" position="600,730" zPosition="1" size="600,60" font="Prive4;32" valign="center" halign="center" foregroundColor="green" transparent="1" />
+	<widget source="help" render="Label" position="10,560" size="1180,160" font="WarderRadio;32" valign="center" halign="center" foregroundColor="#999999" />
+	<widget name="key_red" position="0,730" zPosition="1" size="600,60" font="WarderRadio;32" valign="center" halign="center" foregroundColor="red" transparent="1" />
+	<widget name="key_green" position="600,730" zPosition="1" size="600,60" font="WarderRadio;32" valign="center" halign="center" foregroundColor="green" transparent="1" />
 </screen>
 
 <!-- EMC Playlist -->
@@ -5521,7 +5522,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 		</widget>
 	</screen>
 		<screen name="PermanentClockMenu" position="center,center" size="1200,200" title="Permanent Clock">
-			<widget name="list" position="15,15" font="Prive4;32" itemHeight="40" size="1170,160" />
+			<widget name="list" position="15,15" font="WarderRadio;32" itemHeight="40" size="1170,160" />
 		</screen>
 <screen name="TunerState" title="Tuner State" flags="wfNoBorder" position="0,75" size="1500,48" zPosition="5" padding="20" spacing="15" backgroundColor="#ff000000">
 	<widget name="Background" pixmap="hd_glass17/its/background.png" position="0,0" size="1920,48" zPosition="-1" transparent="1" alphatest="off"/>
@@ -5539,61 +5540,61 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 	<widget name="Field9" font="Regular;33" noWrap="1" halign="left" foregroundColor="#bbbbbf" backgroundColor="#141415" transparent="1" zPosition="1"/>
 </screen>
 		<screen name="AspectRatioSwitchSetup" position="center,center" size="1200,800" title="AspectRatioSwitch Setup" >
-        <widget backgroundColor="background" enableWrapAround="1" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" foregroundColor="grey" halign="center" position="20,630" size="1160,100" name="label" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32"  render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32"  render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" /> 
+        <widget backgroundColor="background" enableWrapAround="1" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" foregroundColor="grey" halign="center" position="20,630" size="1160,100" name="label" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32"  render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32"  render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" /> 
 		</screen>
 		<screen name="OpenWebifConfig" position="center,center" size="1200,800" title="OpenWebif Config" >
-        <widget backgroundColor="background" enableWrapAround="1" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" foregroundColor="grey" halign="center" position="20,630" size="1160,100" name="lab1" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" /> 
+        <widget backgroundColor="background" enableWrapAround="1" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" foregroundColor="grey" halign="center" position="20,630" size="1160,100" name="lab1" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" /> 
 		</screen>
 	<screen name="TranscodingSetup" position="center,center" size="1200,800" title="Transcoding Setup" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,560" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-		<widget source="text" render="Label" position="10,600" size="1180,50" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget source="description" render="Label" position="10,650" size="1180,70" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,560" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+		<widget source="text" render="Label" position="10,600" size="1180,50" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget source="description" render="Label" position="10,650" size="1180,70" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="EPGImportConfig" position="center,center" size="1200,800" title="EPG Import Configuration" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,400" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,400" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
 		<widget name="status" position="10,450" size="1180,200" font="Regular;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
 		<widget name="statusbar" position="10,650" size="1180,70" font="Regular;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="EPGImportSources" position="center,center" size="1200,800" title="EPG Import Sources" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,700" font="Prive4;30" name="list" position="10,10" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,700" font="WarderRadio;30" name="list" position="10,10" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="EPGImportLog" position="center,center" size="1200,800" title="EPG Import Log" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="Prive4;32" name="list" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="WarderRadio;32" name="list" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
   <screen name="EPGImportProfile" position="center,center" size="1200,800" title="EPG Import Profile" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,400" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,400" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
   </screen> 
 	
   	<screen name="EPGRefreshServiceEditor" position="center,center" size="1200,800" title="EPG Refresh ServiceEditor" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
   <screen name="EPGRefreshConfigurationFunctionContextMenu" position="center,center" size="1200,800" title="EPGRefresh Functions">
       <widget backgroundColor="background" enableWrapAround="1" position="10,10" render="Listbox" scrollbarMode="showOnDemand" size="1180,700" source="menu" transparent="1">
@@ -5607,51 +5608,51 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <eLabel text="OK" font="Prive3;32" position="600,740" size="600,50" halign="center" foregroundColor="white" backgroundColor="background" transparent="1" />
   </screen>    	
  <screen name="EPGSaveLoadConfiguration" position="center,center" size="1200,980">
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
 			<widget source="epgcachelocation" render="Label" position="10,740" size="1180,80" zPosition="1" font="Regular;32" halign="left" valign="center" transparent="1" />
 			<widget source="help" render="Label" position="10,820" size="1180,120" font="Regular;32" halign="left" valign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,940" size="600,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,940" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,940" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,940" size="600,40" valign="center" halign="center" transparent="1" />
 		</screen>
 		<screen name="EPGRefreshProfile" position="center,center" size="600,360" title="EPGRefreshProfile" >
-			<widget backgroundColor="background" name="config" position="0,0" size="600,320" font="Prive4;32" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+			<widget backgroundColor="background" name="config" position="0,0" size="600,320" font="WarderRadio;32" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
 			<widget backgroundColor="background" name="key_red" position="0,320" size="300,40" valign="center" halign="center" zPosition="4"  foregroundColor="red" font="Regular;32" transparent="1"/> 
 			<widget backgroundColor="background" name="key_green" position="300,320" size="300,40" valign="center" halign="center" zPosition="4"  foregroundColor="green" font="Regular;32" transparent="1"/> 
 		</screen>
 	<screen name="OMBManagerPreferences" position="center,center" size="1200,800" title="OMBManager Preferences" backgroundColor="background" >
-    <widget backgroundColor="background" size="1180,720" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="1200,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" size="1180,720" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="1200,40" valign="center" halign="center" transparent="1" />
 	</screen>    
 	<screen name="OMBManagerList" position="center,center" size="1200,800" title="OMBManager" backgroundColor="background" >
-    <widget backgroundColor="background" source="list" render="Listbox" font="Prive4;32" itemHeight="40" position="10,10" zPosition="3" size="1180,550" scrollbarMode="showOnDemand" transparent="1">
+    <widget backgroundColor="background" source="list" render="Listbox" font="WarderRadio;32" itemHeight="40" position="10,10" zPosition="3" size="1180,550" scrollbarMode="showOnDemand" transparent="1">
     <convert type="StringList"/>
     </widget>
-		<widget name="label1" position="10,600" size="1180,50" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="label2" position="10,650" size="1180,50" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+		<widget name="label1" position="10,600" size="1180,50" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="label2" position="10,650" size="1180,50" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>    
   <screen name="OMBManagerInstall" position="center,center" size="1200,800" title="OMBManager Install">
-		<widget name="info" position="10,10" size="1180,50" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-      <widget backgroundColor="background" enableWrapAround="1" position="10,100" font="Prive4;32" itemHeight="40" render="Listbox" scrollbarMode="showOnDemand" size="1180,600" source="list" transparent="1">
+		<widget name="info" position="10,10" size="1180,50" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+      <widget backgroundColor="background" enableWrapAround="1" position="10,100" font="WarderRadio;32" itemHeight="40" render="Listbox" scrollbarMode="showOnDemand" size="1180,600" source="list" transparent="1">
     <convert type="StringList"/>
     </widget>
   </screen>
   <screen name="OMBManagerAbout" position="center,center" size="1200,800" title="OMBManager About">
-		<widget name="about" position="10,10" size="1180,700" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="about" position="10,10" size="1180,700" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
     <eLabel text="Exit" font="Prive3;32" position="0,740" size="1200,50" halign="center" foregroundColor="red" backgroundColor="background" transparent="1" />
   </screen>
 	<screen name="SoftcamPanel" position="center,center" size="1200,800" title="Softcam Panel" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,160" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-		<widget name="actifcam" position="10,200" size="590,50" font="Prive4;32" halign="left" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="actifcam2" position="600,200" size="600,50" font="Prive4;32" halign="left" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="ecminfo" position="10,250" size="1180,450" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,160" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+		<widget name="actifcam" position="10,200" size="590,50" font="WarderRadio;32" halign="left" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="actifcam2" position="600,200" size="600,50" font="WarderRadio;32" halign="left" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="ecminfo" position="10,250" size="1180,450" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen> 
 	<screen name="ShowSoftcamPackages" position="center,center" size="1200,800" title="Install Softcams" backgroundColor="background" >
 		<widget source="list" render="Listbox" position="0,0" size="1200,675" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1">
@@ -5667,22 +5668,22 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 				}
 			</convert>
 		</widget>
-    <eLabel backgroundColor="background" font="Prive4;32" text="OK  =  " foregroundColor="white" position="800,750" size="200,40" valign="right" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_ok" foregroundColor="white" position="1000,750" size="200,40" valign="left" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <eLabel backgroundColor="background" font="WarderRadio;32" text="OK  =  " foregroundColor="white" position="800,750" size="200,40" valign="right" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_ok" foregroundColor="white" position="1000,750" size="200,40" valign="left" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="ImageBackup" position="center,center" size="1200,800" title="Image Backup" backgroundColor="background" >
-		<widget source="description" render="Label" position="10,0" size="1180,250" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="config" position="10,260" size="1180,480" itemHeight="40" font="Prive4;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
+		<widget source="description" render="Label" position="10,0" size="1180,250" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="config" position="10,260" size="1180,480" itemHeight="40" font="WarderRadio;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
 	</screen>  	
 	<screen name="ScriptRunner" position="center,center" size="1200,800" title="Job Manager" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,560" font="Prive4;32" name="list" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-		<widget name="lab1" position="10,600" size="1180,120" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,560" font="WarderRadio;32" name="list" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+		<widget name="lab1" position="10,600" size="1180,120" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="Swap" position="center,center" size="1200,800" title="Swap Manager" backgroundColor="background" >
 		<widget name="lab2" position="10,10" size="300,40" font="Regular;30" backgroundColor="background" valign="center" transparent="1"/>
@@ -5695,13 +5696,13 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 		<widget name="autostart_off" position="10,200" zPosition="1" pixmap="skin_default/icons/lock_off.png" size="32,32" alphatest="on" />
 		<widget name="autostart_on" position="10,200" zPosition="2" pixmap="skin_default/icons/lock_on.png" size="32,32" alphatest="on" />
 		<widget name="lab1" position="110,200" size="700,40" font="Regular;30" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen> 
 <screen name="Infopanel" position="center,center" size="900,650" title="INFO Panel" >
 	<widget name="Mlist" position="10,10" size="880,600" font="Prive4;33" itemHeight="75" zPosition="1" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
-	<widget name="label1" position="10,610" size="880,40" font="Prive4;30" transparent="1" backgroundColor="background" foregroundColor="#f2e000" halign="left" />
+	<widget name="label1" position="10,610" size="880,40" font="WarderRadio;30" transparent="1" backgroundColor="background" foregroundColor="#f2e000" halign="left" />
 </screen>
 <screen name="Info"  position="center,center" size="950,850" title="PANEL-Info" backgroundColor="background" >
 	<widget name="label2" position="0,0" size="1200,40" font="Regular;30" transparent="1" backgroundColor="background" halign="center" foregroundColor="#f2e000" />
@@ -5711,38 +5712,38 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 	<widget name="label1" position="20,10" size="930,780" font="Regular;30" zPosition="1"  backgroundColor="background" transparent="1" />
 </screen>
   	<screen name="YoutubeTVSettings" position="center,center" size="1200,800" title="YoutubeTV Settings" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,720" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="YoutubeTVWindow" position="center,center" size="1200,400" title="YoutubeTV" backgroundColor="background" >
-		<widget name="infomation" position="10,10" size="1180,100" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="startdesc" position="50,200" size="700,60" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="helpdesc" position="50,260" size="700,60" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,200" size="550,40" valign="center" halign="right" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,260" size="550,40" valign="center" halign="right" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="600,320" size="550,40" valign="center" halign="right" transparent="1" />
+		<widget name="infomation" position="10,10" size="1180,100" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="startdesc" position="50,200" size="700,60" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="helpdesc" position="50,260" size="700,60" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,200" size="550,40" valign="center" halign="right" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,260" size="550,40" valign="center" halign="right" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="600,320" size="550,40" valign="center" halign="right" transparent="1" />
 	</screen> 
     <screen name="AutoPinConfigurePlus" position="center,center" size="1200,800" title="Auto Pin Plus Settings" backgroundColor="background" >
-        <widget backgroundColor="background" enableWrapAround="1" name="config" position="10,10" font="Prive4;32" itemHeight="40" scrollbarMode="showOnDemand" size="1180,560" transparent="1" />
+        <widget backgroundColor="background" enableWrapAround="1" name="config" position="10,10" font="WarderRadio;32" itemHeight="40" scrollbarMode="showOnDemand" size="1180,560" transparent="1" />
          <widget backgroundColor="background" font="Regular;32" name="buttonred" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="buttongreen" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="buttonyellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="buttonblue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
     </screen>
 		<screen name="ChromiumOSSettings" position="center,center" size="1200,800" title="ChromiumOS Settings" >
-        <widget backgroundColor="background" enableWrapAround="1" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-        <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" /> 
+        <widget backgroundColor="background" enableWrapAround="1" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+        <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" /> 
 		</screen>  
 	<screen name="ChromiumOSWindow" position="center,center" size="1200,400" title="Start ChromiumOS" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" font="Prive4;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,120" transparent="1" />
-		<widget name="startdesc" position="50,200" size="700,60" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="settingdesc" position="50,260" size="700,60" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="helpdesc" position="50,320" size="700,60" font="Prive4;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,200" size="550,40" valign="center" halign="right" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,260" size="550,40" valign="center" halign="right" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="600,320" size="550,40" valign="center" halign="right" transparent="1" />
+    <widget backgroundColor="background" enableWrapAround="1" font="WarderRadio;32" name="config" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,120" transparent="1" />
+		<widget name="startdesc" position="50,200" size="700,60" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="settingdesc" position="50,260" size="700,60" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="helpdesc" position="50,320" size="700,60" font="WarderRadio;32" halign="left" valign="top" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,200" size="550,40" valign="center" halign="right" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,260" size="550,40" valign="center" halign="right" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="600,320" size="550,40" valign="center" halign="right" transparent="1" />
 	</screen> 
 <screen name="TimeshiftState" position="528,75" zPosition="2" size="192,90" backgroundColor="background" flags="wfNoBorder">
 	<widget name="state" position="0,0" size="192,45" font="Regular;36" halign="center" backgroundColor="background" />
@@ -5755,7 +5756,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
         <widget name="buttongreen" position="390,10" size="360,40" zPosition="1" font="Regular;30" halign="center" valign="center" foregroundColor="green" backgroundColor="black" transparent="1" />
         <widget name="buttonyellow" position="765,10" size="360,40" zPosition="1" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="black" transparent="1" />
         <widget name="buttonblue" position="1140,10" size="360,40" zPosition="1" font="Regular;30" halign="center" valign="center" foregroundColor="blue" backgroundColor="black" transparent="1" />
-        <widget name="config" position="15,70" size="1485,640" font="Prive4;32" itemHeight="40" scrollbarMode="showOnDemand" />
+        <widget name="config" position="15,70" size="1485,640" font="WarderRadio;32" itemHeight="40" scrollbarMode="showOnDemand" />
         <widget name="info"  position="1305,830" size="90,45" alphatest="on" />
         <widget name="menu"  position="1200,830" size="90,45" alphatest="on" />
         <widget name="pvr"   position="1410,830" size="90,45" alphatest="on" />
@@ -6407,13 +6408,13 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 			<widget name="key_green" position="510,759" size="300,39" zPosition="1" font="Regular;33" halign="left" transparent="1" />
   </screen>
     <screen name="PartnerboxEntryConfigScreen" position="center,center" size="1200,800" title="Partnerbox Config" backgroundColor="background" >
-         <widget backgroundColor="background" enableWrapAround="1" name="config" font="Prive4;32" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
+         <widget backgroundColor="background" enableWrapAround="1" name="config" font="WarderRadio;32" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="key_blue" foregroundColor="blue" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
      </screen>
     <screen name="PartnerboxSetup" position="center,center" size="1200,800" title="Partnerbox Setup" backgroundColor="background" >
-         <widget backgroundColor="background" enableWrapAround="1" name="config" font="Prive4;32" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
+         <widget backgroundColor="background" enableWrapAround="1" name="config" font="WarderRadio;32" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" size="1180,600" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
         <widget backgroundColor="background" font="Regular;32" name="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
@@ -6430,8 +6431,8 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     </screen>
   <screen name="DevicePanelConf" position="center,center" size="1280,560" title="DevicePanelConf">
     <widget name="config" position="15,120" size="1250,425" font="Prive3;33" itemHeight="40" zPosition="10" scrollbarMode="showOnDemand" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,10" size="230,80" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="240,10" size="230,80" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,10" size="230,80" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="240,10" size="230,80" valign="center" halign="center" transparent="1" />
   </screen>
     <screen name="HddMount" position="center,center" size="975,560" title="Hard Drive Mount">
     <widget source="list" render="Listbox" position="15,120" size="945,425" scrollbarMode="showOnDemand">
@@ -6446,14 +6447,14 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 				}
 			</convert>
     </widget>
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,10" size="230,80" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="240,10" size="230,80" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="480,10" size="230,80" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="720,10" size="230,80" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,10" size="230,80" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="240,10" size="230,80" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="480,10" size="230,80" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="720,10" size="230,80" valign="center" halign="center" transparent="1" />
   </screen>
 	<screen name="NamezapSetup" position="center,center" size="1200,800" title="Namezap Setup" backgroundColor="background" >
-    <widget backgroundColor="background" enableWrapAround="1" size="1180,560" name="config" font="Prive4;32" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
-		<widget source="help" render="Label" position="10,600" size="1180,120" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+    <widget backgroundColor="background" enableWrapAround="1" size="1180,560" name="config" font="WarderRadio;32" position="10,10" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+		<widget source="help" render="Label" position="10,600" size="1180,120" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
         <widget render="Label" source="key_red" position="0,700" size="600,100" zPosition="5" valign="center" halign="center" backgroundColor="background" font="Regular;32" transparent="1" foregroundColor="red" />
         <widget render="Label" source="key_green" position="600,700" size="600,100" zPosition="5" valign="center" halign="center" backgroundColor="background" font="Regular;32" transparent="1" foregroundColor="green" />
  	</screen>
@@ -6526,9 +6527,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <screen name="HotkeySetupSelect" position="center,center" size="1800,800" title="Hotkey Setup" backgroundColor="background" >
     <widget name="list" position="800,10" size="980,720" scrollbarMode="showOnDemand"/>
     <widget name="choosen" position="0,10" size="780,720" scrollbarMode="showOnDemand"/>
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="600,60" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="600,750" size="600,60" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="1200,750" size="600,60" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="600,60" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="600,750" size="600,60" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="1200,750" size="600,60" valign="center" halign="center" transparent="1" />
   </screen>
 <screen name="VIXBackupManager" position="center,center" size="820,850" title="Backup Manager">
 <ePixmap pixmap="hd_glass17/skin_default/buttons/key_info.png" position="680,784" size="52,37" alphatest="blend"/>
@@ -6541,9 +6542,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <ePixmap pixmap="hd_glass17/buttons/key_red.png" position="30,720" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_green.png" position="440,720" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_yellow.png" position="30,780" size="48,48" alphatest="blend"/>
-<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
 </screen>
 <screen name="VIXBackupManagerLogView" position="center,center" size="820,850" title="LogView">
 <widget name="list" position="20,20" size="780,820" font="Regular;28" halign="left" backgroundColor="#16000000" transparent="1"/>
@@ -6558,10 +6559,10 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <ePixmap pixmap="hd_glass17/buttons/key_green.png" position="440,720" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_yellow.png" position="30,780" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_blue.png" position="440,780" size="48,48" alphatest="blend"/>
-<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_blue" position="500,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_blue" position="500,764" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
 </screen>
 <screen name="VIXImageManager" position="center,center" size="820,850" title="ImageManager">
 <ePixmap pixmap="hd_glass17/skin_default/buttons/key_menu.png" position="740,784" size="52,37" alphatest="blend"/>
@@ -6573,9 +6574,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <ePixmap pixmap="hd_glass17/buttons/key_red.png" position="30,720" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_green.png" position="440,720" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_yellow.png" position="30,780" size="48,48" alphatest="blend"/>
-<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
 </screen>
 <screen name="ImageManagerDownload" position="center,center" size="820,850" title="Downloads">
 <widget name="list" position="10,20" size="800,400" font="Regular;28" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1"/>
@@ -6586,10 +6587,10 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <ePixmap pixmap="hd_glass17/buttons/key_green.png" position="440,720" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_yellow.png" position="30,780" size="48,48" alphatest="blend"/>
 <ePixmap pixmap="hd_glass17/buttons/key_blue.png" position="440,780" size="48,48" alphatest="blend"/>
-<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
-<widget name="key_blue" position="500,764" size="310,70" zPosition="1" font="Prive4;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_red" position="90,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_green" position="500,704" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_yellow" position="90,764" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
+<widget name="key_blue" position="500,764" size="310,70" zPosition="1" font="WarderRadio;30" halign="left" valign="center" foregroundColor="white" transparent="1"/>
 </screen>
 <screen name="EventViewContextMenuChoiceBox" position="center,240" size="820,640" title="Event View Context Menu">
 <widget name="menu" position="20,20" size="780,600" font="Prive3;33" itemHeight="40" scrollbarMode="showOnDemand" />
@@ -6608,38 +6609,38 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_blue" render="Label" position="1200,750" size="360,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" />
   </screen> 	
 	<screen name="DeviceBrowser" position="center,center" size="1200,800" title="Please select target medium" backgroundColor="background" >
-    <widget source="message" render="Label" position="10,10" size="1180,40" font="Prive4;30"  halign="center" transparent="1"/>
-    <widget name="filelist" position="10,60" size="1180,680" font="Prive4;30" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget source="message" render="Label" position="10,10" size="1180,40" font="WarderRadio;30"  halign="center" transparent="1"/>
+    <widget name="filelist" position="10,60" size="1180,680" font="WarderRadio;30" itemHeight="40" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen> 
     <screen name="ButtonSetup" position="center,center" size="1600,800" title="Hotkey Setup" backgroundColor="background" >
     <widget name="list" position="800,0" size="780,720" scrollbarMode="showOnDemand"/>
     <widget name="choosen" position="0,0" size="780,720" scrollbarMode="showOnDemand"/>
-		<widget name="description" position="0,730" size="1600,70" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+		<widget name="description" position="0,730" size="1600,70" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
   </screen>
     <screen name="ButtonSetupSelect" position="center,center" size="1800,870" title="Hotkey Setup" backgroundColor="background" >
     <widget name="list" position="800,10" size="980,720" scrollbarMode="showOnDemand"/>
     <widget name="choosen" position="0,10" size="780,720" scrollbarMode="showOnDemand"/>
-		<widget name="description" position="0,730" size="1800,70" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,810" size="900,60" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="900,810" size="900,60" valign="center" halign="center" transparent="1" />
+		<widget name="description" position="0,730" size="1800,70" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,810" size="900,60" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="900,810" size="900,60" valign="center" halign="center" transparent="1" />
   </screen>
     <screen name="RemoteControlCode" position="center,center" size="1200,800" title="Remote Control Code" backgroundColor="background" >
-    <widget name="config" position="0,10" size="1200,80" itemHeight="40" font="Prive4;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
-		<widget name="description" position="0,500" size="1200,200" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-		<widget name="footnote" position="0,700" size="1200,50" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,60" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="900,60" valign="center" halign="center" transparent="1" />
+    <widget name="config" position="0,10" size="1200,80" itemHeight="40" font="WarderRadio;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
+		<widget name="description" position="0,500" size="1200,200" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+		<widget name="footnote" position="0,700" size="1200,50" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,60" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="900,60" valign="center" halign="center" transparent="1" />
   </screen>
     <screen name="BluetoothSetupConfig" position="center,center" size="1200,800" title="Bluetooth Setup Options" backgroundColor="background" >
-    <widget name="config" position="0,10" size="1200,80" itemHeight="40" font="Prive4;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
-		<widget name="description" position="0,500" size="1200,200" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-		<widget name="footnote" position="0,700" size="1200,50" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,60" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="900,60" valign="center" halign="center" transparent="1" />
+    <widget name="config" position="0,10" size="1200,80" itemHeight="40" font="WarderRadio;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
+		<widget name="description" position="0,500" size="1200,200" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+		<widget name="footnote" position="0,700" size="1200,50" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,60" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="900,60" valign="center" halign="center" transparent="1" />
   </screen>
 	<screen name="BluetoothSetupScreen" position="center,center" size="1200,800" title="Bluetooth Setup" backgroundColor="background">
 		<widget source="deviceList" render="Listbox" position="0,0" size="1200,630" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="background" backgroundColorSelected="background" transparent="1" >
@@ -6656,11 +6657,11 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 			}
 			</convert>
 		</widget>
-		<widget source="description" render="Label" position="0,650" size="1200,100" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+		<widget source="description" render="Label" position="0,650" size="1200,100" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="btscan" >
 		<widget source="deviceList" render="Listbox" position="0,0" size="1200,630" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="background" backgroundColorSelected="background" transparent="1" >
@@ -6675,11 +6676,11 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 				}
 			</convert>
 		</widget>
-		<widget source="description" render="Label" position="0,650" size="1200,100" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+		<widget source="description" render="Label" position="0,650" size="1200,100" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="BluetoothDiscoveryScreen" position="center,center" size="1200,800" title="Bluetooth Scan" backgroundColor="background">
 		<panel name="btscan"/>
@@ -6688,25 +6689,25 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 		<panel name="btscan"/>
 	</screen>
     <screen name="AnimationSetupScreen" position="center,center" size="1200,800" title="Animation Setup" backgroundColor="background" >
-    <widget name="list" position="0,0" size="1200,640" itemHeight="40" font="Prive4;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
-		<widget source="introduction" render="Label" position="0,650" size="1200,100" font="Prive4;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget name="list" position="0,0" size="1200,640" itemHeight="40" font="WarderRadio;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
+		<widget source="introduction" render="Label" position="0,650" size="1200,100" font="WarderRadio;30" halign="center" backgroundColor="background" valign="center" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
   </screen>
     <screen name="AnimationSetupConfig" position="center,center" size="1200,800" title="Animation Setup" backgroundColor="background" >
-    <widget name="config" position="0,0" size="1200,720" itemHeight="40" font="Prive4;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget name="config" position="0,0" size="1200,720" itemHeight="40" font="WarderRadio;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
   </screen>  
 	<screen name="SelectImage" position="center,center" size="1200,800" title="Select Image" backgroundColor="background" >
-		<widget name="list" position="0,0" size="1200,720" itemHeight="40" font="Prive4;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+		<widget name="list" position="0,0" size="1200,720" itemHeight="40" font="WarderRadio;32" backgroundColor="background" scrollbarMode="showOnDemand"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen>      
 <screen name="SatBlindscanState" position="center,center" size="1230,780" title="Satellite Blindscan" backgroundColor="background">
 <widget name="text" position="15,15" size="1200,37" font="Regular;30" />
@@ -6729,30 +6730,30 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <widget name="introduction" position="15,597" size="900,37" font="Regular;33" halign="center" />
 </screen>
 	<screen name="TextBox" position="0,0" size="1920,1080" title="TextBox" flags="wfNoBorder" backgroundColor="background">
-		<widget name="text" position="0,0" size="1920,1080" font="Prive4;32" scrollbarMode="showOnDemand" halign="center" valign="center" />
+		<widget name="text" position="0,0" size="1920,1080" font="WarderRadio;32" scrollbarMode="showOnDemand" halign="center" valign="center" />
 	</screen>
 	<screen name="MultiBootSelector" position="center,center" size="1200,800" title="MultiBoot Selector" backgroundColor="background" >
-		<widget source="description" render="Label" position="10,0" size="1180,250" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="config" position="10,260" size="1180,480" itemHeight="40" font="Prive4;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
+		<widget source="description" render="Label" position="10,0" size="1180,250" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="config" position="10,260" size="1180,480" itemHeight="40" font="WarderRadio;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="600,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="600,750" size="600,40" valign="center" halign="center" transparent="1" />
 	</screen>   
 	<screen name="MultiBootWizard" position="center,center" size="1200,800" title="MultiBoot Wizard" backgroundColor="background" >
-		<widget source="description" render="Label" position="10,0" size="1180,250" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
-		<widget name="config" position="10,260" size="1180,480" itemHeight="40" font="Prive4;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+		<widget source="description" render="Label" position="10,0" size="1180,250" font="WarderRadio;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
+		<widget name="config" position="10,260" size="1180,480" itemHeight="40" font="WarderRadio;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen>
 	<screen name="TunerScreen" position="center,center" size="1200,800" title="Tuner" backgroundColor="background" >
-		<widget name="config" position="10,20" size="1180,760" itemHeight="40" font="Prive4;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
+		<widget name="config" position="10,20" size="1180,760" itemHeight="40" font="WarderRadio;32" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
 	</screen> 	
 	<screen name="PositionerSetupLog" position="center,center" size="1200,800" title="Positioner Setup Log" backgroundColor="background" >
-    <widget name="list" position="10,10" size="1180,720" font="Prive4;30" itemHeight="40" enableWrapAround="1" backgroundColor="background" scrollbarMode="showOnDemand" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget name="list" position="10,10" size="1180,720" font="WarderRadio;30" itemHeight="40" enableWrapAround="1" backgroundColor="background" scrollbarMode="showOnDemand" transparent="1"/>
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="WarderRadio;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen> 
   <screen name="iptvArchiveInfoBar" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="off" />
@@ -6795,7 +6796,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
       <convert type="EventTime">Duration</convert>
       <convert type="g17ClockToText">InMinutes</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="90,822" size="240,52" font="Prive4;24" valign="center" halign="center" transparent="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" zPosition="2">
+    <widget source="session.CurrentService" render="Label" position="90,822" size="240,52" font="WarderRadio;24" valign="center" halign="center" transparent="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" zPosition="2">
       <convert type="g17ServiceInfo">VideoResolution</convert>
     </widget>
     <ePixmap position="1620,894" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
@@ -6811,23 +6812,23 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <eLabel position="0,70" size="1920,620" backgroundColor="background" transparent="0" />
   <eLabel position="40,140" size="1840,2" backgroundColor="white" transparent="0" />
   <eLabel position="954,90" size="2,580" backgroundColor="white" transparent="0" />
-  <widget source="session.Event_Now" position="40,160" size="880,510" render="Label" zPosition="1" font="Prive4;32" foregroundColor="white" backgroundColor="background" transparent="1">
+  <widget source="session.Event_Now" position="40,160" size="880,510" render="Label" zPosition="1" font="WarderRadio;32" foregroundColor="white" backgroundColor="background" transparent="1">
     <convert type="EventName">FullDescription</convert>
   </widget>
-  <widget source="session.Event_Next" position="990,160" size="880,510" render="Label" zPosition="1" font="Prive4;32" foregroundColor="grey" backgroundColor="background" transparent="1">
+  <widget source="session.Event_Next" position="990,160" size="880,510" render="Label" zPosition="1" font="WarderRadio;32" foregroundColor="grey" backgroundColor="background" transparent="1">
     <convert type="EventName">FullDescription</convert>
   </widget>
-  <widget backgroundColor="background" font="Prive4;32" halign="left" noWrap="1" position="40,90" render="Label" size="880,50" source="session.Event_Now" zPosition="1" transparent="1" foregroundColor="white">
+  <widget backgroundColor="background" font="WarderRadio;32" halign="left" noWrap="1" position="40,90" render="Label" size="880,50" source="session.Event_Now" zPosition="1" transparent="1" foregroundColor="white">
     <convert type="EventName">Name</convert>
   </widget>
-  <widget backgroundColor="background" font="Prive4;32" halign="left" noWrap="1" position="990,90" render="Label" size="880,50" source="session.Event_Next" zPosition="1" transparent="1" foregroundColor="grey">
+  <widget backgroundColor="background" font="WarderRadio;32" halign="left" noWrap="1" position="990,90" render="Label" size="880,50" source="session.Event_Next" zPosition="1" transparent="1" foregroundColor="grey">
     <convert type="EventName">Name</convert>
   </widget>
-  <widget backgroundColor="background" font="Prive4;32" halign="right" position="760,90" render="Label" size="165,50" source="session.Event_Now" transparent="1" foregroundColor="white" zPosition="1">
+  <widget backgroundColor="background" font="WarderRadio;32" halign="right" position="760,90" render="Label" size="165,50" source="session.Event_Now" transparent="1" foregroundColor="white" zPosition="1">
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
-  <widget backgroundColor="background" font="Prive4;32" halign="right" position="1715,90" render="Label" size="165,50" source="session.Event_Next" transparent="1" foregroundColor="grey" zPosition="1">
+  <widget backgroundColor="background" font="WarderRadio;32" halign="right" position="1715,90" render="Label" size="165,50" source="session.Event_Next" transparent="1" foregroundColor="grey" zPosition="1">
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
@@ -6871,7 +6872,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
       <convert type="EventTime">Duration</convert>
       <convert type="g17ClockToText">InMinutes</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="90,822" size="240,52" font="Prive4;24" valign="center" halign="center" transparent="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" zPosition="2">
+    <widget source="session.CurrentService" render="Label" position="90,822" size="240,52" font="WarderRadio;24" valign="center" halign="center" transparent="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" zPosition="2">
       <convert type="g17ServiceInfo">VideoResolution</convert>
     </widget>
     <ePixmap position="1620,894" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
@@ -7212,7 +7213,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,760" size="900,60" zPosition="4" transparent="1"/>
 		</screen>
 <screen name="Fantastic" position="360,160" size="1200,800" title="Restore backups" backgroundColor="background">
-<widget backgroundColor="background" size="1180,700" font="Prive4;32" name="menu" position="10,70" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
+<widget backgroundColor="background" size="1180,700" font="WarderRadio;32" name="menu" position="10,70" itemHeight="40" scrollbarMode="showOnDemand" transparent="1" />
 <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MyUpdater/logo.png" position="420,10" size="350,50" alphatest="blend" />
 </screen>           		  
 <screen name="NumberZapExt" position="center,center" size="900,240" title=" ">
@@ -7937,7 +7938,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <screen name="GraphicalEPG" position="15,15" size="1890,1050" backgroundColor="black" title="FullHDGlass Graphical Guide">
     <widget source="Title" render="Label" position="30,15" size="1230,45" font="Prive4;33" foregroundColor="#cdcdcd" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1395,15" size="150,45" font="Prive4;33" halign="right" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ClockToText">Default</convert></widget>
-    <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1560,15" size="285,45" font="Prive4;30" halign="right" foregroundColor="#cdcdcd" transparent="1" />
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%m.%Y" fTyp="1" position="1560,15" size="285,45" font="WarderRadio;30" halign="right" foregroundColor="#cdcdcd" transparent="1" />
     <widget name="timeline_text" position="105,72" size="1755,45" backgroundColor="black" transparent="1" />
     <widget name="lab1" position="15,117" size="1845,645" font="Prive3;33" halign="center" valign="center" backgroundColor="black" />
     <widget name="list" position="15,117" size="1845,645" font="Prive3;30" scrollbarMode="showNever" transparent="1" />
@@ -7956,9 +7957,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   </screen>
 
   <screen name="GraphicalEPGPIG" position="15,15" size="1890,1050" backgroundColor="black" title="FullHDGlass Graphical Guide">
-    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1"><convert type="ClockToText">WithSeconds</convert></widget>
-    <eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%m.%Y" fTyp="1" position="30,12" size="390,42" font="WarderRadio;30" foregroundColor="#e5b243" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="435,12" size="210,42" font="WarderRadio;30" foregroundColor="#eeeeee" transparent="1"><convert type="ClockToText">WithSeconds</convert></widget>
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="WarderRadio;24" halign="right" foregroundColor="#888888" transparent="1" />
     <eLabel position="30,60" size="555,315" zPosition="0" backgroundColor="black" />
     <widget source="session.VideoPicture" render="Pig" position="33,63" size="549,309" zPosition="3" backgroundColor="#ff000000" />
     <widget source="Event" render="Label" position="615,66" size="180,39" font="Prive3;30" foregroundColor="#e5b243" transparent="1"><convert type="EventTime">StartTime</convert><convert type="ClockToText" /></widget>
