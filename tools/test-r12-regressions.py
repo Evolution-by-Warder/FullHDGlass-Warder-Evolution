@@ -1038,13 +1038,19 @@ assert '<convert type="ServiceName">Name</convert>' in radio125
 assert 'TEST125 · Prive4;33 · FullHDGlass17' not in SKIN
 
 # TEST126 physical FAIL: clean same-desktop eLabel remained visibly jagged.
-# TEST127 physical INCONCLUSIVE: synthetic ServiceList had no populated root/list content.
-# TEST128 physical PASS (diagnostic): real ChannelSelectionRadio/ServiceListLegacy text is visibly crisp.
-# TEST129 physical INCONCLUSIVE: populated synthetic one-row ServiceListLegacy still produced no usable service text; probe retired.
-assert 'WarderRadioParaProbe' not in PLUGIN
-assert 'from Components.ServiceList import ServiceListLegacy' not in PLUGIN
+# TEST127 physical INCONCLUSIVE: synthetic ServiceList had no populated real root.
+# TEST128 physical PASS: real ChannelSelectionRadio/ServiceListLegacy is visibly crisp.
+# TEST129 physical INCONCLUSIVE: synthetic addService probe did not render usable text.
+# TEST130 physical PASS: real ChannelSelectionRadio remains crisp with Prive4;33 and 42px row; geometry excluded.
+radio_cs131 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
+assert 'serviceNameFont="Prive4;33"' not in radio_cs131
+assert 'serviceItemHeight="42"' not in radio_cs131
 
-# TEST130: real ChannelSelectionRadio only; test the stable Radio row height with the exact TV font.
-radio_cs130 = re.search(r'<screen\b[^>]*name="ChannelSelectionRadio"[\s\S]*?</screen>', SKIN).group(0)
-assert 'serviceNameFont="Prive4;33"' in radio_cs130
-assert 'serviceItemHeight="42"' in radio_cs130
+# TEST131: one-row native ServiceListLegacy uses persisted real Radio bouquet root and current service.
+assert 'from Components.ServiceList import ServiceListLegacy' in PLUGIN
+assert 'class WarderRadioRootProbe(Screen):' in PLUGIN
+assert 'config.radio.lastroot.value.split(";")' in PLUGIN
+assert 'self.servicelist.setRoot(root)' in PLUGIN
+assert 'self.servicelist.setCurrent(ref, adjust=False)' in PLUGIN
+assert 'serviceNameFont="Prive4;33"' in PLUGIN
+assert 'serviceItemHeight="42"' in PLUGIN
