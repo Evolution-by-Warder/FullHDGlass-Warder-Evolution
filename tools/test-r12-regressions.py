@@ -15,7 +15,8 @@ WEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather
 EWEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py").read_text(encoding="utf-8")
 PROVIDER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
 RADIO_ART = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py").read_text(encoding="utf-8")
-RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")\nRADIO_INFO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoTop.py").read_text(encoding="utf-8")
+RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")
+RADIO_INFO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoTop.py").read_text(encoding="utf-8")
 
 rows = [x for x in CITY.splitlines() if x.startswith("om|")]
 sk = [x for x in rows if x.split("|")[3] == "SK"]
