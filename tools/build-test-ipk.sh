@@ -51,7 +51,7 @@ cp -a "$PAYLOAD"/. "$WORK"/
 # Never fall back to the retired synthetic generator: a missing/wrong master must fail CI.
 RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
 test -f "$RADIO_MASTER" || { echo "ERROR: approved TEST93 radio master missing: $RADIO_MASTER" >&2; exit 1; }
-RADIO_MASTER_SHA256="d73a31cc14dd8b7ab32348c791d99e47c60cd37ba9fff1ef41b213cd0d0e6c67"
+RADIO_MASTER_SHA256="ccfe41ca8b8b354b08b319de6ed935353c0aa806b8f899aa1895a0d3b365cd48"
 ACTUAL_RADIO_MASTER_SHA256="$(sha256sum "$RADIO_MASTER" | awk '{print $1}')"
 test "$ACTUAL_RADIO_MASTER_SHA256" = "$RADIO_MASTER_SHA256" || {
   echo "ERROR: TEST93 radio master SHA-256 mismatch: $ACTUAL_RADIO_MASTER_SHA256" >&2
@@ -63,9 +63,9 @@ from PIL import Image
 import sys
 path = sys.argv[1]
 with Image.open(path) as image:
-    if image.size != (1672, 941):
-        raise SystemExit("ERROR: TEST93 radio master must be exactly 1672x941, got %sx%s" % image.size)
-print("TEST93 radio master geometry: PASS 1672x941")
+    if image.size != (1920, 1080):
+        raise SystemExit("ERROR: TEST93 radio master must be exactly 1920x1080, got %sx%s" % image.size)
+print("TEST93 radio master geometry: PASS 1920x1080")
 PY
 
 command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
