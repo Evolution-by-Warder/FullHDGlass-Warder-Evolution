@@ -45,6 +45,7 @@ def main():
     ap.add_argument("--coverage", type=Path, default=DEFAULT_COVERAGE)
     ap.add_argument("--collisions", type=Path, default=DEFAULT_COLLISIONS)
     ap.add_argument("--output", type=Path)
+    ap.add_argument("--source-ref", default="warder-master-production")
     args = ap.parse_args()
 
     mapping = {r["selector_id"]: r for r in read_tsv(args.mapping)}
@@ -93,7 +94,7 @@ def main():
 
     doc = {
         "schema": 1,
-        "authority": "PiconHub-Warder-Evolution/warder-master-production",
+        "authority": "PiconHub-Warder-Evolution/" + args.source_ref,
         "policy": {
             "deterministic": True,
             "silent_conflict_resolution": False,
