@@ -1083,7 +1083,8 @@ assert '<eLabel position="27,15" size="1837,86"' not in radio136
 assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in SKIN
 assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' not in SKIN
 assert 'RADIO_TEST_MASTER="$WORK/usr/share/enigma2/hd_glass17/test-warder-radio-background.jpg"' in BUILD_TEST
-assert 'cp "$RADIO_TEST_MASTER" "$RADIO_MASTER"' in BUILD_TEST
+assert 'image.resize((1920, 1080), Image.Resampling.LANCZOS)' in BUILD_TEST
+assert 'image.save(staged_path, "JPEG", quality=95, subsampling=0)' in BUILD_TEST
 assert 'rm -f "$RADIO_TEST_MASTER"' in BUILD_TEST
 assert 'draw.rounded_rectangle(' not in BUILD_TEST
 assert 'class WarderRadioTopDisplay(Screen):' in PLUGIN
