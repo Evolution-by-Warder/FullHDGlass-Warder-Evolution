@@ -1,0 +1,85 @@
+name: Build Warder Channel Picon Packages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-channel-picons:
+    if: github.ref == 'refs/heads/warder-modernization-work'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout FullHDGlass work branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Checkout pinned Warder Master source
+        uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 2827fed5b2e6ae4697f08ca57a8c2298079d410f
+          path: .warder-master
+
+      - name: Generate audited package plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/generate-picon-package-plan.py \
+            --source-ref 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
+            --output /tmp/picon-package-plan.json
+          python3 - <<'PY'
+          import json
+          p=json.load(open("/tmp/picon-package-plan.json"))
+          ready=[x for x in p["selectors"] if x["state"]=="READY"]
+          blocked=[x for x in p["selectors"] if x["state"]=="BLOCKED"]
+          missing=[x for x in p["selectors"] if x["state"]=="MISSING_SOURCE"]
+          assert (len(ready),len(blocked),len(missing))==(38,2,17)
+          assert sum(len(x["eligible_families"]) for x in ready)==114
+          print("Pinned package plan: PASS (114 packages)")
+          PY
+
+      - name: Materialize deterministic packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/warder-picons-a /tmp/warder-picons-b
+          mkdir -p /tmp/warder-picons-a /tmp/warder-picons-b
+          python3 tools/materialize-picon-packages.py \
+            --source-root .warder-master \
+            --plan /tmp/picon-package-plan.json \
+            --output-dir /tmp/warder-picons-a \
+            --manifest /tmp/manifest-a.json \
+            --source-commit 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
+            --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons
+          python3 tools/materialize-picon-packages.py \
+            --source-root .warder-master \
+            --plan /tmp/picon-package-plan.json \
+            --output-dir /tmp/warder-picons-b \
+            --manifest /tmp/manifest-b.json \
+            --source-commit 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
+            --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons
+          diff -u /tmp/manifest-a.json /tmp/manifest-b.json
+          diff -qr /tmp/warder-picons-a /tmp/warder-picons-b
+          test "$(find /tmp/warder-picons-a -type f -name '*.zip' | wc -l)" -eq 114
+          mkdir -p dist/channel-picons
+          cp /tmp/warder-picons-a/*.zip dist/channel-picons/
+          cp /tmp/manifest-a.json dist/channel-picons/manifest.json
+          (cd dist/channel-picons && sha256sum *.zip | sort -k2 > SHA256SUMS)
+          python3 - <<'PY'
+          import json
+          m=json.load(open("dist/channel-picons/manifest.json"))
+          assert len(m["packages"])==114
+          assert m["generated_from"]["ref"]=="2827fed5b2e6ae4697f08ca57a8c2298079d410f"
+          print("Deterministic materialization: PASS")
+          PY
+
+      - name: Upload audited channel-picon artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: warder-channel-picons-2827fed5
+          path: dist/channel-picons/
+          if-no-files-found: error
+          retention-days: 14
