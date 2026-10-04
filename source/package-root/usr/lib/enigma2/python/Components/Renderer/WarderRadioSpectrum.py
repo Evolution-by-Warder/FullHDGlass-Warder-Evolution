@@ -17,19 +17,26 @@ class WarderRadioSpectrum(Renderer):
         self._levels = [2] * self._bars
         self._peaks = [2] * self._bars
         self._holds = [0] * self._bars
+        # Per-bar deterministic state.  Keep the effect self-contained and
+        # receiver-safe, but avoid driving every bar from one shared wave.
+        self._seeds = [((i + 1) * 1103515245 + 12345) & 0x7fffffff for i in range(self._bars)]
+        self._targets = [3 + (self._seeds[i] % 28) for i in range(self._bars)]
+        self._wait = [i % 4 for i in range(self._bars)]
         self._timer = eTimer()
         try:
             self._timer_conn = self._timer.timeout.connect(self._tick)
         except AttributeError:
             self._timer.callback.append(self._tick)
 
-    def _target(self, index):
-        # Small deterministic multi-wave motion: no random generator, I/O, FFT or subprocess.
-        a = (self._frame * (3 + (index % 4)) + index * 11) % 34
-        b = (self._frame * (2 + (index % 3)) + index * 7) % 26
-        a = 33 - abs(33 - (a * 2))
-        b = 25 - abs(25 - (b * 2))
-        return max(3, min(30, 4 + ((a * 2 + b) // 3)))
+    def _nextTarget(self, index):
+        # Independent deterministic pseudo-random stream per bar.  No random
+        # module, audio probing, I/O or subprocesses; only visual decoration.
+        seed = (self._seeds[index] * 1103515245 + 12345 + (index * 97)) & 0x7fffffff
+        self._seeds[index] = seed
+        # Bias most motion into the useful middle range, with occasional peaks.
+        a = (seed >> 8) % 28
+        b = (seed >> 17) % 28
+        return max(3, min(30, 3 + ((a + b) // 2)))
 
     def _color(self, step):
         if step >= 27:
@@ -68,12 +75,18 @@ class WarderRadioSpectrum(Renderer):
             return
         self._frame = (self._frame + 1) % 4096
         for i in range(self._bars):
-            target = self._target(i)
+            if self._wait[i] > 0:
+                self._wait[i] -= 1
+            elif self._levels[i] == self._targets[i]:
+                self._targets[i] = self._nextTarget(i)
+                self._wait[i] = (self._seeds[i] >> 5) % 4
+            target = self._targets[i]
             current = self._levels[i]
             if target > current:
-                current = min(target, current + 4)
+                # Different rise rates prevent a marching/synchronous look.
+                current = min(target, current + 2 + ((self._seeds[i] >> 3) % 3))
             else:
-                current = max(target, current - 2)
+                current = max(target, current - 1 - ((self._seeds[i] >> 6) % 2))
             self._levels[i] = current
             if current >= self._peaks[i]:
                 self._peaks[i] = current
