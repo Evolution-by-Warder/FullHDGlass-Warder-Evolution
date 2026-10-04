@@ -792,7 +792,7 @@ for token in ("hd_glass17/radio.mvi", "ffmpeg"):
 rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in ('source="session.CurrentService"', 'name="RassLogo"'):
     assert token in rds80, token
-for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"'):
+for token in ('source="global.CurrentTime"', 'render="WarderRadioTop"', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"'):
     assert token in rds80, token
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
     assert token not in rds80 and token not in PLUGIN, token
