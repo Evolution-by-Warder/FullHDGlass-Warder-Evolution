@@ -1,12 +1,13 @@
-TEST179 BUILD 1
-Radio artwork matcher only.
+TEST180 BUILD 1
+Radio artwork matcher controlled relaxation.
 
 Keep TEST178 physically approved artwork geometry unchanged: position 606,145 size 704,640.
-Keep TEST174 ePicLoad decode fix unchanged.
-Add one controlled matcher fallback:
-- strong normalized title match remains mandatory
-- permit catalogue artistName to add guest/collaboration credits when the leading artist still matches RDS
-- tolerate the already-approved trailing version/remix suffix form
-- no generic partial title matching
-- no station slogan matching
+Keep TEST179 matcher rules unchanged except this additional final fallback:
+- normalized song title must match exactly
+- RDS artist must equal the complete leading catalogue artist credit before the first comma
+- this targets catalogue-expanded credits such as HUNTR/X -> HUNTR/X, EJAE, AUDREY NUNA, REI AMI & KPop Demon Hunters Cast
+- do not allow generic artist substring matching
+- do not allow partial title matching
+- preserve rejection of station slogans/non-song RDS
 No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
+Fallback artwork asset will be integrated separately after visual approval; do not add it in this build.
