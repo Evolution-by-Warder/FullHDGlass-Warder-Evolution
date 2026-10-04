@@ -41,6 +41,8 @@ for row in rows:
         seen_keys.add(key)
         if key not in assets:
             errors.append("Warder manifest missing key %s" % key)
+        elif str(assets[key].get("sha256", "")).lower() != row["current_sha256"]:
+            errors.append("ledger/manifest SHA256 mismatch for %s" % key)
         if key not in families or families[key].get("status") not in ("available","internal-only"):
             errors.append("catalog does not expose migrated key %s" % key)
         sha = row["current_sha256"]
