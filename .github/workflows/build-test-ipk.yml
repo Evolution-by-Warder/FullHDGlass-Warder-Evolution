@@ -61,6 +61,7 @@ jobs:
           python3 tools/test-runtime-safety.py
           python3 tools/test-version-order.py
           python3 tools/test-r12-regressions.py
+          python3 tools/validate-legacy-ftp-migration.py
           python3 tools/generate-picon-package-plan.py --output /tmp/picon-package-plan.json
           python3 - <<'PY'
           import json
