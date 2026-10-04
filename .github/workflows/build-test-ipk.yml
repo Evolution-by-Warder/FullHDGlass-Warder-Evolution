@@ -37,7 +37,7 @@ jobs:
           grep -Eq -- '-test' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
           RADIO_MASTER="source/package-root/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
           test -f "$RADIO_MASTER"
-          echo "2d1e26b6c097d167d51c8ba9850b16c093171ac07e69ef3d69f4cbd9cae4939d  $RADIO_MASTER" | sha256sum -c -
+          echo "d73a31cc14dd8b7ab32348c791d99e47c60cd37ba9fff1ef41b213cd0d0e6c67  $RADIO_MASTER" | sha256sum -c -
           test "$(cat update.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')" = "1.0.4"
           ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .
           ! find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -print -quit | grep -q .
