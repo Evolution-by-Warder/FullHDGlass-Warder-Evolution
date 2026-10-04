@@ -877,6 +877,13 @@ assert 'render="WarderRadioTop"' not in radio
 assert 'position="62,27" size="610,58" font="Prive4;30"' in radio
 assert 'position="790,27" size="340,58" font="Prive4;38"' in radio
 assert 'position="1170,27" size="630,58" font="Prive4;30"' in radio
+# TEST167: colour-only Radio top trial. Geometry/text/ownership stay locked from TEST166.
+for token in (
+    'position="62,27" size="610,58" font="Prive4;30" foregroundColor="#F4C76A"',
+    'position="790,27" size="340,58" font="Prive4;38" foregroundColor="#F4C76A"',
+    'position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#F4C76A"',
+):
+    assert token in radio, token
 assert radio.count('valign="center" noWrap="1" transparent="1" zPosition="2"') >= 3
 assert '<convert type="ClockToText">WithSeconds</convert>' in radio
 assert 'Format:FullHDGlass17 · Warder Evolution' in radio
@@ -1001,6 +1008,12 @@ for token in ('warderRadioDate', 'warderRadioTime', 'warderRadioBrand', 'warderR
 assert 'marker.read(8).strip() == "A"' in RADIO_ONLY
 # TEST166: InfoPanel top uses native eLabel renderer that keeps text ownership and Radio gating together.
 assert PLUGIN.count('render="WarderRadioInfoTop"') == 3
+for token in (
+    'render="WarderRadioInfoTop" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#F4C76A"',
+    'render="WarderRadioInfoTop" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#F4C76A"',
+    'render="WarderRadioInfoTop" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#F4C76A"',
+):
+    assert token in PLUGIN, token
 assert '<convert type="WarderRadioOnly">Boolean</convert>' not in PLUGIN.split('warder_radio_top = """', 1)[1].split('"""', 1)[0]
 for token in ('GUI_WIDGET = eLabel', 'marker.read(8).strip() == "A"', 'self.instance.setText("")', 'FullHDGlass17 · Warder Evolution'):
     assert token in RADIO_INFO_TOP, token
