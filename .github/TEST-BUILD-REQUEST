@@ -1,10 +1,10 @@
-TEST171 BUILD 1
-Radio background + yellow TOP physical test.
+TEST172 BUILD 1
+Radio artwork fit physical test.
 
-Use approved updated warder-radio-background.jpg.
-SHA256: 2d758e0cb7a989ea78f8fb7ec85459d307a2f73e7af202a5b5f85005dea19d23
-
-Keep TEST166 Radio TOP geometry and ownership.
-Set only the three Radio TOP fields to #FFE16A in clean Radio and injected InfoPanel.
-GraphicalEPGPIG ExtendedDescription restored to #eeeeee after TEST170 regression failure.
-Do not change bottom, artwork, equalizer or Radio lifecycle.
+Keep TEST171 background, TOP and bottom unchanged.
+Change only center artwork geometry:
+- x=580 y=145
+- width=760 height=620
+This widens the usable center area and lowers the artwork so it sits slightly below the upper frame line instead of touching/protruding into it.
+Preserve receiver-proven aspect handling and exact-song artwork lookup.
+Do not change Radio lifecycle, picon, equalizer, text or ownership.
