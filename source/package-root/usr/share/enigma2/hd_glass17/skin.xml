@@ -1616,7 +1616,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="Prive4;29" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="3">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;33" noWrap="1" foregroundColor="#eeeeee" transparent="1" zPosition="3" />
+    <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;33" noWrap="1" foregroundColor="#F4C76A" transparent="1" zPosition="3" />
     <widget name="RtpText" position="420,955" size="1000,38" font="Prive4;25" noWrap="1" foregroundColor="#3388dd" transparent="1" zPosition="3" />
 
     <!-- Right-bottom contract: decorative spectrum above real dynamic ServiceName/Provider; never hard-code DAB+/ARD BR. -->
