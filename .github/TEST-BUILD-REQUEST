@@ -1,4 +1,4 @@
-TEST170 BUILD 1
+TEST170 BUILD 2
 Radio background master update only.
 
 Use the newly uploaded warder-radio-background.jpg with medium dark-panel transparency.
@@ -8,3 +8,5 @@ SHA256: 2d758e0cb7a989ea78f8fb7ec85459d307a2f73e7af202a5b5f85005dea19d23
 Keep TEST169 Radio top geometry and colour unchanged for an isolated physical background comparison.
 Do not change bottom, artwork, equalizer, ownership or Radio lifecycle.
 Build and workflow guards updated to the new approved background SHA.
+
+Retrigger after verifying workflow path trigger and both Radio master SHA guards are synchronized.
