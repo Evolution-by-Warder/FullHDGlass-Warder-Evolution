@@ -62,6 +62,11 @@ for key, asset in assets.items():
         if url and not url.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"):
             errors.append("non-Warder asset URL for %s" % key)
 
+# Runtime architecture helper invariant: never synthesize an unpublished SH4 helper key.
+plugin = (ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
+if '"sh4":"s"' in plugin or "7zip-s" in assets:
+    errors.append("unpublished SH4 7zip helper route is present")
+
 if errors:
     for e in errors:
         print("ERROR:", e)
