@@ -55,6 +55,15 @@ report = {
     "policy": "All shipped runtime network hosts must be explicitly classified; legacy HDGlass FTP is forbidden.",
     "hosts": found,
 }
+# Preserve build/provenance metadata maintained in the committed audit document.
+if OUT.exists():
+    try:
+        previous = json.loads(OUT.read_text(encoding="utf-8"))
+        for key in ("channel_picon_build",):
+            if key in previous:
+                report[key] = previous[key]
+    except Exception:
+        pass
 OUT.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 errors = []
