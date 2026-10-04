@@ -1,13 +1,14 @@
-TEST180 BUILD 1
-Radio artwork matcher controlled relaxation.
+TEST181 BUILD 1
+Radio approved no-cover fallback integration.
 
 Keep TEST178 physically approved artwork geometry unchanged: position 606,145 size 704,640.
-Keep TEST179 matcher rules unchanged except this additional final fallback:
-- normalized song title must match exactly
-- RDS artist must equal the complete leading catalogue artist credit before the first comma
-- this targets catalogue-expanded credits such as HUNTR/X -> HUNTR/X, EJAE, AUDREY NUNA, REI AMI & KPop Demon Hunters Cast
-- do not allow generic artist substring matching
-- do not allow partial title matching
-- preserve rejection of station slogans/non-song RDS
+Include source/package-root/usr/share/enigma2/hd_glass17/warder-radio-no-cover.png exactly as committed.
+WarderRadioArtwork behavior:
+- valid RDS song + valid matched cover -> show real cover
+- RDS song + no valid catalogue cover -> show warder-radio-no-cover.png
+- no usable RDS song metadata -> show warder-radio-no-cover.png
+- on song/RDS key change, immediately replace stale cover with fallback while lookup runs
+- valid cover replaces fallback after decode
+- do not synthesize artist/title text
+Keep TEST180 matcher rules unchanged.
 No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
-Fallback artwork asset will be integrated separately after visual approval; do not add it in this build.
