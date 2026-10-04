@@ -1,14 +1,13 @@
-TEST181 BUILD 1
-Radio approved no-cover fallback integration.
+TEST182 BUILD 1
+OpenWebif DVB Radio without RDS fix + approved no-cover fallback.
 
-Keep TEST178 physically approved artwork geometry unchanged: position 606,145 size 704,640.
-Include source/package-root/usr/share/enigma2/hd_glass17/warder-radio-no-cover.png exactly as committed.
-WarderRadioArtwork behavior:
-- valid RDS song + valid matched cover -> show real cover
-- RDS song + no valid catalogue cover -> show warder-radio-no-cover.png
-- no usable RDS song metadata -> show warder-radio-no-cover.png
-- on song/RDS key change, immediately replace stale cover with fallback while lookup runs
-- valid cover replaces fallback after decode
-- do not synthesize artist/title text
-Keep TEST180 matcher rules unchanged.
-No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
+Preserve TEST181 fallback integration and TEST180 matcher.
+OpenWebif GrabScreenshot RADIO detection:
+- determine current service reference live at screenshot request time
+- service type field A means RADIO regardless of RDS presence
+- keep /tmp/warder-radio-current only as fallback
+- RADIO with RDS must remain unchanged
+- DVB RADIO without RDS must use the same Warder Radio composite screenshot path
+- TV must remain native OpenWebif
+Keep TEST178 artwork geometry 606,145 size 704,640.
+No TOP/BOTTOM/equalizer/DAB changes.
