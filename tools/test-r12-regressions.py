@@ -903,7 +903,7 @@ assert 'TEST93 radio master SHA-256 mismatch' in BUILD_TEST
 
 # TEST94: TEST92 RDS ownership must be symmetrical across RADIO <-> TV service starts.
 service94 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
-assert 'is_radio = len(fields) > 2 and fields[2].upper() == "A"' in service94
+assert 'is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")' in service94
 assert 'if is_radio:' in service94
 assert 'rds.show()' in service94
 assert 'rds.hide()' in service94
