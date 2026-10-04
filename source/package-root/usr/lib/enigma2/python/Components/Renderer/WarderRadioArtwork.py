@@ -21,6 +21,7 @@ import NavigationInstance
 class WarderRadioArtwork(Renderer):
     """Exact current-song artwork without modifying OpenATV RdsInfoDisplay."""
     GUI_WIDGET = ePixmap
+    FALLBACK_ARTWORK = "/usr/share/enigma2/hd_glass17/warder-radio-no-cover.png"
 
     def __init__(self):
         Renderer.__init__(self)
@@ -39,6 +40,9 @@ class WarderRadioArtwork(Renderer):
     def postWidgetCreate(self, instance):
         Renderer.postWidgetCreate(self, instance)
         instance.hide()
+        # TEST181: approved local artwork is the neutral RADIO state. It is
+        # shown while no valid song cover exists, including stations without RDS.
+        self._showFallback()
         self._diagStart = time.time()
         try:
             with open("/tmp/warder-radio-start", "r") as src:
@@ -250,6 +254,9 @@ class WarderRadioArtwork(Renderer):
         thread.daemon = True
         thread.start()
 
+    def _showFallback(self):
+        self._showPath(self.FALLBACK_ARTWORK)
+
     def _showPath(self, path):
         if not self.instance or not path or not os.path.isfile(path):
             if self.instance:
@@ -277,7 +284,9 @@ class WarderRadioArtwork(Renderer):
             key, path = self._result
             self._result = None
             if key == self._key:
-                self._showPath(path)
+                # TEST181: a failed/empty catalogue result must never leave the
+                # approved centre frame blank.
+                self._showPath(path if path else self.FALLBACK_ARTWORK)
         try:
             nav = NavigationInstance.instance
             service = nav and nav.getCurrentService()
@@ -297,8 +306,9 @@ class WarderRadioArtwork(Renderer):
         key = self._norm(artist) + "|" + self._norm(title) if artist and title else ""
         if key != self._key:
             self._key = key
-            if self.instance:
-                self.instance.hide()
+            # TEST181: immediately replace an old song cover with the approved
+            # neutral artwork while the next lookup runs, or when RDS disappears.
+            self._showFallback()
         if not key:
             self._requestedKey = ""
         elif not self._busy and key != self._requestedKey:
