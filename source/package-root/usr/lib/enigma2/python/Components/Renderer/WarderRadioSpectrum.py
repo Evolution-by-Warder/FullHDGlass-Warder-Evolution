@@ -98,6 +98,9 @@ class WarderRadioSpectrum(Renderer):
         self._paint()
 
     def postWidgetCreate(self, instance):
+        # Let the base Renderer complete widget/source binding first. This is
+        # required by some OpenATV/eCanvas builds before drawing is accepted.
+        Renderer.postWidgetCreate(self, instance)
         # Native RdsInfoDisplay does not reliably forward Screen onShow to
         # custom renderers on all Enigma2 images. Start from widget creation.
         self._running = True
@@ -107,6 +110,7 @@ class WarderRadioSpectrum(Renderer):
     def preWidgetRemove(self, instance):
         self._running = False
         self._timer.stop()
+        Renderer.preWidgetRemove(self, instance)
 
     def changed(self, what):
         if self.instance is not None and not self._running:
