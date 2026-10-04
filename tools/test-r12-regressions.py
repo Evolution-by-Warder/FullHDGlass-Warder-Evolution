@@ -794,7 +794,7 @@ for token in ("hd_glass17/radio.mvi", "ffmpeg"):
     assert token in BUILD_TEST, token
 
 
-# TEST80/TEST144: native RDS retains bottom Radio/DAB data only; TEST117 owns the top rail in ExtraInfo17.
+# TEST80/TEST146: native RDS retains bottom Radio/DAB data; TEST146 owns the top rail in WarderRadioTopDisplay.
 rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in ('source="session.CurrentService"', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
     assert token in rds80, token
@@ -977,10 +977,10 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 
 # TEST117: Radio top rail is rendered inside the actual ExtraInfo17 runtime layer.
 assert 'warder_radio_top = """' in PLUGIN
-assert 'name="warderRadioDate" position="62,22" size="610,66" font="Prive4;33" valign="center"' in PLUGIN
+assert 'name="WarderRadioTopDisplay" position="27,15" size="1866,88" zPosition="-2" backgroundColor="transparent"' in PLUGIN
 assert 'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;33" valign="center"' in PLUGIN
 assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right"' in PLUGIN
-assert 'self["warderRadioDate"] = Label("") if "warderRadioDate" in self.skin else None' in PLUGIN
+assert 'self["warderRadioDate"] = Label("")' in PLUGIN
 assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
 assert 'marker.read(8).strip() == "A"' in PLUGIN
 assert 'class WarderRadioTopOverlay(Screen):' not in PLUGIN
@@ -1003,7 +1003,7 @@ for token in (
 ):
     assert token in radio118, token
 for token in (
-    'name="warderRadioDate" position="62,22" size="610,66" font="Prive4;33" valign="center"',
+    'name="warderRadioDate" position="35,7" size="610,66" font="Prive4;33" valign="center"',
     'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;33" valign="center"',
     'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right"',
 ):
@@ -1077,8 +1077,12 @@ assert 'art.show()' in service94 and 'art.hide()' in service94
 assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent"' in PLUGIN
 assert '<eLabel position="27,15" size="1837,86"' not in radio136
 
-# TEST145: no opaque Radio patch surfaces. Native bounded RDS is transparent; ExtraInfo17 top widgets are conditional on a transparent parent.
+# TEST146: black rails are baked into the package master; live top screen and native RDS are text-only transparent surfaces.
 assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in SKIN
 assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' not in SKIN
-assert 'if \'backgroundColor="transparent"\' in tmp:' in PLUGIN
-assert 'Label("") if "warderRadioDate" in self.skin else None' in PLUGIN
+assert 'draw.rounded_rectangle((29, 17, 1891, 101), radius=8, fill=(0, 0, 0))' in BUILD_TEST
+assert 'draw.rounded_rectangle((29, 815, 1891, 1033), radius=8, fill=(0, 0, 0))' in BUILD_TEST
+assert 'class WarderRadioTopDisplay(Screen):' in PLUGIN
+assert 'self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopDisplay)' in PLUGIN
+assert 'top.show()' in PLUGIN and 'top.hide()' in PLUGIN
+assert 'warder_radio_top = """' not in PLUGIN

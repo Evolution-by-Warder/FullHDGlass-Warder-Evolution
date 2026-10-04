@@ -67,6 +67,22 @@ with Image.open(path) as image:
         raise SystemExit("ERROR: TEST93 radio master must be exactly 1920x1080, got %sx%s" % image.size)
 print("TEST93 radio master geometry: PASS 1920x1080")
 PY
+
+# TEST146: bake the opaque Radio text rails directly into the package master.
+# This changes pixels in the base JPEG/radio.mvi; it does not create GUI masks or backing eLabels.
+python3 - "$RADIO_MASTER" <<'PY'
+from PIL import Image, ImageDraw
+import sys
+path = sys.argv[1]
+with Image.open(path) as source:
+    image = source.convert("RGB")
+draw = ImageDraw.Draw(image)
+# Preserve the existing thin rail outlines by filling just inside them.
+draw.rounded_rectangle((29, 17, 1891, 101), radius=8, fill=(0, 0, 0))
+draw.rounded_rectangle((29, 815, 1891, 1033), radius=8, fill=(0, 0, 0))
+image.save(path, "JPEG", quality=95, subsampling=0)
+print("TEST146 baked opaque Radio rails into base master: PASS")
+PY
 command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
 ffmpeg -y -loglevel error \
     -i "$RADIO_MASTER" \
