@@ -768,8 +768,11 @@ assert 'self._warderProgramInfoOpen = False' in PLUGIN
 # TEST79 receiver-proven Radio/DAB boot recovery.
 # OpenATV's native RdsInfoDisplay must not be monkey-patched during startup.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"', 'backgroundColor="transparent"'):
+for token in ('name="RassLogo"', 'backgroundColor="transparent"'):
     assert token in rds, token
+for token in ('name="RadioText"', 'name="RtpText"'):
+    assert token not in rds, token
+assert 'source="warderRadioBottom" render="Listbox"' in PLUGIN
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
     assert token not in rds, token
 for token in ('WarderRdsInfoDisplay', '_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged', 'WarderRadio init'):
@@ -788,8 +791,12 @@ for token in ("hd_glass17/radio.mvi", "ffmpeg"):
 
 # TEST80 safe Radio/DAB skin-only overlay. Never reintroduce the native RdsInfoDisplay monkey-patch.
 rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', 'source="session.CurrentService"', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"', 'name="RassLogo"'):
+for token in ('source="session.CurrentService"', 'name="RassLogo"'):
     assert token in rds80, token
+for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"'):
+    assert token not in rds80, token
+assert 'source="warderRadioTop" render="Listbox"' in PLUGIN
+assert 'source="warderRadioBottom" render="Listbox"' in PLUGIN
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
     assert token not in rds80 and token not in PLUGIN, token
 
@@ -865,8 +872,10 @@ assert "random." not in SPECTRUM_CODE
 radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
-assert '<convert type="ServiceName">Provider</convert>' in radio
-assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
+assert '<convert type="ServiceName">Provider</convert>' not in radio
+assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' not in radio
+assert 'info.getInfoString(iServiceInformation.sProvider)' in PLUGIN
+assert 'time1.strftime("%H:%M:%S", time1.localtime())' in PLUGIN
 assert 'Format::%S' not in radio
 
 # TEST93 packaging must use only the approved fixed production master.
