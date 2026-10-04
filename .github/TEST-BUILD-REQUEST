@@ -1,6 +1,8 @@
-TEST167 BUILD 1
+TEST167 BUILD 2
 Radio TOP colour only.
 TEST166 physical PASS for clean Radio and Radio InfoPanel.
 Keep all proven TEST166 geometry, ownership and native eLabel safety unchanged.
 Change only the three top fields foregroundColor from #eeeeee to warm gold #F4C76A in native Radio and injected InfoPanel top.
 No bottom, artwork or background changes.
+
+Regression guards updated for #F4C76A on clean Radio and injected InfoPanel top.
