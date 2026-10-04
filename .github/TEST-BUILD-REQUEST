@@ -1,5 +1,6 @@
-TEST161 CI BUILD 2
+TEST162 CI BUILD 1
 Scope: Radio top rail geometry only.
-Physical TEST160 screenshot correction: clock slightly LEFT, brand independently RIGHT toward symmetric edge margin.
+Physical TEST161 PASS for clock position: DO NOT MOVE CLOCK.
+Move only FullHDGlass17 · Warder Evolution slightly right toward symmetric right margin.
 Keep one line, one font size, TEST158 safe eLabel architecture.
 No eCanvas/writeText. No colour, bottom or centre changes.
