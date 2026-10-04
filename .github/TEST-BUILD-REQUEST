@@ -1,7 +1,11 @@
-TEST175 BUILD 1
-Radio artwork geometry physical-fit correction.
+TEST176 BUILD 1
+Radio artwork matcher tolerance.
 
-Keep TEST174 decode fix and TEST173 matcher unchanged.
-Keep background, TOP, BOTTOM, picon, equalizer, text and ownership unchanged.
-Change only artwork geometry to position 638,145 size 640x640.
-Goal: square cover sits tightly and symmetrically inside the receiver-proven center frame, with a small top/bottom clearance and no wide black side gutters.
+Keep TEST175 artwork geometry unchanged.
+Keep TEST174 ePicLoad decode fix unchanged.
+Relax matching one controlled step:
+- complete normalized artist identity must still agree
+- accept equivalent title punctuation/brackets
+- accept catalogue title where one normalized title is the other plus a version/remix suffix
+- do not accept station slogans or partial artist matches
+No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
