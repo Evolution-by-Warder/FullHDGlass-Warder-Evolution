@@ -96,6 +96,16 @@ Authoritative physical checkpoint: **TEST191**.
 - TMDB remains unchanged.
 - Never mark a new behavior PHYSICAL PASS without explicit receiver confirmation.
 
-## Next acceptance step
+## WHOLE RADIO PASS — PHYSICAL PASS / LOCKED — 2026-10-04
 
-All mandatory RADIO component stages are now physically proven to the documented scope. The remaining closure step is a **WHOLE RADIO PASS**: one final receiver regression covering TV -> Radio -> TV plus representative normal RDS artwork, no-RDS fallback, DAB SLS, moving equalizer and WebIF behavior. Until that combined regression is explicitly confirmed, do not label the entire Radio project final/closed.
+User explicitly approved the final combined TEST191 receiver regression with **“beriem”**.
+
+Physical evidence in the final pass confirms:
+- DAB SLS: SCHLAGERPARADIES displayed the transmitted programme/moderator slideshow while DAB metadata, picon, provider and moving equalizer remained correct.
+- Normal RDS artwork: BAYERN 3 / Fast Boy — Music Sounds displayed the matched real cover with station/RDS metadata, provider and moving equalizer.
+- No-cover path: 1LIVE displayed the approved Warder fallback with station/picon/provider and moving equalizer, without invented metadata.
+- Return to TV: TV JOJ HD displayed the normal TV InfoPanel after leaving Radio; Radio TOP/background/artwork/equalizer were absent.
+
+Therefore **WHOLE RADIO = PHYSICAL PASS / LOCKED on TEST191** for the tested receiver path. Radio is closed as an accepted feature baseline. Future work must preserve this state and may reopen it only for new physical regression evidence or an explicitly approved enhancement.
+
+WebIF remains governed by its existing implementation/regression guards; this final screenshot sequence specifically proves the on-receiver TV -> Radio modes -> TV lifecycle.
