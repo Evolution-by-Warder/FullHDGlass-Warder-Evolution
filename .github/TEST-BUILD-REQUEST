@@ -1,3 +1,3 @@
-TEST147 CI
-Source runtime/build: 57bbb691226546d38baef2842e9f3069a36e795b
-Use dedicated test-warder-radio-background.jpg only in package staging; preserve approved repository master; no build-time rail drawing; transparent live Radio surfaces unchanged.
+TEST147 CI retry
+Source runtime/build: dd35d5cb235d15377a99a417fa9c1e89e6089320
+CI #352 concrete fix: normalize user test background 1672x941 to 1920x1080 only in staging; no drawn rails, no GUI backing, approved repository master untouched.
