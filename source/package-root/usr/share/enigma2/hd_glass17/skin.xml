@@ -1594,13 +1594,13 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <!-- TEST93 LAYOUT CONTRACT: coordinates are locked to the approved 1671x941 master scaled to 1920x1080. -->
     <!-- Top glass active area: x=27..1864, y=15..101. -->
     <!-- TEST165: three independent native labels on one baseline. Date/brand cannot move the clock. -->
-    <widget source="global.CurrentTime" render="Label" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#F4C76A" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="Label" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#FFE16A" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
       <convert type="ClockToText">Format:%A  %-d.%B %Y</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#F4C76A" halign="center" valign="center" noWrap="1" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="Label" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#FFE16A" halign="center" valign="center" noWrap="1" transparent="1" zPosition="2">
       <convert type="ClockToText">WithSeconds</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#F4C76A" halign="right" valign="center" noWrap="1" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="Label" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#FFE16A" halign="right" valign="center" noWrap="1" transparent="1" zPosition="2">
       <convert type="ClockToText">Format:FullHDGlass17 · Warder Evolution</convert>
     </widget>
 
@@ -1616,7 +1616,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="Prive4;29" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="3">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;33" noWrap="1" foregroundColor="#F4C76A" transparent="1" zPosition="3" />
+    <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;33" noWrap="1" foregroundColor="#FFE16A" transparent="1" zPosition="3" />
     <widget name="RtpText" position="420,955" size="1000,38" font="Prive4;25" noWrap="1" foregroundColor="#3388dd" transparent="1" zPosition="3" />
 
     <!-- Right-bottom contract: decorative spectrum above real dynamic ServiceName/Provider; never hard-code DAB+/ARD BR. -->
