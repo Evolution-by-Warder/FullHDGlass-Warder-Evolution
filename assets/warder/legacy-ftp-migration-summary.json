@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "generated_from": "assets/warder/legacy-ftp-migration.tsv",
+  "legacy_snapshot_files": 27,
+  "runtime_asset_families": 19,
+  "warder_manifest_routed": 18,
+  "not_exposed": 1,
+  "archive_only": 8,
+  "legacy_ftp_runtime_fallbacks": 0,
+  "missing_preserved_target": [
+    {
+      "runtime_key": "weatherIcons",
+      "legacy_path": "weatherIcons/piconWeather.zip",
+      "target_path": "assets/warder/downloads/weather/icons/piconWeather.zip",
+      "size": 14463135,
+      "sha256": "39cc98af95ef07c1b22d701399be2e60a39f7c54080c5c10a2d193858b5b34ad"
+    }
+  ],
+  "separate_external_dependency": {
+    "name": "picon.cz SATLIST channel packages",
+    "runtime_function": "downloadMenu.downMulti",
+    "state": "NOT_PART_OF_HDGLASS_FTP_SNAPSHOT"
+  }
+}
