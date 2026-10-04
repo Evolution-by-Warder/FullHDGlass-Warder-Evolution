@@ -2092,12 +2092,16 @@ def fromCfg():
 	# TEST117: these widgets live inside ExtraInfo17 itself, the receiver-proven
 	# FullHDGlass runtime layer that is visible for the lifetime of the normal InfoBar.
 	tmp = setSideECM(tmp)
+	# TEST145: top rail must not inherit an opaque/glass ExtraInfo17 composition.
 	warder_radio_top = """
 		<widget name="warderRadioDate" position="62,22" size="610,66" font="Prive4;33" valign="center" foregroundColor="#e5b243" transparent="1" />
 		<widget name="warderRadioTime" position="745,22" size="340,66" font="Prive4;33" valign="center" foregroundColor="#eeeeee" transparent="1" />
 		<widget name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
 	"""
-	return tmp.replace("</screen>", warder_radio_top + "</screen>")
+	# TEST145: inject only into a genuinely transparent ExtraInfo17 parent.
+	if 'backgroundColor="transparent"' in tmp:
+		return tmp.replace("</screen>", warder_radio_top + "</screen>")
+	return tmp
 
 def calcY(xs,dd,d,o=None):
 	a = dd.split(d)
@@ -3934,9 +3938,9 @@ class ExtraInfo17(Screen):
 		self.onShow.append(self.startEcmCaidInfo)
 		self.onShow.append(self.setOn)
 		self.onHide.append(self.stopEcmCaidInfo)
-		self["warderRadioDate"] = Label("")
-		self["warderRadioTime"] = Label("")
-		self["warderRadioBrand"] = Label("")
+		self["warderRadioDate"] = Label("") if "warderRadioDate" in self.skin else None
+		self["warderRadioTime"] = Label("") if "warderRadioTime" in self.skin else None
+		self["warderRadioBrand"] = Label("") if "warderRadioBrand" in self.skin else None
 		self.warderRadioTopTimer = eTimer()
 		try:
 			self.warderRadioTopTimer_conn = self.warderRadioTopTimer.timeout.connect(self._warderRadioTopRefresh)
