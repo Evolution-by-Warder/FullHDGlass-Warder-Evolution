@@ -1,8 +1,7 @@
-TEST174 BUILD 2
-Radio artwork decode regression fix.
+TEST175 BUILD 1
+Radio artwork geometry physical-fit correction.
 
-Keep TEST172 background, TOP, bottom and center artwork geometry unchanged.
-Keep TEST173 moderately relaxed matching unchanged.
-Fix only the TEST172 regression where the ePicLoad setPara call was accidentally embedded in a comment as a literal \\n sequence and therefore never executed.
-Restore setPara as executable Python before startDecode.
-Do not change Radio lifecycle, picon, equalizer, text, artwork geometry or ownership.
+Keep TEST174 decode fix and TEST173 matcher unchanged.
+Keep background, TOP, BOTTOM, picon, equalizer, text and ownership unchanged.
+Change only artwork geometry to position 638,145 size 640x640.
+Goal: square cover sits tightly and symmetrically inside the receiver-proven center frame, with a small top/bottom clearance and no wide black side gutters.
