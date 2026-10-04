@@ -91,6 +91,19 @@ class WarderRadioArtwork(Renderer):
         return tuple(sorted(x.strip(" .,-") for x in value.split("|") if x.strip(" .,-")))
 
     @classmethod
+    def _mainArtistIdentity(cls, value):
+        # TEST179: final controlled fallback for catalogue credits.
+        # Use only the leading credited artist; never use this without a
+        # strong title match. This covers stores adding a guest artist to
+        # artistName while RDS sends only the lead artist.
+        value = cls._norm(value)
+        for marker in (" feat. ", " feat ", " featuring ", " ft. ", " ft ", " with ", " x ", " / ", " & ", " and "):
+            if marker in value:
+                value = value.split(marker, 1)[0]
+                break
+        return value.strip(" .,-")
+
+    @classmethod
     def _featIdentity(cls, artist, title):
         artistNorm, titleNorm = cls._norm(artist), cls._norm(title)
         marker = " feat. "
@@ -178,6 +191,15 @@ class WarderRadioArtwork(Renderer):
                 if sameArtist:
                     a, b = looseTitle(item.get("trackName")), looseTitle(title)
                     exact = bool(a and b and (a == b or a.startswith(b + " ") or b.startswith(a + " ")))
+            if not exact:
+                # TEST179: accept a catalogue-added guest credit only when the
+                # lead artist is identical and the normalized title is exact
+                # or differs solely by a trailing catalogue version suffix.
+                # This remains deliberately stricter than a generic partial
+                # artist match and therefore does not match station slogans.
+                a, b = looseTitle(item.get("trackName")), looseTitle(title)
+                leadArtist = cls._mainArtistIdentity(item.get("artistName")) == cls._mainArtistIdentity(artist)
+                exact = bool(leadArtist and a and b and (a == b or a.startswith(b + " ") or b.startswith(a + " ")))
             if not exact:
                 cls._diag("REJECT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
                 continue
