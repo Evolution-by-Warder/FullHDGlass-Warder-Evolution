@@ -40,6 +40,25 @@ if build.get("state")!="BUILT_NOT_PUBLISHED" or build.get("runtime_cutover") is 
 if build.get("workflow",{}).get("conclusion")!="success": errors.append("recorded channel-picon workflow is not successful")
 if not str(build.get("artifact",{}).get("digest","")).startswith("sha256:"): errors.append("recorded artifact digest is missing")
 
+
+# Persistent publication is a separate gate from successful materialization.
+# A temporary Actions artifact must never be mistaken for a receiver backend.
+publication=build.get("publication",{})
+if build.get("state")=="BUILT_NOT_PUBLISHED":
+    if publication.get("state") not in (None,"NOT_PUBLISHED"):
+        errors.append("unpublished build advertises a publication state")
+    if publication.get("manifest_url") or publication.get("base_url"):
+        errors.append("unpublished build advertises persistent receiver URLs")
+elif build.get("state")=="PUBLISHED":
+    if publication.get("state")!="PUBLISHED":
+        errors.append("published build is missing PUBLISHED publication evidence")
+    if not publication.get("manifest_url") or not publication.get("base_url"):
+        errors.append("published build is missing persistent manifest/base URL")
+else:
+    errors.append("unknown channel-picon build state: "+repr(build.get("state")))
+if build.get("runtime_cutover") and build.get("state")!="PUBLISHED":
+    errors.append("runtime cutover cannot be enabled before persistent publication")
+
 # Runtime remains intentionally legacy until packages are persistently published.
 plugin=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
 if "https://picon.cz/download/%s/" not in plugin:
