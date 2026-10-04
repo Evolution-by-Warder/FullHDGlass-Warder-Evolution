@@ -81,6 +81,16 @@ class WarderRadioArtwork(Renderer):
         return cls._norm(value).replace(",", "")
 
     @classmethod
+    def _artistIdentity(cls, value):
+        # TEST173: moderately relax station-vs-catalogue artist separators.
+        # Treat common collaboration separators as equivalent, but keep every
+        # artist token: this must not turn a partial artist match into a hit.
+        value = cls._norm(value)
+        for marker in (" feat. ", " feat ", " featuring ", " ft. ", " ft ", " with ", " x ", " / ", " & ", " and "):
+            value = value.replace(marker, " | ")
+        return tuple(sorted(x.strip(" .,-") for x in value.split("|") if x.strip(" .,-")))
+
+    @classmethod
     def _featIdentity(cls, artist, title):
         artistNorm, titleNorm = cls._norm(artist), cls._norm(title)
         marker = " feat. "
@@ -146,7 +156,8 @@ class WarderRadioArtwork(Renderer):
         for item in results:
             gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
             exact = gotArtist == wantArtist and gotTitle == wantTitle
-            if not exact and gotArtist == wantArtist:
+            sameArtist = gotArtist == wantArtist or cls._artistIdentity(item.get("artistName")) == cls._artistIdentity(artist)
+            if not exact and sameArtist:
                 exact = cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)
             if not exact:
                 wantFeat = cls._featIdentity(artist, title)
