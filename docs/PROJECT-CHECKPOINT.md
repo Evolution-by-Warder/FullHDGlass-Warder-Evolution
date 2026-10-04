@@ -246,3 +246,27 @@ This is a project rule, not a FullHDGlass17-only implementation detail.
 5. Redirect FullHDGlass17 downloads to the shared backend and regression-test all download menu functions.
 6. Update DVB-T/T2 content as a separate modernization pass.
 7. Continue with General Radio Artwork and remaining final compatibility/release audit.
+
+
+## RADIO authoritative checkpoint — 2026-10-04 — TEST191
+
+This section supersedes older Radio TODO/status text above where it conflicts.
+
+- Working branch remains `warder-modernization-work`; `main` remains TABU.
+- Current Radio receiver-test checkpoint is **TEST191**.
+- TEST171 TOP/BOTTOM composition: PHYSICAL PASS / locked.
+- TEST178 cover geometry `606,145 / 704x640`: PHYSICAL PASS / locked.
+- TEST179 matcher: PHYSICAL PASS to tested scope; TEST180 controlled catalogue-credit relaxation retained. HUNTR/X itself was not physically exercised.
+- Approved no-cover fallback is locked at `/usr/share/enigma2/hd_glass17/warder-radio-no-cover.png`, repository blob `a5c18ecc9572472cd9867aacac6c4e70f4f8a16e`.
+- TEST183 classic DVB Radio without RDS: PHYSICAL PASS; service types 0x02 and 0x0A recognized.
+- TEST187 moving equalizer: PHYSICAL PASS; TEST188 speed is 140 ms and visuals/geometry are locked.
+- TEST189 and TEST190 SLS approaches are documented failures and must not be restored.
+- TEST191 uses OpenATV 8 native DAB MOT slideshow metadata via `iServiceInformation.sTagPreviewImage` for `idServiceDAB`.
+- TEST191 DAB SLS: **PHYSICAL PASS** on GigaBlue Quad 4K Pro / OpenATV 8, explicitly observed on Schwarzwaldradio, ENERGY and SCHLAGERPARADIES. Picon, station, DAB technical line, provider and moving equalizer remained intact.
+- Published TEST191 package: `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test191_all.ipk`.
+- TEST191 SHA256: `a99e309776615c2cc8ded5467d552ba3669fdc88e97860f39a4f89acfc43109e`.
+- GitHub Actions run `37220612169`: SUCCESS; publication commit `2f9b396a0fa8905e54e833d3861cb67606ed825c`.
+- `update-test.json`, package control metadata and runtime version are aligned at TEST191 (`1.0.5-test191`; control `1.0.5-test191-1`).
+- Detailed Radio lock/diagnostic rules live in `docs/RADIO-WORK-CHECKPOINT.md`.
+
+Remaining Radio closure requirement: perform and explicitly approve one combined **WHOLE RADIO PASS** regression (TV -> Radio -> TV, normal RDS cover, no-RDS fallback, DAB SLS, equalizer, WebIF). Do not declare the entire Radio project final before that combined receiver confirmation.
