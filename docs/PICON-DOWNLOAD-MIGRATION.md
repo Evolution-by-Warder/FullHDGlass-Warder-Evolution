@@ -163,3 +163,12 @@ Completed blob-SHA collision analysis for transparent/black/white across all 40 
 - 0.8W conflicts are provider-specific (Digi Slovakia/Freesat vs MagioSat/Slovak Telekom, plus Freesat vs Telly). 16.0E conflicts are A1 Broadcasting vs Antiksat.
 
 Packaging rule is now concrete: identical SHA duplicates may collapse automatically; different-SHA duplicates must remain unresolved and make aggregate-package generation fail until an explicit provider-aware precedence/identity rule is approved. Provider-specific selectors (Freesat, Digi/Telly, Antiksat) remain independently packageable and must not inherit aggregate-orbit ambiguity.
+
+
+## Deterministic package-plan implementation — 2026-10-04
+
+Added `tools/generate-picon-package-plan.py` and `assets/warder/picon-download-manifest.schema.json`. The planner is intentionally non-destructive: it does not download, resize, rerender, package, publish or switch receiver runtime. It consumes only the audited mapping/coverage/collision tables and emits a stable JSON build plan.
+
+CI now executes the planner as a preflight gate and asserts the current audited state: **57 selectors = 38 READY + 2 collision-BLOCKED (0.8W, 16.0E) + 17 MISSING_SOURCE**. READY currently means transparent/black/white only. All unresolved legacy 400x240/220x132/50x30/OLED families remain blocked by policy.
+
+The manifest schema requires HTTPS URL, byte size and SHA256 and limits the first publishable families to `channel-transparent`, `channel-black` and `channel-white`. No receiver runtime has been switched to this manifest yet.
