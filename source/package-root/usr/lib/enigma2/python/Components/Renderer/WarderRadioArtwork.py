@@ -13,7 +13,7 @@ except ImportError:
     from urllib import quote
     from urllib2 import Request, urlopen
 
-from enigma import ePicLoad, ePixmap, eTimer, iRdsDecoder
+from enigma import ePicLoad, ePixmap, eServiceReference, eTimer, iRdsDecoder, iServiceInformation
 from Components.Renderer.Renderer import Renderer
 import NavigationInstance
 
@@ -138,6 +138,22 @@ class WarderRadioArtwork(Renderer):
             return decoder and decoder.getText(iRdsDecoder.RadioText) or ""
         except Exception:
             return ""
+
+    def _dabSlidePath(self):
+        """Use OpenATV 8 native DAB MOT slideshow metadata, not legacy RASS."""
+        try:
+            nav = NavigationInstance.instance
+            ref = nav and nav.getCurrentlyPlayingServiceReference()
+            service = nav and nav.getCurrentService()
+            if not ref or ref.type != eServiceReference.idServiceDAB or not service:
+                return ""
+            info = service.info()
+            path = info and info.getInfoString(iServiceInformation.sTagPreviewImage) or ""
+            if path and os.path.isfile(path):
+                return path
+        except Exception as err:
+            self._diag("DAB_SLS_ERROR %s: %s" % (err.__class__.__name__, err))
+        return ""
 
     @staticmethod
     def _cacheDir():
@@ -295,6 +311,25 @@ class WarderRadioArtwork(Renderer):
         if service is not None and not self._diagService:
             self._diagService = True
             self._diag("SERVICE epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
+        # TEST191: OpenATV 8 DABSlideDisplay reads MOT SLS from
+        # iServiceInformation.sTagPreviewImage on idServiceDAB.  This is the
+        # exact native path used by the image, and is independent of RASS.
+        slidePath = self._dabSlidePath()
+        if slidePath:
+            slideKey = "dab-sls:" + slidePath
+            try:
+                st = os.stat(slidePath)
+                slideKey += ":%s:%s" % (st.st_mtime_ns, st.st_size)
+            except Exception:
+                pass
+            if slideKey != self._key:
+                self._key = slideKey
+                self._requestedKey = ""
+                self._result = None
+                self._diag("DAB_SLS_SHOW epoch=%.6f t=%.3f path=%r" % (time.time(), self._elapsed(), slidePath))
+                self._showPath(slidePath)
+            self._timer.start(250, True)
+            return
         radioText = self._radioText()
         if radioText and not self._diagRadio:
             self._diagRadio = True
