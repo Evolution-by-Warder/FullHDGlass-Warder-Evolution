@@ -5,7 +5,7 @@ Branch: `warder-modernization-work`
 
 ## Mandatory completion order
 
-1. COVER — physically verify TEST177 artwork geometry.
+1. COVER — PHYSICAL PASS on TEST178. Locked geometry: position 606,145; size 704,640. Preserve the thin visible background gap between frame and artwork on all four sides. Do not change without new physical evidence.
 2. SONG MATCHER — improve artwork hit rate without accepting station slogans/garbage.
 3. RADIO WITHOUT RDS — mandatory before RADIO can be closed:
    - keep the normal RADIO screen and TOP;
