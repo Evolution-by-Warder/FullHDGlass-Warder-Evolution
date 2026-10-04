@@ -1,11 +1,8 @@
-TEST173 BUILD 1
-Radio artwork matcher physical test.
+TEST174 BUILD 1
+Radio artwork decode regression fix.
 
 Keep TEST172 background, TOP, bottom and center artwork geometry unchanged.
-Moderately relax artist identity matching only:
-- treat &, /, x, and, with, feat./featuring/ft. as equivalent collaboration separators
-- require the complete normalized artist token set to remain equal
-- keep title matching strict except existing receiver-proven comma tolerance
-- preserve existing feat-in-title compatibility
-Do not accept partial artist matches.
+Keep TEST173 moderately relaxed matching unchanged.
+Fix only the TEST172 regression where the ePicLoad setPara call was accidentally embedded in a comment as a literal \\n sequence and therefore never executed.
+Restore setPara as executable Python before startDecode.
 Do not change Radio lifecycle, picon, equalizer, text, artwork geometry or ownership.
