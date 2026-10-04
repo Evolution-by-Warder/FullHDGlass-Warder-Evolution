@@ -1,4 +1,3 @@
-TEST146 CI
-Source runtime/build: 887dacca7c038cfd66702af2254e413781557021
-Regression audit: 7576f8c55f6fe73a56b15482d5d8dbbd33412cf8
-Bake opaque black Radio rails into base master/radio.mvi; live top text via bounded transparent WarderRadioTopDisplay; native bottom RDS remains transparent.
+TEST147 CI
+Source runtime/build: 57bbb691226546d38baef2842e9f3069a36e795b
+Use dedicated test-warder-radio-background.jpg only in package staging; preserve approved repository master; no build-time rail drawing; transparent live Radio surfaces unchanged.
