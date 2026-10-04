@@ -3,7 +3,7 @@
 
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
-from enigma import eCanvas, eRect, eSize, eTimer, gFont, gRGB, RT_HALIGN_LEFT, RT_HALIGN_CENTER, RT_HALIGN_RIGHT, RT_VALIGN_CENTER
+from enigma import eLabel, eTimer
 from time import localtime, strftime, time
 try:
     from Plugins.Extensions.setupGlass17.weaUtils import toLocale
@@ -13,7 +13,7 @@ except Exception:
 
 
 class WarderRadioTop(Renderer):
-    GUI_WIDGET = eCanvas
+    GUI_WIDGET = eLabel
 
     def __init__(self):
         Renderer.__init__(self)
@@ -48,12 +48,10 @@ class WarderRadioTop(Renderer):
             stamp = None
         if stamp is None:
             stamp = time()
-        self.instance.clear(gRGB(0, 0, 0, 255))
-        # One canvas, three segments. All share the exact same y/h and vertical centre.
-        h = 58
-        self.instance.writeText(eRect(0, 0, 610, h), gRGB(238, 238, 238, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 30), self._dateText(stamp), RT_HALIGN_LEFT | RT_VALIGN_CENTER)
-        self.instance.writeText(eRect(728, 0, 340, h), gRGB(238, 238, 238, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 38), strftime("%H:%M:%S", localtime(stamp)), RT_HALIGN_CENTER | RT_VALIGN_CENTER)
-        self.instance.writeText(eRect(1158, 0, 580, h), gRGB(238, 238, 238, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 30), "FullHDGlass17 · Warder Evolution", RT_HALIGN_RIGHT | RT_VALIGN_CENTER)
+        # TEST158: one native label; avoid eCanvas.writeText crash on receiver startup.
+        date = self._dateText(stamp)
+        clock = strftime("%H:%M:%S", localtime(stamp))
+        self.instance.setText("%s                         %s                         FullHDGlass17 · Warder Evolution" % (date, clock))
 
     def postWidgetCreate(self, instance):
         self._paint()
