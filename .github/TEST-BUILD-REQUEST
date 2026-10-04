@@ -1,6 +1,6 @@
-TEST159 CI BUILD 1
-Scope: Radio top rail only.
-Keep TEST158 safe single eLabel architecture; no eCanvas/writeText.
-Keep one font size for date, clock and brand.
-Increase fixed spacing so clock moves toward FullHD x=960 and brand moves right.
-Physical receiver remains untouched until CI package is ready.
+TEST160 CI BUILD 1
+Scope: Radio top rail geometry only.
+Keep TEST158 safe single eLabel architecture and one font size.
+Physical TEST159 evidence: clock still left of FullHD centre and brand wraps.
+Use asymmetric spacing: move clock right, pull brand closer to clock, keep all three fields on one line.
+No eCanvas/writeText. No bottom or centre changes.
