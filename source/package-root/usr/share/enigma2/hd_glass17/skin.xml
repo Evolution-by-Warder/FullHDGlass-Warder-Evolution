@@ -1593,6 +1593,12 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   <screen name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST93 LAYOUT CONTRACT: coordinates are locked to the approved 1671x941 master scaled to 1920x1080. -->
     <!-- Top glass active area: x=27..1864, y=15..101. -->
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="4" position="62,32" size="610,52" font="Prive4;30" foregroundColor="#e5b243" transparent="1" zPosition="2" />
+    <widget source="global.CurrentTime" render="Label" position="745,27" size="340,58" font="Prive4;38" foregroundColor="#eeeeee" transparent="1" zPosition="2">
+      <convert type="g17ClockToText">Format:%H:%M:%S</convert>
+    </widget>
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,30" size="580,50" font="Prive4;25" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+
     <!-- Approved master center frame is not exactly square. Keep album artwork square and centered inside it: 648x648. -->
     <!-- TEST81 exact-artwork renderer remains isolated; hidden on no exact match, preserving native DAB SLS fallback. -->
     <widget source="session.CurrentService" render="WarderRadioArtwork" position="620,134" size="648,648" zPosition="4" alphatest="blend" />
@@ -1602,6 +1608,12 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="session.CurrentService" render="g17PicRef" position="70,852" size="280,160" zPosition="3" transparent="1" alphatest="on">
       <convert type="ServiceName">Reference</convert>
     </widget>
+    <widget source="session.CurrentService" render="Label" position="420,842" size="720,42" font="Prive4;29" noWrap="1" foregroundColor="#dddddd" transparent="1" zPosition="3">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget name="RadioText" position="420,895" size="1000,52" font="Prive4;33" noWrap="1" foregroundColor="#eeeeee" transparent="1" zPosition="3" />
+    <widget name="RtpText" position="420,955" size="1000,38" font="Prive4;25" noWrap="1" foregroundColor="#3388dd" transparent="1" zPosition="3" />
+
     <!-- Right-bottom contract: decorative spectrum above real dynamic ServiceName/Provider; never hard-code DAB+/ARD BR. -->
     <!-- Receiver-safe equalizer baseline: always visible even if custom renderer lifecycle is unavailable. -->
     <eLabel position="1485,918" size="14,36" backgroundColor="#1473ff" zPosition="3" />
@@ -1623,6 +1635,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="1789,914" size="14,40" backgroundColor="#1473ff" zPosition="3" />
     <eLabel position="1808,896" size="14,58" backgroundColor="#1ecdff" zPosition="3" />
     <widget source="session.CurrentService" render="WarderRadioSpectrum" position="1470,838" size="350,126" zPosition="4" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="1470,978" size="350,38" font="Prive4;25" halign="center" noWrap="1" foregroundColor="#e5b243" transparent="1" zPosition="3">
+      <convert type="ServiceName">Provider</convert>
+    </widget>
   </screen>  <!-- Dish -->
   <screen name="Dish" flags="wfNoBorder" position="1530,150" size="195,240" title="Dish" zPosition="9" backgroundColor="transparent">
     <widget name="Dishpixmap" pixmap="hd_glass17/icons/dish.png" position="0,0" size="195,240" alphatest="off" />

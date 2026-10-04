@@ -2084,28 +2084,12 @@ def fromCfg():
 	# TEST117: these widgets live inside ExtraInfo17 itself, the receiver-proven
 	# FullHDGlass runtime layer that is visible for the lifetime of the normal InfoBar.
 	tmp = setSideECM(tmp)
-	warder_radio_text = """
-		<widget source="warderRadioTop" render="Listbox" position="62,20" size="1758,72" zPosition="10" transparent="1" selectionDisabled="1" scrollbarMode="showNever">
-			<convert type="TemplatedMultiContent">
-			{"template": [
-			MultiContentEntryText(pos=(0,0), size=(610,72), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, text=0, color="#e5b243"),
-			MultiContentEntryText(pos=(683,0), size=(340,72), font=1, flags=RT_HALIGN_CENTER|RT_VALIGN_BOTTOM, text=1, color="#eeeeee"),
-			MultiContentEntryText(pos=(1158,0), size=(580,72), font=0, flags=RT_HALIGN_RIGHT|RT_VALIGN_BOTTOM, text=2, color="#b0b0b0")
-			], "fonts": [gFont("Prive4",30), gFont("Prive4",38)], "itemHeight": 72}
-			</convert>
-		</widget>
-		<widget source="warderRadioBottom" render="Listbox" position="420,835" size="1400,180" zPosition="10" transparent="1" selectionDisabled="1" scrollbarMode="showNever">
-			<convert type="TemplatedMultiContent">
-			{"template": [
-			MultiContentEntryText(pos=(0,0), size=(720,48), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0, color="#dddddd"),
-			MultiContentEntryText(pos=(0,50), size=(1000,58), font=1, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=1, color="#eeeeee"),
-			MultiContentEntryText(pos=(0,110), size=(1000,44), font=2, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=2, color="#3388dd"),
-			MultiContentEntryText(pos=(1050,137), size=(350,38), font=2, flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER, text=3, color="#e5b243")
-			], "fonts": [gFont("Prive4",29), gFont("Prive4",33), gFont("Prive4",25)], "itemHeight": 180}
-			</convert>
-		</widget>
+	warder_radio_top = """
+		<widget name="warderRadioDate" position="62,27" size="610,58" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" />
+		<widget name="warderRadioTime" position="745,27" size="340,58" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
+		<widget name="warderRadioBrand" position="1220,27" size="580,58" font="Prive4;30" halign="right" valign="center" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
 	"""
-	return tmp.replace("</screen>", warder_radio_text + "</screen>")
+	return tmp.replace("</screen>", warder_radio_top + "</screen>")
 
 def calcY(xs,dd,d,o=None):
 	a = dd.split(d)
@@ -3932,8 +3916,9 @@ class ExtraInfo17(Screen):
 		self.onShow.append(self.startEcmCaidInfo)
 		self.onShow.append(self.setOn)
 		self.onHide.append(self.stopEcmCaidInfo)
-		self["warderRadioTop"] = List([])
-		self["warderRadioBottom"] = List([])
+		self["warderRadioDate"] = Label("")
+		self["warderRadioTime"] = Label("")
+		self["warderRadioBrand"] = Label("")
 		self.warderRadioTopTimer = eTimer()
 		try:
 			self.warderRadioTopTimer_conn = self.warderRadioTopTimer.timeout.connect(self._warderRadioTopRefresh)
@@ -3957,8 +3942,9 @@ class ExtraInfo17(Screen):
 		except Exception:
 			pass
 		if not is_radio:
-			self["warderRadioTop"].setList([])
-			self["warderRadioBottom"].setList([])
+			self["warderRadioDate"].setText("")
+			self["warderRadioTime"].setText("")
+			self["warderRadioBrand"].setText("")
 			return
 		fmt = "%A  %d.%B %Y"
 		try:
@@ -3974,21 +3960,9 @@ class ExtraInfo17(Screen):
 			date_text = toLocale(time1.strftime(fmt, time1.localtime()))
 		except Exception:
 			date_text = time1.strftime(fmt, time1.localtime())
-		self["warderRadioTop"].setList([(date_text, time1.strftime("%H:%M:%S", time1.localtime()), "FullHDGlass17 · Warder Evolution")])
-		service_name = radio_text = rtp_text = provider = ""
-		try:
-			service = self.session.nav.getCurrentService()
-			info = service and service.info()
-			if info:
-				service_name = info.getName() or ""
-				provider = info.getInfoString(iServiceInformation.sProvider) or ""
-			decoder = service and service.rdsDecoder()
-			if decoder:
-				radio_text = decoder.getText(iRdsDecoder.RadioText) or ""
-				rtp_text = decoder.getText(iRdsDecoder.RtpText) or ""
-		except Exception:
-			pass
-		self["warderRadioBottom"].setList([(service_name, radio_text, rtp_text, provider)])
+		self["warderRadioDate"].setText(date_text)
+		self["warderRadioTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
+		self["warderRadioBrand"].setText("FullHDGlass17 · Warder Evolution")
 
 	def setOn(self):
 		self.__isOn = True
