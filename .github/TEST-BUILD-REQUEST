@@ -1,4 +1,4 @@
-TEST145 CI correction
-Source runtime: 76a75e28547b7a6939905604e95843079f0ccd9b
-Regression audit: 905004e397106c1ae6f73ebf2b748cd6cf0ec9a0
-CI #349 stale opaque-RDS guard retired; runtime/skin unchanged.
+TEST146 CI
+Source runtime/build: 887dacca7c038cfd66702af2254e413781557021
+Regression audit: 7576f8c55f6fe73a56b15482d5d8dbbd33412cf8
+Bake opaque black Radio rails into base master/radio.mvi; live top text via bounded transparent WarderRadioTopDisplay; native bottom RDS remains transparent.
