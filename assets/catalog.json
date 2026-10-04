@@ -26,7 +26,7 @@
     {"id":"extraScreens","label":"ExtraScreens graphics","status":"available","path":"downloads/ui/extra-screens/extraScreens17.zip"},
     {"id":"menuicons","label":"Menu icons","status":"available","path":"downloads/ui/menu-icons/menuIcons.zip"},
     {"id":"menuiconsbig","label":"Large menu icons","status":"available","path":"downloads/ui/menu-icons-big/menuIconsBig.zip"},
-    {"id":"weatherIcons","label":"Classic weather icons","status":"available","path":"downloads/weather/icons/piconWeather.zip"},
+    {"id":"weatherIcons","label":"Classic weather icons","status":"unavailable","note":"Preserved in legacy HDGlass FTP snapshot; Warder target payload not restored yet"},
     {"id":"weatherIconsN","label":"Alternate weather icons","status":"available","path":"downloads/weather/icons-alt/weatherIcons.zip"},
     {"id":"animWeatherIcons","label":"Animated weather icons","status":"available","path":"downloads/weather/animated/animIconWeather.zip"},
     {"id":"7zip","label":"7zip helper binaries","status":"internal-only"},
