@@ -164,6 +164,21 @@ class WarderRadioArtwork(Renderer):
                 gotFeat = cls._featIdentity(item.get("artistName"), item.get("trackName"))
                 exact = bool(wantFeat[0] and wantFeat == gotFeat)
             if not exact:
+                # TEST176: tolerate catalogue version/remix suffix placement when
+                # the complete artist identity still agrees. RDS often sends
+                # "Title [Remix]" while stores use "Title (Remix)" or append
+                # the same version wording differently.
+                def looseTitle(value):
+                    value = cls._titleCommaIdentity(value)
+                    for ch in "[](){}":
+                        value = value.replace(ch, " ")
+                    for ch in "-–—":
+                        value = value.replace(ch, " ")
+                    return " ".join(value.split())
+                if sameArtist:
+                    a, b = looseTitle(item.get("trackName")), looseTitle(title)
+                    exact = bool(a and b and (a == b or a.startswith(b + " ") or b.startswith(a + " ")))
+            if not exact:
                 cls._diag("REJECT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
                 continue
             cls._diag("EXACT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
