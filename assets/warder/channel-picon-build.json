@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "state": "BUILT_NOT_PUBLISHED",
+  "source": {
+    "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+    "commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f"
+  },
+  "workflow": {
+    "run_id": 37222927731,
+    "head_sha": "18ac637b2180f40b4adc08ffc706c2550a9cadd7",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 11311027106,
+    "name": "warder-channel-picons-2827fed5",
+    "size_in_bytes": 615370960,
+    "digest": "sha256:ed2e2ae42bf95e6e5db4500034c59136bd82a791c05e99e6f1b9d73670ebee95",
+    "expires_at": "2026-10-18T18:06:02Z"
+  },
+  "package_contract": {
+    "selectors": 57,
+    "matched": 40,
+    "ready": 38,
+    "collision_blocked": 2,
+    "missing_source": 17,
+    "packages": 114,
+    "families": ["channel-transparent", "channel-black", "channel-white"]
+  },
+  "runtime_cutover": false,
+  "note": "Temporary Actions artifact is build evidence, not a stable receiver backend. Keep the current channel-picon runtime route until Warder packages and manifest are persistently published."
+}
