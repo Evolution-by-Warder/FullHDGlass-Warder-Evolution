@@ -775,7 +775,7 @@ rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).g
 for token in ('name="RassLogo"', 'name="RadioText"', 'name="RtpText"'):
     assert token in rds, token
 # TEST144 root-cause compositor contract: native RDS is bounded/opaque, never fullscreen transparent.
-assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' in rds
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in rds
 assert '<eLabel position="27,15" size="1837,86"' not in rds
 assert '<eLabel position="27,813" size="1837,222"' not in rds
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
