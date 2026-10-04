@@ -1,11 +1,12 @@
-TEST178 BUILD 1
-Radio artwork final horizontal clearance.
+TEST179 BUILD 1
+Radio artwork matcher only.
 
-Physical TEST177 confirms height is correct, but the artwork touches/overlaps the right frame and has no horizontal breathing room.
-Keep y=145 and height=640 unchanged.
-Set artwork geometry to:
-- position 606,145
-- size 704,640
-This creates a symmetric 8 px inset from the TEST177 left/right extent, visually matching the intentional visible background clearance above/below.
-Keep TEST176 matcher unchanged.
+Keep TEST178 physically approved artwork geometry unchanged: position 606,145 size 704,640.
+Keep TEST174 ePicLoad decode fix unchanged.
+Add one controlled matcher fallback:
+- strong normalized title match remains mandatory
+- permit catalogue artistName to add guest/collaboration credits when the leading artist still matches RDS
+- tolerate the already-approved trailing version/remix suffix form
+- no generic partial title matching
+- no station slogan matching
 No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
