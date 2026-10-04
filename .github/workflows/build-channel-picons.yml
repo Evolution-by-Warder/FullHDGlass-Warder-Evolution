@@ -2,6 +2,11 @@ name: Build Warder Channel Picon Packages
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - warder-modernization-work
+    paths:
+      - .github/PICON-BUILD-REQUEST
 
 permissions:
   contents: read
