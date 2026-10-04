@@ -1,6 +1,8 @@
-TEST160 CI BUILD 1
+TEST161 CI BUILD 1
 Scope: Radio top rail geometry only.
-Keep TEST158 safe single eLabel architecture and one font size.
-Physical TEST159 evidence: clock still left of FullHD centre and brand wraps.
-Use asymmetric spacing: move clock right, pull brand closer to clock, keep all three fields on one line.
-No eCanvas/writeText. No bottom or centre changes.
+Calibrated from physical TEST160 screenshot.
+Move clock right to approximately FullHD x=960 centre.
+Move complete FullHDGlass17 · Warder Evolution string right with it so its right margin visually matches the date left margin.
+Keep current clock-to-brand gap and one-line layout.
+Keep TEST158 safe single eLabel architecture, one font size, no eCanvas/writeText.
+No colour, bottom or centre changes.
