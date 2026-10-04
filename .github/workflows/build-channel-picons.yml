@@ -88,6 +88,15 @@ jobs:
           print("Deterministic materialization: PASS; publication remains separate and locked")
           PY
 
+      - name: Validate publication-shaped payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/validate-picon-publication.py \
+            --root dist/channel-picons \
+            --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
+            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons
+
       - name: Upload audited channel-picon artifact
         uses: actions/upload-artifact@v4
         with:
