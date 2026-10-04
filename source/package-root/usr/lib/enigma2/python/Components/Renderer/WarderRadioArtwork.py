@@ -201,6 +201,18 @@ class WarderRadioArtwork(Renderer):
                 leadArtist = cls._mainArtistIdentity(item.get("artistName")) == cls._mainArtistIdentity(artist)
                 exact = bool(leadArtist and a and b and (a == b or a.startswith(b + " ") or b.startswith(a + " ")))
             if not exact:
+                # TEST180: RDS may carry only the credited act/group while
+                # catalogue artistName expands the same act with individual
+                # performers/cast. Permit this only for an exact normalized
+                # title and only when the RDS artist is the complete leading
+                # catalogue credit before the first comma.
+                catalogueLead = gotArtist.split(",", 1)[0].strip()
+                exact = bool(
+                    cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)
+                    and catalogueLead
+                    and catalogueLead == wantArtist
+                )
+            if not exact:
                 cls._diag("REJECT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
                 continue
             cls._diag("EXACT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
