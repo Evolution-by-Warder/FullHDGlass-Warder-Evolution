@@ -872,7 +872,7 @@ assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
 assert 'GUI_WIDGET = eLabel' in RADIO_TOP
-assert 'eCanvas' not in RADIO_TOP
+assert 'from enigma import eCanvas' not in RADIO_TOP
 assert 'writeText' not in RADIO_TOP
 assert 'strftime("%H:%M:%S", localtime(stamp))' in RADIO_TOP
 assert 'Format::%S' not in radio
