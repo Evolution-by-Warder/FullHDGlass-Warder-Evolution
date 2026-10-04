@@ -8397,7 +8397,10 @@ class downloadMenu(Screen):
 			22:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
 			23:['w',_('Weather icons'),'weatherIconsN','','x'],			
 			24:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
-			25:['7z',"7zip",'7zip-'+({"aarch64":"aa","arm":"a","mipsel":"m","sh4":"s"}[XCPU]),'','x'],
+			# Warder helper payloads exist for aarch64/arm/mipsel only. The historical
+			# SH4 selector had no preserved/published 7zip-s payload; do not advertise
+			# a download which can only fail. Existing receiver 7z_g remains usable.
+			25:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x'],
 			26:['chs',_('Channelselection icons')+' ('+_('big')+')','CHSPiconbig','','x']
 			}	
 		self.dwnTimer = eTimer()
@@ -8493,6 +8496,9 @@ class downloadMenu(Screen):
 		if not self.ena:
 			return
 		tmp = self['list'].getSelectedIndex()
+		if self.menuListAll[tmp][0] == '7z' and not self.menuListAll[tmp][2]:
+			self.session.open(historyScreen, _("Result"), _("ERROR")+": 7zip helper download is not available for this CPU architecture")
+			return
 		if '***' in self.menuListAll[tmp][1]:
 			if not os.path.isfile(SEVENZIP):
 				self.session.open(historyScreen, _("Result"),_("ERROR")+": "+_('Tool 7zip is missing, you can download it from DOWNLOAD MENU'))
