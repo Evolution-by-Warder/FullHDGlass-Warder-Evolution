@@ -1,4 +1,4 @@
-TEST157 CI BUILD 6
+TEST157 CI BUILD 7
 Build against the newly replaced production warder-radio-background.jpg.
 Pin approved Radio master SHA-256 ccfe41ca8b8b354b08b319de6ed935353c0aa806b8f899aa1895a0d3b365cd48.
 Keep one WarderRadioTop widget with 30 | 38 | 30 typography and uniform #eeeeee.
@@ -14,3 +14,5 @@ Exact replacement master geometry is 1672x941; builder guard migrated accordingl
 Final production master is exact 1920x1080 FullHD.
 
 Retired stale TEST80 literal-brand assertion; TEST155 composite renderer is authoritative.
+
+Migrated stale XML clock assertion to WarderRadioTop composite renderer.
