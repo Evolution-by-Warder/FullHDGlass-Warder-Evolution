@@ -974,7 +974,8 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
 assert radio.count('render="WarderRadioTop"') == 1
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
-assert RADIO_TOP.count('gFont("Prive4", 30)') == 2
+assert 'font="Prive4;30" foregroundColor="#eeeeee"' in radio
+assert 'font=\\"Prive4;30\\" foregroundColor=\\"#eeeeee\\"' in PLUGIN
 for token in ('GUI_WIDGET = eLabel', 'self.instance.setText(', 'FullHDGlass17 · Warder Evolution'):
     assert token in RADIO_TOP, token
 assert 'warder_radio_top = """' in PLUGIN
