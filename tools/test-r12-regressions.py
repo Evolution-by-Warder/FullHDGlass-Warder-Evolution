@@ -15,7 +15,7 @@ WEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather
 EWEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py").read_text(encoding="utf-8")
 PROVIDER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
 RADIO_ART = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py").read_text(encoding="utf-8")
-RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")
+RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")\nRADIO_INFO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoTop.py").read_text(encoding="utf-8")
 
 rows = [x for x in CITY.splitlines() if x.startswith("om|")]
 sk = [x for x in rows if x.split("|")[3] == "SK"]
@@ -999,6 +999,12 @@ assert PLUGIN.count('<convert type="WarderRadioOnly">Boolean</convert>') >= 3
 for token in ('warderRadioDate', 'warderRadioTime', 'warderRadioBrand', 'warderRadioTopTimer', '_warderRadioTopRefresh'):
     assert token not in PLUGIN, token
 assert 'marker.read(8).strip() == "A"' in RADIO_ONLY
+# TEST166: InfoPanel top uses native eLabel renderer that keeps text ownership and Radio gating together.
+assert PLUGIN.count('render="WarderRadioInfoTop"') == 3
+assert '<convert type="WarderRadioOnly">Boolean</convert>' not in PLUGIN.split('warder_radio_top = """', 1)[1].split('"""', 1)[0]
+for token in ('GUI_WIDGET = eLabel', 'marker.read(8).strip() == "A"', 'self.instance.setText("")', 'FullHDGlass17 · Warder Evolution'):
+    assert token in RADIO_INFO_TOP, token
+assert 'eCanvas' not in RADIO_INFO_TOP and '.writeText(' not in RADIO_INFO_TOP
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in SKIN
