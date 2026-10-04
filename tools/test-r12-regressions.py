@@ -15,6 +15,7 @@ WEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather
 EWEATHER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py").read_text(encoding="utf-8")
 PROVIDER = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py").read_text(encoding="utf-8")
 RADIO_ART = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py").read_text(encoding="utf-8")
+RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")
 
 rows = [x for x in CITY.splitlines() if x.startswith("om|")]
 sk = [x for x in rows if x.split("|")[3] == "SK"]
@@ -967,7 +968,6 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 
 
 # TEST155: the complete top rail is one composite widget in native Radio and InfoPanel.
-RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")
 RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
 assert radio.count('render="WarderRadioTop"') == 1
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
