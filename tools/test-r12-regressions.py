@@ -858,7 +858,7 @@ assert "/tmp/warder-radio-start" in PLUGIN and "/tmp/warder-radio-start" in RADI
 # preserve real Provider data below it, and keep the clock as one HH:MM:SS field.
 SPECTRUM = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioSpectrum.py").read_text(encoding="utf-8")
 assert "GUI_WIDGET = eCanvas" in SPECTRUM
-assert "self._timer.start(200)" in SPECTRUM
+assert "self._timer.start(140)" in SPECTRUM
 assert "self._timer.stop()" in SPECTRUM
 assert "width, height = 350, 126" in SPECTRUM
 assert "barw = 15" in SPECTRUM
