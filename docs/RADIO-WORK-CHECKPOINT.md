@@ -6,7 +6,7 @@ Branch: `warder-modernization-work`
 ## Mandatory completion order
 
 1. COVER — PHYSICAL PASS on TEST178. Locked geometry: position 606,145; size 704,640. Preserve the thin visible background gap between frame and artwork on all four sides. Do not change without new physical evidence.
-2. SONG MATCHER — improve artwork hit rate without accepting station slogans/garbage.
+2. SONG MATCHER — PHYSICAL PASS on TEST179. Receiver test found correct artwork for normal songs and correctly rejected non-song RDS entries (Studio-Hotline, Internet URL, BAYERN 3 slogan). Chris de Sarandy / Good Old Days remained blank because the catalogue returned only unrelated Hurts Like This results; do not loosen matching for missing catalogue data. Lock TEST179 matcher unless new physical evidence shows a wrong artwork.
 3. RADIO WITHOUT RDS — mandatory before RADIO can be closed:
    - keep the normal RADIO screen and TOP;
    - show all service data available from `session.CurrentService`;
