@@ -926,8 +926,9 @@ assert 'WarderRdsInfoDisplay' not in PLUGIN
 
 # TEST96: Radio UI stays native FHD and OpenWebif JPEG preserves OSD text chroma detail.
 assert '<resolution xres="1920" yres="1080" bpp="32" />' in SKIN
-# TEST152 restores the receiver-proven native RdsInfoDisplay clock ownership.
-assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
+# TEST155+ composite top renderer owns the receiver-proven Radio clock.
+assert 'render="WarderRadioTop"' in radio
+assert 'strftime("%H:%M:%S", localtime(stamp))' in RADIO_TOP
 assert 'Format::%H:%M:%S' not in radio
 assert '"-q:v", "2", output' in WARDER_GRAB
 assert 'timeout=8' in WARDER_GRAB
