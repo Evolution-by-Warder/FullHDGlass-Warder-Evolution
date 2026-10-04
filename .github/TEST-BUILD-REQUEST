@@ -1,4 +1,4 @@
-TEST170 BUILD 2
+TEST170 BUILD 3
 Radio background master update only.
 
 Use the newly uploaded warder-radio-background.jpg with medium dark-panel transparency.
@@ -10,3 +10,5 @@ Do not change bottom, artwork, equalizer, ownership or Radio lifecycle.
 Build and workflow guards updated to the new approved background SHA.
 
 Retrigger after verifying workflow path trigger and both Radio master SHA guards are synchronized.
+
+BUILD 3: restored the unrelated GraphicalEPGPIG ExtendedDescription foreground to #eeeeee after TEST170 regression failure; Radio top/background unchanged.
