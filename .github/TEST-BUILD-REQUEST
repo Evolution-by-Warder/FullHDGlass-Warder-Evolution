@@ -1,8 +1,8 @@
-TEST168 BUILD 1
+TEST169 BUILD 1
 Radio TOP colour only.
-TEST167 physical test: #F4C76A is too subdued on the receiver.
+TEST168 physical test: bright gold still not approved.
 Keep all proven TEST166 geometry, ownership and native eLabel safety unchanged.
-Change only the three top fields foregroundColor from #F4C76A to brighter warm gold #FFE16A in native Radio and injected InfoPanel top.
-No bottom, artwork, equalizer or background changes.
+Change only the three top fields foregroundColor from #FFE16A to vivid red #FF4A4A in native Radio and injected InfoPanel top.
+Do not change RadioText/RtpText, bottom, artwork, equalizer or background.
 
-Regression guards updated for #FFE16A on clean Radio and injected InfoPanel top.
+Regression guards updated for #FF4A4A on clean Radio and injected InfoPanel top.
