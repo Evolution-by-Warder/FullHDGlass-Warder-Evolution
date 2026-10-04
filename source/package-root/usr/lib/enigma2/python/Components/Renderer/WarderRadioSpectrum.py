@@ -3,7 +3,8 @@
 # Visual effect only: deliberately does not claim to analyse programme audio.
 
 from Components.Renderer.Renderer import Renderer
-from enigma import eCanvas, eRect, eTimer, gRGB
+from enigma import eCanvas, eRect, eTimer, gRGB, eSize
+from skin import parseColor
 
 
 class WarderRadioSpectrum(Renderer):
@@ -27,6 +28,22 @@ class WarderRadioSpectrum(Renderer):
             self._timer_conn = self._timer.timeout.connect(self._tick)
         except AttributeError:
             self._timer.callback.append(self._tick)
+
+    def applySkin(self, desktop, parent):
+        # Mirror the receiver-proven FullHDGlass17 g17VolumeGauge eCanvas path:
+        # explicitly size the native canvas before Renderer.applySkin().
+        attribs = []
+        for attrib, value in self.skinAttributes:
+            if attrib == "size":
+                x, y = value.split(",")
+                self.instance.setSize(eSize(int(x), int(y)))
+                attribs.append((attrib, value))
+            elif attrib == "backgroundColor":
+                self.instance.clear(parseColor(value))
+            else:
+                attribs.append((attrib, value))
+        self.skinAttributes = attribs
+        return Renderer.applySkin(self, desktop, parent)
 
     def _nextTarget(self, index):
         # Independent deterministic pseudo-random stream per bar.  No random
