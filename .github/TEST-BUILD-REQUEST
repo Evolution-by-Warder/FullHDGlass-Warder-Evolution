@@ -1,8 +1,10 @@
-TEST169 BUILD 1
-Radio TOP colour only.
-TEST168 physical test: bright gold still not approved.
-Keep all proven TEST166 geometry, ownership and native eLabel safety unchanged.
-Change only the three top fields foregroundColor from #FFE16A to vivid red #FF4A4A in native Radio and injected InfoPanel top.
-Do not change RadioText/RtpText, bottom, artwork, equalizer or background.
+TEST170 BUILD 1
+Radio background master update only.
 
-Regression guards updated for #FF4A4A on clean Radio and injected InfoPanel top.
+Use the newly uploaded warder-radio-background.jpg with medium dark-panel transparency.
+Verified master: 1920x1080 RGB JPEG.
+SHA256: 2d758e0cb7a989ea78f8fb7ec85459d307a2f73e7af202a5b5f85005dea19d23
+
+Keep TEST169 Radio top geometry and colour unchanged for an isolated physical background comparison.
+Do not change bottom, artwork, equalizer, ownership or Radio lifecycle.
+Build and workflow guards updated to the new approved background SHA.
