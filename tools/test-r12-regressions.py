@@ -976,17 +976,26 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST155: the complete top rail is one composite widget in native Radio and InfoPanel.
+# TEST165: native Radio and InfoPanel use three independent native labels on one baseline.
 RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
-assert radio.count('render="WarderRadioTop"') == 1
-assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
-assert 'font="Prive4;30" foregroundColor="#eeeeee"' in radio
-assert 'font="Prive4;30" foregroundColor="#eeeeee"' in PLUGIN
-for token in ('GUI_WIDGET = eLabel', 'self.instance.setText(', 'FullHDGlass17 · Warder Evolution'):
-    assert token in RADIO_TOP, token
+assert radio.count('source="global.CurrentTime" render="Label"') >= 3
+for token in (
+    'position="62,27" size="610,58" font="Prive4;30"',
+    'position="790,27" size="340,58" font="Prive4;38"',
+    'position="1170,27" size="630,58" font="Prive4;30"',
+    'Format:FullHDGlass17 · Warder Evolution',
+):
+    assert token in radio, token
+assert 'render="WarderRadioTop"' not in radio
 assert 'warder_radio_top = """' in PLUGIN
-assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in PLUGIN
-assert '<convert type="WarderRadioOnly">Boolean</convert>' in PLUGIN
+for token in (
+    'position="62,27" size="610,58" font="Prive4;30"',
+    'position="790,27" size="340,58" font="Prive4;38"',
+    'position="1170,27" size="630,58" font="Prive4;30"',
+    '<convert type="WarderRadioOnly">Boolean</convert>',
+):
+    assert token in PLUGIN, token
+assert PLUGIN.count('<convert type="WarderRadioOnly">Boolean</convert>') >= 3
 for token in ('warderRadioDate', 'warderRadioTime', 'warderRadioBrand', 'warderRadioTopTimer', '_warderRadioTopRefresh'):
     assert token not in PLUGIN, token
 assert 'marker.read(8).strip() == "A"' in RADIO_ONLY
