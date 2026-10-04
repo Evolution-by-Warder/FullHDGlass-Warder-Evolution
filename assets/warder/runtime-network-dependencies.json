@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "policy": "All shipped runtime network hosts must be explicitly classified; legacy HDGlass FTP is forbidden.",
+  "hosts": {
+    "api.themoviedb.org": {
+      "classification": "FUNCTIONAL_API",
+      "references": [
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
+          "line": 129
+        },
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
+          "line": 174
+        }
+      ]
+    },
+    "geocoding-api.open-meteo.com": {
+      "classification": "FUNCTIONAL_API",
+      "references": [
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+          "line": 9760
+        }
+      ]
+    },
+    "image.tmdb.org": {
+      "classification": "FUNCTIONAL_API",
+      "references": [
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
+          "line": 87
+        }
+      ]
+    },
+    "itunes.apple.com": {
+      "classification": "FUNCTIONAL_API",
+      "references": [
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py",
+          "line": 181
+        }
+      ]
+    },
+    "picon.cz": {
+      "classification": "LEGACY_PICON_CHANNEL_SOURCE",
+      "references": [
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+          "line": 8771
+        }
+      ]
+    },
+    "raw.githubusercontent.com": {
+      "classification": "WARDER_GITHUB",
+      "references": [
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+          "line": 2195
+        },
+        {
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+          "line": 7520
+        }
+      ]
+    }
+  }
+}
