@@ -2081,15 +2081,10 @@ def fromCfg():
 					isOk2 = 'AgcNum'
 				i = isOk + '<convert type="g17ExtraSource">%s</convert>\n<convert type="ValueRange">1,65536</convert>\n<convert type="ConditionalShowHide" />\n</widget>' % isOk2
 			tmp += i + "\n"
-	# TEST117: these widgets live inside ExtraInfo17 itself, the receiver-proven
-	# FullHDGlass runtime layer that is visible for the lifetime of the normal InfoBar.
+	# TEST153: Radio-only top typography must never belong to ExtraInfo17/InfoPanel.
+	# RdsInfoDisplay is the sole owner of the Radio date/time/brand widgets.
 	tmp = setSideECM(tmp)
-	warder_radio_top = """
-		<widget name="warderRadioDate" position="62,27" size="610,58" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" />
-		<widget name="warderRadioTime" position="745,27" size="340,58" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
-		<widget name="warderRadioBrand" position="1220,27" size="580,58" font="Prive4;30" halign="right" valign="center" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
-	"""
-	return tmp.replace("</screen>", warder_radio_top + "</screen>")
+	return tmp
 
 def calcY(xs,dd,d,o=None):
 	a = dd.split(d)
@@ -3916,54 +3911,6 @@ class ExtraInfo17(Screen):
 		self.onShow.append(self.startEcmCaidInfo)
 		self.onShow.append(self.setOn)
 		self.onHide.append(self.stopEcmCaidInfo)
-		self["warderRadioDate"] = Label("")
-		self["warderRadioTime"] = Label("")
-		self["warderRadioBrand"] = Label("")
-		self.warderRadioTopTimer = eTimer()
-		try:
-			self.warderRadioTopTimer_conn = self.warderRadioTopTimer.timeout.connect(self._warderRadioTopRefresh)
-		except AttributeError:
-			self.warderRadioTopTimer.timeout.get().append(self._warderRadioTopRefresh)
-		self.onShow.append(self._warderRadioTopStart)
-		self.onHide.append(self._warderRadioTopStop)
-
-	def _warderRadioTopStart(self):
-		self._warderRadioTopRefresh()
-		self.warderRadioTopTimer.start(500, False)
-
-	def _warderRadioTopStop(self):
-		self.warderRadioTopTimer.stop()
-
-	def _warderRadioTopRefresh(self):
-		is_radio = False
-		try:
-			with open("/tmp/warder-radio-current", "r") as marker:
-				is_radio = marker.read(8).strip() == "A"
-		except Exception:
-			pass
-		if not is_radio:
-			self["warderRadioDate"].setText("")
-			self["warderRadioTime"].setText("")
-			self["warderRadioBrand"].setText("")
-			return
-		fmt = "%A  %d.%B %Y"
-		try:
-			if config.plugins.setupGlass17.par134.value != "D":
-				fmt = config.plugins.setupGlass17.par134.value
-			if config.plugins.setupGlass17.par138.value:
-				fmt = fmt.replace("%H", "%-H")
-			if config.plugins.setupGlass17.par188.value:
-				fmt = fmt.replace("%d", "%-d").replace("%m", "%-m")
-		except Exception:
-			pass
-		try:
-			date_text = toLocale(time1.strftime(fmt, time1.localtime()))
-		except Exception:
-			date_text = time1.strftime(fmt, time1.localtime())
-		self["warderRadioDate"].setText(date_text)
-		self["warderRadioTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
-		self["warderRadioBrand"].setText("FullHDGlass17 · Warder Evolution")
-
 	def setOn(self):
 		self.__isOn = True
 		if self.timerpics and self.chckWeaInafAnim():
