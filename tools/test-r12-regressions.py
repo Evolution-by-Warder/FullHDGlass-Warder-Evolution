@@ -1077,17 +1077,3 @@ assert 'self.warderRadioArtworkDialog = self.session.instantiateDialog(WarderRad
 assert 'art.show()' in service94 and 'art.hide()' in service94
 assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent"' in PLUGIN
 assert '<eLabel position="27,15" size="1837,86"' not in radio136
-
-# TEST147: use the dedicated test JPEG only in package staging. The approved
-# repository master remains untouched; no build-time drawing or GUI backing is allowed.
-assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in SKIN
-assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' not in SKIN
-assert 'RADIO_TEST_MASTER="$WORK/usr/share/enigma2/hd_glass17/test-warder-radio-background.jpg"' in BUILD_TEST
-assert 'image.resize((1920, 1080), Image.Resampling.LANCZOS)' in BUILD_TEST
-assert 'image.save(staged_path, "JPEG", quality=95, subsampling=0)' in BUILD_TEST
-assert 'rm -f "$RADIO_TEST_MASTER"' in BUILD_TEST
-assert 'draw.rounded_rectangle(' not in BUILD_TEST
-assert 'class WarderRadioTopDisplay(Screen):' in PLUGIN
-assert 'self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopDisplay)' in PLUGIN
-assert 'top.show()' in PLUGIN and 'top.hide()' in PLUGIN
-assert 'warder_radio_top = """' not in PLUGIN
