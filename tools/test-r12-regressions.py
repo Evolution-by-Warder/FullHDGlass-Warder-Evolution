@@ -871,10 +871,16 @@ radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN)
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
-assert 'GUI_WIDGET = eLabel' in RADIO_TOP
+# TEST165: top rail is three independent native labels on one baseline.
+assert 'render="WarderRadioTop"' not in radio
+assert 'position="62,27" size="610,58" font="Prive4;30"' in radio
+assert 'position="790,27" size="340,58" font="Prive4;38"' in radio
+assert 'position="1170,27" size="630,58" font="Prive4;30"' in radio
+assert radio.count('valign="center" noWrap="1" transparent="1" zPosition="2"') >= 3
+assert '<convert type="ClockToText">WithSeconds</convert>' in radio
+assert 'Format:FullHDGlass17 · Warder Evolution' in radio
 assert 'from enigma import eCanvas' not in RADIO_TOP
 assert '.writeText(' not in RADIO_TOP
-assert 'strftime("%H:%M:%S", localtime(stamp))' in RADIO_TOP
 assert 'Format::%S' not in radio
 
 # TEST93 packaging must use only the approved fixed production master.
