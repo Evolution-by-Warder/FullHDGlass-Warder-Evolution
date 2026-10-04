@@ -3,3 +3,5 @@ Physical TEST187: dynamic Radio spectrum is visible and working on receiver; use
 
 Change only animation timer interval from 200 ms to 140 ms in WarderRadioSpectrum.
 Preserve receiver-proven eCanvas applySkin/lifecycle, independent bar algorithm, colors, geometry 1470,838 350x126, Radio layout, artwork, matcher, fallback, WebIF, service classification and DAB.
+
+BUILD 2: update stale spectrum timer regression guard from 200 ms to intentional TEST188 140 ms.
