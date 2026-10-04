@@ -965,12 +965,15 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST152: physical TEST151 proved ExtraInfo17 ownership wrong: composed text leaked into InfoPanel and disappeared on clean Radio.
-# Recover the receiver-proven TEST149 native RdsInfoDisplay text ownership for a fast isolation build.
+# TEST153: physical TEST152 proves Radio top text must not exist in ExtraInfo17 at all.
+# RdsInfoDisplay exclusively owns Radio date/time/brand plus native lower Radio text.
 assert 'warder_radio_text = """' not in PLUGIN
+assert 'warder_radio_top = """' not in PLUGIN
+assert 'warderRadioTopTimer' not in PLUGIN
+assert '_warderRadioTopRefresh' not in PLUGIN
 assert 'self["warderRadioTop"] = List([])' not in PLUGIN
 assert 'self["warderRadioBottom"] = List([])' not in PLUGIN
-assert 'name="warderRadioDate"' in PLUGIN and 'name="warderRadioTime"' in PLUGIN and 'name="warderRadioBrand"' in PLUGIN
+assert 'name="warderRadioDate"' not in PLUGIN and 'name="warderRadioTime"' not in PLUGIN and 'name="warderRadioBrand"' not in PLUGIN
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="Label" position="420,842" size="720,42"' in SKIN
@@ -1944,16 +1947,19 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST152: physical TEST151 rejected ExtraInfo17 composition ownership.
+# TEST153: reject every ExtraInfo17 Radio typography owner; RdsInfoDisplay is exclusive.
 # Native RdsInfoDisplay owns Radio-only text again; ExtraInfo17 must not own composed Radio Listboxes.
 assert 'warder_radio_text = """' not in PLUGIN
+assert 'warder_radio_top = """' not in PLUGIN
+assert 'warderRadioTopTimer' not in PLUGIN
+assert '_warderRadioTopRefresh' not in PLUGIN
 assert 'source="warderRadioTop" render="Listbox"' not in PLUGIN
 assert 'source="warderRadioBottom" render="Listbox"' not in PLUGIN
 assert 'self["warderRadioTop"] = List([])' not in PLUGIN
 assert 'self["warderRadioBottom"] = List([])' not in PLUGIN
-assert 'name="warderRadioDate"' in PLUGIN
-assert 'name="warderRadioTime"' in PLUGIN
-assert 'name="warderRadioBrand"' in PLUGIN
+assert 'name="warderRadioDate"' not in PLUGIN
+assert 'name="warderRadioTime"' not in PLUGIN
+assert 'name="warderRadioBrand"' not in PLUGIN
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="Label" position="420,842" size="720,42"' in SKIN
@@ -2934,12 +2940,15 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST152: physical TEST151 proved ExtraInfo17 ownership wrong: composed text leaked into InfoPanel and disappeared on clean Radio.
-# Recover the receiver-proven TEST149 native RdsInfoDisplay text ownership for a fast isolation build.
+# TEST153: physical TEST152 proves Radio top text must not exist in ExtraInfo17 at all.
+# RdsInfoDisplay exclusively owns Radio date/time/brand plus native lower Radio text.
 assert 'warder_radio_text = """' not in PLUGIN
+assert 'warder_radio_top = """' not in PLUGIN
+assert 'warderRadioTopTimer' not in PLUGIN
+assert '_warderRadioTopRefresh' not in PLUGIN
 assert 'self["warderRadioTop"] = List([])' not in PLUGIN
 assert 'self["warderRadioBottom"] = List([])' not in PLUGIN
-assert 'name="warderRadioDate"' in PLUGIN and 'name="warderRadioTime"' in PLUGIN and 'name="warderRadioBrand"' in PLUGIN
+assert 'name="warderRadioDate"' not in PLUGIN and 'name="warderRadioTime"' not in PLUGIN and 'name="warderRadioBrand"' not in PLUGIN
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="Label" position="420,842" size="720,42"' in SKIN
@@ -3913,13 +3922,16 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST152: TEST151 ExtraInfo17 composition was rejected by physical receiver test.
+# TEST153: reject every ExtraInfo17 Radio typography owner; RdsInfoDisplay is exclusive.
 assert 'warder_radio_text = """' not in PLUGIN
+assert 'warder_radio_top = """' not in PLUGIN
+assert 'warderRadioTopTimer' not in PLUGIN
+assert '_warderRadioTopRefresh' not in PLUGIN
 assert 'source="warderRadioTop" render="Listbox"' not in PLUGIN
 assert 'source="warderRadioBottom" render="Listbox"' not in PLUGIN
 assert 'self["warderRadioTop"] = List([])' not in PLUGIN
 assert 'self["warderRadioBottom"] = List([])' not in PLUGIN
-assert 'name="warderRadioDate"' in PLUGIN and 'name="warderRadioTime"' in PLUGIN and 'name="warderRadioBrand"' in PLUGIN
+assert 'name="warderRadioDate"' not in PLUGIN and 'name="warderRadioTime"' not in PLUGIN and 'name="warderRadioBrand"' not in PLUGIN
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="Label" position="420,842" size="720,42"' in SKIN
