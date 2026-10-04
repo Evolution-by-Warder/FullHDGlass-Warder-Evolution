@@ -29,6 +29,7 @@ import stat
 import zipfile
 import subprocess
 import tempfile
+import NavigationInstance
 try:
 	from urllib.request import Request, urlopen
 except ImportError:
@@ -124,11 +125,23 @@ _warderOwiGetUrlArg = None
 
 def _warderRadioGrabRender(self, request):
 	global _warderNativeGrabRender, _warderOwiGetUrlArg
+	# TEST182: determine RADIO from the live service at screenshot time.
+	# The TEST106 marker remains only as a fallback. This removes the timing
+	# dependency which left OpenWebif in TV mode on DVB radio services without RDS.
+	is_radio = False
 	try:
-		with open("/tmp/warder-radio-current", "r") as marker:
-			is_radio = marker.read().strip() == "A"
+		ref = NavigationInstance.instance and NavigationInstance.instance.getCurrentlyPlayingServiceReference()
+		refstr = ref.toString() if ref is not None else ""
+		fields = refstr.split(":")
+		is_radio = len(fields) > 2 and fields[2].upper() == "A"
 	except Exception:
-		is_radio = False
+		pass
+	if not is_radio:
+		try:
+			with open("/tmp/warder-radio-current", "r") as marker:
+				is_radio = marker.read().strip() == "A"
+		except Exception:
+			is_radio = False
 	mode = _warderOwiGetUrlArg(request, "mode")
 	if not is_radio or mode not in (None, "", "all"):
 		return _warderNativeGrabRender(self, request)
