@@ -993,10 +993,9 @@ for token in (
     'position="62,27" size="610,58" font="Prive4;30"',
     'position="790,27" size="340,58" font="Prive4;38"',
     'position="1170,27" size="630,58" font="Prive4;30"',
-    '<convert type="WarderRadioOnly">Boolean</convert>',
+    'render="WarderRadioInfoTop"',
 ):
     assert token in PLUGIN, token
-assert PLUGIN.count('<convert type="WarderRadioOnly">Boolean</convert>') >= 3
 for token in ('warderRadioDate', 'warderRadioTime', 'warderRadioBrand', 'warderRadioTopTimer', '_warderRadioTopRefresh'):
     assert token not in PLUGIN, token
 assert 'marker.read(8).strip() == "A"' in RADIO_ONLY
