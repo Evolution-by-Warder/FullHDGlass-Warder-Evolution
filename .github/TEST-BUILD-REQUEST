@@ -1,3 +1,3 @@
-TEST149 CI retry
-Source runtime/build: 9fb70e831bbd7a15beed0b768ad25ed5cf47784d
-CI #355 concrete fix only: historical TEST117 coordinate guards aligned to intentional TEST149 y=27 top rail; runtime unchanged.
+TEST150 CI
+Source runtime/build: 945a568d83df151edb8baba6cb224828dc7a9905
+Radio top rail only: physical-screenshot optical alignment correction; date unchanged, center clock y=25/h=62, right brand y=31/h=58; lower rail untouched.
