@@ -1750,8 +1750,7 @@ rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).g
 for token in ('name="RassLogo"', 'backgroundColor="transparent"'):
     assert token in rds, token
 for token in ('name="RadioText"', 'name="RtpText"'):
-    assert token not in rds, token
-assert 'source="warderRadioBottom" render="Listbox"' in PLUGIN
+    assert token in rds, token
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation'):
     assert token not in rds, token
 for token in ('WarderRdsInfoDisplay', '_warderRadioLookupExact', 'itunes.apple.com/search?entity=song', '_warderRadioSplit', 'warderRdsInfoDisplayRadioTextChanged', 'WarderRadio init'):
@@ -1773,9 +1772,7 @@ rds80 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN)
 for token in ('source="session.CurrentService"', 'name="RassLogo"'):
     assert token in rds80, token
 for token in ('source="global.CurrentTime"', 'FullHDGlass17 · Warder Evolution', '<convert type="ServiceName">Name</convert>', '<convert type="ServiceName">Provider</convert>', 'name="RadioText"', 'name="RtpText"'):
-    assert token not in rds80, token
-assert 'source="warderRadioTop" render="Listbox"' in PLUGIN
-assert 'source="warderRadioBottom" render="Listbox"' in PLUGIN
+    assert token in rds80, token
 for token in ('warderAlbumCover', 'warderStationPicon', 'warderArtist', 'warderTrack', 'warderAlbumMeta', 'warderStation', 'WarderRdsInfoDisplay'):
     assert token not in rds80 and token not in PLUGIN, token
 
