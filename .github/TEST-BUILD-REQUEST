@@ -1,7 +1,4 @@
-TEST188 BUILD 1
-Physical TEST187: dynamic Radio spectrum is visible and working on receiver; user approved functionality and requested only slightly faster movement.
+TEST189 BUILD 1
+Physical reference: Matrix skin displays native DAB SLS on ENERGY and Schwarzwaldradio while Warder TEST188 shows fallback artwork.
 
-Change only animation timer interval from 200 ms to 140 ms in WarderRadioSpectrum.
-Preserve receiver-proven eCanvas applySkin/lifecycle, independent bar algorithm, colors, geometry 1470,838 350x126, Radio layout, artwork, matcher, fallback, WebIF, service classification and DAB.
-
-BUILD 2: update stale spectrum timer regression guard from 200 ms to intentional TEST188 140 ms.
+Change WarderRadioArtwork only: detect native Enigma2 DAB/RASS slideshow availability and hide Warder catalogue/fallback pixmap while SLS is active, allowing the native SLS plane to remain visible. Preserve TEST188 spectrum speed 140 ms, approved Radio geometry, matcher, fallback, WebIF and service classification.
