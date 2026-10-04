@@ -970,6 +970,7 @@ RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py
 RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
 assert radio.count('render="WarderRadioTop"') == 1
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
+assert 'eRect(728, 0, 340, h)' in RADIO_TOP  # widget x=62 => clock centre is screen x=960
 assert RADIO_TOP.count('gFont("Prive4", 30)') == 2
 assert RADIO_TOP.count('gRGB(238, 238, 238, 0)') == 3
 for token in ('gFont("Prive4", 38)', 'RT_VALIGN_CENTER', '"FullHDGlass17 · Warder Evolution"'):
