@@ -13,7 +13,7 @@ except ImportError:
     from urllib import quote
     from urllib2 import Request, urlopen
 
-from enigma import ePicLoad, ePixmap, eTimer, iRdsDecoder, iServiceInformation
+from enigma import ePicLoad, ePixmap, eTimer, iRdsDecoder
 from Components.Renderer.Renderer import Renderer
 import NavigationInstance
 
@@ -36,7 +36,6 @@ class WarderRadioArtwork(Renderer):
         self._diagService = False
         self._diagRadio = False
         self._diagSong = False
-        self._diagSls = False
 
     def postWidgetCreate(self, instance):
         Renderer.postWidgetCreate(self, instance)
@@ -139,33 +138,6 @@ class WarderRadioArtwork(Renderer):
             return decoder and decoder.getText(iRdsDecoder.RadioText) or ""
         except Exception:
             return ""
-
-    def _nativeSlsActive(self):
-        """Return True while Enigma2 exposes a native DAB/RASS slideshow image.
-
-        OpenATV writes the current decoded slideshow to /tmp/RassLast.mvi and
-        reports RASS availability through the RDS decoder.  Warder must not
-        cover that native picture with catalogue/fallback artwork.
-        """
-        try:
-            nav = NavigationInstance.instance
-            service = nav and nav.getCurrentService()
-            decoder = service and service.rdsDecoder()
-            if decoder:
-                try:
-                    if decoder.getText(iRdsDecoder.RasInteractiveAvailable):
-                        return True
-                except Exception:
-                    pass
-        except Exception:
-            pass
-        # Receiver-proven OpenATV RASS/SLS hand-off file. Require a fresh,
-        # non-empty file so stale slides from a previous station cannot win.
-        try:
-            path = "/tmp/RassLast.mvi"
-            return os.path.isfile(path) and os.path.getsize(path) > 0 and (time.time() - os.path.getmtime(path)) < 15.0
-        except Exception:
-            return False
 
     @staticmethod
     def _cacheDir():
@@ -323,25 +295,6 @@ class WarderRadioArtwork(Renderer):
         if service is not None and not self._diagService:
             self._diagService = True
             self._diag("SERVICE epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
-        slsActive = self._nativeSlsActive()
-        if slsActive:
-            if not self._diagSls:
-                self._diagSls = True
-                self._diag("SLS_NATIVE epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
-            # Native Enigma2 DAB/RASS slideshow has priority over every Warder
-            # cover and over the neutral fallback. Hiding this pixmap lets the
-            # receiver-proven native SLS plane remain visible in the centre.
-            self._key = ""
-            self._requestedKey = ""
-            self._result = None
-            if self.instance:
-                self.instance.hide()
-            self._timer.start(250, True)
-            return
-        elif self._diagSls:
-            self._diagSls = False
-            self._showFallback()
-
         radioText = self._radioText()
         if radioText and not self._diagRadio:
             self._diagRadio = True
