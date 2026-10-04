@@ -1,4 +1,4 @@
-TEST144 CI correction rebuild 5
+TEST144 CI correction rebuild 6
 Source runtime: c476530d4de9bc703f6a9a16f35661dae62d957c
-Regression fix: 8de2cc3e3943022b1a9b3f7ba86aa3f56e1afe50
-Verified from new commit: artwork is forbidden in SKIN and required in WarderRadioArtworkDisplay PLUGIN path. Runtime/skin unchanged.
+Full regression-tail audit: 7b077859f6dffbd85308371519a3759e85867585
+Verified from new commit: stale TEST121 SKIN top-brand ownership retired; remaining TEST117-TEST144 contracts preserved. Runtime/skin unchanged.
