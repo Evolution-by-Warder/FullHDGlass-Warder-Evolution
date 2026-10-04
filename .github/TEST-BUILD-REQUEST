@@ -1,4 +1,5 @@
-TEST152 CI RETRY 3
-Runtime source: 82fa48ff4a1b49694b4faff892a3701bf3c186e6
-Regression ownership corrections through: e95413edce0d257b681ce4786ffcb54d7f6e7774
-TEST93/96 native Provider + clock guards aligned. Runtime unchanged.
+TEST153 CI BUILD 1
+Runtime ownership correction through: edb4f890fc246a876f78a8b04ab0dd64b09b99ae
+Physical basis: TEST152 PHYSICAL FAIL.
+ExtraInfo17 Radio top labels/timer removed completely; RdsInfoDisplay is sole Radio typography owner.
+Approved production warder-radio-background.jpg unchanged; rejected test-warder-radio-background.jpg absent.
