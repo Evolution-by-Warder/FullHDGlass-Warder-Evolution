@@ -1,0 +1,16 @@
+selector_id	variant	service_reference	conflict_groups
+08W	transparent	1_0_1_FAE_AF4_BB_E080000_0_0_0.png	digislovakia=freesat != magiosat=slovak-telekom
+08W	transparent	1_0_1_FAF_AF4_BB_E080000_0_0_0.png	digislovakia=freesat != magiosat=slovak-telekom
+08W	transparent	1_0_19_7725_2C1_600_E080000_0_0_0.png	freesat != telly
+08W	black	1_0_1_FAE_AF4_BB_E080000_0_0_0.png	digislovakia=freesat != magiosat=slovak-telekom
+08W	black	1_0_1_FAF_AF4_BB_E080000_0_0_0.png	digislovakia=freesat != magiosat=slovak-telekom
+08W	black	1_0_19_7725_2C1_600_E080000_0_0_0.png	freesat != telly
+08W	white	1_0_1_FAE_AF4_BB_E080000_0_0_0.png	digislovakia=freesat != magiosat=slovak-telekom
+08W	white	1_0_1_FAF_AF4_BB_E080000_0_0_0.png	digislovakia=freesat != magiosat=slovak-telekom
+08W	white	1_0_19_7725_2C1_600_E080000_0_0_0.png	freesat != telly
+160E	transparent	1_0_19_25A_C418_16E_A00000_0_0_0.png	a1-broadcasting != antiksat
+160E	transparent	1_0_19_458_526C_16E_A00000_0_0_0.png	a1-broadcasting != antiksat
+160E	black	1_0_19_25A_C418_16E_A00000_0_0_0.png	a1-broadcasting != antiksat
+160E	black	1_0_19_458_526C_16E_A00000_0_0_0.png	a1-broadcasting != antiksat
+160E	white	1_0_19_25A_C418_16E_A00000_0_0_0.png	a1-broadcasting != antiksat
+160E	white	1_0_19_458_526C_16E_A00000_0_0_0.png	a1-broadcasting != antiksat
