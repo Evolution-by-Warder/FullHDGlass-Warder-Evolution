@@ -54,7 +54,7 @@ class WarderRadioTop(Renderer):
         # TEST159: keep one safe native label and one font size. The fixed-width
         # Prive4 layout places the clock around the FullHD centre (x=960) and,
         # correspondingly, moves the brand farther right.
-        self.instance.setText("%s                                           %s                           FullHDGlass17 · Warder Evolution" % (date, clock))
+        self.instance.setText("%s                                           %s                         FullHDGlass17 · Warder Evolution" % (date, clock))
 
     def postWidgetCreate(self, instance):
         self._paint()
