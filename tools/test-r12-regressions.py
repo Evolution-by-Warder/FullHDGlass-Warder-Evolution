@@ -870,7 +870,8 @@ radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN)
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
-assert '<convert type="g17ClockToText">Format:%H:%M:%S</convert>' in radio
+assert 'gFont("Prive4", 38)' in RADIO_TOP
+assert 'strftime("%H:%M:%S", localtime(stamp))' in RADIO_TOP
 assert 'Format::%S' not in radio
 
 # TEST93 packaging must use only the approved fixed production master.
