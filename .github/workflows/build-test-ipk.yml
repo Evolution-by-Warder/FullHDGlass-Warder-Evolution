@@ -64,6 +64,18 @@ jobs:
           python3 tools/validate-legacy-ftp-migration.py
           python3 tools/audit-runtime-network-dependencies.py
           python3 tools/validate-channel-picon-cutover.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          b=json.loads(Path("assets/warder/channel-picon-build.json").read_text())
+          assert b["runtime_cutover"] is False
+          assert b["publication"]["state"]=="NOT_PUBLISHED"
+          assert b["publication"]["persistent"] is False
+          assert b["publication"]["manifest_url"] is None
+          assert b["publication"]["base_url"] is None
+          assert b["publication"]["required_packages"]==114
+          print("Channel-picon publication lock: PASS")
+          PY
           git diff --exit-code -- assets/warder/runtime-network-dependencies.json
           python3 tools/generate-picon-package-plan.py --output /tmp/picon-package-plan.json
           python3 - <<'PY'
