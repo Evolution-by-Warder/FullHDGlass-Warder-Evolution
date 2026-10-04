@@ -209,7 +209,8 @@ class WarderRadioArtwork(Renderer):
         size = self.instance.size()
         self._picload = ePicLoad()
         self._picload.PictureData.get().append(self._decoded)
-        # TEST174: restore the receiver-proven ePicLoad setup as executable code.\n        self._picload.setPara((size.width(), size.height(), 1, 1, False, 1, "#00000000"))
+        # TEST174: restore the receiver-proven ePicLoad setup as executable code.
+        self._picload.setPara((size.width(), size.height(), 1, 1, False, 1, "#00000000"))
         if self._picload.startDecode(path) != 0:
             self._picload = None
             self.instance.hide()
