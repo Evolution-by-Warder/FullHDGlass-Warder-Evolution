@@ -441,7 +441,7 @@ for n in range(1, 10):
 # TEST141 diagnostic: native RdsInfoDisplay deliberately uses an opaque backing to isolate
 # whether transparent-surface composition causes the receiver typography blur.
 rds = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' in rds
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in rds
 # TEST144 removed both TEST143 masking eLabels; bounded native RDS is the compositor fix.
 assert '<eLabel position="27,15" size="1837,86" backgroundColor="transpBlack2" zPosition="1" />' not in rds
 assert '<eLabel position="27,813" size="1837,222" backgroundColor="transpBlack2" zPosition="1" />' not in rds
@@ -1056,7 +1056,7 @@ assert 'serviceItemHeight="42"' not in radio_cs133
 
 # TEST135 PHYSICAL PASS DIAGNOSTIC; TEST138 restores native depth and reuses the proven scoped composition.
 radio136 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' in radio136
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in radio136
 assert '<eLabel position="27,15" size="1837,86"' not in radio136
 assert '<eLabel position="27,813" size="1837,222"' not in radio136
 # TEST142: TEST141 physically proved native opaque RDS composition; retire the diagnostic overlay completely.
@@ -1076,3 +1076,9 @@ assert 'self.warderRadioArtworkDialog = self.session.instantiateDialog(WarderRad
 assert 'art.show()' in service94 and 'art.hide()' in service94
 assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent"' in PLUGIN
 assert '<eLabel position="27,15" size="1837,86"' not in radio136
+
+# TEST145: no opaque Radio patch surfaces. Native bounded RDS is transparent; ExtraInfo17 top widgets are conditional on a transparent parent.
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in SKIN
+assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' not in SKIN
+assert 'if \'backgroundColor="transparent"\' in tmp:' in PLUGIN
+assert 'Label("") if "warderRadioDate" in self.skin else None' in PLUGIN

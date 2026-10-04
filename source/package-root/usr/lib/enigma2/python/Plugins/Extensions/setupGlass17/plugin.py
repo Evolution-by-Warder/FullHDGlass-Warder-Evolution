@@ -3960,9 +3960,9 @@ class ExtraInfo17(Screen):
 		except Exception:
 			pass
 		if not is_radio:
-			self["warderRadioDate"].setText("")
-			self["warderRadioTime"].setText("")
-			self["warderRadioBrand"].setText("")
+			self["warderRadioDate"].setText("") if self["warderRadioDate"] is not None else None
+			self["warderRadioTime"].setText("") if self["warderRadioTime"] is not None else None
+			self["warderRadioBrand"].setText("") if self["warderRadioBrand"] is not None else None
 			return
 		fmt = "%A  %d.%B %Y"
 		try:
@@ -3978,9 +3978,9 @@ class ExtraInfo17(Screen):
 			date_text = toLocale(time1.strftime(fmt, time1.localtime()))
 		except Exception:
 			date_text = time1.strftime(fmt, time1.localtime())
-		self["warderRadioDate"].setText(date_text)
-		self["warderRadioTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
-		self["warderRadioBrand"].setText("FullHDGlass17 · Warder Evolution")
+		self["warderRadioDate"].setText(date_text) if self["warderRadioDate"] is not None else None
+		self["warderRadioTime"].setText(time1.strftime("%H:%M:%S", time1.localtime())) if self["warderRadioTime"] is not None else None
+		self["warderRadioBrand"].setText("FullHDGlass17 · Warder Evolution") if self["warderRadioBrand"] is not None else None
 
 	def setOn(self):
 		self.__isOn = True
