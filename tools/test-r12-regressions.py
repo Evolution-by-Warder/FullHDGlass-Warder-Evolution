@@ -961,11 +961,11 @@ assert "def preWidgetRemove(self, instance):" in SPECTRUM
 assert 'render="WarderRadioSpectrum"' in radio
 assert 'position="1470,838" size="350,126"' in radio
 
-# TEST98: right-bottom equalizer has a receiver-safe visible baseline inside the locked field.
-assert radio.count('backgroundColor="#1473ff"') >= 2
-assert radio.count('backgroundColor="#1ecdff"') >= 2
-assert 'position="1485,918" size="14,36"' in radio
-assert 'position="1808,896" size="14,58"' in radio
+# TEST185: right-bottom equalizer is dynamic-only. Static fallback bars masked
+# the renderer during physical TEST184 and must not return.
+assert 'position="1485,918" size="14,36"' not in radio
+assert 'position="1808,896" size="14,58"' not in radio
+assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
 
 # TEST105 lazy OpenWebif hook installation / diagnostics
 assert 'def _warderInstallOpenWebifGrabHook():' in PLUGIN
