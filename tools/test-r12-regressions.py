@@ -869,7 +869,7 @@ assert "subprocess." not in SPECTRUM_CODE
 assert "import random" not in SPECTRUM_CODE
 assert "random." not in SPECTRUM_CODE
 radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
-assert 'render="WarderRadioArtwork" position="598,145" size="720,640"' in radio
+assert 'render="WarderRadioArtwork" position="606,145" size="704,640"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
 # TEST165: top rail is three independent native labels on one baseline.
@@ -1020,5 +1020,5 @@ for token in ('GUI_WIDGET = eLabel', 'marker.read(8).strip() == "A"', 'self.inst
 assert 'eCanvas' not in RADIO_INFO_TOP and '.writeText(' not in RADIO_INFO_TOP
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
-assert 'render="WarderRadioArtwork" position="598,145" size="720,640"' in SKIN
+assert 'render="WarderRadioArtwork" position="606,145" size="704,640"' in SKIN
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in SKIN
