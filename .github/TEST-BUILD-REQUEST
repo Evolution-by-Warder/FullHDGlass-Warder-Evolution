@@ -1,10 +1,11 @@
-TEST177 BUILD 1
-Radio artwork geometry only.
+TEST178 BUILD 1
+Radio artwork final horizontal clearance.
 
+Physical TEST177 confirms height is correct, but the artwork touches/overlaps the right frame and has no horizontal breathing room.
+Keep y=145 and height=640 unchanged.
+Set artwork geometry to:
+- position 606,145
+- size 704,640
+This creates a symmetric 8 px inset from the TEST177 left/right extent, visually matching the intentional visible background clearance above/below.
 Keep TEST176 matcher unchanged.
-Keep TEST174 ePicLoad decode fix unchanged.
-Physical TEST176 confirms artwork height is correct.
-Widen artwork widget to fill the receiver-proven center frame horizontally:
-- position 598,145
-- size 720,640
 No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
