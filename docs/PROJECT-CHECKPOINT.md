@@ -285,3 +285,24 @@ Observed physical sequence/evidence:
 **WHOLE RADIO = PHYSICAL PASS / LOCKED on TEST191.** The Radio feature baseline is now closed/accepted for the physically tested receiver path. Preserve all locks documented in `docs/RADIO-WORK-CHECKPOINT.md`; reopen only on new physical regression evidence or an explicitly approved enhancement.
 
 TEST191 package remains `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test191_all.ipk`, SHA256 `a99e309776615c2cc8ded5467d552ba3669fdc88e97860f39a4f89acfc43109e`, workflow run `37220612169` SUCCESS.
+
+
+## Post-Radio regression / download-backend audit — 2026-10-04
+
+Started immediately after TEST191 WHOLE RADIO PHYSICAL PASS. No Radio code changed.
+
+### Git/runtime audit findings
+- TEST191 publication, manifest and runtime/control versions remain aligned.
+- Existing non-selected Warder asset downloads already use HTTPS manifest metadata, SHA256 verification, redirect-prefix checks and safe ZIP extraction.
+- **Remaining external legacy dependency found:** satellite-selected channel-picon path `downloadMenu.downMulti()` still downloads directly from `https://picon.cz/download/<position>/`.
+- This is the active exception to the project rule that FullHDGlass17 must ultimately have no obsolete/external picon download dependency. Do not silently remove it until the canonical Warder replacement dataset exists.
+- Current Warder catalog explicitly marks these families unavailable: `picon_400x240`, `picon_220x132`, `picon-black`, `picon_50x30-black`, `picon-white`, `picon_50x30-white`, `piconOled`, `ZZPicon-v`.
+- Available Warder families already include provider/satellite/CAM black+white, provider/satellite 220x132, help/UI/menu assets, weather assets, large ChannelSelection graphics and architecture-specific 7zip helpers.
+- `assets/warder/downloads.json` is the current runtime download contract; `assets/catalog.json` records available/unavailable families. This remains an intermediate backend pending the shared canonical Warder asset hierarchy migration.
+
+### Next concrete work
+1. Preserve TEST191 Radio unchanged.
+2. Build a precise migration inventory for the remaining picon.cz-backed satellite-selected channel-picon families.
+3. Map those families to the authoritative preserved source / Warder Master picon data before changing runtime URLs.
+4. Only after canonical assets and manifest entries exist, replace `downMulti()` picon.cz access with Warder-owned HTTPS/manifest delivery and add regression gates.
+5. Treat DVB-T/T2 content refresh as a separate modernization pass, not part of preservation migration.
