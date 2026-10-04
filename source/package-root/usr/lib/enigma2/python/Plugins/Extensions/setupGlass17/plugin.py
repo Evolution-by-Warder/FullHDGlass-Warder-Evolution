@@ -2085,9 +2085,9 @@ def fromCfg():
 	# FullHDGlass runtime layer that is visible for the lifetime of the normal InfoBar.
 	tmp = setSideECM(tmp)
 	warder_radio_top = """
-		<widget name="warderRadioDate" position="62,32" size="610,52" font="Regular2;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="warderRadioTime" position="745,27" size="340,58" font="Regular2;38" foregroundColor="#eeeeee" transparent="1" />
-		<widget name="warderRadioBrand" position="1220,30" size="580,50" font="Regular2;25" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
+		<widget name="warderRadioDate" position="62,27" size="610,58" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" />
+		<widget name="warderRadioTime" position="745,27" size="340,58" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
+		<widget name="warderRadioBrand" position="1220,27" size="580,58" font="Prive4;30" halign="right" valign="center" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
 	"""
 	return tmp.replace("</screen>", warder_radio_top + "</screen>")
 

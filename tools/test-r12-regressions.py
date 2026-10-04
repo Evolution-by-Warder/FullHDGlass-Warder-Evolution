@@ -976,3 +976,8 @@ service117 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def servi
 radio117 = service117.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
 assert 'if is_radio:' in radio117 and 'rds.show()' in radio117
 assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
+
+# TEST149 Radio typography: existing thinner Prive4 only; aligned top rail.
+assert 'name="warderRadioDate" position="62,27" size="610,58" font="Prive4;30" valign="center"' in PLUGIN
+assert 'name="warderRadioTime" position="745,27" size="340,58" font="Prive4;38" valign="center"' in PLUGIN
+assert 'name="warderRadioBrand" position="1220,27" size="580,58" font="Prive4;30" halign="right" valign="center"' in PLUGIN
