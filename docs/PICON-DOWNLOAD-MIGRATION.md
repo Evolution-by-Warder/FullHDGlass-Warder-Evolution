@@ -150,3 +150,16 @@ Created `assets/warder/picon-warder-master-coverage.tsv` by enumerating the live
 Two examples show why packaging must deduplicate by service-reference filename at generation time: 0.8W has 929 PNG paths per variant but 722 distinct service-reference filenames across its provider subtrees; 16.0E has 581 paths per variant but 560 distinct filenames. The package generator must use deterministic collision handling and must fail/report when two same-variant files with the same service-reference filename have different bytes; it must never silently choose one.
 
 This audit proves source readiness only for the maintained transparent/black/white variants. It does not authorize synthetic 400x240, 220x132, 50x30 or OLED output. Those legacy families remain unresolved until their authoritative source/transformation rule is established.
+
+
+## Collision audit — 2026-10-04
+
+Completed blob-SHA collision analysis for transparent/black/white across all 40 MATCHED selector scopes. Results are stored in `assets/warder/picon-collision-audit.tsv` and the unresolved identities in `assets/warder/picon-collision-conflicts.tsv`.
+
+- 38/40 matched selectors are collision-free by service-reference filename.
+- Only the aggregate orbital selectors **0.8W** and **16.0E** contain duplicate filenames across provider subtrees.
+- Across all three variants there are 480 duplicate-name cases: **465 are byte-identical and safe to deduplicate**, while **15 are true byte conflicts**.
+- Those 15 variant-level conflicts reduce to only **5 service-reference identities**: 3 at 0.8W and 2 at 16.0E, repeated consistently across transparent/black/white.
+- 0.8W conflicts are provider-specific (Digi Slovakia/Freesat vs MagioSat/Slovak Telekom, plus Freesat vs Telly). 16.0E conflicts are A1 Broadcasting vs Antiksat.
+
+Packaging rule is now concrete: identical SHA duplicates may collapse automatically; different-SHA duplicates must remain unresolved and make aggregate-package generation fail until an explicit provider-aware precedence/identity rule is approved. Provider-specific selectors (Freesat, Digi/Telly, Antiksat) remain independently packageable and must not inherit aggregate-orbit ambiguity.
