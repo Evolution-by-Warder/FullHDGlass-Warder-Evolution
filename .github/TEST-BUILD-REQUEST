@@ -1,16 +1,15 @@
-TEST183 BUILD 3
-Fix DVB Radio without RDS service-type classification.
+TEST184 BUILD 1
+Radio moving equalizer: independent natural bar motion.
 
-Receiver evidence: BBC English (Europe) is a classic DVB radio service. TEST182 only treated service type 0x0A ("A") as radio.
-Recognize both DVB radio service types:
-- 0x02 ("2") digital radio sound service
-- 0x0A ("A") advanced-codec digital radio sound service
-Apply identically to:
-- service-start /tmp/warder-radio-current lifecycle marker and native RDS overlay show/hide
-- OpenWebif GrabScreenshot live-service detection
-Preserve TEST182 WebIF live detection, TEST181 fallback, TEST180 matcher and TEST178 geometry.
-No TV, TOP/BOTTOM, equalizer or DAB redesign.
+Receiver state:
+- TEST183 Radio without RDS physically approved.
+- Preserve locked TEST178 cover geometry, TEST180 matcher, TEST181 fallback and TEST183 DVB radio/WebIF classification.
 
-Retry after updating the regression guard to accept the intentional DVB radio 0x02/0x0A classification.
+Change only WarderRadioSpectrum motion:
+- keep position 1470,838 and size 350x126 unchanged
+- keep 18 bars, colors, peak-hold rendering and receiver-safe eCanvas lifecycle
+- replace shared periodic multi-wave targets with deterministic per-bar target streams
+- independent target timing and rise/fall rates to avoid synchronized/mechanical motion
+- visual decoration only; no audio FFT, subprocess, I/O or random module
 
-Retry after aligning the remaining serviceStart regression assertion with DVB radio types 0x02/0x0A.
+No Radio layout, TOP/BOTTOM, artwork, matcher, WebIF or DAB changes.
