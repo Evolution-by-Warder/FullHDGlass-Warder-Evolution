@@ -1,6 +1,6 @@
-TEST155 CI BUILD 1
-Replace TEST154 three-label top rail with one WarderRadioTop canvas widget.
-Inside one widget: date font 30, clock font 38, brand font 25; common vertical centre.
-Use the same renderer in native RdsInfoDisplay and Radio-only InfoPanel overlay.
-TV InfoPanel is gated by WarderRadioOnly and must show no Radio top data.
-Keep artwork, bottom rail, equalizer, RdsInfoDisplay zPosition=-2 and production background unchanged.
+TEST156 CI BUILD 1
+Keep the TEST155 single WarderRadioTop widget architecture.
+Set left date and right FullHDGlass17 · Warder Evolution to the same Prive4 size 30.
+Keep centre clock larger at Prive4 size 38.
+Use the same bright neutral #eeeeee for all three top segments to match the glass rail and remain legible over the Radio master.
+Do not change geometry, artwork, bottom rail, equalizer, RdsInfoDisplay zPosition=-2 or production background.
