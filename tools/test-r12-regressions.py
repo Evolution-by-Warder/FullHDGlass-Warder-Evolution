@@ -877,7 +877,7 @@ assert 'render="WarderRadioTop"' not in radio
 assert 'position="62,27" size="610,58" font="Prive4;30"' in radio
 assert 'position="790,27" size="340,58" font="Prive4;38"' in radio
 assert 'position="1170,27" size="630,58" font="Prive4;30"' in radio
-# TEST169: vivid-red colour-only Radio top trial. Geometry/text/ownership stay locked from TEST166.
+# TEST170: new Radio background master; TEST169 top geometry/colour retained for isolated background test.
 for token in (
     'position="62,27" size="610,58" font="Prive4;30" foregroundColor="#FF4A4A"',
     'position="790,27" size="340,58" font="Prive4;38" foregroundColor="#FF4A4A"',
@@ -896,7 +896,7 @@ assert 'RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background
 assert 'image.size != (1920, 1080)' in BUILD_TEST
 assert 'generate-warder-radio-background.py' not in BUILD_TEST
 
-assert 'RADIO_MASTER_SHA256="ccfe41ca8b8b354b08b319de6ed935353c0aa806b8f899aa1895a0d3b365cd48"' in BUILD_TEST
+assert 'RADIO_MASTER_SHA256="2d758e0cb7a989ea78f8fb7ec85459d307a2f73e7af202a5b5f85005dea19d23"' in BUILD_TEST
 assert 'ACTUAL_RADIO_MASTER_SHA256="$(sha256sum "$RADIO_MASTER"' in BUILD_TEST
 assert 'TEST93 radio master SHA-256 mismatch' in BUILD_TEST
 
