@@ -51,7 +51,10 @@ class WarderRadioTop(Renderer):
         # TEST158: one native label; avoid eCanvas.writeText crash on receiver startup.
         date = self._dateText(stamp)
         clock = strftime("%H:%M:%S", localtime(stamp))
-        self.instance.setText("%s                         %s                         FullHDGlass17 · Warder Evolution" % (date, clock))
+        # TEST159: keep one safe native label and one font size. The fixed-width
+        # Prive4 layout places the clock around the FullHD centre (x=960) and,
+        # correspondingly, moves the brand farther right.
+        self.instance.setText("%s                                  %s                                  FullHDGlass17 · Warder Evolution" % (date, clock))
 
     def postWidgetCreate(self, instance):
         self._paint()
