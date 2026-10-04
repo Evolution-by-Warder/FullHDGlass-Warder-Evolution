@@ -1,4 +1,3 @@
-TEST151 CI RETRY 2
-Source runtime/build: b549a66d855a49c8614d29e411b4834b1f387072
-Regression guard audit: 3b3820e40561a00dc3559fbf5df882f747873a2f
-CI #359 exposed the remaining stale TEST96 native-clock ownership assertion. Runtime unchanged; retry full composed Radio typography build.
+TEST152 CI
+Source runtime/build: 82fa48ff4a1b49694b4faff892a3701bf3c186e6
+Physical TEST151 correction: remove wrong ExtraInfo17 composed ownership and restore receiver-proven TEST149 native RdsInfoDisplay Radio text ownership for fast isolation. No artwork/picon/equalizer lifecycle change.
