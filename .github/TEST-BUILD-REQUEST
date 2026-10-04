@@ -1,13 +1,6 @@
-TEST166 BUILD 4
-Radio TOP only.
-Physical TEST165: clean Radio top PASS, but top text is blank while InfoPanel is open.
-Keep the receiver-proven three-field geometry unchanged: date 62/610 font30, clock 790/340 font38, brand 1170/630 font30; y=27 h=58.
-Fix only InfoPanel ownership: three WarderRadioInfoTop native eLabel renderers compute their own text and gate themselves by /tmp/warder-radio-current.
-No ClockToText -> Boolean -> ConditionalShowHide chain in InfoPanel.
-No eCanvas/writeText. No bottom, artwork, background or colour changes.
-
-BUILD 2: regression guard newline syntax corrected; implementation unchanged.
-
-BUILD 3: removed the actual literal backslash-n sequence from regression preamble.
-
-BUILD 4: stale TEST165 InfoPanel Boolean-converter assertion removed; TEST166 self-gating renderer is authoritative.
+TEST167 BUILD 1
+Radio TOP colour only.
+TEST166 physical PASS for clean Radio and Radio InfoPanel.
+Keep all proven TEST166 geometry, ownership and native eLabel safety unchanged.
+Change only the three top fields foregroundColor from #eeeeee to warm gold #F4C76A in native Radio and injected InfoPanel top.
+No bottom, artwork or background changes.
