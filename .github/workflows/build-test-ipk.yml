@@ -63,6 +63,7 @@ jobs:
           python3 tools/test-r12-regressions.py
           python3 tools/validate-legacy-ftp-migration.py
           python3 tools/audit-runtime-network-dependencies.py
+          python3 tools/validate-channel-picon-cutover.py
           git diff --exit-code -- assets/warder/runtime-network-dependencies.json
           python3 tools/generate-picon-package-plan.py --output /tmp/picon-package-plan.json
           python3 - <<'PY'
