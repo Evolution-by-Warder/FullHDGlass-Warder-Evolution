@@ -74,16 +74,18 @@ PY
 # are already pixels in the JPEG. No GUI mask/backing and no drawing at build time.
 RADIO_TEST_MASTER="$WORK/usr/share/enigma2/hd_glass17/test-warder-radio-background.jpg"
 test -f "$RADIO_TEST_MASTER" || { echo "ERROR: TEST147 radio test background missing: $RADIO_TEST_MASTER" >&2; exit 1; }
-python3 - "$RADIO_TEST_MASTER" <<'PY'
+python3 - "$RADIO_TEST_MASTER" "$RADIO_MASTER" <<'PY'
 from PIL import Image
 import sys
-path = sys.argv[1]
-with Image.open(path) as image:
-    if image.size != (1920, 1080):
-        raise SystemExit("ERROR: TEST147 radio test background must be exactly 1920x1080, got %sx%s" % image.size)
-print("TEST147 radio test background geometry: PASS 1920x1080")
+source_path, staged_path = sys.argv[1:]
+with Image.open(source_path) as source:
+    image = source.convert("RGB")
+    original_size = image.size
+    if original_size != (1920, 1080):
+        image = image.resize((1920, 1080), Image.Resampling.LANCZOS)
+    image.save(staged_path, "JPEG", quality=95, subsampling=0)
+print("TEST147 radio test background staged: %sx%s -> 1920x1080" % original_size)
 PY
-cp "$RADIO_TEST_MASTER" "$RADIO_MASTER"
 rm -f "$RADIO_TEST_MASTER"
 echo "TEST147 staged test background as package Radio master: PASS"
 command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
