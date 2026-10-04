@@ -1483,7 +1483,6 @@ def startHdg17(reason, **kwargs):
 				InfoBarPlugins.serviceStartNow17 = serviceStartNow17
 				InfoBarPlugins.serviceStartNow172 = serviceStartNow172
 				InfoBarPlugins.serviceStartNow173 = serviceStartNow173
-				InfoBarPlugins.warderRassSlidePicChanged = warderRassSlidePicChanged
 				if config.plugins.setupGlass17.par12.value != "n":
 					InfoBarPlugins.SpecialScreenWindow17 = SpecialScreenWindow17
 			if not config.plugins.setupGlass17.par48.value:
@@ -1534,7 +1533,7 @@ def hdg17inicialize(self):
 			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
 			{
-				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173, iPlayableService.evUpdatedRassSlidePic: self.warderRassSlidePicChanged,
+				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173,
 			})
 		global transStep17
 		transStep17 = 20
@@ -1664,25 +1663,6 @@ def serviceStartNow17(self):
 			if idx:
 				self.g17dialogTimer.start(idx*1000, True)
 				self.killhideTimer.start(750, True)
-
-def warderRassSlidePicChanged(self):
-	# TEST190: mirror Enigma2 InfoBarRdsDecoder's native RASS/SLS event path.
-	# Matrix proves the DAB-over-DVB backend emits evUpdatedRassSlidePic on this receiver.
-	# Ask the current service decoder to display that native slide; Warder artwork then
-	# stays out of the native video/SLS plane instead of trying to decode SLS itself.
-	try:
-		service = self.session.nav.getCurrentService()
-		decoder = service and service.rdsDecoder()
-		if decoder:
-			decoder.showRassSlidePicture()
-			with open("/tmp/warder-radio-service-events.log", "a") as out:
-				out.write("RASS_SLIDE_SHOW epoch=%.6f\\n" % time1.time())
-	except Exception as err:
-		try:
-			with open("/tmp/warder-radio-service-events.log", "a") as out:
-				out.write("RASS_SLIDE_ERROR epoch=%.6f err=%s\\n" % (time1.time(), err))
-		except Exception:
-			pass
 
 def serviceStartNow172(self):
 	if isinstance(self,InfoBar):
