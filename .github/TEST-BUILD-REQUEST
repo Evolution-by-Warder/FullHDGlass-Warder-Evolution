@@ -1,6 +1,6 @@
-TEST154 CI BUILD 1
-Physical basis: TEST153 shows Radio top rail hidden while InfoPanel is open and brand vertically misaligned.
-Restore Radio-only top copy in ExtraInfo17 gated by /tmp/warder-radio-current == A.
-Keep native RdsInfoDisplay as normal Radio owner.
-Align date, time and FullHDGlass17 · Warder Evolution to y=27 h=58 with valign=center.
-Do not change artwork, bottom rail, equalizer or warder-radio-background.jpg.
+TEST155 CI BUILD 1
+Replace TEST154 three-label top rail with one WarderRadioTop canvas widget.
+Inside one widget: date font 30, clock font 38, brand font 25; common vertical centre.
+Use the same renderer in native RdsInfoDisplay and Radio-only InfoPanel overlay.
+TV InfoPanel is gated by WarderRadioOnly and must show no Radio top data.
+Keep artwork, bottom rail, equalizer, RdsInfoDisplay zPosition=-2 and production background unchanged.
