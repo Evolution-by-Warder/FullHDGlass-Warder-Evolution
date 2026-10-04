@@ -198,7 +198,7 @@ class WarderRadioArtwork(Renderer):
         size = self.instance.size()
         self._picload = ePicLoad()
         self._picload.PictureData.get().append(self._decoded)
-        self._picload.setPara((size.width(), size.height(), 1, 1, False, 1, "#00000000"))
+        # TEST172: decode into the wider/lower skin box; preserve receiver-proven aspect handling.\n        self._picload.setPara((size.width(), size.height(), 1, 1, False, 1, "#00000000"))
         if self._picload.startDecode(path) != 0:
             self._picload = None
             self.instance.hide()
