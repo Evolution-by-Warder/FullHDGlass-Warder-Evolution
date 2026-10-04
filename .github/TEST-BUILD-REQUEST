@@ -1,3 +1,3 @@
-TEST147 CI retry
-Source runtime/build: dd35d5cb235d15377a99a417fa9c1e89e6089320
-CI #352 concrete fix: normalize user test background 1672x941 to 1920x1080 only in staging; no drawn rails, no GUI backing, approved repository master untouched.
+TEST148 CI
+Source runtime/build: c3b816d7898d43f3e7afd349dc4ee2daf293af99
+Receiver verification of restored published TEST117 Radio baseline; only package/runtime identity is TEST148. No later typography experiments.
