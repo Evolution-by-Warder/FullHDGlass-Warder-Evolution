@@ -122,7 +122,7 @@ class WarderRadioSpectrum(Renderer):
         # custom renderers on all Enigma2 images. Start from widget creation.
         self._running = True
         self._paint()
-        self._timer.start(200)
+        self._timer.start(140)
 
     def preWidgetRemove(self, instance):
         self._running = False
@@ -132,14 +132,14 @@ class WarderRadioSpectrum(Renderer):
     def changed(self, what):
         if self.instance is not None and not self._running:
             self._running = True
-            self._timer.start(200)
+            self._timer.start(140)
         if self._running:
             self._paint()
 
     def onShow(self):
         self._running = True
         self._paint()
-        self._timer.start(200)
+        self._timer.start(140)
 
     def onHide(self):
         self._running = False
