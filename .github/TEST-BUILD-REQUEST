@@ -1,7 +1,6 @@
-TEST164 CI BUILD 1
-Scope: Radio top rail geometry candidate.
-Carry forward TEST163 midpoint brand correction as the next physical test version.
-Date and physically approved clock remain unchanged.
-Brand remains at midpoint between TEST161 and TEST162.
-Keep one line, one font size, safe eLabel architecture.
+TEST164 CI BUILD 2
+Scope: Radio top rail geometry only.
+Reserve one character of horizontal capacity for dates with day 10-31.
+Keep physical clock target and midpoint brand target; avoid brand wrapping when date gains one digit.
+Safe single eLabel only. No eCanvas/writeText.
 No colour, bottom or centre changes.
