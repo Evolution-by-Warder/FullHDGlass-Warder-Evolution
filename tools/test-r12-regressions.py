@@ -1078,11 +1078,14 @@ assert 'art.show()' in service94 and 'art.hide()' in service94
 assert 'position="620,134" size="648,648" zPosition="-3" backgroundColor="transparent"' in PLUGIN
 assert '<eLabel position="27,15" size="1837,86"' not in radio136
 
-# TEST146: black rails are baked into the package master; live top screen and native RDS are text-only transparent surfaces.
+# TEST147: use the dedicated test JPEG only in package staging. The approved
+# repository master remains untouched; no build-time drawing or GUI backing is allowed.
 assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transparent"' in SKIN
 assert 'name="RdsInfoDisplay" position="27,813" size="1837,222" zPosition="-2" backgroundColor="transpBlack2"' not in SKIN
-assert 'draw.rounded_rectangle((29, 17, 1891, 101), radius=8, fill=(0, 0, 0))' in BUILD_TEST
-assert 'draw.rounded_rectangle((29, 815, 1891, 1033), radius=8, fill=(0, 0, 0))' in BUILD_TEST
+assert 'RADIO_TEST_MASTER="$WORK/usr/share/enigma2/hd_glass17/test-warder-radio-background.jpg"' in BUILD_TEST
+assert 'cp "$RADIO_TEST_MASTER" "$RADIO_MASTER"' in BUILD_TEST
+assert 'rm -f "$RADIO_TEST_MASTER"' in BUILD_TEST
+assert 'draw.rounded_rectangle(' not in BUILD_TEST
 assert 'class WarderRadioTopDisplay(Screen):' in PLUGIN
 assert 'self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopDisplay)' in PLUGIN
 assert 'top.show()' in PLUGIN and 'top.hide()' in PLUGIN

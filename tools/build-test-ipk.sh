@@ -68,21 +68,24 @@ with Image.open(path) as image:
 print("TEST93 radio master geometry: PASS 1920x1080")
 PY
 
-# TEST146: bake the opaque Radio text rails directly into the package master.
-# This changes pixels in the base JPEG/radio.mvi; it does not create GUI masks or backing eLabels.
-python3 - "$RADIO_MASTER" <<'PY'
-from PIL import Image, ImageDraw
+# TEST147: physical typography/compositor exercise only.
+# Keep the repository production master untouched. In staging, replace only the
+# package copy with the user-supplied test background whose black active fields
+# are already pixels in the JPEG. No GUI mask/backing and no drawing at build time.
+RADIO_TEST_MASTER="$WORK/usr/share/enigma2/hd_glass17/test-warder-radio-background.jpg"
+test -f "$RADIO_TEST_MASTER" || { echo "ERROR: TEST147 radio test background missing: $RADIO_TEST_MASTER" >&2; exit 1; }
+python3 - "$RADIO_TEST_MASTER" <<'PY'
+from PIL import Image
 import sys
 path = sys.argv[1]
-with Image.open(path) as source:
-    image = source.convert("RGB")
-draw = ImageDraw.Draw(image)
-# Preserve the existing thin rail outlines by filling just inside them.
-draw.rounded_rectangle((29, 17, 1891, 101), radius=8, fill=(0, 0, 0))
-draw.rounded_rectangle((29, 815, 1891, 1033), radius=8, fill=(0, 0, 0))
-image.save(path, "JPEG", quality=95, subsampling=0)
-print("TEST146 baked opaque Radio rails into base master: PASS")
+with Image.open(path) as image:
+    if image.size != (1920, 1080):
+        raise SystemExit("ERROR: TEST147 radio test background must be exactly 1920x1080, got %sx%s" % image.size)
+print("TEST147 radio test background geometry: PASS 1920x1080")
 PY
+cp "$RADIO_TEST_MASTER" "$RADIO_MASTER"
+rm -f "$RADIO_TEST_MASTER"
+echo "TEST147 staged test background as package Radio master: PASS"
 command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
 ffmpeg -y -loglevel error \
     -i "$RADIO_MASTER" \
