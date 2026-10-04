@@ -1,11 +1,10 @@
-TEST176 BUILD 2
-Radio artwork matcher tolerance.
+TEST177 BUILD 1
+Radio artwork geometry only.
 
-Keep TEST175 artwork geometry unchanged.
+Keep TEST176 matcher unchanged.
 Keep TEST174 ePicLoad decode fix unchanged.
-Relax matching one controlled step:
-- complete normalized artist identity must still agree
-- accept equivalent title punctuation/brackets
-- accept catalogue title where one normalized title is the other plus a version/remix suffix
-- do not accept station slogans or partial artist matches
+Physical TEST176 confirms artwork height is correct.
+Widen artwork widget to fill the receiver-proven center frame horizontally:
+- position 598,145
+- size 720,640
 No changes to TOP, BOTTOM, picon, equalizer, ownership or lifecycle.
