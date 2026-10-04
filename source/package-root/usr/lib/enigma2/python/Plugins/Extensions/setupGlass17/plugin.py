@@ -2085,21 +2085,9 @@ def fromCfg():
 	# All share y/height/valign; only the clock uses the larger font.
 	tmp = setSideECM(tmp)
 	warder_radio_top = """
-		<widget source="global.CurrentTime" render="Label" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#eeeeee" halign="left" valign="center" noWrap="1" transparent="1" zPosition="20">
-			<convert type="ClockToText">Format:%A  %-d.%B %Y</convert>
-			<convert type="WarderRadioOnly">Boolean</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="global.CurrentTime" render="Label" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#eeeeee" halign="center" valign="center" noWrap="1" transparent="1" zPosition="20">
-			<convert type="ClockToText">WithSeconds</convert>
-			<convert type="WarderRadioOnly">Boolean</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="global.CurrentTime" render="Label" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#eeeeee" halign="right" valign="center" noWrap="1" transparent="1" zPosition="20">
-			<convert type="ClockToText">Format:FullHDGlass17 · Warder Evolution</convert>
-			<convert type="WarderRadioOnly">Boolean</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
+		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#eeeeee" halign="left" valign="center" noWrap="1" transparent="1" zPosition="20" />
+		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#eeeeee" halign="center" valign="center" noWrap="1" transparent="1" zPosition="20" />
+		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#eeeeee" halign="right" valign="center" noWrap="1" transparent="1" zPosition="20" />
 	"""
 	return tmp.replace("</screen>", warder_radio_top + "</screen>")
 
