@@ -975,26 +975,27 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST117: Radio top rail is rendered inside the actual ExtraInfo17 runtime layer.
-assert 'warder_radio_top = """' in PLUGIN
+# TEST117/TEST146: preserve the physically-approved top-rail content/absolute geometry,
+# but TEST146 owns it in a bounded transparent text-only screen over pixels baked into radio.mvi.
+assert 'class WarderRadioTopDisplay(Screen):' in PLUGIN
 assert 'name="WarderRadioTopDisplay" position="27,15" size="1866,88" zPosition="-2" backgroundColor="transparent"' in PLUGIN
-assert 'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;33" valign="center"' in PLUGIN
-assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right"' in PLUGIN
+assert 'name="warderRadioDate" position="35,7" size="610,66" font="Prive4;33" valign="center"' in PLUGIN
+assert 'name="warderRadioTime" position="718,7" size="340,66" font="Prive4;33" valign="center"' in PLUGIN
+assert 'name="warderRadioBrand" position="1193,7" size="580,66" font="Prive4;33" valign="center" halign="right"' in PLUGIN
 assert 'self["warderRadioDate"] = Label("")' in PLUGIN
 assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
-assert 'marker.read(8).strip() == "A"' in PLUGIN
+assert 'self.warderRadioTopDialog = self.session.instantiateDialog(WarderRadioTopDisplay)' in PLUGIN
 assert 'class WarderRadioTopOverlay(Screen):' not in PLUGIN
-assert 'warderRadioTopDialog' not in PLUGIN
 assert 'instantiateDialog(WarderRadioTopOverlay, zPosition=3000)' not in PLUGIN
 assert SKIN.count('render="WarderRadioInfoBarTop"') == 0
 service117 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
 radio117 = service117.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
 assert 'if is_radio:' in radio117 and 'rds.show()' in radio117
+assert 'top.show()' in radio117
 assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
 
-# TEST118: Radio typography polish only. Keep TEST117 lifecycle, use the skin's native
-# Prive4 face and one shared vertically-centred top-rail geometry in both native RDS
-# and ExtraInfo17 so the temporary InfoBar phase and final Radio phase match exactly.
+# TEST118: Radio typography polish only. Keep the approved Prive4 sizes and exact
+# absolute top-rail positions; TEST146 local coordinates are offset by screen origin 27,15.
 radio118 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
 for token in (
     'name="RadioText" position="393,82" size="1000,52" font="Prive4;33" valign="center"',
@@ -1004,8 +1005,8 @@ for token in (
     assert token in radio118, token
 for token in (
     'name="warderRadioDate" position="35,7" size="610,66" font="Prive4;33" valign="center"',
-    'name="warderRadioTime" position="745,22" size="340,66" font="Prive4;33" valign="center"',
-    'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33" valign="center" halign="right"',
+    'name="warderRadioTime" position="718,7" size="340,66" font="Prive4;33" valign="center"',
+    'name="warderRadioBrand" position="1193,7" size="580,66" font="Prive4;33" valign="center" halign="right"',
 ):
     assert token in PLUGIN, token
 assert 'font="Regular2;33"' not in radio118
@@ -1024,7 +1025,7 @@ assert 'DejaVuSans.ttf" name="WarderRadio"' not in SKIN
 # TEST121: match the physically sharp FullHDGlass17 TV rendering path. WarderRadio now aliases the exact TV face prive7.ttf at scale 100; top brand is optically equal to date at 30px.
 assert '<font filename="prive7.ttf" name="WarderRadio" scale="100" />' in SKIN
 assert '<eLabel text="FullHDGlass17 · Warder Evolution" position="1220,22" size="580,66" font="Prive4;33"' not in SKIN
-assert 'name="warderRadioBrand" position="1220,22" size="580,66" font="Prive4;33"' in PLUGIN
+assert 'name="warderRadioBrand" position="1193,7" size="580,66" font="Prive4;33"' in PLUGIN
 
 # TEST122: use the exact TV ChannelSelection font alias/sizes rather than a Radio alias. This isolates alias/size rasterization as the physical sharpness variable.
 radio122 = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN).group(0)
