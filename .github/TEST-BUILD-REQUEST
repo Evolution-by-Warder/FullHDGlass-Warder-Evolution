@@ -1,5 +1,3 @@
-TEST190 BUILD 1
-Physical TEST189: FAIL for SLS on ENERGY and Schwarzwaldradio; Matrix displays SLS on both same services.
-
-Root path identified from Enigma2 InfoBarRdsDecoder: iPlayableService.evUpdatedRassSlidePic -> current service rdsDecoder().showRassSlidePicture().
-TEST190 wires that native event into Warder InfoBar lifecycle and removes TEST189 guessed polling. Preserve Radio layout, TEST188 spectrum 140 ms, matcher/fallback, WebIF and radio classification.
+TEST191 BUILD 1
+Physical TEST190: SLS FAIL; log proves no legacy RASS event on DAB-over-DVB.
+OpenATV 8 source identifies the real native path: DABSlideDisplay reads iServiceInformation.sTagPreviewImage for eServiceReference.idServiceDAB. TEST191 makes WarderRadioArtwork render that exact MOT slideshow path with priority over catalogue/fallback and removes obsolete TEST190 RASS hook. Preserve approved Radio geometry, matcher/fallback behavior outside DAB SLS, WebIF, and TEST188 spectrum 140 ms.
