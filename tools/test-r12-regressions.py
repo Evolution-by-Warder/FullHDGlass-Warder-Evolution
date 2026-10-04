@@ -875,7 +875,7 @@ assert 'Format::%S' not in radio
 
 # TEST93 packaging must use only the approved fixed production master.
 assert 'RADIO_MASTER="$WORK/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"' in BUILD_TEST
-assert 'image.size != (1920, 1080)' in BUILD_TEST
+assert 'image.size != (1672, 941)' in BUILD_TEST
 assert 'generate-warder-radio-background.py' not in BUILD_TEST
 
 assert 'RADIO_MASTER_SHA256="d73a31cc14dd8b7ab32348c791d99e47c60cd37ba9fff1ef41b213cd0d0e6c67"' in BUILD_TEST
