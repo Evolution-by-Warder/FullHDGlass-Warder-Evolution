@@ -1,0 +1,9 @@
+selector_id	warder_key	variant	duplicate_names	identical_duplicates	conflicting_names	conflicting_paths
+08W	0.8w	transparent	139	136	3	10
+08W	0.8w	black	139	136	3	10
+08W	0.8w	white	139	136	3	10
+160E	16.0e	transparent	21	19	2	4
+160E	16.0e	black	21	19	2	4
+160E	16.0e	white	21	19	2	4
+ALL_OTHER_MATCHED	38 selectors	all	0	0	0	0
+TOTAL	40 selectors	all	480	465	15	42
