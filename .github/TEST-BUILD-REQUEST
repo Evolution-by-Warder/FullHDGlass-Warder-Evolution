@@ -1,10 +1,11 @@
-TEST172 BUILD 1
-Radio artwork fit physical test.
+TEST173 BUILD 1
+Radio artwork matcher physical test.
 
-Keep TEST171 background, TOP and bottom unchanged.
-Change only center artwork geometry:
-- x=580 y=145
-- width=760 height=620
-This widens the usable center area and lowers the artwork so it sits slightly below the upper frame line instead of touching/protruding into it.
-Preserve receiver-proven aspect handling and exact-song artwork lookup.
-Do not change Radio lifecycle, picon, equalizer, text or ownership.
+Keep TEST172 background, TOP, bottom and center artwork geometry unchanged.
+Moderately relax artist identity matching only:
+- treat &, /, x, and, with, feat./featuring/ft. as equivalent collaboration separators
+- require the complete normalized artist token set to remain equal
+- keep title matching strict except existing receiver-proven comma tolerance
+- preserve existing feat-in-title compatibility
+Do not accept partial artist matches.
+Do not change Radio lifecycle, picon, equalizer, text, artwork geometry or ownership.
