@@ -1,4 +1,4 @@
-TEST165 BUILD 1
+TEST165 BUILD 2
 Radio TOP only.
 Replace the fragile single text string with three independent native Label widgets.
 Shared baseline: y=27, h=58, valign=center.
@@ -7,3 +7,5 @@ Clock: x=790 w=340 font 38, centered at FullHD x=960, noWrap.
 Brand: x=1170 w=630 font 30, right aligned to x=1800, noWrap.
 Mirror exactly in Radio InfoPanel with WarderRadioOnly gating.
 No eCanvas/writeText. No bottom, artwork, background or colour changes.
+
+BUILD 2: legacy TEST80 guard updated for native three-label top.
