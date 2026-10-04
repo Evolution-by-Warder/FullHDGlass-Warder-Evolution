@@ -3913,29 +3913,17 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST151: Radio text is composed in two coordinated Listbox widgets owned by ExtraInfo17.
-assert 'warder_radio_text = """' in PLUGIN
-assert 'source="warderRadioTop" render="Listbox" position="62,20" size="1758,72"' in PLUGIN
-assert 'source="warderRadioBottom" render="Listbox" position="420,835" size="1400,180"' in PLUGIN
-assert 'gFont("Prive4",30), gFont("Prive4",38)' in PLUGIN
-assert 'gFont("Prive4",29), gFont("Prive4",33), gFont("Prive4",25)' in PLUGIN
-assert 'RT_HALIGN_LEFT|RT_VALIGN_BOTTOM' in PLUGIN
-assert 'RT_HALIGN_CENTER|RT_VALIGN_BOTTOM' in PLUGIN
-assert 'RT_HALIGN_RIGHT|RT_VALIGN_BOTTOM' in PLUGIN
-assert 'self["warderRadioTop"] = List([])' in PLUGIN
-assert 'self["warderRadioBottom"] = List([])' in PLUGIN
-assert 'decoder.getText(iRdsDecoder.RadioText)' in PLUGIN
-assert 'decoder.getText(iRdsDecoder.RtpText)' in PLUGIN
-assert 'info.getInfoString(iServiceInformation.sProvider)' in PLUGIN
-assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
-assert 'marker.read(8).strip() == "A"' in PLUGIN
-assert 'name="warderRadioDate"' not in PLUGIN
-assert 'name="warderRadioTime"' not in PLUGIN
-assert 'name="warderRadioBrand"' not in PLUGIN
-assert '<widget name="RadioText" position="420,895"' not in SKIN
-assert '<widget name="RtpText" position="420,955"' not in SKIN
-assert 'render="Label" position="420,842" size="720,42"' not in SKIN
-assert 'render="Label" position="1470,978" size="350,38"' not in SKIN
+# TEST152: TEST151 ExtraInfo17 composition was rejected by physical receiver test.
+assert 'warder_radio_text = """' not in PLUGIN
+assert 'source="warderRadioTop" render="Listbox"' not in PLUGIN
+assert 'source="warderRadioBottom" render="Listbox"' not in PLUGIN
+assert 'self["warderRadioTop"] = List([])' not in PLUGIN
+assert 'self["warderRadioBottom"] = List([])' not in PLUGIN
+assert 'name="warderRadioDate"' in PLUGIN and 'name="warderRadioTime"' in PLUGIN and 'name="warderRadioBrand"' in PLUGIN
+assert '<widget name="RadioText" position="420,895"' in SKIN
+assert '<widget name="RtpText" position="420,955"' in SKIN
+assert 'render="Label" position="420,842" size="720,42"' in SKIN
+assert 'render="Label" position="1470,978" size="350,38"' in SKIN
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in SKIN
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in SKIN
 assert 'class WarderRadioTopOverlay(Screen):' not in PLUGIN
@@ -3944,6 +3932,4 @@ assert SKIN.count('render="WarderRadioInfoBarTop"') == 0
 service117 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]
 radio117 = service117.split('rds = getattr(self, "rds_display", None)', 1)[1].split('# TEST94:', 1)[0]
 assert 'if is_radio:' in radio117 and 'rds.show()' in radio117
-assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
-
-# TEST151 supersedes TEST149/150 per-field geometry guards with composed text widgets.
+assert 'rds.hide()\\n\\t\\t\\t\\t\\trds.show()' not in radio117
