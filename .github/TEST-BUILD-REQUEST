@@ -1,7 +1,7 @@
-TEST163 CI BUILD 1
-Scope: Radio top rail geometry only.
-Physical evidence: TEST161 brand too far left; TEST162 too far right.
-Keep date and physically approved clock EXACTLY unchanged.
-Set brand halfway between TEST161 and TEST162 (25 fixed spaces after clock).
+TEST164 CI BUILD 1
+Scope: Radio top rail geometry candidate.
+Carry forward TEST163 midpoint brand correction as the next physical test version.
+Date and physically approved clock remain unchanged.
+Brand remains at midpoint between TEST161 and TEST162.
 Keep one line, one font size, safe eLabel architecture.
 No colour, bottom or centre changes.
