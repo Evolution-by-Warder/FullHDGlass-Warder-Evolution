@@ -1,3 +1,4 @@
-TEST152 CI
+TEST152 CI RETRY
 Source runtime/build: 82fa48ff4a1b49694b4faff892a3701bf3c186e6
-Physical TEST151 correction: remove wrong ExtraInfo17 composed ownership and restore receiver-proven TEST149 native RdsInfoDisplay Radio text ownership for fast isolation. No artwork/picon/equalizer lifecycle change.
+Regression ownership audit: e95ae9e5568d582e7dde87162131b75bba555728
+CI #361 failed only stale duplicated TEST79/80 TEST151 ownership guards. Runtime unchanged; retry TEST152 receiver package.
