@@ -61,6 +61,23 @@ jobs:
           python3 tools/test-runtime-safety.py
           python3 tools/test-version-order.py
           python3 tools/test-r12-regressions.py
+          python3 tools/generate-picon-package-plan.py --output /tmp/picon-package-plan.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          plan = json.loads(Path("/tmp/picon-package-plan.json").read_text(encoding="utf-8"))
+          selectors = plan["selectors"]
+          assert len(selectors) == 57, len(selectors)
+          ready = [x for x in selectors if x["state"] == "READY"]
+          missing = [x for x in selectors if x["state"] == "MISSING_SOURCE"]
+          blocked = [x for x in selectors if x["state"] == "BLOCKED"]
+          assert len(ready) == 38, len(ready)
+          assert len(missing) == 17, len(missing)
+          assert {x["selector_id"] for x in blocked} == {"08W", "160E"}
+          assert all(set(x["eligible_families"]) == {"channel-transparent", "channel-black", "channel-white"} for x in ready)
+          assert all(not x["eligible_families"] for x in blocked)
+          print("Picon migration plan gate: PASS (38 ready / 2 collision-blocked / 17 missing)")
+          PY
 
       - name: Build TEST IPK
         shell: bash
