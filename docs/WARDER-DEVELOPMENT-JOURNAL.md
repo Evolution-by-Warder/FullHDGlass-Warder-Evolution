@@ -680,3 +680,5 @@ Continue P0 in larger batches: replace the PROGRAM INFO legacy title-only artwor
 - TEST152 pre-retry full Radio guard audit 2026-10-04: mandatory search found the original TEST151 composed-widget block still duplicated near the end of the regression suite despite the earlier TEST152 block. Replace that entire obsolete block now, before another CI retry, with one TEST152 native-ownership contract. This prevents serial one-assertion failures; runtime/UI unchanged.
 
 - TEST152 guard cleanup correction 2026-10-04: previous range replacement targeted the earlier TEST152 occurrence and left the later literal TEST151 block intact. Locate the LAST TEST151 composed block explicitly and replace the full block through its radio117 lifecycle assertion. Re-read confirms no positive warderRadioTop/Bottom Listbox expectations remain. Runtime/UI unchanged.
+
+- TEST152 CI #362 correction is now present in branch HEAD c8805ab094e81bd6572f0a5a29268b2195c573af: TEST93/96 native Provider + clock assertions are aligned to TEST152. Runtime/UI unchanged. Retrigger only.
