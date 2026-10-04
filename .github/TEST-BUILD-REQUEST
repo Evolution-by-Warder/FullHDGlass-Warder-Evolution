@@ -1,14 +1,10 @@
-TEST170 BUILD 3
-Radio background master update only.
+TEST171 BUILD 1
+Radio background + yellow TOP physical test.
 
-Use the newly uploaded warder-radio-background.jpg with medium dark-panel transparency.
-Verified master: 1920x1080 RGB JPEG.
+Use approved updated warder-radio-background.jpg.
 SHA256: 2d758e0cb7a989ea78f8fb7ec85459d307a2f73e7af202a5b5f85005dea19d23
 
-Keep TEST169 Radio top geometry and colour unchanged for an isolated physical background comparison.
-Do not change bottom, artwork, equalizer, ownership or Radio lifecycle.
-Build and workflow guards updated to the new approved background SHA.
-
-Retrigger after verifying workflow path trigger and both Radio master SHA guards are synchronized.
-
-BUILD 3: restored the unrelated GraphicalEPGPIG ExtendedDescription foreground to #eeeeee after TEST170 regression failure; Radio top/background unchanged.
+Keep TEST166 Radio TOP geometry and ownership.
+Set only the three Radio TOP fields to #FFE16A in clean Radio and injected InfoPanel.
+GraphicalEPGPIG ExtendedDescription restored to #eeeeee after TEST170 regression failure.
+Do not change bottom, artwork, equalizer or Radio lifecycle.
