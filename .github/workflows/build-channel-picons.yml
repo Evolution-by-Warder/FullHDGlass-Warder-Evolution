@@ -78,7 +78,14 @@ jobs:
           m=json.load(open("dist/channel-picons/manifest.json"))
           assert len(m["packages"])==114
           assert m["generated_from"]["ref"]=="2827fed5b2e6ae4697f08ca57a8c2298079d410f"
-          print("Deterministic materialization: PASS")
+          names=[p["filename"] for p in m["packages"]]
+          assert len(names)==len(set(names))==114
+          files=sorted(p.name for p in __import__("pathlib").Path("dist/channel-picons").glob("*.zip"))
+          assert files==sorted(names)
+          for p in m["packages"]:
+              assert p["url"].endswith("/"+p["filename"])
+              assert p["bytes"] > 0 and len(p["sha256"]) == 64
+          print("Deterministic materialization: PASS; publication remains separate and locked")
           PY
 
       - name: Upload audited channel-picon artifact
