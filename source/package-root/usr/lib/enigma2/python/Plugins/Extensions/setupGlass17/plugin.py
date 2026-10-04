@@ -2081,11 +2081,22 @@ def fromCfg():
 					isOk2 = 'AgcNum'
 				i = isOk + '<convert type="g17ExtraSource">%s</convert>\n<convert type="ValueRange">1,65536</convert>\n<convert type="ConditionalShowHide" />\n</widget>' % isOk2
 			tmp += i + "\n"
-	# TEST155: InfoPanel uses the same single composite renderer. Its source is
-	# CurrentTime and visibility is gated by a dedicated Radio-only converter.
+	# TEST165: InfoPanel mirrors the three independent native Radio top labels.
+	# All share y/height/valign; only the clock uses the larger font.
 	tmp = setSideECM(tmp)
 	warder_radio_top = """
-		<widget source="global.CurrentTime" render="WarderRadioTop" position="62,27" size="1738,58" font="Prive4;30" foregroundColor="#eeeeee" halign="left" valign="center" transparent="1" zPosition="20">
+		<widget source="global.CurrentTime" render="Label" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#eeeeee" halign="left" valign="center" noWrap="1" transparent="1" zPosition="20">
+			<convert type="ClockToText">Format:%A  %-d.%B %Y</convert>
+			<convert type="WarderRadioOnly">Boolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#eeeeee" halign="center" valign="center" noWrap="1" transparent="1" zPosition="20">
+			<convert type="ClockToText">WithSeconds</convert>
+			<convert type="WarderRadioOnly">Boolean</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#eeeeee" halign="right" valign="center" noWrap="1" transparent="1" zPosition="20">
+			<convert type="ClockToText">Format:FullHDGlass17 · Warder Evolution</convert>
 			<convert type="WarderRadioOnly">Boolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
