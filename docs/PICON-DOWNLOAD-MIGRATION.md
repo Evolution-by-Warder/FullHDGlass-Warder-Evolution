@@ -84,3 +84,49 @@ When the canonical payload is available:
 ## Locked unrelated baseline
 
 TEST191 WHOLE RADIO is PHYSICAL PASS / LOCKED. This migration must not modify Radio code or its accepted visuals/lifecycle.
+
+
+## Cross-repository source verification — 2026-10-04
+
+The authoritative sources have now been checked rather than inferred.
+
+### Trezor / Chocholousek originals
+
+`Evolution-by-Warder/Trezor/archives/chocholousek-picons/PROJECT-CONTINUITY.md` confirms:
+- Trezor is the immutable original/recovery archive.
+- `Evolution-by-Warder/PiconHub-Warder-Evolution` is the maintained working picon repository.
+- Chocholousek migration scope is 2,202 selectable archives + 1 preview = 2,203 total, across 8 resolutions, 21 backgrounds/styles and 58 satellite/provider/DTT targets.
+- The source catalogue is `id_for_permalinks(240624).log`; the exact generated source manifest is archived losslessly in Trezor.
+- Original archives must never be edited, internally renamed, recompressed or replaced by corrected picons.
+- Windows acquisition/preservation is incomplete; bulk picon.cz acquisition was explicitly stopped after the source began returning anti-abuse HTML instead of archives.
+
+Therefore Trezor is a provenance/reference source, **not** a runtime asset server and not a place to generate modified FullHDGlass payloads.
+
+### Warder Master / PiconHub production
+
+The live `warder-master-production` branch of `Evolution-by-Warder/PiconHub-Warder-Evolution` was inspected. It already contains maintained per-service PNG data organized by orbital/provider identity and variants such as:
+- `picons/0.8w/digi-hu/{transparent,black,white}/...`
+- `picons/0.8w/digi/{transparent,black,white}/...`
+- `picons/0.8w/digislovakia/{transparent,black,white}/...`
+
+This confirms that PiconHub is the correct maintained-data authority for building future FullHDGlass channel-picon packages. It must not be confused with the immutable Chocholousek archive.
+
+### Important format gap
+
+PiconHub's maintained tree currently proves transparent/black/white service-reference PNG variants, but that alone does **not** prove availability of every legacy FullHDGlass output family (400x240, 220x132, 50x30, OLED) or the exact legacy archive membership expected by each SATLIST selection.
+
+Consequently:
+- black/white source data can be mapped from Warder Master where identities match;
+- no 400x240/220x132/50x30/OLED archive is to be fabricated merely by resizing/rerendering unless a separate project rule explicitly authorizes that transformation;
+- Chocholousek originals may be used for provenance/comparison and recovery, but never overwritten;
+- Vhannibal remains enrichment/diff only and cannot become the authority for this migration.
+
+### Migration architecture now fixed
+
+`Chocholousek originals (Trezor, immutable provenance) -> Warder Master Registry / maintained PiconHub data -> generated FullHDGlass download packages -> FullHDGlass Warder manifest/runtime`.
+
+The old picon.cz numeric SATLIST IDs remain migration evidence only. They are not Warder identities.
+
+### Next implementation batch
+
+Before touching `downMulti()`, derive a machine-readable SATLIST-to-Warder mapping table and audit which of the 59 selectors have authoritative maintained data for transparent/black/white. Mark unresolved selectors/families explicitly; do not fill gaps by assumption. This mapping becomes the input to deterministic package generation and later manifest publication.
