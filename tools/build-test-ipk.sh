@@ -63,9 +63,9 @@ from PIL import Image
 import sys
 path = sys.argv[1]
 with Image.open(path) as image:
-    if image.size != (1920, 1080):
-        raise SystemExit("ERROR: TEST93 radio master must be exactly 1920x1080, got %sx%s" % image.size)
-print("TEST93 radio master geometry: PASS 1920x1080")
+    if image.size != (1672, 941):
+        raise SystemExit("ERROR: TEST93 radio master must be exactly 1672x941, got %sx%s" % image.size)
+print("TEST93 radio master geometry: PASS 1672x941")
 PY
 
 command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required for Warder radio.mvi" >&2; exit 1; }
