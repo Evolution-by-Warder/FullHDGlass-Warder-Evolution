@@ -1594,13 +1594,13 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <!-- TEST93 LAYOUT CONTRACT: coordinates are locked to the approved 1671x941 master scaled to 1920x1080. -->
     <!-- Top glass active area: x=27..1864, y=15..101. -->
     <!-- TEST165: three independent native labels on one baseline. Date/brand cannot move the clock. -->
-    <widget source="global.CurrentTime" render="Label" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#FFE16A" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="Label" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#FF4A4A" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
       <convert type="ClockToText">Format:%A  %-d.%B %Y</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#FFE16A" halign="center" valign="center" noWrap="1" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="Label" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#FF4A4A" halign="center" valign="center" noWrap="1" transparent="1" zPosition="2">
       <convert type="ClockToText">WithSeconds</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#FFE16A" halign="right" valign="center" noWrap="1" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="Label" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#FF4A4A" halign="right" valign="center" noWrap="1" transparent="1" zPosition="2">
       <convert type="ClockToText">Format:FullHDGlass17 · Warder Evolution</convert>
     </widget>
 
