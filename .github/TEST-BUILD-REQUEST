@@ -1,3 +1,4 @@
 TEST191 BUILD 1
 Physical TEST190: SLS FAIL; log proves no legacy RASS event on DAB-over-DVB.
 OpenATV 8 source identifies the real native path: DABSlideDisplay reads iServiceInformation.sTagPreviewImage for eServiceReference.idServiceDAB. TEST191 makes WarderRadioArtwork render that exact MOT slideshow path with priority over catalogue/fallback and removes obsolete TEST190 RASS hook. Preserve approved Radio geometry, matcher/fallback behavior outside DAB SLS, WebIF, and TEST188 spectrum 140 ms.
+TEST191-post-radio-picon-materializer-ci-2026-10-04
