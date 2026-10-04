@@ -1,6 +1,7 @@
-TEST158 CI BUILD 1
+TEST158 CI BUILD 2
 Reason: physical startup crash on GigaBlue Quad 4K Pro.
 Crash signature: eCanvas::writeText, fault address 0x8.
 Fix: Radio top remains one widget but uses native eLabel/setText; no eCanvas.writeText.
 Scope: top rail only. Bottom, artwork, spectrum, TMDB unchanged.
 Radio master SHA256: ccfe41ca8b8b354b08b319de6ed935353c0aa806b8f899aa1895a0d3b365cd48
+Regression guard now rejects eCanvas import/writeText code, not explanatory comment text.
