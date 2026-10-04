@@ -1,3 +1,4 @@
-TEST145
-Source: 76a75e28547b7a6939905604e95843079f0ccd9b
-Physical goal: remove TEST144 top/bottom patch backgrounds; preserve exact active geometry and lifecycle.
+TEST145 CI correction
+Source runtime: 76a75e28547b7a6939905604e95843079f0ccd9b
+Regression audit: 905004e397106c1ae6f73ebf2b748cd6cf0ec9a0
+CI #349 stale opaque-RDS guard retired; runtime/skin unchanged.
