@@ -871,7 +871,9 @@ radio = re.search(r'<screen\b[^>]*name="RdsInfoDisplay"[\s\S]*?</screen>', SKIN)
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in radio
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in radio
 assert '<convert type="ServiceName">Provider</convert>' in radio
-assert 'gFont("Prive4", 38)' in RADIO_TOP
+assert 'GUI_WIDGET = eLabel' in RADIO_TOP
+assert 'eCanvas' not in RADIO_TOP
+assert 'writeText' not in RADIO_TOP
 assert 'strftime("%H:%M:%S", localtime(stamp))' in RADIO_TOP
 assert 'Format::%S' not in radio
 
@@ -972,10 +974,8 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
 assert radio.count('render="WarderRadioTop"') == 1
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
-assert 'eRect(728, 0, 340, h)' in RADIO_TOP  # widget x=62 => clock centre is screen x=960
 assert RADIO_TOP.count('gFont("Prive4", 30)') == 2
-assert RADIO_TOP.count('gRGB(238, 238, 238, 0)') == 3
-for token in ('gFont("Prive4", 38)', 'RT_VALIGN_CENTER', '"FullHDGlass17 · Warder Evolution"'):
+for token in ('GUI_WIDGET = eLabel', 'self.instance.setText(', 'FullHDGlass17 · Warder Evolution'):
     assert token in RADIO_TOP, token
 assert 'warder_radio_top = """' in PLUGIN
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in PLUGIN
