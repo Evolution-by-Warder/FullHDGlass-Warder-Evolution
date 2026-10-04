@@ -24,8 +24,20 @@
     "collision_blocked": 2,
     "missing_source": 17,
     "packages": 114,
-    "families": ["channel-transparent", "channel-black", "channel-white"]
+    "families": [
+      "channel-transparent",
+      "channel-black",
+      "channel-white"
+    ]
   },
   "runtime_cutover": false,
-  "note": "Temporary Actions artifact is build evidence, not a stable receiver backend. Keep the current channel-picon runtime route until Warder packages and manifest are persistently published."
+  "note": "Temporary Actions artifact is build evidence, not a stable receiver backend. Keep the current channel-picon runtime route until Warder packages and manifest are persistently published.",
+  "publication": {
+    "state": "NOT_PUBLISHED",
+    "persistent": false,
+    "manifest_url": null,
+    "base_url": null,
+    "required_packages": 114,
+    "note": "GitHub Actions artifact is temporary build evidence only; receiver cut-over remains locked until all packages and the manifest exist at persistent URLs and are hash/size verified."
+  }
 }
