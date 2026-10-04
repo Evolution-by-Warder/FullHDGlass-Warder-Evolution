@@ -68,3 +68,15 @@ After all services satisfy this rule, old FTP routing can be deleted from runtim
 ## Future replacement rule
 
 A migrated legacy payload may later be replaced by a new Warder-generated version without changing the receiver-facing service key. Only the manifest metadata and payload change. This is the mechanism for gradually replacing old picons after the complete Warder download backend is stable.
+
+
+## Download-menu service audit
+
+The current download menu exposes 27 entries.
+
+- 20 non-SATLIST Warder service keys are present in `assets/warder/downloads.json`.
+- `weatherIcons` is intentionally not exposed by the current menu; its preserved legacy payload is still recorded for completeness.
+- The seven `***Select***` channel-picon entries remain routed through `downMulti()` and picon.cz until the generated Warder channel-package backend is published and the unresolved selector/family gaps are closed.
+- No receiver runtime cut-over to unpublished channel packages is allowed.
+
+The current runtime manifest remains deliberately main-backed. Development on `warder-modernization-work` must not change that production authority until the Warder backend is complete and explicitly approved.
