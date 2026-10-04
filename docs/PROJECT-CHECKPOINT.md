@@ -270,3 +270,18 @@ This section supersedes older Radio TODO/status text above where it conflicts.
 - Detailed Radio lock/diagnostic rules live in `docs/RADIO-WORK-CHECKPOINT.md`.
 
 Remaining Radio closure requirement: perform and explicitly approve one combined **WHOLE RADIO PASS** regression (TV -> Radio -> TV, normal RDS cover, no-RDS fallback, DAB SLS, equalizer, WebIF). Do not declare the entire Radio project final before that combined receiver confirmation.
+
+
+## RADIO CLOSED — WHOLE RADIO PHYSICAL PASS — 2026-10-04
+
+User explicitly approved the final TEST191 combined receiver regression with **“beriem”**.
+
+Observed physical sequence/evidence:
+- DAB SLS: SCHLAGERPARADIES transmitted slideshow rendered in the locked center frame; DAB technical metadata, picon, provider and moving equalizer remained intact.
+- Normal RDS artwork: BAYERN 3 / Fast Boy — Music Sounds rendered the matched real cover and correct Radio lower information.
+- No-cover case: 1LIVE rendered the approved Warder no-cover fallback with no fabricated song/artwork.
+- Return to TV: TV JOJ HD returned to the normal TV InfoPanel with no Radio TOP/background/artwork/equalizer leakage.
+
+**WHOLE RADIO = PHYSICAL PASS / LOCKED on TEST191.** The Radio feature baseline is now closed/accepted for the physically tested receiver path. Preserve all locks documented in `docs/RADIO-WORK-CHECKPOINT.md`; reopen only on new physical regression evidence or an explicitly approved enhancement.
+
+TEST191 package remains `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test191_all.ipk`, SHA256 `a99e309776615c2cc8ded5467d552ba3669fdc88e97860f39a4f89acfc43109e`, workflow run `37220612169` SUCCESS.
