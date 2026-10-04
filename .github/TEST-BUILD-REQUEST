@@ -1,15 +1,7 @@
-TEST165 BUILD 4
+TEST166 BUILD 1
 Radio TOP only.
-Replace the fragile single text string with three independent native Label widgets.
-Shared baseline: y=27, h=58, valign=center.
-Date: x=62 w=610 font 30, noWrap.
-Clock: x=790 w=340 font 38, centered at FullHD x=960, noWrap.
-Brand: x=1170 w=630 font 30, right aligned to x=1800, noWrap.
-Mirror exactly in Radio InfoPanel with WarderRadioOnly gating.
+Physical TEST165: clean Radio top PASS, but top text is blank while InfoPanel is open.
+Keep the receiver-proven three-field geometry unchanged: date 62/610 font30, clock 790/340 font38, brand 1170/630 font30; y=27 h=58.
+Fix only InfoPanel ownership: three WarderRadioInfoTop native eLabel renderers compute their own text and gate themselves by /tmp/warder-radio-current.
+No ClockToText -> Boolean -> ConditionalShowHide chain in InfoPanel.
 No eCanvas/writeText. No bottom, artwork, background or colour changes.
-
-BUILD 2: legacy TEST80 guard updated for native three-label top.
-
-BUILD 3: TEST96 composite clock guard retired; native ClockToText WithSeconds is authoritative.
-
-BUILD 4: obsolete TEST155 composite-widget guard block replaced by TEST165 three-native-label contract.
