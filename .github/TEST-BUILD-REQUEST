@@ -1,3 +1,3 @@
-TEST149 CI
-Source runtime/build: ee0338bb53a7275261d1dd902350c818f4dc3233
-TEST148 recovered architecture unchanged; Radio typography only: existing thinner Prive4, aligned active top rail, equal edge sizes, larger center clock.
+TEST149 CI retry
+Source runtime/build: 9fb70e831bbd7a15beed0b768ad25ed5cf47784d
+CI #355 concrete fix only: historical TEST117 coordinate guards aligned to intentional TEST149 y=27 top rail; runtime unchanged.
