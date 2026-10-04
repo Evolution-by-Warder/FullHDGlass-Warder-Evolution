@@ -1,6 +1,9 @@
-TEST164 CI BUILD 2
-Scope: Radio top rail geometry only.
-Reserve one character of horizontal capacity for dates with day 10-31.
-Keep physical clock target and midpoint brand target; avoid brand wrapping when date gains one digit.
-Safe single eLabel only. No eCanvas/writeText.
-No colour, bottom or centre changes.
+TEST165 BUILD 1
+Radio TOP only.
+Replace the fragile single text string with three independent native Label widgets.
+Shared baseline: y=27, h=58, valign=center.
+Date: x=62 w=610 font 30, noWrap.
+Clock: x=790 w=340 font 38, centered at FullHD x=960, noWrap.
+Brand: x=1170 w=630 font 30, right aligned to x=1800, noWrap.
+Mirror exactly in Radio InfoPanel with WarderRadioOnly gating.
+No eCanvas/writeText. No bottom, artwork, background or colour changes.
