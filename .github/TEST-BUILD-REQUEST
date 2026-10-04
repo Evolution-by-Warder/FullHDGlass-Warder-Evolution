@@ -1,4 +1,4 @@
-TEST183 BUILD 2
+TEST183 BUILD 3
 Fix DVB Radio without RDS service-type classification.
 
 Receiver evidence: BBC English (Europe) is a classic DVB radio service. TEST182 only treated service type 0x0A ("A") as radio.
@@ -12,3 +12,5 @@ Preserve TEST182 WebIF live detection, TEST181 fallback, TEST180 matcher and TES
 No TV, TOP/BOTTOM, equalizer or DAB redesign.
 
 Retry after updating the regression guard to accept the intentional DVB radio 0x02/0x0A classification.
+
+Retry after aligning the remaining serviceStart regression assertion with DVB radio types 0x02/0x0A.
