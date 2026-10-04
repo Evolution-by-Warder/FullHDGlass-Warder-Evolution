@@ -2086,8 +2086,8 @@ def fromCfg():
 	tmp = setSideECM(tmp)
 	warder_radio_top = """
 		<widget name="warderRadioDate" position="62,27" size="610,58" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" />
-		<widget name="warderRadioTime" position="745,27" size="340,58" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
-		<widget name="warderRadioBrand" position="1220,27" size="580,58" font="Prive4;30" halign="right" valign="center" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
+		<widget name="warderRadioTime" position="745,25" size="340,62" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" />
+		<widget name="warderRadioBrand" position="1220,31" size="580,58" font="Prive4;30" halign="right" valign="center" noWrap="1" foregroundColor="#b0b0b0" transparent="1" />
 	"""
 	return tmp.replace("</screen>", warder_radio_top + "</screen>")
 

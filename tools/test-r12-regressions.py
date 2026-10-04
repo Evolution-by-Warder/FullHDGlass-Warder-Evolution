@@ -963,8 +963,8 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST117: Radio top rail is rendered inside the actual ExtraInfo17 runtime layer.
 assert 'warder_radio_top = """' in PLUGIN
 assert 'name="warderRadioDate" position="62,27"' in PLUGIN
-assert 'name="warderRadioTime" position="745,27"' in PLUGIN
-assert 'name="warderRadioBrand" position="1220,27"' in PLUGIN
+assert 'name="warderRadioTime" position="745,25"' in PLUGIN
+assert 'name="warderRadioBrand" position="1220,31"' in PLUGIN
 assert 'self["warderRadioDate"] = Label("")' in PLUGIN
 assert 'self.warderRadioTopTimer.start(500, False)' in PLUGIN
 assert 'marker.read(8).strip() == "A"' in PLUGIN
@@ -979,5 +979,5 @@ assert 'rds.hide()\n\t\t\t\t\trds.show()' not in radio117
 
 # TEST149 Radio typography: existing thinner Prive4 only; aligned top rail.
 assert 'name="warderRadioDate" position="62,27" size="610,58" font="Prive4;30" valign="center"' in PLUGIN
-assert 'name="warderRadioTime" position="745,27" size="340,58" font="Prive4;38" valign="center"' in PLUGIN
-assert 'name="warderRadioBrand" position="1220,27" size="580,58" font="Prive4;30" halign="right" valign="center"' in PLUGIN
+assert 'name="warderRadioTime" position="745,25" size="340,62" font="Prive4;38" valign="center"' in PLUGIN
+assert 'name="warderRadioBrand" position="1220,31" size="580,58" font="Prive4;30" halign="right" valign="center"' in PLUGIN
