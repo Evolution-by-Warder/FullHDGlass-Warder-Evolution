@@ -1,9 +1,9 @@
-TEST185 BUILD 1
-Physical TEST184 showed only the old static equalizer bars.
+TEST186 BUILD 1
+Physical TEST185: static bars correctly removed, but WarderRadioSpectrum output is completely blank.
 
-Remove the 18 static eLabel fallback bars from the Radio screen so they can no longer mask the dynamic WarderRadioSpectrum renderer.
-Preserve WarderRadioSpectrum position 1470,838 size 350x126 zPosition 4 and TEST184 independent per-bar motion.
-No changes to Radio TOP/BOTTOM, cover, matcher, fallback artwork, service classification, WebIF or DAB.
-This is an isolation/fix build: on receiver the equalizer area must now show only renderer output.
-
-BUILD 2: align stale TEST98 regression guard with intentional dynamic-only spectrum; assert static fallback bars stay absent.
+Fix the custom eCanvas renderer lifecycle:
+- call Renderer.postWidgetCreate(self, instance) before first paint/timer start
+- call Renderer.preWidgetRemove(self, instance) on teardown
+- preserve TEST184 independent per-bar motion
+- preserve dynamic-only TEST185 skin field at 1470,838 size 350x126
+No changes to Radio layout, TOP/BOTTOM, cover, matcher, fallback artwork, WebIF, service classification or DAB.
