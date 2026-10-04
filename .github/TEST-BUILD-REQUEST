@@ -5,3 +5,5 @@ Remove the 18 static eLabel fallback bars from the Radio screen so they can no l
 Preserve WarderRadioSpectrum position 1470,838 size 350x126 zPosition 4 and TEST184 independent per-bar motion.
 No changes to Radio TOP/BOTTOM, cover, matcher, fallback artwork, service classification, WebIF or DAB.
 This is an isolation/fix build: on receiver the equalizer area must now show only renderer output.
+
+BUILD 2: align stale TEST98 regression guard with intentional dynamic-only spectrum; assert static fallback bars stay absent.
