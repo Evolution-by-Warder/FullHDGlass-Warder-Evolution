@@ -1593,11 +1593,11 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   <screen name="RdsInfoDisplay" position="0,0" size="1920,1080" zPosition="-2" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST93 LAYOUT CONTRACT: coordinates are locked to the approved 1671x941 master scaled to 1920x1080. -->
     <!-- Top glass active area: x=27..1864, y=15..101. -->
-    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="4" position="62,32" size="610,52" font="Prive4;30" foregroundColor="#e5b243" transparent="1" zPosition="2" />
-    <widget source="global.CurrentTime" render="Label" position="745,27" size="340,58" font="Prive4;38" foregroundColor="#eeeeee" transparent="1" zPosition="2">
+    <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="4" position="62,27" size="610,58" font="Prive4;30" valign="center" foregroundColor="#e5b243" transparent="1" zPosition="2" />
+    <widget source="global.CurrentTime" render="Label" position="745,27" size="340,58" font="Prive4;38" valign="center" foregroundColor="#eeeeee" transparent="1" zPosition="2">
       <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
-    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,30" size="580,50" font="Prive4;25" halign="right" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
+    <eLabel text="FullHDGlass17 · Warder Evolution" position="1220,27" size="580,58" font="Prive4;25" halign="right" valign="center" noWrap="1" foregroundColor="#b0b0b0" transparent="1" zPosition="2" />
 
     <!-- Approved master center frame is not exactly square. Keep album artwork square and centered inside it: 648x648. -->
     <!-- TEST81 exact-artwork renderer remains isolated; hidden on no exact match, preserving native DAB SLS fallback. -->
