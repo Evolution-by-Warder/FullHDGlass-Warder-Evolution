@@ -1,6 +1,6 @@
-TEST156 CI BUILD 1
-Keep the TEST155 single WarderRadioTop widget architecture.
-Set left date and right FullHDGlass17 · Warder Evolution to the same Prive4 size 30.
-Keep centre clock larger at Prive4 size 38.
-Use the same bright neutral #eeeeee for all three top segments to match the glass rail and remain legible over the Radio master.
-Do not change geometry, artwork, bottom rail, equalizer, RdsInfoDisplay zPosition=-2 or production background.
+TEST157 CI BUILD 1
+Build against the newly replaced production warder-radio-background.jpg.
+Pin approved Radio master SHA-256 d73a31cc14dd8b7ab32348c791d99e47c60cd37ba9fff1ef41b213cd0d0e6c67.
+Keep one WarderRadioTop widget with 30 | 38 | 30 typography and uniform #eeeeee.
+Move only the clock segment so its centre is exactly screen x=960.
+Preserve artwork, bottom Radio rail, equalizer, DAB SLS/passive fallback, TMDB and RdsInfoDisplay zPosition=-2.
