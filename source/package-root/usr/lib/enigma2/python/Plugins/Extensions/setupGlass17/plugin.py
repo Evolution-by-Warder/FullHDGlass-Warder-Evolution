@@ -2085,7 +2085,7 @@ def fromCfg():
 	# CurrentTime and visibility is gated by a dedicated Radio-only converter.
 	tmp = setSideECM(tmp)
 	warder_radio_top = """
-		<widget source="global.CurrentTime" render="WarderRadioTop" position="62,27" size="1738,58" transparent="1" zPosition="20">
+		<widget source="global.CurrentTime" render="WarderRadioTop" position="62,27" size="1738,58" font="Prive4;30" foregroundColor="#eeeeee" halign="left" valign="center" transparent="1" zPosition="20">
 			<convert type="WarderRadioOnly">Boolean</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
