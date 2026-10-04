@@ -1,15 +1,7 @@
-TEST184 BUILD 1
-Radio moving equalizer: independent natural bar motion.
+TEST185 BUILD 1
+Physical TEST184 showed only the old static equalizer bars.
 
-Receiver state:
-- TEST183 Radio without RDS physically approved.
-- Preserve locked TEST178 cover geometry, TEST180 matcher, TEST181 fallback and TEST183 DVB radio/WebIF classification.
-
-Change only WarderRadioSpectrum motion:
-- keep position 1470,838 and size 350x126 unchanged
-- keep 18 bars, colors, peak-hold rendering and receiver-safe eCanvas lifecycle
-- replace shared periodic multi-wave targets with deterministic per-bar target streams
-- independent target timing and rise/fall rates to avoid synchronized/mechanical motion
-- visual decoration only; no audio FFT, subprocess, I/O or random module
-
-No Radio layout, TOP/BOTTOM, artwork, matcher, WebIF or DAB changes.
+Remove the 18 static eLabel fallback bars from the Radio screen so they can no longer mask the dynamic WarderRadioSpectrum renderer.
+Preserve WarderRadioSpectrum position 1470,838 size 350x126 zPosition 4 and TEST184 independent per-bar motion.
+No changes to Radio TOP/BOTTOM, cover, matcher, fallback artwork, service classification, WebIF or DAB.
+This is an isolation/fix build: on receiver the equalizer area must now show only renderer output.
