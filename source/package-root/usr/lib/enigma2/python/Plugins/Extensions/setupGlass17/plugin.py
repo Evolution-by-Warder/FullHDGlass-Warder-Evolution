@@ -125,7 +125,7 @@ _warderOwiGetUrlArg = None
 
 def _warderRadioGrabRender(self, request):
 	global _warderNativeGrabRender, _warderOwiGetUrlArg
-	# TEST182: determine RADIO from the live service at screenshot time.
+	# TEST183: DVB radio service types 0x02 (digital radio sound) and 0x0A (advanced-codec radio) are both RADIO. Determine this from the live service at screenshot time.
 	# The TEST106 marker remains only as a fallback. This removes the timing
 	# dependency which left OpenWebif in TV mode on DVB radio services without RDS.
 	is_radio = False
@@ -133,7 +133,7 @@ def _warderRadioGrabRender(self, request):
 		ref = NavigationInstance.instance and NavigationInstance.instance.getCurrentlyPlayingServiceReference()
 		refstr = ref.toString() if ref is not None else ""
 		fields = refstr.split(":")
-		is_radio = len(fields) > 2 and fields[2].upper() == "A"
+		is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
 	except Exception:
 		pass
 	if not is_radio:
@@ -1634,7 +1634,7 @@ def serviceStartNow17(self):
 		# Do not replace or monkey-patch Screens.RdsDisplay.RdsInfoDisplay.
 		try:
 			fields = refstr.split(":")
-			is_radio = len(fields) > 2 and fields[2].upper() == "A"
+			is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
 			try:
 				with open("/tmp/warder-radio-current", "w") as marker:
 					marker.write("A" if is_radio else "TV")
