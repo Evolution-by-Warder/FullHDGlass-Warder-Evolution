@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 MAP=ROOT/"assets/warder/picon-satlist-mapping.tsv"
 COV=ROOT/"assets/warder/picon-warder-master-coverage.tsv"
 COL=ROOT/"assets/warder/picon-collision-audit.tsv"
+BUILD=ROOT/"assets/warder/channel-picon-build.json"
 errors=[]
 
 def rows(p):
@@ -29,6 +30,15 @@ for r in collisions:
         conflict_ids.add(r["selector_id"])
 if conflict_ids!={"FREESAT","ANTIKSAT"}:
     errors.append("expected conflict selectors FREESAT/ANTIKSAT, got "+repr(sorted(conflict_ids)))
+
+build=json.loads(BUILD.read_text(encoding="utf-8"))
+contract=build.get("package_contract",{})
+for key,value in {"selectors":57,"matched":40,"ready":38,"collision_blocked":2,"missing_source":17,"packages":114}.items():
+    if contract.get(key)!=value: errors.append("verified build contract %s mismatch"%key)
+if build.get("state")!="BUILT_NOT_PUBLISHED" or build.get("runtime_cutover") is not False:
+    errors.append("channel-picon build state/cutover flag mismatch")
+if build.get("workflow",{}).get("conclusion")!="success": errors.append("recorded channel-picon workflow is not successful")
+if not str(build.get("artifact",{}).get("digest","")).startswith("sha256:"): errors.append("recorded artifact digest is missing")
 
 # Runtime remains intentionally legacy until packages are persistently published.
 plugin=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
