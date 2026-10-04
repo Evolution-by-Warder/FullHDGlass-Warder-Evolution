@@ -965,19 +965,19 @@ assert 'installed GrabScreenshot.render' in PLUGIN
 # TEST111: keep native RDS ownership, remove failed TEST110 hide/show refresh, and layer Radio above InfoBar.\nservice111 = PLUGIN.split('def serviceStartNow17(self):', 1)[1].split('def serviceStartNow172(self):', 1)[0]\nassert 'rds.show()' in service111 and 'rds.hide()' in service111\nassert 'Refresh the already-owned native screen' not in service111\nassert '<screen name=\"RdsInfoDisplay\" position=\"0,0\" size=\"1920,1080\" zPosition=\"1\"' in SKIN\n
 
 
-# TEST154: Radio top rail remains visible over Radio InfoPanel without leaking into TV.
+# TEST155: the complete top rail is one composite widget in native Radio and InfoPanel.
+RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py").read_text(encoding="utf-8")
+RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
+assert radio.count('render="WarderRadioTop"') == 1
+assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
+for token in ('gFont("Prive4", 30)', 'gFont("Prive4", 38)', 'gFont("Prive4", 25)', 'RT_VALIGN_CENTER', '"FullHDGlass17 · Warder Evolution"'):
+    assert token in RADIO_TOP, token
 assert 'warder_radio_top = """' in PLUGIN
-assert 'name="warderRadioDate"' in PLUGIN and 'name="warderRadioTime"' in PLUGIN and 'name="warderRadioBrand"' in PLUGIN
-assert 'self["warderRadioDate"] = Label("")' in PLUGIN
-assert 'warderRadioTopTimer' in PLUGIN and '_warderRadioTopRefresh' in PLUGIN
-assert 'marker.read(8).strip() == "A"' in PLUGIN
-assert 'self["warderRadioDate"].setText("")' in PLUGIN
-assert 'self["warderRadioBrand"].setText("FullHDGlass17 · Warder Evolution")' in PLUGIN
-assert 'source="warderRadioTop" render="Listbox"' not in PLUGIN
-assert 'source="warderRadioBottom" render="Listbox"' not in PLUGIN
-assert 'position="62,27" size="610,58" font="Prive4;30" valign="center"' in radio
-assert 'position="745,27" size="340,58" font="Prive4;38" valign="center"' in radio
-assert 'position="1220,27" size="580,58" font="Prive4;25" halign="right" valign="center"' in radio
+assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in PLUGIN
+assert '<convert type="WarderRadioOnly">Boolean</convert>' in PLUGIN
+for token in ('warderRadioDate', 'warderRadioTime', 'warderRadioBrand', 'warderRadioTopTimer', '_warderRadioTopRefresh'):
+    assert token not in PLUGIN, token
+assert 'marker.read(8).strip() == "A"' in RADIO_ONLY
 assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="WarderRadioArtwork" position="620,134" size="648,648"' in SKIN
