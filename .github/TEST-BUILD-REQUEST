@@ -1,9 +1,10 @@
-TEST186 BUILD 1
-Physical TEST185: static bars correctly removed, but WarderRadioSpectrum output is completely blank.
+TEST187 BUILD 1
+Physical TEST186: WarderRadioSpectrum still blank.
 
-Fix the custom eCanvas renderer lifecycle:
-- call Renderer.postWidgetCreate(self, instance) before first paint/timer start
-- call Renderer.preWidgetRemove(self, instance) on teardown
-- preserve TEST184 independent per-bar motion
-- preserve dynamic-only TEST185 skin field at 1470,838 size 350x126
-No changes to Radio layout, TOP/BOTTOM, cover, matcher, fallback artwork, WebIF, service classification or DAB.
+Use the eCanvas initialization pattern already shipped by legacy FullHDGlass17 g17VolumeGauge:
+- explicit eSize canvas sizing in applySkin()
+- preserve Renderer.applySkin()
+- keep TEST186 base lifecycle binding
+- keep TEST184 independent bar motion
+- keep TEST185 dynamic-only field at 1470,838 size 350x126
+No static fallback bars. No Radio layout, artwork, matcher, WebIF, service classification or DAB changes.
