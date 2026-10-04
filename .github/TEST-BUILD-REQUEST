@@ -1,10 +1,5 @@
-TEST187 BUILD 1
-Physical TEST186: WarderRadioSpectrum still blank.
+TEST188 BUILD 1
+Physical TEST187: dynamic Radio spectrum is visible and working on receiver; user approved functionality and requested only slightly faster movement.
 
-Use the eCanvas initialization pattern already shipped by legacy FullHDGlass17 g17VolumeGauge:
-- explicit eSize canvas sizing in applySkin()
-- preserve Renderer.applySkin()
-- keep TEST186 base lifecycle binding
-- keep TEST184 independent bar motion
-- keep TEST185 dynamic-only field at 1470,838 size 350x126
-No static fallback bars. No Radio layout, artwork, matcher, WebIF, service classification or DAB changes.
+Change only animation timer interval from 200 ms to 140 ms in WarderRadioSpectrum.
+Preserve receiver-proven eCanvas applySkin/lifecycle, independent bar algorithm, colors, geometry 1470,838 350x126, Radio layout, artwork, matcher, fallback, WebIF, service classification and DAB.
