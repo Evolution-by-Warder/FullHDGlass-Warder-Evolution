@@ -139,3 +139,14 @@ Created `assets/warder/picon-satlist-mapping.tsv` from the live legacy SATLIST a
 Current selector coverage: **40 MATCHED / 17 MISSING = 57 total selectors**. MATCHED means an authoritative maintained provider/orbital tree exists in Warder Master; it does not claim that all seven legacy output resolutions/families are already packaged. MISSING means no matching maintained tree was established and must not be silently aliased to a nearby orbital position.
 
 Special identities are preserved: provider/package selectors are separate from orbital selectors; 1.0W vs 0.8W, 4.8E vs 4.9E, 74.9E vs 75.0E, and 85.0E vs 85.1E are not collapsed. DVB-T SK/CZ remains unresolved rather than guessed.
+
+
+## Warder Master variant coverage audit — 2026-10-04
+
+Created `assets/warder/picon-warder-master-coverage.tsv` by enumerating the live `warder-master-production` tree for all 40 MATCHED selectors.
+
+**Result: all 40/40 matched selectors contain all three maintained variants: transparent, black and white.** Across those selector scopes the tree contains 9671 transparent + 9671 black + 9671 white PNG path entries (29013 PNG entries total). Counts are source-path counts, not a claim of globally unique service references: selectors such as the full 0.8W orbital tree can contain the same service-reference filename under multiple provider subtrees.
+
+Two examples show why packaging must deduplicate by service-reference filename at generation time: 0.8W has 929 PNG paths per variant but 722 distinct service-reference filenames across its provider subtrees; 16.0E has 581 paths per variant but 560 distinct filenames. The package generator must use deterministic collision handling and must fail/report when two same-variant files with the same service-reference filename have different bytes; it must never silently choose one.
+
+This audit proves source readiness only for the maintained transparent/black/white variants. It does not authorize synthetic 400x240, 220x132, 50x30 or OLED output. Those legacy families remain unresolved until their authoritative source/transformation rule is established.
