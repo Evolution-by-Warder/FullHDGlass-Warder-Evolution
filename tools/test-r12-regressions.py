@@ -970,7 +970,9 @@ RADIO_TOP = (PKG / "usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py
 RADIO_ONLY = (PKG / "usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py").read_text(encoding="utf-8")
 assert radio.count('render="WarderRadioTop"') == 1
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in radio
-for token in ('gFont("Prive4", 30)', 'gFont("Prive4", 38)', 'gFont("Prive4", 25)', 'RT_VALIGN_CENTER', '"FullHDGlass17 · Warder Evolution"'):
+assert RADIO_TOP.count('gFont("Prive4", 30)') == 2
+assert RADIO_TOP.count('gRGB(238, 238, 238, 0)') == 3
+for token in ('gFont("Prive4", 38)', 'RT_VALIGN_CENTER', '"FullHDGlass17 · Warder Evolution"'):
     assert token in RADIO_TOP, token
 assert 'warder_radio_top = """' in PLUGIN
 assert 'render="WarderRadioTop" position="62,27" size="1738,58"' in PLUGIN
