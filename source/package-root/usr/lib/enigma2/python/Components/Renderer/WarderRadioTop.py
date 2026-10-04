@@ -51,9 +51,9 @@ class WarderRadioTop(Renderer):
         self.instance.clear(gRGB(0, 0, 0, 255))
         # One canvas, three segments. All share the exact same y/h and vertical centre.
         h = 58
-        self.instance.writeText(eRect(0, 0, 610, h), gRGB(229, 178, 67, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 30), self._dateText(stamp), RT_HALIGN_LEFT | RT_VALIGN_CENTER)
+        self.instance.writeText(eRect(0, 0, 610, h), gRGB(238, 238, 238, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 30), self._dateText(stamp), RT_HALIGN_LEFT | RT_VALIGN_CENTER)
         self.instance.writeText(eRect(683, 0, 340, h), gRGB(238, 238, 238, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 38), strftime("%H:%M:%S", localtime(stamp)), RT_HALIGN_CENTER | RT_VALIGN_CENTER)
-        self.instance.writeText(eRect(1158, 0, 580, h), gRGB(176, 176, 176, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 25), "FullHDGlass17 · Warder Evolution", RT_HALIGN_RIGHT | RT_VALIGN_CENTER)
+        self.instance.writeText(eRect(1158, 0, 580, h), gRGB(238, 238, 238, 0), gRGB(0, 0, 0, 255), gFont("Prive4", 30), "FullHDGlass17 · Warder Evolution", RT_HALIGN_RIGHT | RT_VALIGN_CENTER)
 
     def postWidgetCreate(self, instance):
         self._paint()
