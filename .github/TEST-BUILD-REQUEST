@@ -1,4 +1,4 @@
-TEST152 CI RETRY 2
-Runtime/build unchanged: 82fa48ff4a1b49694b4faff892a3701bf3c186e6
-Full Radio ownership regression audit: a2f08fadda5217d2d198e6b576fc860b1880c2f5
-CI #362 exposed stale TEST93 ownership; full suite audit also removed the final literal TEST151 composed block before retry.
+TEST152 CI RETRY 3
+Runtime source: 82fa48ff4a1b49694b4faff892a3701bf3c186e6
+Regression ownership corrections through: e95413edce0d257b681ce4786ffcb54d7f6e7774
+TEST93/96 native Provider + clock guards aligned. Runtime unchanged.
