@@ -78,6 +78,7 @@ jobs:
           assert all(not x["eligible_families"] for x in blocked)
           print("Picon migration plan gate: PASS (38 ready / 2 collision-blocked / 17 missing)")
           PY
+          python3 tools/test-picon-materializer.py
 
       - name: Build TEST IPK
         shell: bash
