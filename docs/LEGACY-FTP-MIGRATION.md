@@ -80,3 +80,16 @@ The current download menu exposes 27 entries.
 - No receiver runtime cut-over to unpublished channel packages is allowed.
 
 The current runtime manifest remains deliberately main-backed. Development on `warder-modernization-work` must not change that production authority until the Warder backend is complete and explicitly approved.
+
+
+## Runtime routing invariant
+
+For the recovered HDGlass FTP families, the receiver has exactly three allowed states:
+
+- `WARDER_MANIFEST`: payload is served by its stable Warder key through `downloads.json`.
+- `NOT_EXPOSED`: preserved source exists but no current Warder payload is published; the receiver must not fall back to the legacy FTP.
+- `ARCHIVE_ONLY`: preservation material only; never offered by the download menu.
+
+There is intentionally no `LEGACY_FTP` runtime state. This prevents an accidental fallback to the historical server after migration.
+
+The migration TSV is the provenance/cut-over ledger; `downloads.json` remains the receiver runtime authority.
