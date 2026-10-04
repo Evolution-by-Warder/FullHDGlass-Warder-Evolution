@@ -1,4 +1,3 @@
-TEST144 CI correction rebuild 6
-Source runtime: c476530d4de9bc703f6a9a16f35661dae62d957c
-Full regression-tail audit: 7b077859f6dffbd85308371519a3759e85867585
-Verified from new commit: stale TEST121 SKIN top-brand ownership retired; remaining TEST117-TEST144 contracts preserved. Runtime/skin unchanged.
+TEST145
+Source: 76a75e28547b7a6939905604e95843079f0ccd9b
+Physical goal: remove TEST144 top/bottom patch backgrounds; preserve exact active geometry and lifecycle.
