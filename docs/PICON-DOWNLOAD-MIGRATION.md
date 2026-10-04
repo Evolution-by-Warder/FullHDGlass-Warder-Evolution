@@ -130,3 +130,12 @@ The old picon.cz numeric SATLIST IDs remain migration evidence only. They are no
 ### Next implementation batch
 
 Before touching `downMulti()`, derive a machine-readable SATLIST-to-Warder mapping table and audit which of the 59 selectors have authoritative maintained data for transparent/black/white. Mark unresolved selectors/families explicitly; do not fill gaps by assumption. This mapping becomes the input to deterministic package generation and later manifest publication.
+
+
+## Machine-readable SATLIST mapping — 2026-10-04
+
+Created `assets/warder/picon-satlist-mapping.tsv` from the live legacy SATLIST and the live `warder-master-production` PiconHub tree. It preserves every legacy family ID while introducing a stable Warder key and an evidence-based state.
+
+Current selector coverage: **40 MATCHED / 17 MISSING = 57 total selectors**. MATCHED means an authoritative maintained provider/orbital tree exists in Warder Master; it does not claim that all seven legacy output resolutions/families are already packaged. MISSING means no matching maintained tree was established and must not be silently aliased to a nearby orbital position.
+
+Special identities are preserved: provider/package selectors are separate from orbital selectors; 1.0W vs 0.8W, 4.8E vs 4.9E, 74.9E vs 75.0E, and 85.0E vs 85.1E are not collapsed. DVB-T SK/CZ remains unresolved rather than guessed.
