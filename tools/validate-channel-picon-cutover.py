@@ -35,8 +35,10 @@ build=json.loads(BUILD.read_text(encoding="utf-8"))
 contract=build.get("package_contract",{})
 for key,value in {"selectors":57,"matched":40,"ready":38,"collision_blocked":2,"missing_source":17,"packages":114}.items():
     if contract.get(key)!=value: errors.append("verified build contract %s mismatch"%key)
-if build.get("state")!="BUILT_NOT_PUBLISHED" or build.get("runtime_cutover") is not False:
-    errors.append("channel-picon build state/cutover flag mismatch")
+if build.get("state") not in ("BUILT_NOT_PUBLISHED","PUBLISHED"):
+    errors.append("channel-picon build state is invalid")
+if build.get("runtime_cutover") is not False:
+    errors.append("runtime cutover must remain false until an explicit separately validated cut-over change")
 if build.get("workflow",{}).get("conclusion")!="success": errors.append("recorded channel-picon workflow is not successful")
 if not str(build.get("artifact",{}).get("digest","")).startswith("sha256:"): errors.append("recorded artifact digest is missing")
 
