@@ -11,7 +11,10 @@ errors=[]
 if checkpoint.get("state")!="PRE_PUBLICATION_PASS": errors.append("pre-publication checkpoint state")
 if checkpoint.get("production_branch_untouched") is not True: errors.append("checkpoint production branch guard")
 if checkpoint.get("publication_performed") is not False or checkpoint.get("runtime_cutover") is not False or checkpoint.get("persistent_publication") is not False: errors.append("checkpoint must remain unpublished and runtime-locked")
-if checkpoint.get("contract",{}).get("packages")!=114 or checkpoint.get("contract",{}).get("parts")!=124: errors.append("checkpoint package contract")
+checkpoint_contract=checkpoint.get("contract",{})
+for key,value in {"selectors":57,"matched":40,"ready":38,"collision_blocked":2,"missing_source":17,"packages":114,"parts":124}.items():
+    if checkpoint_contract.get(key)!=value: errors.append("checkpoint contract "+key)
+if checkpoint_contract.get("families")!=["channel-transparent","channel-black","channel-white"]: errors.append("checkpoint families")
 if checkpoint.get("content_fingerprint",{}).get("manifest_sha256")!=fingerprint.get("manifest_sha256") or checkpoint.get("content_fingerprint",{}).get("sha256sums_sha256")!=fingerprint.get("sha256sums_sha256"): errors.append("checkpoint content fingerprint drift")
 if plan.get("state")!="PREPARED_NOT_PUBLISHED": errors.append("plan state")
 if plan.get("runtime_cutover") is not False: errors.append("plan runtime cutover must be false")
