@@ -8676,7 +8676,10 @@ class downloadMenu(Screen):
 			self.warderChannelJobs = list(jobs.get("jobs", []))
 			self.warderChannelInstalled = set()
 		if not getattr(self, "warderChannelJobs", []):
-			count = len(getattr(self, "warderChannelInstalled", set()))
+			installed_set = getattr(self, "warderChannelInstalled", set())
+			count = len(installed_set)
+			wanted = warderPiconSync.wanted_picon_names(queue)
+			missing_files = sorted(wanted - installed_set) if wanted is not None else []
 			self.warderPiconPrefs["prepared"] = False
 			for x in self.menuListAll:
 				if self.menuListAll[x][0] in self.warderPiconRows:
@@ -8685,7 +8688,10 @@ class downloadMenu(Screen):
 			self.warderChannelJobs = []
 			self.warderChannelInstalled = set()
 			self.warderChannelState = "done"
-			return _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
+			result = _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
+			if missing_files:
+				result += " " + _("Missing upstream:") + " " + str(len(missing_files))
+			return result
 		job = self.warderChannelJobs.pop(0)
 		required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
 		try:
