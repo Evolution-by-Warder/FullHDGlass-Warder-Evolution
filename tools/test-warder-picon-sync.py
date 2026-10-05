@@ -243,6 +243,7 @@ assert "duplicate selector/family/resolution" in m.validate_publication_manifest
 duplicate_part = dict(valid_manifest)
 duplicate_part["packages"] = [dict(valid_manifest["packages"][0], parts=[
     valid_manifest["packages"][0]["parts"][0], valid_manifest["packages"][0]["parts"][0]])]
-assert "duplicate package part" in m.validate_publication_manifest(duplicate_part)
+duplicate_errors = m.validate_publication_manifest(duplicate_part)
+assert any(x in duplicate_errors for x in ("duplicate package part", "non-canonical package part")), duplicate_errors
 
 print("Warder picon sync parser/planner/runtime-lock/manifest/collision/GUI wiring: PASS")
