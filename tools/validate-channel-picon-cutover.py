@@ -30,6 +30,12 @@ for r in collisions:
         conflict_ids.add(r["selector_id"])
 if conflict_ids!={"08W","160E"}:
     errors.append("expected conflict selectors 08W/160E, got "+repr(sorted(conflict_ids)))
+coverage_ids=set(coverage)
+if not conflict_ids.issubset(coverage_ids):
+    errors.append("collision audit references selectors absent from coverage")
+for sid in conflict_ids:
+    if coverage[sid].get("state")!="READY_SOURCE":
+        errors.append("collision selector %s must remain source-present but package-blocked"%sid)
 
 build=json.loads(BUILD.read_text(encoding="utf-8"))
 contract=build.get("package_contract",{})
