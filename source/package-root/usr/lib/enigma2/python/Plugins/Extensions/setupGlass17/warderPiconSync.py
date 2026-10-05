@@ -132,7 +132,7 @@ def build_sync_request(enigma2_dir=ENIGMA2_DIR, selected_positions=None,
     services = []
     for stem in bouquet_services(enigma2_dir, include_radio):
         position = service_orbital_position(stem.replace("_", ":"))
-        if selected and position and position.lower() not in selected:
+        if selected and (not position or position.lower() not in selected):
             continue
         services.append({"service_reference": stem, "position": position})
     return {
