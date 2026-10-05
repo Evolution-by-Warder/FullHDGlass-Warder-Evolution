@@ -8680,6 +8680,10 @@ class downloadMenu(Screen):
 			self.warderChannelQueue = queue
 			self.warderChannelJobs = list(jobs.get("jobs", []))
 			self.warderChannelInstalled = set()
+			if queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services"):
+				self.warderChannelQueue = None
+				self.warderChannelState = "error"
+				raise ValueError("no TV bouquet services found for Warder selective sync")
 		if not getattr(self, "warderChannelJobs", []):
 			installed_set = getattr(self, "warderChannelInstalled", set())
 			count = len(installed_set)
