@@ -45,5 +45,8 @@ assert prefs["prepared"] is True
 assert m.has_executable_action(prefs) is True
 assert m.has_executable_action(m.default_preferences(), ordinary_selected=True) is True
 assert [x[0] for x in m.UPDATE_MODES] == ["sync-tv-lists", "full"]
+prefs2 = m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink", "DVB-T sk/cz"])
+assert prefs2["positions"] == ["(23.5E) Skylink", "DVB-T sk/cz"]
+assert prefs2["prepared"] is True
 
 print("Warder picon sync parser/planner/action-state: PASS")
