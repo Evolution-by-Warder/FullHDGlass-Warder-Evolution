@@ -39,3 +39,4 @@ Final pre-publication runtime audit: temp cleanup and zero-package contract now 
 Reproducibility closure: publication preflight is now bound to identical inner manifest/SHA256SUMS fingerprints from successful runs 37280907429 and 37280958615.
 Checkpoint closure: PRE_PUBLICATION_PASS is machine-gated against fingerprint drift and explicitly requires publication/runtime to remain false.
 Large closure batch: full 57/40/38/2/17 selector contract gated; explicit runtime publication false gate; publication preflight now runs inside every build workflow.
+Deep contract closure: splitter hard-limited to 20 MiB; receiver manifest rejects oversized parts and part/package byte-sum mismatch before download; regressions added.
