@@ -133,7 +133,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python3 tools/test-picon-materializer.py
           python3 tools/test-warder-picon-sync.py
+          python3 tools/validate-channel-picon-cutover.py
           python3 tools/validate-channel-picon-two-phase-cutover.py
 
       - name: Upload audited channel-picon artifact
