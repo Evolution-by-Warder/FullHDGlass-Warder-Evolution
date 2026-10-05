@@ -94,6 +94,9 @@ assert 'self.warderChannelState = "idle"' in plugin_source
 assert 'self.warderChannelState = "running"' in plugin_source
 assert 'self.warderChannelState = "error"' in plugin_source
 assert "shutil.disk_usage(destination)" in plugin_source
+assert plugin_source.count('os.path.islink(destination)') >= 2
+assert 'queue["destination"] = destination' in plugin_source
+assert 'raise ValueError("unsafe Warder picon destination")' in plugin_source
 assert "unsafe Warder picon ZIP compression ratio" in plugin_source
 assert "invalid Warder channel part size" in plugin_source
 assert "oversized Warder channel download" in plugin_source
