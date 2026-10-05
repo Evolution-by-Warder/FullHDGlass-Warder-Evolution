@@ -8,10 +8,10 @@ plan=json.loads((ROOT/"assets/warder/channel-picon-publication-plan.json").read_
 plugin=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
 runtime=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py").read_text(encoding="utf-8")
 errors=[]
-legacy="https://picon.cz/download/%s/"
+legacy_resolver="url = self._legacyPiconArchiveUrl(k[x][1])"
 if build.get("state")=="BUILT_NOT_PUBLISHED":
     if build.get("runtime_cutover") is not False: errors.append("unpublished build cannot enable runtime cutover")
-    if legacy not in plugin: errors.append("legacy fallback removed before persistent publication")
+    if legacy_resolver not in plugin: errors.append("preserved legacy resolver missing before persistent publication")
 if plan.get("publication_performed") is False and legacy not in plugin:
     errors.append("prepared-only plan must retain legacy fallback")
 if build.get("state")=="PUBLISHED":
@@ -41,7 +41,7 @@ if runtime_cutover:
     if manifest_url and ('RUNTIME_MANIFEST_URL = "'+manifest_url+'"') not in runtime:
         errors.append("runtime manifest URL must exactly match publication evidence")
 else:
-    # Before the reviewed runtime switch, legacy remains a mandatory safety route.
+    # Before the reviewed runtime switch, the preserved pinned legacy resolver remains mandatory.
     if legacy not in plugin:
         errors.append("legacy fallback removed before reviewed runtime cutover")
 # Deliberately do not auto-enable runtime cutover here: publication and runtime switch are separate reviewed changes.
