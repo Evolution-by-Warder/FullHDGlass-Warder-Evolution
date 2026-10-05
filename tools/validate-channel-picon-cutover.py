@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the Warder channel-picon cut-over contract without switching runtime."""
 from pathlib import Path
-import csv, json, sys
+import csv, json, sys, urllib.parse
 
 ROOT=Path(__file__).resolve().parents[1]
 MAP=ROOT/"assets/warder/picon-satlist-mapping.tsv"
@@ -56,6 +56,17 @@ elif build.get("state")=="PUBLISHED":
         errors.append("published build is missing PUBLISHED publication evidence")
     if not publication.get("manifest_url") or not publication.get("base_url"):
         errors.append("published build is missing persistent manifest/base URL")
+    if publication.get("persistent") is not True:
+        errors.append("published build must explicitly mark persistent=true")
+    if publication.get("required_packages")!=114:
+        errors.append("published build must require exactly 114 packages")
+    for key in ("manifest_url","base_url"):
+        url=str(publication.get(key) or "")
+        u=urllib.parse.urlparse(url)
+        if u.scheme!="https" or u.netloc!="raw.githubusercontent.com":
+            errors.append("published %s must use Warder HTTPS raw GitHub"%key)
+        if "/warder-modernization-work/" in url:
+            errors.append("published %s must not point at development branch"%key)
 else:
     errors.append("unknown channel-picon build state: "+repr(build.get("state")))
 if build.get("runtime_cutover") and build.get("state")!="PUBLISHED":
