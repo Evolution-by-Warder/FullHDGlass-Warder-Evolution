@@ -80,6 +80,8 @@ assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
 assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())" in plugin_source
 assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source
+assert "Warder channel picon publication is currently unavailable." in plugin_source
+assert "prepared but not persistently published yet" not in plugin_source
 assert "_warderFetchChannelJob" in plugin_source
 assert "_warderInstallChannelArchive" in plugin_source
 assert "os.replace(tmp, os.path.join(dest, name))" in plugin_source
