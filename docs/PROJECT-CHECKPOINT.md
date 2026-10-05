@@ -306,3 +306,46 @@ Started immediately after TEST191 WHOLE RADIO PHYSICAL PASS. No Radio code chang
 3. Map those families to the authoritative preserved source / Warder Master picon data before changing runtime URLs.
 4. Only after canonical assets and manifest entries exist, replace `downMulti()` picon.cz access with Warder-owned HTTPS/manifest delivery and add regression gates.
 5. Treat DVB-T/T2 content refresh as a separate modernization pass, not part of preservation migration.
+
+
+## Warder picon assimilation — locked UX/work order — 2026-10-05
+
+Architecture decision: FullHDGlass17 is the single user-facing Warder ecosystem surface. Do not launch or require a separate Chocholousek/PiconHub plugin. Preserve useful proven behaviour by assimilating it into FullHDGlass-owned GUI/runtime and Warder/PiconHub data.
+
+### Locked GUI behaviour
+- Keep one FullHDGlass Download Menu. Picon configuration is represented by clickable rows inside that screen.
+- Configuration values are NOT changed with left/right arrows. Pressing OK on a row opens a small chooser/popup; confirming returns to the same Download Menu.
+- Satellite/position selection uses a multi-select popup. Other scalar choices use a small single-choice popup.
+- Picon rows, in user-flow order: positions/groups; resolution; colour/style; destination; update method.
+- Default update method is receiver-driven synchronization with TV lists.
+- Update-method chooser must expose user-selectable selective/synchronised and FULL semantics after the original Chocholousek meanings have been verified; do not invent semantics merely from the labels.
+- Preserve the FullHDGlass visual selection language: inactive/unselected item = red X; an active/prepared selection/action = green arrow.
+- The green arrow means the item participates in the prepared action, not merely that its value differs from a default.
+- Preserve the existing lower-menu multi-selection workflow for ordinary FullHDGlass assets.
+- Preserve blue Start Download visibility semantics: hidden when there is no executable action; visible as soon as at least ONE executable action exists. The user never has to select/configure every row.
+- One press of Start Download executes the prepared picon operation together with any ordinary selected FullHDGlass assets.
+
+### Smart synchronization contract
+- Primary identity is the exact Enigma2 service reference, never fuzzy channel/provider names.
+- Default selective mode reads the receiver's real Enigma2 TV bouquets/services and requests only picons needed by those services.
+- Selected orbital positions/groups may filter the receiver-derived set; selecting 23.5E must not imply downloading every 23.5E provider.
+- Provider/group names in PiconHub are routing/storage metadata, not the primary service identity.
+- PiconHub runtime structure is picons/<position>/<provider>/{transparent,white,black}/<service-reference>.png.
+- Same-service duplicates with identical payload are safe deterministic dedupe; conflicting different payloads must not be silently guessed.
+- Manual/FULL operation remains a user-selectable alternative/fallback.
+- Keep legacy picon.cz/downMulti path available until the new Warder path is receiver-tested; do not cut over prematurely.
+
+### Implementation work order
+1. Keep TEST191 Radio fully locked and untouched; main remains TABU.
+2. Build/test pure FullHDGlass-native receiver service parser/planner in warderPiconSync.py.
+3. Verify exact historical Chocholousek selective/FULL behaviour and provenance/licensing before adapting concepts/code.
+4. Build Warder/PiconHub service-reference index suitable for efficient receiver requests, including position/group/style and conflict metadata.
+5. Add small OK-driven chooser screens and position multi-select while preserving the existing FullHDGlass look.
+6. Add the five picon configuration rows and green-arrow prepared-state rendering without disturbing ordinary asset rows.
+7. Extend existing toDown/reactivate/startDown execution planning so one prepared picon action is sufficient to expose the blue Start Download button and can run in the same batch as ordinary assets.
+8. Implement verified HTTPS Warder fetch/install with atomic writes, destination safety, exact-match validation and useful missing/conflict reporting.
+9. Add static/unit fixtures for bouquets, service-reference normalization, namespace/position mapping, filtering, dedupe/conflicts and action-state semantics.
+10. Build a TEST candidate only at a receiver-testable milestone; CI/build PASS is not PHYSICAL PASS.
+11. After physical receiver validation, retire the obsolete fixed all-satellite runtime path; retain historical evidence/fallback only as appropriate.
+
+Current first implementation commit: 0f9dda187eb134b94ad9da75d9ce96feac269dbd (warderPiconSync.py).
