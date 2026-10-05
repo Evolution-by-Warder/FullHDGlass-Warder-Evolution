@@ -16,6 +16,7 @@ def main():
     ap.add_argument("--expected-source",required=True)
     ap.add_argument("--expected-base-url",required=True)
     ap.add_argument("--parts",action="store_true")
+    ap.add_argument("--production",action="store_true")
     a=ap.parse_args()
     mf=a.manifest or a.root/"manifest.json"
     errors=[]
@@ -28,6 +29,7 @@ def main():
     names=[p.get("filename") for p in pkgs]
     if None in names or len(set(names))!=len(names): errors.append("package filenames are missing or duplicated")
     expected_base=a.expected_base_url.rstrip("/")
+    if a.production and "/warder-modernization-work/" in expected_base: errors.append("production base URL points at development branch")
     manifest_names=set(names)
     part_meta={x.get("filename"):x for x in m.get("parts",[])} if a.parts else {}
     disk={p.name for p in a.root.glob("*.zip")}
