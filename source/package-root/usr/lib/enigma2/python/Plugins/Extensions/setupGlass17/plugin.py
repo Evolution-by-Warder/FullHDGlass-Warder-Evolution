@@ -91,6 +91,7 @@ from Tools.Directories import fileExists
 from ServiceReference import ServiceReference
 from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
+from . import warderPiconSync
 from Screens.InfoBarGenerics import InfoBarPlugins
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmap, MultiContentEntryPixmapAlphaTest
@@ -8368,40 +8369,47 @@ class downloadMenu(Screen):
 		self.firststart = True
 		self.ena = True
 		self.msg = ""
+		self.warderPiconPrefs = warderPiconSync.default_preferences(os.path.join(config.plugins.setupGlass17.par39.value, "picon"))
+		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
 		sel = '***'+_('Select')+'***   '
 		w = _('picon white')
 		b = _('picon black')
 		self.menuListAll = {
-			0:['p4',sel+_('picon 400x240'),3,'','x'],
+			0:['wp-pos',_('Satellite positions') + ': ' + _('OK for position selection'),'warder-picon-positions','','x'],
+			6:['wp-res',_('Picon resolution') + ': 220 x 132','warder-picon-resolution','','x'],
+			7:['wp-style',_('Picon colour') + ': ' + _('Transparent'),'warder-picon-style','','x'],
+			8:['wp-dest',_('Picon location') + ': ' + self.warderPiconPrefs["destination"],'warder-picon-destination','','x'],
+			9:['wp-mode',_('Picon update') + ': ' + _('Synchronize with TV lists'),'warder-picon-mode','','x'],
+			10:['p4',sel+_('picon 400x240'),3,'','x'],
 			1:['p4',sel+_('picon 220x132'),9,'','x'],
 			2:['p4p',_('piconProv 220x132'),'piconProv-220','','x'],
 			3:['p4s',_('piconSat 220x132'),'piconSat-220','','x'],
 			4:['ba',sel+b,5,'','x'],									
 			5:['ba5',sel+b+' (50x30)',4,'','x'],
-			6:['bp',_('piconProv black'),'piconProv-b','','x'],
-			7:['bs',_('piconSat black'),'piconSat-b','','x'],
-			8:['bc',_('piconCam black'),'piconCam-b','','x'],
-			9:['bw',_('piconWeather black'),'piconWeather-b','','x'],
-			10:['wa',sel+w,7,'','x'],					
-			11:['wa5',sel+w+' (50x30)',6,'','x'],
-			12:['wp',_('piconProv white'),'piconProv-w','','x'],
-			13:['ws',_('piconSat white'),'piconSat-w','','x'],
-			14:['wc',_('piconCam white'),'piconCam-w','','x'],
-			15:['ww',_('piconWeather white'),'piconWeather-w','','x'],
-			16:['oa',sel+_('picon OLED'),8,'','x'],
-			17:['z',_('ZZPicon')+' (cz/sk)','ZZPicon-v','','x'],
-			18:['h',_('Help'),'help','','x'],
-			19:['i',_('Set of icons and prewievs'),'icon_sets_preview','','x'],
-			20:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
-			21:['m',_('Menu icons'),'menuicons','','x'],
-			22:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
-			23:['w',_('Weather icons'),'weatherIconsN','','x'],			
-			24:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
+			11:['bp',_('piconProv black'),'piconProv-b','','x'],
+			12:['bs',_('piconSat black'),'piconSat-b','','x'],
+			13:['bc',_('piconCam black'),'piconCam-b','','x'],
+			14:['bw',_('piconWeather black'),'piconWeather-b','','x'],
+			15:['wa',sel+w,7,'','x'],					
+			16:['wa5',sel+w+' (50x30)',6,'','x'],
+			17:['wp',_('piconProv white'),'piconProv-w','','x'],
+			18:['ws',_('piconSat white'),'piconSat-w','','x'],
+			19:['wc',_('piconCam white'),'piconCam-w','','x'],
+			20:['ww',_('piconWeather white'),'piconWeather-w','','x'],
+			21:['oa',sel+_('picon OLED'),8,'','x'],
+			22:['z',_('ZZPicon')+' (cz/sk)','ZZPicon-v','','x'],
+			23:['h',_('Help'),'help','','x'],
+			24:['i',_('Set of icons and prewievs'),'icon_sets_preview','','x'],
+			25:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
+			26:['m',_('Menu icons'),'menuicons','','x'],
+			27:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
+			28:['w',_('Weather icons'),'weatherIconsN','','x'],			
+			29:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
 			# Warder helper payloads exist for aarch64/arm/mipsel only. The historical
 			# SH4 selector had no preserved/published 7zip-s payload; do not advertise
 			# a download which can only fail. Existing receiver 7z_g remains usable.
-			25:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x'],
-			26:['chs',_('Channelselection icons')+' ('+_('big')+')','CHSPiconbig','','x']
+			30:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x'],
+			31:['chs',_('Channelselection icons')+' ('+_('big')+')','CHSPiconbig','','x']
 			}	
 		self.dwnTimer = eTimer()
 		try:
@@ -8433,7 +8441,8 @@ class downloadMenu(Screen):
 		self.close()
 
 	def reactivate(self):
-		self.toDown = False
+		self.toDown = warderPiconSync.has_executable_action(self.warderPiconPrefs)
+
 		for x in self.menuListAll:
 			if self.menuListAll[x][4] == "d":
 				self.toDown = True
@@ -8496,6 +8505,9 @@ class downloadMenu(Screen):
 		if not self.ena:
 			return
 		tmp = self['list'].getSelectedIndex()
+		if self.menuListAll[tmp][0] in self.warderPiconRows:
+			self.openWarderPiconChoice(self.menuListAll[tmp][0])
+			return
 		if self.menuListAll[tmp][0] == '7z' and not self.menuListAll[tmp][2]:
 			self.session.open(historyScreen, _("Result"), _("ERROR")+": 7zip helper download is not available for this CPU architecture")
 			return
@@ -8508,6 +8520,49 @@ class downloadMenu(Screen):
 			self.menuListAll[tmp][4] = ({False:"x",True:"d"}[self.menuListAll[tmp][4] == 'x'])
 			self.createList()
 			self.reactivate()
+
+	def _setWarderPiconPrepared(self):
+		for x in self.menuListAll:
+			if self.menuListAll[x][0] in self.warderPiconRows:
+				self.menuListAll[x][4] = "d" if self.warderPiconPrefs.get("prepared") else "x"
+		self.createList()
+		self.reactivate()
+
+	def openWarderPiconChoice(self, row):
+		if row == "wp-pos":
+			# Position multi-select is wired in the next step; keep this row non-destructive.
+			self.session.open(MessageBox, _("Position selection is being migrated to Warder smart synchronization."), MessageBox.TYPE_INFO, 5)
+			return
+		choices = {
+			"wp-res": [("220 x 132", ("resolution", "220x132")), ("400 x 240", ("resolution", "400x240"))],
+			"wp-style": [(_("Transparent"), ("style", "transparent")), (_("Black"), ("style", "black")), (_("White"), ("style", "white"))],
+			"wp-mode": [(_("Synchronize with TV lists"), ("update_mode", "sync-tv-lists")), ("FULL", ("update_mode", "full"))],
+		}
+		if row == "wp-dest":
+			base = config.plugins.setupGlass17.par39.value.rstrip("/")
+			choices[row] = [(base + "/picon", ("destination", base + "/picon")), (base + "/picon_220x132", ("destination", base + "/picon_220x132")), (base + "/picon_400x240", ("destination", base + "/picon_400x240"))]
+		self.warderChoiceRow = row
+		self.session.openWithCallback(self.warderPiconChoiceAnswer, ChoiceBox, title=_("Select"), list=choices.get(row, []))
+
+	def warderPiconChoiceAnswer(self, answer):
+		if not answer:
+			return
+		try:
+			key, value = answer[1]
+		except Exception:
+			return
+		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, key, value)
+		labels = {
+			"wp-res": _("Picon resolution") + ": " + value.replace("x", " x "),
+			"wp-style": _("Picon colour") + ": " + {"transparent":_("Transparent"), "black":_("Black"), "white":_("White")}.get(value, value),
+			"wp-dest": _("Picon location") + ": " + value,
+			"wp-mode": _("Picon update") + ": " + (_("Synchronize with TV lists") if value == "sync-tv-lists" else "FULL"),
+		}
+		for x in self.menuListAll:
+			if self.menuListAll[x][0] == self.warderChoiceRow:
+				self.menuListAll[x][1] = labels.get(self.warderChoiceRow, self.menuListAll[x][1])
+				break
+		self._setWarderPiconPrepared()
 
 	def satSelcallback(self, answer):
 		tmp = self['list'].getSelectedIndex()
