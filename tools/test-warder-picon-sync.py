@@ -83,6 +83,8 @@ assert "def _warderLoadChannelManifest" in plugin_source
 assert "def _warderRunChannelQueue" in plugin_source
 assert 'self.dwnJob = _("Warder channel picons")' in plugin_source
 assert "self.warderChannelInstalled.update(installed)" in plugin_source
+assert "missing_files = sorted(wanted - installed_set)" in plugin_source
+assert '_("Missing upstream:")' in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source
 assert 'self.warderChannelState = "idle"' in plugin_source
 assert 'self.warderChannelState = "running"' in plugin_source
