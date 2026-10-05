@@ -180,3 +180,15 @@ The Chocholousek archive in `Evolution-by-Warder/Trezor/archives/chocholousek-pi
 Audited archive inventory: 538 original 7z archives (1,359,753,012 bytes), 55 selectors, with these family/resolution combinations: piconblack 100x60 (55), piconblack 150x90 (55), piconmirrorglass 100x60 (55), piconpoolrainbow 220x132 (55), piconpoolrainbow 400x240 (55), piconsrhd 400x240 (44), picontransparent 100x60 (55), picontransparent 220x132 (55), picontransparent 400x240 (54), and piconwhite 50x30 (55). The incomplete combinations are data facts, not permission to fabricate replacements: piconsrhd 400x240 is missing 11 selectors and picontransparent 400x240 is missing 68.5E.
 
 This legacy archive layer is transitional. After the Warder migration is complete and receiver usage is validated, production variants may be consolidated separately. Trezor originals remain immutable historical source material. The maintained Warder Master/PiconHub layer remains separate from this compatibility archive.
+## Runtime legacy archive cut-over — 2026-10-05
+
+The preserved legacy numeric-ID path has now been cut over on `warder-modernization-work` without changing the legacy GUI, destination mapping or 7-Zip installation flow.
+
+- A packaged resolver, `legacyPiconArchives.json`, contains exactly **370** numeric IDs proven by the pinned Trezor source manifest.
+- Each mapped ID resolves to the exact preserved `.7z` blob at Trezor commit `9cdda4ab414e7d50a97ca9285db8ebbb75fba615`.
+- The **29** IDs absent from the preserved source manifest remain explicitly unresolved and **fail closed**. They are not guessed, aliased to a nearby orbital position, or sent back to picon.cz.
+- `downMulti()` now uses only the packaged resolver for this legacy numeric-ID path. Existing extraction, free-space checks, destinations and copy/install semantics remain unchanged.
+- CI validates the 370/29 contract, pinned host/commit, absence of picon.cz in the migrated downloader, deterministic Warder package materialization and the two-phase cut-over gates.
+- This is a work-branch runtime migration. It is not physical receiver acceptance and does not authorize a production runtime merge.
+
+Historical sections above describe the pre-cut-over investigation and remain useful provenance; where they describe picon.cz as the current runtime source, this section supersedes them.
