@@ -17,7 +17,7 @@ assert m.service_orbital_position("1:0:1:1:1:1:C00000:0:0:0:") == "19.2e"
 assert m.position_token("(23.5E) Skylink") == "23.5e"
 assert m.position_token("(0.8W) Freesat") == "0.8w"
 assert m.position_token("DVB-T sk/cz") == "dtt"
-assert m.position_token("19.2e") == "19.2e"
+assert m.position_token("19.2e") == "19.2e"\nassert m.selector_id("(0.8W) Freesat") == "FREESAT"\nassert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"\nassert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"\nassert m.selector_id("(23.5E) Skylink") == "SKYLINK"\nassert m.selector_id("(23.5E) Astra 3B") == "235E"
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -61,7 +61,7 @@ menu_end = plugin_source.index("\n\t\t\t}", menu_start)
 menu_block = plugin_source[menu_start:menu_end]
 keys = [int(x) for x in __import__("re").findall(r"^\t\t\t(\d+):\[", menu_block, __import__("re").M)]
 assert keys == list(range(len(keys))), keys
-assert "warderPiconSync.position_token(label)" in plugin_source
+assert "token = label" in plugin_source
 assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
 assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs)" in plugin_source
@@ -107,6 +107,15 @@ valid_manifest = {
     "parts": [{"filename": "235E-transparent.zip.part00", "bytes": 10, "sha256": "b" * 64}],
 }
 assert m.validate_publication_manifest(valid_manifest) == []
+sel = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "positions", ["(23.5E) Astra 3B"]))
+assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
+assert sel["packages"][0]["selector_id"] == "235E"
+provider_manifest = dict(valid_manifest)
+provider_manifest["packages"] = [dict(valid_manifest["packages"][0], selector_id="FREESAT", warder_key="0.8w/freesat")]
+provider_sel = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Freesat"]))
+assert provider_sel["selector_ids"] == ["FREESAT"] and len(provider_sel["packages"]) == 1
+wrong_provider = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Digi / Telly"]))
+assert wrong_provider["state"] == "partial" and wrong_provider["missing_selectors"] == ["DIGI_TELLY"]
 pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/manifest.json", valid_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
