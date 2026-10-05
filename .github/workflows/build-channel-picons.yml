@@ -97,10 +97,36 @@ jobs:
             --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
             --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons
 
+      - name: Prepare deterministic split publication candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist/channel-picons-publish
+          python3 tools/prepare-picon-publication.py \
+            --input dist/channel-picons \
+            --manifest dist/channel-picons/manifest.json \
+            --output dist/channel-picons-publish \
+            --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels
+          python3 - <<'PY'
+          import json, pathlib
+          m=json.load(open("dist/channel-picons-publish/manifest.json"))
+          assert m["delivery"]=="raw-github-parts"
+          assert len(m["packages"])==114
+          assert len({(p["selector_id"],p["family"]) for p in m["packages"]})==114
+          parts=[u for p in m["packages"] for u in p["parts"]]
+          assert parts and len(parts)==len(set(parts))
+          disk={p.name for p in pathlib.Path("dist/channel-picons-publish").glob("*.part*")}
+          expected={u.rsplit("/",1)[-1] for u in parts}
+          assert disk==expected
+          print("Split publication candidate: PASS (%d parts)"%len(parts))
+          PY
+
       - name: Upload audited channel-picon artifact
         uses: actions/upload-artifact@v4
         with:
           name: warder-channel-picons-2827fed5
-          path: dist/channel-picons/
+          path: |
+            dist/channel-picons/
+            dist/channel-picons-publish/
           if-no-files-found: error
           retention-days: 14
