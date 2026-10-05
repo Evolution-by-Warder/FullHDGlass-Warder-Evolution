@@ -171,4 +171,4 @@ Added `tools/generate-picon-package-plan.py` and `assets/warder/picon-download-m
 
 CI now executes the planner as a preflight gate and asserts the current audited state: **57 selectors = 38 READY + 2 collision-BLOCKED (0.8W, 16.0E) + 17 MISSING_SOURCE**. READY currently means transparent/black/white only. All unresolved legacy 400x240/220x132/50x30/OLED families remain blocked by policy.
 
-The manifest schema requires HTTPS URL, byte size and SHA256 and limits the first publishable families to `channel-transparent`, `channel-black` and `channel-white`. No receiver runtime has been switched to this manifest yet.
+The manifest schema requires HTTPS URL, byte size and SHA256 and limits the first published families to `channel-transparent`, `channel-black` and `channel-white`. The verified backend is now persistently published on production `main`, and the working-branch runtime is switched to its exact pinned manifest URL; physical receiver acceptance remains a separate gate.
