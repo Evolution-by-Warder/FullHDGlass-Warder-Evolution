@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import json
 import re
 import subprocess
 import sys
@@ -1030,3 +1031,17 @@ assert '<widget name="RadioText" position="420,895"' in SKIN
 assert '<widget name="RtpText" position="420,955"' in SKIN
 assert 'render="WarderRadioArtwork" position="606,145" size="704,640"' in SKIN
 assert 'render="WarderRadioSpectrum" position="1470,838" size="350,126"' in SKIN
+
+# Legacy picon migration: preserved numeric IDs resolve only through the pinned Warder/Trezor catalogue.
+LEGACY_CATALOG = json.loads((PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/legacyPiconArchives.json").read_text(encoding="utf-8"))
+assert LEGACY_CATALOG["schema"] == 1
+assert LEGACY_CATALOG["mapped"] == 370 and LEGACY_CATALOG["unmapped"] == 29
+assert LEGACY_CATALOG["policy"]["guess_missing"] is False
+assert LEGACY_CATALOG["policy"]["picon_cz_fallback"] is False
+assert len(LEGACY_CATALOG["archives"]) == 370
+assert all(x["url"].startswith("https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/") for x in LEGACY_CATALOG["archives"].values())
+assert not any("picon.cz" in x["url"] for x in LEGACY_CATALOG["archives"].values())
+assert "def _legacyPiconArchiveUrl(self, legacy_id):" in PLUGIN
+assert "url = self._legacyPiconArchiveUrl(k[x][1])" in PLUGIN
+assert "https://picon.cz/download/%s/" not in PLUGIN
+assert "Preserved legacy archive is not available in Warder migration catalogue" in PLUGIN
