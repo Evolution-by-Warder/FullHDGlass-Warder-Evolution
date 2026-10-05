@@ -28,8 +28,8 @@ conflict_ids=set()
 for r in collisions:
     if r["selector_id"] not in ("ALL_OTHER_MATCHED","TOTAL") and int(r["conflicting_names"]):
         conflict_ids.add(r["selector_id"])
-if conflict_ids!={"FREESAT","ANTIKSAT"}:
-    errors.append("expected conflict selectors FREESAT/ANTIKSAT, got "+repr(sorted(conflict_ids)))
+if conflict_ids!={"08W","160E"}:
+    errors.append("expected conflict selectors 08W/160E, got "+repr(sorted(conflict_ids)))
 
 build=json.loads(BUILD.read_text(encoding="utf-8"))
 contract=build.get("package_contract",{})
