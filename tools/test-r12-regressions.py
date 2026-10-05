@@ -370,7 +370,7 @@ for screen in ("OPKGMenu", "OPKGSource", "OpkgInstaller", "IpkgInstaller", "Soft
 
 # OpenATV PackageAction entries are multi-content tuples. A bare Listbox renders
 # the install/remove plugin screen blank, so FullHDGlass must keep the converter.
-package_action = re.search(r'<screen\\b[^>]*name="PackageAction"[\\s\\S]*?</screen>', SKIN).group(0)
+package_action = re.search(r'<screen\b[^>]*name="PackageAction"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="plugins" render="Listbox"' in package_action
 assert '<convert type="TemplatedMultiContent">' in package_action
 for token in ("MultiContentEntryPixmapAlphaBlend", "MultiContentEntryText", '"itemHeight": 70'):
