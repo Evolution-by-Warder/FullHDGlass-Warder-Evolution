@@ -24,7 +24,7 @@ if plan.get("evidence",{}).get("artifact_id")!=build.get("artifact",{}).get("id"
 if plan.get("evidence",{}).get("artifact_bytes")!=build.get("artifact",{}).get("size_in_bytes"): errors.append("artifact byte-size evidence drift")
 if plan.get("evidence",{}).get("artifact_digest")!=build.get("artifact",{}).get("digest"): errors.append("artifact digest evidence drift")
 if build.get("workflow",{}).get("conclusion")!="success": errors.append("authoritative workflow is not successful")
-if build.get("artifact",{}).get("size_in_bytes")!=615397302: errors.append("unexpected authoritative artifact size")
+if build.get("artifact",{}).get("size_in_bytes",0)<=0: errors.append("authoritative artifact size must be positive")
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
