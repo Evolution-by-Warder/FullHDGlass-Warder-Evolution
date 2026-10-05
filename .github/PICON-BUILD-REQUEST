@@ -4,3 +4,4 @@ Rebuild after persistent-publication integrity gates; runtime cut-over remains l
 Build deterministic split publication candidate using existing Warder raw-GitHub parts model.
 Rebuild with per-part SHA256/size publication integrity and SHA256SUMS.
 Retry after manifest now includes every split part SHA256 and size.
+Rebuild after split validator no longer requires duplicate monolithic ZIPs in publication tree.
