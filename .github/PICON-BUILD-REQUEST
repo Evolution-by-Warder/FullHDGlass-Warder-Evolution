@@ -36,3 +36,4 @@ Batch mode isolation: position-filtered selective excludes unknown orbital servi
 Consolidated fail-closed batch: scoped retry tests, reject zero-package non-empty actions, orbital-filter isolation, empty-selective safety.
 Preference and cleanup hardening: invalid style/resolution fail closed; temp channel archive cleanup verified through finally/unlink contract.
 Final pre-publication runtime audit: temp cleanup and zero-package contract now explicitly regression-gated; runtime publication remains locked.
+Reproducibility closure: publication preflight is now bound to identical inner manifest/SHA256SUMS fingerprints from successful runs 37280907429 and 37280958615.
