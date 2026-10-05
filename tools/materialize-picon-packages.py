@@ -39,7 +39,8 @@ def collect(root: Path, warder_key: str, variant: str):
 
 
 def png_resolution(data, source="<memory>"):
-    if len(data) < 24 or data[:8] != b"\\x89PNG\\r\\n\\x1a\\n" or data[12:16] != b"IHDR":
+    signature = bytes((137, 80, 78, 71, 13, 10, 26, 10))
+    if len(data) < 24 or data[:8] != signature or data[12:16] != b"IHDR":
         raise ValueError("invalid PNG source: %s" % source)
     width, height = struct.unpack(">II", data[16:24])
     return "%dx%d" % (width, height)
