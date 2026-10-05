@@ -307,7 +307,7 @@ def plan_runtime_packages(document, queue):
         return {"state": "invalid-preferences", "packages": [], "errors": ["unsupported style"],
                 "missing_selectors": [], "selector_ids": wanted, "family": None,
                 "resolution": prefs["resolution"]}
-    if prefs["resolution"] not in dict(RESOLUTIONS):
+    if not re.match(r"^[1-9][0-9]*x[1-9][0-9]*$", str(prefs["resolution"])):
         return {"state": "invalid-preferences", "packages": [], "errors": ["invalid resolution"],
                 "missing_selectors": [], "selector_ids": wanted, "family": family,
                 "resolution": prefs["resolution"]}
