@@ -8530,8 +8530,7 @@ class downloadMenu(Screen):
 
 	def openWarderPiconChoice(self, row):
 		if row == "wp-pos":
-			# Position multi-select is wired in the next step; keep this row non-destructive.
-			self.session.open(MessageBox, _("Position selection is being migrated to Warder smart synchronization."), MessageBox.TYPE_INFO, 5)
+			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, self.warderPiconPrefs.get("positions", []))
 			return
 		choices = {
 			"wp-res": [("220 x 132", ("resolution", "220x132")), ("400 x 240", ("resolution", "400x240"))],
@@ -8543,6 +8542,23 @@ class downloadMenu(Screen):
 			choices[row] = [(base + "/picon", ("destination", base + "/picon")), (base + "/picon_220x132", ("destination", base + "/picon_220x132")), (base + "/picon_400x240", ("destination", base + "/picon_400x240"))]
 		self.warderChoiceRow = row
 		self.session.openWithCallback(self.warderPiconChoiceAnswer, ChoiceBox, title=_("Select"), list=choices.get(row, []))
+
+	def warderPositionAnswer(self, answer):
+		if answer is None:
+			return
+		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "positions", list(answer))
+		if answer:
+			preview = ", ".join(answer[:4])
+			if len(answer) > 4:
+				preview += " ..."
+			label = _("Satellite positions") + ": " + preview + " (" + str(len(answer)) + " " + _("selected") + ")"
+		else:
+			label = _("Satellite positions") + ": " + _("OK for position selection")
+		for x in self.menuListAll:
+			if self.menuListAll[x][0] == "wp-pos":
+				self.menuListAll[x][1] = label
+				break
+		self._setWarderPiconPrepared()
 
 	def warderPiconChoiceAnswer(self, answer):
 		if not answer:
@@ -8954,6 +8970,38 @@ class downloadMenu(Screen):
 		else:
 			self.dwnLoop(_("ERROR")+": "+_("Unknown error detected, try again!!!")) 	
 ##########################################################################################################################
+class warderPositionSelectorScr(Screen):
+	skin = satSelectorScr.skin
+
+	def __init__(self, session, selected=None):
+		Screen.__init__(self, session)
+		self.selected = set(selected or [])
+		self["key_red"] = Label(_("Cancel"))
+		self["key_green"] = Label(_("Select"))
+		self["key_yellow"] = Label(_("Save"))
+		self.list = SelectionList()
+		self["list"] = self.list
+		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
+			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
+			"cancel": self.close, "red": self.close, "yellow": self.finish
+		}, -1)
+		self.onLayoutFinish.append(self.startSelect)
+
+	def startSelect(self):
+		for x in range(0, len(SATLIST)):
+			label = SATLIST[x][0]
+			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
+			# Keep the human orbital/group label as the stable Warder filter token.
+			token = label
+			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
+			if not os.path.isfile(p):
+				p = SKINPATH + "icons/75.png"
+			self.list.addSelection(label, token, x, token in self.selected, p)
+
+	def finish(self):
+		ret = [x[1] for x in self.list.getSelectionsList()]
+		self.close(ret)
+
 class satSelectorScr(Screen): 
 	skin = """
 		<screen name="satSelectorScr" position="center,center" size="1071,855" title="Select">
