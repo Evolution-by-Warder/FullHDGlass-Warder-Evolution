@@ -8684,18 +8684,20 @@ class downloadMenu(Screen):
 			count = len(installed_set)
 			wanted = warderPiconSync.wanted_picon_names(queue)
 			missing_files = sorted(wanted - installed_set) if wanted is not None else []
+			self.warderChannelQueue = None
+			self.warderChannelJobs = []
+			self.warderChannelInstalled = set()
+			if missing_files:
+				# Incomplete selective sync is retryable. Keep the prepared action and
+				# pending marker so a corrected upstream publication can be retried.
+				self.warderChannelState = "error"
+				return _("ERROR") + ": " + _("Missing upstream:") + " " + str(len(missing_files)) + "; " + _("Total:") + " " + str(count)
 			self.warderPiconPrefs["prepared"] = False
 			for x in self.menuListAll:
 				if self.menuListAll[x][0] in self.warderPiconRows:
 					self.menuListAll[x][4] = "x"
-			self.warderChannelQueue = None
-			self.warderChannelJobs = []
-			self.warderChannelInstalled = set()
 			self.warderChannelState = "done"
-			result = _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
-			if missing_files:
-				return _("ERROR") + ": " + _("Missing upstream:") + " " + str(len(missing_files)) + "; " + _("Total:") + " " + str(count)
-			return result
+			return _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
 		job = self.warderChannelJobs.pop(0)
 		required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
 		try:
