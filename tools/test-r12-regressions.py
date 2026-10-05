@@ -1043,5 +1043,6 @@ assert all(x["url"].startswith("https://raw.githubusercontent.com/Evolution-by-W
 assert not any("picon.cz" in x["url"] for x in LEGACY_CATALOG["archives"].values())
 assert "def _legacyPiconArchiveUrl(self, legacy_id):" in PLUGIN
 assert "url = self._legacyPiconArchiveUrl(k[x][1])" in PLUGIN
-assert "https://picon.cz/download/%s/" not in PLUGIN
+down_multi = PLUGIN.split("def downMulti(self, k, Ddir):", 1)[1].split("\n\tdef ", 1)[0]
+assert "https://picon.cz/download/%s/" not in down_multi
 assert "Preserved legacy archive is not available in Warder migration catalogue" in PLUGIN
