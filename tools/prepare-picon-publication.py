@@ -18,8 +18,8 @@ def main():
     ap.add_argument("--base-url",required=True)
     ap.add_argument("--part-bytes",type=int,default=20*1024*1024)
     a=ap.parse_args()
-    if not 0<a.part_bytes<=25*1024*1024:
-        raise SystemExit("part size must be 1..25 MiB")
+    if not 0<a.part_bytes<=20*1024*1024:
+        raise SystemExit("part size must be 1..20 MiB")
     src=json.loads(a.manifest.read_text(encoding="utf-8"))
     packages=src.get("packages",[])
     if len(packages)!=114:
