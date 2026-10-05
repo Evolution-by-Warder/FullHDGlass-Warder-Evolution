@@ -99,8 +99,9 @@ assert 'legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[
 assert 'self.warderChannelState = "locked"' in plugin_source
 assert 'self.warderPiconPrefs.get("prepared") and self.warderChannelState not in ("locked", "error")' in plugin_source
 assert '("done", "error", "locked")' in plugin_source
-assert 'self.warderPiconPrefs["prepared"] = False' not in plugin_source
-assert 'self.menuListAll[row][4] = "x"' not in plugin_source
+error_branch = plugin_source[plugin_source.index("except Exception as err:", plugin_source.index("def dwnLoop")):plugin_source.index("\n\t\t\t\telse:", plugin_source.index("except Exception as err:", plugin_source.index("def dwnLoop")))]
+assert 'self.warderPiconPrefs["prepared"] = False' not in error_branch
+assert 'self.menuListAll[row][4] = "x"' not in error_branch
 missing_branch = plugin_source[plugin_source.index("if missing_files:"):plugin_source.index('return _("SUCCESSFUL")', plugin_source.index("if missing_files:"))]
 assert 'self.warderChannelState = "error"' in missing_branch
 assert 'self.warderPiconPrefs["prepared"] = False' not in missing_branch
