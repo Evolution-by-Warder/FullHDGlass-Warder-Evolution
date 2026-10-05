@@ -32,3 +32,4 @@ Warder runtime errors keep prepared selection retry-ready and run only once per 
 Only complete Warder success clears prepared/pending; missing-upstream remains retry-ready.
 Batch hardening: mixed lock message retained, Warder rows excluded from legacy dispatch, retry assertions scoped, manifest URLs pinned to production repo/main/path.
 Selective safety: empty bouquet/service input resolves to zero packages and retry-ready error; only explicit FULL may select all packages.
+Batch mode isolation: position-filtered selective excludes unknown orbital services; explicit FULL selectors stay scoped; empty selective remains zero-package fail-closed.
