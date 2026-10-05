@@ -1430,3 +1430,42 @@ msgstr "所选上游频道图标未能安装："
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "所选接收机服务在所选软件包中没有匹配的频道图标。"
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "选择可用的频道图标尺寸和大型频道选择图标包。"
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "选择适用于所选尺寸的频道图标颜色。"
+
+msgid "Choose the available provider picon variant."
+msgstr "选择可用的运营商图标变体。"
+
+msgid "Choose the available satellite picon variant."
+msgstr "选择可用的卫星图标变体。"
+
+msgid "Choose black or white CAM picons."
+msgstr "选择黑色或白色 CAM 图标。"
+
+msgid "Choose black or white weather information picons."
+msgstr "选择黑色或白色天气信息图标。"
+
+msgid "Provider picons"
+msgstr "运营商图标"
+
+msgid "Satellite picons"
+msgstr "卫星图标"
+
+msgid "CAM picons"
+msgstr "CAM 图标"
+
+msgid "Weather picons"
+msgstr "天气图标"
+
+msgid "Large for selected channel selection types"
+msgstr "适用于所选频道列表类型的大图标"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "所选位置和变体没有可用的旧版图标档案。"
+
+msgid "Invalid picon destination"
+msgstr "图标位置无效"

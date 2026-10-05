@@ -1379,3 +1379,42 @@ msgstr "Vybrané upstream picony sa nepodarilo nainštalovať:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "vybrané služby prijímača nemajú zodpovedajúci picon vo vybraných balíkoch."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Vyberte dostupnú veľkosť pikonov kanálov a balík veľkých ikon výberu kanálov."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Vyberte farbu pikonov dostupnú pre zvolenú veľkosť."
+
+msgid "Choose the available provider picon variant."
+msgstr "Vyberte dostupný variant pikonov poskytovateľa."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Vyberte dostupný variant satelitných pikonov."
+
+msgid "Choose black or white CAM picons."
+msgstr "Vyberte čierne alebo biele picony CAM."
+
+msgid "Choose black or white weather information picons."
+msgstr "Vyberte čierne alebo biele picony informácií o počasí."
+
+msgid "Provider picons"
+msgstr "Picony poskytovateľov"
+
+msgid "Satellite picons"
+msgstr "Satelitné picony"
+
+msgid "CAM picons"
+msgstr "Picony CAM"
+
+msgid "Weather picons"
+msgstr "Picony počasia"
+
+msgid "Large for selected channel selection types"
+msgstr "Veľké ikony pre vybrané typy zoznamu kanálov"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Pre vybrané pozície a variant nie je dostupný starší archív piconov."
+
+msgid "Invalid picon destination"
+msgstr "Neplatné umiestnenie piconov"

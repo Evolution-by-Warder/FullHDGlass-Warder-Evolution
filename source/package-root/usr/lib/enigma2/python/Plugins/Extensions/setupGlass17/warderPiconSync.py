@@ -169,6 +169,80 @@ RESOLUTIONS = (
 )
 
 
+# Genuine delivery options recovered from the pinned FullHDGlass/Trezor catalog.
+# 220x132 transparent/black/white is the native Warder channel package triad.
+CHANNEL_RESOLUTION_STYLES = {
+    "50x30": ("black", "white"),
+    "150x90": ("black", "white"),
+    "220x132": ("transparent", "black", "white"),
+    "400x240": ("transparent",),
+}
+LEGACY_CHANNEL_ARCHIVE_COLUMNS = {
+    ("400x240", "transparent"): 3,
+    ("50x30", "black"): 4,
+    ("150x90", "black"): 5,
+    ("50x30", "white"): 6,
+    ("150x90", "white"): 7,
+    ("220x132", "transparent"): 9,
+}
+LEGACY_CHANNEL_DESTINATIONS = {
+    "50x30": "picon_50x30",
+    "150x90": "picon",
+    "220x132": "picon_220x132",
+    "400x240": "picon_400x240",
+}
+
+
+def channel_style_supported(resolution, style):
+    return style in CHANNEL_RESOLUTION_STYLES.get(str(resolution), ())
+
+
+def channel_delivery_backend(resolution, style):
+    if not channel_style_supported(resolution, style):
+        return None
+    return "warder" if resolution == "220x132" else "pinned-legacy"
+
+
+def legacy_channel_archive_column(resolution, style):
+    return LEGACY_CHANNEL_ARCHIVE_COLUMNS.get((str(resolution), str(style)))
+
+
+def legacy_channel_destination(resolution):
+    return LEGACY_CHANNEL_DESTINATIONS.get(str(resolution))
+
+
+def plan_legacy_channel_archives(selected_labels, satlist, resolution, style):
+    """Resolve exact selected SATLIST labels to the matching pinned archive column."""
+    labels = list(selected_labels or [])
+    if not valid_position_selection(labels):
+        raise ValueError("no-satellite-position-selected")
+    column = legacy_channel_archive_column(resolution, style)
+    if column is None:
+        raise ValueError("no-pinned-channel-archive-for-resolution-and-colour")
+    by_label = {}
+    for row in satlist or []:
+        if not row:
+            continue
+        label = str(row[0])
+        if label in by_label:
+            raise ValueError("ambiguous-satellite-position-label")
+        by_label[label] = row
+    result = []
+    seen_ids = set()
+    for label in labels:
+        row = by_label.get(str(label))
+        if row is None or len(row) <= column:
+            raise ValueError("satellite-position-not-in-pinned-archive-catalog")
+        archive_id = str(row[column] or "").strip()
+        if not re.match(r"^[0-9]{1,5}$", archive_id):
+            raise ValueError("pinned-channel-archive-not-available-for-selected-position")
+        if archive_id in seen_ids:
+            raise ValueError("duplicate-pinned-channel-archive")
+        seen_ids.add(archive_id)
+        result.append((str(label), archive_id))
+    return result
+
+
 def default_preferences(destination="/media/hdd/picon"):
     return {
         "positions": [],
@@ -469,6 +543,10 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     labels = list(prefs.get("positions", []) or [])
     if not valid_position_selection(labels):
         raise ValueError("no-satellite-position-selected")
+    if prefs.get("resolution", DEFAULT_RESOLUTION) != "220x132":
+        raise ValueError("non-native resolution requires pinned selected-position archives")
+    if not channel_style_supported("220x132", prefs.get("style", DEFAULT_STYLE)):
+        raise ValueError("unsupported Warder channel picon colour")
     selected = [position_token(x) for x in labels if position_token(x)]
     selectors = selected_selector_ids(labels)
     if mode == UPDATE_MODE_SYNC_TV:

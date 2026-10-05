@@ -1379,3 +1379,42 @@ msgstr "Вибрані upstream-піктограми не встановлено
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "для вибраних сервісів приймача немає відповідних піктограм у вибраних пакетах."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Виберіть доступний розмір піконів каналів і пакет великих піктограм вибору каналів."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Виберіть колір піконів, доступний для вибраного розміру."
+
+msgid "Choose the available provider picon variant."
+msgstr "Виберіть доступний варіант піконів провайдера."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Виберіть доступний варіант супутникових піконів."
+
+msgid "Choose black or white CAM picons."
+msgstr "Виберіть чорні або білі CAM-пікони."
+
+msgid "Choose black or white weather information picons."
+msgstr "Виберіть чорні або білі пікони погоди."
+
+msgid "Provider picons"
+msgstr "Пікони провайдера"
+
+msgid "Satellite picons"
+msgstr "Супутникові пікони"
+
+msgid "CAM picons"
+msgstr "CAM-пікони"
+
+msgid "Weather picons"
+msgstr "Пікони погоди"
+
+msgid "Large for selected channel selection types"
+msgstr "Великі піктограми для вибраних типів списку каналів"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Для вибраних позицій і варіанта немає доступного архіву старих піконів."
+
+msgid "Invalid picon destination"
+msgstr "Неприпустиме розташування піконів"

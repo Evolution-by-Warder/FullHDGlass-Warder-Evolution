@@ -1383,3 +1383,42 @@ msgstr "پیکون‌های upstream انتخاب‌شده نصب نشدند:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "سرویس‌های انتخاب‌شدهٔ گیرنده در بسته‌های انتخاب‌شده پیکون متناظر ندارند."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Choose an available channel picon size and the large channel selection icon package."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Choose a channel picon colour supported at the selected size."
+
+msgid "Choose the available provider picon variant."
+msgstr "Choose the available provider picon variant."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Choose the available satellite picon variant."
+
+msgid "Choose black or white CAM picons."
+msgstr "Choose black or white CAM picons."
+
+msgid "Choose black or white weather information picons."
+msgstr "Choose black or white weather information picons."
+
+msgid "Provider picons"
+msgstr "Provider picons"
+
+msgid "Satellite picons"
+msgstr "Satellite picons"
+
+msgid "CAM picons"
+msgstr "CAM picons"
+
+msgid "Weather picons"
+msgstr "Weather picons"
+
+msgid "Large for selected channel selection types"
+msgstr "Large for selected channel selection types"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "No legacy picon archive is available for the selected positions and variant."
+
+msgid "Invalid picon destination"
+msgstr "Invalid picon destination"

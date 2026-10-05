@@ -1378,3 +1378,42 @@ msgstr "Valitud upstream-kanalilogosid ei paigaldatud:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "valitud vastuvõtja teenustel pole valitud pakettides vastavat kanalilogo."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Vali saadaolev kanalipikoni suurus ja suurte kanalivaliku ikoonide pakett."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Vali valitud suuruse jaoks saadaolev kanalipikoni värv."
+
+msgid "Choose the available provider picon variant."
+msgstr "Vali saadaolev pakkuja pikoni variant."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Vali saadaolev satelliidipikoni variant."
+
+msgid "Choose black or white CAM picons."
+msgstr "Vali mustad või valged CAM-pikonid."
+
+msgid "Choose black or white weather information picons."
+msgstr "Vali mustad või valged ilmateabe pikonid."
+
+msgid "Provider picons"
+msgstr "Pakkuja pikonid"
+
+msgid "Satellite picons"
+msgstr "Satelliidipikonid"
+
+msgid "CAM picons"
+msgstr "CAM-pikonid"
+
+msgid "Weather picons"
+msgstr "Ilmapikonid"
+
+msgid "Large for selected channel selection types"
+msgstr "Suured ikoonid valitud kanalivaliku tüüpidele"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Valitud asukohtadele ja variandile pole pärandpikonite arhiivi saadaval."
+
+msgid "Invalid picon destination"
+msgstr "Pikonite asukoht ei sobi"

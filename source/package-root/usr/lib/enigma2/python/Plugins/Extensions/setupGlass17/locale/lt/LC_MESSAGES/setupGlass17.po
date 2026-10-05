@@ -1382,3 +1382,42 @@ msgstr "Pasirinkti upstream pikonai neįdiegti:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "pasirinktos imtuvo tarnybos neturi atitinkamo pikono pasirinktuose paketuose."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Pasirinkite galimą kanalų piktogramų dydį ir didelių kanalų pasirinkimo piktogramų paketą."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Pasirinkite pasirinktame dydyje galimą kanalų piktogramų spalvą."
+
+msgid "Choose the available provider picon variant."
+msgstr "Pasirinkite galimą teikėjo piktogramų variantą."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Pasirinkite galimą palydovinių piktogramų variantą."
+
+msgid "Choose black or white CAM picons."
+msgstr "Pasirinkite juodas arba baltas CAM piktogramas."
+
+msgid "Choose black or white weather information picons."
+msgstr "Pasirinkite juodas arba baltas orų informacijos piktogramas."
+
+msgid "Provider picons"
+msgstr "Teikėjų piktogramos"
+
+msgid "Satellite picons"
+msgstr "Palydovų piktogramos"
+
+msgid "CAM picons"
+msgstr "CAM piktogramos"
+
+msgid "Weather picons"
+msgstr "Orų piktogramos"
+
+msgid "Large for selected channel selection types"
+msgstr "Didelės piktogramos pasirinktiems kanalų sąrašo tipams"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Pasirinktoms padėtims ir variantui nėra seno piktogramų archyvo."
+
+msgid "Invalid picon destination"
+msgstr "Netinkama piktogramų vieta"

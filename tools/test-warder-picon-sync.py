@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+import hashlib
 import importlib.util
+import json
 import os
+import struct
 import tempfile
+import zipfile
 from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -88,6 +92,8 @@ menu_end = plugin_source.index("\n\t\t\t}", menu_start)
 menu_block = plugin_source[menu_start:menu_end]
 keys = [int(x) for x in __import__("re").findall(r"^\t\t\t(\d+):\[", menu_block, __import__("re").M)]
 assert keys == list(range(len(keys))), keys
+assert "CHSPiconbig" not in menu_block
+assert "picon_400x240" not in menu_block and "picon_220x132" not in menu_block
 assert "token = label" in plugin_source
 selector_block = plugin_source.split("class warderPositionSelectorScr(Screen):", 1)[1].split("class styleSelectorScr(Screen):", 1)[0]
 assert '"cancel": self.cancel, "red": self.cancel' in selector_block
@@ -95,7 +101,8 @@ assert "def cancel(self):" in selector_block and "self.close(None)" in selector_
 assert "def warderPositionAnswer(self, answer=None):" in plugin_source
 assert "if answer is None or not isinstance(answer, (list, tuple)):" in plugin_source
 assert "self.warderPositionSelectionAttempted = True" in plugin_source
-assert "if self.warderPositionSelectionAttempted and not self.warderPiconPrefs.get(\"positions\"):" in plugin_source
+assert 'if self.warderPiconPrefs.get("prepared") and not warderPiconSync.valid_position_selection(self.warderPiconPrefs.get("positions")):' in plugin_source
+assert "Select at least one satellite position." in plugin_source
 assert '"No position selected"' in plugin_source
 assert "valid_position_selection(positions)" in plugin_source
 assert '_("Select at least one satellite position.")' in plugin_source
@@ -344,10 +351,21 @@ assert 'self.close(ret)' in selector_block
 locale_root = PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale"
 warder_msgids = (
     "Choose satellite positions for channel picon downloads and updates.",
-    "Choose picon resolution for channel lists and skin screens.",
-    "Choose transparent, black or white channel picon artwork.",
+    "Choose an available channel picon size and the large channel selection icon package.",
+    "Choose a channel picon colour supported at the selected size.",
     "Choose where channel picons are downloaded and updated.",
     "Choose whether to sync picons from TV lists or download full selected packages.",
+    "Choose the available provider picon variant.",
+    "Choose the available satellite picon variant.",
+    "Choose black or white CAM picons.",
+    "Choose black or white weather information picons.",
+    "Provider picons",
+    "Satellite picons",
+    "CAM picons",
+    "Weather picons",
+    "Large for selected channel selection types",
+    "No legacy picon archive is available for the selected positions and variant.",
+    "Invalid picon destination",
     "No position selected",
     "Select at least one satellite position.",
     "Updated:",
@@ -364,8 +382,84 @@ for catalog in catalogs:
 
 # The five distinct icon paths are packaged FullHDGlass assets.
 icon_root = PKG / "usr/share/enigma2/hd_glass17"
-for icon in ("icons/dish.png", "icons/i_fhd.png", "down/ba.png", "icons/folder.png", "icons/update.png"):
+for icon in ("icons/dish.png", "icons/i_fhd.png", "down/ba.png", "icons/folder.png", "icons/update.png",
+             "down/p4p.png", "down/p4s.png", "down/bc.png", "down/bw.png"):
     assert (icon_root / icon).is_file(), icon
 assert len({"icons/dish.png", "icons/i_fhd.png", "down/ba.png", "icons/folder.png", "icons/update.png"}) == 5
 
-print("Warder TEST194 picon filtering, callback, empty-selection, UI, localization and package wiring: PASS")
+# Exact capability/asset matrix: legacy archive columns are scoped to the selected SATLIST rows.
+assert m.CHANNEL_RESOLUTION_STYLES == {
+    "50x30": ("black", "white"),
+    "150x90": ("black", "white"),
+    "220x132": ("transparent", "black", "white"),
+    "400x240": ("transparent",),
+}
+assert m.channel_delivery_backend("220x132", "white") == "warder"
+assert m.channel_delivery_backend("400x240", "transparent") == "pinned-legacy"
+assert m.channel_delivery_backend("400x240", "white") is None
+sat_rows = [
+    ("(16.0E) Antiksat", "", "ANTIKSAT", "2133", "3658", "1794", "1342", "4290", "4038", "1197"),
+    ("(23.5E) Skylink", "", "SKYLINK", "2146", "3670", "1809", "1356", "4302", "4050", "1211"),
+]
+selected = ["(16.0E) Antiksat", "(23.5E) Skylink"]
+assert m.plan_legacy_channel_archives(selected, sat_rows, "400x240", "transparent") == [
+    (selected[0], "2133"), (selected[1], "2146")]
+assert m.plan_legacy_channel_archives(selected, sat_rows, "50x30", "black") == [
+    (selected[0], "3658"), (selected[1], "3670")]
+assert m.plan_legacy_channel_archives(selected, sat_rows, "150x90", "white") == [
+    (selected[0], "4290"), (selected[1], "4302")]
+assert m.plan_legacy_channel_archives(selected, sat_rows, "220x132", "transparent") == [
+    (selected[0], "1197"), (selected[1], "1211")]
+for bad_positions, size, colour in (([], "220x132", "transparent"), (["unknown"], "220x132", "transparent"), (selected, "400x240", "black")):
+    try:
+        m.plan_legacy_channel_archives(bad_positions, sat_rows, size, colour)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError((bad_positions, size, colour))
+assert m.legacy_channel_destination("50x30") == "picon_50x30"
+assert m.legacy_channel_destination("150x90") == "picon"
+assert m.legacy_channel_destination("220x132") == "picon_220x132"
+assert m.legacy_channel_destination("400x240") == "picon_400x240"
+
+# Callback cancellation is explicit and the selection guard is evaluated before work starts.
+assert "def warderPiconChoiceAnswer(self, answer=None):" in plugin_source
+assert "def warderAuxPiconAnswer(self, answer=None):" in plugin_source
+assert "def satSelcallback(self, answer=None):" in plugin_source
+assert "def cleanAnswerNow(self, answer=None):" in plugin_source
+assert "self.openAuxPiconChoice(self.menuListAll[tmp][0])" in plugin_source
+assert "if not self._legacyPiconArchiveUrl(archive_id):" in plugin_source
+assert "plan_legacy_channel_archives(" in plugin_source
+assert "build_sync_request(" in plugin_source
+assert "if self.warderPiconPrefs.get(\"update_mode\") == \"sync-tv-lists\":" in plugin_source
+assert "warderLegacyChannelWanted" in plugin_source
+assert "classify_requested_picons(" in plugin_source
+assert "def downMulti(self, k, Ddir, continue_loop=True):" in plugin_source
+assert "legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)" in plugin_source
+for row_id in ("aux-prov", "aux-sat", "aux-cam", "aux-weather"):
+    assert row_id in plugin_source
+assert "piconProv-220" in plugin_source and "piconSat-220" in plugin_source
+assert "piconCam-b" in plugin_source and "piconWeather-w" in plugin_source
+assert "CHSPiconbig" in plugin_source and "Large for selected channel selection types" in plugin_source
+
+# Validate the split large channel-selection package against its pinned catalogue
+# metadata and inspect actual PNG dimensions before placing it in the resolution menu.
+catalog_path = Path(ROOT) / "assets/warder/downloads.json"
+catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+asset = catalog["assets"]["CHSPiconbig"]
+archive = b""
+for part in asset["parts"]:
+    rel = part.split("/main/", 1)[1]
+    archive += (Path(ROOT) / rel).read_bytes()
+assert len(archive) == int(asset["size"]), (len(archive), asset["size"])
+assert hashlib.sha256(archive).hexdigest() == asset["sha256"]
+dimensions = set()
+with zipfile.ZipFile(__import__("io").BytesIO(archive)) as package:
+    for info in package.infolist():
+        if info.filename.lower().endswith(".png") and not info.is_dir():
+            header = package.read(info)[:24]
+            assert header.startswith(b"\x89PNG\r\n\x1a\n"), info.filename
+            dimensions.add(struct.unpack(">II", header[16:24]))
+assert dimensions == {(400, 240)}, dimensions
+
+print("Warder TEST195 legacy filtering, callbacks, empty-selection, UI, localization, and asset dimensions: PASS")

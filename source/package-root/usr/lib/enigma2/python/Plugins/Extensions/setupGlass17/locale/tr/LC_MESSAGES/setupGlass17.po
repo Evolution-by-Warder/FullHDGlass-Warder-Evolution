@@ -1382,3 +1382,42 @@ msgstr "Seçilen upstream kanal logoları yüklenemedi:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "seçilen alıcı servislerinin, seçili paketlerde eşleşen logosu yok."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Kullanılabilir kanal piconu boyutunu ve büyük kanal seçim simgeleri paketini seçin."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Seçilen boyutta kullanılabilen kanal piconu rengini seçin."
+
+msgid "Choose the available provider picon variant."
+msgstr "Kullanılabilir sağlayıcı piconu varyantını seçin."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Kullanılabilir uydu piconu varyantını seçin."
+
+msgid "Choose black or white CAM picons."
+msgstr "Siyah veya beyaz CAM piconlarını seçin."
+
+msgid "Choose black or white weather information picons."
+msgstr "Siyah veya beyaz hava durumu piconlarını seçin."
+
+msgid "Provider picons"
+msgstr "Sağlayıcı piconları"
+
+msgid "Satellite picons"
+msgstr "Uydu piconları"
+
+msgid "CAM picons"
+msgstr "CAM piconları"
+
+msgid "Weather picons"
+msgstr "Hava durumu piconları"
+
+msgid "Large for selected channel selection types"
+msgstr "Seçili kanal seçim türleri için büyük simgeler"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Seçilen konum ve varyant için eski picon arşivi bulunamadı."
+
+msgid "Invalid picon destination"
+msgstr "Geçersiz picon konumu"

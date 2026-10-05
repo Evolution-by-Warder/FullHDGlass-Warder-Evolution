@@ -1379,3 +1379,42 @@ msgstr "A kijelölt upstream ikonok telepítése nem sikerült:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "kijelölt vevőszolgáltatáshoz nincs megfelelő ikon a kiválasztott csomagokban."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Válasszon elérhető csatornapikon-méretet és nagy csatornaválasztó ikoncsomagot."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Válasszon a kijelölt mérethez elérhető csatornapikon-színt."
+
+msgid "Choose the available provider picon variant."
+msgstr "Válasszon elérhető szolgáltatói pikontípust."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Válasszon elérhető műholdas pikontípust."
+
+msgid "Choose black or white CAM picons."
+msgstr "Válasszon fekete vagy fehér CAM-pikonokat."
+
+msgid "Choose black or white weather information picons."
+msgstr "Válasszon fekete vagy fehér időjárás-pikonokat."
+
+msgid "Provider picons"
+msgstr "Szolgáltatói pikonok"
+
+msgid "Satellite picons"
+msgstr "Műholdas pikonok"
+
+msgid "CAM picons"
+msgstr "CAM-pikonok"
+
+msgid "Weather picons"
+msgstr "Időjárás-pikonok"
+
+msgid "Large for selected channel selection types"
+msgstr "Nagy ikonok a kiválasztott csatornalista-típusokhoz"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "A kiválasztott pozíciókhoz és változathoz nem érhető el régi pikonarchívum."
+
+msgid "Invalid picon destination"
+msgstr "Érvénytelen pikonhely"

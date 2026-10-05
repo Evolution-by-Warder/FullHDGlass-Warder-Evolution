@@ -1378,3 +1378,42 @@ msgstr "Piconurile upstream selectate nu au fost instalate:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "servicii selectate ale receptorului nu au piconul corespunzător în pachetele alese."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Alegeți o dimensiune disponibilă pentru piconurile canalelor și pachetul de pictograme mari pentru selectarea canalelor."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Alegeți o culoare de picon disponibilă pentru dimensiunea selectată."
+
+msgid "Choose the available provider picon variant."
+msgstr "Alegeți varianta disponibilă de piconuri pentru furnizor."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Alegeți varianta disponibilă de piconuri pentru satelit."
+
+msgid "Choose black or white CAM picons."
+msgstr "Alegeți piconuri CAM negre sau albe."
+
+msgid "Choose black or white weather information picons."
+msgstr "Alegeți piconuri negre sau albe pentru informațiile meteo."
+
+msgid "Provider picons"
+msgstr "Piconuri furnizor"
+
+msgid "Satellite picons"
+msgstr "Piconuri satelit"
+
+msgid "CAM picons"
+msgstr "Piconuri CAM"
+
+msgid "Weather picons"
+msgstr "Piconuri meteo"
+
+msgid "Large for selected channel selection types"
+msgstr "Pictograme mari pentru tipurile selectate de listă de canale"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Nu există arhivă veche de piconuri pentru pozițiile și varianta selectate."
+
+msgid "Invalid picon destination"
+msgstr "Destinație invalidă pentru piconuri"

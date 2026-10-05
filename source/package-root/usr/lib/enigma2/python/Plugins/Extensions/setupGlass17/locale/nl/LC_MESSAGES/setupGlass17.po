@@ -1378,3 +1378,42 @@ msgstr "Geselecteerde upstream-pictogrammen zijn niet geïnstalleerd:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "geselecteerde ontvangerservices hebben geen overeenkomend pictogram in de geselecteerde pakketten."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Kies een beschikbare kanaalpictogramgrootte en het pakket met grote kanaalselectiepictogrammen."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Kies een kleur kanaalpictogrammen die beschikbaar is voor de geselecteerde grootte."
+
+msgid "Choose the available provider picon variant."
+msgstr "Kies de beschikbare providerpictogramvariant."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Kies de beschikbare satellietpictogramvariant."
+
+msgid "Choose black or white CAM picons."
+msgstr "Kies zwarte of witte CAM-pictogrammen."
+
+msgid "Choose black or white weather information picons."
+msgstr "Kies zwarte of witte weerinformatiepictogrammen."
+
+msgid "Provider picons"
+msgstr "Providerpictogrammen"
+
+msgid "Satellite picons"
+msgstr "Satellietpictogrammen"
+
+msgid "CAM picons"
+msgstr "CAM-pictogrammen"
+
+msgid "Weather picons"
+msgstr "Weerpictogrammen"
+
+msgid "Large for selected channel selection types"
+msgstr "Grote pictogrammen voor geselecteerde kanaalselectietypen"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "Er is geen oud pictogramarchief beschikbaar voor de geselecteerde posities en variant."
+
+msgid "Invalid picon destination"
+msgstr "Ongeldige pictogramlocatie"

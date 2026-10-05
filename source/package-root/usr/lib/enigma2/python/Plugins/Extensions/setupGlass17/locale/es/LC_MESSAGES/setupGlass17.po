@@ -1380,3 +1380,42 @@ msgstr "No se instalaron los logotipos upstream seleccionados:"
 #: Warder TEST194
 msgid "selected receiver service(s) have no matching picon in the selected packages."
 msgstr "servicios seleccionados del receptor no tienen un logotipo correspondiente en los paquetes elegidos."
+
+msgid "Choose an available channel picon size and the large channel selection icon package."
+msgstr "Elija un tamaño disponible para los picons de canales y el paquete de iconos grandes de selección de canales."
+
+msgid "Choose a channel picon colour supported at the selected size."
+msgstr "Elija un color de picons de canales disponible para el tamaño seleccionado."
+
+msgid "Choose the available provider picon variant."
+msgstr "Elija la variante disponible de picons de proveedor."
+
+msgid "Choose the available satellite picon variant."
+msgstr "Elija la variante disponible de picons de satélite."
+
+msgid "Choose black or white CAM picons."
+msgstr "Elija picons CAM negros o blancos."
+
+msgid "Choose black or white weather information picons."
+msgstr "Elija picons negros o blancos para la información meteorológica."
+
+msgid "Provider picons"
+msgstr "Picons de proveedor"
+
+msgid "Satellite picons"
+msgstr "Picons de satélite"
+
+msgid "CAM picons"
+msgstr "Picons CAM"
+
+msgid "Weather picons"
+msgstr "Picons del tiempo"
+
+msgid "Large for selected channel selection types"
+msgstr "Iconos grandes para los tipos seleccionados de lista de canales"
+
+msgid "No legacy picon archive is available for the selected positions and variant."
+msgstr "No hay ningún archivo de picons antiguo disponible para las posiciones y la variante seleccionadas."
+
+msgid "Invalid picon destination"
+msgstr "Destino de picons no válido"
