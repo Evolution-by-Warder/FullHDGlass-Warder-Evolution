@@ -46,6 +46,14 @@ if not str(build.get("artifact",{}).get("digest","")).startswith("sha256:"): err
 # Persistent publication is a separate gate from successful materialization.
 # A temporary Actions artifact must never be mistaken for a receiver backend.
 publication=build.get("publication",{})
+if publication.get("preparation_state") not in (None,"PREPARED_NOT_PUBLISHED"):
+    errors.append("invalid publication preparation state")
+if publication.get("preparation_state")=="PREPARED_NOT_PUBLISHED":
+    stable="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels"
+    if publication.get("production_base_url")!=stable:
+        errors.append("prepared production base URL mismatch")
+    if publication.get("production_manifest_url")!=stable+"/manifest.json":
+        errors.append("prepared production manifest URL mismatch")
 if build.get("state")=="BUILT_NOT_PUBLISHED":
     if publication.get("state") not in (None,"NOT_PUBLISHED"):
         errors.append("unpublished build advertises a publication state")
