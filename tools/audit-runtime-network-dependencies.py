@@ -9,7 +9,7 @@ Any new host must be reviewed and classified here before CI accepts it.
 """
 from pathlib import Path
 from urllib.parse import urlparse
-import json, re, sys
+import ast, io, json, re, sys, tokenize
 
 ROOT = Path(__file__).resolve().parents[1]
 SCAN = ROOT / "source/package-root"
@@ -20,10 +20,44 @@ HOST_CLASS = {
     "geocoding-api.open-meteo.com": "FUNCTIONAL_API",
     "api.open-meteo.com": "FUNCTIONAL_API",
     "itunes.apple.com": "FUNCTIONAL_API",
+    "www.imdb.com": "FUNCTIONAL_METADATA",
     "api.themoviedb.org": "FUNCTIONAL_API",
     "image.tmdb.org": "FUNCTIONAL_API",
 }
-URL_RE = re.compile(r"https?://[^\\s\\\"'<>]+")
+URL_RE = re.compile(r"""https?://[^\s"'<>]+""")
+def _python_runtime_text(source):
+    """Ignore Python comments and docstrings while retaining executable strings."""
+    lines = source.splitlines(True)
+    masked = [False] * len(lines)
+
+    tree = ast.parse(source)
+    nodes = [tree]
+    while nodes:
+        node = nodes.pop()
+        nodes.extend(child for child in ast.iter_child_nodes(node))
+        body = getattr(node, "body", None)
+        if isinstance(body, list) and body:
+            first = body[0]
+            value = getattr(first, "value", None)
+            if (isinstance(first, ast.Expr) and isinstance(value, (ast.Str, ast.Constant))
+                    and isinstance(getattr(value, "value", None), str)):
+                start = getattr(first, "lineno", 1) - 1
+                end = getattr(first, "end_lineno", start + 1)
+                for index in range(start, min(end, len(masked))):
+                    masked[index] = True
+
+    for token in tokenize.generate_tokens(io.StringIO(source).readline):
+        if token.type == tokenize.COMMENT:
+            start = token.start[0] - 1
+            end = token.end[0]
+            for index in range(start, min(end, len(masked))):
+                masked[index] = True
+
+    return "".join("\\n" if masked[index] and line.endswith("\\n") else
+                   "" if masked[index] else line
+                   for index, line in enumerate(lines))
+
+
 found = {}
 legacy_ftp = []
 unknown = []
@@ -34,9 +68,10 @@ for path in sorted(SCAN.rglob("*")):
         text = path.read_text(encoding="utf-8", errors="ignore")
     except OSError:
         continue
-    if re.search(r"ftp://", text, re.I):
+    scan_text = _python_runtime_text(text) if path.suffix.lower() == ".py" else text
+    if re.search(r"ftp://", scan_text, re.I):
         legacy_ftp.append(str(path.relative_to(ROOT)))
-    for m in URL_RE.finditer(text):
+    for m in URL_RE.finditer(scan_text):
         url = m.group(0).rstrip("),.;")
         host = (urlparse(url).hostname or "").lower()
         cls = HOST_CLASS.get(host, "UNCLASSIFIED")
