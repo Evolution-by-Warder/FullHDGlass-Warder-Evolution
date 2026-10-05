@@ -56,6 +56,7 @@ prefs = m.default_preferences("/media/hdd/picon")
 assert prefs["update_mode"] == "sync-tv-lists"
 assert prefs["style"] == "transparent"
 assert prefs["resolution"] == "220x132"
+assert m.RESOLUTIONS == (("220x132", "220 x 132"),)
 assert prefs["prepared"] is False
 assert m.has_executable_action(prefs) is False
 prefs = m.set_preference(prefs, "style", "black")
@@ -220,6 +221,8 @@ bad_style = dict(queue, style="unknown")
 assert m.plan_runtime_packages(valid_manifest, bad_style)["state"] == "invalid-preferences"
 bad_resolution = dict(queue, resolution="../220x132")
 assert m.plan_runtime_packages(valid_manifest, bad_resolution)["state"] == "invalid-preferences"
+unpublished_resolution = dict(queue, resolution="400x240")
+assert m.plan_runtime_packages(valid_manifest, unpublished_resolution)["state"] == "invalid-preferences"
 full_selected = dict(full_queue, positions_labels=["(23.5E) Astra 3B"], selector_ids=["235E"])
 full_selected_planned = m.plan_runtime_packages(valid_manifest, full_selected)
 assert [p["selector_id"] for p in full_selected_planned["packages"]] == ["235E"]
