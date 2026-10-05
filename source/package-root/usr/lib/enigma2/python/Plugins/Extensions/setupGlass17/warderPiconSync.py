@@ -48,6 +48,19 @@ def namespace_to_orbital_position(namespace):
     return "%d.%d%s" % (orbital // 10, orbital % 10, suffix)
 
 
+def position_token(label):
+    """Normalize a SATLIST/user label to the planner token (23.5e, 0.8w, dtt)."""
+    text = str(label or "").strip()
+    if text.upper().startswith("DVB-T"):
+        return "dtt"
+    match = re.search(r"\(([0-9]+(?:\.[0-9]+)?)([EW])\)", text, re.I)
+    if match:
+        return match.group(1).lower() + match.group(2).lower()
+    if re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", text, re.I):
+        return text.lower()
+    return text.lower()
+
+
 def service_orbital_position(reference):
     stem = normalize_service_reference(reference)
     if not stem:
