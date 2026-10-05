@@ -9051,6 +9051,23 @@ class downloadMenu(Screen):
 						os.unlink(tmp)
 		return installed
 
+	def _legacyPiconArchiveUrl(self, legacy_id):
+		"""Resolve one preserved legacy numeric ID without guessing or picon.cz fallback."""
+		try:
+			catalog_path = os.path.join(PLUGINPATH, "legacyPiconArchives.json")
+			with open(catalog_path, "r", encoding="utf-8") as handle:
+				catalog = json.load(handle)
+			if catalog.get("schema") != 1 or catalog.get("policy", {}).get("picon_cz_fallback") is not False:
+				return ""
+			entry = catalog.get("archives", {}).get(str(legacy_id), {})
+			url = str(entry.get("url", ""))
+			official = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
+			if url.startswith(official) and url.endswith(".7z"):
+				return url
+		except Exception:
+			pass
+		return ""
+
 	def downMulti(self, k, Ddir):
 		tmp = ""
 		if internet():
@@ -9066,8 +9083,11 @@ class downloadMenu(Screen):
 					except OSError:
 						pass
 					shutil.rmtree(extract_dir, ignore_errors=True)
-					url = 'https://picon.cz/download/%s/' % k[x][1]
-					headers = {'User-Agent':'FHDG17','Referer':url}
+					url = self._legacyPiconArchiveUrl(k[x][1])
+					if not url:
+						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Preserved legacy archive is not available in Warder migration catalogue")+" ["+str(k[x][1])+"]\n"
+						continue
+					headers = {'User-Agent':'FHDG17-Warder'}
 					try:
 						cookie_jar = cookielib.CookieJar()
 						opener = build_opener(HTTPCookieProcessor(cookie_jar))
