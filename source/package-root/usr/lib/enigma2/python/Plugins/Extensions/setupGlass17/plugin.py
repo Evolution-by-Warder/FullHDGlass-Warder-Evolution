@@ -8680,6 +8680,10 @@ class downloadMenu(Screen):
 			self.warderChannelQueue = queue
 			self.warderChannelJobs = list(jobs.get("jobs", []))
 			self.warderChannelInstalled = set()
+			if not self.warderChannelJobs and not (queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services")):
+				self.warderChannelQueue = None
+				self.warderChannelState = "error"
+				raise ValueError("Warder channel selection resolved to no packages")
 			if queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services"):
 				self.warderChannelQueue = None
 				self.warderChannelState = "error"
