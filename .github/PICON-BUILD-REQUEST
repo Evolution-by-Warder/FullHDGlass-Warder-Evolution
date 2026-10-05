@@ -11,3 +11,4 @@ Final integrity rebuild: independently reassemble every split package and verify
 Pre-publication lock rebuild: publication plan and two-phase cutover gates enabled.
 Receiver-contract rebuild: manifest trust, runtime queue, collision and two-phase cutover gates enabled.
 Authoritative resolution/selectors rebuild: exact SATLIST identity, PNG IHDR resolution and split-manifest v2 gates.
+End-to-end planner rebuild: selective/FULL package planning, integrity-complete download jobs and expanded receiver/materializer gates.
