@@ -31,3 +31,4 @@ Mixed queue: locked Warder stays retry-ready while separately selected legacy do
 Warder runtime errors keep prepared selection retry-ready and run only once per mixed queue session.
 Only complete Warder success clears prepared/pending; missing-upstream remains retry-ready.
 Batch hardening: mixed lock message retained, Warder rows excluded from legacy dispatch, retry assertions scoped, manifest URLs pinned to production repo/main/path.
+Selective safety: empty bouquet/service input resolves to zero packages and retry-ready error; only explicit FULL may select all packages.
