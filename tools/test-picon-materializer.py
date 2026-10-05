@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, subprocess, sys, tempfile
+import json, subprocess, sys, tempfile, struct
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -8,7 +8,7 @@ with tempfile.TemporaryDirectory() as td:
     for variant in ("transparent","black","white"):
         p=src/"picons"/"1.0e"/"provider"/variant
         p.mkdir(parents=True)
-        (p/"1_0_1_A_B_C_D_0_0_0.png").write_bytes(("PNG-"+variant).encode())
+        (p/"1_0_1_A_B_C_D_0_0_0.png").write_bytes(b"\\x89PNG\\r\\n\\x1a\\n"+b"\\x00\\x00\\x00\\rIHDR"+struct.pack(">II",220,132))
     plan={"selectors":[{"selector_id":"T1","warder_key":"1.0e","state":"READY",
           "eligible_families":["channel-transparent","channel-black","channel-white"],
           "blocked_families":[],"service_identities":1}]}
@@ -22,10 +22,10 @@ with tempfile.TemporaryDirectory() as td:
     subprocess.check_call(cmd)
     second={p.name:p.read_bytes() for p in out.glob("*.zip")}
     assert first==second and len(first)==3
-    m=json.loads(man.read_text()); assert len(m["packages"])==3
+    m=json.loads(man.read_text()); assert len(m["packages"])==3\n    assert {p["resolution"] for p in m["packages"]}=={"220x132"}
     # Different bytes for the same service-reference across provider subtrees must fail.
     p=src/"picons"/"1.0e"/"other"/"transparent"; p.mkdir(parents=True)
-    (p/"1_0_1_A_B_C_D_0_0_0.png").write_bytes(b"DIFFERENT")
+    (p/"1_0_1_A_B_C_D_0_0_0.png").write_bytes(b"\\x89PNG\\r\\n\\x1a\\n"+b"\\x00\\x00\\x00\\rIHDR"+struct.pack(">II",220,132)+b"DIFFERENT")
     r=subprocess.run(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
     assert r.returncode != 0 and "CONFLICT" in r.stdout
 print("Picon materializer self-test: PASS")
