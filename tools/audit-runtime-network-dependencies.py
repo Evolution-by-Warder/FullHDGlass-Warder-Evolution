@@ -3,7 +3,7 @@
 
 This is deliberately a classification gate, not a generic URL ban:
 - Warder GitHub raw endpoints are first-party delivery/update authority.
-- picon.cz is the one isolated legacy channel-picon dependency pending cut-over.
+- picon.cz is retained only as an isolated legacy fallback after Warder channel-picon cut-over.
 - Open-Meteo, iTunes and TMDB are functional APIs, not legacy HDGlass FTP.
 Any new host must be reviewed and classified here before CI accepts it.
 """
@@ -73,9 +73,9 @@ if unknown:
     errors.append("unclassified network endpoints:\n  " + "\n  ".join(unknown))
 picon = found.get("picon.cz", {}).get("references", [])
 if len(picon) != 1 or not picon[0]["path"].endswith("setupGlass17/plugin.py"):
-    errors.append("picon.cz must remain one isolated plugin.py dependency until Warder channel-package cut-over")
+    errors.append("picon.cz legacy fallback must remain one isolated plugin.py dependency")
 if errors:
     for error in errors:
         print("ERROR:", error)
     sys.exit(1)
-print("PASS runtime network dependency audit: %d classified hosts; %d isolated picon.cz reference(s); no ftp:// runtime references" % (len(found), len(picon)))
+print("PASS runtime network dependency audit: %d classified hosts; %d isolated picon.cz fallback reference(s); no ftp:// runtime references" % (len(found), len(picon)))
