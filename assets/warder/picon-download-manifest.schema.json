@@ -1,37 +1,194 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "warder-fullhdglass-picon-download-manifest-v1",
+  "$id": "warder-fullhdglass-picon-download-manifest-v2",
   "title": "Warder FullHDGlass channel-picon download manifest",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "generated_from", "packages"],
+  "required": [
+    "schema",
+    "generated_from",
+    "packages"
+  ],
   "properties": {
-    "schema": {"const": 1},
+    "schema": {
+      "const": 1
+    },
     "generated_from": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "ref"],
+      "required": [
+        "repository",
+        "ref"
+      ],
       "properties": {
-        "repository": {"const": "Evolution-by-Warder/PiconHub-Warder-Evolution"},
-        "ref": {"type": "string", "minLength": 7}
+        "repository": {
+          "const": "Evolution-by-Warder/PiconHub-Warder-Evolution"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 7
+        }
       }
+    },
+    "delivery": {
+      "enum": [
+        "raw-github-parts"
+      ]
     },
     "packages": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["selector_id", "family", "warder_key", "filename", "bytes", "sha256", "url"],
+        "required": [
+          "selector_id",
+          "family",
+          "warder_key",
+          "filename",
+          "bytes",
+          "sha256"
+        ],
         "properties": {
-          "selector_id": {"type": "string", "minLength": 1},
-          "family": {"enum": ["channel-transparent", "channel-black", "channel-white"]},
-          "warder_key": {"type": "string", "minLength": 1},
-          "filename": {"type": "string", "pattern": "^[A-Za-z0-9._-]+\\.(zip|7z)$"},
-          "bytes": {"type": "integer", "minimum": 1},
-          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-          "url": {"type": "string", "pattern": "^https://"}
+          "selector_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "family": {
+            "enum": [
+              "channel-transparent",
+              "channel-black",
+              "channel-white"
+            ]
+          },
+          "warder_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "filename": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]+\\\\.(zip|7z)$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://raw\\\\.githubusercontent\\\\.com/"
+          },
+          "parts": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^https://raw\\\\.githubusercontent\\\\.com/"
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "url"
+            ],
+            "not": {
+              "required": [
+                "parts"
+              ]
+            }
+          },
+          {
+            "required": [
+              "parts"
+            ],
+            "not": {
+              "required": [
+                "url"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "parts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "filename",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "filename": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "delivery": {
+            "const": "raw-github-parts"
+          }
+        },
+        "required": [
+          "delivery"
+        ]
+      },
+      "then": {
+        "required": [
+          "parts"
+        ],
+        "properties": {
+          "packages": {
+            "items": {
+              "required": [
+                "parts"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "not": {
+          "required": [
+            "delivery"
+          ]
+        }
+      },
+      "then": {
+        "properties": {
+          "packages": {
+            "items": {
+              "required": [
+                "url"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
 }
