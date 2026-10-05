@@ -22,3 +22,4 @@ Receiver manifest diagnostic assertion enabled after filename-regex fix.
 Timer-yielded receiver queue and strict selective completeness gate.
 Cutover collision validator aligned to authoritative 08W/160E selector IDs.
 Collision selector source-coverage gate plus timer-yielded receiver queue validation.
+Green artifact evidence rebound; resolution-aware split identity and blocked-package gates enabled.
