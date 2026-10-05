@@ -149,7 +149,7 @@ valid_manifest = {
     "packages": [{
         "selector_id": "235E", "family": "channel-transparent", "warder_key": "23.5e",
         "filename": "235E-transparent.zip", "resolution": "220x132", "bytes": 10, "sha256": "a" * 64,
-        "parts": ["https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/235E-transparent.zip.part00"],
+        "parts": ["https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/235E-transparent.zip.part00"],
     }],
     "parts": [{"filename": "235E-transparent.zip.part00", "bytes": 10, "sha256": "b" * 64}],
 }
@@ -188,7 +188,7 @@ assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
 assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
 assert m.validate_destination("relative/picon") is None
 assert m.validate_destination("/") is None
-pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/manifest.json", valid_manifest)
+pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json", valid_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
 bad["packages"] = [dict(valid_manifest["packages"][0])]
@@ -198,6 +198,8 @@ bad_sha = dict(valid_manifest)
 bad_sha["packages"] = [dict(valid_manifest["packages"][0], sha256="xyz")]
 assert "invalid package sha256" in m.validate_publication_manifest(bad_sha)
 assert m.publication_from_manifest("http://raw.githubusercontent.com/x/manifest.json", valid_manifest)["persistent"] is False
+assert m.publication_from_manifest("https://raw.githubusercontent.com/Other/repo/main/assets/warder/downloads/picons/channels/manifest.json", valid_manifest)["persistent"] is False
+assert m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/manifest.json", valid_manifest)["persistent"] is False
 duplicate = dict(valid_manifest)
 duplicate["packages"] = [dict(valid_manifest["packages"][0]), dict(valid_manifest["packages"][0])]
 assert "duplicate selector/family/resolution" in m.validate_publication_manifest(duplicate)
