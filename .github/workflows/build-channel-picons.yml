@@ -28,23 +28,14 @@ jobs:
           ref: 2827fed5b2e6ae4697f08ca57a8c2298079d410f
           path: .warder-master
 
-      - name: Fetch pinned legacy migration metadata
+      - name: Validate pinned legacy migration catalogue
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/trezor-manifest
-          curl --fail --location --retry 3 --silent --show-error \
-            https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/manifest/source_manifest.tsv \
-            -o /tmp/trezor-manifest/source_manifest.tsv
-          test "$(wc -l < /tmp/trezor-manifest/source_manifest.tsv)" -eq 2204
-
-      - name: Validate preserved legacy migration catalogue
-        shell: bash
-        run: |
-          set -euo pipefail
+          test "$(wc -l < assets/warder/legacy-source-manifest.tsv)" -eq 2204
           python3 tools/build-legacy-picon-migration-map.py \
             --mapping assets/warder/picon-satlist-mapping.tsv \
-            --source-manifest /tmp/trezor-manifest/source_manifest.tsv \
+            --source-manifest assets/warder/legacy-source-manifest.tsv \
             --output /tmp/legacy-picon-migration-map.json
           python3 - <<'PY'
           import json
