@@ -8454,6 +8454,19 @@ class downloadMenu(Screen):
 			return
 		tmp = self['list'].getSelectedIndex()
 		if self.toDown:
+			# Warder channel-picon preferences are already executable UI state, but
+			# persistent channel packages are intentionally not published yet.
+			# Build/validate the exact receiver queue before any legacy download loop
+			# starts; a publication lock must be a read-only stop.
+			if self.warderPiconPrefs.get("prepared"):
+				queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs)
+				if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
+					mode = "FULL" if queue.get("mode") == warderPiconSync.UPDATE_MODE_FULL else _("Synchronize with TV lists")
+					msg = _("Warder channel picon packages are prepared but not persistently published yet.") + "\\n"
+					msg += _("No picons were downloaded, deleted or changed.") + "\\n"
+					msg += _("Mode") + ": " + mode + ", " + _("Services") + ": " + str(queue.get("service_count", 0))
+					self.session.open(historyScreen, _("Result"), msg)
+					return
 			self.instance.resize(eSize(1920,150))
 			self["dwn"].show()
 			self.ena = False
