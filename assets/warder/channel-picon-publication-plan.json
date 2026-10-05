@@ -3,10 +3,10 @@
   "state": "PREPARED_NOT_PUBLISHED",
   "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
   "evidence": {
-    "workflow_run": 37263263434,
-    "artifact_id": 11325098173,
-    "artifact_bytes": 615397302,
-    "artifact_digest": "sha256:09fc63bae59cff85ab12ad5dc88c425699e2f4008cef91d4c4e424a4650dda79"
+    "workflow_run": 37280513295,
+    "artifact_id": 11332051373,
+    "artifact_bytes": 615397498,
+    "artifact_digest": "sha256:e8a9c34b58c9137f49ea812f2333f8ccad372c45e02a2ecab969c7f0b1ac7cc5"
   },
   "contract": {
     "packages": 114,
