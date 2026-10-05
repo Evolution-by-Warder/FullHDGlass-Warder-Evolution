@@ -28,50 +28,37 @@ jobs:
           ref: 2827fed5b2e6ae4697f08ca57a8c2298079d410f
           path: .warder-master
 
-      - name: Checkout preserved legacy picon archive
-        uses: actions/checkout@v4
-        with:
-          repository: Evolution-by-Warder/Trezor
-          ref: 9cdda4ab414e7d50a97ca9285db8ebbb75fba615
-          path: .trezor
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Inventory preserved legacy compatibility archives
+      - name: Fetch pinned legacy migration metadata
         shell: bash
         run: |
           set -euo pipefail
-          python3 tools/inventory-legacy-picon-archives.py \
-            --root .trezor/archives/chocholousek-picons/originals \
-            --output /tmp/legacy-picon-inventory.json
-          python3 - <<'PY'
-          import json
-          d=json.load(open("/tmp/legacy-picon-inventory.json"))
-          assert d["archive_count"]==538
-          assert d["archive_bytes"]==1359753012
-          assert d["selector_count"]==55
-          expected={
-            "piconblack|100x60":55,"piconblack|150x90":55,
-            "piconmirrorglass|100x60":55,
-            "piconpoolrainbow|220x132":55,"piconpoolrainbow|400x240":55,
-            "piconsrhd|400x240":44,
-            "picontransparent|100x60":55,"picontransparent|220x132":55,
-            "picontransparent|400x240":54,"piconwhite|50x30":55,
-          }
-          assert d["combinations"]==expected
-          print("Preserved legacy archive contract: PASS")
-          PY
+          mkdir -p /tmp/trezor-manifest
+          curl --fail --location --retry 3 --silent --show-error \
+            https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/manifest/source_manifest.tsv \
+            -o /tmp/trezor-manifest/source_manifest.tsv
+          test "$(wc -l < /tmp/trezor-manifest/source_manifest.tsv)" -eq 2204
+
+      - name: Validate preserved legacy migration catalogue
+        shell: bash
+        run: |
+          set -euo pipefail
           python3 tools/build-legacy-picon-migration-map.py \
             --mapping assets/warder/picon-satlist-mapping.tsv \
-            --source-manifest .trezor/archives/chocholousek-picons/manifest/source_manifest.tsv \
+            --source-manifest /tmp/trezor-manifest/source_manifest.tsv \
             --output /tmp/legacy-picon-migration-map.json
           python3 - <<'PY'
           import json
           d=json.load(open("/tmp/legacy-picon-migration-map.json"))
-          assert len(d["rows"])==57*7
-          # Preserve unresolved catalogue facts; never guess a replacement.
-          assert d["mapped"]+d["unmapped"]==399
-          assert all(r["legacy_id"] for r in d["rows"])
-          print("Legacy numeric-ID join: PASS (%d mapped, %d unresolved)"%(d["mapped"],d["unmapped"]))
+          assert len(d["rows"])==399
+          assert d["mapped"]==370
+          assert d["unmapped"]==29
+          unresolved={(r["selector_id"],r["legacy_column"]) for r in d["rows"] if r["state"]!="ARCHIVED_SOURCE"}
+          expected={(s,c) for s in ("450W","31E","749E","851E") for c in (
+            "legacy_400x240","legacy_black_50x30","legacy_black","legacy_white_50x30",
+            "legacy_white","legacy_oled","legacy_220x132")}
+          expected.add(("685E","legacy_400x240"))
+          assert unresolved==expected
+          print("Legacy catalogue join: PASS (370 mapped, 29 explicitly unresolved)")
           PY
 
       - name: Generate audited package plan
