@@ -8984,8 +8984,12 @@ class downloadMenu(Screen):
 			entries = []
 			seen = set()
 			for info in zf.infolist():
-				if info.is_dir():
+				if info.filename.endswith("/"):
 					continue
+				if info.file_size < 1 or info.file_size > 16 * 1024 * 1024:
+					raise ValueError("unsafe Warder picon PNG size")
+				if info.compress_size > 0 and info.file_size > info.compress_size * 250:
+					raise ValueError("unsafe Warder picon ZIP compression ratio")
 				if not warderPiconSync.safe_archive_member(info.filename):
 					raise ValueError("unsafe Warder picon ZIP path")
 				mode = (info.external_attr >> 16) & 0xFFFF
