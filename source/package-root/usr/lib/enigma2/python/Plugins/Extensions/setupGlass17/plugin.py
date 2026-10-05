@@ -9030,6 +9030,10 @@ class downloadMenu(Screen):
 				try:
 					with os.fdopen(fd, "wb") as out:
 						with zf.open(info, "r") as src:
+							signature = src.read(8)
+							if signature != b"\x89PNG\r\n\x1a\n":
+								raise ValueError("invalid Warder picon PNG signature")
+							out.write(signature)
 							shutil.copyfileobj(src, out, 1024 * 128)
 						out.flush()
 						os.fsync(out.fileno())
