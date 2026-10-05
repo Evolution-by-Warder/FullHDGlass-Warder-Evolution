@@ -6,16 +6,16 @@
     "commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f"
   },
   "workflow": {
-    "run_id": 37222927731,
-    "head_sha": "18ac637b2180f40b4adc08ffc706c2550a9cadd7",
+    "run_id": 37262475228,
+    "head_sha": "4f69d3cdfdd90b6cb6629aae91ea3f171d937a92",
     "conclusion": "success"
   },
   "artifact": {
-    "id": 11311027106,
+    "id": 11324632930,
     "name": "warder-channel-picons-2827fed5",
-    "size_in_bytes": 615370960,
-    "digest": "sha256:ed2e2ae42bf95e6e5db4500034c59136bd82a791c05e99e6f1b9d73670ebee95",
-    "expires_at": "2026-10-18T18:06:02Z"
+    "size_in_bytes": 1230749855,
+    "digest": "sha256:55a14f5f13b2c05a6e471406ea762e2496fd6680c8cbc5a7a956fc7bf9d9bce2",
+    "expires_at": "2026-10-19T04:13:52Z"
   },
   "package_contract": {
     "selectors": 57,
@@ -38,6 +38,9 @@
     "manifest_url": null,
     "base_url": null,
     "required_packages": 114,
-    "note": "GitHub Actions artifact is temporary build evidence only; receiver cut-over remains locked until all packages and the manifest exist at persistent URLs and are hash/size verified."
+    "note": "GitHub Actions artifact is temporary build evidence only; receiver cut-over remains locked until all packages and the manifest exist at persistent URLs and are hash/size verified.",
+    "delivery": "raw-github-parts",
+    "part_size_limit_bytes": 20971520,
+    "integrity": "package SHA256 plus per-part SHA256/size; publication remains NOT_PUBLISHED"
   }
 }
