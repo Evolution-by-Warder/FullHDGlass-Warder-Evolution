@@ -30,7 +30,10 @@ def normalize_service_reference(reference):
     if ref.startswith("#SERVICE"):
         ref = ref.split(None, 1)[1].strip() if " " in ref else ""
     ref = ref.split("::", 1)[0].strip()
-    fields = ref.split(":")
+    if ":" in ref:
+        fields = ref.split(":")
+    else:
+        fields = ref.split("_")
     if len(fields) < 10:
         return ""
     fields = fields[:10]
