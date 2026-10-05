@@ -48,6 +48,8 @@ def main():
         if a.parts:
             urls=p.get("parts",[])
             if not isinstance(urls,list) or not urls: errors.append("missing parts for "+name); urls=[]
+            assembled=hashlib.sha256()
+            assembled_bytes=0
             for n,url in enumerate(urls):
                 pn=name+".part%02d"%n
                 if url!=expected_base+"/"+pn: errors.append("non-canonical part URL for "+name)
@@ -55,11 +57,20 @@ def main():
                 if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
                 pp=a.root/pn
                 meta=part_meta.get(pn)
-                if not pp.is_file(): errors.append("missing part "+pn)
-                elif not meta: errors.append("missing part metadata "+pn)
+                if not pp.is_file():
+                    errors.append("missing part "+pn)
+                elif not meta:
+                    errors.append("missing part metadata "+pn)
                 else:
                     if pp.stat().st_size!=meta.get("bytes"): errors.append("part size mismatch "+pn)
                     if digest(pp)!=meta.get("sha256"): errors.append("part sha256 mismatch "+pn)
+                    with pp.open("rb") as stream:
+                        for chunk in iter(lambda:stream.read(1024*1024),b""):
+                            assembled.update(chunk)
+                            assembled_bytes+=len(chunk)
+            if urls:
+                if assembled_bytes!=p.get("bytes"): errors.append("reassembled size mismatch "+name)
+                if assembled.hexdigest()!=p.get("sha256"): errors.append("reassembled sha256 mismatch "+name)
         else:
             url=p.get("url","")
             if url!=expected_base+"/"+name: errors.append("non-canonical URL for "+name)
