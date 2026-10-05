@@ -6,9 +6,20 @@ ROOT = Path(__file__).resolve().parents[1]
 PKG = ROOT / "source/package-root"
 PLUGIN = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
 CATALOG = json.loads((PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/legacyPiconArchives.json").read_text(encoding="utf-8"))
+PROVENANCE = json.loads((ROOT / "assets/warder/legacy-source-manifest-provenance.json").read_text(encoding="utf-8"))
+MANIFEST = ROOT / "assets/warder/legacy-source-manifest.tsv"
 PREFIX = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
 
 assert CATALOG["schema"] == 1
+assert PROVENANCE["schema"] == 1
+assert PROVENANCE["source_repository"] == CATALOG["source"]["repository"]
+assert PROVENANCE["source_commit"] == CATALOG["source"]["commit"]
+assert PROVENANCE["source_path"] == "archives/chocholousek-picons/manifest/source_manifest.tsv"
+assert PROVENANCE["rows"] == 2203 and PROVENANCE["core_rows"] == 2202 and PROVENANCE["preview_rows"] == 1
+assert PROVENANCE["policy"]["vendored_metadata_only"] is True
+assert PROVENANCE["policy"]["original_archives_remain_in_trezor"] is True
+assert PROVENANCE["policy"]["lossless_migration"] is True
+assert sum(1 for _ in MANIFEST.open(encoding="utf-8")) == 2204
 assert CATALOG["source"]["repository"] == "Evolution-by-Warder/Trezor"
 assert CATALOG["source"]["commit"] == "9cdda4ab414e7d50a97ca9285db8ebbb75fba615"
 assert CATALOG["source"]["path"] == "archives/chocholousek-picons/originals"
