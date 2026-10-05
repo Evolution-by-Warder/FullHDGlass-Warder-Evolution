@@ -121,3 +121,12 @@ When user asks `daj mi test`: trigger TEST build; inspect run/jobs/gates; fix an
 - Retry triggered by 25d550e1fd97c1b2c97ae076ba733bf16aa8c235; run 37262827959 pending/in progress at checkpoint time.
 - Verified split build evidence recorded in assets/warder/channel-picon-build.json by 9b9a42e12c1152c96224a56927c7ee5f419f65fb.
 - Publication remains NOT_PUBLISHED and runtime_cutover=false. picon.cz remains the runtime fallback. Radio TEST191 and main remain untouched.
+
+## 2026-10-05 authoritative lean publication hardening
+- Historical split candidate SUCCESS remains run 37262475228 / artifact 11324632930.
+- Runs 37262643909 and 37262827959 correctly failed publication gates while per-part metadata writer was incomplete/broken; source package materialization itself passed.
+- Run 37262963590 confirmed the old preparer syntax defect; superseded by clean rewrite a07ea75a712b8bb10b45b442ec84d32a5a2a7363.
+- Workflow compile gate corrected and artifact duplication removed in 808be036c4b5badf49df12392078c95dbbd5c54c.
+- Authoritative lean rebuild trigger: 87ce10d6c6a93aa2e43b2850429af1dfbd5b531f, run 37263153529.
+- Production validator now pins exactly the stable main raw path and raw-github-parts delivery (d5900d63571bab66a543e380f9f044bc5c078fe2).
+- Publication contract remains PREPARED_NOT_PUBLISHED; runtime_cutover=false; main and Radio TEST191 untouched.
