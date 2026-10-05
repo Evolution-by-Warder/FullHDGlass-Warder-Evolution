@@ -7,7 +7,7 @@ hard-fail. The output ZIP metadata is normalized for reproducibility.
 """
 
 from __future__ import annotations
-import argparse, hashlib, json, zipfile
+import argparse, hashlib, json, zipfile, struct
 from pathlib import Path
 
 VARIANTS = {
@@ -37,6 +37,18 @@ def collect(root: Path, warder_key: str, variant: str):
             origins.setdefault(name, str(p))
     return chosen
 
+
+def png_resolution(data):
+    if len(data) < 24 or data[:8] != b"\\x89PNG\\r\\n\\x1a\\n" or data[12:16] != b"IHDR":
+        raise SystemExit("invalid PNG source")
+    width, height = struct.unpack(">II", data[16:24])
+    return "%dx%d" % (width, height)
+
+def package_resolution(files):
+    values = {png_resolution(item[1]) for item in files.values()}
+    if len(values) != 1:
+        raise SystemExit("mixed PNG resolutions in one package: %s" % sorted(values))
+    return next(iter(values))
 
 def write_zip(path: Path, files):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -71,12 +83,13 @@ def main():
             expected = int(sel["service_identities"])
             if len(files) != expected:
                 raise SystemExit("%s/%s expected %d unique picons, got %d" % (sel["selector_id"], family, expected, len(files)))
+            resolution = package_resolution(files)
             filename = "warder-%s-%s.zip" % (sel["selector_id"].lower(), family)
             size, sha = write_zip(args.output_dir / filename, files)
             packages.append({
                 "selector_id": sel["selector_id"], "family": family,
                 "warder_key": sel["warder_key"], "filename": filename,
-                "bytes": size, "sha256": sha,
+                "resolution": resolution, "bytes": size, "sha256": sha,
                 "url": args.base_url.rstrip("/") + "/" + filename,
             })
     manifest = {
