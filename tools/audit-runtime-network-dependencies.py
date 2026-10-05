@@ -26,7 +26,7 @@ HOST_CLASS = {
 }
 URL_RE = re.compile(r"""https?://[^\s"'<>]+""")
 def _python_runtime_text(source):
-    """Ignore Python comments and docstrings while retaining executable strings."""
+    """Ignore Python comments and standalone string expressions."""
     lines = source.splitlines(True)
     masked = [False] * len(lines)
 
@@ -35,16 +35,13 @@ def _python_runtime_text(source):
     while nodes:
         node = nodes.pop()
         nodes.extend(child for child in ast.iter_child_nodes(node))
-        body = getattr(node, "body", None)
-        if isinstance(body, list) and body:
-            first = body[0]
-            value = getattr(first, "value", None)
-            if (isinstance(first, ast.Expr) and isinstance(value, (ast.Str, ast.Constant))
-                    and isinstance(getattr(value, "value", None), str)):
-                start = getattr(first, "lineno", 1) - 1
-                end = getattr(first, "end_lineno", start + 1)
-                for index in range(start, min(end, len(masked))):
-                    masked[index] = True
+        value = getattr(node, "value", None)
+        if (isinstance(node, ast.Expr) and isinstance(value, ast.Constant)
+                and isinstance(value.value, str)):
+            start = getattr(node, "lineno", 1) - 1
+            end = getattr(node, "end_lineno", start + 1)
+            for index in range(start, min(end, len(masked))):
+                masked[index] = True
 
     for token in tokenize.generate_tokens(io.StringIO(source).readline):
         if token.type == tokenize.COMMENT:
