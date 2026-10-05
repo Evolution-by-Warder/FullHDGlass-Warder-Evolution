@@ -25,3 +25,4 @@ Collision selector source-coverage gate plus timer-yielded receiver queue valida
 Green artifact evidence rebound; resolution-aware split identity and blocked-package gates enabled.
 Embed inner manifest/SHA256SUMS reproducibility evidence in uploaded artifact.
 Inner content-hash build evidence plus streamed receiver download bounds.
+Fail-closed validation for inner artifact content evidence; hashes recorded only from generated BUILD-EVIDENCE.json.
