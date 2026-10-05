@@ -48,3 +48,4 @@ Filesystem race closure: canonical destination persisted after creation and reva
 Normalization closure: canonical underscore service references are now idempotently accepted alongside colon/#SERVICE forms; destination race guard retained.
 Retry production publication after strict BUILD-EVIDENCE JSON newline fix.
 Production publish retry: BUILD-EVIDENCE serialization hardened and self-validated.
+Runtime cutover validation: verified production manifest enabled on working branch.
