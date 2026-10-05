@@ -8478,7 +8478,8 @@ class downloadMenu(Screen):
 			self.instance.resize(eSize(1920,150))
 			self["dwn"].show()
 			self.ena = False
-			self.msg = ""
+			if self.warderChannelState != "locked":
+				self.msg = ""
 			self.dwnJob = ""
 			self.dwnTimer.start(2000)
 		
@@ -8754,7 +8755,7 @@ class downloadMenu(Screen):
 			ena = True
 			self.enaSelectsat = False
 			for x in self.menuListAll:
-				if self.menuListAll[x][4] == "d":
+				if self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows:
 					ena = False
 					self.menuListAll[x][4] = 'x'
 					self.type_download = str(self.menuListAll[x][2])
