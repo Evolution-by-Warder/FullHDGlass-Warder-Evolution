@@ -8,6 +8,10 @@ from __future__ import absolute_import
 
 import os
 import re
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
 
 ENIGMA2_DIR = "/etc/enigma2"
 _BOUQUET_RE = re.compile(r'FROM BOUQUET "([^"]+)"', re.I)
@@ -250,3 +254,104 @@ def resolve_service_entry(index, collisions, service_reference):
     if entry is None:
         return {"state": "missing", "service_reference": stem}
     return {"state": "matched", "service_reference": stem, "entry": entry}
+
+
+_ALLOWED_MANIFEST_HOSTS = ("raw.githubusercontent.com",)
+_FAMILIES = ("channel-transparent", "channel-black", "channel-white")
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+_FILENAME_RE = re.compile(r"^[A-Za-z0-9._-]+\\.(?:zip|7z)$")
+
+
+def _trusted_https_url(url):
+    try:
+        parsed = urlparse(str(url))
+    except Exception:
+        return False
+    return parsed.scheme == "https" and parsed.hostname in _ALLOWED_MANIFEST_HOSTS and not parsed.username and not parsed.password
+
+
+def validate_publication_manifest(document):
+    """Validate the receiver-facing Warder manifest before any download is queued."""
+    errors = []
+    if not isinstance(document, dict):
+        return ["manifest is not an object"]
+    if document.get("schema") != 1:
+        errors.append("unsupported manifest schema")
+    generated = document.get("generated_from")
+    if not isinstance(generated, dict) or generated.get("repository") != "Evolution-by-Warder/PiconHub-Warder-Evolution":
+        errors.append("unexpected manifest source")
+    elif len(str(generated.get("ref", ""))) < 7:
+        errors.append("invalid source ref")
+    delivery = document.get("delivery", "direct")
+    if delivery not in ("direct", "raw-github-parts"):
+        errors.append("unsupported delivery")
+    packages = document.get("packages")
+    if not isinstance(packages, list) or not packages:
+        errors.append("packages missing")
+        return errors
+    seen = set()
+    part_meta = {}
+    if delivery == "raw-github-parts":
+        parts = document.get("parts")
+        if not isinstance(parts, list) or not parts:
+            errors.append("part metadata missing")
+        else:
+            for part in parts:
+                name = part.get("filename", "") if isinstance(part, dict) else ""
+                size = part.get("bytes", 0) if isinstance(part, dict) else 0
+                sha = part.get("sha256", "") if isinstance(part, dict) else ""
+                if not name or name in part_meta or not isinstance(size, int) or size < 1 or not _SHA256_RE.match(str(sha)):
+                    errors.append("invalid part metadata")
+                    continue
+                part_meta[name] = (size, sha)
+    referenced_parts = set()
+    for package in packages:
+        if not isinstance(package, dict):
+            errors.append("invalid package")
+            continue
+        key = (package.get("selector_id"), package.get("family"))
+        if key in seen:
+            errors.append("duplicate selector/family")
+        seen.add(key)
+        if package.get("family") not in _FAMILIES:
+            errors.append("invalid family")
+        name = str(package.get("filename", ""))
+        if not _FILENAME_RE.match(name):
+            errors.append("invalid package filename")
+        size = package.get("bytes", 0)
+        if not isinstance(size, int) or size < 1:
+            errors.append("invalid package size")
+        if not _SHA256_RE.match(str(package.get("sha256", ""))):
+            errors.append("invalid package sha256")
+        if delivery == "direct":
+            if not _trusted_https_url(package.get("url", "")):
+                errors.append("untrusted package url")
+        else:
+            urls = package.get("parts")
+            if not isinstance(urls, list) or not urls:
+                errors.append("package parts missing")
+                continue
+            for url in urls:
+                if not _trusted_https_url(url):
+                    errors.append("untrusted part url")
+                    continue
+                part_name = str(url).rsplit("/", 1)[-1]
+                if part_name not in part_meta:
+                    errors.append("part metadata not found")
+                referenced_parts.add(part_name)
+    if delivery == "raw-github-parts" and part_meta and referenced_parts != set(part_meta):
+        errors.append("part metadata/reference mismatch")
+    return errors
+
+
+def publication_from_manifest(manifest_url, document):
+    """Return runtime publication evidence only after strict manifest validation."""
+    errors = validate_publication_manifest(document)
+    if not _trusted_https_url(manifest_url):
+        errors.append("untrusted manifest url")
+    return {
+        "persistent": not errors,
+        "manifest_url": manifest_url if not errors else None,
+        "delivery": document.get("delivery", "direct") if isinstance(document, dict) else None,
+        "errors": errors,
+    }
