@@ -6,16 +6,16 @@
     "commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f"
   },
   "workflow": {
-    "run_id": 37280513295,
-    "head_sha": "c3cb521d9c1bf533afd2a4c0fc70138a841ffb10",
+    "run_id": 37280907429,
+    "head_sha": "2ddb489872cf24f7cb3aad22aa544750e4f9a4d3",
     "conclusion": "success"
   },
   "artifact": {
-    "id": 11332051373,
+    "id": 11332286346,
     "name": "warder-channel-picons-2827fed5",
-    "size_in_bytes": 615397498,
-    "digest": "sha256:e8a9c34b58c9137f49ea812f2333f8ccad372c45e02a2ecab969c7f0b1ac7cc5",
-    "expires_at": "2026-10-19T07:57:23Z"
+    "size_in_bytes": 615397853,
+    "digest": "sha256:330d3fc6b3cc096519987ffed36bfb40440e4c748bfbdad7d9b3e1f7e21a7f7f",
+    "expires_at": "2026-10-19T08:01:29Z"
   },
   "package_contract": {
     "selectors": 57,
@@ -50,5 +50,11 @@
     "prepared_packages": 114,
     "candidate_validation": "PASS",
     "reassembly_validation": "PASS"
+  },
+  "content_evidence": {
+    "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
+    "packages": 114,
+    "manifest_sha256": "493e05b33882b45d827f2ab13b80250d4db307f8d0430885b9b50ba8ac37ef6c",
+    "sha256sums_sha256": "791b91f26f6624945ba0c61ce2aa756706bd0900f2914dbda2a90661a90c8982"
   }
 }
