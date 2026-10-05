@@ -531,7 +531,7 @@ def validate_publication_manifest(document):
                 name = part.get("filename", "") if isinstance(part, dict) else ""
                 size = part.get("bytes", 0) if isinstance(part, dict) else 0
                 sha = part.get("sha256", "") if isinstance(part, dict) else ""
-                if not name or name in part_meta or not isinstance(size, int) or size < 1 or not _SHA256_RE.match(str(sha)):
+                if not name or name in part_meta or not isinstance(size, int) or size < 1 or size > 20 * 1024 * 1024 or not _SHA256_RE.match(str(sha)):
                     errors.append("invalid part metadata")
                     continue
                 part_meta[name] = (size, sha)
@@ -566,6 +566,7 @@ def validate_publication_manifest(document):
                 errors.append("package parts missing")
                 continue
             package_part_names = set()
+            package_part_bytes = 0
             for url in urls:
                 if not _trusted_https_url(url):
                     errors.append("untrusted part url")
@@ -577,7 +578,11 @@ def validate_publication_manifest(document):
                 package_part_names.add(part_name)
                 if part_name not in part_meta:
                     errors.append("part metadata not found")
+                else:
+                    package_part_bytes += part_meta[part_name][0]
                 referenced_parts.add(part_name)
+            if isinstance(size, int) and size > 0 and package_part_bytes != size:
+                errors.append("package part size mismatch")
     if delivery == "raw-github-parts" and part_meta and referenced_parts != set(part_meta):
         errors.append("part metadata/reference mismatch")
     return errors
