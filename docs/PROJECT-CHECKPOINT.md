@@ -349,3 +349,17 @@ Architecture decision: FullHDGlass17 is the single user-facing Warder ecosystem 
 11. After physical receiver validation, retire the obsolete fixed all-satellite runtime path; retain historical evidence/fallback only as appropriate.
 
 Current first implementation commit: 0f9dda187eb134b94ad9da75d9ce96feac269dbd (warderPiconSync.py).
+## WARDER CHANNEL-PICON MIGRATION CHECKPOINT — 2026-10-05
+
+This section supersedes older picon-migration TODO/status text where it conflicts.
+
+- Production data backend is persistently published on `main` at commit `c78047bd5c0bdfdd522cec69673fa95ac2376da6`; production runtime/source was not copied there.
+- Work-branch Warder runtime points at the verified production manifest. This remains development state until physical receiver acceptance and a separately approved production runtime cut-over.
+- Preserved Chocholousek/Trezor legacy numeric-ID migration is **370/399 mapped** against pinned Trezor commit `9cdda4ab414e7d50a97ca9285db8ebbb75fba615`.
+- The remaining **29/399** IDs are explicitly unresolved and fail closed. No nearby orbital/provider alias may be guessed and no retired-host fallback is allowed.
+- `downMulti()` retains the established GUI, destination and 7-Zip installation semantics but resolves mapped legacy IDs through packaged `legacyPiconArchives.json`.
+- The resolver validates schema, exact Trezor commit, 370/29 counts and no-guess/no-fallback policy, then caches the validated archive map for the screen lifetime.
+- CI pins the exact unresolved ID set and exact filename-to-URL relation. The full channel-picon workflow run `37299973444` is SUCCESS, including deterministic materialization, publication-shaped payload, split candidate, runtime migration and two-phase cut-over gates.
+- `main` remained exactly `c78047bd5c0bdfdd522cec69673fa95ac2376da6` after that validation; the one-time publication gate is closed.
+- OpenATV `PackageAction` blank-list skin fix is present on the work branch and guarded by the full r12 regression suite, but has not yet been receiver-validated. Do not claim physical PASS before the later TEST-IPK checkpoint.
+- No public Release. Radio TEST191 remains locked and outside this work.
