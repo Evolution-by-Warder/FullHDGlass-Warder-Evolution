@@ -30,6 +30,8 @@ jobs:
 
       - name: Static package preflight
         shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
         run: |
           set -euo pipefail
           test "$(sed -n 's/^Package:[[:space:]]*//p' source/control/control | head -n1)" = "enigma2-skin-fullhdglass17"
