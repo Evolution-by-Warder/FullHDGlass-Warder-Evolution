@@ -24,6 +24,10 @@ if code_enabled != runtime_cutover:
     errors.append("runtime code switch must exactly match recorded runtime_cutover")
 if not runtime_cutover and 'RUNTIME_MANIFEST_URL = ""' not in runtime:
     errors.append("locked runtime must not advertise a manifest URL")
+if not runtime_cutover and "RUNTIME_PUBLICATION_ENABLED = False" not in runtime:
+    errors.append("locked runtime must explicitly disable Warder publication")
+if not runtime_cutover and "RUNTIME_PUBLICATION_ENABLED = True" in runtime:
+    errors.append("locked runtime contains an enabled Warder publication switch")
 if runtime_cutover:
     if build.get("state")!="PUBLISHED":
         errors.append("runtime cutover requires build state PUBLISHED")
