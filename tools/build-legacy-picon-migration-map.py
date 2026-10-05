@@ -17,10 +17,16 @@ def main():
     ap.add_argument("--runtime-output",type=Path)
     a=ap.parse_args()
     mapping=read_tsv(a.mapping); source=read_tsv(a.source_manifest)
-    ids=[r["id"] for r in source]
-    if len(ids)!=len(set(ids)):
-        raise SystemExit("duplicate legacy IDs in source manifest")
-    by_id={r["id"]:r for r in source}
+    grouped={}
+    for r in source:
+        grouped.setdefault(r["id"],[]).append(r)
+    by_id={}
+    identity_fields=("filename","resolution","background","target","archive_type","provenance")
+    for ident, candidates in grouped.items():
+        identities={tuple(r.get(k,"") for k in identity_fields) for r in candidates}
+        if len(identities)!=1:
+            raise SystemExit("ambiguous duplicate legacy ID in source manifest: %s" % ident)
+        by_id[ident]=candidates[0]
     rows=[]; missing=[]
     for m in mapping:
         for col in COLUMNS:
