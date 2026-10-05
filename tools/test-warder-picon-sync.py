@@ -82,7 +82,7 @@ assert "os.replace(tmp, os.path.join(dest, name))" in plugin_source
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
-        h.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.q.tv" ORDER BY bouquet\\n')
+        h.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.q.tv" ORDER BY bouquet\n')
     with open(os.path.join(d, "userbouquet.q.tv"), "w") as h:
         h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
         h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\n")
