@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "source_repository": "Evolution-by-Warder/Trezor",
+  "source_commit": "9cdda4ab414e7d50a97ca9285db8ebbb75fba615",
+  "source_path": "archives/chocholousek-picons/manifest/source_manifest.tsv",
+  "rows": 2203,
+  "core_rows": 2202,
+  "preview_rows": 1,
+  "policy": {
+    "vendored_metadata_only": true,
+    "original_archives_remain_in_trezor": true,
+    "lossless_migration": true
+  }
+}
