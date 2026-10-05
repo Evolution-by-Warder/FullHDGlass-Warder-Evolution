@@ -16,17 +16,32 @@ for key,value in {"selectors":57,"matched":40,"ready":38,"collision_blocked":2,"
     if checkpoint_contract.get(key)!=value: errors.append("checkpoint contract "+key)
 if checkpoint_contract.get("families")!=["channel-transparent","channel-black","channel-white"]: errors.append("checkpoint families")
 if checkpoint.get("content_fingerprint",{}).get("manifest_sha256")!=fingerprint.get("manifest_sha256") or checkpoint.get("content_fingerprint",{}).get("sha256sums_sha256")!=fingerprint.get("sha256sums_sha256"): errors.append("checkpoint content fingerprint drift")
-if plan.get("state")!="PREPARED_NOT_PUBLISHED": errors.append("plan state")
-if plan.get("runtime_cutover") is not False: errors.append("plan runtime cutover must be false")
-if plan.get("publication_performed") is not False: errors.append("plan must remain unpublished")
+published = plan.get("state") == "PUBLISHED"
+if plan.get("state") not in ("PREPARED_NOT_PUBLISHED", "PUBLISHED"): errors.append("plan state")
+if published:
+    if plan.get("runtime_cutover") is not True: errors.append("published plan runtime cutover must be true")
+    if plan.get("publication_performed") is not True: errors.append("published plan must record completed publication")
+    if plan.get("production_commit") != "c78047bd5c0bdfdd522cec69673fa95ac2376da6": errors.append("published production commit mismatch")
+    expected_base = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels"
+    if plan.get("production_base_url") != expected_base: errors.append("published production base URL mismatch")
+    if plan.get("production_manifest_url") != expected_base + "/manifest.json": errors.append("published production manifest URL mismatch")
+else:
+    if plan.get("runtime_cutover") is not False: errors.append("prepared plan runtime cutover must be false")
+    if plan.get("publication_performed") is not False: errors.append("prepared plan must remain unpublished")
 if plan.get("contract",{}).get("packages")!=114: errors.append("package count")
 if plan.get("contract",{}).get("parts")!=124: errors.append("part count")
 if plan.get("contract",{}).get("delivery")!="raw-github-parts": errors.append("delivery")
 if plan.get("integrity",{}).get("candidate")!="PASS": errors.append("candidate integrity")
 if plan.get("integrity",{}).get("full_reassembly")!="PASS": errors.append("reassembly integrity")
-if build.get("runtime_cutover") is not False: errors.append("build runtime cutover must be false")
 p=build.get("publication",{})
-if p.get("state")!="NOT_PUBLISHED" or p.get("persistent") is not False: errors.append("build publication lock")
+if published:
+    if build.get("state") != "PUBLISHED" or build.get("runtime_cutover") is not True: errors.append("published build/runtime state")
+    if p.get("state") != "PUBLISHED" or p.get("persistent") is not True: errors.append("published build persistence evidence")
+    expected_base = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels"
+    if p.get("base_url") != expected_base or p.get("manifest_url") != expected_base + "/manifest.json": errors.append("published build URL evidence")
+else:
+    if build.get("runtime_cutover") is not False: errors.append("prepared build runtime cutover must be false")
+    if p.get("state")!="NOT_PUBLISHED" or p.get("persistent") is not False: errors.append("build publication lock")
 if p.get("prepared_packages")!=114 or p.get("prepared_parts")!=124: errors.append("build prepared counts")
 if p.get("reassembly_validation")!="PASS": errors.append("build reassembly evidence")
 if plan.get("evidence",{}).get("workflow_run")!=build.get("workflow",{}).get("run_id"): errors.append("workflow evidence drift")
@@ -66,4 +81,4 @@ else:
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
-print("PASS publication preflight: 114 packages / 124 parts / full reassembly evidence; publication and runtime cut-over locked")
+print("PASS publication state validation: 114 packages / 124 parts / full reassembly evidence; state=%s" % plan.get("state"))
