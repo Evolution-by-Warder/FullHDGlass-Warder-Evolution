@@ -91,3 +91,4 @@ Validate pinned legacy runtime cutover batch
 Validate runtime migration regression gate
 Revalidate scoped legacy downloader regression
 Validate focused legacy picon runtime gate
+Validate cutover with pinned legacy resolver
