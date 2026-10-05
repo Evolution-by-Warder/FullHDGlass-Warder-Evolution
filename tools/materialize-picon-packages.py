@@ -7,7 +7,7 @@ hard-fail. The output ZIP metadata is normalized for reproducibility.
 """
 
 from __future__ import annotations
-import argparse, hashlib, json, zipfile, struct
+import argparse, hashlib, json, zipfile, struct, sys
 from pathlib import Path
 
 VARIANTS = {
@@ -38,14 +38,14 @@ def collect(root: Path, warder_key: str, variant: str):
     return chosen
 
 
-def png_resolution(data):
+def png_resolution(data, source="<memory>"):
     if len(data) < 24 or data[:8] != b"\\x89PNG\\r\\n\\x1a\\n" or data[12:16] != b"IHDR":
-        raise SystemExit("invalid PNG source")
+        raise ValueError("invalid PNG source: %s" % source)
     width, height = struct.unpack(">II", data[16:24])
     return "%dx%d" % (width, height)
 
 def package_resolution(files):
-    values = {png_resolution(item[1]) for item in files.values()}
+    values = {png_resolution(item[1], name) for name, item in files.items()}
     if len(values) != 1:
         raise SystemExit("mixed PNG resolutions in one package: %s" % sorted(values))
     return next(iter(values))
@@ -74,6 +74,7 @@ def main():
     args = ap.parse_args()
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     packages = []
+    blocked = []
     for sel in plan["selectors"]:
         if sel["state"] != "READY":
             continue
@@ -83,7 +84,13 @@ def main():
             expected = int(sel["service_identities"])
             if len(files) != expected:
                 raise SystemExit("%s/%s expected %d unique picons, got %d" % (sel["selector_id"], family, expected, len(files)))
-            resolution = package_resolution(files)
+            try:
+                resolution = package_resolution(files)
+            except ValueError as err:
+                reason = str(err)
+                print("BLOCKED %s/%s: %s" % (sel["selector_id"], family, reason), file=sys.stderr)
+                blocked.append({"selector_id": sel["selector_id"], "family": family, "reason": reason})
+                continue
             filename = "warder-%s-%s.zip" % (sel["selector_id"].lower(), family)
             size, sha = write_zip(args.output_dir / filename, files)
             packages.append({
@@ -99,10 +106,11 @@ def main():
             "ref": args.source_commit,
         },
         "packages": packages,
+        "blocked_packages": blocked,
     }
     args.manifest.parent.mkdir(parents=True, exist_ok=True)
     args.manifest.write_text(json.dumps(manifest, sort_keys=True, indent=2) + "\n", encoding="utf-8")
-    print("materialized %d deterministic packages" % len(packages))
+    print("materialized %d deterministic packages; blocked %d" % (len(packages), len(blocked)))
 
 
 if __name__ == "__main__":
