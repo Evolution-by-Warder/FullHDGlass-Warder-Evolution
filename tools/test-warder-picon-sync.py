@@ -186,6 +186,10 @@ empty_sync_queue = dict(queue, services=[], positions_labels=[], selector_ids=[]
 empty_sync_planned = m.plan_runtime_packages(valid_manifest, empty_sync_queue)
 assert empty_sync_planned["state"] == "ready" and empty_sync_planned["packages"] == []
 assert m.build_download_jobs(valid_manifest, empty_sync_planned)["jobs"] == []
+bad_style = dict(queue, style="unknown")
+assert m.plan_runtime_packages(valid_manifest, bad_style)["state"] == "invalid-preferences"
+bad_resolution = dict(queue, resolution="../220x132")
+assert m.plan_runtime_packages(valid_manifest, bad_resolution)["state"] == "invalid-preferences"
 full_selected = dict(full_queue, positions_labels=["(23.5E) Astra 3B"], selector_ids=["235E"])
 full_selected_planned = m.plan_runtime_packages(valid_manifest, full_selected)
 assert [p["selector_id"] for p in full_selected_planned["packages"]] == ["235E"]
