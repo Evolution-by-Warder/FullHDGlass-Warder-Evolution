@@ -88,3 +88,4 @@ Validate corrected resolver CI shell block
 Validate repaired resolver generator and workflow
 Validate single-line legacy resolver invocation
 Validate pinned legacy runtime cutover batch
+Validate runtime migration regression gate
