@@ -53,11 +53,11 @@ jobs:
           print("Legacy catalogue join: PASS (370 mapped, 29 explicitly unresolved)")
           PY
 
-      - name: Validate FullHDGlass runtime migration regressions
+      - name: Validate legacy picon runtime migration
         shell: bash
         run: |
           set -euo pipefail
-          python3 tools/test-r12-regressions.py
+          python3 tools/test-legacy-picon-runtime.py
 
       - name: Generate audited package plan
         shell: bash
