@@ -8633,6 +8633,68 @@ class downloadMenu(Screen):
 								numPict += 1
 			self.dwnLoop(_("SUCCESSFUL")+": "+_("Total:") + " " + str(total) + ", " + _("Deleted:") + " " + str(numPict))	
 		
+	def _warderLoadChannelManifest(self, url):
+		"""Fetch and validate only the explicitly enabled production manifest."""
+		expected = warderPiconSync.runtime_publication().get("manifest_url")
+		if not expected or url != expected:
+			raise ValueError("Warder channel manifest is not enabled")
+		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons"})
+		with urlopen(req, timeout=30) as response:
+			if str(response.geturl()) != expected:
+				raise ValueError("Warder channel manifest redirect rejected")
+			data = response.read(4 * 1024 * 1024 + 1)
+		if len(data) > 4 * 1024 * 1024:
+			raise ValueError("Warder channel manifest too large")
+		doc = json.loads(data.decode("utf-8"))
+		errors = warderPiconSync.validate_publication_manifest(doc)
+		if errors:
+			raise ValueError("invalid Warder channel manifest: " + "; ".join(errors[:3]))
+		return doc
+
+	def _warderRunChannelQueue(self):
+		queue = getattr(self, "warderChannelQueue", None)
+		if queue is None:
+			queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
+			if queue.get("state") != warderPiconSync.READY:
+				raise ValueError("Warder channel publication is locked")
+			destination = warderPiconSync.validate_destination(queue.get("destination"))
+			if not destination:
+				raise ValueError("invalid Warder picon destination")
+			document = self._warderLoadChannelManifest(queue.get("manifest_url"))
+			plan = warderPiconSync.plan_runtime_packages(document, queue)
+			jobs = warderPiconSync.build_download_jobs(document, plan)
+			if jobs.get("state") not in ("ready", "partial"):
+				raise ValueError("Warder channel package plan is not executable")
+			if jobs.get("missing_selectors"):
+				raise ValueError("missing Warder channel packages: " + ", ".join(jobs["missing_selectors"]))
+			self.warderChannelQueue = queue
+			self.warderChannelJobs = list(jobs.get("jobs", []))
+			self.warderChannelInstalled = set()
+		if not getattr(self, "warderChannelJobs", []):
+			count = len(getattr(self, "warderChannelInstalled", set()))
+			self.warderPiconPrefs["prepared"] = False
+			for x in self.menuListAll:
+				if self.menuListAll[x][0] in self.warderPiconRows:
+					self.menuListAll[x][4] = "x"
+			self.warderChannelQueue = None
+			self.warderChannelJobs = []
+			self.warderChannelInstalled = set()
+			return _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
+		job = self.warderChannelJobs.pop(0)
+		fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
+		os.close(fd)
+		try:
+			self._warderFetchChannelJob(job, archive)
+			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
+			installed = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
+			self.warderChannelInstalled.update(installed)
+		finally:
+			try:
+				os.unlink(archive)
+			except OSError:
+				pass
+		return None
+
 	def dwnLoop(self, txt=""):
 		if self.dwnTimer.isActive():
 			self.dwnTimer.stop()
@@ -8641,6 +8703,24 @@ class downloadMenu(Screen):
 		else:
 			if txt != "":
 				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "\n"
+			if self.warderPiconPrefs.get("prepared"):
+				self.dwnJob = _("Warder channel picons")
+				try:
+					warder_result = self._warderRunChannelQueue()
+				except Exception as err:
+					self.warderPiconPrefs["prepared"] = False
+					self.warderChannelQueue = None
+					self.warderChannelJobs = []
+					self.warderChannelInstalled = set()
+					for row in self.menuListAll:
+						if self.menuListAll[row][0] in self.warderPiconRows:
+							self.menuListAll[row][4] = "x"
+					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + str(err) + "\n"
+				else:
+					if warder_result is None:
+						self.dwnTimer.start(10)
+						return
+					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
 			ena = True
 			self.enaSelectsat = False
 			for x in self.menuListAll:
