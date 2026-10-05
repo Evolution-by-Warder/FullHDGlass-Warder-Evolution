@@ -34,3 +34,4 @@ Batch hardening: mixed lock message retained, Warder rows excluded from legacy d
 Selective safety: empty bouquet/service input resolves to zero packages and retry-ready error; only explicit FULL may select all packages.
 Batch mode isolation: position-filtered selective excludes unknown orbital services; explicit FULL selectors stay scoped; empty selective remains zero-package fail-closed.
 Consolidated fail-closed batch: scoped retry tests, reject zero-package non-empty actions, orbital-filter isolation, empty-selective safety.
+Preference and cleanup hardening: invalid style/resolution fail closed; temp channel archive cleanup verified through finally/unlink contract.
