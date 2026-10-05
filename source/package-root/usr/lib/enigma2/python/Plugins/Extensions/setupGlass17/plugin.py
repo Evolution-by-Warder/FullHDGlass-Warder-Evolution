@@ -8718,7 +8718,8 @@ class downloadMenu(Screen):
 					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + str(err) + "\n"
 				else:
 					if warder_result is None:
-						self.dwnTimer.start(10)
+						# Continue immediately in the same serialized queue; no nested GUI callback.
+						self.dwnLoop()
 						return
 					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
 			ena = True
