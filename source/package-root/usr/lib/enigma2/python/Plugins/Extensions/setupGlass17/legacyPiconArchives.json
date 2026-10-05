@@ -1,0 +1,1644 @@
+{
+  "schema": 1,
+  "source": {
+    "repository": "Evolution-by-Warder/Trezor",
+    "commit": "9cdda4ab414e7d50a97ca9285db8ebbb75fba615",
+    "path": "archives/chocholousek-picons/originals"
+  },
+  "policy": {
+    "preserve_legacy_ids": true,
+    "guess_missing": false,
+    "picon_cz_fallback": false
+  },
+  "mapped": 370,
+  "unmapped": 29,
+  "archives": {
+    "1066": {
+      "filename": "picontransparent-220x132-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-0.8W_by_chocholousek.7z"
+    },
+    "1068": {
+      "filename": "picontransparent-220x132-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-1.0W_by_chocholousek.7z"
+    },
+    "1070": {
+      "filename": "picontransparent-220x132-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-1.9E_by_chocholousek.7z"
+    },
+    "1072": {
+      "filename": "picontransparent-220x132-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-3.0E_by_chocholousek.7z"
+    },
+    "1079": {
+      "filename": "picontransparent-220x132-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-4.0W_by_chocholousek.7z"
+    },
+    "1081": {
+      "filename": "picontransparent-220x132-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-4.8E_by_chocholousek.7z"
+    },
+    "1083": {
+      "filename": "picontransparent-220x132-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-4.9E_by_chocholousek.7z"
+    },
+    "1085": {
+      "filename": "picontransparent-220x132-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-5.0W_by_chocholousek.7z"
+    },
+    "1087": {
+      "filename": "picontransparent-220x132-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-7.0E_by_chocholousek.7z"
+    },
+    "1090": {
+      "filename": "picontransparent-220x132-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-7.0W_by_chocholousek.7z"
+    },
+    "1092": {
+      "filename": "picontransparent-220x132-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-8.0W_by_chocholousek.7z"
+    },
+    "1094": {
+      "filename": "picontransparent-220x132-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-9.0E_by_chocholousek.7z"
+    },
+    "1096": {
+      "filename": "picontransparent-220x132-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-10.0E_by_chocholousek.7z"
+    },
+    "1099": {
+      "filename": "picontransparent-220x132-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-GermanyDTT_by_chocholousek.7z"
+    },
+    "1101": {
+      "filename": "picontransparent-220x132-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-FranceDTT_by_chocholousek.7z"
+    },
+    "1103": {
+      "filename": "picontransparent-220x132-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-14.0W_by_chocholousek.7z"
+    },
+    "1105": {
+      "filename": "picontransparent-220x132-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-13.0E_by_chocholousek.7z"
+    },
+    "1119": {
+      "filename": "picontransparent-220x132-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-15.0W_by_chocholousek.7z"
+    },
+    "1121": {
+      "filename": "picontransparent-220x132-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-16.0E_by_chocholousek.7z"
+    },
+    "1125": {
+      "filename": "picontransparent-220x132-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-19.2E_by_chocholousek.7z"
+    },
+    "1129": {
+      "filename": "picontransparent-220x132-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-21.5E_by_chocholousek.7z"
+    },
+    "1131": {
+      "filename": "picontransparent-220x132-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-22.0W_by_chocholousek.7z"
+    },
+    "1133": {
+      "filename": "picontransparent-220x132-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-23.5E_by_chocholousek.7z"
+    },
+    "1135": {
+      "filename": "picontransparent-220x132-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-24.5W_by_chocholousek.7z"
+    },
+    "1139": {
+      "filename": "picontransparent-220x132-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-26.0E_by_chocholousek.7z"
+    },
+    "1141": {
+      "filename": "picontransparent-220x132-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-27.5W_by_chocholousek.7z"
+    },
+    "1143": {
+      "filename": "picontransparent-220x132-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-28.2E_by_chocholousek.7z"
+    },
+    "1145": {
+      "filename": "picontransparent-220x132-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-30.0W_by_chocholousek.7z"
+    },
+    "1147": {
+      "filename": "picontransparent-220x132-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-30.5E_by_chocholousek.7z"
+    },
+    "1149": {
+      "filename": "picontransparent-220x132-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-31.5E_by_chocholousek.7z"
+    },
+    "1151": {
+      "filename": "picontransparent-220x132-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-33.0E_by_chocholousek.7z"
+    },
+    "1153": {
+      "filename": "picontransparent-220x132-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-36.0E_by_chocholousek.7z"
+    },
+    "1155": {
+      "filename": "picontransparent-220x132-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-39.0E_by_chocholousek.7z"
+    },
+    "1157": {
+      "filename": "picontransparent-220x132-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-42.0E_by_chocholousek.7z"
+    },
+    "1159": {
+      "filename": "picontransparent-220x132-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-45.0E_by_chocholousek.7z"
+    },
+    "1164": {
+      "filename": "picontransparent-220x132-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-46.0E_by_chocholousek.7z"
+    },
+    "1166": {
+      "filename": "picontransparent-220x132-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-51.5E_by_chocholousek.7z"
+    },
+    "1168": {
+      "filename": "picontransparent-220x132-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-52.0E_by_chocholousek.7z"
+    },
+    "1171": {
+      "filename": "picontransparent-220x132-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-52.5E_by_chocholousek.7z"
+    },
+    "1173": {
+      "filename": "picontransparent-220x132-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-53.0E_by_chocholousek.7z"
+    },
+    "1175": {
+      "filename": "picontransparent-220x132-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-54.9E_by_chocholousek.7z"
+    },
+    "1177": {
+      "filename": "picontransparent-220x132-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-56.0E_by_chocholousek.7z"
+    },
+    "1180": {
+      "filename": "picontransparent-220x132-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-62.0E_by_chocholousek.7z"
+    },
+    "1182": {
+      "filename": "picontransparent-220x132-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-66.0E_by_chocholousek.7z"
+    },
+    "1184": {
+      "filename": "picontransparent-220x132-68.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-68.5E_by_chocholousek.7z"
+    },
+    "1186": {
+      "filename": "picontransparent-220x132-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-70.5E_by_chocholousek.7z"
+    },
+    "1190": {
+      "filename": "picontransparent-220x132-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-75.0E_by_chocholousek.7z"
+    },
+    "1193": {
+      "filename": "picontransparent-220x132-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-80.0E_by_chocholousek.7z"
+    },
+    "1197": {
+      "filename": "picontransparent-220x132-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-antiksat_by_chocholousek.7z"
+    },
+    "1199": {
+      "filename": "picontransparent-220x132-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-digiczsk_by_chocholousek.7z"
+    },
+    "1204": {
+      "filename": "picontransparent-220x132-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-czskDTT_by_chocholousek.7z"
+    },
+    "1206": {
+      "filename": "picontransparent-220x132-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-freeSAT_by_chocholousek.7z"
+    },
+    "1211": {
+      "filename": "picontransparent-220x132-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-220x132-skylink_by_chocholousek.7z"
+    },
+    "1216": {
+      "filename": "piconwhite-50x30-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-0.8W_by_chocholousek.7z"
+    },
+    "1219": {
+      "filename": "piconwhite-50x30-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-1.0W_by_chocholousek.7z"
+    },
+    "1221": {
+      "filename": "piconwhite-50x30-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-1.9E_by_chocholousek.7z"
+    },
+    "1223": {
+      "filename": "piconwhite-50x30-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-3.0E_by_chocholousek.7z"
+    },
+    "1230": {
+      "filename": "piconwhite-50x30-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-4.0W_by_chocholousek.7z"
+    },
+    "1233": {
+      "filename": "piconwhite-50x30-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-4.8E_by_chocholousek.7z"
+    },
+    "1235": {
+      "filename": "piconwhite-50x30-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-4.9E_by_chocholousek.7z"
+    },
+    "1237": {
+      "filename": "piconwhite-50x30-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-5.0W_by_chocholousek.7z"
+    },
+    "1240": {
+      "filename": "piconwhite-50x30-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-7.0E_by_chocholousek.7z"
+    },
+    "1243": {
+      "filename": "piconwhite-50x30-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-7.0W_by_chocholousek.7z"
+    },
+    "1245": {
+      "filename": "piconwhite-50x30-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-8.0W_by_chocholousek.7z"
+    },
+    "1247": {
+      "filename": "piconwhite-50x30-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-9.0E_by_chocholousek.7z"
+    },
+    "1249": {
+      "filename": "piconwhite-50x30-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-10.0E_by_chocholousek.7z"
+    },
+    "1251": {
+      "filename": "piconwhite-50x30-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-GermanyDTT_by_chocholousek.7z"
+    },
+    "1253": {
+      "filename": "piconwhite-50x30-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-FranceDTT_by_chocholousek.7z"
+    },
+    "1255": {
+      "filename": "piconwhite-50x30-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-13.0E_by_chocholousek.7z"
+    },
+    "1257": {
+      "filename": "piconwhite-50x30-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-14.0W_by_chocholousek.7z"
+    },
+    "1259": {
+      "filename": "piconwhite-50x30-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-15.0W_by_chocholousek.7z"
+    },
+    "1261": {
+      "filename": "piconwhite-50x30-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-16.0E_by_chocholousek.7z"
+    },
+    "1265": {
+      "filename": "piconwhite-50x30-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-19.2E_by_chocholousek.7z"
+    },
+    "1269": {
+      "filename": "piconwhite-50x30-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-21.5E_by_chocholousek.7z"
+    },
+    "1271": {
+      "filename": "piconwhite-50x30-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-22.0W_by_chocholousek.7z"
+    },
+    "1274": {
+      "filename": "piconwhite-50x30-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-23.5E_by_chocholousek.7z"
+    },
+    "1277": {
+      "filename": "piconwhite-50x30-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-24.5W_by_chocholousek.7z"
+    },
+    "1279": {
+      "filename": "piconwhite-50x30-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-26.0E_by_chocholousek.7z"
+    },
+    "1281": {
+      "filename": "piconwhite-50x30-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-27.5W_by_chocholousek.7z"
+    },
+    "1283": {
+      "filename": "piconwhite-50x30-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-28.2E_by_chocholousek.7z"
+    },
+    "1285": {
+      "filename": "piconwhite-50x30-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-30.0W_by_chocholousek.7z"
+    },
+    "1288": {
+      "filename": "piconwhite-50x30-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-30.5E_by_chocholousek.7z"
+    },
+    "1290": {
+      "filename": "piconwhite-50x30-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-31.5E_by_chocholousek.7z"
+    },
+    "1293": {
+      "filename": "piconwhite-50x30-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-33.0E_by_chocholousek.7z"
+    },
+    "1295": {
+      "filename": "piconwhite-50x30-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-36.0E_by_chocholousek.7z"
+    },
+    "1297": {
+      "filename": "piconwhite-50x30-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-39.0E_by_chocholousek.7z"
+    },
+    "1300": {
+      "filename": "piconwhite-50x30-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-42.0E_by_chocholousek.7z"
+    },
+    "1302": {
+      "filename": "piconwhite-50x30-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-45.0E_by_chocholousek.7z"
+    },
+    "1307": {
+      "filename": "piconwhite-50x30-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-46.0E_by_chocholousek.7z"
+    },
+    "1310": {
+      "filename": "piconwhite-50x30-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-51.5E_by_chocholousek.7z"
+    },
+    "1312": {
+      "filename": "piconwhite-50x30-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-52.0E_by_chocholousek.7z"
+    },
+    "1315": {
+      "filename": "piconwhite-50x30-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-52.5E_by_chocholousek.7z"
+    },
+    "1317": {
+      "filename": "piconwhite-50x30-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-53.0E_by_chocholousek.7z"
+    },
+    "1319": {
+      "filename": "piconwhite-50x30-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-54.9E_by_chocholousek.7z"
+    },
+    "1321": {
+      "filename": "piconwhite-50x30-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-56.0E_by_chocholousek.7z"
+    },
+    "1323": {
+      "filename": "piconwhite-50x30-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-62.0E_by_chocholousek.7z"
+    },
+    "1325": {
+      "filename": "piconwhite-50x30-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-66.0E_by_chocholousek.7z"
+    },
+    "1327": {
+      "filename": "piconwhite-50x30-68.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-68.5E_by_chocholousek.7z"
+    },
+    "1330": {
+      "filename": "piconwhite-50x30-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-70.5E_by_chocholousek.7z"
+    },
+    "1335": {
+      "filename": "piconwhite-50x30-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-75.0E_by_chocholousek.7z"
+    },
+    "1337": {
+      "filename": "piconwhite-50x30-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-80.0E_by_chocholousek.7z"
+    },
+    "1342": {
+      "filename": "piconwhite-50x30-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-antiksat_by_chocholousek.7z"
+    },
+    "1344": {
+      "filename": "piconwhite-50x30-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-digiczsk_by_chocholousek.7z"
+    },
+    "1349": {
+      "filename": "piconwhite-50x30-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-czskDTT_by_chocholousek.7z"
+    },
+    "1352": {
+      "filename": "piconwhite-50x30-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-freeSAT_by_chocholousek.7z"
+    },
+    "1356": {
+      "filename": "piconwhite-50x30-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-50x30-skylink_by_chocholousek.7z"
+    },
+    "1663": {
+      "filename": "piconblack-150x90-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-0.8W_by_chocholousek.7z"
+    },
+    "1666": {
+      "filename": "piconblack-150x90-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-1.0W_by_chocholousek.7z"
+    },
+    "1668": {
+      "filename": "piconblack-150x90-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-1.9E_by_chocholousek.7z"
+    },
+    "1670": {
+      "filename": "piconblack-150x90-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-3.0E_by_chocholousek.7z"
+    },
+    "1677": {
+      "filename": "piconblack-150x90-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-4.0W_by_chocholousek.7z"
+    },
+    "1679": {
+      "filename": "piconblack-150x90-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-4.8E_by_chocholousek.7z"
+    },
+    "1682": {
+      "filename": "piconblack-150x90-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-4.9E_by_chocholousek.7z"
+    },
+    "1684": {
+      "filename": "piconblack-150x90-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-5.0W_by_chocholousek.7z"
+    },
+    "1686": {
+      "filename": "piconblack-150x90-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-7.0E_by_chocholousek.7z"
+    },
+    "1688": {
+      "filename": "piconblack-150x90-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-7.0W_by_chocholousek.7z"
+    },
+    "1691": {
+      "filename": "piconblack-150x90-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-8.0W_by_chocholousek.7z"
+    },
+    "1693": {
+      "filename": "piconblack-150x90-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-9.0E_by_chocholousek.7z"
+    },
+    "1695": {
+      "filename": "piconblack-150x90-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-10.0E_by_chocholousek.7z"
+    },
+    "1698": {
+      "filename": "piconblack-150x90-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-GermanyDTT_by_chocholousek.7z"
+    },
+    "1701": {
+      "filename": "piconblack-150x90-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-FranceDTT_by_chocholousek.7z"
+    },
+    "1704": {
+      "filename": "piconblack-150x90-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-13.0E_by_chocholousek.7z"
+    },
+    "1706": {
+      "filename": "piconblack-150x90-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-14.0W_by_chocholousek.7z"
+    },
+    "1708": {
+      "filename": "piconblack-150x90-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-15.0W_by_chocholousek.7z"
+    },
+    "1710": {
+      "filename": "piconblack-150x90-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-16.0E_by_chocholousek.7z"
+    },
+    "1714": {
+      "filename": "piconblack-150x90-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-19.2E_by_chocholousek.7z"
+    },
+    "1719": {
+      "filename": "piconblack-150x90-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-21.5E_by_chocholousek.7z"
+    },
+    "1721": {
+      "filename": "piconblack-150x90-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-22.0W_by_chocholousek.7z"
+    },
+    "1723": {
+      "filename": "piconblack-150x90-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-23.5E_by_chocholousek.7z"
+    },
+    "1725": {
+      "filename": "piconblack-150x90-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-24.5W_by_chocholousek.7z"
+    },
+    "1728": {
+      "filename": "piconblack-150x90-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-26.0E_by_chocholousek.7z"
+    },
+    "1730": {
+      "filename": "piconblack-150x90-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-27.5W_by_chocholousek.7z"
+    },
+    "1732": {
+      "filename": "piconblack-150x90-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-28.2E_by_chocholousek.7z"
+    },
+    "1735": {
+      "filename": "piconblack-150x90-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-30.0W_by_chocholousek.7z"
+    },
+    "1738": {
+      "filename": "piconblack-150x90-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-30.5E_by_chocholousek.7z"
+    },
+    "1741": {
+      "filename": "piconblack-150x90-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-31.5E_by_chocholousek.7z"
+    },
+    "1743": {
+      "filename": "piconblack-150x90-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-33.0E_by_chocholousek.7z"
+    },
+    "1746": {
+      "filename": "piconblack-150x90-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-36.0E_by_chocholousek.7z"
+    },
+    "1749": {
+      "filename": "piconblack-150x90-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-39.0E_by_chocholousek.7z"
+    },
+    "1752": {
+      "filename": "piconblack-150x90-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-42.0E_by_chocholousek.7z"
+    },
+    "1755": {
+      "filename": "piconblack-150x90-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-45.0E_by_chocholousek.7z"
+    },
+    "1760": {
+      "filename": "piconblack-150x90-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-46.0E_by_chocholousek.7z"
+    },
+    "1762": {
+      "filename": "piconblack-150x90-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-51.5E_by_chocholousek.7z"
+    },
+    "1764": {
+      "filename": "piconblack-150x90-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-52.0E_by_chocholousek.7z"
+    },
+    "1766": {
+      "filename": "piconblack-150x90-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-52.5E_by_chocholousek.7z"
+    },
+    "1768": {
+      "filename": "piconblack-150x90-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-53.0E_by_chocholousek.7z"
+    },
+    "1771": {
+      "filename": "piconblack-150x90-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-54.9E_by_chocholousek.7z"
+    },
+    "1774": {
+      "filename": "piconblack-150x90-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-56.0E_by_chocholousek.7z"
+    },
+    "1776": {
+      "filename": "piconblack-150x90-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-62.0E_by_chocholousek.7z"
+    },
+    "1778": {
+      "filename": "piconblack-150x90-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-66.0E_by_chocholousek.7z"
+    },
+    "1781": {
+      "filename": "piconblack-150x90-68.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-68.5E_by_chocholousek.7z"
+    },
+    "1783": {
+      "filename": "piconblack-150x90-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-70.5E_by_chocholousek.7z"
+    },
+    "1788": {
+      "filename": "piconblack-150x90-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-75.0E_by_chocholousek.7z"
+    },
+    "1790": {
+      "filename": "piconblack-150x90-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-80.0E_by_chocholousek.7z"
+    },
+    "1794": {
+      "filename": "piconblack-150x90-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-antiksat_by_chocholousek.7z"
+    },
+    "1796": {
+      "filename": "piconblack-150x90-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-digiczsk_by_chocholousek.7z"
+    },
+    "1801": {
+      "filename": "piconblack-150x90-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-czskDTT_by_chocholousek.7z"
+    },
+    "1804": {
+      "filename": "piconblack-150x90-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-freeSAT_by_chocholousek.7z"
+    },
+    "1809": {
+      "filename": "piconblack-150x90-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-150x90-skylink_by_chocholousek.7z"
+    },
+    "2006": {
+      "filename": "picontransparent-400x240-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-0.8W_by_chocholousek.7z"
+    },
+    "2008": {
+      "filename": "picontransparent-400x240-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-1.0W_by_chocholousek.7z"
+    },
+    "2011": {
+      "filename": "picontransparent-400x240-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-1.9E_by_chocholousek.7z"
+    },
+    "2013": {
+      "filename": "picontransparent-400x240-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-3.0E_by_chocholousek.7z"
+    },
+    "2020": {
+      "filename": "picontransparent-400x240-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-4.0W_by_chocholousek.7z"
+    },
+    "2022": {
+      "filename": "picontransparent-400x240-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-4.8E_by_chocholousek.7z"
+    },
+    "2024": {
+      "filename": "picontransparent-400x240-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-4.9E_by_chocholousek.7z"
+    },
+    "2026": {
+      "filename": "picontransparent-400x240-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-5.0W_by_chocholousek.7z"
+    },
+    "2029": {
+      "filename": "picontransparent-400x240-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-7.0E_by_chocholousek.7z"
+    },
+    "2031": {
+      "filename": "picontransparent-400x240-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-7.0W_by_chocholousek.7z"
+    },
+    "2033": {
+      "filename": "picontransparent-400x240-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-8.0W_by_chocholousek.7z"
+    },
+    "2035": {
+      "filename": "picontransparent-400x240-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-9.0E_by_chocholousek.7z"
+    },
+    "2037": {
+      "filename": "picontransparent-400x240-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-10.0E_by_chocholousek.7z"
+    },
+    "2039": {
+      "filename": "picontransparent-400x240-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-GermanyDTT_by_chocholousek.7z"
+    },
+    "2041": {
+      "filename": "picontransparent-400x240-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-FranceDTT_by_chocholousek.7z"
+    },
+    "2043": {
+      "filename": "picontransparent-400x240-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-13.0E_by_chocholousek.7z"
+    },
+    "2045": {
+      "filename": "picontransparent-400x240-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-14.0W_by_chocholousek.7z"
+    },
+    "2048": {
+      "filename": "picontransparent-400x240-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-15.0W_by_chocholousek.7z"
+    },
+    "2050": {
+      "filename": "picontransparent-400x240-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-16.0E_by_chocholousek.7z"
+    },
+    "2054": {
+      "filename": "picontransparent-400x240-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-19.2E_by_chocholousek.7z"
+    },
+    "2060": {
+      "filename": "picontransparent-400x240-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-21.5E_by_chocholousek.7z"
+    },
+    "2063": {
+      "filename": "picontransparent-400x240-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-22.0W_by_chocholousek.7z"
+    },
+    "2066": {
+      "filename": "picontransparent-400x240-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-23.5E_by_chocholousek.7z"
+    },
+    "2068": {
+      "filename": "picontransparent-400x240-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-24.5W_by_chocholousek.7z"
+    },
+    "2070": {
+      "filename": "picontransparent-400x240-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-26.0E_by_chocholousek.7z"
+    },
+    "2073": {
+      "filename": "picontransparent-400x240-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-27.5W_by_chocholousek.7z"
+    },
+    "2076": {
+      "filename": "picontransparent-400x240-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-28.2E_by_chocholousek.7z"
+    },
+    "2079": {
+      "filename": "picontransparent-400x240-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-30.0W_by_chocholousek.7z"
+    },
+    "2081": {
+      "filename": "picontransparent-400x240-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-30.5E_by_chocholousek.7z"
+    },
+    "2083": {
+      "filename": "picontransparent-400x240-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-31.5E_by_chocholousek.7z"
+    },
+    "2085": {
+      "filename": "picontransparent-400x240-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-33.0E_by_chocholousek.7z"
+    },
+    "2087": {
+      "filename": "picontransparent-400x240-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-36.0E_by_chocholousek.7z"
+    },
+    "2089": {
+      "filename": "picontransparent-400x240-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-39.0E_by_chocholousek.7z"
+    },
+    "2091": {
+      "filename": "picontransparent-400x240-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-42.0E_by_chocholousek.7z"
+    },
+    "2094": {
+      "filename": "picontransparent-400x240-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-45.0E_by_chocholousek.7z"
+    },
+    "2099": {
+      "filename": "picontransparent-400x240-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-46.0E_by_chocholousek.7z"
+    },
+    "2103": {
+      "filename": "picontransparent-400x240-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-51.5E_by_chocholousek.7z"
+    },
+    "2105": {
+      "filename": "picontransparent-400x240-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-52.0E_by_chocholousek.7z"
+    },
+    "2107": {
+      "filename": "picontransparent-400x240-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-52.5E_by_chocholousek.7z"
+    },
+    "2109": {
+      "filename": "picontransparent-400x240-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-53.0E_by_chocholousek.7z"
+    },
+    "2111": {
+      "filename": "picontransparent-400x240-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-54.9E_by_chocholousek.7z"
+    },
+    "2114": {
+      "filename": "picontransparent-400x240-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-56.0E_by_chocholousek.7z"
+    },
+    "2116": {
+      "filename": "picontransparent-400x240-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-62.0E_by_chocholousek.7z"
+    },
+    "2118": {
+      "filename": "picontransparent-400x240-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-66.0E_by_chocholousek.7z"
+    },
+    "2122": {
+      "filename": "picontransparent-400x240-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-70.5E_by_chocholousek.7z"
+    },
+    "2126": {
+      "filename": "picontransparent-400x240-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-75.0E_by_chocholousek.7z"
+    },
+    "2128": {
+      "filename": "picontransparent-400x240-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-80.0E_by_chocholousek.7z"
+    },
+    "2133": {
+      "filename": "picontransparent-400x240-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-antiksat_by_chocholousek.7z"
+    },
+    "2135": {
+      "filename": "picontransparent-400x240-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-digiczsk_by_chocholousek.7z"
+    },
+    "2139": {
+      "filename": "picontransparent-400x240-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-czskDTT_by_chocholousek.7z"
+    },
+    "2141": {
+      "filename": "picontransparent-400x240-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-freeSAT_by_chocholousek.7z"
+    },
+    "2146": {
+      "filename": "picontransparent-400x240-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/picontransparent-400x240-skylink_by_chocholousek.7z"
+    },
+    "3548": {
+      "filename": "piconblack-50x30-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-0.8W_by_chocholousek.7z"
+    },
+    "3550": {
+      "filename": "piconblack-50x30-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-1.0W_by_chocholousek.7z"
+    },
+    "3552": {
+      "filename": "piconblack-50x30-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-1.9E_by_chocholousek.7z"
+    },
+    "3554": {
+      "filename": "piconblack-50x30-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-3.0E_by_chocholousek.7z"
+    },
+    "3560": {
+      "filename": "piconblack-50x30-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-4.0W_by_chocholousek.7z"
+    },
+    "3562": {
+      "filename": "piconblack-50x30-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-4.8E_by_chocholousek.7z"
+    },
+    "3564": {
+      "filename": "piconblack-50x30-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-4.9E_by_chocholousek.7z"
+    },
+    "3566": {
+      "filename": "piconblack-50x30-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-5.0W_by_chocholousek.7z"
+    },
+    "3568": {
+      "filename": "piconblack-50x30-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-7.0E_by_chocholousek.7z"
+    },
+    "3570": {
+      "filename": "piconblack-50x30-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-7.0W_by_chocholousek.7z"
+    },
+    "3572": {
+      "filename": "piconblack-50x30-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-8.0W_by_chocholousek.7z"
+    },
+    "3574": {
+      "filename": "piconblack-50x30-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-9.0E_by_chocholousek.7z"
+    },
+    "3576": {
+      "filename": "piconblack-50x30-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-10.0E_by_chocholousek.7z"
+    },
+    "3578": {
+      "filename": "piconblack-50x30-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-GermanyDTT_by_chocholousek.7z"
+    },
+    "3580": {
+      "filename": "piconblack-50x30-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-FranceDTT_by_chocholousek.7z"
+    },
+    "3582": {
+      "filename": "piconblack-50x30-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-13.0E_by_chocholousek.7z"
+    },
+    "3584": {
+      "filename": "piconblack-50x30-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-14.0W_by_chocholousek.7z"
+    },
+    "3586": {
+      "filename": "piconblack-50x30-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-15.0W_by_chocholousek.7z"
+    },
+    "3588": {
+      "filename": "piconblack-50x30-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-16.0E_by_chocholousek.7z"
+    },
+    "3592": {
+      "filename": "piconblack-50x30-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-19.2E_by_chocholousek.7z"
+    },
+    "3596": {
+      "filename": "piconblack-50x30-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-21.5E_by_chocholousek.7z"
+    },
+    "3598": {
+      "filename": "piconblack-50x30-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-22.0W_by_chocholousek.7z"
+    },
+    "3600": {
+      "filename": "piconblack-50x30-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-23.5E_by_chocholousek.7z"
+    },
+    "3602": {
+      "filename": "piconblack-50x30-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-24.5W_by_chocholousek.7z"
+    },
+    "3604": {
+      "filename": "piconblack-50x30-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-26.0E_by_chocholousek.7z"
+    },
+    "3606": {
+      "filename": "piconblack-50x30-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-27.5W_by_chocholousek.7z"
+    },
+    "3608": {
+      "filename": "piconblack-50x30-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-28.2E_by_chocholousek.7z"
+    },
+    "3610": {
+      "filename": "piconblack-50x30-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-30.0W_by_chocholousek.7z"
+    },
+    "3612": {
+      "filename": "piconblack-50x30-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-30.5E_by_chocholousek.7z"
+    },
+    "3614": {
+      "filename": "piconblack-50x30-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-31.5E_by_chocholousek.7z"
+    },
+    "3616": {
+      "filename": "piconblack-50x30-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-33.0E_by_chocholousek.7z"
+    },
+    "3618": {
+      "filename": "piconblack-50x30-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-36.0E_by_chocholousek.7z"
+    },
+    "3620": {
+      "filename": "piconblack-50x30-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-39.0E_by_chocholousek.7z"
+    },
+    "3622": {
+      "filename": "piconblack-50x30-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-42.0E_by_chocholousek.7z"
+    },
+    "3624": {
+      "filename": "piconblack-50x30-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-45.0E_by_chocholousek.7z"
+    },
+    "3628": {
+      "filename": "piconblack-50x30-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-46.0E_by_chocholousek.7z"
+    },
+    "3630": {
+      "filename": "piconblack-50x30-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-51.5E_by_chocholousek.7z"
+    },
+    "3632": {
+      "filename": "piconblack-50x30-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-52.0E_by_chocholousek.7z"
+    },
+    "3634": {
+      "filename": "piconblack-50x30-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-52.5E_by_chocholousek.7z"
+    },
+    "3636": {
+      "filename": "piconblack-50x30-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-53.0E_by_chocholousek.7z"
+    },
+    "3638": {
+      "filename": "piconblack-50x30-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-54.9E_by_chocholousek.7z"
+    },
+    "3640": {
+      "filename": "piconblack-50x30-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-56.0E_by_chocholousek.7z"
+    },
+    "3642": {
+      "filename": "piconblack-50x30-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-62.0E_by_chocholousek.7z"
+    },
+    "3644": {
+      "filename": "piconblack-50x30-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-66.0E_by_chocholousek.7z"
+    },
+    "3646": {
+      "filename": "piconblack-50x30-68.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-68.5E_by_chocholousek.7z"
+    },
+    "3648": {
+      "filename": "piconblack-50x30-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-70.5E_by_chocholousek.7z"
+    },
+    "3652": {
+      "filename": "piconblack-50x30-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-75.0E_by_chocholousek.7z"
+    },
+    "3654": {
+      "filename": "piconblack-50x30-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-80.0E_by_chocholousek.7z"
+    },
+    "3658": {
+      "filename": "piconblack-50x30-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-antiksat_by_chocholousek.7z"
+    },
+    "3660": {
+      "filename": "piconblack-50x30-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-digiczsk_by_chocholousek.7z"
+    },
+    "3664": {
+      "filename": "piconblack-50x30-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-czskDTT_by_chocholousek.7z"
+    },
+    "3666": {
+      "filename": "piconblack-50x30-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-freeSAT_by_chocholousek.7z"
+    },
+    "3670": {
+      "filename": "piconblack-50x30-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconblack-50x30-skylink_by_chocholousek.7z"
+    },
+    "3928": {
+      "filename": "piconoled-96x64-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-0.8W_by_chocholousek.7z"
+    },
+    "3930": {
+      "filename": "piconoled-96x64-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-1.0W_by_chocholousek.7z"
+    },
+    "3932": {
+      "filename": "piconoled-96x64-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-1.9E_by_chocholousek.7z"
+    },
+    "3934": {
+      "filename": "piconoled-96x64-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-3.0E_by_chocholousek.7z"
+    },
+    "3940": {
+      "filename": "piconoled-96x64-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-4.0W_by_chocholousek.7z"
+    },
+    "3942": {
+      "filename": "piconoled-96x64-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-4.8E_by_chocholousek.7z"
+    },
+    "3944": {
+      "filename": "piconoled-96x64-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-4.9E_by_chocholousek.7z"
+    },
+    "3946": {
+      "filename": "piconoled-96x64-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-5.0W_by_chocholousek.7z"
+    },
+    "3948": {
+      "filename": "piconoled-96x64-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-7.0E_by_chocholousek.7z"
+    },
+    "3950": {
+      "filename": "piconoled-96x64-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-7.0W_by_chocholousek.7z"
+    },
+    "3952": {
+      "filename": "piconoled-96x64-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-8.0W_by_chocholousek.7z"
+    },
+    "3954": {
+      "filename": "piconoled-96x64-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-9.0E_by_chocholousek.7z"
+    },
+    "3956": {
+      "filename": "piconoled-96x64-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-10.0E_by_chocholousek.7z"
+    },
+    "3958": {
+      "filename": "piconoled-96x64-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-GermanyDTT_by_chocholousek.7z"
+    },
+    "3960": {
+      "filename": "piconoled-96x64-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-FranceDTT_by_chocholousek.7z"
+    },
+    "3962": {
+      "filename": "piconoled-96x64-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-13.0E_by_chocholousek.7z"
+    },
+    "3964": {
+      "filename": "piconoled-96x64-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-14.0W_by_chocholousek.7z"
+    },
+    "3966": {
+      "filename": "piconoled-96x64-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-15.0W_by_chocholousek.7z"
+    },
+    "3968": {
+      "filename": "piconoled-96x64-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-16.0E_by_chocholousek.7z"
+    },
+    "3972": {
+      "filename": "piconoled-96x64-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-19.2E_by_chocholousek.7z"
+    },
+    "3976": {
+      "filename": "piconoled-96x64-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-21.5E_by_chocholousek.7z"
+    },
+    "3978": {
+      "filename": "piconoled-96x64-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-22.0W_by_chocholousek.7z"
+    },
+    "3980": {
+      "filename": "piconoled-96x64-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-23.5E_by_chocholousek.7z"
+    },
+    "3982": {
+      "filename": "piconoled-96x64-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-24.5W_by_chocholousek.7z"
+    },
+    "3984": {
+      "filename": "piconoled-96x64-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-26.0E_by_chocholousek.7z"
+    },
+    "3986": {
+      "filename": "piconoled-96x64-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-27.5W_by_chocholousek.7z"
+    },
+    "3988": {
+      "filename": "piconoled-96x64-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-28.2E_by_chocholousek.7z"
+    },
+    "3990": {
+      "filename": "piconoled-96x64-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-30.0W_by_chocholousek.7z"
+    },
+    "3992": {
+      "filename": "piconoled-96x64-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-30.5E_by_chocholousek.7z"
+    },
+    "3994": {
+      "filename": "piconoled-96x64-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-31.5E_by_chocholousek.7z"
+    },
+    "3996": {
+      "filename": "piconoled-96x64-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-33.0E_by_chocholousek.7z"
+    },
+    "3998": {
+      "filename": "piconoled-96x64-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-36.0E_by_chocholousek.7z"
+    },
+    "4000": {
+      "filename": "piconoled-96x64-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-39.0E_by_chocholousek.7z"
+    },
+    "4002": {
+      "filename": "piconoled-96x64-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-42.0E_by_chocholousek.7z"
+    },
+    "4004": {
+      "filename": "piconoled-96x64-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-45.0E_by_chocholousek.7z"
+    },
+    "4008": {
+      "filename": "piconoled-96x64-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-46.0E_by_chocholousek.7z"
+    },
+    "4010": {
+      "filename": "piconoled-96x64-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-51.5E_by_chocholousek.7z"
+    },
+    "4012": {
+      "filename": "piconoled-96x64-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-52.0E_by_chocholousek.7z"
+    },
+    "4014": {
+      "filename": "piconoled-96x64-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-52.5E_by_chocholousek.7z"
+    },
+    "4016": {
+      "filename": "piconoled-96x64-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-53.0E_by_chocholousek.7z"
+    },
+    "4018": {
+      "filename": "piconoled-96x64-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-54.9E_by_chocholousek.7z"
+    },
+    "4020": {
+      "filename": "piconoled-96x64-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-56.0E_by_chocholousek.7z"
+    },
+    "4022": {
+      "filename": "piconoled-96x64-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-62.0E_by_chocholousek.7z"
+    },
+    "4024": {
+      "filename": "piconoled-96x64-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-66.0E_by_chocholousek.7z"
+    },
+    "4026": {
+      "filename": "piconoled-96x64-68.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-68.5E_by_chocholousek.7z"
+    },
+    "4028": {
+      "filename": "piconoled-96x64-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-70.5E_by_chocholousek.7z"
+    },
+    "4032": {
+      "filename": "piconoled-96x64-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-75.0E_by_chocholousek.7z"
+    },
+    "4034": {
+      "filename": "piconoled-96x64-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-80.0E_by_chocholousek.7z"
+    },
+    "4038": {
+      "filename": "piconoled-96x64-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-antiksat_by_chocholousek.7z"
+    },
+    "4040": {
+      "filename": "piconoled-96x64-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-digiczsk_by_chocholousek.7z"
+    },
+    "4044": {
+      "filename": "piconoled-96x64-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-czskDTT_by_chocholousek.7z"
+    },
+    "4046": {
+      "filename": "piconoled-96x64-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-freeSAT_by_chocholousek.7z"
+    },
+    "4050": {
+      "filename": "piconoled-96x64-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconoled-96x64-skylink_by_chocholousek.7z"
+    },
+    "4180": {
+      "filename": "piconwhite-150x90-0.8W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-0.8W_by_chocholousek.7z"
+    },
+    "4182": {
+      "filename": "piconwhite-150x90-1.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-1.0W_by_chocholousek.7z"
+    },
+    "4184": {
+      "filename": "piconwhite-150x90-1.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-1.9E_by_chocholousek.7z"
+    },
+    "4186": {
+      "filename": "piconwhite-150x90-3.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-3.0E_by_chocholousek.7z"
+    },
+    "4192": {
+      "filename": "piconwhite-150x90-4.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-4.0W_by_chocholousek.7z"
+    },
+    "4194": {
+      "filename": "piconwhite-150x90-4.8E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-4.8E_by_chocholousek.7z"
+    },
+    "4196": {
+      "filename": "piconwhite-150x90-4.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-4.9E_by_chocholousek.7z"
+    },
+    "4198": {
+      "filename": "piconwhite-150x90-5.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-5.0W_by_chocholousek.7z"
+    },
+    "4200": {
+      "filename": "piconwhite-150x90-7.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-7.0E_by_chocholousek.7z"
+    },
+    "4202": {
+      "filename": "piconwhite-150x90-7.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-7.0W_by_chocholousek.7z"
+    },
+    "4204": {
+      "filename": "piconwhite-150x90-8.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-8.0W_by_chocholousek.7z"
+    },
+    "4206": {
+      "filename": "piconwhite-150x90-9.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-9.0E_by_chocholousek.7z"
+    },
+    "4208": {
+      "filename": "piconwhite-150x90-10.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-10.0E_by_chocholousek.7z"
+    },
+    "4210": {
+      "filename": "piconwhite-150x90-GermanyDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-GermanyDTT_by_chocholousek.7z"
+    },
+    "4212": {
+      "filename": "piconwhite-150x90-FranceDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-FranceDTT_by_chocholousek.7z"
+    },
+    "4214": {
+      "filename": "piconwhite-150x90-13.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-13.0E_by_chocholousek.7z"
+    },
+    "4216": {
+      "filename": "piconwhite-150x90-14.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-14.0W_by_chocholousek.7z"
+    },
+    "4218": {
+      "filename": "piconwhite-150x90-15.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-15.0W_by_chocholousek.7z"
+    },
+    "4220": {
+      "filename": "piconwhite-150x90-16.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-16.0E_by_chocholousek.7z"
+    },
+    "4224": {
+      "filename": "piconwhite-150x90-19.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-19.2E_by_chocholousek.7z"
+    },
+    "4228": {
+      "filename": "piconwhite-150x90-21.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-21.5E_by_chocholousek.7z"
+    },
+    "4230": {
+      "filename": "piconwhite-150x90-22.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-22.0W_by_chocholousek.7z"
+    },
+    "4232": {
+      "filename": "piconwhite-150x90-23.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-23.5E_by_chocholousek.7z"
+    },
+    "4234": {
+      "filename": "piconwhite-150x90-24.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-24.5W_by_chocholousek.7z"
+    },
+    "4236": {
+      "filename": "piconwhite-150x90-26.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-26.0E_by_chocholousek.7z"
+    },
+    "4238": {
+      "filename": "piconwhite-150x90-27.5W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-27.5W_by_chocholousek.7z"
+    },
+    "4240": {
+      "filename": "piconwhite-150x90-28.2E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-28.2E_by_chocholousek.7z"
+    },
+    "4242": {
+      "filename": "piconwhite-150x90-30.0W_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-30.0W_by_chocholousek.7z"
+    },
+    "4244": {
+      "filename": "piconwhite-150x90-30.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-30.5E_by_chocholousek.7z"
+    },
+    "4246": {
+      "filename": "piconwhite-150x90-31.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-31.5E_by_chocholousek.7z"
+    },
+    "4248": {
+      "filename": "piconwhite-150x90-33.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-33.0E_by_chocholousek.7z"
+    },
+    "4250": {
+      "filename": "piconwhite-150x90-36.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-36.0E_by_chocholousek.7z"
+    },
+    "4252": {
+      "filename": "piconwhite-150x90-39.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-39.0E_by_chocholousek.7z"
+    },
+    "4254": {
+      "filename": "piconwhite-150x90-42.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-42.0E_by_chocholousek.7z"
+    },
+    "4256": {
+      "filename": "piconwhite-150x90-45.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-45.0E_by_chocholousek.7z"
+    },
+    "4260": {
+      "filename": "piconwhite-150x90-46.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-46.0E_by_chocholousek.7z"
+    },
+    "4262": {
+      "filename": "piconwhite-150x90-51.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-51.5E_by_chocholousek.7z"
+    },
+    "4264": {
+      "filename": "piconwhite-150x90-52.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-52.0E_by_chocholousek.7z"
+    },
+    "4266": {
+      "filename": "piconwhite-150x90-52.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-52.5E_by_chocholousek.7z"
+    },
+    "4268": {
+      "filename": "piconwhite-150x90-53.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-53.0E_by_chocholousek.7z"
+    },
+    "4270": {
+      "filename": "piconwhite-150x90-54.9E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-54.9E_by_chocholousek.7z"
+    },
+    "4272": {
+      "filename": "piconwhite-150x90-56.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-56.0E_by_chocholousek.7z"
+    },
+    "4274": {
+      "filename": "piconwhite-150x90-62.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-62.0E_by_chocholousek.7z"
+    },
+    "4276": {
+      "filename": "piconwhite-150x90-66.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-66.0E_by_chocholousek.7z"
+    },
+    "4278": {
+      "filename": "piconwhite-150x90-68.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-68.5E_by_chocholousek.7z"
+    },
+    "4280": {
+      "filename": "piconwhite-150x90-70.5E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-70.5E_by_chocholousek.7z"
+    },
+    "4284": {
+      "filename": "piconwhite-150x90-75.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-75.0E_by_chocholousek.7z"
+    },
+    "4286": {
+      "filename": "piconwhite-150x90-80.0E_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-80.0E_by_chocholousek.7z"
+    },
+    "4290": {
+      "filename": "piconwhite-150x90-antiksat_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-antiksat_by_chocholousek.7z"
+    },
+    "4292": {
+      "filename": "piconwhite-150x90-digiczsk_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-digiczsk_by_chocholousek.7z"
+    },
+    "4296": {
+      "filename": "piconwhite-150x90-czskDTT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-czskDTT_by_chocholousek.7z"
+    },
+    "4298": {
+      "filename": "piconwhite-150x90-freeSAT_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-freeSAT_by_chocholousek.7z"
+    },
+    "4302": {
+      "filename": "piconwhite-150x90-skylink_by_chocholousek.7z",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/piconwhite-150x90-skylink_by_chocholousek.7z"
+    }
+  },
+  "unresolved": [
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_400x240",
+      "legacy_id": "2096"
+    },
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_black_50x30",
+      "legacy_id": "3626"
+    },
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_black",
+      "legacy_id": "1757"
+    },
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_white_50x30",
+      "legacy_id": "1305"
+    },
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_white",
+      "legacy_id": "4258"
+    },
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_oled",
+      "legacy_id": "4006"
+    },
+    {
+      "selector_id": "450W",
+      "legacy_column": "legacy_220x132",
+      "legacy_id": "1161"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_400x240",
+      "legacy_id": "2018"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_black_50x30",
+      "legacy_id": "3558"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_black",
+      "legacy_id": "1675"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_white_50x30",
+      "legacy_id": "1228"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_white",
+      "legacy_id": "4190"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_oled",
+      "legacy_id": "3938"
+    },
+    {
+      "selector_id": "31E",
+      "legacy_column": "legacy_220x132",
+      "legacy_id": "1077"
+    },
+    {
+      "selector_id": "685E",
+      "legacy_column": "legacy_400x240",
+      "legacy_id": "2120"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_400x240",
+      "legacy_id": "2124"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_black_50x30",
+      "legacy_id": "3650"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_black",
+      "legacy_id": "1785"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_white_50x30",
+      "legacy_id": "1332"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_white",
+      "legacy_id": "4282"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_oled",
+      "legacy_id": "4030"
+    },
+    {
+      "selector_id": "749E",
+      "legacy_column": "legacy_220x132",
+      "legacy_id": "1188"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_400x240",
+      "legacy_id": "2131"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_black_50x30",
+      "legacy_id": "3656"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_black",
+      "legacy_id": "1792"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_white_50x30",
+      "legacy_id": "1339"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_white",
+      "legacy_id": "4288"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_oled",
+      "legacy_id": "4036"
+    },
+    {
+      "selector_id": "851E",
+      "legacy_column": "legacy_220x132",
+      "legacy_id": "1195"
+    }
+  ]
+}
