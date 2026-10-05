@@ -27,12 +27,9 @@ def main():
                  "display_label":m["display_label"],"warder_key":m["warder_key"],
                  "warder_master_state":m["warder_master_state"]}
             if s:
-                row.update({"state":"ARCHIVED_SOURCE","filename":s["filename"],"resolution":s["resolution"],
-                            "background":s["background"],"archive_selector":s["target"],
-                            "archive_type":s["archive_type"],"provenance":s["provenance"]})
+                row.update({"state":"ARCHIVED_SOURCE","filename":s["filename"],"resolution":s["resolution"],\n                            "background":s["background"],"archive_selector":s["target"],\n                            "archive_type":s["archive_type"],"provenance":s["provenance"],\n                            "warder_archive_url":"https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"+s["filename"]})
             else:
-                row.update({"state":"NOT_IN_SOURCE_MANIFEST","filename":"","resolution":"",
-                            "background":"","archive_selector":"","archive_type":"","provenance":""})
+                row.update({"state":"NOT_IN_SOURCE_MANIFEST","filename":"","resolution":"",\n                            "background":"","archive_selector":"","archive_type":"","provenance":"","warder_archive_url":""})
                 missing.append((m["selector_id"],col,ident))
             rows.append(row)
     doc={"schema":1,"policy":{"preserve_legacy_ids":True,"guess_missing":False},
