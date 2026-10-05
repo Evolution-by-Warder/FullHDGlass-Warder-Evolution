@@ -140,7 +140,7 @@ with tempfile.TemporaryDirectory() as d:
     assert locked["state"] == m.PUBLICATION_LOCKED
     assert locked["service_count"] == 1
     assert locked["services"][0]["position"] == "23.5e"
-    live = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d)
+    live = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, m.runtime_publication())
     assert live["state"] == m.READY
     assert live["service_count"] == 1
     ready = m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
