@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "state": "VERIFIED_BUILD_CONTENT",
+  "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
+  "packages": 114,
+  "manifest_sha256": "493e05b33882b45d827f2ab13b80250d4db307f8d0430885b9b50ba8ac37ef6c",
+  "sha256sums_sha256": "791b91f26f6624945ba0c61ce2aa756706bd0900f2914dbda2a90661a90c8982",
+  "evidence_runs": [
+    37280907429,
+    37280958615
+  ],
+  "artifact_wrapper_digest": "INTENTIONALLY_EXCLUDED",
+  "note": "Two independent successful workflow runs produced identical inner manifest and SHA256SUMS hashes. This fingerprint does not publish files or enable runtime cutover."
+}
