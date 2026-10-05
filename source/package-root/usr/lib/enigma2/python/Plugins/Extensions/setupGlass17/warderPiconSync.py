@@ -120,3 +120,50 @@ def build_sync_request(enigma2_dir=ENIGMA2_DIR, selected_positions=None,
         "resolution": resolution,
         "services": services,
     }
+
+
+UPDATE_MODE_SYNC_TV = "sync-tv-lists"
+UPDATE_MODE_FULL = "full"
+DEFAULT_UPDATE_MODE = UPDATE_MODE_SYNC_TV
+DEFAULT_STYLE = "transparent"
+DEFAULT_RESOLUTION = "220x132"
+
+UPDATE_MODES = (
+    (UPDATE_MODE_SYNC_TV, "Synchronize with TV lists"),
+    (UPDATE_MODE_FULL, "FULL"),
+)
+STYLES = (
+    ("transparent", "Transparent"),
+    ("black", "Black"),
+    ("white", "White"),
+)
+RESOLUTIONS = (
+    ("220x132", "220 x 132"),
+    ("400x240", "400 x 240"),
+)
+
+
+def default_preferences(destination="/media/hdd/picon"):
+    return {
+        "positions": [],
+        "resolution": DEFAULT_RESOLUTION,
+        "style": DEFAULT_STYLE,
+        "destination": destination,
+        "update_mode": DEFAULT_UPDATE_MODE,
+        "prepared": False,
+    }
+
+
+def set_preference(preferences, key, value):
+    """Return a copied preference state and mark it as a prepared action."""
+    if key not in ("positions", "resolution", "style", "destination", "update_mode"):
+        raise KeyError(key)
+    result = dict(preferences)
+    result[key] = value
+    result["prepared"] = True
+    return result
+
+
+def has_executable_action(preferences, ordinary_selected=False):
+    """Mirror FullHDGlass blue-button semantics for the assimilated planner."""
+    return bool(ordinary_selected or preferences.get("prepared", False))
