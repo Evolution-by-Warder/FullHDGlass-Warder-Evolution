@@ -68,7 +68,13 @@ jobs:
             --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons
           diff -u /tmp/manifest-a.json /tmp/manifest-b.json
           diff -qr /tmp/warder-picons-a /tmp/warder-picons-b
-          test "$(find /tmp/warder-picons-a -type f -name '*.zip' | wc -l)" -eq 114
+          python3 - <<'PY'
+          import json
+          a=json.load(open("/tmp/manifest-a.json"))
+          b=json.load(open("/tmp/manifest-b.json"))
+          assert a.get("blocked_packages")==b.get("blocked_packages")
+          print("Materializer QC: %d packages, %d blocked" % (len(a["packages"]), len(a.get("blocked_packages",[]))))
+          PY
           mkdir -p dist/channel-picons
           cp /tmp/warder-picons-a/*.zip dist/channel-picons/
           cp /tmp/manifest-a.json dist/channel-picons/manifest.json
@@ -76,7 +82,8 @@ jobs:
           python3 - <<'PY'
           import json
           m=json.load(open("dist/channel-picons/manifest.json"))
-          assert len(m["packages"])==114
+          assert len(m["packages"]) + len(m.get("blocked_packages",[])) == 114
+          assert not m.get("blocked_packages"), "blocked source packages: %r" % m["blocked_packages"]
           assert m["generated_from"]["ref"]=="2827fed5b2e6ae4697f08ca57a8c2298079d410f"
           names=[p["filename"] for p in m["packages"]]
           assert len(names)==len(set(names))==114
