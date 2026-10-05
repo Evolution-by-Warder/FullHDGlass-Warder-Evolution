@@ -24,6 +24,8 @@ def main():
     packages=src.get("packages",[])
     if len(packages)!=114:
         raise SystemExit("expected 114 packages")
+    if src.get("blocked_packages"):
+        raise SystemExit("refusing publication with blocked source packages")
     a.output.mkdir(parents=True,exist_ok=True)
     output_packages=[]
     part_records=[]
