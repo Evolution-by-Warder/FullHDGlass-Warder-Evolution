@@ -99,6 +99,8 @@ assert 'legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[
 assert 'self.warderChannelState = "locked"' in plugin_source
 assert 'self.warderPiconPrefs.get("prepared") and self.warderChannelState != "locked"' in plugin_source
 assert '("done", "error", "locked")' in plugin_source
+assert 'self.warderPiconPrefs["prepared"] = False' not in plugin_source
+assert 'self.menuListAll[row][4] = "x"' not in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 
 with tempfile.TemporaryDirectory() as d:
