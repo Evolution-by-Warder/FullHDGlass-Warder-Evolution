@@ -6,16 +6,16 @@
     "commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f"
   },
   "workflow": {
-    "run_id": 37263263434,
-    "head_sha": "e2daca746f6de236019e7a6946dec741cadb8188",
+    "run_id": 37280513295,
+    "head_sha": "c3cb521d9c1bf533afd2a4c0fc70138a841ffb10",
     "conclusion": "success"
   },
   "artifact": {
-    "id": 11325098173,
+    "id": 11332051373,
     "name": "warder-channel-picons-2827fed5",
-    "size_in_bytes": 615397302,
-    "digest": "sha256:09fc63bae59cff85ab12ad5dc88c425699e2f4008cef91d4c4e424a4650dda79",
-    "expires_at": "2026-10-19T04:24:32Z"
+    "size_in_bytes": 615397498,
+    "digest": "sha256:e8a9c34b58c9137f49ea812f2333f8ccad372c45e02a2ecab969c7f0b1ac7cc5",
+    "expires_at": "2026-10-19T07:57:23Z"
   },
   "package_contract": {
     "selectors": 57,
