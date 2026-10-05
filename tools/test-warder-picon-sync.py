@@ -225,6 +225,12 @@ assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
 assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
 assert m.validate_destination("relative/picon") is None
 assert m.validate_destination("/") is None
+identity_queue = {"mode": m.UPDATE_MODE_SYNC_TV, "services": [
+    {"service_reference": "1:0:1:1328:CA2:3:EB0000:0:0:0:"},
+    {"service_reference": "#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:"},
+    {"service_reference": "garbage"},
+]}
+assert m.wanted_picon_names(identity_queue) == {"1_0_1_1328_CA2_3_EB0000_0_0_0.png"}
 pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json", valid_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
