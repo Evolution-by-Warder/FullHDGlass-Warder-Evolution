@@ -18,6 +18,10 @@ def main():
     a=ap.parse_args()
     mapping=read_tsv(a.mapping); source=read_tsv(a.source_manifest)
     requested={str(m.get(col) or "").strip() for m in mapping for col in COLUMNS if str(m.get(col) or "").strip()}
+    if len(mapping)!=57:
+        raise SystemExit("expected 57 FullHDGlass selectors, got %d" % len(mapping))
+    if len(requested)!=399:
+        raise SystemExit("expected 399 unique requested legacy IDs, got %d" % len(requested))
     grouped={}
     for r in source:
         if r["id"] in requested:
