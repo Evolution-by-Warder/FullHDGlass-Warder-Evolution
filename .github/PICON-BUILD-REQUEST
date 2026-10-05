@@ -44,3 +44,4 @@ Canonical assembly closure: receiver requires exact package.zip.part00..N orderi
 Archive install closure: symlink/path/extension/size/ratio/duplicate guards retained; PNG signature now verified before atomic destination replacement.
 Archive/canonical closure rerun: duplicate-part regression accepts either earlier canonical-order rejection or duplicate rejection; PNG signature install guard included.
 Receiver filesystem closure: selective identities canonicalized/deduplicated; protected system trees rejected as picon destinations; archive signature and atomic-install gates retained.
+Filesystem race closure: canonical destination persisted after creation and revalidated as a non-symlink directory before every package/free-space/install step.
