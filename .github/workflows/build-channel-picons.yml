@@ -111,7 +111,7 @@ jobs:
           for p in m["packages"]:
               assert p["url"].endswith("/"+p["filename"])
               assert p["bytes"] > 0 and len(p["sha256"]) == 64
-          print("Deterministic materialization: PASS; publication remains separate and locked")
+          print("Deterministic materialization: PASS; publication state is validated separately")
           PY
 
       - name: Validate publication-shaped payload
