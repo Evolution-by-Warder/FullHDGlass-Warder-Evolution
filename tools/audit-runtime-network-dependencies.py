@@ -75,11 +75,13 @@ for path in sorted(SCAN.rglob("*")):
         rec = found.setdefault(host, {"classification": cls, "references": []})
         rel = str(path.relative_to(ROOT))
         line = text.count("\n", 0, m.start()) + 1
-        ref = {"path": rel, "line": line, "url": url}
-        if ref not in rec["references"]:
+        ref = next((item for item in rec["references"] if item["path"] == rel), None)
+        if ref is None:
+            ref = {"path": rel, "occurrences": 0}
             rec["references"].append(ref)
+        ref["occurrences"] += 1
         if cls == "UNCLASSIFIED":
-            unknown.append("%s:%d %s" % (rel, line, url))
+            unknown.append("%s:%d host=%s" % (rel, line, host))
 
 report = {
     "schema": 1,
