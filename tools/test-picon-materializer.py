@@ -3,7 +3,7 @@ import json, subprocess, sys, tempfile, struct
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-PNG_HEADER=b"\x89PNG\r\n\x1a\n"+b"\x00\x00\x00\rIHDR"+struct.pack(">II",220,132)
+PNG_HEADER=bytes((137,80,78,71,13,10,26,10))+bytes((0,0,0,13))+b"IHDR"+struct.pack(">II",220,132)
 
 with tempfile.TemporaryDirectory() as td:
     t=Path(td); src=t/"src"; out=t/"out"
