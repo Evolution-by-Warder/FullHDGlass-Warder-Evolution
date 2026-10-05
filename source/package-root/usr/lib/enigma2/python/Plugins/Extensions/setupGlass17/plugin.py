@@ -8739,13 +8739,9 @@ class downloadMenu(Screen):
 					warder_result = self._warderRunChannelQueue()
 				except Exception as err:
 					self.warderChannelState = "error"
-					self.warderPiconPrefs["prepared"] = False
 					self.warderChannelQueue = None
 					self.warderChannelJobs = []
 					self.warderChannelInstalled = set()
-					for row in self.menuListAll:
-						if self.menuListAll[row][0] in self.warderPiconRows:
-							self.menuListAll[row][4] = "x"
 					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + str(err) + "\n"
 				else:
 					if warder_result is None:
