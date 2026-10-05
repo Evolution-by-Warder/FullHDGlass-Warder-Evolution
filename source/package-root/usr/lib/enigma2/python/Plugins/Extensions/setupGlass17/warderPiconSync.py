@@ -365,8 +365,11 @@ def build_download_jobs(document, package_plan):
 
 def validate_destination(path):
     """Reject relative/root destinations; UI may only stage into a real subdirectory."""
-    value = os.path.realpath(str(path or ""))
-    if not os.path.isabs(value) or value == os.path.sep:
+    raw = str(path or "")
+    if not os.path.isabs(raw):
+        return None
+    value = os.path.realpath(raw)
+    if value == os.path.sep:
         return None
     return value
 
