@@ -1048,3 +1048,11 @@ assert "url = self._legacyPiconArchiveUrl(k[x][1])" in PLUGIN
 down_multi = PLUGIN.split("def downMulti(self, k, Ddir):", 1)[1].split("\n\tdef ", 1)[0]
 assert "https://picon.cz/download/%s/" not in down_multi
 assert "Preserved legacy archive is not available in Warder migration catalogue" in PLUGIN
+
+# TEST193 regression guard: the Warder selector reuses the legacy selector skin.
+# Keep the skin provider defined before the Warder class body is evaluated.
+sat_selector_at = PLUGIN.index("class satSelectorScr(Screen)")
+warder_selector_at = PLUGIN.index("class warderPositionSelectorScr(Screen)")
+assert sat_selector_at < warder_selector_at
+warder_selector = PLUGIN[warder_selector_at:PLUGIN.index("\\nclass ", warder_selector_at)]
+assert "skin = satSelectorScr.skin" in warder_selector

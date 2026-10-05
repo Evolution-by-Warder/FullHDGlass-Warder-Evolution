@@ -9226,39 +9226,6 @@ class downloadMenu(Screen):
 		else:
 			self.dwnLoop(_("ERROR")+": "+_("Unknown error detected, try again!!!")) 	
 ##########################################################################################################################
-class warderPositionSelectorScr(Screen):
-	skin = satSelectorScr.skin
-
-	def __init__(self, session, selected=None):
-		Screen.__init__(self, session)
-		self.selected = set(selected or [])
-		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(_("Select"))
-		self["key_yellow"] = Label(_("Save"))
-		self.list = SelectionList()
-		self["list"] = self.list
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
-			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
-			"cancel": self.close, "red": self.close, "yellow": self.finish
-		}, -1)
-		self.onLayoutFinish.append(self.startSelect)
-
-	def startSelect(self):
-		for x in range(0, len(SATLIST)):
-			label = SATLIST[x][0]
-			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
-			# Preserve the exact SATLIST label. Runtime derives orbital filtering and
-			# package selector identity separately (important for 0.8W providers).
-			token = label
-			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
-			if not os.path.isfile(p):
-				p = SKINPATH + "icons/75.png"
-			self.list.addSelection(label, token, x, token in self.selected, p)
-
-	def finish(self):
-		ret = [x[1] for x in self.list.getSelectionsList()]
-		self.close(ret)
-
 class satSelectorScr(Screen): 
 	skin = """
 		<screen name="satSelectorScr" position="center,center" size="1071,855" title="Select">
@@ -9328,6 +9295,40 @@ class satSelectorScr(Screen):
 			
 	def exit(self,r=None):
 		self.close(r)
+
+
+class warderPositionSelectorScr(Screen):
+	skin = satSelectorScr.skin
+
+	def __init__(self, session, selected=None):
+		Screen.__init__(self, session)
+		self.selected = set(selected or [])
+		self["key_red"] = Label(_("Cancel"))
+		self["key_green"] = Label(_("Select"))
+		self["key_yellow"] = Label(_("Save"))
+		self.list = SelectionList()
+		self["list"] = self.list
+		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
+			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
+			"cancel": self.close, "red": self.close, "yellow": self.finish
+		}, -1)
+		self.onLayoutFinish.append(self.startSelect)
+
+	def startSelect(self):
+		for x in range(0, len(SATLIST)):
+			label = SATLIST[x][0]
+			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
+			# Preserve the exact SATLIST label. Runtime derives orbital filtering and
+			# package selector identity separately (important for 0.8W providers).
+			token = label
+			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
+			if not os.path.isfile(p):
+				p = SKINPATH + "icons/75.png"
+			self.list.addSelection(label, token, x, token in self.selected, p)
+
+	def finish(self):
+		ret = [x[1] for x in self.list.getSelectionsList()]
+		self.close(ret)
 
 class styleSelectorScr(Screen):   
 
