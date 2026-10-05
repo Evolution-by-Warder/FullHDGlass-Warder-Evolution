@@ -143,6 +143,20 @@ jobs:
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
           python3 tools/test-picon-materializer.py
+          python3 - <<'PY'
+          import importlib.util, pathlib
+          p=pathlib.Path("tools/materialize-picon-packages.py")
+          spec=importlib.util.spec_from_file_location("mat",p); m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          fixture=bytes((137,80,78,71,13,10,26,10))+bytes((0,0,0,13))+b"IHDR"+__import__("struct").pack(">II",220,132)
+          assert m.png_resolution(fixture)=="220x132"
+          try:
+              m.png_resolution(b"not-png")
+          except ValueError:
+              pass
+          else:
+              raise AssertionError("invalid PNG must be rejected")
+          print("PNG signature/resolution gate: PASS")
+          PY
           python3 tools/test-warder-picon-sync.py
           python3 tools/validate-channel-picon-cutover.py
           python3 tools/validate-channel-picon-two-phase-cutover.py
