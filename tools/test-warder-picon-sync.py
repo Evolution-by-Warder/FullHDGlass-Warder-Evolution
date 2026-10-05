@@ -130,6 +130,14 @@ provider_queue = dict(queue, positions_labels=["(0.8W) Freesat"], selector_ids=[
                       services=[{"service_reference": "1", "position": "0.8w"}])
 provider_planned = m.plan_runtime_packages(provider_manifest, provider_queue)
 assert [p["selector_id"] for p in provider_planned["packages"]] == ["FREESAT"]
+jobs = m.build_download_jobs(valid_manifest, planned)
+assert jobs["state"] == "ready" and len(jobs["jobs"]) == 1
+assert jobs["jobs"][0]["bytes"] == 10 and jobs["jobs"][0]["sha256"] == "a" * 64
+assert jobs["jobs"][0]["parts"][0]["bytes"] == 10
+assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
+assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
+assert m.validate_destination("relative/picon") is None
+assert m.validate_destination("/") is None
 pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/manifest.json", valid_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
