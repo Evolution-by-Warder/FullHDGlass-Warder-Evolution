@@ -41,10 +41,12 @@ def main():
     pairs=set()
     for p in pkgs:
         name=p.get("filename",""); path=a.root/name
-        pair=(p.get("selector_id"),p.get("family"))
-        if pair in pairs: errors.append("duplicate selector/family: %r"%(pair,))
+        pair=(p.get("selector_id"),p.get("family"),p.get("resolution"))
+        if pair in pairs: errors.append("duplicate selector/family/resolution: %r"%(pair,))
         pairs.add(pair)
         if p.get("family") not in ("channel-transparent","channel-black","channel-white"): errors.append("invalid family for "+name)
+        resolution=p.get("resolution")
+        if not isinstance(resolution,str) or "x" not in resolution: errors.append("invalid resolution for "+name)
         if a.parts:
             urls=p.get("parts",[])
             if not isinstance(urls,list) or not urls: errors.append("missing parts for "+name); urls=[]
@@ -81,7 +83,7 @@ def main():
             size=path.stat().st_size
             if size!=p.get("bytes"): errors.append("size mismatch for "+name)
             if digest(path)!=p.get("sha256"): errors.append("sha256 mismatch for "+name)
-    if len(pairs)!=114: errors.append("expected 114 unique selector/family pairs")
+    if len(pairs)!=114: errors.append("expected 114 unique selector/family/resolution tuples")
     if a.parts:
         expected_parts={u.rsplit("/",1)[-1] for p in pkgs for u in p.get("parts",[])}
         disk_parts={p.name for p in a.root.glob("*.part*")}
