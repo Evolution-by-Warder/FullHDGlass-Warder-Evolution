@@ -91,7 +91,11 @@ jobs:
               "manifest_sha256":hashlib.sha256(manifest.read_bytes()).hexdigest(),
               "sha256sums_sha256":hashlib.sha256(sums.read_bytes()).hexdigest(),
           }
-          (root/"BUILD-EVIDENCE.json").write_text(json.dumps(evidence,sort_keys=True,indent=2)+"\n")
+          evidence_path=root/"BUILD-EVIDENCE.json"
+          with evidence_path.open("w", encoding="utf-8", newline="\n") as f:
+              json.dump(evidence,f,sort_keys=True,indent=2)
+              f.write(chr(10))
+          assert json.load(evidence_path.open("r",encoding="utf-8"))==evidence
           print("Build evidence hashes:", evidence["manifest_sha256"], evidence["sha256sums_sha256"])
           PY
           python3 - <<'PY'
