@@ -25,8 +25,11 @@ if plan.get("evidence",{}).get("artifact_bytes")!=build.get("artifact",{}).get("
 if plan.get("evidence",{}).get("artifact_digest")!=build.get("artifact",{}).get("digest"): errors.append("artifact digest evidence drift")
 if build.get("workflow",{}).get("conclusion")!="success": errors.append("authoritative workflow is not successful")
 if build.get("artifact",{}).get("size_in_bytes",0)<=0: errors.append("authoritative artifact size must be positive")
-content=plan.get("content_evidence",{})
-if content:
+content=plan.get("content_evidence")
+build_content=build.get("content_evidence")
+if not isinstance(content,dict) or not isinstance(build_content,dict):
+    errors.append("content evidence missing")
+else:
     for key in ("manifest_sha256","sha256sums_sha256"):
         value=content.get(key)
         if not isinstance(value,str) or len(value)!=64 or any(c not in "0123456789abcdef" for c in value.lower()):
@@ -35,6 +38,8 @@ if content:
         errors.append("content evidence source drift")
     if content.get("packages")!=plan.get("contract",{}).get("packages"):
         errors.append("content evidence package-count drift")
+    if content!=build_content:
+        errors.append("build/publication content evidence drift")
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
