@@ -130,3 +130,14 @@ When user asks `daj mi test`: trigger TEST build; inspect run/jobs/gates; fix an
 - Authoritative lean rebuild trigger: 87ce10d6c6a93aa2e43b2850429af1dfbd5b531f, run 37263153529.
 - Production validator now pins exactly the stable main raw path and raw-github-parts delivery (d5900d63571bab66a543e380f9f044bc5c078fe2).
 - Publication contract remains PREPARED_NOT_PUBLISHED; runtime_cutover=false; main and Radio TEST191 untouched.
+
+## 2026-10-05 full-reassembly channel-picon checkpoint
+- Authoritative full-integrity SUCCESS: run 37263263434, head e2daca746f6de236019e7a6946dec741cadb8188.
+- Artifact 11325098173, 615397302 bytes, digest sha256:09fc63bae59cff85ab12ad5dc88c425699e2f4008cef91d4c4e424a4650dda79, expires 2026-10-19T04:24:32Z.
+- Contract: 114 packages materialized as 124 persistent raw-GitHub parts.
+- Integrity chain PASS: source package size/SHA256, every part size/SHA256, canonical ordered part URLs, streamed reassembly of every package back to its full byte count and SHA256.
+- Build evidence promoted in 19579d13b11ab17424d39a3f15dac4d60c4b895e.
+- Cut-over validator now requires full reassembly PASS evidence (ba0b54cf7b5ad32a2119023ba94d1d8122265f38).
+- State remains BUILT_NOT_PUBLISHED / PREPARED_NOT_PUBLISHED; runtime_cutover=false.
+- Remaining architectural boundary: physically persist ~615 MB split payload + manifest under stable main assets/warder/downloads/picons/channels, then separately validate and enable runtime cut-over.
+- main remains TABU and untouched; picon.cz remains the single isolated channel-picon runtime fallback; Radio TEST191 remains locked and untouched.
