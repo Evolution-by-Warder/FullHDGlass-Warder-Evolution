@@ -18,3 +18,4 @@ QC diagnosis rebuild: isolate invalid PNG source packages and expose exact block
 PNG parser correction rebuild: real binary signature, package QC and receiver gates.
 Direct PNG parser regression gate enabled after binary-signature correction.
 Receiver manifest regex correction plus resolution-aware publication and missing-upstream reporting.
+Receiver manifest diagnostic assertion enabled after filename-regex fix.
