@@ -17,7 +17,17 @@ assert m.service_orbital_position("1:0:1:1:1:1:C00000:0:0:0:") == "19.2e"
 assert m.position_token("(23.5E) Skylink") == "23.5e"
 assert m.position_token("(0.8W) Freesat") == "0.8w"
 assert m.position_token("DVB-T sk/cz") == "dtt"
-assert m.position_token("19.2e") == "19.2e"\nassert m.runtime_publication()["persistent"] is False\nassert m.runtime_publication()["manifest_url"] is None\nassert m.safe_archive_member("1_0_1_A_B_C_D_0_0_0.png") is True\nassert m.safe_archive_member("../escape.png") is False\nassert m.safe_archive_member("/absolute.png") is False\nassert m.selector_id("(0.8W) Freesat") == "FREESAT"\nassert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"\nassert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"\nassert m.selector_id("(23.5E) Skylink") == "SKYLINK"\nassert m.selector_id("(23.5E) Astra 3B") == "235E"
+assert m.position_token("19.2e") == "19.2e"
+assert m.runtime_publication()["persistent"] is False
+assert m.runtime_publication()["manifest_url"] is None
+assert m.safe_archive_member("1_0_1_A_B_C_D_0_0_0.png") is True
+assert m.safe_archive_member("../escape.png") is False
+assert m.safe_archive_member("/absolute.png") is False
+assert m.selector_id("(0.8W) Freesat") == "FREESAT"
+assert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"
+assert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"
+assert m.selector_id("(23.5E) Skylink") == "SKYLINK"
+assert m.selector_id("(23.5E) Astra 3B") == "235E"
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -65,14 +75,17 @@ assert "token = label" in plugin_source
 assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
 assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())" in plugin_source
-assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source\nassert "_warderFetchChannelJob" in plugin_source\nassert "_warderInstallChannelArchive" in plugin_source\nassert "os.replace(tmp, os.path.join(dest, name))" in plugin_source
+assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source
+assert "_warderFetchChannelJob" in plugin_source
+assert "_warderInstallChannelArchive" in plugin_source
+assert "os.replace(tmp, os.path.join(dest, name))" in plugin_source
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
         h.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.q.tv" ORDER BY bouquet\\n')
     with open(os.path.join(d, "userbouquet.q.tv"), "w") as h:
-        h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\\n")
-        h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\\n")
+        h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
+        h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\n")
     locked = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d)
     assert locked["state"] == m.PUBLICATION_LOCKED
     assert locked["service_count"] == 1
@@ -80,7 +93,10 @@ with tempfile.TemporaryDirectory() as d:
     ready = m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
     assert ready["state"] == m.READY
     full = m.build_runtime_queue(m.set_preference(m.default_preferences(), "update_mode", "full"), d)
-    assert full["mode"] == "full" and full["service_count"] == 0\n    assert m.wanted_picon_names(full) is None\n    wanted = m.wanted_picon_names(locked)\n    assert wanted == {"1_0_1_1328_CA2_3_EB0000_0_0_0.png"}
+    assert full["mode"] == "full" and full["service_count"] == 0
+    assert m.wanted_picon_names(full) is None
+    wanted = m.wanted_picon_names(locked)
+    assert wanted == {"1_0_1_1328_CA2_3_EB0000_0_0_0.png"}
 
 entries = [
     {"service_reference": "1:0:1:1328:CA2:3:EB0000:0:0:0:", "package": "a"},
@@ -109,7 +125,9 @@ valid_manifest = {
 assert m.validate_publication_manifest(valid_manifest) == []
 sel = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "positions", ["(23.5E) Astra 3B"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
-assert sel["packages"][0]["selector_id"] == "235E"\nwrong_res = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "resolution", "400x240"))\nassert wrong_res["packages"] == []
+assert sel["packages"][0]["selector_id"] == "235E"
+wrong_res = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "resolution", "400x240"))
+assert wrong_res["packages"] == []
 provider_manifest = dict(valid_manifest)
 provider_manifest["packages"] = [dict(valid_manifest["packages"][0], selector_id="FREESAT", warder_key="0.8w/freesat")]
 provider_sel = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Freesat"]))
