@@ -86,6 +86,8 @@ assert "self.warderChannelInstalled.update(installed)" in plugin_source
 assert "missing_files = sorted(wanted - installed_set)" in plugin_source
 assert '_("Missing upstream:")' in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source
+assert "self.dwnTimer.start(25, True)" in plugin_source
+assert 'return _("ERROR") + ": " + _("Missing upstream:")' in plugin_source
 assert 'self.warderChannelState = "idle"' in plugin_source
 assert 'self.warderChannelState = "running"' in plugin_source
 assert 'self.warderChannelState = "error"' in plugin_source
