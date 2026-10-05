@@ -9069,8 +9069,9 @@ class downloadMenu(Screen):
 				self._warderLegacyPiconArchives = catalog.get("archives", {}) if valid else {}
 			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
 			url = str(entry.get("url", ""))
+			filename = str(entry.get("filename", ""))
 			official = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
-			if url.startswith(official) and url.endswith(".7z"):
+			if filename and "/" not in filename and "\\" not in filename and ".." not in filename and filename.endswith(".7z") and url == official + filename:
 				return url
 		except Exception:
 			self._warderLegacyPiconArchives = {}
