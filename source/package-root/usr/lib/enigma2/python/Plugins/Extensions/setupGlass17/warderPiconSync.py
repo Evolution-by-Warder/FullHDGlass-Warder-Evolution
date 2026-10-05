@@ -319,6 +319,57 @@ def plan_runtime_packages(document, queue):
         "resolution": prefs["resolution"],
     }
 
+
+def build_download_jobs(document, package_plan):
+    """Turn a package plan into integrity-complete download jobs."""
+    errors = validate_publication_manifest(document)
+    if errors:
+        return {"state": "invalid-manifest", "jobs": [], "errors": errors}
+    if package_plan.get("state") not in ("ready", "partial"):
+        return {"state": "invalid-plan", "jobs": [], "errors": ["package plan is not executable"]}
+    part_meta = {p["filename"]: p for p in document.get("parts", []) if isinstance(p, dict)}
+    delivery = document.get("delivery", "direct")
+    jobs = []
+    for package in package_plan.get("packages", []):
+        job = {
+            "selector_id": package["selector_id"],
+            "family": package["family"],
+            "resolution": package["resolution"],
+            "filename": package["filename"],
+            "bytes": package["bytes"],
+            "sha256": package["sha256"],
+            "parts": [],
+        }
+        if delivery == "raw-github-parts":
+            for url in package.get("parts", []):
+                name = str(url).rsplit("/", 1)[-1]
+                meta = part_meta.get(name)
+                if meta is None:
+                    return {"state": "invalid-manifest", "jobs": [], "errors": ["part metadata not found"]}
+                job["parts"].append({
+                    "url": url, "filename": name,
+                    "bytes": meta["bytes"], "sha256": meta["sha256"],
+                })
+        else:
+            job["parts"].append({
+                "url": package["url"], "filename": package["filename"],
+                "bytes": package["bytes"], "sha256": package["sha256"],
+            })
+        jobs.append(job)
+    return {
+        "state": "ready" if package_plan.get("state") == "ready" else "partial",
+        "jobs": jobs,
+        "missing_selectors": list(package_plan.get("missing_selectors", [])),
+    }
+
+
+def validate_destination(path):
+    """Reject relative/root destinations; UI may only stage into a real subdirectory."""
+    value = os.path.realpath(str(path or ""))
+    if not os.path.isabs(value) or value == os.path.sep:
+        return None
+    return value
+
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     """Create the receiver action queue without performing network/filesystem writes."""
     prefs = dict(default_preferences())
