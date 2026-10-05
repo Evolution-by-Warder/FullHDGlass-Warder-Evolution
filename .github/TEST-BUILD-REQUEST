@@ -8,3 +8,4 @@ Retry TEST192 after ignoring inert attribution strings in runtime network scan (
 Retry TEST192 after compacting endpoint inventory and omitting URL query data (commit 587ef9ebf28f6f1d10e19f1bedb5189719b0e54a).
 TEST192 retry after committing generated network dependency inventory (8b37446f21b364bd240013696c7c13f9dc363614).
 Retry TEST192 after static tests stopped creating bytecode in package source (workflow fix a52b304d5fb3089a0bb7edfa5df3d9783e5d9906).
+Final TEST192 artifact-only upload check after excluding historical IPK files (workflow fix 93dc1953c4f70a8b0dc10c139c25f2e8d750fd00).
