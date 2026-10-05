@@ -1,3 +1,2 @@
-TEST193 BUILD 1
-Fix TEST192 setupGlass17 import-time forward reference. Preserve selector appearance and Warder behavior; run static validation and build one verified TEST193 IPK.
-TEST193 retry: correct class-block regression guard and rerun validated build.
+TEST194 BUILD 1
+Fix Warder picon selector callback cancel contract and reject empty satellite selections. Scope receiver-service checks to the selected Warder package archive contents; report unmatched services separately. Add localized explanations and distinct FullHDGlass icons for the five Warder picon settings. Preserve TEST193 setupGlass17 fix; run full static, localization, package and TEST194 build validation.

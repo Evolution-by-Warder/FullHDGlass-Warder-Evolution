@@ -1338,3 +1338,43 @@ msgstr "Võrgulehekülje andmete lugemise aeg lõppes"
 
 msgid "None city detected"
 msgstr "Pole linnu tuvastatud"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Vali satelliidipositsioonid, mille kanalilogosid alla laaditakse ja uuendatakse."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Vali kanaliloendite ja skinikuva kanalilogode eraldusvõime."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Vali läbipaistvad, mustad või valged kanalilogod."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Vali kanalilogode allalaadimise ja uuendamise asukoht."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Vali sünkroonimine TV-loenditega või valitud täispakettide allalaadimine."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Ühtegi positsiooni pole valitud"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Vali vähemalt üks satelliidipositsioon."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Uuendatud:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Valitud upstream-kanalilogosid ei paigaldatud:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "valitud vastuvõtja teenustel pole valitud pakettides vastavat kanalilogo."

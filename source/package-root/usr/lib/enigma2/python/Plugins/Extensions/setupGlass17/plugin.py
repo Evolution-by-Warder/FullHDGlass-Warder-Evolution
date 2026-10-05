@@ -8373,13 +8373,15 @@ class downloadMenu(Screen):
 		self.warderChannelQueue = None
 		self.warderChannelJobs = []
 		self.warderChannelInstalled = set()
+		self.warderChannelAvailable = set()
 		self.warderPiconPrefs = warderPiconSync.default_preferences(os.path.join(config.plugins.setupGlass17.par39.value, "picon"))
+		self.warderPositionSelectionAttempted = False
 		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
 		sel = '***'+_('Select')+'***   '
 		w = _('picon white')
 		b = _('picon black')
 		self.menuListAll = {
-			0:['wp-pos',_('Satellite positions') + ': ' + _('OK for position selection'),'warder-picon-positions','','x'],
+			0:['wp-pos',_('Satellite positions') + ': ' + _('No position selected'),'warder-picon-positions','','x'],
 			1:['wp-res',_('Picon resolution') + ': 220 x 132','warder-picon-resolution','','x'],
 			2:['wp-style',_('Picon colour') + ': ' + _('Transparent'),'warder-picon-style','','x'],
 			3:['wp-dest',_('Picon location') + ': ' + self.warderPiconPrefs["destination"],'warder-picon-destination','','x'],
@@ -8456,6 +8458,9 @@ class downloadMenu(Screen):
 	def startDown(self):
 		if not self.ena or self.warderChannelState == "running":
 			return
+		if self.warderPositionSelectionAttempted and not self.warderPiconPrefs.get("positions"):
+			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
+			return
 		tmp = self['list'].getSelectedIndex()
 		if self.toDown:
 			# Warder channel-picon preferences are executable UI state. Build and
@@ -8485,12 +8490,29 @@ class downloadMenu(Screen):
 		
 	def createList(self):
 		self.list = []
+		warder_help = {
+			"wp-pos": _("Choose satellite positions for channel picon downloads and updates."),
+			"wp-res": _("Choose picon resolution for channel lists and skin screens."),
+			"wp-style": _("Choose transparent, black or white channel picon artwork."),
+			"wp-dest": _("Choose where channel picons are downloaded and updated."),
+			"wp-mode": _("Choose whether to sync picons from TV lists or download full selected packages."),
+		}
+		warder_icons = {
+			"wp-pos": "icons/dish.png",
+			"wp-res": "icons/i_fhd.png",
+			"wp-style": "down/ba.png",
+			"wp-dest": "icons/folder.png",
+			"wp-mode": "icons/update.png",
+		}
 		for x in self.menuListAll:
-			item = [self.menuListAll[x][0]]                        
+			row_id = self.menuListAll[x][0]
+			item = [row_id]
 			item.append(MultiContentEntryText(pos=(0, 0), size=(1820, 127), font=2, backcolor_sel=0, color_sel=int('0x00d100',16), text=" "))
 			item.append(MultiContentEntryText(pos=(260, 10), size=(1560, 45), font=2, backcolor_sel=0, color_sel=int('0x00d100',16), color=int('0xffcc00', 16), text=self.menuListAll[x][1]))
-			item.append(MultiContentEntryText(pos=(300, 65), size=(1520, 45), font=0, backcolor_sel=0, color_sel=int('0x00d100',16), text=helpTxt.get(self.menuListAll[x][0],"")))
-			item.append(MultiContentEntryPixmapAlphaTest(pos=(60, 2), size=(189, 123), png=LoadPixmap("%sdown/%s.png" % (SKINPATH, self.menuListAll[x][0].replace("wanim","w")))))
+			description = warder_help.get(row_id, helpTxt.get(row_id, ""))
+			item.append(MultiContentEntryText(pos=(300, 65), size=(1520, 45), font=0, backcolor_sel=0, color_sel=int('0x00d100',16), text=description))
+			icon_path = warder_icons.get(row_id, "down/%s.png" % row_id.replace("wanim","w"))
+			item.append(MultiContentEntryPixmapAlphaTest(pos=(60, 2), size=(189, 123), png=LoadPixmap(SKINPATH + icon_path)))
 			item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 38), size=(50, 50), png=LoadPixmap("%sdown/%s.png" % (SKINPATH, self.menuListAll[x][4]))))
 			self.list.append(item)
 		self['list'].l.setList(self.list)  
@@ -8567,22 +8589,36 @@ class downloadMenu(Screen):
 		self.warderChoiceRow = row
 		self.session.openWithCallback(self.warderPiconChoiceAnswer, ChoiceBox, title=_("Select"), list=choices.get(row, []))
 
-	def warderPositionAnswer(self, answer):
-		if answer is None:
+	def warderPositionAnswer(self, answer=None):
+		# Enigma2 can invoke openWithCallback with no return values when a dialog
+		# closes through its window/back path. Treat this as Cancel and preserve state.
+		if answer is None or not isinstance(answer, (list, tuple)):
 			return
-		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "positions", list(answer))
-		if answer:
-			preview = ", ".join(answer[:4])
-			if len(answer) > 4:
+		self.warderPositionSelectionAttempted = True
+		positions = [str(x) for x in answer if x]
+		if not warderPiconSync.valid_position_selection(positions):
+			positions = []
+		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "positions", positions)
+		if positions:
+			preview = ", ".join(positions[:4])
+			if len(positions) > 4:
 				preview += " ..."
-			label = _("Satellite positions") + ": " + preview + " (" + str(len(answer)) + " " + _("selected") + ")"
+			label = _("Satellite positions") + ": " + preview + " (" + str(len(positions)) + " " + _("selected") + ")"
 		else:
-			label = _("Satellite positions") + ": " + _("OK for position selection")
+			label = _("Satellite positions") + ": " + _("No position selected")
+			self.warderPiconPrefs["prepared"] = False
+			for x in self.menuListAll:
+				if self.menuListAll[x][0] in self.warderPiconRows:
+					self.menuListAll[x][4] = "x"
 		for x in self.menuListAll:
 			if self.menuListAll[x][0] == "wp-pos":
 				self.menuListAll[x][1] = label
 				break
-		self._setWarderPiconPrepared("wp-pos")
+		if positions:
+			self._setWarderPiconPrepared("wp-pos")
+		else:
+			self.createList()
+			self.reactivate()
 
 	def warderPiconChoiceAnswer(self, answer):
 		if not answer:
@@ -8685,6 +8721,7 @@ class downloadMenu(Screen):
 			self.warderChannelQueue = queue
 			self.warderChannelJobs = list(jobs.get("jobs", []))
 			self.warderChannelInstalled = set()
+			self.warderChannelAvailable = set()
 			if not self.warderChannelJobs and not (queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services")):
 				self.warderChannelQueue = None
 				self.warderChannelState = "error"
@@ -8697,21 +8734,26 @@ class downloadMenu(Screen):
 			installed_set = getattr(self, "warderChannelInstalled", set())
 			count = len(installed_set)
 			wanted = warderPiconSync.wanted_picon_names(queue)
-			missing_files = sorted(wanted - installed_set) if wanted is not None else []
+			coverage = warderPiconSync.classify_requested_picons(
+				wanted, getattr(self, "warderChannelAvailable", set()), installed_set)
+			missing_files = sorted(coverage["missing"])
 			self.warderChannelQueue = None
 			self.warderChannelJobs = []
 			self.warderChannelInstalled = set()
 			if missing_files:
-				# Incomplete selective sync is retryable. Keep the prepared action and
-				# pending marker so a corrected upstream publication can be retried.
+				# A picon present in a selected archive but not installed is a real failure.
 				self.warderChannelState = "error"
-				return _("ERROR") + ": " + _("Missing upstream:") + " " + str(len(missing_files)) + "; " + _("Total:") + " " + str(count)
+				return _("ERROR") + ": " + _("Selected upstream picons were not installed:") + " " + str(len(missing_files)) + "; " + _("Updated:") + " " + str(count)
 			self.warderPiconPrefs["prepared"] = False
 			for x in self.menuListAll:
 				if self.menuListAll[x][0] in self.warderPiconRows:
 					self.menuListAll[x][4] = "x"
 			self.warderChannelState = "done"
-			return _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
+			result = _("SUCCESSFUL") + ": " + _("Updated:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
+			outside = coverage["outside_selected_packages"]
+			if outside:
+				result += "; " + str(len(outside)) + " " + _("selected receiver service(s) have no matching picon in the selected packages.")
+			return result
 		job = self.warderChannelJobs.pop(0)
 		required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
 		try:
@@ -8734,8 +8776,9 @@ class downloadMenu(Screen):
 		try:
 			self._warderFetchChannelJob(job, archive)
 			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
-			installed = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
+			installed, available = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
 			self.warderChannelInstalled.update(installed)
+			self.warderChannelAvailable.update(available)
 		finally:
 			try:
 				os.unlink(archive)
@@ -8760,7 +8803,12 @@ class downloadMenu(Screen):
 					self.warderChannelQueue = None
 					self.warderChannelJobs = []
 					self.warderChannelInstalled = set()
-					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + str(err) + "\n"
+					self.warderChannelAvailable = set()
+					if str(err) == "no-satellite-position-selected":
+						error_text = _("Select at least one satellite position.")
+					else:
+						error_text = str(err)
+					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + error_text + "\n"
 				else:
 					if warder_result is None:
 						# One package per GUI timer tick keeps the receiver event loop responsive.
@@ -9009,6 +9057,7 @@ class downloadMenu(Screen):
 			raise ValueError("invalid Warder picon destination")
 		os.makedirs(dest, exist_ok=True)
 		installed = set()
+		available = set()
 		with zipfile.ZipFile(archive, "r") as zf:
 			entries = []
 			seen = set()
@@ -9030,6 +9079,7 @@ class downloadMenu(Screen):
 				if name in seen:
 					raise ValueError("duplicate Warder picon archive member")
 				seen.add(name)
+				available.add(name)
 				if wanted is None or name in wanted:
 					entries.append((info, name))
 			for info, name in entries:
@@ -9049,7 +9099,7 @@ class downloadMenu(Screen):
 				finally:
 					if os.path.exists(tmp):
 						os.unlink(tmp)
-		return installed
+		return installed, available
 
 	def _legacyPiconArchiveUrl(self, legacy_id):
 		"""Resolve one preserved legacy numeric ID without guessing or retired-host fallback."""
@@ -9310,7 +9360,7 @@ class warderPositionSelectorScr(Screen):
 		self["list"] = self.list
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
 			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
-			"cancel": self.close, "red": self.close, "yellow": self.finish
+			"cancel": self.cancel, "red": self.cancel, "yellow": self.finish
 		}, -1)
 		self.onLayoutFinish.append(self.startSelect)
 
@@ -9329,6 +9379,11 @@ class warderPositionSelectorScr(Screen):
 	def finish(self):
 		ret = [x[1] for x in self.list.getSelectionsList()]
 		self.close(ret)
+
+	def cancel(self):
+		# openWithCallback calls callback(*retVal); close() supplies no arguments.
+		# Pass one explicit None so cancel follows a stable callback contract.
+		self.close(None)
 
 class styleSelectorScr(Screen):   
 

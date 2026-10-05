@@ -1348,3 +1348,43 @@ msgstr "Сайт на запросы не отвечает"
 
 msgid "None city detected"
 msgstr "Городов не обнаружено"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Выберите спутниковые позиции для загрузки и обновления пиконов каналов."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Выберите разрешение пиконов для списков каналов и экранов скина."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Выберите прозрачные, чёрные или белые пиконы каналов."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Выберите место загрузки и обновления пиконов каналов."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Выберите синхронизацию со списками ТВ или загрузку полных выбранных пакетов."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Позиция не выбрана"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Выберите хотя бы одну спутниковую позицию."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Обновлено:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Выбранные upstream-пиконы не установлены:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "для выбранных сервисов приёмника нет подходящих пиконов в выбранных пакетах."

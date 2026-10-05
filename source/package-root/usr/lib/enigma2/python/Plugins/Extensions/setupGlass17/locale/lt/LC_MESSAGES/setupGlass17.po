@@ -1342,3 +1342,43 @@ msgstr "Svetainė į užklausą neatsako"
 
 msgid "None city detected"
 msgstr "Miestų neaptikta"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Pasirinkite palydovų pozicijas, kurioms bus atsisiunčiami ir atnaujinami kanalų pikonai."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Pasirinkite kanalų sąrašų ir skinų ekranų pikonų raišką."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Pasirinkite skaidrius, juodus arba baltus kanalų pikonus."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Pasirinkite kanalų pikonų atsisiuntimo ir atnaujinimo vietą."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Pasirinkite sinchronizavimą su TV sąrašais arba visų pasirinktų paketų atsisiuntimą."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Nepasirinkta jokia pozicija"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Pasirinkite bent vieną palydovo poziciją."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Atnaujinta:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Pasirinkti upstream pikonai neįdiegti:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "pasirinktos imtuvo tarnybos neturi atitinkamo pikono pasirinktuose paketuose."

@@ -1342,3 +1342,43 @@ msgstr ""
 
 msgid "None city detected"
 msgstr "Yok Şehir algılandı"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Kanal logolarının indirileceği ve güncelleneceği uydu konumlarını seçin."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Kanal listeleri ve skin ekranları için logo çözünürlüğünü seçin."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Şeffaf, siyah veya beyaz kanal logolarını seçin."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Kanal logolarının indirileceği ve güncelleneceği konumu seçin."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "TV listeleriyle eşitlemeyi veya seçili tam paketleri indirmeyi seçin."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Hiçbir konum seçilmedi"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "En az bir uydu konumu seçin."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Güncellendi:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Seçilen upstream kanal logoları yüklenemedi:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "seçilen alıcı servislerinin, seçili paketlerde eşleşen logosu yok."

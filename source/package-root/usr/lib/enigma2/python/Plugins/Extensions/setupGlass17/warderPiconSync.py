@@ -132,6 +132,8 @@ def build_sync_request(enigma2_dir=ENIGMA2_DIR, selected_positions=None,
                        include_radio=False):
     """Build a deterministic receiver-driven request; no provider guessing."""
     selected = set(x.lower() for x in (selected_positions or []) if x)
+    if not selected:
+        raise ValueError("no-satellite-position-selected")
     services = []
     for stem in bouquet_services(enigma2_dir, include_radio):
         position = service_orbital_position(stem.replace("_", ":"))
@@ -239,6 +241,16 @@ def selected_selector_ids(labels):
     return result
 
 
+def valid_position_selection(labels):
+    """Require a non-empty, unambiguous list of known SATLIST positions."""
+    values = [str(x).strip() for x in (labels or []) if str(x).strip()]
+    if not values or len(set(values)) != len(values):
+        return False
+    tokens = [position_token(x) for x in values]
+    selectors = [selector_id(x) for x in values]
+    return bool(all(tokens) and all(selectors) and len(set(selectors)) == len(values))
+
+
 def family_for_style(style):
     return {
         "transparent": "channel-transparent",
@@ -254,6 +266,8 @@ def select_manifest_packages(document, preferences):
         return {"state": "invalid-manifest", "packages": [], "errors": errors}
     prefs = dict(default_preferences())
     prefs.update(preferences or {})
+    if not valid_position_selection(prefs.get("positions")):
+        return {"state": "invalid-selection", "packages": [], "errors": ["no-satellite-position-selected"]}
     family = family_for_style(prefs.get("style"))
     if not family:
         return {"state": "unsupported-style", "packages": [], "errors": ["unsupported style"]}
@@ -289,6 +303,10 @@ def plan_runtime_packages(document, queue):
         "style": queue.get("style", DEFAULT_STYLE),
         "resolution": queue.get("resolution", DEFAULT_RESOLUTION),
     }
+    if not valid_position_selection(prefs["positions"]):
+        return {"state": "invalid-selection", "packages": [], "errors": ["no-satellite-position-selected"],
+                "missing_selectors": [], "selector_ids": [], "family": family_for_style(prefs["style"]),
+                "resolution": prefs["resolution"]}
     explicit = list(queue.get("selector_ids", []))
     if explicit:
         wanted = explicit
@@ -409,6 +427,24 @@ def wanted_picon_names(queue):
     return names
 
 
+def classify_requested_picons(wanted, upstream_names, installed_names):
+    """Scope sync results to selected package assets before reporting missing files."""
+    upstream = set(upstream_names or [])
+    installed = set(installed_names or [])
+    if wanted is None:
+        relevant = set(upstream)
+        outside = set()
+    else:
+        requested = set(wanted or [])
+        relevant = requested.intersection(upstream)
+        outside = requested.difference(upstream)
+    return {
+        "relevant": relevant,
+        "outside_selected_packages": outside,
+        "missing": relevant.difference(installed),
+    }
+
+
 def safe_archive_member(name):
     value = str(name or "").replace("\\", "/")
     if not value or value.startswith("/") or value.startswith("../") or "/../" in ("/" + value):
@@ -431,6 +467,8 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     if mode not in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_FULL):
         raise ValueError("unsupported update mode")
     labels = list(prefs.get("positions", []) or [])
+    if not valid_position_selection(labels):
+        raise ValueError("no-satellite-position-selected")
     selected = [position_token(x) for x in labels if position_token(x)]
     selectors = selected_selector_ids(labels)
     if mode == UPDATE_MODE_SYNC_TV:

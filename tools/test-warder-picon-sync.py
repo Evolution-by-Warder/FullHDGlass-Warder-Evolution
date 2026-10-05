@@ -2,8 +2,10 @@
 import importlib.util
 import os
 import tempfile
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PKG = Path(ROOT) / "source/package-root"
 MODULE = os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py")
 spec = importlib.util.spec_from_file_location("warderPiconSync", MODULE)
 m = importlib.util.module_from_spec(spec)
@@ -30,6 +32,9 @@ assert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"
 assert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"
 assert m.selector_id("(23.5E) Skylink") == "SKYLINK"
 assert m.selector_id("(23.5E) Astra 3B") == "235E"
+assert m.valid_position_selection(["(16.0E) Antiksat", "(23.5E) Skylink"])
+assert not m.valid_position_selection([])
+assert not m.valid_position_selection(["unknown position"])
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -39,18 +44,26 @@ with tempfile.TemporaryDirectory() as d:
         h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
         h.write("#DESCRIPTION Skylink sample\n")
         h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\n")
+        h.write("#SERVICE 1:0:1:100:1:1:A00000:0:0:0:\n")
         h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
     refs = m.bouquet_services(d)
     assert refs == [
         "1_0_1_1328_CA2_3_EB0000_0_0_0",
         "1_0_1_1_1_1_C00000_0_0_0",
+        "1_0_1_100_1_1_A00000_0_0_0",
     ]
-    req = m.build_sync_request(d, ["23.5e"], "transparent", "220x132")
+    req = m.build_sync_request(d, ["16.0e", "23.5e"], "transparent", "220x132")
     assert req["mode"] == "sync-tv-lists"
-    assert [x["service_reference"] for x in req["services"]] == ["1_0_1_1328_CA2_3_EB0000_0_0_0"]
-    assert req["services"][0]["position"] == "23.5e"
-    filtered = m.build_sync_request(d, ["23.5e"], "transparent", "220x132")
-    assert all(x["position"] == "23.5e" for x in filtered["services"])
+    assert [x["service_reference"] for x in req["services"]] == [
+        "1_0_1_1328_CA2_3_EB0000_0_0_0", "1_0_1_100_1_1_A00000_0_0_0"]
+    assert {x["position"] for x in req["services"]} == {"16.0e", "23.5e"}
+    assert all(x["position"] in ("16.0e", "23.5e") for x in req["services"])
+    try:
+        m.build_sync_request(d, [], "transparent", "220x132")
+    except ValueError as error:
+        assert str(error) == "no-satellite-position-selected"
+    else:
+        raise AssertionError("empty manual selection must fail closed")
 
 prefs = m.default_preferences("/media/hdd/picon")
 assert prefs["update_mode"] == "sync-tv-lists"
@@ -76,6 +89,22 @@ menu_block = plugin_source[menu_start:menu_end]
 keys = [int(x) for x in __import__("re").findall(r"^\t\t\t(\d+):\[", menu_block, __import__("re").M)]
 assert keys == list(range(len(keys))), keys
 assert "token = label" in plugin_source
+selector_block = plugin_source.split("class warderPositionSelectorScr(Screen):", 1)[1].split("class styleSelectorScr(Screen):", 1)[0]
+assert '"cancel": self.cancel, "red": self.cancel' in selector_block
+assert "def cancel(self):" in selector_block and "self.close(None)" in selector_block
+assert "def warderPositionAnswer(self, answer=None):" in plugin_source
+assert "if answer is None or not isinstance(answer, (list, tuple)):" in plugin_source
+assert "self.warderPositionSelectionAttempted = True" in plugin_source
+assert "if self.warderPositionSelectionAttempted and not self.warderPiconPrefs.get(\"positions\"):" in plugin_source
+assert '"No position selected"' in plugin_source
+assert "valid_position_selection(positions)" in plugin_source
+assert '_("Select at least one satellite position.")' in plugin_source
+for icon in ('"wp-pos": "icons/dish.png"', '"wp-res": "icons/i_fhd.png"',
+             '"wp-style": "down/ba.png"', '"wp-dest": "icons/folder.png"',
+             '"wp-mode": "icons/update.png"'):
+    assert icon in plugin_source, icon
+assert "warder_help.get(row_id" in plugin_source
+assert "text=description" in plugin_source
 assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
 assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())" in plugin_source
@@ -89,11 +118,14 @@ assert "def _warderLoadChannelManifest" in plugin_source
 assert "def _warderRunChannelQueue" in plugin_source
 assert 'self.dwnJob = _("Warder channel picons")' in plugin_source
 assert "self.warderChannelInstalled.update(installed)" in plugin_source
-assert "missing_files = sorted(wanted - installed_set)" in plugin_source
-assert '_("Missing upstream:")' in plugin_source
+assert "classify_requested_picons(" in plugin_source
+assert "self.warderChannelAvailable.update(available)" in plugin_source
+assert '"outside_selected_packages"' in plugin_source
+assert '_("Selected upstream picons were not installed:")' in plugin_source
+assert '_("selected receiver service(s) have no matching picon in the selected packages.")' in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source
 assert "self.dwnTimer.start(25, True)" in plugin_source
-assert 'return _("ERROR") + ": " + _("Missing upstream:")' in plugin_source
+assert 'return _("ERROR") + ": " + _("Selected upstream picons were not installed:")' in plugin_source
 assert 'self.warderChannelState = "idle"' in plugin_source
 assert 'self.warderChannelState = "running"' in plugin_source
 assert 'self.warderChannelState = "error"' in plugin_source
@@ -145,9 +177,17 @@ with tempfile.TemporaryDirectory() as d:
     live = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, m.runtime_publication())
     assert live["state"] == m.READY
     assert live["service_count"] == 1
-    ready = m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
-    assert ready["state"] == m.READY
-    full = m.build_runtime_queue(m.set_preference(m.default_preferences(), "update_mode", "full"), d)
+    ready = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
+    assert ready["state"] == m.READY and ready["service_count"] == 1
+    try:
+        m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
+    except ValueError as error:
+        assert str(error) == "no-satellite-position-selected"
+    else:
+        raise AssertionError("empty runtime selection must not become all positions")
+    full_prefs = m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"])
+    full_prefs = m.set_preference(full_prefs, "update_mode", "full")
+    full = m.build_runtime_queue(full_prefs, d)
     assert full["mode"] == "full" and full["service_count"] == 0
     assert m.wanted_picon_names(full) is None
     wanted = m.wanted_picon_names(locked)
@@ -203,7 +243,7 @@ assert provider_sel["selector_ids"] == ["FREESAT"] and len(provider_sel["package
 wrong_provider = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Digi / Telly"]))
 assert wrong_provider["state"] == "partial" and wrong_provider["missing_selectors"] == ["DIGI_TELLY"]
 queue = {
-    "mode": m.UPDATE_MODE_SYNC_TV, "positions_labels": [], "selector_ids": [],
+    "mode": m.UPDATE_MODE_SYNC_TV, "positions_labels": ["(23.5E) Astra 3B"], "selector_ids": ["235E"],
     "style": "transparent", "resolution": "220x132",
     "services": [{"service_reference": "1_0_1_1328_CA2_3_EB0000_0_0_0", "position": "23.5e"}],
 }
@@ -214,8 +254,8 @@ full_planned = m.plan_runtime_packages(valid_manifest, full_queue)
 assert len(full_planned["packages"]) == 1
 empty_sync_queue = dict(queue, services=[], positions_labels=[], selector_ids=[])
 empty_sync_planned = m.plan_runtime_packages(valid_manifest, empty_sync_queue)
-assert empty_sync_planned["state"] == "ready" and empty_sync_planned["packages"] == []
-assert m.build_download_jobs(valid_manifest, empty_sync_planned)["jobs"] == []
+assert empty_sync_planned["state"] == "invalid-selection" and empty_sync_planned["packages"] == []
+assert m.build_download_jobs(valid_manifest, empty_sync_planned)["state"] == "invalid-plan"
 bad_style = dict(queue, style="unknown")
 assert m.plan_runtime_packages(valid_manifest, bad_style)["state"] == "invalid-preferences"
 bad_resolution = dict(queue, resolution="../220x132")
@@ -245,6 +285,16 @@ identity_queue = {"mode": m.UPDATE_MODE_SYNC_TV, "services": [
     {"service_reference": "garbage"},
 ]}
 assert m.wanted_picon_names(identity_queue) == {"1_0_1_1328_CA2_3_EB0000_0_0_0.png"}
+coverage = m.classify_requested_picons(
+    {"a.png", "b.png", "outside.png"}, {"a.png", "b.png"}, {"a.png", "b.png"})
+assert coverage["relevant"] == {"a.png", "b.png"}
+assert coverage["outside_selected_packages"] == {"outside.png"}
+assert coverage["missing"] == set()
+coverage_missing = m.classify_requested_picons(
+    {"a.png", "b.png"}, {"a.png", "b.png"}, {"a.png"})
+assert coverage_missing["missing"] == {"b.png"}
+full_coverage = m.classify_requested_picons(None, {"a.png", "b.png"}, {"a.png"})
+assert full_coverage["missing"] == {"b.png"} and not full_coverage["outside_selected_packages"]
 pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json", valid_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
@@ -266,4 +316,56 @@ duplicate_part["packages"] = [dict(valid_manifest["packages"][0], parts=[
 duplicate_errors = m.validate_publication_manifest(duplicate_part)
 assert any(x in duplicate_errors for x in ("duplicate package part", "non-canonical package part")), duplicate_errors
 
-print("Warder picon sync parser/planner/runtime-publication/manifest/collision/GUI wiring: PASS")
+
+# TEST194 production manifest entries: these two UI labels select provider-specific
+# ZIPs, while service references at each orbital position can include other providers.
+assert m.selected_selector_ids(["(16.0E) Antiksat", "(23.5E) Skylink"]) == ["ANTIKSAT", "SKYLINK"]
+selected_provider_entries = {
+    "ANTIKSAT": "warder-antiksat-channel-transparent.zip",
+    "SKYLINK": "warder-skylink-channel-transparent.zip",
+}
+assert set(selected_provider_entries) == {"ANTIKSAT", "SKYLINK"}
+# Receiver report: 1,333 orbital-filtered services, 198 exact members in the
+# selected provider packages. Only those 198 are relevant package matches.
+receiver_names = set("service-%04d.png" % i for i in range(1333))
+package_names = set("service-%04d.png" % i for i in range(198))
+report_coverage = m.classify_requested_picons(receiver_names, package_names, package_names)
+assert len(report_coverage["relevant"]) == 198
+assert len(report_coverage["outside_selected_packages"]) == 1135
+assert report_coverage["missing"] == set()
+
+# The selector's cancel route passes explicit None; yellow Save returns a list.
+assert 'self.close(None)' in selector_block
+assert 'ret = [x[1] for x in self.list.getSelectionsList()]' in selector_block
+assert 'self.close(ret)' in selector_block
+
+# Localized descriptions, empty-selection status and result messages must exist
+# in every setupGlass17 catalog; build-test-ipk.sh compiles all these PO files.
+locale_root = PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale"
+warder_msgids = (
+    "Choose satellite positions for channel picon downloads and updates.",
+    "Choose picon resolution for channel lists and skin screens.",
+    "Choose transparent, black or white channel picon artwork.",
+    "Choose where channel picons are downloaded and updated.",
+    "Choose whether to sync picons from TV lists or download full selected packages.",
+    "No position selected",
+    "Select at least one satellite position.",
+    "Updated:",
+    "Selected upstream picons were not installed:",
+    "selected receiver service(s) have no matching picon in the selected packages.",
+)
+catalogs = sorted(locale_root.glob("*/LC_MESSAGES/setupGlass17.po"))
+assert len(catalogs) == 19, len(catalogs)
+for catalog in catalogs:
+    po_text = catalog.read_text(encoding="utf-8")
+    for msgid in warder_msgids:
+        escaped = msgid.replace("\\", "\\\\").replace('"', '\\"')
+        assert 'msgid "' + escaped + '"\nmsgstr "' in po_text, (catalog, msgid)
+
+# The five distinct icon paths are packaged FullHDGlass assets.
+icon_root = PKG / "usr/share/enigma2/hd_glass17"
+for icon in ("icons/dish.png", "icons/i_fhd.png", "down/ba.png", "icons/folder.png", "icons/update.png"):
+    assert (icon_root / icon).is_file(), icon
+assert len({"icons/dish.png", "icons/i_fhd.png", "down/ba.png", "icons/folder.png", "icons/update.png"}) == 5
+
+print("Warder TEST194 picon filtering, callback, empty-selection, UI, localization and package wiring: PASS")

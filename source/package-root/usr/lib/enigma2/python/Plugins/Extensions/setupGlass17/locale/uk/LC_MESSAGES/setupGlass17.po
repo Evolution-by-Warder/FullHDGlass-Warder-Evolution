@@ -1339,3 +1339,43 @@ msgstr ""
 
 msgid "None city detected"
 msgstr "Без місто виявлено"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Виберіть супутникові позиції, для яких завантажуватимуться й оновлюватимуться піктограми каналів."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Виберіть роздільність піктограм для списків каналів і екранів скіну."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Виберіть прозорі, чорні або білі піктограми каналів."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Виберіть місце завантаження й оновлення піктограм каналів."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Виберіть синхронізацію зі списками ТБ або завантаження повних вибраних пакетів."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Позицію не вибрано"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Виберіть принаймні одну супутникову позицію."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Оновлено:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Вибрані upstream-піктограми не встановлено:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "для вибраних сервісів приймача немає відповідних піктограм у вибраних пакетах."

@@ -1390,3 +1390,43 @@ msgstr "未检测到任何城市"
 
 
 
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "选择要下载和更新频道图标的卫星位置。"
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "选择频道列表和皮肤界面所用频道图标的分辨率。"
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "选择透明、黑色或白色频道图标。"
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "选择频道图标的下载和更新位置。"
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "选择与电视列表同步，或下载所选完整软件包。"
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "未选择位置"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "请至少选择一个卫星位置。"
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "已更新："
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "所选上游频道图标未能安装："
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "所选接收机服务在所选软件包中没有匹配的频道图标。"

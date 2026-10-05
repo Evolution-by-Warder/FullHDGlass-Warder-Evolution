@@ -1339,3 +1339,43 @@ msgstr ""
 
 msgid "None city detected"
 msgstr "Semmi város észlelt"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Válassza ki azokat a műholdpozíciókat, amelyekhez csatornapikonokat tölt le és frissít."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Válassza ki a csatornalistákhoz és a skin képernyőihez használt ikonok felbontását."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Válasszon átlátszó, fekete vagy fehér csatornaikonokat."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Válassza ki a csatornaikonok letöltési és frissítési helyét."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Válasszon a TV-listák szinkronizálása és a teljes kijelölt csomagok letöltése között."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Nincs pozíció kiválasztva"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Válasszon ki legalább egy műholdpozíciót."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Frissítve:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "A kijelölt upstream ikonok telepítése nem sikerült:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "kijelölt vevőszolgáltatáshoz nincs megfelelő ikon a kiválasztott csomagokban."

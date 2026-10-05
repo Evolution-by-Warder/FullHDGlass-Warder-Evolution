@@ -1339,3 +1339,43 @@ msgstr "Vypršal časový limit čítania dát z webstránky"
 
 msgid "None city detected"
 msgstr "Nenašlo sa žiadne mesto"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Vyberte satelitné pozície, pre ktoré sa budú sťahovať a aktualizovať logá kanálov."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Nastavte rozlíšenie piconov používaných v zozname kanálov a obrazovkách skinu."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Vyberte variant piconov: priehľadný, čierny alebo biely."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Vyberte umiestnenie, kam sa budú picony sťahovať a aktualizovať."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Vyberte synchronizáciu podľa TV zoznamov alebo stiahnutie celých zvolených balíkov."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Nie je vybraná žiadna pozícia"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Najskôr vyberte aspoň jednu satelitnú pozíciu."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Aktualizované:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Vybrané upstream picony sa nepodarilo nainštalovať:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "vybrané služby prijímača nemajú zodpovedajúci picon vo vybraných balíkoch."

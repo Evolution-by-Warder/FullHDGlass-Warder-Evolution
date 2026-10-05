@@ -1338,3 +1338,43 @@ msgstr "Timeout tijdens het lezen van website gegevens"
 
 msgid "None city detected"
 msgstr "Geen stad gevonden"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Kies satellietposities waarvoor kanaalpictogrammen worden gedownload en bijgewerkt."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Kies de resolutie van pictogrammen voor zenderlijsten en skin-schermen."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Kies transparante, zwarte of witte kanaalpictogrammen."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Kies waar kanaalpictogrammen worden gedownload en bijgewerkt."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Kies synchronisatie met tv-lijsten of download van de volledige geselecteerde pakketten."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Geen positie geselecteerd"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Selecteer ten minste één satellietpositie."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Bijgewerkt:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Geselecteerde upstream-pictogrammen zijn niet geïnstalleerd:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "geselecteerde ontvangerservices hebben geen overeenkomend pictogram in de geselecteerde pakketten."

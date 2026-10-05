@@ -1340,3 +1340,43 @@ msgstr ""
 
 msgid "None city detected"
 msgstr "Wykryte żadne miasto"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Wybierz pozycje satelitarne, dla których będą pobierane i aktualizowane picony kanałów."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Wybierz rozdzielczość piconów dla list kanałów i ekranów skina."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Wybierz przezroczyste, czarne lub białe picony kanałów."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Wybierz miejsce pobierania i aktualizacji piconów kanałów."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Wybierz synchronizację z listami TV lub pobranie pełnych wybranych pakietów."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Nie wybrano pozycji"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Wybierz co najmniej jedną pozycję satelitarną."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Zaktualizowano:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Nie zainstalowano wybranych piconów upstream:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "wybrane usługi odbiornika nie mają pasującego piconu w wybranych pakietach."

@@ -1338,3 +1338,43 @@ msgstr ""
 
 msgid "None city detected"
 msgstr "Nici unul oras detectat"
+
+#: Warder TEST194
+msgid "Choose satellite positions for channel picon downloads and updates."
+msgstr "Alegeți pozițiile satelit pentru care se descarcă și se actualizează piconurile canalelor."
+
+#: Warder TEST194
+msgid "Choose picon resolution for channel lists and skin screens."
+msgstr "Alegeți rezoluția piconurilor pentru listele de canale și ecranele skinului."
+
+#: Warder TEST194
+msgid "Choose transparent, black or white channel picon artwork."
+msgstr "Alegeți piconuri de canal transparente, negre sau albe."
+
+#: Warder TEST194
+msgid "Choose where channel picons are downloaded and updated."
+msgstr "Alegeți destinația pentru descărcarea și actualizarea piconurilor."
+
+#: Warder TEST194
+msgid "Choose whether to sync picons from TV lists or download full selected packages."
+msgstr "Alegeți sincronizarea cu listele TV sau descărcarea pachetelor complete selectate."
+
+#: Warder TEST194
+msgid "No position selected"
+msgstr "Nicio poziție selectată"
+
+#: Warder TEST194
+msgid "Select at least one satellite position."
+msgstr "Selectați cel puțin o poziție de satelit."
+
+#: Warder TEST194
+msgid "Updated:"
+msgstr "Actualizat:"
+
+#: Warder TEST194
+msgid "Selected upstream picons were not installed:"
+msgstr "Piconurile upstream selectate nu au fost instalate:"
+
+#: Warder TEST194
+msgid "selected receiver service(s) have no matching picon in the selected packages."
+msgstr "servicii selectate ale receptorului nu au piconul corespunzător în pachetele alese."
