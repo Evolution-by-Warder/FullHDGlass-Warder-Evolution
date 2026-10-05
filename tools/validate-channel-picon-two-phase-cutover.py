@@ -48,4 +48,4 @@ else:
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
-print("PASS two-phase cut-over safety: publication and runtime switch remain separately gated")
+print("PASS two-phase cut-over safety: publication and runtime switch are state-consistent and separately validated")
