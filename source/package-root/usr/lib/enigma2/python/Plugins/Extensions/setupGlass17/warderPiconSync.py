@@ -473,9 +473,8 @@ def resolve_service_entry(index, collisions, service_reference):
 
 _ALLOWED_MANIFEST_HOSTS = ("raw.githubusercontent.com",)
 _FAMILIES = ("channel-transparent", "channel-black", "channel-white")
-_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-_FILENAME_RE = re.compile(r"^[A-Za-z0-9._-]+\\.(?:zip|7z)$")
-
+_SHA256_RE = re.compile("^[0-9a-f]{64}$")
+_FILENAME_RE = re.compile("^[A-Za-z0-9._-]+[.](?:zip|7z)$")
 
 def _trusted_https_url(url):
     try:
