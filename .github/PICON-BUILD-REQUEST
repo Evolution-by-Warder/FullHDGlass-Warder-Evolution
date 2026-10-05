@@ -8,3 +8,4 @@ Rebuild after split validator no longer requires duplicate monolithic ZIPs in pu
 Rebuild after clean preparer rewrite and py_compile gate.
 Authoritative rebuild: fixed compile gate newline and upload only split publication payload plus manifests.
 Final integrity rebuild: independently reassemble every split package and verify full size/SHA256.
+Pre-publication lock rebuild: publication plan and two-phase cutover gates enabled.
