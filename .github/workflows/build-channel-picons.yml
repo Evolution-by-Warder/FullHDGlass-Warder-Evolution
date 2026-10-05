@@ -36,13 +36,14 @@ jobs:
           python3 tools/build-legacy-picon-migration-map.py \
             --mapping assets/warder/picon-satlist-mapping.tsv \
             --source-manifest assets/warder/legacy-source-manifest.tsv \
-            --output /tmp/legacy-picon-migration-map.json
+            --output /tmp/legacy-picon-migration-map.json \\
+            --runtime-output /tmp/legacy-picon-runtime.json
           python3 - <<'PY'
           import json
           d=json.load(open("/tmp/legacy-picon-migration-map.json"))
           assert len(d["rows"])==399
           assert d["mapped"]==370
-          assert d["unmapped"]==29
+          assert d["unmapped"]==29\n          runtime=json.load(open("/tmp/legacy-picon-runtime.json"))\n          assert len(runtime["archives"])==370\n          assert all(u.startswith("https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/") for u in runtime["archives"].values())\n          assert not any("picon.cz" in u for u in runtime["archives"].values())
           unresolved={(r["selector_id"],r["legacy_column"]) for r in d["rows"] if r["state"]!="ARCHIVED_SOURCE"}
           expected={(s,c) for s in ("450W","31E","749E","851E") for c in (
             "legacy_400x240","legacy_black_50x30","legacy_black","legacy_white_50x30",
