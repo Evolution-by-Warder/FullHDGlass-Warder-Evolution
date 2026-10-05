@@ -24,3 +24,4 @@ Cutover collision validator aligned to authoritative 08W/160E selector IDs.
 Collision selector source-coverage gate plus timer-yielded receiver queue validation.
 Green artifact evidence rebound; resolution-aware split identity and blocked-package gates enabled.
 Embed inner manifest/SHA256SUMS reproducibility evidence in uploaded artifact.
+Inner content-hash build evidence plus streamed receiver download bounds.
