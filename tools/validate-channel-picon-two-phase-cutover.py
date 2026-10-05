@@ -6,6 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 build=json.loads((ROOT/"assets/warder/channel-picon-build.json").read_text())
 plan=json.loads((ROOT/"assets/warder/channel-picon-publication-plan.json").read_text())
 plugin=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
+runtime=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py").read_text(encoding="utf-8")
 errors=[]
 legacy="https://picon.cz/download/%s/"
 if build.get("state")=="BUILT_NOT_PUBLISHED":
@@ -18,6 +19,11 @@ if build.get("state")=="PUBLISHED":
     if p.get("state")!="PUBLISHED" or p.get("persistent") is not True: errors.append("PUBLISHED requires persistent evidence")
 runtime_cutover=bool(build.get("runtime_cutover"))
 publication=build.get("publication",{})
+code_enabled="RUNTIME_PUBLICATION_ENABLED = True" in runtime
+if code_enabled != runtime_cutover:
+    errors.append("runtime code switch must exactly match recorded runtime_cutover")
+if not runtime_cutover and 'RUNTIME_MANIFEST_URL = ""' not in runtime:
+    errors.append("locked runtime must not advertise a manifest URL")
 if runtime_cutover:
     if build.get("state")!="PUBLISHED":
         errors.append("runtime cutover requires build state PUBLISHED")
@@ -27,6 +33,9 @@ if runtime_cutover:
         errors.append("runtime cutover requires manifest/base URLs")
     if plan.get("publication_performed") is not True:
         errors.append("runtime cutover requires completed publication plan")
+    manifest_url=publication.get("manifest_url")
+    if manifest_url and ('RUNTIME_MANIFEST_URL = "'+manifest_url+'"') not in runtime:
+        errors.append("runtime manifest URL must exactly match publication evidence")
 else:
     # Before the reviewed runtime switch, legacy remains a mandatory safety route.
     if legacy not in plugin:
