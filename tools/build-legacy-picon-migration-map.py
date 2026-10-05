@@ -41,13 +41,11 @@ def main():
          "rows":rows,"mapped":sum(r["state"]=="ARCHIVED_SOURCE" for r in rows),
          "unmapped":len(missing)}
     a.output.parent.mkdir(parents=True,exist_ok=True)
-    a.output.write_text(json.dumps(doc,sort_keys=True,indent=2)+"
-",encoding="utf-8")
+    a.output.write_text(json.dumps(doc,sort_keys=True,indent=2)+chr(10),encoding="utf-8")
     if a.runtime_output:
         runtime={r["legacy_id"]:r["warder_archive_url"] for r in rows if r["state"]=="ARCHIVED_SOURCE"}
         a.runtime_output.parent.mkdir(parents=True,exist_ok=True)
-        a.runtime_output.write_text(json.dumps({"schema":1,"source_commit":"9cdda4ab414e7d50a97ca9285db8ebbb75fba615","archives":runtime},sort_keys=True,separators=(",",":"))+"\
-",encoding="utf-8")
+        a.runtime_output.write_text(json.dumps({"schema":1,"source_commit":"9cdda4ab414e7d50a97ca9285db8ebbb75fba615","archives":runtime},sort_keys=True,separators=(",",":"))+chr(10),encoding="utf-8")
     print("legacy migration map: %d mapped, %d unresolved" % (doc["mapped"],doc["unmapped"]))
 
 if __name__=="__main__":main()
