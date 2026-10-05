@@ -49,3 +49,22 @@ Normalization closure: canonical underscore service references are now idempoten
 Retry production publication after strict BUILD-EVIDENCE JSON newline fix.
 Production publish retry: BUILD-EVIDENCE serialization hardened and self-validated.
 Runtime cutover validation: verified production manifest enabled on working branch.
+
+RUNTIME_CUTOVER_FULL_VALIDATION_TARGETS:
+- runtime publication gate enabled only on warder-modernization-work until validation is fully green
+- production manifest URL pinned exactly to raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json
+- production main backend remains commit c78047bd5c0bdfdd522cec69673fa95ac2376da6 during validation; no publication write is authorized
+- validate schema, pinned Warder Master source ref 2827fed5b2e6ae4697f08ca57a8c2298079d410f, 114 packages, 124 canonical parts, three channel families, 20 MiB maximum part size
+- validate trusted HTTPS host/path, canonical part00..N ordering, per-part bytes and SHA256, package byte sum, full reassembly bytes and SHA256
+- validate selective sync never falls through to FULL, FULL semantics remain explicit, empty selective stays empty, position filtering and unknown orbital exclusion remain fail-closed
+- validate collision selectors 08W and 160E remain blocked; never guess through a collision
+- validate unsupported style/resolution, zero-package and malformed manifest cases fail closed
+- validate ZIP traversal/path, symlink, duplicate, extension, size, compression and PNG-signature guards
+- validate destination protection and revalidation before each install; atomic os.replace install and tempfile cleanup
+- validate runtime errors and incomplete selective sync remain retry-ready
+- preserve legacy https://picon.cz/download/%s/ fallback and mixed Warder+legacy queue behavior
+- do not modify Radio TEST191 or unrelated plugin/runtime assets
+- do not create a public GitHub Release
+- workflow permissions must remain contents: read and one-time production publication marker must remain absent
+- final verdict must distinguish CI/integrity PASS from external raw HTTP reachability if direct HTTP cannot be independently tested
+- only after every executable gate is green is runtime cutover eligible for a separate controlled production step
