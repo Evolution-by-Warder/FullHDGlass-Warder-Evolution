@@ -114,6 +114,7 @@ assert 'self.warderPiconPrefs["prepared"] = False' not in missing_branch
 assert 'self.warderPiconPrefs["prepared"] = False' in plugin_source
 assert 'self.warderChannelState = "done"' in plugin_source
 assert 'no TV bouquet services found for Warder selective sync' in plugin_source
+assert 'Warder channel selection resolved to no packages' in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 
 with tempfile.TemporaryDirectory() as d:
