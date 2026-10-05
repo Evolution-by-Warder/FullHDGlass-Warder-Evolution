@@ -116,6 +116,9 @@ assert 'self.warderChannelState = "done"' in plugin_source
 assert 'no TV bouquet services found for Warder selective sync' in plugin_source
 assert 'Warder channel selection resolved to no packages' in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
+run_block = plugin_source[plugin_source.index("def _warderRunChannelQueue"):plugin_source.index("def dwnLoop")]
+assert 'finally:' in run_block and 'os.unlink(archive)' in run_block
+assert 'if not self.warderChannelJobs and not (queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services")):' in run_block
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
