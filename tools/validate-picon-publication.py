@@ -29,7 +29,10 @@ def main():
     names=[p.get("filename") for p in pkgs]
     if None in names or len(set(names))!=len(names): errors.append("package filenames are missing or duplicated")
     expected_base=a.expected_base_url.rstrip("/")
-    if a.production and "/warder-modernization-work/" in expected_base: errors.append("production base URL points at development branch")
+    if a.production:
+        stable="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels"
+        if expected_base!=stable: errors.append("production base URL must equal stable Warder channel-picon path")
+        if m.get("delivery")!="raw-github-parts": errors.append("production publication must use raw-github-parts delivery")
     manifest_names=set(names)
     part_meta={x.get("filename"):x for x in m.get("parts",[])} if a.parts else {}
     disk={p.name for p in a.root.glob("*.zip")}
