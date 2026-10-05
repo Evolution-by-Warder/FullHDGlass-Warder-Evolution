@@ -10,6 +10,7 @@ m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
 assert m.normalize_service_reference("1:0:1:1328:CA2:3:EB0000:0:0:0:") == "1_0_1_1328_CA2_3_EB0000_0_0_0"
+assert m.normalize_service_reference("1_0_1_1328_CA2_3_EB0000_0_0_0") == "1_0_1_1328_CA2_3_EB0000_0_0_0"
 assert m.normalize_service_reference("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:") == "1_0_1_1328_CA2_3_EB0000_0_0_0"
 assert m.normalize_service_reference("garbage") == ""
 assert m.service_orbital_position("1:0:1:1328:CA2:3:EB0000:0:0:0:") == "23.5e"
