@@ -57,6 +57,7 @@ def main():
             "selector_id":p["selector_id"],
             "family":p["family"],
             "warder_key":p["warder_key"],
+            "resolution":p["resolution"],
             "filename":name,
             "bytes":p["bytes"],
             "sha256":p["sha256"],
