@@ -310,6 +310,11 @@ def plan_runtime_packages(document, queue):
         packages = [p for p in candidates if p.get("selector_id") in wanted_set]
         available = set(p.get("selector_id") for p in packages)
         missing = [sid for sid in wanted if sid not in available]
+    elif queue.get("mode") == UPDATE_MODE_SYNC_TV:
+        # Empty selective input means there is nothing to synchronize. Never
+        # reinterpret it as FULL/all-packages.
+        packages = []
+        missing = []
     else:
         packages = candidates
         missing = []
