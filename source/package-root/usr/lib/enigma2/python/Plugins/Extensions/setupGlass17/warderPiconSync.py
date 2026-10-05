@@ -141,7 +141,7 @@ def build_sync_request(enigma2_dir=ENIGMA2_DIR, selected_positions=None,
             continue
         services.append({"service_reference": stem, "position": position})
     return {
-        "mode": "sync-tv-lists",
+        "mode": UPDATE_MODE_SYNC_TV_RADIO if include_radio else UPDATE_MODE_SYNC_TV,
         "style": style,
         "resolution": resolution,
         "services": services,
@@ -149,14 +149,41 @@ def build_sync_request(enigma2_dir=ENIGMA2_DIR, selected_positions=None,
 
 
 UPDATE_MODE_SYNC_TV = "sync-tv-lists"
-UPDATE_MODE_FULL = "full"
-DEFAULT_UPDATE_MODE = UPDATE_MODE_SYNC_TV
-DEFAULT_STYLE = "transparent"
-DEFAULT_RESOLUTION = "220x132"
+UPDATE_MODE_SYNC_TV_RADIO = "sync-tv-radio-lists"
+UPDATE_MODE_REPLACE_ALL = "replace-all-selected"
+UPDATE_MODE_INCREMENTAL = "incremental-selected"
+# Kept for source compatibility with TEST195 callers; its package-copy mode is
+# now explicitly named incremental rather than the ambiguous legacy "FULL".
+UPDATE_MODE_FULL = UPDATE_MODE_INCREMENTAL
+DEFAULT_UPDATE_MODE = None
+DEFAULT_STYLE = None
+DEFAULT_RESOLUTION = None
+DEFAULT_DESTINATION = "/usr/share/enigma2/picon"
+CHANNEL_RESOLUTION_CHOICES = (
+    ("50x30", "50 x 30 - Mini picons"),
+    ("220x132", "220 x 132 - XPicons"),
+    ("400x240", "400 x 240 - Large picons"),
+)
+AUXILIARY_ASSET_KEYS = (
+    "piconProv-220", "piconProv-b", "piconProv-w",
+    "piconSat-220", "piconSat-b", "piconSat-w",
+    "piconCam-b", "piconCam-w",
+    "piconWeather-b", "piconWeather-w",
+)
+PICON_DESTINATIONS = (
+    ("/usr/share/enigma2/picon", "Receiver memory"),
+    ("/media/hdd/picon", "Hard disk"),
+    ("/media/usb/picon", "USB storage"),
+    ("/media/sdcard/picon", "SD card"),
+    ("/media/mmc/picon", "MMC storage"),
+    ("/picon", "Root picon directory"),
+)
 
 UPDATE_MODES = (
     (UPDATE_MODE_SYNC_TV, "Synchronize with TV lists"),
-    (UPDATE_MODE_FULL, "FULL"),
+    (UPDATE_MODE_SYNC_TV_RADIO, "Synchronize with TV and radio lists"),
+    (UPDATE_MODE_REPLACE_ALL, "Copy all; replace current selected-position picons"),
+    (UPDATE_MODE_INCREMENTAL, "Copy all; incremental update"),
 )
 STYLES = (
     ("transparent", "Transparent"),
@@ -243,15 +270,43 @@ def plan_legacy_channel_archives(selected_labels, satlist, resolution, style):
     return result
 
 
-def default_preferences(destination="/media/hdd/picon"):
+def default_preferences(destination=DEFAULT_DESTINATION):
     return {
         "positions": [],
-        "resolution": DEFAULT_RESOLUTION,
-        "style": DEFAULT_STYLE,
-        "destination": destination,
-        "update_mode": DEFAULT_UPDATE_MODE,
+        "resolution": None,
+        "style": None,
+        "destination": destination or DEFAULT_DESTINATION,
+        "update_mode": None,
         "prepared": False,
     }
+
+
+def reset_working_preferences(preferences=None):
+    """Return the deliberate empty state used after a fully successful action."""
+    return default_preferences(DEFAULT_DESTINATION)
+
+
+def channel_preferences_ready(preferences):
+    prefs = dict(preferences or {})
+    return bool(valid_position_selection(prefs.get("positions"))
+                and prefs.get("resolution") in ("50x30", "220x132", "400x240")
+                and prefs.get("style") in dict(STYLES)
+                and channel_style_supported(prefs.get("resolution"), prefs.get("style"))
+                and prefs.get("update_mode") in dict(UPDATE_MODES)
+                and validate_destination(prefs.get("destination")))
+
+
+def auxiliary_variants(asset_keys):
+    """List only real catalog-backed variants, in a stable color order."""
+    definitions = {
+        "piconProv": (("piconProv-220", "Transparent"), ("piconProv-b", "Black"), ("piconProv-w", "White")),
+        "piconSat": (("piconSat-220", "Transparent"), ("piconSat-b", "Black"), ("piconSat-w", "White")),
+        "piconCam": (("piconCam-220", "Transparent"), ("piconCam-b", "Black"), ("piconCam-w", "White")),
+        "piconWeather": (("piconWeather-220", "Transparent"), ("piconWeather-b", "Black"), ("piconWeather-w", "White")),
+    }
+    available = set(asset_keys or [])
+    return {kind: tuple((key, label) for key, label in options if key in available)
+            for kind, options in definitions.items()}
 
 
 def set_preference(preferences, key, value):
@@ -384,7 +439,7 @@ def plan_runtime_packages(document, queue):
     explicit = list(queue.get("selector_ids", []))
     if explicit:
         wanted = explicit
-    elif queue.get("mode") == UPDATE_MODE_SYNC_TV:
+    elif queue.get("mode") in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
         wanted = []
         seen = set()
         for service in queue.get("services", []):
@@ -413,7 +468,7 @@ def plan_runtime_packages(document, queue):
         packages = [p for p in candidates if p.get("selector_id") in wanted_set]
         available = set(p.get("selector_id") for p in packages)
         missing = [sid for sid in wanted if sid not in available]
-    elif queue.get("mode") == UPDATE_MODE_SYNC_TV:
+    elif queue.get("mode") in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
         # Empty selective input means there is nothing to synchronize. Never
         # reinterpret it as FULL/all-packages.
         packages = []
@@ -477,21 +532,42 @@ def build_download_jobs(document, package_plan):
 
 def validate_destination(path):
     """Reject relative/root destinations; UI may only stage into a real subdirectory."""
-    raw = str(path or "")
+    raw = os.path.normpath(str(path or ""))
     if not os.path.isabs(raw):
         return None
     value = os.path.realpath(raw)
+    # Do not silently follow a user supplied symlink while installing files.
+    if value != os.path.abspath(raw):
+        return None
+    probe = os.path.sep
+    for component in [part for part in raw.split(os.path.sep) if part]:
+        probe = os.path.join(probe, component)
+        if os.path.islink(probe):
+            return None
     if value == os.path.sep:
         return None
+    if value == DEFAULT_DESTINATION:
+        return value
     protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc", "/root", "/run", "/sbin", "/sys", "/usr", "/var")
     if value in protected or any(value.startswith(p + os.path.sep) for p in protected):
         return None
     return value
 
 
+def destination_storage_available(path):
+	"""Do not create a removable-storage preset on the receiver's root disk."""
+	value = validate_destination(path)
+	if not value:
+		return False
+	for mountpoint in ("/media/hdd", "/media/usb", "/media/sdcard", "/media/mmc"):
+		if value == mountpoint or value.startswith(mountpoint + os.path.sep):
+			return os.path.ismount(mountpoint)
+	return True
+
+
 def wanted_picon_names(queue):
     """Selective mode installs only receiver bouquet identities; FULL installs all."""
-    if queue.get("mode") == UPDATE_MODE_FULL:
+    if queue.get("mode") not in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
         return None
     names = set()
     for service in queue.get("services", []):
@@ -519,6 +595,34 @@ def classify_requested_picons(wanted, upstream_names, installed_names):
     }
 
 
+def plan_stale_position_picons(existing_names, selected_positions, package_names):
+    """Select only stale PNG service identities for explicitly selected orbits."""
+    selected = set(position_token(x) for x in (selected_positions or []) if x)
+    if not selected:
+        return []
+    packages = set(package_names or [])
+    stale = []
+    for name in sorted(set(existing_names or [])):
+        if not str(name).lower().endswith(".png") or name in packages:
+            continue
+        stem = normalize_service_reference(os.path.basename(str(name))[:-4].replace("_", ":"))
+        position = service_orbital_position(stem.replace("_", ":")) if stem else None
+        if position and position.lower() in selected:
+            stale.append(str(name))
+    return stale
+
+
+def success_summary(updated, selected_services=None, translate=None):
+    """Format localized result lines without ambiguous 'file(s)' wording."""
+    translate = translate or (lambda message: message)
+    count = int(updated)
+    result = translate("%d picon successfully updated" if count == 1 else "%d picons successfully updated") % count
+    if selected_services is not None:
+        services = int(selected_services)
+        result += "\n" + (translate("%d service selected" if services == 1 else "%d services selected") % services)
+    return result
+
+
 def safe_archive_member(name):
     value = str(name or "").replace("\\", "/")
     if not value or value.startswith("/") or value.startswith("../") or "/../" in ("/" + value):
@@ -537,22 +641,27 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     """Create the receiver action queue without performing network/filesystem writes."""
     prefs = dict(default_preferences())
     prefs.update(preferences or {})
-    mode = prefs.get("update_mode", DEFAULT_UPDATE_MODE)
-    if mode not in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_FULL):
-        raise ValueError("unsupported update mode")
+    mode = prefs.get("update_mode")
     labels = list(prefs.get("positions", []) or [])
     if not valid_position_selection(labels):
         raise ValueError("no-satellite-position-selected")
-    if prefs.get("resolution", DEFAULT_RESOLUTION) != "220x132":
+    if mode not in dict(UPDATE_MODES):
+        raise ValueError("unsupported update mode")
+    resolution = prefs.get("resolution")
+    style = prefs.get("style")
+    if resolution != "220x132":
         raise ValueError("non-native resolution requires pinned selected-position archives")
-    if not channel_style_supported("220x132", prefs.get("style", DEFAULT_STYLE)):
+    if not channel_style_supported("220x132", style):
         raise ValueError("unsupported Warder channel picon colour")
+    destination = validate_destination(prefs.get("destination"))
+    if not destination:
+        raise ValueError("invalid Warder picon destination")
     selected = [position_token(x) for x in labels if position_token(x)]
     selectors = selected_selector_ids(labels)
-    if mode == UPDATE_MODE_SYNC_TV:
+    if mode in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
         request = build_sync_request(
-            enigma2_dir, selected, prefs.get("style", DEFAULT_STYLE),
-            prefs.get("resolution", DEFAULT_RESOLUTION), include_radio=False)
+            enigma2_dir, selected, style, resolution,
+            include_radio=(mode == UPDATE_MODE_SYNC_TV_RADIO))
         services = request["services"]
     else:
         services = []
@@ -563,9 +672,9 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         "positions": selected,
         "positions_labels": labels,
         "selector_ids": selectors,
-        "style": prefs.get("style", DEFAULT_STYLE),
-        "resolution": prefs.get("resolution", DEFAULT_RESOLUTION),
-        "destination": prefs.get("destination"),
+        "style": style,
+        "resolution": resolution,
+        "destination": destination,
         "services": services,
         "service_count": len(services),
         "manifest_url": (publication or {}).get("manifest_url"),

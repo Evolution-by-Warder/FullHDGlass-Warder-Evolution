@@ -14,6 +14,8 @@ MODULE = os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/
 spec = importlib.util.spec_from_file_location("warderPiconSync", MODULE)
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
+with open(MODULE, "r") as h:
+    sync_source = h.read()
 
 assert m.normalize_service_reference("1:0:1:1328:CA2:3:EB0000:0:0:0:") == "1_0_1_1328_CA2_3_EB0000_0_0_0"
 assert m.normalize_service_reference("1_0_1_1328_CA2_3_EB0000_0_0_0") == "1_0_1_1328_CA2_3_EB0000_0_0_0"
@@ -69,17 +71,22 @@ with tempfile.TemporaryDirectory() as d:
     else:
         raise AssertionError("empty manual selection must fail closed")
 
-prefs = m.default_preferences("/media/hdd/picon")
-assert prefs["update_mode"] == "sync-tv-lists"
-assert prefs["style"] == "transparent"
-assert prefs["resolution"] == "220x132"
+prefs = m.default_preferences()
+assert prefs["update_mode"] is None
+assert prefs["style"] is None
+assert prefs["resolution"] is None
+assert prefs["destination"] == "/usr/share/enigma2/picon"
 assert prefs["prepared"] is False
 assert m.has_executable_action(prefs) is False
 prefs = m.set_preference(prefs, "style", "black")
 assert prefs["prepared"] is True
 assert m.has_executable_action(prefs) is True
 assert m.has_executable_action(m.default_preferences(), ordinary_selected=True) is True
-assert [x[0] for x in m.UPDATE_MODES] == ["sync-tv-lists", "full"]
+assert [x[0] for x in m.UPDATE_MODES] == [m.UPDATE_MODE_SYNC_TV, m.UPDATE_MODE_SYNC_TV_RADIO, m.UPDATE_MODE_REPLACE_ALL, m.UPDATE_MODE_INCREMENTAL]
+def configured(position, mode=m.UPDATE_MODE_SYNC_TV, destination="/media/hdd/picon", resolution="220x132", style="transparent"):
+    return {"positions": list(position), "resolution": resolution, "style": style,
+            "destination": destination, "update_mode": mode, "prepared": True}
+
 prefs2 = m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink", "DVB-T sk/cz"])
 assert prefs2["positions"] == ["(23.5E) Skylink", "DVB-T sk/cz"]
 assert prefs2["prepared"] is True
@@ -101,14 +108,14 @@ assert "def cancel(self):" in selector_block and "self.close(None)" in selector_
 assert "def warderPositionAnswer(self, answer=None):" in plugin_source
 assert "if answer is None or not isinstance(answer, (list, tuple)):" in plugin_source
 assert "self.warderPositionSelectionAttempted = True" in plugin_source
-assert 'if self.warderPiconPrefs.get("prepared") and not warderPiconSync.valid_position_selection(self.warderPiconPrefs.get("positions")):' in plugin_source
+assert 'if prepared and not warderPiconSync.valid_position_selection(self.warderPiconPrefs.get("positions")):' in plugin_source
 assert "Select at least one satellite position." in plugin_source
 assert '"No position selected"' in plugin_source
 assert "valid_position_selection(positions)" in plugin_source
 assert '_("Select at least one satellite position.")' in plugin_source
-for icon in ('"wp-pos": "icons/dish.png"', '"wp-res": "icons/i_fhd.png"',
-             '"wp-style": "down/ba.png"', '"wp-dest": "icons/folder.png"',
-             '"wp-mode": "icons/update.png"'):
+for icon in ('"wp-pos": "down/p4.png"', '"wp-res": "down/ba5.png"',
+             '"wp-style": "down/warder-colour.png"', '"wp-dest": "down/warder-location.png"',
+             '"wp-mode": "down/i.png"'):
     assert icon in plugin_source, icon
 assert "warder_help.get(row_id" in plugin_source
 assert "text=description" in plugin_source
@@ -129,7 +136,7 @@ assert "classify_requested_picons(" in plugin_source
 assert "self.warderChannelAvailable.update(available)" in plugin_source
 assert '"outside_selected_packages"' in plugin_source
 assert '_("Selected upstream picons were not installed:")' in plugin_source
-assert '_("selected receiver service(s) have no matching picon in the selected packages.")' in plugin_source
+assert '_("selected receiver services have no matching picon in the selected packages.")' in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source
 assert "self.dwnTimer.start(25, True)" in plugin_source
 assert 'return _("ERROR") + ": " + _("Selected upstream picons were not installed:")' in plugin_source
@@ -146,7 +153,7 @@ assert "oversized Warder channel download" in plugin_source
 assert 'legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows for x in self.menuListAll)' in plugin_source
 assert 'self.warderChannelState = "locked"' in plugin_source
 assert 'if self.warderChannelState != "locked":' in plugin_source
-assert 'if self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows:' in plugin_source
+assert 'if self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows and self.menuListAll[x][0] not in self.warderFailedRows:' in plugin_source
 dwn_loop = plugin_source.split("def dwnLoop(self, txt=\"\"):", 1)[1].split("\n\tdef dwnFin", 1)[0]
 assert 'self.warderPiconPrefs.get("resolution") == "220x132"' in dwn_loop
 assert 'self.warderChannelState not in ("locked", "error")' in dwn_loop
@@ -156,13 +163,13 @@ error_branch = plugin_source[plugin_source.index("except Exception as err:", plu
 assert 'self.warderPiconPrefs["prepared"] = False' not in error_branch
 assert 'self.menuListAll[row][4] = "x"' not in error_branch
 missing_start = plugin_source.index("if missing_files:", plugin_source.index("def _warderRunChannelQueue"))
-missing_end = plugin_source.index('self.warderPiconPrefs["prepared"] = False', missing_start)
+missing_end = plugin_source.index('if queue.get("mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL:', missing_start)
 missing_branch = plugin_source[missing_start:missing_end]
 assert 'self.warderChannelState = "error"' in missing_branch
 assert 'self.warderPiconPrefs["prepared"] = False' not in missing_branch
 assert 'self.warderPiconPrefs["prepared"] = False' in plugin_source
 assert 'self.warderChannelState = "done"' in plugin_source
-assert 'no TV bouquet services found for Warder selective sync' in plugin_source
+assert 'no selected TV or radio bouquet services found for Warder selective sync' in plugin_source
 assert 'Warder channel selection resolved to no packages' in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 run_block = plugin_source[plugin_source.index("def _warderRunChannelQueue"):plugin_source.index("def dwnLoop")]
@@ -172,7 +179,7 @@ assert 'invalid Warder picon PNG signature' in install_block
 assert 'signature != b"\\x89PNG\\r\\n\\x1a\\n"' in install_block
 assert 'os.replace(tmp, os.path.join(dest, name))' in install_block
 assert 'finally:' in run_block and 'os.unlink(archive)' in run_block
-assert 'if not self.warderChannelJobs and not (queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services")):' in run_block
+assert 'if not self.warderChannelJobs and not (queue.get("mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO) and not queue.get("services")):' in run_block
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -180,14 +187,15 @@ with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "userbouquet.q.tv"), "w") as h:
         h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
         h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\n")
-    locked = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, {"persistent": False, "manifest_url": None})
+    channel_prefs = configured(["(23.5E) Skylink"])
+    locked = m.build_runtime_queue(channel_prefs, d, {"persistent": False, "manifest_url": None})
     assert locked["state"] == m.PUBLICATION_LOCKED
     assert locked["service_count"] == 1
     assert locked["services"][0]["position"] == "23.5e"
-    live = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, m.runtime_publication())
+    live = m.build_runtime_queue(channel_prefs, d, m.runtime_publication())
     assert live["state"] == m.READY
     assert live["service_count"] == 1
-    ready = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
+    ready = m.build_runtime_queue(channel_prefs, d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
     assert ready["state"] == m.READY and ready["service_count"] == 1
     try:
         m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
@@ -195,10 +203,9 @@ with tempfile.TemporaryDirectory() as d:
         assert str(error) == "no-satellite-position-selected"
     else:
         raise AssertionError("empty runtime selection must not become all positions")
-    full_prefs = m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"])
-    full_prefs = m.set_preference(full_prefs, "update_mode", "full")
+    full_prefs = configured(["(23.5E) Skylink"], m.UPDATE_MODE_INCREMENTAL)
     full = m.build_runtime_queue(full_prefs, d)
-    assert full["mode"] == "full" and full["service_count"] == 0
+    assert full["mode"] == m.UPDATE_MODE_INCREMENTAL and full["service_count"] == 0
     assert m.wanted_picon_names(full) is None
     wanted = m.wanted_picon_names(locked)
     assert wanted == {"1_0_1_1328_CA2_3_EB0000_0_0_0.png"}
@@ -241,16 +248,16 @@ wrong_part_name_manifest["packages"] = [dict(valid_manifest["packages"][0], part
 ])]
 wrong_part_name_manifest["parts"] = [dict(valid_manifest["parts"][0], filename="235E-transparent.zip.part01")]
 assert "non-canonical package part" in m.validate_publication_manifest(wrong_part_name_manifest)
-sel = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "positions", ["(23.5E) Astra 3B"]))
+sel = m.select_manifest_packages(valid_manifest, configured(["(23.5E) Astra 3B"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
 assert sel["packages"][0]["selector_id"] == "235E"
-wrong_res = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "resolution", "400x240"))
+wrong_res = m.select_manifest_packages(valid_manifest, configured(["(23.5E) Astra 3B"], resolution="400x240"))
 assert wrong_res["packages"] == []
 provider_manifest = dict(valid_manifest)
 provider_manifest["packages"] = [dict(valid_manifest["packages"][0], selector_id="FREESAT", warder_key="0.8w/freesat")]
-provider_sel = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Freesat"]))
+provider_sel = m.select_manifest_packages(provider_manifest, configured(["(0.8W) Freesat"]))
 assert provider_sel["selector_ids"] == ["FREESAT"] and len(provider_sel["packages"]) == 1
-wrong_provider = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Digi / Telly"]))
+wrong_provider = m.select_manifest_packages(provider_manifest, configured(["(0.8W) Digi / Telly"]))
 assert wrong_provider["state"] == "partial" and wrong_provider["missing_selectors"] == ["DIGI_TELLY"]
 queue = {
     "mode": m.UPDATE_MODE_SYNC_TV, "positions_labels": ["(23.5E) Astra 3B"], "selector_ids": ["235E"],
@@ -427,22 +434,23 @@ assert m.legacy_channel_destination("400x240") == "picon_400x240"
 
 # Callback cancellation is explicit and the selection guard is evaluated before work starts.
 assert "def warderPiconChoiceAnswer(self, answer=None):" in plugin_source
-assert "def warderAuxPiconAnswer(self, answer=None):" in plugin_source
+assert "def warderAuxPiconAnswerFor(self, row, *answer):" in plugin_source
 assert "def satSelcallback(self, answer=None):" in plugin_source
 assert "def cleanAnswerNow(self, answer=None):" in plugin_source
 assert "self.openAuxPiconChoice(self.menuListAll[tmp][0])" in plugin_source
 assert "if not self._legacyPiconArchiveUrl(archive_id):" in plugin_source
 assert "plan_legacy_channel_archives(" in plugin_source
 assert "build_sync_request(" in plugin_source
-assert "if self.warderPiconPrefs.get(\"update_mode\") == \"sync-tv-lists\":" in plugin_source
+assert "if self.warderPiconPrefs.get(\"update_mode\") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO):" in plugin_source
 assert "warderLegacyChannelWanted" in plugin_source
 assert "classify_requested_picons(" in plugin_source
 assert "def downMulti(self, k, Ddir, continue_loop=True):" in plugin_source
 assert "legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)" in plugin_source
 for row_id in ("aux-prov", "aux-sat", "aux-cam", "aux-weather"):
     assert row_id in plugin_source
-assert "piconProv-220" in plugin_source and "piconSat-220" in plugin_source
-assert "piconCam-b" in plugin_source and "piconWeather-w" in plugin_source
+assert "AUXILIARY_ASSET_KEYS" in plugin_source
+assert "piconProv-220" in sync_source and "piconSat-220" in sync_source
+assert "piconCam-b" in sync_source and "piconWeather-w" in sync_source
 assert "CHSPiconbig" in plugin_source and "Large channel selection icons (710 x 682)" in plugin_source
 
 # Validate the split large channel-selection package against its pinned catalogue

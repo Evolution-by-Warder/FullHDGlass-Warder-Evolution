@@ -1342,7 +1342,7 @@ msgstr "Nenašlo sa žiadne mesto"
 
 #: Warder TEST194
 msgid "Choose satellite positions for channel picon downloads and updates."
-msgstr "Vyberte satelitné pozície, pre ktoré sa budú sťahovať a aktualizovať logá kanálov."
+msgstr "Vyberte satelitné pozície, pre ktoré sa budú sťahovať a aktualizovať picony kanálov."
 
 #: Warder TEST194
 msgid "Choose picon resolution for channel lists and skin screens."
@@ -1354,7 +1354,7 @@ msgstr "Vyberte variant piconov: priehľadný, čierny alebo biely."
 
 #: Warder TEST194
 msgid "Choose where channel picons are downloaded and updated."
-msgstr "Vyberte umiestnenie, kam sa budú picony sťahovať a aktualizovať."
+msgstr "Vyberte cieľ, kam sa budú sťahovať a ukladať picony kanálov."
 
 #: Warder TEST194
 msgid "Choose whether to sync picons from TV lists or download full selected packages."
@@ -1384,7 +1384,7 @@ msgid "Choose an available channel picon size and the large channel selection ic
 msgstr "Vyberte dostupnú veľkosť pikonov kanálov a balík veľkých ikon výberu kanálov."
 
 msgid "Choose a channel picon colour supported at the selected size."
-msgstr "Vyberte farbu pikonov dostupnú pre zvolenú veľkosť."
+msgstr "Vyberte dostupnú farbu piconov pre zvolené rozlíšenie."
 
 msgid "Choose the available provider picon variant."
 msgstr "Vyberte dostupný variant pikonov poskytovateľa."
@@ -1421,3 +1421,174 @@ msgstr "Neplatné umiestnenie piconov"
 
 msgid "Large channel selection icons (710 x 682)"
 msgstr "Veľké ikony pre vybrané typy zoznamu kanálov (710 x 682)"
+
+# TEST196 Warder picon settings
+msgid "Satellite positions"
+msgstr "Satelitné pozície"
+
+# TEST196 Warder picon settings
+msgid "Picon resolution"
+msgstr "Rozlíšenie piconov"
+
+# TEST196 Warder picon settings
+msgid "Picon colour"
+msgstr "Farba piconov"
+
+# TEST196 Warder picon settings
+msgid "Picon location"
+msgstr "Umiestnenie piconov"
+
+# TEST196 Warder picon settings
+msgid "Update method"
+msgstr "Metóda aktualizácie"
+
+# TEST196 Warder picon settings
+msgid "No resolution selected"
+msgstr "Nie je vybrané žiadne rozlíšenie"
+
+# TEST196 Warder picon settings
+msgid "No colour selected"
+msgstr "Nie je vybraná žiadna farba"
+
+# TEST196 Warder picon settings
+msgid "No update method selected"
+msgstr "Nie je vybraná žiadna metóda aktualizácie"
+
+# TEST196 Warder picon settings
+msgid "Receiver memory"
+msgstr "Interná pamäť prijímača"
+
+# TEST196 Warder picon settings
+msgid "Hard disk"
+msgstr "Pevný disk"
+
+# TEST196 Warder picon settings
+msgid "USB storage"
+msgstr "Úložisko USB"
+
+# TEST196 Warder picon settings
+msgid "SD card"
+msgstr "Karta SD"
+
+# TEST196 Warder picon settings
+msgid "MMC storage"
+msgstr "Úložisko MMC"
+
+# TEST196 Warder picon settings
+msgid "Root picon directory"
+msgstr "Koreňový priečinok piconov"
+
+# TEST196 Warder picon settings
+msgid "User defined"
+msgstr "Vlastné umiestnenie"
+
+# TEST196 Warder picon settings
+msgid "User defined..."
+msgstr "Definované používateľom…"
+
+# TEST196 Warder picon settings
+msgid "50 x 30 - Mini picons"
+msgstr "50 × 30 – Mini picony"
+
+# TEST196 Warder picon settings
+msgid "220 x 132 - XPicons"
+msgstr "220 × 132 – XPicony"
+
+# TEST196 Warder picon settings
+msgid "400 x 240 - Large picons"
+msgstr "400 × 240 – Veľké picony"
+
+# TEST196 Warder picon settings
+msgid "710 x 682 - Large icons for selected channel list types"
+msgstr "710 × 682 – Veľké ikony pre vybrané typy zoznamu kanálov"
+
+# TEST196 Warder picon settings
+msgid "Synchronize with TV lists"
+msgstr "Synchronizovať so zoznamami TV kanálov"
+
+# TEST196 Warder picon settings
+msgid "Synchronize with TV and radio lists"
+msgstr "Synchronizovať so zoznamami TV + RADIO kanálov"
+
+# TEST196 Warder picon settings
+msgid "Copy all; replace current selected-position picons"
+msgstr "Skopírovať všetky – nahradiť existujúce picony vybraných pozícií"
+
+# TEST196 Warder picon settings
+msgid "Copy all; incremental update"
+msgstr "Skopírovať všetky – prírastková aktualizácia"
+
+# TEST196 Warder picon settings
+msgid "Download destination:"
+msgstr "Cieľové umiestnenie:"
+
+# TEST196 Warder picon settings
+msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
+msgstr "Vyberte rozlíšenie piconov alebo veľké ikony výberu kanálov."
+
+# TEST196 Warder picon settings
+msgid "Choose how channel picons are synchronized or copied for selected positions."
+msgstr "Vyberte spôsob synchronizácie alebo kopírovania piconov pre zvolené pozície."
+
+# TEST196 Warder picon settings
+msgid "Choose a resolution, colour, location and update method before downloading."
+msgstr "Pred sťahovaním vyberte rozlíšenie, farbu, umiestnenie a metódu aktualizácie."
+
+# TEST196 Warder picon settings
+msgid "Create picon directory?"
+msgstr "Vytvoriť priečinok piconov?"
+
+# TEST196 Warder picon settings
+msgid "Cannot create picon destination"
+msgstr "Cieľový priečinok piconov sa nepodarilo vytvoriť"
+
+# TEST196 Warder picon settings
+msgid "Picon destination is not writable"
+msgstr "Do cieľového priečinka piconov sa nedá zapisovať"
+
+# TEST196 Warder picon settings
+msgid "Select an existing directory."
+msgstr "Vyberte existujúci priečinok."
+
+# TEST196 Warder picon settings
+msgid "Cannot read picon destination"
+msgstr "Cieľový priečinok piconov sa nedá prečítať"
+
+# TEST196 Warder picon settings
+msgid "Could not remove stale selected-position picon"
+msgstr "Zastaraný picon vybranej pozície sa nepodarilo odstrániť"
+
+# TEST196 Warder picon settings
+msgid "Could not replace selected-position picons safely."
+msgstr "Picony vybraných pozícií sa nepodarilo bezpečne nahradiť."
+
+# TEST196 Warder picon settings
+msgid "selected receiver services have no matching picon in the selected packages."
+msgstr "Pre vybrané služby prijímača sa v zvolených balíkoch nenašiel zodpovedajúci picon."
+
+# TEST196 Warder picon settings
+msgid "%d picon successfully updated"
+msgstr "Úspešne aktualizovaný počet piconov: %d"
+
+# TEST196 Warder picon settings
+msgid "%d picons successfully updated"
+msgstr "Úspešne aktualizovaných piconov: %d"
+
+# TEST196 Warder picon settings
+msgid "%d service selected"
+msgstr "Vybraný počet služieb: %d"
+
+# TEST196 Warder picon settings
+msgid "%d services selected"
+msgstr "Vybraných služieb: %d"
+
+# TEST196 localized download results
+msgid "No picons were downloaded."
+msgstr "Neboli stiahnuté žiadne picony."
+
+# TEST196 localized download results
+msgid "%d of %d picons failed to install"
+msgstr "Nepodarilo sa nainštalovať %d z %d piconov."
+# TEST196 storage safety
+msgid "Selected storage is not mounted"
+msgstr "Vybraté úložisko nie je pripojené"

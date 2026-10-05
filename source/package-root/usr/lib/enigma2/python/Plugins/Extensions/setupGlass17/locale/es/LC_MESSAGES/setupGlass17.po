@@ -1422,3 +1422,174 @@ msgstr "Destino de picons no válido"
 
 msgid "Large channel selection icons (710 x 682)"
 msgstr "Iconos grandes para los tipos seleccionados de lista de canales (710 x 682)"
+
+# TEST196 Warder picon settings
+msgid "Satellite positions"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Picon resolution"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Picon colour"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Picon location"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Update method"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "No resolution selected"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "No colour selected"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "No update method selected"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Receiver memory"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Hard disk"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "USB storage"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "SD card"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "MMC storage"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Root picon directory"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "User defined"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "User defined..."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "50 x 30 - Mini picons"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "220 x 132 - XPicons"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "400 x 240 - Large picons"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "710 x 682 - Large icons for selected channel list types"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Synchronize with TV lists"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Synchronize with TV and radio lists"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Copy all; replace current selected-position picons"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Copy all; incremental update"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Download destination:"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Choose how channel picons are synchronized or copied for selected positions."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Choose a resolution, colour, location and update method before downloading."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Create picon directory?"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Cannot create picon destination"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Picon destination is not writable"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Select an existing directory."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Cannot read picon destination"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Could not remove stale selected-position picon"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "Could not replace selected-position picons safely."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "selected receiver services have no matching picon in the selected packages."
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "%d picon successfully updated"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "%d picons successfully updated"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "%d service selected"
+msgstr ""
+
+# TEST196 Warder picon settings
+msgid "%d services selected"
+msgstr ""
+
+# TEST196 localized download results
+msgid "No picons were downloaded."
+msgstr ""
+
+# TEST196 localized download results
+msgid "%d of %d picons failed to install"
+msgstr ""
+# TEST196 storage safety
+msgid "Selected storage is not mounted"
+msgstr ""
