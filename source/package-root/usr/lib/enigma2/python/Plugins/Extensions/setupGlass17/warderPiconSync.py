@@ -45,7 +45,7 @@ def namespace_to_orbital_position(namespace):
         suffix = "w"
     else:
         suffix = "e"
-    return "%d.%de%s" % (orbital // 10, orbital % 10, suffix) if False else "%d.%d%s" % (orbital // 10, orbital % 10, suffix)
+    return "%d.%d%s" % (orbital // 10, orbital % 10, suffix)
 
 
 def service_orbital_position(reference):
