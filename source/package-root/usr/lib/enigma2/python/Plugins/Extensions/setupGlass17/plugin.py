@@ -8557,7 +8557,7 @@ class downloadMenu(Screen):
 			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, self.warderPiconPrefs.get("positions", []))
 			return
 		choices = {
-			"wp-res": [(label, ("resolution", value)) for value, label in warderPiconSync.RESOLUTIONS],
+			"wp-res": [("220 x 132", ("resolution", "220x132")), ("400 x 240", ("resolution", "400x240"))],
 			"wp-style": [(_("Transparent"), ("style", "transparent")), (_("Black"), ("style", "black")), (_("White"), ("style", "white"))],
 			"wp-mode": [(_("Synchronize with TV lists"), ("update_mode", "sync-tv-lists")), ("FULL", ("update_mode", "full"))],
 		}
