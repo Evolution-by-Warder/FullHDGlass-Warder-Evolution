@@ -19,3 +19,4 @@ PNG parser correction rebuild: real binary signature, package QC and receiver ga
 Direct PNG parser regression gate enabled after binary-signature correction.
 Receiver manifest regex correction plus resolution-aware publication and missing-upstream reporting.
 Receiver manifest diagnostic assertion enabled after filename-regex fix.
+Timer-yielded receiver queue and strict selective completeness gate.
