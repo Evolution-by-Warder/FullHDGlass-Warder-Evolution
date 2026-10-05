@@ -32,8 +32,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Evolution-by-Warder/Trezor
-          ref: main
+          ref: 9cdda4ab414e7d50a97ca9285db8ebbb75fba615
           path: .trezor
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Inventory preserved legacy compatibility archives
         shell: bash
