@@ -9,6 +9,9 @@ CATALOG = json.loads((PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlas
 PREFIX = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
 
 assert CATALOG["schema"] == 1
+assert CATALOG["source"]["repository"] == "Evolution-by-Warder/Trezor"
+assert CATALOG["source"]["commit"] == "9cdda4ab414e7d50a97ca9285db8ebbb75fba615"
+assert CATALOG["source"]["path"] == "archives/chocholousek-picons/originals"
 assert CATALOG["mapped"] == 370 and CATALOG["unmapped"] == 29
 assert CATALOG["policy"]["preserve_legacy_ids"] is True
 assert CATALOG["policy"]["guess_missing"] is False
@@ -25,6 +28,8 @@ expected_unresolved = {
 assert {x["legacy_id"] for x in CATALOG["unresolved"]} == expected_unresolved
 assert not (set(CATALOG["archives"]) & expected_unresolved)
 assert all(x["url"].rsplit("/", 1)[-1] == x["filename"] for x in CATALOG["archives"].values())
+assert all("/" not in x["filename"] and "\\" not in x["filename"] and ".." not in x["filename"] for x in CATALOG["archives"].values())
+assert all(x["url"] == PREFIX + x["filename"] for x in CATALOG["archives"].values())
 assert all(x["url"].startswith(PREFIX) and x["url"].endswith(".7z") for x in CATALOG["archives"].values())
 assert not any("picon.cz" in x["url"] for x in CATALOG["archives"].values())
 assert len({x["legacy_id"] for x in CATALOG["unresolved"]}) == 29
