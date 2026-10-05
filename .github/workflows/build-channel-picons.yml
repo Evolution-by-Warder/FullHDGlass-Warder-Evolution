@@ -129,6 +129,13 @@ jobs:
           print("Split publication candidate: PASS (%d parts)"%len(parts))
           PY
 
+      - name: Validate receiver and two-phase cutover gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/test-warder-picon-sync.py
+          python3 tools/validate-channel-picon-two-phase-cutover.py
+
       - name: Upload audited channel-picon artifact
         uses: actions/upload-artifact@v4
         with:
