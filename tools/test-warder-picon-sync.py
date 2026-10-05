@@ -64,6 +64,8 @@ assert keys == list(range(len(keys))), keys
 assert "warderPiconSync.position_token(label)" in plugin_source
 assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
+assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs)" in plugin_source
+assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
