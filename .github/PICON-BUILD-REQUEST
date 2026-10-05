@@ -35,3 +35,4 @@ Selective safety: empty bouquet/service input resolves to zero packages and retr
 Batch mode isolation: position-filtered selective excludes unknown orbital services; explicit FULL selectors stay scoped; empty selective remains zero-package fail-closed.
 Consolidated fail-closed batch: scoped retry tests, reject zero-package non-empty actions, orbital-filter isolation, empty-selective safety.
 Preference and cleanup hardening: invalid style/resolution fail closed; temp channel archive cleanup verified through finally/unlink contract.
+Final pre-publication runtime audit: temp cleanup and zero-package contract now explicitly regression-gated; runtime publication remains locked.
