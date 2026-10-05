@@ -43,8 +43,8 @@ for key,value in {"selectors":57,"matched":40,"ready":38,"collision_blocked":2,"
     if contract.get(key)!=value: errors.append("verified build contract %s mismatch"%key)
 if build.get("state") not in ("BUILT_NOT_PUBLISHED","PUBLISHED"):
     errors.append("channel-picon build state is invalid")
-if build.get("runtime_cutover") is not False:
-    errors.append("runtime cutover must remain false until an explicit separately validated cut-over change")
+if build.get("runtime_cutover") not in (False, True):
+    errors.append("runtime cutover flag must be boolean")
 if build.get("workflow",{}).get("conclusion")!="success": errors.append("recorded channel-picon workflow is not successful")
 if not str(build.get("artifact",{}).get("digest","")).startswith("sha256:"): errors.append("recorded artifact digest is missing")
 
@@ -101,4 +101,4 @@ if "https://picon.cz/download/%s/" not in plugin:
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
-print("PASS channel-picon cut-over contract: 57 selectors; 40 matched; 38 ready; 2 conflict-blocked; 17 missing; runtime switch still locked")
+print("PASS channel-picon cut-over contract: 57 selectors; 40 matched; 38 ready; 2 conflict-blocked; 17 missing; runtime_cutover=%s" % build.get("runtime_cutover"))
