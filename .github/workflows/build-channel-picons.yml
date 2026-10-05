@@ -101,7 +101,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m py_compile tools/prepare-picon-publication.py tools/validate-picon-publication.py tools/materialize-picon-packages.py tools/generate-picon-package-plan.py\n          rm -rf dist/channel-picons-publish
+          python3 -m py_compile tools/prepare-picon-publication.py tools/validate-picon-publication.py tools/materialize-picon-packages.py tools/generate-picon-package-plan.py
+          rm -rf dist/channel-picons-publish
           python3 tools/prepare-picon-publication.py \
             --input dist/channel-picons \
             --manifest dist/channel-picons/manifest.json \
@@ -132,7 +133,8 @@ jobs:
         with:
           name: warder-channel-picons-2827fed5
           path: |
-            dist/channel-picons/
+            dist/channel-picons/manifest.json
+            dist/channel-picons/SHA256SUMS
             dist/channel-picons-publish/
           if-no-files-found: error
           retention-days: 14
