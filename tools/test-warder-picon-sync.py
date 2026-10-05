@@ -366,7 +366,7 @@ warder_msgids = (
     "Satellite picons",
     "CAM picons",
     "Weather picons",
-    "Large for selected channel selection types",
+    "Large channel selection icons (710 x 682)",
     "No legacy picon archive is available for the selected positions and variant.",
     "Invalid picon destination",
     "No position selected",
@@ -443,7 +443,7 @@ for row_id in ("aux-prov", "aux-sat", "aux-cam", "aux-weather"):
     assert row_id in plugin_source
 assert "piconProv-220" in plugin_source and "piconSat-220" in plugin_source
 assert "piconCam-b" in plugin_source and "piconWeather-w" in plugin_source
-assert "CHSPiconbig" in plugin_source and "Large for selected channel selection types" in plugin_source
+assert "CHSPiconbig" in plugin_source and "Large channel selection icons (710 x 682)" in plugin_source
 
 # Validate the split large channel-selection package against its pinned catalogue
 # metadata and inspect actual PNG dimensions before placing it in the resolution menu.
@@ -463,6 +463,6 @@ with zipfile.ZipFile(__import__("io").BytesIO(archive)) as package:
             header = package.read(info)[:24]
             assert header.startswith(b"\x89PNG\r\n\x1a\n"), info.filename
             dimensions.add(struct.unpack(">II", header[16:24]))
-assert dimensions == {(400, 240)}, dimensions
+assert dimensions == {(710, 682)}, dimensions
 
 print("Warder TEST195 legacy filtering, callbacks, empty-selection, UI, localization, and asset dimensions: PASS")

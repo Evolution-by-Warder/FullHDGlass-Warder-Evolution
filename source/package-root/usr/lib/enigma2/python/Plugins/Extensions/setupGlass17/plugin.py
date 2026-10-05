@@ -8627,7 +8627,7 @@ class downloadMenu(Screen):
 		style = self.warderPiconPrefs.get("style", "transparent")
 		if row == "wp-res":
 			choices[row] = [(size.replace("x", " x "), ("resolution", size)) for size in ("50x30", "150x90", "220x132", "400x240") if warderPiconSync.channel_style_supported(size, style)]
-			choices[row].append((_("Large for selected channel selection types"), ("large-selection", "CHSPiconbig")))
+			choices[row].append((_("Large channel selection icons (710 x 682)"), ("large-selection", "CHSPiconbig")))
 		elif row == "wp-style":
 			choices[row] = [(_(label), ("style", value)) for value, label in warderPiconSync.STYLES if warderPiconSync.channel_style_supported(resolution, value)]
 		elif row == "wp-mode":
@@ -8983,7 +8983,7 @@ class downloadMenu(Screen):
 						self.menuListAll[row_index][4] = "x"
 				self.type_download = "CHSPiconbig"
 				self.zzz = self.setWdir()
-				self.dwnJob = _("Large for selected channel selection types")
+				self.dwnJob = _("Large channel selection icons (710 x 682)")
 				self.downAnswerNow()
 				return
 			ena = True
