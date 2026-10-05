@@ -21,6 +21,10 @@ if p.get("prepared_packages")!=114 or p.get("prepared_parts")!=124: errors.appen
 if p.get("reassembly_validation")!="PASS": errors.append("build reassembly evidence")
 if plan.get("evidence",{}).get("workflow_run")!=build.get("workflow",{}).get("run_id"): errors.append("workflow evidence drift")
 if plan.get("evidence",{}).get("artifact_id")!=build.get("artifact",{}).get("id"): errors.append("artifact evidence drift")
+if plan.get("evidence",{}).get("artifact_bytes")!=build.get("artifact",{}).get("size_in_bytes"): errors.append("artifact byte-size evidence drift")
+if plan.get("evidence",{}).get("artifact_digest")!=build.get("artifact",{}).get("digest"): errors.append("artifact digest evidence drift")
+if build.get("workflow",{}).get("conclusion")!="success": errors.append("authoritative workflow is not successful")
+if build.get("artifact",{}).get("size_in_bytes")!=615397302: errors.append("unexpected authoritative artifact size")
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
