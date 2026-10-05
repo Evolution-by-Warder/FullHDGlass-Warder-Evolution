@@ -367,6 +367,14 @@ for screen in ("OPKGMenu", "OPKGSource", "OpkgInstaller", "IpkgInstaller", "Soft
                "PackageAction", "PackageActionLog", "LogManager", "LogManagerViewLog"):
     assert re.search(r'<screen\b[^>]*name="%s"[\s\S]*?</screen>' % screen, SKIN), screen
 
+# OpenATV PackageAction entries are multi-content tuples. A bare Listbox renders
+# the install/remove plugin screen blank, so FullHDGlass must keep the converter.
+package_action = re.search(r'<screen\\b[^>]*name="PackageAction"[\\s\\S]*?</screen>', SKIN).group(0)
+assert 'source="plugins" render="Listbox"' in package_action
+assert '<convert type="TemplatedMultiContent">' in package_action
+for token in ("MultiContentEntryPixmapAlphaBlend", "MultiContentEntryText", '"itemHeight": 70'):
+    assert token in package_action, token
+
 # Infobar weather must retain last-known Open-Meteo data across GUI restarts.
 WEAUTILS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py").read_text(encoding="utf-8")
 for token in ('_OPENMETEO_CACHE_FILE = "/etc/enigma2/fullhdglass17-openmeteo-cache.json"', 'def _loadOpenMeteoCache():', 'def _saveOpenMeteoCache():', '_loadOpenMeteoCache()', '_saveOpenMeteoCache()', 'cached = _OPENMETEO_CACHE.get(ckey)'):
