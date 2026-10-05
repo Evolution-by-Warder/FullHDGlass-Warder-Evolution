@@ -28,6 +28,38 @@ jobs:
           ref: 2827fed5b2e6ae4697f08ca57a8c2298079d410f
           path: .warder-master
 
+      - name: Checkout preserved legacy picon archive
+        uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/Trezor
+          ref: main
+          path: .trezor
+
+      - name: Inventory preserved legacy compatibility archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/inventory-legacy-picon-archives.py \
+            --root .trezor/archives/chocholousek-picons/originals \
+            --output /tmp/legacy-picon-inventory.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("/tmp/legacy-picon-inventory.json"))
+          assert d["archive_count"]==538
+          assert d["archive_bytes"]==1359753012
+          assert d["selector_count"]==55
+          expected={
+            "piconblack|100x60":55,"piconblack|150x90":55,
+            "piconmirrorglass|100x60":55,
+            "piconpoolrainbow|220x132":55,"piconpoolrainbow|400x240":55,
+            "piconsrhd|400x240":44,
+            "picontransparent|100x60":55,"picontransparent|220x132":55,
+            "picontransparent|400x240":54,"piconwhite|50x30":55,
+          }
+          assert d["combinations"]==expected
+          print("Preserved legacy archive contract: PASS")
+          PY
+
       - name: Generate audited package plan
         shell: bash
         run: |
