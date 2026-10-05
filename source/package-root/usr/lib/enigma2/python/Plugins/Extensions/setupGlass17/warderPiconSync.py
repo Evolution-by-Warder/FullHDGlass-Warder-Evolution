@@ -251,7 +251,9 @@ def select_manifest_packages(document, preferences):
     if not family:
         return {"state": "unsupported-style", "packages": [], "errors": ["unsupported style"]}
     wanted = selected_selector_ids(prefs.get("positions"))
-    packages = [p for p in document.get("packages", []) if p.get("family") == family]
+    resolution = prefs.get("resolution", DEFAULT_RESOLUTION)
+    packages = [p for p in document.get("packages", [])
+                if p.get("family") == family and p.get("resolution") == resolution]
     if wanted:
         wanted_set = set(wanted)
         packages = [p for p in packages if p.get("selector_id") in wanted_set]
@@ -265,6 +267,7 @@ def select_manifest_packages(document, preferences):
         "missing_selectors": missing,
         "selector_ids": wanted,
         "family": family,
+        "resolution": resolution,
     }
 
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
@@ -393,6 +396,9 @@ def validate_publication_manifest(document):
         seen.add(key)
         if package.get("family") not in _FAMILIES:
             errors.append("invalid family")
+        resolution = str(package.get("resolution", ""))
+        if not re.match(r"^[1-9][0-9]*x[1-9][0-9]*$", resolution):
+            errors.append("invalid package resolution")
         name = str(package.get("filename", ""))
         if not _FILENAME_RE.match(name):
             errors.append("invalid package filename")
