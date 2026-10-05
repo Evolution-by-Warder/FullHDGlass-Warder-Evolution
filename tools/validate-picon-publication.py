@@ -29,6 +29,7 @@ def main():
     if None in names or len(set(names))!=len(names): errors.append("package filenames are missing or duplicated")
     expected_base=a.expected_base_url.rstrip("/")
     manifest_names=set(names)
+    part_meta={x.get("filename"):x for x in m.get("parts",[])} if a.parts else {}
     disk={p.name for p in a.root.glob("*.zip")}
     if disk!=manifest_names:
         errors.append("publication ZIP set differs from manifest (missing=%r extra=%r)"%(sorted(manifest_names-disk),sorted(disk-manifest_names)))
@@ -43,9 +44,17 @@ def main():
             urls=p.get("parts",[])
             if not isinstance(urls,list) or not urls: errors.append("missing parts for "+name); urls=[]
             for n,url in enumerate(urls):
-                if url!=expected_base+"/"+name+".part%02d"%n: errors.append("non-canonical part URL for "+name)
+                pn=name+".part%02d"%n
+                if url!=expected_base+"/"+pn: errors.append("non-canonical part URL for "+name)
                 u=urllib.parse.urlparse(url)
                 if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
+                pp=a.root/pn
+                meta=part_meta.get(pn)
+                if not pp.is_file(): errors.append("missing part "+pn)
+                elif not meta: errors.append("missing part metadata "+pn)
+                else:
+                    if pp.stat().st_size!=meta.get("bytes"): errors.append("part size mismatch "+pn)
+                    if digest(pp)!=meta.get("sha256"): errors.append("part sha256 mismatch "+pn)
         else:
             url=p.get("url","")
             if url!=expected_base+"/"+name: errors.append("non-canonical URL for "+name)
@@ -56,6 +65,11 @@ def main():
         if size!=p.get("bytes"): errors.append("size mismatch for "+name)
         if digest(path)!=p.get("sha256"): errors.append("sha256 mismatch for "+name)
     if len(pairs)!=114: errors.append("expected 114 unique selector/family pairs")
+    if a.parts:
+        expected_parts={u.rsplit("/",1)[-1] for p in pkgs for u in p.get("parts",[])}
+        disk_parts={p.name for p in a.root.glob("*.part*")}
+        if expected_parts!=disk_parts: errors.append("part file set differs from manifest")
+        if set(part_meta)!=expected_parts: errors.append("part metadata set differs from package parts")
     if errors:
         for e in errors: print("ERROR:",e)
         sys.exit(1)
