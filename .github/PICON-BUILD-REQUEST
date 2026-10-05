@@ -98,3 +98,4 @@ Validate cached legacy resolver trust contract
 Validate exact unresolved legacy ID set
 Validate resolver provenance and exact URL identity
 Validate fail-closed legacy source metadata
+Validate equivalent duplicate legacy source IDs
