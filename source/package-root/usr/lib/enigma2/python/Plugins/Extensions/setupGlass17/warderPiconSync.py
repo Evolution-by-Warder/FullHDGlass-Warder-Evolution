@@ -472,6 +472,7 @@ def resolve_service_entry(index, collisions, service_reference):
 
 
 _ALLOWED_MANIFEST_HOSTS = ("raw.githubusercontent.com",)
+_PRODUCTION_PREFIX = "/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"
 _FAMILIES = ("channel-transparent", "channel-black", "channel-white")
 _SHA256_RE = re.compile("^[0-9a-f]{64}$")
 _FILENAME_RE = re.compile("^[A-Za-z0-9._-]+[.](?:zip|7z)$")
@@ -481,7 +482,10 @@ def _trusted_https_url(url):
         parsed = urlparse(str(url))
     except Exception:
         return False
-    return parsed.scheme == "https" and parsed.hostname in _ALLOWED_MANIFEST_HOSTS and not parsed.username and not parsed.password
+    return (parsed.scheme == "https" and parsed.hostname in _ALLOWED_MANIFEST_HOSTS
+            and not parsed.username and not parsed.password
+            and parsed.path.startswith(_PRODUCTION_PREFIX)
+            and not parsed.query and not parsed.fragment)
 
 
 def validate_publication_manifest(document):
