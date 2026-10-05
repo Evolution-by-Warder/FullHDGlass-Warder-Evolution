@@ -8670,6 +8670,11 @@ class downloadMenu(Screen):
 			destination = warderPiconSync.validate_destination(queue.get("destination"))
 			if not destination:
 				raise ValueError("invalid Warder picon destination")
+			os.makedirs(destination, exist_ok=True)
+			destination = warderPiconSync.validate_destination(destination)
+			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
+				raise ValueError("unsafe Warder picon destination")
+			queue["destination"] = destination
 			document = self._warderLoadChannelManifest(queue.get("manifest_url"))
 			plan = warderPiconSync.plan_runtime_packages(document, queue)
 			jobs = warderPiconSync.build_download_jobs(document, plan)
@@ -8716,6 +8721,8 @@ class downloadMenu(Screen):
 		if free_mb < required:
 			raise ValueError("insufficient temporary space for Warder channel package")
 		destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
+		if not destination or os.path.islink(destination) or not os.path.isdir(destination):
+			raise ValueError("unsafe Warder picon destination")
 		try:
 			dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
 		except OSError:
