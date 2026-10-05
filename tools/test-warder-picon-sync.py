@@ -17,7 +17,7 @@ assert m.service_orbital_position("1:0:1:1:1:1:C00000:0:0:0:") == "19.2e"
 assert m.position_token("(23.5E) Skylink") == "23.5e"
 assert m.position_token("(0.8W) Freesat") == "0.8w"
 assert m.position_token("DVB-T sk/cz") == "dtt"
-assert m.position_token("19.2e") == "19.2e"\nassert m.selector_id("(0.8W) Freesat") == "FREESAT"\nassert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"\nassert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"\nassert m.selector_id("(23.5E) Skylink") == "SKYLINK"\nassert m.selector_id("(23.5E) Astra 3B") == "235E"
+assert m.position_token("19.2e") == "19.2e"\nassert m.runtime_publication()["persistent"] is False\nassert m.runtime_publication()["manifest_url"] is None\nassert m.safe_archive_member("1_0_1_A_B_C_D_0_0_0.png") is True\nassert m.safe_archive_member("../escape.png") is False\nassert m.safe_archive_member("/absolute.png") is False\nassert m.selector_id("(0.8W) Freesat") == "FREESAT"\nassert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"\nassert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"\nassert m.selector_id("(23.5E) Skylink") == "SKYLINK"\nassert m.selector_id("(23.5E) Astra 3B") == "235E"
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -64,8 +64,8 @@ assert keys == list(range(len(keys))), keys
 assert "token = label" in plugin_source
 assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
-assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs)" in plugin_source
-assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source
+assert "warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())" in plugin_source
+assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source\nassert "_warderFetchChannelJob" in plugin_source\nassert "_warderInstallChannelArchive" in plugin_source\nassert "os.replace(tmp, os.path.join(dest, name))" in plugin_source
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -80,7 +80,7 @@ with tempfile.TemporaryDirectory() as d:
     ready = m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
     assert ready["state"] == m.READY
     full = m.build_runtime_queue(m.set_preference(m.default_preferences(), "update_mode", "full"), d)
-    assert full["mode"] == "full" and full["service_count"] == 0
+    assert full["mode"] == "full" and full["service_count"] == 0\n    assert m.wanted_picon_names(full) is None\n    wanted = m.wanted_picon_names(locked)\n    assert wanted == {"1_0_1_1328_CA2_3_EB0000_0_0_0.png"}
 
 entries = [
     {"service_reference": "1:0:1:1328:CA2:3:EB0000:0:0:0:", "package": "a"},
