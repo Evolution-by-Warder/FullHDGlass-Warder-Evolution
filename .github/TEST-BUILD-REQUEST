@@ -7,3 +7,4 @@ Retry TEST192 after correcting runtime URL scanning and classifying IMDb metadat
 Retry TEST192 after ignoring inert attribution strings in runtime network scan (commit f59465d654394881c7fde0a489e209f64290c58f).
 Retry TEST192 after compacting endpoint inventory and omitting URL query data (commit 587ef9ebf28f6f1d10e19f1bedb5189719b0e54a).
 TEST192 retry after committing generated network dependency inventory (8b37446f21b364bd240013696c7c13f9dc363614).
+Retry TEST192 after static tests stopped creating bytecode in package source (workflow fix a52b304d5fb3089a0bb7edfa5df3d9783e5d9906).
