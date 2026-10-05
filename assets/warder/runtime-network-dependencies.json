@@ -66,21 +66,15 @@
     }
   },
   "channel_picon_build": {
-    "state": "ARTIFACT_VERIFIED_NOT_PUBLISHED",
-    "runtime_switch": false,
-    "workflow_run_id": 37222927731,
+    "state": "PUBLISHED",
+    "runtime_switch": true,
+    "production_commit": "c78047bd5c0bdfdd522cec69673fa95ac2376da6",
     "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
-    "artifact": {
-      "id": 11311027106,
-      "name": "warder-channel-picons-2827fed5",
-      "size_bytes": 615370960,
-      "sha256": "ed2e2ae42bf95e6e5db4500034c59136bd82a791c05e99e6f1b9d73670ebee95",
-      "expires_at": "2026-10-18T18:06:02Z"
-    },
     "packages": {
       "count": 114,
       "reproducibility_check": "PASS"
     },
-    "note": "CI artifact proves deterministic materialization only. Runtime remains on isolated picon.cz route until packages and manifest are persistently published under Warder authority."
+    "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
+    "note": "Verified Warder channel-picon backend is persistently published on production main. picon.cz remains one isolated legacy fallback."
   }
 }
