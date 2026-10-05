@@ -78,3 +78,4 @@ Post-green cleanup validation: state-accurate workflow/two-phase log wording aft
 Maximum-batch stabilization: post-publication docs/checkpoint synchronization, workflow status wording, runtime-network evidence, PackageAction regression gate, package lifecycle/version audit. Radio TEST191 untouched; no main runtime merge.
 Runtime-message stabilization: remove obsolete pre-publication receiver wording; guard fail-closed publication-unavailable message; retain legacy fallback and TEST191 Radio lock.
 Published-resolution contract validation: GUI/runtime expose only manifest-backed 220x132; reject unpublished 400x240 fail-closed. Includes prior runtime-message/docs/network/PackageAction stabilization.
+Validate lossless Trezor legacy archive inventory integration
