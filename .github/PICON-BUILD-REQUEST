@@ -5,3 +5,4 @@ Build deterministic split publication candidate using existing Warder raw-GitHub
 Rebuild with per-part SHA256/size publication integrity and SHA256SUMS.
 Retry after manifest now includes every split part SHA256 and size.
 Rebuild after split validator no longer requires duplicate monolithic ZIPs in publication tree.
+Rebuild after clean preparer rewrite and py_compile gate.
