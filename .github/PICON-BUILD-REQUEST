@@ -43,3 +43,4 @@ Deep contract closure: splitter hard-limited to 20 MiB; receiver manifest reject
 Canonical assembly closure: receiver requires exact package.zip.part00..N ordering in addition to 20 MiB, per-part integrity, byte-sum and final package integrity contracts.
 Archive install closure: symlink/path/extension/size/ratio/duplicate guards retained; PNG signature now verified before atomic destination replacement.
 Archive/canonical closure rerun: duplicate-part regression accepts either earlier canonical-order rejection or duplicate rejection; PNG signature install guard included.
+Receiver filesystem closure: selective identities canonicalized/deduplicated; protected system trees rejected as picon destinations; archive signature and atomic-install gates retained.
