@@ -101,3 +101,4 @@ Validate fail-closed legacy source metadata
 Validate equivalent duplicate legacy source IDs
 Validate requested legacy ID ambiguity guard
 Validate migration provenance and input cardinality batch
+Validate runtime URL identity and PackageAction tuple batch
