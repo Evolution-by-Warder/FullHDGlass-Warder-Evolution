@@ -14,6 +14,10 @@ except ImportError:
     from urlparse import urlparse
 
 ENIGMA2_DIR = "/etc/enigma2"
+# Explicit two-phase cutover switch. Publication evidence and this runtime switch
+# are reviewed separately; never infer readiness merely from network reachability.
+RUNTIME_PUBLICATION_ENABLED = False
+RUNTIME_MANIFEST_URL = ""
 _BOUQUET_RE = re.compile(r'FROM BOUQUET "([^"]+)"', re.I)
 _HEX = re.compile(r"^[0-9A-Fa-f]+$")
 
@@ -388,6 +392,13 @@ def safe_archive_member(name):
         return False
     base = value.rsplit("/", 1)[-1]
     return bool(base) and base not in (".", "..")
+
+
+def runtime_publication():
+    return {
+        "persistent": bool(RUNTIME_PUBLICATION_ENABLED and RUNTIME_MANIFEST_URL),
+        "manifest_url": RUNTIME_MANIFEST_URL if RUNTIME_PUBLICATION_ENABLED else None,
+    }
 
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     """Create the receiver action queue without performing network/filesystem writes."""
