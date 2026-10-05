@@ -17,6 +17,9 @@ def main():
     ap.add_argument("--runtime-output",type=Path)
     a=ap.parse_args()
     mapping=read_tsv(a.mapping); source=read_tsv(a.source_manifest)
+    ids=[r["id"] for r in source]
+    if len(ids)!=len(set(ids)):
+        raise SystemExit("duplicate legacy IDs in source manifest")
     by_id={r["id"]:r for r in source}
     rows=[]; missing=[]
     for m in mapping:
@@ -28,6 +31,9 @@ def main():
                  "display_label":m["display_label"],"warder_key":m["warder_key"],
                  "warder_master_state":m["warder_master_state"]}
             if s:
+                filename=s["filename"]
+                if "/" in filename or "\\" in filename or ".." in filename or not filename.endswith(".7z"):
+                    raise SystemExit("unsafe archived filename for legacy ID %s: %r" % (ident,filename))
                 row.update({"state":"ARCHIVED_SOURCE","filename":s["filename"],"resolution":s["resolution"],
                             "background":s["background"],"archive_selector":s["target"],
                             "archive_type":s["archive_type"],"provenance":s["provenance"],
