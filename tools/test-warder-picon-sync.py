@@ -164,6 +164,12 @@ valid_manifest = {
 }
 manifest_errors = m.validate_publication_manifest(valid_manifest)
 assert manifest_errors == [], manifest_errors
+oversized_manifest = dict(valid_manifest)
+oversized_manifest["parts"] = [dict(valid_manifest["parts"][0], bytes=20 * 1024 * 1024 + 1)]
+assert "invalid part metadata" in m.validate_publication_manifest(oversized_manifest)
+mismatched_manifest = dict(valid_manifest)
+mismatched_manifest["parts"] = [dict(valid_manifest["parts"][0], bytes=9)]
+assert "package part size mismatch" in m.validate_publication_manifest(mismatched_manifest)
 sel = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "positions", ["(23.5E) Astra 3B"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
 assert sel["packages"][0]["selector_id"] == "235E"
