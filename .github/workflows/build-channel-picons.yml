@@ -9,7 +9,7 @@ on:
       - .github/PICON-BUILD-REQUEST
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-channel-picons:
@@ -177,6 +177,63 @@ jobs:
           python3 tools/validate-channel-picon-cutover.py
           python3 tools/validate-channel-picon-two-phase-cutover.py
           python3 tools/validate-channel-picon-publication-plan.py
+
+      - name: Publish approved persistent channel-picon backend to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          APPROVAL="PRODUCTION_PUBLISH_APPROVED_ONCE: warder-channel-picons-20261005"
+          if ! grep -Fxq "$APPROVAL" .github/PICON-BUILD-REQUEST; then
+            echo "No one-time production publication approval marker; skipping."
+            exit 0
+          fi
+
+          # Fail closed unless this build is byte-for-byte tied to the approved reproducible source evidence.
+          python3 - <<'PY'
+          import json
+          e=json.load(open("dist/channel-picons/BUILD-EVIDENCE.json"))
+          assert e["source_commit"]=="2827fed5b2e6ae4697f08ca57a8c2298079d410f"
+          assert e["packages"]==114
+          assert e["manifest_sha256"]=="493e05b33882b45d827f2ab13b80250d4db307f8d0430885b9b50ba8ac37ef6c"
+          assert e["sha256sums_sha256"]=="791b91f26f6624945ba0c61ce2aa756706bd0900f2914dbda2a90661a90c8982"
+          print("Approved reproducible content fingerprint: PASS")
+          PY
+
+          rm -rf dist/channel-picons-production
+          python3 tools/prepare-picon-publication.py \
+            --input dist/channel-picons \
+            --manifest dist/channel-picons/manifest.json \
+            --output dist/channel-picons-production \
+            --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels
+          python3 tools/validate-picon-publication.py \
+            --root dist/channel-picons-production \
+            --manifest dist/channel-picons-production/manifest.json \
+            --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
+            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels \
+            --parts
+
+          test "$(find dist/channel-picons-production -type f -name '*.part*' | wc -l)" -eq 124
+          test -f dist/channel-picons-production/manifest.json
+          test -f dist/channel-picons-production/SHA256SUMS
+
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "ca7fad961a2eaa3be97511a7d715601d93697458"
+          git worktree add /tmp/warder-production origin/main
+          DEST=/tmp/warder-production/assets/warder/downloads/picons/channels
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp -a dist/channel-picons-production/. "$DEST"/
+
+          cd /tmp/warder-production
+          # Publication only: runtime/source files are deliberately not copied to main.
+          git status --short
+          test "$(find assets/warder/downloads/picons/channels -type f -name '*.part*' | wc -l)" -eq 124
+          git add assets/warder/downloads/picons/channels
+          git diff --cached --quiet && { echo "Publication produced no changes"; exit 1; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish verified Warder channel picon backend"
+          git push origin HEAD:main
 
       - name: Upload audited channel-picon artifact
         uses: actions/upload-artifact@v4
