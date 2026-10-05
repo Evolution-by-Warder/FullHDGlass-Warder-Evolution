@@ -8537,6 +8537,7 @@ class downloadMenu(Screen):
 				return
 		self.warderOperationSucceeded = False
 		self.warderOperationFailed = False
+		self.warderFailedRows = set()
 		self.instance.resize(eSize(1920,150))
 		self["dwn"].show()
 		self.ena = False

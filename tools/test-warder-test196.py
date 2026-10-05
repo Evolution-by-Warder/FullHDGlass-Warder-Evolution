@@ -123,6 +123,7 @@ assert "if self.warderOperationSucceeded and not self.warderOperationFailed:" in
 assert "self.resetWarderWorkingState()" in dwn
 assert "self.warderFailedRows.add(row)" in source
 assert "self.warderFailedRows.add(\"wp-pos\")" in dwn
+assert "self.warderOperationFailed = False\n\t\tself.warderFailedRows = set()" in source
 assert "def resetWarderWorkingState(self):" in source
 assert "reset_working_preferences(self.warderPiconPrefs)" in source
 assert "warderPiconSync.success_summary" in source
