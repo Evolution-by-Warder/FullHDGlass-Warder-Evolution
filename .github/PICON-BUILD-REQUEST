@@ -72,3 +72,4 @@ Runtime cutover full validation retry after aligning persistent publication test
 Full validation retry after synchronizing persistent publication evidence with verified production main backend.
 Full state-aware validation retry after upgrading pre-publication-only gates for verified PUBLISHED runtime-cutover state.
 Consolidated validation after state-aware publication gates, live/locked runtime tests, IPK gate alignment, and Plugin Manager skin compatibility fix.
+Final consolidated retry: live queue test now follows plugin's explicit runtime_publication injection path.
