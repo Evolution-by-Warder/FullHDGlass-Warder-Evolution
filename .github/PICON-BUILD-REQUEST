@@ -84,3 +84,4 @@ Validate pinned Trezor manifest join and migration hardening
 Validate network-independent pinned legacy catalogue
 Validate pinned legacy runtime resolver
 Revalidate corrected legacy resolver generator
+Validate corrected resolver CI shell block
