@@ -572,6 +572,10 @@ def validate_publication_manifest(document):
                     errors.append("untrusted part url")
                     continue
                 part_name = str(url).rsplit("/", 1)[-1]
+                expected_part_name = name + ".part%02d" % len(package_part_names)
+                if part_name != expected_part_name:
+                    errors.append("non-canonical package part")
+                    continue
                 if part_name in package_part_names:
                     errors.append("duplicate package part")
                     continue
