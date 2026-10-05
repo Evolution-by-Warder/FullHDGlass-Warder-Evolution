@@ -16,3 +16,4 @@ Final batch validation: clean fixtures, explicit runtime lock, selective-only se
 Receiver queue integration validation: one logical Warder job, strict manifest ambiguity rejection, syntax gates, legacy continuation.
 QC diagnosis rebuild: isolate invalid PNG source packages and expose exact blocked selector/family in CI.
 PNG parser correction rebuild: real binary signature, package QC and receiver gates.
+Direct PNG parser regression gate enabled after binary-signature correction.
