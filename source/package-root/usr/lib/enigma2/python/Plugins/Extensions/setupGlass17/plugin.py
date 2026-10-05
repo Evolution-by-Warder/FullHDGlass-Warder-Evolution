@@ -8733,7 +8733,7 @@ class downloadMenu(Screen):
 		else:
 			if txt != "":
 				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "\n"
-			if self.warderPiconPrefs.get("prepared") and self.warderChannelState != "locked":
+			if self.warderPiconPrefs.get("prepared") and self.warderChannelState not in ("locked", "error"):
 				self.dwnJob = _("Warder channel picons")
 				try:
 					warder_result = self._warderRunChannelQueue()
