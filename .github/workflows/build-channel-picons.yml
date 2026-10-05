@@ -80,6 +80,21 @@ jobs:
           cp /tmp/manifest-a.json dist/channel-picons/manifest.json
           (cd dist/channel-picons && sha256sum *.zip | sort -k2 > SHA256SUMS)
           python3 - <<'PY'
+          import hashlib, json, pathlib
+          root=pathlib.Path("dist/channel-picons")
+          manifest=root/"manifest.json"
+          sums=root/"SHA256SUMS"
+          evidence={
+              "schema":1,
+              "source_commit":"2827fed5b2e6ae4697f08ca57a8c2298079d410f",
+              "packages":114,
+              "manifest_sha256":hashlib.sha256(manifest.read_bytes()).hexdigest(),
+              "sha256sums_sha256":hashlib.sha256(sums.read_bytes()).hexdigest(),
+          }
+          (root/"BUILD-EVIDENCE.json").write_text(json.dumps(evidence,sort_keys=True,indent=2)+"\\n")
+          print("Build evidence hashes:", evidence["manifest_sha256"], evidence["sha256sums_sha256"])
+          PY
+          python3 - <<'PY'
           import json
           m=json.load(open("dist/channel-picons/manifest.json"))
           assert len(m["packages"]) + len(m.get("blocked_packages",[])) == 114
@@ -169,6 +184,7 @@ jobs:
           path: |
             dist/channel-picons/manifest.json
             dist/channel-picons/SHA256SUMS
+            dist/channel-picons/BUILD-EVIDENCE.json
             dist/channel-picons-publish/
           if-no-files-found: error
           retention-days: 14
