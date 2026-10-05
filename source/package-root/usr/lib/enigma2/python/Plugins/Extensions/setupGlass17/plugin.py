@@ -8965,15 +8965,20 @@ class downloadMenu(Screen):
 				with urlopen(req, timeout=45) as response:
 					if not str(response.geturl()).startswith(official):
 						raise ValueError("unsafe Warder channel redirect")
+					expected_part = int(part.get("bytes", -1))
+					if expected_part < 1 or expected_part > 20 * 1024 * 1024:
+						raise ValueError("invalid Warder channel part size")
 					while True:
 						chunk = response.read(1024 * 128)
 						if not chunk:
 							break
+						part_size += len(chunk)
+						total += len(chunk)
+						if part_size > expected_part or total > int(job.get("bytes", -1)):
+							raise ValueError("oversized Warder channel download")
 						out.write(chunk)
 						full_hash.update(chunk)
 						part_hash.update(chunk)
-						part_size += len(chunk)
-						total += len(chunk)
 				if part_size != int(part.get("bytes", -1)) or part_hash.hexdigest().lower() != str(part.get("sha256", "")).lower():
 					raise ValueError("Warder channel part integrity mismatch")
 		if total != int(job.get("bytes", -1)) or full_hash.hexdigest().lower() != str(job.get("sha256", "")).lower():
