@@ -20,6 +20,10 @@ assert not any("picon.cz" in x["url"] for x in CATALOG["archives"].values())
 assert len({x["legacy_id"] for x in CATALOG["unresolved"]}) == 29
 assert "def _legacyPiconArchiveUrl(self, legacy_id):" in PLUGIN
 assert "url = self._legacyPiconArchiveUrl(k[x][1])" in PLUGIN
+assert 'catalog.get("mapped") == 370' in PLUGIN
+assert 'catalog.get("unmapped") == 29' in PLUGIN
+assert 'catalog.get("source", {}).get("commit") == "9cdda4ab414e7d50a97ca9285db8ebbb75fba615"' in PLUGIN
+assert 'self._warderLegacyPiconArchives = catalog.get("archives", {}) if valid else {}' in PLUGIN
 down_multi = PLUGIN.split("def downMulti(self, k, Ddir):", 1)[1].split("\n\tdef ", 1)[0]
 assert "https://picon.cz/download/%s/" not in down_multi
 assert "Preserved legacy archive is not available in Warder migration catalogue" in down_multi
