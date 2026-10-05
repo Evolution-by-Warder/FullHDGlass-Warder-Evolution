@@ -6,16 +6,16 @@
     "commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f"
   },
   "workflow": {
-    "run_id": 37262475228,
-    "head_sha": "4f69d3cdfdd90b6cb6629aae91ea3f171d937a92",
+    "run_id": 37263153529,
+    "head_sha": "87ce10d6c6a93aa2e43b2850429af1dfbd5b531f",
     "conclusion": "success"
   },
   "artifact": {
-    "id": 11324632930,
+    "id": 11325074463,
     "name": "warder-channel-picons-2827fed5",
-    "size_in_bytes": 1230749855,
-    "digest": "sha256:55a14f5f13b2c05a6e471406ea762e2496fd6680c8cbc5a7a956fc7bf9d9bce2",
-    "expires_at": "2026-10-19T04:13:52Z"
+    "size_in_bytes": 615397302,
+    "digest": "sha256:3d44993205930f887da17249a2cec5a065a067c1c57265567ac70f5f4ebc167f",
+    "expires_at": "2026-10-19T04:22:57Z"
   },
   "package_contract": {
     "selectors": 57,
@@ -45,6 +45,9 @@
     "prepared_destination_path": "assets/warder/downloads/picons/channels",
     "production_base_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels",
     "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
-    "preparation_state": "PREPARED_NOT_PUBLISHED"
+    "preparation_state": "PREPARED_NOT_PUBLISHED",
+    "prepared_parts": 124,
+    "prepared_packages": 114,
+    "candidate_validation": "PASS"
   }
 }
