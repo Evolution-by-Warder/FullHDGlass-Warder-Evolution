@@ -15,6 +15,7 @@ def main():
     ap.add_argument("--manifest",type=Path)
     ap.add_argument("--expected-source",required=True)
     ap.add_argument("--expected-base-url",required=True)
+    ap.add_argument("--parts",action="store_true")
     a=ap.parse_args()
     mf=a.manifest or a.root/"manifest.json"
     errors=[]
@@ -38,10 +39,18 @@ def main():
         if pair in pairs: errors.append("duplicate selector/family: %r"%(pair,))
         pairs.add(pair)
         if p.get("family") not in ("channel-transparent","channel-black","channel-white"): errors.append("invalid family for "+name)
-        url=p.get("url","")
-        if url!=expected_base+"/"+name: errors.append("non-canonical URL for "+name)
-        u=urllib.parse.urlparse(url)
-        if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
+        if a.parts:
+            urls=p.get("parts",[])
+            if not isinstance(urls,list) or not urls: errors.append("missing parts for "+name); urls=[]
+            for n,url in enumerate(urls):
+                if url!=expected_base+"/"+name+".part%02d"%n: errors.append("non-canonical part URL for "+name)
+                u=urllib.parse.urlparse(url)
+                if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
+        else:
+            url=p.get("url","")
+            if url!=expected_base+"/"+name: errors.append("non-canonical URL for "+name)
+            u=urllib.parse.urlparse(url)
+            if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
         if not path.is_file(): continue
         size=path.stat().st_size
         if size!=p.get("bytes"): errors.append("size mismatch for "+name)
