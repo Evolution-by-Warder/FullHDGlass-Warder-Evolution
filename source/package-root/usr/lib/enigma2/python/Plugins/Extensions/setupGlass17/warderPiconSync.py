@@ -524,9 +524,9 @@ def validate_publication_manifest(document):
         if not isinstance(package, dict):
             errors.append("invalid package")
             continue
-        key = (package.get("selector_id"), package.get("family"))
+        key = (package.get("selector_id"), package.get("family"), package.get("resolution"))
         if key in seen:
-            errors.append("duplicate selector/family")
+            errors.append("duplicate selector/family/resolution")
         seen.add(key)
         if package.get("family") not in _FAMILIES:
             errors.append("invalid family")
@@ -549,11 +549,16 @@ def validate_publication_manifest(document):
             if not isinstance(urls, list) or not urls:
                 errors.append("package parts missing")
                 continue
+            package_part_names = set()
             for url in urls:
                 if not _trusted_https_url(url):
                     errors.append("untrusted part url")
                     continue
                 part_name = str(url).rsplit("/", 1)[-1]
+                if part_name in package_part_names:
+                    errors.append("duplicate package part")
+                    continue
+                package_part_names.add(part_name)
                 if part_name not in part_meta:
                     errors.append("part metadata not found")
                 referenced_parts.add(part_name)
