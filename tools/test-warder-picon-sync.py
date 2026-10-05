@@ -84,6 +84,12 @@ assert "def _warderRunChannelQueue" in plugin_source
 assert 'self.dwnJob = _("Warder channel picons")' in plugin_source
 assert "self.warderChannelInstalled.update(installed)" in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source
+assert 'self.warderChannelState = "idle"' in plugin_source
+assert 'self.warderChannelState = "running"' in plugin_source
+assert 'self.warderChannelState = "error"' in plugin_source
+assert "shutil.disk_usage(destination)" in plugin_source
+assert "unsafe Warder picon ZIP compression ratio" in plugin_source
+assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
