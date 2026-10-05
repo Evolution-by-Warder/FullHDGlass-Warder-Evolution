@@ -8376,21 +8376,21 @@ class downloadMenu(Screen):
 		b = _('picon black')
 		self.menuListAll = {
 			0:['wp-pos',_('Satellite positions') + ': ' + _('OK for position selection'),'warder-picon-positions','','x'],
-			6:['wp-res',_('Picon resolution') + ': 220 x 132','warder-picon-resolution','','x'],
-			7:['wp-style',_('Picon colour') + ': ' + _('Transparent'),'warder-picon-style','','x'],
-			8:['wp-dest',_('Picon location') + ': ' + self.warderPiconPrefs["destination"],'warder-picon-destination','','x'],
-			9:['wp-mode',_('Picon update') + ': ' + _('Synchronize with TV lists'),'warder-picon-mode','','x'],
-			10:['p4',sel+_('picon 400x240'),3,'','x'],
-			1:['p4',sel+_('picon 220x132'),9,'','x'],
-			2:['p4p',_('piconProv 220x132'),'piconProv-220','','x'],
-			3:['p4s',_('piconSat 220x132'),'piconSat-220','','x'],
-			4:['ba',sel+b,5,'','x'],									
-			5:['ba5',sel+b+' (50x30)',4,'','x'],
+			1:['wp-res',_('Picon resolution') + ': 220 x 132','warder-picon-resolution','','x'],
+			2:['wp-style',_('Picon colour') + ': ' + _('Transparent'),'warder-picon-style','','x'],
+			3:['wp-dest',_('Picon location') + ': ' + self.warderPiconPrefs["destination"],'warder-picon-destination','','x'],
+			4:['wp-mode',_('Picon update') + ': ' + _('Synchronize with TV lists'),'warder-picon-mode','','x'],
+			5:['p4',sel+_('picon 400x240'),3,'','x'],
+			6:['p4',sel+_('picon 220x132'),9,'','x'],
+			7:['p4p',_('piconProv 220x132'),'piconProv-220','','x'],
+			8:['p4s',_('piconSat 220x132'),'piconSat-220','','x'],
+			9:['ba',sel+b,5,'','x'],
+			10:['ba5',sel+b+' (50x30)',4,'','x'],
 			11:['bp',_('piconProv black'),'piconProv-b','','x'],
 			12:['bs',_('piconSat black'),'piconSat-b','','x'],
 			13:['bc',_('piconCam black'),'piconCam-b','','x'],
 			14:['bw',_('piconWeather black'),'piconWeather-b','','x'],
-			15:['wa',sel+w,7,'','x'],					
+			15:['wa',sel+w,7,'','x'],
 			16:['wa5',sel+w+' (50x30)',6,'','x'],
 			17:['wp',_('piconProv white'),'piconProv-w','','x'],
 			18:['ws',_('piconSat white'),'piconSat-w','','x'],
@@ -8403,11 +8403,8 @@ class downloadMenu(Screen):
 			25:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
 			26:['m',_('Menu icons'),'menuicons','','x'],
 			27:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
-			28:['w',_('Weather icons'),'weatherIconsN','','x'],			
+			28:['w',_('Weather icons'),'weatherIconsN','','x'],
 			29:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
-			# Warder helper payloads exist for aarch64/arm/mipsel only. The historical
-			# SH4 selector had no preserved/published 7zip-s payload; do not advertise
-			# a download which can only fail. Existing receiver 7z_g remains usable.
 			30:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x'],
 			31:['chs',_('Channelselection icons')+' ('+_('big')+')','CHSPiconbig','','x']
 			}	
@@ -8521,10 +8518,15 @@ class downloadMenu(Screen):
 			self.createList()
 			self.reactivate()
 
-	def _setWarderPiconPrepared(self):
-		for x in self.menuListAll:
-			if self.menuListAll[x][0] in self.warderPiconRows:
-				self.menuListAll[x][4] = "d" if self.warderPiconPrefs.get("prepared") else "x"
+	def _setWarderPiconPrepared(self, active_row=None):
+		# A Warder picon update is one executable action.  Only the row the user
+		# actually confirmed gets the green pending marker; the other preference
+		# rows remain configuration, not five separate downloads.
+		if active_row:
+			for x in self.menuListAll:
+				if self.menuListAll[x][0] == active_row:
+					self.menuListAll[x][4] = "d"
+					break
 		self.createList()
 		self.reactivate()
 
@@ -8558,7 +8560,7 @@ class downloadMenu(Screen):
 			if self.menuListAll[x][0] == "wp-pos":
 				self.menuListAll[x][1] = label
 				break
-		self._setWarderPiconPrepared()
+		self._setWarderPiconPrepared("wp-pos")
 
 	def warderPiconChoiceAnswer(self, answer):
 		if not answer:
@@ -8578,7 +8580,7 @@ class downloadMenu(Screen):
 			if self.menuListAll[x][0] == self.warderChoiceRow:
 				self.menuListAll[x][1] = labels.get(self.warderChoiceRow, self.menuListAll[x][1])
 				break
-		self._setWarderPiconPrepared()
+		self._setWarderPiconPrepared(self.warderChoiceRow)
 
 	def satSelcallback(self, answer):
 		tmp = self['list'].getSelectedIndex()
