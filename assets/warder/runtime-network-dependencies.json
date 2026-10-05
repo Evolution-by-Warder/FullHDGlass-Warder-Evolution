@@ -42,17 +42,8 @@
         }
       ]
     },
-    "picon.cz": {
-      "classification": "LEGACY_PICON_CHANNEL_SOURCE",
-      "references": [
-        {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
-          "line": 8771
-        }
-      ]
-    },
     "raw.githubusercontent.com": {
-      "classification": "WARDER_GITHUB",
+      "classification": "WARDER_GITHUB_AND_PINNED_ARCHIVE",
       "references": [
         {
           "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
@@ -75,6 +66,6 @@
       "reproducibility_check": "PASS"
     },
     "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
-    "note": "Verified Warder channel-picon backend is persistently published on production main. picon.cz remains one isolated legacy fallback."
+    "note": "Verified Warder channel-picon backend is persistently published on production main. Legacy numeric-ID migration resolves 370 preserved archives through the pinned Trezor commit; 29 unresolved IDs fail closed with no picon.cz fallback."
   }
 }
