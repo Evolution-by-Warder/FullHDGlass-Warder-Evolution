@@ -1,17 +1,44 @@
 {
-  "schema": 1,
-  "policy": "All shipped runtime network hosts must be explicitly classified; legacy HDGlass FTP is forbidden.",
+  "channel_picon_build": {
+    "note": "Verified Warder channel-picon backend is persistently published on production main. Legacy numeric-ID migration resolves 370 preserved archives through the pinned Trezor commit; 29 unresolved IDs fail closed with no picon.cz fallback.",
+    "packages": {
+      "count": 114,
+      "reproducibility_check": "PASS"
+    },
+    "production_commit": "c78047bd5c0bdfdd522cec69673fa95ac2376da6",
+    "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
+    "runtime_switch": true,
+    "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
+    "state": "PUBLISHED"
+  },
   "hosts": {
+    "api.open-meteo.com": {
+      "classification": "FUNCTIONAL_API",
+      "references": [
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py"
+        },
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py"
+        }
+      ]
+    },
     "api.themoviedb.org": {
       "classification": "FUNCTIONAL_API",
       "references": [
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
-          "line": 129
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster.py"
         },
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
-          "line": 174
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster2.py"
+        },
+        {
+          "occurrences": 2,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py"
         }
       ]
     },
@@ -19,8 +46,16 @@
       "classification": "FUNCTIONAL_API",
       "references": [
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
-          "line": 9760
+          "occurrences": 3,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py"
+        },
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
+        },
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py"
         }
       ]
     },
@@ -28,8 +63,16 @@
       "classification": "FUNCTIONAL_API",
       "references": [
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
-          "line": 87
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster.py"
+        },
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster2.py"
+        },
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py"
         }
       ]
     },
@@ -37,8 +80,8 @@
       "classification": "FUNCTIONAL_API",
       "references": [
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py",
-          "line": 181
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py"
         }
       ]
     },
@@ -46,26 +89,33 @@
       "classification": "WARDER_GITHUB_AND_PINNED_ARCHIVE",
       "references": [
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
-          "line": 2195
+          "occurrences": 370,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/legacyPiconArchives.json"
         },
         {
-          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
-          "line": 7520
+          "occurrences": 16,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
+        },
+        {
+          "occurrences": 1,
+          "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py"
+        }
+      ]
+    },
+    "www.imdb.com": {
+      "classification": "FUNCTIONAL_METADATA",
+      "references": [
+        {
+          "occurrences": 2,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster.py"
+        },
+        {
+          "occurrences": 2,
+          "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster2.py"
         }
       ]
     }
   },
-  "channel_picon_build": {
-    "state": "PUBLISHED",
-    "runtime_switch": true,
-    "production_commit": "c78047bd5c0bdfdd522cec69673fa95ac2376da6",
-    "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
-    "packages": {
-      "count": 114,
-      "reproducibility_check": "PASS"
-    },
-    "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
-    "note": "Verified Warder channel-picon backend is persistently published on production main. Legacy numeric-ID migration resolves 370 preserved archives through the pinned Trezor commit; 29 unresolved IDs fail closed with no picon.cz fallback."
-  }
+  "policy": "All shipped runtime network hosts must be explicitly classified; legacy HDGlass FTP is forbidden.",
+  "schema": 1
 }
