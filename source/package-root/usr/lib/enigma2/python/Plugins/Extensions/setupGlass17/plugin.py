@@ -8459,7 +8459,7 @@ class downloadMenu(Screen):
 			# Build/validate the exact receiver queue before any legacy download loop
 			# starts; a publication lock must be a read-only stop.
 			if self.warderPiconPrefs.get("prepared"):
-				queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs)
+				queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 				if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
 					mode = "FULL" if queue.get("mode") == warderPiconSync.UPDATE_MODE_FULL else _("Synchronize with TV lists")
 					msg = _("Warder channel picon packages are prepared but not persistently published yet.") + "\\n"
