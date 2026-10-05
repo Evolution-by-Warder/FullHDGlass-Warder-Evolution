@@ -5,3 +5,4 @@ Preflight-gated TEST192 trigger: source validation run 37302230779 passed.
 Retry TEST192 after fixing PackageAction regex in tools/test-r12-regressions.py (commit 7b8a26cda555d5e6951e1c86d474c6d2e00de33d).
 Retry TEST192 after correcting runtime URL scanning and classifying IMDb metadata lookups (commit ea4270fa7bb98cca159ba53577b2ce04a891e216).
 Retry TEST192 after ignoring inert attribution strings in runtime network scan (commit f59465d654394881c7fde0a489e209f64290c58f).
+Retry TEST192 after compacting endpoint inventory and omitting URL query data (commit 587ef9ebf28f6f1d10e19f1bedb5189719b0e54a).
