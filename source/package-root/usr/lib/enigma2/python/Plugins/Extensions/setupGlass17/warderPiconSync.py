@@ -270,6 +270,55 @@ def select_manifest_packages(document, preferences):
         "resolution": resolution,
     }
 
+
+def selector_id_for_position(position):
+    return _ORBITAL_SELECTOR_IDS.get(position_token(position))
+
+
+def plan_runtime_packages(document, queue):
+    """Resolve one deterministic package set from a validated receiver queue."""
+    prefs = {
+        "positions": list(queue.get("positions_labels", [])),
+        "style": queue.get("style", DEFAULT_STYLE),
+        "resolution": queue.get("resolution", DEFAULT_RESOLUTION),
+    }
+    explicit = list(queue.get("selector_ids", []))
+    if explicit:
+        wanted = explicit
+    elif queue.get("mode") == UPDATE_MODE_SYNC_TV:
+        wanted = []
+        seen = set()
+        for service in queue.get("services", []):
+            sid = selector_id_for_position(service.get("position"))
+            if sid and sid not in seen:
+                seen.add(sid)
+                wanted.append(sid)
+    else:
+        wanted = []
+    family = family_for_style(prefs["style"])
+    errors = validate_publication_manifest(document)
+    if errors:
+        return {"state": "invalid-manifest", "packages": [], "errors": errors}
+    candidates = [p for p in document.get("packages", [])
+                  if p.get("family") == family and p.get("resolution") == prefs["resolution"]]
+    if wanted:
+        wanted_set = set(wanted)
+        packages = [p for p in candidates if p.get("selector_id") in wanted_set]
+        available = set(p.get("selector_id") for p in packages)
+        missing = [sid for sid in wanted if sid not in available]
+    else:
+        packages = candidates
+        missing = []
+    packages = sorted(packages, key=lambda p: (p.get("selector_id", ""), p.get("filename", "")))
+    return {
+        "state": "ready" if not missing else "partial",
+        "packages": packages,
+        "missing_selectors": missing,
+        "selector_ids": wanted,
+        "family": family,
+        "resolution": prefs["resolution"],
+    }
+
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     """Create the receiver action queue without performing network/filesystem writes."""
     prefs = dict(default_preferences())
@@ -277,7 +326,9 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     mode = prefs.get("update_mode", DEFAULT_UPDATE_MODE)
     if mode not in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_FULL):
         raise ValueError("unsupported update mode")
-    selected = [position_token(x) for x in prefs.get("positions", []) if position_token(x)]
+    labels = list(prefs.get("positions", []) or [])
+    selected = [position_token(x) for x in labels if position_token(x)]
+    selectors = selected_selector_ids(labels)
     if mode == UPDATE_MODE_SYNC_TV:
         request = build_sync_request(
             enigma2_dir, selected, prefs.get("style", DEFAULT_STYLE),
@@ -290,6 +341,8 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         "state": READY if published else PUBLICATION_LOCKED,
         "mode": mode,
         "positions": selected,
+        "positions_labels": labels,
+        "selector_ids": selectors,
         "style": prefs.get("style", DEFAULT_STYLE),
         "resolution": prefs.get("resolution", DEFAULT_RESOLUTION),
         "destination": prefs.get("destination"),
