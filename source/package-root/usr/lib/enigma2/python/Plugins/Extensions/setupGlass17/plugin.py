@@ -9052,20 +9052,28 @@ class downloadMenu(Screen):
 		return installed
 
 	def _legacyPiconArchiveUrl(self, legacy_id):
-		"""Resolve one preserved legacy numeric ID without guessing or picon.cz fallback."""
+		"""Resolve one preserved legacy numeric ID without guessing or retired-host fallback."""
 		try:
-			catalog_path = os.path.join(PLUGINPATH, "legacyPiconArchives.json")
-			with open(catalog_path, "r", encoding="utf-8") as handle:
-				catalog = json.load(handle)
-			if catalog.get("schema") != 1 or catalog.get("policy", {}).get("picon_cz_fallback") is not False:
-				return ""
-			entry = catalog.get("archives", {}).get(str(legacy_id), {})
+			if not hasattr(self, "_warderLegacyPiconArchives"):
+				catalog_path = os.path.join(PLUGINPATH, "legacyPiconArchives.json")
+				with open(catalog_path, "r", encoding="utf-8") as handle:
+					catalog = json.load(handle)
+				valid = (
+					catalog.get("schema") == 1 and
+					catalog.get("mapped") == 370 and
+					catalog.get("unmapped") == 29 and
+					catalog.get("source", {}).get("commit") == "9cdda4ab414e7d50a97ca9285db8ebbb75fba615" and
+					catalog.get("policy", {}).get("guess_missing") is False and
+					catalog.get("policy", {}).get("picon_cz_fallback") is False
+				)
+				self._warderLegacyPiconArchives = catalog.get("archives", {}) if valid else {}
+			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
 			url = str(entry.get("url", ""))
 			official = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
 			if url.startswith(official) and url.endswith(".7z"):
 				return url
 		except Exception:
-			pass
+			self._warderLegacyPiconArchives = {}
 		return ""
 
 	def downMulti(self, k, Ddir):
