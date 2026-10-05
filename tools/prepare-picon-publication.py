@@ -45,5 +45,7 @@ def main():
             "selector_id":p["selector_id"],"family":p["family"],"warder_key":p["warder_key"],
             "filename":name,"bytes":p["bytes"],"sha256":p["sha256"],"parts":urls,
         })
-    doc={"schema":1,"generated_from":src["generated_from"],"delivery":"raw-github-parts","packages":out,"parts":part_records}\n    (a.output/"manifest.json").write_text(json.dumps(doc,sort_keys=True,indent=2)+"\\n",encoding="utf-8")\n    (a.output/"SHA256SUMS").write_text("".join("%s  %s\\n"%(x["sha256"],x["filename"]) for x in part_records),encoding="ascii")\n    print("Prepared %d packages as %d persistent parts"%(len(out),sum(len(x["parts"]) for x in out)))
+    doc={"schema":1,"generated_from":src["generated_from"],"delivery":"raw-github-parts","packages":out,"parts":part_records}\n    (a.output/"manifest.json").write_text(json.dumps(doc,sort_keys=True,indent=2)+"
+",encoding="utf-8")\n    (a.output/"SHA256SUMS").write_text("".join("%s  %s
+"%(x["sha256"],x["filename"]) for x in part_records),encoding="ascii")\n    print("Prepared %d packages as %d persistent parts"%(len(out),sum(len(x["parts"]) for x in out)))
 if __name__=="__main__": main()
