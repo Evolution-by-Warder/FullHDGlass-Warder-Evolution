@@ -101,7 +101,7 @@ valid_manifest = {
     "delivery": "raw-github-parts",
     "packages": [{
         "selector_id": "235E", "family": "channel-transparent", "warder_key": "23.5e",
-        "filename": "235E-transparent.zip", "bytes": 10, "sha256": "a" * 64,
+        "filename": "235E-transparent.zip", "resolution": "220x132", "bytes": 10, "sha256": "a" * 64,
         "parts": ["https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/235E-transparent.zip.part00"],
     }],
     "parts": [{"filename": "235E-transparent.zip.part00", "bytes": 10, "sha256": "b" * 64}],
@@ -109,7 +109,7 @@ valid_manifest = {
 assert m.validate_publication_manifest(valid_manifest) == []
 sel = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "positions", ["(23.5E) Astra 3B"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
-assert sel["packages"][0]["selector_id"] == "235E"
+assert sel["packages"][0]["selector_id"] == "235E"\nwrong_res = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "resolution", "400x240"))\nassert wrong_res["packages"] == []
 provider_manifest = dict(valid_manifest)
 provider_manifest["packages"] = [dict(valid_manifest["packages"][0], selector_id="FREESAT", warder_key="0.8w/freesat")]
 provider_sel = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Freesat"]))
