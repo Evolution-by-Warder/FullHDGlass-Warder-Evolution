@@ -127,7 +127,8 @@ jobs:
           m=json.load(open("dist/channel-picons-publish/manifest.json"))
           assert m["delivery"]=="raw-github-parts"
           assert len(m["packages"])==114
-          assert len({(p["selector_id"],p["family"]) for p in m["packages"]})==114
+          assert len({(p["selector_id"],p["family"],p["resolution"]) for p in m["packages"]})==114
+          assert not m.get("blocked_packages"), "split publication contains blocked packages"
           parts=[u for p in m["packages"] for u in p["parts"]]
           assert parts and len(parts)==len(set(parts))
           disk={p.name for p in pathlib.Path("dist/channel-picons-publish").glob("*.part*")}
