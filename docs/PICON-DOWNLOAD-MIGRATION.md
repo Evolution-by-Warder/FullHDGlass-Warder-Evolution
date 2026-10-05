@@ -172,3 +172,11 @@ Added `tools/generate-picon-package-plan.py` and `assets/warder/picon-download-m
 CI now executes the planner as a preflight gate and asserts the current audited state: **57 selectors = 38 READY + 2 collision-BLOCKED (0.8W, 16.0E) + 17 MISSING_SOURCE**. READY currently means transparent/black/white only. All unresolved legacy 400x240/220x132/50x30/OLED families remain blocked by policy.
 
 The manifest schema requires HTTPS URL, byte size and SHA256 and limits the first published families to `channel-transparent`, `channel-black` and `channel-white`. The verified backend is now persistently published on production `main`, and the working-branch runtime is switched to its exact pinned manifest URL; physical receiver acceptance remains a separate gate.
+
+## Legacy archive migration contract
+
+The Chocholousek archive in `Evolution-by-Warder/Trezor/archives/chocholousek-picons/originals` is the authoritative compatibility source for the legacy migration phase. Migration is lossless: existing archive families, resolutions and selectors are preserved as-is; they are not resized, rerendered or silently substituted.
+
+Audited archive inventory: 538 original 7z archives (1,359,753,012 bytes), 55 selectors, with these family/resolution combinations: piconblack 100x60 (55), piconblack 150x90 (55), piconmirrorglass 100x60 (55), piconpoolrainbow 220x132 (55), piconpoolrainbow 400x240 (55), piconsrhd 400x240 (44), picontransparent 100x60 (55), picontransparent 220x132 (55), picontransparent 400x240 (54), and piconwhite 50x30 (55). The incomplete combinations are data facts, not permission to fabricate replacements: piconsrhd 400x240 is missing 11 selectors and picontransparent 400x240 is missing 68.5E.
+
+This legacy archive layer is transitional. After the Warder migration is complete and receiver usage is validated, production variants may be consolidated separately. Trezor originals remain immutable historical source material. The maintained Warder Master/PiconHub layer remains separate from this compatibility archive.
