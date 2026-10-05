@@ -47,5 +47,4 @@ Receiver filesystem closure: selective identities canonicalized/deduplicated; pr
 Filesystem race closure: canonical destination persisted after creation and revalidated as a non-symlink directory before every package/free-space/install step.
 Normalization closure: canonical underscore service references are now idempotently accepted alongside colon/#SERVICE forms; destination race guard retained.
 Retry production publication after strict BUILD-EVIDENCE JSON newline fix.
-PRODUCTION_PUBLISH_APPROVED_ONCE: warder-channel-picons-20261005
 Production publish retry: BUILD-EVIDENCE serialization hardened and self-validated.
