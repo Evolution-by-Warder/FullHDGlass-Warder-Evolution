@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "state": "PRE_PUBLICATION_PASS",
+  "branch": "warder-modernization-work",
+  "production_branch": "main",
+  "production_branch_untouched": true,
+  "runtime_cutover": false,
+  "publication_performed": false,
+  "persistent_publication": false,
+  "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
+  "contract": {
+    "selectors": 57,
+    "matched": 40,
+    "ready": 38,
+    "collision_blocked": 2,
+    "missing_source": 17,
+    "packages": 114,
+    "parts": 124,
+    "families": [
+      "channel-transparent",
+      "channel-black",
+      "channel-white"
+    ]
+  },
+  "content_fingerprint": {
+    "manifest_sha256": "493e05b33882b45d827f2ab13b80250d4db307f8d0430885b9b50ba8ac37ef6c",
+    "sha256sums_sha256": "791b91f26f6624945ba0c61ce2aa756706bd0900f2914dbda2a90661a90c8982",
+    "independent_evidence_runs": [
+      37280907429,
+      37280958615
+    ]
+  },
+  "latest_full_green_run": 37282654669,
+  "latest_full_green_head": "9440aaa1cfe7b19f9c03aec005eb965dc92f641b",
+  "next_boundary": "Explicit approval required before persistent publication to main; runtime cutover remains a separate later step after production raw-URL verification."
+}
