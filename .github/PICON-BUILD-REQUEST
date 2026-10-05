@@ -41,3 +41,4 @@ Checkpoint closure: PRE_PUBLICATION_PASS is machine-gated against fingerprint dr
 Large closure batch: full 57/40/38/2/17 selector contract gated; explicit runtime publication false gate; publication preflight now runs inside every build workflow.
 Deep contract closure: splitter hard-limited to 20 MiB; receiver manifest rejects oversized parts and part/package byte-sum mismatch before download; regressions added.
 Canonical assembly closure: receiver requires exact package.zip.part00..N ordering in addition to 20 MiB, per-part integrity, byte-sum and final package integrity contracts.
+Archive install closure: symlink/path/extension/size/ratio/duplicate guards retained; PNG signature now verified before atomic destination replacement.
