@@ -294,7 +294,7 @@ Started immediately after TEST191 WHOLE RADIO PHYSICAL PASS. No Radio code chang
 ### Git/runtime audit findings
 - TEST191 publication, manifest and runtime/control versions remain aligned.
 - Existing non-selected Warder asset downloads already use HTTPS manifest metadata, SHA256 verification, redirect-prefix checks and safe ZIP extraction.
-- **Remaining external legacy dependency found:** satellite-selected channel-picon path `downloadMenu.downMulti()` still downloads directly from `https://picon.cz/download/<position>/`.
+- **Legacy fallback retained:** satellite-selected `downloadMenu.downMulti()` still contains the isolated `https://picon.cz/download/<position>/` route, while the new Warder transparent/black/white backend is persistently published and enabled on the working branch. Physical receiver validation is still required before retiring the fallback.
 - This is the active exception to the project rule that FullHDGlass17 must ultimately have no obsolete/external picon download dependency. Do not silently remove it until the canonical Warder replacement dataset exists.
 - Current Warder catalog explicitly marks these families unavailable: `picon_400x240`, `picon_220x132`, `picon-black`, `picon_50x30-black`, `picon-white`, `picon_50x30-white`, `piconOled`, `ZZPicon-v`.
 - Available Warder families already include provider/satellite/CAM black+white, provider/satellite 220x132, help/UI/menu assets, weather assets, large ChannelSelection graphics and architecture-specific 7zip helpers.
