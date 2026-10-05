@@ -102,6 +102,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m py_compile tools/prepare-picon-publication.py tools/validate-picon-publication.py tools/materialize-picon-packages.py tools/generate-picon-package-plan.py
+          python3 tools/validate-channel-picon-publication-plan.py
           rm -rf dist/channel-picons-publish
           python3 tools/prepare-picon-publication.py \
             --input dist/channel-picons \
