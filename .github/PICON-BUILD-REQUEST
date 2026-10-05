@@ -29,3 +29,4 @@ Fail-closed validation for inner artifact content evidence; hashes recorded only
 Publication plan now requires exact inner manifest/SHA256SUMS evidence matching the green build record.
 Mixed queue: locked Warder stays retry-ready while separately selected legacy downloads continue.
 Warder runtime errors keep prepared selection retry-ready and run only once per mixed queue session.
+Only complete Warder success clears prepared/pending; missing-upstream remains retry-ready.
