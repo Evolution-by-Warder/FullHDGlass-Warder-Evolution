@@ -9,7 +9,7 @@ on:
       - .github/PICON-BUILD-REQUEST
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-channel-picons:
