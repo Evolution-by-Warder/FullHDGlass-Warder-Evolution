@@ -33,7 +33,7 @@ def main():
     manifest_names=set(names)
     part_meta={x.get("filename"):x for x in m.get("parts",[])} if a.parts else {}
     disk={p.name for p in a.root.glob("*.zip")}
-    if disk!=manifest_names:
+    if not a.parts and disk!=manifest_names:
         errors.append("publication ZIP set differs from manifest (missing=%r extra=%r)"%(sorted(manifest_names-disk),sorted(disk-manifest_names)))
     pairs=set()
     for p in pkgs:
@@ -62,10 +62,11 @@ def main():
             if url!=expected_base+"/"+name: errors.append("non-canonical URL for "+name)
             u=urllib.parse.urlparse(url)
             if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
-        if not path.is_file(): continue
-        size=path.stat().st_size
-        if size!=p.get("bytes"): errors.append("size mismatch for "+name)
-        if digest(path)!=p.get("sha256"): errors.append("sha256 mismatch for "+name)
+        if not a.parts:
+            if not path.is_file(): continue
+            size=path.stat().st_size
+            if size!=p.get("bytes"): errors.append("size mismatch for "+name)
+            if digest(path)!=p.get("sha256"): errors.append("sha256 mismatch for "+name)
     if len(pairs)!=114: errors.append("expected 114 unique selector/family pairs")
     if a.parts:
         expected_parts={u.rsplit("/",1)[-1] for p in pkgs for u in p.get("parts",[])}
