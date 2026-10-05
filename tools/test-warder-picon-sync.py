@@ -93,6 +93,8 @@ assert 'self.warderChannelState = "running"' in plugin_source
 assert 'self.warderChannelState = "error"' in plugin_source
 assert "shutil.disk_usage(destination)" in plugin_source
 assert "unsafe Warder picon ZIP compression ratio" in plugin_source
+assert "invalid Warder channel part size" in plugin_source
+assert "oversized Warder channel download" in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 
 with tempfile.TemporaryDirectory() as d:
