@@ -111,6 +111,7 @@ jobs:
           ./tools/build-test-ipk.sh
 
       - name: Inspect built package
+        id: inspect-package
         shell: bash
         run: |
           set -euo pipefail
@@ -118,6 +119,9 @@ jobs:
           RUNTIME_VERSION="$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
           IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${RUNTIME_VERSION}_all.ipk"
           test -f "$IPK"
+          echo "ipk=$IPK" >> "$GITHUB_OUTPUT"
+          echo "sha=$IPK.sha256" >> "$GITHUB_OUTPUT"
+          echo "version=$RUNTIME_VERSION" >> "$GITHUB_OUTPUT"
           chmod +x tools/verify-test-ipk.sh
           ./tools/verify-test-ipk.sh "$IPK" "$RUNTIME_VERSION" "$PACKAGE_VERSION"
           TMP="$(mktemp -d)"
@@ -166,10 +170,10 @@ jobs:
       - name: Upload TEST artifact
         uses: actions/upload-artifact@v4
         with:
-          name: fullhdglass17-warder-evolution-TEST
+          name: fullhdglass17-warder-evolution-${{ steps.inspect-package.outputs.version }}
           path: |
-            packages/test/*.ipk
-            packages/test/*.sha256
+            ${{ steps.inspect-package.outputs.ipk }}
+            ${{ steps.inspect-package.outputs.sha }}
             packages/test/PAYLOAD-LIST.txt
           if-no-files-found: error
           retention-days: 14
