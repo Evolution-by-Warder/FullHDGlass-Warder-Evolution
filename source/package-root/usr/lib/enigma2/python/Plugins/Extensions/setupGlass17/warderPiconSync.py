@@ -373,6 +373,22 @@ def validate_destination(path):
         return None
     return value
 
+
+def wanted_picon_names(queue):
+    """Selective mode installs only receiver bouquet identities; FULL installs all."""
+    if queue.get("mode") == UPDATE_MODE_FULL:
+        return None
+    return set(str(x.get("service_reference", "")) + ".png"
+               for x in queue.get("services", []) if x.get("service_reference"))
+
+
+def safe_archive_member(name):
+    value = str(name or "").replace("\\", "/")
+    if not value or value.startswith("/") or value.startswith("../") or "/../" in ("/" + value):
+        return False
+    base = value.rsplit("/", 1)[-1]
+    return bool(base) and base not in (".", "..")
+
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     """Create the receiver action queue without performing network/filesystem writes."""
     prefs = dict(default_preferences())
