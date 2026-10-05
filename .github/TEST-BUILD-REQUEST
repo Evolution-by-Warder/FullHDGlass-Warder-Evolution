@@ -3,3 +3,4 @@ Post-Radio backend hardening test. Radio remains locked from TEST191.
 Includes legacy FTP migration validator/hash binding, runtime network dependency audit, missing SH4 7zip-helper route fix, and channel-picon cut-over validation. No main changes.
 Preflight-gated TEST192 trigger: source validation run 37302230779 passed.
 Retry TEST192 after fixing PackageAction regex in tools/test-r12-regressions.py (commit 7b8a26cda555d5e6951e1c86d474c6d2e00de33d).
+Retry TEST192 after correcting runtime URL scanning and classifying IMDb metadata lookups (commit ea4270fa7bb98cca159ba53577b2ce04a891e216).
