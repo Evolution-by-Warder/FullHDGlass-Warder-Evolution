@@ -8690,7 +8690,7 @@ class downloadMenu(Screen):
 			self.warderChannelState = "done"
 			result = _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
 			if missing_files:
-				result += " " + _("Missing upstream:") + " " + str(len(missing_files))
+				return _("ERROR") + ": " + _("Missing upstream:") + " " + str(len(missing_files)) + "; " + _("Total:") + " " + str(count)
 			return result
 		job = self.warderChannelJobs.pop(0)
 		required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
@@ -8745,8 +8745,8 @@ class downloadMenu(Screen):
 					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + str(err) + "\n"
 				else:
 					if warder_result is None:
-						# Continue immediately in the same serialized queue; no nested GUI callback.
-						self.dwnLoop()
+						# One package per GUI timer tick keeps the receiver event loop responsive.
+						self.dwnTimer.start(25, True)
 						return
 					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
 			ena = True
