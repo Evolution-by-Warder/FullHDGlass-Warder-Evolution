@@ -117,6 +117,11 @@ assert 'no TV bouquet services found for Warder selective sync' in plugin_source
 assert 'Warder channel selection resolved to no packages' in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 run_block = plugin_source[plugin_source.index("def _warderRunChannelQueue"):plugin_source.index("def dwnLoop")]
+install_block = plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
+assert 'stat.S_ISLNK(mode)' in install_block
+assert 'invalid Warder picon PNG signature' in install_block
+assert 'signature != b"\\x89PNG\\r\\n\\x1a\\n"' in install_block
+assert 'os.replace(tmp, os.path.join(dest, name))' in install_block
 assert 'finally:' in run_block and 'os.unlink(archive)' in run_block
 assert 'if not self.warderChannelJobs and not (queue.get("mode") == warderPiconSync.UPDATE_MODE_SYNC_TV and not queue.get("services")):' in run_block
 
