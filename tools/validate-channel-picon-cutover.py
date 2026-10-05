@@ -60,6 +60,8 @@ if publication.get("preparation_state")=="PREPARED_NOT_PUBLISHED":
         errors.append("prepared publication part count is invalid")
     if publication.get("candidate_validation")!="PASS":
         errors.append("prepared publication candidate has no PASS evidence")
+    if publication.get("reassembly_validation")!="PASS":
+        errors.append("prepared publication candidate has no full reassembly PASS evidence")
 if build.get("state")=="BUILT_NOT_PUBLISHED":
     if publication.get("state") not in (None,"NOT_PUBLISHED"):
         errors.append("unpublished build advertises a publication state")
