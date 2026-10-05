@@ -3,3 +3,4 @@ Build 114 audited transparent/black/white channel-picon packages.
 Rebuild after persistent-publication integrity gates; runtime cut-over remains locked.
 Build deterministic split publication candidate using existing Warder raw-GitHub parts model.
 Rebuild with per-part SHA256/size publication integrity and SHA256SUMS.
+Retry after manifest now includes every split part SHA256 and size.
