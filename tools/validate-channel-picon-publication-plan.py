@@ -6,7 +6,13 @@ ROOT=Path(__file__).resolve().parents[1]
 build=json.loads((ROOT/"assets/warder/channel-picon-build.json").read_text())
 plan=json.loads((ROOT/"assets/warder/channel-picon-publication-plan.json").read_text())
 fingerprint=json.loads((ROOT/"assets/warder/channel-picon-content-fingerprint.json").read_text())
+checkpoint=json.loads((ROOT/"assets/warder/channel-picon-prepublication-checkpoint.json").read_text())
 errors=[]
+if checkpoint.get("state")!="PRE_PUBLICATION_PASS": errors.append("pre-publication checkpoint state")
+if checkpoint.get("production_branch_untouched") is not True: errors.append("checkpoint production branch guard")
+if checkpoint.get("publication_performed") is not False or checkpoint.get("runtime_cutover") is not False or checkpoint.get("persistent_publication") is not False: errors.append("checkpoint must remain unpublished and runtime-locked")
+if checkpoint.get("contract",{}).get("packages")!=114 or checkpoint.get("contract",{}).get("parts")!=124: errors.append("checkpoint package contract")
+if checkpoint.get("content_fingerprint",{}).get("manifest_sha256")!=fingerprint.get("manifest_sha256") or checkpoint.get("content_fingerprint",{}).get("sha256sums_sha256")!=fingerprint.get("sha256sums_sha256"): errors.append("checkpoint content fingerprint drift")
 if plan.get("state")!="PREPARED_NOT_PUBLISHED": errors.append("plan state")
 if plan.get("runtime_cutover") is not False: errors.append("plan runtime cutover must be false")
 if plan.get("publication_performed") is not False: errors.append("plan must remain unpublished")
