@@ -68,7 +68,7 @@ DVB-T sk/cz must remain explicitly distinguishable from orbital satellite positi
 
 This repository does **not** currently contain the channel-picon archives required to populate those seven families. It contains the already-migrated provider/satellite/CAM/weather/UI archives, but no canonical per-position channel-picon payloads.
 
-Therefore runtime picon.cz removal is blocked until the authoritative preserved channel-picon source / Warder Master picon dataset is available in the migration workspace. Do not synthesize archives, silently substitute another picon set, or repoint the legacy IDs to unrelated files.
+Historical pre-publication note: runtime picon.cz removal was blocked until the authoritative Warder Master dataset and deterministic packages were available. That prerequisite has now been satisfied for the published transparent/black/white Warder backend; picon.cz remains only as the reviewed legacy fallback while receiver cut-over is validated. Do not synthesize missing families or repoint legacy IDs to unrelated files.
 
 When the canonical payload is available:
 1. inventory every archive without modifying it;
