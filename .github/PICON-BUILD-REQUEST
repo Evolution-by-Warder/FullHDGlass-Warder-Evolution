@@ -68,3 +68,4 @@ RUNTIME_CUTOVER_FULL_VALIDATION_TARGETS:
 - workflow permissions must remain contents: read and one-time production publication marker must remain absent
 - final verdict must distinguish CI/integrity PASS from external raw HTTP reachability if direct HTTP cannot be independently tested
 - only after every executable gate is green is runtime cutover eligible for a separate controlled production step
+Runtime cutover full validation retry after aligning persistent publication test.
