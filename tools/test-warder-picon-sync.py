@@ -135,7 +135,8 @@ valid_manifest = {
     }],
     "parts": [{"filename": "235E-transparent.zip.part00", "bytes": 10, "sha256": "b" * 64}],
 }
-assert m.validate_publication_manifest(valid_manifest) == []
+manifest_errors = m.validate_publication_manifest(valid_manifest)
+assert manifest_errors == [], manifest_errors
 sel = m.select_manifest_packages(valid_manifest, m.set_preference(m.default_preferences(), "positions", ["(23.5E) Astra 3B"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
 assert sel["packages"][0]["selector_id"] == "235E"
