@@ -8993,8 +8993,8 @@ class warderPositionSelectorScr(Screen):
 		for x in range(0, len(SATLIST)):
 			label = SATLIST[x][0]
 			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
-			# Keep the human orbital/group label as the stable Warder filter token.
-			token = label
+			# Display the historical SATLIST label, but store the exact planner token.
+			token = warderPiconSync.position_token(label)
 			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
 			if not os.path.isfile(p):
 				p = SKINPATH + "icons/75.png"
