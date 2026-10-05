@@ -27,3 +27,4 @@ Embed inner manifest/SHA256SUMS reproducibility evidence in uploaded artifact.
 Inner content-hash build evidence plus streamed receiver download bounds.
 Fail-closed validation for inner artifact content evidence; hashes recorded only from generated BUILD-EVIDENCE.json.
 Publication plan now requires exact inner manifest/SHA256SUMS evidence matching the green build record.
+Mixed queue: locked Warder stays retry-ready while separately selected legacy downloads continue.
