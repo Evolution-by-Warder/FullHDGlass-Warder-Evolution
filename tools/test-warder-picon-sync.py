@@ -176,6 +176,10 @@ assert planned["state"] == "ready" and [p["selector_id"] for p in planned["packa
 full_queue = dict(queue, mode=m.UPDATE_MODE_FULL, services=[])
 full_planned = m.plan_runtime_packages(valid_manifest, full_queue)
 assert len(full_planned["packages"]) == 1
+empty_sync_queue = dict(queue, services=[], positions_labels=[], selector_ids=[])
+empty_sync_planned = m.plan_runtime_packages(valid_manifest, empty_sync_queue)
+assert empty_sync_planned["state"] == "ready" and empty_sync_planned["packages"] == []
+assert m.build_download_jobs(valid_manifest, empty_sync_planned)["jobs"] == []
 provider_queue = dict(queue, positions_labels=["(0.8W) Freesat"], selector_ids=["FREESAT"],
                       services=[{"service_reference": "1", "position": "0.8w"}])
 provider_planned = m.plan_runtime_packages(provider_manifest, provider_queue)
