@@ -8839,6 +8839,77 @@ class downloadMenu(Screen):
 		else:
 			self.dwnLoop(_("ERROR")+": " + what[:-4])
 
+	def _warderFetchChannelJob(self, job, archive):
+		"""Reassemble one published channel package with part and full integrity checks."""
+		official = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"
+		full_hash = hashlib.sha256()
+		total = 0
+		with open(archive, "wb") as out:
+			for part in job.get("parts", []):
+				url = str(part.get("url", ""))
+				if not url.startswith(official):
+					raise ValueError("unsafe Warder channel URL")
+				part_hash = hashlib.sha256()
+				part_size = 0
+				req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons"})
+				with urlopen(req, timeout=45) as response:
+					if not str(response.geturl()).startswith(official):
+						raise ValueError("unsafe Warder channel redirect")
+					while True:
+						chunk = response.read(1024 * 128)
+						if not chunk:
+							break
+						out.write(chunk)
+						full_hash.update(chunk)
+						part_hash.update(chunk)
+						part_size += len(chunk)
+						total += len(chunk)
+				if part_size != int(part.get("bytes", -1)) or part_hash.hexdigest().lower() != str(part.get("sha256", "")).lower():
+					raise ValueError("Warder channel part integrity mismatch")
+		if total != int(job.get("bytes", -1)) or full_hash.hexdigest().lower() != str(job.get("sha256", "")).lower():
+			raise ValueError("Warder channel package integrity mismatch")
+
+	def _warderInstallChannelArchive(self, archive, destination, wanted=None):
+		"""No-delete install: validate ZIP and atomically replace only selected PNG files."""
+		dest = warderPiconSync.validate_destination(destination)
+		if not dest:
+			raise ValueError("invalid Warder picon destination")
+		os.makedirs(dest, exist_ok=True)
+		installed = set()
+		with zipfile.ZipFile(archive, "r") as zf:
+			entries = []
+			seen = set()
+			for info in zf.infolist():
+				if info.is_dir():
+					continue
+				if not warderPiconSync.safe_archive_member(info.filename):
+					raise ValueError("unsafe Warder picon ZIP path")
+				mode = (info.external_attr >> 16) & 0xFFFF
+				if stat.S_ISLNK(mode):
+					raise ValueError("Warder picon ZIP symlink rejected")
+				name = info.filename.replace("\\", "/").rsplit("/", 1)[-1]
+				if not name.lower().endswith(".png") or os.path.basename(name) != name:
+					raise ValueError("unexpected Warder channel archive member")
+				if name in seen:
+					raise ValueError("duplicate Warder picon archive member")
+				seen.add(name)
+				if wanted is None or name in wanted:
+					entries.append((info, name))
+			for info, name in entries:
+				fd, tmp = tempfile.mkstemp(prefix=".warder-picon-", suffix=".tmp", dir=dest)
+				try:
+					with os.fdopen(fd, "wb") as out:
+						with zf.open(info, "r") as src:
+							shutil.copyfileobj(src, out, 1024 * 128)
+						out.flush()
+						os.fsync(out.fileno())
+					os.replace(tmp, os.path.join(dest, name))
+					installed.add(name)
+				finally:
+					if os.path.exists(tmp):
+						os.unlink(tmp)
+		return installed
+
 	def downMulti(self, k, Ddir):
 		tmp = ""
 		if internet():
