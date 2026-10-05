@@ -16,8 +16,8 @@ except ImportError:
 ENIGMA2_DIR = "/etc/enigma2"
 # Explicit two-phase cutover switch. Publication evidence and this runtime switch
 # are reviewed separately; never infer readiness merely from network reachability.
-RUNTIME_PUBLICATION_ENABLED = False
-RUNTIME_MANIFEST_URL = ""
+RUNTIME_PUBLICATION_ENABLED = True
+RUNTIME_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json"
 _BOUQUET_RE = re.compile(r'FROM BOUQUET "([^"]+)"', re.I)
 _HEX = re.compile(r"^[0-9A-Fa-f]+$")
 
