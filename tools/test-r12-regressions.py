@@ -1045,9 +1045,15 @@ assert all(x["url"].startswith("https://raw.githubusercontent.com/Evolution-by-W
 assert not any("picon.cz" in x["url"] for x in LEGACY_CATALOG["archives"].values())
 assert "def _legacyPiconArchiveUrl(self, legacy_id):" in PLUGIN
 assert "url = self._legacyPiconArchiveUrl(k[x][1])" in PLUGIN
-down_multi = PLUGIN.split("def downMulti(self, k, Ddir):", 1)[1].split("\n\tdef ", 1)[0]
+down_multi_match = re.search(r"def downMulti\(self, k, Ddir(?:, continue_loop=True)?\):", PLUGIN)
+assert down_multi_match, "legacy archive downloader signature missing"
+down_multi = PLUGIN[down_multi_match.end():].split("\n\tdef ", 1)[0]
 assert "https://picon.cz/download/%s/" not in down_multi
 assert "Preserved legacy archive is not available in Warder migration catalogue" in PLUGIN
+if ", continue_loop=True" in down_multi_match.group(0):
+    assert "if continue_loop:" in down_multi
+    assert "return tmp[:-1]" in down_multi
+    assert "legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)" in PLUGIN
 
 # TEST193 regression guard: the Warder selector reuses the legacy selector skin.
 # Keep the skin provider defined before the Warder class body is evaluated.
