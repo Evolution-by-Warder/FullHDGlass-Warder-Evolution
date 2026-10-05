@@ -80,3 +80,4 @@ Runtime-message stabilization: remove obsolete pre-publication receiver wording;
 Published-resolution contract validation: GUI/runtime expose only manifest-backed 220x132; reject unpublished 400x240 fail-closed. Includes prior runtime-message/docs/network/PackageAction stabilization.
 Validate lossless Trezor legacy archive inventory integration
 Retry pinned Trezor archive migration validation
+Validate pinned Trezor manifest join and migration hardening
