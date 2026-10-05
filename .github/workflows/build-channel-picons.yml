@@ -33,11 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$(wc -l < assets/warder/legacy-source-manifest.tsv)" -eq 2204
-          python3 tools/build-legacy-picon-migration-map.py \
-            --mapping assets/warder/picon-satlist-mapping.tsv \
-            --source-manifest assets/warder/legacy-source-manifest.tsv \
-            --output /tmp/legacy-picon-migration-map.json \\
-            --runtime-output /tmp/legacy-picon-runtime.json
+          python3 tools/build-legacy-picon-migration-map.py --mapping assets/warder/picon-satlist-mapping.tsv --source-manifest assets/warder/legacy-source-manifest.tsv --output /tmp/legacy-picon-migration-map.json --runtime-output /tmp/legacy-picon-runtime.json
           python3 - <<'PY'
           import json
           d=json.load(open("/tmp/legacy-picon-migration-map.json"))
