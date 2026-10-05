@@ -47,6 +47,8 @@ with tempfile.TemporaryDirectory() as d:
     assert req["mode"] == "sync-tv-lists"
     assert [x["service_reference"] for x in req["services"]] == ["1_0_1_1328_CA2_3_EB0000_0_0_0"]
     assert req["services"][0]["position"] == "23.5e"
+    filtered = m.build_sync_request(d, ["23.5e"], "transparent", "220x132")
+    assert all(x["position"] == "23.5e" for x in filtered["services"])
 
 prefs = m.default_preferences("/media/hdd/picon")
 assert prefs["update_mode"] == "sync-tv-lists"
@@ -181,6 +183,9 @@ empty_sync_queue = dict(queue, services=[], positions_labels=[], selector_ids=[]
 empty_sync_planned = m.plan_runtime_packages(valid_manifest, empty_sync_queue)
 assert empty_sync_planned["state"] == "ready" and empty_sync_planned["packages"] == []
 assert m.build_download_jobs(valid_manifest, empty_sync_planned)["jobs"] == []
+full_selected = dict(full_queue, positions_labels=["(23.5E) Astra 3B"], selector_ids=["235E"])
+full_selected_planned = m.plan_runtime_packages(valid_manifest, full_selected)
+assert [p["selector_id"] for p in full_selected_planned["packages"]] == ["235E"]
 provider_queue = dict(queue, positions_labels=["(0.8W) Freesat"], selector_ids=["FREESAT"],
                       services=[{"service_reference": "1", "position": "0.8w"}])
 provider_planned = m.plan_runtime_packages(provider_manifest, provider_queue)
