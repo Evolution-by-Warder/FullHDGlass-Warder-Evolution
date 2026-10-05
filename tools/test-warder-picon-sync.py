@@ -101,6 +101,11 @@ assert 'self.warderPiconPrefs.get("prepared") and self.warderChannelState not in
 assert '("done", "error", "locked")' in plugin_source
 assert 'self.warderPiconPrefs["prepared"] = False' not in plugin_source
 assert 'self.menuListAll[row][4] = "x"' not in plugin_source
+missing_branch = plugin_source[plugin_source.index("if missing_files:"):plugin_source.index('return _("SUCCESSFUL")', plugin_source.index("if missing_files:"))]
+assert 'self.warderChannelState = "error"' in missing_branch
+assert 'self.warderPiconPrefs["prepared"] = False' not in missing_branch
+assert 'self.warderPiconPrefs["prepared"] = False' in plugin_source
+assert 'self.warderChannelState = "done"' in plugin_source
 assert ".is_dir()" not in plugin_source[plugin_source.index("def _warderInstallChannelArchive"):plugin_source.index("def downMulti")]
 
 with tempfile.TemporaryDirectory() as d:
