@@ -171,5 +171,12 @@ bad_sha = dict(valid_manifest)
 bad_sha["packages"] = [dict(valid_manifest["packages"][0], sha256="xyz")]
 assert "invalid package sha256" in m.validate_publication_manifest(bad_sha)
 assert m.publication_from_manifest("http://raw.githubusercontent.com/x/manifest.json", valid_manifest)["persistent"] is False
+duplicate = dict(valid_manifest)
+duplicate["packages"] = [dict(valid_manifest["packages"][0]), dict(valid_manifest["packages"][0])]
+assert "duplicate selector/family/resolution" in m.validate_publication_manifest(duplicate)
+duplicate_part = dict(valid_manifest)
+duplicate_part["packages"] = [dict(valid_manifest["packages"][0], parts=[
+    valid_manifest["packages"][0]["parts"][0], valid_manifest["packages"][0]["parts"][0]])]
+assert "duplicate package part" in m.validate_publication_manifest(duplicate_part)
 
 print("Warder picon sync parser/planner/runtime-lock/manifest/collision/GUI wiring: PASS")
