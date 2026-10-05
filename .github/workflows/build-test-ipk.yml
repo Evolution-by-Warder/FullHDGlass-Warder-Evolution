@@ -64,6 +64,7 @@ jobs:
           python3 tools/validate-legacy-ftp-migration.py
           python3 tools/audit-runtime-network-dependencies.py
           python3 tools/validate-channel-picon-cutover.py
+          python3 tools/validate-channel-picon-publication-plan.py
           python3 - <<'PY'
           import json
           from pathlib import Path
