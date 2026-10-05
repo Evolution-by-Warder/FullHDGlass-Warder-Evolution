@@ -38,9 +38,13 @@
     "manifest_url": null,
     "base_url": null,
     "required_packages": 114,
-    "note": "GitHub Actions artifact is temporary build evidence only; receiver cut-over remains locked until all packages and the manifest exist at persistent URLs and are hash/size verified.",
+    "note": "Destination contract is prepared only. No files are published there yet; main remains untouched and runtime cut-over remains locked.",
     "delivery": "raw-github-parts",
     "part_size_limit_bytes": 20971520,
-    "integrity": "package SHA256 plus per-part SHA256/size; publication remains NOT_PUBLISHED"
+    "integrity": "package SHA256 plus per-part SHA256/size; publication remains NOT_PUBLISHED",
+    "prepared_destination_path": "assets/warder/downloads/picons/channels",
+    "production_base_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels",
+    "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
+    "preparation_state": "PREPARED_NOT_PUBLISHED"
   }
 }
