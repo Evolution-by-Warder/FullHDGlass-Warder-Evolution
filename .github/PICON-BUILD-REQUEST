@@ -93,3 +93,4 @@ Revalidate scoped legacy downloader regression
 Validate focused legacy picon runtime gate
 Validate cutover with pinned legacy resolver
 Validate retired picon.cz dependency audit
+Validate retired legacy host policy
