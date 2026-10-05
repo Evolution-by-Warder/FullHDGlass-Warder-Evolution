@@ -12,3 +12,4 @@ Pre-publication lock rebuild: publication plan and two-phase cutover gates enabl
 Receiver-contract rebuild: manifest trust, runtime queue, collision and two-phase cutover gates enabled.
 Authoritative resolution/selectors rebuild: exact SATLIST identity, PNG IHDR resolution and split-manifest v2 gates.
 End-to-end planner rebuild: selective/FULL package planning, integrity-complete download jobs and expanded receiver/materializer gates.
+Final batch validation: clean fixtures, explicit runtime lock, selective-only service install and atomic no-delete staging.
