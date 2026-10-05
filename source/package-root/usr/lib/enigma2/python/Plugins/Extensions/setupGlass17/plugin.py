@@ -8466,11 +8466,15 @@ class downloadMenu(Screen):
 				queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 				if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
 					mode = "FULL" if queue.get("mode") == warderPiconSync.UPDATE_MODE_FULL else _("Synchronize with TV lists")
-					msg = _("Warder channel picon packages are prepared but not persistently published yet.") + "\\n"
-					msg += _("No picons were downloaded, deleted or changed.") + "\\n"
+					msg = _("Warder channel picon packages are prepared but not persistently published yet.") + " "
+					msg += _("Warder picons were skipped; other selected downloads will continue.") + " "
 					msg += _("Mode") + ": " + mode + ", " + _("Services") + ": " + str(queue.get("service_count", 0))
-					self.session.open(historyScreen, _("Result"), msg)
-					return
+					legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows for x in self.menuListAll)
+					if not legacy_pending:
+						self.session.open(historyScreen, _("Result"), msg)
+						return
+					self.msg = "(" + _("Warder channel picons") + ") " + msg + "\\n"
+					self.warderChannelState = "locked"
 			self.instance.resize(eSize(1920,150))
 			self["dwn"].show()
 			self.ena = False
@@ -8729,7 +8733,7 @@ class downloadMenu(Screen):
 		else:
 			if txt != "":
 				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "\n"
-			if self.warderPiconPrefs.get("prepared"):
+			if self.warderPiconPrefs.get("prepared") and self.warderChannelState != "locked":
 				self.dwnJob = _("Warder channel picons")
 				try:
 					warder_result = self._warderRunChannelQueue()
@@ -8768,7 +8772,7 @@ class downloadMenu(Screen):
 				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
 		
 	def dwnFin(self, answer=""):
-		if self.warderChannelState in ("done", "error"):
+		if self.warderChannelState in ("done", "error", "locked"):
 			self.warderChannelState = "idle"
 		self.createList()
 		self.ena = True
