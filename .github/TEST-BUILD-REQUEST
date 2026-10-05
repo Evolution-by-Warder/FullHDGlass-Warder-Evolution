@@ -1,2 +1,3 @@
 TEST193 BUILD 1
 Fix TEST192 setupGlass17 import-time forward reference. Preserve selector appearance and Warder behavior; run static validation and build one verified TEST193 IPK.
+TEST193 retry: correct class-block regression guard and rerun validated build.

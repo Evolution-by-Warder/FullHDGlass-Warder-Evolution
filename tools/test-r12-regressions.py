@@ -1054,5 +1054,5 @@ assert "Preserved legacy archive is not available in Warder migration catalogue"
 sat_selector_at = PLUGIN.index("class satSelectorScr(Screen)")
 warder_selector_at = PLUGIN.index("class warderPositionSelectorScr(Screen)")
 assert sat_selector_at < warder_selector_at
-warder_selector = PLUGIN[warder_selector_at:PLUGIN.index("\\nclass ", warder_selector_at)]
+warder_selector = PLUGIN.split("class warderPositionSelectorScr(Screen):", 1)[1].split("class styleSelectorScr(Screen):", 1)[0]
 assert "skin = satSelectorScr.skin" in warder_selector
