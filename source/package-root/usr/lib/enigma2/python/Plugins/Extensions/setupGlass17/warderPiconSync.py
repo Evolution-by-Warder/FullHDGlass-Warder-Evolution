@@ -189,6 +189,84 @@ def has_executable_action(preferences, ordinary_selected=False):
 PUBLICATION_LOCKED = "publication-locked"
 READY = "ready"
 
+
+# SATLIST identity must stay separate from orbital filtering. Provider selectors can
+# share one orbital position, while nearby legacy selectors may have distinct IDs.
+_SPECIAL_SELECTOR_LABELS = {
+    "(0.8W) Freesat": "FREESAT",
+    "(0.8W) Digi / Telly": "DIGI_TELLY",
+    "(0.8W) Digi/Telly": "DIGI_TELLY",
+    "(16.0E) Antiksat": "ANTIKSAT",
+    "(23.5E) Skylink": "SKYLINK",
+    "DVB-T sk/cz": "DVB-T-SK-CZ",
+}
+_ORBITAL_SELECTOR_IDS = {
+    "45.0w":"450W","30.0w":"300W","27.5w":"275W","24.5w":"248W","22.0w":"220W",
+    "15.0w":"150W","14.0w":"140W","12.5w":"125W","11.0w":"110W","8.0w":"80W",
+    "7.0w":"70W","5.0w":"50W","4.0w":"40W","1.0w":"10W","0.8w":"08W",
+    "1.9e":"19E","3.0e":"30E","3.1e":"31E","4.8e":"48E_A","4.9e":"48E_B",
+    "7.0e":"70E","9.0e":"90E","10.0e":"100E","13.0e":"130E","16.0e":"160E",
+    "19.2e":"192E","21.5e":"216E","23.5e":"235E","26.0e":"260E","28.2e":"282E",
+    "30.5e":"305E","31.5e":"315E","33.0e":"330E","36.0e":"360E","39.0e":"390E",
+    "42.0e":"420E","45.0e":"450E","46.0e":"460E","51.5e":"515E","52.0e":"520E",
+    "52.5e":"525E","53.0e":"530E","54.9e":"549E","56.0e":"560E","62.0e":"620E",
+    "66.0e":"660E","68.5e":"685E","70.5e":"705E","74.9e":"749E","75.0e":"750E",
+    "85.0e":"850E","85.1e":"851E",
+}
+
+def selector_id(label):
+    text = str(label or "").strip()
+    if text in _SPECIAL_SELECTOR_LABELS:
+        return _SPECIAL_SELECTOR_LABELS[text]
+    return _ORBITAL_SELECTOR_IDS.get(position_token(text))
+
+
+def selected_selector_ids(labels):
+    result = []
+    seen = set()
+    for label in labels or []:
+        sid = selector_id(label)
+        if sid and sid not in seen:
+            seen.add(sid)
+            result.append(sid)
+    return result
+
+
+def family_for_style(style):
+    return {
+        "transparent": "channel-transparent",
+        "black": "channel-black",
+        "white": "channel-white",
+    }.get(style)
+
+
+def select_manifest_packages(document, preferences):
+    """Select deterministic packages; never substitute another selector/family."""
+    errors = validate_publication_manifest(document)
+    if errors:
+        return {"state": "invalid-manifest", "packages": [], "errors": errors}
+    prefs = dict(default_preferences())
+    prefs.update(preferences or {})
+    family = family_for_style(prefs.get("style"))
+    if not family:
+        return {"state": "unsupported-style", "packages": [], "errors": ["unsupported style"]}
+    wanted = selected_selector_ids(prefs.get("positions"))
+    packages = [p for p in document.get("packages", []) if p.get("family") == family]
+    if wanted:
+        wanted_set = set(wanted)
+        packages = [p for p in packages if p.get("selector_id") in wanted_set]
+        available = set(p.get("selector_id") for p in packages)
+        missing = [sid for sid in wanted if sid not in available]
+    else:
+        missing = []
+    return {
+        "state": "ready" if not missing else "partial",
+        "packages": packages,
+        "missing_selectors": missing,
+        "selector_ids": wanted,
+        "family": family,
+    }
+
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     """Create the receiver action queue without performing network/filesystem writes."""
     prefs = dict(default_preferences())
