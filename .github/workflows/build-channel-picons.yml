@@ -101,7 +101,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf dist/channel-picons-publish
+          python3 -m py_compile tools/prepare-picon-publication.py tools/validate-picon-publication.py tools/materialize-picon-packages.py tools/generate-picon-package-plan.py\n          rm -rf dist/channel-picons-publish
           python3 tools/prepare-picon-publication.py \
             --input dist/channel-picons \
             --manifest dist/channel-picons/manifest.json \
