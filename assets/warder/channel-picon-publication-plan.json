@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "state": "PREPARED_NOT_PUBLISHED",
+  "state": "PUBLISHED",
   "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
   "evidence": {
     "workflow_run": 37280907429,
@@ -19,12 +19,15 @@
     "candidate": "PASS",
     "full_reassembly": "PASS"
   },
-  "runtime_cutover": false,
-  "publication_performed": false,
+  "runtime_cutover": true,
+  "publication_performed": true,
   "content_evidence": {
     "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
     "packages": 114,
     "manifest_sha256": "493e05b33882b45d827f2ab13b80250d4db307f8d0430885b9b50ba8ac37ef6c",
     "sha256sums_sha256": "791b91f26f6624945ba0c61ce2aa756706bd0900f2914dbda2a90661a90c8982"
-  }
+  },
+  "production_commit": "c78047bd5c0bdfdd522cec69673fa95ac2376da6",
+  "production_base_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels",
+  "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json"
 }
