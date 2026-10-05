@@ -180,3 +180,73 @@ def set_preference(preferences, key, value):
 def has_executable_action(preferences, ordinary_selected=False):
     """Mirror FullHDGlass blue-button semantics for the assimilated planner."""
     return bool(ordinary_selected or preferences.get("prepared", False))
+
+
+PUBLICATION_LOCKED = "publication-locked"
+READY = "ready"
+
+def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
+    """Create the receiver action queue without performing network/filesystem writes."""
+    prefs = dict(default_preferences())
+    prefs.update(preferences or {})
+    mode = prefs.get("update_mode", DEFAULT_UPDATE_MODE)
+    if mode not in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_FULL):
+        raise ValueError("unsupported update mode")
+    selected = [position_token(x) for x in prefs.get("positions", []) if position_token(x)]
+    if mode == UPDATE_MODE_SYNC_TV:
+        request = build_sync_request(
+            enigma2_dir, selected, prefs.get("style", DEFAULT_STYLE),
+            prefs.get("resolution", DEFAULT_RESOLUTION), include_radio=False)
+        services = request["services"]
+    else:
+        services = []
+    published = bool((publication or {}).get("persistent") and (publication or {}).get("manifest_url"))
+    return {
+        "state": READY if published else PUBLICATION_LOCKED,
+        "mode": mode,
+        "positions": selected,
+        "style": prefs.get("style", DEFAULT_STYLE),
+        "resolution": prefs.get("resolution", DEFAULT_RESOLUTION),
+        "destination": prefs.get("destination"),
+        "services": services,
+        "service_count": len(services),
+        "manifest_url": (publication or {}).get("manifest_url"),
+    }
+
+
+def build_service_index(entries):
+    """Index package entries by canonical service reference and expose collisions."""
+    index = {}
+    collisions = {}
+    for entry in entries or []:
+        stem = normalize_service_reference(entry.get("service_reference", ""))
+        if not stem:
+            continue
+        candidate = dict(entry)
+        candidate["service_reference"] = stem
+        previous = index.get(stem)
+        if previous is None:
+            index[stem] = candidate
+            continue
+        if previous == candidate:
+            continue
+        bucket = collisions.setdefault(stem, [previous])
+        if candidate not in bucket:
+            bucket.append(candidate)
+    for stem in collisions:
+        index.pop(stem, None)
+    return index, collisions
+
+
+def resolve_service_entry(index, collisions, service_reference):
+    """Never guess across a collision: ambiguous identities are explicitly blocked."""
+    stem = normalize_service_reference(service_reference)
+    if not stem:
+        return {"state": "invalid-service-reference", "service_reference": ""}
+    if stem in (collisions or {}):
+        return {"state": "collision-blocked", "service_reference": stem,
+                "candidates": list(collisions[stem])}
+    entry = (index or {}).get(stem)
+    if entry is None:
+        return {"state": "missing", "service_reference": stem}
+    return {"state": "matched", "service_reference": stem, "entry": entry}
