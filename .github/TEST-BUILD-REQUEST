@@ -6,3 +6,4 @@ Retry TEST192 after fixing PackageAction regex in tools/test-r12-regressions.py 
 Retry TEST192 after correcting runtime URL scanning and classifying IMDb metadata lookups (commit ea4270fa7bb98cca159ba53577b2ce04a891e216).
 Retry TEST192 after ignoring inert attribution strings in runtime network scan (commit f59465d654394881c7fde0a489e209f64290c58f).
 Retry TEST192 after compacting endpoint inventory and omitting URL query data (commit 587ef9ebf28f6f1d10e19f1bedb5189719b0e54a).
+TEST192 retry after committing generated network dependency inventory (8b37446f21b364bd240013696c7c13f9dc363614).
