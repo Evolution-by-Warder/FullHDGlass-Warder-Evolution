@@ -13,3 +13,4 @@ Receiver-contract rebuild: manifest trust, runtime queue, collision and two-phas
 Authoritative resolution/selectors rebuild: exact SATLIST identity, PNG IHDR resolution and split-manifest v2 gates.
 End-to-end planner rebuild: selective/FULL package planning, integrity-complete download jobs and expanded receiver/materializer gates.
 Final batch validation: clean fixtures, explicit runtime lock, selective-only service install and atomic no-delete staging.
+Receiver queue integration validation: one logical Warder job, strict manifest ambiguity rejection, syntax gates, legacy continuation.
