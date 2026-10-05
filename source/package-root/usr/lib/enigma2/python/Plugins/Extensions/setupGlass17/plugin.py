@@ -8369,6 +8369,10 @@ class downloadMenu(Screen):
 		self.firststart = True
 		self.ena = True
 		self.msg = ""
+		self.warderChannelState = "idle"
+		self.warderChannelQueue = None
+		self.warderChannelJobs = []
+		self.warderChannelInstalled = set()
 		self.warderPiconPrefs = warderPiconSync.default_preferences(os.path.join(config.plugins.setupGlass17.par39.value, "picon"))
 		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
 		sel = '***'+_('Select')+'***   '
@@ -8450,7 +8454,7 @@ class downloadMenu(Screen):
 			self["key_blue"].hide()
 				
 	def startDown(self):
-		if not self.ena:
+		if not self.ena or self.warderChannelState == "running":
 			return
 		tmp = self['list'].getSelectedIndex()
 		if self.toDown:
@@ -8652,6 +8656,7 @@ class downloadMenu(Screen):
 		return doc
 
 	def _warderRunChannelQueue(self):
+		self.warderChannelState = "running"
 		queue = getattr(self, "warderChannelQueue", None)
 		if queue is None:
 			queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
@@ -8679,8 +8684,23 @@ class downloadMenu(Screen):
 			self.warderChannelQueue = None
 			self.warderChannelJobs = []
 			self.warderChannelInstalled = set()
+			self.warderChannelState = "done"
 			return _("SUCCESSFUL") + ": " + _("Total:") + " " + str(count) + " " + _("file(s) downloaded/updated.")
 		job = self.warderChannelJobs.pop(0)
+		required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
+		try:
+			free_mb = int(shutil.disk_usage("/tmp").free / (1024 * 1024))
+		except OSError:
+			free_mb = 0
+		if free_mb < required:
+			raise ValueError("insufficient temporary space for Warder channel package")
+		destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
+		try:
+			dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
+		except OSError:
+			dest_free_mb = 0
+		if dest_free_mb < required:
+			raise ValueError("insufficient destination space for Warder channel package")
 		fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
 		os.close(fd)
 		try:
@@ -8708,6 +8728,7 @@ class downloadMenu(Screen):
 				try:
 					warder_result = self._warderRunChannelQueue()
 				except Exception as err:
+					self.warderChannelState = "error"
 					self.warderPiconPrefs["prepared"] = False
 					self.warderChannelQueue = None
 					self.warderChannelJobs = []
@@ -8741,6 +8762,8 @@ class downloadMenu(Screen):
 				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
 		
 	def dwnFin(self, answer=""):
+		if self.warderChannelState in ("done", "error"):
+			self.warderChannelState = "idle"
 		self.createList()
 		self.ena = True
 		self.clrSelectsat = False
