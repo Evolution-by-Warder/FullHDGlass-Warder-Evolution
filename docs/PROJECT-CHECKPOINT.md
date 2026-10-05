@@ -333,7 +333,7 @@ Architecture decision: FullHDGlass17 is the single user-facing Warder ecosystem 
 - PiconHub runtime structure is picons/<position>/<provider>/{transparent,white,black}/<service-reference>.png.
 - Same-service duplicates with identical payload are safe deterministic dedupe; conflicting different payloads must not be silently guessed.
 - Manual/FULL operation remains a user-selectable alternative/fallback.
-- Keep legacy picon.cz/downMulti path available until the new Warder path is receiver-tested; do not cut over prematurely.
+- Keep legacy picon.cz/downMulti only as a fallback until the already-enabled working-branch Warder path is receiver-tested; do not remove the fallback prematurely.
 
 ### Implementation work order
 1. Keep TEST191 Radio fully locked and untouched; main remains TABU.
