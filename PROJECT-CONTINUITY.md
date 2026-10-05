@@ -111,3 +111,13 @@ Continue autonomously in large batches:
 
 ## TEST build rule
 When user asks `daj mi test`: trigger TEST build; inspect run/jobs/gates; fix any failure and rerun; wait for SUCCESS; verify IPK, update-test.json, TEST version and SHA256; only then say it is ready to install. PHYSICAL PASS is declared only by the user's receiver test.
+
+## 2026-10-05 channel-picon backend continuation
+- Split publication candidate run 37262475228: SUCCESS.
+- Artifact 11324632930, 1,230,749,855 bytes, digest sha256:55a14f5f13b2c05a6e471406ea762e2496fd6680c8cbc5a7a956fc7bf9d9bce2, expires 2026-10-19T04:13:52Z.
+- Existing Warder raw-GitHub multipart delivery model selected for channel-picon publication preparation; no Release required at this stage.
+- Per-part integrity added: each .partNN must have manifest bytes + SHA256 and SHA256SUMS; exact part set enforced.
+- First per-part run 37262643909 failed correctly because generator omitted the new part metadata from final JSON; validator blocked publication. Generator fixed in e01e71eeb20e4b2d96d1fdd494af63348e93022c.
+- Retry triggered by 25d550e1fd97c1b2c97ae076ba733bf16aa8c235; run 37262827959 pending/in progress at checkpoint time.
+- Verified split build evidence recorded in assets/warder/channel-picon-build.json by 9b9a42e12c1152c96224a56927c7ee5f419f65fb.
+- Publication remains NOT_PUBLISHED and runtime_cutover=false. picon.cz remains the runtime fallback. Radio TEST191 and main remain untouched.
