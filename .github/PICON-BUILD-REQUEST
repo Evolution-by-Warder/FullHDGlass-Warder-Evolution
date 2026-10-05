@@ -10,3 +10,4 @@ Authoritative rebuild: fixed compile gate newline and upload only split publicat
 Final integrity rebuild: independently reassemble every split package and verify full size/SHA256.
 Pre-publication lock rebuild: publication plan and two-phase cutover gates enabled.
 Receiver-contract rebuild: manifest trust, runtime queue, collision and two-phase cutover gates enabled.
+Authoritative resolution/selectors rebuild: exact SATLIST identity, PNG IHDR resolution and split-manifest v2 gates.
