@@ -30,3 +30,4 @@ Publication plan now requires exact inner manifest/SHA256SUMS evidence matching 
 Mixed queue: locked Warder stays retry-ready while separately selected legacy downloads continue.
 Warder runtime errors keep prepared selection retry-ready and run only once per mixed queue session.
 Only complete Warder success clears prepared/pending; missing-upstream remains retry-ready.
+Batch hardening: mixed lock message retained, Warder rows excluded from legacy dispatch, retry assertions scoped, manifest URLs pinned to production repo/main/path.
