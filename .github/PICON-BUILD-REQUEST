@@ -87,3 +87,4 @@ Revalidate corrected legacy resolver generator
 Validate corrected resolver CI shell block
 Validate repaired resolver generator and workflow
 Validate single-line legacy resolver invocation
+Validate pinned legacy runtime cutover batch
