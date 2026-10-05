@@ -176,6 +176,7 @@ jobs:
           python3 tools/test-warder-picon-sync.py
           python3 tools/validate-channel-picon-cutover.py
           python3 tools/validate-channel-picon-two-phase-cutover.py
+          python3 tools/validate-channel-picon-publication-plan.py
 
       - name: Upload audited channel-picon artifact
         uses: actions/upload-artifact@v4
