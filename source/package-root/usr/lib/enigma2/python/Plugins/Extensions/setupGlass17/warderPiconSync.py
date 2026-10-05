@@ -395,8 +395,12 @@ def wanted_picon_names(queue):
     """Selective mode installs only receiver bouquet identities; FULL installs all."""
     if queue.get("mode") == UPDATE_MODE_FULL:
         return None
-    return set(str(x.get("service_reference", "")) + ".png"
-               for x in queue.get("services", []) if x.get("service_reference"))
+    names = set()
+    for service in queue.get("services", []):
+        stem = normalize_service_reference(service.get("service_reference", ""))
+        if stem:
+            names.add(stem + ".png")
+    return names
 
 
 def safe_archive_member(name):
