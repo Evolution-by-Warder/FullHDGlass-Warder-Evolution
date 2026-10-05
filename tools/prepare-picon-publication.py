@@ -25,7 +25,7 @@ def main():
     pkgs=src.get("packages",[])
     if len(pkgs)!=114: raise SystemExit("expected 114 packages")
     a.output.mkdir(parents=True,exist_ok=True)
-    out=[]
+    out=[]; part_records=[]
     for p in pkgs:
         name=p["filename"]; inp=a.input/name
         if not inp.is_file(): raise SystemExit("missing "+name)
@@ -37,7 +37,9 @@ def main():
                 if not data: break
                 pn="%s.part%02d"%(name,idx)
                 q=a.output/pn; q.write_bytes(data)
-                urls.append(a.base_url.rstrip("/")+"/"+pn); idx+=1
+                urls.append(a.base_url.rstrip("/")+"/"+pn)
+                part_records.append({"filename":pn,"bytes":len(data),"sha256":hashlib.sha256(data).hexdigest()})
+                idx+=1
         if not urls: raise SystemExit("empty "+name)
         out.append({
             "selector_id":p["selector_id"],"family":p["family"],"warder_key":p["warder_key"],
