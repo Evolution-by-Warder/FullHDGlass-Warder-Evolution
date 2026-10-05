@@ -41,7 +41,7 @@
     "note": "Verified persistent production backend published on main at commit c78047bd5c0bdfdd522cec69673fa95ac2376da6; runtime cutover is validated separately on the working branch.",
     "delivery": "raw-github-parts",
     "part_size_limit_bytes": 20971520,
-    "integrity": "package SHA256 plus per-part SHA256/size plus streamed full-package reassembly SHA256/size; publication remains NOT_PUBLISHED",
+    "integrity": "package SHA256 plus per-part SHA256/size plus streamed full-package reassembly SHA256/size; verified persistent production publication",
     "prepared_destination_path": "assets/warder/downloads/picons/channels",
     "production_base_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels",
     "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
