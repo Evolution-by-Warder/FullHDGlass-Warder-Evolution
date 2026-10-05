@@ -34,4 +34,16 @@ with tempfile.TemporaryDirectory() as d:
     assert [x["service_reference"] for x in req["services"]] == ["1_0_1_1328_CA2_3_EB0000_0_0_0"]
     assert req["services"][0]["position"] == "23.5e"
 
-print("Warder picon sync parser/planner: PASS")
+prefs = m.default_preferences("/media/hdd/picon")
+assert prefs["update_mode"] == "sync-tv-lists"
+assert prefs["style"] == "transparent"
+assert prefs["resolution"] == "220x132"
+assert prefs["prepared"] is False
+assert m.has_executable_action(prefs) is False
+prefs = m.set_preference(prefs, "style", "black")
+assert prefs["prepared"] is True
+assert m.has_executable_action(prefs) is True
+assert m.has_executable_action(m.default_preferences(), ordinary_selected=True) is True
+assert [x[0] for x in m.UPDATE_MODES] == ["sync-tv-lists", "full"]
+
+print("Warder picon sync parser/planner/action-state: PASS")
