@@ -95,4 +95,27 @@ assert "1_0_1_1328_CA2_3_EB0000_0_0_0" not in idx
 assert m.resolve_service_entry(idx, col, entries[0]["service_reference"])["state"] == "collision-blocked"
 assert m.resolve_service_entry(idx, col, "1:0:1:999:1:1:C00000:0:0:0:")["state"] == "missing"
 
-print("Warder picon sync parser/planner/runtime-lock/collision/GUI wiring: PASS")
+valid_manifest = {
+    "schema": 1,
+    "generated_from": {"repository": "Evolution-by-Warder/PiconHub-Warder-Evolution", "ref": "2827fed5"},
+    "delivery": "raw-github-parts",
+    "packages": [{
+        "selector_id": "235E", "family": "channel-transparent", "warder_key": "23.5e",
+        "filename": "235E-transparent.zip", "bytes": 10, "sha256": "a" * 64,
+        "parts": ["https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/235E-transparent.zip.part00"],
+    }],
+    "parts": [{"filename": "235E-transparent.zip.part00", "bytes": 10, "sha256": "b" * 64}],
+}
+assert m.validate_publication_manifest(valid_manifest) == []
+pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/manifest.json", valid_manifest)
+assert pub["persistent"] is True and not pub["errors"]
+bad = dict(valid_manifest)
+bad["packages"] = [dict(valid_manifest["packages"][0])]
+bad["packages"][0]["parts"] = ["https://evil.example/payload.part00"]
+assert "untrusted part url" in m.validate_publication_manifest(bad)
+bad_sha = dict(valid_manifest)
+bad_sha["packages"] = [dict(valid_manifest["packages"][0], sha256="xyz")]
+assert "invalid package sha256" in m.validate_publication_manifest(bad_sha)
+assert m.publication_from_manifest("http://raw.githubusercontent.com/x/manifest.json", valid_manifest)["persistent"] is False
+
+print("Warder picon sync parser/planner/runtime-lock/manifest/collision/GUI wiring: PASS")
