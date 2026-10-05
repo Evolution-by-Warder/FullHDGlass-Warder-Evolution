@@ -302,9 +302,9 @@ Started immediately after TEST191 WHOLE RADIO PHYSICAL PASS. No Radio code chang
 
 ### Next concrete work
 1. Preserve TEST191 Radio unchanged.
-2. Build a precise migration inventory for the remaining picon.cz-backed satellite-selected channel-picon families.
-3. Map those families to the authoritative preserved source / Warder Master picon data before changing runtime URLs.
-4. Only after canonical assets and manifest entries exist, replace `downMulti()` picon.cz access with Warder-owned HTTPS/manifest delivery and add regression gates.
+2. Preserve the completed Warder selector/source/collision inventory and deterministic transparent/black/white package contract.
+3. Receiver-test the working-branch Warder manifest/runtime path, including selective/FULL behaviour and retry handling.
+4. Retire or further isolate `downMulti()` picon.cz fallback only after physical receiver acceptance; unresolved legacy output families remain separate work.
 5. Treat DVB-T/T2 content refresh as a separate modernization pass, not part of preservation migration.
 
 
