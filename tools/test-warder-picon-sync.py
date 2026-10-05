@@ -136,10 +136,13 @@ with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "userbouquet.q.tv"), "w") as h:
         h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
         h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\n")
-    locked = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d)
+    locked = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d, {"persistent": False, "manifest_url": None})
     assert locked["state"] == m.PUBLICATION_LOCKED
     assert locked["service_count"] == 1
     assert locked["services"][0]["position"] == "23.5e"
+    live = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d)
+    assert live["state"] == m.READY
+    assert live["service_count"] == 1
     ready = m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
     assert ready["state"] == m.READY
     full = m.build_runtime_queue(m.set_preference(m.default_preferences(), "update_mode", "full"), d)
@@ -261,4 +264,4 @@ duplicate_part["packages"] = [dict(valid_manifest["packages"][0], parts=[
 duplicate_errors = m.validate_publication_manifest(duplicate_part)
 assert any(x in duplicate_errors for x in ("duplicate package part", "non-canonical package part")), duplicate_errors
 
-print("Warder picon sync parser/planner/runtime-lock/manifest/collision/GUI wiring: PASS")
+print("Warder picon sync parser/planner/runtime-publication/manifest/collision/GUI wiring: PASS")
