@@ -79,6 +79,11 @@ assert "warderPiconSync.PUBLICATION_LOCKED" in plugin_source
 assert "_warderFetchChannelJob" in plugin_source
 assert "_warderInstallChannelArchive" in plugin_source
 assert "os.replace(tmp, os.path.join(dest, name))" in plugin_source
+assert "def _warderLoadChannelManifest" in plugin_source
+assert "def _warderRunChannelQueue" in plugin_source
+assert 'self.dwnJob = _("Warder channel picons")' in plugin_source
+assert "self.warderChannelInstalled.update(installed)" in plugin_source
+assert "self.dwnTimer.start(10)" not in plugin_source
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
