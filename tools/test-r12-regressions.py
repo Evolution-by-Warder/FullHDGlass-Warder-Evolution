@@ -375,6 +375,8 @@ assert 'source="plugins" render="Listbox"' in package_action
 assert '<convert type="TemplatedMultiContent">' in package_action
 for token in ("MultiContentEntryPixmapAlphaBlend", "MultiContentEntryText", '"itemHeight": 70'):
     assert token in package_action, token
+for token in ('png=6', 'text=2', 'text=3', 'text=5', 'text=4', 'png=7', 'name="quickselect"', 'name="description"'):
+    assert token in package_action, token
 
 # Infobar weather must retain last-known Open-Meteo data across GUI restarts.
 WEAUTILS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py").read_text(encoding="utf-8")
