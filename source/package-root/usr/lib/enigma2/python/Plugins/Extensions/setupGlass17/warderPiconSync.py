@@ -388,6 +388,9 @@ def validate_destination(path):
     value = os.path.realpath(raw)
     if value == os.path.sep:
         return None
+    protected = ("/bin", "/boot", "/dev", "/etc", "/lib", "/proc", "/root", "/run", "/sbin", "/sys", "/usr", "/var")
+    if value in protected or any(value.startswith(p + os.path.sep) for p in protected):
+        return None
     return value
 
 
