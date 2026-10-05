@@ -107,6 +107,12 @@ jobs:
             --manifest dist/channel-picons/manifest.json \
             --output dist/channel-picons-publish \
             --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels
+          python3 tools/validate-picon-publication.py \
+            --root dist/channel-picons-publish \
+            --manifest dist/channel-picons-publish/manifest.json \
+            --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
+            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels \
+            --parts
           python3 - <<'PY'
           import json, pathlib
           m=json.load(open("dist/channel-picons-publish/manifest.json"))
