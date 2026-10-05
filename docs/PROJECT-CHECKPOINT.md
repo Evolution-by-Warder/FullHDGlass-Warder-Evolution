@@ -363,3 +363,67 @@ This section supersedes older picon-migration TODO/status text where it conflict
 - `main` remained exactly `c78047bd5c0bdfdd522cec69673fa95ac2376da6` after that validation; the one-time publication gate is closed.
 - OpenATV `PackageAction` blank-list skin fix is present on the work branch and guarded by the full r12 regression suite, but has not yet been receiver-validated. Do not claim physical PASS before the later TEST-IPK checkpoint.
 - No public Release. Radio TEST191 remains locked and outside this work.
+
+
+## NIGHT CHECKPOINT — 2026-10-05 — TEST196
+
+This section is the authoritative continuation point for the current Warder picon-download UI/runtime work. It supersedes older TEST192–TEST195 status where they conflict.
+
+### TEST196 build checkpoint
+- Working branch: `warder-modernization-work`; `main` remains TABU.
+- Runtime version: `1.0.5-test196`.
+- Final source commit: `f1dd3d42558f3001fb63285642b36eff2be182d4`.
+- TEST package publication commit: `91ccf2400e2c02b67c7cfff43e1489ba58486b93`.
+- GitHub Actions run: `37356322990` — SUCCESS. Job `build-test-ipk` and checkout/static preflight/build/package inspection/test publication/artifact upload all completed successfully.
+- Package: `packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test196_all.ipk`.
+- SHA256: `9a9f1e35c3bf0186a6aa82aceb9674d63c2f7aac09da65fd46333873a5fe43a4`.
+- Status: **BUILD PASS ONLY**. TEST196 has NOT yet received REAL RECEIVER PASS.
+
+### Locked receiver evidence inherited from TEST193–TEST195
+- TEST193 restored setupGlass17 import/registration on the physical GigaBlue Quad 4K Pro / OpenATV 8.
+- Empty satellite-position selection is receiver-verified: it does not mean ALL.
+- One-position and two-position selection are receiver-verified.
+- The old false `Missing upstream: 1135; Celkom: 198` regression is receiver-verified fixed: with 16.0E + 23.5E / 220x132 / Transparent / TV-list sync, 198 picons were updated while 1135 represented selected services rather than missing upstream picons.
+- Preserve the callback safety fix for `warderPositionAnswer()`; never reintroduce the missing-`answer` TypeError.
+
+### TEST196 intended picon workflow
+- Localized main rows: satellite positions, picon resolution, picon colour, picon location and update method.
+- Resolution choices include 50x30, 220x132, 400x240 and the verified large 710x682 ChannelSelection package.
+- Location presets are independent of resolution and include `/usr/share/enigma2/picon`, common HDD/USB/SD/MMC paths, `/picon`, plus a custom directory browser.
+- Four update modes are implemented: TV-list synchronization, TV+RADIO synchronization, replace-all for the selected context, and incremental copy.
+- “All” remains constrained by the user-selected satellite-position/context and must never silently mean all satellites globally.
+- Successful completed work resets transient task selections to the safe/default state; failure/cancel must preserve the retry state. UI text, status icons and internal state must remain consistent.
+
+### Auxiliary picon variant rule — corrected from earlier assumption
+Do NOT force Transparent/Black/White symmetry. The actual current `downloads.json` catalog is authoritative:
+- Provider: Transparent + Black + White.
+- Satellite: Transparent + Black + White.
+- CAM: Black + White only.
+- Weather: Black + White only.
+No missing transparent CAM/Weather package may be invented merely for UI symmetry. Auxiliary selectors show background variant only, not a channel-picon resolution suffix.
+
+### OLED receiver finding — pending diagnosis
+On TEST195 physical receiver testing, selecting **OLED picon** produced the localized error that the 7zip tool is missing and can be downloaded from Download Menu. This is a real receiver finding and remains pending until diagnosed. Do not hide the error blindly: verify the OLED archive format, extractor path, 7z/7za/7zr detection and the existing FullHDGlass 7zip install mechanism. If extractor is truly absent, fail safely and direct the user to the real installer; if present, fix detection. OLED graphics/semantics are otherwise out of scope.
+
+### TEST196 visual/UI requirements already implemented for receiver validation
+- Five Warder-row icons were updated; they must be judged on the physical receiver against the established FullHDGlass visual language.
+- Satellite-position icon should have the same optical footprint as neighboring icons.
+- Colour icon communicates black/white choice with the approved diagonal split direction.
+- Do not redesign unrelated FullHDGlass graphics.
+
+### Immediate next work
+1. Install TEST196 through the established TEST updater on the physical GigaBlue Quad 4K Pro / OpenATV 8.
+2. Confirm FullHDGlass17/setupGlass17 still opens and established appearance/settings are preserved.
+3. Receiver-test the new resolution, colour, location/custom-browser and four update-method selectors, including Cancel/Exit/reopen safety.
+4. Verify missing external mounts are not created on the system disk.
+5. Verify selected satellite positions constrain all four update modes.
+6. Verify Provider/Satellite expose three real variants and CAM/Weather only Black+White.
+7. Verify success reset, failure preservation, cancel preservation and repeated attempts.
+8. Verify downloaded picons physically exist/use the selected destination and render where applicable.
+9. Re-test OLED/7zip behavior and diagnose before changing it.
+10. Do not declare TEST196 REAL RECEIVER PASS until the physical receiver evidence above is complete.
+
+### Separate known issue, not closed
+`/etc/enigma2/g17.txt` was previously observed contaminated with repeated `WarderProgramInfo metadata: could not convert string to float: '8.0/10'\n`. Keep this as a separate bug; do not lose it or conflate it with TEST196 picon work.
+
+Radio TEST191 WHOLE RADIO PHYSICAL PASS remains locked and must not be modified by this work.
