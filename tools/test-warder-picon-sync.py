@@ -116,6 +116,20 @@ provider_sel = m.select_manifest_packages(provider_manifest, m.set_preference(m.
 assert provider_sel["selector_ids"] == ["FREESAT"] and len(provider_sel["packages"]) == 1
 wrong_provider = m.select_manifest_packages(provider_manifest, m.set_preference(m.default_preferences(), "positions", ["(0.8W) Digi / Telly"]))
 assert wrong_provider["state"] == "partial" and wrong_provider["missing_selectors"] == ["DIGI_TELLY"]
+queue = {
+    "mode": m.UPDATE_MODE_SYNC_TV, "positions_labels": [], "selector_ids": [],
+    "style": "transparent", "resolution": "220x132",
+    "services": [{"service_reference": "1_0_1_1328_CA2_3_EB0000_0_0_0", "position": "23.5e"}],
+}
+planned = m.plan_runtime_packages(valid_manifest, queue)
+assert planned["state"] == "ready" and [p["selector_id"] for p in planned["packages"]] == ["235E"]
+full_queue = dict(queue, mode=m.UPDATE_MODE_FULL, services=[])
+full_planned = m.plan_runtime_packages(valid_manifest, full_queue)
+assert len(full_planned["packages"]) == 1
+provider_queue = dict(queue, positions_labels=["(0.8W) Freesat"], selector_ids=["FREESAT"],
+                      services=[{"service_reference": "1", "position": "0.8w"}])
+provider_planned = m.plan_runtime_packages(provider_manifest, provider_queue)
+assert [p["selector_id"] for p in provider_planned["packages"]] == ["FREESAT"]
 pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/manifest.json", valid_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
