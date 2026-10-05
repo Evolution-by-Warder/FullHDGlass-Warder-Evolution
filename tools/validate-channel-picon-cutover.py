@@ -94,10 +94,15 @@ else:
 if build.get("runtime_cutover") and build.get("state")!="PUBLISHED":
     errors.append("runtime cutover cannot be enabled before persistent publication")
 
-# Runtime remains intentionally legacy until packages are persistently published.
+# Legacy numeric-ID migration is independently pinned to the preserved Trezor archive catalogue.
 plugin=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
-if "https://picon.cz/download/%s/" not in plugin:
-    errors.append("runtime picon.cz route changed before Warder package publication")
+legacy_catalog=json.loads((ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/legacyPiconArchives.json").read_text(encoding="utf-8"))
+if legacy_catalog.get("mapped")!=370 or legacy_catalog.get("unmapped")!=29:
+    errors.append("legacy archive resolver must remain exactly 370 mapped / 29 unresolved")
+if legacy_catalog.get("policy",{}).get("picon_cz_fallback") is not False:
+    errors.append("legacy archive resolver must fail closed instead of using picon.cz")
+if "url = self._legacyPiconArchiveUrl(k[x][1])" not in plugin:
+    errors.append("legacy downloader is not wired to the pinned archive resolver")
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
