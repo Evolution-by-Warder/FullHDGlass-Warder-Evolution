@@ -8467,9 +8467,19 @@ class downloadMenu(Screen):
 				if resolution == "220x132":
 					queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 					if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
-						raise ValueError(_("Warder channel picon publication is currently unavailable."))
+						self.warderChannelState = "locked"
+						legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows for x in self.menuListAll)
+						legacy_pending = legacy_pending or self.warderLargeSelectionPending
+						msg = _("Warder channel picon publication is currently unavailable.") + " "
+						msg += _("Warder picons were skipped; other selected downloads will continue.")
+						if not legacy_pending:
+							self.warderChannelState = "idle"
+							self.session.open(historyScreen, _("Result"), msg)
+							return
+						self.msg = "(" + _("Warder channel picons") + ") " + msg + "\n"
 					self.warderChannelQueue = None
-					self.warderChannelState = "idle"
+					if self.warderChannelState != "locked":
+						self.warderChannelState = "idle"
 				else:
 					archives = warderPiconSync.plan_legacy_channel_archives(
 						self.warderPiconPrefs.get("positions"), SATLIST, resolution, style)
@@ -8506,7 +8516,8 @@ class downloadMenu(Screen):
 		self.instance.resize(eSize(1920,150))
 		self["dwn"].show()
 		self.ena = False
-		self.msg = ""
+		if self.warderChannelState != "locked":
+			self.msg = ""
 		self.dwnJob = ""
 		self.dwnTimer.start(25, True)
 

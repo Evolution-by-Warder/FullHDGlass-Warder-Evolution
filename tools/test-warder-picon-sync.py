@@ -147,7 +147,10 @@ assert 'legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[
 assert 'self.warderChannelState = "locked"' in plugin_source
 assert 'if self.warderChannelState != "locked":' in plugin_source
 assert 'if self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows:' in plugin_source
-assert 'self.warderPiconPrefs.get("prepared") and self.warderChannelState not in ("locked", "error")' in plugin_source
+dwn_loop = plugin_source.split("def dwnLoop(self, txt=\"\"):", 1)[1].split("\n\tdef dwnFin", 1)[0]
+assert 'self.warderPiconPrefs.get("resolution") == "220x132"' in dwn_loop
+assert 'self.warderChannelState not in ("locked", "error")' in dwn_loop
+assert 'legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)' in dwn_loop
 assert '("done", "error", "locked")' in plugin_source
 error_branch = plugin_source[plugin_source.index("except Exception as err:", plugin_source.index("def dwnLoop")):plugin_source.index("\n\t\t\t\telse:", plugin_source.index("except Exception as err:", plugin_source.index("def dwnLoop")))]
 assert 'self.warderPiconPrefs["prepared"] = False' not in error_branch
