@@ -7575,7 +7575,23 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_help" render="Label" position="1515,765" size="105,45" font="Prive3;25" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="PackageAction" position="center,120" size="1650,840" title="Package Action">
-    <widget source="plugins" render="Listbox" position="30,30" size="1590,585" scrollbarMode="showOnDemand" />
+    <widget source="plugins" render="Listbox" position="30,30" size="1590,585" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">
+        {
+        "template":
+          [
+          MultiContentEntryPixmapAlphaBlend(pos=(8, 5), size=(72, 60), png=6, flags=BT_SCALE),
+          MultiContentEntryText(pos=(95, 0), size=(1430, 70), font=0, flags=RT_VALIGN_CENTER, text=2),
+          MultiContentEntryText(pos=(95, 2), size=(930, 34), font=1, flags=RT_VALIGN_CENTER, text=3),
+          MultiContentEntryText(pos=(1040, 2), size=(390, 34), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5),
+          MultiContentEntryText(pos=(95, 36), size=(1335, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0),
+          MultiContentEntryPixmapAlphaBlend(pos=(1450, 5), size=(60, 60), png=7, flags=BT_SCALE)
+          ],
+        "fonts": [gFont("Prive3", 33), gFont("Prive3", 27), gFont("Prive3", 24)],
+        "itemHeight": 70
+        }
+      </convert>
+    </widget>
     <widget name="quickselect" position="30,30" size="1590,585" font="Prive3;100" foregroundColor="yellow" halign="center" valign="center" transparent="1" zPosition="2" />
     <widget name="description" position="30,630" size="1590,90" font="Prive3;27" valign="center" />
     <widget source="key_red" render="Label" position="30,765" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
