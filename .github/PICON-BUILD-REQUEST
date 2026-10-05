@@ -70,3 +70,4 @@ RUNTIME_CUTOVER_FULL_VALIDATION_TARGETS:
 - only after every executable gate is green is runtime cutover eligible for a separate controlled production step
 Runtime cutover full validation retry after aligning persistent publication test.
 Full validation retry after synchronizing persistent publication evidence with verified production main backend.
+Full state-aware validation retry after upgrading pre-publication-only gates for verified PUBLISHED runtime-cutover state.
