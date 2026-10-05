@@ -5,6 +5,7 @@ import json, sys
 ROOT=Path(__file__).resolve().parents[1]
 build=json.loads((ROOT/"assets/warder/channel-picon-build.json").read_text())
 plan=json.loads((ROOT/"assets/warder/channel-picon-publication-plan.json").read_text())
+fingerprint=json.loads((ROOT/"assets/warder/channel-picon-content-fingerprint.json").read_text())
 errors=[]
 if plan.get("state")!="PREPARED_NOT_PUBLISHED": errors.append("plan state")
 if plan.get("runtime_cutover") is not False: errors.append("plan runtime cutover must be false")
@@ -40,6 +41,19 @@ else:
         errors.append("content evidence package-count drift")
     if content!=build_content:
         errors.append("build/publication content evidence drift")
+    if fingerprint.get("state")!="VERIFIED_BUILD_CONTENT":
+        errors.append("content fingerprint state")
+    expected_fingerprint={
+        "source_commit": fingerprint.get("source_commit"),
+        "packages": fingerprint.get("packages"),
+        "manifest_sha256": fingerprint.get("manifest_sha256"),
+        "sha256sums_sha256": fingerprint.get("sha256sums_sha256"),
+    }
+    if content!=expected_fingerprint:
+        errors.append("publication content evidence differs from reproducible fingerprint")
+    runs=fingerprint.get("evidence_runs",[])
+    if not isinstance(runs,list) or len(set(runs))<2:
+        errors.append("content fingerprint requires two independent evidence runs")
 if errors:
     for e in errors: print("ERROR:",e)
     sys.exit(1)
