@@ -65,4 +65,32 @@ assert "warderPiconSync.position_token(label)" in plugin_source
 assert 'self._setWarderPiconPrepared("wp-pos")' in plugin_source
 assert "self._setWarderPiconPrepared(self.warderChoiceRow)" in plugin_source
 
-print("Warder picon sync parser/planner/action-state/GUI wiring: PASS")
+with tempfile.TemporaryDirectory() as d:
+    with open(os.path.join(d, "bouquets.tv"), "w") as h:
+        h.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.q.tv" ORDER BY bouquet\\n')
+    with open(os.path.join(d, "userbouquet.q.tv"), "w") as h:
+        h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\\n")
+        h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\\n")
+    locked = m.build_runtime_queue(m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink"]), d)
+    assert locked["state"] == m.PUBLICATION_LOCKED
+    assert locked["service_count"] == 1
+    assert locked["services"][0]["position"] == "23.5e"
+    ready = m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
+    assert ready["state"] == m.READY
+    full = m.build_runtime_queue(m.set_preference(m.default_preferences(), "update_mode", "full"), d)
+    assert full["mode"] == "full" and full["service_count"] == 0
+
+entries = [
+    {"service_reference": "1:0:1:1328:CA2:3:EB0000:0:0:0:", "package": "a"},
+    {"service_reference": "1:0:1:1:1:1:C00000:0:0:0:", "package": "b"},
+]
+idx, col = m.build_service_index(entries)
+assert len(idx) == 2 and not col
+assert m.resolve_service_entry(idx, col, entries[0]["service_reference"])["state"] == "matched"
+collision_entries = entries + [{"service_reference": "1:0:1:1328:CA2:3:EB0000:0:0:0:", "package": "other"}]
+idx, col = m.build_service_index(collision_entries)
+assert "1_0_1_1328_CA2_3_EB0000_0_0_0" not in idx
+assert m.resolve_service_entry(idx, col, entries[0]["service_reference"])["state"] == "collision-blocked"
+assert m.resolve_service_entry(idx, col, "1:0:1:999:1:1:C00000:0:0:0:")["state"] == "missing"
+
+print("Warder picon sync parser/planner/runtime-lock/collision/GUI wiring: PASS")
