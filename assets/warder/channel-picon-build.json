@@ -6,16 +6,16 @@
     "commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f"
   },
   "workflow": {
-    "run_id": 37263153529,
-    "head_sha": "87ce10d6c6a93aa2e43b2850429af1dfbd5b531f",
+    "run_id": 37263263434,
+    "head_sha": "e2daca746f6de236019e7a6946dec741cadb8188",
     "conclusion": "success"
   },
   "artifact": {
-    "id": 11325074463,
+    "id": 11325098173,
     "name": "warder-channel-picons-2827fed5",
     "size_in_bytes": 615397302,
-    "digest": "sha256:3d44993205930f887da17249a2cec5a065a067c1c57265567ac70f5f4ebc167f",
-    "expires_at": "2026-10-19T04:22:57Z"
+    "digest": "sha256:09fc63bae59cff85ab12ad5dc88c425699e2f4008cef91d4c4e424a4650dda79",
+    "expires_at": "2026-10-19T04:24:32Z"
   },
   "package_contract": {
     "selectors": 57,
@@ -41,13 +41,14 @@
     "note": "Destination contract is prepared only. No files are published there yet; main remains untouched and runtime cut-over remains locked.",
     "delivery": "raw-github-parts",
     "part_size_limit_bytes": 20971520,
-    "integrity": "package SHA256 plus per-part SHA256/size; publication remains NOT_PUBLISHED",
+    "integrity": "package SHA256 plus per-part SHA256/size plus streamed full-package reassembly SHA256/size; publication remains NOT_PUBLISHED",
     "prepared_destination_path": "assets/warder/downloads/picons/channels",
     "production_base_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels",
     "production_manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
     "preparation_state": "PREPARED_NOT_PUBLISHED",
     "prepared_parts": 124,
     "prepared_packages": 114,
-    "candidate_validation": "PASS"
+    "candidate_validation": "PASS",
+    "reassembly_validation": "PASS"
   }
 }
