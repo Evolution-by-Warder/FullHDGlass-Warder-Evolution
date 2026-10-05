@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "state": "PREPARED_NOT_PUBLISHED",
+  "source_commit": "2827fed5b2e6ae4697f08ca57a8c2298079d410f",
+  "evidence": {
+    "workflow_run": 37263263434,
+    "artifact_id": 11325098173,
+    "artifact_bytes": 615397302,
+    "artifact_digest": "sha256:09fc63bae59cff85ab12ad5dc88c425699e2f4008cef91d4c4e424a4650dda79"
+  },
+  "contract": {
+    "packages": 114,
+    "parts": 124,
+    "delivery": "raw-github-parts",
+    "part_size_limit_bytes": 20971520,
+    "destination_path": "assets/warder/downloads/picons/channels"
+  },
+  "integrity": {
+    "candidate": "PASS",
+    "full_reassembly": "PASS"
+  },
+  "runtime_cutover": false,
+  "publication_performed": false
+}
