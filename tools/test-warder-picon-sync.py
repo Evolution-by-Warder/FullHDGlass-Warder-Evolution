@@ -225,6 +225,10 @@ assert jobs["jobs"][0]["parts"][0]["sha256"] == "b" * 64
 assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
 assert m.validate_destination("relative/picon") is None
 assert m.validate_destination("/") is None
+assert m.validate_destination("/etc/enigma2") is None
+assert m.validate_destination("/usr/share/enigma2") is None
+assert m.validate_destination("/var/lib") is None
+assert m.validate_destination("/media/hdd/picon") == "/media/hdd/picon"
 identity_queue = {"mode": m.UPDATE_MODE_SYNC_TV, "services": [
     {"service_reference": "1:0:1:1328:CA2:3:EB0000:0:0:0:"},
     {"service_reference": "#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:"},
