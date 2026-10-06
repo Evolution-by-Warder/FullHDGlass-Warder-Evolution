@@ -17,7 +17,18 @@ ENIGMA2_DIR = "/etc/enigma2"
 # Explicit two-phase cutover switch. Publication evidence and this runtime switch
 # are reviewed separately; never infer readiness merely from network reachability.
 RUNTIME_PUBLICATION_ENABLED = True
-RUNTIME_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/manifest.json"
+PUBLICATION_SOURCES = {
+    "production": {
+        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json",
+        "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/",
+    },
+    "test-candidate": {
+        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/manifest.json",
+        "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/",
+    },
+}
+ACTIVE_PUBLICATION_SOURCE = "test-candidate"
+RUNTIME_MANIFEST_URL = PUBLICATION_SOURCES[ACTIVE_PUBLICATION_SOURCE]["manifest_url"]
 _BOUQUET_RE = re.compile(r'FROM BOUQUET "([^"]+)"', re.I)
 _HEX = re.compile(r"^[0-9A-Fa-f]+$")
 
@@ -818,7 +829,7 @@ def selector_id_for_position(position):
     return None
 
 
-def plan_runtime_packages(document, queue):
+def plan_runtime_packages(document, queue, manifest_url=None):
     """Resolve packages only when canonical positions and selectors agree."""
     selectors = list(queue.get("package_selectors", []))
     task_bindings = normalize_position_bindings(queue.get("position_bindings", []))
@@ -862,7 +873,8 @@ def plan_runtime_packages(document, queue):
         return {"state": "invalid-preferences", "packages": [], "errors": ["invalid resolution"],
                 "missing_selectors": [], "selector_ids": wanted, "family": family,
                 "resolution": prefs["resolution"]}
-    errors = validate_publication_manifest(document)
+    manifest_url = manifest_url or queue.get("manifest_url")
+    errors = validate_publication_manifest(document, manifest_url)
     if errors:
         return {"state": "invalid-manifest", "packages": [], "errors": errors}
     selected_positions = derived_positions
@@ -893,11 +905,12 @@ def plan_runtime_packages(document, queue):
     }
 
 
-def build_download_jobs(document, package_plan):
+def build_download_jobs(document, package_plan, manifest_url=None):
     """Turn a package plan into integrity-complete download jobs."""
-    errors = validate_publication_manifest(document)
-    if errors:
-        return {"state": "invalid-manifest", "jobs": [], "errors": errors}
+    source = publication_source(manifest_url)
+    errors = validate_publication_manifest(document, manifest_url)
+    if errors or source is None:
+        return {"state": "invalid-manifest", "jobs": [], "errors": errors or ["untrusted manifest url"]}
     if package_plan.get("state") not in ("ready", "partial"):
         return {"state": "invalid-plan", "jobs": [], "errors": ["package plan is not executable"]}
     part_meta = {p["filename"]: p for p in document.get("parts", []) if isinstance(p, dict)}
@@ -914,6 +927,8 @@ def build_download_jobs(document, package_plan):
             "filename": package["filename"],
             "bytes": package["bytes"],
             "sha256": package["sha256"],
+            "publication_source_id": source["id"],
+            "publication_root": source["package_root"],
             "parts": [],
         }
         if delivery == "raw-github-parts":
@@ -1067,10 +1082,27 @@ def safe_archive_member(name):
     return bool(base) and base not in (".", "..")
 
 
+def publication_source(source_id_or_manifest_url=None):
+    """Return one exact publication descriptor by ID or exact manifest URL."""
+    value = source_id_or_manifest_url or ACTIVE_PUBLICATION_SOURCE
+    if isinstance(value, dict):
+        value = value.get("publication_source_id") or value.get("manifest_url")
+    if value in PUBLICATION_SOURCES:
+        return dict(PUBLICATION_SOURCES[value], id=value)
+    for source_id, source in PUBLICATION_SOURCES.items():
+        if value == source["manifest_url"]:
+            return dict(source, id=source_id)
+    return None
+
+
 def runtime_publication():
+    source = publication_source(ACTIVE_PUBLICATION_SOURCE)
     return {
-        "persistent": bool(RUNTIME_PUBLICATION_ENABLED and RUNTIME_MANIFEST_URL),
-        "manifest_url": RUNTIME_MANIFEST_URL if RUNTIME_PUBLICATION_ENABLED else None,
+        "persistent": bool(RUNTIME_PUBLICATION_ENABLED and source),
+        "manifest_url": source["manifest_url"] if RUNTIME_PUBLICATION_ENABLED and source else None,
+        "publication_source_id": source["id"] if RUNTIME_PUBLICATION_ENABLED and source else None,
+        "package_root": source["package_root"] if RUNTIME_PUBLICATION_ENABLED and source else None,
+        "redirect_root": source["package_root"] if RUNTIME_PUBLICATION_ENABLED and source else None,
     }
 
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
@@ -1102,8 +1134,11 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     else:
         services = []
     published = bool((publication or {}).get("persistent") and (publication or {}).get("manifest_url"))
+    source = publication_source((publication or {}).get("manifest_url"))
+    if source is None or not published:
+        source = None
     return {
-        "state": READY if published else PUBLICATION_LOCKED,
+        "state": READY if published and source else PUBLICATION_LOCKED,
         "mode": mode,
         "positions": selected,
         "package_selectors": selectors,
@@ -1113,7 +1148,8 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         "destination": destination,
         "services": services,
         "service_count": len(services),
-        "manifest_url": (publication or {}).get("manifest_url"),
+        "manifest_url": source["manifest_url"] if source else None,
+        "publication_source_id": source["id"] if source else None,
     }
 
 
@@ -1155,31 +1191,48 @@ def resolve_service_entry(index, collisions, service_reference):
     return {"state": "matched", "service_reference": stem, "entry": entry}
 
 
-_ALLOWED_MANIFEST_HOSTS = ("raw.githubusercontent.com",)
-_ALLOWED_PUBLICATION_PREFIXES = (
-    "/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/",
-    "/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/",
-)
+_ALLOWED_MANIFEST_HOST = "raw.githubusercontent.com"
 _FAMILIES = ("channel-transparent", "channel-black", "channel-white")
 _SHA256_RE = re.compile("^[0-9a-f]{64}$")
 _FILENAME_RE = re.compile("^[A-Za-z0-9._-]+[.](?:zip|7z)$")
 
-def _trusted_https_url(url):
+
+def trusted_publication_url(url, source_id_or_manifest_url=None):
+    """Validate URLs against the exact package and redirect root of one source."""
+    source = publication_source(source_id_or_manifest_url)
+    if source is None:
+        return False
     try:
         parsed = urlparse(str(url))
     except Exception:
         return False
-    return (parsed.scheme == "https" and parsed.hostname in _ALLOWED_MANIFEST_HOSTS
-            and not parsed.username and not parsed.password
-            and any(parsed.path.startswith(prefix) for prefix in _ALLOWED_PUBLICATION_PREFIXES)
-            and not parsed.query and not parsed.fragment)
+    root = source["package_root"]
+    root_path = urlparse(root).path
+    path = parsed.path
+    if (parsed.scheme != "https" or parsed.netloc != _ALLOWED_MANIFEST_HOST
+            or parsed.hostname != _ALLOWED_MANIFEST_HOST
+            or parsed.username or parsed.password or parsed.query or parsed.fragment
+            or "%" in path or "\\\\" in path or not path.startswith(root_path)):
+        return False
+    tail = path[len(root_path):]
+    if not tail or any(segment in (".", "..") for segment in tail.split("/")):
+        return False
+    return bool(re.match(r"^[A-Za-z0-9._/-]+$", tail))
 
 
-def validate_publication_manifest(document):
+def _trusted_https_url(url, manifest_url=None):
+    """Compatibility wrapper bound to the active or explicitly named source."""
+    return trusted_publication_url(url, manifest_url)
+
+
+def validate_publication_manifest(document, manifest_url=None):
     """Validate the receiver-facing Warder manifest before any download is queued."""
     errors = []
+    source = publication_source(manifest_url)
+    if source is None:
+        errors.append("untrusted manifest url")
     if not isinstance(document, dict):
-        return ["manifest is not an object"]
+        return errors + ["manifest is not an object"]
     if document.get("schema") != 1:
         errors.append("unsupported manifest schema")
     generated = document.get("generated_from")
@@ -1237,7 +1290,7 @@ def validate_publication_manifest(document):
         if not _SHA256_RE.match(str(package.get("sha256", ""))):
             errors.append("invalid package sha256")
         if delivery == "direct":
-            if not _trusted_https_url(package.get("url", "")):
+            if source is None or not trusted_publication_url(package.get("url", ""), source["id"]):
                 errors.append("untrusted package url")
         else:
             urls = package.get("parts")
@@ -1247,7 +1300,7 @@ def validate_publication_manifest(document):
             package_part_names = set()
             package_part_bytes = 0
             for url in urls:
-                if not _trusted_https_url(url):
+                if source is None or not trusted_publication_url(url, source["id"]):
                     errors.append("untrusted part url")
                     continue
                 part_name = str(url).rsplit("/", 1)[-1]
@@ -1273,12 +1326,14 @@ def validate_publication_manifest(document):
 
 def publication_from_manifest(manifest_url, document):
     """Return runtime publication evidence only after strict manifest validation."""
-    errors = validate_publication_manifest(document)
-    if not _trusted_https_url(manifest_url):
-        errors.append("untrusted manifest url")
+    source = publication_source(manifest_url)
+    errors = validate_publication_manifest(document, manifest_url)
     return {
         "persistent": not errors,
-        "manifest_url": manifest_url if not errors else None,
+        "manifest_url": source["manifest_url"] if source and not errors else None,
+        "publication_source_id": source["id"] if source and not errors else None,
+        "package_root": source["package_root"] if source and not errors else None,
+        "redirect_root": source["package_root"] if source and not errors else None,
         "delivery": document.get("delivery", "direct") if isinstance(document, dict) else None,
         "errors": errors,
     }
