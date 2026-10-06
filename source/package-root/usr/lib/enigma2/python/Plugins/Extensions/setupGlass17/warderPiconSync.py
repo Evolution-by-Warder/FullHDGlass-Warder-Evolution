@@ -286,6 +286,16 @@ def reset_working_preferences(preferences=None):
     return default_preferences(DEFAULT_DESTINATION)
 
 
+def preferences_after_task(preferences, outcome):
+    """Reset only after success; Cancel and Error retain a retryable snapshot."""
+    state = str(outcome or "").lower()
+    if state == "success":
+        return reset_working_preferences(preferences)
+    if state in ("cancel", "error"):
+        return dict(preferences or {})
+    raise ValueError("unknown Warder task outcome")
+
+
 def channel_preferences_ready(preferences):
     prefs = dict(preferences or {})
     return bool(valid_position_selection(prefs.get("positions"))
@@ -352,7 +362,317 @@ _ORBITAL_SELECTOR_IDS = {
     "85.0e":"850E","85.1e":"851E",
 }
 
+_SELECTOR_LABEL_BINDINGS = {
+    "(0.8W) Freesat": (
+        "FREESAT",
+        "0.8w"
+    ),
+    "(0.8W) Digi / Telly": (
+        "DIGI_TELLY",
+        "0.8w"
+    ),
+    "(16.0E) Antiksat": (
+        "ANTIKSAT",
+        "16.0e"
+    ),
+    "(23.5E) Skylink": (
+        "SKYLINK",
+        "23.5e"
+    ),
+    "DVB-T sk/cz": (
+        "DVB-T-SK-CZ",
+        "dtt"
+    ),
+    "(45.0W) Intelsat 14 (IS-14)": (
+        "450W",
+        "45.0w"
+    ),
+    "(30.0W) Hispasat 1D,1E": (
+        "300W",
+        "30.0w"
+    ),
+    "(27.5W) Intelsat 907": (
+        "275W",
+        "27.5w"
+    ),
+    "(24.5W) AlcomSat 1": (
+        "248W",
+        "24.5w"
+    ),
+    "(22.0W) SES 4": (
+        "220W",
+        "22.0w"
+    ),
+    "(15.0W) Telstar 12": (
+        "150W",
+        "15.0w"
+    ),
+    "(14.0W) Express AM8": (
+        "140W",
+        "14.0w"
+    ),
+    "(12.5W) Eutelsat 12 West A": (
+        "125W",
+        "12.5w"
+    ),
+    "(11.0W) Express AM44": (
+        "110W",
+        "11.0w"
+    ),
+    "(8.0W) Eutelsat 8 West B,D": (
+        "80W",
+        "8.0w"
+    ),
+    "(7.0W) Nilesat 102,201/Eutelsat 7 West A": (
+        "70W",
+        "7.0w"
+    ),
+    "(5.0W) Eutelsat 5 West A,B": (
+        "50W",
+        "5.0w"
+    ),
+    "(4.0W) Amos 2/Amos 3": (
+        "40W",
+        "4.0w"
+    ),
+    "(1.0W) Thor 5,6,7/Intelsat 10-02": (
+        "10W",
+        "1.0w"
+    ),
+    "(0.8W) Thor 5,6,7/Intelsat 10-02": (
+        "08W",
+        "0.8w"
+    ),
+    "(1.9E) BulgariaSat-1": (
+        "19E",
+        "1.9e"
+    ),
+    "(3.0E) Eutelsat 3B": (
+        "30E",
+        "3.0e"
+    ),
+    "(3.1E) Eutelsat 3B": (
+        "31E",
+        "3.1e"
+    ),
+    "(4.8E) SES 5/Astra 4A": (
+        "48E_A",
+        "4.8e"
+    ),
+    "(4.9E) SES 5/Astra 4A": (
+        "48E_B",
+        "4.9e"
+    ),
+    "(7.0E) Eutelsat 7A/7B": (
+        "70E",
+        "7.0e"
+    ),
+    "(9.0E) Eutelsat 9A": (
+        "90E",
+        "9.0e"
+    ),
+    "(10.0E) Eutelsat 10A": (
+        "100E",
+        "10.0e"
+    ),
+    "(13.0E) Hot Bird 13B/13C/13D": (
+        "130E",
+        "13.0e"
+    ),
+    "(16.0E) Eutelsat 16A": (
+        "160E",
+        "16.0e"
+    ),
+    "(19.2E) Astra 1KR,1L,1M,1N": (
+        "192E",
+        "19.2e"
+    ),
+    "(21.5E) Eutelsat 21B": (
+        "216E",
+        "21.5e"
+    ),
+    "(23.5E) Astra 3B": (
+        "235E",
+        "23.5e"
+    ),
+    "(26.0E) Badr 4,5,6": (
+        "260E",
+        "26.0e"
+    ),
+    "(28.2E) Astra 2A,2E,2F,2G": (
+        "282E",
+        "28.2e"
+    ),
+    "(30.5E) Arabsat 5A,6A": (
+        "305E",
+        "30.5e"
+    ),
+    "(31.5E) Astra 1G,5B": (
+        "315E",
+        "31.5e"
+    ),
+    "(33.0E) Eutelsat 33C": (
+        "330E",
+        "33.0e"
+    ),
+    "(36.0E) Eutelsat 36A,36B": (
+        "360E",
+        "36.0e"
+    ),
+    "(39.0E) Hellas Sat 2": (
+        "390E",
+        "39.0e"
+    ),
+    "(42.0E) Turksat 2A,3A,4A": (
+        "420E",
+        "42.0e"
+    ),
+    "(45.0E) Intelsat 12 (IS-12)": (
+        "450E",
+        "45.0e"
+    ),
+    "(46.0E) Azerspace-1": (
+        "460E",
+        "46.0e"
+    ),
+    "(51.5E) Belintersat 1": (
+        "515E",
+        "51.5e"
+    ),
+    "(52.0E) TurkmenAlem/MonacoSat": (
+        "520E",
+        "52.0e"
+    ),
+    "(52.5E) Yahsat 1A": (
+        "525E",
+        "52.5e"
+    ),
+    "(53.0E) Express AM6": (
+        "530E",
+        "53.0e"
+    ),
+    "(54.9E) Yamal 402": (
+        "549E",
+        "54.9e"
+    ),
+    "(56.0E) Express AT1": (
+        "560E",
+        "56.0e"
+    ),
+    "(62.0E) Intelsat 902": (
+        "620E",
+        "62.0e"
+    ),
+    "(66.0E) Intelsat 17": (
+        "660E",
+        "66.0e"
+    ),
+    "(68.5E) Intelsat 20 (IS-20)": (
+        "685E",
+        "68.5e"
+    ),
+    "(70.5E) Eutelsat 70B": (
+        "705E",
+        "70.5e"
+    ),
+    "(74.9E) ABS 2/ABS 2A": (
+        "749E",
+        "74.9e"
+    ),
+    "(75.0E) ABS 2/ABS 2A": (
+        "750E",
+        "75.0e"
+    ),
+    "(85.0E) Intelsat 15/Horizons 2": (
+        "850E",
+        "85.0e"
+    ),
+    "(85.1E) Intelsat 15/Horizons 2": (
+        "851E",
+        "85.1e"
+    ),
+    "(0.8W) Digi/Telly": (
+        "DIGI_TELLY",
+        "0.8w"
+    )
+}
+_SELECTOR_ID_TO_POSITION = {
+    "FREESAT": "0.8w",
+    "DIGI_TELLY": "0.8w",
+    "ANTIKSAT": "16.0e",
+    "SKYLINK": "23.5e",
+    "DVB-T-SK-CZ": "dtt",
+    "450W": "45.0w",
+    "300W": "30.0w",
+    "275W": "27.5w",
+    "248W": "24.5w",
+    "220W": "22.0w",
+    "150W": "15.0w",
+    "140W": "14.0w",
+    "125W": "12.5w",
+    "110W": "11.0w",
+    "80W": "8.0w",
+    "70W": "7.0w",
+    "50W": "5.0w",
+    "40W": "4.0w",
+    "10W": "1.0w",
+    "08W": "0.8w",
+    "19E": "1.9e",
+    "30E": "3.0e",
+    "31E": "3.1e",
+    "48E_A": "4.8e",
+    "48E_B": "4.9e",
+    "70E": "7.0e",
+    "90E": "9.0e",
+    "100E": "10.0e",
+    "130E": "13.0e",
+    "160E": "16.0e",
+    "192E": "19.2e",
+    "216E": "21.5e",
+    "235E": "23.5e",
+    "260E": "26.0e",
+    "282E": "28.2e",
+    "305E": "30.5e",
+    "315E": "31.5e",
+    "330E": "33.0e",
+    "360E": "36.0e",
+    "390E": "39.0e",
+    "420E": "42.0e",
+    "450E": "45.0e",
+    "460E": "46.0e",
+    "515E": "51.5e",
+    "520E": "52.0e",
+    "525E": "52.5e",
+    "530E": "53.0e",
+    "549E": "54.9e",
+    "560E": "56.0e",
+    "620E": "62.0e",
+    "660E": "66.0e",
+    "685E": "68.5e",
+    "705E": "70.5e",
+    "749E": "74.9e",
+    "750E": "75.0e",
+    "850E": "85.0e",
+    "851E": "85.1e"
+}
+
+def position_binding(label):
+    """Return the immutable selector/orbit binding for an exact SATLIST item."""
+    text = str(label or "").strip()
+    pair = _SELECTOR_LABEL_BINDINGS.get(text)
+    if not pair:
+        return None
+    return {"selector_id": pair[0], "orbital_position": pair[1]}
+
+def canonical_position_for_selector(selector_id):
+    """Resolve a technical package selector through the explicit domain binding."""
+    return _SELECTOR_ID_TO_POSITION.get(str(selector_id or ""))
+
 def selector_id(label):
+    binding = position_binding(label)
+    return binding.get("selector_id") if binding else None
+
+
     text = str(label or "").strip()
     if text in _SPECIAL_SELECTOR_LABELS:
         return _SPECIAL_SELECTOR_LABELS[text]
@@ -363,7 +683,8 @@ def selected_selector_ids(labels):
     result = []
     seen = set()
     for label in labels or []:
-        sid = selector_id(label)
+        binding = position_binding(label)
+        sid = binding.get("selector_id") if binding else None
         if sid and sid not in seen:
             seen.add(sid)
             result.append(sid)
@@ -371,13 +692,13 @@ def selected_selector_ids(labels):
 
 
 def valid_position_selection(labels):
-    """Require a non-empty, unambiguous list of known SATLIST positions."""
+    """Require known explicit selector bindings; GUI text is never parsed for identity."""
     values = [str(x).strip() for x in (labels or []) if str(x).strip()]
     if not values or len(set(values)) != len(values):
         return False
-    tokens = [position_token(x) for x in values]
-    selectors = [selector_id(x) for x in values]
-    return bool(all(tokens) and all(selectors) and len(set(selectors)) == len(values))
+    bindings = [position_binding(x) for x in values]
+    selectors = [x.get("selector_id") if x else None for x in bindings]
+    return bool(all(selectors) and len(set(selectors)) == len(values))
 
 
 def family_for_style(style):
@@ -416,13 +737,18 @@ def select_manifest_packages(document, preferences):
         "packages": packages,
         "missing_selectors": missing,
         "selector_ids": wanted,
+        "positions": sorted(selected_positions),
         "family": family,
         "resolution": resolution,
     }
 
 
 def selector_id_for_position(position):
-    return _ORBITAL_SELECTOR_IDS.get(position_token(position))
+    value = position_token(position)
+    for selector, canonical in _SELECTOR_ID_TO_POSITION.items():
+        if canonical == value and selector not in ("FREESAT", "DIGI_TELLY", "ANTIKSAT", "SKYLINK"):
+            return selector
+    return None
 
 
 def plan_runtime_packages(document, queue):
@@ -461,8 +787,13 @@ def plan_runtime_packages(document, queue):
     errors = validate_publication_manifest(document)
     if errors:
         return {"state": "invalid-manifest", "packages": [], "errors": errors}
+    selected_positions = set(queue.get("positions", []))
+    if not selected_positions:
+        selected_positions = set(binding["orbital_position"] for label in prefs["positions"]
+                                 for binding in [position_binding(label)] if binding)
     candidates = [p for p in document.get("packages", [])
-                  if p.get("family") == family and p.get("resolution") == prefs["resolution"]]
+                  if p.get("family") == family and p.get("resolution") == prefs["resolution"]
+                  and (p.get("orbital_position") or canonical_position_for_selector(p.get("selector_id"))) in selected_positions]
     if wanted:
         wanted_set = set(wanted)
         packages = [p for p in candidates if p.get("selector_id") in wanted_set]
@@ -498,8 +829,11 @@ def build_download_jobs(document, package_plan):
     delivery = document.get("delivery", "direct")
     jobs = []
     for package in package_plan.get("packages", []):
+        selector = package["selector_id"]
+        orbital_position = package.get("orbital_position") or canonical_position_for_selector(selector)
         job = {
-            "selector_id": package["selector_id"],
+            "selector_id": selector,
+            "orbital_position": orbital_position,
             "family": package["family"],
             "resolution": package["resolution"],
             "filename": package["filename"],
@@ -623,6 +957,32 @@ def success_summary(updated, selected_services=None, translate=None):
     return result
 
 
+def package_result_summary(package_results, translate=None):
+    """Format measured counts by selected package and canonical orbital position."""
+    translate = translate or (lambda message: message)
+    rows = sorted(package_results or [], key=lambda x: (str(x.get("orbital_position") or ""), str(x.get("selector_id") or "")))
+    lines = []
+    total_updated = 0
+    total_failures = 0
+    for row in rows:
+        position = str(row.get("orbital_position") or "—").upper()
+        selector = str(row.get("selector_id") or "")
+        updated = max(0, int(row.get("updated", 0)))
+        failures = max(0, int(row.get("failures", 0)))
+        total_updated += updated
+        total_failures += failures
+        lines.append(translate("%s / %s: %d picons updated; %d failures") % (position, selector, updated, failures))
+    lines.append(translate("Total: %d picons updated") % total_updated)
+    lines.append(translate("Failures: %d") % total_failures)
+    if total_failures and total_updated:
+        status = translate("PARTIAL SUCCESS")
+    elif total_failures:
+        status = translate("ERROR")
+    else:
+        status = translate("SUCCESSFUL")
+    return {"status": status, "updated": total_updated, "failures": total_failures, "text": "\n".join(lines)}
+
+
 def safe_archive_member(name):
     value = str(name or "").replace("\\", "/")
     if not value or value.startswith("/") or value.startswith("../") or "/../" in ("/" + value):
@@ -656,8 +1016,9 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     destination = validate_destination(prefs.get("destination"))
     if not destination:
         raise ValueError("invalid Warder picon destination")
-    selected = [position_token(x) for x in labels if position_token(x)]
-    selectors = selected_selector_ids(labels)
+    bindings = [position_binding(x) for x in labels]
+    selected = [x["orbital_position"] for x in bindings if x]
+    selectors = [x["selector_id"] for x in bindings if x]
     if mode in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
         request = build_sync_request(
             enigma2_dir, selected, style, resolution,
@@ -672,6 +1033,7 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         "positions": selected,
         "positions_labels": labels,
         "selector_ids": selectors,
+        "position_bindings": bindings,
         "style": style,
         "resolution": resolution,
         "destination": destination,
@@ -775,7 +1137,12 @@ def validate_publication_manifest(document):
         if not isinstance(package, dict):
             errors.append("invalid package")
             continue
-        key = (package.get("selector_id"), package.get("family"), package.get("resolution"))
+        selector = package.get("selector_id")
+        declared_position = package.get("orbital_position")
+        bound_position = canonical_position_for_selector(selector)
+        if declared_position is not None and declared_position != bound_position:
+            errors.append("incorrect canonical orbital position binding")
+        key = (selector, package.get("family"), package.get("resolution"))
         if key in seen:
             errors.append("duplicate selector/family/resolution")
         seen.add(key)

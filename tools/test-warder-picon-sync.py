@@ -136,7 +136,7 @@ assert "classify_requested_picons(" in plugin_source
 assert "self.warderChannelAvailable.update(available)" in plugin_source
 assert '"outside_selected_packages"' in plugin_source
 assert '_("Selected upstream picons were not installed:")' in plugin_source
-assert '_("selected receiver services have no matching picon in the selected packages.")' in plugin_source
+assert '_("selected receiver services have no matching picon in the selected packages.")' not in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source
 assert "self.dwnTimer.start(25, True)" in plugin_source
 assert 'return _("ERROR") + ": " + _("Selected upstream picons were not installed:")' in plugin_source
@@ -380,7 +380,6 @@ warder_msgids = (
     "Select at least one satellite position.",
     "Updated:",
     "Selected upstream picons were not installed:",
-    "selected receiver service(s) have no matching picon in the selected packages.",
 )
 catalogs = sorted(locale_root.glob("*/LC_MESSAGES/setupGlass17.po"))
 assert len(catalogs) == 19, len(catalogs)

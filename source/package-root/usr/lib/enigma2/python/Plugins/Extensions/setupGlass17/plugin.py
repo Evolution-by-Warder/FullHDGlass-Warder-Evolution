@@ -8374,6 +8374,8 @@ class downloadMenu(Screen):
 		self.warderChannelJobs = []
 		self.warderChannelInstalled = set()
 		self.warderChannelAvailable = set()
+		self.warderChannelPackageResults = []
+		self.warderChannelCurrentJob = None
 		self.warderPiconPrefs = warderPiconSync.default_preferences()
 		self.warderPositionSelectionAttempted = False
 		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
@@ -8403,8 +8405,7 @@ class downloadMenu(Screen):
 			7:['aux-cam',_('CAM picons'),'piconCam','','x'],
 			8:['aux-weather',_('Weather picons'),'piconWeather','','x'],
 			9:['oa',sel+_('picon OLED'),8,'','x'],
-			10:['z',_('ZZPicon')+' (cz/sk)','ZZPicon-v','','x'],
-			11:['h',_('Help'),'help','','x'],
+						11:['h',_('Help'),'help','','x'],
 			12:['i',_('Set of icons and prewievs'),'icon_sets_preview','','x'],
 			13:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
 			14:['m',_('Menu icons'),'menuicons','','x'],
@@ -8605,7 +8606,7 @@ class downloadMenu(Screen):
 			"wp-res": "down/ba5.png",
 			"wp-style": "down/warder-colour.png",
 			"wp-dest": "down/warder-location.png",
-			"wp-mode": "down/i.png",
+			"wp-mode": "down/warder-sync.png",
 			"aux-prov": "down/p4p.png",
 			"aux-sat": "down/p4s.png",
 			"aux-cam": "down/bc.png",
@@ -8908,8 +8909,12 @@ class downloadMenu(Screen):
 	def _recordWarderOperationResult(self, text):
 		if not text:
 			return
-		if (_("ERROR") + ":") in str(text):
+		value = str(text)
+		is_partial = _("PARTIAL SUCCESS") + ":" in value
+		if (_("ERROR") + ":") in value or is_partial:
 			self.warderOperationFailed = True
+			if is_partial:
+				self.warderOperationSucceeded = True
 			row = getattr(self, "warderCurrentActionRow", None)
 			if row:
 				self.warderFailedRows.add(row)
@@ -8919,13 +8924,13 @@ class downloadMenu(Screen):
 					if self.menuListAll[index][0] == row:
 						self.menuListAll[index][4] = "d"
 					break
-		elif (_("SUCCESSFUL") + ":") in str(text):
+		elif (_("SUCCESSFUL") + ":") in value:
 			self.warderOperationSucceeded = True
 		self.warderCurrentActionRow = None
 
 	def resetWarderWorkingState(self):
 		"""Clear only in-memory download choices after the entire run succeeds."""
-		self.warderPiconPrefs = warderPiconSync.reset_working_preferences(self.warderPiconPrefs)
+		self.warderPiconPrefs = warderPiconSync.preferences_after_task(self.warderPiconPrefs, "success")
 		self.warderPositionSelectionAttempted = False
 		self.warderLargeSelectionPending = False
 		self.warderAuxChoiceRow = None
@@ -8937,7 +8942,7 @@ class downloadMenu(Screen):
 				self.menuListAll[index][4] = "x"
 				self.menuListAll[index][2] = {"aux-prov":"piconProv", "aux-sat":"piconSat", "aux-cam":"piconCam", "aux-weather":"piconWeather"}[row]
 				self.menuListAll[index][1] = {
-					"aux-prov": _("Provider picons"), "aux-sat": _("Satellite picons"),
+					"aux-prov": _("Provider logos"), "aux-sat": _("Satellite logos"),
 					"aux-cam": _("CAM picons"), "aux-weather": _("Weather picons"),
 				}[row]
 		self.createList()
@@ -8969,6 +8974,11 @@ class downloadMenu(Screen):
 			self.warderChannelJobs = list(jobs.get("jobs", []))
 			self.warderChannelInstalled = set()
 			self.warderChannelAvailable = set()
+			self.warderChannelPackageResults = [
+				{"selector_id": job.get("selector_id"), "orbital_position": job.get("orbital_position"),
+				 "family": job.get("family"), "updated": 0, "failures": 0}
+				for job in self.warderChannelJobs
+			]
 			if not self.warderChannelJobs and not (queue.get("mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO) and not queue.get("services")):
 				self.warderChannelQueue = None
 				self.warderChannelState = "error"
@@ -8979,57 +8989,67 @@ class downloadMenu(Screen):
 				raise ValueError("no selected TV or radio bouquet services found for Warder selective sync")
 		if not getattr(self, "warderChannelJobs", []):
 			installed_set = getattr(self, "warderChannelInstalled", set())
-			count = len(installed_set)
 			wanted = warderPiconSync.wanted_picon_names(queue)
 			coverage = warderPiconSync.classify_requested_picons(
 				wanted, getattr(self, "warderChannelAvailable", set()), installed_set)
 			missing_files = sorted(coverage["missing"])
-			if missing_files:
-				# A picon present in a selected archive but not installed is a real failure.
-				self.warderChannelState = "error"
-				return _("ERROR") + ": " + _("Selected upstream picons were not installed:") + " " + str(len(missing_files)) + "; " + _("Updated:") + " " + str(count)
-			if queue.get("mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL:
+			for filename in missing_files:
+				position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
+				for item in self.warderChannelPackageResults:
+					if item.get("orbital_position") == position:
+						item["failures"] += 1
+						break
+			summary = warderPiconSync.package_result_summary(self.warderChannelPackageResults, _)
+			if queue.get("mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not summary["failures"]:
 				self._warderRemoveStaleChannelPicons(queue.get("destination"), queue.get("positions", []), getattr(self, "warderChannelAvailable", set()))
 			self.warderChannelQueue = None
 			self.warderChannelJobs = []
+			self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
+			result = summary["status"] + ": " + summary["text"]
 			self.warderChannelInstalled = set()
-			self.warderChannelState = "done"
-			service_count = queue.get("service_count") if queue.get("mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO) else None
-			result = _("SUCCESSFUL") + ": " + warderPiconSync.success_summary(count, service_count, _)
-			outside = coverage["outside_selected_packages"]
-			if outside:
-				result += "\n" + str(len(outside)) + " " + _("selected receiver services have no matching picon in the selected packages.")
 			return result
 		job = self.warderChannelJobs.pop(0)
-		required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
+		self.warderChannelCurrentJob = job
+		result_row = next((item for item in self.warderChannelPackageResults
+			if item.get("selector_id") == job.get("selector_id") and item.get("family") == job.get("family")), None)
+		archive = None
 		try:
-			free_mb = int(shutil.disk_usage("/tmp").free / (1024 * 1024))
-		except OSError:
-			free_mb = 0
-		if free_mb < required:
-			raise ValueError("insufficient temporary space for Warder channel package")
-		destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
-		if not destination or os.path.islink(destination) or not os.path.isdir(destination):
-			raise ValueError("unsafe Warder picon destination")
-		try:
-			dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
-		except OSError:
-			dest_free_mb = 0
-		if dest_free_mb < required:
-			raise ValueError("insufficient destination space for Warder channel package")
-		fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
-		os.close(fd)
-		try:
+			required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
+			try:
+				free_mb = int(shutil.disk_usage("/tmp").free / (1024 * 1024))
+			except OSError:
+				free_mb = 0
+			if free_mb < required:
+				raise ValueError("insufficient temporary space for Warder channel package")
+			destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
+			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
+				raise ValueError("unsafe Warder picon destination")
+			try:
+				dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
+			except OSError:
+				dest_free_mb = 0
+			if dest_free_mb < required:
+				raise ValueError("insufficient destination space for Warder channel package")
+			fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
+			os.close(fd)
 			self._warderFetchChannelJob(job, archive)
 			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
 			installed, available = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
 			self.warderChannelInstalled.update(installed)
 			self.warderChannelAvailable.update(available)
+			if result_row is not None:
+				result_row["updated"] = len(installed)
+		except Exception as err:
+			if result_row is not None:
+				result_row["failures"] += 1
+				result_row["error"] = str(err)
+			print("FullHDGlass17 Warder package failed (%s/%s): %s" % (job.get("orbital_position"), job.get("selector_id"), err))
 		finally:
-			try:
-				os.unlink(archive)
-			except OSError:
-				pass
+			if archive:
+				try:
+					os.unlink(archive)
+				except OSError:
+					pass
 		return None
 
 	def dwnLoop(self, txt=""):
@@ -9053,7 +9073,16 @@ class downloadMenu(Screen):
 				self.zzz = self.setWdir()
 				self.warderLegacyChannelFailures = 0
 				self.warderLegacyArchivesProcessed = 0
-				archive_count = len(self.warderLegacyChannelQueue)
+				legacy_queue = list(self.warderLegacyChannelQueue)
+				archive_count = len(legacy_queue)
+				self.warderLegacyProcessedPositions = set()
+				self.warderLegacyCurrentPackageLabel = None
+				self.warderLegacyPackageResults = [
+					{"selector_id": str(archive_id),
+					 "orbital_position": (warderPiconSync.position_binding(label) or {}).get("orbital_position"),
+					 "updated": 0, "failures": 0, "processed": False}
+					for label, archive_id in legacy_queue
+				]
 				legacy_destination = self.warderLegacyPiconDestination
 				legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)
 				if self.warderLegacyArchivesProcessed < archive_count:
@@ -9065,31 +9094,31 @@ class downloadMenu(Screen):
 					self.warderLegacyChannelWanted,
 					self.warderLegacyChannelAvailable,
 					self.warderLegacyChannelInstalled)
-				if coverage["missing"]:
-					self.warderLegacyChannelFailures += len(coverage["missing"])
-				if self.warderLegacyChannelFailures:
-					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + legacy_result + "; " + _("Selected upstream picons were not installed:") + " " + str(len(coverage["missing"])) + "\n"
-					self.warderChannelState = "error"
-					self.warderOperationFailed = True
-					self.warderFailedRows.add("wp-pos")
-				else:
-					if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL:
-						try:
-							self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
-						except Exception:
-							self.warderLegacyChannelFailures += 1
-					if self.warderLegacyChannelFailures:
-						self.warderChannelState = "error"
-						self.warderOperationFailed = True
-						self.warderFailedRows.add("wp-pos")
-						self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + _("Could not replace selected-position picons safely.") + "\n"
-					else:
-						service_count = len(self.warderLegacyChannelWanted) if self.warderLegacyChannelWanted is not None else None
-						self.warderOperationSucceeded = True
-						self.msg += "(" + self.dwnJob + ") " + _("SUCCESSFUL") + ": " + warderPiconSync.success_summary(len(self.warderLegacyChannelInstalled), service_count, _)
-						if coverage["outside_selected_packages"]:
-							self.msg += "\n" + str(len(coverage["outside_selected_packages"])) + " " + _("selected receiver services have no matching picon in the selected packages.")
-						self.msg += "\n"
+				missing_by_position = {}
+				for filename in coverage["missing"]:
+					position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
+					missing_by_position[position] = missing_by_position.get(position, 0) + 1
+				package_results = []
+				for item in getattr(self, "warderLegacyPackageResults", []):
+					position = item.get("orbital_position")
+					item["failures"] += missing_by_position.pop(position, 0) if position else 0
+					if position and not item.get("processed"):
+						item["failures"] += 1
+					package_results.append(item)
+				for position, failures in missing_by_position.items():
+					package_results.append({"selector_id": "unbound", "orbital_position": position,
+						"updated": 0, "failures": failures})
+				if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not self.warderLegacyChannelFailures:
+					try:
+						self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
+					except Exception:
+						if package_results:
+							package_results[0]["failures"] += 1
+				summary = warderPiconSync.package_result_summary(package_results, _)
+				self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
+				result_text = summary["status"] + ": " + summary["text"]
+				self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
+				self._recordWarderOperationResult(result_text)
 			if (self.warderPiconPrefs.get("prepared")
 					and self.warderPiconPrefs.get("resolution") == "220x132"
 					and self.warderChannelState not in ("locked", "error")):
@@ -9447,6 +9476,9 @@ class downloadMenu(Screen):
 		if internet():
 			if ENAFINDER:
 				for x in range(0,len(k)):
+					self.warderLegacyCurrentPackageLabel = k[x][0] if getattr(self, "warderLegacyPiconDestination", None) else None
+					self.warderLegacyCurrentPackageResult = (self.warderLegacyPackageResults[x]
+						if getattr(self, "warderLegacyPiconDestination", None) and x < len(self.warderLegacyPackageResults) else None)
 					archive = "/tmp/a.7z"
 					extract_dir = os.path.realpath(os.path.join("/tmp", Ddir))
 					if not (extract_dir == "/tmp" or extract_dir.startswith("/tmp/")):
@@ -9542,6 +9574,10 @@ class downloadMenu(Screen):
 				return 0, 0
 			os.makedirs(legacy_destination, exist_ok=True)
 			wanted = self.warderLegacyChannelWanted
+			available_before = len(self.warderLegacyChannelAvailable)
+			current_result = getattr(self, "warderLegacyCurrentPackageResult", None)
+			if current_result is not None:
+				current_result["processed"] = True
 			for name in f or []:
 				if not str(name).lower().endswith(".png"):
 					continue
@@ -9552,17 +9588,25 @@ class downloadMenu(Screen):
 				destination = os.path.join(legacy_destination, name)
 				if os.path.islink(destination):
 					self.warderLegacyChannelFailures += 1
+					if current_result is not None:
+						current_result["failures"] += 1
 					continue
 				try:
 					shutil.copy2(source, destination)
 				except OSError:
 					self.warderLegacyChannelFailures += 1
+					if current_result is not None:
+						current_result["failures"] += 1
 					total += 1
 					continue
 				total += 1
 				if os.path.isfile(destination) and not os.path.islink(destination):
 					numPict += 1
 					self.warderLegacyChannelInstalled.add(name)
+					if current_result is not None:
+						current_result["updated"] += 1
+			if len(self.warderLegacyChannelAvailable) <= available_before:
+				self.warderLegacyChannelFailures += 1
 			self.warderLegacyArchivesProcessed += 1
 			self.rmTmp2(self.zzz, what)
 			return numPict, total

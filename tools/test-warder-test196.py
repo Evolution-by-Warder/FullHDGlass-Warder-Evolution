@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Targeted TEST196 contract for choices, destinations, update semantics and reset."""
+"""Targeted TEST198 contract for choices, destinations, update semantics and reset."""
 import ast
 import importlib.util
 import json
@@ -125,11 +125,11 @@ assert "self.warderFailedRows.add(row)" in source
 assert "self.warderFailedRows.add(\"wp-pos\")" in dwn
 assert "self.warderOperationFailed = False\n\t\tself.warderFailedRows = set()" in source
 assert "def resetWarderWorkingState(self):" in source
-assert "reset_working_preferences(self.warderPiconPrefs)" in source
+assert 'preferences_after_task(self.warderPiconPrefs, "success")' in source
 assert "warderPiconSync.success_summary" in source
 assert "file(s) downloaded/updated" not in source[source.index("def _warderRunChannelQueue"):source.index("def _warderFetchChannelJob")]
 assert "%d picons successfully updated" in sync_source
-assert "%d services selected" in sync_source
+assert "def package_result_summary(" in sync_source
 
 # Safe no-value/cancel callback contracts and preserved setup import-order fix.
 for name in ("warderPositionAnswer", "warderPiconChoiceAnswer", "warderCustomLocationAnswer", "satSelcallback", "cleanAnswerNow"):
@@ -144,7 +144,7 @@ for callback in ("warderPositionAnswer", "warderPiconChoiceAnswer", "warderCusto
     assert matches and (matches[0].args.vararg is not None or matches[0].args.defaults)
 
 # Five distinct FullHDGlass icons share the same native 189x123 footprint.
-icon_paths = ["down/p4.png", "down/ba5.png", "down/warder-colour.png", "down/warder-location.png", "down/i.png"]
+icon_paths = ["down/p4.png", "down/ba5.png", "down/warder-colour.png", "down/warder-location.png", "down/warder-sync.png"]
 icon_hashes = set()
 for relative in icon_paths:
     path = PKG / "usr/share/enigma2/hd_glass17" / relative
@@ -156,6 +156,11 @@ for relative in icon_paths:
 assert len(icon_hashes) == 5
 assert '"wp-style": "down/warder-colour.png"' in source
 assert '"wp-dest": "down/warder-location.png"' in source
+assert '"wp-mode": "down/warder-sync.png"' in source
+assert "Provider logos" in source and "Satellite logos" in source
+assert "TV platform and service provider logos." in source
+assert "Satellite logos and graphical identifiers." in source
+assert "ZZPicon-v" not in source
 
 # Main setting names are explicitly present in every supported catalog and Slovak translations match.
 sk = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/sk/LC_MESSAGES/setupGlass17.po").read_text(encoding="utf-8")
@@ -164,12 +169,24 @@ for msgid, translation in (("Satellite positions", "Satelitné pozície"), ("Pic
                            ("Update method", "Metóda aktualizácie"),
                            ("Selected storage is not mounted", "Vybraté úložisko nie je pripojené")):
     assert 'msgid "'+msgid+'"' in sk and 'msgstr "'+translation+'"' in sk
-for po in (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale").glob("*/LC_MESSAGES/setupGlass17.po"):
+catalogs = list((PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale").glob("*/LC_MESSAGES/setupGlass17.po"))
+assert len(catalogs) == 19
+for po in catalogs:
     text = po.read_text(encoding="utf-8")
     assert 'msgid "Update method"' in text and 'msgid "No colour selected"' in text
+    for msgid in ("Provider logos", "Satellite logos", "%s / %s: %d picons updated; %d failures", "PARTIAL SUCCESS"):
+        assert 'msgid "'+msgid+'"' in text
 
 # Distinct count text is plural-aware by English gettext keys, with no "file(s)" wording.
-assert m.success_summary(1, 1).splitlines() == ["1 picon successfully updated", "1 service selected"]
-assert m.success_summary(198, 1135).splitlines() == ["198 picons successfully updated", "1135 services selected"]
+summary = m.package_result_summary([
+    {"selector_id":"160E","orbital_position":"16.0e","updated":198,"failures":0}
+])
+assert summary["status"] == "SUCCESSFUL" and summary["updated"] == 198 and summary["failures"] == 0
+assert "198 picons updated" in summary["text"] and "services selected" not in summary["text"]
+channel_queue = source[source.index("def _warderRunChannelQueue"):source.index("def _warderFetchChannelJob")]
+assert "package_result_summary" in channel_queue and "coverage[\"outside_selected_packages\"]" not in channel_queue
+assert "PARTIAL SUCCESS" in source[source.index("def _recordWarderOperationResult"):source.index("def resetWarderWorkingState")]
+assert "down/i.png" not in source[source.index("warder_icons = {"):source.index("for x in self.menuListAll", source.index("warder_icons = {"))]
+assert "Set of icons and prewievs" in source
 
 print("TEST196 Warder settings, destinations, update modes, scoped replace, localization, callbacks and icons: PASS")

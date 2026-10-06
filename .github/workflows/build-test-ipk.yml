@@ -41,6 +41,9 @@ jobs:
           test -f "$RADIO_MASTER"
           echo "2d758e0cb7a989ea78f8fb7ec85459d307a2f73e7af202a5b5f85005dea19d23  $RADIO_MASTER" | sha256sum -c -
           test "$(cat update.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')" = "1.0.4"
+          mapfile -d '' POFILES < <(find source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale -path '*/LC_MESSAGES/setupGlass17.po' -print0 | sort -z)
+          test "${#POFILES[@]}" -eq 19
+          for po in "${POFILES[@]}"; do msgfmt --check -o /dev/null "$po"; done
           ! find source/package-root -type d -name __pycache__ -print -quit | grep -q .
           ! find source/package-root -type f \( -name '*.pyc' -o -name '*.pyo' \) -print -quit | grep -q .
           python3 -m compileall -q -f source/package-root/usr/lib/enigma2/python
@@ -65,6 +68,7 @@ jobs:
           python3 tools/test-r12-regressions.py
           python3 tools/test-warder-picon-sync.py
           python3 tools/test-warder-test196.py
+          python3 tools/test-warder-test198.py
           python3 tools/validate-legacy-ftp-migration.py
           python3 tools/audit-runtime-network-dependencies.py
           python3 tools/validate-channel-picon-cutover.py
@@ -95,12 +99,18 @@ jobs:
           ready = [x for x in selectors if x["state"] == "READY"]
           missing = [x for x in selectors if x["state"] == "MISSING_SOURCE"]
           blocked = [x for x in selectors if x["state"] == "BLOCKED"]
-          assert len(ready) == 38, len(ready)
+          assert len(ready) == 40, len(ready)
           assert len(missing) == 17, len(missing)
-          assert {x["selector_id"] for x in blocked} == {"08W", "160E"}
+          assert {x["selector_id"] for x in blocked} == set()
           assert all(set(x["eligible_families"]) == {"channel-transparent", "channel-black", "channel-white"} for x in ready)
           assert all(not x["eligible_families"] for x in blocked)
-          print("Picon migration plan gate: PASS (38 ready / 2 collision-blocked / 17 missing)")
+          assert sum(len(x["eligible_families"]) for x in ready) == 120
+          by_id={x["selector_id"]:x for x in ready}
+          assert by_id["160E"]["orbital_position"] == "16.0e"
+          assert by_id["08W"]["orbital_position"] == "0.8w"
+          assert all(len(by_id["160E"]["ambiguous_exclusions"][f]) == 2 for f in ("channel-transparent","channel-black","channel-white"))
+          assert all(len(by_id["08W"]["ambiguous_exclusions"][f]) == 3 for f in ("channel-transparent","channel-black","channel-white"))
+          print("Picon migration plan gate: PASS (40 ready / 120 packages; 16.0E excludes 2 refs, 0.8W excludes 3)")
           PY
           python3 tools/test-picon-materializer.py
 

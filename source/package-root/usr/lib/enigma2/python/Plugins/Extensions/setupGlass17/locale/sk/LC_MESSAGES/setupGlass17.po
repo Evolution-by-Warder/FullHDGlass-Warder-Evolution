@@ -1592,3 +1592,28 @@ msgstr "Nepodarilo sa nainštalovať %d z %d piconov."
 # TEST196 storage safety
 msgid "Selected storage is not mounted"
 msgstr "Vybraté úložisko nie je pripojené"
+
+msgid "Provider logos"
+msgstr "Logá poskytovateľov"
+
+msgid "TV platform and service provider logos."
+msgstr "Logá TV platforiem a poskytovateľov služieb."
+
+msgid "Satellite logos"
+msgstr "Logá satelitov"
+
+msgid "Satellite logos and graphical identifiers."
+msgstr "Logá a grafické označenia satelitov."
+
+msgid "%s / %s: %d picons updated; %d failures"
+msgstr "%s / %s: aktualizovaných piconov %d; chyby %d"
+
+msgid "Total: %d picons updated"
+msgstr "Celkom: aktualizovaných piconov %d"
+
+msgid "Failures: %d"
+msgstr "Chyby: %d"
+
+msgid "PARTIAL SUCCESS"
+msgstr "ČIASTOČNÝ ÚSPECH"
+
