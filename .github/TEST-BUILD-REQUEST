@@ -31,3 +31,7 @@ Fix the candidate URL fixture variable reported by the first static preflight; r
 
 TEST200 BUILD 3
 Align the 0.8W regression with the planner API: canonical identity is asserted on the runtime queue, while the selected manifest package retains its explicit orbital_position. Rerun the complete gate.
+
+
+TEST201 BUILD 1
+Fix TEST200 manifest-to-downloader publication-root mismatch using exact source descriptors. Keep candidate and production package/part URLs and redirects bound to their own manifest source; verify with the receiver URL validation path, actual candidate network size/SHA/reassembly/ZIP checks for 130E/160E/192E/235E black packages, all existing regressions, Python compile, 19 msgfmt catalogs, lifecycle error state preservation, Picons label correction, and updated color variant icon. Do not change main or production source. Build TEST201 only; BUILD PASS is not receiver validation.
