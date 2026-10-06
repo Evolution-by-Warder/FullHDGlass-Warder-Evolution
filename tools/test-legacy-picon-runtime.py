@@ -52,7 +52,7 @@ assert 'catalog.get("source", {}).get("commit") == "9cdda4ab414e7d50a97ca9285db8
 assert 'self._warderLegacyPiconArchives = catalog.get("archives", {}) if valid else {}' in PLUGIN
 assert 'url == official + filename' in PLUGIN
 assert 'filename.endswith(".7z")' in PLUGIN
-down_multi = PLUGIN.split("def downMulti(self, k, Ddir):", 1)[1].split("\n\tdef ", 1)[0]
+down_multi = PLUGIN.split("def downMulti(self, k, Ddir", 1)[1].split("\n\tdef ", 1)[0]
 assert "https://picon.cz/download/%s/" not in down_multi
 assert "Preserved legacy archive is not available in Warder migration catalogue" in down_multi
 print("Legacy picon runtime migration: PASS (370 pinned, 29 fail-closed)")

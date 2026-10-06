@@ -105,3 +105,4 @@ Validate runtime URL identity and PackageAction tuple batch
 Preflight write test: 2026-10-05T11:17Z (no publication approval)
 
 TEST197 follow-up build: service-scoped generic orbital collision exclusions with exact per-reference provenance. Preserve production-main 114-package runtime and no-write policy; upload only the branch candidate artifact.
+Post-TEST197 service-scoped collision candidate: run updated manifest/preflight and upload 120-package candidate artifact; do not publish backend to main.
