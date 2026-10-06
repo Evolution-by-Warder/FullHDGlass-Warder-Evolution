@@ -30,7 +30,7 @@ assert m.position_token("dtt") == "dtt"
 assert m.position_token("19.2e") == "19.2e"
 runtime_pub = m.runtime_publication()
 assert runtime_pub["persistent"] is True
-assert runtime_pub["manifest_url"] == "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json"
+assert runtime_pub["manifest_url"] == "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/manifest.json"
 assert m.safe_archive_member("1_0_1_A_B_C_D_0_0_0.png") is True
 assert m.safe_archive_member("../escape.png") is False
 assert m.safe_archive_member("/absolute.png") is False
