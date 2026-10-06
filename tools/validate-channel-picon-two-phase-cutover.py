@@ -41,8 +41,19 @@ if runtime_cutover:
     # consume the separately persisted, validated candidate, while production
     # publication evidence continues to point at stable main.
     candidate_url="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/manifest.json"
-    if ('RUNTIME_MANIFEST_URL = "'+candidate_url+'"') not in runtime:
-        errors.append("TEST runtime must consume the work-branch candidate manifest")
+    candidate_root="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/"
+    production_root="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"
+    descriptor_checks=(
+        'ACTIVE_PUBLICATION_SOURCE = "test-candidate"',
+        '"test-candidate": {',
+        '"manifest_url": "'+candidate_url+'"',
+        '"package_root": "'+candidate_root+'"',
+        '"production": {',
+        '"manifest_url": "'+production_root+'manifest.json"',
+        '"package_root": "'+production_root+'"',
+    )
+    if any(fragment not in runtime for fragment in descriptor_checks):
+        errors.append("runtime publication descriptors must bind candidate and production manifests to their exact package roots")
     candidate_path=ROOT/"assets/warder/downloads/picons/channels/test-candidate"
     candidate_manifest=candidate_path/"manifest.json"
     if not candidate_manifest.is_file():
