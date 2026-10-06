@@ -25,3 +25,6 @@ Keep canonical orbital positions as task identity and separate technical package
 TEST200 BUILD 1
 Fix the TEST199 runtime-manifest failure: point TEST runtime only at the persisted work-branch test-candidate manifest, trust only that exact candidate path alongside the unchanged production-main path, and keep canonical orbital position separate from technical package selector through planning and result reporting.
 Candidate backend verified: 120 generic packages / 132 persistent parts. Regression coverage includes 160E at canonical 16.0e with exactly 2 ambiguous refs excluded, 08W at 0.8w with exactly 3 excluded, candidate manifest/package URL binding, decimal positions, and no provider fallback. Preserve production main unchanged. Do not repeat receiver tests TEST197, TEST198, or TEST199. Run existing CI/regression gates and build TEST200 only.
+
+TEST200 BUILD 2
+Fix the candidate URL fixture variable reported by the first static preflight; rerun all gates before packaging.
