@@ -2,3 +2,5 @@ TEST198 BUILD
 Implement the post-TEST197 fixes: service-scoped generic orbital package collision handling with exact 16.0E and 0.8W exclusions; explicit canonical orbital position/package binding without label or satellite icon identity; per-package runtime result counts and partial success; retain task choices on cancel/error and reset after success; distinct FullHDGlass color and sync icons; provider/satellite GUI terminology; 19 gettext catalogs compiled with msgfmt. Add TEST198 regressions and build the next package. TEST197 receiver test is complete and must not be repeated. Keep main unchanged.
 TEST198 BUILD 2
 Fix removed ZZPicon menu numbering; run all regression and msgfmt gates again.
+TEST198 BUILD 3
+Update the channel sync regression to assert the dedicated Warder sync icon; rerun preflight and package build.

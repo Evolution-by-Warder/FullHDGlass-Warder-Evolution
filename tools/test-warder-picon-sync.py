@@ -115,7 +115,7 @@ assert "valid_position_selection(positions)" in plugin_source
 assert '_("Select at least one satellite position.")' in plugin_source
 for icon in ('"wp-pos": "down/p4.png"', '"wp-res": "down/ba5.png"',
              '"wp-style": "down/warder-colour.png"', '"wp-dest": "down/warder-location.png"',
-             '"wp-mode": "down/i.png"'):
+             '"wp-mode": "down/warder-sync.png"'):
     assert icon in plugin_source, icon
 assert "warder_help.get(row_id" in plugin_source
 assert "text=description" in plugin_source
