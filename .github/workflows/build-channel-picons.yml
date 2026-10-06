@@ -190,6 +190,37 @@ jobs:
           print("Split publication candidate: PASS (%d parts)"%len(parts))
           PY
 
+      - name: Publish validated TEST candidate backend on work branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          LOCAL_DEST=assets/warder/downloads/picons/channels/test-candidate
+          rm -rf "$LOCAL_DEST"
+          mkdir -p "$LOCAL_DEST"
+          cp -a dist/channel-picons-publish/. "$LOCAL_DEST"/
+          test -f "$LOCAL_DEST/manifest.json"
+          test "$(find "$LOCAL_DEST" -maxdepth 1 -type f -name '*.part*' | wc -l)" -gt 0
+          git fetch origin warder-modernization-work
+          git worktree add /tmp/warder-test-candidate origin/warder-modernization-work
+          DEST=/tmp/warder-test-candidate/assets/warder/downloads/picons/channels/test-candidate
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp -a dist/channel-picons-publish/. "$DEST"/
+          test -f "$DEST/manifest.json"
+          test "$(find "$DEST" -maxdepth 1 -type f -name '*.part*' | wc -l)" -gt 0
+          cd /tmp/warder-test-candidate
+          git add assets/warder/downloads/picons/channels/test-candidate
+          git diff --cached --quiet && { echo "TEST candidate backend unchanged"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish verified Warder TEST channel candidate [skip ci]"
+          # Source and regression commits can land while this large backend is
+          # being materialized. Rebase the candidate-only tree onto the latest
+          # work branch before pushing; never force-push over newer source.
+          git fetch origin warder-modernization-work
+          git rebase origin/warder-modernization-work
+          git push origin HEAD:warder-modernization-work
+
       - name: Validate receiver and two-phase cutover gates
         shell: bash
         run: |
@@ -216,31 +247,6 @@ jobs:
           python3 tools/validate-channel-picon-cutover.py
           python3 tools/validate-channel-picon-two-phase-cutover.py
           python3 tools/validate-channel-picon-publication-plan.py
-
-      - name: Publish validated TEST candidate backend on work branch
-        shell: bash
-        run: |
-          set -euo pipefail
-          git fetch origin warder-modernization-work
-          git worktree add /tmp/warder-test-candidate origin/warder-modernization-work
-          DEST=/tmp/warder-test-candidate/assets/warder/downloads/picons/channels/test-candidate
-          rm -rf "$DEST"
-          mkdir -p "$DEST"
-          cp -a dist/channel-picons-publish/. "$DEST"/
-          test -f "$DEST/manifest.json"
-          test "$(find "$DEST" -maxdepth 1 -type f -name '*.part*' | wc -l)" -gt 0
-          cd /tmp/warder-test-candidate
-          git add assets/warder/downloads/picons/channels/test-candidate
-          git diff --cached --quiet && { echo "TEST candidate backend unchanged"; exit 0; }
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publish verified Warder TEST channel candidate [skip ci]"
-          # Source and regression commits can land while this large backend is
-          # being materialized. Rebase the candidate-only tree onto the latest
-          # work branch before pushing; never force-push over newer source.
-          git fetch origin warder-modernization-work
-          git rebase origin/warder-modernization-work
-          git push origin HEAD:warder-modernization-work
 
       - name: Publish approved persistent channel-picon backend to main
         shell: bash
