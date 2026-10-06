@@ -116,3 +116,5 @@ Retry candidate after legacy archive selector identity fix; no main publication.
 Build candidate against the exact final TEST198 source head; no production backend publication.
 
 TEST199 receiver runtime manifest repair: persist the validated 120-package candidate and split parts under work-branch test-candidate; no main changes.
+
+TEST candidate publication retry: rebase candidate asset commit over current warder-modernization-work head before pushing; no main write.
