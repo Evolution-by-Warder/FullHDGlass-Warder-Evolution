@@ -409,7 +409,7 @@ sat_rows = [
     ("(16.0E) Antiksat", "", "ANTIKSAT", "2133", "3658", "1794", "1342", "4290", "4038", "1197"),
     ("(23.5E) Skylink", "", "SKYLINK", "2146", "3670", "1809", "1356", "4302", "4050", "1211"),
 ]
-selected = ["(16.0E) Antiksat", "(23.5E) Skylink"]
+selected = ["ANTIKSAT", "SKYLINK"]
 assert m.plan_legacy_channel_archives(selected, sat_rows, "400x240", "transparent") == [
     (selected[0], "2133"), (selected[1], "2146")]
 assert m.plan_legacy_channel_archives(selected, sat_rows, "50x30", "black") == [
@@ -418,7 +418,7 @@ assert m.plan_legacy_channel_archives(selected, sat_rows, "150x90", "white") == 
     (selected[0], "4290"), (selected[1], "4302")]
 assert m.plan_legacy_channel_archives(selected, sat_rows, "220x132", "transparent") == [
     (selected[0], "1197"), (selected[1], "1211")]
-for bad_positions, size, colour in (([], "220x132", "transparent"), (["unknown"], "220x132", "transparent"), (selected, "400x240", "black")):
+for bad_positions, size, colour in (([], "220x132", "transparent"), (["UNKNOWN"], "220x132", "transparent"), (selected, "400x240", "black")):
     try:
         m.plan_legacy_channel_archives(bad_positions, sat_rows, size, colour)
     except ValueError:

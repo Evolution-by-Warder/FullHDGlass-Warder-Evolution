@@ -8511,7 +8511,7 @@ class downloadMenu(Screen):
 				else:
 					archives = warderPiconSync.plan_legacy_channel_archives(
 						self.warderPiconPrefs.get("positions"), SATLIST, resolution, style)
-					for label, archive_id in archives:
+					for selector_id, archive_id in archives:
 						if not self._legacyPiconArchiveUrl(archive_id):
 							raise ValueError(_("Preserved legacy archive is not available in Warder migration catalogue") + ": " + archive_id)
 					self.warderLegacyChannelQueue = archives
@@ -8522,7 +8522,7 @@ class downloadMenu(Screen):
 					self.warderLegacyPiconDestination = destination
 					if self.warderPiconPrefs.get("update_mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO):
 						request = warderPiconSync.build_sync_request(
-							selected_positions=[warderPiconSync.position_token(x) for x in self.warderPiconPrefs.get("positions", [])],
+							selected_positions=[warderPiconSync.canonical_position_for_selector(x) for x in self.warderPiconPrefs.get("positions", [])],
 							style=style, resolution=resolution,
 							include_radio=(self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO))
 						self.warderLegacyChannelWanted = warderPiconSync.wanted_picon_names(request)
@@ -9078,10 +9078,10 @@ class downloadMenu(Screen):
 				self.warderLegacyProcessedPositions = set()
 				self.warderLegacyCurrentPackageLabel = None
 				self.warderLegacyPackageResults = [
-					{"selector_id": str(archive_id),
-					 "orbital_position": warderPiconSync.canonical_position_for_selector(str(archive_id)),
+					{"selector_id": str(selector_id),
+					 "orbital_position": warderPiconSync.canonical_position_for_selector(str(selector_id)),
 					 "updated": 0, "failures": 0, "processed": False}
-					for label, archive_id in legacy_queue
+					for selector_id, archive_id in legacy_queue
 				]
 				legacy_destination = self.warderLegacyPiconDestination
 				legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)

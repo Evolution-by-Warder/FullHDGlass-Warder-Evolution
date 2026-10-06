@@ -235,26 +235,28 @@ def legacy_channel_destination(resolution):
     return LEGACY_CHANNEL_DESTINATIONS.get(str(resolution))
 
 
-def plan_legacy_channel_archives(selected_labels, satlist, resolution, style):
-    """Resolve exact selected SATLIST labels to the matching pinned archive column."""
-    labels = list(selected_labels or [])
-    if not valid_position_selection(labels):
+def plan_legacy_channel_archives(selected_selector_ids, satlist, resolution, style):
+    """Resolve explicit selector IDs to the matching pinned SATLIST archive column."""
+    selectors = list(selected_selector_ids or [])
+    if not valid_position_selection(selectors):
         raise ValueError("no-satellite-position-selected")
     column = legacy_channel_archive_column(resolution, style)
     if column is None:
         raise ValueError("no-pinned-channel-archive-for-resolution-and-colour")
-    by_label = {}
+    by_selector = {}
     for row in satlist or []:
         if not row:
             continue
-        label = str(row[0])
-        if label in by_label:
-            raise ValueError("ambiguous-satellite-position-label")
-        by_label[label] = row
+        selector = selector_id_for_display_label(row[0])
+        if not selector:
+            continue
+        if selector in by_selector:
+            raise ValueError("ambiguous-satellite-package-selector")
+        by_selector[selector] = row
     result = []
     seen_ids = set()
-    for label in labels:
-        row = by_label.get(str(label))
+    for selector in selectors:
+        row = by_selector.get(selector)
         if row is None or len(row) <= column:
             raise ValueError("satellite-position-not-in-pinned-archive-catalog")
         archive_id = str(row[column] or "").strip()
@@ -263,7 +265,7 @@ def plan_legacy_channel_archives(selected_labels, satlist, resolution, style):
         if archive_id in seen_ids:
             raise ValueError("duplicate-pinned-channel-archive")
         seen_ids.add(archive_id)
-        result.append((str(label), archive_id))
+        result.append((selector, archive_id))
     return result
 
 
