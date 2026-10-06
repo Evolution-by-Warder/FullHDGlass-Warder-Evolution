@@ -69,6 +69,7 @@ jobs:
           python3 tools/test-warder-picon-sync.py
           python3 tools/test-warder-test196.py
           python3 tools/test-warder-test198.py
+          python3 tools/test-warder-test198.py --candidate-network
           python3 tools/validate-legacy-ftp-migration.py
           python3 tools/audit-runtime-network-dependencies.py
           python3 tools/validate-channel-picon-cutover.py
