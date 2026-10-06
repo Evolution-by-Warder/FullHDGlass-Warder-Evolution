@@ -80,7 +80,7 @@ def main():
                 "filename":filename,"resolution":resolution,"bytes":size,"sha256":sha,
                 "url":a.base_url.rstrip("/")+"/"+filename,"included_references":sorted(n[:-4] for n in files),
                 "same_content_deduplications":deduplications,"ambiguous_exclusions":exclusions})
-    manifest={"schema":2,"generated_from":{"repository":"Evolution-by-Warder/PiconHub-Warder-Evolution","ref":a.source_commit},
+    manifest={"schema":1,"generated_from":{"repository":"Evolution-by-Warder/PiconHub-Warder-Evolution","ref":a.source_commit},
         "policy":{"canonical_orbital_position_immutable":True,"provider_fallback":False,"cross_position_fallback":False},
         "packages":packages,"blocked_packages":blocked}
     a.manifest.parent.mkdir(parents=True,exist_ok=True)
