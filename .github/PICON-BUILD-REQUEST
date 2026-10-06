@@ -118,3 +118,5 @@ Build candidate against the exact final TEST198 source head; no production backe
 TEST199 receiver runtime manifest repair: persist the validated 120-package candidate and split parts under work-branch test-candidate; no main changes.
 
 TEST candidate publication retry: rebase candidate asset commit over current warder-modernization-work head before pushing; no main write.
+
+TEST candidate retry: stage validated split candidate in the workflow workspace before receiver-contract validation, then publish the exact staged payload to the work branch.
