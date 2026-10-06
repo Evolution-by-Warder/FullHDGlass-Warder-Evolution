@@ -169,7 +169,7 @@ DEFAULT_RESOLUTION = None
 DEFAULT_DESTINATION = "/usr/share/enigma2/picon"
 CHANNEL_RESOLUTION_CHOICES = (
     ("50x30", "50 x 30 - Mini picons"),
-    ("220x132", "220 x 132 - XPicons"),
+    ("220x132", "220 x 132 - Picons"),
     ("400x240", "400 x 240 - Large picons"),
 )
 AUXILIARY_ASSET_KEYS = (
@@ -1212,7 +1212,7 @@ def trusted_publication_url(url, source_id_or_manifest_url=None):
     if (parsed.scheme != "https" or parsed.netloc != _ALLOWED_MANIFEST_HOST
             or parsed.hostname != _ALLOWED_MANIFEST_HOST
             or parsed.username or parsed.password or parsed.query or parsed.fragment
-            or "%" in path or "\\\\" in path or not path.startswith(root_path)):
+            or "%" in path or "\\" in path or not path.startswith(root_path)):
         return False
     tail = path[len(root_path):]
     if not tail or any(segment in (".", "..") for segment in tail.split("/")):
