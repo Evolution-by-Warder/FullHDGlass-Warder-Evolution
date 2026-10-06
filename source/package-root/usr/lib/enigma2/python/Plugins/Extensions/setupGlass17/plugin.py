@@ -8870,7 +8870,7 @@ class downloadMenu(Screen):
 			self.dwnLoop(_("SUCCESSFUL")+": "+_("Total:") + " " + str(total) + ", " + _("Deleted:") + " " + str(numPict))	
 		
 	def _warderLoadChannelManifest(self, url):
-		"""Fetch and validate only the explicitly enabled production manifest."""
+		"""Fetch and validate the exact explicitly enabled publication manifest."""
 		expected = warderPiconSync.runtime_publication().get("manifest_url")
 		if not expected or url != expected:
 			raise ValueError("Warder channel manifest is not enabled")
@@ -8882,7 +8882,7 @@ class downloadMenu(Screen):
 		if len(data) > 4 * 1024 * 1024:
 			raise ValueError("Warder channel manifest too large")
 		doc = json.loads(data.decode("utf-8"))
-		errors = warderPiconSync.validate_publication_manifest(doc)
+		errors = warderPiconSync.validate_publication_manifest(doc, url)
 		if errors:
 			raise ValueError("invalid Warder channel manifest: " + "; ".join(errors[:3]))
 		return doc
@@ -8965,8 +8965,8 @@ class downloadMenu(Screen):
 				raise ValueError("unsafe Warder picon destination")
 			queue["destination"] = destination
 			document = self._warderLoadChannelManifest(queue.get("manifest_url"))
-			plan = warderPiconSync.plan_runtime_packages(document, queue)
-			jobs = warderPiconSync.build_download_jobs(document, plan)
+			plan = warderPiconSync.plan_runtime_packages(document, queue, queue.get("manifest_url"))
+			jobs = warderPiconSync.build_download_jobs(document, plan, queue.get("manifest_url"))
 			if jobs.get("state") not in ("ready", "partial"):
 				raise ValueError("Warder channel package plan is not executable")
 			if jobs.get("missing_selectors"):
@@ -9361,20 +9361,23 @@ class downloadMenu(Screen):
 			self.dwnLoop(_("ERROR")+": " + what[:-4])
 
 	def _warderFetchChannelJob(self, job, archive):
-		"""Reassemble one published channel package with part and full integrity checks."""
-		official = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"
+		"""Reassemble a package only from the root bound to its source manifest."""
+		source_id = job.get("publication_source_id")
+		source = warderPiconSync.publication_source(source_id)
+		if source is None or job.get("publication_root") != source.get("package_root"):
+			raise ValueError("untrusted Warder channel publication source")
 		full_hash = hashlib.sha256()
 		total = 0
 		with open(archive, "wb") as out:
 			for part in job.get("parts", []):
 				url = str(part.get("url", ""))
-				if not url.startswith(official):
+				if not warderPiconSync.trusted_publication_url(url, source_id):
 					raise ValueError("unsafe Warder channel URL")
 				part_hash = hashlib.sha256()
 				part_size = 0
 				req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons"})
 				with urlopen(req, timeout=45) as response:
-					if not str(response.geturl()).startswith(official):
+					if not warderPiconSync.trusted_publication_url(str(response.geturl()), source_id):
 						raise ValueError("unsafe Warder channel redirect")
 					expected_part = int(part.get("bytes", -1))
 					if expected_part < 1 or expected_part > 20 * 1024 * 1024:
