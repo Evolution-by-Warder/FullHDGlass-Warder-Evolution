@@ -54,7 +54,7 @@ with tempfile.TemporaryDirectory() as td:
  prefs.update({"resolution":"220x132","style":"transparent","destination":str(Path(td)/"picon"),
                "update_mode":m.UPDATE_MODE_FULL,"prepared":True})
  queue=m.build_runtime_queue(prefs,enigma2_dir=str(Path(td)/"empty"),
-   publication={"persistent":True,"manifest_url":"https://example.invalid/manifest.json"})
+   publication={"persistent":True,"manifest_url":m.RUNTIME_MANIFEST_URL})
  assert queue["positions"]==expected_positions
  assert queue["package_selectors"]==expected_selectors
  assert queue["position_bindings"]==bindings
@@ -90,7 +90,7 @@ provider_prefs=m.set_task_position_bindings(m.default_preferences(),[provider])
 provider_prefs.update({"resolution":"220x132","style":"transparent","destination":str(Path(td)/"picon"),
  "update_mode":m.UPDATE_MODE_FULL,"prepared":True})
 provider_queue=m.build_runtime_queue(provider_prefs,enigma2_dir=str(Path(td)/"empty"),
- publication={"persistent":True,"manifest_url":"https://example.invalid/manifest.json"})
+ publication={"persistent":True,"manifest_url":m.RUNTIME_MANIFEST_URL})
 assert provider_queue["positions"]==["16.0E"]
 assert provider_queue["package_selectors"]==["ANTIKSAT"]
 assert provider_queue["package_selectors"]!=["160E"]
@@ -103,7 +103,7 @@ generic08=m.set_task_position_bindings(m.default_preferences(),[m.task_binding_f
 generic08.update({"resolution":"220x132","style":"transparent","destination":str(Path(td)/"picon"),
  "update_mode":m.UPDATE_MODE_FULL,"prepared":True})
 generic08_queue=m.build_runtime_queue(generic08,enigma2_dir=str(Path(td)/"empty"),
- publication={"persistent":True,"manifest_url":"https://example.invalid/manifest.json"})
+ publication={"persistent":True,"manifest_url":m.RUNTIME_MANIFEST_URL})
 no_fallback=m.plan_runtime_packages(freesat,generic08_queue)
 assert no_fallback["state"]=="partial" and no_fallback["packages"]==[]
 assert no_fallback["missing_selectors"]==["08W"]
@@ -142,3 +142,86 @@ assert m.preferences_after_task(prefs,"cancel")==prefs
 assert m.preferences_after_task(prefs,"error")==prefs
 assert m.preferences_after_task(prefs,"success")==m.default_preferences()
 print("TEST199 canonical positions, separate package selectors, no fallback, result identity and lifecycle: PASS")
+
+
+# TEST201 binds manifests, package parts, and redirects to one exact source descriptor.
+candidate_source=m.publication_source(m.RUNTIME_MANIFEST_URL)
+production_source=m.publication_source("production")
+assert candidate_source["id"]=="test-candidate"
+assert production_source["id"]=="production"
+candidate_root=candidate_source["package_root"]
+production_root=production_source["package_root"]
+candidate_manifest_url=candidate_source["manifest_url"]
+production_manifest_url=production_source["manifest_url"]
+candidate_package=candidate_root+"warder-130e-channel-black.zip"
+candidate_part=candidate_package+".part00"
+production_package=production_root+"warder-130e-channel-black.zip"
+production_part=production_package+".part00"
+assert m.trusted_publication_url(candidate_package,candidate_manifest_url)
+assert m.trusted_publication_url(candidate_part,candidate_manifest_url)
+assert not m.trusted_publication_url(production_package,candidate_manifest_url)
+assert m.trusted_publication_url(production_package,production_manifest_url)
+assert m.trusted_publication_url(production_part,production_manifest_url)
+assert not m.trusted_publication_url(candidate_package,production_manifest_url)
+assert not m.trusted_publication_url(candidate_root+"../manifest.json",candidate_manifest_url)
+assert not m.trusted_publication_url(candidate_package+"?raw=1",candidate_manifest_url)
+assert not m.trusted_publication_url(candidate_package.replace("raw.githubusercontent.com","raw.githubusercontent.com.evil.test"),candidate_manifest_url)
+
+def publication_fixture(root):
+ return {"schema":1,"generated_from":manifest["generated_from"],"delivery":"raw-github-parts",
+  "parts":[{"filename":"warder-130e-channel-black.zip.part00","bytes":4,"sha256":"d"*64}],
+  "packages":[{"selector_id":"130E","orbital_position":"13.0e","family":"channel-black",
+   "resolution":"220x132","filename":"warder-130e-channel-black.zip","bytes":4,"sha256":"e"*64,
+   "parts":[root+"warder-130e-channel-black.zip.part00"]}]}
+candidate_pub=m.publication_from_manifest(candidate_manifest_url,publication_fixture(candidate_root))
+assert candidate_pub["persistent"] and candidate_pub["publication_source_id"]=="test-candidate"
+assert not m.publication_from_manifest(candidate_manifest_url,publication_fixture(production_root))["persistent"]
+production_pub=m.publication_from_manifest(production_manifest_url,publication_fixture(production_root))
+assert production_pub["persistent"] and production_pub["publication_source_id"]=="production"
+assert not m.publication_from_manifest(production_manifest_url,publication_fixture(candidate_root))["persistent"]
+# The receiver job fetch method calls this exact helper for both the request and response URL.
+plugin_text=PLUGIN.read_text(encoding="utf-8")
+fetch_method=plugin_text[plugin_text.index("def _warderFetchChannelJob"):plugin_text.index("def _warderInstallChannelArchive")]
+assert "trusted_publication_url(url, source_id)" in fetch_method
+assert "trusted_publication_url(str(response.geturl()), source_id)" in fetch_method
+assert 'job.get("publication_source_id")' in fetch_method
+assert 'job.get("publication_root") != source.get("package_root")' in fetch_method
+
+# Optional CI network gate downloads four real candidate packages and verifies
+# redirected URL root, per-part HTTP size/SHA256, reassembly, package SHA/size and ZIP CRC.
+if __import__("sys").argv[1:] == ["--candidate-network"]:
+ import hashlib, io, json, urllib.request, zipfile
+ def fetch_checked(url, size, sha, source_id):
+  assert m.trusted_publication_url(url, source_id), ("untrusted request URL",url)
+  request=urllib.request.Request(url,headers={"User-Agent":"FullHDGlass17-Warder-Evolution/TEST201-preflight"})
+  with urllib.request.urlopen(request,timeout=60) as response:
+   final_url=response.geturl()
+   assert m.trusted_publication_url(final_url,source_id), ("cross-publication redirect",url,final_url)
+   data=response.read(int(size)+1)
+  assert len(data)==int(size), ("HTTP size mismatch",url,len(data),size)
+  assert hashlib.sha256(data).hexdigest()==sha.lower(), ("HTTP SHA256 mismatch",url)
+  return data
+ with urllib.request.urlopen(candidate_manifest_url,timeout=45) as response:
+  assert response.geturl()==candidate_manifest_url
+  network_manifest=json.loads(response.read(4*1024*1024+1).decode("utf-8"))
+ assert not m.validate_publication_manifest(network_manifest,candidate_manifest_url)
+ assert network_manifest.get("delivery")=="raw-github-parts"
+ part_index={item["filename"]:item for item in network_manifest["parts"]}
+ for selector in ("130E","160E","192E","235E"):
+  matches=[item for item in network_manifest["packages"] if item.get("selector_id")==selector
+   and item.get("family")=="channel-black" and item.get("resolution")=="220x132"]
+  assert len(matches)==1,(selector,len(matches))
+  package=matches[0]
+  payload=bytearray()
+  for url in package["parts"]:
+   name=url.rsplit("/",1)[-1]; meta=part_index[name]
+   payload.extend(fetch_checked(url,meta["bytes"],meta["sha256"],"test-candidate"))
+  assert len(payload)==package["bytes"],("reassembled size",selector)
+  assert hashlib.sha256(payload).hexdigest()==package["sha256"].lower(),("reassembled SHA256",selector)
+  with zipfile.ZipFile(io.BytesIO(payload),"r") as zf:
+   assert zf.testzip() is None,("ZIP CRC failure",selector)
+   names=zf.namelist()
+   assert names and all(name.lower().endswith(".png") and "/" not in name and "\\\\" not in name for name in names)
+ print("TEST201 candidate HTTP size/SHA, multipart reassembly and ZIP integrity: PASS (130E/160E/192E/235E black)")
+else:
+ print("TEST201 publication-root regression via receiver URL validator: PASS")
