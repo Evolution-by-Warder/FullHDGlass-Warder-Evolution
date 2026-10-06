@@ -873,7 +873,7 @@ def plan_runtime_packages(document, queue, manifest_url=None):
         return {"state": "invalid-preferences", "packages": [], "errors": ["invalid resolution"],
                 "missing_selectors": [], "selector_ids": wanted, "family": family,
                 "resolution": prefs["resolution"]}
-    manifest_url = manifest_url or queue.get("manifest_url")
+    manifest_url = manifest_url or queue.get("manifest_url") or runtime_publication().get("manifest_url")
     errors = validate_publication_manifest(document, manifest_url)
     if errors:
         return {"state": "invalid-manifest", "packages": [], "errors": errors}
@@ -907,6 +907,7 @@ def plan_runtime_packages(document, queue, manifest_url=None):
 
 def build_download_jobs(document, package_plan, manifest_url=None):
     """Turn a package plan into integrity-complete download jobs."""
+    manifest_url = manifest_url or runtime_publication().get("manifest_url")
     source = publication_source(manifest_url)
     errors = validate_publication_manifest(document, manifest_url)
     if errors or source is None:
