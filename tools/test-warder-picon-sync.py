@@ -134,7 +134,7 @@ assert 'self.dwnJob = _("Warder channel picons")' in plugin_source
 assert "self.warderChannelInstalled.update(installed)" in plugin_source
 assert "classify_requested_picons(" in plugin_source
 assert "self.warderChannelAvailable.update(available)" in plugin_source
-assert '"outside_selected_packages"' in plugin_source
+assert '"outside_selected_packages"' in sync_source
 assert '_("Selected upstream picons were not installed:")' in plugin_source
 assert '_("selected receiver services have no matching picon in the selected packages.")' not in plugin_source
 assert "self.dwnTimer.start(10)" not in plugin_source

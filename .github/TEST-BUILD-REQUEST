@@ -4,3 +4,5 @@ TEST198 BUILD 2
 Fix removed ZZPicon menu numbering; run all regression and msgfmt gates again.
 TEST198 BUILD 3
 Update the channel sync regression to assert the dedicated Warder sync icon; rerun preflight and package build.
+TEST198 BUILD 4
+Keep receiver-wide unmatched-service diagnostics in the sync layer only; validate per-package user result without receiver-wide missing counts.
