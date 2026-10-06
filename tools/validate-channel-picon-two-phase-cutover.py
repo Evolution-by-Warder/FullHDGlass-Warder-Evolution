@@ -37,9 +37,35 @@ if runtime_cutover:
         errors.append("runtime cutover requires manifest/base URLs")
     if plan.get("publication_performed") is not True:
         errors.append("runtime cutover requires completed publication plan")
-    manifest_url=publication.get("manifest_url")
-    if manifest_url and ('RUNTIME_MANIFEST_URL = "'+manifest_url+'"') not in runtime:
-        errors.append("runtime manifest URL must exactly match publication evidence")
+    # This validator runs on warder-modernization-work: its TEST runtime must
+    # consume the separately persisted, validated candidate, while production
+    # publication evidence continues to point at stable main.
+    candidate_url="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/manifest.json"
+    if ('RUNTIME_MANIFEST_URL = "'+candidate_url+'"') not in runtime:
+        errors.append("TEST runtime must consume the work-branch candidate manifest")
+    candidate_path=ROOT/"assets/warder/downloads/picons/channels/test-candidate"
+    candidate_manifest=candidate_path/"manifest.json"
+    if not candidate_manifest.is_file():
+        errors.append("persisted TEST candidate manifest is missing")
+    else:
+        try:
+            cm=json.loads(candidate_manifest.read_text(encoding="utf-8"))
+            packages=cm.get("packages",[])
+            if len(packages)!=120:
+                errors.append("TEST candidate must contain 120 generic packages")
+            expected={"160E":("16.0e",2),"08W":("0.8w",3)}
+            for selector,(position,excluded_count) in expected.items():
+                rows=[p for p in packages if p.get("selector_id")==selector]
+                if len(rows)!=3 or any(p.get("orbital_position")!=position for p in rows):
+                    errors.append("TEST generic candidate has wrong binding/family coverage for "+selector)
+                if any(len(p.get("ambiguous_exclusions",[]))!=excluded_count for p in rows):
+                    errors.append("TEST generic candidate has wrong ambiguous exclusion count for "+selector)
+            part_names={u.rsplit("/",1)[-1] for p in packages for u in p.get("parts",[])}
+            disk_parts={p.name for p in candidate_path.glob("*.part*")}
+            if not part_names or part_names!=disk_parts:
+                errors.append("TEST candidate manifest part coverage differs from persisted files")
+        except Exception as exc:
+            errors.append("TEST candidate manifest is invalid: "+str(exc))
 else:
     # Before the reviewed runtime switch, the preserved pinned legacy resolver remains mandatory.
     if legacy not in plugin:
