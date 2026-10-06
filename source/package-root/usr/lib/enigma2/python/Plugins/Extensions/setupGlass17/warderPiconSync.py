@@ -59,17 +59,14 @@ def namespace_to_orbital_position(namespace):
     return "%d.%d%s" % (orbital // 10, orbital % 10, suffix)
 
 
-def position_token(label):
-    """Normalize a SATLIST/user label to the planner token (23.5e, 0.8w, dtt)."""
-    text = str(label or "").strip()
-    if text.upper().startswith("DVB-T"):
+def position_token(position):
+    """Normalize a canonical orbital token only; display labels are not parsed."""
+    text = str(position or "").strip().lower()
+    if text in ("dtt", "eee"):
         return "dtt"
-    match = re.search(r"\(([0-9]+(?:\.[0-9]+)?)([EW])\)", text, re.I)
-    if match:
-        return match.group(1).lower() + match.group(2).lower()
-    if re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", text, re.I):
-        return text.lower()
-    return text.lower()
+    if re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", text):
+        return text
+    return text
 
 
 def service_orbital_position(reference):
@@ -340,28 +337,6 @@ READY = "ready"
 
 # SATLIST identity must stay separate from orbital filtering. Provider selectors can
 # share one orbital position, while nearby legacy selectors may have distinct IDs.
-_SPECIAL_SELECTOR_LABELS = {
-    "(0.8W) Freesat": "FREESAT",
-    "(0.8W) Digi / Telly": "DIGI_TELLY",
-    "(0.8W) Digi/Telly": "DIGI_TELLY",
-    "(16.0E) Antiksat": "ANTIKSAT",
-    "(23.5E) Skylink": "SKYLINK",
-    "DVB-T sk/cz": "DVB-T-SK-CZ",
-}
-_ORBITAL_SELECTOR_IDS = {
-    "45.0w":"450W","30.0w":"300W","27.5w":"275W","24.5w":"248W","22.0w":"220W",
-    "15.0w":"150W","14.0w":"140W","12.5w":"125W","11.0w":"110W","8.0w":"80W",
-    "7.0w":"70W","5.0w":"50W","4.0w":"40W","1.0w":"10W","0.8w":"08W",
-    "1.9e":"19E","3.0e":"30E","3.1e":"31E","4.8e":"48E_A","4.9e":"48E_B",
-    "7.0e":"70E","9.0e":"90E","10.0e":"100E","13.0e":"130E","16.0e":"160E",
-    "19.2e":"192E","21.5e":"216E","23.5e":"235E","26.0e":"260E","28.2e":"282E",
-    "30.5e":"305E","31.5e":"315E","33.0e":"330E","36.0e":"360E","39.0e":"390E",
-    "42.0e":"420E","45.0e":"450E","46.0e":"460E","51.5e":"515E","52.0e":"520E",
-    "52.5e":"525E","53.0e":"530E","54.9e":"549E","56.0e":"560E","62.0e":"620E",
-    "66.0e":"660E","68.5e":"685E","70.5e":"705E","74.9e":"749E","75.0e":"750E",
-    "85.0e":"850E","85.1e":"851E",
-}
-
 _SELECTOR_LABEL_BINDINGS = {
     "(0.8W) Freesat": (
         "FREESAT",
@@ -673,11 +648,6 @@ def canonical_position_for_selector(selector_id):
     """Resolve a technical package selector through the explicit domain binding."""
     return _SELECTOR_ID_TO_POSITION.get(str(selector_id or ""))
 
-
-    text = str(label or "").strip()
-    if text in _SPECIAL_SELECTOR_LABELS:
-        return _SPECIAL_SELECTOR_LABELS[text]
-    return _ORBITAL_SELECTOR_IDS.get(position_token(text))
 
 
 def selected_selector_ids(selector_ids):

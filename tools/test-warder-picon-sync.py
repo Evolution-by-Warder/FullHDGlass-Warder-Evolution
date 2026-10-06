@@ -23,9 +23,10 @@ assert m.normalize_service_reference("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:") 
 assert m.normalize_service_reference("garbage") == ""
 assert m.service_orbital_position("1:0:1:1328:CA2:3:EB0000:0:0:0:") == "23.5e"
 assert m.service_orbital_position("1:0:1:1:1:1:C00000:0:0:0:") == "19.2e"
-assert m.position_token("(23.5E) Skylink") == "23.5e"
-assert m.position_token("(0.8W) Freesat") == "0.8w"
-assert m.position_token("DVB-T sk/cz") == "dtt"
+assert m.position_token("23.5E") == "23.5e"
+assert m.position_token("(23.5E) Skylink") != "23.5e"
+assert m.position_token("0.8W") == "0.8w"
+assert m.position_token("dtt") == "dtt"
 assert m.position_token("19.2e") == "19.2e"
 runtime_pub = m.runtime_publication()
 assert runtime_pub["persistent"] is True
@@ -201,7 +202,7 @@ with tempfile.TemporaryDirectory() as d:
         assert str(error) == "no-satellite-position-selected"
     else:
         raise AssertionError("empty runtime selection must not become all positions")
-    full_prefs = configured(["(23.5E) Skylink"], m.UPDATE_MODE_INCREMENTAL)
+    full_prefs = configured(["SKYLINK"], m.UPDATE_MODE_INCREMENTAL)
     full = m.build_runtime_queue(full_prefs, d)
     assert full["mode"] == m.UPDATE_MODE_INCREMENTAL and full["service_count"] == 0
     assert m.wanted_picon_names(full) is None
@@ -249,7 +250,7 @@ assert "non-canonical package part" in m.validate_publication_manifest(wrong_par
 sel = m.select_manifest_packages(valid_manifest, configured(["235E"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
 assert sel["packages"][0]["selector_id"] == "235E"
-wrong_res = m.select_manifest_packages(valid_manifest, configured(["(23.5E) Astra 3B"], resolution="400x240"))
+wrong_res = m.select_manifest_packages(valid_manifest, configured(["235E"], resolution="400x240"))
 assert wrong_res["packages"] == []
 provider_manifest = dict(valid_manifest)
 provider_manifest["packages"] = [dict(valid_manifest["packages"][0], selector_id="FREESAT", warder_key="0.8w/freesat")]

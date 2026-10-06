@@ -12,3 +12,5 @@ TEST198 BUILD 6
 Retarget regression coverage from removed receiver-wide missing_files aggregation to package_result_summary and partial-success state.
 TEST198 BUILD 7
 Make selector values explicit IDs with canonical orbital bindings; remove all runtime identity dependence on selected GUI labels.
+TEST198 BUILD 8
+Reject orbital-position extraction from free-form GUI labels; only canonical position tokens and explicit selector IDs reach package planning.
