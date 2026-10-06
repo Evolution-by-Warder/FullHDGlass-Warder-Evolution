@@ -50,3 +50,6 @@ Correct lifecycle regression scope: error restoration occurs in dwnLoop, while s
 
 TEST201 BUILD 6
 Replace the previously truncated color icon blob with the complete valid 189x123 PNG, keep active-descriptor defaults for internal planning helpers, and run all existing gates plus candidate HTTP/SHA/reassembly/ZIP preflight before packaging TEST201.
+
+TEST201 BUILD 7
+Update the two-phase cutover preflight to validate the new publication descriptor as the source of manifest/package-root truth; rerun all TEST201 regressions, candidate network integrity checks, compile/msgfmt, and package build.
