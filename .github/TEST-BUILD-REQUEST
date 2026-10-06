@@ -44,3 +44,6 @@ Fix existing channel sync tests to bind candidate multipart fixtures to the cand
 
 TEST201 BUILD 4
 Align the historical TEST196 synthetic channel package URLs with the active candidate manifest source so its runtime-planning regression remains source-bound. Rerun TEST201.
+
+TEST201 BUILD 5
+Correct lifecycle regression scope: error restoration occurs in dwnLoop, while snapshot capture is in _warderRunChannelQueue. Assert both against their actual function source and rerun TEST201.
