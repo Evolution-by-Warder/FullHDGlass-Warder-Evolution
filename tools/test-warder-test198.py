@@ -69,11 +69,15 @@ for position,selector in zip(expected_positions,expected_selectors):
  package={
   "selector_id":selector,"orbital_position":position.lower(),"family":"channel-transparent",
   "resolution":"220x132","filename":selector+"-transparent.zip","bytes":10,"sha256":"a"*64,
-  "url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"+selector+"-transparent.zip"}
+  "url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/"+selector+"-transparent.zip"}
  packages.append(package)
 manifest={"schema":1,"generated_from":{"repository":"Evolution-by-Warder/PiconHub-Warder-Evolution","ref":"0123456789abcdef"},
  "delivery":"direct","packages":packages}
 assert m.validate_publication_manifest(manifest)==[]
+candidate_runtime=m.publication_from_manifest(m.RUNTIME_MANIFEST_URL,manifest)
+assert candidate_runtime["persistent"] is True and candidate_runtime["manifest_url"]==m.RUNTIME_MANIFEST_URL
+assert m._trusted_https_url(candidateBase+"warder-160e-channel-transparent.zip.part00")
+assert not m._trusted_https_url("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/other/warder-160e.zip.part00")
 plan=m.plan_runtime_packages(manifest,queue)
 assert plan["state"]=="ready"
 assert [x["selector_id"] for x in plan["packages"]]==expected_selectors
@@ -93,7 +97,7 @@ assert provider_queue["package_selectors"]!=["160E"]
 freesat={"schema":1,"generated_from":manifest["generated_from"],"delivery":"direct","packages":[{
  "selector_id":"FREESAT","orbital_position":"0.8w","family":"channel-transparent","resolution":"220x132",
  "filename":"freesat.zip","bytes":10,"sha256":"b"*64,
- "url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/freesat.zip"}]}
+ "url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/freesat.zip"}]}
 generic08=m.set_task_position_bindings(m.default_preferences(),[m.task_binding_for_display_label("(0.8W) Thor 5,6,7/Intelsat 10-02")])
 generic08.update({"resolution":"220x132","style":"transparent","destination":str(Path(td)/"picon"),
  "update_mode":m.UPDATE_MODE_FULL,"prepared":True})
@@ -102,6 +106,18 @@ generic08_queue=m.build_runtime_queue(generic08,enigma2_dir=str(Path(td)/"empty"
 no_fallback=m.plan_runtime_packages(freesat,generic08_queue)
 assert no_fallback["state"]=="partial" and no_fallback["packages"]==[]
 assert no_fallback["missing_selectors"]==["08W"]
+
+# Candidate manifest includes the generic 0.8W package and keeps its canonical identity.
+candidate_08=dict(manifest)
+candidate_08["packages"]=list(manifest["packages"])+[{
+ "selector_id":"08W","orbital_position":"0.8w","family":"channel-transparent","resolution":"220x132",
+ "filename":"warder-08w-channel-transparent.zip","bytes":10,"sha256":"c"*64,
+ "url":candidateBase+"warder-08w-channel-transparent.zip"}]
+assert m.validate_publication_manifest(candidate_08)==[]
+generic08_plan=m.plan_runtime_packages(candidate_08,generic08_queue)
+assert generic08_plan["state"]=="ready"
+assert generic08_plan["positions"]==["0.8W"]
+assert [(p["selector_id"],p["orbital_position"]) for p in generic08_plan["packages"]]==[("08W","0.8w")]
 
 # Result rows use canonical positions and human-readable package labels, never technical IDs.
 summary=m.package_result_summary([
