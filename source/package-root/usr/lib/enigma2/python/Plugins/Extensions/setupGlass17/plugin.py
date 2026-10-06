@@ -8932,6 +8932,7 @@ class downloadMenu(Screen):
 	def resetWarderWorkingState(self):
 		"""Clear only in-memory download choices after the entire run succeeds."""
 		self.warderPiconPrefs = warderPiconSync.preferences_after_task(self.warderPiconPrefs, "success")
+		self.warderChannelTaskSnapshot = None
 		self.warderPositionSelectionAttempted = False
 		self.warderLargeSelectionPending = False
 		self.warderAuxChoiceRow = None
@@ -8953,6 +8954,7 @@ class downloadMenu(Screen):
 		self.warderChannelState = "running"
 		queue = getattr(self, "warderChannelQueue", None)
 		if queue is None:
+			self.warderChannelTaskSnapshot = dict(self.warderPiconPrefs)
 			queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 			if queue.get("state") != warderPiconSync.READY:
 				raise ValueError("Warder channel publication is locked")
@@ -9128,6 +9130,10 @@ class downloadMenu(Screen):
 					warder_result = self._warderRunChannelQueue()
 				except Exception as err:
 					self.warderChannelState = "error"
+					snapshot = getattr(self, "warderChannelTaskSnapshot", None)
+					if snapshot is not None:
+						self.warderPiconPrefs = warderPiconSync.preferences_after_task(snapshot, "error")
+					self.warderChannelTaskSnapshot = None
 					self.warderChannelQueue = None
 					self.warderChannelJobs = []
 					self.warderChannelInstalled = set()
