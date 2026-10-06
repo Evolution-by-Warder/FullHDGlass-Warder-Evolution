@@ -7,6 +7,7 @@ SYNC=ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGl
 PLUGIN=ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
 spec=importlib.util.spec_from_file_location("warderPiconSync_test199",str(SYNC))
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+candidateBase="https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/"
 
 # The actual selectable labels bind canonical identity and package selector independently.
 selected_labels=[
