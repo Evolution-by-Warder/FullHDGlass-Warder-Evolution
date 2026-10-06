@@ -117,7 +117,7 @@ candidate_08["packages"]=list(manifest["packages"])+[{
 assert m.validate_publication_manifest(candidate_08)==[]
 generic08_plan=m.plan_runtime_packages(candidate_08,generic08_queue)
 assert generic08_plan["state"]=="ready"
-assert generic08_plan["positions"]==["0.8W"]
+assert generic08_queue["positions"]==["0.8W"]
 assert [(p["selector_id"],p["orbital_position"]) for p in generic08_plan["packages"]]==[("08W","0.8w")]
 
 # Result rows use canonical positions and human-readable package labels, never technical IDs.
