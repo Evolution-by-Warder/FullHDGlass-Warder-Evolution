@@ -16,3 +16,5 @@ TEST198 BUILD 8
 Reject orbital-position extraction from free-form GUI labels; only canonical position tokens and explicit selector IDs reach package planning.
 TEST198 BUILD 9
 Move legacy channel archive selection to stable selector IDs and canonical positions; rerun the complete static package gate.
+TEST198 BUILD 10
+Use the final provider/satellite GUI labels and exact descriptive msgids; run msgfmt for 19 catalogs and build the next TEST IPK.
