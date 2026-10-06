@@ -200,10 +200,10 @@ with tempfile.TemporaryDirectory() as d:
     live = m.build_runtime_queue(channel_prefs, d, m.runtime_publication())
     assert live["state"] == m.READY
     assert live["service_count"] == 1
-    ready = m.build_runtime_queue(channel_prefs, d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
+    ready = m.build_runtime_queue(channel_prefs, d, {"persistent": True, "manifest_url": m.RUNTIME_MANIFEST_URL})
     assert ready["state"] == m.READY and ready["service_count"] == 1
     try:
-        m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": "https://example.invalid/manifest.json"})
+        m.build_runtime_queue(m.default_preferences(), d, {"persistent": True, "manifest_url": m.RUNTIME_MANIFEST_URL})
     except ValueError as error:
         assert str(error) == "no-satellite-position-selected"
     else:
