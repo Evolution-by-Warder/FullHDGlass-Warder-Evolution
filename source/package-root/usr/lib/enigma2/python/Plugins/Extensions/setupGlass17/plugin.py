@@ -8405,14 +8405,14 @@ class downloadMenu(Screen):
 			7:['aux-cam',_('CAM picons'),'piconCam','','x'],
 			8:['aux-weather',_('Weather picons'),'piconWeather','','x'],
 			9:['oa',sel+_('picon OLED'),8,'','x'],
-						11:['h',_('Help'),'help','','x'],
-			12:['i',_('Set of icons and prewievs'),'icon_sets_preview','','x'],
-			13:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
-			14:['m',_('Menu icons'),'menuicons','','x'],
-			15:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
-			16:['w',_('Weather icons'),'weatherIconsN','','x'],
-			17:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
-			18:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x']
+			10:['h',_('Help'),'help','','x'],
+			11:['i',_('Set of icons and prewievs'),'icon_sets_preview','','x'],
+			12:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
+			13:['m',_('Menu icons'),'menuicons','','x'],
+			14:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
+			15:['w',_('Weather icons'),'weatherIconsN','','x'],
+			16:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
+			17:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x']
 			}	
 		self.dwnTimer = eTimer()
 		try:
