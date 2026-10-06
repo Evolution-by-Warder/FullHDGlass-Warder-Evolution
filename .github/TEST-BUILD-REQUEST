@@ -38,3 +38,6 @@ Fix TEST200 manifest-to-downloader publication-root mismatch using exact source 
 
 TEST201 BUILD 2
 Update existing picon sync regression fixtures to use the exact candidate manifest descriptor; rerun all TEST201 gates and candidate network integrity validation.
+
+TEST201 BUILD 3
+Fix existing channel sync tests to bind candidate multipart fixtures to the candidate root while separately validating an explicit production-root fixture. Rerun TEST201.
