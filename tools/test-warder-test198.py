@@ -237,8 +237,8 @@ if __import__("sys").argv[1:] == ["--candidate-network"]:
   assert hashlib.sha256(payload).hexdigest()==package["sha256"].lower(),("reassembled SHA256",selector)
   with zipfile.ZipFile(io.BytesIO(payload),"r") as zf:
    assert zf.testzip() is None,("ZIP CRC failure",selector)
-   names=zf.namelist()
-   assert names and all(name.lower().endswith(".png") and "/" not in name and "\\\\" not in name for name in names)
+   members=[item for item in zf.infolist() if not item.filename.endswith("/")]
+   assert members and all(m.safe_archive_member(item.filename) and item.filename.lower().endswith(".png") for item in members)
  print("TEST201 candidate HTTP size/SHA, multipart reassembly and ZIP integrity: PASS (130E/160E/192E/235E black)")
 else:
  print("TEST201 publication-root regression via receiver URL validator: PASS")
