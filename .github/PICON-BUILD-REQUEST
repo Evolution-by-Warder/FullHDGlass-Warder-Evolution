@@ -114,3 +114,5 @@ Retry 120-package candidate with stable selector-ID binding and updated regressi
 Retry 120-package candidate with canonical-token-only selection and current regressions.
 Retry candidate after legacy archive selector identity fix; no main publication.
 Build candidate against the exact final TEST198 source head; no production backend publication.
+
+TEST199 receiver runtime manifest repair: persist the validated 120-package candidate and split parts under work-branch test-candidate; no main changes.
