@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Validate a materialized Warder channel-picon publication tree before exposure."""
+"""Validate package identity, archive coverage and integrity for Warder picon publication."""
 from pathlib import Path
-import argparse, hashlib, json, sys, urllib.parse
+import argparse, csv, hashlib, io, json, sys, urllib.parse, zipfile
 
 def digest(path):
     h=hashlib.sha256()
@@ -9,12 +9,61 @@ def digest(path):
         for b in iter(lambda:f.read(1024*1024),b""): h.update(b)
     return h.hexdigest()
 
+def expected_position(warder_key):
+    keys=warder_key.split("|")
+    positions={key.split("/",1)[0].lower() for key in keys}
+    if len(positions)!=1:
+        return None
+    return next(iter(positions))
+
+def check_archive(payload, package, name, errors):
+    included=package.get("included_references")
+    dedups=package.get("same_content_deduplications")
+    exclusions=package.get("ambiguous_exclusions")
+    if not isinstance(included,list) or not all(isinstance(x,str) for x in included):
+        errors.append("missing included-reference inventory for "+name); return
+    if len(included)!=len(set(included)):
+        errors.append("duplicate included references in manifest for "+name)
+    if not isinstance(dedups,list) or not isinstance(exclusions,list):
+        errors.append("missing collision provenance for "+name); return
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+            members=archive.namelist()
+            if len(members)!=len(set(members)):
+                errors.append("duplicate ZIP member names for "+name)
+            if any(Path(x).name!=x or x.startswith("/") or ".." in Path(x).parts for x in members):
+                errors.append("unsafe ZIP member path for "+name)
+            actual={Path(x).name[:-4] for x in members if x.lower().endswith(".png")}
+            if actual!=set(included):
+                errors.append("manifest coverage differs from physical ZIP for %s (missing=%r extra=%r)"%(name,sorted(set(included)-actual),sorted(actual-set(included))))
+    except (OSError,zipfile.BadZipFile) as e:
+        errors.append("invalid ZIP payload for %s: %s"%(name,e)); return
+    refs=set(included)
+    for item in dedups:
+        ref=item.get("service_reference")
+        if ref not in refs or not item.get("sha256") or len(item.get("source_paths",[]))<2:
+            errors.append("invalid same-content dedup provenance for "+name)
+    excluded=set()
+    for item in exclusions:
+        ref=item.get("service_reference")
+        candidates=item.get("candidates",[])
+        hashes={c.get("sha256") for c in candidates}
+        if (not ref or item.get("reason")!="different-content-same-basename" or
+            len(hashes)<2 or any(not c.get("source_paths") for c in candidates)):
+            errors.append("invalid ambiguous-exclusion provenance for "+name)
+        if ref in refs:
+            errors.append("ambiguous service included in generic package "+name+": "+str(ref))
+        excluded.add(ref)
+    if package.get("kind")!="satellite" and exclusions:
+        errors.append("provider package contains generic collision exclusions "+name)
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--root",required=True,type=Path)
     ap.add_argument("--manifest",type=Path)
     ap.add_argument("--expected-source",required=True)
     ap.add_argument("--expected-base-url",required=True)
+    ap.add_argument("--mapping",type=Path,default=Path(__file__).resolve().parents[1]/"assets/warder/picon-satlist-mapping.tsv")
     ap.add_argument("--parts",action="store_true")
     ap.add_argument("--production",action="store_true")
     ap.add_argument("--expected-packages",type=int,default=114)
@@ -25,6 +74,11 @@ def main():
     except Exception as e: raise SystemExit("manifest unreadable: %s"%e)
     if m.get("schema")!=1: errors.append("manifest schema must be 1")
     if m.get("generated_from",{}).get("ref")!=a.expected_source: errors.append("source ref mismatch")
+    try:
+        with a.mapping.open(encoding="utf-8",newline="") as f:
+            selector_map={row["selector_id"]:row for row in csv.DictReader(f,delimiter="\t")}
+    except Exception as e:
+        raise SystemExit("selector mapping unreadable: %s"%e)
     pkgs=m.get("packages",[])
     expected_packages=a.expected_packages
     if len(pkgs)!=expected_packages: errors.append("expected %d packages, got %d"%(expected_packages,len(pkgs)))
@@ -49,11 +103,23 @@ def main():
         if p.get("family") not in ("channel-transparent","channel-black","channel-white"): errors.append("invalid family for "+name)
         resolution=p.get("resolution")
         if not isinstance(resolution,str) or "x" not in resolution: errors.append("invalid resolution for "+name)
+        selector=p.get("selector_id")
+        row=selector_map.get(selector)
+        if not row:
+            errors.append("unknown selector identity for "+name)
+        else:
+            key=row.get("warder_key","")
+            if p.get("kind")!=row.get("kind"): errors.append("selector kind mismatch for "+name)
+            if p.get("warder_key")!=key: errors.append("selector source-key mismatch for "+name)
+            pos=expected_position(key)
+            if not pos or str(p.get("orbital_position","")).lower()!=pos:
+                errors.append("canonical orbital-position binding mismatch for "+name)
+        payload=None
         if a.parts:
             urls=p.get("parts",[])
             if not isinstance(urls,list) or not urls: errors.append("missing parts for "+name); urls=[]
             assembled=hashlib.sha256()
-            assembled_bytes=0
+            chunks=[]; assembled_bytes=0
             for n,url in enumerate(urls):
                 pn=name+".part%02d"%n
                 if url!=expected_base+"/"+pn: errors.append("non-canonical part URL for "+name)
@@ -68,23 +134,22 @@ def main():
                 else:
                     if pp.stat().st_size!=meta.get("bytes"): errors.append("part size mismatch "+pn)
                     if digest(pp)!=meta.get("sha256"): errors.append("part sha256 mismatch "+pn)
-                    with pp.open("rb") as stream:
-                        for chunk in iter(lambda:stream.read(1024*1024),b""):
-                            assembled.update(chunk)
-                            assembled_bytes+=len(chunk)
+                    data=pp.read_bytes(); chunks.append(data); assembled.update(data); assembled_bytes+=len(data)
             if urls:
                 if assembled_bytes!=p.get("bytes"): errors.append("reassembled size mismatch "+name)
                 if assembled.hexdigest()!=p.get("sha256"): errors.append("reassembled sha256 mismatch "+name)
+                payload=b"".join(chunks)
         else:
             url=p.get("url","")
             if url!=expected_base+"/"+name: errors.append("non-canonical URL for "+name)
             u=urllib.parse.urlparse(url)
             if u.scheme!="https" or u.netloc!="raw.githubusercontent.com": errors.append("non-Warder HTTPS raw host for "+name)
-        if not a.parts:
             if not path.is_file(): continue
             size=path.stat().st_size
             if size!=p.get("bytes"): errors.append("size mismatch for "+name)
             if digest(path)!=p.get("sha256"): errors.append("sha256 mismatch for "+name)
+            payload=path.read_bytes()
+        if payload is not None: check_archive(payload,p,name,errors)
     if len(pairs)!=expected_packages: errors.append("expected %d unique selector/family/resolution tuples"%expected_packages)
     if a.parts:
         expected_parts={u.rsplit("/",1)[-1] for p in pkgs for u in p.get("parts",[])}
@@ -94,5 +159,5 @@ def main():
     if errors:
         for e in errors: print("ERROR:",e)
         sys.exit(1)
-    print("PASS persistent publication payload: %d packages, canonical URLs, sizes and SHA256 verified"%expected_packages)
+    print("PASS persistent publication payload: %d packages, canonical positions, ZIP coverage, collision provenance and SHA256 verified"%expected_packages)
 if __name__=="__main__": main()

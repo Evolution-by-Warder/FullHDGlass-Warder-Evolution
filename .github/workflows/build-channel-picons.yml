@@ -166,6 +166,7 @@ jobs:
             --input dist/channel-picons \
             --manifest dist/channel-picons/manifest.json \
             --output dist/channel-picons-publish \
+            --expected-packages 120 \
             --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels
           python3 tools/validate-picon-publication.py \
             --root dist/channel-picons-publish \
@@ -196,6 +197,7 @@ jobs:
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
           python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
           python3 tools/test-picon-materializer.py
+          python3 tools/test-picon-publication-integrity.py
           python3 - <<'PY'
           import importlib.util, pathlib
           p=pathlib.Path("tools/materialize-picon-packages.py")

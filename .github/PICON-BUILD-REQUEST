@@ -106,3 +106,4 @@ Preflight write test: 2026-10-05T11:17Z (no publication approval)
 
 TEST197 follow-up build: service-scoped generic orbital collision exclusions with exact per-reference provenance. Preserve production-main 114-package runtime and no-write policy; upload only the branch candidate artifact.
 Post-TEST197 service-scoped collision candidate: run updated manifest/preflight and upload 120-package candidate artifact; do not publish backend to main.
+Candidate-only validation fix: allow split preparation to validate 120 packages while production publisher remains pinned to its separate approved 114-package gate. Preserve orbital and ZIP-coverage provenance in split manifest.

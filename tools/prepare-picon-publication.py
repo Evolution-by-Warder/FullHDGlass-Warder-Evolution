@@ -17,13 +17,14 @@ def main():
     ap.add_argument("--output",required=True,type=Path)
     ap.add_argument("--base-url",required=True)
     ap.add_argument("--part-bytes",type=int,default=20*1024*1024)
+    ap.add_argument("--expected-packages",type=int,default=114)
     a=ap.parse_args()
     if not 0<a.part_bytes<=20*1024*1024:
         raise SystemExit("part size must be 1..20 MiB")
     src=json.loads(a.manifest.read_text(encoding="utf-8"))
     packages=src.get("packages",[])
-    if len(packages)!=114:
-        raise SystemExit("expected 114 packages")
+    if len(packages)!=a.expected_packages:
+        raise SystemExit("expected %d packages, got %d"%(a.expected_packages,len(packages)))
     if src.get("blocked_packages"):
         raise SystemExit("refusing publication with blocked source packages")
     a.output.mkdir(parents=True,exist_ok=True)
@@ -57,12 +58,17 @@ def main():
             raise SystemExit("empty "+name)
         output_packages.append({
             "selector_id":p["selector_id"],
+            "kind":p.get("kind"),
+            "orbital_position":p.get("orbital_position"),
             "family":p["family"],
             "warder_key":p["warder_key"],
             "resolution":p["resolution"],
             "filename":name,
             "bytes":p["bytes"],
             "sha256":p["sha256"],
+            "included_references":p.get("included_references",[]),
+            "same_content_deduplications":p.get("same_content_deduplications",[]),
+            "ambiguous_exclusions":p.get("ambiguous_exclusions",[]),
             "parts":urls,
         })
     document={
