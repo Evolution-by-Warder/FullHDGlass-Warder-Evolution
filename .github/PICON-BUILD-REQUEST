@@ -110,3 +110,4 @@ Candidate-only validation fix: allow split preparation to validate 120 packages 
 Candidate artifact retry on latest TEST198 source and regression assertions; do not publish to main.
 Retry 120-package candidate with current TEST198 regression assertions.
 Retry channel candidate with latest per-package result regressions.
+Retry 120-package candidate with stable selector-ID binding and updated regression suite.

@@ -9079,7 +9079,7 @@ class downloadMenu(Screen):
 				self.warderLegacyCurrentPackageLabel = None
 				self.warderLegacyPackageResults = [
 					{"selector_id": str(archive_id),
-					 "orbital_position": (warderPiconSync.position_binding(label) or {}).get("orbital_position"),
+					 "orbital_position": warderPiconSync.canonical_position_for_selector(str(archive_id)),
 					 "updated": 0, "failures": 0, "processed": False}
 					for label, archive_id in legacy_queue
 				]
@@ -9767,9 +9767,11 @@ class warderPositionSelectorScr(Screen):
 		for x in range(0, len(SATLIST)):
 			label = SATLIST[x][0]
 			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
-			# Preserve the exact SATLIST label. Runtime derives orbital filtering and
-			# package selector identity separately (important for 0.8W providers).
-			token = label
+			# Attach immutable selector identity to the item. The displayed label and
+			# SATLIST icon value are presentation data only.
+			token = warderPiconSync.selector_id_for_display_label(label)
+			if not token:
+				continue
 			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
 			if not os.path.isfile(p):
 				p = SKINPATH + "icons/75.png"

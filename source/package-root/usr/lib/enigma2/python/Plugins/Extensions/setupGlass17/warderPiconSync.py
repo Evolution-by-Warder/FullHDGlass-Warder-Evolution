@@ -656,21 +656,22 @@ _SELECTOR_ID_TO_POSITION = {
     "851E": "85.1e"
 }
 
-def position_binding(label):
-    """Return the immutable selector/orbit binding for an exact SATLIST item."""
-    text = str(label or "").strip()
-    pair = _SELECTOR_LABEL_BINDINGS.get(text)
-    if not pair:
+def position_binding(selector_id):
+    """Return the immutable orbital binding for an explicit package selector ID."""
+    selector = str(selector_id or "").strip()
+    position = _SELECTOR_ID_TO_POSITION.get(selector)
+    if not position:
         return None
-    return {"selector_id": pair[0], "orbital_position": pair[1]}
+    return {"selector_id": selector, "orbital_position": position}
+
+def selector_id_for_display_label(label):
+    """Attach a stable selector ID while constructing a GUI item; never use its label later."""
+    pair = _SELECTOR_LABEL_BINDINGS.get(str(label or "").strip())
+    return pair[0] if pair else None
 
 def canonical_position_for_selector(selector_id):
     """Resolve a technical package selector through the explicit domain binding."""
     return _SELECTOR_ID_TO_POSITION.get(str(selector_id or ""))
-
-def selector_id(label):
-    binding = position_binding(label)
-    return binding.get("selector_id") if binding else None
 
 
     text = str(label or "").strip()
@@ -679,11 +680,11 @@ def selector_id(label):
     return _ORBITAL_SELECTOR_IDS.get(position_token(text))
 
 
-def selected_selector_ids(labels):
+def selected_selector_ids(selector_ids):
     result = []
     seen = set()
-    for label in labels or []:
-        binding = position_binding(label)
+    for selector in selector_ids or []:
+        binding = position_binding(selector)
         sid = binding.get("selector_id") if binding else None
         if sid and sid not in seen:
             seen.add(sid)
@@ -691,14 +692,12 @@ def selected_selector_ids(labels):
     return result
 
 
-def valid_position_selection(labels):
-    """Require known explicit selector bindings; GUI text is never parsed for identity."""
-    values = [str(x).strip() for x in (labels or []) if str(x).strip()]
+def valid_position_selection(selector_ids):
+    """Accept only explicit package selector IDs attached to GUI items."""
+    values = [str(x).strip() for x in (selector_ids or []) if str(x).strip()]
     if not values or len(set(values)) != len(values):
         return False
-    bindings = [position_binding(x) for x in values]
-    selectors = [x.get("selector_id") if x else None for x in bindings]
-    return bool(all(selectors) and len(set(selectors)) == len(values))
+    return all(position_binding(selector) for selector in values)
 
 
 def family_for_style(style):
@@ -737,7 +736,7 @@ def select_manifest_packages(document, preferences):
         "packages": packages,
         "missing_selectors": missing,
         "selector_ids": wanted,
-        "positions": sorted(selected_positions),
+        "positions": sorted({position_binding(sid)["orbital_position"] for sid in wanted}),
         "family": family,
         "resolution": resolution,
     }
@@ -753,16 +752,24 @@ def selector_id_for_position(position):
 
 def plan_runtime_packages(document, queue):
     """Resolve one deterministic package set from a validated receiver queue."""
+    selectors = list(queue.get("selector_ids", []))
     prefs = {
-        "positions": list(queue.get("positions_labels", [])),
+        "positions": selectors,
         "style": queue.get("style", DEFAULT_STYLE),
         "resolution": queue.get("resolution", DEFAULT_RESOLUTION),
     }
-    if not valid_position_selection(prefs["positions"]):
+    if not valid_position_selection(selectors):
         return {"state": "invalid-selection", "packages": [], "errors": ["no-satellite-position-selected"],
                 "missing_selectors": [], "selector_ids": [], "family": family_for_style(prefs["style"]),
                 "resolution": prefs["resolution"]}
-    explicit = list(queue.get("selector_ids", []))
+    bindings = [position_binding(selector) for selector in selectors]
+    derived_positions = {binding["orbital_position"] for binding in bindings}
+    explicit_positions = set(queue.get("positions", []))
+    if explicit_positions and explicit_positions != derived_positions:
+        return {"state": "invalid-selection", "packages": [], "errors": ["selector-position-binding-mismatch"],
+                "missing_selectors": [], "selector_ids": selectors, "family": family_for_style(prefs["style"]),
+                "resolution": prefs["resolution"]}
+    explicit = selectors
     if explicit:
         wanted = explicit
     elif queue.get("mode") in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
@@ -787,10 +794,7 @@ def plan_runtime_packages(document, queue):
     errors = validate_publication_manifest(document)
     if errors:
         return {"state": "invalid-manifest", "packages": [], "errors": errors}
-    selected_positions = set(queue.get("positions", []))
-    if not selected_positions:
-        selected_positions = set(binding["orbital_position"] for label in prefs["positions"]
-                                 for binding in [position_binding(label)] if binding)
+    selected_positions = derived_positions
     candidates = [p for p in document.get("packages", [])
                   if p.get("family") == family and p.get("resolution") == prefs["resolution"]
                   and (p.get("orbital_position") or canonical_position_for_selector(p.get("selector_id"))) in selected_positions]
@@ -1002,8 +1006,8 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     prefs = dict(default_preferences())
     prefs.update(preferences or {})
     mode = prefs.get("update_mode")
-    labels = list(prefs.get("positions", []) or [])
-    if not valid_position_selection(labels):
+    selectors = list(prefs.get("positions", []) or [])
+    if not valid_position_selection(selectors):
         raise ValueError("no-satellite-position-selected")
     if mode not in dict(UPDATE_MODES):
         raise ValueError("unsupported update mode")
@@ -1016,7 +1020,7 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     destination = validate_destination(prefs.get("destination"))
     if not destination:
         raise ValueError("invalid Warder picon destination")
-    bindings = [position_binding(x) for x in labels]
+    bindings = [position_binding(x) for x in selectors]
     selected = [x["orbital_position"] for x in bindings if x]
     selectors = [x["selector_id"] for x in bindings if x]
     if mode in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
@@ -1031,7 +1035,6 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         "state": READY if published else PUBLICATION_LOCKED,
         "mode": mode,
         "positions": selected,
-        "positions_labels": labels,
         "selector_ids": selectors,
         "position_bindings": bindings,
         "style": style,

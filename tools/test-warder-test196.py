@@ -25,7 +25,7 @@ assert prefs["positions"] == []
 assert prefs["resolution"] is None and prefs["style"] is None and prefs["update_mode"] is None
 assert prefs["destination"] == "/usr/share/enigma2/picon"
 assert not m.channel_preferences_ready(prefs)
-assert m.reset_working_preferences({"positions": ["(23.5E) Skylink"]}) == m.default_preferences()
+assert m.reset_working_preferences({"positions": ["SKYLINK"]}) == m.default_preferences()
 assert m.channel_style_supported("220x132", "transparent")
 assert m.channel_style_supported("220x132", "black") and m.channel_style_supported("220x132", "white")
 assert m.channel_style_supported("50x30", "black") and m.channel_style_supported("50x30", "white")
@@ -42,12 +42,12 @@ with tempfile.TemporaryDirectory() as tmp:
     (root / "bouquets.radio").write_text('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "radio.userbouquet" ORDER BY bouquet\n')
     (root / "tv.userbouquet").write_text("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n#SERVICE 1:0:1:101:1:1:A00000:0:0:0:\n")
     (root / "radio.userbouquet").write_text("#SERVICE 1:0:1:100:1:1:A00000:0:0:0:\n")
-    labels = ["(23.5E) Skylink", "(16.0E) Antiksat"]
+    selector_ids = ["SKYLINK", "ANTIKSAT"]
     tv = m.build_sync_request(tmp, ["23.5e", "16.0e"], "transparent", "220x132")
     tv_radio = m.build_sync_request(tmp, ["23.5e", "16.0e"], "transparent", "220x132", include_radio=True)
     assert tv["mode"] == m.UPDATE_MODE_SYNC_TV and len(tv["services"]) == 2
     assert tv_radio["mode"] == m.UPDATE_MODE_SYNC_TV_RADIO and len(tv_radio["services"]) == 3
-    base = {"positions": labels, "resolution": "220x132", "style": "transparent", "destination": "/media/hdd/picon", "prepared": True}
+    base = {"positions": selector_ids, "resolution": "220x132", "style": "transparent", "destination": "/media/hdd/picon", "prepared": True}
     queues = {}
     for mode, count in ((m.UPDATE_MODE_SYNC_TV, 2), (m.UPDATE_MODE_SYNC_TV_RADIO, 3),
                         (m.UPDATE_MODE_REPLACE_ALL, 0), (m.UPDATE_MODE_INCREMENTAL, 0)):

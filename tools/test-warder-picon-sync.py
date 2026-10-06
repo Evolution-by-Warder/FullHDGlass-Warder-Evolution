@@ -33,14 +33,14 @@ assert runtime_pub["manifest_url"] == "https://raw.githubusercontent.com/Evoluti
 assert m.safe_archive_member("1_0_1_A_B_C_D_0_0_0.png") is True
 assert m.safe_archive_member("../escape.png") is False
 assert m.safe_archive_member("/absolute.png") is False
-assert m.selector_id("(0.8W) Freesat") == "FREESAT"
-assert m.selector_id("(0.8W) Digi / Telly") == "DIGI_TELLY"
-assert m.selector_id("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"
-assert m.selector_id("(23.5E) Skylink") == "SKYLINK"
-assert m.selector_id("(23.5E) Astra 3B") == "235E"
-assert m.valid_position_selection(["(16.0E) Antiksat", "(23.5E) Skylink"])
+assert m.selector_id_for_display_label("(0.8W) Freesat") == "FREESAT"
+assert m.selector_id_for_display_label("(0.8W) Digi / Telly") == "DIGI_TELLY"
+assert m.selector_id_for_display_label("(0.8W) Thor 5,6,7/Intelsat 10-02") == "08W"
+assert m.selector_id_for_display_label("(23.5E) Skylink") == "SKYLINK"
+assert m.selector_id_for_display_label("(23.5E) Astra 3B") == "235E"
+assert m.valid_position_selection(["ANTIKSAT", "SKYLINK"])
 assert not m.valid_position_selection([])
-assert not m.valid_position_selection(["unknown position"])
+assert not m.valid_position_selection(["UNKNOWN"])
 
 with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "bouquets.tv"), "w") as h:
@@ -87,8 +87,8 @@ def configured(position, mode=m.UPDATE_MODE_SYNC_TV, destination="/media/hdd/pic
     return {"positions": list(position), "resolution": resolution, "style": style,
             "destination": destination, "update_mode": mode, "prepared": True}
 
-prefs2 = m.set_preference(m.default_preferences(), "positions", ["(23.5E) Skylink", "DVB-T sk/cz"])
-assert prefs2["positions"] == ["(23.5E) Skylink", "DVB-T sk/cz"]
+prefs2 = m.set_preference(m.default_preferences(), "positions", ["SKYLINK", "DVB-T-SK-CZ"])
+assert prefs2["positions"] == ["SKYLINK", "DVB-T-SK-CZ"]
 assert prefs2["prepared"] is True
 
 PLUGIN = os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py")
@@ -101,7 +101,7 @@ keys = [int(x) for x in __import__("re").findall(r"^\t\t\t(\d+):\[", menu_block,
 assert keys == list(range(len(keys))), keys
 assert "CHSPiconbig" not in menu_block
 assert "picon_400x240" not in menu_block and "picon_220x132" not in menu_block
-assert "token = label" in plugin_source
+assert 'token = warderPiconSync.selector_id_for_display_label(label)' in plugin_source
 selector_block = plugin_source.split("class warderPositionSelectorScr(Screen):", 1)[1].split("class styleSelectorScr(Screen):", 1)[0]
 assert '"cancel": self.cancel, "red": self.cancel' in selector_block
 assert "def cancel(self):" in selector_block and "self.close(None)" in selector_block
@@ -185,7 +185,7 @@ with tempfile.TemporaryDirectory() as d:
     with open(os.path.join(d, "userbouquet.q.tv"), "w") as h:
         h.write("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n")
         h.write("#SERVICE 1:0:1:1:1:1:C00000:0:0:0:\n")
-    channel_prefs = configured(["(23.5E) Skylink"])
+    channel_prefs = configured(["SKYLINK"])
     locked = m.build_runtime_queue(channel_prefs, d, {"persistent": False, "manifest_url": None})
     assert locked["state"] == m.PUBLICATION_LOCKED
     assert locked["service_count"] == 1
@@ -246,19 +246,19 @@ wrong_part_name_manifest["packages"] = [dict(valid_manifest["packages"][0], part
 ])]
 wrong_part_name_manifest["parts"] = [dict(valid_manifest["parts"][0], filename="235E-transparent.zip.part01")]
 assert "non-canonical package part" in m.validate_publication_manifest(wrong_part_name_manifest)
-sel = m.select_manifest_packages(valid_manifest, configured(["(23.5E) Astra 3B"]))
+sel = m.select_manifest_packages(valid_manifest, configured(["235E"]))
 assert sel["state"] == "ready" and sel["selector_ids"] == ["235E"]
 assert sel["packages"][0]["selector_id"] == "235E"
 wrong_res = m.select_manifest_packages(valid_manifest, configured(["(23.5E) Astra 3B"], resolution="400x240"))
 assert wrong_res["packages"] == []
 provider_manifest = dict(valid_manifest)
 provider_manifest["packages"] = [dict(valid_manifest["packages"][0], selector_id="FREESAT", warder_key="0.8w/freesat")]
-provider_sel = m.select_manifest_packages(provider_manifest, configured(["(0.8W) Freesat"]))
+provider_sel = m.select_manifest_packages(provider_manifest, configured(["FREESAT"]))
 assert provider_sel["selector_ids"] == ["FREESAT"] and len(provider_sel["packages"]) == 1
-wrong_provider = m.select_manifest_packages(provider_manifest, configured(["(0.8W) Digi / Telly"]))
+wrong_provider = m.select_manifest_packages(provider_manifest, configured(["DIGI_TELLY"]))
 assert wrong_provider["state"] == "partial" and wrong_provider["missing_selectors"] == ["DIGI_TELLY"]
 queue = {
-    "mode": m.UPDATE_MODE_SYNC_TV, "positions_labels": ["(23.5E) Astra 3B"], "selector_ids": ["235E"],
+    "mode": m.UPDATE_MODE_SYNC_TV, "positions": ["23.5e"], "selector_ids": ["235E"],
     "style": "transparent", "resolution": "220x132",
     "services": [{"service_reference": "1_0_1_1328_CA2_3_EB0000_0_0_0", "position": "23.5e"}],
 }
@@ -267,7 +267,7 @@ assert planned["state"] == "ready" and [p["selector_id"] for p in planned["packa
 full_queue = dict(queue, mode=m.UPDATE_MODE_FULL, services=[])
 full_planned = m.plan_runtime_packages(valid_manifest, full_queue)
 assert len(full_planned["packages"]) == 1
-empty_sync_queue = dict(queue, services=[], positions_labels=[], selector_ids=[])
+empty_sync_queue = dict(queue, services=[], positions=[], selector_ids=[])
 empty_sync_planned = m.plan_runtime_packages(valid_manifest, empty_sync_queue)
 assert empty_sync_planned["state"] == "invalid-selection" and empty_sync_planned["packages"] == []
 assert m.build_download_jobs(valid_manifest, empty_sync_planned)["state"] == "invalid-plan"
@@ -275,10 +275,10 @@ bad_style = dict(queue, style="unknown")
 assert m.plan_runtime_packages(valid_manifest, bad_style)["state"] == "invalid-preferences"
 bad_resolution = dict(queue, resolution="../220x132")
 assert m.plan_runtime_packages(valid_manifest, bad_resolution)["state"] == "invalid-preferences"
-full_selected = dict(full_queue, positions_labels=["(23.5E) Astra 3B"], selector_ids=["235E"])
+full_selected = dict(full_queue, positions=["23.5e"], selector_ids=["235E"])
 full_selected_planned = m.plan_runtime_packages(valid_manifest, full_selected)
 assert [p["selector_id"] for p in full_selected_planned["packages"]] == ["235E"]
-provider_queue = dict(queue, positions_labels=["(0.8W) Freesat"], selector_ids=["FREESAT"],
+provider_queue = dict(queue, positions=["0.8w"], selector_ids=["FREESAT"],
                       services=[{"service_reference": "1", "position": "0.8w"}])
 provider_planned = m.plan_runtime_packages(provider_manifest, provider_queue)
 assert [p["selector_id"] for p in provider_planned["packages"]] == ["FREESAT"]
@@ -334,7 +334,7 @@ assert any(x in duplicate_errors for x in ("duplicate package part", "non-canoni
 
 # TEST194 production manifest entries: these two UI labels select provider-specific
 # ZIPs, while service references at each orbital position can include other providers.
-assert m.selected_selector_ids(["(16.0E) Antiksat", "(23.5E) Skylink"]) == ["ANTIKSAT", "SKYLINK"]
+assert m.selected_selector_ids(["ANTIKSAT", "SKYLINK"]) == ["ANTIKSAT", "SKYLINK"]
 selected_provider_entries = {
     "ANTIKSAT": "warder-antiksat-channel-transparent.zip",
     "SKYLINK": "warder-skylink-channel-transparent.zip",
