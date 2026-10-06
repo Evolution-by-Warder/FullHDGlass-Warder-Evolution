@@ -27,8 +27,8 @@ with tempfile.TemporaryDirectory() as td:
  for v in ("transparent","black","white"):
   write("16.0e/antiksat","",v,amb16[0],SIG+b"ANTIKSAT")
  selectors.append({"selector_id":"ANTIKSAT","kind":"provider","orbital_position":"16.0e","warder_key":"16.0e/antiksat",
-   "state":"READY","eligible_families":["channel-transparent","channel-black","channel-white"],"service_identities":1,
-   "expected_unique_identities":{f:1 for f in ("channel-transparent","channel-black","channel-white")},"ambiguous_exclusions":{}})
+   "state":"READY","eligible_families":["channel-transparent","channel-black","channel-white"],"service_identities":3,
+   "expected_unique_identities":{f:3 for f in ("channel-transparent","channel-black","channel-white")},"ambiguous_exclusions":{}})
  plan=t/"plan.json";plan.write_text(json.dumps({"selectors":selectors}))
  manifest=t/"manifest.json"
  cmd=[sys.executable,str(ROOT/"tools/materialize-picon-packages.py"),"--source-root",str(src),"--plan",str(plan),
@@ -48,6 +48,7 @@ with tempfile.TemporaryDirectory() as td:
  for family in ("channel-transparent","channel-black","channel-white"):
   pkg=next(x for x in data["packages"] if x["selector_id"]=="ANTIKSAT" and x["family"]==family)
   assert pkg["orbital_position"]=="16.0e" and pkg["ambiguous_exclusions"]==[]
+  assert sorted(pkg["included_references"])==sorted([x[:-4] for x in amb16]+["1_0_1_COMMON_1_1_1"])
 # Undocumented conflicts and generic fallback must fail closed.
  selectors[0]["ambiguous_exclusions"]["channel-transparent"]=[]
 bad=t/"bad-plan.json";bad.write_text(json.dumps({"selectors":[selectors[0]]}))
