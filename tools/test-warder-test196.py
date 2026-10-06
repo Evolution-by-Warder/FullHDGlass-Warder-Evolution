@@ -70,7 +70,7 @@ with tempfile.TemporaryDirectory() as tmp:
     for sid, key in (("SKYLINK", "23.5e"), ("ANTIKSAT", "16.0e"), ("192E", "19.2e")):
         manifest["packages"].append({"selector_id": sid, "family": "channel-transparent", "warder_key": key,
             "filename": sid+".zip", "resolution": "220x132", "bytes": 10, "sha256": "a"*64,
-            "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"+sid+".zip"})
+            "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/"+sid+".zip"})
     for mode in (m.UPDATE_MODE_REPLACE_ALL, m.UPDATE_MODE_INCREMENTAL):
         plan = m.plan_runtime_packages(manifest, queues[mode])
         assert [p["selector_id"] for p in plan["packages"]] == ["ANTIKSAT", "SKYLINK"]
