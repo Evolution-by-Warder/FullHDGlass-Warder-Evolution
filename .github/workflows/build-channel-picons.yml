@@ -9,7 +9,7 @@ on:
       - .github/PICON-BUILD-REQUEST
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-channel-picons:
@@ -167,12 +167,12 @@ jobs:
             --manifest dist/channel-picons/manifest.json \
             --output dist/channel-picons-publish \
             --expected-packages 120 \
-            --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels
+            --base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate
           python3 tools/validate-picon-publication.py \
             --root dist/channel-picons-publish \
             --manifest dist/channel-picons-publish/manifest.json \
             --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
-            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels \
+            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate \
             --expected-packages 120 \
             --parts
           python3 - <<'PY'
@@ -216,6 +216,26 @@ jobs:
           python3 tools/validate-channel-picon-cutover.py
           python3 tools/validate-channel-picon-two-phase-cutover.py
           python3 tools/validate-channel-picon-publication-plan.py
+
+      - name: Publish validated TEST candidate backend on work branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin warder-modernization-work
+          git worktree add /tmp/warder-test-candidate origin/warder-modernization-work
+          DEST=/tmp/warder-test-candidate/assets/warder/downloads/picons/channels/test-candidate
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp -a dist/channel-picons-publish/. "$DEST"/
+          test -f "$DEST/manifest.json"
+          test "$(find "$DEST" -maxdepth 1 -type f -name '*.part*' | wc -l)" -gt 0
+          cd /tmp/warder-test-candidate
+          git add assets/warder/downloads/picons/channels/test-candidate
+          git diff --cached --quiet && { echo "TEST candidate backend unchanged"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish verified Warder TEST channel candidate [skip ci]"
+          git push origin HEAD:warder-modernization-work
 
       - name: Publish approved persistent channel-picon backend to main
         shell: bash
