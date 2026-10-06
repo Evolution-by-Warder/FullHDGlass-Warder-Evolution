@@ -272,6 +272,8 @@ def plan_legacy_channel_archives(selected_selector_ids, satlist, resolution, sty
 def default_preferences(destination=DEFAULT_DESTINATION):
     return {
         "positions": [],
+        "package_selectors": [],
+        "position_bindings": [],
         "resolution": None,
         "style": None,
         "destination": destination or DEFAULT_DESTINATION,
@@ -295,9 +297,23 @@ def preferences_after_task(preferences, outcome):
     raise ValueError("unknown Warder task outcome")
 
 
+def set_task_position_bindings(preferences, bindings):
+    result = dict(default_preferences())
+    result.update(preferences or {})
+    original = list(bindings or [])
+    normalized = normalize_position_bindings(original)
+    if len(normalized) != len(original):
+        normalized = []
+    result["position_bindings"] = normalized
+    result["positions"] = task_positions_from_bindings(normalized)
+    result["package_selectors"] = task_package_selectors_from_bindings(normalized)
+    result["prepared"] = bool(normalized)
+    return result
+
+
 def channel_preferences_ready(preferences):
     prefs = dict(preferences or {})
-    return bool(valid_position_selection(prefs.get("positions"))
+    return bool(valid_task_selection(prefs)
                 and prefs.get("resolution") in ("50x30", "220x132", "400x240")
                 and prefs.get("style") in dict(STYLES)
                 and channel_style_supported(prefs.get("resolution"), prefs.get("style"))
@@ -651,6 +667,89 @@ def canonical_position_for_selector(selector_id):
     return _SELECTOR_ID_TO_POSITION.get(str(selector_id or ""))
 
 
+def task_binding_for_display_label(label):
+    """Capture canonical position and technical selector when creating a GUI item."""
+    pair = _SELECTOR_LABEL_BINDINGS.get(str(label or "").strip())
+    if not pair:
+        return None
+    selector, position = pair
+    return {"canonical_position": position_token(position).upper(), "package_selector": selector}
+
+
+def task_binding_for_package_selector(package_selector):
+    """Create an explicit task binding from a known package selector."""
+    selector = str(package_selector or "").strip()
+    position = canonical_position_for_selector(selector)
+    if not position:
+        return None
+    return {"canonical_position": position_token(position).upper(), "package_selector": selector}
+
+
+def normalize_position_bindings(bindings):
+    """Validate task bindings without deriving identity from display text."""
+    result = []
+    seen = set()
+    for item in bindings or []:
+        if not isinstance(item, dict):
+            return []
+        selector = str(item.get("package_selector") or "").strip()
+        canonical = position_token(item.get("canonical_position")).upper()
+        expected = canonical_position_for_selector(selector)
+        if not selector or not expected or canonical != position_token(expected).upper() or selector in seen:
+            return []
+        seen.add(selector)
+        result.append({"canonical_position": canonical, "package_selector": selector})
+    return result
+
+
+def task_positions_from_bindings(bindings):
+    result = []
+    seen = set()
+    for item in normalize_position_bindings(bindings):
+        position = item["canonical_position"]
+        if position not in seen:
+            seen.add(position)
+            result.append(position)
+    return result
+
+
+def task_package_selectors_from_bindings(bindings):
+    return [item["package_selector"] for item in normalize_position_bindings(bindings)]
+
+
+def position_bindings_for_preferences(preferences):
+    """Validate canonical task positions and separate package selectors as one state."""
+    prefs = dict(preferences or {})
+    bindings = normalize_position_bindings(prefs.get("position_bindings"))
+    if not bindings:
+        return []
+    if list(prefs.get("positions", []) or []) != task_positions_from_bindings(bindings):
+        return []
+    if list(prefs.get("package_selectors", []) or []) != task_package_selectors_from_bindings(bindings):
+        return []
+    return bindings
+
+
+def valid_task_selection(preferences):
+    return bool(position_bindings_for_preferences(preferences))
+
+
+def task_positions_for_display(preferences):
+    """Expose only the already-selected canonical task positions to the GUI."""
+    if not valid_task_selection(preferences):
+        return []
+    return list((preferences or {}).get("positions", []))
+
+
+def package_display_name(package_selector):
+    """Return display-only text for a package after its canonical binding is known."""
+    selector = str(package_selector or "").strip()
+    for label, pair in _SELECTOR_LABEL_BINDINGS.items():
+        if pair[0] == selector:
+            return label.split(") ", 1)[1] if label.startswith("(") and ") " in label else label
+    return ""
+
+
 
 def selected_selector_ids(selector_ids):
     result = []
@@ -681,34 +780,31 @@ def family_for_style(style):
 
 
 def select_manifest_packages(document, preferences):
-    """Select deterministic packages; never substitute another selector/family."""
+    """Select exact packages from explicit task positions and package selectors."""
     errors = validate_publication_manifest(document)
     if errors:
         return {"state": "invalid-manifest", "packages": [], "errors": errors}
     prefs = dict(default_preferences())
     prefs.update(preferences or {})
-    if not valid_position_selection(prefs.get("positions")):
+    if not valid_task_selection(prefs):
         return {"state": "invalid-selection", "packages": [], "errors": ["no-satellite-position-selected"]}
     family = family_for_style(prefs.get("style"))
     if not family:
         return {"state": "unsupported-style", "packages": [], "errors": ["unsupported style"]}
-    wanted = selected_selector_ids(prefs.get("positions"))
+    wanted = selected_selector_ids(prefs.get("package_selectors"))
     resolution = prefs.get("resolution", DEFAULT_RESOLUTION)
     packages = [p for p in document.get("packages", [])
                 if p.get("family") == family and p.get("resolution") == resolution]
-    if wanted:
-        wanted_set = set(wanted)
-        packages = [p for p in packages if p.get("selector_id") in wanted_set]
-        available = set(p.get("selector_id") for p in packages)
-        missing = [sid for sid in wanted if sid not in available]
-    else:
-        missing = []
+    wanted_set = set(wanted)
+    packages = [p for p in packages if p.get("selector_id") in wanted_set]
+    available = set(p.get("selector_id") for p in packages)
+    missing = [sid for sid in wanted if sid not in available]
     return {
         "state": "ready" if not missing else "partial",
         "packages": packages,
         "missing_selectors": missing,
         "selector_ids": wanted,
-        "positions": sorted({position_binding(sid)["orbital_position"] for sid in wanted}),
+        "positions": list(prefs.get("positions", [])),
         "family": family,
         "resolution": resolution,
     }
@@ -723,21 +819,24 @@ def selector_id_for_position(position):
 
 
 def plan_runtime_packages(document, queue):
-    """Resolve one deterministic package set from a validated receiver queue."""
-    selectors = list(queue.get("selector_ids", []))
+    """Resolve packages only when canonical positions and selectors agree."""
+    selectors = list(queue.get("package_selectors", []))
+    task_bindings = normalize_position_bindings(queue.get("position_bindings", []))
     prefs = {
-        "positions": selectors,
+        "positions": list(queue.get("positions", [])),
+        "package_selectors": selectors,
+        "position_bindings": task_bindings,
         "style": queue.get("style", DEFAULT_STYLE),
         "resolution": queue.get("resolution", DEFAULT_RESOLUTION),
     }
-    if not valid_position_selection(selectors):
+    if not task_bindings or not valid_position_selection(selectors):
         return {"state": "invalid-selection", "packages": [], "errors": ["no-satellite-position-selected"],
                 "missing_selectors": [], "selector_ids": [], "family": family_for_style(prefs["style"]),
                 "resolution": prefs["resolution"]}
-    bindings = [position_binding(selector) for selector in selectors]
-    derived_positions = {binding["orbital_position"] for binding in bindings}
-    explicit_positions = set(queue.get("positions", []))
-    if explicit_positions and explicit_positions != derived_positions:
+    binding_selectors = task_package_selectors_from_bindings(task_bindings)
+    derived_positions = set(position_token(x) for x in task_positions_from_bindings(task_bindings))
+    explicit_positions = set(position_token(x) for x in queue.get("positions", []))
+    if binding_selectors != selectors or explicit_positions != derived_positions:
         return {"state": "invalid-selection", "packages": [], "errors": ["selector-position-binding-mismatch"],
                 "missing_selectors": [], "selector_ids": selectors, "family": family_for_style(prefs["style"]),
                 "resolution": prefs["resolution"]}
@@ -942,12 +1041,13 @@ def package_result_summary(package_results, translate=None):
     total_failures = 0
     for row in rows:
         position = str(row.get("orbital_position") or "—").upper()
-        selector = str(row.get("selector_id") or "")
+        selector = str(row.get("package_selector") or row.get("selector_id") or "")
+        package_name = package_display_name(selector)
         updated = max(0, int(row.get("updated", 0)))
         failures = max(0, int(row.get("failures", 0)))
         total_updated += updated
         total_failures += failures
-        lines.append(translate("%s / %s: %d picons updated; %d failures") % (position, selector, updated, failures))
+        lines.append(translate("%s / %s: %d picons updated; %d failures") % (position, package_name or translate("Package"), updated, failures))
     lines.append(translate("Total: %d picons updated") % total_updated)
     lines.append(translate("Failures: %d") % total_failures)
     if total_failures and total_updated:
@@ -974,13 +1074,15 @@ def runtime_publication():
     }
 
 def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
-    """Create the receiver action queue without performing network/filesystem writes."""
+    """Create a queue with canonical task positions and separate package selectors."""
     prefs = dict(default_preferences())
     prefs.update(preferences or {})
     mode = prefs.get("update_mode")
-    selectors = list(prefs.get("positions", []) or [])
-    if not valid_position_selection(selectors):
+    bindings = position_bindings_for_preferences(prefs)
+    if not bindings:
         raise ValueError("no-satellite-position-selected")
+    selected = list(prefs.get("positions", []) or [])
+    selectors = list(prefs.get("package_selectors", []) or [])
     if mode not in dict(UPDATE_MODES):
         raise ValueError("unsupported update mode")
     resolution = prefs.get("resolution")
@@ -992,9 +1094,6 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
     destination = validate_destination(prefs.get("destination"))
     if not destination:
         raise ValueError("invalid Warder picon destination")
-    bindings = [position_binding(x) for x in selectors]
-    selected = [x["orbital_position"] for x in bindings if x]
-    selectors = [x["selector_id"] for x in bindings if x]
     if mode in (UPDATE_MODE_SYNC_TV, UPDATE_MODE_SYNC_TV_RADIO):
         request = build_sync_request(
             enigma2_dir, selected, style, resolution,
@@ -1007,7 +1106,7 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         "state": READY if published else PUBLICATION_LOCKED,
         "mode": mode,
         "positions": selected,
-        "selector_ids": selectors,
+        "package_selectors": selectors,
         "position_bindings": bindings,
         "style": style,
         "resolution": resolution,
