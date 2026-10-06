@@ -50,7 +50,7 @@ with tempfile.TemporaryDirectory() as td:
   assert pkg["orbital_position"]=="16.0e" and pkg["ambiguous_exclusions"]==[]
 # Undocumented conflicts and generic fallback must fail closed.
  selectors[0]["ambiguous_exclusions"]["channel-transparent"]=[]
-bad=t/"bad-plan.json";bad.write_text(json.dumps({"selectors":[selectors[0]}))
+bad=t/"bad-plan.json";bad.write_text(json.dumps({"selectors":[selectors[0]]}))
 r=subprocess.run(cmd[:cmd.index("--plan")+1]+[str(bad)]+cmd[cmd.index("--output-dir"):],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
 assert r.returncode!=0 and "UNDOCUMENTED COLLISION" in r.stdout
 print("Picon materializer collision regressions: PASS (16.0E: 2 excluded; 0.8W: 3 excluded; same-content dedup; provider isolation; no fallback)")
