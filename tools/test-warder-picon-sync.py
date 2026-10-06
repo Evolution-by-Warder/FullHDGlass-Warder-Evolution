@@ -85,11 +85,17 @@ assert m.has_executable_action(prefs) is True
 assert m.has_executable_action(m.default_preferences(), ordinary_selected=True) is True
 assert [x[0] for x in m.UPDATE_MODES] == [m.UPDATE_MODE_SYNC_TV, m.UPDATE_MODE_SYNC_TV_RADIO, m.UPDATE_MODE_REPLACE_ALL, m.UPDATE_MODE_INCREMENTAL]
 def configured(position, mode=m.UPDATE_MODE_SYNC_TV, destination="/media/hdd/picon", resolution="220x132", style="transparent"):
-    return {"positions": list(position), "resolution": resolution, "style": style,
-            "destination": destination, "update_mode": mode, "prepared": True}
+    bindings = [m.task_binding_for_package_selector(selector) for selector in position]
+    state = m.set_task_position_bindings(m.default_preferences(), bindings)
+    state.update({"resolution": resolution, "style": style, "destination": destination,
+                  "update_mode": mode, "prepared": True})
+    return state
 
-prefs2 = m.set_preference(m.default_preferences(), "positions", ["SKYLINK", "DVB-T-SK-CZ"])
-assert prefs2["positions"] == ["SKYLINK", "DVB-T-SK-CZ"]
+prefs2 = m.set_task_position_bindings(m.default_preferences(), [
+    m.task_binding_for_package_selector("SKYLINK"),
+    m.task_binding_for_package_selector("DVB-T-SK-CZ")])
+assert prefs2["positions"] == ["23.5E", "DTT"]
+assert prefs2["package_selectors"] == ["SKYLINK", "DVB-T-SK-CZ"]
 assert prefs2["prepared"] is True
 
 PLUGIN = os.path.join(ROOT, "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py")
@@ -102,17 +108,17 @@ keys = [int(x) for x in __import__("re").findall(r"^\t\t\t(\d+):\[", menu_block,
 assert keys == list(range(len(keys))), keys
 assert "CHSPiconbig" not in menu_block
 assert "picon_400x240" not in menu_block and "picon_220x132" not in menu_block
-assert 'token = warderPiconSync.selector_id_for_display_label(label)' in plugin_source
+assert 'binding = warderPiconSync.task_binding_for_display_label(label)' in plugin_source
 selector_block = plugin_source.split("class warderPositionSelectorScr(Screen):", 1)[1].split("class styleSelectorScr(Screen):", 1)[0]
 assert '"cancel": self.cancel, "red": self.cancel' in selector_block
 assert "def cancel(self):" in selector_block and "self.close(None)" in selector_block
 assert "def warderPositionAnswer(self, answer=None):" in plugin_source
 assert "if answer is None or not isinstance(answer, (list, tuple)):" in plugin_source
 assert "self.warderPositionSelectionAttempted = True" in plugin_source
-assert 'if prepared and not warderPiconSync.valid_position_selection(self.warderPiconPrefs.get("positions")):' in plugin_source
+assert 'if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs):' in plugin_source
 assert "Select at least one satellite position." in plugin_source
 assert '"No position selected"' in plugin_source
-assert "valid_position_selection(positions)" in plugin_source
+assert 'set_task_position_bindings(self.warderPiconPrefs, bindings)' in plugin_source
 assert '_("Select at least one satellite position.")' in plugin_source
 for icon in ('"wp-pos": "down/p4.png"', '"wp-res": "down/ba5.png"',
              '"wp-style": "down/warder-colour.png"', '"wp-dest": "down/warder-location.png"',
@@ -259,7 +265,8 @@ assert provider_sel["selector_ids"] == ["FREESAT"] and len(provider_sel["package
 wrong_provider = m.select_manifest_packages(provider_manifest, configured(["DIGI_TELLY"]))
 assert wrong_provider["state"] == "partial" and wrong_provider["missing_selectors"] == ["DIGI_TELLY"]
 queue = {
-    "mode": m.UPDATE_MODE_SYNC_TV, "positions": ["23.5e"], "selector_ids": ["235E"],
+    "mode": m.UPDATE_MODE_SYNC_TV, "positions": ["23.5E"], "package_selectors": ["235E"],
+    "position_bindings": [m.task_binding_for_package_selector("235E")],
     "style": "transparent", "resolution": "220x132",
     "services": [{"service_reference": "1_0_1_1328_CA2_3_EB0000_0_0_0", "position": "23.5e"}],
 }
@@ -268,7 +275,7 @@ assert planned["state"] == "ready" and [p["selector_id"] for p in planned["packa
 full_queue = dict(queue, mode=m.UPDATE_MODE_FULL, services=[])
 full_planned = m.plan_runtime_packages(valid_manifest, full_queue)
 assert len(full_planned["packages"]) == 1
-empty_sync_queue = dict(queue, services=[], positions=[], selector_ids=[])
+empty_sync_queue = dict(queue, services=[], positions=[], package_selectors=[], position_bindings=[])
 empty_sync_planned = m.plan_runtime_packages(valid_manifest, empty_sync_queue)
 assert empty_sync_planned["state"] == "invalid-selection" and empty_sync_planned["packages"] == []
 assert m.build_download_jobs(valid_manifest, empty_sync_planned)["state"] == "invalid-plan"
@@ -276,10 +283,10 @@ bad_style = dict(queue, style="unknown")
 assert m.plan_runtime_packages(valid_manifest, bad_style)["state"] == "invalid-preferences"
 bad_resolution = dict(queue, resolution="../220x132")
 assert m.plan_runtime_packages(valid_manifest, bad_resolution)["state"] == "invalid-preferences"
-full_selected = dict(full_queue, positions=["23.5e"], selector_ids=["235E"])
+full_selected = dict(full_queue, positions=["23.5E"], package_selectors=["235E"], position_bindings=[m.task_binding_for_package_selector("235E")])
 full_selected_planned = m.plan_runtime_packages(valid_manifest, full_selected)
 assert [p["selector_id"] for p in full_selected_planned["packages"]] == ["235E"]
-provider_queue = dict(queue, positions=["0.8w"], selector_ids=["FREESAT"],
+provider_queue = dict(queue, positions=["0.8W"], package_selectors=["FREESAT"], position_bindings=[m.task_binding_for_package_selector("FREESAT")],
                       services=[{"service_reference": "1", "position": "0.8w"}])
 provider_planned = m.plan_runtime_packages(provider_manifest, provider_queue)
 assert [p["selector_id"] for p in provider_planned["packages"]] == ["FREESAT"]
