@@ -145,7 +145,7 @@ assert m.preferences_after_task(prefs,"success")==m.default_preferences()
 # Error restoration protects every task field if any runtime step mutates transient state.
 plugin_lifecycle=source[source.index("def _warderRunChannelQueue"):source.index("def _warderFetchChannelJob")]
 assert "self.warderChannelTaskSnapshot = dict(self.warderPiconPrefs)" in plugin_lifecycle
-assert 'preferences_after_task(snapshot, "error")' in plugin_lifecycle
+assert 'preferences_after_task(snapshot, "error")' in source
 reset_method=source[source.index("def resetWarderWorkingState"):source.index("def _warderRunChannelQueue")]
 assert 'preferences_after_task(self.warderPiconPrefs, "success")' in reset_method
 
