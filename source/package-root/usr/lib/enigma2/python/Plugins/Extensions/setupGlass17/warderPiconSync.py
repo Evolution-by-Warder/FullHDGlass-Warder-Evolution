@@ -17,7 +17,7 @@ ENIGMA2_DIR = "/etc/enigma2"
 # Explicit two-phase cutover switch. Publication evidence and this runtime switch
 # are reviewed separately; never infer readiness merely from network reachability.
 RUNTIME_PUBLICATION_ENABLED = True
-RUNTIME_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json"
+RUNTIME_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/manifest.json"
 _BOUQUET_RE = re.compile(r'FROM BOUQUET "([^"]+)"', re.I)
 _HEX = re.compile(r"^[0-9A-Fa-f]+$")
 
@@ -1156,7 +1156,10 @@ def resolve_service_entry(index, collisions, service_reference):
 
 
 _ALLOWED_MANIFEST_HOSTS = ("raw.githubusercontent.com",)
-_PRODUCTION_PREFIX = "/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/"
+_ALLOWED_PUBLICATION_PREFIXES = (
+    "/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/",
+    "/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/",
+)
 _FAMILIES = ("channel-transparent", "channel-black", "channel-white")
 _SHA256_RE = re.compile("^[0-9a-f]{64}$")
 _FILENAME_RE = re.compile("^[A-Za-z0-9._-]+[.](?:zip|7z)$")
@@ -1168,7 +1171,7 @@ def _trusted_https_url(url):
         return False
     return (parsed.scheme == "https" and parsed.hostname in _ALLOWED_MANIFEST_HOSTS
             and not parsed.username and not parsed.password
-            and parsed.path.startswith(_PRODUCTION_PREFIX)
+            and any(parsed.path.startswith(prefix) for prefix in _ALLOWED_PUBLICATION_PREFIXES)
             and not parsed.query and not parsed.fragment)
 
 
