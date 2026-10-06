@@ -17,6 +17,7 @@ def main():
     ap.add_argument("--expected-base-url",required=True)
     ap.add_argument("--parts",action="store_true")
     ap.add_argument("--production",action="store_true")
+    ap.add_argument("--expected-packages",type=int,default=114)
     a=ap.parse_args()
     mf=a.manifest or a.root/"manifest.json"
     errors=[]
@@ -25,7 +26,8 @@ def main():
     if m.get("schema")!=1: errors.append("manifest schema must be 1")
     if m.get("generated_from",{}).get("ref")!=a.expected_source: errors.append("source ref mismatch")
     pkgs=m.get("packages",[])
-    if len(pkgs)!=114: errors.append("expected 114 packages, got %d"%len(pkgs))
+    expected_packages=a.expected_packages
+    if len(pkgs)!=expected_packages: errors.append("expected %d packages, got %d"%(expected_packages,len(pkgs)))
     names=[p.get("filename") for p in pkgs]
     if None in names or len(set(names))!=len(names): errors.append("package filenames are missing or duplicated")
     expected_base=a.expected_base_url.rstrip("/")
@@ -83,7 +85,7 @@ def main():
             size=path.stat().st_size
             if size!=p.get("bytes"): errors.append("size mismatch for "+name)
             if digest(path)!=p.get("sha256"): errors.append("sha256 mismatch for "+name)
-    if len(pairs)!=114: errors.append("expected 114 unique selector/family/resolution tuples")
+    if len(pairs)!=expected_packages: errors.append("expected %d unique selector/family/resolution tuples"%expected_packages)
     if a.parts:
         expected_parts={u.rsplit("/",1)[-1] for p in pkgs for u in p.get("parts",[])}
         disk_parts={p.name for p in a.root.glob("*.part*")}
@@ -92,5 +94,5 @@ def main():
     if errors:
         for e in errors: print("ERROR:",e)
         sys.exit(1)
-    print("PASS persistent publication payload: 114 packages, canonical URLs, sizes and SHA256 verified")
+    print("PASS persistent publication payload: %d packages, canonical URLs, sizes and SHA256 verified"%expected_packages)
 if __name__=="__main__": main()

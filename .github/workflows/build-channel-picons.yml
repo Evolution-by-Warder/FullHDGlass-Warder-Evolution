@@ -72,9 +72,9 @@ jobs:
           ready=[x for x in p["selectors"] if x["state"]=="READY"]
           blocked=[x for x in p["selectors"] if x["state"]=="BLOCKED"]
           missing=[x for x in p["selectors"] if x["state"]=="MISSING_SOURCE"]
-          assert (len(ready),len(blocked),len(missing))==(38,2,17)
-          assert sum(len(x["eligible_families"]) for x in ready)==114
-          print("Pinned package plan: PASS (114 packages)")
+          assert (len(ready),len(blocked),len(missing))==(40,0,17)
+          assert sum(len(x["eligible_families"]) for x in ready)==120
+          print("Pinned package plan: PASS (120 packages; collision exclusions are service scoped)")
           PY
 
       - name: Materialize deterministic packages
@@ -118,7 +118,7 @@ jobs:
           evidence={
               "schema":1,
               "source_commit":"2827fed5b2e6ae4697f08ca57a8c2298079d410f",
-              "packages":114,
+              "packages":120,
               "manifest_sha256":hashlib.sha256(manifest.read_bytes()).hexdigest(),
               "sha256sums_sha256":hashlib.sha256(sums.read_bytes()).hexdigest(),
           }
@@ -132,11 +132,11 @@ jobs:
           python3 - <<'PY'
           import json
           m=json.load(open("dist/channel-picons/manifest.json"))
-          assert len(m["packages"]) + len(m.get("blocked_packages",[])) == 114
+          assert len(m["packages"]) + len(m.get("blocked_packages",[])) == 120
           assert not m.get("blocked_packages"), "blocked source packages: %r" % m["blocked_packages"]
           assert m["generated_from"]["ref"]=="2827fed5b2e6ae4697f08ca57a8c2298079d410f"
           names=[p["filename"] for p in m["packages"]]
-          assert len(names)==len(set(names))==114
+          assert len(names)==len(set(names))==120
           files=sorted(p.name for p in __import__("pathlib").Path("dist/channel-picons").glob("*.zip"))
           assert files==sorted(names)
           for p in m["packages"]:
@@ -152,7 +152,8 @@ jobs:
           python3 tools/validate-picon-publication.py \
             --root dist/channel-picons \
             --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
-            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons
+            --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/channel-picons \
+            --expected-packages 120
 
       - name: Prepare deterministic split publication candidate
         shell: bash
@@ -171,13 +172,14 @@ jobs:
             --manifest dist/channel-picons-publish/manifest.json \
             --expected-source 2827fed5b2e6ae4697f08ca57a8c2298079d410f \
             --expected-base-url https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels \
+            --expected-packages 120 \
             --parts
           python3 - <<'PY'
           import json, pathlib
           m=json.load(open("dist/channel-picons-publish/manifest.json"))
           assert m["delivery"]=="raw-github-parts"
-          assert len(m["packages"])==114
-          assert len({(p["selector_id"],p["family"],p["resolution"]) for p in m["packages"]})==114
+          assert len(m["packages"])==120
+          assert len({(p["selector_id"],p["family"],p["resolution"]) for p in m["packages"]})==120
           assert not m.get("blocked_packages"), "split publication contains blocked packages"
           parts=[u for p in m["packages"] for u in p["parts"]]
           assert parts and len(parts)==len(set(parts))
