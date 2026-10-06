@@ -235,6 +235,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Publish verified Warder TEST channel candidate [skip ci]"
+          # Source and regression commits can land while this large backend is
+          # being materialized. Rebase the candidate-only tree onto the latest
+          # work branch before pushing; never force-push over newer source.
+          git fetch origin warder-modernization-work
+          git rebase origin/warder-modernization-work
           git push origin HEAD:warder-modernization-work
 
       - name: Publish approved persistent channel-picon backend to main
