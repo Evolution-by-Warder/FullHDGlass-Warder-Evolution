@@ -47,3 +47,6 @@ Align the historical TEST196 synthetic channel package URLs with the active cand
 
 TEST201 BUILD 5
 Correct lifecycle regression scope: error restoration occurs in dwnLoop, while snapshot capture is in _warderRunChannelQueue. Assert both against their actual function source and rerun TEST201.
+
+TEST201 BUILD 6
+Replace the previously truncated color icon blob with the complete valid 189x123 PNG, keep active-descriptor defaults for internal planning helpers, and run all existing gates plus candidate HTTP/SHA/reassembly/ZIP preflight before packaging TEST201.
