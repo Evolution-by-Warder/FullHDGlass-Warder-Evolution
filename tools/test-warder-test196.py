@@ -22,6 +22,7 @@ sync_source = SYNC.read_text(encoding="utf-8")
 # A new session begins without implicit channel resolution, color, or update mode.
 prefs = m.default_preferences()
 assert prefs["positions"] == []
+assert prefs["package_selectors"] == [] and prefs["position_bindings"] == []
 assert prefs["resolution"] is None and prefs["style"] is None and prefs["update_mode"] is None
 assert prefs["destination"] == "/usr/share/enigma2/picon"
 assert not m.channel_preferences_ready(prefs)
@@ -43,18 +44,20 @@ with tempfile.TemporaryDirectory() as tmp:
     (root / "tv.userbouquet").write_text("#SERVICE 1:0:1:1328:CA2:3:EB0000:0:0:0:\n#SERVICE 1:0:1:101:1:1:A00000:0:0:0:\n")
     (root / "radio.userbouquet").write_text("#SERVICE 1:0:1:100:1:1:A00000:0:0:0:\n")
     selector_ids = ["SKYLINK", "ANTIKSAT"]
+    bindings = [m.task_binding_for_package_selector(x) for x in selector_ids]
     tv = m.build_sync_request(tmp, ["23.5e", "16.0e"], "transparent", "220x132")
     tv_radio = m.build_sync_request(tmp, ["23.5e", "16.0e"], "transparent", "220x132", include_radio=True)
     assert tv["mode"] == m.UPDATE_MODE_SYNC_TV and len(tv["services"]) == 2
     assert tv_radio["mode"] == m.UPDATE_MODE_SYNC_TV_RADIO and len(tv_radio["services"]) == 3
-    base = {"positions": selector_ids, "resolution": "220x132", "style": "transparent", "destination": "/media/hdd/picon", "prepared": True}
+    base = m.set_task_position_bindings({"resolution": "220x132", "style": "transparent", "destination": "/media/hdd/picon", "prepared": True}, bindings)
     queues = {}
     for mode, count in ((m.UPDATE_MODE_SYNC_TV, 2), (m.UPDATE_MODE_SYNC_TV_RADIO, 3),
                         (m.UPDATE_MODE_REPLACE_ALL, 0), (m.UPDATE_MODE_INCREMENTAL, 0)):
         current = dict(base, update_mode=mode)
         queue = m.build_runtime_queue(current, tmp, {"persistent": True, "manifest_url": m.RUNTIME_MANIFEST_URL})
         assert queue["state"] == m.READY and queue["service_count"] == count
-        assert set(queue["positions"]) == {"23.5e", "16.0e"}
+        assert set(queue["positions"]) == {"23.5E", "16.0E"}
+        assert set(queue["package_selectors"]) == {"SKYLINK", "ANTIKSAT"}
         queues[mode] = queue
     assert m.wanted_picon_names(queues[m.UPDATE_MODE_SYNC_TV]) == {
         "1_0_1_1328_CA2_3_EB0000_0_0_0.png", "1_0_1_101_1_1_A00000_0_0_0.png"}
