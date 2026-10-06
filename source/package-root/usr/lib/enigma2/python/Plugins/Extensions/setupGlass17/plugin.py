@@ -9623,18 +9623,40 @@ class downloadMenu(Screen):
 		destDir = what
 		if f:
 			for x in f:
-				if not self.enaSelectsat or ".png" in x:
-					source = os.path.join(self.zzz, what, x)
-					destination = os.path.join(config.plugins.setupGlass17.par39.value, destDir, x)
-					try:
-						shutil.copy2(source, destination)
-					except OSError:
-						pass
-					total += 1
-					if fileExists("%s/%s/%s" % (config.plugins.setupGlass17.par39.value, destDir, x)):
-						numPict += 1
+				if not str(x).lower().endswith(".png"):
+					continue
+				source = os.path.join(self.zzz, what, x)
+				if not os.path.isfile(source) or os.path.islink(source):
+					continue
+				destination = os.path.join(config.plugins.setupGlass17.par39.value, destDir, x)
+				total += 1
+				try:
+					if os.path.islink(destination):
+						raise OSError("destination is a symbolic link")
+					shutil.copy2(source, destination)
+				except OSError:
+					continue
+				if (os.path.isfile(destination) and not os.path.islink(destination)
+						and self._warderFilesMatch(source, destination)):
+					numPict += 1
 		self.rmTmp2(self.zzz, what)
 		return numPict, total
+
+	def _warderFilesMatch(self, source, destination):
+		# Compare the bytes copied during this task; a stale same-name file cannot
+		# turn a failed copy into a reported success.
+		try:
+			return (os.path.getsize(source) == os.path.getsize(destination)
+				and self._warderSha256(source) == self._warderSha256(destination))
+		except OSError:
+			return False
+
+	def _warderSha256(self, path):
+		digest = hashlib.sha256()
+		with open(path, "rb") as stream:
+			for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+				digest.update(chunk)
+		return digest.hexdigest()
 
 	def chck(self, s):
 		try:
@@ -10164,7 +10186,7 @@ class historyScreen(Screen):
 		self.res = self.ver == "" or self.ver == _("Result")
 		self.list = []
 		self['Changelog_info'] = thumbList(self.list)	
-		self["key_red"] = Label(_("Cancel"))
+		self["key_red"] = Label(_("Close") if self.res else _("Cancel"))
 		self["key_green"] = Label(_("Update"))
 		self["line_red"] = Label("")
 		self["line_green"] = Label("")
@@ -10227,7 +10249,7 @@ class historyScreen(Screen):
 						p = "white"
 						if _("SUCCESSFUL") in x:
 							p = "green"	
-						elif _("ERROR") in x:
+						elif _("ERROR") in x or _("PARTIAL SUCCESS") in x:
 							p = "red"
 						item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 7), size=(22, 23), png=LoadPixmap("%sicons/%s.png" % (SKINPATH,p))))
 					else:

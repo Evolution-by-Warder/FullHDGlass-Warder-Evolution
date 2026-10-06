@@ -1063,9 +1063,18 @@ def package_result_summary(package_results, translate=None):
         failures = max(0, int(row.get("failures", 0)))
         total_updated += updated
         total_failures += failures
-        lines.append(translate("%s / %s: %d picons updated; %d failures") % (position, package_name or translate("Package"), updated, failures))
-    lines.append(translate("Total: %d picons updated") % total_updated)
-    lines.append(translate("Failures: %d") % total_failures)
+        row_status = ("ERROR" if failures and not updated else
+                      "PARTIAL SUCCESS" if failures else "SUCCESSFUL")
+        lines.append(translate(row_status) + ": " +
+                     (translate("%s / %s: %d picons updated; %d failures") %
+                      (position, package_name or translate("Package"), updated, failures)))
+    total_status = ("ERROR" if total_failures and not total_updated else
+                    "PARTIAL SUCCESS" if total_failures else "SUCCESSFUL")
+    lines.append(translate(total_status) + ": " +
+                 (translate("Total: %d picons updated") % total_updated))
+    failures_status = "ERROR" if total_failures else "SUCCESSFUL"
+    lines.append(translate(failures_status) + ": " +
+                 (translate("Failures: %d") % total_failures))
     if total_failures and total_updated:
         status = translate("PARTIAL SUCCESS")
     elif total_failures:
