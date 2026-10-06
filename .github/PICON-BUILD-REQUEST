@@ -1,5 +1,5 @@
 Pinned Warder Master source: 2827fed5b2e6ae4697f08ca57a8c2298079d410f
-Build 114 audited transparent/black/white channel-picon packages.
+Build 120 packages across all matched selectors; exclude only audited ambiguous refs from generic 0.8W/16.0E packages.
 Rebuild after persistent-publication integrity gates; runtime cut-over remains locked.
 Build deterministic split publication candidate using existing Warder raw-GitHub parts model.
 Rebuild with per-part SHA256/size publication integrity and SHA256SUMS.
@@ -57,7 +57,7 @@ RUNTIME_CUTOVER_FULL_VALIDATION_TARGETS:
 - validate schema, pinned Warder Master source ref 2827fed5b2e6ae4697f08ca57a8c2298079d410f, 114 packages, 124 canonical parts, three channel families, 20 MiB maximum part size
 - validate trusted HTTPS host/path, canonical part00..N ordering, per-part bytes and SHA256, package byte sum, full reassembly bytes and SHA256
 - validate selective sync never falls through to FULL, FULL semantics remain explicit, empty selective stays empty, position filtering and unknown orbital exclusion remain fail-closed
-- validate collision selectors 08W and 160E remain blocked; never guess through a collision
+- validate generic 16.0E excludes exactly 2 audited ambiguous service refs and generic 0.8W excludes exactly 3; all other services remain included, identical payloads deduplicate once, and provider packages remain isolated
 - validate unsupported style/resolution, zero-package and malformed manifest cases fail closed
 - validate ZIP traversal/path, symlink, duplicate, extension, size, compression and PNG-signature guards
 - validate destination protection and revalidation before each install; atomic os.replace install and tempfile cleanup
@@ -103,3 +103,5 @@ Validate requested legacy ID ambiguity guard
 Validate migration provenance and input cardinality batch
 Validate runtime URL identity and PackageAction tuple batch
 Preflight write test: 2026-10-05T11:17Z (no publication approval)
+
+TEST197 follow-up build: service-scoped generic orbital collision exclusions with exact per-reference provenance. Preserve production-main 114-package runtime and no-write policy; upload only the branch candidate artifact.
