@@ -28,3 +28,6 @@ Candidate backend verified: 120 generic packages / 132 persistent parts. Regress
 
 TEST200 BUILD 2
 Fix the candidate URL fixture variable reported by the first static preflight; rerun all gates before packaging.
+
+TEST200 BUILD 3
+Align the 0.8W regression with the planner API: canonical identity is asserted on the runtime queue, while the selected manifest package retains its explicit orbital_position. Rerun the complete gate.
