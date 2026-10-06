@@ -8,3 +8,5 @@ TEST198 BUILD 4
 Keep receiver-wide unmatched-service diagnostics in the sync layer only; validate per-package user result without receiver-wide missing counts.
 TEST198 BUILD 5
 Remove stale user-facing receiver-wide failure-string expectations; verify package result summary remains the only normal result surface.
+TEST198 BUILD 6
+Retarget regression coverage from removed receiver-wide missing_files aggregation to package_result_summary and partial-success state.

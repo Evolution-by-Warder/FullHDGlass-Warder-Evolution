@@ -161,11 +161,10 @@ assert '("done", "error", "locked")' in plugin_source
 error_branch = plugin_source[plugin_source.index("except Exception as err:", plugin_source.index("def dwnLoop")):plugin_source.index("\n\t\t\t\telse:", plugin_source.index("except Exception as err:", plugin_source.index("def dwnLoop")))]
 assert 'self.warderPiconPrefs["prepared"] = False' not in error_branch
 assert 'self.menuListAll[row][4] = "x"' not in error_branch
-missing_start = plugin_source.index("if missing_files:", plugin_source.index("def _warderRunChannelQueue"))
-missing_end = plugin_source.index('if queue.get("mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL:', missing_start)
-missing_branch = plugin_source[missing_start:missing_end]
-assert 'self.warderChannelState = "error"' in missing_branch
-assert 'self.warderPiconPrefs["prepared"] = False' not in missing_branch
+channel_result_block = plugin_source[plugin_source.index("def _warderRunChannelQueue"):plugin_source.index("def dwnLoop")]
+assert "package_result_summary" in channel_result_block
+assert "outside_selected_packages" not in channel_result_block
+assert "PARTIAL SUCCESS" in plugin_source
 assert 'self.warderPiconPrefs["prepared"] = False' in plugin_source
 assert 'self.warderChannelState = "done"' in plugin_source
 assert 'no selected TV or radio bouquet services found for Warder selective sync' in plugin_source
