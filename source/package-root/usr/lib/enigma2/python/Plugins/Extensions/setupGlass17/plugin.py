@@ -8459,7 +8459,7 @@ class downloadMenu(Screen):
 		if not self.ena or self.warderChannelState == "running":
 			return
 		prepared = bool(self.warderPiconPrefs.get("prepared"))
-		if prepared and not warderPiconSync.valid_position_selection(self.warderPiconPrefs.get("positions")):
+		if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs):
 			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
 			return
 		if prepared and not warderPiconSync.channel_preferences_ready(self.warderPiconPrefs):
@@ -8510,7 +8510,7 @@ class downloadMenu(Screen):
 					self.warderChannelQueue = None
 				else:
 					archives = warderPiconSync.plan_legacy_channel_archives(
-						self.warderPiconPrefs.get("positions"), SATLIST, resolution, style)
+						self.warderPiconPrefs.get("package_selectors"), SATLIST, resolution, style)
 					for selector_id, archive_id in archives:
 						if not self._legacyPiconArchiveUrl(archive_id):
 							raise ValueError(_("Preserved legacy archive is not available in Warder migration catalogue") + ": " + archive_id)
@@ -8522,7 +8522,7 @@ class downloadMenu(Screen):
 					self.warderLegacyPiconDestination = destination
 					if self.warderPiconPrefs.get("update_mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO):
 						request = warderPiconSync.build_sync_request(
-							selected_positions=[warderPiconSync.canonical_position_for_selector(x) for x in self.warderPiconPrefs.get("positions", [])],
+							selected_positions=list(self.warderPiconPrefs.get("positions", [])),
 							style=style, resolution=resolution,
 							include_radio=(self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO))
 						self.warderLegacyChannelWanted = warderPiconSync.wanted_picon_names(request)
@@ -8553,7 +8553,7 @@ class downloadMenu(Screen):
 
 	def _warderRefreshRowText(self):
 		prefs = self.warderPiconPrefs
-		positions = list(prefs.get("positions", []) or [])
+		positions = warderPiconSync.task_positions_for_display(prefs)
 		position_text = _("No position selected")
 		if positions:
 			position_text = ", ".join(positions[:4])
@@ -8687,7 +8687,7 @@ class downloadMenu(Screen):
 
 	def openWarderPiconChoice(self, row):
 		if row == "wp-pos":
-			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, self.warderPiconPrefs.get("positions", []))
+			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, self.warderPiconPrefs.get("position_bindings", []))
 			return
 		choices = {}
 		resolution = self.warderPiconPrefs.get("resolution", "220x132")
@@ -8741,10 +8741,11 @@ class downloadMenu(Screen):
 		if answer is None or not isinstance(answer, (list, tuple)):
 			return
 		self.warderPositionSelectionAttempted = True
-		positions = [str(x) for x in answer if x]
-		if not warderPiconSync.valid_position_selection(positions):
-			positions = []
-		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "positions", positions)
+		bindings = warderPiconSync.normalize_position_bindings(answer)
+		if len(bindings) != len(answer):
+			bindings = []
+		self.warderPiconPrefs = warderPiconSync.set_task_position_bindings(self.warderPiconPrefs, bindings)
+		positions = list(self.warderPiconPrefs.get("positions", []))
 		if positions:
 			preview = ", ".join(positions[:4])
 			if len(positions) > 4:
@@ -8975,7 +8976,7 @@ class downloadMenu(Screen):
 			self.warderChannelInstalled = set()
 			self.warderChannelAvailable = set()
 			self.warderChannelPackageResults = [
-				{"selector_id": job.get("selector_id"), "orbital_position": job.get("orbital_position"),
+				{"package_selector": job.get("selector_id"), "orbital_position": job.get("orbital_position"),
 				 "family": job.get("family"), "updated": 0, "failures": 0}
 				for job in self.warderChannelJobs
 			]
@@ -9011,7 +9012,7 @@ class downloadMenu(Screen):
 		job = self.warderChannelJobs.pop(0)
 		self.warderChannelCurrentJob = job
 		result_row = next((item for item in self.warderChannelPackageResults
-			if item.get("selector_id") == job.get("selector_id") and item.get("family") == job.get("family")), None)
+			if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
 		archive = None
 		try:
 			required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
@@ -9751,7 +9752,7 @@ class warderPositionSelectorScr(Screen):
 
 	def __init__(self, session, selected=None):
 		Screen.__init__(self, session)
-		self.selected = set(selected or [])
+		self.selected = set(warderPiconSync.task_package_selectors_from_bindings(selected))
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Save"))
@@ -9769,13 +9770,13 @@ class warderPositionSelectorScr(Screen):
 			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
 			# Attach immutable selector identity to the item. The displayed label and
 			# SATLIST icon value are presentation data only.
-			token = warderPiconSync.selector_id_for_display_label(label)
-			if not token:
+			binding = warderPiconSync.task_binding_for_display_label(label)
+			if not binding:
 				continue
 			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
 			if not os.path.isfile(p):
 				p = SKINPATH + "icons/75.png"
-			self.list.addSelection(label, token, x, token in self.selected, p)
+			self.list.addSelection(label, binding, x, binding["package_selector"] in self.selected, p)
 
 	def finish(self):
 		ret = [x[1] for x in self.list.getSelectionsList()]
