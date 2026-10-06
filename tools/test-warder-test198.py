@@ -141,6 +141,23 @@ assert m.package_result_summary([{"selector_id":"160E","orbital_position":"16.0e
 assert m.preferences_after_task(prefs,"cancel")==prefs
 assert m.preferences_after_task(prefs,"error")==prefs
 assert m.preferences_after_task(prefs,"success")==m.default_preferences()
+
+# Error restoration protects every task field if any runtime step mutates transient state.
+plugin_lifecycle=source[source.index("def _warderRunChannelQueue"):source.index("def _warderFetchChannelJob")]
+assert "self.warderChannelTaskSnapshot = dict(self.warderPiconPrefs)" in plugin_lifecycle
+assert 'preferences_after_task(snapshot, "error")' in plugin_lifecycle
+reset_method=source[source.index("def resetWarderWorkingState"):source.index("def _warderRunChannelQueue")]
+assert 'preferences_after_task(self.warderPiconPrefs, "success")' in reset_method
+
+# Corrected resolution text remains gettext-driven in all 19 supported catalogs.
+catalogs=sorted((ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale").glob("*/LC_MESSAGES/setupGlass17.po"))
+assert len(catalogs)==19,len(catalogs)
+for catalog in catalogs:
+ text=catalog.read_text(encoding="utf-8")
+ assert 'msgid "220 x 132 - Picons"' in text,catalog
+ assert 'msgid "220 x 132 - XPicons"' not in text,catalog
+sk_catalog=(ROOT/"source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale/sk/LC_MESSAGES/setupGlass17.po").read_text(encoding="utf-8")
+assert 'msgstr "220 × 132 – Picony"' in sk_catalog
 print("TEST199 canonical positions, separate package selectors, no fallback, result identity and lifecycle: PASS")
 
 
