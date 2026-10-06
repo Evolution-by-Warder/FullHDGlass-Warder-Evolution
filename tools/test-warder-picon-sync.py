@@ -235,7 +235,7 @@ valid_manifest = {
     "packages": [{
         "selector_id": "235E", "family": "channel-transparent", "warder_key": "23.5e",
         "filename": "235E-transparent.zip", "resolution": "220x132", "bytes": 10, "sha256": "a" * 64,
-        "parts": ["https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/235E-transparent.zip.part00"],
+        "parts": ["https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/235E-transparent.zip.part00"],
     }],
     "parts": [{"filename": "235E-transparent.zip.part00", "bytes": 10, "sha256": "b" * 64}],
 }
@@ -249,7 +249,7 @@ mismatched_manifest["parts"] = [dict(valid_manifest["parts"][0], bytes=9)]
 assert "package part size mismatch" in m.validate_publication_manifest(mismatched_manifest)
 wrong_part_name_manifest = dict(valid_manifest)
 wrong_part_name_manifest["packages"] = [dict(valid_manifest["packages"][0], parts=[
-    "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/235E-transparent.zip.part01"
+    "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/235E-transparent.zip.part01"
 ])]
 wrong_part_name_manifest["parts"] = [dict(valid_manifest["parts"][0], filename="235E-transparent.zip.part01")]
 assert "non-canonical package part" in m.validate_publication_manifest(wrong_part_name_manifest)
@@ -318,7 +318,11 @@ coverage_missing = m.classify_requested_picons(
 assert coverage_missing["missing"] == {"b.png"}
 full_coverage = m.classify_requested_picons(None, {"a.png", "b.png"}, {"a.png"})
 assert full_coverage["missing"] == {"b.png"} and not full_coverage["outside_selected_packages"]
-pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json", valid_manifest)
+production_manifest = dict(valid_manifest)
+production_manifest["packages"] = [dict(valid_manifest["packages"][0], parts=[
+    "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/235E-transparent.zip.part00"
+])]
+pub = m.publication_from_manifest("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json", production_manifest)
 assert pub["persistent"] is True and not pub["errors"]
 bad = dict(valid_manifest)
 bad["packages"] = [dict(valid_manifest["packages"][0])]
