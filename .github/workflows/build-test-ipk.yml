@@ -67,6 +67,7 @@ jobs:
           python3 tools/test-version-order.py
           python3 tools/test-r12-regressions.py
           python3 tools/test-warder-picon-sync.py
+          python3 tools/test-auxiliary-hybrid-runtime.py
           python3 tools/test-warder-test196.py
           python3 tools/test-warder-test198.py
           python3 tools/test-warder-test198.py --candidate-network

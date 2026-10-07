@@ -37,6 +37,10 @@ RUNTIME_MANIFEST_URL = PUBLICATION_SOURCES[ACTIVE_PUBLICATION_SOURCE]["manifest_
 # The FullHDGlass catalog can describe these assets, but it cannot broaden the
 # set of URLs accepted by this descriptor.
 AUXILIARY_CANDIDATE_COMMIT = "db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819"
+# The immutable candidate manifest records archive locator URLs at the commit
+# where those archives were first published. Runtime downloads remain pinned
+# independently to AUXILIARY_CANDIDATE_COMMIT below.
+AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF = "7387e9e7310e9cd6eca2fc5abf56451c2e1b73a9"
 AUXILIARY_CANDIDATE_MANIFEST_URL = (
     "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/"
     + AUXILIARY_CANDIDATE_COMMIT
@@ -47,6 +51,8 @@ AUXILIARY_CANDIDATE_ARCHIVE_ROOT = (
     + AUXILIARY_CANDIDATE_COMMIT
     + "/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/"
 )
+AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_ROOT = AUXILIARY_CANDIDATE_ARCHIVE_ROOT.replace(
+    AUXILIARY_CANDIDATE_COMMIT, AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF)
 AUXILIARY_PUBLICATION_SOURCES = {
     "fullhd-production": {
         "expected_origin": "raw.githubusercontent.com",
@@ -64,6 +70,7 @@ AUXILIARY_PUBLICATION_SOURCES = {
         "ref": AUXILIARY_CANDIDATE_COMMIT,
         "pinned_commit": AUXILIARY_CANDIDATE_COMMIT,
         "manifest_url": AUXILIARY_CANDIDATE_MANIFEST_URL,
+        "manifest_archive_root": AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_ROOT,
         "source_root": AUXILIARY_CANDIDATE_ARCHIVE_ROOT.rsplit("archives/", 1)[0],
         "package_root": AUXILIARY_CANDIDATE_ARCHIVE_ROOT,
         "redirect_root": AUXILIARY_CANDIDATE_ARCHIVE_ROOT,
@@ -470,15 +477,16 @@ def validate_auxiliary_candidate_manifest(document, manifest_url=None):
             errors.append("auxiliary candidate asset missing: " + asset_id)
             continue
         filename, size, sha, root, count = expected
-        url = descriptor["package_root"] + filename
+        # candidate-downloads.json has historical archive locator URLs. They
+        # are metadata only; runtime fetches are separately pinned to db5eec9.
+        manifest_asset_url = descriptor["manifest_archive_root"] + filename
         classification = "LEGACY_FALLBACK_ONLY" if asset_id.endswith("legacy-t") else "WARDER_SAFE_APPROVED"
         if (item.get("filename") != filename or item.get("archive") not in (None, filename)
                 or item.get("size") != size or item.get("size_bytes") not in (None, size)
                 or item.get("sha256") != sha or item.get("root") != root
                 or item.get("classification") != classification
                 or item.get("destination") not in (None, root)
-                or item.get("url") != url
-                or not trusted_auxiliary_url(item.get("url"), "piconhub-aux-candidate")):
+                or item.get("url") != manifest_asset_url):
             errors.append("auxiliary candidate pin mismatch: " + asset_id)
     return errors
 
@@ -555,7 +563,7 @@ def validate_auxiliary_hybrid_catalog(document, candidate_manifest=None):
                 # FullHD catalog adds source metadata; compare the pinned payload fields only.
                 local = assets.get(asset_id, {})
                 remote = candidate_assets.get(asset_id, {})
-                if any(local.get(key) != remote.get(key) for key in ("filename", "size", "sha256", "root", "url")):
+                if any(local.get(key) != remote.get(key) for key in ("filename", "size", "sha256", "root")):
                     errors.append("catalog/candidate manifest disagreement: " + asset_id)
     return errors
 

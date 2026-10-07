@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused TEST202 hybrid auxiliary publication/runtime regressions."""
+"""Focused hybrid auxiliary publication/runtime regressions."""
 import hashlib
 import importlib.util
 import json
@@ -15,18 +15,17 @@ PLUGIN_DIR = ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensio
 SYNC_PATH = PLUGIN_DIR / "warderPiconSync.py"
 PLUGIN_PATH = PLUGIN_DIR / "plugin.py"
 CATALOG_PATH = ROOT / "assets/warder/downloads.json"
+CANDIDATE_FIXTURE = ROOT / "tools/fixtures/piconhub-candidate-downloads-db5eec9f1.json"
 
 spec = importlib.util.spec_from_file_location("warder_hybrid_sync", str(SYNC_PATH))
 sync = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sync)
 catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
-# The committed FullHD catalog carries the same pinned payload fields, allowing
-# the regression to run in a clean checkout without an external /tmp repository.
-candidate = {"assets": {
-    asset_id: {key: catalog["assets"][asset_id][key]
-               for key in ("filename", "size", "sha256", "root", "url", "classification")}
-    for asset_id in sync.AUXILIARY_CANDIDATE_ASSETS
-}}
+# This is the byte-for-byte candidate-downloads.json fetched from the exact
+# PiconHub manifest commit in the runtime descriptor, not a synthesized fixture.
+candidate_bytes = CANDIDATE_FIXTURE.read_bytes()
+assert hashlib.sha256(candidate_bytes).hexdigest() == "ab32661c0ce0b73b19506d1bd4e8befa0dd47eaff267945f4887503514ee8d1d"
+candidate = json.loads(candidate_bytes.decode("utf-8"))
 
 assert sync.validate_auxiliary_candidate_manifest(candidate, sync.AUXILIARY_CANDIDATE_MANIFEST_URL) == []
 assert sync.validate_auxiliary_hybrid_catalog(catalog, candidate) == []
@@ -44,10 +43,16 @@ for kind, domain in (("provider", "piconProv"), ("satellite", "piconSat")):
         assert [job["destination"] for job in jobs] == [domain, domain + "_220x132"]
         assert jobs[0]["root"] == domain and jobs[1]["root"] == domain + "_220x132"
 
-# Exact URL/source isolation: candidate archive URLs cannot pass as FullHD assets.
-candidate_url = candidate["assets"]["piconProv-warder-safe-b"]["url"]
+# The manifest is pinned to db5eec9; its archive URL fields record the exact
+# historical publication ref 7387e9. Runtime catalog URLs are independently
+# constructed and allowlisted at db5eec9, so the representations stay separate.
+candidate_metadata_url = candidate["assets"]["piconProv-warder-safe-b"]["url"]
+candidate_url = catalog["assets"]["piconProv-warder-safe-b"]["url"]
 main_url = catalog["assets"]["piconProv-b"]["url"]
 assert sync.trusted_auxiliary_url(candidate_url, "piconhub-aux-candidate")
+assert sync.AUXILIARY_CANDIDATE_COMMIT in candidate_url
+assert sync.AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF in candidate_metadata_url
+assert not sync.trusted_auxiliary_url(candidate_metadata_url, "piconhub-aux-candidate")
 assert not sync.trusted_auxiliary_url(main_url, "piconhub-aux-candidate")
 assert sync.trusted_auxiliary_url(main_url, "fullhd-production")
 assert not sync.trusted_auxiliary_url(candidate_url, "fullhd-production")
@@ -56,9 +61,30 @@ assert not sync.trusted_auxiliary_url(wrong_ref, "piconhub-aux-candidate")
 assert not sync.trusted_auxiliary_url(candidate_url + "/../other.zip", "piconhub-aux-candidate")
 assert not sync.trusted_auxiliary_url(candidate_url + "?download=1", "piconhub-aux-candidate")
 
-# The immutable descriptor URL/ref pins the candidate manifest; mutable JSON cannot switch it.
-assert sync.validate_auxiliary_candidate_manifest(candidate, sync.AUXILIARY_CANDIDATE_MANIFEST_URL) == []
-assert sync.validate_auxiliary_candidate_manifest(candidate, sync.AUXILIARY_CANDIDATE_MANIFEST_URL.replace(sync.AUXILIARY_CANDIDATE_COMMIT, "0" * 40))
+# Negative publication-source cases: wrong commit, repo, path, branch, and
+# cross-source manifest URLs are rejected; the real pinned manifest passes above.
+bad_manifest_urls = (
+    sync.AUXILIARY_CANDIDATE_MANIFEST_URL.replace(sync.AUXILIARY_CANDIDATE_COMMIT, "0" * 40),
+    sync.AUXILIARY_CANDIDATE_MANIFEST_URL.replace("PiconHub-Warder-Evolution", "Unrelated-Warder-Evolution"),
+    sync.AUXILIARY_CANDIDATE_MANIFEST_URL.replace("auxiliary-hybrid-runtime-candidate-2026-10-07", "other-candidate"),
+    sync.AUXILIARY_CANDIDATE_MANIFEST_URL.replace(sync.AUXILIARY_CANDIDATE_COMMIT, "warder-master-production"),
+    main_url,
+)
+for bad_manifest_url in bad_manifest_urls:
+    assert sync.validate_auxiliary_candidate_manifest(candidate, bad_manifest_url), bad_manifest_url
+bad_url_replacements = (
+    (sync.AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF, "0" * 40),
+    (sync.AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF, sync.AUXILIARY_CANDIDATE_COMMIT),
+    ("PiconHub-Warder-Evolution", "Unrelated-Warder-Evolution"),
+    ("auxiliary-hybrid-runtime-candidate-2026-10-07", "other-candidate"),
+    (sync.AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF, "warder-master-production"),
+    (candidate_metadata_url, main_url),
+)
+for old, new in bad_url_replacements:
+    bad_candidate = json.loads(json.dumps(candidate))
+    current = bad_candidate["assets"]["piconProv-warder-safe-b"]["url"]
+    bad_candidate["assets"]["piconProv-warder-safe-b"]["url"] = current.replace(old, new)
+    assert sync.validate_auxiliary_candidate_manifest(bad_candidate, sync.AUXILIARY_CANDIDATE_MANIFEST_URL), (old, new)
 
 # Wrong per-asset source, pin, size, root or pairing fails before job execution.
 bad_catalog = json.loads(json.dumps(catalog))
