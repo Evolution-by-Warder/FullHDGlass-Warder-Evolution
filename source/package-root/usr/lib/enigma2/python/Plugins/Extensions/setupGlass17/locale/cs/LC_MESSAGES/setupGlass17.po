@@ -278,7 +278,7 @@ msgid "Event now/next and side infobar"
 msgstr "EPG info současné/následující a boční infobar"
 
 msgid "Black"
-msgstr "Černá"
+msgstr "Černé"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "s PIG(+jméno kanálu,číslo)"
@@ -347,7 +347,7 @@ msgid "TMDb"
 msgstr "TMDb"
 
 msgid "Transparent"
-msgstr "Transparentní"
+msgstr "Průhledné"
 
 msgid "Full HD GLass17 spinner"
 msgstr "Full HD Glass17 spinner"
@@ -594,7 +594,7 @@ msgid "WEATHER"
 msgstr "POČASÍ"
 
 msgid "PATHS"
-msgstr "CESTY"
+msgstr "Cesty ke konfiguračním souborům skinu"
 
 msgid "VOLUME"
 msgstr "HLASITOST"
@@ -1490,7 +1490,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Picony"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1592,13 +1592,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Loga poskytovatelů"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Loga satelitů"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1619,3 +1619,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Zavřít"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Záloha %d/%d; bezpečná vrstva %d/%d; chyby %d"

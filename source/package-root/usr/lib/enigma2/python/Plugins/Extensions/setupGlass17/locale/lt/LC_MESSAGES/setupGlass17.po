@@ -28,7 +28,7 @@ msgid "AutoColors"
 msgstr "automatinė"
 
 msgid "White"
-msgstr "balta"
+msgstr "Balti"
 
 msgid "Green"
 msgstr "žalia"
@@ -280,7 +280,7 @@ msgid "Event now/next and side infobar"
 msgstr "dabar/kitas ir šon. infojuosta"
 
 msgid "Black"
-msgstr "juoda"
+msgstr "Juodi"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "su PiG (+kan.pavad. ir Nr.)"
@@ -349,7 +349,7 @@ msgid "TMDb"
 msgstr "TMDb"
 
 msgid "Transparent"
-msgstr "Skaidrus"
+msgstr "Skaidrūs"
 
 msgid "Full HD GLass17 spinner"
 msgstr "FHD Glass17 suktukas"
@@ -596,7 +596,7 @@ msgid "WEATHER"
 msgstr "ORAI"
 
 msgid "PATHS"
-msgstr "KELIAI"
+msgstr "Temos konfigūracijos failų keliai"
 
 msgid "VOLUME"
 msgstr "GARSAS"
@@ -1495,7 +1495,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Piktogramos"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1597,13 +1597,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Teikėjų logotipai"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Palydovų logotipai"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1624,3 +1624,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Uždaryti"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Atsarginė kopija %d/%d; saugus sluoksnis %d/%d; klaidos %d"

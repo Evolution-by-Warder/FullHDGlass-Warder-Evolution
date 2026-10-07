@@ -347,7 +347,7 @@ msgid "TMDb"
 msgstr ""
 
 msgid "Transparent"
-msgstr ""
+msgstr "Átlátszó"
 
 msgid "Full HD GLass17 spinner"
 msgstr ""
@@ -594,7 +594,7 @@ msgid "WEATHER"
 msgstr "IDŐJÁRÁS"
 
 msgid "PATHS"
-msgstr ""
+msgstr "A skin konfigurációs fájljainak útvonalai"
 
 msgid "VOLUME"
 msgstr ""
@@ -1492,7 +1492,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Piconok"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1594,13 +1594,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Szolgáltatói logók"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Műholdlogók"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1621,3 +1621,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Bezárás"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Tartalék %d/%d; biztonságos réteg %d/%d; hibák %d"

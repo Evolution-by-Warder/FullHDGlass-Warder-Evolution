@@ -26,7 +26,7 @@ msgid "AutoColors"
 msgstr "Auto Kleuren"
 
 msgid "White"
-msgstr "Wit"
+msgstr "Witte"
 
 msgid "Green"
 msgstr "Groen"
@@ -278,7 +278,7 @@ msgid "Event now/next and side infobar"
 msgstr "Event nu/volgende en infobalk zijkant"
 
 msgid "Black"
-msgstr "Zwart"
+msgstr "Zwarte"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "met PIG(+zendernaam,nummer)"
@@ -347,7 +347,7 @@ msgid "TMDb"
 msgstr ""
 
 msgid "Transparent"
-msgstr ""
+msgstr "Transparant"
 
 msgid "Full HD GLass17 spinner"
 msgstr "Full HD GLass17 spinner"
@@ -594,7 +594,7 @@ msgid "WEATHER"
 msgstr "WEER"
 
 msgid "PATHS"
-msgstr "PADEN"
+msgstr "Paden naar skin-configuratiebestanden"
 
 msgid "VOLUME"
 msgstr "GELUID"
@@ -1491,7 +1491,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Picons"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1593,13 +1593,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Providerlogo’s"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Satellietlogo’s"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1620,3 +1620,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Sluiten"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Fallback %d/%d; veilige Warder-laag %d/%d; fouten %d"

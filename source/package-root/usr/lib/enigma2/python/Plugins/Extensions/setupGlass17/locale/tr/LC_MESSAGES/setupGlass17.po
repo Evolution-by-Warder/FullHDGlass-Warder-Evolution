@@ -279,7 +279,7 @@ msgid "Event now/next and side infobar"
 msgstr "Event now/next and side infobar"
 
 msgid "Black"
-msgstr "siyah"
+msgstr "Siyah"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "with PIG(+ch.name,number)"
@@ -348,7 +348,7 @@ msgid "TMDb"
 msgstr ""
 
 msgid "Transparent"
-msgstr ""
+msgstr "Şeffaf"
 
 msgid "Full HD GLass17 spinner"
 msgstr ""
@@ -596,7 +596,7 @@ msgid "WEATHER"
 msgstr "HAVA"
 
 msgid "PATHS"
-msgstr ""
+msgstr "Skin yapılandırma dosyalarının yolları"
 
 msgid "VOLUME"
 msgstr ""
@@ -1495,7 +1495,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Piconlar"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1597,13 +1597,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Sağlayıcı logoları"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Uydu logoları"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1624,3 +1624,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Kapat"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Yedek %d/%d; güvenli katman %d/%d; hata %d"

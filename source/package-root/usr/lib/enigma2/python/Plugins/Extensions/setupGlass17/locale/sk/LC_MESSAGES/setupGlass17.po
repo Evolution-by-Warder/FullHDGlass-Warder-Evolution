@@ -278,7 +278,7 @@ msgid "Event now/next and side infobar"
 msgstr "Program teraz/ďalší a bočná infolišta"
 
 msgid "Black"
-msgstr "čierne"
+msgstr "Čierne"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "s PIG(+názov kanálu,číslo)"
@@ -347,7 +347,7 @@ msgid "TMDb"
 msgstr "TMDb"
 
 msgid "Transparent"
-msgstr "Transparentný"
+msgstr "Transparentné"
 
 msgid "Full HD GLass17 spinner"
 msgstr "Full HD Glass17 spinner"
@@ -594,7 +594,7 @@ msgid "WEATHER"
 msgstr "POČASIE"
 
 msgid "PATHS"
-msgstr "CESTY"
+msgstr "CESTY KU KONFIGURAČNÝM SÚBOROM SKINU"
 
 msgid "VOLUME"
 msgstr "HLASITOSŤ"
@@ -1621,3 +1621,7 @@ msgstr "ČIASTOČNÝ ÚSPECH"
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Zatvoriť"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Záloha %d/%d; bezpečná vrstva %d/%d; chyby %d"

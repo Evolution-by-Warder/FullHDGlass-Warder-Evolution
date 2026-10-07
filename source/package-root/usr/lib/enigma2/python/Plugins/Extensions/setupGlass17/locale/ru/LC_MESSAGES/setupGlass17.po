@@ -28,7 +28,7 @@ msgid "AutoColors"
 msgstr "цвет авто"
 
 msgid "White"
-msgstr "белый"
+msgstr "Белые"
 
 msgid "Green"
 msgstr "зеленый"
@@ -280,7 +280,7 @@ msgid "Event now/next and side infobar"
 msgstr "Текущ. событие, след. и боковой инфобар"
 
 msgid "Black"
-msgstr "черный"
+msgstr "Чёрные"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "с PIG(+назв.,номер канала)"
@@ -349,7 +349,7 @@ msgid "TMDb"
 msgstr "TMDb"
 
 msgid "Transparent"
-msgstr "Прозрачный"
+msgstr "Прозрачные"
 
 msgid "Full HD GLass17 spinner"
 msgstr "Спиннер FHD Glass17"
@@ -600,7 +600,7 @@ msgid "WEATHER"
 msgstr "ПОГОДА"
 
 msgid "PATHS"
-msgstr "ПУТИ"
+msgstr "Пути к файлам конфигурации скина"
 
 msgid "VOLUME"
 msgstr "ЗВУК"
@@ -1501,7 +1501,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Пиконы"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1603,13 +1603,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Логотипы провайдеров"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Логотипы спутников"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1630,3 +1630,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Закрыть"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Резерв %d/%d; безопасный слой %d/%d; ошибки %d"

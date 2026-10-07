@@ -8,6 +8,9 @@ from __future__ import absolute_import
 
 import os
 import re
+import hashlib
+import stat
+import zipfile
 try:
     from urllib.parse import urlparse
 except ImportError:
@@ -29,6 +32,73 @@ PUBLICATION_SOURCES = {
 }
 ACTIVE_PUBLICATION_SOURCE = "test-candidate"
 RUNTIME_MANIFEST_URL = PUBLICATION_SOURCES[ACTIVE_PUBLICATION_SOURCE]["manifest_url"]
+
+# TEST202 auxiliary archives come from an immutable PiconHub review commit.
+# The FullHDGlass catalog can describe these assets, but it cannot broaden the
+# set of URLs accepted by this descriptor.
+AUXILIARY_CANDIDATE_COMMIT = "db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819"
+AUXILIARY_CANDIDATE_MANIFEST_URL = (
+    "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/"
+    + AUXILIARY_CANDIDATE_COMMIT
+    + "/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/candidate-downloads.json"
+)
+AUXILIARY_CANDIDATE_ARCHIVE_ROOT = (
+    "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/"
+    + AUXILIARY_CANDIDATE_COMMIT
+    + "/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/"
+)
+AUXILIARY_PUBLICATION_SOURCES = {
+    "fullhd-production": {
+        "expected_origin": "raw.githubusercontent.com",
+        "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+        "ref": "main",
+        "pinned_commit": None,
+        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads.json",
+        "source_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/",
+        "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/",
+        "redirect_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/",
+    },
+    "piconhub-aux-candidate": {
+        "expected_origin": "raw.githubusercontent.com",
+        "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+        "ref": AUXILIARY_CANDIDATE_COMMIT,
+        "pinned_commit": AUXILIARY_CANDIDATE_COMMIT,
+        "manifest_url": AUXILIARY_CANDIDATE_MANIFEST_URL,
+        "source_root": AUXILIARY_CANDIDATE_ARCHIVE_ROOT.rsplit("archives/", 1)[0],
+        "package_root": AUXILIARY_CANDIDATE_ARCHIVE_ROOT,
+        "redirect_root": AUXILIARY_CANDIDATE_ARCHIVE_ROOT,
+    },
+}
+
+# Exact archive pins from PiconHub's candidate-downloads.json at the commit
+# above. Keep this allowlist separate from the FullHD production URL root.
+AUXILIARY_CANDIDATE_ASSETS = {
+    "piconProv-legacy-t": ("provider-transparent-legacy-fallback.zip", 11462366, "ee325732bb83ac36b25d16e5f3b65eb4312eb251528689cc6ae3d938ea5be7f0", "piconProv", 1145),
+    "piconProv-warder-safe-b": ("provider-black-warder-safe-220x132.zip", 5736394, "7b7499ca87529fd89859b3f10b8bd76ed8234a268f93c29e94fe3e23f075bb3d", "piconProv_220x132", 172),
+    "piconProv-warder-safe-t": ("provider-transparent-warder-safe-220x132.zip", 1081152, "ffb5e4a8afd2ce8f5873f67883ecbb93ba892b9983eefc3e3e9b4c76ff1189fe", "piconProv_220x132", 172),
+    "piconProv-warder-safe-w": ("provider-white-warder-safe-220x132.zip", 5752522, "5e95db06d006ef212d8d3e756ffa067fe18b0bbc5f2c8825cebaa8ba6222e4ae", "piconProv_220x132", 172),
+    "piconSat-legacy-t": ("satellite-transparent-legacy-fallback.zip", 773004, "c134ac5b7d9fdb2ba80b87e8a4b5671537ae634ef9b495b17e783b314394942a", "piconSat", 69),
+    "piconSat-warder-safe-b": ("satellite-black-warder-safe-220x132.zip", 36521, "0808057c83a060fff98aa0bf0f1d2c2cda5b49ea9574b44af3e1a47d9477ed0e", "piconSat_220x132", 1),
+    "piconSat-warder-safe-t": ("satellite-transparent-warder-safe-220x132.zip", 8400, "9d52030633e5b88af40ea1b806862cdd6ad866fb3453ea1993aac4e6fdf33abf", "piconSat_220x132", 1),
+    "piconSat-warder-safe-w": ("satellite-white-warder-safe-220x132.zip", 36634, "9d55e86a420bfce1e7ad25eee8e5fba823b796119efd1665ee45109af684166e", "piconSat_220x132", 1),
+}
+AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]["allowed_paths"] = tuple(
+    AUXILIARY_CANDIDATE_ARCHIVE_ROOT + item[0]
+    for item in AUXILIARY_CANDIDATE_ASSETS.values())
+AUXILIARY_LEGACY_FALLBACK_PINS = {
+    "piconProv-b": (11990269, "f693c2d70866a1b7161046a0e3fd74610b4785673e9ad11f2fa5cefbd6d1e13f", "piconProv", 1297),
+    "piconProv-w": (13974289, "ebff6f537720da39410741cb13abcce0be6a1f822264f516a291a2e70c889cff", "piconProv", 1256),
+    "piconSat-b": (2244970, "6458bdf32db1dddd21ecf8894864e130d5c5535fcfe7fe2681509ad7b0958d8a", "piconSat", 269),
+    "piconSat-w": (2421870, "539cda4f3f599f5e3f2b6e6690a4625fc5c678bdfb46cb9b1b68622d28b08b2b", "piconSat", 269),
+}
+AUXILIARY_VARIANT_IDS = {
+    "piconProv": {"transparent": ("piconProv-legacy-t", "piconProv-warder-safe-t"),
+                  "black": ("piconProv-b", "piconProv-warder-safe-b"),
+                  "white": ("piconProv-w", "piconProv-warder-safe-w")},
+    "piconSat": {"transparent": ("piconSat-legacy-t", "piconSat-warder-safe-t"),
+                 "black": ("piconSat-b", "piconSat-warder-safe-b"),
+                 "white": ("piconSat-w", "piconSat-warder-safe-w")},
+}
 _BOUQUET_RE = re.compile(r'FROM BOUQUET "([^"]+)"', re.I)
 _HEX = re.compile(r"^[0-9A-Fa-f]+$")
 
@@ -343,6 +413,233 @@ def auxiliary_variants(asset_keys):
     available = set(asset_keys or [])
     return {kind: tuple((key, label) for key, label in options if key in available)
             for kind, options in definitions.items()}
+
+
+def auxiliary_hybrid_variants(kind):
+    """GUI variant IDs for the two auxiliary domains using hybrid packages."""
+    if kind not in AUXILIARY_VARIANT_IDS:
+        return ()
+    return (("transparent", "Transparent"), ("black", "Black"), ("white", "White"))
+
+
+def trusted_auxiliary_url(url, source_id):
+    """Validate an auxiliary URL against one isolated publication descriptor."""
+    source = AUXILIARY_PUBLICATION_SOURCES.get(source_id)
+    if not source:
+        return False
+    try:
+        parsed = urlparse(str(url))
+        root = source["package_root"]
+        parsed_root = urlparse(root)
+    except Exception:
+        return False
+    if (parsed.scheme != "https" or parsed.netloc != source["expected_origin"]
+            or parsed.hostname != source["expected_origin"] or parsed.username or parsed.password
+            or parsed.query or parsed.fragment or "%" in parsed.path or "\\" in parsed.path):
+        return False
+    root_path = parsed_root.path
+    if not parsed.path.startswith(root_path) or not root_path.endswith("/"):
+        return False
+    tail = parsed.path[len(root_path):]
+    if not tail or any(part in ("", ".", "..") for part in tail.split("/")):
+        return False
+    if source_id == "piconhub-aux-candidate":
+        return str(url) in source["allowed_paths"]
+    return bool(re.match(r"^[A-Za-z0-9._/-]+$", tail))
+
+
+def validate_auxiliary_candidate_manifest(document, manifest_url=None):
+    """Require the immutable PiconHub manifest and all eight exact archive pins."""
+    errors = []
+    descriptor = AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]
+    if manifest_url != descriptor["manifest_url"]:
+        errors.append("auxiliary candidate manifest URL mismatch")
+    if not isinstance(document, dict):
+        return errors + ["auxiliary candidate manifest is not an object"]
+    if (descriptor.get("ref") != AUXILIARY_CANDIDATE_COMMIT
+            or AUXILIARY_CANDIDATE_COMMIT not in str(manifest_url or "")):
+        errors.append("auxiliary candidate commit mismatch")
+    assets = document.get("assets")
+    if not isinstance(assets, dict):
+        return errors + ["auxiliary candidate assets missing"]
+    if set(assets) != set(AUXILIARY_CANDIDATE_ASSETS):
+        errors.append("auxiliary candidate asset set mismatch")
+    for asset_id, expected in AUXILIARY_CANDIDATE_ASSETS.items():
+        item = assets.get(asset_id)
+        if not isinstance(item, dict):
+            errors.append("auxiliary candidate asset missing: " + asset_id)
+            continue
+        filename, size, sha, root, count = expected
+        url = descriptor["package_root"] + filename
+        classification = "LEGACY_FALLBACK_ONLY" if asset_id.endswith("legacy-t") else "WARDER_SAFE_APPROVED"
+        if (item.get("filename") != filename or item.get("archive") not in (None, filename)
+                or item.get("size") != size or item.get("size_bytes") not in (None, size)
+                or item.get("sha256") != sha or item.get("root") != root
+                or item.get("classification") != classification
+                or item.get("destination") not in (None, root)
+                or item.get("url") != url
+                or not trusted_auxiliary_url(item.get("url"), "piconhub-aux-candidate")):
+            errors.append("auxiliary candidate pin mismatch: " + asset_id)
+    return errors
+
+
+def validate_auxiliary_hybrid_catalog(document, candidate_manifest=None):
+    """Validate catalog mapping, exact pins, and fallback/safe separation."""
+    errors = []
+    if not isinstance(document, dict) or not isinstance(document.get("assets"), dict):
+        return ["invalid FullHD auxiliary catalog"]
+    hybrid = document.get("auxiliary_hybrid")
+    if not isinstance(hybrid, dict) or hybrid.get("schema") != 1:
+        return ["auxiliary hybrid mapping missing"]
+    if hybrid.get("candidate_commit") != AUXILIARY_CANDIDATE_COMMIT:
+        errors.append("auxiliary hybrid commit mismatch")
+    if hybrid.get("candidate_manifest_url") != AUXILIARY_CANDIDATE_MANIFEST_URL:
+        errors.append("auxiliary hybrid manifest URL mismatch")
+    if hybrid.get("candidate_source_id") != "piconhub-aux-candidate":
+        errors.append("auxiliary hybrid source mismatch")
+    assets = document["assets"]
+    for asset_id, expected in AUXILIARY_CANDIDATE_ASSETS.items():
+        item = assets.get(asset_id)
+        filename, size, sha, root, count = expected
+        expected_url = AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]["package_root"] + filename
+        classification = "LEGACY_FALLBACK_ONLY" if asset_id.endswith("legacy-t") else "WARDER_SAFE_APPROVED"
+        if (not isinstance(item, dict) or item.get("filename") != filename
+                or item.get("size") != size or item.get("sha256") != sha
+                or item.get("root") != root or item.get("png_count") != count
+                or item.get("classification") != classification
+                or item.get("url") != expected_url
+                or item.get("publication_source_id") != "piconhub-aux-candidate"):
+            errors.append("FullHD auxiliary candidate mapping mismatch: " + asset_id)
+    for kind, domainspec in (("provider", "piconProv"), ("satellite", "piconSat")):
+        domain = hybrid.get("domains", {}).get(kind, {})
+        if (domain.get("base_fallback_directory") != domainspec
+                or domain.get("priority_directory") != domainspec + "_220x132"
+                or domain.get("lookup_priority") != [domainspec + "_220x132", domainspec]):
+            errors.append("auxiliary destination/lookup mismatch: " + kind)
+        variants = domain.get("variants", {})
+        for variant, (fallback_id, safe_id) in AUXILIARY_VARIANT_IDS[domainspec].items():
+            spec = variants.get(variant, {})
+            if (spec.get("fallback_asset_id") != fallback_id or spec.get("safe_asset_id") != safe_id
+                    or spec.get("install_order") != ["legacy_fallback", "warder_safe_priority"]):
+                errors.append("auxiliary job mapping mismatch: %s/%s" % (kind, variant))
+            fallback = assets.get(fallback_id, {})
+            if fallback_id not in AUXILIARY_CANDIDATE_ASSETS:
+                pin = AUXILIARY_LEGACY_FALLBACK_PINS.get(fallback_id)
+                source_id = fallback.get("publication_source_id", "fullhd-production")
+                if (pin is None or source_id != "fullhd-production"
+                        or not trusted_auxiliary_url(fallback.get("url", ""), "fullhd-production")
+                        or fallback.get("root") != pin[2] or fallback.get("size") != pin[0]
+                        or fallback.get("sha256") != pin[1]
+                        or spec.get("fallback_png_count") != pin[3]
+                        or spec.get("fallback_size_bytes") != pin[0]
+                        or spec.get("fallback_sha256") != pin[1]):
+                    errors.append("unsafe auxiliary legacy fallback: " + fallback_id)
+            else:
+                pin = AUXILIARY_CANDIDATE_ASSETS[fallback_id]
+                if (spec.get("fallback_png_count") != pin[4]
+                        or spec.get("fallback_size_bytes") != pin[1]
+                        or spec.get("fallback_sha256") != pin[2]):
+                    errors.append("auxiliary candidate fallback metadata mismatch: " + fallback_id)
+            safe = assets.get(safe_id, {})
+            safe_pin = AUXILIARY_CANDIDATE_ASSETS.get(safe_id)
+            if (safe_pin is None or safe.get("publication_source_id") != "piconhub-aux-candidate"
+                    or safe.get("root") != domainspec + "_220x132"
+                    or safe.get("size") != safe_pin[1] or safe.get("sha256") != safe_pin[2]
+                    or spec.get("safe_png_count") != safe_pin[4]):
+                errors.append("unsafe auxiliary safe overlay: " + safe_id)
+    if candidate_manifest is not None:
+        errors.extend(validate_auxiliary_candidate_manifest(candidate_manifest, hybrid.get("candidate_manifest_url")))
+        candidate_assets = candidate_manifest.get("assets", {}) if isinstance(candidate_manifest, dict) else {}
+        for asset_id in AUXILIARY_CANDIDATE_ASSETS:
+            if assets.get(asset_id) != candidate_assets.get(asset_id):
+                # FullHD catalog adds source metadata; compare the pinned payload fields only.
+                local = assets.get(asset_id, {})
+                remote = candidate_assets.get(asset_id, {})
+                if any(local.get(key) != remote.get(key) for key in ("filename", "size", "sha256", "root", "url")):
+                    errors.append("catalog/candidate manifest disagreement: " + asset_id)
+    return errors
+
+
+def build_auxiliary_jobs(document, candidate_manifest, domain_kind, variant):
+    """Return exactly fallback then safe-overlay jobs for one GUI variant."""
+    errors = validate_auxiliary_hybrid_catalog(document, candidate_manifest)
+    if errors:
+        return {"state": "invalid-catalog", "jobs": [], "errors": errors}
+    if domain_kind not in ("provider", "satellite") or variant not in ("transparent", "black", "white"):
+        return {"state": "invalid-selection", "jobs": [], "errors": ["invalid auxiliary selection"]}
+    hybrid_domain = document["auxiliary_hybrid"]["domains"][domain_kind]
+    spec = hybrid_domain["variants"][variant]
+    jobs = []
+    for layer, asset_id in (("legacy_fallback", spec["fallback_asset_id"]),
+                            ("warder_safe_priority", spec["safe_asset_id"])):
+        asset = dict(document["assets"][asset_id])
+        if asset_id in AUXILIARY_CANDIDATE_ASSETS:
+            expected = AUXILIARY_CANDIDATE_ASSETS[asset_id]
+            asset["png_count"] = expected[4]
+            asset["publication_source_id"] = "piconhub-aux-candidate"
+        else:
+            asset["publication_source_id"] = "fullhd-production"
+            asset["png_count"] = spec["fallback_png_count"]
+        if asset.get("root") != spec["fallback_destination" if layer == "legacy_fallback" else "safe_destination"]:
+            return {"state": "invalid-catalog", "jobs": [], "errors": ["auxiliary job root mismatch"]}
+        asset.update({"asset_id": asset_id, "layer": layer, "domain": domain_kind,
+                      "variant": variant, "destination": spec["fallback_destination" if layer == "legacy_fallback" else "safe_destination"]})
+        jobs.append(asset)
+    return {"state": "ready", "jobs": jobs, "errors": []}
+
+
+def validate_auxiliary_archive(archive_path, asset):
+    """Verify archive bytes, ZIP CRC, exact root, PNG-only members, and count."""
+    try:
+        if not os.path.isfile(archive_path) or os.path.islink(archive_path):
+            return ["auxiliary archive is not a regular file"]
+        expected_size = int(asset.get("size", -1))
+        if expected_size < 1 or os.path.getsize(archive_path) != expected_size:
+            return ["auxiliary archive size mismatch"]
+        digest = hashlib.sha256()
+        with open(archive_path, "rb") as stream:
+            magic = stream.read(8)
+            if magic.startswith(b"<!DOCTYPE") or magic.startswith(b"<html") or not magic.startswith(b"PK"):
+                return ["auxiliary archive is not a ZIP"]
+            stream.seek(0)
+            for chunk in iter(lambda: stream.read(1024 * 128), b""):
+                digest.update(chunk)
+        if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():
+            return ["auxiliary archive SHA-256 mismatch"]
+        root = str(asset.get("root", ""))
+        if not root or "/" in root or "\\" in root or root in (".", ".."):
+            return ["invalid auxiliary archive root"]
+        count = 0
+        names = set()
+        with zipfile.ZipFile(archive_path, "r") as package:
+            if package.testzip() is not None:
+                return ["auxiliary archive CRC failure"]
+            for info in package.infolist():
+                name = info.filename.replace("\\", "/")
+                if not name or name.startswith("/") or any(x in ("", ".", "..") for x in name.rstrip("/").split("/")):
+                    return ["unsafe auxiliary ZIP path"]
+                if name.rstrip("/") == root and info.is_dir():
+                    continue
+                parts = name.split("/")
+                if len(parts) != 2 or parts[0] != root or not parts[1].lower().endswith(".png") or info.is_dir():
+                    return ["auxiliary ZIP root/member mismatch"]
+                mode = (info.external_attr >> 16) & 0xFFFF
+                file_type = stat.S_IFMT(mode)
+                if stat.S_ISLNK(mode) or (file_type and file_type != stat.S_IFREG):
+                    return ["non-regular auxiliary ZIP member"]
+                key = parts[1].lower()
+                if key in names:
+                    return ["duplicate auxiliary ZIP filename"]
+                with package.open(info, "r") as png:
+                    if png.read(8) != b"\x89PNG\r\n\x1a\n":
+                        return ["auxiliary ZIP contains a non-PNG payload"]
+                names.add(key)
+                count += 1
+        if count != int(asset.get("png_count", -1)):
+            return ["auxiliary archive PNG count mismatch"]
+    except (IOError, OSError, ValueError, zipfile.BadZipFile, RuntimeError) as err:
+        return ["invalid auxiliary archive: " + str(err)]
+    return []
 
 
 def set_preference(preferences, key, value):
@@ -1082,6 +1379,23 @@ def package_result_summary(package_results, translate=None):
     else:
         status = translate("SUCCESSFUL")
     return {"status": status, "updated": total_updated, "failures": total_failures, "text": "\n".join(lines)}
+
+
+def auxiliary_result_summary(domain, variant, fallback_updated, fallback_total,
+                             safe_updated, safe_total, translate=None):
+    """Summarize the measured fallback and safe-overlay copies as one GUI task."""
+    translate = translate or (lambda message: message)
+    fallback_updated = max(0, int(fallback_updated))
+    fallback_total = max(0, int(fallback_total))
+    safe_updated = max(0, int(safe_updated))
+    safe_total = max(0, int(safe_total))
+    updated = fallback_updated + safe_updated
+    failures = max(0, fallback_total - fallback_updated) + max(0, safe_total - safe_updated)
+    status = "ERROR" if failures and not updated else ("PARTIAL SUCCESS" if failures else "SUCCESSFUL")
+    text = translate("Fallback %d/%d; safe overlay %d/%d; errors %d") % (
+        fallback_updated, fallback_total, safe_updated, safe_total, failures)
+    return {"status": translate(status), "updated": updated, "failures": failures,
+            "text": translate(status) + ": " + text}
 
 
 def safe_archive_member(name):

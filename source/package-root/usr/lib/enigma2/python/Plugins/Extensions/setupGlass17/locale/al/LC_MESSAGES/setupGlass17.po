@@ -26,7 +26,7 @@ msgid "AutoColors"
 msgstr "ngjyrat auto"
 
 msgid "White"
-msgstr "e bardhe"
+msgstr "E bardhë"
 
 msgid "Green"
 msgstr "e gjelbër"
@@ -278,7 +278,7 @@ msgid "Event now/next and side infobar"
 msgstr "Event now/next and side infobar"
 
 msgid "Black"
-msgstr "e zezë"
+msgstr "E zezë"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "with PIG(+ch.name,number)"
@@ -347,7 +347,7 @@ msgid "TMDb"
 msgstr ""
 
 msgid "Transparent"
-msgstr ""
+msgstr "E tejdukshme"
 
 msgid "Full HD GLass17 spinner"
 msgstr ""
@@ -594,7 +594,7 @@ msgid "WEATHER"
 msgstr "MOTI"
 
 msgid "PATHS"
-msgstr ""
+msgstr "Rrugët e skedarëve të konfigurimit të skin-it"
 
 msgid "VOLUME"
 msgstr ""
@@ -1492,7 +1492,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Piktograme"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1594,13 +1594,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Logot e ofruesve"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Logot satelitore"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1621,3 +1621,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Mbyll"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Rezervë %d/%d; shtresë e sigurt %d/%d; gabime %d"

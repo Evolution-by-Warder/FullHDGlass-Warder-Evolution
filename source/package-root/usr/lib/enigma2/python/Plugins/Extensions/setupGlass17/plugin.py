@@ -2193,7 +2193,7 @@ def setONOFF():
 		except: pass
 	return ena
 ##########################################################################################################################
-WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads.json"
+WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads.json"
 
 def getWarderAssets():
 	"""Load the Warder download catalog over HTTPS without reusing a stale cache entry.
@@ -2205,12 +2205,14 @@ def getWarderAssets():
 		url = "%s%scb=%d" % (WARDER_ASSET_MANIFEST_URL, sep, int(time1.time()))
 		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.2", "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
 		with urlopen(req, timeout=15) as response:
-			if not str(response.geturl()).startswith("https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/"):
+			if str(response.geturl()) != url:
 				raise ValueError("unsafe asset manifest redirect")
 			data = json.loads(response.read().decode("utf-8"))
 		assets = data.get("assets", {})
 		if not isinstance(assets, dict):
 			raise ValueError("invalid assets catalog")
+		assets = dict(assets)
+		assets["__auxiliary_hybrid__"] = data.get("auxiliary_hybrid")
 		return "", assets
 	except Exception as err:
 		return _("Sorry, download server is unavailable, check your internet connection !!!") + " " + str(err), {}
@@ -8708,8 +8710,11 @@ class downloadMenu(Screen):
 
 	def openAuxPiconChoice(self, row):
 		kind = {"aux-prov": "piconProv", "aux-sat": "piconSat", "aux-cam": "piconCam", "aux-weather": "piconWeather"}.get(row)
-		variants = warderPiconSync.auxiliary_variants(warderPiconSync.AUXILIARY_ASSET_KEYS)
-		options = variants.get(kind, ())
+		if kind in warderPiconSync.AUXILIARY_VARIANT_IDS:
+			options = warderPiconSync.auxiliary_hybrid_variants(kind)
+		else:
+			variants = warderPiconSync.auxiliary_variants(warderPiconSync.AUXILIARY_ASSET_KEYS)
+			options = variants.get(kind, ())
 		choices = [(_(label), (asset, label)) for asset, label in options]
 		self.session.openWithCallback(lambda *answer: self.warderAuxPiconAnswerFor(row, *answer), ChoiceBox, title=_("Select"), list=choices)
 
@@ -8725,7 +8730,11 @@ class downloadMenu(Screen):
 			return
 		if not isinstance(asset, str) or not isinstance(label, str):
 			return
-		if asset not in warderPiconSync.AUXILIARY_ASSET_KEYS:
+		kind = {"aux-prov": "piconProv", "aux-sat": "piconSat"}.get(row)
+		if kind in warderPiconSync.AUXILIARY_VARIANT_IDS:
+			if asset not in warderPiconSync.AUXILIARY_VARIANT_IDS[kind]:
+				return
+		elif asset not in warderPiconSync.AUXILIARY_ASSET_KEYS:
 			return
 		for index in self.menuListAll:
 			if self.menuListAll[index][0] == row:
@@ -8886,6 +8895,150 @@ class downloadMenu(Screen):
 		if errors:
 			raise ValueError("invalid Warder channel manifest: " + "; ".join(errors[:3]))
 		return doc
+
+	def _warderLoadAuxiliaryCandidateManifest(self, url):
+		"""Fetch only the PiconHub manifest pinned by the auxiliary descriptor."""
+		descriptor = warderPiconSync.AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]
+		if url != descriptor.get("manifest_url"):
+			raise ValueError("untrusted auxiliary candidate manifest")
+		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons",
+			"Accept": "application/json"})
+		with urlopen(req, timeout=30) as response:
+			if str(response.geturl()) != url:
+				raise ValueError("unsafe auxiliary candidate manifest redirect")
+			content_type = str(response.headers.get("Content-Type", "")).lower()
+			if "text/html" in content_type:
+				raise ValueError("auxiliary candidate manifest returned HTML")
+			data = response.read(1024 * 1024 + 1)
+		if len(data) > 1024 * 1024 or data.lstrip().lower().startswith((b"<html", b"<!doctype")):
+			raise ValueError("invalid auxiliary candidate manifest response")
+		document = json.loads(data.decode("utf-8"))
+		errors = warderPiconSync.validate_auxiliary_candidate_manifest(document, url)
+		if errors:
+			raise ValueError("invalid auxiliary candidate manifest: " + "; ".join(errors[:3]))
+		return document
+
+	def _warderAuxiliaryDestination(self, name):
+		"""Create only the requested auxiliary leaf under the configured picon root."""
+		if name not in ("piconProv", "piconProv_220x132", "piconSat", "piconSat_220x132"):
+			raise ValueError("invalid auxiliary destination")
+		base = str(config.plugins.setupGlass17.par39.value)
+		if not os.path.isdir(base) or os.path.islink(base):
+			raise ValueError("unsafe auxiliary picon base directory")
+		base = os.path.realpath(base)
+		destination = os.path.join(base, name)
+		if os.path.islink(destination):
+			raise ValueError("auxiliary destination is a symbolic link")
+		if not os.path.exists(destination):
+			os.mkdir(destination)
+		if not os.path.isdir(destination) or os.path.realpath(destination) != destination:
+			raise ValueError("unsafe auxiliary destination")
+		return destination
+
+	def _warderFetchAuxiliaryArchive(self, asset, archive):
+		"""Download one source-bound archive and verify redirect, size, SHA and ZIP."""
+		source_id = asset.get("publication_source_id")
+		url = str(asset.get("url", ""))
+		if not warderPiconSync.trusted_auxiliary_url(url, source_id):
+			raise ValueError("unsafe Warder auxiliary URL")
+		expected_size = int(asset.get("size", 0))
+		if expected_size < 1 or expected_size > 32 * 1024 * 1024:
+			raise ValueError("invalid Warder auxiliary archive size")
+		digest = hashlib.sha256()
+		total = 0
+		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
+		with urlopen(req, timeout=45) as response:
+			if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
+				raise ValueError("unsafe Warder auxiliary redirect")
+			content_type = str(response.headers.get("Content-Type", "")).lower()
+			if "text/html" in content_type:
+				raise ValueError("Warder auxiliary archive returned HTML")
+			with open(archive, "wb") as output:
+				while True:
+					chunk = response.read(1024 * 128)
+					if not chunk:
+						break
+					total += len(chunk)
+					if total > expected_size:
+						raise ValueError("oversized Warder auxiliary archive")
+					output.write(chunk)
+					digest.update(chunk)
+		if total != expected_size:
+			raise ValueError("Warder auxiliary archive size mismatch")
+		if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():
+			raise ValueError("Warder auxiliary archive SHA-256 mismatch")
+		errors = warderPiconSync.validate_auxiliary_archive(archive, asset)
+		if errors:
+			raise ValueError("invalid Warder auxiliary archive: " + "; ".join(errors[:3]))
+
+	def _warderRunAuxiliaryComposite(self, row, variant_id):
+		"""Run exactly two additive jobs: legacy fallback, then safe priority overlay."""
+		kind = {"aux-prov": "provider", "aux-sat": "satellite"}.get(row)
+		variant_maps = {"provider": "piconProv", "satellite": "piconSat"}
+		if kind not in variant_maps or variant_id not in warderPiconSync.AUXILIARY_VARIANT_IDS[variant_maps[kind]]:
+			raise ValueError("invalid auxiliary hybrid selection")
+		err, assets = getWarderAssets()
+		if err:
+			raise ValueError(err)
+		hybrid = assets.pop("__auxiliary_hybrid__", None)
+		if not isinstance(hybrid, dict):
+			raise ValueError("auxiliary hybrid catalog missing")
+		candidate = None
+		candidate_error = None
+		try:
+			candidate = self._warderLoadAuxiliaryCandidateManifest(hybrid.get("candidate_manifest_url"))
+		except Exception as err:
+			# Preserve the legacy fallback job if the candidate publication is
+			# unavailable; the safe overlay will be recorded as failed below.
+			candidate_error = err
+		catalog = {"assets": assets, "auxiliary_hybrid": hybrid}
+		plan = warderPiconSync.build_auxiliary_jobs(catalog, candidate, kind, variant_id)
+		if plan.get("state") != "ready" or len(plan.get("jobs", [])) != 2:
+			raise ValueError("auxiliary composite plan rejected: " + "; ".join(plan.get("errors", [])[:3]))
+		copied = {"legacy_fallback": 0, "warder_safe_priority": 0}
+		totals = {job["layer"]: int(job["png_count"]) for job in plan["jobs"]}
+		for job in plan["jobs"]:
+			archive = None
+			stage = None
+			previous_zzz = self.zzz
+			try:
+				if job["layer"] == "warder_safe_priority" and candidate_error is not None:
+					raise ValueError("pinned auxiliary candidate manifest unavailable: " + str(candidate_error))
+				self._warderAuxiliaryDestination(job["destination"])
+				fd, archive = tempfile.mkstemp(prefix="warder-aux-", suffix=".zip", dir="/tmp")
+				os.close(fd)
+				self._warderFetchAuxiliaryArchive(job, archive)
+				stage = tempfile.mkdtemp(prefix="warder-aux-stage-", dir="/tmp")
+				self._safeExtractZip(archive, stage)
+				root = str(job["root"])
+				stage_root = os.path.join(stage, root)
+				if os.path.islink(stage_root) or not os.path.isdir(stage_root):
+					raise ValueError("auxiliary ZIP root missing after extraction")
+				self.zzz = stage + os.sep
+				updated, attempted = self.cprmFiles(root)
+				if attempted != totals[job["layer"]]:
+					print("FullHDGlass17 Warder auxiliary count mismatch (%s): %d/%d" %
+						(job["asset_id"], attempted, totals[job["layer"]]))
+				copied[job["layer"]] = updated
+			except Exception as err:
+				print("FullHDGlass17 Warder auxiliary job failed (%s): %s" % (job.get("asset_id"), err))
+			finally:
+				self.zzz = previous_zzz
+				if archive:
+					try:
+						os.unlink(archive)
+					except OSError:
+						pass
+				if stage:
+					try:
+						self.rmTmp2(stage, str(job.get("root", "")))
+						os.rmdir(stage)
+					except OSError:
+						pass
+		return warderPiconSync.auxiliary_result_summary(
+			_("Provider logos" if kind == "provider" else "Satellite logos"), variant_id,
+			copied["legacy_fallback"], totals["legacy_fallback"],
+			copied["warder_safe_priority"], totals["warder_safe_priority"], _)["text"]
 
 	def _warderRemoveStaleChannelPicons(self, destination, positions, package_names):
 		"""Remove only stale service PNGs for selected orbits after package success."""
@@ -9173,7 +9326,14 @@ class downloadMenu(Screen):
 					self.type_download = str(self.menuListAll[x][2])
 					self.zzz = self.setWdir()
 					self.dwnJob = str(self.menuListAll[x][1])
-					if '***' in self.menuListAll[x][1]:
+					if self.menuListAll[x][0] in ("aux-prov", "aux-sat"):
+						try:
+							aux_result = self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
+						except Exception as err:
+							aux_result = _("ERROR") + ": " + str(err)
+						self.dwnLoop(aux_result)
+						return
+					elif '***' in self.menuListAll[x][1]:
 						self.enaSelectsat = True
 						self.downMulti(self.menuListAll[x][3],self.destDir(self.menuListAll[x][2]))
 					else:
@@ -9213,11 +9373,11 @@ class downloadMenu(Screen):
 		except Exception:
 			self.dwnLoop(_("ERROR")+": "+_("Invalid Warder download catalog entry."))
 			return
-		official_asset_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"
-		valid_parts = isinstance(parts, list) and len(parts) > 0 and all(str(x).startswith(official_asset_prefix) for x in parts)
+		source_id = asset.get("publication_source_id", "fullhd-production")
+		valid_parts = isinstance(parts, list) and len(parts) > 0 and all(warderPiconSync.trusted_auxiliary_url(str(x), source_id) for x in parts)
 		valid_sha = re.match(r"^[0-9a-f]{64}$", sha256) is not None
 		valid_filename = bool(filename) and os.path.basename(filename) == filename and filename not in (".", "..")
-		valid_url = (not url) or url.startswith(official_asset_prefix)
+		valid_url = (not url) or warderPiconSync.trusted_auxiliary_url(url, source_id)
 		if (not valid_url or (not url and not valid_parts)) or not valid_sha or not valid_filename or "/" in root or "\\" in root or ".." in root:
 			self.dwnLoop(_("ERROR")+": "+_("Unsafe Warder download catalog entry."))
 			return
@@ -9265,15 +9425,15 @@ class downloadMenu(Screen):
 			expected = str(asset["sha256"]).lower()
 			parts = asset.get("parts", [])
 			urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
-			official_asset_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"
-			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(url.startswith(official_asset_prefix) for url in urls):
+			source_id = asset.get("publication_source_id", "fullhd-production")
+			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
 				raise ValueError("unsafe asset metadata")
 			h = hashlib.sha256()
 			with open(target, "wb") as out:
 				for url in urls:
 					req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5-test1"})
 					with urlopen(req, timeout=45) as response:
-						if not str(response.geturl()).startswith(official_asset_prefix):
+						if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
 							raise ValueError("unsafe asset redirect")
 						while True:
 							chunk = response.read(1024 * 128)

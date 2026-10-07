@@ -598,7 +598,7 @@ msgid "WEATHER"
 msgstr "天气"
 
 msgid "PATHS"
-msgstr "路径"
+msgstr "皮肤配置文件路径"
 
 msgid "VOLUME"
 msgstr "音量"
@@ -1543,7 +1543,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Picon"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1645,13 +1645,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "服务提供商徽标"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "卫星徽标"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1672,3 +1672,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "关闭"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "回退 %d/%d；安全覆盖层 %d/%d；错误 %d"

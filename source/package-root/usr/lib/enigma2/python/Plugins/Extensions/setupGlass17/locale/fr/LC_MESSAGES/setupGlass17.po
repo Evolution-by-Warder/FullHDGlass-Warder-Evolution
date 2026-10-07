@@ -26,7 +26,7 @@ msgid "AutoColors"
 msgstr "Couleur auto"
 
 msgid "White"
-msgstr "Blanc"
+msgstr "Blanches"
 
 msgid "Green"
 msgstr "Vert"
@@ -278,7 +278,7 @@ msgid "Event now/next and side infobar"
 msgstr "Evènmt - maintenant/suivant et info barre sur le côté"
 
 msgid "Black"
-msgstr "Noir"
+msgstr "Noires"
 
 msgid "with PIG(+ch.name,number)"
 msgstr "avecImage(+Nom ch., numéro))"
@@ -347,7 +347,7 @@ msgid "TMDb"
 msgstr ""
 
 msgid "Transparent"
-msgstr ""
+msgstr "Transparentes"
 
 msgid "Full HD GLass17 spinner"
 msgstr ""
@@ -594,7 +594,7 @@ msgid "WEATHER"
 msgstr "Météo"
 
 msgid "PATHS"
-msgstr ""
+msgstr "Chemins des fichiers de configuration du skin"
 
 msgid "VOLUME"
 msgstr ""
@@ -1493,7 +1493,7 @@ msgstr ""
 
 # TEST196 Warder picon settings
 msgid "220 x 132 - Picons"
-msgstr ""
+msgstr "220 × 132 – Picons"
 
 # TEST196 Warder picon settings
 msgid "400 x 240 - Large picons"
@@ -1595,13 +1595,13 @@ msgid "Selected storage is not mounted"
 msgstr ""
 
 msgid "Provider logos"
-msgstr ""
+msgstr "Logos des fournisseurs"
 
 msgid "TV platform and service provider logos."
 msgstr ""
 
 msgid "Satellite logos"
-msgstr ""
+msgstr "Logos des satellites"
 
 msgid "Satellite logos and graphical identifiers."
 msgstr ""
@@ -1622,3 +1622,7 @@ msgstr ""
 # Completed operation result dialog button.
 msgid "Close"
 msgstr "Fermer"
+
+# TEST202 auxiliary composite result counts.
+msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
+msgstr "Secours %d/%d ; couche sûre %d/%d ; erreurs %d"
