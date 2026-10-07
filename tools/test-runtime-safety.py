@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import importlib.util
 import re
 import sys
 
@@ -32,8 +33,52 @@ if "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evo
     fail("plugin.py: authoritative HTTPS updater manifest missing")
 if 're.match(r"^[0-9a-f]{64}$", expected)' not in plugin:
     fail("plugin.py: exact Warder asset SHA validation missing")
-if 'all(url.startswith(official_asset_prefix) for url in urls)' not in plugin:
-    fail("plugin.py: Warder asset official-prefix validation missing")
+sync_path = pkg / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py"
+spec = importlib.util.spec_from_file_location("warderPiconSync_safety", sync_path)
+warder_sync = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(warder_sync)
+
+# Validate the actual source-bound descriptor helpers used by both downloaders.
+candidate_source = warder_sync.publication_source("test-candidate")
+production_source = warder_sync.publication_source("production")
+candidate_package = candidate_source["package_root"] + "130E-black.zip"
+candidate_part = candidate_package + ".part00"
+production_package = production_source["package_root"] + "130E-black.zip"
+if not warder_sync.trusted_publication_url(candidate_package, "test-candidate"):
+    fail("warderPiconSync.py: TEST publication package root rejected")
+if not warder_sync.trusted_publication_url(candidate_part, "test-candidate"):
+    fail("warderPiconSync.py: TEST publication part root rejected")
+if warder_sync.trusted_publication_url(production_package, "test-candidate"):
+    fail("warderPiconSync.py: production package accepted by TEST descriptor")
+if not warder_sync.trusted_publication_url(production_package, "production"):
+    fail("warderPiconSync.py: production package root rejected")
+if warder_sync.trusted_publication_url(candidate_package, "production"):
+    fail("warderPiconSync.py: TEST package accepted by production descriptor")
+if warder_sync.trusted_publication_url(candidate_source["package_root"] + "../escape.zip", "test-candidate"):
+    fail("warderPiconSync.py: publication path traversal accepted")
+
+candidate_aux_source = warder_sync.AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]
+fullhd_aux_source = warder_sync.AUXILIARY_PUBLICATION_SOURCES["fullhd-production"]
+candidate_aux_url = candidate_aux_source["allowed_paths"][0]
+fullhd_aux_url = fullhd_aux_source["package_root"] + "providers/example.zip"
+if not warder_sync.trusted_auxiliary_url(candidate_aux_url, "piconhub-aux-candidate"):
+    fail("warderPiconSync.py: pinned PiconHub auxiliary asset rejected")
+if warder_sync.trusted_auxiliary_url(fullhd_aux_url, "piconhub-aux-candidate"):
+    fail("warderPiconSync.py: FullHDGlass URL accepted by PiconHub candidate descriptor")
+if not warder_sync.trusted_auxiliary_url(fullhd_aux_url, "fullhd-production"):
+    fail("warderPiconSync.py: FullHDGlass production auxiliary root rejected")
+if warder_sync.trusted_auxiliary_url(candidate_aux_url, "fullhd-production"):
+    fail("warderPiconSync.py: PiconHub URL accepted by production descriptor")
+
+aux_fetch = plugin[plugin.find("def downloadPicons"):plugin.find("def _warderFetchChannelJob")]
+if ("warderPiconSync.trusted_auxiliary_url(url, source_id)" not in aux_fetch
+        or "warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id)" not in aux_fetch):
+    fail("plugin.py: auxiliary source and redirect guards are not bound to the publication descriptor")
+channel_fetch = plugin[plugin.find("def _warderFetchChannelJob"):plugin.find("def _warderInstallChannelArchive")]
+if ('warderPiconSync.trusted_publication_url(url, source_id)' not in channel_fetch
+        or 'warderPiconSync.trusted_publication_url(str(response.geturl()), source_id)' not in channel_fetch
+        or 'job.get("publication_root") != source.get("package_root")' not in channel_fetch):
+    fail("plugin.py: channel source, redirect, or payload-root binding guard missing")
 if 'stat.S_ISLNK(mode)' not in plugin or "ZIP path traversal rejected" not in plugin:
     fail("plugin.py: safe ZIP extraction guards missing")
 if "install_opener(" in plugin:
@@ -44,9 +89,6 @@ if "PiconHub-Warder/FullHDGlass-Warder-Evolution" in plugin:
     fail("plugin.py: obsolete Warder repository owner returned")
 if "unsafe asset manifest redirect" not in plugin:
     fail("plugin.py: official asset manifest redirect guard missing")
-asset_prefix = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/"
-if plugin.count(asset_prefix) < 2 or "unsafe asset redirect" not in plugin:
-    fail("plugin.py: Warder asset payload channel/redirect guards missing")
 if "if isATV:" not in plugin[plugin.find("def chnlSelPatch"):plugin.find("def writeStyleCfg")]:
     fail("plugin.py: OpenATV ChannelSelection patch guard missing")
 menu_guard = plugin[plugin.find("def setMenuPyo"):plugin.find("def chckPath")]
