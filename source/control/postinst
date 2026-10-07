@@ -18,6 +18,62 @@ if [ -f /tmp/skin_user-hdg17.xml.warder-upgrade ]; then
     rm -f /tmp/skin_user-hdg17.xml.warder-upgrade
 fi
 
+# Apply this default only when preinst explicitly recorded a first install.
+# Upgrades, repeat configure calls, and unknown states preserve user settings.
+WARDER_EPG_STATE_DIR=/var/lib/fullhdglass17
+WARDER_EPG_STATE_FILE="$WARDER_EPG_STATE_DIR/epg-default-v1.state"
+WARDER_EPG_SETTINGS=/etc/enigma2/settings
+warder_epg_state=$(cat "$WARDER_EPG_STATE_FILE" 2>/dev/null || true)
+warder_write_epg_state() {
+    state_value="$1"
+    state_tmp="$WARDER_EPG_STATE_FILE.tmp.$$"
+    if mkdir -p "$WARDER_EPG_STATE_DIR" 2>/dev/null &&
+       printf '%s\n' "$state_value" > "$state_tmp" 2>/dev/null &&
+       mv -f "$state_tmp" "$WARDER_EPG_STATE_FILE" 2>/dev/null; then
+        return 0
+    fi
+    rm -f "$state_tmp" 2>/dev/null || true
+    return 1
+}
+case "$warder_epg_state" in
+    fresh-pending)
+        if [ -e "$WARDER_EPG_SETTINGS" ] && [ ! -f "$WARDER_EPG_SETTINGS" ]; then
+            echo "Warder EPG default skipped: settings path is not a regular file."
+        elif grep -q '^config.misc.ButtonSetup.epg=' "$WARDER_EPG_SETTINGS" 2>/dev/null; then
+            echo "Warder EPG default preserved: an explicit EPG hotkey already exists."
+            warder_write_epg_state done || true
+        else
+            if [ ! -e "$WARDER_EPG_SETTINGS" ]; then
+                (umask 077; : > "$WARDER_EPG_SETTINGS") 2>/dev/null || true
+            fi
+            if [ -f "$WARDER_EPG_SETTINGS" ]; then
+                if [ -s "$WARDER_EPG_SETTINGS" ]; then
+                    last_byte=$(tail -c 1 "$WARDER_EPG_SETTINGS" 2>/dev/null || true)
+                    [ -z "$last_byte" ] || printf '\n' >> "$WARDER_EPG_SETTINGS"
+                fi
+                if printf '%s\n' 'config.misc.ButtonSetup.epg=Infobar/openGraphEPG' >> "$WARDER_EPG_SETTINGS"; then
+                    echo "Warder EPG fresh-install default: Infobar/openGraphEPG."
+                    warder_write_epg_state done || true
+                else
+                    echo "Warder EPG default could not be saved; install state remains pending."
+                fi
+            else
+                echo "Warder EPG default skipped: settings file could not be created."
+            fi
+        fi
+        ;;
+    preserve-pending)
+        echo "Warder EPG setting preserved during package upgrade."
+        warder_write_epg_state done || true
+        ;;
+    done)
+        # Idempotent: never seed a setting on later configure/reinstall hooks.
+        ;;
+    *)
+        echo "Warder EPG setting unchanged: no first-install authorization marker."
+        ;;
+esac
+
 # Install legacy data only when the image does not already provide it.
 copy_default_if_missing /usr/share/misc/hddtemp-deff17.db /usr/share/misc/hddtemp.db
 copy_default_if_missing /etc/hddtemp-deff17.db /etc/hddtemp.db

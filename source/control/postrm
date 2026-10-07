@@ -30,6 +30,11 @@ restore_backup "$MENU"-orig17.py "$MENU"
 restore_backup "$MENU"-orig17.pyc "$MENU".pyc
 restore_backup "$MENU"-orig17.pyo "$MENU".pyo
 
+# A full removal clears only Warder's migration state; upgrades exit above.
+WARDER_EPG_STATE_DIR=/var/lib/fullhdglass17
+rm -f "$WARDER_EPG_STATE_DIR/epg-default-v1.state" "$WARDER_EPG_STATE_DIR/epg-default-v1.state.tmp."* 2>/dev/null || true
+rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
+
 # Do not remove /etc/enigma2/settings. Saved Enigma2 and FullHDGlass17
 # preferences remain user data even when the skin package is removed.
 # Do not delete broad wildcards from Enigma2 system directories here;

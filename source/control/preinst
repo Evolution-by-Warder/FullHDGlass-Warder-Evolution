@@ -5,6 +5,41 @@ echo "******************************************************************"
 echo "*              FullHDGlass17 - Warder Evolution                 *"
 echo "******************************************************************"
 
+# Record whether this package manager invocation is a first install or upgrade.
+# Only an explicit first-install context may seed the Warder EPG hotkey.
+WARDER_EPG_STATE_DIR=/var/lib/fullhdglass17
+WARDER_EPG_STATE_FILE="$WARDER_EPG_STATE_DIR/epg-default-v1.state"
+warder_epg_state=$(cat "$WARDER_EPG_STATE_FILE" 2>/dev/null || true)
+warder_write_epg_state() {
+    state_value="$1"
+    state_tmp="$WARDER_EPG_STATE_FILE.tmp.$$"
+    if mkdir -p "$WARDER_EPG_STATE_DIR" 2>/dev/null &&
+       printf '%s\n' "$state_value" > "$state_tmp" 2>/dev/null &&
+       mv -f "$state_tmp" "$WARDER_EPG_STATE_FILE" 2>/dev/null; then
+        return 0
+    fi
+    rm -f "$state_tmp" 2>/dev/null || true
+    return 1
+}
+case "${1:-}" in
+    install)
+        if [ ! -e "$WARDER_EPG_STATE_FILE" ]; then
+            warder_write_epg_state fresh-pending || true
+        fi
+        ;;
+    upgrade)
+        if [ "$warder_epg_state" != "done" ]; then
+            warder_write_epg_state preserve-pending || true
+        fi
+        ;;
+    *)
+        # Unknown/abort states fail closed: never infer that they are fresh.
+        if [ "$warder_epg_state" != "done" ] && [ "$warder_epg_state" != "preserve-pending" ]; then
+            warder_write_epg_state preserve-pending || true
+        fi
+        ;;
+esac
+
 # Preserve the generated FullHDGlass17 user overlay across upgrades.
 # The main Enigma2 configuration lives in /etc/enigma2/settings and is
 # deliberately never modified by this package.
