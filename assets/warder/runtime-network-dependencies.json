@@ -93,11 +93,11 @@
           "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/legacyPiconArchives.json"
         },
         {
-          "occurrences": 15,
+          "occurrences": 12,
           "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py"
         },
         {
-          "occurrences": 4,
+          "occurrences": 10,
           "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py"
         }
       ]
