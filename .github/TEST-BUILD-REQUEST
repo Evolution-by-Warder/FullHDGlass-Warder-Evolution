@@ -64,3 +64,5 @@ TEST202 BUILD 3
 Fix the stale legacy FTP migration validator for the pinned PiconHub TEST202 auxiliary archive set; run the normal static preflight and package the TEST artifact only. Do not publish a release or modify main.
 TEST202 BUILD 4
 Build TEST202 from the refreshed runtime network dependency ledger and the accepted validator fix. Run the standard static preflight and package TEST artifact only. Do not publish a release or modify main.
+TEST203 BUILD
+Fix the TEST202 auxiliary candidate manifest pin mismatch. Validate the exact PiconHub candidate-downloads.json archive locator ref separately while keeping runtime package downloads pinned to the approved db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819 publication. Run the full static preflight and build TEST203 only. Do not publish a Release or modify main.
