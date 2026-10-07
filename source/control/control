@@ -6,5 +6,6 @@ Priority: optional
 Maintainer: Warder (modern continuation; original FullHDGlass17 credits retained)
 Architecture: all
 OE: enigma2-skin-fullhdglass17
+Homepage: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution
 Depends:
 Source: None
