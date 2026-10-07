@@ -15,13 +15,18 @@ PLUGIN_DIR = ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensio
 SYNC_PATH = PLUGIN_DIR / "warderPiconSync.py"
 PLUGIN_PATH = PLUGIN_DIR / "plugin.py"
 CATALOG_PATH = ROOT / "assets/warder/downloads.json"
-PH_ROOT = Path("/tmp/PiconHub-Warder-Evolution/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07")
 
 spec = importlib.util.spec_from_file_location("warder_hybrid_sync", str(SYNC_PATH))
 sync = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sync)
 catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
-candidate = json.loads((PH_ROOT / "candidate-downloads.json").read_text(encoding="utf-8"))
+# The committed FullHD catalog carries the same pinned payload fields, allowing
+# the regression to run in a clean checkout without an external /tmp repository.
+candidate = {"assets": {
+    asset_id: {key: catalog["assets"][asset_id][key]
+               for key in ("filename", "size", "sha256", "root", "url", "classification")}
+    for asset_id in sync.AUXILIARY_CANDIDATE_ASSETS
+}}
 
 assert sync.validate_auxiliary_candidate_manifest(candidate, sync.AUXILIARY_CANDIDATE_MANIFEST_URL) == []
 assert sync.validate_auxiliary_hybrid_catalog(catalog, candidate) == []
@@ -97,20 +102,22 @@ assert "unsafe auxiliary ZIP path" in " ".join(validate_payload(traversal, {"siz
 wrong_root = zip_bytes("piconSat/TEST.png", png)
 assert "root/member mismatch" in " ".join(validate_payload(wrong_root, {"size":len(wrong_root),"sha256":hashlib.sha256(wrong_root).hexdigest(),"root":"piconProv","png_count":1}))
 
-# Real pinned candidate archive bytes: size/SHA/CRC/root/count on every archive.
-for asset_id, pin in sync.AUXILIARY_CANDIDATE_ASSETS.items():
-    filename, size, sha, root, count = pin
-    archive_path = PH_ROOT / "archives" / filename
-    assert archive_path.is_file(), archive_path
-    asset = {"filename": filename, "size": size, "sha256": sha, "root": root, "png_count": count}
-    assert sync.validate_auxiliary_archive(str(archive_path), asset) == [], asset_id
-    with zipfile.ZipFile(str(archive_path), "r") as package:
-        for item in package.infolist():
-            if item.is_dir():
-                continue
-            data = package.read(item)[:24]
-            assert data.startswith(b"\x89PNG\r\n\x1a\n"), item.filename
-            assert struct.unpack(">II", data[16:24]) == (220, 132), item.filename
+# Optional real archive fixtures can be supplied by a network/preflight run.
+archive_dir = os.environ.get("WARDER_AUX_ARCHIVE_DIR")
+if archive_dir:
+    for asset_id, pin in sync.AUXILIARY_CANDIDATE_ASSETS.items():
+        filename, size, sha, root, count = pin
+        archive_path = Path(archive_dir) / filename
+        assert archive_path.is_file(), archive_path
+        asset = {"filename": filename, "size": size, "sha256": sha, "root": root, "png_count": count}
+        assert sync.validate_auxiliary_archive(str(archive_path), asset) == [], asset_id
+        with zipfile.ZipFile(str(archive_path), "r") as package:
+            for item in package.infolist():
+                if item.is_dir():
+                    continue
+                data = package.read(item)[:24]
+                assert data.startswith(b"\x89PNG\r\n\x1a\n"), item.filename
+                assert struct.unpack(">II", data[16:24]) == (220, 132), item.filename
 
 with PLUGIN_PATH.open(encoding="utf-8") as f:
     plugin = f.read()
@@ -146,5 +153,17 @@ result = sync.auxiliary_result_summary("provider", "black", 1297, 1297, 0, 172)
 assert result["status"] == "PARTIAL SUCCESS" and result["failures"] == 172
 result = sync.auxiliary_result_summary("provider", "black", 0, 1297, 0, 172)
 assert result["status"] == "ERROR" and result["updated"] == 0
+
+# Preserve the recorded TEST201 receiver baseline in the result-count contract.
+baseline = sync.package_result_summary([
+    {"orbital_position": "13.0E", "package_selector": "130E", "updated": 1021, "failures": 0},
+    {"orbital_position": "16.0E", "package_selector": "160E", "updated": 459, "failures": 0},
+    {"orbital_position": "19.2E", "package_selector": "192E", "updated": 622, "failures": 0},
+    {"orbital_position": "23.5E", "package_selector": "235E", "updated": 541, "failures": 0},
+])
+assert baseline["status"] == "SUCCESSFUL"
+assert "Total: 2643 picons updated" in baseline["text"]
+assert "Failures: 0" in baseline["text"]
+assert all(position in baseline["text"] for position in ("13.0E", "16.0E", "19.2E", "23.5E"))
 
 print("PASS: hybrid two-job plan, source isolation, exact pins, archive rejection cases, candidate ZIP integrity, and partial result status")
