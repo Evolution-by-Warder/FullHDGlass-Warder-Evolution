@@ -66,3 +66,5 @@ TEST202 BUILD 4
 Build TEST202 from the refreshed runtime network dependency ledger and the accepted validator fix. Run the standard static preflight and package TEST artifact only. Do not publish a release or modify main.
 TEST203 BUILD
 Fix the TEST202 auxiliary candidate manifest pin mismatch. Validate the exact PiconHub candidate-downloads.json archive locator ref separately while keeping runtime package downloads pinned to the approved db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819 publication. Run the full static preflight and build TEST203 only. Do not publish a Release or modify main.
+TEST204 BUILD
+Build TEST204 1.0.5-test204 from version-only source checkpoint 24039a430fc0d5fbdd9302538d16ae0cbe6c413c; retain TEST203 auxiliary receiver pass and EPG fresh-install-only default. Run the standard complete static/regression preflight and produce TEST IPK only. No GitHub Release, merge, or main changes.
