@@ -56,3 +56,5 @@ Update the two-phase cutover preflight to validate the new publication descripto
 
 TEST201 BUILD 8
 Refresh the committed runtime network dependency inventory for the publication descriptor URL centralization; rerun all existing regressions, receiver URL validation-path publication-root regression, candidate HTTP/SHA/reassembly/ZIP integrity checks, Python compile, msgfmt for 19 locales, then build and publish TEST201 only. Do not change main or production source; BUILD PASS is not receiver validation.
+TEST202 BUILD 1
+Run the existing TEST IPK workflow for version 1.0.5-test202 from this version-only source; upload the TEST artifact. Do not publish a release or modify main.
