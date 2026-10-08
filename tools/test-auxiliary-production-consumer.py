@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline integrity and receiver-boundary regressions for production aux catalog."""
 import gzip
+import ast
 import hashlib
 import importlib.util
 import json
@@ -11,6 +12,7 @@ import zipfile
 import stat
 import struct
 import sys
+import weakref
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -199,6 +201,42 @@ assert "piconProv_220x132" in plugin and "piconSat_220x132" in plugin
 provider_block = plugin[plugin.index("compatibility_name = warderPiconSync.auxiliary_comma_compatibility_filename(sname)"):plugin.index('sname = "picon_default"', plugin.index("compatibility_name = warderPiconSync.auxiliary_comma_compatibility_filename(sname)"))]
 assert provider_block.index("priority_path") < provider_block.index("self.findPicon(sname)") < provider_block.index("self.findPicon(compatibility_name[:-4])")
 assert "remove(" not in worker and "unlink(" in worker  # only temporary/archive rollback files are unlinked
+
+# A successful overlay refreshes the current exact tokens even when they did
+# not change. A failed or partial safe layer must not call the refresh gate.
+plugin_ast = ast.parse(plugin, filename="plugin.py")
+registry_defs = [node for node in plugin_ast.body if isinstance(node, ast.FunctionDef)
+                 and node.name in ("_warderRegisterAuxiliaryPiconConsumer",
+                                   "_warderRefreshInstalledAuxiliaryPicons")]
+registry_ns = {"weakref": weakref, "_WARDER_AUX_PICON_CONSUMERS": []}
+exec(compile(ast.Module(body=registry_defs, type_ignores=[]), "plugin-refresh-regression", "exec"), registry_ns)
+
+class _CurrentTokenConsumer:
+    def __init__(self):
+        self.provider_token = "DB MUX 4"
+        self.satellite_token = "150W"
+        self.refresh_count = 0
+        self.tokens_seen = None
+
+    def _warderRefreshAuxiliaryPicons(self):
+        self.refresh_count += 1
+        self.tokens_seen = (self.provider_token, self.satellite_token)
+
+consumer = _CurrentTokenConsumer()
+registry_ns["_warderRegisterAuxiliaryPiconConsumer"](consumer)
+registry_ns["_warderRefreshInstalledAuxiliaryPicons"]()
+assert consumer.refresh_count == 1 and consumer.tokens_seen == ("DB MUX 4", "150W")
+worker_closed = next(node for node in ast.walk(plugin_ast)
+                     if isinstance(node, ast.FunctionDef) and node.name == "_warderAuxWorkerClosed")
+refresh_gate = next(node.test for node in ast.walk(worker_closed)
+                    if isinstance(node, ast.If)
+                    and any(isinstance(child, ast.Call) and isinstance(child.func, ast.Name)
+                            and child.func.id == "_warderRefreshInstalledAuxiliaryPicons"
+                            for stmt in node.body for child in ast.walk(stmt)))
+refresh_allowed = compile(ast.Expression(refresh_gate), "plugin-refresh-gate", "eval")
+assert eval(refresh_allowed, {"safe_total": 172, "safe": {"updated": 172, "error": ""}})
+assert not eval(refresh_allowed, {"safe_total": 172, "safe": {"updated": 0, "error": "copy failed"}})
+assert not eval(refresh_allowed, {"safe_total": 172, "safe": {"updated": 172, "error": "copy failed"}})
 
 # Exercise the actual worker end-to-end using committed manifests and ZIPs, with
 # URL responses mapped locally so the test remains deterministic and offline.
