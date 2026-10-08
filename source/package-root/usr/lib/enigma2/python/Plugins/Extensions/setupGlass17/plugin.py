@@ -7578,7 +7578,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		"""Compare Warder versions with TEST prereleases below the matching stable."""
 		try:
 			value = str(value).strip().lstrip("vV")
-			match = re.match(r"^(\d+)\.(\d+)\.(\d+)(?:-test(\d+))?$", value, re.IGNORECASE)
+			match = re.match(r"^(\d+)\.(\d+)\.(\d+)(?:-test(\d+)(?:-auxstage\d+)?)?$", value, re.IGNORECASE)
 			if not match:
 				return (0, 0, 0, 0, 0)
 			major, minor, patch = (int(match.group(i)) for i in (1, 2, 3))
@@ -9003,9 +9003,12 @@ class downloadMenu(Screen):
 			if status not in (None, 0):
 				self.warderAuxWorkerRunning = False
 				raise ValueError("could not start auxiliary worker (%s)" % status)
-		except Exception:
+		except Exception as err:
 			self.warderAuxWorkerRunning = False
+			worker_output = self._warderAuxWorkerOutputText()
 			self._warderAuxWorkerCleanup()
+			if worker_output:
+				raise ValueError("%s; worker output: %s" % (err, worker_output))
 			raise
 		return True
 
@@ -9015,6 +9018,20 @@ class downloadMenu(Screen):
 				self.warderAuxOutput.append(data.decode("utf-8", "replace") if isinstance(data, bytes) else str(data))
 			except Exception:
 				pass
+
+	def _warderAuxWorkerOutputText(self):
+		try:
+			return "".join(getattr(self, "warderAuxOutput", [])).strip()[-2048:]
+		except Exception:
+			return ""
+
+	def _warderAuxWorkerFailureText(self, message, exit_code):
+		status = str(exit_code) if exit_code is not None else "unknown"
+		text = _("ERROR") + ": " + str(message) + "\nWorker exit status: " + status
+		worker_output = self._warderAuxWorkerOutputText()
+		if worker_output:
+			text += "\nWorker output: " + worker_output
+		return text
 
 	def _warderAuxWorkerCleanup(self):
 		for path in (getattr(self, "warderAuxRequestPath", None), getattr(self, "warderAuxResultPath", None)):
@@ -9029,17 +9046,33 @@ class downloadMenu(Screen):
 
 	def _warderAuxWorkerClosed(self, exit_code):
 		self.warderAuxWorkerRunning = False
-		result = {}
-		try:
-			path = self.warderAuxResultPath
-			if path and os.path.isfile(path) and not os.path.islink(path):
+		result = None
+		result_error = None
+		path = getattr(self, "warderAuxResultPath", None)
+		if not path or os.path.islink(path) or not os.path.isfile(path):
+			result_error = "auxiliary worker result file is missing or unsafe"
+		else:
+			try:
 				with open(path, "rb") as stream:
-					result = json.loads(stream.read(1024 * 1024 + 1).decode("utf-8"))
-		except Exception as err:
-			result = {"fatal_error": str(err), "results": []}
+					raw = stream.read(1024 * 1024 + 1)
+				if len(raw) > 1024 * 1024:
+					result_error = "auxiliary worker result file is too large"
+				elif not raw.strip():
+					result_error = "auxiliary worker result file is empty"
+				else:
+					result = json.loads(raw.decode("utf-8"))
+					if not isinstance(result, dict):
+						result = None
+						result_error = "auxiliary worker result is not a JSON object"
+			except Exception as err:
+				result = None
+				result_error = "invalid auxiliary worker result JSON: " + str(err)
 		try:
-			if result.get("fatal_error") or int(exit_code) != 0:
-				text = _("ERROR") + ": " + str(result.get("fatal_error") or "auxiliary worker failed")
+			if result_error:
+				text = self._warderAuxWorkerFailureText(result_error, exit_code)
+			elif result.get("fatal_error") or (exit_code is not None and exit_code != 0):
+				message = result.get("fatal_error") or "auxiliary worker failed"
+				text = self._warderAuxWorkerFailureText(message, exit_code)
 			else:
 				layers = {item.get("layer"): item.get("result", {}) for item in result.get("results", [])}
 				fallback = layers.get("legacy_fallback", {})
@@ -9056,7 +9089,7 @@ class downloadMenu(Screen):
 						and not safe.get("error")):
 					_warderRefreshInstalledAuxiliaryPicons()
 		except Exception as err:
-			text = _("ERROR") + ": " + str(err)
+			text = self._warderAuxWorkerFailureText("auxiliary worker result handling failed: " + str(err), exit_code)
 		self._warderAuxWorkerCleanup()
 		self.dwnLoop(text)
 

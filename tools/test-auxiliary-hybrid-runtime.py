@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Focused hybrid auxiliary publication/runtime regressions."""
+import ast
 import hashlib
 import importlib.util
 import json
@@ -9,6 +10,7 @@ import struct
 import tempfile
 import zipfile
 from pathlib import Path
+from types import MethodType, SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17"
@@ -157,6 +159,91 @@ assert "_run_job(fallback_job, base)" in worker_text and "_run_job(safe_job, bas
 assert "_warderRunAuxiliaryComposite" not in plugin
 assert "piconProv_220x132" in plugin and "piconSat_220x132" in plugin
 
+# Exercise the actual GUI callback methods without importing Enigma2. The tests
+# use only temporary result files and never invoke the worker or touch picons.
+plugin_tree = ast.parse(plugin)
+callback_nodes = {
+    node.name: node for node in ast.walk(plugin_tree)
+    if isinstance(node, ast.FunctionDef)
+    and node.name in ("_warderAuxWorkerClosed", "_warderAuxWorkerOutputText",
+                      "_warderAuxWorkerFailureText")
+}
+assert set(callback_nodes) == {
+    "_warderAuxWorkerClosed", "_warderAuxWorkerOutputText",
+    "_warderAuxWorkerFailureText",
+}
+callback_ns = {
+    "json": json,
+    "os": os,
+    "_": lambda value: value,
+    "warderPiconSync": SimpleNamespace(
+        auxiliary_result_summary=lambda *args: {"text": "auxiliary result"}),
+    "_warderRefreshInstalledAuxiliaryPicons": lambda: None,
+}
+callback_module = ast.Module(body=list(callback_nodes.values()), type_ignores=[])
+exec(compile(ast.fix_missing_locations(callback_module), str(PLUGIN_PATH), "exec"), callback_ns)
+
+class CallbackScreen:
+    def __init__(self, result_path, output):
+        self.warderAuxResultPath = result_path
+        self.warderAuxRequestPath = None
+        self.warderAuxWorker = None
+        self.warderAuxWorkerRunning = True
+        self.warderAuxOutput = output
+        self.messages = []
+
+    def _warderAuxWorkerCleanup(self):
+        for path in (self.warderAuxRequestPath, self.warderAuxResultPath):
+            if path:
+                try:
+                    os.unlink(path)
+                except OSError:
+                    pass
+        self.warderAuxRequestPath = None
+        self.warderAuxResultPath = None
+        self.warderAuxWorker = None
+
+    def dwnLoop(self, message):
+        self.messages.append(message)
+
+for case, payload, exit_status, output, expected in (
+    ("missing", None, 127, "worker failed to start", "missing or unsafe"),
+    ("empty", b"", 1, "ModuleNotFoundError: test", "result file is empty"),
+    ("malformed", b"{", 1, "worker stderr", "invalid auxiliary worker result JSON"),
+    ("fatal", json.dumps({"fatal_error": "manifest parse failed", "results": []}).encode(), 1,
+     "worker stderr", "manifest parse failed"),
+):
+    with tempfile.TemporaryDirectory(prefix="warder-aux-callback-test-") as temp:
+        result_path = os.path.join(temp, "result.json")
+        if payload is not None:
+            with open(result_path, "wb") as stream:
+                stream.write(payload)
+        screen = CallbackScreen(result_path, [output])
+        screen._warderAuxWorkerOutputText = MethodType(
+            callback_ns["_warderAuxWorkerOutputText"], screen)
+        screen._warderAuxWorkerFailureText = MethodType(
+            callback_ns["_warderAuxWorkerFailureText"], screen)
+        screen._warderAuxWorkerClosed = MethodType(
+            callback_ns["_warderAuxWorkerClosed"], screen)
+        screen._warderAuxWorkerClosed(exit_status)
+        message = screen.messages[-1]
+        assert expected in message, (case, message)
+        assert "Worker exit status: %d" % exit_status in message, (case, message)
+        assert output in message, (case, message)
+        assert "Expecting value: line 1 column 1 (char 0)" not in message, (case, message)
+
+with tempfile.TemporaryDirectory(prefix="warder-aux-callback-test-") as temp:
+    result_path = os.path.join(temp, "result.json")
+    with open(result_path, "w", encoding="utf-8") as stream:
+        json.dump({"kind": "provider", "variant": "black", "results": []}, stream)
+    screen = CallbackScreen(result_path, [])
+    screen._warderAuxWorkerOutputText = MethodType(callback_ns["_warderAuxWorkerOutputText"], screen)
+    screen._warderAuxWorkerFailureText = MethodType(callback_ns["_warderAuxWorkerFailureText"], screen)
+    screen._warderAuxWorkerClosed = MethodType(callback_ns["_warderAuxWorkerClosed"], screen)
+    screen._warderAuxWorkerClosed(0)
+    assert screen.messages == ["auxiliary result"], screen.messages
+
+
 # All 19 supported catalogs carry the user-facing task text and compile-ready translations.
 locale_root = PLUGIN_DIR / "locale"
 required = ("Close", "220 x 132 - Picons", "PATHS", "Transparent", "Black", "White",
@@ -195,4 +282,4 @@ assert "Total: 2643 picons updated" in baseline["text"]
 assert "Failures: 0" in baseline["text"]
 assert all(position in baseline["text"] for position in ("13.0E", "16.0E", "19.2E", "23.5E"))
 
-print("PASS: hybrid two-job plan, source isolation, exact pins, archive rejection cases, candidate ZIP integrity, and partial result status")
+print("PASS: hybrid publication/runtime plus auxiliary GUI missing/empty/malformed/fatal/success result handling")
