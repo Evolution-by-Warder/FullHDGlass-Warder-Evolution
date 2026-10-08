@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "catalog": {
+    "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+    "commit": "4e0e7233e93d4fc6afc5b22447730b3e8e5eaefd",
+    "path": "reports/auxiliary-production-integration-2026-10-08/auxiliary-catalog.json",
+    "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/4e0e7233e93d4fc6afc5b22447730b3e8e5eaefd/reports/auxiliary-production-integration-2026-10-08/auxiliary-catalog.json",
+    "size": 204123,
+    "sha256": "6631f646ed3d51a1e84317c9e3a45456b48c002781dc7338442e5c4d26b3a754",
+    "allowed_content_types": ["application/json", "text/plain", "application/octet-stream"],
+    "provider_count": 172,
+    "satellite_count": 1,
+    "identity_count": 173,
+    "png_count": 346,
+    "dimensions": [220, 132],
+    "mode": "RGBA",
+    "templates": {
+      "black": {"path": "templates/picons/black-sablona.png", "sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"},
+      "white": {"path": "templates/picons/white-sablona.png", "sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589"}
+    },
+    "approved_candidate_checkpoint": "8bf726a3d7ba046f5bc531c8236b573963b7557a",
+    "approved_qc_checkpoint": "13dd00b5624c4b6659574cdddedd503edc18947c",
+    "recorded_qc_checkpoint": "13dd00b5624c4b6659574cdddedd503edc18947"
+  },
+  "archive_bundle": {
+    "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+    "commit": "7b905e5163c0ebe726700a4950948adb1f91d89a",
+    "root_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/7b905e5163c0ebe726700a4950948adb1f91d89a/assets/warder/downloads/picons/auxiliary-staging-production/",
+    "allowed_content_types": ["application/zip", "application/octet-stream", "text/plain"],
+    "assets": {
+      "provider-black": {"filename": "provider-black.zip", "kind": "provider-logo", "variant": "black", "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/7b905e5163c0ebe726700a4950948adb1f91d89a/assets/warder/downloads/picons/auxiliary-staging-production/provider-black.zip", "size": 5950098, "sha256": "cbe5c0b19f9d7df2dc468e20d690e63dfc3b84293b768e3ede0b039ff8435985", "root": "piconProv_220x132", "png_count": 172},
+      "provider-white": {"filename": "provider-white.zip", "kind": "provider-logo", "variant": "white", "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/7b905e5163c0ebe726700a4950948adb1f91d89a/assets/warder/downloads/picons/auxiliary-staging-production/provider-white.zip", "size": 5916514, "sha256": "35ee49da5c80c41ed02d0fe3b21636450acd4e825d7d254b7301d09be50977cd", "root": "piconProv_220x132", "png_count": 172},
+      "satellite-black": {"filename": "satellite-black.zip", "kind": "satellite-logo", "variant": "black", "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/7b905e5163c0ebe726700a4950948adb1f91d89a/assets/warder/downloads/picons/auxiliary-staging-production/satellite-black.zip", "size": 39164, "sha256": "524987f00d336929d955e1faaf2a633939ef396133865ed495c50951f983e9b8", "root": "piconSat_220x132", "png_count": 1},
+      "satellite-white": {"filename": "satellite-white.zip", "kind": "satellite-logo", "variant": "white", "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/7b905e5163c0ebe726700a4950948adb1f91d89a/assets/warder/downloads/picons/auxiliary-staging-production/satellite-white.zip", "size": 38291, "sha256": "5bd357183da6be84402cf12916e53c9e02a65a918e48ead12481fdefa882e854", "root": "piconSat_220x132", "png_count": 1}
+    }
+  },
+  "rollback": {
+    "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+    "commit": "db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819",
+    "assets": {
+      "provider-black": {"url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/provider-black-warder-safe-220x132.zip", "size": 5736394, "sha256": "7b7499ca87529fd89859b3f10b8bd76ed8234a268f93c29e94fe3e23f075bb3d", "root": "piconProv_220x132", "png_count": 172},
+      "provider-white": {"url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/provider-white-warder-safe-220x132.zip", "size": 5752522, "sha256": "5e95db06d006ef212d8d3e756ffa067fe18b0bbc5f2c8825cebaa8ba6222e4ae", "root": "piconProv_220x132", "png_count": 172},
+      "satellite-black": {"url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/satellite-black-warder-safe-220x132.zip", "size": 36521, "sha256": "0808057c83a060fff98aa0bf0f1d2c2cda5b49ea9574b44af3e1a47d9477ed0e", "root": "piconSat_220x132", "png_count": 1},
+      "satellite-white": {"url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/satellite-white-warder-safe-220x132.zip", "size": 36634, "sha256": "9d55e86a420bfce1e7ad25eee8e5fba823b796119efd1665ee45109af684166e", "root": "piconSat_220x132", "png_count": 1}
+    }
+  }
+}

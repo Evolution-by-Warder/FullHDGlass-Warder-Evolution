@@ -1,10973 +1,4083 @@
-# -*- coding: utf-8 -*-
-from Screens.Screen import Screen
-from Components.config import *
-from Components.Label import Label
-from Components.ActionMap import ActionMap
-from Components.g17ConfigList import ConfigListScreen, ConfigList
-from Plugins.Plugin import PluginDescriptor
-from Screens.InfoBar import InfoBar
-from Components.ServiceEventTracker import ServiceEventTracker
-from enigma import eConsoleAppContainer, ePoint, RT_HALIGN_CENTER, eListboxPythonMultiContent, eListbox, gFont, eSize, ePixmap, eTimer, eServiceCenter, eServiceReference, iServiceInformation, iRdsDecoder, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersTerrestrial, getEnigmaVersionString
-import Screens.InfoBar
-from Tools.Transponder import ConvertToHumanReadable
-try:
-	from string import upper
-except: pass
-from Tools.LoadPixmap import LoadPixmap
-from Components.Console import Console as wConsole
-from Components.Sources.List import List
-from Components.NimManager import nimmanager
-from Components.FileList import FileList
-import time as time1
-import re, os
-import threading
-import unicodedata
-import json
-import hashlib
-import shutil
-import stat
-import zipfile
-import subprocess
-import tempfile
-import NavigationInstance
-try:
-	from urllib.request import Request, urlopen
-except ImportError:
-	from urllib2 import Request, urlopen
-ENACI = False
-try:
-	from enigma import eDVBCI_UI
-	from enigma import eDVBCIInterfaces
-	ENACI = True
-except: pass
-ENAVFT = False
-try:
-	from enigma import CT_MPEG2, CT_H264, CT_MPEG1, CT_MPEG4_PART2, CT_VC1, CT_VC1_SIMPLE_MAIN, CT_H265, CT_DIVX311, CT_DIVX4, CT_SPARK, CT_VP6, CT_VP8, CT_VP9, CT_H263, CT_MJPEG, CT_REAL, CT_AVS, CT_UNKNOWN
-	ENAVFT = True
-except: pass
-ENAHBB = False
-try:
-	from enigma import eHbbtv
-	ENAHBB = True
-except: pass
-EACC = False
-try:
-	from enigma import iAudioType_ENUMS as iAt
-	EACC = True
-except: pass
-ENA_TT = False
-try:
-	from enigma import iDVBFrontend
-	ENA_TT = True
-except: pass
-ENA_POPEN = False
-try:
-	from os import popen
-	ENA_POPEN = True
-except: pass
-try:
-	from enigma import quitMainloop
-except: pass
-try:
-	from Components.Sensors import sensors
-except: pass
-ENA_SLIDER = [False,False]
-try:
-	from enigma import eSlider
-	if 'setForegroundColor' in dir(eSlider):
-		ENA_SLIDER[0] = True		
-	if 'setBackgroundColor' in dir(eSlider):
-		ENA_SLIDER[1] = True
-except: pass		
-from socket import socket, AF_INET, SOCK_STREAM
-from skin import parseColor
-from Screens.InputBox import InputBox
-from Components.Input import Input
-from os import statvfs, listdir
-from Screens.Standby import TryQuitMainloop
-from Tools.HardwareInfo import HardwareInfo
-from Components.Pixmap import *
-from Tools.Directories import fileExists
-from ServiceReference import ServiceReference
-from Screens.MessageBox import MessageBox
-from Screens.ChoiceBox import ChoiceBox
-from . import warderPiconSync
-from Screens.InfoBarGenerics import InfoBarPlugins
-from Components.MenuList import MenuList
-from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmap, MultiContentEntryPixmapAlphaTest
-from keymapparser import readKeymap
-from xml.etree.cElementTree import parse, fromstring
-from Components.Sources.StaticText import StaticText
-from Components.g17SelectionList import SelectionList
-import gettext
-from Components.Sources.CanvasSource import CanvasSource
-from Plugins.Extensions.setupGlass17.txt import helpTxt, SATLIST
-try:
-	from Plugins.Extensions.setupGlass17.warderProgramInfo import lookup as warderProgramLookup
-except Exception:
-	warderProgramLookup = None
-from datetime import datetime
-from Plugins.Extensions.setupGlass17.weaUtils import *
-if ISP38:
-	from urllib.parse import quote
-	import importlib
-else:
-	from urllib import quote
-ENA_POSTER = False
-try:
-	from enigma import loadJPG
-	ENA_POSTER = True
-except: pass
-PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
-# TEST106: install OpenWebif Radio-All hook lazily against the receiver-proven GrabScreenshot class.
-_warderOwiHookInstalled = False
-_warderNativeGrabRender = None
-_warderOwiGetUrlArg = None
-
-def _warderRadioGrabRender(self, request):
-	global _warderNativeGrabRender, _warderOwiGetUrlArg
-	# TEST183: DVB radio service types 0x02 (digital radio sound) and 0x0A (advanced-codec radio) are both RADIO. Determine this from the live service at screenshot time.
-	# The TEST106 marker remains only as a fallback. This removes the timing
-	# dependency which left OpenWebif in TV mode on DVB radio services without RDS.
-	is_radio = False
-	try:
-		ref = NavigationInstance.instance and NavigationInstance.instance.getCurrentlyPlayingServiceReference()
-		refstr = ref.toString() if ref is not None else ""
-		fields = refstr.split(":")
-		is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
-	except Exception:
-		pass
-	if not is_radio:
-		try:
-			with open("/tmp/warder-radio-current", "r") as marker:
-				is_radio = marker.read().strip() == "A"
-		except Exception:
-			is_radio = False
-	mode = _warderOwiGetUrlArg(request, "mode")
-	if not is_radio or mode not in (None, "", "all"):
-		return _warderNativeGrabRender(self, request)
-	fmt = _warderOwiGetUrlArg(request, "format") or "jpg"
-	if fmt not in ("jpg", "png", "bmp"):
-		fmt = "bmp"
-	master = "/usr/share/enigma2/hd_glass17/warder-radio-background.jpg"
-	fd, osd = tempfile.mkstemp(prefix="warder-radio-http-osd-", suffix=".png", dir="/tmp"); os.close(fd)
-	fd, out = tempfile.mkstemp(prefix="warder-radio-http-out-", suffix="." + fmt, dir="/tmp"); os.close(fd)
-	try:
-		subprocess.check_call(["/usr/bin/grab", "-q", "-o", "-p", osd], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
-		ffmpeg = "/usr/bin/ffmpeg" if os.path.isfile("/usr/bin/ffmpeg") else "ffmpeg"
-		cmd = [ffmpeg, "-nostdin", "-y", "-loglevel", "error", "-i", master, "-i", osd, "-filter_complex", "[0:v][1:v]overlay=0:0:format=auto", "-frames:v", "1"]
-		if fmt == "jpg": cmd += ["-vcodec", "mjpeg", "-q:v", "2", out]
-		elif fmt == "png": cmd += ["-vcodec", "png", out]
-		else: cmd += ["-vcodec", "bmp", out]
-		subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=12)
-		with open(out, "rb") as image: payload = image.read()
-		if not payload: raise IOError("empty Radio screenshot")
-		request.setHeader("Content-Type", "image/" + ("jpeg" if fmt == "jpg" else fmt))
-		request.setHeader("Content-Length", str(len(payload)))
-		return payload
-	except Exception as error:
-		try:
-			with open("/tmp/warder-radio-webif-error.log", "a") as log: log.write("%s render-error: %r\\n" % (time1.strftime("%Y-%m-%d %H:%M:%S"), error))
-		except Exception: pass
-		try:
-			with open(master, "rb") as image: payload = image.read()
-			request.setHeader("Content-Type", "image/jpeg"); request.setHeader("Content-Length", str(len(payload)))
-			return payload
-		except Exception:
-			return _warderNativeGrabRender(self, request)
-	finally:
-		for path in (osd, out):
-			try: os.unlink(path)
-			except Exception: pass
-
-def _warderInstallOpenWebifGrabHook():
-	global _warderOwiHookInstalled, _warderNativeGrabRender, _warderOwiGetUrlArg
-	if _warderOwiHookInstalled: return True
-	try:
-		from Plugins.Extensions.OpenWebif.controllers.models import grab as owiGrab
-		from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg as owiGetUrlArg
-		_warderOwiGetUrlArg = owiGetUrlArg
-		grabClass = getattr(owiGrab, "GrabScreenshot", None)
-		if grabClass is None:
-			raise AttributeError("OpenWebif grab module has no GrabScreenshot class")
-		if grabClass.render is not _warderRadioGrabRender:
-			_warderNativeGrabRender = grabClass.render
-			grabClass.render = _warderRadioGrabRender
-		_warderOwiHookInstalled = True
-		with open("/tmp/warder-radio-webif-hook.log", "a") as log: log.write("%s installed GrabScreenshot.render\\n" % time1.strftime("%Y-%m-%d %H:%M:%S"))
-		return True
-	except Exception as error:
-		try:
-			with open("/tmp/warder-radio-webif-hook.log", "a") as log: log.write("%s install-error: %r\\n" % (time1.strftime("%Y-%m-%d %H:%M:%S"), error))
-		except Exception: pass
-		return False
-
-config.plugins.setupGlass17 = ConfigSubsection()
-config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
-CH_LOG = "AllAboutNew"
-HIST = "history.txt"
-try:
-	if config.plugins.setupGlass17.par49.value:
-		glass17_language = []
-		glass17_language = config.osd.language.value.split("_")
-		if "cs" in glass17_language or "sk" in glass17_language:
-			CH_LOG += "Sk"
-			HIST += "Sk"
-		if os.path.exists(PLUGINPATH + "locale/%s" % (glass17_language[0])):
-			_ = gettext.Catalog('setupGlass17', PLUGINPATH + 'locale', glass17_language).gettext
-except: pass
-ENA_ANIM = False
-try:
-	from Components.ScreenAnimations import *
-	a = ScreenAnimations()
-	a.fromXML(PLUGINPATH+"anim_definition.xml")
-	ENA_ANIM = True
-except: pass
-
-def Writelog(txt):
-	log = PLUGINPATH+"g17.txt"
-	if os.path.isfile(log):
-		if os.path.getsize(log) > 1000000:
-			try:
-				os.remove(log)
-			except OSError:
-				pass
-	try:
-		f = open(log,"a")
-		f.write("%s\\n" % str(txt))
-		f.close()
-	except IOError: pass
-##########################################################################################################################
-def _warderUiText(text):
-	"""Warder UI strings follow the active Enigma2 OSD language without legacy gettext collisions."""
-	try:
-		lang = config.osd.language.value.split("_")[0].lower()
-	except Exception:
-		lang = "en"
-	warder = {
-		"sk": {"PROGRAM INFO": "Info o programe", "Station name:": "NÃ¡zov stanice:", "Close": "ZavrieÅ¥", "Add Timer": "PridaÅ¥ ÄasovaÄ", "Goto Date/Time": "PrejsÅ¥ na dÃ¡tum/Äas", "EPG Search": "VyhÄ¾adaÅ¥ v EPG", "Station:": "Stanica:", "Genre:": "Å½Ã¡ner:", "Year:": "Rok:", "Country:": "Krajina:", "Duration:": "DÄºÅ¾ka:", "Broadcast:": "Vysielanie:", "Rating:": "Hodnotenie:"},
-		"cs": {"PROGRAM INFO": "Info o programu", "Station name:": "NÃ¡zev stanice:", "Close": "ZavÅ™Ã­t", "Add Timer": "PÅ™idat ÄasovaÄ", "Goto Date/Time": "PÅ™ejÃ­t na datum/Äas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Genre:": "Å½Ã¡nr:", "Year:": "Rok:", "Country:": "ZemÄ›:", "Duration:": "DÃ©lka:", "Broadcast:": "VysÃ­lÃ¡nÃ­:", "Rating:": "HodnocenÃ­:"}
-	}
-	if text in warder.get(lang, {}):
-		return warder[lang][text]
-	try:
-		translated = _(text)
-		if translated and translated != text:
-			return translated
-	except Exception:
-		pass
-	return text
-
-class WarderProgramInfo(Screen):
-	"""FullHDGlass-owned programme detail. EPG is authoritative; unknown metadata stays hidden."""
-	skin = """
-	<screen name="WarderProgramInfo" position="15,15" size="1890,1050" title="PROGRAM INFO" backgroundColor="transpBlack2" flags="wfNoBorder">
-		<eLabel position="18,18" size="1854,1014" backgroundColor="transpBlack3" zPosition="-5" />
-		<widget name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" />
-		<eLabel text="FullHDGlass17 Â· Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
-		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
-		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
-		<widget name="stationPicon" position="125,425" size="180,90" zPosition="3" alphatest="blend" />
-		<widget name="stationLabel" position="50,520" size="190,34" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="channel" position="225,520" size="235,34" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="genreLabel" position="50,560" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="genreMeta" position="225,560" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="yearLabel" position="50,593" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="yearMeta" position="225,593" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="countryLabel" position="50,626" size="170,32" font="Prive3;24" foregroundColor="#3388dd" transparent="1" />
-		<widget name="countryMeta" position="225,626" size="235,32" font="Prive4;24" foregroundColor="#dddddd" transparent="1" />
-		<widget name="ratingStars" position="1390,105" size="430,45" font="Prive4;36" halign="right" foregroundColor="#e53935" transparent="1" />
-		<widget name="ratingMeta" position="1390,152" size="430,36" font="Prive4;25" halign="right" foregroundColor="#dddddd" transparent="1" />
-		<widget name="when" position="580,170" size="760,42" font="Prive3;30" foregroundColor="#e5b243" transparent="1" />
-		<widget name="short" position="580,235" size="1220,120" font="Prive3;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,405" size="1840,2" backgroundColor="#707070" />
-		<widget name="durationLabel" position="50,675" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="durationMeta" position="225,675" size="235,34" font="Prive4;29" foregroundColor="#dddddd" transparent="1" />
-		<widget name="broadcastLabel" position="50,714" size="170,34" font="Prive3;29" foregroundColor="#3388dd" transparent="1" />
-		<widget name="broadcast" position="225,714" size="235,82" font="Prive4;28" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="500,425" size="2,490" backgroundColor="#707070" />
-		<widget name="description" position="535,425" size="1300,490" font="Prive4;31" foregroundColor="#dddddd" transparent="1" />
-		<eLabel position="25,940" size="1840,2" backgroundColor="#707070" />
-		<eLabel position="25,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyRed" render="Label" position="25,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="red" transparent="1" zPosition="4" />
-		<eLabel position="490,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyGreen" render="Label" position="490,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="4" />
-		<eLabel position="955,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyYellow" render="Label" position="955,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="yellow" transparent="1" zPosition="4" />
-		<eLabel position="1420,955" size="420,62" backgroundColor="transpBlack3" zPosition="2" />
-		<widget source="keyBlue" render="Label" position="1420,963" size="420,46" font="Prive3;30" halign="center" valign="center" foregroundColor="#3388dd" transparent="1" zPosition="4" />
-	</screen>"""
-
-	def __init__(self, session, event=None, service=None):
-		Screen.__init__(self, session)
-		for name in ("nowDate", "nowTime", "title", "channel", "when", "short", "durationMeta", "broadcast", "description", "stationLabel", "genreLabel", "genreMeta", "yearLabel", "yearMeta", "countryLabel", "countryMeta", "ratingStars", "ratingMeta", "durationLabel", "broadcastLabel"):
-			self[name] = Label("")
-		for name in ("keyRed", "keyGreen", "keyYellow", "keyBlue"):
-			self[name] = StaticText("")
-		self["programArtwork"] = Pixmap()
-		self["stationPicon"] = Pixmap()
-		self._artworkPath = ""
-		self["stationLabel"].setText(_warderUiText("Station name:"))
-		self["genreLabel"].setText(_warderUiText("Genre:"))
-		self["yearLabel"].setText(_warderUiText("Year:"))
-		self["countryLabel"].setText(_warderUiText("Country:"))
-		for field in ("genreMeta", "yearMeta", "countryMeta"):
-
-			self[field].setText("-")
-		self["durationLabel"].setText(_warderUiText("Duration:"))
-		self["broadcastLabel"].setText(_warderUiText("Broadcast:"))
-		self["keyRed"].setText(_warderUiText("Close"))
-		self["keyGreen"].setText(_warderUiText("Add Timer"))
-		self["keyYellow"].setText(_warderUiText("Goto Date/Time"))
-		self["keyBlue"].setText(_warderUiText("EPG Search"))
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {"ok": self._closeProgramInfo, "cancel": self._closeProgramInfo, "red": self._closeProgramInfo, "green": lambda: self._closeProgramInfo("green"), "yellow": lambda: self._closeProgramInfo("yellow"), "blue": lambda: self._closeProgramInfo("blue")}, -2)
-		self._serviceRef = self._normaliseServiceRef(service)
-		self["nowDate"].setText(time1.strftime("%A  %d.%m.%Y", time1.localtime()))
-		self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
-		if event is not None:
-			try:
-				eventName = event.getEventName() or ""
-				self["title"].setText(eventName)
-			except Exception: pass
-			try:
-				begin = int(event.getBeginTime()); duration = int(event.getDuration())
-				startDate = time1.strftime("%d.%m.%Y", time1.localtime(begin)); startTime = time1.strftime("%H:%M", time1.localtime(begin)); endTime = time1.strftime("%H:%M", time1.localtime(begin + duration)); minutes = duration // 60
-				self["when"].setText("%s   %s - %s  (%d min)" % (startDate, startTime, endTime, minutes))
-				self["durationMeta"].setText("%d min" % minutes)
-				self["broadcast"].setText("%s\n%s - %s" % (startDate, startTime, endTime))
-			except Exception: pass
-			try: self["short"].setText(event.getShortDescription() or "")
-			except Exception: pass
-			try: self["description"].setText(event.getExtendedDescription() or event.getShortDescription() or "")
-			except Exception: pass
-		self._metadataTitle = event.getEventName() or "" if event is not None else ""
-		self._metadataContext = " ".join(filter(None, [event.getShortDescription() or "", event.getExtendedDescription() or ""])) if event is not None else ""
-		self._metadataResult = None
-		self._metadataDone = False
-		self._metadataClosed = False
-		self._metadataTimer = eTimer()
-		self._metadataTimer.callback.append(self._pollMetadataLookup)
-		serviceName = self._serviceName(service, self._serviceRef)
-		self["channel"].setText(serviceName)
-		self.onLayoutFinish.append(self._loadServicePicon)
-		self.onLayoutFinish.append(self._startMetadataLookup)
-	def _closeProgramInfo(self, *retVal):
-		self._metadataClosed = True
-		try:
-			self._metadataTimer.stop()
-		except Exception:
-			pass
-		try:
-			self.hide()
-		except Exception:
-			pass
-		return self.close(*retVal)
-
-	def _startMetadataLookup(self):
-		if not self._metadataTitle or warderProgramLookup is None:
-			return
-		def worker():
-			try:
-				self._metadataResult = warderProgramLookup(self._metadataTitle, self._metadataContext)
-			except Exception as e:
-				Writelog("WarderProgramInfo metadata: %s" % e)
-				self._metadataResult = {}
-			self._metadataDone = True
-		thread = threading.Thread(target=worker)
-		thread.daemon = True
-		thread.start()
-		self._metadataTimer.start(500, False)
-
-	def _pollMetadataLookup(self):
-		if self._metadataClosed:
-			self._metadataTimer.stop()
-			return
-		if not self._metadataDone:
-			# Keep a tiny real repaint heartbeat while the worker is pending. OpenATV gRC
-			# shows its busy tile after a long no-paint interval; this prevents that
-			# without manipulating global spinner state or blocking remote-key input.
-			try:
-				self["nowTime"].setText(time1.strftime("%H:%M:%S", time1.localtime()))
-			except Exception:
-				pass
-			return
-		self._metadataTimer.stop()
-		meta = self._metadataResult or {}
-		try:
-			self._artworkPath = meta.get("artwork_path") or ""
-			if meta.get("genre"): self["genreMeta"].setText(meta["genre"])
-			if meta.get("year"): self["yearMeta"].setText(meta["year"])
-			if meta.get("country"): self["countryMeta"].setText(meta["country"])
-			if meta.get("rating"):
-				rating_text = str(meta["rating"]).strip()
-				rating = float(rating_text.split("/", 1)[0].strip())
-				filled = max(0, min(5, int(round(rating / 2.0))))
-				self["ratingStars"].setText("â˜…" * filled + "â˜†" * (5 - filled))
-				self["ratingMeta"].setText("%s Â· %s" % (rating_text, meta.get("provider", "TMDB")))
-			self._loadProgramArtwork()
-		except Exception as e:
-			Writelog("WarderProgramInfo metadata apply: %s" % e)
-
-	def _loadProgramArtwork(self):
-		try:
-			if self._artworkPath and os.path.isfile(self._artworkPath):
-				pix = LoadPixmap(path=self._artworkPath)
-				if pix is not None:
-					self["programArtwork"].instance.setScale(1)
-					self["programArtwork"].instance.setPixmap(pix)
-					self["programArtwork"].show()
-					return
-		except Exception as e:
-			Writelog("WarderProgramInfo artwork: %s" % e)
-		try:
-			self["programArtwork"].hide()
-		except Exception:
-			pass
-
-	def _normaliseServiceRef(self, service):
-		if service is None: return None
-		try:
-			if isinstance(service, eServiceReference): return service
-		except Exception: pass
-		try:
-			ref = getattr(service, "ref", None)
-			if ref is not None: return ref
-		except Exception: pass
-		try:
-			if hasattr(service, "toString"): return eServiceReference(service.toString())
-		except Exception: pass
-		try: return eServiceReference(str(service))
-		except Exception: return None
-
-	def _serviceName(self, service, serviceRef):
-		try:
-			if service is not None and hasattr(service, "getServiceName"):
-				name = service.getServiceName() or ""
-				if name: return name.replace("\xc2\x86", "").replace("\xc2\x87", "")
-		except Exception: pass
-		try:
-			if serviceRef is not None: return (ServiceReference(serviceRef).getServiceName() or "").replace("\xc2\x86", "").replace("\xc2\x87", "")
-		except Exception: pass
-		return ""
-
-	def _loadServicePicon(self):
-		if self._serviceRef is None: return
-		try:
-			from Components.Renderer.Picon import getPiconName
-			picon = getPiconName(self._serviceRef.toString())
-			if picon and os.path.isfile(picon) and self["stationPicon"].instance is not None:
-				self["stationPicon"].instance.setScale(1)
-				self["stationPicon"].instance.setPixmapFromFile(picon)
-				self["stationPicon"].show()
-		except Exception as e:
-			Writelog("WarderProgramInfo picon: %s" % e)
-
-##########################################################################################################################
-def readHWtype():
-	brand = "Unknown"  
-	model = "Unknown"	
-	if fileExists("/proc/stb/info/boxtype"):
-		brand = "Clarke-Tech"
-		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip()
-		f.close()
-	if not "et8500" in model:
-		if fileExists("/proc/stb/info/vumodel"):
-			brand = "Vu"
-			f = open("/proc/stb/info/vumodel",'r')
-			model = f.readline().strip()
-			f.close()
-		elif fileExists("/proc/stb/info/boxtype"):
-			brand = "Clarke-Tech"
-			f = open("/proc/stb/info/boxtype",'r')
-			model = f.readline().strip()
-			f.close()
-		elif fileExists("/proc/stb/info/model"):
-			brand = "Dream Multimedia"
-			f = open("/proc/stb/info/model",'r')
-			model = f.readline().strip()
-			f.close()
-			if "cuberevo" in model or "Cuberevo" in model or "Ipbox" in model or "ipbox" in model or "IPbox" in model:
-				brand = "AB-Com"
-			elif "premium" in model:
-				brand = "AZbox"
-	return brand, model	
-##########################################################################################################################
-XCPU = "mipsel"
-try:
-	cpu = open("/proc/cpuinfo", "r").read()
-	if cpu.find("sh4") != -1:
-		XCPU = "sh4"
-	elif cpu.find("ARMv7") != -1:
-		XCPU = "arm"
-	elif HardwareInfo().get_device_name() in ('one', 'two'):
-		XCPU = "aarch64"
-except: pass
-def chckVersion(ff="ViX"):
-	what = False
-	try:
-		for t in ["image-version", "issue", "bpversion"]:
-			tt = "/etc/%s" % t
-			if os.path.exists(tt):
-				a = open(tt, "r").read()
-				if a.find(ff) != -1:
-					what = True
-					break
-	except: pass
-	return what
-isATV = chckVersion("openATV")
-HDDTMP = "/media/hdd/hdg_tmp"
-SEVENZIP = os.path.join(PLUGINPATH, "bin", "7z_g")
-NO_TUN = _("No tuner data")
-ER_F = _(" failed") + " !!!\n"
-DSC = '/tmp/.doscam/doscam.version'
-NCM = '/tmp/.ncam/ncam.version'
-GCM = '/tmp/.gcam/gcam.version'
-CHANSEL_FILE = "/usr/lib/enigma2/python/Screens/ChannelSelection.py"
-KMP_FILE = "/usr/share/enigma2/keymap.xml"
-USERXML = "/etc/enigma2/skin_user.xml"
-USERHDG = "/etc/enigma2/skin_user-hdg17.xml"
-USERORI = "/etc/enigma2/skin_user-ori17.xml"
-SKINXML = "/usr/share/enigma2/hd_glass17/skin.xml"
-SCREENSPATH = "/usr/lib/enigma2/python/Screens/"  
-ENC_U = SHAREPATH + "encoding-user17.conf"
-ENC_O = SHAREPATH + "encoding-ori17.conf"
-ENC_C = SHAREPATH + "encoding.conf"
-PYTHONPATH = "/usr/lib/enigma2/python/"
-SKINALL = PLUGINPATH + "hdg17Screens.xml"
-TM_P = "/tmp/tmp.tmp"
-ISVTI = os.path.exists(PYTHONPATH + "Plugins/SystemPlugins/VTIPanel")
-ECL = not os.path.exists(PYTHONPATH + "Plugins/Extensions/ClearMem")
-EFIFO = os.path.isfile(SCREENSPATH + "ServiceScan.py")
-MAXSCREENS = 100
-IS800SE = 'dm800se' in HardwareInfo().get_device_name()
-IS820 = 'dm820' in HardwareInfo().get_device_name()
-MAXICONS = 31
-POSTER = '<widget render="g17Poster" source="session.Event_Now" position="%s,%s" size="%s" backgroundColor="transparent" zPosition="0" transparent="0" />\n'
-NETSPEED = '<ePixmap position="%s,%s" size="270,50" pixmap="hd_glass17/icons/netspeed.png" zPosition="7" alphatest="off" />\n<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="%s,%s" size="190,50" zPosition="8" font="Regular2;26" noWrap="1" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1"/>\n'
-NETSPEEDT = '<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="%s,%s" size="220,40" zPosition="8" font="Prive3;27" noWrap="1" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" transparent="1"/>\n'
-FCAID = ["4AF4","4B63","4B24","4B64","4A70","4AEA","4AE1","4AE0","4ABF","4AEE","4AFC","2710","5581","1010","1702","1722","1762","4AD0","4AD1","1EC0","44A0","4AB0"]
-CLR = '\n..............\n..............'
-ALL_CFG = [
-		'Icons type','Bitrate','Address in ecm','Enabled Extra infobar','Enabled Enhanced infobar','Extra screen','Menu type','Second picon type','','Special info x-pos.',
-		'Special info y-pos.','Special info type','Weather location','Standard Infobar type','OLED type','Bar background','Ecmline info type','Volume type','Channel sel. type','ECMline, btr, CPU/Mem, Fan color',
-		'HDD wake up','Path to hdd','HDD state','Display nighttime icons','Full bitrate','CAID PIDs','Fade in/out','Fade speed','Fade in','Typewriting',    
-		'User info type','Permanent user info','Act/next event','Neutrino','Bitrate limit','','','','','OLED off',    
-		'Black/white','Audio type','','Style','Title color','EPG list font size','Mute transparency','Sat names only','Translation','Display CW0/1',
-		'Volume x-pos.','Volume y-pos.','Font size event','EPG selection type','Ignore timeout','Animated Weather Icons','Net connect','Clearmem','Encoding-user','Empty icons in menu type icons',
-		'','ChannelSel 2xOK','Anim in menu type icons','screensaver in radio mode','','Animated icons eWeather','Service scan long list','PIG type','MenuIcons','',
-		'Weather nextCity','IconsWeather','Special info timeout','ECM refresh','Update','Text rolling','Delay text rolling','Special info extensions','CH. name type','Address','Provider','Temp/RPM','CPU/Mem','Temp.HDD',
-		'Special info mainmenu','Weather units','Weather reloading time','Weather provider','','','wea-autoreconnect time','Show yesterday',
-		'Warm color','Cold color','Fair color','Warm temperature','Cold temperature','Ewea city','','','Show astro(eWea)','D.icon CAM','D.icon type',
-		'Number of tuners','Active tuner color','B. active tuner color','Standby tuner color','Missing tuner color','Desc. color','Desc. selected color','Ch. name selected color',
-		'Recording tuner color','Recording and live tuner color','Recording icon','Bitrate color','ECM color','Chsel. name color','ECM labels color','ECM values color','Progressive detection',
-		'TP type color','TP info color','Video resolution color','User def. path','Path to picons','Ch. num. calculating','Date format ext. infobar','Date color','Time color','Seconds color',
-		'Date format others','Date format ch.sel.','Date format menu','Date format infobar','Ch. name color','Event now color','Event next color','Ign. leading 0','Hide missing and standby tuners','',
-		'Path to satellites.xml','Remaining time in extra EPG','OpenWeatherMap more days forecast','HDG conf path','Service name font size','Service info font size','CH. line Height',
-		'Ext. desc. font size','Warm temperature F','Cold temperature F','Ewea units','','Listbox Bigger','Listbox Big','Listbox Medium','Listbox Small',
-		'Listbox Smaller','Weather anim. speed','Ewea anim. speed','Movieplayer infobar HDD state','Enable Animations','Picon Animation','Second Picon Animation','ECM line Animation',
-		'Menu Icons Animation','Ch.sel Icons Animation','TP info/type Animation','Tuner info','Animated WeaInf Icons','WeaInf anim. speed','Weather type special','Weather type user',
-		'Weather title type','Wea/ewea date color','Wea/ewea state color','Wea UV color','Wea wind color','','Reference separating char','Netatmo stations','Netatmo stations switch time','',		
-		'Extra Screen Offset','10 days switch time','Ewea date format','Weather date format','D.icon tuner','Ign. leading 0 date','Bitratecalc.so','On/Off pixmap','Unknown CAID',
-		'CI informations','ECM from current displayed channel','','','Show PID in ECM line','Show CHID in ECM line','Show poster','','Poster x-position','Poster y-position','Poster size',
-		'Poster animation','Poster provider','Poster search delay','','Removing current Poster','VTi SplitScreen','Net Speed','Net speed x-position','Net speed y-position','','Net speed color',		
-		'Progress bar background color','Progress bar foreground color','','','','','','','Progress bar pixmap','Hide SNR/AGC (Q/S) if value is 0','Movie Selection type',
-		'IPTV Radio Detection','Net Speed type','Extended Number ZAP','Weather API-Key OpenWeatherMap','EventView type'
-		]
-ENA_ELFS = False                                                                
-ENA_ELPLI = False
-ENA_BH = False
-ENA_PLI2 = False
-try:
-	for x in ["skin_default.xml","skin.xml","PLi-FullHD/skin.xml","PLi-FullHD/skin_templates.xml","Vu_HD_1080P/skin.xml"]:
-		if os.path.isfile(SHAREPATH + x):
-			r = open(SHAREPATH + x, "r").read()
-			if r.find('name="EPGlistFont1"') != -1 or r.find('name="EPGList0"') != -1:
-				ENA_ELFS = True
-			if r.find('setEventItemFont="') != -1:
-				ENA_ELPLI = True    			
-			if r.find('type="BhAnalogic') != -1:
-				ENA_BH = True 
-			if "PLi-FullHD" in x and r.find('objectTypes="') != -1:
-				ENA_PLI2 = True 
-except: pass
-if os.path.isfile(PYTHONPATH + "Plugins/SystemPlugins/OBH/__pycache__/") or os.path.isfile(PYTHONPATH + "Plugins/Satdreamgr/__init__.pyo") or os.path.isfile(PYTHONPATH + "Plugins/Extensions/OpenSPAPlug/__init__.pyo"):
-	ENA_ELPLI = True
-	ENA_PLI2 = True
-ENA_LS = False
-try:
-	r = open(SKINXML, "r").read()
-	if r.find('type="Smaller"') != -1 and r.find('type="Bigger"') != -1:
-		ENA_LS = True
-except: pass
-ENA_SYM = True
-if ISVTI:
-	ENA_SYM = False
-ENA_D = 'mipsel'
-RSTCMD = ['killall', '-9', 'enigma2']
-ENA_P_CH = False
-ENA_I_T = False
-if os.path.exists('/etc/dpkg'):
-	RSTCMD = ['systemctl', 'restart', 'enigma2']
-	ENA_D = 'debpkg'
-	try:
-		from Components.Renderer.g17TunersLabel import getTunerDesc
-		ENA_I_T = True
-	except: pass
-else:
-	try:
-		ENA_Z = config.usage.show_event_progress_in_servicelist.value
-		f = config.usage.show_event_progress_in_servicelist.value
-		while (True):
-			if "perc" in f:			
-				ENA_P_CH = True 
-				config.usage.show_event_progress_in_servicelist.value = ENA_Z
-				break
-			config.usage.show_event_progress_in_servicelist.handleKey(1)
-			f = config.usage.show_event_progress_in_servicelist.value
-			if ENA_Z == f:			
-				break                                                                                                                                                                                                                                                                              
-	except: pass 
-ENA_Z = False
-try:
-	from enigma import eMediaDatabase
-	ENA_Z = True                                                                                                                                                                                                                                                                               
-except: pass                                                                                                                                                                                                                                                                                                             
-ENA_ONOFF = False
-if ENA_D == 'debpkg':
-	try:
-		from Components.config import ConfigBoolean
-		if str(len(ConfigBoolean._onOffPixmaps)).isdigit():
-			ENA_ONOFF = True                                                                                                                                                                                                                                                                               
-	except: pass
-else:
-	ENA_ONOFF = True
-colors = [("AutoColors",_("AutoColors")),("#ffffff",_("White")),("#dddddd",_("White")+"2"),("#00d100",_("Green")),("#00ff00",_("Green")+"2"),("#ff9c00",_("Orange")),("#ff8000",_("Orange")+"2"),("#ff6000",_("Orange")+"3"),("#ff3300",_("Red")),("#ff0000",_("Red")+"2"),("#dd0000",_("Red")+"3"),("#dd00ff",_("Purple")),("#99bad6",_("Gray")),("#777777",_("Gray")+"2"),("#cdcdcd",_("Gray")+"3"),("#707070",_("Gray")+"4"),("#404040",_("Gray")+"5"),("#138AEC",_("Blue")),("#0000ff",_("Blue")+"2"),("#6cbcf0",_("Blue")+"3"),("#0077ff",_("Blue")+"4"),("#00497F",_("Blue")+"5"),("#ffcc00",_("Yellow")),("#ecb100",_("Yellow")+"2"),("#FFED00",_("Yellow")+"3"),("#bab329",_("Yellow")+"4")]         
-colors1 = [("None","None")]         
-dFormat = [("D",_("Auto")),("%A %B %d, %Y",_("Type")+" 1"),("%A  %d.%B %Y",_("Type")+" 2"),("%A, %d %B %Y",_("Type")+" 3"),("%d.%m.%Y",_("Type")+" 4"),("%A, %d.%B %Y",_("Type")+" 5"),("%d.%B %Y",_("Type")+" 6"),("%Y %B %e, %A",_("Type")+" 7"),("%Y.%m.%d",_("Type")+" 8"),("%Y %B %e",_("Type")+" 9"),("%A  %e %B",_("Type")+" 10")]
-b,m = readHWtype()
-oledT = [("0",_("from image")),("1",_("G17 (Ch. Name)")),("2",_("Default")),("3",_("only Picon")),("4",_("only Time")),("23",_("only Time")+"2"),("5",_("VU+ (Ch. Name)")),("6",_("VU+ (Act. event)")),("7",_("VU+ (Ch. Name + Act. event)")),("8",_("G17 (Act. event)")),("9",_("G17 (Ch. Name + Act. event)")),("10",_("G17 (Top:Ch. Name, Bottom:Act. event)")),("11",_("G17 (Top:Ch. Name, Bottom:Snr and Agc)")),("12",_("VU+ Ultimo")),("13",_("Picon and Time")),("14",_("Default 2")),("15",_("VU+ Duo2 Snr,Agc")),("16",_("VU+ Duo2 Snr,Agc,RPM,Temp.")),("17",_("VU+ 4k Snr,Agc")),("18",_("Duo2 Snr,Agc,RPM,Temp. 2")),("19",_("Classical")),("20",_("with ZZPicon")),("21",_("Classical")+"2"),("22",_("with Picon 400x240"))]
-if "Dream" in b:
-	if "dm8" in m or "dm7020" in m:
-		oledT = oledT[0:6]+oledT[9:13]+oledT[14:16]
-	elif "dm9" in m:
-		oledT = oledT[0:1]+oledT[20:24]	
-	else:
-		oledT = oledT[0:1]	
-elif "Vu" in b or "Clark" in b:
-	if "duo2" in m:
-		oledT = oledT[0:1]+oledT[16:18]+oledT[19:20]
-	elif "4k" in m or "et8500" in m:
-		oledT = oledT[0:1]+oledT[18:19]+oledT[20:24]
-	elif "timo" in m:
-		oledT = oledT[0:1]+oledT[13:14]
-	else:
-		oledT = oledT[0:1]+oledT[6:9]
-chsT = [("1",_("Glass17")),("3",_("Glass17(+next event)")),("4",_("with PIG(+next event)")),("6",_("Glass17(+next, date)")),("8",_("New style")),("7",_("New style")+" 2"),("9",_("New style with PIG")),("10",_("PIG(+next event,left)")),("11",_("PIG(+act,next,left)")),("12",_("Classical")),("14",_("Classical")+" 2"),("13",_("The Core 88")),("18",_("The Core 88")+" 2"),("15",_("PIG(+several event)")),("16",_("G17(+several event)")),("39",_("G17(+several event)")+" 2"),("42",_("G17(+several event)")+" 3"),("43",_("G17(+several event)")+" 4"),("17",_("New style(+several event)")),("21",_("PIG(+act,several,left)")),("25",_("PIG(+act,several,left)")+" 2"),("49",_("PIG(+act,several,left)")+" 3"),("2",_("with PIG")),("31",_("with PIG")+" 2"),("32",_("with PIG")+" 3"),("28",_("with PIG")+" 4"),("37",_("with PIG")+" 5"),("50",_("with PIG")+" 6"),("33",_("with Picon 400x240")),("34",_("with ZZPicon")),("35",_("Default")),("29",_("G17 events")),("30",_("G17 events")+" 2"),("38",_("G17 events")+" 3"),("41",_("G17 events")+" 4"),("44",_("G17 events")+" 5"),("45",_("G17 events")+" 6"),("53",_("Big Icons")+" 1"),("54",_("Big Icons")+" 2"),("51",_("Poster")),("52",_("Poster")+" 2")]
-aall = [("23",_("PIG + PIP")+" 1"),("24",_("PIG + PIP")+" 2"),("40",_("PIG + PIP")+" 3"),("46",_("PIG + PIP")+" 4"),("47",_("PIG + PIP")+" 5"),("48",_("PIG + PIP")+" 6"),("27",_("PIP")+" 4"),("36",_("PIP")+" 5")]
-if isATV or os.path.isfile(SHAREPATH + "PLi-FullHD/skin.xml") or os.path.isfile(PYTHONPATH + "Plugins/SystemPlugins/OBH/__pycache__/") or os.path.isfile(PYTHONPATH + "Plugins/Satdreamgr/__init__.pyo"):
-	aall = [("a23",_("PIG + PIP")+" 1"),("a24",_("PIG + PIP")+" 2"),("a40",_("PIG + PIP")+" 3"),("a46",_("PIG + PIP")+" 4"),("a47",_("PIG + PIP")+" 5"),("a48",_("PIG + PIP")+" 6"),("a27",_("PIP")+" 4"),("a36",_("PIP")+" 5")]
-for x in aall:
-	chsT.append(x)
-E2OK = False
-# The legacy ChannelSelection 2xOK feature rewrites image-owned Python.
-# Warder Evolution must never offer or activate that patch on OpenATV.
-if not isATV and os.path.isfile(CHANSEL_FILE):
-	try:
-		cpu = open(CHANSEL_FILE, 'r').read()
-		if cpu.find('self.closePiG()') == -1 and cpu.find('__close:') == -1:
-			E2OK = True
-	except: pass
-try:
-	config.EMC.skin_able.value = True
-except: pass
-################################################################################## 
-config.plugins.setupGlass17.par1 = ConfigInteger(1, (1,MAXICONS)) # num of icons
-config.plugins.setupGlass17.par2 = ConfigYesNo(default = False) # enable bitrate
-config.plugins.setupGlass17.par3 = ConfigYesNo(default = True) # address enable in ecm
-config.plugins.setupGlass17.par4 = ConfigYesNo(default = True) # ei enable
-config.plugins.setupGlass17.par5 = ConfigSelection(default="1", choices = [("1",_("yes")),("0",_("no"))]) # enable enhanced infobar
-config.plugins.setupGlass17.par6 = ConfigInteger(1, (1,MAXSCREENS)) # num of screen
-config.plugins.setupGlass17.par7 = ConfigSelection(default="List", choices = [("Icons",_("Icons")),("Icons Right",_("Icons Right")),("List",_("List")),("with PIG",_("with PIG")),("List and Icon",_("List and Icon")),("Icons Bar",_("Icons Bar")),("simply PIG",_("simply PIG")),("PIG2",_("with PIG")+"2"),("PIG4",_("with PIG")+"4"),("Li2",_("List and Icon")+"2"),("Li3",_("List and Icon")+"3")]) # type menu
-config.plugins.setupGlass17.par8 = ConfigSelection(default="0", choices = [("0",_("Sat and Prov")),("1",_("only Sat")),("2",_("only Prov")),("3",_("only Weather")),("4",_("Sat and Weather")),("5",_("Prov and Weather")),("6",_("Sat, Prov and Weather"))]) # second picon type
-config.plugins.setupGlass17.par9 = ConfigYesNo(default = False) # used for button              
-config.plugins.setupGlass17.par10 = ConfigInteger(960, (1,1920)) # x-position
-config.plugins.setupGlass17.par11 = ConfigInteger(150, (1,1080)) # y-position
-config.plugins.setupGlass17.par12 = ConfigSelection(default="n", choices = [("g",_("Glass17")),("i",_("InfoECM by Duri")),("n",_("None")),("w",_("Weather")),("a","Netatmo")]) # type Special info
-config.plugins.setupGlass17.par14 = ConfigSelection(default="1", choices = [("1",_("Standard")),("2",_("Simple")),("4",_("Standard")+"2"),("5",_("Standard")+"3")]) # Standard Infobar type
-config.plugins.setupGlass17.par15 = ConfigSelection(default="0", choices = oledT) # type of Oled
-config.plugins.setupGlass17.par16 = ConfigYesNo(default = False) # enable bar background
-config.plugins.setupGlass17.par17 = ConfigSelection(default="0", choices = [("0",_("Ecminfo only")),("1",_("Ecminfo and CAID")),("2",_("CAID and SID")),("3",_("SID only")),("4",_("CAID, SID, VPID"))]) # ECM line type
-config.plugins.setupGlass17.par18 = ConfigSelection(default="1", choices = [("1",_("Glass17")),("2",_("Percentage")),("3",_("Colored gauge")),("4",_("Percentage")+"2"),("5",_("Glass17")+" (2)"),("6",_("Glass17")+" (3)")]) # volume type 
-config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT) # channel selection type
-config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
-config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
-config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
-config.plugins.setupGlass17.par23 = ConfigYesNo(default = False) # enable HDD state
-config.plugins.setupGlass17.par24 = ConfigYesNo(default = True) # display nighttime icons
-config.plugins.setupGlass17.par25 = ConfigYesNo(default = False) # enable full bitrate info
-config.plugins.setupGlass17.par26 = ConfigYesNo(default = False) # enable CAID PIDs
-config.plugins.setupGlass17.par27 = ConfigYesNo(default = False) # enable fade in/out
-config.plugins.setupGlass17.par28 = ConfigSelection(default="5", choices = [("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10")]) # fade speed
-config.plugins.setupGlass17.par29 = ConfigYesNo(default = False) # enable fade in
-config.plugins.setupGlass17.par30 = ConfigYesNo(default = False) # enable typewriting 
-config.plugins.setupGlass17.par31 = ConfigSelection(default="e", choices = [("s",_("System info")),("e",_("Event - extended description")),("e2",_("Event - extended description")+" 2"),("si",_("Side infobar")),("esi",_("Event and side infobar")),("en",_("Event - now and next")),("ensi",_("Event now/next and side infobar")),("w",_("Weather")),("n",_("None")),("a","Netatmo")]) # type user info
-config.plugins.setupGlass17.par32 = ConfigYesNo(default = False) # enable permanent user info
-config.plugins.setupGlass17.par33 = ConfigYesNo(default = False) # enable act/next event
-config.plugins.setupGlass17.par34 = ConfigYesNo(default = False) # enable neutrino keymap
-config.plugins.setupGlass17.par35 = ConfigSelection(default="9999999", choices = [("9999999",_("None")),("15000","15000"),("17500","17500"),("20000","20000"),("22500","22500"),("25000","25000"),("27500","27500"),("30000","30000"),("32500","32500"),("35000","35000"),("37500","37500"),("40000","40000")]) # bitrate autostop limit
-config.plugins.setupGlass17.par36 = NoSave(ConfigText("", False)) # piconProv
-config.plugins.setupGlass17.par37 = NoSave(ConfigText("", False)) # piconSat
-config.plugins.setupGlass17.par38 = NoSave(ConfigText("", False)) # ecm
-config.plugins.setupGlass17.par39 = NoSave(ConfigText("", False)) # temp path to picons
-config.plugins.setupGlass17.par40 = ConfigYesNo(default = False) # enable OLED off in standby
-config.plugins.setupGlass17.par41 = ConfigSelection(default="Black", choices = [("Black",_("Black")),("White",_("White"))]) # picon default, next, marker ...
-config.plugins.setupGlass17.par42 = ConfigYesNo(default = True) # detect audio type
-config.plugins.setupGlass17.par43 = NoSave(ConfigYesNo(default = True)) # used for setup watchdog
-config.plugins.setupGlass17.par44 = ConfigInteger(1, (1,MAXICONS)) # num windowstyle
-config.plugins.setupGlass17.par45 = ConfigText("#006cbcf0", False) # title color
-chsT = [("0",_("Default"))]
-for x in range(28,43):
-	chsT.append((str(x),str(x)))
-config.plugins.setupGlass17.par46 = ConfigSelection(default="0", choices = chsT) # font size list epg
-config.plugins.setupGlass17.par47 = ConfigYesNo(default = True) # mute transparency
-config.plugins.setupGlass17.par48 = ConfigYesNo(default = False) # enable only sat names
-config.plugins.setupGlass17.par49 = ConfigYesNo(default = True) # enable translation
-config.plugins.setupGlass17.par50 = ConfigYesNo(default = False) # enable CW
-config.plugins.setupGlass17.par51 = ConfigInteger(1200, (1,1920)) # x-position                                             
-config.plugins.setupGlass17.par52 = ConfigInteger(120, (1,1080)) # y-position
-config.plugins.setupGlass17.par54 = ConfigSelection(default="7", choices = [("7",_("Default")),("2",_("Standard")),("8",_("Standard")+"2"),("3",_("with PIG")),("1",_("with PIG(+ch.name,number)")),("5",_("The Core 88")),("4",_("Classical")),("6",_("with PIG(+ch.name,number)")+"2"),("9",_("Poster"))]) # type EPG selection
-config.plugins.setupGlass17.par55 = ConfigSelection(default="0", choices = [("1",_("yes")),("0",_("no")),("2",_("no time"))]) # ignore Timeout press OK
-config.plugins.setupGlass17.par56 = ConfigYesNo(default = False) # animated weather
-config.plugins.setupGlass17.par57 = ConfigSelection(default="3", choices = [("1",_("yes")),("2",_("no")),("3",_("with internet check"))]) # enable net connect source
-config.plugins.setupGlass17.par58 = ConfigYesNo(default = False) # enable Clearmem fnc
-config.plugins.setupGlass17.par59 = ConfigYesNo(default = False) # enable encoding-user.conf
-config.plugins.setupGlass17.par60 = ConfigYesNo(default = False) # enable empty icons in menu type icons
-config.plugins.setupGlass17.par61 = ConfigText("0", False) # used for ok option - ignore infobar timeout
-config.plugins.setupGlass17.par62 = ConfigYesNo(default = False) # enable ChannelSel patch 2xOK
-config.plugins.setupGlass17.par63 = ConfigYesNo(default = False) # enable anim for menu: Icons Bar
-config.plugins.setupGlass17.par64 = ConfigYesNo(default = False) # enable screensaver in radio mode  
-config.plugins.setupGlass17.par65 = NoSave(ConfigYesNo(default = False)) # retired spinner setting; compatibility placeholder only
-config.plugins.setupGlass17.par66 = ConfigYesNo(default = False) # animated ewea
-config.plugins.setupGlass17.par67 = ConfigYesNo(default = False) # service scan long list
-config.plugins.setupGlass17.par68 = ConfigSelection(default="0", choices = [("0",_("with frame")),("1",_("big"))]) # PIG type
-config.plugins.setupGlass17.par69 = ConfigInteger(1, (1,MAXICONS)) # num of menuIcons
-config.plugins.setupGlass17.par70 = NoSave(ConfigYesNo(default = False)) # tuner type			
-config.plugins.setupGlass17.par71 = ConfigYesNo(default = False) # weather: enable nextCity
-config.plugins.setupGlass17.par72 = ConfigInteger(1, (1,MAXICONS)) # num of iconsWeather
-config.plugins.setupGlass17.par73 = ConfigYesNo(default = False) # enable scpecial info timeout
-config.plugins.setupGlass17.par74 = ConfigSelection(default="6", choices = [("2","2"),("3","3"),("4","4"),("6","6"),("8","8"),("10","10")]) # ecm refresh
-config.plugins.setupGlass17.par75 = ConfigYesNo(default = True) # enable update
-config.plugins.setupGlass17.par76 = ConfigSelection(default = "Autostop", choices = [("None",_("None")),("Autostop",_("Autostop")),("Roll back",_("Roll back"))]) # enable desc. rolling
-config.plugins.setupGlass17.par77 = ConfigSelection(default="8", choices = [("default",_("Default")),("6","6"),("8","8"),("10","10"),("12","12"),("14","14"),("16","16"),("20","20")]) # start delay desc. rolling
-config.plugins.setupGlass17.par78 = ConfigSelection(default="n", choices = [("g",_("Glass17")),("i",_("InfoECM by Duri")),("n",_("None")),("w",_("Weather")),("e",_("Enhanced Weather")),("a","Netatmo")]) # special info in extensions
-config.plugins.setupGlass17.par79 = ConfigSelection(default="1", choices = [("2",_("Satellite")+", "+_("Name")),("3",_("Number")+", "+_("Satellite")+", "+_("Name")),("1",_("Number")+", "+_("Name")),("0",_("Name"))]) # enable channel num
-config.plugins.setupGlass17.par80 = ConfigText("204.79.197.203", False) # internet address
-config.plugins.setupGlass17.par81 = ConfigYesNo(default = True) # provider
-config.plugins.setupGlass17.par82 = ConfigYesNo(default = False) # Temp/RPM
-config.plugins.setupGlass17.par83 = ConfigYesNo(default = False) # CPU/Mem
-config.plugins.setupGlass17.par84 = ConfigYesNo(default = False) # Temp.HDD
-config.plugins.setupGlass17.par85 = ConfigYesNo(default = True) # special info main menu
-config.plugins.setupGlass17.par86 = ConfigSelection(default="c", choices = [("0","(my_)city_Code"),("c",DG+"C"),("f",DG+"F")]) # weather units
-config.plugins.setupGlass17.par87 = ConfigSelection(default="15", choices = [("5","5"),("10","10"),("15","15"),("20","20"),("25","25"),("30","30"),("45","45"),("60","60")]) # reloading time weather
-config.plugins.setupGlass17.par88 = NoSave(ConfigSelection(default="OpenMeteo", choices = [("OpenMeteo","Open-Meteo")])) # compatibility placeholder; provider UI retired
-config.plugins.setupGlass17.par89 = NoSave(ConfigText("", False)) # last city weather
-config.plugins.setupGlass17.par90 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # find city
-config.plugins.setupGlass17.par91 = ConfigSelection(default="10", choices = [("0",_("disabled")),("5","5"),("10","10"),("15","15"),("20","20")]) # autoreconnect time
-config.plugins.setupGlass17.par92 = ConfigYesNo(default = True) # show yesterday
-config.plugins.setupGlass17.par93 = ConfigSelection(default="AutoColors", choices = colors) # warm color 
-config.plugins.setupGlass17.par94 = ConfigSelection(default="AutoColors", choices = colors) # cold color 
-config.plugins.setupGlass17.par95 = ConfigSelection(default="None", choices = colors1[:]+colors[1:]) # neutral color
-config.plugins.setupGlass17.par96 = ConfigInteger(20, (15,40)) # warm temp c                                             
-config.plugins.setupGlass17.par97 = ConfigInteger(1, (1,14)) # cold temp c
-config.plugins.setupGlass17.par98 = ConfigText("cEUR|SK|LO001|BANSKA BYSTRICA|", False)
-config.plugins.setupGlass17.par99 = NoSave(ConfigText("", False)) # eWea data
-config.plugins.setupGlass17.par100 = NoSave(ConfigText("", False)) # last city eWea
-config.plugins.setupGlass17.par102 = ConfigYesNo(default = True) # d.icon CAM
-config.plugins.setupGlass17.par103 = ConfigYesNo(default = True) # d.icon type                                                                             
-config.plugins.setupGlass17.par104 = ConfigSelection(default="0", choices = [("99",_("disabled")),("0",_("Auto")),("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10"),("11","11"),("12","12"),("13","13"),("14","14"),("15","15"),("16","16"),("17","17"),("18","18"),("19","19")]) # number of tuners
-config.plugins.setupGlass17.par105 = ConfigSelection(default="#00d100", choices = colors) # active tuner
-config.plugins.setupGlass17.par106 = ConfigSelection(default="#ecb100", choices = colors) # B. active tuner
-config.plugins.setupGlass17.par107 = ConfigSelection(default="#0077ff", choices = colors) # Standby tuner
-config.plugins.setupGlass17.par108 = ConfigSelection(default="#777777", choices = colors) # Missing tuner
-config.plugins.setupGlass17.par109 = ConfigSelection(default="#cdcdcd", choices = colors[1:]) # desc.
-config.plugins.setupGlass17.par110 = ConfigSelection(default="#6cbcf0", choices = colors[1:]) # desc. selected
-config.plugins.setupGlass17.par111 = ConfigSelection(default="#6cbcf0", choices = colors[1:]) # foreground selected
-config.plugins.setupGlass17.par112 = ConfigSelection(default="#dd0000", choices = colors) # recording tuner
-config.plugins.setupGlass17.par113 = ConfigSelection(default="#dd00ff", choices = colors) # recording and live tuner
-config.plugins.setupGlass17.par114 = ConfigYesNo(default = True) # display recording icon
-config.plugins.setupGlass17.par115 = ConfigSelection(default="AutoColors", choices = colors) # bitrate color
-config.plugins.setupGlass17.par116 = ConfigSelection(default="AutoColors", choices = colors) # ecm color
-config.plugins.setupGlass17.par117 = ConfigSelection(default="#dddddd", choices = colors[1:]) # channel name
-config.plugins.setupGlass17.par118 = ConfigSelection(default="AutoColors", choices = colors) # ecm labels color
-config.plugins.setupGlass17.par119 = ConfigSelection(default="AutoColors", choices = colors) # ecm values color
-config.plugins.setupGlass17.par120 = ConfigYesNo(default = True) # enable progressive detect
-config.plugins.setupGlass17.par121 = ConfigSelection(default="AutoColors", choices = colors) # TP_type color
-config.plugins.setupGlass17.par122 = ConfigSelection(default="AutoColors", choices = colors) # TP_info color
-config.plugins.setupGlass17.par123 = ConfigSelection(default="AutoColors", choices = colors) # VideoSize color
-config.plugins.setupGlass17.par124 = ConfigDirectory("/media/usb/") # user path
-config.plugins.setupGlass17.par125 = ConfigSelection(default="/media/usb", choices = [("/media/usb","/media/usb"),("/data","/data"),("/media/hdd","/media/hdd"),("/media/cf","/media/cf"),("/usr/share/enigma2","/usr/share/enigma2"),("/etc","/etc"),("0",_("User defined path"))]) # path to picons
-config.plugins.setupGlass17.par126 = ConfigSelection(default="0", choices = [("0",_("Static")),("1",_("Dynamic"))]) # ch. num. calculating
-config.plugins.setupGlass17.par127 = ConfigSelection(default="D", choices = dFormat) # date format extra infobar
-config.plugins.setupGlass17.par128 = ConfigSelection(default="AutoColors", choices = colors) # date color
-config.plugins.setupGlass17.par129 = ConfigSelection(default="AutoColors", choices = colors) # time color
-config.plugins.setupGlass17.par130 = ConfigSelection(default="AutoColors", choices = colors) # seconds color
-config.plugins.setupGlass17.par131 = ConfigSelection(default="D", choices = dFormat) # date format others 
-config.plugins.setupGlass17.par132 = ConfigSelection(default="D", choices = dFormat) # date format ch.sel.
-config.plugins.setupGlass17.par133 = ConfigSelection(default="D", choices = dFormat) # date format menu
-config.plugins.setupGlass17.par134 = ConfigSelection(default="D", choices = dFormat) # date format infobar
-config.plugins.setupGlass17.par135 = ConfigSelection(default="AutoColors", choices = colors) # ch. name color
-config.plugins.setupGlass17.par136 = ConfigSelection(default="AutoColors", choices = colors) # event now color
-config.plugins.setupGlass17.par137 = ConfigSelection(default="AutoColors", choices = colors) # event next color
-config.plugins.setupGlass17.par138 = ConfigYesNo(default = True) # ignore leading 0 in hours
-config.plugins.setupGlass17.par139 = ConfigYesNo(default = False) # hide standby and missing tuners
-config.plugins.setupGlass17.par140 = NoSave(ConfigText("", False)) # hdd dev path
-config.plugins.setupGlass17.par141 = ConfigDirectory("/etc/tuxbox/") # satxml path
-config.plugins.setupGlass17.par142 = ConfigYesNo(default = True) # display remaining time in extra EPG
-config.plugins.setupGlass17.par143 = ConfigYesNo(default = True) # openwea more days forecast
-config.plugins.setupGlass17.par144 = ConfigDirectory(SKINPATH) # conf path
-chsT = [("0",_("Default"))]
-for x in range(24,54):
-	chsT.append((str(x),str(x)))
-config.plugins.setupGlass17.par53 = ConfigSelection(default="0", choices = chsT) # font size event next - now
-config.plugins.setupGlass17.par145 = ConfigSelection(default="0", choices = chsT) #service name font size
-config.plugins.setupGlass17.par146 = ConfigSelection(default="0", choices = chsT) #service info font size
-config.plugins.setupGlass17.par148 = ConfigSelection(default="0", choices = chsT) #ext. desc. font size
-config.plugins.setupGlass17.par153 = ConfigSelection(default="0", choices = chsT) # listbox - Bigger
-config.plugins.setupGlass17.par154 = ConfigSelection(default="0", choices = chsT) # listbox - Big
-config.plugins.setupGlass17.par155 = ConfigSelection(default="0", choices = chsT) # listbox - Medium
-config.plugins.setupGlass17.par156 = ConfigSelection(default="0", choices = chsT) # listbox - Small
-config.plugins.setupGlass17.par157 = ConfigSelection(default="0", choices = chsT) # listbox - Smaller
-chsT = [("0",_("Default"))]
-chsT.append(("1",_("Auto")))
-for x in range(26,64):
-	chsT.append((str(x),str(x)))
-config.plugins.setupGlass17.par147 = ConfigSelection(default="0", choices = chsT) #Ch. line Height
-config.plugins.setupGlass17.par149 = ConfigInteger(68, (58,104)) # warm temp f                                             
-config.plugins.setupGlass17.par150 = ConfigInteger(33, (33,57)) # cold temp f
-config.plugins.setupGlass17.par151 = ConfigSelection(default="c", choices = [("0","ewea_city_Code"),("c",DG+"C"),("f",DG+"F")]) # ewea units
-config.plugins.setupGlass17.par152 = NoSave(ConfigText("gg", False)) # wea/ewea units
-config.plugins.setupGlass17.par158 = ConfigInteger(50, (20,500)) # weather anim. speed
-config.plugins.setupGlass17.par159 = ConfigInteger(50, (20,500)) # ewea anim. speed
-config.plugins.setupGlass17.par160 = ConfigYesNo(default = True) # moviepl. inf. HDD state
-config.plugins.setupGlass17.par161 = ConfigYesNo(default = True) # enable Animations
-chsT = [("None",_("None"))]
-for x in range(1,16):
-	chsT.append(("g17_Anim_"+str(x),_("Animation")+str(x)))
-config.plugins.setupGlass17.par162 = ConfigSelection(default = "g17_Anim_1", choices = chsT) # picon
-config.plugins.setupGlass17.par163 = ConfigSelection(default = "None", choices = chsT) # second picon
-config.plugins.setupGlass17.par164 = ConfigSelection(default = "None", choices = chsT) # ecm line
-config.plugins.setupGlass17.par165 = ConfigSelection(default = "None", choices = chsT) # menu icons
-config.plugins.setupGlass17.par166 = ConfigSelection(default = "None", choices = chsT) # ch. sel. picon
-config.plugins.setupGlass17.par167 = ConfigSelection(default = "None", choices = chsT) # tp info,type
-config.plugins.setupGlass17.par203 = ConfigSelection(default = "None", choices = chsT) # poster
-config.plugins.setupGlass17.par168 = ConfigSelection(default="T", choices = [("T",_("Transponder data")),("F",_("Real tuner data"))]) # tuner info
-config.plugins.setupGlass17.par169 = ConfigYesNo(default = False) # animated weainf
-config.plugins.setupGlass17.par170 = ConfigInteger(50, (20,500)) # weainf anim. speed
-chsT = []
-for x in range(1,13):
-	chsT.append((str(x),str(x)))
-config.plugins.setupGlass17.par171 = ConfigSelection(default = "3", choices = chsT) # wea type - special
-a = []
-a = chsT[0:2]
-a.append(chsT[6])
-a.append(chsT[7])
-config.plugins.setupGlass17.par172 = ConfigSelection(default = "1", choices = a) # wea type - user
-config.plugins.setupGlass17.par173 = ConfigSelection(default = "d", choices = [("d",_("Default")),("s","1")]) # wea title type
-config.plugins.setupGlass17.par174 = ConfigSelection(default="AutoColors", choices = colors) # wea/ewea date color
-config.plugins.setupGlass17.par175 = ConfigSelection(default="AutoColors", choices = colors) # wea/ewea state color
-config.plugins.setupGlass17.par176 = ConfigSelection(default="AutoColors", choices = colors) # ewea uv color
-config.plugins.setupGlass17.par177 = ConfigSelection(default="AutoColors", choices = colors) # ewea wind color
-config.plugins.setupGlass17.par178 = NoSave(ConfigText("", False)) # ecm type
-config.plugins.setupGlass17.par179 = ConfigSelection(default = "a", choices = [("a","_"),("b",":")]) # reference separator
-config.plugins.setupGlass17.par180 = ConfigSelection(default = "a", choices = [("a",_("All available")),("b",_("Selected in Netatmo plugin"))]) # netatmo stations 
-config.plugins.setupGlass17.par181 = ConfigSelection(default = "10", choices = [("5","5"),("10","10"),("15","15"),("20","20"),("30","30")]) # netatmo stations switch time
-config.plugins.setupGlass17.par182 = NoSave(ConfigText("HDD", False)) # hdd type
-config.plugins.setupGlass17.par183 = ConfigSelection(default = "0", choices = [("-30","-30"),("-25","-25"),("-20","-20"),("-15","-15"),("-10","-10"),("-5","-5"),("0","0"),("5","+5"),("10","+10"),("15","+15"),("20","+20"),("25","+25"),("30","+30")]) # extra screen offset
-config.plugins.setupGlass17.par184 = ConfigSelection(default = "10", choices = [("5","5"),("10","10"),("15","15"),("20","20"),("30","30")]) # 10 days switch time
-config.plugins.setupGlass17.par185 = ConfigSelection(default = "%A %d.%m.%Y", choices = [("%A %d.%m.%Y",_("Default")),("%A %Y.%m.%d",_("Type")+" 1"),("%d.%m.%Y",_("Type")+" 2"),("%Y.%m.%d",_("Type")+" 3"),("%Y %m %d",_("Type")+" 4"),("%d %m %Y",_("Type")+" 5"),("%d.%m.%Y %A",_("Type")+" 6"),("%Y.%m.%d %A",_("Type")+" 7"),("%d %m %Y %A",_("Type")+" 8"),("%Y %m %d %A",_("Type")+" 9"),("%A  %d %B",_("Type")+" 10")]) # ewea date format
-config.plugins.setupGlass17.par186 = ConfigSelection(default = "%A  %d %B %Y", choices = [("%A  %d %B %Y",_("Default")),("%A %B %d, %Y",_("Type")+" 1"),("%A  %d.%B %Y",_("Type")+" 2"),("%d.%m.%Y",_("Type")+" 3"),("%d.%B %Y",_("Type")+" 4"),("%Y %B %d %A",_("Type")+" 5"),("%Y.%m.%d",_("Type")+" 6"),("%Y %B %d",_("Type")+" 7"),("%A  %d %B",_("Type")+" 8")]) # wea date format
-config.plugins.setupGlass17.par187 = ConfigYesNo(default = True) # D.icon tuner
-config.plugins.setupGlass17.par188 = ConfigYesNo(default = True) # ignore leading 0 in date
-config.plugins.setupGlass17.par189 = ConfigYesNo(default = True) # enable bitratecalc.so
-config.plugins.setupGlass17.par190 = ConfigYesNo(default = True) # enable on/off pixmap
-config.plugins.setupGlass17.par191 = ConfigYesNo(default = True) # enable detection of Unknown CAID
-config.plugins.setupGlass17.par192 = ConfigYesNo(default = True) # CI informations
-config.plugins.setupGlass17.par193 = ConfigYesNo(default = True) # display ECM from current displayed channel only
-config.plugins.setupGlass17.par194 = NoSave(ConfigText("", False)) # cw0/1
-config.plugins.setupGlass17.par195 = NoSave(ConfigText("", False)) # chid,provider,provid 
-config.plugins.setupGlass17.par196 = ConfigYesNo(default = True) # Show PID in ECM line
-config.plugins.setupGlass17.par197 = ConfigYesNo(default = True) # Show CHID in ECM line
-config.plugins.setupGlass17.par198 = ConfigYesNo(default = False) # Show poster
-config.plugins.setupGlass17.par199 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # set pos poster
-config.plugins.setupGlass17.par200 = ConfigInteger(900, (1,1920)) # x-position poster                                             
-config.plugins.setupGlass17.par201 = ConfigInteger(400, (1,1080)) # y-position poster
-config.plugins.setupGlass17.par202 = ConfigSelection(default = "185,278", choices = [("185,278",_("Default")),("220,330","*1.19"),("231,347","*1.25"),("277,417","*1.5"),("324,487","*1.75"),("370,556","*2")]) #  poster size
-# 203 used as anim poster
-config.plugins.setupGlass17.par204 = ConfigSelection(default="a", choices = [("a",_("Auto")),("i",_("IMDb")),("m",_("TMDb"))]) # poster provider
-config.plugins.setupGlass17.par205 = ConfigSelection(default="3", choices = [("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10")]) # poster search delay
-config.plugins.setupGlass17.par206 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # clean chache posters
-config.plugins.setupGlass17.par207 = ConfigYesNo(default = True) # Removing current Poster
-config.plugins.setupGlass17.par208 = ConfigSelection(default="1", choices = [("1",_("Default")),("2","50:50"),("3","50:50 2")]) # VTi SplitScreen
-config.plugins.setupGlass17.par209 = ConfigSelection(default="0", choices = [("0",_("disabled")),("1","kb/s"),("2","Mb/s")]) # Net speed 
-config.plugins.setupGlass17.par210 = ConfigInteger(1000, (1,1920)) # x-position Net speed                                             
-config.plugins.setupGlass17.par211 = ConfigInteger(100, (1,1080)) # y-position Net speed
-config.plugins.setupGlass17.par212 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # set pos Net speed
-config.plugins.setupGlass17.par213 = ConfigSelection(default="AutoColors", choices = colors) # Net speed color
-config.plugins.setupGlass17.par214 = ConfigSelection(default="AutoColors", choices = colors) # Progress bar foreground color
-config.plugins.setupGlass17.par215 = ConfigSelection(default="AutoColors", choices = colors) # Progress bar background color
-config.plugins.setupGlass17.par216 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # set pos volume
-config.plugins.setupGlass17.par217 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # set pos spec. info
-config.plugins.setupGlass17.par218 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # infobar type
-config.plugins.setupGlass17.par219 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # icons type
-config.plugins.setupGlass17.par220 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # weather icons
-config.plugins.setupGlass17.par221 = NoSave(ConfigSelection(default="c", choices = [("c"," ")])) # menu icons
-config.plugins.setupGlass17.par222 = ConfigYesNo(default = True) # Progress bar pixmap
-config.plugins.setupGlass17.par223 = ConfigYesNo(default = False) # Hide SNR/AGC (Q/S) if value is 0
-config.plugins.setupGlass17.par224 = ConfigSelection(default="1", choices = [("1",_("Default")),("2",_("Classical")),("3",_("The Core 88"))]) # movie sel type
-config.plugins.setupGlass17.par225 = ConfigYesNo(default = True) # IPTV Radio Detection
-config.plugins.setupGlass17.par226 = ConfigSelection(default="1", choices = [("1",_("Default")),("2",_("Transparent"))]) # Net Speed type
-config.plugins.setupGlass17.par227 = ConfigSelection(default="5", choices = [("5",_("Default")),("7",_("Default")+" 2"),("0",_("Auto")),("1","150x90"),("2","220x132"),("6","220x132 (2)"),("3","400x170"),("4","400x240")]) # Extended Number ZAP Picon Size
-config.plugins.setupGlass17.par228 = ConfigText(default="-", fixed_size=False, visible_width=50)
-config.plugins.setupGlass17.par229 = ConfigSelection(default="1", choices = [("1",_("Default")),("2",_("Poster"))]) # EventView
-config.plugins.setupGlass17.par101 = ConfigYesNo(default = True) # 
-##########################################################################################################################
-ENA_MSN = chMSN()
-ECM_LABELS, CLRDATA, CLRTP = readECMlabels()
-       
-def _cityLine(line):
-	line = (line or "").strip()
-	if not line or line.startswith("#"):
-		return None
-	if line.startswith("om|"):
-		p = line.split("|")
-		if len(p) >= 4 and p[1] and p[2] and p[3]:
-			display = p[1]
-			query = "|".join((p + ["", ""])[2:6])
-			return ("om|" + query, display, line)
-	tmp = line.split("-")
-	def ch(w):
-		return w.isdigit() or w.startswith("wc:") or w.startswith("fr:")
-	if len(tmp) == 2 and ch(tmp[1]):
-		return ("c" + tmp[1], tmp[0], line)
-	if len(tmp) == 3 and ch(tmp[1]) and tmp[2].lower() in ("c", "f"):
-		return (tmp[2].lower() + tmp[1], tmp[0], line)
-	return None
-
-def _citySearchKey(value):
-	try:
-		value = unicodedata.normalize("NFKD", str(value))
-		value = "".join(ch for ch in value if not unicodedata.combining(ch))
-	except Exception:
-		value = str(value)
-	return value.casefold().strip()
-
-def getCitiesCode():
-	choicelist = []
-	fileName = "/etc/my_city_Code.txt"
-	if not os.path.isfile(fileName):
-		fileName = "/etc/city_Code-17.txt" if os.path.isfile("/etc/city_Code-17.txt") else "/etc/city_Code.txt"
-	try:
-		with open(fileName, "r") as f:
-			for line in f:
-				x = _cityLine(line)
-				if x:
-					name = x[1]
-					if not ISP38:
-						name = name.encode("utf-8")
-					choicelist.append((x[0], name))
-	except Exception:
-		pass
-	if not choicelist:
-		choicelist.append(("None", "None"))
-	return choicelist
-
-ch_help = getCitiesCode()
-config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help) # weather location
-
-def _setWeatherCityChoices(selected=None):
-	"""Reload /etc/my_city_Code.txt while preserving or explicitly selecting a city."""
-	choices = getCitiesCode()
-	values = [x[0] for x in choices]
-	wanted = selected if selected in values else config.plugins.setupGlass17.par13.value
-	if wanted not in values:
-		wanted = choices[0][0]
-	try:
-		config.plugins.setupGlass17.par13.setChoices(choices, default=wanted)
-	except Exception:
-		config.plugins.setupGlass17.par13 = ConfigSelection(default=wanted, choices=choices)
-	config.plugins.setupGlass17.par13.value = wanted
-	return wanted
-
-def _refreshLiveWeather():
-	"""Push a city change to the active Infobar without restarting Enigma2."""
-	try:
-		if G17_EXTRAINFO_INSTANCE is not None:
-			G17_EXTRAINFO_INSTANCE.refreshWeatherNow()
-	except Exception as e:
-		Writelog("weather live refresh: %s" % e)
-
-def readAPIkey():
-	# Compatibility shim only. Open-Meteo requires no API key and the legacy
-	# OpenWeatherMap key must not affect the Warder weather path.
-	return True
-
-ch_help = readAPIkey()
-	
-def chckBtr():
-	try:
-		from Plugins.Extensions.BitrateViewer.bitratecalc import eBitrateCalculator
-		if not fileExists(PYTHONPATH+"Plugins/Extensions/BitrateViewer/bitratecalc.la") or ENA_D == 'debpkg':
-			return True
-	except: pass
-	return False
-ENAEBTR = config.plugins.setupGlass17.par189.value and chckBtr()
-ENAEBTR2 = False
-if ENAEBTR:
-	try:
-		from Plugins.Extensions.BitrateViewer.bitratecalc import eBitrateCalculator
-		f = open(PYTHONPATH + "Plugins/Extensions/BitrateViewer/plugin.py","r").read()
-		if f.find("eBitrateCalculator(vpid, dvbnamespace") != -1: 
-			ENAEBTR2 = True
-	except: pass
-
-del dFormat
-del colors1
-del ch_help
-del b
-del m
-del oledT
-del chsT
-
-def spinnerOnOff():
-	"""Retire the legacy FullHDGlass spinner override.
-
-	The skin no longer replaces the image-provided spinner.  Keep this helper
-	only as an upgrade compatibility repair for installations where an older
-	FullHDGlass version left its symlink behind.
-	"""
-	spinner = os.path.join(SHAREPATH, "skin_default", "spinner")
-	original = os.path.join(SHAREPATH, "skin_default", "spinner-ori")
-	legacy = os.path.join(SHAREPATH, "hd_glass17", "skin_default", "spinner")
-	if not os.path.islink(spinner):
-		return ""
-	try:
-		target = os.path.realpath(spinner)
-		if target != os.path.realpath(legacy):
-			return ""
-		# Never remove the legacy symlink unless the saved image spinner is
-		# actually available to restore in the same operation.
-		if not os.path.isdir(original):
-			return _("System spinner restore failed") + "\n"
-		os.unlink(spinner)
-		os.rename(original, spinner)
-		return _("System spinner restored") + "\n"
-	except OSError:
-		return _("System spinner restore failed") + "\n"
-					
-def autoHdd():
-	if config.plugins.setupGlass17.par22.value == "A":
-		try:
-			cpu = open("/proc/mounts", "r").readlines()	
-			for x in cpu:
-				if x.find("/media/hdd") != -1 and not "." in x and not ":" in x:
-					b = (((x.split("/media/hdd")[0]).strip()).split("/dev/")[1]).strip()[:3]  
-					if len(b) == 3:
-						if b.startswith("sd"):
-							return "/dev/"+b
-						elif b == "dis":
-							b = (((((x.split("/media/hdd")[0]).strip()).split("/dev/disk/")[1]).strip()).split(" ")[0]).strip()
-							try:
-								blkid_output = subprocess.check_output(["blkid"], universal_newlines=True)
-							except (OSError, subprocess.CalledProcessError):
-								blkid_output = ""
-							for i in blkid_output.splitlines():
-								if i.find(b) != -1:
-									b = (((i.split(":")[0]).strip()).split("/dev/")[1]).strip()[:3]
-									if len(b) == 3 and b.startswith("sd"):
-										break
-							if len(b) == 3 and b.startswith("sd"):
-								return "/dev/"+b
-		except: pass   	
-		return "None"
-	return config.plugins.setupGlass17.par22.value
-config.plugins.setupGlass17.par140.value = autoHdd()        	
-
-def autoTypeHdd():
-	tmp = config.plugins.setupGlass17.par140.value
-	if "/dev/sd" in tmp:	
-		try:
-			tmp = open('/sys/block%s/queue/rotational' % tmp.replace("/dev","")).readline()
-			if "0" in tmp:
-				return "SSD"								
-		except: pass
-	return "HDD"
-config.plugins.setupGlass17.par182.value = autoTypeHdd()
-####################################################
-def setPathFiles(chck=True):
-	def makelnk(link_path):
-		target = os.path.join(config.plugins.setupGlass17.par39.value, "picon")
-		try:
-			if not os.path.lexists(link_path):
-				os.symlink(target, link_path)
-		except OSError:
-			pass
-	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		if config.plugins.setupGlass17.par125.value == "0":
-			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par124.value + "hdg17_files"
-		else:
-			config.plugins.setupGlass17.par39.value = config.plugins.setupGlass17.par125.value + "/hdg17_files"
-		if chck and ENA_SYM:
-			# Warder may manage its legacy root/removable-media convenience links,
-			# but /usr/share/enigma2 is image/package-manager owned on OpenATV.
-			# Never create, replace or retarget picon links there.
-			links = ["/picon"]
-			if ENA_D != 'debpkg':
-				links.append("/media/usb/picon")
-			for x in ("/picons/piconHD", "/picons/piconlcd"):
-				# Never replace a real image/user directory. Only manage symlinks.
-				if os.path.islink(x):
-					links.append(x)
-			for x in links:
-				if os.path.islink(x):
-					a = os.readlink(x)
-					if config.plugins.setupGlass17.par39.value not in a and ("/hdg17_files" in a or "/hdg18_files" in a):
-						try:
-							os.unlink(x)
-						except OSError:
-							continue
-						makelnk(x)
-				elif not os.path.lexists(x):
-					makelnk(x)
-setPathFiles()
-ENAFINDER = False
-try:
-	if ISP38:
-		from urllib.request import Request, urlopen, build_opener, HTTPCookieProcessor
-		from urllib.error import URLError, HTTPError
-		import http.cookiejar as cookielib
-	else:
-		from urllib2 import Request, urlopen, URLError, HTTPError, build_opener, HTTPCookieProcessor
-		import cookielib
-	ENAFINDER = True
-except: pass
-Glass17__init__ = None
-_warderOriginalShowRadioButton = None                          
-FirstRun17 = False
-enaFadeOut17 = True
-enaFadeIn17 = True
-transStep17 = 20
-allSat = {}
-allIcons = [
-				"betecm-fs8", "betemm-fs8", "dreecm-fs8", "dreemm-fs8", "emunew-fs8", "ftanew-fs8", "ci1new-fs8",
-				"bisecm-fs8", "bisemm-fs8", "i_dolby_now", "i_dolbyw", "i_format_now","rosecm-fs8", "rosemm-fs8",
-				"bulecm-fs8", "bulemm-fs8", "i_formats", "i_formatw", "i_hdw", "i_rec-n", "xcrecm-fs8", "mdcemm-fs8",
-				"conecm-fs8", "conemm-fs8", "i_sdw", "i_subw", "i_txt_now", "i_txtw", "i_subtit", "tvkecm-fs8",
-				"crdnew-fs8", "crwecm-fs8", "icon_aw", "icon_a1w", "icon_a2w", "icon_bw", "i_hbb", "tvkemm-fs8",
-				"sececm-fs8", "secemm-fs8", "viaecm-fs8", "viaemm-fs8", "verecm-fs8", "veremm-fs8", "ci2new-fs8",
-				"icon_mw", "icon_nw", "icon_dw", "icon_ow", "icon_pw", "irdecm-fs8", "cdcecm-fs8", "cdcemm-fs8",
-				"icon_a3w", "icon_a4w", "icon_a5w", "icon_b3w", "icon_b4w", "icon_a6w", "icon_a7w", "redemm-fs8",
-				"icon_a8w", "icon_b5w", "icon_b6w", "icon_b7w", "icon_b8w", "digecm-fs8", "digemm-fs8", "mdcecm-fs8", 
-				"irdemm-fs8", "nagecm-fs8", "nagemm-fs8", "ndsecm-fs8", "ndsemm-fs8", "netnew-fs8", "redecm-fs8",
-				"crwemm-fs8", "drcecm-fs8", "drcemm-fs8", "icon_b1w", "icon_b2w", "icon_cw", "i_audiow", "croecm-fs8",
-				"Gbox-fs8", "Mgcamd-fs8", "CCcam-fs8", "OScam-fs8", "Camd3-fs8", "Mbox-fs8", "xcremm-fs8", "croemm-fs8",
-				"active", "no_hdd", "standby", "dgcecm-fs8", "dgcemm-fs8", "3g", "wifi", "eth", "error",
-				"unk", "pncecm-fs8", "pncemm-fs8", "exsecm-fs8", "exsemm-fs8", "Scam-fs8", "Wicardd-fs8",
-				"gfnecm-fs8", "gfnemm-fs8", "pwuecm-fs8", "pwuemm-fs8", "i_fhd", "i_uhd", "icon_ew", "icon_fw", "icon_gw",
-				"icon_hw", "icon_iw", "icon_jw", "icon_kw", "icon_lw", "tanecm-fs8", "tanemm-fs8", "unk-ca",					
-				"dd2", "dd5", "aac", "dts", "mpg", "Ncam-fs8", "ccwecm-fs8", "icon_qw", "icon_rw", "icon_sw", "Gcam-fs8", 
-				"hdr", "hlg", "DOScam-fs8", "4k", "8k", "active_s", "no_hdd_s", "standby_s", "crgecm-fs8", "crgemm-fs8",
-				"skpecm-fs8", "skpemm-fs8"
-			]		
-##########################################################################################################################
-def chckEnaWea():
-	return config.plugins.setupGlass17.par8.value in ("3","4","5","6") or "w" in config.plugins.setupGlass17.par78.value or "w" in config.plugins.setupGlass17.par12.value or "w" in config.plugins.setupGlass17.par31.value
-
-def startSetup17(menuid, **kwargs):
-	ret = [ ]
-	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		if menuid == "setup":
-			ret.append((_("FullHDGlass17 - Warder Evolution"), main, "FHD_Glass17_Setup", 99))
-		elif menuid == "mainmenu":
-			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
-				ret.append((config.plugins.setupGlass17.par78.getText()+" (FHDG 17)", main17, str(config.plugins.setupGlass17.par78.value), 44))
-	return ret
-	
-def Plugins(path, **kwargs):
-	ret = [ ]
-	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		ret = [ PluginDescriptor(name="setupGlass17", description=_("FullHDGlass17 - Warder Evolution"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
-							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
-		if config.plugins.setupGlass17.par78.value != "n":
-			ret.append(PluginDescriptor(name=config.plugins.setupGlass17.par78.getText()+" (FHDG 17)",where = PluginDescriptor.WHERE_EXTENSIONSMENU,fnc = main17))
-	return ret
-
-def main17(session,**kwargs):
-	if config.plugins.setupGlass17.par78.value == "g":
-		session.open(SpecialScreen)
-	elif config.plugins.setupGlass17.par78.value == "i":
-		from Plugins.Extensions.setupGlass17.infoEcm_by_duri import InfoEcmScreen
-		session.open(InfoEcmScreen)		
-	elif "w" in config.plugins.setupGlass17.par78.value:
-		from Plugins.Extensions.setupGlass17.weather import WeatherScreen
-		session.open(WeatherScreen, config.plugins.setupGlass17.par171.value)
-	elif config.plugins.setupGlass17.par78.value == "e":
-		from Plugins.Extensions.setupGlass17.E_weather import mainmenu
-		session.open(mainmenu)
-	elif config.plugins.setupGlass17.par78.value == "a":
-		from Plugins.Extensions.setupGlass17.Netatmo import NetatmoScreen
-		session.open(NetatmoScreen)	
-        	
-def main(session,**kwargs):
-	ch_help = getCitiesCode()
-	config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help)
-	ch_help = readAPIkey()
-	session.open(setupGlass17ScreenSetup)
-##########################################################################################################################		
-class ColorLabel(Label):
-	def __init__(self, text=""):
-		Label.__init__(self, text)
-
-	def colorX(self,a):
-		if self.instance:
-			if a != "AutoColors":
-				self.instance.setForegroundColor(parseColor(a)) 
-
-	def color1(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[1][0])) # white
-			else:
-				self.instance.setForegroundColor(parseColor(a))			
-
-	def color2(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[3][0]))	#  green
-			else:
-				self.instance.setForegroundColor(parseColor(a))
-
-	def color3(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[5][0])) # orange
-			else:
-				self.instance.setForegroundColor(parseColor(a))
-			
-	def color4(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[8][0])) #  red
-			else:
-				self.instance.setForegroundColor(parseColor(a))
-
-	def color5(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[12][0])) #  gray
-			else:
-				self.instance.setForegroundColor(parseColor(a))
-				
-	def color6(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[17][0])) #  blue	
-			else:
-				self.instance.setForegroundColor(parseColor(a))					
-
-	def color7(self,a):
-		if self.instance:
-			if a == "AutoColors":
-				self.instance.setForegroundColor(parseColor(colors[22][0])) #  yellow
-			else:
-				self.instance.setForegroundColor(parseColor(a))
-
-def chckPMS():
-	p = SCREENSPATH + "Menu"	
-	w = False
-	for x in ['.pyc','.pyo']:
-		if fileExists(p + x) and fileExists(p + "-new17" + x):
-			if os.path.getsize(p + x) != os.path.getsize(p + "-new17" + x):
-				w = True
-	return w
-##########################################################################################################################
-# Warder GraphicalEPGPIG title suppression. OpenATV sets the current bouquet via
-# Screen.setTitle(), which is rendered by the desktop window decoration outside
-# the skin screen. Keep the override scoped to our PIG graphical guide only.
-WarderEPGSelection_setTitle = None
-try:
-	from Screens.EpgSelection import EPGSelection as WarderEPGSelection
-	WarderEPGSelection_setTitle = WarderEPGSelection.setTitle
-	def warderEPGSelectionSetTitle(self, title, *args, **kwargs):
-		if config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG":
-			title = ""
-		return WarderEPGSelection_setTitle(self, title, *args, **kwargs)
-	WarderEPGSelection.setTitle = warderEPGSelectionSetTitle
-	def _warderGraphicalEPGPIG(self):
-		return config.skin.primary_skin.value == "hd_glass17/skin.xml" and getattr(self, "skinName", None) == "GraphicalEPGPIG"
-
-	def _warderGraphicalEPGLabels(self):
-		if not _warderGraphicalEPGPIG(self):
-			return
-		for key, text in (("warder_key_red", _warderUiText("PROGRAM INFO")), ("warder_key_green", _warderUiText("Add Timer")), ("warder_key_yellow", _warderUiText("Goto Date/Time")), ("warder_key_blue", _warderUiText("EPG Search"))):
-			try:
-				self[key].setText(text)
-			except Exception:
-				pass
-
-	WarderEPGSelection_init = WarderEPGSelection.__init__
-	def warderEPGSelectionInit(self, *args, **kwargs):
-		WarderEPGSelection_init(self, *args, **kwargs)
-		if _warderGraphicalEPGPIG(self):
-			for key in ("warder_key_red", "warder_key_green", "warder_key_yellow", "warder_key_blue"):
-				self[key] = StaticText("")
-		_warderGraphicalEPGLabels(self)
-	WarderEPGSelection.__init__ = warderEPGSelectionInit
-
-	# OpenATV refreshes StaticText colour-key sources after construction. Re-apply
-	# the FullHDGlass labels afterwards so the visible label always matches the handler.
-	WarderEPGSelection_RefreshColouredKeys = WarderEPGSelection.RefreshColouredKeys
-	def warderEPGSelectionRefreshColouredKeys(self, *args, **kwargs):
-		result = WarderEPGSelection_RefreshColouredKeys(self, *args, **kwargs)
-		_warderGraphicalEPGLabels(self)
-		return result
-	WarderEPGSelection.RefreshColouredKeys = warderEPGSelectionRefreshColouredKeys
-
-	WarderEPGSelection_redButtonPressed = WarderEPGSelection.redButtonPressed
-	def warderProgramInfoClosed(self, action=None):
-		self._warderProgramInfoOpen = False
-		if action == "green": return self.RecordTimerQuestion(True)
-		if action == "yellow": return self.enterDateTime()
-		if action == "blue": return self.openEPGSearch()
-	WarderEPGSelection.warderProgramInfoClosed = warderProgramInfoClosed
-
-	def warderEPGSelectionRedButtonPressed(self):
-		if _warderGraphicalEPGPIG(self):
-			# One physical RED press can be delivered more than once by the EPG key path.
-			# Never stack two Program Info screens: the first close must reveal the EPG.
-			if getattr(self, "_warderProgramInfoOpen", False):
-				return None
-			# Warder contract: RED in our graphical EPG has exactly one destination:
-			# the local PROGRAM INFO screen for the currently selected EPG event.
-			# Never fall through to OpenATV/legacy info/CSFD handlers.
-			try:
-				active = getattr(self, "activeList", 1)
-				listing = self["list%s" % active]
-				cur = listing.getCurrent()
-				event = cur[0] if cur else None
-				service = cur[1] if cur and len(cur) > 1 else None
-				if event is not None:
-					self._warderProgramInfoOpen = True
-					try:
-						return self.session.openWithCallback(self.warderProgramInfoClosed, WarderProgramInfo, event, service)
-					except Exception:
-						self._warderProgramInfoOpen = False
-						raise
-			except Exception as e:
-				Writelog("WarderProgramInfo open: %s" % e)
-			return None
-		return WarderEPGSelection_redButtonPressed(self)
-	WarderEPGSelection.redButtonPressed = warderEPGSelectionRedButtonPressed
-
-	WarderEPGSelection_greenButtonPressed = WarderEPGSelection.greenButtonPressed
-	def warderEPGSelectionGreenButtonPressed(self):
-		if _warderGraphicalEPGPIG(self):
-			return self.RecordTimerQuestion(True)
-		return WarderEPGSelection_greenButtonPressed(self)
-	WarderEPGSelection.greenButtonPressed = warderEPGSelectionGreenButtonPressed
-
-	WarderEPGSelection_yellowButtonPressed = WarderEPGSelection.yellowButtonPressed
-	def warderEPGSelectionYellowButtonPressed(self):
-		if _warderGraphicalEPGPIG(self):
-			return self.enterDateTime()
-		return WarderEPGSelection_yellowButtonPressed(self)
-	WarderEPGSelection.yellowButtonPressed = warderEPGSelectionYellowButtonPressed
-
-	WarderEPGSelection_blueButtonPressed = WarderEPGSelection.blueButtonPressed
-	def warderEPGSelectionBlueButtonPressed(self):
-		if _warderGraphicalEPGPIG(self):
-			return self.openEPGSearch()
-		return WarderEPGSelection_blueButtonPressed(self)
-	WarderEPGSelection.blueButtonPressed = warderEPGSelectionBlueButtonPressed
-
-except Exception:
-	pass
-
-
-def _warderRadioButtonTrace(self, *args, **kwargs):
-	try:
-		stamp = time1.time()
-		with open("/tmp/warder-radio-start", "w") as out:
-			out.write("%.6f\\n" % stamp)
-		with open("/tmp/warder-radio-artwork.log", "a") as out:
-			out.write("RADIO_BUTTON epoch=%.6f\\n" % stamp)
-	except Exception:
-		pass
-	return _warderOriginalShowRadioButton(self, *args, **kwargs)
-
-
-def startHdg17(reason, **kwargs):
-	if reason == 0 and config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		# TEST89: timestamp the actual RADIO key handler before any mode-switch work.
-		global _warderOriginalShowRadioButton
-		try:
-			if _warderOriginalShowRadioButton is None:
-				_warderOriginalShowRadioButton = InfoBar.showRadioButton
-				InfoBar.showRadioButton = _warderRadioButtonTrace
-		except Exception:
-			pass
-		# Warder native graphical EPG: picons only, compact service column.
-		# Keep this scoped to FullHDGlass17 session start and tolerate images without these OpenATV keys.
-		try:
-			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_servicetitle_mode"):
-				config.epgselection.graph_servicetitle_mode.value = "picon"
-			if hasattr(config, "epgselection") and hasattr(config.epgselection, "graph_piconwidth"):
-				config.epgselection.graph_piconwidth.value = 60
-			if hasattr(config, "epgselection"):
-				if hasattr(config.epgselection, "graph_green"):
-					config.epgselection.graph_green.value = "timer"
-				if hasattr(config.epgselection, "graph_yellow"):
-					config.epgselection.graph_yellow.value = "gotodatetime"
-				if hasattr(config.epgselection, "graph_blue"):
-					config.epgselection.graph_blue.value = "epgsearch"
-		except Exception:
-			pass
-		enaOKstart = True                                                                                     
-		if not fileExists(SKINPATH + "icons/about1.png"):
-			if config.plugins.setupGlass17.par15.value != "0" and chckUserHdg():       
-				enaOKstart = False
-				msg = setOledMore()
-			if config.plugins.setupGlass17.par7.value == "Icons" or config.plugins.setupGlass17.par7.value == "Icons Right" or config.plugins.setupGlass17.par7.value == "Icons Bar":
-				if chckPMS():
-					if setMenuPyo():                                 		
-						enaOKstart = False
-			if config.plugins.setupGlass17.par59.value:
-				if not os.path.exists('/etc/dpkg') and fileExists(ENC_U):
-					if os.path.getsize(ENC_U) != os.path.getsize(ENC_C):
-						enaMenuPy = setEncodingUser()
-						if enaMenuPy:                                 		
-							enaOKstart = False
-				else:
-					setCFGoff(59)
-			if config.plugins.setupGlass17.par62.value:
-				if E2OK:
-					tt = chnlSelChck()
-					if tt == 0:
-						if chnlSelPatch():
-							enaOKstart = False
-						else:
-							setCFGoff()
-					elif tt == 3:
-						enaOKstart = False								
-				else:
-					setCFGoff()
-			if EFIFO and config.plugins.setupGlass17.par67.value:
-				if chckFifo():
-					enaOKstart = False
-		if not enaOKstart:
-			autoStartChck17.updateChck(kwargs["session"])
-		else:
-			if fileExists(SKINPATH + "icons/about1.png"):
-				autoStartChck17.startHdgchck(kwargs["session"])
-			if config.plugins.setupGlass17.par12.value != "n" or config.plugins.setupGlass17.par64.value:
-				keyManage.initKeyMng(kwargs["session"])
-			global Glass17__init__
-			if "session" in kwargs:
-				if Glass17__init__ is None:
-					Glass17__init__ = InfoBarPlugins.__init__
-				InfoBarPlugins.__init__ = hdg17inicialize
-				InfoBarPlugins.controlWindow17 = controlWindow17
-				InfoBarPlugins.hideWindow17 = hideWindow17
-				InfoBarPlugins.fadeEvent17 = fadeEvent17
-				InfoBarPlugins.fadeEvent217 = fadeEvent217
-				InfoBarPlugins.serviceStartNow17 = serviceStartNow17
-				InfoBarPlugins.serviceStartNow172 = serviceStartNow172
-				InfoBarPlugins.serviceStartNow173 = serviceStartNow173
-				if config.plugins.setupGlass17.par12.value != "n":
-					InfoBarPlugins.SpecialScreenWindow17 = SpecialScreenWindow17
-			if not config.plugins.setupGlass17.par48.value:
-				try:
-					satXml = parse(config.plugins.setupGlass17.par141.value+"satellites.xml").getroot()
-					if satXml is not None:
-						global allSat
-						for sat in satXml.findall("sat"):
-							name = sat.get("name") or None
-							position = sat.get("position") or None
-							if name is not None and position is not None:
-								position = "%s.%s" % (position[:-1], position[-1:])
-								if position.startswith("-"):
-									position = "%sW" % position[1:]
-								else:
-									position = "%sE" % position
-								if position.startswith("."):
-									position = "0%s" % position
-								if not ISP38:
-									name = name.encode("utf-8")
-								allSat[position] = str(name)
-				except: pass
-
-def hdg17inicialize(self):
-	global FirstRun17
-	if not FirstRun17: 
-		FirstRun17 = True
-		def doNothing():
-			pass
-		if config.plugins.setupGlass17.par12.value == "n":
-			if config.plugins.setupGlass17.par34.value:
-				self["g17Actions"] = ActionMap(["g17Actions_neutrino"],{"ok_pressed": self.controlWindow17}, -1)
-			else:
-				self["g17Actions"] = ActionMap(["g17Actions"],{"ok_pressed": self.controlWindow17,"exit_pressed": self.hideWindow17}, -1)
-		else:
-			if config.plugins.setupGlass17.par34.value:
-				self["g17Actions"] = ActionMap(["g17Actions_neutrinoSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17}, -1)
-			else:
-				self["g17Actions"] = ActionMap(["g17ActionsSpecial"],{"showSpecialScreen": self.SpecialScreenWindow17,"ok_pressed": self.controlWindow17,"exit_pressed": self.hideWindow17}, -1)
-			self["helpActions"] = ActionMap(['HelpActions'],{"displayHelp": doNothing})
-		f = open(KMP_FILE, "r").read()
-		if f.find("LongOKPressed") != -1:
-			self["ShowHideActions"] = ActionMap( ["InfobarShowHideActions"] ,{"toggleShow": doNothing,"hide": doNothing,})
-		if ENA_Z:
-			self.g17dialog = self.session.instantiateDialog(ExtraInfo17, zPosition=1000)
-			self.g17dialog.shown = False
-		else:
-			self.g17dialog = self.session.instantiateDialog(ExtraInfo17)
-		self.__event_tracker = ServiceEventTracker(screen=self, eventmap=
-			{
-				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173,
-			})
-		global transStep17
-		transStep17 = 20
-		self.g17fadeTimer = eTimer()
-		try:
-			self.g17fadeTimer_conn = self.g17fadeTimer.timeout.connect(self.fadeEvent17)
-		except AttributeError:
-			self.g17fadeTimer.timeout.get().append(self.fadeEvent17)
-		self.g17fadeTimer2 = eTimer()
-		try:
-			self.g17fadeTimer2_conn = self.g17fadeTimer2.timeout.connect(self.fadeEvent217)
-		except AttributeError:
-			self.g17fadeTimer2.timeout.get().append(self.fadeEvent217)
-		if config.plugins.setupGlass17.par4.value:
-			self.onShow.append(lambda: self.g17dialog.show())
-			self.onHide.append(lambda: self.g17dialog.hide())
-			if config.plugins.setupGlass17.par31.value != "n":
-				if "w" in config.plugins.setupGlass17.par31.value:          
-					from Plugins.Extensions.setupGlass17.weather import WeatherScreen
-					if ENA_Z:
-						self.g17dialogUser = self.session.instantiateDialog(WeatherScreen, config.plugins.setupGlass17.par172.value, zPosition=2000)
-						self.g17dialogUser.shown = False
-					else:
-						self.g17dialogUser = self.session.instantiateDialog(WeatherScreen, config.plugins.setupGlass17.par172.value)
-				elif config.plugins.setupGlass17.par31.value == "a":          
-					from Plugins.Extensions.setupGlass17.Netatmo import NetatmoScreen
-					if ENA_Z:
-						self.g17dialogUser = self.session.instantiateDialog(NetatmoScreen, zPosition=2000)
-						self.g17dialogUser.shown = False
-					else:
-						self.g17dialogUser = self.session.instantiateDialog(NetatmoScreen)
-				else:
-					from Screens.G17_UserInfo import UserInfo17
-					if ENA_Z:
-						self.g17dialogUser = self.session.instantiateDialog(UserInfo17, zPosition=2000)
-						self.g17dialogUser.shown = False
-					else:
-						self.g17dialogUser = self.session.instantiateDialog(UserInfo17)
-				self.g17dialogUser.hide()
-		self.g17dialogTimer = eTimer()
-		try:
-			self.g17dialogTimer_conn = self.g17dialogTimer.timeout.connect(self.hideWindow17)
-		except AttributeError:
-			self.g17dialogTimer.callback.append(self.hideWindow17)
-		def timerStateChck17():
-			if self.g17dialogTimer.isActive():
-				self.g17dialogTimer.stop()
-			if self.g17eventupdTimer.isActive():
-				self.g17eventupdTimer.stop()
-		self.g17dialog.onHide.append(timerStateChck17)
-		def hideTimerStop17():
-			self.hideTimer.stop()
-		self.killhideTimer = eTimer()
-		try:
-			self.killhideTimer_conn = self.killhideTimer.timeout.connect(hideTimerStop17)
-		except AttributeError:
-			self.killhideTimer.timeout.get().append(hideTimerStop17)
-		self.g17eventupdTimer = eTimer()
-		try:
-			self.g17eventupdTimer_conn = self.g17eventupdTimer.timeout.connect(self.hideWindow17)
-		except AttributeError:
-			self.g17eventupdTimer.timeout.get().append(self.hideWindow17)
-		self.onShow.append(self.serviceStartNow172)
-		self.onHide.append(timerStateChck17)
-	else:
-		InfoBarPlugins.__init__ = InfoBarPlugins.__init__
-		InfoBarPlugins.controlWindow17 = None
-		InfoBarPlugins.hideWindow17 = None
-		InfoBarPlugins.fadeEvent17 = None
-		InfoBarPlugins.fadeEvent217 = None
-		InfoBarPlugins.serviceStartNow17 = None
-		InfoBarPlugins.serviceStartNow172 = None
-		InfoBarPlugins.serviceStartNow173 = None
-		if config.plugins.setupGlass17.par12.value != "n":
-			InfoBarPlugins.SpecialScreenWindow17 = None
-	Glass17__init__(self)
-
-def SpecialScreenWindow17(self):
-	ShowHideViaKey()
-
-def serviceStartNow17(self):
-	if isinstance(self,InfoBar):
-		# TEST106: retry after OpenWebif has initialized; idempotent and receiver-proven class name.
-		_warderInstallOpenWebifGrabHook()
-		# TEST90/92: service-start is the reliable TV/RADIO transition boundary on this image.
-		refstr = ""
-		try:
-			ref = self.session.nav.getCurrentlyPlayingServiceReference()
-			refstr = ref.toString() if ref is not None else ""
-			stamp = time1.time()
-			with open("/tmp/warder-radio-service-events.log", "a") as out:
-				out.write("SERVICE_START epoch=%.6f ref=%s\\n" % (stamp, refstr))
-		except Exception:
-			pass
-		# TEST92: a TV -> RADIO service can start while ChannelSelectionRadio is still
-		# open. Re-show the already native-owned RDS dialog at that proven boundary
-		# so closing the bouquet exposes the Warder skin overlay immediately.
-		# Do not replace or monkey-patch Screens.RdsDisplay.RdsInfoDisplay.
-		try:
-			fields = refstr.split(":")
-			is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
-			try:
-				with open("/tmp/warder-radio-current", "w") as marker:
-					marker.write("A" if is_radio else "TV")
-			except Exception:
-				pass
-			rds = getattr(self, "rds_display", None)
-			if rds is not None:
-				if is_radio:
-					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
-					rds.show()
-					with open("/tmp/warder-radio-service-events.log", "a") as out:
-						out.write("RADIO_OVERLAY_SHOW epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
-				else:
-					# TEST94: TEST92 must be symmetrical. The native-owned RDS dialog
-					# must not survive RADIO -> TV and bind its CurrentService widgets
-					# to the TV service after the normal TV infobar closes.
-					rds.hide()
-					with open("/tmp/warder-radio-service-events.log", "a") as out:
-						out.write("RADIO_OVERLAY_HIDE epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
-		except Exception:
-			pass
-		if self.shown:
-			if self.g17dialogTimer.isActive():
-				self.g17dialogTimer.stop()
-			idx = config.usage.infobar_timeout.index
-			if idx:
-				self.g17dialogTimer.start(idx*1000, True)
-				self.killhideTimer.start(750, True)
-
-def serviceStartNow172(self):
-	if isinstance(self,InfoBar):
-		if self.shown:
-			if self.g17dialogTimer.isActive():
-				self.g17dialogTimer.stop()
-			if config.plugins.setupGlass17.par55.value != "1":
-				idx = config.usage.infobar_timeout.index
-				if idx:
-					self.g17dialogTimer.start(idx*1000, True)
-			self.killhideTimer.start(750, True)
-
-def serviceStartNow173(self):
-	if isinstance(self,InfoBar):
-		if config.plugins.setupGlass17.par55.value == "1":
-			idx = config.usage.infobar_timeout.index
-			if idx:
-				self.g17eventupdTimer.start(idx*1000, True)
-
-def controlWindow17(self):
-	global transStep17
-	if isinstance(self,InfoBar):
-		if config.plugins.setupGlass17.par55.value == "2":
-			if config.usage.infobar_timeout.value != "0":
-				config.plugins.setupGlass17.par61.value = config.usage.infobar_timeout.value
-				config.usage.infobar_timeout.value = "0"
-		if not config.plugins.setupGlass17.par4.value:
-			if not self.shown and not self.g17dialog.shown:
-				if config.plugins.setupGlass17.par27.value and config.plugins.setupGlass17.par29.value:
-					alphaChange17(0)
-					self.show()
-					transStep17 = 0
-					self.g17fadeTimer.start(250, True)
-				else:
-					self.show()
-			elif self.shown and not self.g17dialog.shown:
-				self.hide()
-				self.g17dialog.show()
-				if config.plugins.setupGlass17.par55.value != "1":
-					idx = config.usage.infobar_timeout.index
-					if idx:
-						self.g17dialogTimer.start(idx*1000, True)
-			elif not self.shown and self.g17dialog.shown:
-				if config.plugins.setupGlass17.par27.value:
-					transStep17 = 20
-					self.g17fadeTimer2.start(5, True)
-				else:
-					self.g17dialog.hide()
-				if config.plugins.setupGlass17.par55.value == "2":
-					if config.usage.infobar_timeout.value == "0":
-						config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-						config.plugins.setupGlass17.par61.value = "0"
-			elif self.shown and self.g17dialog.shown:
-				if config.plugins.setupGlass17.par27.value:
-					transStep17 = 20
-					self.g17fadeTimer2.start(5, True)
-				else:
-					self.hide()
-					self.g17dialog.hide()
-				if config.plugins.setupGlass17.par55.value == "2":
-					if config.usage.infobar_timeout.value == "0":
-						config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-						config.plugins.setupGlass17.par61.value = "0"
-			else:
-				if self.shown:
-					if config.plugins.setupGlass17.par27.value:
-						transStep17 = 20
-						self.g17fadeTimer2.start(5, True)
-					else:
-						self.hide()
-					self.hideTimer.stop()
-					if config.plugins.setupGlass17.par55.value == "2":
-						if config.usage.infobar_timeout.value == "0":
-							config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-							config.plugins.setupGlass17.par61.value = "0"
-				else:
-					if config.plugins.setupGlass17.par27.value and config.plugins.setupGlass17.par29.value:
-						alphaChange17(0)
-						self.show()
-						transStep17 = 0
-						self.g17fadeTimer.start(250, True)
-					else:
-						self.show()
-		else:
-			if config.plugins.setupGlass17.par31.value != "n":
-				if not self.g17dialog.shown and not self.shown and self.g17dialogUser.shown and config.plugins.setupGlass17.par32.value:
-					if config.plugins.setupGlass17.par27.value:
-						transStep17 = 20
-						self.g17fadeTimer2.start(5, True)
-					else:
-						self.g17dialogUser.hide()
-					if config.plugins.setupGlass17.par55.value == "2":
-						if config.usage.infobar_timeout.value == "0":
-							config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-							config.plugins.setupGlass17.par61.value = "0"
-				elif not self.g17dialog.shown:
-					if config.plugins.setupGlass17.par27.value and config.plugins.setupGlass17.par29.value:
-						alphaChange17(0)
-						self.show()
-						transStep17 = 0
-						self.g17fadeTimer.start(150, True)
-					else:
-						self.show()
-				elif self.g17dialog.shown and not self.g17dialogUser.shown:
-					self.g17dialogUser.show()
-					if config.plugins.setupGlass17.par55.value != "1":
-						idx = config.usage.infobar_timeout.index
-						if idx:
-							self.g17dialogTimer.start(idx*1000, True)
-				elif self.g17dialog.shown and self.g17dialogUser.shown:
-					if config.plugins.setupGlass17.par27.value:
-						transStep17 = 20
-						self.g17fadeTimer2.start(5, True)
-					else:
-						if not config.plugins.setupGlass17.par32.value:
-							self.g17dialogUser.hide()
-						else:
-							if not self.shown and not self.g17dialog.shown:
-								self.g17dialogUser.hide()
-						self.hide()
-						self.g17dialog.hide()
-					if config.plugins.setupGlass17.par55.value == "2":
-						if config.usage.infobar_timeout.value == "0":
-							config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-							config.plugins.setupGlass17.par61.value = "0"
-				else:
-					if self.shown:
-						if config.plugins.setupGlass17.par27.value:
-							transStep17 = 20
-							self.g17fadeTimer2.start(5, True)
-						else:
-							self.hide()
-						self.hideTimer.stop()
-						if config.plugins.setupGlass17.par55.value == "2":
-							if config.usage.infobar_timeout.value == "0":
-								config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-								config.plugins.setupGlass17.par61.value = "0"
-					else:
-						if config.plugins.setupGlass17.par27.value and config.plugins.setupGlass17.par29.value:
-							alphaChange17(0)
-							self.show()
-							transStep17 = 0
-							self.g17fadeTimer.start(250, True)
-						else:
-							self.show()		
-			else:
-				if self.shown:
-					if config.plugins.setupGlass17.par27.value:
-						transStep17 = 20
-						self.g17fadeTimer2.start(5, True)
-					else:
-						self.hide()
-					self.hideTimer.stop()
-					if config.plugins.setupGlass17.par55.value == "2":
-						if config.usage.infobar_timeout.value == "0":
-							config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-							config.plugins.setupGlass17.par61.value = "0"
-				else:
-					if config.plugins.setupGlass17.par27.value and config.plugins.setupGlass17.par29.value:
-						alphaChange17(0)
-						self.show()
-						transStep17 = 0
-						self.g17fadeTimer.start(250, True)
-					else:
-						self.show()
-
-def hideWindow17(self):
-	if isinstance(self,InfoBar):
-		if config.plugins.setupGlass17.par55.value == "2":
-			if config.usage.infobar_timeout.value == "0":
-				config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-				config.plugins.setupGlass17.par61.value = "0"
-		if config.plugins.setupGlass17.par27.value:
-			global transStep17
-			transStep17 = 20
-			self.g17fadeTimer2.start(5, True)
-		else:
-			if config.plugins.setupGlass17.par4.value and config.plugins.setupGlass17.par31.value != "n":
-				if not config.plugins.setupGlass17.par32.value:
-					self.g17dialogUser.hide()
-				else:
-					if not self.shown and not self.g17dialog.shown:
-						self.g17dialogUser.hide()
-			self.hide()
-			self.g17dialog.hide()
-	
-def fadeEvent217(self):
-	global enaFadeOut17
-	if not enaFadeOut17: 
-		return
-	if config.plugins.setupGlass17.par4.value and config.plugins.setupGlass17.par31.value != "n":
-		if config.plugins.setupGlass17.par32.value:
-			if self.shown and self.g17dialog.shown and self.g17dialogUser.shown:
-				self.hide()
-				self.g17dialog.hide()
-				return
-	global enaFadeIn17
-	enaFadeIn17 = False
-	self.g17fadeTimer2.stop()
-	global transStep17
-	if transStep17 != 0:
-		alphaChange17(config.av.osd_alpha.value*transStep17/20)
-		transStep17 -= 1
-		self.g17fadeTimer2.start((int(config.plugins.setupGlass17.par28.value) * 6), True)
-	else:
-		if config.plugins.setupGlass17.par4.value and config.plugins.setupGlass17.par31.value != "n":
-			if not config.plugins.setupGlass17.par32.value:
-				self.g17dialogUser.hide()
-			else:
-				if not self.shown and not self.g17dialog.shown:
-					self.g17dialogUser.hide()
-		self.hide()
-		self.g17dialog.hide()
-		self.transScrtimer = eTimer()
-		try:
-			self.transScrtimer_conn = self.transScrtimer.timeout.connect(transRestore17)
-		except AttributeError:
-			self.transScrtimer.timeout.get().append(transRestore17)
-		self.transScrtimer.start(300, True)
-
-def transRestore17():
-	alphaChange17(config.av.osd_alpha.value)
-	global enaFadeIn17
-	enaFadeIn17 = True
-
-def fadeEvent17(self):
-	global enaFadeIn17
-	if not enaFadeIn17: 
-		return
-	global enaFadeOut17
-	enaFadeOut17 = False
-	global transStep17
-	self.g17fadeTimer.stop()
-	if transStep17 != 21:
-		alphaChange17(config.av.osd_alpha.value*transStep17/20)
-		transStep17 += 1
-		self.g17fadeTimer.start((int(config.plugins.setupGlass17.par28.value) * 6), True)
-	else:
-		enaFadeOut17 = True
-
-def alphaChange17(alphastate):
-	f=open("/proc/stb/video/alpha","w")
-	f.write("%i" % (alphastate))
-	f.close()
-##########################################################################################################################      		
-def piconSize(s):
-	ret = "picon"
-	try:
-		s = s.split(",")
-		if s[0] in ("400","600"):
-			ret = "ZZPicon"
-			if s[1] == "240":
-				ret = "picon_400x240"
-		elif s[0] == "220":
-			ret = "picon_220x132"
-	except: pass
-	return ret
-	
-def chckPiconSize():
-	ret = "1"
-	try:
-		from Screens.G17screens import g17_extraScreen	
-		tmp = g17_extraScreen.get(str(config.plugins.setupGlass17.par6.value))
-		typeScr = tmp.split("\n")
-		for i in typeScr:
-			if '"g17picon"' in i:
-				tmp = (i.split('size="')[1]).split('"')[0]
-				tmp = tmp.split(",")
-				if "400" in tmp[0] or "600" in tmp[0]:
-					ret = "3"
-					if "240" in tmp[1]:
-						ret = "4"
-				elif "220" in tmp[0]:
-					ret = "2"
-				break
-	except: pass
-	return ret
-	
-def fromCfgB(w=True):
-	try:
-		from Screens.G17screens import g17_extraScreen	
-		tmp = g17_extraScreen.get(str(config.plugins.setupGlass17.par6.value))
-		if w:
-			if tmp.find("bitrate_info") != -1:
-				return True
-		else:
-			tmp = tmp.split("\n")
-			for i in tmp:
-				if '<widget source="session.Event_Now" render="Progress"' in i and not 'pixmap="' in i:
-					return True
-	except: pass
-	return False
-			
-def fromCfg():
-	isOk = checkScreen(config.plugins.setupGlass17.par6.value)
-	if not isOk:
-		config.plugins.setupGlass17.par6.value = 1
-		config.plugins.setupGlass17.par6.save()
-	from Screens.G17screens import g17_extraScreen	
-	typeScr = g17_extraScreen.get(str(config.plugins.setupGlass17.par6.value))
-	if ENA_POSTER and config.plugins.setupGlass17.par198.value:
-		typeScr = typeScr.replace("</screen>",POSTER % (config.plugins.setupGlass17.par200.value,config.plugins.setupGlass17.par201.value,config.plugins.setupGlass17.par202.value) + "</screen>")
-	if config.plugins.setupGlass17.par209.value != "0":
-		if config.plugins.setupGlass17.par226.value != "2":
-			isOk = NETSPEED % (config.plugins.setupGlass17.par210.value,config.plugins.setupGlass17.par211.value,config.plugins.setupGlass17.par210.value+80,config.plugins.setupGlass17.par211.value)
-			if config.plugins.setupGlass17.par213.value != "AutoColors": 
-				isOk = setFcolor(isOk,config.plugins.setupGlass17.par213.value)
-		else:
-			isOk = NETSPEEDT % (config.plugins.setupGlass17.par210.value,config.plugins.setupGlass17.par211.value)
-		typeScr = typeScr.replace("</screen>", isOk + "</screen>")
-	tmp = typeScr
-	if config.plugins.setupGlass17.par137.value != "AutoColors" or config.plugins.setupGlass17.par136.value != "AutoColors" or config.plugins.setupGlass17.par135.value != "AutoColors" or config.plugins.setupGlass17.par128.value != "AutoColors" or config.plugins.setupGlass17.par129.value != "AutoColors" or config.plugins.setupGlass17.par130.value != "AutoColors":
-		typeScr = tmp.split("\n")
-		tmp = ""
-		buff = ""
-		isOk = False
-		isOk2 = False
-		isOk3 = False
-		isOk4 = False
-		for i in typeScr:
-			if 'render="g17dateFormat"' in i and config.plugins.setupGlass17.par128.value != "AutoColors":
-				tmp += setFcolor(i,config.plugins.setupGlass17.par128.value)
-			elif '="global.CurrentTime' in i and not isOk:
-				isOk = True
-				buff = i
-			elif '="session.CurrentService' in i and not isOk2:
-				isOk2 = True
-				buff = i
-			elif '="session.Event_Now"' in i and not '="g17Poster"' in i and not isOk3:
-				isOk3 = True
-				buff = i
-			elif '="session.Event_Next"' in i and not isOk4:
-				isOk4 = True
-				buff = i
-			elif 'g17ClockToText' in i and isOk:
-				if config.plugins.setupGlass17.par130.value != "AutoColors" and ('>Format::%S<' in i or '>Format:%S<' in i):
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par130.value) + i + "\n"
-					isOk = False
-				elif config.plugins.setupGlass17.par129.value != "AutoColors":
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par129.value) + i + "\n"
-					isOk = False
-				else:
-					tmp += buff + "\n" + i + "\n"
-					isOk = False
-			elif ('"ServiceName">Name<' in i or '"g17ServiceNum">Number' in i) and isOk2:
-				if config.plugins.setupGlass17.par135.value != "AutoColors":
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par135.value) + i + "\n"
-					isOk2 = False
-				else:
-					tmp += buff + "\n" + i + "\n"
-					isOk2 = False
-			elif ('g17EventTime' in i or '="EventName' in i) and (isOk3 or isOk4):
-				if config.plugins.setupGlass17.par136.value != "AutoColors" and isOk3:
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par136.value) + i + "\n"
-					isOk3 = False
-				elif config.plugins.setupGlass17.par137.value != "AutoColors" and isOk4:
-					tmp += setFcolor(buff,config.plugins.setupGlass17.par137.value) + i + "\n"
-					isOk4 = False
-				else:
-					tmp += buff + "\n" + i + "\n"
-					isOk4 = False
-					isOk3 = False
-			else:
-				tmp += ({True:buff + "\n", False:""}[isOk or isOk2 or isOk3 or isOk4]) + i + "\n"
-				isOk = False
-				isOk2 = False
-				isOk3 = False
-				isOk4 = False
-	if config.plugins.setupGlass17.par183.value != "0":
-		tt = int(config.plugins.setupGlass17.par183.value)
-		typeScr = tmp.split("\n")
-		tmp = ""
-		for i in typeScr:
-			if not '<screen' in i and ' position="' in i: 
-				tmp += calcY(tt,i,' position="') + "\n"
-			else:
-				tmp += i + "\n"
-	if ENA_SLIDER[0] or ENA_SLIDER[1]:
-		typeScr = tmp.split("\n")
-		tmp = ""
-		tt = '<widget source="session.Event_Now" render="Progress"'
-		for i in typeScr:
-			if tt in i:
-				isOk2 = 'pixmap="' in i and not config.plugins.setupGlass17.par222.value
-				if not 'pixmap="' in i or isOk2:
-					if isOk2:
-						config.plugins.setupGlass17.par16.value = False
-						isOk = i.split('pixmap="')
-						isOk2 = isOk[1].split(' ')
-						isOk2[0] = ''
-						isOk = re.sub(r"\s+", " ", isOk[0] + ' '.join(isOk2))
-						isOk2 = ((isOk.split('size="')[1]).split(',')[1]).strip()						
-						isOk2 = (isOk.split('"')[0]).strip()
-						if isOk2.isdigit():
-							isOk2 = isOk2/2 - 3
-						else:
-							isOk2 = 5
-						isOk = calcY(5,isOk,'size="',True)
-						isOk = calcY(isOk2,isOk,'position="')
-						i = isOk.replace('transparent="1"','transparent="0"')
-					if ENA_SLIDER[0]:
-						if config.plugins.setupGlass17.par214.value != "AutoColors":		
-							isOk = config.plugins.setupGlass17.par214.value		
-						else:		
-							isOk = "white"				
-						i = setFcolor(i,isOk)
-					if ENA_SLIDER[1]:
-						if config.plugins.setupGlass17.par215.value != "AutoColors":		
-							isOk = config.plugins.setupGlass17.par215.value		
-						else:		
-							isOk = "#1546AF"
-						i = setFcolor(i,isOk,True)
-			tmp += i + "\n"
-	if config.plugins.setupGlass17.par223.value:
-		typeScr = tmp.split("\n")
-		tmp = ""
-		for i in typeScr:
-			if ('<eLabel ' in i and 'text="' in i and ('"-"' in i or ':' in i)) or ('<ePixmap ' in i and ('slider/sig' in i or 'icons/bar_back' in i)):
-				if '<eLabel ' in i:
-					isOk = i.replace('<eLabel ','<widget source="session.FrontendStatus" render="FixedLabel" ')
-				else:
-					isOk = i.replace('<ePixmap ','<widget source="session.FrontendStatus" render="Pixmap" ')
-				isOk = isOk.replace('/>','>\n')
-				if 'SNR' in i.upper() or 'Q' in i or '"-"' in i:
-					isOk2 = 'SnrNum'
-				elif 'BER' in i.upper():
-					isOk2 = 'BerNum'
-				else:
-					isOk2 = 'AgcNum'
-				i = isOk + '<convert type="g17ExtraSource">%s</convert>\n<convert type="ValueRange">1,65536</convert>\n<convert type="ConditionalShowHide" />\n</widget>' % isOk2
-			tmp += i + "\n"
-	# TEST165: InfoPanel mirrors the three independent native Radio top labels.
-	# All share y/height/valign; only the clock uses the larger font.
-	tmp = setSideECM(tmp)
-	warder_radio_top = """
-		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#FFE16A" halign="left" valign="center" noWrap="1" transparent="1" zPosition="20" />
-		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#FFE16A" halign="center" valign="center" noWrap="1" transparent="1" zPosition="20" />
-		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="1170,27" size="630,58" font="Prive4;30" foregroundColor="#FFE16A" halign="right" valign="center" noWrap="1" transparent="1" zPosition="20" />
-	"""
-	return tmp.replace("</screen>", warder_radio_top + "</screen>")
-
-def calcY(xs,dd,d,o=None):
-	a = dd.split(d)
-	b = a[1].split('"')
-	c = b[0].split(',')
-	if len(c) == 2:
-		c[1] = c[1].strip()
-		if c[1].isdigit():
-			if o:
-				c[1] = str(xs)
-			else:
-				c[1] = str(int(int(c[1])+xs))
-	b[0] = c[0] + ',' + c[1]
-	return a[0]+ d + '"'.join(b)
-##########################################################################################################################
-def parseEcmInfoLine(line,what=":"):
-	if line.__contains__(what):
-		line = line.split(what)[1]
-		line = line.replace("\n", "")
-		return " ".join(line.strip().split())
-	else:
-		return ""
-##########################################################################################################################
-def isIP(ip):
-	ret = 0
-	x = ip.strip().split(".")
-	if len(x) == 4:
-		for i in x:
-			if i.isdigit():
-				tt = int(i)
-				if tt >= 0 and tt <= 255: 
-					ret += 1
-	return ret == 4
-
-def internet(val=None):
-	try:
-		chck = socket(AF_INET, SOCK_STREAM)
-		chck.settimeout(0.5)	
-		if val is None:
-			val = config.plugins.setupGlass17.par80.value
-		return not bool(chck.connect_ex((val, 80)))
-	except: pass
-	return False
-##########################################################################################################################    		
-def chckScroll20():
-	ena = False
-	path = PYTHONPATH + "skin.py"
-	if fileExists(path):
-		try:
-			r = open(path,"r")
-			for line in r.readlines():	
-				if "ValuePixmapBottomHeight" in line:	
-					ena = True
-					break
-			r.close()          
-		except: pass          	
-	if ena:
-		allLines = ""
-		try:
-			r = open(SKINXML,"r")
-			for line in r.readlines():
-				if "<!--windowstylescrollbar id=\"4\">" in line or "</windowstylescrollbar-->" in line:
-					line = line.replace("!--", "").replace("--", "")
-				allLines = allLines + line
-			r.close()
-			_atomicWriteText(SKINXML, allLines)
-		except: pass
-	return ena		
-##########################################################################################################################
-def setONOFF():
-	ena = False         	
-	if ENA_ONOFF:
-		allLines = ""
-		try:
-			r = open(SKINXML,"r")
-			for line in r.readlines():
-				if 'switchpixmap' in line or 'config onPixmap=' in line:
-					if ('!--' in line or '--' in line) and config.plugins.setupGlass17.par190.value:
-						line = line.replace("!--", "").replace("--", "")
-						ena = True
-					elif not ('!--' in line or '--' in line) and not config.plugins.setupGlass17.par190.value:
-						line = line.replace("<sw", "<!--sw").replace("</switchpixmap>", "</switchpixmap-->").replace("<config", "<!--config").replace("/>", "/-->")
-						ena = True
-				allLines += line
-			r.close()
-			_atomicWriteText(SKINXML, allLines)
-		except: pass
-	return ena
-##########################################################################################################################
-WARDER_ASSET_MANIFEST_URL = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads.json"
-
-def getWarderAssets():
-	"""Load the Warder download catalog over HTTPS without reusing a stale cache entry.
-
-	Returns (error_message, assets_dict). No certificate verification is disabled.
-	"""
-	try:
-		sep = "&" if "?" in WARDER_ASSET_MANIFEST_URL else "?"
-		url = "%s%scb=%d" % (WARDER_ASSET_MANIFEST_URL, sep, int(time1.time()))
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.2", "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
-		with urlopen(req, timeout=15) as response:
-			if str(response.geturl()) != url:
-				raise ValueError("unsafe asset manifest redirect")
-			data = json.loads(response.read().decode("utf-8"))
-		assets = data.get("assets", {})
-		if not isinstance(assets, dict):
-			raise ValueError("invalid assets catalog")
-		assets = dict(assets)
-		assets["__auxiliary_hybrid__"] = data.get("auxiliary_hybrid")
-		return "", assets
-	except Exception as err:
-		return _("Sorry, download server is unavailable, check your internet connection !!!") + " " + str(err), {}
-
-##########################################################################################################################
-def menusel(t):
-	a = ({"Icons":"1","List":"2","with PIG":"3","List and Icon":"7","Icons Bar":"8","Icons Right":"9","simply PIG":"10","PIG2":"11","PIG4":"13","Li2":"14","Li3":"16"}[t])
-	if a == "16" and ISP38 and isATV:
-		a = "15"
-	return a
-##########################################################################################################################
-def listDir(what):
-	f = None
-	try:
-		f = listdir(what)
-	except: pass
-	return f
-	
-def checkScreen(numScr):
-	if numScr == 1:
-		return True
-	isOk = 0
-	ispath = True
-	path = '%s/extraScreens17/%s' % (config.plugins.setupGlass17.par39.value, numScr)
-	pathOK = False
-	num = 0
-	numOK = 0
-	try:
-		if os.path.exists(path):
-			pathOK = True
-			f = listDir(path)
-		from Screens.G17screens import g17_extraScreen	
-		tmp = g17_extraScreen.get(str(numScr))
-		tmp = tmp.split("\n")
-		for line in tmp:
-			if line.__contains__('<screen name="ExtraInfo17"') or line.__contains__('</screen>'):
-				isOk += 1
-			if line.__contains__(('extraScreens17/%s/' % numScr)):
-				num += 1
-				ispath = False
-				if pathOK and f:
-					for x in f:
-						if x in line:
-							numOK += 1
-							break
-		if num == numOK:
-			ispath = True
-	except: ispath = False
-	return isOk == 2 and ispath
-##########################################################################################################################
-def checkIcons(num):
-	global allIcons
-	tst = 0
-	path = config.plugins.setupGlass17.par39.value
-	for x in allIcons:
-		if fileExists(path + "/more_icons/i_type-" + str(num) + "/" + x + ".png"):
-			tst += 1
-	return tst == len(allIcons)
-##########################################################################################################################					
-def chnlSelChck():
-	if fileExists(CHANSEL_FILE) and fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		f = open(CHANSEL_FILE.replace(".py","-ori17.py"), "r").read()
-		if f.find("def zap(self, nref=None, root=None") != -1:
-			f = open(CHANSEL_FILE, "r").read()
-			if f.find("def zap(self, nref=None, root=None") == -1:
-				if not chnlSelPatch(False):
-					setCFGoff()
-					return 2
-	enaMenuPy = 0
-	if fileExists(CHANSEL_FILE):
-		r = open(CHANSEL_FILE, "r")
-		ena = False
-		enaVti = False
-		for line in r.readlines():
-			if ena:
-				if line.__contains__("				if old is None or ref == old:"):
-					enaMenuPy += 1
-				elif line.__contains__("				if ref == old:"):
-					enaMenuPy += 10
-				elif line.__contains__("if ref is None or ref != nref or forced:"):
-					enaMenuPy += 1
-				elif line.__contains__("self.session.nav.playService(lastservice) #revert"):
-					enaMenuPy += 1
-			if line.__contains__("if not root or not (root.flags & eServiceReference.isGroup):"):
-				ena = True
-			if line.__contains__("if config.usage.zap_pip.value and"):
-				enaVti = True
-		r.close()
-	if (not enaVti and enaMenuPy == 3) or (enaVti and enaMenuPy == 4):
-		return 1
-	elif enaMenuPy > 9 or (enaVti and enaMenuPy == 3):
-		if chnlSelPatch(False):
-			if not chnlSelPatch():
-				setCFGoff()
-				return 2
-			else:
-				return 3			
-		else:
-			setCFGoff()
-			return 2
-	return 0
-##########################################################################################################################
-def chnlSelPatch(direct=True):
-	# Warder Evolution safety rule: never patch image-owned ChannelSelection.py
-	# on modern OpenATV. Preserve the legacy setting for old configurations,
-	# but disable it instead of modifying core Enigma2 Python at runtime.
-	if isATV:
-		setCFGoff(62)
-		return False
-	if not direct and fileExists(CHANSEL_FILE) and fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
-		return True
-	elif not direct:
-		return False	
-	if not fileExists(CHANSEL_FILE): 
-		return False
-	txCH = chnlSelChck()
-	if txCH == 1 or txCH == 3:
-		return True
-	elif txCH == 2:
-		return False
-	shutil.copy2(CHANSEL_FILE, CHANSEL_FILE.replace(".py","-ori17.py"))
-	if not fileExists(CHANSEL_FILE) or not fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
-		try:
-			os.remove(CHANSEL_FILE.replace(".py","-ori2.py"))
-		except OSError:
-			pass
-		return False
-	r = open(CHANSEL_FILE, "r")
-	ena = False
-	ena2 = False
-	breakRead = False
-	allLines = ""
-	secondWrite = 0
-	ena3 = False
-	for line in r.readlines():
-		if line.__contains__("config.merlin"):
-			breakRead = True
-			break
-		if ena and line.__contains__("				self.zap()"):
-			line = line.replace("				self.zap()","				old = self.session.nav.getCurrentlyPlayingServiceReference()\n				self.session.nav.playService(ref)\n				if old is None or ref == old:\n					self.zap(forced=True)")
-		elif ena and line.__contains__("				self.asciiOff()"):
-			line = line.replace("				self.asciiOff()","					self.asciiOff()")
-		elif ena and line.__contains__("				self.close(ref)"):
-			line = line.replace("				self.close(ref)","					self.close(ref)")
-		elif ena and line.__contains__("	def zap(self):"):
-			line = line.replace("	def zap(self):","	def zap(self, forced=False):")
-		elif ena and line.__contains__("	def zap(self, nref=None, root=None):"):
-			line = line.replace("	def zap(self, nref=None, root=None):","	def zap(self, nref=None, root=None, forced=False):")
-		elif ena and line.__contains__("		if ref is None or ref != nref:"):
-			line = line.replace("		if ref is None or ref != nref:","		if ref is None or ref != nref or forced:")
-			secondWrite += 1
-			if not ena3: 
-				ena = False
-			elif ena3 and secondWrite == 2: 
-				ena = False
-		elif ena2 and line.__contains__("		self.close(None)"):
-			line = line.replace("		self.close(None)","		lastservice=eServiceReference(self.lastservice.value)\n		if lastservice.valid():\n			self.session.nav.playService(lastservice) #revert\n		self.close(None)")
-			ena2 = False
-		if line.__contains__("if not root or not (root.flags & eServiceReference.isGroup):"):
-			ena = True
-		elif line.__contains__("		elif self.revertMode == MODE_RADIO:"):
-			ena2 = True
-		elif line.__contains__("if config.usage.zap_pip.value and"):
-			ena3 = True
-		allLines = allLines + line
-	r.close()
-	if breakRead:
-		return False
-	if not _atomicWriteText(CHANSEL_FILE, allLines):
-		return False
-	ena = chnlSelChck()
-	if ena == 0:
-		shutil.copy2(CHANSEL_FILE.replace(".py","-ori17.py"), CHANSEL_FILE)
-		try:
-			os.remove(CHANSEL_FILE.replace(".py","-ori17.py"))
-		except OSError:
-			pass
-	elif ena == 1:
-		return True
-	return False
-##########################################################################################################################
-def writeStyleCfg(scrNum, num):
-	state = False
-	try:
-		allLines = ""
-		found = False
-		f = open(SCREENSPATH + "g17Screens.cfg","r")
-		for x in f.readlines():
-			if x.replace("\n", "").startswith(str(scrNum)+"-"):
-				allLines += str(scrNum)+"-"+str(num)+"\n"
-				found = True
-			else:	
-				allLines += x
-		if not found:
-			allLines += str(scrNum)+"-"+str(num)+"\n"
-		f.close()
-		state = _atomicWriteText(SCREENSPATH + "g17Screens.cfg", allLines)
-	except: pass
-	return state
-##########################################################################################################################
-def checkStyle(num):
-	allstyles = ['b_b','b_bl','b_br','b_l','b_r','b_tl','b_tr','b_t']
-	tst = 0
-	for x in allstyles:
-		fileName = SKINPATH + "style/" + str(num) + "/" + x + ".png"
-		if fileExists(fileName):
-			tst += 1
-	if tst == 8:
-		return True
-	else:
-		return False
-##########################################################################################################################			
-def checkStyleFull(scrNum,cfg=False):
-	def setdefStyle(scr, cfg):
-		msg = "?"
-		if checkStyle(1):	
-			if writeStyleCfg(scr, "1"):
-				if cfg:
-					config.plugins.setupGlass17.par44.value = 1
-					config.plugins.setupGlass17.par44.save()
-				msg = "1"
-		return msg
-	style = -1
-	try:
-		f = open(SCREENSPATH + "g17Screens.cfg","r")
-		for x in f.readlines():
-			if x.replace("\n", "").startswith(str(scrNum)+"-"):
-				x = x.strip().split("-")
-				style = int(x[1])
-				break	
-		f.close()
-	except: pass
-	msg2 = "?"
-	color = "#006cbcf0"
-	if style != -1 and style < MAXICONS:
-		if checkStyle(style):		
-			msg2 = str(style)
-			if cfg:
-				config.plugins.setupGlass17.par44.value = style 
-				config.plugins.setupGlass17.par44.save()
-		else:
-			msg2 = setdefStyle(scrNum, cfg)
-		color = readcolorStyle(msg2)
-	else:
-		msg2 = setdefStyle(scrNum, cfg)
-	if cfg:
-		config.plugins.setupGlass17.par45.value = color 
-		config.plugins.setupGlass17.par45.save()
-	return msg2, color
-##########################################################################################################################
-def readcolorStyle(num):
-	color = "#006cbcf0"
-	try:
-		f = open("%sstyle/%s/title_color.cfg" % (SKINPATH, num),"r").readline()
-		f = f.replace("\n", "").strip().split()[0] 
-		if len(f) == 9:
-			color = int(f.replace("#", "0x"), 16)
-			color = f
-	except: pass
-	return color
-##########################################################################################################################
-def setMenuPyo(what="new17"):
-	# Modern OpenATV owns Screens/Menu.py. Do not swap image Python modules at runtime.
-	if isATV:
-		return False
-	whatOld = "orig17"
-	if what == "orig17":
-		whatOld = "new17"
-	path = SCREENSPATH + "Menu"
-	ena = False
-	for x in ['.py','.pyo','.pyc']: 
-		whatNew = path + "-" + what + x
-		if fileExists(whatNew):
-			ena = True
-			break
-	if ena:
-		for x in ['.py','.pyo','.pyc']:
-			f = path + x
-			h16 = path + "-new16" + x
-			h18 = path + "-new18" + x
-			if fileExists(f):
-				if "orig" in whatOld and (not fileExists(h16) or (fileExists(h16) and os.path.getsize(h16) != os.path.getsize(f))) and (not fileExists(h18) or (fileExists(h18) and os.path.getsize(h18) != os.path.getsize(f))):
-					shutil.copy2(f, "%s-%s%s" % (path, whatOld, x))
-				try:
-					os.remove(f)
-				except OSError:
-					pass
-			if fileExists(path + "-" + what + x):
-				shutil.copy2("%s-%s%s" % (path, what, x), f)
-	return True
-##########################################################################################################################
-def chckPath(path):
-	# A blank/corrupt legacy picon base path must fail safely instead of
-	# indexing an empty string and crashing setupGlass17.
-	path = (path or "").strip()
-	if not path or path == "/":
-		return False
-	if path.endswith("/"):
-		path = path[:-1]
-	allpicons = ['poster','picon_BQT','picWeaInf','animIconWeather','piconProv','piconProv_220x132','piconSat','piconSat_220x132','piconCam','menuIconsBig','picon_50x30','picon','picon_220x132','picon_400x240','piconOled','g17_setup_pict','more_icons','extraScreens17','menuIcons','weatherIcons','ZZPicon']	
-	msg = True
-	if not os.path.exists(path):
-		tmp = path.strip().split("/")
-		p = ""
-		for x in range(0,len(tmp)):
-			if tmp[x] != "":
-				p += "/" + tmp[x]
-				if not os.path.exists(p):
-					try:
-						os.mkdir(p)
-					except OSError:
-						return False
-	for x in allpicons:
-		if not os.path.exists(path+"/"+x):
-			try:
-				os.mkdir(path+"/"+x)
-			except OSError:
-				pass
-			if not os.path.exists(path+"/"+x):
-				msg = False
-	return msg
-##########################################################################################################################
-def _atomicWriteText(path, data):
-	"""Replace a text file atomically, preserving its mode when possible."""
-	directory = os.path.dirname(path) or "."
-	tmp = os.path.join(directory, ".%s.warder-tmp" % os.path.basename(path))
-	mode = None
-	try:
-		if os.path.exists(path):
-			mode = os.stat(path).st_mode & 0o7777
-		with open(tmp, "w") as handle:
-			handle.write(data)
-			handle.flush()
-			os.fsync(handle.fileno())
-		if mode is not None:
-			os.chmod(tmp, mode)
-		os.replace(tmp, path)
-		return True
-	except OSError:
-		try:
-			os.remove(tmp)
-		except OSError:
-			pass
-		return False
-
-##########################################################################################################################
-def windowStyle(what, color):
-	allLines = ""
-	allstyles = ['b_b','b_bl','b_br','b_l','b_r','b_tl','b_tr','b_t']
-	ena = False
-	r = open(SKINXML,"r")
-	for line in r.readlines():
-		if line.__contains__("<windowstyle type=\"skinned\" id=\"0\">"):
-			ena = True
-		if ena:
-			if line.__contains__("<color name=\"WindowTitleForeground"):
-				line = "    <color name=\"WindowTitleForeground\" color=\""+color+"\" />\n"
-				ena = False
-		allLines = allLines + line
-	r.close()
-	if not _atomicWriteText(SKINXML, allLines):
-		return False
-	for x in allstyles:
-		shutil.copy2(os.path.join(SKINPATH, "style", what, x + ".png"), os.path.join(SKINPATH, "general", x + ".png"))
-	return True
-##########################################################################################################################			
-def standbyOledOnOff():
-	allLines = ""
-	r = open(USERXML,"r")
-	for line in r.readlines():
-		if line.__contains__("<screen name=\"StandbySummary"):
-			if line.__contains__("position=\"0,"):
-				line = line.replace("position=\"0,", "position=\"200,")
-			else:
-				line = line.replace("position=\"200,", "position=\"0,")
-		allLines = allLines + line
-	r.close()
-	_atomicWriteText(USERXML, allLines)
-##########################################################################################################################
-def getServiceInfoValue(info, what, ref=None):
-	v = ref and info.getInfo(ref, what) or info.getInfo(what)
-	if v != iServiceInformation.resIsString:
-		return "N/A"
-	return ref and info.getInfoString(ref, what) or info.getInfoString(what)
-##########################################################################################################################    		
-def changeSkinXml(what, new="1", old="1", oled=False):
-	allLines = ""
-	ena1 = False
-	f = ({True:USERXML, False:SKINXML}[oled])
-	try:
-		r = open(f,"r")
-		found = False
-		for line in r.readlines():
-			if oled:
-				if line.__contains__("<screen name=\""+what+"\""):
-					line = line.replace(what, what+"-"+old)
-				elif line.__contains__("<screen name=\""+what+"-"+new+"\""):
-					line = line.replace(what+"-"+new, what)
-				allLines += line
-			else:
-				if line.__contains__("<screen name=\""+what+"\"") or (not found and line.__contains__("</skin>")):
-					ena1 = True				
-					ena = False
-					ena2 = False
-					if isATV and line.__contains__('<screen name="ChannelSelection"'):
-						ena2 = True
-					s = open(SKINALL,"r")
-					for i in s.readlines():
-						if i.__contains__("<screen name=\""+what+"-"+new+"\""):
-							ena = True
-							i = i.replace(what+"-"+new, what)
-						if ena:
-							if ena2 and i.__contains__('<widget name="key_'):
-								i = i.replace('<widget name="key_','<widget render="Label" source="key_')
-							allLines += i
-							if i.__contains__("</screen>"):
-								ena = False
-								found = True
-								ena2 = False								
-								break
-					s.close()
-				else:
-					if not ena1 and line != "\n":
- 							allLines += line                       
-					if ena1 and line.__contains__("</screen>"):                        
- 							ena1 = False
-		r.close()
-		if allLines.find("</skin>") == -1:
-			allLines += "\n</skin>\n"		
-		_atomicWriteText(f, allLines)
-	except: pass
-	return True
-##########################################################################################################################    		
-def changePIGres():
-	allLines = ""
-	ena = False
-	direct = True
-	if config.plugins.setupGlass17.par68.value == "0":
-		direct = False
-	try:
-		r = open(SKINXML,"r")
-		for line in r.readlines():
-			if ena and line.__contains__('session.VideoPicture'):
-				if direct:
-					line = line.replace('position="157,166"', 'position="66,120"').replace('size="697,435"', 'size="882,528"')
-					line = line.replace('position="157,156"', 'position="66,109"').replace('position="1051,166"', 'position="966,120"')
-					line = line.replace('position="138,181"', 'position="52,135"')
-				else:
-					line = line.replace('position="66,120"', 'position="157,166"').replace('size="882,528"', 'size="697,435"')
-					line = line.replace('position="66,109"', 'position="157,156"').replace('position="966,120"', 'position="1051,166"')
-					line = line.replace('position="52,135"', 'position="138,181"')
-			allLines = allLines + line
-			if line.__contains__('hd_glass17/menu/pig_frame-all-fs8.png'):
-				ena = True
-			else:
-				ena = False
-		r.close()
-		_atomicWriteText(SKINXML, allLines)
-	except: pass
-	return "p"
-##########################################################################################################################
-def changeScreenXml(what, new="1", old="1"):
-	o = False
-	if what == "menu":
-		tmp = ["menu_mainmenu", "menu_information", "menu_setup", "menu_scan", "menu_system", "menu_harddisk","menu_shutdown", "Menu"]
-	elif what == "oled":
-		o = True
-		tmp = ["InfoBarSummary","StandbySummary"]
-	for x in tmp:
-		xxx = changeSkinXml(x, new, old, o)
-	if what == "menu" and new in ("12","13"): 
-		tmp = changePIGres()
-	return True
-##########################################################################################################################  
-def setTypeIcos(num):
-	global allIcons
-	for x in allIcons:
-		fileName = config.plugins.setupGlass17.par39.value + "/more_icons/i_type-" + str(num) + "/" + x + ".png"
-		if fileExists(fileName):
-			destination = SKINPATH + "icons/" + x + ".png"
-			try:
-				if os.path.lexists(destination):
-					os.unlink(destination)
-				shutil.copy2(fileName, destination)
-			except OSError:
-				pass
-	return True
-##########################################################################################################################
-def setTypePicon():
-	what = ({"Black":"", "White":"w"}[config.plugins.setupGlass17.par41.value])
-	for x in ("marker","bouquet","next","picon_default","buttons/nopicon","piconWdef","icons/75"):
-		try:
-			shutil.copy2("%s%s-%sdef.png" % (SKINPATH, x, what), "%s%s.png" % (SKINPATH, x))
-		except OSError:
-			pass
-##########################################################################################################################
-def ShowHideViaKey():
-	if keyManage.TunerTest() and keyManage.dialogKey is not None:
-		if config.plugins.setupGlass17.par9.value:
-			config.plugins.setupGlass17.par9.value = False
-			keyManage.dialogKey.hide()
-			if config.plugins.setupGlass17.par73.value:
-				keyManage.stopTimer()
-		else:
-			config.plugins.setupGlass17.par9.value = True
-			keyManage.dialogKey.show()
-			if config.plugins.setupGlass17.par73.value:
-				keyManage.startTimer()
-##########################################################################################################################
-class thumbList(MenuList):
-		def __init__(self, list, enableWrapAround = False):
-			MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)
-			self.l.setFont(0, gFont('Prive3', 30))
-			self.l.setFont(1, gFont('Prive3', 25))
-			self.l.setFont(2, gFont('Prive3', 33))
-			self.l.setItemHeight(37)
-class thumbList2(MenuList):
-		def __init__(self, list, enableWrapAround = False):
-			MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)
-			self.l.setFont(0, gFont('Prive3', 30))
-			self.l.setFont(1, gFont('Prive3', 22))
-			self.l.setFont(2, gFont('Prive3', 36))
-			self.l.setFont(3, gFont('Prive3', 28))
-			self.l.setItemHeight(97)						
-##########################################################################################################################
-def setEncodingUser(direction=True):
-	# encoding.conf belongs to the image on OpenATV; keep the legacy option inert.
-	if isATV:
-		setCFGoff(59)
-		return False
-	state = False
-	if direction:
-		if fileExists(ENC_U):      		
-			if not fileExists(ENC_O):
-				shutil.copy2(ENC_C, ENC_O)
-			try:
-				if os.path.lexists(ENC_C):
-					os.unlink(ENC_C)
-				shutil.copy2(ENC_U, ENC_C)
-			except OSError:
-				return False
-			state = True
-	else:
-		if fileExists(ENC_O):      		
-			try:
-				if os.path.lexists(ENC_C):
-					os.unlink(ENC_C)
-				shutil.copy2(ENC_O, ENC_C)
-			except OSError:
-				return False
-			state = True
-	return state
-##########################################################################################################################
-def setCFGoff(v=62):
-	if v == 59:
-		config.plugins.setupGlass17.par59.value = False					
-		config.plugins.setupGlass17.par59.save()
-	else:
-		config.plugins.setupGlass17.par62.value = False					
-		config.plugins.setupGlass17.par62.save()
-	configfile.save()
-
-def setOledXml(what, d=USERXML):
-	try:
-		if os.path.lexists(d):
-			os.unlink(d)
-		shutil.copy2(what, d)
-		return True
-	except OSError:
-		return False
-
-def chckUserHdg():
-	ena = False
-	if os.path.exists(USERXML):
-		try:
-			c = open(USERXML, "r").read()
-			ena = not (c.find("name=\"InfoBarSummary-") != -1 and c.find("g17ClockToText\">") != -1)
-			if ena:
-				ena = setOledXml(USERXML, USERORI)						
-		except: pass	
-	return ena	
-
-def setOledMore(msg=""):
-	x = setOledXml(USERHDG)
-	if config.plugins.setupGlass17.par15.value != "1":		
-		msg += _("OLED type") + "\n"
-		x = changeScreenXml("oled", config.plugins.setupGlass17.par15.value)
-	if config.plugins.setupGlass17.par40.value:	
-		msg += _("Set OLED off in Standby") + "\n"
-		standbyOledOnOff()
-	return msg
-
-def getTemp(dev):
-	tmp1 = 0
-	commands = []
-	for smartctl in ("/usr/sbin/smartctl", "/sbin/smartctl", "/usr/bin/smartctl"):
-		if os.path.isfile(smartctl):
-			commands.append(("smartctl", [smartctl, "-a", dev]))
-			break
-	if os.path.isfile("/usr/bin/hdd_temp_hdg17"):
-		commands.append(("hddtemp", ["/usr/bin/hdd_temp_hdg17", "-q", "-n", dev]))
-	commands.append(("hddtemp", ["hddtemp", "-n", "-q", dev]))
-	if config.plugins.setupGlass17.par21.value:
-		if os.path.isfile("/usr/bin/hdd_temp_hdg17"):
-			commands.append(("hddtemp", ["/usr/bin/hdd_temp_hdg17", "-q", "-n", "-w", dev]))
-		commands.append(("hddtemp", ["hddtemp", "-q", "-n", "-w", dev]))
-	for kind, command in commands:
-		try:
-			output = subprocess.check_output(command, universal_newlines=True, stderr=subprocess.STDOUT)
-			if kind == "smartctl":
-				for line in output.splitlines():
-					if "Temperature" not in line:
-						continue
-					values = re.findall(r"(?<![\w.-])-?\d+(?![\w.-])", line)
-					for value in reversed(values):
-						candidate = int(value)
-						if 1 <= candidate <= 125:
-							tmp1 = candidate
-							break
-					if tmp1:
-						break
-			else:
-				match = re.search(r"-?\d+", output.strip())
-				if match:
-					candidate = int(match.group(0))
-					if 1 <= candidate <= 125:
-						tmp1 = candidate
-		except (OSError, subprocess.CalledProcessError, ValueError):
-			pass
-		if tmp1:
-			break
-	return tmp1
-
-def chckVolMute():
-	if config.plugins.setupGlass17.par51.value != 1200 or config.plugins.setupGlass17.par52.value != 120:
-		allLines = ""
-		newData = 'position="%s,%s"' % (str(config.plugins.setupGlass17.par51.value),str(config.plugins.setupGlass17.par52.value))
-		try:
-			r = open(SKINXML,"r")
-			for line in r.readlines():
-				if line.__contains__('<screen name="Volume') or  line.__contains__('<screen name="Mute'):
-					line = line.replace('position="1200,120"',newData)
-				allLines += line
-			r.close()
-			_atomicWriteText(SKINXML, allLines)
-			return True
-		except: pass
-	return False
-
-def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
-	try:
-		allLines = ""
-		what = 'colorServiceDescription="'+config.plugins.setupGlass17.par109.value+'"'+' colorServiceDescriptionSelected="'+config.plugins.setupGlass17.par110.value+'"'+' foregroundColorSelected="'+config.plugins.setupGlass17.par111.value+'"'+' foregroundColor="'+config.plugins.setupGlass17.par117.value+'"' 
-		r = open(SKINXML,"r")
-		ena = False
-		for line in r.readlines():
-			if line.__contains__('<screen name="ChannelSelection"'):
-				ena = True
-			if ena and line.__contains__('<widget name="list"'):
-				line = line.replace('colorServiceDescription="'+c1+'"'+' colorServiceDescriptionSelected="'+c2+'"'+' foregroundColorSelected="'+c3+'"'+' foregroundColor="'+c4+'"', what)
-				if ENA_P_CH and not 'progressBarWidth="90"' in line:
-					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
-				ena = False
-			allLines += line
-		r.close()
-		_atomicWriteText(SKINXML, allLines)
-	except: pass
-	return "c"
-		
-def changeChF():
-	try:
-		allLines = ""
-		r = open(SKINXML,"r")
-		ena = ena2 = False
-		buffLine = ""
-		for line in r.readlines():
-			if line.__contains__('<screen name="ChannelSelection"'):
-				ena = True
-			if line.__contains__('</screen>'):
-				ena = False
-			if ena:
-				if line.__contains__('<widget name="list"'):
-					vv = config.plugins.setupGlass17.par147.value
-					if vv == "1" and (config.plugins.setupGlass17.par145.value != "0" or config.plugins.setupGlass17.par146.value != "0"):
-						vv = str(max(int(config.plugins.setupGlass17.par145.value),int(config.plugins.setupGlass17.par146.value))+9)
-						line = calc(line,' serviceItemHeight="',vv)
-					if not vv in ("0","1"):
-						line = calc(line,' serviceItemHeight="',vv)
-					if config.plugins.setupGlass17.par145.value != "0":
-						line = calc(line,' serviceNameFont="Prive4;',config.plugins.setupGlass17.par145.value)
-					if config.plugins.setupGlass17.par146.value != "0":
-						line = calc(line,' serviceInfoFont="Prive4;',config.plugins.setupGlass17.par146.value)
-					allLines += line
-				elif ena2:
-					if line.__contains__('g17ServiceNameEvent">ExtendedDescription</convert>'):
-						allLines += calc(buffLine,' font="Prive4;',config.plugins.setupGlass17.par148.value) + line
-					else:
-						allLines += buffLine + line
-					ena2 = False
-				else:
-					if line.__contains__('source="ServiceEvent'):
-						if line.__contains__('render="g17MetrixHDRunningText'):
-							allLines += calc(line,' font="Prive4;',config.plugins.setupGlass17.par148.value)
-						else:
-							buffLine = line
-							ena2 = True
-					else:
-						allLines += line
-			else:
-				allLines += line
-		r.close()
-		_atomicWriteText(SKINXML, allLines)
-	except: pass
-	return "o"
-   	
-def setFontEventEpgsel(val):
-	allLines = ""
-	ena3 = ena = ena2 = ena1 = ena4 = ena5 = ena6 = ena7 = False
-	val1 = val
-	if val == "0":
-		val1 = "34"	
-	if os.path.isfile(SHAREPATH + "PLi-FullHD/skin.xml") or os.path.isfile(PYTHONPATH + "Plugins/SystemPlugins/OBH/__pycache__/") or os.path.isfile(PYTHONPATH + "Plugins/Satdreamgr/__init__.pyo"):
-		ena1 = True
-	try:                               
-		r = open(SKINXML,"r")
-		for line in r.readlines():
-			if (ENA_ELPLI or ENA_P_CH) and line.__contains__('<widget name="timerlist"'):
-				if not line.__contains__('setServiceNameFont="Prive4;34"'):
-					line = line.replace('name="timerlist"','name="timerlist" setServiceNameFont="Prive4;34"')			
-				if not line.__contains__('setEventNameFont="Prive4;32"'):
-					line = line.replace('name="timerlist"','name="timerlist" setEventNameFont="Prive4;32"')
-				if not line.__contains__('setFont="Prive4;30"'):
-					line = line.replace('name="timerlist"','name="timerlist" setFont="Prive4;30"')
-				if not line.__contains__('satPosLeft="320"'):
-					line = line.replace('name="timerlist"','name="timerlist" satPosLeft="320"')
-				if not line.__contains__('iconMargin="10"'):
-					line = line.replace('name="timerlist"','name="timerlist" iconMargin="10"')
-				if not line.__contains__('rowSplit="52"'):
-					line = line.replace('name="timerlist"','name="timerlist" rowSplit="52"')
-			if ENA_BH:
-				if line.__contains__('<widget name="timerlist"'):   
-					if not line.__contains__('setServiceNameFont="Regular;28"'):
-						line = line.replace('itemHeight="105"','itemHeight="105" setServiceNameFont="Regular;28" setFont="Regular;28"')	
-				if line.__contains__('name="MovieSelection"'):
-					ena2 = True
-				elif ena2 and line.__contains__('<widget name="list"') and not line.__contains__('columnsOriginal="'):
-					line = line.replace('font="Prive4;34" itemHeight="75"','font="Regular;28" columnsOriginal="400,420" columnsCompactDescription="300,420,170" compactColumn="180,420" itemHeights="113,68,34" fontSizesOriginal="30,26,24" fontSizesCompact="28,24" fontSizesMinimal="28,24"')
-			if ENA_D == 'debpkg':
-				if line.__contains__('name="MovieSelection"'):
-					ena6 = True
-				elif ena6 and line.__contains__('<widget name="list"'):
-					line = line.replace('font="Prive4;34" itemHeight="75"','itemHeight="75"')
-			if ena1:
-				if line.__contains__('name="MovieSelection"'):
-					ena2 = True
-				elif ena2 and line.__contains__('<widget name="list"') and not line.__contains__('columnsOriginal="'):
-					line = line.replace('font="Prive4;34" itemHeight="75"','columnsOriginal="400,420" columnsCompactDescription="300,420,170" compactColumn="420" itemHeights="100,75,45" fontSizesOriginal="32,26,24" fontSizesCompact="32,28" fontSizesMinimal="32,24"')
-				elif ena2 and line.__contains__('name="key_red"'):
-					line = line.replace('name="key_red"','render="Label" source="key_red"')
-				elif ena2 and line.__contains__('name="key_green"'):
-					line = line.replace('name="key_green"','render="Label" source="key_green"')
-				elif ena2 and line.__contains__('name="key_yellow"'):
-					line = line.replace('name="key_yellow"','render="Label" source="key_yellow"')
-				elif ena2 and line.__contains__('name="key_blue"'):
-					line = line.replace('name="key_blue"','render="Label" source="key_blue"')
-				if line.__contains__('name="EPGSelectionMulti"'):
-					ena4 = True
-				elif ena4 and line.__contains__('<widget name="list"') and not line.__contains__('setColGap="20"'):
-					line = line.replace('<widget name="list"','<widget name="list" setColGap="20" setTimeWidth="135" setEventItemFont="Prive3;33" setEventTimeFont="Prive3;30"')
-			if line.__contains__('</screen>'):
-				ena3 = False
-				ena2 = False
-				ena = False
-				ena4 = False
-				ena5 = False
-				ena6 = False
-				ena7 = False
-			if line.__contains__('<screen name="EventView"') or (line.__contains__('<screen name="EPGSelection"') and val != "0"):    
-				ena3 = True
-			if ENA_ELPLI and line.__contains__('<screen name="EPGSelection"'):
-				ena = True
-			if ENA_PLI2 and (line.__contains__('<screen name="TimerEditList"') or line.__contains__('<screen name="TimerLog"') or line.__contains__('<screen name="EPGSelection"') or line.__contains__('<screen name="EventView"') or line.__contains__('<screen name="EPGSelectionMulti"')):
-				ena5 = True
-			if ISP38 and isATV and (line.__contains__('<screen name="EPGSelection"') or line.__contains__('<screen name="EventView"')):
-				ena7 = True
-			if (ena5 or ena7) and line.__contains__('<widget name="key_'):
-				line = line.replace('<widget name="key_','<widget render="Label" source="key_')
-			if ena3 and (line.__contains__('<widget name="epg_description"') or line.__contains__(' source="Event"')):
-				line = calc(line,' font="Prive4;',val1)
-			if ena and line.__contains__('name="list"') and not line.__contains__('setEventItemFont="'):
-				line = line.replace('name="list"','name="list" setEventItemFont="Prive4;30"')
-			allLines += line
-		r.close()
-		_atomicWriteText(SKINXML, allLines)
-	except: pass
-	return "f"
-	
-def setFontListEpg(val):
-	allLines = ""
-	try:
-		r = open(SKINXML,"r")
-		for line in r.readlines():
-			if line.__contains__('<parameter name="EPGlistFont1"'):
-				allLines += calc(line,' value="Prive4;',val)
-			elif line.__contains__('<parameter name="EPGlistFont2"'):    
-				allLines += calc(line,' value="Prive4;',str(int(val)-3))
-			elif line.__contains__('<alias name="EPGList0"') or line.__contains__('<alias name="EPGList1"'): 
-				allLines += calc(line,' size="',val)
-			else:
-				allLines += line
-		r.close()
-		_atomicWriteText(SKINXML, allLines)
-	except: pass
-	return "el"
-
-def lbs():
-	allLines = ""
-	ena = False
-	ena2 = False
-	newBig = None
-	newMed = None
-	newBig2 = None
-	newMed2 = None
-	try:
-		r = open(SKINXML,"r")
-		for line in r.readlines():
-			if ena:
-				if line.__contains__('type="Bigger"'):
-					a = config.plugins.setupGlass17.par153.value
-					allLines += calc(line,' size="',({True:"36", False:a}[a == "0"]))
-				elif line.__contains__('type="Big"'):    
-					a = config.plugins.setupGlass17.par154.value
-					allLines += calc(line,' size="',({True:"33", False:a}[a == "0"]))
-					if int(a) > 33 or a == "0":
-						newBig = ({True:"45", False:str(int(a)+7)}[a == "0"])					
-						newBig2 = ({True:"40", False:str(int(a)+3)}[a == "0"])
-				elif line.__contains__('type="Medium"'): 
-					a = config.plugins.setupGlass17.par155.value
-					allLines += calc(line,' size="',({True:"30", False:a}[a == "0"]))
-					if int(a) > 30 or a == "0":
-						newMed = ({True:"45", False:str(int(a)+7)}[a == "0"])	
-						newMed2 = ({True:"36", False:str(int(a)+3)}[a == "0"])
-				elif line.__contains__('type="Small"'): 
-					a = config.plugins.setupGlass17.par156.value
-					allLines += calc(line,' size="',({True:"28", False:a}[a == "0"]))
-				elif line.__contains__('type="Smaller"'): 
-					a = config.plugins.setupGlass17.par157.value
-					allLines += calc(line,' size="',({True:"26", False:a}[a == "0"]))
-				else:
-					allLines += line
-			elif ena2:
-				if newBig is not None and (line.__contains__('type="ServiceInfoList"') or line.__contains__('type="SelectionList"') or line.__contains__('type="ParentalControlList"') or line.__contains__('type="ChoiceList"') or line.__contains__('type="HelpMenuList"')): 
-					a = calc(line,' itemHeight="',newBig)
-					if ' textHeight="' in a:
-						allLines += calc(a,' textHeight="',newBig2)
-					else:
-						allLines += a
-				elif newMed is not None and (line.__contains__('type="MediaplayerPlayList"') or line.__contains__('type="FileList"') or line.__contains__('type="HelpMenuList"')): 
-					a = calc(line,' itemHeight="',newMed)
-					if ' textHeight="' in a:
-						allLines += calc(a,' textHeight="',newMed2)
-					else:
-						allLines += a
-				else:
-					allLines += line
-			else:
-				allLines += line
-			if line.__contains__('</borderset>'):
-				ena = True
-			elif line.__contains__('</windowstyle>'):
-				ena = False
-			elif line.__contains__('<components>'):
-				ena2 = True
-			elif line.__contains__('</components>'):
-				ena2 = False
-		r.close()
-		_atomicWriteText(SKINXML, allLines)
-	except: pass
-	return _("Listbox font size") + "\n"
-
-def chckFifo():
-	# Modern OpenATV owns Screens/ServiceScan.py; never rewrite image Python.
-	if isATV:
-		config.plugins.setupGlass17.par67.value = False
-		config.plugins.setupGlass17.par67.save()
-		configfile.save()
-		return False
-	f = SCREENSPATH + "ServiceScan.py"
-	if os.path.isfile(f):
-		allLines = ""
-		a = config.plugins.setupGlass17.par67.value
-		ena = False
-		try:
-			r = open(f,"r")
-			for line in r.readlines():
-				if line.__contains__('servicelist') and line.__contains__('FIFOList') and line.__contains__('len'):
-					if (a and not "122" in line) or (not a and not "10" in line):
-						ena = True
-						if line.__contains__('len ='):
-							tt = calc(line,'len =',({True:"122", False:"10"}[a]),')')
-							if not "\n" in tt:
-								tt += "\n"
-							allLines += tt
-						elif line.__contains__('len='):
-							tt = calc(line,'len=',({True:"122", False:"10"}[a]),')')
-							if not "\n" in tt:
-								tt += "\n"
-							allLines += tt
-						else:
-							allLines += line
-					else:
-						allLines += line
-				else:
-					allLines += line
-			r.close()
-			if ena:
-				_atomicWriteText(f, allLines)
-		except: pass
-	return ena
-
-def chckPigFont(s=0):
-	x = ""
-	if config.plugins.setupGlass17.par68.value != "0":			
-		x += changePIGres()			
-	if s != 1:
-		x += cChannelsel()
-		if config.plugins.setupGlass17.par148.value != "0" or config.plugins.setupGlass17.par145.value != "0" or config.plugins.setupGlass17.par146.value != "0" or config.plugins.setupGlass17.par147.value != "0":
-			x += changeChF()
-	if s != 0:
-		x += setFontEventEpgsel(config.plugins.setupGlass17.par53.value)
-	return x
-
-def chMT():
-	x = "2"
-	if config.plugins.setupGlass17.par47.value:
-		x = "1"
-	try:
-		shutil.copy2("%smute-%s.png" % (SKINPATH, x), "%smute.png" % SKINPATH)
-	except OSError:
-		pass
-	return _("Mute picture transparency") + "\n"
-##########################################################################################################################
-class AutoStartChck17():
-	def __init__(self):
-		self.cmd = ""
-		self.start_timerExec = eTimer()
-		try:
-			self.start_timerExec_conn = self.start_timerExec.timeout.connect(self.rstnow)
-		except AttributeError:
-			self.start_timerExec.timeout.get().append(self.rstnow)
-		self.start_timerChck = eTimer()
-		try:
-			self.start_timerChck_conn = self.start_timerChck.timeout.connect(self.runchck)
-		except AttributeError:
-			self.start_timerChck.timeout.get().append(self.runchck)
-		
-	def startHdgchck(self, session):
-		self.session = session				
-		self.start_timerChck.start(15000, True)
-
-	def runchck(self):
-		self.start_timerChck.stop()
-		def chckSkytec():
-			tmpx = False
-			try:
-				r = open("/etc/image-version", "r")
-				for line in r.readlines():
-					if line.__contains__("kleio") or line.__contains__("SKYTEC"):
-						tmpx = True
-						break
-			except: pass
-			return tmpx     		
-		def chckPlBrowser(what='source="pluginlist'):
-			tmpx = False
-			try:
-				for x in ["skin_default.xml","skin.xml","PLi-HD/skin_plugins.xml","PLi-FullHD/skin_plugins.xml"]:
-					if not tmpx and os.path.isfile(SHAREPATH + x):
-						r = open(SHAREPATH + x, "r").read()
-						if r.find(what) != -1:
-							tmpx = True
-							break
-			except: pass
-			return tmpx 
-		msg = ""
-		ver = '1.0.0'
-		if XCPU != "mipsel":
-			# Select architecture helpers without deleting package-owned variants.
-			try:
-				shutil.copy2("/usr/bin/btrGen17-%s" % XCPU, "/usr/bin/btrGen17")
-				shutil.copy2("/usr/bin/hdd_temp_hdg17-%s" % XCPU, "/usr/bin/hdd_temp_hdg17")
-				msg += _("Set binaries") + "\n"
-			except OSError:
-				pass
-		ver, x = readHWtype()
-		isOk = ver != "Dream Multimedia"
-		# Seed the generated FullHDGlass17 overlay only on first use.
-		# Existing USERHDG is user state (and a package conffile) and must survive
-		# GUI restarts, package upgrades and hardware detection.
-		if not os.path.exists(USERHDG):
-			if (os.path.exists(PYTHONPATH+'Plugins/PLi') or isATV) and not isOk:
-				template = "/etc/enigma2/skin_user-17%s.xml" % ({False:'2', True:'3'}[IS800SE or "dm820" in x])
-			elif isOk:
-				template = "/etc/enigma2/skin_user-172.xml"
-			else:
-				template = None
-			if template and os.path.isfile(template):
-				try:
-					shutil.copy2(template, USERHDG)
-				except OSError:
-					pass
-		# Keep packaged architecture helpers and overlay templates installed.
-		# They are package-owned files and may be needed again after hardware/image
-		# changes; deleting them at runtime also breaks package-manager ownership.
-		if (isOk and ver != "Unknown") or (not isOk and ("dm920" in x or "dm900" in x or x == "one" or x == "two")):
-			if ver == "AZbox":
-				ver = "Zbox"
-			if "DUO2" in x.upper():
-				ver = "Duo"
-			if "4k" in x:
-				if "timo" in x:			
-					ver = "Ultimo"			
-					if ISVTI:
-						x = changeSkinXml("g17SetupSummary")			
-				elif "solo" in x:			
-					ver = "Solo"	
-				elif "duo" in x:			
-					if "se" in x:
-						ver = "e"
-					else:
-						ver = "4kDuo"
-			if not isOk:
-				if "dm920" in x:
-					ver = "920"
-				elif "dm900" in x:
-					ver = "0"
-				elif x == "one":
-					ver = "o"
-				elif x == "two":
-					ver = "t"
-			try:
-				shutil.copy2("%smenu/box-%s.png" % (SKINPATH, ver[0]), "%smenu/box.png" % SKINPATH)
-			except OSError:
-				pass
-		for x in ["A", "V", "Z", "C", "D", "U", "S", "9", "4", "0", "o", "t", "e"]:  
-			try:
-				os.remove("%smenu/box-%s.png" % (SKINPATH, x))
-			except OSError:
-				pass
-		isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, False)
-		x = str(config.plugins.setupGlass17.par44.value)
-		if isOk != x:
-			try:
-				if checkStyle(int(x)):	
-					if writeStyleCfg(config.plugins.setupGlass17.par6.value, x):
-						isOk = x
-					else:
-						config.plugins.setupGlass17.par44.value = 1
-						config.plugins.setupGlass17.par44.save()
-						configfile.save()
-			except: pass
-		if color != config.plugins.setupGlass17.par45.value:
-			x = 0
-			try:
-				color = config.plugins.setupGlass17.par45.value.strip()
-				if len(color) == 9:
-					x = int(color.replace("#","0x"), 16)
-			except: pass
-			if x == 0:
-				config.plugins.setupGlass17.par45.value = "#006cbcf0"
-				config.plugins.setupGlass17.par45.save()
-				configfile.save()
-			else:
-				try:
-					f = open("%sstyle/%s/title_color.cfg" % (SKINPATH, isOk), "w")
-					f.write(color)
-					f.close()
-				except: pass									
-		if (isOk != "1" and isOk != "?") or color != "#006cbcf0":
-			x = windowStyle(isOk, color)
-			msg += _("Style:")+str(config.plugins.setupGlass17.par44.value)
-			msg += ", " + _("Title color:")+str(config.plugins.setupGlass17.par45.value) + "\n"
-			tmp = True
-		if config.plugins.setupGlass17.par41.value != "Black":		
-			msg += _("Picon default, marker, next ...") + ": " + _("White") + "\n"
-			setTypePicon()
-		if config.plugins.setupGlass17.par1.value != 1:
-			if checkIcons(config.plugins.setupGlass17.par1.value):
-				x = setTypeIcos(config.plugins.setupGlass17.par1.value)
-				msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"
-			else:
-				config.plugins.setupGlass17.par1.value = 1                                              
-				config.plugins.setupGlass17.par1.save()
-				configfile.save()
-		if config.plugins.setupGlass17.par7.value != "List":			
-			if not config.plugins.setupGlass17.par7.value == "Icons" and not config.plugins.setupGlass17.par7.value == "Icons Right" and not config.plugins.setupGlass17.par7.value == "Icons Bar":
-				msg += _("Menu type") + "\n"
-				x = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
-			elif chckPMS():
-				if setMenuPyo():
-					msg += _("Menu type") + "\n"
-					x = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
-				else:
-					config.plugins.setupGlass17.par7.value = "List"
-					config.plugins.setupGlass17.par7.save()
-					configfile.save()
-		if config.plugins.setupGlass17.par4.value:	
-			x = changeSkinXml("InfoBar","3")
-			msg += _("Permanent Extra Infobar") + "\n"
-		elif config.plugins.setupGlass17.par14.value != "1":		
-			msg += _("Standard Infobar type") + "\n"
-			x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
-		x = chckUserHdg()
-		if config.plugins.setupGlass17.par15.value != "0":       
-			msg = setOledMore(msg)
-		if config.plugins.setupGlass17.par18.value != "1":		
-			msg += _("Volume type") + "\n"
-			x = changeSkinXml("Volume", config.plugins.setupGlass17.par18.value)
-			x = changeSkinXml("Mute")
-		if chckVolMute():
-			msg += _("Set Volume and Mute positions") + "\n"
-		if isATV or config.plugins.setupGlass17.par19.value != "35":		
-			msg += _("Channel selection type") + "\n"
-			x = changeSkinXml("ChannelSelection", config.plugins.setupGlass17.par19.value)
-		if config.plugins.setupGlass17.par224.value != "1":		
-			msg += _("Movie selection type") + "\n"
-			x = changeSkinXml("MovieSelection", config.plugins.setupGlass17.par224.value)
-		if config.plugins.setupGlass17.par54.value != "7":		
-			msg += _("EPG selection type") + "\n"
-			x = changeSkinXml("EPGSelection", config.plugins.setupGlass17.par54.value)
-		if config.plugins.setupGlass17.par229.value != "1":		
-			msg += _("EventView type") + "\n"
-			x = changeSkinXml("EventView", config.plugins.setupGlass17.par229.value)
-		if ISVTI:
-			for i in ("TaskListScreen","VTIPasswdScreen","VTISubMenu","VTIStatusListMenu","VTIMainMenu","AudioZap","PictureInPicture","AnimationSetupScreen"):
-				x = changeSkinXml(i)
-			x = changeSkinXml("SplitScreen", config.plugins.setupGlass17.par208.value)
-		x = chckPigFont(2)
-		if x != "":		
-			if "p" in x: 
-				msg += _("PIG type") + "\n"            
-			if "f" in x:
-				msg += _("Extendend description font size") + "\n"
-			if "c" in x:
-				msg += _("Channel selection type")+" ("+_("color") + ")\n"
-			if "o" in x:
-				msg += _("Channel selection font size") + "\n"
-		if config.plugins.setupGlass17.par46.value != "0":
-			x = setFontListEpg(config.plugins.setupGlass17.par46.value)
-			msg += _("EPG list font size")                      
-		if chckPlBrowser('"posGoto"') and chckPlBrowser('"turnTime"'): 
-			x = "2"
-			if chckPlBrowser('name="Tuner"'):
-				x = "3"			
-			x = changeSkinXml("Dish",x)
-			msg += _("Dish screen") + "\n"
-		if isATV:
-			for i in ("PositionerSetup","SleepTimerEdit","PluginBrowserList"):
-				x = changeSkinXml(i)	
-			x = changeSkinXml("MessageBox", "2")
-		if os.path.isfile(SHAREPATH + "PLi-FullHD/skin.xml") or os.path.isfile(PYTHONPATH + "Plugins/SystemPlugins/OBH/__pycache__/") or os.path.isfile(PYTHONPATH + "Plugins/Satdreamgr/__init__.pyo"):
-			for i in ("Config","AdapterSetup","HarddiskSelection","MenuSort","ParentalControlSetup","Troubleshoot","CommitInfo","MemoryInfo","StreamingClientsInfo","PositionerSetup","HotkeySetup","HotkeySetupSelect"):
-				x = changeSkinXml(i)
-			x = changeSkinXml("About","2")
-		if chckPlBrowser('subs_notselected":'): 		
-			x = changeSkinXml("AudioSelection")
-			msg += _("AudioSelection") + "\n"
-		if os.path.exists("/usr/lib/python2.7") or ISP38:
-			if not fileExists('/etc/bhversion') and not os.path.exists("/etc/bpversion") and not os.path.exists(SHAREPATH + "PLi-HD") and not ISVTI and not chckSkytec():			
-				ttt = "2"
-				if chckVersion():
-					ttt = "3"
-					x = changeSkinXml("About")
-					x = changeSkinXml("PluginBrowser", ttt)
-				elif isATV and ISP38:
-					x = changeSkinXml("PluginBrowser", "4")
-				if chckPlBrowser():
-					msg += _("Set PluginBrowser - OE 2.0") + "\n"
-					x = changeSkinXml("PluginBrowser", ttt)
-			if chckVersion("openbh"):
-				x = changeSkinXml("PluginBrowser", "3")
-				x = changeSkinXml("MessageBox", "1")
-				x = changeSkinXml("MessageBox-template", "1")
-		if config.plugins.setupGlass17.par59.value and not os.path.exists('/etc/dpkg'):
-			x = setEncodingUser()
-			msg += _("Set user encoding.conf") + "\n" 
-		else:
-			setCFGoff(59)
-		if config.plugins.setupGlass17.par62.value:
-			if E2OK:
-				x = chnlSelChck()
-				if x == 0:
-					if chnlSelPatch():
-						msg += _("ChannelSelection 2xOK") + "\n" 
-					else:
-						setCFGoff()
-				elif x == 3:
-					msg += _("ChannelSelection 2xOK") + "\n"
-			else:
-				setCFGoff()
-		if chckScroll20():
-			msg += _("Enable windowstylescrollbar") + "\n" 
-		if setONOFF():
-			msg += _("On/Off icons") + "\n"
-		try:
-			for ii in ["skin_default.xml","skin.xml","skin_default/skin.xml"]:
-				if os.path.isfile(SHAREPATH + ii):
-					x = open(SHAREPATH + ii, "r").read()
-					if x.find("self.autoResize()") != -1:
-						x = changeSkinXml("ChoiceBox")
-						break
-		except: pass
-		if ENA_PLI2: 
-			x = changeSkinXml("TimerEntry")
-		x = PYTHONPATH + "Plugins/Extensions/MultiQuickButton/MultiQuickButton.py"
-		if ENA_D == 'debpkg' and os.path.isfile(x): 
-			x = open(x, "r").read()
-			if x.find("key_3") == -1:
-				x = changeSkinXml("MultiQuickButton")
-		# Upgrade compatibility only: undo a legacy FullHDGlass spinner symlink
-		# if an older installation left it active. Never replace the image spinner.
-		msg += spinnerOnOff()
-		if not config.plugins.setupGlass17.par47.value:
-			msg += chMT()
-		if config.plugins.setupGlass17.par157.value != "0" or config.plugins.setupGlass17.par156.value != "0" or config.plugins.setupGlass17.par155.value != "0" or config.plugins.setupGlass17.par154.value != "0" or config.plugins.setupGlass17.par153.value != "0":
-			msg += lbs()
-		if EFIFO and config.plugins.setupGlass17.par67.value:
-			if chckFifo():
-				msg += _("Service scan long list") + "\n"
-		if config.plugins.setupGlass17.par227.value != "5":
-			msg += _('Extended Number ZAP Picon Size') + "\n"
-			if config.plugins.setupGlass17.par227.value == "0":
-				x = changeSkinXml("NumberZapExt", chckPiconSize())
-			else:
-				x = changeSkinXml("NumberZapExt", config.plugins.setupGlass17.par227.value)
-		if msg != "":
-			try:
-				self.session.open(MessageBox, _("GUI will now be restarted to activate restored options:") + "\n" + msg, MessageBox.TYPE_INFO, 5)				
-			except: pass
-			self.start_timerExec.start(4000, True)
-		try:
-			os.remove(SHAREPATH + "hd_glass17/icons/about1.png")
-		except OSError:
-			pass
-
-	def rstnow(self):
-		if XCPU != "sh4":
-			try:
-				quitMainloop(3)
-			except: 
-				subprocess.call(RSTCMD)
-		else:
-			subprocess.call(RSTCMD)  
-
-	def updateChck(self, session):
-		self.session = session
-		self.session.open(MessageBox, _("GUI will now be restarted, updated files founded !!!"), MessageBox.TYPE_INFO, 5)
-		self.start_timerExec.start(4000, True)
-  
-autoStartChck17 = AutoStartChck17()  		
-##########################################################################################################################
-class KeyManage():
-	def __init__(self):
-		self.dialogKey = None
-		self.dialog = None
-
-	def initKeyMng(self, session):
-		self.session = session
-		if config.plugins.setupGlass17.par12.value != "n":
-			if config.plugins.setupGlass17.par12.value == "g":
-				if ENA_Z:
-					self.dialogKey = self.session.instantiateDialog(SpecialScreen, zPosition=3000)
-					self.dialogKey.shown = False
-				else:
-					self.dialogKey = session.instantiateDialog(SpecialScreen)
-			elif "w" in config.plugins.setupGlass17.par12.value:
-				from Plugins.Extensions.setupGlass17.weather import WeatherScreen
-				if ENA_Z:
-					self.dialogKey = self.session.instantiateDialog(WeatherScreen, config.plugins.setupGlass17.par171.value, zPosition=3000)
-					self.dialogKey.shown = False
-				else:
-					self.dialogKey = session.instantiateDialog(WeatherScreen, config.plugins.setupGlass17.par171.value)
-			elif config.plugins.setupGlass17.par12.value == "i":
-				from Plugins.Extensions.setupGlass17.infoEcm_by_duri import InfoEcmScreen
-				if ENA_Z:
-					self.dialogKey = self.session.instantiateDialog(InfoEcmScreen, zPosition=3000)
-					self.dialogKey.shown = False
-				else:
-					self.dialogKey = session.instantiateDialog(InfoEcmScreen)
-			elif config.plugins.setupGlass17.par12.value == "a":
-				from Plugins.Extensions.setupGlass17.Netatmo import NetatmoScreen
-				if ENA_Z:
-					self.dialogKey = self.session.instantiateDialog(NetatmoScreen, zPosition=3000)
-					self.dialogKey.shown = False
-				else:
-					self.dialogKey = session.instantiateDialog(NetatmoScreen)
-		if config.plugins.setupGlass17.par64.value:
-			from Plugins.Extensions.setupGlass17.screenSaver import ScreenSaverScreen
-			if ENA_Z:
-				self.dialog = self.session.instantiateDialog(ScreenSaverScreen, zPosition=-1)
-				self.dialog.shown = False
-			else:
-				self.dialog = session.instantiateDialog(ScreenSaverScreen)
-			self.hideME()
-		self.specialinfoTimer = None
-
-	def stopTimer(self):
-		if config.plugins.setupGlass17.par73.value and self.specialinfoTimer is not None: 
-			if self.specialinfoTimer.isActive(): 
-				self.specialinfoTimer.stop()
-			self.specialinfoTimer = None
-			
-	def startTimer(self):  
-		if config.plugins.setupGlass17.par73.value and self.specialinfoTimer is None:  
-			self.specialinfoTimer = eTimer()
-			try:
-				self.specialinfoTimer_conn = self.specialinfoTimer.timeout.connect(ShowHideViaKey)
-			except AttributeError:
-				self.specialinfoTimer.timeout.get().append(ShowHideViaKey)
-			self.specialinfoTimer.start(20000, True)
-  			
-	def TunerTest(self):
-		service = self.session.nav.getCurrentService()
-		if service is not None:
-			frontendInfo = service.frontendInfo()
-			if frontendInfo is not None:
-				frontendData = frontendInfo and frontendInfo.getAll(True)
-				if frontendData is not None:
-					isSatTuner = str(frontendData.get("tuner_type", "None"))
-					if isSatTuner in ["DVB-S","DVB-C","DVB-T","DVB-S2","DVB-S2X","0","1","2","4","8","16"]:
-						return True
-		return False
-		
-	def showME(self):
-		self.dialog.show()
-
-	def hideME(self):
-		self.dialog.hide()
-		
-keyManage = KeyManage()
-##########################################################################################################################
-class SpecialScreen(Screen):
-
-	skin = """<screen name="SpecialScreen" position="1155,195" size="825,412" zPosition="8" title="ECM and TP Status" backgroundColor="background" >                                           
-<widget name="ecm_items" font="Prive3;24" position="15,15" zPosition="2" size="150,532" valign="top" halign="left" foregroundColor="yellow" backgroundColor="background" transparent="1" />
-<widget name="ecm_Values" font="Prive3;24" position="100,15" zPosition="3" size="337,532" valign="top" halign="left"  backgroundColor="background" transparent="1" />
-<widget name="tp_items" font="Prive3;24" position="440,15" zPosition="2" size="170,480" valign="top" halign="left" foregroundColor="yellow" backgroundColor="background" transparent="1" />
-<widget name="tp_Values" font="Prive3;24" position="605,15" zPosition="3" size="232,480" valign="top" halign="left"  backgroundColor="background" transparent="1" />                         
-</screen>"""
-
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		self.skin = SpecialScreen.skin
-		self.c = CLRDATA
-		self.e = ECM_LABELS
-		if not config.plugins.setupGlass17.par50.value:
-			self.c += CLR
-			self.e += "\nCW0:\nCW1:"
-		self['ecm_items'] = Label(self.e)
-		self['ecm_Values'] = Label(self.c)
-		self['tp_items'] = Label("Video PID:\nAudio PID:\nPCR PID:\nPMT PID:\nTXT PID:\nSID:\nTSID:\nONID:\nVideo Format:\nVideo Size:\nAudio Type:\nAudio Tracks:\nSubtitles:")
-		self['tp_Values'] = Label(CLRTP)
-		self.__firstInit = True
-		self.__sleep = False
-		self.ecmTimer = eTimer()
-		try:
-			self.ecmTimer_conn = self.ecmTimer.timeout.connect(self.__RefreshMe)
-		except AttributeError:
-			self.ecmTimer.timeout.get().append(self.__RefreshMe)
-		if config.plugins.setupGlass17.par78.value == "g":
-			self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-			{
-            "green": self.exit,
-            "red": self.exit,
-            "ok": self.exit,
-            "cancel": self.exit,
-            "yellow": self.exit,
-            "blue": self.exit
-			}, -2)	
-		else:	
-			self._SpecialScreen__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStopped: self._SpecialScreen__SetDef, iPlayableService.evUpdatedInfo: self._SpecialScreen__Wakeup, iPlayableService.evTunedIn: self._SpecialScreen__Wakeup})
-			self.onHide.append(self.__goStandby)
-		self.onLayoutFinish.append(self.firstRun)	
-		self.onShow.append(self.__goWakeup)
-			
-	def exit(self):
-		self.ecmTimer.stop()
-		self.ecmTimer_conn = None
-		self.ecmTimer = None
-		self.close()
-		
-	def firstRun(self):
-		if self.__firstInit and self.instance:
-			self.setTitle(_("ECM and TP Status"))
-			self.instance.move(ePoint(config.plugins.setupGlass17.par10.value, config.plugins.setupGlass17.par11.value))
-			self.__firstInit = False
-
-	def __SetDef(self):
-		self.ecmTimer.stop()
-		self['ecm_items'].setText(self.e)
-		self['ecm_Values'].setText(self.c)
-		self['tp_Values'].setText(CLRTP)
-
-	def __goStandby(self):
-		self.ecmTimer.stop()
-		self.__sleep = True
-    		
-	def __goWakeup(self):
-		self.__sleep = False
-		self.__Wakeup()
-
-	def __Wakeup(self):
-		if not self.ecmTimer.isActive() and not self.__sleep:
-			self.ecmTimer.start(300, True)
-
-	def __RefreshMe(self):
-		self.ecmTimer.stop()
-		v = config.plugins.setupGlass17.par38.value
-		if not config.plugins.setupGlass17.par50.value:
-			v += config.plugins.setupGlass17.par194.value
-		if config.plugins.setupGlass17.par195.value == "Prov.:":
-			self['ecm_items'].setText(self.e.replace("Prov.:","CHID:"))
-		elif config.plugins.setupGlass17.par195.value == "PrvID:":
-			self['ecm_items'].setText(self.e.replace("PrvID:","CHID:"))
-		else:
-			self['ecm_items'].setText(self.e)
-		self['ecm_Values'].setText(v)
-		service = self.session.nav.getCurrentService()
-		info = service and service.info()
-		if info:
-			aa = ".............."
-			serviceinfo = service.info()
-			d = []
-			vpid = serviceinfo.getInfo(iServiceInformation.sVideoPID)
-			d.append("0x%0.4X (%0.4dd)" % (vpid, vpid))
-			apid = serviceinfo.getInfo(iServiceInformation.sAudioPID)
-			d.append("0x%0.4X (%0.4dd)" % (apid, apid))
-			ppid = serviceinfo.getInfo(iServiceInformation.sPCRPID)
-			d.append("0x%0.4X (%0.4dd)" % (ppid, ppid))
-			pmtpid = serviceinfo.getInfo(iServiceInformation.sPMTPID)
-			d.append("0x%0.4X (%0.4dd)" % (pmtpid, pmtpid))
-			txtpid = serviceinfo.getInfo(iServiceInformation.sTXTPID)
-			d.append("0x%0.4X (%0.4dd)" % (txtpid, txtpid))
-			sid = serviceinfo.getInfo(iServiceInformation.sSID)
-			d.append("0x%0.4X (%0.4dd)" % (sid, sid))
-			tsid = serviceinfo.getInfo(iServiceInformation.sTSID)
-			d.append("0x%0.4X (%0.4dd)" % (tsid, tsid))
-			onid = serviceinfo.getInfo(iServiceInformation.sONID)
-			d.append("0x%0.4X (%0.4dd)" % (onid, onid))
-			d.append("%s x %s" % (serviceinfo.getInfo(iServiceInformation.sVideoWidth),serviceinfo.getInfo(iServiceInformation.sVideoHeight)))
-			for x in range(0, len(d)):
-				if "-0001" in d[x] or "-1" in d[x]:
-					d[x] = aa
-			ac = iswide = aa
-			if d[8] != aa:
-				if serviceinfo.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10):
-					iswide = "16:9"
-				else:
-					iswide = "4:3"
-			num = 0
-			audio = service.audioTracks()
-			if audio:                                
-				num = audio.getNumberOfTracks()
-				if not config.plugins.setupGlass17.par42.value:
-					idx = 0
-					while idx < num:
-						i = audio.getTrackInfo(idx)
-						for x in (i.getDescription(), i.getLanguage()):
-							xx = x.upper()
-							if "AC3" in xx or "DTS" in xx or "DOLBY" in xx:
-								ac = "AC3"
-								break
-						if EACC and ac == aa:
-							try:
-								if i.getType() in (iAt.atAC3, iAt.atDDP, iAt.atDTS, iAt.atDTSHD):
-									ac = "AC3"
-									break
-							except: pass
-						idx += 1
-				else:
-					try:
-						i = audio.getTrackInfo(audio.getCurrentTrack())					
-						x = (i.getDescription()).upper()
-						idx = (i.getLanguage()).upper()
-						if "5.1" in x or "5.1" in idx:
-							ac = "Dolby Digital 5.1"
-						elif "2.0" in x or "2.0" in idx:
-							ac = "Dolby Digital 2.0"
-						elif "MPEG" in x or "MPEG" in idx:
-							ac = "MPEG"
-						elif "DTS" in x or "DTS" in idx:
-							ac = "DTS"
-						elif "AAC" in x or "AAC" in idx:
-							ac = "AAC"
-						elif "DOLBY" in x or "AC3" in x or "DOLBY" in idx or "AC3" in idx:
-							ac = "AC3"
-					except: pass
-					if EACC and ac == aa:
-						try:
-							idx = i.getType()
-							if idx in (iAt.atDTS, iAt.atDTSHD):
-								ac = "DTS"				
-							elif idx == iAt.atMPEG:
-								ac = "MPEG"
-							elif idx in (iAt.atAAC, iAt.atAACHE):
-								ac = "AAC"
-							elif idx in (iAt.atDDP, iAt.atAC3):
-								ac = "AC3"
-						except: pass
-			isSubtitles = _("no")
-			tmp = None
-			try:
-				subservices = service and service.subtitleTracks()
-				tmp = subservices.getNumberOfSubtitleTracks()
-			except:
-				subservices = service and service.subtitle()
-				tmp = subservices and subservices.getSubtitleList()
-				if tmp:
-					tmp = len(tmp)
-			if tmp and tmp > 0:
-				isSubtitles = _("yes")
-			self['tp_Values'].setText(d[0] + "\n" + d[1] + "\n" + d[2] + "\n" + d[3] + "\n" + d[4] + "\n" + d[5] + "\n" + d[6] + "\n" + d[7] + "\n" + iswide + "\n" + d[8] + "\n" + ac + "\n" + str(num) + "\n" + isSubtitles)   		 
-			del d
-		if not self.__sleep:
-			self.ecmTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
-##########################################################################################################################
-# Active ExtraInfo17 instance for live weather refresh after city change.
-G17_EXTRAINFO_INSTANCE = None
-
-class ExtraInfo17(Screen):
-				
-	def __init__(self, session):
-		global G17_EXTRAINFO_INSTANCE
-		Screen.__init__(self, session)
-		G17_EXTRAINFO_INSTANCE = self
-		self.skin = fromCfg()
-		self.session = session								
-		self.allCaids = {
-				"06" : "ird", "01" : "sec", "18" : "nag", "55" : "gfn", "22" : "cdc", "4B64" : "tvk", "4347" : "cro",
-				"05" : "via", "0B" : "con", "17" : "ver", "0E" : "pwu", "07" : "dig", "4B63" : "red", "4AF4" : "mdc",
-				"0D" : "crw", "4A70" : "drc", "09" : "nds", "A1" : "ros", "4AD0" : "xcr", "4AD1" : "xcr","1702" : "bet",
-				"4AE0" : "dre", "4AE1" : "dre", "44A0" : "dre", "5581" : "bul", "26" : "bis", "4AEA" : "crg", "1EC0" : "crg", "4B24" : "crg","1722" : "bet",
-				"4ABF" : "dgc", "4AEE" : "bul", "4AFC" : "pnc", "2710" : "exs", "1010" : "tan", "FF" : "ccw", "1762" : "bet",
-				"56" : "ver","4AB0" : "skp"
-				}
-		for x in range(0,8):
-			self["D%s_Demm" % x] = Pixmap()
-			self["D%s_Demm" % x].hide()
-		for x in ["subserv","txt","multi_audio","subtit","hbb","HDD_state","Dnetstate","Decm","Dtype","Dcam","tuner"]:
-			self[x] = Pixmap()
-			self[x].hide()
-		for x in ["wide","dolby","hd_sd"]:
-			self[x] = MultiPixmap()
-			self[x].hide()
-		self["picSat"] = Pixmap()
-		self["picProv"] = Pixmap()
-		self["g17picon"] = Pixmap()
-		self["slider_back"] = Pixmap()
-		self["Prov_temp_rpm"] = ColorLabel("")
-		self["TP_info"] = ColorLabel(NO_TUN)
-		self["TP_type"] = ColorLabel(_("No data"))
-		self["Video_size"] = ColorLabel("--- x ---")
-		self["piconCam"] = Pixmap()
-		self["piconEcm"] = Pixmap()
-		self['ecmLineInfo'] = ColorLabel(_("No info from Cam"))
-		self['active_caidPid'] = Label()
-		self['caidPids'] = Label()
-		self['caidPids_back'] = Pixmap()
-		self['caidPids_end'] = Pixmap()
-		self['ecmValues'] = ColorLabel()
-		self['ecmlabels'] = ColorLabel(ECM_LABELS)    		
-		self["back_enhanced"] = Pixmap()
-		self["bitrate_info"] = ColorLabel(_("Bitrate Stopped"))
-		self.bitNotActive = True
-		self.state = None
-		self.enaIcoTun = True
-		self.allCaidPid = ""		
-		self.tstprov = ""
-		self.tstsat = ""
-		self.pngname = ""
-		self.tstca = ""
-		self.typecam = ""
-		self.pngnamesat = ""
-		self.pngnameWea = SKINPATH+"piconWdef.png"		
-		self.typeCAviaCam = ""
-		self.pngnamePic = ""
-		self.sname = ""
-		self.caidsLive = ""
-		self.iscalcstart = True
-		self.isBit = False
-		self.enaTuned = False
-		self.sid = self.vpid = "N/A"
-		self.pidsX = 0
-		self.pidsY = 0
-		self.numBit = 0
-		self.is_prov = 9
-		self.cAud = -9
-		self.uhdtype = "x"
-		self.uhdTimer = eTimer()
-		try:
-			self.uhdTimer_conn = self.uhdTimer.timeout.connect(self.__uhdTypeSW)
-		except AttributeError:
-			self.uhdTimer.timeout.get().append(self.__uhdTypeSW)
-		self.runChkTimer = eTimer()
-		try:
-			self.runChkTimer_conn = self.runChkTimer.timeout.connect(self.__updCamECM)
-		except AttributeError:
-			self.runChkTimer.timeout.get().append(self.__updCamECM)
-		self.emm_timer = eTimer()
-		try:
-			self.emm_timer_conn = self.emm_timer.timeout.connect(self.__updateEMM)
-		except AttributeError:
-			self.emm_timer.timeout.get().append(self.__updateEMM)
-		self.ecmCaidTimer = eTimer()
-		try:
-			self.ecmCaidTimer_conn = self.ecmCaidTimer.timeout.connect(self.ecmCaidSwitch)
-		except AttributeError:
-			self.ecmCaidTimer.timeout.get().append(self.ecmCaidSwitch)
-		self.provRPMTimer = eTimer()
-		try:
-			self.provRPMTimer_conn = self.provRPMTimer.timeout.connect(self.provRPMTimerSwitch)
-		except AttributeError:
-			self.provRPMTimer.timeout.get().append(self.provRPMTimerSwitch)
-		self.runBitTimer = eTimer()
-		try:
-			self.runBitTimer_conn = self.runBitTimer.timeout.connect(self.__startBitrate)
-		except AttributeError:
-			self.runBitTimer.timeout.get().append(self.__startBitrate)
-		self.hddTimer = eTimer()
-		try:
-			self.hddTimer_conn = self.hddTimer.timeout.connect(self.__hddState)
-		except AttributeError:
-			self.hddTimer.timeout.get().append(self.__hddState)
-		self.hbboff = True
-		self.lastIco = ""
-		self.lastIcoSwitch = 0
-		self.runHBBTimer = eTimer()
-		try:
-			self.runHBBTimer_conn = self.runHBBTimer.timeout.connect(self.checkHBB)
-		except AttributeError:
-			self.runHBBTimer.timeout.get().append(self.checkHBB)
-		if not ENAEBTR and not ENA_Z:
-			self.container = eConsoleAppContainer()
-			self.container.dataAvail.append(self.dataAvail)
-			if XCPU == "arm":
-				self.restartBtrTimer = eTimer()
-				self.restartBtrTimer.timeout.get().append(self.restartBtrStop)
-		self.enaProvSat = False
-		self.__isOn = False
-		self.timerpics = None
-		if self.skin.find("picProvSat") != -1:
-			self["picProvSat"] = Pixmap()
-			self.timerpics = eTimer()
-			self["weaTxt"] = Label('--'+DG)
-			if config.plugins.setupGlass17.par8.value == "3" and config.plugins.setupGlass17.par169.value:
-				try:
-					self.timerpics_conn = self.timerpics.timeout.connect(self.animTimerEvent)
-				except AttributeError:
-					self.timerpics.callback.append(self.animTimerEvent)
-			else:
-				self["weaTxt"].hide()
-				try:
-					self.timerpics_conn = self.timerpics.timeout.connect(self.timerpicsEvent)
-				except AttributeError:
-					self.timerpics.callback.append(self.timerpicsEvent)
-			self.enaProvSat = True
-		self.enaWeainf = config.plugins.setupGlass17.par8.value in ("3","4","5","6") and self.enaProvSat
-		if (config.plugins.setupGlass17.par58.value and ECL) or self.enaWeainf:
-			try:
-				os.remove(XML_FILE)
-			except OSError:
-				pass
-			self.wConsole = wConsole()
-			self.refreshValue = 900
-			self.count = 0
-			self.clrMemTimer = eTimer()
-			try:
-				self.clrMemTimer_conn = self.clrMemTimer.timeout.connect(self.clearMem)
-			except AttributeError:
-				self.clrMemTimer.timeout.get().append(self.clearMem)			
-		self.caidLineTxt = _("No info about Caids")
-		self.ecmLineTxt = _("No info from Cam")
-		self.widthDynIco = 48
-		self.posX_DynIco = 0
-		self.posY_DynIco = 1080
-		self.width_D_icons = 28
-		self.posY_DynIco_CA = 0
-		self.x_dyn_pos_CA = 1920
-		self.forceUpd = True
-		self.noReplace = True
-		self.rEMM = 0
-		self.dataV = 0
-		self.dataA = 0
-		self.piconSize = "picon"
-		self.picProvSatSize = ""
-		self.pics = []
-		if config.plugins.setupGlass17.par31.value == "si":
-			config.plugins.setupGlass17.par5.value = "0"
-			config.plugins.setupGlass17.par5.save()
-			configfile.save()
-		self.__evStart()
-		if ENAVFT:
-			try:
-				self.__event_tracker00 = ServiceEventTracker(screen=self, eventmap={iPlayableService.evVideoTypeReady: self.__evUpdatedVideoType})
-			except: pass
-		try:
-			self.__event_tracker0 = ServiceEventTracker(screen=self, eventmap={iPlayableService.evHBBTVInfo: self.checkHBB})
-		except: pass
-		try:
-			self.__event_tracker1 = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStopped: self.__stopBitrate, iPlayableService.evStart: self.__evStart, iPlayableService.evUpdatedInfo: self.__evUpdatedInfo, iPlayableService.evTunedIn: self.__evTunedIn, iPlayableService.evUpdatedEventInfo: self.__evUpdatedInfo, iPlayableService.evVideoSizeChanged: self.__evUpdatedInfo})
-		except: pass
-		try:
-			self.__event_tracker2 = ServiceEventTracker(screen=self, eventmap={iPlayableService.evVideoGammaChanged: self.__evUpdatedInfo})
-		except: pass
-		self.enaBit = fromCfgB()
-		self.onLayoutFinish.append(self.startloadpixmap)
-		self.onShow.append(self.startEcmCaidInfo)
-		self.onShow.append(self.setOn)
-		self.onHide.append(self.stopEcmCaidInfo)
-
-	def setOn(self):
-		self.__isOn = True
-		if self.timerpics and self.chckWeaInafAnim():
-			if not self.timerpics.isActive():
-				self.timerpics.start(config.plugins.setupGlass17.par170.value)
-    		
-	def startloadpixmap(self):
-		if self.iscalcstart:
-			try:
-				self['caidPids_back'].instance.setScale(0)
-			except: pass
-			try:
-				for x in range(0,8):
-					self["D%s_Demm" % x].instance.setScale(1)
-				for x in ["subserv","txt","multi_audio","subtit","hbb","HDD_state","Dnetstate","Decm","Dtype","Dcam","tuner","wide","dolby","hd_sd"]:
-					self[x].instance.setScale(1)
-			except: pass
-			if self.enaProvSat:
-				try:
-					self.posX_PSW = self["picProvSat"].instance.position().x()
-					self.posY_PSW = self["picProvSat"].instance.position().y()
-					self["picProvSat"].instance.setScale(1)
-					if self["picProvSat"].instance.size().width() == 220:
-						self.picProvSatSize = "_220x132"
-				except: pass			
-				if self.chckWeaInafAnim():
-					self.updpicProvSat(self.pngnameWea)
-			try:
-				self.pidsX = self['caidPids_back'].instance.position().x()
-				self.pidsY = self['caidPids_back'].instance.position().y()
-				self.widthDynIco = self["wide"].instance.size().width()
-				self.posX_DynIco = self["wide"].instance.position().x()
-				self.posY_DynIco = self["wide"].instance.position().y()
-				self.piconSize = piconSize("%s,%s" % (self["g17picon"].instance.size().width(),self["g17picon"].instance.size().height()))
-				if ENA_POPEN and config.plugins.setupGlass17.par23.value:
-					self.posX_DynIco -= self["HDD_state"].instance.size().width()
-				self.width_D_icons = self["D0_Demm"].instance.size().width()
-				self.posY_DynIco_CA = self["D0_Demm"].instance.position().y()
-				self.x_dyn_pos_CA = self["D0_Demm"].instance.position().x()
-				self.enaIcoTun = self["tuner"].instance.size().width() != 0
-			except: pass
-			if (config.plugins.setupGlass17.par58.value and ECL) or self.enaWeainf:
-				# r12 behaviour: weather is populated as soon as the Infobar layout is ready.
-				# Do not leave N/A visible behind the old 30-second startup timer.
-				if self.enaWeainf:
-					self.refreshWeatherNow()
-				else:
-					self.clrMemTimer.startLongTimer(30)
-			self.cpu_count = 0
-			self.maxDynX = self.posX_DynIco - (7*self.widthDynIco)
-			self.x_dyn_pos = self.posX_DynIco - 30
-			self.prev_info = self.getCpuInfo()
-			self.curr_info = self.getCpuInfo()
-			self.iscalcstart = False
-			config.plugins.setupGlass17.par43.value = True
-			self.showEnhancedInfo()
-			self['active_caidPid'].hide()
-			self['caidPids'].hide()
-			self['caidPids_back'].hide()
-			self['caidPids_end'].hide()
-			self['ecmlabels'].colorX(config.plugins.setupGlass17.par118.value)
-			self['ecmValues'].colorX(config.plugins.setupGlass17.par119.value)
-			self['TP_info'].colorX(config.plugins.setupGlass17.par122.value)
-			self['TP_type'].colorX(config.plugins.setupGlass17.par121.value)
-			self['Video_size'].colorX(config.plugins.setupGlass17.par123.value)
-			for x in ("g17picon","picSat","picProv","piconCam","piconEcm"):
-				try:
-					self[x].instance.setScale(1)
-				except: pass
-			if ENA_ANIM and config.plugins.setupGlass17.par161.value:
-				if config.plugins.setupGlass17.par162.value != "None":
-					try:
-						self['g17picon'].instance.setShowHideAnimation(config.plugins.setupGlass17.par162.value)
-					except: pass             
-				if config.plugins.setupGlass17.par164.value != "None":
-					try:
-						self['ecmLineInfo'].instance.setShowHideAnimation(config.plugins.setupGlass17.par164.value)
-					except: pass 
-				if self.enaProvSat and not config.plugins.setupGlass17.par169.value and config.plugins.setupGlass17.par8.value != "3" and config.plugins.setupGlass17.par163.value != "None":
-					try:
-						self['picProvSat'].instance.setShowHideAnimation(config.plugins.setupGlass17.par163.value)
-					except: pass
-				if config.plugins.setupGlass17.par167.value != "None":
-					try:
-						self['TP_info'].instance.setShowHideAnimation(config.plugins.setupGlass17.par167.value)
-						self['TP_type'].instance.setShowHideAnimation(config.plugins.setupGlass17.par167.value)
-					except: pass
-                                        
-	def __evStart(self):
-		self.noReplace = True
-		try:
-			from enigma import eEnv
-			self.noReplace = not os.path.isfile(eEnv.resolve('$sysconfdir/enigma2/serviceapp_replaceservicemp3'))
-		except: pass
-		if self.emm_timer.isActive():
-			self.emm_timer.stop()
-		if self.runChkTimer.isActive():
-			self.runChkTimer.stop()
-		if self.runBitTimer.isActive():
-			self.runBitTimer.stop()
-		if self.runHBBTimer.isActive():
-			self.runHBBTimer.stop()
-		if self.uhdTimer.isActive():
-			self.uhdTimer.stop()
-		self.uhdtype = "x"
-		self.showEnhancedInfo()		
-		self.typeCAviaCam = ""
-		self["Video_size"].setText("--- x ---")
-		self.caidLineTxt = _("No info about Caids")
-		self.ecmLineTxt = _("No info from Cam")
-		self.ecmLineShowFnc()
-		self["TP_type"].setText(_("No data"))
-		self["TP_info"].setText(NO_TUN)
-		for x in range(0,8):
-			try:
-				self["D%s_Demm" % x].hide()
-			except: pass
-		for x in ["Decm","Dtype","Dcam"]:
-			try:
-				self[x].hide()
-			except: pass
-		self.netStateMove(self.x_dyn_pos_CA)
-		self.chckSS()
-            		
-	def __uhdTypeSW(self):
-		self.uhdTimer.stop()
-		if "3" in self.uhdtype:
-			try:
-				self["hd_sd"].setPixmapNum(int(self.uhdtype[1]))
-				self.uhdtype = self.uhdtype[1]+self.uhdtype[0]
-			except: pass
-			self.uhdTimer.start(2000)
-		
-	def showPicon(self, sname):
-		if self.sname == sname:
-			return		
-		self.sname = sname
-		pngname = ""
-		self.path = self.piconSize
-		if sname != "":
-			tmp = self.alternative(sname).split(':', 10)[:10]
-			sname = '_'.join(tmp)
-			pngname = self.findPicon(sname)
-			if pngname == "" and len(sname) > 11:
-				if sname.startswith('4097'):
-					tmp = sname.split('_')
-					tmp[0] = '1'
-					sname = '_'.join(tmp)
-					pngname = self.findPicon(sname)
-				if pngname == "":
-					pngname = self.findPicon(sname[:-10]+"0000_0_0_0")
-					if pngname == "":
-						for i in ("1","19","16"):
-							if i != tmp[2]:
-								tmp[2] = i
-								sname = '_'.join(tmp)
-								pngname = self.findPicon(sname)
-								if pngname == "":
-									pngname = self.findPicon(sname[:-10]+"0000_0_0_0")
-									if pngname != "":
-										break
-								else:
-									break
-		if pngname == "":
-			pngname = self.findPicon("picon_default")
-			if pngname == "":
-				sname = "picon_default.png"
-				if self.path == "ZZPicon":
-					sname = "ZZpicon_default.png"
-				if "220" in self.path:
-					sname = "picon220_default.png"
-				pngname = setDefPicon(sname)
-		if self.pngnamePic != pngname:
-			self.pngnamePic = pngname
-			try:
-				self["g17picon"].instance.setPixmapFromFile(self.pngnamePic)				
-			except: pass
-
-	def alternative(self, serviceName):
-		def alternativeChannels(service):
-			tmp = eServiceCenter.getInstance().list(eServiceReference(service))
-			return tmp and tmp.getContent("S", True)
-		if serviceName.startswith('1:134:'):
-			channels = alternativeChannels(serviceName)
-			if channels:
-				return channels[0]
-		return serviceName
-
-	def stopEcmCaidInfo(self):
-		self.__isOn = False
-		if self.ecmCaidTimer.isActive():
-			self.ecmCaidTimer.stop()
-		if self.provRPMTimer.isActive():
-			self.provRPMTimer.stop()
-		if self.hddTimer.isActive():
-			self.hddTimer.stop()
-		if config.plugins.setupGlass17.par57.value != "2": 
- 			self["Dnetstate"].instance.setPixmapFromFile(SKINPATH + "icons/unk.png")
-             			
-	def startEcmCaidInfo(self, hddTmr=1):               
-		if config.plugins.setupGlass17.par17.value == "1" and not self.ecmCaidTimer.isActive() and (self.ecmLineTxt != _("Free To Air") and self.ecmLineTxt != "....."):
-			self.is_ecm = False
-			self.ecmCaidSwitch()
-		if hddTmr == 1:
-			a, b, c, d = self.readPTCH()
-			if a and not b and not c and not d:
-				self["Prov_temp_rpm"].setText(self.tstprov)
-				self["Prov_temp_rpm"].color5(config.plugins.setupGlass17.par20.value)
-			else:
-				if b:
-					self.is_prov = 1
-				elif c:
-					self.is_prov = 2
-				elif d:
-					self.is_prov = 3
-				else:
-					self.is_prov = 9
-					self["Prov_temp_rpm"].setText("")
-				self.provRPMTimer.start(400) 
-			self.testNet = False
-			self.hddTimer.start(100)
-    			
-	def readPTCH(self):
-		a, b, c, d = config.plugins.setupGlass17.par81.value, config.plugins.setupGlass17.par82.value, config.plugins.setupGlass17.par83.value, config.plugins.setupGlass17.par84.value
-		if not ENA_POPEN:
-			d = False
-		return a, b, c, d
-
-	def readPower(self, dev):
-		where = "no_hdd"
-		hpdArm = ""
-		if os.path.exists("/sbin/hdparm"):
-			hpdArm = "/sbin/hdparm"
-		elif os.path.exists("/usr/sbin/hdparm"):
-			hpdArm = "/usr/sbin/hdparm"
-		if hpdArm != "":
-			try:
-				output = subprocess.check_output([hpdArm, "-C", dev], universal_newlines=True, stderr=subprocess.STDOUT)
-				for f in output.splitlines():
-					if f.find("active") != -1 or f.find("idle") != -1:
-						where = "active"
-					elif f.find("standby") != -1:
-						where = "standby"
-			except (OSError, subprocess.CalledProcessError):
-				pass
-		if config.plugins.setupGlass17.par182.value == "SSD":
-			return where+"_s"
-		else:
-			return where
-
-	def __hddState(self):
-		self.hddTimer.stop()
-		def readRoute():
-			state = "unk"
-			try:
-				f = open("/proc/net/route","r")
-				for line in f:
-					tt = line.split()
-					if tt[3] == "0003":
-						if tt[0] == "eth0":
-							state = "eth"
-							break
-						elif tt[0] == "wlan0":
-							state = "wifi"
-							break
-						elif tt[0] == "ppp0":
-							state = "3g"
-							break
-				f.close()
-			except: pass
-			return state
-		def readNetState():
-			state = "error"
-			if config.plugins.setupGlass17.par57.value == "3":			
-				if internet():
-					state = readRoute()
-			else:
-				state = readRoute()
-			return state			
-		if not self.testNet:
-			self.testNet = True
-			self.hddTimer.start(1500)
-			return
-		if ENA_POPEN and config.plugins.setupGlass17.par23.value and config.plugins.setupGlass17.par140.value != "None":      
-			self["HDD_state"].instance.setPixmapFromFile(SKINPATH + "icons/"+self.readPower(config.plugins.setupGlass17.par140.value)+".png")           
-			self["HDD_state"].show()
-		else:
-			self["HDD_state"].hide()		
-		if config.plugins.setupGlass17.par57.value != "2": 
-			self["Dnetstate"].instance.setPixmapFromFile(SKINPATH + "icons/"+readNetState()+".png")           
-			self["Dnetstate"].show()   
-		else:
-			self["Dnetstate"].hide()
-		self.hddTimer.start(4000)
-                              			
-	def provRPMTimerSwitch(self):
-		self.provRPMTimer.stop()
-		a, b, c, d = self.readPTCH()
-		if self.is_prov == 1:
-			tempRPM, tempDB = self.getTempRPM()
-			self["Prov_temp_rpm"].setText(tempRPM)
-			aa = config.plugins.setupGlass17.par20.value
-			if tempDB == -1:
-				self["Prov_temp_rpm"].color6(aa)
-			elif tempDB > 45:
-				self["Prov_temp_rpm"].color4(aa)
-			elif tempDB > 35:
-				self["Prov_temp_rpm"].color3(aa)
-			else:
-				self["Prov_temp_rpm"].color2(aa)
-			if c:
-				self.is_prov = 2
-			elif d:
-				self.is_prov = 3
-			elif a:
-				self.is_prov = 0
-		elif self.is_prov == 2:
-			tempRPM, tempDB = self.getCpuMem()
-			self["Prov_temp_rpm"].setText(tempRPM)
-			aa = config.plugins.setupGlass17.par20.value
-			if tempDB == -1:
-				self["Prov_temp_rpm"].color6(aa)
-			elif tempDB > 75:
-				self["Prov_temp_rpm"].color4(aa)
-			elif tempDB > 50:
-				self["Prov_temp_rpm"].color3(aa)
-			elif tempDB > 25:
-				self["Prov_temp_rpm"].color7(aa)
-			else:
-				self["Prov_temp_rpm"].color2(aa)
-			if d:
-				self.is_prov = 3
-			elif a:
-				self.is_prov = 0
-			elif b:
-				self.is_prov = 1
-		elif self.is_prov == 3:
-			tempDB = getTemp(config.plugins.setupGlass17.par140.value)
-			aa = config.plugins.setupGlass17.par20.value
-			if tempDB == 0:
-				tempDB = "--"
-				self["Prov_temp_rpm"].color6(aa)
-			elif tempDB > 55:
-				self["Prov_temp_rpm"].color4(aa)
-			elif tempDB > 45:
-				self["Prov_temp_rpm"].color3(aa)
-			elif tempDB > 35:
-				self["Prov_temp_rpm"].color7(aa)
-			else:
-				self["Prov_temp_rpm"].color2(aa)
-			self["Prov_temp_rpm"].setText("Temp. %s: %s%sC" % (config.plugins.setupGlass17.par182.value,tempDB,DG))
-			if a:
-				self.is_prov = 0
-			elif b:
-				self.is_prov = 1
-			elif c:
-				self.is_prov = 2
-		elif self.is_prov == 0:
-			self["Prov_temp_rpm"].setText(self.tstprov)
-			self["Prov_temp_rpm"].color5(config.plugins.setupGlass17.par20.value)
-			if b:
-				self.is_prov = 1
-			elif c:
-				self.is_prov = 2
-			elif d:
-				self.is_prov = 3
-		if self.is_prov != 9:
-			self.provRPMTimer.start(3000)
-		
-	def getCpuMem(self):
-		def setUnits(value):
-			if value >= 1024*1024:
-				return '%.1f%s' % (float(value)/(1024*1024),'GB')
-			elif value >= 1024:
-				return '%.1f%s' % (float(value)/1024,'MB')
-			else:
-				return '%.1f%s' % (float(value),'kB')
-		try:
-			tmp = open('/proc/meminfo').readlines()
-			free = tmp[1].strip().split(":")[1]
-			free = free.strip().split(" ")[0]
-			total = tmp[0].strip().split(":")[1] 
-			total = total.strip().split(" ")[0]
-			tmp = "Mem: "+ setUnits(int(free)) +"/"+ setUnits(int(total))
-		except:
-			tmp = "Mem: --/--"		
-		self.prev_info, self.curr_info = self.curr_info, self.getCpuInfo()
-		zataz = 0
-		count = 0
-		for i in range(len(self.curr_info)):
-			try:
-				count += 1				
-				zataz += 100 * (self.curr_info[i][2] - self.prev_info[i][2]) // (self.curr_info[i][1] - self.prev_info[i][1])
-			except ZeroDivisionError: pass
-		if count > 0 and zataz > 0:
-			zataz = int(zataz/count)
-		if zataz == 0 or count == 0:
-			tmp += ', Cpu: --'
-		elif zataz > 100:
-			zataz = 100    			
-			tmp += ", Cpu: " + str(zataz) + "%"	
-		else:			
-			tmp += ", Cpu: " + str(zataz) + "%"								
-		return tmp, int(zataz)
-
-	def getCpuInfo(self):
-		res = []
-		try:
-			fd = open("/proc/stat", "r")
-			for l in fd:
-				if l.find("cpu") == 0:
-					total = busy = 0
-					tmp = l.split()
-					for i in range(1, len(tmp)):
-						tmp[i] = int(tmp[i])
-						total += tmp[i]
-
-					busy = total - tmp[4] - tmp[5]
-					res.append([tmp[0], total, busy])
-			fd.close()
-		except: pass
-		return res
-    		
-	def getTempRPM(self):
-		temp = -1
-		rpm = 0
-		ret = ""
-		try:
-			allsensors = sensors.getSensorsList(sensors.TYPE_TEMPERATURE)
-			numtemp = len(allsensors)
-			for num in range(numtemp):
-				idx = allsensors[num]
-				isMax = sensors.getSensorValue(idx)
-				if isMax > temp:
-					temp = isMax
-		except: pass
-		if temp > 0:
-			ret = "Temp.: " + str(temp) + DG
-		elif fileExists('/sys/devices/virtual/thermal/thermal_zone0/temp'):
-			try:
-				idx = open('/sys/devices/virtual/thermal/thermal_zone0/temp').read()[:2]
-				ret = "CPU Temp.: " + idx.replace('\n', '') + DG
-			except: pass
-		try:
-			allsensors = sensors.getSensorsList(sensors.TYPE_FAN_RPM)
-			numtemp = len(allsensors)
-			for num in range(numtemp):
-				idx = allsensors[num]
-				isMax = sensors.getSensorValue(idx)
-				if isMax > rpm:
-					rpm = isMax
-		except: pass
-		if rpm > 0:
-			ret += "RPM: " + str(rpm)
-			if temp > 0:
-				ret = ret.replace("RPM:",", RPM:")
-		if ret == "":
-			return "Temp.: N/A, RPM: N/A", temp 
-		else:
-			return ret, temp 
-            			
-	def ecmCaidSwitch(self):
-		self.ecmCaidTimer.stop()
-		aa = config.plugins.setupGlass17.par116.value
-		if self.is_ecm:
-			self["ecmLineInfo"].setText(self.caidLineTxt)
-			self["ecmLineInfo"].color3(aa)
-			self.is_ecm = False
-		else:
-			self["ecmLineInfo"].setText(self.ecmLineTxt)
-			self["ecmLineInfo"].color1(aa)
-			self.is_ecm = True                               
-		if config.plugins.setupGlass17.par17.value == "1" and self.ecmLineTxt != _("Free To Air") and self.ecmLineTxt != ".....":
-			self.ecmCaidTimer.start(2400)
-		else:
-			self["ecmLineInfo"].setText(self.ecmLineTxt)
-			self["ecmLineInfo"].color2(aa)
-			
-	def ecmLineShowFnc(self):                            
-		aa = config.plugins.setupGlass17.par116.value
-		if self.ecmLineTxt != _("Free To Air") and self.ecmLineTxt != ".....":
-			if config.plugins.setupGlass17.par17.value == "0":
-				self["ecmLineInfo"].setText(self.ecmLineTxt)
-				self["ecmLineInfo"].color1(aa)
-			elif config.plugins.setupGlass17.par17.value == "2":
-				self["ecmLineInfo"].setText(self.caidLineTxt)
-				self["ecmLineInfo"].color3(aa)
-			elif config.plugins.setupGlass17.par17.value == "3":
-				self["ecmLineInfo"].setText("SID: %s" % self.sid)
-				self["ecmLineInfo"].color6(aa)
-			elif config.plugins.setupGlass17.par17.value == "4":
-				self["ecmLineInfo"].setText(self.caidLineTxt + ",VPID: %s" % self.vpid)
-				self["ecmLineInfo"].color6(aa)
-		else:
-			self["ecmLineInfo"].setText(self.ecmLineTxt)
-			self["ecmLineInfo"].color2(aa)
-      			
-	def __startBitrate(self):
-		self.runBitTimer.stop()
-		if not self.bitNotActive:
- 			return
-		service = self.session.nav.getCurrentService()
-		info = service and service.info()
-		ena = True
-		if info:
-			vpid = apid = dvbnamespace = tsid = onid = -1
-			serviceinfo = service.info()
-			vpid = serviceinfo.getInfo(iServiceInformation.sVideoPID)
-			apid = serviceinfo.getInfo(iServiceInformation.sAudioPID)
-			if ENAEBTR:
-				ref = self.session.nav.getCurrentlyPlayingServiceReference()
-				if not ref.getPath():
-					tsid = ref.getData(2)
-					onid = ref.getData(3)
-					dvbnamespace = ref.getData(4)
-				if vpid > 0:
-					if not ENAEBTR2:
-						try:
-							self.videoBitrate = eBitrateCalculator(vpid, ref.toString(), 1000, 1024*1024)
-							self.videoBitrate.callback = self.getVideoBitrateData
-							ena = False
-						except:
-							try:
-								self.videoBitrate = eBitrateCalculator(vpid, ref.toString(), 1000, 1024*1024)
-								self.videoBitrate.callback.append(self.getVideoBitrateData)
-								ena = False
-							except: pass
-					else:
-						try:
-							self.videoBitrate = eBitrateCalculator(vpid, dvbnamespace, tsid, onid, 1000, 1024*1024)
-							self.videoBitrate.callback.append(self.getVideoBitrateData)
-							ena = False
-						except: pass
-				if apid > 0:
-					if not ENAEBTR2:
-						try:
-							self.audioBitrate = eBitrateCalculator(apid, ref.toString(), 1000, 64*1024)
-							self.audioBitrate.callback = self.getAudioBitrateData
-							ena = False
-						except:
-							try:
-								self.audioBitrate = eBitrateCalculator(apid, ref.toString(), 1000, 64*1024)
-								self.audioBitrate.callback.append(self.getAudioBitrateData)
-								ena = False
-							except: pass
-					else:
-						try:
-							self.audioBitrate = eBitrateCalculator(apid, dvbnamespace, tsid, onid, 1000, 64*1024)
-							self.audioBitrate.callback.append(self.getAudioBitrateData)
-							ena = False
-						except: pass
-			elif not ENA_Z and (fileExists("/usr/bin/btrGen17")) and not self.isBit:
-				demux = 2
-				a = ""
-				try:
-					stream = service.stream()
-					if stream:
-						streamdata = stream.getStreamingData()
-						if streamdata:
-							if 'demux' in streamdata:
-								demux = streamdata["demux"]
-							if XCPU == "arm":
-								a = "0 "
-								if 'adapter' in streamdata:
-									a = str(streamdata["adapter"]) + " "
-				except:
-					pass
-				cmd = ["/usr/bin/btrGen17"]
-				if XCPU == "arm":
-					cmd.append(str(streamdata.get("adapter", 0)))
-				cmd.extend([str(demux), str(vpid), str(apid)])
-				self["bitrate_info"].setText(_("Starting Bitrate"))
-				self["bitrate_info"].color2(config.plugins.setupGlass17.par115.value)
-				self.container.execute(*cmd)
-				if XCPU == "arm":
-					if self.restartBtrTimer.isActive():
-						self.restartBtrTimer.stop()
-					self.restartBtrTimer.startLongTimer(720)
-				self.isBit = True
-				ena = False
-		self.bitNotActive = ena
-		if ena:				
-			self["bitrate_info"].setText(_("Bitrate")+_(" failed"))
-			self["bitrate_info"].color4(config.plugins.setupGlass17.par115.value)				
-				
-	def getVideoBitrateData(self,value, status):
-		if status:
-			self.dataV = value
-			self.updBtrData()
-		else:
-			self.videoBitrate = None
-
-	def getAudioBitrateData(self,value, status): 
-		if status:
-			self.dataA = value
-			self.updBtrData(False)
-		else:
-			self.audioBitrate = None
-
-	def updBtrData(self, isVid=True):
-		self["bitrate_info"].setText(("Btr: V: " + str(self.dataV) + " kb/s, A: " + str(self.dataA) + " kb/s"))
-		if isVid:
-			try:
-				aa = config.plugins.setupGlass17.par115.value
-				if int(self.dataV) < 2000: 
-					self["bitrate_info"].color4(aa)
-				elif int(self.dataV) < 4000: 
-					self["bitrate_info"].color3(aa)
-				elif int(self.dataV) < 8000: 
-					self["bitrate_info"].color1(aa)
-				else: 
-					self["bitrate_info"].color2(aa)
-			except: pass
-			
-	def dataAvail(self, str):
-		try:
-			if ISP38:
-				str = str.decode("ascii")
-			cmddata = str.split(" ")
-			tmp = cmddata[3].split("\n")
-			tmp1 = cmddata[6]
-			if int(tmp[0]) > int(config.plugins.setupGlass17.par35.value):
-				self.stopBitrateNow(_("Btr: too high - stopped"))
-			elif config.plugins.setupGlass17.par25.value:
-				aa = config.plugins.setupGlass17.par115.value
-				if self.numBit == 0:
-					self["bitrate_info"].setText(("Act: V: " + tmp[0] + " kb/s, A: " + tmp1[:-1] + " kb/s"))
-					self["bitrate_info"].color1(aa)
-				elif self.numBit == 2:
-					self["bitrate_info"].setText(("Avg: V: " + cmddata[2] + " kb/s, A: " + cmddata[5] + " kb/s"))
-					self["bitrate_info"].color3(aa)
-				elif self.numBit == 4:
-					self["bitrate_info"].setText(("Min: V: " + cmddata[0] + " kb/s, A: " + tmp[1] + " kb/s"))
-					self["bitrate_info"].color4(aa)
-				elif self.numBit == 6:
-					self["bitrate_info"].setText(("Max: V: " + cmddata[1] + " kb/s, A: " + cmddata[4] + " kb/s"))
-					self["bitrate_info"].color2(aa)
-					self.numBit = -2
-				self.numBit += 1
-			else:
-				self.dataV = tmp[0]
-				self.dataA = tmp1[:-1]
-				self.updBtrData()
-		except: pass
-
-	def __stopBitrate(self):
-		self.bitNotActive = True
-		self.hbboff = True
-		self.lastIco = ""
-		self.lastIcoSwitch = 0
-		config.plugins.setupGlass17.par38.value = CLRDATA
-		config.plugins.setupGlass17.par194.value = CLR
-		config.plugins.setupGlass17.par178.value = "x"
-		self.rEMM = 0
-		self.dataV = 0
-		self.dataA = 0
-		if ENAEBTR:
-			self.videoBitrate = None
-			self.audioBitrate = None
-			self["bitrate_info"].setText(_("Bitrate stopped"))
-			self["bitrate_info"].color1(config.plugins.setupGlass17.par115.value)
-		elif not ENAEBTR and self.isBit and fileExists("/usr/bin/btrGen17"):
-			self.stopBitrateNow()
-		self.allCaidPid = ""
-		self['active_caidPid'].hide()
-		self['caidPids'].hide()
-		self['caidPids_back'].hide()
-		self['caidPids_end'].hide()
-		try:
-			os.remove("/tmp/ecm.info")
-		except OSError:
-			pass
-
-	def refreshWeatherNow(self):
-		"""Refresh active Infobar weather immediately for the configured city."""
-		if not self.enaWeainf:
-			return
-		try:
-			if self.clrMemTimer.isActive():
-				self.clrMemTimer.stop()
-			# Run now. The city-keyed cache makes startup instant when last-known
-			# data exists, while a changed city can never inherit another city's data.
-			self.clearMem()
-		except:
-			pass
-
-	def clearMem(self):
-		self.clrMemTimer.stop()
-		if (config.plugins.setupGlass17.par58.value and ECL) and self.refreshValue == 900:
-			try:
-				if hasattr(os, "sync"):
-					os.sync()
-				with open("/proc/sys/vm/drop_caches", "w") as cache_control:
-					cache_control.write("3\n")
-			except OSError:
-				pass
-		self.refreshValue = 900
-		if self.enaWeainf:
-			txt = '--'+DG
-			png = ""
-			self.count += 1
-			if netChck():
-				self.units = chckUnit()
-				try:
-					city_ref = config.plugins.setupGlass17.par13.value
-					if not str(city_ref).startswith("om|"):
-						city_ref = config.plugins.setupGlass17.par13.getText()
-					data = openMeteo(city_ref, self.units, 1)
-					cur = data.get("current", {})
-					code = cur.get("weather_code")
-					if code is not None:
-						png = wmoPicon(code, not bool(cur.get("is_day", 1)))
-					if cur.get("temperature_2m") is not None:
-						txt = temperature_fix(str(int(round(float(cur.get("temperature_2m"))))), False)
-					self.refreshValue = max(60, int(config.plugins.setupGlass17.par87.value) * 60)
-				except Exception as e:
-					Writelog("Classic Open-Meteo: %s" % e)
-					if self.count < 5:
-						self.refreshValue = 30
-					if self.count > 10:
-						self.count = 0
-			if self.chckWeaInafAnim():
-				if self.timerpics.isActive():
-					self.timerpics.stop()
-				f = None
-				if png != "":
-					path = config.plugins.setupGlass17.par39.value + "/animIconWeather/" + png
-					try:
-						f = len(os.listdir(path))
-					except: pass
-				self.pics = []
-				self.slideXX = 0
-				if f:
-					for i in range(0,f):
-						self.pics.append(LoadPixmap(path+"/"+str(i)+".png"))					
-				else:
-					self['picProvSat'].instance.resize(eSize(150,90))
-					self['picProvSat'].instance.move(ePoint(self.posX_PSW,self.posY_PSW))
-					self.updpicProvSat(self.pngnameWea)
-				if len(self.pics) != 0:
-					self['picProvSat'].instance.resize(eSize(90,90))
-					self['picProvSat'].instance.move(ePoint(self.posX_PSW+30,self.posY_PSW))
-					self.timerpics.start(config.plugins.setupGlass17.par170.value)
-			else:
-				if png != "":
-					self.path = "picWeaInf"
-					png = self.findPicon(png)                     
-				if png != "":
-					self.pngnameWea = png
-				else:
-					self.pngnameWea = SKINPATH+"piconWdef.png"
-				self.updpicProvSat(self.pngnameWea)
-			self["weaTxt"].setText(txt)
-		self.clrMemTimer.startLongTimer(self.refreshValue)
-
-	def dwnW(self,req):
-		if not isinstance(req, str) or not req.startswith("https://"):
-			return
-		self.wConsole.ePopen(["wget", "-T", "2", req, "-O", XML_FILE])
-		
-	def animTimerEvent(self):
-		self.timerpics.stop()
-		a = len(self.pics)
-		if a != 0:
-			if self.slideXX == a:
-				self.slideXX = 0
-			self['picProvSat'].instance.setPixmap(self.pics[self.slideXX])	
-			self.slideXX += 1
-			if self.__isOn:
-				self.timerpics.start(config.plugins.setupGlass17.par170.value)
-
-	def stopBitrateNow(self, tmp=_("Bitrate stopped")):
-		self.isBit = False
-		self.bitNotActive = True
-		self.container.kill()
-		self["bitrate_info"].setText(tmp)
-		self["bitrate_info"].color4(config.plugins.setupGlass17.par115.value)
-      				
-	def restartBtrStop(self):
-		self.restartBtrTimer.stop()
-		if self.isBit:
-			self.stopBitrateNow()
-			self.__startBitrate()
-		
-	def __evTunedIn(self):
-		service = self.session.nav.getCurrentService()
-		info = service and service.info()
-		if info:
-			self.enaTuned = True
-			self.runChkTimer.start(750)
-			self.emm_timer.start(700)
-			if ENAHBB:
-				self.runHBBTimer.start(4000, True)
-			if self.enaBit and self.bitNotActive and config.plugins.setupGlass17.par2.value:
-				t = 8000
-				if ENAEBTR:
-					t = 5000
-				self.runBitTimer.start(t)
-				self["bitrate_info"].setText(_("Preparing Bitrate"))
-				self["bitrate_info"].color3(config.plugins.setupGlass17.par115.value)
-			self.chckSS()
-
-	def chckSS(self, state=False):
-		if config.plugins.setupGlass17.par64.value:	
-			if not state:
-				service = self.session.nav.getCurrentService()
-				info = service and service.info()
-				if info:	
-					ref = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
-					if isinstance(ref, eServiceReference):
-						isRadioService = ref.getData(0) in (2, 10)
-						if isRadioService and keyManage.TunerTest():
-							state = True
-			if self.state != state and keyManage.dialog is not None:
-				self.state = state
-				if state:
-					keyManage.showME()
-				else:
-					keyManage.hideME()
-						
-	def __updateEMM(self):
-		self.emm_timer.stop()
-		service = self.session.nav.getCurrentService()
-		info = service and service.info()
-		if info is not None:
-			if self.enaTuned:
-				self.setTunerInfo(service)
-				self.enaTuned = False
-			self.caidsLive = info.getInfoObject(iServiceInformation.sCAIDs)
-			self.showDyn_EMM_ECM()
-			self.forceUpd = True
-			try:
-				caidpids = info.getInfoObject(iServiceInformation.sCAIDPIDs)
-				if len(caidpids) != 0:
-					self.allCaidPid = ""
-					h_size = 0
-					no_error = True
-					for x in range(0, len(caidpids)):
-						c = "%0.4X" % int(caidpids[x][0])
-						p = "%0.4X" % int(caidpids[x][1])
-						tt = "%s : %s\n" % (c,p)
-						if "-0001" in tt or "-1" in tt:
-							no_error = False
-							break
-						if not tt in self.allCaidPid:
-							self.allCaidPid += tt
-							h_size += 1
-					if no_error:
-						h_size = h_size*26 + 66
-						if config.plugins.setupGlass17.par26.value:
-							self['caidPids'].setText(self.allCaidPid)
-							self['caidPids'].instance.resize(eSize(195,h_size - 62))
-							self['caidPids'].show()
-							self['caidPids_back'].instance.resize(eSize(255,h_size))
-							self['caidPids_back'].show()
-							self['caidPids_end'].move(ePoint(self.pidsX, h_size + self.pidsY))
-							self['caidPids_end'].show()
-					else:
-						self.emm_timer.start(2000)
-			except: pass
-			if not self.emm_timer.isActive() and self.ecmLineTxt != _("Free To Air") and self.CaidsChck() == _("Error reading CaIds !!!") and self.rEMM < 4:
-				if self.chckEcmInfo():
-					self.rEMM += 1
-				self.emm_timer.start(2000)			
-        			
-	def chckEcmInfo(self):
-		if os.path.isfile('/tmp/ecm.info'):
-			try:
-				if os.path.getsize('/tmp/ecm.info') > 10:
-					f = open('/tmp/ecm.info', "r").read()
-					if f.find("fta") == -1 and f.find("Signature OK") == -1 and f.find("system: BISS") == -1:
-						return True
-			except: pass
-		return False
-		
-	def __updCamECM(self):
-		self.runChkTimer.stop()
-		service = self.session.nav.getCurrentService()
-		info = service and service.info()
-		if info:
-			serviceinfo = service.info()
-			if serviceinfo.getInfo(iServiceInformation.sIsCrypted) or self.chckEcmInfo():
-				self.readEcm()
-				self.startEcmCaidInfo(0)
-			else:			
-				self.actFta()
-			if config.plugins.setupGlass17.par42.value:
-				info = service.audioTracks()
-				if info:
-					a = info.getCurrentTrack()
-					if a != self.cAud:
-						self.cAud = a				
-						self.__evUpdatedInfo()
-			self.runChkTimer.start(int(config.plugins.setupGlass17.par74.value)*1000, True)
-		
-	def actFta(self, ena=True, service=None):
-		self.ecmLineTxt = ({True:_("Free To Air"), False:"....."}[ena])
-		if service is None:
-			self.ecmLineShowFnc()
-		self['ecmValues'].setText(CLRDATA)
-		self['ecmlabels'].setText(ECM_LABELS)
-		self.picCamShow()
-		if ena:
-			self.netStateMove(self.x_dyn_pos_CA - self.width_D_icons)
-
-	def picCamShow(self, ca="Fta", ena=True):
-		if config.plugins.setupGlass17.par5.value != "0":
-			x = "%s/piconCam/%s-fs8.png" % (config.plugins.setupGlass17.par39.value, ca)
-			if not fileExists(x):
-				x = "%sicons/missing-fs8.png" % SKINPATH
-			if ena:
-				self["piconCam"].instance.setPixmapFromFile(x)
-			self["piconEcm"].instance.setPixmapFromFile(x)
-
-	def readEcm(self):
-		def chckIdx(what):
-			if "X" in what:
-				idx = what.index("X")
-				what = what[idx+1:]
-			return what
-		def cutMe(c):
-			c = c.replace("\n","")
-			if len(c) > 21:
-				if c[-1] == ")": 
-					c = "%s..)" % c[:21]
-				else:
-					c = "%s.." % c[:21]
-			return c + "\n"
-		def setEcmTime(t):
-			t = t.strip()
-			if not "." in t:
-				if len(t) == 4:
-					t =  "%s.%s" % (t[0], t[1:])
-				elif t.isdigit():
-					t =  "0.%003d" % int(t)
-			return t + "\n"
-		def setCaid(t):
-			if t in FCAID:
-				return t
-			else:
-				return t[:2]
-		def convCaid(caid):
-			if caid.startswith("18"):
-				coding = "Nagravision"
-			elif caid in ["1702\n","1722\n","1762\n"]:
-				coding = "Betacrypt"
-			elif caid.startswith("01"):
-				coding = "Seca"
-			elif caid.startswith("06"):
-				coding = "Irdeto"
-			elif caid.startswith("07"):
-				coding = "DigiCipher"
-			elif caid.startswith("22"):
-				coding = "Codicrypt"
-			elif caid.startswith("A1"):
-				coding = "Rosscrypt"
-			elif caid.startswith("05"):
-				coding="Viaccess"
-			elif caid.startswith("0B"):
-				coding="Conax"
-			elif caid.startswith("0D"):
-				coding="Cryptoworks"
-			elif caid in ["4AE1\n","4AE0\n","44A0\n"]:
-				coding="DRE-crypt"
-			elif caid == "4ABF\n":
-				coding="DGCrypt"
-			elif caid == "4AEE\n":
-				coding="Bulcrypt"
-			elif caid in ["4AD1\n","4AD0\n"]:
-				coding="XCrypt"
-			elif caid == "4AFC\n":
-				coding="Panaccess"
-			elif caid == "4A70\n":
-				coding="Dreamcrypt"
-			elif caid in ["4AEA\n","4B24\n","1EC0\n"]:
-				coding="CryptoGuard"
-			elif caid == "4B63\n":
-				coding="RedCrypter"
-			elif caid == "4B64\n":
-				coding="TVkey"
-			elif caid == "4AF4\n":
-				coding="MDC"
-			elif caid == "4347\n":
-				coding="CryptOn"
-			elif caid.startswith("09"):
-				coding="Videoguard"
-			elif caid.startswith("55"):
-				if caid == "5581\n":
-					coding="Bulcrypt"
-				else:
-					coding="Griffin"
-			elif caid.startswith("26"):
-				coding="Biss"
-			elif caid.startswith("56") or caid.startswith("17"):
-				coding="Verimatrix"
-			elif caid == "2710\n":
-				coding="Exset"
-			elif caid.startswith("0E"):
-				coding="PowerVU"
-			elif caid == "1010\n":
-				coding="Tandberg"
-			elif caid == "4AB0\n":
-				coding="Sky-Pilot"
-			elif caid == "FFFF\n":
-				coding="Constant-CW"
-			else:
-				coding="Unknown"
-			return coding
-		def fixCW(t):
-			t = t.strip()
-			if t[2] != " ":
-				b = ""
-				for i in range(0,len(t),2):
-					b += t[i:i+2] + " "
-				return (b.strip())[:24]
-			else:
-				return t
-		try:
-			tmp = open('/tmp/ecm.info', 'r')
-			content = tmp.read()
-			tmp.close
-		except:
-			content = ""
-		lines = content.split("\n")
-		caid=provider=pid=using=prot=adress=hops=share=ecmTime=coding=typecam=provid=cw0=cw1=chid="..............\n"
-		config.plugins.setupGlass17.par195.value = ""
-		typeCAviaCam2 = ""
-		isEmu = ""
-		oscVersion = "\n"
-		doscam = ""
-		if content != "":
-			typcm = False
-			dyntmpcaid = "xxx"
-			for line in lines:
-				if "chid:" in line.lower():
-					if ", chid:" in line:
-						chid = line.split("chid:")[1]
-						if "," in chid:
-							chid = chid.split(",")[0]
-					else:
-						chid = line.split(":")[1] 
-					chid = chckIdx(chid.upper()) + "\n"
-				if line.startswith("protocol:"):
-					prot = parseEcmInfoLine(line) + "\n"
-					if "constcw" in prot:
-						isEmu = "emu" 
-						typeCAviaCam2 = "emu"
-				elif line.startswith("CW0:") or line.startswith("cw0:"):
-					cw0 = fixCW(line.split(":")[1])+"\n" 
-				elif line.startswith("CW1") or line.startswith("cw1:"):
-					cw1 = fixCW(line.split(":")[1])+"\n"
-				if line.startswith("Service:"):
-					typecam = "Wicardd\n"
-				elif line.startswith("=====") and typecam == "..............\n":
-					typecam = "Mgcamd\n"
-					typcm = True
-				elif typecam == "..............\n":
-					typecam = "CCcam\n"
-				elif typecam == "CCcam\n" and line.startswith("reader:"):
-					typecam = "OScam\n"
-				elif typecam == "CCcam\n" and line.startswith("FROM:"):
-					typecam = "Camd3\n"
-				if line.startswith("caid:") or line.startswith("====") or line.startswith("CAID ") or line.startswith("CAID:"):
-					if line.startswith("===="):
-						caid = str(parseEcmInfoLine(line,"CaID")).upper()
-						caid = chckIdx(caid)
-						caid = caid[:4]+"\n"
-					elif line.startswith("CAID "):
-						caid = str(line.split(' ')[1].split())
-						caid = caid[2:-2]
-						caid = chckIdx(caid.upper())
-						caid = caid[:4]+"\n"
-					else:
-						caid = str(parseEcmInfoLine(line)).upper()
-						caid = chckIdx(caid)
-						if len(caid) == 3:
-							caid = "0%s" % caid
-						caid = caid + "\n"
-					dyntmpcaid = setCaid(caid[:-1])
-					coding = convCaid(caid)
-				if line.startswith("provid:") or line.startswith("CAID ") or line.startswith("SysID"):
-					if line.startswith("CAID "):
-						provid = str(line.split(' ')[5].split())
-						provid = provid[2:-2]
-						provid = chckIdx(provid.upper())
-						provid += "\n"
-					elif line.startswith("SysID"):
-						provid = str(line.split(' ')[1].split())
-						provid = provid[2:-2]
-						provid = provid.upper() + "\n"
-					else:
-						provid = parseEcmInfoLine(line)
-						provid = provid.upper()
-						provid = provid[2:] + "\n"
-				elif line.startswith("provider:") or line.startswith("prov: ") or line.startswith("Provider:"):
-					provider = parseEcmInfoLine(line) + "\n"
-					if provider.__contains__("key:"):
-						idx = provider.index("key:")
-						provider = provider[:idx] + "\n"
-					if provider.__contains__(","):
-						idx = provider.index(",")
-						provider = provider[:idx] + "\n"
-					if provider.__contains__("0X") or provider.__contains__("0x"):
-						provider = chckIdx(provider.upper())
-					provider = cutMe(provider)
-				if line.startswith("pid:") or line.startswith("====") or line.startswith("CAID "):
-					if line.startswith("===="):
-						pid = str(line.split(' ')[7].split())
-						pid = pid.replace(",","")
-						pid = pid[2:-2]
-					elif line.startswith("CAID "):
-						pid = str(line.split(' ')[3].split())
-						pid = pid[2:-3]
-					else:
-						pid = parseEcmInfoLine(line)
-					pid = chckIdx(pid.upper())
-					if len(pid) == 2:
-						pid = "00%s" % pid
-					if len(pid) == 3:
-						pid = "0%s" % pid
-					pid += "\n"
-				if line.startswith("using:") or line.startswith("source:") or line.startswith("reader:") or line.startswith("decode:"):
-					if line.startswith("source:"):
-						using = str(line.split(' ')[1].split())
-						using = using[2:-2] + "\n"
-					elif line.startswith("decode:"):
-						if typcm:
-							typecam = "Mgcamd\n"
-						else:
-							typecam = "Gbox\n"
-						if line.__contains__("slot") or line.__contains__("Local"):
-							using = "Cardreader\n"
-						elif line.__contains__("Internal"):
-							using = "Emu\n"
-							typecam = "Gbox\n"
-						elif line.__contains__("com"):
-							using = parseEcmInfoLine(line) + "\n"
-						else:
-							using = "Network\n"
-					else:
-						using = parseEcmInfoLine(line) + "\n"
-						if using == "sci\n":
-							using = "Cardreader\n"
-					using = cutMe(using)
-					if line.__contains__("emu") or line.__contains__("Internal"):
-						isEmu = "emu" 
-						typeCAviaCam2 = "emu"
-				if line.startswith("address:") or line.startswith("source:") or line.startswith("from:") or line.startswith("FROM:") or line.startswith("decode:"):
-					if line.startswith("source: net"):
-						idex = line.index("(")
-						adress = line[idex:]
-						adress = adress.replace("\n", "")
-						adress = str(adress.split(' ')[2].split())
-						adress = adress[2:-3] + "\n"
-					elif line.startswith("source: emu") or line.startswith("decode:"):
-						adress = "..............\n"
-						if line.startswith("decode:") and not using.__contains__("com"): 
-							adress = parseEcmInfoLine(line) + "\n"
-					else:
-						adress = parseEcmInfoLine(line) + "\n"
-						if adress == "/dev/sci0\n":
-							if IS800SE:
-								adress = "Upper slot \n"
-							else:
-								adress = "Lower slot \n"
-						elif adress == "/dev/sci1\n":
-							if IS800SE:
-								adress = "Lower slot \n"
-							else:
-								adress = "Upper slot \n"
-						elif adress.__contains__("local"):
-							adress = "Local slot\n"
-						elif coding == "Unknown":
-							adress = "..............\n"
-					adress = cutMe(adress)
-					if isEmu == "":
-						if (using.__contains__("com") and typecam == "Gbox\n") or adress.__contains__("127.0.0.1") or adress.__contains__("slot") or adress.__contains__("local") or (line.startswith("decode:") and (line.__contains__("slot") or line.__contains__("Local"))):
-							typeCAviaCam2 = "crd"
-						elif line.__contains__("emu"):
-							typeCAviaCam2 = "emu"
-						elif (adress != "..............\n" and using != "unsupported CAs\n") or (line.startswith("decode:") and line.__contains__("Network")):
-							typeCAviaCam2 = "net"
-					else:
-						typeCAviaCam2 = "emu"					
-				elif line.startswith("hops:"):
-					hops = parseEcmInfoLine(line) + "\n"
-				elif line.startswith("prov:") and "dist:" in line and "," in line:
-					l = ""
-					for ii in line.split(","):
-						if "prov:" in ii:
-							provid = chckIdx((parseEcmInfoLine(ii)).upper()) + "\n"
-						if "dist:" in ii:
-							hops = parseEcmInfoLine(ii)
-						if "slot:" in ii:
-							l += ", Slot: " + parseEcmInfoLine(ii)
-						if "level:" in ii:
-							l += ", Level: " + parseEcmInfoLine(ii)
-					if not "\n" in hops:
-						hops += l + "\n"
-				if line.startswith("share:") or line.startswith("source:"):
-					if line.startswith("source: net"):
-						idex = line.index("(")
-						share = line[idex:]
-						share = share.replace("\n", "")
-						share = share.split(' ')[0].strip()
-						share = share[3:-2] + "\n"
-					elif line.startswith("source: emu"):
-						share = "..............\n"
-					else:
-						share = parseEcmInfoLine(line) + "\n"
-					share = cutMe(share)
-				elif line.startswith("response:") or line.startswith("ecm time:") or line.startswith("Time:(") or line.startswith("Time: (") or line.startswith("1") or line.startswith("2") or line.startswith("3") or line.startswith("4") or line.startswith("5") or line.startswith("6") or line.startswith("7") or line.startswith("8") or line.startswith("9"):
-					if line.startswith("ecm time:") or line.startswith("response:"):
-						ecmTime = parseEcmInfoLine(line)
-					elif line.startswith("Time:(") or line.startswith("Time: ("):
-						ecmTime = (line.split('(')[1]).strip()
-						if " " in ecmTime:
-							ecmTime = (ecmTime.split(' ')[0]).strip()
-						if ")" in ecmTime:
-							ecmTime = (ecmTime.split(')')[0]).strip()
-					else:
-						ecmTime = line.split(' ')[0].strip()
-				elif line.startswith("response time:"):
-					ecmTime = line.strip().split("e:")[1]				
-					if "(" in ecmTime:
-						adress = cutMe((ecmTime.strip().split("(")[1]).replace(")","").replace("\n",""))				
-						typeCAviaCam2 = "net"
-						using = cutMe(((ecmTime.strip().split("(")[0]).strip().split("decoded by")[1])[1:])
-					else:            
-						using = cutMe((ecmTime.strip().split("decoded by")[1])[1:])            						
-						if "funcard" in using.lower() or "goldcard" in using.lower():
-							typeCAviaCam2 = "emu"
-						elif "upper" in using.lower() or "lower" in using.lower():
-							typeCAviaCam2 = "crd"
-					ecmTime = ecmTime.strip().split("ms")[0]
-				if line.startswith("Signature OK") and typecam == "CCcam\n":
-					typecam = "Mgcamd\n"
-				if (line.startswith("Time:(") or line.startswith("Time: (")) and typecam == "Mgcamd\n":
-					typecam = "Mbox\n"
-			if typecam != "OScam\n":
-				try:
-					ax = typecam
-					try:
-						process_lines = subprocess.check_output(["ps", "-ef"], universal_newlines=True).splitlines()
-					except (OSError, subprocess.CalledProcessError):
-						process_lines = subprocess.check_output(["ps"], universal_newlines=True).splitlines()
-					for f in process_lines:
-						f = f.upper()
-						if f.find("OSCAM") != -1:
-							typecam = "OScam\n"
-							break
-						elif f.find("GCAM") != -1 and f.find("MGCAMD") == -1:
-							typecam = "Gcam\n"
-							break
-						elif f.find("NCAM") != -1:
-							typecam = "Ncam\n"
-							break
-				except: pass
-			if typecam == "Gbox\n" and using == "Network\n":
-				try:
-					f = open("/tmp/share.info","r")
-					for l in f.readlines():
-						l = l.replace("\n", "").strip().split(" ") 
-						if len(l) == 10:
-							if provider[:-1] == parseEcmInfoLine(l[9]) and l[5].startswith(caid[:-1]): 
-								adress = l[3] + "\n"
-								adress = cutMe(adress)
-								hops = "%s, %s, %s\n" % (l[6], l[7], l[8]) 
-								share = "%s, %s\n" % (l[5], l[9])
-								break
-					f.close()
-				except: pass
-			elif (typecam in ("OScam\n","Ncam\n","Gcam\n")) and (os.path.isfile(GCM) or os.path.isfile(NCM) or os.path.isfile("/tmp/oscam.version") or os.path.isfile("/tmp/.oscam/oscam.version") or os.path.isfile(DSC)):
-				oscfile = "/tmp/.oscam/oscam.version"
-				if os.path.isfile("/tmp/oscam.version"):
-					oscfile = "/tmp/oscam.version"
-				ax = 0 
-				for xi in (DSC,NCM,oscfile,GCM):
-					if os.path.isfile(xi):
-						l = os.stat(xi).st_mtime 
-						if l > ax:
-							ax = l					
-							oscfile = xi
-				if "ncam" in oscfile:
-					typecam = "Ncam\n"
-				elif "gcam" in oscfile:
-					typecam = "Gcam\n"
-				try:
-					f = open(oscfile,"r")
-					for l in f.readlines(): 
-						if l.startswith("Version:"):
-							if "Rev." in l:
-								if "ymod" in l:
-									oscVersion = " (ymod" + (l.replace("\n","").split("ymod")[1]).split(" ")[0] + ")\n"
-								else:
-									idx = l.index("Rev.") 
-									oscVersion = " (" + l[idx+4:].replace("\n","").strip() + ")\n"
-							elif "-r" in l:
-								idx = l.index("-r") 
-								oscVersion = " (" + l[idx+2:].replace("\n","").strip() + ")\n"
-							if "(0)" in oscVersion:
-								idx = l.index("ymodv")
-								oscVersion = " (" + l[idx+5:].replace("\n","").replace("Rev. 0","").strip() + ")\n"
-							elif "emu" in oscVersion:     
-								oscVersion = oscVersion.replace("-r16-GS","")
-							elif "DOSC" in l:
-								idx = l.index("DOSC") 
-								oscVersion = " (" + l[idx+7:].replace("\n","").strip() + ")\n"							
-								doscam = "D"
-							if not "(" in oscVersion:
-								oscVersion = " (" + (l.split("Version:")[1]).replace("ncam-","").replace("gcam-","").replace("\n","").strip() + ")\n"
-							break
-					f.close()
-					if "(" in oscVersion and "-" in oscVersion and "." in oscVersion:
-						oscVersion = oscVersion.replace("(","").replace(")","")          					
-					oscVersion = (cutMe("xxxxxxx"+oscVersion)).replace("xxxxxxx","")
-				except: pass
-			elif typecam == "CCcam\n" and ecmTime == "..............\n" and adress == "..............\n":
-				typecam = "Scam\n"
-			if provider == "Unknown\n":
-				provider = "..............\n"
-			tmpline = ""
-			if ecmTime != "..............\n":
-				ecmTime = setEcmTime(ecmTime)
-			if using == "unsupported CAs\n":
-				tmpline = _("Unsuported CA found, no correct ECM info !!!")
-			else:
-				if typecam != "..............\n":
-					tmpline = "CAM: " + typecam[:-1]
-				if caid != "..............\n":
-					tmpline = tmpline + ", CAID: " + caid[:-1]
-				if config.plugins.setupGlass17.par3.value:
-					if adress != "..............\n":
-						tmpline = tmpline + ", Source: " + adress[:-1]
-					if using != "..............\n" and adress == "..............\n":
-						tmpline = tmpline + ", Source: " + using[:-1]
-					if using != "..............\n" and typecam == "OScam\n":
-						tmpline = tmpline + ", Using: " + using[:-1]
-				else:
-					adress = "..............\n"
-				if provid != "..............\n" and typecam == "Gbox\n":
-					tmpline = tmpline + ", ProvId: " + provid[:-1]
-				if provider != "..............\n" and typecam == "Gbox\n":
-					tmpline = tmpline + ", Provider: " + provider[:-1]
-				if pid != "..............\n" and config.plugins.setupGlass17.par196.value:
-					tmpline = tmpline + ", PID: " + pid[:-1]
-				if chid != "..............\n" and config.plugins.setupGlass17.par197.value:
-					tmpline += ", CHID: " + chid[:-1]
-				if hops != "..............\n":
-					tmpline = tmpline + ", Hops: " + hops[:-1]
-				if ecmTime != "..............\n":
-					tmpline = tmpline + ", Time: " + ecmTime[:-1]
-			if not config.plugins.setupGlass17.par193.value or caid[:-1] + " : " + pid[:-1] in self.allCaidPid:
-				self.caidLineTxt = self.CaidsChck((caid[:-1]))
-				self.ecmLineTxt = tmpline
-				self.ecmLineShowFnc() 						
-				typecam = doscam+typecam
-				provider, provid = self.chid(provider, provid, chid)
-				config.plugins.setupGlass17.par38.value = (typecam.replace("Mgc","MGc").replace("\n",oscVersion)+caid+provider+provid+pid+using+prot+adress+hops+share+ecmTime+coding)
-				if config.plugins.setupGlass17.par50.value:
-					config.plugins.setupGlass17.par38.value += "\n"+cw0+cw1
-				config.plugins.setupGlass17.par194.value = "\n"+cw0+cw1
-				self['ecmValues'].setText(config.plugins.setupGlass17.par38.value)
-				config.plugins.setupGlass17.par178.value = typeCAviaCam2
-				if self.typecam != typecam or self.forceUpd:
-					self.typecam = typecam
-					if config.plugins.setupGlass17.par5.value == "1":
-						oscVersion = config.plugins.setupGlass17.par39.value + "/piconCam/" + typecam[:-1] + "-fs8.png"
-						if not os.path.isfile(oscVersion):
-							oscVersion = SKINPATH+"icons/missing-fs8.png"
-						self["piconCam"].instance.setPixmapFromFile(oscVersion)
-					if typecam != "..............\n":
-						self["Dcam"].instance.setPixmapFromFile((SKINPATH + "icons/" + typecam[:-1] + "-fs8.png"))
-					else:
-						self["Dcam"].hide()
-				if ((self.tstca != coding or self.typeCAviaCam != typeCAviaCam2) and (using != "unsupported CAs\n")) or self.forceUpd:
-					self.forceUpd = False
-					self.tstca = coding 
-					self.picCamShow(coding, False)
-					self.typeCAviaCam = typeCAviaCam2
-					self.showDyn_EMM_ECM(dyntmpcaid, typeCAviaCam2, "True")
-				if config.plugins.setupGlass17.par26.value:
-					try:
-						share = caid[:-1] + " : " + pid[:-1]
-						if share in self.allCaidPid:
-							self['caidPids'].setText(("\n"+self.allCaidPid.replace((share+"\n"),"")))
-							self['active_caidPid'].setText(share)
-							self['active_caidPid'].show()
-					except: pass
-			return
-		ena = _("No info from Cam")
-		caid = "xxx"
-		ci = "xxx"
-		if ENACI and config.plugins.setupGlass17.par192.value:
-			try:
-				num = eDVBCIInterfaces.getInstance().getNumOfSlots()
-				if num > 0 and len(self.caidsLive) > 0:
-					for x in range(num):
-						ca = eDVBCIInterfaces.getInstance().readCICaIds(x)
-						if ca:
-							for i in self.caidsLive:
-								if i in ca and int(i) > 0:
-									caid = "%0.4X" % i
-									adress = "Slot: %s" % (x+1)
-									ena = "%s, CAID: %s" % (adress,caid)
-									using = eDVBCI_UI.getInstance().getAppName(x)
-									if using and using != "":
-										ena += ", CI: %s" % using
-									else:
-										using = ".............."
-									ci = "ci" + str(x+1)
-									break
-			except: pass
-		self.ecmLineTxt = ena
-		self.caidLineTxt = self.CaidsChck()
-		self.ecmLineShowFnc()
-		self.tstca = "" 
-		self.typecam = ""
-		self.typeCAviaCam = ""
-		config.plugins.setupGlass17.par178.value = "x"
-		if caid == "xxx" or ci == "xxx":
-			config.plugins.setupGlass17.par38.value = CLRDATA
-			config.plugins.setupGlass17.par194.value = CLR	
-			self.picCamShow("Unknown")
-			self['ecmValues'].setText(config.plugins.setupGlass17.par38.value)
-			self['ecmlabels'].setText(ECM_LABELS)
-		else:
-			caid += "\n"
-			coding = convCaid(caid)
-			provider, provid = self.chid(provider, provid, chid)
-			config.plugins.setupGlass17.par38.value = "CAM\n"+caid+provider+provid+pid+using+"\n"+prot+adress+"\n"+hops+share+ecmTime+coding
-			if config.plugins.setupGlass17.par50.value:
-				config.plugins.setupGlass17.par38.value += "\n"+cw0+cw1
-			config.plugins.setupGlass17.par194.value = "\n"+cw0+cw1
-			self['ecmValues'].setText(config.plugins.setupGlass17.par38.value)
-			self.picCamShow(coding,False)
-			oscVersion = config.plugins.setupGlass17.par39.value + "/piconCam/CAM-fs8.png"
-			if not os.path.isfile(oscVersion):
-				oscVersion = SKINPATH+"icons/missing-fs8.png"
-			self["piconCam"].instance.setPixmapFromFile(oscVersion)
-			caid = setCaid(caid[:-1])
-		self.showDyn_EMM_ECM(caid,ci)
-		if config.plugins.setupGlass17.par26.value:
-			try:
-				self['caidPids'].setText(self.allCaidPid)
-				self['active_caidPid'].hide()
-			except: pass
-      				
-	def chid(self, a, b, c):
-		if c != "..............\n":
-			if a == "..............\n":
-				a = c
-				config.plugins.setupGlass17.par195.value = "Prov.:"
-				self['ecmlabels'].setText(ECM_LABELS.replace("Prov.:","CHID:"))
-			elif b == "..............\n":
-				b = c
-				config.plugins.setupGlass17.par195.value = "PrvID:"
-				self['ecmlabels'].setText(ECM_LABELS.replace("PrvID:","CHID:"))
-			else:
-				self['ecmlabels'].setText(ECM_LABELS)
-		else:
-			self['ecmlabels'].setText(ECM_LABELS)
-		return a, b
-
-	def CaidsChck(self, ecm="xxx"):
-		txt = _("Error reading CaIds !!!")
-		if self.caidsLive is not None:
-			num_caid = len(self.caidsLive)
-			if num_caid > 0:
-				a = "%0.4X" % self.caidsLive[0]
-				if num_caid == 1 and a == "0000":
-					return txt
-				if ecm == "xxx":
-					txt = _("Available:")
-				else:
-					txt = _("Used:") + " " + ecm + ", "				
-					if num_caid > 1:
-						txt += _("Remaining:") + " "
-				for caid in self.caidsLive:
-					caid = "%0.4X" % caid
-					if caid != ecm:
-						txt += caid + ", "		
-		if txt != _("Error reading CaIds !!!"):
-			txt += "Sid: %s" % self.sid
-		return txt
-
-	def checkHBB(self):
-		self.runHBBTimer.stop()
-		if self.lastIcoSwitch == 0:
-			if ENAHBB and self.hbboff:
-				try:
-					apps = eHbbtv.getInstance().getApplicationIdsAndName()
-					if len(apps) != 0:
-						self.hbboff = False
-				except: pass
-			if self.hbboff:
-				try:
-					service = self.session.nav.getCurrentService()
-					info = service and service.info()
-					if info.getInfoString(iServiceInformation.sHBBTVUrl) != "":
-						self.hbboff = False
-				except: pass        		
-			if not self.hbboff:
-				self.__evUpdatedInfo(False)		
-		else:
-			try:
-				if self.lastIcoSwitch == 1:   
-					self["hbb"].show()
-					self[self.lastIco].hide()
-					self.lastIcoSwitch = 2
-				else:     
-					self["hbb"].hide()
-					self[self.lastIco].show()
-					self.lastIcoSwitch = 1
-			except: pass  
-			self.runHBBTimer.start(2000, True)
-                          		
-	def __evUpdatedVideoType(self):
-		service = self.session.nav.getCurrentService()
-		info = service and service.info()
-		if info is not None:
-			self.setTunerInfo(service)
-
-	def __evUpdatedInfo(self, noforced=True):
-		def chckIPbit(a):
-			if "-" in a or ":0" in a:
-				return ""
-			return a
-		if noforced:
-			service = self.session.nav.getCurrentService()
-			info = service and service.info()
-			if info is not None:
-				enaIp = False
-				refer = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
-				if refer is not None:
-					refer = refer.toString()
-					if refer.startswith("-1:"):
-						refer = self.session.nav.getCurrentlyPlayingServiceReference()
-						if refer is not None:
-							refer = refer.toString()
-					self.showPicon(refer)
-					enaIp = refer.startswith("4097:0") or "3a//" in refer or "http" in refer
-					if enaIp:
-						self.setTunerInfo(service, chckIPTVprov(refer))
-						self.actFta(False, service)
-				tmp = self.getServiceInfoString(info, iServiceInformation.sVideoWidth)
-				tpid = enaIp and self.noReplace and not refer.startswith("5001:") and not refer.startswith("5002:") and config.plugins.setupGlass17.par225.value
-				if tmp and str(tmp).isdigit():
-					vpid = ""
-					if config.plugins.setupGlass17.par120.value:
-						try:
-							apid = open("/proc/stb/vmpeg/0/progressive", "r").read()
-							if apid.find("0") != -1:
-								vpid = "i"
-							elif apid.find("1") != -1:
-								vpid = "p"
-						except: pass
-						if vpid == "":
-							try:
-								vpid = ({False:'i', True:'p'}[info.getInfo(iServiceInformation.sProgressive) == 1])
-							except: pass
-					apid = "%sx%s%s" % (tmp,self.getServiceInfoString(info, iServiceInformation.sVideoHeight),vpid)
-					if vpid == "":
-						apid = apid.replace("x"," x ")
-					self["Video_size"].setText(apid)
-					if enaIp:
-						self.chckSS()
-				elif tpid or (not enaIp and (refer.startswith("1:0:2") or refer.startswith("1:0:10"))):
-					self["Video_size"].setText(_("Radio"))
-					if tpid:
-						self.chckSS(True)
-				self.sid = "%0.4X" % info.getInfo(iServiceInformation.sSID)
-				if self.sid == "-0001":
-					self.sid = "N/A"
-				serviceinfo = service.info()
-				vpid = serviceinfo.getInfo(iServiceInformation.sVideoPID)
-				apid = serviceinfo.getInfo(iServiceInformation.sAudioPID)
-				if not config.plugins.setupGlass17.par2.value and not enaIp:
-					self["bitrate_info"].setText("")
-				elif enaIp and config.plugins.setupGlass17.par2.value:
-					try:
-						if (vpid > 0 or apid > 0) and self.bitNotActive:
-							self.__startBitrate()
-						else:				        
-							b = chckIPbit("A:%s  " % str(int(info.getInfo(iServiceInformation.sTagBitrate))/1000))
-							d = chckIPbit("H:%s  " % str(int(info.getInfo(iServiceInformation.sTagMaximumBitrate))/1000))
-							c = chckIPbit("L:%s  " % str(int(info.getInfo(iServiceInformation.sTagMinimumBitrate))/1000))
-							b = "%s%s%skb/s" % (b,c,d)
-							if b == "kb/s":
-								b = ""
-							self["bitrate_info"].setText(b)
-							self["bitrate_info"].color1(config.plugins.setupGlass17.par115.value)				
-					except: pass				
-				self.vpid = "%0.4X" % vpid
-				if self.vpid == "-0001":
-					self.vpid = "N/A"
-				self.x_dyn_pos = self.posX_DynIco - 30
-				if self.enaIcoTun and config.plugins.setupGlass17.par187.value:
-					feinfo = service and service.frontendInfo()
-					if feinfo is not None:
-						frontendData = feinfo and feinfo.getAll(True)
-						if frontendData is not None:
-							num = -1
-							tpid = ""
-							if ENA_I_T:
-								num = frontendData.get("input_number", -1)
-								if num is not None and num > -1:
-									tpid = getTunerDesc(num)
-							if tpid == "":
-								num = frontendData.get("tuner_number")
-								if num in range(0,20):
-									try:
-										tpid = (nimmanager.getNimDescription(num).split(":")[0]).strip()
-										if tpid[-1].isdigit():
-											tpid = tpid[-2:]
-										else:
-											tpid = tpid[-1]									
-									except: pass
-							if tpid != "":
-								tpid = "%sicons/icon_%sw.png" % (SKINPATH, tpid.lower())
-								if os.path.isfile(tpid):
-									try:
-										self["tuner"].instance.setPixmapFromFile(tpid)
-										self.x_dyn_pos += 30
-										self["tuner"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-										self["tuner"].show()
-										self.x_dyn_pos -=  self.widthDynIco
-									except: self["tuner"].hide()
-								else:
-									self["tuner"].hide()
-							else:
-								self["tuner"].hide()
-						else:
-							self["tuner"].hide()
-					else:
-						self["tuner"].hide()
-				else:
-					self["tuner"].hide()
-				if tmp != "N/A":
-					try:					
-						self.uhdtype = "x"
-						num = int(tmp)
-						if num < 721:
-							num = 0
-						elif num < 1281:
-							num = 1
-						elif num < 1921:
-							num = 2
-						elif num < 3841:
-							num = 3								
-							self.uhdtype = "34"	
-						else:
-							num = 3								
-							self.uhdtype = "35"
-						self["hd_sd"].setPixmapNum(num)
-						self["hd_sd"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-						self["hd_sd"].show()
-						self.x_dyn_pos -=  self.widthDynIco
-						if "3" in self.uhdtype and not self.uhdTimer.isActive():
-							self.uhdTimer.start(2000)						
-					except: self["hd_sd"].hide()
-				else:
-					self["hd_sd"].hide()
-				tpid = info.getInfo(iServiceInformation.sTXTPID)
-				if tpid != -1:
-					self["txt"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-					self["txt"].show()
-					self.x_dyn_pos -=  self.widthDynIco
-				else:
-					self["txt"].hide()
-				tmp = -1
-				audio = service.audioTracks()
-				n = 0
-				if audio:
-					n = audio.getNumberOfTracks()
-					if not config.plugins.setupGlass17.par42.value:
-						idx = 0
-						while idx < n:
-							i = audio.getTrackInfo(idx)
-							for x in (i.getDescription(), i.getLanguage()):
-								xx = x.upper()
-								if "AC3" in xx or "DTS" in xx or "DOLBY" in xx:
-									tmp = 0
-									break
-							if EACC and tmp != 0:
-								try:
-									if i.getType() in (iAt.atAC3, iAt.atDDP, iAt.atDTS, iAt.atDTSHD):
-										tmp = 0
-										break
-								except: pass
-							idx += 1
-					else:
-						try:
-							i = audio.getTrackInfo(audio.getCurrentTrack())					
-							x = (i.getDescription()).upper()
-							idx = (i.getLanguage()).upper()
-							if "5.1" in x or "5.1" in idx:
-								tmp = 1
-							elif "2.0" in x or "2.0" in idx:
-								tmp = 2
-							elif "DTS" in x or "DTS" in idx:
-								tmp = 4
-							elif "AAC" in x or "AAC" in idx:
-								tmp = 5
-							elif "DOLBY" in x or "AC3" in x or "DOLBY" in idx or "AC3" in idx:
-								tmp = 0
-							elif "MPEG" in x or "MPEG" in idx:
-								tmp = 3
-						except: pass
-						if EACC and tmp == -1:
-							try:
-								idx = i.getType()
-								if idx in (iAt.atDTS, iAt.atDTSHD):
-									tmp = 4				
-								elif idx == iAt.atMPEG:
-									tmp = 3
-								elif idx in (iAt.atAAC, iAt.atAACHE):
-									tmp = 5
-								elif idx in (iAt.atDDP, iAt.atAC3):
-									tmp = 0
-							except: pass
-				if tmp != -1:
-					self["dolby"].setPixmapNum(tmp)
-					self["dolby"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-					self["dolby"].show()
-					self.x_dyn_pos -=  self.widthDynIco
-				else:
-					self["dolby"].hide()
-				if n > 1:
-					self["multi_audio"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-					self["multi_audio"].show()
-					self.x_dyn_pos -=  self.widthDynIco
-				else:
-					self["multi_audio"].hide()
-				tmp = 0
-				if "3" in self.uhdtype:
-					try:
-						idx = (info.getInfoString(iServiceInformation.sEotf)).upper()
-						if "HDR" in idx: 
-							tmp = 2
-						elif "HLG" in idx: 
-							tmp = 3
-					except: pass
-					if tmp == 0:
-						try:
-							idx = info.getInfo(iServiceInformation.sGamma)
-							if idx in (1,2): 
-								tmp = 2
-							elif idx == 3: 
-								tmp = 3
-						except: pass
-				try:
-					if tmp != 0:
-						self["wide"].setPixmapNum(tmp)
-						self["wide"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-						self["wide"].show()
-						self.x_dyn_pos -=  self.widthDynIco
-						self.lastIco = "wide"
-				except: pass
-				if tmp == 0:
-					tmp = self.getServiceInfoString(info, iServiceInformation.sAspect)
-					if tmp != "N/A":
-						if (info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)):
-							self["wide"].setPixmapNum(1)
-						else:
-							self["wide"].setPixmapNum(0)
-						self["wide"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-						self["wide"].show()
-						self.x_dyn_pos -=  self.widthDynIco
-						self.lastIco = "wide"
-					else:
-						self["wide"].hide()
-				tmp = None
-				try:
-					subservices = service and service.subtitleTracks()
-					tmp = subservices.getNumberOfSubtitleTracks()
-				except:
-					try:
-						subservices = service and service.subtitle()
-						tmp = subservices and subservices.getSubtitleList()
-						if tmp:
-							tmp = len(tmp)
-					except: pass
-				if tmp and tmp > 0:
-					self["subtit"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-					self["subtit"].show()
-					self.x_dyn_pos -=  self.widthDynIco
-					self.lastIco = "subtit"
-				else:
-					self["subtit"].hide()
-				subservices = service.subServices()
-				if subservices and subservices.getNumberOfSubservices() > 0:
-					self["subserv"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-					self["subserv"].show()
-					self.x_dyn_pos -=  self.widthDynIco
-					self.lastIco = "subserv"
-				else:
-					self["subserv"].hide()
-		if not self.hbboff:
-			if self.lastIcoSwitch == 0:
-				if self.x_dyn_pos == self.maxDynX:
-					self.x_dyn_pos += self.widthDynIco
-					self.lastIcoSwitch = 1		
-					self.runHBBTimer.start(2000, True)
-				self["hbb"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
-				if self.lastIcoSwitch == 0:
-					self["hbb"].show()
-		else:
-			self["hbb"].hide()    		
-		
-	def getServiceInfoString(self, info, what, convert = lambda x: "%d" % x):
-		v = info.getInfo(what)
-		if v == -1:
-			return "N/A"
-		if v == -2:
-			return info.getInfoString(what)
-		return convert(v)
-		
-	def setTunerInfo(self, service, ip=None):
-		def chckVtype(i):
-			x = ""
-			if ENAVFT: 
-				try:
-					x = { CT_MPEG2 : "MPEG2", CT_H264 : "H.264", CT_MPEG1 : "MPEG1", CT_MPEG4_PART2 : "MPEG4", 
-						CT_VC1 : "VC1", CT_VC1_SIMPLE_MAIN : "WMV3", CT_H265 : "HEVC", CT_DIVX311 : "DIVX3", CT_DIVX4 : "DIVX4", CT_SPARK : "SPARK", CT_VP6 : "VP6", CT_VP8 : "VP8", 
-						CT_VP9 : "VP9", CT_H263 : "H.263", CT_MJPEG : "MJPEG", CT_REAL : "RV", CT_AVS : "AVS", CT_UNKNOWN : "" }[i]
-				except: pass
-			else:
-				try:
-					from Components.Converter.PliExtraInfo import codec_data
-					x = codec_data.get(i, "")
-					if "/" in x:
-						x = ""
-				except: pass 
-				if x == "":
-					try:
-						x = ('MPEG2', 'MPEG4', 'MPEG1', 'MPEG4-II', 'VC1', 'VC1-SM', 'HEVC', '')[i]
-					except: pass   
-			if x == "":
-				try:
-					mpg = open("/proc/stb/vmpeg/0/codec", "r").read()
-					if mpg.find("MPEG2") != -1:
-						x = "MPEG2"
-					elif mpg.find("MPEG4") != -1:
-						x = "MPEG4"
-						if mpg.find("H.264") != -1:
-							x = "MPEG4(H.264)"
-						if mpg.find("H.265") != -1:
-							x = "MPEG4(H.265)"
-						if mpg.find("HEVC") != -1:
-							x = "MPEG4(HEVC)"
-					elif mpg.find("H.264") != -1:
-						x = "H.264"
-					elif mpg.find("MPEG1") != -1:
-						x = "MPEG1"
-					elif mpg.find("H.265") != -1:
-						x = "H.265"
-					elif mpg.find("HEVC") != -1:
-						x = "HEVC"
-				except: pass
-			return x									
-		def convCH(what):
-			fqT = ""
-			try:
-				fqT = int(((int(round(float(what.replace(" MHz","")))) - 474) / 8) + 21)
-				if fqT < 21 or fqT > 69:
-					fqT = ""
-				else:
-					fqT = "(CH %d) " % fqT						
-			except: pass
-			return fqT
-		def cleanInfo(what):
-			if "Auto" in what or "None" in what or _("Auto") in what or _("None") in what:
- 				return ""
-			return what
-		def findPP(what):
-			pngname = self.findPicon(what)
-			if pngname == "":
-				sname = "picon_default"
-				pngname = self.findPicon(sname)
-				if pngname == "":
-					if "220" in self.path:
-						sname = "picon220sp_default"	
-					pngname = setDefPicon(sname+".png")
-			if pngname != "":
-				self.pngnamesat = pngname
-		pngname = ""
-		ref = None
-		info = service and service.info()
-		if ip:
-			provname = ip
-			self.tstsat = "IPTV"
-			self.path = "piconSat" +	self.picProvSatSize
-			findPP(self.tstsat)
-		else:
-			provname = getServiceInfoValue(info, iServiceInformation.sProvider, ref)
-		if self.tstprov != provname:
-			self.tstprov = provname 
-			a, b, c, d = self.readPTCH()
-			if a and not b and not c and not d:
-				self["Prov_temp_rpm"].setText(self.tstprov)
-			sname = fixNameOf(provname)
-			self.path = "piconProv" +	self.picProvSatSize
-			if ip is None and info is not None:
-				try:
-					refer = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
-					if refer is not None:
-						refer = refer.toString()
-						if refer.startswith("-1:"):
-							refer = self.session.nav.getCurrentlyPlayingServiceReference()
-							if refer is not None:
-								refer = refer.toString()
-					if refer is not None and refer != "":
-						refer = refer.split(':', 10)[:10]
-						refer = '_'.join(refer)
-						refer = ((refer[:-10]).split('_')[6]).upper()
-						pngname = self.findPicon(refer + "x" + sname)
-				except: pass
-			if pngname == "":
-				pngname = self.findPicon(sname)
-			if pngname == "":
-				sname = "picon_default"
-				pngname = self.findPicon(sname)
-				if pngname == "":
-					if "220" in self.path:
-						sname = "picon220sp_default"	
-					pngname = setDefPicon(sname+".png")
-			if self.pngname != pngname:
-				self.pngname = pngname
-		tunerinfo = tptype = orb = ""
-		feinfo = service and service.frontendInfo()
-		if feinfo is not None and not ip:
-			frontendData = feinfo and feinfo.getAll({"F" : False,"T" : True}[config.plugins.setupGlass17.par168.value])
-			if frontendData is not None:
-				dataTP = { }
-				try:
-					dataTP = ConvertToHumanReadable(frontendData)
-					if len(dataTP) == 0 and len(frontendData) == 0 and info and service:
-						sname = info.getInfoObject(iServiceInformation.sTransponderData)
-						if sname:
-							frontendData = sname
-							dataTP = ConvertToHumanReadable(sname)
-				except: pass
-				tunerType = str(frontendData.get("tuner_type","None"))
-				if ENA_TT and tunerType != "None":
-					try:
-						tunerType = {iDVBFrontend.feSatellite : "0",iDVBFrontend.feCable : "1",iDVBFrontend.feTerrestrial : "2",iDVBFrontend.feSatellite2 : "0",iDVBFrontend.feTerrestrial2 : "2"}[int(tunerType)]
-					except: 
-						try:
-							tunerType = {iDVBFrontend.feSatellite : "0",iDVBFrontend.feCable : "1",iDVBFrontend.feTerrestrial : "2"}[int(tunerType)]
-						except: pass
-				if config.plugins.setupGlass17.par168.value == "F": 
-					fq = 1.0 * frontendData.get("frequency", 0) / 1000
-					if (fq > 9999 and fq < 99999 and (tunerType == "1" or "DVB-C" in tunerType)) or fq > 99999:
-						fq = 1.0 * fq / 1000
-					if "." in str(fq):
-						fq = str(fq).split(".")
-						if len(fq[1]) > 2:
-							fq[1] = fq[1][:2]
-						fq = ".".join(fq)
-					frequency = str(fq) + " MHz"
-				else:
-					fq = int(round(1.0 * frontendData.get("frequency", 0) / 1000))
-					if (fq > 9999 and fq < 99999 and (tunerType == "1" or "DVB-C" in tunerType)) or fq > 99999:
-						fq = int(round(1.0 * fq / 1000))
-					frequency = str(fq) + " MHz"
-				symbolrate = str(int(frontendData.get("symbol_rate", 0) / 1000))
-				pol = fec = system = modulation = "N/A"
-				if tunerType in ["DVB-S","DVB-S2","0"]:
-					config.plugins.setupGlass17.par70.value = False
-					numSat = frontendData.get("orbital_position", 0)
-					if numSat > 1800:
-						orbPic = str((3600 - numSat)) + "W"
-						numSat = str((float(3600 - numSat))/10.0)
-						orb = numSat + DG + "W"
-						numSat += "W"
-					else:
-						orbPic = str(numSat) + "E"
-						numSat = str((float(numSat))/10.0)
-						orb = numSat + DG + "E"
-						numSat += "E"
-					if not config.plugins.setupGlass17.par48.value:
-						global allSat
-						if numSat in allSat:
-							orb = allSat.get(numSat)
-						else:
-							orb = "Sat on position: %s" % orb
-					pngname = ""
-					try:
-						pol = {
-									eDVBFrontendParametersSatellite.Polarisation_Horizontal : "H",
-									eDVBFrontendParametersSatellite.Polarisation_Vertical : "V",
-									eDVBFrontendParametersSatellite.Polarisation_CircularLeft : "CL",
-									eDVBFrontendParametersSatellite.Polarisation_CircularRight : "CR"
-								}[frontendData.get("polarization", eDVBFrontendParametersSatellite.Polarisation_Horizontal)]		
-					except: pass
-					fec = dataTP.get("fec_inner","Auto")
-					system = dataTP.get("system","DVB-S")
-					modulation = dataTP.get("modulation","Auto")
-					tunerinfo = frequency + "  " + pol + "  " + cleanInfo(fec + "  ") + symbolrate + "  "
-					tptype = system + "  " + modulation
-					if self.tstsat != orbPic:
-						self.tstsat = orbPic
-						self.path = "piconSat" +	self.picProvSatSize
-						findPP(self.tstsat)
-					self["TP_type"].setText(tptype)	
-				elif tunerType == "1" or "DVB-C" in tunerType:
-					config.plugins.setupGlass17.par70.value = True
-					fec = dataTP.get("fec_inner","Auto")
-					modulation = dataTP.get("modulation","Auto")
-					tunerinfo = frequency + "  " + cleanInfo(fec + "  ") + symbolrate + "  "
-					tptype = "DVB-C"+ "  " + modulation
-					self["TP_type"].setText(tptype)
-					if self.tstsat != "picon_cable":
-						self.tstsat = "picon_cable"
-						self.path = "piconSat" +	self.picProvSatSize
-						findPP(self.tstsat)
-				elif tunerType == "2" or "DVB-T" in tunerType:
-					config.plugins.setupGlass17.par70.value = True
-					tptype = "DVB-T"
-					try:
-						tptype = {
-									eDVBFrontendParametersTerrestrial.System_DVB_T : "DVB-T",
-									eDVBFrontendParametersTerrestrial.System_DVB_T2 : "DVB-T2"
-								}[frontendData.get("system", eDVBFrontendParametersTerrestrial.System_DVB_T)]
-					except: pass
-					pol = dataTP.get("constellation","Auto")
-					if "fec_inner" in dataTP: 
-						fec = dataTP.get("fec_inner","Auto")
-					else:
-						fec = dataTP.get("code_rate_hp","Auto") + ":" + dataTP.get("code_rate_lp","Auto")
-					system = dataTP.get("bandwidth","x")
-					if system != "x":
-						system = cleanInfo(system +"  ")
-					else:
-						system = ""
-					modulation = dataTP.get("guard_interval","Auto")
-					pls = dataTP.get("transmission_mode","Auto")
-					tunerinfo = frequency + "  " + convCH(frequency) + system + cleanInfo(fec + "  ") + cleanInfo("GI:" + modulation + "  ") + cleanInfo("TM:" + pls + "  ")	
-					if self.tstsat != "picon_trs":
-						self.tstsat = "picon_trs"
-						self.path = "piconSat" +	self.picProvSatSize
-						findPP(self.tstsat)
-					tptype += "  " + pol
-					self["TP_type"].setText(tptype)
-				else:
-					tunerinfo = (frequency + "  " + symbolrate + "  ")	
-					self["TP_type"].setText(_("No data"))
-					if self.tstsat != "picon_default":
-						self.tstsat = "picon_default"
-						self.path = "piconSat" +	self.picProvSatSize
-						findPP(self.tstsat)
-				self.chckSatProv()
-				pls = ''
-				if config.plugins.setupGlass17.par48.value:
-					i = info.getInfo(iServiceInformation.sVideoType)
-					x = chckVtype(i)
-					if x != "":
-						tunerinfo += x + "  " 
-					if config.plugins.setupGlass17.par168.value == "F":
-						frontendData = feinfo and feinfo.getAll(True)
-					if "pls_mode" in frontendData or "is_id" in frontendData or "pls_code" in frontendData:
-						i = str(frontendData.get('is_id', 0))
-						c = str(frontendData.get('pls_code', 0))
-						m = str(frontendData.get('pls_mode', None))
-						if not(m == 'None' or i == '-1' or i == '255' or i == '0' and c == '1'):
-							if m.isdigit():
-								try:
-									m = {
-										eDVBFrontendParametersSatellite.PLS_Root : "Root",
-										eDVBFrontendParametersSatellite.PLS_Gold : "Gold",
-										eDVBFrontendParametersSatellite.PLS_Combo : "Combo",
-										eDVBFrontendParametersSatellite.PLS_Unknown : "U"}[frontendData["pls_mode"]]
-								except: pass
-							pls = ' MS:%s %s %s ' % (i,c.replace('262143', ''),m.replace('U', ''))
-					if "t2mi_plp_id" in frontendData:
-						if frontendData.get('t2mi_plp_id') > -1:
-							pls += 'T2-MI:%s %s' % (frontendData.get('t2mi_plp_id', 0), frontendData.get('t2mi_pid', 0))
-				try:
-					orb = orb.replace("E)",DG+"E)").replace("W)",DG+"W)")
-				except: pass
-				self["TP_info"].setText(tunerinfo+orb+pls)
-				return
-		self.chckSatProv()
-		if ip:
-			b = ""
-			x = chckVtype(info.getInfo(iServiceInformation.sVideoType))
-			try:				        
-				if x != "":
-					b = x
-				else:
-					b = str(service.info().getInfoString(iServiceInformation.sTagVideoCodec))
-			except: pass
-			if info is not None:
-				idIP = None
-				try:
-					refer = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
-					if refer is not None:
-						refer = refer.toString()
-						if refer.startswith("-1:"):
-							refer = self.session.nav.getCurrentlyPlayingServiceReference()
-							if refer is not None:
-								refer = refer.toString()
-					if refer is not None and refer != "":
-						if "/" in refer:
-							refer = refer.split('/')
-							for x in refer:
-								if x.isdigit():
-									idIP = x
-									break
-				except: pass
-			if idIP:
-				self["TP_info"].setText(_("Streaming service")+"  IPTV  " + b + " ID: " + idIP)
-			else:
-				self["TP_info"].setText(_("Streaming service")+"  IPTV  " + b)
-			self["TP_type"].setText(_("IP stream"))
-		else:
-			self["TP_info"].setText(NO_TUN)
-			self["TP_type"].setText(_("No data"))
-			
-	def chckSatProv(self):
-		if self.pngnamesat != "" and self.pngname != "":
-			config.plugins.setupGlass17.par36.value = self.pngname
-			config.plugins.setupGlass17.par37.value = self.pngnamesat
-			if self.enaProvSat and not self.chckWeaInafAnim():
-				self.aSw = config.plugins.setupGlass17.par8.value
-				if self.aSw in ("0","4","5","6"):
-					if self.aSw in ("0","4","5"):
-						self.maxSlide = 2
-						self.steps = 4
-					else:
-						self.maxSlide = 3
-						self.steps = 8
-					self.slide = self.maxSlide
-					self.timerpics.start(100, True)
-				elif self.aSw == "1":
-					self.updpicProvSat(self.pngnamesat)
-					self["weaTxt"].hide()
-				elif self.aSw == "2":
-					self.updpicProvSat(self.pngname)
-					self["weaTxt"].hide()
-				elif self.aSw == "3" and not config.plugins.setupGlass17.par169.value:
-					self.updpicProvSat(self.pngnameWea)
-					self["weaTxt"].show()
-			if config.plugins.setupGlass17.par5.value != "0":
-				self["picSat"].instance.setPixmapFromFile(self.pngnamesat)
-				self["picProv"].instance.setPixmapFromFile(self.pngname)
-
-	def chckWeaInafAnim(self):
-		return config.plugins.setupGlass17.par8.value == "3" and config.plugins.setupGlass17.par169.value
-
-	def timerpicsEvent(self):
-		self.timerpics.stop()
-		if self.steps != 0:
-			if (((self.aSw == "0" and self.slide == 2) or (self.aSw == "5" and self.slide == 1))and self.maxSlide == 2) or (self.slide == 2 and self.maxSlide == 3):
-				self.updpicProvSat(self.pngname)
-				self["weaTxt"].hide()
-			elif (((self.aSw == "5" and self.slide == 2) or (self.aSw == "4" and self.slide == 1))and self.maxSlide == 2) or (self.slide == 3 and self.maxSlide == 3):
-				self.updpicProvSat(self.pngnameWea)
-				self["weaTxt"].show()
-			elif (((self.aSw == "4" and self.slide == 2) or (self.aSw == "0" and self.slide == 1))and self.maxSlide == 2) or (self.slide == 1 and self.maxSlide == 3):
-				self.updpicProvSat(self.pngnamesat)
-				self["weaTxt"].hide()
-			self.steps -= 1
-			self.slide -= 1
-			if self.slide == 0:
-				self.slide = self.maxSlide		
-			self.timerpics.start(2000, True)
-		elif self.aSw in ("4","5","6"):
-			self.updpicProvSat(self.pngnameWea)
-			self["weaTxt"].show()
-		else:
-			self.updpicProvSat(self.pngname)
-			self["weaTxt"].hide()
-
-	def updpicProvSat(self, w):
-		self["picProvSat"].instance.setPixmapFromFile(w)
-			
-	def findPicon(self, piconName):
-		pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, piconName)
-		if fileExists(pngname):
-			return pngname
-		elif self.path in ("ZZPicon","picon_400x240","picon_220x132"):
-			if self.path == "picon_220x132":
-				pngname = "%s/picon_400x240/%s.png" % (config.plugins.setupGlass17.par39.value, piconName)
-				if fileExists(pngname):
-					return pngname
-			elif self.path == "picon_400x240":
-				pngname = "%s/picon_220x132/%s.png" % (config.plugins.setupGlass17.par39.value, piconName)
-				if fileExists(pngname):
-					return pngname
-			pngname = "%s/picon/%s.png" % (config.plugins.setupGlass17.par39.value, piconName)
-			if fileExists(pngname):
-				return pngname
-		elif "piconSat" in self.path or "piconProv" in self.path:
-			path = self.path.replace("_220x132","")
-			pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, path, piconName)
-			if fileExists(pngname):
-				return pngname
-			elif path == "piconSat" and (piconName.endswith("E") or piconName.endswith("W")):
-				pngname = "%s/%s/picon_sat.png" % (config.plugins.setupGlass17.par39.value, self.path)
-				if fileExists(pngname):				
-					return pngname
-				else:
-					pngname = "%s/piconSat/picon_sat.png" % config.plugins.setupGlass17.par39.value
-					if fileExists(pngname):				
-						return pngname
-		return ""       
-	
-	def showDyn_EMM_ECM(self, ecm="xxx", typeECM="xxx", typeCam=False):
-		caRequiredstatus = {}
-		for x in list(self.allCaids.keys()):
-			tmp = self.allCaids.get(x)
-			caRequiredstatus[tmp] = True
-		for x in range(0,8):
-			try:
-				self["D%s_Demm" % x].hide()
-			except: pass
-		x_dyn_pos_CA = self.x_dyn_pos_CA
-		ena = False
-		if ecm in self.allCaids or ecm in ("26","FF"):
-			ecm = self.allCaids.get(ecm)
-			ena = True
-		num = 0
-		if self.caidsLive:
-			if len(self.caidsLive) > 0:
-				for x in self.caidsLive:
-					x = "%0.4X" % x
-					if x not in FCAID: 
-						x = x[:2]
-					tmp = self.allCaids.get(x,"xx")
-					if tmp != ecm:
-						if caRequiredstatus.get(tmp) or (tmp == "xx" and config.plugins.setupGlass17.par191.value): 
-							try:
-								aa = "D%s_Demm" % num
-								ss = SKINPATH + "icons/" + tmp + "emm-fs8.png"
-								if os.path.isfile(ss):
-									self[aa].instance.setPixmapFromFile(ss)
-								else:
-									self[aa].instance.setPixmapFromFile(SKINPATH + "icons/unk-ca.png")
-								self[aa].move(ePoint(x_dyn_pos_CA, self.posY_DynIco_CA))
-								self[aa].show()
-								x_dyn_pos_CA -= self.width_D_icons
-								caRequiredstatus[tmp] = False  
-								num += 1
-							except: pass
-		else:
-			if not _("Error reading CaIds !!!") in self.caidLineTxt:
-				typeECM = "fta"
-		if ena and typeECM != "fta":
-			try:
-				self["Decm"].instance.setPixmapFromFile((SKINPATH + "icons/" + ecm + "ecm-fs8.png"))
-				self["Decm"].move(ePoint(x_dyn_pos_CA, self.posY_DynIco_CA))
-				self["Decm"].show()
-				x_dyn_pos_CA -= self.width_D_icons
-			except: pass
-		else:
-			try:
-				self["Decm"].hide()
-			except: pass
-		if config.plugins.setupGlass17.par103.value and typeECM != "xxx" and typeECM != "" or typeECM == "fta":
-			try:
-				self["Dtype"].instance.setPixmapFromFile(SKINPATH + "icons/" + typeECM + "new-fs8.png")
-				self["Dtype"].move(ePoint(x_dyn_pos_CA, self.posY_DynIco_CA))
-				self["Dtype"].show()
-				x_dyn_pos_CA -= self.width_D_icons
-			except: pass
-		else:
-			try:
-				self["Dtype"].hide()
-			except: pass		
-		if config.plugins.setupGlass17.par102.value and typeECM != "xxx" and typeECM != "fta" and typeCam:
-			try:
-				self["Dcam"].move(ePoint(x_dyn_pos_CA, self.posY_DynIco_CA))
-				self["Dcam"].show()
-				x_dyn_pos_CA -= self.width_D_icons
-			except: pass
-		else:
-			try:
-				self["Dcam"].hide()
-			except: pass
-		self.netStateMove(x_dyn_pos_CA)         						
-
-	def netStateMove(self, x=-100):
-		if config.plugins.setupGlass17.par57.value != "2":
-			try:
-				self["Dnetstate"].move(ePoint(x, self.posY_DynIco_CA))
-				self["Dnetstate"].show()
-			except:
-				pass 
-		else:
-			try:
-				self["Dnetstate"].hide()
-			except:
-				pass
-        				
-	def showEnhancedInfo(self):
-		if not config.plugins.setupGlass17.par43.value:
-			return
-		config.plugins.setupGlass17.par43.value = False
-		if config.plugins.setupGlass17.par16.value:
-			self["slider_back"].show()
-		else:
-			self["slider_back"].hide()
-		if config.plugins.setupGlass17.par5.value == "1":
-			self["picSat"].show()
-			self["picProv"].show()
-			self['ecmValues'].show()
-			self['ecmlabels'].show()    		
-			self["back_enhanced"].show()
-			self["piconEcm"].show()
-			self["piconCam"].show()
-		else:
-			self["piconEcm"].hide()
-			self["piconCam"].hide()
-			self["picSat"].hide()
-			self["picProv"].hide()
-			self['ecmValues'].hide()
-			self['ecmlabels'].hide()    		
-			self["back_enhanced"].hide()
-      		
-##########################################################################################################################
-	
-class setupGlass17ScreenSetup(Screen, ConfigListScreen):
-
-	skin = """
-<screen name="setupGlass17" position="0,0" size="1920,1080" title="Setup Glass17" backgroundColor="black" flags="wfNoBorder" >
-<eLabel position="60,103" size="1800,2" backgroundColor="white" zPosition="0" transparent="0" />
-<widget name="description" position="60,45" size="1800,60" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="1" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-<widget source="session.VideoPicture" render="Pig" position="60,166" zPosition="1" size="737,475" backgroundColor="transparent" />
-<widget name="config" font="Prive3;34" position="60,130" size="1800,520" zPosition="3" selectionPixmap="hd_glass17/buttons/selectedSetup.png" foregroundColorSelected="#ff9c00" itemHeight="40" transparent="0" backgroundColor="black" scrollbarMode="showOnDemand" />
-<widget name="list" position="860,120" size="990,840" zPosition="4" selectionPixmap="hd_glass17/buttons/selectedSetup.png" scrollbarMode="showOnDemand" backgroundColor="black" />
-<widget name="white" position="60,654" font="Prive3;34" size="1800,2" backgroundColor="white" zPosition="0" transparent="0" />
-<widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Prive3;34" transparent="1" backgroundColor="black" foregroundColor="red" />
-<widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Prive3;34" transparent="1" backgroundColor="black" foregroundColor="green" />
-<eLabel position="560,970" size="800,2" backgroundColor="white" zPosition="0" transparent="0" />   
-<eLabel position="60,970" size="500,2" backgroundColor="red" zPosition="0" transparent="0" />
-<eLabel position="1360,970" size="500,2" backgroundColor="green" zPosition="0" transparent="0" />
-<widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="5" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-<widget source="Canvas" render="Canvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#FF000000" transparent="1" alphatest="on"/>
-<widget name="help_pict" position="519,660" size="882,300" zPosition="3" alphatest="on" />
-<widget name="help_txt" position="579,660" size="780,300" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="3" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-<widget name="helpPiconFrame" position="865,749" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
-<widget name="helpPicon" position="885,765" size="150,90" zPosition="9" alphatest="on" />
-<widget name="helpTxtAnim" position="579,660" size="780,300" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="3" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-</screen>"""
-  	
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		if os.path.exists('/etc/dpkg'):
-			self.skin = setupGlass17ScreenSetup.skin.replace('<widget name="config" font="Prive3;34"','<widget name="config"')
-		else:
-			self.skin = setupGlass17ScreenSetup.skin
-		self.list = [ ]
-		ConfigListScreen.__init__(self, self.list, session, on_change = self.doMyHelpWindow)
-		self.canvas = CanvasSource()
-		self["Canvas"] = self.canvas
-		self.mainlist = []
-		self['list'] = thumbList(self.mainlist)
-		self["help_pict"] = Pixmap()
-		self["helpPicon"] = Pixmap()
-		self["helpPicon"].hide()
-		self["helpPiconFrame"] = Pixmap()
-		self["helpPiconFrame"].hide()
-		self["help_txt"] = Label("")
-		self["white"] = Label("")
-		self["white"].hide()		
-		self["helpTxtAnim"] = Label("")
-		self["description"] = Label("")
-		self["selected_item"] = Label("")
-		self["key_green"] = Label(_("Save"))
-		self["key_red"] = Label(_("Cancel"))
-		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
-		{
-			"green": self.save,
-			"ok": self.ActivateselectedFnc,
-			"yellow": self.doNothing,
-			"blue": self.doNothing,
-			"red": self.isExit,
-			"cancel": self.isExit
-		}, -2)			
-		self.eeTanimLast = "0"
-		self.vip = ""
-		self.pwdV = None
-		self.isShow = True
-		self.isMainMenu = True
-		self.mainMenuIdx = 0
-		self.d = []
-		self.d.append(config.plugins.setupGlass17.par50.getValue())
-		self.d.append(None) # retired weather provider slot kept for snapshot index compatibility
-		self.d.append(config.plugins.setupGlass17.par78.getValue())
-		self.d.append(config.plugins.setupGlass17.par12.getValue())
-		self.d.append(config.plugins.setupGlass17.par15.getValue())
-		self.d.append(config.plugins.setupGlass17.par7.getValue())
-		self.d.append(config.plugins.setupGlass17.par4.getValue())
-		self.d.append(config.plugins.setupGlass17.par1.getValue())
-		self.d.append(config.plugins.setupGlass17.par6.getValue())
-		self.d.append(config.plugins.setupGlass17.par31.getValue())
-		self.d.append(config.plugins.setupGlass17.par33.getValue())
-		self.d.append(config.plugins.setupGlass17.par14.getValue())
-		self.d.append(config.plugins.setupGlass17.par18.getValue())
-		self.d.append(config.plugins.setupGlass17.par19.getValue())
-		self.d.append(config.plugins.setupGlass17.par34.getValue())
-		self.d.append(config.plugins.setupGlass17.par23.getValue())
-		self.d.append(config.plugins.setupGlass17.par41.getValue())
-		self.d.append(config.plugins.setupGlass17.par40.getValue())
-		self.d.append(config.plugins.setupGlass17.par44.getValue())
-		self.d.append(config.plugins.setupGlass17.par45.getValue())
-		self.d.append(config.plugins.setupGlass17.par46.getValue())
-		self.d.append(config.plugins.setupGlass17.par47.getValue())
-		self.d.append(config.plugins.setupGlass17.par48.getValue())
-		self.d.append(config.plugins.setupGlass17.par49.getValue())
-		self.d.append(config.plugins.setupGlass17.par51.getValue())
-		self.d.append(config.plugins.setupGlass17.par52.getValue())
-		self.d.append(config.plugins.setupGlass17.par53.getValue())
-		self.d.append(config.plugins.setupGlass17.par54.getValue())
-		self.d.append(config.plugins.setupGlass17.par56.getValue())
-		self.d.append(config.plugins.setupGlass17.par58.getValue())
-		self.d.append(config.plugins.setupGlass17.par59.getValue())
-		self.d.append(config.plugins.setupGlass17.par55.getValue())
-		self.d.append(config.plugins.setupGlass17.par62.getValue())
-		self.d.append(config.plugins.setupGlass17.par65.getValue())
-		self.d.append(config.plugins.setupGlass17.par64.getValue())
-		self.d.append(config.plugins.setupGlass17.par66.getValue())
-		self.d.append(config.plugins.setupGlass17.par67.getValue())
-		self.d.append(config.plugins.setupGlass17.par68.getValue())
-		self.d.append(config.plugins.setupGlass17.par71.getValue())
-		self.d.append(config.plugins.setupGlass17.par80.getValue())
-		self.d.append(config.plugins.setupGlass17.par72.getValue())
-		self.d.append(config.plugins.setupGlass17.par90.getValue())
-		self.d.append(config.plugins.setupGlass17.par92.getValue())
-		self.d.append(config.plugins.setupGlass17.par93.getValue())
-		self.d.append(config.plugins.setupGlass17.par94.getValue())
-		self.d.append(config.plugins.setupGlass17.par109.getValue())
-		self.d.append(config.plugins.setupGlass17.par110.getValue())
-		self.d.append(config.plugins.setupGlass17.par111.getValue())
-		self.d.append(config.plugins.setupGlass17.par117.getValue())
-		self.d.append(config.plugins.setupGlass17.par114.getValue())
-		self.d.append(config.plugins.setupGlass17.par118.getValue())
-		self.d.append(config.plugins.setupGlass17.par119.getValue())
-		self.d.append(config.plugins.setupGlass17.par121.getValue())
-		self.d.append(config.plugins.setupGlass17.par122.getValue())
-		self.d.append(config.plugins.setupGlass17.par123.getValue())
-		self.d.append(config.plugins.setupGlass17.par125.getValue())
-		self.d.append(config.plugins.setupGlass17.par126.getValue())
-		self.d.append(config.plugins.setupGlass17.par128.getValue())
-		self.d.append(config.plugins.setupGlass17.par129.getValue())
-		self.d.append(config.plugins.setupGlass17.par130.getValue())
-		self.d.append(config.plugins.setupGlass17.par135.getValue())
-		self.d.append(config.plugins.setupGlass17.par136.getValue())
-		self.d.append(config.plugins.setupGlass17.par137.getValue())
-		self.d.append(config.plugins.setupGlass17.par22.getValue())
-		self.d.append(config.plugins.setupGlass17.par124.getValue())
-		self.d.append(config.plugins.setupGlass17.par141.getValue())
-		self.d.append(config.plugins.setupGlass17.par145.getValue())
-		self.d.append(config.plugins.setupGlass17.par146.getValue())
-		self.d.append(config.plugins.setupGlass17.par147.getValue())
-		self.d.append(config.plugins.setupGlass17.par148.getValue())
-		self.d.append(config.plugins.setupGlass17.par153.getValue())
-		self.d.append(config.plugins.setupGlass17.par154.getValue())
-		self.d.append(config.plugins.setupGlass17.par155.getValue())
-		self.d.append(config.plugins.setupGlass17.par156.getValue())
-		self.d.append(config.plugins.setupGlass17.par157.getValue())
-		self.d.append(config.plugins.setupGlass17.par8.getValue())
-		self.d.append(config.plugins.setupGlass17.par161.getValue())
-		self.d.append(config.plugins.setupGlass17.par162.getValue())
-		self.d.append(config.plugins.setupGlass17.par163.getValue())
-		self.d.append(config.plugins.setupGlass17.par164.getValue())
-		self.d.append(config.plugins.setupGlass17.par165.getValue())
-		self.d.append(config.plugins.setupGlass17.par166.getValue())
-		self.d.append(config.plugins.setupGlass17.par167.getValue())
-		self.d.append(config.plugins.setupGlass17.par169.getValue())
-		self.d.append(config.plugins.setupGlass17.par171.getValue())
-		self.d.append(config.plugins.setupGlass17.par172.getValue())
-		self.d.append(config.plugins.setupGlass17.par174.getValue())
-		self.d.append(config.plugins.setupGlass17.par175.getValue())
-		self.d.append(config.plugins.setupGlass17.par180.getValue())
-		self.d.append(config.plugins.setupGlass17.par183.getValue())
-		self.d.append(config.plugins.setupGlass17.par143.getValue())
-		self.d.append(config.plugins.setupGlass17.par189.getValue())
-		self.d.append(config.plugins.setupGlass17.par190.getValue())
-		self.d.append(config.plugins.setupGlass17.par198.getValue())
-		self.d.append(config.plugins.setupGlass17.par200.getValue())
-		self.d.append(config.plugins.setupGlass17.par201.getValue())
-		self.d.append(config.plugins.setupGlass17.par202.getValue())
-		self.d.append(config.plugins.setupGlass17.par203.getValue())
-		self.d.append(config.plugins.setupGlass17.par207.getValue())
-		self.d.append(config.plugins.setupGlass17.par208.getValue())
-		self.d.append(config.plugins.setupGlass17.par209.getValue())
-		self.d.append(config.plugins.setupGlass17.par210.getValue())
-		self.d.append(config.plugins.setupGlass17.par211.getValue())
-		self.d.append(config.plugins.setupGlass17.par213.getValue())
-		self.d.append(config.plugins.setupGlass17.par214.getValue())
-		self.d.append(config.plugins.setupGlass17.par215.getValue())
-		self.d.append(config.plugins.setupGlass17.par222.getValue())
-		self.d.append(config.plugins.setupGlass17.par223.getValue())
-		self.d.append(config.plugins.setupGlass17.par224.getValue())
-		self.d.append(config.plugins.setupGlass17.par226.getValue())
-		self.d.append(config.plugins.setupGlass17.par227.getValue())                                       	                                                                                                                                        
-		self.d.append(config.plugins.setupGlass17.par229.getValue())
-		self.showDonate = False
-		self.stateDonate = False
-		self.isTunerLabel = False
-		self.rst = False
-		self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
-		self.firststart = True
-		self.start_rst = eTimer()
-		try:
-			self.start_rst_conn = self.start_rst.timeout.connect(self.saving)
-		except AttributeError:
-			self.start_rst.timeout.get().append(self.saving)
-		self.delayTimer = eTimer()
-		try:
-			self.delayTimer_conn = self.delayTimer.timeout.connect(self._warderAutoUpdateCheck)
-		except AttributeError:
-			self.delayTimer.timeout.get().append(self._warderAutoUpdateCheck)
-		if ENA_ANIM:
-			self.animTimer = eTimer()
-			try:
-				self.animTimer_conn = self.animTimer.timeout.connect(self.showNext)
-			except AttributeError:
-				self.animTimer.timeout.get().append(self.showNext)
-		try:
-			self._changedEntry()
-		except: pass
-		self.onLayoutFinish.append(self.chckTunerLabel)
-		self.onLayoutFinish.append(self._warderStartAutoUpdateCheck)
-		self.onShow.append(self.doMyHelpWindow)
-			
-	def chckSetup(self):
-		t = self["config"].getCurrent()[1]
-		if t in (config.plugins.setupGlass17.par229, config.plugins.setupGlass17.par226, config.plugins.setupGlass17.par222, config.plugins.setupGlass17.par209, config.plugins.setupGlass17.par104, config.plugins.setupGlass17.par143, config.plugins.setupGlass17.par180, config.plugins.setupGlass17.par171, config.plugins.setupGlass17.par172, config.plugins.setupGlass17.par169, config.plugins.setupGlass17.par161, config.plugins.setupGlass17.par8, config.plugins.setupGlass17.par56, config.plugins.setupGlass17.par125, config.plugins.setupGlass17.par15, config.plugins.setupGlass17.par22, config.plugins.setupGlass17.par95, config.plugins.setupGlass17.par93, config.plugins.setupGlass17.par94, config.plugins.setupGlass17.par31, config.plugins.setupGlass17.par78, config.plugins.setupGlass17.par12, config.plugins.setupGlass17.par76, config.plugins.setupGlass17.par66, config.plugins.setupGlass17.par7, config.plugins.setupGlass17.par27, config.plugins.setupGlass17.par2, config.plugins.setupGlass17.par57):
-			self.runSetup()
-		elif t in (config.plugins.setupGlass17.par14, config.plugins.setupGlass17.par4):
-			self.chckTunerLabel()
-      		
-	def keyLeft(self):
-		if not self.isMainMenu:
-			ConfigListScreen.keyLeft(self)
-			self.chckSetup()
-		else:
-			self['list'].pageUp()
-
-	def keyRight(self):
-		if not self.isMainMenu:
-			ConfigListScreen.keyRight(self)
-			self.chckSetup()
-		else:
-			self['list'].pageDown()
-
-	def keyUp(self):
-		if self.isMainMenu:
-			if len(self.mainlist) - self['list'].getSelectedIndex() == 1:
-				self['list'].instance.moveSelectionTo(0)
-			else:
-				self['list'].down()
-		else:
-			self["config"].itemUp()
-		
-	def keyDown(self):
-		if self.isMainMenu:
-			if self['list'].getSelectedIndex() == 0:
-				self['list'].instance.moveSelectionTo(len(self.mainlist)-1)
-			else:
-				self['list'].up()
-		else:
-			self["config"].itemDown()
-
-	def isExit(self):
-		if self.isMainMenu:
-			self.exit()
-		else:
-			self["config"].instance.moveSelectionTo(0)
-			self.isMainMenu = True
-			self.runSetup()
-			self.doMyHelpWindow()
-			
-	def runSetup(self):
-		xxx = chckEnaWea()
-		if self.isMainMenu:
-			self.mainlist = []
-			All = {
-				0:[_("Download menu"),''],							
-				1:[_("Changelog"),''],
-				2:[_("Update"),''],					
-				3:[_("Restore config"),''],
-				4:[_("Reset all settings of FHDG 17"),''],
-				5:[_("ECM"),''],
-				6:[_("EXTRA INFOBAR"),''],
-				7:[_("INFOBAR"),({False:'x',True:''}[not config.plugins.setupGlass17.par4.value])],
-				8:[_("INFOBAR")+"/"+_("EXTRA INFOBAR"),''],
-				9:[_("POSTER"),({False:'x',True:''}[config.plugins.setupGlass17.par198.value])],
-				10:[_("HDD/SSD"),''],
-				11:[_("NETWORK"),''],
-				12:[_("MENU"),''],
-				13:[_("CHANNEL SELECTION"),''],
-				14:[_("EPG SELECTION"),''],
-				15:[_("EVENT VIEW"),''],
-				16:[_("SPECIAL INFO"),''],
-				17:[_("USER INFO"),''],			
-				18:[_("NETATMO"),({False:'x',True:''}[config.plugins.setupGlass17.par12.value == "a" or config.plugins.setupGlass17.par31.value == "a" or config.plugins.setupGlass17.par78.value == "a"])],
-				19:[_("OLED"),({False:'',True:'x'}['dm5' in HardwareInfo().get_device_name() or HardwareInfo().get_device_name() == "one"])],
-				20:[_("TUNER"),({False:'x',True:''}[self.isTunerLabel])],
-				21:[_("ENHANCED WEATHER"),({False:'x',True:''}[config.plugins.setupGlass17.par78.value == "e"])],
-				22:[_("WEATHER"),({False:'x',True:''}[xxx])],
-				23:[_("WEATHER")+"/"+_("ENHANCED WEATHER"),({False:'x',True:''}[xxx or config.plugins.setupGlass17.par78.value == "e"])],
-				24:[_("PATHS"),''],
- 				25:[_("VOLUME"),''],
- 				26:[_("LISTBOX FONT SIZE"),({False:'x',True:''}[ENA_LS])],
- 				27:[_("ANIMATIONS"),({False:'x',True:''}[ENA_ANIM])],
-				28:[_("OTHER"),'']
-				}
-			for x in All:
-				if All[x][1] == '':
-					item = [x]                        
-					item.append(MultiContentEntryText(pos=(40, 2), size=(960, 38), font=2, backcolor_sel=0, color_sel=int('0xff9c00',16), text=All[x][0]))
-					item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 9), size=(21, 21), png=LoadPixmap("%sbuttons/led_%s.png" % (SKINPATH, ({False:'green',True:'blue'}[x in range(0,5)])))))
-					self.mainlist.append(item)
-			del item
-			self["config"].hide()
-			self["white"].hide()
-			self['help_txt'].instance.move(ePoint(60,660))
-			self["key_red"].setText(_("Cancel"))
-			self['list'].l.setList(self.mainlist)  
-			self['list'].l.setItemHeight(40)
-			self['list'].instance.moveSelectionTo(self.mainMenuIdx)
-			self["list"].show()    		
-		else:
-			self.list = []
-			sepCC = '--- '+_("Color(s)")+':'
-			S0 = '%s:'
-			C1 = '  %s:'          		
-			tt = self['list'].getCurrent()[0]
-			if tt == 5:        
-				self.list.append(getConfigListEntry(S0 % _("ECM line type"), config.plugins.setupGlass17.par17))                     
-				self.list.append(getConfigListEntry(S0 % (_("ECM refresh time")+" (s)"), config.plugins.setupGlass17.par74))      
-				self.list.append(getConfigListEntry(S0 % _("Enable show address in ECM info"), config.plugins.setupGlass17.par3))        
-				self.list.append(getConfigListEntry(S0 % _("ECM info from current displayed channel only"), config.plugins.setupGlass17.par193))
-				self.list.append(getConfigListEntry(S0 % _("Display CW0/1 in Side bar"), config.plugins.setupGlass17.par50))
-				self.list.append(getConfigListEntry(S0 % _("Show PID in ECM line"), config.plugins.setupGlass17.par196))
-				self.list.append(getConfigListEntry(S0 % _("Show CHID in ECM line"), config.plugins.setupGlass17.par197))
-				self.list.append(getConfigListEntry(sepCC)) 
-				self.list.append(getConfigListEntry(C1 % _("ECM line"), config.plugins.setupGlass17.par116)) 
-				self.list.append(getConfigListEntry(C1 % _("ECM Labels"), config.plugins.setupGlass17.par118))
-				self.list.append(getConfigListEntry(C1 % _("ECM Values"), config.plugins.setupGlass17.par119))
-			elif tt == 6:
-				x = S0 % _("Type")
-				self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par218))
-				x = S0 % _("Icons type")
-				self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par219))
-				self.list.append(getConfigListEntry(S0 % _("Permanent Extra Infobar"), config.plugins.setupGlass17.par4))
-				self.list.append(getConfigListEntry(S0 % _("Enable Enhanced Infobar"), config.plugins.setupGlass17.par5))
-				self.list.append(getConfigListEntry(S0 % _("Vertical Offset"), config.plugins.setupGlass17.par183))
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par127))
-				if ENA_POSTER:
-					self.list.append(getConfigListEntry(S0 % _("Poster"), config.plugins.setupGlass17.par198))
-				self.list.append(getConfigListEntry(S0 % _("Second picon type"), config.plugins.setupGlass17.par8))                      		                         
-				if config.plugins.setupGlass17.par8.value == "3":
-					self.list.append(getConfigListEntry(S0 % (_("Animated Weather Icons")), config.plugins.setupGlass17.par169))
-					if config.plugins.setupGlass17.par169.value:
-						self.list.append(getConfigListEntry(S0 % (_("Animation speed (ms)")), config.plugins.setupGlass17.par170))
-				self.list.append(getConfigListEntry(S0 % _("Enable icon")+" Dcam", config.plugins.setupGlass17.par102))
-				self.list.append(getConfigListEntry(S0 % _("Enable icon")+" Dtype", config.plugins.setupGlass17.par103))    
-				self.list.append(getConfigListEntry(S0 % _("Enable icon")+" Tuner", config.plugins.setupGlass17.par187))
-				self.list.append(getConfigListEntry(S0 % _("Enable icon of Unknown CAID"), config.plugins.setupGlass17.par191))
-				self.list.append(getConfigListEntry(S0 % _("Audio type of current track"), config.plugins.setupGlass17.par42))
-				self.list.append(getConfigListEntry(S0 % _("Progressive/Interlace detection"), config.plugins.setupGlass17.par120))
-				self.list.append(getConfigListEntry(S0 % _("Tuner info"), config.plugins.setupGlass17.par168))
-				self.list.append(getConfigListEntry(S0 % _("Hide SNR/AGC (Q/S) if value is 0"), config.plugins.setupGlass17.par223))
-				self.list.append(getConfigListEntry(S0 % _("CI info"), config.plugins.setupGlass17.par192))
-				isBitrate = fromCfgB()
-				if isBitrate:
-					self.list.append(getConfigListEntry(S0 % _("Bitrate"), config.plugins.setupGlass17.par2))                         			
-					if config.plugins.setupGlass17.par2.value:
-						if not chckBtr():
-							self.list.append(getConfigListEntry(S0 % _("Enable full bitrate info"), config.plugins.setupGlass17.par25))             
-							self.list.append(getConfigListEntry(S0 % (_("Bitrate auto stop limit")+(" (kb/s)")), config.plugins.setupGlass17.par35))         
-						else:
-							self.list.append(getConfigListEntry(S0 % _("Enable eBitrateCalculator"), config.plugins.setupGlass17.par189))
-				self.list.append(getConfigListEntry(S0 % _("Show Satellite position in TP info"), config.plugins.setupGlass17.par48))      	
-				self.list.append(getConfigListEntry(S0 % _("Provider"), config.plugins.setupGlass17.par81))    
-				self.list.append(getConfigListEntry(S0 % _("Temp/RPM"), config.plugins.setupGlass17.par82))    
-				self.list.append(getConfigListEntry(S0 % _("CPU/Mem"), config.plugins.setupGlass17.par83))    
-				if ENA_POPEN:
-					self.list.append(getConfigListEntry(S0 % _("Temp. HDD/SSD"), config.plugins.setupGlass17.par84))
-				isSlider = fromCfgB(False)
-				if not isSlider:
-					self.list.append(getConfigListEntry(S0 % _("Progress bar pixmap"), config.plugins.setupGlass17.par222))
-					if config.plugins.setupGlass17.par222.value:
-						self.list.append(getConfigListEntry(S0 % _("Progress bar background pixmap"), config.plugins.setupGlass17.par16))     
-				self.list.append(getConfigListEntry(sepCC))
-				if isBitrate and config.plugins.setupGlass17.par2.value:
-					self.list.append(getConfigListEntry(C1 % _("Bitrate"), config.plugins.setupGlass17.par115))
-				self.list.append(getConfigListEntry(C1 % _("CPU/Mem, RPM/Temp, Provider"), config.plugins.setupGlass17.par20))
-				self.list.append(getConfigListEntry(C1 % _("TP type"), config.plugins.setupGlass17.par121))
-				self.list.append(getConfigListEntry(C1 % _("TP info"), config.plugins.setupGlass17.par122))                   	
-				self.list.append(getConfigListEntry(C1 % _("Video resolution"), config.plugins.setupGlass17.par123))
-				self.list.append(getConfigListEntry(C1 % _("Date"), config.plugins.setupGlass17.par128))                		
-				self.list.append(getConfigListEntry(C1 % _("Time"), config.plugins.setupGlass17.par129))
-				self.list.append(getConfigListEntry(C1 % _("Seconds"), config.plugins.setupGlass17.par130))
-				self.list.append(getConfigListEntry(C1 % _("Channel name"), config.plugins.setupGlass17.par135))                		
-				self.list.append(getConfigListEntry(C1 % _("Event now"), config.plugins.setupGlass17.par136))
-				self.list.append(getConfigListEntry(C1 % _("Event next"), config.plugins.setupGlass17.par137))
-				if isSlider or (not isSlider and not config.plugins.setupGlass17.par222.value):
-					if ENA_SLIDER[0]:
-						self.list.append(getConfigListEntry(C1 % _("Progress bar foreground"), config.plugins.setupGlass17.par214))
-					if ENA_SLIDER[1]:
-						self.list.append(getConfigListEntry(C1 % _("Progress bar background"), config.plugins.setupGlass17.par215))
-			elif tt == 7:
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par14))
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par134))
-			elif tt == 8:		        	
-				self.list.append(getConfigListEntry(S0 % _("Enable typewriting"), config.plugins.setupGlass17.par30)) 
-				self.list.append(getConfigListEntry(S0 % _("Ignore infobar timeout"), config.plugins.setupGlass17.par55))             
-				if os.path.exists("/proc/stb/video/alpha"):
-					self.list.append(getConfigListEntry(S0 % _("Enable fade"), config.plugins.setupGlass17.par27))                           
-					if config.plugins.setupGlass17.par27.value:
-						self.list.append(getConfigListEntry(S0 % _("Speed of fade"), config.plugins.setupGlass17.par28))                         
-						self.list.append(getConfigListEntry(S0 % _("Enable fade in"), config.plugins.setupGlass17.par29))                                     	
-				self.list.append(getConfigListEntry(S0 % _("Show recording icon"), config.plugins.setupGlass17.par114))    	
-				self.list.append(getConfigListEntry(S0 % _("Channel name type"), config.plugins.setupGlass17.par79))                   
-			elif tt == 9:
-				x = S0 % _("Set Position")
-				self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par199))
-				self.list.append(getConfigListEntry(S0 % _("Size"), config.plugins.setupGlass17.par202))
-				self.list.append(getConfigListEntry(S0 % _("Provider"), config.plugins.setupGlass17.par204))
-				self.list.append(getConfigListEntry(S0 % _("Search delay (s)"), config.plugins.setupGlass17.par205))
-				x = S0 % _("Erase poster cache")
-				self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par206))  
-				self.list.append(getConfigListEntry(S0 % _("Removing current Poster"), config.plugins.setupGlass17.par207))
-			elif tt == 10:					
-				self.list.append(getConfigListEntry(S0 % _("HDD/SSD"), config.plugins.setupGlass17.par22)) 
-				if ENA_POPEN and config.plugins.setupGlass17.par22.value != "None":
-					self.list.append(getConfigListEntry(S0 % _('Movieplayer infobar HDD/SSD state'), config.plugins.setupGlass17.par160))
-					self.list.append(getConfigListEntry(S0 % _("Enable HDD/SSD power state check"), config.plugins.setupGlass17.par23))         
-					self.list.append(getConfigListEntry(S0 % _("Wake up HDD/SSD if needed"), config.plugins.setupGlass17.par21))         
-			elif tt == 11:	
-				self.list.append(getConfigListEntry(S0 % _("Enable control of network status"), config.plugins.setupGlass17.par57))     
-				if config.plugins.setupGlass17.par57.value == "3":
-					self.list.append(getConfigListEntry(S0 %_ ("IP Address"), config.plugins.setupGlass17.par80))
-				x = S0 % (_("Network speed") + "  -  " + _("Set Position"))
-				self.list.append(getConfigListEntry(S0 % _("Network speed"), config.plugins.setupGlass17.par209))
-				if config.plugins.setupGlass17.par209.value != "0":
-					self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par212))
-					self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par226))
-					if config.plugins.setupGlass17.par226.value != "2":
-						self.list.append(getConfigListEntry(sepCC)) 
-						self.list.append(getConfigListEntry(C1 % _("Network speed"), config.plugins.setupGlass17.par213))   
-			elif tt == 12:	
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par7))                              
-				if config.plugins.setupGlass17.par7.value in ("Icons","Icons Right","Icons Bar","List and Icon"):
-					x = S0 % _("Menu Icons")
-					self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par221))
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par133))
-				if config.plugins.setupGlass17.par7.value in ("Icons","Icons Right","Icons Bar"):
-					if config.plugins.setupGlass17.par7.value != "Icons Bar":
-						self.list.append(getConfigListEntry(S0 % _("Enable empty icons in Menu type - Icons"), config.plugins.setupGlass17.par60))           
-					self.list.append(getConfigListEntry(S0 % _("Enable Animation (Menu: Icons/Icons Bar)"), config.plugins.setupGlass17.par63)) 
-			elif tt == 13:	
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par19))               
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par132))
-				self.list.append(getConfigListEntry(S0 % _("Display remaining time in extra EPG"), config.plugins.setupGlass17.par142))
-				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
-				if E2OK:
-					self.list.append(getConfigListEntry(S0 % _("ChannelSelection 2xOK"), config.plugins.setupGlass17.par62))      	      
-				self.list.append(getConfigListEntry(S0 % _("Text rolling type"), config.plugins.setupGlass17.par76))      
-				if config.plugins.setupGlass17.par76.value != "None":
-					self.list.append(getConfigListEntry(S0 % _("Text rolling start delay"), config.plugins.setupGlass17.par77))      		
-				self.list.append(getConfigListEntry(S0 % _("Service name font size"), config.plugins.setupGlass17.par145))
-				self.list.append(getConfigListEntry(S0 % _("Service info font size"), config.plugins.setupGlass17.par146))
-				self.list.append(getConfigListEntry(S0 % _("Line height"), config.plugins.setupGlass17.par147))
-				self.list.append(getConfigListEntry(S0 % _("Extendend description font size"), config.plugins.setupGlass17.par148))
-				self.list.append(getConfigListEntry(sepCC))
-				self.list.append(getConfigListEntry(C1 % _("EPG Description"), config.plugins.setupGlass17.par109))
-				self.list.append(getConfigListEntry(C1 % _("EPG Description - selected"), config.plugins.setupGlass17.par110))
-				self.list.append(getConfigListEntry(C1 % _("Channel name"), config.plugins.setupGlass17.par117))
-				self.list.append(getConfigListEntry(C1 % _("Channel name - selected"), config.plugins.setupGlass17.par111))		
-			elif tt == 14:                                                         
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par54))
-				self.list.append(getConfigListEntry(S0 % _("Extendend description font size"), config.plugins.setupGlass17.par53))
-				if ENA_ELFS:
-					self.list.append(getConfigListEntry(S0 % _("EPG list font size"), config.plugins.setupGlass17.par46))
-			elif tt == 15:
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par229))
-				if config.plugins.setupGlass17.par229.value == "2":
-					self.list.append(getConfigListEntry(S0 % _("Provider"), config.plugins.setupGlass17.par204))
-					self.list.append(getConfigListEntry(S0 % _("Search delay (s)"), config.plugins.setupGlass17.par205))
-					x = S0 % _("Erase poster cache")
-					self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par206))
-			elif tt == 16: 						
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par12))
-				if config.plugins.setupGlass17.par12.value in ("g","i"):
-					x = S0 % _("Set Position")
-					self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par217))                   
-				if config.plugins.setupGlass17.par12.value != "n":
-					self.list.append(getConfigListEntry(S0 % _("Enable Special info timeout"), config.plugins.setupGlass17.par73))      
-				self.list.append(getConfigListEntry(S0 % (_("Type") + " ("+_("extensions")+")"), config.plugins.setupGlass17.par78))    
-				if config.plugins.setupGlass17.par78.value != "n":
-					self.list.append(getConfigListEntry(S0 % _("Special info in main menu"), config.plugins.setupGlass17.par85))    	
-			elif tt == 17:	
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par31))                        
-				if config.plugins.setupGlass17.par31.value != "n":
-					self.list.append(getConfigListEntry(S0 % _("Enable Permanent User info"), config.plugins.setupGlass17.par32))            
-					if config.plugins.setupGlass17.par31.value in ("e","esi","e2"):
-						self.list.append(getConfigListEntry(S0 % _("User info act./next switching"), config.plugins.setupGlass17.par33))                      
-			elif tt == 18:	
-				self.list.append(getConfigListEntry(S0 % _("Station"), config.plugins.setupGlass17.par180)) 
-				if config.plugins.setupGlass17.par180.value == "a":                             
-					self.list.append(getConfigListEntry(S0 % _("Stations switch time"), config.plugins.setupGlass17.par181)) 
-			elif tt == 19:	
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par15)) 
-				if config.plugins.setupGlass17.par15.value != "0":                             
-					self.list.append(getConfigListEntry(S0 % _("Enable OLED off in standby"), config.plugins.setupGlass17.par40)) 
-			elif tt == 20:
-				self.list.append(getConfigListEntry(S0 % _("Number of tuners"), config.plugins.setupGlass17.par104))
-				if config.plugins.setupGlass17.par104.value != "99":
-					self.list.append(getConfigListEntry(S0 % _("Hide tuner in standby or missing tuner"), config.plugins.setupGlass17.par139))
-					self.list.append(getConfigListEntry(sepCC))
-					self.list.append(getConfigListEntry(C1 % _("Active"), config.plugins.setupGlass17.par105))
-					self.list.append(getConfigListEntry(C1 % _("Active in the background"), config.plugins.setupGlass17.par106))
-					self.list.append(getConfigListEntry(C1 % _("Standby mode"), config.plugins.setupGlass17.par107))
-					self.list.append(getConfigListEntry(C1 % _("Missing"), config.plugins.setupGlass17.par108))
-					self.list.append(getConfigListEntry(C1 % _("Recording"), config.plugins.setupGlass17.par112))
-					self.list.append(getConfigListEntry(C1 % _("Recording and live"), config.plugins.setupGlass17.par113))
-			elif tt == 21:	
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par185))
-				#self.list.append(getConfigListEntry(S0 % _("Temperature unit"), config.plugins.setupGlass17.par151))
-				self.list.append(getConfigListEntry(S0 % (_("Animated Weather Icons")), config.plugins.setupGlass17.par66))
-				if config.plugins.setupGlass17.par66.value:
-					self.list.append(getConfigListEntry(S0 % (_("Animation speed (ms)")), config.plugins.setupGlass17.par159))
-				self.list.append(getConfigListEntry(sepCC))
-				self.list.append(getConfigListEntry(C1 % _("UV index"), config.plugins.setupGlass17.par176))
-				self.list.append(getConfigListEntry(C1 % _("Wind speed"), config.plugins.setupGlass17.par177))
-			elif tt == 22:                                 						
-				if config.plugins.setupGlass17.par12.value == "w" or config.plugins.setupGlass17.par78.value == "w":
-					self.list.append(getConfigListEntry(S0 % ("("+_("SPECIAL INFO")+") " + _("Type")), config.plugins.setupGlass17.par171))
-				if config.plugins.setupGlass17.par31.value == "w":
-					self.list.append(getConfigListEntry(S0 % ("("+_("USER INFO")+") " + _("Type")), config.plugins.setupGlass17.par172))
-				if not (((config.plugins.setupGlass17.par12.value == "w" or config.plugins.setupGlass17.par78.value == "w") and config.plugins.setupGlass17.par171.value in ("2","4")) or (config.plugins.setupGlass17.par31.value == "w" and config.plugins.setupGlass17.par172.value == "2")):
-					self.list.append(getConfigListEntry(S0 % _("Weather Title"), config.plugins.setupGlass17.par173))
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par186))
-				self.list.append(getConfigListEntry(S0 % _("Weather location"), config.plugins.setupGlass17.par13))                     
-				self.list.append(getConfigListEntry(S0 % _("Temperature unit"), config.plugins.setupGlass17.par86))                      
-				self.list.append(getConfigListEntry(S0 % ("("+_('Error')+") "+_("Reconnect time")+" (s)"), config.plugins.setupGlass17.par91))		
-				self.list.append(getConfigListEntry(S0 % _("Animated Weather Icons"), config.plugins.setupGlass17.par56))
-				if config.plugins.setupGlass17.par56.value:
-					self.list.append(getConfigListEntry(S0 % _("Animation speed (ms)"), config.plugins.setupGlass17.par158))
-				self.list.append(getConfigListEntry(S0 % _("Display nighttime icons"), config.plugins.setupGlass17.par24))
-				self.list.append(getConfigListEntry(S0 % _("Enable next city in Weather"), config.plugins.setupGlass17.par71))
-				# r10: provider/API-key UI is obsolete; Open-Meteo is the built-in provider.
-				self.list.append(getConfigListEntry(S0 % _("Forecast for more days"), config.plugins.setupGlass17.par143))
-				if config.plugins.setupGlass17.par143.value:
-					self.list.append(getConfigListEntry(S0 % _("More days switch time"), config.plugins.setupGlass17.par184))
-				else:
-					self.list.append(getConfigListEntry(S0 % _("Show yesterday"), config.plugins.setupGlass17.par92))
-				if ENAFINDER:
-					x = S0 % _("Find a city")
-					self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par90))
-			elif tt == 23: 
-				x = S0 % _("Weather Icons")
-				self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par220))
-				self.list.append(getConfigListEntry(S0 % (_("Reconnect time")+" (min)"), config.plugins.setupGlass17.par87))
-				self.list.append(getConfigListEntry(sepCC))
-				self.list.append(getConfigListEntry(C1 % _("Date"), config.plugins.setupGlass17.par174))
-				self.list.append(getConfigListEntry(C1 % _("State"), config.plugins.setupGlass17.par175))
-				self.list.append(getConfigListEntry(C1 % _("Warm"), config.plugins.setupGlass17.par93))
-				self.list.append(getConfigListEntry(C1 % _("Cold"), config.plugins.setupGlass17.par94))
-				if config.plugins.setupGlass17.par93.value != "AutoColors" or config.plugins.setupGlass17.par94.value != "AutoColors":
-					self.list.append(getConfigListEntry(C1 % _("Fair"), config.plugins.setupGlass17.par95))
-					if config.plugins.setupGlass17.par95.value != "None":
-						if config.plugins.setupGlass17.par93.value != "AutoColors": 
-							self.list.append(getConfigListEntry(S0 % (_("Warm")+" ("+_("temperature")+") - "+DG+"C"), config.plugins.setupGlass17.par96))
-							self.list.append(getConfigListEntry(S0 % (_("Warm")+" ("+_("temperature")+") - "+DG+"F"), config.plugins.setupGlass17.par149))
-						if config.plugins.setupGlass17.par94.value != "AutoColors": 
-							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"C"), config.plugins.setupGlass17.par97)) 
-							self.list.append(getConfigListEntry(S0 % (_("Cold")+" ("+_("temperature")+") - "+DG+"F"), config.plugins.setupGlass17.par150))
-			elif tt == 24:
-				self.list.append(getConfigListEntry(S0 % _("Picons/Icons path"), config.plugins.setupGlass17.par125))
-				if config.plugins.setupGlass17.par125.value == "0":
-					self.list.append(getConfigListEntry(S0 % _("User defined path"), config.plugins.setupGlass17.par124))
-				self.list.append(getConfigListEntry(S0 % _("FHDG Configuration file"), config.plugins.setupGlass17.par144))
-				if not config.plugins.setupGlass17.par48.value:
-					self.list.append(getConfigListEntry(S0 % _("Path to satellites.xml"), config.plugins.setupGlass17.par141))		
-			elif tt == 25:
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par18))
-				self.list.append(getConfigListEntry(S0 % _("Mute picture transparency"), config.plugins.setupGlass17.par47))
-				x = S0 % _("Set Position")
-				self.list.append(getConfigListEntry(x[:-1], config.plugins.setupGlass17.par216))
-			elif tt == 26:
-				self.list.append(getConfigListEntry(S0 % _("Bigger"), config.plugins.setupGlass17.par153))
-				self.list.append(getConfigListEntry(S0 % _("Big"), config.plugins.setupGlass17.par154))
-				self.list.append(getConfigListEntry(S0 % _("Medium"), config.plugins.setupGlass17.par155))
-				self.list.append(getConfigListEntry(S0 % _("Small"), config.plugins.setupGlass17.par156))
-				self.list.append(getConfigListEntry(S0 % _("Smaller"), config.plugins.setupGlass17.par157))
-			elif tt == 27:
-				self.list.append(getConfigListEntry(S0 % _("Enable Animations"), config.plugins.setupGlass17.par161))
-				if config.plugins.setupGlass17.par161.value:
-					self.list.append(getConfigListEntry(S0 % _("(Infobar) Picon"), config.plugins.setupGlass17.par162))
-					if config.plugins.setupGlass17.par8.value != "3":
-						self.list.append(getConfigListEntry(S0 % _("(Infobar) Second Picon"), config.plugins.setupGlass17.par163))
-					self.list.append(getConfigListEntry(S0 % _("(Infobar) Poster"), config.plugins.setupGlass17.par203))
-					self.list.append(getConfigListEntry(S0 % _("(Infobar) ECM line"), config.plugins.setupGlass17.par164))
-					self.list.append(getConfigListEntry(S0 % _("(Infobar) TP info/type"), config.plugins.setupGlass17.par167))
-					self.list.append(getConfigListEntry(S0 % _("(Menu) Big Icons/Icons"), config.plugins.setupGlass17.par165))
-					self.list.append(getConfigListEntry(S0 % _("(Channel selection) picon/Prov/Sat"), config.plugins.setupGlass17.par166))
-			elif tt == 28:   
-				if not os.path.isdir(PYTHONPATH+"Plugins/Extensions/EnhancedMovieCenter"):
-					self.list.append(getConfigListEntry(S0 % _("Movie selection type"), config.plugins.setupGlass17.par224))
-				if ISVTI:
-					self.list.append(getConfigListEntry(S0 % _("VTi SplitScreen"), config.plugins.setupGlass17.par208))
-				self.list.append(getConfigListEntry(S0 % _("Reference separating char"), config.plugins.setupGlass17.par179))
-				if EFIFO:
-					self.list.append(getConfigListEntry(S0 % _("Service scan long list"), config.plugins.setupGlass17.par67))
-				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par131))
-				self.list.append(getConfigListEntry(S0 % _("Ignore leading 0 in time"), config.plugins.setupGlass17.par138))
-				self.list.append(getConfigListEntry(S0 % _("Ignore leading 0 in date"), config.plugins.setupGlass17.par188))
-				self.list.append(getConfigListEntry(S0 % _("Calculation of channel numbers"), config.plugins.setupGlass17.par126))
-				self.list.append(getConfigListEntry(S0 % _("Enable CAID PIDs"), config.plugins.setupGlass17.par26))                                                            
-				self.list.append(getConfigListEntry(S0 % _("Neutrino keymap"), config.plugins.setupGlass17.par34))                        
-				self.list.append(getConfigListEntry(S0 % _("Localization of the skin"), config.plugins.setupGlass17.par49))            
-				if ECL:
-					self.list.append(getConfigListEntry(S0 % _("Enable Clear memory"), config.plugins.setupGlass17.par58))      
-				if not isATV and not os.path.exists('/etc/dpkg'):
-					self.list.append(getConfigListEntry(S0 % _("Enable user encoding.conf"), config.plugins.setupGlass17.par59))          
-				if ENA_ONOFF:
-					self.list.append(getConfigListEntry(S0 % _("On/Off icons"), config.plugins.setupGlass17.par190))
-				self.list.append(getConfigListEntry(S0 % _("RadioScreenSaver"), config.plugins.setupGlass17.par64))      
-				self.list.append(getConfigListEntry(S0 % _("IPTV Radio Detection"), config.plugins.setupGlass17.par225))
-				self.list.append(getConfigListEntry(S0 % _("PIG type"), config.plugins.setupGlass17.par68))     	
-				self.list.append(getConfigListEntry(S0 % _("Update"), config.plugins.setupGlass17.par75))      	                    
-				if os.path.isdir(PYTHONPATH+"Plugins/SystemPlugins/NumberZapExt") or os.path.isdir(PYTHONPATH+"Plugins/Extensions/NumberZapExt"):
-					self.list.append(getConfigListEntry(S0 % _('Extended Number ZAP Picon Size'), config.plugins.setupGlass17.par227))
-			self["config"].list = self.list
-			self["config"].setList(self.list)	
-			self["list"].hide()
-			self["white"].show()
-			self['help_txt'].instance.move(ePoint(579,660))
-			self["config"].show() 
-			self["key_red"].setText(_("Exit"))
-                     		
-	def reloadCities(self,a=None):
-		ch_help = getCitiesCode()
-		config.plugins.setupGlass17.par13 = ConfigSelection(default=ch_help[0][0], choices = ch_help)
-		ch_help = readAPIkey()
-		self.runSetup()
-
-	def openWeatherCityChoice(self):
-		choices = []
-		for value, name in getCitiesCode():
-			if value != "None":
-				choices.append((name, value))
-		if not choices:
-			return
-		self.session.openWithCallback(self.weatherCityChoiceSelected, ChoiceBox, title=_("Weather location"), list=choices)
-
-	def weatherCityChoiceSelected(self, answer):
-		if answer is None:
-			return
-		try:
-			config.plugins.setupGlass17.par13.value = answer[1]
-			self["config"].invalidateCurrent()
-		except:
-			pass
-
-	def ActivateselectedFnc(self):
-		if self.isMainMenu:
-			t = self['list'].getCurrent()[0]
-			self.mainMenuIdx = self['list'].getSelectedIndex()
-			if t == 0:
-				self.downMenu()
-			elif t == 1:
-				self.showHistory()
-			elif t == 2:
-				self.updatechckact(True)
-			elif t == 3:
-				self.session.openWithCallback(self.restoreCfgFromFile, dirBrowser, config.plugins.setupGlass17.par144.value, True)
-			elif t == 4:
-				self.restoreTofactory()
-			else:
-				self.isMainMenu = False
-				self.runSetup()
-		else:
-			t = self["config"].getCurrent()[1]
-			if t == config.plugins.setupGlass17.par124:
-				self.session.openWithCallback(self.dirSelected, dirBrowser, config.plugins.setupGlass17.par124.value)
-			elif t == config.plugins.setupGlass17.par144:
-				self.session.openWithCallback(self.dirConf, dirBrowser, config.plugins.setupGlass17.par144.value)
-			elif t == config.plugins.setupGlass17.par141:
-				self.session.openWithCallback(self.satxmlConf, dirBrowser, config.plugins.setupGlass17.par141.value)
-			elif t == config.plugins.setupGlass17.par13:
-				self.openWeatherCityChoice()
-			elif t == config.plugins.setupGlass17.par90:
-				self.session.openWithCallback(self.reloadCities, cityFinder)
-			elif t == config.plugins.setupGlass17.par199:
-				self.session.open(SelectPosition, "poster")
-			elif t == config.plugins.setupGlass17.par212:
-				self.session.open(SelectPosition, "netspeed")
-			elif t == config.plugins.setupGlass17.par216:
-				self.session.open(SelectPosition, "volMute")
-			elif t == config.plugins.setupGlass17.par217:
-				self.session.open(SelectPosition)
-			elif t == config.plugins.setupGlass17.par218:
-				self.session.openWithCallback(self.chckTunerLabel, selectScreenShowed)
-			elif t == config.plugins.setupGlass17.par219:
-				self.session.openWithCallback(self.showInfo, selectIconsDisplayed)
-			elif t == config.plugins.setupGlass17.par220:
-				self.session.openWithCallback(self.showInfo, selectIconsDisplayed, 2)
-			elif t == config.plugins.setupGlass17.par221:
-				self.session.openWithCallback(self.showInfo, selectIconsDisplayed, 1)
-			elif t == config.plugins.setupGlass17.par206:
-				restartbox = self.session.openWithCallback(self.eraseAnswerNow, MessageBox, _("Erase poster cache"), MessageBox.TYPE_YESNO)
-				restartbox.setTitle(_("now?"))
-			elif t in (config.plugins.setupGlass17.par203,config.plugins.setupGlass17.par167,config.plugins.setupGlass17.par166,config.plugins.setupGlass17.par165,config.plugins.setupGlass17.par162,config.plugins.setupGlass17.par163,config.plugins.setupGlass17.par164):
-				self.doMyHelpWindow()
-			else:
-				self.isExit()
-      			
-	def eraseAnswerNow(self, answer):
-		if answer:
-			poster_dir = os.path.join(config.plugins.setupGlass17.par39.value, "poster")
-			for name in listDir(poster_dir) or []:
-				candidate = os.path.join(poster_dir, name)
-				try:
-					if os.path.isfile(candidate) or os.path.islink(candidate):
-						os.unlink(candidate)
-				except OSError:
-					pass
-			self.session.open(MessageBox, _("Erase finished successfully!"), MessageBox.TYPE_INFO, 6)
-
-	def doNothing(self):
-		pass
-			
-	def sampleColor(self, c):
-		if c is None:
-			if self.isShow:
-				self.isShow = False
-				self.canvas.fill(0, 0, 450, 45, 0)
-				self.canvas.flush()		
-		else:
-			c = int(c[1:], 0x10)
-			self.canvas.fill(0, 0, 450, 45, 0)
-			self.canvas.fill(405, 0, 45, 45, c)
-			self.canvas.fill(0, 0, 45, 45, c)
-			self.canvas.writeText(52, 0, 345, 45, c, 0, gFont("Regular", 37), _("Color Sample"),RT_HALIGN_CENTER)
-			self.canvas.flush()
-			self.isShow = True
-		
-	def doMyHelpWindow(self):
-		if self.isMainMenu:
-			if ENA_ANIM:
-				self["helpPicon"].hide()
-				self["helpPiconFrame"].hide()
-				self["helpTxtAnim"].hide()
-			self["help_pict"].hide()
-			self["selected_item"].setText("")
-			self.sampleColor(None)
-			t = helpTxt.get("ok-1","")
-			if t != "": 
-				self["help_txt"].setText(t)				
-			else:
- 				self["help_txt"].setText(helpTxt.get("00",""))				
-			return
-		if len(self.list) == 0:
-			return
-		def TF(a):
-			return ({True:"1", False:"0"}[a])
-		self.sampleColor(None)
-		t = self["config"].getCurrent()[1]
-		filename = "00" 
-		ed = False
-		if t in (config.plugins.setupGlass17.par215, config.plugins.setupGlass17.par214, config.plugins.setupGlass17.par213, config.plugins.setupGlass17.par177, config.plugins.setupGlass17.par176, config.plugins.setupGlass17.par175, config.plugins.setupGlass17.par174, config.plugins.setupGlass17.par137, config.plugins.setupGlass17.par136, config.plugins.setupGlass17.par135, config.plugins.setupGlass17.par130, config.plugins.setupGlass17.par129, config.plugins.setupGlass17.par128, config.plugins.setupGlass17.par123, config.plugins.setupGlass17.par121, config.plugins.setupGlass17.par122, config.plugins.setupGlass17.par20, config.plugins.setupGlass17.par115, config.plugins.setupGlass17.par116, config.plugins.setupGlass17.par118, config.plugins.setupGlass17.par119):
-			ed = True
-			t = t.value
-			if t != "AutoColors":
-				self.sampleColor(t)
-				filename = "1-0"
-			else:
-				filename = "1-1"
-		elif t in (config.plugins.setupGlass17.par221,config.plugins.setupGlass17.par220,config.plugins.setupGlass17.par219,config.plugins.setupGlass17.par218,config.plugins.setupGlass17.par217,config.plugins.setupGlass17.par216,config.plugins.setupGlass17.par212,config.plugins.setupGlass17.par90,config.plugins.setupGlass17.par199,config.plugins.setupGlass17.par206):
-			filename = "ok-1"
-		elif t == config.plugins.setupGlass17.par17:   
-			filename = "4-"+config.plugins.setupGlass17.par17.value
-		elif t == config.plugins.setupGlass17.par74:
-			filename = "54-0"
-		elif t == config.plugins.setupGlass17.par3:
-			filename = "3-"+TF(config.plugins.setupGlass17.par3.value)
-		elif t == config.plugins.setupGlass17.par4:
-			filename = "5-"+TF(config.plugins.setupGlass17.par4.value)			
-		elif t == config.plugins.setupGlass17.par14:
-			filename = "800-"+config.plugins.setupGlass17.par14.value
-		elif t == config.plugins.setupGlass17.par42:
-			filename = "420-"+TF(config.plugins.setupGlass17.par42.value)
-		elif t == config.plugins.setupGlass17.par16:
-			filename = "9-"+TF(config.plugins.setupGlass17.par16.value)
-		elif t == config.plugins.setupGlass17.par28:
-			filename = "13-0"      
-		elif t == config.plugins.setupGlass17.par27:
-			filename = "14-"+TF(config.plugins.setupGlass17.par27.value)      
-		elif t == config.plugins.setupGlass17.par29:
-			filename = "15-"+TF(config.plugins.setupGlass17.par29.value)      
-		elif t == config.plugins.setupGlass17.par8:
-			filename = "16-"+config.plugins.setupGlass17.par8.value      			
-		elif t == config.plugins.setupGlass17.par2:
-			filename = "22-"+TF(config.plugins.setupGlass17.par2.value)
-		elif t == config.plugins.setupGlass17.par25:
-			filename = "11-"+TF(config.plugins.setupGlass17.par25.value)
-		elif t == config.plugins.setupGlass17.par5:
-			filename = "12-"+config.plugins.setupGlass17.par5.value
-		elif t == config.plugins.setupGlass17.par35:
-			filename = "27-0" 
-		elif t == config.plugins.setupGlass17.par48:
-			filename = "34-"+TF(config.plugins.setupGlass17.par48.value)			
-		elif t == config.plugins.setupGlass17.par55:
-			filename = "39-"+config.plugins.setupGlass17.par55.value			
-		elif t == config.plugins.setupGlass17.par81:
-			filename = "60-"+TF(config.plugins.setupGlass17.par81.value)
-		elif t == config.plugins.setupGlass17.par82:
-			filename = "61-"+TF(config.plugins.setupGlass17.par82.value)
-		elif t == config.plugins.setupGlass17.par83:
-			filename = "62-"+TF(config.plugins.setupGlass17.par83.value)
-		elif t == config.plugins.setupGlass17.par84:
-			filename = "63-"+TF(config.plugins.setupGlass17.par84.value)			
-		elif t == config.plugins.setupGlass17.par79:
-			filename = "59-"+str(config.plugins.setupGlass17.par79.value)
-		elif t == config.plugins.setupGlass17.par23:
-			filename = "28-"+TF(config.plugins.setupGlass17.par23.value)      
-		elif t == config.plugins.setupGlass17.par21:
-			filename = "1007-"+({True:"71", False:"70"}[config.plugins.setupGlass17.par21.value])      
-		elif t == config.plugins.setupGlass17.par57:
-			filename = "41-"+config.plugins.setupGlass17.par57.value      
-		elif t == config.plugins.setupGlass17.par80:
-			filename = "42-2" 
-		elif t == config.plugins.setupGlass17.par60:
-			filename = "44-"+TF(config.plugins.setupGlass17.par60.value)                      			
-		elif t == config.plugins.setupGlass17.par63:
-			filename = "46-"+TF(config.plugins.setupGlass17.par63.value) 
-		elif t == config.plugins.setupGlass17.par19:
-			filename = ("6-"+config.plugins.setupGlass17.par19.value).replace("a","").replace("v","")
-		elif t == config.plugins.setupGlass17.par41:
-			filename = "31-"+({"Black":"0", "White":"1"}[config.plugins.setupGlass17.par41.value])
-		elif t == config.plugins.setupGlass17.par62:
-			filename = "45-"+TF(config.plugins.setupGlass17.par62.value)
-		elif t == config.plugins.setupGlass17.par76:
-			filename = "56-"+({"Roll back":"1", "Autostop":"2", "None":"0"}[config.plugins.setupGlass17.par76.value])
-		elif t == config.plugins.setupGlass17.par77:
-			filename = "57-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par77.value != "default"])	
-		elif t == config.plugins.setupGlass17.par12:
-			filename = "10-"+config.plugins.setupGlass17.par12.value
-		elif t == config.plugins.setupGlass17.par85:
-			filename = "64-"+TF(config.plugins.setupGlass17.par85.value)
-		elif t == config.plugins.setupGlass17.par78:
-			filename = "58-"+config.plugins.setupGlass17.par78.value
-		elif t == config.plugins.setupGlass17.par73:
-			filename = "53-"+TF(config.plugins.setupGlass17.par73.value)
-		elif t == config.plugins.setupGlass17.par13:
-			filename = "1017-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par13.value != "None"])
-		elif t == config.plugins.setupGlass17.par86:
-			filename = "65-"+str(config.plugins.setupGlass17.par86.value)
-		elif t == config.plugins.setupGlass17.par87:
-			filename = "66-0"
-		elif t == config.plugins.setupGlass17.par71:
-			filename = "52-"+TF(config.plugins.setupGlass17.par71.value)
-		elif t == config.plugins.setupGlass17.par31:
-			filename = "18-"+config.plugins.setupGlass17.par31.value
-		elif t == config.plugins.setupGlass17.par32:
-			filename = "19-"+TF(config.plugins.setupGlass17.par32.value)
-		elif t == config.plugins.setupGlass17.par33:
-			filename = "20-"+TF(config.plugins.setupGlass17.par33.value)
-		elif t == config.plugins.setupGlass17.par26:
-			filename = "21-"+TF(config.plugins.setupGlass17.par26.value)
-		elif t == config.plugins.setupGlass17.par18:
-			filename = "24-"+str(int(config.plugins.setupGlass17.par18.value)-1)
-		elif t == config.plugins.setupGlass17.par15:
-			filename = "25-"+config.plugins.setupGlass17.par15.value
-		elif t == config.plugins.setupGlass17.par7:
-			filename = "26-"+menusel(config.plugins.setupGlass17.par7.value)
-		elif t == config.plugins.setupGlass17.par40:
-			filename = "30-"+TF(config.plugins.setupGlass17.par40.value)
-		elif t == config.plugins.setupGlass17.par54:                             
-			filename = "38-"+config.plugins.setupGlass17.par54.value
-		elif t == config.plugins.setupGlass17.par34:
-			filename = "29-"+TF(config.plugins.setupGlass17.par34.value)
-		elif t == config.plugins.setupGlass17.par49:
-			filename = "35-"+TF(config.plugins.setupGlass17.par49.value)
-		elif t == config.plugins.setupGlass17.par53:
-			filename = "37-0"
-		elif t == config.plugins.setupGlass17.par58:
-			filename = "42-"+TF(config.plugins.setupGlass17.par58.value)
-		elif t == config.plugins.setupGlass17.par59:
-			filename = "43-"+TF(config.plugins.setupGlass17.par59.value)
-		elif t == config.plugins.setupGlass17.par64:
-			filename = "47-"+TF(config.plugins.setupGlass17.par64.value)
-		elif t == config.plugins.setupGlass17.par68:
-			filename = "51-"+config.plugins.setupGlass17.par68.value			
-		elif t == config.plugins.setupGlass17.par75:
-			filename = "55-"+TF(config.plugins.setupGlass17.par75.value)						
-		elif t == config.plugins.setupGlass17.par30:
-			filename = "23-"+TF(config.plugins.setupGlass17.par30.value)
-		elif t == config.plugins.setupGlass17.par91:
-			filename = "91-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par91.value != "0"])
-		elif t == config.plugins.setupGlass17.par92:
-			filename = "92-"+TF(config.plugins.setupGlass17.par92.value)
-		elif t == config.plugins.setupGlass17.par94:
-			t = config.plugins.setupGlass17.par94.value
-			ed = True
-			if t != "AutoColors":
-				self.sampleColor(t)
-				filename = "94-1"
-			else:
-				filename = "94-0"
-		elif t == config.plugins.setupGlass17.par93:
-			t = config.plugins.setupGlass17.par93.value
-			ed = True
-			if t != "AutoColors":
-				self.sampleColor(t)
-				filename = "93-1"
-			else:
-				filename = "93-0"
-		elif t == config.plugins.setupGlass17.par95:
-			t = config.plugins.setupGlass17.par95.value
-			ed = True
-			if t != "None":
-				self.sampleColor(t)
-				filename = "95-1"
-			else:
-				filename = "95-0"
-		elif t == config.plugins.setupGlass17.par96:
-			filename = "96-0"
-		elif t == config.plugins.setupGlass17.par97:
-			filename = "97-0"
-		elif t == config.plugins.setupGlass17.par102:
-			filename = "102-"+TF(config.plugins.setupGlass17.par102.value)
-		elif t == config.plugins.setupGlass17.par103:
-			filename = "103-"+TF(config.plugins.setupGlass17.par103.value)
-		elif t == config.plugins.setupGlass17.par187:
-			filename = "187-"+TF(config.plugins.setupGlass17.par187.value)
-		elif t == config.plugins.setupGlass17.par104:
-			if config.plugins.setupGlass17.par104 == "99":
-				filename = _("disabled")
-			else:
-				filename = "104-0"
-		elif t == config.plugins.setupGlass17.par105:
-			filename = "105-0"
-			t = config.plugins.setupGlass17.par105.value
-			ed = True
-			if t != "AutoColors":
-				self.sampleColor(t)
-		elif t == config.plugins.setupGlass17.par106:
-			filename = "106-0"
-			t = config.plugins.setupGlass17.par106.value
-			ed = True
-			if t != "AutoColors":
-				self.sampleColor(t)
-		elif t == config.plugins.setupGlass17.par107:
-			filename = "107-0"
-			t = config.plugins.setupGlass17.par107.value
-			ed = True
-			if t != "AutoColors":
-				self.sampleColor(t)
-		elif t == config.plugins.setupGlass17.par108:
-			filename = "108-0"
-			t = config.plugins.setupGlass17.par108.value
-			ed = True
-			if t != "AutoColors":
-				self.sampleColor(t)
-		elif t == config.plugins.setupGlass17.par109:
-			ed = True
-			filename = "109-0"
-			self.sampleColor(config.plugins.setupGlass17.par109.value)
-		elif t == config.plugins.setupGlass17.par110:
-			ed = True
-			filename = "110-0"
-			self.sampleColor(config.plugins.setupGlass17.par110.value)
-		elif t == config.plugins.setupGlass17.par111:
-			ed = True
-			filename = "111-0"
-			self.sampleColor(config.plugins.setupGlass17.par111.value)
-		elif t == config.plugins.setupGlass17.par117:
-			ed = True
-			filename = "117-0"
-			self.sampleColor(config.plugins.setupGlass17.par117.value)
-		elif t == config.plugins.setupGlass17.par112:
-			ed = True
-			filename = "112-0"
-			t = config.plugins.setupGlass17.par112.value
-			if t != "AutoColors":
-				self.sampleColor(t)
-		elif t == config.plugins.setupGlass17.par113:
-			ed = True
-			filename = "113-0"
-			t = config.plugins.setupGlass17.par113.value
-			if t != "AutoColors":
-				self.sampleColor(t)
-		elif t == config.plugins.setupGlass17.par114:
-			filename = "114-"+TF(config.plugins.setupGlass17.par114.value)
-		elif t == config.plugins.setupGlass17.par120:
-			filename = "120-"+TF(config.plugins.setupGlass17.par120.value)
-		elif t == config.plugins.setupGlass17.par22:
-			filename = "22-1-0"
-		elif t == config.plugins.setupGlass17.par124:
-			filename = "124-0"
-		elif t == config.plugins.setupGlass17.par125:
-			filename = "39-1-0"
-			setPathFiles(False)
-		elif t == config.plugins.setupGlass17.par126:
-			filename = "126-" + config.plugins.setupGlass17.par126.value
-		elif t == config.plugins.setupGlass17.par127:
-			filename = "127-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par127.value != "D"])
-			ff = "0"
-		elif t == config.plugins.setupGlass17.par131:
-			filename = "127-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par131.value != "D"])
-			ff = "1"
-		elif t == config.plugins.setupGlass17.par132:
-			filename = "127-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par132.value != "D"])
-			ff = "2"
-		elif t == config.plugins.setupGlass17.par133:
-			filename = "127-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par133.value != "D"])
-			ff = "3"
-		elif t == config.plugins.setupGlass17.par134:
-			filename = "127-"+({True:"1", False:"0"}[config.plugins.setupGlass17.par134.value != "D"])
-			ff = "4"
-		elif t == config.plugins.setupGlass17.par185:
-			filename = "127-1"
-			ff = "5"
-		elif t == config.plugins.setupGlass17.par186:
-			filename = "127-1"
-			ff = "6"
-		elif t == config.plugins.setupGlass17.par138:
-			filename = "138-"+TF(config.plugins.setupGlass17.par138.value)
-		elif t == config.plugins.setupGlass17.par139:
-			filename = "139-"+TF(config.plugins.setupGlass17.par139.value)
-		elif t == config.plugins.setupGlass17.par142:
-			filename = "142-"+TF(config.plugins.setupGlass17.par142.value)
-		elif t == config.plugins.setupGlass17.par143:
-			filename = "143n-"+TF(config.plugins.setupGlass17.par143.value)
-		elif t == config.plugins.setupGlass17.par184:
-			filename = "181-x"
-		elif t == config.plugins.setupGlass17.par144:
-			filename = "144-0"
-		elif t == config.plugins.setupGlass17.par141:
-			filename = "141-0"
-		elif t == config.plugins.setupGlass17.par145:
-			filename = "117-0"
-		elif t == config.plugins.setupGlass17.par146:
-			filename = "109-0"
-		elif t == config.plugins.setupGlass17.par147:
-			filename = "147-0"
-		elif t == config.plugins.setupGlass17.par148:
-			filename = "148-0"
-		elif t == config.plugins.setupGlass17.par46:
-			filename = "460-0"
-		elif t == config.plugins.setupGlass17.par149:
-			filename = "149-0"
-		elif t == config.plugins.setupGlass17.par150: 
-			filename = "150-0"
-		elif t == config.plugins.setupGlass17.par151:
-			filename = ({True:"65-"+str(config.plugins.setupGlass17.par151.value), False:"151-0"}[config.plugins.setupGlass17.par151.value != "0"])
-		elif t == config.plugins.setupGlass17.par47:
-			filename = "047-"+TF(config.plugins.setupGlass17.par47.value)
-		elif t == config.plugins.setupGlass17.par56:
-			filename = "560-"+TF(config.plugins.setupGlass17.par56.value)
-		elif t == config.plugins.setupGlass17.par66:
-			filename = "560-"+TF(config.plugins.setupGlass17.par66.value)
-		elif t == config.plugins.setupGlass17.par169:
-			filename = "560-"+TF(config.plugins.setupGlass17.par169.value)
-		elif t == config.plugins.setupGlass17.par24:
-			filename = "024-"+TF(config.plugins.setupGlass17.par24.value)
-		elif t in (config.plugins.setupGlass17.par153,config.plugins.setupGlass17.par154,config.plugins.setupGlass17.par155,config.plugins.setupGlass17.par156,config.plugins.setupGlass17.par157):
-			filename = "lbs-1"
-		elif t in (config.plugins.setupGlass17.par158,config.plugins.setupGlass17.par159,config.plugins.setupGlass17.par170):
-			filename = "as-1"
-		elif t == config.plugins.setupGlass17.par67:
-			filename = "fifo-"+TF(config.plugins.setupGlass17.par67.value)
-		elif t == config.plugins.setupGlass17.par160:
-			filename = "160-"+TF(config.plugins.setupGlass17.par160.value) 
-		elif t == config.plugins.setupGlass17.par161:
-			filename = "161-"+TF(config.plugins.setupGlass17.par161.value)
-		elif t == config.plugins.setupGlass17.par168:
-			filename = "168-"+config.plugins.setupGlass17.par168.value
-		elif t == config.plugins.setupGlass17.par171:
-			filename = "171-"+config.plugins.setupGlass17.par171.value
-		elif t == config.plugins.setupGlass17.par172:
-			filename = "172-"+config.plugins.setupGlass17.par172.value
-		elif t == config.plugins.setupGlass17.par173:
-			filename = "173-"+config.plugins.setupGlass17.par173.value
-		elif t == config.plugins.setupGlass17.par179:
-			filename = "179-"+config.plugins.setupGlass17.par179.value
-		elif t == config.plugins.setupGlass17.par180:
-			filename = "180-"+config.plugins.setupGlass17.par180.value
-		elif t == config.plugins.setupGlass17.par181:
-			filename = "181-x"
-		elif t == config.plugins.setupGlass17.par183:
-			filename = "183-x"
-		elif t == config.plugins.setupGlass17.par188:
-			filename = "188-"+TF(config.plugins.setupGlass17.par188.value)
-		elif t == config.plugins.setupGlass17.par189:
-			filename = "189-"+TF(config.plugins.setupGlass17.par189.value)
-		elif t == config.plugins.setupGlass17.par190:
-			filename = "190-"+TF(config.plugins.setupGlass17.par190.value)
-		elif t == config.plugins.setupGlass17.par191:
-			filename = "191-"+TF(config.plugins.setupGlass17.par191.value)
-		elif t == config.plugins.setupGlass17.par192:
-			filename = "192-"+TF(config.plugins.setupGlass17.par192.value)
-		elif t == config.plugins.setupGlass17.par193:
-			filename = "193-"+TF(config.plugins.setupGlass17.par193.value)
-		elif t == config.plugins.setupGlass17.par50:
-			filename = "50x-"+TF(config.plugins.setupGlass17.par50.value)
-		elif t == config.plugins.setupGlass17.par196:
-			filename = "196-"+TF(config.plugins.setupGlass17.par196.value)
-		elif t == config.plugins.setupGlass17.par197:
-			filename = "197-"+TF(config.plugins.setupGlass17.par197.value)
-		elif t == config.plugins.setupGlass17.par198:
-			filename = "198-"+TF(config.plugins.setupGlass17.par198.value)
-		elif t == config.plugins.setupGlass17.par202:
-			filename = "202"
-		elif t == config.plugins.setupGlass17.par204:
-			filename = "204-"+config.plugins.setupGlass17.par204.value
-		elif t == config.plugins.setupGlass17.par205:
-			filename = "205"
-		elif t == config.plugins.setupGlass17.par207:
-			filename = "207-"+TF(config.plugins.setupGlass17.par207.value)
-		elif t == config.plugins.setupGlass17.par208:
-			filename = "208-"+config.plugins.setupGlass17.par208.value
-		elif t == config.plugins.setupGlass17.par209:
-			filename = "209-"+config.plugins.setupGlass17.par209.value
-		elif t == config.plugins.setupGlass17.par222:
-			filename = "222-"+TF(config.plugins.setupGlass17.par222.value)
-		elif t == config.plugins.setupGlass17.par223:
-			filename = "223-"+TF(config.plugins.setupGlass17.par223.value)
-		elif t == config.plugins.setupGlass17.par224:
-			filename = "224-"+config.plugins.setupGlass17.par224.value
-		elif t == config.plugins.setupGlass17.par225:
-			filename = "225-"+TF(config.plugins.setupGlass17.par225.value)
-		elif t == config.plugins.setupGlass17.par226:
-			filename = "226-"+config.plugins.setupGlass17.par226.value
-		elif t == config.plugins.setupGlass17.par227:
-			if config.plugins.setupGlass17.par227.value == "0":
-				filename = "227-0"
-			else:
-				filename = "227-" + config.plugins.setupGlass17.par227.value
-		elif t == config.plugins.setupGlass17.par229:                             
-			filename = "229-"+config.plugins.setupGlass17.par229.value
-		if t in (config.plugins.setupGlass17.par203,config.plugins.setupGlass17.par167,config.plugins.setupGlass17.par166,config.plugins.setupGlass17.par165,config.plugins.setupGlass17.par162,config.plugins.setupGlass17.par163,config.plugins.setupGlass17.par164):
-			self["selected_item"].setText("")
-			self["help_pict"].hide()
-			self["help_txt"].setText("")
-			self.eeTanim = None
-			if t in (config.plugins.setupGlass17.par167,config.plugins.setupGlass17.par164):
-				self.eeTanim = t.getText()
-				if self.eeTanimLast == self.eeTanim:
-					self.eeTanim = self.eeTanim.upper()
-				self.eeTanimLast = self.eeTanim
-				self.showAnimTxt(t)
-			else:
-				self.showAnim(t.value)
-		else:
-			if ENA_ANIM:
-				self["helpPicon"].hide()
-				self["helpPiconFrame"].hide()
-				self["helpTxtAnim"].hide()
-			if filename in helpTxt:
-				if filename == "127-1": 
-					self["selected_item"].setText(datetime.now().strftime(({"6":config.plugins.setupGlass17.par186.value, "5":config.plugins.setupGlass17.par185.value, "4":config.plugins.setupGlass17.par134.value, "3":config.plugins.setupGlass17.par133.value, "2":config.plugins.setupGlass17.par132.value, "1":config.plugins.setupGlass17.par131.value, "0":config.plugins.setupGlass17.par127.value}[ff])))
-				else:
-					self["selected_item"].setText("")
-				self["help_pict"].hide()
-				self["help_txt"].setText(helpTxt.get(filename))
-			else:
-				filename = config.plugins.setupGlass17.par39.value+"/g17_setup_pict/"+filename+".png"
-				if fileExists(filename):
-					if ed:
-						self["selected_item"].setText("")
-					else:
-						self["selected_item"].setText(self.getCurrentValue())
-					self["help_txt"].setText("")
-					self["help_pict"].instance.setPixmapFromFile(filename)
-					self["help_pict"].show()
-				else:
-					self["selected_item"].setText("")
-					self["help_pict"].hide()
-					self["help_txt"].setText(helpTxt.get("00",""))
-
-	def readVersion(self):
-		version = "x.xx"
-		if os.path.isfile(PLUGINPATH + 'version') is True:
-			myfile = open(PLUGINPATH + 'version', 'r')
-			version = myfile.readline().strip()
-		return version
-
-	def chckTunerLabel(self):
-		self.isTunerLabel = False
-		if not config.plugins.setupGlass17.par4.value and config.plugins.setupGlass17.par14.value in ("1","4"):
-			self.isTunerLabel = True
-		else:
-			from Screens.G17screens import g17_extraScreen	
-			tmp = g17_extraScreen.get(str(config.plugins.setupGlass17.par6.value))
-			tmp = tmp.split("\n")
-			for i in tmp:
-				if "g17TunersLabel" in i:
-					self.isTunerLabel = True
-					break
-		self.showInfo()
-
-	def showInfo(self):
-		self.runSetup()
-		version = self.readVersion()
-		self.textShowInfo = (_("Version:") + " " + version + ", " + _("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", " + _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + ", " + _("Menu Icons") + ": " + str(config.plugins.setupGlass17.par69.value) + ", " + _("Weather Icons") + ": " + str(config.plugins.setupGlass17.par72.value) + ", " + _("HDD/SSD") + ": " + str(config.plugins.setupGlass17.par140.value))
-		self.vip = ""
-		self.pwdV = None
-		if os.path.isfile('/etc/vip17') and os.path.isfile('/usr/bin/unrar_bin'):
-			try:
-				self.pwdV = open('/etc/vip17', 'r').readline().strip()
-			except: pass
-			if self.pwdV is not None:
-				self.vip = "-vip"
-				self.textShowInfo = self.textShowInfo.replace(_("Version:"),_("Version:")+" VIP")
-		self["description"].setText(self.textShowInfo)
-		if self.firststart:
-			self["config"].onSelectionChanged.append(self.doMyHelpWindow)
-			self.firststart = False			
-			try:
-				self["help_pict"].instance.setScale(1)
-			except: pass
-			if ENA_ANIM:
-				try:
-					self["helpPicon"].instance.setScale(1)
-				except: pass
-				
-	def showAnimTxt(self,aa):
-		self.animTimer.stop()
-		if ENA_ANIM and aa.value != "None":
-			self["helpPiconFrame"].hide()
-			self['helpPicon'].hide()
-			try:
-				self['helpTxtAnim'].instance.setShowHideAnimation(aa.value)
-			except: pass
-			self["helpTxtAnim"].show()
-			self.animTimer.start(1000)
-
-	def showAnim(self,aa):
-		self.animTimer.stop()
-		if ENA_ANIM and aa != "None":
-			self["helpTxtAnim"].hide()
-			try:
-				self['helpPicon'].instance.setShowHideAnimation(aa)
-			except: pass
-			self["helpPiconFrame"].show()
-			try:
-				self['helpPicon'].show()
-				self["helpPicon"].instance.setPixmapFromFile(SKINPATH+"piconWdef.png")
-			except: pass
-			self.animTimer.start(1000)
-
-	def showNext(self):
-		self.animTimer.stop()
-		if self.eeTanim:
-			try:
-				self["helpTxtAnim"].setText(self.eeTanim)
-			except: pass
-		else:
-			try:
-				self["helpPicon"].instance.setPixmapFromFile(SKINPATH+"picon_default.png")
-			except: pass
-      				
-	def inetchck(self):
-		ret = internet("37.9.170.194")
-		if not ret:
-			ret = internet()
-		return ret
-
-	def _warderVersionTuple(self, value):
-		"""Compare Warder versions with TEST prereleases below the matching stable."""
-		try:
-			value = str(value).strip().lstrip("vV")
-			match = re.match(r"^(\d+)\.(\d+)\.(\d+)(?:-test(\d+))?$", value, re.IGNORECASE)
-			if not match:
-				return (0, 0, 0, 0, 0)
-			major, minor, patch = (int(match.group(i)) for i in (1, 2, 3))
-			test_no = match.group(4)
-			if test_no is None:
-				return (major, minor, patch, 1, 0)
-			return (major, minor, patch, 0, int(test_no))
-		except (TypeError, ValueError):
-			return (0, 0, 0, 0, 0)
-
-	def _warderFetchJson(self, url):
-		official_manifests = (
-			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json",
-			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json",
-		)
-		if str(url) not in official_manifests:
-			raise ValueError("unsafe manifest URL")
-		sep = "&" if "?" in url else "?"
-		url = "%s%scb=%d" % (url, sep, int(time1.time()))
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion(), "Accept": "application/json", "Cache-Control": "no-cache, no-store, max-age=0", "Pragma": "no-cache"})
-		with urlopen(req, timeout=12) as response:
-			final_url = str(response.geturl()).split("?", 1)[0]
-			if final_url not in official_manifests:
-				raise ValueError("unsafe manifest redirect")
-			return json.loads(response.read().decode("utf-8"))
-
-	def _warderDownload(self, url, target):
-		official_package_prefixes = (
-			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",
-			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",
-		)
-		if not any(str(url).startswith(x) for x in official_package_prefixes):
-			raise ValueError("unsafe package URL")
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/%s" % self.readVersion()})
-		sha = hashlib.sha256()
-		with urlopen(req, timeout=30) as response, open(target, "wb") as out:
-			if not any(str(response.geturl()).startswith(x) for x in official_package_prefixes):
-				raise ValueError("unsafe package redirect")
-			while True:
-				chunk = response.read(128 * 1024)
-				if not chunk:
-					break
-				out.write(chunk)
-				sha.update(chunk)
-		return sha.hexdigest().lower()
-
-	def _warderStartAutoUpdateCheck(self):
-		"""Start the silent one-shot check only after the setup screen layout exists."""
-		self.delayTimer.stop()
-		self.delayTimer.start(3000, True)
-
-	def _warderAutoUpdateCheck(self):
-		"""Silent one-shot update check only after FullHDGlass17 setup is opened."""
-		self.updatechckact(False, automatic=True)
-
-	def updatechckact(self, ena=False, automatic=False):
-		"""Check the official Warder Evolution GitHub update manifest.
-
-		The legacy rotating donation banner is intentionally disabled. The setup
-		header remains dedicated to normal skin/version information.
-		"""
-		self.delayTimer.stop()
-		self.showDonate = False
-		self.stateDonate = False
-		if not automatic and not config.plugins.setupGlass17.par75.value and not ena:
-			return
-
-		manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json"
-		if "-test" in self.readVersion():
-			manifest_url = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json"
-		try:
-			manifest = self._warderFetchJson(manifest_url)
-			new_version = str(manifest.get("version", "")).strip()
-			package_url = str(manifest.get("package_url", "")).strip()
-			sha256 = str(manifest.get("sha256", "")).strip().lower()
-			changelog = str(manifest.get("changelog", "")).strip()
-			if not new_version:
-				raise ValueError("missing version")
-			official_prefixes = (
-				"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",
-				"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",
-			)
-			if package_url and not any(package_url.startswith(x) for x in official_prefixes):
-				raise ValueError("unsafe package URL")
-			if package_url and not re.match(r"^[0-9a-f]{64}$", sha256):
-				raise ValueError("missing or invalid SHA256")
-		except Exception as err:
-			if ena:
-				self.session.open(MessageBox, _("Error reading version info!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 8)
-			return
-
-		current = self.readVersion()
-		if self._warderVersionTuple(new_version) <= self._warderVersionTuple(current):
-			if ena:
-				self.session.open(MessageBox, _("You have actual version installed, no update needed.") + "\n\n" + current, MessageBox.TYPE_INFO, 6)
-			return
-
-		if not package_url:
-			if ena:
-				self.session.open(MessageBox, _("New version:") + " " + new_version + "\n\n" + _("Download is not available yet."), MessageBox.TYPE_INFO, 8)
-			return
-
-		self.warderUpdate = {
-			"version": new_version,
-			"url": package_url,
-			"sha256": sha256,
-			"changelog": changelog,
-		}
-		msg = _("New version:") + " " + new_version + " " + _("detected") + "."
-		if changelog:
-			msg += "\n\n" + changelog
-		msg += "\n\n" + _("Do you want to update now?")
-		box = self.session.openWithCallback(self.updCont, MessageBox, msg, MessageBox.TYPE_YESNO)
-		box.setTitle("FullHDGlass17 - Warder Evolution")
-
-	def updCont(self, answer):
-		if not answer:
-			return
-		info = getattr(self, "warderUpdate", {})
-		url = info.get("url", "")
-		version = info.get("version", "")
-		expected_sha = info.get("sha256", "").lower()
-		official_prefixes = (
-			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/",
-			"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/",
-		)
-		if not url or not version or not any(url.startswith(x) for x in official_prefixes) or not re.match(r"^[0-9a-f]{64}$", expected_sha):
-			self.session.open(MessageBox, _("Error while downloading file!") + "\n\n" + _("Invalid update metadata."), MessageBox.TYPE_ERROR, 6)
-			return
-		filename = os.path.basename(url.split("?", 1)[0]) or ("fullhdglass17-warder-evolution_%s_all.ipk" % version)
-		if not (filename.endswith(".ipk") or filename.endswith(".deb")):
-			filename = "fullhdglass17-warder-evolution_%s_all.ipk" % version
-		self.fileName = filename
-		self.warderProgressBox = self.session.open(MessageBox, _("Updating...") + "\n\n" + _("Please wait."), MessageBox.TYPE_INFO, timeout=0, enable_input=False)
-		self.warderProgressBox.setTitle("FullHDGlass17 - Warder Evolution")
-		target = "/tmp/" + filename
-		try:
-			if os.path.exists(target):
-				os.remove(target)
-			actual_sha = self._warderDownload(url, target)
-			if actual_sha != expected_sha:
-				try:
-					os.remove(target)
-				except Exception:
-					pass
-				self.session.open(MessageBox, _("Downloaded package checksum does not match!") + "\n\nSHA256: " + actual_sha, MessageBox.TYPE_ERROR, 10)
-				return
-		except Exception as err:
-			self.session.open(MessageBox, _("Error while downloading file!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 8)
-			return
-
-		if filename.endswith(".deb"):
-			cmd = ["dpkg", "-i", "--force-overwrite", target]
-		else:
-			cmd = ["opkg", "--force-reinstall", "--force-overwrite", "install", target]
-
-		# Package-manager argv must be passed unchanged. subprocess.Popen avoids
-		# Enigma2 eConsoleAppContainer argv[0] differences between images.
-		self.warderInstallOutput = []
-		try:
-			self.warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-		except Exception as err:
-			self._warderInstallCleanup()
-			self.session.open(MessageBox, _("Error while updating to new version!!!") + "\n\n" + str(err), MessageBox.TYPE_ERROR, 10)
-			return
-		self.warderInstallTimer = eTimer()
-		try:
-			self.warderInstallTimer_conn = self.warderInstallTimer.timeout.connect(self._warderInstallPoll)
-		except AttributeError:
-			self.warderInstallTimer.timeout.get().append(self._warderInstallPoll)
-		self.warderInstallTimer.start(250, True)
-
-	def _warderInstallPoll(self):
-		process = getattr(self, "warderInstallProcess", None)
-		if process is None:
-			return
-		exitCode = process.poll()
-		if exitCode is None:
-			self.warderInstallTimer.start(250, True)
-			return
-		try:
-			out = process.communicate()[0]
-			if isinstance(out, bytes):
-				out = out.decode("utf-8", "replace")
-			self.warderInstallOutput.append(str(out))
-		except Exception:
-			pass
-		self.warderInstallProcess = None
-		self._warderInstallFinished(exitCode)
-
-	def _warderCloseProgress(self):
-		box = getattr(self, "warderProgressBox", None)
-		if box is not None:
-			try:
-				box.close()
-			except Exception:
-				pass
-		self.warderProgressBox = None
-
-	def _warderInstallCleanup(self):
-		self._warderCloseProgress()
-		try:
-			os.remove("/tmp/" + self.fileName)
-		except Exception:
-			pass
-
-	def _warderInstallFinished(self, exitCode):
-		# Closing the modal progress MessageBox and opening the result dialog in the
-		# same callback crashes newer OpenATV (the setup screen is not modal again
-		# until the next GUI event-loop turn). Defer the result dialog explicitly.
-		self._warderInstallCleanup()
-		self.warderInstallExitCode = int(exitCode)
-		self.warderInstallProcess = None
-		self.warderResultTimer = eTimer()
-		try:
-			self.warderResultTimer_conn = self.warderResultTimer.timeout.connect(self._warderShowInstallResult)
-		except AttributeError:
-			self.warderResultTimer.timeout.get().append(self._warderShowInstallResult)
-		self.warderResultTimer.start(250, True)
-
-	def _warderShowInstallResult(self):
-		target_version = getattr(self, "warderUpdate", {}).get("version", "")
-		installed = self.readVersion()
-		exitCode = getattr(self, "warderInstallExitCode", -1)
-		if exitCode == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
-			self.warderRestartBox = self.session.open(MessageBox, _("Update finished successfully!") + "\n\n" + _("GUI will restart automatically in 3 seconds.") + "\n" + installed, MessageBox.TYPE_INFO, 5, enable_input=False)
-			self.warderRestartTimer = eTimer()
-			try:
-				self.warderRestartTimer_conn = self.warderRestartTimer.timeout.connect(self.sDr)
-			except AttributeError:
-				self.warderRestartTimer.timeout.get().append(self.sDr)
-			self.warderRestartTimer.start(3000, True)
-		else:
-			out = "".join(getattr(self, "warderInstallOutput", []))
-			if len(out) > 5000:
-				out = out[-5000:]
-			msg = _("Error while updating to new version!!!") + " " + target_version
-			if out.strip():
-				msg += "\n\n" + out.strip()
-			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 15)
-
-	def rstAnswer(self, answer):
-		if answer:
-			self.sDr()
-
-	def dirSelected(self, answer):
-		if answer is not None:
-			config.plugins.setupGlass17.par124.value = answer
-			setPathFiles()
-      			
-	def dirConf(self, answer):
-		if answer is not None:
-			config.plugins.setupGlass17.par144.value = answer
-
-	def satxmlConf(self, answer):
-		if answer is not None:
-			if os.path.isfile(answer+"satellites.xml"):
-				config.plugins.setupGlass17.par141.value = answer
-			else:
-				self.session.open(MessageBox, _("The file satellites.xml do not exists in selected dir"), MessageBox.TYPE_ERROR, 5)
-
-	def save(self):
-		msg = _("GUI will now be restarted to activate changes in:") + "\n"
-		msgScr = ""
-		tmp = False
-		if self.d[39] != config.plugins.setupGlass17.par80.value:
-			if not isIP(config.plugins.setupGlass17.par80.value):
-				self.session.open(MessageBox, _("IP Address")+": " + str(config.plugins.setupGlass17.par80.value) + ER_F, MessageBox.TYPE_ERROR, 5)
-				return
-		if self.d[17] != config.plugins.setupGlass17.par40.value:
-			xxx = _("Set OLED off in Standby")
-			if self.d[4] != "0":	
-				msg += xxx + "\n"
-				standbyOledOnOff()
-			else:
-				self.session.open(MessageBox, xxx + ER_F, MessageBox.TYPE_ERROR, 5)
-				return
-		if self.d[32] != config.plugins.setupGlass17.par62.value:
-			if E2OK:
-				xxx = chnlSelPatch(config.plugins.setupGlass17.par62.value)
-				if not xxx:
-					self.session.open(MessageBox, _("ChannelSelection 2xOK") + ER_F, MessageBox.TYPE_ERROR, 5)
-					return			
-				msg += _("ChannelSelection 2xOK") + "\n"
-			else:
-				setCFGoff()
-		if config.plugins.setupGlass17.par125.value != self.d[55] or config.plugins.setupGlass17.par124.value != self.d[64]:
-			xxx = ({True:config.plugins.setupGlass17.par124.value[:-1],False:config.plugins.setupGlass17.par125.value}[config.plugins.setupGlass17.par125.value == "0"])
-			if not chckPath(xxx+"/hdg17_files"):
-				self.session.open(MessageBox, _("Sorry, cannot create dir on path:") + " " + xxx + " !!!", MessageBox.TYPE_ERROR, 5)
-				return
-			setPathFiles()
-		if self.d[5] != config.plugins.setupGlass17.par7.value:
-			if ((config.plugins.setupGlass17.par7.value == "Icons" or self.d[5] == "Icons") and (config.plugins.setupGlass17.par7.value == "Icons Bar" or self.d[5] == "Icons Bar")) \
-			or ((config.plugins.setupGlass17.par7.value == "Icons" or self.d[5] == "Icons") and (config.plugins.setupGlass17.par7.value == "Icons Right" or self.d[5] == "Icons Right")) \
-			or ((config.plugins.setupGlass17.par7.value == "Icons Right" or self.d[5] == "Icons Right") and (config.plugins.setupGlass17.par7.value == "Icons Bar" or self.d[5] == "Icons Bar")):
-				msg += _("Menu type") + "\n"
-			elif config.plugins.setupGlass17.par7.value == "Icons" or self.d[5] == "Icons" or config.plugins.setupGlass17.par7.value == "Icons Right" or self.d[5] == "Icons Right" or config.plugins.setupGlass17.par7.value == "Icons Bar" or self.d[5] == "Icons Bar":
-				ttmp = "orig17"
-				if config.plugins.setupGlass17.par7.value == "Icons" or config.plugins.setupGlass17.par7.value == "Icons Right" or config.plugins.setupGlass17.par7.value == "Icons Bar": 
-					ttmp = "new17"
-				if setMenuPyo(ttmp):
-					msg += _("Menu type") + "\n"
-					xxx = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
-				else:
-					msg = _("Menu type") + ": " + str(config.plugins.setupGlass17.par7.value) + ER_F
-					self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 5)
-					return
-			else:
-				msg += _("Menu type") + "\n"
-				xxx = changeScreenXml("menu", menusel(config.plugins.setupGlass17.par7.value))
-		if config.plugins.setupGlass17.par27.value and not os.path.exists(("/proc/stb/video/alpha")):
-			msg = _("Fade cannot be used, alhpa file missing!!!")
-			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 5)
-			return
-		if config.plugins.setupGlass17.par23.value and XCPU == "sh4":
-			msg = _("HDD/SSD power state check is not available for SH4")
-			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 5)
-			return
-		if self.d[29] != config.plugins.setupGlass17.par58.value:
-			if not ECL:
-				config.plugins.setupGlass17.par58.value = False
-			else:
-				msg += _("Set Clear memory") + "\n"
-		if self.d[30] != config.plugins.setupGlass17.par59.value:
-			if config.plugins.setupGlass17.par59.value:
-				x = setEncodingUser()
-				msg += _("Set user encoding.conf") + "\n" 
-			else:
-				x = setEncodingUser(False)
-				msg += _("Set original encoding.conf") + "\n"
-			if not x:
-				self.session.open(MessageBox, (msg.replace("\n","").replace(_("GUI will now be restarted to activate changes in:"),"") + ER_F), MessageBox.TYPE_ERROR, 5)
-				return
-		if self.d[8] != config.plugins.setupGlass17.par6.value:
-			isOk = checkScreen(config.plugins.setupGlass17.par6.value)
-			if not isOk:
-				msg = (_("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + " " + _("is incorrect, please, select existing/correct screen !!!"))
-				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)
-				return
-			tmp = True
-			msgScr = _("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value)
-			self.d[8] = config.plugins.setupGlass17.par6.value					
-			config.plugins.setupGlass17.par6.save()
-			if config.plugins.setupGlass17.par227.value == "0":
-				x = changeSkinXml("NumberZapExt", chckPiconSize())
-		if self.d[7] != config.plugins.setupGlass17.par1.value:
-			if not checkIcons(config.plugins.setupGlass17.par1.value):
-				msg = (_("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + " " + _("is incorrect, please, select correct icons !!!"))
-				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)
-				return
-			self.d[7] = config.plugins.setupGlass17.par1.value
-			msg += _("Icons type") + ": " + str(config.plugins.setupGlass17.par1.value) + "\n"	
-			config.plugins.setupGlass17.par1.save()
-			x = setTypeIcos(self.d[7])
-		if self.d[18] != config.plugins.setupGlass17.par44.value or self.d[19] != config.plugins.setupGlass17.par45.value:
-			isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
-			if isOk != "?":
-				x = windowStyle(isOk, color)
-				if msgScr == "":
-					msg += _("Extra Screen") + ": " + str(config.plugins.setupGlass17.par6.value) + ", "
-				msg += _("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + ", " + _("Title color:") + " " + str(config.plugins.setupGlass17.par45.value) + "\n"
-			else:
-				msg = (_("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + " " + _("is incorrect, style will not be changed!!!") + "\n\n" + _("Save again to apply all setup changes without style change"))
-				self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)				
-				self.d[18] = config.plugins.setupGlass17.par44.value
-				self.d[19] = config.plugins.setupGlass17.par45.value
-				return
-		if self.d[16] != config.plugins.setupGlass17.par41.value:		
-			msg += _("Picon default, marker, next ...") + ": " + config.plugins.setupGlass17.par41.value + "\n"
-			setTypePicon()
-		if (self.d[38] != config.plugins.setupGlass17.par71.value) and ("w" in config.plugins.setupGlass17.par12.value or "w" in config.plugins.setupGlass17.par31.value):
-			msg += _("Enable next city in Weather") + "\n"
-		if self.d[6] != config.plugins.setupGlass17.par4.value:
-			msg += _("Permanent Extra Infobar") + "\n"
-			if config.plugins.setupGlass17.par4.value:
-				x = changeSkinXml("InfoBar","3")
-			else:
-				x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
-				msg += _("Standard Infobar type") + "\n"
-		elif not config.plugins.setupGlass17.par4.value and self.d[11] != config.plugins.setupGlass17.par14.value:	
-			msg += _("Standard Infobar type") + "\n"
-			x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
-		if self.d[3] != config.plugins.setupGlass17.par12.value:
-			msg += _("Special Info type") + "\n"
-		if self.d[9] != config.plugins.setupGlass17.par31.value:
-			msg += _("User info type") + "\n"
-		if self.d[15] != config.plugins.setupGlass17.par23.value:
-			msg += _("HDD/SSD state") + "\n"
-		if self.d[14] != config.plugins.setupGlass17.par34.value:
-			msg += _("Neutrino keymap") + "\n"
-		if self.d[23] != config.plugins.setupGlass17.par49.value:
-			msg += _("Localization of the skin") + "\n"
-		if self.d[10] != config.plugins.setupGlass17.par33.value:
-			msg += _("User info act./next switching") + "\n"
-		xxx = False
-		if self.d[12] != config.plugins.setupGlass17.par18.value:
-			msg += _("Volume type") + "\n"
-			xxx = True
-		if self.d[24] != config.plugins.setupGlass17.par51.value or self.d[25] != config.plugins.setupGlass17.par52.value:
-			msg += _("Set Volume and Mute positions") + "\n"
-			xxx = True
-		if xxx:
-			xxx = changeSkinXml("Volume", config.plugins.setupGlass17.par18.value)
-			xxx = changeSkinXml("Mute")
-			xxx = chckVolMute()
-		if self.d[13] != config.plugins.setupGlass17.par19.value:
-			msg += _("Channel selection type") + "\n"
-			xxx = changeSkinXml("ChannelSelection", config.plugins.setupGlass17.par19.value)
-			x = chckPigFont()
-		else:
-			eee = True
-			if self.d[66] != config.plugins.setupGlass17.par145.value or self.d[67] != config.plugins.setupGlass17.par146.value or self.d[68] != config.plugins.setupGlass17.par147.value or self.d[69] != config.plugins.setupGlass17.par148.value:
-				if (config.plugins.setupGlass17.par145.value == "0" and self.d[66] != "0") or (config.plugins.setupGlass17.par146.value == "0" and self.d[67] != "0") or (config.plugins.setupGlass17.par147.value == "0" and self.d[68] != "0") or (config.plugins.setupGlass17.par148.value == "0" and self.d[69] != "0"):
-					eee = False
-					xxx = changeSkinXml("ChannelSelection", config.plugins.setupGlass17.par19.value)
-					x = chckPigFont()
-				else:
-					x = changeChF()
-				msg += _("Channel selection font size") + "\n"
-			if eee and (self.d[45] != config.plugins.setupGlass17.par109.value or self.d[46] != config.plugins.setupGlass17.par110.value or self.d[47] != config.plugins.setupGlass17.par111.value or self.d[48] != config.plugins.setupGlass17.par117.value):
-				x = cChannelsel(self.d[45],self.d[46],self.d[47],self.d[48])
-				msg += _("Channel selection type")+" ("+_("color") + ")\n"
-		if self.d[4] != config.plugins.setupGlass17.par15.value:
-			if config.plugins.setupGlass17.par15.value == "0":
-				xxx = setOledXml(USERORI)
-			elif self.d[4] == "0":
-				xxx = chckUserHdg()
-				xxx = setOledMore()
-			else:
-				xxx = changeScreenXml("oled", config.plugins.setupGlass17.par15.value, self.d[4])
-			msg += _("OLED type") + "\n"
-		if self.d[37] != config.plugins.setupGlass17.par68.value:						
-			msg += _("PIG type") + "\n"            
-			xxx = changePIGres()			
-		if self.d[22] != config.plugins.setupGlass17.par48.value:
-			msg += _("Show Satellite position in TP info") + "\n"			
-		if self.d[34] != config.plugins.setupGlass17.par64.value:
-			msg += _("RadioScreenSaver") + "\n"		
-		if config.plugins.setupGlass17.par54.value != self.d[27]:		
-			msg += _("EPG selection type") + "\n"
-			x = changeSkinXml("EPGSelection", config.plugins.setupGlass17.par54.value)
-			x = chckPigFont(1)
-		elif self.d[26] != config.plugins.setupGlass17.par53.value:
-			if config.plugins.setupGlass17.par53.value == "0":
-				x = changeSkinXml("EPGSelection", config.plugins.setupGlass17.par54.value)
-				x = chckPigFont(1)
-			else:			
-				x = setFontEventEpgsel(config.plugins.setupGlass17.par53.value)
-			msg += _("Extendend description font size") + "\n"
-		if config.plugins.setupGlass17.par46.value != self.d[20]:
-			if config.plugins.setupGlass17.par46.value == "0":
-				x = setFontListEpg("32")
-			else:
-				x = setFontListEpg(config.plugins.setupGlass17.par46.value)
-			msg += _("EPG list font size") + "\n"
-		if config.plugins.setupGlass17.par55.value != self.d[31] and self.d[31] == "2":
-			config.usage.infobar_timeout.value = config.plugins.setupGlass17.par61.value
-		if self.d[2] != config.plugins.setupGlass17.par78.value and (self.d[2] == "n" or config.plugins.setupGlass17.par78.value == "n"):
-			msg += _("Special Info type") + " ("+_("extensions")+")" + "\n"
-		if self.d[42] != config.plugins.setupGlass17.par92.value:
-			msg += _("Show yesterday") + "\n"
-		if self.d[43] != config.plugins.setupGlass17.par93.value:
-			msg += _("Warm")+" ("+_("color") + ")\n"
-		if self.d[44] != config.plugins.setupGlass17.par94.value:
-			msg += _("Cold")+" ("+_("color") + ")\n"
-		if self.d[49] != config.plugins.setupGlass17.par114.value:
-			msg += _("Show recording icon") + "\n"
-		if self.d[50] != config.plugins.setupGlass17.par118.value:
-			msg += _("ECM Labels")+" ("+_("color") + ")\n"
-		if self.d[51] != config.plugins.setupGlass17.par119.value:
-			msg += _("ECM Values")+" ("+_("color") + ")\n"
-		if self.d[52] != config.plugins.setupGlass17.par121.value:
-			msg += _("TP type")+" ("+_("color") + ")\n"
-		if self.d[53] != config.plugins.setupGlass17.par122.value:
-			msg += _("TP info")+" ("+_("color") + ")\n"
-		if self.d[54] != config.plugins.setupGlass17.par123.value:
-			msg += _("Video resolution")+" ("+_("color") + ")\n"
-		if self.d[56] != config.plugins.setupGlass17.par126.value:
-			msg += _("Calculation of channel numbers") + "\n"
-		if self.d[57] != config.plugins.setupGlass17.par128.value:
-			msg += _("Date") +" ("+_("color") + ")\n"
-		if self.d[58] != config.plugins.setupGlass17.par129.value:
-			msg += _("Time") +" ("+_("color") + ")\n"
-		if self.d[59] != config.plugins.setupGlass17.par130.value:
-			msg += _("Seconds") +" ("+_("color") + ")\n"
-		if self.d[60] != config.plugins.setupGlass17.par135.value:
-			msg += _("Channel name") +" ("+_("color") + ")\n"
-		if self.d[61] != config.plugins.setupGlass17.par136.value:
-			msg += _("Event now") +" ("+_("color") + ")\n"
-		if self.d[62] != config.plugins.setupGlass17.par137.value:
-			msg += _("Event next") +" ("+_("color") + ")\n"
-		if self.d[63] != config.plugins.setupGlass17.par22.value:
-			config.plugins.setupGlass17.par140.value = autoHdd()	
-			config.plugins.setupGlass17.par182.value = autoTypeHdd()
-		if self.d[65] != config.plugins.setupGlass17.par141.value:
-			msg += _("Path to satellites.xml") + "\n"
-		if self.d[28] != config.plugins.setupGlass17.par56.value:
-			msg += _("Animated Weather Icons") + "\n"
-		if self.d[35] != config.plugins.setupGlass17.par66.value:
-			msg += _("Animated Weather Icons") + "\n" 
-		if self.d[83] != config.plugins.setupGlass17.par169.value:
-			msg += _("Animated Weather Icons") + "\n" 
-		if self.d[21] != config.plugins.setupGlass17.par47.value:
-			msg += chMT()
-		if self.d[74] != config.plugins.setupGlass17.par157.value or self.d[73] != config.plugins.setupGlass17.par156.value or self.d[72] != config.plugins.setupGlass17.par155.value or self.d[71] != config.plugins.setupGlass17.par154.value or self.d[70] != config.plugins.setupGlass17.par153.value:
-			msg += lbs()
-		if self.d[36] != config.plugins.setupGlass17.par67.value:
-			x = chckFifo()
-			msg += _("Service scan long list") + "\n"
-		if (config.plugins.setupGlass17.par8.value != "3" and self.d[75] == "3") or (config.plugins.setupGlass17.par8.value == "3" and self.d[75] != "3") or (config.plugins.setupGlass17.par8.value in ("0","1","2") and self.d[75] in ("4","5","6")) or (self.d[75] in ("0","1","2") and config.plugins.setupGlass17.par8.value in ("4","5","6")):
-			msg += _("Second picon type") + "\n"			
-		if config.plugins.setupGlass17.par203.value != self.d[97] or config.plugins.setupGlass17.par165.value != self.d[80] or self.d[81] != config.plugins.setupGlass17.par166.value or config.plugins.setupGlass17.par161.value != self.d[76] or self.d[77] != config.plugins.setupGlass17.par162.value or self.d[78] != config.plugins.setupGlass17.par163.value or self.d[79] != config.plugins.setupGlass17.par164.value or self.d[82] != config.plugins.setupGlass17.par167.value:
-			msg += _("Animation") + "\n"
-		if self.d[84] != config.plugins.setupGlass17.par171.value:
-			msg += "("+_("SPECIAL INFO")+") " + _("Type") + "\n" 
-		if self.d[85] != config.plugins.setupGlass17.par172.value:
-			msg += "("+_("USER INFO")+") " + _("Type") + "\n"
-		if self.d[86] != config.plugins.setupGlass17.par174.value:
-			msg += "("+_("WEATHER")+") " + _("Date") +" ("+_("color") + ")\n"
-		if self.d[87] != config.plugins.setupGlass17.par175.value:
-			msg += "("+_("WEATHER")+") " + _("State") +" ("+_("color") + ")\n"
-		if self.d[88] != config.plugins.setupGlass17.par180.value:
-			msg += _("NETATMO") + "\n"
-		if self.d[89] != config.plugins.setupGlass17.par183.value:
-			msg += _("Vertical Offset") + "\n"
-		if self.d[90] != config.plugins.setupGlass17.par143.value:
-			msg += _("10 days forecast") + "\n"
-		if self.d[91] != config.plugins.setupGlass17.par189.value:
-			msg += _("Enable eBitrateCalculator") + "\n"
-		if self.d[92] != config.plugins.setupGlass17.par190.value:
-			if setONOFF():
-				msg += _("On/Off icons") + "\n"
-		if self.d[0] != config.plugins.setupGlass17.par50.value:
-			msg += _("Display CW0/1 in Side bar") + "\n"
-		if self.d[93] != config.plugins.setupGlass17.par198.value:
-			msg += _("Poster") + "\n"
-		if self.d[94] != config.plugins.setupGlass17.par200.value or self.d[95] != config.plugins.setupGlass17.par201.value:
-			msg += _("Poster") + "/" + _("Set Position") + "\n"
-		if self.d[96] != config.plugins.setupGlass17.par202.value:
-			msg += _("Poster") + "/" + _("Size") + "\n"
-		if self.d[98] != config.plugins.setupGlass17.par207.value:
-			msg += _("Poster") + "/" + _("Removing current Poster") + "\n"
-		if self.d[99] != config.plugins.setupGlass17.par208.value:
-			x = changeSkinXml("SplitScreen", config.plugins.setupGlass17.par208.value)
-			msg += _("VTi SplitScreen") + "\n"
-		if (self.d[100] == "0" and config.plugins.setupGlass17.par209.value != "0") or (self.d[100] != "0" and config.plugins.setupGlass17.par209.value == "0"):
-			msg += _("Network speed") + "\n"
-		if self.d[101] != config.plugins.setupGlass17.par210.value or self.d[102] != config.plugins.setupGlass17.par211.value:
-			msg += _("Network speed") + "/" + _("Set Position") + "\n"
-		if self.d[103] != config.plugins.setupGlass17.par213.value:
-			msg += _("Network speed")+" ("+_("color") + ")\n"
-		if self.d[104] != config.plugins.setupGlass17.par214.value:
-			msg += _("Progress bar foreground")+" ("+_("color") + ")\n"
-		if self.d[105] != config.plugins.setupGlass17.par215.value:
-			msg += _("Progress bar background")+" ("+_("color") + ")\n"
-		if self.d[106] != config.plugins.setupGlass17.par222.value:
-			msg += _("Progress bar pixmap") + "\n"
-		if self.d[107] != config.plugins.setupGlass17.par223.value:
-			msg += _("Hide SNR/AGC (Q/S) if value is 0") + "\n"
-		if self.d[108] != config.plugins.setupGlass17.par224.value:		
-			msg += _("Movie selection type") + "\n"
-			x = changeSkinXml("MovieSelection", config.plugins.setupGlass17.par224.value)
-			x = chckPigFont(1)
-		if self.d[109] != config.plugins.setupGlass17.par226.value:
-			msg += _("Network speed")+" ("+_("Type") + ")\n"
-		if self.d[110] != config.plugins.setupGlass17.par227.value:
-			msg += _('Extended Number ZAP Picon Size') + "\n"
-			if config.plugins.setupGlass17.par227.value == "0":
-				x = changeSkinXml("NumberZapExt", chckPiconSize())
-			else:
-				x = changeSkinXml("NumberZapExt", config.plugins.setupGlass17.par227.value)
-		if config.plugins.setupGlass17.par229.value != self.d[111]:		
-			msg += _("EventView type") + "\n"
-			x = changeSkinXml("EventView", config.plugins.setupGlass17.par229.value)
-			x = chckPigFont(1)
-		if msg != _("GUI will now be restarted to activate changes in:") + "\n":                                                                                            
-			try:
-				self.session.open(MessageBox, str(msg+msgScr), MessageBox.TYPE_INFO, 8)
-			except: pass
-			self.rstGUI()
-		else:
-			if tmp:
-				msg = _("Do you want restart GUI to activate the screen:") + " " + str(config.plugins.setupGlass17.par6.value) + " " + _("now?")
-				restartbox = self.session.openWithCallback(self.typeAnswer, MessageBox, msg, MessageBox.TYPE_YESNO)
-				restartbox.setTitle(_("Restart GUI now?"))
-			else:
-				self.saving()
-
-	def typeAnswer(self, answer):
-		if answer:
-			self.rst = True
-		self.saving()
-
-	def rstGUI(self):
-		self.rst = True				
-		self.start_rst.start(8000, True)
-
-	def saving(self):
-		allLines = ""
-		try:
-			a = config.plugins.setupGlass17.dict()
-			for x in range(1, len(ALL_CFG)+1):
-				if ALL_CFG[x-1] != "":
-					for i in a.items():
-						idx = int(str(i[0]).replace("par",""))
-						if idx == x:
-							cfg = i[1].getValue()
-							allLines += "%s: %s\n" % (ALL_CFG[x-1], cfg)
-							i[1].save()
-							break
-			if allLines != "":
-				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
-		except: pass
-		configfile.save()
-		if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:
-			_refreshLiveWeather()
-			self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
-		config.plugins.setupGlass17.par43.value = True
-		if self.rst:
-			self.sDr()
-		elif self.destroyTimers():
-			self.close()    
-
-	def sDr(self):
-		if XCPU != "sh4":
-			try:
-				self.session.open(TryQuitMainloop, 3)
-			except: 
-				subprocess.call(RSTCMD)
-		else:
-			subprocess.call(RSTCMD)
-
-	def isNum(self, txt):
-		try:
-			tt = int(txt)
-			return True
-		except ValueError:
-			return False
-
-	def restoreTofactory(self):
-		restartbox = self.session.openWithCallback(self.restoreTofactoryAnswerNow, MessageBox, _("Reset all settings of FHDG 17"), MessageBox.TYPE_YESNO, default = False)
-		restartbox.setTitle(_("now?"))
-
-	def restoreTofactoryAnswerNow(self,a):
-		if a:
-			self.restoreCfgFromFile(PLUGINPATH+"defaults")
-
-	def restoreCfgFromFile(self,cfile):
-		if cfile is None:
-			return
-		msg = _("Restore config") + ER_F
-		if not os.path.isfile(cfile):
-			self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR, 5)
-			return
-		try:
-			num = 0
-			lenCfg = 0
-			msg = _(" failed") + ": "
-			a = config.plugins.setupGlass17.dict()
-			f = open(cfile,"r")
-			for i in f.readlines():
-				tmp = i.strip().split(":")
-				if len(tmp) == 2 and tmp[1] is not None and tmp[1] != "":
-					for x in range(1, len(ALL_CFG)+1):
-						if ALL_CFG[x-1] != "" and tmp[0] == ALL_CFG[x-1]:
-							ena = True
-							tmp[1] = tmp[1].replace("\n","")
-							tmp[1] = str(tmp[1].strip())
-							typeValue = tmp[1]								
-							if x in [1,6,10,11,44,51,52,69,72,96,97,149,150,158,159,170,200,201,210,211] and not self.isNum(tmp[1]):
-								ena = False
-							elif x not in [5,8,14,15,17,18,19,24,28,35,46,50,53,54,55,57,68,74,77,79,86,87,90,91,104,125,126,141,145,146,147,148,153,154,155,156,157,171,172,181,183,184,205,208,209,224,226,227] and self.isNum(tmp[1]):
-								typeValue = int(tmp[1])            
-								if int(tmp[1]) < 1 or ("x-pos." in tmp[0] and 1920 < int(tmp[1])) or ("y-pos." in tmp[0] and 1080 < int(tmp[1])):
-									ena = False
-							elif "False" in tmp[1]:
-								typeValue = False
-							elif "True" in tmp[1]:
-								typeValue = True
-							elif x == 80:
-								if not isIP(tmp[1]):
-									ena = False
-							for ii in a.items():
-								idx = int(str(ii[0]).replace("par",""))
-								if idx == x:
-									cfg = ii[1].getValue()
-									if (cfg is True or cfg is False) and not (typeValue is True or typeValue is False):
-										ena = False								
-									if ena:
-										ii[1].setValue(typeValue)
-										bb = ii[1].getValue()
-										if str(bb) == str(typeValue) or str(bb) == str(tmp[1]):
-											lenCfg += 1
-										else:
-											msg += "%s, " % tmp[0]
-									else:
-										msg += "%s, " % tmp[0]
-									break
-							num += 1
-							break
-			msg = msg[:-2]
-			f.close()
-		except: pass
-		if num == lenCfg:
-			msg = _("Config loaded successfully!") + " (%s)" % num
-		self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 5)		
-		self.showInfo()    
-    		
-	def exit(self):
-		def gotoRestart(msg):
-			self.rst = True				
-			try:
-				self.start_rst_conn = None
-				self.start_rst_conn = self.start_rst.timeout.connect(self.exitNow)
-			except AttributeError:
-				try:
-					self.start_rst.timeout.get().remove(self.saving)
-				except: pass
-				self.start_rst.timeout.get().append(self.exitNow)
-			self.start_rst.start(8000, True)
-			self.session.open(MessageBox, msg, MessageBox.TYPE_INFO, 8)
-		if self.d[18] != config.plugins.setupGlass17.par44.value or self.d[19] != config.plugins.setupGlass17.par45.value:
-			isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
-			if isOk != "?":
-				x = windowStyle(isOk, color)
-				msg = _("GUI will now be restarted to activate changes in:") + "\n\n" + _("Style:") + " " + str(config.plugins.setupGlass17.par44.value) + ", " + _("Title color:") + " " + str(config.plugins.setupGlass17.par45.value) + "\n"
-				gotoRestart(msg)
-			else:
-				self.exitNow()
-		else:
-			self.exitNow()
-			
-	def exitNow(self):
-		try:
-			a = config.plugins.setupGlass17.dict()
-			for x in range(1, len(ALL_CFG)+1):
-				if ALL_CFG[x-1] != "":
-					for i in a.items():
-						idx = int(str(i[0]).replace("par",""))
-						if idx == x:
-							i[1].cancel()
-							break
-		except: pass
-		if self.rst:
-			self.sDr()
-		else:
-			setPathFiles()
-			if self.destroyTimers():
-				self.close()   		
-
-	def destroyTimers(self):
-		del self.d
-		self.start_rst.stop()
-		self.start_rst = None
-		self.start_rst_conn = None
-		self.delayTimer.stop()
-		self.delayTimer = None
-		self.delayTimer_conn = None
-		if ENA_ANIM:
-			self.animTimer.stop()
-			self.animTimer = None
-			self.animTimer_conn = None
-		return True
-
-	def downMenu(self):       		
-		self.session.open(downloadMenu) 
-
-	def showHistory(self):                     
-		self.session.open(historyScreen)
-    
-	def createSummary(self):
-		return g17SetupSummary
-
-	def getCurrentEntry(self):
-		tmp = "Full HD Glass17"
-		if not self.isMainMenu:
-			try:
-				tmp = str(self["config"].getCurrent()[0])
-			except: pass
-		return tmp
-		
-	def getCurrentValue(self):
-		tmp = _("Welcome in setup")
-		if self.isMainMenu:
-			try:
-				sel = self["list"].getCurrent()		
-				if sel:
-					tmp = str(sel[1][7])
-			except: pass
-		else:
-			try:
-				tmp = str(self["config"].getCurrent()[1].getText())		
-			except: pass
-		return tmp
-##########################################################################################################################
-class g17SetupSummary(Screen):
-
-	def __init__(self, session, parent):
-		Screen.__init__(self, session, parent = parent)
-		self.tst = False
-		if not IS800SE and not IS820:
-			try:
-				self["item"] = Label("")
-				self["value"] = Label("")
-				self.tst = True
-			except: pass
-		if not self.tst:
-			try:
-				self["item"] = StaticText("")
-				self["value"] = StaticText("")
-			except: pass	
-		try:
-			self.parent["config"].onSelectionChanged.append(self.selectionChanged)
-			self.parent.onConfigEntryChanged.append(self.selectionChanged)
-		except: pass
-		try:
-			self.parent['list'].onSelectionChanged.append(self.selectionChanged)
-		except: pass
-		self.onLayoutFinish.append(self.selectionChanged)
-
-	def selectionChanged(self):
-		try:
-			self["item"].text = self.parent.getCurrentEntry()
-			self["value"].text = self.parent.getCurrentValue()
-		except: pass
-##########################################################################################################################		
-class downloadMenu(Screen):
-
-	skin = """
-	<screen name="downloadMenu" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="black" >
-	<widget name="dwn" position="0,0" size="1920,150" zPosition="2" valign="center" halign="center" font="Prive3;55" transparent="0" backgroundColor="black" foregroundColor="orange" />
-  <widget name="list" position="50,70" size="1820,889" zPosition="0" scrollbarMode="showOnDemand" backgroundColor="black" />      
-	<widget name="key_red" position="0,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="480,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_yellow" position="960,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="yellow" />
-	<widget name="key_blue" position="1440,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,1000" size="480,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="480,1000" size="480,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="960,1000" size="480,2" backgroundColor="yellow" zPosition="5" transparent="0" />
-    <eLabel position="1440,1000" size="480,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
-
-	def __init__(self,session):
-		self.skin = downloadMenu.skin
-		self.session = session
-		Screen.__init__(self, session)
-		self.list = []
-		self["dwn"] = Label(_("Wait for the file downloads to complete"))
-		self["dwn"].hide()
-		self["key_green"] = Label(_("Select"))
-		self["key_yellow"] = Label(_("Cleaning Picons"))
-		self["key_red"] = Label(_("Exit"))
-		self["key_blue"] = Label(_("Start Download"))
-		self["key_blue"].hide()
-		self["type_preview"] = Pixmap()
-		self['list'] = thumbList2(self.list)	
-		self.enaSelectsat = False
-		self.clrSelectsat = False
-		self.toDown = False
-		self.firststart = True
-		self.ena = True
-		self.msg = ""
-		self.warderChannelState = "idle"
-		self.warderChannelQueue = None
-		self.warderChannelJobs = []
-		self.warderChannelInstalled = set()
-		self.warderChannelAvailable = set()
-		self.warderChannelPackageResults = []
-		self.warderChannelCurrentJob = None
-		self.warderPiconPrefs = warderPiconSync.default_preferences()
-		self.warderPositionSelectionAttempted = False
-		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
-		self.warderAuxRows = ("aux-prov", "aux-sat", "aux-cam", "aux-weather")
-		self.warderAuxChoiceRow = None
-		self.warderLargeSelectionPending = False
-		self.warderCurrentActionRow = None
-		self.warderOperationSucceeded = False
-		self.warderOperationFailed = False
-		self.warderFailedRows = set()
-		self.warderLegacyChannelQueue = None
-		self.warderLegacyChannelAvailable = set()
-		self.warderLegacyChannelInstalled = set()
-		self.warderLegacyChannelWanted = None
-		self.warderLegacyPiconDestination = None
-		self.warderLegacyChannelFailures = 0
-		self.warderLegacyArchivesProcessed = 0
-		sel = '***'+_('Select')+'***   '
-		self.menuListAll = {
-			0:['wp-pos',_('Satellite positions') + ': ' + _('No position selected'),'warder-picon-positions','','x'],
-			1:['wp-res',_('Picon resolution') + ': ' + _('No resolution selected'),'warder-picon-resolution','','x'],
-			2:['wp-style',_('Picon colour') + ': ' + _('No colour selected'),'warder-picon-style','','x'],
-			3:['wp-dest',_('Picon location') + ': ' + self.warderPiconPrefs["destination"],'warder-picon-destination','','x'],
-			4:['wp-mode',_('Update method') + ': ' + _('No update method selected'),'warder-picon-mode','','x'],
-			5:['aux-prov',_('Provider logos'),'piconProv','','x'],
-			6:['aux-sat',_('Satellite logos'),'piconSat','','x'],
-			7:['aux-cam',_('CAM picons'),'piconCam','','x'],
-			8:['aux-weather',_('Weather picons'),'piconWeather','','x'],
-			9:['oa',sel+_('picon OLED'),8,'','x'],
-			10:['h',_('Help'),'help','','x'],
-			11:['i',_('Set of icons and prewievs'),'icon_sets_preview','','x'],
-			12:['a',_('ExtraScreens graphics'),'extraScreens','','x'],
-			13:['m',_('Menu icons'),'menuicons','','x'],
-			14:['mb',_('Menu icons')+' ('+_('big')+')','menuiconsbig','','x'],
-			15:['w',_('Weather icons'),'weatherIconsN','','x'],
-			16:['wanim',_("Animated Weather Icons"),'animWeatherIcons','','x'],
-			17:['7z',"7zip",({"aarch64":"7zip-aa","arm":"7zip-a","mipsel":"7zip-m"}.get(XCPU, '')),'','x']
-			}	
-		self.dwnTimer = eTimer()
-		try:
-			self.dwnTimer_conn = self.dwnTimer.timeout.connect(self.dwnLoop)
-		except AttributeError:
-			self.dwnTimer.timeout.get().append(self.dwnLoop)
-		self["actions"] = ActionMap(['WizardActions', 'ColorActions'],
-		{
-			"blue": self.startDown,
-			"green": self.doSelection,
-			"red": self.exit,
-			"yellow": self.cleanPicon,
-			"back": self.exit,
-			"ok": self.doSelection
-		})    
-		self.onLayoutFinish.append(self.createList)
-		self['list'].onSelectionChanged.append(self.reactivate)	
-
-	def destDir(self,a):
-		return ({9:"picon_220x132",3:"picon_400x240",4:"picon_50x30",5:"picon",6:"picon_50x30",7:"picon",8:"piconOled"}[a])
-
-	def exit(self):
-		if not self.ena:
-			return
-		if self.dwnTimer is not None and self.dwnTimer.isActive():
-			self.dwnTimer.stop()
-		self.dwnTimer_conn = None
-		self.dwnTimer = None
-		self.close()
-
-	def reactivate(self):
-		self.toDown = warderPiconSync.has_executable_action(self.warderPiconPrefs)
-
-		for x in self.menuListAll:
-			if self.menuListAll[x][4] == "d":
-				self.toDown = True
-				break
-		if self.toDown:
-			self["key_blue"].show()
-		else:
-			self["key_blue"].hide()
-				
-	def startDown(self, destination_confirmed=False):
-		if not self.ena or self.warderChannelState == "running":
-			return
-		prepared = bool(self.warderPiconPrefs.get("prepared"))
-		if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs):
-			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
-			return
-		if prepared and not warderPiconSync.channel_preferences_ready(self.warderPiconPrefs):
-			self.session.open(historyScreen, _("Result"), _("Choose a resolution, colour, location and update method before downloading."))
-			return
-		if not self.toDown:
-			return
-		if prepared:
-			destination = warderPiconSync.validate_destination(self.warderPiconPrefs.get("destination"))
-			if not destination:
-				self.session.open(historyScreen, _("Result"), _("Invalid picon destination"))
-				return
-			if os.path.islink(destination):
-				self.session.open(historyScreen, _("Result"), _("Invalid picon destination"))
-				return
-			if not warderPiconSync.destination_storage_available(destination):
-				self.session.open(historyScreen, _("Result"), _("Selected storage is not mounted"))
-				return
-			if not os.path.isdir(destination):
-				if not destination_confirmed:
-					message = _("Create picon directory?") + "\n" + destination
-					self.session.openWithCallback(self.warderCreateDestinationAnswer, MessageBox, message, MessageBox.TYPE_YESNO, default=False)
-					return
-				try:
-					os.makedirs(destination, exist_ok=True)
-				except OSError:
-					self.session.open(historyScreen, _("Result"), _("Cannot create picon destination"))
-					return
-			if not os.path.isdir(destination) or not os.access(destination, os.W_OK):
-				self.session.open(historyScreen, _("Result"), _("Picon destination is not writable"))
-				return
-			resolution = self.warderPiconPrefs.get("resolution")
-			style = self.warderPiconPrefs.get("style")
-			try:
-				if resolution == "220x132":
-					queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
-					if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
-						self.warderChannelState = "locked"
-						legacy_pending = any(self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows for x in self.menuListAll)
-						legacy_pending = legacy_pending or self.warderLargeSelectionPending
-						msg = _("Warder channel picon publication is currently unavailable.") + " "
-						msg += _("Warder picons were skipped; other selected downloads will continue.")
-						if not legacy_pending:
-							self.warderChannelState = "idle"
-							self.session.open(historyScreen, _("Result"), msg)
-							return
-						self.msg = "(" + _("Warder channel picons") + ") " + msg + "\n"
-					self.warderChannelQueue = None
-				else:
-					archives = warderPiconSync.plan_legacy_channel_archives(
-						self.warderPiconPrefs.get("package_selectors"), SATLIST, resolution, style)
-					for selector_id, archive_id in archives:
-						if not self._legacyPiconArchiveUrl(archive_id):
-							raise ValueError(_("Preserved legacy archive is not available in Warder migration catalogue") + ": " + archive_id)
-					self.warderLegacyChannelQueue = archives
-					self.warderLegacyChannelAvailable = set()
-					self.warderLegacyChannelInstalled = set()
-					self.warderLegacyChannelFailures = 0
-					self.warderLegacyArchivesProcessed = 0
-					self.warderLegacyPiconDestination = destination
-					if self.warderPiconPrefs.get("update_mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO):
-						request = warderPiconSync.build_sync_request(
-							selected_positions=list(self.warderPiconPrefs.get("positions", [])),
-							style=style, resolution=resolution,
-							include_radio=(self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO))
-						self.warderLegacyChannelWanted = warderPiconSync.wanted_picon_names(request)
-					else:
-						self.warderLegacyChannelWanted = None
-			except Exception as err:
-				message = str(err)
-				if message == "no-satellite-position-selected":
-					message = _("Select at least one satellite position.")
-				elif message == "no-pinned-channel-archive-for-resolution-and-colour":
-					message = _("No legacy picon archive is available for the selected positions and variant.")
-				self.session.open(historyScreen, _("Result"), _("ERROR") + ": " + message)
-				return
-		self.warderOperationSucceeded = False
-		self.warderOperationFailed = False
-		self.warderFailedRows = set()
-		self.instance.resize(eSize(1920,150))
-		self["dwn"].show()
-		self.ena = False
-		if self.warderChannelState != "locked":
-			self.msg = ""
-		self.dwnJob = ""
-		self.dwnTimer.start(25, True)
-
-	def warderCreateDestinationAnswer(self, answer=None):
-		if answer:
-			self.startDown(True)
-
-	def _warderRefreshRowText(self):
-		prefs = self.warderPiconPrefs
-		positions = warderPiconSync.task_positions_for_display(prefs)
-		position_text = _("No position selected")
-		if positions:
-			position_text = ", ".join(positions[:4])
-			if len(positions) > 4:
-				position_text += " ..."
-			position_text += " (" + str(len(positions)) + " " + _("selected") + ")"
-		resolution = prefs.get("resolution")
-		style = prefs.get("style")
-		mode = prefs.get("update_mode")
-		path = prefs.get("destination") or warderPiconSync.DEFAULT_DESTINATION
-		preset = dict((value, label) for value, label in warderPiconSync.PICON_DESTINATIONS)
-		location = _(preset[path]) if path in preset else _("User defined")
-		mode_labels = dict((key, _(label)) for key, label in warderPiconSync.UPDATE_MODES)
-		labels = {
-			"wp-pos": _("Satellite positions") + ": " + position_text,
-			"wp-res": _("Picon resolution") + ": " + (resolution.replace("x", " x ") if resolution else _("No resolution selected")),
-			"wp-style": _("Picon colour") + ": " + (_(style.capitalize()) if style else _("No colour selected")),
-			"wp-dest": _("Picon location") + ": " + location,
-			"wp-mode": _("Update method") + ": " + (mode_labels.get(mode, _("No update method selected"))),
-		}
-		for row_id, label in labels.items():
-			for index in self.menuListAll:
-				if self.menuListAll[index][0] == row_id:
-					self.menuListAll[index][1] = label
-					break
-		return path
-
-	def _warderDisplayPath(self, path):
-		value = str(path or "")
-		if len(value) <= 68:
-			return value
-		return value[:24] + "..." + value[-41:]
-
-	def createList(self):
-		warder_destination = self._warderRefreshRowText()
-		self.list = []
-		warder_help = {
-			"wp-pos": _("Choose satellite positions for channel picon downloads and updates."),
-			"wp-res": _("Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."),
-			"wp-style": _("Choose a channel picon colour supported at the selected size."),
-			"wp-dest": _("Download destination:") + " " + self._warderDisplayPath(warder_destination),
-			"wp-mode": _("Choose how channel picons are synchronized or copied for selected positions."),
-			"aux-prov": _("TV platform and service provider logos."),
-			"aux-sat": _("Satellite logos and graphical identifiers."),
-			"aux-cam": _("Choose black or white CAM picons."),
-			"aux-weather": _("Choose black or white weather information picons."),
-		}
-		warder_icons = {
-			"wp-pos": "down/p4.png",
-			"wp-res": "down/ba5.png",
-			"wp-style": "down/warder-colour.png",
-			"wp-dest": "down/warder-location.png",
-			"wp-mode": "down/warder-sync.png",
-			"aux-prov": "down/p4p.png",
-			"aux-sat": "down/p4s.png",
-			"aux-cam": "down/bc.png",
-			"aux-weather": "down/bw.png",
-		}
-		for x in self.menuListAll:
-			row_id = self.menuListAll[x][0]
-			item = [row_id]
-			item.append(MultiContentEntryText(pos=(0, 0), size=(1820, 127), font=2, backcolor_sel=0, color_sel=int('0x00d100',16), text=" "))
-			item.append(MultiContentEntryText(pos=(260, 10), size=(1560, 45), font=2, backcolor_sel=0, color_sel=int('0x00d100',16), color=int('0xffcc00', 16), text=self.menuListAll[x][1]))
-			description = warder_help.get(row_id, helpTxt.get(row_id, ""))
-			item.append(MultiContentEntryText(pos=(300, 65), size=(1520, 45), font=0, backcolor_sel=0, color_sel=int('0x00d100',16), color=int('0xffffff', 16), text=description))
-			icon_path = warder_icons.get(row_id, "down/%s.png" % row_id.replace("wanim","w"))
-			item.append(MultiContentEntryPixmapAlphaTest(pos=(60, 2), size=(189, 123), png=LoadPixmap(SKINPATH + icon_path)))
-			item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 38), size=(50, 50), png=LoadPixmap("%sdown/%s.png" % (SKINPATH, self.menuListAll[x][4]))))
-			self.list.append(item)
-		self['list'].l.setList(self.list)  
-		self['list'].l.setItemHeight(127)
-		if self.firststart:
-			self.firststart = False	
-			if not chckPath(config.plugins.setupGlass17.par39.value):
-				self.session.openWithCallback(self.exit,MessageBox, _("Sorry, cannot create dir on path:") + " " + config.plugins.setupGlass17.par39.value + "!!!" , MessageBox.TYPE_ERROR, 30)
-        		
-	def getFreeSpace(self):
-		ret = 0
-		ret1 = 0
-		try:
-			stat = statvfs(self.zzz[:-1])
-			ret = float(stat.f_bfree/1024 * stat.f_bsize/1024)
-			stat = statvfs(config.plugins.setupGlass17.par39.value)
-			ret1 = float(stat.f_bfree/1024 * stat.f_bsize/1024)
-		except OSError:
-			pass
-		return ret,ret1
-
-	def setWdir(self):
-		if not os.path.exists(HDDTMP):
-			try:
-				os.makedirs(HDDTMP, exist_ok=True)
-			except OSError:
-				pass
-		return ({False:"/tmp/",True:"%s/" % HDDTMP}['big' in self.type_download or 'ZZPicon' in self.type_download or '400' in self.type_download])
-
-	def doSelection(self):
-		if not self.ena:
-			return
-		tmp = self['list'].getSelectedIndex()
-		if self.menuListAll[tmp][0] in self.warderPiconRows:
-			self.openWarderPiconChoice(self.menuListAll[tmp][0])
-			return
-		if self.menuListAll[tmp][0] in self.warderAuxRows:
-			self.openAuxPiconChoice(self.menuListAll[tmp][0])
-			return
-		if self.menuListAll[tmp][0] == '7z' and not self.menuListAll[tmp][2]:
-			self.session.open(historyScreen, _("Result"), _("ERROR")+": 7zip helper download is not available for this CPU architecture")
-			return
-		if '***' in self.menuListAll[tmp][1]:
-			if not os.path.isfile(SEVENZIP):
-				self.session.open(historyScreen, _("Result"),_("ERROR")+": "+_('Tool 7zip is missing, you can download it from DOWNLOAD MENU'))
-			else:
-				self.session.openWithCallback(self.satSelcallback, satSelectorScr, self.menuListAll[tmp][2])
-		else:
-			self.menuListAll[tmp][4] = ({False:"x",True:"d"}[self.menuListAll[tmp][4] == 'x'])
-			self.createList()
-			self.reactivate()
-
-	def _setWarderPiconPrepared(self, active_row=None):
-		# A Warder picon update is one executable action.  Only the row the user
-		# actually confirmed gets the green pending marker; the other preference
-		# rows remain configuration, not five separate downloads.
-		if active_row:
-			for x in self.menuListAll:
-				if self.menuListAll[x][0] == active_row:
-					self.menuListAll[x][4] = "d"
-					break
-		self.createList()
-		self.reactivate()
-
-	def openWarderPiconChoice(self, row):
-		if row == "wp-pos":
-			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, self.warderPiconPrefs.get("position_bindings", []))
-			return
-		choices = {}
-		resolution = self.warderPiconPrefs.get("resolution", "220x132")
-		style = self.warderPiconPrefs.get("style")
-		if row == "wp-res":
-			choices[row] = [(_(label), ("resolution", size)) for size, label in warderPiconSync.CHANNEL_RESOLUTION_CHOICES]
-			choices[row].append((_("710 x 682 - Large icons for selected channel list types"), ("large-selection", "CHSPiconbig")))
-		elif row == "wp-style":
-			styles = warderPiconSync.STYLES if not resolution else tuple((value, label) for value, label in warderPiconSync.STYLES if warderPiconSync.channel_style_supported(resolution, value))
-			choices[row] = [(_(label), ("style", value)) for value, label in styles]
-		elif row == "wp-mode":
-			choices[row] = [(_(label), ("update_mode", value)) for value, label in warderPiconSync.UPDATE_MODES]
-		elif row == "wp-dest":
-			choices[row] = [(_(label) + " - " + path, ("destination", path)) for path, label in warderPiconSync.PICON_DESTINATIONS]
-			choices[row].append((_("User defined..."), ("custom-location", "")))
-		self.warderChoiceRow = row
-		self.session.openWithCallback(self.warderPiconChoiceAnswer, ChoiceBox, title=_("Select"), list=choices.get(row, []))
-
-	def openAuxPiconChoice(self, row):
-		kind = {"aux-prov": "piconProv", "aux-sat": "piconSat", "aux-cam": "piconCam", "aux-weather": "piconWeather"}.get(row)
-		if kind in warderPiconSync.AUXILIARY_VARIANT_IDS:
-			options = warderPiconSync.auxiliary_hybrid_variants(kind)
-		else:
-			variants = warderPiconSync.auxiliary_variants(warderPiconSync.AUXILIARY_ASSET_KEYS)
-			options = variants.get(kind, ())
-		choices = [(_(label), (asset, label)) for asset, label in options]
-		self.session.openWithCallback(lambda *answer: self.warderAuxPiconAnswerFor(row, *answer), ChoiceBox, title=_("Select"), list=choices)
-
-	def warderAuxPiconAnswerFor(self, row, *answer):
-		if not answer:
-			return
-		answer = answer[0] if len(answer) == 1 else answer
-		if answer is None or not isinstance(answer, (list, tuple)) or len(answer) < 2:
-			return
-		try:
-			asset, label = answer[1]
-		except (TypeError, ValueError):
-			return
-		if not isinstance(asset, str) or not isinstance(label, str):
-			return
-		kind = {"aux-prov": "piconProv", "aux-sat": "piconSat"}.get(row)
-		if kind in warderPiconSync.AUXILIARY_VARIANT_IDS:
-			if asset not in warderPiconSync.AUXILIARY_VARIANT_IDS[kind]:
-				return
-		elif asset not in warderPiconSync.AUXILIARY_ASSET_KEYS:
-			return
-		for index in self.menuListAll:
-			if self.menuListAll[index][0] == row:
-				self.menuListAll[index][2] = asset
-				self.menuListAll[index][1] = _(self.menuListAll[index][1].split(":")[0]) + ": " + _(label)
-				self.menuListAll[index][4] = "d"
-				break
-		self.createList()
-		self.reactivate()
-
-	def warderPositionAnswer(self, answer=None):
-		# Enigma2 dialog close/back paths may call back without a value: Cancel.
-		if answer is None or not isinstance(answer, (list, tuple)):
-			return
-		self.warderPositionSelectionAttempted = True
-		bindings = warderPiconSync.normalize_position_bindings(answer)
-		if len(bindings) != len(answer):
-			bindings = []
-		self.warderPiconPrefs = warderPiconSync.set_task_position_bindings(self.warderPiconPrefs, bindings)
-		positions = list(self.warderPiconPrefs.get("positions", []))
-		if positions:
-			preview = ", ".join(positions[:4])
-			if len(positions) > 4:
-				preview += " ..."
-			label = _("Satellite positions") + ": " + preview + " (" + str(len(positions)) + " " + _("selected") + ")"
-		else:
-			label = _("Satellite positions") + ": " + _("No position selected")
-			self.warderPiconPrefs["prepared"] = False
-			for index in self.menuListAll:
-				if self.menuListAll[index][0] in self.warderPiconRows:
-					self.menuListAll[index][4] = "x"
-		for index in self.menuListAll:
-			if self.menuListAll[index][0] == "wp-pos":
-				self.menuListAll[index][1] = label
-				break
-		if positions:
-			self._setWarderPiconPrepared("wp-pos")
-		self.createList()
-		self.reactivate()
-
-	def warderPiconChoiceAnswer(self, answer=None):
-		# ChoiceBox cancel and window-close paths can call back with no value.
-		if answer is None or not isinstance(answer, (list, tuple)) or len(answer) < 2:
-			return
-		try:
-			key, value = answer[1]
-		except (TypeError, ValueError):
-			return
-		if key == "custom-location":
-			current = self.warderPiconPrefs.get("destination") or warderPiconSync.DEFAULT_DESTINATION
-			start_path = current if os.path.isdir(current) else "/"
-			self.session.openWithCallback(self.warderCustomLocationAnswer, dirBrowser, start_path)
-			return
-		if key == "large-selection":
-			self.warderLargeSelectionPending = True
-			for index in self.menuListAll:
-				if self.menuListAll[index][0] == "wp-res":
-					self.menuListAll[index][4] = "d"
-					break
-			self.createList()
-			self.reactivate()
-			return
-		if key not in ("resolution", "style", "update_mode", "destination"):
-			return
-		if key == "style" and self.warderPiconPrefs.get("resolution") and not warderPiconSync.channel_style_supported(self.warderPiconPrefs.get("resolution"), value):
-			return
-		if key == "destination":
-			value = warderPiconSync.validate_destination(value)
-			if not value:
-				return
-		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, key, value)
-		if key == "resolution" and self.warderPiconPrefs.get("style") and not warderPiconSync.channel_style_supported(value, self.warderPiconPrefs["style"]):
-			self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "style", None)
-		self._setWarderPiconPrepared(self.warderChoiceRow)
-		self.createList()
-		self.reactivate()
-
-	def warderCustomLocationAnswer(self, answer=None):
-		if not answer:
-			return
-		path = os.path.normpath(str(answer))
-		if not os.path.isabs(path) or not os.path.isdir(path) or os.path.islink(path):
-			self.session.open(historyScreen, _("Result"), _("Select an existing directory."))
-			return
-		path = warderPiconSync.validate_destination(path)
-		if not path:
-			self.session.open(historyScreen, _("Result"), _("Invalid picon destination"))
-			return
-		self.warderPiconPrefs = warderPiconSync.set_preference(self.warderPiconPrefs, "destination", path)
-		self._setWarderPiconPrepared("wp-dest")
-		self.createList()
-		self.reactivate()
-
-	def satSelcallback(self, answer=None):
-		if answer is None:
-			return
-		tmp = self['list'].getSelectedIndex()
-		if answer:
-			self.menuListAll[tmp][3] = answer
-		else:
-			self.menuListAll[tmp][3] = ''
-		self.menuListAll[tmp][4] = ({False:"x",True:"d"}[self.menuListAll[tmp][3] != ''])
-		self.createList()
-		self.reactivate()
-
-	def satSelcallback(self, answer):
-		tmp = self['list'].getSelectedIndex()
-		if answer:
-			self.menuListAll[tmp][3] = answer
-		else:
-			self.menuListAll[tmp][3] = ''
-		self.menuListAll[tmp][4] = ({False:"x",True:"d"}[self.menuListAll[tmp][3] != ''])
-		self.createList()
-		self.reactivate()
-
-	def cleanPicon(self):
-		if not self.ena:
-			return
-		self.session.openWithCallback(self.cleanAnswerNow, satSelectorScr)
-
-	def cleanAnswerNow(self, answer=None):
-		if answer:
-			self.clrSelectsat = True
-			self.answer = answer          				
-			numPict = 0
-			total = 0
-			for ii in ['picon','piconOled','picon_50x30','picon_400x240','ZZPicon','picon_220x132']:	
-				actDir = "%s/%s" % (config.plugins.setupGlass17.par39.value,ii)
-				f = listDir(actDir)
-				if f:
-					for x in f:
-						total += 1
-						if self.chck(x):
-							candidate = os.path.join(actDir, x)
-							try:
-								if os.path.isfile(candidate) or os.path.islink(candidate):
-									os.unlink(candidate)
-							except OSError:
-								pass
-							if not os.path.lexists(candidate):
-								numPict += 1
-			self.dwnLoop(_("SUCCESSFUL")+": "+_("Total:") + " " + str(total) + ", " + _("Deleted:") + " " + str(numPict))	
-		
-	def _warderLoadChannelManifest(self, url):
-		"""Fetch and validate the exact explicitly enabled publication manifest."""
-		expected = warderPiconSync.runtime_publication().get("manifest_url")
-		if not expected or url != expected:
-			raise ValueError("Warder channel manifest is not enabled")
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons"})
-		with urlopen(req, timeout=30) as response:
-			if str(response.geturl()) != expected:
-				raise ValueError("Warder channel manifest redirect rejected")
-			data = response.read(4 * 1024 * 1024 + 1)
-		if len(data) > 4 * 1024 * 1024:
-			raise ValueError("Warder channel manifest too large")
-		doc = json.loads(data.decode("utf-8"))
-		errors = warderPiconSync.validate_publication_manifest(doc, url)
-		if errors:
-			raise ValueError("invalid Warder channel manifest: " + "; ".join(errors[:3]))
-		return doc
-
-	def _warderLoadAuxiliaryCandidateManifest(self, url):
-		"""Fetch only the PiconHub manifest pinned by the auxiliary descriptor."""
-		descriptor = warderPiconSync.AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]
-		if url != descriptor.get("manifest_url"):
-			raise ValueError("untrusted auxiliary candidate manifest")
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons",
-			"Accept": "application/json"})
-		with urlopen(req, timeout=30) as response:
-			if str(response.geturl()) != url:
-				raise ValueError("unsafe auxiliary candidate manifest redirect")
-			content_type = str(response.headers.get("Content-Type", "")).lower()
-			if "text/html" in content_type:
-				raise ValueError("auxiliary candidate manifest returned HTML")
-			data = response.read(1024 * 1024 + 1)
-		if len(data) > 1024 * 1024 or data.lstrip().lower().startswith((b"<html", b"<!doctype")):
-			raise ValueError("invalid auxiliary candidate manifest response")
-		document = json.loads(data.decode("utf-8"))
-		errors = warderPiconSync.validate_auxiliary_candidate_manifest(document, url)
-		if errors:
-			raise ValueError("invalid auxiliary candidate manifest: " + "; ".join(errors[:3]))
-		return document
-
-	def _warderAuxiliaryDestination(self, name):
-		"""Create only the requested auxiliary leaf under the configured picon root."""
-		if name not in ("piconProv", "piconProv_220x132", "piconSat", "piconSat_220x132"):
-			raise ValueError("invalid auxiliary destination")
-		base = str(config.plugins.setupGlass17.par39.value)
-		if not os.path.isdir(base) or os.path.islink(base):
-			raise ValueError("unsafe auxiliary picon base directory")
-		base = os.path.realpath(base)
-		destination = os.path.join(base, name)
-		if os.path.islink(destination):
-			raise ValueError("auxiliary destination is a symbolic link")
-		if not os.path.exists(destination):
-			os.mkdir(destination)
-		if not os.path.isdir(destination) or os.path.realpath(destination) != destination:
-			raise ValueError("unsafe auxiliary destination")
-		return destination
-
-	def _warderFetchAuxiliaryArchive(self, asset, archive):
-		"""Download one source-bound archive and verify redirect, size, SHA and ZIP."""
-		source_id = asset.get("publication_source_id")
-		url = str(asset.get("url", ""))
-		if not warderPiconSync.trusted_auxiliary_url(url, source_id):
-			raise ValueError("unsafe Warder auxiliary URL")
-		expected_size = int(asset.get("size", 0))
-		if expected_size < 1 or expected_size > 32 * 1024 * 1024:
-			raise ValueError("invalid Warder auxiliary archive size")
-		digest = hashlib.sha256()
-		total = 0
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
-		with urlopen(req, timeout=45) as response:
-			if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
-				raise ValueError("unsafe Warder auxiliary redirect")
-			content_type = str(response.headers.get("Content-Type", "")).lower()
-			if "text/html" in content_type:
-				raise ValueError("Warder auxiliary archive returned HTML")
-			with open(archive, "wb") as output:
-				while True:
-					chunk = response.read(1024 * 128)
-					if not chunk:
-						break
-					total += len(chunk)
-					if total > expected_size:
-						raise ValueError("oversized Warder auxiliary archive")
-					output.write(chunk)
-					digest.update(chunk)
-		if total != expected_size:
-			raise ValueError("Warder auxiliary archive size mismatch")
-		if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():
-			raise ValueError("Warder auxiliary archive SHA-256 mismatch")
-		errors = warderPiconSync.validate_auxiliary_archive(archive, asset)
-		if errors:
-			raise ValueError("invalid Warder auxiliary archive: " + "; ".join(errors[:3]))
-
-	def _warderRunAuxiliaryComposite(self, row, variant_id):
-		"""Run exactly two additive jobs: legacy fallback, then safe priority overlay."""
-		kind = {"aux-prov": "provider", "aux-sat": "satellite"}.get(row)
-		variant_maps = {"provider": "piconProv", "satellite": "piconSat"}
-		if kind not in variant_maps or variant_id not in warderPiconSync.AUXILIARY_VARIANT_IDS[variant_maps[kind]]:
-			raise ValueError("invalid auxiliary hybrid selection")
-		err, assets = getWarderAssets()
-		if err:
-			raise ValueError(err)
-		hybrid = assets.pop("__auxiliary_hybrid__", None)
-		if not isinstance(hybrid, dict):
-			raise ValueError("auxiliary hybrid catalog missing")
-		candidate = None
-		candidate_error = None
-		try:
-			candidate = self._warderLoadAuxiliaryCandidateManifest(hybrid.get("candidate_manifest_url"))
-		except Exception as err:
-			# Preserve the legacy fallback job if the candidate publication is
-			# unavailable; the safe overlay will be recorded as failed below.
-			candidate_error = err
-		catalog = {"assets": assets, "auxiliary_hybrid": hybrid}
-		plan = warderPiconSync.build_auxiliary_jobs(catalog, candidate, kind, variant_id)
-		if plan.get("state") != "ready" or len(plan.get("jobs", [])) != 2:
-			raise ValueError("auxiliary composite plan rejected: " + "; ".join(plan.get("errors", [])[:3]))
-		copied = {"legacy_fallback": 0, "warder_safe_priority": 0}
-		totals = {job["layer"]: int(job["png_count"]) for job in plan["jobs"]}
-		for job in plan["jobs"]:
-			archive = None
-			stage = None
-			previous_zzz = self.zzz
-			try:
-				if job["layer"] == "warder_safe_priority" and candidate_error is not None:
-					raise ValueError("pinned auxiliary candidate manifest unavailable: " + str(candidate_error))
-				self._warderAuxiliaryDestination(job["destination"])
-				fd, archive = tempfile.mkstemp(prefix="warder-aux-", suffix=".zip", dir="/tmp")
-				os.close(fd)
-				self._warderFetchAuxiliaryArchive(job, archive)
-				stage = tempfile.mkdtemp(prefix="warder-aux-stage-", dir="/tmp")
-				self._safeExtractZip(archive, stage)
-				root = str(job["root"])
-				stage_root = os.path.join(stage, root)
-				if os.path.islink(stage_root) or not os.path.isdir(stage_root):
-					raise ValueError("auxiliary ZIP root missing after extraction")
-				self.zzz = stage + os.sep
-				updated, attempted = self.cprmFiles(root)
-				if attempted != totals[job["layer"]]:
-					print("FullHDGlass17 Warder auxiliary count mismatch (%s): %d/%d" %
-						(job["asset_id"], attempted, totals[job["layer"]]))
-				copied[job["layer"]] = updated
-			except Exception as err:
-				print("FullHDGlass17 Warder auxiliary job failed (%s): %s" % (job.get("asset_id"), err))
-			finally:
-				self.zzz = previous_zzz
-				if archive:
-					try:
-						os.unlink(archive)
-					except OSError:
-						pass
-				if stage:
-					try:
-						self.rmTmp2(stage, str(job.get("root", "")))
-						os.rmdir(stage)
-					except OSError:
-						pass
-		return warderPiconSync.auxiliary_result_summary(
-			_("Provider logos" if kind == "provider" else "Satellite logos"), variant_id,
-			copied["legacy_fallback"], totals["legacy_fallback"],
-			copied["warder_safe_priority"], totals["warder_safe_priority"], _)["text"]
-
-	def _warderRemoveStaleChannelPicons(self, destination, positions, package_names):
-		"""Remove only stale service PNGs for selected orbits after package success."""
-		destination = warderPiconSync.validate_destination(destination)
-		if not destination or os.path.islink(destination) or not os.path.isdir(destination):
-			raise ValueError(_("Invalid picon destination"))
-		try:
-			names = os.listdir(destination)
-		except OSError as err:
-			raise ValueError(_("Cannot read picon destination") + ": " + str(err))
-		stale = warderPiconSync.plan_stale_position_picons(names, positions, package_names)
-		for name in stale:
-			path = os.path.join(destination, name)
-			if os.path.basename(path) != name or os.path.islink(path) or not os.path.isfile(path):
-				continue
-			try:
-				os.unlink(path)
-			except OSError as err:
-				raise ValueError(_("Could not remove stale selected-position picon") + ": " + str(err))
-		return len(stale)
-
-	def _recordWarderOperationResult(self, text):
-		if not text:
-			return
-		value = str(text)
-		is_partial = _("PARTIAL SUCCESS") + ":" in value
-		if (_("ERROR") + ":") in value or is_partial:
-			self.warderOperationFailed = True
-			if is_partial:
-				self.warderOperationSucceeded = True
-			row = getattr(self, "warderCurrentActionRow", None)
-			if row:
-				self.warderFailedRows.add(row)
-				if row == "wp-res":
-					self.warderLargeSelectionPending = True
-				for index in self.menuListAll:
-					if self.menuListAll[index][0] == row:
-						self.menuListAll[index][4] = "d"
-					break
-		elif (_("SUCCESSFUL") + ":") in value:
-			self.warderOperationSucceeded = True
-		self.warderCurrentActionRow = None
-
-	def resetWarderWorkingState(self):
-		"""Clear only in-memory download choices after the entire run succeeds."""
-		self.warderPiconPrefs = warderPiconSync.preferences_after_task(self.warderPiconPrefs, "success")
-		self.warderChannelTaskSnapshot = None
-		self.warderPositionSelectionAttempted = False
-		self.warderLargeSelectionPending = False
-		self.warderAuxChoiceRow = None
-		for index in self.menuListAll:
-			row = self.menuListAll[index][0]
-			if row in self.warderPiconRows:
-				self.menuListAll[index][4] = "x"
-			elif row in self.warderAuxRows:
-				self.menuListAll[index][4] = "x"
-				self.menuListAll[index][2] = {"aux-prov":"piconProv", "aux-sat":"piconSat", "aux-cam":"piconCam", "aux-weather":"piconWeather"}[row]
-				self.menuListAll[index][1] = {
-					"aux-prov": _("Provider logos"), "aux-sat": _("Satellite logos"),
-					"aux-cam": _("CAM picons"), "aux-weather": _("Weather picons"),
-				}[row]
-		self.createList()
-		self.reactivate()
-
-	def _warderRunChannelQueue(self):
-		self.warderChannelState = "running"
-		queue = getattr(self, "warderChannelQueue", None)
-		if queue is None:
-			self.warderChannelTaskSnapshot = dict(self.warderPiconPrefs)
-			queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
-			if queue.get("state") != warderPiconSync.READY:
-				raise ValueError("Warder channel publication is locked")
-			destination = warderPiconSync.validate_destination(queue.get("destination"))
-			if not destination:
-				raise ValueError("invalid Warder picon destination")
-			os.makedirs(destination, exist_ok=True)
-			destination = warderPiconSync.validate_destination(destination)
-			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
-				raise ValueError("unsafe Warder picon destination")
-			queue["destination"] = destination
-			document = self._warderLoadChannelManifest(queue.get("manifest_url"))
-			plan = warderPiconSync.plan_runtime_packages(document, queue, queue.get("manifest_url"))
-			jobs = warderPiconSync.build_download_jobs(document, plan, queue.get("manifest_url"))
-			if jobs.get("state") not in ("ready", "partial"):
-				raise ValueError("Warder channel package plan is not executable")
-			if jobs.get("missing_selectors"):
-				raise ValueError("missing Warder channel packages: " + ", ".join(jobs["missing_selectors"]))
-			self.warderChannelQueue = queue
-			self.warderChannelJobs = list(jobs.get("jobs", []))
-			self.warderChannelInstalled = set()
-			self.warderChannelAvailable = set()
-			self.warderChannelPackageResults = [
-				{"package_selector": job.get("selector_id"), "orbital_position": job.get("orbital_position"),
-				 "family": job.get("family"), "updated": 0, "failures": 0}
-				for job in self.warderChannelJobs
-			]
-			if not self.warderChannelJobs and not (queue.get("mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO) and not queue.get("services")):
-				self.warderChannelQueue = None
-				self.warderChannelState = "error"
-				raise ValueError("Warder channel selection resolved to no packages")
-			if queue.get("mode") in (warderPiconSync.UPDATE_MODE_SYNC_TV, warderPiconSync.UPDATE_MODE_SYNC_TV_RADIO) and not queue.get("services"):
-				self.warderChannelQueue = None
-				self.warderChannelState = "error"
-				raise ValueError("no selected TV or radio bouquet services found for Warder selective sync")
-		if not getattr(self, "warderChannelJobs", []):
-			installed_set = getattr(self, "warderChannelInstalled", set())
-			wanted = warderPiconSync.wanted_picon_names(queue)
-			coverage = warderPiconSync.classify_requested_picons(
-				wanted, getattr(self, "warderChannelAvailable", set()), installed_set)
-			missing_files = sorted(coverage["missing"])
-			for filename in missing_files:
-				position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
-				for item in self.warderChannelPackageResults:
-					if item.get("orbital_position") == position:
-						item["failures"] += 1
-						break
-			summary = warderPiconSync.package_result_summary(self.warderChannelPackageResults, _)
-			if queue.get("mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not summary["failures"]:
-				self._warderRemoveStaleChannelPicons(queue.get("destination"), queue.get("positions", []), getattr(self, "warderChannelAvailable", set()))
-			self.warderChannelQueue = None
-			self.warderChannelJobs = []
-			self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
-			result = summary["status"] + ": " + summary["text"]
-			self.warderChannelInstalled = set()
-			return result
-		job = self.warderChannelJobs.pop(0)
-		self.warderChannelCurrentJob = job
-		result_row = next((item for item in self.warderChannelPackageResults
-			if item.get("package_selector") == job.get("selector_id") and item.get("family") == job.get("family")), None)
-		archive = None
-		try:
-			required = int((int(job.get("bytes", 0)) * 2.2) / (1024 * 1024)) + 10
-			try:
-				free_mb = int(shutil.disk_usage("/tmp").free / (1024 * 1024))
-			except OSError:
-				free_mb = 0
-			if free_mb < required:
-				raise ValueError("insufficient temporary space for Warder channel package")
-			destination = warderPiconSync.validate_destination(self.warderChannelQueue.get("destination"))
-			if not destination or os.path.islink(destination) or not os.path.isdir(destination):
-				raise ValueError("unsafe Warder picon destination")
-			try:
-				dest_free_mb = int(shutil.disk_usage(destination).free / (1024 * 1024))
-			except OSError:
-				dest_free_mb = 0
-			if dest_free_mb < required:
-				raise ValueError("insufficient destination space for Warder channel package")
-			fd, archive = tempfile.mkstemp(prefix="warder-channel-", suffix=".zip", dir="/tmp")
-			os.close(fd)
-			self._warderFetchChannelJob(job, archive)
-			wanted = warderPiconSync.wanted_picon_names(self.warderChannelQueue)
-			installed, available = self._warderInstallChannelArchive(archive, self.warderChannelQueue["destination"], wanted)
-			self.warderChannelInstalled.update(installed)
-			self.warderChannelAvailable.update(available)
-			if result_row is not None:
-				result_row["updated"] = len(installed)
-		except Exception as err:
-			if result_row is not None:
-				result_row["failures"] += 1
-				result_row["error"] = str(err)
-			print("FullHDGlass17 Warder package failed (%s/%s): %s" % (job.get("orbital_position"), job.get("selector_id"), err))
-		finally:
-			if archive:
-				try:
-					os.unlink(archive)
-				except OSError:
-					pass
-		return None
-
-	def dwnLoop(self, txt=""):
-		if self.dwnTimer.isActive():
-			self.dwnTimer.stop()
-		if txt:
-			self._recordWarderOperationResult(txt)
-		if self.clrSelectsat:
-			self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),txt)
-		else:
-			if txt != "":
-				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "\n"
-			if (self.warderPiconPrefs.get("prepared")
-					and self.warderPiconPrefs.get("resolution") != "220x132"
-					and self.warderLegacyChannelQueue):
-				self.dwnJob = _("Channel picons")
-				resolution = self.warderPiconPrefs.get("resolution")
-				folder = warderPiconSync.legacy_channel_destination(resolution)
-				self.enaSelectsat = True
-				self.type_download = "legacy-channel-" + str(resolution)
-				self.zzz = self.setWdir()
-				self.warderLegacyChannelFailures = 0
-				self.warderLegacyArchivesProcessed = 0
-				legacy_queue = list(self.warderLegacyChannelQueue)
-				archive_count = len(legacy_queue)
-				self.warderLegacyProcessedPositions = set()
-				self.warderLegacyCurrentPackageLabel = None
-				self.warderLegacyPackageResults = [
-					{"selector_id": str(selector_id),
-					 "orbital_position": warderPiconSync.canonical_position_for_selector(str(selector_id)),
-					 "updated": 0, "failures": 0, "processed": False}
-					for selector_id, archive_id in legacy_queue
-				]
-				legacy_destination = self.warderLegacyPiconDestination
-				legacy_result = self.downMulti(self.warderLegacyChannelQueue, folder, False)
-				if self.warderLegacyArchivesProcessed < archive_count:
-					self.warderLegacyChannelFailures += archive_count - self.warderLegacyArchivesProcessed
-				self.enaSelectsat = False
-				self.warderLegacyChannelQueue = None
-				self.warderLegacyPiconDestination = None
-				coverage = warderPiconSync.classify_requested_picons(
-					self.warderLegacyChannelWanted,
-					self.warderLegacyChannelAvailable,
-					self.warderLegacyChannelInstalled)
-				missing_by_position = {}
-				for filename in coverage["missing"]:
-					position = warderPiconSync.service_orbital_position(filename[:-4].replace("_", ":"))
-					missing_by_position[position] = missing_by_position.get(position, 0) + 1
-				package_results = []
-				for item in getattr(self, "warderLegacyPackageResults", []):
-					position = item.get("orbital_position")
-					item["failures"] += missing_by_position.pop(position, 0) if position else 0
-					if position and not item.get("processed"):
-						item["failures"] += 1
-					package_results.append(item)
-				for position, failures in missing_by_position.items():
-					package_results.append({"selector_id": "unbound", "orbital_position": position,
-						"updated": 0, "failures": failures})
-				if self.warderPiconPrefs.get("update_mode") == warderPiconSync.UPDATE_MODE_REPLACE_ALL and not self.warderLegacyChannelFailures:
-					try:
-						self._warderRemoveStaleChannelPicons(legacy_destination, self.warderPiconPrefs.get("positions", []), self.warderLegacyChannelAvailable)
-					except Exception:
-						if package_results:
-							package_results[0]["failures"] += 1
-				summary = warderPiconSync.package_result_summary(package_results, _)
-				self.warderChannelState = "done" if not summary["failures"] else ("partial" if summary["updated"] else "error")
-				result_text = summary["status"] + ": " + summary["text"]
-				self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
-				self._recordWarderOperationResult(result_text)
-			if (self.warderPiconPrefs.get("prepared")
-					and self.warderPiconPrefs.get("resolution") == "220x132"
-					and self.warderChannelState not in ("locked", "error")):
-				self.dwnJob = _("Warder channel picons")
-				try:
-					warder_result = self._warderRunChannelQueue()
-				except Exception as err:
-					self.warderChannelState = "error"
-					snapshot = getattr(self, "warderChannelTaskSnapshot", None)
-					if snapshot is not None:
-						self.warderPiconPrefs = warderPiconSync.preferences_after_task(snapshot, "error")
-					self.warderChannelTaskSnapshot = None
-					self.warderChannelQueue = None
-					self.warderChannelJobs = []
-					self.warderChannelInstalled = set()
-					self.warderChannelAvailable = set()
-					self.warderOperationFailed = True
-					self.warderFailedRows.add("wp-pos")
-					if str(err) == "no-satellite-position-selected":
-						error_text = _("Select at least one satellite position.")
-					else:
-						error_text = str(err)
-					self.msg += "(" + self.dwnJob + ") " + _("ERROR") + ": " + error_text + "\n"
-				else:
-					if warder_result is None:
-						# One package per GUI timer tick keeps the receiver event loop responsive.
-						self.dwnTimer.start(25, True)
-						return
-					self.msg += "(" + self.dwnJob + ") " + warder_result + "\n"
-					self._recordWarderOperationResult(warder_result)
-			if self.warderLargeSelectionPending:
-				self.warderLargeSelectionPending = False
-				self.warderCurrentActionRow = "wp-res"
-				for row_index in self.menuListAll:
-					if self.menuListAll[row_index][0] == "wp-res":
-						self.menuListAll[row_index][4] = "x"
-				self.type_download = "CHSPiconbig"
-				self.zzz = self.setWdir()
-				self.dwnJob = _("Large channel selection icons (710 x 682)")
-				self.downAnswerNow()
-				return
-			ena = True
-			self.enaSelectsat = False
-			for x in self.menuListAll:
-				if self.menuListAll[x][4] == "d" and self.menuListAll[x][0] not in self.warderPiconRows and self.menuListAll[x][0] not in self.warderFailedRows:
-					ena = False
-					self.warderCurrentActionRow = self.menuListAll[x][0]
-					self.menuListAll[x][4] = 'x'
-					self.type_download = str(self.menuListAll[x][2])
-					self.zzz = self.setWdir()
-					self.dwnJob = str(self.menuListAll[x][1])
-					if self.menuListAll[x][0] in ("aux-prov", "aux-sat"):
-						try:
-							aux_result = self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
-						except Exception as err:
-							aux_result = _("ERROR") + ": " + str(err)
-						self.dwnLoop(aux_result)
-						return
-					elif '***' in self.menuListAll[x][1]:
-						self.enaSelectsat = True
-						self.downMulti(self.menuListAll[x][3],self.destDir(self.menuListAll[x][2]))
-					else:
-						self.downAnswerNow()
-					break
-			if ena:
-				if self.warderOperationSucceeded and not self.warderOperationFailed:
-					self.resetWarderWorkingState()
-				self.session.openWithCallback(self.dwnFin, historyScreen, _("Result"),self.msg) 		
-		
-	def dwnFin(self, answer=""):
-		if self.warderChannelState in ("done", "error", "locked"):
-			self.warderChannelState = "idle"
-		self.createList()
-		self.ena = True
-		self.clrSelectsat = False
-		self.enaSelectsat = False
-		self["dwn"].hide()
-		self.instance.resize(eSize(1920,1080))
-                  		
-	def downAnswerNow(self):
-		err, assets = getWarderAssets()
-		if err != "":
-			self.dwnLoop(_("ERROR")+": "+err)
-			return
-		asset = assets.get(self.type_download)
-		if not asset:
-			self.dwnLoop(_("ERROR")+": "+_("This download is not available in Warder repository yet.") + " [" + self.type_download + "]")
-			return
-		try:
-			filename = str(asset["filename"])
-			size_bytes = int(asset["size"])
-			url = str(asset.get("url", ""))
-			parts = asset.get("parts", [])
-			sha256 = str(asset["sha256"]).lower()
-			root = str(asset["root"])
-		except Exception:
-			self.dwnLoop(_("ERROR")+": "+_("Invalid Warder download catalog entry."))
-			return
-		source_id = asset.get("publication_source_id", "fullhd-production")
-		valid_parts = isinstance(parts, list) and len(parts) > 0 and all(warderPiconSync.trusted_auxiliary_url(str(x), source_id) for x in parts)
-		valid_sha = re.match(r"^[0-9a-f]{64}$", sha256) is not None
-		valid_filename = bool(filename) and os.path.basename(filename) == filename and filename not in (".", "..")
-		valid_url = (not url) or warderPiconSync.trusted_auxiliary_url(url, source_id)
-		if (not valid_url or (not url and not valid_parts)) or not valid_sha or not valid_filename or "/" in root or "\\" in root or ".." in root:
-			self.dwnLoop(_("ERROR")+": "+_("Unsafe Warder download catalog entry."))
-			return
-		self.warderAsset = asset
-		# Keep the original conservative free-space calculation.
-		size = int(round(1.0 * size_bytes/(1024*1024))*2.2+10)
-		ret, ret1 = self.getFreeSpace()
-		if ret > size and ret1 > (size/2):
-			self.downloadPicons(filename)
-			return
-		msg = "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)
-		self.dwnLoop(_("ERROR")+": "+str(msg))
-
-	def _safeExtractZip(self, archive, destination):
-		"""Extract a ZIP without path traversal or archive-created symlinks."""
-		dest = os.path.realpath(destination)
-		with zipfile.ZipFile(archive, "r") as zf:
-			for info in zf.infolist():
-				name = info.filename.replace("\\", "/")
-				if not name or name.startswith("/") or name.startswith("../") or "/../" in ("/" + name):
-					raise ValueError("unsafe ZIP path")
-				mode = (info.external_attr >> 16) & 0xFFFF
-				if stat.S_ISLNK(mode):
-					raise ValueError("ZIP symlink entry rejected")
-				target = os.path.realpath(os.path.join(dest, name))
-				if target != dest and not target.startswith(dest + os.sep):
-					raise ValueError("ZIP path traversal rejected")
-			for info in zf.infolist():
-				zf.extract(info, dest)
-
-	def rmTmp(self):
-		shutil.rmtree("/tmp/more_icons", ignore_errors=True)
-
-	def rmTmp2(self,a,b):
-		path = os.path.realpath(os.path.join(a, b))
-		base = os.path.realpath(a)
-		if path != base and path.startswith(base + os.sep):
-			shutil.rmtree(path, ignore_errors=True)
-				
-	def downloadPicons(self, what):
-		state = False
-		target = self.zzz + what
-		asset = getattr(self, "warderAsset", {})
-		try:
-			expected = str(asset["sha256"]).lower()
-			parts = asset.get("parts", [])
-			urls = [str(x) for x in parts] if isinstance(parts, list) and parts else [str(asset["url"])]
-			source_id = asset.get("publication_source_id", "fullhd-production")
-			if re.match(r"^[0-9a-f]{64}$", expected) is None or not urls or not all(warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
-				raise ValueError("unsafe asset metadata")
-			h = hashlib.sha256()
-			with open(target, "wb") as out:
-				for url in urls:
-					req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5-test1"})
-					with urlopen(req, timeout=45) as response:
-						if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
-							raise ValueError("unsafe asset redirect")
-						while True:
-							chunk = response.read(1024 * 128)
-							if not chunk:
-								break
-							out.write(chunk)
-							h.update(chunk)
-			if h.hexdigest().lower() != expected:
-				raise ValueError("SHA-256 mismatch")
-			state = True
-		except Exception as err:
-			try:
-				if os.path.isfile(target):
-					os.remove(target)
-			except:
-				pass
-			state = False
-		if state:
-			if os.path.exists(("/tmp/more_icons")):
-				self.rmTmp()
-			root = str(asset.get("root", what[:-4]))
-			if os.path.exists(self.zzz + root):
-				self.rmTmp2(self.zzz, root)
-			try:
-				self._safeExtractZip(target, self.zzz[:-1])
-			except Exception:
-				try:
-					os.remove(target)
-				except OSError:
-					pass
-				if os.path.exists(self.zzz + root):
-					self.rmTmp2(self.zzz, root)
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				return
-			try:
-				os.remove(target)
-			except OSError:
-				pass
-			if not os.path.exists(self.zzz + root):
-				self.dwnLoop(_("ERROR")+": "+"Unzip " + what + " " + _("failed"))
-				return
-			if "7z" in self.type_download:
-				# Original archive extracts to /tmp/7z/7z_g.
-				try:
-					os.makedirs(os.path.dirname(SEVENZIP), exist_ok=True)
-					shutil.copy2("/tmp/7z/7z_g", SEVENZIP)
-					os.chmod(SEVENZIP, 0o755)
-				except OSError:
-					pass
-				self.rmTmp2(self.zzz, root)
-				numPict = 0
-				if os.path.isfile(SEVENZIP):
-					numPict = 1
-				total = 1
-			elif "icon_sets_preview" in self.type_download:
-				self.iconPreviewManage()
-				return
-			elif self.type_download in ['animWeatherIcons',"weatherIconsN","extraScreens","menuicons"]:
-				numPict = 0
-				total = 0
-				if "animWeatherIcons" in self.type_download:
-					rng = 48
-					typeGrf = "animIconWeather"
-				else:
-					rng = MAXSCREENS
-					typeGrf = "extraScreens17"
-					if not "extraScreens" in self.type_download:
-						rng = MAXICONS
-						typeGrf = "menuIcons"
-						if "weatherIconsN" in self.type_download:
-							typeGrf = "weatherIcons"
-				for i in range(1,rng):
-					subPath = "%s/%s" % (typeGrf, i)
-					if os.path.exists(("/tmp/%s" % subPath)):
-						if not os.path.exists((config.plugins.setupGlass17.par39.value + "/" + subPath)):
-							os.makedirs(config.plugins.setupGlass17.par39.value + "/" + subPath, exist_ok=True)
-						x1, x2 = self.cprmFiles(subPath)
-						numPict += x1
-						total += x2
-				try:
-					os.rmdir("/tmp/%s" % typeGrf)
-				except OSError:
-					pass
-			else:
-				numPict, total = self.cprmFiles(root)
-			if numPict-total == 0:
-				self.dwnLoop(_("SUCCESSFUL")+": "+warderPiconSync.success_summary(total, None, _))
-			else:
-				self.dwnLoop(_("ERROR")+": " + what[:-4] + ", " + (_("%d of %d picons failed to install") % (total-numPict, total)))
-		else:
-			self.dwnLoop(_("ERROR")+": " + what[:-4])
-
-	def _warderFetchChannelJob(self, job, archive):
-		"""Reassemble a package only from the root bound to its source manifest."""
-		source_id = job.get("publication_source_id")
-		source = warderPiconSync.publication_source(source_id)
-		if source is None or job.get("publication_root") != source.get("package_root"):
-			raise ValueError("untrusted Warder channel publication source")
-		full_hash = hashlib.sha256()
-		total = 0
-		with open(archive, "wb") as out:
-			for part in job.get("parts", []):
-				url = str(part.get("url", ""))
-				if not warderPiconSync.trusted_publication_url(url, source_id):
-					raise ValueError("unsafe Warder channel URL")
-				part_hash = hashlib.sha256()
-				part_size = 0
-				req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons"})
-				with urlopen(req, timeout=45) as response:
-					if not warderPiconSync.trusted_publication_url(str(response.geturl()), source_id):
-						raise ValueError("unsafe Warder channel redirect")
-					expected_part = int(part.get("bytes", -1))
-					if expected_part < 1 or expected_part > 20 * 1024 * 1024:
-						raise ValueError("invalid Warder channel part size")
-					while True:
-						chunk = response.read(1024 * 128)
-						if not chunk:
-							break
-						part_size += len(chunk)
-						total += len(chunk)
-						if part_size > expected_part or total > int(job.get("bytes", -1)):
-							raise ValueError("oversized Warder channel download")
-						out.write(chunk)
-						full_hash.update(chunk)
-						part_hash.update(chunk)
-				if part_size != int(part.get("bytes", -1)) or part_hash.hexdigest().lower() != str(part.get("sha256", "")).lower():
-					raise ValueError("Warder channel part integrity mismatch")
-		if total != int(job.get("bytes", -1)) or full_hash.hexdigest().lower() != str(job.get("sha256", "")).lower():
-			raise ValueError("Warder channel package integrity mismatch")
-
-	def _warderInstallChannelArchive(self, archive, destination, wanted=None):
-		"""No-delete install: validate ZIP and atomically replace only selected PNG files."""
-		dest = warderPiconSync.validate_destination(destination)
-		if not dest:
-			raise ValueError("invalid Warder picon destination")
-		os.makedirs(dest, exist_ok=True)
-		installed = set()
-		available = set()
-		with zipfile.ZipFile(archive, "r") as zf:
-			entries = []
-			seen = set()
-			for info in zf.infolist():
-				if info.filename.endswith("/"):
-					continue
-				if info.file_size < 1 or info.file_size > 16 * 1024 * 1024:
-					raise ValueError("unsafe Warder picon PNG size")
-				if info.compress_size > 0 and info.file_size > info.compress_size * 250:
-					raise ValueError("unsafe Warder picon ZIP compression ratio")
-				if not warderPiconSync.safe_archive_member(info.filename):
-					raise ValueError("unsafe Warder picon ZIP path")
-				mode = (info.external_attr >> 16) & 0xFFFF
-				if stat.S_ISLNK(mode):
-					raise ValueError("Warder picon ZIP symlink rejected")
-				name = info.filename.replace("\\", "/").rsplit("/", 1)[-1]
-				if not name.lower().endswith(".png") or os.path.basename(name) != name:
-					raise ValueError("unexpected Warder channel archive member")
-				if name in seen:
-					raise ValueError("duplicate Warder picon archive member")
-				seen.add(name)
-				available.add(name)
-				if wanted is None or name in wanted:
-					entries.append((info, name))
-			for info, name in entries:
-				fd, tmp = tempfile.mkstemp(prefix=".warder-picon-", suffix=".tmp", dir=dest)
-				try:
-					with os.fdopen(fd, "wb") as out:
-						with zf.open(info, "r") as src:
-							signature = src.read(8)
-							if signature != b"\x89PNG\r\n\x1a\n":
-								raise ValueError("invalid Warder picon PNG signature")
-							out.write(signature)
-							shutil.copyfileobj(src, out, 1024 * 128)
-						out.flush()
-						os.fsync(out.fileno())
-					os.replace(tmp, os.path.join(dest, name))
-					installed.add(name)
-				finally:
-					if os.path.exists(tmp):
-						os.unlink(tmp)
-		return installed, available
-
-	def _legacyPiconArchiveUrl(self, legacy_id):
-		"""Resolve one preserved legacy numeric ID without guessing or retired-host fallback."""
-		try:
-			if not hasattr(self, "_warderLegacyPiconArchives"):
-				catalog_path = os.path.join(PLUGINPATH, "legacyPiconArchives.json")
-				with open(catalog_path, "r", encoding="utf-8") as handle:
-					catalog = json.load(handle)
-				valid = (
-					catalog.get("schema") == 1 and
-					catalog.get("mapped") == 370 and
-					catalog.get("unmapped") == 29 and
-					catalog.get("source", {}).get("commit") == "9cdda4ab414e7d50a97ca9285db8ebbb75fba615" and
-					catalog.get("policy", {}).get("guess_missing") is False and
-					catalog.get("policy", {}).get("picon_cz_fallback") is False
-				)
-				self._warderLegacyPiconArchives = catalog.get("archives", {}) if valid else {}
-			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
-			url = str(entry.get("url", ""))
-			filename = str(entry.get("filename", ""))
-			official = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
-			if filename and "/" not in filename and "\\" not in filename and ".." not in filename and filename.endswith(".7z") and url == official + filename:
-				return url
-		except Exception:
-			self._warderLegacyPiconArchives = {}
-		return ""
-
-	def downMulti(self, k, Ddir, continue_loop=True):
-		tmp = ""
-		if internet():
-			if ENAFINDER:
-				for x in range(0,len(k)):
-					self.warderLegacyCurrentPackageLabel = k[x][0] if getattr(self, "warderLegacyPiconDestination", None) else None
-					self.warderLegacyCurrentPackageResult = (self.warderLegacyPackageResults[x]
-						if getattr(self, "warderLegacyPiconDestination", None) and x < len(self.warderLegacyPackageResults) else None)
-					archive = "/tmp/a.7z"
-					extract_dir = os.path.realpath(os.path.join("/tmp", Ddir))
-					if not (extract_dir == "/tmp" or extract_dir.startswith("/tmp/")):
-						tmp += _("ERROR")+": ("+Ddir+ ") "+_("Invalid extraction path")+"\n"
-						continue
-					try:
-						os.remove(archive)
-					except OSError:
-						pass
-					shutil.rmtree(extract_dir, ignore_errors=True)
-					url = self._legacyPiconArchiveUrl(k[x][1])
-					if not url:
-						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Preserved legacy archive is not available in Warder migration catalogue")+" ["+str(k[x][1])+"]\n"
-						continue
-					headers = {'User-Agent':'FHDG17-Warder'}
-					try:
-						cookie_jar = cookielib.CookieJar()
-						opener = build_opener(HTTPCookieProcessor(cookie_jar))
-						req = Request(url, data=None, headers=headers)
-						with opener.open(req, timeout=15) as handler, open(archive, 'wb') as f:
-							while True:
-								chunk = handler.read(1024 * 128)
-								if not chunk:
-									break
-								f.write(chunk)
-					except Exception:
-						try:
-							os.remove(archive)
-						except OSError:
-							pass
-					if os.path.isfile(archive):
-						size = 1.0*os.path.getsize(archive)/(1024*1024)
-						if size != 0:
-							ret, ret1 = self.getFreeSpace()
-							if ret > size and ret1 > (size/2):
-								os.makedirs(extract_dir, exist_ok=True)
-								cmd = [SEVENZIP, "e", "-y", "-o%s" % extract_dir, archive]
-								try:
-									extract_ok = subprocess.call(cmd) == 0
-								except (OSError, ValueError):
-									extract_ok = False
-								try:
-									os.remove(archive)
-								except OSError:
-									pass
-								if not extract_ok:
-									shutil.rmtree(extract_dir, ignore_errors=True)
-									tmp += _("ERROR")+": ("+Ddir+ ") "+_("Archive extraction failed")+"\n"
-									continue
-								available_before = len(getattr(self, "warderLegacyChannelAvailable", set()))
-								numPict, total = self.cprmFiles(Ddir)
-								if getattr(self, "warderLegacyPiconDestination", None) and len(self.warderLegacyChannelAvailable) <= available_before:
-									self.warderLegacyChannelFailures += 1
-								if total == 0:
-									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("No picons were downloaded.")+"\n"
-								elif numPict-total == 0:
-									tmp += _("SUCCESSFUL")+": ("+Ddir+ ") "+k[x][0]+", "+warderPiconSync.success_summary(total, None, _)+"\n"
-								else:
-									tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", " + (_("%d of %d picons failed to install") % (total-numPict, total))+"\n"
-							else:
-								tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+ "%s(%s/%s)MB:\n%s - %s/%s, %s - %s/%s" % (_("Sorry, too low free space"),_("Required"),_("Free"),config.plugins.setupGlass17.par39.value,size/2,ret1,self.zzz[:-1],size,ret)+"\n"
-						else:
-							tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!") + " " + _("No picons were downloaded.")+"\n"
-							try:
-								os.remove(archive)
-							except OSError:
-								pass
-					else:
-						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Error while downloading file!")+"\n"
-			else:
-				tmp += _("ERROR")+": "+_("Loading URL tools failed")+"\n"
-		else:
-			tmp += _("ERROR")+": "+_("Internet connection failed")+"\n"
-		if tmp != "":
-			if continue_loop:
-				self.dwnLoop(tmp[:-1])
-			return tmp[:-1]
-		message = _("ERROR")+": "+_("Unknown error detected, try again!!!")
-		if continue_loop:
-			self.dwnLoop(message)
-		return message
-
-	def cprmFiles(self, what):
-		f = listDir(self.zzz + what)
-		numPict = 0
-		total = 0
-		legacy_destination = getattr(self, "warderLegacyPiconDestination", None)
-		if legacy_destination:
-			legacy_destination = warderPiconSync.validate_destination(legacy_destination)
-			if not legacy_destination or os.path.islink(legacy_destination):
-				self.warderLegacyChannelFailures += 1
-				self.rmTmp2(self.zzz, what)
-				return 0, 0
-			os.makedirs(legacy_destination, exist_ok=True)
-			wanted = self.warderLegacyChannelWanted
-			available_before = len(self.warderLegacyChannelAvailable)
-			current_result = getattr(self, "warderLegacyCurrentPackageResult", None)
-			if current_result is not None:
-				current_result["processed"] = True
-			for name in f or []:
-				if not str(name).lower().endswith(".png"):
-					continue
-				self.warderLegacyChannelAvailable.add(name)
-				if wanted is not None and name not in wanted:
-					continue
-				source = os.path.join(self.zzz, what, name)
-				destination = os.path.join(legacy_destination, name)
-				if os.path.islink(destination):
-					self.warderLegacyChannelFailures += 1
-					if current_result is not None:
-						current_result["failures"] += 1
-					continue
-				try:
-					shutil.copy2(source, destination)
-				except OSError:
-					self.warderLegacyChannelFailures += 1
-					if current_result is not None:
-						current_result["failures"] += 1
-					total += 1
-					continue
-				total += 1
-				if os.path.isfile(destination) and not os.path.islink(destination):
-					numPict += 1
-					self.warderLegacyChannelInstalled.add(name)
-					if current_result is not None:
-						current_result["updated"] += 1
-			if len(self.warderLegacyChannelAvailable) <= available_before:
-				self.warderLegacyChannelFailures += 1
-			self.warderLegacyArchivesProcessed += 1
-			self.rmTmp2(self.zzz, what)
-			return numPict, total
-		destDir = what
-		if f:
-			for x in f:
-				if not str(x).lower().endswith(".png"):
-					continue
-				source = os.path.join(self.zzz, what, x)
-				if not os.path.isfile(source) or os.path.islink(source):
-					continue
-				destination = os.path.join(config.plugins.setupGlass17.par39.value, destDir, x)
-				total += 1
-				try:
-					if os.path.islink(destination):
-						raise OSError("destination is a symbolic link")
-					shutil.copy2(source, destination)
-				except OSError:
-					continue
-				if (os.path.isfile(destination) and not os.path.islink(destination)
-						and self._warderFilesMatch(source, destination)):
-					numPict += 1
-		self.rmTmp2(self.zzz, what)
-		return numPict, total
-
-	def _warderFilesMatch(self, source, destination):
-		# Compare the bytes copied during this task; a stale same-name file cannot
-		# turn a failed copy into a reported success.
-		try:
-			return (os.path.getsize(source) == os.path.getsize(destination)
-				and self._warderSha256(source) == self._warderSha256(destination))
-		except OSError:
-			return False
-
-	def _warderSha256(self, path):
-		digest = hashlib.sha256()
-		with open(path, "rb") as stream:
-			for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-				digest.update(chunk)
-		return digest.hexdigest()
-
-	def chck(self, s):
-		try:
-			i = s.split("_")   
-			i = i[len(i)-4]   
-			if len(i) in (5,6,7,8):
-				i = i[0:len(i)-4]
-				for tt in self.answer:
-					if i.lower() == tt.lower():				
-						return True
-		except: pass
-		return False 
-
-	def iconPreviewManage(self):
-		tmp = ""
-		path = config.plugins.setupGlass17.par39.value
-		if not os.path.exists((path+"/more_icons/scr_prew")):
-			os.makedirs(path + "/more_icons/scr_prew", exist_ok=True)
-		numPict = 0
-		total = 0
-		for i in range(1,MAXSCREENS):
-			if fileExists(("/tmp/more_icons/scr_prew/screen-"+str(i)+".png")):
-				shutil.copy2("/tmp/more_icons/scr_prew/screen-" + str(i) + ".png", path + "/more_icons/scr_prew/screen-" + str(i) + ".png")
-				total += 1
-				if fileExists((path+"/more_icons/scr_prew/screen-"+str(i)+".png")):
-					numPict += 1
-		if total != 0:
-			if numPict-total == 0:
-				tmp = _("SUCCESSFUL")+": "+_("Previews downloaded successfully!") + "\n"
-			else:
-				tmp = _("ERROR")+": "+_("Previews:") + " " + str(total-numPict) + " " + _("file(s) from") + " " + str(total) + "\n"
-		global allIcons
-		for i in range(1,MAXICONS):
-			if os.path.exists(("/tmp/more_icons/i_type-"+str(i))):
-				if not os.path.exists((path+"/more_icons/i_type-"+str(i))):
-					os.makedirs(path + "/more_icons/i_type-"+str(i), exist_ok=True)
-				for tt in allIcons:
-					shutil.copy2("/tmp/more_icons/i_type-" + str(i) + "/" + tt + ".png", path + "/more_icons/i_type-" + str(i) + "/" + tt + ".png")
-				shutil.rmtree("/tmp/more_icons/i_type-"+str(i), ignore_errors=True)
-				shutil.copy2("/tmp/more_icons/scr_prew/icons-" + str(i) + ".png", path + "/more_icons/scr_prew/icons-" + str(i) + ".png")
-				if checkIcons(i):
-					tmp += _("SUCCESSFUL")+": "+_("Icons type") + " " + str(i) + "\n"
-				else:
-					tmp += _("ERROR")+": "+_("Icons type") + " " + str(i) + "\n"				
-		self.rmTmp()
-		if tmp != "":
-			self.dwnLoop(tmp[:-1])
-		else:
-			self.dwnLoop(_("ERROR")+": "+_("Unknown error detected, try again!!!")) 	
-##########################################################################################################################
-class satSelectorScr(Screen): 
-	skin = """
-		<screen name="satSelectorScr" position="center,center" size="1071,855" title="Select">
-			<widget name="list" position="15,5" scrollbarMode="showOnDemand" size="1040,780" />
-	<widget name="key_red" position="0,805" size="357,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="357,805" size="357,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_yellow" position="714,805" size="357,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="yellow" />
-   <eLabel position="0,795" size="357,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="357,795" size="357,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="714,795" size="357,2" backgroundColor="yellow" zPosition="5" transparent="0" />
-		</screen>"""
-
-	def __init__(self, session, delP = 1):
-		Screen.__init__(self, session)
-		self.delP = delP		
-		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(_("Select"))
-		self["key_yellow"] = Label(_("Save"))
-		self.list = SelectionList()
-		self["list"] = self.list
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], 
-		{
-			"ok": self.list.toggleSelection, 
-			"cancel": self.exit,
-			"red": self.exit,
-			"yellow": self.finishSelect,
-			"green": self.list.toggleSelection
-		}, -1)
-		self.onLayoutFinish.append(self.startSelect)
-		
-	def startSelect(self):		
-		for x in range(0, len(SATLIST)):
-			if SATLIST[x][self.delP] != "": 
-				p = config.plugins.setupGlass17.par39.value+"/piconSat/"+SATLIST[x][2]+"-75.png"
-				if not os.path.isfile(p): 
-					p = SKINPATH+"icons/75.png"
-				self.list.addSelection(SATLIST[x][0], (SATLIST[x][0],SATLIST[x][self.delP]), x, False, p)    
-
-	def downAnswerNow(self, answer):
-		if answer:
-			self.finish()
-
-	def finishSelect(self):
-		if self.delP == 1:
-			ret = ""
-			for x in self.list.getSelectionsList():  
-				ret += "%s, " % x[0]
-			if len(ret) == 0:
-				return self.exit()
-			else:
-				restartbox = self.session.openWithCallback(self.downAnswerNow, MessageBox, _("Delete") + " " + ret + _("now?"), MessageBox.TYPE_YESNO)
-				restartbox.setTitle(_("Delete"))
-		else:
-			self.finish()
-
-	def finish(self):
-		ret = []
-		for x in self.list.getSelectionsList():  
-			if self.delP == 1:
-				ret.append(x[1][1])
-			else:
-				ret.append(x[1]) 
-		if len(ret) == 0:
-			return self.exit()    
-		else:          		
-			return self.exit(ret)
-			
-	def exit(self,r=None):
-		self.close(r)
-
-
-class warderPositionSelectorScr(Screen):
-	skin = satSelectorScr.skin
-
-	def __init__(self, session, selected=None):
-		Screen.__init__(self, session)
-		self.selected = set(warderPiconSync.task_package_selectors_from_bindings(selected))
-		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(_("Select"))
-		self["key_yellow"] = Label(_("Save"))
-		self.list = SelectionList()
-		self["list"] = self.list
-		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
-			"ok": self.list.toggleSelection, "green": self.list.toggleSelection,
-			"cancel": self.cancel, "red": self.cancel, "yellow": self.finish
-		}, -1)
-		self.onLayoutFinish.append(self.startSelect)
-
-	def startSelect(self):
-		for x in range(0, len(SATLIST)):
-			label = SATLIST[x][0]
-			value = SATLIST[x][2] if len(SATLIST[x]) > 2 else label
-			# Attach immutable selector identity to the item. The displayed label and
-			# SATLIST icon value are presentation data only.
-			binding = warderPiconSync.task_binding_for_display_label(label)
-			if not binding:
-				continue
-			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
-			if not os.path.isfile(p):
-				p = SKINPATH + "icons/75.png"
-			self.list.addSelection(label, binding, x, binding["package_selector"] in self.selected, p)
-
-	def finish(self):
-		ret = [x[1] for x in self.list.getSelectionsList()]
-		self.close(ret)
-
-	def cancel(self):
-		# openWithCallback calls callback(*retVal); close() supplies no arguments.
-		# Pass one explicit None so cancel follows a stable callback contract.
-		self.close(None)
-
-class styleSelectorScr(Screen):   
-
-	skin = """
-	<screen name="SelectExtraScreen" position="center,center" size="660,372" title="" backgroundColor="background" >
-  <widget name="list" position="45,15" size="570,292" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-	<widget name="key_red" position="0,332" size="220,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="220,332" size="220,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_blue" position="440,332" size="220,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,322" size="220,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="220,322" size="220,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="440,322" size="220,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
-
-	def __init__(self, session, style, scrNum):
-		self.skin = styleSelectorScr.skin
-		self.session = session
-		self.style = style
-		self.scrNum = scrNum
-		Screen.__init__(self, session)
-		self.list = []
-		self["key_green"] = Label(_("Select"))
-		self["key_blue"] = Label(_("Edit color"))
-		self["key_red"] = Label(_("Cancel"))
-		self['list'] = thumbList2(self.list)	
-		self["actions"] = ActionMap(['WizardActions', 'ColorActions'],
-		{
-			"green": self.save,
-			"ok": self.save,
-			"red": self.close,
-			"blue": self.enterColor,
-			"back": self.close
-		})    
-		self.onLayoutFinish.append(self.generateData)
-
-	def setWindowTitle(self):
-		self.setTitle(_("Style menu"))
-
-	def enterColor(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = str(selection[0])
-			tmp = tmp.strip().split("*")
-			self.session.openWithCallback(self.enterColorAnswer,InputBox, title="Please enter color (#AARRGGBB): ", text=tmp[1], maxSize=12, type=Input.TEXT)
-
-	def enterColorAnswer(self, color):
-		if color is None:
-			return		
-		x = ""
-		try:
-			color = color.strip()
-			if len(color) == 9:
-				x = int(color.replace("#","0x"), 16)
-		except: pass
-		if x == "":
-			self.session.open(MessageBox, _("Sorry, you have entered a wrong color:") + color + "!!!", MessageBox.TYPE_ERROR, 6)
-		else:
-			selection = self['list'].getCurrent()
-			x = ""
-			if selection:
-				tmp = str(selection[0])
-				tmp = tmp.strip().split("*") 
-				try:
-					f = open("%sstyle/%s/title_color.cfg" % (SKINPATH, tmp[0]), "w")
-					f.write(color)
-					f.close()
-					self.style = int(tmp[0])
-					x = "ok"					
-				except: pass					
-			if x == "":					
-				self.session.open(MessageBox, _("Sorry, writing color:") + " " + color + " " + _("failed !!!"), MessageBox.TYPE_ERROR, 6)
-			else:
-				self.session.open(MessageBox, _("Color:") + " " + color + " " + _("writed successfully !!!"), MessageBox.TYPE_INFO, 6)
-				self.generateData()
-
-	def generateData(self):
-		self.setWindowTitle()
-		self.list = []
-		for x in range(1,MAXICONS):
-			if checkStyle(x): 				
-				clr = readcolorStyle(str(x))
-				item = [str(x)+"*"+clr]
-				item.append(MultiContentEntryText(pos=(0, 15), size=(465, 33), font=0, color_sel=int('0xff3300', 16), text=("***  " + str(x) + "  ***")))
-				item.append(MultiContentEntryText(pos=(0, 52), size=(465, 33), font=1, color_sel=int('0xff3300', 16), color=int('0xffcc00', 16), text=("Color: " + clr)))
-				pix = LoadPixmap(SKINPATH + 'style/'+str(x)+'/b_tl.png')
-				item.append(MultiContentEntryPixmap(pos=(210, 0), size=(180, 97), png=pix, backcolor=int('0xffffff', 16)))
-				item.append(MultiContentEntryText(pos=(315, 37), size=(150, 33), font=0, text="Title", color_sel=int('0xff3300', 16), color=int(clr.replace('#','0x'), 16)))
-				pix = LoadPixmap(SKINPATH + 'style/'+str(x)+'/b_tr.png')
-				item.append(MultiContentEntryPixmap(pos=(390, 0), size=(180, 97), png=pix, backcolor=int('0xffffff', 16)))
-				self.list.append(item)
-		if len(self.list) == 0:
-			item = [str(x)+"*"+clr]
-			item.append(MultiContentEntryText(pos=(0, 30), size=(465, 33), font=0, color_sel=int('0xff3300', 16), text=("***  None style detected !!!  ***")))
-			self.list.append(item)
-			self['list'].l.setList(self.list)
-		else:
-			self['list'].l.setList(self.list)
-			self["list"].instance.moveSelectionTo(self.style-1)
-
-	def save(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = str(selection[0])
-			tmp = tmp.strip().split("*")
-			if not writeStyleCfg(self.scrNum, int(tmp[0])):			
-				self.session.open(MessageBox, _("Sorry, write to g17Screens.cfg failed !!!"), MessageBox.TYPE_ERROR, 6)
-			else:
-				self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
-		self.close()			
-##########################################################################################################################
-class selectScreenShowed(Screen):   
-
-	skin = """
-	<screen name="SelectExtraScreen" position="center,center" size="1567,757" title="" backgroundColor="background" >
-  <widget name="list" position="45,40" size="495,585" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-  <widget name="scr_preview" position="565,63" size="960,540" zPosition="2" backgroundColor="background" alphatest="blend"/>
-	<widget name="res" position="565,625" size="960,50" zPosition="2" valign="center" halign="center" font="Prive3;30" transparent="1" />
-	<widget name="key_red" position="0,707" size="522,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="480,707" size="523,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_blue" position="1045,707" size="522,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,697" size="522,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="522,697" size="523,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="1045,697" size="522,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
-
-	def __init__(self,session):
-		self.skin = selectScreenShowed.skin
-		self.session = session
-		Screen.__init__(self, session)
-		self.list = []
-		self["key_green"] = Label(_("Select"))
-		self["key_blue"] = Label(_("Edit"))
-		self["key_red"] = Label(_("Cancel"))
-		self["scr_preview"] = Pixmap()
-		self["res"] = Label("")
-		self['list'] = thumbList2(self.list)
-		self['list'].onSelectionChanged.append(self.reactivate)		
-		self["actions"] = ActionMap(['WizardActions', 'ColorActions'],
-		{
-			"green": self.save,
-			"ok": self.save,
-			"red": self.exit,
-			"blue": self.styleSelector,
-			"back": self.exit
-		})    
-		self.onLayoutFinish.append(self.mainFnc)
-
-	def setWindowTitle(self):
-		self.setTitle(_("Extra Screen"))
-
-	def styleSelector(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = str(selection[0])
-			tmp = tmp.strip().split("*")
-			self.session.openWithCallback(self.mainFnc, styleSelectorScr, int(tmp[1]), int(tmp[0]))
-
-	def exit(self):
-		isOk, color = checkStyleFull(config.plugins.setupGlass17.par6.value, True)
-		if isOk != "?":
-			config.plugins.setupGlass17.par44.value = int(isOk)
-			config.plugins.setupGlass17.par45.value = color
-		self.close()
-		
-	def save(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = str(selection[0])
-			tmp = tmp.strip().split("*")
-			config.plugins.setupGlass17.par6.value = int(tmp[0])
-			config.plugins.setupGlass17.par44.value = int(tmp[1])
-			config.plugins.setupGlass17.par45.value = tmp[2]
-		self.close()
-		
-	def mainFnc(self):
-		self.setWindowTitle()
-		self.list = []
-		c = a = 0
-		for x in range(1,MAXSCREENS):
-			tmp = checkScreen(x) 
-			if x == config.plugins.setupGlass17.par6.value:
-				a = c
-			if tmp:
-				c += 1
-				s, colorS = checkStyleFull(x)
-				item = [str(x)+"*"+s+"*"+colorS]
-				item.append(MultiContentEntryText(pos=(0, 31), size=(47, 33), font=0, color_sel=int('0xff3300', 16), color=int('0x00d100', 16), text=(str(c)+".")))
-				item.append(MultiContentEntryText(pos=(60, 15), size=(465, 33), font=0, color_sel=int('0xff3300', 16), text=("***  " + str(x) + "  ***")))
-				item.append(MultiContentEntryText(pos=(90, 52), size=(465, 33), font=1, color_sel=int('0xff3300', 16), color=int('0xffcc00', 16), text=(_("Style:")+" " + s)))
-				if s != "?":
-					pix = LoadPixmap(SKINPATH + 'style/'+s+'/b_tl.png')
-					item.append(MultiContentEntryPixmap(pos=(270, 0), size=(180, 97), png=pix, backcolor=int('0xffffff', 16)))
-					item.append(MultiContentEntryText(pos=(315, 37), size=(150, 33), font=0, text="Title", color_sel=int('0xff3300', 16), color=int(colorS.replace('#','0x'), 16)))
-				self.list.append(item)
-		self['list'].l.setList(self.list)
-		self["list"].instance.moveSelectionTo(a)
-
-	def reactivate(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = str(selection[0])
-			tmp = tmp.strip().split("*")
-			tmp2 = config.plugins.setupGlass17.par39.value + "/more_icons/scr_prew/screen-" + tmp[0] + ".png"
-			try:
-				if fileExists(tmp2):
-					self["scr_preview"].instance.setPixmapFromFile(tmp2)
-				else:        
-					self["scr_preview"].instance.setPixmapFromFile((SKINPATH + "no-preview.png"))        
-				from Screens.G17screens import g17_extraScreen	
-				tmp = g17_extraScreen.get(str(tmp[0]))
-				tmp = tmp.split("\n")
-				for i in tmp:
-					if "g17picon" in i:
-						tmp2 = (i.split('size="')[1]).split('"')[0]
-						tmp2 = tmp2.strip().split(',')
-						break
-				if len(tmp2) == 2:
-					self["res"].setText(_("Picon path")+": "+config.plugins.setupGlass17.par39.value+"/" + piconSize(tmp2[0]+","+tmp2[1]))
-				else:
-					self["res"].setText("")
-			except: pass      		
-##########################################################################################################################
-class selectIconsDisplayed(Screen):   
-
-	skin = """
-	<screen name="selectIconsScreen" position="center,center" size="1386,757" title="" backgroundColor="background" >
-  <widget name="list" position="45,63" size="315,627" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background" />
-	<widget name="key_red" position="0,707" size="693,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="693,707" size="693,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-   <eLabel position="0,697" size="693,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="693,697" size="693,2" backgroundColor="green" zPosition="5" transparent="0" />"""
-
-	def __init__(self,session,what=0):
-		self.what = what
-		self.session = session
-		self.skin = selectIconsDisplayed.skin
-		Screen.__init__(self, session)
-		self.list = []
-		self["key_green"] = Label(_("Select"))
-		self["key_red"] = Label(_("Cancel"))
-		self.wahtType = "/menuIcons/"
-		self.rng = MAXICONS
-		if self.what != 0:
-			if self.what == 1:
-				self.samle = ["av_setup","setup","standby_restart_list","system_selection","timer_edit","tuner_setup","info_screen","manual_scan","network_setup"]
-			else:
-				self.samle = ["0","1","26","27","28","32","38","47","23"]
-				self.wahtType = "/weatherIcons/"
-			y = 0
-			off = 0
-			for x in range(0,9):
-				self["ico%s" % x] = Pixmap()
-				if x > 5:
-					y = 375
-					off = 6
-				elif x > 2:
-					y = 187
-					off = 3
-				self.skin += '<widget name="ico'+str(x)+'" position="'+str(405+(x-off)*300)+','+str(57+y)+'" size="300,183" zPosition="2" backgroundColor="background" alphatest="blend" />'
-		else:
-			self["scr_preview"] = Pixmap()
-			self.skin += """<widget name="scr_preview" position="481,96" size="768,432" zPosition="2" backgroundColor="background" alphatest="blend"/>"""
-		self.skin += """</screen>"""
-		self['list'] = thumbList(self.list)
-		self['list'].onSelectionChanged.append(self.reactivate)		
-		self["actions"] = ActionMap(['WizardActions', 'ColorActions'],
-		{
-			"green": self.save,
-			"ok": self.save,
-			"red": self.close,
-			"back": self.close
-		})    
-		self.onLayoutFinish.append(self.mainFnc)
-
-	def setWindowTitle(self):
-		self.setTitle(_("Choose Icons"))
-
-	def save(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = selection[0]
-			if tmp != "*":
-				if self.what != 0:
-					if self.what == 1:
-						config.plugins.setupGlass17.par69.value = int(tmp)
-						config.plugins.setupGlass17.par69.save()
-					else:
-						config.plugins.setupGlass17.par72.value = int(tmp)
-						config.plugins.setupGlass17.par72.save()
-				else:
-					config.plugins.setupGlass17.par1.value = int(tmp)
-		self.close()
-		
-	def mainFnc(self):
-		self.setWindowTitle()
-		self.list = []
-		a = c = 0
-		for x in range(1,self.rng):
-			if self.what != 0:
-				num = 0
-				tmp = False
-				for sample in self.samle:
-					fileSample = config.plugins.setupGlass17.par39.value + self.wahtType + str(x) + "/" + sample + ".png"
-					if fileExists(fileSample):
-						num += 1
-				if num == 9:
-					tmp = True
-			else:
-				tmp = checkIcons(x) 
-			if (x == config.plugins.setupGlass17.par1.value and self.what == 0) or (x == config.plugins.setupGlass17.par72.value and self.what == 2) or (x == config.plugins.setupGlass17.par69.value and self.what == 1):
-				a = x - 1
-			if tmp:
-				c += 1
-				item = [str(x)]
-				item.append(MultiContentEntryText(pos=(0, 0), size=(52, 33), font=0, text=(str(c)+".")))
-				item.append(MultiContentEntryText(pos=(67, 0), size=(495, 33), font=0, text=("***  " + str(x) + "  ***")))
-				self.list.append(item)
-		if c == 0:
-			item = ["*"]
-			item.append(MultiContentEntryText(pos=(0, 0), size=(495, 33), font=0, text=("***  " + _("No data") + "  ***")))
-			self.list.append(item)
-		self['list'].l.setList(self.list)
-		self["list"].instance.moveSelectionTo(a)
-
-	def reactivate(self):
-		selection = self['list'].getCurrent()
-		if selection:
-			tmp = selection[0]
-			if tmp != "*":
-				if self.what != 0:
-					i = 0
-					for sample in self.samle:
-						fileSample = config.plugins.setupGlass17.par39.value + self.wahtType + tmp + "/" + sample + ".png"
-						try:
-							if fileExists(fileSample):
-								self["ico%s" % i].instance.setPixmapFromFile(fileSample)
-							else:        
-								if self.what == 1:
-									self["ico%s" % i].instance.setPixmapFromFile(SKINPATH +"menu/undefined.png")        
-								else:
-									self["ico%s" % i].instance.setPixmapFromFile(SKINPATH + "icons/3200.png")
-						except: pass 
-						i += 1
-				else:
-					tmp2 = config.plugins.setupGlass17.par39.value + "/more_icons/scr_prew/icons-" + tmp + ".png"
-					try:
-						if fileExists(tmp2):
-							self["scr_preview"].instance.setPixmapFromFile(tmp2)
-						else:        
-							self["scr_preview"].instance.setPixmapFromFile((SKINPATH + "no-preview.png"))        
-					except: pass       		
-##########################################################################################################################
-class historyScreen(Screen):
-	skin = """<screen name="g17_History" position="center,center" size="1650,825" zPosition="8" title="" backgroundColor="background" >                                           
-<widget name="Changelog_info" position="15,7" size="1620,740" scrollbarMode="showOnDemand" backgroundColor="background" />
-	<widget name="key_red" position="0,775" size="825,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="825,775" size="825,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-   <widget name="line_red" position="0,765" size="825,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <widget name="line_green" position="825,765" size="825,2" backgroundColor="green" zPosition="5" transparent="0" />
-</screen>"""
-                        
-	def __init__(self, session, ver="", new=""):
-		Screen.__init__(self, session)
-		self.skin = historyScreen.skin
-		self.new = new
-		self.ver = ver
-		self.res = self.ver == "" or self.ver == _("Result")
-		self.list = []
-		self['Changelog_info'] = thumbList(self.list)	
-		self["key_red"] = Label(_("Close") if self.res else _("Cancel"))
-		self["key_green"] = Label(_("Update"))
-		self["line_red"] = Label("")
-		self["line_green"] = Label("")
-		self["actions"] = ActionMap(["ColorActions", "SetupActions", "DirectionActions"],
-		{
-            "green": self.update,
-            "ok": self.update,
-            "red": self.exit,
-            "cancel": self.exit,
-            "blue": self.exit,
-            "yellow": self.exit
-		}, -2)
-		self.onLayoutFinish.append(self.readandshow)	
-
-	def exit(self):
-		if self.res:
-			self.close()
-		else:
-			self.close(False)
-
-	def update(self):
-		if self.res:
-			self.close()
-		else:
-			self.close(True)
-		
-	def setWindowTitle(self, t):
-		self.setTitle(t)
-
-	def readandshow(self):
-		if self.res:
-			self["key_green"].hide()
-			self["key_red"].move(ePoint(412, 775))
-			self["line_red"].move(ePoint(412, 765))
-			self["line_green"].hide()
-		txt = _("Changelog")
-		item = []
-		a = self.ver == _("Result")
-		if a:
-			txt = self.ver
-		elif self.new != "":
-			txt += " ver."+self.ver
-			f = self.new
-		else:
-			f = PLUGINPATH + HIST		
-		self.setWindowTitle(txt)
-		try:
-			if a:
-				f = self.new.split("\n")
-				color=int("0xdddddd", 16)
-				xOff = 32
-			else:
-				xOff = 0
-				f = open(f, 'r').readlines()
-			for x in f: 
-				tt = x.replace("\n","")
-				if tt != "" and len(tt) > 0:
-					item = [tt]
-					if a:
-						p = "white"
-						if _("SUCCESSFUL") in x:
-							p = "green"	
-						elif _("ERROR") in x or _("PARTIAL SUCCESS") in x:
-							p = "red"
-						item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 7), size=(22, 23), png=LoadPixmap("%sicons/%s.png" % (SKINPATH,p))))
-					else:
-						if "*" in x:
-							color=int("0xff9c00", 16)	
-						else:
-							color=int("0xffffff", 16)
-					item.append(MultiContentEntryText(pos=(xOff, 0), size=(1620-xOff, 33), font=0, text=tt, color=color))
-					self.list.append(item)
-		except:	pass	
-		if len(self.list) == 0:
-			item = ["*"]
-			item.append(MultiContentEntryText(pos=(0, 0), size=(802, 33), font=0, text=_("No Changelog info !!!")))
-			self.list.append(item)
-		self['Changelog_info'].l.setList(self.list)
-		self['Changelog_info'].selectionEnabled(0)
-##########################################################################################################################
-class SelectPosition(Screen):                     
-	def __init__(self, session, typeObj=""):
-		Screen.__init__(self, session)
-		self.typeObj = typeObj
-		if self.typeObj == "volMute": 
-			self.valueX = config.plugins.setupGlass17.par51.value
-			self.valueY = config.plugins.setupGlass17.par52.value
-			self.skinName = ['Volume']
-			from Components.VolumeBar import VolumeBar
-			self.volumeBar = VolumeBar()		
-			self["Volume"] = self.volumeBar   
-		elif self.typeObj == "netspeed": 
-			self.valueX = config.plugins.setupGlass17.par210.value
-			self.valueY = config.plugins.setupGlass17.par211.value       
-			if config.plugins.setupGlass17.par226.value != "2":
-				self.skin = """<screen name="NetspeedPos" position="0,0" size="270,50" zPosition="0" title="NetspeedPos" backgroundColor="black" flags="wfNoBorder">
-				<ePixmap position="0,0" size="270,50" pixmap="hd_glass17/icons/netspeed.png" zPosition="7" alphatest="off" />
-				<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="80,0" size="190,50" zPosition="8" font="Regular2;26" noWrap="1" valign="center" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1"/>
-				</screen>"""
-			else:
-				self.skin = """<screen name="NetspeedPos" position="0,0" size="220,40" zPosition="0" title="NetspeedPos" backgroundColor="transparent" flags="wfNoBorder">
-				<widget source="global.CurrentTime" render="g17ShowNetSpeed" position="0,0" size="220,40" zPosition="8" font="Prive3;27" noWrap="1" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" transparent="1"/>
-				</screen>"""
-		elif self.typeObj == "poster": 
-			self.valueX = config.plugins.setupGlass17.par200.value
-			self.valueY = config.plugins.setupGlass17.par201.value       
-			self.skin = """<screen name="Poster" position="0,0" size="%s" zPosition="0" title="Poster" backgroundColor="black" flags="wfNoBorder">                                           
-			<widget name="cover" position="0,0" size="%s" pixmap="hd_glass17/videodb/cover_no.png" alphatest="off" />
-			</screen>""" % (config.plugins.setupGlass17.par202.value,config.plugins.setupGlass17.par202.value) 
-			self["cover"] = Pixmap()
-		else:                                                           
-			self.skin = """<screen name="SpecialScreen" position="1155,195" size="810,412" zPosition="8" title="Ecm and TP Status" backgroundColor="background" >                                           
-			<widget name="ecm_items" font="Prive3;24" position="7,15" zPosition="2" size="150,532" valign="top" halign="left" foregroundColor="yellow" backgroundColor="background" transparent="1" />
-			<widget name="ecm_Values" font="Prive3;24" position="96,15" zPosition="3" size="337,532" valign="top" halign="left"  backgroundColor="background" transparent="1" />
-			<widget name="tp_items" font="Prive3;24" position="435,15" zPosition="2" size="150,480" valign="top" halign="left" foregroundColor="yellow" backgroundColor="background" transparent="1" />
-			<widget name="tp_Values" font="Prive3;24" position="577,15" zPosition="3" size="232,480" valign="top" halign="left"  backgroundColor="background" transparent="1" />                         
-			</screen>""" 
-			self['ecm_items'] = Label(ECM_LABELS)
-			self['ecm_Values'] = Label(CLRDATA)
-			self['tp_items'] = Label("Video PID:\nAudio PID:\nPCR PID:\nPMT PID:\nTXT PID:\nSID:\nTSID:\nONID:\nV. Format:\nV. Size:\nAudio Type:\nA. Tracks:\nSubtitles:")
-			self['tp_Values'] = Label(CLRTP)
-			self.valueX = config.plugins.setupGlass17.par10.value
-			self.valueY = config.plugins.setupGlass17.par11.value
-		self["actions"] = ActionMap(["WizardActions"],
-		{
-			"left": self.left,
-			"up": self.up,
-			"right": self.right,
-			"down": self.down,
-			"ok": self.ok,
-			"back": self.close
-		}, -1)		
-		self.moveTimer = eTimer()
-		try:
-			self.moveTimer_conn = self.moveTimer.timeout.connect(self.setNewPosition)
-		except AttributeError:
-			self.moveTimer.callback.append(self.setNewPosition)
-		self.moveTimer.start(80)
-		self.onLayoutFinish.append(self.setVol)
-
-	def setVol(self):
-		if self.typeObj == "volMute":
-			from enigma import eDVBVolumecontrol
-			self.volumeBar.setValue(int(eDVBVolumecontrol.getInstance().getVolume()))
-		elif self.typeObj == "poster":
-			self["cover"].instance.setScale(1)
-			
-	def setNewPosition(self):
-		self.instance.move(ePoint(self.valueX, self.valueY))
-		self.moveTimer.start(80)
-
-	def left(self):
-		self.valueX -= 10
-		if self.valueX < 0:
-			self.valueX = 0
-
-	def up(self):
-		self.valueY -= 10
-		if self.valueY < 0:
-			self.valueY = 0
-
-	def right(self):
-		self.valueX += 10
-		if self.valueX > 1820:
-			self.valueX = 1820
-
-	def down(self):
-		self.valueY += 10
-		if self.valueY > 1000:
-			self.valueY = 1000
-
-	def ok(self):
-		if self.valueX == 0:
-			self.valueX = 1
-		if self.valueY == 0:
-			self.valueY = 1
-		if self.typeObj == "volMute":
-			config.plugins.setupGlass17.par51.value = self.valueX
-			config.plugins.setupGlass17.par52.value = self.valueY			
-		elif self.typeObj == "poster":
-			config.plugins.setupGlass17.par200.value = self.valueX
-			config.plugins.setupGlass17.par201.value = self.valueY	
-		elif self.typeObj == "netspeed":
-			config.plugins.setupGlass17.par210.value = self.valueX
-			config.plugins.setupGlass17.par211.value = self.valueY
-		else:
-			config.plugins.setupGlass17.par10.value = self.valueX
-			config.plugins.setupGlass17.par11.value = self.valueY
-		self.close()
-##########################################################################################################################
-class weatherCitySelector(Screen):
-	"""OK-driven selector for cities already present in /etc/my_city_Code.txt."""
-
-	skin = """
-	<screen name="weatherCitySelector" position="center,center" size="900,700" title="Weather for City" backgroundColor="background">
-		<widget name="list" position="25,25" size="850,590" scrollbarMode="showOnDemand" backgroundColor="background"/>
-		<widget name="key_red" position="25,635" size="400,50" valign="center" halign="center" font="Prive3;32" transparent="1" foregroundColor="red"/>
-		<widget name="key_green" position="475,635" size="400,50" valign="center" halign="center" font="Prive3;32" transparent="1" foregroundColor="green"/>
-	</screen>"""
-
-	def __init__(self, session, current=None):
-		Screen.__init__(self, session)
-		self["key_red"] = Label(_("Cancel"))
-		self["key_green"] = Label(_("Select"))
-		self.items = []
-		currentIndex = 0
-		for value, label in getCitiesCode():
-			item = [value]
-			item.append(MultiContentEntryText(pos=(15, 0), size=(820, 42), font=2, color_sel=int("0xff9c00",16), text=str(label)))
-			if value == current:
-				currentIndex = len(self.items)
-			self.items.append(item)
-		self["list"] = thumbList(self.items)
-		self["list"].l.setItemHeight(45)
-		self.currentIndex = currentIndex
-		self.onLayoutFinish.append(self._restoreSelection)
-		self["actions"] = ActionMap(["SetupActions", "DirectionActions", "ColorActions"], {
-			"ok": self.select, "green": self.select, "cancel": self.close, "red": self.close,
-			"up": self["list"].up, "down": self["list"].down,
-			"left": self["list"].pageUp, "right": self["list"].pageDown,
-		}, -1)
-
-	def _restoreSelection(self):
-		if self.items and self["list"].instance is not None:
-			self["list"].instance.moveSelectionTo(self.currentIndex)
-
-	def select(self):
-		selection = self["list"].getCurrent()
-		self.close(str(selection[0]) if selection and str(selection[0]) != "None" else None)
-
-
-class cityFinder(Screen):   
-
-	skin = """
-	<screen name="cityFinder" position="center,105" size="1500,945" title="To move in both menu use P+/- or Bqt +/-" backgroundColor="background" >
-  <widget name="info" font="Prive3;33" position="45,7" zPosition="1" size="570,37" valign="center" halign="center" transparent="1" foregroundColor="white" shadowColor="#1A58A6" shadowOffset="-2,-1" />
-  <eLabel text="/etc/my_city_Code.txt:" font="Prive3;33" position="705,7" zPosition="1" size="570,37" valign="center" halign="center" transparent="1" foregroundColor="white" shadowColor="#1A58A6" shadowOffset="-2,-1" />
-  <widget name="list" position="0,52" size="790,675" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-  <widget name="myCity" position="800,52" size="700,802" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-	<widget name="key_red" position="0,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="375,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_yellow" position="750,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="yellow" />
-	<widget name="key_blue" position="1125,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,885" size="375,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="375,885" size="375,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="750,885" size="375,2" backgroundColor="yellow" zPosition="5" transparent="0" />
-    <eLabel position="1125,885" size="375,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
-
-	def __init__(self, session):
-		Screen.__init__(self, session)
-		self.skin = cityFinder.skin
-		self.session = session
-		self.list = []
-		self.citylist = []
-		self.allLabels = [_("Edit")+" my_city...", _("Edit line"),_("Find a city")+" (TXT)", _("Delete line"), _("Select"), _("Add line")+" (TXT)"]
-		self["key_green"] = Label(self.allLabels[4])
-		self["key_blue"] = Label(self.allLabels[2])
-		self["key_yellow"] = Label(self.allLabels[0])
-		self["key_red"] = Label(_("Cancel"))
-		self['list'] = thumbList2(self.list)
-		self['myCity'] = thumbList(self.citylist)	
-		self['list'].l.setItemHeight(301)
-		self['info'] = Label(_("up")+"/"+_("down")+" P+/- or Bqt +/-")
-		self.findC = True
-		self.cityLevel = "root"
-		self.activeCountry = None
-		self.countryNames = {}
-		self.selectedLine = None
-		self.oldLine = None
-		self["actions"] = ActionMap(['WizardActions', 'ColorActions','VirtualKeyboardActions','ChannelSelectBaseActions'],
-		{
-			"nextBouquet": self.moveMainmenuUp,
-			"prevBouquet": self.moveMainmenuDown,
-			"green": self.save,
-			"ok": self.save,
-			"red": self.exit,
-			"blue": self.findCity,
-			"yellow": self.editMCC,
-			'showVirtualKeyboard': self.KeyText,
-			"back": self.exit
-		})    
-		self.onLayoutFinish.append(self.generateData)
-		self.onLayoutFinish.append(self.setWindowTitle)
-		
-	def moveMainmenuUp(self):
-		if self.findC:
-			self['list'].up()
-		else:
-			self['myCity'].up()		
-		
-	def moveMainmenuDown(self):
-		if self.findC:	
-			self['list'].down()	
-		else:
-			self['myCity'].down()
-
-	def setWindowTitle(self,txt=""):
-		self.setTitle(_("Find a city")+txt)
-
-	def exit(self):
-		if not self.findC:
-			self["key_yellow"].setText(self.allLabels[0])
-			self["key_blue"].setText(self.allLabels[2])
-			self.findC = True
-			self['list'].selectionEnabled(1)
-			self['myCity'].selectionEnabled(0)
-			self["key_green"].setText(self.allLabels[4])
-		elif self.cityLevel == "cities":
-			self.cityLevel = "root"
-			self.activeCountry = None
-			self.generateData()
-		else:
-			self.close(0)
-
-	def KeyText(self):
-		from Screens.VirtualKeyBoard import VirtualKeyBoard
-		if self.findC:
-			self.session.openWithCallback(self.findCityAnswer, VirtualKeyBoard, title=_("Please enter a city name")+": ", text="banska bystrica")
-		else:
-			self.session.openWithCallback(self.addNewLine, VirtualKeyBoard, title=self.allLabels[5], text="                                                 ")
-		
-	def findCity(self):
-		if not self.findC:
-			try:
-				self.citylist.remove(self.citylist[self['myCity'].getSelectionIndex()])
-				self.writeMCC()      		
-			except: pass
-		else:	
-			self.session.openWithCallback(self.findCityAnswer, InputBox, title=_("Please enter a city name")+": ", text="banska bystrica                   ", maxSize=50, type=Input.TEXT)
-		
-	def save(self):
-		if self.findC:
-			selection = self["list"].getCurrent()
-			if not selection or str(selection[0]) == "*":
-				return
-			value = str(selection[0])
-			if value.startswith("country|"):
-				self.cityLevel, self.activeCountry = "cities", value.split("|", 1)[1]
-				self.generateData()
-			else:
-				self.appMCC(value)
-		else:
-			self.session.openWithCallback(self.addNewLine, InputBox, title=self.allLabels[5], text="                                                 ", maxSize=120, type=Input.TEXT)
-
-	def editMCC(self):
-		if self.findC:
-			self["key_yellow"].setText(self.allLabels[1])   
-			self.findC = False
-			self['list'].selectionEnabled(0)       
-			self['myCity'].selectionEnabled(1)      
-			self["key_green"].setText(self.allLabels[5])
-			self["key_blue"].setText(self.allLabels[3])
-		else:
-			try:
-				self.selectedLine = self['myCity'].getSelectionIndex()
-				self.oldLine = self.citylist[self.selectedLine]
-				self.session.openWithCallback(self.writeEditLine, InputBox, title=self.allLabels[1], text=self.oldLine[:-1]+"            ", maxSize=50, type=Input.TEXT)
-			except: pass    
-                 
-	def writeEditLine(self, newline):
-		if newline is not None:
-			if self.chckLine(newline):
-				self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)			
-			else:
-				newline = ' '.join((newline).strip().split()) + '\n'
-				if newline != self.oldLine:
-					self.citylist[self.selectedLine] = newline
-					self.writeMCC()
-		self.selectedLine = None
-		self.oldLine = None 
-		
-	def writeMCC(self):
-		try:
-			_atomicWriteText("/etc/my_city_Code.txt", "".join(self.citylist))
-		except Exception:
-			pass
-		self.generateData()  
-                   		
-	def findCityAnswer(self, name):
-		if name is None and name != "":
-			return		
-		self.generateData(name.strip())
-
-	def _loadLocalCities(self):
-		cities = []
-		self.countryNames = {}
-		try:
-			db = "/etc/city_Code-17.txt" if os.path.isfile("/etc/city_Code-17.txt") else "/etc/city_Code.txt"
-			currentName = ""
-			with open(db, "r") as f:
-				for raw in f:
-					line = raw.strip()
-					if line.startswith("# "):
-						currentName = line[2:].strip()
-						if currentName == "SK": currentName = "Slovakia"
-						elif currentName == "CZ": currentName = "Czechia"
-						continue
-					x = _cityLine(raw)
-					if not x:
-						continue
-					country = ""
-					if line.startswith("om|"):
-						p = line.split("|")
-						country = p[3].upper() if len(p) > 3 else ""
-					if country and currentName:
-						self.countryNames[country] = currentName
-					cities.append((country, x[1], x[2]))
-		except Exception as e:
-			Writelog("city database: %s" % e)
-		return cities
-
-	def _onlineCitySearch(self, what):
-		result = []
-		try:
-			if ISP38:
-				from urllib.parse import urlencode
-			else:
-				from urllib import urlencode
-			url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({"name": what, "count": 20, "language": WLANG[:2], "format": "json"})
-			raw = urlopen(Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5"}), timeout=8).read()
-			if not isinstance(raw, str):
-				raw = raw.decode("utf-8", "replace")
-			for loc in (json.loads(raw).get("results") or []):
-				name = loc.get("name") or ""
-				cc = (loc.get("country_code") or "").upper()
-				admin = loc.get("admin1") or ""
-				postal = ""
-				pcs = loc.get("postcodes") or []
-				if isinstance(pcs, list) and pcs:
-					postal = str(pcs[0])
-				if name and cc:
-					value = "om|%s|%s|%s|%s|%s" % (name, name, cc, admin, postal)
-					label = name + (", " + admin if admin else "") + (", " + cc if cc else "")
-					result.append((label, value))
-		except Exception as e:
-			Writelog("Open-Meteo city search: %s" % e)
-		return result
-
-	def generateData(self, what=""):
-		self.list = []
-		local = self._loadLocalCities()
-		needle = _citySearchKey(what)
-		if needle:
-			for country, display, value in local:
-				if needle in _citySearchKey(display):
-					item = [value]
-					label = display + ((" [" + self.countryNames.get(country, country) + "]") if country else "")
-					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
-					self.list.append(item)
-			if not self.list:
-				for label, value in self._onlineCitySearch(what):
-					item = [value]
-					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
-					self.list.append(item)
-			self.setWindowTitle(": " + what)
-		elif self.cityLevel == "root":
-			# r12 authority: show every country directly. The database itself keeps
-			# Slovakia first, Czechia second, followed by the remaining countries.
-			seen = []
-			for country, display, value in local:
-				if country and country not in seen:
-					seen.append(country)
-			for country in seen:
-				item = ["country|" + country]
-				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=self.countryNames.get(country, country)))
-				self.list.append(item)
-			self.setWindowTitle(": " + _("Select country"))
-		else:
-			for country, display, value in local:
-				if country == self.activeCountry:
-					item = [value]
-					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display))
-					self.list.append(item)
-			self.setWindowTitle(": " + self.countryNames.get(self.activeCountry, self.activeCountry or ""))
-		self.citylist = []
-		self.list2 = []
-		try:
-			with open("/etc/my_city_Code.txt", "r") as f:
-				for line in f:
-					self.citylist.append(line)
-					x = _cityLine(line)
-					display = x[1] if x else line.strip()
-					item = [line]
-					item.append(MultiContentEntryText(pos=(0, 0), size=(620, 37), font=2, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=display))
-					self.list2.append(item)
-		except Exception:
-			pass
-		if not self.list2:
-			item = ["*"]
-			item.append(MultiContentEntryText(pos=(0, 0), size=(620, 33), font=0, color_sel=int("0xff3300",16), text=("***  " + _("None city detected") + " !!!  ***")))
-			self.list2.append(item)
-		self["myCity"].l.setList(self.list2)
-		if self.findC:
-			self["myCity"].selectionEnabled(0)
-		if not self.list:
-			item = ["*"]
-			item.append(MultiContentEntryText(pos=(15, 0), size=(760, 33), font=0, color_sel=int("0xff3300",16), text=("***  " + _("None city detected") + " !!!  ***")))
-			self.list.append(item)
-		self["list"].l.setList(self.list)
-		self["list"].l.setItemHeight(45)
-		self["key_blue"].setText(self.allLabels[2])
-
-
-	def addNewLine(self, tmp):
-		if tmp is not None and tmp != "":
-			if self.chckLine(tmp):
-				self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)			
-			else:
-				self.appMCC(tmp)       
-            			
-	def chckLine(self, tmp):
-		try:
-			return _cityLine(" ".join(str(tmp).strip().split())) is None
-		except Exception:
-			return True
-
-	def appMCC(self, tmp):
-		path = "/etc/my_city_Code.txt"
-		written = False
-		try:
-			old = open(path, "r").read() if os.path.exists(path) else ""
-			lines = [x.strip() for x in old.splitlines() if x.strip()]
-			if str(tmp).strip() not in lines:
-				written = _atomicWriteText(path, old + ("" if not old or old.endswith("\n") else "\n") + "%s\n" % str(tmp).strip())
-			else:
-				written = True
-		except (IOError, OSError):
-			pass
-		f = open(path, "r").read() if os.path.exists(path) else ""
-		if written and f.find(str(tmp).strip()) != -1:
-			selected = _cityLine(str(tmp).strip())
-			if selected:
-				_setWeatherCityChoices(selected[0])
-				config.plugins.setupGlass17.par13.save()
-				configfile.save()
-				_refreshLiveWeather()
-			self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
-			self.generateData()
-		else:
-			self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)
-
-      
-class dirBrowser(Screen):      
-         
-	skin = """<screen name="DirBrowser" position="center,center" size="780,750" title="Dir Browser" backgroundColor="background" >
-			<widget name="filelist" position="15,15" size="750,660" scrollbarMode="showOnDemand" />
-	<widget source="key_red" render="Label" position="0,700" size="390,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget source="key_green" render="Label" position="390,700" size="390,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-   <eLabel position="0,690" size="390,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="390,690" size="390,2" backgroundColor="green" zPosition="5" transparent="0" />
-		</screen>"""
-    
-	def __init__(self, session, dd, files=False):
-		Screen.__init__(self, session)
-		self.files = files
-		self.matchingPattern = None
-		if self.files:
-			self.matchingPattern = r"^.*\.(conf)"
-		self.filelist = FileList(dd, showDirectories = True, showFiles = self.files, matchingPattern = self.matchingPattern, inhibitDirs = ["/autofs", "/bin", "/boot", "/dev", "/opt", "/lib", "/proc", "/sbin", "/sys", "/tmp", "/home", "/run"])
-		self["filelist"] = self.filelist
-
-		self["actions"] = ActionMap(["SetupActions", "DirectionActions", "ColorActions"],
-		{
-			"ok": self.ok,
-			"cancel": self.cancel,
-			"left": self.left,
-			"right": self.right,
-			"up": self.up,
-			"down": self.down,
-			"green": self.green,
-			"red": self.cancel
-		}, -1)
-		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("Select"))
-		self.onLayoutFinish.append(self.updTitle)
-
-	def updTitle(self):
-		a = self["filelist"].getCurrentDirectory()
-		if a is not None:
-			if a.startswith("/") and a.endswith("/"):
-				aa = a.split("/")
-				b = len(aa)
-				if b > 5:
-					a = ".../"+aa[b-4]+"/"+aa[b-3]+"/"+aa[b-2]+"/"
-			self.setTitle(a)
-
-	def cancel(self):
-		self.close(None)
-
-	def green(self):
-		if self.files:
-			a = self['filelist'].getCurrentDirectory()
-			b = self['filelist'].getFilename()
-			if a is None or b is None:
-				self.close(None)
-			else:
-				if a in b:
-					self.close(b)				
-				else:
-					self.close(a + b)
-		else:
-			ret = self["filelist"].getSelection()[0]
-			if self["filelist"].getSelection()[1]:
-				if ret is not None and not ret.endswith("/"):
-					ret += "/"									
-				self.close(ret)
-
-	def up(self):
-		self["filelist"].up()
-
-	def down(self):
-		self["filelist"].down()
-
-	def left(self):
-		self["filelist"].pageUp()
-
-	def right(self):
-		self["filelist"].pageDown()
-
-	def ok(self):
-		if self["filelist"].canDescent():
-			self["filelist"].descent()
-			self.updTitle()					
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×­µïdèµ©hºÚn¶X§zÍHÈJ‹HÛÙ[™Îˆ]‹NJ‹B™œ›ÛHØÜ™Y[œË”ØÜ™Y[ˆ[\ÜØÜ™Y[‚™œ›ÛHÛÛ\Û™[Ë˜ÛÛ™šYÈ[\Ü
+‚™œ›ÛHÛÛ\Û™[Ë“X™[[\ÜX™[™œ›ÛHÛÛ\Û™[ËXÝ[Û“X\[\ÜXÝ[Û“X\™œ›ÛHÛÛ\Û™[Ë™ÌMÐÛÛ™šYÓ\Ý[\ÜÛÛ™šYÓ\ÝØÜ™Y[‹ÛÛ™šYÓ\Ý™œ›ÛHYÚ[œË”YÚ[ˆ[\ÜYÚ[‘\ØÜš\Ü‚™œ›ÛHØÜ™Y[œË’[™›Ð˜\ˆ[\Ü[™›Ð˜\‚™œ›ÛHÛÛ\Û™[Ë”Ù\šXÙQ]™[˜XÚÙ\ˆ[\ÜÙ\šXÙQ]™[˜XÚÙ\‚™œ›ÛH[šYÛXH[\ÜPÛÛœÛÛP\ÛÛZ[™\‹TÚ[•ÒSQÓ—ÐÑS•T‹S\Ý›Þ]Û“][PÛÛ[S\Ý›ÞÑ›ÛTÚ^™KT^X\U[Y\‹TÙ\šXÙPÙ[\‹TÙ\šXÙT™Y™\™[˜ÙKTÙ\šXÙR[™›Ü›X][Û‹T™ÑXÛÙ\‹T^XX›TÙ\šXÙKQ‘œ›Û[™\˜[Y]\œÔØ][]KQ‘œ›Û[™\˜[Y]\œÕ\œ™\ÝšX[Ù][šYÛXU™\œÚ[Û”Ýš[™Âš[\ÜØÜ™Y[œË’[™›Ð˜\‚™œ›ÛHÛÛË•˜[œÜÛ™\ˆ[\ÜÛÛ™\Ò[X[”™XYX›BžN‚‚Yœ›ÛHÝš[™È[\Ü\\‚™^Ù\ˆ\ÜÂ™œ›ÛHÛÛË“ØY^X\[\ÜØY^X\™œ›ÛHÛÛ\Û™[ËÛÛœÛÛH[\ÜÛÛœÛÛH\ÈÐÛÛœÛÛB™œ›ÛHÛÛ\Û™[Ë”ÛÝ\˜Ù\Ë“\Ý[\Ü\Ý™œ›ÛHÛÛ\Û™[Ë“š[SX[˜YÙ\ˆ[\Üš[[X[˜YÙ\‚™œ›ÛHÛÛ\Û™[Ë‘š[S\Ý[\Üš[S\Ýš[\Ü[YH\È[YLBš[\Ü™KÜÂš[\Ü™XY[™Âš[\Ü[šXÛÙY]Bš[\ÜœÛÛ‚š[\Ü\ÚX‚š[\ÜÚ][š[\ÜÝ]š[\Üš\š[Bš[\ÜÝXœ›ØÙ\ÜÂš[\Ü[\š[Bš[\ÜÞ\Âš[\ÜÙXZÜ™Y‚š[\Ü˜]šYØ][Û’[œÝ[˜ÙBžN‚‚Yœ›ÛH\›X‹œ™\]Y\Ý[\Ü™\]Y\Ý\›Ü[‚™^Ù\[\Ü\œ›ÜŽ‚‚Yœ›ÛH\›XŒˆ[\Ü™\]Y\Ý\›Ü[‚—ÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”ÈH×B‚‚™YˆÝØ\™\”™YÚ\Ý\]^[X\žTXÛÛÛÛœÝ[Y\ŠÛÛœÝ[Y\ŠN‚‚YÛØ˜[ÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”Â‚\™YœÈH×B‚Y›Üˆ™Yˆ[ˆÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”Î‚‚B]žN‚‚BBZYˆ™YŠ
+H\È›Ý›Û™H[™™YŠ
+H\È›ÝÛÛœÝ[Y\Ž‚‚BBB\™YœË˜\[™
+™YŠB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚]žN‚‚B\™YœË˜\[™
+ÙXZÜ™Y‹œ™YŠÛÛœÝ[Y\ŠJB‚BWÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”ÈH™YœÂ‚Y^Ù\\Q\œ›ÜŽ‚‚BWÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”ÈH™YœÂ‚‚™YˆÝØ\™\”™Yœ™\Ú[œÝ[Y]^[X\žTXÛÛœÊ
+N‚‚YÛØ˜[ÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”Â‚\™YœÈH×B‚Y›Üˆ™Yˆ[ˆÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”Î‚‚B]žN‚‚BBXÛÛœÝ[Y\ˆH™YŠ
+B‚BBZYˆÛÛœÝ[Y\ˆ\È›Û™N‚‚BBBXÛÛ[YB‚BB\™YœË˜\[™
+™YŠB‚BBXÛÛœÝ[Y\‹—ÝØ\™\”™Yœ™\Ú]^[X\žTXÛÛœÊ
+B‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚WÕÐT‘T—ÐUVÔPÓÓ—ÐÓÓ”ÕSQT”ÈH™YœÂ‚‚‘SPÒHH˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜQÒWÕRB‚Yœ›ÛH[šYÛXH[\ÜQÒR[\™˜XÙ\Â‚QSPÒHHYB™^Ù\ˆ\ÜÂ‘SU‘•H˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜÕÓTQÌ‹ÕÒÕÓTQÌKÕÓTQÍÔT•‹ÕÕÌKÕÕÌWÔÒSTWÓPRS‹ÕÒKÕÑU–ÌLKÕÑU–ÕÔÔT’ËÕÕ”‹ÕÕ”ÕÕ”KÕÒŒËÕÓR”QËÕÔ‘PSÕÐU”ËÕÕS’Ó“ÕÓ‚‚QSU‘•HYB™^Ù\ˆ\ÜÂ‘SRˆH˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜR˜‚‚QSRˆHYB™^Ù\ˆ\ÜÂ‘PPÐÈH˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜP]Y[Õ\WÑS•STÈ\ÈP]‚QPPÐÈHYB™^Ù\ˆ\ÜÂ‘SWÕH˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜQ‘œ›Û[™‚QSWÕHYB™^Ù\ˆ\ÜÂ‘SWÔÔSˆH˜[ÙBžN‚‚Yœ›ÛHÜÈ[\ÜÜ[‚‚QSWÔÔSˆHYB™^Ù\ˆ\ÜÂžN‚‚Yœ›ÛH[šYÛXH[\Ü]Z]XZ[›ÛÜ™^Ù\ˆ\ÜÂžN‚‚Yœ›ÛHÛÛ\Û™[Ë”Ù[œÛÜœÈ[\ÜÙ[œÛÜœÂ™^Ù\ˆ\ÜÂ‘SWÔÓQTˆHÑ˜[ÙK˜[ÙWBžN‚‚Yœ›ÛH[šYÛXH[\ÜTÛY\‚‚ZYˆ	ÜÙ]›Ü™YÜ›Ý[™ÛÛÜ‰È[ˆ\ŠTÛY\ŠN‚‚BQSWÔÓQT–ÌHHYBBB‚ZYˆ	ÜÙ]˜XÚÙÜ›Ý[™ÛÛÜ‰È[ˆ\ŠTÛY\ŠN‚‚BQSWÔÓQT–ÌWHHYB™^Ù\ˆ\ÜÂBB™œ›ÛHÛØÚÙ][\ÜÛØÚÙ]Q—ÒS‘UÓÐÒ×ÔÕ‘PSB™œ›ÛHÚÚ[ˆ[\Ü\œÙPÛÛÜ‚™œ›ÛHØÜ™Y[œË’[œ]›Þ[\Ü[œ]›Þ™œ›ÛHÛÛ\Û™[Ë’[œ][\Ü[œ]™œ›ÛHÜÈ[\ÜÝ]™œË\Ý\‚™œ›ÛHØÜ™Y[œË”Ý[™žH[\ÜžT]Z]XZ[›ÛÜ™œ›ÛHÛÛË’\™Ø\™R[™›È[\Ü\™Ø\™R[™›Â™œ›ÛHÛÛ\Û™[Ë”^X\[\Ü
+‚™œ›ÛHÛÛË‘\™XÝÜšY\È[\Üš[Q^\ÝÂ™œ›ÛHÙ\šXÙT™Y™\™[˜ÙH[\ÜÙ\šXÙT™Y™\™[˜ÙB™œ›ÛHØÜ™Y[œË“Y\ÜØYÙP›Þ[\ÜY\ÜØYÙP›Þ™œ›ÛHØÜ™Y[œËÚÚXÙP›Þ[\ÜÚÚXÙP›Þ™œ›ÛHˆ[\ÜØ\™\”XÛÛ”Þ[˜Â™œ›ÛHØÜ™Y[œË’[™›Ð˜\‘Ù[™\šXÜÈ[\Ü[™›Ð˜\”YÚ[œÂ™œ›ÛHÛÛ\Û™[Ë“Y[S\Ý[\ÜY[S\Ý™œ›ÛHÛÛ\Û™[Ë“][PÛÛ[[\Ü][PÛÛ[[žU^][PÛÛ[[žT^X\][PÛÛ[[žT^X\[U\Ý™œ›ÛHÙ^[X\\œÙ\ˆ[\Ü™XYÙ^[X\™œ›ÛH[™]™YK˜Ñ[[Y[™YH[\Ü\œÙKœ›Û\Ýš[™Â™œ›ÛHÛÛ\Û™[Ë”ÛÝ\˜Ù\Ë”Ý]XÕ^[\ÜÝ]XÕ^™œ›ÛHÛÛ\Û™[Ë™ÌMÔÙ[XÝ[Û“\Ý[\ÜÙ[XÝ[Û“\Ýš[\ÜÙ]^™œ›ÛHÛÛ\Û™[Ë”ÛÝ\˜Ù\ËØ[˜\ÔÛÝ\˜ÙH[\ÜØ[˜\ÔÛÝ\˜ÙB™œ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMË[\Ü[ÐUTÕžN‚‚Yœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMËØ\™\”›ÙÜ˜[R[™›È[\ÜÛÚÝ\\ÈØ\™\”›ÙÜ˜[SÛÚÝ\™^Ù\^Ù\[ÛŽ‚‚]Ø\™\”›ÙÜ˜[SÛÚÝ\H›Û™B™œ›ÛH]][YH[\Ü]][YB™œ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMËÙXU][È[\Ü
+‚šYˆTÔÎ‚‚Yœ›ÛH\›X‹œ\œÙH[\Ü][ÝB‚Z[\Ü[\ÜX‚™[ÙN‚‚Yœ›ÛH\›Xˆ[\Ü][ÝB‘SWÔÔÕTˆH˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜØY”Â‚QSWÔÔÕTˆHYB™^Ù\ˆ\ÜÂ”QÒS”UH‹Ý\Ü‹ÛX‹Ù[šYÛXL‹Ü]Û‹ÔYÚ[œËÑ^[œÚ[ÛœËÜÙ]\Û\ÜÌMËÈ‚ˆÈTÕLŽˆ[œÝ[Ü[•ÙXšYˆ˜Y[ËP[ÛÚÈ^š[HYØZ[œÝH™XÙZ]™\‹\›Ý™[ˆÜ˜X”ØÜ™Y[œÚÝÛ\ÜË‚—ÝØ\™\“ÝÚRÛÚÒ[œÝ[YH˜[ÙB—ÝØ\™\“˜]]™QÜ˜X”™[™\ˆH›Û™B—ÝØ\™\“ÝÚQÙ]\›\™ÈH›Û™B‚™YˆÝØ\™\”˜Y[ÑÜ˜X”™[™\ŠÙ[‹™\]Y\Ý
+N‚‚YÛØ˜[ÝØ\™\“˜]]™QÜ˜X”™[™\‹ÝØ\™\“ÝÚQÙ]\›\™Â‚HÈTÕNÎˆˆ˜Y[ÈÙ\šXÙH\\Èˆ
+YÚ][˜Y[ÈÛÝ[™
+H[™H
+Y˜[˜ÙYXÛÙXÈ˜Y[ÊH\™H›ÝQSËˆ]\›Z[™H\Èœ›ÛHH]™HÙ\šXÙH]ØÜ™Y[œÚÝ[YK‚‚HÈHTÕLˆX\šÙ\ˆ™[XZ[œÈÛ›H\ÈH˜[˜XÚËˆ\È™[[Ý™\ÈH[Z[™Â‚HÈ\[™[˜ÞHÚXÚYÜ[•ÙXšYˆ[ˆˆ[ÙHÛˆˆ˜Y[ÈÙ\šXÙ\ÈÚ]Ý]‘Ë‚‚Z\×Ü˜Y[ÈH˜[ÙB‚]žN‚‚B\™YˆH˜]šYØ][Û’[œÝ[˜ÙKš[œÝ[˜ÙH[™˜]šYØ][Û’[œÝ[˜ÙKš[œÝ[˜ÙK™Ù]Ý\œ™[T^Z[™ÔÙ\šXÙT™Y™\™[˜ÙJ
+B‚B\™YœÝˆH™Y‹ÔÝš[™Ê
+HYˆ™Yˆ\È›Ý›Û™H[ÙHˆ‚‚BYšY[ÈH™YœÝ‹œÜ]
+ŽˆŠB‚BZ\×Ü˜Y[ÈH[ŠšY[ÊHˆˆ[™šY[ÖÌ—K\\Š
+H[ˆ
+Œˆ‹HŠB‚Y^Ù\^Ù\[ÛŽ‚‚B\\ÜÂ‚ZYˆ›Ý\×Ü˜Y[Î‚‚B]žN‚‚BB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[ËXÝ\œ™[‹œˆŠH\ÈX\šÙ\Ž‚‚BBBZ\×Ü˜Y[ÈHX\šÙ\‹œ™XY
+
+KœÝš\
+
+HOHH‚‚BY^Ù\^Ù\[ÛŽ‚‚BBZ\×Ü˜Y[ÈH˜[ÙB‚[[ÙHHÝØ\™\“ÝÚQÙ]\›\™Ê™\]Y\Ý›[ÙHŠB‚ZYˆ›Ý\×Ü˜Y[ÈÜˆ[ÙH›Ý[ˆ
+›Û™Kˆ‹˜[ŠN‚‚B\™]\›ˆÝØ\™\“˜]]™QÜ˜X”™[™\ŠÙ[‹™\]Y\Ý
+B‚Y›]HÝØ\™\“ÝÚQÙ]\›\™Ê™\]Y\Ý™›Ü›X]ŠHÜˆšœÈ‚‚ZYˆ›]›Ý[ˆ
+šœÈ‹œ™È‹˜›\ŠN‚‚BY›]H˜›\‚‚[X\Ý\ˆH‹Ý\Ü‹ÜÚ\™KÙ[šYÛXL‹ÚÙÛ\ÜÌMËÝØ\™\‹\˜Y[ËX˜XÚÙÜ›Ý[™šœÈ‚‚Y™ÜÙH[\š[K›ZÜÝ[\
+™Yš^HØ\™\‹\˜Y[ËZ[ÜÙH‹ÝY™š^H‹œ™È‹\H‹Ý\ŠNÈÜË˜ÛÜÙJ™
+B‚Y™Ý]H[\š[K›ZÜÝ[\
+™Yš^HØ\™\‹\˜Y[ËZ[Ý]H‹ÝY™š^H‹ˆˆ
+È›]\H‹Ý\ŠNÈÜË˜ÛÜÙJ™
+B‚]žN‚‚B\ÝXœ›ØÙ\ÜË˜ÚXÚ×ØØ[
+È‹Ý\Ü‹Øš[‹ÙÜ˜Xˆ‹‹\H‹‹[È‹‹\‹ÜÙKÝÝ]\ÝXœ›ØÙ\ÜË‘U“•SÝ\œ\ÝXœ›ØÙ\ÜË‘U“•S[Y[Ý]N
+B‚BY™›\YÈH‹Ý\Ü‹Øš[‹Ù™›\YÈˆYˆÜËœ]š\Ùš[J‹Ý\Ü‹Øš[‹Ù™›\YÈŠH[ÙH™™›\YÈ‚‚BXÛYHÙ™›\YË‹[›ÜÝ[ˆ‹‹^H‹‹[ÙÛ]™[‹™\œ›Üˆ‹‹ZH‹X\Ý\‹‹ZH‹ÜÙ‹Yš[\—ØÛÛ\^‹–Ì—VÌN—[Ý™\›^OLŒ™›Ü›X]X]]È‹‹Yœ˜[Y\Îˆ‹ŒH—B‚BZYˆ›]OHšœÈŽˆÛY
+ÏHÈ‹]˜ÛÙXÈ‹›ZœYÈ‹‹\Nˆ‹Œˆ‹Ý]B‚BY[Yˆ›]OHœ™ÈŽˆÛY
+ÏHÈ‹]˜ÛÙXÈ‹œ™È‹Ý]B‚BY[ÙNˆÛY
+ÏHÈ‹]˜ÛÙXÈ‹˜›\‹Ý]B‚B\ÝXœ›ØÙ\ÜË˜ÚXÚ×ØØ[
+ÛYÝÝ]\ÝXœ›ØÙ\ÜË‘U“•SÝ\œ\ÝXœ›ØÙ\ÜË‘U“•S[Y[Ý]LLŠB‚B]Ú]Ü[ŠÝ]œ˜ˆŠH\È[XYÙNˆ^[ØYH[XYÙKœ™XY
+
+B‚BZYˆ›Ý^[ØYˆ˜Z\ÙHSÑ\œ›ÜŠ™[\H˜Y[ÈØÜ™Y[œÚÝŠB‚B\™\]Y\ÝœÙ]XY\ŠÛÛ[U\H‹š[XYÙKÈˆ
+È
+šœYÈˆYˆ›]OHšœÈˆ[ÙH›]
+JB‚B\™\]Y\ÝœÙ]XY\ŠÛÛ[S[™Ý‹ÝŠ[Š^[ØY
+JJB‚B\™]\›ˆ^[ØY‚Y^Ù\^Ù\[Ûˆ\È\œ›ÜŽ‚‚B]žN‚‚BB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë]ÙXšY‹Y\œ›Ü‹›ÙÈ‹˜HŠH\ÈÙÎˆÙËÜš]J‰\È™[™\‹Y\œ›ÜŽˆ	\—ˆˆ	H
+[YLKœÝ™[YJ‰VKI[KIY	R‰SN‰TÈŠK\œ›ÜŠJB‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B]žN‚‚BB]Ú]Ü[ŠX\Ý\‹œ˜ˆŠH\È[XYÙNˆ^[ØYH[XYÙKœ™XY
+
+B‚BB\™\]Y\ÝœÙ]XY\ŠÛÛ[U\H‹š[XYÙKÚœYÈŠNÈ™\]Y\ÝœÙ]XY\ŠÛÛ[S[™Ý‹ÝŠ[Š^[ØY
+JJB‚BB\™]\›ˆ^[ØY‚BY^Ù\^Ù\[ÛŽ‚‚BB\™]\›ˆÝØ\™\“˜]]™QÜ˜X”™[™\ŠÙ[‹™\]Y\Ý
+B‚Yš[˜[N‚‚BY›Üˆ][ˆ
+ÜÙÝ]
+N‚‚BB]žNˆÜË[›[šÊ]
+B‚BBY^Ù\^Ù\[ÛŽˆ\ÜÂ‚™YˆÝØ\™\’[œÝ[Ü[•ÙXšY‘Ü˜X’ÛÚÊ
+N‚‚YÛØ˜[ÝØ\™\“ÝÚRÛÚÒ[œÝ[YÝØ\™\“˜]]™QÜ˜X”™[™\‹ÝØ\™\“ÝÚQÙ]\›\™Â‚ZYˆÝØ\™\“ÝÚRÛÚÒ[œÝ[Yˆ™]\›ˆYB‚]žN‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœË“Ü[•ÙXšY‹˜ÛÛ›Û\œË›[Ù[È[\ÜÜ˜Xˆ\ÈÝÚQÜ˜X‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœË“Ü[•ÙXšY‹˜ÛÛ›Û\œË][]Y\È[\ÜÙ]\›\™È\ÈÝÚQÙ]\›\™Â‚BWÝØ\™\“ÝÚQÙ]\›\™ÈHÝÚQÙ]\›\™Â‚BYÜ˜XÛ\ÜÈHÙ]]ŠÝÚQÜ˜X‹‘Ü˜X”ØÜ™Y[œÚÝ‹›Û™JB‚BZYˆÜ˜XÛ\ÜÈ\È›Û™N‚‚BB\˜Z\ÙH]šX]Q\œ›ÜŠ“Ü[•ÙXšYˆÜ˜Xˆ[Ù[H\È›ÈÜ˜X”ØÜ™Y[œÚÝÛ\ÜÈŠB‚BZYˆÜ˜XÛ\ÜËœ™[™\ˆ\È›ÝÝØ\™\”˜Y[ÑÜ˜X”™[™\Ž‚‚BBWÝØ\™\“˜]]™QÜ˜X”™[™\ˆHÜ˜XÛ\ÜËœ™[™\‚‚BBYÜ˜XÛ\ÜËœ™[™\ˆHÝØ\™\”˜Y[ÑÜ˜X”™[™\‚‚BWÝØ\™\“ÝÚRÛÚÒ[œÝ[YHYB‚B]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë]ÙXšY‹ZÛÚË›ÙÈ‹˜HŠH\ÈÙÎˆÙËÜš]J‰\È[œÝ[YÜ˜X”ØÜ™Y[œÚÝœ™[™\—ˆˆ	H[YLKœÝ™[YJ‰VKI[KIY	R‰SN‰TÈŠJB‚B\™]\›ˆYB‚Y^Ù\^Ù\[Ûˆ\È\œ›ÜŽ‚‚B]žN‚‚BB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë]ÙXšY‹ZÛÚË›ÙÈ‹˜HŠH\ÈÙÎˆÙËÜš]J‰\È[œÝ[Y\œ›ÜŽˆ	\—ˆˆ	H
+[YLKœÝ™[YJ‰VKI[KIY	R‰SN‰TÈŠK\œ›ÜŠJB‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B\™]\›ˆ˜[ÙB‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMÈHÛÛ™šYÔÝXœÙXÝ[ÛŠ
+B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›H˜[œÛ][Û‚ÒÓÑÈH[X›Ý]™]È‚’TÕHš\ÝÜžK‚žN‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YN‚‚BYÛ\ÜÌM×Û[™ÝXYÙHH×B‚BYÛ\ÜÌM×Û[™ÝXYÙHHÛÛ™šYË›ÜÙ›[™ÝXYÙK˜[YKœÜ]
+—ÈŠB‚BZYˆ˜ÜÈˆ[ˆÛ\ÜÌM×Û[™ÝXYÙHÜˆœÚÈˆ[ˆÛ\ÜÌM×Û[™ÝXYÙN‚‚BBPÒÓÑÈ
+ÏH”ÚÈ‚‚BBRTÕ
+ÏH”ÚÈ‚‚BZYˆÜËœ]™^\ÝÊQÒS”U
+È›ØØ[KÉ\Èˆ	H
+Û\ÜÌM×Û[™ÝXYÙVÌJJN‚‚BBWÈHÙ]^Ø][ÙÊ	ÜÙ]\Û\ÜÌMÉËQÒS”U
+È	ÛØØ[IËÛ\ÜÌM×Û[™ÝXYÙJK™Ù]^™^Ù\ˆ\ÜÂ‘SWÐS’SHH˜[ÙBžN‚‚Yœ›ÛHÛÛ\Û™[Ë”ØÜ™Y[[š[X][ÛœÈ[\Ü
+‚‚XHHØÜ™Y[[š[X][ÛœÊ
+B‚XK™œ›ÛVS
+QÒS”U
+È˜[š[WÙYš[š][Û‹ž[ŠB‚QSWÐS’SHHYB™^Ù\ˆ\ÜÂ‚™YˆÜš][ÙÊ
+N‚‚[ÙÈHQÒS”U
+È™ÌMË‚‚ZYˆÜËœ]š\Ùš[JÙÊN‚‚BZYˆÜËœ]™Ù]Ú^™JÙÊHˆL‚‚BB]žN‚‚BBB[ÜËœ™[[Ý™JÙÊB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\\ÜÂ‚]žN‚‚BYˆHÜ[ŠÙË˜HŠB‚BY‹Üš]J‰\×ˆˆ	HÝŠ
+JB‚BY‹˜ÛÜÙJ
+B‚Y^Ù\SÑ\œ›ÜŽˆ\ÜÂˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÝØ\™\•ZU^
+^
+N‚‚Hˆˆ•Ø\™\ˆRHÝš[™ÜÈ›ÛÝÈHXÝ]™H[šYÛXLˆÔÑ[™ÝXYÙHÚ]Ý]YØXÞHÙ]^ÛÛ\Ú[ÛœËˆˆˆ‚‚]žN‚‚B[[™ÈHÛÛ™šYË›ÜÙ›[™ÝXYÙK˜[YKœÜ]
+—ÈŠVÌK›ÝÙ\Š
+B‚Y^Ù\^Ù\[ÛŽ‚‚B[[™ÈH™[ˆ‚‚]Ø\™\ˆHÂ‚BHœÚÈŽˆÈ”“ÑÔSHS‘“ÈŽˆ’[™›ÈÈ›ÙÜ˜[YH‹”Ý][Ûˆ˜[YNˆŽˆ“°è^›ÝˆÝ[šXÙNˆ‹ÛÜÙHŽˆ–˜]œšYqiH‹Y[Y\ˆŽˆ”šYqiH1#X\ÛÝ˜q#H‹‘ÛÝÈ]KÕ[YHŽˆ”™ZœñiH˜H0è][Kñ#X\È‹‘TÈÙX\˜ÚŽˆ•žZ1/˜YqiHˆTÈ‹”Ý][ÛŽˆŽˆ”Ý[šXØNˆ‹‘Ù[œ™NˆŽˆ±opè[™\Žˆ‹–YX\ŽˆŽˆ”›ÚÎˆ‹ÛÝ[žNˆŽˆ’Ü˜Zš[˜Nˆ‹‘\˜][ÛŽˆŽˆ‘1.±ošØNˆ‹œ›ØYØ\ÝˆŽˆ•ž\ÚY[[šYNˆ‹”˜][™ÎˆŽˆ’Ù›Ý[šYNˆŸK‚BH˜ÜÈŽˆÈ”“ÑÔSHS‘“ÈŽˆ’[™›ÈÈ›ÙÜ˜[]H‹”Ý][Ûˆ˜[YNˆŽˆ“°è^™]ˆÝ[šXÙNˆ‹ÛÜÙHŽˆ–˜]±fpë]‹Y[Y\ˆŽˆ”1fZY]1#X\ÛÝ˜q#H‹‘ÛÝÈ]KÕ[YHŽˆ”1fYZ°ë]˜H][Kñ#X\È‹‘TÈÙX\˜ÚŽˆ•žZY]ˆTÈ‹”Ý][ÛŽˆŽˆ”Ý[šXÙNˆ‹‘Ù[œ™NˆŽˆ±opè[œŽˆ‹–YX\ŽˆŽˆ”›ÚÎˆ‹ÛÝ[žNˆŽˆ–™[q&Îˆ‹‘\˜][ÛŽˆŽˆ‘0ê[ØNˆ‹œ›ØYØ\ÝˆŽˆ•ž\ðë[0è[°ëNˆ‹”˜][™ÎˆŽˆ’Ù›ØÙ[°ëNˆŸB‚_B‚ZYˆ^[ˆØ\™\‹™Ù]
+[™ËßJN‚‚B\™]\›ˆØ\™\–Û[™×VÝ^B‚]žN‚‚B]˜[œÛ]YHÊ^
+B‚BZYˆ˜[œÛ]Y[™˜[œÛ]YOH^‚‚BB\™]\›ˆ˜[œÛ]Y‚Y^Ù\^Ù\[ÛŽ‚‚B\\ÜÂ‚\™]\›ˆ^‚˜Û\ÜÈØ\™\”›ÙÜ˜[R[™›ÊØÜ™Y[ŠN‚‚Hˆˆ‘[Û\ÜË[ÝÛ™Y›ÙÜ˜[[YH]Z[ˆTÈ\È]]Üš]]]™NÈ[šÛ›ÝÛˆY]Y]HÝ^\ÈY[‹ˆˆˆ‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOH•Ø\™\”›ÙÜ˜[R[™›ÈˆÜÚ][ÛHŒMKMHˆÚ^™OHŒNLLLˆ]OH”“ÑÔSHS‘“Èˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ›XÚÌˆˆ›YÜÏHÙ“›Ð›Ü™\ˆ‚‚BOSX™[ÜÚ][ÛHŒNNˆÚ^™OHŒNMLMˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ›XÚÌÈˆ”ÜÚ][ÛH‹MHˆÏ‚‚BOÚYÙ]˜[YOH››ÝÑ]HˆÜÚ][ÛHŒÌLˆˆÚ^™OHŒÎLˆˆ›ÛH”š]™MÌÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙMXŒÈˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH››ÝÕ[YHˆÜÚ][ÛHÍKLˆˆÚ^™OHŒŒLˆˆ›ÛH”š]™MÌÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙYYYYYHˆ˜[œÜ\™[HŒHˆÏ‚‚BOSX™[^H‘[Û\ÜÌMÈ0­ÈØ\™\ˆ]›Û][ÛˆˆÜÚ][ÛHŒLŒLˆˆÚ^™OHNKˆˆ›ÛH”š]™MÌˆ[YÛHœšYÚˆ›Ü™YÜ›Ý[™ÛÛÜHˆÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHœ›ÙÜ˜[P\ÛÜšÈˆÜÚ][ÛHŒÌÍHˆÚ^™OHLŒÌˆ”ÜÚ][ÛHŒˆˆ[]\ÝH˜›[™ˆÏ‚‚BOÚYÙ]˜[YOH]HˆÜÚ][ÛHNˆÚ^™OHÍŒŒˆˆ›ÛH”š]™MÍÈˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙMXŒÈˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHœÝ][Û”XÛÛˆˆÜÚ][ÛHŒLKHˆÚ^™OHŒNLˆ”ÜÚ][ÛHŒÈˆ[]\ÝH˜›[™ˆÏ‚‚BOÚYÙ]˜[YOHœÝ][Û“X™[ˆÜÚ][ÛHLLŒˆÚ^™OHŒNLÍˆ›ÛH”š]™LÎÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH˜Ú[›™[ˆÜÚ][ÛHŒŒKLŒˆÚ^™OHŒŒÍKÍˆ›ÛH”š]™MÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH™Ù[œ™SX™[ˆÜÚ][ÛHLMŒˆÚ^™OHŒMÌÌˆˆ›ÛH”š]™LÎÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH™Ù[œ™SY]HˆÜÚ][ÛHŒŒKMŒˆÚ^™OHŒŒÍKÌˆˆ›ÛH”š]™MÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHžYX\“X™[ˆÜÚ][ÛHLNLÈˆÚ^™OHŒMÌÌˆˆ›ÛH”š]™LÎÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHžYX\“Y]HˆÜÚ][ÛHŒŒKNLÈˆÚ^™OHŒŒÍKÌˆˆ›ÛH”š]™MÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH˜ÛÝ[žSX™[ˆÜÚ][ÛHLŒˆˆÚ^™OHŒMÌÌˆˆ›ÛH”š]™LÎÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH˜ÛÝ[žSY]HˆÜÚ][ÛHŒŒKŒˆˆÚ^™OHŒŒÍKÌˆˆ›ÛH”š]™MÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHœ˜][™ÔÝ\œÈˆÜÚ][ÛHŒLÎLLHˆÚ^™OHÌHˆ›ÛH”š]™MÌÍˆˆ[YÛHœšYÚˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙMLÎLÍHˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHœ˜][™ÓY]HˆÜÚ][ÛHŒLÎLMLˆˆÚ^™OHÌÍˆˆ›ÛH”š]™MÌHˆ[YÛHœšYÚˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHÚ[ˆˆÜÚ][ÛHNMÌˆÚ^™OHÍŒˆˆ›ÛH”š]™LÎÌÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙMXŒÈˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOHœÚÜˆÜÚ][ÛHNŒÍHˆÚ^™OHŒLŒŒLŒˆ›ÛH”š]™LÎÌŽˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOSX™[ÜÚ][ÛHŒKHˆÚ^™OHŒNˆˆ˜XÚÙÜ›Ý[™ÛÛÜHˆÍÌÌÌˆÏ‚‚BOÚYÙ]˜[YOH™\˜][Û“X™[ˆÜÚ][ÛHLÍHˆÚ^™OHŒMÌÍˆ›ÛH”š]™LÎÌŽHˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH™\˜][Û“Y]HˆÜÚ][ÛHŒŒKÍHˆÚ^™OHŒŒÍKÍˆ›ÛH”š]™MÌŽHˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH˜œ›ØYØ\ÝX™[ˆÜÚ][ÛHLÌMˆÚ^™OHŒMÌÍˆ›ÛH”š]™LÎÌŽHˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆÏ‚‚BOÚYÙ]˜[YOH˜œ›ØYØ\ÝˆÜÚ][ÛHŒŒKÌMˆÚ^™OHŒŒÍKˆˆ›ÛH”š]™MÌŽˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOSX™[ÜÚ][ÛHLHˆÚ^™OHŒ‹Lˆ˜XÚÙÜ›Ý[™ÛÛÜHˆÍÌÌÌˆÏ‚‚BOÚYÙ]˜[YOH™\ØÜš\[ÛˆˆÜÚ][ÛHLÍKHˆÚ^™OHŒLÌLˆ›ÛH”š]™MÌÌHˆ›Ü™YÜ›Ý[™ÛÛÜHˆÙˆ˜[œÜ\™[HŒHˆÏ‚‚BOSX™[ÜÚ][ÛHŒKMˆÚ^™OHŒNˆˆ˜XÚÙÜ›Ý[™ÛÛÜHˆÍÌÌÌˆÏ‚‚BOSX™[ÜÚ][ÛHŒKMMHˆÚ^™OHŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ›XÚÌÈˆ”ÜÚ][ÛHŒˆˆÏ‚‚BOÚYÙ]ÛÝ\˜ÙOHšÙ^T™Yˆ™[™\H“X™[ˆÜÚ][ÛHŒKMŒÈˆÚ^™OHŒˆˆ›ÛH”š]™LÎÌÌˆ[YÛH˜Ù[\ˆˆ˜[YÛH˜Ù[\ˆˆ›Ü™YÜ›Ý[™ÛÛÜHœ™Yˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHˆÏ‚‚BOSX™[ÜÚ][ÛHLMMHˆÚ^™OHŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ›XÚÌÈˆ”ÜÚ][ÛHŒˆˆÏ‚‚BOÚYÙ]ÛÝ\˜ÙOHšÙ^QÜ™Y[ˆˆ™[™\H“X™[ˆÜÚ][ÛHLMŒÈˆÚ^™OHŒˆˆ›ÛH”š]™LÎÌÌˆ[YÛH˜Ù[\ˆˆ˜[YÛH˜Ù[\ˆˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHˆÏ‚‚BOSX™[ÜÚ][ÛHŽMMKMMHˆÚ^™OHŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ›XÚÌÈˆ”ÜÚ][ÛHŒˆˆÏ‚‚BOÚYÙ]ÛÝ\˜ÙOHšÙ^VY[ÝÈˆ™[™\H“X™[ˆÜÚ][ÛHŽMMKMŒÈˆÚ^™OHŒˆˆ›ÛH”š]™LÎÌÌˆ[YÛH˜Ù[\ˆˆ˜[YÛH˜Ù[\ˆˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHˆÏ‚‚BOSX™[ÜÚ][ÛHŒMŒMMHˆÚ^™OHŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ›XÚÌÈˆ”ÜÚ][ÛHŒˆˆÏ‚‚BOÚYÙ]ÛÝ\˜ÙOHšÙ^P›YHˆ™[™\H“X™[ˆÜÚ][ÛHŒMŒMŒÈˆÚ^™OHŒˆˆ›ÛH”š]™LÎÌÌˆ[YÛH˜Ù[\ˆˆ˜[YÛH˜Ù[\ˆˆ›Ü™YÜ›Ý[™ÛÛÜHˆÌÌÎˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHˆÏ‚‚OÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹]™[S›Û™KÙ\šXÙOS›Û™JN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚BY›Üˆ˜[YH[ˆ
+››ÝÑ]H‹››ÝÕ[YH‹]H‹˜Ú[›™[‹Ú[ˆ‹œÚÜ‹™\˜][Û“Y]H‹˜œ›ØYØ\Ý‹™\ØÜš\[Ûˆ‹œÝ][Û“X™[‹™Ù[œ™SX™[‹™Ù[œ™SY]H‹žYX\“X™[‹žYX\“Y]H‹˜ÛÝ[žSX™[‹˜ÛÝ[žSY]H‹œ˜][™ÔÝ\œÈ‹œ˜][™ÓY]H‹™\˜][Û“X™[‹˜œ›ØYØ\ÝX™[ŠN‚‚BB\Ù[–Û˜[YWHHX™[
+ˆŠB‚BY›Üˆ˜[YH[ˆ
+šÙ^T™Y‹šÙ^QÜ™Y[ˆ‹šÙ^VY[ÝÈ‹šÙ^P›YHŠN‚‚BB\Ù[–Û˜[YWHHÝ]XÕ^
+ˆŠB‚B\Ù[–Èœ›ÙÜ˜[P\ÛÜšÈ—HH^X\
+
+B‚B\Ù[–ÈœÝ][Û”XÛÛˆ—HH^X\
+
+B‚B\Ù[‹—Ø\ÛÜšÔ]Hˆ‚‚B\Ù[–ÈœÝ][Û“X™[—KœÙ]^
+ÝØ\™\•ZU^
+”Ý][Ûˆ˜[YNˆŠJB‚B\Ù[–È™Ù[œ™SX™[—KœÙ]^
+ÝØ\™\•ZU^
+‘Ù[œ™NˆŠJB‚B\Ù[–ÈžYX\“X™[—KœÙ]^
+ÝØ\™\•ZU^
+–YX\ŽˆŠJB‚B\Ù[–È˜ÛÝ[žSX™[—KœÙ]^
+ÝØ\™\•ZU^
+ÛÝ[žNˆŠJB‚BY›ÜˆšY[[ˆ
+™Ù[œ™SY]H‹žYX\“Y]H‹˜ÛÝ[žSY]HŠN‚‚‚BB\Ù[–ÙšY[KœÙ]^
+‹HŠB‚B\Ù[–È™\˜][Û“X™[—KœÙ]^
+ÝØ\™\•ZU^
+‘\˜][ÛŽˆŠJB‚B\Ù[–È˜œ›ØYØ\ÝX™[—KœÙ]^
+ÝØ\™\•ZU^
+œ›ØYØ\ÝˆŠJB‚B\Ù[–ÈšÙ^T™Y—KœÙ]^
+ÝØ\™\•ZU^
+ÛÜÙHŠJB‚B\Ù[–ÈšÙ^QÜ™Y[ˆ—KœÙ]^
+ÝØ\™\•ZU^
+Y[Y\ˆŠJB‚B\Ù[–ÈšÙ^VY[ÝÈ—KœÙ]^
+ÝØ\™\•ZU^
+‘ÛÝÈ]KÕ[YHŠJB‚B\Ù[–ÈšÙ^P›YH—KœÙ]^
+ÝØ\™\•ZU^
+‘TÈÙX\˜ÚŠJB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+È“ÚÐØ[˜Ù[XÝ[ÛœÈ‹ÛÛÜXÝ[ÛœÈ—KÈ›ÚÈŽˆÙ[‹—ØÛÜÙT›ÙÜ˜[R[™›Ë˜Ø[˜Ù[ŽˆÙ[‹—ØÛÜÙT›ÙÜ˜[R[™›Ëœ™YŽˆÙ[‹—ØÛÜÙT›ÙÜ˜[R[™›Ë™Ü™Y[ˆŽˆ[X™NˆÙ[‹—ØÛÜÙT›ÙÜ˜[R[™›Ê™Ü™Y[ˆŠKžY[ÝÈŽˆ[X™NˆÙ[‹—ØÛÜÙT›ÙÜ˜[R[™›ÊžY[ÝÈŠK˜›YHŽˆ[X™NˆÙ[‹—ØÛÜÙT›ÙÜ˜[R[™›Ê˜›YHŠ_KLŠB‚B\Ù[‹—ÜÙ\šXÙT™YˆHÙ[‹—Û›Ü›X[\ÙTÙ\šXÙT™YŠÙ\šXÙJB‚B\Ù[–È››ÝÑ]H—KœÙ]^
+[YLKœÝ™[YJ‰PH	Y‰[K‰VH‹[YLK›ØØ[[YJ
+JJB‚B\Ù[–È››ÝÕ[YH—KœÙ]^
+[YLKœÝ™[YJ‰R‰SN‰TÈ‹[YLK›ØØ[[YJ
+JJB‚BZYˆ]™[\È›Ý›Û™N‚‚BB]žN‚‚BBBY]™[˜[YHH]™[™Ù]]™[˜[YJ
+HÜˆˆ‚‚BBB\Ù[–È]H—KœÙ]^
+]™[˜[YJB‚BBY^Ù\^Ù\[ÛŽˆ\ÜÂ‚BB]žN‚‚BBBX™YÚ[ˆH[
+]™[™Ù]™YÚ[•[YJ
+JNÈ\˜][ÛˆH[
+]™[™Ù]\˜][ÛŠ
+JB‚BBB\Ý\]HH[YLKœÝ™[YJ‰Y‰[K‰VH‹[YLK›ØØ[[YJ™YÚ[ŠJNÈÝ\[YHH[YLKœÝ™[YJ‰R‰SH‹[YLK›ØØ[[YJ™YÚ[ŠJNÈ[™[YHH[YLKœÝ™[YJ‰R‰SH‹[YLK›ØØ[[YJ™YÚ[ˆ
+È\˜][ÛŠJNÈZ[]\ÈH\˜][ÛˆËÈŒ‚BBB\Ù[–ÈÚ[ˆ—KœÙ]^
+‰\È	\ÈH	\È
+	YZ[ŠHˆ	H
+Ý\]KÝ\[YK[™[YKZ[]\ÊJB‚BBB\Ù[–È™\˜][Û“Y]H—KœÙ]^
+‰YZ[ˆˆ	HZ[]\ÊB‚BBB\Ù[–È˜œ›ØYØ\Ý—KœÙ]^
+‰\×‰\ÈH	\Èˆ	H
+Ý\]KÝ\[YK[™[YJJB‚BBY^Ù\^Ù\[ÛŽˆ\ÜÂ‚BB]žNˆÙ[–ÈœÚÜ—KœÙ]^
+]™[™Ù]ÚÜ\ØÜš\[ÛŠ
+HÜˆˆŠB‚BBY^Ù\^Ù\[ÛŽˆ\ÜÂ‚BB]žNˆÙ[–È™\ØÜš\[Ûˆ—KœÙ]^
+]™[™Ù]^[™Y\ØÜš\[ÛŠ
+HÜˆ]™[™Ù]ÚÜ\ØÜš\[ÛŠ
+HÜˆˆŠB‚BBY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B\Ù[‹—ÛY]Y]U]HH]™[™Ù]]™[˜[YJ
+HÜˆˆˆYˆ]™[\È›Ý›Û™H[ÙHˆ‚‚B\Ù[‹—ÛY]Y]PÛÛ^Hˆ‹š›Ú[Šš[\Š›Û™KÙ]™[™Ù]ÚÜ\ØÜš\[ÛŠ
+HÜˆˆ‹]™[™Ù]^[™Y\ØÜš\[ÛŠ
+HÜˆˆ—JJHYˆ]™[\È›Ý›Û™H[ÙHˆ‚‚B\Ù[‹—ÛY]Y]T™\Ý[H›Û™B‚B\Ù[‹—ÛY]Y]QÛ™HH˜[ÙB‚B\Ù[‹—ÛY]Y]PÛÜÙYH˜[ÙB‚B\Ù[‹—ÛY]Y]U[Y\ˆHU[Y\Š
+B‚B\Ù[‹—ÛY]Y]U[Y\‹˜Ø[˜XÚË˜\[™
+Ù[‹—ÜÛY]Y]SÛÚÝ\
+B‚B\Ù\šXÙS˜[YHHÙ[‹—ÜÙ\šXÙS˜[YJÙ\šXÙKÙ[‹—ÜÙ\šXÙT™YŠB‚B\Ù[–È˜Ú[›™[—KœÙ]^
+Ù\šXÙS˜[YJB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹—ÛØYÙ\šXÙTXÛÛŠB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹—ÜÝ\Y]Y]SÛÚÝ\
+B‚YYˆØÛÜÙT›ÙÜ˜[R[™›ÊÙ[‹
+œ™]˜[
+N‚‚B\Ù[‹—ÛY]Y]PÛÜÙYHYB‚B]žN‚‚BB\Ù[‹—ÛY]Y]U[Y\‹œÝÜ
+
+B‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚B]žN‚‚BB\Ù[‹šYJ
+B‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚B\™]\›ˆÙ[‹˜ÛÜÙJ
+œ™]˜[
+B‚‚YYˆÜÝ\Y]Y]SÛÚÝ\
+Ù[ŠN‚‚BZYˆ›ÝÙ[‹—ÛY]Y]U]HÜˆØ\™\”›ÙÜ˜[SÛÚÝ\\È›Û™N‚‚BB\™]\›‚‚BYYˆÛÜšÙ\Š
+N‚‚BB]žN‚‚BBB\Ù[‹—ÛY]Y]T™\Ý[HØ\™\”›ÙÜ˜[SÛÚÝ\
+Ù[‹—ÛY]Y]U]KÙ[‹—ÛY]Y]PÛÛ^
+B‚BBY^Ù\^Ù\[Ûˆ\ÈN‚‚BBBUÜš][ÙÊ•Ø\™\”›ÙÜ˜[R[™›ÈY]Y]Nˆ	\Èˆ	HJB‚BBB\Ù[‹—ÛY]Y]T™\Ý[HßB‚BB\Ù[‹—ÛY]Y]QÛ™HHYB‚B]™XYH™XY[™Ë•™XY
+\™Ù]]ÛÜšÙ\ŠB‚B]™XY™Y[[ÛˆHYB‚B]™XYœÝ\
+
+B‚B\Ù[‹—ÛY]Y]U[Y\‹œÝ\
+L˜[ÙJB‚‚YYˆÜÛY]Y]SÛÚÝ\
+Ù[ŠN‚‚BZYˆÙ[‹—ÛY]Y]PÛÜÙY‚‚BB\Ù[‹—ÛY]Y]U[Y\‹œÝÜ
+
+B‚BB\™]\›‚‚BZYˆ›ÝÙ[‹—ÛY]Y]QÛ™N‚‚BBHÈÙY\H[žH™X[™\Z[X\™X]Ú[HHÛÜšÙ\ˆ\È[™[™ËˆÜ[UˆÔÂ‚BBHÈÚÝÜÈ]È\ÞH[HY\ˆHÛ™È›Ë\Z[[\˜[È\È™]™[È]‚BBHÈÚ]Ý]X[š\[][™ÈÛØ˜[Ü[›™\ˆÝ]HÜˆ›ØÚÚ[™È™[[ÝKZÙ^H[œ]‚‚BB]žN‚‚BBB\Ù[–È››ÝÕ[YH—KœÙ]^
+[YLKœÝ™[YJ‰R‰SN‰TÈ‹[YLK›ØØ[[YJ
+JJB‚BBY^Ù\^Ù\[ÛŽ‚‚BBB\\ÜÂ‚BB\™]\›‚‚B\Ù[‹—ÛY]Y]U[Y\‹œÝÜ
+
+B‚B[Y]HHÙ[‹—ÛY]Y]T™\Ý[ÜˆßB‚B]žN‚‚BB\Ù[‹—Ø\ÛÜšÔ]HY]K™Ù]
+˜\ÛÜš×Ü]ŠHÜˆˆ‚‚BBZYˆY]K™Ù]
+™Ù[œ™HŠNˆÙ[–È™Ù[œ™SY]H—KœÙ]^
+Y]VÈ™Ù[œ™H—JB‚BBZYˆY]K™Ù]
+žYX\ˆŠNˆÙ[–ÈžYX\“Y]H—KœÙ]^
+Y]VÈžYX\ˆ—JB‚BBZYˆY]K™Ù]
+˜ÛÝ[žHŠNˆÙ[–È˜ÛÝ[žSY]H—KœÙ]^
+Y]VÈ˜ÛÝ[žH—JB‚BBZYˆY]K™Ù]
+œ˜][™ÈŠN‚‚BBB\˜][™×Ý^HÝŠY]VÈœ˜][™È—JKœÝš\
+
+B‚BBB\˜][™ÈH›Ø]
+˜][™×Ý^œÜ]
+‹È‹JVÌKœÝš\
+
+JB‚BBBYš[YHX^
+Z[ŠK[
+›Ý[™
+˜][™ÈÈ‹Œ
+JJJB‚BBB\Ù[–Èœ˜][™ÔÝ\œÈ—KœÙ]^
+¸¦!Hˆ
+ˆš[Y
+È¸¦!ˆˆ
+ˆ
+HHš[Y
+JB‚BBB\Ù[–Èœ˜][™ÓY]H—KœÙ]^
+‰\È0­È	\Èˆ	H
+˜][™×Ý^Y]K™Ù]
+œ›ÝšY\ˆ‹•QˆŠJJB‚BB\Ù[‹—ÛØY›ÙÜ˜[P\ÛÜšÊ
+B‚BY^Ù\^Ù\[Ûˆ\ÈN‚‚BBUÜš][ÙÊ•Ø\™\”›ÙÜ˜[R[™›ÈY]Y]H\Nˆ	\Èˆ	HJB‚‚YYˆÛØY›ÙÜ˜[P\ÛÜšÊÙ[ŠN‚‚B]žN‚‚BBZYˆÙ[‹—Ø\ÛÜšÔ][™ÜËœ]š\Ùš[JÙ[‹—Ø\ÛÜšÔ]
+N‚‚BBB\^HØY^X\
+]\Ù[‹—Ø\ÛÜšÔ]
+B‚BBBZYˆ^\È›Ý›Û™N‚‚BBBB\Ù[–Èœ›ÙÜ˜[P\ÛÜšÈ—Kš[œÝ[˜ÙKœÙ]ØØ[JJB‚BBBB\Ù[–Èœ›ÙÜ˜[P\ÛÜšÈ—Kš[œÝ[˜ÙKœÙ]^X\
+^
+B‚BBBB\Ù[–Èœ›ÙÜ˜[P\ÛÜšÈ—KœÚÝÊ
+B‚BBBB\™]\›‚‚BY^Ù\^Ù\[Ûˆ\ÈN‚‚BBUÜš][ÙÊ•Ø\™\”›ÙÜ˜[R[™›È\ÛÜšÎˆ	\Èˆ	HJB‚B]žN‚‚BB\Ù[–Èœ›ÙÜ˜[P\ÛÜšÈ—KšYJ
+B‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚‚YYˆÛ›Ü›X[\ÙTÙ\šXÙT™YŠÙ[‹Ù\šXÙJN‚‚BZYˆÙ\šXÙH\È›Û™Nˆ™]\›ˆ›Û™B‚B]žN‚‚BBZYˆ\Ú[œÝ[˜ÙJÙ\šXÙKTÙ\šXÙT™Y™\™[˜ÙJNˆ™]\›ˆÙ\šXÙB‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B]žN‚‚BB\™YˆHÙ]]ŠÙ\šXÙKœ™Yˆ‹›Û™JB‚BBZYˆ™Yˆ\È›Ý›Û™Nˆ™]\›ˆ™Y‚‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B]žN‚‚BBZYˆ\Ø]ŠÙ\šXÙKÔÝš[™ÈŠNˆ™]\›ˆTÙ\šXÙT™Y™\™[˜ÙJÙ\šXÙKÔÝš[™Ê
+JB‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B]žNˆ™]\›ˆTÙ\šXÙT™Y™\™[˜ÙJÝŠÙ\šXÙJJB‚BY^Ù\^Ù\[ÛŽˆ™]\›ˆ›Û™B‚‚YYˆÜÙ\šXÙS˜[YJÙ[‹Ù\šXÙKÙ\šXÙT™YŠN‚‚B]žN‚‚BBZYˆÙ\šXÙH\È›Ý›Û™H[™\Ø]ŠÙ\šXÙK™Ù]Ù\šXÙS˜[YHŠN‚‚BBB[˜[YHHÙ\šXÙK™Ù]Ù\šXÙS˜[YJ
+HÜˆˆ‚‚BBBZYˆ˜[YNˆ™]\›ˆ˜[YKœ™\XÙJ—Ì—ˆ‹ˆŠKœ™\XÙJ—Ì—È‹ˆŠB‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B]žN‚‚BBZYˆÙ\šXÙT™Yˆ\È›Ý›Û™Nˆ™]\›ˆ
+Ù\šXÙT™Y™\™[˜ÙJÙ\šXÙT™YŠK™Ù]Ù\šXÙS˜[YJ
+HÜˆˆŠKœ™\XÙJ—Ì—ˆ‹ˆŠKœ™\XÙJ—Ì—È‹ˆŠB‚BY^Ù\^Ù\[ÛŽˆ\ÜÂ‚B\™]\›ˆˆ‚‚‚YYˆÛØYÙ\šXÙTXÛÛŠÙ[ŠN‚‚BZYˆÙ[‹—ÜÙ\šXÙT™Yˆ\È›Û™Nˆ™]\›‚‚B]žN‚‚BBYœ›ÛHÛÛ\Û™[Ë”™[™\™\‹”XÛÛˆ[\ÜÙ]XÛÛ“˜[YB‚BB\XÛÛˆHÙ]XÛÛ“˜[YJÙ[‹—ÜÙ\šXÙT™Y‹ÔÝš[™Ê
+JB‚BBZYˆXÛÛˆ[™ÜËœ]š\Ùš[JXÛÛŠH[™Ù[–ÈœÝ][Û”XÛÛˆ—Kš[œÝ[˜ÙH\È›Ý›Û™N‚‚BBB\Ù[–ÈœÝ][Û”XÛÛˆ—Kš[œÝ[˜ÙKœÙ]ØØ[JJB‚BBB\Ù[–ÈœÝ][Û”XÛÛˆ—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[JXÛÛŠB‚BBB\Ù[–ÈœÝ][Û”XÛÛˆ—KœÚÝÊ
+B‚BY^Ù\^Ù\[Ûˆ\ÈN‚‚BBUÜš][ÙÊ•Ø\™\”›ÙÜ˜[R[™›ÈXÛÛŽˆ	\Èˆ	HJB‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™Yˆ™XYÝ\J
+N‚‚Xœ˜[™H•[šÛ›ÝÛˆˆ‚[[Ù[H•[šÛ›ÝÛˆ‚B‚ZYˆš[Q^\ÝÊ‹Ü›ØËÜÝ‹Ú[™›ËØ›Þ\HŠN‚‚BXœ˜[™HÛ\šÙKUXÚ‚‚BYˆHÜ[Š‹Ü›ØËÜÝ‹Ú[™›ËØ›Þ\H‹	Ü‰ÊB‚B[[Ù[H‹œ™XY[™J
+KœÝš\
+
+B‚BY‹˜ÛÜÙJ
+B‚ZYˆ›Ý™]Lˆ[ˆ[Ù[‚‚BZYˆš[Q^\ÝÊ‹Ü›ØËÜÝ‹Ú[™›ËÝ[[Ù[ŠN‚‚BBXœ˜[™H•H‚‚BBYˆHÜ[Š‹Ü›ØËÜÝ‹Ú[™›ËÝ[[Ù[‹	Ü‰ÊB‚BB[[Ù[H‹œ™XY[™J
+KœÝš\
+
+B‚BBY‹˜ÛÜÙJ
+B‚BY[Yˆš[Q^\ÝÊ‹Ü›ØËÜÝ‹Ú[™›ËØ›Þ\HŠN‚‚BBXœ˜[™HÛ\šÙKUXÚ‚‚BBYˆHÜ[Š‹Ü›ØËÜÝ‹Ú[™›ËØ›Þ\H‹	Ü‰ÊB‚BB[[Ù[H‹œ™XY[™J
+KœÝš\
+
+B‚BBY‹˜ÛÜÙJ
+B‚BY[Yˆš[Q^\ÝÊ‹Ü›ØËÜÝ‹Ú[™›ËÛ[Ù[ŠN‚‚BBXœ˜[™H‘™X[H][[YYXH‚‚BBYˆHÜ[Š‹Ü›ØËÜÝ‹Ú[™›ËÛ[Ù[‹	Ü‰ÊB‚BB[[Ù[H‹œ™XY[™J
+KœÝš\
+
+B‚BBY‹˜ÛÜÙJ
+B‚BBZYˆ˜ÝX™\™]›Èˆ[ˆ[Ù[ÜˆÝX™\™]›Èˆ[ˆ[Ù[Üˆ’\›Þˆ[ˆ[Ù[Üˆš\›Þˆ[ˆ[Ù[Üˆ’T›Þˆ[ˆ[Ù[‚‚BBBXœ˜[™HP‹PÛÛH‚‚BBY[Yˆœ™[Z][Hˆ[ˆ[Ù[‚‚BBBXœ˜[™HV˜›Þ‚‚\™]\›ˆœ˜[™[Ù[BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ–ÔHH›Z\Ù[‚žN‚‚XÜHHÜ[Š‹Ü›ØËØÜZ[™›È‹œˆŠKœ™XY
+
+B‚ZYˆÜK™š[™
+œÚŠHOHLN‚‚BVÔHHœÚ‚‚Y[YˆÜK™š[™
+T“]ÈŠHOHLN‚‚BVÔHH˜\›H‚‚Y[Yˆ\™Ø\™R[™›Ê
+K™Ù]Ù]šXÙWÛ˜[YJ
+H[ˆ
+	ÛÛ™IË	ÝÛÉÊN‚‚BVÔHH˜X\˜Ú‚™^Ù\ˆ\ÜÂ™YˆÚÚÕ™\œÚ[ÛŠ™H•šVŠN‚‚]Ú]H˜[ÙB‚]žN‚‚BY›Üˆ[ˆÈš[XYÙK]™\œÚ[Ûˆ‹š\ÜÝYH‹˜œ™\œÚ[Ûˆ—N‚‚BB]H‹Ù]ËÉ\Èˆ	H‚BBZYˆÜËœ]™^\ÝÊ
+N‚‚BBBXHHÜ[ŠœˆŠKœ™XY
+
+B‚BBBZYˆK™š[™
+™ŠHOHLN‚‚BBBB]Ú]HYB‚BBBBXœ™XZÂ‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆÚ]š\ÐUˆHÚÚÕ™\œÚ[ÛŠ›Ü[UˆŠB’TH‹ÛYYXKÚÚ×Ý\‚”ÑU‘S–’THÜËœ]š›Ú[ŠQÒS”U˜š[ˆ‹Þ—ÙÈŠB““×ÕSˆHÊ“›È[™\ˆ]HŠB‘T—ÑˆHÊˆ˜Z[YŠH
+ÈˆHHWˆ‚‘ÐÈH	ËÝ\Ë™ÜØØ[KÙÜØØ[K™\œÚ[Û‰Â“ÓHH	ËÝ\Ë›˜Ø[KÛ˜Ø[K™\œÚ[Û‰Â‘ÐÓHH	ËÝ\Ë™ØØ[KÙØØ[K™\œÚ[Û‰ÂÒS”ÑSÑ’SHH‹Ý\Ü‹ÛX‹Ù[šYÛXL‹Ü]Û‹ÔØÜ™Y[œËÐÚ[›™[Ù[XÝ[Û‹œH‚’ÓTÑ’SHH‹Ý\Ü‹ÜÚ\™KÙ[šYÛXL‹ÚÙ^[X\ž[‚•TÑT–SH‹Ù]ËÙ[šYÛXL‹ÜÚÚ[—Ý\Ù\‹ž[‚•TÑT’ÈH‹Ù]ËÙ[šYÛXL‹ÜÚÚ[—Ý\Ù\‹ZÌMËž[‚•TÑT“Ô’HH‹Ù]ËÙ[šYÛXL‹ÜÚÚ[—Ý\Ù\‹[ÜšLMËž[‚”ÒÒS–SH‹Ý\Ü‹ÜÚ\™KÙ[šYÛXL‹ÚÙÛ\ÜÌMËÜÚÚ[‹ž[‚”ÐÔ‘QS”ÔUH‹Ý\Ü‹ÛX‹Ù[šYÛXL‹Ü]Û‹ÔØÜ™Y[œËÈˆ‘S×ÕHHÒT‘TU
+È™[˜ÛÙ[™Ë]\Ù\ŒMË˜ÛÛ™ˆ‚‘S×ÓÈHÒT‘TU
+È™[˜ÛÙ[™Ë[ÜšLMË˜ÛÛ™ˆ‚‘S×ÐÈHÒT‘TU
+È™[˜ÛÙ[™Ë˜ÛÛ™ˆ‚”UÓ”UH‹Ý\Ü‹ÛX‹Ù[šYÛXL‹Ü]Û‹È‚”ÒÒSSHQÒS”U
+ÈšÌMÔØÜ™Y[œËž[‚•WÔH‹Ý\Ý\\‚’TÕ•HHÜËœ]™^\ÝÊUÓ”U
+È”YÚ[œËÔÞ\Ý[TYÚ[œËÕ•T[™[ŠB‘PÓH›ÝÜËœ]™^\ÝÊUÓ”U
+È”YÚ[œËÑ^[œÚ[ÛœËÐÛX\“Y[HŠB‘Q’Q“ÈHÜËœ]š\Ùš[JÐÔ‘QS”ÔU
+È”Ù\šXÙTØØ[‹œHŠB“PVÐÔ‘QS”ÈHL’TÎÑHH	ÙNÙIÈ[ˆ\™Ø\™R[™›Ê
+K™Ù]Ù]šXÙWÛ˜[YJ
+B’TÎŒH	ÙNŒ	È[ˆ\™Ø\™R[™›Ê
+K™Ù]Ù]šXÙWÛ˜[YJ
+B“PVPÓÓ”ÈHÌB”ÔÕTˆH	ÏÚYÙ]™[™\H™ÌMÔÜÝ\ˆˆÛÝ\˜ÙOHœÙ\ÜÚ[Û‹‘]™[Ó›ÝÈˆÜÚ][ÛH‰\Ë	\ÈˆÚ^™OH‰\Èˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ\™[ˆ”ÜÚ][ÛHŒˆ˜[œÜ\™[HŒˆÏ—‰Â“‘UÔQQH	ÏT^X\ÜÚ][ÛH‰\Ë	\ÈˆÚ^™OHŒÌLˆ^X\HšÙÛ\ÜÌMËÚXÛÛœËÛ™]ÜYYœ™Èˆ”ÜÚ][ÛHÈˆ[]\ÝH›Ù™ˆˆÏ—ÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H™ÌMÔÚÝÓ™]ÜYYˆÜÚ][ÛH‰\Ë	\ÈˆÚ^™OHŒNLLˆ”ÜÚ][ÛHŽˆ›ÛH”™YÝ[\ŒŽÌˆˆ›ÕÜ˜\HŒHˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[HŒH‹Ï—‰Â“‘UÔQQH	ÏÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H™ÌMÔÚÝÓ™]ÜYYˆÜÚ][ÛH‰\Ë	\ÈˆÚ^™OHŒŒŒˆ”ÜÚ][ÛHŽˆ›ÛH”š]™LÎÌÈˆ›ÕÜ˜\HŒHˆ˜[YÛH˜Ù[\ˆˆ[YÛHœšYÚˆ˜XÚÙÜ›Ý[™ÛÛÜH[ŒÍLÙMMÍYHˆÚYÝÐÛÛÜHˆÌPMNMˆˆÚYÝÓÙ™œÙ]H‹LKLHˆ˜[œÜ\™[HŒH‹Ï—‰Â‘ÐRQHÈQ‹ŒÈ‹Œ‹‹MÌ‹QPH‹QLH‹QL‹P‘ˆ‹QQH‹QÈ‹ŒÌL‹MNH‹ŒLL‹ŒMÌˆ‹ŒMÌŒˆ‹ŒMÍŒˆ‹Q‹QH‹ŒQPÌ‹L‹PŒ—BÓˆH	×‹‹‹‹‹‹‹‹‹‹‹‹‹‹—‹‹‹‹‹‹‹‹‹‹‹‹‹‹‰ÂSÐÑ‘ÈHÂ‚BIÒXÛÛœÈ\IË	Ðš]˜]IË	ÐY™\ÜÈ[ˆXÛIË	Ñ[˜X›Y^˜H[™›Ø˜\‰Ë	Ñ[˜X›Y[š[˜ÙY[™›Ø˜\‰Ë	Ñ^˜HØÜ™Y[‰Ë	ÓY[H\IË	ÔÙXÛÛ™XÛÛˆ\IË	ÉË	ÔÜXÚX[[™›È\ÜË‰Ë‚BIÔÜXÚX[[™›ÈK\ÜË‰Ë	ÔÜXÚX[[™›È\IË	ÕÙX]\ˆØØ][Û‰Ë	ÔÝ[™\™[™›Ø˜\ˆ\IË	ÓÓQ\IË	Ð˜\ˆ˜XÚÙÜ›Ý[™	Ë	ÑXÛ[[™H[™›È\IË	Õ›Û[YH\IË	ÐÚ[›™[Ù[ˆ\IË	ÑPÓ[[™K‹ÔKÓY[K˜[ˆÛÛÜ‰Ë‚BIÒØZÙH\	Ë	Ô]È	Ë	ÒÝ]IË	Ñ\Ü^HšYÚ[YHXÛÛœÉË	Ñ[š]˜]IË	ÐÐRQQÉË	Ñ˜YH[‹ÛÝ]	Ë	Ñ˜YHÜYY	Ë	Ñ˜YH[‰Ë	Õ\]Üš][™ÉË‚BIÕ\Ù\ˆ[™›È\IË	Ô\›X[™[\Ù\ˆ[™›ÉË	ÐXÝÛ™^]™[	Ë	Ó™]]š[›ÉË	Ðš]˜]H[Z]	Ë	ÉË	ÉË	ÉË	ÉË	ÓÓQÙ™‰Ë‚BIÐ›XÚËÝÚ]IË	Ð]Y[È\IË	ÉË	ÔÝ[IË	Õ]HÛÛÜ‰Ë	ÑTÈ\Ý›ÛÚ^™IË	Ó]]H˜[œÜ\™[˜ÞIË	ÔØ]˜[Y\ÈÛ›IË	Õ˜[œÛ][Û‰Ë	Ñ\Ü^HÕÌÌIË‚BIÕ›Û[YH\ÜË‰Ë	Õ›Û[YHK\ÜË‰Ë	Ñ›ÛÚ^™H]™[	Ë	ÑTÈÙ[XÝ[Ûˆ\IË	ÒYÛ›Ü™H[Y[Ý]	Ë	Ð[š[X]YÙX]\ˆXÛÛœÉË	Ó™]ÛÛ›™XÝ	Ë	ÐÛX\›Y[IË	Ñ[˜ÛÙ[™Ë]\Ù\‰Ë	Ñ[\HXÛÛœÈ[ˆY[H\HXÛÛœÉË‚BIÉË	ÐÚ[›™[Ù[žÒÉË	Ð[š[H[ˆY[H\HXÛÛœÉË	ÜØÜ™Y[œØ]™\ˆ[ˆ˜Y[È[ÙIË	ÉË	Ð[š[X]YXÛÛœÈUÙX]\‰Ë	ÔÙ\šXÙHØØ[ˆÛ™È\Ý	Ë	ÔQÈ\IË	ÓY[RXÛÛœÉË	ÉË‚BIÕÙX]\ˆ™^Ú]IË	ÒXÛÛœÕÙX]\‰Ë	ÔÜXÚX[[™›È[Y[Ý]	Ë	ÑPÓH™Yœ™\Ú	Ë	Õ\]IË	Õ^›Û[™ÉË	Ñ[^H^›Û[™ÉË	ÔÜXÚX[[™›È^[œÚ[ÛœÉË	ÐÒˆ˜[YH\IË	ÐY™\ÜÉË	Ô›ÝšY\‰Ë	Õ[\Ô”IË	ÐÔKÓY[IË	Õ[\’	Ë‚BIÔÜXÚX[[™›ÈXZ[›Y[IË	ÕÙX]\ˆ[š]ÉË	ÕÙX]\ˆ™[ØY[™È[YIË	ÕÙX]\ˆ›ÝšY\‰Ë	ÉË	ÉË	ÝÙXKX]]Ü™XÛÛ›™XÝ[YIË	ÔÚÝÈY\Ý\™^IË‚BIÕØ\›HÛÛÜ‰Ë	ÐÛÛÛÛÜ‰Ë	Ñ˜Z\ˆÛÛÜ‰Ë	ÕØ\›H[\\˜]\™IË	ÐÛÛ[\\˜]\™IË	Ñ]ÙXHÚ]IË	ÉË	ÉË	ÔÚÝÈ\Ý›ÊUÙXJIË	ÑšXÛÛˆÐSIË	ÑšXÛÛˆ\IË‚BIÓ[X™\ˆÙˆ[™\œÉË	ÐXÝ]™H[™\ˆÛÛÜ‰Ë	Ð‹ˆXÝ]™H[™\ˆÛÛÜ‰Ë	ÔÝ[™žH[™\ˆÛÛÜ‰Ë	ÓZ\ÜÚ[™È[™\ˆÛÛÜ‰Ë	Ñ\ØËˆÛÛÜ‰Ë	Ñ\ØËˆÙ[XÝYÛÛÜ‰Ë	ÐÚˆ˜[YHÙ[XÝYÛÛÜ‰Ë‚BIÔ™XÛÜ™[™È[™\ˆÛÛÜ‰Ë	Ô™XÛÜ™[™È[™]™H[™\ˆÛÛÜ‰Ë	Ô™XÛÜ™[™ÈXÛÛ‰Ë	Ðš]˜]HÛÛÜ‰Ë	ÑPÓHÛÛÜ‰Ë	ÐÚÙ[ˆ˜[YHÛÛÜ‰Ë	ÑPÓHX™[ÈÛÛÜ‰Ë	ÑPÓH˜[Y\ÈÛÛÜ‰Ë	Ô›ÙÜ™\ÜÚ]™H]XÝ[Û‰Ë‚BIÕ\HÛÛÜ‰Ë	Õ[™›ÈÛÛÜ‰Ë	ÕšY[È™\ÛÛ][ÛˆÛÛÜ‰Ë	Õ\Ù\ˆY‹ˆ]	Ë	Ô]ÈXÛÛœÉË	ÐÚˆ[KˆØ[Ý[][™ÉË	Ñ]H›Ü›X]^ˆ[™›Ø˜\‰Ë	Ñ]HÛÛÜ‰Ë	Õ[YHÛÛÜ‰Ë	ÔÙXÛÛ™ÈÛÛÜ‰Ë‚BIÑ]H›Ü›X]Ý\œÉË	Ñ]H›Ü›X]ÚœÙ[‰Ë	Ñ]H›Ü›X]Y[IË	Ñ]H›Ü›X][™›Ø˜\‰Ë	ÐÚˆ˜[YHÛÛÜ‰Ë	Ñ]™[›ÝÈÛÛÜ‰Ë	Ñ]™[™^ÛÛÜ‰Ë	ÒYÛ‹ˆXY[™È	Ë	ÒYHZ\ÜÚ[™È[™Ý[™žH[™\œÉË	ÉË‚BIÔ]ÈØ][]\Ëž[	Ë	Ô™[XZ[š[™È[YH[ˆ^˜HTÉË	ÓÜ[•ÙX]\“X\[Ü™H^\È›Ü™XØ\Ý	Ë	ÒÈÛÛ™ˆ]	Ë	ÔÙ\šXÙH˜[YH›ÛÚ^™IË	ÔÙ\šXÙH[™›È›ÛÚ^™IË	ÐÒˆ[™HZYÚ	Ë‚BIÑ^ˆ\ØËˆ›ÛÚ^™IË	ÕØ\›H[\\˜]\™H‰Ë	ÐÛÛ[\\˜]\™H‰Ë	Ñ]ÙXH[š]ÉË	ÉË	Ó\Ý›ÞšYÙÙ\‰Ë	Ó\Ý›ÞšYÉË	Ó\Ý›ÞYY][IË	Ó\Ý›ÞÛX[	Ë‚BIÓ\Ý›ÞÛX[\‰Ë	ÕÙX]\ˆ[š[KˆÜYY	Ë	Ñ]ÙXH[š[KˆÜYY	Ë	Ó[ÝšY\^Y\ˆ[™›Ø˜\ˆÝ]IË	Ñ[˜X›H[š[X][ÛœÉË	ÔXÛÛˆ[š[X][Û‰Ë	ÔÙXÛÛ™XÛÛˆ[š[X][Û‰Ë	ÑPÓH[™H[š[X][Û‰Ë‚BIÓY[HXÛÛœÈ[š[X][Û‰Ë	ÐÚœÙ[XÛÛœÈ[š[X][Û‰Ë	Õ[™›ËÝ\H[š[X][Û‰Ë	Õ[™\ˆ[™›ÉË	Ð[š[X]YÙXR[™ˆXÛÛœÉË	ÕÙXR[™ˆ[š[KˆÜYY	Ë	ÕÙX]\ˆ\HÜXÚX[	Ë	ÕÙX]\ˆ\H\Ù\‰Ë‚BIÕÙX]\ˆ]H\IË	ÕÙXKÙ]ÙXH]HÛÛÜ‰Ë	ÕÙXKÙ]ÙXHÝ]HÛÛÜ‰Ë	ÕÙXHUˆÛÛÜ‰Ë	ÕÙXHÚ[™ÛÛÜ‰Ë	ÉË	Ô™Y™\™[˜ÙHÙ\\˜][™ÈÚ\‰Ë	Ó™]][ÈÝ][ÛœÉË	Ó™]][ÈÝ][ÛœÈÝÚ]Ú[YIË	ÉËBB‚BIÑ^˜HØÜ™Y[ˆÙ™œÙ]	Ë	ÌL^\ÈÝÚ]Ú[YIË	Ñ]ÙXH]H›Ü›X]	Ë	ÕÙX]\ˆ]H›Ü›X]	Ë	ÑšXÛÛˆ[™\‰Ë	ÒYÛ‹ˆXY[™È]IË	Ðš]˜]XØ[ËœÛÉË	ÓÛ‹ÓÙ™ˆ^X\	Ë	Õ[šÛ›ÝÛˆÐRQ	Ë‚BIÐÒH[™›Ü›X][ÛœÉË	ÑPÓHœ›ÛHÝ\œ™[\Ü^YYÚ[›™[	Ë	ÉË	ÉË	ÔÚÝÈQ[ˆPÓH[™IË	ÔÚÝÈÒQ[ˆPÓH[™IË	ÔÚÝÈÜÝ\‰Ë	ÉË	ÔÜÝ\ˆ\ÜÚ][Û‰Ë	ÔÜÝ\ˆK\ÜÚ][Û‰Ë	ÔÜÝ\ˆÚ^™IË‚BIÔÜÝ\ˆ[š[X][Û‰Ë	ÔÜÝ\ˆ›ÝšY\‰Ë	ÔÜÝ\ˆÙX\˜Ú[^IË	ÉË	Ô™[[Ýš[™ÈÝ\œ™[ÜÝ\‰Ë	Õ•HÜ]ØÜ™Y[‰Ë	Ó™]ÜYY	Ë	Ó™]ÜYY\ÜÚ][Û‰Ë	Ó™]ÜYYK\ÜÚ][Û‰Ë	ÉË	Ó™]ÜYYÛÛÜ‰ËBB‚BIÔ›ÙÜ™\ÜÈ˜\ˆ˜XÚÙÜ›Ý[™ÛÛÜ‰Ë	Ô›ÙÜ™\ÜÈ˜\ˆ›Ü™YÜ›Ý[™ÛÛÜ‰Ë	ÉË	ÉË	ÉË	ÉË	ÉË	ÉË	Ô›ÙÜ™\ÜÈ˜\ˆ^X\	Ë	ÒYHÓ”‹ÐQÐÈ
+KÔÊHYˆ˜[YH\È	Ë	Ó[ÝšYHÙ[XÝ[Ûˆ\IË‚BIÒTˆ˜Y[È]XÝ[Û‰Ë	Ó™]ÜYY\IË	Ñ^[™Y[X™\ˆT	Ë	ÕÙX]\ˆTKRÙ^HÜ[•ÙX]\“X\	Ë	Ñ]™[šY]È\IÂ‚BWB‘SWÑS”ÈH˜[ÙH‘SWÑSHH˜[ÙB‘SWÐ’H˜[ÙB‘SWÔLˆH˜[ÙBžN‚‚Y›Üˆ[ˆÈœÚÚ[—ÙY˜][ž[‹œÚÚ[‹ž[‹”KQ[ÜÚÚ[‹ž[‹”KQ[ÜÚÚ[—Ý[\]\Ëž[‹•WÒÌLÜÚÚ[‹ž[—N‚‚BZYˆÜËœ]š\Ùš[JÒT‘TU
+È
+N‚‚BB\ˆHÜ[ŠÒT‘TU
+ÈœˆŠKœ™XY
+
+B‚BBZYˆ‹™š[™
+	Û˜[YOH‘TÛ\Ý›ÛH‰ÊHOHLHÜˆ‹™š[™
+	Û˜[YOH‘TÓ\Ý‰ÊHOHLN‚‚BBBQSWÑS”ÈHYB‚BBZYˆ‹™š[™
+	ÜÙ]]™[][Q›ÛH‰ÊHOHLN‚‚BBBQSWÑSHHYHBBB‚BBZYˆ‹™š[™
+	Ý\OHš[˜[ÙÚXÉÊHOHLN‚‚BBBQSWÐ’HYH‚BBZYˆ”KQ[ˆ[ˆ[™‹™š[™
+	ÛØš™XÝ\\ÏH‰ÊHOHLN‚‚BBBQSWÔLˆHYH™^Ù\ˆ\ÜÂšYˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÔÞ\Ý[TYÚ[œËÓÐ’××ÜXØXÚW×ËÈŠHÜˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÔØ]™X[YÜ‹××Ú[š]×Ëœ[ÈŠHÜˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÑ^[œÚ[ÛœËÓÜ[”ÔTYË××Ú[š]×Ëœ[ÈŠN‚‚QSWÑSHHYB‚QSWÔLˆHYB‘SWÓÈH˜[ÙBžN‚‚\ˆHÜ[ŠÒÒS–SœˆŠKœ™XY
+
+B‚ZYˆ‹™š[™
+	Ý\OH”ÛX[\ˆ‰ÊHOHLH[™‹™š[™
+	Ý\OHšYÙÙ\ˆ‰ÊHOHLN‚‚BQSWÓÈHYB™^Ù\ˆ\ÜÂ‘SWÔÖSHHYBšYˆTÕ•N‚‚QSWÔÖSHH˜[ÙB‘SWÑH	ÛZ\Ù[	Â””ÕÓQHÉÚÚ[[	Ë	ËNIË	Ù[šYÛXL‰×B‘SWÔÐÒH˜[ÙB‘SWÒWÕH˜[ÙBšYˆÜËœ]™^\ÝÊ	ËÙ]ËÙÙÉÊN‚‚T”ÕÓQHÉÜÞ\Ý[XÝ	Ë	Ü™\Ý\	Ë	Ù[šYÛXL‰×B‚QSWÑH	ÙXœÙÉÂ‚]žN‚‚BYœ›ÛHÛÛ\Û™[Ë”™[™\™\‹™ÌMÕ[™\œÓX™[[\ÜÙ][™\‘\ØÂ‚BQSWÒWÕHYB‚Y^Ù\ˆ\ÜÂ™[ÙN‚‚]žN‚‚BQSWÖˆHÛÛ™šYË\ØYÙKœÚÝ×Ù]™[Ü›ÙÜ™\Ü×Ú[—ÜÙ\šXÙ[\Ý˜[YB‚BYˆHÛÛ™šYË\ØYÙKœÚÝ×Ù]™[Ü›ÙÜ™\Ü×Ú[—ÜÙ\šXÙ[\Ý˜[YB‚B]Ú[H
+YJN‚‚BBZYˆœ\˜Èˆ[ˆŽ‚BBB‚BBBQSWÔÐÒHYH‚BBBXÛÛ™šYË\ØYÙKœÚÝ×Ù]™[Ü›ÙÜ™\Ü×Ú[—ÜÙ\šXÙ[\Ý˜[YHHSWÖ‚‚BBBXœ™XZÂ‚BBXÛÛ™šYË\ØYÙKœÚÝ×Ù]™[Ü›ÙÜ™\Ü×Ú[—ÜÙ\šXÙ[\Ýš[™RÙ^JJB‚BBYˆHÛÛ™šYË\ØYÙKœÚÝ×Ù]™[Ü›ÙÜ™\Ü×Ú[—ÜÙ\šXÙ[\Ý˜[YB‚BBZYˆSWÖˆOHŽ‚BBB‚BBBXœ™XZÈ‚Y^Ù\ˆ\ÜÈ‘SWÖˆH˜[ÙBžN‚‚Yœ›ÛH[šYÛXH[\ÜSYYXQ]X˜\ÙB‚QSWÖˆHYH™^Ù\ˆ\ÜÈ‘SWÓÓ“Ñ‘ˆH˜[ÙBšYˆSWÑOH	ÙXœÙÉÎ‚‚]žN‚‚BYœ›ÛHÛÛ\Û™[Ë˜ÛÛ™šYÈ[\ÜÛÛ™šYÐ›ÛÛX[‚‚BZYˆÝŠ[ŠÛÛ™šYÐ›ÛÛX[‹—ÛÛ“Ù™”^X\ÊJKš\ÙYÚ]
+
+N‚‚BBQSWÓÓ“Ñ‘ˆHYH‚Y^Ù\ˆ\ÜÂ™[ÙN‚‚QSWÓÓ“Ñ‘ˆHYB˜ÛÛÜœÈHÊ]]ÐÛÛÜœÈ‹Ê]]ÐÛÛÜœÈŠJK
+ˆÙ™™™™™ˆ‹Ê•Ú]HŠJK
+ˆÙ‹Ê•Ú]HŠJÈŒˆŠK
+ˆÌL‹Ê‘Ü™Y[ˆŠJK
+ˆÌ™Œ‹Ê‘Ü™Y[ˆŠJÈŒˆŠK
+ˆÙ™ŽXÌ‹Ê“Ü˜[™ÙHŠJK
+ˆÙ™Ž‹Ê“Ü˜[™ÙHŠJÈŒˆŠK
+ˆÙ™Œ‹Ê“Ü˜[™ÙHŠJÈŒÈŠK
+ˆÙ™ŒÌÌ‹Ê”™YŠJK
+ˆÙ™Œ‹Ê”™YŠJÈŒˆŠK
+ˆÙ‹Ê”™YŠJÈŒÈŠK
+ˆÙ™ˆ‹Ê”\œHŠJK
+ˆÎNX˜Yˆ‹Ê‘Ü˜^HŠJK
+ˆÍÍÍÍÍÍÈ‹Ê‘Ü˜^HŠJÈŒˆŠK
+ˆØÙÙÙ‹Ê‘Ü˜^HŠJÈŒÈŠK
+ˆÍÌÌÌ‹Ê‘Ü˜^HŠJÈŠK
+ˆÍ‹Ê‘Ü˜^HŠJÈHŠK
+ˆÌLÎQPÈ‹Ê›YHŠJK
+ˆÌ™ˆ‹Ê›YHŠJÈŒˆŠK
+ˆÍ˜Ø˜ÙŒ‹Ê›YHŠJÈŒÈŠK
+ˆÌÍÙ™ˆ‹Ê›YHŠJÈŠK
+ˆÌMÑˆ‹Ê›YHŠJÈHŠK
+ˆÙ™˜ØÌ‹Ê–Y[ÝÈŠJK
+ˆÙXØŒL‹Ê–Y[ÝÈŠJÈŒˆŠK
+ˆÑ‘‘Q‹Ê–Y[ÝÈŠJÈŒÈŠK
+ˆØ˜XŒÌŽH‹Ê–Y[ÝÈŠJÈŠWH˜ÛÛÜœÌHHÊ“›Û™H‹“›Û™HŠWH™›Ü›X]HÊ‘‹Ê]]ÈŠJK
+‰PH	Pˆ	Y	VH‹Ê•\HŠJÈˆHŠK
+‰PH	Y‰Pˆ	VH‹Ê•\HŠJÈˆˆŠK
+‰PK	Y	Pˆ	VH‹Ê•\HŠJÈˆÈŠK
+‰Y‰[K‰VH‹Ê•\HŠJÈˆŠK
+‰PK	Y‰Pˆ	VH‹Ê•\HŠJÈˆHŠK
+‰Y‰Pˆ	VH‹Ê•\HŠJÈˆˆŠK
+‰VH	Pˆ	YK	PH‹Ê•\HŠJÈˆÈŠK
+‰VK‰[K‰Y‹Ê•\HŠJÈˆŠK
+‰VH	Pˆ	YH‹Ê•\HŠJÈˆHŠK
+‰PH	YH	Pˆ‹Ê•\HŠJÈˆLŠWB˜‹HH™XYÝ\J
+B›ÛYHÊŒ‹Ê™œ›ÛH[XYÙHŠJK
+ŒH‹Ê‘ÌMÈ
+Úˆ˜[YJHŠJK
+Œˆ‹Ê‘Y˜][ŠJK
+ŒÈ‹Ê›Û›HXÛÛˆŠJK
+‹Ê›Û›H[YHŠJK
+ŒŒÈ‹Ê›Û›H[YHŠJÈŒˆŠK
+H‹Ê••JÈ
+Úˆ˜[YJHŠJK
+ˆ‹Ê••JÈ
+XÝˆ]™[
+HŠJK
+È‹Ê••JÈ
+Úˆ˜[YH
+ÈXÝˆ]™[
+HŠJK
+Ž‹Ê‘ÌMÈ
+XÝˆ]™[
+HŠJK
+ŽH‹Ê‘ÌMÈ
+Úˆ˜[YH
+ÈXÝˆ]™[
+HŠJK
+ŒL‹Ê‘ÌMÈ
+ÜÚˆ˜[YK›ÝÛNXÝˆ]™[
+HŠJK
+ŒLH‹Ê‘ÌMÈ
+ÜÚˆ˜[YK›ÝÛN”Ûœˆ[™YØÊHŠJK
+ŒLˆ‹Ê••JÈ[[[ÈŠJK
+ŒLÈ‹Ê”XÛÛˆ[™[YHŠJK
+ŒM‹Ê‘Y˜][ˆŠJK
+ŒMH‹Ê••JÈ[ÌˆÛœ‹YØÈŠJK
+ŒMˆ‹Ê••JÈ[ÌˆÛœ‹YØË”K[\ˆŠJK
+ŒMÈ‹Ê••JÈÈÛœ‹YØÈŠJK
+ŒN‹Ê‘[ÌˆÛœ‹YØË”K[\ˆˆŠJK
+ŒNH‹ÊÛ\ÜÚXØ[ŠJK
+ŒŒ‹ÊÚ]–”XÛÛˆŠJK
+ŒŒH‹ÊÛ\ÜÚXØ[ŠJÈŒˆŠK
+ŒŒˆ‹ÊÚ]XÛÛˆŠJWBšYˆ‘™X[Hˆ[ˆŽ‚‚ZYˆ™Nˆ[ˆHÜˆ™MÌŒˆ[ˆN‚‚B[ÛYHÛYÌ—JÛÛYÎNŒL×JÛÛYÌMŒM—B‚Y[Yˆ™NHˆ[ˆN‚‚B[ÛYHÛYÌŒWJÛÛYÌŒŒBB‚Y[ÙN‚‚B[ÛYHÛYÌŒWBB™[Yˆ•Hˆ[ˆˆÜˆÛ\šÈˆ[ˆŽ‚‚ZYˆ™[Ìˆˆ[ˆN‚‚B[ÛYHÛYÌŒWJÛÛYÌMŽŒNJÛÛYÌNNŒŒB‚Y[YˆÈˆ[ˆHÜˆ™]Lˆ[ˆN‚‚B[ÛYHÛYÌŒWJÛÛYÌNŒNWJÛÛYÌŒŒB‚Y[Yˆ[[Èˆ[ˆN‚‚B[ÛYHÛYÌŒWJÛÛYÌLÎŒMB‚Y[ÙN‚‚B[ÛYHÛYÌŒWJÛÛYÍŽŽWB˜ÚÕHÊŒH‹Ê‘Û\ÜÌMÈŠJK
+ŒÈ‹Ê‘Û\ÜÌMÊ
+Û™^]™[
+HŠJK
+‹ÊÚ]QÊ
+Û™^]™[
+HŠJK
+ˆ‹Ê‘Û\ÜÌMÊ
+Û™^]JHŠJK
+Ž‹Ê“™]ÈÝ[HŠJK
+È‹Ê“™]ÈÝ[HŠJÈˆˆŠK
+ŽH‹Ê“™]ÈÝ[HÚ]QÈŠJK
+ŒL‹Ê”QÊ
+Û™^]™[Y
+HŠJK
+ŒLH‹Ê”QÊ
+ØXÝ™^Y
+HŠJK
+ŒLˆ‹ÊÛ\ÜÚXØ[ŠJK
+ŒM‹ÊÛ\ÜÚXØ[ŠJÈˆˆŠK
+ŒLÈ‹Ê•HÛÜ™HŠJK
+ŒN‹Ê•HÛÜ™HŠJÈˆˆŠK
+ŒMH‹Ê”QÊ
+ÜÙ]™\˜[]™[
+HŠJK
+ŒMˆ‹Ê‘ÌMÊ
+ÜÙ]™\˜[]™[
+HŠJK
+ŒÎH‹Ê‘ÌMÊ
+ÜÙ]™\˜[]™[
+HŠJÈˆˆŠK
+ˆ‹Ê‘ÌMÊ
+ÜÙ]™\˜[]™[
+HŠJÈˆÈŠK
+È‹Ê‘ÌMÊ
+ÜÙ]™\˜[]™[
+HŠJÈˆŠK
+ŒMÈ‹Ê“™]ÈÝ[J
+ÜÙ]™\˜[]™[
+HŠJK
+ŒŒH‹Ê”QÊ
+ØXÝÙ]™\˜[Y
+HŠJK
+ŒH‹Ê”QÊ
+ØXÝÙ]™\˜[Y
+HŠJÈˆˆŠK
+H‹Ê”QÊ
+ØXÝÙ]™\˜[Y
+HŠJÈˆÈŠK
+Œˆ‹ÊÚ]QÈŠJK
+ŒÌH‹ÊÚ]QÈŠJÈˆˆŠK
+ŒÌˆ‹ÊÚ]QÈŠJÈˆÈŠK
+ŒŽ‹ÊÚ]QÈŠJÈˆŠK
+ŒÍÈ‹ÊÚ]QÈŠJÈˆHŠK
+L‹ÊÚ]QÈŠJÈˆˆŠK
+ŒÌÈ‹ÊÚ]XÛÛˆŠJK
+ŒÍ‹ÊÚ]–”XÛÛˆŠJK
+ŒÍH‹Ê‘Y˜][ŠJK
+ŒŽH‹Ê‘ÌMÈ]™[ÈŠJK
+ŒÌ‹Ê‘ÌMÈ]™[ÈŠJÈˆˆŠK
+ŒÎ‹Ê‘ÌMÈ]™[ÈŠJÈˆÈŠK
+H‹Ê‘ÌMÈ]™[ÈŠJÈˆŠK
+‹Ê‘ÌMÈ]™[ÈŠJÈˆHŠK
+H‹Ê‘ÌMÈ]™[ÈŠJÈˆˆŠK
+LÈ‹ÊšYÈXÛÛœÈŠJÈˆHŠK
+M‹ÊšYÈXÛÛœÈŠJÈˆˆŠK
+LH‹Ê”ÜÝ\ˆŠJK
+Lˆ‹Ê”ÜÝ\ˆŠJÈˆˆŠWB˜X[HÊŒŒÈ‹Ê”QÈ
+ÈTŠJÈˆHŠK
+Œ‹Ê”QÈ
+ÈTŠJÈˆˆŠK
+‹Ê”QÈ
+ÈTŠJÈˆÈŠK
+ˆ‹Ê”QÈ
+ÈTŠJÈˆŠK
+È‹Ê”QÈ
+ÈTŠJÈˆHŠK
+‹Ê”QÈ
+ÈTŠJÈˆˆŠK
+ŒÈ‹Ê”TŠJÈˆŠK
+ŒÍˆ‹Ê”TŠJÈˆHŠWBšYˆ\ÐUˆÜˆÜËœ]š\Ùš[JÒT‘TU
+È”KQ[ÜÚÚ[‹ž[ŠHÜˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÔÞ\Ý[TYÚ[œËÓÐ’××ÜXØXÚW×ËÈŠHÜˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÔØ]™X[YÜ‹××Ú[š]×Ëœ[ÈŠN‚‚XX[HÊ˜LŒÈ‹Ê”QÈ
+ÈTŠJÈˆHŠK
+˜L‹Ê”QÈ
+ÈTŠJÈˆˆŠK
+˜M‹Ê”QÈ
+ÈTŠJÈˆÈŠK
+˜Mˆ‹Ê”QÈ
+ÈTŠJÈˆŠK
+˜MÈ‹Ê”QÈ
+ÈTŠJÈˆHŠK
+˜M‹Ê”QÈ
+ÈTŠJÈˆˆŠK
+˜LÈ‹Ê”TŠJÈˆŠK
+˜LÍˆ‹Ê”TŠJÈˆHŠWB™›Üˆ[ˆX[‚‚XÚÕ˜\[™
+
+B‘L“ÒÈH˜[ÙBˆÈHYØXÞHÚ[›™[Ù[XÝ[ÛˆžÒÈ™X]\™H™]Üš]\È[XYÙK[ÝÛ™Y]Û‹‚ˆÈØ\™\ˆ]›Û][Ûˆ]\Ý™]™\ˆÙ™™\ˆÜˆXÝ]˜]H]]ÚÛˆÜ[U‹‚šYˆ›Ý\ÐUˆ[™ÜËœ]š\Ùš[JÒS”ÑSÑ’SJN‚‚]žN‚‚BXÜHHÜ[ŠÒS”ÑSÑ’SK	Ü‰ÊKœ™XY
+
+B‚BZYˆÜK™š[™
+	ÜÙ[‹˜ÛÜÙTQÊ
+IÊHOHLH[™ÜK™š[™
+	××ØÛÜÙN‰ÊHOHLN‚‚BBQL“ÒÈHYB‚Y^Ù\ˆ\ÜÂžN‚‚XÛÛ™šYË‘SPËœÚÚ[—ØX›K˜[YHHYB™^Ù\ˆ\ÜÂˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒHHÛÛ™šYÒ[YÙ\ŠK
+KPVPÓÓ”ÊJHÈ[HÙˆXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›Hš]˜]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈY™\ÜÈ[˜X›H[ˆXÛB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HÛÛ™šYÖY\Ó›ÊY˜][HYJHÈZH[˜X›B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹ÊžY\ÈŠJK
+Œ‹Ê››ÈŠJWJHÈ[˜X›H[š[˜ÙY[™›Ø˜\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ˆHÛÛ™šYÒ[YÙ\ŠK
+KPVÐÔ‘QS”ÊJHÈ[HÙˆØÜ™Y[‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“\Ý‹ÚÚXÙ\ÈHÊ’XÛÛœÈ‹Ê’XÛÛœÈŠJK
+’XÛÛœÈšYÚ‹Ê’XÛÛœÈšYÚŠJK
+“\Ý‹Ê“\ÝŠJK
+Ú]QÈ‹ÊÚ]QÈŠJK
+“\Ý[™XÛÛˆ‹Ê“\Ý[™XÛÛˆŠJK
+’XÛÛœÈ˜\ˆ‹Ê’XÛÛœÈ˜\ˆŠJK
+œÚ[\HQÈ‹ÊœÚ[\HQÈŠJK
+”QÌˆ‹ÊÚ]QÈŠJÈŒˆŠK
+”QÍ‹ÊÚ]QÈŠJÈŠK
+“Lˆ‹Ê“\Ý[™XÛÛˆŠJÈŒˆŠK
+“LÈ‹Ê“\Ý[™XÛÛˆŠJÈŒÈŠWJHÈ\HY[B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŒ‹Ê”Ø][™›ÝˆŠJK
+ŒH‹Ê›Û›HØ]ŠJK
+Œˆ‹Ê›Û›H›ÝˆŠJK
+ŒÈ‹Ê›Û›HÙX]\ˆŠJK
+‹Ê”Ø][™ÙX]\ˆŠJK
+H‹Ê”›Ýˆ[™ÙX]\ˆŠJK
+ˆ‹Ê”Ø]›Ýˆ[™ÙX]\ˆŠJWJHÈÙXÛÛ™XÛÛˆ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ\ÙY›Üˆ]Ûˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHÛÛ™šYÒ[YÙ\ŠMŒ
+KNLŒ
+JHÈ\ÜÚ][Û‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHHÛÛ™šYÒ[YÙ\ŠML
+KL
+JHÈK\ÜÚ][Û‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H›ˆ‹ÚÚXÙ\ÈHÊ™È‹Ê‘Û\ÜÌMÈŠJK
+šH‹Ê’[™›ÑPÓHžH\šHŠJK
+›ˆ‹Ê“›Û™HŠJK
+È‹Ê•ÙX]\ˆŠJK
+˜H‹“™]][ÈŠWJHÈ\HÜXÚX[[™›Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹Ê”Ý[™\™ŠJK
+Œˆ‹Ê”Ú[\HŠJK
+‹Ê”Ý[™\™ŠJÈŒˆŠK
+H‹Ê”Ý[™\™ŠJÈŒÈŠWJHÈÝ[™\™[™›Ø˜\ˆ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÛY
+HÈ\HÙˆÛY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H˜\ˆ˜XÚÙÜ›Ý[™˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŒ‹Ê‘XÛZ[™›ÈÛ›HŠJK
+ŒH‹Ê‘XÛZ[™›È[™ÐRQŠJK
+Œˆ‹ÊÐRQ[™ÒQŠJK
+ŒÈ‹Ê”ÒQÛ›HŠJK
+‹ÊÐRQÒQ”QŠJWJHÈPÓH[™H\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹Ê‘Û\ÜÌMÈŠJK
+Œˆ‹Ê”\˜Ù[YÙHŠJK
+ŒÈ‹ÊÛÛÜ™YØ]YÙHŠJK
+‹Ê”\˜Ù[YÙHŠJÈŒˆŠK
+H‹Ê‘Û\ÜÌMÈŠJÈˆ
+ŠHŠK
+ˆ‹Ê‘Û\ÜÌMÈŠJÈˆ
+ÊHŠWJHÈ›Û[YH\H˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒÍH‹ÚÚXÙ\ÈHÚÕ
+HÈÚ[›™[Ù[XÝ[Ûˆ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÛÛÜˆÙˆš]˜]H[™XÛ[[™KÔKÓY[K˜[ˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ›Ü˜ÙYØZÙH\˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‹Ù]‹ÜÙH‹ÚÚXÙ\ÈHÊH‹Ê]]ÈŠJK
+“›Û™H‹Ê“›Û™HŠJK
+‹Ù]‹ÜÙH‹œÙHŠK
+‹Ù]‹ÜÙˆ‹œÙˆŠK
+‹Ù]‹ÜÙÈ‹œÙÈŠK
+‹Ù]‹ÜÙ‹œÙŠK
+‹Ù]‹ÜÙH‹œÙHŠK
+‹Ù]‹ÜÙˆ‹œÙˆŠWJHÈ]ÈH]‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÝ]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ\Ü^HšYÚ[YHXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H[š]˜]H[™›Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÐRQQÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H˜YH[‹ÛÝ]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HH‹ÚÚXÙ\ÈHÊŒH‹ŒHŠK
+Œˆ‹ŒˆŠK
+ŒÈ‹ŒÈŠK
+‹ŠK
+H‹HŠK
+ˆ‹ˆŠK
+È‹ÈŠK
+Ž‹ŽŠK
+ŽH‹ŽHŠK
+ŒL‹ŒLŠWJHÈ˜YHÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H˜YH[‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H\]Üš][™È˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H™H‹ÚÚXÙ\ÈHÊœÈ‹Ê”Þ\Ý[H[™›ÈŠJK
+™H‹Ê‘]™[H^[™Y\ØÜš\[ÛˆŠJK
+™Lˆ‹Ê‘]™[H^[™Y\ØÜš\[ÛˆŠJÈˆˆŠK
+œÚH‹Ê”ÚYH[™›Ø˜\ˆŠJK
+™\ÚH‹Ê‘]™[[™ÚYH[™›Ø˜\ˆŠJK
+™[ˆ‹Ê‘]™[H›ÝÈ[™™^ŠJK
+™[œÚH‹Ê‘]™[›ÝËÛ™^[™ÚYH[™›Ø˜\ˆŠJK
+È‹Ê•ÙX]\ˆŠJK
+›ˆ‹Ê“›Û™HŠJK
+˜H‹“™]][ÈŠWJHÈ\H\Ù\ˆ[™›Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H\›X[™[\Ù\ˆ[™›Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HXÝÛ™^]™[˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H™]]š[›ÈÙ^[X\˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŽNNNNNNH‹ÚÚXÙ\ÈHÊŽNNNNNNH‹Ê“›Û™HŠJK
+ŒML‹ŒMLŠK
+ŒMÍL‹ŒMÍLŠK
+ŒŒ‹ŒŒŠK
+ŒŒL‹ŒŒLŠK
+ŒL‹ŒLŠK
+ŒÍL‹ŒÍLŠK
+ŒÌ‹ŒÌŠK
+ŒÌL‹ŒÌLŠK
+ŒÍL‹ŒÍLŠK
+ŒÍÍL‹ŒÍÍLŠK
+‹ŠWJHÈš]˜]H]]ÜÝÜ[Z]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍˆH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈXÛÛ”›Ý‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍÈH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈXÛÛ”Ø]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈXÛB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎHH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈ[\]ÈXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÓQÙ™ˆ[ˆÝ[™žB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H›XÚÈ‹ÚÚXÙ\ÈHÊ›XÚÈ‹Ê›XÚÈŠJK
+•Ú]H‹Ê•Ú]HŠJWJHÈXÛÛˆY˜][™^X\šÙ\ˆ‹‹‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ]XÝ]Y[È\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÈH›ÔØ]™JÛÛ™šYÖY\Ó›ÊY˜][HYJJHÈ\ÙY›ÜˆÙ]\Ø]ÚÙÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HÛÛ™šYÒ[YÙ\ŠK
+KPVPÓÓ”ÊJHÈ[HÚ[™ÝÜÝ[B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HHÛÛ™šYÕ^
+ˆÌ˜Ø˜ÙŒ‹˜[ÙJHÈ]HÛÛÜ‚˜ÚÕHÊŒ‹Ê‘Y˜][ŠJWB™›Üˆ[ˆ˜[™ÙJŽÊN‚‚XÚÕ˜\[™
+
+ÝŠ
+KÝŠ
+JJB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ›ÛÚ^™H\Ý\Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ]]H˜[œÜ\™[˜ÞB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÛ›HØ]˜[Y\Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›H˜[œÛ][Û‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÕÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LHHÛÛ™šYÒ[YÙ\ŠLŒ
+KNLŒ
+JHÈ\ÜÚ][Ûˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LˆHÛÛ™šYÒ[YÙ\ŠLŒ
+KL
+JHÈK\ÜÚ][Û‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HÈ‹ÚÚXÙ\ÈHÊÈ‹Ê‘Y˜][ŠJK
+Œˆ‹Ê”Ý[™\™ŠJK
+Ž‹Ê”Ý[™\™ŠJÈŒˆŠK
+ŒÈ‹ÊÚ]QÈŠJK
+ŒH‹ÊÚ]QÊ
+ØÚ›˜[YK[X™\ŠHŠJK
+H‹Ê•HÛÜ™HŠJK
+‹ÊÛ\ÜÚXØ[ŠJK
+ˆ‹ÊÚ]QÊ
+ØÚ›˜[YK[X™\ŠHŠJÈŒˆŠK
+ŽH‹Ê”ÜÝ\ˆŠJWJHÈ\HTÈÙ[XÝ[Û‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŒH‹ÊžY\ÈŠJK
+Œ‹Ê››ÈŠJK
+Œˆ‹Ê››È[YHŠJWJHÈYÛ›Ü™H[Y[Ý]™\ÜÈÒÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[š[X]YÙX]\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒÈ‹ÚÚXÙ\ÈHÊŒH‹ÊžY\ÈŠJK
+Œˆ‹Ê››ÈŠJK
+ŒÈ‹ÊÚ][\›™]ÚXÚÈŠJWJHÈ[˜X›H™]ÛÛ›™XÝÛÝ\˜ÙB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÛX\›Y[H›˜Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H[˜ÛÙ[™Ë]\Ù\‹˜ÛÛ™‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H[\HXÛÛœÈ[ˆY[H\HXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒHHÛÛ™šYÕ^
+Œ‹˜[ÙJHÈ\ÙY›ÜˆÚÈÜ[ÛˆHYÛ›Ü™H[™›Ø˜\ˆ[Y[Ý]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HÚ[›™[Ù[]ÚžÒÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›H[š[H›ÜˆY[NˆXÛÛœÈ˜\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HØÜ™Y[œØ]™\ˆ[ˆ˜Y[È[ÙH˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\HH›ÔØ]™JÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJJHÈ™]\™YÜ[›™\ˆÙ][™ÎÈÛÛ\]Xš[]HXÙZÛ\ˆÛ›B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[š[X]Y]ÙXB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈÙ\šXÙHØØ[ˆÛ™È\Ý˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŒ‹ÊÚ]œ˜[YHŠJK
+ŒH‹Ê˜šYÈŠJWJHÈQÈ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHHÛÛ™šYÒ[YÙ\ŠK
+KPVPÓÓ”ÊJHÈ[HÙˆY[RXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌH›ÔØ]™JÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJJHÈ[™\ˆ\BBBB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈÙX]\Žˆ[˜X›H™^Ú]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌˆHÛÛ™šYÒ[YÙ\ŠK
+KPVPÓÓ”ÊJHÈ[HÙˆXÛÛœÕÙX]\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[˜X›HØÜXÚX[[™›È[Y[Ý]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÍHÛÛ™šYÔÙ[XÝ[ÛŠY˜][Hˆ‹ÚÚXÙ\ÈHÊŒˆ‹ŒˆŠK
+ŒÈ‹ŒÈŠK
+‹ŠK
+ˆ‹ˆŠK
+Ž‹ŽŠK
+ŒL‹ŒLŠWJHÈXÛH™Yœ™\Ú˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÍHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›H\]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÍˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÜÝÜ‹ÚÚXÙ\ÈHÊ“›Û™H‹Ê“›Û™HŠJK
+]]ÜÝÜ‹Ê]]ÜÝÜŠJK
+”›Û˜XÚÈ‹Ê”›Û˜XÚÈŠJWJHÈ[˜X›H\ØËˆ›Û[™Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÍÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŽ‹ÚÚXÙ\ÈHÊ™Y˜][‹Ê‘Y˜][ŠJK
+ˆ‹ˆŠK
+Ž‹ŽŠK
+ŒL‹ŒLŠK
+ŒLˆ‹ŒLˆŠK
+ŒM‹ŒMŠK
+ŒMˆ‹ŒMˆŠK
+ŒŒ‹ŒŒŠWJHÈÝ\[^H\ØËˆ›Û[™Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÎHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H›ˆ‹ÚÚXÙ\ÈHÊ™È‹Ê‘Û\ÜÌMÈŠJK
+šH‹Ê’[™›ÑPÓHžH\šHŠJK
+›ˆ‹Ê“›Û™HŠJK
+È‹Ê•ÙX]\ˆŠJK
+™H‹Ê‘[š[˜ÙYÙX]\ˆŠJK
+˜H‹“™]][ÈŠWJHÈÜXÚX[[™›È[ˆ^[œÚ[ÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÎHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒˆ‹Ê”Ø][]HŠJÈ‹Š×Ê“˜[YHŠJK
+ŒÈ‹Ê“[X™\ˆŠJÈ‹Š×Ê”Ø][]HŠJÈ‹Š×Ê“˜[YHŠJK
+ŒH‹Ê“[X™\ˆŠJÈ‹Š×Ê“˜[YHŠJK
+Œ‹Ê“˜[YHŠJWJHÈ[˜X›HÚ[›™[[B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHÛÛ™šYÕ^
+ŒŒÎKŒNMËŒŒÈ‹˜[ÙJHÈ[\›™]Y™\ÜÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ›ÝšY\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽˆHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[\Ô”B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈÔKÓY[B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[\’˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈÜXÚX[[™›ÈXZ[ˆY[B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊŒ‹Š^WÊXÚ]WÐÛÙHŠK
+˜È‹ÊÈÈŠK
+™ˆ‹ÊÈ‘ˆŠWJHÈÙX]\ˆ[š]Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒMH‹ÚÚXÙ\ÈHÊH‹HŠK
+ŒL‹ŒLŠK
+ŒMH‹ŒMHŠK
+ŒŒ‹ŒŒŠK
+ŒH‹ŒHŠK
+ŒÌ‹ŒÌŠK
+H‹HŠK
+Œ‹ŒŠWJHÈ™[ØY[™È[YHÙX]\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“Ü[“Y][È‹ÚÚXÙ\ÈHÊ“Ü[“Y][È‹“Ü[‹SY][ÈŠWJJHÈÛÛ\]Xš[]HXÙZÛ\ŽÈ›ÝšY\ˆRH™]\™Y˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽHH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈ\ÝÚ]HÙX]\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽLH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈš[™Ú]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽLHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒL‹ÚÚXÙ\ÈHÊŒ‹Ê™\ØX›YŠJK
+H‹HŠK
+ŒL‹ŒLŠK
+ŒMH‹ŒMHŠK
+ŒŒ‹ŒŒŠWJHÈ]]Ü™XÛÛ›™XÝ[YB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽLˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈÚÝÈY\Ý\™^B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈØ\›HÛÛÜˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽMHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÛÛÛÛÜˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÛÛÜœÌVÎ—JØÛÛÜœÖÌN—JHÈ™]]˜[ÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽMˆHÛÛ™šYÒ[YÙ\ŠŒ
+MK
+JHÈØ\›H[\È˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽMÈHÛÛ™šYÒ[YÙ\ŠK
+KM
+JHÈÛÛ[\Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽNHÛÛ™šYÕ^
+˜ÑUTŸÒßÌ_S”ÒÐH–TÕ’PÐ_‹˜[ÙJB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽNHH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈUÙXH]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈ\ÝÚ]HUÙXB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈšXÛÛˆÐSB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈšXÛÛˆ\H˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŽNH‹Ê™\ØX›YŠJK
+Œ‹Ê]]ÈŠJK
+ŒH‹ŒHŠK
+Œˆ‹ŒˆŠK
+ŒÈ‹ŒÈŠK
+‹ŠK
+H‹HŠK
+ˆ‹ˆŠK
+È‹ÈŠK
+Ž‹ŽŠK
+ŽH‹ŽHŠK
+ŒL‹ŒLŠK
+ŒLH‹ŒLHŠK
+ŒLˆ‹ŒLˆŠK
+ŒLÈ‹ŒLÈŠK
+ŒM‹ŒMŠK
+ŒMH‹ŒMHŠK
+ŒMˆ‹ŒMˆŠK
+ŒMÈ‹ŒMÈŠK
+ŒN‹ŒNŠK
+ŒNH‹ŒNHŠWJHÈ[X™\ˆÙˆ[™\œÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÌL‹ÚÚXÙ\ÈHÛÛÜœÊHÈXÝ]™H[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÙXØŒL‹ÚÚXÙ\ÈHÛÛÜœÊHÈ‹ˆXÝ]™H[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÌÍÙ™ˆ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÝ[™žH[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÍÍÍÍÍÍÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈZ\ÜÚ[™È[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆØÙÙÙ‹ÚÚXÙ\ÈHÛÛÜœÖÌN—JHÈ\ØË‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLLHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÍ˜Ø˜ÙŒ‹ÚÚXÙ\ÈHÛÛÜœÖÌN—JHÈ\ØËˆÙ[XÝY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLLHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÍ˜Ø˜ÙŒ‹ÚÚXÙ\ÈHÛÛÜœÖÌN—JHÈ›Ü™YÜ›Ý[™Ù[XÝY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLLˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÙ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ™XÛÜ™[™È[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÙ™ˆ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ™XÛÜ™[™È[™]™H[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLMHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ\Ü^H™XÛÜ™[™ÈXÛÛ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈš]˜]HÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLMˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈXÛHÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLMÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HˆÙ‹ÚÚXÙ\ÈHÛÛÜœÖÌN—JHÈÚ[›™[˜[YB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLNHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈXÛHX™[ÈÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLNHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈXÛH˜[Y\ÈÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›H›ÙÜ™\ÜÚ]™H]XÝ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÝ\HÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÚ[™›ÈÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈšY[ÔÚ^™HÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHÛÛ™šYÑ\™XÝÜžJ‹ÛYYXKÝ\Ø‹ÈŠHÈ\Ù\ˆ]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‹ÛYYXKÝ\Øˆ‹ÚÚXÙ\ÈHÊ‹ÛYYXKÝ\Øˆ‹‹ÛYYXKÝ\ØˆŠK
+‹Ù]H‹‹Ù]HŠK
+‹ÛYYXKÚ‹‹ÛYYXKÚŠK
+‹ÛYYXKØÙˆ‹‹ÛYYXKØÙˆŠK
+‹Ý\Ü‹ÜÚ\™KÙ[šYÛXLˆ‹‹Ý\Ü‹ÜÚ\™KÙ[šYÛXLˆŠK
+‹Ù]È‹‹Ù]ÈŠK
+Œ‹Ê•\Ù\ˆYš[™Y]ŠJWJHÈ]ÈXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŒ‹Ê”Ý]XÈŠJK
+ŒH‹Ê‘[˜[ZXÈŠJWJHÈÚˆ[KˆØ[Ý[][™Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‘‹ÚÚXÙ\ÈH›Ü›X]
+HÈ]H›Ü›X]^˜H[™›Ø˜\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ]HÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ[YHÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÙXÛÛ™ÈÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‘‹ÚÚXÙ\ÈH›Ü›X]
+HÈ]H›Ü›X]Ý\œÈ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‘‹ÚÚXÙ\ÈH›Ü›X]
+HÈ]H›Ü›X]ÚœÙ[‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‘‹ÚÚXÙ\ÈH›Ü›X]
+HÈ]H›Ü›X]Y[B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‘‹ÚÚXÙ\ÈH›Ü›X]
+HÈ]H›Ü›X][™›Ø˜\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÚˆ˜[YHÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ]™[›ÝÈÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ]™[™^ÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÎHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈYÛ›Ü™HXY[™È[ˆÝ\œÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÎHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈYHÝ[™žH[™Z\ÜÚ[™È[™\œÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈ]ˆ]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHHÛÛ™šYÑ\™XÝÜžJ‹Ù]ËÝ^›ÞÈŠHÈØ][]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ\Ü^H™[XZ[š[™È[YH[ˆ^˜HTÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈÜ[ÙXH[Ü™H^\È›Ü™XØ\Ý˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHÛÛ™šYÑ\™XÝÜžJÒÒS”U
+HÈÛÛ™ˆ]˜ÚÕHÊŒ‹Ê‘Y˜][ŠJWB™›Üˆ[ˆ˜[™ÙJM
+N‚‚XÚÕ˜\[™
+
+ÝŠ
+KÝŠ
+JJB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ›ÛÚ^™H]™[™^H›ÝÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÜÙ\šXÙH˜[YH›ÛÚ^™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÜÙ\šXÙH[™›È›ÛÚ^™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÙ^ˆ\ØËˆ›ÛÚ^™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ\Ý›ÞHšYÙÙ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMMHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ\Ý›ÞHšYÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ\Ý›ÞHYY][B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMMˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ\Ý›ÞHÛX[˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMMÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÈ\Ý›ÞHÛX[\‚˜ÚÕHÊŒ‹Ê‘Y˜][ŠJWB˜ÚÕ˜\[™
+
+ŒH‹Ê]]ÈŠJJB™›Üˆ[ˆ˜[™ÙJ‹
+N‚‚XÚÕ˜\[™
+
+ÝŠ
+KÝŠ
+JJB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÚÕ
+HÐÚˆ[™HZYÚ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHHÛÛ™šYÒ[YÙ\ŠŽ
+NL
+JHÈØ\›H[\ˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMLHÛÛ™šYÒ[YÙ\ŠÌË
+ÌËMÊJHÈÛÛ[\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMLHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊŒ‹™]ÙXWØÚ]WÐÛÙHŠK
+˜È‹ÊÈÈŠK
+™ˆ‹ÊÈ‘ˆŠWJHÈ]ÙXH[š]Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMLˆH›ÔØ]™JÛÛ™šYÕ^
+™ÙÈ‹˜[ÙJJHÈÙXKÙ]ÙXH[š]Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMNHÛÛ™šYÒ[YÙ\ŠL
+ŒL
+JHÈÙX]\ˆ[š[KˆÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMNHHÛÛ™šYÒ[YÙ\ŠL
+ŒL
+JHÈ]ÙXH[š[KˆÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[ÝšY\ˆ[™‹ˆÝ]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›H[š[X][ÛœÂ˜ÚÕHÊ“›Û™H‹Ê“›Û™HŠJWB™›Üˆ[ˆ˜[™ÙJKMŠN‚‚XÚÕ˜\[™
+
+™ÌM×Ð[š[WÈŠÜÝŠ
+KÊ[š[X][ÛˆŠJÜÝŠ
+JJB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H™ÌM×Ð[š[WÌH‹ÚÚXÙ\ÈHÚÕ
+HÈXÛÛ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÚÕ
+HÈÙXÛÛ™XÛÛ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÚÕ
+HÈXÛH[™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÚÕ
+HÈY[HXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÚÕ
+HÈÚˆÙ[ˆXÛÛ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÚÕ
+HÈ[™›Ë\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H“›Û™H‹ÚÚXÙ\ÈHÚÕ
+HÈÜÝ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŽHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H•‹ÚÚXÙ\ÈHÊ•‹Ê•˜[œÜÛ™\ˆ]HŠJK
+‘ˆ‹Ê”™X[[™\ˆ]HŠJWJHÈ[™\ˆ[™›Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŽHHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈ[š[X]YÙXZ[™‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌHÛÛ™šYÒ[YÙ\ŠL
+ŒL
+JHÈÙXZ[™ˆ[š[KˆÜYY˜ÚÕH×B™›Üˆ[ˆ˜[™ÙJKLÊN‚‚XÚÕ˜\[™
+
+ÝŠ
+KÝŠ
+JJB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒÈ‹ÚÚXÙ\ÈHÚÕ
+HÈÙXH\HHÜXÚX[˜HH×B˜HHÚÕÌŒ—B˜K˜\[™
+ÚÕÍ—JB˜K˜\[™
+ÚÕÍ×JB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHJHÈÙXH\HH\Ù\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H™‹ÚÚXÙ\ÈHÊ™‹Ê‘Y˜][ŠJK
+œÈ‹ŒHŠWJHÈÙXH]H\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÍHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÙXKÙ]ÙXH]HÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÍHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈÙXKÙ]ÙXHÝ]HÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÍˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ]ÙXH]ˆÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÍÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ]ÙXHÚ[™ÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÎH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈXÛH\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÎHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜H‹ÚÚXÙ\ÈHÊ˜H‹—ÈŠK
+˜ˆ‹ŽˆŠWJHÈ™Y™\™[˜ÙHÙ\\˜]Ü‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜H‹ÚÚXÙ\ÈHÊ˜H‹Ê[]˜Z[X›HŠJK
+˜ˆ‹Ê”Ù[XÝY[ˆ™]][ÈYÚ[ˆŠJWJHÈ™]][ÈÝ][ÛœÈ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒL‹ÚÚXÙ\ÈHÊH‹HŠK
+ŒL‹ŒLŠK
+ŒMH‹ŒMHŠK
+ŒŒ‹ŒŒŠK
+ŒÌ‹ŒÌŠWJHÈ™]][ÈÝ][ÛœÈÝÚ]Ú[YB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNˆH›ÔØ]™JÛÛ™šYÕ^
+’‹˜[ÙJJHÈ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊ‹LÌ‹‹LÌŠK
+‹LH‹‹LHŠK
+‹LŒ‹‹LŒŠK
+‹LMH‹‹LMHŠK
+‹LL‹‹LLŠK
+‹MH‹‹MHŠK
+Œ‹ŒŠK
+H‹ŠÍHŠK
+ŒL‹ŠÌLŠK
+ŒMH‹ŠÌMHŠK
+ŒŒ‹ŠÌŒŠK
+ŒH‹ŠÌHŠK
+ŒÌ‹ŠÌÌŠWJHÈ^˜HØÜ™Y[ˆÙ™œÙ]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒL‹ÚÚXÙ\ÈHÊH‹HŠK
+ŒL‹ŒLŠK
+ŒMH‹ŒMHŠK
+ŒŒ‹ŒŒŠK
+ŒÌ‹ŒÌŠWJHÈL^\ÈÝÚ]Ú[YB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‰PH	Y‰[K‰VH‹ÚÚXÙ\ÈHÊ‰PH	Y‰[K‰VH‹Ê‘Y˜][ŠJK
+‰PH	VK‰[K‰Y‹Ê•\HŠJÈˆHŠK
+‰Y‰[K‰VH‹Ê•\HŠJÈˆˆŠK
+‰VK‰[K‰Y‹Ê•\HŠJÈˆÈŠK
+‰VH	[H	Y‹Ê•\HŠJÈˆŠK
+‰Y	[H	VH‹Ê•\HŠJÈˆHŠK
+‰Y‰[K‰VH	PH‹Ê•\HŠJÈˆˆŠK
+‰VK‰[K‰Y	PH‹Ê•\HŠJÈˆÈŠK
+‰Y	[H	VH	PH‹Ê•\HŠJÈˆŠK
+‰VH	[H	Y	PH‹Ê•\HŠJÈˆHŠK
+‰PH	Y	Pˆ‹Ê•\HŠJÈˆLŠWJHÈ]ÙXH]H›Ü›X]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H‰PH	Y	Pˆ	VH‹ÚÚXÙ\ÈHÊ‰PH	Y	Pˆ	VH‹Ê‘Y˜][ŠJK
+‰PH	Pˆ	Y	VH‹Ê•\HŠJÈˆHŠK
+‰PH	Y‰Pˆ	VH‹Ê•\HŠJÈˆˆŠK
+‰Y‰[K‰VH‹Ê•\HŠJÈˆÈŠK
+‰Y‰Pˆ	VH‹Ê•\HŠJÈˆŠK
+‰VH	Pˆ	Y	PH‹Ê•\HŠJÈˆHŠK
+‰VK‰[K‰Y‹Ê•\HŠJÈˆˆŠK
+‰VH	Pˆ	Y‹Ê•\HŠJÈˆÈŠK
+‰PH	Y	Pˆ‹Ê•\HŠJÈˆŠWJHÈÙXH]H›Ü›X]˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈšXÛÛˆ[™\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈYÛ›Ü™HXY[™È[ˆ]B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›Hš]˜]XØ[ËœÛÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNLHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›HÛ‹ÛÙ™ˆ^X\˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNLHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ[˜X›H]XÝ[ÛˆÙˆ[šÛ›ÝÛˆÐRQ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNLˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈÒH[™›Ü›X][ÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNLÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ\Ü^HPÓHœ›ÛHÝ\œ™[\Ü^YYÚ[›™[Û›B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNMH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈÝÌÌB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNMHH›ÔØ]™JÛÛ™šYÕ^
+ˆ‹˜[ÙJJHÈÚY›ÝšY\‹›ÝšY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNMˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈÚÝÈQ[ˆPÓH[™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNMÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈÚÝÈÒQ[ˆPÓH[™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNNHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈÚÝÈÜÝ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNNHH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈÙ]ÜÈÜÝ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHÛÛ™šYÒ[YÙ\ŠL
+KNLŒ
+JHÈ\ÜÚ][ÛˆÜÝ\ˆ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHHÛÛ™šYÒ[YÙ\Š
+KL
+JHÈK\ÜÚ][ÛˆÜÝ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒNKÎ‹ÚÚXÙ\ÈHÊŒNKÎ‹Ê‘Y˜][ŠJK
+ŒŒŒÌÌ‹ŠŒKŒNHŠK
+ŒŒÌKÍÈ‹ŠŒKŒHŠK
+ŒÍËMÈ‹ŠŒKHŠK
+ŒÌÈ‹ŠŒKÍHŠK
+ŒÍÌMMˆ‹ŠŒˆŠWJHÈÜÝ\ˆÚ^™BˆÈŒÈ\ÙY\È[š[HÜÝ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜H‹ÚÚXÙ\ÈHÊ˜H‹Ê]]ÈŠJK
+šH‹Ê’SQˆŠJK
+›H‹Ê•QˆŠJWJHÈÜÝ\ˆ›ÝšY\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒÈ‹ÚÚXÙ\ÈHÊŒH‹ŒHŠK
+Œˆ‹ŒˆŠK
+ŒÈ‹ŒÈŠK
+‹ŠK
+H‹HŠK
+ˆ‹ˆŠK
+È‹ÈŠK
+Ž‹ŽŠK
+ŽH‹ŽHŠK
+ŒL‹ŒLŠWJHÈÜÝ\ˆÙX\˜Ú[^B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒˆH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈÛX[ˆÚXÚHÜÝ\œÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒÈHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ™[[Ýš[™ÈÝ\œ™[ÜÝ\‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹Ê‘Y˜][ŠJK
+Œˆ‹LLŠK
+ŒÈ‹LLˆŠWJHÈ•HÜ]ØÜ™Y[‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒ‹ÚÚXÙ\ÈHÊŒ‹Ê™\ØX›YŠJK
+ŒH‹šØ‹ÜÈŠK
+Œˆ‹“X‹ÜÈŠWJHÈ™]ÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLHÛÛ™šYÒ[YÙ\ŠL
+KNLŒ
+JHÈ\ÜÚ][Ûˆ™]ÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLHHÛÛ™šYÒ[YÙ\ŠL
+KL
+JHÈK\ÜÚ][Ûˆ™]ÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLˆH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈÙ]ÜÈ™]ÜYY˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ™]ÜYYÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ›ÙÜ™\ÜÈ˜\ˆ›Ü™YÜ›Ý[™ÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][H]]ÐÛÛÜœÈ‹ÚÚXÙ\ÈHÛÛÜœÊHÈ›ÙÜ™\ÜÈ˜\ˆ˜XÚÙÜ›Ý[™ÛÛÜ‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMˆH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈÙ]ÜÈ›Û[YB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMÈH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈÙ]ÜÈÜXËˆ[™›Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒNH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈ[™›Ø˜\ˆ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒNHH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈXÛÛœÈ\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈÙX]\ˆXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒHH›ÔØ]™JÛÛ™šYÔÙ[XÝ[ÛŠY˜][H˜È‹ÚÚXÙ\ÈHÊ˜È‹ˆŠWJJHÈY[HXÛÛœÂ˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒˆHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈ›ÙÜ™\ÜÈ˜\ˆ^X\˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒÈHÛÛ™šYÖY\Ó›ÊY˜][H˜[ÙJHÈYHÓ”‹ÐQÐÈ
+KÔÊHYˆ˜[YH\È˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹Ê‘Y˜][ŠJK
+Œˆ‹ÊÛ\ÜÚXØ[ŠJK
+ŒÈ‹Ê•HÛÜ™HŠJWJHÈ[ÝšYHÙ[\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈTˆ˜Y[È]XÝ[Û‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒˆHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹Ê‘Y˜][ŠJK
+Œˆ‹Ê•˜[œÜ\™[ŠJWJHÈ™]ÜYY\B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HH‹ÚÚXÙ\ÈHÊH‹Ê‘Y˜][ŠJK
+È‹Ê‘Y˜][ŠJÈˆˆŠK
+Œ‹Ê]]ÈŠJK
+ŒH‹ŒMLLŠK
+Œˆ‹ŒŒŒLÌˆŠK
+ˆ‹ŒŒŒLÌˆ
+ŠHŠK
+ŒÈ‹MÌŠK
+‹ŠWJHÈ^[™Y[X™\ˆTXÛÛˆÚ^™B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŽHÛÛ™šYÕ^
+Y˜][H‹H‹š^YÜÚ^™OQ˜[ÙKš\ÚX›WÝÚYML
+B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŽHHÛÛ™šYÔÙ[XÝ[ÛŠY˜][HŒH‹ÚÚXÙ\ÈHÊŒH‹Ê‘Y˜][ŠJK
+Œˆ‹Ê”ÜÝ\ˆŠJWJHÈ]™[šY]Â˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLHHÛÛ™šYÖY\Ó›ÊY˜][HYJHÈˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ‘SWÓTÓˆHÚTÓŠ
+B‘PÓWÓP‘SËÓ‘UKÓ•H™XYPÓ[X™[Ê
+Bˆ™YˆØÚ]S[™J[™JN‚‚[[™HH
+[™HÜˆˆŠKœÝš\
+
+B‚ZYˆ›Ý[™HÜˆ[™KœÝ\ÝÚ]
+ˆÈŠN‚‚B\™]\›ˆ›Û™B‚ZYˆ[™KœÝ\ÝÚ]
+›Û_ŠN‚‚B\H[™KœÜ]
+ŸŠB‚BZYˆ[Š
+HH[™ÌWH[™Ì—H[™Ì×N‚‚BBY\Ü^HHÌWB‚BB\]Y\žHHŸ‹š›Ú[Š
+
+ÈÈˆ‹ˆ—JVÌŽ—JB‚BB\™]\›ˆ
+›Û_ˆ
+È]Y\žK\Ü^K[™JB‚]\H[™KœÜ]
+‹HŠB‚YYˆÚ
+ÊN‚‚B\™]\›ˆËš\ÙYÚ]
+
+HÜˆËœÝ\ÝÚ]
+ØÎˆŠHÜˆËœÝ\ÝÚ]
+™œŽˆŠB‚ZYˆ[Š\
+HOHˆ[™Ú
+\ÌWJN‚‚B\™]\›ˆ
+˜Èˆ
+È\ÌWK\ÌK[™JB‚ZYˆ[Š\
+HOHÈ[™Ú
+\ÌWJH[™\Ì—K›ÝÙ\Š
+H[ˆ
+˜È‹™ˆŠN‚‚B\™]\›ˆ
+\Ì—K›ÝÙ\Š
+H
+È\ÌWK\ÌK[™JB‚\™]\›ˆ›Û™B‚™YˆØÚ]TÙX\˜ÚÙ^J˜[YJN‚‚]žN‚‚B]˜[YHH[šXÛÙY]K››Ü›X[^™J“‘’Ñ‹ÝŠ˜[YJJB‚B]˜[YHHˆ‹š›Ú[ŠÚ›ÜˆÚ[ˆ˜[YHYˆ›Ý[šXÛÙY]K˜ÛÛXš[š[™ÊÚ
+JB‚Y^Ù\^Ù\[ÛŽ‚‚B]˜[YHHÝŠ˜[YJB‚\™]\›ˆ˜[YK˜Ø\ÙY›Û
+
+KœÝš\
+
+B‚™YˆÙ]Ú]Y\ÐÛÙJ
+N‚‚XÚÚXÙ[\ÝH×B‚Yš[S˜[YHH‹Ù]ËÛ^WØÚ]WÐÛÙK‚‚ZYˆ›ÝÜËœ]š\Ùš[Jš[S˜[YJN‚‚BYš[S˜[YHH‹Ù]ËØÚ]WÐÛÙKLMËˆYˆÜËœ]š\Ùš[J‹Ù]ËØÚ]WÐÛÙKLMËŠH[ÙH‹Ù]ËØÚ]WÐÛÙK‚‚]žN‚‚B]Ú]Ü[Šš[S˜[YKœˆŠH\ÈŽ‚‚BBY›Üˆ[™H[ˆŽ‚‚BBB^HØÚ]S[™J[™JB‚BBBZYˆ‚‚BBBB[˜[YHHÌWB‚BBBBZYˆ›ÝTÔÎ‚‚BBBBB[˜[YHH˜[YK™[˜ÛÙJ]‹NŠB‚BBBBXÚÚXÙ[\Ý˜\[™
+
+ÌK˜[YJJB‚Y^Ù\^Ù\[ÛŽ‚‚B\\ÜÂ‚ZYˆ›ÝÚÚXÙ[\Ý‚‚BXÚÚXÙ[\Ý˜\[™
+
+“›Û™H‹“›Û™HŠJB‚\™]\›ˆÚÚXÙ[\Ý‚˜ÚÚ[HÙ]Ú]Y\ÐÛÙJ
+B˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][XÚÚ[ÌVÌKÚÚXÙ\ÈHÚÚ[
+HÈÙX]\ˆØØ][Û‚‚™YˆÜÙ]ÙX]\Ú]PÚÚXÙ\ÊÙ[XÝYS›Û™JN‚‚Hˆˆ”™[ØYÙ]ËÛ^WØÚ]WÐÛÙKÚ[H™\Ù\š[™ÈÜˆ^XÚ]HÙ[XÝ[™ÈHÚ]Kˆˆˆ‚‚XÚÚXÙ\ÈHÙ]Ú]Y\ÐÛÙJ
+B‚]˜[Y\ÈHÞÌH›Üˆ[ˆÚÚXÙ\×B‚]Ø[YHÙ[XÝYYˆÙ[XÝY[ˆ˜[Y\È[ÙHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLË˜[YB‚ZYˆØ[Y›Ý[ˆ˜[Y\Î‚‚B]Ø[YHÚÚXÙ\ÖÌVÌB‚]žN‚‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLËœÙ]ÚÚXÙ\ÊÚÚXÙ\ËY˜][]Ø[Y
+B‚Y^Ù\^Ù\[ÛŽ‚‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][]Ø[YÚÚXÙ\ÏXÚÚXÙ\ÊB‚XÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLË˜[YHHØ[Y‚\™]\›ˆØ[Y‚™YˆÜ™Yœ™\Ú]™UÙX]\Š
+N‚‚Hˆˆ”\ÚHÚ]HÚ[™ÙHÈHXÝ]™H[™›Ø˜\ˆÚ]Ý]™\Ý\[™È[šYÛXL‹ˆˆˆ‚‚]žN‚‚BZYˆÌM×ÑVRS‘“×ÒS”ÕSÑH\È›Ý›Û™N‚‚BBQÌM×ÑVRS‘“×ÒS”ÕSÑKœ™Yœ™\ÚÙX]\“›ÝÊ
+B‚Y^Ù\^Ù\[Ûˆ\ÈN‚‚BUÜš][ÙÊÙX]\ˆ]™H™Yœ™\Úˆ	\Èˆ	HJB‚™Yˆ™XYTZÙ^J
+N‚‚HÈÛÛ\]Xš[]HÚ[HÛ›KˆÜ[‹SY][È™\]Z\™\È›ÈTHÙ^H[™HYØXÞB‚HÈÜ[•ÙX]\“X\Ù^H]\Ý›ÝY™™XÝHØ\™\ˆÙX]\ˆ]‚‚\™]\›ˆYB‚˜ÚÚ[H™XYTZÙ^J
+B‚B™YˆÚÚÐŠ
+N‚‚]žN‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœËš]˜]UšY]Ù\‹˜š]˜]XØ[È[\ÜPš]˜]PØ[Ý[]Ü‚‚BZYˆ›Ýš[Q^\ÝÊUÓ”U
+È”YÚ[œËÑ^[œÚ[ÛœËÐš]˜]UšY]Ù\‹Øš]˜]XØ[Ë›HŠHÜˆSWÑOH	ÙXœÙÉÎ‚‚BB\™]\›ˆYB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ˜[ÙB‘SQP•ˆHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNK˜[YH[™ÚÚÐŠ
+B‘SQP•ŒˆH˜[ÙBšYˆSQP•Ž‚‚]žN‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœËš]˜]UšY]Ù\‹˜š]˜]XØ[È[\ÜPš]˜]PØ[Ý[]Ü‚‚BYˆHÜ[ŠUÓ”U
+È”YÚ[œËÑ^[œÚ[ÛœËÐš]˜]UšY]Ù\‹ÜYÚ[‹œH‹œˆŠKœ™XY
+
+B‚BZYˆ‹™š[™
+™Pš]˜]PØ[Ý[]ÜŠœY˜›˜[Y\ÜXÙHŠHOHLNˆ‚BBQSQP•ŒˆHYB‚Y^Ù\ˆ\ÜÂ‚™[›Ü›X]™[ÛÛÜœÌB™[ÚÚ[™[‚™[B™[ÛY™[ÚÕ‚™YˆÜ[›™\“Û“Ù™Š
+N‚‚Hˆˆ”™]\™HHYØXÞH[Û\ÜÈÜ[›™\ˆÝ™\œšYK‚‚‚UHÚÚ[ˆ›ÈÛ™Ù\ˆ™\XÙ\ÈH[XYÙK\›ÝšYYÜ[›™\‹ˆÙY\\È[\‚‚[Û›H\È[ˆ\Ü˜YHÛÛ\]Xš[]H™\Z\ˆ›Üˆ[œÝ[][ÛœÈÚ\™H[ˆÛ\‚‚Q[Û\ÜÈ™\œÚ[ÛˆY]ÈÞ[[[šÈ™Z[™‚‚Hˆˆ‚‚\Ü[›™\ˆHÜËœ]š›Ú[ŠÒT‘TUœÚÚ[—ÙY˜][‹œÜ[›™\ˆŠB‚[ÜšYÚ[˜[HÜËœ]š›Ú[ŠÒT‘TUœÚÚ[—ÙY˜][‹œÜ[›™\‹[ÜšHŠB‚[YØXÞHHÜËœ]š›Ú[ŠÒT‘TUšÙÛ\ÜÌMÈ‹œÚÚ[—ÙY˜][‹œÜ[›™\ˆŠB‚ZYˆ›ÝÜËœ]š\Û[šÊÜ[›™\ŠN‚‚B\™]\›ˆˆ‚‚]žN‚‚B]\™Ù]HÜËœ]œ™X[]
+Ü[›™\ŠB‚BZYˆ\™Ù]OHÜËœ]œ™X[]
+YØXÞJN‚‚BB\™]\›ˆˆ‚‚BHÈ™]™\ˆ™[[Ý™HHYØXÞHÞ[[[šÈ[›\ÜÈHØ]™Y[XYÙHÜ[›™\ˆ\Â‚BHÈXÝX[H]˜Z[X›HÈ™\ÝÜ™H[ˆHØ[YHÜ\˜][Û‹‚‚BZYˆ›ÝÜËœ]š\Ù\ŠÜšYÚ[˜[
+N‚‚BB\™]\›ˆÊ”Þ\Ý[HÜ[›™\ˆ™\ÝÜ™H˜Z[YŠH
+È—ˆ‚‚B[ÜË[›[šÊÜ[›™\ŠB‚B[ÜËœ™[˜[YJÜšYÚ[˜[Ü[›™\ŠB‚B\™]\›ˆÊ”Þ\Ý[HÜ[›™\ˆ™\ÝÜ™YŠH
+È—ˆ‚‚Y^Ù\ÔÑ\œ›ÜŽ‚‚B\™]\›ˆÊ”Þ\Ý[HÜ[›™\ˆ™\ÝÜ™H˜Z[YŠH
+È—ˆ‚‚BBBBB™Yˆ]]Ò
+
+N‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YHOHHŽ‚‚B]žN‚‚BBXÜHHÜ[Š‹Ü›ØËÛ[Ý[È‹œˆŠKœ™XY[™\Ê
+BB‚BBY›Üˆ[ˆÜN‚‚BBBZYˆ™š[™
+‹ÛYYXKÚŠHOHLH[™›Ý‹ˆˆ[ˆ[™›ÝŽˆˆ[ˆ‚‚BBBBXˆH
+
+
+œÜ]
+‹ÛYYXKÚŠVÌJKœÝš\
+
+JKœÜ]
+‹Ù]‹ÈŠVÌWJKœÝš\
+
+VÎŒ×H‚BBBBZYˆ[ŠŠHOHÎ‚‚BBBBBZYˆ‹œÝ\ÝÚ]
+œÙŠN‚‚BBBBBB\™]\›ˆ‹Ù]‹ÈŠØ‚‚BBBBBY[YˆˆOH™\ÈŽ‚‚BBBBBBXˆH
+
+
+
+
+œÜ]
+‹ÛYYXKÚŠVÌJKœÝš\
+
+JKœÜ]
+‹Ù]‹Ù\ÚËÈŠVÌWJKœÝš\
+
+JKœÜ]
+ˆŠVÌJKœÝš\
+
+B‚BBBBBB]žN‚‚BBBBBBBX›ÚYÛÝ]]HÝXœ›ØÙ\ÜË˜ÚXÚ×ÛÝ]]
+È˜›ÚY—K[š]™\œØ[Û™]Û[™\ÏUYJB‚BBBBBBY^Ù\
+ÔÑ\œ›Ü‹ÝXœ›ØÙ\ÜËØ[Y›ØÙ\ÜÑ\œ›ÜŠN‚‚BBBBBBBX›ÚYÛÝ]]Hˆ‚‚BBBBBBY›ÜˆH[ˆ›ÚYÛÝ]]œÜ][™\Ê
+N‚‚BBBBBBBZYˆK™š[™
+ŠHOHLN‚‚BBBBBBBBXˆH
+
+
+KœÜ]
+ŽˆŠVÌJKœÝš\
+
+JKœÜ]
+‹Ù]‹ÈŠVÌWJKœÝš\
+
+VÎŒ×B‚BBBBBBBBZYˆ[ŠŠHOHÈ[™‹œÝ\ÝÚ]
+œÙŠN‚‚BBBBBBBBBXœ™XZÂ‚BBBBBBZYˆ[ŠŠHOHÈ[™‹œÝ\ÝÚ]
+œÙŠN‚‚BBBBBBB\™]\›ˆ‹Ù]‹ÈŠØ‚‚BY^Ù\ˆ\ÜÈB‚B\™]\›ˆ“›Û™H‚‚\™]\›ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YB˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YHH]]Ò
+
+HB‚™Yˆ]]Õ\R
+
+N‚‚]\HÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YB‚ZYˆ‹Ù]‹ÜÙˆ[ˆ\‚B‚B]žN‚‚BB]\HÜ[Š	ËÜÞ\ËØ›ØÚÉ\ËÜ]Y]YKÜ›Ý][Û˜[	È	H\œ™\XÙJ‹Ù]ˆ‹ˆŠJKœ™XY[™J
+B‚BBZYˆŒˆ[ˆ\‚‚BBB\™]\›ˆ”ÔÑ‚BBBBBBBB‚BY^Ù\ˆ\ÜÂ‚\™]\›ˆ’‚˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒN‹˜[YHH]]Õ\R
+
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ]]š[\ÊÚÚÏUYJN‚‚YYˆXZÙ[šÊ[š×Ü]
+N‚‚B]\™Ù]HÜËœ]š›Ú[ŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YKœXÛÛˆŠB‚B]žN‚‚BBZYˆ›ÝÜËœ]›^\ÝÊ[š×Ü]
+N‚‚BBB[ÜËœÞ[[[šÊ\™Ù][š×Ü]
+B‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\\ÜÂ‚ZYˆÛÛ™šYËœÚÚ[‹œš[X\žWÜÚÚ[‹˜[YHOHšÙÛ\ÜÌMËÜÚÚ[‹ž[Ž‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YHOHŒŽ‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL˜[YH
+ÈšÌM×Ùš[\È‚‚BY[ÙN‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YH
+È‹ÚÌM×Ùš[\È‚‚BZYˆÚÚÈ[™SWÔÖSN‚‚BBHÈØ\™\ˆX^HX[˜YÙH]ÈYØXÞH›ÛÝÜ™[[Ý˜X›K[YYXHÛÛ™[šY[˜ÙH[šÜË‚BBHÈ]Ý\Ü‹ÜÚ\™KÙ[šYÛXLˆ\È[XYÙKÜXÚØYÙK[X[˜YÙ\ˆÝÛ™YÛˆÜ[U‹‚‚BBHÈ™]™\ˆÜ™X]K™\XÙHÜˆ™]\™Ù]XÛÛˆ[šÜÈ\™K‚‚BB[[šÜÈHÈ‹ÜXÛÛˆ—B‚BBZYˆSWÑOH	ÙXœÙÉÎ‚‚BBB[[šÜË˜\[™
+‹ÛYYXKÝ\Ø‹ÜXÛÛˆŠB‚BBY›Üˆ[ˆ
+‹ÜXÛÛœËÜXÛÛ’‹‹ÜXÛÛœËÜXÛÛ›ÙŠN‚‚BBBHÈ™]™\ˆ™\XÙHH™X[[XYÙKÝ\Ù\ˆ\™XÝÜžKˆÛ›HX[˜YÙHÞ[[[šÜË‚‚BBBZYˆÜËœ]š\Û[šÊ
+N‚‚BBBB[[šÜË˜\[™
+
+B‚BBY›Üˆ[ˆ[šÜÎ‚‚BBBZYˆÜËœ]š\Û[šÊ
+N‚‚BBBBXHHÜËœ™XY[šÊ
+B‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH›Ý[ˆH[™
+‹ÚÌM×Ùš[\Èˆ[ˆHÜˆ‹ÚÌNÙš[\Èˆ[ˆJN‚‚BBBBB]žN‚‚BBBBBB[ÜË[›[šÊ
+B‚BBBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBBBXÛÛ[YB‚BBBBB[XZÙ[šÊ
+B‚BBBY[Yˆ›ÝÜËœ]›^\ÝÊ
+N‚‚BBBB[XZÙ[šÊ
+BœÙ]]š[\Ê
+B‘SQ’S‘TˆH˜[ÙBžN‚‚ZYˆTÔÎ‚‚BYœ›ÛH\›X‹œ™\]Y\Ý[\Ü™\]Y\Ý\›Ü[‹Z[ÛÜ[™\‹ÛÛÚÚYT›ØÙ\ÜÛÜ‚‚BYœ›ÛH\›X‹™\œ›Üˆ[\ÜT“\œ›Ü‹\œ›Ü‚‚BZ[\Ü˜ÛÛÚÚYZ˜\ˆ\ÈÛÛÚÚY[X‚‚Y[ÙN‚‚BYœ›ÛH\›XŒˆ[\Ü™\]Y\Ý\›Ü[‹T“\œ›Ü‹\œ›Ü‹Z[ÛÜ[™\‹ÛÛÚÚYT›ØÙ\ÜÛÜ‚‚BZ[\ÜÛÛÚÚY[X‚‚QSQ’S‘TˆHYB™^Ù\ˆ\ÜÂ‘Û\ÜÌM××Ú[š]×ÈH›Û™B—ÝØ\™\“ÜšYÚ[˜[ÚÝÔ˜Y[Ð]ÛˆH›Û™H‘š\œÝ[ŒMÈH˜[ÙB™[˜Q˜YSÝ]MÈHYB™[˜Q˜YR[ŒMÈHYB˜[œÔÝ\MÈHŒ˜[Ø]HßB˜[XÛÛœÈHÂ‚BBBH˜™]XÛKYœÎ‹˜™][[KYœÎ‹™™YXÛKYœÎ‹™™Y[[KYœÎ‹™[][™]ËYœÎ‹™[™]ËYœÎ‹˜ÚL[™]ËYœÎ‹‚BBBH˜š\ÙXÛKYœÎ‹˜š\Ù[[KYœÎ‹šWÙÛžWÛ›ÝÈ‹šWÙÛž]È‹šWÙ›Ü›X]Û›ÝÈ‹œ›ÜÙXÛKYœÎ‹œ›ÜÙ[[KYœÎ‹‚BBBH˜[XÛKYœÎ‹˜[[[KYœÎ‹šWÙ›Ü›X]È‹šWÙ›Ü›X]È‹šWÚÈ‹šWÜ™XË[ˆ‹žÜ™XÛKYœÎ‹›YÙ[[KYœÎ‹‚BBBH˜ÛÛ™XÛKYœÎ‹˜ÛÛ™[[KYœÎ‹šWÜÙÈ‹šWÜÝXÈ‹šWÝÛ›ÝÈ‹šWÝÈ‹šWÜÝX]‹šÙXÛKYœÎ‹‚BBBH˜Ü™™]ËYœÎ‹˜ÜÙXÛKYœÎ‹šXÛÛ—Ø]È‹šXÛÛ—ØL]È‹šXÛÛ—ØLÈ‹šXÛÛ—ØÈ‹šWÚ˜ˆ‹šÙ[[KYœÎ‹‚BBBHœÙXÙXÛKYœÎ‹œÙXÙ[[KYœÎ‹šXYXÛKYœÎ‹šXY[[KYœÎ‹™\™XÛKYœÎ‹™\™[[KYœÎ‹˜ÚL›™]ËYœÎ‹‚BBBHšXÛÛ—Û]È‹šXÛÛ—ÛÈ‹šXÛÛ—ÙÈ‹šXÛÛ—ÛÝÈ‹šXÛÛ—ÜÈ‹š\™XÛKYœÎ‹˜ÙÙXÛKYœÎ‹˜ÙÙ[[KYœÎ‹‚BBBHšXÛÛ—ØLÝÈ‹šXÛÛ—ØMÈ‹šXÛÛ—ØM]È‹šXÛÛ—ØŒÝÈ‹šXÛÛ—ØÈ‹šXÛÛ—ØMÈ‹šXÛÛ—ØMÝÈ‹œ™Y[[KYœÎ‹‚BBBHšXÛÛ—ØNÈ‹šXÛÛ—Ø]È‹šXÛÛ—ØÈ‹šXÛÛ—ØÝÈ‹šXÛÛ—ØŽÈ‹™YÙXÛKYœÎ‹™YÙ[[KYœÎ‹›YÙXÛKYœÎ‹‚BBBHš\™[[KYœÎ‹›˜YÙXÛKYœÎ‹›˜YÙ[[KYœÎ‹›™ÙXÛKYœÎ‹›™Ù[[KYœÎ‹›™]™]ËYœÎ‹œ™YXÛKYœÎ‹‚BBBH˜ÜÙ[[KYœÎ‹™˜ÙXÛKYœÎ‹™˜Ù[[KYœÎ‹šXÛÛ—ØŒ]È‹šXÛÛ—ØŒÈ‹šXÛÛ—ØÝÈ‹šWØ]Y[ÝÈ‹˜Ü›ÙXÛKYœÎ‹‚BBBH‘Ø›ÞYœÎ‹“YØØ[YYœÎ‹ÐØØ[KYœÎ‹“ÔØØ[KYœÎ‹Ø[YËYœÎ‹“X›ÞYœÎ‹žÜ™[[KYœÎ‹˜Ü›Ù[[KYœÎ‹‚BBBH˜XÝ]™H‹››×Ú‹œÝ[™žH‹™ØÙXÛKYœÎ‹™ØÙ[[KYœÎ‹ŒÙÈ‹ÚYšH‹™]‹™\œ›Üˆ‹‚BBBH[šÈ‹œ˜ÙXÛKYœÎ‹œ˜Ù[[KYœÎ‹™^ÙXÛKYœÎ‹™^Ù[[KYœÎ‹”ØØ[KYœÎ‹•ÚXØ\™YœÎ‹‚BBBH™Ù›™XÛKYœÎ‹™Ù›™[[KYœÎ‹œÝYXÛKYœÎ‹œÝY[[KYœÎ‹šWÙš‹šWÝZ‹šXÛÛ—Ù]È‹šXÛÛ—ÙÈ‹šXÛÛ—ÙÝÈ‹‚BBBHšXÛÛ—ÚÈ‹šXÛÛ—Ú]È‹šXÛÛ—ÚÈ‹šXÛÛ—ÚÝÈ‹šXÛÛ—ÛÈ‹[™XÛKYœÎ‹[™[[KYœÎ‹[šËXØH‹BBBBB‚BBBH™ˆ‹™H‹˜XXÈ‹™È‹›\È‹“˜Ø[KYœÎ‹˜ØÝÙXÛKYœÎ‹šXÛÛ—Ü]È‹šXÛÛ—ÜÈ‹šXÛÛ—ÜÝÈ‹‘ØØ[KYœÎ‹‚BBBHšˆ‹šÈ‹‘ÔØØ[KYœÎ‹È‹ŽÈ‹˜XÝ]™WÜÈ‹››×ÚÜÈ‹œÝ[™žWÜÈ‹˜Ü™ÙXÛKYœÎ‹˜Ü™Ù[[KYœÎ‹‚BBBHœÚÜXÛKYœÎ‹œÚÜ[[KYœÎ‚‚BBWBBBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚÚÑ[˜UÙXJ
+N‚‚\™]\›ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YH[ˆ
+ŒÈ‹‹H‹ˆŠHÜˆÈˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHÜˆÈˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YHÜˆÈˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YB‚™YˆÝ\Ù]\MÊY[ZY
+ŠšÝØ\™ÜÊN‚‚\™]HÈB‚ZYˆÛÛ™šYËœÚÚ[‹œš[X\žWÜÚÚ[‹˜[YHOHšÙÛ\ÜÌMËÜÚÚ[‹ž[Ž‚‚BZYˆY[ZYOHœÙ]\Ž‚‚BB\™]˜\[™
+
+Ê‘[Û\ÜÌMÈHØ\™\ˆ]›Û][ÛˆŠKXZ[‹‘’ÑÛ\ÜÌM×ÔÙ]\‹NJJB‚BY[YˆY[ZYOH›XZ[›Y[HŽ‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOH›ˆˆ[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽK˜[YN‚‚BBB\™]˜\[™
+
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î™Ù]^
+
+JÈˆ
+’ÈMÊH‹XZ[ŒMËÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YJK
+JB‚\™]\›ˆ™]‚B™YˆYÚ[œÊ]
+ŠšÝØ\™ÜÊN‚‚\™]HÈB‚ZYˆÛÛ™šYËœÚÚ[‹œš[X\žWÜÚÚ[‹˜[YHOHšÙÛ\ÜÌMËÜÚÚ[‹ž[Ž‚‚B\™]HÈYÚ[‘\ØÜš\ÜŠ˜[YOHœÙ]\Û\ÜÌMÈ‹\ØÜš\[ÛWÊ‘[Û\ÜÌMÈHØ\™\ˆ]›Û][ÛˆŠKÚ\™HHYÚ[‘\ØÜš\Ü‹•ÒT‘WÓQS•K›˜Ï\Ý\Ù]\MÊK‚BBBBBBTYÚ[‘\ØÜš\ÜŠÚ\™OVÔYÚ[‘\ØÜš\Ü‹•ÒT‘WÔÑTÔÒSÓ”ÕT•K›˜Ï\Ý\ÌMÊWB‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOH›ˆŽ‚‚BB\™]˜\[™
+YÚ[‘\ØÜš\ÜŠ˜[YOXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î™Ù]^
+
+JÈˆ
+’ÈMÊH‹Ú\™HHYÚ[‘\ØÜš\Ü‹•ÒT‘WÑVS”ÒSÓ”ÓQS•K›˜ÈHXZ[ŒMÊJB‚\™]\›ˆ™]‚™YˆXZ[ŒMÊÙ\ÜÚ[Û‹
+ŠšÝØ\™ÜÊN‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOH™ÈŽ‚‚B\Ù\ÜÚ[Û‹›Ü[ŠÜXÚX[ØÜ™Y[ŠB‚Y[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOHšHŽ‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMËš[™›ÑXÛWØžWÙ\šH[\Ü[™›ÑXÛTØÜ™Y[‚‚B\Ù\ÜÚ[Û‹›Ü[Š[™›ÑXÛTØÜ™Y[ŠBBB‚Y[YˆÈˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YN‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMËÙX]\ˆ[\ÜÙX]\”ØÜ™Y[‚‚B\Ù\ÜÚ[Û‹›Ü[ŠÙX]\”ØÜ™Y[‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌK˜[YJB‚Y[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOH™HŽ‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMË‘WÝÙX]\ˆ[\ÜXZ[›Y[B‚B\Ù\ÜÚ[Û‹›Ü[ŠXZ[›Y[JB‚Y[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOH˜HŽ‚‚BYœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMË“™]][È[\Ü™]][ÔØÜ™Y[‚‚B\Ù\ÜÚ[Û‹›Ü[Š™]][ÔØÜ™Y[ŠBBˆB™YˆXZ[ŠÙ\ÜÚ[Û‹
+ŠšÝØ\™ÜÊN‚‚XÚÚ[HÙ]Ú]Y\ÐÛÙJ
+B‚XÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÈHÛÛ™šYÔÙ[XÝ[ÛŠY˜][XÚÚ[ÌVÌKÚÚXÙ\ÈHÚÚ[
+B‚XÚÚ[H™XYTZÙ^J
+B‚\Ù\ÜÚ[Û‹›Ü[ŠÙ]\Û\ÜÌMÔØÜ™Y[”Ù]\
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂBB˜Û\ÜÈÛÛÜ“X™[
+X™[
+N‚‚YYˆ×Ú[š]×ÊÙ[‹^HˆŠN‚‚BSX™[—×Ú[š]×ÊÙ[‹^
+B‚‚YYˆÛÛÜ–
+Ù[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJH‚‚YYˆÛÛÜŒJÙ[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÌWVÌJJHÈÚ]B‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJBBBB‚‚YYˆÛÛÜŒŠÙ[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÌ×VÌJJBHÈÜ™Y[‚‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJB‚‚YYˆÛÛÜŒÊÙ[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÍWVÌJJHÈÜ˜[™ÙB‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJB‚BBB‚YYˆÛÛÜ
+Ù[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÎVÌJJHÈ™Y‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJB‚‚YYˆÛÛÜJÙ[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÌL—VÌJJHÈÜ˜^B‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJB‚BBBB‚YYˆÛÛÜŠÙ[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÌM×VÌJJHÈ›YBB‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJBBBBBB‚‚YYˆÛÛÜÊÙ[‹JN‚‚BZYˆÙ[‹š[œÝ[˜ÙN‚‚BBZYˆHOH]]ÐÛÛÜœÈŽ‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠÛÛÜœÖÌŒ—VÌJJHÈY[ÝÂ‚BBY[ÙN‚‚BBB\Ù[‹š[œÝ[˜ÙKœÙ]›Ü™YÜ›Ý[™ÛÛÜŠ\œÙPÛÛÜŠJJB‚™YˆÚÚÔTÊ
+N‚‚\HÐÔ‘QS”ÔU
+È“Y[H‚B‚]ÈH˜[ÙB‚Y›Üˆ[ˆÉËœXÉË	Ëœ[É×N‚‚BZYˆš[Q^\ÝÊ
+È
+H[™š[Q^\ÝÊ
+È‹[™]ÌMÈˆ
+È
+N‚‚BBZYˆÜËœ]™Ù]Ú^™J
+È
+HOHÜËœ]™Ù]Ú^™J
+È‹[™]ÌMÈˆ
+È
+N‚‚BBB]ÈHYB‚\™]\›ˆÂˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂˆÈØ\™\ˆÜ˜\XØ[TÔQÈ]HÝ\™\ÜÚ[Û‹ˆÜ[UˆÙ]ÈHÝ\œ™[›Ý\]Y]šXBˆÈØÜ™Y[‹œÙ]]J
+KÚXÚ\È™[™\™YžHH\ÚÝÜÚ[™ÝÈXÛÜ˜][ÛˆÝ]ÚYBˆÈHÚÚ[ˆØÜ™Y[‹ˆÙY\HÝ™\œšYHØÛÜYÈÝ\ˆQÈÜ˜\XØ[ÝZYHÛ›K‚•Ø\™\‘TÔÙ[XÝ[Û—ÜÙ]]HH›Û™BžN‚‚Yœ›ÛHØÜ™Y[œË‘\ÔÙ[XÝ[Ûˆ[\ÜTÔÙ[XÝ[Ûˆ\ÈØ\™\‘TÔÙ[XÝ[Û‚‚UØ\™\‘TÔÙ[XÝ[Û—ÜÙ]]HHØ\™\‘TÔÙ[XÝ[Û‹œÙ]]B‚YYˆØ\™\‘TÔÙ[XÝ[Û”Ù]]JÙ[‹]K
+˜\™ÜË
+ŠšÝØ\™ÜÊN‚‚BZYˆÛÛ™šYËœÚÚ[‹œš[X\žWÜÚÚ[‹˜[YHOHšÙÛ\ÜÌMËÜÚÚ[‹ž[ˆ[™Ù]]ŠÙ[‹œÚÚ[“˜[YH‹›Û™JHOH‘Ü˜\XØ[TÔQÈŽ‚‚BB]]HHˆ‚‚B\™]\›ˆØ\™\‘TÔÙ[XÝ[Û—ÜÙ]]JÙ[‹]K
+˜\™ÜË
+ŠšÝØ\™ÜÊB‚UØ\™\‘TÔÙ[XÝ[Û‹œÙ]]HHØ\™\‘TÔÙ[XÝ[Û”Ù]]B‚YYˆÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚B\™]\›ˆÛÛ™šYËœÚÚ[‹œš[X\žWÜÚÚ[‹˜[YHOHšÙÛ\ÜÌMËÜÚÚ[‹ž[ˆ[™Ù]]ŠÙ[‹œÚÚ[“˜[YH‹›Û™JHOH‘Ü˜\XØ[TÔQÈ‚‚‚YYˆÝØ\™\‘Ü˜\XØ[TÓX™[ÊÙ[ŠN‚‚BZYˆ›ÝÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚BB\™]\›‚‚BY›ÜˆÙ^K^[ˆ
+
+Ø\™\—ÚÙ^WÜ™Y‹ÝØ\™\•ZU^
+”“ÑÔSHS‘“ÈŠJK
+Ø\™\—ÚÙ^WÙÜ™Y[ˆ‹ÝØ\™\•ZU^
+Y[Y\ˆŠJK
+Ø\™\—ÚÙ^WÞY[ÝÈ‹ÝØ\™\•ZU^
+‘ÛÝÈ]KÕ[YHŠJK
+Ø\™\—ÚÙ^WØ›YH‹ÝØ\™\•ZU^
+‘TÈÙX\˜ÚŠJJN‚‚BB]žN‚‚BBB\Ù[–ÚÙ^WKœÙ]^
+^
+B‚BBY^Ù\^Ù\[ÛŽ‚‚BBB\\ÜÂ‚‚UØ\™\‘TÔÙ[XÝ[Û—Ú[š]HØ\™\‘TÔÙ[XÝ[Û‹—×Ú[š]×Â‚YYˆØ\™\‘TÔÙ[XÝ[Û’[š]
+Ù[‹
+˜\™ÜË
+ŠšÝØ\™ÜÊN‚‚BUØ\™\‘TÔÙ[XÝ[Û—Ú[š]
+Ù[‹
+˜\™ÜË
+ŠšÝØ\™ÜÊB‚BZYˆÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚BBY›ÜˆÙ^H[ˆ
+Ø\™\—ÚÙ^WÜ™Y‹Ø\™\—ÚÙ^WÙÜ™Y[ˆ‹Ø\™\—ÚÙ^WÞY[ÝÈ‹Ø\™\—ÚÙ^WØ›YHŠN‚‚BBB\Ù[–ÚÙ^WHHÝ]XÕ^
+ˆŠB‚BWÝØ\™\‘Ü˜\XØ[TÓX™[ÊÙ[ŠB‚UØ\™\‘TÔÙ[XÝ[Û‹—×Ú[š]×ÈHØ\™\‘TÔÙ[XÝ[Û’[š]‚‚HÈÜ[Uˆ™Yœ™\Ú\ÈÝ]XÕ^ÛÛÝ\‹ZÙ^HÛÝ\˜Ù\ÈY\ˆÛÛœÝXÝ[Û‹ˆ™KX\B‚HÈH[Û\ÜÈX™[ÈY\Ø\™ÈÛÈHš\ÚX›HX™[[Ø^\ÈX]Ú\ÈH[™\‹‚‚UØ\™\‘TÔÙ[XÝ[Û—Ô™Yœ™\ÚÛÛÝ\™YÙ^\ÈHØ\™\‘TÔÙ[XÝ[Û‹”™Yœ™\ÚÛÛÝ\™YÙ^\Â‚YYˆØ\™\‘TÔÙ[XÝ[Û”™Yœ™\ÚÛÛÝ\™YÙ^\ÊÙ[‹
+˜\™ÜË
+ŠšÝØ\™ÜÊN‚‚B\™\Ý[HØ\™\‘TÔÙ[XÝ[Û—Ô™Yœ™\ÚÛÛÝ\™YÙ^\ÊÙ[‹
+˜\™ÜË
+ŠšÝØ\™ÜÊB‚BWÝØ\™\‘Ü˜\XØ[TÓX™[ÊÙ[ŠB‚B\™]\›ˆ™\Ý[‚UØ\™\‘TÔÙ[XÝ[Û‹”™Yœ™\ÚÛÛÝ\™YÙ^\ÈHØ\™\‘TÔÙ[XÝ[Û”™Yœ™\ÚÛÛÝ\™YÙ^\Â‚‚UØ\™\‘TÔÙ[XÝ[Û—Ü™Y]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û‹œ™Y]Û”™\ÜÙY‚YYˆØ\™\”›ÙÜ˜[R[™›ÐÛÜÙY
+Ù[‹XÝ[ÛS›Û™JN‚‚B\Ù[‹—ÝØ\™\”›ÙÜ˜[R[™›ÓÜ[ˆH˜[ÙB‚BZYˆXÝ[ÛˆOH™Ü™Y[ˆŽˆ™]\›ˆÙ[‹”™XÛÜ™[Y\”]Y\Ý[ÛŠYJB‚BZYˆXÝ[ÛˆOHžY[ÝÈŽˆ™]\›ˆÙ[‹™[\‘]U[YJ
+B‚BZYˆXÝ[ÛˆOH˜›YHŽˆ™]\›ˆÙ[‹›Ü[‘TÔÙX\˜Ú
+
+B‚UØ\™\‘TÔÙ[XÝ[Û‹Ø\™\”›ÙÜ˜[R[™›ÐÛÜÙYHØ\™\”›ÙÜ˜[R[™›ÐÛÜÙY‚‚YYˆØ\™\‘TÔÙ[XÝ[Û”™Y]Û”™\ÜÙY
+Ù[ŠN‚‚BZYˆÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚BBHÈÛ™H\ÚXØ[‘Q™\ÜÈØ[ˆ™H[]™\™Y[Ü™H[ˆÛ˜ÙHžHHTÈÙ^H]‚‚BBHÈ™]™\ˆÝXÚÈÛÈ›ÙÜ˜[H[™›ÈØÜ™Y[œÎˆHš\œÝÛÜÙH]\Ý™]™X[HTË‚‚BBZYˆÙ]]ŠÙ[‹—ÝØ\™\”›ÙÜ˜[R[™›ÓÜ[ˆ‹˜[ÙJN‚‚BBB\™]\›ˆ›Û™B‚BBHÈØ\™\ˆÛÛ˜XÝˆ‘Q[ˆÝ\ˆÜ˜\XØ[TÈ\È^XÝHÛ™H\Ý[˜][ÛŽ‚‚BBHÈHØØ[“ÑÔSHS‘“ÈØÜ™Y[ˆ›ÜˆHÝ\œ™[HÙ[XÝYTÈ]™[‚‚BBHÈ™]™\ˆ˜[›ÝYÚÈÜ[U‹ÛYØXÞH[™›ËÐÔÑ‘[™\œË‚‚BB]žN‚‚BBBXXÝ]™HHÙ]]ŠÙ[‹˜XÝ]™S\Ý‹JB‚BBB[\Ý[™ÈHÙ[–È›\Ý	\Èˆ	HXÝ]™WB‚BBBXÝ\ˆH\Ý[™Ë™Ù]Ý\œ™[
+
+B‚BBBY]™[HÝ\–ÌHYˆÝ\ˆ[ÙH›Û™B‚BBB\Ù\šXÙHHÝ\–ÌWHYˆÝ\ˆ[™[ŠÝ\ŠHˆH[ÙH›Û™B‚BBBZYˆ]™[\È›Ý›Û™N‚‚BBBB\Ù[‹—ÝØ\™\”›ÙÜ˜[R[™›ÓÜ[ˆHYB‚BBBB]žN‚‚BBBBB\™]\›ˆÙ[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹Ø\™\”›ÙÜ˜[R[™›ÐÛÜÙYØ\™\”›ÙÜ˜[R[™›Ë]™[Ù\šXÙJB‚BBBBY^Ù\^Ù\[ÛŽ‚‚BBBBB\Ù[‹—ÝØ\™\”›ÙÜ˜[R[™›ÓÜ[ˆH˜[ÙB‚BBBBB\˜Z\ÙB‚BBY^Ù\^Ù\[Ûˆ\ÈN‚‚BBBUÜš][ÙÊ•Ø\™\”›ÙÜ˜[R[™›ÈÜ[Žˆ	\Èˆ	HJB‚BB\™]\›ˆ›Û™B‚B\™]\›ˆØ\™\‘TÔÙ[XÝ[Û—Ü™Y]Û”™\ÜÙY
+Ù[ŠB‚UØ\™\‘TÔÙ[XÝ[Û‹œ™Y]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û”™Y]Û”™\ÜÙY‚‚UØ\™\‘TÔÙ[XÝ[Û—ÙÜ™Y[]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û‹™Ü™Y[]Û”™\ÜÙY‚YYˆØ\™\‘TÔÙ[XÝ[Û‘Ü™Y[]Û”™\ÜÙY
+Ù[ŠN‚‚BZYˆÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚BB\™]\›ˆÙ[‹”™XÛÜ™[Y\”]Y\Ý[ÛŠYJB‚B\™]\›ˆØ\™\‘TÔÙ[XÝ[Û—ÙÜ™Y[]Û”™\ÜÙY
+Ù[ŠB‚UØ\™\‘TÔÙ[XÝ[Û‹™Ü™Y[]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û‘Ü™Y[]Û”™\ÜÙY‚‚UØ\™\‘TÔÙ[XÝ[Û—ÞY[ÝÐ]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û‹žY[ÝÐ]Û”™\ÜÙY‚YYˆØ\™\‘TÔÙ[XÝ[Û–Y[ÝÐ]Û”™\ÜÙY
+Ù[ŠN‚‚BZYˆÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚BB\™]\›ˆÙ[‹™[\‘]U[YJ
+B‚B\™]\›ˆØ\™\‘TÔÙ[XÝ[Û—ÞY[ÝÐ]Û”™\ÜÙY
+Ù[ŠB‚UØ\™\‘TÔÙ[XÝ[Û‹žY[ÝÐ]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û–Y[ÝÐ]Û”™\ÜÙY‚‚UØ\™\‘TÔÙ[XÝ[Û—Ø›YP]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û‹˜›YP]Û”™\ÜÙY‚YYˆØ\™\‘TÔÙ[XÝ[Û›YP]Û”™\ÜÙY
+Ù[ŠN‚‚BZYˆÝØ\™\‘Ü˜\XØ[TÔQÊÙ[ŠN‚‚BB\™]\›ˆÙ[‹›Ü[‘TÔÙX\˜Ú
+
+B‚B\™]\›ˆØ\™\‘TÔÙ[XÝ[Û—Ø›YP]Û”™\ÜÙY
+Ù[ŠB‚UØ\™\‘TÔÙ[XÝ[Û‹˜›YP]Û”™\ÜÙYHØ\™\‘TÔÙ[XÝ[Û›YP]Û”™\ÜÙY‚™^Ù\^Ù\[ÛŽ‚‚\\ÜÂ‚‚™YˆÝØ\™\”˜Y[Ð]Û•˜XÙJÙ[‹
+˜\™ÜË
+ŠšÝØ\™ÜÊN‚‚]žN‚‚B\Ý[\H[YLK[YJ
+B‚B]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë\Ý\‹ÈŠH\ÈÝ]‚‚BB[Ý]Üš]J‰K™—ˆˆ	HÝ[\
+B‚B]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[ËX\ÛÜšË›ÙÈ‹˜HŠH\ÈÝ]‚‚BB[Ý]Üš]J”QS×Ð•UÓˆ\ØÚIK™—ˆˆ	HÝ[\
+B‚Y^Ù\^Ù\[ÛŽ‚‚B\\ÜÂ‚\™]\›ˆÝØ\™\“ÜšYÚ[˜[ÚÝÔ˜Y[Ð]ÛŠÙ[‹
+˜\™ÜË
+ŠšÝØ\™ÜÊB‚‚™YˆÝ\ÌMÊ™X\ÛÛ‹
+ŠšÝØ\™ÜÊN‚‚ZYˆ™X\ÛÛˆOH[™ÛÛ™šYËœÚÚ[‹œš[X\žWÜÚÚ[‹˜[YHOHšÙÛ\ÜÌMËÜÚÚ[‹ž[Ž‚‚BHÈTÕNˆ[Y\Ý[\HXÝX[QSÈÙ^H[™\ˆ™Y›Ü™H[žH[ÙK\ÝÚ]ÚÛÜšË‚‚BYÛØ˜[ÝØ\™\“ÜšYÚ[˜[ÚÝÔ˜Y[Ð]Û‚‚B]žN‚‚BBZYˆÝØ\™\“ÜšYÚ[˜[ÚÝÔ˜Y[Ð]Ûˆ\È›Û™N‚‚BBBWÝØ\™\“ÜšYÚ[˜[ÚÝÔ˜Y[Ð]ÛˆH[™›Ð˜\‹œÚÝÔ˜Y[Ð]Û‚‚BBBR[™›Ð˜\‹œÚÝÔ˜Y[Ð]ÛˆHÝØ\™\”˜Y[Ð]Û•˜XÙB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚BHÈØ\™\ˆ˜]]™HÜ˜\XØ[TÎˆXÛÛœÈÛ›KÛÛ\XÝÙ\šXÙHÛÛ[[‹‚‚BHÈÙY\\ÈØÛÜYÈ[Û\ÜÌMÈÙ\ÜÚ[ÛˆÝ\[™Û\˜]H[XYÙ\ÈÚ]Ý]\ÙHÜ[UˆÙ^\Ë‚‚B]žN‚‚BBZYˆ\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[ÛˆŠH[™\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÜÙ\šXÙ]]WÛ[ÙHŠN‚‚BBBXÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÜÙ\šXÙ]]WÛ[ÙK˜[YHHœXÛÛˆ‚‚BBZYˆ\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[ÛˆŠH[™\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÜXÛÛÚYŠN‚‚BBBXÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÜXÛÛÚY˜[YHHŒ‚BBZYˆ\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[ÛˆŠN‚‚BBBZYˆ\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÙÜ™Y[ˆŠN‚‚BBBBXÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÙÜ™Y[‹˜[YHH[Y\ˆ‚‚BBBZYˆ\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÞY[ÝÈŠN‚‚BBBBXÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\ÞY[ÝË˜[YHH™ÛÝÙ]][YH‚‚BBBZYˆ\Ø]ŠÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\Ø›YHŠN‚‚BBBBXÛÛ™šYË™\ÜÙ[XÝ[Û‹™Ü˜\Ø›YK˜[YHH™\ÜÙX\˜Ú‚‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚BY[˜SÒÜÝ\HYH‚BZYˆ›Ýš[Q^\ÝÊÒÒS”U
+ÈšXÛÛœËØX›Ý]Kœ™ÈŠN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHŒˆ[™ÚÚÕ\Ù\’Ê
+Nˆ‚BBBY[˜SÒÜÝ\H˜[ÙB‚BBB[\ÙÈHÙ]ÛY[Ü™J
+B‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈšYÚˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈ˜\ˆŽ‚‚BBBZYˆÚÚÔTÊ
+N‚‚BBBBZYˆÙ]Y[T[Ê
+NˆBB‚BBBBBY[˜SÒÜÝ\H˜[ÙB‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NK˜[YN‚‚BBBZYˆ›ÝÜËœ]™^\ÝÊ	ËÙ]ËÙÙÉÊH[™š[Q^\ÝÊS×ÕJN‚‚BBBBZYˆÜËœ]™Ù]Ú^™JS×ÕJHOHÜËœ]™Ù]Ú^™JS×ÐÊN‚‚BBBBBY[˜SY[THHÙ][˜ÛÙ[™Õ\Ù\Š
+B‚BBBBBZYˆ[˜SY[TNˆBB‚BBBBBBY[˜SÒÜÝ\H˜[ÙB‚BBBY[ÙN‚‚BBBB\Ù]Ñ‘ÛÙ™ŠNJB‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Œ‹˜[YN‚‚BBBZYˆL“ÒÎ‚‚BBBB]HÚ›Ù[ÚÚÊ
+B‚BBBBZYˆOH‚‚BBBBBZYˆÚ›Ù[]Ú
+
+N‚‚BBBBBBY[˜SÒÜÝ\H˜[ÙB‚BBBBBY[ÙN‚‚BBBBBB\Ù]Ñ‘ÛÙ™Š
+B‚BBBBY[YˆOHÎ‚‚BBBBBY[˜SÒÜÝ\H˜[ÙBBBBBBBBB‚BBBY[ÙN‚‚BBBB\Ù]Ñ‘ÛÙ™Š
+B‚BBZYˆQ’Q“È[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YN‚‚BBBZYˆÚÚÑšY›Ê
+N‚‚BBBBY[˜SÒÜÝ\H˜[ÙB‚BZYˆ›Ý[˜SÒÜÝ\‚‚BBX]]ÔÝ\ÚÚÌMË\]PÚÚÊÝØ\™ÜÖÈœÙ\ÜÚ[Ûˆ—JB‚BY[ÙN‚‚BBZYˆš[Q^\ÝÊÒÒS”U
+ÈšXÛÛœËØX›Ý]Kœ™ÈŠN‚‚BBBX]]ÔÝ\ÚÚÌMËœÝ\ØÚÚÊÝØ\™ÜÖÈœÙ\ÜÚ[Ûˆ—JB‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YHOH›ˆˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BBBZÙ^SX[˜YÙKš[š]Ù^S[™ÊÝØ\™ÜÖÈœÙ\ÜÚ[Ûˆ—JB‚BBYÛØ˜[Û\ÜÌM××Ú[š]×Â‚BBZYˆœÙ\ÜÚ[Ûˆˆ[ˆÝØ\™ÜÎ‚‚BBBZYˆÛ\ÜÌM××Ú[š]×È\È›Û™N‚‚BBBBQÛ\ÜÌM××Ú[š]×ÈH[™›Ð˜\”YÚ[œË—×Ú[š]×Â‚BBBR[™›Ð˜\”YÚ[œË—×Ú[š]×ÈHÌMÚ[šXÚX[^™B‚BBBR[™›Ð˜\”YÚ[œË˜ÛÛ›ÛÚ[™ÝÌMÈHÛÛ›ÛÚ[™ÝÌMÂ‚BBBR[™›Ð˜\”YÚ[œËšYUÚ[™ÝÌMÈHYUÚ[™ÝÌMÂ‚BBBR[™›Ð˜\”YÚ[œË™˜YQ]™[MÈH˜YQ]™[MÂ‚BBBR[™›Ð˜\”YÚ[œË™˜YQ]™[ŒMÈH˜YQ]™[ŒMÂ‚BBBR[™›Ð˜\”YÚ[œËœÙ\šXÙTÝ\›ÝÌMÈHÙ\šXÙTÝ\›ÝÌMÂ‚BBBR[™›Ð˜\”YÚ[œËœÙ\šXÙTÝ\›ÝÌMÌˆHÙ\šXÙTÝ\›ÝÌMÌ‚‚BBBR[™›Ð˜\”YÚ[œËœÙ\šXÙTÝ\›ÝÌMÌÈHÙ\šXÙTÝ\›ÝÌMÌÂ‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YHOH›ˆŽ‚‚BBBBR[™›Ð˜\”YÚ[œË”ÜXÚX[ØÜ™Y[•Ú[™ÝÌMÈHÜXÚX[ØÜ™Y[•Ú[™ÝÌMÂ‚BBZYˆ›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BBB]žN‚‚BBBB\Ø][H\œÙJÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YJÈœØ][]\Ëž[ŠK™Ù]›ÛÝ
+
+B‚BBBBZYˆØ][\È›Ý›Û™N‚‚BBBBBYÛØ˜[[Ø]‚BBBBBY›ÜˆØ][ˆØ][™š[™[
+œØ]ŠN‚‚BBBBBB[˜[YHHØ]™Ù]
+›˜[YHŠHÜˆ›Û™B‚BBBBBB\ÜÚ][ÛˆHØ]™Ù]
+œÜÚ][ÛˆŠHÜˆ›Û™B‚BBBBBBZYˆ˜[YH\È›Ý›Û™H[™ÜÚ][Ûˆ\È›Ý›Û™N‚‚BBBBBBB\ÜÚ][ÛˆH‰\Ë‰\Èˆ	H
+ÜÚ][Û–Î‹LWKÜÚ][Û–ËLN—JB‚BBBBBBBZYˆÜÚ][Û‹œÝ\ÝÚ]
+‹HŠN‚‚BBBBBBBB\ÜÚ][ÛˆH‰\ÕÈˆ	HÜÚ][Û–ÌN—B‚BBBBBBBY[ÙN‚‚BBBBBBBB\ÜÚ][ÛˆH‰\ÑHˆ	HÜÚ][Û‚‚BBBBBBBZYˆÜÚ][Û‹œÝ\ÝÚ]
+‹ˆŠN‚‚BBBBBBBB\ÜÚ][ÛˆHŒ	\Èˆ	HÜÚ][Û‚‚BBBBBBBZYˆ›ÝTÔÎ‚‚BBBBBBBB[˜[YHH˜[YK™[˜ÛÙJ]‹NŠB‚BBBBBBBX[Ø]ÜÜÚ][Û—HHÝŠ˜[YJB‚BBBY^Ù\ˆ\ÜÂ‚™YˆÌMÚ[šXÚX[^™JÙ[ŠN‚‚YÛØ˜[š\œÝ[ŒMÂ‚ZYˆ›Ýš\œÝ[ŒMÎˆ‚BQš\œÝ[ŒMÈHYB‚BYYˆÓ›Ý[™Ê
+N‚‚BB\\ÜÂ‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YHOH›ˆŽ‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍ˜[YN‚‚BBB\Ù[–È™ÌMÐXÝ[ÛœÈ—HHXÝ[Û“X\
+È™ÌMÐXÝ[Ûœ×Û™]]š[›È—KÈ›Ú×Ü™\ÜÙYŽˆÙ[‹˜ÛÛ›ÛÚ[™ÝÌMßKLJB‚BBY[ÙN‚‚BBB\Ù[–È™ÌMÐXÝ[ÛœÈ—HHXÝ[Û“X\
+È™ÌMÐXÝ[ÛœÈ—KÈ›Ú×Ü™\ÜÙYŽˆÙ[‹˜ÛÛ›ÛÚ[™ÝÌMË™^]Ü™\ÜÙYŽˆÙ[‹šYUÚ[™ÝÌMßKLJB‚BY[ÙN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍ˜[YN‚‚BBB\Ù[–È™ÌMÐXÝ[ÛœÈ—HHXÝ[Û“X\
+È™ÌMÐXÝ[Ûœ×Û™]]š[›ÔÜXÚX[—KÈœÚÝÔÜXÚX[ØÜ™Y[ˆŽˆÙ[‹”ÜXÚX[ØÜ™Y[•Ú[™ÝÌMË›Ú×Ü™\ÜÙYŽˆÙ[‹˜ÛÛ›ÛÚ[™ÝÌMßKLJB‚BBY[ÙN‚‚BBB\Ù[–È™ÌMÐXÝ[ÛœÈ—HHXÝ[Û“X\
+È™ÌMÐXÝ[ÛœÔÜXÚX[—KÈœÚÝÔÜXÚX[ØÜ™Y[ˆŽˆÙ[‹”ÜXÚX[ØÜ™Y[•Ú[™ÝÌMË›Ú×Ü™\ÜÙYŽˆÙ[‹˜ÛÛ›ÛÚ[™ÝÌMË™^]Ü™\ÜÙYŽˆÙ[‹šYUÚ[™ÝÌMßKLJB‚BB\Ù[–Èš[XÝ[ÛœÈ—HHXÝ[Û“X\
+ÉÒ[XÝ[ÛœÉ×KÈ™\Ü^R[ŽˆÓ›Ý[™ßJB‚BYˆHÜ[ŠÓTÑ’SKœˆŠKœ™XY
+
+B‚BZYˆ‹™š[™
+“Û™ÓÒÔ™\ÜÙYŠHOHLN‚‚BB\Ù[–È”ÚÝÒYPXÝ[ÛœÈ—HHXÝ[Û“X\
+È’[™›Ø˜\”ÚÝÒYPXÝ[ÛœÈ—HÈÙÙÛTÚÝÈŽˆÓ›Ý[™ËšYHŽˆÓ›Ý[™ËJB‚BZYˆSWÖŽ‚‚BB\Ù[‹™ÌMÙX[ÙÈHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊ^˜R[™›ÌMË”ÜÚ][ÛLL
+B‚BB\Ù[‹™ÌMÙX[ÙËœÚÝÛˆH˜[ÙB‚BY[ÙN‚‚BB\Ù[‹™ÌMÙX[ÙÈHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊ^˜R[™›ÌMÊB‚B\Ù[‹—×Ù]™[Ý˜XÚÙ\ˆHÙ\šXÙQ]™[˜XÚÙ\ŠØÜ™Y[\Ù[‹]™[X\B‚BB^Â‚BBBZT^XX›TÙ\šXÙK™]”Ý\ˆÙ[‹œÙ\šXÙTÝ\›ÝÌMËT^XX›TÙ\šXÙK™]•\]Y]™[[™›ÎˆÙ[‹œÙ\šXÙTÝ\›ÝÌMÌË‚BB_JB‚BYÛØ˜[˜[œÔÝ\MÂ‚B]˜[œÔÝ\MÈHŒ‚B\Ù[‹™ÌMÙ˜YU[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹™ÌMÙ˜YU[Y\—ØÛÛ›ˆHÙ[‹™ÌMÙ˜YU[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹™˜YQ]™[MÊB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹™ÌMÙ˜YU[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹™˜YQ]™[MÊB‚B\Ù[‹™ÌMÙ˜YU[Y\ŒˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹™ÌMÙ˜YU[Y\Œ—ØÛÛ›ˆHÙ[‹™ÌMÙ˜YU[Y\Œ‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹™˜YQ]™[ŒMÊB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹™ÌMÙ˜YU[Y\Œ‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹™˜YQ]™[ŒMÊB‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BB\Ù[‹›Û”ÚÝË˜\[™
+[X™NˆÙ[‹™ÌMÙX[ÙËœÚÝÊ
+JB‚BB\Ù[‹›Û’YK˜\[™
+[X™NˆÙ[‹™ÌMÙX[ÙËšYJ
+JB‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YHOH›ˆŽ‚‚BBBZYˆÈˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YNˆ‚BBBBYœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMËÙX]\ˆ[\ÜÙX]\”ØÜ™Y[‚‚BBBBZYˆSWÖŽ‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\ˆHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊÙX]\”ØÜ™Y[‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌ‹˜[YK”ÜÚ][ÛLŒ
+B‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛˆH˜[ÙB‚BBBBY[ÙN‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\ˆHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊÙX]\”ØÜ™Y[‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌ‹˜[YJB‚BBBY[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YHOH˜HŽˆ‚BBBBYœ›ÛHYÚ[œË‘^[œÚ[ÛœËœÙ]\Û\ÜÌMË“™]][È[\Ü™]][ÔØÜ™Y[‚‚BBBBZYˆSWÖŽ‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\ˆHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊ™]][ÔØÜ™Y[‹”ÜÚ][ÛLŒ
+B‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛˆH˜[ÙB‚BBBBY[ÙN‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\ˆHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊ™]][ÔØÜ™Y[ŠB‚BBBY[ÙN‚‚BBBBYœ›ÛHØÜ™Y[œË‘ÌM×Õ\Ù\’[™›È[\Ü\Ù\’[™›ÌMÂ‚BBBBZYˆSWÖŽ‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\ˆHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊ\Ù\’[™›ÌMË”ÜÚ][ÛLŒ
+B‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛˆH˜[ÙB‚BBBBY[ÙN‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\ˆHÙ[‹œÙ\ÜÚ[Û‹š[œÝ[X]QX[ÙÊ\Ù\’[™›ÌMÊB‚BBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚B\Ù[‹™ÌMÙX[ÙÕ[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹™ÌMÙX[ÙÕ[Y\—ØÛÛ›ˆHÙ[‹™ÌMÙX[ÙÕ[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹šYUÚ[™ÝÌMÊB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹™ÌMÙX[ÙÕ[Y\‹˜Ø[˜XÚË˜\[™
+Ù[‹šYUÚ[™ÝÌMÊB‚BYYˆ[Y\”Ý]PÚÚÌMÊ
+N‚‚BBZYˆÙ[‹™ÌMÙX[ÙÕ[Y\‹š\ÐXÝ]™J
+N‚‚BBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝÜ
+
+B‚BBZYˆÙ[‹™ÌMÙ]™[\[Y\‹š\ÐXÝ]™J
+N‚‚BBB\Ù[‹™ÌMÙ]™[\[Y\‹œÝÜ
+
+B‚B\Ù[‹™ÌMÙX[ÙË›Û’YK˜\[™
+[Y\”Ý]PÚÚÌMÊB‚BYYˆYU[Y\”ÝÜMÊ
+N‚‚BB\Ù[‹šYU[Y\‹œÝÜ
+
+B‚B\Ù[‹šÚ[YU[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹šÚ[YU[Y\—ØÛÛ›ˆHÙ[‹šÚ[YU[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+YU[Y\”ÝÜMÊB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹šÚ[YU[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+YU[Y\”ÝÜMÊB‚B\Ù[‹™ÌMÙ]™[\[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹™ÌMÙ]™[\[Y\—ØÛÛ›ˆHÙ[‹™ÌMÙ]™[\[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹šYUÚ[™ÝÌMÊB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹™ÌMÙ]™[\[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹šYUÚ[™ÝÌMÊB‚B\Ù[‹›Û”ÚÝË˜\[™
+Ù[‹œÙ\šXÙTÝ\›ÝÌMÌŠB‚B\Ù[‹›Û’YK˜\[™
+[Y\”Ý]PÚÚÌMÊB‚Y[ÙN‚‚BR[™›Ð˜\”YÚ[œË—×Ú[š]×ÈH[™›Ð˜\”YÚ[œË—×Ú[š]×Â‚BR[™›Ð˜\”YÚ[œË˜ÛÛ›ÛÚ[™ÝÌMÈH›Û™B‚BR[™›Ð˜\”YÚ[œËšYUÚ[™ÝÌMÈH›Û™B‚BR[™›Ð˜\”YÚ[œË™˜YQ]™[MÈH›Û™B‚BR[™›Ð˜\”YÚ[œË™˜YQ]™[ŒMÈH›Û™B‚BR[™›Ð˜\”YÚ[œËœÙ\šXÙTÝ\›ÝÌMÈH›Û™B‚BR[™›Ð˜\”YÚ[œËœÙ\šXÙTÝ\›ÝÌMÌˆH›Û™B‚BR[™›Ð˜\”YÚ[œËœÙ\šXÙTÝ\›ÝÌMÌÈH›Û™B‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YHOH›ˆŽ‚‚BBR[™›Ð˜\”YÚ[œË”ÜXÚX[ØÜ™Y[•Ú[™ÝÌMÈH›Û™B‚QÛ\ÜÌM××Ú[š]×ÊÙ[ŠB‚™YˆÜXÚX[ØÜ™Y[•Ú[™ÝÌMÊÙ[ŠN‚‚TÚÝÒYUšXRÙ^J
+B‚™YˆÙ\šXÙTÝ\›ÝÌMÊÙ[ŠN‚‚ZYˆ\Ú[œÝ[˜ÙJÙ[‹[™›Ð˜\ŠN‚‚BHÈTÕLŽˆ™]žHY\ˆÜ[•ÙXšYˆ\È[š]X[^™YÈY[\Ý[[™™XÙZ]™\‹\›Ý™[ˆÛ\ÜÈ˜[YK‚‚BWÝØ\™\’[œÝ[Ü[•ÙXšY‘Ü˜X’ÛÚÊ
+B‚BHÈTÕLÎLŽˆÙ\šXÙK\Ý\\ÈH™[XX›H‹ÔQSÈ˜[œÚ][Ûˆ›Ý[™\žHÛˆ\È[XYÙK‚‚B\™YœÝˆHˆ‚‚B]žN‚‚BB\™YˆHÙ[‹œÙ\ÜÚ[Û‹›˜]‹™Ù]Ý\œ™[T^Z[™ÔÙ\šXÙT™Y™\™[˜ÙJ
+B‚BB\™YœÝˆH™Y‹ÔÝš[™Ê
+HYˆ™Yˆ\È›Ý›Û™H[ÙHˆ‚‚BB\Ý[\H[YLK[YJ
+B‚BB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë\Ù\šXÙKY]™[Ë›ÙÈ‹˜HŠH\ÈÝ]‚‚BBB[Ý]Üš]J”ÑT•’PÑWÔÕT•\ØÚIK™ˆ™YI\×ˆˆ	H
+Ý[\™YœÝŠJB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚BHÈTÕLŽˆHˆOˆQSÈÙ\šXÙHØ[ˆÝ\Ú[HÚ[›™[Ù[XÝ[Û”˜Y[È\ÈÝ[‚BHÈÜ[‹ˆ™K\ÚÝÈH[™XYH˜]]™K[ÝÛ™Y‘ÈX[ÙÈ]]›Ý™[ˆ›Ý[™\žB‚BHÈÛÈÛÜÚ[™ÈH›Ý\]Y]^ÜÙ\ÈHØ\™\ˆÚÚ[ˆÝ™\›^H[[YYX][K‚‚BHÈÈ›Ý™\XÙHÜˆ[ÛšÙ^K\]ÚØÜ™Y[œË”™Ñ\Ü^K”™Ò[™›Ñ\Ü^K‚‚B]žN‚‚BBYšY[ÈH™YœÝ‹œÜ]
+ŽˆŠB‚BBZ\×Ü˜Y[ÈH[ŠšY[ÊHˆˆ[™šY[ÖÌ—K\\Š
+H[ˆ
+Œˆ‹HŠB‚BB]žN‚‚BBB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[ËXÝ\œ™[‹ÈŠH\ÈX\šÙ\Ž‚‚BBBB[X\šÙ\‹Üš]JHˆYˆ\×Ü˜Y[È[ÙH•ˆŠB‚BBY^Ù\^Ù\[ÛŽ‚‚BBB\\ÜÂ‚BB\™ÈHÙ]]ŠÙ[‹œ™×Ù\Ü^H‹›Û™JB‚BBZYˆ™È\È›Ý›Û™N‚‚BBBZYˆ\×Ü˜Y[Î‚‚BBBBHÈTÕLMˆÙY\˜]]™H‘ÈÝÛ™\œÚ\ÈHØÛÜYÜ[Û›HX[ÙÈ[™\È[™›Ð˜\ˆÝ™\›\‚‚BBBB\™ËœÚÝÊ
+B‚BBBB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë\Ù\šXÙKY]™[Ë›ÙÈ‹˜HŠH\ÈÝ]‚‚BBBBB[Ý]Üš]J”QS×ÓÕ‘T“VWÔÒÕÈ\ØÚIK™ˆ™YI\×ˆˆ	H
+[YLK[YJ
+K™YœÝŠJB‚BBBY[ÙN‚‚BBBBHÈTÕMˆTÕLˆ]\Ý™HÞ[[Y]šXØ[ˆH˜]]™K[ÝÛ™Y‘ÈX[ÙÂ‚BBBBHÈ]\Ý›ÝÝ\š]™HQSÈOˆˆ[™š[™]ÈÝ\œ™[Ù\šXÙHÚYÙ]Â‚BBBBHÈÈHˆÙ\šXÙHY\ˆH›Ü›X[ˆ[™›Ø˜\ˆÛÜÙ\Ë‚‚BBBB\™ËšYJ
+B‚BBBB]Ú]Ü[Š‹Ý\ÝØ\™\‹\˜Y[Ë\Ù\šXÙKY]™[Ë›ÙÈ‹˜HŠH\ÈÝ]‚‚BBBBB[Ý]Üš]J”QS×ÓÕ‘T“VWÒQH\ØÚIK™ˆ™YI\×ˆˆ	H
+[YLK[YJ
+K™YœÝŠJB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚BZYˆÙ[‹œÚÝÛŽ‚‚BBZYˆÙ[‹™ÌMÙX[ÙÕ[Y\‹š\ÐXÝ]™J
+N‚‚BBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝÜ
+
+B‚BBZYHÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]š[™^‚BBZYˆY‚‚BBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝ\
+Y
+ŒLYJB‚BBB\Ù[‹šÚ[YU[Y\‹œÝ\
+ÍLYJB‚™YˆÙ\šXÙTÝ\›ÝÌMÌŠÙ[ŠN‚‚ZYˆ\Ú[œÝ[˜ÙJÙ[‹[™›Ð˜\ŠN‚‚BZYˆÙ[‹œÚÝÛŽ‚‚BBZYˆÙ[‹™ÌMÙX[ÙÕ[Y\‹š\ÐXÝ]™J
+N‚‚BBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝÜ
+
+B‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒHŽ‚‚BBBZYHÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]š[™^‚BBBZYˆY‚‚BBBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝ\
+Y
+ŒLYJB‚BB\Ù[‹šÚ[YU[Y\‹œÝ\
+ÍLYJB‚™YˆÙ\šXÙTÝ\›ÝÌMÌÊÙ[ŠN‚‚ZYˆ\Ú[œÝ[˜ÙJÙ[‹[™›Ð˜\ŠN‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒHŽ‚‚BBZYHÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]š[™^‚BBZYˆY‚‚BBB\Ù[‹™ÌMÙ]™[\[Y\‹œÝ\
+Y
+ŒLYJB‚™YˆÛÛ›ÛÚ[™ÝÌMÊÙ[ŠN‚‚YÛØ˜[˜[œÔÝ\MÂ‚ZYˆ\Ú[œÝ[˜ÙJÙ[‹[™›Ð˜\ŠN‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YB‚BBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHŒ‚‚BZYˆ›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BBZYˆ›ÝÙ[‹œÚÝÛˆ[™›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽK˜[YN‚‚BBBBX[PÚ[™ÙLMÊ
+B‚BBBB\Ù[‹œÚÝÊ
+B‚BBBB]˜[œÔÝ\MÈH‚BBBB\Ù[‹™ÌMÙ˜YU[Y\‹œÝ\
+LYJB‚BBBY[ÙN‚‚BBBB\Ù[‹œÚÝÊ
+B‚BBY[YˆÙ[‹œÚÝÛˆ[™›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBB\Ù[‹šYJ
+B‚BBB\Ù[‹™ÌMÙX[ÙËœÚÝÊ
+B‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒHŽ‚‚BBBBZYHÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]š[™^‚BBBBZYˆY‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝ\
+Y
+ŒLYJB‚BBY[Yˆ›ÝÙ[‹œÚÝÛˆ[™Ù[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBB]˜[œÔÝ\MÈHŒ‚BBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBY[ÙN‚‚BBBB\Ù[‹™ÌMÙX[ÙËšYJ
+B‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBY[YˆÙ[‹œÚÝÛˆ[™Ù[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBB]˜[œÔÝ\MÈHŒ‚BBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBY[ÙN‚‚BBBB\Ù[‹šYJ
+B‚BBBB\Ù[‹™ÌMÙX[ÙËšYJ
+B‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBY[ÙN‚‚BBBZYˆÙ[‹œÚÝÛŽ‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBBB]˜[œÔÝ\MÈHŒ‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹šYJ
+B‚BBBB\Ù[‹šYU[Y\‹œÝÜ
+
+B‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBBY[ÙN‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽK˜[YN‚‚BBBBBX[PÚ[™ÙLMÊ
+B‚BBBBB\Ù[‹œÚÝÊ
+B‚BBBBB]˜[œÔÝ\MÈH‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\‹œÝ\
+LYJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹œÚÝÊ
+B‚BY[ÙN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YHOH›ˆŽ‚‚BBBZYˆ›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛˆ[™›ÝÙ[‹œÚÝÛˆ[™Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛˆ[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌ‹˜[YN‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBBB]˜[œÔÝ\MÈHŒ‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBBY[Yˆ›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽK˜[YN‚‚BBBBBX[PÚ[™ÙLMÊ
+B‚BBBBB\Ù[‹œÚÝÊ
+B‚BBBBB]˜[œÔÝ\MÈH‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\‹œÝ\
+MLYJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹œÚÝÊ
+B‚BBBY[YˆÙ[‹™ÌMÙX[ÙËœÚÝÛˆ[™›ÝÙ[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛŽ‚‚BBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÊ
+B‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒHŽ‚‚BBBBBZYHÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]š[™^‚BBBBBZYˆY‚‚BBBBBB\Ù[‹™ÌMÙX[ÙÕ[Y\‹œÝ\
+Y
+ŒLYJB‚BBBY[YˆÙ[‹™ÌMÙX[ÙËœÚÝÛˆ[™Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛŽ‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBBB]˜[œÔÝ\MÈHŒ‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBBY[ÙN‚‚BBBBBZYˆ›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌ‹˜[YN‚‚BBBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚BBBBBY[ÙN‚‚BBBBBBZYˆ›ÝÙ[‹œÚÝÛˆ[™›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚BBBBB\Ù[‹šYJ
+B‚BBBBB\Ù[‹™ÌMÙX[ÙËšYJ
+B‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBBY[ÙN‚‚BBBBZYˆÙ[‹œÚÝÛŽ‚‚BBBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBBBB]˜[œÔÝ\MÈHŒ‚BBBBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBBBY[ÙN‚‚BBBBBB\Ù[‹šYJ
+B‚BBBBB\Ù[‹šYU[Y\‹œÝÜ
+
+B‚BBBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBBBY[ÙN‚‚BBBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽK˜[YN‚‚BBBBBBX[PÚ[™ÙLMÊ
+B‚BBBBBB\Ù[‹œÚÝÊ
+B‚BBBBBB]˜[œÔÝ\MÈH‚BBBBBB\Ù[‹™ÌMÙ˜YU[Y\‹œÝ\
+LYJB‚BBBBBY[ÙN‚‚BBBBBB\Ù[‹œÚÝÊ
+BBB‚BBY[ÙN‚‚BBBZYˆÙ[‹œÚÝÛŽ‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBBBB]˜[œÔÝ\MÈHŒ‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹šYJ
+B‚BBBB\Ù[‹šYU[Y\‹œÝÜ
+
+B‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBBBBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBBBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BBBY[ÙN‚‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽK˜[YN‚‚BBBBBX[PÚ[™ÙLMÊ
+B‚BBBBB\Ù[‹œÚÝÊ
+B‚BBBBB]˜[œÔÝ\MÈH‚BBBBB\Ù[‹™ÌMÙ˜YU[Y\‹œÝ\
+LYJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹œÚÝÊ
+B‚™YˆYUÚ[™ÝÌMÊÙ[ŠN‚‚ZYˆ\Ú[œÝ[˜ÙJÙ[‹[™›Ð˜\ŠN‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHŒˆŽ‚‚BBZYˆÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHOHŒŽ‚‚BBBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHHŒ‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YN‚‚BBYÛØ˜[˜[œÔÝ\MÂ‚BB]˜[œÔÝ\MÈHŒ‚BB\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+KYJB‚BY[ÙN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YHOH›ˆŽ‚‚BBBZYˆ›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌ‹˜[YN‚‚BBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚BBBY[ÙN‚‚BBBBZYˆ›ÝÙ[‹œÚÝÛˆ[™›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚BB\Ù[‹šYJ
+B‚BB\Ù[‹™ÌMÙX[ÙËšYJ
+B‚B™Yˆ˜YQ]™[ŒMÊÙ[ŠN‚‚YÛØ˜[[˜Q˜YSÝ]MÂ‚ZYˆ›Ý[˜Q˜YSÝ]MÎˆ‚B\™]\›‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YHOH›ˆŽ‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌ‹˜[YN‚‚BBZYˆÙ[‹œÚÝÛˆ[™Ù[‹™ÌMÙX[ÙËœÚÝÛˆ[™Ù[‹™ÌMÙX[ÙÕ\Ù\‹œÚÝÛŽ‚‚BBB\Ù[‹šYJ
+B‚BBB\Ù[‹™ÌMÙX[ÙËšYJ
+B‚BBB\™]\›‚‚YÛØ˜[[˜Q˜YR[ŒMÂ‚Y[˜Q˜YR[ŒMÈH˜[ÙB‚\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝÜ
+
+B‚YÛØ˜[˜[œÔÝ\MÂ‚ZYˆ˜[œÔÝ\MÈOH‚‚BX[PÚ[™ÙLMÊÛÛ™šYË˜]‹›ÜÙØ[K˜[YJ˜[œÔÝ\MËÌŒ
+B‚B]˜[œÔÝ\MÈOHB‚B\Ù[‹™ÌMÙ˜YU[Y\Œ‹œÝ\
+
+[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽ˜[YJH
+ˆŠKYJB‚Y[ÙN‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YHOH›ˆŽ‚‚BBZYˆ›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌ‹˜[YN‚‚BBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚BBY[ÙN‚‚BBBZYˆ›ÝÙ[‹œÚÝÛˆ[™›ÝÙ[‹™ÌMÙX[ÙËœÚÝÛŽ‚‚BBBB\Ù[‹™ÌMÙX[ÙÕ\Ù\‹šYJ
+B‚B\Ù[‹šYJ
+B‚B\Ù[‹™ÌMÙX[ÙËšYJ
+B‚B\Ù[‹˜[œÔØÜ[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹˜[œÔØÜ[Y\—ØÛÛ›ˆHÙ[‹˜[œÔØÜ[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+˜[œÔ™\ÝÜ™LMÊB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹˜[œÔØÜ[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+˜[œÔ™\ÝÜ™LMÊB‚B\Ù[‹˜[œÔØÜ[Y\‹œÝ\
+ÌYJB‚™Yˆ˜[œÔ™\ÝÜ™LMÊ
+N‚‚X[PÚ[™ÙLMÊÛÛ™šYË˜]‹›ÜÙØ[K˜[YJB‚YÛØ˜[[˜Q˜YR[ŒMÂ‚Y[˜Q˜YR[ŒMÈHYB‚™Yˆ˜YQ]™[MÊÙ[ŠN‚‚YÛØ˜[[˜Q˜YR[ŒMÂ‚ZYˆ›Ý[˜Q˜YR[ŒMÎˆ‚B\™]\›‚‚YÛØ˜[[˜Q˜YSÝ]MÂ‚Y[˜Q˜YSÝ]MÈH˜[ÙB‚YÛØ˜[˜[œÔÝ\MÂ‚\Ù[‹™ÌMÙ˜YU[Y\‹œÝÜ
+
+B‚ZYˆ˜[œÔÝ\MÈOHŒN‚‚BX[PÚ[™ÙLMÊÛÛ™šYË˜]‹›ÜÙØ[K˜[YJ˜[œÔÝ\MËÌŒ
+B‚B]˜[œÔÝ\MÈ
+ÏHB‚B\Ù[‹™ÌMÙ˜YU[Y\‹œÝ\
+
+[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŽ˜[YJH
+ˆŠKYJB‚Y[ÙN‚‚BY[˜Q˜YSÝ]MÈHYB‚™Yˆ[PÚ[™ÙLMÊ[\Ý]JN‚‚Y[Ü[Š‹Ü›ØËÜÝ‹ÝšY[ËØ[H‹ÈŠB‚Y‹Üš]J‰ZHˆ	H
+[\Ý]JJB‚Y‹˜ÛÜÙJ
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈBB™YˆXÛÛ”Ú^™JÊN‚‚\™]HœXÛÛˆ‚‚]žN‚‚B\ÈHËœÜ]
+‹ŠB‚BZYˆÖÌH[ˆ
+‹ŒŠN‚‚BB\™]H––”XÛÛˆ‚‚BBZYˆÖÌWHOHŒŽ‚‚BBB\™]HœXÛÛ—Í‚‚BY[YˆÖÌHOHŒŒŒŽ‚‚BB\™]HœXÛÛ—ÌŒŒLÌˆ‚‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ™]‚B™YˆÚÚÔXÛÛ”Ú^™J
+N‚‚\™]HŒH‚‚]žN‚‚BYœ›ÛHØÜ™Y[œË‘ÌMÜØÜ™Y[œÈ[\ÜÌM×Ù^˜TØÜ™Y[‚B‚B]\HÌM×Ù^˜TØÜ™Y[‹™Ù]
+ÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJJB‚B]\TØÜˆH\œÜ]
+—ˆŠB‚BY›ÜˆH[ˆ\TØÜŽ‚‚BBZYˆ	È™ÌMÜXÛÛˆ‰È[ˆN‚‚BBB]\H
+KœÜ]
+	ÜÚ^™OH‰ÊVÌWJKœÜ]
+	È‰ÊVÌB‚BBB]\H\œÜ]
+‹ŠB‚BBBZYˆˆ[ˆ\ÌHÜˆŒˆ[ˆ\ÌN‚‚BBBB\™]HŒÈ‚‚BBBBZYˆŒˆ[ˆ\ÌWN‚‚BBBBB\™]H‚‚BBBY[YˆŒŒŒˆ[ˆ\ÌN‚‚BBBB\™]HŒˆ‚‚BBBXœ™XZÂ‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ™]‚B™Yˆœ›ÛPÙ™ÐŠÏUYJN‚‚]žN‚‚BYœ›ÛHØÜ™Y[œË‘ÌMÜØÜ™Y[œÈ[\ÜÌM×Ù^˜TØÜ™Y[‚B‚B]\HÌM×Ù^˜TØÜ™Y[‹™Ù]
+ÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJJB‚BZYˆÎ‚‚BBZYˆ\™š[™
+˜š]˜]WÚ[™›ÈŠHOHLN‚‚BBB\™]\›ˆYB‚BY[ÙN‚‚BB]\H\œÜ]
+—ˆŠB‚BBY›ÜˆH[ˆ\‚‚BBBZYˆ	ÏÚYÙ]ÛÝ\˜ÙOHœÙ\ÜÚ[Û‹‘]™[Ó›ÝÈˆ™[™\H”›ÙÜ™\ÜÈ‰È[ˆH[™›Ý	Ü^X\H‰È[ˆN‚‚BBBB\™]\›ˆYB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ˜[ÙB‚BBB™Yˆœ›ÛPÙ™Ê
+N‚‚Z\ÓÚÈHÚXÚÔØÜ™Y[ŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJB‚ZYˆ›Ý\ÓÚÎ‚‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YHHB‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹œØ]™J
+B‚Yœ›ÛHØÜ™Y[œË‘ÌMÜØÜ™Y[œÈ[\ÜÌM×Ù^˜TØÜ™Y[‚B‚]\TØÜˆHÌM×Ù^˜TØÜ™Y[‹™Ù]
+ÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJJB‚ZYˆSWÔÔÕTˆ[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNN˜[YN‚‚B]\TØÜˆH\TØÜ‹œ™\XÙJÜØÜ™Y[ˆ‹ÔÕTˆ	H
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YJH
+ÈÜØÜ™Y[ˆŠB‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YHOHŒŽ‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YHOHŒˆŽ‚‚BBZ\ÓÚÈH‘UÔQQ	H
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒL˜[YKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLK˜[YKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒL˜[YJÎÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLK˜[YJB‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLË˜[YHOH]]ÐÛÛÜœÈŽˆ‚BBBZ\ÓÚÈHÙ]˜ÛÛÜŠ\ÓÚËÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLË˜[YJB‚BY[ÙN‚‚BBZ\ÓÚÈH‘UÔQQ	H
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒL˜[YKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLK˜[YJB‚B]\TØÜˆH\TØÜ‹œ™\XÙJÜØÜ™Y[ˆ‹\ÓÚÈ
+ÈÜØÜ™Y[ˆŠB‚]\H\TØÜ‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍË˜[YHOH]]ÐÛÛÜœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍ‹˜[YHOH]]ÐÛÛÜœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍK˜[YHOH]]ÐÛÛÜœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽ˜[YHOH]]ÐÛÛÜœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽK˜[YHOH]]ÐÛÛÜœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌ˜[YHOH]]ÐÛÛÜœÈŽ‚‚B]\TØÜˆH\œÜ]
+—ˆŠB‚B]\Hˆ‚‚BXY™ˆHˆ‚‚BZ\ÓÚÈH˜[ÙB‚BZ\ÓÚÌˆH˜[ÙB‚BZ\ÓÚÌÈH˜[ÙB‚BZ\ÓÚÍH˜[ÙB‚BY›ÜˆH[ˆ\TØÜŽ‚‚BBZYˆ	Ü™[™\H™ÌMÙ]Q›Ü›X]‰È[ˆH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽ˜[YHOH]]ÐÛÛÜœÈŽ‚‚BBB]\
+ÏHÙ]˜ÛÛÜŠKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽ˜[YJB‚BBY[Yˆ	ÏH™ÛØ˜[Ý\œ™[[YIÈ[ˆH[™›Ý\ÓÚÎ‚‚BBBZ\ÓÚÈHYB‚BBBXY™ˆHB‚BBY[Yˆ	ÏHœÙ\ÜÚ[Û‹Ý\œ™[Ù\šXÙIÈ[ˆH[™›Ý\ÓÚÌŽ‚‚BBBZ\ÓÚÌˆHYB‚BBBXY™ˆHB‚BBY[Yˆ	ÏHœÙ\ÜÚ[Û‹‘]™[Ó›ÝÈ‰È[ˆH[™›Ý	ÏH™ÌMÔÜÝ\ˆ‰È[ˆH[™›Ý\ÓÚÌÎ‚‚BBBZ\ÓÚÌÈHYB‚BBBXY™ˆHB‚BBY[Yˆ	ÏHœÙ\ÜÚ[Û‹‘]™[Ó™^‰È[ˆH[™›Ý\ÓÚÍ‚‚BBBZ\ÓÚÍHYB‚BBBXY™ˆHB‚BBY[Yˆ	ÙÌMÐÛØÚÕÕ^	È[ˆH[™\ÓÚÎ‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌ˜[YHOH]]ÐÛÛÜœÈˆ[™
+	Ï‘›Ü›X]Ž‰TÏ	È[ˆHÜˆ	Ï‘›Ü›X]‰TÏ	È[ˆJN‚‚BBBB]\
+ÏHÙ]˜ÛÛÜŠY™‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌ˜[YJH
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÈH˜[ÙB‚BBBY[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽK˜[YHOH]]ÐÛÛÜœÈŽ‚‚BBBB]\
+ÏHÙ]˜ÛÛÜŠY™‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽK˜[YJH
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÈH˜[ÙB‚BBBY[ÙN‚‚BBBB]\
+ÏHY™ˆ
+È—ˆˆ
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÈH˜[ÙB‚BBY[Yˆ
+	È”Ù\šXÙS˜[YH“˜[YO	È[ˆHÜˆ	È™ÌMÔÙ\šXÙS[H“[X™\‰È[ˆJH[™\ÓÚÌŽ‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍK˜[YHOH]]ÐÛÛÜœÈŽ‚‚BBBB]\
+ÏHÙ]˜ÛÛÜŠY™‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍK˜[YJH
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÌˆH˜[ÙB‚BBBY[ÙN‚‚BBBB]\
+ÏHY™ˆ
+È—ˆˆ
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÌˆH˜[ÙB‚BBY[Yˆ
+	ÙÌMÑ]™[[YIÈ[ˆHÜˆ	ÏH‘]™[˜[YIÈ[ˆJH[™
+\ÓÚÌÈÜˆ\ÓÚÍ
+N‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍ‹˜[YHOH]]ÐÛÛÜœÈˆ[™\ÓÚÌÎ‚‚BBBB]\
+ÏHÙ]˜ÛÛÜŠY™‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍ‹˜[YJH
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÌÈH˜[ÙB‚BBBY[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍË˜[YHOH]]ÐÛÛÜœÈˆ[™\ÓÚÍ‚‚BBBB]\
+ÏHÙ]˜ÛÛÜŠY™‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍË˜[YJH
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÍH˜[ÙB‚BBBY[ÙN‚‚BBBB]\
+ÏHY™ˆ
+È—ˆˆ
+ÈH
+È—ˆ‚‚BBBBZ\ÓÚÍH˜[ÙB‚BBBBZ\ÓÚÌÈH˜[ÙB‚BBY[ÙN‚‚BBB]\
+ÏH
+ÕYN˜Y™ˆ
+È—ˆ‹˜[ÙNˆˆŸVÚ\ÓÚÈÜˆ\ÓÚÌˆÜˆ\ÓÚÌÈÜˆ\ÓÚÍJH
+ÈH
+È—ˆ‚‚BBBZ\ÓÚÈH˜[ÙB‚BBBZ\ÓÚÌˆH˜[ÙB‚BBBZ\ÓÚÌÈH˜[ÙB‚BBBZ\ÓÚÍH˜[ÙB‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNË˜[YHOHŒŽ‚‚B]H[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNË˜[YJB‚B]\TØÜˆH\œÜ]
+—ˆŠB‚B]\Hˆ‚‚BY›ÜˆH[ˆ\TØÜŽ‚‚BBZYˆ›Ý	ÏØÜ™Y[‰È[ˆH[™	ÈÜÚ][ÛH‰È[ˆNˆ‚BBB]\
+ÏHØ[ÖJK	ÈÜÚ][ÛH‰ÊH
+È—ˆ‚‚BBY[ÙN‚‚BBB]\
+ÏHH
+È—ˆ‚‚ZYˆSWÔÓQT–ÌHÜˆSWÔÓQT–ÌWN‚‚B]\TØÜˆH\œÜ]
+—ˆŠB‚B]\Hˆ‚‚B]H	ÏÚYÙ]ÛÝ\˜ÙOHœÙ\ÜÚ[Û‹‘]™[Ó›ÝÈˆ™[™\H”›ÙÜ™\ÜÈ‰Â‚BY›ÜˆH[ˆ\TØÜŽ‚‚BBZYˆ[ˆN‚‚BBBZ\ÓÚÌˆH	Ü^X\H‰È[ˆH[™›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒ‹˜[YB‚BBBZYˆ›Ý	Ü^X\H‰È[ˆHÜˆ\ÓÚÌŽ‚‚BBBBZYˆ\ÓÚÌŽ‚‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YHH˜[ÙB‚BBBBBZ\ÓÚÈHKœÜ]
+	Ü^X\H‰ÊB‚BBBBBZ\ÓÚÌˆH\ÓÚÖÌWKœÜ]
+	È	ÊB‚BBBBBZ\ÓÚÌ–ÌHH	ÉÂ‚BBBBBZ\ÓÚÈH™KœÝXŠˆ—ÊÈ‹ˆ‹\ÓÚÖÌH
+È	È	Ëš›Ú[Š\ÓÚÌŠJB‚BBBBBZ\ÓÚÌˆH
+
+\ÓÚËœÜ]
+	ÜÚ^™OH‰ÊVÌWJKœÜ]
+	Ë	ÊVÌWJKœÝš\
+
+BBBBBBB‚BBBBBZ\ÓÚÌˆH
+\ÓÚËœÜ]
+	È‰ÊVÌJKœÝš\
+
+B‚BBBBBZYˆ\ÓÚÌ‹š\ÙYÚ]
+
+N‚‚BBBBBBZ\ÓÚÌˆH\ÓÚÌ‹ÌˆHÂ‚BBBBBY[ÙN‚‚BBBBBBZ\ÓÚÌˆHB‚BBBBBZ\ÓÚÈHØ[ÖJK\ÓÚË	ÜÚ^™OH‰ËYJB‚BBBBBZ\ÓÚÈHØ[ÖJ\ÓÚÌ‹\ÓÚË	ÜÜÚ][ÛH‰ÊB‚BBBBBZHH\ÓÚËœ™\XÙJ	Ý˜[œÜ\™[HŒH‰Ë	Ý˜[œÜ\™[HŒ‰ÊB‚BBBBZYˆSWÔÓQT–ÌN‚‚BBBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒM˜[YHOH]]ÐÛÛÜœÈŽ‚BB‚BBBBBBZ\ÓÚÈHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒM˜[YBBB‚BBBBBY[ÙN‚BB‚BBBBBBZ\ÓÚÈHÚ]H‚BBBB‚BBBBBZHHÙ]˜ÛÛÜŠK\ÓÚÊB‚BBBBZYˆSWÔÓQT–ÌWN‚‚BBBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMK˜[YHOH]]ÐÛÛÜœÈŽ‚BB‚BBBBBBZ\ÓÚÈHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMK˜[YBBB‚BBBBBY[ÙN‚BB‚BBBBBBZ\ÓÚÈHˆÌMMQˆ‚‚BBBBBZHHÙ]˜ÛÛÜŠK\ÓÚËYJB‚BB]\
+ÏHH
+È—ˆ‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒË˜[YN‚‚B]\TØÜˆH\œÜ]
+—ˆŠB‚B]\Hˆ‚‚BY›ÜˆH[ˆ\TØÜŽ‚‚BBZYˆ
+	ÏSX™[	È[ˆH[™	Ý^H‰È[ˆH[™
+	È‹H‰È[ˆHÜˆ	Î‰È[ˆJJHÜˆ
+	ÏT^X\	È[ˆH[™
+	ÜÛY\‹ÜÚYÉÈ[ˆHÜˆ	ÚXÛÛœËØ˜\—Ø˜XÚÉÈ[ˆJJN‚‚BBBZYˆ	ÏSX™[	È[ˆN‚‚BBBBZ\ÓÚÈHKœ™\XÙJ	ÏSX™[	Ë	ÏÚYÙ]ÛÝ\˜ÙOHœÙ\ÜÚ[Û‹‘œ›Û[™Ý]\Èˆ™[™\H‘š^YX™[ˆ	ÊB‚BBBY[ÙN‚‚BBBBZ\ÓÚÈHKœ™\XÙJ	ÏT^X\	Ë	ÏÚYÙ]ÛÝ\˜ÙOHœÙ\ÜÚ[Û‹‘œ›Û[™Ý]\Èˆ™[™\H”^X\ˆ	ÊB‚BBBZ\ÓÚÈH\ÓÚËœ™\XÙJ	ËÏ‰Ë	Ï—‰ÊB‚BBBZYˆ	ÔÓ”‰È[ˆK\\Š
+HÜˆ	ÔIÈ[ˆHÜˆ	È‹H‰È[ˆN‚‚BBBBZ\ÓÚÌˆH	ÔÛœ“[IÂ‚BBBY[Yˆ	Ð‘T‰È[ˆK\\Š
+N‚‚BBBBZ\ÓÚÌˆH	Ð™\“[IÂ‚BBBY[ÙN‚‚BBBBZ\ÓÚÌˆH	ÐYØÓ[IÂ‚BBBZHH\ÓÚÈ
+È	ÏÛÛ™\\OH™ÌMÑ^˜TÛÝ\˜ÙH‰\ÏØÛÛ™\—ÛÛ™\\OH•˜[YT˜[™ÙHŒKMLÍØÛÛ™\—ÛÛ™\\OHÛÛ™][Û˜[ÚÝÒYHˆÏ—ÝÚYÙ]‰È	H\ÓÚÌ‚‚BB]\
+ÏHH
+È—ˆ‚‚HÈTÕMNˆ[™›Ô[™[Z\œ›ÜœÈH™YH[™\[™[˜]]™H˜Y[ÈÜX™[Ë‚‚HÈ[Ú\™HKÚZYÚÝ˜[YÛŽÈÛ›HHÛØÚÈ\Ù\ÈH\™Ù\ˆ›Û‚‚]\HÙ]ÚYQPÓJ\
+B‚]Ø\™\—Ü˜Y[×ÝÜHˆˆ‚‚BOÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H•Ø\™\”˜Y[Ò[™›ÕÜˆÜÚ][ÛHŒ‹ÈˆÚ^™OHŒLNˆ›ÛH”š]™MÌÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÑ‘‘LMHˆ[YÛH›Yˆ˜[YÛH˜Ù[\ˆˆ›ÕÜ˜\HŒHˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHŒŒˆÏ‚‚BOÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H•Ø\™\”˜Y[Ò[™›ÕÜˆÜÚ][ÛHÎLÈˆÚ^™OHŒÍNˆ›ÛH”š]™MÌÎˆ›Ü™YÜ›Ý[™ÛÛÜHˆÑ‘‘LMHˆ[YÛH˜Ù[\ˆˆ˜[YÛH˜Ù[\ˆˆ›ÕÜ˜\HŒHˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHŒŒˆÏ‚‚BOÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H•Ø\™\”˜Y[Ò[™›ÕÜˆÜÚ][ÛHŒLMÌÈˆÚ^™OHŒÌNˆ›ÛH”š]™MÌÌˆ›Ü™YÜ›Ý[™ÛÛÜHˆÑ‘‘LMHˆ[YÛHœšYÚˆ˜[YÛH˜Ù[\ˆˆ›ÕÜ˜\HŒHˆ˜[œÜ\™[HŒHˆ”ÜÚ][ÛHŒŒˆÏ‚‚Hˆˆ‚‚\™]\›ˆ\œ™\XÙJÜØÜ™Y[ˆ‹Ø\™\—Ü˜Y[×ÝÜ
+ÈÜØÜ™Y[ˆŠB‚™YˆØ[ÖJËÏS›Û™JN‚‚XHHœÜ]
+
+B‚XˆHVÌWKœÜ]
+	È‰ÊB‚XÈH–ÌKœÜ]
+	Ë	ÊB‚ZYˆ[ŠÊHOHŽ‚‚BXÖÌWHHÖÌWKœÝš\
+
+B‚BZYˆÖÌWKš\ÙYÚ]
+
+N‚‚BBZYˆÎ‚‚BBBXÖÌWHHÝŠÊB‚BBY[ÙN‚‚BBBXÖÌWHHÝŠ[
+[
+ÖÌWJJÞÊJB‚X–ÌHHÖÌH
+È	Ë	È
+ÈÖÌWB‚\™]\›ˆVÌJÈ
+È	È‰Ëš›Ú[ŠŠBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™Yˆ\œÙQXÛR[™›Ó[™J[™KÚ]HŽˆŠN‚‚ZYˆ[™K—×ØÛÛZ[œ××ÊÚ]
+N‚‚B[[™HH[™KœÜ]
+Ú]
+VÌWB‚B[[™HH[™Kœ™\XÙJ—ˆ‹ˆŠB‚B\™]\›ˆˆ‹š›Ú[Š[™KœÝš\
+
+KœÜ]
+
+JB‚Y[ÙN‚‚B\™]\›ˆˆ‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™Yˆ\ÒT
+\
+N‚‚\™]H‚^H\œÝš\
+
+KœÜ]
+‹ˆŠB‚ZYˆ[Š
+HOH‚‚BY›ÜˆH[ˆ‚‚BBZYˆKš\ÙYÚ]
+
+N‚‚BBB]H[
+JB‚BBBZYˆH[™HMNˆ‚BBBB\™]
+ÏHB‚\™]\›ˆ™]OH‚™Yˆ[\›™]
+˜[S›Û™JN‚‚]žN‚‚BXÚÚÈHÛØÚÙ]
+Q—ÒS‘UÓÐÒ×ÔÕ‘PSJB‚BXÚÚËœÙ][Y[Ý]
+JBB‚BZYˆ˜[\È›Û™N‚‚BB]˜[HÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YB‚B\™]\›ˆ›Ý›ÛÛ
+ÚÚË˜ÛÛ›™XÝÙ^
+
+˜[
+JJB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ˜[ÙBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈBB™YˆÚÚÔØÜ›ÛŒ
+
+N‚‚Y[˜HH˜[ÙB‚\]HUÓ”U
+ÈœÚÚ[‹œH‚‚ZYˆš[Q^\ÝÊ]
+N‚‚B]žN‚‚BB\ˆHÜ[Š]œˆŠB‚BBY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚B‚BBBZYˆ•˜[YT^X\›ÝÛRZYÚˆ[ˆ[™N‚B‚BBBBY[˜HHYB‚BBBBXœ™XZÂ‚BB\‹˜ÛÜÙJ
+H‚BY^Ù\ˆ\ÜÈB‚ZYˆ[˜N‚‚BX[[™\ÈHˆ‚‚B]žN‚‚BB\ˆHÜ[ŠÒÒS–SœˆŠB‚BBY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBBZYˆKK]Ú[™ÝÜÝ[\ØÜ›Û˜\ˆYWˆˆ[ˆ[™HÜˆÝÚ[™ÝÜÝ[\ØÜ›Û˜\‹KOˆˆ[ˆ[™N‚‚BBBB[[™HH[™Kœ™\XÙJˆKKH‹ˆŠKœ™\XÙJ‹KH‹ˆŠB‚BBBX[[™\ÈH[[™\È
+È[™B‚BB\‹˜ÛÜÙJ
+B‚BBWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚BY^Ù\ˆ\ÜÂ‚\™]\›ˆ[˜BBBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ]Ó“Ñ‘Š
+N‚‚Y[˜HH˜[ÙHB‚ZYˆSWÓÓ“Ñ‘Ž‚‚BX[[™\ÈHˆ‚‚B]žN‚‚BB\ˆHÜ[ŠÒÒS–SœˆŠB‚BBY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBBZYˆ	ÜÝÚ]Ú^X\	È[ˆ[™HÜˆ	ØÛÛ™šYÈÛ”^X\IÈ[ˆ[™N‚‚BBBBZYˆ
+	ÈKKIÈ[ˆ[™HÜˆ	ËKIÈ[ˆ[™JH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNL˜[YN‚‚BBBBB[[™HH[™Kœ™\XÙJˆKKH‹ˆŠKœ™\XÙJ‹KH‹ˆŠB‚BBBBBY[˜HHYB‚BBBBY[Yˆ›Ý
+	ÈKKIÈ[ˆ[™HÜˆ	ËKIÈ[ˆ[™JH[™›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNL˜[YN‚‚BBBBB[[™HH[™Kœ™\XÙJÝÈ‹KK\ÝÈŠKœ™\XÙJÜÝÚ]Ú^X\ˆ‹ÜÝÚ]Ú^X\KOˆŠKœ™\XÙJÛÛ™šYÈ‹KKXÛÛ™šYÈŠKœ™\XÙJ‹Ïˆ‹‹ËKOˆŠB‚BBBBBY[˜HHYB‚BBBX[[™\È
+ÏH[™B‚BB\‹˜ÛÜÙJ
+B‚BBWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚BY^Ù\ˆ\ÜÂ‚\™]\›ˆ[˜BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ•ÐT‘T—ÐTÔÑUÓPS’Q‘TÕÕT“HšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÝØ\™\‹[[Ù\›š^˜][Û‹]ÛÜšËØ\ÜÙ]ËÝØ\™\‹ÙÝÛ›ØYËšœÛÛˆ‚‚™YˆÙ]Ø\™\\ÜÙ]Ê
+N‚‚Hˆˆ“ØYHØ\™\ˆÝÛ›ØYØ][ÙÈÝ™\ˆÈÚ]Ý]™]\Ú[™ÈHÝ[HØXÚH[žK‚‚‚T™]\›œÈ
+\œ›Ü—ÛY\ÜØYÙK\ÜÙ]×ÙXÝ
+Kˆ›ÈÙ\YšXØ]H™\šYšXØ][Ûˆ\È\ØX›Y‚‚Hˆˆ‚‚]žN‚‚B\Ù\H‰ˆˆYˆÈˆ[ˆÐT‘T—ÐTÔÑUÓPS’Q‘TÕÕT“[ÙHÈ‚‚B]\›H‰\É\ØØIYˆ	H
+ÐT‘T—ÐTÔÑUÓPS’Q‘TÕÕT“Ù\[
+[YLK[YJ
+JJB‚B\™\HH™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹ÌKŒŒˆ‹XØÙ\Žˆ˜\XØ][Û‹ÚœÛÛˆ‹ØXÚKPÛÛ›ÛŽˆ››ËXØXÚK›Ë\ÝÜ™KX^XYÙOL‹”˜YÛXHŽˆ››ËXØXÚHŸJB‚B]Ú]\›Ü[Š™\K[Y[Ý]LMJH\È™\ÜÛœÙN‚‚BBZYˆÝŠ™\ÜÛœÙK™Ù]\›
+
+JHOH\›‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™H\ÜÙ]X[šY™\Ý™Y\™XÝŠB‚BBY]HHœÛÛ‹›ØYÊ™\ÜÛœÙKœ™XY
+
+K™XÛÙJ]‹NŠJB‚BX\ÜÙ]ÈH]K™Ù]
+˜\ÜÙ]È‹ßJB‚BZYˆ›Ý\Ú[œÝ[˜ÙJ\ÜÙ]ËXÝ
+N‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[Y\ÜÙ]ÈØ][ÙÈŠB‚BX\ÜÙ]ÈHXÝ
+\ÜÙ]ÊB‚BX\ÜÙ]ÖÈ—×Ø]^[X\žWÚXœšY×È—HH]K™Ù]
+˜]^[X\žWÚXœšYŠB‚B\™]\›ˆˆ‹\ÜÙ]Â‚Y^Ù\^Ù\[Ûˆ\È\œŽ‚‚B\™]\›ˆÊ”ÛÜœžKÝÛ›ØYÙ\™\ˆ\È[˜]˜Z[X›KÚXÚÈ[Ý\ˆ[\›™]ÛÛ›™XÝ[ÛˆHHHŠH
+Èˆˆ
+ÈÝŠ\œŠKßB‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆY[\Ù[
+
+N‚‚XHH
+È’XÛÛœÈŽˆŒH‹“\ÝŽˆŒˆ‹Ú]QÈŽˆŒÈ‹“\Ý[™XÛÛˆŽˆÈ‹’XÛÛœÈ˜\ˆŽˆŽ‹’XÛÛœÈšYÚŽˆŽH‹œÚ[\HQÈŽˆŒL‹”QÌˆŽˆŒLH‹”QÍŽˆŒLÈ‹“LˆŽˆŒM‹“LÈŽˆŒMˆŸVÝJB‚ZYˆHOHŒMˆˆ[™TÔÎ[™\ÐUŽ‚‚BXHHŒMH‚‚\™]\›ˆBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™Yˆ\Ý\ŠÚ]
+N‚‚YˆH›Û™B‚]žN‚‚BYˆH\Ý\ŠÚ]
+B‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ‚‚B™YˆÚXÚÔØÜ™Y[Š[TØÜŠN‚‚ZYˆ[TØÜˆOHN‚‚B\™]\›ˆYB‚Z\ÓÚÈH‚Z\Ü]HYB‚\]H	É\ËÙ^˜TØÜ™Y[œÌMËÉ\ÉÈ	H
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YK[TØÜŠB‚\]ÒÈH˜[ÙB‚[[HH‚[[SÒÈH‚]žN‚‚BZYˆÜËœ]™^\ÝÊ]
+N‚‚BB\]ÒÈHYB‚BBYˆH\Ý\Š]
+B‚BYœ›ÛHØÜ™Y[œË‘ÌMÜØÜ™Y[œÈ[\ÜÌM×Ù^˜TØÜ™Y[‚B‚B]\HÌM×Ù^˜TØÜ™Y[‹™Ù]
+ÝŠ[TØÜŠJB‚B]\H\œÜ]
+—ˆŠB‚BY›Üˆ[™H[ˆ\‚‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘^˜R[™›ÌMÈ‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏÜØÜ™Y[‰ÊN‚‚BBBZ\ÓÚÈ
+ÏHB‚BBZYˆ[™K—×ØÛÛZ[œ××Ê
+	Ù^˜TØÜ™Y[œÌMËÉ\ËÉÈ	H[TØÜŠJN‚‚BBB[[H
+ÏHB‚BBBZ\Ü]H˜[ÙB‚BBBZYˆ]ÒÈ[™Ž‚‚BBBBY›Üˆ[ˆŽ‚‚BBBBBZYˆ[ˆ[™N‚‚BBBBBB[[SÒÈ
+ÏHB‚BBBBBBXœ™XZÂ‚BZYˆ[HOH[SÒÎ‚‚BBZ\Ü]HYB‚Y^Ù\ˆ\Ü]H˜[ÙB‚\™]\›ˆ\ÓÚÈOHˆ[™\Ü]ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚXÚÒXÛÛœÊ[JN‚‚YÛØ˜[[XÛÛœÂ‚]ÝH‚\]HÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YB‚Y›Üˆ[ˆ[XÛÛœÎ‚‚BZYˆš[Q^\ÝÊ]
+È‹Û[Ü™WÚXÛÛœËÚWÝ\KHˆ
+ÈÝŠ[JH
+È‹Èˆ
+È
+È‹œ™ÈŠN‚‚BB]Ý
+ÏHB‚\™]\›ˆÝOH[Š[XÛÛœÊBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂBBBBB™YˆÚ›Ù[ÚÚÊ
+N‚‚ZYˆš[Q^\ÝÊÒS”ÑSÑ’SJH[™š[Q^\ÝÊÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠJN‚‚BYˆHÜ[ŠÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠKœˆŠKœ™XY
+
+B‚BZYˆ‹™š[™
+™Yˆ˜\
+Ù[‹œ™YS›Û™K›ÛÝS›Û™HŠHOHLN‚‚BBYˆHÜ[ŠÒS”ÑSÑ’SKœˆŠKœ™XY
+
+B‚BBZYˆ‹™š[™
+™Yˆ˜\
+Ù[‹œ™YS›Û™K›ÛÝS›Û™HŠHOHLN‚‚BBBZYˆ›ÝÚ›Ù[]Ú
+˜[ÙJN‚‚BBBB\Ù]Ñ‘ÛÙ™Š
+B‚BBBB\™]\›ˆ‚‚Y[˜SY[THH‚ZYˆš[Q^\ÝÊÒS”ÑSÑ’SJN‚‚B\ˆHÜ[ŠÒS”ÑSÑ’SKœˆŠB‚BY[˜HH˜[ÙB‚BY[˜UHH˜[ÙB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ[˜N‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê‚BBBZYˆÛ\È›Û™HÜˆ™YˆOHÛˆŠN‚‚BBBBY[˜SY[TH
+ÏHB‚BBBY[Yˆ[™K—×ØÛÛZ[œ××Ê‚BBBZYˆ™YˆOHÛˆŠN‚‚BBBBY[˜SY[TH
+ÏHL‚BBBY[Yˆ[™K—×ØÛÛZ[œ××ÊšYˆ™Yˆ\È›Û™HÜˆ™YˆOHœ™YˆÜˆ›Ü˜ÙYˆŠN‚‚BBBBY[˜SY[TH
+ÏHB‚BBBY[Yˆ[™K—×ØÛÛZ[œ××ÊœÙ[‹œÙ\ÜÚ[Û‹›˜]‹œ^TÙ\šXÙJ\ÝÙ\šXÙJHÜ™]™\ŠN‚‚BBBBY[˜SY[TH
+ÏHB‚BBZYˆ[™K—×ØÛÛZ[œ××ÊšYˆ›Ý›ÛÝÜˆ›Ý
+›ÛÝ™›YÜÈ	ˆTÙ\šXÙT™Y™\™[˜ÙKš\ÑÜ›Ý\
+NˆŠN‚‚BBBY[˜HHYB‚BBZYˆ[™K—×ØÛÛZ[œ××ÊšYˆÛÛ™šYË\ØYÙKž˜\Ü\˜[YH[™ŠN‚‚BBBY[˜UHHYB‚B\‹˜ÛÜÙJ
+B‚ZYˆ
+›Ý[˜UH[™[˜SY[THOHÊHÜˆ
+[˜UH[™[˜SY[THOH
+N‚‚B\™]\›ˆB‚Y[Yˆ[˜SY[THˆHÜˆ
+[˜UH[™[˜SY[THOHÊN‚‚BZYˆÚ›Ù[]Ú
+˜[ÙJN‚‚BBZYˆ›ÝÚ›Ù[]Ú
+
+N‚‚BBB\Ù]Ñ‘ÛÙ™Š
+B‚BBB\™]\›ˆ‚‚BBY[ÙN‚‚BBB\™]\›ˆÂBBB‚BY[ÙN‚‚BB\Ù]Ñ‘ÛÙ™Š
+B‚BB\™]\›ˆ‚‚\™]\›ˆˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚ›Ù[]Ú
+\™XÝUYJN‚‚HÈØ\™\ˆ]›Û][ÛˆØY™]H[Nˆ™]™\ˆ]Ú[XYÙK[ÝÛ™YÚ[›™[Ù[XÝ[Û‹œB‚HÈÛˆ[Ù\›ˆÜ[U‹ˆ™\Ù\™HHYØXÞHÙ][™È›ÜˆÛÛÛ™šYÝ\˜][ÛœË‚HÈ]\ØX›H][œÝXYÙˆ[ÙYžZ[™ÈÛÜ™H[šYÛXLˆ]Ûˆ][[YK‚‚ZYˆ\ÐUŽ‚‚B\Ù]Ñ‘ÛÙ™ŠŒŠB‚B\™]\›ˆ˜[ÙB‚ZYˆ›Ý\™XÝ[™š[Q^\ÝÊÒS”ÑSÑ’SJH[™š[Q^\ÝÊÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠJN‚‚B\Ú][˜ÛÜLŠÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠKÒS”ÑSÑ’SJB‚B\™]\›ˆYB‚Y[Yˆ›Ý\™XÝ‚‚B\™]\›ˆ˜[ÙBB‚ZYˆ›Ýš[Q^\ÝÊÒS”ÑSÑ’SJNˆ‚B\™]\›ˆ˜[ÙB‚]ÒHÚ›Ù[ÚÚÊ
+B‚ZYˆÒOHHÜˆÒOHÎ‚‚B\™]\›ˆYB‚Y[YˆÒOHŽ‚‚B\™]\›ˆ˜[ÙB‚\Ú][˜ÛÜLŠÒS”ÑSÑ’SKÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠJB‚ZYˆ›Ýš[Q^\ÝÊÒS”ÑSÑ’SJHÜˆ›Ýš[Q^\ÝÊÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠJN‚‚B]žN‚‚BB[ÜËœ™[[Ý™JÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšL‹œHŠJB‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\\ÜÂ‚B\™]\›ˆ˜[ÙB‚\ˆHÜ[ŠÒS”ÑSÑ’SKœˆŠB‚Y[˜HH˜[ÙB‚Y[˜LˆH˜[ÙB‚Xœ™XZÔ™XYH˜[ÙB‚X[[™\ÈHˆ‚‚\ÙXÛÛ™Üš]HH‚Y[˜LÈH˜[ÙB‚Y›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BZYˆ[™K—×ØÛÛZ[œ××Ê˜ÛÛ™šYË›Y\›[ˆŠN‚‚BBXœ™XZÔ™XYHYB‚BBXœ™XZÂ‚BZYˆ[˜H[™[™K—×ØÛÛZ[œ××Ê‚BBB\Ù[‹ž˜\
+
+HŠN‚‚BB[[™HH[™Kœ™\XÙJ‚BBB\Ù[‹ž˜\
+
+H‹‚BBB[ÛHÙ[‹œÙ\ÜÚ[Û‹›˜]‹™Ù]Ý\œ™[T^Z[™ÔÙ\šXÙT™Y™\™[˜ÙJ
+W‚BBB\Ù[‹œÙ\ÜÚ[Û‹›˜]‹œ^TÙ\šXÙJ™YŠW‚BBBZYˆÛ\È›Û™HÜˆ™YˆOHÛ—‚BBBB\Ù[‹ž˜\
+›Ü˜ÙYUYJHŠB‚BY[Yˆ[˜H[™[™K—×ØÛÛZ[œ××Ê‚BBB\Ù[‹˜\ØÚZSÙ™Š
+HŠN‚‚BB[[™HH[™Kœ™\XÙJ‚BBB\Ù[‹˜\ØÚZSÙ™Š
+H‹‚BBBB\Ù[‹˜\ØÚZSÙ™Š
+HŠB‚BY[Yˆ[˜H[™[™K—×ØÛÛZ[œ××Ê‚BBB\Ù[‹˜ÛÜÙJ™YŠHŠN‚‚BB[[™HH[™Kœ™\XÙJ‚BBB\Ù[‹˜ÛÜÙJ™YŠH‹‚BBBB\Ù[‹˜ÛÜÙJ™YŠHŠB‚BY[Yˆ[˜H[™[™K—×ØÛÛZ[œ××Ê‚YYˆ˜\
+Ù[ŠNˆŠN‚‚BB[[™HH[™Kœ™\XÙJ‚YYˆ˜\
+Ù[ŠNˆ‹‚YYˆ˜\
+Ù[‹›Ü˜ÙYQ˜[ÙJNˆŠB‚BY[Yˆ[˜H[™[™K—×ØÛÛZ[œ××Ê‚YYˆ˜\
+Ù[‹œ™YS›Û™K›ÛÝS›Û™JNˆŠN‚‚BB[[™HH[™Kœ™\XÙJ‚YYˆ˜\
+Ù[‹œ™YS›Û™K›ÛÝS›Û™JNˆ‹‚YYˆ˜\
+Ù[‹œ™YS›Û™K›ÛÝS›Û™K›Ü˜ÙYQ˜[ÙJNˆŠB‚BY[Yˆ[˜H[™[™K—×ØÛÛZ[œ××Ê‚BZYˆ™Yˆ\È›Û™HÜˆ™YˆOHœ™YŽˆŠN‚‚BB[[™HH[™Kœ™\XÙJ‚BZYˆ™Yˆ\È›Û™HÜˆ™YˆOHœ™YŽˆ‹‚BZYˆ™Yˆ\È›Û™HÜˆ™YˆOHœ™YˆÜˆ›Ü˜ÙYˆŠB‚BB\ÙXÛÛ™Üš]H
+ÏHB‚BBZYˆ›Ý[˜LÎˆ‚BBBY[˜HH˜[ÙB‚BBY[Yˆ[˜LÈ[™ÙXÛÛ™Üš]HOHŽˆ‚BBBY[˜HH˜[ÙB‚BY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê‚B\Ù[‹˜ÛÜÙJ›Û™JHŠN‚‚BB[[™HH[™Kœ™\XÙJ‚B\Ù[‹˜ÛÜÙJ›Û™JH‹‚B[\ÝÙ\šXÙOYTÙ\šXÙT™Y™\™[˜ÙJÙ[‹›\ÝÙ\šXÙK˜[YJW‚BZYˆ\ÝÙ\šXÙK˜[Y
+
+N—‚BB\Ù[‹œÙ\ÜÚ[Û‹›˜]‹œ^TÙ\šXÙJ\ÝÙ\šXÙJHÜ™]™\‚B\Ù[‹˜ÛÜÙJ›Û™JHŠB‚BBY[˜LˆH˜[ÙB‚BZYˆ[™K—×ØÛÛZ[œ××ÊšYˆ›Ý›ÛÝÜˆ›Ý
+›ÛÝ™›YÜÈ	ˆTÙ\šXÙT™Y™\™[˜ÙKš\ÑÜ›Ý\
+NˆŠN‚‚BBY[˜HHYB‚BY[Yˆ[™K—×ØÛÛZ[œ××Ê‚BY[YˆÙ[‹œ™]™\[ÙHOHSÑWÔQSÎˆŠN‚‚BBY[˜LˆHYB‚BY[Yˆ[™K—×ØÛÛZ[œ××ÊšYˆÛÛ™šYË\ØYÙKž˜\Ü\˜[YH[™ŠN‚‚BBY[˜LÈHYB‚BX[[™\ÈH[[™\È
+È[™B‚\‹˜ÛÜÙJ
+B‚ZYˆœ™XZÔ™XY‚‚B\™]\›ˆ˜[ÙB‚ZYˆ›ÝØ]ÛZXÕÜš]U^
+ÒS”ÑSÑ’SK[[™\ÊN‚‚B\™]\›ˆ˜[ÙB‚Y[˜HHÚ›Ù[ÚÚÊ
+B‚ZYˆ[˜HOH‚‚B\Ú][˜ÛÜLŠÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠKÒS”ÑSÑ’SJB‚B]žN‚‚BB[ÜËœ™[[Ý™JÒS”ÑSÑ’SKœ™\XÙJ‹œH‹‹[ÜšLMËœHŠJB‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\\ÜÂ‚Y[Yˆ[˜HOHN‚‚B\™]\›ˆYB‚\™]\›ˆ˜[ÙBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÜš]TÝ[PÙ™ÊØÜ“[K[JN‚‚\Ý]HH˜[ÙB‚]žN‚‚BX[[™\ÈHˆ‚‚BY›Ý[™H˜[ÙB‚BYˆHÜ[ŠÐÔ‘QS”ÔU
+È™ÌMÔØÜ™Y[œË˜Ù™È‹œˆŠB‚BY›Üˆ[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆœ™\XÙJ—ˆ‹ˆŠKœÝ\ÝÚ]
+ÝŠØÜ“[JJÈ‹HŠN‚‚BBBX[[™\È
+ÏHÝŠØÜ“[JJÈ‹HŠÜÝŠ[JJÈ—ˆ‚‚BBBY›Ý[™HYB‚BBY[ÙN‚B‚BBBX[[™\È
+ÏH‚BZYˆ›Ý›Ý[™‚‚BBX[[™\È
+ÏHÝŠØÜ“[JJÈ‹HŠÜÝŠ[JJÈ—ˆ‚‚BY‹˜ÛÜÙJ
+B‚B\Ý]HHØ]ÛZXÕÜš]U^
+ÐÔ‘QS”ÔU
+È™ÌMÔØÜ™Y[œË˜Ù™È‹[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆÝ]BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚXÚÔÝ[J[JN‚‚X[Ý[\ÈHÉØ—Ø‰Ë	Ø—Ø›	Ë	Ø—Øœ‰Ë	Ø—Û	Ë	Ø—Ü‰Ë	Ø—Ý	Ë	Ø—Ý‰Ë	Ø—Ý	×B‚]ÝH‚Y›Üˆ[ˆ[Ý[\Î‚‚BYš[S˜[YHHÒÒS”U
+ÈœÝ[KÈˆ
+ÈÝŠ[JH
+È‹Èˆ
+È
+È‹œ™È‚‚BZYˆš[Q^\ÝÊš[S˜[YJN‚‚BB]Ý
+ÏHB‚ZYˆÝOH‚‚B\™]\›ˆYB‚Y[ÙN‚‚B\™]\›ˆ˜[ÙBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂBBB™YˆÚXÚÔÝ[Q[
+ØÜ“[KÙ™ÏQ˜[ÙJN‚‚YYˆÙ]Y”Ý[JØÜ‹Ù™ÊN‚‚B[\ÙÈHÈ‚‚BZYˆÚXÚÔÝ[JJN‚B‚BBZYˆÜš]TÝ[PÙ™ÊØÜ‹ŒHŠN‚‚BBBZYˆÙ™Î‚‚BBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YHHB‚BBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\œØ]™J
+B‚BBB[\ÙÈHŒH‚‚B\™]\›ˆ\ÙÂ‚\Ý[HHLB‚]žN‚‚BYˆHÜ[ŠÐÔ‘QS”ÔU
+È™ÌMÔØÜ™Y[œË˜Ù™È‹œˆŠB‚BY›Üˆ[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆœ™\XÙJ—ˆ‹ˆŠKœÝ\ÝÚ]
+ÝŠØÜ“[JJÈ‹HŠN‚‚BBB^HœÝš\
+
+KœÜ]
+‹HŠB‚BBB\Ý[HH[
+ÌWJB‚BBBXœ™XZÂB‚BY‹˜ÛÜÙJ
+B‚Y^Ù\ˆ\ÜÂ‚[\ÙÌˆHÈ‚‚XÛÛÜˆHˆÌ˜Ø˜ÙŒ‚‚ZYˆÝ[HOHLH[™Ý[HPVPÓÓ”Î‚‚BZYˆÚXÚÔÝ[JÝ[JN‚BB‚BB[\ÙÌˆHÝŠÝ[JB‚BBZYˆÙ™Î‚‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YHHÝ[H‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\œØ]™J
+B‚BY[ÙN‚‚BB[\ÙÌˆHÙ]Y”Ý[JØÜ“[KÙ™ÊB‚BXÛÛÜˆH™XYÛÛÜ”Ý[J\ÙÌŠB‚Y[ÙN‚‚B[\ÙÌˆHÙ]Y”Ý[JØÜ“[KÙ™ÊB‚ZYˆÙ™Î‚‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YHHÛÛÜˆ‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\KœØ]™J
+B‚\™]\›ˆ\ÙÌ‹ÛÛÜ‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™Yˆ™XYÛÛÜ”Ý[J[JN‚‚XÛÛÜˆHˆÌ˜Ø˜ÙŒ‚‚]žN‚‚BYˆHÜ[Š‰\ÜÝ[KÉ\ËÝ]WØÛÛÜ‹˜Ù™Èˆ	H
+ÒÒS”U[JKœˆŠKœ™XY[™J
+B‚BYˆH‹œ™\XÙJ—ˆ‹ˆŠKœÝš\
+
+KœÜ]
+
+VÌH‚BZYˆ[ŠŠHOHN‚‚BBXÛÛÜˆH[
+‹œ™\XÙJˆÈ‹ŒŠKMŠB‚BBXÛÛÜˆH‚‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆÛÛÜ‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ]Y[T[ÊÚ]H›™]ÌMÈŠN‚‚HÈ[Ù\›ˆÜ[UˆÝÛœÈØÜ™Y[œËÓY[KœKˆÈ›ÝÝØ\[XYÙH]Ûˆ[Ù[\È][[YK‚‚ZYˆ\ÐUŽ‚‚B\™]\›ˆ˜[ÙB‚]Ú]ÛH›ÜšYÌMÈ‚‚ZYˆÚ]OH›ÜšYÌMÈŽ‚‚B]Ú]ÛH›™]ÌMÈ‚‚\]HÐÔ‘QS”ÔU
+È“Y[H‚‚Y[˜HH˜[ÙB‚Y›Üˆ[ˆÉËœIË	Ëœ[ÉË	ËœXÉ×Nˆ‚B]Ú]™]ÈH]
+È‹Hˆ
+ÈÚ]
+È‚BZYˆš[Q^\ÝÊÚ]™]ÊN‚‚BBY[˜HHYB‚BBXœ™XZÂ‚ZYˆ[˜N‚‚BY›Üˆ[ˆÉËœIË	Ëœ[ÉË	ËœXÉ×N‚‚BBYˆH]
+È‚BBZMˆH]
+È‹[™]ÌMˆˆ
+È‚BBZNH]
+È‹[™]ÌNˆ
+È‚BBZYˆš[Q^\ÝÊŠN‚‚BBBZYˆ›ÜšYÈˆ[ˆÚ]Û[™
+›Ýš[Q^\ÝÊMŠHÜˆ
+š[Q^\ÝÊMŠH[™ÜËœ]™Ù]Ú^™JMŠHOHÜËœ]™Ù]Ú^™JŠJJH[™
+›Ýš[Q^\ÝÊN
+HÜˆ
+š[Q^\ÝÊN
+H[™ÜËœ]™Ù]Ú^™JN
+HOHÜËœ]™Ù]Ú^™JŠJJN‚‚BBBB\Ú][˜ÛÜLŠ‹‰\ËI\É\Èˆ	H
+]Ú]Û
+JB‚BBB]žN‚‚BBBB[ÜËœ™[[Ý™JŠB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\\ÜÂ‚BBZYˆš[Q^\ÝÊ]
+È‹Hˆ
+ÈÚ]
+È
+N‚‚BBB\Ú][˜ÛÜLŠ‰\ËI\É\Èˆ	H
+]Ú]
+KŠB‚\™]\›ˆYBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚÚÔ]
+]
+N‚‚HÈH›[šËØÛÜœ\YØXÞHXÛÛˆ˜\ÙH]]\Ý˜Z[ØY™[H[œÝXYÙ‚‚HÈ[™^[™È[ˆ[\HÝš[™È[™Ü˜\Ú[™ÈÙ]\Û\ÜÌMË‚‚\]H
+]ÜˆˆŠKœÝš\
+
+B‚ZYˆ›Ý]Üˆ]OH‹ÈŽ‚‚B\™]\›ˆ˜[ÙB‚ZYˆ]™[™ÝÚ]
+‹ÈŠN‚‚B\]H]Î‹LWB‚X[XÛÛœÈHÉÜÜÝ\‰Ë	ÜXÛÛ—Ð”U	Ë	ÜXÕÙXR[™‰Ë	Ø[š[RXÛÛ•ÙX]\‰Ë	ÜXÛÛ”›Ý‰Ë	ÜXÛÛ”›Ý—ÌŒŒLÌ‰Ë	ÜXÛÛ”Ø]	Ë	ÜXÛÛ”Ø]ÌŒŒLÌ‰Ë	ÜXÛÛØ[IË	ÛY[RXÛÛœÐšYÉË	ÜXÛÛ—ÍLÌ	Ë	ÜXÛÛ‰Ë	ÜXÛÛ—ÌŒŒLÌ‰Ë	ÜXÛÛ—Í	Ë	ÜXÛÛ“ÛY	Ë	ÙÌM×ÜÙ]\ÜXÝ	Ë	Û[Ü™WÚXÛÛœÉË	Ù^˜TØÜ™Y[œÌMÉË	ÛY[RXÛÛœÉË	ÝÙX]\’XÛÛœÉË	Ö–”XÛÛ‰×BB‚[\ÙÈHYB‚ZYˆ›ÝÜËœ]™^\ÝÊ]
+N‚‚B]\H]œÝš\
+
+KœÜ]
+‹ÈŠB‚B\Hˆ‚‚BY›Üˆ[ˆ˜[™ÙJ[Š\
+JN‚‚BBZYˆ\ÞHOHˆŽ‚‚BBB\
+ÏH‹Èˆ
+È\ÞB‚BBBZYˆ›ÝÜËœ]™^\ÝÊ
+N‚‚BBBB]žN‚‚BBBBB[ÜË›ZÙ\Š
+B‚BBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBB\™]\›ˆ˜[ÙB‚Y›Üˆ[ˆ[XÛÛœÎ‚‚BZYˆ›ÝÜËœ]™^\ÝÊ]
+È‹ÈŠÞ
+N‚‚BB]žN‚‚BBB[ÜË›ZÙ\Š]
+È‹ÈŠÞ
+B‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\\ÜÂ‚BBZYˆ›ÝÜËœ]™^\ÝÊ]
+È‹ÈŠÞ
+N‚‚BBB[\ÙÈH˜[ÙB‚\™]\›ˆ\ÙÂˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆØ]ÛZXÕÜš]U^
+]]JN‚‚Hˆˆ”™\XÙHH^š[H]ÛZXØ[K™\Ù\š[™È]È[ÙHÚ[ˆÜÜÚX›Kˆˆˆ‚‚Y\™XÝÜžHHÜËœ]™\›˜[YJ]
+HÜˆ‹ˆ‚‚]\HÜËœ]š›Ú[Š\™XÝÜžK‹‰\ËØ\™\‹]\ˆ	HÜËœ]˜˜\Ù[˜[YJ]
+JB‚[[ÙHH›Û™B‚]žN‚‚BZYˆÜËœ]™^\ÝÊ]
+N‚‚BB[[ÙHHÜËœÝ]
+]
+KœÝÛ[ÙH	ˆÍÍÍÍÂ‚B]Ú]Ü[Š\ÈŠH\È[™N‚‚BBZ[™KÜš]J]JB‚BBZ[™K™›\Ú
+
+B‚BB[ÜË™œÞ[˜Ê[™K™š[[›Ê
+JB‚BZYˆ[ÙH\È›Ý›Û™N‚‚BB[ÜË˜Ú[Ù
+\[ÙJB‚B[ÜËœ™\XÙJ\]
+B‚B\™]\›ˆYB‚Y^Ù\ÔÑ\œ›ÜŽ‚‚B]žN‚‚BB[ÜËœ™[[Ý™J\
+B‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\\ÜÂ‚B\™]\›ˆ˜[ÙB‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚ[™ÝÔÝ[JÚ]ÛÛÜŠN‚‚X[[™\ÈHˆ‚‚X[Ý[\ÈHÉØ—Ø‰Ë	Ø—Ø›	Ë	Ø—Øœ‰Ë	Ø—Û	Ë	Ø—Ü‰Ë	Ø—Ý	Ë	Ø—Ý‰Ë	Ø—Ý	×B‚Y[˜HH˜[ÙB‚\ˆHÜ[ŠÒÒS–SœˆŠB‚Y›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BZYˆ[™K—×ØÛÛZ[œ××ÊÚ[™ÝÜÝ[H\OWœÚÚ[›™YˆYWŒˆŠN‚‚BBY[˜HHYB‚BZYˆ[˜N‚‚BBZYˆ[™K—×ØÛÛZ[œ××ÊÛÛÜˆ˜[YOW•Ú[™ÝÕ]Q›Ü™YÜ›Ý[™ŠN‚‚BBB[[™HHˆÛÛÜˆ˜[YOW•Ú[™ÝÕ]Q›Ü™YÜ›Ý[™ˆÛÛÜWˆŠØÛÛÜŠÈ—ˆÏ—ˆ‚‚BBBY[˜HH˜[ÙB‚BX[[™\ÈH[[™\È
+È[™B‚\‹˜ÛÜÙJ
+B‚ZYˆ›ÝØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊN‚‚B\™]\›ˆ˜[ÙB‚Y›Üˆ[ˆ[Ý[\Î‚‚B\Ú][˜ÛÜLŠÜËœ]š›Ú[ŠÒÒS”UœÝ[H‹Ú]
+È‹œ™ÈŠKÜËœ]š›Ú[ŠÒÒS”U™Ù[™\˜[‹
+È‹œ™ÈŠJB‚\™]\›ˆYBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂBBB™YˆÝ[™žSÛYÛ“Ù™Š
+N‚‚X[[™\ÈHˆ‚‚\ˆHÜ[ŠTÑT–SœˆŠB‚Y›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BZYˆ[™K—×ØÛÛZ[œ××ÊØÜ™Y[ˆ˜[YOW”Ý[™žTÝ[[X\žHŠN‚‚BBZYˆ[™K—×ØÛÛZ[œ××ÊœÜÚ][ÛWŒŠN‚‚BBB[[™HH[™Kœ™\XÙJœÜÚ][ÛWŒ‹œÜÚ][ÛWŒŒŠB‚BBY[ÙN‚‚BBB[[™HH[™Kœ™\XÙJœÜÚ][ÛWŒŒ‹œÜÚ][ÛWŒŠB‚BX[[™\ÈH[[™\È
+È[™B‚\‹˜ÛÜÙJ
+B‚WØ]ÛZXÕÜš]U^
+TÑT–S[[™\ÊBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ]Ù\šXÙR[™›Õ˜[YJ[™›ËÚ]™YS›Û™JN‚‚]ˆH™Yˆ[™[™›Ë™Ù][™›Ê™Y‹Ú]
+HÜˆ[™›Ë™Ù][™›ÊÚ]
+B‚ZYˆˆOHTÙ\šXÙR[™›Ü›X][Û‹œ™\Ò\ÔÝš[™Î‚‚B\™]\›ˆ“‹ÐH‚‚\™]\›ˆ™Yˆ[™[™›Ë™Ù][™›ÔÝš[™Ê™Y‹Ú]
+HÜˆ[™›Ë™Ù][™›ÔÝš[™ÊÚ]
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈBB™YˆÚ[™ÙTÚÚ[–[
+Ú]™]ÏHŒH‹ÛHŒH‹ÛYQ˜[ÙJN‚‚X[[™\ÈHˆ‚‚Y[˜LHH˜[ÙB‚YˆH
+ÕYN•TÑT–S˜[ÙN”ÒÒS–SVÛÛYJB‚]žN‚‚B\ˆHÜ[Š‹œˆŠB‚BY›Ý[™H˜[ÙB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆÛY‚‚BBBZYˆ[™K—×ØÛÛZ[œ××ÊØÜ™Y[ˆ˜[YOWˆŠÝÚ]
+È—ˆŠN‚‚BBBB[[™HH[™Kœ™\XÙJÚ]Ú]
+È‹HŠÛÛ
+B‚BBBY[Yˆ[™K—×ØÛÛZ[œ××ÊØÜ™Y[ˆ˜[YOWˆŠÝÚ]
+È‹HŠÛ™]ÊÈ—ˆŠN‚‚BBBB[[™HH[™Kœ™\XÙJÚ]
+È‹HŠÛ™]ËÚ]
+B‚BBBX[[™\È
+ÏH[™B‚BBY[ÙN‚‚BBBZYˆ[™K—×ØÛÛZ[œ××ÊØÜ™Y[ˆ˜[YOWˆŠÝÚ]
+È—ˆŠHÜˆ
+›Ý›Ý[™[™[™K—×ØÛÛZ[œ××ÊÜÚÚ[ˆŠJN‚‚BBBBY[˜LHHYBBBBB‚BBBBY[˜HH˜[ÙB‚BBBBY[˜LˆH˜[ÙB‚BBBBZYˆ\ÐUˆ[™[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOHÚ[›™[Ù[XÝ[Ûˆ‰ÊN‚‚BBBBBY[˜LˆHYB‚BBBB\ÈHÜ[ŠÒÒSSœˆŠB‚BBBBY›ÜˆH[ˆËœ™XY[™\Ê
+N‚‚BBBBBZYˆK—×ØÛÛZ[œ××ÊØÜ™Y[ˆ˜[YOWˆŠÝÚ]
+È‹HŠÛ™]ÊÈ—ˆŠN‚‚BBBBBBY[˜HHYB‚BBBBBBZHHKœ™\XÙJÚ]
+È‹HŠÛ™]ËÚ]
+B‚BBBBBZYˆ[˜N‚‚BBBBBBZYˆ[˜Lˆ[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOHšÙ^WÉÊN‚‚BBBBBBBZHHKœ™\XÙJ	ÏÚYÙ]˜[YOHšÙ^WÉË	ÏÚYÙ]™[™\H“X™[ˆÛÝ\˜ÙOHšÙ^WÉÊB‚BBBBBBX[[™\È
+ÏHB‚BBBBBBZYˆK—×ØÛÛZ[œ××ÊÜØÜ™Y[ˆŠN‚‚BBBBBBBY[˜HH˜[ÙB‚BBBBBBBY›Ý[™HYB‚BBBBBBBY[˜LˆH˜[ÙBBBBBBBBB‚BBBBBBBXœ™XZÂ‚BBBB\Ë˜ÛÜÙJ
+B‚BBBY[ÙN‚‚BBBBZYˆ›Ý[˜LH[™[™HOH—ˆŽ‚ˆBBBBBBX[[™\È
+ÏH[™H‚BBBBZYˆ[˜LH[™[™K—×ØÛÛZ[œ××ÊÜØÜ™Y[ˆŠNˆˆBBBBBBY[˜LHH˜[ÙB‚B\‹˜ÛÜÙJ
+B‚BZYˆ[[™\Ë™š[™
+ÜÚÚ[ˆŠHOHLN‚‚BBX[[™\È
+ÏH—ÜÚÚ[—ˆ‚BB‚BWØ]ÛZXÕÜš]U^
+‹[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆYBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈBB™YˆÚ[™ÙTQÜ™\Ê
+N‚‚X[[™\ÈHˆ‚‚Y[˜HH˜[ÙB‚Y\™XÝHYB‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YHOHŒŽ‚‚BY\™XÝH˜[ÙB‚]žN‚‚B\ˆHÜ[ŠÒÒS–SœˆŠB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ[˜H[™[™K—×ØÛÛZ[œ××Ê	ÜÙ\ÜÚ[Û‹•šY[ÔXÝ\™IÊN‚‚BBBZYˆ\™XÝ‚‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛHŒMMËMˆ‰Ë	ÜÜÚ][ÛH‹LŒ‰ÊKœ™\XÙJ	ÜÚ^™OHŽMËÍH‰Ë	ÜÚ^™OHŽ‹LŽ‰ÊB‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛHŒMMËMMˆ‰Ë	ÜÜÚ][ÛH‹LH‰ÊKœ™\XÙJ	ÜÜÚ][ÛHŒLLKMˆ‰Ë	ÜÜÚ][ÛHŽM‹LŒ‰ÊB‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛHŒLÎNH‰Ë	ÜÜÚ][ÛHL‹LÍH‰ÊB‚BBBY[ÙN‚‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛH‹LŒ‰Ë	ÜÜÚ][ÛHŒMMËMˆ‰ÊKœ™\XÙJ	ÜÚ^™OHŽ‹LŽ‰Ë	ÜÚ^™OHŽMËÍH‰ÊB‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛH‹LH‰Ë	ÜÜÚ][ÛHŒMMËMMˆ‰ÊKœ™\XÙJ	ÜÜÚ][ÛHŽM‹LŒ‰Ë	ÜÜÚ][ÛHŒLLKMˆ‰ÊB‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛHL‹LÍH‰Ë	ÜÜÚ][ÛHŒLÎNH‰ÊB‚BBX[[™\ÈH[[™\È
+È[™B‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÚÙÛ\ÜÌMËÛY[KÜY×Ùœ˜[YKX[YœÎœ™ÉÊN‚‚BBBY[˜HHYB‚BBY[ÙN‚‚BBBY[˜HH˜[ÙB‚B\‹˜ÛÜÙJ
+B‚BWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆœ‚ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚ[™ÙTØÜ™Y[–[
+Ú]™]ÏHŒH‹ÛHŒHŠN‚‚[ÈH˜[ÙB‚ZYˆÚ]OH›Y[HŽ‚‚B]\HÈ›Y[WÛXZ[›Y[H‹›Y[WÚ[™›Ü›X][Ûˆ‹›Y[WÜÙ]\‹›Y[WÜØØ[ˆ‹›Y[WÜÞ\Ý[H‹›Y[WÚ\™\ÚÈ‹›Y[WÜÚ]ÝÛˆ‹“Y[H—B‚Y[YˆÚ]OH›ÛYŽ‚‚B[ÈHYB‚B]\HÈ’[™›Ð˜\”Ý[[X\žH‹”Ý[™žTÝ[[X\žH—B‚Y›Üˆ[ˆ\‚‚B^HÚ[™ÙTÚÚ[–[
+™]ËÛÊB‚ZYˆÚ]OH›Y[Hˆ[™™]È[ˆ
+ŒLˆ‹ŒLÈŠNˆ‚B]\HÚ[™ÙTQÜ™\Ê
+B‚\™]\›ˆYBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈ™YˆÙ]\RXÛÜÊ[JN‚‚YÛØ˜[[XÛÛœÂ‚Y›Üˆ[ˆ[XÛÛœÎ‚‚BYš[S˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+È‹Û[Ü™WÚXÛÛœËÚWÝ\KHˆ
+ÈÝŠ[JH
+È‹Èˆ
+È
+È‹œ™È‚‚BZYˆš[Q^\ÝÊš[S˜[YJN‚‚BBY\Ý[˜][ÛˆHÒÒS”U
+ÈšXÛÛœËÈˆ
+È
+È‹œ™È‚‚BB]žN‚‚BBBZYˆÜËœ]›^\ÝÊ\Ý[˜][ÛŠN‚‚BBBB[ÜË[›[šÊ\Ý[˜][ÛŠB‚BBB\Ú][˜ÛÜLŠš[S˜[YK\Ý[˜][ÛŠB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\\ÜÂ‚\™]\›ˆYBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ]\TXÛÛŠ
+N‚‚]Ú]H
+È›XÚÈŽˆˆ‹•Ú]HŽˆÈŸVØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YWJB‚Y›Üˆ[ˆ
+›X\šÙ\ˆ‹˜›Ý\]Y]‹›™^‹œXÛÛ—ÙY˜][‹˜]ÛœËÛ›ÜXÛÛˆ‹œXÛÛ•ÙYˆ‹šXÛÛœËÍÍHŠN‚‚B]žN‚‚BB\Ú][˜ÛÜLŠ‰\É\ËI\ÙY‹œ™Èˆ	H
+ÒÒS”UÚ]
+K‰\É\Ëœ™Èˆ	H
+ÒÒS”U
+JB‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\\ÜÂˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÚÝÒYUšXRÙ^J
+N‚‚ZYˆÙ^SX[˜YÙK•[™\•\Ý
+
+H[™Ù^SX[˜YÙK™X[ÙÒÙ^H\È›Ý›Û™N‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽK˜[YN‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽK˜[YHH˜[ÙB‚BBZÙ^SX[˜YÙK™X[ÙÒÙ^KšYJ
+B‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌË˜[YN‚‚BBBZÙ^SX[˜YÙKœÝÜ[Y\Š
+B‚BY[ÙN‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽK˜[YHHYB‚BBZÙ^SX[˜YÙK™X[ÙÒÙ^KœÚÝÊ
+B‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌË˜[YN‚‚BBBZÙ^SX[˜YÙKœÝ\[Y\Š
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈ[X“\Ý
+Y[S\Ý
+N‚‚BYYˆ×Ú[š]×ÊÙ[‹\Ý[˜X›UÜ˜\\›Ý[™H˜[ÙJN‚‚BBSY[S\Ý—×Ú[š]×ÊÙ[‹\Ý[˜X›UÜ˜\\›Ý[™S\Ý›Þ]Û“][PÛÛ[
+B‚BB\Ù[‹›œÙ]›Û
+Ñ›Û
+	Ôš]™LÉËÌ
+JB‚BB\Ù[‹›œÙ]›Û
+KÑ›Û
+	Ôš]™LÉËJJB‚BB\Ù[‹›œÙ]›Û
+‹Ñ›Û
+	Ôš]™LÉËÌÊJB‚BB\Ù[‹›œÙ]][RZYÚ
+ÍÊB˜Û\ÜÈ[X“\ÝŠY[S\Ý
+N‚‚BYYˆ×Ú[š]×ÊÙ[‹\Ý[˜X›UÜ˜\\›Ý[™H˜[ÙJN‚‚BBSY[S\Ý—×Ú[š]×ÊÙ[‹\Ý[˜X›UÜ˜\\›Ý[™S\Ý›Þ]Û“][PÛÛ[
+B‚BB\Ù[‹›œÙ]›Û
+Ñ›Û
+	Ôš]™LÉËÌ
+JB‚BB\Ù[‹›œÙ]›Û
+KÑ›Û
+	Ôš]™LÉËŒŠJB‚BB\Ù[‹›œÙ]›Û
+‹Ñ›Û
+	Ôš]™LÉËÍŠJB‚BB\Ù[‹›œÙ]›Û
+ËÑ›Û
+	Ôš]™LÉËŽ
+JB‚BB\Ù[‹›œÙ]][RZYÚ
+MÊBBBBBBBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ][˜ÛÙ[™Õ\Ù\Š\™XÝ[ÛUYJN‚‚HÈ[˜ÛÙ[™Ë˜ÛÛ™ˆ™[Û™ÜÈÈH[XYÙHÛˆÜ[UŽÈÙY\HYØXÞHÜ[Ûˆ[™\‚‚ZYˆ\ÐUŽ‚‚B\Ù]Ñ‘ÛÙ™ŠNJB‚B\™]\›ˆ˜[ÙB‚\Ý]HH˜[ÙB‚ZYˆ\™XÝ[ÛŽ‚‚BZYˆš[Q^\ÝÊS×ÕJNˆBB‚BBZYˆ›Ýš[Q^\ÝÊS×ÓÊN‚‚BBB\Ú][˜ÛÜLŠS×ÐËS×ÓÊB‚BB]žN‚‚BBBZYˆÜËœ]›^\ÝÊS×ÐÊN‚‚BBBB[ÜË[›[šÊS×ÐÊB‚BBB\Ú][˜ÛÜLŠS×ÕKS×ÐÊB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\™]\›ˆ˜[ÙB‚BB\Ý]HHYB‚Y[ÙN‚‚BZYˆš[Q^\ÝÊS×ÓÊNˆBB‚BB]žN‚‚BBBZYˆÜËœ]›^\ÝÊS×ÐÊN‚‚BBBB[ÜË[›[šÊS×ÐÊB‚BBB\Ú][˜ÛÜLŠS×ÓËS×ÐÊB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\™]\›ˆ˜[ÙB‚BB\Ý]HHYB‚\™]\›ˆÝ]BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ™YˆÙ]Ñ‘ÛÙ™ŠMŒŠN‚‚ZYˆˆOHNN‚‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NK˜[YHH˜[ÙBBBBBB‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NKœØ]™J
+B‚Y[ÙN‚‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Œ‹˜[YHH˜[ÙBBBBBB‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Œ‹œØ]™J
+B‚XÛÛ™šYÙš[KœØ]™J
+B‚™YˆÙ]ÛY[
+Ú]UTÑT–S
+N‚‚]žN‚‚BZYˆÜËœ]›^\ÝÊ
+N‚‚BB[ÜË[›[šÊ
+B‚B\Ú][˜ÛÜLŠÚ]
+B‚B\™]\›ˆYB‚Y^Ù\ÔÑ\œ›ÜŽ‚‚B\™]\›ˆ˜[ÙB‚™YˆÚÚÕ\Ù\’Ê
+N‚‚Y[˜HH˜[ÙB‚ZYˆÜËœ]™^\ÝÊTÑT–S
+N‚‚B]žN‚‚BBXÈHÜ[ŠTÑT–SœˆŠKœ™XY
+
+B‚BBY[˜HH›Ý
+Ë™š[™
+›˜[YOW’[™›Ð˜\”Ý[[X\žKHŠHOHLH[™Ë™š[™
+™ÌMÐÛØÚÕÕ^ˆŠHOHLJB‚BBZYˆ[˜N‚‚BBBY[˜HHÙ]ÛY[
+TÑT–STÑT“Ô’JBBBBBBB‚BY^Ù\ˆ\ÜÂB‚\™]\›ˆ[˜BB‚™YˆÙ]ÛY[Ü™J\ÙÏHˆŠN‚‚^HÙ]ÛY[
+TÑT’ÊB‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHŒHŽ‚BB‚B[\ÙÈ
+ÏHÊ“ÓQ\HŠH
+È—ˆ‚‚B^HÚ[™ÙTØÜ™Y[–[
+›ÛY‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YJB‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚B‚B[\ÙÈ
+ÏHÊ”Ù]ÓQÙ™ˆ[ˆÝ[™žHŠH
+È—ˆ‚‚B\Ý[™žSÛYÛ“Ù™Š
+B‚\™]\›ˆ\ÙÂ‚™YˆÙ][\
+]ŠN‚‚]\HH‚XÛÛ[X[™ÈH×B‚Y›ÜˆÛX\Ý[ˆ
+‹Ý\Ü‹ÜØš[‹ÜÛX\Ý‹‹ÜØš[‹ÜÛX\Ý‹‹Ý\Ü‹Øš[‹ÜÛX\ÝŠN‚‚BZYˆÜËœ]š\Ùš[JÛX\Ý
+N‚‚BBXÛÛ[X[™Ë˜\[™
+
+œÛX\Ý‹ÜÛX\Ý‹XH‹]—JJB‚BBXœ™XZÂ‚ZYˆÜËœ]š\Ùš[J‹Ý\Ü‹Øš[‹ÚÝ[\ÚÌMÈŠN‚‚BXÛÛ[X[™Ë˜\[™
+
+š[\‹È‹Ý\Ü‹Øš[‹ÚÝ[\ÚÌMÈ‹‹\H‹‹[ˆ‹]—JJB‚XÛÛ[X[™Ë˜\[™
+
+š[\‹Èš[\‹‹[ˆ‹‹\H‹]—JJB‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YN‚‚BZYˆÜËœ]š\Ùš[J‹Ý\Ü‹Øš[‹ÚÝ[\ÚÌMÈŠN‚‚BBXÛÛ[X[™Ë˜\[™
+
+š[\‹È‹Ý\Ü‹Øš[‹ÚÝ[\ÚÌMÈ‹‹\H‹‹[ˆ‹‹]È‹]—JJB‚BXÛÛ[X[™Ë˜\[™
+
+š[\‹Èš[\‹‹\H‹‹[ˆ‹‹]È‹]—JJB‚Y›ÜˆÚ[™ÛÛ[X[™[ˆÛÛ[X[™Î‚‚B]žN‚‚BB[Ý]]HÝXœ›ØÙ\ÜË˜ÚXÚ×ÛÝ]]
+ÛÛ[X[™[š]™\œØ[Û™]Û[™\ÏUYKÝ\œ\ÝXœ›ØÙ\ÜË”ÕÕU
+B‚BBZYˆÚ[™OHœÛX\ÝŽ‚‚BBBY›Üˆ[™H[ˆÝ]]œÜ][™\Ê
+N‚‚BBBBZYˆ•[\\˜]\™Hˆ›Ý[ˆ[™N‚‚BBBBBXÛÛ[YB‚BBBB]˜[Y\ÈH™K™š[™[
+ˆŠÏV×Ë‹WJKO×
+ÊÈV×Ë‹WJH‹[™JB‚BBBBY›Üˆ˜[YH[ˆ™]™\œÙY
+˜[Y\ÊN‚‚BBBBBXØ[™Y]HH[
+˜[YJB‚BBBBBZYˆHHØ[™Y]HHLN‚‚BBBBBB]\HHØ[™Y]B‚BBBBBBXœ™XZÂ‚BBBBZYˆ\N‚‚BBBBBXœ™XZÂ‚BBY[ÙN‚‚BBB[X]ÚH™KœÙX\˜Ú
+ˆ‹O×
+È‹Ý]]œÝš\
+
+JB‚BBBZYˆX]Ú‚‚BBBBXØ[™Y]HH[
+X]Ú™Ü›Ý\
+
+JB‚BBBBZYˆHHØ[™Y]HHLN‚‚BBBBB]\HHØ[™Y]B‚BY^Ù\
+ÔÑ\œ›Ü‹ÝXœ›ØÙ\ÜËØ[Y›ØÙ\ÜÑ\œ›Ü‹˜[YQ\œ›ÜŠN‚‚BB\\ÜÂ‚BZYˆ\N‚‚BBXœ™XZÂ‚\™]\›ˆ\B‚™YˆÚÚÕ›Û]]J
+N‚‚ZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LK˜[YHOHLŒÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\L‹˜[YHOHLŒ‚‚BX[[™\ÈHˆ‚‚B[™]Ñ]HH	ÜÜÚ][ÛH‰\Ë	\È‰È	H
+ÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LK˜[YJKÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\L‹˜[YJJB‚B]žN‚‚BB\ˆHÜ[ŠÒÒS–SœˆŠB‚BBY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH•›Û[YIÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH“]]IÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	ÜÜÚ][ÛHŒLŒLŒ‰Ë™]Ñ]JB‚BBBX[[™\È
+ÏH[™B‚BB\‹˜ÛÜÙJ
+B‚BBWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚BB\™]\›ˆYB‚BY^Ù\ˆ\ÜÂ‚\™]\›ˆ˜[ÙB‚™YˆÐÚ[›™[Ù[
+ÌOHˆØÙÙÙ‹ÌHˆÍ˜Ø˜ÙŒ‹ÌÏHˆÍ˜Ø˜ÙŒ‹ÍHˆÙŠN‚‚]žN‚‚BX[[™\ÈHˆ‚‚B]Ú]H	ØÛÛÜ”Ù\šXÙQ\ØÜš\[ÛH‰ÊØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YJÉÈ‰ÊÉÈÛÛÜ”Ù\šXÙQ\ØÜš\[Û”Ù[XÝYH‰ÊØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLL˜[YJÉÈ‰ÊÉÈ›Ü™YÜ›Ý[™ÛÛÜ”Ù[XÝYH‰ÊØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLLK˜[YJÉÈ‰ÊÉÈ›Ü™YÜ›Ý[™ÛÛÜH‰ÊØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLMË˜[YJÉÈ‰È‚B\ˆHÜ[ŠÒÒS–SœˆŠB‚BY[˜HH˜[ÙB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOHÚ[›™[Ù[XÝ[Ûˆ‰ÊN‚‚BBBY[˜HHYB‚BBZYˆ[˜H[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH›\Ý‰ÊN‚‚BBB[[™HH[™Kœ™\XÙJ	ØÛÛÜ”Ù\šXÙQ\ØÜš\[ÛH‰ÊØÌJÉÈ‰ÊÉÈÛÛÜ”Ù\šXÙQ\ØÜš\[Û”Ù[XÝYH‰ÊØÌŠÉÈ‰ÊÉÈ›Ü™YÜ›Ý[™ÛÛÜ”Ù[XÝYH‰ÊØÌÊÉÈ‰ÊÉÈ›Ü™YÜ›Ý[™ÛÛÜH‰ÊØÍ
+ÉÈ‰ËÚ]
+B‚BBBZYˆSWÔÐÒ[™›Ý	Ü›ÙÜ™\ÜÐ˜\•ÚYHŽL‰È[ˆ[™N‚‚BBBB[[™HH[™Kœ™\XÙJ	ÜXÔÙ\šXÙQ]™[›ÙÜ™\ÜØ˜\H˜˜\—ØÚYœÎœ™È‰Ë	ÜXÔÙ\šXÙQ]™[›ÙÜ™\ÜØ˜\H˜˜\—ØÚYœÎœ™Èˆ›ÙÜ™\ÜÐ˜\•ÚYHŽL‰ÊBBBBB‚BBBY[˜HH˜[ÙB‚BBX[[™\È
+ÏH[™B‚B\‹˜ÛÜÙJ
+B‚BWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ˜È‚‚BB™YˆÚ[™ÙPÚŠ
+N‚‚]žN‚‚BX[[™\ÈHˆ‚‚B\ˆHÜ[ŠÒÒS–SœˆŠB‚BY[˜HH[˜LˆH˜[ÙB‚BXY™“[™HHˆ‚‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOHÚ[›™[Ù[XÝ[Ûˆ‰ÊN‚‚BBBY[˜HHYB‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏÜØÜ™Y[‰ÊN‚‚BBBY[˜HH˜[ÙB‚BBZYˆ[˜N‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH›\Ý‰ÊN‚‚BBBB]ˆHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMË˜[YB‚BBBBZYˆˆOHŒHˆ[™
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHŒˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YHOHŒŠN‚‚BBBBB]ˆHÝŠX^
+[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YJK[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YJJJÎJB‚BBBBB[[™HHØ[Ê[™K	ÈÙ\šXÙR][RZYÚH‰ËŠB‚BBBBZYˆ›Ýˆ[ˆ
+Œ‹ŒHŠN‚‚BBBBB[[™HHØ[Ê[™K	ÈÙ\šXÙR][RZYÚH‰ËŠB‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHŒŽ‚‚BBBBB[[™HHØ[Ê[™K	ÈÙ\šXÙS˜[YQ›ÛH”š]™MÉËÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YJB‚BBBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YHOHŒŽ‚‚BBBBB[[™HHØ[Ê[™K	ÈÙ\šXÙR[™›Ñ›ÛH”š]™MÉËÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YJB‚BBBBX[[™\È
+ÏH[™B‚BBBY[Yˆ[˜LŽ‚‚BBBBZYˆ[™K—×ØÛÛZ[œ××Ê	ÙÌMÔÙ\šXÙS˜[YQ]™[‘^[™Y\ØÜš\[ÛØÛÛ™\‰ÊN‚‚BBBBBX[[™\È
+ÏHØ[ÊY™“[™K	È›ÛH”š]™MÉËÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YJH
+È[™B‚BBBBY[ÙN‚‚BBBBBX[[™\È
+ÏHY™“[™H
+È[™B‚BBBBY[˜LˆH˜[ÙB‚BBBY[ÙN‚‚BBBBZYˆ[™K—×ØÛÛZ[œ××Ê	ÜÛÝ\˜ÙOH”Ù\šXÙQ]™[	ÊN‚‚BBBBBZYˆ[™K—×ØÛÛZ[œ××Ê	Ü™[™\H™ÌMÓY]š^[›š[™Õ^	ÊN‚‚BBBBBBX[[™\È
+ÏHØ[Ê[™K	È›ÛH”š]™MÉËÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YJB‚BBBBBY[ÙN‚‚BBBBBBXY™“[™HH[™B‚BBBBBBY[˜LˆHYB‚BBBBY[ÙN‚‚BBBBBX[[™\È
+ÏH[™B‚BBY[ÙN‚‚BBBX[[™\È
+ÏH[™B‚B\‹˜ÛÜÙJ
+B‚BWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ›È‚ˆB™YˆÙ]›Û]™[\ÜÙ[
+˜[
+N‚‚X[[™\ÈHˆ‚‚Y[˜LÈH[˜HH[˜LˆH[˜LHH[˜MH[˜MHH[˜MˆH[˜MÈH˜[ÙB‚]˜[HH˜[‚ZYˆ˜[OHŒŽ‚‚B]˜[HHŒÍ‚B‚ZYˆÜËœ]š\Ùš[JÒT‘TU
+È”KQ[ÜÚÚ[‹ž[ŠHÜˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÔÞ\Ý[TYÚ[œËÓÐ’××ÜXØXÚW×ËÈŠHÜˆÜËœ]š\Ùš[JUÓ”U
+È”YÚ[œËÔØ]™X[YÜ‹××Ú[š]×Ëœ[ÈŠN‚‚BY[˜LHHYB‚]žNˆ‚B\ˆHÜ[ŠÒÒS–SœˆŠB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ
+SWÑSHÜˆSWÔÐÒ
+H[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH[Y\›\Ý‰ÊN‚‚BBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	ÜÙ]Ù\šXÙS˜[YQ›ÛH”š]™MÌÍ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOH[Y\›\Ý‰Ë	Û˜[YOH[Y\›\ÝˆÙ]Ù\šXÙS˜[YQ›ÛH”š]™MÌÍ‰ÊBBBB‚BBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	ÜÙ]]™[˜[YQ›ÛH”š]™MÌÌˆ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOH[Y\›\Ý‰Ë	Û˜[YOH[Y\›\ÝˆÙ]]™[˜[YQ›ÛH”š]™MÌÌˆ‰ÊB‚BBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	ÜÙ]›ÛH”š]™MÌÌ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOH[Y\›\Ý‰Ë	Û˜[YOH[Y\›\ÝˆÙ]›ÛH”š]™MÌÌ‰ÊB‚BBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	ÜØ]ÜÓYHŒÌŒ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOH[Y\›\Ý‰Ë	Û˜[YOH[Y\›\ÝˆØ]ÜÓYHŒÌŒ‰ÊB‚BBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	ÚXÛÛ“X\™Ú[HŒL‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOH[Y\›\Ý‰Ë	Û˜[YOH[Y\›\ÝˆXÛÛ“X\™Ú[HŒL‰ÊB‚BBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	Ü›ÝÔÜ]HLˆ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOH[Y\›\Ý‰Ë	Û˜[YOH[Y\›\Ýˆ›ÝÔÜ]HLˆ‰ÊB‚BBZYˆSWÐ’‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH[Y\›\Ý‰ÊNˆ‚BBBBZYˆ›Ý[™K—×ØÛÛZ[œ××Ê	ÜÙ]Ù\šXÙS˜[YQ›ÛH”™YÝ[\ŽÌŽ‰ÊN‚‚BBBBB[[™HH[™Kœ™\XÙJ	Ú][RZYÚHŒLH‰Ë	Ú][RZYÚHŒLHˆÙ]Ù\šXÙS˜[YQ›ÛH”™YÝ[\ŽÌŽˆÙ]›ÛH”™YÝ[\ŽÌŽ‰ÊBB‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	Û˜[YOH“[ÝšYTÙ[XÝ[Ûˆ‰ÊN‚‚BBBBY[˜LˆHYB‚BBBY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH›\Ý‰ÊH[™›Ý[™K—×ØÛÛZ[œ××Ê	ØÛÛ[[œÓÜšYÚ[˜[H‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Ù›ÛH”š]™MÌÍˆ][RZYÚHÍH‰Ë	Ù›ÛH”™YÝ[\ŽÌŽˆÛÛ[[œÓÜšYÚ[˜[HŒˆÛÛ[[œÐÛÛ\XÝ\ØÜš\[ÛHŒÌŒMÌˆÛÛ\XÝÛÛ[[HŒNŒˆ][RZYÚÏHŒLLËŽÍˆ›ÛÚ^™\ÓÜšYÚ[˜[HŒÌ‹ˆ›ÛÚ^™\ÐÛÛ\XÝHŒŽˆ›ÛÚ^™\ÓZ[š[X[HŒŽ‰ÊB‚BBZYˆSWÑOH	ÙXœÙÉÎ‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	Û˜[YOH“[ÝšYTÙ[XÝ[Ûˆ‰ÊN‚‚BBBBY[˜MˆHYB‚BBBY[Yˆ[˜Mˆ[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH›\Ý‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Ù›ÛH”š]™MÌÍˆ][RZYÚHÍH‰Ë	Ú][RZYÚHÍH‰ÊB‚BBZYˆ[˜LN‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	Û˜[YOH“[ÝšYTÙ[XÝ[Ûˆ‰ÊN‚‚BBBBY[˜LˆHYB‚BBBY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH›\Ý‰ÊH[™›Ý[™K—×ØÛÛZ[œ××Ê	ØÛÛ[[œÓÜšYÚ[˜[H‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Ù›ÛH”š]™MÌÍˆ][RZYÚHÍH‰Ë	ØÛÛ[[œÓÜšYÚ[˜[HŒˆÛÛ[[œÐÛÛ\XÝ\ØÜš\[ÛHŒÌŒMÌˆÛÛ\XÝÛÛ[[HŒˆ][RZYÚÏHŒLÍKHˆ›ÛÚ^™\ÓÜšYÚ[˜[HŒÌ‹‹ˆ›ÛÚ^™\ÐÛÛ\XÝHŒÌ‹Žˆ›ÛÚ^™\ÓZ[š[X[HŒÌ‹‰ÊB‚BBBY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê	Û˜[YOHšÙ^WÜ™Y‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOHšÙ^WÜ™Y‰Ë	Ü™[™\H“X™[ˆÛÝ\˜ÙOHšÙ^WÜ™Y‰ÊB‚BBBY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê	Û˜[YOHšÙ^WÙÜ™Y[ˆ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOHšÙ^WÙÜ™Y[ˆ‰Ë	Ü™[™\H“X™[ˆÛÝ\˜ÙOHšÙ^WÙÜ™Y[ˆ‰ÊB‚BBBY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê	Û˜[YOHšÙ^WÞY[ÝÈ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOHšÙ^WÞY[ÝÈ‰Ë	Ü™[™\H“X™[ˆÛÝ\˜ÙOHšÙ^WÞY[ÝÈ‰ÊB‚BBBY[Yˆ[˜Lˆ[™[™K—×ØÛÛZ[œ××Ê	Û˜[YOHšÙ^WØ›YH‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	Û˜[YOHšÙ^WØ›YH‰Ë	Ü™[™\H“X™[ˆÛÝ\˜ÙOHšÙ^WØ›YH‰ÊB‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	Û˜[YOH‘TÔÙ[XÝ[Û“][H‰ÊN‚‚BBBBY[˜MHYB‚BBBY[Yˆ[˜M[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH›\Ý‰ÊH[™›Ý[™K—×ØÛÛZ[œ××Ê	ÜÙ]ÛÛØ\HŒŒ‰ÊN‚‚BBBB[[™HH[™Kœ™\XÙJ	ÏÚYÙ]˜[YOH›\Ý‰Ë	ÏÚYÙ]˜[YOH›\ÝˆÙ]ÛÛØ\HŒŒˆÙ][YUÚYHŒLÍHˆÙ]]™[][Q›ÛH”š]™LÎÌÌÈˆÙ]]™[[YQ›ÛH”š]™LÎÌÌ‰ÊB‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏÜØÜ™Y[‰ÊN‚‚BBBY[˜LÈH˜[ÙB‚BBBY[˜LˆH˜[ÙB‚BBBY[˜HH˜[ÙB‚BBBY[˜MH˜[ÙB‚BBBY[˜MHH˜[ÙB‚BBBY[˜MˆH˜[ÙB‚BBBY[˜MÈH˜[ÙB‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘]™[šY]È‰ÊHÜˆ
+[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘TÔÙ[XÝ[Ûˆ‰ÊH[™˜[OHŒŠNˆ‚BBBY[˜LÈHYB‚BBZYˆSWÑSH[™[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘TÔÙ[XÝ[Ûˆ‰ÊN‚‚BBBY[˜HHYB‚BBZYˆSWÔLˆ[™
+[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH•[Y\‘Y]\Ý‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH•[Y\“ÙÈ‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘TÔÙ[XÝ[Ûˆ‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘]™[šY]È‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘TÔÙ[XÝ[Û“][H‰ÊJN‚‚BBBY[˜MHHYB‚BBZYˆTÔÎ[™\ÐUˆ[™
+[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘TÔÙ[XÝ[Ûˆ‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÏØÜ™Y[ˆ˜[YOH‘]™[šY]È‰ÊJN‚‚BBBY[˜MÈHYB‚BBZYˆ
+[˜MHÜˆ[˜MÊH[™[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOHšÙ^WÉÊN‚‚BBB[[™HH[™Kœ™\XÙJ	ÏÚYÙ]˜[YOHšÙ^WÉË	ÏÚYÙ]™[™\H“X™[ˆÛÝ\˜ÙOHšÙ^WÉÊB‚BBZYˆ[˜LÈ[™
+[™K—×ØÛÛZ[œ××Ê	ÏÚYÙ]˜[YOH™\×Ù\ØÜš\[Ûˆ‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	ÈÛÝ\˜ÙOH‘]™[‰ÊJN‚‚BBB[[™HHØ[Ê[™K	È›ÛH”š]™MÉË˜[JB‚BBZYˆ[˜H[™[™K—×ØÛÛZ[œ××Ê	Û˜[YOH›\Ý‰ÊH[™›Ý[™K—×ØÛÛZ[œ××Ê	ÜÙ]]™[][Q›ÛH‰ÊN‚‚BBB[[™HH[™Kœ™\XÙJ	Û˜[YOH›\Ý‰Ë	Û˜[YOH›\ÝˆÙ]]™[][Q›ÛH”š]™MÌÌ‰ÊB‚BBX[[™\È
+ÏH[™B‚B\‹˜ÛÜÙJ
+B‚BWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ™ˆ‚‚B™YˆÙ]›Û\Ý\Ê˜[
+N‚‚X[[™\ÈHˆ‚‚]žN‚‚B\ˆHÜ[ŠÒÒS–SœˆŠB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ[™K—×ØÛÛZ[œ××Ê	Ï\˜[Y]\ˆ˜[YOH‘TÛ\Ý›ÛH‰ÊN‚‚BBBX[[™\È
+ÏHØ[Ê[™K	È˜[YOH”š]™MÉË˜[
+B‚BBY[Yˆ[™K—×ØÛÛZ[œ××Ê	Ï\˜[Y]\ˆ˜[YOH‘TÛ\Ý›Ûˆ‰ÊNˆ‚BBBX[[™\È
+ÏHØ[Ê[™K	È˜[YOH”š]™MÉËÝŠ[
+˜[
+KLÊJB‚BBY[Yˆ[™K—×ØÛÛZ[œ××Ê	Ï[X\È˜[YOH‘TÓ\Ý‰ÊHÜˆ[™K—×ØÛÛZ[œ××Ê	Ï[X\È˜[YOH‘TÓ\ÝH‰ÊNˆ‚BBBX[[™\È
+ÏHØ[Ê[™K	ÈÚ^™OH‰Ë˜[
+B‚BBY[ÙN‚‚BBBX[[™\È
+ÏH[™B‚B\‹˜ÛÜÙJ
+B‚BWØ]ÛZXÕÜš]U^
+ÒÒS–S[[™\ÊB‚Y^Ù\ˆ\ÜÂ‚\™]\›ˆ™[‚‚™YˆœÊ
+N‚‚X[[™\ÈHˆ‚‚Y[˜HH˜[ÙB‚Y[˜LˆH˜[ÙB‚[™]ÐšYÈH›Û™B‚[™]ÓYYH›Û™B‚[™]ÐšYÌˆH›Û™B‚[™]ÓYYˆH›Û™B‚]žN‚‚B\ˆHÜ[ŠÒÒS–SœˆŠB‚BY›Üˆ[™H[ˆ‹œ™XY[™\Ê
+N‚‚BBZYˆ[˜N‚‚BBBZYˆ[™K—×ØÛÛZ[œ××Ê	Ý\OHšYÙÙ\ˆ‰ÊN‚‚BBBBXHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMLË˜[YB‚BBBBX[[™\È
+ÏHØ[Ê[™K	ÈÚ^™OH‰Ë
+ÕYNˆŒÍˆ‹˜[ÙN˜_VØHOHŒ—JJB‚BBBY[Yˆ[™K—×ØÛÛZ[œ××Ê	Ý\OHšYÈ‰ÊNˆ‚BBBBXHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMM˜[YB‚BBBBX[[™\È
+ÏHØ[Ê[™K	ÈÚ^™OH‰Ë
+ÕYNˆŒÌÈ‹˜[ÙN˜_VØHOHŒ—JJB‚BBBBZYˆ[
+JHˆÌÈÜˆHOHŒŽ‚‚BBBBB[™]ÐšYÈH
+ÕYNˆH‹˜[ÙNœÝŠ[
+JJÍÊ_VØHOHŒ—JBBBBBB‚BBBBB[™]ÐšYÌˆH
+ÕYNˆ‹˜[ÙNœÝŠ[
+JJÌÊ_VØHOHŒ—JB‚BBBY[Yˆ[™K—×ØÛÛZ[œ××Ê	Ý\OH“zÛ^ö¶‰žËkºwµçY[‹œÙˆ\È›Ý›Û™N‚‚BBB\Ù[‹š\H‹]š\‚‚BBB\Ù[‹^ÚÝÒ[™›ÈHÙ[‹^ÚÝÒ[™›Ëœ™\XÙJÊ•™\œÚ[ÛŽˆŠKÊ•™\œÚ[ÛŽˆŠJÈˆ’TŠB‚B\Ù[–È™\ØÜš\[Ûˆ—KœÙ]^
+Ù[‹^ÚÝÒ[™›ÊB‚BZYˆÙ[‹™š\œÝÝ\‚‚BB\Ù[–È˜ÛÛ™šYÈ—K›Û”Ù[XÝ[ÛÚ[™ÙY˜\[™
+Ù[‹™Ó^R[Ú[™ÝÊB‚BB\Ù[‹™š\œÝÝ\H˜[ÙBBBB‚BB]žN‚‚BBB\Ù[–Èš[ÜXÝ—Kš[œÝ[˜ÙKœÙ]ØØ[JJB‚BBY^Ù\ˆ\ÜÂ‚BBZYˆSWÐS’SN‚‚BBB]žN‚‚BBBB\Ù[–Èš[XÛÛˆ—Kš[œÝ[˜ÙKœÙ]ØØ[JJB‚BBBY^Ù\ˆ\ÜÂ‚BBBB‚YYˆÚÝÐ[š[U
+Ù[‹XJN‚‚B\Ù[‹˜[š[U[Y\‹œÝÜ
+
+B‚BZYˆSWÐS’SH[™XK˜[YHOH“›Û™HŽ‚‚BB\Ù[–Èš[XÛÛ‘œ˜[YH—KšYJ
+B‚BB\Ù[–ÉÚ[XÛÛ‰×KšYJ
+B‚BB]žN‚‚BBB\Ù[–ÉÚ[[š[I×Kš[œÝ[˜ÙKœÙ]ÚÝÒYP[š[X][ÛŠXK˜[YJB‚BBY^Ù\ˆ\ÜÂ‚BB\Ù[–Èš[[š[H—KœÚÝÊ
+B‚BB\Ù[‹˜[š[U[Y\‹œÝ\
+L
+B‚‚YYˆÚÝÐ[š[JÙ[‹XJN‚‚B\Ù[‹˜[š[U[Y\‹œÝÜ
+
+B‚BZYˆSWÐS’SH[™XHOH“›Û™HŽ‚‚BB\Ù[–Èš[[š[H—KšYJ
+B‚BB]žN‚‚BBB\Ù[–ÉÚ[XÛÛ‰×Kš[œÝ[˜ÙKœÙ]ÚÝÒYP[š[X][ÛŠXJB‚BBY^Ù\ˆ\ÜÂ‚BB\Ù[–Èš[XÛÛ‘œ˜[YH—KœÚÝÊ
+B‚BB]žN‚‚BBB\Ù[–ÉÚ[XÛÛ‰×KœÚÝÊ
+B‚BBB\Ù[–Èš[XÛÛˆ—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[JÒÒS”U
+ÈœXÛÛ•ÙY‹œ™ÈŠB‚BBY^Ù\ˆ\ÜÂ‚BB\Ù[‹˜[š[U[Y\‹œÝ\
+L
+B‚‚YYˆÚÝÓ™^
+Ù[ŠN‚‚B\Ù[‹˜[š[U[Y\‹œÝÜ
+
+B‚BZYˆÙ[‹™YU[š[N‚‚BB]žN‚‚BBB\Ù[–Èš[[š[H—KœÙ]^
+Ù[‹™YU[š[JB‚BBY^Ù\ˆ\ÜÂ‚BY[ÙN‚‚BB]žN‚‚BBB\Ù[–Èš[XÛÛˆ—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[JÒÒS”U
+ÈœXÛÛ—ÙY˜][œ™ÈŠB‚BBY^Ù\ˆ\ÜÂˆBBBB‚YYˆ[™]ÚÚÊÙ[ŠN‚‚B\™]H[\›™]
+ŒÍËŽKŒMÌŒNMŠB‚BZYˆ›Ý™]‚‚BB\™]H[\›™]
+
+B‚B\™]\›ˆ™]‚‚YYˆÝØ\™\•™\œÚ[Û•\JÙ[‹˜[YJN‚‚BHˆˆÛÛ\\™HØ\™\ˆ™\œÚ[ÛœÈÚ]TÕ™\™[X\Ù\È™[ÝÈHX]Ú[™ÈÝX›Kˆˆˆ‚‚B]žN‚‚BB]˜[YHHÝŠ˜[YJKœÝš\
+
+K›Ýš\
+•ˆŠB‚BB[X]ÚH™K›X]Ú
+ˆ—Š
+ÊWŠ
+ÊWŠ
+ÊJÎ‹]\Ý
+
+ÊJOÉ‹˜[YK™K’QÓ“Ô‘PÐTÑJB‚BBZYˆ›ÝX]Ú‚‚BBB\™]\›ˆ
+
+B‚BB[XZ›Ü‹Z[›Ü‹]ÚH
+[
+X]Ú™Ü›Ý\
+JJH›ÜˆH[ˆ
+K‹ÊJB‚BB]\ÝÛ›ÈHX]Ú™Ü›Ý\
+
+B‚BBZYˆ\ÝÛ›È\È›Û™N‚‚BBB\™]\›ˆ
+XZ›Ü‹Z[›Ü‹]ÚK
+B‚BB\™]\›ˆ
+XZ›Ü‹Z[›Ü‹]Ú[
+\ÝÛ›ÊJB‚BY^Ù\
+\Q\œ›Ü‹˜[YQ\œ›ÜŠN‚‚BB\™]\›ˆ
+
+B‚‚YYˆÝØ\™\‘™]ÚœÛÛŠÙ[‹\›
+N‚‚B[Ù™šXÚX[ÛX[šY™\ÝÈH
+‚BBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÛXZ[‹Ý\]KšœÛÛˆ‹‚BBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÝØ\™\‹[[Ù\›š^˜][Û‹]ÛÜšËÝ\]K]\ÝšœÛÛˆ‹‚BJB‚BZYˆÝŠ\›
+H›Ý[ˆÙ™šXÚX[ÛX[šY™\ÝÎ‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HX[šY™\ÝT“ŠB‚B\Ù\H‰ˆˆYˆÈˆ[ˆ\›[ÙHÈ‚‚B]\›H‰\É\ØØIYˆ	H
+\›Ù\[
+[YLK[YJ
+JJB‚B\™\HH™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹É\Èˆ	HÙ[‹œ™XY™\œÚ[ÛŠ
+KXØÙ\Žˆ˜\XØ][Û‹ÚœÛÛˆ‹ØXÚKPÛÛ›ÛŽˆ››ËXØXÚK›Ë\ÝÜ™KX^XYÙOL‹”˜YÛXHŽˆ››ËXØXÚHŸJB‚B]Ú]\›Ü[Š™\K[Y[Ý]LLŠH\È™\ÜÛœÙN‚‚BBYš[˜[Ý\›HÝŠ™\ÜÛœÙK™Ù]\›
+
+JKœÜ]
+È‹JVÌB‚BBZYˆš[˜[Ý\››Ý[ˆÙ™šXÚX[ÛX[šY™\ÝÎ‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HX[šY™\Ý™Y\™XÝŠB‚BB\™]\›ˆœÛÛ‹›ØYÊ™\ÜÛœÙKœ™XY
+
+K™XÛÙJ]‹NŠJB‚‚YYˆÝØ\™\‘ÝÛ›ØY
+Ù[‹\›\™Ù]
+N‚‚B[Ù™šXÚX[ÜXÚØYÙWÜ™Yš^\ÈH
+‚BBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÛXZ[‹ÜXÚØYÙ\ËÈ‹‚BBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÝØ\™\‹[[Ù\›š^˜][Û‹]ÛÜšËÜXÚØYÙ\ËÝ\ÝÈ‹‚BJB‚BZYˆ›Ý[žJÝŠ\›
+KœÝ\ÝÚ]
+
+H›Üˆ[ˆÙ™šXÚX[ÜXÚØYÙWÜ™Yš^\ÊN‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HXÚØYÙHT“ŠB‚B\™\HH™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹É\Èˆ	HÙ[‹œ™XY™\œÚ[ÛŠ
+_JB‚B\ÚHH\ÚX‹œÚLMŠ
+B‚B]Ú]\›Ü[Š™\K[Y[Ý]LÌ
+H\È™\ÜÛœÙKÜ[Š\™Ù]ØˆŠH\ÈÝ]‚‚BBZYˆ›Ý[žJÝŠ™\ÜÛœÙK™Ù]\›
+
+JKœÝ\ÝÚ]
+
+H›Üˆ[ˆÙ™šXÚX[ÜXÚØYÙWÜ™Yš^\ÊN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HXÚØYÙH™Y\™XÝŠB‚BB]Ú[HYN‚‚BBBXÚ[šÈH™\ÜÛœÙKœ™XY
+LŽ
+ˆL
+B‚BBBZYˆ›ÝÚ[šÎ‚‚BBBBXœ™XZÂ‚BBB[Ý]Üš]JÚ[šÊB‚BBB\ÚK\]JÚ[šÊB‚B\™]\›ˆÚKš^YÙ\Ý
+
+K›ÝÙ\Š
+B‚‚YYˆÝØ\™\”Ý\]]Õ\]PÚXÚÊÙ[ŠN‚‚BHˆˆ”Ý\HÚ[[Û™K\ÚÝÚXÚÈÛ›HY\ˆHÙ]\ØÜ™Y[ˆ^[Ý]^\ÝËˆˆˆ‚‚B\Ù[‹™[^U[Y\‹œÝÜ
+
+B‚B\Ù[‹™[^U[Y\‹œÝ\
+ÌYJB‚‚YYˆÝØ\™\]]Õ\]PÚXÚÊÙ[ŠN‚‚BHˆˆ”Ú[[Û™K\ÚÝ\]HÚXÚÈÛ›HY\ˆ[Û\ÜÌMÈÙ]\\ÈÜ[™Yˆˆˆ‚‚B\Ù[‹\]XÚÚØXÝ
+˜[ÙK]]ÛX]XÏUYJB‚‚YYˆ\]XÚÚØXÝ
+Ù[‹[˜OQ˜[ÙK]]ÛX]XÏQ˜[ÙJN‚‚BHˆˆÚXÚÈHÙ™šXÚX[Ø\™\ˆ]›Û][ÛˆÚ]Xˆ\]HX[šY™\Ý‚‚‚BUHYØXÞH›Ý][™ÈÛ˜][Ûˆ˜[›™\ˆ\È[[[Û˜[H\ØX›YˆHÙ]\‚BZXY\ˆ™[XZ[œÈYXØ]YÈ›Ü›X[ÚÚ[‹Ý™\œÚ[Ûˆ[™›Ü›X][Û‹‚‚BHˆˆ‚‚B\Ù[‹™[^U[Y\‹œÝÜ
+
+B‚B\Ù[‹œÚÝÑÛ˜]HH˜[ÙB‚B\Ù[‹œÝ]QÛ˜]HH˜[ÙB‚BZYˆ›Ý]]ÛX]XÈ[™›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÍK˜[YH[™›Ý[˜N‚‚BB\™]\›‚‚‚B[X[šY™\ÝÝ\›HšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÛXZ[‹Ý\]KšœÛÛˆ‚‚BZYˆ‹]\Ýˆ[ˆÙ[‹œ™XY™\œÚ[ÛŠ
+N‚‚BB[X[šY™\ÝÝ\›HšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÝØ\™\‹[[Ù\›š^˜][Û‹]ÛÜšËÝ\]K]\ÝšœÛÛˆ‚‚B]žN‚‚BB[X[šY™\ÝHÙ[‹—ÝØ\™\‘™]ÚœÛÛŠX[šY™\ÝÝ\›
+B‚BB[™]×Ý™\œÚ[ÛˆHÝŠX[šY™\Ý™Ù]
+™\œÚ[Ûˆ‹ˆŠJKœÝš\
+
+B‚BB\XÚØYÙWÝ\›HÝŠX[šY™\Ý™Ù]
+œXÚØYÙWÝ\›‹ˆŠJKœÝš\
+
+B‚BB\ÚLMˆHÝŠX[šY™\Ý™Ù]
+œÚLMˆ‹ˆŠJKœÝš\
+
+K›ÝÙ\Š
+B‚BBXÚ[™Ù[ÙÈHÝŠX[šY™\Ý™Ù]
+˜Ú[™Ù[ÙÈ‹ˆŠJKœÝš\
+
+B‚BBZYˆ›Ý™]×Ý™\œÚ[ÛŽ‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ›Z\ÜÚ[™È™\œÚ[ÛˆŠB‚BB[Ù™šXÚX[Ü™Yš^\ÈH
+‚BBBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÛXZ[‹ÜXÚØYÙ\ËÈ‹‚BBBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÝØ\™\‹[[Ù\›š^˜][Û‹]ÛÜšËÜXÚØYÙ\ËÝ\ÝÈ‹‚BBJB‚BBZYˆXÚØYÙWÝ\›[™›Ý[žJXÚØYÙWÝ\›œÝ\ÝÚ]
+
+H›Üˆ[ˆÙ™šXÚX[Ü™Yš^\ÊN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HXÚØYÙHT“ŠB‚BBZYˆXÚØYÙWÝ\›[™›Ý™K›X]Ú
+ˆ—–ÌNXKY—^ÍI‹ÚLMŠN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ›Z\ÜÚ[™ÈÜˆ[˜[YÒLMˆŠB‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BBZYˆ[˜N‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ‘\œ›Üˆ™XY[™È™\œÚ[Ûˆ[™›ÈHŠH
+È——ˆˆ
+ÈÝŠ\œŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹
+B‚BB\™]\›‚‚‚BXÝ\œ™[HÙ[‹œ™XY™\œÚ[ÛŠ
+B‚BZYˆÙ[‹—ÝØ\™\•™\œÚ[Û•\J™]×Ý™\œÚ[ÛŠHHÙ[‹—ÝØ\™\•™\œÚ[Û•\JÝ\œ™[
+N‚‚BBZYˆ[˜N‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ–[ÝH]™HXÝX[™\œÚ[Ûˆ[œÝ[Y›È\]H™YYYˆŠH
+È——ˆˆ
+ÈÝ\œ™[Y\ÜØYÙP›Þ•TWÒS‘“ËŠB‚BB\™]\›‚‚‚BZYˆ›ÝXÚØYÙWÝ\›‚‚BBZYˆ[˜N‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ“™]È™\œÚ[ÛŽˆŠH
+Èˆˆ
+È™]×Ý™\œÚ[Ûˆ
+È——ˆˆ
+ÈÊ‘ÝÛ›ØY\È›Ý]˜Z[X›HY]ˆŠKY\ÜØYÙP›Þ•TWÒS‘“Ë
+B‚BB\™]\›‚‚‚B\Ù[‹Ø\™\•\]HHÂ‚BBH™\œÚ[ÛˆŽˆ™]×Ý™\œÚ[Û‹‚BBH\›ŽˆXÚØYÙWÝ\›‚BBHœÚLMˆŽˆÚLM‹‚BBH˜Ú[™Ù[ÙÈŽˆÚ[™Ù[ÙË‚B_B‚B[\ÙÈHÊ“™]È™\œÚ[ÛŽˆŠH
+Èˆˆ
+È™]×Ý™\œÚ[Ûˆ
+Èˆˆ
+ÈÊ™]XÝYŠH
+È‹ˆ‚‚BZYˆÚ[™Ù[ÙÎ‚‚BB[\ÙÈ
+ÏH——ˆˆ
+ÈÚ[™Ù[ÙÂ‚B[\ÙÈ
+ÏH——ˆˆ
+ÈÊ‘È[ÝHØ[È\]H›ÝÏÈŠB‚BX›ÞHÙ[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹\ÛÛY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÖQTÓ“ÊB‚BX›ÞœÙ]]J‘[Û\ÜÌMÈHØ\™\ˆ]›Û][ÛˆŠB‚‚YYˆ\ÛÛ
+Ù[‹[œÝÙ\ŠN‚‚BZYˆ›Ý[œÝÙ\Ž‚‚BB\™]\›‚‚BZ[™›ÈHÙ]]ŠÙ[‹Ø\™\•\]H‹ßJB‚B]\›H[™›Ë™Ù]
+\›‹ˆŠB‚B]™\œÚ[ÛˆH[™›Ë™Ù]
+™\œÚ[Ûˆ‹ˆŠB‚BY^XÝYÜÚHH[™›Ë™Ù]
+œÚLMˆ‹ˆŠK›ÝÙ\Š
+B‚B[Ù™šXÚX[Ü™Yš^\ÈH
+‚BBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÛXZ[‹ÜXÚØYÙ\ËÈ‹‚BBHšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Ñ[Û\ÜËUØ\™\‹Q]›Û][Û‹ÝØ\™\‹[[Ù\›š^˜][Û‹]ÛÜšËÜXÚØYÙ\ËÝ\ÝÈ‹‚BJB‚BZYˆ›Ý\›Üˆ›Ý™\œÚ[ÛˆÜˆ›Ý[žJ\›œÝ\ÝÚ]
+
+H›Üˆ[ˆÙ™šXÚX[Ü™Yš^\ÊHÜˆ›Ý™K›X]Ú
+ˆ—–ÌNXKY—^ÍI‹^XÝYÜÚJN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ‘\œ›ÜˆÚ[HÝÛ›ØY[™Èš[HHŠH
+È——ˆˆ
+ÈÊ’[˜[Y\]HY]Y]KˆŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹ŠB‚BB\™]\›‚‚BYš[[˜[YHHÜËœ]˜˜\Ù[˜[YJ\›œÜ]
+È‹JVÌJHÜˆ
+™[Û\ÜÌMË]Ø\™\‹Y]›Û][Û—É\×Ø[š\Èˆ	H™\œÚ[ÛŠB‚BZYˆ›Ý
+š[[˜[YK™[™ÝÚ]
+‹š\ÈŠHÜˆš[[˜[YK™[™ÝÚ]
+‹™XˆŠJN‚‚BBYš[[˜[YHH™[Û\ÜÌMË]Ø\™\‹Y]›Û][Û—É\×Ø[š\Èˆ	H™\œÚ[Û‚‚B\Ù[‹™š[S˜[YHHš[[˜[YB‚B\Ù[‹Ø\™\”›ÙÜ™\ÜÐ›ÞHÙ[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ•\][™Ë‹‹ˆŠH
+È——ˆˆ
+ÈÊ”X\ÙHØZ]ˆŠKY\ÜØYÙP›Þ•TWÒS‘“Ë[Y[Ý]L[˜X›WÚ[œ]Q˜[ÙJB‚B\Ù[‹Ø\™\”›ÙÜ™\ÜÐ›ÞœÙ]]J‘[Û\ÜÌMÈHØ\™\ˆ]›Û][ÛˆŠB‚B]\™Ù]H‹Ý\Èˆ
+Èš[[˜[YB‚B]žN‚‚BBZYˆÜËœ]™^\ÝÊ\™Ù]
+N‚‚BBB[ÜËœ™[[Ý™J\™Ù]
+B‚BBXXÝX[ÜÚHHÙ[‹—ÝØ\™\‘ÝÛ›ØY
+\›\™Ù]
+B‚BBZYˆXÝX[ÜÚHOH^XÝYÜÚN‚‚BBB]žN‚‚BBBB[ÜËœ™[[Ý™J\™Ù]
+B‚BBBY^Ù\^Ù\[ÛŽ‚‚BBBB\\ÜÂ‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ‘ÝÛ›ØYYXÚØYÙHÚXÚÜÝ[HÙ\È›ÝX]ÚHŠH
+È——”ÒLMŽˆˆ
+ÈXÝX[ÜÚKY\ÜØYÙP›Þ•TWÑT”“Ô‹L
+B‚BBB\™]\›‚‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ‘\œ›ÜˆÚ[HÝÛ›ØY[™Èš[HHŠH
+È——ˆˆ
+ÈÝŠ\œŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹
+B‚BB\™]\›‚‚‚BZYˆš[[˜[YK™[™ÝÚ]
+‹™XˆŠN‚‚BBXÛYHÈ™ÙÈ‹‹ZH‹‹KY›Ü˜ÙK[Ý™\Üš]H‹\™Ù]B‚BY[ÙN‚‚BBXÛYHÈ›ÜÙÈ‹‹KY›Ü˜ÙK\™Z[œÝ[‹‹KY›Ü˜ÙK[Ý™\Üš]H‹š[œÝ[‹\™Ù]B‚‚BHÈXÚØYÙK[X[˜YÙ\ˆ\™Ýˆ]\Ý™H\ÜÙY[˜Ú[™ÙYˆÝXœ›ØÙ\ÜË”Ü[ˆ]›ÚYÂ‚BHÈ[šYÛXLˆPÛÛœÛÛP\ÛÛZ[™\ˆ\™Ý–ÌHY™™\™[˜Ù\È™]ÙY[ˆ[XYÙ\Ë‚‚B\Ù[‹Ø\™\’[œÝ[Ý]]H×B‚B]žN‚‚BB\Ù[‹Ø\™\’[œÝ[›ØÙ\ÜÈHÝXœ›ØÙ\ÜË”Ü[ŠÛYÝÝ]\ÝXœ›ØÙ\ÜË”TKÝ\œ\ÝXœ›ØÙ\ÜË”ÕÕU
+B‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BB\Ù[‹—ÝØ\™\’[œÝ[ÛX[\
+
+B‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ‘\œ›ÜˆÚ[H\][™ÈÈ™]È™\œÚ[ÛˆHHHŠH
+È——ˆˆ
+ÈÝŠ\œŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹L
+B‚BB\™]\›‚‚B\Ù[‹Ø\™\’[œÝ[[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹Ø\™\’[œÝ[[Y\—ØÛÛ›ˆHÙ[‹Ø\™\’[œÝ[[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹—ÝØ\™\’[œÝ[Û
+B‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹Ø\™\’[œÝ[[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹—ÝØ\™\’[œÝ[Û
+B‚B\Ù[‹Ø\™\’[œÝ[[Y\‹œÝ\
+LYJB‚‚YYˆÝØ\™\’[œÝ[Û
+Ù[ŠN‚‚B\›ØÙ\ÜÈHÙ]]ŠÙ[‹Ø\™\’[œÝ[›ØÙ\ÜÈ‹›Û™JB‚BZYˆ›ØÙ\ÜÈ\È›Û™N‚‚BB\™]\›‚‚BY^]ÛÙHH›ØÙ\ÜËœÛ
+
+B‚BZYˆ^]ÛÙH\È›Û™N‚‚BB\Ù[‹Ø\™\’[œÝ[[Y\‹œÝ\
+LYJB‚BB\™]\›‚‚B]žN‚‚BB[Ý]H›ØÙ\ÜË˜ÛÛ[][šXØ]J
+VÌB‚BBZYˆ\Ú[œÝ[˜ÙJÝ]ž]\ÊN‚‚BBB[Ý]HÝ]™XÛÙJ]‹N‹œ™\XÙHŠB‚BB\Ù[‹Ø\™\’[œÝ[Ý]]˜\[™
+ÝŠÝ]
+JB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚B\Ù[‹Ø\™\’[œÝ[›ØÙ\ÜÈH›Û™B‚B\Ù[‹—ÝØ\™\’[œÝ[š[š\ÚY
+^]ÛÙJB‚‚YYˆÝØ\™\ÛÜÙT›ÙÜ™\ÜÊÙ[ŠN‚‚BX›ÞHÙ]]ŠÙ[‹Ø\™\”›ÙÜ™\ÜÐ›Þ‹›Û™JB‚BZYˆ›Þ\È›Ý›Û™N‚‚BB]žN‚‚BBBX›Þ˜ÛÜÙJ
+B‚BBY^Ù\^Ù\[ÛŽ‚‚BBB\\ÜÂ‚B\Ù[‹Ø\™\”›ÙÜ™\ÜÐ›ÞH›Û™B‚‚YYˆÝØ\™\’[œÝ[ÛX[\
+Ù[ŠN‚‚B\Ù[‹—ÝØ\™\ÛÜÙT›ÙÜ™\ÜÊ
+B‚B]žN‚‚BB[ÜËœ™[[Ý™J‹Ý\Èˆ
+ÈÙ[‹™š[S˜[YJB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚‚YYˆÝØ\™\’[œÝ[š[š\ÚY
+Ù[‹^]ÛÙJN‚‚BHÈÛÜÚ[™ÈH[Ù[›ÙÜ™\ÜÈY\ÜØYÙP›Þ[™Ü[š[™ÈH™\Ý[X[ÙÈ[ˆB‚BHÈØ[YHØ[˜XÚÈÜ˜\Ú\È™]Ù\ˆÜ[Uˆ
+HÙ]\ØÜ™Y[ˆ\È›Ý[Ù[YØZ[‚‚BHÈ[[H™^ÕRH]™[[ÛÜ\›ŠKˆY™\ˆH™\Ý[X[ÙÈ^XÚ]K‚‚B\Ù[‹—ÝØ\™\’[œÝ[ÛX[\
+
+B‚B\Ù[‹Ø\™\’[œÝ[^]ÛÙHH[
+^]ÛÙJB‚B\Ù[‹Ø\™\’[œÝ[›ØÙ\ÜÈH›Û™B‚B\Ù[‹Ø\™\”™\Ý[[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹Ø\™\”™\Ý[[Y\—ØÛÛ›ˆHÙ[‹Ø\™\”™\Ý[[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹—ÝØ\™\”ÚÝÒ[œÝ[™\Ý[
+B‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹Ø\™\”™\Ý[[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹—ÝØ\™\”ÚÝÒ[œÝ[™\Ý[
+B‚B\Ù[‹Ø\™\”™\Ý[[Y\‹œÝ\
+LYJB‚‚YYˆÝØ\™\”ÚÝÒ[œÝ[™\Ý[
+Ù[ŠN‚‚B]\™Ù]Ý™\œÚ[ÛˆHÙ]]ŠÙ[‹Ø\™\•\]H‹ßJK™Ù]
+™\œÚ[Ûˆ‹ˆŠB‚BZ[œÝ[YHÙ[‹œ™XY™\œÚ[ÛŠ
+B‚BY^]ÛÙHHÙ]]ŠÙ[‹Ø\™\’[œÝ[^]ÛÙH‹LJB‚BZYˆ^]ÛÙHOH[™\™Ù]Ý™\œÚ[Ûˆ[™Ù[‹—ÝØ\™\•™\œÚ[Û•\J[œÝ[Y
+HHÙ[‹—ÝØ\™\•™\œÚ[Û•\J\™Ù]Ý™\œÚ[ÛŠN‚‚BB\Ù[‹Ø\™\”™\Ý\›ÞHÙ[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ•\]Hš[š\ÚYÝXØÙ\ÜÙ[HHŠH
+È——ˆˆ
+ÈÊ‘ÕRHÚ[™\Ý\]]ÛX]XØ[H[ˆÈÙXÛÛ™ËˆŠH
+È—ˆˆ
+È[œÝ[YY\ÜØYÙP›Þ•TWÒS‘“ËK[˜X›WÚ[œ]Q˜[ÙJB‚BB\Ù[‹Ø\™\”™\Ý\[Y\ˆHU[Y\Š
+B‚BB]žN‚‚BBB\Ù[‹Ø\™\”™\Ý\[Y\—ØÛÛ›ˆHÙ[‹Ø\™\”™\Ý\[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹œÑŠB‚BBY^Ù\]šX]Q\œ›ÜŽ‚‚BBB\Ù[‹Ø\™\”™\Ý\[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹œÑŠB‚BB\Ù[‹Ø\™\”™\Ý\[Y\‹œÝ\
+ÌYJB‚BY[ÙN‚‚BB[Ý]Hˆ‹š›Ú[ŠÙ]]ŠÙ[‹Ø\™\’[œÝ[Ý]]‹×JJB‚BBZYˆ[ŠÝ]
+HˆL‚‚BBB[Ý]HÝ]ËML—B‚BB[\ÙÈHÊ‘\œ›ÜˆÚ[H\][™ÈÈ™]È™\œÚ[ÛˆHHHŠH
+Èˆˆ
+È\™Ù]Ý™\œÚ[Û‚‚BBZYˆÝ]œÝš\
+
+N‚‚BBB[\ÙÈ
+ÏH——ˆˆ
+ÈÝ]œÝš\
+
+B‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÑT”“Ô‹MJB‚‚YYˆœÝ[œÝÙ\ŠÙ[‹[œÝÙ\ŠN‚‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹œÑŠ
+B‚‚YYˆ\”Ù[XÝY
+Ù[‹[œÝÙ\ŠN‚‚BZYˆ[œÝÙ\ˆ\È›Ý›Û™N‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL˜[YHH[œÝÙ\‚‚BB\Ù]]š[\Ê
+BˆBBB‚YYˆ\ÛÛ™ŠÙ[‹[œÝÙ\ŠN‚‚BZYˆ[œÝÙ\ˆ\È›Ý›Û™N‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YHH[œÝÙ\‚‚‚YYˆØ][ÛÛ™ŠÙ[‹[œÝÙ\ŠN‚‚BZYˆ[œÝÙ\ˆ\È›Ý›Û™N‚‚BBZYˆÜËœ]š\Ùš[J[œÝÙ\ŠÈœØ][]\Ëž[ŠN‚‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHH[œÝÙ\‚‚BBY[ÙN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ•Hš[HØ][]\Ëž[È›Ý^\ÝÈ[ˆÙ[XÝY\ˆŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚‚YYˆØ]™JÙ[ŠN‚‚B[\ÙÈHÊ‘ÕRHÚ[›ÝÈ™H™\Ý\YÈXÝ]˜]HÚ[™Ù\È[ŽˆŠH
+È—ˆ‚‚B[\ÙÔØÜˆHˆ‚‚B]\H˜[ÙB‚BZYˆÙ[‹™ÌÎWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YN‚‚BBZYˆ›Ý\ÒT
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YJN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ’TY™\ÜÈŠJÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YJH
+ÈT—Ñ‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BBB\™]\›‚‚BZYˆÙ[‹™ÌM×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BB^HÊ”Ù]ÓQÙ™ˆ[ˆÝ[™žHŠB‚BBZYˆÙ[‹™ÍHOHŒŽ‚B‚BBB[\ÙÈ
+ÏH
+È—ˆ‚‚BBB\Ý[™žSÛYÛ“Ù™Š
+B‚BBY[ÙN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ
+ÈT—Ñ‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BBB\™]\›‚‚BZYˆÙ[‹™ÌÌ—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Œ‹˜[YN‚‚BBZYˆL“ÒÎ‚‚BBB^HÚ›Ù[]Ú
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Œ‹˜[YJB‚BBBZYˆ›Ý‚‚BBBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊÚ[›™[Ù[XÝ[ÛˆžÒÈŠH
+ÈT—Ñ‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BBBB\™]\›‚BBB‚BBB[\ÙÈ
+ÏHÊÚ[›™[Ù[XÝ[ÛˆžÒÈŠH
+È—ˆ‚‚BBY[ÙN‚‚BBB\Ù]Ñ‘ÛÙ™Š
+B‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YHOHÙ[‹™ÍMWHÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL˜[YHOHÙ[‹™ÍN‚‚BB^H
+ÕYN˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL˜[YVÎ‹LWK˜[ÙN˜ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[Y_VØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YHOHŒ—JB‚BBZYˆ›ÝÚÚÔ]
+
+È‹ÚÌM×Ùš[\ÈŠN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ”ÛÜœžKØ[››ÝÜ™X]H\ˆÛˆ]ˆŠH
+Èˆˆ
+È
+ÈˆHHH‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BBB\™]\›‚‚BB\Ù]]š[\Ê
+B‚BZYˆÙ[‹™ÍWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YN‚‚BBZYˆ
+
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈˆÜˆÙ[‹™ÍWHOH’XÛÛœÈŠH[™
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈ˜\ˆˆÜˆÙ[‹™ÍWHOH’XÛÛœÈ˜\ˆŠJH‚BB[Üˆ
+
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈˆÜˆÙ[‹™ÍWHOH’XÛÛœÈŠH[™
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈšYÚˆÜˆÙ[‹™ÍWHOH’XÛÛœÈšYÚŠJH‚BB[Üˆ
+
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈšYÚˆÜˆÙ[‹™ÍWHOH’XÛÛœÈšYÚŠH[™
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈ˜\ˆˆÜˆÙ[‹™ÍWHOH’XÛÛœÈ˜\ˆŠJN‚‚BBB[\ÙÈ
+ÏHÊ“Y[H\HŠH
+È—ˆ‚‚BBY[YˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈˆÜˆÙ[‹™ÍWHOH’XÛÛœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈšYÚˆÜˆÙ[‹™ÍWHOH’XÛÛœÈšYÚˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈ˜\ˆˆÜˆÙ[‹™ÍWHOH’XÛÛœÈ˜\ˆŽ‚‚BBB]\H›ÜšYÌMÈ‚‚BBBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈšYÚˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHOH’XÛÛœÈ˜\ˆŽˆ‚BBBB]\H›™]ÌMÈ‚‚BBBZYˆÙ]Y[T[Ê\
+N‚‚BBBB[\ÙÈ
+ÏHÊ“Y[H\HŠH
+È—ˆ‚‚BBBB^HÚ[™ÙTØÜ™Y[–[
+›Y[H‹Y[\Ù[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YJJB‚BBBY[ÙN‚‚BBBB[\ÙÈHÊ“Y[H\HŠH
+ÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YJH
+ÈT—Ñ‚‚BBBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BBBB\™]\›‚‚BBY[ÙN‚‚BBB[\ÙÈ
+ÏHÊ“Y[H\HŠH
+È—ˆ‚‚BBB^HÚ[™ÙTØÜ™Y[–[
+›Y[H‹Y[\Ù[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YJJB‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒË˜[YH[™›ÝÜËœ]™^\ÝÊ
+‹Ü›ØËÜÝ‹ÝšY[ËØ[HŠJN‚‚BB[\ÙÈHÊ‘˜YHØ[››Ý™H\ÙY[Hš[HZ\ÜÚ[™ÈHHHŠB‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BB\™]\›‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YH[™ÔHOHœÚŽ‚‚BB[\ÙÈHÊ’ÔÔÑÝÙ\ˆÝ]HÚXÚÈ\È›Ý]˜Z[X›H›ÜˆÒŠB‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BB\™]\›‚‚BZYˆÙ[‹™ÌŽWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\N˜[YN‚‚BBZYˆ›ÝPÓ‚‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\N˜[YHH˜[ÙB‚BBY[ÙN‚‚BBB[\ÙÈ
+ÏHÊ”Ù]ÛX\ˆY[[ÜžHŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌÌHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NK˜[YN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\NK˜[YN‚‚BBB^HÙ][˜ÛÙ[™Õ\Ù\Š
+B‚BBB[\ÙÈ
+ÏHÊ”Ù]\Ù\ˆ[˜ÛÙ[™Ë˜ÛÛ™ˆŠH
+È—ˆˆ‚BBY[ÙN‚‚BBB^HÙ][˜ÛÙ[™Õ\Ù\Š˜[ÙJB‚BBB[\ÙÈ
+ÏHÊ”Ù]ÜšYÚ[˜[[˜ÛÙ[™Ë˜ÛÛ™ˆŠH
+È—ˆ‚‚BBZYˆ›Ý‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ
+\ÙËœ™\XÙJ—ˆ‹ˆŠKœ™\XÙJÊ‘ÕRHÚ[›ÝÈ™H™\Ý\YÈXÝ]˜]HÚ[™Ù\È[ŽˆŠKˆŠH
+ÈT—ÑŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BBB\™]\›‚‚BZYˆÙ[‹™ÎHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YN‚‚BBZ\ÓÚÈHÚXÚÔØÜ™Y[ŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJB‚BBZYˆ›Ý\ÓÚÎ‚‚BBB[\ÙÈH
+Ê‘^˜HØÜ™Y[ˆŠH
+ÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJH
+Èˆˆ
+ÈÊš\È[˜ÛÜœ™XÝX\ÙKÙ[XÝ^\Ý[™ËØÛÜœ™XÝØÜ™Y[ˆHHHŠJB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÒS‘“ËJB‚BBB\™]\›‚‚BB]\HYB‚BB[\ÙÔØÜˆHÊ‘^˜HØÜ™Y[ˆŠH
+ÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJB‚BB\Ù[‹™ÎHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YBBBBBB‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹œØ]™J
+B‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YHOHŒŽ‚‚BBB^HÚ[™ÙTÚÚ[–[
+“[X™\–˜\^‹ÚÚÔXÛÛ”Ú^™J
+JB‚BZYˆÙ[‹™Í×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YN‚‚BBZYˆ›ÝÚXÚÒXÛÛœÊÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YJN‚‚BBB[\ÙÈH
+Ê’XÛÛœÈ\HŠH
+ÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YJH
+Èˆˆ
+ÈÊš\È[˜ÛÜœ™XÝX\ÙKÙ[XÝÛÜœ™XÝXÛÛœÈHHHŠJB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÒS‘“ËJB‚BBB\™]\›‚‚BB\Ù[‹™Í×HHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BB[\ÙÈ
+ÏHÊ’XÛÛœÈ\HŠH
+ÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YJH
+È—ˆ‚B‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒKœØ]™J
+B‚BB^HÙ]\RXÛÜÊÙ[‹™Í×JB‚BZYˆÙ[‹™ÌNHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YHÜˆÙ[‹™ÌNWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YN‚‚BBZ\ÓÚËÛÛÜˆHÚXÚÔÝ[Q[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YKYJB‚BBZYˆ\ÓÚÈOHÈŽ‚‚BBB^HÚ[™ÝÔÝ[J\ÓÚËÛÛÜŠB‚BBBZYˆ\ÙÔØÜˆOHˆŽ‚‚BBBB[\ÙÈ
+ÏHÊ‘^˜HØÜ™Y[ˆŠH
+ÈŽˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJH
+È‹‚‚BBB[\ÙÈ
+ÏHÊ”Ý[NˆŠH
+Èˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YJH
+È‹ˆ
+ÈÊ•]HÛÛÜŽˆŠH
+Èˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YJH
+È—ˆ‚‚BBY[ÙN‚‚BBB[\ÙÈH
+Ê”Ý[NˆŠH
+Èˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YJH
+Èˆˆ
+ÈÊš\È[˜ÛÜœ™XÝÝ[HÚ[›Ý™HÚ[™ÙYHHHŠH
+È——ˆˆ
+ÈÊ”Ø]™HYØZ[ˆÈ\H[Ù]\Ú[™Ù\ÈÚ]Ý]Ý[HÚ[™ÙHŠJB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÒS‘“ËJBBBBB‚BBB\Ù[‹™ÌNHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YB‚BBB\Ù[‹™ÌNWHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YB‚BBB\™]\›‚‚BZYˆÙ[‹™ÌM—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YN‚BB‚BB[\ÙÈ
+ÏHÊ”XÛÛˆY˜][X\šÙ\‹™^‹‹ˆŠH
+ÈŽˆˆ
+ÈÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YH
+È—ˆ‚‚BB\Ù]\TXÛÛŠ
+B‚BZYˆ
+Ù[‹™ÌÎHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ÌK˜[YJH[™
+Èˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YHÜˆÈˆ[ˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YJN‚‚BB[\ÙÈ
+ÏHÊ‘[˜X›H™^Ú]H[ˆÙX]\ˆŠH
+È—ˆ‚‚BZYˆÙ[‹™Í—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BB[\ÙÈ
+ÏHÊ”\›X[™[^˜H[™›Ø˜\ˆŠH
+È—ˆ‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BBB^HÚ[™ÙTÚÚ[–[
+’[™›Ð˜\ˆ‹ŒÈŠB‚BBY[ÙN‚‚BBB^HÚ[™ÙTÚÚ[–[
+’[™›Ð˜\ˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YJB‚BBB[\ÙÈ
+ÏHÊ”Ý[™\™[™›Ø˜\ˆ\HŠH
+È—ˆ‚‚BY[Yˆ›ÝÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YH[™Ù[‹™ÌLWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YN‚B‚BB[\ÙÈ
+ÏHÊ”Ý[™\™[™›Ø˜\ˆ\HŠH
+È—ˆ‚‚BB^HÚ[™ÙTÚÚ[–[
+’[™›Ð˜\ˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YJB‚BZYˆÙ[‹™Ì×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÜXÚX[[™›È\HŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌK˜[YN‚‚BB[\ÙÈ
+ÏHÊ•\Ù\ˆ[™›È\HŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌMWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YN‚‚BB[\ÙÈ
+ÏHÊ’ÔÔÑÝ]HŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌMHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÍ˜[YN‚‚BB[\ÙÈ
+ÏHÊ“™]]š[›ÈÙ^[X\ŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌŒ×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YN‚‚BB[\ÙÈ
+ÏHÊ“ØØ[^˜][ÛˆÙˆHÚÚ[ˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌLHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÌË˜[YN‚‚BB[\ÙÈ
+ÏHÊ•\Ù\ˆ[™›ÈXÝ‹Û™^ÝÚ]Ú[™ÈŠH
+È—ˆ‚‚B^H˜[ÙB‚BZYˆÙ[‹™ÌL—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒN˜[YN‚‚BB[\ÙÈ
+ÏHÊ•›Û[YH\HŠH
+È—ˆ‚‚BB^HYB‚BZYˆÙ[‹™ÌHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LK˜[YHÜˆÙ[‹™ÌWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\L‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ”Ù]›Û[YH[™]]HÜÚ][ÛœÈŠH
+È—ˆ‚‚BB^HYB‚BZYˆ‚‚BB^HÚ[™ÙTÚÚ[–[
+•›Û[YH‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒN˜[YJB‚BB^HÚ[™ÙTÚÚ[–[
+“]]HŠB‚BB^HÚÚÕ›Û]]J
+B‚BZYˆÙ[‹™ÌL×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNK˜[YN‚‚BB[\ÙÈ
+ÏHÊÚ[›™[Ù[XÝ[Ûˆ\HŠH
+È—ˆ‚‚BB^HÚ[™ÙTÚÚ[–[
+Ú[›™[Ù[XÝ[Ûˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNK˜[YJB‚BB^HÚÚÔYÑ›Û
+
+B‚BY[ÙN‚‚BBYYYHHYB‚BBZYˆÙ[‹™Í—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHÜˆÙ[‹™Í×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YHÜˆÙ[‹™ÍŽHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMË˜[YHÜˆÙ[‹™ÍŽWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YN‚‚BBBZYˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHŒˆ[™Ù[‹™Í—HOHŒŠHÜˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YHOHŒˆ[™Ù[‹™Í×HOHŒŠHÜˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMË˜[YHOHŒˆ[™Ù[‹™ÍŽHOHŒŠHÜˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YHOHŒˆ[™Ù[‹™ÍŽWHOHŒŠN‚‚BBBBYYYHH˜[ÙB‚BBBB^HÚ[™ÙTÚÚ[–[
+Ú[›™[Ù[XÝ[Ûˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNK˜[YJB‚BBBB^HÚÚÔYÑ›Û
+
+B‚BBBY[ÙN‚‚BBBB^HÚ[™ÙPÚŠ
+B‚BBB[\ÙÈ
+ÏHÊÚ[›™[Ù[XÝ[Ûˆ›ÛÚ^™HŠH
+È—ˆ‚‚BBZYˆYYH[™
+Ù[‹™ÍWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YHÜˆÙ[‹™Í—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLL˜[YHÜˆÙ[‹™Í×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLLK˜[YHÜˆÙ[‹™ÍHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLMË˜[YJN‚‚BBB^HÐÚ[›™[Ù[
+Ù[‹™ÍWKÙ[‹™Í—KÙ[‹™Í×KÙ[‹™ÍJB‚BBB[\ÙÈ
+ÏHÊÚ[›™[Ù[XÝ[Ûˆ\HŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHŒŽ‚‚BBB^HÙ]ÛY[
+TÑT“Ô’JB‚BBY[YˆÙ[‹™ÍHOHŒŽ‚‚BBB^HÚÚÕ\Ù\’Ê
+B‚BBB^HÙ]ÛY[Ü™J
+B‚BBY[ÙN‚‚BBB^HÚ[™ÙTØÜ™Y[–[
+›ÛY‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YKÙ[‹™ÍJB‚BB[\ÙÈ
+ÏHÊ“ÓQ\HŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌÍ×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YN‚BBBBBB‚BB[\ÙÈ
+ÏHÊ”QÈ\HŠH
+È—ˆˆ‚BB^HÚ[™ÙTQÜ™\Ê
+BBBB‚BZYˆÙ[‹™ÌŒ—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÚÝÈØ][]HÜÚ][Ûˆ[ˆ[™›ÈŠH
+È—ˆ‚BBB‚BZYˆÙ[‹™ÌÍHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YN‚‚BB[\ÙÈ
+ÏHÊ”˜Y[ÔØÜ™Y[”Ø]™\ˆŠH
+È—ˆ‚BB‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\M˜[YHOHÙ[‹™Ì×N‚BB‚BB[\ÙÈ
+ÏHÊ‘TÈÙ[XÝ[Ûˆ\HŠH
+È—ˆ‚‚BB^HÚ[™ÙTÚÚ[–[
+‘TÔÙ[XÝ[Ûˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\M˜[YJB‚BB^HÚÚÔYÑ›Û
+JB‚BY[YˆÙ[‹™Ì—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LË˜[YN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LË˜[YHOHŒŽ‚‚BBB^HÚ[™ÙTÚÚ[–[
+‘TÔÙ[XÝ[Ûˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\M˜[YJB‚BBB^HÚÚÔYÑ›Û
+JB‚BBY[ÙN‚BBB‚BBB^HÙ]›Û]™[\ÜÙ[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LË˜[YJB‚BB[\ÙÈ
+ÏHÊ‘^[™[™\ØÜš\[Ûˆ›ÛÚ^™HŠH
+È—ˆ‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YHOHÙ[‹™ÌŒN‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YHOHŒŽ‚‚BBB^HÙ]›Û\Ý\ÊŒÌˆŠB‚BBY[ÙN‚‚BBB^HÙ]›Û\Ý\ÊÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJB‚BB[\ÙÈ
+ÏHÊ‘TÈ\Ý›ÛÚ^™HŠH
+È—ˆ‚‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\MK˜[YHOHÙ[‹™ÌÌWH[™Ù[‹™ÌÌWHOHŒˆŽ‚‚BBXÛÛ™šYË\ØYÙKš[™›Ø˜\—Ý[Y[Ý]˜[YHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YB‚BZYˆÙ[‹™Ì—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YH[™
+Ù[‹™Ì—HOH›ˆˆÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Î˜[YHOH›ˆŠN‚‚BB[\ÙÈ
+ÏHÊ”ÜXÚX[[™›È\HŠH
+Èˆ
+Š×Ê™^[œÚ[ÛœÈŠJÈŠHˆ
+È—ˆ‚‚BZYˆÙ[‹™Í—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽL‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÚÝÈY\Ý\™^HŠH
+È—ˆ‚‚BZYˆÙ[‹™Í×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽLË˜[YN‚‚BB[\ÙÈ
+ÏHÊ•Ø\›HŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽM˜[YN‚‚BB[\ÙÈ
+ÏHÊÛÛŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLM˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÚÝÈ™XÛÜ™[™ÈXÛÛˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÍLHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLN˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘PÓHX™[ÈŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍLWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLNK˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘PÓH˜[Y\ÈŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍL—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒK˜[YN‚‚BB[\ÙÈ
+ÏHÊ•\HŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍL×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒ‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ•[™›ÈŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍMHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŒË˜[YN‚‚BB[\ÙÈ
+ÏHÊ•šY[È™\ÛÛ][ÛˆŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍM—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL‹˜[YN‚‚BB[\ÙÈ
+ÏHÊØ[Ý[][ÛˆÙˆÚ[›™[[X™\œÈŠH
+È—ˆ‚‚BZYˆÙ[‹™ÍM×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽ˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘]HŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍNHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLŽK˜[YN‚‚BB[\ÙÈ
+ÏHÊ•[YHŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍNWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÌ˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÙXÛÛ™ÈŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍŒHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍK˜[YN‚‚BB[\ÙÈ
+ÏHÊÚ[›™[˜[YHŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍŒWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍ‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘]™[›ÝÈŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍŒ—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLÍË˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘]™[™^ŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÍŒ×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YN‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YHH]]Ò
+
+BB‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒN‹˜[YHH]]Õ\R
+
+B‚BZYˆÙ[‹™ÍWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YN‚‚BB[\ÙÈ
+ÏHÊ”]ÈØ][]\Ëž[ŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌŽHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\M‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ[š[X]YÙX]\ˆXÛÛœÈŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌÍWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ[š[X]YÙX]\ˆXÛÛœÈŠH
+È—ˆˆ‚BZYˆÙ[‹™Î×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŽK˜[YN‚‚BB[\ÙÈ
+ÏHÊ[š[X]YÙX]\ˆXÛÛœÈŠH
+È—ˆˆ‚BZYˆÙ[‹™ÌŒWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YN‚‚BB[\ÙÈ
+ÏHÚU
+
+B‚BZYˆÙ[‹™ÍÍHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMMË˜[YHÜˆÙ[‹™ÍÌ×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMM‹˜[YHÜˆÙ[‹™ÍÌ—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMMK˜[YHÜˆÙ[‹™ÍÌWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMM˜[YHÜˆÙ[‹™ÍÌHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMLË˜[YN‚‚BB[\ÙÈ
+ÏHœÊ
+B‚BZYˆÙ[‹™ÌÍ—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YN‚‚BB^HÚÚÑšY›Ê
+B‚BB[\ÙÈ
+ÏHÊ”Ù\šXÙHØØ[ˆÛ™È\ÝŠH
+È—ˆ‚‚BZYˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YHOHŒÈˆ[™Ù[‹™ÍÍWHOHŒÈŠHÜˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YHOHŒÈˆ[™Ù[‹™ÍÍWHOHŒÈŠHÜˆ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YH[ˆ
+Œ‹ŒH‹ŒˆŠH[™Ù[‹™ÍÍWH[ˆ
+‹H‹ˆŠJHÜˆ
+Ù[‹™ÍÍWH[ˆ
+Œ‹ŒH‹ŒˆŠH[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ž˜[YH[ˆ
+‹H‹ˆŠJN‚‚BB[\ÙÈ
+ÏHÊ”ÙXÛÛ™XÛÛˆ\HŠH
+È—ˆ‚BBB‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YHOHÙ[‹™ÎM×HÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMK˜[YHOHÙ[‹™ÎHÜˆÙ[‹™ÎWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM‹˜[YHÜˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒK˜[YHOHÙ[‹™ÍÍ—HÜˆÙ[‹™ÍÍ×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒ‹˜[YHÜˆÙ[‹™ÍÎHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMŒË˜[YHÜˆÙ[‹™ÍÎWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YHÜˆÙ[‹™Î—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMË˜[YN‚‚BB[\ÙÈ
+ÏHÊ[š[X][ÛˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌK˜[YN‚‚BB[\ÙÈ
+ÏHŠŠ×Ê”ÔPÒPSS‘“ÈŠJÈŠHˆ
+ÈÊ•\HŠH
+È—ˆˆ‚BZYˆÙ[‹™ÎWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÌ‹˜[YN‚‚BB[\ÙÈ
+ÏHŠŠ×Ê•TÑTˆS‘“ÈŠJÈŠHˆ
+ÈÊ•\HŠH
+È—ˆ‚‚BZYˆÙ[‹™Î—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÍ˜[YN‚‚BB[\ÙÈ
+ÏHŠŠ×Ê•ÑPUTˆŠJÈŠHˆ
+ÈÊ‘]HŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™Î×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMÍK˜[YN‚‚BB[\ÙÈ
+ÏHŠŠ×Ê•ÑPUTˆŠJÈŠHˆ
+ÈÊ”Ý]HŠH
+Èˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÎHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒN˜[YN‚‚BB[\ÙÈ
+ÏHÊ“‘UUSÈŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNË˜[YN‚‚BB[\ÙÈ
+ÏHÊ•™\XØ[Ù™œÙ]ŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎLHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒMË˜[YN‚‚BB[\ÙÈ
+ÏHÊŒL^\È›Ü™XØ\ÝŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎLWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNK˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘[˜X›HPš]˜]PØ[Ý[]ÜˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎL—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNL˜[YN‚‚BBZYˆÙ]Ó“Ñ‘Š
+N‚‚BBB[\ÙÈ
+ÏHÊ“Û‹ÓÙ™ˆXÛÛœÈŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\L˜[YN‚‚BB[\ÙÈ
+ÏHÊ‘\Ü^HÕÌÌH[ˆÚYH˜\ˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎL×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒNN˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÜÝ\ˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎMHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YHÜˆÙ[‹™ÎMWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÜÝ\ˆŠH
+È‹Èˆ
+ÈÊ”Ù]ÜÚ][ÛˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎM—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÜÝ\ˆŠH
+È‹Èˆ
+ÈÊ”Ú^™HŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎNHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YN‚‚BB[\ÙÈ
+ÏHÊ”ÜÝ\ˆŠH
+È‹Èˆ
+ÈÊ”™[[Ýš[™ÈÝ\œ™[ÜÝ\ˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÎNWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YN‚‚BB^HÚ[™ÙTÚÚ[–[
+”Ü]ØÜ™Y[ˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YJB‚BB[\ÙÈ
+ÏHÊ••HÜ]ØÜ™Y[ˆŠH
+È—ˆ‚‚BZYˆ
+Ù[‹™ÌLHOHŒˆ[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YHOHŒŠHÜˆ
+Ù[‹™ÌLHOHŒˆ[™ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YHOHŒŠN‚‚BB[\ÙÈ
+ÏHÊ“™]ÛÜšÈÜYYŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌLWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒL˜[YHÜˆÙ[‹™ÌL—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLK˜[YN‚‚BB[\ÙÈ
+ÏHÊ“™]ÛÜšÈÜYYŠH
+È‹Èˆ
+ÈÊ”Ù]ÜÚ][ÛˆŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌL×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLË˜[YN‚‚BB[\ÙÈ
+ÏHÊ“™]ÛÜšÈÜYYŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÌLHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒM˜[YN‚‚BB[\ÙÈ
+ÏHÊ”›ÙÜ™\ÜÈ˜\ˆ›Ü™YÜ›Ý[™ŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÌLWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒMK˜[YN‚‚BB[\ÙÈ
+ÏHÊ”›ÙÜ™\ÜÈ˜\ˆ˜XÚÙÜ›Ý[™ŠJÈˆ
+Š×Ê˜ÛÛÜˆŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÌL—HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒ‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ”›ÙÜ™\ÜÈ˜\ˆ^X\ŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌL×HOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŒË˜[YN‚‚BB[\ÙÈ
+ÏHÊ’YHÓ”‹ÐQÐÈ
+KÔÊHYˆ˜[YH\ÈŠH
+È—ˆ‚‚BZYˆÙ[‹™ÌLHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YN‚BB‚BB[\ÙÈ
+ÏHÊ“[ÝšYHÙ[XÝ[Ûˆ\HŠH
+È—ˆ‚‚BB^HÚ[™ÙTÚÚ[–[
+“[ÝšYTÙ[XÝ[Ûˆ‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YJB‚BB^HÚÚÔYÑ›Û
+JB‚BZYˆÙ[‹™ÌLWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YN‚‚BB[\ÙÈ
+ÏHÊ“™]ÛÜšÈÜYYŠJÈˆ
+Š×Ê•\HŠH
+ÈŠWˆ‚‚BZYˆÙ[‹™ÌLLHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YN‚‚BB[\ÙÈ
+ÏHÊ	Ñ^[™Y[X™\ˆTXÛÛˆÚ^™IÊH
+È—ˆ‚‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YHOHŒŽ‚‚BBB^HÚ[™ÙTÚÚ[–[
+“[X™\–˜\^‹ÚÚÔXÛÛ”Ú^™J
+JB‚BBY[ÙN‚‚BBB^HÚ[™ÙTÚÚ[–[
+“[X™\–˜\^‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒË˜[YJB‚BZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŽK˜[YHOHÙ[‹™ÌLLWN‚BB‚BB[\ÙÈ
+ÏHÊ‘]™[šY]È\HŠH
+È—ˆ‚‚BB^HÚ[™ÙTÚÚ[–[
+‘]™[šY]È‹ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒŽK˜[YJB‚BB^HÚÚÔYÑ›Û
+JB‚BZYˆ\ÙÈOHÊ‘ÕRHÚ[›ÝÈ™H™\Ý\YÈXÝ]˜]HÚ[™Ù\È[ŽˆŠH
+È—ˆŽˆ‚BB]žN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÝŠ\ÙÊÛ\ÙÔØÜŠKY\ÜØYÙP›Þ•TWÒS‘“Ë
+B‚BBY^Ù\ˆ\ÜÂ‚BB\Ù[‹œœÝÕRJ
+B‚BY[ÙN‚‚BBZYˆ\‚‚BBB[\ÙÈHÊ‘È[ÝHØ[™\Ý\ÕRHÈXÝ]˜]HHØÜ™Y[ŽˆŠH
+Èˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YJH
+Èˆˆ
+ÈÊ››ÝÏÈŠB‚BBB\™\Ý\›ÞHÙ[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹\P[œÝÙ\‹Y\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÖQTÓ“ÊB‚BBB\™\Ý\›ÞœÙ]]JÊ”™\Ý\ÕRH›ÝÏÈŠJB‚BBY[ÙN‚‚BBB\Ù[‹œØ]š[™Ê
+B‚‚YYˆ\P[œÝÙ\ŠÙ[‹[œÝÙ\ŠN‚‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹œœÝHYB‚B\Ù[‹œØ]š[™Ê
+B‚‚YYˆœÝÕRJÙ[ŠN‚‚B\Ù[‹œœÝHYBBBBB‚B\Ù[‹œÝ\ÜœÝœÝ\
+YJB‚‚YYˆØ]š[™ÊÙ[ŠN‚‚BX[[™\ÈHˆ‚‚B]žN‚‚BBXHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMË™XÝ
+
+B‚BBY›Üˆ[ˆ˜[™ÙJK[ŠSÐÑ‘ÊJÌJN‚‚BBBZYˆSÐÑ‘ÖÞLWHOHˆŽ‚‚BBBBY›ÜˆH[ˆKš][\Ê
+N‚‚BBBBBZYH[
+ÝŠVÌJKœ™\XÙJœ\ˆ‹ˆŠJB‚BBBBBZYˆYOH‚‚BBBBBBXÙ™ÈHVÌWK™Ù]˜[YJ
+B‚BBBBBBX[[™\È
+ÏH‰\Îˆ	\×ˆˆ	H
+SÐÑ‘ÖÞLWKÙ™ÊB‚BBBBBBZVÌWKœØ]™J
+B‚BBBBBBXœ™XZÂ‚BBZYˆ[[™\ÈOHˆŽ‚‚BBBWØ]ÛZXÕÜš]U^
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒM˜[YJÈšÌMË˜ÛÛ™ˆ‹[[™\ÊB‚BY^Ù\ˆ\ÜÂ‚BXÛÛ™šYÙš[KœØ]™J
+B‚BZYˆÙ[‹—ÝÙX]\Ú]P]Ü[ˆOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLË˜[YN‚‚BBWÜ™Yœ™\Ú]™UÙX]\Š
+B‚BB\Ù[‹—ÝÙX]\Ú]P]Ü[ˆHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLË˜[YB‚BXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ë˜[YHHYB‚BZYˆÙ[‹œœÝ‚‚BB\Ù[‹œÑŠ
+B‚BY[YˆÙ[‹™\Ý›ÞU[Y\œÊ
+N‚‚BB\Ù[‹˜ÛÜÙJ
+H‚‚YYˆÑŠÙ[ŠN‚‚BZYˆÔHOHœÚŽ‚‚BB]žN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠžT]Z]XZ[›ÛÜÊB‚BBY^Ù\ˆ‚BBB\ÝXœ›ØÙ\ÜË˜Ø[
+”ÕÓQ
+B‚BY[ÙN‚‚BB\ÝXœ›ØÙ\ÜË˜Ø[
+”ÕÓQ
+B‚‚YYˆ\Ó[JÙ[‹
+N‚‚B]žN‚‚BB]H[
+
+B‚BB\™]\›ˆYB‚BY^Ù\˜[YQ\œ›ÜŽ‚‚BB\™]\›ˆ˜[ÙB‚‚YYˆ™\ÝÜ™UÙ˜XÝÜžJÙ[ŠN‚‚B\™\Ý\›ÞHÙ[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹œ™\ÝÜ™UÙ˜XÝÜžP[œÝÙ\“›ÝËY\ÜØYÙP›ÞÊ”™\Ù][Ù][™ÜÈÙˆ’ÈMÈŠKY\ÜØYÙP›Þ•TWÖQTÓ“ËY˜][H˜[ÙJB‚B\™\Ý\›ÞœÙ]]JÊ››ÝÏÈŠJB‚‚YYˆ™\ÝÜ™UÙ˜XÝÜžP[œÝÙ\“›ÝÊÙ[‹JN‚‚BZYˆN‚‚BB\Ù[‹œ™\ÝÜ™PÙ™Ñœ›ÛQš[JQÒS”U
+È™Y˜][ÈŠB‚‚YYˆ™\ÝÜ™PÙ™Ñœ›ÛQš[JÙ[‹Ùš[JN‚‚BZYˆÙš[H\È›Û™N‚‚BB\™]\›‚‚B[\ÙÈHÊ”™\ÝÜ™HÛÛ™šYÈŠH
+ÈT—Ñ‚‚BZYˆ›ÝÜËœ]š\Ùš[JÙš[JN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÑT”“Ô‹JB‚BB\™]\›‚‚B]žN‚‚BB[[HH‚BB[[Ù™ÈH‚BB[\ÙÈHÊˆ˜Z[YŠH
+ÈŽˆ‚‚BBXHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMË™XÝ
+
+B‚BBYˆHÜ[ŠÙš[KœˆŠB‚BBY›ÜˆH[ˆ‹œ™XY[™\Ê
+N‚‚BBB]\HKœÝš\
+
+KœÜ]
+ŽˆŠB‚BBBZYˆ[Š\
+HOHˆ[™\ÌWH\È›Ý›Û™H[™\ÌWHOHˆŽ‚‚BBBBY›Üˆ[ˆ˜[™ÙJK[ŠSÐÑ‘ÊJÌJN‚‚BBBBBZYˆSÐÑ‘ÖÞLWHOHˆˆ[™\ÌHOHSÐÑ‘ÖÞLWN‚‚BBBBBBY[˜HHYB‚BBBBBB]\ÌWHH\ÌWKœ™\XÙJ—ˆ‹ˆŠB‚BBBBBB]\ÌWHHÝŠ\ÌWKœÝš\
+
+JB‚BBBBBB]\U˜[YHH\ÌWBBBBBBBBB‚BBBBBBZYˆ[ˆÌK‹LLKLKL‹ŽKÌ‹M‹MËMKMLMNMNKMÌŒŒKŒLŒLWH[™›ÝÙ[‹š\Ó[J\ÌWJN‚‚BBBBBBBY[˜HH˜[ÙB‚BBBBBBY[Yˆ›Ý[ˆÍKMMKMËNNKŽÍK‹LLËMMKMËŽÍÍËÎK‹ËLLKLLKL‹MKMKM‹MËMMLËMMMMKMM‹MMËMÌKMÌ‹NKNËNŒKŒŒKŒŒ‹Œ×H[™Ù[‹š\Ó[J\ÌWJN‚‚BBBBBBB]\U˜[YHH[
+\ÌWJH‚BBBBBBBZYˆ[
+\ÌWJHHÜˆ
+ž\ÜËˆˆ[ˆ\ÌH[™NLŒ[
+\ÌWJJHÜˆ
+žK\ÜËˆˆ[ˆ\ÌH[™L[
+\ÌWJJN‚‚BBBBBBBBY[˜HH˜[ÙB‚BBBBBBY[Yˆ‘˜[ÙHˆ[ˆ\ÌWN‚‚BBBBBBB]\U˜[YHH˜[ÙB‚BBBBBBY[Yˆ•YHˆ[ˆ\ÌWN‚‚BBBBBBB]\U˜[YHHYB‚BBBBBBY[YˆOH‚‚BBBBBBBZYˆ›Ý\ÒT
+\ÌWJN‚‚BBBBBBBBY[˜HH˜[ÙB‚BBBBBBY›ÜˆZH[ˆKš][\Ê
+N‚‚BBBBBBBZYH[
+ÝŠZVÌJKœ™\XÙJœ\ˆ‹ˆŠJB‚BBBBBBBZYˆYOH‚‚BBBBBBBBXÙ™ÈHZVÌWK™Ù]˜[YJ
+B‚BBBBBBBBZYˆ
+Ù™È\ÈYHÜˆÙ™È\È˜[ÙJH[™›Ý
+\U˜[YH\ÈYHÜˆ\U˜[YH\È˜[ÙJN‚‚BBBBBBBBBY[˜HH˜[ÙBBBBBBBBB‚BBBBBBBBZYˆ[˜N‚‚BBBBBBBBBZZVÌWKœÙ]˜[YJ\U˜[YJB‚BBBBBBBBBX˜ˆHZVÌWK™Ù]˜[YJ
+B‚BBBBBBBBBZYˆÝŠ˜ŠHOHÝŠ\U˜[YJHÜˆÝŠ˜ŠHOHÝŠ\ÌWJN‚‚BBBBBBBBBB[[Ù™È
+ÏHB‚BBBBBBBBBY[ÙN‚‚BBBBBBBBBB[\ÙÈ
+ÏH‰\Ëˆ	H\ÌB‚BBBBBBBBY[ÙN‚‚BBBBBBBBB[\ÙÈ
+ÏH‰\Ëˆ	H\ÌB‚BBBBBBBBXœ™XZÂ‚BBBBBB[[H
+ÏHB‚BBBBBBXœ™XZÂ‚BB[\ÙÈH\ÙÖÎ‹L—B‚BBY‹˜ÛÜÙJ
+B‚BY^Ù\ˆ\ÜÂ‚BZYˆ[HOH[Ù™Î‚‚BB[\ÙÈHÊÛÛ™šYÈØYYÝXØÙ\ÜÙ[HHŠH
+Èˆ
+	\ÊHˆ	H[B‚B\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÒS‘“ËJBBB‚B\Ù[‹œÚÝÒ[™›Ê
+HˆBB‚YYˆ^]
+Ù[ŠN‚‚BYYˆÛÝÔ™\Ý\
+\ÙÊN‚‚BB\Ù[‹œœÝHYBBBBB‚BB]žN‚‚BBB\Ù[‹œÝ\ÜœÝØÛÛ›ˆH›Û™B‚BBB\Ù[‹œÝ\ÜœÝØÛÛ›ˆHÙ[‹œÝ\ÜœÝ[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹™^]›ÝÊB‚BBY^Ù\]šX]Q\œ›ÜŽ‚‚BBB]žN‚‚BBBB\Ù[‹œÝ\ÜœÝ[Y[Ý]™Ù]
+
+Kœ™[[Ý™JÙ[‹œØ]š[™ÊB‚BBBY^Ù\ˆ\ÜÂ‚BBB\Ù[‹œÝ\ÜœÝ[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹™^]›ÝÊB‚BB\Ù[‹œÝ\ÜœÝœÝ\
+YJB‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›Þ\ÙËY\ÜØYÙP›Þ•TWÒS‘“Ë
+B‚BZYˆÙ[‹™ÌNHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YHÜˆÙ[‹™ÌNWHOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YN‚‚BBZ\ÓÚËÛÛÜˆHÚXÚÔÝ[Q[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YKYJB‚BBZYˆ\ÓÚÈOHÈŽ‚‚BBB^HÚ[™ÝÔÝ[J\ÓÚËÛÛÜŠB‚BBB[\ÙÈHÊ‘ÕRHÚ[›ÝÈ™H™\Ý\YÈXÝ]˜]HÚ[™Ù\È[ŽˆŠH
+È——ˆˆ
+ÈÊ”Ý[NˆŠH
+Èˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YJH
+È‹ˆ
+ÈÊ•]HÛÛÜŽˆŠH
+Èˆˆ
+ÈÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YJH
+È—ˆ‚‚BBBYÛÝÔ™\Ý\
+\ÙÊB‚BBY[ÙN‚‚BBB\Ù[‹™^]›ÝÊ
+B‚BY[ÙN‚‚BB\Ù[‹™^]›ÝÊ
+B‚BBB‚YYˆ^]›ÝÊÙ[ŠN‚‚B]žN‚‚BBXHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMË™XÝ
+
+B‚BBY›Üˆ[ˆ˜[™ÙJK[ŠSÐÑ‘ÊJÌJN‚‚BBBZYˆSÐÑ‘ÖÞLWHOHˆŽ‚‚BBBBY›ÜˆH[ˆKš][\Ê
+N‚‚BBBBBZYH[
+ÝŠVÌJKœ™\XÙJœ\ˆ‹ˆŠJB‚BBBBBZYˆYOH‚‚BBBBBBZVÌWK˜Ø[˜Ù[
+
+B‚BBBBBBXœ™XZÂ‚BY^Ù\ˆ\ÜÂ‚BZYˆÙ[‹œœÝ‚‚BB\Ù[‹œÑŠ
+B‚BY[ÙN‚‚BB\Ù]]š[\Ê
+B‚BBZYˆÙ[‹™\Ý›ÞU[Y\œÊ
+N‚‚BBB\Ù[‹˜ÛÜÙJ
+HBB‚‚YYˆ\Ý›ÞU[Y\œÊÙ[ŠN‚‚BY[Ù[‹™‚B\Ù[‹œÝ\ÜœÝœÝÜ
+
+B‚B\Ù[‹œÝ\ÜœÝH›Û™B‚B\Ù[‹œÝ\ÜœÝØÛÛ›ˆH›Û™B‚B\Ù[‹™[^U[Y\‹œÝÜ
+
+B‚B\Ù[‹™[^U[Y\ˆH›Û™B‚B\Ù[‹™[^U[Y\—ØÛÛ›ˆH›Û™B‚BZYˆSWÐS’SN‚‚BB\Ù[‹˜[š[U[Y\‹œÝÜ
+
+B‚BB\Ù[‹˜[š[U[Y\ˆH›Û™B‚BB\Ù[‹˜[š[U[Y\—ØÛÛ›ˆH›Û™B‚B\™]\›ˆYB‚‚YYˆÝÛ“Y[JÙ[ŠNˆBB‚B\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠÝÛ›ØYY[JH‚‚YYˆÚÝÒ\ÝÜžJÙ[ŠNˆ‚B\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[ŠBˆ‚YYˆÜ™X]TÝ[[X\žJÙ[ŠN‚‚B\™]\›ˆÌMÔÙ]\Ý[[X\žB‚‚YYˆÙ]Ý\œ™[[žJÙ[ŠN‚‚B]\H‘[Û\ÜÌMÈ‚‚BZYˆ›ÝÙ[‹š\ÓXZ[“Y[N‚‚BB]žN‚‚BBB]\HÝŠÙ[–È˜ÛÛ™šYÈ—K™Ù]Ý\œ™[
+
+VÌJB‚BBY^Ù\ˆ\ÜÂ‚B\™]\›ˆ\‚BB‚YYˆÙ]Ý\œ™[˜[YJÙ[ŠN‚‚B]\HÊ•Ù[ÛÛYH[ˆÙ]\ŠB‚BZYˆÙ[‹š\ÓXZ[“Y[N‚‚BB]žN‚‚BBB\Ù[HÙ[–È›\Ý—K™Ù]Ý\œ™[
+
+BBB‚BBBZYˆÙ[‚‚BBBB]\HÝŠÙ[ÌWVÍ×JB‚BBY^Ù\ˆ\ÜÂ‚BY[ÙN‚‚BB]žN‚‚BBB]\HÝŠÙ[–È˜ÛÛ™šYÈ—K™Ù]Ý\œ™[
+
+VÌWK™Ù]^
+
+JBBB‚BBY^Ù\ˆ\ÜÂ‚B\™]\›ˆ\ˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈÌMÔÙ]\Ý[[X\žJØÜ™Y[ŠN‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹\™[
+N‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹\™[H\™[
+B‚B\Ù[‹ÝH˜[ÙB‚BZYˆ›ÝTÎÑH[™›ÝTÎŒ‚‚BB]žN‚‚BBB\Ù[–Èš][H—HHX™[
+ˆŠB‚BBB\Ù[–È˜[YH—HHX™[
+ˆŠB‚BBB\Ù[‹ÝHYB‚BBY^Ù\ˆ\ÜÂ‚BZYˆ›ÝÙ[‹Ý‚‚BB]žN‚‚BBB\Ù[–Èš][H—HHÝ]XÕ^
+ˆŠB‚BBB\Ù[–È˜[YH—HHÝ]XÕ^
+ˆŠB‚BBY^Ù\ˆ\ÜÂB‚B]žN‚‚BB\Ù[‹œ\™[È˜ÛÛ™šYÈ—K›Û”Ù[XÝ[ÛÚ[™ÙY˜\[™
+Ù[‹œÙ[XÝ[ÛÚ[™ÙY
+B‚BB\Ù[‹œ\™[›ÛÛÛ™šYÑ[žPÚ[™ÙY˜\[™
+Ù[‹œÙ[XÝ[ÛÚ[™ÙY
+B‚BY^Ù\ˆ\ÜÂ‚B]žN‚‚BB\Ù[‹œ\™[ÉÛ\Ý	×K›Û”Ù[XÝ[ÛÚ[™ÙY˜\[™
+Ù[‹œÙ[XÝ[ÛÚ[™ÙY
+B‚BY^Ù\ˆ\ÜÂ‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹œÙ[XÝ[ÛÚ[™ÙY
+B‚‚YYˆÙ[XÝ[ÛÚ[™ÙY
+Ù[ŠN‚‚B]žN‚‚BB\Ù[–Èš][H—K^HÙ[‹œ\™[™Ù]Ý\œ™[[žJ
+B‚BB\Ù[–È˜[YH—K^HÙ[‹œ\™[™Ù]Ý\œ™[˜[YJ
+B‚BY^Ù\ˆ\ÜÂˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂBB˜Û\ÜÈÝÛ›ØYY[JØÜ™Y[ŠN‚‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOH™ÝÛ›ØYY[HˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŒNLŒLˆ]OHˆˆ›YÜÏHÙ“›Ð›Ü™\ˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›XÚÈˆ‚‚OÚYÙ]˜[YOH™ÛˆˆÜÚ][ÛHŒˆÚ^™OHŒNLŒMLˆ”ÜÚ][ÛHŒˆˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÍMHˆ˜[œÜ\™[HŒˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›XÚÈˆ›Ü™YÜ›Ý[™ÛÛÜH›Ü˜[™ÙHˆÏ‚ˆÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHLÌˆÚ^™OHŒNŒHˆ”ÜÚ][ÛHŒˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›XÚÈˆÏˆ‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒLLˆÚ^™OHLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHLLˆÚ^™OHLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÞY[ÝÈˆÜÚ][ÛHŽMŒLLˆÚ^™OHLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆÏ‚‚OÚYÙ]˜[YOHšÙ^WØ›YHˆÜÚ][ÛHŒMLLˆÚ^™OHLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH˜›YHˆÏ‚ˆSX™[ÜÚ][ÛHŒLˆÚ^™OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHLˆÚ^™OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŽMŒLˆÚ^™OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜHžY[ÝÈˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒMLˆÚ^™OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›YHˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚‚OÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠN‚‚B\Ù[‹œÚÚ[ˆHÝÛ›ØYY[KœÚÚ[‚‚B\Ù[‹œÙ\ÜÚ[ÛˆHÙ\ÜÚ[Û‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹›\ÝH×B‚B\Ù[–È™Ûˆ—HHX™[
+Ê•ØZ]›ÜˆHš[HÝÛ›ØYÈÈÛÛ\]HŠJB‚B\Ù[–È™Ûˆ—KšYJ
+B‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[–ÈšÙ^WÞY[ÝÈ—HHX™[
+ÊÛX[š[™ÈXÛÛœÈŠJB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+Ê‘^]ŠJB‚B\Ù[–ÈšÙ^WØ›YH—HHX™[
+Ê”Ý\ÝÛ›ØYŠJB‚B\Ù[–ÈšÙ^WØ›YH—KšYJ
+B‚B\Ù[–È\WÜ™]šY]È—HH^X\
+
+B‚B\Ù[–ÉÛ\Ý	×HH[X“\ÝŠÙ[‹›\Ý
+BB‚B\Ù[‹™[˜TÙ[XÝØ]H˜[ÙB‚B\Ù[‹˜Û”Ù[XÝØ]H˜[ÙB‚B\Ù[‹ÑÝÛˆH˜[ÙB‚B\Ù[‹™š\œÝÝ\HYB‚B\Ù[‹™[˜HHYB‚B\Ù[‹›\ÙÈHˆ‚‚B\Ù[‹Ø\™\Ú[›™[Ý]HHšYH‚‚B\Ù[‹Ø\™\Ú[›™[]Y]YHH›Û™B‚B\Ù[‹Ø\™\Ú[›™[›ØœÈH×B‚B\Ù[‹Ø\™\Ú[›™[[œÝ[YHÙ]
+
+B‚B\Ù[‹Ø\™\Ú[›™[]˜Z[X›HHÙ]
+
+B‚B\Ù[‹Ø\™\Ú[›™[XÚØYÙT™\Ý[ÈH×B‚B\Ù[‹Ø\™\Ú[›™[Ý\œ™[›ØˆH›Û™B‚B\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜Ë™Y˜][Ü™Y™\™[˜Ù\Ê
+B‚B\Ù[‹Ø\™\”ÜÚ][Û”Ù[XÝ[Û][\YH˜[ÙB‚B\Ù[‹Ø\™\”XÛÛ”›ÝÜÈH
+Ü\ÜÈ‹Ü\™\È‹Ü\Ý[H‹ÜY\Ý‹Ü[[ÙHŠB‚B\Ù[‹Ø\™\]^›ÝÜÈH
+˜]^\›Ýˆ‹˜]^\Ø]‹˜]^XØ[H‹˜]^]ÙX]\ˆŠB‚B\Ù[‹Ø\™\]^ÚÚXÙT›ÝÈH›Û™B‚B\Ù[‹Ø\™\]^ÛÜšÙ\ˆH›Û™B‚B\Ù[‹Ø\™\]^ÛÜšÙ\”[›š[™ÈH˜[ÙB‚B\Ù[‹Ø\™\]^™\]Y\Ý]H›Û™B‚B\Ù[‹Ø\™\]^™\Ý[]H›Û™B‚B\Ù[‹Ø\™\]^Ý]]H×B‚B\Ù[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™ÈH˜[ÙB‚B\Ù[‹Ø\™\Ý\œ™[XÝ[Û”›ÝÈH›Û™B‚B\Ù[‹Ø\™\“Ü\˜][Û”ÝXØÙYYYH˜[ÙB‚B\Ù[‹Ø\™\“Ü\˜][Û‘˜Z[YH˜[ÙB‚B\Ù[‹Ø\™\‘˜Z[Y›ÝÜÈHÙ]
+
+B‚B\Ù[‹Ø\™\“YØXÞPÚ[›™[]Y]YHH›Û™B‚B\Ù[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›HHÙ]
+
+B‚B\Ù[‹Ø\™\“YØXÞPÚ[›™[[œÝ[YHÙ]
+
+B‚B\Ù[‹Ø\™\“YØXÞPÚ[›™[Ø[YH›Û™B‚B\Ù[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][ÛˆH›Û™B‚B\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\ÈH‚B\Ù[‹Ø\™\“YØXÞP\˜Ú]™\Ô›ØÙ\ÜÙYH‚B\Ù[H	ÊŠŠ‰Ê×Ê	ÔÙ[XÝ	ÊJÉÊŠŠˆ	Â‚B\Ù[‹›Y[S\Ý[HÂ‚BBL–ÉÝÜ\ÜÉËÊ	ÔØ][]HÜÚ][ÛœÉÊH
+È	Îˆ	È
+ÈÊ	Ó›ÈÜÚ][ÛˆÙ[XÝY	ÊK	ÝØ\™\‹\XÛÛ‹\ÜÚ][ÛœÉË	ÉË	Þ	×K‚BBLN–ÉÝÜ\™\ÉËÊ	ÔXÛÛˆ™\ÛÛ][Û‰ÊH
+È	Îˆ	È
+ÈÊ	Ó›È™\ÛÛ][ÛˆÙ[XÝY	ÊK	ÝØ\™\‹\XÛÛ‹\™\ÛÛ][Û‰Ë	ÉË	Þ	×K‚BBLŽ–ÉÝÜ\Ý[IËÊ	ÔXÛÛˆÛÛÝ\‰ÊH
+È	Îˆ	È
+ÈÊ	Ó›ÈÛÛÝ\ˆÙ[XÝY	ÊK	ÝØ\™\‹\XÛÛ‹\Ý[IË	ÉË	Þ	×K‚BBLÎ–ÉÝÜY\Ý	ËÊ	ÔXÛÛˆØØ][Û‰ÊH
+È	Îˆ	È
+ÈÙ[‹Ø\™\”XÛÛ”™YœÖÈ™\Ý[˜][Ûˆ—K	ÝØ\™\‹\XÛÛ‹Y\Ý[˜][Û‰Ë	ÉË	Þ	×K‚BBM–ÉÝÜ[[ÙIËÊ	Õ\]HY]Ù	ÊH
+È	Îˆ	È
+ÈÊ	Ó›È\]HY]ÙÙ[XÝY	ÊK	ÝØ\™\‹\XÛÛ‹[[ÙIË	ÉË	Þ	×K‚BBMN–ÉØ]^\›Ý‰ËÊ	Ô›ÝšY\ˆÙÛÜÉÊK	ÜXÛÛ”›Ý‰Ë	ÉË	Þ	×K‚BBMŽ–ÉØ]^\Ø]	ËÊ	ÔØ][]HÙÛÜÉÊK	ÜXÛÛ”Ø]	Ë	ÉË	Þ	×K‚BBMÎ–ÉØ]^XØ[IËÊ	ÐÐSHXÛÛœÉÊK	ÜXÛÛØ[IË	ÉË	Þ	×K‚BBN–ÉØ]^]ÙX]\‰ËÊ	ÕÙX]\ˆXÛÛœÉÊK	ÜXÛÛ•ÙX]\‰Ë	ÉË	Þ	×K‚BBNN–ÉÛØIËÙ[
+×Ê	ÜXÛÛˆÓQ	ÊK	ÉË	Þ	×K‚BBLL–ÉÚ	ËÊ	Ò[	ÊK	Ú[	Ë	ÉË	Þ	×K‚BBLLN–ÉÚIËÊ	ÔÙ]ÙˆXÛÛœÈ[™™]ÚY]œÉÊK	ÚXÛÛ—ÜÙ]×Ü™]šY]ÉË	ÉË	Þ	×K‚BBLLŽ–ÉØIËÊ	Ñ^˜TØÜ™Y[œÈÜ˜\XÜÉÊK	Ù^˜TØÜ™Y[œÉË	ÉË	Þ	×K‚BBLLÎ–ÉÛIËÊ	ÓY[HXÛÛœÉÊK	ÛY[ZXÛÛœÉË	ÉË	Þ	×K‚BBLM–ÉÛX‰ËÊ	ÓY[HXÛÛœÉÊJÉÈ
+	Ê×Ê	ØšYÉÊJÉÊIË	ÛY[ZXÛÛœØšYÉË	ÉË	Þ	×K‚BBLMN–ÉÝÉËÊ	ÕÙX]\ˆXÛÛœÉÊK	ÝÙX]\’XÛÛœÓ‰Ë	ÉË	Þ	×K‚BBLMŽ–ÉÝØ[š[IËÊ[š[X]YÙX]\ˆXÛÛœÈŠK	Ø[š[UÙX]\’XÛÛœÉË	ÉË	Þ	×K‚BBLMÎ–ÉÍÞ‰ËÞš\‹
+È˜X\˜ÚŽˆÞš\XXH‹˜\›HŽˆÞš\XH‹›Z\Ù[ŽˆÞš\[HŸK™Ù]
+ÔK	ÉÊJK	ÉË	Þ	×B‚BB_BB‚B\Ù[‹™Û•[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹™Û•[Y\—ØÛÛ›ˆHÙ[‹™Û•[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹™Û“ÛÜ
+B‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹™Û•[Y\‹[Y[Ý]™Ù]
+
+K˜\[™
+Ù[‹™Û“ÛÜ
+B‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+ÉÕÚ^˜\™XÝ[ÛœÉË	ÐÛÛÜXÝ[ÛœÉ×K‚B^Â‚BBH˜›YHŽˆÙ[‹œÝ\ÝÛ‹‚BBH™Ü™Y[ˆŽˆÙ[‹™ÔÙ[XÝ[Û‹‚BBHœ™YŽˆÙ[‹™^]‚BBHžY[ÝÈŽˆÙ[‹˜ÛX[”XÛÛ‹‚BBH˜˜XÚÈŽˆÙ[‹™^]‚BBH›ÚÈŽˆÙ[‹™ÔÙ[XÝ[Û‚‚B_JH‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹˜Ü™X]S\Ý
+B‚B\Ù[–ÉÛ\Ý	×K›Û”Ù[XÝ[ÛÚ[™ÙY˜\[™
+Ù[‹œ™XXÝ]˜]JBB‚‚YYˆ\Ý\ŠÙ[‹JN‚‚B\™]\›ˆ
+ÎNˆœXÛÛ—ÌŒŒLÌˆ‹ÎˆœXÛÛ—Í‹ˆœXÛÛ—ÍLÌ‹NˆœXÛÛˆ‹ŽˆœXÛÛ—ÍLÌ‹ÎˆœXÛÛˆ‹ˆœXÛÛ“ÛYŸVØWJB‚‚YYˆ^]
+Ù[ŠN‚‚BZYˆ›ÝÙ[‹™[˜N‚‚BB\™]\›‚‚BZYˆÙ[‹™Û•[Y\ˆ\È›Ý›Û™H[™Ù[‹™Û•[Y\‹š\ÐXÝ]™J
+N‚‚BB\Ù[‹™Û•[Y\‹œÝÜ
+
+B‚B\Ù[‹™Û•[Y\—ØÛÛ›ˆH›Û™B‚B\Ù[‹™Û•[Y\ˆH›Û™B‚B\Ù[‹˜ÛÜÙJ
+B‚‚YYˆ™XXÝ]˜]JÙ[ŠN‚‚B\Ù[‹ÑÝÛˆHØ\™\”XÛÛ”Þ[˜Ëš\×Ù^XÝ]X›WØXÝ[ÛŠÙ[‹Ø\™\”XÛÛ”™YœÊB‚‚BY›Üˆ[ˆÙ[‹›Y[S\Ý[‚‚BBZYˆÙ[‹›Y[S\Ý[ÞVÍHOH™Ž‚‚BBB\Ù[‹ÑÝÛˆHYB‚BBBXœ™XZÂ‚BZYˆÙ[‹ÑÝÛŽ‚‚BB\Ù[–ÈšÙ^WØ›YH—KœÚÝÊ
+B‚BY[ÙN‚‚BB\Ù[–ÈšÙ^WØ›YH—KšYJ
+B‚BBBB‚YYˆÝ\ÝÛŠÙ[‹\Ý[˜][Û—ØÛÛ™š\›YYQ˜[ÙJN‚‚BZYˆ›ÝÙ[‹™[˜HÜˆÙ[‹Ø\™\Ú[›™[Ý]HOHœ[›š[™ÈŽ‚‚BB\™]\›‚‚B\™\\™YH›ÛÛ
+Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\\™YŠJB‚BZYˆ™\\™Y[™›ÝØ\™\”XÛÛ”Þ[˜Ë˜[YÝ\Ú×ÜÙ[XÝ[ÛŠÙ[‹Ø\™\”XÛÛ”™YœÊN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ”Ù[XÝ]X\ÝÛ™HØ][]HÜÚ][Û‹ˆŠJB‚BB\™]\›‚‚BZYˆ™\\™Y[™›ÝØ\™\”XÛÛ”Þ[˜Ë˜Ú[›™[Ü™Y™\™[˜Ù\×Ü™XYJÙ[‹Ø\™\”XÛÛ”™YœÊN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊÚÛÜÙHH™\ÛÛ][Û‹ÛÛÝ\‹ØØ][Ûˆ[™\]HY]Ù™Y›Ü™HÝÛ›ØY[™ËˆŠJB‚BB\™]\›‚‚BZYˆ›ÝÙ[‹ÑÝÛŽ‚‚BB\™]\›‚‚BZYˆ™\\™Y‚‚BBY\Ý[˜][ÛˆHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+™\Ý[˜][ÛˆŠJB‚BBZYˆ›Ý\Ý[˜][ÛŽ‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ’[˜[YXÛÛˆ\Ý[˜][ÛˆŠJB‚BBB\™]\›‚‚BBZYˆÜËœ]š\Û[šÊ\Ý[˜][ÛŠN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ’[˜[YXÛÛˆ\Ý[˜][ÛˆŠJB‚BBB\™]\›‚‚BBZYˆ›ÝØ\™\”XÛÛ”Þ[˜Ë™\Ý[˜][Û—ÜÝÜ˜YÙWØ]˜Z[X›J\Ý[˜][ÛŠN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ”Ù[XÝYÝÜ˜YÙH\È›Ý[Ý[YŠJB‚BBB\™]\›‚‚BBZYˆ›ÝÜËœ]š\Ù\Š\Ý[˜][ÛŠN‚‚BBBZYˆ›Ý\Ý[˜][Û—ØÛÛ™š\›YY‚‚BBBB[Y\ÜØYÙHHÊÜ™X]HXÛÛˆ\™XÝÜžOÈŠH
+È—ˆˆ
+È\Ý[˜][Û‚‚BBBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹Ø\™\Ü™X]Q\Ý[˜][Û[œÝÙ\‹Y\ÜØYÙP›ÞY\ÜØYÙKY\ÜØYÙP›Þ•TWÖQTÓ“ËY˜][Q˜[ÙJB‚BBBB\™]\›‚‚BBB]žN‚‚BBBB[ÜË›XZÙY\œÊ\Ý[˜][Û‹^\ÝÛÚÏUYJB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊØ[››ÝÜ™X]HXÛÛˆ\Ý[˜][ÛˆŠJB‚BBBB\™]\›‚‚BBZYˆ›ÝÜËœ]š\Ù\Š\Ý[˜][ÛŠHÜˆ›ÝÜË˜XØÙ\ÜÊ\Ý[˜][Û‹ÜË•×ÓÒÊN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ”XÛÛˆ\Ý[˜][Ûˆ\È›ÝÜš]X›HŠJB‚BBB\™]\›‚‚BB\™\ÛÛ][ÛˆHÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][ÛˆŠB‚BB\Ý[HHÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÝ[HŠB‚BB]žN‚‚BBBZYˆ™\ÛÛ][ÛˆOHŒŒŒLÌˆŽ‚‚BBBB\]Y]YHHØ\™\”XÛÛ”Þ[˜Ë˜Z[Ü[[YWÜ]Y]YJÙ[‹Ø\™\”XÛÛ”™YœËX›XØ][Û]Ø\™\”XÛÛ”Þ[˜Ëœ[[YWÜX›XØ][ÛŠ
+JB‚BBBBZYˆ]Y]YK™Ù]
+œÝ]HŠHOHØ\™\”XÛÛ”Þ[˜Ë”P“PÐUSÓ—ÓÐÒÑQ‚‚BBBBB\Ù[‹Ø\™\Ú[›™[Ý]HH›ØÚÙY‚‚BBBBB[YØXÞWÜ[™[™ÈH[žJÙ[‹›Y[S\Ý[ÞVÍHOH™ˆ[™Ù[‹›Y[S\Ý[ÞVÌH›Ý[ˆÙ[‹Ø\™\”XÛÛ”›ÝÜÈ›Üˆ[ˆÙ[‹›Y[S\Ý[
+B‚BBBBB[YØXÞWÜ[™[™ÈHYØXÞWÜ[™[™ÈÜˆÙ[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™Â‚BBBBB[\ÙÈHÊ•Ø\™\ˆÚ[›™[XÛÛˆX›XØ][Ûˆ\ÈÝ\œ™[H[˜]˜Z[X›KˆŠH
+Èˆ‚‚BBBBB[\ÙÈ
+ÏHÊ•Ø\™\ˆXÛÛœÈÙ\™HÚÚ\YÈÝ\ˆÙ[XÝYÝÛ›ØYÈÚ[ÛÛ[YKˆŠB‚BBBBBZYˆ›ÝYØXÞWÜ[™[™Î‚‚BBBBBB\Ù[‹Ø\™\Ú[›™[Ý]HHšYH‚‚BBBBBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠK\ÙÊB‚BBBBBB\™]\›‚‚BBBBB\Ù[‹›\ÙÈHŠˆ
+ÈÊ•Ø\™\ˆÚ[›™[XÛÛœÈŠH
+ÈŠHˆ
+È\ÙÈ
+È—ˆ‚‚BBBB\Ù[‹Ø\™\Ú[›™[]Y]YHH›Û™B‚BBBY[ÙN‚‚BBBBX\˜Ú]™\ÈHØ\™\”XÛÛ”Þ[˜Ëœ[—ÛYØXÞWØÚ[›™[Ø\˜Ú]™\Ê‚BBBBB\Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œXÚØYÙWÜÙ[XÝÜœÈŠKÐUTÕ™\ÛÛ][Û‹Ý[JB‚BBBBY›ÜˆÙ[XÝÜ—ÚY\˜Ú]™WÚY[ˆ\˜Ú]™\Î‚‚BBBBBZYˆ›ÝÙ[‹—ÛYØXÞTXÛÛ\˜Ú]™U\›
+\˜Ú]™WÚY
+N‚‚BBBBBB\˜Z\ÙH˜[YQ\œ›ÜŠÊ”™\Ù\™YYØXÞH\˜Ú]™H\È›Ý]˜Z[X›H[ˆØ\™\ˆZYÜ˜][ÛˆØ][ÙÝYHŠH
+ÈŽˆˆ
+È\˜Ú]™WÚY
+B‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[]Y]YHH\˜Ú]™\Â‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›HHÙ]
+
+B‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[[œÝ[YHÙ]
+
+B‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\ÈH‚BBBB\Ù[‹Ø\™\“YØXÞP\˜Ú]™\Ô›ØÙ\ÜÙYH‚BBBB\Ù[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][ÛˆH\Ý[˜][Û‚‚BBBBZYˆÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+\]WÛ[ÙHŠH[ˆ
+Ø\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ‹Ø\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ—ÔQSÊN‚‚BBBBB\™\]Y\ÝHØ\™\”XÛÛ”Þ[˜Ë˜Z[ÜÞ[˜×Ü™\]Y\Ý
+‚BBBBBB\Ù[XÝYÜÜÚ][ÛœÏ[\Ý
+Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÜÚ][ÛœÈ‹×JJK‚BBBBBB\Ý[O\Ý[K™\ÛÛ][Û\™\ÛÛ][Û‹‚BBBBBBZ[˜ÛYWÜ˜Y[ÏJÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+\]WÛ[ÙHŠHOHØ\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ—ÔQSÊJB‚BBBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[Ø[YHØ\™\”XÛÛ”Þ[˜ËØ[YÜXÛÛ—Û˜[Y\Ê™\]Y\Ý
+B‚BBBBY[ÙN‚‚BBBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[Ø[YH›Û™B‚BBY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BBB[Y\ÜØYÙHHÝŠ\œŠB‚BBBZYˆY\ÜØYÙHOH››Ë\Ø][]K\ÜÚ][Û‹\Ù[XÝYŽ‚‚BBBB[Y\ÜØYÙHHÊ”Ù[XÝ]X\ÝÛ™HØ][]HÜÚ][Û‹ˆŠB‚BBBY[YˆY\ÜØYÙHOH››Ë\[›™YXÚ[›™[X\˜Ú]™KY›Ü‹\™\ÛÛ][Û‹X[™XÛÛÝ\ˆŽ‚‚BBBB[Y\ÜØYÙHHÊ“›ÈYØXÞHXÛÛˆ\˜Ú]™H\È]˜Z[X›H›ÜˆHÙ[XÝYÜÚ][ÛœÈ[™˜\šX[ˆŠB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ‘T”“ÔˆŠH
+ÈŽˆˆ
+ÈY\ÜØYÙJB‚BBB\™]\›‚‚B\Ù[‹Ø\™\“Ü\˜][Û”ÝXØÙYYYH˜[ÙB‚B\Ù[‹Ø\™\“Ü\˜][Û‘˜Z[YH˜[ÙB‚B\Ù[‹Ø\™\‘˜Z[Y›ÝÜÈHÙ]
+
+B‚B\Ù[‹š[œÝ[˜ÙKœ™\Ú^™JTÚ^™JNLŒML
+JB‚B\Ù[–È™Ûˆ—KœÚÝÊ
+B‚B\Ù[‹™[˜HH˜[ÙB‚BZYˆÙ[‹Ø\™\Ú[›™[Ý]HOH›ØÚÙYŽ‚‚BB\Ù[‹›\ÙÈHˆ‚‚B\Ù[‹™Û’›ØˆHˆ‚‚B\Ù[‹™Û•[Y\‹œÝ\
+KYJB‚‚YYˆØ\™\Ü™X]Q\Ý[˜][Û[œÝÙ\ŠÙ[‹[œÝÙ\S›Û™JN‚‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹œÝ\ÝÛŠYJB‚‚YYˆÝØ\™\”™Yœ™\Ú›ÝÕ^
+Ù[ŠN‚‚B\™YœÈHÙ[‹Ø\™\”XÛÛ”™YœÂ‚B\ÜÚ][ÛœÈHØ\™\”XÛÛ”Þ[˜Ë\Ú×ÜÜÚ][Ûœ×Ù›Ü—Ù\Ü^J™YœÊB‚B\ÜÚ][Û—Ý^HÊ“›ÈÜÚ][ÛˆÙ[XÝYŠB‚BZYˆÜÚ][ÛœÎ‚‚BB\ÜÚ][Û—Ý^H‹‹š›Ú[ŠÜÚ][ÛœÖÎJB‚BBZYˆ[ŠÜÚ][ÛœÊHˆ‚‚BBB\ÜÚ][Û—Ý^
+ÏHˆ‹‹ˆ‚‚BB\ÜÚ][Û—Ý^
+ÏHˆ
+ˆ
+ÈÝŠ[ŠÜÚ][ÛœÊJH
+Èˆˆ
+ÈÊœÙ[XÝYŠH
+ÈŠH‚‚B\™\ÛÛ][ÛˆH™YœË™Ù]
+œ™\ÛÛ][ÛˆŠB‚B\Ý[HH™YœË™Ù]
+œÝ[HŠB‚B[[ÙHH™YœË™Ù]
+\]WÛ[ÙHŠB‚B\]H™YœË™Ù]
+™\Ý[˜][ÛˆŠHÜˆØ\™\”XÛÛ”Þ[˜Ë‘QUSÑTÕSUSÓ‚‚B\™\Ù]HXÝ
+
+˜[YKX™[
+H›Üˆ˜[YKX™[[ˆØ\™\”XÛÛ”Þ[˜Ë”PÓÓ—ÑTÕSUSÓ”ÊB‚B[ØØ][ÛˆHÊ™\Ù]Ü]JHYˆ][ˆ™\Ù][ÙHÊ•\Ù\ˆYš[™YŠB‚B[[ÙWÛX™[ÈHXÝ
+
+Ù^KÊX™[
+JH›ÜˆÙ^KX™[[ˆØ\™\”XÛÛ”Þ[˜Ë•TUWÓSÑTÊB‚B[X™[ÈHÂ‚BBHÜ\ÜÈŽˆÊ”Ø][]HÜÚ][ÛœÈŠH
+ÈŽˆˆ
+ÈÜÚ][Û—Ý^‚BBHÜ\™\ÈŽˆÊ”XÛÛˆ™\ÛÛ][ÛˆŠH
+ÈŽˆˆ
+È
+™\ÛÛ][Û‹œ™\XÙJž‹ˆŠHYˆ™\ÛÛ][Ûˆ[ÙHÊ“›È™\ÛÛ][ÛˆÙ[XÝYŠJK‚BBHÜ\Ý[HŽˆÊ”XÛÛˆÛÛÝ\ˆŠH
+ÈŽˆˆ
+È
+ÊÝ[K˜Ø\][^™J
+JHYˆÝ[H[ÙHÊ“›ÈÛÛÝ\ˆÙ[XÝYŠJK‚BBHÜY\ÝŽˆÊ”XÛÛˆØØ][ÛˆŠH
+ÈŽˆˆ
+ÈØØ][Û‹‚BBHÜ[[ÙHŽˆÊ•\]HY]ÙŠH
+ÈŽˆˆ
+È
+[ÙWÛX™[Ë™Ù]
+[ÙKÊ“›È\]HY]ÙÙ[XÝYŠJJK‚B_B‚BY›Üˆ›Ý×ÚYX™[[ˆX™[Ëš][\Ê
+N‚‚BBY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BBBZYˆÙ[‹›Y[S\Ý[Ú[™^VÌHOH›Ý×ÚY‚‚BBBB\Ù[‹›Y[S\Ý[Ú[™^VÌWHHX™[‚BBBBXœ™XZÂ‚B\™]\›ˆ]‚‚YYˆÝØ\™\‘\Ü^T]
+Ù[‹]
+N‚‚B]˜[YHHÝŠ]ÜˆˆŠB‚BZYˆ[Š˜[YJHHŽ‚‚BB\™]\›ˆ˜[YB‚B\™]\›ˆ˜[YVÎŒH
+È‹‹‹ˆˆ
+È˜[YVËMN—B‚‚YYˆÜ™X]S\Ý
+Ù[ŠN‚‚B]Ø\™\—Ù\Ý[˜][ÛˆHÙ[‹—ÝØ\™\”™Yœ™\Ú›ÝÕ^
+
+B‚B\Ù[‹›\ÝH×B‚B]Ø\™\—Ú[HÂ‚BBHÜ\ÜÈŽˆÊÚÛÜÙHØ][]HÜÚ][ÛœÈ›ÜˆÚ[›™[XÛÛˆÝÛ›ØYÈ[™\]\ËˆŠK‚BBHÜ\™\ÈŽˆÊÚÛÜÙHLÌŒŒLÌ‹ÜˆÌLŽˆÚ[›™[Ù[XÝ[ÛˆXÛÛœËˆŠK‚BBHÜ\Ý[HŽˆÊÚÛÜÙHHÚ[›™[XÛÛˆÛÛÝ\ˆÝ\ÜY]HÙ[XÝYÚ^™KˆŠK‚BBHÜY\ÝŽˆÊ‘ÝÛ›ØY\Ý[˜][ÛŽˆŠH
+Èˆˆ
+ÈÙ[‹—ÝØ\™\‘\Ü^T]
+Ø\™\—Ù\Ý[˜][ÛŠK‚BBHÜ[[ÙHŽˆÊÚÛÜÙHÝÈÚ[›™[XÛÛœÈ\™HÞ[˜Ú›Ûš^™YÜˆÛÜYY›ÜˆÙ[XÝYÜÚ][ÛœËˆŠK‚BBH˜]^\›ÝˆŽˆÊ•ˆ]›Ü›H[™Ù\šXÙH›ÝšY\ˆÙÛÜËˆŠK‚BBH˜]^\Ø]ŽˆÊ”Ø][]HÙÛÜÈ[™Ü˜\XØ[Y[YšY\œËˆŠK‚BBH˜]^XØ[HŽˆÊÚÛÜÙH›XÚÈÜˆÚ]HÐSHXÛÛœËˆŠK‚BBH˜]^]ÙX]\ˆŽˆÊÚÛÜÙH›XÚÈÜˆÚ]HÙX]\ˆ[™›Ü›X][ÛˆXÛÛœËˆŠK‚B_B‚B]Ø\™\—ÚXÛÛœÈHÂ‚BBHÜ\ÜÈŽˆ™ÝÛ‹Üœ™È‹‚BBHÜ\™\ÈŽˆ™ÝÛ‹Ø˜MKœ™È‹‚BBHÜ\Ý[HŽˆ™ÝÛ‹ÝØ\™\‹XÛÛÝ\‹œ™È‹‚BBHÜY\ÝŽˆ™ÝÛ‹ÝØ\™\‹[ØØ][Û‹œ™È‹‚BBHÜ[[ÙHŽˆ™ÝÛ‹ÝØ\™\‹\Þ[˜Ëœ™È‹‚BBH˜]^\›ÝˆŽˆ™ÝÛ‹Üœ™È‹‚BBH˜]^\Ø]Žˆ™ÝÛ‹ÜËœ™È‹‚BBH˜]^XØ[HŽˆ™ÝÛ‹Ø˜Ëœ™È‹‚BBH˜]^]ÙX]\ˆŽˆ™ÝÛ‹ØËœ™È‹‚B_B‚BY›Üˆ[ˆÙ[‹›Y[S\Ý[‚‚BB\›Ý×ÚYHÙ[‹›Y[S\Ý[ÞVÌB‚BBZ][HHÜ›Ý×ÚYB‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJ
+KÚ^™OJNŒLÊK›ÛL‹˜XÚØÛÛÜ—ÜÙ[LÛÛÜ—ÜÙ[Z[
+	ÌL	ËMŠK^HˆŠJB‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJŒL
+KÚ^™OJMMŒJK›ÛL‹˜XÚØÛÛÜ—ÜÙ[LÛÛÜ—ÜÙ[Z[
+	ÌL	ËMŠKÛÛÜZ[
+	Ì™˜ØÌ	ËMŠK^\Ù[‹›Y[S\Ý[ÞVÌWJJB‚BBY\ØÜš\[ÛˆHØ\™\—Ú[™Ù]
+›Ý×ÚY[™Ù]
+›Ý×ÚYˆŠJB‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJÌJKÚ^™OJMLŒJK›ÛL˜XÚØÛÛÜ—ÜÙ[LÛÛÜ—ÜÙ[Z[
+	ÌL	ËMŠKÛÛÜZ[
+	Ì™™™™™‰ËMŠK^Y\ØÜš\[ÛŠJB‚BBZXÛÛ—Ü]HØ\™\—ÚXÛÛœË™Ù]
+›Ý×ÚY™ÝÛ‹É\Ëœ™Èˆ	H›Ý×ÚYœ™\XÙJØ[š[H‹ÈŠJB‚BBZ][K˜\[™
+][PÛÛ[[žT^X\[U\Ý
+ÜÏJŒŠKÚ^™OJNKLŒÊK™ÏSØY^X\
+ÒÒS”U
+ÈXÛÛ—Ü]
+JJB‚BBZ][K˜\[™
+][PÛÛ[[žT^X\[U\Ý
+ÜÏJÎ
+KÚ^™OJLL
+K™ÏSØY^X\
+‰\ÙÝÛ‹É\Ëœ™Èˆ	H
+ÒÒS”UÙ[‹›Y[S\Ý[ÞVÍJJJJB‚BB\Ù[‹›\Ý˜\[™
+][JB‚B\Ù[–ÉÛ\Ý	×K›œÙ]\Ý
+Ù[‹›\Ý
+H‚B\Ù[–ÉÛ\Ý	×K›œÙ]][RZYÚ
+LÊB‚BZYˆÙ[‹™š\œÝÝ\‚‚BB\Ù[‹™š\œÝÝ\H˜[ÙBB‚BBZYˆ›ÝÚÚÔ]
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YJN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™^]Y\ÜØYÙP›ÞÊ”ÛÜœžKØ[››ÝÜ™X]H\ˆÛˆ]ˆŠH
+Èˆˆ
+ÈÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+ÈˆHHHˆY\ÜØYÙP›Þ•TWÑT”“Ô‹Ì
+BˆBB‚YYˆÙ]œ™YTÜXÙJÙ[ŠN‚‚B\™]H‚B\™]HH‚B]žN‚‚BB\Ý]HÝ]™œÊÙ[‹žžž–Î‹LWJB‚BB\™]H›Ø]
+Ý]™—Ø™œ™YKÌL
+ˆÝ]™—ØœÚ^™KÌL
+B‚BB\Ý]HÝ]™œÊÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YJB‚BB\™]HH›Ø]
+Ý]™—Ø™œ™YKÌL
+ˆÝ]™—ØœÚ^™KÌL
+B‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\\ÜÂ‚B\™]\›ˆ™]™]B‚‚YYˆÙ]Ù\ŠÙ[ŠN‚‚BZYˆ›ÝÜËœ]™^\ÝÊT
+N‚‚BB]žN‚‚BBB[ÜË›XZÙY\œÊT^\ÝÛÚÏUYJB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\\ÜÂ‚B\™]\›ˆ
+Ñ˜[ÙNˆ‹Ý\È‹YNˆ‰\ËÈˆ	HTVÉØšYÉÈ[ˆÙ[‹\WÙÝÛ›ØYÜˆ	Ö–”XÛÛ‰È[ˆÙ[‹\WÙÝÛ›ØYÜˆ	Í	È[ˆÙ[‹\WÙÝÛ›ØYJB‚‚YYˆÔÙ[XÝ[ÛŠÙ[ŠN‚‚BZYˆ›ÝÙ[‹™[˜N‚‚BB\™]\›‚‚B]\HÙ[–ÉÛ\Ý	×K™Ù]Ù[XÝY[™^
+
+B‚BZYˆÙ[‹›Y[S\Ý[Ý\VÌH[ˆÙ[‹Ø\™\”XÛÛ”›ÝÜÎ‚‚BB\Ù[‹›Ü[•Ø\™\”XÛÛÚÚXÙJÙ[‹›Y[S\Ý[Ý\VÌJB‚BB\™]\›‚‚BZYˆÙ[‹›Y[S\Ý[Ý\VÌH[ˆÙ[‹Ø\™\]^›ÝÜÎ‚‚BB\Ù[‹›Ü[]^XÛÛÚÚXÙJÙ[‹›Y[S\Ý[Ý\VÌJB‚BB\™]\›‚‚BZYˆÙ[‹›Y[S\Ý[Ý\VÌHOH	ÍÞ‰È[™›ÝÙ[‹›Y[S\Ý[Ý\VÌ—N‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ‘T”“ÔˆŠJÈŽˆÞš\[\ˆÝÛ›ØY\È›Ý]˜Z[X›H›Üˆ\ÈÔH\˜Ú]XÝ\™HŠB‚BB\™]\›‚‚BZYˆ	ÊŠŠ‰È[ˆÙ[‹›Y[S\Ý[Ý\VÌWN‚‚BBZYˆ›ÝÜËœ]š\Ùš[JÑU‘S–’T
+N‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ‘T”“ÔˆŠJÈŽˆŠ×Ê	ÕÛÛÞš\\ÈZ\ÜÚ[™Ë[ÝHØ[ˆÝÛ›ØY]œ›ÛHÕÓ“ÐQQS•IÊJB‚BBY[ÙN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹œØ]Ù[Ø[˜XÚËØ]Ù[XÝÜ”ØÜ‹Ù[‹›Y[S\Ý[Ý\VÌ—JB‚BY[ÙN‚‚BB\Ù[‹›Y[S\Ý[Ý\VÍHH
+Ñ˜[ÙNˆž‹YNˆ™ŸVÜÙ[‹›Y[S\Ý[Ý\VÍHOH	Þ	×JB‚BB\Ù[‹˜Ü™X]S\Ý
+
+B‚BB\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆÜÙ]Ø\™\”XÛÛ”™\\™Y
+Ù[‹XÝ]™WÜ›ÝÏS›Û™JN‚‚BHÈHØ\™\ˆXÛÛˆ\]H\ÈÛ™H^XÝ]X›HXÝ[Û‹ˆÛ›HH›ÝÈH\Ù\‚‚BHÈXÝX[HÛÛ™š\›YYÙ]ÈHÜ™Y[ˆ[™[™ÈX\šÙ\ŽÈHÝ\ˆ™Y™\™[˜ÙB‚BHÈ›ÝÜÈ™[XZ[ˆÛÛ™šYÝ\˜][Û‹›Ýš]™HÙ\\˜]HÝÛ›ØYË‚‚BZYˆXÝ]™WÜ›ÝÎ‚‚BBY›Üˆ[ˆÙ[‹›Y[S\Ý[‚‚BBBZYˆÙ[‹›Y[S\Ý[ÞVÌHOHXÝ]™WÜ›ÝÎ‚‚BBBB\Ù[‹›Y[S\Ý[ÞVÍHH™‚‚BBBBXœ™XZÂ‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆÜ[•Ø\™\”XÛÛÚÚXÙJÙ[‹›ÝÊN‚‚BZYˆ›ÝÈOHÜ\ÜÈŽ‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹Ø\™\”ÜÚ][Û[œÝÙ\‹Ø\™\”ÜÚ][Û”Ù[XÝÜ”ØÜ‹Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÜÚ][Û—Øš[™[™ÜÈ‹×JJB‚BB\™]\›‚‚BXÚÚXÙ\ÈHßB‚B\™\ÛÛ][ÛˆHÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][Ûˆ‹ŒŒŒLÌˆŠB‚B\Ý[HHÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÝ[HŠB‚BZYˆ›ÝÈOHÜ\™\ÈŽ‚‚BBXÚÚXÙ\ÖÜ›Ý×HHÊÊX™[
+K
+œ™\ÛÛ][Ûˆ‹Ú^™JJH›ÜˆÚ^™KX™[[ˆØ\™\”XÛÛ”Þ[˜ËÒS“‘SÔ‘TÓÓUSÓ—ÐÒÒPÑT×B‚BBXÚÚXÙ\ÖÜ›Ý×K˜\[™
+
+ÊÌLŽˆH\™ÙHXÛÛœÈ›ÜˆÙ[XÝYÚ[›™[\Ý\\ÈŠK
+›\™ÙK\Ù[XÝ[Ûˆ‹ÒÔXÛÛ˜šYÈŠJJB‚BY[Yˆ›ÝÈOHÜ\Ý[HŽ‚‚BB\Ý[\ÈHØ\™\”XÛÛ”Þ[˜Ë”ÕSTÈYˆ›Ý™\ÛÛ][Ûˆ[ÙH\J
+˜[YKX™[
+H›Üˆ˜[YKX™[[ˆØ\™\”XÛÛ”Þ[˜Ë”ÕSTÈYˆØ\™\”XÛÛ”Þ[˜Ë˜Ú[›™[ÜÝ[WÜÝ\ÜY
+™\ÛÛ][Û‹˜[YJJB‚BBXÚÚXÙ\ÖÜ›Ý×HHÊÊX™[
+K
+œÝ[H‹˜[YJJH›Üˆ˜[YKX™[[ˆÝ[\×B‚BY[Yˆ›ÝÈOHÜ[[ÙHŽ‚‚BBXÚÚXÙ\ÖÜ›Ý×HHÊÊX™[
+K
+\]WÛ[ÙH‹˜[YJJH›Üˆ˜[YKX™[[ˆØ\™\”XÛÛ”Þ[˜Ë•TUWÓSÑT×B‚BY[Yˆ›ÝÈOHÜY\ÝŽ‚‚BBXÚÚXÙ\ÖÜ›Ý×HHÊÊX™[
+H
+ÈˆHˆ
+È]
+™\Ý[˜][Ûˆ‹]
+JH›Üˆ]X™[[ˆØ\™\”XÛÛ”Þ[˜Ë”PÓÓ—ÑTÕSUSÓ”×B‚BBXÚÚXÙ\ÖÜ›Ý×K˜\[™
+
+Ê•\Ù\ˆYš[™Y‹‹ˆŠK
+˜Ý\ÝÛK[ØØ][Ûˆ‹ˆŠJJB‚B\Ù[‹Ø\™\ÚÚXÙT›ÝÈH›ÝÂ‚B\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹Ø\™\”XÛÛÚÚXÙP[œÝÙ\‹ÚÚXÙP›Þ]OWÊ”Ù[XÝŠK\ÝXÚÚXÙ\Ë™Ù]
+›ÝË×JJB‚‚YYˆÜ[]^XÛÛÚÚXÙJÙ[‹›ÝÊN‚‚BZÚ[™HÈ˜]^\›ÝˆŽˆœXÛÛ”›Ýˆ‹˜]^\Ø]ŽˆœXÛÛ”Ø]‹˜]^XØ[HŽˆœXÛÛØ[H‹˜]^]ÙX]\ˆŽˆœXÛÛ•ÙX]\ˆŸK™Ù]
+›ÝÊB‚BZYˆÚ[™[ˆØ\™\”XÛÛ”Þ[˜ËUVSPT–WÕT’PS•ÒQÎ‚‚BB[Ü[ÛœÈHØ\™\”XÛÛ”Þ[˜Ë˜]^[X\žWÚXœšYÝ˜\šX[ÊÚ[™
+B‚BY[ÙN‚‚BB]˜\šX[ÈHØ\™\”XÛÛ”Þ[˜Ë˜]^[X\žWÝ˜\šX[ÊØ\™\”XÛÛ”Þ[˜ËUVSPT–WÐTÔÑUÒÑVTÊB‚BB[Ü[ÛœÈH˜\šX[Ë™Ù]
+Ú[™
+
+JB‚BXÚÚXÙ\ÈHÊÊX™[
+K
+\ÜÙ]X™[
+JH›Üˆ\ÜÙ]X™[[ˆÜ[Ûœ×B‚B\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊ[X™H
+˜[œÝÙ\ŽˆÙ[‹Ø\™\]^XÛÛ[œÝÙ\‘›ÜŠ›ÝË
+˜[œÝÙ\ŠKÚÚXÙP›Þ]OWÊ”Ù[XÝŠK\ÝXÚÚXÙ\ÊB‚‚YYˆØ\™\]^XÛÛ[œÝÙ\‘›ÜŠÙ[‹›ÝË
+˜[œÝÙ\ŠN‚‚BZYˆ›Ý[œÝÙ\Ž‚‚BB\™]\›‚‚BX[œÝÙ\ˆH[œÝÙ\–ÌHYˆ[Š[œÝÙ\ŠHOHH[ÙH[œÝÙ\‚‚BZYˆ[œÝÙ\ˆ\È›Û™HÜˆ›Ý\Ú[œÝ[˜ÙJ[œÝÙ\‹
+\Ý\JJHÜˆ[Š[œÝÙ\ŠHŽ‚‚BB\™]\›‚‚B]žN‚‚BBX\ÜÙ]X™[H[œÝÙ\–ÌWB‚BY^Ù\
+\Q\œ›Ü‹˜[YQ\œ›ÜŠN‚‚BB\™]\›‚‚BZYˆ›Ý\Ú[œÝ[˜ÙJ\ÜÙ]ÝŠHÜˆ›Ý\Ú[œÝ[˜ÙJX™[ÝŠN‚‚BB\™]\›‚‚BZÚ[™HÈ˜]^\›ÝˆŽˆœXÛÛ”›Ýˆ‹˜]^\Ø]ŽˆœXÛÛ”Ø]ŸK™Ù]
+›ÝÊB‚BZYˆÚ[™[ˆØ\™\”XÛÛ”Þ[˜ËUVSPT–WÕT’PS•ÒQÎ‚‚BBZYˆ\ÜÙ]›Ý[ˆØ\™\”XÛÛ”Þ[˜ËUVSPT–WÕT’PS•ÒQÖÚÚ[™N‚‚BBB\™]\›‚‚BY[Yˆ\ÜÙ]›Ý[ˆØ\™\”XÛÛ”Þ[˜ËUVSPT–WÐTÔÑUÒÑVTÎ‚‚BB\™]\›‚‚BY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BBZYˆÙ[‹›Y[S\Ý[Ú[™^VÌHOH›ÝÎ‚‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÌ—HH\ÜÙ]‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÌWHHÊÙ[‹›Y[S\Ý[Ú[™^VÌWKœÜ]
+ŽˆŠVÌJH
+ÈŽˆˆ
+ÈÊX™[
+B‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÍHH™‚‚BBBXœ™XZÂ‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆØ\™\”ÜÚ][Û[œÝÙ\ŠÙ[‹[œÝÙ\S›Û™JN‚‚BHÈ[šYÛXLˆX[ÙÈÛÜÙKØ˜XÚÈ]ÈX^HØ[˜XÚÈÚ]Ý]H˜[YNˆØ[˜Ù[‚‚BZYˆ[œÝÙ\ˆ\È›Û™HÜˆ›Ý\Ú[œÝ[˜ÙJ[œÝÙ\‹
+\Ý\JJN‚‚BB\™]\›‚‚B\Ù[‹Ø\™\”ÜÚ][Û”Ù[XÝ[Û][\YHYB‚BXš[™[™ÜÈHØ\™\”XÛÛ”Þ[˜Ë››Ü›X[^™WÜÜÚ][Û—Øš[™[™ÜÊ[œÝÙ\ŠB‚BZYˆ[Šš[™[™ÜÊHOH[Š[œÝÙ\ŠN‚‚BBXš[™[™ÜÈH×B‚B\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜ËœÙ]Ý\Ú×ÜÜÚ][Û—Øš[™[™ÜÊÙ[‹Ø\™\”XÛÛ”™YœËš[™[™ÜÊB‚B\ÜÚ][ÛœÈH\Ý
+Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÜÚ][ÛœÈ‹×JJB‚BZYˆÜÚ][ÛœÎ‚‚BB\™]šY]ÈH‹‹š›Ú[ŠÜÚ][ÛœÖÎJB‚BBZYˆ[ŠÜÚ][ÛœÊHˆ‚‚BBB\™]šY]È
+ÏHˆ‹‹ˆ‚‚BB[X™[HÊ”Ø][]HÜÚ][ÛœÈŠH
+ÈŽˆˆ
+È™]šY]È
+Èˆ
+ˆ
+ÈÝŠ[ŠÜÚ][ÛœÊJH
+Èˆˆ
+ÈÊœÙ[XÝYŠH
+ÈŠH‚‚BY[ÙN‚‚BB[X™[HÊ”Ø][]HÜÚ][ÛœÈŠH
+ÈŽˆˆ
+ÈÊ“›ÈÜÚ][ÛˆÙ[XÝYŠB‚BB\Ù[‹Ø\™\”XÛÛ”™YœÖÈœ™\\™Y—HH˜[ÙB‚BBY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BBBZYˆÙ[‹›Y[S\Ý[Ú[™^VÌH[ˆÙ[‹Ø\™\”XÛÛ”›ÝÜÎ‚‚BBBB\Ù[‹›Y[S\Ý[Ú[™^VÍHHž‚‚BY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BBZYˆÙ[‹›Y[S\Ý[Ú[™^VÌHOHÜ\ÜÈŽ‚‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÌWHHX™[‚BBBXœ™XZÂ‚BZYˆÜÚ][ÛœÎ‚‚BB\Ù[‹—ÜÙ]Ø\™\”XÛÛ”™\\™Y
+Ü\ÜÈŠB‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆØ\™\”XÛÛÚÚXÙP[œÝÙ\ŠÙ[‹[œÝÙ\S›Û™JN‚‚BHÈÚÚXÙP›ÞØ[˜Ù[[™Ú[™ÝËXÛÜÙH]ÈØ[ˆØ[˜XÚÈÚ]›È˜[YK‚‚BZYˆ[œÝÙ\ˆ\È›Û™HÜˆ›Ý\Ú[œÝ[˜ÙJ[œÝÙ\‹
+\Ý\JJHÜˆ[Š[œÝÙ\ŠHŽ‚‚BB\™]\›‚‚B]žN‚‚BBZÙ^K˜[YHH[œÝÙ\–ÌWB‚BY^Ù\
+\Q\œ›Ü‹˜[YQ\œ›ÜŠN‚‚BB\™]\›‚‚BZYˆÙ^HOH˜Ý\ÝÛK[ØØ][ÛˆŽ‚‚BBXÝ\œ™[HÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+™\Ý[˜][ÛˆŠHÜˆØ\™\”XÛÛ”Þ[˜Ë‘QUSÑTÕSUSÓ‚‚BB\Ý\Ü]HÝ\œ™[YˆÜËœ]š\Ù\ŠÝ\œ™[
+H[ÙH‹È‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹Ø\™\Ý\ÝÛSØØ][Û[œÝÙ\‹\œ›ÝÜÙ\‹Ý\Ü]
+B‚BB\™]\›‚‚BZYˆÙ^HOH›\™ÙK\Ù[XÝ[ÛˆŽ‚‚BB\Ù[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™ÈHYB‚BBY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BBBZYˆÙ[‹›Y[S\Ý[Ú[™^VÌHOHÜ\™\ÈŽ‚‚BBBB\Ù[‹›Y[S\Ý[Ú[™^VÍHH™‚‚BBBBXœ™XZÂ‚BB\Ù[‹˜Ü™X]S\Ý
+
+B‚BB\Ù[‹œ™XXÝ]˜]J
+B‚BB\™]\›‚‚BZYˆÙ^H›Ý[ˆ
+œ™\ÛÛ][Ûˆ‹œÝ[H‹\]WÛ[ÙH‹™\Ý[˜][ÛˆŠN‚‚BB\™]\›‚‚BZYˆÙ^HOHœÝ[Hˆ[™Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][ÛˆŠH[™›ÝØ\™\”XÛÛ”Þ[˜Ë˜Ú[›™[ÜÝ[WÜÝ\ÜY
+Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][ÛˆŠK˜[YJN‚‚BB\™]\›‚‚BZYˆÙ^HOH™\Ý[˜][ÛˆŽ‚‚BB]˜[YHHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠ˜[YJB‚BBZYˆ›Ý˜[YN‚‚BBB\™]\›‚‚B\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜ËœÙ]Ü™Y™\™[˜ÙJÙ[‹Ø\™\”XÛÛ”™YœËÙ^K˜[YJB‚BZYˆÙ^HOHœ™\ÛÛ][Ûˆˆ[™Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÝ[HŠH[™›ÝØ\™\”XÛÛ”Þ[˜Ë˜Ú[›™[ÜÝ[WÜÝ\ÜY
+˜[YKÙ[‹Ø\™\”XÛÛ”™YœÖÈœÝ[H—JN‚‚BB\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜ËœÙ]Ü™Y™\™[˜ÙJÙ[‹Ø\™\”XÛÛ”™YœËœÝ[H‹›Û™JB‚B\Ù[‹—ÜÙ]Ø\™\”XÛÛ”™\\™Y
+Ù[‹Ø\™\ÚÚXÙT›ÝÊB‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆØ\™\Ý\ÝÛSØØ][Û[œÝÙ\ŠÙ[‹[œÝÙ\S›Û™JN‚‚BZYˆ›Ý[œÝÙ\Ž‚‚BB\™]\›‚‚B\]HÜËœ]››Ü›\]
+ÝŠ[œÝÙ\ŠJB‚BZYˆ›ÝÜËœ]š\ØXœÊ]
+HÜˆ›ÝÜËœ]š\Ù\Š]
+HÜˆÜËœ]š\Û[šÊ]
+N‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ”Ù[XÝ[ˆ^\Ý[™È\™XÝÜžKˆŠJB‚BB\™]\›‚‚B\]HØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠ]
+B‚BZYˆ›Ý]‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[Š\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÊ’[˜[YXÛÛˆ\Ý[˜][ÛˆŠJB‚BB\™]\›‚‚B\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜ËœÙ]Ü™Y™\™[˜ÙJÙ[‹Ø\™\”XÛÛ”™YœË™\Ý[˜][Ûˆ‹]
+B‚B\Ù[‹—ÜÙ]Ø\™\”XÛÛ”™\\™Y
+ÜY\ÝŠB‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆØ]Ù[Ø[˜XÚÊÙ[‹[œÝÙ\S›Û™JN‚‚BZYˆ[œÝÙ\ˆ\È›Û™N‚‚BB\™]\›‚‚B]\HÙ[–ÉÛ\Ý	×K™Ù]Ù[XÝY[™^
+
+B‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹›Y[S\Ý[Ý\VÌ×HH[œÝÙ\‚‚BY[ÙN‚‚BB\Ù[‹›Y[S\Ý[Ý\VÌ×HH	ÉÂ‚B\Ù[‹›Y[S\Ý[Ý\VÍHH
+Ñ˜[ÙNˆž‹YNˆ™ŸVÜÙ[‹›Y[S\Ý[Ý\VÌ×HOH	É×JB‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆØ]Ù[Ø[˜XÚÊÙ[‹[œÝÙ\ŠN‚‚B]\HÙ[–ÉÛ\Ý	×K™Ù]Ù[XÝY[™^
+
+B‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹›Y[S\Ý[Ý\VÌ×HH[œÝÙ\‚‚BY[ÙN‚‚BB\Ù[‹›Y[S\Ý[Ý\VÌ×HH	ÉÂ‚B\Ù[‹›Y[S\Ý[Ý\VÍHH
+Ñ˜[ÙNˆž‹YNˆ™ŸVÜÙ[‹›Y[S\Ý[Ý\VÌ×HOH	É×JB‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆÛX[”XÛÛŠÙ[ŠN‚‚BZYˆ›ÝÙ[‹™[˜N‚‚BB\™]\›‚‚B\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹˜ÛX[[œÝÙ\“›ÝËØ]Ù[XÝÜ”ØÜŠB‚‚YYˆÛX[[œÝÙ\“›ÝÊÙ[‹[œÝÙ\S›Û™JN‚‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹˜Û”Ù[XÝØ]HYB‚BB\Ù[‹˜[œÝÙ\ˆH[œÝÙ\ˆBBBB‚BB[[TXÝH‚BB]Ý[H‚BBY›ÜˆZH[ˆÉÜXÛÛ‰Ë	ÜXÛÛ“ÛY	Ë	ÜXÛÛ—ÍLÌ	Ë	ÜXÛÛ—Í	Ë	Ö–”XÛÛ‰Ë	ÜXÛÛ—ÌŒŒLÌ‰×N‚B‚BBBXXÝ\ˆH‰\ËÉ\Èˆ	H
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YKZJB‚BBBYˆH\Ý\ŠXÝ\ŠB‚BBBZYˆŽ‚‚BBBBY›Üˆ[ˆŽ‚‚BBBBB]Ý[
+ÏHB‚BBBBBZYˆÙ[‹˜ÚÚÊ
+N‚‚BBBBBBXØ[™Y]HHÜËœ]š›Ú[ŠXÝ\‹
+B‚BBBBBB]žN‚‚BBBBBBBZYˆÜËœ]š\Ùš[JØ[™Y]JHÜˆÜËœ]š\Û[šÊØ[™Y]JN‚‚BBBBBBBB[ÜË[›[šÊØ[™Y]JB‚BBBBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBBBB\\ÜÂ‚BBBBBBZYˆ›ÝÜËœ]›^\ÝÊØ[™Y]JN‚‚BBBBBBB[[TXÝ
+ÏHB‚BB\Ù[‹™Û“ÛÜ
+Ê”ÕPÐÑTÔÑ•SŠJÈŽˆŠ×Ê•Ý[ˆŠH
+Èˆˆ
+ÈÝŠÝ[
+H
+È‹ˆ
+ÈÊ‘[]YˆŠH
+Èˆˆ
+ÈÝŠ[TXÝ
+JBB‚BB‚YYˆÝØ\™\“ØYÚ[›™[X[šY™\Ý
+Ù[‹\›
+N‚‚BHˆˆ‘™]Ú[™˜[Y]HH^XÝ^XÚ]H[˜X›YX›XØ][ÛˆX[šY™\Ýˆˆˆ‚‚BY^XÝYHØ\™\”XÛÛ”Þ[˜Ëœ[[YWÜX›XØ][ÛŠ
+K™Ù]
+›X[šY™\ÝÝ\›ŠB‚BZYˆ›Ý^XÝYÜˆ\›OH^XÝY‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[X[šY™\Ý\È›Ý[˜X›YŠB‚B\™\HH™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹ØÚ[›™[\XÛÛœÈŸJB‚B]Ú]\›Ü[Š™\K[Y[Ý]LÌ
+H\È™\ÜÛœÙN‚‚BBZYˆÝŠ™\ÜÛœÙK™Ù]\›
+
+JHOH^XÝY‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[X[šY™\Ý™Y\™XÝ™Z™XÝYŠB‚BBY]HH™\ÜÛœÙKœ™XY
+
+ˆL
+ˆL
+ÈJB‚BZYˆ[Š]JHˆ
+ˆL
+ˆL‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[X[šY™\ÝÛÈ\™ÙHŠB‚BYØÈHœÛÛ‹›ØYÊ]K™XÛÙJ]‹NŠJB‚BY\œ›ÜœÈHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÜX›XØ][Û—ÛX[šY™\Ý
+ØË\›
+B‚BZYˆ\œ›ÜœÎ‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[YØ\™\ˆÚ[›™[X[šY™\Ýˆˆ
+ÈŽÈ‹š›Ú[Š\œ›ÜœÖÎŒ×JJB‚B\™]\›ˆØÂ‚‚YYˆÝØ\™\”Ý\]^[X\žPÛÛ\ÜÚ]JÙ[‹›ÝË˜\šX[ÚY
+N‚‚BHˆˆ”]Y]YH˜[˜XÚÈ[ˆÝ™\›^HÛÜšÈÝ]ÚYHHÕRH]™[[ÛÜØ[˜XÚËˆˆˆ‚‚BZÚ[™HÈ˜]^\›ÝˆŽˆœ›ÝšY\ˆ‹˜]^\Ø]ŽˆœØ][]HŸK™Ù]
+›ÝÊB‚BZYˆÚ[™\È›Û™HÜˆ˜\šX[ÚY›Ý[ˆ
+˜[œÜ\™[‹˜›XÚÈ‹Ú]HŠN‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[Y]^[X\žHÙ[XÝ[ÛˆŠB‚B\™\]Y\ÝHÂ‚BBHœ›ÝÈŽˆ›ÝË‚BBH˜\šX[Žˆ˜\šX[ÚY‚BBH™\Ý[˜][Û—Ø˜\ÙHŽˆÝŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YJK‚BBH™ÝÛ›ØY×ÛX[šY™\ÝÝ\›ŽˆÐT‘T—ÐTÔÑUÓPS’Q‘TÕÕT“‚BBH™\ØÜš\Ü—Ü]ŽˆÜËœ]š›Ú[ŠÜËœ]™\›˜[YJ×Ùš[W×ÊKØ\™\”XÛÛ”Þ[˜ËUVSPT–WÔ“ÑPÕSÓ—ÑTÐÔ’TÔŠK‚B_B‚BY™™\]Y\ÝÜ]H[\š[K›ZÜÝ[\
+™Yš^HØ\™\‹X]^\™\]Y\ÝH‹ÝY™š^H‹šœÛÛˆ‹\H‹Ý\ŠB‚B[ÜË˜ÛÜÙJ™
+B‚BY™™\Ý[Ü]H[\š[K›ZÜÝ[\
+™Yš^HØ\™\‹X]^\™\Ý[H‹ÝY™š^H‹šœÛÛˆ‹\H‹Ý\ŠB‚B[ÜË˜ÛÜÙJ™
+B‚B]žN‚‚BB]Ú]Ü[Š™\]Y\ÝÜ]ÈŠH\ÈÝ™X[N‚‚BBBZœÛÛ‹™[\
+™\]Y\ÝÝ™X[KÛÜÚÙ^\ÏUYKÙ\\˜]ÜœÏJ‹‹ŽˆŠJB‚BB\Ù[‹Ø\™\]^™\]Y\Ý]H™\]Y\ÝÜ]‚BB\Ù[‹Ø\™\]^™\Ý[]H™\Ý[Ü]‚BB\Ù[‹Ø\™\]^Ý]]H×B‚BB\Ù[‹Ø\™\]^ÛÜšÙ\ˆHPÛÛœÛÛP\ÛÛZ[™\Š
+B‚BB\Ù[‹Ø\™\]^ÛÜšÙ\‹™]P]˜Z[˜\[™
+Ù[‹—ÝØ\™\]^ÛÜšÙ\‘]JB‚BB\Ù[‹Ø\™\]^ÛÜšÙ\‹˜\ÛÜÙY˜\[™
+Ù[‹—ÝØ\™\]^ÛÜšÙ\ÛÜÙY
+B‚BB\Ù[‹Ø\™\]^ÛÜšÙ\”[›š[™ÈHYB‚BB]ÛÜšÙ\—Ü]HÜËœ]š›Ú[ŠÜËœ]™\›˜[YJ×Ùš[W×ÊKØ\™\]^[X\žUÛÜšÙ\‹œHŠB‚BB\Ý]\ÈHÙ[‹Ø\™\]^ÛÜšÙ\‹™^XÝ]JÞ\Ë™^XÝ]X›KÛÜšÙ\—Ü]™\]Y\ÝÜ]™\Ý[Ü]
+B‚BBZYˆÝ]\È›Ý[ˆ
+›Û™K
+N‚‚BBB\Ù[‹Ø\™\]^ÛÜšÙ\”[›š[™ÈH˜[ÙB‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ˜ÛÝ[›ÝÝ\]^[X\žHÛÜšÙ\ˆ
+	\ÊHˆ	HÝ]\ÊB‚BY^Ù\^Ù\[ÛŽ‚‚BB\Ù[‹Ø\™\]^ÛÜšÙ\”[›š[™ÈH˜[ÙB‚BB\Ù[‹—ÝØ\™\]^ÛÜšÙ\ÛX[\
+
+B‚BB\˜Z\ÙB‚B\™]\›ˆYB‚‚YYˆÝØ\™\]^ÛÜšÙ\‘]JÙ[‹]JN‚‚BZYˆ[ŠÙ[‹Ø\™\]^Ý]]
+HÌŽ‚‚BB]žN‚‚BBB\Ù[‹Ø\™\]^Ý]]˜\[™
+]K™XÛÙJ]‹N‹œ™\XÙHŠHYˆ\Ú[œÝ[˜ÙJ]Kž]\ÊH[ÙHÝŠ]JJB‚BBY^Ù\^Ù\[ÛŽ‚‚BBB\\ÜÂ‚‚YYˆÝØ\™\]^ÛÜšÙ\ÛX[\
+Ù[ŠN‚‚BY›Üˆ][ˆ
+Ù]]ŠÙ[‹Ø\™\]^™\]Y\Ý]‹›Û™JKÙ]]ŠÙ[‹Ø\™\]^™\Ý[]‹›Û™JJN‚‚BBZYˆ]‚‚BBB]žN‚‚BBBB[ÜË[›[šÊ]
+B‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\\ÜÂ‚B\Ù[‹Ø\™\]^™\]Y\Ý]H›Û™B‚B\Ù[‹Ø\™\]^™\Ý[]H›Û™B‚B\Ù[‹Ø\™\]^ÛÜšÙ\ˆH›Û™B‚‚YYˆÝØ\™\]^ÛÜšÙ\ÛÜÙY
+Ù[‹^]ØÛÙJN‚‚B\Ù[‹Ø\™\]^ÛÜšÙ\”[›š[™ÈH˜[ÙB‚B\™\Ý[HßB‚B]žN‚‚BB\]HÙ[‹Ø\™\]^™\Ý[]‚BBZYˆ][™ÜËœ]š\Ùš[J]
+H[™›ÝÜËœ]š\Û[šÊ]
+N‚‚BBB]Ú]Ü[Š]œ˜ˆŠH\ÈÝ™X[N‚‚BBBB\™\Ý[HœÛÛ‹›ØYÊÝ™X[Kœ™XY
+L
+ˆL
+ÈJK™XÛÙJ]‹NŠJB‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BB\™\Ý[HÈ™˜][Ù\œ›ÜˆŽˆÝŠ\œŠKœ™\Ý[ÈŽˆ×_B‚B]žN‚‚BBZYˆ™\Ý[™Ù]
+™˜][Ù\œ›ÜˆŠHÜˆ[
+^]ØÛÙJHOH‚‚BBB]^HÊ‘T”“ÔˆŠH
+ÈŽˆˆ
+ÈÝŠ™\Ý[™Ù]
+™˜][Ù\œ›ÜˆŠHÜˆ˜]^[X\žHÛÜšÙ\ˆ˜Z[YŠB‚BBY[ÙN‚‚BBB[^Y\œÈHÚ][K™Ù]
+›^Y\ˆŠNˆ][K™Ù]
+œ™\Ý[‹ßJH›Üˆ][H[ˆ™\Ý[™Ù]
+œ™\Ý[È‹×J_B‚BBBY˜[˜XÚÈH^Y\œË™Ù]
+›YØXÞWÙ˜[˜XÚÈ‹ßJB‚BBB\ØY™HH^Y\œË™Ù]
+Ø\™\—ÜØY™WÜš[Üš]H‹ßJB‚BBBY˜[˜XÚ×ÝÝ[H[
+˜[˜XÚË™Ù]
+˜][\Y‹
+JB‚BBB\ØY™WÝÝ[H[
+ØY™K™Ù]
+˜][\Y‹
+JB‚BBB\Ý[[X\žHHØ\™\”XÛÛ”Þ[˜Ë˜]^[X\žWÜ™\Ý[ÜÝ[[X\žJ‚BBBBWÊ”›ÝšY\ˆÙÛÜÈˆYˆ™\Ý[™Ù]
+šÚ[™ŠHOHœ›ÝšY\ˆˆ[ÙH”Ø][]HÙÛÜÈŠK‚BBBB\™\Ý[™Ù]
+˜\šX[ŠK[
+˜[˜XÚË™Ù]
+\]Y‹
+JK˜[˜XÚ×ÝÝ[‚BBBBZ[
+ØY™K™Ù]
+\]Y‹
+JKØY™WÝÝ[ÊB‚BBBY\œ›ÜœÈHÈ‰\Îˆ	\Èˆ	H
+^Y\‹][K™Ù]
+™\œ›ÜˆŠJH›Üˆ^Y\‹][H[ˆ^Y\œËš][\Ê
+HYˆ][K™Ù]
+™\œ›ÜˆŠWB‚BBB]^HÝ[[X\žVÈ^—H
+È
+
+—ˆˆ
+È—ˆ‹š›Ú[Š\œ›ÜœÊJHYˆ\œ›ÜœÈ[ÙHˆŠB‚BBBZYˆ
+ØY™WÝÝ[ˆ[™[
+ØY™K™Ù]
+\]Y‹
+JHOHØY™WÝÝ[‚BBBBBX[™›ÝØY™K™Ù]
+™\œ›ÜˆŠJN‚‚BBBBWÝØ\™\”™Yœ™\Ú[œÝ[Y]^[X\žTXÛÛœÊ
+B‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BB]^HÊ‘T”“ÔˆŠH
+ÈŽˆˆ
+ÈÝŠ\œŠB‚B\Ù[‹—ÝØ\™\]^ÛÜšÙ\ÛX[\
+
+B‚B\Ù[‹™Û“ÛÜ
+^
+B‚‚YYˆÝØ\™\”™[[Ý™TÝ[PÚ[›™[XÛÛœÊÙ[‹\Ý[˜][Û‹ÜÚ][ÛœËXÚØYÙWÛ˜[Y\ÊN‚‚BHˆˆ”™[[Ý™HÛ›HÝ[HÙ\šXÙH‘ÜÈ›ÜˆÙ[XÝYÜ˜š]ÈY\ˆXÚØYÙHÝXØÙ\ÜËˆˆˆ‚‚BY\Ý[˜][ÛˆHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠ\Ý[˜][ÛŠB‚BZYˆ›Ý\Ý[˜][ÛˆÜˆÜËœ]š\Û[šÊ\Ý[˜][ÛŠHÜˆ›ÝÜËœ]š\Ù\Š\Ý[˜][ÛŠN‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠÊ’[˜[YXÛÛˆ\Ý[˜][ÛˆŠJB‚B]žN‚‚BB[˜[Y\ÈHÜË›\Ý\Š\Ý[˜][ÛŠB‚BY^Ù\ÔÑ\œ›Üˆ\È\œŽ‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠÊØ[››Ý™XYXÛÛˆ\Ý[˜][ÛˆŠH
+ÈŽˆˆ
+ÈÝŠ\œŠJB‚B\Ý[HHØ\™\”XÛÛ”Þ[˜Ëœ[—ÜÝ[WÜÜÚ][Û—ÜXÛÛœÊ˜[Y\ËÜÚ][ÛœËXÚØYÙWÛ˜[Y\ÊB‚BY›Üˆ˜[YH[ˆÝ[N‚‚BB\]HÜËœ]š›Ú[Š\Ý[˜][Û‹˜[YJB‚BBZYˆÜËœ]˜˜\Ù[˜[YJ]
+HOH˜[YHÜˆÜËœ]š\Û[šÊ]
+HÜˆ›ÝÜËœ]š\Ùš[J]
+N‚‚BBBXÛÛ[YB‚BB]žN‚‚BBB[ÜË[›[šÊ]
+B‚BBY^Ù\ÔÑ\œ›Üˆ\È\œŽ‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠÊÛÝ[›Ý™[[Ý™HÝ[HÙ[XÝY\ÜÚ][ÛˆXÛÛˆŠH
+ÈŽˆˆ
+ÈÝŠ\œŠJB‚B\™]\›ˆ[ŠÝ[JB‚‚YYˆÜ™XÛÜ™Ø\™\“Ü\˜][Û”™\Ý[
+Ù[‹^
+N‚‚BZYˆ›Ý^‚‚BB\™]\›‚‚B]˜[YHHÝŠ^
+B‚BZ\×Ü\X[HÊ”T•PSÕPÐÑTÔÈŠH
+ÈŽˆˆ[ˆ˜[YB‚BZYˆ
+Ê‘T”“ÔˆŠH
+ÈŽˆŠH[ˆ˜[YHÜˆ\×Ü\X[‚‚BB\Ù[‹Ø\™\“Ü\˜][Û‘˜Z[YHYB‚BBZYˆ\×Ü\X[‚‚BBB\Ù[‹Ø\™\“Ü\˜][Û”ÝXØÙYYYHYB‚BB\›ÝÈHÙ]]ŠÙ[‹Ø\™\Ý\œ™[XÝ[Û”›ÝÈ‹›Û™JB‚BBZYˆ›ÝÎ‚‚BBB\Ù[‹Ø\™\‘˜Z[Y›ÝÜË˜Y
+›ÝÊB‚BBBZYˆ›ÝÈOHÜ\™\ÈŽ‚‚BBBB\Ù[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™ÈHYB‚BBBY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BBBBZYˆÙ[‹›Y[S\Ý[Ú[™^VÌHOH›ÝÎ‚‚BBBBB\Ù[‹›Y[S\Ý[Ú[™^VÍHH™‚‚BBBBXœ™XZÂ‚BY[Yˆ
+Ê”ÕPÐÑTÔÑ•SŠH
+ÈŽˆŠH[ˆ˜[YN‚‚BB\Ù[‹Ø\™\“Ü\˜][Û”ÝXØÙYYYHYB‚B\Ù[‹Ø\™\Ý\œ™[XÝ[Û”›ÝÈH›Û™B‚‚YYˆ™\Ù]Ø\™\•ÛÜšÚ[™ÔÝ]JÙ[ŠN‚‚BHˆˆÛX\ˆÛ›H[‹[Y[[ÜžHÝÛ›ØYÚÚXÙ\ÈY\ˆH[\™H[ˆÝXØÙYYËˆˆˆ‚‚B\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜Ëœ™Y™\™[˜Ù\×ØY\—Ý\ÚÊÙ[‹Ø\™\”XÛÛ”™YœËœÝXØÙ\ÜÈŠB‚B\Ù[‹Ø\™\Ú[›™[\ÚÔÛ˜\ÚÝH›Û™B‚B\Ù[‹Ø\™\”ÜÚ][Û”Ù[XÝ[Û][\YH˜[ÙB‚B\Ù[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™ÈH˜[ÙB‚B\Ù[‹Ø\™\]^ÚÚXÙT›ÝÈH›Û™B‚BY›Üˆ[™^[ˆÙ[‹›Y[S\Ý[‚‚BB\›ÝÈHÙ[‹›Y[S\Ý[Ú[™^VÌB‚BBZYˆ›ÝÈ[ˆÙ[‹Ø\™\”XÛÛ”›ÝÜÎ‚‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÍHHž‚‚BBY[Yˆ›ÝÈ[ˆÙ[‹Ø\™\]^›ÝÜÎ‚‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÍHHž‚‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÌ—HHÈ˜]^\›ÝˆŽˆœXÛÛ”›Ýˆ‹˜]^\Ø]ŽˆœXÛÛ”Ø]‹˜]^XØ[HŽˆœXÛÛØ[H‹˜]^]ÙX]\ˆŽˆœXÛÛ•ÙX]\ˆŸVÜ›Ý×B‚BBB\Ù[‹›Y[S\Ý[Ú[™^VÌWHHÂ‚BBBBH˜]^\›ÝˆŽˆÊ”›ÝšY\ˆÙÛÜÈŠK˜]^\Ø]ŽˆÊ”Ø][]HÙÛÜÈŠK‚BBBBH˜]^XØ[HŽˆÊÐSHXÛÛœÈŠK˜]^]ÙX]\ˆŽˆÊ•ÙX]\ˆXÛÛœÈŠK‚BBB_VÜ›Ý×B‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹œ™XXÝ]˜]J
+B‚‚YYˆÝØ\™\”[Ú[›™[]Y]YJÙ[ŠN‚‚B\Ù[‹Ø\™\Ú[›™[Ý]HHœ[›š[™È‚‚B\]Y]YHHÙ]]ŠÙ[‹Ø\™\Ú[›™[]Y]YH‹›Û™JB‚BZYˆ]Y]YH\È›Û™N‚‚BB\Ù[‹Ø\™\Ú[›™[\ÚÔÛ˜\ÚÝHXÝ
+Ù[‹Ø\™\”XÛÛ”™YœÊB‚BB\]Y]YHHØ\™\”XÛÛ”Þ[˜Ë˜Z[Ü[[YWÜ]Y]YJÙ[‹Ø\™\”XÛÛ”™YœËX›XØ][Û]Ø\™\”XÛÛ”Þ[˜Ëœ[[YWÜX›XØ][ÛŠ
+JB‚BBZYˆ]Y]YK™Ù]
+œÝ]HŠHOHØ\™\”XÛÛ”Þ[˜Ë”‘PQN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[X›XØ][Ûˆ\ÈØÚÙYŠB‚BBY\Ý[˜][ÛˆHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠ]Y]YK™Ù]
+™\Ý[˜][ÛˆŠJB‚BBZYˆ›Ý\Ý[˜][ÛŽ‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[YØ\™\ˆXÛÛˆ\Ý[˜][ÛˆŠB‚BB[ÜË›XZÙY\œÊ\Ý[˜][Û‹^\ÝÛÚÏUYJB‚BBY\Ý[˜][ÛˆHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠ\Ý[˜][ÛŠB‚BBZYˆ›Ý\Ý[˜][ÛˆÜˆÜËœ]š\Û[šÊ\Ý[˜][ÛŠHÜˆ›ÝÜËœ]š\Ù\Š\Ý[˜][ÛŠN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆXÛÛˆ\Ý[˜][ÛˆŠB‚BB\]Y]YVÈ™\Ý[˜][Ûˆ—HH\Ý[˜][Û‚‚BBYØÝ[Y[HÙ[‹—ÝØ\™\“ØYÚ[›™[X[šY™\Ý
+]Y]YK™Ù]
+›X[šY™\ÝÝ\›ŠJB‚BB\[ˆHØ\™\”XÛÛ”Þ[˜Ëœ[—Ü[[YWÜXÚØYÙ\ÊØÝ[Y[]Y]YK]Y]YK™Ù]
+›X[šY™\ÝÝ\›ŠJB‚BBZ›ØœÈHØ\™\”XÛÛ”Þ[˜Ë˜Z[ÙÝÛ›ØYÚ›ØœÊØÝ[Y[[‹]Y]YK™Ù]
+›X[šY™\ÝÝ\›ŠJB‚BBZYˆ›ØœË™Ù]
+œÝ]HŠH›Ý[ˆ
+œ™XYH‹œ\X[ŠN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[XÚØYÙH[ˆ\È›Ý^XÝ]X›HŠB‚BBZYˆ›ØœË™Ù]
+›Z\ÜÚ[™×ÜÙ[XÝÜœÈŠN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ›Z\ÜÚ[™ÈØ\™\ˆÚ[›™[XÚØYÙ\Îˆˆ
+È‹‹š›Ú[Š›ØœÖÈ›Z\ÜÚ[™×ÜÙ[XÝÜœÈ—JJB‚BB\Ù[‹Ø\™\Ú[›™[]Y]YHH]Y]YB‚BB\Ù[‹Ø\™\Ú[›™[›ØœÈH\Ý
+›ØœË™Ù]
+š›ØœÈ‹×JJB‚BB\Ù[‹Ø\™\Ú[›™[[œÝ[YHÙ]
+
+B‚BB\Ù[‹Ø\™\Ú[›™[]˜Z[X›HHÙ]
+
+B‚BB\Ù[‹Ø\™\Ú[›™[XÚØYÙT™\Ý[ÈHÂ‚BBB^ÈœXÚØYÙWÜÙ[XÝÜˆŽˆ›Ø‹™Ù]
+œÙ[XÝÜ—ÚYŠK›Ü˜š][ÜÜÚ][ÛˆŽˆ›Ø‹™Ù]
+›Ü˜š][ÜÜÚ][ÛˆŠK‚BBBH™˜[Z[HŽˆ›Ø‹™Ù]
+™˜[Z[HŠK\]YŽˆ™˜Z[\™\ÈŽˆB‚BBBY›Üˆ›Øˆ[ˆÙ[‹Ø\™\Ú[›™[›ØœÂ‚BBWB‚BBZYˆ›ÝÙ[‹Ø\™\Ú[›™[›ØœÈ[™›Ý
+]Y]YK™Ù]
+›[ÙHŠH[ˆ
+Ø\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ‹Ø\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ—ÔQSÊH[™›Ý]Y]YK™Ù]
+œÙ\šXÙ\ÈŠJN‚‚BBB\Ù[‹Ø\™\Ú[›™[]Y]YHH›Û™B‚BBB\Ù[‹Ø\™\Ú[›™[Ý]HH™\œ›Üˆ‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[Ù[XÝ[Ûˆ™\ÛÛ™YÈ›ÈXÚØYÙ\ÈŠB‚BBZYˆ]Y]YK™Ù]
+›[ÙHŠH[ˆ
+Ø\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ‹Ø\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔÖS×Õ—ÔQSÊH[™›Ý]Y]YK™Ù]
+œÙ\šXÙ\ÈŠN‚‚BBB\Ù[‹Ø\™\Ú[›™[]Y]YHH›Û™B‚BBB\Ù[‹Ø\™\Ú[›™[Ý]HH™\œ›Üˆ‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ››ÈÙ[XÝYˆÜˆ˜Y[È›Ý\]Y]Ù\šXÙ\È›Ý[™›ÜˆØ\™\ˆÙ[XÝ]™HÞ[˜ÈŠB‚BZYˆ›ÝÙ]]ŠÙ[‹Ø\™\Ú[›™[›ØœÈ‹×JN‚‚BBZ[œÝ[YÜÙ]HÙ]]ŠÙ[‹Ø\™\Ú[›™[[œÝ[Y‹Ù]
+
+JB‚BB]Ø[YHØ\™\”XÛÛ”Þ[˜ËØ[YÜXÛÛ—Û˜[Y\Ê]Y]YJB‚BBXÛÝ™\˜YÙHHØ\™\”XÛÛ”Þ[˜Ë˜Û\ÜÚYžWÜ™\]Y\ÝYÜXÛÛœÊ‚BBB]Ø[YÙ]]ŠÙ[‹Ø\™\Ú[›™[]˜Z[X›H‹Ù]
+
+JK[œÝ[YÜÙ]
+B‚BB[Z\ÜÚ[™×Ùš[\ÈHÛÜY
+ÛÝ™\˜YÙVÈ›Z\ÜÚ[™È—JB‚BBY›Üˆš[[˜[YH[ˆZ\ÜÚ[™×Ùš[\Î‚‚BBB\ÜÚ][ÛˆHØ\™\”XÛÛ”Þ[˜ËœÙ\šXÙWÛÜ˜š][ÜÜÚ][ÛŠš[[˜[YVÎ‹MKœ™\XÙJ—È‹ŽˆŠJB‚BBBY›Üˆ][H[ˆÙ[‹Ø\™\Ú[›™[XÚØYÙT™\Ý[Î‚‚BBBBZYˆ][K™Ù]
+›Ü˜š][ÜÜÚ][ÛˆŠHOHÜÚ][ÛŽ‚‚BBBBBZ][VÈ™˜Z[\™\È—H
+ÏHB‚BBBBBXœ™XZÂ‚BB\Ý[[X\žHHØ\™\”XÛÛ”Þ[˜ËœXÚØYÙWÜ™\Ý[ÜÝ[[X\žJÙ[‹Ø\™\Ú[›™[XÚØYÙT™\Ý[ËÊB‚BBZYˆ]Y]YK™Ù]
+›[ÙHŠHOHØ\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔ‘TPÑWÐS[™›ÝÝ[[X\žVÈ™˜Z[\™\È—N‚‚BBB\Ù[‹—ÝØ\™\”™[[Ý™TÝ[PÚ[›™[XÛÛœÊ]Y]YK™Ù]
+™\Ý[˜][ÛˆŠK]Y]YK™Ù]
+œÜÚ][ÛœÈ‹×JKÙ]]ŠÙ[‹Ø\™\Ú[›™[]˜Z[X›H‹Ù]
+
+JJB‚BB\Ù[‹Ø\™\Ú[›™[]Y]YHH›Û™B‚BB\Ù[‹Ø\™\Ú[›™[›ØœÈH×B‚BB\Ù[‹Ø\™\Ú[›™[Ý]HH™Û™HˆYˆ›ÝÝ[[X\žVÈ™˜Z[\™\È—H[ÙH
+œ\X[ˆYˆÝ[[X\žVÈ\]Y—H[ÙH™\œ›ÜˆŠB‚BB\™\Ý[HÝ[[X\žVÈœÝ]\È—H
+ÈŽˆˆ
+ÈÝ[[X\žVÈ^—B‚BB\Ù[‹Ø\™\Ú[›™[[œÝ[YHÙ]
+
+B‚BB\™]\›ˆ™\Ý[‚BZ›ØˆHÙ[‹Ø\™\Ú[›™[›ØœËœÜ
+
+B‚B\Ù[‹Ø\™\Ú[›™[Ý\œ™[›ØˆH›Ø‚‚B\™\Ý[Ü›ÝÈH™^
+
+][H›Üˆ][H[ˆÙ[‹Ø\™\Ú[›™[XÚØYÙT™\Ý[Â‚BBZYˆ][K™Ù]
+œXÚØYÙWÜÙ[XÝÜˆŠHOH›Ø‹™Ù]
+œÙ[XÝÜ—ÚYŠH[™][K™Ù]
+™˜[Z[HŠHOH›Ø‹™Ù]
+™˜[Z[HŠJK›Û™JB‚BX\˜Ú]™HH›Û™B‚B]žN‚‚BB\™\]Z\™YH[
+
+[
+›Ø‹™Ù]
+˜ž]\È‹
+JH
+ˆ‹ŒŠHÈ
+L
+ˆL
+JH
+ÈL‚BB]žN‚‚BBBYœ™YWÛXˆH[
+Ú][™\Ú×Ý\ØYÙJ‹Ý\ŠK™œ™YHÈ
+L
+ˆL
+JB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBYœ™YWÛXˆH‚BBZYˆœ™YWÛXˆ™\]Z\™Y‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠš[œÝY™šXÚY[[\Ü˜\žHÜXÙH›ÜˆØ\™\ˆÚ[›™[XÚØYÙHŠB‚BBY\Ý[˜][ÛˆHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠÙ[‹Ø\™\Ú[›™[]Y]YK™Ù]
+™\Ý[˜][ÛˆŠJB‚BBZYˆ›Ý\Ý[˜][ÛˆÜˆÜËœ]š\Û[šÊ\Ý[˜][ÛŠHÜˆ›ÝÜËœ]š\Ù\Š\Ý[˜][ÛŠN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆXÛÛˆ\Ý[˜][ÛˆŠB‚BB]žN‚‚BBBY\ÝÙœ™YWÛXˆH[
+Ú][™\Ú×Ý\ØYÙJ\Ý[˜][ÛŠK™œ™YHÈ
+L
+ˆL
+JB‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBY\ÝÙœ™YWÛXˆH‚BBZYˆ\ÝÙœ™YWÛXˆ™\]Z\™Y‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠš[œÝY™šXÚY[\Ý[˜][ÛˆÜXÙH›ÜˆØ\™\ˆÚ[›™[XÚØYÙHŠB‚BBY™\˜Ú]™HH[\š[K›ZÜÝ[\
+™Yš^HØ\™\‹XÚ[›™[H‹ÝY™š^H‹žš\‹\H‹Ý\ŠB‚BB[ÜË˜ÛÜÙJ™
+B‚BB\Ù[‹—ÝØ\™\‘™]ÚÚ[›™[›ØŠ›Ø‹\˜Ú]™JB‚BB]Ø[YHØ\™\”XÛÛ”Þ[˜ËØ[YÜXÛÛ—Û˜[Y\ÊÙ[‹Ø\™\Ú[›™[]Y]YJB‚BBZ[œÝ[Y]˜Z[X›HHÙ[‹—ÝØ\™\’[œÝ[Ú[›™[\˜Ú]™J\˜Ú]™KÙ[‹Ø\™\Ú[›™[]Y]YVÈ™\Ý[˜][Ûˆ—KØ[Y
+B‚BB\Ù[‹Ø\™\Ú[›™[[œÝ[Y\]J[œÝ[Y
+B‚BB\Ù[‹Ø\™\Ú[›™[]˜Z[X›K\]J]˜Z[X›JB‚BBZYˆ™\Ý[Ü›ÝÈ\È›Ý›Û™N‚‚BBB\™\Ý[Ü›ÝÖÈ\]Y—HH[Š[œÝ[Y
+B‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BBZYˆ™\Ý[Ü›ÝÈ\È›Ý›Û™N‚‚BBB\™\Ý[Ü›ÝÖÈ™˜Z[\™\È—H
+ÏHB‚BBB\™\Ý[Ü›ÝÖÈ™\œ›Üˆ—HHÝŠ\œŠB‚BB\š[
+‘[Û\ÜÌMÈØ\™\ˆXÚØYÙH˜Z[Y
+	\ËÉ\ÊNˆ	\Èˆ	H
+›Ø‹™Ù]
+›Ü˜š][ÜÜÚ][ÛˆŠK›Ø‹™Ù]
+œÙ[XÝÜ—ÚYŠK\œŠJB‚BYš[˜[N‚‚BBZYˆ\˜Ú]™N‚‚BBB]žN‚‚BBBB[ÜË[›[šÊ\˜Ú]™JB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\\ÜÂ‚B\™]\›ˆ›Û™B‚‚YYˆÛ“ÛÜ
+Ù[‹HˆŠN‚‚BZYˆÙ[‹™Û•[Y\‹š\ÐXÝ]™J
+N‚‚BB\Ù[‹™Û•[Y\‹œÝÜ
+
+B‚BZYˆ‚‚BB\Ù[‹—Ü™XÛÜ™Ø\™\“Ü\˜][Û”™\Ý[
+
+B‚BZYˆÙ[‹˜Û”Ù[XÝØ]‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™Û‘š[‹\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠK
+B‚BY[ÙN‚‚BBZYˆOHˆŽ‚‚BBB\Ù[‹›\ÙÈ
+ÏH
+Ñ˜[ÙNˆŠŠÜÙ[‹™Û’›Øˆ
+ÈŠH‹YNˆˆŸVÈšXÛÛ—ÜÙ]×Ü™]šY]Èˆ[ˆÙ[‹\WÙÝÛ›ØYÜˆÙ[‹\WÙÝÛ›ØYš\ÙYÚ]
+
+WJH
+È
+È—ˆ‚‚BBZYˆ
+Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\\™YŠB‚BBBBX[™Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][ÛˆŠHOHŒŒŒLÌˆ‚‚BBBBX[™Ù[‹Ø\™\“YØXÞPÚ[›™[]Y]YJN‚‚BBB\Ù[‹™Û’›ØˆHÊÚ[›™[XÛÛœÈŠB‚BBB\™\ÛÛ][ÛˆHÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][ÛˆŠB‚BBBY›Û\ˆHØ\™\”XÛÛ”Þ[˜Ë›YØXÞWØÚ[›™[Ù\Ý[˜][ÛŠ™\ÛÛ][ÛŠB‚BBB\Ù[‹™[˜TÙ[XÝØ]HYB‚BBB\Ù[‹\WÙÝÛ›ØYH›YØXÞKXÚ[›™[Hˆ
+ÈÝŠ™\ÛÛ][ÛŠB‚BBB\Ù[‹žžžˆHÙ[‹œÙ]Ù\Š
+B‚BBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\ÈH‚BBB\Ù[‹Ø\™\“YØXÞP\˜Ú]™\Ô›ØÙ\ÜÙYH‚BBB[YØXÞWÜ]Y]YHH\Ý
+Ù[‹Ø\™\“YØXÞPÚ[›™[]Y]YJB‚BBBX\˜Ú]™WØÛÝ[H[ŠYØXÞWÜ]Y]YJB‚BBB\Ù[‹Ø\™\“YØXÞT›ØÙ\ÜÙYÜÚ][ÛœÈHÙ]
+
+B‚BBB\Ù[‹Ø\™\“YØXÞPÝ\œ™[XÚØYÙSX™[H›Û™B‚BBB\Ù[‹Ø\™\“YØXÞTXÚØYÙT™\Ý[ÈHÂ‚BBBB^ÈœÙ[XÝÜ—ÚYŽˆÝŠÙ[XÝÜ—ÚY
+K‚BBBBH›Ü˜š][ÜÜÚ][ÛˆŽˆØ\™\”XÛÛ”Þ[˜Ë˜Ø[›ÛšXØ[ÜÜÚ][Û—Ù›Ü—ÜÙ[XÝÜŠÝŠÙ[XÝÜ—ÚY
+JK‚BBBBH\]YŽˆ™˜Z[\™\ÈŽˆœ›ØÙ\ÜÙYŽˆ˜[Ù_B‚BBBBY›ÜˆÙ[XÝÜ—ÚY\˜Ú]™WÚY[ˆYØXÞWÜ]Y]YB‚BBBWB‚BBB[YØXÞWÙ\Ý[˜][ÛˆHÙ[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][Û‚‚BBB[YØXÞWÜ™\Ý[HÙ[‹™ÝÛ“][JÙ[‹Ø\™\“YØXÞPÚ[›™[]Y]YK›Û\‹˜[ÙJB‚BBBZYˆÙ[‹Ø\™\“YØXÞP\˜Ú]™\Ô›ØÙ\ÜÙY\˜Ú]™WØÛÝ[‚‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\È
+ÏH\˜Ú]™WØÛÝ[HÙ[‹Ø\™\“YØXÞP\˜Ú]™\Ô›ØÙ\ÜÙY‚BBB\Ù[‹™[˜TÙ[XÝØ]H˜[ÙB‚BBB\Ù[‹Ø\™\“YØXÞPÚ[›™[]Y]YHH›Û™B‚BBB\Ù[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][ÛˆH›Û™B‚BBBXÛÝ™\˜YÙHHØ\™\”XÛÛ”Þ[˜Ë˜Û\ÜÚYžWÜ™\]Y\ÝYÜXÛÛœÊ‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[Ø[Y‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›K‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[[œÝ[Y
+B‚BBB[Z\ÜÚ[™×ØžWÜÜÚ][ÛˆHßB‚BBBY›Üˆš[[˜[YH[ˆÛÝ™\˜YÙVÈ›Z\ÜÚ[™È—N‚‚BBBB\ÜÚ][ÛˆHØ\™\”XÛÛ”Þ[˜ËœÙ\šXÙWÛÜ˜š][ÜÜÚ][ÛŠš[[˜[YVÎ‹MKœ™\XÙJ—È‹ŽˆŠJB‚BBBB[Z\ÜÚ[™×ØžWÜÜÚ][Û–ÜÜÚ][Û—HHZ\ÜÚ[™×ØžWÜÜÚ][Û‹™Ù]
+ÜÚ][Û‹
+H
+ÈB‚BBB\XÚØYÙWÜ™\Ý[ÈH×B‚BBBY›Üˆ][H[ˆÙ]]ŠÙ[‹Ø\™\“YØXÞTXÚØYÙT™\Ý[È‹×JN‚‚BBBB\ÜÚ][ÛˆH][K™Ù]
+›Ü˜š][ÜÜÚ][ÛˆŠB‚BBBBZ][VÈ™˜Z[\™\È—H
+ÏHZ\ÜÚ[™×ØžWÜÜÚ][Û‹œÜ
+ÜÚ][Û‹
+HYˆÜÚ][Ûˆ[ÙH‚BBBBZYˆÜÚ][Ûˆ[™›Ý][K™Ù]
+œ›ØÙ\ÜÙYŠN‚‚BBBBBZ][VÈ™˜Z[\™\È—H
+ÏHB‚BBBB\XÚØYÙWÜ™\Ý[Ë˜\[™
+][JB‚BBBY›ÜˆÜÚ][Û‹˜Z[\™\È[ˆZ\ÜÚ[™×ØžWÜÜÚ][Û‹š][\Ê
+N‚‚BBBB\XÚØYÙWÜ™\Ý[Ë˜\[™
+ÈœÙ[XÝÜ—ÚYŽˆ[˜›Ý[™‹›Ü˜š][ÜÜÚ][ÛˆŽˆÜÚ][Û‹‚BBBBBH\]YŽˆ™˜Z[\™\ÈŽˆ˜Z[\™\ßJB‚BBBZYˆÙ[‹Ø\™\”XÛÛ”™YœË™Ù]
+\]WÛ[ÙHŠHOHØ\™\”XÛÛ”Þ[˜Ë•TUWÓSÑWÔ‘TPÑWÐS[™›ÝÙ[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\Î‚‚BBBB]žN‚‚BBBBB\Ù[‹—ÝØ\™\”™[[Ý™TÝ[PÚ[›™[XÛÛœÊYØXÞWÙ\Ý[˜][Û‹Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œÜÚ][ÛœÈ‹×JKÙ[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›JB‚BBBBY^Ù\^Ù\[ÛŽ‚‚BBBBBZYˆXÚØYÙWÜ™\Ý[Î‚‚BBBBBB\XÚØYÙWÜ™\Ý[ÖÌVÈ™˜Z[\™\È—H
+ÏHB‚BBB\Ý[[X\žHHØ\™\”XÛÛ”Þ[˜ËœXÚØYÙWÜ™\Ý[ÜÝ[[X\žJXÚØYÙWÜ™\Ý[ËÊB‚BBB\Ù[‹Ø\™\Ú[›™[Ý]HH™Û™HˆYˆ›ÝÝ[[X\žVÈ™˜Z[\™\È—H[ÙH
+œ\X[ˆYˆÝ[[X\žVÈ\]Y—H[ÙH™\œ›ÜˆŠB‚BBB\™\Ý[Ý^HÝ[[X\žVÈœÝ]\È—H
+ÈŽˆˆ
+ÈÝ[[X\žVÈ^—B‚BBB\Ù[‹›\ÙÈ
+ÏHŠˆ
+ÈÙ[‹™Û’›Øˆ
+ÈŠHˆ
+È™\Ý[Ý^
+È—ˆ‚‚BBB\Ù[‹—Ü™XÛÜ™Ø\™\“Ü\˜][Û”™\Ý[
+™\Ý[Ý^
+B‚BBZYˆ
+Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\\™YŠB‚BBBBX[™Ù[‹Ø\™\”XÛÛ”™YœË™Ù]
+œ™\ÛÛ][ÛˆŠHOHŒŒŒLÌˆ‚‚BBBBX[™Ù[‹Ø\™\Ú[›™[Ý]H›Ý[ˆ
+›ØÚÙY‹™\œ›ÜˆŠJN‚‚BBB\Ù[‹™Û’›ØˆHÊ•Ø\™\ˆÚ[›™[XÛÛœÈŠB‚BBB]žN‚‚BBBB]Ø\™\—Ü™\Ý[HÙ[‹—ÝØ\™\”[Ú[›™[]Y]YJ
+B‚BBBY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BBBB\Ù[‹Ø\™\Ú[›™[Ý]HH™\œ›Üˆ‚‚BBBB\Û˜\ÚÝHÙ]]ŠÙ[‹Ø\™\Ú[›™[\ÚÔÛ˜\ÚÝ‹›Û™JB‚BBBBZYˆÛ˜\ÚÝ\È›Ý›Û™N‚‚BBBBB\Ù[‹Ø\™\”XÛÛ”™YœÈHØ\™\”XÛÛ”Þ[˜Ëœ™Y™\™[˜Ù\×ØY\—Ý\ÚÊÛ˜\ÚÝ™\œ›ÜˆŠB‚BBBB\Ù[‹Ø\™\Ú[›™[\ÚÔÛ˜\ÚÝH›Û™B‚BBBB\Ù[‹Ø\™\Ú[›™[]Y]YHH›Û™B‚BBBB\Ù[‹Ø\™\Ú[›™[›ØœÈH×B‚BBBB\Ù[‹Ø\™\Ú[›™[[œÝ[YHÙ]
+
+B‚BBBB\Ù[‹Ø\™\Ú[›™[]˜Z[X›HHÙ]
+
+B‚BBBB\Ù[‹Ø\™\“Ü\˜][Û‘˜Z[YHYB‚BBBB\Ù[‹Ø\™\‘˜Z[Y›ÝÜË˜Y
+Ü\ÜÈŠB‚BBBBZYˆÝŠ\œŠHOH››Ë\Ø][]K\ÜÚ][Û‹\Ù[XÝYŽ‚‚BBBBBY\œ›Ü—Ý^HÊ”Ù[XÝ]X\ÝÛ™HØ][]HÜÚ][Û‹ˆŠB‚BBBBY[ÙN‚‚BBBBBY\œ›Ü—Ý^HÝŠ\œŠB‚BBBB\Ù[‹›\ÙÈ
+ÏHŠˆ
+ÈÙ[‹™Û’›Øˆ
+ÈŠHˆ
+ÈÊ‘T”“ÔˆŠH
+ÈŽˆˆ
+È\œ›Ü—Ý^
+È—ˆ‚‚BBBY[ÙN‚‚BBBBZYˆØ\™\—Ü™\Ý[\È›Û™N‚‚BBBBBHÈÛ™HXÚØYÙH\ˆÕRH[Y\ˆXÚÈÙY\ÈH™XÙZ]™\ˆ]™[ÛÜ™\ÜÛœÚ]™K‚‚BBBBB\Ù[‹™Û•[Y\‹œÝ\
+KYJB‚BBBBB\™]\›‚‚BBBB\Ù[‹›\ÙÈ
+ÏHŠˆ
+ÈÙ[‹™Û’›Øˆ
+ÈŠHˆ
+ÈØ\™\—Ü™\Ý[
+È—ˆ‚‚BBBB\Ù[‹—Ü™XÛÜ™Ø\™\“Ü\˜][Û”™\Ý[
+Ø\™\—Ü™\Ý[
+B‚BBZYˆÙ[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™Î‚‚BBB\Ù[‹Ø\™\“\™ÙTÙ[XÝ[Û”[™[™ÈH˜[ÙB‚BBB\Ù[‹Ø\™\Ý\œ™[XÝ[Û”›ÝÈHÜ\™\È‚‚BBBY›Üˆ›Ý×Ú[™^[ˆÙ[‹›Y[S\Ý[‚‚BBBBZYˆÙ[‹›Y[S\Ý[Ü›Ý×Ú[™^VÌHOHÜ\™\ÈŽ‚‚BBBBB\Ù[‹›Y[S\Ý[Ü›Ý×Ú[™^VÍHHž‚‚BBB\Ù[‹\WÙÝÛ›ØYHÒÔXÛÛ˜šYÈ‚‚BBB\Ù[‹žžžˆHÙ[‹œÙ]Ù\Š
+B‚BBB\Ù[‹™Û’›ØˆHÊ“\™ÙHÚ[›™[Ù[XÝ[ÛˆXÛÛœÈ
+ÌLŽŠHŠB‚BBB\Ù[‹™ÝÛ[œÝÙ\“›ÝÊ
+B‚BBB\™]\›‚‚BBY[˜HHYB‚BB\Ù[‹™[˜TÙ[XÝØ]H˜[ÙB‚BBY›Üˆ[ˆÙ[‹›Y[S\Ý[‚‚BBBZYˆÙ[‹›Y[S\Ý[ÞVÍHOH™ˆ[™Ù[‹›Y[S\Ý[ÞVÌH›Ý[ˆÙ[‹Ø\™\”XÛÛ”›ÝÜÈ[™Ù[‹›Y[S\Ý[ÞVÌH›Ý[ˆÙ[‹Ø\™\‘˜Z[Y›ÝÜÎ‚‚BBBBY[˜HH˜[ÙB‚BBBB\Ù[‹Ø\™\Ý\œ™[XÝ[Û”›ÝÈHÙ[‹›Y[S\Ý[ÞVÌB‚BBBB\Ù[‹›Y[S\Ý[ÞVÍHH	Þ	Â‚BBBB\Ù[‹\WÙÝÛ›ØYHÝŠÙ[‹›Y[S\Ý[ÞVÌ—JB‚BBBB\Ù[‹žžžˆHÙ[‹œÙ]Ù\Š
+B‚BBBB\Ù[‹™Û’›ØˆHÝŠÙ[‹›Y[S\Ý[ÞVÌWJB‚BBBBZYˆÙ[‹›Y[S\Ý[ÞVÌH[ˆ
+˜]^\›Ýˆ‹˜]^\Ø]ŠN‚‚BBBBB]žN‚‚BBBBBB\Ù[‹—ÝØ\™\”Ý\]^[X\žPÛÛ\ÜÚ]JÙ[‹›Y[S\Ý[ÞVÌKÙ[‹\WÙÝÛ›ØY
+B‚BBBBBY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BBBBBB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠH
+ÈŽˆˆ
+ÈÝŠ\œŠJB‚BBBBB\™]\›‚‚BBBBY[Yˆ	ÊŠŠ‰È[ˆÙ[‹›Y[S\Ý[ÞVÌWN‚‚BBBBB\Ù[‹™[˜TÙ[XÝØ]HYB‚BBBBB\Ù[‹™ÝÛ“][JÙ[‹›Y[S\Ý[ÞVÌ×KÙ[‹™\Ý\ŠÙ[‹›Y[S\Ý[ÞVÌ—JJB‚BBBBY[ÙN‚‚BBBBB\Ù[‹™ÝÛ[œÝÙ\“›ÝÊ
+B‚BBBBXœ™XZÂ‚BBZYˆ[˜N‚‚BBBZYˆÙ[‹Ø\™\“Ü\˜][Û”ÝXØÙYYY[™›ÝÙ[‹Ø\™\“Ü\˜][Û‘˜Z[Y‚‚BBBB\Ù[‹œ™\Ù]Ø\™\•ÛÜšÚ[™ÔÝ]J
+B‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™Û‘š[‹\ÝÜžTØÜ™Y[‹Ê”™\Ý[ŠKÙ[‹›\ÙÊHBB‚BB‚YYˆÛ‘š[ŠÙ[‹[œÝÙ\HˆŠN‚‚BZYˆÙ[‹Ø\™\Ú[›™[Ý]H[ˆ
+™Û™H‹™\œ›Üˆ‹›ØÚÙYŠN‚‚BB\Ù[‹Ø\™\Ú[›™[Ý]HHšYH‚‚B\Ù[‹˜Ü™X]S\Ý
+
+B‚B\Ù[‹™[˜HHYB‚B\Ù[‹˜Û”Ù[XÝØ]H˜[ÙB‚B\Ù[‹™[˜TÙ[XÝØ]H˜[ÙB‚B\Ù[–È™Ûˆ—KšYJ
+B‚B\Ù[‹š[œÝ[˜ÙKœ™\Ú^™JTÚ^™JNLŒL
+JBˆBB‚YYˆÝÛ[œÝÙ\“›ÝÊÙ[ŠN‚‚BY\œ‹\ÜÙ]ÈHÙ]Ø\™\\ÜÙ]Ê
+B‚BZYˆ\œˆOHˆŽ‚‚BB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠÙ\œŠB‚BB\™]\›‚‚BX\ÜÙ]H\ÜÙ]Ë™Ù]
+Ù[‹\WÙÝÛ›ØY
+B‚BZYˆ›Ý\ÜÙ]‚‚BB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠ×Ê•\ÈÝÛ›ØY\È›Ý]˜Z[X›H[ˆØ\™\ˆ™\ÜÚ]ÜžHY]ˆŠH
+ÈˆÈˆ
+ÈÙ[‹\WÙÝÛ›ØY
+È—HŠB‚BB\™]\›‚‚B]žN‚‚BBYš[[˜[YHHÝŠ\ÜÙ]È™š[[˜[YH—JB‚BB\Ú^™WØž]\ÈH[
+\ÜÙ]ÈœÚ^™H—JB‚BB]\›HÝŠ\ÜÙ]™Ù]
+\›‹ˆŠJB‚BB\\ÈH\ÜÙ]™Ù]
+œ\È‹×JB‚BB\ÚLMˆHÝŠ\ÜÙ]ÈœÚLMˆ—JK›ÝÙ\Š
+B‚BB\›ÛÝHÝŠ\ÜÙ]Èœ›ÛÝ—JB‚BY^Ù\^Ù\[ÛŽ‚‚BB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠ×Ê’[˜[YØ\™\ˆÝÛ›ØYØ][ÙÈ[žKˆŠJB‚BB\™]\›‚‚B\ÛÝ\˜ÙWÚYH\ÜÙ]™Ù]
+œX›XØ][Û—ÜÛÝ\˜ÙWÚY‹™[\›ÙXÝ[ÛˆŠB‚B]˜[YÜ\ÈH\Ú[œÝ[˜ÙJ\Ë\Ý
+H[™[Š\ÊHˆ[™[
+Ø\™\”XÛÛ”Þ[˜Ë\ÝYØ]^[X\žWÝ\›
+ÝŠ
+KÛÝ\˜ÙWÚY
+H›Üˆ[ˆ\ÊB‚B]˜[YÜÚHH™K›X]Ú
+ˆ—–ÌNXKY—^ÍI‹ÚLMŠH\È›Ý›Û™B‚B]˜[YÙš[[˜[YHH›ÛÛ
+š[[˜[YJH[™ÜËœ]˜˜\Ù[˜[YJš[[˜[YJHOHš[[˜[YH[™š[[˜[YH›Ý[ˆ
+‹ˆ‹‹‹ˆŠB‚B]˜[YÝ\›H
+›Ý\›
+HÜˆØ\™\”XÛÛ”Þ[˜Ë\ÝYØ]^[X\žWÝ\›
+\›ÛÝ\˜ÙWÚY
+B‚BZYˆ
+›Ý˜[YÝ\›Üˆ
+›Ý\›[™›Ý˜[YÜ\ÊJHÜˆ›Ý˜[YÜÚHÜˆ›Ý˜[YÙš[[˜[YHÜˆ‹Èˆ[ˆ›ÛÝÜˆ—ˆ[ˆ›ÛÝÜˆ‹‹ˆˆ[ˆ›ÛÝ‚‚BB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠ×Ê•[œØY™HØ\™\ˆÝÛ›ØYØ][ÙÈ[žKˆŠJB‚BB\™]\›‚‚B\Ù[‹Ø\™\\ÜÙ]H\ÜÙ]‚BHÈÙY\HÜšYÚ[˜[ÛÛœÙ\˜]]™Hœ™YK\ÜXÙHØ[Ý[][Û‹‚‚B\Ú^™HH[
+›Ý[™
+KŒ
+ˆÚ^™WØž]\ËÊL
+ŒL
+JJŒ‹ŒŠÌL
+B‚B\™]™]HHÙ[‹™Ù]œ™YTÜXÙJ
+B‚BZYˆ™]ˆÚ^™H[™™]Hˆ
+Ú^™KÌŠN‚‚BB\Ù[‹™ÝÛ›ØYXÛÛœÊš[[˜[YJB‚BB\™]\›‚‚B[\ÙÈH‰\Ê	\ËÉ\ÊSPŽ—‰\ÈH	\ËÉ\Ë	\ÈH	\ËÉ\Èˆ	H
+Ê”ÛÜœžKÛÈÝÈœ™YHÜXÙHŠKÊ”™\]Z\™YŠKÊ‘œ™YHŠKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YKÚ^™KÌ‹™]KÙ[‹žžž–Î‹LWKÚ^™K™]
+B‚B\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠÜÝŠ\ÙÊJB‚‚YYˆÜØY™Q^˜XÝš\
+Ù[‹\˜Ú]™K\Ý[˜][ÛŠN‚‚BHˆˆ‘^˜XÝH’TÚ]Ý]]˜]™\œØ[Üˆ\˜Ú]™KXÜ™X]YÞ[[[šÜËˆˆˆ‚‚BY\ÝHÜËœ]œ™X[]
+\Ý[˜][ÛŠB‚B]Ú]š\š[K–š\š[J\˜Ú]™KœˆŠH\È™Ž‚‚BBY›Üˆ[™›È[ˆ™‹š[™›Û\Ý
+
+N‚‚BBB[˜[YHH[™›Ë™š[[˜[YKœ™\XÙJ—‹‹ÈŠB‚BBBZYˆ›Ý˜[YHÜˆ˜[YKœÝ\ÝÚ]
+‹ÈŠHÜˆ˜[YKœÝ\ÝÚ]
+‹‹‹ÈŠHÜˆ‹Ë‹‹Èˆ[ˆ
+‹Èˆ
+È˜[YJN‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™H’T]ŠB‚BBB[[ÙHH
+[™›Ë™^\›˜[Ø]ˆˆMŠH	ˆ‘‘‘‚‚BBBZYˆÝ]”×ÒTÓ’Ê[ÙJN‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ–’TÞ[[[šÈ[žH™Z™XÝYŠB‚BBB]\™Ù]HÜËœ]œ™X[]
+ÜËœ]š›Ú[Š\Ý˜[YJJB‚BBBZYˆ\™Ù]OH\Ý[™›Ý\™Ù]œÝ\ÝÚ]
+\Ý
+ÈÜËœÙ\
+N‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ–’T]˜]™\œØ[™Z™XÝYŠB‚BBY›Üˆ[™›È[ˆ™‹š[™›Û\Ý
+
+N‚‚BBB^™‹™^˜XÝ
+[™›Ë\Ý
+B‚‚YYˆ›U\
+Ù[ŠN‚‚B\Ú][œ›]™YJ‹Ý\Û[Ü™WÚXÛÛœÈ‹YÛ›Ü™WÙ\œ›ÜœÏUYJB‚‚YYˆ›U\ŠÙ[‹KŠN‚‚B\]HÜËœ]œ™X[]
+ÜËœ]š›Ú[ŠKŠJB‚BX˜\ÙHHÜËœ]œ™X[]
+JB‚BZYˆ]OH˜\ÙH[™]œÝ\ÝÚ]
+˜\ÙH
+ÈÜËœÙ\
+N‚‚BB\Ú][œ›]™YJ]YÛ›Ü™WÙ\œ›ÜœÏUYJB‚BBBB‚YYˆÝÛ›ØYXÛÛœÊÙ[‹Ú]
+N‚‚B\Ý]HH˜[ÙB‚B]\™Ù]HÙ[‹žžžˆ
+ÈÚ]‚BX\ÜÙ]HÙ]]ŠÙ[‹Ø\™\\ÜÙ]‹ßJB‚B]žN‚‚BBY^XÝYHÝŠ\ÜÙ]ÈœÚLMˆ—JK›ÝÙ\Š
+B‚BB\\ÈH\ÜÙ]™Ù]
+œ\È‹×JB‚BB]\›ÈHÜÝŠ
+H›Üˆ[ˆ\×HYˆ\Ú[œÝ[˜ÙJ\Ë\Ý
+H[™\È[ÙHÜÝŠ\ÜÙ]È\›—JWB‚BB\ÛÝ\˜ÙWÚYH\ÜÙ]™Ù]
+œX›XØ][Û—ÜÛÝ\˜ÙWÚY‹™[\›ÙXÝ[ÛˆŠB‚BBZYˆ™K›X]Ú
+ˆ—–ÌNXKY—^ÍI‹^XÝY
+H\È›Û™HÜˆ›Ý\›ÈÜˆ›Ý[
+Ø\™\”XÛÛ”Þ[˜Ë\ÝYØ]^[X\žWÝ\›
+\›ÛÝ\˜ÙWÚY
+H›Üˆ\›[ˆ\›ÊN‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™H\ÜÙ]Y]Y]HŠB‚BBZH\ÚX‹œÚLMŠ
+B‚BB]Ú]Ü[Š\™Ù]ØˆŠH\ÈÝ]‚‚BBBY›Üˆ\›[ˆ\›Î‚‚BBBB\™\HH™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹ÌKŒK]\ÝHŸJB‚BBBB]Ú]\›Ü[Š™\K[Y[Ý]MJH\È™\ÜÛœÙN‚‚BBBBBZYˆ›ÝØ\™\”XÛÛ”Þ[˜Ë\ÝYØ]^[X\žWÝ\›
+ÝŠ™\ÜÛœÙK™Ù]\›
+
+JKÛÝ\˜ÙWÚY
+N‚‚BBBBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™H\ÜÙ]™Y\™XÝŠB‚BBBBB]Ú[HYN‚‚BBBBBBXÚ[šÈH™\ÜÛœÙKœ™XY
+L
+ˆLŽ
+B‚BBBBBBZYˆ›ÝÚ[šÎ‚‚BBBBBBBXœ™XZÂ‚BBBBBB[Ý]Üš]JÚ[šÊB‚BBBBBBZ\]JÚ[šÊB‚BBZYˆš^YÙ\Ý
+
+K›ÝÙ\Š
+HOH^XÝY‚‚BBB\˜Z\ÙH˜[YQ\œ›ÜŠ”ÒKLMˆZ\ÛX]ÚŠB‚BB\Ý]HHYB‚BY^Ù\^Ù\[Ûˆ\È\œŽ‚‚BB]žN‚‚BBBZYˆÜËœ]š\Ùš[J\™Ù]
+N‚‚BBBB[ÜËœ™[[Ý™J\™Ù]
+B‚BBY^Ù\‚‚BBB\\ÜÂ‚BB\Ý]HH˜[ÙB‚BZYˆÝ]N‚‚BBZYˆÜËœ]™^\ÝÊ
+‹Ý\Û[Ü™WÚXÛÛœÈŠJN‚‚BBB\Ù[‹œ›U\
+
+B‚BB\›ÛÝHÝŠ\ÜÙ]™Ù]
+œ›ÛÝ‹Ú]Î‹MJJB‚BBZYˆÜËœ]™^\ÝÊÙ[‹žžžˆ
+È›ÛÝ
+N‚‚BBB\Ù[‹œ›U\ŠÙ[‹žžž‹›ÛÝ
+B‚BB]žN‚‚BBB\Ù[‹—ÜØY™Q^˜XÝš\
+\™Ù]Ù[‹žžž–Î‹LWJB‚BBY^Ù\^Ù\[ÛŽ‚‚BBB]žN‚‚BBBB[ÜËœ™[[Ý™J\™Ù]
+B‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\\ÜÂ‚BBBZYˆÜËœ]™^\ÝÊÙ[‹žžžˆ
+È›ÛÝ
+N‚‚BBBB\Ù[‹œ›U\ŠÙ[‹žžž‹›ÛÝ
+B‚BBB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠÈ•[žš\ˆ
+ÈÚ]
+Èˆˆ
+ÈÊ™˜Z[YŠJB‚BBB\™]\›‚‚BB]žN‚‚BBB[ÜËœ™[[Ý™J\™Ù]
+B‚BBY^Ù\ÔÑ\œ›ÜŽ‚‚BBB\\ÜÂ‚BBZYˆ›ÝÜËœ]™^\ÝÊÙ[‹žžžˆ
+È›ÛÝ
+N‚‚BBB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠÈ•[žš\ˆ
+ÈÚ]
+Èˆˆ
+ÈÊ™˜Z[YŠJB‚BBB\™]\›‚‚BBZYˆÞˆˆ[ˆÙ[‹\WÙÝÛ›ØY‚‚BBBHÈÜšYÚ[˜[\˜Ú]™H^˜XÝÈÈÝ\ÍÞ‹ÍÞ—ÙË‚‚BBB]žN‚‚BBBB[ÜË›XZÙY\œÊÜËœ]™\›˜[YJÑU‘S–’T
+K^\ÝÛÚÏUYJB‚BBBB\Ú][˜ÛÜLŠ‹Ý\ÍÞ‹ÍÞ—ÙÈ‹ÑU‘S–’T
+B‚BBBB[ÜË˜Ú[Ù
+ÑU‘S–’TÍÍMJB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\\ÜÂ‚BBB\Ù[‹œ›U\ŠÙ[‹žžž‹›ÛÝ
+B‚BBB[[TXÝH‚BBBZYˆÜËœ]š\Ùš[JÑU‘S–’T
+N‚‚BBBB[[TXÝHB‚BBB]Ý[HB‚BBY[YˆšXÛÛ—ÜÙ]×Ü™]šY]Èˆ[ˆÙ[‹\WÙÝÛ›ØY‚‚BBB\Ù[‹šXÛÛ”™]šY]ÓX[˜YÙJ
+B‚BBB\™]\›‚‚BBY[YˆÙ[‹\WÙÝÛ›ØY[ˆÉØ[š[UÙX]\’XÛÛœÉËÙX]\’XÛÛœÓˆ‹™^˜TØÜ™Y[œÈ‹›Y[ZXÛÛœÈ—N‚‚BBB[[TXÝH‚BBB]Ý[H‚BBBZYˆ˜[š[UÙX]\’XÛÛœÈˆ[ˆÙ[‹\WÙÝÛ›ØY‚‚BBBB\›™ÈH‚BBBB]\QÜ™ˆH˜[š[RXÛÛ•ÙX]\ˆ‚‚BBBY[ÙN‚‚BBBB\›™ÈHPVÐÔ‘QS”Â‚BBBB]\QÜ™ˆH™^˜TØÜ™Y[œÌMÈ‚‚BBBBZYˆ›Ý™^˜TØÜ™Y[œÈˆ[ˆÙ[‹\WÙÝÛ›ØY‚‚BBBBB\›™ÈHPVPÓÓ”Â‚BBBBB]\QÜ™ˆH›Y[RXÛÛœÈ‚‚BBBBBZYˆÙX]\’XÛÛœÓˆˆ[ˆÙ[‹\WÙÝÛ›ØY‚‚BBBBBB]\QÜ™ˆHÙX]\’XÛÛœÈ‚‚BBBY›ÜˆH[ˆ˜[™ÙJK›™ÊN‚‚BBBB\ÝX”]H‰\ËÉ\Èˆ	H
+\QÜ™‹JB‚BBBBZYˆÜËœ]™^\ÝÊ
+‹Ý\É\Èˆ	HÝX”]
+JN‚‚BBBBBZYˆ›ÝÜËœ]™^\ÝÊ
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+È‹Èˆ
+ÈÝX”]
+JN‚‚BBBBBB[ÜË›XZÙY\œÊÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+È‹Èˆ
+ÈÝX”]^\ÝÛÚÏUYJB‚BBBBB^KˆHÙ[‹˜Ü›Qš[\ÊÝX”]
+B‚BBBBB[[TXÝ
+ÏHB‚BBBBB]Ý[
+ÏH‚‚BBB]žN‚‚BBBB[ÜËœ›Y\Š‹Ý\É\Èˆ	H\QÜ™ŠB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\\ÜÂ‚BBY[ÙN‚‚BBB[[TXÝÝ[HÙ[‹˜Ü›Qš[\Ê›ÛÝ
+B‚BBZYˆ[TXÝ]Ý[OH‚‚BBB\Ù[‹™Û“ÛÜ
+Ê”ÕPÐÑTÔÑ•SŠJÈŽˆŠÝØ\™\”XÛÛ”Þ[˜ËœÝXØÙ\Ü×ÜÝ[[X\žJÝ[›Û™KÊJB‚BBY[ÙN‚‚BBB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆˆ
+ÈÚ]Î‹MH
+È‹ˆ
+È
+Ê‰YÙˆ	YXÛÛœÈ˜Z[YÈ[œÝ[ŠH	H
+Ý[[[TXÝÝ[
+JJB‚BY[ÙN‚‚BB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆˆ
+ÈÚ]Î‹MJB‚‚YYˆÝØ\™\‘™]ÚÚ[›™[›ØŠÙ[‹›Ø‹\˜Ú]™JN‚‚BHˆˆ”™X\ÜÙ[X›HHXÚØYÙHÛ›Hœ›ÛHH›ÛÝ›Ý[™È]ÈÛÝ\˜ÙHX[šY™\Ýˆˆˆ‚‚B\ÛÝ\˜ÙWÚYH›Ø‹™Ù]
+œX›XØ][Û—ÜÛÝ\˜ÙWÚYŠB‚B\ÛÝ\˜ÙHHØ\™\”XÛÛ”Þ[˜ËœX›XØ][Û—ÜÛÝ\˜ÙJÛÝ\˜ÙWÚY
+B‚BZYˆÛÝ\˜ÙH\È›Û™HÜˆ›Ø‹™Ù]
+œX›XØ][Û—Ü›ÛÝŠHOHÛÝ\˜ÙK™Ù]
+œXÚØYÙWÜ›ÛÝŠN‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠ[\ÝYØ\™\ˆÚ[›™[X›XØ][ÛˆÛÝ\˜ÙHŠB‚BY[Ú\ÚH\ÚX‹œÚLMŠ
+B‚B]Ý[H‚B]Ú]Ü[Š\˜Ú]™KØˆŠH\ÈÝ]‚‚BBY›Üˆ\[ˆ›Ø‹™Ù]
+œ\È‹×JN‚‚BBB]\›HÝŠ\™Ù]
+\›‹ˆŠJB‚BBBZYˆ›ÝØ\™\”XÛÛ”Þ[˜Ë\ÝYÜX›XØ][Û—Ý\›
+\›ÛÝ\˜ÙWÚY
+N‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆÚ[›™[T“ŠB‚BBB\\Ú\ÚH\ÚX‹œÚLMŠ
+B‚BBB\\ÜÚ^™HH‚BBB\™\HH™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹ØÚ[›™[\XÛÛœÈŸJB‚BBB]Ú]\›Ü[Š™\K[Y[Ý]MJH\È™\ÜÛœÙN‚‚BBBBZYˆ›ÝØ\™\”XÛÛ”Þ[˜Ë\ÝYÜX›XØ][Û—Ý\›
+ÝŠ™\ÜÛœÙK™Ù]\›
+
+JKÛÝ\˜ÙWÚY
+N‚‚BBBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆÚ[›™[™Y\™XÝŠB‚BBBBY^XÝYÜ\H[
+\™Ù]
+˜ž]\È‹LJJB‚BBBBZYˆ^XÝYÜ\HÜˆ^XÝYÜ\ˆŒ
+ˆL
+ˆL‚‚BBBBB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[YØ\™\ˆÚ[›™[\Ú^™HŠB‚BBBB]Ú[HYN‚‚BBBBBXÚ[šÈH™\ÜÛœÙKœ™XY
+L
+ˆLŽ
+B‚BBBBBZYˆ›ÝÚ[šÎ‚‚BBBBBBXœ™XZÂ‚BBBBB\\ÜÚ^™H
+ÏH[ŠÚ[šÊB‚BBBBB]Ý[
+ÏH[ŠÚ[šÊB‚BBBBBZYˆ\ÜÚ^™Hˆ^XÝYÜ\ÜˆÝ[ˆ[
+›Ø‹™Ù]
+˜ž]\È‹LJJN‚‚BBBBBB\˜Z\ÙH˜[YQ\œ›ÜŠ›Ý™\œÚ^™YØ\™\ˆÚ[›™[ÝÛ›ØYŠB‚BBBBB[Ý]Üš]JÚ[šÊB‚BBBBBY[Ú\Ú\]JÚ[šÊB‚BBBBB\\Ú\Ú\]JÚ[šÊB‚BBBZYˆ\ÜÚ^™HOH[
+\™Ù]
+˜ž]\È‹LJJHÜˆ\Ú\Úš^YÙ\Ý
+
+K›ÝÙ\Š
+HOHÝŠ\™Ù]
+œÚLMˆ‹ˆŠJK›ÝÙ\Š
+N‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[\[YÜš]HZ\ÛX]ÚŠB‚BZYˆÝ[OH[
+›Ø‹™Ù]
+˜ž]\È‹LJJHÜˆ[Ú\Úš^YÙ\Ý
+
+K›ÝÙ\Š
+HOHÝŠ›Ø‹™Ù]
+œÚLMˆ‹ˆŠJK›ÝÙ\Š
+N‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆÚ[›™[XÚØYÙH[YÜš]HZ\ÛX]ÚŠB‚‚YYˆÝØ\™\’[œÝ[Ú[›™[\˜Ú]™JÙ[‹\˜Ú]™K\Ý[˜][Û‹Ø[YS›Û™JN‚‚BHˆˆ“›ËY[]H[œÝ[ˆ˜[Y]H’T[™]ÛZXØ[H™\XÙHÛ›HÙ[XÝY‘Èš[\Ëˆˆˆ‚‚BY\ÝHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠ\Ý[˜][ÛŠB‚BZYˆ›Ý\Ý‚‚BB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[YØ\™\ˆXÛÛˆ\Ý[˜][ÛˆŠB‚B[ÜË›XZÙY\œÊ\Ý^\ÝÛÚÏUYJB‚BZ[œÝ[YHÙ]
+
+B‚BX]˜Z[X›HHÙ]
+
+B‚B]Ú]š\š[K–š\š[J\˜Ú]™KœˆŠH\È™Ž‚‚BBY[šY\ÈH×B‚BB\ÙY[ˆHÙ]
+
+B‚BBY›Üˆ[™›È[ˆ™‹š[™›Û\Ý
+
+N‚‚BBBZYˆ[™›Ë™š[[˜[YK™[™ÝÚ]
+‹ÈŠN‚‚BBBBXÛÛ[YB‚BBBZYˆ[™›Ë™š[WÜÚ^™HHÜˆ[™›Ë™š[WÜÚ^™HˆMˆ
+ˆL
+ˆL‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆXÛÛˆ‘ÈÚ^™HŠB‚BBBZYˆ[™›Ë˜ÛÛ\™\Ü×ÜÚ^™Hˆ[™[™›Ë™š[WÜÚ^™Hˆ[™›Ë˜ÛÛ\™\Ü×ÜÚ^™H
+ˆL‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆXÛÛˆ’TÛÛ\™\ÜÚ[Ûˆ˜][ÈŠB‚BBBZYˆ›ÝØ\™\”XÛÛ”Þ[˜ËœØY™WØ\˜Ú]™WÛY[X™\Š[™›Ë™š[[˜[YJN‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[œØY™HØ\™\ˆXÛÛˆ’T]ŠB‚BBB[[ÙHH
+[™›Ë™^\›˜[Ø]ˆˆMŠH	ˆ‘‘‘‚‚BBBZYˆÝ]”×ÒTÓ’Ê[ÙJN‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ•Ø\™\ˆXÛÛˆ’TÞ[[[šÈ™Z™XÝYŠB‚BBB[˜[YHH[™›Ë™š[[˜[YKœ™\XÙJ—‹‹ÈŠKœœÜ]
+‹È‹JVËLWB‚BBBZYˆ›Ý˜[YK›ÝÙ\Š
+K™[™ÝÚ]
+‹œ™ÈŠHÜˆÜËœ]˜˜\Ù[˜[YJ˜[YJHOH˜[YN‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ[™^XÝYØ\™\ˆÚ[›™[\˜Ú]™HY[X™\ˆŠB‚BBBZYˆ˜[YH[ˆÙY[Ž‚‚BBBB\˜Z\ÙH˜[YQ\œ›ÜŠ™\XØ]HØ\™\ˆXÛÛˆ\˜Ú]™HY[X™\ˆŠB‚BBB\ÙY[‹˜Y
+˜[YJB‚BBBX]˜Z[X›K˜Y
+˜[YJB‚BBBZYˆØ[Y\È›Û™HÜˆ˜[YH[ˆØ[Y‚‚BBBBY[šY\Ë˜\[™
+
+[™›Ë˜[YJJB‚BBY›Üˆ[™›Ë˜[YH[ˆ[šY\Î‚‚BBBY™\H[\š[K›ZÜÝ[\
+™Yš^H‹Ø\™\‹\XÛÛ‹H‹ÝY™š^H‹\‹\Y\Ý
+B‚BBB]žN‚‚BBBB]Ú]ÜË™™Ü[Š™ØˆŠH\ÈÝ]‚‚BBBBB]Ú]™‹›Ü[Š[™›ËœˆŠH\ÈÜ˜Î‚‚BBBBBB\ÚYÛ˜]\™HHÜ˜Ëœ™XY
+
+B‚BBBBBBZYˆÚYÛ˜]\™HOHˆ—T‘×——XWˆŽ‚‚BBBBBBB\˜Z\ÙH˜[YQ\œ›ÜŠš[˜[YØ\™\ˆXÛÛˆ‘ÈÚYÛ˜]\™HŠB‚BBBBBB[Ý]Üš]JÚYÛ˜]\™JB‚BBBBBB\Ú][˜ÛÜYš[[ØšŠÜ˜ËÝ]L
+ˆLŽ
+B‚BBBBB[Ý]™›\Ú
+
+B‚BBBBB[ÜË™œÞ[˜ÊÝ]™š[[›Ê
+JB‚BBBB[ÜËœ™\XÙJ\ÜËœ]š›Ú[Š\Ý˜[YJJB‚BBBBZ[œÝ[Y˜Y
+˜[YJB‚BBBYš[˜[N‚‚BBBBZYˆÜËœ]™^\ÝÊ\
+N‚‚BBBBB[ÜË[›[šÊ\
+B‚B\™]\›ˆ[œÝ[Y]˜Z[X›B‚‚YYˆÛYØXÞTXÛÛ\˜Ú]™U\›
+Ù[‹YØXÞWÚY
+N‚‚BHˆˆ”™\ÛÛ™HÛ™H™\Ù\™YYØXÞH[Y\šXÈQÚ]Ý]ÝY\ÜÚ[™ÈÜˆ™]\™YZÜÝ˜[˜XÚËˆˆˆ‚‚B]žN‚‚BBZYˆ›Ý\Ø]ŠÙ[‹—ÝØ\™\“YØXÞTXÛÛ\˜Ú]™\ÈŠN‚‚BBBXØ][Ù×Ü]HÜËœ]š›Ú[ŠQÒS”U›YØXÞTXÛÛ\˜Ú]™\ËšœÛÛˆŠB‚BBB]Ú]Ü[ŠØ][Ù×Ü]œˆ‹[˜ÛÙ[™ÏH]‹NŠH\È[™N‚‚BBBBXØ][ÙÈHœÛÛ‹›ØY
+[™JB‚BBB]˜[YH
+‚BBBBXØ][ÙË™Ù]
+œØÚ[XHŠHOHH[™‚BBBBXØ][ÙË™Ù]
+›X\YŠHOHÍÌ[™‚BBBBXØ][ÙË™Ù]
+[›X\YŠHOHŽH[™‚BBBBXØ][ÙË™Ù]
+œÛÝ\˜ÙH‹ßJK™Ù]
+˜ÛÛ[Z]ŠHOHŽXÙMXMMÙLNMØØNLŽYŽX˜˜ÍY˜˜MŒMHˆ[™‚BBBBXØ][ÙË™Ù]
+œÛXÞH‹ßJK™Ù]
+™ÝY\Ü×ÛZ\ÜÚ[™ÈŠH\È˜[ÙH[™‚BBBBXØ][ÙË™Ù]
+œÛXÞH‹ßJK™Ù]
+œXÛÛ—ØÞ—Ù˜[˜XÚÈŠH\È˜[ÙB‚BBBJB‚BBB\Ù[‹—ÝØ\™\“YØXÞTXÛÛ\˜Ú]™\ÈHØ][ÙË™Ù]
+˜\˜Ú]™\È‹ßJHYˆ˜[Y[ÙHßB‚BBY[žHHÙ[‹—ÝØ\™\“YØXÞTXÛÛ\˜Ú]™\Ë™Ù]
+ÝŠYØXÞWÚY
+KßJB‚BB]\›HÝŠ[žK™Ù]
+\›‹ˆŠJB‚BBYš[[˜[YHHÝŠ[žK™Ù]
+™š[[˜[YH‹ˆŠJB‚BB[Ù™šXÚX[HšÎ‹ËÜ˜]Ë™Ú]X\Ù\˜ÛÛ[˜ÛÛKÑ]›Û][Û‹XžKUØ\™\‹Õ™^›Ü‹ÎXÙMXMMÙLNMØØNLŽYŽX˜˜ÍY˜˜MŒMKØ\˜Ú]™\ËØÚØÚÛÝ\ÙZË\XÛÛœËÛÜšYÚ[˜[ËÈ‚‚BBZYˆš[[˜[YH[™‹Èˆ›Ý[ˆš[[˜[YH[™—ˆ›Ý[ˆš[[˜[YH[™‹‹ˆˆ›Ý[ˆš[[˜[YH[™š[[˜[YK™[™ÝÚ]
+‹ÞˆŠH[™\›OHÙ™šXÚX[
+Èš[[˜[YN‚‚BBB\™]\›ˆ\›‚BY^Ù\^Ù\[ÛŽ‚‚BB\Ù[‹—ÝØ\™\“YØXÞTXÛÛ\˜Ú]™\ÈHßB‚B\™]\›ˆˆ‚‚‚YYˆÝÛ“][JÙ[‹Ë\‹ÛÛ[YWÛÛÜUYJN‚‚B]\Hˆ‚‚BZYˆ[\›™]
+
+N‚‚BBZYˆSQ’S‘TŽ‚‚BBBY›Üˆ[ˆ˜[™ÙJ[ŠÊJN‚‚BBBB\Ù[‹Ø\™\“YØXÞPÝ\œ™[XÚØYÙSX™[HÖÞVÌHYˆÙ]]ŠÙ[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][Ûˆ‹›Û™JH[ÙH›Û™B‚BBBB\Ù[‹Ø\™\“YØXÞPÝ\œ™[XÚØYÙT™\Ý[H
+Ù[‹Ø\™\“YØXÞTXÚØYÙT™\Ý[ÖÞB‚BBBBBZYˆÙ]]ŠÙ[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][Ûˆ‹›Û™JH[™[ŠÙ[‹Ø\™\“YØXÞTXÚØYÙT™\Ý[ÊH[ÙH›Û™JB‚BBBBX\˜Ú]™HH‹Ý\ØKÞˆ‚‚BBBBY^˜XÝÙ\ˆHÜËœ]œ™X[]
+ÜËœ]š›Ú[Š‹Ý\‹\ŠJB‚BBBBZYˆ›Ý
+^˜XÝÙ\ˆOH‹Ý\ˆÜˆ^˜XÝÙ\‹œÝ\ÝÚ]
+‹Ý\ÈŠJN‚‚BBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠ×Ê’[˜[Y^˜XÝ[Ûˆ]ŠJÈ—ˆ‚‚BBBBBXÛÛ[YB‚BBBB]žN‚‚BBBBB[ÜËœ™[[Ý™J\˜Ú]™JB‚BBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBB\\ÜÂ‚BBBB\Ú][œ›]™YJ^˜XÝÙ\‹YÛ›Ü™WÙ\œ›ÜœÏUYJB‚BBBB]\›HÙ[‹—ÛYØXÞTXÛÛ\˜Ú]™U\›
+ÖÞVÌWJB‚BBBBZYˆ›Ý\›‚‚BBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹Š×Ê”™\Ù\™YYØXÞH\˜Ú]™H\È›Ý]˜Z[X›H[ˆØ\™\ˆZYÜ˜][ÛˆØ][ÙÝYHŠJÈˆÈŠÜÝŠÖÞVÌWJJÈ—Wˆ‚‚BBBBBXÛÛ[YB‚BBBBZXY\œÈHÉÕ\Ù\‹PYÙ[	Î‰Ñ’ÌMËUØ\™\‰ßB‚BBBB]žN‚‚BBBBBXÛÛÚÚYWÚ˜\ˆHÛÛÚÚY[X‹ÛÛÚÚYR˜\Š
+B‚BBBBB[Ü[™\ˆHZ[ÛÜ[™\ŠÛÛÚÚYT›ØÙ\ÜÛÜŠÛÛÚÚYWÚ˜\ŠJB‚BBBBB\™\HH™\]Y\Ý
+\›]OS›Û™KXY\œÏZXY\œÊB‚BBBBB]Ú]Ü[™\‹›Ü[Š™\K[Y[Ý]LMJH\È[™\‹Ü[Š\˜Ú]™K	ÝØ‰ÊH\ÈŽ‚‚BBBBBB]Ú[HYN‚‚BBBBBBBXÚ[šÈH[™\‹œ™XY
+L
+ˆLŽ
+B‚BBBBBBBZYˆ›ÝÚ[šÎ‚‚BBBBBBBBXœ™XZÂ‚BBBBBBBY‹Üš]JÚ[šÊB‚BBBBY^Ù\^Ù\[ÛŽ‚‚BBBBB]žN‚‚BBBBBB[ÜËœ™[[Ý™J\˜Ú]™JB‚BBBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBBB\\ÜÂ‚BBBBZYˆÜËœ]š\Ùš[J\˜Ú]™JN‚‚BBBBB\Ú^™HHKŒ
+›ÜËœ]™Ù]Ú^™J\˜Ú]™JKÊL
+ŒL
+B‚BBBBBZYˆÚ^™HOH‚‚BBBBBB\™]™]HHÙ[‹™Ù]œ™YTÜXÙJ
+B‚BBBBBBZYˆ™]ˆÚ^™H[™™]Hˆ
+Ú^™KÌŠN‚‚BBBBBBB[ÜË›XZÙY\œÊ^˜XÝÙ\‹^\ÝÛÚÏUYJB‚BBBBBBBXÛYHÔÑU‘S–’T™H‹‹^H‹‹[É\Èˆ	H^˜XÝÙ\‹\˜Ú]™WB‚BBBBBBB]žN‚‚BBBBBBBBY^˜XÝÛÚÈHÝXœ›ØÙ\ÜË˜Ø[
+ÛY
+HOH‚BBBBBBBY^Ù\
+ÔÑ\œ›Ü‹˜[YQ\œ›ÜŠN‚‚BBBBBBBBY^˜XÝÛÚÈH˜[ÙB‚BBBBBBB]žN‚‚BBBBBBBB[ÜËœ™[[Ý™J\˜Ú]™JB‚BBBBBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBBBBB\\ÜÂ‚BBBBBBBZYˆ›Ý^˜XÝÛÚÎ‚‚BBBBBBBB\Ú][œ›]™YJ^˜XÝÙ\‹YÛ›Ü™WÙ\œ›ÜœÏUYJB‚BBBBBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠ×Ê\˜Ú]™H^˜XÝ[Ûˆ˜Z[YŠJÈ—ˆ‚‚BBBBBBBBXÛÛ[YB‚BBBBBBBX]˜Z[X›WØ™Y›Ü™HH[ŠÙ]]ŠÙ[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›H‹Ù]
+
+JJB‚BBBBBBB[[TXÝÝ[HÙ[‹˜Ü›Qš[\Ê\ŠB‚BBBBBBBZYˆÙ]]ŠÙ[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][Ûˆ‹›Û™JH[™[ŠÙ[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›JHH]˜Z[X›WØ™Y›Ü™N‚‚BBBBBBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\È
+ÏHB‚BBBBBBBZYˆÝ[OH‚‚BBBBBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹Š×Ê“›ÈXÛÛœÈÙ\™HÝÛ›ØYYˆŠJÈ—ˆ‚‚BBBBBBBY[Yˆ[TXÝ]Ý[OH‚‚BBBBBBBB]\
+ÏHÊ”ÕPÐÑTÔÑ•SŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹ŠÝØ\™\”XÛÛ”Þ[˜ËœÝXØÙ\Ü×ÜÝ[[X\žJÝ[›Û™KÊJÈ—ˆ‚‚BBBBBBBY[ÙN‚‚BBBBBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹ˆ
+È
+Ê‰YÙˆ	YXÛÛœÈ˜Z[YÈ[œÝ[ŠH	H
+Ý[[[TXÝÝ[
+JJÈ—ˆ‚‚BBBBBBY[ÙN‚‚BBBBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹ŠÈ‰\Ê	\ËÉ\ÊSPŽ—‰\ÈH	\ËÉ\Ë	\ÈH	\ËÉ\Èˆ	H
+Ê”ÛÜœžKÛÈÝÈœ™YHÜXÙHŠKÊ”™\]Z\™YŠKÊ‘œ™YHŠKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YKÚ^™KÌ‹™]KÙ[‹žžž–Î‹LWKÚ^™K™]
+JÈ—ˆ‚‚BBBBBY[ÙN‚‚BBBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹Š×Ê‘\œ›ÜˆÚ[HÝÛ›ØY[™Èš[HHŠH
+Èˆˆ
+ÈÊ“›ÈXÛÛœÈÙ\™HÝÛ›ØYYˆŠJÈ—ˆ‚‚BBBBBB]žN‚‚BBBBBBB[ÜËœ™[[Ý™J\˜Ú]™JB‚BBBBBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBBBB\\ÜÂ‚BBBBY[ÙN‚‚BBBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆ
+ŠÑ\ŠÈŠHŠÚÖÞVÌJÈ‹Š×Ê‘\œ›ÜˆÚ[HÝÛ›ØY[™Èš[HHŠJÈ—ˆ‚‚BBY[ÙN‚‚BBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆŠ×Ê“ØY[™ÈT“ÛÛÈ˜Z[YŠJÈ—ˆ‚‚BY[ÙN‚‚BB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆŠ×Ê’[\›™]ÛÛ›™XÝ[Ûˆ˜Z[YŠJÈ—ˆ‚‚BZYˆ\OHˆŽ‚‚BBZYˆÛÛ[YWÛÛÜ‚‚BBB\Ù[‹™Û“ÛÜ
+\Î‹LWJB‚BB\™]\›ˆ\Î‹LWB‚B[Y\ÜØYÙHHÊ‘T”“ÔˆŠJÈŽˆŠ×Ê•[šÛ›ÝÛˆ\œ›Üˆ]XÝYžHYØZ[ˆHHHŠB‚BZYˆÛÛ[YWÛÛÜ‚‚BB\Ù[‹™Û“ÛÜ
+Y\ÜØYÙJB‚B\™]\›ˆY\ÜØYÙB‚‚YYˆÜ›Qš[\ÊÙ[‹Ú]
+N‚‚BYˆH\Ý\ŠÙ[‹žžžˆ
+ÈÚ]
+B‚B[[TXÝH‚B]Ý[H‚B[YØXÞWÙ\Ý[˜][ÛˆHÙ]]ŠÙ[‹Ø\™\“YØXÞTXÛÛ‘\Ý[˜][Ûˆ‹›Û™JB‚BZYˆYØXÞWÙ\Ý[˜][ÛŽ‚‚BB[YØXÞWÙ\Ý[˜][ÛˆHØ\™\”XÛÛ”Þ[˜Ë˜[Y]WÙ\Ý[˜][ÛŠYØXÞWÙ\Ý[˜][ÛŠB‚BBZYˆ›ÝYØXÞWÙ\Ý[˜][ÛˆÜˆÜËœ]š\Û[šÊYØXÞWÙ\Ý[˜][ÛŠN‚‚BBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\È
+ÏHB‚BBB\Ù[‹œ›U\ŠÙ[‹žžž‹Ú]
+B‚BBB\™]\›ˆ‚BB[ÜË›XZÙY\œÊYØXÞWÙ\Ý[˜][Û‹^\ÝÛÚÏUYJB‚BB]Ø[YHÙ[‹Ø\™\“YØXÞPÚ[›™[Ø[Y‚BBX]˜Z[X›WØ™Y›Ü™HH[ŠÙ[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›JB‚BBXÝ\œ™[Ü™\Ý[HÙ]]ŠÙ[‹Ø\™\“YØXÞPÝ\œ™[XÚØYÙT™\Ý[‹›Û™JB‚BBZYˆÝ\œ™[Ü™\Ý[\È›Ý›Û™N‚‚BBBXÝ\œ™[Ü™\Ý[Èœ›ØÙ\ÜÙY—HHYB‚BBY›Üˆ˜[YH[ˆˆÜˆ×N‚‚BBBZYˆ›ÝÝŠ˜[YJK›ÝÙ\Š
+K™[™ÝÚ]
+‹œ™ÈŠN‚‚BBBBXÛÛ[YB‚BBB\Ù[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›K˜Y
+˜[YJB‚BBBZYˆØ[Y\È›Ý›Û™H[™˜[YH›Ý[ˆØ[Y‚‚BBBBXÛÛ[YB‚BBB\ÛÝ\˜ÙHHÜËœ]š›Ú[ŠÙ[‹žžž‹Ú]˜[YJB‚BBBY\Ý[˜][ÛˆHÜËœ]š›Ú[ŠYØXÞWÙ\Ý[˜][Û‹˜[YJB‚BBBZYˆÜËœ]š\Û[šÊ\Ý[˜][ÛŠN‚‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\È
+ÏHB‚BBBBZYˆÝ\œ™[Ü™\Ý[\È›Ý›Û™N‚‚BBBBBXÝ\œ™[Ü™\Ý[È™˜Z[\™\È—H
+ÏHB‚BBBBXÛÛ[YB‚BBB]žN‚‚BBBB\Ú][˜ÛÜLŠÛÝ\˜ÙK\Ý[˜][ÛŠB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\È
+ÏHB‚BBBBZYˆÝ\œ™[Ü™\Ý[\È›Ý›Û™N‚‚BBBBBXÝ\œ™[Ü™\Ý[È™˜Z[\™\È—H
+ÏHB‚BBBB]Ý[
+ÏHB‚BBBBXÛÛ[YB‚BBB]Ý[
+ÏHB‚BBBZYˆÜËœ]š\Ùš[J\Ý[˜][ÛŠH[™›ÝÜËœ]š\Û[šÊ\Ý[˜][ÛŠN‚‚BBBB[[TXÝ
+ÏHB‚BBBB\Ù[‹Ø\™\“YØXÞPÚ[›™[[œÝ[Y˜Y
+˜[YJB‚BBBBZYˆÝ\œ™[Ü™\Ý[\È›Ý›Û™N‚‚BBBBBXÝ\œ™[Ü™\Ý[È\]Y—H
+ÏHB‚BBZYˆ[ŠÙ[‹Ø\™\“YØXÞPÚ[›™[]˜Z[X›JHH]˜Z[X›WØ™Y›Ü™N‚‚BBB\Ù[‹Ø\™\“YØXÞPÚ[›™[˜Z[\™\È
+ÏHB‚BB\Ù[‹Ø\™\“YØXÞP\˜Ú]™\Ô›ØÙ\ÜÙY
+ÏHB‚BB\Ù[‹œ›U\ŠÙ[‹žžž‹Ú]
+B‚BB\™]\›ˆ[TXÝÝ[‚BY\Ý\ˆHÚ]‚BZYˆŽ‚‚BBY›Üˆ[ˆŽ‚‚BBBZYˆ›ÝÝŠ
+K›ÝÙ\Š
+K™[™ÝÚ]
+‹œ™ÈŠN‚‚BBBBXÛÛ[YB‚BBB\ÛÝ\˜ÙHHÜËœ]š›Ú[ŠÙ[‹žžž‹Ú]
+B‚BBBZYˆ›ÝÜËœ]š\Ùš[JÛÝ\˜ÙJHÜˆÜËœ]š\Û[šÊÛÝ\˜ÙJN‚‚BBBBXÛÛ[YB‚BBBY\Ý[˜][ÛˆHÜËœ]š›Ú[ŠÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YK\Ý\‹
+B‚BBB]Ý[
+ÏHB‚BBB]žN‚‚BBBBZYˆÜËœ]š\Û[šÊ\Ý[˜][ÛŠN‚‚BBBBB\˜Z\ÙHÔÑ\œ›ÜŠ™\Ý[˜][Ûˆ\ÈHÞ[X›ÛXÈ[šÈŠB‚BBBB\Ú][˜ÛÜLŠÛÝ\˜ÙK\Ý[˜][ÛŠB‚BBBY^Ù\ÔÑ\œ›ÜŽ‚‚BBBBXÛÛ[YB‚BBBZYˆ
+ÜËœ]š\Ùš[J\Ý[˜][ÛŠH[™›ÝÜËœ]š\Û[šÊ\Ý[˜][ÛŠB‚BBBBBX[™Ù[‹—ÝØ\™\‘š[\ÓX]Ú
+ÛÝ\˜ÙK\Ý[˜][ÛŠJN‚‚BBBB[[TXÝ
+ÏHB‚B\Ù[‹œ›U\ŠÙ[‹žžž‹Ú]
+B‚B\™]\›ˆ[TXÝÝ[‚‚YYˆÝØ\™\‘š[\ÓX]Ú
+Ù[‹ÛÝ\˜ÙK\Ý[˜][ÛŠN‚‚BHÈÛÛ\\™HHž]\ÈÛÜYY\š[™È\È\ÚÎÈHÝ[HØ[YK[˜[YHš[HØ[››Ý‚BHÈ\›ˆH˜Z[YÛÜH[ÈH™\ÜYÝXØÙ\ÜË‚‚B]žN‚‚BB\™]\›ˆ
+ÜËœ]™Ù]Ú^™JÛÝ\˜ÙJHOHÜËœ]™Ù]Ú^™J\Ý[˜][ÛŠB‚BBBX[™Ù[‹—ÝØ\™\”ÚLMŠÛÝ\˜ÙJHOHÙ[‹—ÝØ\™\”ÚLMŠ\Ý[˜][ÛŠJB‚BY^Ù\ÔÑ\œ›ÜŽ‚‚BB\™]\›ˆ˜[ÙB‚‚YYˆÝØ\™\”ÚLMŠÙ[‹]
+N‚‚BYYÙ\ÝH\ÚX‹œÚLMŠ
+B‚B]Ú]Ü[Š]œ˜ˆŠH\ÈÝ™X[N‚‚BBY›ÜˆÚ[šÈ[ˆ]\Š[X™NˆÝ™X[Kœ™XY
+L
+ˆL
+KˆˆŠN‚‚BBBYYÙ\Ý\]JÚ[šÊB‚B\™]\›ˆYÙ\Ýš^YÙ\Ý
+
+B‚‚YYˆÚÚÊÙ[‹ÊN‚‚B]žN‚‚BBZHHËœÜ]
+—ÈŠH‚BBZHHVÛ[ŠJKMH‚BBZYˆ[ŠJH[ˆ
+K‹Ë
+N‚‚BBBZHHVÌ›[ŠJKMB‚BBBY›Üˆ[ˆÙ[‹˜[œÝÙ\Ž‚‚BBBBZYˆK›ÝÙ\Š
+HOH›ÝÙ\Š
+N‚BBBB‚BBBBB\™]\›ˆYB‚BY^Ù\ˆ\ÜÂ‚B\™]\›ˆ˜[ÙH‚‚YYˆXÛÛ”™]šY]ÓX[˜YÙJÙ[ŠN‚‚B]\Hˆ‚‚B\]HÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YB‚BZYˆ›ÝÜËœ]™^\ÝÊ
+]
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ÈŠJN‚‚BB[ÜË›XZÙY\œÊ]
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]È‹^\ÝÛÚÏUYJB‚B[[TXÝH‚B]Ý[H‚BY›ÜˆH[ˆ˜[™ÙJKPVÐÔ‘QS”ÊN‚‚BBZYˆš[Q^\ÝÊ
+‹Ý\Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÜØÜ™Y[‹HŠÜÝŠJJÈ‹œ™ÈŠJN‚‚BBB\Ú][˜ÛÜLŠ‹Ý\Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÜØÜ™Y[‹Hˆ
+ÈÝŠJH
+È‹œ™È‹]
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÜØÜ™Y[‹Hˆ
+ÈÝŠJH
+È‹œ™ÈŠB‚BBB]Ý[
+ÏHB‚BBBZYˆš[Q^\ÝÊ
+]
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÜØÜ™Y[‹HŠÜÝŠJJÈ‹œ™ÈŠJN‚‚BBBB[[TXÝ
+ÏHB‚BZYˆÝ[OH‚‚BBZYˆ[TXÝ]Ý[OH‚‚BBB]\HÊ”ÕPÐÑTÔÑ•SŠJÈŽˆŠ×Ê”™]šY]ÜÈÝÛ›ØYYÝXØÙ\ÜÙ[HHŠH
+È—ˆ‚‚BBY[ÙN‚‚BBB]\HÊ‘T”“ÔˆŠJÈŽˆŠ×Ê”™]šY]ÜÎˆŠH
+Èˆˆ
+ÈÝŠÝ[[[TXÝ
+H
+Èˆˆ
+ÈÊ™š[JÊHœ›ÛHŠH
+Èˆˆ
+ÈÝŠÝ[
+H
+È—ˆ‚‚BYÛØ˜[[XÛÛœÂ‚BY›ÜˆH[ˆ˜[™ÙJKPVPÓÓ”ÊN‚‚BBZYˆÜËœ]™^\ÝÊ
+‹Ý\Û[Ü™WÚXÛÛœËÚWÝ\KHŠÜÝŠJJJN‚‚BBBZYˆ›ÝÜËœ]™^\ÝÊ
+]
+È‹Û[Ü™WÚXÛÛœËÚWÝ\KHŠÜÝŠJJJN‚‚BBBB[ÜË›XZÙY\œÊ]
+È‹Û[Ü™WÚXÛÛœËÚWÝ\KHŠÜÝŠJK^\ÝÛÚÏUYJB‚BBBY›Üˆ[ˆ[XÛÛœÎ‚‚BBBB\Ú][˜ÛÜLŠ‹Ý\Û[Ü™WÚXÛÛœËÚWÝ\KHˆ
+ÈÝŠJH
+È‹Èˆ
+È
+È‹œ™È‹]
+È‹Û[Ü™WÚXÛÛœËÚWÝ\KHˆ
+ÈÝŠJH
+È‹Èˆ
+È
+È‹œ™ÈŠB‚BBB\Ú][œ›]™YJ‹Ý\Û[Ü™WÚXÛÛœËÚWÝ\KHŠÜÝŠJKYÛ›Ü™WÙ\œ›ÜœÏUYJB‚BBB\Ú][˜ÛÜLŠ‹Ý\Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÚXÛÛœËHˆ
+ÈÝŠJH
+È‹œ™È‹]
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÚXÛÛœËHˆ
+ÈÝŠJH
+È‹œ™ÈŠB‚BBBZYˆÚXÚÒXÛÛœÊJN‚‚BBBB]\
+ÏHÊ”ÕPÐÑTÔÑ•SŠJÈŽˆŠ×Ê’XÛÛœÈ\HŠH
+Èˆˆ
+ÈÝŠJH
+È—ˆ‚‚BBBY[ÙN‚‚BBBB]\
+ÏHÊ‘T”“ÔˆŠJÈŽˆŠ×Ê’XÛÛœÈ\HŠH
+Èˆˆ
+ÈÝŠJH
+È—ˆ‚BBBB‚B\Ù[‹œ›U\
+
+B‚BZYˆ\OHˆŽ‚‚BB\Ù[‹™Û“ÛÜ
+\Î‹LWJB‚BY[ÙN‚‚BB\Ù[‹™Û“ÛÜ
+Ê‘T”“ÔˆŠJÈŽˆŠ×Ê•[šÛ›ÝÛˆ\œ›Üˆ]XÝYžHYØZ[ˆHHHŠJHBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈØ]Ù[XÝÜ”ØÜŠØÜ™Y[ŠNˆ‚\ÚÚ[ˆHˆˆ‚‚BOØÜ™Y[ˆ˜[YOHœØ]Ù[XÝÜ”ØÜˆˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŒLÌKMHˆ]OH”Ù[XÝ‚‚BBOÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHŒMKHˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆÚ^™OHŒLÎˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒHˆÚ^™OHŒÍMËLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHŒÍMËHˆÚ^™OHŒÍMËLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÞY[ÝÈˆÜÚ][ÛHÌMHˆÚ^™OHŒÍMËLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆÏ‚ˆSX™[ÜÚ][ÛHŒÎMHˆÚ^™OHŒÍMËˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒÍMËÎMHˆÚ^™OHŒÍMËˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHÌMÎMHˆÚ^™OHŒÍMËˆˆ˜XÚÙÜ›Ý[™ÛÛÜHžY[ÝÈˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚‚BOÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹[HJN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹™[H[BB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[–ÈšÙ^WÞY[ÝÈ—HHX™[
+Ê”Ø]™HŠJB‚B\Ù[‹›\ÝHÙ[XÝ[Û“\Ý
+
+B‚B\Ù[–È›\Ý—HHÙ[‹›\Ý‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+È“ÚÐØ[˜Ù[XÝ[ÛœÈ‹ÛÛÜXÝ[ÛœÈ—K‚B^Â‚BBH›ÚÈŽˆÙ[‹›\ÝÙÙÛTÙ[XÝ[Û‹‚BBH˜Ø[˜Ù[ŽˆÙ[‹™^]‚BBHœ™YŽˆÙ[‹™^]‚BBHžY[ÝÈŽˆÙ[‹™š[š\ÚÙ[XÝ‚BBH™Ü™Y[ˆŽˆÙ[‹›\ÝÙÙÛTÙ[XÝ[Û‚‚B_KLJB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹œÝ\Ù[XÝ
+B‚BB‚YYˆÝ\Ù[XÝ
+Ù[ŠN‚BB‚BY›Üˆ[ˆ˜[™ÙJ[ŠÐUTÕ
+JN‚‚BBZYˆÐUTÕÞVÜÙ[‹™[HOHˆŽˆ‚BBB\HÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YJÈ‹ÜXÛÛ”Ø]ÈŠÔÐUTÕÞVÌ—JÈ‹MÍKœ™È‚‚BBBZYˆ›ÝÜËœ]š\Ùš[J
+Nˆ‚BBBB\HÒÒS”U
+ÈšXÛÛœËÍÍKœ™È‚‚BBB\Ù[‹›\Ý˜YÙ[XÝ[ÛŠÐUTÕÞVÌK
+ÐUTÕÞVÌKÐUTÕÞVÜÙ[‹™[JK˜[ÙK
+H‚‚YYˆÝÛ[œÝÙ\“›ÝÊÙ[‹[œÝÙ\ŠN‚‚BZYˆ[œÝÙ\Ž‚‚BB\Ù[‹™š[š\Ú
+
+B‚‚YYˆš[š\ÚÙ[XÝ
+Ù[ŠN‚‚BZYˆÙ[‹™[OHN‚‚BB\™]Hˆ‚‚BBY›Üˆ[ˆÙ[‹›\Ý™Ù]Ù[XÝ[ÛœÓ\Ý
+
+Nˆ‚BBB\™]
+ÏH‰\Ëˆ	HÌB‚BBZYˆ[Š™]
+HOH‚‚BBB\™]\›ˆÙ[‹™^]
+
+B‚BBY[ÙN‚‚BBB\™\Ý\›ÞHÙ[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™ÝÛ[œÝÙ\“›ÝËY\ÜØYÙP›ÞÊ‘[]HŠH
+Èˆˆ
+È™]
+ÈÊ››ÝÏÈŠKY\ÜØYÙP›Þ•TWÖQTÓ“ÊB‚BBB\™\Ý\›ÞœÙ]]JÊ‘[]HŠJB‚BY[ÙN‚‚BB\Ù[‹™š[š\Ú
+
+B‚‚YYˆš[š\Ú
+Ù[ŠN‚‚B\™]H×B‚BY›Üˆ[ˆÙ[‹›\Ý™Ù]Ù[XÝ[ÛœÓ\Ý
+
+Nˆ‚BBZYˆÙ[‹™[OHN‚‚BBB\™]˜\[™
+ÌWVÌWJB‚BBY[ÙN‚‚BBB\™]˜\[™
+ÌWJH‚BZYˆ[Š™]
+HOH‚‚BB\™]\›ˆÙ[‹™^]
+
+H‚BY[ÙNˆBB‚BB\™]\›ˆÙ[‹™^]
+™]
+B‚BBB‚YYˆ^]
+Ù[‹S›Û™JN‚‚B\Ù[‹˜ÛÜÙJŠB‚‚˜Û\ÜÈØ\™\”ÜÚ][Û”Ù[XÝÜ”ØÜŠØÜ™Y[ŠN‚‚\ÚÚ[ˆHØ]Ù[XÝÜ”ØÜ‹œÚÚ[‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹Ù[XÝYS›Û™JN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹œÙ[XÝYHÙ]
+Ø\™\”XÛÛ”Þ[˜Ë\Ú×ÜXÚØYÙWÜÙ[XÝÜœ×Ùœ›ÛWØš[™[™ÜÊÙ[XÝY
+JB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[–ÈšÙ^WÞY[ÝÈ—HHX™[
+Ê”Ø]™HŠJB‚B\Ù[‹›\ÝHÙ[XÝ[Û“\Ý
+
+B‚B\Ù[–È›\Ý—HHÙ[‹›\Ý‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+È“ÚÐØ[˜Ù[XÝ[ÛœÈ‹ÛÛÜXÝ[ÛœÈ—KÂ‚BBH›ÚÈŽˆÙ[‹›\ÝÙÙÛTÙ[XÝ[Û‹™Ü™Y[ˆŽˆÙ[‹›\ÝÙÙÛTÙ[XÝ[Û‹‚BBH˜Ø[˜Ù[ŽˆÙ[‹˜Ø[˜Ù[œ™YŽˆÙ[‹˜Ø[˜Ù[žY[ÝÈŽˆÙ[‹™š[š\Ú‚B_KLJB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹œÝ\Ù[XÝ
+B‚‚YYˆÝ\Ù[XÝ
+Ù[ŠN‚‚BY›Üˆ[ˆ˜[™ÙJ[ŠÐUTÕ
+JN‚‚BB[X™[HÐUTÕÞVÌB‚BB]˜[YHHÐUTÕÞVÌ—HYˆ[ŠÐUTÕÞJHˆˆ[ÙHX™[‚BBHÈ]XÚ[[]]X›HÙ[XÝÜˆY[]HÈH][KˆH\Ü^YYX™[[™‚BBHÈÐUTÕXÛÛˆ˜[YH\™H™\Ù[][Ûˆ]HÛ›K‚‚BBXš[™[™ÈHØ\™\”XÛÛ”Þ[˜Ë\Ú×Øš[™[™×Ù›Ü—Ù\Ü^WÛX™[
+X™[
+B‚BBZYˆ›Ýš[™[™Î‚‚BBBXÛÛ[YB‚BB\HÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+È‹ÜXÛÛ”Ø]Èˆ
+ÈÝŠ˜[YJH
+È‹MÍKœ™È‚‚BBZYˆ›ÝÜËœ]š\Ùš[J
+N‚‚BBB\HÒÒS”U
+ÈšXÛÛœËÍÍKœ™È‚‚BB\Ù[‹›\Ý˜YÙ[XÝ[ÛŠX™[š[™[™Ëš[™[™ÖÈœXÚØYÙWÜÙ[XÝÜˆ—H[ˆÙ[‹œÙ[XÝY
+B‚‚YYˆš[š\Ú
+Ù[ŠN‚‚B\™]HÞÌWH›Üˆ[ˆÙ[‹›\Ý™Ù]Ù[XÝ[ÛœÓ\Ý
+
+WB‚B\Ù[‹˜ÛÜÙJ™]
+B‚‚YYˆØ[˜Ù[
+Ù[ŠN‚‚BHÈÜ[•Ú]Ø[˜XÚÈØ[ÈØ[˜XÚÊ
+œ™]˜[
+NÈÛÜÙJ
+HÝ\Y\È›È\™Ý[Y[Ë‚‚BHÈ\ÜÈÛ™H^XÚ]›Û™HÛÈØ[˜Ù[›ÛÝÜÈHÝX›HØ[˜XÚÈÛÛ˜XÝ‚‚B\Ù[‹˜ÛÜÙJ›Û™JB‚˜Û\ÜÈÝ[TÙ[XÝÜ”ØÜŠØÜ™Y[ŠNˆ‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOH”Ù[XÝ^˜TØÜ™Y[ˆˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŒÍÌˆˆ]OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ‚ˆÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHKMHˆÚ^™OHMÌŽLˆˆ”ÜÚ][ÛHŒˆˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™‹Ï‚‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒÌÌˆˆÚ^™OHŒŒŒLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHŒŒŒÌÌˆˆÚ^™OHŒŒŒLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚‚OÚYÙ]˜[YOHšÙ^WØ›YHˆÜÚ][ÛHÌÌˆˆÚ^™OHŒŒŒLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH˜›YHˆÏ‚ˆSX™[ÜÚ][ÛHŒÌŒˆˆÚ^™OHŒŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒŒŒÌŒˆˆÚ^™OHŒŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHÌŒˆˆÚ^™OHŒŒŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›YHˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚‚OÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹Ý[KØÜ“[JN‚‚B\Ù[‹œÚÚ[ˆHÝ[TÙ[XÝÜ”ØÜ‹œÚÚ[‚‚B\Ù[‹œÙ\ÜÚ[ÛˆHÙ\ÜÚ[Û‚‚B\Ù[‹œÝ[HHÝ[B‚B\Ù[‹œØÜ“[HHØÜ“[B‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹›\ÝH×B‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[–ÈšÙ^WØ›YH—HHX™[
+Ê‘Y]ÛÛÜˆŠJB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÉÛ\Ý	×HH[X“\ÝŠÙ[‹›\Ý
+BB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+ÉÕÚ^˜\™XÝ[ÛœÉË	ÐÛÛÜXÝ[ÛœÉ×K‚B^Â‚BBH™Ü™Y[ˆŽˆÙ[‹œØ]™K‚BBH›ÚÈŽˆÙ[‹œØ]™K‚BBHœ™YŽˆÙ[‹˜ÛÜÙK‚BBH˜›YHŽˆÙ[‹™[\ÛÛÜ‹‚BBH˜˜XÚÈŽˆÙ[‹˜ÛÜÙB‚B_JH‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹™Ù[™\˜]Q]JB‚‚YYˆÙ]Ú[™ÝÕ]JÙ[ŠN‚‚B\Ù[‹œÙ]]JÊ”Ý[HY[HŠJB‚‚YYˆ[\ÛÛÜŠÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÝŠÙ[XÝ[Û–ÌJB‚BB]\H\œÝš\
+
+KœÜ]
+ŠˆŠB‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™[\ÛÛÜ[œÝÙ\‹[œ]›Þ]OH”X\ÙH[\ˆÛÛÜˆ
+ÐPT”‘ÑÐŠNˆ‹^]\ÌWKX^Ú^™OLL‹\OR[œ]•V
+B‚‚YYˆ[\ÛÛÜ[œÝÙ\ŠÙ[‹ÛÛÜŠN‚‚BZYˆÛÛÜˆ\È›Û™N‚‚BB\™]\›‚BB‚B^Hˆ‚‚B]žN‚‚BBXÛÛÜˆHÛÛÜ‹œÝš\
+
+B‚BBZYˆ[ŠÛÛÜŠHOHN‚‚BBB^H[
+ÛÛÜ‹œ™\XÙJˆÈ‹ŒŠKMŠB‚BY^Ù\ˆ\ÜÂ‚BZYˆOHˆŽ‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ”ÛÜœžK[ÝH]™H[\™YHÜ›Û™ÈÛÛÜŽˆŠH
+ÈÛÛÜˆ
+ÈˆHHH‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹ŠB‚BY[ÙN‚‚BB\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BB^Hˆ‚‚BBZYˆÙ[XÝ[ÛŽ‚‚BBB]\HÝŠÙ[XÝ[Û–ÌJB‚BBB]\H\œÝš\
+
+KœÜ]
+ŠˆŠH‚BBB]žN‚‚BBBBYˆHÜ[Š‰\ÜÝ[KÉ\ËÝ]WØÛÛÜ‹˜Ù™Èˆ	H
+ÒÒS”U\ÌJKÈŠB‚BBBBY‹Üš]JÛÛÜŠB‚BBBBY‹˜ÛÜÙJ
+B‚BBBB\Ù[‹œÝ[HH[
+\ÌJB‚BBBB^H›ÚÈ‚BBBBB‚BBBY^Ù\ˆ\ÜÂBBBBB‚BBZYˆOHˆŽ‚BBBBB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ”ÛÜœžKÜš][™ÈÛÛÜŽˆŠH
+Èˆˆ
+ÈÛÛÜˆ
+Èˆˆ
+ÈÊ™˜Z[YHHHŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹ŠB‚BBY[ÙN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊÛÛÜŽˆŠH
+Èˆˆ
+ÈÛÛÜˆ
+Èˆˆ
+ÈÊÜš]YÝXØÙ\ÜÙ[HHHHŠKY\ÜØYÙP›Þ•TWÒS‘“ËŠB‚BBB\Ù[‹™Ù[™\˜]Q]J
+B‚‚YYˆÙ[™\˜]Q]JÙ[ŠN‚‚B\Ù[‹œÙ]Ú[™ÝÕ]J
+B‚B\Ù[‹›\ÝH×B‚BY›Üˆ[ˆ˜[™ÙJKPVPÓÓ”ÊN‚‚BBZYˆÚXÚÔÝ[J
+NˆBBBB‚BBBXÛˆH™XYÛÛÜ”Ý[JÝŠ
+JB‚BBBZ][HHÜÝŠ
+JÈŠˆŠØÛ—B‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMJKÚ^™OJKÌÊK›ÛLÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠK^JŠŠŠˆˆ
+ÈÝŠ
+H
+Èˆ
+ŠŠˆŠJJB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJLŠKÚ^™OJKÌÊK›ÛLKÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠKÛÛÜZ[
+	Ì™˜ØÌ	ËMŠK^JÛÛÜŽˆˆ
+ÈÛŠJJB‚BBB\^HØY^X\
+ÒÒS”U
+È	ÜÝ[KÉÊÜÝŠ
+JÉËØ—Ýœ™ÉÊB‚BBBZ][K˜\[™
+][PÛÛ[[žT^X\
+ÜÏJŒL
+KÚ^™OJNMÊK™Ï\^˜XÚØÛÛÜZ[
+	Ì™™™™™‰ËMŠJJB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJÌMKÍÊKÚ^™OJMLÌÊK›ÛL^H•]H‹ÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠKÛÛÜZ[
+Û‹œ™\XÙJ	ÈÉË	Ì	ÊKMŠJJB‚BBB\^HØY^X\
+ÒÒS”U
+È	ÜÝ[KÉÊÜÝŠ
+JÉËØ—Ý‹œ™ÉÊB‚BBBZ][K˜\[™
+][PÛÛ[[žT^X\
+ÜÏJÎL
+KÚ^™OJNMÊK™Ï\^˜XÚØÛÛÜZ[
+	Ì™™™™™‰ËMŠJJB‚BBB\Ù[‹›\Ý˜\[™
+][JB‚BZYˆ[ŠÙ[‹›\Ý
+HOH‚‚BBZ][HHÜÝŠ
+JÈŠˆŠØÛ—B‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJÌ
+KÚ^™OJKÌÊK›ÛLÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠK^JŠŠŠˆ›Û™HÝ[H]XÝYHHH
+ŠŠˆŠJJB‚BB\Ù[‹›\Ý˜\[™
+][JB‚BB\Ù[–ÉÛ\Ý	×K›œÙ]\Ý
+Ù[‹›\Ý
+B‚BY[ÙN‚‚BB\Ù[–ÉÛ\Ý	×K›œÙ]\Ý
+Ù[‹›\Ý
+B‚BB\Ù[–È›\Ý—Kš[œÝ[˜ÙK›[Ý™TÙ[XÝ[Û•ÊÙ[‹œÝ[KLJB‚‚YYˆØ]™JÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÝŠÙ[XÝ[Û–ÌJB‚BB]\H\œÝš\
+
+KœÜ]
+ŠˆŠB‚BBZYˆ›ÝÜš]TÝ[PÙ™ÊÙ[‹œØÜ“[K[
+\ÌJJN‚BBB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊ”ÛÜœžKÜš]HÈÌMÔØÜ™Y[œË˜Ù™È˜Z[YHHHŠKY\ÜØYÙP›Þ•TWÑT”“Ô‹ŠB‚BBY[ÙN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊÚ[™Ù\ÈÜš]YÝXØÙ\ÜÙ[HHHHŠKY\ÜØYÙP›Þ•TWÒS‘“ËŠB‚B\Ù[‹˜ÛÜÙJ
+BBBBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈÙ[XÝØÜ™Y[”ÚÝÙY
+ØÜ™Y[ŠNˆ‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOH”Ù[XÝ^˜TØÜ™Y[ˆˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŒMMËÍMÈˆ]OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ‚ˆÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHKˆÚ^™OHMKNHˆ”ÜÚ][ÛHŒˆˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™‹Ï‚ˆÚYÙ]˜[YOHœØÜ—Ü™]šY]ÈˆÜÚ][ÛHMKŒÈˆÚ^™OHŽMŒMˆ”ÜÚ][ÛHŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ[]\ÝH˜›[™‹Ï‚‚OÚYÙ]˜[YOHœ™\ÈˆÜÚ][ÛHMKŒHˆÚ^™OHŽMŒLˆ”ÜÚ][ÛHŒˆˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÌˆ˜[œÜ\™[HŒHˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒÌÈˆÚ^™OHLŒ‹Lˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHÌÈˆÚ^™OHLŒËLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚‚OÚYÙ]˜[YOHšÙ^WØ›YHˆÜÚ][ÛHŒLKÌÈˆÚ^™OHLŒ‹Lˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH˜›YHˆÏ‚ˆSX™[ÜÚ][ÛHŒŽMÈˆÚ^™OHLŒ‹ˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHLŒ‹ŽMÈˆÚ^™OHLŒËˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒLKŽMÈˆÚ^™OHLŒ‹ˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›YHˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚‚OÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠN‚‚B\Ù[‹œÚÚ[ˆHÙ[XÝØÜ™Y[”ÚÝÙYœÚÚ[‚‚B\Ù[‹œÙ\ÜÚ[ÛˆHÙ\ÜÚ[Û‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹›\ÝH×B‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[–ÈšÙ^WØ›YH—HHX™[
+Ê‘Y]ŠJB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÈœØÜ—Ü™]šY]È—HH^X\
+
+B‚B\Ù[–Èœ™\È—HHX™[
+ˆŠB‚B\Ù[–ÉÛ\Ý	×HH[X“\ÝŠÙ[‹›\Ý
+B‚B\Ù[–ÉÛ\Ý	×K›Û”Ù[XÝ[ÛÚ[™ÙY˜\[™
+Ù[‹œ™XXÝ]˜]JBBB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+ÉÕÚ^˜\™XÝ[ÛœÉË	ÐÛÛÜXÝ[ÛœÉ×K‚B^Â‚BBH™Ü™Y[ˆŽˆÙ[‹œØ]™K‚BBH›ÚÈŽˆÙ[‹œØ]™K‚BBHœ™YŽˆÙ[‹™^]‚BBH˜›YHŽˆÙ[‹œÝ[TÙ[XÝÜ‹‚BBH˜˜XÚÈŽˆÙ[‹™^]‚B_JH‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹›XZ[‘›˜ÊB‚‚YYˆÙ]Ú[™ÝÕ]JÙ[ŠN‚‚B\Ù[‹œÙ]]JÊ‘^˜HØÜ™Y[ˆŠJB‚‚YYˆÝ[TÙ[XÝÜŠÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÝŠÙ[XÝ[Û–ÌJB‚BB]\H\œÝš\
+
+KœÜ]
+ŠˆŠB‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹›XZ[‘›˜ËÝ[TÙ[XÝÜ”ØÜ‹[
+\ÌWJK[
+\ÌJJB‚‚YYˆ^]
+Ù[ŠN‚‚BZ\ÓÚËÛÛÜˆHÚXÚÔÝ[Q[
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YKYJB‚BZYˆ\ÓÚÈOHÈŽ‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YHH[
+\ÓÚÊB‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YHHÛÛÜ‚‚B\Ù[‹˜ÛÜÙJ
+B‚BB‚YYˆØ]™JÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÝŠÙ[XÝ[Û–ÌJB‚BB]\H\œÝš\
+
+KœÜ]
+ŠˆŠB‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YHH[
+\ÌJB‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\˜[YHH[
+\ÌWJB‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\K˜[YHH\Ì—B‚B\Ù[‹˜ÛÜÙJ
+B‚BB‚YYˆXZ[‘›˜ÊÙ[ŠN‚‚B\Ù[‹œÙ]Ú[™ÝÕ]J
+B‚B\Ù[‹›\ÝH×B‚BXÈHHH‚BY›Üˆ[ˆ˜[™ÙJKPVÐÔ‘QS”ÊN‚‚BB]\HÚXÚÔØÜ™Y[Š
+H‚BBZYˆOHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\‹˜[YN‚‚BBBXHHÂ‚BBZYˆ\‚‚BBBXÈ
+ÏHB‚BBB\ËÛÛÜ”ÈHÚXÚÔÝ[Q[
+
+B‚BBBZ][HHÜÝŠ
+JÈŠˆŠÜÊÈŠˆŠØÛÛÜ”×B‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJÌJKÚ^™OJËÌÊK›ÛLÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠKÛÛÜZ[
+	ÌL	ËMŠK^JÝŠÊJÈ‹ˆŠJJB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJŒMJKÚ^™OJKÌÊK›ÛLÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠK^JŠŠŠˆˆ
+ÈÝŠ
+H
+Èˆ
+ŠŠˆŠJJB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJLLŠKÚ^™OJKÌÊK›ÛLKÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠKÛÛÜZ[
+	Ì™˜ØÌ	ËMŠK^JÊ”Ý[NˆŠJÈˆˆ
+ÈÊJJB‚BBBZYˆÈOHÈŽ‚‚BBBB\^HØY^X\
+ÒÒS”U
+È	ÜÝ[KÉÊÜÊÉËØ—Ýœ™ÉÊB‚BBBBZ][K˜\[™
+][PÛÛ[[žT^X\
+ÜÏJÌ
+KÚ^™OJNMÊK™Ï\^˜XÚØÛÛÜZ[
+	Ì™™™™™‰ËMŠJJB‚BBBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJÌMKÍÊKÚ^™OJMLÌÊK›ÛL^H•]H‹ÛÛÜ—ÜÙ[Z[
+	Ì™ŒÌÌ	ËMŠKÛÛÜZ[
+ÛÛÜ”Ëœ™\XÙJ	ÈÉË	Ì	ÊKMŠJJB‚BBB\Ù[‹›\Ý˜\[™
+][JB‚B\Ù[–ÉÛ\Ý	×K›œÙ]\Ý
+Ù[‹›\Ý
+B‚B\Ù[–È›\Ý—Kš[œÝ[˜ÙK›[Ý™TÙ[XÝ[Û•ÊJB‚‚YYˆ™XXÝ]˜]JÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÝŠÙ[XÝ[Û–ÌJB‚BB]\H\œÝš\
+
+KœÜ]
+ŠˆŠB‚BB]\ˆHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÜØÜ™Y[‹Hˆ
+È\ÌH
+È‹œ™È‚‚BB]žN‚‚BBBZYˆš[Q^\ÝÊ\ŠN‚‚BBBB\Ù[–ÈœØÜ—Ü™]šY]È—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[J\ŠB‚BBBY[ÙNˆ‚BBBB\Ù[–ÈœØÜ—Ü™]šY]È—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[J
+ÒÒS”U
+È››Ë\™]šY]Ëœ™ÈŠJH‚BBBYœ›ÛHØÜ™Y[œË‘ÌMÜØÜ™Y[œÈ[\ÜÌM×Ù^˜TØÜ™Y[‚B‚BBB]\HÌM×Ù^˜TØÜ™Y[‹™Ù]
+ÝŠ\ÌJJB‚BBB]\H\œÜ]
+—ˆŠB‚BBBY›ÜˆH[ˆ\‚‚BBBBZYˆ™ÌMÜXÛÛˆˆ[ˆN‚‚BBBBB]\ˆH
+KœÜ]
+	ÜÚ^™OH‰ÊVÌWJKœÜ]
+	È‰ÊVÌB‚BBBBB]\ˆH\‹œÝš\
+
+KœÜ]
+	Ë	ÊB‚BBBBBXœ™XZÂ‚BBBZYˆ[Š\ŠHOHŽ‚‚BBBB\Ù[–Èœ™\È—KœÙ]^
+Ê”XÛÛˆ]ŠJÈŽˆŠØÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YJÈ‹Èˆ
+ÈXÛÛ”Ú^™J\–ÌJÈ‹ŠÝ\–ÌWJJB‚BBBY[ÙN‚‚BBBB\Ù[–Èœ™\È—KœÙ]^
+ˆŠB‚BBY^Ù\ˆ\ÜÈBBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈÙ[XÝXÛÛœÑ\Ü^YY
+ØÜ™Y[ŠNˆ‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOHœÙ[XÝXÛÛœÔØÜ™Y[ˆˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŒLÎ‹ÍMÈˆ]OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ‚ˆÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHKŒÈˆÚ^™OHŒÌMKŒÈˆ”ÜÚ][ÛHŒˆˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒÌÈˆÚ^™OHŽLËLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHŽLËÌÈˆÚ^™OHŽLËLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚ˆSX™[ÜÚ][ÛHŒŽMÈˆÚ^™OHŽLËˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŽLËŽMÈˆÚ^™OHŽLËˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹Ú]L
+N‚‚B\Ù[‹Ú]HÚ]‚B\Ù[‹œÙ\ÜÚ[ÛˆHÙ\ÜÚ[Û‚‚B\Ù[‹œÚÚ[ˆHÙ[XÝXÛÛœÑ\Ü^YYœÚÚ[‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹›\ÝH×B‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[‹ØZ\HH‹ÛY[RXÛÛœËÈ‚‚B\Ù[‹œ›™ÈHPVPÓÓ”Â‚BZYˆÙ[‹Ú]OH‚‚BBZYˆÙ[‹Ú]OHN‚‚BBB\Ù[‹œØ[[HHÈ˜]—ÜÙ]\‹œÙ]\‹œÝ[™žWÜ™\Ý\Û\Ý‹œÞ\Ý[WÜÙ[XÝ[Ûˆ‹[Y\—ÙY]‹[™\—ÜÙ]\‹š[™›×ÜØÜ™Y[ˆ‹›X[X[ÜØØ[ˆ‹›™]ÛÜš×ÜÙ]\—B‚BBY[ÙN‚‚BBB\Ù[‹œØ[[HHÈŒ‹ŒH‹Œˆ‹ŒÈ‹ŒŽ‹ŒÌˆ‹ŒÎ‹È‹ŒŒÈ—B‚BBB\Ù[‹ØZ\HH‹ÝÙX]\’XÛÛœËÈ‚‚BB^HH‚BB[Ù™ˆH‚BBY›Üˆ[ˆ˜[™ÙJJN‚‚BBB\Ù[–ÈšXÛÉ\Èˆ	HHH^X\
+
+B‚BBBZYˆˆN‚‚BBBB^HHÍÍB‚BBBB[Ù™ˆH‚‚BBBY[YˆˆŽ‚‚BBBB^HHNÂ‚BBBB[Ù™ˆHÂ‚BBB\Ù[‹œÚÚ[ˆ
+ÏH	ÏÚYÙ]˜[YOHšXÛÉÊÜÝŠ
+JÉÈˆÜÚ][ÛH‰ÊÜÝŠJÊ[Ù™ŠJŒÌ
+JÉË	ÊÜÝŠMÊÞJJÉÈˆÚ^™OHŒÌNÈˆ”ÜÚ][ÛHŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ[]\ÝH˜›[™ˆÏ‰Â‚BY[ÙN‚‚BB\Ù[–ÈœØÜ—Ü™]šY]È—HH^X\
+
+B‚BB\Ù[‹œÚÚ[ˆ
+ÏHˆˆÚYÙ]˜[YOHœØÜ—Ü™]šY]ÈˆÜÚ][ÛHKMˆˆÚ^™OHÍŽÌˆˆ”ÜÚ][ÛHŒˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ[]\ÝH˜›[™‹Ïˆˆˆ‚‚B\Ù[‹œÚÚ[ˆ
+ÏHˆˆÜØÜ™Y[ˆˆˆ‚‚B\Ù[–ÉÛ\Ý	×HH[X“\Ý
+Ù[‹›\Ý
+B‚B\Ù[–ÉÛ\Ý	×K›Û”Ù[XÝ[ÛÚ[™ÙY˜\[™
+Ù[‹œ™XXÝ]˜]JBBB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+ÉÕÚ^˜\™XÝ[ÛœÉË	ÐÛÛÜXÝ[ÛœÉ×K‚B^Â‚BBH™Ü™Y[ˆŽˆÙ[‹œØ]™K‚BBH›ÚÈŽˆÙ[‹œØ]™K‚BBHœ™YŽˆÙ[‹˜ÛÜÙK‚BBH˜˜XÚÈŽˆÙ[‹˜ÛÜÙB‚B_JH‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹›XZ[‘›˜ÊB‚‚YYˆÙ]Ú[™ÝÕ]JÙ[ŠN‚‚B\Ù[‹œÙ]]JÊÚÛÜÙHXÛÛœÈŠJB‚‚YYˆØ]™JÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÙ[XÝ[Û–ÌB‚BBZYˆ\OHŠˆŽ‚‚BBBZYˆÙ[‹Ú]OH‚‚BBBBZYˆÙ[‹Ú]OHN‚‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽK˜[YHH[
+\
+B‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽKœØ]™J
+B‚BBBBY[ÙN‚‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ì‹˜[YHH[
+\
+B‚BBBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ì‹œØ]™J
+B‚BBBY[ÙN‚‚BBBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YHH[
+\
+B‚B\Ù[‹˜ÛÜÙJ
+B‚BB‚YYˆXZ[‘›˜ÊÙ[ŠN‚‚B\Ù[‹œÙ]Ú[™ÝÕ]J
+B‚B\Ù[‹›\ÝH×B‚BXHHÈH‚BY›Üˆ[ˆ˜[™ÙJKÙ[‹œ›™ÊN‚‚BBZYˆÙ[‹Ú]OH‚‚BBB[[HH‚BBB]\H˜[ÙB‚BBBY›ÜˆØ[\H[ˆÙ[‹œØ[[N‚‚BBBBYš[TØ[\HHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+ÈÙ[‹ØZ\H
+ÈÝŠ
+H
+È‹Èˆ
+ÈØ[\H
+È‹œ™È‚‚BBBBZYˆš[Q^\ÝÊš[TØ[\JN‚‚BBBBB[[H
+ÏHB‚BBBZYˆ[HOHN‚‚BBBB]\HYB‚BBY[ÙN‚‚BBB]\HÚXÚÒXÛÛœÊ
+H‚BBZYˆ
+OHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒK˜[YH[™Ù[‹Ú]OH
+HÜˆ
+OHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\Ì‹˜[YH[™Ù[‹Ú]OHŠHÜˆ
+OHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŽK˜[YH[™Ù[‹Ú]OHJN‚‚BBBXHHHB‚BBZYˆ\‚‚BBBXÈ
+ÏHB‚BBBZ][HHÜÝŠ
+WB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJ
+KÚ^™OJL‹ÌÊK›ÛL^JÝŠÊJÈ‹ˆŠJJB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJË
+KÚ^™OJMKÌÊK›ÛL^JŠŠŠˆˆ
+ÈÝŠ
+H
+Èˆ
+ŠŠˆŠJJB‚BBB\Ù[‹›\Ý˜\[™
+][JB‚BZYˆÈOH‚‚BBZ][HHÈŠˆ—B‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJ
+KÚ^™OJMKÌÊK›ÛL^JŠŠŠˆˆ
+ÈÊ“›È]HŠH
+Èˆ
+ŠŠˆŠJJB‚BB\Ù[‹›\Ý˜\[™
+][JB‚B\Ù[–ÉÛ\Ý	×K›œÙ]\Ý
+Ù[‹›\Ý
+B‚B\Ù[–È›\Ý—Kš[œÝ[˜ÙK›[Ý™TÙ[XÝ[Û•ÊJB‚‚YYˆ™XXÝ]˜]JÙ[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–ÉÛ\Ý	×K™Ù]Ý\œ™[
+
+B‚BZYˆÙ[XÝ[ÛŽ‚‚BB]\HÙ[XÝ[Û–ÌB‚BBZYˆ\OHŠˆŽ‚‚BBBZYˆÙ[‹Ú]OH‚‚BBBBZHH‚BBBBY›ÜˆØ[\H[ˆÙ[‹œØ[[N‚‚BBBBBYš[TØ[\HHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+ÈÙ[‹ØZ\H
+È\
+È‹Èˆ
+ÈØ[\H
+È‹œ™È‚‚BBBBB]žN‚‚BBBBBBZYˆš[Q^\ÝÊš[TØ[\JN‚‚BBBBBBB\Ù[–ÈšXÛÉ\Èˆ	HWKš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[Jš[TØ[\JB‚BBBBBBY[ÙNˆ‚BBBBBBBZYˆÙ[‹Ú]OHN‚‚BBBBBBBB\Ù[–ÈšXÛÉ\Èˆ	HWKš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[JÒÒS”U
+È›Y[KÝ[™Yš[™Yœ™ÈŠH‚BBBBBBBY[ÙN‚‚BBBBBBBB\Ù[–ÈšXÛÉ\Èˆ	HWKš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[JÒÒS”U
+ÈšXÛÛœËÌÌŒœ™ÈŠB‚BBBBBY^Ù\ˆ\ÜÈ‚BBBBBZH
+ÏHB‚BBBY[ÙN‚‚BBBB]\ˆHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒÎK˜[YH
+È‹Û[Ü™WÚXÛÛœËÜØÜ—Ü™]ËÚXÛÛœËHˆ
+È\
+È‹œ™È‚‚BBBB]žN‚‚BBBBBZYˆš[Q^\ÝÊ\ŠN‚‚BBBBBB\Ù[–ÈœØÜ—Ü™]šY]È—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[J\ŠB‚BBBBBY[ÙNˆ‚BBBBBB\Ù[–ÈœØÜ—Ü™]šY]È—Kš[œÝ[˜ÙKœÙ]^X\œ›ÛQš[J
+ÒÒS”U
+È››Ë\™]šY]Ëœ™ÈŠJH‚BBBBY^Ù\ˆ\ÜÈBBˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈ\ÝÜžTØÜ™Y[ŠØÜ™Y[ŠN‚‚\ÚÚ[ˆHˆˆØÜ™Y[ˆ˜[YOH™ÌM×Ò\ÝÜžHˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŒMLHˆ”ÜÚ][ÛHŽˆ]OHˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆˆÚYÙ]˜[YOHÚ[™Ù[Ù×Ú[™›ÈˆÜÚ][ÛHŒMKÈˆÚ^™OHŒMŒŒÍˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒÍÍHˆÚ^™OHŽKLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHŽKÍÍHˆÚ^™OHŽKLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚ˆÚYÙ]˜[YOH›[™WÜ™YˆÜÚ][ÛHŒÍHˆÚ^™OHŽKˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆÚYÙ]˜[YOH›[™WÙÜ™Y[ˆˆÜÚ][ÛHŽKÍHˆÚ^™OHŽKˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ÜØÜ™Y[ˆˆˆ‚ˆ‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹™\Hˆ‹™]ÏHˆŠN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹œÚÚ[ˆH\ÝÜžTØÜ™Y[‹œÚÚ[‚‚B\Ù[‹›™]ÈH™]Â‚B\Ù[‹™\ˆH™\‚‚B\Ù[‹œ™\ÈHÙ[‹™\ˆOHˆˆÜˆÙ[‹™\ˆOHÊ”™\Ý[ŠB‚B\Ù[‹›\ÝH×B‚B\Ù[–ÉÐÚ[™Ù[Ù×Ú[™›É×HH[X“\Ý
+Ù[‹›\Ý
+BB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊÛÜÙHŠHYˆÙ[‹œ™\È[ÙHÊØ[˜Ù[ŠJB‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê•\]HŠJB‚B\Ù[–È›[™WÜ™Y—HHX™[
+ˆŠB‚B\Ù[–È›[™WÙÜ™Y[ˆ—HHX™[
+ˆŠB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+ÈÛÛÜXÝ[ÛœÈ‹”Ù]\XÝ[ÛœÈ‹‘\™XÝ[ÛXÝ[ÛœÈ—K‚B^Âˆ™Ü™Y[ˆŽˆÙ[‹\]Kˆ›ÚÈŽˆÙ[‹\]Kˆœ™YŽˆÙ[‹™^]ˆ˜Ø[˜Ù[ŽˆÙ[‹™^]ˆ˜›YHŽˆÙ[‹™^]ˆžY[ÝÈŽˆÙ[‹™^]‚B_KLŠB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹œ™XY[™ÚÝÊBB‚‚YYˆ^]
+Ù[ŠN‚‚BZYˆÙ[‹œ™\Î‚‚BB\Ù[‹˜ÛÜÙJ
+B‚BY[ÙN‚‚BB\Ù[‹˜ÛÜÙJ˜[ÙJB‚‚YYˆ\]JÙ[ŠN‚‚BZYˆÙ[‹œ™\Î‚‚BB\Ù[‹˜ÛÜÙJ
+B‚BY[ÙN‚‚BB\Ù[‹˜ÛÜÙJYJB‚BB‚YYˆÙ]Ú[™ÝÕ]JÙ[‹
+N‚‚B\Ù[‹œÙ]]J
+B‚‚YYˆ™XY[™ÚÝÊÙ[ŠN‚‚BZYˆÙ[‹œ™\Î‚‚BB\Ù[–ÈšÙ^WÙÜ™Y[ˆ—KšYJ
+B‚BB\Ù[–ÈšÙ^WÜ™Y—K›[Ý™JTÚ[
+L‹ÍÍJJB‚BB\Ù[–È›[™WÜ™Y—K›[Ý™JTÚ[
+L‹ÍJJB‚BB\Ù[–È›[™WÙÜ™Y[ˆ—KšYJ
+B‚B]HÊÚ[™Ù[ÙÈŠB‚BZ][HH×B‚BXHHÙ[‹™\ˆOHÊ”™\Ý[ŠB‚BZYˆN‚‚BB]HÙ[‹™\‚‚BY[YˆÙ[‹›™]ÈOHˆŽ‚‚BB]
+ÏHˆ™\‹ˆŠÜÙ[‹™\‚‚BBYˆHÙ[‹›™]Â‚BY[ÙN‚‚BBYˆHQÒS”U
+ÈTÕBB‚B\Ù[‹œÙ]Ú[™ÝÕ]J
+B‚B]žN‚‚BBZYˆN‚‚BBBYˆHÙ[‹›™]ËœÜ]
+—ˆŠB‚BBBXÛÛÜZ[
+Œ‹MŠB‚BBB^Ù™ˆHÌ‚‚BBY[ÙN‚‚BBB^Ù™ˆH‚BBBYˆHÜ[Š‹	Ü‰ÊKœ™XY[™\Ê
+B‚BBY›Üˆ[ˆŽˆ‚BBB]Hœ™\XÙJ—ˆ‹ˆŠB‚BBBZYˆOHˆˆ[™[Š
+Hˆ‚‚BBBBZ][HHÝB‚BBBBZYˆN‚‚BBBBB\HÚ]H‚‚BBBBBZYˆÊ”ÕPÐÑTÔÑ•SŠH[ˆ‚‚BBBBBB\H™Ü™Y[ˆ‚B‚BBBBBY[YˆÊ‘T”“ÔˆŠH[ˆÜˆÊ”T•PSÕPÐÑTÔÈŠH[ˆ‚‚BBBBBB\Hœ™Y‚‚BBBBBZ][K˜\[™
+][PÛÛ[[žT^X\[U\Ý
+ÜÏJÊKÚ^™OJŒ‹ŒÊK™ÏSØY^X\
+‰\ÚXÛÛœËÉ\Ëœ™Èˆ	H
+ÒÒS”U
+JJJB‚BBBBY[ÙN‚‚BBBBBZYˆŠˆˆ[ˆ‚‚BBBBBBXÛÛÜZ[
+Œ™ŽXÌ‹MŠBB‚BBBBBY[ÙN‚‚BBBBBBXÛÛÜZ[
+Œ™™™™™ˆ‹MŠB‚BBBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJÙ™‹
+KÚ^™OJMŒŒ^Ù™‹ÌÊK›ÛL^]ÛÛÜXÛÛÜŠJB‚BBBB\Ù[‹›\Ý˜\[™
+][JB‚BY^Ù\‚\\ÜÂB‚BZYˆ[ŠÙ[‹›\Ý
+HOH‚‚BBZ][HHÈŠˆ—B‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJ
+KÚ^™OJ‹ÌÊK›ÛL^WÊ“›ÈÚ[™Ù[ÙÈ[™›ÈHHHŠJJB‚BB\Ù[‹›\Ý˜\[™
+][JB‚B\Ù[–ÉÐÚ[™Ù[Ù×Ú[™›É×K›œÙ]\Ý
+Ù[‹›\Ý
+B‚B\Ù[–ÉÐÚ[™Ù[Ù×Ú[™›É×KœÙ[XÝ[Û‘[˜X›Y
+
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈÙ[XÝÜÚ][ÛŠØÜ™Y[ŠNˆ‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹\SØšHˆŠN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹\SØšˆH\SØš‚‚BZYˆÙ[‹\SØšˆOH›Û]]HŽˆ‚BB\Ù[‹˜[YVHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LK˜[YB‚BB\Ù[‹˜[YVHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\L‹˜[YB‚BB\Ù[‹œÚÚ[“˜[YHHÉÕ›Û[YI×B‚BBYœ›ÛHÛÛ\Û™[Ë•›Û[YP˜\ˆ[\Ü›Û[YP˜\‚‚BB\Ù[‹›Û[YP˜\ˆH›Û[YP˜\Š
+BBB‚BB\Ù[–È•›Û[YH—HHÙ[‹›Û[YP˜\ˆ‚BY[YˆÙ[‹\SØšˆOH›™]ÜYYŽˆ‚BB\Ù[‹˜[YVHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒL˜[YB‚BB\Ù[‹˜[YVHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLK˜[YH‚BBZYˆÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YHOHŒˆŽ‚‚BBB\Ù[‹œÚÚ[ˆHˆˆØÜ™Y[ˆ˜[YOH“™]ÜYYÜÈˆÜÚ][ÛHŒˆÚ^™OHŒÌLˆ”ÜÚ][ÛHŒˆ]OH“™]ÜYYÜÈˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›XÚÈˆ›YÜÏHÙ“›Ð›Ü™\ˆ‚‚BBBOT^X\ÜÚ][ÛHŒˆÚ^™OHŒÌLˆ^X\HšÙÛ\ÜÌMËÚXÛÛœËÛ™]ÜYYœ™Èˆ”ÜÚ][ÛHÈˆ[]\ÝH›Ù™ˆˆÏ‚‚BBBOÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H™ÌMÔÚÝÓ™]ÜYYˆÜÚ][ÛHŽˆÚ^™OHŒNLLˆ”ÜÚ][ÛHŽˆ›ÛH”™YÝ[\ŒŽÌˆˆ›ÕÜ˜\HŒHˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[HŒH‹Ï‚‚BBBOÜØÜ™Y[ˆˆˆ‚‚BBY[ÙN‚‚BBB\Ù[‹œÚÚ[ˆHˆˆØÜ™Y[ˆ˜[YOH“™]ÜYYÜÈˆÜÚ][ÛHŒˆÚ^™OHŒŒŒˆ”ÜÚ][ÛHŒˆ]OH“™]ÜYYÜÈˆ˜XÚÙÜ›Ý[™ÛÛÜH˜[œÜ\™[ˆ›YÜÏHÙ“›Ð›Ü™\ˆ‚‚BBBOÚYÙ]ÛÝ\˜ÙOH™ÛØ˜[Ý\œ™[[YHˆ™[™\H™ÌMÔÚÝÓ™]ÜYYˆÜÚ][ÛHŒˆÚ^™OHŒŒŒˆ”ÜÚ][ÛHŽˆ›ÛH”š]™LÎÌÈˆ›ÕÜ˜\HŒHˆ˜[YÛH˜Ù[\ˆˆ[YÛHœšYÚˆ˜XÚÙÜ›Ý[™ÛÛÜH[ŒÍLÙMMÍYHˆÚYÝÐÛÛÜHˆÌPMNMˆˆÚYÝÓÙ™œÙ]H‹LKLHˆ˜[œÜ\™[HŒH‹Ï‚‚BBBOÜØÜ™Y[ˆˆˆ‚‚BY[YˆÙ[‹\SØšˆOHœÜÝ\ˆŽˆ‚BB\Ù[‹˜[YVHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YB‚BB\Ù[‹˜[YVHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YH‚BB\Ù[‹œÚÚ[ˆHˆˆØÜ™Y[ˆ˜[YOH”ÜÝ\ˆˆÜÚ][ÛHŒˆÚ^™OH‰\Èˆ”ÜÚ][ÛHŒˆ]OH”ÜÝ\ˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›XÚÈˆ›YÜÏHÙ“›Ð›Ü™\ˆˆ‚BBOÚYÙ]˜[YOH˜ÛÝ™\ˆˆÜÚ][ÛHŒˆÚ^™OH‰\Èˆ^X\HšÙÛ\ÜÌMËÝšY[Ù‹ØÛÝ™\—Û›Ëœ™Èˆ[]\ÝH›Ù™ˆˆÏ‚‚BBOÜØÜ™Y[ˆˆˆˆ	H
+ÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YKÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ‹˜[YJH‚BB\Ù[–È˜ÛÝ™\ˆ—HH^X\
+
+B‚BY[ÙNˆ‚BB\Ù[‹œÚÚ[ˆHˆˆØÜ™Y[ˆ˜[YOH”ÜXÚX[ØÜ™Y[ˆˆÜÚ][ÛHŒLMMKNMHˆÚ^™OHŽLLˆˆ”ÜÚ][ÛHŽˆ]OH‘XÛH[™Ý]\Èˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆˆ‚BBOÚYÙ]˜[YOH™XÛWÚ][\Èˆ›ÛH”š]™LÎÌˆÜÚ][ÛHËMHˆ”ÜÚ][ÛHŒˆˆÚ^™OHŒMLLÌˆˆ˜[YÛHÜˆ[YÛH›Yˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[HŒHˆÏ‚‚BBOÚYÙ]˜[YOH™XÛWÕ˜[Y\Èˆ›ÛH”š]™LÎÌˆÜÚ][ÛHŽM‹MHˆ”ÜÚ][ÛHŒÈˆÚ^™OHŒÌÍËLÌˆˆ˜[YÛHÜˆ[YÛH›Yˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[HŒHˆÏ‚‚BBOÚYÙ]˜[YOHÚ][\Èˆ›ÛH”š]™LÎÌˆÜÚ][ÛHÍKMHˆ”ÜÚ][ÛHŒˆˆÚ^™OHŒMLˆ˜[YÛHÜˆ[YÛH›Yˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[HŒHˆÏ‚‚BBOÚYÙ]˜[YOHÕ˜[Y\Èˆ›ÛH”š]™LÎÌˆÜÚ][ÛHMÍËMHˆ”ÜÚ][ÛHŒÈˆÚ^™OHŒŒÌ‹ˆ˜[YÛHÜˆ[YÛH›Yˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[HŒHˆÏˆ‚BBOÜØÜ™Y[ˆˆˆˆ‚BB\Ù[–ÉÙXÛWÚ][\É×HHX™[
+PÓWÓP‘SÊB‚BB\Ù[–ÉÙXÛWÕ˜[Y\É×HHX™[
+Ó‘UJB‚BB\Ù[–ÉÝÚ][\É×HHX™[
+•šY[ÈQ—]Y[ÈQ—”ÔˆQ—”UQ—•Q—”ÒQ—•ÒQ—“Ó’Q—•‹ˆ›Ü›X]—•‹ˆÚ^™N—]Y[È\N—Kˆ˜XÚÜÎ—”ÝX]\ÎˆŠB‚BB\Ù[–ÉÝÕ˜[Y\É×HHX™[
+Ó•
+B‚BB\Ù[‹˜[YVHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL˜[YB‚BB\Ù[‹˜[YVHHÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+È•Ú^˜\™XÝ[ÛœÈ—K‚B^Â‚BBH›YŽˆÙ[‹›Y‚BBH\ŽˆÙ[‹\‚BBHœšYÚŽˆÙ[‹œšYÚ‚BBH™ÝÛˆŽˆÙ[‹™ÝÛ‹‚BBH›ÚÈŽˆÙ[‹›ÚË‚BBH˜˜XÚÈŽˆÙ[‹˜ÛÜÙB‚B_KLJBBB‚B\Ù[‹›[Ý™U[Y\ˆHU[Y\Š
+B‚B]žN‚‚BB\Ù[‹›[Ý™U[Y\—ØÛÛ›ˆHÙ[‹›[Ý™U[Y\‹[Y[Ý]˜ÛÛ›™XÝ
+Ù[‹œÙ]™]ÔÜÚ][ÛŠB‚BY^Ù\]šX]Q\œ›ÜŽ‚‚BB\Ù[‹›[Ý™U[Y\‹˜Ø[˜XÚË˜\[™
+Ù[‹œÙ]™]ÔÜÚ][ÛŠB‚B\Ù[‹›[Ý™U[Y\‹œÝ\
+
+B‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹œÙ]›Û
+B‚‚YYˆÙ]›Û
+Ù[ŠN‚‚BZYˆÙ[‹\SØšˆOH›Û]]HŽ‚‚BBYœ›ÛH[šYÛXH[\ÜQ•›Û[YXÛÛ›Û‚BB\Ù[‹›Û[YP˜\‹œÙ]˜[YJ[
+Q•›Û[YXÛÛ›Û™Ù][œÝ[˜ÙJ
+K™Ù]›Û[YJ
+JJB‚BY[YˆÙ[‹\SØšˆOHœÜÝ\ˆŽ‚‚BB\Ù[–È˜ÛÝ™\ˆ—Kš[œÝ[˜ÙKœÙ]ØØ[JJB‚BBB‚YYˆÙ]™]ÔÜÚ][ÛŠÙ[ŠN‚‚B\Ù[‹š[œÝ[˜ÙK›[Ý™JTÚ[
+Ù[‹˜[YVÙ[‹˜[YVJJB‚B\Ù[‹›[Ý™U[Y\‹œÝ\
+
+B‚‚YYˆY
+Ù[ŠN‚‚B\Ù[‹˜[YVOHL‚BZYˆÙ[‹˜[YV‚‚BB\Ù[‹˜[YVH‚‚YYˆ\
+Ù[ŠN‚‚B\Ù[‹˜[YVHOHL‚BZYˆÙ[‹˜[YVH‚‚BB\Ù[‹˜[YVHH‚‚YYˆšYÚ
+Ù[ŠN‚‚B\Ù[‹˜[YV
+ÏHL‚BZYˆÙ[‹˜[YVˆNŒ‚‚BB\Ù[‹˜[YVHNŒ‚‚YYˆÝÛŠÙ[ŠN‚‚B\Ù[‹˜[YVH
+ÏHL‚BZYˆÙ[‹˜[YVHˆL‚‚BB\Ù[‹˜[YVHHL‚‚YYˆÚÊÙ[ŠN‚‚BZYˆÙ[‹˜[YVOH‚‚BB\Ù[‹˜[YVHB‚BZYˆÙ[‹˜[YVHOH‚‚BB\Ù[‹˜[YVHHB‚BZYˆÙ[‹\SØšˆOH›Û]]HŽ‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\LK˜[YHHÙ[‹˜[YV‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\L‹˜[YHHÙ[‹˜[YVBBBB‚BY[YˆÙ[‹\SØšˆOHœÜÝ\ˆŽ‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒ˜[YHHÙ[‹˜[YV‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒK˜[YHHÙ[‹˜[YVBB‚BY[YˆÙ[‹\SØšˆOH›™]ÜYYŽ‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒL˜[YHHÙ[‹˜[YV‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒŒLK˜[YHHÙ[‹˜[YVB‚BY[ÙN‚‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒL˜[YHHÙ[‹˜[YV‚BBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLK˜[YHHÙ[‹˜[YVB‚B\Ù[‹˜ÛÜÙJ
+BˆÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÈÂ˜Û\ÜÈÙX]\Ú]TÙ[XÝÜŠØÜ™Y[ŠN‚‚Hˆˆ“ÒËYš]™[ˆÙ[XÝÜˆ›ÜˆÚ]Y\È[™XYH™\Ù[[ˆÙ]ËÛ^WØÚ]WÐÛÙKˆˆˆ‚‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOHÙX]\Ú]TÙ[XÝÜˆˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHŽLÌˆ]OH•ÙX]\ˆ›ÜˆÚ]Hˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™‚‚BOÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHŒKHˆÚ^™OHŽLNLˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™‹Ï‚‚BOÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒKŒÍHˆÚ^™OHLˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÌˆˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™Y‹Ï‚‚BOÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHÍKŒÍHˆÚ^™OHLˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÌˆˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆ‹Ï‚‚OÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹Ý\œ™[S›Û™JN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ê”Ù[XÝŠJB‚B\Ù[‹š][\ÈH×B‚BXÝ\œ™[[™^H‚BY›Üˆ˜[YKX™[[ˆÙ]Ú]Y\ÐÛÙJ
+N‚‚BBZ][HHÝ˜[YWB‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMK
+KÚ^™OJŒŠK›ÛL‹ÛÛÜ—ÜÙ[Z[
+Œ™ŽXÌ‹MŠK^\ÝŠX™[
+JJB‚BBZYˆ˜[YHOHÝ\œ™[‚‚BBBXÝ\œ™[[™^H[ŠÙ[‹š][\ÊB‚BB\Ù[‹š][\Ë˜\[™
+][JB‚B\Ù[–È›\Ý—HH[X“\Ý
+Ù[‹š][\ÊB‚B\Ù[–È›\Ý—K›œÙ]][RZYÚ
+JB‚B\Ù[‹˜Ý\œ™[[™^HÝ\œ™[[™^‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹—Ü™\ÝÜ™TÙ[XÝ[ÛŠB‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+È”Ù]\XÝ[ÛœÈ‹‘\™XÝ[ÛXÝ[ÛœÈ‹ÛÛÜXÝ[ÛœÈ—KÂ‚BBH›ÚÈŽˆÙ[‹œÙ[XÝ™Ü™Y[ˆŽˆÙ[‹œÙ[XÝ˜Ø[˜Ù[ŽˆÙ[‹˜ÛÜÙKœ™YŽˆÙ[‹˜ÛÜÙK‚BBH\ŽˆÙ[–È›\Ý—K\™ÝÛˆŽˆÙ[–È›\Ý—K™ÝÛ‹‚BBH›YŽˆÙ[–È›\Ý—KœYÙU\œšYÚŽˆÙ[–È›\Ý—KœYÙQÝÛ‹‚B_KLJB‚‚YYˆÜ™\ÝÜ™TÙ[XÝ[ÛŠÙ[ŠN‚‚BZYˆÙ[‹š][\È[™Ù[–È›\Ý—Kš[œÝ[˜ÙH\È›Ý›Û™N‚‚BB\Ù[–È›\Ý—Kš[œÝ[˜ÙK›[Ý™TÙ[XÝ[Û•ÊÙ[‹˜Ý\œ™[[™^
+B‚‚YYˆÙ[XÝ
+Ù[ŠN‚‚B\Ù[XÝ[ÛˆHÙ[–È›\Ý—K™Ù]Ý\œ™[
+
+B‚B\Ù[‹˜ÛÜÙJÝŠÙ[XÝ[Û–ÌJHYˆÙ[XÝ[Ûˆ[™ÝŠÙ[XÝ[Û–ÌJHOH“›Û™Hˆ[ÙH›Û™JB‚‚˜Û\ÜÈÚ]Qš[™\ŠØÜ™Y[ŠNˆ‚‚\ÚÚ[ˆHˆˆ‚‚OØÜ™Y[ˆ˜[YOH˜Ú]Qš[™\ˆˆÜÚ][ÛH˜Ù[\‹LHˆÚ^™OHŒMLMHˆ]OH•È[Ý™H[ˆ›ÝY[H\ÙH
+ËËHÜˆœ]
+ËËHˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ‚ˆÚYÙ]˜[YOHš[™›Èˆ›ÛH”š]™LÎÌÌÈˆÜÚ][ÛHKÈˆ”ÜÚ][ÛHŒHˆÚ^™OHMÌÍÈˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHÚ]HˆÚYÝÐÛÛÜHˆÌPMNMˆˆÚYÝÓÙ™œÙ]H‹L‹LHˆÏ‚ˆSX™[^H‹Ù]ËÛ^WØÚ]WÐÛÙKˆˆ›ÛH”š]™LÎÌÌÈˆÜÚ][ÛHÌKÈˆ”ÜÚ][ÛHŒHˆÚ^™OHMÌÍÈˆ˜[YÛH˜Ù[\ˆˆ[YÛH˜Ù[\ˆˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHÚ]HˆÚYÝÐÛÛÜHˆÌPMNMˆˆÚYÝÓÙ™œÙ]H‹L‹LHˆÏ‚ˆÚYÙ]˜[YOH›\ÝˆÜÚ][ÛHŒLˆˆÚ^™OHÎLÍHˆ”ÜÚ][ÛHŒˆˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™‹Ï‚ˆÚYÙ]˜[YOH›^PÚ]HˆÜÚ][ÛHŽLˆˆÚ^™OHÌˆˆ”ÜÚ][ÛHŒˆˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™‹Ï‚‚OÚYÙ]˜[YOHšÙ^WÜ™YˆÜÚ][ÛHŒMHˆÚ^™OHŒÍÍKLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÙÜ™Y[ˆˆÜÚ][ÛHŒÍÍKMHˆÚ^™OHŒÍÍKLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚‚OÚYÙ]˜[YOHšÙ^WÞY[ÝÈˆÜÚ][ÛHÍLMHˆÚ^™OHŒÍÍKLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHžY[ÝÈˆÏ‚‚OÚYÙ]˜[YOHšÙ^WØ›YHˆÜÚ][ÛHŒLLKMHˆÚ^™OHŒÍÍKLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH˜›YHˆÏ‚ˆSX™[ÜÚ][ÛHŒHˆÚ^™OHŒÍÍKˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒÍÍKHˆÚ^™OHŒÍÍKˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHÍLHˆÚ^™OHŒÍÍKˆˆ˜XÚÙÜ›Ý[™ÛÛÜHžY[ÝÈˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒLLKHˆÚ^™OHŒÍÍKˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜›YHˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚‚OÜØÜ™Y[ˆˆˆ‚‚‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹œÚÚ[ˆHÚ]Qš[™\‹œÚÚ[‚‚B\Ù[‹œÙ\ÜÚ[ÛˆHÙ\ÜÚ[Û‚‚B\Ù[‹›\ÝH×B‚B\Ù[‹˜Ú][\ÝH×B‚B\Ù[‹˜[X™[ÈH×Ê‘Y]ŠJÈˆ^WØÚ]K‹‹ˆ‹Ê‘Y][™HŠKÊ‘š[™HÚ]HŠJÈˆ
+
+H‹Ê‘[]H[™HŠKÊ”Ù[XÝŠKÊY[™HŠJÈˆ
+
+H—B‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHX™[
+Ù[‹˜[X™[ÖÍJB‚B\Ù[–ÈšÙ^WØ›YH—HHX™[
+Ù[‹˜[X™[ÖÌ—JB‚B\Ù[–ÈšÙ^WÞY[ÝÈ—HHX™[
+Ù[‹˜[X™[ÖÌJB‚B\Ù[–ÈšÙ^WÜ™Y—HHX™[
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÉÛ\Ý	×HH[X“\ÝŠÙ[‹›\Ý
+B‚B\Ù[–ÉÛ^PÚ]I×HH[X“\Ý
+Ù[‹˜Ú][\Ý
+BB‚B\Ù[–ÉÛ\Ý	×K›œÙ]][RZYÚ
+ÌJB‚B\Ù[–ÉÚ[™›É×HHX™[
+Ê\ŠJÈ‹ÈŠ×Ê™ÝÛˆŠJÈˆ
+ËËHÜˆœ]
+ËËHŠB‚B\Ù[‹™š[™ÈHYB‚B\Ù[‹˜Ú]S]™[Hœ›ÛÝ‚‚B\Ù[‹˜XÝ]™PÛÝ[žHH›Û™B‚B\Ù[‹˜ÛÝ[žS˜[Y\ÈHßB‚B\Ù[‹œÙ[XÝY[™HH›Û™B‚B\Ù[‹›Û[™HH›Û™B‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+ÉÕÚ^˜\™XÝ[ÛœÉË	ÐÛÛÜXÝ[ÛœÉË	Õš\X[Ù^X›Ø\™XÝ[ÛœÉË	ÐÚ[›™[Ù[XÝ˜\ÙPXÝ[ÛœÉ×K‚B^Â‚BBH›™^›Ý\]Y]ŽˆÙ[‹›[Ý™SXZ[›Y[U\‚BBHœ™]›Ý\]Y]ŽˆÙ[‹›[Ý™SXZ[›Y[QÝÛ‹‚BBH™Ü™Y[ˆŽˆÙ[‹œØ]™K‚BBH›ÚÈŽˆÙ[‹œØ]™K‚BBHœ™YŽˆÙ[‹™^]‚BBH˜›YHŽˆÙ[‹™š[™Ú]K‚BBHžY[ÝÈŽˆÙ[‹™Y]PÐË‚BBIÜÚÝÕš\X[Ù^X›Ø\™	ÎˆÙ[‹’Ù^U^‚BBH˜˜XÚÈŽˆÙ[‹™^]‚B_JH‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹™Ù[™\˜]Q]JB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹œÙ]Ú[™ÝÕ]JB‚BB‚YYˆ[Ý™SXZ[›Y[U\
+Ù[ŠN‚‚BZYˆÙ[‹™š[™Î‚‚BB\Ù[–ÉÛ\Ý	×K\
+
+B‚BY[ÙN‚‚BB\Ù[–ÉÛ^PÚ]I×K\
+
+BBB‚BB‚YYˆ[Ý™SXZ[›Y[QÝÛŠÙ[ŠN‚‚BZYˆÙ[‹™š[™Î‚B‚BB\Ù[–ÉÛ\Ý	×K™ÝÛŠ
+BB‚BY[ÙN‚‚BB\Ù[–ÉÛ^PÚ]I×K™ÝÛŠ
+B‚‚YYˆÙ]Ú[™ÝÕ]JÙ[‹HˆŠN‚‚B\Ù[‹œÙ]]JÊ‘š[™HÚ]HŠJÝ
+B‚‚YYˆ^]
+Ù[ŠN‚‚BZYˆ›ÝÙ[‹™š[™Î‚‚BB\Ù[–ÈšÙ^WÞY[ÝÈ—KœÙ]^
+Ù[‹˜[X™[ÖÌJB‚BB\Ù[–ÈšÙ^WØ›YH—KœÙ]^
+Ù[‹˜[X™[ÖÌ—JB‚BB\Ù[‹™š[™ÈHYB‚BB\Ù[–ÉÛ\Ý	×KœÙ[XÝ[Û‘[˜X›Y
+JB‚BB\Ù[–ÉÛ^PÚ]I×KœÙ[XÝ[Û‘[˜X›Y
+
+B‚BB\Ù[–ÈšÙ^WÙÜ™Y[ˆ—KœÙ]^
+Ù[‹˜[X™[ÖÍJB‚BY[YˆÙ[‹˜Ú]S]™[OH˜Ú]Y\ÈŽ‚‚BB\Ù[‹˜Ú]S]™[Hœ›ÛÝ‚‚BB\Ù[‹˜XÝ]™PÛÝ[žHH›Û™B‚BB\Ù[‹™Ù[™\˜]Q]J
+B‚BY[ÙN‚‚BB\Ù[‹˜ÛÜÙJ
+B‚‚YYˆÙ^U^
+Ù[ŠN‚‚BYœ›ÛHØÜ™Y[œË•š\X[Ù^P›Ø\™[\Üš\X[Ù^P›Ø\™‚BZYˆÙ[‹™š[™Î‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™š[™Ú]P[œÝÙ\‹š\X[Ù^P›Ø\™]OWÊ”X\ÙH[\ˆHÚ]H˜[YHŠJÈŽˆ‹^H˜˜[œÚØHž\ÝšXØHŠB‚BY[ÙN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹˜Y™]Ó[™Kš\X[Ù^P›Ø\™]O\Ù[‹˜[X™[ÖÍWK^HˆŠB‚BB‚YYˆš[™Ú]JÙ[ŠN‚‚BZYˆ›ÝÙ[‹™š[™Î‚‚BB]žN‚‚BBB\Ù[‹˜Ú][\Ýœ™[[Ý™JÙ[‹˜Ú][\ÝÜÙ[–ÉÛ^PÚ]I×K™Ù]Ù[XÝ[Û’[™^
+
+WJB‚BBB\Ù[‹Üš]SPÐÊ
+HBB‚BBY^Ù\ˆ\ÜÂ‚BY[ÙN‚B‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹™š[™Ú]P[œÝÙ\‹[œ]›Þ]OWÊ”X\ÙH[\ˆHÚ]H˜[YHŠJÈŽˆ‹^H˜˜[œÚØHž\ÝšXØH‹X^Ú^™OML\OR[œ]•V
+B‚BB‚YYˆØ]™JÙ[ŠN‚‚BZYˆÙ[‹™š[™Î‚‚BB\Ù[XÝ[ÛˆHÙ[–È›\Ý—K™Ù]Ý\œ™[
+
+B‚BBZYˆ›ÝÙ[XÝ[ÛˆÜˆÝŠÙ[XÝ[Û–ÌJHOHŠˆŽ‚‚BBB\™]\›‚‚BB]˜[YHHÝŠÙ[XÝ[Û–ÌJB‚BBZYˆ˜[YKœÝ\ÝÚ]
+˜ÛÝ[ž_ŠN‚‚BBB\Ù[‹˜Ú]S]™[Ù[‹˜XÝ]™PÛÝ[žHH˜Ú]Y\È‹˜[YKœÜ]
+Ÿ‹JVÌWB‚BBB\Ù[‹™Ù[™\˜]Q]J
+B‚BBY[ÙN‚‚BBB\Ù[‹˜\PÐÊ˜[YJB‚BY[ÙN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹˜Y™]Ó[™K[œ]›Þ]O\Ù[‹˜[X™[ÖÍWK^Hˆ‹X^Ú^™OLLŒ\OR[œ]•V
+B‚‚YYˆY]PÐÊÙ[ŠN‚‚BZYˆÙ[‹™š[™Î‚‚BB\Ù[–ÈšÙ^WÞY[ÝÈ—KœÙ]^
+Ù[‹˜[X™[ÖÌWJH‚BB\Ù[‹™š[™ÈH˜[ÙB‚BB\Ù[–ÉÛ\Ý	×KœÙ[XÝ[Û‘[˜X›Y
+
+H‚BB\Ù[–ÉÛ^PÚ]I×KœÙ[XÝ[Û‘[˜X›Y
+JH‚BB\Ù[–ÈšÙ^WÙÜ™Y[ˆ—KœÙ]^
+Ù[‹˜[X™[ÖÍWJB‚BB\Ù[–ÈšÙ^WØ›YH—KœÙ]^
+Ù[‹˜[X™[ÖÌ×JB‚BY[ÙN‚‚BB]žN‚‚BBB\Ù[‹œÙ[XÝY[™HHÙ[–ÉÛ^PÚ]I×K™Ù]Ù[XÝ[Û’[™^
+
+B‚BBB\Ù[‹›Û[™HHÙ[‹˜Ú][\ÝÜÙ[‹œÙ[XÝY[™WB‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[•Ú]Ø[˜XÚÊÙ[‹Üš]QY][™K[œ]›Þ]O\Ù[‹˜[X™[ÖÌWK^\Ù[‹›Û[™VÎ‹LWJÈˆ‹X^Ú^™OML\OR[œ]•V
+B‚BBY^Ù\ˆ\ÜÈˆ‚YYˆÜš]QY][™JÙ[‹™]Û[™JN‚‚BZYˆ™]Û[™H\È›Ý›Û™N‚‚BBZYˆÙ[‹˜ÚÚÓ[™J™]Û[™JN‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞT—Ñ‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹ŠBBBB‚BBY[ÙN‚‚BBB[™]Û[™HH	È	Ëš›Ú[Š
+™]Û[™JKœÝš\
+
+KœÜ]
+
+JH
+È	×‰Â‚BBBZYˆ™]Û[™HOHÙ[‹›Û[™N‚‚BBBB\Ù[‹˜Ú][\ÝÜÙ[‹œÙ[XÝY[™WHH™]Û[™B‚BBBB\Ù[‹Üš]SPÐÊ
+B‚B\Ù[‹œÙ[XÝY[™HH›Û™B‚B\Ù[‹›Û[™HH›Û™H‚BB‚YYˆÜš]SPÐÊÙ[ŠN‚‚B]žN‚‚BBWØ]ÛZXÕÜš]U^
+‹Ù]ËÛ^WØÚ]WÐÛÙK‹ˆ‹š›Ú[ŠÙ[‹˜Ú][\Ý
+JB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚B\Ù[‹™Ù[™\˜]Q]J
+HˆBB‚YYˆš[™Ú]P[œÝÙ\ŠÙ[‹˜[YJN‚‚BZYˆ˜[YH\È›Û™H[™˜[YHOHˆŽ‚‚BB\™]\›‚BB‚B\Ù[‹™Ù[™\˜]Q]J˜[YKœÝš\
+
+JB‚‚YYˆÛØYØØ[Ú]Y\ÊÙ[ŠN‚‚BXÚ]Y\ÈH×B‚B\Ù[‹˜ÛÝ[žS˜[Y\ÈHßB‚B]žN‚‚BBYˆH‹Ù]ËØÚ]WÐÛÙKLMËˆYˆÜËœ]š\Ùš[J‹Ù]ËØÚ]WÐÛÙKLMËŠH[ÙH‹Ù]ËØÚ]WÐÛÙK‚‚BBXÝ\œ™[˜[YHHˆ‚‚BB]Ú]Ü[Š‹œˆŠH\ÈŽ‚‚BBBY›Üˆ˜]È[ˆŽ‚‚BBBB[[™HH˜]ËœÝš\
+
+B‚BBBBZYˆ[™KœÝ\ÝÚ]
+ˆÈŠN‚‚BBBBBXÝ\œ™[˜[YHH[™VÌŽ—KœÝš\
+
+B‚BBBBBZYˆÝ\œ™[˜[YHOH”ÒÈŽˆÝ\œ™[˜[YHH”ÛÝ˜ZÚXH‚‚BBBBBY[YˆÝ\œ™[˜[YHOHÖˆŽˆÝ\œ™[˜[YHHÞ™XÚXH‚‚BBBBBXÛÛ[YB‚BBBB^HØÚ]S[™J˜]ÊB‚BBBBZYˆ›Ý‚‚BBBBBXÛÛ[YB‚BBBBXÛÝ[žHHˆ‚‚BBBBZYˆ[™KœÝ\ÝÚ]
+›Û_ŠN‚‚BBBBB\H[™KœÜ]
+ŸŠB‚BBBBBXÛÝ[žHHÌ×K\\Š
+HYˆ[Š
+HˆÈ[ÙHˆ‚‚BBBBZYˆÛÝ[žH[™Ý\œ™[˜[YN‚‚BBBBB\Ù[‹˜ÛÝ[žS˜[Y\ÖØÛÝ[žWHHÝ\œ™[˜[YB‚BBBBXÚ]Y\Ë˜\[™
+
+ÛÝ[žKÌWKÌ—JJB‚BY^Ù\^Ù\[Ûˆ\ÈN‚‚BBUÜš][ÙÊ˜Ú]H]X˜\ÙNˆ	\Èˆ	HJB‚B\™]\›ˆÚ]Y\Â‚‚YYˆÛÛ›[™PÚ]TÙX\˜Ú
+Ù[‹Ú]
+N‚‚B\™\Ý[H×B‚B]žN‚‚BBZYˆTÔÎ‚‚BBBYœ›ÛH\›X‹œ\œÙH[\Ü\›[˜ÛÙB‚BBY[ÙN‚‚BBBYœ›ÛH\›Xˆ[\Ü\›[˜ÛÙB‚BB]\›HšÎ‹ËÙÙ[ØÛÙ[™ËX\K›Ü[‹[Y][Ë˜ÛÛKÝŒKÜÙX\˜ÚÈˆ
+È\›[˜ÛÙJÈ›˜[YHŽˆÚ]˜ÛÝ[ŽˆŒ›[™ÝXYÙHŽˆÓS‘ÖÎŒ—K™›Ü›X]ŽˆšœÛÛˆŸJB‚BB\˜]ÈH\›Ü[Š™\]Y\Ý
+\›XY\œÏ^È•\Ù\‹PYÙ[Žˆ‘[Û\ÜÌMËUØ\™\‹Q]›Û][Û‹ÌKŒHŸJK[Y[Ý]N
+Kœ™XY
+
+B‚BBZYˆ›Ý\Ú[œÝ[˜ÙJ˜]ËÝŠN‚‚BBB\˜]ÈH˜]Ë™XÛÙJ]‹N‹œ™\XÙHŠB‚BBY›ÜˆØÈ[ˆ
+œÛÛ‹›ØYÊ˜]ÊK™Ù]
+œ™\Ý[ÈŠHÜˆ×JN‚‚BBB[˜[YHHØË™Ù]
+›˜[YHŠHÜˆˆ‚‚BBBXØÈH
+ØË™Ù]
+˜ÛÝ[žWØÛÙHŠHÜˆˆŠK\\Š
+B‚BBBXYZ[ˆHØË™Ù]
+˜YZ[ŒHŠHÜˆˆ‚‚BBB\ÜÝ[Hˆ‚‚BBB\ÜÈHØË™Ù]
+œÜÝÛÙ\ÈŠHÜˆ×B‚BBBZYˆ\Ú[œÝ[˜ÙJÜË\Ý
+H[™ÜÎ‚‚BBBB\ÜÝ[HÝŠÜÖÌJB‚BBBZYˆ˜[YH[™ØÎ‚‚BBBB]˜[YHH›Û_	\ß	\ß	\ß	\ß	\Èˆ	H
+˜[YK˜[YKØËYZ[‹ÜÝ[
+B‚BBBB[X™[H˜[YH
+È
+‹ˆ
+ÈYZ[ˆYˆYZ[ˆ[ÙHˆŠH
+È
+‹ˆ
+ÈØÈYˆØÈ[ÙHˆŠB‚BBBB\™\Ý[˜\[™
+
+X™[˜[YJJB‚BY^Ù\^Ù\[Ûˆ\ÈN‚‚BBUÜš][ÙÊ“Ü[‹SY][ÈÚ]HÙX\˜Úˆ	\Èˆ	HJB‚B\™]\›ˆ™\Ý[‚‚YYˆÙ[™\˜]Q]JÙ[‹Ú]HˆŠN‚‚B\Ù[‹›\ÝH×B‚B[ØØ[HÙ[‹—ÛØYØØ[Ú]Y\Ê
+B‚B[™YYHHØÚ]TÙX\˜ÚÙ^JÚ]
+B‚BZYˆ™YYN‚‚BBY›ÜˆÛÝ[žK\Ü^K˜[YH[ˆØØ[‚‚BBBZYˆ™YYH[ˆØÚ]TÙX\˜ÚÙ^J\Ü^JN‚‚BBBBZ][HHÝ˜[YWB‚BBBB[X™[H\Ü^H
+È
+
+ˆÈˆ
+ÈÙ[‹˜ÛÝ[žS˜[Y\Ë™Ù]
+ÛÝ[žKÛÝ[žJH
+È—HŠHYˆÛÝ[žH[ÙHˆŠB‚BBBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMK
+KÚ^™OJÍŒÍÊK›ÛL‹ÛÛÜ—ÜÙ[Z[
+ŒL‹MŠKÛÛÜZ[
+Œ™ŒÌÌ‹MŠK^[X™[
+JB‚BBBB\Ù[‹›\Ý˜\[™
+][JB‚BBZYˆ›ÝÙ[‹›\Ý‚‚BBBY›ÜˆX™[˜[YH[ˆÙ[‹—ÛÛ›[™PÚ]TÙX\˜Ú
+Ú]
+N‚‚BBBBZ][HHÝ˜[YWB‚BBBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMK
+KÚ^™OJÍŒÍÊK›ÛL‹ÛÛÜ—ÜÙ[Z[
+ŒL‹MŠKÛÛÜZ[
+Œ™ŒÌÌ‹MŠK^[X™[
+JB‚BBBB\Ù[‹›\Ý˜\[™
+][JB‚BB\Ù[‹œÙ]Ú[™ÝÕ]JŽˆˆ
+ÈÚ]
+B‚BY[YˆÙ[‹˜Ú]S]™[OHœ›ÛÝŽ‚‚BBHÈŒLˆ]]Üš]NˆÚÝÈ]™\žHÛÝ[žH\™XÝKˆH]X˜\ÙH]Ù[ˆÙY\Â‚BBHÈÛÝ˜ZÚXHš\œÝÞ™XÚXHÙXÛÛ™›ÛÝÙYžHH™[XZ[š[™ÈÛÝ[šY\Ë‚‚BB\ÙY[ˆH×B‚BBY›ÜˆÛÝ[žK\Ü^K˜[YH[ˆØØ[‚‚BBBZYˆÛÝ[žH[™ÛÝ[žH›Ý[ˆÙY[Ž‚‚BBBB\ÙY[‹˜\[™
+ÛÝ[žJB‚BBY›ÜˆÛÝ[žH[ˆÙY[Ž‚‚BBBZ][HHÈ˜ÛÝ[ž_ˆ
+ÈÛÝ[žWB‚BBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMK
+KÚ^™OJÍŒ
+K›ÛLÛÛÜ—ÜÙ[Z[
+ŒL‹MŠKÛÛÜZ[
+Œ™˜ØÌ‹MŠK^\Ù[‹˜ÛÝ[žS˜[Y\Ë™Ù]
+ÛÝ[žKÛÝ[žJJJB‚BBB\Ù[‹›\Ý˜\[™
+][JB‚BB\Ù[‹œÙ]Ú[™ÝÕ]JŽˆˆ
+ÈÊ”Ù[XÝÛÝ[žHŠJB‚BY[ÙN‚‚BBY›ÜˆÛÝ[žK\Ü^K˜[YH[ˆØØ[‚‚BBBZYˆÛÝ[žHOHÙ[‹˜XÝ]™PÛÝ[žN‚‚BBBBZ][HHÝ˜[YWB‚BBBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMK
+KÚ^™OJÍŒÍÊK›ÛL‹ÛÛÜ—ÜÙ[Z[
+ŒL‹MŠKÛÛÜZ[
+Œ™ŒÌÌ‹MŠK^Y\Ü^JJB‚BBBB\Ù[‹›\Ý˜\[™
+][JB‚BB\Ù[‹œÙ]Ú[™ÝÕ]JŽˆˆ
+ÈÙ[‹˜ÛÝ[žS˜[Y\Ë™Ù]
+Ù[‹˜XÝ]™PÛÝ[žKÙ[‹˜XÝ]™PÛÝ[žHÜˆˆŠJB‚B\Ù[‹˜Ú][\ÝH×B‚B\Ù[‹›\ÝˆH×B‚B]žN‚‚BB]Ú]Ü[Š‹Ù]ËÛ^WØÚ]WÐÛÙK‹œˆŠH\ÈŽ‚‚BBBY›Üˆ[™H[ˆŽ‚‚BBBB\Ù[‹˜Ú][\Ý˜\[™
+[™JB‚BBBB^HØÚ]S[™J[™JB‚BBBBY\Ü^HHÌWHYˆ[ÙH[™KœÝš\
+
+B‚BBBBZ][HHÛ[™WB‚BBBBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJ
+KÚ^™OJŒŒÍÊK›ÛL‹ÛÛÜ—ÜÙ[Z[
+ŒL‹MŠKÛÛÜZ[
+Œ™˜ØÌ‹MŠK^Y\Ü^JJB‚BBBB\Ù[‹›\Ý‹˜\[™
+][JB‚BY^Ù\^Ù\[ÛŽ‚‚BB\\ÜÂ‚BZYˆ›ÝÙ[‹›\ÝŽ‚‚BBZ][HHÈŠˆ—B‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJ
+KÚ^™OJŒŒÌÊK›ÛLÛÛÜ—ÜÙ[Z[
+Œ™ŒÌÌ‹MŠK^JŠŠŠˆˆ
+ÈÊ“›Û™HÚ]H]XÝYŠH
+ÈˆHHH
+ŠŠˆŠJJB‚BB\Ù[‹›\Ý‹˜\[™
+][JB‚B\Ù[–È›^PÚ]H—K›œÙ]\Ý
+Ù[‹›\ÝŠB‚BZYˆÙ[‹™š[™Î‚‚BB\Ù[–È›^PÚ]H—KœÙ[XÝ[Û‘[˜X›Y
+
+B‚BZYˆ›ÝÙ[‹›\Ý‚‚BBZ][HHÈŠˆ—B‚BBZ][K˜\[™
+][PÛÛ[[žU^
+ÜÏJMK
+KÚ^™OJÍŒÌÊK›ÛLÛÛÜ—ÜÙ[Z[
+Œ™ŒÌÌ‹MŠK^JŠŠŠˆˆ
+ÈÊ“›Û™HÚ]H]XÝYŠH
+ÈˆHHH
+ŠŠˆŠJJB‚BB\Ù[‹›\Ý˜\[™
+][JB‚B\Ù[–È›\Ý—K›œÙ]\Ý
+Ù[‹›\Ý
+B‚B\Ù[–È›\Ý—K›œÙ]][RZYÚ
+JB‚B\Ù[–ÈšÙ^WØ›YH—KœÙ]^
+Ù[‹˜[X™[ÖÌ—JB‚‚‚YYˆY™]Ó[™JÙ[‹\
+N‚‚BZYˆ\\È›Ý›Û™H[™\OHˆŽ‚‚BBZYˆÙ[‹˜ÚÚÓ[™J\
+N‚‚BBB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞT—Ñ‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹ŠBBBB‚BBY[ÙN‚‚BBB\Ù[‹˜\PÐÊ\
+HˆBBB‚YYˆÚÚÓ[™JÙ[‹\
+N‚‚B]žN‚‚BB\™]\›ˆØÚ]S[™Jˆ‹š›Ú[ŠÝŠ\
+KœÝš\
+
+KœÜ]
+
+JJH\È›Û™B‚BY^Ù\^Ù\[ÛŽ‚‚BB\™]\›ˆYB‚‚YYˆ\PÐÊÙ[‹\
+N‚‚B\]H‹Ù]ËÛ^WØÚ]WÐÛÙK‚‚B]Üš][ˆH˜[ÙB‚B]žN‚‚BB[ÛHÜ[Š]œˆŠKœ™XY
+
+HYˆÜËœ]™^\ÝÊ]
+H[ÙHˆ‚‚BB[[™\ÈHÞœÝš\
+
+H›Üˆ[ˆÛœÜ][™\Ê
+HYˆœÝš\
+
+WB‚BBZYˆÝŠ\
+KœÝš\
+
+H›Ý[ˆ[™\Î‚‚BBB]Üš][ˆHØ]ÛZXÕÜš]U^
+]Û
+È
+ˆˆYˆ›ÝÛÜˆÛ™[™ÝÚ]
+—ˆŠH[ÙH—ˆŠH
+È‰\×ˆˆ	HÝŠ\
+KœÝš\
+
+JB‚BBY[ÙN‚‚BBB]Üš][ˆHYB‚BY^Ù\
+SÑ\œ›Ü‹ÔÑ\œ›ÜŠN‚‚BB\\ÜÂ‚BYˆHÜ[Š]œˆŠKœ™XY
+
+HYˆÜËœ]™^\ÝÊ]
+H[ÙHˆ‚‚BZYˆÜš][ˆ[™‹™š[™
+ÝŠ\
+KœÝš\
+
+JHOHLN‚‚BB\Ù[XÝYHØÚ]S[™JÝŠ\
+KœÝš\
+
+JB‚BBZYˆÙ[XÝY‚‚BBBWÜÙ]ÙX]\Ú]PÚÚXÙ\ÊÙ[XÝYÌJB‚BBBXÛÛ™šYËœYÚ[œËœÙ]\Û\ÜÌMËœ\ŒLËœØ]™J
+B‚BBBXÛÛ™šYÙš[KœØ]™J
+B‚BBBWÜ™Yœ™\Ú]™UÙX]\Š
+B‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞÊÚ[™Ù\ÈÜš]YÝXØÙ\ÜÙ[HHHHŠKY\ÜØYÙP›Þ•TWÒS‘“ËŠB‚BB\Ù[‹™Ù[™\˜]Q]J
+B‚BY[ÙN‚‚BB\Ù[‹œÙ\ÜÚ[Û‹›Ü[ŠY\ÜØYÙP›ÞT—Ñ‹Y\ÜØYÙP›Þ•TWÑT”“Ô‹ŠB‚ˆ˜Û\ÜÈ\œ›ÝÜÙ\ŠØÜ™Y[ŠNˆˆ‚\ÚÚ[ˆHˆˆØÜ™Y[ˆ˜[YOH‘\œ›ÝÜÙ\ˆˆÜÚ][ÛH˜Ù[\‹Ù[\ˆˆÚ^™OHÎÍLˆ]OH‘\ˆœ›ÝÜÙ\ˆˆ˜XÚÙÜ›Ý[™ÛÛÜH˜˜XÚÙÜ›Ý[™ˆ‚‚BBOÚYÙ]˜[YOH™š[[\ÝˆÜÚ][ÛHŒMKMHˆÚ^™OHÍLŒˆØÜ›Û˜\“[ÙOHœÚÝÓÛ‘[X[™ˆÏ‚‚OÚYÙ]ÛÝ\˜ÙOHšÙ^WÜ™Yˆ™[™\H“X™[ˆÜÚ][ÛHŒÌˆÚ^™OHŒÎLLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜHœ™YˆÏ‚‚OÚYÙ]ÛÝ\˜ÙOHšÙ^WÙÜ™Y[ˆˆ™[™\H“X™[ˆÜÚ][ÛHŒÎLÌˆÚ^™OHŒÎLLˆ”ÜÚ][ÛHŒˆˆ˜[YÛHÜˆ[YÛH˜Ù[\ˆˆ›ÛH”š]™LÎÌÍHˆ˜[œÜ\™[HŒHˆ›Ü™YÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆÏ‚ˆSX™[ÜÚ][ÛHŒŽLˆÚ^™OHŒÎLˆˆ˜XÚÙÜ›Ý[™ÛÛÜHœ™Yˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚ˆSX™[ÜÚ][ÛHŒÎLŽLˆÚ^™OHŒÎLˆˆ˜XÚÙÜ›Ý[™ÛÛÜH™Ü™Y[ˆˆ”ÜÚ][ÛHHˆ˜[œÜ\™[HŒˆÏ‚‚BOÜØÜ™Y[ˆˆˆ‚ˆ‚YYˆ×Ú[š]×ÊÙ[‹Ù\ÜÚ[Û‹š[\ÏQ˜[ÙJN‚‚BTØÜ™Y[‹—×Ú[š]×ÊÙ[‹Ù\ÜÚ[ÛŠB‚B\Ù[‹™š[\ÈHš[\Â‚B\Ù[‹›X]Ú[™Ô]\›ˆH›Û™B‚BZYˆÙ[‹™š[\Î‚‚BB\Ù[‹›X]Ú[™Ô]\›ˆHˆ—‹Š—ŠÛÛ™ŠH‚‚B\Ù[‹™š[[\ÝHš[S\Ý
+ÚÝÑ\™XÝÜšY\ÈHYKÚÝÑš[\ÈHÙ[‹™š[\ËX]Ú[™Ô]\›ˆHÙ[‹›X]Ú[™Ô]\›‹[šXš]\œÈHÈ‹Ø]]ÙœÈ‹‹Øš[ˆ‹‹Ø›ÛÝ‹‹Ù]ˆ‹‹ÛÜ‹‹ÛXˆ‹‹Ü›ØÈ‹‹ÜØš[ˆ‹‹ÜÞ\È‹‹Ý\‹‹ÚÛYH‹‹Ü[ˆ—JB‚B\Ù[–È™š[[\Ý—HHÙ[‹™š[[\Ý‚‚B\Ù[–È˜XÝ[ÛœÈ—HHXÝ[Û“X\
+È”Ù]\XÝ[ÛœÈ‹‘\™XÝ[ÛXÝ[ÛœÈ‹ÛÛÜXÝ[ÛœÈ—K‚B^Â‚BBH›ÚÈŽˆÙ[‹›ÚË‚BBH˜Ø[˜Ù[ŽˆÙ[‹˜Ø[˜Ù[‚BBH›YŽˆÙ[‹›Y‚BBHœšYÚŽˆÙ[‹œšYÚ‚BBH\ŽˆÙ[‹\‚BBH™ÝÛˆŽˆÙ[‹™ÝÛ‹‚BBH™Ü™Y[ˆŽˆÙ[‹™Ü™Y[‹‚BBHœ™YŽˆÙ[‹˜Ø[˜Ù[‚B_KLJB‚B\Ù[–ÈšÙ^WÜ™Y—HHÝ]XÕ^
+ÊØ[˜Ù[ŠJB‚B\Ù[–ÈšÙ^WÙÜ™Y[ˆ—HHÝ]XÕ^
+Ê”Ù[XÝŠJB‚B\Ù[‹›Û“^[Ý]š[š\Ú˜\[™
+Ù[‹\]JB‚‚YYˆ\]JÙ[ŠN‚‚BXHHÙ[–È™š[[\Ý—K™Ù]Ý\œ™[\™XÝÜžJ
+B‚BZYˆH\È›Ý›Û™N‚‚BBZYˆKœÝ\ÝÚ]
+‹ÈŠH[™K™[™ÝÚ]
+‹ÈŠN‚‚BBBXXHHKœÜ]
+‹ÈŠB‚BBBXˆH[ŠXJB‚BBBZYˆˆˆN‚‚BBBBXHH‹‹‹‹ÈŠØXVØ‹MJÈ‹ÈŠØXVØ‹L×JÈ‹ÈŠØXVØ‹L—JÈ‹È‚‚BB\Ù[‹œÙ]]JJB‚‚YYˆØ[˜Ù[
+Ù[ŠN‚‚B\Ù[‹˜ÛÜÙJ›Û™JB‚‚YYˆÜ™Y[ŠÙ[ŠN‚‚BZYˆÙ[‹™š[\Î‚‚BBXHHÙ[–ÉÙš[[\Ý	×K™Ù]Ý\œ™[\™XÝÜžJ
+B‚BBXˆHÙ[–ÉÙš[[\Ý	×K™Ù]š[[˜[YJ
+B‚BBZYˆH\È›Û™HÜˆˆ\È›Û™N‚‚BBB\Ù[‹˜ÛÜÙJ›Û™JB‚BBY[ÙN‚‚BBBZYˆH[ˆŽ‚‚BBBB\Ù[‹˜ÛÜÙJŠBBBBB‚BBBY[ÙN‚‚BBBB\Ù[‹˜ÛÜÙJH
+ÈŠB‚BY[ÙN‚‚BB\™]HÙ[–È™š[[\Ý—K™Ù]Ù[XÝ[ÛŠ
+VÌB‚BBZYˆÙ[–È™š[[\Ý—K™Ù]Ù[XÝ[ÛŠ
+VÌWN‚‚BBBZYˆ™]\È›Ý›Û™H[™›Ý™]™[™ÝÚ]
+‹ÈŠN‚‚BBBB\™]
+ÏH‹È‚BBBBBBBBB‚BBB\Ù[‹˜ÛÜÙJ™]
+B‚‚YYˆ\
+Ù[ŠN‚‚B\Ù[–È™š[[\Ý—K\
+
+B‚‚YYˆÝÛŠÙ[ŠN‚‚B\Ù[–È™š[[\Ý—K™ÝÛŠ
+B‚‚YYˆY
+Ù[ŠN‚‚B\Ù[–È™š[[\Ý—KœYÙU\
+
+B‚‚YYˆšYÚ
+Ù[ŠN‚‚B\Ù[–È™š[[\Ý—KœYÙQÝÛŠ
+B‚‚YYˆÚÊÙ[ŠN‚‚BZYˆÙ[–È™š[[\Ý—K˜Ø[‘\ØÙ[
+
+N‚‚BB\Ù[–È™š[[\Ý—K™\ØÙ[
+
+B‚BB\Ù[‹\]J
+BBBBBB

@@ -147,11 +147,14 @@ if archive_dir:
 
 with PLUGIN_PATH.open(encoding="utf-8") as f:
     plugin = f.read()
-assert 'self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)' in plugin
-assert 'warderPiconSync.build_auxiliary_jobs(catalog, candidate, kind, variant_id)' in plugin
-assert 'self._warderAuxiliaryDestination(job["destination"])' in plugin
-assert 'self._warderFetchAuxiliaryArchive(job, archive)' in plugin
-assert 'shutil.rmtree' not in plugin[plugin.index("def _warderRunAuxiliaryComposite"):plugin.index("def _warderRemoveStaleChannelPicons")]
+assert 'self._warderStartAuxiliaryComposite(self.menuListAll[x][0], self.type_download)' in plugin
+assert 'self.warderAuxWorker.execute(sys.executable, worker_path, request_path, result_path)' in plugin
+assert 'def _warderAuxWorkerClosed(self, exit_code):' in plugin
+worker_text = (PLUGIN_DIR / "warderAuxiliaryWorker.py").read_text(encoding="utf-8")
+assert "sync.build_auxiliary_jobs" in worker_text
+assert "sync.build_production_auxiliary_jobs" in worker_text
+assert "_run_job(fallback_job, base)" in worker_text and "_run_job(safe_job, base)" in worker_text
+assert "_warderRunAuxiliaryComposite" not in plugin
 assert "piconProv_220x132" in plugin and "piconSat_220x132" in plugin
 
 # All 19 supported catalogs carry the user-facing task text and compile-ready translations.
