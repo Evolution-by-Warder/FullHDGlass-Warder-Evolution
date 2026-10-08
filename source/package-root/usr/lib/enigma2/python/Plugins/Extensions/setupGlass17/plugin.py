@@ -29,11 +29,47 @@ import stat
 import zipfile
 import subprocess
 import tempfile
+import sys
+import weakref
 import NavigationInstance
 try:
 	from urllib.request import Request, urlopen
 except ImportError:
 	from urllib2 import Request, urlopen
+_WARDER_AUX_PICON_CONSUMERS = []
+
+
+def _warderRegisterAuxiliaryPiconConsumer(consumer):
+	global _WARDER_AUX_PICON_CONSUMERS
+	refs = []
+	for ref in _WARDER_AUX_PICON_CONSUMERS:
+		try:
+			if ref() is not None and ref() is not consumer:
+				refs.append(ref)
+		except Exception:
+			pass
+	try:
+		refs.append(weakref.ref(consumer))
+		_WARDER_AUX_PICON_CONSUMERS = refs
+	except TypeError:
+		_WARDER_AUX_PICON_CONSUMERS = refs
+
+
+def _warderRefreshInstalledAuxiliaryPicons():
+	global _WARDER_AUX_PICON_CONSUMERS
+	refs = []
+	for ref in _WARDER_AUX_PICON_CONSUMERS:
+		try:
+			consumer = ref()
+			if consumer is None:
+				continue
+			refs.append(ref)
+			consumer._warderRefreshAuxiliaryPicons()
+		except Exception:
+			pass
+	_WARDER_AUX_PICON_CONSUMERS = refs
+
+
 ENACI = False
 try:
 	from enigma import eDVBCI_UI
@@ -5752,6 +5788,7 @@ class ExtraInfo17(Screen):
 		return convert(v)
 		
 	def setTunerInfo(self, service, ip=None):
+		_warderRegisterAuxiliaryPiconConsumer(self)
 		def chckVtype(i):
 			x = ""
 			if ENAVFT: 
@@ -5809,6 +5846,7 @@ class ExtraInfo17(Screen):
  				return ""
 			return what
 		def findPP(what):
+			self._warderAuxSatelliteToken = str(what or "")
 			pngname = self.findPicon(what)
 			if pngname == "":
 				sname = "picon_default"
@@ -5835,6 +5873,8 @@ class ExtraInfo17(Screen):
 			if a and not b and not c and not d:
 				self["Prov_temp_rpm"].setText(self.tstprov)
 			sname = fixNameOf(provname)
+			self._warderAuxProviderToken = sname
+			compatibility_name = warderPiconSync.auxiliary_comma_compatibility_filename(sname)
 			self.path = "piconProv" +	self.picProvSatSize
 			if ip is None and info is not None:
 				try:
@@ -5851,8 +5891,14 @@ class ExtraInfo17(Screen):
 						refer = ((refer[:-10]).split('_')[6]).upper()
 						pngname = self.findPicon(refer + "x" + sname)
 				except: pass
+			if pngname == "" and compatibility_name and self.path.endswith("_220x132"):
+				priority_path = "%s/%s/%s" % (config.plugins.setupGlass17.par39.value, self.path, compatibility_name)
+				if fileExists(priority_path):
+					pngname = priority_path
 			if pngname == "":
 				pngname = self.findPicon(sname)
+			if pngname == "" and compatibility_name:
+				pngname = self.findPicon(compatibility_name[:-4])
 			if pngname == "":
 				sname = "picon_default"
 				pngname = self.findPicon(sname)
@@ -6110,6 +6156,31 @@ class ExtraInfo17(Screen):
 
 	def updpicProvSat(self, w):
 		self["picProvSat"].instance.setPixmapFromFile(w)
+
+	def _warderRefreshAuxiliaryPicons(self):
+		"""Re-resolve the current exact Provider/Satellite tokens after overlay install."""
+		provider_token = str(getattr(self, "_warderAuxProviderToken", "") or "")
+		satellite_token = str(getattr(self, "_warderAuxSatelliteToken", "") or "")
+		if provider_token:
+			self.path = "piconProv" + self.picProvSatSize
+			compatibility_name = warderPiconSync.auxiliary_comma_compatibility_filename(provider_token)
+			path = ""
+			if compatibility_name and self.path.endswith("_220x132"):
+				priority_path = "%s/%s/%s" % (config.plugins.setupGlass17.par39.value, self.path, compatibility_name)
+				if fileExists(priority_path):
+					path = priority_path
+			if not path:
+				path = self.findPicon(provider_token)
+			if not path and compatibility_name:
+				path = self.findPicon(compatibility_name[:-4])
+			if path:
+				self.pngname = path
+		if satellite_token:
+			self.path = "piconSat" + self.picProvSatSize
+			path = self.findPicon(satellite_token)
+			if path:
+				self.pngnamesat = path
+		self.chckSatProv()
 			
 	def findPicon(self, piconName):
 		pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, piconName)
@@ -8383,6 +8454,11 @@ class downloadMenu(Screen):
 		self.warderPiconRows = ("wp-pos", "wp-res", "wp-style", "wp-dest", "wp-mode")
 		self.warderAuxRows = ("aux-prov", "aux-sat", "aux-cam", "aux-weather")
 		self.warderAuxChoiceRow = None
+		self.warderAuxWorker = None
+		self.warderAuxWorkerRunning = False
+		self.warderAuxRequestPath = None
+		self.warderAuxResultPath = None
+		self.warderAuxOutput = []
 		self.warderLargeSelectionPending = False
 		self.warderCurrentActionRow = None
 		self.warderOperationSucceeded = False
@@ -8896,149 +8972,93 @@ class downloadMenu(Screen):
 			raise ValueError("invalid Warder channel manifest: " + "; ".join(errors[:3]))
 		return doc
 
-	def _warderLoadAuxiliaryCandidateManifest(self, url):
-		"""Fetch only the PiconHub manifest pinned by the auxiliary descriptor."""
-		descriptor = warderPiconSync.AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]
-		if url != descriptor.get("manifest_url"):
-			raise ValueError("untrusted auxiliary candidate manifest")
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons",
-			"Accept": "application/json"})
-		with urlopen(req, timeout=30) as response:
-			if str(response.geturl()) != url:
-				raise ValueError("unsafe auxiliary candidate manifest redirect")
-			content_type = str(response.headers.get("Content-Type", "")).lower()
-			if "text/html" in content_type:
-				raise ValueError("auxiliary candidate manifest returned HTML")
-			data = response.read(1024 * 1024 + 1)
-		if len(data) > 1024 * 1024 or data.lstrip().lower().startswith((b"<html", b"<!doctype")):
-			raise ValueError("invalid auxiliary candidate manifest response")
-		document = json.loads(data.decode("utf-8"))
-		errors = warderPiconSync.validate_auxiliary_candidate_manifest(document, url)
-		if errors:
-			raise ValueError("invalid auxiliary candidate manifest: " + "; ".join(errors[:3]))
-		return document
-
-	def _warderAuxiliaryDestination(self, name):
-		"""Create only the requested auxiliary leaf under the configured picon root."""
-		if name not in ("piconProv", "piconProv_220x132", "piconSat", "piconSat_220x132"):
-			raise ValueError("invalid auxiliary destination")
-		base = str(config.plugins.setupGlass17.par39.value)
-		if not os.path.isdir(base) or os.path.islink(base):
-			raise ValueError("unsafe auxiliary picon base directory")
-		base = os.path.realpath(base)
-		destination = os.path.join(base, name)
-		if os.path.islink(destination):
-			raise ValueError("auxiliary destination is a symbolic link")
-		if not os.path.exists(destination):
-			os.mkdir(destination)
-		if not os.path.isdir(destination) or os.path.realpath(destination) != destination:
-			raise ValueError("unsafe auxiliary destination")
-		return destination
-
-	def _warderFetchAuxiliaryArchive(self, asset, archive):
-		"""Download one source-bound archive and verify redirect, size, SHA and ZIP."""
-		source_id = asset.get("publication_source_id")
-		url = str(asset.get("url", ""))
-		if not warderPiconSync.trusted_auxiliary_url(url, source_id):
-			raise ValueError("unsafe Warder auxiliary URL")
-		expected_size = int(asset.get("size", 0))
-		if expected_size < 1 or expected_size > 32 * 1024 * 1024:
-			raise ValueError("invalid Warder auxiliary archive size")
-		digest = hashlib.sha256()
-		total = 0
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
-		with urlopen(req, timeout=45) as response:
-			if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
-				raise ValueError("unsafe Warder auxiliary redirect")
-			content_type = str(response.headers.get("Content-Type", "")).lower()
-			if "text/html" in content_type:
-				raise ValueError("Warder auxiliary archive returned HTML")
-			with open(archive, "wb") as output:
-				while True:
-					chunk = response.read(1024 * 128)
-					if not chunk:
-						break
-					total += len(chunk)
-					if total > expected_size:
-						raise ValueError("oversized Warder auxiliary archive")
-					output.write(chunk)
-					digest.update(chunk)
-		if total != expected_size:
-			raise ValueError("Warder auxiliary archive size mismatch")
-		if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():
-			raise ValueError("Warder auxiliary archive SHA-256 mismatch")
-		errors = warderPiconSync.validate_auxiliary_archive(archive, asset)
-		if errors:
-			raise ValueError("invalid Warder auxiliary archive: " + "; ".join(errors[:3]))
-
-	def _warderRunAuxiliaryComposite(self, row, variant_id):
-		"""Run exactly two additive jobs: legacy fallback, then safe priority overlay."""
+	def _warderStartAuxiliaryComposite(self, row, variant_id):
+		"""Queue fallback then overlay work outside the GUI event-loop callback."""
 		kind = {"aux-prov": "provider", "aux-sat": "satellite"}.get(row)
-		variant_maps = {"provider": "piconProv", "satellite": "piconSat"}
-		if kind not in variant_maps or variant_id not in warderPiconSync.AUXILIARY_VARIANT_IDS[variant_maps[kind]]:
-			raise ValueError("invalid auxiliary hybrid selection")
-		err, assets = getWarderAssets()
-		if err:
-			raise ValueError(err)
-		hybrid = assets.pop("__auxiliary_hybrid__", None)
-		if not isinstance(hybrid, dict):
-			raise ValueError("auxiliary hybrid catalog missing")
-		candidate = None
-		candidate_error = None
+		if kind is None or variant_id not in ("transparent", "black", "white"):
+			raise ValueError("invalid auxiliary selection")
+		request = {
+			"row": row,
+			"variant": variant_id,
+			"destination_base": str(config.plugins.setupGlass17.par39.value),
+			"downloads_manifest_url": WARDER_ASSET_MANIFEST_URL,
+			"descriptor_path": os.path.join(os.path.dirname(__file__), warderPiconSync.AUXILIARY_PRODUCTION_DESCRIPTOR),
+		}
+		fd, request_path = tempfile.mkstemp(prefix="warder-aux-request-", suffix=".json", dir="/tmp")
+		os.close(fd)
+		fd, result_path = tempfile.mkstemp(prefix="warder-aux-result-", suffix=".json", dir="/tmp")
+		os.close(fd)
 		try:
-			candidate = self._warderLoadAuxiliaryCandidateManifest(hybrid.get("candidate_manifest_url"))
-		except Exception as err:
-			# Preserve the legacy fallback job if the candidate publication is
-			# unavailable; the safe overlay will be recorded as failed below.
-			candidate_error = err
-		catalog = {"assets": assets, "auxiliary_hybrid": hybrid}
-		plan = warderPiconSync.build_auxiliary_jobs(catalog, candidate, kind, variant_id)
-		if plan.get("state") != "ready" or len(plan.get("jobs", [])) != 2:
-			raise ValueError("auxiliary composite plan rejected: " + "; ".join(plan.get("errors", [])[:3]))
-		copied = {"legacy_fallback": 0, "warder_safe_priority": 0}
-		totals = {job["layer"]: int(job["png_count"]) for job in plan["jobs"]}
-		for job in plan["jobs"]:
-			archive = None
-			stage = None
-			previous_zzz = self.zzz
+			with open(request_path, "w") as stream:
+				json.dump(request, stream, sort_keys=True, separators=(",", ":"))
+			self.warderAuxRequestPath = request_path
+			self.warderAuxResultPath = result_path
+			self.warderAuxOutput = []
+			self.warderAuxWorker = eConsoleAppContainer()
+			self.warderAuxWorker.dataAvail.append(self._warderAuxWorkerData)
+			self.warderAuxWorker.appClosed.append(self._warderAuxWorkerClosed)
+			self.warderAuxWorkerRunning = True
+			worker_path = os.path.join(os.path.dirname(__file__), "warderAuxiliaryWorker.py")
+			status = self.warderAuxWorker.execute(sys.executable, worker_path, request_path, result_path)
+			if status not in (None, 0):
+				self.warderAuxWorkerRunning = False
+				raise ValueError("could not start auxiliary worker (%s)" % status)
+		except Exception:
+			self.warderAuxWorkerRunning = False
+			self._warderAuxWorkerCleanup()
+			raise
+		return True
+
+	def _warderAuxWorkerData(self, data):
+		if len(self.warderAuxOutput) < 32:
 			try:
-				if job["layer"] == "warder_safe_priority" and candidate_error is not None:
-					raise ValueError("pinned auxiliary candidate manifest unavailable: " + str(candidate_error))
-				self._warderAuxiliaryDestination(job["destination"])
-				fd, archive = tempfile.mkstemp(prefix="warder-aux-", suffix=".zip", dir="/tmp")
-				os.close(fd)
-				self._warderFetchAuxiliaryArchive(job, archive)
-				stage = tempfile.mkdtemp(prefix="warder-aux-stage-", dir="/tmp")
-				self._safeExtractZip(archive, stage)
-				root = str(job["root"])
-				stage_root = os.path.join(stage, root)
-				if os.path.islink(stage_root) or not os.path.isdir(stage_root):
-					raise ValueError("auxiliary ZIP root missing after extraction")
-				self.zzz = stage + os.sep
-				updated, attempted = self.cprmFiles(root)
-				if attempted != totals[job["layer"]]:
-					print("FullHDGlass17 Warder auxiliary count mismatch (%s): %d/%d" %
-						(job["asset_id"], attempted, totals[job["layer"]]))
-				copied[job["layer"]] = updated
-			except Exception as err:
-				print("FullHDGlass17 Warder auxiliary job failed (%s): %s" % (job.get("asset_id"), err))
-			finally:
-				self.zzz = previous_zzz
-				if archive:
-					try:
-						os.unlink(archive)
-					except OSError:
-						pass
-				if stage:
-					try:
-						self.rmTmp2(stage, str(job.get("root", "")))
-						os.rmdir(stage)
-					except OSError:
-						pass
-		return warderPiconSync.auxiliary_result_summary(
-			_("Provider logos" if kind == "provider" else "Satellite logos"), variant_id,
-			copied["legacy_fallback"], totals["legacy_fallback"],
-			copied["warder_safe_priority"], totals["warder_safe_priority"], _)["text"]
+				self.warderAuxOutput.append(data.decode("utf-8", "replace") if isinstance(data, bytes) else str(data))
+			except Exception:
+				pass
+
+	def _warderAuxWorkerCleanup(self):
+		for path in (getattr(self, "warderAuxRequestPath", None), getattr(self, "warderAuxResultPath", None)):
+			if path:
+				try:
+					os.unlink(path)
+				except OSError:
+					pass
+		self.warderAuxRequestPath = None
+		self.warderAuxResultPath = None
+		self.warderAuxWorker = None
+
+	def _warderAuxWorkerClosed(self, exit_code):
+		self.warderAuxWorkerRunning = False
+		result = {}
+		try:
+			path = self.warderAuxResultPath
+			if path and os.path.isfile(path) and not os.path.islink(path):
+				with open(path, "rb") as stream:
+					result = json.loads(stream.read(1024 * 1024 + 1).decode("utf-8"))
+		except Exception as err:
+			result = {"fatal_error": str(err), "results": []}
+		try:
+			if result.get("fatal_error") or int(exit_code) != 0:
+				text = _("ERROR") + ": " + str(result.get("fatal_error") or "auxiliary worker failed")
+			else:
+				layers = {item.get("layer"): item.get("result", {}) for item in result.get("results", [])}
+				fallback = layers.get("legacy_fallback", {})
+				safe = layers.get("warder_safe_priority", {})
+				fallback_total = int(fallback.get("attempted", 0))
+				safe_total = int(safe.get("attempted", 0))
+				summary = warderPiconSync.auxiliary_result_summary(
+					_("Provider logos" if result.get("kind") == "provider" else "Satellite logos"),
+					result.get("variant"), int(fallback.get("updated", 0)), fallback_total,
+					int(safe.get("updated", 0)), safe_total, _)
+				errors = ["%s: %s" % (layer, item.get("error")) for layer, item in layers.items() if item.get("error")]
+				text = summary["text"] + (("\n" + "\n".join(errors)) if errors else "")
+				if (safe_total > 0 and int(safe.get("updated", 0)) == safe_total
+						and not safe.get("error")):
+					_warderRefreshInstalledAuxiliaryPicons()
+		except Exception as err:
+			text = _("ERROR") + ": " + str(err)
+		self._warderAuxWorkerCleanup()
+		self.dwnLoop(text)
 
 	def _warderRemoveStaleChannelPicons(self, destination, positions, package_names):
 		"""Remove only stale service PNGs for selected orbits after package success."""
@@ -9328,10 +9348,9 @@ class downloadMenu(Screen):
 					self.dwnJob = str(self.menuListAll[x][1])
 					if self.menuListAll[x][0] in ("aux-prov", "aux-sat"):
 						try:
-							aux_result = self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
+							self._warderStartAuxiliaryComposite(self.menuListAll[x][0], self.type_download)
 						except Exception as err:
-							aux_result = _("ERROR") + ": " + str(err)
-						self.dwnLoop(aux_result)
+							self.dwnLoop(_("ERROR") + ": " + str(err))
 						return
 					elif '***' in self.menuListAll[x][1]:
 						self.enaSelectsat = True
