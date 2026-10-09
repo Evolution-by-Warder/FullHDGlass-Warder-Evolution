@@ -113,7 +113,7 @@ if "warderInstallProcess = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=
 if "def _warderShowInstallResult(self):" not in plugin or "self.warderResultTimer.start(250, True)" not in plugin:
     fail("plugin.py: updater result dialog must be deferred until progress modal is closed")
 version_cmp = plugin[plugin.find("def _warderVersionTuple"):plugin.find("def _warderFetchJson")]
-for required in ('(?:-test(\\d+))?', 'return (major, minor, patch, 1, 0)', 'return (major, minor, patch, 0, int(test_no))'):
+for required in ('(?:-test(\\d+)(?:-auxstage\\d+)?)?', 'return (major, minor, patch, 1, 0)', 'return (major, minor, patch, 0, int(test_no))'):
     if required not in version_cmp:
         fail("plugin.py: prerelease-aware Warder version ordering missing")
 for direct_write in (

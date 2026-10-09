@@ -192,7 +192,7 @@ with tempfile.TemporaryDirectory(prefix="warder-aux-install-test-") as temp:
 plugin = (PLUGIN_DIR / "plugin.py").read_text(encoding="utf-8")
 worker = (PLUGIN_DIR / "warderAuxiliaryWorker.py").read_text(encoding="utf-8")
 assert "self._warderStartAuxiliaryComposite(self.menuListAll[x][0], self.type_download)" in plugin
-assert "self.warderAuxWorker.execute(sys.executable, worker_path, request_path, result_path)" in plugin
+assert "self.warderAuxWorker.execute(sys.executable, sys.executable, worker_path, request_path, result_path)" in plugin
 assert "urlopen(" not in plugin[plugin.index("def _warderStartAuxiliaryComposite"):plugin.index("def _warderRemoveStaleChannelPicons")]
 assert "_run_job(fallback_job, base)" in worker and "_run_job(safe_job, base)" in worker
 assert "_warderRunAuxiliaryComposite" not in plugin

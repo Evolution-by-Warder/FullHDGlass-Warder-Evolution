@@ -8999,7 +8999,7 @@ class downloadMenu(Screen):
 			self.warderAuxWorker.appClosed.append(self._warderAuxWorkerClosed)
 			self.warderAuxWorkerRunning = True
 			worker_path = os.path.join(os.path.dirname(__file__), "warderAuxiliaryWorker.py")
-			status = self.warderAuxWorker.execute(sys.executable, worker_path, request_path, result_path)
+			status = self.warderAuxWorker.execute(sys.executable, sys.executable, worker_path, request_path, result_path)
 			if status not in (None, 0):
 				self.warderAuxWorkerRunning = False
 				raise ValueError("could not start auxiliary worker (%s)" % status)

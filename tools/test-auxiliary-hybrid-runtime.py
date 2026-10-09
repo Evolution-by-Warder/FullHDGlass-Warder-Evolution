@@ -150,7 +150,7 @@ if archive_dir:
 with PLUGIN_PATH.open(encoding="utf-8") as f:
     plugin = f.read()
 assert 'self._warderStartAuxiliaryComposite(self.menuListAll[x][0], self.type_download)' in plugin
-assert 'self.warderAuxWorker.execute(sys.executable, worker_path, request_path, result_path)' in plugin
+assert 'self.warderAuxWorker.execute(sys.executable, sys.executable, worker_path, request_path, result_path)' in plugin
 assert 'def _warderAuxWorkerClosed(self, exit_code):' in plugin
 worker_text = (PLUGIN_DIR / "warderAuxiliaryWorker.py").read_text(encoding="utf-8")
 assert "sync.build_auxiliary_jobs" in worker_text
