@@ -437,3 +437,12 @@ Radio TEST191 WHOLE RADIO PHYSICAL PASS remains locked and must not be modified 
 - The `g17MenuEntry2` renderer with `g17GenerateMenuEntry2` converter displays the illustration using `entryID`; preserve this mapping and use stable menu IDs rather than translated text. Existing illustration widget is 810x810 pixels.
 - Preserve approved graphics unless a replacement is specifically accepted. Prepare a coherent modernized image series and verify each menu ID and missing/duplicate artwork before integration.
 - This is a pending owner-approved work request, **not** a claim that new artwork has already been created, approved, or installed.
+
+## Menu – Zoznam: visual direction approved (2026-10-15)
+
+- Owner explicitly approved the premium photorealistic metallic/glass 3D illustrations with restrained electric-blue highlights shown in the conversation, and requested a complete series in large batches.
+- Concept boards produced: themed previews covering at least 36 categories. These are **visual concept montages**, not individual transparent 810x810 production PNGs, and must not be represented as installed assets.
+- The approved scope is right-side menu illustrations only; all original screen geometry, text, focus highlight, and other graphics remain LOCKED.
+- Verified renderer path: `Components/Renderer/g17MenuEntry2.py` resolves `<config.plugins.setupGlass17.par39.value>/menuIconsBig/<entryID><pictType>.png`; missing assets fall back to `/usr/share/enigma2/hd_glass17/menu/menu_default_big.png` and are logged to `/tmp/missing_menu_icons.txt`.
+- Verified converter: `Components/Converter/g17GenerateMenuEntry2.py` returns menu entry ID from `cur[5]` for OpenATV/Python3 where available, otherwise `cur[2]`.
+- Next integration requirement: inventory actual IDs and artwork, generate *separate transparent* 810x810 PNGs with approved style, validate alpha and file mapping, and package on `warder-modernization-work` only. Do not publish a TEST release until assets are truly integrated and checked. Stable and existing TEST205 remain untouched.
