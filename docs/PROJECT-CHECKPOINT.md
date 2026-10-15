@@ -427,3 +427,13 @@ On TEST195 physical receiver testing, selecting **OLED picon** produced the loca
 `/etc/enigma2/g17.txt` was previously observed contaminated with repeated `WarderProgramInfo metadata: could not convert string to float: '8.0/10'\n`. Keep this as a separate bug; do not lose it or conflate it with TEST196 picon work.
 
 Radio TEST191 WHOLE RADIO PHYSICAL PASS remains locked and must not be modified by this work.
+
+
+## Menu – Zoznam: approved graphic modernization request (2026-10-15)
+
+- Owner uses the **Menu – Zoznam** list menu variant (receiver screenshot provided).
+- Modernize the existing per-section illustrative pictures on the **right side** of the menu, replace missing illustrations, and avoid inappropriate reuse of the same illustration across unrelated menu screens.
+- Keep the existing approved menu design **unchanged**: translucent dark panel, top title bar, menu text positions, selected-item highlight, navigation, and overall screen geometry. Do not redesign or shift these elements.
+- The `g17MenuEntry2` renderer with `g17GenerateMenuEntry2` converter displays the illustration using `entryID`; preserve this mapping and use stable menu IDs rather than translated text. Existing illustration widget is 810x810 pixels.
+- Preserve approved graphics unless a replacement is specifically accepted. Prepare a coherent modernized image series and verify each menu ID and missing/duplicate artwork before integration.
+- This is a pending owner-approved work request, **not** a claim that new artwork has already been created, approved, or installed.
