@@ -1713,11 +1713,14 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="key_green" render="Label" position="810,825" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="Setup" position="center,90" size="1650,900" title="Setup">
-    <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
+    <widget name="config" position="45,60" size="1560,615" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
     <widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />
     <widget name="footnote" position="45,780" size="1560,30" font="Prive3;24" halign="center" valign="center" foregroundColor="grey" transparent="1" />
     <widget source="key_red" render="Label" position="105,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="green" transparent="1" />
+    <widget source="key_yellow" render="Label" position="105,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="yellow" transparent="1" conditional="key_yellow" />
+    <widget source="key_blue" render="Label" position="895,825" size="650,48" font="Prive3;34" halign="center" valign="center" zPosition="2" foregroundColor="blue" transparent="1" conditional="key_blue" />
+    <widget name="HelpWindow" position="0,0" size="0,0" />
   </screen>
   <screen name="SkinSelection" position="center,90" size="1650,900" title="Skin Settings">
     <widget name="config" position="45,60" size="1560,720" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
@@ -1823,6 +1826,8 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="oktext" position="420,772" size="397,42" font="Prive3;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="cancel" position="0,0" size="0,0" />
     <widget name="ok" position="0,0" size="0,0" />
+    <widget name="description" position="15,570" size="1620,125" font="Prive3;28" transparent="1" />
+    <widget name="HelpWindow" position="0,0" size="0,0" />
   </screen>
   <screen name="TimerLog" position="135,150" size="1650,840" title="Timer Log">
     <widget name="log" position="30,30" size="1590,700" font="Prive3;30" />
@@ -4742,7 +4747,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 	</screen>
 	<screen name="FastScanStatus" position="center,center" size="1200,300" title="Service Scan" backgroundColor="background">
 		<widget name="frontend" pixmap="hd_glass17/icons/scan-s.png" position="10,10" size="96,96" transparent="1" alphatest="blend" />
-		<widget name="scan_state" position="300,35" zPosition="2" size="600,40" font="Prive4;30" backgroundColor="background" transparent="1" />
+		<widget name="scan_state" position="300,20" zPosition="2" size="860,100" font="Prive4;30" backgroundColor="background" transparent="1" />
 		<widget name="scan_progress" position="10,200" size="1180,50" borderWidth="2" borderColor="#cccccc" backgroundColor="background" transparent="1" />
 	</screen>
 	<screen name="SATIPClient" position="center,center" size="1200,800" backgroundColor="background" >
