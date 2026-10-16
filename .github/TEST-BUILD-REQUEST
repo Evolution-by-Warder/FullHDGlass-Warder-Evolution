@@ -71,3 +71,6 @@ Build TEST204 1.0.5-test204 from version-only source checkpoint 24039a430fc0d5fb
 
 TEST205 BUILD
 Build TEST205 from source after Setup/FastScanStatus/TimerEntry compatibility fixes. Preserve stable channel, verify CI gates and publish only if all checks pass.
+
+TEST208 BUILD
+Use the 121 owner-approved 810x810 RGBA menu PNGs; change only the exact uniform background from RGBA (0,0,0,128) to the skin XML background #31000000 (RGBA alpha 49), preserving RGB and all artwork pixels. Add the separately owner-approved PluginBrowser image with its uniform background alpha 145 changed to 49. Publish refreshed menuIcons.zip and menuIconsBig.zip; validate both archives and build/publish TEST208. Keep main and stable 1.0.4 unchanged.
