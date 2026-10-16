@@ -54,6 +54,16 @@ AUXILIARY_CANDIDATE_ARCHIVE_ROOT = (
 AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_ROOT = AUXILIARY_CANDIDATE_ARCHIVE_ROOT.replace(
     AUXILIARY_CANDIDATE_COMMIT, AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF)
 AUXILIARY_PUBLICATION_SOURCES = {
+    "fullhd-test": {
+        "expected_origin": "raw.githubusercontent.com",
+        "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+        "ref": "warder-modernization-work",
+        "pinned_commit": None,
+        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads.json",
+        "source_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/",
+        "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/",
+        "redirect_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/",
+    },
     "fullhd-production": {
         "expected_origin": "raw.githubusercontent.com",
         "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
