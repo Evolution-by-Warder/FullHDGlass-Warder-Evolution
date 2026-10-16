@@ -41,7 +41,7 @@ streaming_info_screen,streaming_info_screen.png,,,,,,,,mapping_pending
 geolocation_info_screen,geolocation_info_screen.png,,,,,,,,mapping_pending
 service_info_screen,service_info_screen.png,,,,,,,,mapping_pending
 powertimer_edit,powertimer_edit.png,,,,,,,,mapping_pending
-crontimer_edit,crontimer_edit.png,,,,,,,,mapping_pending
+crontimer_edit,crontimer_edit.png,new,810x810,true,true,592cf0c81731e37fda085689fd005b359d8b2e2cfcfe85027e0b6a51a7c29727,13,pending,validated_local_pending_github
 sleep,sleep.png,,,,,,,,mapping_pending
 autotimer_setup,autotimer_setup.png,,,,,,,,mapping_pending
 videoenhancement_setup,videoenhancement_setup.png,new,810x810,true,true,1e0b1635de33a8814e687adb0cc01ee412e53e91e8250c9771d8de650a3bf7fd,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
@@ -61,7 +61,7 @@ remote_setup,remote_setup.png,new,810x810,true,true,704d2e9090977ccaddbebb2e2738
 channelselection_setup,channelselection_setup.png,,,,,,,,mapping_pending
 usage_setup,usage_setup.png,,,,,,,,mapping_pending
 skin_setup,skin_setup.png,,,,,,,,mapping_pending
-picon_setup,picon_setup.png,,,,,,,,mapping_pending
+picon_setup,picon_setup.png,new,810x810,true,true,fcf5538deed15dee8b65b2d7767b975cb9d5b0dcdc125791b55bee6d8135f8db,13,pending,validated_local_pending_github
 display_setup,display_setup.png,new,810x810,true,true,d3c57864e569300fd393000e27fa70d5641ff11b2ade741f4fe682f5aa4d6e38,05,f3058b980efcb84937049e25c7d5717f8cf0cef4,github_committed_verified
 buttonsetup_setup,buttonsetup_setup.png,new,810x810,true,true,fcbea4ea610b17454f137704d094513bee877ac81342aa8277daf743de2a27da,05,f3058b980efcb84937049e25c7d5717f8cf0cef4,github_committed_verified
 input_device_setup,input_device_setup.png,new,810x810,true,true,e1ae6a2746ba00ba761abc31ab5bc0968b873160aa4268f11753e35893db971a,05,f3058b980efcb84937049e25c7d5717f8cf0cef4,github_committed_verified
@@ -79,7 +79,7 @@ setup_epginfobar,setup_epginfobar.png,,,,,,,,mapping_pending
 setup_epginfobargraphical,setup_epginfobargraphical.png,,,,,,,,mapping_pending
 setup_epggraphical,setup_epggraphical.png,,,,,,,,mapping_pending
 setup_epgvertical,setup_epgvertical.png,,,,,,,,mapping_pending
-loadepgcache,loadepgcache.png,,,,,,,,mapping_pending
+loadepgcache,loadepgcache.png,new,810x810,true,true,f9777a861ea52bebd0df07b15c1f44f90a6c59894c173aa65ac854013f857e1c,13,pending,validated_local_pending_github
 saveepgcache,saveepgcache.png,,,,,,,,mapping_pending
 deleteepgcache,deleteepgcache.png,,,,,,,,mapping_pending
 ci_helper,ci_helper.png,new,810x810,true,true,32e0f67eefeca15dc80e0fafcdea3b6bec04fcf40dd2dd5646bbe231800dd0a2,04,3c3cb96ea9edc736fb84c89946fa17cfd4325fbf,github_committed_verified
