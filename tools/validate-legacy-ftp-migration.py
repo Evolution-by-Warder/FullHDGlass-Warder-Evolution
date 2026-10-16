@@ -118,6 +118,9 @@ def _publication_url_allowed(url, key, asset, publication):
         if not expected_name or asset.get("filename") != expected_name:
             return False
         return url == PICONHUB_ROOT + expected_name
+    if source_id == "fullhd-test":
+        test_root = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/"
+        return key in ("menuicons", "menuiconsbig") and url.startswith(test_root) and len(url) > len(test_root)
     if source_id not in (None, "fullhd-production"):
         return False
     # The production source is the FullHDGlass main publication root only.

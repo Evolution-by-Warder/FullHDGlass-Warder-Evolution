@@ -74,3 +74,5 @@ Build TEST205 from source after Setup/FastScanStatus/TimerEntry compatibility fi
 
 TEST208 BUILD
 Use the 121 owner-approved 810x810 RGBA menu PNGs; change only the exact uniform background from RGBA (0,0,0,128) to the skin XML background #31000000 (RGBA alpha 49), preserving RGB and all artwork pixels. Add the separately owner-approved PluginBrowser image with its uniform background alpha 145 changed to 49. Publish refreshed menuIcons.zip and menuIconsBig.zip; validate both archives and build/publish TEST208. Keep main and stable 1.0.4 unchanged.
+
+TEST208 preflight correction: pin the updated menu archive SHAs and allow only the exact TEST branch URL root for the two TEST menu archives.
