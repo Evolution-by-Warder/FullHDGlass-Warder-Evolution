@@ -5,7 +5,7 @@ setup,setup.png,,,,,,,,mapping_pending
 video_menu,video_menu.png,,,,,,,,mapping_pending
 FHD_Glass17_Setup,FHD_Glass17_Setup.png,,,,,,,,mapping_pending
 extended,extended.png,,,,,,,,mapping_pending
-network,network.png,new,810x810,true,true,5421ec44e3d450ebbf154dbd17e64cc7d10fb3cab135abaa06443c16e0fe99b7,10,pending,validated_local_pending_github
+network,network.png,new,810x810,true,true,5421ec44e3d450ebbf154dbd17e64cc7d10fb3cab135abaa06443c16e0fe99b7,10,a8c91f01244e2b7e3cee97c601558a6bd4a7d330,github_committed_verified
 software_manager,software_manager.png,,,,,,,,mapping_pending
 cam,cam.png,new,810x810,true,true,0ca2b6f9149e24f63e596cfe21f63c15ffac102388acfff6677979c5df9c3dba,02,e7127c103704aa0fbfce7ef385ae5d18cae81894,github_committed_verified
 scan,scan.png,new,810x810,true,true,85375318acf9692116a3f41bba2470c0e85316f222af3ae97c3a0caa8a5f73d0,01,534bc9798d6ee6148c87269f0f41cec88035b81d,github_committed_verified
@@ -57,7 +57,7 @@ recording_setup,recording_setup.png,new,810x810,true,true,37cdeee6b6bb3b6d214895
 hdmirecord_setup,hdmirecord_setup.png,new,810x810,true,true,04ffa06d8df5b200407c97e05842df201662739b6a1684a3b213986aea1c37ce,07,47e123cd9059e21f43efc44208404c677e4a345f,github_committed_verified
 timshift_setup,timshift_setup.png,new,810x810,true,true,2616d79273eb678243df4a2bb326e2e8f00361864558267e3924d300a9d68b68,07,47e123cd9059e21f43efc44208404c677e4a345f,github_committed_verified
 serviceapp_setup,serviceapp_setup.png,new,810x810,true,true,6c696414f2790e6162484e69d28107bab14e5f22ffb9f8dd3b49c59144415e0a,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
-remote_setup,remote_setup.png,new,810x810,true,true,704d2e9090977ccaddbebb2e273854ebeb9a271a7a8d341c8bf51cb9e967eb2e,10,pending,validated_local_pending_github
+remote_setup,remote_setup.png,new,810x810,true,true,704d2e9090977ccaddbebb2e273854ebeb9a271a7a8d341c8bf51cb9e967eb2e,10,a8c91f01244e2b7e3cee97c601558a6bd4a7d330,github_committed_verified
 channelselection_setup,channelselection_setup.png,,,,,,,,mapping_pending
 usage_setup,usage_setup.png,,,,,,,,mapping_pending
 skin_setup,skin_setup.png,,,,,,,,mapping_pending
@@ -89,9 +89,9 @@ oscam_info,oscam_info.png,new,810x810,true,true,63a23b32ac994e7f806dc748c9254ea3
 ci_selection,ci_selection.png,new,810x810,true,true,cf7ffaf2af2e23afb2d4a74ba9755cd6fb31c7841e51e6fd28269ef598cd1a6c,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
 softcsa_settings,softcsa_settings.png,new,810x810,true,true,f294c0eadc351fe13cb10ee89ccbe1e8ffe39258d73d13c5d516dcd96d9ffca5,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
 streamrelay_settings,streamrelay_settings.png,new,810x810,true,true,f9634cb71004bfce5b25d89c8475fe54e79e9ff9641aa5007ab666bf0285b144,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
-parental_setup,parental_setup.png,new,810x810,true,true,969846b741983cf1ac7b819923af6c4dbf40a7fffea7d0b79089b4c885512860,10,pending,validated_local_pending_github
+parental_setup,parental_setup.png,new,810x810,true,true,969846b741983cf1ac7b819923af6c4dbf40a7fffea7d0b79089b4c885512860,10,a8c91f01244e2b7e3cee97c601558a6bd4a7d330,github_committed_verified
 manage_plugins,manage_plugins.png,,,,,,,,mapping_pending
-software_update,software_update.png,new,810x810,true,true,7119695fed25213495c8e81287da8a445022af012481308e04ca1f9fedc2312d,10,pending,validated_local_pending_github
+software_update,software_update.png,new,810x810,true,true,7119695fed25213495c8e81287da8a445022af012481308e04ca1f9fedc2312d,10,a8c91f01244e2b7e3cee97c601558a6bd4a7d330,github_committed_verified
 flash_online,flash_online.png,,,,,,,,mapping_pending
 backup_image,backup_image.png,,,,,,,,mapping_pending
 multiboot,multiboot.png,,,,,,,,mapping_pending
@@ -108,7 +108,7 @@ upgrade_source,upgrade_source.png,,,,,,,,mapping_pending
 upgrade_settings,upgrade_settings.png,new,810x810,true,true,dbd19d975301fb96aebae90283c5e6bb13c111271a0a7051e49503fbcf66dccb,04,3c3cb96ea9edc736fb84c89946fa17cfd4325fbf,github_committed_verified
 mount_setup,mount_setup.png,,,,,,,,mapping_pending
 dns_setup,dns_setup.png,,,,,,,,mapping_pending
-password_setup,password_setup.png,new,810x810,true,true,476f2cab05776ffd6795faad0ed383c623192cf758ebeadf3e8344dcc45da45c,10,pending,validated_local_pending_github
+password_setup,password_setup.png,new,810x810,true,true,476f2cab05776ffd6795faad0ed383c623192cf758ebeadf3e8344dcc45da45c,10,a8c91f01244e2b7e3cee97c601558a6bd4a7d330,github_committed_verified
 networkservices_setup,networkservices_setup.png,,,,,,,,mapping_pending
 openwebif,openwebif.png,,,,,,,,mapping_pending
 netnfs_setup,netnfs_setup.png,,,,,,,,mapping_pending
