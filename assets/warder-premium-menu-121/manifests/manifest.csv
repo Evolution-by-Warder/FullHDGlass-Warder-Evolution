@@ -29,7 +29,7 @@ swap_manager,swap_manager.png,,,,,,,,mapping_pending
 hdmicec,hdmicec.png,new,810x810,true,true,41d571e4c8c846a9ccedd77201930565e34675e08bac0e5c281deacede1fcc7f,06,b8b09d5843213550d6756fc68f532d9262c1a603,github_committed_verified
 script_manager,script_manager.png,,,,,,,,mapping_pending
 distribution_info_screen,distribution_info_screen.png,,,,,,,,mapping_pending
-video_setup,video_setup.png,new,810x810,true,true,2e191bc7685419da944bf505923bfadf56b8b5d9dff8032e68cb8432a0646331,08,pending,validated_local_pending_github
+video_setup,video_setup.png,new,810x810,true,true,2e191bc7685419da944bf505923bfadf56b8b5d9dff8032e68cb8432a0646331,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
 shutdown,shutdown.png,,,,,,,,mapping_pending
 receiver_info_screen,receiver_info_screen.png,,,,,,,,mapping_pending
 tuner_info_screen,tuner_info_screen.png,,,,,,,,mapping_pending
@@ -44,8 +44,8 @@ powertimer_edit,powertimer_edit.png,,,,,,,,mapping_pending
 crontimer_edit,crontimer_edit.png,,,,,,,,mapping_pending
 sleep,sleep.png,,,,,,,,mapping_pending
 autotimer_setup,autotimer_setup.png,,,,,,,,mapping_pending
-videoenhancement_setup,videoenhancement_setup.png,new,810x810,true,true,1e0b1635de33a8814e687adb0cc01ee412e53e91e8250c9771d8de650a3bf7fd,08,pending,validated_local_pending_github
-video_finetune,video_finetune.png,new,810x810,true,true,8a5f450bad8f675cdf7aede40d175a61c17333f9bdb25bec2c69237c9988181c,08,pending,validated_local_pending_github
+videoenhancement_setup,videoenhancement_setup.png,new,810x810,true,true,1e0b1635de33a8814e687adb0cc01ee412e53e91e8250c9771d8de650a3bf7fd,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
+video_finetune,video_finetune.png,new,810x810,true,true,8a5f450bad8f675cdf7aede40d175a61c17333f9bdb25bec2c69237c9988181c,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
 osdsetup,osdsetup.png,,,,,,,,mapping_pending
 setup_osd3d,setup_osd3d.png,,,,,,,,mapping_pending
 audio_setup,audio_setup.png,,,,,,,,mapping_pending
@@ -53,10 +53,10 @@ volume_adjust,volume_adjust.png,new,810x810,true,true,e1de3b7319892e8cea3559a193
 subtitle_setup,subtitle_setup.png,new,810x810,true,true,95cc9759a0d467e0e319921f7f9eb69d56d00686f7c6c02dfff39f2eed678765,07,47e123cd9059e21f43efc44208404c677e4a345f,github_committed_verified
 autolanguage_setup,autolanguage_setup.png,,,,,,,,mapping_pending
 playback_setup,playback_setup.png,new,810x810,true,true,398133e18b6a10fb48cad0719eb55a39567bf98333b5ed159d1f7ff1bb7f43d2,07,47e123cd9059e21f43efc44208404c677e4a345f,github_committed_verified
-recording_setup,recording_setup.png,new,810x810,true,true,37cdeee6b6bb3b6d214895ad10ddca75596f7ea01d6271b056f6055dc24e5f77,08,pending,validated_local_pending_github
+recording_setup,recording_setup.png,new,810x810,true,true,37cdeee6b6bb3b6d214895ad10ddca75596f7ea01d6271b056f6055dc24e5f77,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
 hdmirecord_setup,hdmirecord_setup.png,new,810x810,true,true,04ffa06d8df5b200407c97e05842df201662739b6a1684a3b213986aea1c37ce,07,47e123cd9059e21f43efc44208404c677e4a345f,github_committed_verified
 timshift_setup,timshift_setup.png,new,810x810,true,true,2616d79273eb678243df4a2bb326e2e8f00361864558267e3924d300a9d68b68,07,47e123cd9059e21f43efc44208404c677e4a345f,github_committed_verified
-serviceapp_setup,serviceapp_setup.png,new,810x810,true,true,6c696414f2790e6162484e69d28107bab14e5f22ffb9f8dd3b49c59144415e0a,08,pending,validated_local_pending_github
+serviceapp_setup,serviceapp_setup.png,new,810x810,true,true,6c696414f2790e6162484e69d28107bab14e5f22ffb9f8dd3b49c59144415e0a,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
 remote_setup,remote_setup.png,,,,,,,,mapping_pending
 channelselection_setup,channelselection_setup.png,,,,,,,,mapping_pending
 usage_setup,usage_setup.png,,,,,,,,mapping_pending
