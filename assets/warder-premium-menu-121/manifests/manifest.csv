@@ -15,7 +15,7 @@ fastscan,fastscan.png,new,810x810,true,true,f49823beef1b473e535818d05e478a79827c
 fallbacktuner_settings,fallbacktuner_settings.png,new,810x810,true,true,a4437a5d7d372d6e70058eeb52d7642e7dda7b8f762bdf704f1cf8bf6522f96b,01,a182fbab9dba7d28c0f850fa37d1fba2ba7986da,github_committed_verified
 dab_usb_setup,dab_usb_setup.png,,,,,,,,mapping_pending
 dab_scan,dab_scan.png,new,810x810,true,true,20a1c9527fa1bb4a7dc164093c1b0f30fc5f90351e1ed1bc25a3c72e4e87d8b6,02,e7127c103704aa0fbfce7ef385ae5d18cae81894,github_committed_verified
-autobouquetsmakermaker,autobouquetsmakermaker.png,,,,,,,,mapping_pending
+autobouquetsmakermaker,autobouquetsmakermaker.png,new,810x810,true,true,e519c2390ec7ab4023f9e542413b4d5135fc8628306fa0874222cded6651f223,04,pending,validated_local_pending_github
 manual_scan,manual_scan.png,new,810x810,true,true,6c6f2d3d3f6b8c05959df979d29442ea7d9a8a807c95428e39f0441027c63f45,02,e7127c103704aa0fbfce7ef385ae5d18cae81894,github_committed_verified
 auto_scan,auto_scan.png,new,810x810,true,true,2099f4ce5da57618514c2069d4ff141995d577044b32bd0971e534b56265aa20,02,e7127c103704aa0fbfce7ef385ae5d18cae81894,github_committed_verified
 tuner_basic_settings,tuner_basic_settings.png,new,810x810,true,true,3b05d415694feec90ac61764a35a397f0b9f9df7e769c53996eeca63a2a4fedf,02,e7127c103704aa0fbfce7ef385ae5d18cae81894,github_committed_verified
@@ -82,9 +82,9 @@ setup_epgvertical,setup_epgvertical.png,,,,,,,,mapping_pending
 loadepgcache,loadepgcache.png,,,,,,,,mapping_pending
 saveepgcache,saveepgcache.png,,,,,,,,mapping_pending
 deleteepgcache,deleteepgcache.png,,,,,,,,mapping_pending
-ci_helper,ci_helper.png,,,,,,,,mapping_pending
+ci_helper,ci_helper.png,new,810x810,true,true,32e0f67eefeca15dc80e0fafcdea3b6bec04fcf40dd2dd5646bbe231800dd0a2,04,pending,validated_local_pending_github
 softcam_settings,softcam_settings.png,new,810x810,true,true,0e403352516df4ab6c239d357dcffc9c5ecd72d4f394093f1811bd9805347cad,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
-autocam_settings,autocam_settings.png,,,,,,,,mapping_pending
+autocam_settings,autocam_settings.png,new,810x810,true,true,88f269163de1743fee84250818c6e58c827ad309389331a873d412b9b5e6525c,04,pending,validated_local_pending_github
 oscam_info,oscam_info.png,new,810x810,true,true,63a23b32ac994e7f806dc748c9254ea317755e9780c573efcddbe97b32e56dca,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
 ci_selection,ci_selection.png,new,810x810,true,true,cf7ffaf2af2e23afb2d4a74ba9755cd6fb31c7841e51e6fd28269ef598cd1a6c,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
 softcsa_settings,softcsa_settings.png,new,810x810,true,true,f294c0eadc351fe13cb10ee89ccbe1e8ffe39258d73d13c5d516dcd96d9ffca5,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
@@ -103,9 +103,9 @@ advanced_restore,advanced_restore.png,,,,,,,,mapping_pending
 backup_default,backup_default.png,,,,,,,,mapping_pending
 backup_additional,backup_additional.png,,,,,,,,mapping_pending
 backup_excluded,backup_excluded.png,,,,,,,,mapping_pending
-package_manager,package_manager.png,,,,,,,,mapping_pending
+package_manager,package_manager.png,new,810x810,true,true,b537bf177cf8fc8defac881aa44bb60f3b407da4df8cce20d5bd413381f2ffd8,04,pending,validated_local_pending_github
 upgrade_source,upgrade_source.png,,,,,,,,mapping_pending
-upgrade_settings,upgrade_settings.png,,,,,,,,mapping_pending
+upgrade_settings,upgrade_settings.png,new,810x810,true,true,dbd19d975301fb96aebae90283c5e6bb13c111271a0a7051e49503fbcf66dccb,04,pending,validated_local_pending_github
 mount_setup,mount_setup.png,,,,,,,,mapping_pending
 dns_setup,dns_setup.png,,,,,,,,mapping_pending
 password_setup,password_setup.png,,,,,,,,mapping_pending
