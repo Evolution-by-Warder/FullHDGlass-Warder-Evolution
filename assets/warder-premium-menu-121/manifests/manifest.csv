@@ -8,7 +8,7 @@ extended,extended.png,,,,,,,,mapping_pending
 network,network.png,,,,,,,,mapping_pending
 software_manager,software_manager.png,,,,,,,,mapping_pending
 cam,cam.png,,,,,,,,mapping_pending
-scan,scan.png,new,810x810,true,true,85375318acf9692116a3f41bba2470c0e85316f222af3ae97c3a0caa8a5f73d0,01,pending,verified_local_pending_commit
+scan,scan.png,new,810x810,true,true,85375318acf9692116a3f41bba2470c0e85316f222af3ae97c3a0caa8a5f73d0,01,534bc9798d6ee6148c87269f0f41cec88035b81d,github_committed_verified
 tuner_setup,tuner_setup.png,,,,,,,,mapping_pending
 satfinder,satfinder.png,,,,,,,,mapping_pending
 fastscan,fastscan.png,,,,,,,,mapping_pending
