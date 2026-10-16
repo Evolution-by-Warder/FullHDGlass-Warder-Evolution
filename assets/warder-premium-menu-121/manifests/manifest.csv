@@ -83,12 +83,12 @@ loadepgcache,loadepgcache.png,,,,,,,,mapping_pending
 saveepgcache,saveepgcache.png,,,,,,,,mapping_pending
 deleteepgcache,deleteepgcache.png,,,,,,,,mapping_pending
 ci_helper,ci_helper.png,,,,,,,,mapping_pending
-softcam_settings,softcam_settings.png,new,810x810,true,true,0e403352516df4ab6c239d357dcffc9c5ecd72d4f394093f1811bd9805347cad,03,pending,validated_local_pending_github
+softcam_settings,softcam_settings.png,new,810x810,true,true,0e403352516df4ab6c239d357dcffc9c5ecd72d4f394093f1811bd9805347cad,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
 autocam_settings,autocam_settings.png,,,,,,,,mapping_pending
-oscam_info,oscam_info.png,new,810x810,true,true,63a23b32ac994e7f806dc748c9254ea317755e9780c573efcddbe97b32e56dca,03,pending,validated_local_pending_github
-ci_selection,ci_selection.png,new,810x810,true,true,cf7ffaf2af2e23afb2d4a74ba9755cd6fb31c7841e51e6fd28269ef598cd1a6c,03,pending,validated_local_pending_github
-softcsa_settings,softcsa_settings.png,new,810x810,true,true,f294c0eadc351fe13cb10ee89ccbe1e8ffe39258d73d13c5d516dcd96d9ffca5,03,pending,validated_local_pending_github
-streamrelay_settings,streamrelay_settings.png,new,810x810,true,true,f9634cb71004bfce5b25d89c8475fe54e79e9ff9641aa5007ab666bf0285b144,03,pending,validated_local_pending_github
+oscam_info,oscam_info.png,new,810x810,true,true,63a23b32ac994e7f806dc748c9254ea317755e9780c573efcddbe97b32e56dca,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
+ci_selection,ci_selection.png,new,810x810,true,true,cf7ffaf2af2e23afb2d4a74ba9755cd6fb31c7841e51e6fd28269ef598cd1a6c,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
+softcsa_settings,softcsa_settings.png,new,810x810,true,true,f294c0eadc351fe13cb10ee89ccbe1e8ffe39258d73d13c5d516dcd96d9ffca5,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
+streamrelay_settings,streamrelay_settings.png,new,810x810,true,true,f9634cb71004bfce5b25d89c8475fe54e79e9ff9641aa5007ab666bf0285b144,03,2a60a31a28c5696920504ef2b0a2ef589c086e85,github_committed_verified
 parental_setup,parental_setup.png,,,,,,,,mapping_pending
 manage_plugins,manage_plugins.png,,,,,,,,mapping_pending
 software_update,software_update.png,,,,,,,,mapping_pending
