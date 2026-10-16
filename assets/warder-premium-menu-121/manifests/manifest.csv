@@ -97,7 +97,7 @@ backup_image,backup_image.png,,,,,,,,mapping_pending
 multiboot,multiboot.png,new,810x810,true,true,2675a75b75a4780fc3632649342007e2c4ff606763da3cf404eb61c15707157e,16,9e0357ec1acaab26e961939a0aad271a77b4f551,github_committed_verified
 backup_system,backup_system.png,,,,,,,,mapping_pending
 restore_system,restore_system.png,,,,,,,,mapping_pending
-install_local,install_local.png,,,,,,,,mapping_pending
+install_local,install_local.png,new,810x810,true,true,7bfd4ce4d222c6d9a18258f7377abf023dcf72da0ad4606e75421fc59b997465,18,666e8ba2afa483ca5ed70f9c32c7d9e8ee553058,github_committed_verified
 advanced_software,advanced_software.png,,,,,,,,mapping_pending
 advanced_restore,advanced_restore.png,,,,,,,,mapping_pending
 backup_default,backup_default.png,,,,,,,,mapping_pending
