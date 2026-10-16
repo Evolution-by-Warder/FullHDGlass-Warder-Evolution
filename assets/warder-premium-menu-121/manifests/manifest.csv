@@ -98,7 +98,7 @@ multiboot,multiboot.png,new,810x810,true,true,2675a75b75a4780fc3632649342007e2c4
 backup_system,backup_system.png,,,,,,,,mapping_pending
 restore_system,restore_system.png,,,,,,,,mapping_pending
 install_local,install_local.png,new,810x810,true,true,7bfd4ce4d222c6d9a18258f7377abf023dcf72da0ad4606e75421fc59b997465,18,666e8ba2afa483ca5ed70f9c32c7d9e8ee553058,github_committed_verified
-advanced_software,advanced_software.png,,,,,,,,mapping_pending
+advanced_software,new-10/advanced_software.png,new,810x810,true,true,820d8d95149df363f95d296035402318716f9f022e4d608db41f9910bbad944b,25,1769d10a5000802f2f61e62fe7c82cfcb0a397fc,github_committed_verified
 advanced_restore,advanced_restore.png,,,,,,,,mapping_pending
 backup_default,backup_default.png,,,,,,,,mapping_pending
 backup_additional,backup_additional.png,,,,,,,,mapping_pending
