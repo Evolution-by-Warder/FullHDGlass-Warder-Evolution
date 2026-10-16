@@ -73,12 +73,12 @@ locale_setup,locale_setup.png,new,810x810,true,true,8b0907507a41049dbdb1f7d64b95
 epg,epg.png,,,,,,,,mapping_pending
 epgimporter,epgimporter.png,new,810x810,true,true,1c64f8d907d43c198a5bfa76ac62a6bf3b21372387778569d6b36c1fe7d744fa,06,b8b09d5843213550d6756fc68f532d9262c1a603,github_committed_verified
 epg_setup,epg_setup.png,,,,,,,,mapping_pending
-setup_epgmulti,setup_epgmulti.png,,,,,,,,mapping_pending
-setup_epgenhanced,setup_epgenhanced.png,,,,,,,,mapping_pending
+setup_epgmulti,setup_epgmulti.png,new,810x810,true,true,59836457075480c2ac9b317fc4f95236a6a60ffc5cb5684a3aea3df67136635a,15,1135ac56c717a334a08b6152a4e888023ac2978e,github_committed_verified
+setup_epgenhanced,setup_epgenhanced.png,new,810x810,true,true,40dffb740dde4dd5573af10045c13d96bcc178e6fe0d311659f2e0f785a6fc20,15,1135ac56c717a334a08b6152a4e888023ac2978e,github_committed_verified
 setup_epginfobar,setup_epginfobar.png,,,,,,,,mapping_pending
-setup_epginfobargraphical,setup_epginfobargraphical.png,,,,,,,,mapping_pending
-setup_epggraphical,setup_epggraphical.png,,,,,,,,mapping_pending
-setup_epgvertical,setup_epgvertical.png,,,,,,,,mapping_pending
+setup_epginfobargraphical,setup_epginfobargraphical.png,new,810x810,true,true,8bb47bacfd49a3c36c81dc8513051f3f2d9df9ea1acacde4ddd66759f9e21ab9,15,1135ac56c717a334a08b6152a4e888023ac2978e,github_committed_verified
+setup_epggraphical,setup_epggraphical.png,new,810x810,true,true,b9d2940104b3c0946de8756644bc5370af40aa951271b79aa1d2a0431b2e5ace,15,1135ac56c717a334a08b6152a4e888023ac2978e,github_committed_verified
+setup_epgvertical,setup_epgvertical.png,new,810x810,true,true,2a2e88deb2d24c05d307c00ff53575a063ddb95aba0d52c68a92b63563b5792d,15,1135ac56c717a334a08b6152a4e888023ac2978e,github_committed_verified
 loadepgcache,loadepgcache.png,new,810x810,true,true,f9777a861ea52bebd0df07b15c1f44f90a6c59894c173aa65ac854013f857e1c,13,bb3ca3904c625e509ab196ace76e6860c51ddf4d,github_committed_verified
 saveepgcache,saveepgcache.png,,,,,,,,mapping_pending
 deleteepgcache,deleteepgcache.png,,,,,,,,mapping_pending
