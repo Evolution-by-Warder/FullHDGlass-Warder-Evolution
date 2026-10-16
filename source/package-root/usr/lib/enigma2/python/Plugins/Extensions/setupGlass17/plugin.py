@@ -2207,7 +2207,7 @@ def getWarderAssets():
 		with urlopen(req, timeout=15) as response:
 			if str(response.geturl()) != url:
 				raise ValueError("unsafe asset manifest redirect")
-			data = json.loads(response.read().decode("utf-8"))
+			data = json.loads(response.read().decode("utf-8-sig"))
 		assets = data.get("assets", {})
 		if not isinstance(assets, dict):
 			raise ValueError("invalid assets catalog")
