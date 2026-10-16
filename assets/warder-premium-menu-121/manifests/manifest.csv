@@ -30,7 +30,7 @@ hdmicec,hdmicec.png,new,810x810,true,true,41d571e4c8c846a9ccedd77201930565e34675
 script_manager,script_manager.png,,,,,,,,mapping_pending
 distribution_info_screen,distribution_info_screen.png,,,,,,,,mapping_pending
 video_setup,video_setup.png,new,810x810,true,true,2e191bc7685419da944bf505923bfadf56b8b5d9dff8032e68cb8432a0646331,08,61fe4ed02105340c35e88e92c1fecd79a98b2597,github_committed_verified
-shutdown,shutdown.png,,,,,,,,mapping_pending
+shutdown,shutdown.png,new,810x810,true,true,defa9610c39a753a15e55201b37d42d6a8ce3e4da61470562a7d16e045849ea4,12,pending,validated_local_pending_github
 receiver_info_screen,receiver_info_screen.png,,,,,,,,mapping_pending
 tuner_info_screen,tuner_info_screen.png,,,,,,,,mapping_pending
 storage_info_screen,storage_info_screen.png,,,,,,,,mapping_pending
@@ -116,7 +116,7 @@ netsamba_setup,netsamba_setup.png,,,,,,,,mapping_pending
 flash_expander,flash_expander.png,,,,,,,,mapping_pending
 time_setup,time_setup.png,new,810x810,true,true,36eb56216bd08b3a31fd96439b36f5f15b33fc0fa01f352031418c96055ecb5c,06,b8b09d5843213550d6756fc68f532d9262c1a603,github_committed_verified
 logs_setup,logs_setup.png,,,,,,,,mapping_pending
-factory_reset,factory_reset.png,,,,,,,,mapping_pending
-deep_standby,deep_standby.png,,,,,,,,mapping_pending
-restart,restart.png,,,,,,,,mapping_pending
-restart_enigma,restart_enigma.png,,,,,,,,mapping_pending
+factory_reset,factory_reset.png,new,810x810,true,true,6a3645f693493e9534ff20efa00415bdfb4310c883b3e28fbd126572cb5bfa47,12,pending,validated_local_pending_github
+deep_standby,deep_standby.png,new,810x810,true,true,90bbeea833f56bbe4c5dada98fa44ffdef7500b2ea994439cbe9f3648fdd4556,12,pending,validated_local_pending_github
+restart,restart.png,new,810x810,true,true,91852837a5c3356aa0f54d3caca8e304bdbaca7ed9f14c3a59be5ab787ceaa2f,12,pending,validated_local_pending_github
+restart_enigma,restart_enigma.png,new,810x810,true,true,4f2a08d471c826be519836d8c2a27c1f55fec412f65b84dcb7e1b00e09b41ad0,12,pending,validated_local_pending_github
