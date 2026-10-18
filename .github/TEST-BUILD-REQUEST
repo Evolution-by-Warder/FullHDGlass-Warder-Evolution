@@ -97,3 +97,6 @@ Fix menu icon rendering: disable alpha test on the generic Menu preview so dark 
 
 TEST209 BUILD 2
 Update the assets ledger to match the published menu icon archive SHA-256 and sizes; rerun all TEST209 package preflight and build gates.
+
+TEST209 BUILD 3
+Synchronize the migration ledger current_sha256 entries for the TEST209 menu icon archives and rerun all package gates.
