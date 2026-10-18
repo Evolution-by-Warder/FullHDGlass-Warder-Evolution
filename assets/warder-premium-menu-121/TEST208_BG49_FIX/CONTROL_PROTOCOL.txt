@@ -9,3 +9,6 @@ SHA-256 `extended.png`: 404ee00f518d7d5889d739fe83666e15604891082753bfe83444783b
 SHA-256 `manage_plugins.png`: 01a2d1ef80a8758f4325ed5a6be8d6cce9ba4d64e203b5f57db532e0ee62e769
 
 Oba menu ZIP archívy zachovávajú 123 položiek; ZIP CRC prešiel. `downloads.json` obsahuje nové veľkosti, SHA-256 a odkazy na časti. Skin XML, renderer, IPK, stabilná vetva a produkčná vetva sa nemenili.
+
+
+Owner-supplied thematic corrections (2026-10-18): deep_standby.png uses Pohotovostny_rezim.png; restart_enigma.png uses Restartovat_GUI.png; shutdown.png uses Vypnut.png. Each source was kept at 810x810 RGBA and its black matte alpha floor was clamped to 220. Generic restart.png was left untouched because the supplied archive did not include a separate Restartovat source.
