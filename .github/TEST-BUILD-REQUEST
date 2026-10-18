@@ -103,3 +103,6 @@ Synchronize the migration ledger current_sha256 entries for the TEST209 menu ico
 
 TEST210 BUILD 1
 Correct all packaged menu icon backgrounds from alpha 128 to the skin-matched 206-opacity black with a 56 px feather; add standby.png runtime alias to deep_standby art. Build and publish TEST210 only on warder-modernization-work. Keep main and stable 1.0.4 unchanged.
+
+TEST210 BUILD 2
+Corrected ZIP part transport after remote hash validation identified base64 output truncation; use 750 KB chunks and verify the reassembled remote archives before publication.
