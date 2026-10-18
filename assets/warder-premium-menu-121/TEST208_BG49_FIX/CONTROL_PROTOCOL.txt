@@ -1,12 +1,12 @@
 TEST208 MENU ICON FIX — PACKAGE AND VALIDATION PROTOCOL
 
-Sources: the 121 approved PNGs from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE.zip. The rejected Prehliadac_pluginov.png from the six-image archive was not used. manage_plugins.png is retained from the approved 121-image source. extended.png uses the owner-approved Rozsirene_pocasie.png. information.png remains from the approved 121-image source.
+Sources: the 121 approved PNGs from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE.zip. The rejected Prehliadac_pluginov.png from the six-image archive was not used. manage_plugins.png comes from the approved 121-image source. extended.png uses the owner-approved Rozsirene_pocasie.png. information.png remains from the approved 121-image source.
 
-Background operation: exact black background pixels (RGB 0,0,0) with source alpha 128 or 145 were changed to alpha 49, matching skin.xml #31000000. Other RGBA pixel values were preserved. All PNGs remain 810x810 RGBA. The 121 PNGs have 121 distinct SHA-256 values.
+Background operation: exact black background pixels (RGB 0,0,0) with source alpha 128 or 145 were changed to alpha 49, matching skin.xml #31000000. Other RGBA pixels were preserved. All PNGs remain 810x810 RGBA and have 121 distinct SHA-256 values.
 
-ZIP layout: menuIcons.zip contains menuIcons/<PNG>; menuIconsBig.zip contains menuIconsBig/<PNG>. The receiver validates that this root directory exists after extraction. A previous package omitted the root directory and the receiver correctly reported Unzip failed; this package includes it.
+Required receiver layout: the standard icon importer scans menuIcons/1 through menuIcons/30 and imports PNGs from each set directory. menuIcons.zip therefore contains menuIcons/1/<PNG>. The large icon importer copies from menuIconsBig directly, so menuIconsBig.zip contains menuIconsBig/<PNG>. This matches setupGlass17/plugin.py (MAXICONS=31, par69 selects the icon set). Earlier layouts omitted the set directory and would not update the displayed standard icons.
 
-Local validation: both ZIPs contain 121 PNGs, pass Python ZipFile CRC testing and unzip -t, and were extracted to temporary directories to confirm the expected root and 121 image files. The receiver itself must be retested with this corrected package.
+Local validation: both ZIPs contain 121 PNGs, pass ZIP CRC testing and unzip -t, and were extracted to temporary directories. The standard archive produced menuIcons/1 with 121 PNGs; the large archive produced menuIconsBig with 121 PNGs. GitHub manifest parts were checked against the exact local chunk blob hashes. Receiver testing is still needed after downloading the revised packages.
 
-menuIcons.zip size/SHA-256: 70068296 / 4c9b6ef7ffc25af5b73d093e719f227a6b40ce95d18c4eb07569104e730db1e6
+menuIcons.zip size/SHA-256: 70068780 / 16603acaba716df6398b735ee16e8ef6342c5ff24e8627ec3540e641acae31b6
 menuIconsBig.zip size/SHA-256: 70069022 / 16977ab531994236bb1ef4d1110ee6f9181e950eaeb78768c0167694899e0e16
