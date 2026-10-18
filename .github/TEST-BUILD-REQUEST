@@ -94,3 +94,6 @@ Use the exact 121 image entries from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_D
 
 TEST209 BUILD 1
 Fix menu icon rendering: disable alpha test on the generic Menu preview so dark RGBA canvas remains blended; publish refreshed 810x810 menu icon archives with corrected legacy alias alpha and timer_edit runtime alias copied from approved timermenu artwork. Do not modify main or stable 1.0.4.
+
+TEST209 BUILD 2
+Update the assets ledger to match the published menu icon archive SHA-256 and sizes; rerun all TEST209 package preflight and build gates.
