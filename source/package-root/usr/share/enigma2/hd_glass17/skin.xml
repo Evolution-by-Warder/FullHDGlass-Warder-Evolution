@@ -413,7 +413,7 @@
 				}
 			</convert>
     </widget>
-    <widget source="menu" render="g17MenuEntry2" position="832,16" zPosition="3" size="810,810" alphatest="on">
+    <widget source="menu" render="g17MenuEntry2" position="832,16" zPosition="3" size="810,810" alphatest="off">
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>
   </screen>

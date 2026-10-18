@@ -90,3 +90,7 @@ Use the exact 121 image entries from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_D
 
 
 2026-10-18 menu image alpha correction: restore background alpha 128 on all 121 graphics so Enigma2 alphatest=on displays the semi-transparent black background.
+
+
+TEST209 BUILD 1
+Fix menu icon rendering: disable alpha test on the generic Menu preview so dark RGBA canvas remains blended; publish refreshed 810x810 menu icon archives with corrected legacy alias alpha and timer_edit runtime alias copied from approved timermenu artwork. Do not modify main or stable 1.0.4.
