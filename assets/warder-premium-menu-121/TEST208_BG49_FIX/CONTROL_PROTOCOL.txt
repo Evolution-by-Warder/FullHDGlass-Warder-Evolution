@@ -1,14 +1,12 @@
-WARDER EVOLUTION — KONTROLNÝ PROTOKOL OPRAVY POZADIA
+WARDER EVOLUTION — KONTROLNÝ PROTOKOL POZADIA
 Dátum: 2026-10-18
 
-Opravené sú runtime obrázky `manage_plugins.png` a `extended.png` podľa zostávajúcej kolekcie: tmavé priehľadné čierne plátno RGBA(0,0,0,220). Predchádzajúca alfa 49 spôsobovala na svetlom pozadí výrazné presvitanie, ktoré vidno na priložených snímkach.
+Zdroj parametra: `source/package-root/usr/share/enigma2/hd_glass17/skin.xml`, kde je `transpBlack=#80000000` (RGBA čierna s alfou 128). Pozadie 121 schválených PNG je zosúladené s touto hodnotou. Menili sa iba súvislé čierne pixely podkladového plátna; RGB kanály a ostatné pixely vrátane tieňov zostali zachované. Všetky obrázky sú 810 × 810 px RGBA.
 
-V oboch PNG sa zmenili iba jednotné podkladové pixely `(0,0,0,49)` na `(0,0,0,220)`. Schválené motívy, rozmery 810 × 810 a všetky ostatné pixely vrátane gradovaných tieňov zostali zachované. Počasie používa dodaný `Rozsirene_pocasie.png`; prehliadač pluginov používa schválenú štvordlaždicovú grafiku.
+Tri systémové motívy sú zo zdrojov dodaných vlastníkom v `WARDER_6_SAMOSTATNYCH_810x810(3).zip`: `Pohotovostny_rezim.png` → `deep_standby.png`, `Restartovat_GUI.png` → `restart_enigma.png`, `Vypnut.png` → `shutdown.png`. Tieto tri PNG boli obnovené priamo z dodaného archívu pred úpravou iba čierneho podkladu. `restart.png` zostal bez zmeny, pretože archív neobsahoval samostatný zdroj `Restartovat`.
 
-SHA-256 `extended.png`: 404ee00f518d7d5889d739fe83666e15604891082753bfe83444783b88d82e9f
-SHA-256 `manage_plugins.png`: 01a2d1ef80a8758f4325ed5a6be8d6cce9ba4d64e203b5f57db532e0ee62e769
+`manage_plugins.png` používa schválenú štvordlaždicovú grafiku prehliadača pluginov. `extended.png` používa dodaný motív rozšíreného počasia. Pôvodné schválené obrázky neboli nahradené generovanými rendermi.
 
-Oba menu ZIP archívy zachovávajú 123 položiek; ZIP CRC prešiel. `downloads.json` obsahuje nové veľkosti, SHA-256 a odkazy na časti. Skin XML, renderer, IPK, stabilná vetva a produkčná vetva sa nemenili.
+Oba ZIP balíky obsahujú 121 manifestových obrázkov a 2 zachované aliasy (123 PNG celkom); CRC kontrola prešla. `downloads.json` uvádza kontrolné súčty oboch archívov a 93 častí každého balíka.
 
-
-Owner-supplied thematic corrections (2026-10-18): deep_standby.png uses Pohotovostny_rezim.png; restart_enigma.png uses Restartovat_GUI.png; shutdown.png uses Vypnut.png. Each source was kept at 810x810 RGBA and its black matte alpha floor was clamped to 220. Generic restart.png was left untouched because the supplied archive did not include a separate Restartovat source.
+Neboli menené skin XML, renderer, IPK, stabilná ani produkčná vetva.
