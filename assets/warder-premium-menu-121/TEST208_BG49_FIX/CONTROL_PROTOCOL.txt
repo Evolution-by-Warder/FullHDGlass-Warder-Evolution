@@ -1,12 +1,8 @@
-WARDER EVOLUTION — KONTROLNÝ PROTOKOL POZADIA
+WARDER EVOLUTION — KONTROLNÝ PROTOKOL OPRAVY POZADIA
 Dátum: 2026-10-18
 
-Zdroj parametra: `source/package-root/usr/share/enigma2/hd_glass17/skin.xml`, kde je `transpBlack=#80000000` (RGBA čierna s alfou 128). Pozadie 121 schválených PNG je zosúladené s touto hodnotou. Menili sa iba súvislé čierne pixely podkladového plátna; RGB kanály a ostatné pixely vrátane tieňov zostali zachované. Všetky obrázky sú 810 × 810 px RGBA.
+Zdroj farby: `source/package-root/usr/share/enigma2/hd_glass17/skin.xml`: `background=#31000000` (RGBA 0,0,0,49). `transpBlack=#80000000` je samostatná farba widgetov, nie cieľová farba podkladu obrázkov.
 
-Tri systémové motívy sú zo zdrojov dodaných vlastníkom v `WARDER_6_SAMOSTATNYCH_810x810(3).zip`: `Pohotovostny_rezim.png` → `deep_standby.png`, `Restartovat_GUI.png` → `restart_enigma.png`, `Vypnut.png` → `shutdown.png`. Tieto tri PNG boli obnovené priamo z dodaného archívu pred úpravou iba čierneho podkladu. `restart.png` zostal bez zmeny, pretože archív neobsahoval samostatný zdroj `Restartovat`.
+121 schválených PNG: 810 × 810, RGBA. Zmenila sa iba alfa súvislého čierneho podkladu dotýkajúceho sa okrajov z 128 na 49; RGB a ostatné pixely ostali zachované. Motívy pochádzajú zo schválených originálov, bez generovaných renderov.
 
-`manage_plugins.png` používa schválenú štvordlaždicovú grafiku prehliadača pluginov. `extended.png` používa dodaný motív rozšíreného počasia. Pôvodné schválené obrázky neboli nahradené generovanými rendermi.
-
-Oba ZIP balíky obsahujú 121 manifestových obrázkov a 2 zachované aliasy (123 PNG celkom); CRC kontrola prešla. `downloads.json` uvádza kontrolné súčty oboch archívov a 93 častí každého balíka.
-
-Neboli menené skin XML, renderer, IPK, stabilná ani produkčná vetva.
+Samostatný schválený Prehliadač pluginov je dodaný súbor `Prehliadac_pluginov.png`; v balíku sa používa ako `plugin_selection.png` a iba čierny podklad mení alfu 145 na 49. Počasie používa dodaný originál.

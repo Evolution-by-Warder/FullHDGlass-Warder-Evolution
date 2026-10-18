@@ -78,3 +78,6 @@ Use the 121 owner-approved 810x810 RGBA menu PNGs; change only the exact uniform
 TEST208 preflight correction: pin the updated menu archive SHAs and allow only the exact TEST branch URL root for the two TEST menu archives.
 
 TEST208 audit ledger update: record the verified 14 test-source references in warderPiconSync.py.
+
+TEST208 BG49 correction
+Use skin.xml color name="background" #31000000 (alpha 49), not widget transpBlack #80000000. Validate all 121 approved menu PNGs, the owner-supplied PluginBrowser image, both refreshed ZIPs and manifest; run the standard TEST208 build and publish the verified TEST IPK on warder-modernization-work only. Do not touch main or stable 1.0.4.
