@@ -100,8 +100,8 @@
     },
     "menuicons": {
       "filename": "menuIcons.zip",
-      "size": 63462169,
-      "sha256": "7885a4aca50e737cc34e5d15130ed58d2352d81df4193ed989e1c5a66bd8114b",
+      "size": 64417635,
+      "sha256": "bd862cd5e7eb89568a3b95ffe452cef74f84bab767e671f9100d25d3c4505ad6",
       "root": "menuIcons",
       "publication_source_id": "fullhd-test",
       "parts": [
@@ -195,15 +195,17 @@
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part087",
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part088",
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part089",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part090"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part090",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part091",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons/menuIcons.zip.parts/part092"
       ],
       "part_size": 700000,
       "png_count": 123
     },
     "menuiconsbig": {
       "filename": "menuIconsBig.zip",
-      "size": 63462415,
-      "sha256": "7b4939b3ba496da51f921a6e9f0726763480a704c1e1f04fc9cd043c137848fe",
+      "size": 64417883,
+      "sha256": "4c8927efaaadab93bea10261ff639527abe9b5bd62aa9f4c1ba9300c151ad070",
       "root": "menuIconsBig",
       "parts": [
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part000",
@@ -296,7 +298,9 @@
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part087",
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part088",
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part089",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part090"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part090",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part091",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part092"
       ],
       "publication_source_id": "fullhd-test",
       "part_size": 700000,

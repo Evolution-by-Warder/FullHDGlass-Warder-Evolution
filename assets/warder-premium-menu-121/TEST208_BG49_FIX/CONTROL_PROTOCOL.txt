@@ -1,8 +1,8 @@
 WARDER EVOLUTION — KONTROLNÝ PROTOKOL OPRAVY POZADIA
 Dátum: 2026-10-18
 
-Opravené sú dva obrázky so zachovaním schválených motívov: `manage_plugins.png` používa pôvodný 4-dlaždicový obrázok Plugin Browser; `extended.png` používa vlastníkom dodaný `Rozsirene_pocasie.png`. Oba majú 810 × 810 px, RGBA.
+Opravené sú dva runtime názvy bez zmeny schválených motívov: `manage_plugins.png` používa existujúci správny štvordlaždicový obrázok `plugin_selection.png`; `extended.png` používa existujúci schválený obrázok `e.png` z `Rozsirene_pocasie.png`. Obe PNG majú 810 × 810 px, RGBA a pozadie podľa skinu `#31000000` (RGBA 0,0,0,49).
 
-Pozadie zodpovedá hodnote skinu `#31000000` (RGBA 0,0,0,49). Pri `manage_plugins.png` bola vrstva alfa 49 vložená pod pôvodné RGBA dielo. Pri `extended.png` sa zmenili iba jednotné čierne plátnové pixely zo zdrojovej alfy 145 na 49. Ostatné pixely, motívy a rozmery zostali zachované.
+Tieto presné overené aliasové PNG bajty boli vložené aj pod hlavné runtime názvy. `plugin_selection.png` a `e.png` ostávajú zachované. Obsah ostatných obrázkov sa nemenil. Položka počasia je `extended`; počasie sa nepriraďuje k položke System.
 
-Položka počasia je `extended`; počasie sa nepriraďuje k položke System. PNG sa dekódovali a SHA-256 sú zaznamenané v manifestoch. Skin, renderer, IPK a produkčné vetvy neboli menené.
+Kontrola: oba obrázky dekódované; alpha 49–255; SHA-256 uvedené v manifestoch. Balíky menuIcons.zip a menuIconsBig.zip sa aktualizujú zhodne, každý zachováva 123 položiek. IPK, renderer a produkčné vetvy sa nemenia.
