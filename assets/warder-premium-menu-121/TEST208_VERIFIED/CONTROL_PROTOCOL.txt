@@ -1,9 +1,9 @@
-TEST208 — OPRAVA MENU GRAFÍK
+TEST208 — OPRAVA POZADIA GRAFÍK MENU
 
-121 schválených PNG zo zdroja work/source121. Schválený weather artwork Rozsirene_pocasie.png z work/source6 použitý pre extended.png a alias e.png. Prehliadac_pluginov.png nepoužitý.
+Prijatá spätná väzba zo snímok: celé pozadie štvorcového PNG musí byť tmavé a polopriehľadné, nie iba výrez okolo motívu.
 
-Všetky výstupy: 810×810 RGBA, bez resize. RGB pixely ponechané; odstránená iba okrajová čierna matná plocha spojitá s hranou, aby nevznikal obdĺžnik.
+Pozadie všetkých PNG je teraz na celom plátne 810×810 nastavené na #31000000, RGBA (0,0,0,49), čo zodpovedá translucentnému pozadiu skinu. Predná grafika zostáva zachovaná; obrázky neboli zmenšené ani znovu generované.
 
-Mapovanie runtime: plugin_selection.png = manage_plugins.png; e.png = Rozsirene_pocasie.png.
+121 schválených obrázkov v kolekcii. extended.png používa schválenú weather grafiku Rozsirene_pocasie.png. Alias plugin_selection.png ukazuje na manage_plugins.png; alias e.png na extended.png. Alias zdroj Prehliadac_pluginov.png (ovládač) sa nepoužil.
 
-ZIP obsahuje 121 pôvodných názvov a 2 názvy aliasov (123 PNG); menuIcons/1/ pre štandardný a menuIconsBig/ pre veľký balík.
+Každý ZIP obsahuje 121 jedinečných grafík plus 2 názvové aliasy pre runtime ID (123 PNG záznamov). Standard ZIP: menuIcons/1/. Big ZIP: menuIconsBig/.
