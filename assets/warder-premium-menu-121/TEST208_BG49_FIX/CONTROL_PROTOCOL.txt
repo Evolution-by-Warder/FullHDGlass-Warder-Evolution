@@ -1,0 +1,7 @@
+TEST208 MENU ICON BACKGROUND AND MAPPING FIX
+
+121 approved PNGs from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE.zip. The faulty Prehliadac_pluginov.png from the six-image archive was not used. manage_plugins.png comes from the 121-image source. extended.png is replaced with the owner-approved Rozsirene_pocasie.png from WARDER_6_SAMOSTATNYCH_810x810(2).zip. information.png stays from the 121-image source.
+
+Pixel operation: exact border background pixels RGB (0,0,0), source alpha 128 (121 archive) or 145 (approved weather image), changed to alpha 49, matching skin.xml #31000000. Other RGBA pixels were kept. All files remain 810x810 RGBA. PNG re-encoding is lossless.
+
+Both menuIcons.zip and menuIconsBig.zip contain the same 121 flatly named PNG files. This is a prepared asset package; receiver rendering must be verified after installing it.
