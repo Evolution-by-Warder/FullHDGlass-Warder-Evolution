@@ -81,3 +81,6 @@ TEST208 audit ledger update: record the verified 14 test-source references in wa
 
 TEST208 BG49 correction
 Use skin.xml color name="background" #31000000 (alpha 49), not widget transpBlack #80000000. Validate all 121 approved menu PNGs, the owner-supplied PluginBrowser image, both refreshed ZIPs and manifest; run the standard TEST208 build and publish the verified TEST IPK on warder-modernization-work only. Do not touch main or stable 1.0.4.
+
+TEST208 rerun after menu archive ledger correction
+The menuicons and menuiconsbig migration-ledger current_sha256 values now match the validated alpha-49 ZIPs in downloads.json. Rerun the full TEST208 preflight and publish the IPK only if every gate passes.
