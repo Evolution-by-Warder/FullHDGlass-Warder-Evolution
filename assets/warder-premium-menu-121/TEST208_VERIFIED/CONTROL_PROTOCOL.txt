@@ -1,0 +1,9 @@
+TEST208 — OPRAVA MENU GRAFÍK
+
+121 schválených PNG zo zdroja work/source121. Schválený weather artwork Rozsirene_pocasie.png z work/source6 použitý pre extended.png a alias e.png. Prehliadac_pluginov.png nepoužitý.
+
+Všetky výstupy: 810×810 RGBA, bez resize. RGB pixely ponechané; odstránená iba okrajová čierna matná plocha spojitá s hranou, aby nevznikal obdĺžnik.
+
+Mapovanie runtime: plugin_selection.png = manage_plugins.png; e.png = Rozsirene_pocasie.png.
+
+ZIP obsahuje 121 pôvodných názvov a 2 názvy aliasov (123 PNG); menuIcons/1/ pre štandardný a menuIconsBig/ pre veľký balík.
