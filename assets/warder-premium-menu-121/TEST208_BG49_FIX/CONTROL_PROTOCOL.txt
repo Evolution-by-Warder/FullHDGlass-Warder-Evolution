@@ -1,8 +1,11 @@
 WARDER EVOLUTION — KONTROLNÝ PROTOKOL OPRAVY POZADIA
 Dátum: 2026-10-18
 
-Opravené sú dva runtime názvy bez zmeny schválených motívov: `manage_plugins.png` používa existujúci správny štvordlaždicový obrázok `plugin_selection.png`; `extended.png` používa existujúci schválený obrázok `e.png` z `Rozsirene_pocasie.png`. Obe PNG majú 810 × 810 px, RGBA a pozadie podľa skinu `#31000000` (RGBA 0,0,0,49).
+Opravené sú runtime obrázky `manage_plugins.png` a `extended.png` podľa zostávajúcej kolekcie: tmavé priehľadné čierne plátno RGBA(0,0,0,220). Predchádzajúca alfa 49 spôsobovala na svetlom pozadí výrazné presvitanie, ktoré vidno na priložených snímkach.
 
-Tieto presné overené aliasové PNG bajty boli vložené aj pod hlavné runtime názvy. `plugin_selection.png` a `e.png` ostávajú zachované. Obsah ostatných obrázkov sa nemenil. Položka počasia je `extended`; počasie sa nepriraďuje k položke System.
+V oboch PNG sa zmenili iba jednotné podkladové pixely `(0,0,0,49)` na `(0,0,0,220)`. Schválené motívy, rozmery 810 × 810 a všetky ostatné pixely vrátane gradovaných tieňov zostali zachované. Počasie používa dodaný `Rozsirene_pocasie.png`; prehliadač pluginov používa schválenú štvordlaždicovú grafiku.
 
-Kontrola: oba obrázky dekódované; alpha 49–255; SHA-256 uvedené v manifestoch. Balíky menuIcons.zip a menuIconsBig.zip sa aktualizujú zhodne, každý zachováva 123 položiek. IPK, renderer a produkčné vetvy sa nemenia.
+SHA-256 `extended.png`: 404ee00f518d7d5889d739fe83666e15604891082753bfe83444783b88d82e9f
+SHA-256 `manage_plugins.png`: 01a2d1ef80a8758f4325ed5a6be8d6cce9ba4d64e203b5f57db532e0ee62e769
+
+Oba menu ZIP archívy zachovávajú 123 položiek; ZIP CRC prešiel. `downloads.json` obsahuje nové veľkosti, SHA-256 a odkazy na časti. Skin XML, renderer, IPK, stabilná vetva a produkčná vetva sa nemenili.

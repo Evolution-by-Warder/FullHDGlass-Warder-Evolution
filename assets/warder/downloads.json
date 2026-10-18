@@ -100,8 +100,8 @@
     },
     "menuicons": {
       "filename": "menuIcons.zip",
-      "size": 64417635,
-      "sha256": "bd862cd5e7eb89568a3b95ffe452cef74f84bab767e671f9100d25d3c4505ad6",
+      "size": 64409568,
+      "sha256": "d7cdd397717105cc85c423242810f10321bd3a1703cd7615803560fda47dafe8",
       "root": "menuIcons",
       "publication_source_id": "fullhd-test",
       "parts": [
@@ -204,8 +204,8 @@
     },
     "menuiconsbig": {
       "filename": "menuIconsBig.zip",
-      "size": 64417883,
-      "sha256": "4c8927efaaadab93bea10261ff639527abe9b5bd62aa9f4c1ba9300c151ad070",
+      "size": 64409939,
+      "sha256": "460d3e40b3a7ff39e7bb2bc926c74057e0bced9cbbe771da73210c9234e70c99",
       "root": "menuIconsBig",
       "parts": [
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part000",
