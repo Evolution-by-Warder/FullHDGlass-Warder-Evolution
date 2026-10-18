@@ -1,8 +1,8 @@
 WARDER EVOLUTION — KONTROLNÝ PROTOKOL OPRAVY POZADIA
 Dátum: 2026-10-18
 
-121 schválených grafík spracovaných; nové motívy sa negenerovali. Každá má 810 × 810 px, RGBA a tmavú transparentnú čiernu vrstvu alpha=49/255 podľa skin.xml (#31000000) pod pôvodným motívom. Plne kryté pixely motívu sú identické so zdrojom.
-System: menu ID `extended` zobrazuje `original-36/18-rozsirene-nastroje.png` (ozubené kolesá a kľúč). Pôvodný obrázok počasia nie je priradený položke System; extra položka počasia `e` zostala v oboch balíkoch zachovaná bez zmeny.
-Kontrola: 121/121 PNG dekódovaných, 810 × 810 RGBA, pozadie alpha=49; SHA-256 v manifestoch. Obe inštalačné ZIP balenia zachovávajú všetkých 123 položiek (121 opravených menu ID + 2 nezmenené doplnkové ikony) a ZIP CRC prešiel kontrolou.
+Opravené sú dva obrázky so zachovaním schválených motívov: `manage_plugins.png` používa pôvodný 4-dlaždicový obrázok Plugin Browser; `extended.png` používa vlastníkom dodaný `Rozsirene_pocasie.png`. Oba majú 810 × 810 px, RGBA.
 
-Úprava sa týka výhradne grafík, manifestov a rozdelených archívov menuIcons.zip/menuIconsBig.zip. Skin, renderer, IPK a produkčné vetvy neboli menené.
+Pozadie zodpovedá hodnote skinu `#31000000` (RGBA 0,0,0,49). Pri `manage_plugins.png` bola vrstva alfa 49 vložená pod pôvodné RGBA dielo. Pri `extended.png` sa zmenili iba jednotné čierne plátnové pixely zo zdrojovej alfy 145 na 49. Ostatné pixely, motívy a rozmery zostali zachované.
+
+Položka počasia je `extended`; počasie sa nepriraďuje k položke System. PNG sa dekódovali a SHA-256 sú zaznamenané v manifestoch. Skin, renderer, IPK a produkčné vetvy neboli menené.
