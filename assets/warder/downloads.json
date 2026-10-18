@@ -99,9 +99,9 @@
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/extra-screens/extraScreens17.zip"
     },
     "menuicons": {
-      "filename": "menu-icons.zip",
-      "size": 64444397,
-      "sha256": "2826fbd2a948e51f34775fcc203bcf18fbd8dda2e28d44f716571487ccbfb4ae",
+      "filename": "menuIcons.zip",
+      "size": 64469964,
+      "sha256": "650804f60eb93ac43321f09cca8eb9a09d804974fbb8fc4747b7867467d7395a",
       "root": "menuIcons",
       "publication_source_id": "fullhd-test",
       "parts": [
@@ -204,8 +204,8 @@
     },
     "menuiconsbig": {
       "filename": "menuIconsBig.zip",
-      "size": 64444643,
-      "sha256": "516835f8b069aede879e835870ac092db95d1f977f7b49bb170b69bd9d00d720",
+      "size": 64470210,
+      "sha256": "acd38c36ddf811e1c3935b565bfe5708902c7cfcdd7f37a2be5b84a78d48c021",
       "root": "menuIconsBig",
       "parts": [
         "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/ui/menu-icons-big/menuIconsBig.zip.parts/part000",

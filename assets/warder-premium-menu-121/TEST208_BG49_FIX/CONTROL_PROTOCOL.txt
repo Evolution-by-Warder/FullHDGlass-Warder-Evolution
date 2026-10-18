@@ -1,12 +1,8 @@
-TEST208 MENU ICON FIX — PACKAGE AND VALIDATION PROTOCOL
+WARDER EVOLUTION — KONTROLNÝ PROTOKOL OPRAVY POZADIA
+Dátum: 2026-10-18
 
-Sources: the 121 approved PNGs from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE.zip. The rejected Prehliadac_pluginov.png from the six-image archive was not used. manage_plugins.png comes from the approved 121-image source. extended.png uses the owner-approved Rozsirene_pocasie.png. information.png remains from the approved 121-image source.
+121 schválených grafík spracovaných; nové motívy sa negenerovali. Každá má 810 × 810 px, RGBA a tmavú transparentnú čiernu vrstvu alpha=49/255 podľa skin.xml (#31000000) pod pôvodným motívom. Plne kryté pixely motívu sú identické so zdrojom.
+System: menu ID `extended` zobrazuje `original-36/18-rozsirene-nastroje.png` (ozubené kolesá a kľúč). Pôvodný obrázok počasia nie je priradený položke System; extra položka počasia `e` zostala v oboch balíkoch zachovaná bez zmeny.
+Kontrola: 121/121 PNG dekódovaných, 810 × 810 RGBA, pozadie alpha=49; SHA-256 v manifestoch. Obe inštalačné ZIP balenia zachovávajú všetkých 123 položiek (121 opravených menu ID + 2 nezmenené doplnkové ikony) a ZIP CRC prešiel kontrolou.
 
-Background operation: exact black background pixels (RGB 0,0,0) with source alpha 128 or 145 were changed to alpha 49, matching skin.xml #31000000. Other RGBA pixels were preserved. All PNGs remain 810x810 RGBA and have 121 distinct SHA-256 values.
-
-Required receiver layout: the standard icon importer scans menuIcons/1 through menuIcons/30 and imports PNGs from each set directory. menuIcons.zip therefore contains menuIcons/1/<PNG>. The large icon importer copies from menuIconsBig directly, so menuIconsBig.zip contains menuIconsBig/<PNG>. This matches setupGlass17/plugin.py (MAXICONS=31, par69 selects the icon set). Earlier layouts omitted the set directory and would not update the displayed standard icons.
-
-Local validation: both ZIPs contain 121 PNGs, pass ZIP CRC testing and unzip -t, and were extracted to temporary directories. The standard archive produced menuIcons/1 with 121 PNGs; the large archive produced menuIconsBig with 121 PNGs. GitHub manifest parts were checked against the exact local chunk blob hashes. Receiver testing is still needed after downloading the revised packages.
-
-menuIcons.zip size/SHA-256: 70068780 / 16603acaba716df6398b735ee16e8ef6342c5ff24e8627ec3540e641acae31b6
-menuIconsBig.zip size/SHA-256: 70069022 / 16977ab531994236bb1ef4d1110ee6f9181e950eaeb78768c0167694899e0e16
+Úprava sa týka výhradne grafík, manifestov a rozdelených archívov menuIcons.zip/menuIconsBig.zip. Skin, renderer, IPK a produkčné vetvy neboli menené.
