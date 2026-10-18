@@ -84,3 +84,6 @@ Use skin.xml color name="background" #31000000 (alpha 49), not widget transpBlac
 
 TEST208 rerun after menu archive ledger correction
 The menuicons and menuiconsbig migration-ledger current_sha256 values now match the validated alpha-49 ZIPs in downloads.json. Rerun the full TEST208 preflight and publish the IPK only if every gate passes.
+
+TEST208 final owner-source restoration
+Use the exact 121 image entries from WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE.zip. Apply only connected exact-black background alpha replacements to 49. Preserve the two existing ZIP aliases. Use owner-supplied six-pack sources for manage_plugins, extended weather, deep standby, GUI restart, and shutdown. Confirm all image source hashes in the manifest, both package ZIPs, and migration ledger before final TEST208 build.
