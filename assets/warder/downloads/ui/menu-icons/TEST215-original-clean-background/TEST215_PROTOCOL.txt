@@ -1,0 +1,8 @@
+TEST215 — oprava pozadia všetkých originálnych grafík
+
+- Zdrojom je originálny ZIP so 121 PNG a používateľský ZIP so 6 schválenými PNG.
+- Všetkých 127 PNG má 810×810 a RGBA. Pôvodné plátno je rovnomerná čierna priesvitná plocha: alpha 128 v archíve 121 a alpha 145 v šiestich súboroch.
+- Z každého originálu sa odstránila iba presná plocha RGBA (0,0,0,128) alebo (0,0,0,145) spojená s okrajom. Zmenila sa iba alpha týchto okrajových pixelov na 0. RGB a všetky pixely objektov ostali identické. Pozadie teraz tvorí priamo sklenené pozadie skinu za obrázkom; PNG už neobsahuje druhý obdĺžnik.
+- Balíky menuIcons.zip a menuIconsBig.zip obsahujú 125 dekódovateľných PNG, všetky 810×810 RGBA. CRC ZIPov je úspešný; pohotovostný režim a vypnutie používajú rozdielne obrazy.
+- Ikona správy pluginov pochádza z pôvodného archívu 121; herný ovládač zo šesťobrázkového archívu sa nepoužil ako náhrada.
+- Sú vykonané lokálne byte/pixel/ZIP kontroly. Zobrazenie na prijímači zatiaľ nie je možné potvrdiť z lokálnej kontroly.
