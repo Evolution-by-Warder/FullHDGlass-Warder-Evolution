@@ -1,0 +1,29 @@
+{
+  "version": "TEST221",
+  "change": "deep_standby.png replaced with owner-supplied Vypnut.png power button; standby.png remains owner-supplied Pohotovostny_rezim moon image.",
+  "changed_menu_id": "deep_standby",
+  "source_archive": "WARDER_6_SAMOSTATNYCH_810x810(6).zip",
+  "source_file": "Vypnut.png",
+  "source_sha256": "c5794b6ebf4baeb3feeaec21331b6f2cccb61463e12daec7268d8e5067ce6b2c",
+  "output_sha256": "6d9a13138bf366b0b59d267ab0a7124e71b285c9465b38848c2f23f6e47d146c",
+  "dimensions": "810x810",
+  "mode": "RGBA",
+  "background_corners": "(0,0,0,206)",
+  "pngs_per_runtime_archive": 125,
+  "all_zip_crc_valid": true,
+  "standby_and_deep_standby_distinct": true,
+  "archives": {
+    "menuIcons.zip": {
+      "size": 64182888,
+      "sha256": "5c6567ca5255a9ace2fada77295bf9effb810693dc4278174b539a3191a63513"
+    },
+    "menuIconsBig.zip": {
+      "size": 64183138,
+      "sha256": "83f65a74001189e0febdd8ed988f3d607782ac36ca0d49b9dfc2890c9fddb3c1"
+    },
+    "WARDER_EVOLUTION_MENU_121_ORIGINALS_DARK_ALPHA206.zip": {
+      "size": 62327550,
+      "sha256": "cd9428c210ecaa9ad4fb26e661d8cead3130f1296d74a6ab2c10d98c1b0a3f56"
+    }
+  }
+}
