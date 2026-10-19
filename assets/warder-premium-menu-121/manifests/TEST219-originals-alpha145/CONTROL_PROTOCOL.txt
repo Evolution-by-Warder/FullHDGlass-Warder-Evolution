@@ -1,0 +1,3 @@
+TEST219 — podklady z originálnych grafík
+
+Zdrojové PNG sa načítali priamo z používateľských ZIPov. Rozlíšenie 810×810 a RGB farby objektov ostali zachované; zmenila sa iba kompozícia alfa kanála podkladovej vrstvy na čiernu RGBA(0,0,0,145), zhodnú s dodanými šiestimi schválenými obrázkami. Balíky menuIcons.zip a menuIconsBig.zip obsahujú 121 ID a 4 kompatibilné aliasy. PNG, rozmer, RGBA, rohy, zip CRC a SHA-256 sa overili lokálne.

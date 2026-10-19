@@ -1,0 +1,40 @@
+{
+  "source": "uploaded original 121-image archive plus approved six-image archive",
+  "matte_rgba": [
+    0,
+    0,
+    0,
+    145
+  ],
+  "compositing": "lossless alpha composite over black matte; source colors preserved; no resize",
+  "menu_ids": 121,
+  "menu_package_pngs": 125,
+  "distinct_menu_id_outputs": 121,
+  "unique_output_files": 125,
+  "all_png_810_rgba": true,
+  "all_canvas_corners_rgba": [
+    0,
+    0,
+    0,
+    145
+  ],
+  "archives": {
+    "menuIcons.zip": {
+      "bytes": 62986309,
+      "sha256": "27f1668e6a5262f30a4748cb761a54d683c1293094b40e2e0f61b87630f3b4bc"
+    },
+    "menuIconsBig.zip": {
+      "bytes": 62986559,
+      "sha256": "1ef0dd20990f1c7b85d247a718ca59e3edf516edf43a93aa77fdec2fd1efd822"
+    },
+    "WARDER_EVOLUTION_MENU_121_SKIN_ALPHA145.zip": {
+      "bytes": 61457838,
+      "sha256": "aea16aac772903cc3fd6a2b36f14ab4d5a7a0b5b80b66ffb61d5f1dbe5969b7a"
+    }
+  },
+  "chunk_size_bytes": 750000,
+  "chunk_counts": {
+    "menuIcons.zip": 84,
+    "menuIconsBig.zip": 84
+  }
+}
