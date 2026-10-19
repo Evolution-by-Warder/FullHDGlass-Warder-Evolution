@@ -1,0 +1,5 @@
+TEST221 — finálna schválená grafická oprava vypnutia a pohotovostného režimu
+
+Z pôvodného používateľského archívu WARDER_6_SAMOSTATNYCH_810x810(6).zip bol použitý Vypnut.png iba pre deep_standby.png. Súbor standby.png ponecháva pôvodný motív Pohotovostny_rezim.png (mesiac a prijímač). Ostatné PNG v TEST220 balíkoch zostali byte-for-byte nezmenené. Výstup 810×810 RGBA; kontrola ZIP CRC a alfa rohov (0,0,0,206) prebehla.
+
+Vlastník schválil túto podobu ako poslednú ostrú verziu grafík. Odkazy menuIcons.zip a menuIconsBig.zip sú označené publication_source_id=fullhd-production.
