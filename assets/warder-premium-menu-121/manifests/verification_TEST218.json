@@ -1,0 +1,27 @@
+{
+  "menu_png_count": 121,
+  "unique_menu_png_hashes": 121,
+  "all_size_810x810": true,
+  "all_rgba": true,
+  "background": "#31000000",
+  "aliases": [
+    "e.png",
+    "plugin_selection.png",
+    "standby.png",
+    "timer_edit.png"
+  ],
+  "archives": {
+    "menuIcons.zip": {
+      "bytes": 62797812,
+      "sha256": "848c4c2925fb074985942f965f1fbbf0f0efe9e61ebe11cb7b8a30187d4f73c8"
+    },
+    "menuIconsBig.zip": {
+      "bytes": 62798062,
+      "sha256": "794b8b9ce6cbe073752e5d8157c196dfca4ab71652c984c65b5213800f659aee"
+    },
+    "WARDER_EVOLUTION_MENU_121_SKIN_ALPHA31.zip": {
+      "bytes": 61271025,
+      "sha256": "1a422bceadfcddc2c2a48442cb06226625ddfe19327d059ddc2d17a2243b6261"
+    }
+  }
+}

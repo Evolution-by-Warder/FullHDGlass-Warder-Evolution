@@ -1,0 +1,5 @@
+WARDER EVOLUTION — KONTROLNÝ PROTOKOL TEST218
+Zdroj: dodaný archív WARDER_EVOLUTION_MENU_121_PREMIUM_FINAL(6).zip a relevantné samostatné PNG z WARDER_6_SAMOSTATNYCH_810x810(6).zip.
+121 menu položiek zachovaných podľa zdrojového manifestu; päť zodpovedajúcich dodaných obrázkov nahrádza information, manage_plugins, shutdown, deep_standby a restart_enigma. Rozšírené počasie je kompatibilitný alias e.png.
+Skin XML: pozadie #31000000. Na priehľadnú plochu PNG aplikované čierne RGBA alpha 49. Šesť dodaných obrázkov malo jednotnú čiernu alpha-145 podložku; jej alpha bola odstránená pred aplikáciou správnej hodnoty.
+Overenie: 121/121 PNG 810x810 RGBA; rohový pixel (0,0,0,49); 121 rozdielnych SHA-256; všetky tri ZIP archívy prešli testom integrity. Žiadne nové obrázky neboli generované.
