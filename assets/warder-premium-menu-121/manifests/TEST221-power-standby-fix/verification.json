@@ -25,5 +25,8 @@
       "size": 62327550,
       "sha256": "cd9428c210ecaa9ad4fb26e661d8cead3130f1296d74a6ab2c10d98c1b0a3f56"
     }
-  }
+  },
+  "release_status": "owner_approved_final_graphics",
+  "release_channel": "fullhd-production",
+  "owner_approval_received": true
 }
