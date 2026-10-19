@@ -1,0 +1,40 @@
+{
+  "input_sources": {
+    "121_image_archive": "WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE(2).zip",
+    "six_image_archive": "WARDER_6_SAMOSTATNYCH_810x810(6).zip"
+  },
+  "target_background_rgba": [
+    0,
+    0,
+    0,
+    206
+  ],
+  "skin_background_reference": "skin.xml: background #31000000; transpBlack #80000000; dark #50000000",
+  "method": "Original PNGs preserved; only exact black matte alpha changed (121 archive 128->206; six-image inputs 145->206); no resizing or new rendering.",
+  "menu_ids": 121,
+  "runtime_pngs_per_menu_zip": 125,
+  "all_images_810x810_rgba": true,
+  "all_canvas_corners_rgba": [
+    0,
+    0,
+    0,
+    206
+  ],
+  "gamepad_for_plugin_browser_removed": true,
+  "manage_plugins_source": "WARDER_121_ORIGINALY_JEDNOTNE_POZADIE_BEZ_DEGRADACIE(2).zip:manage_plugins.png",
+  "shutdown_and_standby_distinct": true,
+  "archives": {
+    "menuIcons.zip": {
+      "size": 64178989,
+      "sha256": "4741526fbce5ee8e4c69f848c762e98448e8f80d98a3b0c8f7df8652b3d72037"
+    },
+    "menuIconsBig.zip": {
+      "size": 64179239,
+      "sha256": "4f11be9da1f02112d3f15aa836618794e051911371bafd22d0c906ecdb63233a"
+    },
+    "WARDER_EVOLUTION_MENU_121_ORIGINALS_DARK_ALPHA206.zip": {
+      "size": 62323651,
+      "sha256": "7816261f17a7296179d7e97c511fa430e7964511782540ad81bf97af2f4a36f0"
+    }
+  }
+}
