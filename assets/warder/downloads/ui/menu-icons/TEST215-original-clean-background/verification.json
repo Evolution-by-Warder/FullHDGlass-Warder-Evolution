@@ -35,5 +35,16 @@
       "sha256": "1f1d8deba02f3e79062a5d094e497248d1d842b9d69383ce999a8eefa6ab7554",
       "zip_crc": "PASS"
     }
-  }
+  },
+  "skin_background_source": {
+    "file": "source/package-root/usr/share/enigma2/hd_glass17/skin.xml",
+    "menu_backgroundColor": "background",
+    "background_value": "#31000000",
+    "interpretation": "black with alpha 49/255; icons reveal this underlying skin background by using alpha 0 outside the object"
+  },
+  "transparent_canvas_object_pixel_rule": "Only exact edge-connected matte RGBA(0,0,0,128) or RGBA(0,0,0,145) pixels were made transparent; object RGB and all non-matte alpha preserved.",
+  "source_images_processed": 127,
+  "pixels_made_transparent_121": 49577482,
+  "pixels_made_transparent_6": 6363952,
+  "runtime_pngs_total_across_two_archives": 250
 }

@@ -1,8 +1,10 @@
 TEST215 — oprava pozadia všetkých originálnych grafík
 
-- Zdrojom je originálny ZIP so 121 PNG a používateľský ZIP so 6 schválenými PNG.
-- Všetkých 127 PNG má 810×810 a RGBA. Pôvodné plátno je rovnomerná čierna priesvitná plocha: alpha 128 v archíve 121 a alpha 145 v šiestich súboroch.
-- Z každého originálu sa odstránila iba presná plocha RGBA (0,0,0,128) alebo (0,0,0,145) spojená s okrajom. Zmenila sa iba alpha týchto okrajových pixelov na 0. RGB a všetky pixely objektov ostali identické. Pozadie teraz tvorí priamo sklenené pozadie skinu za obrázkom; PNG už neobsahuje druhý obdĺžnik.
-- Balíky menuIcons.zip a menuIconsBig.zip obsahujú 125 dekódovateľných PNG, všetky 810×810 RGBA. CRC ZIPov je úspešný; pohotovostný režim a vypnutie používajú rozdielne obrazy.
-- Ikona správy pluginov pochádza z pôvodného archívu 121; herný ovládač zo šesťobrázkového archívu sa nepoužil ako náhrada.
-- Sú vykonané lokálne byte/pixel/ZIP kontroly. Zobrazenie na prijímači zatiaľ nie je možné potvrdiť z lokálnej kontroly.
+Zdroj skinu: `source/package-root/usr/share/enigma2/hd_glass17/skin.xml`. Farba menu `background` je `#31000000` (čierna s alpha 49/255); menu používa `backgroundColor="background"` a ikony sa vykresľujú transparentne.
+
+- Spracovaných je všetkých 121 PNG z pôvodného archívu a 6 používateľom dodaných PNG. Každý pôvodný súbor má 810×810 px a RGBA.
+- Pôvodné celé plátno bolo čierne s alpha 128 v archíve 121 a alpha 145 v samostatnom archíve 6. Zmenil sa iba alpha kanál presnej, s okrajom spojenej matnej plochy na 0. RGB a pixely objektov ostali nezmenené.
+- Za transparentným plátnom sa zobrazí skutočné tmavé pozadie skinu `#31000000`. Do PNG sa nepridáva ďalšia tmavá vrstva, ktorá vytvára obdĺžnik.
+- `menuIcons.zip` aj `menuIconsBig.zip` obsahujú 125 PNG: 121 pôvodných položiek a schválené aliasy. Všetky sa dekódujú v 810×810 RGBA; ZIP CRC prešiel. Pohotovostný režim a vypnutie majú odlišné obrázky.
+- Ikona Prehliadača pluginov zostáva pôvodná z archívu 121; gamepad zo šesťobrázkového archívu sa nepoužil ako náhrada.
+- Kontrolná mriežka všetkých 121 obrázkov bola vizuálne prezretá. Zobrazenie na prijímači nemôžem potvrdiť bez testu na prijímači.
