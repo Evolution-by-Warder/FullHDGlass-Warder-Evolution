@@ -9711,7 +9711,7 @@ class downloadMenu(Screen):
 				mini_source = catalog.get("channel_mini_package_source", {})
 				mini_valid = (
 					valid and mini_source.get("repository") == "Evolution-by-Warder/Trezor" and
-					mini_source.get("commit") == "7c4f2158de9c4a44ab5c6199826937a5534533c3" and
+					mini_source.get("commit") == "43a3392296164c1b57bc64ad466da30bb72da13d" and
 					mini_source.get("path") == "archives/chocholousek-picons/originals"
 				)
 				self._warderMiniPiconArchives = catalog.get("channel_mini_packages", {}) if mini_valid else {}
@@ -9726,9 +9726,9 @@ class downloadMenu(Screen):
 			mini_style = str(mini_entry.get("style", ""))
 			mini_position = str(mini_entry.get("orbital_position", ""))
 			mini_commit = str(mini_entry.get("source_commit", ""))
-			mini_root = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/7c4f2158de9c4a44ab5c6199826937a5534533c3/archives/chocholousek-picons/originals/"
+			mini_root = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/43a3392296164c1b57bc64ad466da30bb72da13d/archives/chocholousek-picons/originals/"
 			if (re.match(r"^50x30:(black|transparent):[0-9]+(?:\.[0-9]+)?[ew]$", str(legacy_id)) and
-				mini_commit == "7c4f2158de9c4a44ab5c6199826937a5534533c3" and
+				mini_commit == "43a3392296164c1b57bc64ad466da30bb72da13d" and
 				mini_filename == "picon%s-50x30-%s_by_chocholousek.7z" % (mini_style, mini_position.upper()) and
 				mini_style in ("black", "transparent") and
 				re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", mini_position) and
