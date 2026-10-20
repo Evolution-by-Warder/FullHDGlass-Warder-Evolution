@@ -1,5 +1,9 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test213
+- Compiled the existing Slovak and Czech Picon menu translations into the installed message catalogs.
+- Re-uploaded complete black and white Canal+ provider bundles after verifying their remote byte counts and SHA-256 hashes.
+
 ## 1.0.5-test212
 - Restored the original resolution menu: 50 x 30, 220 x 132, 400 x 240 and 710 x 682.
 - Restored the original resolution help text and kept Canal+ SK/CZ as channel selector entries.
