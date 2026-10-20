@@ -322,7 +322,7 @@ RESOLUTIONS = (
 # Genuine delivery options recovered from the pinned FullHDGlass/Trezor catalog.
 # 220x132 transparent/black/white is the native Warder channel package triad.
 CHANNEL_RESOLUTION_STYLES = {
-    "50x30": ("black", "white"),
+    "50x30": ("transparent", "black", "white"),
     "150x90": ("black", "white"),
     "220x132": ("transparent", "black", "white"),
     "400x240": ("transparent",),
@@ -368,6 +368,19 @@ def plan_legacy_channel_archives(selected_selector_ids, satlist, resolution, sty
     selectors = list(selected_selector_ids or [])
     if not valid_position_selection(selectors):
         raise ValueError("no-satellite-position-selected")
+    if str(resolution) == "50x30" and str(style) in ("black", "transparent"):
+        result = []
+        seen_ids = set()
+        for selector in selectors:
+            position = canonical_position_for_selector(selector)
+            if not position or position == "dtt":
+                raise ValueError("pinned-channel-archive-not-available-for-selected-position")
+            archive_id = "50x30:%s:%s" % (str(style), position_token(position))
+            if archive_id in seen_ids:
+                continue
+            seen_ids.add(archive_id)
+            result.append((selector, archive_id))
+        return result
     if str(resolution) == "220x132" and str(style) in ("black", "white"):
         result = []
         seen_ids = set()

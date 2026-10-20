@@ -9708,12 +9708,34 @@ class downloadMenu(Screen):
 					supplemental_source.get("path") == "archives/chocholousek-picons/packages/220x132/"
 				)
 				self._warderChannelPackageArchives = catalog.get("channel_packages", {}) if supplemental_valid else {}
+				mini_source = catalog.get("channel_mini_package_source", {})
+				mini_valid = (
+					valid and mini_source.get("repository") == "Evolution-by-Warder/Trezor" and
+					mini_source.get("commit") == "7c4f2158de9c4a44ab5c6199826937a5534533c3" and
+					mini_source.get("path") == "archives/chocholousek-picons/originals"
+				)
+				self._warderMiniPiconArchives = catalog.get("channel_mini_packages", {}) if mini_valid else {}
 			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
 			url = str(entry.get("url", ""))
 			filename = str(entry.get("filename", ""))
 			official = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
 			if filename and "/" not in filename and "\\" not in filename and ".." not in filename and filename.endswith(".7z") and url == official + filename:
 				return {"filename": filename, "url": url, "parts": [], "size_bytes": None, "sha256": None}
+			mini_entry = self._warderMiniPiconArchives.get(str(legacy_id), {})
+			mini_filename = str(mini_entry.get("filename", ""))
+			mini_style = str(mini_entry.get("style", ""))
+			mini_position = str(mini_entry.get("orbital_position", ""))
+			mini_commit = str(mini_entry.get("source_commit", ""))
+			mini_root = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/7c4f2158de9c4a44ab5c6199826937a5534533c3/archives/chocholousek-picons/originals/"
+			if (re.match(r"^50x30:(black|transparent):[0-9]+(?:\.[0-9]+)?[ew]$", str(legacy_id)) and
+				mini_commit == "7c4f2158de9c4a44ab5c6199826937a5534533c3" and
+				mini_filename == "picon%s-50x30-%s_by_chocholousek.7z" % (mini_style, mini_position.upper()) and
+				mini_style in ("black", "transparent") and
+				re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", mini_position) and
+				mini_entry.get("path") == mini_filename and mini_entry.get("url") == mini_root + mini_filename and
+				int(mini_entry.get("size_bytes", 0)) > 0 and re.match(r"^[0-9a-f]{64}$", str(mini_entry.get("sha256", "")))):
+				return {"filename": mini_filename, "url": mini_root + mini_filename, "parts": [],
+					"size_bytes": int(mini_entry["size_bytes"]), "sha256": str(mini_entry["sha256"])}
 			entry = self._warderChannelPackageArchives.get(str(legacy_id), {})
 			filename = str(entry.get("filename", ""))
 			style = str(entry.get("style", ""))
@@ -9755,6 +9777,7 @@ class downloadMenu(Screen):
 		except Exception:
 			self._warderLegacyPiconArchives = {}
 			self._warderChannelPackageArchives = {}
+			self._warderMiniPiconArchives = {}
 		return None
 
 	def _legacyPiconArchiveUrl(self, legacy_id):
