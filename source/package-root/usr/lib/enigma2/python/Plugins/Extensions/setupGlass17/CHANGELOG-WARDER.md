@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test216
+- Pin the corrected Canal+ channel manifest to an immutable commit, avoiding stale branch cache responses.
+
 ## 1.0.5-test214
 - Pinned Canal+ provider archives to the verified immutable commit so downloads cannot use a stale branch cache.
 

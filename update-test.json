@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test215",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test215_all.ipk",
-  "sha256": "538e3a76b29b98e359ede8db00730127bd8070e40ae82804c201656a70b17cc6",
-  "changelog": "FullHDGlass17 - Warder Evolution TEST: fixed Canal+ SK/CZ channel archive downloads and displayed the selected provider count."
+  "version": "1.0.5-test216",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test216_all.ipk",
+  "sha256": "804af477a2ebd1bfc1d19bd2ddf3aeb2451d530c40188c703f43498d938576fc",
+  "changelog": "FullHDGlass17 - Warder Evolution TEST: fixed Canal+ SK/CZ channel downloads, clarified provider selection and pinned the verified manifest."
 }
