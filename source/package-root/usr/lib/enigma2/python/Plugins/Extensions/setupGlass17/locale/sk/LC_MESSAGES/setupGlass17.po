@@ -1627,5 +1627,5 @@ msgid "Fallback %d/%d; safe overlay %d/%d; errors %d"
 msgstr "Záloha %d/%d; bezpečná vrstva %d/%d; chyby %d"
 
 # Warder selector summary
-msgid "packages selected"
-msgstr "balíky vybraté"
+msgid "FastScan tables selected"
+msgstr "vybraté FastScan tabuľky"

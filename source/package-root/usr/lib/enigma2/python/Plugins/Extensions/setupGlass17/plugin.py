@@ -8562,7 +8562,7 @@ class downloadMenu(Screen):
 			if len(positions) > 4:
 				position_text += " ..."
 			selectors = prefs.get("package_selectors", [])
-			position_text += " (" + str(len(selectors)) + " " + _("packages selected") + ")"
+			position_text += " (" + str(len(selectors)) + " " + _("FastScan tables selected") + ")"
 		resolution = prefs.get("resolution")
 		style = prefs.get("style")
 		mode = prefs.get("update_mode")
@@ -8761,7 +8761,7 @@ class downloadMenu(Screen):
 			preview = ", ".join(positions[:4])
 			if len(positions) > 4:
 				preview += " ..."
-			label = _("Satellite positions") + ": " + preview + " (" + str(len(bindings)) + " " + _("packages selected") + ")"
+			label = _("Satellite positions") + ": " + preview + " (" + str(len(bindings)) + " " + _("FastScan tables selected") + ")"
 		else:
 			label = _("Satellite positions") + ": " + _("No position selected")
 			self.warderPiconPrefs["prepared"] = False

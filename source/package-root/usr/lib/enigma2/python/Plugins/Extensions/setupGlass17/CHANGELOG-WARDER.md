@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test217
+- Clarify that Canal+ SK and Canal+ CZ are separate selected FastScan tables.
+
 ## 1.0.5-test216
 - Pin the corrected Canal+ channel manifest to an immutable commit, avoiding stale branch cache responses.
 
