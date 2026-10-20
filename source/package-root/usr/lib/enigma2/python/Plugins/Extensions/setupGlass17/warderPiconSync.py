@@ -103,13 +103,14 @@ AUXILIARY_PUBLICATION_SOURCES["piconhub-aux-candidate"]["allowed_paths"] = tuple
     AUXILIARY_CANDIDATE_ARCHIVE_ROOT + item[0]
     for item in AUXILIARY_CANDIDATE_ASSETS.values())
 AUXILIARY_LEGACY_FALLBACK_PINS = {
-    "piconProv-b": (11990269, "f693c2d70866a1b7161046a0e3fd74610b4785673e9ad11f2fa5cefbd6d1e13f", "piconProv", 1297),
-    "piconProv-w": (13974289, "ebff6f537720da39410741cb13abcce0be6a1f822264f516a291a2e70c889cff", "piconProv", 1256),
+    "piconProv-b": (12059628, "0a492f508eb05783d2135118f21abc370e33efe7d02db48d1577c2c2634c91e3", "piconProv", 1299),
+    "piconProv-transparent-fullhd": (11471774, "f9df118455826f6f240ea7b1c9b1959af7bc43ce1a6e2459ae7480f12ad4a929", "piconProv", 1148),
+    "piconProv-w": (14038220, "68d747b5ea47611c35ba1ab93e3b63b0266298a810d09c9e0bd5c204dfa7452e", "piconProv", 1258),
     "piconSat-b": (2244970, "6458bdf32db1dddd21ecf8894864e130d5c5535fcfe7fe2681509ad7b0958d8a", "piconSat", 269),
     "piconSat-w": (2421870, "539cda4f3f599f5e3f2b6e6690a4625fc5c678bdfb46cb9b1b68622d28b08b2b", "piconSat", 269),
 }
 AUXILIARY_VARIANT_IDS = {
-    "piconProv": {"transparent": ("piconProv-legacy-t", "piconProv-warder-safe-t"),
+    "piconProv": {"transparent": ("piconProv-transparent-fullhd", "piconProv-warder-safe-t"),
                   "black": ("piconProv-b", "piconProv-warder-safe-b"),
                   "white": ("piconProv-w", "piconProv-warder-safe-w")},
     "piconSat": {"transparent": ("piconSat-legacy-t", "piconSat-warder-safe-t"),
@@ -544,8 +545,8 @@ def validate_auxiliary_hybrid_catalog(document, candidate_manifest=None):
             if fallback_id not in AUXILIARY_CANDIDATE_ASSETS:
                 pin = AUXILIARY_LEGACY_FALLBACK_PINS.get(fallback_id)
                 source_id = fallback.get("publication_source_id", "fullhd-production")
-                if (pin is None or source_id != "fullhd-production"
-                        or not trusted_auxiliary_url(fallback.get("url", ""), "fullhd-production")
+                if (pin is None or source_id not in ("fullhd-production", "fullhd-test")
+                        or not trusted_auxiliary_url(fallback.get("url", ""), source_id)
                         or fallback.get("root") != pin[2] or fallback.get("size") != pin[0]
                         or fallback.get("sha256") != pin[1]
                         or spec.get("fallback_png_count") != pin[3]
@@ -596,7 +597,7 @@ def build_auxiliary_jobs(document, candidate_manifest, domain_kind, variant):
             asset["png_count"] = expected[4]
             asset["publication_source_id"] = "piconhub-aux-candidate"
         else:
-            asset["publication_source_id"] = "fullhd-production"
+            asset["publication_source_id"] = document["assets"][asset_id].get("publication_source_id", "fullhd-production")
             asset["png_count"] = spec["fallback_png_count"]
         if asset.get("root") != spec["fallback_destination" if layer == "legacy_fallback" else "safe_destination"]:
             return {"state": "invalid-catalog", "jobs": [], "errors": ["auxiliary job root mismatch"]}
@@ -694,7 +695,7 @@ _SELECTOR_LABEL_BINDINGS = {
         "ANTIKSAT",
         "16.0e"
     ),
-    "(23.5E) Skylink": (
+    "(23.5E) Canal+": (
         "SKYLINK",
         "23.5e"
     ),

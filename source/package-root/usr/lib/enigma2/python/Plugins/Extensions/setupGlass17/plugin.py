@@ -8936,33 +8936,35 @@ class downloadMenu(Screen):
 		return destination
 
 	def _warderFetchAuxiliaryArchive(self, asset, archive):
-		"""Download one source-bound archive and verify redirect, size, SHA and ZIP."""
+		"""Download and reassemble source-bound archive parts; verify SHA and ZIP."""
 		source_id = asset.get("publication_source_id")
-		url = str(asset.get("url", ""))
-		if not warderPiconSync.trusted_auxiliary_url(url, source_id):
+		parts = asset.get("parts", [])
+		urls = [str(url) for url in parts] if isinstance(parts, list) and parts else [str(asset.get("url", ""))]
+		if not urls or not all(warderPiconSync.trusted_auxiliary_url(url, source_id) for url in urls):
 			raise ValueError("unsafe Warder auxiliary URL")
 		expected_size = int(asset.get("size", 0))
 		if expected_size < 1 or expected_size > 32 * 1024 * 1024:
 			raise ValueError("invalid Warder auxiliary archive size")
 		digest = hashlib.sha256()
 		total = 0
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
-		with urlopen(req, timeout=45) as response:
-			if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
-				raise ValueError("unsafe Warder auxiliary redirect")
-			content_type = str(response.headers.get("Content-Type", "")).lower()
-			if "text/html" in content_type:
-				raise ValueError("Warder auxiliary archive returned HTML")
-			with open(archive, "wb") as output:
-				while True:
-					chunk = response.read(1024 * 128)
-					if not chunk:
-						break
-					total += len(chunk)
-					if total > expected_size:
-						raise ValueError("oversized Warder auxiliary archive")
-					output.write(chunk)
-					digest.update(chunk)
+		with open(archive, "wb") as output:
+			for url in urls:
+				req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/auxiliary-picons"})
+				with urlopen(req, timeout=45) as response:
+					if not warderPiconSync.trusted_auxiliary_url(str(response.geturl()), source_id):
+						raise ValueError("unsafe Warder auxiliary redirect")
+					content_type = str(response.headers.get("Content-Type", "")).lower()
+					if "text/html" in content_type:
+						raise ValueError("Warder auxiliary archive returned HTML")
+					while True:
+						chunk = response.read(1024 * 128)
+						if not chunk:
+							break
+						total += len(chunk)
+						if total > expected_size:
+							raise ValueError("oversized Warder auxiliary archive")
+						output.write(chunk)
+						digest.update(chunk)
 		if total != expected_size:
 			raise ValueError("Warder auxiliary archive size mismatch")
 		if digest.hexdigest().lower() != str(asset.get("sha256", "")).lower():

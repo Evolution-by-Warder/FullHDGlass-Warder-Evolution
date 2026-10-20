@@ -2,7 +2,7 @@ selector_id	display_label	kind	warder_key	legacy_400x240	legacy_black_50x30	lega
 FREESAT	(0.8W) Freesat	provider	0.8w/freesat	2141	3666	1804	1352	4298	4046	1206	MATCHED	Warder Master contains picons/0.8w/freesat with maintained variants
 DIGI_TELLY	(0.8W) Digi / Telly	provider-alias	0.8w/digi|0.8w/telly	2135	3660	1796	1344	4292	4040	1199	MATCHED	Runtime label/key depends on legacy L flag; both maintained provider trees exist
 ANTIKSAT	(16.0E) Antiksat	provider	16.0e/antiksat	2133	3658	1794	1342	4290	4038	1197	MATCHED	Maintained provider tree exists
-SKYLINK	(23.5E) Skylink	provider	23.5e/skylink	2146	3670	1809	1356	4302	4050	1211	MATCHED	Maintained provider tree exists
+SKYLINK	(23.5E) Canal+	provider	23.5e/skylink	2146	3670	1809	1356	4302	4050	1211	MATCHED	Maintained provider tree exists
 DVB-T-SK-CZ	DVB-T sk/cz	dtt	EEE	2139	3664	1801	1349	4296	4044	1204	MISSING	No authoritative DTT EEE tree established by current Warder Master audit
 450W	(45.0W) Intelsat 14 (IS-14)	satellite	45.0w	2096	3626	1757	1305	4258	4006	1161	MATCHED	Orbital tree exists
 300W	(30.0W) Hispasat 1D,1E	satellite	30.0w	2079	3610	1735	1285	4242	3990	1145	MATCHED	Orbital tree exists

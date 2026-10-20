@@ -5,10 +5,11 @@
   "assets": {
     "piconProv-220": {
       "filename": "piconProv-220x132.zip",
-      "size": 11481399,
-      "sha256": "93ef555cf09d49a72188c477949d948feaf6416a0fcff047600d36b3a96e4b8f",
+      "size": 11499994,
+      "sha256": "403da4ea3aa84ebe4d949883f5b979b08ed6f72d6326411edaca44debebab41b",
       "root": "piconProv_220x132",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/220x132/piconProv_220x132.zip"
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/providers/220x132/piconProv_220x132.zip",
+      "publication_source_id": "fullhd-test"
     },
     "piconSat-220": {
       "filename": "piconSat-220x132.zip",
@@ -19,11 +20,11 @@
     },
     "piconProv-b": {
       "filename": "piconProv-black.zip",
-      "size": 11990269,
-      "sha256": "f693c2d70866a1b7161046a0e3fd74610b4785673e9ad11f2fa5cefbd6d1e13f",
+      "size": 12059628,
+      "sha256": "0a492f508eb05783d2135118f21abc370e33efe7d02db48d1577c2c2634c91e3",
       "root": "piconProv",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/black/piconProv.zip",
-      "publication_source_id": "fullhd-production"
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/providers/black/piconProv.zip",
+      "publication_source_id": "fullhd-test"
     },
     "piconSat-b": {
       "filename": "piconSat-black.zip",
@@ -49,11 +50,15 @@
     },
     "piconProv-w": {
       "filename": "piconProv-white.zip",
-      "size": 13974289,
-      "sha256": "ebff6f537720da39410741cb13abcce0be6a1f822264f516a291a2e70c889cff",
+      "size": 14038220,
+      "sha256": "68d747b5ea47611c35ba1ab93e3b63b0266298a810d09c9e0bd5c204dfa7452e",
       "root": "piconProv",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/white/piconProv.zip",
-      "publication_source_id": "fullhd-production"
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk00.part",
+      "publication_source_id": "fullhd-test",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk00.part",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk01.part"
+      ]
     },
     "piconSat-w": {
       "filename": "piconSat-white.zip",
@@ -416,6 +421,16 @@
       "png_count": 1,
       "publication_source_id": "piconhub-aux-candidate",
       "classification": "WARDER_SAFE_APPROVED"
+    },
+    "piconProv-transparent-fullhd": {
+      "filename": "provider-transparent-canalplus.zip",
+      "size": 11471774,
+      "sha256": "f9df118455826f6f240ea7b1c9b1959af7bc43ce1a6e2459ae7480f12ad4a929",
+      "root": "piconProv",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/providers/transparent-legacy/provider-transparent-canalplus.zip",
+      "png_count": 1148,
+      "publication_source_id": "fullhd-test",
+      "classification": "LEGACY_FALLBACK_ONLY"
     }
   },
   "auxiliary_hybrid": {
@@ -435,9 +450,9 @@
           "black": {
             "fallback_asset_id": "piconProv-b",
             "fallback_destination": "piconProv",
-            "fallback_png_count": 1297,
-            "fallback_size_bytes": 11990269,
-            "fallback_sha256": "f693c2d70866a1b7161046a0e3fd74610b4785673e9ad11f2fa5cefbd6d1e13f",
+            "fallback_png_count": 1299,
+            "fallback_size_bytes": 12059628,
+            "fallback_sha256": "0a492f508eb05783d2135118f21abc370e33efe7d02db48d1577c2c2634c91e3",
             "safe_asset_id": "piconProv-warder-safe-b",
             "safe_destination": "piconProv_220x132",
             "safe_png_count": 172,
@@ -447,11 +462,11 @@
             ]
           },
           "transparent": {
-            "fallback_asset_id": "piconProv-legacy-t",
+            "fallback_asset_id": "piconProv-transparent-fullhd",
             "fallback_destination": "piconProv",
-            "fallback_png_count": 1145,
-            "fallback_size_bytes": 11462366,
-            "fallback_sha256": "ee325732bb83ac36b25d16e5f3b65eb4312eb251528689cc6ae3d938ea5be7f0",
+            "fallback_png_count": 1148,
+            "fallback_size_bytes": 11471774,
+            "fallback_sha256": "f9df118455826f6f240ea7b1c9b1959af7bc43ce1a6e2459ae7480f12ad4a929",
             "safe_asset_id": "piconProv-warder-safe-t",
             "safe_destination": "piconProv_220x132",
             "safe_png_count": 172,
@@ -463,9 +478,9 @@
           "white": {
             "fallback_asset_id": "piconProv-w",
             "fallback_destination": "piconProv",
-            "fallback_png_count": 1256,
-            "fallback_size_bytes": 13974289,
-            "fallback_sha256": "ebff6f537720da39410741cb13abcce0be6a1f822264f516a291a2e70c889cff",
+            "fallback_png_count": 1258,
+            "fallback_size_bytes": 14038220,
+            "fallback_sha256": "68d747b5ea47611c35ba1ab93e3b63b0266298a810d09c9e0bd5c204dfa7452e",
             "safe_asset_id": "piconProv-warder-safe-w",
             "safe_destination": "piconProv_220x132",
             "safe_png_count": 172,
