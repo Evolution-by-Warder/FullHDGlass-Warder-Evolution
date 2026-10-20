@@ -1280,7 +1280,7 @@ def build_download_jobs(document, package_plan, manifest_url=None):
             "publication_root": source["package_root"],
             "parts": [],
         }
-        if delivery == "raw-github-parts":
+        if delivery == "raw-github-parts" and package.get("parts"):
             for url in package.get("parts", []):
                 name = str(url).rsplit("/", 1)[-1]
                 meta = part_meta.get(name)
@@ -1664,7 +1664,7 @@ def validate_publication_manifest(document, manifest_url=None):
             errors.append("invalid package size")
         if not _SHA256_RE.match(str(package.get("sha256", ""))):
             errors.append("invalid package sha256")
-        if delivery == "direct":
+        if delivery == "direct" or (delivery == "raw-github-parts" and not package.get("parts")):
             if source is None or not trusted_publication_url(package.get("url", ""), source["id"]):
                 errors.append("untrusted package url")
         else:
