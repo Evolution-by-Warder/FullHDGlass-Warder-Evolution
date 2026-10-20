@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test211",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test211_all.ipk",
-  "sha256": "9a9e9bf8a90eea2828ec5ee72bdb70f2ac2deabe0136d65189f2010ef3e1eb33",
-  "changelog": "FullHDGlass17 - Warder Evolution TEST: Canal+ SK/CZ channel picons and provider logo downloads."
+  "version": "1.0.5-test212",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test212_all.ipk",
+  "sha256": "6f8a3c73e51c7823b6c132beadb45fa7f1dd725bf53b4e28d590cb60df638b5d",
+  "changelog": "FullHDGlass17 - Warder Evolution TEST: restored original picon resolution menu and combined Canal+ SK/CZ provider logo packages."
 }

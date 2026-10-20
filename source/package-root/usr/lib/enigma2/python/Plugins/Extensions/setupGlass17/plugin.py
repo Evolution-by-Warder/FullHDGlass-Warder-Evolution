@@ -8594,7 +8594,7 @@ class downloadMenu(Screen):
 		self.list = []
 		warder_help = {
 			"wp-pos": _("Choose satellite positions for channel picon downloads and updates."),
-			"wp-res": _("Canal+ SK/CZ channel picons are available at 220 x 132 only.") if set(warderPiconSync.selected_selector_ids(self.warderPiconPrefs.get("package_selectors"))) & set(warderPiconSync.CANALPLUS_SELECTOR_IDS) else _("Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."),
+			"wp-res": _("Choose 50 x 30, 220 x 132, 400 x 240 or 710 x 682 channel selection icons."),
 			"wp-style": _("Choose a channel picon colour supported at the selected size."),
 			"wp-dest": _("Download destination:") + " " + self._warderDisplayPath(warder_destination),
 			"wp-mode": _("Choose how channel picons are synchronized or copied for selected positions."),
@@ -8695,7 +8695,7 @@ class downloadMenu(Screen):
 		resolution = self.warderPiconPrefs.get("resolution", "220x132")
 		style = self.warderPiconPrefs.get("style")
 		if row == "wp-res":
-			choices[row] = [(_(label), ("resolution", size)) for size, label in warderPiconSync.channel_resolution_choices(self.warderPiconPrefs.get("package_selectors"))]
+			choices[row] = [(_(label), ("resolution", size)) for size, label in warderPiconSync.CHANNEL_RESOLUTION_CHOICES]
 			choices[row].append((_("710 x 682 - Large icons for selected channel list types"), ("large-selection", "CHSPiconbig")))
 		elif row == "wp-style":
 			styles = warderPiconSync.STYLES if not resolution else tuple((value, label) for value, label in warderPiconSync.STYLES if warderPiconSync.channel_style_supported(resolution, value))
@@ -8732,10 +8732,7 @@ class downloadMenu(Screen):
 			return
 		kind = {"aux-prov": "piconProv", "aux-sat": "piconSat"}.get(row)
 		if kind in warderPiconSync.AUXILIARY_VARIANT_IDS:
-			allowed = (set(warderPiconSync.CANAL_PROVIDER_LOGO_ASSETS)
-				if kind == "piconProv" else set(
-					asset_id for variants in warderPiconSync.AUXILIARY_VARIANT_IDS[kind].values()
-					for asset_id in variants))
+			allowed = set(("transparent", "black", "white"))
 			if asset not in allowed:
 				return
 		elif asset not in warderPiconSync.AUXILIARY_ASSET_KEYS:
@@ -8977,26 +8974,27 @@ class downloadMenu(Screen):
 		if errors:
 			raise ValueError("invalid Warder auxiliary archive: " + "; ".join(errors[:3]))
 
-	def _warderRunCanalProviderLogo(self, asset_id):
-		"""Install one approved Canal+ logo while preserving all other providers."""
-		spec = warderPiconSync.CANAL_PROVIDER_LOGO_ASSETS.get(asset_id)
+	def _warderRunCanalProviderBundle(self, style):
+		"""Overlay the two Canal+ country logos into the selected provider style."""
+		spec = warderPiconSync.CANAL_PROVIDER_BUNDLE_ASSETS.get(style)
 		if not spec:
-			raise ValueError("invalid Canal+ provider logo selection")
-		filename, member_name, style = spec
+			raise ValueError("invalid provider logo style")
+		asset_id, filename, expected_members = spec
 		err, assets = getWarderAssets()
 		if err:
 			raise ValueError(err)
 		asset = assets.get(asset_id)
 		if not isinstance(asset, dict):
-			raise ValueError("Canal+ provider logo package is not published")
+			raise ValueError("Canal+ provider bundle is not published")
 		source = warderPiconSync.AUXILIARY_PUBLICATION_SOURCES["fullhd-test"]
 		expected_url = source["package_root"] + filename
 		if (asset.get("filename") != filename or asset.get("root") != "piconProv_220x132"
-				or int(asset.get("png_count", 0)) != 1
+				or int(asset.get("png_count", 0)) != len(expected_members)
 				or asset.get("publication_source_id") != "fullhd-test"
 				or str(asset.get("url", "")) != expected_url):
-			raise ValueError("Canal+ provider logo catalog entry does not match its package")
-		self._warderAuxiliaryDestination("piconProv_220x132")
+			raise ValueError("Canal+ provider bundle catalog entry does not match its package")
+		root = "piconProv_220x132"
+		self._warderAuxiliaryDestination(root)
 		archive = None
 		stage = None
 		previous_zzz = self.zzz
@@ -9006,22 +9004,27 @@ class downloadMenu(Screen):
 			self._warderFetchAuxiliaryArchive(asset, archive)
 			stage = tempfile.mkdtemp(prefix="warder-canal-provider-stage-", dir="/tmp")
 			self._safeExtractZip(archive, stage)
-			root = "piconProv_220x132"
 			stage_root = os.path.join(stage, root)
 			if os.path.islink(stage_root) or not os.path.isdir(stage_root):
-				raise ValueError("Canal+ provider logo ZIP root missing after extraction")
-			members = [name for name in os.listdir(stage_root) if name.lower().endswith(".png")]
-			if members != [member_name] or os.path.islink(os.path.join(stage_root, member_name)):
-				raise ValueError("Canal+ provider logo package must contain its expected single PNG")
-			destination = os.path.join(config.plugins.setupGlass17.par39.value, root, member_name)
-			if os.path.lexists(destination) and (os.path.islink(destination) or not os.path.isfile(destination)):
-				raise ValueError("Canal+ provider picon destination is not a regular file")
+				raise ValueError("Canal+ provider bundle ZIP root missing after extraction")
+			members = sorted(name for name in os.listdir(stage_root) if name.lower().endswith(".png"))
+			if members != sorted(expected_members) or any(os.path.islink(os.path.join(stage_root, name)) for name in members):
+				raise ValueError("Canal+ provider bundle must contain exactly the SK and CZ PNGs")
 			self.zzz = stage + os.sep
 			updated, attempted = self.cprmFiles(root)
-			if attempted != 1 or updated != 1:
-				raise ValueError("Canal+ provider logo could not be installed")
-			country = "SK" if "canal-sk" in asset_id else "CZ"
-			return _("Canal+ %s %s logo installed; other provider logos were left unchanged") % (country, style)
+			if attempted != len(expected_members) or updated != len(expected_members):
+				raise ValueError("Canal+ SK/CZ provider logos could not be installed")
+			base = os.path.realpath(str(config.plugins.setupGlass17.par39.value))
+			for folder in ("piconProv", "piconProv_220x132"):
+				directory = os.path.join(base, folder)
+				if os.path.islink(directory) or not os.path.isdir(directory):
+					continue
+				for name in os.listdir(directory):
+					if name.lower() != "skylink.png":
+						continue
+					path = os.path.join(directory, name)
+					if not os.path.islink(path) and os.path.isfile(path):
+						os.unlink(path)
 		finally:
 			self.zzz = previous_zzz
 			if archive:
@@ -9037,8 +9040,6 @@ class downloadMenu(Screen):
 
 	def _warderRunAuxiliaryComposite(self, row, variant_id):
 		"""Run exactly two additive jobs: legacy fallback, then safe priority overlay."""
-		if row == "aux-prov" and variant_id in warderPiconSync.CANAL_PROVIDER_LOGO_ASSETS:
-			return self._warderRunCanalProviderLogo(variant_id)
 		kind = {"aux-prov": "provider", "aux-sat": "satellite"}.get(row)
 		variant_maps = {"provider": "piconProv", "satellite": "piconSat"}
 		if kind not in variant_maps or variant_id not in warderPiconSync.AUXILIARY_VARIANT_IDS[variant_maps[kind]]:
@@ -9101,6 +9102,8 @@ class downloadMenu(Screen):
 						os.rmdir(stage)
 					except OSError:
 						pass
+		if kind == "provider":
+			self._warderRunCanalProviderBundle(variant_id)
 		return warderPiconSync.auxiliary_result_summary(
 			_("Provider logos" if kind == "provider" else "Satellite logos"), variant_id,
 			copied["legacy_fallback"], totals["legacy_fallback"],
@@ -10032,9 +10035,7 @@ class warderPositionSelectorScr(Screen):
 				continue
 			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
 			if not os.path.isfile(p):
-				p = SKINPATH + "icons/" + str(value) + "-75.png"
-				if not os.path.isfile(p):
-					p = SKINPATH + "icons/75.png"
+				p = SKINPATH + "icons/75.png"
 			self.list.addSelection(label, binding, x, binding["package_selector"] in self.selected, p)
 
 	def finish(self):

@@ -432,70 +432,37 @@
       "publication_source_id": "fullhd-test",
       "classification": "LEGACY_FALLBACK_ONLY"
     },
-    "piconProv-canal-sk-t": {
-      "filename": "canalplus-sk-transparent.zip",
+    "piconProv-canalplus-t": {
+      "filename": "provider-canalplus-transparent.zip",
       "root": "piconProv_220x132",
-      "png_count": 1,
-      "size": 6287,
-      "sha256": "7ac613c89b37c114ddd0fa21d17d0242c41d1ac147a2a2c2d22563987b71d29e",
+      "png_count": 2,
+      "size": 12552,
+      "sha256": "54fd4770e8e102056b707beb6b492cbb3f9c4d8891ba8a0c1523f6288c85abcb",
       "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/canalplus-sk-transparent.zip",
-      "provider": "Canal+ SK",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/provider-canalplus-transparent.zip",
+      "provider": "Canal+ SK/CZ",
       "style": "transparent"
     },
-    "piconProv-canal-sk-b": {
-      "filename": "canalplus-sk-black.zip",
+    "piconProv-canalplus-b": {
+      "filename": "provider-canalplus-black.zip",
       "root": "piconProv_220x132",
-      "png_count": 1,
-      "size": 35247,
-      "sha256": "5c2267bdc70f370db672cbaffb83199fba26ea034bf4515da5bc861cbf5e43a6",
+      "png_count": 2,
+      "size": 70472,
+      "sha256": "2eb8d66c22803844a5332a35425f0d281ddeb6b348d145ea7291f3466b522e99",
       "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/canalplus-sk-black.zip",
-      "provider": "Canal+ SK",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/provider-canalplus-black.zip",
+      "provider": "Canal+ SK/CZ",
       "style": "black"
     },
-    "piconProv-canal-sk-w": {
-      "filename": "canalplus-sk-white.zip",
+    "piconProv-canalplus-w": {
+      "filename": "provider-canalplus-white.zip",
       "root": "piconProv_220x132",
-      "png_count": 1,
-      "size": 35236,
-      "sha256": "74771098257b5e9a6206bd6990cf0c834dc664ee83374b5bb1794a8ffd6486fd",
+      "png_count": 2,
+      "size": 70450,
+      "sha256": "816ef7c8846e3c8ce1531099e8be98690f30b57de52cd2fe4eec31b2c82466fa",
       "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/canalplus-sk-white.zip",
-      "provider": "Canal+ SK",
-      "style": "white"
-    },
-    "piconProv-canal-cz-t": {
-      "filename": "canalplus-cz-transparent.zip",
-      "root": "piconProv_220x132",
-      "png_count": 1,
-      "size": 6287,
-      "sha256": "a1858e8c65d4ae6fe1218fa81337b349c56134f99fe14102ba44448e234877f6",
-      "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/canalplus-cz-transparent.zip",
-      "provider": "Canal+ CZ",
-      "style": "transparent"
-    },
-    "piconProv-canal-cz-b": {
-      "filename": "canalplus-cz-black.zip",
-      "root": "piconProv_220x132",
-      "png_count": 1,
-      "size": 35247,
-      "sha256": "3c1d20f8013511ec93a5c343b19c46e774f8b3d4d1cb70f4b02b55eddd9239f0",
-      "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/canalplus-cz-black.zip",
-      "provider": "Canal+ CZ",
-      "style": "black"
-    },
-    "piconProv-canal-cz-w": {
-      "filename": "canalplus-cz-white.zip",
-      "root": "piconProv_220x132",
-      "png_count": 1,
-      "size": 35236,
-      "sha256": "683178e55e43688f21ec1b585c18387a86d7a2dccbeeb196319687b08195a7cb",
-      "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/canalplus-cz-white.zip",
-      "provider": "Canal+ CZ",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/provider-canalplus-white.zip",
+      "provider": "Canal+ SK/CZ",
       "style": "white"
     }
   },

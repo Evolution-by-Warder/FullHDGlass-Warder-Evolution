@@ -264,28 +264,24 @@ CANALPLUS_SELECTOR_IDS = ("CANALPLUS_SK", "CANALPLUS_CZ")
 
 
 def channel_resolution_choices(package_selectors=None):
-    """Return only sizes available for every selected channel provider."""
-    choices = CHANNEL_RESOLUTION_CHOICES
-    if set(selected_selector_ids(package_selectors)) & set(CANALPLUS_SELECTOR_IDS):
-        choices = tuple(item for item in choices if item[0] == "220x132")
-    return choices
+    """Return the original channel picon sizes for every provider selection."""
+    return CHANNEL_RESOLUTION_CHOICES
 
 
 AUXILIARY_ASSET_KEYS = (
     "piconProv-220", "piconProv-b", "piconProv-w",
-    "piconProv-canal-sk-t", "piconProv-canal-sk-b", "piconProv-canal-sk-w",
-    "piconProv-canal-cz-t", "piconProv-canal-cz-b", "piconProv-canal-cz-w",
+    "piconProv-canalplus-t", "piconProv-canalplus-b", "piconProv-canalplus-w",
     "piconSat-220", "piconSat-b", "piconSat-w",
     "piconCam-b", "piconCam-w",
     "piconWeather-b", "piconWeather-w",
 )
-CANAL_PROVIDER_LOGO_ASSETS = {
-    "piconProv-canal-sk-t": ("canalplus-sk-transparent.zip", "CANALPLUS_SK.png", "transparent"),
-    "piconProv-canal-sk-b": ("canalplus-sk-black.zip", "CANALPLUS_SK.png", "black"),
-    "piconProv-canal-sk-w": ("canalplus-sk-white.zip", "CANALPLUS_SK.png", "white"),
-    "piconProv-canal-cz-t": ("canalplus-cz-transparent.zip", "CANALPLUS_CZ.png", "transparent"),
-    "piconProv-canal-cz-b": ("canalplus-cz-black.zip", "CANALPLUS_CZ.png", "black"),
-    "piconProv-canal-cz-w": ("canalplus-cz-white.zip", "CANALPLUS_CZ.png", "white"),
+CANAL_PROVIDER_BUNDLE_ASSETS = {
+    "transparent": ("piconProv-canalplus-t", "provider-canalplus-transparent.zip",
+                    ("CANALPLUS_SK.png", "CANALPLUS_CZ.png")),
+    "black": ("piconProv-canalplus-b", "provider-canalplus-black.zip",
+              ("CANALPLUS_SK.png", "CANALPLUS_CZ.png")),
+    "white": ("piconProv-canalplus-w", "provider-canalplus-white.zip",
+              ("CANALPLUS_SK.png", "CANALPLUS_CZ.png")),
 }
 PICON_DESTINATIONS = (
     ("/usr/share/enigma2/picon", "Receiver memory"),
@@ -434,7 +430,7 @@ def set_task_position_bindings(preferences, bindings):
 def channel_preferences_ready(preferences):
     prefs = dict(preferences or {})
     return bool(valid_task_selection(prefs)
-                and prefs.get("resolution") in tuple(size for size, label in channel_resolution_choices(prefs.get("package_selectors")))
+                and prefs.get("resolution") in tuple(size for size, label in CHANNEL_RESOLUTION_CHOICES)
                 and prefs.get("style") in dict(STYLES)
                 and channel_style_supported(prefs.get("resolution"), prefs.get("style"))
                 and prefs.get("update_mode") in dict(UPDATE_MODES)
@@ -455,18 +451,9 @@ def auxiliary_variants(asset_keys):
 
 
 def auxiliary_hybrid_variants(kind):
-    """GUI variant IDs for the two auxiliary domains using hybrid packages."""
+    """Keep the original three color choices for provider and satellite packs."""
     if kind not in AUXILIARY_VARIANT_IDS:
         return ()
-    if kind == "piconProv":
-        return (
-            ("piconProv-canal-sk-t", "Canal+ SK - Transparent"),
-            ("piconProv-canal-sk-b", "Canal+ SK - Black"),
-            ("piconProv-canal-sk-w", "Canal+ SK - White"),
-            ("piconProv-canal-cz-t", "Canal+ CZ - Transparent"),
-            ("piconProv-canal-cz-b", "Canal+ CZ - Black"),
-            ("piconProv-canal-cz-w", "Canal+ CZ - White"),
-        )
     return (("transparent", "Transparent"), ("black", "Black"), ("white", "White"))
 
 

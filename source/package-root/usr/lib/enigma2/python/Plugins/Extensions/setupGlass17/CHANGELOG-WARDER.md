@@ -1,9 +1,14 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test212
+- Restored the original resolution menu: 50 x 30, 220 x 132, 400 x 240 and 710 x 682.
+- Restored the original resolution help text and kept Canal+ SK/CZ as channel selector entries.
+- Preserved the original three provider and satellite logo choices and localized menu labels.
+- Added the Canal+ SK and Canal+ CZ provider logos as combined packages for each provider logo style.
+
 ## 1.0.5-test211
 - Replaced the combined 23.5E Skylink selector with separate Canal+ SK and Canal+ CZ entries.
-- Replaced generic provider-logo download choices with six country and colour-specific Canal+ packages.
-- Limited Canal+ channel downloads to supported 220 x 132 picons and added selector icons from approved artwork.
+- Added Canal+ channel picons and selector icons from approved artwork.
 
 ## 1.0
 
@@ -26,8 +31,7 @@
 - Preserved external satellite/channel picon selection via picon.cz where the original FTP snapshot contained no equivalent package.
 
 ## Upgrade/install integration
-
-- Keeps the package identity `enigma2-skin-fullhdglass17` so existing installations are upgraded in place and remain registered in the system package manager.
+- Keeps package identity `enigma2-skin-fullhdglass17` so existing installations are upgraded in place and remain registered in the system package manager.
 - Keeps `/usr/share/enigma2/hd_glass17/skin.xml` as the standard Enigma2 skin entry, so the skin remains available in Skin Setup / appearance selection.
 - Preserves `/etc/enigma2/settings`, the active `/etc/enigma2/skin_user.xml`, and the generated FullHDGlass17 user overlay during upgrades.
 - Marks `/etc/enigma2/skin_user-hdg17.xml` as a configuration file and prevents removal cleanup from running during package upgrades.
