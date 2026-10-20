@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test218
+- Show the Canal+ SK and Canal+ CZ operator logos beside their separate FastScan table selectors.
+
 ## 1.0.5-test217
 - Clarify that Canal+ SK and Canal+ CZ are separate selected FastScan tables.
 

@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test217",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test217_all.ipk",
-  "sha256": "bf1247fb7f4512f2e0d3549adbe2e78b418bebf76794c163599379d934167e32",
-  "changelog": "FullHDGlass17 - Warder Evolution TEST: clarify that Canal+ SK and Canal+ CZ are separate selected FastScan tables."
+  "version": "1.0.5-test218",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test218_all.ipk",
+  "sha256": "d92c2f2de5e029a3cf817283ea87c980204e7e0923b1174fe3caf40c6b2d9c88",
+  "changelog": "FullHDGlass17 - Warder Evolution TEST: display the Canal+ operator logo for both separate FastScan selectors."
 }

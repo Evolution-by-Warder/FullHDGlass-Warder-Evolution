@@ -10034,10 +10034,19 @@ class warderPositionSelectorScr(Screen):
 			binding = warderPiconSync.task_binding_for_display_label(label)
 			if not binding:
 				continue
-			p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
+			selector = binding["package_selector"]
+			# Always show the operator logo beside each Canal+ FastScan table;
+			# the SK and CZ tables remain distinct even though both use 23.5E.
+			canal_icon = {
+				"CANALPLUS_SK": "icons/CANALPLUS_SK-75.png",
+				"CANALPLUS_CZ": "icons/CANALPLUS_CZ-75.png",
+			}.get(selector)
+			p = SKINPATH + canal_icon if canal_icon else ""
+			if not p or not os.path.isfile(p):
+				p = config.plugins.setupGlass17.par39.value + "/piconSat/" + str(value) + "-75.png"
 			if not os.path.isfile(p):
 				p = SKINPATH + "icons/75.png"
-			self.list.addSelection(label, binding, x, binding["package_selector"] in self.selected, p)
+			self.list.addSelection(label, binding, x, selector in self.selected, p)
 
 	def finish(self):
 		ret = [x[1] for x in self.list.getSelectionsList()]
