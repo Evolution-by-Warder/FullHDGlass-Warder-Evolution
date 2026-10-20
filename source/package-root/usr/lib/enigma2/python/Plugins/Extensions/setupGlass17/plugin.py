@@ -10748,4 +10748,294 @@ class cityFinder(Screen):
 		
 	def save(self):
 		if self.findC:
-			selec
+			selection = self["list"].getCurrent()
+			if not selection or str(selection[0]) == "*":
+				return
+			value = str(selection[0])
+			if value.startswith("country|"):
+				self.cityLevel, self.activeCountry = "cities", value.split("|", 1)[1]
+				self.generateData()
+			else:
+				self.appMCC(value)
+		else:
+			self.session.openWithCallback(self.addNewLine, InputBox, title=self.allLabels[5], text="                                                 ", maxSize=120, type=Input.TEXT)
+
+	def editMCC(self):
+		if self.findC:
+			self["key_yellow"].setText(self.allLabels[1])   
+			self.findC = False
+			self['list'].selectionEnabled(0)       
+			self['myCity'].selectionEnabled(1)      
+			self["key_green"].setText(self.allLabels[5])
+			self["key_blue"].setText(self.allLabels[3])
+		else:
+			try:
+				self.selectedLine = self['myCity'].getSelectionIndex()
+				self.oldLine = self.citylist[self.selectedLine]
+				self.session.openWithCallback(self.writeEditLine, InputBox, title=self.allLabels[1], text=self.oldLine[:-1]+"            ", maxSize=50, type=Input.TEXT)
+			except: pass    
+                 
+	def writeEditLine(self, newline):
+		if newline is not None:
+			if self.chckLine(newline):
+				self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)			
+			else:
+				newline = ' '.join((newline).strip().split()) + '\n'
+				if newline != self.oldLine:
+					self.citylist[self.selectedLine] = newline
+					self.writeMCC()
+		self.selectedLine = None
+		self.oldLine = None 
+		
+	def writeMCC(self):
+		try:
+			_atomicWriteText("/etc/my_city_Code.txt", "".join(self.citylist))
+		except Exception:
+			pass
+		self.generateData()  
+                   		
+	def findCityAnswer(self, name):
+		if name is None and name != "":
+			return		
+		self.generateData(name.strip())
+
+	def _loadLocalCities(self):
+		cities = []
+		self.countryNames = {}
+		try:
+			db = "/etc/city_Code-17.txt" if os.path.isfile("/etc/city_Code-17.txt") else "/etc/city_Code.txt"
+			currentName = ""
+			with open(db, "r") as f:
+				for raw in f:
+					line = raw.strip()
+					if line.startswith("# "):
+						currentName = line[2:].strip()
+						if currentName == "SK": currentName = "Slovakia"
+						elif currentName == "CZ": currentName = "Czechia"
+						continue
+					x = _cityLine(raw)
+					if not x:
+						continue
+					country = ""
+					if line.startswith("om|"):
+						p = line.split("|")
+						country = p[3].upper() if len(p) > 3 else ""
+					if country and currentName:
+						self.countryNames[country] = currentName
+					cities.append((country, x[1], x[2]))
+		except Exception as e:
+			Writelog("city database: %s" % e)
+		return cities
+
+	def _onlineCitySearch(self, what):
+		result = []
+		try:
+			if ISP38:
+				from urllib.parse import urlencode
+			else:
+				from urllib import urlencode
+			url = "https://geocoding-api.open-meteo.com/v1/search?" + urlencode({"name": what, "count": 20, "language": WLANG[:2], "format": "json"})
+			raw = urlopen(Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0.5"}), timeout=8).read()
+			if not isinstance(raw, str):
+				raw = raw.decode("utf-8", "replace")
+			for loc in (json.loads(raw).get("results") or []):
+				name = loc.get("name") or ""
+				cc = (loc.get("country_code") or "").upper()
+				admin = loc.get("admin1") or ""
+				postal = ""
+				pcs = loc.get("postcodes") or []
+				if isinstance(pcs, list) and pcs:
+					postal = str(pcs[0])
+				if name and cc:
+					value = "om|%s|%s|%s|%s|%s" % (name, name, cc, admin, postal)
+					label = name + (", " + admin if admin else "") + (", " + cc if cc else "")
+					result.append((label, value))
+		except Exception as e:
+			Writelog("Open-Meteo city search: %s" % e)
+		return result
+
+	def generateData(self, what=""):
+		self.list = []
+		local = self._loadLocalCities()
+		needle = _citySearchKey(what)
+		if needle:
+			for country, display, value in local:
+				if needle in _citySearchKey(display):
+					item = [value]
+					label = display + ((" [" + self.countryNames.get(country, country) + "]") if country else "")
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
+					self.list.append(item)
+			if not self.list:
+				for label, value in self._onlineCitySearch(what):
+					item = [value]
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=label))
+					self.list.append(item)
+			self.setWindowTitle(": " + what)
+		elif self.cityLevel == "root":
+			# r12 authority: show every country directly. The database itself keeps
+			# Slovakia first, Czechia second, followed by the remaining countries.
+			seen = []
+			for country, display, value in local:
+				if country and country not in seen:
+					seen.append(country)
+			for country in seen:
+				item = ["country|" + country]
+				item.append(MultiContentEntryText(pos=(15, 0), size=(760, 40), font=0, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=self.countryNames.get(country, country)))
+				self.list.append(item)
+			self.setWindowTitle(": " + _("Select country"))
+		else:
+			for country, display, value in local:
+				if country == self.activeCountry:
+					item = [value]
+					item.append(MultiContentEntryText(pos=(15, 0), size=(760, 37), font=2, color_sel=int("0x00d100",16), color=int("0xff3300",16), text=display))
+					self.list.append(item)
+			self.setWindowTitle(": " + self.countryNames.get(self.activeCountry, self.activeCountry or ""))
+		self.citylist = []
+		self.list2 = []
+		try:
+			with open("/etc/my_city_Code.txt", "r") as f:
+				for line in f:
+					self.citylist.append(line)
+					x = _cityLine(line)
+					display = x[1] if x else line.strip()
+					item = [line]
+					item.append(MultiContentEntryText(pos=(0, 0), size=(620, 37), font=2, color_sel=int("0x00d100",16), color=int("0xffcc00",16), text=display))
+					self.list2.append(item)
+		except Exception:
+			pass
+		if not self.list2:
+			item = ["*"]
+			item.append(MultiContentEntryText(pos=(0, 0), size=(620, 33), font=0, color_sel=int("0xff3300",16), text=("***  " + _("None city detected") + " !!!  ***")))
+			self.list2.append(item)
+		self["myCity"].l.setList(self.list2)
+		if self.findC:
+			self["myCity"].selectionEnabled(0)
+		if not self.list:
+			item = ["*"]
+			item.append(MultiContentEntryText(pos=(15, 0), size=(760, 33), font=0, color_sel=int("0xff3300",16), text=("***  " + _("None city detected") + " !!!  ***")))
+			self.list.append(item)
+		self["list"].l.setList(self.list)
+		self["list"].l.setItemHeight(45)
+		self["key_blue"].setText(self.allLabels[2])
+
+
+	def addNewLine(self, tmp):
+		if tmp is not None and tmp != "":
+			if self.chckLine(tmp):
+				self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)			
+			else:
+				self.appMCC(tmp)       
+            			
+	def chckLine(self, tmp):
+		try:
+			return _cityLine(" ".join(str(tmp).strip().split())) is None
+		except Exception:
+			return True
+
+	def appMCC(self, tmp):
+		path = "/etc/my_city_Code.txt"
+		written = False
+		try:
+			old = open(path, "r").read() if os.path.exists(path) else ""
+			lines = [x.strip() for x in old.splitlines() if x.strip()]
+			if str(tmp).strip() not in lines:
+				written = _atomicWriteText(path, old + ("" if not old or old.endswith("\n") else "\n") + "%s\n" % str(tmp).strip())
+			else:
+				written = True
+		except (IOError, OSError):
+			pass
+		f = open(path, "r").read() if os.path.exists(path) else ""
+		if written and f.find(str(tmp).strip()) != -1:
+			selected = _cityLine(str(tmp).strip())
+			if selected:
+				_setWeatherCityChoices(selected[0])
+				config.plugins.setupGlass17.par13.save()
+				configfile.save()
+				_refreshLiveWeather()
+			self.session.open(MessageBox, _("Changes writed successfully !!!"), MessageBox.TYPE_INFO, 6)
+			self.generateData()
+		else:
+			self.session.open(MessageBox, ER_F, MessageBox.TYPE_ERROR, 6)
+
+      
+class dirBrowser(Screen):      
+         
+	skin = """<screen name="DirBrowser" position="center,center" size="780,750" title="Dir Browser" backgroundColor="background" >
+			<widget name="filelist" position="15,15" size="750,660" scrollbarMode="showOnDemand" />
+	<widget source="key_red" render="Label" position="0,700" size="390,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
+	<widget source="key_green" render="Label" position="390,700" size="390,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
+   <eLabel position="0,690" size="390,2" backgroundColor="red" zPosition="5" transparent="0" />
+    <eLabel position="390,690" size="390,2" backgroundColor="green" zPosition="5" transparent="0" />
+		</screen>"""
+    
+	def __init__(self, session, dd, files=False):
+		Screen.__init__(self, session)
+		self.files = files
+		self.matchingPattern = None
+		if self.files:
+			self.matchingPattern = r"^.*\.(conf)"
+		self.filelist = FileList(dd, showDirectories = True, showFiles = self.files, matchingPattern = self.matchingPattern, inhibitDirs = ["/autofs", "/bin", "/boot", "/dev", "/opt", "/lib", "/proc", "/sbin", "/sys", "/tmp", "/home", "/run"])
+		self["filelist"] = self.filelist
+
+		self["actions"] = ActionMap(["SetupActions", "DirectionActions", "ColorActions"],
+		{
+			"ok": self.ok,
+			"cancel": self.cancel,
+			"left": self.left,
+			"right": self.right,
+			"up": self.up,
+			"down": self.down,
+			"green": self.green,
+			"red": self.cancel
+		}, -1)
+		self["key_red"] = StaticText(_("Cancel"))
+		self["key_green"] = StaticText(_("Select"))
+		self.onLayoutFinish.append(self.updTitle)
+
+	def updTitle(self):
+		a = self["filelist"].getCurrentDirectory()
+		if a is not None:
+			if a.startswith("/") and a.endswith("/"):
+				aa = a.split("/")
+				b = len(aa)
+				if b > 5:
+					a = ".../"+aa[b-4]+"/"+aa[b-3]+"/"+aa[b-2]+"/"
+			self.setTitle(a)
+
+	def cancel(self):
+		self.close(None)
+
+	def green(self):
+		if self.files:
+			a = self['filelist'].getCurrentDirectory()
+			b = self['filelist'].getFilename()
+			if a is None or b is None:
+				self.close(None)
+			else:
+				if a in b:
+					self.close(b)				
+				else:
+					self.close(a + b)
+		else:
+			ret = self["filelist"].getSelection()[0]
+			if self["filelist"].getSelection()[1]:
+				if ret is not None and not ret.endswith("/"):
+					ret += "/"									
+				self.close(ret)
+
+	def up(self):
+		self["filelist"].up()
+
+	def down(self):
+		self["filelist"].down()
+
+	def left(self):
+		self["filelist"].pageUp()
+
+	def right(self):
+		self["filelist"].pageDown()
+
+	def ok(self):
+		if self["filelist"].canDescent():
+			self["filelist"].descent()
+			self.updTitle()					
