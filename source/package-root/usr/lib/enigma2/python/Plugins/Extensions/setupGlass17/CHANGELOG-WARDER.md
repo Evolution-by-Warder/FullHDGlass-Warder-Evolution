@@ -1,5 +1,10 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test211
+- Replaced the combined 23.5E Skylink selector with separate Canal+ SK and Canal+ CZ entries.
+- Replaced generic provider-logo download choices with six country and colour-specific Canal+ packages.
+- Limited Canal+ channel downloads to supported 220 x 132 picons and added selector icons from approved artwork.
+
 ## 1.0
 
 - Established the FullHDGlass17 Warder Evolution release line.

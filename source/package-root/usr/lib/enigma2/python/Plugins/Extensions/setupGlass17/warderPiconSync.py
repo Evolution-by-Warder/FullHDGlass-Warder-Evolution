@@ -260,12 +260,33 @@ CHANNEL_RESOLUTION_CHOICES = (
     ("220x132", "220 x 132 - Picons"),
     ("400x240", "400 x 240 - Large picons"),
 )
+CANALPLUS_SELECTOR_IDS = ("CANALPLUS_SK", "CANALPLUS_CZ")
+
+
+def channel_resolution_choices(package_selectors=None):
+    """Return only sizes available for every selected channel provider."""
+    choices = CHANNEL_RESOLUTION_CHOICES
+    if set(selected_selector_ids(package_selectors)) & set(CANALPLUS_SELECTOR_IDS):
+        choices = tuple(item for item in choices if item[0] == "220x132")
+    return choices
+
+
 AUXILIARY_ASSET_KEYS = (
     "piconProv-220", "piconProv-b", "piconProv-w",
+    "piconProv-canal-sk-t", "piconProv-canal-sk-b", "piconProv-canal-sk-w",
+    "piconProv-canal-cz-t", "piconProv-canal-cz-b", "piconProv-canal-cz-w",
     "piconSat-220", "piconSat-b", "piconSat-w",
     "piconCam-b", "piconCam-w",
     "piconWeather-b", "piconWeather-w",
 )
+CANAL_PROVIDER_LOGO_ASSETS = {
+    "piconProv-canal-sk-t": ("canalplus-sk-transparent.zip", "CANALPLUS_SK.png", "transparent"),
+    "piconProv-canal-sk-b": ("canalplus-sk-black.zip", "CANALPLUS_SK.png", "black"),
+    "piconProv-canal-sk-w": ("canalplus-sk-white.zip", "CANALPLUS_SK.png", "white"),
+    "piconProv-canal-cz-t": ("canalplus-cz-transparent.zip", "CANALPLUS_CZ.png", "transparent"),
+    "piconProv-canal-cz-b": ("canalplus-cz-black.zip", "CANALPLUS_CZ.png", "black"),
+    "piconProv-canal-cz-w": ("canalplus-cz-white.zip", "CANALPLUS_CZ.png", "white"),
+}
 PICON_DESTINATIONS = (
     ("/usr/share/enigma2/picon", "Receiver memory"),
     ("/media/hdd/picon", "Hard disk"),
@@ -413,7 +434,7 @@ def set_task_position_bindings(preferences, bindings):
 def channel_preferences_ready(preferences):
     prefs = dict(preferences or {})
     return bool(valid_task_selection(prefs)
-                and prefs.get("resolution") in ("50x30", "220x132", "400x240")
+                and prefs.get("resolution") in tuple(size for size, label in channel_resolution_choices(prefs.get("package_selectors")))
                 and prefs.get("style") in dict(STYLES)
                 and channel_style_supported(prefs.get("resolution"), prefs.get("style"))
                 and prefs.get("update_mode") in dict(UPDATE_MODES)
@@ -437,6 +458,15 @@ def auxiliary_hybrid_variants(kind):
     """GUI variant IDs for the two auxiliary domains using hybrid packages."""
     if kind not in AUXILIARY_VARIANT_IDS:
         return ()
+    if kind == "piconProv":
+        return (
+            ("piconProv-canal-sk-t", "Canal+ SK - Transparent"),
+            ("piconProv-canal-sk-b", "Canal+ SK - Black"),
+            ("piconProv-canal-sk-w", "Canal+ SK - White"),
+            ("piconProv-canal-cz-t", "Canal+ CZ - Transparent"),
+            ("piconProv-canal-cz-b", "Canal+ CZ - Black"),
+            ("piconProv-canal-cz-w", "Canal+ CZ - White"),
+        )
     return (("transparent", "Transparent"), ("black", "Black"), ("white", "White"))
 
 
@@ -695,8 +725,12 @@ _SELECTOR_LABEL_BINDINGS = {
         "ANTIKSAT",
         "16.0e"
     ),
-    "(23.5E) Canal+": (
-        "SKYLINK",
+    "(23.5E) Canal+ SK": (
+        "CANALPLUS_SK",
+        "23.5e"
+    ),
+    "(23.5E) Canal+ CZ": (
+        "CANALPLUS_CZ",
         "23.5e"
     ),
     "DVB-T sk/cz": (
@@ -920,7 +954,8 @@ _SELECTOR_ID_TO_POSITION = {
     "FREESAT": "0.8w",
     "DIGI_TELLY": "0.8w",
     "ANTIKSAT": "16.0e",
-    "SKYLINK": "23.5e",
+    "CANALPLUS_SK": "23.5e",
+    "CANALPLUS_CZ": "23.5e",
     "DVB-T-SK-CZ": "dtt",
     "450W": "45.0w",
     "300W": "30.0w",
@@ -1140,7 +1175,7 @@ def select_manifest_packages(document, preferences):
 def selector_id_for_position(position):
     value = position_token(position)
     for selector, canonical in _SELECTOR_ID_TO_POSITION.items():
-        if canonical == value and selector not in ("FREESAT", "DIGI_TELLY", "ANTIKSAT", "SKYLINK"):
+        if canonical == value and selector not in ("FREESAT", "DIGI_TELLY", "ANTIKSAT", "CANALPLUS_SK", "CANALPLUS_CZ"):
             return selector
     return None
 
