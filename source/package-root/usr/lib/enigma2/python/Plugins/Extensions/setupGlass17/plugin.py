@@ -8986,11 +8986,11 @@ class downloadMenu(Screen):
 		asset = assets.get(asset_id)
 		if not isinstance(asset, dict):
 			raise ValueError("Canal+ provider bundle is not published")
-		source = warderPiconSync.AUXILIARY_PUBLICATION_SOURCES["fullhd-test"]
+		source = warderPiconSync.AUXILIARY_PUBLICATION_SOURCES["fullhd-provider-bundle"]
 		expected_url = source["package_root"] + filename
 		if (asset.get("filename") != filename or asset.get("root") != "piconProv_220x132"
 				or int(asset.get("png_count", 0)) != len(expected_members)
-				or asset.get("publication_source_id") != "fullhd-test"
+				or asset.get("publication_source_id") != "fullhd-provider-bundle"
 				or str(asset.get("url", "")) != expected_url):
 			raise ValueError("Canal+ provider bundle catalog entry does not match its package")
 		root = "piconProv_220x132"

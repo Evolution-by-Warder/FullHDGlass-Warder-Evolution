@@ -64,6 +64,16 @@ AUXILIARY_PUBLICATION_SOURCES = {
         "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/",
         "redirect_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/",
     },
+    "fullhd-provider-bundle": {
+        "expected_origin": "raw.githubusercontent.com",
+        "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+        "ref": "cf9e93e60d6f345ad33a0275a980487bff45bc98",
+        "pinned_commit": "cf9e93e60d6f345ad33a0275a980487bff45bc98",
+        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads.json",
+        "source_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/",
+        "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/",
+        "redirect_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/",
+    },
     "fullhd-production": {
         "expected_origin": "raw.githubusercontent.com",
         "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",

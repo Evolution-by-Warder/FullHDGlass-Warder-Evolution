@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test214
+- Pinned Canal+ provider archives to the verified immutable commit so downloads cannot use a stale branch cache.
+
 ## 1.0.5-test213
 - Compiled the existing Slovak and Czech Picon menu translations into the installed message catalogs.
 - Re-uploaded complete black and white Canal+ provider bundles after verifying their remote byte counts and SHA-256 hashes.

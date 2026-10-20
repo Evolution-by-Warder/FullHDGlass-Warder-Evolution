@@ -438,8 +438,8 @@
       "png_count": 2,
       "size": 12552,
       "sha256": "54fd4770e8e102056b707beb6b492cbb3f9c4d8891ba8a0c1523f6288c85abcb",
-      "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/provider-canalplus-transparent.zip",
+      "publication_source_id": "fullhd-provider-bundle",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/provider-canalplus-transparent.zip",
       "provider": "Canal+ SK/CZ",
       "style": "transparent"
     },
@@ -449,8 +449,8 @@
       "png_count": 2,
       "size": 70472,
       "sha256": "2eb8d66c22803844a5332a35425f0d281ddeb6b348d145ea7291f3466b522e99",
-      "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/provider-canalplus-black.zip",
+      "publication_source_id": "fullhd-provider-bundle",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/provider-canalplus-black.zip",
       "provider": "Canal+ SK/CZ",
       "style": "black"
     },
@@ -460,8 +460,8 @@
       "png_count": 2,
       "size": 70450,
       "sha256": "816ef7c8846e3c8ce1531099e8be98690f30b57de52cd2fe4eec31b2c82466fa",
-      "publication_source_id": "fullhd-test",
-      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/provider-canalplus-white.zip",
+      "publication_source_id": "fullhd-provider-bundle",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/provider-canalplus-white.zip",
       "provider": "Canal+ SK/CZ",
       "style": "white"
     }
