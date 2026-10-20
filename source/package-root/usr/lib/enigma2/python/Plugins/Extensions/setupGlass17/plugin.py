@@ -8496,7 +8496,7 @@ class downloadMenu(Screen):
 			resolution = self.warderPiconPrefs.get("resolution")
 			style = self.warderPiconPrefs.get("style")
 			try:
-				if resolution == "220x132":
+				if warderPiconSync.channel_delivery_backend(resolution, style) == "warder":
 					queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 					if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
 						self.warderChannelState = "locked"
@@ -8514,7 +8514,7 @@ class downloadMenu(Screen):
 					archives = warderPiconSync.plan_legacy_channel_archives(
 						self.warderPiconPrefs.get("package_selectors"), SATLIST, resolution, style)
 					for selector_id, archive_id in archives:
-						if not self._legacyPiconArchiveUrl(archive_id):
+						if not self._legacyPiconArchiveDescriptor(archive_id):
 							raise ValueError(_("Preserved legacy archive is not available in Warder migration catalogue") + ": " + archive_id)
 					self.warderLegacyChannelQueue = archives
 					self.warderLegacyChannelAvailable = set()
@@ -9685,8 +9685,8 @@ class downloadMenu(Screen):
 						os.unlink(tmp)
 		return installed, available
 
-	def _legacyPiconArchiveUrl(self, legacy_id):
-		"""Resolve one preserved legacy numeric ID without guessing or retired-host fallback."""
+	def _legacyPiconArchiveDescriptor(self, legacy_id):
+		"""Resolve one pinned archive, including verified multipart 220x132 packages."""
 		try:
 			if not hasattr(self, "_warderLegacyPiconArchives"):
 				catalog_path = os.path.join(PLUGINPATH, "legacyPiconArchives.json")
@@ -9701,15 +9701,66 @@ class downloadMenu(Screen):
 					catalog.get("policy", {}).get("picon_cz_fallback") is False
 				)
 				self._warderLegacyPiconArchives = catalog.get("archives", {}) if valid else {}
+				supplemental_source = catalog.get("channel_package_source", {})
+				supplemental_valid = (
+					valid and supplemental_source.get("repository") == "Evolution-by-Warder/Trezor" and
+					supplemental_source.get("commit") == "f6719f516c4bc4d3ee86ba6291208095c43af000" and
+					supplemental_source.get("path") == "archives/chocholousek-picons/packages/220x132/"
+				)
+				self._warderChannelPackageArchives = catalog.get("channel_packages", {}) if supplemental_valid else {}
 			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
 			url = str(entry.get("url", ""))
 			filename = str(entry.get("filename", ""))
 			official = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/9cdda4ab414e7d50a97ca9285db8ebbb75fba615/archives/chocholousek-picons/originals/"
 			if filename and "/" not in filename and "\\" not in filename and ".." not in filename and filename.endswith(".7z") and url == official + filename:
-				return url
+				return {"filename": filename, "url": url, "parts": [], "size_bytes": None, "sha256": None}
+			entry = self._warderChannelPackageArchives.get(str(legacy_id), {})
+			filename = str(entry.get("filename", ""))
+			style = str(entry.get("style", ""))
+			position = str(entry.get("orbital_position", ""))
+			commit = str(entry.get("source_commit", ""))
+			root = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/f6719f516c4bc4d3ee86ba6291208095c43af000/archives/chocholousek-picons/packages/220x132/"
+			if (not re.match(r"^220x132:(black|white):[0-9]+(?:\.[0-9]+)?[ew]$", str(legacy_id)) or
+				commit != "f6719f516c4bc4d3ee86ba6291208095c43af000" or
+				filename != "picon%s-220x132-%s_by_chocholousek.7z" % (style, position.upper()) or
+				style not in ("black", "white") or not re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", position) or
+				"/" in filename or "\\" in filename or ".." in filename):
+				return None
+			parts = entry.get("parts", [])
+			if parts:
+				validated_parts = []
+				part_total = 0
+				for part in parts:
+					part_name = str(part.get("filename", ""))
+					part_url = str(part.get("url", ""))
+					part_size = int(part.get("size_bytes", 0))
+					part_sha = str(part.get("sha256", ""))
+					if (not re.match(r"^%s\.part[0-9]{2}$" % re.escape(filename), part_name) or
+						part_url != root + part_name or part_size <= 0 or
+						not re.match(r"^[0-9a-f]{64}$", part_sha)):
+						return None
+					part_total += part_size
+					validated_parts.append({"url": part_url, "size_bytes": part_size, "sha256": part_sha})
+				if part_total != int(entry.get("size_bytes", 0)):
+					return None
+				return {"filename": filename, "url": "", "parts": validated_parts,
+					"size_bytes": part_total, "sha256": str(entry.get("sha256", ""))}
+			path = str(entry.get("path", ""))
+			url = str(entry.get("url", ""))
+			size = int(entry.get("size_bytes", 0))
+			sha = str(entry.get("sha256", ""))
+			if (path == filename and url == root + filename and size > 0 and
+				re.match(r"^[0-9a-f]{64}$", sha)):
+				return {"filename": filename, "url": url, "parts": [], "size_bytes": size, "sha256": sha}
 		except Exception:
 			self._warderLegacyPiconArchives = {}
-		return ""
+			self._warderChannelPackageArchives = {}
+		return None
+
+	def _legacyPiconArchiveUrl(self, legacy_id):
+		"""Compatibility wrapper for single-file archive callers."""
+		descriptor = self._legacyPiconArchiveDescriptor(legacy_id)
+		return descriptor.get("url", "") if descriptor and not descriptor.get("parts") else ""
 
 	def downMulti(self, k, Ddir, continue_loop=True):
 		tmp = ""
@@ -9729,21 +9780,39 @@ class downloadMenu(Screen):
 					except OSError:
 						pass
 					shutil.rmtree(extract_dir, ignore_errors=True)
-					url = self._legacyPiconArchiveUrl(k[x][1])
-					if not url:
+					descriptor = self._legacyPiconArchiveDescriptor(k[x][1])
+					if not descriptor:
 						tmp += _("ERROR")+": ("+Ddir+ ") "+k[x][0]+", "+_("Preserved legacy archive is not available in Warder migration catalogue")+" ["+str(k[x][1])+"]\n"
 						continue
 					headers = {'User-Agent':'FHDG17-Warder'}
 					try:
 						cookie_jar = cookielib.CookieJar()
 						opener = build_opener(HTTPCookieProcessor(cookie_jar))
-						req = Request(url, data=None, headers=headers)
-						with opener.open(req, timeout=15) as handler, open(archive, 'wb') as f:
-							while True:
-								chunk = handler.read(1024 * 128)
-								if not chunk:
-									break
-								f.write(chunk)
+						whole_hash = hashlib.sha256()
+						whole_size = 0
+						with open(archive, 'wb') as f:
+							parts = descriptor.get("parts", [])
+							urls = [dict(part, _part=True) for part in parts] if parts else [{"url": descriptor["url"], "_part": False}]
+							for source in urls:
+								part_hash = hashlib.sha256()
+								part_size = 0
+								req = Request(source["url"], data=None, headers=headers)
+								with opener.open(req, timeout=15) as handler:
+									while True:
+										chunk = handler.read(1024 * 128)
+										if not chunk:
+											break
+										f.write(chunk)
+										whole_hash.update(chunk)
+										part_hash.update(chunk)
+										part_size += len(chunk)
+										whole_size += len(chunk)
+								if source["_part"] and (part_size != source["size_bytes"] or part_hash.hexdigest() != source["sha256"]):
+									raise ValueError("Pinned archive part checksum mismatch")
+						if descriptor.get("size_bytes") is not None and whole_size != descriptor["size_bytes"]:
+							raise ValueError("Pinned archive size mismatch")
+						if descriptor.get("sha256") and whole_hash.hexdigest() != descriptor["sha256"]:
+							raise ValueError("Pinned archive checksum mismatch")
 					except Exception:
 						try:
 							os.remove(archive)

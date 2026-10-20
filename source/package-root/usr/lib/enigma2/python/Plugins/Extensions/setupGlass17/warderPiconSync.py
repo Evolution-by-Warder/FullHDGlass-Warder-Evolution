@@ -350,7 +350,9 @@ def channel_style_supported(resolution, style):
 def channel_delivery_backend(resolution, style):
     if not channel_style_supported(resolution, style):
         return None
-    return "warder" if resolution == "220x132" else "pinned-legacy"
+    if resolution == "220x132" and style == "transparent":
+        return "warder"
+    return "pinned-legacy"
 
 
 def legacy_channel_archive_column(resolution, style):
@@ -366,6 +368,19 @@ def plan_legacy_channel_archives(selected_selector_ids, satlist, resolution, sty
     selectors = list(selected_selector_ids or [])
     if not valid_position_selection(selectors):
         raise ValueError("no-satellite-position-selected")
+    if str(resolution) == "220x132" and str(style) in ("black", "white"):
+        result = []
+        seen_ids = set()
+        for selector in selectors:
+            position = canonical_position_for_selector(selector)
+            if not position or position == "dtt":
+                raise ValueError("pinned-channel-archive-not-available-for-selected-position")
+            archive_id = "220x132:%s:%s" % (str(style), position_token(position))
+            if archive_id in seen_ids:
+                continue
+            seen_ids.add(archive_id)
+            result.append((selector, archive_id))
+        return result
     column = legacy_channel_archive_column(resolution, style)
     if column is None:
         raise ValueError("no-pinned-channel-archive-for-resolution-and-colour")
