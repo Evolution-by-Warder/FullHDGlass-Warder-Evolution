@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test218",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test218_all.ipk",
-  "sha256": "d92c2f2de5e029a3cf817283ea87c980204e7e0923b1174fe3caf40c6b2d9c88",
-  "changelog": "FullHDGlass17 - Warder Evolution TEST: display the Canal+ operator logo for both separate FastScan selectors."
+  "version": "1.0.5-test220",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test220_all.ipk",
+  "sha256": "a4755b5a884e715384b3bed7e57d9f5a3c3f16145006bce14dca7df6f9550dee",
+  "changelog": "FullHDGlass - Warder Evolution TEST: fix executable permissions of the pre-install script so opkg can run the upgrade."
 }
