@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test224
+- Drive the radio InfoBar background directly from the active service and reapply visibility whenever the InfoBar opens.
+
 ## 1.0.5-test223
 - Add the radio background to every selectable full-screen InfoBar variant; the setup plugin replaces the base InfoBar with one of these variants.
 
