@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test221
+- Keep the approved radio background visible beneath the temporary InfoBar on radio services.
+
 ## 1.0.5-test220
 - Fix executable permissions of package pre-install scripts so opkg can run upgrades.
 
