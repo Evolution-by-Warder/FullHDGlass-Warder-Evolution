@@ -1,0 +1,96 @@
+name: Publish complete Canal+ FastScan packages
+on:
+  push:
+    branches: [release/canalplus-full-20261021]
+    paths: [.github/workflows/publish-complete-canalplus.yml, tools/build-complete-canalplus.py, tools/test-complete-canalplus-install.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/release/canalplus-full-20261021'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /README.md
+            /update.json
+            /update-test.json
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 21868a9d27eeb2feda632788b0452a327e97cb98
+          path: .approved-picons
+          sparse-checkout: |
+            picons/23.5e/canal-plus-sk
+            picons/23.5e/canal-plus-cz
+      - name: Build complete sets and exercise actual receiver installer
+        run: |
+          python3 tools/build-complete-canalplus.py
+          python3 tools/test-complete-canalplus-install.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/canalplus-complete-fastscan-20261021.json
+          git commit -m 'Publish complete Canal+ SK 226 and CZ 231 picons in all three styles'
+          git push origin HEAD:refs/heads/release/canalplus-full-20261021
+      - name: Pin verified complete catalogue and release 1.0.8
+        run: |
+          python3 - <<'PY'
+          import hashlib, importlib.util, json, pathlib, subprocess
+          root=pathlib.Path('.')
+          ref=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          pkg=root/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
+          sync=pkg/'warderPiconSync.py'
+          old='5233ca0097b042cf27e268abead92d23ce94c047'
+          text=sync.read_text(); assert text.count(old)==1
+          sync.write_text(text.replace(old,ref))
+          (pkg/'version').write_text('1.0.8\n')
+          control=root/'source/control/control'
+          text=control.read_text(); assert 'Version: 1.0.7-1\n' in text
+          control.write_text(text.replace('Version: 1.0.7-1\n','Version: 1.0.8-1\n'))
+          change=pkg/'CHANGELOG-WARDER.md'
+          change.write_text('## 1.0.8\n\n- Canal+ SK and CZ downloads now contain their complete existing FastScan PNG sets (226 and 231 per style), replacing the incomplete eight-channel bundles.\n- Verified all three colour selections and replacement of existing transparent files using the actual receiver installer.\n\n'+change.read_text())
+          spec=importlib.util.spec_from_file_location('sync',sync)
+          module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+          delivery=root/'assets/warder/downloads/picons/channels'
+          for suffix,source in (('','production'),('test-candidate',None)):
+              doc=json.loads((delivery/suffix/'manifest.json').read_text())
+              url=module.PUBLICATION_SOURCES[source]['manifest_url'] if source else module.runtime_publication()['manifest_url']
+              assert not module.validate_publication_manifest(doc,url)
+              for p in doc['packages']:
+                  if p['selector_id'].startswith('CANALPLUS_'):
+                      assert p['png_count']==(226 if p['selector_id']=='CANALPLUS_SK' else 231)
+          subprocess.run(['python3','tools/test-complete-canalplus-install.py'],check=True)
+          subprocess.run(['python3','tools/build-release-ipk.py'],check=True)
+          ipk=root/'packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.8_all.ipk'
+          digest=hashlib.sha256(ipk.read_bytes()).hexdigest()
+          for name in ('update.json','update-test.json'):
+              path=root/name; d=json.loads(path.read_text())
+              d.update(version='1.0.8',sha256=digest,package_url='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/'+ipk.name,changelog='Opravene kompletne baliky Canal+ SK (226 piconov) a CZ (231 piconov) pre transparentne, biele a cierne. Predchadzajuce odkazy obsahovali iba 8 doplnenych stanic. Overene nahradenie existujucich PNG.')
+              path.write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
+          readme=root/'README.md'
+          text=readme.read_text().replace('Latest approved release: 1.0.7','Latest approved release: 1.0.8').replace('evolution_1.0.7_all.ipk','evolution_1.0.8_all.ipk').replace('both offer 1.0.7','both offer 1.0.8')
+          readme.write_text(text+'\nRelease 1.0.8 fixes incomplete Canal+ downloads: SK contains 226 picons and CZ 231 in each of the transparent, white and black styles. All packages preserve the existing approved PNG bytes and have been tested with the actual skin installer.\n')
+          PY
+          python3 tools/verify-radio-release.py
+          git add --sparse source update.json update-test.json README.md
+          git add --sparse -f packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.8_all.ipk packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.8_all.ipk.sha256
+          git commit -m 'Release 1.0.8 with complete verified Canal+ FastScan downloads'
+          git push origin HEAD:refs/heads/release/canalplus-full-20261021
+      - uses: actions/upload-artifact@v4
+        with:
+          name: complete-canalplus-verified-release
+          path: |
+            reports/canalplus-complete-fastscan-20261021.json
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.8_all.ipk
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.8_all.ipk.sha256
