@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test225
+- Add the radio background widget to InfoBar-3, the permanent Extra InfoBar variant selected by the plugin.
+
 ## 1.0.5-test224
 - Drive the radio InfoBar background directly from the active service and reapply visibility whenever the InfoBar opens.
 

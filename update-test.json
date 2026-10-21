@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test224",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test224_all.ipk",
-  "sha256": "8e7910205e6c4adcbfab4563caebffe60d755473ef3e58ac19aa059b69e40854",
-  "changelog": "FullHDGlass - Warder Evolution TEST: control the radio InfoBar background directly from the active service, without a conditional converter, and synchronize it whenever the InfoBar opens."
+  "version": "1.0.5-test225",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test225_all.ipk",
+  "sha256": "0d25e32a8834c1607dae58303ae20aea2ce1e7a6bd56f6c71c4bd4ea810725ef",
+  "changelog": "FullHDGlass - Warder Evolution TEST: add the missing radio background widget to InfoBar-3 so the permanent Extra InfoBar can show the approved artwork."
 }
