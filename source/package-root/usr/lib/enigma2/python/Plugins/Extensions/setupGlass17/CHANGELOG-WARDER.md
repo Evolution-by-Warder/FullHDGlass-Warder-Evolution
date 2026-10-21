@@ -1,5 +1,9 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test228
+- Put the radio-only RDS screen above the InfoBar so its approved background remains visible during the InfoBar.
+- Restore transparent equalizer clearing and prefer the receiver service-state marker during TV/radio transitions.
+
 ## 1.0.5-test227
 - Clear the animated radio spectrum canvas transparently instead of painting an opaque black rectangle behind the bars.
 

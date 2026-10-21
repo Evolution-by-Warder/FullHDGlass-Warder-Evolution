@@ -69,7 +69,7 @@ class WarderRadioSpectrum(Renderer):
     def _paint(self):
         if self.instance is None:
             return
-        self.instance.clear(gRGB(0, 0, 0, 0))
+        self.instance.clear(gRGB(0, 0, 0, 255))
         width, height = 350, 126
         gap = 4
         barw = 15

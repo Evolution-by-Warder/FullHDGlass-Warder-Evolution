@@ -12,8 +12,18 @@ class WarderRadioOnly(Converter):
 
     @cached
     def getBoolean(self):
-        # Read the active DVB service directly first. The marker is written by
-        # the plugin at service-start and can otherwise lag the skin converter.
+        # The service-start hook writes this marker before the skin redraws.
+        # Prefer it over NavigationInstance, which can briefly still report
+        # the previous TV service during a TV -> radio transition.
+        try:
+            with open("/tmp/warder-radio-current", "r") as marker:
+                state = marker.read(8).strip().upper()
+            if state == "A":
+                return True
+            if state == "TV":
+                return False
+        except Exception:
+            pass
         try:
             nav = NavigationInstance.instance
             ref = nav and nav.getCurrentlyPlayingServiceReference()
@@ -22,11 +32,7 @@ class WarderRadioOnly(Converter):
                 return fields[2].upper() in ("2", "A")
         except Exception:
             pass
-        try:
-            with open("/tmp/warder-radio-current", "r") as marker:
-                return marker.read(8).strip() == "A"
-        except Exception:
-            return False
+        return False
 
     boolean = property(getBoolean)
 

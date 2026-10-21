@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test227",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test227_all.ipk",
-  "sha256": "8b61dc067a5e4aeb540c45ede340b416becacd0d3f6c41d852c97e203d1361ed",
-  "changelog": "FullHDGlass - Warder Evolution TEST: clear the animated radio spectrum canvas transparently to remove its opaque black rectangle."
+  "version": "1.0.5-test228",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test228_all.ipk",
+  "sha256": "3188702bb01e6ca623a2a0315162d0de005984e95f3bdc7c5f3953c980684ac9",
+  "changelog": "FullHDGlass - Warder Evolution TEST: show the radio display above the InfoBar and restore transparent equalizer rendering."
 }
