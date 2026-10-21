@@ -304,8 +304,6 @@
   <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST221: keep the approved radio artwork visible under the temporary InfoBar on receivers without a radio video plane. -->
     <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
-      <convert type="WarderRadioOnly" />
-      <convert type="ConditionalShowHide" />
     </widget>
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="off" />
     <widget position="315,822" size="757,52" source="session.CurrentService" render="Label" font="Prive3;39" valign="center" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">

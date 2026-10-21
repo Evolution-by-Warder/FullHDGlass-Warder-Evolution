@@ -1,8 +1,7 @@
 # FullHDGlass17 Warder Evolution
 
-## 1.0.5-test229
-- Return the radio RDS screen below the InfoBar so channel navigation stays visible; show the approved radio background at the InfoBar glass layer across all InfoBar variants.
-- Keep the equalizer canvas transparent and enable alpha testing for the receiver TV output.
+## 1.0.5-test230
+- Remove competing converter visibility from radio InfoBar background widgets; use the existing direct service-start hooks during InfoBar display.
 
 ## 1.0.5-test228
 - Put the radio-only RDS screen above the InfoBar so its approved background remains visible during the InfoBar.

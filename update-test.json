@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test229",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test229_all.ipk",
-  "sha256": "63c96fcfce67f1a08c21f63640cf9b9098a718703a5e11c37d4b5cee97281d18",
-  "changelog": "FullHDGlass - Warder Evolution TEST: restore channel-list visibility and preserve radio background and equalizer transparency on TV."
+  "version": "1.0.5-test230",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test230_all.ipk",
+  "sha256": "3f2b02e61063be8ac041a52460079b11c04eedd28343921b1b86d40e1d65a970",
+  "changelog": "FullHDGlass - Warder Evolution TEST: keep the radio background visible while InfoBar is open."
 }
