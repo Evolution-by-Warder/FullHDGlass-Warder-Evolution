@@ -9717,9 +9717,9 @@ class downloadMenu(Screen):
 				self._warderMiniPiconArchives = catalog.get("channel_mini_packages", {}) if mini_valid else {}
 				large_source = catalog.get("channel_large_package_source", {})
 				large_valid = (
-					valid and large_source.get("repository") == "Evolution-by-Warder/Trezor" and
-					large_source.get("commit") == "d0c856e8f97d9ea87dfdf89d7dda7077053e3f96" and
-					large_source.get("path") == "archives/chocholousek-picons/packages/400x240"
+					valid and large_source.get("repository") == "Evolution-by-Warder/FullHDGlass-Warder-Evolution" and
+					large_source.get("commit") == "168a945a890c8597df2bad53802e6eb02ef86327" and
+					large_source.get("path") == "assets/warder/picon-archives/400x240"
 				)
 				self._warderLargePiconArchives = catalog.get("channel_large_packages", {}) if large_valid else {}
 			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
@@ -9748,9 +9748,9 @@ class downloadMenu(Screen):
 			large_style = str(large_entry.get("style", ""))
 			large_position = str(large_entry.get("orbital_position", ""))
 			large_commit = str(large_entry.get("source_commit", ""))
-			large_root = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/d0c856e8f97d9ea87dfdf89d7dda7077053e3f96/archives/chocholousek-picons/packages/400x240/"
+			large_root = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/168a945a890c8597df2bad53802e6eb02ef86327/assets/warder/picon-archives/400x240/"
 			if (re.match(r"^400x240:(black|white):[0-9]+(?:\.[0-9]+)?[ew]$", str(legacy_id)) and
-				large_commit == "d0c856e8f97d9ea87dfdf89d7dda7077053e3f96" and
+				large_commit == "168a945a890c8597df2bad53802e6eb02ef86327" and
 				large_filename == "picon%s-400x240-%s_by_chocholousek.7z" % (large_style, large_position.upper()) and
 				large_style in ("black", "white") and
 				re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", large_position) and
