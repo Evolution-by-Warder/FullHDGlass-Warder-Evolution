@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test230",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test230_all.ipk",
-  "sha256": "3f2b02e61063be8ac041a52460079b11c04eedd28343921b1b86d40e1d65a970",
-  "changelog": "FullHDGlass - Warder Evolution TEST: keep the radio background visible while InfoBar is open."
+  "version": "1.0.5-test231",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test231_all.ipk",
+  "sha256": "c9780b68255fcfadf744620c73f5d19f5dc7bb104a67e3c2cf7e4ecbc5868582",
+  "changelog": "FullHDGlass - Warder Evolution TEST: precompose the radio background and existing InfoBar glass for reliable TV output."
 }

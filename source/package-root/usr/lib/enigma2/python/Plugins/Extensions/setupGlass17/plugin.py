@@ -1536,6 +1536,13 @@ def hdg17inicialize(self):
 			{
 				iPlayableService.evStart: self.serviceStartNow17, iPlayableService.evUpdatedEventInfo: self.serviceStartNow173,
 			})
+		try:
+			ref = self.session.nav.getCurrentlyPlayingServiceReference()
+			fields = ref.toString().split(":") if ref is not None else []
+			with open("/tmp/warder-radio-current", "w") as marker:
+				marker.write("A" if len(fields) > 2 and fields[2].upper() in ("2", "A") else "TV")
+		except Exception:
+			pass
 		global transStep17
 		transStep17 = 20
 		self.g17fadeTimer = eTimer()
@@ -1615,30 +1622,6 @@ def hdg17inicialize(self):
 def SpecialScreenWindow17(self):
 	ShowHideViaKey()
 
-def _warderSetRadioBackground(self, refstr=None):
-	try:
-		if refstr is None:
-			ref = self.session.nav.getCurrentlyPlayingServiceReference()
-			refstr = ref.toString() if ref is not None else ""
-		fields = refstr.split(":")
-		is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
-		background = self["WarderRadioBackground"]
-		if is_radio:
-			background.show()
-			state = "SHOW"
-		else:
-			background.hide()
-			state = "HIDE"
-		with open("/tmp/warder-radio-service-events.log", "a") as out:
-			out.write("INFOBAR_BACKGROUND_%s ref=%s\\n" % (state, refstr))
-	except Exception as error:
-		try:
-			with open("/tmp/warder-radio-service-events.log", "a") as out:
-				out.write("INFOBAR_BACKGROUND_ERROR %r\\n" % (error,))
-		except Exception:
-			pass
-
-
 def serviceStartNow17(self):
 	if isinstance(self,InfoBar):
 		# TEST106: retry after OpenWebif has initialized; idempotent and receiver-proven class name.
@@ -1665,7 +1648,6 @@ def serviceStartNow17(self):
 					marker.write("A" if is_radio else "TV")
 			except Exception:
 				pass
-			_warderSetRadioBackground(self, refstr)
 			rds = getattr(self, "rds_display", None)
 			if rds is not None:
 				if is_radio:
@@ -1692,7 +1674,6 @@ def serviceStartNow17(self):
 
 def serviceStartNow172(self):
 	if isinstance(self,InfoBar):
-		_warderSetRadioBackground(self)
 		if self.shown:
 			if self.g17dialogTimer.isActive():
 				self.g17dialogTimer.stop()
