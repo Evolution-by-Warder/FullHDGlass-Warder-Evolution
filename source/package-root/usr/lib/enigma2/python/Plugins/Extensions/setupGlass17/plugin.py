@@ -9686,7 +9686,7 @@ class downloadMenu(Screen):
 		return installed, available
 
 	def _legacyPiconArchiveDescriptor(self, legacy_id):
-		"""Resolve one pinned archive, including verified multipart 220x132 packages."""
+		"""Resolve one pinned archive, including verified multipart channel packages."""
 		try:
 			if not hasattr(self, "_warderLegacyPiconArchives"):
 				catalog_path = os.path.join(PLUGINPATH, "legacyPiconArchives.json")
@@ -9715,6 +9715,13 @@ class downloadMenu(Screen):
 					mini_source.get("path") == "archives/chocholousek-picons/originals"
 				)
 				self._warderMiniPiconArchives = catalog.get("channel_mini_packages", {}) if mini_valid else {}
+				large_source = catalog.get("channel_large_package_source", {})
+				large_valid = (
+					valid and large_source.get("repository") == "Evolution-by-Warder/Trezor" and
+					large_source.get("commit") == "d0c856e8f97d9ea87dfdf89d7dda7077053e3f96" and
+					large_source.get("path") == "archives/chocholousek-picons/packages/400x240"
+				)
+				self._warderLargePiconArchives = catalog.get("channel_large_packages", {}) if large_valid else {}
 			entry = self._warderLegacyPiconArchives.get(str(legacy_id), {})
 			url = str(entry.get("url", ""))
 			filename = str(entry.get("filename", ""))
@@ -9736,6 +9743,47 @@ class downloadMenu(Screen):
 				int(mini_entry.get("size_bytes", 0)) > 0 and re.match(r"^[0-9a-f]{64}$", str(mini_entry.get("sha256", "")))):
 				return {"filename": mini_filename, "url": mini_root + mini_filename, "parts": [],
 					"size_bytes": int(mini_entry["size_bytes"]), "sha256": str(mini_entry["sha256"])}
+			large_entry = self._warderLargePiconArchives.get(str(legacy_id), {})
+			large_filename = str(large_entry.get("filename", ""))
+			large_style = str(large_entry.get("style", ""))
+			large_position = str(large_entry.get("orbital_position", ""))
+			large_commit = str(large_entry.get("source_commit", ""))
+			large_root = "https://raw.githubusercontent.com/Evolution-by-Warder/Trezor/d0c856e8f97d9ea87dfdf89d7dda7077053e3f96/archives/chocholousek-picons/packages/400x240/"
+			if (re.match(r"^400x240:(black|white):[0-9]+(?:\.[0-9]+)?[ew]$", str(legacy_id)) and
+				large_commit == "d0c856e8f97d9ea87dfdf89d7dda7077053e3f96" and
+				large_filename == "picon%s-400x240-%s_by_chocholousek.7z" % (large_style, large_position.upper()) and
+				large_style in ("black", "white") and
+				re.match(r"^[0-9]+(?:\.[0-9]+)?[ew]$", large_position) and
+				"/" not in large_filename and "\\" not in large_filename and ".." not in large_filename and
+				int(large_entry.get("size_bytes", 0)) > 0 and
+				re.match(r"^[0-9a-f]{64}$", str(large_entry.get("sha256", "")))):
+				large_parts = large_entry.get("parts", [])
+				if large_parts:
+					validated_parts = []
+					part_total = 0
+					for part in large_parts:
+						part_name = str(part.get("filename", ""))
+						part_url = str(part.get("url", ""))
+						part_size = int(part.get("size_bytes", 0))
+						part_sha = str(part.get("sha256", ""))
+						if (not re.match(r"^%s\.part[0-9]{2}$" % re.escape(large_filename), part_name) or
+							part_url != large_root + part_name or part_size <= 0 or
+							not re.match(r"^[0-9a-f]{64}$", part_sha)):
+							return None
+						part_total += part_size
+						validated_parts.append({"url": part_url, "size_bytes": part_size, "sha256": part_sha})
+					if part_total != int(large_entry.get("size_bytes", 0)):
+						return None
+					return {"filename": large_filename, "url": "", "parts": validated_parts,
+						"size_bytes": part_total, "sha256": str(large_entry["sha256"])}
+			large_path = str(large_entry.get("path", ""))
+			large_url = str(large_entry.get("url", ""))
+			large_size = int(large_entry.get("size_bytes", 0))
+			large_sha = str(large_entry.get("sha256", ""))
+			if (large_path == large_filename and large_url == large_root + large_filename and
+				large_size > 0 and re.match(r"^[0-9a-f]{64}$", large_sha)):
+				return {"filename": large_filename, "url": large_url, "parts": [],
+					"size_bytes": large_size, "sha256": large_sha}
 			entry = self._warderChannelPackageArchives.get(str(legacy_id), {})
 			filename = str(entry.get("filename", ""))
 			style = str(entry.get("style", ""))
@@ -9778,6 +9826,7 @@ class downloadMenu(Screen):
 			self._warderLegacyPiconArchives = {}
 			self._warderChannelPackageArchives = {}
 			self._warderMiniPiconArchives = {}
+			self._warderLargePiconArchives = {}
 		return None
 
 	def _legacyPiconArchiveUrl(self, legacy_id):

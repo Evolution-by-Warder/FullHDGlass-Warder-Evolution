@@ -325,7 +325,7 @@ CHANNEL_RESOLUTION_STYLES = {
     "50x30": ("transparent", "black", "white"),
     "150x90": ("black", "white"),
     "220x132": ("transparent", "black", "white"),
-    "400x240": ("transparent",),
+    "400x240": ("transparent", "black", "white"),
 }
 LEGACY_CHANNEL_ARCHIVE_COLUMNS = {
     ("400x240", "transparent"): 3,
@@ -381,14 +381,14 @@ def plan_legacy_channel_archives(selected_selector_ids, satlist, resolution, sty
             seen_ids.add(archive_id)
             result.append((selector, archive_id))
         return result
-    if str(resolution) == "220x132" and str(style) in ("black", "white"):
+    if str(resolution) in ("220x132", "400x240") and str(style) in ("black", "white"):
         result = []
         seen_ids = set()
         for selector in selectors:
             position = canonical_position_for_selector(selector)
             if not position or position == "dtt":
                 raise ValueError("pinned-channel-archive-not-available-for-selected-position")
-            archive_id = "220x132:%s:%s" % (str(style), position_token(position))
+            archive_id = "%s:%s:%s" % (str(resolution), str(style), position_token(position))
             if archive_id in seen_ids:
                 continue
             seen_ids.add(archive_id)
