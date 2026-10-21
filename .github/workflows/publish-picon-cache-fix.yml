@@ -1,0 +1,44 @@
+name: Package picon runtime cache fix 1.0.10
+on:
+  push:
+    branches: [release/picon-cache-1.0.10]
+    paths: ['source/**', 'tools/*release*', 'tools/test-picon-native-sync.py', 'update*.json', '.github/workflows/publish-picon-cache-fix.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  package:
+    if: github.ref == 'refs/heads/release/picon-cache-1.0.10'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /update.json
+            /update-test.json
+      - name: Reproduce stale bytecode and verify upgrade cleanup
+        run: python3 tools/test-release-bytecode.py
+      - name: Exercise real black 23.5E download and selective installation
+        run: python3 tools/test-picon-native-sync.py
+      - name: Build and verify the full release
+        run: |
+          python3 tools/build-release-ipk.py
+          python3 tools/verify-radio-release.py
+      - name: Store verified IPK on the staging branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse -f packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk.sha256
+          git commit -m 'Store verified picon runtime cache fix 1.0.10 IPK'
+          git push origin HEAD:refs/heads/release/picon-cache-1.0.10
+      - uses: actions/upload-artifact@v4
+        with:
+          name: picon-runtime-cache-fix-1.0.10
+          path: |
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk.sha256

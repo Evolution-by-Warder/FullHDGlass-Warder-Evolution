@@ -1,3 +1,9 @@
+## 1.0.10
+
+- Invalidate obsolete plugin bytecode during upgrades and derive Python payload timestamps from their source bytes, preventing stale catalogue imports after GUI restart.
+- Display the actual package failure reason in the download result.
+- Verified real 23.5E black downloads and selective replacement of Jednotka, Osem and Seznam picons.
+
 ## 1.0.9
 
 - Updated the approved Televizia Osem picons in all three full 23.5E packages, including both service reference aliases.

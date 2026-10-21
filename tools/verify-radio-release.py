@@ -51,6 +51,8 @@ def main():
             assert files.keys() == expected.keys()
             for name, path in expected.items():
                 assert archive.extractfile(files[name]).read() == path.read_bytes(), name
+                if path.suffix == ".py":
+                    assert files[name].mtime == (int(hashlib.sha256(path.read_bytes()).hexdigest()[:8], 16) & 0x7fffffff)
         digest = hashlib.sha256(package.read_bytes()).hexdigest()
         for name in ("update.json", "update-test.json"):
             manifest = json.loads((ROOT / name).read_text())

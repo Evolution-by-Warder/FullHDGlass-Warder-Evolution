@@ -26,6 +26,11 @@ def archive(directory, output, payload=False):
                 entry.uname = entry.gname = ""
                 if entry.isfile():
                     data = path.read_bytes()
+                    if payload and path.suffix == ".py":
+                        # A constant mtime and an unchanged source length can
+                        # validate stale bytecode after a package upgrade.
+                        # Keep builds reproducible while invalidating that cache.
+                        entry.mtime = int(hashlib.sha256(data).hexdigest()[:8], 16) & 0x7fffffff
                     tar.addfile(entry, io.BytesIO(data))
                 else:
                     tar.addfile(entry)

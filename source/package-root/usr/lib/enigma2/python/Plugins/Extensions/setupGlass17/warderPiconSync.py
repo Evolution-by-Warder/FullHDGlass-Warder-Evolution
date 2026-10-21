@@ -1416,6 +1416,9 @@ def package_result_summary(package_results, translate=None):
         lines.append(translate(row_status) + ": " +
                      (translate("%s / %s: %d picons updated; %d failures") %
                       (position, package_name or translate("Package"), updated, failures)))
+        detail = " ".join(str(row.get("error") or "").split())[:240]
+        if failures and detail:
+            lines.append(translate("ERROR") + ": " + detail)
     total_status = ("ERROR" if total_failures and not total_updated else
                     "PARTIAL SUCCESS" if total_failures else "SUCCESSFUL")
     lines.append(translate(total_status) + ": " +

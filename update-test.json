@@ -1,6 +1,6 @@
 {
-  "version": "1.0.9",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.9_all.ipk",
-  "sha256": "e2f9e5df5fe5e84d12cf6b016a7988f622a88bae8829449402977037d82c0df8",
-  "changelog": "Schvalene picony Televizia Osem v transparentnom, bielom a ciernom baliku celej 23.5E, pod oboma referenciami. Kompletne Canal+ SK a CZ ostavaju zahrnute."
+  "version": "1.0.10",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk",
+  "sha256": "ea82ce932ec04ca478fccf658294a46790a7cbd4e155e660a1d64c70e58c7048",
+  "changelog": "Oprava starej Python cache po aktualizacii: skin nacita aktualny zoznam piconov. Pri zlyhani stahovania sa zobrazi konkretny dovod. Overene realne stahovanie cierneho balika 23.5E a synchronizacia vybranych TV stanic."
 }

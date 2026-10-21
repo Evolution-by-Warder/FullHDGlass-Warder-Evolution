@@ -105,6 +105,24 @@ if [ -d "$warder_probe" ] && [ ! -L "$warder_probe" ] &&
     rmdir "$warder_probe" 2>/dev/null || true
 fi
 
+# Invalidate bytecode for package-owned plugin modules, including caches made
+# from releases with identical timestamps and lengths for changed source code.
+warder_python=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+if [ -d "$warder_python" ] && [ ! -L "$warder_python" ]; then
+    for warder_source in "$warder_python"/*.py; do
+        [ -f "$warder_source" ] && [ ! -L "$warder_source" ] || continue
+        warder_stem=${warder_source%.py}
+        rm -f "$warder_stem.pyc" "$warder_stem.pyo"
+        warder_name=${warder_stem##*/}
+        if [ -d "$warder_python/__pycache__" ] && [ ! -L "$warder_python/__pycache__" ]; then
+            for warder_bytecode in "$warder_python/__pycache__/$warder_name".*.pyc; do
+                [ -f "$warder_bytecode" ] && [ ! -L "$warder_bytecode" ] || continue
+                rm -f "$warder_bytecode"
+            done
+        fi
+    done
+fi
+
 # Apply the selected InfoBar after all package files have been installed.
 if [ -x /usr/bin/python ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then
     /usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
