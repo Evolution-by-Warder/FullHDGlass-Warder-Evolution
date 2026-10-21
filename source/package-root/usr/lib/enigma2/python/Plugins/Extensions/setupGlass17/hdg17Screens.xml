@@ -933,7 +933,9 @@
       </screen>
   <screen name="InfoBar-5" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST223: the plugin swaps this selected InfoBar variant into skin.xml at startup; keep radio artwork in every active variant. -->
-    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off">
+    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+      <convert type="WarderRadioOnly" />
+      <convert type="ConditionalShowHide" />
     </widget>
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="off" />
     <widget position="315,822" size="757,52" source="session.CurrentService" render="Label" font="Prive3;39" valign="center" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
@@ -987,7 +989,9 @@
   </screen>
   <screen name="InfoBar-4" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST223: the plugin swaps this selected InfoBar variant into skin.xml at startup; keep radio artwork in every active variant. -->
-    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off">
+    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+      <convert type="WarderRadioOnly" />
+      <convert type="ConditionalShowHide" />
     </widget>
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar4.png" alphatest="off"/>
     <widget position="315,822" size="757,52" source="session.CurrentService" render="Label" font="Prive3;39" valign="center" halign="left" noWrap="1" backgroundColor="#00000000" foregroundColor="#00ff6000" transparent="1">
@@ -1076,7 +1080,7 @@
   </screen>
 
 <screen name="InfoBar-3" 	position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
-    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off">
+    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
       <convert type="WarderRadioOnly" />
       <convert type="ConditionalShowHide" />
     </widget>
@@ -1084,8 +1088,10 @@
 </screen>
 
 <screen name="InfoBar-2" 	position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
-	<widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off">
-	</widget>
+	<widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+      <convert type="WarderRadioOnly" />
+      <convert type="ConditionalShowHide" />
+    </widget>
 		<ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/infobar.png" alphatest="off"/>
 
     <widget position="0,829" size="1920,52" source="session.CurrentService" render="Label" font="Regular;42" valign="bottom" halign="center" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
@@ -1128,7 +1134,9 @@
 	</screen>
   <screen name="InfoBar-1" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST223: the plugin swaps this selected InfoBar variant into skin.xml at startup; keep radio artwork in every active variant. -->
-    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off">
+    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+      <convert type="WarderRadioOnly" />
+      <convert type="ConditionalShowHide" />
     </widget>
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="off" />
     <widget position="315,822" size="757,52" source="session.CurrentService" render="Label" font="Prive3;39" valign="center" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
