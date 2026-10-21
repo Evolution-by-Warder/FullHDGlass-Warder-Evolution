@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test223
+- Add the radio background to every selectable full-screen InfoBar variant; the setup plugin replaces the base InfoBar with one of these variants.
+
 ## 1.0.5-test222
 - Synchronize the radio InfoBar background directly at service start and read the active service in the skin converter.
 
