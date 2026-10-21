@@ -1,6 +1,6 @@
 {
-  "version": "1.0.7",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.7_all.ipk",
-  "sha256": "9ab01b28d6732b0b988dbc72337ce20f7758d81a0139c18e1a864535c0b86d84",
-  "changelog": "Aktualizovane schvalene picony Seznam TV HD v bielom a ciernom baliku 23.5E; opraveny odkaz skinu na aktualny zoznam. Overene radio zostava zachovane."
+  "version": "1.0.8",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.8_all.ipk",
+  "sha256": "d47125b1f50d66f5da48e576c822c8b5ac1624f817bad80079b83f7d7fac97d6",
+  "changelog": "Opravene kompletne baliky Canal+ SK (226 piconov) a CZ (231 piconov) pre transparentne, biele a cierne. Predchadzajuce odkazy obsahovali iba 8 doplnenych stanic. Overene nahradenie existujucich PNG."
 }
