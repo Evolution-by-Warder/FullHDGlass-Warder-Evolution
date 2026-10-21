@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test222
+- Synchronize the radio InfoBar background directly at service start and read the active service in the skin converter.
+
 ## 1.0.5-test221
 - Keep the approved radio background visible beneath the temporary InfoBar on radio services.
 

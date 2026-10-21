@@ -1641,6 +1641,14 @@ def serviceStartNow17(self):
 					marker.write("A" if is_radio else "TV")
 			except Exception:
 				pass
+			try:
+				radio_background = self["WarderRadioBackground"]
+				if is_radio:
+					radio_background.show()
+				else:
+					radio_background.hide()
+			except Exception:
+				pass
 			rds = getattr(self, "rds_display", None)
 			if rds is not None:
 				if is_radio:
