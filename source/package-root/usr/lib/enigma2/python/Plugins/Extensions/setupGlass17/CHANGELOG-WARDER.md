@@ -1,3 +1,8 @@
+## 1.0.8
+
+- Canal+ SK and CZ downloads now contain their complete existing FastScan PNG sets (226 and 231 per style), replacing the incomplete eight-channel bundles.
+- Verified all three colour selections and replacement of existing transparent files using the actual receiver installer.
+
 ## 1.0.7
 
 - Updated approved Seznam white and black picons in the full 23.5E packages, including both service reference aliases.

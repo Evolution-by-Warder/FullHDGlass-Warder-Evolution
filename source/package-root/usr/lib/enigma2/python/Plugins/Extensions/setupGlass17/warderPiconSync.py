@@ -26,7 +26,7 @@ PUBLICATION_SOURCES = {
         "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/",
     },
     "test-candidate": {
-        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/5233ca0097b042cf27e268abead92d23ce94c047/assets/warder/downloads/picons/channels/test-candidate/manifest.json",
+        "manifest_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/e242f96127faad89aa35468a4c09408acbe5956a/assets/warder/downloads/picons/channels/test-candidate/manifest.json",
         "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/",
     },
 }
