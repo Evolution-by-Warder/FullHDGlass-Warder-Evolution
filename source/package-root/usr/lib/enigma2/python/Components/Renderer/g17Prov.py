@@ -24,6 +24,7 @@ try:
 	from Plugins.Extensions.setupGlass17.weaUtils import fixNameOf, setDefPicon, chckIPTVprov
 except: pass
 import NavigationInstance
+from Components.Converter.WarderRadioOnly import is_native_dab
 try:
 	from string import upper
 except: pass
@@ -65,6 +66,16 @@ class g17Prov(Renderer):
 			if nav:
 				service = nav.getCurrentService()
 				info = service and service.info()
+				playing = nav.getCurrentlyPlayingServiceReference()
+				if is_native_dab(playing):
+					provider = self.getServiceInfoValue(info, iServiceInformation.sProvider) if info else ""
+					pngname = self.findPicon(fixNameOf(provider)) if provider else ""
+					if not pngname:
+						pngname = "/usr/share/enigma2/hd_glass17/icons/missing-fs8.png"
+					if pngname != self.pngname:
+						self.pngname = pngname
+						self.instance.setPixmapFromFile(pngname)
+					return
 				if info is not None:
 					refer = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
 					if refer is not None:

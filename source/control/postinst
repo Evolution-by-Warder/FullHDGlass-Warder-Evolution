@@ -88,6 +88,30 @@ copy_default_if_missing /etc/iptvprov-def17.list /etc/iptvprov.list
 # Warder Evolution as an upgrade of the existing skin package. The installed
 # /usr/share/enigma2/hd_glass17/skin.xml keeps it visible in Enigma2 Skin Setup.
 
+# Remove only the identified temporary GUI observer. Preserve the working
+# receiver settings confirmed on test250; do not restore historical test values.
+warder_probe=/usr/lib/enigma2/python/Plugins/Extensions/WarderRadioProbe
+if [ -d "$warder_probe" ] && [ ! -L "$warder_probe" ] &&
+   [ -f "$warder_probe/plugin.py" ] &&
+   grep -q '^# WarderRadioProbe diagnostic v1' "$warder_probe/plugin.py"; then
+    rm -f "$warder_probe/plugin.py" "$warder_probe/__init__.py" \
+          "$warder_probe/plugin.pyc" "$warder_probe/plugin.pyo" \
+          "$warder_probe/__init__.pyc" "$warder_probe/__init__.pyo"
+    if [ -d "$warder_probe/__pycache__" ] && [ ! -L "$warder_probe/__pycache__" ]; then
+        find "$warder_probe/__pycache__" -maxdepth 1 -type f \
+          \( -name 'plugin.*.pyc' -o -name '__init__.*.pyc' \) -delete
+        rmdir "$warder_probe/__pycache__" 2>/dev/null || true
+    fi
+    rmdir "$warder_probe" 2>/dev/null || true
+fi
+
+# Apply the selected InfoBar after all package files have been installed.
+if [ -x /usr/bin/python ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then
+    /usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
+elif [ -x /usr/bin/python3 ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then
+    /usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
+fi
+
 echo "************************************************"
 echo "Install/upgrade finished: FullHDGlass - Warder Evolution"
 echo "Existing FullHDGlass settings were preserved."

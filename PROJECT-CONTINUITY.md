@@ -3,22 +3,18 @@
 ## Authoritative working state
 - Repository: Evolution-by-Warder/FullHDGlass-Warder-Evolution
 - Working branch: `warder-modernization-work`
-- `main` is TABU: no merge, push, edit or runtime-development switch to main.
+- User authorized publishing the receiver-approved radio release to work and main on 2026-10-21. Continue development on `warder-modernization-work`; production changes still require user authorization.
 - Checkpoint before this continuity commit: `9ed08e31eab3134b573552fbbaa5c59754aad6b6`
 - Current workstream: Warder download backend / legacy FTP migration / channel-picon cut-over.
 
-## Radio — LOCKED
-Full Radio implementation is PHYSICAL PASS on TEST191 and must not be modified without explicit approval or new receiver regression evidence.
+## Radio — LOCKED (receiver-confirmed test250)
+The user confirmed all radio behavior on 2026-10-21: physical television/OpenWebif parity, DVB/AAC, RDS, DAB and WDR, navigation, transparent equalizer, opaque black radio channel selection and a reduced full approved-image preview.
 
-Locked:
-- artwork renderer: `WarderRadioArtwork`
-- position: `606,145`
-- size: `704,640`
-- approved background/TOP/BOTTOM basis: TEST171
-- equalizer, DAB SLS, fallback artwork, matcher
-- clean TV -> Radio -> TV behavior
+Release 1.0.6 preserves that confirmed implementation and removes temporary diagnostic writes and the identified WarderRadioProbe plugin. Do not restore historical probe settings.
 
-Do not return Radio TOP to eCanvas/writeText. Radio runtime is out of scope for backend work.
+Approved graphics and XML layout are locked by `tools/radio-release-baseline.json`. Build the stable payload with `python3 tools/build-release-ipk.py` and verify with `python3 tools/verify-radio-release.py`. Do not regenerate artwork or compile replacement MO catalogs during release packaging.
+
+Both update manifests publish the same stable version, package URL and SHA-256. The test channel intentionally offers stable 1.0.6 to receivers running 1.0.5-test250.
 
 ## Legacy FTP migration
 `assets/warder/legacy-ftp-migration.tsv` is the migration registry.

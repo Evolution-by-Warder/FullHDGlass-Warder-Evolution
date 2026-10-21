@@ -24,11 +24,8 @@ class WarderRadioInfoTop(Renderer):
             self._timer.callback.append(self._paint)
 
     def _radio(self):
-        try:
-            with open("/tmp/warder-radio-current", "r") as marker:
-                return marker.read(8).strip() == "A"
-        except Exception:
-            return False
+        from Components.Converter.WarderRadioOnly import is_radio_source
+        return is_radio_source(None)
 
     def _dateText(self, stamp):
         fmt = "%A  %d.%B %Y"

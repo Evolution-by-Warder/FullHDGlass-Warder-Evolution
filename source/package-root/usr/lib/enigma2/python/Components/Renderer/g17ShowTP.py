@@ -15,6 +15,7 @@
 #    
 #######################################################################
 from Components.Renderer.Renderer import Renderer
+from Components.Converter.WarderRadioOnly import is_native_dab
 from enigma import eLabel
 from Components.VariableText import VariableText
 from enigma import eServiceCenter, iServiceInformation, eDVBFrontendParametersSatellite, eDVBFrontendParametersCable, eDVBFrontendParametersTerrestrial
@@ -97,6 +98,9 @@ class g17ShowTP(VariableText, Renderer):
 				serviceref = self.source.service
 				info = eServiceCenter.getInstance().info(serviceref)
 				if info and serviceref:
+					if is_native_dab(serviceref):
+						self.text = info.getInfoString(serviceref, iServiceInformation.sProvider) or "DAB"
+						return
 					sname = info.getInfoObject(serviceref, iServiceInformation.sTransponderData)
 					fq = pol = fec = sr = orb = ""
 					try:

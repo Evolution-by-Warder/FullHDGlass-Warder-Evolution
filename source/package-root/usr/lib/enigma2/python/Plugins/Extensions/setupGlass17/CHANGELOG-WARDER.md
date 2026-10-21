@@ -1,5 +1,26 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.6
+- Release the receiver-confirmed test250 radio behavior: DVB/AAC radio, RDS, DAB and WDR.
+- Keep radio backgrounds visible on the physical television and OpenWebif while InfoBar is open.
+- Use an opaque black radio channel-selection background and the full approved image in its preview.
+- Preserve DAB caption and equalizer transparency; resolve native DAB identity and current station picons.
+- Retire temporary audio/GUI diagnostics and remove the identified probe on upgrade.
+- Synchronize stable and test update manifests with the same installable release and SHA-256.
+
+## 1.0.5-test238
+- Set the radio InfoBar background directly at service start and whenever the InfoBar opens, avoiding cached visibility state.
+
+
+## 1.0.5-test235
+- Resolve install-time paths from the filesystem root so opkg can apply the selected InfoBar variant regardless of its working directory.
+
+## 1.0.5-test234
+- Use the precomposed radio InfoBar artwork in InfoBar-3 as well, which is the permanent InfoBar variant active on the receiver.
+
+## 1.0.5-test233
+- Apply the selected InfoBar variant during package installation so preserved old skin.xml files use the new radio background after GUI restart.
+
 ## 1.0.5-test231
 - Precompose the radio background with the existing InfoBar artwork for receiver OSDs that do not blend separate OSD layers; retain the original TV artwork and service-specific switching.
 

@@ -170,11 +170,8 @@ class WarderRadioArtwork(Renderer):
 
     @staticmethod
     def _diag(message):
-        try:
-            with open("/tmp/warder-radio-artwork.log", "a") as out:
-                out.write(message + "\n")
-        except Exception:
-            pass
+        # The production renderer keeps no temporary acquisition log.
+        pass
 
     @classmethod
     def _lookupExact(cls, artist, title, key):

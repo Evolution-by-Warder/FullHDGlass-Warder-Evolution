@@ -1,0 +1,19 @@
+name: Verify approved radio release
+on:
+  push:
+    branches: [main, warder-modernization-work]
+    paths: ['source/**', 'tools/*release*', 'tools/radio-release-baseline.json', 'update*.json', '.github/workflows/verify-radio-release.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build exactly the checked-in release payload
+        run: python3 tools/build-release-ipk.py
+      - name: Verify confirmed graphics, package and update channels
+        run: python3 tools/verify-radio-release.py

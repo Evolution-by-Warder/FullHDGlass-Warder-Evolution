@@ -1,9 +1,48 @@
 # -*- coding: utf-8 -*-
-# Warder Evolution - true only while the current service is Radio.
-
+# Radio and TV converters deliberately have independent concrete classes:
+# skin.py shares converters with isinstance(), including subclasses.
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 import NavigationInstance
+
+
+def is_native_dab(ref):
+    try:
+        from enigma import eServiceReference
+        return ref is not None and ref.type == eServiceReference.idServiceDAB
+    except (ImportError, AttributeError):
+        return False
+
+
+def is_radio_reference(ref):
+    try:
+        from ServiceReference import isRadioServiceReference
+        return bool(isRadioServiceReference(ref)) if ref is not None else False
+    except (ImportError, AttributeError, TypeError, ValueError):
+        pass
+    if is_native_dab(ref):
+        return True
+    try:
+        fields = ref.toString().split(":") if ref is not None else []
+        return len(fields) > 2 and fields[2].upper() in ("2", "A")
+    except Exception:
+        return False
+
+
+def is_radio_source(source):
+    ref = None
+    try:
+        getter = getattr(source, "getCurrentServiceReference", None)
+        ref = getter() if callable(getter) else getattr(source, "serviceref", None)
+    except Exception:
+        pass
+    if ref is None:
+        try:
+            nav = NavigationInstance.instance
+            ref = nav.getCurrentlyPlayingServiceReference() if nav else None
+        except Exception:
+            pass
+    return is_radio_reference(ref)
 
 
 class WarderRadioOnly(Converter):
@@ -12,27 +51,7 @@ class WarderRadioOnly(Converter):
 
     @cached
     def getBoolean(self):
-        # The service-start hook writes this marker before the skin redraws.
-        # Prefer it over NavigationInstance, which can briefly still report
-        # the previous TV service during a TV -> radio transition.
-        try:
-            with open("/tmp/warder-radio-current", "r") as marker:
-                state = marker.read(8).strip().upper()
-            if state == "A":
-                return True
-            if state == "TV":
-                return False
-        except Exception:
-            pass
-        try:
-            nav = NavigationInstance.instance
-            ref = nav and nav.getCurrentlyPlayingServiceReference()
-            fields = ref.toString().split(":") if ref is not None else []
-            if len(fields) > 2:
-                return fields[2].upper() in ("2", "A")
-        except Exception:
-            pass
-        return False
+        return is_radio_source(self.source)
 
     boolean = property(getBoolean)
 

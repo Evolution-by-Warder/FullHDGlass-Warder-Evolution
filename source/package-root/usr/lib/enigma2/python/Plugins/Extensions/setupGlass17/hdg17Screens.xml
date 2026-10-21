@@ -32,6 +32,7 @@
     <widget name="key_yellow" position="1490,1003" size="210,66" font="Prive4;24" valign="center" halign="center" backgroundColor="black" foregroundColor="yellow" zPosition="2" transparent="0" />
     <widget name="key_blue" position="1700,1003" size="210,66" font="Prive4;24" valign="center" halign="center" backgroundColor="black" foregroundColor="blue" zPosition="2" transparent="0" />
     <eLabel position="10,1068" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-53" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection">
 		<widget source="Title" render="g17cutCHSS" position="70,24" size="1220,45" foregroundColor="#cdcdcd" zPosition="1" valign="center" halign="left" font="Prive4;33" transparent="1"/>
@@ -73,6 +74,7 @@
     <eLabel position="534,1044" size="397,1" backgroundColor="#64DD16" zPosition="5" transparent="0" />
     <eLabel position="988,1044" size="397,1" backgroundColor="#FFD600" zPosition="5" transparent="0" />
     <eLabel position="1443,1044" size="397,1" backgroundColor="#0091EA" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-52" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
     <eLabel position="10,20" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
@@ -120,6 +122,7 @@
     <widget name="key_yellow" position="1490,1003" size="210,66" font="Prive4;24" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1700,1003" size="210,66" font="Prive4;24" valign="center" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
     <eLabel position="10,1068" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-51" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
     <eLabel position="60,30" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
@@ -167,6 +170,7 @@
     <widget name="key_yellow" position="1440,973" size="210,66" font="Prive4;24" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1650,973" size="210,66" font="Prive4;24" valign="center" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
     <eLabel position="60,1038" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 <screen name="ChannelSelection-50" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
       <widget source="Title" render="g17cutCHSS" position="10,57" size="965,35" foregroundColor="#cdcdcd" zPosition="1" valign="center" halign="center" font="Prive4;33" transparent="1"/>
@@ -183,7 +187,8 @@
     <eLabel position="1013,28" size="2,450" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1905,28" size="2,450" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1013,478" size="894,2" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget source="ServiceEvent" render="Pig" position="1015,28" size="890,450" backgroundColor="transparent" zPosition="2" /> 
+    <widget source="ServiceEvent" render="Pig" position="1015,28" size="890,450" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1015,28" size="890,450" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget> 
    
     <widget source="session.CurrentService" render="g17PicRef" position="1755,388" size="150,90" zPosition="3" transparent="1" alphatest="on">
           <convert type="ServiceName">Reference</convert>
@@ -223,13 +228,15 @@
     <eLabel position="246,1064" size="236,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="482,1064" size="236,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="718,1064" size="237,2" backgroundColor="blue" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 	<screen name="ChannelSelection-49" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="82,45" size="1087,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
 
   <ePixmap position="1192,105" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" /> 
-    <widget source="session.VideoPicture" render="Pig" position="1225,127" size="600,330" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1225,127" size="600,330" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1225,127" size="600,330" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17RefTV" position="1198,477" size="150,90" zPosition="2" transparent="1" alphatest="on" />       		
     
     <widget source="global.CurrentTime" render="Label" position="1042,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
@@ -275,12 +282,14 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="ChannelSelection-48" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
 	  <ePixmap position="40,40" size="1290,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="70,40" size="752,60" foregroundColor="un6cbcf0" zPosition="1" noWrap="1" valign="center" halign="left" font="Prive3;27" transparent="1"/>
 
-		<widget source="session.VideoPicture" render="Pig" position="1265,58" size="600,330" backgroundColor="transparent" zPosition="2" />
+		<widget source="session.VideoPicture" render="Pig" position="1265,58" size="600,330" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1265,58" size="600,330" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17MiniTV" position="1265,502" size="600,330" backgroundColor="transparent" zPosition="2">
       <convert type="g17MiniTVDisplay" />
     </widget>
@@ -347,13 +356,15 @@
 		<widget name="key_blue" position="848,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   <ePixmap position="1232,35" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="1232,479" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   
   <screen name="ChannelSelection-47" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
 	  <ePixmap position="40,40" size="1290,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="70,40" size="752,60" foregroundColor="un6cbcf0" zPosition="1" noWrap="1" valign="center" halign="left" font="Prive3;27" transparent="1"/>
 
-		<widget source="session.VideoPicture" render="Pig" position="1265,58" size="600,330" backgroundColor="transparent" zPosition="2" />
+		<widget source="session.VideoPicture" render="Pig" position="1265,58" size="600,330" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1265,58" size="600,330" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17MiniTV" position="1265,450" size="600,330" backgroundColor="transparent" zPosition="2">
       <convert type="g17MiniTVDisplay" />
     </widget>
@@ -404,13 +415,15 @@
 		<widget name="key_blue" position="848,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   <ePixmap position="1232,35" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="1232,427" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 
   <screen name="ChannelSelection-46" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
 	  <ePixmap position="40,40" size="1290,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="70,40" size="752,60" foregroundColor="un6cbcf0" zPosition="1" noWrap="1" valign="center" halign="left" font="Prive3;27" transparent="1"/>
 
-		<widget source="session.VideoPicture" render="Pig" position="1265,58" size="600,330" backgroundColor="transparent" zPosition="2" />
+		<widget source="session.VideoPicture" render="Pig" position="1265,58" size="600,330" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1265,58" size="600,330" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17MiniTV" position="1265,450" size="600,330" backgroundColor="transparent" zPosition="2">
       <convert type="g17MiniTVDisplay" />
     </widget>
@@ -462,6 +475,7 @@
 		<widget name="key_blue" position="848,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   <ePixmap position="1232,35" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="1232,427" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-45" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
     <eLabel position="60,30" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
@@ -503,6 +517,7 @@
     <widget name="key_yellow" position="480,973" size="210,66" font="Prive4;24" valign="center" halign="center" backgroundColor="black" foregroundColor="yellow" zPosition="2" transparent="0" />
     <widget name="key_blue" position="690,973" size="210,66" font="Prive4;24" valign="center" halign="center" backgroundColor="black" foregroundColor="blue" zPosition="2" transparent="0" />
     <eLabel position="60,1038" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-44" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
     <eLabel position="10,20" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
@@ -545,6 +560,7 @@
     <widget name="key_yellow" position="1490,1003" size="210,66" font="Prive4;24" valign="center" halign="center" backgroundColor="black" foregroundColor="yellow" zPosition="2" transparent="0" />
     <widget name="key_blue" position="1700,1003" size="210,66" font="Prive4;24" valign="center" halign="center" backgroundColor="black" foregroundColor="blue" zPosition="2" transparent="0" />
     <eLabel position="10,1068" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-43" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
     <ePixmap pixmap="hd_glass17/buttons/selected-2.png" position="7,0" size="810,37" zPosition="1" alphatest="off" />
@@ -597,6 +613,7 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-42" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
     <ePixmap pixmap="hd_glass17/buttons/selected-2.png" position="832,0" size="810,37" zPosition="1" alphatest="off" />
@@ -648,6 +665,7 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-41" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
     <eLabel position="60,30" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
@@ -659,7 +677,8 @@
     <eLabel position="60,90" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
     <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" scrollbarMode="showOnDemand" />
 		<ePixmap position="1218,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1237,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="1020,105" size="189,123" zPosition="3" alphatest="off" />   
     <widget source="ServiceEvent" render="g17RefTV" position="1039,121" size="150,90" zPosition="4" transparent="1" alphatest="on" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="1020,240" size="189,123" zPosition="3" alphatest="off" />
@@ -680,12 +699,14 @@
     <widget name="key_yellow" position="1440,973" size="210,66" font="Prive4;24" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1650,973" size="210,66" font="Prive4;24" valign="center" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
     <eLabel position="60,1038" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-40" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 	  <ePixmap position="710,45" size="1170,60" pixmap="hd_glass17/general/title40.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="740,45" size="752,60" foregroundColor="un6cbcf0" zPosition="1" noWrap="1" valign="center" halign="left" font="Prive3;27" transparent="1"/>
 
-		<widget source="session.VideoPicture" render="Pig" position="65,63" size="600,330" backgroundColor="transparent" zPosition="2" />
+		<widget source="session.VideoPicture" render="Pig" position="65,63" size="600,330" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="65,63" size="600,330" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17MiniTV" position="65,455" size="600,330" backgroundColor="transparent" zPosition="2">
       <convert type="g17MiniTVDisplay" />
     </widget>
@@ -738,6 +759,7 @@
 		<widget name="key_blue" position="1548,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />                    
   <ePixmap position="32,40" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="32,432" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />                
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
   <screen name="ChannelSelection-39" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
     <ePixmap pixmap="hd_glass17/buttons/selected-2.png" position="832,0" size="810,37" zPosition="1" alphatest="off" />
@@ -790,6 +812,7 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-38" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<ePixmap position="60,30" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -799,7 +822,8 @@
     </widget>
     <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" scrollbarMode="showOnDemand" />
 		<ePixmap position="1218,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1237,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1072,30" size="645,60" font="Prive4;33" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" /> 
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="1020,105" size="189,123" zPosition="3" alphatest="off" />   
     <widget source="ServiceEvent" render="g17RefTV" position="1039,121" size="150,90" zPosition="4" transparent="1" alphatest="on" />
@@ -820,6 +844,7 @@
     <widget name="key_green" position="528,973" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="994,973" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1462,973" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 <screen name="ChannelSelection-37" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
       <widget source="Title" render="g17cutCHSS" position="60,77" size="915,35" foregroundColor="#cdcdcd" zPosition="1" valign="center" halign="center" font="Prive4;33" transparent="1"/>
@@ -836,7 +861,8 @@
     <eLabel position="1013,48" size="2,430" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1855,48" size="2,430" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1013,478" size="844,2" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget source="ServiceEvent" render="Pig" position="1015,48" size="840,430" backgroundColor="transparent" zPosition="2" /> 
+    <widget source="ServiceEvent" render="Pig" position="1015,48" size="840,430" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1015,48" size="840,430" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget> 
    
     <widget source="session.CurrentService" render="g17PicRef" position="1705,388" size="150,90" zPosition="3" transparent="1" alphatest="on">
           <convert type="ServiceName">Reference</convert>
@@ -876,6 +902,7 @@
     <eLabel position="288,1044" size="224,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="517,1044" size="224,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="746,1044" size="224,2" backgroundColor="blue" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
       <screen name="ChannelSelection-36" position="0,0" size="1920,1080" backgroundColor="black" title="Channel Selection" flags="wfNoBorder">
           <widget source="Title" render="g17cutCHSS" position="60,77" size="915,35" foregroundColor="#cdcdcd" zPosition="1" valign="center" halign="center" font="Prive4;33" transparent="1"/>
@@ -930,10 +957,11 @@
         <eLabel position="288,1044" size="224,2" backgroundColor="green" zPosition="5" transparent="0" />
         <eLabel position="517,1044" size="224,2" backgroundColor="yellow" zPosition="5" transparent="0" />
         <eLabel position="746,1044" size="224,2" backgroundColor="blue" zPosition="5" transparent="0" />
-      </screen>
+          <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="InfoBar-5" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST223: the plugin swaps this selected InfoBar variant into skin.xml at startup; keep radio artwork in every active variant. -->
-        <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-infobar-standard.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+        <widget source="session.CurrentService" render="Pixmap" position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="blend">
       <convert type="WarderRadioOnly" />
       <convert type="ConditionalShowHide" />
     </widget>
@@ -992,7 +1020,7 @@
   </screen>
   <screen name="InfoBar-4" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST223: the plugin swaps this selected InfoBar variant into skin.xml at startup; keep radio artwork in every active variant. -->
-        <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-infobar-4.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+        <widget source="session.CurrentService" render="Pixmap" position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar4.png" alphatest="blend">
       <convert type="WarderRadioOnly" />
       <convert type="ConditionalShowHide" />
     </widget>
@@ -1086,15 +1114,12 @@
   </screen>
 
 <screen name="InfoBar-3" 	position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
-        <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
-      <convert type="WarderRadioOnly" />
-      <convert type="ConditionalShowHide" />
-    </widget>
+        
     <ePixmap position="337,912" zPosition="-1" size="30,30" pixmap="hd_glass17/icons/ball_blue.png"/>    		
 </screen>
 
 <screen name="InfoBar-2" 	position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
-	    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-infobar-2.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+	    <widget source="session.CurrentService" render="Pixmap" position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/infobar.png" alphatest="blend">
       <convert type="WarderRadioOnly" />
       <convert type="ConditionalShowHide" />
     </widget>
@@ -1143,7 +1168,7 @@
 	</screen>
   <screen name="InfoBar-1" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <!-- TEST223: the plugin swaps this selected InfoBar variant into skin.xml at startup; keep radio artwork in every active variant. -->
-        <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-infobar-standard.jpg" position="0,0" size="1920,1080" zPosition="-2" alphatest="off">
+        <widget source="session.CurrentService" render="Pixmap" position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="blend">
       <convert type="WarderRadioOnly" />
       <convert type="ConditionalShowHide" />
     </widget>
@@ -1279,7 +1304,8 @@
     <eLabel position="1158,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1825,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,428" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,330" zPosition="3" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,330" zPosition="3" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1160,98" size="665,330" zPosition="4" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1067,24" size="645,45" font="Prive4;33" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1" />
     
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="1150,455" zPosition="1" halign="block" size="685,240" font="Prive4;25" foregroundColor="white" backgroundColor="background" transparent="1">
@@ -1298,6 +1324,7 @@
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
     <eLabel position="80,991" size="1760,1" backgroundColor="grey" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-34" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<widget source="Title" render="g17cutCHSS" position="70,24" size="1220,45" foregroundColor="#cdcdcd" zPosition="1" valign="center" halign="left" font="Prive4;33" transparent="1"/>
@@ -1311,7 +1338,8 @@
     <eLabel position="1158,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1825,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,428" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,330" zPosition="3" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,330" zPosition="3" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1160,98" size="665,330" zPosition="4" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1067,24" size="645,45" font="Prive4;33" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1" />
     
     <widget source="ServiceEvent" render="g17RefTV3" position="1292,475" path="ZZPicon" size="400,170" zPosition="4" transparent="1" alphatest="on" />
@@ -1329,6 +1357,7 @@
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
     <eLabel position="80,991" size="1760,1" backgroundColor="grey" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-33" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<widget source="Title" render="g17cutCHSS" position="70,24" size="1220,45" foregroundColor="#cdcdcd" zPosition="1" valign="center" halign="left" font="Prive4;33" transparent="1"/>
@@ -1342,7 +1371,8 @@
     <eLabel position="1158,98" size="2,374" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1825,98" size="2,374" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,472" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,374" zPosition="3" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1160,98" size="665,374" zPosition="3" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1160,98" size="665,374" zPosition="4" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1067,24" size="645,45" font="Prive4;33" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1" />
     
     <widget source="ServiceEvent" render="g17RefTV3" position="1292,484" size="400,240" zPosition="4" transparent="1" alphatest="on" />
@@ -1360,12 +1390,14 @@
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
     <eLabel position="80,991" size="1760,1" backgroundColor="grey" zPosition="5" transparent="0" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 	<screen name="ChannelSelection-32" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="66,45" size="882,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
 		<ePixmap position="66,120" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="85,136" size="600,360" zPosition="1" backgroundColor="#ff000000" />		
+    <widget source="session.VideoPicture" render="Pig" position="85,136" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="85,136" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>		
     <widget source="global.CurrentTime" render="Label" position="1710,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
@@ -1402,12 +1434,14 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
 	<screen name="ChannelSelection-31" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="66,45" size="882,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive3;31" transparent="1"/>
     <ePixmap position="66,120" size="882,528" pixmap="hd_glass17/menu/pig_frame-all-fs8.png" zPosition="0" transparent="1" alphatest="on" />
-		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" />
+		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="157,166" size="697,435" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 		
     <widget source="global.CurrentTime" render="Label" position="1710,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -1436,7 +1470,8 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="ChannelSelection-30" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<ePixmap position="60,30" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="75,30" size="922,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive4;33" transparent="1"/>
@@ -1446,7 +1481,8 @@
     <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
 
 		<ePixmap position="1218,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1237,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1072,30" size="645,60" font="Prive4;33" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
     
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="1020,105" size="189,123" zPosition="3" alphatest="off" />   
@@ -1472,6 +1508,7 @@
     <widget name="key_green" position="528,973" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="994,973" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1462,973" size="397,66" font="Prive4;33" valign="center" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-29" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<ePixmap position="60,30" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -1482,7 +1519,8 @@
     <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
 
 		<ePixmap position="1113,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="1132,121" size="600,360" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1132,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1132,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1072,30" size="645,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
 
     <widget position="1020,513" size="825,402" source="ServiceEvent" render="g17ShowExtraEpg" foregroundColorTime="un6cbcf0" foregroundColorDescription="white" maxDescriptionLines="3" numEvents="6" font="Prive4;27" fontDescription="Prive4;25" foregroundColor="#0000d100" backgroundColor="background" zPosition="2" transparent="1" />     
@@ -1499,6 +1537,7 @@
     <widget name="key_green" position="528,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="994,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1462,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-28" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<ePixmap position="60,30" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -1509,7 +1548,8 @@
     <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
 
 		<ePixmap position="75,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="94,121" size="600,360" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="94,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="94,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="75,30" size="639,60" font="Prive4;33" valign="center" halign="left" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
     <widget source="ServiceEvent" render="Label" position="75,501" zPosition="1" size="639,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="EventName">Name</convert>
@@ -1546,6 +1586,7 @@
     <widget name="key_green" position="528,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="994,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1462,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-27" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
 		<ePixmap position="60,30" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -1597,13 +1638,15 @@
     <widget name="key_green" position="528,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="994,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1462,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 	<screen name="ChannelSelection-25" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="82,45" size="1087,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
 
   <ePixmap position="1192,105" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" /> 
-    <widget source="session.VideoPicture" render="Pig" position="1225,127" size="600,330" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1225,127" size="600,330" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1225,127" size="600,330" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17RefTV" position="1198,477" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     <widget source="session.CurrentService" render="g17PicRef" position="1680,375" size="150,90" zPosition="2" transparent="1" alphatest="on">
       <convert type="ServiceName">Reference</convert>
@@ -1652,12 +1695,14 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="ChannelSelection-24" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 	  <ePixmap position="795,45" size="1072,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="810,42" size="712,60" foregroundColor="un6cbcf0" zPosition="1" noWrap="1" valign="center" halign="left" font="Prive3;27" transparent="1"/>
    
-		<widget source="session.VideoPicture" render="Pig" position="105,100" size="600,330" backgroundColor="transparent" zPosition="2" />
+		<widget source="session.VideoPicture" render="Pig" position="105,100" size="600,330" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="105,100" size="600,330" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17MiniTV" position="105,517" size="600,330" backgroundColor="transparent" zPosition="2">
       <convert type="g17MiniTVDisplay" />
     </widget>
@@ -1706,12 +1751,14 @@
     <eLabel position="795,987" zPosition="8" size="1072,2" backgroundColor="#1546AF" transparent="0" />               
   <ePixmap position="72,78" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="72,495" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />                
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
   <screen name="ChannelSelection-23" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 	  <ePixmap position="795,45" size="1072,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="810,45" size="712,60" foregroundColor="un6cbcf0" zPosition="1" noWrap="1" valign="center" halign="left" font="Prive3;27" transparent="1"/>
    
-		<widget source="session.VideoPicture" render="Pig" position="105,63" size="600,330" backgroundColor="transparent" zPosition="2" />
+		<widget source="session.VideoPicture" render="Pig" position="105,63" size="600,330" backgroundColor="transparent" zPosition="2" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="105,63" size="600,330" zPosition="3" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="ServiceEvent" render="g17MiniTV" position="105,435" size="600,330" backgroundColor="transparent" zPosition="2">
       <convert type="g17MiniTVDisplay" />
     </widget>
@@ -1763,13 +1810,15 @@
     <eLabel position="795,987" zPosition="8" size="1072,2" backgroundColor="#1546AF" transparent="0" />               
   <ePixmap position="72,40" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="72,412" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />                
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
 	<screen name="ChannelSelection-21" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="82,45" size="1087,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
 
     <ePixmap position="1198,114" size="654,439" pixmap="hd_glass17/menu/pig_frame.png" zPosition="0" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="1225,141" size="600,385" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1225,141" size="600,385" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1225,141" size="600,385" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="1042,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -1809,7 +1858,8 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
     <screen name="ChannelSelection-18" position="0,0" size="1920,1080" backgroundColor="#00444444" title="Channel Selection" flags="wfNoBorder" >
     <ePixmap position="60,30" size="1800,90" pixmap="hd_glass17/general/title-new-fs8.png" zPosition="0" alphatest="on" />
     <widget source="Title" render="g17cutCHSS" position="82,45" size="1050,60" foregroundColor="white" zPosition="1" valign="center" halign="left" font="Prive3;37" transparent="1"/>
@@ -1846,6 +1896,7 @@
     <widget name="key_green" position="553,985" size="339,34" font="Prive4;33" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="1008,985" size="339,34" font="Prive4;33" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1464,985" size="339,34" font="Prive4;33" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   
   <screen name="ChannelSelection-17" position="0,0" size="1920,1080" backgroundColor="transparent" title="Channel Selection" flags="wfNoBorder">
@@ -1894,6 +1945,7 @@
     <widget name="key_green" position="553,955" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="1008,955" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1464,955" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   
   <screen name="ChannelSelection-16" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
@@ -1945,13 +1997,15 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
       
 	<screen name="ChannelSelection-15" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="75,45" size="1050,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
     <ePixmap position="66,120" size="882,528" pixmap="hd_glass17/menu/pig_frame-all-fs8.png" zPosition="0" transparent="1" alphatest="on" />
-		<widget source="session.VideoPicture" render="Pig" position="66,120" zPosition="1" size="882,528" backgroundColor="transparent" />
+		<widget source="session.VideoPicture" render="Pig" position="66,120" zPosition="1" size="882,528" backgroundColor="transparent" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="66,120" size="882,528" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="1710,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -1996,7 +2050,8 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
 
   	<screen name="ChannelSelection-14" position="center,center" size="1425,829" backgroundColor="background" title="Channel Selection">
 		<ePixmap pixmap="hd_glass17/buttons/button_200x60_red.png" position="45,15" size="300,90" alphatest="on" />
@@ -2028,7 +2083,8 @@
 		<widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="15,678" zPosition="1" size="1395,195" backgroundColor="background" font="Prive4;40" halign="block" foregroundColor="#cccccc">
 			<convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
 		</widget>
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1425,829" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
     <screen name="ChannelSelection-13" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder" >
     <ePixmap position="60,30" size="1800,90" pixmap="hd_glass17/general/title-new-fs8.png" zPosition="0" alphatest="on" />
     <widget source="Title" render="g17cutCHSS" position="82,45" size="1050,60" foregroundColor="white" zPosition="1" valign="center" halign="left" font="Prive3;37" transparent="1"/>
@@ -2069,6 +2125,7 @@
     <widget name="key_green" position="553,985" size="339,34" font="Prive4;33" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="1008,985" size="339,34" font="Prive4;33" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1464,985" size="339,34" font="Prive4;33" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 	<screen name="ChannelSelection-12" position="center,center" size="1425,829" backgroundColor="background" title="Channel Selection">
 		<ePixmap pixmap="hd_glass17/buttons/button_200x60_red.png" position="45,15" size="300,90" alphatest="on" />
@@ -2106,13 +2163,15 @@
 		<widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="15,708" zPosition="1" size="1395,105" font="Prive4;27" backgroundColor="background" halign="block" foregroundColor="#cccccc">
 			<convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>                                                                                                                       
 		</widget>
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1425,829" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
 	<screen name="ChannelSelection-11" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="82,45" size="1087,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
 
     <ePixmap position="1198,114" size="654,439" pixmap="hd_glass17/menu/pig_frame.png" zPosition="0" transparent="1" alphatest="on" />
-    <widget source="session.VideoPicture" render="Pig" position="1225,141" size="600,385" zPosition="1" backgroundColor="#ff000000" />
+    <widget source="session.VideoPicture" render="Pig" position="1225,141" size="600,385" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1225,141" size="600,385" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="1042,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -2162,13 +2221,15 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
 
 	<screen name="ChannelSelection-10" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="874,45" size="1050,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="center" font="Prive3;31" transparent="1"/>
     <ePixmap position="966,120" size="882,528" pixmap="hd_glass17/menu/pig_frame-all-fs8.png" zPosition="0" transparent="1" alphatest="on" />
-		<widget source="session.VideoPicture" render="Pig" position="1051,166" zPosition="1" size="697,435" backgroundColor="transparent" />
+		<widget source="session.VideoPicture" render="Pig" position="1051,166" zPosition="1" size="697,435" backgroundColor="transparent" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1051,166" size="697,435" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="510,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -2227,13 +2288,15 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
 
   <screen name="ChannelSelection-9" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
     <ePixmap position="60,30" size="1800,90" pixmap="hd_glass17/general/title-new-fs8.png" zPosition="0" alphatest="on" />
     <widget source="Title" render="g17cutCHSS" position="82,45" size="1050,60" foregroundColor="white" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
     <ePixmap position="66,120" size="882,528" pixmap="hd_glass17/menu/pig_frame-all-fs8.png" zPosition="0" transparent="1" alphatest="on" />
-		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" />
+		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="157,166" size="697,435" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="1702,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="white" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -2314,12 +2377,14 @@
     <widget name="key_yellow" position="1008,985" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1464,985" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
 
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 	<screen name="ChannelSelection-2" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="75,45" size="1050,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
     <ePixmap position="66,120" size="882,528" pixmap="hd_glass17/menu/pig_frame-all-fs8.png" zPosition="0" transparent="1" alphatest="on" />
-		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" />
+		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="157,166" size="697,435" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="1710,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -2393,7 +2458,8 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="ChannelSelection-3" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
     <widget name="list" position="832,9" zPosition="3" size="805,688" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
@@ -2457,12 +2523,14 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 	<screen name="ChannelSelection-4" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder" >
 		<ePixmap position="60,45" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
 		<widget source="Title" render="g17cutCHSS" position="75,45" size="1050,60" foregroundColor="un6cbcf0" zPosition="1" valign="center" halign="left" font="Prive3;31" transparent="1"/>
     <ePixmap position="66,120" size="882,528" pixmap="hd_glass17/menu/pig_frame-all-fs8.png" zPosition="0" transparent="1" alphatest="on" />
-		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" />
+		<widget source="session.VideoPicture" render="Pig" position="157,166" zPosition="1" size="697,435" backgroundColor="transparent" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="157,166" size="697,435" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
 
     <widget source="global.CurrentTime" render="Label" position="1710,45" size="135,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
@@ -2521,7 +2589,8 @@
     <eLabel position="528,1044" size="397,2" backgroundColor="green" zPosition="5" transparent="0" />
     <eLabel position="994,1044" size="397,2" backgroundColor="yellow" zPosition="5" transparent="0" />
     <eLabel position="1462,1044" size="397,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>
+	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="ChannelSelection-6" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
     <ePixmap pixmap="hd_glass17/buttons/selected-2.png" position="832,0" size="810,37" zPosition="1" alphatest="off" />
 
@@ -2591,6 +2660,7 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 
   <screen name="ChannelSelection-7" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder">
@@ -2632,6 +2702,7 @@
     <widget name="key_green" position="528,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="994,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1462,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-8" position="0,0" size="1920,1080" backgroundColor="transparent" title="Channel Selection" flags="wfNoBorder">
     <ePixmap position="0,0" size="1920,1080" pixmap="hd_glass17/newchannelsel/newchannelsel-fs8.png" zPosition="-1" alphatest="on" />
@@ -2687,6 +2758,7 @@
     <widget name="key_green" position="553,955" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="1008,955" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1464,955" size="339,34" font="Prive4;30" valign="center" halign="center" foregroundColor="white" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
   <screen name="ChannelSelection-1" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
     <widget name="list" position="832,9" zPosition="3" size="805,688" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;28" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
@@ -2758,6 +2830,7 @@
     <widget name="key_green" position="420,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" zPosition="2" transparent="1" />
     <widget name="key_yellow" position="832,777" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" zPosition="2" transparent="1" />
     <widget name="key_blue" position="1245,772" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" zPosition="2" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1657,843" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="EventView-1" position="center,150" size="1650,840" title="Eventview">
     <widget name="channel" position="60,15" size="510,37" font="Prive3;34"  backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
@@ -4791,6 +4864,7 @@
 		<widget name="key_blue" position="1548,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />                    
   <ePixmap position="32,40" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="32,432" size="666,375" pixmap="hd_glass17/frame/frame_12.png" zPosition="0" alphatest="on" />                
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
         <screen name="ChannelSelection-a36" position="0,0" size="1920,1080" backgroundColor="transparent" title="Channel Selection" flags="wfNoBorder">
           <widget source="Title" render="g17cutCHSS" position="60,77" size="915,35" foregroundColor="#cdcdcd" zPosition="2" valign="center" halign="center" font="Prive4;33" transparent="1" backgroundColor="backgroundf"/>
@@ -4847,7 +4921,8 @@
         <eLabel position="288,1044" size="224,2" backgroundColor="green" zPosition="5" transparent="0" />
         <eLabel position="517,1044" size="224,2" backgroundColor="yellow" zPosition="5" transparent="0" />
         <eLabel position="746,1044" size="224,2" backgroundColor="blue" zPosition="5" transparent="0" />
-      </screen>
+          <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
+  </screen>
   <screen name="ChannelSelection-a27" position="0,0" size="1920,1080" backgroundColor="transparent" title="Channel Selection" flags="wfNoBorder">
 		<ePixmap position="60,30" size="1800,60" pixmap="hd_glass17/general/title.png" zPosition="2" alphatest="blend" />
 		<widget source="Title" render="g17cutCHSS" position="750,30" size="675,60" foregroundColor="un6cbcf0" zPosition="3" valign="center" halign="center" font="Prive4;33" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="0,0" transparent="1"/>
@@ -4899,6 +4974,7 @@
     <widget name="key_green" position="528,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="green" backgroundColor="backgroundf" zPosition="3" transparent="1" />
     <widget name="key_yellow" position="994,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="yellow" backgroundColor="backgroundf" zPosition="3" transparent="1" />
     <widget name="key_blue" position="1462,988" size="397,42" font="Prive4;33" halign="center" foregroundColor="blue" backgroundColor="backgroundf" zPosition="3" transparent="1" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-a24" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
 	  <ePixmap position="795,45" size="1072,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -4949,6 +5025,7 @@
     <eLabel position="795,987" zPosition="8" size="1072,2" backgroundColor="#1546AF" transparent="0" />               
   <ePixmap position="72,78" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="72,495" size="666,375" pixmap="hd_glass17/frame/frame_12.png" zPosition="0" alphatest="on" />                
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
   <screen name="ChannelSelection-a23" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
 	  <ePixmap position="795,45" size="1072,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -5002,6 +5079,7 @@
     <eLabel position="795,987" zPosition="8" size="1072,2" backgroundColor="#1546AF" transparent="0" />               
   <ePixmap position="72,40" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="72,412" size="666,375" pixmap="hd_glass17/frame/frame_12.png" zPosition="0" alphatest="on" />                
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>   
   <screen name="ChannelSelection-a48" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
 	  <ePixmap position="40,40" size="1290,60" pixmap="hd_glass17/general/title.png" zPosition="0" alphatest="off" />
@@ -5071,6 +5149,7 @@
 		<widget name="key_blue" position="848,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   <ePixmap position="1232,35" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="1232,479" size="666,375" pixmap="hd_glass17/frame/frame_12.png" zPosition="0" alphatest="on" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   
   <screen name="ChannelSelection-a47" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
@@ -5125,6 +5204,7 @@
 		<widget name="key_blue" position="848,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   <ePixmap position="1232,35" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="1232,427" size="666,375" pixmap="hd_glass17/frame/frame_12.png" zPosition="0" alphatest="on" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
 
   <screen name="ChannelSelection-a46" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="transparent" flags="wfNoBorder" >
@@ -5180,6 +5260,7 @@
 		<widget name="key_blue" position="848,996" size="267,66" font="Prive3;30" halign="center" valign="center" foregroundColor="blue" zPosition="2" transparent="1" />
   <ePixmap position="1232,35" size="666,375" pixmap="hd_glass17/frame/frame_400x220.png" zPosition="0" alphatest="on" />
 	<ePixmap position="1232,427" size="666,375" pixmap="hd_glass17/frame/frame_12.png" zPosition="0" alphatest="on" />
+      <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
     <screen name="HotkeySetup-1" position="center,center" size="1600,800" title="Hotkey Setup" backgroundColor="background" >
     <widget name="list" position="800,10" size="780,680" font="Regular;28" itemHeight="40" scrollbarMode="showOnDemand"/>

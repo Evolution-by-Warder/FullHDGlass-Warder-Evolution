@@ -1,1 +1,6 @@
-{"version":"1.0.4","package_url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.4_all.ipk","sha256":"9ceb1713fa237d39f13b4baf728852323086205528c5622df7def58b5812c0bd","changelog":"FullHDGlass17 - Warder Evolution 1.0.4: successful updater installations now run without the command-output confirmation screen and proceed directly to the GUI restart prompt; installation errors remain visible for diagnosis."}
+{
+  "version": "1.0.6",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.6_all.ipk",
+  "sha256": "7f1740df77ac9247ce5a954ecacaf128f3302a8279071914aef21ff3241516bc",
+  "changelog": "Overene radio test250: DVB, AAC, RDS, DAB a WDR; cierny vyber radii s nahladom, transparentny equalizer; ukoncena docasna diagnostika."
+}

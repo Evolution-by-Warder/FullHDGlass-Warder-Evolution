@@ -14,6 +14,8 @@
 #    GNU General Public License for more details.
 #    
 #######################################################################
+import NavigationInstance
+from Components.Converter.WarderRadioOnly import is_native_dab
 from Tools.LoadPixmap import LoadPixmap
 from Components.Pixmap import Pixmap
 from Components.Renderer.Renderer import Renderer
@@ -54,9 +56,19 @@ class g17PicRef(Renderer):
 						self.instance.setShowHideAnimation(config.plugins.setupGlass17.par162.value)
 				except: pass
 			pngname = ""
+			if what[0] == self.CHANGED_CLEAR:
+				self.pngname = ""
+				self.instance.hide()
+				return
 			if what[0] != self.CHANGED_CLEAR:
 				sname = self.source.text
-				if sname is not None and sname != "":
+				nav = NavigationInstance.instance
+				playing = nav and nav.getCurrentlyPlayingServiceReference()
+				native_dab = is_native_dab(playing)
+				if native_dab:
+					from Components.Renderer.Picon import getPiconName
+					pngname = getPiconName(playing.toString()) or ""
+				if sname is not None and sname != "" and not native_dab:
 					tmp = self.alternative(sname).split(':', 10)[:10]
 					sname = '_'.join(tmp)
 					pngname = self.findPicon(sname)
@@ -89,6 +101,11 @@ class g17PicRef(Renderer):
 			if pngname != "" and self.pngname != pngname:
 				self.pngname = pngname
 				self.instance.setPixmapFromFile(self.pngname)
+			if pngname:
+				self.instance.show()
+			else:
+				self.pngname = ""
+				self.instance.hide()
 
 	def alternative(self, serviceName):
 		def alternativeChannels(service):

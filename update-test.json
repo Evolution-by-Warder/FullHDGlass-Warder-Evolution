@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test231",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test231_all.ipk",
-  "sha256": "c9780b68255fcfadf744620c73f5d19f5dc7bb104a67e3c2cf7e4ecbc5868582",
-  "changelog": "FullHDGlass - Warder Evolution TEST: precompose the radio background and existing InfoBar glass for reliable TV output."
+  "version": "1.0.6",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.6_all.ipk",
+  "sha256": "7f1740df77ac9247ce5a954ecacaf128f3302a8279071914aef21ff3241516bc",
+  "changelog": "Overene radio test250: DVB, AAC, RDS, DAB a WDR; cierny vyber radii s nahladom, transparentny equalizer; ukoncena docasna diagnostika."
 }

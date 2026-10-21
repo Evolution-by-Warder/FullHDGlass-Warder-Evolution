@@ -124,6 +124,8 @@ _warderOwiHookInstalled = False
 _warderNativeGrabRender = None
 _warderOwiGetUrlArg = None
 
+from Components.Converter.WarderRadioOnly import is_radio_reference, is_native_dab
+
 def _warderRadioGrabRender(self, request):
 	global _warderNativeGrabRender, _warderOwiGetUrlArg
 	# TEST183: DVB radio service types 0x02 (digital radio sound) and 0x0A (advanced-codec radio) are both RADIO. Determine this from the live service at screenshot time.
@@ -134,7 +136,7 @@ def _warderRadioGrabRender(self, request):
 		ref = NavigationInstance.instance and NavigationInstance.instance.getCurrentlyPlayingServiceReference()
 		refstr = ref.toString() if ref is not None else ""
 		fields = refstr.split(":")
-		is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
+		is_radio = is_radio_reference(ref)
 	except Exception:
 		pass
 	if not is_radio:
@@ -1540,7 +1542,7 @@ def hdg17inicialize(self):
 			ref = self.session.nav.getCurrentlyPlayingServiceReference()
 			fields = ref.toString().split(":") if ref is not None else []
 			with open("/tmp/warder-radio-current", "w") as marker:
-				marker.write("A" if len(fields) > 2 and fields[2].upper() in ("2", "A") else "TV")
+				marker.write("A" if is_radio_reference(ref) else "TV")
 		except Exception:
 			pass
 		global transStep17
@@ -1618,6 +1620,9 @@ def hdg17inicialize(self):
 		if config.plugins.setupGlass17.par12.value != "n":
 			InfoBarPlugins.SpecialScreenWindow17 = None
 	Glass17__init__(self)
+	if isinstance(self, InfoBar):
+		from Plugins.Extensions.setupGlass17.warderRadioWindows import install_radio_window_transparency
+		install_radio_window_transparency(self)
 
 def SpecialScreenWindow17(self):
 	ShowHideViaKey()
@@ -1632,8 +1637,6 @@ def serviceStartNow17(self):
 			ref = self.session.nav.getCurrentlyPlayingServiceReference()
 			refstr = ref.toString() if ref is not None else ""
 			stamp = time1.time()
-			with open("/tmp/warder-radio-service-events.log", "a") as out:
-				out.write("SERVICE_START epoch=%.6f ref=%s\\n" % (stamp, refstr))
 		except Exception:
 			pass
 		# TEST92: a TV -> RADIO service can start while ChannelSelectionRadio is still
@@ -1642,26 +1645,25 @@ def serviceStartNow17(self):
 		# Do not replace or monkey-patch Screens.RdsDisplay.RdsInfoDisplay.
 		try:
 			fields = refstr.split(":")
-			is_radio = len(fields) > 2 and fields[2].upper() in ("2", "A")
+			is_radio = is_radio_reference(ref)
 			try:
 				with open("/tmp/warder-radio-current", "w") as marker:
 					marker.write("A" if is_radio else "TV")
 			except Exception:
 				pass
+			controller = getattr(self, "_warderRadioWindows", None)
+			if controller is not None:
+				controller.update()
 			rds = getattr(self, "rds_display", None)
 			if rds is not None:
 				if is_radio:
 					# TEST114: keep native RDS ownership; the scoped top-only dialog handles InfoBar overlap.
 					rds.show()
-					with open("/tmp/warder-radio-service-events.log", "a") as out:
-						out.write("RADIO_OVERLAY_SHOW epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 				else:
 					# TEST94: TEST92 must be symmetrical. The native-owned RDS dialog
 					# must not survive RADIO -> TV and bind its CurrentService widgets
 					# to the TV service after the normal TV infobar closes.
 					rds.hide()
-					with open("/tmp/warder-radio-service-events.log", "a") as out:
-						out.write("RADIO_OVERLAY_HIDE epoch=%.6f ref=%s\\n" % (time1.time(), refstr))
 		except Exception:
 			pass
 		if self.shown:
@@ -2105,6 +2107,8 @@ def fromCfg():
 	# TEST165: InfoPanel mirrors the three independent native Radio top labels.
 	# All share y/height/valign; only the clock uses the larger font.
 	tmp = setSideECM(tmp)
+	from Plugins.Extensions.setupGlass17.warderRadioLayers import prepare_radio_layers
+	tmp = prepare_radio_layers(tmp)
 	warder_radio_top = """
 		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="62,27" size="610,58" font="Prive4;30" foregroundColor="#FFE16A" halign="left" valign="center" noWrap="1" transparent="1" zPosition="20" />
 		<widget source="global.CurrentTime" render="WarderRadioInfoTop" position="790,27" size="340,58" font="Prive4;38" foregroundColor="#FFE16A" halign="center" valign="center" noWrap="1" transparent="1" zPosition="20" />
@@ -3329,8 +3333,10 @@ class AutoStartChck17():
 		if config.plugins.setupGlass17.par4.value:	
 			x = changeSkinXml("InfoBar","3")
 			msg += _("Permanent Extra Infobar") + "\n"
-		elif config.plugins.setupGlass17.par14.value != "1":		
-			msg += _("Standard Infobar type") + "\n"
+		else:
+			# Reapply the configured variant after upgrades that preserve skin.xml.
+			if config.plugins.setupGlass17.par14.value != "1":
+				msg += _("Standard Infobar type") + "\n"
 			x = changeSkinXml("InfoBar",config.plugins.setupGlass17.par14.value)
 		x = chckUserHdg()
 		if config.plugins.setupGlass17.par15.value != "0":       
@@ -4074,12 +4080,19 @@ class ExtraInfo17(Screen):
 			self.uhdTimer.start(2000)
 		
 	def showPicon(self, sname):
+		playing = self.session.nav.getCurrentlyPlayingServiceReference()
+		native_dab = is_native_dab(playing)
+		if native_dab:
+			sname = playing.toString()
 		if self.sname == sname:
 			return		
 		self.sname = sname
 		pngname = ""
 		self.path = self.piconSize
-		if sname != "":
+		if native_dab:
+			from Components.Renderer.Picon import getPiconName
+			pngname = getPiconName(sname) or ""
+		if sname != "" and not native_dab:
 			tmp = self.alternative(sname).split(':', 10)[:10]
 			sname = '_'.join(tmp)
 			pngname = self.findPicon(sname)
@@ -5480,8 +5493,13 @@ class ExtraInfo17(Screen):
 						refer = self.session.nav.getCurrentlyPlayingServiceReference()
 						if refer is not None:
 							refer = refer.toString()
+					playing = self.session.nav.getCurrentlyPlayingServiceReference()
+					native_dab = is_native_dab(playing)
+					if native_dab:
+						refer = playing.toString()
+						self.setTunerInfo(service)
 					self.showPicon(refer)
-					enaIp = refer.startswith("4097:0") or "3a//" in refer or "http" in refer
+					enaIp = not native_dab and (refer.startswith("4097:0") or "3a//" in refer or "http" in refer)
 					if enaIp:
 						self.setTunerInfo(service, chckIPTVprov(refer))
 						self.actFta(False, service)
@@ -5759,6 +5777,24 @@ class ExtraInfo17(Screen):
 		return convert(v)
 		
 	def setTunerInfo(self, service, ip=None):
+		playing = self.session.nav.getCurrentlyPlayingServiceReference()
+		if is_native_dab(playing):
+			info = service and service.info()
+			provider = getServiceInfoValue(info, iServiceInformation.sProvider) if info else ""
+			self["TP_info"].setText(provider or "DAB")
+			self["TP_type"].setText("DAB")
+			self.tstprov = provider
+			self.tstsat = "DAB"
+			self.path = "piconProv" + self.picProvSatSize
+			self.pngname = self.findPicon(fixNameOf(provider)) if provider else ""
+			self.path = "piconSat" + self.picProvSatSize
+			self.pngnamesat = self.findPicon("DAB")
+			if not self.pngname:
+				self.pngname = SKINPATH + "icons/missing-fs8.png"
+			if not self.pngnamesat:
+				self.pngnamesat = SKINPATH + "icons/missing-fs8.png"
+			self.chckSatProv()
+			return
 		def chckVtype(i):
 			x = ""
 			if ENAVFT: 
