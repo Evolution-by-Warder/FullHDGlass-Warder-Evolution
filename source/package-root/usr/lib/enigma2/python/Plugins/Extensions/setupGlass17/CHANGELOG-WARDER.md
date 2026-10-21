@@ -1,5 +1,11 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test227
+- Clear the animated radio spectrum canvas transparently instead of painting an opaque black rectangle behind the bars.
+
+## 1.0.5-test226
+- Keep the radio background conditional and give InfoBar-3 a full-screen canvas so the background widget can render without covering TV services.
+
 ## 1.0.5-test225
 - Add the radio background widget to InfoBar-3, the permanent Extra InfoBar variant selected by the plugin.
 

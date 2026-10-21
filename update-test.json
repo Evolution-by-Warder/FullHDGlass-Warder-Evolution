@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test226",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test226_all.ipk",
-  "sha256": "9c2582f1d8fde48e59491a142168fe0a001adfda85f01154f6653e9c9c4d9a41",
-  "changelog": "FullHDGlass - Warder Evolution TEST: render the radio background only for radio services and give InfoBar-3 a full-screen canvas."
+  "version": "1.0.5-test227",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test227_all.ipk",
+  "sha256": "8b61dc067a5e4aeb540c45ede340b416becacd0d3f6c41d852c97e203d1361ed",
+  "changelog": "FullHDGlass - Warder Evolution TEST: clear the animated radio spectrum canvas transparently to remove its opaque black rectangle."
 }
