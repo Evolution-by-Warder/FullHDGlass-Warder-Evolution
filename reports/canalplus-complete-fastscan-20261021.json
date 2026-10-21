@@ -1,0 +1,53 @@
+{
+  "packages": [
+    {
+      "bytes": 969442,
+      "filename": "canalplus_sk_transparent_220x132_4453b7689b20bff3.zip",
+      "png_count": 226,
+      "selector_id": "CANALPLUS_SK",
+      "sha256": "4453b7689b20bff396f3626f64ebaa8eb4cb8fdad6da1418fc3103f1655927b2",
+      "style": "transparent"
+    },
+    {
+      "bytes": 6157406,
+      "filename": "canalplus_sk_white_220x132_0e7cc2fde98ea08d.zip",
+      "png_count": 226,
+      "selector_id": "CANALPLUS_SK",
+      "sha256": "0e7cc2fde98ea08dafe0b0caa97e65f67229a5f6b227d17e74ca2e515084e44b",
+      "style": "white"
+    },
+    {
+      "bytes": 5893537,
+      "filename": "canalplus_sk_black_220x132_0336c2c5ffd995d8.zip",
+      "png_count": 226,
+      "selector_id": "CANALPLUS_SK",
+      "sha256": "0336c2c5ffd995d87ad634eaa6a7cf2b5d2c0c9ee7d9de76b3d043e888af50e5",
+      "style": "black"
+    },
+    {
+      "bytes": 1010953,
+      "filename": "canalplus_cz_transparent_220x132_48fff7ec71c67a20.zip",
+      "png_count": 231,
+      "selector_id": "CANALPLUS_CZ",
+      "sha256": "48fff7ec71c67a202f0f6d5eeae882dae46b251c64644f49b798a07f344f781f",
+      "style": "transparent"
+    },
+    {
+      "bytes": 6291643,
+      "filename": "canalplus_cz_white_220x132_7cdf000772468453.zip",
+      "png_count": 231,
+      "selector_id": "CANALPLUS_CZ",
+      "sha256": "7cdf00077246845356e86d7eee3160874101001876ae39465f48f44986848b1f",
+      "style": "white"
+    },
+    {
+      "bytes": 6025218,
+      "filename": "canalplus_cz_black_220x132_1f606b832f569ca0.zip",
+      "png_count": 231,
+      "selector_id": "CANALPLUS_CZ",
+      "sha256": "1f606b832f569ca0d74efb362209eec3717fb2d2e7bdfde9b8d96beacf85e26a",
+      "style": "black"
+    }
+  ],
+  "source_ref": "21868a9d27eeb2feda632788b0452a327e97cb98"
+}
