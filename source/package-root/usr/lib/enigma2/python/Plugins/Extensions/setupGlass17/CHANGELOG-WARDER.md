@@ -1,3 +1,8 @@
+## 1.0.11
+
+- Replaced seven black channel picons in both Canal+ SK and CZ with the exact approved PNGs from the full 23.5E package: Canal+ Action, Film Europe HD, Sport1 HD, Sport2 HD, Canal+ Sport 2, Cartoon Network and TV Lux HD.
+- Added the two missing SK HD identities; black packages contain SK 228 and CZ 231 PNGs.
+
 ## 1.0.10
 
 - Invalidate obsolete plugin bytecode during upgrades and derive Python payload timestamps from their source bytes, preventing stale catalogue imports after GUI restart.

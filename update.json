@@ -1,6 +1,6 @@
 {
-  "version": "1.0.10",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk",
-  "sha256": "ea82ce932ec04ca478fccf658294a46790a7cbd4e155e660a1d64c70e58c7048",
-  "changelog": "Oprava starej Python cache po aktualizacii: skin nacita aktualny zoznam piconov. Pri zlyhani stahovania sa zobrazi konkretny dovod. Overene realne stahovanie cierneho balika 23.5E a synchronizacia vybranych TV stanic."
+  "version": "1.0.11",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk",
+  "sha256": "7e1bec68d62af13ea68ffabd567315cc0d3c11f4bc0736db4c54f69607f34e09",
+  "changelog": "Sedem schvalenych ciernych piconov zo spolocneho balika 23.5E v oboch Canal+ SK/CZ: Canal+ Action, Film Europe HD, Sport1 HD, Sport2 HD, Canal+ Sport 2, Cartoon Network a TV Lux HD. Cierne baliky SK 228 a CZ 231 PNG."
 }

@@ -2,11 +2,11 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Latest approved release: 1.0.10
+## Latest approved release: 1.0.11
 
-[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.10_all.ipk).
+[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk).
 
-Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.10.
+Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.11.
 
 
 ## Project status
@@ -63,3 +63,5 @@ Release 1.0.9 fixes incomplete Canal+ downloads: SK contains 226 picons and CZ 2
 Release 1.0.9 also includes approved Televizia Osem transparent, white and black picons in the complete 23.5E downloads and pins the downloader to their updated catalogue.
 
 Release 1.0.10 fixes stale Python bytecode surviving upgrades, so the downloader uses the current pinned catalogue after GUI restart. Package failures now show their actual reason. The real 23.5E black downloader and selective PNG replacement have been exercised.
+
+Release 1.0.11 uses the seven explicitly approved black PNGs from the full 23.5E package in both Canal+ packages. The black SK package contains 228 PNGs and CZ 231; the other colour packages are preserved.
