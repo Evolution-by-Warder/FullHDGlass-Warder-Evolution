@@ -1,0 +1,86 @@
+[
+  {
+    "added": [
+      "1_0_16_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "catalog": "production",
+    "filename": "warder-235e-channel-transparent-34946e212f577712.zip",
+    "package_sha256": "34946e212f577712cfedb953e8f026d74e4f015ed6f9c07cd87173854087e0d5",
+    "png_count": 758,
+    "png_sha256": "221f697e25e469082cfff855e7a71222fd7af85b5c64537342106fe098551687",
+    "replaced": [
+      "1_0_1_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "style": "transparent"
+  },
+  {
+    "added": [
+      "1_0_16_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "catalog": "production",
+    "filename": "warder-235e-channel-black-4744cf189aeadc1f.zip",
+    "package_sha256": "4744cf189aeadc1f62cb009cd7d336729bee84557136f3ae2412343553769ed3",
+    "png_count": 758,
+    "png_sha256": "b0f744945100b31623bf667c26b0fa9b421c14b5afd13d09e8b205b6d558d3a5",
+    "replaced": [
+      "1_0_1_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "style": "black"
+  },
+  {
+    "added": [
+      "1_0_16_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "catalog": "production",
+    "filename": "warder-235e-channel-white-292b8f2c66414a72.zip",
+    "package_sha256": "292b8f2c66414a72a6abbc5c0dde6e9c775af5436839e1eb430748f2364b3ade",
+    "png_count": 758,
+    "png_sha256": "d5f802a1df6dec2c3de66c547e33df631b07579781b7b08d65403278530d18d8",
+    "replaced": [
+      "1_0_1_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "style": "white"
+  },
+  {
+    "added": [
+      "1_0_16_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "catalog": "test-candidate",
+    "filename": "warder-235e-channel-black-4744cf189aeadc1f.zip",
+    "package_sha256": "4744cf189aeadc1f62cb009cd7d336729bee84557136f3ae2412343553769ed3",
+    "png_count": 758,
+    "png_sha256": "b0f744945100b31623bf667c26b0fa9b421c14b5afd13d09e8b205b6d558d3a5",
+    "replaced": [
+      "1_0_1_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "style": "black"
+  },
+  {
+    "added": [
+      "1_0_16_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "catalog": "test-candidate",
+    "filename": "warder-235e-channel-transparent-34946e212f577712.zip",
+    "package_sha256": "34946e212f577712cfedb953e8f026d74e4f015ed6f9c07cd87173854087e0d5",
+    "png_count": 758,
+    "png_sha256": "221f697e25e469082cfff855e7a71222fd7af85b5c64537342106fe098551687",
+    "replaced": [
+      "1_0_1_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "style": "transparent"
+  },
+  {
+    "added": [
+      "1_0_16_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "catalog": "test-candidate",
+    "filename": "warder-235e-channel-white-292b8f2c66414a72.zip",
+    "package_sha256": "292b8f2c66414a72a6abbc5c0dde6e9c775af5436839e1eb430748f2364b3ade",
+    "png_count": 758,
+    "png_sha256": "d5f802a1df6dec2c3de66c547e33df631b07579781b7b08d65403278530d18d8",
+    "replaced": [
+      "1_0_1_5318_C96_3_EB0000_0_0_0.png"
+    ],
+    "style": "white"
+  }
+]
