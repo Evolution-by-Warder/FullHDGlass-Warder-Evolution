@@ -70,7 +70,7 @@ def main():
                     break
             assert result is not None and "SUCCESSFUL" in result, result
             counts = {r["package_selector"]: r["updated"] for r in receiver.warderChannelPackageResults}
-            assert counts == {"CANALPLUS_CZ": 231, "CANALPLUS_SK": 226}, counts
+            assert counts == {"CANALPLUS_CZ": 231, "CANALPLUS_SK": 228 if style == "black" else 226}, counts
             assert not any(r["failures"] for r in receiver.warderChannelPackageResults)
             installed = {}
             for country in ("cz", "sk"):

@@ -1,0 +1,96 @@
+name: Publish seven approved black Canal+ picons
+on:
+  push:
+    branches: [release/canal-seven-black-20261022]
+    paths: [.github/workflows/publish-canal-seven-black.yml, tools/replace-canal-seven-black.py, tools/build-complete-canalplus.py, tools/test-complete-canalplus-install.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/release/canal-seven-black-20261022'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /README.md
+            /update.json
+            /update-test.json
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/canalplus_*.zip
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/canalplus_*.zip
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 31143f35ee537a9b7b1eaad766331cda71dc0c38
+          path: .approved-picons
+          sparse-checkout: |
+            picons/23.5e/canal-plus-sk
+            picons/23.5e/canal-plus-cz
+            migration/canalplus-approved-black-seven-20261022
+      - name: Replace approved PNGs and verify both complete packages
+        run: |
+          python3 tools/replace-canal-seven-black.py
+          python3 tools/test-complete-canalplus-install.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/canalplus-seven-black-approved-20261022.json
+          git commit -m 'Replace seven approved black picons in Canal+ SK and CZ downloads'
+          git push origin HEAD:refs/heads/release/canal-seven-black-20261022
+      - name: Pin updated catalogue and package release 1.0.11
+        run: |
+          python3 - <<'PY'
+          import hashlib, importlib.util, json, pathlib, subprocess
+          root=pathlib.Path('.')
+          ref=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          pkg=root/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
+          sync=pkg/'warderPiconSync.py'
+          text=sync.read_text(); old='c1a3a2599391e66baf2e1074914f91be62254b97'
+          assert text.count(old)==1
+          sync.write_text(text.replace(old,ref))
+          (pkg/'version').write_text('1.0.11\n')
+          control=root/'source/control/control'
+          text=control.read_text(); assert 'Version: 1.0.10-1\n' in text
+          control.write_text(text.replace('Version: 1.0.10-1\n','Version: 1.0.11-1\n'))
+          change=pkg/'CHANGELOG-WARDER.md'
+          change.write_text('## 1.0.11\n\n- Replaced seven black channel picons in both Canal+ SK and CZ with the exact approved PNGs from the full 23.5E package: Canal+ Action, Film Europe HD, Sport1 HD, Sport2 HD, Canal+ Sport 2, Cartoon Network and TV Lux HD.\n- Added the two missing SK HD identities; black packages contain SK 228 and CZ 231 PNGs.\n\n'+change.read_text())
+          spec=importlib.util.spec_from_file_location('sync',sync)
+          module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+          delivery=root/'assets/warder/downloads/picons/channels'
+          for suffix,source in (('','production'),('test-candidate','test-candidate')):
+              doc=json.loads((delivery/suffix/'manifest.json').read_text())
+              assert not module.validate_publication_manifest(doc,source)
+          subprocess.run(['python3','tools/test-complete-canalplus-install.py'],check=True)
+          subprocess.run(['python3','tools/test-release-bytecode.py'],check=True)
+          subprocess.run(['python3','tools/build-release-ipk.py'],check=True)
+          ipk=root/'packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk'
+          digest=hashlib.sha256(ipk.read_bytes()).hexdigest()
+          for name in ('update.json','update-test.json'):
+              path=root/name;d=json.loads(path.read_text())
+              d.update(version='1.0.11',sha256=digest,package_url='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/'+ipk.name,changelog='Sedem schvalenych ciernych piconov zo spolocneho balika 23.5E v oboch Canal+ SK/CZ: Canal+ Action, Film Europe HD, Sport1 HD, Sport2 HD, Canal+ Sport 2, Cartoon Network a TV Lux HD. Cierne baliky SK 228 a CZ 231 PNG.')
+              path.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          readme=root/'README.md'
+          text=readme.read_text().replace('Latest approved release: 1.0.10','Latest approved release: 1.0.11').replace('evolution_1.0.10_all.ipk','evolution_1.0.11_all.ipk').replace('both offer 1.0.10','both offer 1.0.11')
+          readme.write_text(text+'\nRelease 1.0.11 uses the seven explicitly approved black PNGs from the full 23.5E package in both Canal+ packages. The black SK package contains 228 PNGs and CZ 231; the other colour packages are preserved.\n')
+          PY
+          python3 tools/verify-radio-release.py
+          git add --sparse source tools/build-complete-canalplus.py update.json update-test.json README.md
+          git add --sparse -f packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk.sha256
+          git commit -m 'Release 1.0.11 with approved seven black Canal+ picons'
+          git push origin HEAD:refs/heads/release/canal-seven-black-20261022
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canal-seven-black-approved-release
+          path: |
+            reports/canalplus-seven-black-approved-20261022.json
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.11_all.ipk.sha256

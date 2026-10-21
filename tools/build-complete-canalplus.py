@@ -9,8 +9,10 @@ import struct
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_REF = "21868a9d27eeb2feda632788b0452a327e97cb98"
-COUNTS = {"sk": 226, "cz": 231}
+SOURCE_REF = "31143f35ee537a9b7b1eaad766331cda71dc0c38"
+COUNTS = {"sk": {"transparent": 226, "white": 226, "black": 228},
+          "cz": {"transparent": 231, "white": 231, "black": 231}}
+SK_BLACK_ADDITIONS = {"1_0_1_3C30_C90_3_EB0000_0_0_0.png", "1_0_1_1F4B_CA1_3_EB0000_0_0_0.png"}
 STYLES = ("transparent", "white", "black")
 BASE = "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/"
 
@@ -28,15 +30,18 @@ def main():
     packages = []
     payloads = {}
     report = []
-    for country, count in COUNTS.items():
+    for country, counts in COUNTS.items():
         refs = None
         country_data = {}
         for style in STYLES:
+            count = counts[style]
             files = sorted((source / ("canal-plus-" + country) / style).glob("*.png"))
             assert len(files) == count, (country, style, len(files))
             names = [p.name for p in files]
-            assert refs is None or refs == names, "styles have different service references"
-            refs = names
+            if refs is None:
+                refs = set(names)
+            extras = SK_BLACK_ADDITIONS if country == "sk" and style == "black" else set()
+            assert set(names) == refs | extras, "unexpected style membership difference"
             expected = {p.name: p.read_bytes() for p in files}
             for name, data in expected.items():
                 assert data[:8] == b"\x89PNG\r\n\x1a\n"
