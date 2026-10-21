@@ -68,7 +68,7 @@ helpTxt = {
 '024-1' : _('Nighttime icons are displayed'),
 'ok-1' : _('Press button "OK" to activate selected function'),
 '6517-0' : _('System spinner provided by the image is used'),
-'6517-1' : _('Legacy FullHDGlass17 custom spinner is retired; the image spinner is preserved'),
+'6517-1' : _('Legacy FullHDGlass custom spinner is retired; the image spinner is preserved'),
 '460-0' : _('EPG list will be displayed with selected font size'),
 '5017-0' : _('PIP types of channel selections are unavailable'),
 '5017-1' : _('PIP types of channel selections are available but it can generate GSOD in some images'),

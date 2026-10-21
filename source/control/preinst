@@ -2,7 +2,7 @@
 set -u
 
 echo "******************************************************************"
-echo "*              FullHDGlass17 - Warder Evolution                 *"
+echo "*              FullHDGlass - Warder Evolution                 *"
 echo "******************************************************************"
 
 # Record whether this package manager invocation is a first install or upgrade.

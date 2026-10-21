@@ -67,7 +67,7 @@ class WarderRadioInfoTop(Renderer):
         elif x < 1150:
             value = strftime("%H:%M:%S", localtime(stamp))
         else:
-            value = "FullHDGlass17 · Warder Evolution"
+            value = "FullHDGlass · Warder Evolution"
         self.instance.setText(value)
 
     def postWidgetCreate(self, instance):

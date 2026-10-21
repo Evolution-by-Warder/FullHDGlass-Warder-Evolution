@@ -265,7 +265,7 @@ class WarderProgramInfo(Screen):
 		<eLabel position="18,18" size="1854,1014" backgroundColor="transpBlack3" zPosition="-5" />
 		<widget name="nowDate" position="30,12" size="390,42" font="Prive4;30" foregroundColor="#e5b243" transparent="1" />
 		<widget name="nowTime" position="435,12" size="210,42" font="Prive4;30" foregroundColor="#eeeeee" transparent="1" />
-		<eLabel text="FullHDGlass17 · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
+		<eLabel text="FullHDGlass · Warder Evolution" position="1260,12" size="585,42" font="Prive4;24" halign="right" foregroundColor="#888888" transparent="1" />
 		<widget name="programArtwork" position="30,75" size="520,300" zPosition="2" alphatest="blend" />
 		<widget name="title" position="580,80" size="760,62" font="Prive4;47" foregroundColor="#e5b243" transparent="1" />
 		<widget name="stationPicon" position="125,425" size="180,90" zPosition="3" alphatest="blend" />
@@ -1188,7 +1188,7 @@ def startSetup17(menuid, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
 		if menuid == "setup":
-			ret.append((_("FullHDGlass17 - Warder Evolution"), main, "FHD_Glass17_Setup", 99))
+			ret.append((_("FullHDGlass - Warder Evolution"), main, "FHD_Glass17_Setup", 99))
 		elif menuid == "mainmenu":
 			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
 				ret.append((config.plugins.setupGlass17.par78.getText()+" (FHDG 17)", main17, str(config.plugins.setupGlass17.par78.value), 44))
@@ -1197,7 +1197,7 @@ def startSetup17(menuid, **kwargs):
 def Plugins(path, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		ret = [ PluginDescriptor(name="setupGlass17", description=_("FullHDGlass17 - Warder Evolution"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
+		ret = [ PluginDescriptor(name="setupGlass17", description=_("FullHDGlass - Warder Evolution"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
 							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
 		if config.plugins.setupGlass17.par78.value != "n":
 			ret.append(PluginDescriptor(name=config.plugins.setupGlass17.par78.getText()+" (FHDG 17)",where = PluginDescriptor.WHERE_EXTENSIONSMENU,fnc = main17))
@@ -7621,7 +7621,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			msg += "\n\n" + changelog
 		msg += "\n\n" + _("Do you want to update now?")
 		box = self.session.openWithCallback(self.updCont, MessageBox, msg, MessageBox.TYPE_YESNO)
-		box.setTitle("FullHDGlass17 - Warder Evolution")
+		box.setTitle("FullHDGlass - Warder Evolution")
 
 	def updCont(self, answer):
 		if not answer:
@@ -7642,7 +7642,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			filename = "fullhdglass17-warder-evolution_%s_all.ipk" % version
 		self.fileName = filename
 		self.warderProgressBox = self.session.open(MessageBox, _("Updating...") + "\n\n" + _("Please wait."), MessageBox.TYPE_INFO, timeout=0, enable_input=False)
-		self.warderProgressBox.setTitle("FullHDGlass17 - Warder Evolution")
+		self.warderProgressBox.setTitle("FullHDGlass - Warder Evolution")
 		target = "/tmp/" + filename
 		try:
 			if os.path.exists(target):
