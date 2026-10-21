@@ -1,5 +1,9 @@
 # FullHDGlass17 Warder Evolution
 
+## 1.0.5-test219
+- Restore the approved full-screen radio background on the receiver OSD while keeping the OpenWebif composite path.
+- Simplify the displayed skin branding to “FullHDGlass · Warder Evolution” throughout setup and radio labels.
+
 ## 1.0.5-test218
 - Show the Canal+ SK and Canal+ CZ operator logos beside their separate FastScan table selectors.
 
