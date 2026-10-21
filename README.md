@@ -2,11 +2,11 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Latest approved release: 1.0.6
+## Latest approved release: 1.0.7
 
-[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.6_all.ipk).
+[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.7_all.ipk).
 
-Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.6.
+Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.7.
 
 
 ## Project status
@@ -55,3 +55,5 @@ Original authorship must not be erased or globally replaced with Warder branding
 Maintained and evolved by **Warder** as **FullHDGlass17 - Warder Evolution**.
 
 Detailed recovery state and binding rules are maintained in `docs/PROJECT-CHECKPOINT.md`.
+
+Release 1.0.7 also includes approved Seznam TV HD white and black picons in the complete 23.5E downloads and pins the downloader to their updated catalogue.

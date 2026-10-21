@@ -1,3 +1,8 @@
+## 1.0.7
+
+- Updated approved Seznam white and black picons in the full 23.5E packages, including both service reference aliases.
+- Pinned the skin downloader to the updated verified catalogue.
+
 # FullHDGlass17 Warder Evolution
 
 ## 1.0.6
