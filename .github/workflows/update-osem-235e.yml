@@ -1,0 +1,94 @@
+name: Publish approved Osem 23.5E packages
+on:
+  push:
+    branches: [release/osem-235e-20261021]
+    paths: [.github/workflows/update-osem-235e.yml, tools/update-osem-235e.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    if: github.ref == 'refs/heads/release/osem-235e-20261021'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /README.md
+            /update.json
+            /update-test.json
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/warder-235e*
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/warder-235e*
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 21868a9d27eeb2feda632788b0452a327e97cb98
+          path: .approved-picons
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /picons/23.5e/canal-plus-sk/transparent/1_0_16_5318_C96_3_EB0000_0_0_0.png
+            /picons/23.5e/canal-plus-sk/white/1_0_16_5318_C96_3_EB0000_0_0_0.png
+            /picons/23.5e/canal-plus-sk/black/1_0_16_5318_C96_3_EB0000_0_0_0.png
+      - name: Update and verify exact approved PNG bytes
+        run: |
+          python3 tools/update-osem-235e.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/osem-235e-approved-update-20261021.json
+          git commit -m 'Publish approved Osem PNGs in all three 23.5E styles'
+          git push origin HEAD:refs/heads/release/osem-235e-20261021
+      - name: Pin runtime to updated catalogue and package 1.0.9
+        run: |
+          python3 - <<'PY'
+          import hashlib, importlib.util, json, pathlib, subprocess
+          root=pathlib.Path('.')
+          ref=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          pkg=root/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
+          sync=pkg/'warderPiconSync.py'
+          old='6eb6c6a357d4cce8677f0fa58ca8ec852b161aad'
+          text=sync.read_text()
+          assert text.count(old)==1
+          sync.write_text(text.replace(old, ref))
+          (pkg/'version').write_text('1.0.9\n')
+          control=root/'source/control/control'
+          control.write_text(control.read_text().replace('Version: 1.0.8-1\n','Version: 1.0.9-1\n'))
+          change=pkg/'CHANGELOG-WARDER.md'
+          change.write_text('## 1.0.9\n\n- Updated the approved Televizia Osem picons in all three full 23.5E packages, including both service reference aliases.\n- Pinned the skin downloader to the updated verified catalogue.\n\n'+change.read_text())
+          spec=importlib.util.spec_from_file_location('sync',sync)
+          module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+          doc=json.loads((root/'assets/warder/downloads/picons/channels/test-candidate/manifest.json').read_text())
+          url=module.runtime_publication()['manifest_url']
+          assert ref in url
+          assert not module.validate_publication_manifest(doc,url)
+          subprocess.run(['python3','tools/build-release-ipk.py'],check=True)
+          ipk=root/'packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.9_all.ipk'
+          digest=hashlib.sha256(ipk.read_bytes()).hexdigest()
+          for name in ('update.json','update-test.json'):
+              path=root/name; d=json.loads(path.read_text())
+              d.update(version='1.0.9',sha256=digest,package_url='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/'+ipk.name,changelog='Schvalene picony Televizia Osem v transparentnom, bielom a ciernom baliku celej 23.5E, pod oboma referenciami. Kompletne Canal+ SK a CZ ostavaju zahrnute.')
+              path.write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
+          readme=root/'README.md'
+          text=readme.read_text().replace('1.0.8','1.0.9')
+          readme.write_text(text+'\nRelease 1.0.9 also includes approved Televizia Osem transparent, white and black picons in the complete 23.5E downloads and pins the downloader to their updated catalogue.\n')
+          PY
+          python3 tools/verify-radio-release.py
+          git add --sparse source update.json update-test.json README.md
+          git add --sparse -f packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.9_all.ipk packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.9_all.ipk.sha256
+          git commit -m 'Release 1.0.9 with the updated verified 23.5E catalogue'
+          git push origin HEAD:refs/heads/release/osem-235e-20261021
+      - uses: actions/upload-artifact@v4
+        with:
+          name: osem-235e-verified-release
+          path: |
+            reports/osem-235e-approved-update-20261021.json
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.9_all.ipk
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.9_all.ipk.sha256
