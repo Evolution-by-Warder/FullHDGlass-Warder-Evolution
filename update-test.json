@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5-test225",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test225_all.ipk",
-  "sha256": "0d25e32a8834c1607dae58303ae20aea2ce1e7a6bd56f6c71c4bd4ea810725ef",
-  "changelog": "FullHDGlass - Warder Evolution TEST: add the missing radio background widget to InfoBar-3 so the permanent Extra InfoBar can show the approved artwork."
+  "version": "1.0.5-test226",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/packages/test/enigma2-skin-fullhdglass17-warder-evolution_1.0.5-test226_all.ipk",
+  "sha256": "9c2582f1d8fde48e59491a142168fe0a001adfda85f01154f6653e9c9c4d9a41",
+  "changelog": "FullHDGlass - Warder Evolution TEST: render the radio background only for radio services and give InfoBar-3 a full-screen canvas."
 }

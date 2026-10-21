@@ -1075,8 +1075,11 @@
     </widget>
   </screen>
 
-<screen name="InfoBar-3" 	position="0,0" size="0,0" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
-    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off" />
+<screen name="InfoBar-3" 	position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
+    <widget name="WarderRadioBackground" source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="0,0" size="1920,1080" zPosition="-3" alphatest="off">
+      <convert type="WarderRadioOnly" />
+      <convert type="ConditionalShowHide" />
+    </widget>
     <ePixmap position="337,912" zPosition="-1" size="30,30" pixmap="hd_glass17/icons/ball_blue.png"/>    		
 </screen>
 
