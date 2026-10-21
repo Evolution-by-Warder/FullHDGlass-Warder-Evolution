@@ -1,0 +1,80 @@
+[
+  {
+    "catalog": "production",
+    "changed_pngs": [],
+    "package_sha256": "e6e59bd18f69987a4d53cdf0553807d03f7112982d0814cfd2d34ea5097e8561",
+    "png_sha256": "63524ee93947529496b55f3dc2e7be347606ef2e4a1da554678ed472a8337620",
+    "style": "transparent",
+    "verified_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ]
+  },
+  {
+    "catalog": "production",
+    "changed_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ],
+    "package_sha256": "d4f4e6e4777f3bd8a64d25038e28fd3cbf90012db297dae466e18c833ada46a8",
+    "png_sha256": "329d977f16960b0de17342e862b8507706db65bdfd46a52093d0016d0bc1d6c0",
+    "style": "black",
+    "verified_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ]
+  },
+  {
+    "catalog": "production",
+    "changed_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ],
+    "package_sha256": "4c697b559983835362b4fe284a0bc34eaf95f682fc691108f2a25a6c44c199a9",
+    "png_sha256": "65e47da50dbf70abf38a8c94248e8d5606d91ba61267178c467611dce4c48ef1",
+    "style": "white",
+    "verified_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ]
+  },
+  {
+    "catalog": "test-candidate",
+    "changed_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ],
+    "package_sha256": "d4f4e6e4777f3bd8a64d25038e28fd3cbf90012db297dae466e18c833ada46a8",
+    "png_sha256": "329d977f16960b0de17342e862b8507706db65bdfd46a52093d0016d0bc1d6c0",
+    "style": "black",
+    "verified_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ]
+  },
+  {
+    "catalog": "test-candidate",
+    "changed_pngs": [],
+    "package_sha256": "e6e59bd18f69987a4d53cdf0553807d03f7112982d0814cfd2d34ea5097e8561",
+    "png_sha256": "63524ee93947529496b55f3dc2e7be347606ef2e4a1da554678ed472a8337620",
+    "style": "transparent",
+    "verified_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ]
+  },
+  {
+    "catalog": "test-candidate",
+    "changed_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ],
+    "package_sha256": "4c697b559983835362b4fe284a0bc34eaf95f682fc691108f2a25a6c44c199a9",
+    "png_sha256": "65e47da50dbf70abf38a8c94248e8d5606d91ba61267178c467611dce4c48ef1",
+    "style": "white",
+    "verified_pngs": [
+      "1_0_19_335B_C93_3_EB0000_0_0_0.png",
+      "1_0_1_335B_C93_3_EB0000_0_0_0.png"
+    ]
+  }
+]
