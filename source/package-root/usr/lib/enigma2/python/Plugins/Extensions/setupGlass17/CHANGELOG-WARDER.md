@@ -1,3 +1,8 @@
+## 1.0.9
+
+- Updated the approved Televizia Osem picons in all three full 23.5E packages, including both service reference aliases.
+- Pinned the skin downloader to the updated verified catalogue.
+
 ## 1.0.8
 
 - Canal+ SK and CZ downloads now contain their complete existing FastScan PNG sets (226 and 231 per style), replacing the incomplete eight-channel bundles.
