@@ -2,6 +2,13 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
+## Latest approved release: 1.0.6
+
+[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.6_all.ipk).
+
+Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.6.
+
+
 ## Project status
 
 This repository is the official home of **FullHDGlass17 - Warder Evolution**.
