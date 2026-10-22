@@ -1,0 +1,48 @@
+name: Publish seven approved black Canal+ replacements without IPK
+on:
+  push:
+    branches: [picons/canal-black-six-20261022]
+    paths: [.github/workflows/publish-approved-black-six.yml, tools/publish-approved-black-six.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/picons/canal-black-six-20261022'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /update.json
+            /update-test.json
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 95bbbd6b2c5919087a3579deb84ead04e62323b3
+          path: .approved-picons
+          sparse-checkout: |
+            picons/23.5e/canal-plus-sk/black
+            picons/23.5e/canal-plus-cz/black
+            migration/canal-black-six-approved-20261022
+      - name: Update black archives and validate data-only receiver update
+        run: |
+          python3 tools/publish-approved-black-six.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/canal-black-six-approved-20261022.json
+          git commit -m 'Publish seven approved black Canal+ picon replacements; preserve IPK 1.0.13'
+          git push origin HEAD:refs/heads/picons/canal-black-six-20261022
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canal-black-six-data-only-verification
+          path: reports/canal-black-six-approved-20261022.json
