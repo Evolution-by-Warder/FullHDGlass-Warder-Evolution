@@ -1,0 +1,90 @@
+{
+  "ipk_version_unchanged": "1.0.13",
+  "packages": [
+    {
+      "catalog": "production",
+      "filename": "canalplus_sk_black_220x132_710616dc5790a4cd.zip",
+      "png_count": 228,
+      "replaced": [
+        "1_0_1_334B_C93_3_EB0000_0_0_0.png",
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png",
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3734_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3C38_C90_3_EB0000_0_0_0.png"
+      ],
+      "selector": "CANALPLUS_SK",
+      "sha256": "710616dc5790a4cd0814203c6f7c087ff76570866711c6c300342917937b541f",
+      "untouched_png_count": 223,
+      "verified_pngs": {
+        "1_0_1_334B_C93_3_EB0000_0_0_0.png": "86abdcb6dcfed54e6dafd1dcc56eda34b098290244957fa6e703f4c4160ddce9",
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png": "27cbaf1c16b0d6b88bfb87e74f618a0fe26398267114bf8dd306e6a7a8094ce3",
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png": "0e85c57a72e6ae60f4ca8bb0c96b001295fd1a7a716fcbd4feb9e52a6e528711",
+        "1_0_1_3734_C8E_3_EB0000_0_0_0.png": "fc9aa208cf5f3b10a72076bb9bdc725a6496386b7d91402d35f42b213c56cb4c",
+        "1_0_1_3C38_C90_3_EB0000_0_0_0.png": "dc870e1e81092acadff79a2169a8dbb00acf496f735ca5e1ee30f49d3f1993ce"
+      }
+    },
+    {
+      "catalog": "production",
+      "filename": "canalplus_cz_black_220x132_fffd17b4b08a5425.zip",
+      "png_count": 231,
+      "replaced": [
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png",
+        "1_0_1_3733_C8E_3_EB0000_0_0_0.png"
+      ],
+      "selector": "CANALPLUS_CZ",
+      "sha256": "fffd17b4b08a54251f661c94aa21512ee554ac93c6b4870669785dab5882bcd9",
+      "untouched_png_count": 229,
+      "verified_pngs": {
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png": "27cbaf1c16b0d6b88bfb87e74f618a0fe26398267114bf8dd306e6a7a8094ce3",
+        "1_0_1_3733_C8E_3_EB0000_0_0_0.png": "816a7af0550b559ac28b53691056c2e1fc2dc2c4f8556aebad771aaf2207ac8d"
+      }
+    },
+    {
+      "catalog": "test-candidate",
+      "filename": "canalplus_cz_black_220x132_fffd17b4b08a5425.zip",
+      "png_count": 231,
+      "replaced": [
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png",
+        "1_0_1_3733_C8E_3_EB0000_0_0_0.png"
+      ],
+      "selector": "CANALPLUS_CZ",
+      "sha256": "fffd17b4b08a54251f661c94aa21512ee554ac93c6b4870669785dab5882bcd9",
+      "untouched_png_count": 229,
+      "verified_pngs": {
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png": "27cbaf1c16b0d6b88bfb87e74f618a0fe26398267114bf8dd306e6a7a8094ce3",
+        "1_0_1_3733_C8E_3_EB0000_0_0_0.png": "816a7af0550b559ac28b53691056c2e1fc2dc2c4f8556aebad771aaf2207ac8d"
+      }
+    },
+    {
+      "catalog": "test-candidate",
+      "filename": "canalplus_sk_black_220x132_710616dc5790a4cd.zip",
+      "png_count": 228,
+      "replaced": [
+        "1_0_1_334B_C93_3_EB0000_0_0_0.png",
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png",
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3734_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3C38_C90_3_EB0000_0_0_0.png"
+      ],
+      "selector": "CANALPLUS_SK",
+      "sha256": "710616dc5790a4cd0814203c6f7c087ff76570866711c6c300342917937b541f",
+      "untouched_png_count": 223,
+      "verified_pngs": {
+        "1_0_1_334B_C93_3_EB0000_0_0_0.png": "86abdcb6dcfed54e6dafd1dcc56eda34b098290244957fa6e703f4c4160ddce9",
+        "1_0_1_36FF_C8C_3_EB0000_0_0_0.png": "27cbaf1c16b0d6b88bfb87e74f618a0fe26398267114bf8dd306e6a7a8094ce3",
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png": "0e85c57a72e6ae60f4ca8bb0c96b001295fd1a7a716fcbd4feb9e52a6e528711",
+        "1_0_1_3734_C8E_3_EB0000_0_0_0.png": "fc9aa208cf5f3b10a72076bb9bdc725a6496386b7d91402d35f42b213c56cb4c",
+        "1_0_1_3C38_C90_3_EB0000_0_0_0.png": "dc870e1e81092acadff79a2169a8dbb00acf496f735ca5e1ee30f49d3f1993ce"
+      }
+    }
+  ],
+  "protected_files": {
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/control/control": "50c495eb88756d554020cb0f080ec50cce38bed78bf349f06ab2109a58dbf1a3",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py": "2d89e67cdbcafa9a78e6811bdd6b1fb7947340a0085e267131b92b1855d8db5c",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version": "5824fda1c95e4d81285e2033e99b2f2e239814fac7bef865cb49a451f568efe7",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py": "78e4f4ab666824f2abca3e81ec42e0b97fa946da2d78fdd5566b1be96c9f9361",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/update-test.json": "fd3416df40a2b8a060525b7811a829242ba858351d163035fa05b11ce0d6d0d3",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/update.json": "fd3416df40a2b8a060525b7811a829242ba858351d163035fa05b11ce0d6d0d3"
+  },
+  "source_ref": "95bbbd6b2c5919087a3579deb84ead04e62323b3"
+}
