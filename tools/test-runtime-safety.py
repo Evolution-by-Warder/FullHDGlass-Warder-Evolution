@@ -176,5 +176,5 @@ assert '"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warde
 assert 'if str(url) not in official_manifests:' in plugin
 assert 'if final_url not in official_manifests:' in plugin
 assert "PiconHub-Warder/FullHDGlass-Warder-Evolution" not in plugin
-assert 'FullHDGlass17 - Warder Evolution' in plugin
+assert 'FullHDGlass - Warder Evolution' in plugin
 assert 'any(str(response.geturl()).startswith(x) for x in official_package_prefixes)' in plugin

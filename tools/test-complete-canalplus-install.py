@@ -16,7 +16,7 @@ PKG = ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setu
 spec = importlib.util.spec_from_file_location("sync", PKG / "warderPiconSync.py")
 sync = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sync)
-DELIVERY = ROOT / "assets/warder/downloads/picons/channels/test-candidate"
+DELIVERY = ROOT / "assets/warder/downloads/picons/channels"
 doc = json.loads((DELIVERY / "manifest.json").read_text())
 
 # Extract actual production methods without importing the receiver GUI runtime.
@@ -59,8 +59,9 @@ def main():
             receiver.warderPiconPrefs = prefs
             # Existing transparent Jednotka must be replaced by black/white when requested.
             jedn = "1_0_1_3C3C_C90_3_EB0000_0_0_0.png"
-            source = ROOT / ".approved-picons/picons/23.5e/canal-plus-sk"
-            (destination / jedn).write_bytes((source / "transparent" / jedn).read_bytes())
+            transparent = next(p for p in doc["packages"] if p["selector_id"] == "CANALPLUS_SK" and p["family"] == "channel-transparent")
+            with zipfile.ZipFile(DELIVERY / transparent["filename"]) as archive:
+                (destination / jedn).write_bytes(archive.read(jedn))
             unrelated = destination / "1_0_1_1_1_1_C00000_0_0_0.png"
             unrelated.write_bytes(b"unchanged other orbital position")
             result = None
@@ -81,7 +82,9 @@ def main():
                         assert name not in installed or installed[name] == data, "conflicting SK/CZ identity"
                         installed[name] = data
                         assert (destination / name).read_bytes() == data
-            assert (destination / jedn).read_bytes() == (source / style / jedn).read_bytes()
+            selected = next(p for p in doc["packages"] if p["selector_id"] == "CANALPLUS_SK" and p["family"] == "channel-" + style)
+            with zipfile.ZipFile(DELIVERY / selected["filename"]) as archive:
+                assert (destination / jedn).read_bytes() == archive.read(jedn)
             assert unrelated.read_bytes() == b"unchanged other orbital position"
             print("PASS", style, counts, "unique installed", len(installed))
 

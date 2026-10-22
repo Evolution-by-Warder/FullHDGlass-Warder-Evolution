@@ -17,8 +17,9 @@ except ImportError:
     from urlparse import urlparse
 
 ENIGMA2_DIR = "/etc/enigma2"
-# Explicit two-phase cutover switch. Publication evidence and this runtime switch
-# are reviewed separately; never infer readiness merely from network reachability.
+# Published channel catalogues are data, independent of the installed IPK.
+# Stable receivers follow only approved main; archives retain content-addressed
+# filenames and SHA-256 verification. The pinned TEST descriptor is opt-in.
 RUNTIME_PUBLICATION_ENABLED = True
 PUBLICATION_SOURCES = {
     "production": {
@@ -30,7 +31,7 @@ PUBLICATION_SOURCES = {
         "package_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/",
     },
 }
-ACTIVE_PUBLICATION_SOURCE = "test-candidate"
+ACTIVE_PUBLICATION_SOURCE = "production"
 RUNTIME_MANIFEST_URL = PUBLICATION_SOURCES[ACTIVE_PUBLICATION_SOURCE]["manifest_url"]
 
 # TEST202 auxiliary archives come from an immutable PiconHub review commit.

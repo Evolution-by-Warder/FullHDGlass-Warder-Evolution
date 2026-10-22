@@ -8924,11 +8924,12 @@ class downloadMenu(Screen):
 			self.dwnLoop(_("SUCCESSFUL")+": "+_("Total:") + " " + str(total) + ", " + _("Deleted:") + " " + str(numPict))	
 		
 	def _warderLoadChannelManifest(self, url):
-		"""Fetch and validate the exact explicitly enabled publication manifest."""
+		"""Fetch a fresh approved catalogue for each new channel-download operation."""
 		expected = warderPiconSync.runtime_publication().get("manifest_url")
 		if not expected or url != expected:
 			raise ValueError("Warder channel manifest is not enabled")
-		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons"})
+		req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/channel-picons",
+			"Accept": "application/json", "Cache-Control": "no-cache", "Pragma": "no-cache"})
 		with urlopen(req, timeout=30) as response:
 			if str(response.geturl()) != expected:
 				raise ValueError("Warder channel manifest redirect rejected")

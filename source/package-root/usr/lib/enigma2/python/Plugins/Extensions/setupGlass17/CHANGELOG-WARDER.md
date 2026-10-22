@@ -1,3 +1,9 @@
+## 1.0.13
+
+- Stable channel picon downloads now read the latest approved catalogue on main instead of a catalogue pinned to an old commit. Future picon/archive updates do not require a new IPK.
+- Fetch a fresh catalogue at the start of every download operation, with cache revalidation. Keep one catalogue snapshot during the operation and retain strict source/redirect, size, part and full-archive SHA-256 checks.
+- All approved picon PNGs, radio graphics/layout and menus are preserved.
+
 ## 1.0.12
 
 - Replaced CANAL+, CANAL+ Classics, CANAL+ Crime and CANAL+ Drama in Canal+ SK/CZ in all three styles with the approved originals and Warder backgrounds.

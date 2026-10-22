@@ -1,0 +1,42 @@
+name: Release live approved picon catalogue 1.0.13
+on:
+  push:
+    branches: [release/live-picon-catalog-20261022]
+    paths: [.github/workflows/release-live-picon-catalog.yml, tools/release-live-picon-catalog.py, tools/test-live-picon-catalog.py, source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    if: github.ref == 'refs/heads/release/live-picon-catalog-20261022'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /docs/PICON-CATALOG-UPDATES.md
+            /README.md
+            /update.json
+            /update-test.json
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+      - name: Verify catalogue-only updates and build release
+        run: |
+          python3 tools/release-live-picon-catalog.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse README.md update.json update-test.json
+          git add --sparse -f packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.13_all.ipk packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.13_all.ipk.sha256
+          git commit -m 'Release 1.0.13 with live approved picon catalogue independent of IPK updates'
+          git push origin HEAD:refs/heads/release/live-picon-catalog-20261022
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-picon-catalog-1.0.13
+          path: |
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.13_all.ipk
+            packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.13_all.ipk.sha256

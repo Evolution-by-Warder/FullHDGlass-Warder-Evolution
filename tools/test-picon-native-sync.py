@@ -21,8 +21,11 @@ def main():
     sync = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(sync)
     url = sync.runtime_publication()["manifest_url"]
-    with urlopen(url, timeout=60) as response:
-        doc = json.load(response)
+    manifest_scope = dict(warderPiconSync=sync, json=json, Request=Request, urlopen=urlopen)
+    manifest_tree = ast.parse((PKG / "plugin.py").read_bytes())
+    loader = next(n for n in ast.walk(manifest_tree) if isinstance(n, ast.FunctionDef) and n.name == "_warderLoadChannelManifest")
+    exec(compile(ast.Module(body=[loader], type_ignores=[]), "plugin.py", "exec"), manifest_scope)
+    doc = manifest_scope["_warderLoadChannelManifest"](None, url)
     names = ["1_0_1_3C3C_C90_3_EB0000_0_0_0", "1_0_16_5318_C96_3_EB0000_0_0_0",
              "1_0_1_335B_C93_3_EB0000_0_0_0"]
     queue = dict(package_selectors=["235E"], positions=["23.5e"],
