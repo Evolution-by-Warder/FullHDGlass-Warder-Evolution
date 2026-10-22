@@ -1,3 +1,9 @@
+## 1.0.12
+
+- Replaced CANAL+, CANAL+ Classics, CANAL+ Crime and CANAL+ Drama in Canal+ SK/CZ in all three styles with the approved originals and Warder backgrounds.
+- Added these four channels to every complete 23.5E colour package (762 PNGs each).
+- Pinned the receiver catalogue to the new verified archives. Radio, menus and MASTER templates are unchanged.
+
 ## 1.0.11
 
 - Replaced seven black channel picons in both Canal+ SK and CZ with the exact approved PNGs from the full 23.5E package: Canal+ Action, Film Europe HD, Sport1 HD, Sport2 HD, Canal+ Sport 2, Cartoon Network and TV Lux HD.
