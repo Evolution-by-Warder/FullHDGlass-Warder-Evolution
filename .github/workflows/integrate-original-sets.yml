@@ -22,6 +22,7 @@ jobs:
             source
             tools
             reports
+            docs/PICON-CATALOG-UPDATES.md
             .transfer
             assets/warder/downloads/picons/channels/manifest.json
             assets/warder/downloads/picons/channels/SHA256SUMS
@@ -35,17 +36,32 @@ jobs:
           python3 -m pip install 'Pillow==11.3.0'
           python3 -c 'import ctypes.util; assert ctypes.util.find_library("archive")'
       - name: Append missing PNGs and verify receiver release
-        run: python3 -u tools/integrate-original-sets.py
+        run: |
+          python3 -u tools/integrate-original-sets.py
+          python3 -u tools/verify-original-catalog-compatibility.py
       - name: Commit verified release on staging branch
         run: |
           git config user.name 'Warder release automation'
           git config user.email 'warder-release@users.noreply.github.com'
-          git add --sparse source tools reports README.md update.json update-test.json assets/warder/downloads/picons/channels packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.14_all.ipk packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.14_all.ipk.sha256 .transfer/source-artifact.json
-          git commit -m 'Connect original satellite sizes with append-only protected packages [skip ci]'
-          git push origin HEAD:release/original-satellite-sizes-20261022
+          python3 -u tools/commit-original-size-release.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: original-sizes-release-verification
           path: |
             reports/original-sets-integration-20261022.json
             packages/*1.0.14*
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: original-sizes-release-recovery
+          compression-level: 0
+          path: |
+            source/
+            tools/
+            reports/original-sets-integration-20261022.json
+            assets/warder/downloads/picons/channels/
+            packages/*1.0.14*
+            README.md
+            update.json
+            update-test.json
