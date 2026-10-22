@@ -8539,7 +8539,7 @@ class downloadMenu(Screen):
 			resolution = self.warderPiconPrefs.get("resolution")
 			style = self.warderPiconPrefs.get("style")
 			try:
-				if resolution == "220x132":
+				if warderPiconSync.channel_delivery_backend(resolution, style) == "warder":
 					queue = warderPiconSync.build_runtime_queue(self.warderPiconPrefs, publication=warderPiconSync.runtime_publication())
 					if queue.get("state") == warderPiconSync.PUBLICATION_LOCKED:
 						self.warderChannelState = "locked"
@@ -9333,7 +9333,7 @@ class downloadMenu(Screen):
 			if txt != "":
 				self.msg += ({False:"("+self.dwnJob + ") ",True:""}["icon_sets_preview" in self.type_download or self.type_download.isdigit()]) + txt + "\n"
 			if (self.warderPiconPrefs.get("prepared")
-					and self.warderPiconPrefs.get("resolution") != "220x132"
+					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "pinned-legacy"
 					and self.warderLegacyChannelQueue):
 				self.dwnJob = _("Channel picons")
 				resolution = self.warderPiconPrefs.get("resolution")
@@ -9390,7 +9390,7 @@ class downloadMenu(Screen):
 				self.msg += "(" + self.dwnJob + ") " + result_text + "\n"
 				self._recordWarderOperationResult(result_text)
 			if (self.warderPiconPrefs.get("prepared")
-					and self.warderPiconPrefs.get("resolution") == "220x132"
+					and warderPiconSync.channel_delivery_backend(self.warderPiconPrefs.get("resolution"), self.warderPiconPrefs.get("style")) == "warder"
 					and self.warderChannelState not in ("locked", "error")):
 				self.dwnJob = _("Warder channel picons")
 				try:

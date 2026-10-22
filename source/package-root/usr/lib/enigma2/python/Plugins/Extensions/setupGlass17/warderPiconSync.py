@@ -323,10 +323,10 @@ RESOLUTIONS = (
 # Genuine delivery options recovered from the pinned FullHDGlass/Trezor catalog.
 # 220x132 transparent/black/white is the native Warder channel package triad.
 CHANNEL_RESOLUTION_STYLES = {
-    "50x30": ("black", "white"),
+    "50x30": ("transparent", "black", "white"),
     "150x90": ("black", "white"),
     "220x132": ("transparent", "black", "white"),
-    "400x240": ("transparent",),
+    "400x240": ("transparent", "black", "white"),
 }
 LEGACY_CHANNEL_ARCHIVE_COLUMNS = {
     ("400x240", "transparent"): 3,
@@ -351,7 +351,7 @@ def channel_style_supported(resolution, style):
 def channel_delivery_backend(resolution, style):
     if not channel_style_supported(resolution, style):
         return None
-    return "warder" if resolution == "220x132" else "pinned-legacy"
+    return "warder" if resolution in ("50x30", "220x132", "400x240") else "pinned-legacy"
 
 
 def legacy_channel_archive_column(resolution, style):
@@ -935,6 +935,9 @@ _SELECTOR_LABEL_BINDINGS = {
         "750E",
         "75.0e"
     ),
+    "(80.0E) Satelit 80.0E": ("800E", "80.0e"),
+    "(0.8W) Digi": ("DIGI_TELLY", "0.8w"),
+    "(0.8W) Telly": ("DIGI_TELLY", "0.8w"),
     "(85.0E) Intelsat 15/Horizons 2": (
         "850E",
         "85.0e"
@@ -1005,6 +1008,7 @@ _SELECTOR_ID_TO_POSITION = {
     "705E": "70.5e",
     "749E": "74.9e",
     "750E": "75.0e",
+    "800E": "80.0e",
     "850E": "85.0e",
     "851E": "85.1e"
 }
@@ -1498,9 +1502,9 @@ def build_runtime_queue(preferences, enigma2_dir=ENIGMA2_DIR, publication=None):
         raise ValueError("unsupported update mode")
     resolution = prefs.get("resolution")
     style = prefs.get("style")
-    if resolution != "220x132":
+    if channel_delivery_backend(resolution, style) != "warder":
         raise ValueError("non-native resolution requires pinned selected-position archives")
-    if not channel_style_supported("220x132", style):
+    if not channel_style_supported(resolution, style):
         raise ValueError("unsupported Warder channel picon colour")
     destination = validate_destination(prefs.get("destination"))
     if not destination:

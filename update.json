@@ -1,6 +1,6 @@
 {
-  "version": "1.0.13",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.13_all.ipk",
-  "sha256": "c9c5ea280b6617b6c5aba13bb47a31e6fb73f655c22486c688caa0deb56f596a",
-  "changelog": "Picony bez dalsich IPK: skin nacita pri kazdom stahovani aktualny schvaleny katalog z main. Zachovana kontrola zdroja, velkosti a SHA-256 archivov. Jednorazovy upgrade z 1.0.12."
+  "version": "1.0.14",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.14_all.ipk",
+  "sha256": "1bd22ed7531778598b0b86fb84acb04f36fd51347dd22def62c11a258446c098",
+  "changelog": "Povodne baliky satelitnych piconov 50x30, 220x132 a 400x240 vo vsetkych dostupnych farbach. Zachovane aktualne PNG 16.0E a 23.5E, doplnene iba chybajuce. Zive katalogy bez dalsich IPK pri aktualizacii piconov."
 }
