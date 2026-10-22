@@ -39,7 +39,8 @@ for name in ('update.json', 'update-test.json'):
     path.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + '\n')
 readme = ROOT / 'README.md'
 text = readme.read_text().replace('Latest approved release: 1.0.12', 'Latest approved release: 1.0.13').replace('evolution_1.0.12_all.ipk', 'evolution_1.0.13_all.ipk').replace('both offer 1.0.12', 'both offer 1.0.13')
-readme.write_text(text + '\nRelease 1.0.13 follows the current approved main channel-picon catalogue at each download. Future channel-picon content changes need only archive/catalogue publication, without another IPK. Source, redirect, size and SHA-256 checks remain enabled. See [picon update policy](docs/PICON-CATALOG-UPDATES.md).\n')
+note = '\nRelease 1.0.13 follows the current approved main channel-picon catalogue at each download. Future channel-picon content changes need only archive/catalogue publication, without another IPK. Source, redirect, size and SHA-256 checks remain enabled. See [picon update policy](docs/PICON-CATALOG-UPDATES.md).\n'
+readme.write_text(text if note in text else text + note)
 subprocess.run(['python3', str(ROOT / 'tools/verify-radio-release.py')], cwd=ROOT, check=True)
 assert not subprocess.check_output(['git', 'diff', '--name-only', '--', 'assets/warder/downloads'], cwd=ROOT).strip()
 print('Release 1.0.13', digest, 'approved live production catalogue; existing picon data preserved')
