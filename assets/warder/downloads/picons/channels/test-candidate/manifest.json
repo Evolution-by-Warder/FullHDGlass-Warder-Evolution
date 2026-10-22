@@ -23,6 +23,10 @@
     "ref": "f39316527f1b3aa792bd6ffd734acbbd51a2a989",
     "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution"
   },
+  "approved_discovery_from_235e": {
+    "ref": "2d5b1ec8d37742825bb5571508c856d919590377",
+    "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution"
+  },
   "approved_osem_235e_source": {
     "ref": "21868a9d27eeb2feda632788b0452a327e97cb98",
     "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution"
@@ -12409,9 +12413,9 @@
           "service_reference": "1_0_19_458_526C_16E_A00000_0_0_0"
         }
       ],
-      "bytes": 19545135,
+      "bytes": 19579990,
       "family": "channel-black",
-      "filename": "warder-160e-channel-black-2840943f7aea2a10.zip",
+      "filename": "warder-160e-channel-black-4dc1677e96241425.zip",
       "included_references": [
         "1_0_16_1040_50DC_16E_A00000_0_0_0",
         "1_0_16_10F4_51A4_16E_A00000_0_0_0",
@@ -12603,6 +12607,7 @@
         "1_0_1F_4B3_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B4_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B5_76C1_16E_A00000_0_0_0",
+        "1_0_1F_4B6_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B7_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B8_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B9_76C1_16E_A00000_0_0_0",
@@ -12976,10 +12981,10 @@
       "kind": "satellite",
       "orbital_position": "16.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-black-2840943f7aea2a10.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-black-2840943f7aea2a10.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-black-4dc1677e96241425.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-black-4dc1677e96241425.zip.part01"
       ],
-      "png_count": 559,
+      "png_count": 560,
       "resolution": "220x132",
       "same_content_deduplications": [
         {
@@ -13155,8 +13160,8 @@
         }
       ],
       "selector_id": "160E",
-      "sha256": "2840943f7aea2a108c9781104a60765da274d9559eacf2ebc676493a96945fdb",
-      "source_ref": "2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52",
+      "sha256": "4dc1677e9624142585c9d1744986bc399f399fbe79001c41d0c3a335ef181130",
+      "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "16.0e"
     },
@@ -13201,9 +13206,9 @@
           "service_reference": "1_0_19_458_526C_16E_A00000_0_0_0"
         }
       ],
-      "bytes": 2352242,
+      "bytes": 2353983,
       "family": "channel-transparent",
-      "filename": "warder-160e-channel-transparent-75faaf48edda4ed6.zip",
+      "filename": "warder-160e-channel-transparent-a4b1c5347bb3f1d7.zip",
       "included_references": [
         "1_0_16_1040_50DC_16E_A00000_0_0_0",
         "1_0_16_10F4_51A4_16E_A00000_0_0_0",
@@ -13395,6 +13400,7 @@
         "1_0_1F_4B3_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B4_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B5_76C1_16E_A00000_0_0_0",
+        "1_0_1F_4B6_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B7_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B8_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B9_76C1_16E_A00000_0_0_0",
@@ -13768,9 +13774,9 @@
       "kind": "satellite",
       "orbital_position": "16.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-transparent-75faaf48edda4ed6.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-transparent-a4b1c5347bb3f1d7.zip.part00"
       ],
-      "png_count": 559,
+      "png_count": 560,
       "resolution": "220x132",
       "same_content_deduplications": [
         {
@@ -13946,8 +13952,8 @@
         }
       ],
       "selector_id": "160E",
-      "sha256": "75faaf48edda4ed60c8fd9ce4c3ba9905acfb935e422209b2a3f9b6ecfc09f96",
-      "source_ref": "2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52",
+      "sha256": "a4b1c5347bb3f1d73b6b726061a072b40a61a952cb1298defdc0f4c2ca5a7eba",
+      "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "16.0e"
     },
@@ -13992,9 +13998,9 @@
           "service_reference": "1_0_19_458_526C_16E_A00000_0_0_0"
         }
       ],
-      "bytes": 19908783,
+      "bytes": 19944065,
       "family": "channel-white",
-      "filename": "warder-160e-channel-white-4a2d64f89b19a222.zip",
+      "filename": "warder-160e-channel-white-420e27a6e92548fe.zip",
       "included_references": [
         "1_0_16_1040_50DC_16E_A00000_0_0_0",
         "1_0_16_10F4_51A4_16E_A00000_0_0_0",
@@ -14186,6 +14192,7 @@
         "1_0_1F_4B3_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B4_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B5_76C1_16E_A00000_0_0_0",
+        "1_0_1F_4B6_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B7_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B8_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B9_76C1_16E_A00000_0_0_0",
@@ -14559,10 +14566,10 @@
       "kind": "satellite",
       "orbital_position": "16.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-white-4a2d64f89b19a222.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-white-4a2d64f89b19a222.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-white-420e27a6e92548fe.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-160e-channel-white-420e27a6e92548fe.zip.part01"
       ],
-      "png_count": 559,
+      "png_count": 560,
       "resolution": "220x132",
       "same_content_deduplications": [
         {
@@ -14738,16 +14745,16 @@
         }
       ],
       "selector_id": "160E",
-      "sha256": "4a2d64f89b19a222f35d559a2147e1d8020076cf5e656838c30130fb1b47b017",
-      "source_ref": "2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52",
+      "sha256": "420e27a6e92548fe6f586de672dea445c0a51bdddad4f250de058544b6fa4d5d",
+      "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "16.0e"
     },
     {
       "ambiguous_exclusions": [],
-      "bytes": 3754910,
+      "bytes": 3789765,
       "family": "channel-black",
-      "filename": "warder-antiksat-channel-black-f198a7222680a348.zip",
+      "filename": "warder-antiksat-channel-black-5101ca2f9819e6a1.zip",
       "included_references": [
         "1_0_16_269_C418_16E_A00000_0_0_0",
         "1_0_16_280_C418_16E_A00000_0_0_0",
@@ -14821,6 +14828,7 @@
         "1_0_1F_4B3_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B4_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B5_76C1_16E_A00000_0_0_0",
+        "1_0_1F_4B6_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B7_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B8_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B9_76C1_16E_A00000_0_0_0",
@@ -14862,22 +14870,22 @@
       "kind": "provider",
       "orbital_position": "16.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-antiksat-channel-black-f198a7222680a348.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-antiksat-channel-black-5101ca2f9819e6a1.zip.part00"
       ],
-      "png_count": 109,
+      "png_count": 110,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "ANTIKSAT",
-      "sha256": "f198a7222680a34883d49592f9f808d99141af9ad2486aa2c092a78ae22e8df4",
-      "source_ref": "2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52",
+      "sha256": "5101ca2f9819e6a1c82a371fd2b1b06469d82b777d8c08f203438f409fb36954",
+      "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "16.0e/antiksat"
     },
     {
       "ambiguous_exclusions": [],
-      "bytes": 463210,
+      "bytes": 464951,
       "family": "channel-transparent",
-      "filename": "warder-antiksat-channel-transparent-eb49e9d5bfa7330c.zip",
+      "filename": "warder-antiksat-channel-transparent-30e6c2e57406379d.zip",
       "included_references": [
         "1_0_16_269_C418_16E_A00000_0_0_0",
         "1_0_16_280_C418_16E_A00000_0_0_0",
@@ -14951,6 +14959,7 @@
         "1_0_1F_4B3_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B4_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B5_76C1_16E_A00000_0_0_0",
+        "1_0_1F_4B6_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B7_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B8_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B9_76C1_16E_A00000_0_0_0",
@@ -14992,22 +15001,22 @@
       "kind": "provider",
       "orbital_position": "16.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-antiksat-channel-transparent-eb49e9d5bfa7330c.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-antiksat-channel-transparent-30e6c2e57406379d.zip.part00"
       ],
-      "png_count": 109,
+      "png_count": 110,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "ANTIKSAT",
-      "sha256": "eb49e9d5bfa7330c67d69abdc45fb847757968cb60b8887167cfdaa650aae5d8",
-      "source_ref": "2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52",
+      "sha256": "30e6c2e57406379d46eb085214e51e6ff302887cd8ec0c0f2bbd889b560ff855",
+      "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "16.0e/antiksat"
     },
     {
       "ambiguous_exclusions": [],
-      "bytes": 3819093,
+      "bytes": 3854375,
       "family": "channel-white",
-      "filename": "warder-antiksat-channel-white-c58cb573c6d2a6ce.zip",
+      "filename": "warder-antiksat-channel-white-855e005e44464120.zip",
       "included_references": [
         "1_0_16_269_C418_16E_A00000_0_0_0",
         "1_0_16_280_C418_16E_A00000_0_0_0",
@@ -15081,6 +15090,7 @@
         "1_0_1F_4B3_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B4_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B5_76C1_16E_A00000_0_0_0",
+        "1_0_1F_4B6_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B7_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B8_76C1_16E_A00000_0_0_0",
         "1_0_1F_4B9_76C1_16E_A00000_0_0_0",
@@ -15122,14 +15132,14 @@
       "kind": "provider",
       "orbital_position": "16.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-antiksat-channel-white-c58cb573c6d2a6ce.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/assets/warder/downloads/picons/channels/test-candidate/warder-antiksat-channel-white-855e005e44464120.zip.part00"
       ],
-      "png_count": 109,
+      "png_count": 110,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "ANTIKSAT",
-      "sha256": "c58cb573c6d2a6ce62dfcf2c4b36987743bda2526aedfe4d0fac30241d264c19",
-      "source_ref": "2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52",
+      "sha256": "855e005e444641200f81eaba56ca220d337a0223b9537cbff0375b862d125525",
+      "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "16.0e/antiksat"
     },
@@ -36547,43 +36557,43 @@
     },
     {
       "bytes": 18874368,
-      "filename": "warder-160e-channel-black-2840943f7aea2a10.zip.part00",
-      "sha256": "7ef94a788b4278a8d90f4d8798d6c78acf9c372a5489f8944bd7223ba5ef91a3"
+      "filename": "warder-160e-channel-black-4dc1677e96241425.zip.part00",
+      "sha256": "1469f81cebbcbc4a372959c79fd2e061ad23122553aa5d12f44701bb33d9ac4d"
     },
     {
-      "bytes": 670767,
-      "filename": "warder-160e-channel-black-2840943f7aea2a10.zip.part01",
-      "sha256": "9f26886d80feb407665811c40bd74cc5399091f0b2aae98a1b057489661c8ffe"
+      "bytes": 705622,
+      "filename": "warder-160e-channel-black-4dc1677e96241425.zip.part01",
+      "sha256": "bad7f0ff624f48d3ec9d66ca2a752643077b91a476bb5ce59fd9802bcd48fce5"
     },
     {
-      "bytes": 2352242,
-      "filename": "warder-160e-channel-transparent-75faaf48edda4ed6.zip.part00",
-      "sha256": "75faaf48edda4ed60c8fd9ce4c3ba9905acfb935e422209b2a3f9b6ecfc09f96"
+      "bytes": 2353983,
+      "filename": "warder-160e-channel-transparent-a4b1c5347bb3f1d7.zip.part00",
+      "sha256": "a4b1c5347bb3f1d73b6b726061a072b40a61a952cb1298defdc0f4c2ca5a7eba"
     },
     {
       "bytes": 18874368,
-      "filename": "warder-160e-channel-white-4a2d64f89b19a222.zip.part00",
-      "sha256": "de8d16963feedf801f8ed9768c2175416754df3f2d397e05377510dc45bbf698"
+      "filename": "warder-160e-channel-white-420e27a6e92548fe.zip.part00",
+      "sha256": "8ac1413862624360ec5e110822ca18c4301a1b5695eb2542b5030112d3e9f66f"
     },
     {
-      "bytes": 1034415,
-      "filename": "warder-160e-channel-white-4a2d64f89b19a222.zip.part01",
-      "sha256": "a1c80a2c72e4d3596dec4df0947c11ede568d3a2ee1c3c400a181cdb0ce5a5c1"
+      "bytes": 1069697,
+      "filename": "warder-160e-channel-white-420e27a6e92548fe.zip.part01",
+      "sha256": "cf1ab8e93684822d9cd7ea82bda3f5f77baf24c7f31c1be7686cba9c6acf5425"
     },
     {
-      "bytes": 3754910,
-      "filename": "warder-antiksat-channel-black-f198a7222680a348.zip.part00",
-      "sha256": "f198a7222680a34883d49592f9f808d99141af9ad2486aa2c092a78ae22e8df4"
+      "bytes": 3789765,
+      "filename": "warder-antiksat-channel-black-5101ca2f9819e6a1.zip.part00",
+      "sha256": "5101ca2f9819e6a1c82a371fd2b1b06469d82b777d8c08f203438f409fb36954"
     },
     {
-      "bytes": 463210,
-      "filename": "warder-antiksat-channel-transparent-eb49e9d5bfa7330c.zip.part00",
-      "sha256": "eb49e9d5bfa7330c67d69abdc45fb847757968cb60b8887167cfdaa650aae5d8"
+      "bytes": 464951,
+      "filename": "warder-antiksat-channel-transparent-30e6c2e57406379d.zip.part00",
+      "sha256": "30e6c2e57406379d46eb085214e51e6ff302887cd8ec0c0f2bbd889b560ff855"
     },
     {
-      "bytes": 3819093,
-      "filename": "warder-antiksat-channel-white-c58cb573c6d2a6ce.zip.part00",
-      "sha256": "c58cb573c6d2a6ce62dfcf2c4b36987743bda2526aedfe4d0fac30241d264c19"
+      "bytes": 3854375,
+      "filename": "warder-antiksat-channel-white-855e005e44464120.zip.part00",
+      "sha256": "855e005e444641200f81eaba56ca220d337a0223b9537cbff0375b862d125525"
     }
   ],
   "schema": 1
