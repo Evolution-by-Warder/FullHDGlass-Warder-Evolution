@@ -11,8 +11,6 @@ DVB-T-SK-CZ	DVB-T sk/cz	dtt	EEE	2139	3664	1801	1349	4296	4044	1204	MISSING	No au
 220W	(22.0W) SES 4	satellite	22.0w	2063	3598	1721	1271	4230	3978	1131	MATCHED	Orbital tree exists
 150W	(15.0W) Telstar 12	satellite	15.0w	2048	3586	1708	1259	4218	3966	1119	MATCHED	Orbital tree exists
 140W	(14.0W) Express AM8	satellite	14.0w	2045	3584	1706	1257	4216	3964	1103	MATCHED	Orbital tree exists
-125W	(12.5W) Eutelsat 12 West A	satellite	12.5w	2041	3580	1701	1253	4212	3960	1101	MISSING	No orbital tree in current Warder Master
-110W	(11.0W) Express AM44	satellite	11.0w	2039	3578	1698	1251	4210	3958	1099	MISSING	No orbital tree in current Warder Master
 80W	(8.0W) Eutelsat 8 West B,D	satellite	8.0w	2033	3572	1691	1245	4204	3952	1092	MATCHED	Orbital tree exists
 70W	(7.0W) Nilesat 102,201/Eutelsat 7 West A	satellite	7.0w	2031	3570	1688	1243	4202	3950	1090	MATCHED	Orbital tree exists
 50W	(5.0W) Eutelsat 5 West A,B	satellite	5.0w	2026	3566	1684	1237	4198	3946	1085	MATCHED	Orbital tree exists
@@ -21,7 +19,6 @@ DVB-T-SK-CZ	DVB-T sk/cz	dtt	EEE	2139	3664	1801	1349	4296	4044	1204	MISSING	No au
 08W	(0.8W) Thor 5,6,7/Intelsat 10-02	satellite	0.8w	2006	3548	1663	1216	4180	3928	1066	MATCHED	Orbital tree exists
 19E	(1.9E) BulgariaSat-1	satellite	1.9e	2011	3552	1668	1221	4184	3932	1070	MATCHED	Orbital tree exists
 30E	(3.0E) Eutelsat 3B	satellite	3.0e	2013	3554	1670	1223	4186	3934	1072	MATCHED	Orbital tree exists
-31E	(3.1E) Eutelsat 3B	satellite	3.1e	2018	3558	1675	1228	4190	3938	1077	MISSING	No orbital tree in current Warder Master
 48E_A	(4.8E) SES 5/Astra 4A	satellite	4.8e	2022	3562	1679	1233	4194	3942	1081	MATCHED	Orbital tree exists
 48E_B	(4.9E) SES 5/Astra 4A	satellite	4.9e	2024	3564	1682	1235	4196	3944	1083	MISSING	Distinct legacy selector; no 4.9e tree
 70E	(7.0E) Eutelsat 7A/7B	satellite	7.0e	2029	3568	1686	1240	4200	3948	1087	MATCHED	Orbital tree exists
@@ -52,7 +49,4 @@ DVB-T-SK-CZ	DVB-T sk/cz	dtt	EEE	2139	3664	1801	1349	4296	4044	1204	MISSING	No au
 660E	(66.0E) Intelsat 17	satellite	66.0e	2118	3644	1778	1325	4276	4024	1182	MATCHED	Orbital tree exists
 685E	(68.5E) Intelsat 20 (IS-20)	satellite	68.5e	2120	3646	1781	1327	4278	4026	1184	MATCHED	Orbital tree exists
 705E	(70.5E) Eutelsat 70B	satellite	70.5e	2122	3648	1783	1330	4280	4028	1186	MATCHED	Orbital tree exists
-749E	(74.9E) ABS 2/ABS 2A	satellite	74.9e	2124	3650	1785	1332	4282	4030	1188	MISSING	No orbital tree in current Warder Master
 750E	(75.0E) ABS 2/ABS 2A	satellite	75.0e	2126	3652	1788	1335	4284	4032	1190	MATCHED	Orbital tree exists
-850E	(85.0E) Intelsat 15/Horizons 2	satellite	85.0e	2128	3654	1790	1337	4286	4034	1193	MISSING	No orbital tree in current Warder Master
-851E	(85.1E) Intelsat 15/Horizons 2	satellite	85.1e	2131	3656	1792	1339	4288	4036	1195	MISSING	No orbital tree in current Warder Master

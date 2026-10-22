@@ -763,14 +763,6 @@ _SELECTOR_LABEL_BINDINGS = {
         "140W",
         "14.0w"
     ),
-    "(12.5W) Eutelsat 12 West A": (
-        "125W",
-        "12.5w"
-    ),
-    "(11.0W) Express AM44": (
-        "110W",
-        "11.0w"
-    ),
     "(8.0W) Eutelsat 8 West B,D": (
         "80W",
         "8.0w"
@@ -802,10 +794,6 @@ _SELECTOR_LABEL_BINDINGS = {
     "(3.0E) Eutelsat 3B": (
         "30E",
         "3.0e"
-    ),
-    "(3.1E) Eutelsat 3B": (
-        "31E",
-        "3.1e"
     ),
     "(4.8E) SES 5/Astra 4A": (
         "48E_A",
@@ -927,10 +915,6 @@ _SELECTOR_LABEL_BINDINGS = {
         "705E",
         "70.5e"
     ),
-    "(74.9E) ABS 2/ABS 2A": (
-        "749E",
-        "74.9e"
-    ),
     "(75.0E) ABS 2/ABS 2A": (
         "750E",
         "75.0e"
@@ -938,14 +922,6 @@ _SELECTOR_LABEL_BINDINGS = {
     "(80.0E) Satelit 80.0E": ("800E", "80.0e"),
     "(0.8W) Digi": ("DIGI_TELLY", "0.8w"),
     "(0.8W) Telly": ("DIGI_TELLY", "0.8w"),
-    "(85.0E) Intelsat 15/Horizons 2": (
-        "850E",
-        "85.0e"
-    ),
-    "(85.1E) Intelsat 15/Horizons 2": (
-        "851E",
-        "85.1e"
-    ),
     "(0.8W) Digi/Telly": (
         "DIGI_TELLY",
         "0.8w"
@@ -965,8 +941,6 @@ _SELECTOR_ID_TO_POSITION = {
     "220W": "22.0w",
     "150W": "15.0w",
     "140W": "14.0w",
-    "125W": "12.5w",
-    "110W": "11.0w",
     "80W": "8.0w",
     "70W": "7.0w",
     "50W": "5.0w",
@@ -975,7 +949,6 @@ _SELECTOR_ID_TO_POSITION = {
     "08W": "0.8w",
     "19E": "1.9e",
     "30E": "3.0e",
-    "31E": "3.1e",
     "48E_A": "4.8e",
     "48E_B": "4.9e",
     "70E": "7.0e",
@@ -1006,11 +979,8 @@ _SELECTOR_ID_TO_POSITION = {
     "660E": "66.0e",
     "685E": "68.5e",
     "705E": "70.5e",
-    "749E": "74.9e",
     "750E": "75.0e",
     "800E": "80.0e",
-    "850E": "85.0e",
-    "851E": "85.1e"
 }
 
 def position_binding(selector_id):
