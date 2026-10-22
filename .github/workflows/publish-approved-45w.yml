@@ -1,0 +1,40 @@
+name: Publish approved 45W 400x240 packages
+on:
+  push:
+    branches: [release/approved-45w-400x240-20261022]
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: contains(github.event.head_commit.message, 'Publish approved 45W 400x240')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      APPROVED_45W_REF: 260fe8294a633dceef88988f77d6ff0e849fb956
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-approved-45w.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+      - name: Verify approved PNGs and build production and candidate download plans
+        run: python3 -u tools/publish-approved-45w.py
+      - name: Commit verified data-only packages
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/approved-45w-400x240-20261022.json
+          git diff --cached --check
+          git commit -m 'Add three approved 45W 400x240 packages without replacing existing picons'
+          git push origin HEAD:release/approved-45w-400x240-20261022
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: approved-45w-400x240-verification
+          path: reports/approved-45w-400x240-20261022.json
