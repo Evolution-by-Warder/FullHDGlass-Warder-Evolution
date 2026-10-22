@@ -9,7 +9,7 @@ import struct
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_REF = "95bbbd6b2c5919087a3579deb84ead04e62323b3"
+SOURCE_REF = "a1858a7d5233fa6bf3de5b51394596a98aa645a9"
 COUNTS = {"sk": {"transparent": 226, "white": 226, "black": 228},
           "cz": {"transparent": 231, "white": 231, "black": 231}}
 SK_BLACK_ADDITIONS = {"1_0_1_3C30_C90_3_EB0000_0_0_0.png", "1_0_1_1F4B_CA1_3_EB0000_0_0_0.png"}
