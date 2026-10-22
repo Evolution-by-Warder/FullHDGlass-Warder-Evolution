@@ -2,6 +2,9 @@ name: Publish approved Network4 picons
 on:
   push:
     branches: [release/network4-approved-20261022]
+concurrency:
+  group: warder-network4-publication
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -15,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /tools/publish-network4-approved.py
