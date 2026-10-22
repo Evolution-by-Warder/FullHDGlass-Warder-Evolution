@@ -1,0 +1,34 @@
+{
+  "source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+  "approved_pngs": 15,
+  "packages": [
+    {
+      "style": "transparent",
+      "filename": "warder-450w-400x240-transparent-d24acb5fefadb8aa.zip",
+      "part": "warder-450w-400x240-transparent-d24acb5fefadb8aa.zip.part00",
+      "bytes": 177559,
+      "sha256": "d24acb5fefadb8aaf38884d8004635c253d1437dd6802785486d399e992cdba0",
+      "png_count": 5
+    },
+    {
+      "style": "white",
+      "filename": "warder-450w-400x240-white-d003b4d837d7d00b.zip",
+      "part": "warder-450w-400x240-white-d003b4d837d7d00b.zip.part00",
+      "bytes": 460536,
+      "sha256": "d003b4d837d7d00bb83ea187507b52dd9518259918d346dc2b69b253fb31f134",
+      "png_count": 5
+    },
+    {
+      "style": "black",
+      "filename": "warder-450w-400x240-black-4f042227f5f07a68.zip",
+      "part": "warder-450w-400x240-black-4f042227f5f07a68.zip.part00",
+      "bytes": 445519,
+      "sha256": "4f042227f5f07a68f74e9d2711cb5880164d9f4f9af978b170a59389f28523e8",
+      "png_count": 5
+    }
+  ],
+  "existing_220x132_and_all_other_packages_unchanged": true,
+  "receiver_download_plans_passed": 12,
+  "new_ipk_required": false,
+  "current_ipk": "1.0.15"
+}

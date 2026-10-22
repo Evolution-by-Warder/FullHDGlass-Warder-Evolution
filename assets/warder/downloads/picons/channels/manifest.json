@@ -3,6 +3,17 @@
     "policy": "add-missing-only-preserve-every-existing-png-byte",
     "source_ref": "2d5b1ec8d37742825bb5571508c856d919590377"
   },
+  "approved_45w_400x240_source": {
+    "png_count": 15,
+    "ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+    "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+    "source_220x132_preserved": true,
+    "styles": [
+      "transparent",
+      "white",
+      "black"
+    ]
+  },
   "approved_amc_unified_black_source": {
     "ref": "a1858a7d5233fa6bf3de5b51394596a98aa645a9",
     "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution"
@@ -21843,6 +21854,78 @@
       "source_ref": "7fb51701b757988fe4426acf5b57405334928f80",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "68.5e"
+    },
+    {
+      "approved_resampling": {
+        "approved_source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+        "method": "premultiplied-alpha LANCZOS",
+        "source_png_count": 5,
+        "source_resolution": "220x132",
+        "target_resolution": "400x240"
+      },
+      "bytes": 177559,
+      "family": "channel-transparent",
+      "filename": "warder-450w-400x240-transparent-d24acb5fefadb8aa.zip",
+      "kind": "satellite",
+      "orbital_position": "45.0w",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-450w-400x240-transparent-d24acb5fefadb8aa.zip.part00"
+      ],
+      "png_count": 5,
+      "resolution": "400x240",
+      "selector_id": "450W",
+      "sha256": "d24acb5fefadb8aaf38884d8004635c253d1437dd6802785486d399e992cdba0",
+      "source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+      "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+      "warder_key": "45.0w"
+    },
+    {
+      "approved_resampling": {
+        "approved_source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+        "method": "premultiplied-alpha LANCZOS",
+        "source_png_count": 5,
+        "source_resolution": "220x132",
+        "target_resolution": "400x240"
+      },
+      "bytes": 460536,
+      "family": "channel-white",
+      "filename": "warder-450w-400x240-white-d003b4d837d7d00b.zip",
+      "kind": "satellite",
+      "orbital_position": "45.0w",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-450w-400x240-white-d003b4d837d7d00b.zip.part00"
+      ],
+      "png_count": 5,
+      "resolution": "400x240",
+      "selector_id": "450W",
+      "sha256": "d003b4d837d7d00bb83ea187507b52dd9518259918d346dc2b69b253fb31f134",
+      "source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+      "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+      "warder_key": "45.0w"
+    },
+    {
+      "approved_resampling": {
+        "approved_source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+        "method": "premultiplied-alpha LANCZOS",
+        "source_png_count": 5,
+        "source_resolution": "220x132",
+        "target_resolution": "400x240"
+      },
+      "bytes": 445519,
+      "family": "channel-black",
+      "filename": "warder-450w-400x240-black-4f042227f5f07a68.zip",
+      "kind": "satellite",
+      "orbital_position": "45.0w",
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-450w-400x240-black-4f042227f5f07a68.zip.part00"
+      ],
+      "png_count": 5,
+      "resolution": "400x240",
+      "selector_id": "450W",
+      "sha256": "4f042227f5f07a68f74e9d2711cb5880164d9f4f9af978b170a59389f28523e8",
+      "source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
+      "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+      "warder_key": "45.0w"
     }
   ],
   "parts": [
@@ -23610,6 +23693,21 @@
       "bytes": 181887,
       "filename": "warder-450e-50x30-white-0f1b31a254e8eacc.zip.part00",
       "sha256": "0f1b31a254e8eacc55145d8effde7a3df417b7b2012e260c1fe69ee9a0dc045d"
+    },
+    {
+      "bytes": 445519,
+      "filename": "warder-450w-400x240-black-4f042227f5f07a68.zip.part00",
+      "sha256": "4f042227f5f07a68f74e9d2711cb5880164d9f4f9af978b170a59389f28523e8"
+    },
+    {
+      "bytes": 177559,
+      "filename": "warder-450w-400x240-transparent-d24acb5fefadb8aa.zip.part00",
+      "sha256": "d24acb5fefadb8aaf38884d8004635c253d1437dd6802785486d399e992cdba0"
+    },
+    {
+      "bytes": 460536,
+      "filename": "warder-450w-400x240-white-d003b4d837d7d00b.zip.part00",
+      "sha256": "d003b4d837d7d00bb83ea187507b52dd9518259918d346dc2b69b253fb31f134"
     },
     {
       "bytes": 181166,
