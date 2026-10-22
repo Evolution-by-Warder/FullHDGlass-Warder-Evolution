@@ -93,3 +93,5 @@ for suffix,doc in docs.items():
   prefs=sync.set_task_position_bindings(sync.default_preferences(),[binding]);prefs.update(resolution=size,style=family.removeprefix('channel-'),update_mode=sync.UPDATE_MODE_INCREMENTAL);queue=sync.build_runtime_queue(prefs,publication={'persistent':True,'manifest_url':url});jobs=sync.build_download_jobs(doc,sync.plan_runtime_packages(doc,queue,url),url);assert jobs['state']=='ready' and len(jobs['jobs'])==1,(sel,size,family,jobs);checks+=1
 report={'source_ref':REF,'approved_png_count':26,'archive_count_verified':verified,'packages':reports,'package_count':len(updates),'unrelated_artwork_unchanged':True,'correct_cz_sk_220_preserved':True,'receiver_planner_checks':checks,'ipk_changed':False}
 (R/'reports').mkdir(exist_ok=True);(R/'reports/network4-publication-20261022.json').write_text(json.dumps(report,indent=2)+'\n');print('DONE',len(updates),'packages',checks,'receiver plans',flush=True)
+
+# Approved batch: user confirmed all 26 review PNGs before publication.
