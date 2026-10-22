@@ -1,0 +1,116 @@
+{
+  "ipk_version_unchanged": "1.0.13",
+  "packages": [
+    {
+      "amc_references": [
+        "1_0_1_36FB_C8C_3_EB0000_0_0_0.png",
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_4E5A_C9C_3_EB0000_0_0_0.png"
+      ],
+      "approved_png_sha256": "02eb4c7e6b9257471e10140f71f3fc8f385ee63f3ac7d0d73dab4e3056e1eab7",
+      "catalog": "production",
+      "changed_pngs": [
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_4E5A_C9C_3_EB0000_0_0_0.png"
+      ],
+      "filename": "warder-235e-channel-black-1f5544e6ffe11e98.zip",
+      "png_count": 762,
+      "receiver_install_verified": true,
+      "selector": "235E",
+      "sha256": "1f5544e6ffe11e986be7e9c34c8b420ce5c852f054981787929546dd89699cc5",
+      "untouched_png_count": 759
+    },
+    {
+      "amc_references": [
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png"
+      ],
+      "approved_png_sha256": "02eb4c7e6b9257471e10140f71f3fc8f385ee63f3ac7d0d73dab4e3056e1eab7",
+      "catalog": "production",
+      "changed_pngs": [
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png"
+      ],
+      "filename": "canalplus_sk_black_220x132_2c6e5058f045c7b6.zip",
+      "png_count": 228,
+      "receiver_install_verified": true,
+      "selector": "CANALPLUS_SK",
+      "sha256": "2c6e5058f045c7b65eb78be5029f828716bed23155d87fbc2f50162564fc36f3",
+      "untouched_png_count": 227
+    },
+    {
+      "amc_references": [
+        "1_0_1_36FB_C8C_3_EB0000_0_0_0.png"
+      ],
+      "approved_png_sha256": "02eb4c7e6b9257471e10140f71f3fc8f385ee63f3ac7d0d73dab4e3056e1eab7",
+      "catalog": "production",
+      "changed_pngs": [
+        "1_0_1_36FB_C8C_3_EB0000_0_0_0.png"
+      ],
+      "filename": "canalplus_cz_black_220x132_949ec06f2aefd7aa.zip",
+      "png_count": 231,
+      "receiver_install_verified": true,
+      "selector": "CANALPLUS_CZ",
+      "sha256": "949ec06f2aefd7aa61af6087c8693a119b7796e52c39aaf64b2ecbe89c1083ab",
+      "untouched_png_count": 230
+    },
+    {
+      "amc_references": [
+        "1_0_1_36FB_C8C_3_EB0000_0_0_0.png",
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_4E5A_C9C_3_EB0000_0_0_0.png"
+      ],
+      "approved_png_sha256": "02eb4c7e6b9257471e10140f71f3fc8f385ee63f3ac7d0d73dab4e3056e1eab7",
+      "catalog": "test-candidate",
+      "changed_pngs": [
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_4E5A_C9C_3_EB0000_0_0_0.png"
+      ],
+      "filename": "warder-235e-channel-black-1f5544e6ffe11e98.zip",
+      "png_count": 762,
+      "receiver_install_verified": true,
+      "selector": "235E",
+      "sha256": "1f5544e6ffe11e986be7e9c34c8b420ce5c852f054981787929546dd89699cc5",
+      "untouched_png_count": 759
+    },
+    {
+      "amc_references": [
+        "1_0_1_36FB_C8C_3_EB0000_0_0_0.png"
+      ],
+      "approved_png_sha256": "02eb4c7e6b9257471e10140f71f3fc8f385ee63f3ac7d0d73dab4e3056e1eab7",
+      "catalog": "test-candidate",
+      "changed_pngs": [
+        "1_0_1_36FB_C8C_3_EB0000_0_0_0.png"
+      ],
+      "filename": "canalplus_cz_black_220x132_949ec06f2aefd7aa.zip",
+      "png_count": 231,
+      "receiver_install_verified": true,
+      "selector": "CANALPLUS_CZ",
+      "sha256": "949ec06f2aefd7aa61af6087c8693a119b7796e52c39aaf64b2ecbe89c1083ab",
+      "untouched_png_count": 230
+    },
+    {
+      "amc_references": [
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png"
+      ],
+      "approved_png_sha256": "02eb4c7e6b9257471e10140f71f3fc8f385ee63f3ac7d0d73dab4e3056e1eab7",
+      "catalog": "test-candidate",
+      "changed_pngs": [
+        "1_0_1_372B_C8E_3_EB0000_0_0_0.png"
+      ],
+      "filename": "canalplus_sk_black_220x132_2c6e5058f045c7b6.zip",
+      "png_count": 228,
+      "receiver_install_verified": true,
+      "selector": "CANALPLUS_SK",
+      "sha256": "2c6e5058f045c7b65eb78be5029f828716bed23155d87fbc2f50162564fc36f3",
+      "untouched_png_count": 227
+    }
+  ],
+  "protected_files": {
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/control/control": "50c495eb88756d554020cb0f080ec50cce38bed78bf349f06ab2109a58dbf1a3",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py": "2d89e67cdbcafa9a78e6811bdd6b1fb7947340a0085e267131b92b1855d8db5c",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version": "5824fda1c95e4d81285e2033e99b2f2e239814fac7bef865cb49a451f568efe7",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py": "78e4f4ab666824f2abca3e81ec42e0b97fa946da2d78fdd5566b1be96c9f9361",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/update-test.json": "fd3416df40a2b8a060525b7811a829242ba858351d163035fa05b11ce0d6d0d3",
+    "/home/runner/work/FullHDGlass-Warder-Evolution/FullHDGlass-Warder-Evolution/update.json": "fd3416df40a2b8a060525b7811a829242ba858351d163035fa05b11ce0d6d0d3"
+  },
+  "source_ref": "a1858a7d5233fa6bf3de5b51394596a98aa645a9"
+}
