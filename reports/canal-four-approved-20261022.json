@@ -1,0 +1,416 @@
+[
+  {
+    "added": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c03cf8743ef3c004ff0bbcb13bb2ea2ba1261cad6d36b7554ab6682470a1c3c5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "9b7d6f5d5bbfc0c5355e7d1fd13da950e6cbaeb9be367f2fad2c10796b383dca",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "32c207adb37cf6300a1657f032a70a1a7823be76ef5a32d85306da73659ebfce",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "ad8b354b73ee78bbc5ee1c3b92b50f9a4366d566c3d732492301a99c4f315dbc"
+    },
+    "catalog": "production",
+    "filename": "warder-235e-channel-transparent-97b5fddbda515c4c.zip",
+    "png_count": 762,
+    "receiver_install_verified": true,
+    "replaced": [],
+    "selector": "235E",
+    "sha256": "97b5fddbda515c4c8edb7da987e7d46f80b4aecc04d47444c4f8ec2d2b8f2574",
+    "style": "transparent",
+    "untouched_png_count": 758
+  },
+  {
+    "added": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "9d6346a2352d560e4188a5c81194d75223e3c5f1f53d276eda45a05e00450d14",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "f579617e6ca8cf6757b9b4ce50f2a15bb9fe40566da7be5f0a54cf2bd844e236",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "ecf14a590db48c787cd5a98cf09ec6f7e4e662ecc5866cfd235180056ec64b87",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "832bce8bbaa2719d3bb1afc335a18c4848c8e5f58a2600061e9a61880e4c1508"
+    },
+    "catalog": "production",
+    "filename": "warder-235e-channel-black-fcae56214e080780.zip",
+    "png_count": 762,
+    "receiver_install_verified": true,
+    "replaced": [],
+    "selector": "235E",
+    "sha256": "fcae56214e0807803c5502f6f89ee90a8756ab3314a9f458067b68615941814a",
+    "style": "black",
+    "untouched_png_count": 758
+  },
+  {
+    "added": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "bea165c4f910035f9a3456945c62ea7068505bcc9a76531f5f516ebc5fff67d5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "42899d10adaa2778b56bb7d944147f6789a025cfd9a965b42ca590124e22d361",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "a8a29ff743790925f191e9612a4293233c14d8c4a71b24bc392044a5ef0388ee",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8500f0c53d93ebbed4b557f31336df2a71edc51a20b8886b714bddf41dd1d4f4"
+    },
+    "catalog": "production",
+    "filename": "warder-235e-channel-white-369351259cfb18de.zip",
+    "png_count": 762,
+    "receiver_install_verified": true,
+    "replaced": [],
+    "selector": "235E",
+    "sha256": "369351259cfb18deaefdab96985ca47eca7c9d6557f521cda4688d363373508b",
+    "style": "white",
+    "untouched_png_count": 758
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c03cf8743ef3c004ff0bbcb13bb2ea2ba1261cad6d36b7554ab6682470a1c3c5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "9b7d6f5d5bbfc0c5355e7d1fd13da950e6cbaeb9be367f2fad2c10796b383dca",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "32c207adb37cf6300a1657f032a70a1a7823be76ef5a32d85306da73659ebfce",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "ad8b354b73ee78bbc5ee1c3b92b50f9a4366d566c3d732492301a99c4f315dbc"
+    },
+    "catalog": "production",
+    "filename": "canalplus_sk_transparent_220x132_a30246f379770aeb.zip",
+    "png_count": 226,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_SK",
+    "sha256": "a30246f379770aeb207ab48c69ae7ac3430462c03db0f38da93b3e08b908424a",
+    "style": "transparent",
+    "untouched_png_count": 222
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "bea165c4f910035f9a3456945c62ea7068505bcc9a76531f5f516ebc5fff67d5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "42899d10adaa2778b56bb7d944147f6789a025cfd9a965b42ca590124e22d361",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "a8a29ff743790925f191e9612a4293233c14d8c4a71b24bc392044a5ef0388ee",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8500f0c53d93ebbed4b557f31336df2a71edc51a20b8886b714bddf41dd1d4f4"
+    },
+    "catalog": "production",
+    "filename": "canalplus_sk_white_220x132_6f60580dfdb5fa52.zip",
+    "png_count": 226,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_SK",
+    "sha256": "6f60580dfdb5fa5228ef018af8b8be109107ba0ec458f2ac477e585c271966c4",
+    "style": "white",
+    "untouched_png_count": 222
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "9d6346a2352d560e4188a5c81194d75223e3c5f1f53d276eda45a05e00450d14",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "f579617e6ca8cf6757b9b4ce50f2a15bb9fe40566da7be5f0a54cf2bd844e236",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "ecf14a590db48c787cd5a98cf09ec6f7e4e662ecc5866cfd235180056ec64b87",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "832bce8bbaa2719d3bb1afc335a18c4848c8e5f58a2600061e9a61880e4c1508"
+    },
+    "catalog": "production",
+    "filename": "canalplus_sk_black_220x132_06db70e200195bbb.zip",
+    "png_count": 228,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_SK",
+    "sha256": "06db70e200195bbb9018419dcce32747dd13e817fffe5fecaf134151f92852a4",
+    "style": "black",
+    "untouched_png_count": 224
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c03cf8743ef3c004ff0bbcb13bb2ea2ba1261cad6d36b7554ab6682470a1c3c5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "9b7d6f5d5bbfc0c5355e7d1fd13da950e6cbaeb9be367f2fad2c10796b383dca",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "32c207adb37cf6300a1657f032a70a1a7823be76ef5a32d85306da73659ebfce",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "ad8b354b73ee78bbc5ee1c3b92b50f9a4366d566c3d732492301a99c4f315dbc"
+    },
+    "catalog": "production",
+    "filename": "canalplus_cz_transparent_220x132_844dd1c44d32ccb7.zip",
+    "png_count": 231,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_CZ",
+    "sha256": "844dd1c44d32ccb759fbaf67bb62e54c3b003ba57e2c5754b951dfdc833a5a62",
+    "style": "transparent",
+    "untouched_png_count": 227
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "bea165c4f910035f9a3456945c62ea7068505bcc9a76531f5f516ebc5fff67d5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "42899d10adaa2778b56bb7d944147f6789a025cfd9a965b42ca590124e22d361",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "a8a29ff743790925f191e9612a4293233c14d8c4a71b24bc392044a5ef0388ee",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8500f0c53d93ebbed4b557f31336df2a71edc51a20b8886b714bddf41dd1d4f4"
+    },
+    "catalog": "production",
+    "filename": "canalplus_cz_white_220x132_f3c20763334c2b6a.zip",
+    "png_count": 231,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_CZ",
+    "sha256": "f3c20763334c2b6af2329b923703318813d0e65a0fd76faba26e944cb72c0f4f",
+    "style": "white",
+    "untouched_png_count": 227
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "9d6346a2352d560e4188a5c81194d75223e3c5f1f53d276eda45a05e00450d14",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "f579617e6ca8cf6757b9b4ce50f2a15bb9fe40566da7be5f0a54cf2bd844e236",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "ecf14a590db48c787cd5a98cf09ec6f7e4e662ecc5866cfd235180056ec64b87",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "832bce8bbaa2719d3bb1afc335a18c4848c8e5f58a2600061e9a61880e4c1508"
+    },
+    "catalog": "production",
+    "filename": "canalplus_cz_black_220x132_3dc61d8856fda5d7.zip",
+    "png_count": 231,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_CZ",
+    "sha256": "3dc61d8856fda5d757b36609a04a6be4768b045ec71fda6226f8e9709f8a49bf",
+    "style": "black",
+    "untouched_png_count": 227
+  },
+  {
+    "added": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "9d6346a2352d560e4188a5c81194d75223e3c5f1f53d276eda45a05e00450d14",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "f579617e6ca8cf6757b9b4ce50f2a15bb9fe40566da7be5f0a54cf2bd844e236",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "ecf14a590db48c787cd5a98cf09ec6f7e4e662ecc5866cfd235180056ec64b87",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "832bce8bbaa2719d3bb1afc335a18c4848c8e5f58a2600061e9a61880e4c1508"
+    },
+    "catalog": "test-candidate",
+    "filename": "warder-235e-channel-black-fcae56214e080780.zip",
+    "png_count": 762,
+    "receiver_install_verified": true,
+    "replaced": [],
+    "selector": "235E",
+    "sha256": "fcae56214e0807803c5502f6f89ee90a8756ab3314a9f458067b68615941814a",
+    "style": "black",
+    "untouched_png_count": 758
+  },
+  {
+    "added": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c03cf8743ef3c004ff0bbcb13bb2ea2ba1261cad6d36b7554ab6682470a1c3c5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "9b7d6f5d5bbfc0c5355e7d1fd13da950e6cbaeb9be367f2fad2c10796b383dca",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "32c207adb37cf6300a1657f032a70a1a7823be76ef5a32d85306da73659ebfce",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "ad8b354b73ee78bbc5ee1c3b92b50f9a4366d566c3d732492301a99c4f315dbc"
+    },
+    "catalog": "test-candidate",
+    "filename": "warder-235e-channel-transparent-97b5fddbda515c4c.zip",
+    "png_count": 762,
+    "receiver_install_verified": true,
+    "replaced": [],
+    "selector": "235E",
+    "sha256": "97b5fddbda515c4c8edb7da987e7d46f80b4aecc04d47444c4f8ec2d2b8f2574",
+    "style": "transparent",
+    "untouched_png_count": 758
+  },
+  {
+    "added": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "bea165c4f910035f9a3456945c62ea7068505bcc9a76531f5f516ebc5fff67d5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "42899d10adaa2778b56bb7d944147f6789a025cfd9a965b42ca590124e22d361",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "a8a29ff743790925f191e9612a4293233c14d8c4a71b24bc392044a5ef0388ee",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8500f0c53d93ebbed4b557f31336df2a71edc51a20b8886b714bddf41dd1d4f4"
+    },
+    "catalog": "test-candidate",
+    "filename": "warder-235e-channel-white-369351259cfb18de.zip",
+    "png_count": 762,
+    "receiver_install_verified": true,
+    "replaced": [],
+    "selector": "235E",
+    "sha256": "369351259cfb18deaefdab96985ca47eca7c9d6557f521cda4688d363373508b",
+    "style": "white",
+    "untouched_png_count": 758
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "9d6346a2352d560e4188a5c81194d75223e3c5f1f53d276eda45a05e00450d14",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "f579617e6ca8cf6757b9b4ce50f2a15bb9fe40566da7be5f0a54cf2bd844e236",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "ecf14a590db48c787cd5a98cf09ec6f7e4e662ecc5866cfd235180056ec64b87",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "832bce8bbaa2719d3bb1afc335a18c4848c8e5f58a2600061e9a61880e4c1508"
+    },
+    "catalog": "test-candidate",
+    "filename": "canalplus_cz_black_220x132_3dc61d8856fda5d7.zip",
+    "png_count": 231,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_CZ",
+    "sha256": "3dc61d8856fda5d757b36609a04a6be4768b045ec71fda6226f8e9709f8a49bf",
+    "style": "black",
+    "untouched_png_count": 227
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c03cf8743ef3c004ff0bbcb13bb2ea2ba1261cad6d36b7554ab6682470a1c3c5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "9b7d6f5d5bbfc0c5355e7d1fd13da950e6cbaeb9be367f2fad2c10796b383dca",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "32c207adb37cf6300a1657f032a70a1a7823be76ef5a32d85306da73659ebfce",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "ad8b354b73ee78bbc5ee1c3b92b50f9a4366d566c3d732492301a99c4f315dbc"
+    },
+    "catalog": "test-candidate",
+    "filename": "canalplus_cz_transparent_220x132_844dd1c44d32ccb7.zip",
+    "png_count": 231,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_CZ",
+    "sha256": "844dd1c44d32ccb759fbaf67bb62e54c3b003ba57e2c5754b951dfdc833a5a62",
+    "style": "transparent",
+    "untouched_png_count": 227
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "bea165c4f910035f9a3456945c62ea7068505bcc9a76531f5f516ebc5fff67d5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "42899d10adaa2778b56bb7d944147f6789a025cfd9a965b42ca590124e22d361",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "a8a29ff743790925f191e9612a4293233c14d8c4a71b24bc392044a5ef0388ee",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8500f0c53d93ebbed4b557f31336df2a71edc51a20b8886b714bddf41dd1d4f4"
+    },
+    "catalog": "test-candidate",
+    "filename": "canalplus_cz_white_220x132_f3c20763334c2b6a.zip",
+    "png_count": 231,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_CZ",
+    "sha256": "f3c20763334c2b6af2329b923703318813d0e65a0fd76faba26e944cb72c0f4f",
+    "style": "white",
+    "untouched_png_count": 227
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "9d6346a2352d560e4188a5c81194d75223e3c5f1f53d276eda45a05e00450d14",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "f579617e6ca8cf6757b9b4ce50f2a15bb9fe40566da7be5f0a54cf2bd844e236",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "ecf14a590db48c787cd5a98cf09ec6f7e4e662ecc5866cfd235180056ec64b87",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "832bce8bbaa2719d3bb1afc335a18c4848c8e5f58a2600061e9a61880e4c1508"
+    },
+    "catalog": "test-candidate",
+    "filename": "canalplus_sk_black_220x132_06db70e200195bbb.zip",
+    "png_count": 228,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_SK",
+    "sha256": "06db70e200195bbb9018419dcce32747dd13e817fffe5fecaf134151f92852a4",
+    "style": "black",
+    "untouched_png_count": 224
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c03cf8743ef3c004ff0bbcb13bb2ea2ba1261cad6d36b7554ab6682470a1c3c5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "9b7d6f5d5bbfc0c5355e7d1fd13da950e6cbaeb9be367f2fad2c10796b383dca",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "32c207adb37cf6300a1657f032a70a1a7823be76ef5a32d85306da73659ebfce",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "ad8b354b73ee78bbc5ee1c3b92b50f9a4366d566c3d732492301a99c4f315dbc"
+    },
+    "catalog": "test-candidate",
+    "filename": "canalplus_sk_transparent_220x132_a30246f379770aeb.zip",
+    "png_count": 226,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_SK",
+    "sha256": "a30246f379770aeb207ab48c69ae7ac3430462c03db0f38da93b3e08b908424a",
+    "style": "transparent",
+    "untouched_png_count": 222
+  },
+  {
+    "added": [],
+    "approved_pngs": {
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "bea165c4f910035f9a3456945c62ea7068505bcc9a76531f5f516ebc5fff67d5",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png": "42899d10adaa2778b56bb7d944147f6789a025cfd9a965b42ca590124e22d361",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "a8a29ff743790925f191e9612a4293233c14d8c4a71b24bc392044a5ef0388ee",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8500f0c53d93ebbed4b557f31336df2a71edc51a20b8886b714bddf41dd1d4f4"
+    },
+    "catalog": "test-candidate",
+    "filename": "canalplus_sk_white_220x132_6f60580dfdb5fa52.zip",
+    "png_count": 226,
+    "receiver_install_verified": true,
+    "replaced": [
+      "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+      "1_0_1_334C_C93_3_EB0000_0_0_0.png",
+      "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+      "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+    ],
+    "selector": "CANALPLUS_SK",
+    "sha256": "6f60580dfdb5fa5228ef018af8b8be109107ba0ec458f2ac477e585c271966c4",
+    "style": "white",
+    "untouched_png_count": 222
+  }
+]
