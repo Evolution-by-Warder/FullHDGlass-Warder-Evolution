@@ -1,0 +1,41 @@
+name: Publish approved GioppyGio 68.5E packages
+on:
+  push:
+    branches: [release/gioppygio-685e-approved-20261022]
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: contains(github.event.head_commit.message, 'Publish approved 68.5E picons')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      APPROVED_PICON_REF: 7fb51701b757988fe4426acf5b57405334928f80
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/publish-approved-685e.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            assets/warder/downloads/picons/channels/manifest.json
+            assets/warder/downloads/picons/channels/SHA256SUMS
+            assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+            docs/PICON-CATALOG-UPDATES.md
+      - name: Append missing picons and verify with receiver download planner
+        run: python3 -u tools/publish-approved-685e.py
+      - name: Commit verified data-only catalogue update
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add assets/warder/downloads/picons/channels reports/gioppygio-685e-publication-20261022.json
+          git diff --cached --check
+          git commit -m 'Publish approved GG-free 68.5E additions and transparent 400x240 package'
+          git push origin HEAD:release/gioppygio-685e-approved-20261022
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gioppygio-685e-publication-verification
+          path: reports/gioppygio-685e-publication-20261022.json
