@@ -1,0 +1,41 @@
+name: Publish approved Network4 picons
+on:
+  push:
+    branches: [release/network4-approved-20261022]
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: contains(github.event.head_commit.message, 'Publish approved Network4 packages')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      APPROVED_PICON_REF: 092498eb12f78fe2370b5341c9391fc3fd5dc62d
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-network4-approved.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+      - run: python3 -m pip install 'Pillow==11.3.0'
+      - name: Publish exact approved artwork and verify unrelated files
+        run: python3 -u tools/publish-network4-approved.py
+      - name: Commit verified data-only archives
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/network4-publication-20261022.json
+          git diff --cached --check
+          git commit -m 'Refresh approved Network4 and contrast corrections in picon archives'
+          git push origin HEAD:release/network4-approved-20261022
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: network4-publication-verification
+          path: reports/network4-publication-20261022.json
