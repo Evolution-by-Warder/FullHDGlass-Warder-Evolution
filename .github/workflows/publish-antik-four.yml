@@ -1,0 +1,48 @@
+name: Copy four picons from 23.5E to AntikSAT and 16E
+on:
+  push:
+    branches: [picons/antik-four-20261022]
+    paths: [.github/workflows/publish-antik-four.yml, tools/publish-antik-four.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/picons/antik-four-20261022'
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /update.json
+            /update-test.json
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /assets/warder/downloads/picons/channels/test-candidate/manifest.json
+            /assets/warder/downloads/picons/channels/test-candidate/SHA256SUMS
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 2ebae62fd463e8aaed6ca2348ae35a1e0fd62f52
+          path: .approved-picons
+          sparse-checkout: |
+            picons/23.5e/skylink
+            picons/16.0e/antiksat
+            migration/antik-four-from-235e-20261022
+      - name: Copy existing artwork and verify native AntikSAT and 16E installation
+        run: |
+          python3 tools/publish-antik-four.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/antik-four-from-235e-20261022.json
+          git commit -m 'Update Doma CT24 AMC JOJ Sport picons for AntikSAT and 16E; preserve IPK 1.0.13'
+          git push origin HEAD:refs/heads/picons/antik-four-20261022
+      - uses: actions/upload-artifact@v4
+        with:
+          name: antik-four-data-only-verification
+          path: reports/antik-four-from-235e-20261022.json
