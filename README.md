@@ -2,9 +2,9 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Latest approved release: 1.0.14
+## Latest approved release: 1.0.15
 
-[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.14_all.ipk).
+[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.15_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.14.
 
@@ -71,3 +71,5 @@ Release 1.0.12 replaces the four approved Canal+ channel picons in all three sty
 Release 1.0.13 follows the current approved main channel-picon catalogue at each download. Future channel-picon content changes need only archive/catalogue publication, without another IPK. Source, redirect, size and SHA-256 checks remain enabled. See [picon update policy](docs/PICON-CATALOG-UPDATES.md).
 
 Release 1.0.14 connects the supplied original 50x30, 220x132 and 400x240 position sets through the live catalogue. Existing PNGs take precedence, especially at 16.0E and 23.5E.
+
+Release 1.0.15 removes the six unsupported picon positions and their legacy download selectors. All 45 supported satellite positions, existing picons and receiver-confirmed radio graphics remain unchanged.

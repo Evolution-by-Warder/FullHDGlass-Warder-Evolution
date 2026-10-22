@@ -1,0 +1,16 @@
+{
+  "version": "1.0.15",
+  "sha256": "f06208c40d8798301ed5499c2c0f8110b270fb3dacfd92c88005d204bc73fa0d",
+  "removed_selectors": [
+    "125W",
+    "110W",
+    "31E",
+    "749E",
+    "850E",
+    "851E"
+  ],
+  "supported_numeric_positions": 45,
+  "all_supported_220x132_styles_verified": 135,
+  "radio_graphics_and_layout_unchanged": true,
+  "resampling_45w_400x240": "prepared separately for visual approval; original 220x132 retained"
+}
