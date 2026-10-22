@@ -94,4 +94,4 @@ for suffix,doc in docs.items():
 report={'source_ref':REF,'approved_png_count':26,'archive_count_verified':verified,'packages':reports,'package_count':len(updates),'unrelated_artwork_unchanged':True,'correct_cz_sk_220_preserved':True,'receiver_planner_checks':checks,'ipk_changed':False}
 (R/'reports').mkdir(exist_ok=True);(R/'reports/network4-publication-20261022.json').write_text(json.dumps(report,indent=2)+'\n');print('DONE',len(updates),'packages',checks,'receiver plans',flush=True)
 
-# Approved batch: user confirmed all 26 review PNGs before publication.
+# Approved batch: user confirmed all 26 exact review PNGs before publication.
