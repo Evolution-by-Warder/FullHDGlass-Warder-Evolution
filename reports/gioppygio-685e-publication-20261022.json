@@ -1,0 +1,102 @@
+{
+  "source_ref": "7fb51701b757988fe4426acf5b57405334928f80",
+  "packages": [
+    {
+      "resolution": "220x132",
+      "style": "transparent",
+      "existing_pngs_preserved": 220,
+      "added_pngs": 3,
+      "png_count": 223,
+      "all_original_png_bytes_unchanged": true
+    },
+    {
+      "resolution": "220x132",
+      "style": "white",
+      "existing_pngs_preserved": 220,
+      "added_pngs": 3,
+      "png_count": 223,
+      "all_original_png_bytes_unchanged": true
+    },
+    {
+      "resolution": "220x132",
+      "style": "black",
+      "existing_pngs_preserved": 220,
+      "added_pngs": 3,
+      "png_count": 223,
+      "all_original_png_bytes_unchanged": true
+    },
+    {
+      "resolution": "400x240",
+      "style": "transparent",
+      "existing_pngs_preserved": 0,
+      "added_pngs": 66,
+      "png_count": 66,
+      "all_original_png_bytes_unchanged": true
+    },
+    {
+      "resolution": "400x240",
+      "style": "white",
+      "existing_pngs_preserved": 172,
+      "added_pngs": 27,
+      "png_count": 199,
+      "all_original_png_bytes_unchanged": true
+    },
+    {
+      "resolution": "400x240",
+      "style": "black",
+      "existing_pngs_preserved": 172,
+      "added_pngs": 27,
+      "png_count": 199,
+      "all_original_png_bytes_unchanged": true
+    }
+  ],
+  "all_other_packages_unchanged": true,
+  "protected_positions_16e_and_235e_unchanged": true,
+  "approved_artworks": 92,
+  "mapped_artworks": 64,
+  "mapped_references": 66,
+  "unmapped_artwork": [
+    "aitnational",
+    "amentv",
+    "amitv",
+    "apexworldnews",
+    "arktv",
+    "bibleexploration",
+    "divinehandtv",
+    "ebiraunitytv",
+    "elohimglobaltv",
+    "fulllifetv",
+    "gmtv",
+    "gnftv",
+    "godafrica",
+    "inspirationnetwork",
+    "ln24sa",
+    "mahdihasappearedtv",
+    "mogpatvplus",
+    "moretvpromo",
+    "nowtvnewsoftheworld",
+    "propheticchannel",
+    "remitetv",
+    "revivaltv",
+    "shekinahtv",
+    "theblessedchannel",
+    "victorioustv",
+    "wazobiamaxlagos",
+    "yadahtv",
+    "yadahtvplus"
+  ],
+  "receiver_planner_checks_passed": 12,
+  "new_ipk_required": false,
+  "new_payload_parts": [
+    "warder-685e-220x132-transparent-8694052fb51ec16f.zip.part00",
+    "warder-685e-220x132-white-b07f66b2bde9789a.zip.part00",
+    "warder-685e-220x132-white-b07f66b2bde9789a.zip.part01",
+    "warder-685e-220x132-black-5c7b66396707293a.zip.part00",
+    "warder-685e-220x132-black-5c7b66396707293a.zip.part01",
+    "warder-685e-400x240-transparent-9707cb154d618b85.zip.part00",
+    "warder-685e-400x240-white-77a01f88fa18ff25.zip.part00",
+    "warder-685e-400x240-white-77a01f88fa18ff25.zip.part01",
+    "warder-685e-400x240-black-8a283642fbce422f.zip.part00",
+    "warder-685e-400x240-black-8a283642fbce422f.zip.part01"
+  ]
+}
