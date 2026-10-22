@@ -1,6 +1,6 @@
 {
-  "version": "1.0.12",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.12_all.ipk",
-  "sha256": "505745c2a9b60907d781bd977fcc2d74ffb8c9e50f8234ea2bca8d3a211f6f19",
-  "changelog": "Schvalene picony CANAL+, Classics, Crime a Drama: transparentne originaly a biele/cierne pozadia Warder v Canal+ SK, CZ a kompletnych balikoch 23.5E (762 PNG)."
+  "version": "1.0.13",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.13_all.ipk",
+  "sha256": "08f8155ca87c942548d35cde264286f5664bb931e4eefd1085e0c8aea233fe91",
+  "changelog": "Picony bez dalsich IPK: skin nacita pri kazdom stahovani aktualny schvaleny katalog z main. Zachovana kontrola zdroja, velkosti a SHA-256 archivov. Jednorazovy upgrade z 1.0.12."
 }
