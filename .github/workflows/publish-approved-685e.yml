@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name 'Warder picon automation'
           git config user.email 'warder-picons@users.noreply.github.com'
-          git add assets/warder/downloads/picons/channels reports/gioppygio-685e-publication-20261022.json
+          git add --sparse assets/warder/downloads/picons/channels reports/gioppygio-685e-publication-20261022.json
           git diff --cached --check
           git commit -m 'Publish approved GG-free 68.5E additions and transparent 400x240 package'
           git push origin HEAD:release/gioppygio-685e-approved-20261022
