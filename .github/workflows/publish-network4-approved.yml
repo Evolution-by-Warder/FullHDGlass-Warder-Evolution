@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      APPROVED_PICON_REF: 092498eb12f78fe2370b5341c9391fc3fd5dc62d
+      APPROVED_PICON_REF: 09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
