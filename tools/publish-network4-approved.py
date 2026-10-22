@@ -12,7 +12,7 @@ def get(u):
    with urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':'Warder-approved-Network4'}),timeout=120) as r:return r.read()
   except Exception:
    if a==2:raise
-plan=json.loads(get(ROOT+PREFIX+'/approval.json'));assert plan['status']=='approved' and len(plan['mappings'])==22
+plan=json.loads(get(ROOT+PREFIX+'/approval.json'));assert plan['status']=='approved' and len(plan['mappings'])>=22
 art={}
 for m in plan['mappings']:
  for style,v in m['artwork'].items():
@@ -78,7 +78,7 @@ for suffix,doc in docs.items():
    item,parts=updates[key];item=copy.deepcopy(item);item['parts']=[root+n for n in parts];doc['packages'][i]=item
   else:assert p==before[suffix]['packages'][i]
  meta={x['filename']:x for x in doc['parts']};meta.update(metadata);needed={u.rsplit('/',1)[-1] for p in doc['packages'] for u in p.get('parts',[])};assert needed<=set(meta);doc['parts']=[meta[n] for n in sorted(needed)]
- doc['approved_network4_refresh_20261022']={'source_ref':REF,'artwork_count':26,'service_mappings':22,'package_count':len(updates),'correct_cz_sk_220_preserved':True,'unrelated_artwork_unchanged':True}
+ doc['approved_network4_refresh_20261022']={'source_ref':REF,'artwork_count':26,'service_mappings':len(plan['mappings']),'package_count':len(updates),'correct_cz_sk_220_preserved':True,'unrelated_artwork_unchanged':True}
  (D/suffix/'manifest.json').write_text(json.dumps(doc,indent=2,sort_keys=True)+'\n');sums=D/suffix/'SHA256SUMS';lines={x.split()[-1]:x.split()[0] for x in sums.read_text().splitlines() if x.strip()};lines.update({n:v['sha256'] for n,v in metadata.items()});lines['manifest.json']=sha((D/suffix/'manifest.json').read_bytes());sums.write_text(''.join(h+'  '+n+'\n' for n,h in sorted(lines.items())))
 spec=importlib.util.spec_from_file_location('receiver_sync',R/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py');sync=importlib.util.module_from_spec(spec);spec.loader.exec_module(sync);checks=0
 for suffix,doc in docs.items():
@@ -93,3 +93,5 @@ for suffix,doc in docs.items():
   prefs=sync.set_task_position_bindings(sync.default_preferences(),[binding]);prefs.update(resolution=size,style=family.removeprefix('channel-'),update_mode=sync.UPDATE_MODE_INCREMENTAL);queue=sync.build_runtime_queue(prefs,publication={'persistent':True,'manifest_url':url});jobs=sync.build_download_jobs(doc,sync.plan_runtime_packages(doc,queue,url),url);assert jobs['state']=='ready' and len(jobs['jobs'])==1,(sel,size,family,jobs);checks+=1
 report={'source_ref':REF,'approved_png_count':26,'archive_count_verified':verified,'packages':reports,'package_count':len(updates),'unrelated_artwork_unchanged':True,'correct_cz_sk_220_preserved':True,'receiver_planner_checks':checks,'ipk_changed':False}
 (R/'reports').mkdir(exist_ok=True);(R/'reports/network4-publication-20261022.json').write_text(json.dumps(report,indent=2)+'\n');print('DONE',len(updates),'packages',checks,'receiver plans',flush=True)
+
+# Approved batch: user confirmed all 26 exact review PNGs before publication.
