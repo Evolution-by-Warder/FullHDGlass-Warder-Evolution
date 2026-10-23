@@ -1,0 +1,77 @@
+name: Build Warder settings UI TEST
+on:
+  push:
+    branches: [warder-modernization-work]
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
+      - source/control/control
+      - tools/style-setup-screens.py
+      - tools/test-setup-style.py
+      - tools/build-setup-style-test.py
+      - tools/verify-setup-style-ipk.py
+      - tools/fixtures/setup-ui-1.0.15.json
+      - .github/workflows/build-settings-ui.yml
+permissions:
+  contents: read
+concurrency:
+  group: warder-settings-test
+  cancel-in-progress: false
+jobs:
+  settings-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            docs
+            design
+            .github
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Validate settings controllers and layouts
+        run: |
+          python3 tools/test-setup-style.py -v
+          python3 tools/test-runtime-safety.py
+          python3 tools/test-version-order.py
+          python3 tools/verify-radio-release.py
+      - name: Validate existing gettext catalogs
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gettext
+          find source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale -name '*.po' -print0 | xargs -0 -I '{}' msgfmt --check -o /dev/null '{}'
+      - name: Build isolated TEST package and verify every payload byte
+        run: |
+          python3 tools/build-setup-style-test.py
+          python3 tools/verify-setup-style-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-settings-TEST251
+          path: packages/test/*
+          retention-days: 90
+      - name: Publish reviewable TEST package without changing update feeds
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
+          TAG="settings-ui-${VERSION}"
+          PACKAGE="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${VERSION}_all.ipk"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/warder-published-ui
+            gh release download "$TAG" --pattern '*.ipk' --dir /tmp/warder-published-ui
+            cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
+              --title "FullHDGlass Warder Evolution — nastavenia TEST251" \
+              --notes-file docs/SETTINGS-UI-TEST251.md \
+              "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json
+          fi

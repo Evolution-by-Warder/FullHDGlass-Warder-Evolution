@@ -6302,26 +6302,23 @@ class ExtraInfo17(Screen):
 class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	skin = """
-<screen name="setupGlass17" position="0,0" size="1920,1080" title="Setup Glass17" backgroundColor="black" flags="wfNoBorder" >
-<eLabel position="60,103" size="1800,2" backgroundColor="white" zPosition="0" transparent="0" />
-<widget name="description" position="60,45" size="1800,60" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="1" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-<widget source="session.VideoPicture" render="Pig" position="60,166" zPosition="1" size="737,475" backgroundColor="transparent" />
-<widget name="config" font="Prive3;34" position="60,130" size="1800,520" zPosition="3" selectionPixmap="hd_glass17/buttons/selectedSetup.png" foregroundColorSelected="#ff9c00" itemHeight="40" transparent="0" backgroundColor="black" scrollbarMode="showOnDemand" />
-<widget name="list" position="860,120" size="990,840" zPosition="4" selectionPixmap="hd_glass17/buttons/selectedSetup.png" scrollbarMode="showOnDemand" backgroundColor="black" />
-<widget name="white" position="60,654" font="Prive3;34" size="1800,2" backgroundColor="white" zPosition="0" transparent="0" />
-<widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Prive3;34" transparent="1" backgroundColor="black" foregroundColor="red" />
-<widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Prive3;34" transparent="1" backgroundColor="black" foregroundColor="green" />
-<eLabel position="560,970" size="800,2" backgroundColor="white" zPosition="0" transparent="0" />   
-<eLabel position="60,970" size="500,2" backgroundColor="red" zPosition="0" transparent="0" />
-<eLabel position="1360,970" size="500,2" backgroundColor="green" zPosition="0" transparent="0" />
-<widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="5" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-<widget source="Canvas" render="Canvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#FF000000" transparent="1" alphatest="on"/>
+<screen name="setupGlass17" position="0,0" size="1920,1080" title="Setup Glass17" backgroundColor="#00071627" flags="wfNoBorder">
+<eLabel position="850,200" size="1010,760" backgroundColor="#00102136" zPosition="0" /><eLabel position="1858,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="850,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="850,958" size="1010,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="850,200" size="1010,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,200" size="760,760" backgroundColor="#00102136" zPosition="0" /><eLabel position="808,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,958" size="760,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,200" size="760,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="description" position="60,142" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
+<widget source="session.VideoPicture" render="Pig" position="60,210" zPosition="1" size="737,415" backgroundColor="transparent" />
+<widget name="config" font="Prive3;34" position="60,210" size="1800,440" zPosition="3" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
+<widget name="list" position="860,210" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+<widget name="white" position="60,654" font="Prive3;34" size="1800,2" backgroundColor="#003ee8ff" zPosition="0" transparent="0" foregroundColor="#00ffffff" />
+<widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#00ff526a" />
+<widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#0039ff59" />
+<widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00102136" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />
+<widget source="Canvas" render="Canvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#FF000000" transparent="1" alphatest="on" />
 <widget name="help_pict" position="519,660" size="882,300" zPosition="3" alphatest="on" />
-<widget name="help_txt" position="579,660" size="780,300" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="3" valign="center" halign="center" font="Prive3;34" transparent="1"/>
+<widget name="help_txt" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="3" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
 <widget name="helpPiconFrame" position="865,749" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
 <widget name="helpPicon" position="885,765" size="150,90" zPosition="9" alphatest="on" />
-<widget name="helpTxtAnim" position="579,660" size="780,300" backgroundColor="#353e575e" shadowColor="#1A58A6" shadowOffset="-1,-1" zPosition="3" valign="center" halign="center" font="Prive3;34" transparent="1"/>
-</screen>"""
+<widget name="helpTxtAnim" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="3" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="60,25" size="900,65" font="Regular;54" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="FullHDGlass" /><eLabel position="62,91" size="780,35" font="Regular;29" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="Warder Evolution" /><widget position="1030,22" size="820,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" format="%A  %d. %B %Y" fTyp="4" halign="right" source="global.CurrentTime" render="g17dateFormat" /><widget position="1500,63" size="240,65" font="Regular;52" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1745,82" size="105,42" font="Regular;34" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="60,132" size="1800,2" backgroundColor="#003ee8ff" zPosition="1" /></screen>
+"""
   	
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -6591,7 +6588,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			for x in All:
 				if All[x][1] == '':
 					item = [x]                        
-					item.append(MultiContentEntryText(pos=(40, 2), size=(960, 38), font=2, backcolor_sel=0, color_sel=int('0xff9c00',16), text=All[x][0]))
+					item.append(MultiContentEntryText(pos=(40, 2), size=(960, 38), font=2, backcolor_sel=int('0x2a70ad',16), color_sel=int('0xffffff',16), text=All[x][0]))
 					item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 9), size=(21, 21), png=LoadPixmap("%sbuttons/led_%s.png" % (SKINPATH, ({False:'green',True:'blue'}[x in range(0,5)])))))
 					self.mainlist.append(item)
 			del item
@@ -8381,18 +8378,15 @@ class g17SetupSummary(Screen):
 class downloadMenu(Screen):
 
 	skin = """
-	<screen name="downloadMenu" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="black" >
-	<widget name="dwn" position="0,0" size="1920,150" zPosition="2" valign="center" halign="center" font="Prive3;55" transparent="0" backgroundColor="black" foregroundColor="orange" />
-  <widget name="list" position="50,70" size="1820,889" zPosition="0" scrollbarMode="showOnDemand" backgroundColor="black" />      
-	<widget name="key_red" position="0,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="480,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_yellow" position="960,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="yellow" />
-	<widget name="key_blue" position="1440,1010" size="480,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,1000" size="480,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="480,1000" size="480,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="960,1000" size="480,2" backgroundColor="yellow" zPosition="5" transparent="0" />
-    <eLabel position="1440,1000" size="480,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
+<screen name="downloadMenu" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="#00071627">
+	<eLabel position="40,165" size="1840,810" backgroundColor="#00102136" zPosition="0" /><eLabel position="1878,165" size="2,810" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,165" size="2,810" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,973" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,165" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="dwn" position="0,0" size="1920,150" zPosition="20" valign="center" halign="center" font="Regular;32" transparent="0" backgroundColor="#00102136" foregroundColor="#00ffffff" />
+  <widget name="list" position="50,175" size="1820,762" zPosition="0" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget name="key_red" position="20,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="494,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_yellow" position="968,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_blue" position="1442,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="20,1000" size="458,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="494,1000" size="458,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1000" size="458,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1442,1000" size="458,2" backgroundColor="#0045b9ff" zPosition="1" /><eLabel position="60,25" size="900,65" font="Regular;54" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="FullHDGlass" /><eLabel position="62,91" size="780,35" font="Regular;29" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="Warder Evolution" /><widget position="1030,22" size="820,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" format="%A  %d. %B %Y" fTyp="4" halign="right" source="global.CurrentTime" render="g17dateFormat" /><widget position="1500,63" size="240,65" font="Regular;52" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1745,82" size="105,42" font="Regular;34" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="60,132" size="1800,2" backgroundColor="#003ee8ff" zPosition="1" /></screen>
+"""
 
 	def __init__(self,session):
 		self.skin = downloadMenu.skin
@@ -8661,10 +8655,10 @@ class downloadMenu(Screen):
 		for x in self.menuListAll:
 			row_id = self.menuListAll[x][0]
 			item = [row_id]
-			item.append(MultiContentEntryText(pos=(0, 0), size=(1820, 127), font=2, backcolor_sel=0, color_sel=int('0x00d100',16), text=" "))
-			item.append(MultiContentEntryText(pos=(260, 10), size=(1560, 45), font=2, backcolor_sel=0, color_sel=int('0x00d100',16), color=int('0xffcc00', 16), text=self.menuListAll[x][1]))
+			item.append(MultiContentEntryText(pos=(0, 0), size=(1820, 127), font=2, backcolor_sel=int('0x2a70ad',16), color_sel=int('0x00d100',16), text=" "))
+			item.append(MultiContentEntryText(pos=(260, 10), size=(1560, 45), font=2, backcolor_sel=int('0x2a70ad',16), color_sel=int('0x00d100',16), color=int('0xffcc00', 16), text=self.menuListAll[x][1]))
 			description = warder_help.get(row_id, helpTxt.get(row_id, ""))
-			item.append(MultiContentEntryText(pos=(300, 65), size=(1520, 45), font=0, backcolor_sel=0, color_sel=int('0x00d100',16), color=int('0xffffff', 16), text=description))
+			item.append(MultiContentEntryText(pos=(300, 65), size=(1520, 45), font=0, backcolor_sel=int('0x2a70ad',16), color_sel=int('0x00d100',16), color=int('0xffffff', 16), text=description))
 			icon_path = warder_icons.get(row_id, "down/%s.png" % row_id.replace("wanim","w"))
 			item.append(MultiContentEntryPixmapAlphaTest(pos=(60, 2), size=(189, 123), png=LoadPixmap(SKINPATH + icon_path)))
 			item.append(MultiContentEntryPixmapAlphaTest(pos=(0, 38), size=(50, 50), png=LoadPixmap("%sdown/%s.png" % (SKINPATH, self.menuListAll[x][4]))))
@@ -9983,15 +9977,13 @@ class downloadMenu(Screen):
 ##########################################################################################################################
 class satSelectorScr(Screen): 
 	skin = """
-		<screen name="satSelectorScr" position="center,center" size="1071,855" title="Select">
-			<widget name="list" position="15,5" scrollbarMode="showOnDemand" size="1040,780" />
-	<widget name="key_red" position="0,805" size="357,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="357,805" size="357,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_yellow" position="714,805" size="357,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="yellow" />
-   <eLabel position="0,795" size="357,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="357,795" size="357,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="714,795" size="357,2" backgroundColor="yellow" zPosition="5" transparent="0" />
-		</screen>"""
+<screen name="satSelectorScr" position="center,center" size="1071,943" title="Select" backgroundColor="#00102136" flags="wfNoBorder">
+			<widget name="list" position="15,69" scrollbarMode="showOnDemand" size="1040,780" foregroundColor="#00ffffff" backgroundColor="#00102136" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget name="key_red" position="20,869" size="333,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="369,869" size="333,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_yellow" position="718,869" size="333,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="20,863" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="369,863" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="718,863" size="333,2" backgroundColor="#00f5d54e" zPosition="1" /><widget position="20,5" size="1031,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="1031,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="1071,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,941" size="1071,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,943" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1069,0" size="2,943" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
 
 	def __init__(self, session, delP = 1):
 		Screen.__init__(self, session)
@@ -10104,15 +10096,13 @@ class warderPositionSelectorScr(Screen):
 class styleSelectorScr(Screen):   
 
 	skin = """
-	<screen name="SelectExtraScreen" position="center,center" size="660,372" title="" backgroundColor="background" >
-  <widget name="list" position="45,15" size="570,292" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-	<widget name="key_red" position="0,332" size="220,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="220,332" size="220,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_blue" position="440,332" size="220,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,322" size="220,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="220,322" size="220,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="440,322" size="220,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
+<screen name="SelectExtraScreen" position="center,center" size="660,460" title="" backgroundColor="#00102136" flags="wfNoBorder">
+  <widget name="list" position="45,79" size="570,292" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget name="key_red" position="20,386" size="196,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="232,386" size="196,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_blue" position="444,386" size="196,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="20,380" size="196,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="232,380" size="196,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="444,380" size="196,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="20,5" size="620,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="620,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="660,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,458" size="660,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,460" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="658,0" size="2,460" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
 
 	def __init__(self, session, style, scrNum):
 		self.skin = styleSelectorScr.skin
@@ -10182,17 +10172,17 @@ class styleSelectorScr(Screen):
 			if checkStyle(x): 				
 				clr = readcolorStyle(str(x))
 				item = [str(x)+"*"+clr]
-				item.append(MultiContentEntryText(pos=(0, 15), size=(465, 33), font=0, color_sel=int('0xff3300', 16), text=("***  " + str(x) + "  ***")))
-				item.append(MultiContentEntryText(pos=(0, 52), size=(465, 33), font=1, color_sel=int('0xff3300', 16), color=int('0xffcc00', 16), text=("Color: " + clr)))
+				item.append(MultiContentEntryText(pos=(0, 15), size=(465, 33), font=0, color_sel=int('0xffffff', 16), text=("***  " + str(x) + "  ***")))
+				item.append(MultiContentEntryText(pos=(0, 52), size=(465, 33), font=1, color_sel=int('0xffffff', 16), color=int('0xffcc00', 16), text=("Color: " + clr)))
 				pix = LoadPixmap(SKINPATH + 'style/'+str(x)+'/b_tl.png')
 				item.append(MultiContentEntryPixmap(pos=(210, 0), size=(180, 97), png=pix, backcolor=int('0xffffff', 16)))
-				item.append(MultiContentEntryText(pos=(315, 37), size=(150, 33), font=0, text="Title", color_sel=int('0xff3300', 16), color=int(clr.replace('#','0x'), 16)))
+				item.append(MultiContentEntryText(pos=(315, 37), size=(150, 33), font=0, text="Title", color_sel=int('0xffffff', 16), color=int(clr.replace('#','0x'), 16)))
 				pix = LoadPixmap(SKINPATH + 'style/'+str(x)+'/b_tr.png')
 				item.append(MultiContentEntryPixmap(pos=(390, 0), size=(180, 97), png=pix, backcolor=int('0xffffff', 16)))
 				self.list.append(item)
 		if len(self.list) == 0:
 			item = [str(x)+"*"+clr]
-			item.append(MultiContentEntryText(pos=(0, 30), size=(465, 33), font=0, color_sel=int('0xff3300', 16), text=("***  None style detected !!!  ***")))
+			item.append(MultiContentEntryText(pos=(0, 30), size=(465, 33), font=0, color_sel=int('0xffffff', 16), text=("***  None style detected !!!  ***")))
 			self.list.append(item)
 			self['list'].l.setList(self.list)
 		else:
@@ -10213,17 +10203,15 @@ class styleSelectorScr(Screen):
 class selectScreenShowed(Screen):   
 
 	skin = """
-	<screen name="SelectExtraScreen" position="center,center" size="1567,757" title="" backgroundColor="background" >
-  <widget name="list" position="45,40" size="495,585" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-  <widget name="scr_preview" position="565,63" size="960,540" zPosition="2" backgroundColor="background" alphatest="blend"/>
-	<widget name="res" position="565,625" size="960,50" zPosition="2" valign="center" halign="center" font="Prive3;30" transparent="1" />
-	<widget name="key_red" position="0,707" size="522,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="480,707" size="523,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_blue" position="1045,707" size="522,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,697" size="522,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="522,697" size="523,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="1045,697" size="522,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
+<screen name="SelectExtraScreen" position="center,center" size="1567,845" title="" backgroundColor="#00102136" flags="wfNoBorder">
+  <widget name="list" position="45,104" size="495,585" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+  <widget name="scr_preview" position="565,127" size="960,540" zPosition="2" backgroundColor="background" alphatest="blend" />
+	<widget name="res" position="565,689" size="960,50" zPosition="2" valign="center" halign="center" font="Prive3;30" transparent="0" foregroundColor="#00ffffff" backgroundColor="#00102136" />
+	<widget name="key_red" position="20,771" size="498,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="534,771" size="498,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_blue" position="1048,771" size="498,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="20,765" size="498,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="534,765" size="498,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1048,765" size="498,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="20,5" size="1527,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="1527,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="1567,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,843" size="1567,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,845" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1565,0" size="2,845" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
 
 	def __init__(self,session):
 		self.skin = selectScreenShowed.skin
@@ -10286,13 +10274,13 @@ class selectScreenShowed(Screen):
 				c += 1
 				s, colorS = checkStyleFull(x)
 				item = [str(x)+"*"+s+"*"+colorS]
-				item.append(MultiContentEntryText(pos=(0, 31), size=(47, 33), font=0, color_sel=int('0xff3300', 16), color=int('0x00d100', 16), text=(str(c)+".")))
-				item.append(MultiContentEntryText(pos=(60, 15), size=(465, 33), font=0, color_sel=int('0xff3300', 16), text=("***  " + str(x) + "  ***")))
-				item.append(MultiContentEntryText(pos=(90, 52), size=(465, 33), font=1, color_sel=int('0xff3300', 16), color=int('0xffcc00', 16), text=(_("Style:")+" " + s)))
+				item.append(MultiContentEntryText(pos=(0, 31), size=(47, 33), font=0, color_sel=int('0xffffff', 16), color=int('0x00d100', 16), text=(str(c)+".")))
+				item.append(MultiContentEntryText(pos=(60, 15), size=(465, 33), font=0, color_sel=int('0xffffff', 16), text=("***  " + str(x) + "  ***")))
+				item.append(MultiContentEntryText(pos=(90, 52), size=(465, 33), font=1, color_sel=int('0xffffff', 16), color=int('0xffcc00', 16), text=(_("Style:")+" " + s)))
 				if s != "?":
 					pix = LoadPixmap(SKINPATH + 'style/'+s+'/b_tl.png')
 					item.append(MultiContentEntryPixmap(pos=(270, 0), size=(180, 97), png=pix, backcolor=int('0xffffff', 16)))
-					item.append(MultiContentEntryText(pos=(315, 37), size=(150, 33), font=0, text="Title", color_sel=int('0xff3300', 16), color=int(colorS.replace('#','0x'), 16)))
+					item.append(MultiContentEntryText(pos=(315, 37), size=(150, 33), font=0, text="Title", color_sel=int('0xffffff', 16), color=int(colorS.replace('#','0x'), 16)))
 				self.list.append(item)
 		self['list'].l.setList(self.list)
 		self["list"].instance.moveSelectionTo(a)
@@ -10325,12 +10313,12 @@ class selectScreenShowed(Screen):
 class selectIconsDisplayed(Screen):   
 
 	skin = """
-	<screen name="selectIconsScreen" position="center,center" size="1386,757" title="" backgroundColor="background" >
-  <widget name="list" position="45,63" size="315,627" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background" />
-	<widget name="key_red" position="0,707" size="693,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="693,707" size="693,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-   <eLabel position="0,697" size="693,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="693,697" size="693,2" backgroundColor="green" zPosition="5" transparent="0" />"""
+<screen name="selectIconsScreen" position="center,center" size="1386,757" title="" backgroundColor="#00102136" flags="wfNoBorder">
+  <widget name="list" position="45,63" size="315,627" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget name="key_red" position="0,707" size="693,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="693,707" size="693,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="0,701" size="693,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="693,701" size="693,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="20,5" size="1346,38" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,48" size="1346,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="1386,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,755" size="1386,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,757" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1384,0" size="2,757" backgroundColor="#003ee8ff" zPosition="5" />
+"""
 
 	def __init__(self,session,what=0):
 		self.what = what
@@ -10453,13 +10441,15 @@ class selectIconsDisplayed(Screen):
 					except: pass       		
 ##########################################################################################################################
 class historyScreen(Screen):
-	skin = """<screen name="g17_History" position="center,center" size="1650,825" zPosition="8" title="" backgroundColor="background" >                                           
-<widget name="Changelog_info" position="15,7" size="1620,740" scrollbarMode="showOnDemand" backgroundColor="background" />
-	<widget name="key_red" position="0,775" size="825,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="825,775" size="825,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-   <widget name="line_red" position="0,765" size="825,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <widget name="line_green" position="825,765" size="825,2" backgroundColor="green" zPosition="5" transparent="0" />
-</screen>"""
+	skin = """
+<screen name="g17_History" position="center,center" size="1650,825" zPosition="8" title="" backgroundColor="#00102136" flags="wfNoBorder">
+<widget name="Changelog_info" position="15,70" size="1620,670" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget name="key_red" position="0,775" size="825,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="825,775" size="825,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+   <widget name="line_red" position="0,765" size="825,2" backgroundColor="#00ff526a" zPosition="5" transparent="0" foregroundColor="#00ffffff" />
+    <widget name="line_green" position="825,765" size="825,2" backgroundColor="#0039ff59" zPosition="5" transparent="0" foregroundColor="#00ffffff" />
+<widget position="20,5" size="1610,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="1610,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="1650,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,823" size="1650,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,825" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1648,0" size="2,825" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
                         
 	def __init__(self, session, ver="", new=""):
 		Screen.__init__(self, session)
@@ -10664,11 +10654,12 @@ class weatherCitySelector(Screen):
 	"""OK-driven selector for cities already present in /etc/my_city_Code.txt."""
 
 	skin = """
-	<screen name="weatherCitySelector" position="center,center" size="900,700" title="Weather for City" backgroundColor="background">
-		<widget name="list" position="25,25" size="850,590" scrollbarMode="showOnDemand" backgroundColor="background"/>
-		<widget name="key_red" position="25,635" size="400,50" valign="center" halign="center" font="Prive3;32" transparent="1" foregroundColor="red"/>
-		<widget name="key_green" position="475,635" size="400,50" valign="center" halign="center" font="Prive3;32" transparent="1" foregroundColor="green"/>
-	</screen>"""
+<screen name="weatherCitySelector" position="center,center" size="900,788" title="Weather for City" backgroundColor="#00102136" flags="wfNoBorder">
+		<widget name="list" position="25,89" size="850,590" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+		<widget name="key_red" position="20,714" size="422,50" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+		<widget name="key_green" position="458,714" size="422,50" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+	<eLabel position="20,708" size="422,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="458,708" size="422,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="20,5" size="860,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="860,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="900,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,786" size="900,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,788" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="898,0" size="2,788" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
 
 	def __init__(self, session, current=None):
 		Screen.__init__(self, session)
@@ -10678,7 +10669,7 @@ class weatherCitySelector(Screen):
 		currentIndex = 0
 		for value, label in getCitiesCode():
 			item = [value]
-			item.append(MultiContentEntryText(pos=(15, 0), size=(820, 42), font=2, color_sel=int("0xff9c00",16), text=str(label)))
+			item.append(MultiContentEntryText(pos=(15, 0), size=(820, 42), font=2, color_sel=int("0xffffff",16), text=str(label)))
 			if value == current:
 				currentIndex = len(self.items)
 			self.items.append(item)
@@ -10704,20 +10695,16 @@ class weatherCitySelector(Screen):
 class cityFinder(Screen):   
 
 	skin = """
-	<screen name="cityFinder" position="center,105" size="1500,945" title="To move in both menu use P+/- or Bqt +/-" backgroundColor="background" >
-  <widget name="info" font="Prive3;33" position="45,7" zPosition="1" size="570,37" valign="center" halign="center" transparent="1" foregroundColor="white" shadowColor="#1A58A6" shadowOffset="-2,-1" />
-  <eLabel text="/etc/my_city_Code.txt:" font="Prive3;33" position="705,7" zPosition="1" size="570,37" valign="center" halign="center" transparent="1" foregroundColor="white" shadowColor="#1A58A6" shadowOffset="-2,-1" />
-  <widget name="list" position="0,52" size="790,675" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-  <widget name="myCity" position="800,52" size="700,802" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="background"/>
-	<widget name="key_red" position="0,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget name="key_green" position="375,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-	<widget name="key_yellow" position="750,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="yellow" />
-	<widget name="key_blue" position="1125,895" size="375,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="blue" />
-   <eLabel position="0,885" size="375,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="375,885" size="375,2" backgroundColor="green" zPosition="5" transparent="0" />
-    <eLabel position="750,885" size="375,2" backgroundColor="yellow" zPosition="5" transparent="0" />
-    <eLabel position="1125,885" size="375,2" backgroundColor="blue" zPosition="5" transparent="0" />
-	</screen>"""
+<screen name="cityFinder" position="center,center" size="1500,1033" title="To move in both menu use P+/- or Bqt +/-" backgroundColor="#00102136" flags="wfNoBorder">
+  <widget name="info" font="Prive3;33" position="45,71" zPosition="1" size="570,37" valign="center" halign="center" transparent="0" foregroundColor="#00ffffff" backgroundColor="#00102136" />
+  <widget name="list" position="0,116" size="790,675" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+  <widget name="myCity" position="800,116" size="700,802" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget name="key_red" position="20,959" size="353,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_green" position="389,959" size="353,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_yellow" position="758,959" size="353,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00102136" noWrap="1" />
+	<widget name="key_blue" position="1127,959" size="353,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="20,953" size="353,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="389,953" size="353,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="758,953" size="353,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1127,953" size="353,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="20,5" size="1460,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="1460,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="1500,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,1031" size="1500,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,1033" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1498,0" size="2,1033" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -11015,13 +11002,13 @@ class cityFinder(Screen):
       
 class dirBrowser(Screen):      
          
-	skin = """<screen name="DirBrowser" position="center,center" size="780,750" title="Dir Browser" backgroundColor="background" >
-			<widget name="filelist" position="15,15" size="750,660" scrollbarMode="showOnDemand" />
-	<widget source="key_red" render="Label" position="0,700" size="390,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="red" />
-	<widget source="key_green" render="Label" position="390,700" size="390,50" zPosition="2" valign="top" halign="center" font="Prive3;35" transparent="1" foregroundColor="green" />
-   <eLabel position="0,690" size="390,2" backgroundColor="red" zPosition="5" transparent="0" />
-    <eLabel position="390,690" size="390,2" backgroundColor="green" zPosition="5" transparent="0" />
-		</screen>"""
+	skin = """
+<screen name="DirBrowser" position="center,center" size="780,838" title="Dir Browser" backgroundColor="#00102136" flags="wfNoBorder">
+			<widget name="filelist" position="15,79" size="750,660" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColor="#00102136" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+	<widget source="key_red" render="Label" position="20,764" size="362,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
+	<widget source="key_green" render="Label" position="398,764" size="362,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
+   <eLabel position="20,758" size="362,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="398,758" size="362,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="20,5" size="740,45" font="Regular;27" foregroundColor="#003ee8ff" backgroundColor="#00102136" transparent="0" zPosition="5" valign="center" noWrap="1" source="Title" render="Label" /><eLabel position="20,57" size="740,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="0,0" size="780,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,836" size="780,2" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,0" size="2,838" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="778,0" size="2,838" backgroundColor="#003ee8ff" zPosition="5" /></screen>
+"""
     
 	def __init__(self, session, dd, files=False):
 		Screen.__init__(self, session)

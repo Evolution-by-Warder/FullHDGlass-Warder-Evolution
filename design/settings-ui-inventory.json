@@ -1,0 +1,30 @@
+{
+  "baseline": "1.0.15",
+  "candidate": "1.0.16-test251",
+  "settings_classes": [
+    "setupGlass17ScreenSetup",
+    "downloadMenu",
+    "satSelectorScr",
+    "warderPositionSelectorScr",
+    "styleSelectorScr",
+    "selectScreenShowed",
+    "selectIconsDisplayed",
+    "historyScreen",
+    "weatherCitySelector",
+    "cityFinder",
+    "dirBrowser"
+  ],
+  "other_screen_classes": [
+    "WarderProgramInfo",
+    "SpecialScreen",
+    "ExtraInfo17",
+    "g17SetupSummary",
+    "SelectPosition"
+  ],
+  "controller_functions": 390,
+  "config_entries": 202,
+  "feeds_sha256": {
+    "update.json": "69b843a040dd3894faf67db9dad50856c59dc9c41153a0f05d451418cafdd59f",
+    "update-test.json": "69b843a040dd3894faf67db9dad50856c59dc9c41153a0f05d451418cafdd59f"
+  }
+}
