@@ -13,8 +13,23 @@ jobs:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
-      - name: Build exactly the checked-in release payload
-        run: python3 tools/build-release-ipk.py
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            .github
+      - name: Build exactly the checked-in stable or TEST payload
+        run: |
+          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
+          case "$VERSION" in
+            *-test*)
+              python3 tools/build-setup-style-test.py
+              python3 tools/verify-setup-style-ipk.py
+              ;;
+            *) python3 tools/build-release-ipk.py ;;
+          esac
       - name: Verify bytecode invalidation and package error details
         run: python3 tools/test-release-bytecode.py
       - name: Verify confirmed graphics, package and update channels

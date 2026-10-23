@@ -25,4 +25,4 @@ Systémové MessageBox/ChoiceBox/InputBox, fyzické umiestňovacie obrazovky a O
 
 ## Kontroly
 
-Osem kontrol prezentácie/nezmenenej logiky, runtime-safety, zhodné grafické a XML súbory s potvrdeným rádiovým základom, verziovanie a úplné overenie každého bajtu IPK oproti zdroju. Starý tools/test-r12-regressions.py narazí na rovnakú textovú aserciu `fields[2].upper() in ("2", "A")` aj na nezmenenej 1.0.15; táto historická kontrola nie je vydávaná za úspešnú ani opravovaná ako súčasť úpravy vzhľadu.
+Deväť kontrol prezentácie/nezmenenej logiky, runtime-safety, zhodné grafické a XML súbory s potvrdeným rádiovým základom, verziovanie a úplné overenie každého bajtu IPK oproti zdroju. Starý tools/test-r12-regressions.py narazí na rovnakú textovú aserciu `fields[2].upper() in ("2", "A")` aj na nezmenenej 1.0.15; táto historická kontrola nie je vydávaná za úspešnú ani opravovaná ako súčasť úpravy vzhľadu.

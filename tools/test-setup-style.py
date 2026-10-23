@@ -20,6 +20,16 @@ class SetupStyleTests(unittest.TestCase):
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 
+    def test_fingerprint_is_portable_but_still_detects_changed_save_action(self):
+        tree=ast.parse(CURRENT);before=style.normalized(tree)
+        for node in ast.walk(tree):
+            if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef,ast.ClassDef)) and 'type_params' not in node._fields:
+                node._fields=node._fields+('type_params',);node.type_params=[]
+        self.assertEqual(style.normalized(tree),before)
+        changed=CURRENT.replace('"green": self.save','"green": self.exit',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),before)
+
     def test_all_owned_layouts_retain_original_widget_and_source_contracts(self):
         for name,(_,skin) in LAYOUTS.items():
             close='</screen>' if name=='selectIconsDisplayed' else ''

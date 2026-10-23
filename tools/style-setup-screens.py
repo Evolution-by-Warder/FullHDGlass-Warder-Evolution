@@ -27,7 +27,17 @@ def normalized(tree):
         for node in ast.walk(cls):
             if isinstance(node,ast.keyword) and node.arg in ('color_sel','backcolor_sel'):
                 node.value=ast.Constant('<selection-color>')
-    return hashlib.sha256(ast.dump(tree,include_attributes=False).encode()).hexdigest()
+    def portable(value):
+        if isinstance(value,ast.AST):
+            # Python 3.12 adds type_params to definitions. Empty parameters
+            # have no counterpart in the original Python 3.9 grammar.
+            return [type(value).__name__,{field:portable(getattr(value,field,None))
+                    for field in value._fields if field!='type_params' or getattr(value,field,None)}]
+        if isinstance(value,list):return [portable(item) for item in value]
+        if isinstance(value,bytes):return {'bytes_hex':value.hex()}
+        return value
+    serialized=json.dumps(portable(tree),sort_keys=True,separators=(',',':'),ensure_ascii=True)
+    return hashlib.sha256(serialized.encode()).hexdigest()
 
 
 def widget_ids(root):
