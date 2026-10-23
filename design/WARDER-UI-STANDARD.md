@@ -28,3 +28,7 @@ Existujúci význam farebných akcií je v tejto etape zachovaný, vrátane star
 Zmrazená kontrola AST potvrdzuje nezmenenú riadiacu logiku celého plugin.py po odfiltrovaní XML rozložení a farieb výberu v uvedených triedach. Samostatne sa kontrolujú pôvodné widgety, callback-kontrakty, dynamicky dopĺňané ikony, stiahnutie v 150 px okne a presúvanie päty histórie.
 
 Na prijímači treba potvrdiť čitateľnosť, TV náhľad, všetky skupiny nastavení, uloženie/zrušenie, dynamické náhľady a farebné akcie. Až potom sa pokračuje systémovými dialógmi a ďalšími projektmi. Produkčné vydanie vyžaduje potvrdenie funkčnosti na prijímači.
+
+## Oprava TEST252 po overení prijímačom
+
+Úvodné menu má dva skutočne prepínateľné panely; všetky konfiguračné skupiny jeden veľký panel. V konfiguračnom režime sú oba úvodné panely a ich rámy skryté. Návrat obnoví rozdelenie. Samostatne testovaný prezentačný prepínač nemení akcie ani konfiguračnú logiku. AST normalizácia povoľuje iba jeho presné príkazy, bez zmeny pôvodného základného odtlačku.

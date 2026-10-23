@@ -6303,21 +6303,21 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	skin = """
 <screen name="setupGlass17" position="0,0" size="1920,1080" title="Setup Glass17" backgroundColor="#00071627" flags="wfNoBorder">
-<eLabel position="850,200" size="1010,760" backgroundColor="#00102136" zPosition="0" /><eLabel position="1858,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="850,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="850,958" size="1010,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="850,200" size="1010,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,200" size="760,760" backgroundColor="#00102136" zPosition="0" /><eLabel position="808,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,200" size="2,760" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,958" size="760,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="50,200" size="760,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="description" position="60,142" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
+<widget name="description" position="60,142" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
 <widget source="session.VideoPicture" render="Pig" position="60,210" zPosition="1" size="737,415" backgroundColor="transparent" />
-<widget name="config" font="Prive3;34" position="60,210" size="1800,440" zPosition="3" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
+<widget name="config" font="Prive3;34" position="60,210" size="1800,440" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
 <widget name="list" position="860,210" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
-<widget name="white" position="60,654" font="Prive3;34" size="1800,2" backgroundColor="#003ee8ff" zPosition="0" transparent="0" foregroundColor="#00ffffff" />
+<widget name="white" position="60,654" font="Prive3;34" size="1800,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
 <widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#00ff526a" />
 <widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#0039ff59" />
 <widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00102136" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />
 <widget source="Canvas" render="Canvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#FF000000" transparent="1" alphatest="on" />
-<widget name="help_pict" position="519,660" size="882,300" zPosition="3" alphatest="on" />
-<widget name="help_txt" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="3" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<widget name="help_pict" position="519,660" size="882,300" zPosition="4" alphatest="on" />
+<widget name="help_txt" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
 <widget name="helpPiconFrame" position="865,749" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
 <widget name="helpPicon" position="885,765" size="150,90" zPosition="9" alphatest="on" />
-<widget name="helpTxtAnim" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="3" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
-<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="60,25" size="900,65" font="Regular;54" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="FullHDGlass" /><eLabel position="62,91" size="780,35" font="Regular;29" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="Warder Evolution" /><widget position="1030,22" size="820,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" format="%A  %d. %B %Y" fTyp="4" halign="right" source="global.CurrentTime" render="g17dateFormat" /><widget position="1500,63" size="240,65" font="Regular;52" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1745,82" size="105,42" font="Regular;34" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="60,132" size="1800,2" backgroundColor="#003ee8ff" zPosition="1" /></screen>
+<widget name="helpTxtAnim" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="50,200" size="760,760" name="warder_menu_panel_0" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="50,200" size="760,2" name="warder_menu_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,958" size="760,2" name="warder_menu_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,200" size="2,760" name="warder_menu_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="808,200" size="2,760" name="warder_menu_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,200" size="1010,760" name="warder_menu_panel_5" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="850,200" size="1010,2" name="warder_menu_panel_6" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,958" size="1010,2" name="warder_menu_panel_7" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,200" size="2,760" name="warder_menu_panel_8" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="1858,200" size="2,760" name="warder_menu_panel_9" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,200" size="1810,760" name="warder_settings_panel_0" backgroundColor="#00102136" transparent="0" zPosition="2" /><widget position="50,200" size="1810,2" name="warder_settings_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,958" size="1810,2" name="warder_settings_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,200" size="2,760" name="warder_settings_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1858,200" size="2,760" name="warder_settings_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><eLabel position="60,25" size="900,65" font="Regular;54" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="FullHDGlass" /><eLabel position="62,91" size="780,35" font="Regular;29" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="Warder Evolution" /><widget position="1030,22" size="820,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" format="%A  %d. %B %Y" fTyp="4" halign="right" source="global.CurrentTime" render="g17dateFormat" /><widget position="1500,63" size="240,65" font="Regular;52" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1745,82" size="105,42" font="Regular;34" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="60,132" size="1800,2" backgroundColor="#003ee8ff" zPosition="1" /></screen>
 """
   	
 	def __init__(self, session):
@@ -6326,6 +6326,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.skin = setupGlass17ScreenSetup.skin.replace('<widget name="config" font="Prive3;34"','<widget name="config"')
 		else:
 			self.skin = setupGlass17ScreenSetup.skin
+		for prefix, count in (("warder_menu_panel_", 10), ("warder_settings_panel_", 5)):
+		    for index in range(count):
+		        self[prefix + str(index)] = Label("")
+		        self[prefix + str(index)].hide()
 		self.list = [ ]
 		ConfigListScreen.__init__(self, self.list, session, on_change = self.doMyHelpWindow)
 		self.canvas = CanvasSource()
@@ -6550,7 +6554,17 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self.runSetup()
 			self.doMyHelpWindow()
 			
+	def _warderSetPanelMode(self):
+	    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):
+	        for index in range(count):
+	            panel = self[prefix + str(index)]
+	            if visible:
+	                panel.show()
+	            else:
+	                panel.hide()
+
 	def runSetup(self):
+		self._warderSetPanelMode()
 		xxx = chckEnaWea()
 		if self.isMainMenu:
 			self.mainlist = []
@@ -8380,7 +8394,7 @@ class downloadMenu(Screen):
 	skin = """
 <screen name="downloadMenu" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="#00071627">
 	<eLabel position="40,165" size="1840,810" backgroundColor="#00102136" zPosition="0" /><eLabel position="1878,165" size="2,810" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,165" size="2,810" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,973" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="40,165" size="1840,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="dwn" position="0,0" size="1920,150" zPosition="20" valign="center" halign="center" font="Regular;32" transparent="0" backgroundColor="#00102136" foregroundColor="#00ffffff" />
-  <widget name="list" position="50,175" size="1820,762" zPosition="0" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
+  <widget name="list" position="50,175" size="1820,762" zPosition="2" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
 	<widget name="key_red" position="20,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00ff526a" backgroundColor="#00102136" noWrap="1" />
 	<widget name="key_green" position="494,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00102136" noWrap="1" />
 	<widget name="key_yellow" position="968,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00102136" noWrap="1" />

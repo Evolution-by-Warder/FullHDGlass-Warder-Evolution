@@ -17,10 +17,42 @@ BASE='#00071627';PANEL='#00102136';SELECT='#002a70ad';TEXT='#00ffffff';CYAN='#00
 COLORS={'red':'#00ff526a','green':'#0039ff59','yellow':'#00f5d54e','blue':'#0045b9ff'}
 
 
+# These are the only controller additions: registered panel widgets and a
+# presentation-only switch. Normalize exact AST matches, never entire methods
+# by name, so unexpected edits still fail the frozen business-logic guard.
+PANEL_INIT = """for prefix, count in (("warder_menu_panel_", 10), ("warder_settings_panel_", 5)):
+    for index in range(count):
+        self[prefix + str(index)] = Label("")
+        self[prefix + str(index)].hide()
+"""
+PANEL_MODE = """def _warderSetPanelMode(self):
+    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):
+        for index in range(count):
+            panel = self[prefix + str(index)]
+            if visible:
+                panel.show()
+            else:
+                panel.hide()
+"""
+PANEL_CALL = 'self._warderSetPanelMode()'
+
+
+def strip_panel_presentation(cls):
+    expected_method=ast.dump(ast.parse(PANEL_MODE).body[0])
+    expected_init=ast.dump(ast.parse(PANEL_INIT).body[0])
+    expected_call=ast.dump(ast.parse(PANEL_CALL).body[0])
+    cls.body=[node for node in cls.body if ast.dump(node)!=expected_method]
+    for node in cls.body:
+        if isinstance(node,ast.FunctionDef) and node.name in ('__init__','runSetup'):
+            exact=expected_init if node.name=='__init__' else expected_call
+            node.body=[child for child in node.body if ast.dump(child)!=exact]
+
+
 def normalized(tree):
     tree=copy.deepcopy(tree)
     for cls in tree.body:
         if not isinstance(cls,ast.ClassDef) or cls.name not in SCREENS:continue
+        if cls.name=='setupGlass17ScreenSetup':strip_panel_presentation(cls)
         for node in cls.body:
             if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='skin' for t in node.targets):
                 node.value=ast.Constant('<presentation>')
@@ -71,6 +103,14 @@ def panel(root,x,y,w,h):
     root.insert(0,element('eLabel',x,y,w,h,backgroundColor=PANEL,zPosition='0'))
     for box in ((x,y,w,2),(x,y+h-2,w,2),(x,y,2,h),(x+w-2,y,2,h)):
         root.insert(1,element('eLabel',*box,backgroundColor=CYAN,zPosition='1'))
+
+
+def switchable_panel(root,prefix,x,y,w,h,z):
+    boxes=((x,y,w,h),(x,y,w,2),(x,y+h-2,w,2),(x,y,2,h),(x+w-2,y,2,h))
+    for index,box in enumerate(boxes):
+        root.append(element('widget',*box,name=prefix+str(index),
+                            backgroundColor=PANEL if index==0 else CYAN,
+                            transparent='0',zPosition=str(z if index==0 else z+1)))
 
 
 def header(root,download=False):
@@ -142,9 +182,21 @@ def themed(name,original):
         # Keep the existing Canvas/color and animated help previews visible.
         for key in ('selected_item','help_txt','helpTxtAnim'):
             fields[key].set('transparent','1')
-        panel(root,50,200,760,760);panel(root,850,200,1010,760);header(root)
+        switchable_panel(root,'warder_menu_panel_',50,200,760,760,0)
+        # Continue numbering the right-hand panel in the same visibility group.
+        switchable_panel(root,'warder_menu_right_',850,200,1010,760,0)
+        for node in root:
+            key=node.get('name','')
+            if key.startswith('warder_menu_right_'):
+                node.set('name','warder_menu_panel_'+str(5+int(key.rsplit('_',1)[1])))
+        switchable_panel(root,'warder_settings_panel_',50,200,1810,760,2)
+        # All config/help content must be above the settings panel and border.
+        for key in ('config','help_pict','help_txt','helpTxtAnim','white'):
+            fields[key].set('zPosition','4')
+        header(root)
     elif name=='downloadMenu':
         fields['list'].set('position','50,175');fields['list'].set('size','1820,762')
+        fields['list'].set('zPosition','2')
         fields['dwn'].set('font','Regular;32');fields['dwn'].set('zPosition','20')
         panel(root,40,165,1840,810);header(root,True)
     else:
@@ -177,6 +229,14 @@ def apply():
         replacements.append((node.lineno-1,node.end_lineno,'\tskin = """\n'+styled+'\n"""\n'))
     for start,end,value in sorted(replacements,reverse=True):rows[start:end]=[value]
     text=''.join(rows)
+    if 'def _warderSetPanelMode(self):' not in text:
+        init=''.join('\t\t'+line+'\n' for line in PANEL_INIT.splitlines())
+        method=''.join('\t'+line+'\n' for line in PANEL_MODE.splitlines())
+        start=text.index('class setupGlass17ScreenSetup(')
+        before,owned=text[:start],text[start:]
+        owned=owned.replace('\t\tself.list = [ ]',init+'\t\tself.list = [ ]',1)
+        owned=owned.replace('\tdef runSetup(self):',method+'\n\tdef runSetup(self):\n\t\t'+PANEL_CALL,1)
+        text=before+owned
     # Selection colors in MultiContent rows are explicitly supplied by the
     # original controllers, so the shared XML colors alone cannot replace them.
     tree=ast.parse(text);lines=text.splitlines(keepends=True)
