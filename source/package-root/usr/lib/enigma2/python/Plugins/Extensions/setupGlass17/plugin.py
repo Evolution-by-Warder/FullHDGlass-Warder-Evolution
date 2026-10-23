@@ -6305,9 +6305,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 <screen name="setupGlass17" position="0,0" size="1920,1080" title="Setup Glass17" backgroundColor="#00071627" flags="wfNoBorder">
 <widget name="description" position="60,142" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
 <widget source="session.VideoPicture" render="Pig" position="60,210" zPosition="1" size="737,415" backgroundColor="transparent" />
-<widget name="config" font="Prive3;34" position="60,210" size="1800,440" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
+<widget name="config" font="Prive3;34" position="60,210" size="1790,440" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
 <widget name="list" position="860,210" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
-<widget name="white" position="60,654" font="Prive3;34" size="1800,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
+<widget name="white" position="60,654" font="Prive3;34" size="1790,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
 <widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#00ff526a" />
 <widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#0039ff59" />
 <widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00102136" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />

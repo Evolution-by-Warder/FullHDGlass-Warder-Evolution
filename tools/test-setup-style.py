@@ -111,6 +111,9 @@ class SetupStyleTests(unittest.TestCase):
         help_text=root.find("widget[@name='help_txt']")
         full=nodes['warder_settings_panel_0']
         self.assertEqual(full.get('position'),'50,200');self.assertEqual(full.get('size'),'1810,760')
+        self.assertEqual(config.get('position'),'60,210')
+        self.assertEqual(config.get('size'),'1790,440')
+        self.assertLessEqual(sum(map(int,(config.get('position').split(',')[0],config.get('size').split(',')[0]))),1850)
         self.assertGreater(int(full.get('zPosition')),int(root.find("widget[@render='Pig']").get('zPosition')))
         for node in (config,help_text):self.assertGreater(int(node.get('zPosition')),int(full.get('zPosition'))+1)
         # No anonymous split frame can survive a mode switch.

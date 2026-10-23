@@ -176,8 +176,9 @@ def themed(name,original):
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
         fields['session.VideoPicture'].set('position','60,210');fields['session.VideoPicture'].set('size','737,415')
         fields['list'].set('position','860,210');fields['list'].set('size','990,720')
-        fields['config'].set('position','60,210');fields['config'].set('size','1800,440')
+        fields['config'].set('position','60,210');fields['config'].set('size','1790,440')
         fields['white'].set('backgroundColor',CYAN)
+        fields['white'].set('size','1790,2')
         for key in ('help_txt','helpTxtAnim'):
             fields[key].set('font','Regular;28');fields[key].set('foregroundColor','#00b5d4ec')
         fields['selected_item'].set('font','Regular;24')
