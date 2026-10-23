@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution — RADIO work checkpoint
 
+> **Recovery status, 2026-10-23:** Current release/publication and backup state are in [PROJECT-CONTINUITY.md](../PROJECT-CONTINUITY.md) and [BACKUP-RESTORE.md](BACKUP-RESTORE.md). Older version numbers, publication states and immediate-next-work instructions below are dated history. This banner does not retire graphics/compatibility rules or claim unresolved receiver findings are fixed.
+
+
 Branch: `warder-modernization-work`  
 `main` is TABU.
 

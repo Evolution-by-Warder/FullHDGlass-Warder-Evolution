@@ -1,4 +1,4 @@
-# FullHDGlass17 - Warder Evolution
+# FullHDGlass - Warder Evolution
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
@@ -6,7 +6,7 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 [Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.15_all.ipk).
 
-Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.14.
+Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.15.
 
 
 ## Project status
@@ -38,7 +38,7 @@ Shamann's Sat-Universe profile: https://www.sat-universe.com/index.php?members/s
 
 The Warder Evolution branch starts a new release line at **1.0** rather than continuing the original FullHDGlass version numbering.
 
-The current stable recovery baseline is **1.0.4**.
+The current stable release and checked-in recovery implementation are **1.0.15**. The 1.0.4 extraction and GOLDEN archive are historical origins, not the current backup.
 
 ## Protected project rules
 
@@ -73,3 +73,7 @@ Release 1.0.13 follows the current approved main channel-picon catalogue at each
 Release 1.0.14 connects the supplied original 50x30, 220x132 and 400x240 position sets through the live catalogue. Existing PNGs take precedence, especially at 16.0E and 23.5E.
 
 Release 1.0.15 removes the six unsupported picon positions and their legacy download selectors. All 45 supported satellite positions, existing picons and receiver-confirmed radio graphics remain unchanged.
+
+## Current recovery and offline backups
+
+Use [PROJECT-CONTINUITY.md](PROJECT-CONTINUITY.md) for the current state and [backup/restore instructions](docs/BACKUP-RESTORE.md) for set `warder-backups-20261023`. Historical checkpoint entries do not override the current release or live publication catalog.

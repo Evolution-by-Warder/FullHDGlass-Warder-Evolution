@@ -1,5 +1,8 @@
 # Picon catalogue updates after 1.0.14
 
+> **Recovery status, 2026-10-23:** Current release/publication and backup state are in [PROJECT-CONTINUITY.md](../PROJECT-CONTINUITY.md) and [BACKUP-RESTORE.md](BACKUP-RESTORE.md). Older version numbers, publication states and immediate-next-work instructions below are dated history. This banner does not retire graphics/compatibility rules or claim unresolved receiver findings are fixed.
+
+
 Native channel-picon downloads for 50x30, 220x132 and 400x240 use one live
 catalogue, including separate Canal+ SK and Canal+ CZ providers and full satellite
 position packages:

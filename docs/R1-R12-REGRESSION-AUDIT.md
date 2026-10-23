@@ -1,5 +1,8 @@
 # FullHDGlass17 9.50 r1-r12 cumulative regression audit
 
+> **Recovery status, 2026-10-23:** Current release/publication and backup state are in [PROJECT-CONTINUITY.md](../PROJECT-CONTINUITY.md) and [BACKUP-RESTORE.md](BACKUP-RESTORE.md). Older version numbers, publication states and immediate-next-work instructions below are dated history. This banner does not retire graphics/compatibility rules or claim unresolved receiver findings are fixed.
+
+
 Authoritative functional reference: the original `enigma2-skin-fullhdglass17_9.50-r12_all.ipk`
 supplied by the maintainer/user, plus the preserved r7-r12 changelogs and receiver observations.
 The Warder branch must preserve the cumulative r12 behaviour while keeping Warder safety and

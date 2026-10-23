@@ -1,5 +1,8 @@
 # FullHDGlass17 Warder Evolution — Development Journal
 
+> **Recovery status, 2026-10-23:** Current release/publication and backup state are in [PROJECT-CONTINUITY.md](../PROJECT-CONTINUITY.md) and [BACKUP-RESTORE.md](BACKUP-RESTORE.md). Older version numbers, publication states and immediate-next-work instructions below are dated history. This banner does not retire graphics/compatibility rules or claim unresolved receiver findings are fixed.
+
+
 > **MANDATORY STARTUP RULE:** Before making ANY project change, read this file first from branch `warder-modernization-work`, then fetch the current branch HEAD and the current versions of every file that will be modified. Update this journal in the same commit as the work. Never work from memory alone.
 
 ## Repository rules
