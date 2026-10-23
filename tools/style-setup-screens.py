@@ -92,8 +92,25 @@ def strip_branding_presentation(tree):
     return tree
 
 
+VALUE_OLD = 'if ed:\n    self["selected_item"].setText("")\nelse:\n    self["selected_item"].setText(self.getCurrentValue())'
+VALUE_NEW = 'if ed:\n    self["selected_item"].setText("")\nelse:\n    self["selected_item"].setText("")'
+
+
+def strip_duplicate_value_presentation(tree):
+    expected=portable(ast.parse(VALUE_NEW).body[0])
+    class RestoreValue(ast.NodeTransformer):
+        def visit_If(self,node):
+            if portable(node)==expected:return ast.parse(VALUE_OLD).body[0]
+            return self.generic_visit(node)
+    for cls in tree.body:
+        if isinstance(cls,ast.ClassDef) and cls.name=='setupGlass17ScreenSetup':
+            for method in cls.body:
+                if isinstance(method,ast.FunctionDef) and method.name=='doMyHelpWindow':RestoreValue().visit(method)
+    return tree
+
+
 def normalized(tree):
-    tree=strip_branding_presentation(copy.deepcopy(tree))
+    tree=strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree)))
     for cls in tree.body:
         if not isinstance(cls,ast.ClassDef) or cls.name not in SCREENS:continue
         if cls.name=='setupGlass17ScreenSetup':strip_panel_presentation(cls)
@@ -215,6 +232,10 @@ def themed(name,original):
         fields['config'].set('position','60,210');fields['config'].set('size','1790,440')
         fields['white'].set('backgroundColor',CYAN)
         fields['white'].set('size','1790,2')
+        # Keep the 882:300 artwork ratio with padding on all four sides.
+        fields['help_pict'].set('position','563,670');fields['help_pict'].set('size','794,270')
+        for key in ('help_txt','helpTxtAnim'):
+            fields[key].set('size','780,280')
         for key in ('help_txt','helpTxtAnim'):
             fields[key].set('font','Regular;28');fields[key].set('foregroundColor','#00b5d4ec')
         fields['selected_item'].set('font','Regular;24')
@@ -298,6 +319,8 @@ def apply():
     result=result.replace('PluginDescriptor(name="setupGlass17"','PluginDescriptor(name="FullHDGlass - Warder Evolution"')
     result=result.replace('tmp = "Full HD Glass17"','tmp = "FullHDGlass"')
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Branding changed controller logic')
+    result=result.replace('self["selected_item"].setText(self.getCurrentValue())','self["selected_item"].setText("")')
+    if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected help controller change')
     PLUGIN.write_text(result)
 
 

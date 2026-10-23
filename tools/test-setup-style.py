@@ -186,6 +186,42 @@ class SetupStyleTests(unittest.TestCase):
         screen.isMainMenu=True
         callback(screen,'#00ff00');self.assertFalse(screen.canvas.states[-1])
 
+    def test_help_artwork_has_padding_and_preserves_its_aspect_ratio(self):
+        root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
+        pic=root.find("widget[@name='help_pict']")
+        x,y=map(int,pic.get('position').split(','));w,h=map(int,pic.get('size').split(','))
+        self.assertGreaterEqual(y,656+14)
+        self.assertLessEqual(y+h,958-14)
+        self.assertGreaterEqual(x,60);self.assertLessEqual(x+w,1850)
+        self.assertAlmostEqual(w/h,882/300,delta=.005)
+        self.assertEqual(x+w//2,960)
+
+    def test_duplicate_value_is_removed_but_formatted_date_preview_is_retained(self):
+        cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
+        method=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='doMyHelpWindow')
+        text=ast.unparse(method)
+        self.assertNotIn("setText(self.getCurrentValue())",text)
+        self.assertIn('strftime(',text)
+        self.assertIn('sampleColor(t)',text)
+        self.assertIn('setPixmapFromFile(filename)',text)
+
+    def test_every_configuration_group_uses_the_same_bounded_artwork_loader(self):
+        cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
+        picture=style.portable(ast.parse('self["help_pict"].instance',mode='eval').body)
+        loads=[]
+        for method in cls.body:
+            if not isinstance(method,ast.FunctionDef):continue
+            for call in ast.walk(method):
+                if isinstance(call,ast.Call) and isinstance(call.func,ast.Attribute) and style.portable(call.func.value)==picture:
+                    self.assertNotIn(call.func.attr,('move','resize'))  # No group overrides the shared bounds.
+                    if call.func.attr=='setPixmapFromFile':loads.append(method.name)
+        self.assertEqual(loads,['doMyHelpWindow'])
+        show=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='showInfo')
+        hook=ast.parse('self["config"].onSelectionChanged.append(self.doMyHelpWindow)').body[0]
+        self.assertIn(style.portable(hook),[style.portable(x) for x in ast.walk(show)])
+        # Existing static bounds checks also cover all owned popup previews.
+        self.assertEqual(len(LAYOUTS),10)
+
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():
             self.assertEqual(skin.strip(),style.themed(name,BASELINE['skins'][name]).strip(),name)
