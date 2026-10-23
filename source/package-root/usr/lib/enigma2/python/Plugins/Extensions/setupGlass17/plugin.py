@@ -1193,16 +1193,16 @@ def startSetup17(menuid, **kwargs):
 			ret.append((_("FullHDGlass - Warder Evolution"), main, "FHD_Glass17_Setup", 99))
 		elif menuid == "mainmenu":
 			if config.plugins.setupGlass17.par78.value != "n" and config.plugins.setupGlass17.par85.value:
-				ret.append((config.plugins.setupGlass17.par78.getText()+" (FHDG 17)", main17, str(config.plugins.setupGlass17.par78.value), 44))
+				ret.append((config.plugins.setupGlass17.par78.getText()+" (FullHDGlass)", main17, str(config.plugins.setupGlass17.par78.value), 44))
 	return ret
 	
 def Plugins(path, **kwargs):
 	ret = [ ]
 	if config.skin.primary_skin.value == "hd_glass17/skin.xml":
-		ret = [ PluginDescriptor(name="setupGlass17", description=_("FullHDGlass - Warder Evolution"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
+		ret = [ PluginDescriptor(name="FullHDGlass - Warder Evolution", description=_("FullHDGlass - Warder Evolution"), where = PluginDescriptor.WHERE_MENU, fnc=startSetup17),
 							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
 		if config.plugins.setupGlass17.par78.value != "n":
-			ret.append(PluginDescriptor(name=config.plugins.setupGlass17.par78.getText()+" (FHDG 17)",where = PluginDescriptor.WHERE_EXTENSIONSMENU,fnc = main17))
+			ret.append(PluginDescriptor(name=config.plugins.setupGlass17.par78.getText()+" (FullHDGlass)",where = PluginDescriptor.WHERE_EXTENSIONSMENU,fnc = main17))
 	return ret
 
 def main17(session,**kwargs):
@@ -6302,14 +6302,14 @@ class ExtraInfo17(Screen):
 class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 
 	skin = """
-<screen name="setupGlass17" position="0,0" size="1920,1080" title="Setup Glass17" backgroundColor="#00071627" flags="wfNoBorder">
+<screen name="setupGlass17" position="0,0" size="1920,1080" title="FullHDGlass" backgroundColor="#00071627" flags="wfNoBorder">
 <widget name="description" position="60,142" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
 <widget source="session.VideoPicture" render="Pig" position="60,210" zPosition="1" size="737,415" backgroundColor="transparent" />
 <widget name="config" font="Prive3;34" position="60,210" size="1790,440" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
 <widget name="list" position="860,210" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
 <widget name="white" position="60,654" font="Prive3;34" size="1790,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
-<widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#00ff526a" />
-<widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#0039ff59" />
+<widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00071627" foregroundColor="#00ff526a" />
+<widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00071627" foregroundColor="#0039ff59" />
 <widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00071627" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />
 <widget source="Canvas" render="WarderSettingsCanvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#00071627" transparent="1" alphatest="on" />
 <widget name="help_pict" position="519,660" size="882,300" zPosition="4" alphatest="on" />
@@ -6577,7 +6577,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				1:[_("Changelog"),''],
 				2:[_("Update"),''],					
 				3:[_("Restore config"),''],
-				4:[_("Reset all settings of FHDG 17"),''],
+				4:[_("Reset all settings of FHDG 17").replace("FHDG 17", "FullHDGlass"),''],
 				5:[_("ECM"),''],
 				6:[_("EXTRA INFOBAR"),''],
 				7:[_("INFOBAR"),({False:'x',True:''}[not config.plugins.setupGlass17.par4.value])],
@@ -8208,7 +8208,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			return False
 
 	def restoreTofactory(self):
-		restartbox = self.session.openWithCallback(self.restoreTofactoryAnswerNow, MessageBox, _("Reset all settings of FHDG 17"), MessageBox.TYPE_YESNO, default = False)
+		restartbox = self.session.openWithCallback(self.restoreTofactoryAnswerNow, MessageBox, _("Reset all settings of FHDG 17").replace("FHDG 17", "FullHDGlass"), MessageBox.TYPE_YESNO, default = False)
 		restartbox.setTitle(_("now?"))
 
 	def restoreTofactoryAnswerNow(self,a):
@@ -8342,7 +8342,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		return g17SetupSummary
 
 	def getCurrentEntry(self):
-		tmp = "Full HD Glass17"
+		tmp = "FullHDGlass"
 		if not self.isMainMenu:
 			try:
 				tmp = str(self["config"].getCurrent()[0])

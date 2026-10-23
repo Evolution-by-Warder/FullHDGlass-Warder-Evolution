@@ -130,7 +130,7 @@ jobs:
           set -euo pipefail
           PACKAGE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
           RUNTIME_VERSION="$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
-          IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${RUNTIME_VERSION}_all.ipk"
+          IPK="packages/test/enigma2-skin-fullhdglass-warder-evolution_${RUNTIME_VERSION}_all.ipk"
           test -f "$IPK"
           echo "ipk=$IPK" >> "$GITHUB_OUTPUT"
           echo "sha=$IPK.sha256" >> "$GITHUB_OUTPUT"
@@ -152,7 +152,7 @@ jobs:
           PACKAGE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' source/control/control | head -n1)"
           VERSION="$(tr -d '\r\n' < source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)"
           test "$PACKAGE_VERSION" = "$VERSION-1"
-          IPK="packages/test/enigma2-skin-fullhdglass17-warder-evolution_${VERSION}_all.ipk"
+          IPK="packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
           test -f "$IPK"
           SHA="$(sha256sum "$IPK" | awk '{print $1}')"
           NAME="$(basename "$IPK")"
@@ -183,7 +183,7 @@ jobs:
       - name: Upload TEST artifact
         uses: actions/upload-artifact@v4
         with:
-          name: fullhdglass17-warder-evolution-${{ steps.inspect-package.outputs.version }}
+          name: fullhdglass-warder-evolution-${{ steps.inspect-package.outputs.version }}
           path: |
             ${{ steps.inspect-package.outputs.ipk }}
             ${{ steps.inspect-package.outputs.sha }}

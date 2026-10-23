@@ -47,7 +47,7 @@ def main():
     assert "Version: %s-1\n" % version in metadata
     for name in ("preinst", "postinst", "postrm"):
         assert (control / name).stat().st_mode & 0o111 == 0o111
-    output = ROOT / "packages" / ("enigma2-skin-fullhdglass17-warder-evolution_%s_all.ipk" % version)
+    output = ROOT / "packages" / ("enigma2-skin-fullhdglass-warder-evolution_%s_all.ipk" % version)
     output.parent.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory() as work:
         work = Path(work)

@@ -41,7 +41,7 @@ def main():
         path = ROOT / "source/control" / name
         subprocess.run(["sh", "-n", str(path)], check=True)
         assert path.stat().st_mode & 0o111 == 0o111
-    package = ROOT / "packages" / ("enigma2-skin-fullhdglass17-warder-evolution_%s_all.ipk" % version)
+    package = ROOT / "packages" / ("enigma2-skin-fullhdglass-warder-evolution_%s_all.ipk" % version)
     if package.is_file():
         assert subprocess.check_output(["ar", "p", str(package), "debian-binary"]) == b"2.0\n"
         data = subprocess.check_output(["ar", "p", str(package), "data.tar.gz"])

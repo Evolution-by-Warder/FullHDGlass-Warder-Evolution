@@ -40,7 +40,7 @@ rmdir "$WARDER_EPG_STATE_DIR" 2>/dev/null || true
 # Do not delete broad wildcards from Enigma2 system directories here;
 # the package manager removes files that belong to this package itself.
 echo "***************************************"
-echo "Full HD Glass 17 removal finished."
+echo "FullHDGlass removal finished."
 echo "Saved Enigma2 settings were left intact."
 echo "Please restart GUI to activate changes."
 echo "***************************************"

@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PAYLOAD=ROOT/'source/package-root'
 P=PAYLOAD/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 version=(P/'version').read_text().strip()
-package=ROOT/'packages/test'/('enigma2-skin-fullhdglass17-warder-evolution_'+version+'_all.ipk')
+package=ROOT/'packages/test'/('enigma2-skin-fullhdglass-warder-evolution_'+version+'_all.ipk')
 assert subprocess.check_output(['ar','p',str(package),'debian-binary'])==b'2.0\n'
 with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(package),'control.tar.gz'])),mode='r:gz') as archive:
     control=archive.extractfile('./control').read().decode()

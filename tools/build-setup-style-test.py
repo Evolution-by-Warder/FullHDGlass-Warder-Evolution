@@ -20,7 +20,7 @@ def main():
     spec=importlib.util.spec_from_file_location('stable_archive',ROOT/'tools/build-release-ipk.py')
     archive=importlib.util.module_from_spec(spec);spec.loader.exec_module(archive)
     output=ROOT/'packages/test';output.mkdir(parents=True,exist_ok=True)
-    package=output/('enigma2-skin-fullhdglass17-warder-evolution_'+version+'_all.ipk')
+    package=output/('enigma2-skin-fullhdglass-warder-evolution_'+version+'_all.ipk')
     with tempfile.TemporaryDirectory() as folder:
         work=Path(folder);(work/'debian-binary').write_bytes(b'2.0\n')
         archive.archive(control,work/'control.tar.gz')

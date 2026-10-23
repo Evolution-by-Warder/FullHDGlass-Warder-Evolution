@@ -94,7 +94,7 @@ if find "$WORK" -type d -name __pycache__ -print -quit | grep -q . || find "$WOR
   exit 3
 fi
 
-OUT="$OUTDIR/enigma2-skin-fullhdglass17-warder-evolution_${RUNTIMEVER}_all.ipk"
+OUT="$OUTDIR/enigma2-skin-fullhdglass-warder-evolution_${RUNTIMEVER}_all.ipk"
 BUILD="$WORK/.ipk-build"
 mkdir -p "$BUILD"
 printf '2.0\\n' > "$BUILD/debian-binary"

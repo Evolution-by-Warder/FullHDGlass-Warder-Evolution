@@ -65,8 +65,35 @@ def strip_panel_presentation(cls):
             node.body=[child for child in node.body if portable(child)!=exact]
 
 
+RESET_OLD = '_("Reset all settings of FHDG 17")'
+RESET_NEW = RESET_OLD + '.replace("FHDG 17", "FullHDGlass")'
+
+
+def strip_branding_presentation(tree):
+    class ResetLabel(ast.NodeTransformer):
+        def visit_Call(self,node):
+            if portable(node)==portable(ast.parse(RESET_NEW,mode='eval').body):
+                return ast.parse(RESET_OLD,mode='eval').body
+            return self.generic_visit(node)
+    tree=ResetLabel().visit(tree)
+    for node in tree.body:
+        if isinstance(node,ast.FunctionDef) and node.name in ('startSetup17','Plugins'):
+            for child in ast.walk(node):
+                if isinstance(child,ast.Constant) and child.value==' (FullHDGlass)':child.value=' (FHDG 17)'
+                if node.name=='Plugins' and isinstance(child,ast.Call) and isinstance(child.func,ast.Name) and child.func.id=='PluginDescriptor':
+                    for key in child.keywords:
+                        if key.arg=='name' and isinstance(key.value,ast.Constant) and key.value.value=='FullHDGlass - Warder Evolution':
+                            key.value.value='setupGlass17'
+        if isinstance(node,ast.ClassDef) and node.name=='setupGlass17ScreenSetup':
+            for method in node.body:
+                if isinstance(method,ast.FunctionDef) and method.name=='getCurrentEntry':
+                    for child in ast.walk(method):
+                        if isinstance(child,ast.Constant) and child.value=='FullHDGlass':child.value='Full HD Glass17'
+    return tree
+
+
 def normalized(tree):
-    tree=copy.deepcopy(tree)
+    tree=strip_branding_presentation(copy.deepcopy(tree))
     for cls in tree.body:
         if not isinstance(cls,ast.ClassDef) or cls.name not in SCREENS:continue
         if cls.name=='setupGlass17ScreenSetup':strip_panel_presentation(cls)
@@ -177,6 +204,9 @@ def themed(name,original):
             fields['line_'+color].set('backgroundColor',COLORS[color])
         else:root.append(element('eLabel',x,y-6,wide,2,backgroundColor=COLORS[color],zPosition='1'))
     if name=='setupGlass17ScreenSetup':
+        root.set('title','FullHDGlass')
+        for key in ('key_red','key_green'):
+            fields[key].set('backgroundColor',BASE)
         fields['description'].set('position','60,142');fields['description'].set('size','1800,46')
         fields['description'].set('font','Regular;24');fields['description'].set('halign','left')
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
@@ -263,6 +293,11 @@ def apply():
                 lines[i]=lines[i].replace('backcolor_sel=0,','backcolor_sel=int(\'0x2a70ad\',16),')
     result=''.join(lines)
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Controller logic changed')
+    if RESET_NEW not in result:result=result.replace(RESET_OLD,RESET_NEW)
+    result=result.replace('" (FHDG 17)"','" (FullHDGlass)"')
+    result=result.replace('PluginDescriptor(name="setupGlass17"','PluginDescriptor(name="FullHDGlass - Warder Evolution"')
+    result=result.replace('tmp = "Full HD Glass17"','tmp = "FullHDGlass"')
+    if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Branding changed controller logic')
     PLUGIN.write_text(result)
 
 
