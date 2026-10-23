@@ -6310,8 +6310,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 <widget name="white" position="60,654" font="Prive3;34" size="1790,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
 <widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#00ff526a" />
 <widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00102136" foregroundColor="#0039ff59" />
-<widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00102136" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />
-<widget source="Canvas" render="Canvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#FF000000" transparent="1" alphatest="on" />
+<widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00071627" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />
+<widget source="Canvas" render="WarderSettingsCanvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#00071627" transparent="1" alphatest="on" />
 <widget name="help_pict" position="519,660" size="882,300" zPosition="4" alphatest="on" />
 <widget name="help_txt" position="579,660" size="780,300" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
 <widget name="helpPiconFrame" position="865,749" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
@@ -6562,6 +6562,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 	                panel.show()
 	            else:
 	                panel.hide()
+	    if self.isMainMenu:
+	        self["selected_item"].hide()
+	    else:
+	        self["selected_item"].show()
 
 	def runSetup(self):
 		self._warderSetPanelMode()
@@ -7020,6 +7024,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		pass
 			
 	def sampleColor(self, c):
+		self.canvas.warder_sample_visible = c is not None and not self.isMainMenu
 		if c is None:
 			if self.isShow:
 				self.isShow = False

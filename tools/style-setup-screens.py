@@ -33,7 +33,12 @@ PANEL_MODE = """def _warderSetPanelMode(self):
                 panel.show()
             else:
                 panel.hide()
+    if self.isMainMenu:
+        self["selected_item"].hide()
+    else:
+        self["selected_item"].show()
 """
+COLOR_VISIBILITY = 'self.canvas.warder_sample_visible = c is not None and not self.isMainMenu'
 PANEL_CALL = 'self._warderSetPanelMode()'
 
 
@@ -52,10 +57,11 @@ def strip_panel_presentation(cls):
     expected_method=portable(ast.parse(PANEL_MODE).body[0])
     expected_init=portable(ast.parse(PANEL_INIT).body[0])
     expected_call=portable(ast.parse(PANEL_CALL).body[0])
+    expected_color=portable(ast.parse(COLOR_VISIBILITY).body[0])
     cls.body=[node for node in cls.body if portable(node)!=expected_method]
     for node in cls.body:
-        if isinstance(node,ast.FunctionDef) and node.name in ('__init__','runSetup'):
-            exact=expected_init if node.name=='__init__' else expected_call
+        if isinstance(node,ast.FunctionDef) and node.name in ('__init__','runSetup','sampleColor'):
+            exact={'__init__':expected_init,'runSetup':expected_call,'sampleColor':expected_color}[node.name]
             node.body=[child for child in node.body if portable(child)!=exact]
 
 
@@ -182,6 +188,9 @@ def themed(name,original):
         for key in ('help_txt','helpTxtAnim'):
             fields[key].set('font','Regular;28');fields[key].set('foregroundColor','#00b5d4ec')
         fields['selected_item'].set('font','Regular;24')
+        fields['selected_item'].set('backgroundColor',BASE)
+        canvas=fields['Canvas']
+        canvas.set('render','WarderSettingsCanvas');canvas.set('backgroundColor',BASE)
         # Keep the existing Canvas/color and animated help previews visible.
         for key in ('selected_item','help_txt','helpTxtAnim'):
             fields[key].set('transparent','1')
@@ -240,6 +249,8 @@ def apply():
         owned=owned.replace('\t\tself.list = [ ]',init+'\t\tself.list = [ ]',1)
         owned=owned.replace('\tdef runSetup(self):',method+'\n\tdef runSetup(self):\n\t\t'+PANEL_CALL,1)
         text=before+owned
+    if COLOR_VISIBILITY not in text:
+        text=text.replace('\tdef sampleColor(self, c):','\tdef sampleColor(self, c):\n\t\t'+COLOR_VISIBILITY,1)
     # Selection colors in MultiContent rows are explicitly supplied by the
     # original controllers, so the shared XML colors alone cannot replace them.
     tree=ast.parse(text);lines=text.splitlines(keepends=True)

@@ -6,6 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import unittest
+from types import SimpleNamespace
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -35,6 +36,8 @@ class SetupStyleTests(unittest.TestCase):
             close='</screen>' if name=='selectIconsDisplayed' else ''
             original=ET.fromstring(BASELINE['skins'][name]+close)
             current=ET.fromstring(skin+close)
+            if name=='setupGlass17ScreenSetup':
+                original.find("widget[@source='Canvas']").set('render','WarderSettingsCanvas')
             self.assertTrue(set(style.widget_ids(original))<=set(style.widget_ids(current)),name)
             self.assertEqual(current.get('flags'),'wfNoBorder',name)
             self.assertEqual(current.get('backgroundColor'),style.BASE if name in ('setupGlass17ScreenSetup','downloadMenu') else style.PANEL,name)
@@ -101,11 +104,13 @@ class SetupStyleTests(unittest.TestCase):
         nodes={x.get('name'):x for x in root if x.get('name','').startswith('warder_')}
         self.assertEqual(len(nodes),15)
         for key in nodes:screen[key]=Panel()
+        screen["selected_item"]=Panel()
         # Enter short/long groups repeatedly and return to the main menu.
         for main in (True,False,False,True,False,True):
             screen.isMainMenu=main;scope['_warderSetPanelMode'](screen)
-            visible=[key for key,panel in screen.items() if panel.visible]
+            visible=[key for key,panel in screen.items() if panel.visible and key.startswith("warder_")]
             self.assertEqual(len(visible),10 if main else 5)
+            self.assertEqual(screen["selected_item"].visible,not main)
             self.assertTrue(all(key.startswith('warder_menu_' if main else 'warder_settings_') for key in visible))
         config=root.find("widget[@name='config']")
         help_text=root.find("widget[@name='help_txt']")
@@ -135,6 +140,51 @@ class SetupStyleTests(unittest.TestCase):
         self.assertEqual(ast.dump(setup.body[0]),ast.dump(ast.parse(style.PANEL_CALL).body[0]))
         changed=CURRENT.replace('panel.show()', 'panel.hide()',1)
         self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
+    def test_footer_canvas_is_hidden_until_an_actual_colour_is_selected(self):
+        renderer_path=ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsCanvas.py'
+        tree=ast.parse(renderer_path.read_text())
+        cls=next(x for x in tree.body if isinstance(x,ast.ClassDef))
+        class NativeCanvas:
+            def __init__(self):
+                self.source=SimpleNamespace();self.visible=True;self.draw_updates=0
+            def hide(self):self.visible=False
+            def pullUpdates(self):self.draw_updates+=1
+        scope={'Canvas':NativeCanvas}
+        exec(compile(ast.Module(body=[cls],type_ignores=[]),'renderer','exec'),scope)
+        renderer=scope['WarderSettingsCanvas']()
+        self.assertFalse(renderer.visible)
+        renderer.pullUpdates();self.assertFalse(renderer.visible)
+        renderer.source.warder_sample_visible=True
+        renderer.pullUpdates();self.assertTrue(renderer.visible)
+        renderer.source.warder_sample_visible=False
+        renderer.pullUpdates();self.assertFalse(renderer.visible)
+        self.assertEqual(renderer.draw_updates,3)  # Native drawing is retained.
+        root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
+        self.assertEqual(root.find("widget[@source='Canvas']").get('render'),'WarderSettingsCanvas')
+        self.assertEqual(root.find("widget[@name='selected_item']").get('backgroundColor'),style.BASE)
+
+    def test_real_colour_sample_callback_sets_visibility_before_flush(self):
+        tree=ast.parse(CURRENT)
+        cls=next(x for x in tree.body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
+        method=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='sampleColor')
+        scope={'gFont':lambda *a:a,'_':lambda text:text,'RT_HALIGN_CENTER':0}
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'sampleColor','exec'),scope)
+        class Source:
+            def __init__(self):self.states=[];self.fills=[];self.text=[]
+            def fill(self,*args):self.fills.append(args)
+            def writeText(self,*args):self.text.append(args)
+            def flush(self):self.states.append(self.warder_sample_visible)
+        screen=SimpleNamespace(canvas=Source(),isMainMenu=True,isShow=True)
+        callback=scope['sampleColor']
+        callback(screen,None);self.assertEqual(screen.canvas.states,[False])
+        screen.isMainMenu=False
+        callback(screen,'#ff0000');self.assertTrue(screen.canvas.states[-1])
+        self.assertEqual(screen.canvas.fills[-1][-1],0xff0000)
+        self.assertEqual(screen.canvas.text[-1][-2],'Color Sample')
+        callback(screen,None);self.assertFalse(screen.canvas.states[-1])
+        screen.isMainMenu=True
+        callback(screen,'#00ff00');self.assertFalse(screen.canvas.states[-1])
 
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():

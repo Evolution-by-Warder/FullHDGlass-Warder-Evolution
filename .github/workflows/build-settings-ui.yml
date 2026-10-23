@@ -3,6 +3,7 @@ on:
   push:
     branches: [warder-modernization-work]
     paths:
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsCanvas.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
       - source/control/control
@@ -53,7 +54,7 @@ jobs:
           python3 tools/verify-setup-style-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-settings-TEST253
+          name: FullHDGlass-settings-TEST254
           path: packages/test/*
           retention-days: 90
       - name: Publish reviewable TEST package without changing update feeds
@@ -71,7 +72,7 @@ jobs:
             cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution — nastavenia TEST253" \
-              --notes-file docs/SETTINGS-UI-TEST253.md \
+              --title "FullHDGlass Warder Evolution — nastavenia TEST254" \
+              --notes-file docs/SETTINGS-UI-TEST254.md \
               "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json
           fi
