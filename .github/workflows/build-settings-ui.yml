@@ -3,6 +3,9 @@ on:
   push:
     branches: [warder-modernization-work]
     paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHelpArt.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-help-masks.json
+      - tools/test-help-art.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsCanvas.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
@@ -43,6 +46,11 @@ jobs:
           python3 tools/test-runtime-safety.py
           python3 tools/test-version-order.py
           python3 tools/verify-radio-release.py
+      - name: Verify all 252 original help illustrations and background filtering
+        run: |
+          python3 -m pip install --quiet Pillow
+          curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
+          python3 tools/test-help-art.py --bundle /tmp/warder-help.zip
       - name: Validate existing gettext catalogs
         run: |
           sudo apt-get update -qq
@@ -54,7 +62,7 @@ jobs:
           python3 tools/verify-setup-style-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-settings-TEST256
+          name: FullHDGlass-settings-TEST257
           path: packages/test/*
           retention-days: 90
       - name: Publish reviewable TEST package without changing update feeds
@@ -72,7 +80,7 @@ jobs:
             cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution — nastavenia TEST256" \
-              --notes-file docs/SETTINGS-UI-TEST256.md \
+              --title "FullHDGlass Warder Evolution — nastavenia TEST257" \
+              --notes-file docs/SETTINGS-UI-TEST257.md \
               "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json
           fi

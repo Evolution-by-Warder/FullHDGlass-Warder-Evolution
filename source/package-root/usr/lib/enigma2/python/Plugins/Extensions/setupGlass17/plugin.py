@@ -7467,12 +7467,16 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					else:
 						self["selected_item"].setText("")
 					self["help_txt"].setText("")
-					self["help_pict"].instance.setPixmapFromFile(filename)
+					self._warderLoadHelpPicture(filename)
 					self["help_pict"].show()
 				else:
 					self["selected_item"].setText("")
 					self["help_pict"].hide()
 					self["help_txt"].setText(helpTxt.get("00",""))
+
+	def _warderLoadHelpPicture(self, filename):
+	    from .warderHelpArt import themed_path
+	    self["help_pict"].instance.setPixmapFromFile(themed_path(filename))
 
 	def readVersion(self):
 		version = "x.xx"

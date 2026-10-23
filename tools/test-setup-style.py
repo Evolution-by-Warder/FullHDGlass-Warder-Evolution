@@ -203,7 +203,7 @@ class SetupStyleTests(unittest.TestCase):
         self.assertNotIn("setText(self.getCurrentValue())",text)
         self.assertIn('strftime(',text)
         self.assertIn('sampleColor(t)',text)
-        self.assertIn('setPixmapFromFile(filename)',text)
+        self.assertIn('_warderLoadHelpPicture(filename)',text)
 
     def test_every_configuration_group_uses_the_same_bounded_artwork_loader(self):
         cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
@@ -215,7 +215,7 @@ class SetupStyleTests(unittest.TestCase):
                 if isinstance(call,ast.Call) and isinstance(call.func,ast.Attribute) and style.portable(call.func.value)==picture:
                     self.assertNotIn(call.func.attr,('move','resize'))  # No group overrides the shared bounds.
                     if call.func.attr=='setPixmapFromFile':loads.append(method.name)
-        self.assertEqual(loads,['doMyHelpWindow'])
+        self.assertEqual(loads,['_warderLoadHelpPicture'])
         show=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='showInfo')
         hook=ast.parse('self["config"].onSelectionChanged.append(self.doMyHelpWindow)').body[0]
         self.assertIn(style.portable(hook),[style.portable(x) for x in ast.walk(show)])

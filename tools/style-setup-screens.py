@@ -109,8 +109,31 @@ def strip_duplicate_value_presentation(tree):
     return tree
 
 
+HELP_NATIVE = 'self["help_pict"].instance.setPixmapFromFile(filename)'
+HELP_CALL = 'self._warderLoadHelpPicture(filename)'
+HELP_METHOD = """def _warderLoadHelpPicture(self, filename):
+    from .warderHelpArt import themed_path
+    self["help_pict"].instance.setPixmapFromFile(themed_path(filename))
+"""
+
+
+def strip_help_background_presentation(tree):
+    expected_method=portable(ast.parse(HELP_METHOD).body[0])
+    expected_call=portable(ast.parse(HELP_CALL).body[0])
+    class RestoreLoader(ast.NodeTransformer):
+        def visit_Expr(self,node):
+            if portable(node)==expected_call:return ast.parse(HELP_NATIVE).body[0]
+            return self.generic_visit(node)
+    for cls in tree.body:
+        if isinstance(cls,ast.ClassDef) and cls.name=='setupGlass17ScreenSetup':
+            cls.body=[node for node in cls.body if portable(node)!=expected_method]
+            for node in cls.body:
+                if isinstance(node,ast.FunctionDef) and node.name=='doMyHelpWindow':RestoreLoader().visit(node)
+    return tree
+
+
 def normalized(tree):
-    tree=strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree)))
+    tree=strip_help_background_presentation(strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree))))
     for cls in tree.body:
         if not isinstance(cls,ast.ClassDef) or cls.name not in SCREENS:continue
         if cls.name=='setupGlass17ScreenSetup':strip_panel_presentation(cls)
@@ -321,6 +344,11 @@ def apply():
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Branding changed controller logic')
     result=result.replace('self["selected_item"].setText(self.getCurrentValue())','self["selected_item"].setText("")')
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected help controller change')
+    if 'def _warderLoadHelpPicture(self, filename):' not in result:
+        result=result.replace(HELP_NATIVE,HELP_CALL,1)
+        method=''.join('\t'+line+'\n' for line in HELP_METHOD.splitlines())
+        result=result.replace('\tdef readVersion(self):',method+'\n\tdef readVersion(self):',1)
+    if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected background controller change')
     PLUGIN.write_text(result)
 
 

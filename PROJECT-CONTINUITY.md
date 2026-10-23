@@ -2,9 +2,9 @@
 
 The owner explicitly approved modernizing the settings UI as part of a shared Warder Evolution style. Work remains on `warder-modernization-work`; production `main`, update.json and update-test.json stay at 1.0.15.
 
-The working payload is **1.0.16-test256**, a manual receiver-validation candidate. Eleven owned settings screen classes receive the shared presentation. A frozen AST fingerprint verifies unchanged controllers, configuration, actions and callbacks. Existing graphics/XML, radio baseline and download backend remain unchanged. System MessageBox/ChoiceBox/InputBox and positioning/OLED screens are outside this first candidate.
+The working payload is **1.0.16-test257**, a manual receiver-validation candidate. Eleven owned settings screen classes receive the shared presentation. A frozen AST fingerprint verifies unchanged controllers, configuration, actions and callbacks. Existing graphics/XML, radio baseline and download backend remain unchanged. System MessageBox/ChoiceBox/InputBox and positioning/OLED screens are outside this first candidate.
 
-See [shared style](design/WARDER-UI-STANDARD.md), [inventory](design/settings-ui-inventory.json) and [candidate instructions](docs/SETTINGS-UI-TEST256.md). A native receiver test of this candidate is still required before production promotion.
+See [shared style](design/WARDER-UI-STANDARD.md), [inventory](design/settings-ui-inventory.json) and [candidate instructions](docs/SETTINGS-UI-TEST257.md). A native receiver test of this candidate is still required before production promotion.
 
 ## Stable recovery baseline — retained below
 
