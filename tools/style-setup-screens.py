@@ -37,15 +37,26 @@ PANEL_MODE = """def _warderSetPanelMode(self):
 PANEL_CALL = 'self._warderSetPanelMode()'
 
 
+def portable(value):
+    if isinstance(value,ast.AST):
+        # Python 3.12 adds type_params to definitions. Empty parameters
+        # have no counterpart in the original Python 3.9 grammar.
+        return [type(value).__name__,{field:portable(getattr(value,field,None))
+                for field in value._fields if field!='type_params' or getattr(value,field,None)}]
+    if isinstance(value,list):return [portable(item) for item in value]
+    if isinstance(value,bytes):return {'bytes_hex':value.hex()}
+    return value
+
+
 def strip_panel_presentation(cls):
-    expected_method=ast.dump(ast.parse(PANEL_MODE).body[0])
-    expected_init=ast.dump(ast.parse(PANEL_INIT).body[0])
-    expected_call=ast.dump(ast.parse(PANEL_CALL).body[0])
-    cls.body=[node for node in cls.body if ast.dump(node)!=expected_method]
+    expected_method=portable(ast.parse(PANEL_MODE).body[0])
+    expected_init=portable(ast.parse(PANEL_INIT).body[0])
+    expected_call=portable(ast.parse(PANEL_CALL).body[0])
+    cls.body=[node for node in cls.body if portable(node)!=expected_method]
     for node in cls.body:
         if isinstance(node,ast.FunctionDef) and node.name in ('__init__','runSetup'):
             exact=expected_init if node.name=='__init__' else expected_call
-            node.body=[child for child in node.body if ast.dump(child)!=exact]
+            node.body=[child for child in node.body if portable(child)!=exact]
 
 
 def normalized(tree):
@@ -59,15 +70,6 @@ def normalized(tree):
         for node in ast.walk(cls):
             if isinstance(node,ast.keyword) and node.arg in ('color_sel','backcolor_sel'):
                 node.value=ast.Constant('<selection-color>')
-    def portable(value):
-        if isinstance(value,ast.AST):
-            # Python 3.12 adds type_params to definitions. Empty parameters
-            # have no counterpart in the original Python 3.9 grammar.
-            return [type(value).__name__,{field:portable(getattr(value,field,None))
-                    for field in value._fields if field!='type_params' or getattr(value,field,None)}]
-        if isinstance(value,list):return [portable(item) for item in value]
-        if isinstance(value,bytes):return {'bytes_hex':value.hex()}
-        return value
     serialized=json.dumps(portable(tree),sort_keys=True,separators=(',',':'),ensure_ascii=True)
     return hashlib.sha256(serialized.encode()).hexdigest()
 
