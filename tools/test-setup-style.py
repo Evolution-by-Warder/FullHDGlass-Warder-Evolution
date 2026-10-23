@@ -38,6 +38,7 @@ class SetupStyleTests(unittest.TestCase):
             current=ET.fromstring(skin+close)
             if name=='setupGlass17ScreenSetup':
                 original.find("widget[@source='Canvas']").set('render','WarderSettingsCanvas')
+                original.remove(original.find("widget[@name='selected_item']"))
             self.assertTrue(set(style.widget_ids(original))<=set(style.widget_ids(current)),name)
             self.assertEqual(current.get('flags'),'wfNoBorder',name)
             self.assertEqual(current.get('backgroundColor'),style.BASE if name in ('setupGlass17ScreenSetup','downloadMenu') else style.PANEL,name)
@@ -79,7 +80,7 @@ class SetupStyleTests(unittest.TestCase):
         self.assertEqual(history.find("widget[@name='key_red']").get('position'),'0,775')
         self.assertEqual(history.find("widget[@name='line_red']").get('position'),'0,765')
         main=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
-        self.assertEqual(main.find("widget[@name='selected_item']").get('transparent'),'1')
+        self.assertIsNone(main.find("widget[@name='selected_item']"))
         self.assertIn('<widget name="config" font="Prive3;34"',LAYOUTS['setupGlass17ScreenSetup'][1])
         # Controller still appends the nine icon previews before </screen>.
         self.assertFalse(LAYOUTS['selectIconsDisplayed'][1].strip().endswith('</screen>'))
@@ -93,9 +94,11 @@ class SetupStyleTests(unittest.TestCase):
         tree=ast.parse(CURRENT)
         cls=next(x for x in tree.body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
         method=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='_warderSetPanelMode')
-        scope={};exec(compile(ast.Module(body=[method],type_ignores=[]),'panels','exec'),scope)
+        scope={'eSize':lambda *args:args};exec(compile(ast.Module(body=[method],type_ignores=[]),'panels','exec'),scope)
         class Panel:
             visible=False
+            def __init__(self):self.instance=self;self.dimensions=None
+            def resize(self,size):self.dimensions=size
             def show(self):self.visible=True
             def hide(self):self.visible=False
         class Screen(dict):pass
@@ -104,20 +107,20 @@ class SetupStyleTests(unittest.TestCase):
         nodes={x.get('name'):x for x in root if x.get('name','').startswith('warder_')}
         self.assertEqual(len(nodes),15)
         for key in nodes:screen[key]=Panel()
-        screen["selected_item"]=Panel()
+        screen["help_txt"]=Panel()
         # Enter short/long groups repeatedly and return to the main menu.
         for main in (True,False,False,True,False,True):
             screen.isMainMenu=main;scope['_warderSetPanelMode'](screen)
             visible=[key for key,panel in screen.items() if panel.visible and key.startswith("warder_")]
             self.assertEqual(len(visible),10 if main else 5)
-            self.assertEqual(screen["selected_item"].visible,not main)
+            self.assertEqual(screen["help_txt"].dimensions,(737,280) if main else (780,350))
             self.assertTrue(all(key.startswith('warder_menu_' if main else 'warder_settings_') for key in visible))
         config=root.find("widget[@name='config']")
         help_text=root.find("widget[@name='help_txt']")
         full=nodes['warder_settings_panel_0']
         self.assertEqual(full.get('position'),'50,200');self.assertEqual(full.get('size'),'1810,760')
         self.assertEqual(config.get('position'),'60,210')
-        self.assertEqual(config.get('size'),'1790,440')
+        self.assertEqual(config.get('size'),'1790,360')
         self.assertLessEqual(sum(map(int,(config.get('position').split(',')[0],config.get('size').split(',')[0]))),1850)
         self.assertGreater(int(full.get('zPosition')),int(root.find("widget[@render='Pig']").get('zPosition')))
         for node in (config,help_text):self.assertGreater(int(node.get('zPosition')),int(full.get('zPosition'))+1)
@@ -162,7 +165,7 @@ class SetupStyleTests(unittest.TestCase):
         self.assertEqual(renderer.draw_updates,3)  # Native drawing is retained.
         root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
         self.assertEqual(root.find("widget[@source='Canvas']").get('render'),'WarderSettingsCanvas')
-        self.assertEqual(root.find("widget[@name='selected_item']").get('backgroundColor'),style.BASE)
+        self.assertIsNone(root.find("widget[@name='selected_item']"))
 
     def test_real_colour_sample_callback_sets_visibility_before_flush(self):
         tree=ast.parse(CURRENT)
@@ -190,13 +193,14 @@ class SetupStyleTests(unittest.TestCase):
         root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
         pic=root.find("widget[@name='help_pict']")
         x,y=map(int,pic.get('position').split(','));w,h=map(int,pic.get('size').split(','))
-        self.assertGreaterEqual(y,656+14)
-        self.assertLessEqual(y+h,958-14)
+        self.assertGreaterEqual(y,576+16)
+        self.assertLessEqual(y+h,958-16)
         self.assertGreaterEqual(x,60);self.assertLessEqual(x+w,1850)
         self.assertAlmostEqual(w/h,882/300,delta=.005)
-        self.assertEqual(x+w//2,960)
+        self.assertGreater(w,882);self.assertGreater(h,300)
+        self.assertLessEqual(abs(x+w/2-960),1)
 
-    def test_duplicate_value_is_removed_but_formatted_date_preview_is_retained(self):
+    def test_duplicate_value_is_removed_and_legacy_date_model_remains_compatible(self):
         cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
         method=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='doMyHelpWindow')
         text=ast.unparse(method)
@@ -221,6 +225,20 @@ class SetupStyleTests(unittest.TestCase):
         self.assertIn(style.portable(hook),[style.portable(x) for x in ast.walk(show)])
         # Existing static bounds checks also cover all owned popup previews.
         self.assertEqual(len(LAYOUTS),10)
+
+    def test_no_widget_can_draw_a_center_footer_rectangle(self):
+        root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
+        self.assertIsNone(root.find("widget[@name='selected_item']"))
+        for child in root:
+            x,y=map(int,child.get('position').split(','));w,h=map(int,child.get('size').split(','))
+            self.assertFalse(x<1360 and x+w>560 and y<1060 and y+h>974,child.attrib)
+        cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
+        init=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='__init__')
+        self.assertIn(style.portable(ast.parse(style.VALUE_SOURCE).body[0]),[style.portable(n) for n in init.body])
+        setup=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='runSetup')
+        moved=style.portable(ast.parse(style.GEOMETRY_NEW).body[0])
+        self.assertIn(moved,[style.portable(x) for x in ast.walk(setup)])
+        self.assertNotIn(style.portable(ast.parse(style.GEOMETRY_OLD).body[0]),[style.portable(x) for x in ast.walk(setup)])
 
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():

@@ -1,7 +1,7 @@
 """Display the original help illustrations over the settings panel background.
 
 Only byte-identical illustrations from the approved help bundle are themed.
-Precomputed masks remove the shared decoration; screenshot content is retained.
+Precomputed masks identify the background for navy tinting; no pixel is removed.
 The original files are never changed. No Pillow or extra receiver dependency.
 """
 import base64
@@ -13,6 +13,8 @@ import tempfile
 import zlib
 
 _INDEX = None
+_STYLE = 'navy-opaque-v2'
+_BACKGROUND = (16, 33, 54)
 _SIGNATURE = b'\x89PNG\r\n\x1a\n'
 
 
@@ -125,12 +127,15 @@ def render(raw, entry):
         raise ValueError('Invalid help mask')
     for i in range(count):
         if not (mask[i >> 3] & (128 >> (i & 7))):
-            rgba[i * 4 + 3] = 0
+            # Preserve the original alpha and luminance/shape of the complete
+            # illustration. Tint background pixels instead of erasing them.
+            for channel, offset in enumerate(_BACKGROUND):
+                rgba[i * 4 + channel] = min(255, rgba[i * 4 + channel] + offset)
     return encode_png(width, height, rgba)
 
 
 def themed_path(filename, cache_dir=None):
-    """Return a cached transparent variant, or the unchanged source on error."""
+    """Return a cached opaque navy variant, or the unchanged source on error."""
     temporary = None
     try:
         with open(filename, 'rb') as stream:
@@ -141,9 +146,9 @@ def themed_path(filename, cache_dir=None):
         entry = _index()['images'].get(digest)
         if entry is None:
             return filename
-        cache = cache_dir or '/tmp/warder-help-art-v1'
+        cache = cache_dir or '/tmp/warder-help-art-v2'
         os.makedirs(cache, mode=0o700, exist_ok=True)
-        revision = hashlib.sha256(entry['mask'].encode('ascii')).hexdigest()[:12]
+        revision = hashlib.sha256((_STYLE + ':' + entry['mask']).encode('ascii')).hexdigest()[:12]
         target = os.path.join(cache, digest + '-' + revision + '.png')
         if os.path.isfile(target):
             return target

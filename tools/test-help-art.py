@@ -100,23 +100,30 @@ class HelpArtTests(unittest.TestCase):
                 self.assertEqual(bytes(decoded),original,name)
                 result=art.render(raw,entry);image=Image.open(io.BytesIO(result));self.assertEqual(image.size,(882,300))
                 styled=image.convert('RGBA').tobytes();mask=zlib.decompress(base64.b64decode(entry['mask']))
-                self.assertEqual(styled[0::4],original[0::4],name)
-                self.assertEqual(styled[1::4],original[1::4],name)
-                self.assertEqual(styled[2::4],original[2::4],name)
-                expected_alpha=bytes(original[i*4+3] if mask[i>>3]&(128>>(i&7)) else 0 for i in range(882*300))
-                self.assertEqual(styled[3::4],expected_alpha,name)
+                # No pixel is erased: original alpha and full diagram geometry survive.
+                self.assertEqual(styled[3::4],original[3::4],name)
+                before_image=Image.frombytes('RGBA',(882,300),original)
+                lookup=[min(255,value+offset) for offset in (16,33,54) for value in range(256)]
+                navy=before_image.convert('RGB').point(lookup)
+                foreground=Image.frombytes('L',(882,300),bytes(255 if mask[i>>3]&(128>>(i&7)) else 0 for i in range(882*300)))
+                expected=Image.composite(before_image.convert('RGB'),navy,foreground)
+                self.assertEqual(image.convert('RGB').tobytes(),expected.tobytes(),name)
                 for left,top,right,bottom in entry['preserved_regions']:
                     for y in range(top,bottom):
                         begin=(y*882+left)*4;end=(y*882+right)*4
                         self.assertEqual(styled[begin:end],original[begin:end],name)
                 if sequence==0:
                     p=Path(folder)/'original.png';p.write_bytes(raw);cache=Path(folder)/'cache'
+                    cache.mkdir()
+                    legacy_revision=hashlib.sha256(entry['mask'].encode('ascii')).hexdigest()[:12]
+                    legacy=cache/(digest+'-'+legacy_revision+'.png');legacy.write_bytes(b'old erased version')
                     target=art.themed_path(str(p),str(cache));self.assertNotEqual(target,str(p))
+                    self.assertNotEqual(target,str(legacy))
                     before=Path(target).stat().st_mtime_ns
                     self.assertEqual(art.themed_path(str(p),str(cache)),target)
                     self.assertEqual(Path(target).stat().st_mtime_ns,before)
                     self.assertEqual(p.read_bytes(),raw)
-            print('Verified all 252 help illustrations: exact original RGB content, masked background and cache')
+            print('Verified all 252 help illustrations: exact original RGB content, opaque navy background and cache invalidation')
 
 
 if __name__=='__main__':unittest.main(argv=[__file__]+remaining)

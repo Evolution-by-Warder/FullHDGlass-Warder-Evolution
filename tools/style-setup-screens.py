@@ -34,9 +34,9 @@ PANEL_MODE = """def _warderSetPanelMode(self):
             else:
                 panel.hide()
     if self.isMainMenu:
-        self["selected_item"].hide()
+        self["help_txt"].instance.resize(eSize(737, 280))
     else:
-        self["selected_item"].show()
+        self["help_txt"].instance.resize(eSize(780, 350))
 """
 COLOR_VISIBILITY = 'self.canvas.warder_sample_visible = c is not None and not self.isMainMenu'
 PANEL_CALL = 'self._warderSetPanelMode()'
@@ -132,8 +132,31 @@ def strip_help_background_presentation(tree):
     return tree
 
 
+GEOMETRY_OLD = 'self["help_txt"].instance.move(ePoint(579,660))'
+GEOMETRY_NEW = 'self["help_txt"].instance.move(ePoint(579,592))'
+VALUE_LABEL = 'self["selected_item"] = Label("")'
+VALUE_SOURCE = 'self["selected_item"] = StaticText("")'
+
+
+def strip_help_geometry_presentation(tree):
+    expected_move=portable(ast.parse(GEOMETRY_NEW).body[0])
+    expected_source=portable(ast.parse(VALUE_SOURCE).body[0])
+    class RestoreGeometry(ast.NodeTransformer):
+        def visit_Expr(self,node):
+            if portable(node)==expected_move:return ast.parse(GEOMETRY_OLD).body[0]
+            return self.generic_visit(node)
+        def visit_Assign(self,node):
+            if portable(node)==expected_source:return ast.parse(VALUE_LABEL).body[0]
+            return self.generic_visit(node)
+    for cls in tree.body:
+        if isinstance(cls,ast.ClassDef) and cls.name=='setupGlass17ScreenSetup':
+            for method in cls.body:
+                if isinstance(method,ast.FunctionDef) and method.name in ('runSetup','__init__'):RestoreGeometry().visit(method)
+    return tree
+
+
 def normalized(tree):
-    tree=strip_help_background_presentation(strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree))))
+    tree=strip_help_geometry_presentation(strip_help_background_presentation(strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree)))))
     for cls in tree.body:
         if not isinstance(cls,ast.ClassDef) or cls.name not in SCREENS:continue
         if cls.name=='setupGlass17ScreenSetup':strip_panel_presentation(cls)
@@ -252,21 +275,23 @@ def themed(name,original):
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
         fields['session.VideoPicture'].set('position','60,210');fields['session.VideoPicture'].set('size','737,415')
         fields['list'].set('position','860,210');fields['list'].set('size','990,720')
-        fields['config'].set('position','60,210');fields['config'].set('size','1790,440')
+        fields['config'].set('position','60,210');fields['config'].set('size','1790,360')
         fields['white'].set('backgroundColor',CYAN)
-        fields['white'].set('size','1790,2')
+        fields['white'].set('size','1790,2');fields['white'].set('position','60,574')
         # Keep the 882:300 artwork ratio with padding on all four sides.
-        fields['help_pict'].set('position','563,670');fields['help_pict'].set('size','794,270')
+        fields['help_pict'].set('position','445,592');fields['help_pict'].set('size','1029,350')
         for key in ('help_txt','helpTxtAnim'):
-            fields[key].set('size','780,280')
+            fields[key].set('position','579,592');fields[key].set('size','780,350')
         for key in ('help_txt','helpTxtAnim'):
             fields[key].set('font','Regular;28');fields[key].set('foregroundColor','#00b5d4ec')
-        fields['selected_item'].set('font','Regular;24')
-        fields['selected_item'].set('backgroundColor',BASE)
+        root.remove(fields['selected_item'])  # Removed from every setup group, not hidden beneath another widget.
+        fields['helpPiconFrame'].set('position','865,705')
+        fields['helpPicon'].set('position','885,721')
         canvas=fields['Canvas']
-        canvas.set('render','WarderSettingsCanvas');canvas.set('backgroundColor',BASE)
+        canvas.set('render','WarderSettingsCanvas');canvas.set('backgroundColor',PANEL)
+        canvas.set('position','735,890');canvas.set('zPosition','6')
         # Keep the existing Canvas/color and animated help previews visible.
-        for key in ('selected_item','help_txt','helpTxtAnim'):
+        for key in ('help_txt','helpTxtAnim'):
             fields[key].set('transparent','1')
         switchable_panel(root,'warder_menu_panel_',50,200,760,760,0)
         # Continue numbering the right-hand panel in the same visibility group.
@@ -349,6 +374,8 @@ def apply():
         method=''.join('\t'+line+'\n' for line in HELP_METHOD.splitlines())
         result=result.replace('\tdef readVersion(self):',method+'\n\tdef readVersion(self):',1)
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected background controller change')
+    result=result.replace(GEOMETRY_OLD,GEOMETRY_NEW).replace("self['help_txt'].instance.move(ePoint(579,660))",GEOMETRY_NEW).replace(VALUE_LABEL,VALUE_SOURCE)
+    if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected footer/geometry logic change')
     PLUGIN.write_text(result)
 
 

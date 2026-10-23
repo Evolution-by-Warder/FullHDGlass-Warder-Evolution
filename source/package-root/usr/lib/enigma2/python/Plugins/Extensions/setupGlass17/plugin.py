@@ -6305,18 +6305,17 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 <screen name="setupGlass17" position="0,0" size="1920,1080" title="FullHDGlass" backgroundColor="#00071627" flags="wfNoBorder">
 <widget name="description" position="60,142" size="1800,46" noWrap="1" backgroundColor="#00071627" zPosition="1" valign="center" halign="left" font="Regular;24" transparent="0" foregroundColor="#00b5d4ec" />
 <widget source="session.VideoPicture" render="Pig" position="60,210" zPosition="1" size="737,415" backgroundColor="transparent" />
-<widget name="config" font="Prive3;34" position="60,210" size="1790,440" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
+<widget name="config" font="Prive3;34" position="60,210" size="1790,360" zPosition="4" foregroundColorSelected="#00ffffff" itemHeight="40" transparent="0" backgroundColor="#00102136" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColorSelected="#002a70ad" />
 <widget name="list" position="860,210" size="990,720" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#00102136" foregroundColor="#00ffffff" transparent="0" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" />
-<widget name="white" position="60,654" font="Prive3;34" size="1790,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
+<widget name="white" position="60,574" font="Prive3;34" size="1790,2" backgroundColor="#003ee8ff" zPosition="4" transparent="0" foregroundColor="#00ffffff" />
 <widget name="key_red" position="60,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00071627" foregroundColor="#00ff526a" />
 <widget name="key_green" position="1360,980" zPosition="3" size="500,60" noWrap="1" valign="center" halign="center" font="Regular;28" transparent="0" backgroundColor="#00071627" foregroundColor="#0039ff59" />
-<widget name="selected_item" position="560,980" size="800,60" noWrap="1" backgroundColor="#00071627" zPosition="5" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ffffff" />
-<widget source="Canvas" render="WarderSettingsCanvas" position="599,982" zPosition="2" size="450,45" backgroundColor="#00071627" transparent="1" alphatest="on" />
-<widget name="help_pict" position="563,670" size="794,270" zPosition="4" alphatest="on" />
-<widget name="help_txt" position="579,660" size="780,280" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
-<widget name="helpPiconFrame" position="865,749" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
-<widget name="helpPicon" position="885,765" size="150,90" zPosition="9" alphatest="on" />
-<widget name="helpTxtAnim" position="579,660" size="780,280" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<widget source="Canvas" render="WarderSettingsCanvas" position="735,890" zPosition="6" size="450,45" backgroundColor="#00102136" transparent="1" alphatest="on" />
+<widget name="help_pict" position="445,592" size="1029,350" zPosition="4" alphatest="on" />
+<widget name="help_txt" position="579,592" size="780,350" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
+<widget name="helpPiconFrame" position="865,705" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
+<widget name="helpPicon" position="885,721" size="150,90" zPosition="9" alphatest="on" />
+<widget name="helpTxtAnim" position="579,592" size="780,350" backgroundColor="#00102136" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
 <eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="50,200" size="760,760" name="warder_menu_panel_0" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="50,200" size="760,2" name="warder_menu_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,958" size="760,2" name="warder_menu_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,200" size="2,760" name="warder_menu_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="808,200" size="2,760" name="warder_menu_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,200" size="1010,760" name="warder_menu_panel_5" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="850,200" size="1010,2" name="warder_menu_panel_6" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,958" size="1010,2" name="warder_menu_panel_7" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,200" size="2,760" name="warder_menu_panel_8" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="1858,200" size="2,760" name="warder_menu_panel_9" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,200" size="1810,760" name="warder_settings_panel_0" backgroundColor="#00102136" transparent="0" zPosition="2" /><widget position="50,200" size="1810,2" name="warder_settings_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,958" size="1810,2" name="warder_settings_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,200" size="2,760" name="warder_settings_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1858,200" size="2,760" name="warder_settings_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><eLabel position="60,25" size="900,65" font="Regular;54" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="FullHDGlass" /><eLabel position="62,91" size="780,35" font="Regular;29" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" text="Warder Evolution" /><widget position="1030,22" size="820,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" format="%A  %d. %B %Y" fTyp="4" halign="right" source="global.CurrentTime" render="g17dateFormat" /><widget position="1500,63" size="240,65" font="Regular;52" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1745,82" size="105,42" font="Regular;34" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="0" zPosition="5" valign="center" noWrap="1" halign="right" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="60,132" size="1800,2" backgroundColor="#003ee8ff" zPosition="1" /></screen>
 """
   	
@@ -6346,7 +6345,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self["white"].hide()		
 		self["helpTxtAnim"] = Label("")
 		self["description"] = Label("")
-		self["selected_item"] = Label("")
+		self["selected_item"] = StaticText("")
 		self["key_green"] = Label(_("Save"))
 		self["key_red"] = Label(_("Cancel"))
 		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
@@ -6563,9 +6562,9 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 	            else:
 	                panel.hide()
 	    if self.isMainMenu:
-	        self["selected_item"].hide()
+	        self["help_txt"].instance.resize(eSize(737, 280))
 	    else:
-	        self["selected_item"].show()
+	        self["help_txt"].instance.resize(eSize(780, 350))
 
 	def runSetup(self):
 		self._warderSetPanelMode()
@@ -6927,7 +6926,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			self["config"].setList(self.list)	
 			self["list"].hide()
 			self["white"].show()
-			self['help_txt'].instance.move(ePoint(579,660))
+			self["help_txt"].instance.move(ePoint(579,592))
 			self["config"].show() 
 			self["key_red"].setText(_("Exit"))
                      		
