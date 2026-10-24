@@ -3,8 +3,8 @@
 Repository Evolution-by-Warder/FullHDGlass-Warder-Evolution, branch warder-modernization-work.
 
 TEST260 appearance and TEST259 responsiveness were confirmed by the owner on the receiver.
-Current candidate: **1.0.16-test261**. The owner authorized the full collected batch on 24 October.
-See docs/SETTINGS-UI-BATCH261.md for the approved list and docs/SETTINGS-UI-TEST261.md for delivery notes.
+Current candidate: **1.0.16-test262**, a title/icon-only follow-up to TEST261. The owner authorized the full collected batch on 24 October.
+See docs/SETTINGS-UI-BATCH261.md for the approved list and docs/SETTINGS-UI-TEST262.md for delivery notes.
 
 New owned dialogs are private to setupGlass17, not global Enigma2 overrides. Configuration moves exclusively to WHERE_PLUGINMENU; the old setup-menu branch is removed. Native session-start and optional ECM/weather entries are retained. Exact reviewed AST changes in design/settings-batch261-logic.json normalize to the original frozen controller fingerprint; all unreviewed controller mutations still fail. Original radio/graphics source hashes remain unchanged; new settings-only assets are independently pinned. Build-time PNG compression changes IDAT only, preserves all RGBA pixels and metadata, and is verified independently in the package. No Pillow dependency is added on the receiver. Existing asynchronous help-loader logic remains unchanged.
 

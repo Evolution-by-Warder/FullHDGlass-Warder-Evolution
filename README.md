@@ -4,7 +4,7 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Settings UI candidate — working branch
 
-The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test261** for manual receiver validation, following owner-confirmed TEST260. It includes the approved settings batch, owned modal dialogs, plugin-list entry and lossless build-time PNG compression. [Candidate notes](docs/SETTINGS-UI-TEST261.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). Production and automatic update feeds remain on 1.0.15; a production UI release follows receiver validation.
+The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test262** for manual receiver validation, following owner-confirmed TEST260. It includes the approved settings batch, owned modal dialogs, plugin-list entry and lossless build-time PNG compression. [Candidate notes](docs/SETTINGS-UI-TEST262.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). Production and automatic update feeds remain on 1.0.15; a production UI release follows receiver validation.
 
 ## Latest approved release: 1.0.15
 

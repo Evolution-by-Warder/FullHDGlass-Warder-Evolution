@@ -86,7 +86,7 @@ jobs:
           python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-settings-TEST261
+          name: FullHDGlass-settings-TEST262
           path: packages/test/*
           retention-days: 90
       - name: Publish reviewable TEST package without changing update feeds
@@ -104,7 +104,7 @@ jobs:
             cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution — nastavenia TEST261" \
-              --notes-file docs/SETTINGS-UI-TEST261.md \
+              --title "FullHDGlass Warder Evolution — nastavenia TEST262" \
+              --notes-file docs/SETTINGS-UI-TEST262.md \
               "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json
           fi
