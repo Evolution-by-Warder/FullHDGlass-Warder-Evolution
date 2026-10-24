@@ -163,10 +163,29 @@ def _source(filename):
     return result
 
 
+def prepared_filename(filename):
+    """Resolve a missing optional original by its approved stock filename."""
+    if os.path.isfile(filename):return None
+    name=os.path.basename(filename)
+    try:
+        for digest,entry in _index()['images'].items():
+            if any(os.path.basename(value)==name for value in entry['names']):
+                revision=hashlib.sha256((_STYLE+':'+entry['mask']).encode('ascii')).hexdigest()[:12]
+                target=os.path.join(_CACHE_DIR,digest+'-'+revision+'.png')
+                return target if os.path.isfile(target) or _prepared(target) else None
+    except Exception:pass
+    return None
+
+
 def _prepared(target):
     """Extract one already rendered PNG; zlib and file copies run in native code."""
     try:
-        with zipfile.ZipFile(_PREBUILT) as archive:
+        source=_PREBUILT
+        if not os.path.isfile(source):
+            try:from .warderPreviewAssets import bundle_path
+            except ImportError:from warderPreviewAssets import bundle_path
+            source=bundle_path('help')
+        with zipfile.ZipFile(source) as archive:
             info = archive.getinfo(os.path.basename(target))
             if info.file_size > 2 * 1024 * 1024:
                 return False
@@ -193,6 +212,8 @@ def _prepared(target):
 def cached_path(filename):
     """Never decode/recolour pixels in the GUI; reuse or unpack a prepared PNG."""
     try:
+        prepared=prepared_filename(filename)
+        if prepared:return prepared
         entry, target = _source(filename)
         return target if entry is None or os.path.isfile(target) or _prepared(target) else None
     except Exception:
@@ -203,6 +224,8 @@ def themed_path(filename, cache_dir=None):
     """Prepare the unchanged TEST258 artwork in a separate worker process."""
     temporary = None
     try:
+        ready=prepared_filename(filename)
+        if ready:return ready
         entry, target = _source(filename)
         if entry is None:
             return filename

@@ -3,6 +3,8 @@
 import ast
 import importlib.util
 import io
+import sys
+from types import ModuleType
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
@@ -27,6 +29,9 @@ def function(node,scope):
 
 
 def load(path,name):
+    if path.name=='warderTypePreviews.py':
+        package=ModuleType('warder_preview_test');package.__path__=[str(P)];sys.modules[package.__name__]=package
+        name=package.__name__+'.'+name
     spec=importlib.util.spec_from_file_location(name,path);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);return mod
 
 
@@ -172,12 +177,14 @@ class BatchTests(unittest.TestCase):
         import zipfile
         from PIL import Image
         mod=load(P/'warderTypePreviews.py','test_type_previews')
-        with zipfile.ZipFile(P/'warder-infobar-types.zip') as archive:
+        with zipfile.ZipFile(ROOT/'design/preview-assets/warder-infobar-types.zip') as archive:
             self.assertEqual(len(archive.namelist()),78)
             for name in archive.namelist():
                 with Image.open(io.BytesIO(archive.read(name))) as image:
                     self.assertEqual(image.size,(174,98));self.assertEqual(image.getchannel('A').getextrema(),(255,255))
-        with tempfile.TemporaryDirectory() as folder,patch.object(mod.tempfile,'gettempdir',return_value=folder):
+        with tempfile.TemporaryDirectory() as folder,patch.object(mod.tempfile,'gettempdir',return_value=folder),patch.object(mod,'_BUNDLE',str(ROOT/'design/preview-assets/warder-infobar-types.zip')):
+            self.assertEqual(mod.thumbnail_path(1),'')
+            mod.prepare_bundle()
             path=mod.thumbnail_path(1);self.assertTrue(Path(path).is_file())
             with patch.object(mod.zipfile,'ZipFile',side_effect=AssertionError('Warm list must not unpack again')):
                 self.assertEqual(mod.thumbnail_path(1),path)

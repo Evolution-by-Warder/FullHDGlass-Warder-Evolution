@@ -30,6 +30,11 @@ on:
       - tools/build-type-previews.py
       - tools/build-help-previews.py
       - tools/test-help-art.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPreviewAssets.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json
+      - tools/test-preview-assets.py
+      - tools/verify-preview-release-assets.py
+      - design/preview-assets/**
       - source/control/control
       - tools/style-setup-screens.py
       - tools/test-setup-style.py
@@ -74,6 +79,8 @@ jobs:
           curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
           python3 tools/test-settings-batch.py -v
           python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/warder-help-previews.zip
+          python3 tools/test-preview-assets.py -v
+          python3 tools/verify-preview-release-assets.py --help-previews /tmp/warder-help-previews.zip
           python3 tools/test-help-art.py --bundle /tmp/warder-help.zip --prebuilt /tmp/warder-help-previews.zip
       - name: Validate existing gettext catalogs
         run: |
@@ -86,7 +93,7 @@ jobs:
           python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-settings-TEST262
+          name: FullHDGlass-settings-TEST263
           path: packages/test/*
           retention-days: 90
       - name: Publish reviewable TEST package without changing update feeds
@@ -104,7 +111,9 @@ jobs:
             cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution — nastavenia TEST262" \
-              --notes-file docs/SETTINGS-UI-TEST262.md \
-              "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json
+              --title "FullHDGlass Warder Evolution — nastavenia TEST263" \
+              --notes-file docs/SETTINGS-UI-TEST263.md \
+              "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json \
+              /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip
           fi
+          gh release upload "$TAG" /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip --clobber

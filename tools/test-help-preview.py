@@ -73,10 +73,13 @@ class PreviewTests(unittest.TestCase):
         self.finish(self.loop.workers[-1][0], '/d.png')
         self.assertEqual(self.shown, ['/d.png'])
 
-    def test_prepared_or_cached_picture_never_spawns_worker(self):
-        preview.cached_path = lambda filename: '/prepared.png'
+    def test_even_cached_archives_are_not_touched_in_the_gui_thread(self):
+        def forbidden(filename):raise AssertionError('No filesystem lookup in GUI')
+        preview.cached_path = forbidden
         self.loader.request('/a.png');self.loop.calls[-1].fire()
-        self.assertEqual(self.shown, ['/prepared.png']);self.assertEqual(self.loop.workers, [])
+        self.assertEqual(self.shown, []);self.assertEqual(len(self.loop.workers),1)
+        self.finish(self.loop.workers[-1][0],'/a.png')
+        self.assertEqual(self.shown,['/a.png'])
 
     def test_close_cancels_queued_work_and_prevents_any_late_widget_call(self):
         self.loader.request('/a.png');self.loop.calls[-1].fire()

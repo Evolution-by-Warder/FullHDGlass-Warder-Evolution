@@ -139,12 +139,6 @@
       "width": 160,
       "height": 96,
       "origin": "Built-in imagegen: TEST262, smaller skull within FullHD/Glass text height"
-    },
-    {
-      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-infobar-types.zip",
-      "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
-      "origin": "78 thumbnails derived from approved original preview bundle",
-      "source_sha256": "0fca8510b5e1e7dd600548f706553b83a3993e91077382aba4c6363278eac230"
     }
   ]
 }

@@ -16,9 +16,8 @@ PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setup
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--help-previews',required=True,type=Path)
+    parser.add_argument('--help-previews',type=Path)
     args=parser.parse_args()
-    if not args.help_previews.is_file():raise SystemExit('Prepared help archive is required')
     version=(PLUGIN/'version').read_text().strip()
     if not re.fullmatch(r'\d+\.\d+\.\d+-test\d+',version):raise SystemExit('TEST version required')
     control=ROOT/'source/control'
@@ -34,8 +33,6 @@ def main():
         archive.archive(control,work/'control.tar.gz')
         payload=work/'payload'
         shutil.copytree(ROOT/'source/package-root',payload)
-        previews=payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-help-previews.zip'
-        shutil.copyfile(args.help_previews,previews)
         compression=optimizer.optimize_tree(payload)
         archive.archive(payload,work/'data.tar.gz',payload=True)
         subprocess.run(['ar','rcsD',str(package),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
@@ -43,7 +40,7 @@ def main():
     package.with_suffix('.ipk.sha256').write_text(checksum+'  '+package.name+'\n')
     info={'version':version,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
           'package':package.name,'sha256':checksum,'bytes':package.stat().st_size,
-          'stable_feed_modified':False,'receiver_validated':False,'scope':'approved settings batch', 'png_compression':{'files':len(compression),'saved_bytes':sum(x['before']-x['after'] for x in compression),'lossless':True}}
+          'stable_feed_modified':False,'receiver_validated':False,'scope':'small IPK with optional asynchronous preview downloads', 'png_compression':{'files':len(compression),'saved_bytes':sum(x['before']-x['after'] for x in compression),'lossless':True}}
     (output/'settings-ui-build.json').write_text(json.dumps(info,indent=2)+'\n')
     print(package);print(checksum)
 

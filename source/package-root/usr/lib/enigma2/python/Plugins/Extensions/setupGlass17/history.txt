@@ -1,3 +1,8 @@
+* FullHDGlass by Warder — 1.0.16-test263
+- Small IPK: optional preview archives download in the background.
+- Persistent verified cache in the selected skin data directory.
+- HDD access and PNG preparation stay outside the GUI event loop.
+
 * FullHDGlass by Warder — 1.0.16-test262
 - Plugin browser entry: FullHDGlass Warder Evolution configuration.
 - Readable PiconHub-family icon: skull + FullHD / Glass on transparent background.

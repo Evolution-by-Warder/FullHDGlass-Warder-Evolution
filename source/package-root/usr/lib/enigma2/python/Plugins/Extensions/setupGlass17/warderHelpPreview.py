@@ -64,10 +64,8 @@ class PreviewLoader:
         if self.closed or self.process is not None:
             return
         filename, generation = self.wanted, self.generation
-        ready = cached_path(filename)
-        if ready is not None:
-            self.show(ready)
-            return
+        # Even cached ZIP/source lookups may wake a sleeping HDD. Keep all
+        # filesystem preparation in the child; only ready local PNGs reach GUI.
         worker = _Worker(lambda result: self._finished(generation, filename, result))
         self.process = worker
         try:
