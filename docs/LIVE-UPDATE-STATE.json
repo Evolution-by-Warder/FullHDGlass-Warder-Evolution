@@ -1,9 +1,9 @@
 {
-  "version": "1.0.16-test266",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test266_all.ipk",
-  "sha256": "dd0017457c361d8d614187b7a35db1ac009ed60efb6782b7896c96b2f41c1859",
-  "bytes": 14088038,
-  "source_commit": "9a8a9bfa1c4d012e86ab3fecb47939f82fe3f1bd",
+  "version": "1.0.16-test267",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test267_all.ipk",
+  "sha256": "3bd3b462774ff235ccdda5a9c9f0568399d69a0903a6b295a9302fa78ee2c412",
+  "bytes": 14088118,
+  "source_commit": "6a3eab04d0b9edd658aecf2a883f7b1b9aa7feca",
   "authorization": "Explicit owner request to enable the built-in updater, 24 October 2026",
   "receiver_validation": "Not claimed; automated checks and public byte verification passed."
 }
