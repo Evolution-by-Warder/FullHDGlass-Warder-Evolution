@@ -463,7 +463,7 @@ def dialog_skin(kind):
         root.append(label(180,270,1560,120,name='text',size=32,noWrap='0'))
         root.append(element('widget',180,430,1560,70,name='input',font='Regular;34',backgroundColor=BASE,foregroundColor=TEXT,zPosition='4'))
     for key,x in (('red',135),('green',968)):
-        root.append(element('widget',x,996,817,2,name='line_'+key,backgroundColor=COLORS[key],zPosition='5'))
+        root.append(element('widget',x+308,996,200,2,name='line_'+key,backgroundColor=COLORS[key],zPosition='5'))
         root.append(label(x,1006,817,50,name='key_'+key,color=COLORS[key],halign='center',backgroundColor=BASE))
     return ET.tostring(root,encoding='unicode')
 

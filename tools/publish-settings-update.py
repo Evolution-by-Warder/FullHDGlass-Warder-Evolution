@@ -115,7 +115,7 @@ def publish(package,info,revision,expected_main,client,assets):
     verify_public(client,url,len(raw),digest)
     if head(client,WORK)!=revision:raise ValueError('Source branch advanced; feeds remain unchanged')
     manifest={'version':version,'package_url':url,'sha256':digest,
-              'changelog':'Opravený pád výberových okien v OpenATV pri výbere rozlíšenia piconov a ďalších volieb. Zjednotené logo a skrátený názov FullHDGlass Warder Evolution zostávajú súčasťou vydania.'}
+              'changelog':'Kratšie farebné čiary nad tlačidlami v dialógových oknách. Čiary sú vycentrované nad príslušným nápisom a zladené s PiconHub.'}
     payload=encoded(manifest)
     inventory=json.loads(content(client,'design/settings-ui-inventory.json','main'))
     inventory['current_feed_version']=version
