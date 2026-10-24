@@ -23,6 +23,11 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_fingerprint_is_portable_but_still_detects_changed_save_action(self):
         tree=ast.parse(CURRENT);before=style.normalized(tree)
+        # Exercise both older and newer grammar shapes on either interpreter.
+        for node in ast.walk(tree):
+            if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef,ast.ClassDef)) and not getattr(node,'type_params',[]):
+                node._fields=tuple(field for field in node._fields if field!='type_params')
+        self.assertEqual(style.normalized(tree),before)
         for node in ast.walk(tree):
             if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef,ast.ClassDef)) and 'type_params' not in node._fields:
                 node._fields=node._fields+('type_params',);node.type_params=[]

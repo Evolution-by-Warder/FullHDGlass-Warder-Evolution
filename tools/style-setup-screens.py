@@ -200,11 +200,11 @@ def strip_reviewed_batch(tree):
     # Exact reviewed AST replacements only. A changed save/action/installer node
     # no longer matches and therefore still trips the frozen 1.0.15 fingerprint.
     records=json.loads((ROOT/'design/settings-batch261-logic.json').read_text())
-    mapping={(r['scope'],ast.dump(ast.parse(r['after']).body[0])):r['before'] for r in records}
+    mapping={(r['scope'],json.dumps(portable(ast.parse(r['after']).body[0]),sort_keys=True)):r['before'] for r in records}
     def restore(nodes, scope):
         result=[]
         for node in nodes:
-            key=(scope,ast.dump(node))
+            key=(scope,json.dumps(portable(node),sort_keys=True))
             if key in mapping:
                 result.extend(ast.parse(mapping[key]).body)
             else:
