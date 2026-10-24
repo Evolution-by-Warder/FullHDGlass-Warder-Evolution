@@ -115,7 +115,7 @@ def publish(package,info,revision,expected_main,client,assets):
     verify_public(client,url,len(raw),digest)
     if head(client,WORK)!=revision:raise ValueError('Source branch advanced; feeds remain unchanged')
     manifest={'version':version,'package_url':url,'sha256':digest,
-              'changelog':'Opravený neviditeľný text aktualizačného okna: nová verzia, popis zmien a potvrdenie inštalácie. Malé IPK a náhľady sťahované na pozadí zostávajú zachované.'}
+              'changelog':'Zjednotené ikony FullHDGlass a PiconHub podľa schváleného vzoru Warder Evolution. Obe používajú presnú kópiu spoločnej okrúhlej lebky. Zachované priehľadné pozadie, výrazný názov a malý IPK. Zmena sa týka ikony v zozname pluginov.'}
     payload=encoded(manifest)
     inventory=json.loads(content(client,'design/settings-ui-inventory.json','main'))
     inventory['current_feed_version']=version

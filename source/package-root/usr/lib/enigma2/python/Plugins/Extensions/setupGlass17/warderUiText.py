@@ -7,7 +7,7 @@ from Components.config import config
 
 TEXT = {
     "sk": {
-        "FullHDGlass configuration": "Konfigurácia FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Nastavenie skinu FullHDGlass",
         "Back": "Naspäť",
         "Confirm selection": "Potvrdiť výber",
@@ -17,7 +17,7 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainštalujte 7zip z Ponuky sťahovania a potom spustite vybrané sťahovanie znova."
     },
     "cs": {
-        "FullHDGlass configuration": "Konfigurace FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Nastavení skinu FullHDGlass",
         "Back": "Zpět",
         "Confirm selection": "Potvrdit výběr",
@@ -27,7 +27,7 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainstalujte 7zip z Nabídky stahování a potom spusťte vybrané stahování znovu."
     },
     "de": {
-        "FullHDGlass configuration": "FullHDGlass Warder Evolution – Konfiguration",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "FullHDGlass-Skin einrichten",
         "Back": "Zurück",
         "Confirm selection": "Auswahl bestätigen",
@@ -36,7 +36,7 @@ TEXT = {
         "Confirm": "Bestätigen"
     },
     "hu": {
-        "FullHDGlass configuration": "FullHDGlass Warder Evolution beállítások",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "FullHDGlass felület beállítása",
         "Back": "Vissza",
         "Confirm selection": "Kiválasztás megerősítése",
@@ -45,7 +45,7 @@ TEXT = {
         "Confirm": "Megerősítés"
     },
     "ru": {
-        "FullHDGlass configuration": "Настройка FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Настройка скина FullHDGlass",
         "Back": "Назад",
         "Confirm selection": "Подтвердить выбор",
@@ -54,7 +54,7 @@ TEXT = {
         "Confirm": "Подтвердить"
     },
     "fr": {
-        "FullHDGlass configuration": "Configuration FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Configurer le thème FullHDGlass",
         "Back": "Retour",
         "Confirm selection": "Confirmer la sélection",
@@ -63,7 +63,7 @@ TEXT = {
         "Confirm": "Confirmer"
     },
     "it": {
-        "FullHDGlass configuration": "Configurazione FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Configura il tema FullHDGlass",
         "Back": "Indietro",
         "Confirm selection": "Conferma selezione",
@@ -72,7 +72,7 @@ TEXT = {
         "Confirm": "Conferma"
     },
     "es": {
-        "FullHDGlass configuration": "Configuración FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Configurar el tema FullHDGlass",
         "Back": "Atrás",
         "Confirm selection": "Confirmar selección",
@@ -81,7 +81,7 @@ TEXT = {
         "Confirm": "Confirmar"
     },
     "pl": {
-        "FullHDGlass configuration": "Konfiguracja FullHDGlass Warder Evolution",
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Ustawienia skórki FullHDGlass",
         "Back": "Wstecz",
         "Confirm selection": "Potwierdź wybór",
@@ -90,7 +90,7 @@ TEXT = {
         "Confirm": "Potwierdź"
     },
     "en": {
-        "FullHDGlass configuration": "FullHDGlass Warder Evolution configuration"
+        "FullHDGlass configuration": "FullHDGlass Warder Evolution"
     }
 }
 

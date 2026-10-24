@@ -135,10 +135,10 @@
     },
     {
       "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/warder-config.png",
-      "sha256": "4cb446d4174c6c7f435db406a7d5405807343dfb917237e2badf2af3f519ce5d",
+      "sha256": "0d38cf47df37905f523c3952a6618d23068d61bbbb087abefd8f9a678f00e9e1",
       "width": 160,
       "height": 96,
-      "origin": "Built-in imagegen: TEST262, smaller skull within FullHD/Glass text height"
+      "origin": "Approved shared Warder Evolution skull and lettering, 2026-10-24"
     }
   ]
 }
