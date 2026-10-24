@@ -34,7 +34,7 @@ PANEL_MODE = """def _warderSetPanelMode(self):
             else:
                 panel.hide()
     if self.isMainMenu:
-        self["help_txt"].instance.resize(eSize(737, 280))
+        self["help_txt"].instance.resize(eSize(737, 248))
     else:
         self["help_txt"].instance.resize(eSize(780, 350))
 """
@@ -158,7 +158,46 @@ def strip_help_geometry_presentation(tree):
     return tree
 
 
+
+BANNER_GEOMETRY = (
+    ('self["help_txt"].instance.move(ePoint(60,660))', 'self["help_txt"].instance.move(ePoint(60,692))'),
+
+    ('self["key_red"].move(ePoint(412,775))', 'self["key_red"].move(ePoint(547,939))'),
+    ('self["line_red"].move(ePoint(412,765))', 'self["line_red"].move(ePoint(547,929))'),
+)
+ICON_OLD = 'str(405+(x-off)*300)'
+ICON_NEW = 'str(672+(x-off)*300)'
+ICON_Y_OLD = 'str(57+y)'
+ICON_Y_NEW = 'str(221+y)'
+PREVIEW_OLD = 'position="481,96" size="768,432"'
+PREVIEW_NEW = 'position="748,260" size="768,432"'
+
+
+def strip_banner_geometry(tree):
+    restores={json.dumps(portable(ast.parse(new).body[0]),sort_keys=True):ast.parse(old).body[0] for old,new in BANNER_GEOMETRY}
+    icon_restores={json.dumps(portable(ast.parse(new,mode='eval').body),sort_keys=True):ast.parse(old,mode='eval').body for old,new in ((ICON_OLD,ICON_NEW),(ICON_Y_OLD,ICON_Y_NEW))}
+    class Restore(ast.NodeTransformer):
+        def visit_Expr(self,node):
+            key=json.dumps(portable(node),sort_keys=True)
+            if key in restores:return copy.deepcopy(restores[key])
+            return self.generic_visit(node)
+        def visit_Call(self,node):
+            key=json.dumps(portable(node),sort_keys=True)
+            if key in icon_restores:return copy.deepcopy(icon_restores[key])
+            return self.generic_visit(node)
+        def visit_Constant(self,node):
+            if isinstance(node.value,str) and PREVIEW_NEW in node.value:
+                node.value=node.value.replace(PREVIEW_NEW,PREVIEW_OLD)
+            return node
+    for cls in tree.body:
+        if isinstance(cls,ast.ClassDef) and cls.name in ('setupGlass17ScreenSetup','historyScreen','selectIconsDisplayed'):
+            for method in cls.body:
+                if isinstance(method,ast.FunctionDef) and method.name in ('runSetup','readandshow','__init__'):Restore().visit(method)
+    return tree
+
+
 def normalized(tree):
+    tree=strip_banner_geometry(tree)
     tree=strip_help_geometry_presentation(strip_help_background_presentation(strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree)))))
     for cls in tree.body:
         if not isinstance(cls,ast.ClassDef) or cls.name not in SCREENS:continue
@@ -214,16 +253,56 @@ def switchable_panel(root,prefix,x,y,w,h,z):
                             transparent='0',zPosition=str(z if index==0 else z+1)))
 
 
-def header(root,download=False):
-    root.append(label(60,25,900,65,'FullHDGlass',54,CYAN,backgroundColor=BASE))
-    root.append(label(62,91,780,35,'Warder Evolution',29,TEXT,backgroundColor=BASE))
-    root.append(label(1030,22,820,36,size=25,source='global.CurrentTime',render='g17dateFormat',
-                             format='%A  %d. %B %Y',fTyp='4',halign='right',backgroundColor=BASE))
-    clock=label(1500,63,240,65,size=52,source='global.CurrentTime',halign='right',backgroundColor=BASE)
-    ET.SubElement(clock,'convert',{'type':'g17ClockToText'}).text='Default';root.append(clock)
-    seconds=label(1745,82,105,42,size=34,source='global.CurrentTime',halign='right',backgroundColor=BASE)
-    ET.SubElement(seconds,'convert',{'type':'g17ClockToText'}).text='Format::%S';root.append(seconds)
-    root.append(element('eLabel',60,132,1800,2,backgroundColor=CYAN,zPosition='1'))
+BANNER_HEIGHT = 164
+BANNER_IMAGE = '/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/warder-settings-background.png'
+
+
+def header(root,download=False,context=False):
+    # A static, native pixmap, decoded once when the screen opens. No work on
+    # selection changes; panels above it retain their existing opaque fill.
+    root.insert(0,element('ePixmap',0,0,1920,1080,pixmap=BANNER_IMAGE,scale='1',zPosition='0'))
+    for x,y,w,h,font,fmt,align in ((1120,25,250,36,25,'Format:%A','right'),
+                                   (1020,70,350,36,24,'Format:%d. %B %Y','right'),
+                                   (1398,32,190,85,62,'Default','center'),
+                                   (1590,58,66,54,38,'Format::%S','left')):
+        text=label(x,y,w,h,size=font,source='global.CurrentTime',halign=align,transparent='1',
+                   backgroundColor=BASE,shadowColor=BASE,shadowOffset='1,1')
+        ET.SubElement(text,'convert',{'type':'g17ClockToText'}).text=fmt
+        root.append(text)
+    version=(PLUGIN.parent/'version').read_text().strip()
+    root.append(label(1680,40,210,76,text='v'+version,size=23,color=CYAN,halign='center',transparent='1',backgroundColor=BASE))
+    for x in (1392,1664):root.append(element('eLabel',x,25,2,84,backgroundColor=CYAN,zPosition='5'))
+    if context:
+        root.append(label(850,120,700,38,size=25,color=CYAN,source='Title',halign='center',transparent='1',noWrap='1',backgroundColor=BASE,shadowColor=BASE,shadowOffset='1,1'))
+
+
+def fullscreen_dialog(root,shift):
+    """Keep the original control layout together below the common banner.
+
+    Only the old popup decoration is replaced. A larger root makes the banner
+    independent of popup size. Small menus retain their original control size.
+    """
+    w,h=map(int,root.get('size').split(','))
+    old_body=h-(88 if shift else 0)
+    dx=(1920-w)//2;dy=max(BANNER_HEIGHT,(1080-h)//2+shift)
+    body=min(old_body,1080-dy)
+    reduction=old_body-body
+    for node in list(root):
+        x,y=map(int,node.get('position').split(','));wide,high=map(int,node.get('size').split(','))
+        key=node.get('name') or node.get('source','')
+        if key=='Title':root.remove(node);continue
+        if node.tag=='eLabel':
+            # Keep only the existing coloured action underlines; the old
+            # title divider and popup border are replaced by the body frame.
+            if node.get('backgroundColor') not in COLORS.values():root.remove(node);continue
+        y-=shift
+        if key.startswith(('key_','line_')) or node.tag=='eLabel':y-=reduction
+        if y+high>body:node.set('size','%d,%d'%(wide,max(1,body-y)))
+        node.set('position','%d,%d'%(x+dx,y+dy))
+        if node.tag=='widget':node.set('zPosition',str(max(4,int(node.get('zPosition','0')))))
+    root.set('position','0,0');root.set('size','1920,1080');root.set('backgroundColor',BASE)
+    panel(root,dx,dy,w,body)
+    header(root,context=True)
 
 
 def themed(name,original):
@@ -273,12 +352,12 @@ def themed(name,original):
         root.set('title','FullHDGlass')
         for key in ('key_red','key_green'):
             fields[key].set('backgroundColor',BASE)
-        fields['description'].set('position','60,142');fields['description'].set('size','1800,46')
+        fields['description'].set('position','60,174');fields['description'].set('size','1800,46')
         fields['description'].set('font','Regular;24');fields['description'].set('halign','left')
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
-        fields['session.VideoPicture'].set('position','60,210');fields['session.VideoPicture'].set('size','737,415')
-        fields['list'].set('position','860,210');fields['list'].set('size','990,720')
-        fields['config'].set('position','60,210');fields['config'].set('size','1790,360')
+        fields['session.VideoPicture'].set('position','60,242');fields['session.VideoPicture'].set('size','737,415')
+        fields['list'].set('position','860,242');fields['list'].set('size','990,680')
+        fields['config'].set('position','60,242');fields['config'].set('size','1790,320')
         fields['white'].set('backgroundColor',CYAN)
         fields['white'].set('size','1790,2');fields['white'].set('position','60,574')
         # Keep the 882:300 artwork ratio with padding on all four sides.
@@ -296,23 +375,24 @@ def themed(name,original):
         # Keep the existing Canvas/color and animated help previews visible.
         for key in ('help_txt','helpTxtAnim'):
             fields[key].set('transparent','1')
-        switchable_panel(root,'warder_menu_panel_',50,200,760,760,0)
+        switchable_panel(root,'warder_menu_panel_',50,232,760,728,0)
         # Continue numbering the right-hand panel in the same visibility group.
-        switchable_panel(root,'warder_menu_right_',850,200,1010,760,0)
+        switchable_panel(root,'warder_menu_right_',850,232,1010,728,0)
         for node in root:
             key=node.get('name','')
             if key.startswith('warder_menu_right_'):
                 node.set('name','warder_menu_panel_'+str(5+int(key.rsplit('_',1)[1])))
-        switchable_panel(root,'warder_settings_panel_',50,200,1810,760,2)
+        switchable_panel(root,'warder_settings_panel_',50,232,1810,728,2)
         # All config/help content must be above the settings panel and border.
         for key in ('config','help_pict','help_txt','helpTxtAnim','white'):
             fields[key].set('zPosition','4')
         header(root)
     elif name=='downloadMenu':
-        fields['list'].set('position','50,175');fields['list'].set('size','1820,762')
+        fields['list'].set('position','50,207');fields['list'].set('size','1820,730')
         fields['list'].set('zPosition','2')
-        fields['dwn'].set('font','Regular;32');fields['dwn'].set('zPosition','20')
-        panel(root,40,165,1840,810);header(root,True)
+        fields['dwn'].set('position','50,166');fields['dwn'].set('size','1820,30')
+        fields['dwn'].set('font','Regular;25');fields['dwn'].set('zPosition','20')
+        panel(root,40,197,1840,778);header(root,True)
     else:
         if name=='historyScreen':
             fields['Changelog_info'].set('position','15,70');fields['Changelog_info'].set('size','1620,670')
@@ -323,6 +403,7 @@ def themed(name,original):
         root.append(element('eLabel',20,48 if fragment else 57,w-40,2,backgroundColor=CYAN,zPosition='1'))
         for box in ((0,0,w,2),(0,h-2,w,2),(0,0,2,h),(w-2,0,2,h)):
             root.append(element('eLabel',*box,backgroundColor=CYAN,zPosition='5'))
+    if not full:fullscreen_dialog(root,shift)
     result='\n'.join(line.rstrip() for line in ET.tostring(root,encoding='unicode').splitlines())
     return result.removesuffix('</screen>') if fragment else result
 
@@ -336,6 +417,9 @@ def capture(text):
 
 def apply():
     text=PLUGIN.read_text();snapshot=json.loads(FIXTURE.read_text())
+    text=text.replace('eSize(737, 280)','eSize(737, 248)')
+    for old,new in BANNER_GEOMETRY:text=text.replace(new,old)
+    text=text.replace(ICON_NEW,ICON_OLD).replace(ICON_Y_NEW,ICON_Y_OLD).replace(PREVIEW_NEW,PREVIEW_OLD)
     if normalized(ast.parse(text))!=snapshot['logic_sha256']:raise SystemExit('Unexpected settings logic; review baseline first')
     rows=text.splitlines(keepends=True);replacements=[]
     for name,(node,current) in extract(text).items():
@@ -379,8 +463,12 @@ def apply():
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected background controller change')
     result=result.replace(GEOMETRY_OLD,GEOMETRY_NEW).replace("self['help_txt'].instance.move(ePoint(579,660))",GEOMETRY_NEW).replace(VALUE_LABEL,VALUE_SOURCE)
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected footer/geometry logic change')
+    for old,new in BANNER_GEOMETRY:
+        # Original methods use both single and double quotes.
+        result=result.replace(old,new).replace(old.replace('"',"'"),new).replace(old.replace(',',', '),new)
+    result=result.replace(ICON_OLD,ICON_NEW).replace(ICON_Y_OLD,ICON_Y_NEW).replace(PREVIEW_OLD,PREVIEW_NEW)
+    if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected banner geometry/controller change')
     PLUGIN.write_text(result)
 
 
 if __name__=='__main__':apply()
-

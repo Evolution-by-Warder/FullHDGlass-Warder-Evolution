@@ -14,8 +14,12 @@ PAYLOAD = ROOT / "source/package-root"
 
 
 def digest_graphics():
+    approved = json.loads((ROOT/'design/settings-header-asset.json').read_text())
+    header = PAYLOAD/approved['path']
+    assert header.is_file() and hashlib.sha256(header.read_bytes()).hexdigest()==approved['sha256']
     digest = hashlib.sha256()
     for path in sorted(PAYLOAD.rglob("*")):
+        if path==header:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.
         if path.is_file() and path.suffix.lower() in (".png", ".jpg", ".mvi", ".xml"):
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
             digest.update(hashlib.sha256(path.read_bytes()).digest())

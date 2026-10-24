@@ -32,3 +32,9 @@ Na prijímači treba potvrdiť čitateľnosť, TV náhľad, všetky skupiny nast
 ## Oprava TEST252 po overení prijímačom
 
 Úvodné menu má dva skutočne prepínateľné panely; všetky konfiguračné skupiny jeden veľký panel. V konfiguračnom režime sú oba úvodné panely a ich rámy skryté. Návrat obnoví rozdelenie. Samostatne testovaný prezentačný prepínač nemení akcie ani konfiguračnú logiku. AST normalizácia povoľuje iba jeho presné príkazy, bez zmeny pôvodného základného odtlačku.
+
+## Schválená grafická hlavička — TEST260
+
+Majiteľ schválil banner FullHDGlass by Warder odvodený od PiconHubu, so zmenšeným emblémom. Hlavička má 164 px; hlavná ponuka je posunutá o 32 px a ostatný obsah zostáva dostupný posúvaním. Pomocný obrázok zostáva 1029×350. Všetkých 11 vlastných nastavovacích tried má rovnaké pozadie hlavičky; malé ponuky ponechávajú veľkosti ovládacích prvkov a pôvodné absolútne súradnice všade, kde nezasahujú do hlavičky. Deň/dátum, čas/biele sekundy a tyrkysová verzia sú vpravo v troch stĺpcoch. Ide o natívne widgety nad statickým obrázkom, nie o súčasť bitmapy.
+
+Pôvodná radio/grafická sada je naďalej chránená pôvodným digestom; jediný nový nastavovací obrázok má samostatný SHA256 v settings-header-asset.json. Zdroj, schválenie a presné zadanie vstavaného imagegen sú v SETTINGS-HEADER-SOURCE.md. TEST259 má prijímačom potvrdené zrýchlenie; nová grafika TEST260 zatiaľ čaká na overenie prijímačom.

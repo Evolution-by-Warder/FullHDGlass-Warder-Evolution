@@ -41,7 +41,7 @@ class SetupStyleTests(unittest.TestCase):
                 original.remove(original.find("widget[@name='selected_item']"))
             self.assertTrue(set(style.widget_ids(original))<=set(style.widget_ids(current)),name)
             self.assertEqual(current.get('flags'),'wfNoBorder',name)
-            self.assertEqual(current.get('backgroundColor'),style.BASE if name in ('setupGlass17ScreenSetup','downloadMenu') else style.PANEL,name)
+            self.assertEqual(current.get('backgroundColor'),style.BASE,name)
 
     def test_every_static_widget_fits_inside_the_dialog(self):
         for name,(_,skin) in LAYOUTS.items():
@@ -65,9 +65,9 @@ class SetupStyleTests(unittest.TestCase):
                     self.assertEqual(node.get('transparent'),'0')
 
     def test_native_title_date_clock_and_seconds_sources_are_present(self):
-        for name in ('setupGlass17ScreenSetup','downloadMenu'):
-            root=ET.fromstring(LAYOUTS[name][1])
-            self.assertEqual(len(root.findall("widget[@source='global.CurrentTime']")),3)
+        for name in LAYOUTS:
+            root=ET.fromstring(LAYOUTS[name][1]+('</screen>' if name=='selectIconsDisplayed' else ''))
+            self.assertEqual(len(root.findall("widget[@source='global.CurrentTime']")),4)
             self.assertEqual({x.get('type') for x in root.findall('widget/convert')},{'g17ClockToText'})
         for name in set(LAYOUTS)-{'setupGlass17ScreenSetup','downloadMenu'}:
             root=ET.fromstring(LAYOUTS[name][1]+('</screen>' if name=='selectIconsDisplayed' else ''))
@@ -75,10 +75,10 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_dynamic_download_and_history_coordinates_remain_compatible(self):
         down=ET.fromstring(LAYOUTS['downloadMenu'][1]);dwn=down.find("widget[@name='dwn']")
-        self.assertEqual(dwn.get('position'),'0,0');self.assertEqual(dwn.get('size'),'1920,150')
+        self.assertEqual(dwn.get('position'),'50,166');self.assertEqual(dwn.get('size'),'1820,30')
         history=ET.fromstring(LAYOUTS['historyScreen'][1])
-        self.assertEqual(history.find("widget[@name='key_red']").get('position'),'0,775')
-        self.assertEqual(history.find("widget[@name='line_red']").get('position'),'0,765')
+        self.assertEqual(history.find("widget[@name='key_red']").get('position'),'135,939')
+        self.assertEqual(history.find("widget[@name='line_red']").get('position'),'135,929')
         main=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
         self.assertIsNone(main.find("widget[@name='selected_item']"))
         self.assertIn('<widget name="config" font="Prive3;34"',LAYOUTS['setupGlass17ScreenSetup'][1])
@@ -113,14 +113,14 @@ class SetupStyleTests(unittest.TestCase):
             screen.isMainMenu=main;scope['_warderSetPanelMode'](screen)
             visible=[key for key,panel in screen.items() if panel.visible and key.startswith("warder_")]
             self.assertEqual(len(visible),10 if main else 5)
-            self.assertEqual(screen["help_txt"].dimensions,(737,280) if main else (780,350))
+            self.assertEqual(screen["help_txt"].dimensions,(737,248) if main else (780,350))
             self.assertTrue(all(key.startswith('warder_menu_' if main else 'warder_settings_') for key in visible))
         config=root.find("widget[@name='config']")
         help_text=root.find("widget[@name='help_txt']")
         full=nodes['warder_settings_panel_0']
-        self.assertEqual(full.get('position'),'50,200');self.assertEqual(full.get('size'),'1810,760')
-        self.assertEqual(config.get('position'),'60,210')
-        self.assertEqual(config.get('size'),'1790,360')
+        self.assertEqual(full.get('position'),'50,232');self.assertEqual(full.get('size'),'1810,728')
+        self.assertEqual(config.get('position'),'60,242')
+        self.assertEqual(config.get('size'),'1790,320')
         self.assertLessEqual(sum(map(int,(config.get('position').split(',')[0],config.get('size').split(',')[0]))),1850)
         self.assertGreater(int(full.get('zPosition')),int(root.find("widget[@render='Pig']").get('zPosition')))
         for node in (config,help_text):self.assertGreater(int(node.get('zPosition')),int(full.get('zPosition'))+1)
@@ -130,7 +130,7 @@ class SetupStyleTests(unittest.TestCase):
     def test_download_rows_are_above_the_opaque_panel(self):
         root=ET.fromstring(LAYOUTS['downloadMenu'][1])
         rows=root.find("widget[@name='list']")
-        background=next(x for x in root if x.tag=='eLabel' and x.get('position')=='40,165' and x.get('size')=='1840,810')
+        background=next(x for x in root if x.tag=='eLabel' and x.get('position')=='40,197' and x.get('size')=='1840,778')
         self.assertGreater(int(rows.get('zPosition')),int(background.get('zPosition')))
         self.assertGreater(int(rows.get('zPosition')),1)  # panel borders
 
@@ -235,6 +235,7 @@ class SetupStyleTests(unittest.TestCase):
         root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
         self.assertIsNone(root.find("widget[@name='selected_item']"))
         for child in root:
+            if child.tag=='ePixmap' and child.get('pixmap')==style.BANNER_IMAGE:continue
             x,y=map(int,child.get('position').split(','));w,h=map(int,child.get('size').split(','))
             self.assertFalse(x<1360 and x+w>560 and y<1060 and y+h>974,child.attrib)
         cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
@@ -245,10 +246,74 @@ class SetupStyleTests(unittest.TestCase):
         self.assertIn(moved,[style.portable(x) for x in ast.walk(setup)])
         self.assertNotIn(style.portable(ast.parse(style.GEOMETRY_OLD).body[0]),[style.portable(x) for x in ast.walk(setup)])
 
+    def test_compact_banner_keeps_the_large_help_preview_and_moves_main_menu_only_one_row(self):
+        main=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
+        expected={'config':('60,242','1790,320'),'list':('860,242','990,680'),
+                  'help_pict':('445,592','1029,350'),'white':('60,574','1790,2')}
+        for name,(position,size) in expected.items():
+            node=main.find("widget[@name='%s']"%name)
+            self.assertEqual((node.get('position'),node.get('size')),(position,size))
+        for name,(_,xml) in LAYOUTS.items():
+            root=ET.fromstring(xml+('</screen>' if name=='selectIconsDisplayed' else ''))
+            self.assertEqual(root.get('size'),'1920,1080',name)
+            self.assertEqual(len(root.findall("ePixmap[@pixmap='%s']"%style.BANNER_IMAGE)),1,name)
+            for node in root:
+                if node.tag=='widget' and node.get('name') and node.get('name') not in ('dwn',):
+                    if node.get('name').startswith('warder_'):continue
+                    self.assertGreaterEqual(int(node.get('position').split(',')[1]),164,(name,node.attrib))
+
+    def test_approved_banner_image_matches_the_pinned_native_full_hd_asset(self):
+        import struct
+        record=json.loads((ROOT/'design/settings-header-asset.json').read_text())
+        path=ROOT/'source/package-root'/record['path'];raw=path.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),record['sha256'])
+        self.assertEqual(raw[:8],b'\x89PNG\r\n\x1a\n')
+        width,height=struct.unpack('>II',raw[16:24])
+        self.assertEqual((width,height),(record['width'],record['height']))
+        self.assertAlmostEqual(width/height,16/9,delta=.003)
+        self.assertEqual(record['display_header_height'],164)
+        for name,(_,skin) in LAYOUTS.items():
+            root=ET.fromstring(skin+('</screen>' if name=='selectIconsDisplayed' else ''))
+            columns=root.findall("widget[@source='global.CurrentTime']")
+            self.assertEqual([x.find('convert').text for x in columns],['Format:%A','Format:%d. %B %Y','Default','Format::%S'],name)
+            self.assertEqual(columns[-1].get('foregroundColor'),style.TEXT)
+            self.assertLess(int(columns[-1].get('font').split(';')[1]),int(columns[-2].get('font').split(';')[1]))
+            version=next(x for x in root if x.get('text','').startswith('v1.0.16-'))
+            self.assertGreaterEqual(int(version.get('position').split(',')[0]),1680)
+            self.assertEqual(version.get('foregroundColor'),style.CYAN)
+
+    def test_dynamic_history_button_remains_centered_after_result_mode_move(self):
+        cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='historyScreen')
+        method=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='readandshow')
+        moves=[x for x in ast.walk(method) if isinstance(x,ast.Expr) and isinstance(x.value,ast.Call)
+               and isinstance(x.value.func,ast.Attribute) and x.value.func.attr=='move']
+        seen=[]
+        class Button:
+            def move(self,p):seen.append(p)
+        scope={'self':{'key_red':Button(),'line_red':Button()},'ePoint':lambda x,y:(x,y)}
+        for node in moves:exec(compile(ast.Module(body=[node],type_ignores=[]),'history-moves','exec'),scope)
+        self.assertEqual(len(seen),2)
+        self.assertAlmostEqual(seen[0][0]+825/2,960,delta=1)
+        self.assertGreaterEqual(seen[0][1],134);self.assertLessEqual(seen[0][1]+50,1080)
+        self.assertEqual(seen[0][1]-seen[1][1],10)
+
+    def test_all_nine_dynamic_icon_previews_fit_the_shared_header_body(self):
+        cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='selectIconsDisplayed')
+        init=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='__init__')
+        append=next(x for x in ast.walk(init) if isinstance(x,ast.AugAssign) and 'str(x)' in ast.unparse(x))
+        screen=SimpleNamespace(skin='<screen>')
+        for number in range(9):
+            scope={'self':screen,'x':number,'off':(number//3)*3,'y':(0,187,375)[number//3]}
+            exec(compile(ast.Module(body=[append],type_ignores=[]),'icon-layout','exec'),scope)
+        root=ET.fromstring(screen.skin+'</screen>');self.assertEqual(len(root),9)
+        for node in root:
+            x,y=map(int,node.get('position').split(','));w,h=map(int,node.get('size').split(','))
+            self.assertGreaterEqual(x,267);self.assertGreaterEqual(y,134)
+            self.assertLessEqual(x+w,1653);self.assertLessEqual(y+h,985)
+
     def test_styling_is_reproducible_from_the_original_layouts(self):
         for name,(_,skin) in LAYOUTS.items():
             self.assertEqual(skin.strip(),style.themed(name,BASELINE['skins'][name]).strip(),name)
 
 
 if __name__=='__main__':unittest.main()
-
