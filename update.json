@@ -1,6 +1,6 @@
 {
-  "version": "1.0.16-test267",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test267_all.ipk",
-  "sha256": "3bd3b462774ff235ccdda5a9c9f0568399d69a0903a6b295a9302fa78ee2c412",
-  "changelog": "Kratšie farebné čiary nad tlačidlami v dialógových oknách. Čiary sú vycentrované nad príslušným nápisom a zladené s PiconHub."
+  "version": "1.0.16-test268",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test268_all.ipk",
+  "sha256": "96712c4aab9b3f1660c4ad0cd49c987eded62e10c5b15598e3b597fec862ffe2",
+  "changelog": "Spoločná viacjazyčná šablóna textov aktualizácie vo FullHDGlass a PiconHub: rovnaká ponuka, priebeh, dokončenie a tlačidlo Potvrdiť. Mení sa iba názov projektu, verzia a popis zmien."
 }
