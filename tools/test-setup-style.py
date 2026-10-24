@@ -253,7 +253,7 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_compact_banner_keeps_the_large_help_preview_and_moves_main_menu_only_one_row(self):
         main=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
-        expected={'config':('60,242','1790,320'),'list':('860,242','990,680'),
+        expected={'config':('60,242','1790,320'),'list':('860,238','990,720'),
                   'help_pict':('445,592','1029,350'),'white':('60,574','1790,2')}
         for name,(position,size) in expected.items():
             node=main.find("widget[@name='%s']"%name)

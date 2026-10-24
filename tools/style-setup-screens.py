@@ -377,7 +377,7 @@ def themed(name,original):
         fields['description'].set('font','Regular;24');fields['description'].set('halign','left')
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
         fields['session.VideoPicture'].set('position','60,242');fields['session.VideoPicture'].set('size','737,415')
-        fields['list'].set('position','860,242');fields['list'].set('size','990,680')
+        fields['list'].set('position','860,238');fields['list'].set('size','990,720')
         fields['config'].set('position','60,242');fields['config'].set('size','1790,320')
         fields['white'].set('backgroundColor',CYAN)
         fields['white'].set('size','1790,2');fields['white'].set('position','60,574')
