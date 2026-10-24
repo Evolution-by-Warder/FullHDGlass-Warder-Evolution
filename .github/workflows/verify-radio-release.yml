@@ -20,13 +20,19 @@ jobs:
             design
             docs
             .github
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
       - name: Build exactly the checked-in stable or TEST payload
         run: |
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
           case "$VERSION" in
             *-test*)
-              python3 tools/build-setup-style-test.py
-              python3 tools/verify-setup-style-ipk.py
+              python3 -m pip install --quiet Pillow
+              curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
+              python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/warder-help-previews.zip
+              python3 tools/build-setup-style-test.py --help-previews /tmp/warder-help-previews.zip
+              python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
               ;;
             *) python3 tools/build-release-ipk.py ;;
           esac
