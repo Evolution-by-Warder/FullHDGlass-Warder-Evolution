@@ -1,12 +1,11 @@
 {
-  "version": "1.0.17",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.17_all.ipk",
-  "sha256": "3e9785b440c3dd257df4e09c0d3b73bddc15c450525c39573a1a83705da15829",
-  "bytes": 14192996,
-  "source_commit": "d09bc17fbb91460892305673f4d3c130564b187d",
-  "authorization": "Explicit owner request to enable the built-in updater, 24 October 2026",
-  "receiver_validation": "Not claimed; automated checks and public byte verification passed.",
+  "version": "1.0.19",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.19_all.ipk",
+  "sha256": "68a73f83b74126c15825f0e2d68ade528f5a1cc0e8dd6ba38a1edc8da1402224",
+  "changelog": "FullHDGlass Warder Evolution je zaradený medzi nainštalované Balíčky vzhľadu. Vnútorné priečinky, schválená grafika a uložené nastavenia zostávajú zachované.",
+  "bytes": 14194932,
+  "source_commit": "f5a83f8e302466d1a94e0f1c0972e5f637148bab",
   "production_status": "production-approved",
-  "production_tag": "v1.0.17",
-  "approved_on": "2026-10-24"
+  "production_tag": "v1.0.19",
+  "legacy_bridge_version": "1.0.18"
 }

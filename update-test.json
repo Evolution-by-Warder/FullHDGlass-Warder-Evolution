@@ -1,6 +1,6 @@
 {
-  "version": "1.0.17",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.17_all.ipk",
-  "sha256": "3e9785b440c3dd257df4e09c0d3b73bddc15c450525c39573a1a83705da15829",
-  "changelog": "Nižší horizont zemegule v bannere zlepšuje čitateľnosť sekúnd. Verzia je zobrazená v dvoch riadkoch: označenie Verzia: a pod ním číslo, vo všetkých obrazovkách s hlavičkou."
+  "version": "1.0.18",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk",
+  "sha256": "f785741d79a93d06e9d252e64e3d5b7a35a642db117aff1084dcfd20878f2383",
+  "changelog": "Migračná aktualizácia pripraví zachovanie nastavení pri premenovaní balíka. Po reštarte GUI otvor konfiguráciu a potvrď následnú aktualizáciu 1.0.19 pre zobrazenie medzi nainštalovanými Balíčkami vzhľadu."
 }
