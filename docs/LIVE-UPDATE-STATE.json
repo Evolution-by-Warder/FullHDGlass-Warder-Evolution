@@ -5,5 +5,8 @@
   "bytes": 14192996,
   "source_commit": "d09bc17fbb91460892305673f4d3c130564b187d",
   "authorization": "Explicit owner request to enable the built-in updater, 24 October 2026",
-  "receiver_validation": "Not claimed; automated checks and public byte verification passed."
+  "receiver_validation": "Not claimed; automated checks and public byte verification passed.",
+  "production_status": "production-approved",
+  "production_tag": "v1.0.17",
+  "approved_on": "2026-10-24"
 }

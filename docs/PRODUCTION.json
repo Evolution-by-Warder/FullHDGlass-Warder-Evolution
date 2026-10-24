@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "product": "FullHDGlass Warder Evolution",
+  "status": "production-approved",
+  "approved_on": "2026-10-24",
+  "approval": "Owner approved the current skin and plugin for production, then explicitly requested production numbering without the word test.",
+  "source_branch": "warder-modernization-work",
+  "source_commit": "d09bc17fbb91460892305673f4d3c130564b187d",
+  "release": {
+    "version": "1.0.17",
+    "tag": "v1.0.17",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.17/enigma2-skin-fullhdglass-warder-evolution_1.0.17_all.ipk",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.17_all.ipk",
+    "sha256": "3e9785b440c3dd257df4e09c0d3b73bddc15c450525c39573a1a83705da15829",
+    "bytes": 14192996
+  },
+  "preview_assets": {
+    "help": {
+      "filename": "warder-help-previews.zip",
+      "size": 24621325,
+      "sha256": "ba0eb66e2877c368c2a42ddee87e1270c1ea177096bda74f56edbcaef468deed",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-help-previews.zip"
+    },
+    "types": {
+      "filename": "warder-infobar-types.zip",
+      "size": 2584364,
+      "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-infobar-types.zip"
+    }
+  },
+  "baseline": {
+    "version": "1.0.16-test270",
+    "source_commit": "b2e3841b953d79355cd2f9c285ee7fe91f7f59ef",
+    "sha256": "1604df7dfdbc4f045547b9ea0d4299a450b71231b99eaaa9280f6d335f8dc9ff",
+    "bytes": 14192888
+  },
+  "validation": {
+    "workflow_run": 40108715500,
+    "automated_build_and_payload_checks": "passed",
+    "public_package_and_previews": "verified",
+    "owner_acceptance": "Current skin approved for production on 24 October 2026.",
+    "receiver_validation": "No new exhaustive physical receiver test is claimed."
+  }
+}
