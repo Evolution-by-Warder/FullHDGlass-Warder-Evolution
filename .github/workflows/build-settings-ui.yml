@@ -47,6 +47,7 @@ on:
       - tools/verify-setup-style-ipk.py
       - tools/fixtures/setup-ui-1.0.15.json
       - .github/workflows/build-settings-ui.yml
+      - .github/workflows/verify-radio-release.yml
 permissions:
   contents: read
 concurrency:

@@ -31,7 +31,12 @@ jobs:
           python3 tools/verify-setup-style-ipk.py
           case "$VERSION" in
             *-test*) ;;
-            *) cp "packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk" "packages/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk" ;;
+            *)
+              FEED_VERSION=$(python3 -c 'import json; print(json.load(open("update.json"))["version"])')
+              if [ "$FEED_VERSION" = "$VERSION" ]; then
+                cp "packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk" "packages/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+              fi
+              ;;
           esac
       - name: Verify bytecode invalidation and package error details
         run: python3 tools/test-release-bytecode.py
