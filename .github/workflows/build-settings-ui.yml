@@ -1,4 +1,4 @@
-name: Build Warder settings UI TEST
+name: Build Warder settings release
 on:
   push:
     branches: [warder-modernization-work]
@@ -35,6 +35,8 @@ on:
       - tools/test-settings-publisher.py
       - tools/publish-settings-update.py
       - design/live-update.json
+      - docs/PRODUCTION-APPROVAL.json
+      - tools/finalize-production.py
       - tools/test-preview-assets.py
       - tools/verify-preview-release-assets.py
       - design/preview-assets/**
@@ -91,13 +93,13 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq gettext
           find source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale -name '*.po' -print0 | xargs -0 -I '{}' msgfmt --check -o /dev/null '{}'
-      - name: Build isolated TEST package and verify every payload byte
+      - name: Build numbered package and verify every payload byte
         run: |
           python3 tools/build-setup-style-test.py --help-previews /tmp/warder-help-previews.zip
           python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-settings-TEST270
+          name: FullHDGlass-settings-release
           path: packages/test/*
           retention-days: 90
       - name: Publish package and activate explicitly approved updater version
@@ -107,7 +109,13 @@ jobs:
         run: |
           set -euo pipefail
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
-          TAG="settings-ui-${VERSION}"
+          if [[ "$VERSION" == *-test* ]]; then
+            TAG="settings-ui-${VERSION}"
+            NOTES="docs/SETTINGS-UI-TEST270.md"
+          else
+            TAG="v${VERSION}"
+            NOTES="docs/PRODUCTION.md"
+          fi
           PACKAGE="packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/warder-published-ui
@@ -115,10 +123,13 @@ jobs:
             cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution — nastavenia TEST270" \
-              --notes-file docs/SETTINGS-UI-TEST270.md \
+              --title "FullHDGlass Warder Evolution ${VERSION}" \
+              --notes-file "$NOTES" \
               "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json \
               /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip
           fi
           gh release upload "$TAG" /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip --clobber
           python3 tools/publish-settings-update.py --package "$PACKAGE" --build-info packages/test/settings-ui-build.json --revision "$GITHUB_SHA"
+          if [[ "$VERSION" != *-test* ]]; then
+            python3 tools/finalize-production.py --package "$PACKAGE" --build-info packages/test/settings-ui-build.json --revision "$GITHUB_SHA"
+          fi

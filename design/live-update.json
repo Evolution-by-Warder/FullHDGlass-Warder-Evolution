@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "version": "1.0.16-test270",
-  "expected_main_sha": "2ac7c00b23f051fd1b32d7de9d8fdc23984c1685",
-  "authorization": "Owner explicitly requested activation in the skin/plugin updater on 24 October 2026."
+  "version": "1.0.16",
+  "expected_main_sha": "c7b60d5d18713c959399a381e667202987c92075",
+  "authorization": "Owner explicitly approved production and requested clean numbering without test on 24 October 2026."
 }

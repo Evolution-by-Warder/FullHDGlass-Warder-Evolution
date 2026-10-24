@@ -41,6 +41,15 @@ class PublisherTests(unittest.TestCase):
         self.assertEqual(self.files['update.json'],self.files['update-test.json'])
         inventory=json.loads(self.files['design/settings-ui-inventory.json'])
         self.assertEqual(inventory['feeds_sha256']['update.json'],hashlib.sha256(self.files['update.json']).hexdigest())
+    def test_clean_stable_release_can_follow_numbered_test(self):
+        self.previous={'version':'1.0.16-test270'}
+        self.package=self.package.rename(self.package.with_name('enigma2-skin-fullhdglass-warder-evolution_1.0.16_all.ipk'))
+        self.info.update(version='1.0.16',package=self.package.name)
+        self.run_publish()
+        feed=json.loads(self.files['update.json'])
+        self.assertEqual(feed['version'],'1.0.16')
+        self.assertTrue(feed['package_url'].endswith('_1.0.16_all.ipk'))
+        self.assertEqual(self.files['update.json'],self.files['update-test.json'])
     def test_bad_local_digest_refuses_all_writes(self):
         self.info['sha256']='0'*64
         with self.assertRaises(ValueError):self.run_publish()

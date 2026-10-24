@@ -19,7 +19,7 @@ def main():
     parser.add_argument('--help-previews',type=Path)
     args=parser.parse_args()
     version=(PLUGIN/'version').read_text().strip()
-    if not re.fullmatch(r'\d+\.\d+\.\d+-test\d+',version):raise SystemExit('TEST version required')
+    if not re.fullmatch(r'\d+\.\d+\.\d+(?:-test\d+)?',version):raise SystemExit('Numbered stable or TEST version required')
     control=ROOT/'source/control'
     if 'Version: '+version+'-1\n' not in (control/'control').read_text():raise SystemExit('Control version mismatch')
     spec=importlib.util.spec_from_file_location('stable_archive',ROOT/'tools/build-release-ipk.py')

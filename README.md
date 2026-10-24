@@ -2,9 +2,13 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Settings UI candidate — working branch
+## Production baseline — 24 October 2026
 
-The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test266** for manual receiver validation, following owner-confirmed TEST260. It includes the approved settings batch, owned modal dialogs, plugin-list entry and lossless build-time PNG compression. [Candidate notes](docs/SETTINGS-UI-TEST266.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). The base IPK excludes optional preview archives; they are SHA256-verified background downloads cached beside the selected skin data. The owner authorized TEST263 for the built-in updater. The live offered version is recorded in update.json; receiver validation of this UI is not claimed.
+**FullHDGlass 1.0.16** is the owner-approved production release, based on the accepted TEST270 with clean production numbering. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.16).
+
+Production packages and displayed version labels use **1.0.16**, without the word test. Existing test releases remain historical. Both built-in update feeds offer the verified production IPK after public byte verification; 1.0.16 sorts newer than every 1.0.16-test candidate.
+
+The small IPK excludes the large preview archives. Help and type previews remain verified background downloads. Approved graphics, layouts, radio behavior, runtime identifiers, settings and original author credits are preserved. Exact package identity, SHA256, source revision and validation are recorded in docs/PRODUCTION.json after publication. Owner acceptance does not claim a new exhaustive physical receiver test.
 
 ## Historical receiver recovery baseline: 1.0.15
 

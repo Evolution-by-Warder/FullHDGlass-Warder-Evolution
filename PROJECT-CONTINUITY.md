@@ -1,3 +1,13 @@
+# Authoritative production state — 24 October 2026
+
+The owner accepted the current FullHDGlass skin and PiconHub plugin for production, and explicitly requested production numbering without test. **FullHDGlass 1.0.16** is the production release; **PiconHub 0.1.25** is its approved companion.
+
+FullHDGlass preserves TEST270 behavior/artwork and changes the runtime, package-control and displayed version labels to 1.0.16. Both updater feeds advance only after public package verification. Separate preview archives retain their immutable TEST263 URLs. Exact package identity and source revision are recorded in docs/PRODUCTION.json after the verified build; approval and the frozen TEST270 baseline are in docs/PRODUCTION-APPROVAL.json. See docs/PRODUCTION.md.
+
+Owner acceptance and automated checks are recorded; no new exhaustive physical receiver test is claimed. This current section supersedes every older current/candidate-version statement below. Preserve historical 1.0.15 recovery and all dated receiver evidence.
+
+## Historical checkpoints — superseded for current release selection
+
 # Current settings release: TEST266
 
 Fixes ChoiceBox onLayoutFinish crashes on OpenATV by registering a bound method instead of a lambda. Regression tests reproduce the exact receiver dispatch. Includes the shared Warder skull logos, shortened plugin-list title and existing TEST264 message text visibility fix. No receiver run of TEST266 is claimed. Both supplied crash logs identify the same callback TypeError. Earlier checkpoints below are historical.
