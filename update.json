@@ -1,6 +1,6 @@
 {
-  "version": "1.0.16-test265",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test265_all.ipk",
-  "sha256": "16615a8e13e2cae69d7e1f2cd45545177c8f4d503d4f8d06a936cdbb9a6f8973",
-  "changelog": "Zjednotené ikony FullHDGlass a PiconHub podľa schváleného vzoru Warder Evolution. Obe používajú presnú kópiu spoločnej okrúhlej lebky. Zachované priehľadné pozadie, výrazný názov a malý IPK. Zmena sa týka ikony v zozname pluginov."
+  "version": "1.0.16-test266",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test266_all.ipk",
+  "sha256": "dd0017457c361d8d614187b7a35db1ac009ed60efb6782b7896c96b2f41c1859",
+  "changelog": "Opravený pád výberových okien v OpenATV pri výbere rozlíšenia piconov a ďalších volieb. Zjednotené logo a skrátený názov FullHDGlass Warder Evolution zostávajú súčasťou vydania."
 }
