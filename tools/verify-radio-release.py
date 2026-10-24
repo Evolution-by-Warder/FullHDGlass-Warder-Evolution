@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Verify the release against the receiver-confirmed radio payload."""
 import ast
+import importlib.util
 import hashlib
 import io
 import json
@@ -59,12 +60,17 @@ def main():
     if package.is_file():
         assert subprocess.check_output(["ar", "p", str(package), "debian-binary"]) == b"2.0\n"
         data = subprocess.check_output(["ar", "p", str(package), "data.tar.gz"])
+        optimizer_spec = importlib.util.spec_from_file_location("png_optimizer", ROOT / "tools/optimize-png.py")
+        optimizer = importlib.util.module_from_spec(optimizer_spec)
+        optimizer_spec.loader.exec_module(optimizer)
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
             files = {entry.name.removeprefix("./"): entry for entry in archive if entry.isfile()}
             expected = {path.relative_to(PAYLOAD).as_posix(): path for path in PAYLOAD.rglob("*") if path.is_file() and path.suffix != ".po"}
             assert files.keys() == expected.keys()
             for name, path in expected.items():
-                assert archive.extractfile(files[name]).read() == path.read_bytes(), name
+                raw = path.read_bytes()
+                expected_raw = optimizer.optimize(raw) if path.suffix == ".png" else raw
+                assert archive.extractfile(files[name]).read() == expected_raw, name
                 if path.suffix == ".py":
                     assert files[name].mtime == (int(hashlib.sha256(path.read_bytes()).hexdigest()[:8], 16) & 0x7fffffff)
         digest = hashlib.sha256(package.read_bytes()).hexdigest()

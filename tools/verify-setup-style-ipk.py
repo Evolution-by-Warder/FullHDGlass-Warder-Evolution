@@ -37,7 +37,10 @@ with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(packa
         assert archive.extractfile(files[name]).read()==expected_raw,name
         if path.suffix=='.py':assert files[name].mtime==(int(hashlib.sha256(raw).hexdigest()[:8],16)&0x7fffffff),name
 for name in ('update.json','update-test.json'):
-    document=json.loads((ROOT/name).read_text());assert document['version']=='1.0.15'
+    document=json.loads((ROOT/name).read_text())
+    inventory=json.loads((ROOT/'design/settings-ui-inventory.json').read_text())
+    assert document['version']==inventory.get('current_feed_version','1.0.15')
+    if document['version']==version:assert document['sha256']==hashlib.sha256(package.read_bytes()).hexdigest()
     assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==json.loads((ROOT/'design/settings-ui-inventory.json').read_text())['feeds_sha256'][name]
 print('PASS:',len(expected),'payload files match source / compressed PNGs; large preview archives excluded; package metadata, Python cache invalidation and stable/test feeds verified')
 

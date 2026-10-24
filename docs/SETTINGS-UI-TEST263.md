@@ -9,4 +9,4 @@ Menší základný inštalačný balík so zachovaným svižným menu.
 - Bez internetu zostáva nastavenie použiteľné; už uložené náhľady fungujú bez siete. Chýbajúce náhľady sa doplnia na pozadí a použijú pri ďalšom výbere alebo otvorení ponuky.
 - Zachovaný názov Konfigurácia FullHDGlass Warder Evolution a menšia lebka v ikone z TEST262.
 
-Balík sa kontroluje s pevným limitom pod 16 MiB; veľké ZIPy sú samostatné aktíva vydania. Kontroly nenahrádzajú fyzické overenie na prijímači. Produkčné automatické feedy zostávajú na 1.0.15.
+Balík sa kontroluje s pevným limitom pod 16 MiB; veľké ZIPy sú samostatné aktíva vydania. Kontroly nenahrádzajú fyzické overenie na prijímači. Používateľ výslovne schválil zaradenie TEST263 do aktualizácie priamo z konfigurácie skinu. Stav aktívnych kanálov určujú update.json a update-test.json.

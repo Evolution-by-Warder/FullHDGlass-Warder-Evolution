@@ -8,7 +8,7 @@ See docs/SETTINGS-UI-BATCH261.md for the approved list and docs/SETTINGS-UI-TEST
 
 New owned dialogs are private to setupGlass17, not global Enigma2 overrides. Configuration moves exclusively to WHERE_PLUGINMENU; the old setup-menu branch is removed. Native session-start and optional ECM/weather entries are retained. Exact reviewed AST changes in design/settings-batch261-logic.json normalize to the original frozen controller fingerprint; all unreviewed controller mutations still fail. Original radio/graphics source hashes remain unchanged; new settings-only assets are independently pinned. Build-time PNG compression changes IDAT only, preserves all RGBA pixels and metadata, and is verified independently in the package. No Pillow dependency is added on the receiver. Preview I/O and rendering now always run in the child process, avoiding synchronous HDD/ZIP access in GUI; type thumbnails are pre-extracted by the downloader thread. Optional archives are verified, persistent downloads in the selected data directory, not IPK content.
 
-Stable main and both automatic feeds remain 1.0.15. TEST261 still requires receiver validation; do not claim a hardware run or promote production without it.
+The owner explicitly authorized TEST263 for the built-in updater on 24 October 2026. tools/publish-settings-update.py verifies the public small IPK and preview assets before atomically activating both feeds. A physical receiver run of TEST263 is not claimed.
 
 ## Stable recovery baseline — retained below
 

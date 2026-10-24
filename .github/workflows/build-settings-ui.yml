@@ -32,6 +32,9 @@ on:
       - tools/test-help-art.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPreviewAssets.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json
+      - tools/test-settings-publisher.py
+      - tools/publish-settings-update.py
+      - design/live-update.json
       - tools/test-preview-assets.py
       - tools/verify-preview-release-assets.py
       - design/preview-assets/**
@@ -71,6 +74,7 @@ jobs:
           python3 tools/test-setup-style.py -v
           python3 tools/test-help-preview.py -v
           python3 tools/test-runtime-safety.py
+          python3 tools/test-settings-publisher.py -v
           python3 tools/test-version-order.py
           python3 tools/verify-radio-release.py
       - name: Verify all 252 original help illustrations and background filtering
@@ -96,7 +100,7 @@ jobs:
           name: FullHDGlass-settings-TEST263
           path: packages/test/*
           retention-days: 90
-      - name: Publish reviewable TEST package without changing update feeds
+      - name: Publish package and activate explicitly approved updater version
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
@@ -117,3 +121,4 @@ jobs:
               /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip
           fi
           gh release upload "$TAG" /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip --clobber
+          python3 tools/publish-settings-update.py --package "$PACKAGE" --build-info packages/test/settings-ui-build.json --revision "$GITHUB_SHA"
