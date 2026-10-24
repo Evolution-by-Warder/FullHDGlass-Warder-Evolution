@@ -283,7 +283,7 @@ class SetupStyleTests(unittest.TestCase):
             self.assertEqual([x.find('convert').text for x in columns],['Format:%A','Format:%d. %B %Y','Default','Format::%S'],name)
             self.assertEqual(columns[-1].get('foregroundColor'),style.TEXT)
             self.assertLess(int(columns[-1].get('font').split(';')[1]),int(columns[-2].get('font').split(';')[1]))
-            version=next(x for x in root if x.get('text','').startswith('v1.0.16-'))
+            version=next(x for x in root if x.get('text','').startswith('1.0.16-'))
             self.assertGreaterEqual(int(version.get('position').split(',')[0]),1680)
             self.assertEqual(version.get('foregroundColor'),style.CYAN)
 

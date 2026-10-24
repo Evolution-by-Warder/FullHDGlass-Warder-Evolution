@@ -115,7 +115,7 @@ def publish(package,info,revision,expected_main,client,assets):
     verify_public(client,url,len(raw),digest)
     if head(client,WORK)!=revision:raise ValueError('Source branch advanced; feeds remain unchanged')
     manifest={'version':version,'package_url':url,'sha256':digest,
-              'changelog':'Pravý zoznam úvodnej ponuky je natiahnutý po spodný rám. Výška 720 px zobrazí 18 riadkov namiesto 17 a odstráni tmavú medzeru. Horný okraj je posunutý o 4 px nahor, aby sa celý ďalší riadok zmestil v pôvodnom ráme.'}
+              'changelog':'Nižší horizont zemegule v bannere zlepšuje čitateľnosť sekúnd. Verzia je zobrazená v dvoch riadkoch: označenie Verzia: a pod ním číslo, vo všetkých obrazovkách s hlavičkou.'}
     payload=encoded(manifest)
     inventory=json.loads(content(client,'design/settings-ui-inventory.json','main'))
     inventory['current_feed_version']=version

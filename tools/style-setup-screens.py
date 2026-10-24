@@ -291,7 +291,8 @@ def header(root,download=False,context=False):
         ET.SubElement(text,'convert',{'type':'g17ClockToText'}).text=fmt
         root.append(text)
     version=(PLUGIN.parent/'version').read_text().strip()
-    root.append(label(1680,40,210,76,text='v'+version,size=23,color=CYAN,halign='center',transparent='1',backgroundColor=BASE))
+    root.append(label(1680,25,210,36,text='Version:',size=25,color=CYAN,halign='center',transparent='1',backgroundColor=BASE))
+    root.append(label(1680,70,210,36,text=version,size=24,color=CYAN,halign='center',transparent='1',backgroundColor=BASE))
     for x in (1392,1664):root.append(element('eLabel',x,25,2,84,backgroundColor=CYAN,zPosition='5'))
     if context:
         root.append(label(850,120,700,38,size=25,color=CYAN,source='Title',halign='center',transparent='1',noWrap='1',backgroundColor=BASE,shadowColor=BASE,shadowOffset='1,1'))
