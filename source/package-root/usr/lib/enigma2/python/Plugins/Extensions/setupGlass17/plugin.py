@@ -7474,8 +7474,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self["help_txt"].setText(helpTxt.get("00",""))
 
 	def _warderLoadHelpPicture(self, filename):
-	    from .warderHelpArt import themed_path
-	    self["help_pict"].instance.setPixmapFromFile(themed_path(filename))
+	    from .warderHelpPreview import PreviewLoader
+	    if not hasattr(self, "_warderHelpLoader"):
+	        self._warderHelpLoader = PreviewLoader(self["help_pict"].instance.setPixmapFromFile)
+	        self.onClose.append(self._warderHelpLoader.close)
+	    self._warderHelpLoader.request(filename)
 
 	def readVersion(self):
 		version = "x.xx"
@@ -11103,3 +11106,4 @@ class dirBrowser(Screen):
 		if self["filelist"].canDescent():
 			self["filelist"].descent()
 			self.updTitle()					
+

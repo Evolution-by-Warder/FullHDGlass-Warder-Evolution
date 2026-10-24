@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 import struct
 import tempfile
+import time
+from unittest.mock import patch
 import unittest
 import zipfile
 import zlib
@@ -17,7 +19,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 spec=importlib.util.spec_from_file_location('warder_help_art',PLUGIN/'warderHelpArt.py')
 art=importlib.util.module_from_spec(spec);spec.loader.exec_module(art)
-parser=argparse.ArgumentParser();parser.add_argument('--bundle');args,remaining=parser.parse_known_args()
+parser=argparse.ArgumentParser();parser.add_argument('--bundle');parser.add_argument('--prebuilt');args,remaining=parser.parse_known_args()
 BUNDLE=Path(args.bundle) if args.bundle else None
 
 
@@ -76,6 +78,31 @@ class HelpArtTests(unittest.TestCase):
                 self.assertEqual(p.read_bytes(),raw)
         finally:art._INDEX=old
 
+    def test_prepared_preview_needs_no_pixel_work_and_cache_invalidates_on_source_change(self):
+        from unittest.mock import patch
+        import time
+        raw=art.encode_png(882,300,bytes([0,0,0,255])*(882*300))
+        ready=art.encode_png(882,300,bytes([16,33,54,255])*(882*300))
+        digest=hashlib.sha256(raw).hexdigest()
+        mask=base64.b64encode(zlib.compress(bytes(882*300//8))).decode('ascii')
+        revision=hashlib.sha256((art._STYLE+':'+mask).encode('ascii')).hexdigest()[:12]
+        with tempfile.TemporaryDirectory() as folder:
+            p=Path(folder)/'original.png';p.write_bytes(raw)
+            prepared=Path(folder)/'prepared.zip';cache=Path(folder)/'cache'
+            with zipfile.ZipFile(prepared,'w') as archive:
+                archive.writestr(digest+'-'+revision+'.png',ready)
+            with patch.object(art,'_INDEX',{'images':{digest:{'mask':mask}}}), patch.object(art,'_PREBUILT',str(prepared)), patch.object(art,'_CACHE_DIR',str(cache)), patch.object(art,'render',side_effect=AssertionError('GUI must not render PNGs')):
+                begin=time.perf_counter();target=art.cached_path(str(p));cold=time.perf_counter()-begin
+                self.assertNotEqual(target,str(p));self.assertEqual(Path(target).read_bytes(),ready)
+                with patch('builtins.open',side_effect=AssertionError('Warm lookup must not reread source')):
+                    self.assertEqual(art.cached_path(str(p)),target)
+                Path(target).unlink()
+                self.assertEqual(art.cached_path(str(p)),target)
+                self.assertEqual(Path(target).read_bytes(),ready)
+                p.write_bytes(b'new custom source')
+                self.assertEqual(art.cached_path(str(p)),str(p))
+                print('Prepared cold preview lookup: %.3f ms on build host (not a receiver timing)'%(cold*1000))
+
     def test_index_covers_the_entire_approved_bundle(self):
         data=art._index();self.assertEqual(data['image_count'],252);self.assertEqual(len(data['images']),236)
         self.assertEqual(len({name for x in data['images'].values() for name in x['names']}),252)
@@ -93,12 +120,25 @@ class HelpArtTests(unittest.TestCase):
         with zipfile.ZipFile(io.BytesIO(raw_bundle)) as archive,tempfile.TemporaryDirectory() as folder:
             names=[n for n in archive.namelist() if n.lower().endswith('.png')]
             self.assertEqual(len(names),252)
+            timings=[]
             for sequence,name in enumerate(names):
                 raw=archive.read(name);digest=hashlib.sha256(raw).hexdigest();entry=index['images'][digest]
                 original=Image.open(io.BytesIO(raw)).convert('RGBA').tobytes()
                 _,_,decoded=art.decode_png(raw)
                 self.assertEqual(bytes(decoded),original,name)
-                result=art.render(raw,entry);image=Image.open(io.BytesIO(result));self.assertEqual(image.size,(882,300))
+                result=art.render(raw,entry)
+                if args.prebuilt:
+                    revision=hashlib.sha256((art._STYLE+':'+entry['mask']).encode('ascii')).hexdigest()[:12]
+                    with zipfile.ZipFile(args.prebuilt) as prepared:
+                        self.assertEqual(len(prepared.namelist()),236)
+                        self.assertEqual(prepared.read(digest+'-'+revision+'.png'),result,name)
+                    source=Path(folder)/'lookup.png';source.write_bytes(raw)
+                    with patch.object(art,'_PREBUILT',args.prebuilt), patch.object(art,'_CACHE_DIR',str(Path(folder)/'prepared-cache')), patch.object(art,'render',side_effect=AssertionError('Menu must never render')):
+                        begin=time.perf_counter();target=art.cached_path(str(source));timings.append(time.perf_counter()-begin)
+                        self.assertIsNotNone(target,name)
+                        self.assertNotEqual(target,str(source),name)
+                        self.assertEqual(Path(target).read_bytes(),result,name)
+                image=Image.open(io.BytesIO(result));self.assertEqual(image.size,(882,300))
                 styled=image.convert('RGBA').tobytes();mask=zlib.decompress(base64.b64decode(entry['mask']))
                 # No pixel is erased: original alpha and full diagram geometry survive.
                 self.assertEqual(styled[3::4],original[3::4],name)
@@ -123,7 +163,9 @@ class HelpArtTests(unittest.TestCase):
                     self.assertEqual(art.themed_path(str(p),str(cache)),target)
                     self.assertEqual(Path(target).stat().st_mtime_ns,before)
                     self.assertEqual(p.read_bytes(),raw)
+            if timings:print('Prepared preview lookups on build host: mean %.3f ms, max %.3f ms; receiver timing unverified'%(sum(timings)/len(timings)*1000,max(timings)*1000))
             print('Verified all 252 help illustrations: exact original RGB content, opaque navy background and cache invalidation')
 
 
 if __name__=='__main__':unittest.main(argv=[__file__]+remaining)
+

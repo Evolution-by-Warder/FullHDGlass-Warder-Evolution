@@ -4,7 +4,7 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Settings UI candidate — working branch
 
-The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test258** for manual receiver validation, covering eleven owned settings screen classes. [Candidate notes](docs/SETTINGS-UI-TEST258.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). Production and automatic update feeds remain on 1.0.15; a production UI release follows receiver validation.
+The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test259** for manual receiver validation, covering eleven owned settings screen classes. [Candidate notes](docs/SETTINGS-UI-TEST259.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). Production and automatic update feeds remain on 1.0.15; a production UI release follows receiver validation.
 
 ## Latest approved release: 1.0.15
 
@@ -81,3 +81,4 @@ Release 1.0.15 removes the six unsupported picon positions and their legacy down
 ## Current recovery and offline backups
 
 Use [PROJECT-CONTINUITY.md](PROJECT-CONTINUITY.md) for the current state and [backup/restore instructions](docs/BACKUP-RESTORE.md) for set `warder-backups-20261023`. Historical checkpoint entries do not override the current release or live publication catalog.
+

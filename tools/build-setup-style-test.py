@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Package the UI candidate without changing artwork, translations or feeds."""
+import argparse
+import shutil
 import hashlib
 import importlib.util
 import json
@@ -13,6 +15,10 @@ PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setup
 
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--help-previews',required=True,type=Path)
+    args=parser.parse_args()
+    if not args.help_previews.is_file():raise SystemExit('Prepared help archive is required')
     version=(PLUGIN/'version').read_text().strip()
     if not re.fullmatch(r'\d+\.\d+\.\d+-test\d+',version):raise SystemExit('TEST version required')
     control=ROOT/'source/control'
@@ -24,7 +30,11 @@ def main():
     with tempfile.TemporaryDirectory() as folder:
         work=Path(folder);(work/'debian-binary').write_bytes(b'2.0\n')
         archive.archive(control,work/'control.tar.gz')
-        archive.archive(ROOT/'source/package-root',work/'data.tar.gz',payload=True)
+        payload=work/'payload'
+        shutil.copytree(ROOT/'source/package-root',payload)
+        previews=payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-help-previews.zip'
+        shutil.copyfile(args.help_previews,previews)
+        archive.archive(payload,work/'data.tar.gz',payload=True)
         subprocess.run(['ar','rcsD',str(package),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
     checksum=hashlib.sha256(package.read_bytes()).hexdigest()
     package.with_suffix('.ipk.sha256').write_text(checksum+'  '+package.name+'\n')
@@ -36,3 +46,4 @@ def main():
 
 
 if __name__=='__main__':main()
+

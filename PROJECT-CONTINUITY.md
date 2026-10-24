@@ -1,10 +1,12 @@
-# Settings UI development checkpoint — 2026-10-23
+# Settings UI development checkpoint — 2026-10-24
 
 The owner explicitly approved modernizing the settings UI as part of a shared Warder Evolution style. Work remains on `warder-modernization-work`; production `main`, update.json and update-test.json stay at 1.0.15.
 
-The working payload is **1.0.16-test258**, a manual receiver-validation candidate. Eleven owned settings screen classes receive the shared presentation. A frozen AST fingerprint verifies unchanged controllers, configuration, actions and callbacks. Existing graphics/XML, radio baseline and download backend remain unchanged. System MessageBox/ChoiceBox/InputBox and positioning/OLED screens are outside this first candidate.
+The working payload is **1.0.16-test259**, a manual receiver-validation candidate. Eleven owned settings screen classes receive the shared presentation. A frozen AST fingerprint verifies unchanged controllers, configuration, actions and callbacks. Existing graphics/XML, radio baseline and download backend remain unchanged. System MessageBox/ChoiceBox/InputBox and positioning/OLED screens are outside this first candidate.
 
-See [shared style](design/WARDER-UI-STANDARD.md), [inventory](design/settings-ui-inventory.json) and [candidate instructions](docs/SETTINGS-UI-TEST258.md). A native receiver test of this candidate is still required before production promotion.
+See [shared style](design/WARDER-UI-STANDARD.md), [inventory](design/settings-ui-inventory.json) and [candidate instructions](docs/SETTINGS-UI-TEST259.md). A native receiver test of this candidate is still required before production promotion.
+
+TEST259 addresses TEST258 receiver reports of 1–2 second GUI stalls while switching help illustrations. The previous renderer ran Python PNG filtering/recolouring synchronously from the selection callback. Build-time prepared PNGs now cover all 252 aliases (236 unique originals); runtime only fingerprints each source revision once and extracts/loads the corresponding prepared PNG. A 120 ms latest-selection queue skips intermediate choices. Missing prepared variants fall back to a single lower-priority subprocess with bounded output, timeout, stale-result rejection and close cleanup. The package contains one generated archive, byte-verified against the pixel-verified build output; no new Pillow/Twisted dependency is installed on the receiver (Twisted is native to Enigma2). The prepared archive increases package size. Runtime/helper/layout tests and CI are required; receiver responsiveness remains to be confirmed by the owner.
 
 ## Stable recovery baseline — retained below
 
@@ -53,3 +55,4 @@ Old development journals and checkpoints remain as dated history. For current re
 ## Backup
 
 The complete current repository is included in set `warder-backups-20261023`. Final snapshot refs, all checksums and offline restore evidence belong to the delivered `BACKUP-MANIFEST.json`, not to a temporary Actions artifact. See `docs/BACKUP-RESTORE.md`.
+

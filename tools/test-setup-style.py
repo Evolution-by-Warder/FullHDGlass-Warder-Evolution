@@ -219,7 +219,12 @@ class SetupStyleTests(unittest.TestCase):
                 if isinstance(call,ast.Call) and isinstance(call.func,ast.Attribute) and style.portable(call.func.value)==picture:
                     self.assertNotIn(call.func.attr,('move','resize'))  # No group overrides the shared bounds.
                     if call.func.attr=='setPixmapFromFile':loads.append(method.name)
-        self.assertEqual(loads,['_warderLoadHelpPicture'])
+        self.assertEqual(loads,[])
+        loader=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='_warderLoadHelpPicture')
+        code=ast.unparse(loader)
+        self.assertIn('self.onClose.append(self._warderHelpLoader.close)',code)
+        self.assertIn('self._warderHelpLoader.request(filename)',code)
+        self.assertNotIn('themed_path',code)
         show=next(x for x in cls.body if isinstance(x,ast.FunctionDef) and x.name=='showInfo')
         hook=ast.parse('self["config"].onSelectionChanged.append(self.doMyHelpWindow)').body[0]
         self.assertIn(style.portable(hook),[style.portable(x) for x in ast.walk(show)])
@@ -246,3 +251,4 @@ class SetupStyleTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+

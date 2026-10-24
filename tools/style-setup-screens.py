@@ -112,8 +112,11 @@ def strip_duplicate_value_presentation(tree):
 HELP_NATIVE = 'self["help_pict"].instance.setPixmapFromFile(filename)'
 HELP_CALL = 'self._warderLoadHelpPicture(filename)'
 HELP_METHOD = """def _warderLoadHelpPicture(self, filename):
-    from .warderHelpArt import themed_path
-    self["help_pict"].instance.setPixmapFromFile(themed_path(filename))
+    from .warderHelpPreview import PreviewLoader
+    if not hasattr(self, "_warderHelpLoader"):
+        self._warderHelpLoader = PreviewLoader(self["help_pict"].instance.setPixmapFromFile)
+        self.onClose.append(self._warderHelpLoader.close)
+    self._warderHelpLoader.request(filename)
 """
 
 
@@ -380,3 +383,4 @@ def apply():
 
 
 if __name__=='__main__':apply()
+
