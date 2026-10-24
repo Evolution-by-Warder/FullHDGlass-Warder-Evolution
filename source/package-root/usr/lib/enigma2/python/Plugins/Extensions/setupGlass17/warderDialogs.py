@@ -66,7 +66,12 @@ class ChoiceBox(Screen):
             "ok": self.choose, "green": self.choose,
             "cancel": self.cancel, "red": self.cancel,
         }, -2)
-        self.onLayoutFinish.append(lambda: self["list"].moveToIndex(selection))
+        self.warderSelection = selection
+        self.onLayoutFinish.append(self._warderLayoutFinished)
+
+    def _warderLayoutFinished(self):
+        # OpenATV requires a bound method; a lambda is passed to exec().
+        self["list"].moveToIndex(self.warderSelection)
 
     def choose(self):
         current = self["list"].getCurrent()

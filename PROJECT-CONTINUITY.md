@@ -1,3 +1,7 @@
+# Current settings release: TEST266
+
+Fixes ChoiceBox onLayoutFinish crashes on OpenATV by registering a bound method instead of a lambda. Regression tests reproduce the exact receiver dispatch. Includes the shared Warder skull logos, shortened plugin-list title and existing TEST264 message text visibility fix. No receiver run of TEST266 is claimed. Both supplied crash logs identify the same callback TypeError. Earlier checkpoints below are historical.
+
 # TEST264 update-content fix — 24 October 2026
 
 Current candidate 1.0.16-test264 fixes receiver-reported invisible update dialog text. The ScrollLabel outer eWidget is raised above the opaque panel; native confirmation and timers are preserved. Regression coverage checks full question content, outer container zPosition and callback result. TEST263 was published in both native update feeds at 69b351cffa8e9df97f351aa78e05d6c5e9f4e014; the owner requested this correction and delivery through the same updater. TEST264 reuses the verified TEST263 external preview assets and small-package design. No physical receiver validation is claimed.

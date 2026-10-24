@@ -116,12 +116,25 @@ class BatchTests(unittest.TestCase):
         cls=dialogs()['ChoiceBox'];choices=[('50x30',('resolution','50x30')),('220x132',('resolution','220x132'))]
         for key in ('ok','green'):
             screen=cls(None,title='Select',list=choices,selection=1)
-            for callback in screen.onLayoutFinish:callback()
+            for callback in screen.onLayoutFinish:
+                if isinstance(callback,type(screen.close)):callback()
+                else:exec(callback,{}, {})
             screen['actions'].actions[key]()
             self.assertIs(screen.returned[0],choices[1])
         for key in ('cancel','red'):
             screen=cls(None,list=choices);screen['actions'].actions[key]();self.assertEqual(screen.returned,(None,))
         screen=cls(None,list=[]);screen.choose();self.assertEqual(screen.returned,())
+
+    def test_choice_layout_callbacks_follow_openatv_dispatch_contract(self):
+        cls=dialogs()['ChoiceBox']
+        for index in (0,1,2):
+            box=cls(None,list=[('50x30','a'),('220x132','b'),('400x240','c')],selection=index)
+            for callback in box.onLayoutFinish:
+                if isinstance(callback,type(box.close)):callback()
+                else:exec(callback,{}, {})
+            self.assertEqual(box['list'].index,index)
+            box['actions'].actions['green']()
+            self.assertEqual(box.returned[0],box['list'].rows[index])
 
     def test_message_preserves_safe_no_default_and_noninteractive_progress(self):
         cls=dialogs()['MessageBox']
