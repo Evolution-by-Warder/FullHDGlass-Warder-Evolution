@@ -4,13 +4,13 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Settings UI candidate — working branch
 
-The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test263** for manual receiver validation, following owner-confirmed TEST260. It includes the approved settings batch, owned modal dialogs, plugin-list entry and lossless build-time PNG compression. [Candidate notes](docs/SETTINGS-UI-TEST263.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). The base IPK excludes optional preview archives; they are SHA256-verified background downloads cached beside the selected skin data. The owner authorized TEST263 for the built-in updater. The live offered version is recorded in update.json; receiver validation of this UI is not claimed.
+The owner approved a common Warder Evolution settings style on 2026-10-23. The working branch contains **1.0.16-test264** for manual receiver validation, following owner-confirmed TEST260. It includes the approved settings batch, owned modal dialogs, plugin-list entry and lossless build-time PNG compression. [Candidate notes](docs/SETTINGS-UI-TEST264.md) · [Shared UI standard](design/WARDER-UI-STANDARD.md). The base IPK excludes optional preview archives; they are SHA256-verified background downloads cached beside the selected skin data. The owner authorized TEST263 for the built-in updater. The live offered version is recorded in update.json; receiver validation of this UI is not claimed.
 
 ## Latest approved release: 1.0.15
 
 [Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.15_all.ipk).
 
-Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. Stable and test update channels both offer 1.0.15.
+Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current offered version is recorded in update.json and update-test.json.
 
 
 ## Project status

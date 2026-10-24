@@ -1,3 +1,7 @@
+# TEST264 update-content fix — 24 October 2026
+
+Current candidate 1.0.16-test264 fixes receiver-reported invisible update dialog text. The ScrollLabel outer eWidget is raised above the opaque panel; native confirmation and timers are preserved. Regression coverage checks full question content, outer container zPosition and callback result. TEST263 was published in both native update feeds at 69b351cffa8e9df97f351aa78e05d6c5e9f4e014; the owner requested this correction and delivery through the same updater. TEST264 reuses the verified TEST263 external preview assets and small-package design. No physical receiver validation is claimed.
+
 # Settings UI checkpoint — 24 October 2026
 
 Repository Evolution-by-Warder/FullHDGlass-Warder-Evolution, branch warder-modernization-work.

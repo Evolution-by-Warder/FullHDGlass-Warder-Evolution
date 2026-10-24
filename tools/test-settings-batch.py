@@ -132,6 +132,21 @@ class BatchTests(unittest.TestCase):
         self.assertFalse(box['warderActions'].enabled);self.assertFalse(box['warderScroll'].enabled);self.assertFalse(box['key_red'].visible)
         box=cls(None,'Long result',type=2);box['warderScroll'].actions['down']();self.assertEqual(box['text'].pages,1)
 
+    def test_message_content_container_is_above_opaque_panel(self):
+        cls=dialogs()['MessageBox']
+        text='New version: 1.0.16-test264\n\nRelease notes\n\nDo you want to update now?'
+        box=cls(None,text)
+        self.assertEqual(box['text'].text,text)
+        layers=[]
+        box['text'].instance=SimpleNamespace(setZPosition=layers.append)
+        # Native ScrollLabel forwards zPosition to its inner labels only.
+        with patch.object(Label,'applySkin',return_value=True,create=True) as native:
+            self.assertTrue(box['text'].applySkin('desktop','parent'))
+        native.assert_called_once_with(box['text'],'desktop','parent')
+        self.assertEqual(layers,[5])
+        box['warderActions'].actions['green']()
+        self.assertEqual(box.returned,(True,))
+
     def test_native_text_input_keeps_cancel_and_confirmation_values(self):
         cls=dialogs()['InputBox'];box=cls(None);box['warderActions'].actions['red']();self.assertEqual(box.returned,(None,))
         box=cls(None);box['warderActions'].actions['green']();self.assertEqual(box.returned,('entered text',))

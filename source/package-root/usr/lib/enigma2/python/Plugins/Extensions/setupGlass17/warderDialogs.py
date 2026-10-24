@@ -10,6 +10,15 @@ from .warderDialogSkins import MESSAGE_SKIN, CHOICE_SKIN, INPUT_SKIN
 from .warderUiText import ui_text
 
 
+class MessageText(ScrollLabel):
+    def applySkin(self, desktop, parent):
+        # ScrollLabel applies zPosition to its inner labels, not its outer
+        # eWidget. Raise the container above the opaque settings panel too.
+        result = ScrollLabel.applySkin(self, desktop, parent)
+        self.instance.setZPosition(5)
+        return result
+
+
 class MessageBox(NativeMessageBox):
     skin = MESSAGE_SKIN
 
@@ -17,7 +26,7 @@ class MessageBox(NativeMessageBox):
         NativeMessageBox.__init__(self, session, *args, **kwargs)
         self.skin = MESSAGE_SKIN
         self.skinName = ["WarderSettingsMessage"]
-        self["text"] = ScrollLabel(self.text)
+        self["text"] = MessageText(self.text)
         self["line_red"] = Label("")
         self["line_green"] = Label("")
         self["key_red"] = Label(ui_text("Back"))
