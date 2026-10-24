@@ -1,6 +1,6 @@
 {
-  "version": "1.0.15",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.15_all.ipk",
-  "sha256": "f06208c40d8798301ed5499c2c0f8110b270fb3dacfd92c88005d204bc73fa0d",
-  "changelog": "Odstránené nepokryté pozície 12,5W, 11,0W, 3,1E, 74,9E, 85,0E a 85,1E z ponúk piconov a sťahovacích väzieb. Zachované ostatné nastavenia a schválená grafika."
+  "version": "1.0.16-test263",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-skin-fullhdglass-warder-evolution_1.0.16-test263_all.ipk",
+  "sha256": "27d7ff801010a79da05a2641f46e6d4e3a9762731f90b4b27de8fc0bd84ae0ae",
+  "changelog": "Jednotné nastavenia FullHDGlass Warder Evolution, nové ikony a malé IPK približne 14,1 MB. Náhľady sa sťahujú na pozadí a ukladajú lokálne."
 }
