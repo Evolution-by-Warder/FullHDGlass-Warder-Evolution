@@ -70,7 +70,7 @@ class ChoiceBox(Screen):
         self.onLayoutFinish.append(self._warderLayoutFinished)
 
     def _warderLayoutFinished(self):
-        # OpenATV requires a bound method; a lambda is passed to exec().
+        # OpenATV requires a bound method; plain functions are treated as script text.
         self["list"].moveToIndex(self.warderSelection)
 
     def choose(self):
