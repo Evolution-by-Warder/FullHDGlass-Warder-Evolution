@@ -1,0 +1,150 @@
+{
+  "assets": [
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/p4.png",
+      "sha256": "ba3471d6f7c3523f6cf4523a7f9c576c1044728f79cea9de5f8f2b2e9ed1178e",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/ba5.png",
+      "sha256": "639d3343d6c656be05ef11b8590d55826c5e793228b1078f4c3f344ac7f9a9b6",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/warder-colour.png",
+      "sha256": "818e17df12994531fa296dd364b13d8bfa4a5b0b216b75e0d4f31e608fc4354f",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/warder-location.png",
+      "sha256": "185d22ff36428d8d7133196db776147026fcf1a0952c2b954db8a418f153a116",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/warder-sync.png",
+      "sha256": "a1f6836e04ad85140e0b0ca0540a2c6a4722a4eada58f40f37fa4a2d7dcaee9c",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/p4p.png",
+      "sha256": "d96c6f31c46a41165b9f8cdab7585624a51321e4366a5c51b353f72347f47077",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/p4s.png",
+      "sha256": "859f498bd9095e0c3a1fbc2614722a75db7178816d019746e3745120814f5856",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/bc.png",
+      "sha256": "2bfcbcaf7070068cbdff060c5c148ea32ae92b70a597dff8ff4660fa5bcd1d5d",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/bw.png",
+      "sha256": "7b80bec2bff06e837a1aff47ea1c90b316235b6391276c73cded57c8a424a79d",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/oa.png",
+      "sha256": "aede5e65dfafc267ec982a9d3cc76a4f45b0ddd96f7413a1dcc6b86317d14d27",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/h.png",
+      "sha256": "8c33cfcb3f6a34d023755ebacf5418edcaa4135c9adc96627e8ea87a74cd2278",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/i.png",
+      "sha256": "44e3d42d8b9ff93fcca3746ebb7c2066e4d72c01890cf34221417c964f240108",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/a.png",
+      "sha256": "7c2d6f292342e0721fe55769db786801d1ff16b62f452454563a5b8ade76d346",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/m.png",
+      "sha256": "27672f83ca53b4bb03c6928ca78511350b01113665753e8caa1f9645b3a28c84",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/mb.png",
+      "sha256": "c5bbd564d348f8c3c285c1e5838b2e803b5b2e5b6cd473bb376d52f39b2c756a",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/w.png",
+      "sha256": "f7762c51d937477df597f034c7143fe5ae3174d2e5f933d36b24a20553df2c45",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/7z.png",
+      "sha256": "d424abf82617959daa0090307202d7c778f4ac82bc732b035cd85bf8117a8dbb",
+      "width": 189,
+      "height": 123,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/x.png",
+      "sha256": "91e4cba21a85f3c9ebf01350bfc6e3854369dd12f011d28fd139299aff035f71",
+      "width": 50,
+      "height": 50,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/download/d.png",
+      "sha256": "8d1fcf65599920102c2bdf88925862200ac9c82f8001d00c627162b07ddb75f4",
+      "width": 50,
+      "height": 50,
+      "origin": "built-in imagegen background extraction"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/warder-config.png",
+      "sha256": "233fa91af19957285423fe482f618ca102adaeb0ccbf6f75cd991fae765db884",
+      "width": 160,
+      "height": 120,
+      "origin": "built-in imagegen, approved banner reference"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-infobar-types.zip",
+      "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
+      "origin": "78 thumbnails derived from approved original preview bundle",
+      "source_sha256": "0fca8510b5e1e7dd600548f706553b83a3993e91077382aba4c6363278eac230"
+    }
+  ]
+}

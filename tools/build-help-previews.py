@@ -20,6 +20,8 @@ PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/s
 spec = importlib.util.spec_from_file_location('help_art_build', PLUGIN / 'warderHelpArt.py')
 art = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(art)
+optimizer_spec=importlib.util.spec_from_file_location('png_optimizer',ROOT/'tools/optimize-png.py')
+optimizer=importlib.util.module_from_spec(optimizer_spec);optimizer_spec.loader.exec_module(optimizer)
 
 
 def build(bundle, output):
@@ -49,7 +51,7 @@ def build(bundle, output):
             revision = hashlib.sha256((art._STYLE + ':' + entry['mask']).encode('ascii')).hexdigest()[:12]
             member = zipfile.ZipInfo(digest + '-' + revision + '.png', (1980, 1, 1, 0, 0, 0))
             member.compress_type = zipfile.ZIP_STORED
-            target.writestr(member, art.encode_png(882, 300, result.tobytes()))
+            target.writestr(member, optimizer.optimize(art.encode_png(882, 300, result.tobytes())))
     if seen != set(index['images']):
         raise ValueError('Incomplete prepared help artwork')
     print('Prepared', len(seen), 'unique previews for all 252 original filenames')

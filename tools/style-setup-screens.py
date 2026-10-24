@@ -196,7 +196,28 @@ def strip_banner_geometry(tree):
     return tree
 
 
+def strip_reviewed_batch(tree):
+    # Exact reviewed AST replacements only. A changed save/action/installer node
+    # no longer matches and therefore still trips the frozen 1.0.15 fingerprint.
+    records=json.loads((ROOT/'design/settings-batch261-logic.json').read_text())
+    mapping={(r['scope'],ast.dump(ast.parse(r['after']).body[0])):r['before'] for r in records}
+    def restore(nodes, scope):
+        result=[]
+        for node in nodes:
+            key=(scope,ast.dump(node))
+            if key in mapping:
+                result.extend(ast.parse(mapping[key]).body)
+            else:
+                if isinstance(node,ast.ClassDef):node.body=restore(node.body,node.name)
+                result.append(node)
+        return result
+    tree=copy.deepcopy(tree)
+    tree.body=restore(tree.body,'module')
+    return tree
+
+
 def normalized(tree):
+    tree=strip_reviewed_batch(tree)
     tree=strip_banner_geometry(tree)
     tree=strip_help_geometry_presentation(strip_help_background_presentation(strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree)))))
     for cls in tree.body:
@@ -235,8 +256,8 @@ def label(x,y,w,h,text='',size=28,color=TEXT,source=None,render='Label',**attrib
     kw={'font':'Regular;%d'%size,'foregroundColor':color,'backgroundColor':PANEL,
         'transparent':'0','zPosition':'5','valign':'center','noWrap':'1',**attributes}
     if source:kw.update(source=source,render=render)
-    else:kw['text']=text
-    return element('widget' if source else 'eLabel',x,y,w,h,**kw)
+    elif 'name' not in attributes:kw['text']=text
+    return element('widget' if source or 'name' in attributes else 'eLabel',x,y,w,h,**kw)
 
 
 def panel(root,x,y,w,h):
@@ -397,15 +418,61 @@ def themed(name,original):
         if name=='historyScreen':
             fields['Changelog_info'].set('position','15,70');fields['Changelog_info'].set('size','1620,670')
         elif name=='selectIconsDisplayed':
-            pass  # Appended preview/icon positions start at y=57.
+            # After the 164 px body offset, both list and preview center at y=476.
+            fields['list'].set('position','45,127');fields['list'].set('size','315,370')
         title_height=38 if fragment else 45
         root.append(label(20,5,w-40,title_height,size=27,color=CYAN,source='Title'))
         root.append(element('eLabel',20,48 if fragment else 57,w-40,2,backgroundColor=CYAN,zPosition='1'))
         for box in ((0,0,w,2),(0,h-2,w,2),(0,0,2,h),(w-2,0,2,h)):
             root.append(element('eLabel',*box,backgroundColor=CYAN,zPosition='5'))
     if not full:fullscreen_dialog(root,shift)
+    if name=='historyScreen':
+        # Content ends at 960; all actions are below the cyan frame.
+        for node in root:
+            key=node.get('name','')
+            if key in ('key_red','key_green'):
+                x=int(node.get('position').split(',')[0]);node.set('position','%d,1006'%x)
+                node.set('backgroundColor',BASE)
+            elif key in ('line_red','line_green'):
+                x=int(node.get('position').split(',')[0]);node.set('position','%d,996'%x)
+            elif node.tag=='eLabel' and node.get('size')=='1650,825':node.set('size','1650,796')
+            elif node.tag=='eLabel' and node.get('size')=='2,825':node.set('size','2,796')
+            elif node.tag=='eLabel' and node.get('position')=='135,987':node.set('position','135,958')
+        fields['Changelog_info'].set('position','150,194');fields['Changelog_info'].set('size','1620,740')
+    if name=='selectScreenShowed':
+        fields['list'].set('size','495,585')
+        preview=fields['scr_preview'];preview.set('backgroundColor',PANEL);preview.set('alphatest','off')
+        # Opaque backing prevents transparent screenshots exposing arbitrary TV.
+        root.insert(1,element('eLabel',741,244,960,540,backgroundColor=PANEL,zPosition='3'))
     result='\n'.join(line.rstrip() for line in ET.tostring(root,encoding='unicode').splitlines())
     return result.removesuffix('</screen>') if fragment else result
+
+
+def dialog_skin(kind):
+    root=ET.Element('screen',name='WarderSettings'+kind,position='0,0',size='1920,1080',flags='wfNoBorder',backgroundColor=BASE)
+    panel(root,135,184,1650,776)
+    header(root,context=True)
+    if kind=='Message':
+        root.append(element('widget',170,220,70,70,name='icon',pixmaps=','.join('icons/input_'+x+'.png' for x in ('question','info','warning','error','message')),scale='1',alphatest='blend',conditional='icon',zPosition='4'))
+        root.append(label(260,220,1480,520,size=30,name='text',noWrap='0'))
+        root.append(element('widget',260,770,1480,160,name='list',font='Regular;30',itemHeight='50',scrollbarMode='showOnDemand',backgroundColor=PANEL,foregroundColor=TEXT,foregroundColorSelected=TEXT,backgroundColorSelected=SELECT,transparent='0',zPosition='4',conditional='list'))
+    elif kind=='Choice':
+        root.append(element('widget',165,214,1590,650,name='list',font='Regular;32',itemHeight='58',scrollbarMode='showOnDemand',backgroundColor=PANEL,foregroundColor=TEXT,foregroundColorSelected=TEXT,backgroundColorSelected=SELECT,transparent='0',zPosition='4'))
+        root.append(label(165,885,1590,45,name='hint',size=26,halign='center'))
+    else:
+        root.append(label(180,270,1560,120,name='text',size=32,noWrap='0'))
+        root.append(element('widget',180,430,1560,70,name='input',font='Regular;34',backgroundColor=BASE,foregroundColor=TEXT,zPosition='4'))
+    for key,x in (('red',135),('green',968)):
+        root.append(element('widget',x,996,817,2,name='line_'+key,backgroundColor=COLORS[key],zPosition='5'))
+        root.append(label(x,1006,817,50,name='key_'+key,color=COLORS[key],halign='center',backgroundColor=BASE))
+    return ET.tostring(root,encoding='unicode')
+
+
+def write_dialog_skins():
+    data='# Generated by tools/style-setup-screens.py; do not edit.\n'
+    for constant,kind in (('MESSAGE_SKIN','Message'),('CHOICE_SKIN','Choice'),('INPUT_SKIN','Input')):
+        data+=constant+' = '+repr(dialog_skin(kind))+'\n'
+    (PLUGIN.parent/'warderDialogSkins.py').write_text(data)
 
 
 def capture(text):
@@ -418,8 +485,6 @@ def capture(text):
 def apply():
     text=PLUGIN.read_text();snapshot=json.loads(FIXTURE.read_text())
     text=text.replace('eSize(737, 280)','eSize(737, 248)')
-    for old,new in BANNER_GEOMETRY:text=text.replace(new,old)
-    text=text.replace(ICON_NEW,ICON_OLD).replace(ICON_Y_NEW,ICON_Y_OLD).replace(PREVIEW_NEW,PREVIEW_OLD)
     if normalized(ast.parse(text))!=snapshot['logic_sha256']:raise SystemExit('Unexpected settings logic; review baseline first')
     rows=text.splitlines(keepends=True);replacements=[]
     for name,(node,current) in extract(text).items():
@@ -469,6 +534,7 @@ def apply():
     result=result.replace(ICON_OLD,ICON_NEW).replace(ICON_Y_OLD,ICON_Y_NEW).replace(PREVIEW_OLD,PREVIEW_NEW)
     if normalized(ast.parse(result))!=snapshot['logic_sha256']:raise SystemExit('Unexpected banner geometry/controller change')
     PLUGIN.write_text(result)
+    write_dialog_skins()
 
 
 if __name__=='__main__':apply()

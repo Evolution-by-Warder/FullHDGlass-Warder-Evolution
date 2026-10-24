@@ -17,9 +17,19 @@ def digest_graphics():
     approved = json.loads((ROOT/'design/settings-header-asset.json').read_text())
     header = PAYLOAD/approved['path']
     assert header.is_file() and hashlib.sha256(header.read_bytes()).hexdigest()==approved['sha256']
+    additions=json.loads((ROOT/'design/settings-batch261-assets.json').read_text())['assets']
+    pinned=set()
+    prefix='usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/'
+    for entry in additions:
+        relative=entry['path']
+        assert relative.startswith(prefix+'images/') or relative==prefix+'warder-infobar-types.zip'
+        path=PAYLOAD/relative
+        assert path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256'],relative
+        pinned.add(path)
+    assert {p for p in (PAYLOAD/prefix/'images').rglob('*.png')}=={p for p in pinned if p.suffix=='.png'}|{header}
     digest = hashlib.sha256()
     for path in sorted(PAYLOAD.rglob("*")):
-        if path==header:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.
+        if path==header or path in pinned:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.
         if path.is_file() and path.suffix.lower() in (".png", ".jpg", ".mvi", ".xml"):
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
             digest.update(hashlib.sha256(path.read_bytes()).digest())

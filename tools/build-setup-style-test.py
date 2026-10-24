@@ -25,6 +25,8 @@ def main():
     if 'Version: '+version+'-1\n' not in (control/'control').read_text():raise SystemExit('Control version mismatch')
     spec=importlib.util.spec_from_file_location('stable_archive',ROOT/'tools/build-release-ipk.py')
     archive=importlib.util.module_from_spec(spec);spec.loader.exec_module(archive)
+    optimizer_spec=importlib.util.spec_from_file_location('png_optimizer',ROOT/'tools/optimize-png.py')
+    optimizer=importlib.util.module_from_spec(optimizer_spec);optimizer_spec.loader.exec_module(optimizer)
     output=ROOT/'packages/test';output.mkdir(parents=True,exist_ok=True)
     package=output/('enigma2-skin-fullhdglass-warder-evolution_'+version+'_all.ipk')
     with tempfile.TemporaryDirectory() as folder:
@@ -34,13 +36,14 @@ def main():
         shutil.copytree(ROOT/'source/package-root',payload)
         previews=payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-help-previews.zip'
         shutil.copyfile(args.help_previews,previews)
+        compression=optimizer.optimize_tree(payload)
         archive.archive(payload,work/'data.tar.gz',payload=True)
         subprocess.run(['ar','rcsD',str(package),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
     checksum=hashlib.sha256(package.read_bytes()).hexdigest()
     package.with_suffix('.ipk.sha256').write_text(checksum+'  '+package.name+'\n')
     info={'version':version,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
           'package':package.name,'sha256':checksum,'bytes':package.stat().st_size,
-          'stable_feed_modified':False,'receiver_validated':False,'scope':'settings presentation only'}
+          'stable_feed_modified':False,'receiver_validated':False,'scope':'approved settings batch', 'png_compression':{'files':len(compression),'saved_bytes':sum(x['before']-x['after'] for x in compression),'lossless':True}}
     (output/'settings-ui-build.json').write_text(json.dumps(info,indent=2)+'\n')
     print(package);print(checksum)
 

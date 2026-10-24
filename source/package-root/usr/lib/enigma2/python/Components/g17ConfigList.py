@@ -3,7 +3,7 @@ from Components.GUIComponent import GUIComponent
 from Components.config import KEY_LEFT, KEY_RIGHT, KEY_HOME, KEY_END, KEY_0, KEY_DELETE, KEY_BACKSPACE, KEY_OK, KEY_TOGGLEOW, KEY_ASCII, KEY_TIMEOUT, KEY_NUMBERS, ConfigElement, ConfigText, ConfigPassword
 from Components.ActionMap import NumberActionMap, ActionMap
 from enigma import eListbox, eListboxPythonConfigContent, eTimer
-from Screens.MessageBox import MessageBox
+from Plugins.Extensions.setupGlass17.warderDialogs import MessageBox
 
 class ConfigList(HTMLComponent, GUIComponent, object):
 	def __init__(self, list, session = None):

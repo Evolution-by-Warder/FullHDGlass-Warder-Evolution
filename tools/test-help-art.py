@@ -131,13 +131,15 @@ class HelpArtTests(unittest.TestCase):
                     revision=hashlib.sha256((art._STYLE+':'+entry['mask']).encode('ascii')).hexdigest()[:12]
                     with zipfile.ZipFile(args.prebuilt) as prepared:
                         self.assertEqual(len(prepared.namelist()),236)
-                        self.assertEqual(prepared.read(digest+'-'+revision+'.png'),result,name)
+                        prepared_image=Image.open(io.BytesIO(prepared.read(digest+'-'+revision+'.png'))).convert('RGBA')
+                        self.assertEqual(prepared_image.size,(882,300),name)
+                        self.assertEqual(prepared_image.tobytes(),Image.open(io.BytesIO(result)).convert('RGBA').tobytes(),name)
                     source=Path(folder)/'lookup.png';source.write_bytes(raw)
                     with patch.object(art,'_PREBUILT',args.prebuilt), patch.object(art,'_CACHE_DIR',str(Path(folder)/'prepared-cache')), patch.object(art,'render',side_effect=AssertionError('Menu must never render')):
                         begin=time.perf_counter();target=art.cached_path(str(source));timings.append(time.perf_counter()-begin)
                         self.assertIsNotNone(target,name)
                         self.assertNotEqual(target,str(source),name)
-                        self.assertEqual(Path(target).read_bytes(),result,name)
+                        self.assertEqual(Image.open(target).convert('RGBA').tobytes(),Image.open(io.BytesIO(result)).convert('RGBA').tobytes(),name)
                 image=Image.open(io.BytesIO(result));self.assertEqual(image.size,(882,300))
                 styled=image.convert('RGBA').tobytes();mask=zlib.decompress(base64.b64decode(entry['mask']))
                 # No pixel is erased: original alpha and full diagram geometry survive.

@@ -14,6 +14,22 @@ on:
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsCanvas.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogs.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderTools.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk
+      - source/package-root/usr/lib/enigma2/python/Components/g17ConfigList.py
+      - design/settings-batch261-logic.json
+      - design/settings-batch261-assets.json
+      - tools/optimize-png.py
+      - tools/test-settings-batch.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderTypePreviews.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-infobar-types.zip
+      - tools/build-type-previews.py
+      - tools/build-help-previews.py
+      - tools/test-help-art.py
       - source/control/control
       - tools/style-setup-screens.py
       - tools/test-setup-style.py
@@ -56,6 +72,7 @@ jobs:
         run: |
           python3 -m pip install --quiet Pillow
           curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
+          python3 tools/test-settings-batch.py -v
           python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/warder-help-previews.zip
           python3 tools/test-help-art.py --bundle /tmp/warder-help.zip --prebuilt /tmp/warder-help-previews.zip
       - name: Validate existing gettext catalogs
@@ -69,7 +86,7 @@ jobs:
           python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-settings-TEST260
+          name: FullHDGlass-settings-TEST261
           path: packages/test/*
           retention-days: 90
       - name: Publish reviewable TEST package without changing update feeds
@@ -87,7 +104,7 @@ jobs:
             cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution — nastavenia TEST260" \
-              --notes-file docs/SETTINGS-UI-TEST260.md \
+              --title "FullHDGlass Warder Evolution — nastavenia TEST261" \
+              --notes-file docs/SETTINGS-UI-TEST261.md \
               "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json
           fi
