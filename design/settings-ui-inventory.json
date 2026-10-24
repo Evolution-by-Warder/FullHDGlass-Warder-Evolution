@@ -24,8 +24,8 @@
   "controller_functions": 390,
   "config_entries": 202,
   "feeds_sha256": {
-    "update.json": "71579208935bb89ecd1c182ac9b9a5c884102e71602ab040e07e2a6cf6e4264e",
-    "update-test.json": "71579208935bb89ecd1c182ac9b9a5c884102e71602ab040e07e2a6cf6e4264e"
+    "update.json": "7a82484719b7a4e5766aafba05db124a80c21e584d171b384ed7c88dfd5ef890",
+    "update-test.json": "7a82484719b7a4e5766aafba05db124a80c21e584d171b384ed7c88dfd5ef890"
   },
-  "current_feed_version": "1.0.16-test268"
+  "current_feed_version": "1.0.16-test269"
 }
