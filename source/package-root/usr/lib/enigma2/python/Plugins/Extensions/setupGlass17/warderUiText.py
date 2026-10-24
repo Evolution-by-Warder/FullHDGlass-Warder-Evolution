@@ -110,3 +110,7 @@ def ui_text(text):
     if text == "FullHDGlass configuration":
         return TEXT["en"][text]
     return _catalog(lang).gettext(text)
+
+# Prefix for the current settings summary below the shared header.
+for _lang, _selection in {'sk': 'Máš zvolené', 'cs': 'Máš zvoleno', 'en': 'Selected settings', 'de': 'Ausgewählt', 'pl': 'Wybrane ustawienia', 'hu': 'Kiválasztva', 'ru': 'Выбрано', 'fr': 'Sélection actuelle', 'it': 'Selezione attuale', 'es': 'Selección actual'}.items():
+    TEXT[_lang]["Selected settings"] = _selection

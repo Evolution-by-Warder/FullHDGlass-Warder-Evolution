@@ -115,7 +115,7 @@ def publish(package,info,revision,expected_main,client,assets):
     verify_public(client,url,len(raw),digest)
     if head(client,WORK)!=revision:raise ValueError('Source branch advanced; feeds remain unchanged')
     manifest={'version':version,'package_url':url,'sha256':digest,
-              'changelog':'Kratšie farebné čiary nad tlačidlami v dialógových oknách. Čiary sú vycentrované nad príslušným nápisom a zladené s PiconHub.'}
+              'changelog':'Spoločná viacjazyčná šablóna textov aktualizácie vo FullHDGlass a PiconHub: rovnaká ponuka, priebeh, dokončenie a tlačidlo Potvrdiť. Mení sa iba názov projektu, verzia a popis zmien.'}
     payload=encoded(manifest)
     inventory=json.loads(content(client,'design/settings-ui-inventory.json','main'))
     inventory['current_feed_version']=version

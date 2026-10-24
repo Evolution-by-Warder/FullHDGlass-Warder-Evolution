@@ -81,7 +81,7 @@ def dialogs():
     classes=[n for n in ast.parse((P/'warderDialogs.py').read_text()).body if isinstance(n,ast.ClassDef)]
     skins=load(P/'warderDialogSkins.py','test_dialog_skins')
     scope={'Screen':Screen,'NativeMessageBox':NativeMessage,'NativeInputBox':NativeInput,'Label':Label,'ScrollLabel':Label,'MenuList':MenuList,'ActionMap':ActionMap,'ui_text':lambda t:t,
-           'MESSAGE_SKIN':skins.MESSAGE_SKIN,'CHOICE_SKIN':skins.CHOICE_SKIN,'INPUT_SKIN':skins.INPUT_SKIN}
+           'update_text':load(P/'warderUpdateText.py','test_update_wording').update_text,'config':SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk'))),'MESSAGE_SKIN':skins.MESSAGE_SKIN,'CHOICE_SKIN':skins.CHOICE_SKIN,'INPUT_SKIN':skins.INPUT_SKIN}
     exec(compile(ast.Module(body=classes,type_ignores=[]),'owned-dialogs','exec'),scope)
     return scope
 

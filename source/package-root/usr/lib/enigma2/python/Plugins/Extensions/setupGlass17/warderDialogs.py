@@ -8,6 +8,8 @@ from Screens.MessageBox import MessageBox as NativeMessageBox
 from Screens.InputBox import InputBox as NativeInputBox
 from .warderDialogSkins import MESSAGE_SKIN, CHOICE_SKIN, INPUT_SKIN
 from .warderUiText import ui_text
+from .warderUpdateText import update_text
+from Components.config import config
 
 
 class MessageText(ScrollLabel):
@@ -30,7 +32,7 @@ class MessageBox(NativeMessageBox):
         self["line_red"] = Label("")
         self["line_green"] = Label("")
         self["key_red"] = Label(ui_text("Back"))
-        self["key_green"] = Label(ui_text("Confirm") if self.list else "")
+        self["key_green"] = Label(update_text("confirm", "FullHDGlass Warder Evolution", language=config.osd.language.value) if self.list else "")
         enabled = kwargs.get("enable_input", True) and kwargs.get("enableInput", True)
         self["warderActions"] = ActionMap(["ColorActions"], {"red": self.cancel, "green": self.select}, -3)
         self["warderActions"].setEnabled(enabled)
