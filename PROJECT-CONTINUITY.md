@@ -1,3 +1,11 @@
+# Current installed-skins production state — 24 October 2026
+
+FullHDGlass **1.0.19** uses the owner-authorized package identity `enigma2-plugin-skins-fullhdglass-warder-evolution` for native installed Skin Packages. Existing users first receive bridge **1.0.18**, then the new identity through `update-production.json`. See docs/PACKAGE-TRANSITION.md and docs/PRODUCTION.json for exact published identities.
+
+The question about removing 17 from runtime paths was informational only. `hd_glass17`, `setupGlass17`, XML paths and configuration keys are not renamed. All older current-version statements below are historical. Production acceptance and limits remain documented; no physical receiver test of this migration is claimed.
+
+## Previous production record
+
 # Authoritative production state — 24 October 2026
 
 The owner accepted the current FullHDGlass skin and PiconHub plugin for production, and explicitly requested production numbering without test. **FullHDGlass 1.0.17** is the production release; **PiconHub 0.1.25** is its approved companion.

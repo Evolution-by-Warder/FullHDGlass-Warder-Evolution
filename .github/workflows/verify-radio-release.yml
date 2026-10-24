@@ -29,12 +29,15 @@ jobs:
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
           python3 tools/build-setup-style-test.py
           python3 tools/verify-setup-style-ipk.py
+          PACKAGE_ID=$(sed -n "s/^Package: //p" source/control/control)
+          PREFIX="$PACKAGE_ID"
+          if [ "$PACKAGE_ID" = enigma2-skin-fullhdglass17 ]; then PREFIX=enigma2-skin-fullhdglass-warder-evolution; fi
           case "$VERSION" in
             *-test*) ;;
             *)
               FEED_VERSION=$(python3 -c 'import json; print(json.load(open("update.json"))["version"])')
               if [ "$FEED_VERSION" = "$VERSION" ]; then
-                cp "packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk" "packages/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+                cp "packages/test/${PREFIX}_${VERSION}_all.ipk" "packages/${PREFIX}_${VERSION}_all.ipk"
               fi
               ;;
           esac

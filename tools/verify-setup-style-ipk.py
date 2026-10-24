@@ -16,13 +16,16 @@ parser=argparse.ArgumentParser();parser.add_argument('--help-previews',type=Path
 version=(P/'version').read_text().strip()
 spec=importlib.util.spec_from_file_location('png_optimizer',ROOT/'tools/optimize-png.py')
 optimizer=importlib.util.module_from_spec(spec);spec.loader.exec_module(optimizer)
-package=ROOT/'packages/test'/('enigma2-skin-fullhdglass-warder-evolution_'+version+'_all.ipk')
+metadata=(ROOT/'source/control/control').read_text()
+package_id=next(line.split(':',1)[1].strip() for line in metadata.splitlines() if line.startswith('Package:'))
+prefix=package_id if package_id.startswith('enigma2-plugin-') else 'enigma2-skin-fullhdglass-warder-evolution'
+package=ROOT/'packages/test'/(prefix+'_'+version+'_all.ipk')
 assert subprocess.check_output(['ar','p',str(package),'debian-binary'])==b'2.0\n'
 with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(package),'control.tar.gz'])),mode='r:gz') as archive:
     control=archive.extractfile('./control').read().decode()
-    assert 'Package: enigma2-skin-fullhdglass17\n' in control
+    assert 'Package: '+package_id+'\n' in control
     assert 'Version: '+version+'-1\n' in control
-    for name in ('preinst','postinst','postrm'):
+    for name in ('preinst','postinst','postrm','prerm'):
         assert archive.getmember('./'+name).mode & 0o111 == 0o111
 with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(package),'data.tar.gz'])),mode='r:gz') as archive:
     files={m.name.removeprefix('./'):m for m in archive if m.isfile()}
@@ -46,3 +49,9 @@ print('PASS:',len(expected),'payload files match source / compressed PNGs; large
 
 
 assert package.stat().st_size < 16*1024*1024, 'Small IPK size budget exceeded'
+
+production_feed=ROOT/'update-production.json'
+if production_feed.exists():
+    current=json.loads(production_feed.read_text())
+    if current['version']==version:
+        assert current['sha256']==hashlib.sha256(package.read_bytes()).hexdigest()

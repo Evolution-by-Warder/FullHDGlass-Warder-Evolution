@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+case "${1:-}" in
+    remove|deconfigure)
+        /usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py backup
+        ;;
+esac
+exit 0

@@ -1,6 +1,15 @@
 #!/bin/sh
 set -u
 
+WARDER_PACKAGE_ID=enigma2-plugin-skins-fullhdglass-warder-evolution
+if [ "$WARDER_PACKAGE_ID" = enigma2-plugin-skins-fullhdglass-warder-evolution ] && command -v opkg >/dev/null 2>&1; then
+    if opkg status enigma2-skin-fullhdglass17 2>/dev/null | awk '$1 == "Package:" { package = $2 } /^Status:/ { if (package == "enigma2-skin-fullhdglass17" && $NF == "installed") found = 1 } END { exit !found }' &&
+       [ ! -f /var/lib/fullhdglass17/package-transition-v1/manifest.json ]; then
+        echo "Please install the 1.0.18 transition update through the skin updater first."
+        exit 1
+    fi
+fi
+
 echo "******************************************************************"
 echo "*              FullHDGlass - Warder Evolution                 *"
 echo "******************************************************************"

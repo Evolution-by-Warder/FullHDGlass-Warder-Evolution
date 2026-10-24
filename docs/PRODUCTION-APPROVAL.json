@@ -2,16 +2,16 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "approved_on": "2026-10-24",
-  "production_version": "1.0.17",
+  "production_version": "1.0.19",
   "approved_by": "repository owner",
-  "authorization": "Owner approved the current skin and plugin for production, then explicitly requested production numbering without the word test.",
+  "authorization": "Owner approved production and explicitly authorized renaming the package to appear under installed skin packages on 24 October 2026.",
   "baseline": {
     "version": "1.0.16-test270",
     "source_commit": "b2e3841b953d79355cd2f9c285ee7fe91f7f59ef",
     "sha256": "1604df7dfdbc4f045547b9ea0d4299a450b71231b99eaaa9280f6d335f8dc9ff",
     "bytes": 14192888
   },
-  "scope": "Preserve approved behavior/artwork; publish 1.0.16 with clean runtime, control and displayed version labels.",
+  "scope": "Native skins package identity with a legacy 1.0.18 transition preserving generated overlay, settings and runtime paths.",
   "preview_assets": {
     "help": {
       "filename": "warder-help-previews.zip",
@@ -26,5 +26,14 @@
       "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-infobar-types.zip"
     }
   },
-  "version_policy": "Use 1.0.17 so both the receiver updater and the package manager order it above 1.0.16-test270-1, without downgrade flags or an epoch."
+  "version_policy": "Use 1.0.17 so both the receiver updater and the package manager order it above 1.0.16-test270-1, without downgrade flags or an epoch.",
+  "transition_version": "1.0.18",
+  "expected_main_sha": "e0f817dfaa2e3108f8c24c47e3e23e18eeabe76a",
+  "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "previous_production": {
+    "version": "1.0.17",
+    "source_commit": "d09bc17fbb91460892305673f4d3c130564b187d",
+    "sha256": "3e9785b440c3dd257df4e09c0d3b73bddc15c450525c39573a1a83705da15829",
+    "bytes": 14192996
+  }
 }

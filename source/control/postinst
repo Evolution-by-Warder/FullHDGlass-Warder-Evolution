@@ -1,6 +1,9 @@
 #!/bin/sh
 set -u
 
+# Restore the pre-removal snapshot before reading migration/default state.
+/usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py restore || exit 1
+
 copy_default_if_missing() {
     src="$1"
     dst="$2"
@@ -84,9 +87,8 @@ copy_default_if_missing /etc/city_Code-17.txt /etc/city_Code.txt
 copy_default_if_missing /etc/ewea_city_Code-17.txt /etc/ewea_city_Code.txt
 copy_default_if_missing /etc/iptvprov-def17.list /etc/iptvprov.list
 
-# The package name remains enigma2-skin-fullhdglass17, so opkg/dpkg records
-# Warder Evolution as an upgrade of the existing skin package. The installed
-# /usr/share/enigma2/hd_glass17/skin.xml keeps it visible in Enigma2 Skin Setup.
+# Package identity follows the native OpenATV skins category.
+# Runtime paths hd_glass17/setupGlass17 and saved configuration are preserved.
 
 # Remove only the identified temporary GUI observer. Preserve the working
 # receiver settings confirmed on test250; do not restore historical test values.

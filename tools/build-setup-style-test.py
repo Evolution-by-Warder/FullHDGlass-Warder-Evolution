@@ -27,7 +27,10 @@ def main():
     optimizer_spec=importlib.util.spec_from_file_location('png_optimizer',ROOT/'tools/optimize-png.py')
     optimizer=importlib.util.module_from_spec(optimizer_spec);optimizer_spec.loader.exec_module(optimizer)
     output=ROOT/'packages/test';output.mkdir(parents=True,exist_ok=True)
-    package=output/('enigma2-skin-fullhdglass-warder-evolution_'+version+'_all.ipk')
+    package_id=next(line.split(':',1)[1].strip() for line in (control/'control').read_text().splitlines() if line.startswith('Package:'))
+    if package_id not in ('enigma2-skin-fullhdglass17','enigma2-plugin-skins-fullhdglass-warder-evolution'):raise SystemExit('Unexpected package identity')
+    prefix=package_id if package_id.startswith('enigma2-plugin-') else 'enigma2-skin-fullhdglass-warder-evolution'
+    package=output/(prefix+'_'+version+'_all.ipk')
     with tempfile.TemporaryDirectory() as folder:
         work=Path(folder);(work/'debian-binary').write_bytes(b'2.0\n')
         archive.archive(control,work/'control.tar.gz')

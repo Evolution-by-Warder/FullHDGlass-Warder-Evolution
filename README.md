@@ -4,9 +4,9 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production baseline — 24 October 2026
 
-**FullHDGlass 1.0.17** is the owner-approved production release, based on the accepted TEST270 with clean production numbering. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.17).
+**FullHDGlass 1.0.19** is the owner-approved production release, based on the accepted TEST270 with clean production numbering. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.19).
 
-Production packages and displayed version labels use **1.0.17**, without the word test. Existing test releases remain historical. Both built-in update feeds offer the verified production IPK after public byte verification; 1.0.17 sorts newer than every 1.0.16-test candidate.
+Production packages and displayed version labels use **1.0.19**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then 1.0.19 from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
 
 The small IPK excludes the large preview archives. Help and type previews remain verified background downloads. Approved graphics, layouts, radio behavior, runtime identifiers, settings and original author credits are preserved. Exact package identity, SHA256, source revision and validation are recorded in docs/PRODUCTION.json after publication. Owner acceptance does not claim a new exhaustive physical receiver test.
 
@@ -54,7 +54,7 @@ Approved graphics, GUI structure, layout, dimensions, positions and visual ident
 
 New work must adapt to the approved FullHDGlass visual structure rather than changing that structure merely for convenience.
 
-Legacy/runtime compatibility identifiers containing `17` are not cosmetic branding and must remain unchanged unless a deliberate future migration is explicitly designed and tested. This includes `enigma2-skin-fullhdglass17`, `hd_glass17`, `setupGlass17`, `g17_setup_pict`, `extraScreens17` and `/etc/enigma2/skin_user-hdg17.xml`.
+Legacy/runtime compatibility identifiers containing `17` are not cosmetic branding and must remain unchanged unless a deliberate future migration is explicitly designed and tested. The explicitly approved package-name migration is documented in docs/PACKAGE-TRANSITION.md; the package-manager identifier is now `enigma2-plugin-skins-fullhdglass-warder-evolution`. Preserved runtime identities include `hd_glass17`, `setupGlass17`, `g17_setup_pict`, `extraScreens17` and `/etc/enigma2/skin_user-hdg17.xml`.
 
 Original authorship must not be erased or globally replaced with Warder branding. Warder branding applies to the continuation and new Warder Evolution work.
 

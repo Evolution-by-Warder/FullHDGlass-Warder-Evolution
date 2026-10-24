@@ -37,6 +37,12 @@ on:
       - design/live-update.json
       - docs/PRODUCTION-APPROVAL.json
       - tools/finalize-production.py
+      - tools/build-package-transition.py
+      - tools/publish-package-transition.py
+      - tools/test-package-transition.py
+      - tools/test-package-transition-publisher.py
+      - source/control/prerm
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py
       - tools/test-preview-assets.py
       - tools/verify-preview-release-assets.py
       - design/preview-assets/**
@@ -79,6 +85,8 @@ jobs:
           python3 tools/test-runtime-safety.py
           python3 tools/test-settings-publisher.py -v
           python3 tools/test-version-order.py
+          python3 tools/test-package-transition.py -v
+          python3 tools/test-package-transition-publisher.py -v
           python3 tools/verify-radio-release.py
       - name: Verify all 252 original help illustrations and background filtering
         run: |
@@ -98,6 +106,7 @@ jobs:
         run: |
           python3 tools/build-setup-style-test.py --help-previews /tmp/warder-help-previews.zip
           python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
+          python3 tools/build-package-transition.py
       - uses: actions/upload-artifact@v4
         with:
           name: FullHDGlass-settings-release
@@ -114,28 +123,21 @@ jobs:
             echo "Source advanced; skipping superseded release."
             exit 0
           fi
-          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
-          if [[ "$VERSION" == *-test* ]]; then
-            TAG="settings-ui-${VERSION}"
-            NOTES="docs/SETTINGS-UI-TEST270.md"
-          else
+          for VERSION in 1.0.18 1.0.19; do
+            if [[ "$VERSION" == 1.0.18 ]]; then
+              PACKAGE="packages/bridge/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+            else
+              PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+            fi
             TAG="v${VERSION}"
-            NOTES="docs/PRODUCTION.md"
-          fi
-          PACKAGE="packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            mkdir -p /tmp/warder-published-ui
-            gh release download "$TAG" --pattern '*.ipk' --dir /tmp/warder-published-ui
-            cmp "$PACKAGE" "/tmp/warder-published-ui/$(basename "$PACKAGE")"
-          else
-            gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "FullHDGlass Warder Evolution ${VERSION}" \
-              --notes-file "$NOTES" \
-              "$PACKAGE" "$PACKAGE.sha256" packages/test/settings-ui-build.json \
-              /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip
-          fi
-          gh release upload "$TAG" /tmp/warder-help-previews.zip design/preview-assets/warder-infobar-types.zip --clobber
-          python3 tools/publish-settings-update.py --package "$PACKAGE" --build-info packages/test/settings-ui-build.json --revision "$GITHUB_SHA"
-          if [[ "$VERSION" != *-test* ]]; then
-            python3 tools/finalize-production.py --package "$PACKAGE" --build-info packages/test/settings-ui-build.json --revision "$GITHUB_SHA"
-          fi
+            if gh release view "$TAG" >/dev/null 2>&1; then
+              mkdir -p "/tmp/warder-${VERSION}"
+              gh release download "$TAG" --pattern '*.ipk' --dir "/tmp/warder-${VERSION}"
+              cmp "$PACKAGE" "/tmp/warder-${VERSION}/$(basename "$PACKAGE")"
+            else
+              gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
+                --title "FullHDGlass Warder Evolution ${VERSION}" \
+                --notes-file docs/PACKAGE-TRANSITION.md "$PACKAGE" "$PACKAGE.sha256"
+            fi
+          done
+          python3 tools/publish-package-transition.py --revision "$GITHUB_SHA"

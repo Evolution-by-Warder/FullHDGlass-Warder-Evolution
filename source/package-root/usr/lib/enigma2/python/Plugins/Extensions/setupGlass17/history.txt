@@ -1,3 +1,6 @@
+1.0.19
+Native installed-skins category; safe two-stage package-name migration via 1.0.18. Runtime paths and user settings are retained.
+
 1.0.17
 Owner-approved production release based on TEST270. Clean production version in the package and all settings headers; approved behavior and graphics retained.
 

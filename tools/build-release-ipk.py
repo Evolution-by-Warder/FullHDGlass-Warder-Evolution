@@ -43,11 +43,13 @@ def main():
     if not re.fullmatch(r"\d+\.\d+\.\d+", version):
         raise SystemExit("A stable release version is required")
     metadata = (control / "control").read_text()
-    assert "Package: enigma2-skin-fullhdglass17\n" in metadata
+    package_id = next(line.split(":",1)[1].strip() for line in metadata.splitlines() if line.startswith("Package:"))
+    assert package_id in ("enigma2-skin-fullhdglass17", "enigma2-plugin-skins-fullhdglass-warder-evolution")
     assert "Version: %s-1\n" % version in metadata
     for name in ("preinst", "postinst", "postrm"):
         assert (control / name).stat().st_mode & 0o111 == 0o111
-    output = ROOT / "packages" / ("enigma2-skin-fullhdglass-warder-evolution_%s_all.ipk" % version)
+    prefix = package_id if package_id.startswith("enigma2-plugin-") else "enigma2-skin-fullhdglass-warder-evolution"
+    output = ROOT / "packages" / (prefix+"_%s_all.ipk" % version)
     output.parent.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory() as work:
         work = Path(work)
