@@ -25,16 +25,13 @@ jobs:
           python-version: '3.9'
       - name: Build exactly the checked-in stable or TEST payload
         run: |
+          python3 -m pip install --quiet Pillow
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
+          python3 tools/build-setup-style-test.py
+          python3 tools/verify-setup-style-ipk.py
           case "$VERSION" in
-            *-test*)
-              python3 -m pip install --quiet Pillow
-              curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
-              python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/warder-help-previews.zip
-              python3 tools/build-setup-style-test.py --help-previews /tmp/warder-help-previews.zip
-              python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
-              ;;
-            *) python3 tools/build-release-ipk.py ;;
+            *-test*) ;;
+            *) cp "packages/test/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk" "packages/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk" ;;
           esac
       - name: Verify bytecode invalidation and package error details
         run: python3 tools/test-release-bytecode.py

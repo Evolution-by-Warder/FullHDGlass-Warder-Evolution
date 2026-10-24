@@ -51,7 +51,7 @@ permissions:
   contents: read
 concurrency:
   group: warder-settings-test
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   settings-test:
     runs-on: ubuntu-latest
@@ -108,6 +108,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          CURRENT=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/warder-modernization-work" --jq .object.sha)
+          if [[ "$CURRENT" != "$GITHUB_SHA" ]]; then
+            echo "Source advanced; skipping superseded release."
+            exit 0
+          fi
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
           if [[ "$VERSION" == *-test* ]]; then
             TAG="settings-ui-${VERSION}"

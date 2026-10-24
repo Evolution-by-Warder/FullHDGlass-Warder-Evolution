@@ -4,9 +4,9 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production baseline — 24 October 2026
 
-**FullHDGlass 1.0.16** is the owner-approved production release, based on the accepted TEST270 with clean production numbering. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.16).
+**FullHDGlass 1.0.17** is the owner-approved production release, based on the accepted TEST270 with clean production numbering. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.17).
 
-Production packages and displayed version labels use **1.0.16**, without the word test. Existing test releases remain historical. Both built-in update feeds offer the verified production IPK after public byte verification; 1.0.16 sorts newer than every 1.0.16-test candidate.
+Production packages and displayed version labels use **1.0.17**, without the word test. Existing test releases remain historical. Both built-in update feeds offer the verified production IPK after public byte verification; 1.0.17 sorts newer than every 1.0.16-test candidate.
 
 The small IPK excludes the large preview archives. Help and type previews remain verified background downloads. Approved graphics, layouts, radio behavior, runtime identifiers, settings and original author credits are preserved. Exact package identity, SHA256, source revision and validation are recorded in docs/PRODUCTION.json after publication. Owner acceptance does not claim a new exhaustive physical receiver test.
 
