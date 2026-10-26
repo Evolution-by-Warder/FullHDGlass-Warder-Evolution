@@ -1,0 +1,40 @@
+{
+  "version": "1.0.23",
+  "source_commit": "1961f3753a2817419b0c0253f86511929f328245",
+  "release_id": 424592424,
+  "package": {
+    "name": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk",
+    "bytes": 14196996,
+    "sha256": "9192e250d5e94062c7232a9b74a8b7397fed8c2ef5f599f0d083a7099f788cbd"
+  },
+  "canonical_help": {
+    "filename": "g17_setup_pict.zip",
+    "members": 252,
+    "unique_images": 236,
+    "bytes": 27041172,
+    "sha256": "0bf966980978558170d43429b7ee8de312d0eb15d29978393a3c610af0bd2c31",
+    "manual_download": {
+      "filename": "g17_setup_pict.zip",
+      "root": "g17_setup_pict",
+      "size": 27041172,
+      "sha256": "0bf966980978558170d43429b7ee8de312d0eb15d29978393a3c610af0bd2c31",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip"
+    },
+    "automatic_download": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.23/g17_setup_pict.zip"
+  },
+  "validation": {
+    "workflow": 40373902828,
+    "all_build_tests": "passed",
+    "payload_files": 1327,
+    "publication": "Recovered after strict URL verifier rejected canonical raw Help path; exact raw archive and IPK downloaded and independently hash-checked before feed activation.",
+    "publisher_regression_tests": 19,
+    "receiver": "Visual confirmation pending"
+  },
+  "behavior": [
+    "Native eTimer and asynchronous eConsoleAppContainer replace Twisted scheduling",
+    "Clear stale previews before selection and on failed loads",
+    "Preserve foreground pixels and translucent bubble; zero-alpha exterior",
+    "Prepared copies in configured hdg17_files/preview; RAM copies prevent GUI disk waits"
+  ],
+  "pending_follow_up": "Unify provider/satellite duplicate directories; inspect every consumer before migration; no blind deletion."
+}

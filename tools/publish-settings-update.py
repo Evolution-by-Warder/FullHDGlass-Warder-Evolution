@@ -44,11 +44,12 @@ class GitHub:
                     spec=importlib.util.spec_from_file_location('verified_preview_download',ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPreviewAssets.py')
                     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
                     context=build_opener(module._Redirect()).open(request,timeout=60)
-                elif url.startswith(RAW):context=urlopen(request,timeout=60)
+                elif url.startswith(RAW) or url=='https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip':context=urlopen(request,timeout=60)
                 else:raise ValueError('Unexpected public package/asset URL')
                 with context as response:
                     final=response.geturl()
                     if url.startswith(RAW) and not final.startswith(RAW):raise ValueError('Unsafe raw-package redirect')
+                    if '/assets/warder/downloads/ui/help/g17_setup_pict.zip' in url and final!=url:raise ValueError('Unsafe Help archive redirect')
                     return response.read(size+1)
             except (HTTPError,OSError):
                 if attempt==4:raise

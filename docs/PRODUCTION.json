@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-24",
-  "approval": "Owner requested subtle translucent backgrounds for every auxiliary help illustration, preserving the bubble, text and diagram; publish through the existing native skin updater.",
+  "approval": "Owner reported stale help previews and requested correct changing previews and translucent bubbles across all settings; fix and deliver through the existing native updater.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "f2474c6f80796829fa3c3e7a3f7f2564be26b8f4",
+  "source_commit": "1961f3753a2817419b0c0253f86511929f328245",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.22",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.22_all.ipk",
-    "sha256": "d5cd4ec22b8afcf54ab92058e2a18a83556d2ad76d3f536350b40a85f25cf523",
-    "changelog": "Jemne priehľadné pozadie všetkých pomocných obrázkov. Zachovaný tvar bubliny, texty, šípky a grafické ukážky.",
-    "tag": "v1.0.22",
-    "bytes": 14196374,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.22/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.22_all.ipk"
+    "version": "1.0.23",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk",
+    "sha256": "9192e250d5e94062c7232a9b74a8b7397fed8c2ef5f599f0d083a7099f788cbd",
+    "changelog": "Jeden aktualizovaný balík Nápoveda g17_setup_pict.zip. Opravené prepínanie pomocných obrázkov cez natívnu slučku Enigmy. Pri chýbajúcom náhľade nezostáva stará nápoveda. Odstránené obdĺžnikové pozadie okolo bublín, zachovaný obrys a obsah. Pripravené náhľady zostávajú v priečinku preview podľa nastaveného úložiska skinu.",
+    "tag": "v1.0.23",
+    "bytes": 14196996,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.23/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -26,10 +26,10 @@
   },
   "preview_assets": {
     "help": {
-      "filename": "warder-help-previews.zip",
-      "size": 24621325,
-      "sha256": "ba0eb66e2877c368c2a42ddee87e1270c1ea177096bda74f56edbcaef468deed",
-      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-help-previews.zip"
+      "filename": "g17_setup_pict.zip",
+      "size": 27041172,
+      "sha256": "0bf966980978558170d43429b7ee8de312d0eb15d29978393a3c610af0bd2c31",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.23/g17_setup_pict.zip"
     },
     "types": {
       "filename": "warder-infobar-types.zip",
@@ -39,8 +39,9 @@
     }
   },
   "validation": {
-    "workflow_run": 40366905100,
-    "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
+    "workflow_run": 40373902828,
+    "build_payloads_and_public_bytes": "All tests and payload verification passed; final publisher URL guard corrected separately, then public IPK and canonical raw Help archive verified before activation.",
+    "receiver_validation": "Native visual confirmation pending",
+    "publisher_regression_tests": 19
   }
 }

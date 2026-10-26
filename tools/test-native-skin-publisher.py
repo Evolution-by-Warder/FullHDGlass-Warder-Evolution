@@ -73,6 +73,17 @@ class NativePublisherTests(unittest.TestCase):
         self.assertEqual(catalogue['assets']['help']['url'],raw_url)
         self.assertEqual(catalogue['assets']['other'],{'keep':True})
 
+    def test_public_verifier_accepts_exact_original_help_path_and_rejects_other_paths(self):
+        url='https://raw.githubusercontent.com/'+m.p.REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip'
+        response=io.BytesIO(b'approved Help ZIP');response.geturl=lambda:url
+        with patch.object(m.p,'urlopen',return_value=response):
+            self.assertEqual(m.p.GitHub('test-token').public_bytes(url,100),b'approved Help ZIP')
+        with self.assertRaises(ValueError):
+            m.p.GitHub('test-token').public_bytes(url.replace('g17_setup_pict.zip','unapproved.zip'),100)
+        response=io.BytesIO(b'wrong');response.geturl=lambda:'https://attacker.invalid/archive.zip'
+        with patch.object(m.p,'urlopen',return_value=response),self.assertRaises(ValueError):
+            m.p.GitHub('test-token').public_bytes(url,100)
+
     def test_wrong_download_prevents_all_publication(self):
         self.public['https://github.com/release.ipk']=b'wrong'
         with self.assertRaises(ValueError):self.publish()
