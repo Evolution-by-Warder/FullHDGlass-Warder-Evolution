@@ -59,7 +59,7 @@ class FreshInstallTests(unittest.TestCase):
         archive=ROOT/'design/preview-assets/warder-infobar-types.zip'
         self.assertTrue(archive.is_file())
         manifest=__import__('json').loads((P/'preview-assets.json').read_text())
-        prepared=Path('/tmp/warder-help-previews261.zip')
+        prepared=Path('/tmp/g17_setup_pict.zip')
         # CI produces the same verified optional asset under the shorter name.
         if not prepared.is_file():prepared=Path('/tmp/warder-help-previews.zip')
         self.assertTrue(prepared.is_file())

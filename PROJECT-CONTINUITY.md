@@ -1,3 +1,7 @@
+# Final 1.0.23 architecture — canonical original Help bundle
+
+Owner explicitly rejected a separate prepared Help bundle. Build now produces `g17_setup_pict.zip` with all 252 original names under `g17_setup_pict/`. Publisher verifies the release ZIP, stages the same bytes at the original raw download path and atomically updates only the Help entry in assets/warder/downloads.json alongside it. It verifies raw bytes before activating the IPK feed. Original artwork build input is pinned at 81ff0fb83709344d696c73ed70530ef09651916b (original ZIP SHA872d59...). Both automatic assets and manual Nápoveda share this canonical content. Prepared per-image copies remain in configured hdg17_files/preview; native GUI receives RAM copies for responsiveness. Superseded 1.0.23 builds were held before publication via source-head guard; keep version1.0.23 if still unpublished.
+
 # 1.0.23 — stale preview correction
 
 Receiver diagnostics: 1.0.22 help ZIP verified; helper resolves 50x-0,196-1,197-1,9-1; 66-0 unavailable. On-screen picture stays stale despite different selections. Replaced Twisted scheduling with native eTimer/eConsoleAppContainer; retain single asynchronous worker, debounce, timeout and stale-generation rejection. Clear previous bitmap using existing verified fully transparent 40x40 asset. Do not fall back to a missing source path. Background alpha now follows original bubble shading, zero outside; informative mask remains byte-exact. New visual verification pending receiver.
@@ -121,3 +125,5 @@ Old development journals and checkpoints remain as dated history. For current re
 The complete current repository is included in set `warder-backups-20261023`. Final snapshot refs, all checksums and offline restore evidence belong to the delivered `BACKUP-MANIFEST.json`, not to a temporary Actions artifact. See `docs/BACKUP-RESTORE.md`.
 
 Pripravené PNG sa trvalo ukladajú do `preview/` v nastavenej ceste skinu (napr. `/media/hdd/hdg17_files/preview/`). Po reštarte sa znovu použijú bez sťahovania či rozbaľovania archívu. Pomocný proces pred zobrazením pripraví malú RAM kópiu, aby čítanie disku neblokovalo menu. Pôvodné pomocné obrázky ani používateľské súbory sa neprepisujú.
+
+Owner follow-up pending: investigate and unify provider/satellite directories piconProv vs piconProv_220x132 and piconSat vs piconSat_220x132. Current infobars select both paths, so do not delete directories blindly. User notes same 220x132 content duplicated; preferred canonical names are the original folders without dimension suffix. Complete active Help fix first.

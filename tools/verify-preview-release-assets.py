@@ -9,7 +9,7 @@ import zipfile
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--help-previews',required=True,type=Path);args=parser.parse_args()
 manifest=json.loads((ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json').read_text())
-for kind,path,count in (('help',args.help_previews,236),('types',ROOT/'design/preview-assets/warder-infobar-types.zip',78)):
+for kind,path,count in (('help',args.help_previews,252),('types',ROOT/'design/preview-assets/warder-infobar-types.zip',78)):
     raw=path.read_bytes();entry=manifest[kind]
     assert len(raw)==entry['size'] and hashlib.sha256(raw).hexdigest()==entry['sha256'],kind
     with zipfile.ZipFile(path) as archive:

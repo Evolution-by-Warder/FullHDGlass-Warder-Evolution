@@ -17,7 +17,7 @@ p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 PACKAGE='enigma2-plugin-skins-fullhdglass-warder-evolution'
 
 
-def publish(package,info,revision,approval,client,assets):
+def publish(package,info,revision,approval,client,assets,help_bundle=None):
     raw=package.read_bytes();digest=hashlib.sha256(raw).hexdigest();version=info['version']
     if not re.fullmatch(r'\d+\.\d+\.\d+',version) or not approval.get('enabled') or approval.get('version')!=version:
         raise ValueError('Stable update is not explicitly authorized')
@@ -45,9 +45,22 @@ def publish(package,info,revision,approval,client,assets):
     main=p.head(client,'main')
     if main!=approval['expected_main_sha'] or p.head(client,p.WORK)!=revision:
         raise ValueError('Branches advanced before publication')
-    staged=p.commit(client,revision,{'packages/'+name:raw,'packages/'+name+'.sha256':(digest+'  '+name+'\n').encode()},'Stage verified native FullHDGlass '+version)
+    staged_files={'packages/'+name:raw,'packages/'+name+'.sha256':(digest+'  '+name+'\n').encode()}
+    help_entry=assets.get('help',{})
+    help_raw_url='https://raw.githubusercontent.com/'+p.REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip'
+    if help_entry.get('filename')=='g17_setup_pict.zip':
+        if help_bundle is None:raise ValueError('Canonical Help bundle missing')
+        help_raw=help_bundle.read_bytes()
+        if len(help_raw)!=help_entry['size'] or hashlib.sha256(help_raw).hexdigest()!=help_entry['sha256']:
+            raise ValueError('Canonical Help bundle mismatch')
+        catalogue=json.loads(p.content(client,'assets/warder/downloads.json','main'))
+        catalogue['assets']['help']={'filename':'g17_setup_pict.zip','root':'g17_setup_pict','size':len(help_raw),'sha256':help_entry['sha256'],'url':help_raw_url}
+        staged_files['assets/warder/downloads/ui/help/g17_setup_pict.zip']=help_raw
+        staged_files['assets/warder/downloads.json']=p.encoded(catalogue)
+    staged=p.commit(client,revision,staged_files,'Stage verified native FullHDGlass '+version)
     p.advance(client,'main',main,staged)
     p.verify_public(client,url,len(raw),digest)
+    if help_entry.get('filename')=='g17_setup_pict.zip':p.verify_public(client,help_raw_url,help_entry['size'],help_entry['sha256'])
     if p.head(client,p.WORK)!=revision:raise ValueError('Source advanced; production feed remains unchanged')
     feed={'version':version,'package_url':url,'sha256':digest,'changelog':approval['changelog']}
     record=json.loads(p.content(client,'docs/PRODUCTION.json','main'))
@@ -68,7 +81,7 @@ def main():
     info=json.loads((ROOT/'packages/test/settings-ui-build.json').read_text())
     approval=json.loads((ROOT/'design/live-update.json').read_text())
     assets=json.loads((ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json').read_text())
-    publish(ROOT/'packages/test'/info['package'],info,args.revision,approval,p.GitHub(os.environ['GH_TOKEN']),assets)
+    publish(ROOT/'packages/test'/info['package'],info,args.revision,approval,p.GitHub(os.environ['GH_TOKEN']),assets,Path('/tmp/g17_setup_pict.zip'))
 
 
 if __name__=='__main__':main()

@@ -53,10 +53,11 @@ def build(bundle, output):
             opacity = shade.point(lambda value: min(art._BACKGROUND_ALPHA, value * 3))
             glass_alpha = ImageChops.multiply(alpha, opacity)
             result.putalpha(Image.composite(alpha, glass_alpha, mask))
-            revision = hashlib.sha256((art._STYLE + ':' + entry['mask']).encode('ascii')).hexdigest()[:12]
-            member = zipfile.ZipInfo(digest + '-' + revision + '.png', (1980, 1, 1, 0, 0, 0))
-            member.compress_type = zipfile.ZIP_STORED
-            target.writestr(member, optimizer.optimize(art.encode_png(882, 300, result.tobytes())))
+            prepared = optimizer.optimize(art.encode_png(882, 300, result.tobytes()))
+            for filename in entry['names']:
+                member = zipfile.ZipInfo('g17_setup_pict/' + Path(filename).name, (1980, 1, 1, 0, 0, 0))
+                member.compress_type = zipfile.ZIP_STORED
+                target.writestr(member, prepared)
     if seen != set(index['images']):
         raise ValueError('Incomplete prepared help artwork')
     print('Prepared', len(seen), 'unique previews for all 252 original filenames')

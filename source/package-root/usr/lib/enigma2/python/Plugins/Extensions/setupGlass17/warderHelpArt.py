@@ -16,7 +16,7 @@ import zipfile
 _INDEX = None
 _PATH_CACHE = {}
 _CACHE_DIR = '/tmp/warder-help-art-v2'
-_PREBUILT = os.path.join(os.path.dirname(__file__), 'warder-help-previews.zip')
+_PREBUILT = os.path.join(os.path.dirname(__file__), 'g17_setup_pict.zip')
 _STYLE = 'navy-glass-v4'
 _BACKGROUND = (16, 33, 54)
 _BACKGROUND_ALPHA = 230
@@ -217,7 +217,9 @@ def _prepared(target):
             pass
         if raw is None:
             with zipfile.ZipFile(source) as archive:
-                info = archive.getinfo(os.path.basename(target))
+                entry = _index()['images'].get(os.path.basename(target).split('-', 1)[0])
+                member = 'g17_setup_pict/' + os.path.basename(entry['names'][0]) if entry else os.path.basename(target)
+                info = archive.getinfo(member)
                 if info.file_size > 2 * 1024 * 1024:
                     return False
                 raw = archive.read(info)
@@ -251,7 +253,15 @@ def themed_path(filename, cache_dir=None):
         if ready:return ready
         entry, target = _source(filename)
         if entry is None:
-            return filename
+            # Already themed/manual Help downloads and user images need no
+            # recolouring; copy valid PNG bytes to RAM in this worker only.
+            with open(filename, 'rb') as stream:
+                original = stream.read(4 * 1024 * 1024 + 1)
+            if not original.startswith(_SIGNATURE) or len(original) > 4 * 1024 * 1024:
+                return filename
+            target = os.path.join(cache_dir or _CACHE_DIR, hashlib.sha256(original).hexdigest() + '-original.png')
+            if not os.path.isfile(target):_write_atomic(target, original)
+            return target
         cache = cache_dir or _CACHE_DIR
         target = os.path.join(cache, os.path.basename(target))
         if os.path.isfile(target) or _prepared(target):

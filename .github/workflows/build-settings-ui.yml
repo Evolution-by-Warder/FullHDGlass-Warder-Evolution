@@ -99,12 +99,12 @@ jobs:
       - name: Verify all 252 original help illustrations and background filtering
         run: |
           python3 -m pip install --quiet Pillow
-          curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
+          curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/81ff0fb83709344d696c73ed70530ef09651916b/assets/warder/downloads/ui/help/g17_setup_pict.zip
           python3 tools/test-settings-batch.py -v
-          python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/warder-help-previews.zip
+          python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/g17_setup_pict.zip
           python3 tools/test-preview-assets.py -v
-          python3 tools/verify-preview-release-assets.py --help-previews /tmp/warder-help-previews.zip
-          python3 tools/test-help-art.py --bundle /tmp/warder-help.zip --prebuilt /tmp/warder-help-previews.zip
+          python3 tools/verify-preview-release-assets.py --help-previews /tmp/g17_setup_pict.zip
+          python3 tools/test-help-art.py --bundle /tmp/warder-help.zip --prebuilt /tmp/g17_setup_pict.zip
       - name: Validate existing gettext catalogs
         run: |
           sudo apt-get update -qq
@@ -112,8 +112,8 @@ jobs:
           find source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale -name '*.po' -print0 | xargs -0 -I '{}' msgfmt --check -o /dev/null '{}'
       - name: Build numbered package and verify every payload byte
         run: |
-          python3 tools/build-setup-style-test.py --help-previews /tmp/warder-help-previews.zip
-          python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
+          python3 tools/build-setup-style-test.py --help-previews /tmp/g17_setup_pict.zip
+          python3 tools/verify-setup-style-ipk.py --help-previews /tmp/g17_setup_pict.zip
       - uses: actions/upload-artifact@v4
         with:
           name: FullHDGlass-settings-release
@@ -140,6 +140,6 @@ jobs:
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --latest \
               --title "FullHDGlass Warder Evolution ${VERSION}" \
-              --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/warder-help-previews.zip
+              --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA"

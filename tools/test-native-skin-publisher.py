@@ -54,6 +54,25 @@ class NativePublisherTests(unittest.TestCase):
         self.assertNotIn('update.json',files);self.assertNotIn('update-test.json',files)
         record=json.loads(files['docs/PRODUCTION.json']);self.assertEqual(record['transition']['version'],'1.0.18')
         self.assertEqual(self.heads['main'],self.heads[m.p.WORK])
+    def test_same_canonical_help_bundle_updates_original_download_and_catalogue(self):
+        raw=b'canonical tested help ZIP';bundle=Path(self.folder.name)/'g17_setup_pict.zip';bundle.write_bytes(raw)
+        digest=hashlib.sha256(raw).hexdigest()
+        entry={'filename':bundle.name,'size':len(raw),'sha256':digest,'url':'https://github.com/help.zip'}
+        raw_url='https://raw.githubusercontent.com/'+m.p.REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip'
+        self.public[entry['url']]=raw;self.public[raw_url]=raw
+        old=m.p.content.side_effect
+        def content(client,path,branch):
+            if path=='assets/warder/downloads.json':return json.dumps({'assets':{'help':{'old':True},'other':{'keep':True}}}).encode()
+            return old(client,path,branch)
+        m.p.content.side_effect=content
+        m.publish(self.path,self.info,self.rev,self.approval,self.client,{'help':entry},bundle)
+        staged=self.commits[0]
+        self.assertEqual(staged['assets/warder/downloads/ui/help/g17_setup_pict.zip'],raw)
+        catalogue=json.loads(staged['assets/warder/downloads.json'])
+        self.assertEqual(catalogue['assets']['help']['sha256'],digest)
+        self.assertEqual(catalogue['assets']['help']['url'],raw_url)
+        self.assertEqual(catalogue['assets']['other'],{'keep':True})
+
     def test_wrong_download_prevents_all_publication(self):
         self.public['https://github.com/release.ipk']=b'wrong'
         with self.assertRaises(ValueError):self.publish()

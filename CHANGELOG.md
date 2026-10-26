@@ -1,5 +1,7 @@
 # 1.0.23
 
+- Jediný aktualizovaný balík Nápoveda `g17_setup_pict.zip` pre ručné stiahnutie aj automatické náhľady; pôvodné názvy obrázkov zachované.
+
 - Natívne asynchrónne prepínanie pomocných náhľadov a vyčistenie starej nápovedy pri zmene výberu alebo chybe.
 - Plne priehľadné okolie bublín; zachované texty a názorné ukážky.
 

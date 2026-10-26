@@ -90,8 +90,8 @@ class HelpArtTests(unittest.TestCase):
             p=Path(folder)/'original.png';p.write_bytes(raw)
             prepared=Path(folder)/'prepared.zip';cache=Path(folder)/'cache'
             with zipfile.ZipFile(prepared,'w') as archive:
-                archive.writestr(digest+'-'+revision+'.png',ready)
-            with patch.object(art,'_INDEX',{'images':{digest:{'mask':mask}}}), patch.object(art,'_PREBUILT',str(prepared)), patch.object(art,'_CACHE_DIR',str(cache)), patch.object(art,'render',side_effect=AssertionError('GUI must not render PNGs')):
+                archive.writestr('g17_setup_pict/original.png',ready)
+            with patch.object(art,'_INDEX',{'images':{digest:{'mask':mask,'names':['original.png']}}}), patch.object(art,'_PREBUILT',str(prepared)), patch.object(art,'_CACHE_DIR',str(cache)), patch.object(art,'render',side_effect=AssertionError('GUI must not render PNGs')):
                 begin=time.perf_counter();target=art.cached_path(str(p));cold=time.perf_counter()-begin
                 self.assertNotEqual(target,str(p));self.assertEqual(Path(target).read_bytes(),ready)
                 with patch('builtins.open',side_effect=AssertionError('Warm lookup must not reread source')):
@@ -133,6 +133,16 @@ class HelpArtTests(unittest.TestCase):
                     self.assertTrue(art._prepared(str(target)))
                 self.assertEqual(target.read_bytes(),raw)
 
+    def test_manual_canonical_help_image_is_displayed_byte_exact_from_ram(self):
+        raw=art.encode_png(882,300,bytes([7,33,66,80])*(882*300))
+        with tempfile.TemporaryDirectory() as folder:
+            base=Path(folder);source=base/'g17_setup_pict'/'custom.png';source.parent.mkdir();source.write_bytes(raw)
+            with patch.object(art,'_CACHE_DIR',str(base/'ram')):
+                result=art.themed_path(str(source))
+                self.assertEqual(Path(result).parent,base/'ram')
+                self.assertEqual(Path(result).read_bytes(),raw)
+                self.assertEqual(source.read_bytes(),raw)
+
     def test_index_covers_the_entire_approved_bundle(self):
         data=art._index();self.assertEqual(data['image_count'],252);self.assertEqual(len(data['images']),236)
         self.assertEqual(len({name for x in data['images'].values() for name in x['names']}),252)
@@ -160,8 +170,8 @@ class HelpArtTests(unittest.TestCase):
                 if args.prebuilt:
                     revision=hashlib.sha256((art._STYLE+':'+entry['mask']).encode('ascii')).hexdigest()[:12]
                     with zipfile.ZipFile(args.prebuilt) as prepared:
-                        self.assertEqual(len(prepared.namelist()),236)
-                        prepared_image=Image.open(io.BytesIO(prepared.read(digest+'-'+revision+'.png'))).convert('RGBA')
+                        self.assertEqual(len(prepared.namelist()),252)
+                        prepared_image=Image.open(io.BytesIO(prepared.read('g17_setup_pict/'+Path(name).name))).convert('RGBA')
                         self.assertEqual(prepared_image.size,(882,300),name)
                         self.assertEqual(prepared_image.tobytes(),Image.open(io.BytesIO(result)).convert('RGBA').tobytes(),name)
                     source=Path(folder)/'lookup.png';source.write_bytes(raw)
