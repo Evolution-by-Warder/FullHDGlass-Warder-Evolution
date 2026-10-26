@@ -203,7 +203,10 @@ def _prepared(target):
             try:from .warderPreviewAssets import bundle_path
             except ImportError:from warderPreviewAssets import bundle_path
             source=bundle_path('help')
-        persistent = os.path.join(os.path.dirname(source), 'help-rendered', os.path.basename(target))
+        storage = os.path.dirname(source)
+        if os.path.basename(storage) == '.warder-previews':
+            storage = os.path.dirname(storage)
+        persistent = os.path.join(storage, 'preview', os.path.basename(target))
         raw = None
         try:
             with open(persistent, 'rb') as stream:

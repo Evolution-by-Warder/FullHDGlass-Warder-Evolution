@@ -121,11 +121,12 @@ class HelpArtTests(unittest.TestCase):
     def test_prepared_png_survives_ram_cache_reset_without_archive_or_network(self):
         raw=art.encode_png(882,300,bytes([16,33,54,60])*(882*300))
         with tempfile.TemporaryDirectory() as folder:
-            base=Path(folder);archive=base/'previews.zip';target=base/'ram'/'approved.png'
+            base=Path(folder);archive=base/'.warder-previews'/'previews.zip';target=base/'ram'/'approved.png'
+            archive.parent.mkdir()
             with zipfile.ZipFile(archive,'w') as output:output.writestr(target.name,raw)
             with patch.object(art,'_PREBUILT',str(archive)):
                 self.assertTrue(art._prepared(str(target)))
-                persistent=base/'help-rendered'/target.name
+                persistent=base/'preview'/target.name
                 self.assertEqual(persistent.read_bytes(),raw)
                 target.unlink()
                 with patch.object(art.zipfile,'ZipFile',side_effect=AssertionError('Must reuse persistent PNG')):

@@ -7,4 +7,4 @@
 
 Diagnostika prijímača potvrdila neporušený archív 1.0.22 a úspešnú samostatnú prípravu viacerých rozdielnych obrázkov; časť starých požadovaných názvov nemá obrázok v pôvodnom archíve. Nové správanie na prijímači ešte vyžaduje potvrdenie.
 
-Pripravené PNG sa trvalo ukladajú vedľa archívu do `.warder-previews/help-rendered/`. Po reštarte sa znovu použijú bez sťahovania či rozbaľovania archívu. Pomocný proces pred zobrazením pripraví malú RAM kópiu, aby čítanie disku neblokovalo menu. Pôvodné pomocné obrázky ani používateľské súbory sa neprepisujú.
+Pripravené PNG sa trvalo ukladajú do `preview/` v nastavenej ceste skinu (napr. `/media/hdd/hdg17_files/preview/`). Po reštarte sa znovu použijú bez sťahovania či rozbaľovania archívu. Pomocný proces pred zobrazením pripraví malú RAM kópiu, aby čítanie disku neblokovalo menu. Pôvodné pomocné obrázky ani používateľské súbory sa neprepisujú.
