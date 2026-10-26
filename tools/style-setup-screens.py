@@ -13,7 +13,7 @@ FIXTURE=ROOT/'tools/fixtures/setup-ui-1.0.15.json'
 SCREENS=('setupGlass17ScreenSetup','downloadMenu','satSelectorScr','warderPositionSelectorScr',
          'styleSelectorScr','selectScreenShowed','selectIconsDisplayed','historyScreen',
          'weatherCitySelector','cityFinder','dirBrowser')
-BASE='#00071627';PANEL='#00102136';SELECT='#002a70ad';TEXT='#00ffffff';CYAN='#003ee8ff'
+BASE='#00071627';PANEL='#00102136';GLASS='#1a102136';CLEAR='#ff000000';SELECT='#002a70ad';TEXT='#00ffffff';CYAN='#003ee8ff'
 COLORS={'red':'#00ff526a','green':'#0039ff59','yellow':'#00f5d54e','blue':'#0045b9ff'}
 
 
@@ -25,19 +25,8 @@ PANEL_INIT = """for prefix, count in (("warder_menu_panel_", 10), ("warder_setti
         self[prefix + str(index)] = Label("")
         self[prefix + str(index)].hide()
 """
-PANEL_MODE = """def _warderSetPanelMode(self):
-    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):
-        for index in range(count):
-            panel = self[prefix + str(index)]
-            if visible:
-                panel.show()
-            else:
-                panel.hide()
-    if self.isMainMenu:
-        self["help_txt"].instance.resize(eSize(737, 248))
-    else:
-        self["help_txt"].instance.resize(eSize(780, 350))
-"""
+PANEL_MODE_OLD = 'def _warderSetPanelMode(self):\n    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):\n        for index in range(count):\n            panel = self[prefix + str(index)]\n            if visible:\n                panel.show()\n            else:\n                panel.hide()\n    if self.isMainMenu:\n        self["help_txt"].instance.resize(eSize(737, 248))\n    else:\n        self["help_txt"].instance.resize(eSize(780, 350))\n'
+PANEL_MODE = 'def _warderSetPanelMode(self):\n    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):\n        for index in range(count):\n            panel = self[prefix + str(index)]\n            if visible:\n                panel.show()\n            else:\n                panel.hide()\n    if self.isMainMenu:\n        self["help_txt"].instance.resize(eSize(737, 248))\n    else:\n        self["help_txt"].instance.resize(eSize(780, 350))\n    for renderer in getattr(self, "renderer", ()):\n        if type(renderer).__name__ == "Pig" and renderer.instance is not None:\n            if self.isMainMenu:\n                renderer.onShow()\n                renderer.instance.show()\n            else:\n                renderer.onHide()\n                renderer.instance.hide()\n'
 COLOR_VISIBILITY = 'self.canvas.warder_sample_visible = c is not None and not self.isMainMenu'
 PANEL_CALL = 'self._warderSetPanelMode()'
 
@@ -55,10 +44,11 @@ def portable(value):
 
 def strip_panel_presentation(cls):
     expected_method=portable(ast.parse(PANEL_MODE).body[0])
+    old_method=portable(ast.parse(PANEL_MODE_OLD).body[0])
     expected_init=portable(ast.parse(PANEL_INIT).body[0])
     expected_call=portable(ast.parse(PANEL_CALL).body[0])
     expected_color=portable(ast.parse(COLOR_VISIBILITY).body[0])
-    cls.body=[node for node in cls.body if portable(node)!=expected_method]
+    cls.body=[node for node in cls.body if portable(node) not in (expected_method,old_method)]
     for node in cls.body:
         if isinstance(node,ast.FunctionDef) and node.name in ('__init__','runSetup','sampleColor'):
             exact={'__init__':expected_init,'runSetup':expected_call,'sampleColor':expected_color}[node.name]
@@ -327,6 +317,34 @@ def fullscreen_dialog(root,shift):
     header(root,context=True)
 
 
+def glass(root):
+    """One translucent body layer; opaque menu panels keep LiveTV unchanged."""
+    root.set('backgroundColor',CLEAR)
+    for node in list(root):
+        if node.tag=='ePixmap' and node.get('pixmap')==BANNER_IMAGE:
+            root.remove(node)
+    body=[]
+    for node in root:
+        key=node.get('name','');color=node.get('backgroundColor')
+        x,y=map(int,node.get('position','0,0').split(','));w,h=map(int,node.get('size','0,0').split(','))
+        if key.startswith('warder_menu_panel_'):continue
+        if color==PANEL and w>=500 and h>=200 and (node.tag=='eLabel' or key=='warder_settings_panel_0'):
+            if node.get('position')=='741,244' and node.get('size')=='960,540':continue
+            node.set('backgroundColor',GLASS);node.set('zPosition','-1');body.append((x,y,w,h));continue
+        if key.startswith('key_') and y>=980:
+            node.set('backgroundColor',BASE);node.set('transparent','0');continue
+        if color==PANEL and node.tag in ('widget','eLabel') and node.get('render') not in ('Canvas','WarderSettingsCanvas') and not node.get('alphatest'):
+            node.set('backgroundColor',CLEAR);node.set('transparent','1')
+        if node.get('scrollbarMode'):
+            node.set('scrollbarBackgroundColor',PANEL);node.set('scrollbarForegroundColor',CYAN)
+    root.insert(0,element('widget',0,0,1920,BANNER_HEIGHT,source='global.CurrentTime',render='WarderSettingsHeader',zPosition='-3'))
+    if body:
+        x,y,w,h=max(body,key=lambda box:box[2]*box[3])
+        for bounds in ((0,BANNER_HEIGHT,1920,max(0,y-BANNER_HEIGHT)),(0,y,x,h),(x+w,y,1920-x-w,h),(0,y+h,1920,1080-y-h)):
+            if bounds[2]>0 and bounds[3]>0:root.append(element('eLabel',*bounds,backgroundColor=BASE,zPosition='-2'))
+    return root
+
+
 def themed(name,original):
     fragment=name=='selectIconsDisplayed'
     root=ET.fromstring(original+('</screen>' if fragment else ''))
@@ -445,6 +463,7 @@ def themed(name,original):
         preview=fields['scr_preview'];preview.set('backgroundColor',PANEL);preview.set('alphatest','off')
         # Opaque backing prevents transparent screenshots exposing arbitrary TV.
         root.insert(1,element('eLabel',741,244,960,540,backgroundColor=PANEL,zPosition='3'))
+    glass(root)
     result='\n'.join(line.rstrip() for line in ET.tostring(root,encoding='unicode').splitlines())
     return result.removesuffix('</screen>') if fragment else result
 
@@ -466,7 +485,7 @@ def dialog_skin(kind):
     for key,x in (('red',135),('green',968)):
         root.append(element('widget',x+308,996,200,2,name='line_'+key,backgroundColor=COLORS[key],zPosition='5'))
         root.append(label(x,1006,817,50,name='key_'+key,color=COLORS[key],halign='center',backgroundColor=BASE))
-    return ET.tostring(root,encoding='unicode')
+    return ET.tostring(glass(root),encoding='unicode')
 
 
 def write_dialog_skins():
@@ -485,6 +504,9 @@ def capture(text):
 
 def apply():
     text=PLUGIN.read_text();snapshot=json.loads(FIXTURE.read_text())
+    old_block=''.join('\t'+line+'\n' for line in PANEL_MODE_OLD.splitlines())
+    new_block=''.join('\t'+line+'\n' for line in PANEL_MODE.splitlines())
+    if new_block not in text:text=text.replace(old_block,new_block)
     text=text.replace('eSize(737, 280)','eSize(737, 248)')
     if normalized(ast.parse(text))!=snapshot['logic_sha256']:raise SystemExit('Unexpected settings logic; review baseline first')
     rows=text.splitlines(keepends=True);replacements=[]

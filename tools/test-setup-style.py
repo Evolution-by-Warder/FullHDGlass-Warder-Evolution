@@ -46,7 +46,7 @@ class SetupStyleTests(unittest.TestCase):
                 original.remove(original.find("widget[@name='selected_item']"))
             self.assertTrue(set(style.widget_ids(original))<=set(style.widget_ids(current)),name)
             self.assertEqual(current.get('flags'),'wfNoBorder',name)
-            self.assertEqual(current.get('backgroundColor'),style.BASE,name)
+            self.assertEqual(current.get('backgroundColor'),style.CLEAR,name)
 
     def test_every_static_widget_fits_inside_the_dialog(self):
         for name,(_,skin) in LAYOUTS.items():
@@ -67,12 +67,12 @@ class SetupStyleTests(unittest.TestCase):
                 if key.startswith('key_'):
                     self.assertEqual(node.get('foregroundColor'),style.COLORS[key[4:]],name)
                     self.assertEqual(node.get('halign'),'center');self.assertEqual(node.get('valign'),'center')
-                    self.assertEqual(node.get('transparent'),'0')
+                    self.assertEqual(node.get('transparent'),'0' if int(node.get('position').split(',')[1])>=980 else '1')
 
     def test_native_title_date_clock_and_seconds_sources_are_present(self):
         for name in LAYOUTS:
             root=ET.fromstring(LAYOUTS[name][1]+('</screen>' if name=='selectIconsDisplayed' else ''))
-            self.assertEqual(len(root.findall("widget[@source='global.CurrentTime']")),4)
+            self.assertEqual(len(root.findall("widget[@source='global.CurrentTime'][@render='Label']")),4)
             self.assertEqual({x.get('type') for x in root.findall('widget/convert')},{'g17ClockToText'})
         for name in set(LAYOUTS)-{'setupGlass17ScreenSetup','downloadMenu'}:
             root=ET.fromstring(LAYOUTS[name][1]+('</screen>' if name=='selectIconsDisplayed' else ''))
@@ -127,7 +127,8 @@ class SetupStyleTests(unittest.TestCase):
         self.assertEqual(config.get('position'),'60,242')
         self.assertEqual(config.get('size'),'1790,320')
         self.assertLessEqual(sum(map(int,(config.get('position').split(',')[0],config.get('size').split(',')[0]))),1850)
-        self.assertGreater(int(full.get('zPosition')),int(root.find("widget[@render='Pig']").get('zPosition')))
+        self.assertLess(int(full.get('zPosition')),0)
+        self.assertEqual(full.get('backgroundColor'),style.GLASS)
         for node in (config,help_text):self.assertGreater(int(node.get('zPosition')),int(full.get('zPosition'))+1)
         # No anonymous split frame can survive a mode switch.
         self.assertFalse(any(x.tag=='eLabel' and x.get('position') in ('50,200','850,200','808,200','850,958') for x in root))
@@ -240,7 +241,7 @@ class SetupStyleTests(unittest.TestCase):
         root=ET.fromstring(LAYOUTS['setupGlass17ScreenSetup'][1])
         self.assertIsNone(root.find("widget[@name='selected_item']"))
         for child in root:
-            if child.tag=='ePixmap' and child.get('pixmap')==style.BANNER_IMAGE:continue
+            if int(child.get('zPosition','0'))<0:continue
             x,y=map(int,child.get('position').split(','));w,h=map(int,child.get('size').split(','))
             self.assertFalse(x<1360 and x+w>560 and y<1060 and y+h>974,child.attrib)
         cls=next(x for x in ast.parse(CURRENT).body if isinstance(x,ast.ClassDef) and x.name=='setupGlass17ScreenSetup')
@@ -261,7 +262,8 @@ class SetupStyleTests(unittest.TestCase):
         for name,(_,xml) in LAYOUTS.items():
             root=ET.fromstring(xml+('</screen>' if name=='selectIconsDisplayed' else ''))
             self.assertEqual(root.get('size'),'1920,1080',name)
-            self.assertEqual(len(root.findall("ePixmap[@pixmap='%s']"%style.BANNER_IMAGE)),1,name)
+            self.assertEqual(len(root.findall("widget[@render='WarderSettingsHeader']")),1,name)
+            self.assertFalse(root.findall("ePixmap[@pixmap='%s']"%style.BANNER_IMAGE))
             for node in root:
                 if node.tag=='widget' and node.get('name') and node.get('name') not in ('dwn',):
                     if node.get('name').startswith('warder_'):continue
@@ -279,7 +281,7 @@ class SetupStyleTests(unittest.TestCase):
         self.assertEqual(record['display_header_height'],164)
         for name,(_,skin) in LAYOUTS.items():
             root=ET.fromstring(skin+('</screen>' if name=='selectIconsDisplayed' else ''))
-            columns=root.findall("widget[@source='global.CurrentTime']")
+            columns=root.findall("widget[@source='global.CurrentTime'][@render='Label']")
             self.assertEqual([x.find('convert').text for x in columns],['Format:%A','Format:%d. %B %Y','Default','Format::%S'],name)
             self.assertEqual(columns[-1].get('foregroundColor'),style.TEXT)
             self.assertLess(int(columns[-1].get('font').split(';')[1]),int(columns[-2].get('font').split(';')[1]))

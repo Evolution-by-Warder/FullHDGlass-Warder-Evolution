@@ -34,6 +34,11 @@ on:
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json
       - tools/test-settings-publisher.py
       - tools/publish-settings-update.py
+      - tools/publish-native-skin.py
+      - tools/test-native-skin-publisher.py
+      - tools/test-settings-glass.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsHeader.py
+      - docs/CURRENT-RELEASE.md
       - design/live-update.json
       - docs/PRODUCTION-APPROVAL.json
       - tools/finalize-production.py
@@ -84,6 +89,8 @@ jobs:
           python3 tools/test-help-preview.py -v
           python3 tools/test-runtime-safety.py
           python3 tools/test-settings-publisher.py -v
+          python3 tools/test-native-skin-publisher.py -v
+          python3 tools/test-settings-glass.py -v
           python3 tools/test-version-order.py
           python3 tools/test-package-transition.py -v
           python3 tools/test-package-transition-publisher.py -v
@@ -106,7 +113,6 @@ jobs:
         run: |
           python3 tools/build-setup-style-test.py --help-previews /tmp/warder-help-previews.zip
           python3 tools/verify-setup-style-ipk.py --help-previews /tmp/warder-help-previews.zip
-          python3 tools/build-package-transition.py
       - uses: actions/upload-artifact@v4
         with:
           name: FullHDGlass-settings-release
@@ -123,21 +129,16 @@ jobs:
             echo "Source advanced; skipping superseded release."
             exit 0
           fi
-          for VERSION in 1.0.18 1.0.19; do
-            if [[ "$VERSION" == 1.0.18 ]]; then
-              PACKAGE="packages/bridge/enigma2-skin-fullhdglass-warder-evolution_${VERSION}_all.ipk"
-            else
-              PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
-            fi
-            TAG="v${VERSION}"
-            if gh release view "$TAG" >/dev/null 2>&1; then
-              mkdir -p "/tmp/warder-${VERSION}"
-              gh release download "$TAG" --pattern '*.ipk' --dir "/tmp/warder-${VERSION}"
-              cmp "$PACKAGE" "/tmp/warder-${VERSION}/$(basename "$PACKAGE")"
-            else
-              gh release create "$TAG" --target "$GITHUB_SHA" --prerelease --latest=false \
-                --title "FullHDGlass Warder Evolution ${VERSION}" \
-                --notes-file docs/PACKAGE-TRANSITION.md "$PACKAGE" "$PACKAGE.sha256"
-            fi
-          done
-          python3 tools/publish-package-transition.py --revision "$GITHUB_SHA"
+          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
+          PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+          TAG="v${VERSION}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/warder-verified-release
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/warder-verified-release
+            cmp "$PACKAGE" "/tmp/warder-verified-release/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" --target "$GITHUB_SHA" --latest \
+              --title "FullHDGlass Warder Evolution ${VERSION}" \
+              --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256"
+          fi
+          python3 tools/publish-native-skin.py --revision "$GITHUB_SHA"

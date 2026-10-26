@@ -1,0 +1,24 @@
+{
+  "version": "1.0.20",
+  "scope": "13 settings/dialog layouts plus inherited selectors and shared configuration groups",
+  "background": "#1a102136",
+  "root": "#ff000000",
+  "header_height": 164,
+  "main_live_tv_preserved": true,
+  "controller_guard": "exact frozen normalized AST",
+  "receiver_validated": false,
+  "local_checks": {
+    "setup_style": 22,
+    "settings_glass": 4,
+    "native_publisher": 7,
+    "settings_batch": 14,
+    "help_preview": 8,
+    "legacy_publisher": 10,
+    "package_transition": 6,
+    "transition_publisher": 3,
+    "version_order": "pass",
+    "radio_baseline": "pass"
+  },
+  "native_package": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "legacy_feeds": "unchanged bridge1.0.18"
+}

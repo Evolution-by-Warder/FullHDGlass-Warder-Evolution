@@ -189,12 +189,13 @@ class BatchTests(unittest.TestCase):
                 self.assertEqual(mod.find_sevenzip(str(private)),str(system))
                 private.chmod(0o755);self.assertEqual(mod.find_sevenzip(str(private)),str(private))
 
-    def test_all_owned_dialogs_are_opaque_and_have_a_single_shared_header(self):
+    def test_all_owned_dialogs_are_glass_and_have_a_single_clipped_header(self):
         module=load(P/'warderDialogSkins.py','test_dialog_xml')
         for key in ('MESSAGE_SKIN','CHOICE_SKIN','INPUT_SKIN'):
-            root=ET.fromstring(getattr(module,key));self.assertEqual(root.get('size'),'1920,1080');self.assertEqual(root.get('backgroundColor'),'#00071627')
-            self.assertEqual(len(root.findall("widget[@source='global.CurrentTime']")),4)
-            self.assertEqual(len(root.findall('ePixmap')),1)
+            root=ET.fromstring(getattr(module,key));self.assertEqual(root.get('size'),'1920,1080');self.assertEqual(root.get('backgroundColor'),'#ff000000')
+            self.assertEqual(len(root.findall("widget[@source='global.CurrentTime'][@render='Label']")),4)
+            self.assertEqual(len(root.findall("widget[@render='WarderSettingsHeader']")),1)
+            self.assertFalse(root.findall('ePixmap'))
             for node in root:
                 x,y=map(int,node.get('position').split(','));w,h=map(int,node.get('size').split(','))
                 self.assertTrue(0<=x<x+w<=1920 and 0<=y<y+h<=1080,node.attrib)

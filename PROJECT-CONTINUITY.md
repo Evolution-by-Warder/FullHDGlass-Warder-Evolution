@@ -1,3 +1,17 @@
+# FullHDGlass 1.0.20 — jemná priehľadnosť nastavení (26. 10. 2026)
+
+Aktuálna úloha používateľa: všetky nastavovacie a výberové obrazovky bez LiveTV majú mať jemnú priehľadnosť ako schválený GSU. Nový balík1.0.20 zachováva identitu enigma2-plugin-skins-fullhdglass-warder-evolution, runtime paths/setupGlass17 a existujúcu migračnú verziu1.0.18.
+
+Spoločná vrstva: CLEAR root, jedna výplň #1a102136 pod obsahom, banner orezaný na164px cez WarderSettingsHeader, nepriehľadné okraje a spodná lišta. Pôvodná bitmapa a preview artwork sa nemenia. Menia sa iba prezentácia a riadené skrytie/obnova rendereru Pig pri prepínaní hlavného menu a nastavení. Výberový riadok a posuvníky zostávajú nepriehľadné.
+
+Rozsah:10 konkrétnych layoutov +3 vlastné dialógy; dedené výbery a všetky skupiny konfigurácie používajú spoločné layouty. Pôvodné pomocné TV overlaye a hlavné menu s LiveTV sa neprestavujú. Fyzické zobrazenie novej priehľadnosti zatiaľ nebolo potvrdené používateľom.
+
+Vydávanie1.0.20: build-settings-ui workflow publikuje stabilný native IPK a publish-native-skin.py overí verejné release/raw bajty pred aktualizáciou výhradne update-production.json. update.json/update-test.json zostávajú na overenom bridge1.0.18, jeho IPK sa neprepisuje ani znovu nevydáva. Preview ZIPy zostávajú na nemenných URL. main musí zodpovedať explicitnému expected_main_sha a vydávacia vetva zdrojovému revision; všetko fast-forward, bez force/rebase.
+
+Podrobnosti a poznámky pre používateľa: docs/CURRENT-RELEASE.md. Staršie záznamy nižšie sú historické a nie sú pokynom vrátiť verziu alebo migrovať znova.
+
+## Predchádzajúca produkcia
+
 # Current installed-skins production state — 24 October 2026
 
 FullHDGlass **1.0.19** uses the owner-authorized package identity `enigma2-plugin-skins-fullhdglass-warder-evolution` for native installed Skin Packages. Existing users first receive bridge **1.0.18**, then the new identity through `update-production.json`. See docs/PACKAGE-TRANSITION.md and docs/PRODUCTION.json for exact published identities.

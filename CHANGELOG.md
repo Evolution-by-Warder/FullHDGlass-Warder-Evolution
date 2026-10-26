@@ -1,3 +1,11 @@
+# FullHDGlass Warder Evolution — zmeny
+
+## 1.0.20 — 26. 10. 2026
+
+Jemná priehľadnosť nastavovacích/výberových obrazoviek bez LiveTV podľa GSU; banner zostáva hore, zachované náhľady a geometria. Hlavné menu s malou TV sa nemení. Pri vstupe do nastavení sa Pig skryje a pri návrate obnoví. Výber a posuvníky majú nepriehľadné farby. Natívne zobrazenie čaká na potvrdenie používateľom.
+
+## Staršie záznamy
+
 # Changelog
 
 ## FullHDGlass Warder Evolution 1.0
