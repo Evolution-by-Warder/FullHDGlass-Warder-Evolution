@@ -1,3 +1,8 @@
+# 1.0.23
+
+- Natívne asynchrónne prepínanie pomocných náhľadov a vyčistenie starej nápovedy pri zmene výberu alebo chybe.
+- Plne priehľadné okolie bublín; zachované texty a názorné ukážky.
+
 # 1.0.22
 
 - Jemná priehľadnosť pozadia všetkých pomocných bublinových obrázkov; text a názorné detaily bez zmeny.

@@ -110,9 +110,27 @@ class HelpArtTests(unittest.TestCase):
         _,_,result=art.decode_png(art.render(art.encode_png(882,300,pixels),entry))
         self.assertEqual(result[:4],pixels[:4])
         self.assertEqual(result[4:8],bytes([136,163,194,115]))
+        blank=art.encode_png(882,300,bytes([0,0,0,255])*(882*300))
+        entry['mask']=base64.b64encode(zlib.compress(bytes(882*300//8))).decode('ascii')
+        _,_,empty=art.decode_png(art.render(blank,entry))
+        self.assertEqual(set(empty[3::4]),{0})
         self.assertEqual(result[3::8],pixels[3::8])
         generator=(ROOT/'tools/style-setup-screens.py').read_text()
         self.assertIn("fields['help_pict'].set('alphatest','blend')",generator)
+
+    def test_prepared_png_survives_ram_cache_reset_without_archive_or_network(self):
+        raw=art.encode_png(882,300,bytes([16,33,54,60])*(882*300))
+        with tempfile.TemporaryDirectory() as folder:
+            base=Path(folder);archive=base/'previews.zip';target=base/'ram'/'approved.png'
+            with zipfile.ZipFile(archive,'w') as output:output.writestr(target.name,raw)
+            with patch.object(art,'_PREBUILT',str(archive)):
+                self.assertTrue(art._prepared(str(target)))
+                persistent=base/'help-rendered'/target.name
+                self.assertEqual(persistent.read_bytes(),raw)
+                target.unlink()
+                with patch.object(art.zipfile,'ZipFile',side_effect=AssertionError('Must reuse persistent PNG')):
+                    self.assertTrue(art._prepared(str(target)))
+                self.assertEqual(target.read_bytes(),raw)
 
     def test_index_covers_the_entire_approved_bundle(self):
         data=art._index();self.assertEqual(data['image_count'],252);self.assertEqual(len(data['images']),236)
@@ -154,7 +172,7 @@ class HelpArtTests(unittest.TestCase):
                 image=Image.open(io.BytesIO(result));self.assertEqual(image.size,(882,300))
                 styled=image.convert('RGBA').tobytes();mask=zlib.decompress(base64.b64decode(entry['mask']))
                 # Only background alpha changes; informative pixels remain exact.
-                expected_alpha=bytes(original[i*4+3] if mask[i>>3]&(128>>(i&7)) else (original[i*4+3]*230+127)//255 for i in range(882*300))
+                expected_alpha=bytes(original[i*4+3] if mask[i>>3]&(128>>(i&7)) else original[i*4+3]*min(230,max(original[i*4:i*4+3])*3)//255 for i in range(882*300))
                 self.assertEqual(styled[3::4],expected_alpha,name)
                 before_image=Image.frombytes('RGBA',(882,300),original)
                 lookup=[min(255,value+offset) for offset in (16,33,54) for value in range(256)]

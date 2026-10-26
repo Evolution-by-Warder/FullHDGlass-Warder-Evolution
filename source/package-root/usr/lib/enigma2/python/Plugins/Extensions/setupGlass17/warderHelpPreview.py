@@ -1,18 +1,63 @@
 """Latest-selection preview queue; expensive PNG work runs outside Enigma2.
 
-Only the reactor thread touches widgets. A short debounce skips pictures while
+Only the native Enigma2 GUI event loop touches widgets. A short debounce skips pictures while
 scrolling, and at most one low-priority Python worker runs per settings screen.
 """
 import json
 import os
 
-from twisted.internet import reactor
-from twisted.internet.protocol import ProcessProtocol
-
 from .warderHelpArt import cached_path
 
+# Enigma2's own event loop is authoritative on all supported images.
+# Import lazily so the queue can also be tested without a receiver.
+_BLANK = '/usr/share/enigma2/hd_glass17/buttons/selected-menu_bgpixmap.png'
 
-class _Worker(ProcessProtocol):
+
+class _NativeCall:
+    def __init__(self, delay, callback):
+        from enigma import eTimer
+        self.timer = eTimer()
+        self.pending = True
+        def fire():
+            if self.pending:
+                self.pending = False
+                callback()
+        self.callback = fire
+        self.timer.callback.append(fire)
+        self.timer.start(max(1, int(delay * 1000)), True)
+
+    def active(self):
+        return self.pending
+
+    def cancel(self):
+        self.pending = False
+        self.timer.stop()
+
+
+class _NativeLoop:
+    def callLater(self, delay, callback):
+        return _NativeCall(delay, callback)
+
+    def spawnProcess(self, worker, executable, argv, env):
+        from enigma import eConsoleAppContainer
+        container = eConsoleAppContainer()
+        worker.transport = self
+        worker.container = container
+        def finished(code):
+            del container.dataAvail[:]
+            del container.appClosed[:]
+            worker.complete(code)
+            worker.container = None
+        container.dataAvail.append(worker.outReceived)
+        container.appClosed.append(finished)
+        # Native execute accepts executable, argv[0], argv[1]... without a shell.
+        result = container.execute(executable, *argv)
+        if result:
+            raise OSError('Preview worker did not start: %s' % result)
+        worker.transport = container
+
+
+class _Worker:
     def __init__(self, finished):
         self.finished = finished
         self.output = bytearray()
@@ -26,8 +71,11 @@ class _Worker(ProcessProtocol):
         pass
 
     def processEnded(self, reason):
+        self.complete(getattr(reason.value, 'exitCode', None))
+
+    def complete(self, code):
         result = None
-        if getattr(reason.value, 'exitCode', None) == 0:
+        if code == 0:
             try:
                 result = json.loads(self.output.decode('utf-8'))
             except (ValueError, UnicodeError):
@@ -36,9 +84,10 @@ class _Worker(ProcessProtocol):
 
 
 class PreviewLoader:
-    def __init__(self, show, event_loop=None):
+    def __init__(self, show, event_loop=None, clear=None):
         self.show = show
-        self.loop = event_loop or reactor
+        self.loop = event_loop or _NativeLoop()
+        self.clear = clear or (lambda: self.show(_BLANK))
         self.closed = False
         self.wanted = None
         self.generation = 0
@@ -54,6 +103,7 @@ class PreviewLoader:
     def request(self, filename):
         if self.closed or filename == self.wanted:
             return
+        self.clear()
         self.wanted = filename
         self.generation += 1
         self._cancel(self.delayed)
@@ -82,7 +132,11 @@ class PreviewLoader:
     def _stop_worker(self):
         if self.process is not None:
             try:
-                self.process.transport.signalProcess('KILL')
+                transport = self.process.transport
+                if hasattr(transport, 'kill'):
+                    transport.kill()
+                else:
+                    transport.signalProcess('KILL')
             except Exception:
                 pass
 
@@ -93,12 +147,13 @@ class PreviewLoader:
         if self.closed:
             return
         if generation == self.generation:
-            # Accept only the source or an existing PNG in our own cache.
-            if not isinstance(result, str) or (result != filename and
-                    (os.path.dirname(result) != '/tmp/warder-help-art-v2' or
-                     not result.endswith('.png') or not os.path.isfile(result))):
-                result = filename
-            self.show(result)
+            # A failed load must clear the previous picture, never keep it.
+            allowed = isinstance(result, str) and (result == filename or
+                (os.path.dirname(result) == '/tmp/warder-help-art-v2' and result.endswith('.png')))
+            if allowed and os.path.isfile(result):
+                self.show(result)
+            else:
+                self.clear()
         else:
             self._cancel(self.delayed)
             self.delayed = self.loop.callLater(0, self._start)

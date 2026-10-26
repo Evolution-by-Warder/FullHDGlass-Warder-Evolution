@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.22",
-  "expected_main_sha": "c0f45d33f6f3641d8bc566e5355fba011274eb7b",
-  "authorization": "Owner requested subtle translucent backgrounds for every auxiliary help illustration, preserving the bubble, text and diagram; publish through the existing native skin updater.",
-  "changelog": "Jemne priehľadné pozadie všetkých pomocných obrázkov. Zachovaný tvar bubliny, texty, šípky a grafické ukážky."
+  "version": "1.0.23",
+  "expected_main_sha": "81ff0fb83709344d696c73ed70530ef09651916b",
+  "authorization": "Owner reported stale help previews and requested correct changing previews and translucent bubbles across all settings; fix and deliver through the existing native updater.",
+  "changelog": "Opravené prepínanie pomocných obrázkov cez natívnu slučku Enigmy. Pri chýbajúcom náhľade nezostáva stará nápoveda. Odstránené obdĺžnikové pozadie okolo bublín, zachovaný obrys a obsah."
 }

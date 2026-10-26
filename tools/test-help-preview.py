@@ -5,16 +5,13 @@ from pathlib import Path
 import sys
 import types
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 # Isolated stand-ins for reactor events; no background threads or real GUI.
 package = types.ModuleType('preview_test_package');package.__path__ = [str(PLUGIN)]
 sys.modules[package.__name__] = package
-twisted = types.ModuleType('twisted');internet = types.ModuleType('twisted.internet')
-protocol = types.ModuleType('twisted.internet.protocol');protocol.ProcessProtocol = object
-internet.reactor = None
-sys.modules.update({'twisted': twisted, 'twisted.internet': internet, 'twisted.internet.protocol': protocol})
 spec = importlib.util.spec_from_file_location('preview_test_package.warderHelpPreview', PLUGIN / 'warderHelpPreview.py')
 preview = importlib.util.module_from_spec(spec);spec.loader.exec_module(preview)
 
@@ -43,7 +40,10 @@ class Loop:
 class PreviewTests(unittest.TestCase):
     def setUp(self):
         self.old = preview.cached_path;preview.cached_path = lambda filename: None
-        self.shown = [];self.loop = Loop();self.loader = preview.PreviewLoader(self.shown.append, self.loop)
+        self.shown = [];self.cleared = [];self.loop = Loop()
+        self.loader = preview.PreviewLoader(self.shown.append, self.loop, lambda:self.cleared.append(True))
+        self.files = patch.object(preview.os.path, 'isfile', return_value=True)
+        self.files.start();self.addCleanup(self.files.stop)
     def tearDown(self): preview.cached_path = self.old
     def finish(self, worker, result, code=0):
         if result is not None:
@@ -94,28 +94,71 @@ class PreviewTests(unittest.TestCase):
     def test_worker_failure_and_missing_interpreter_fall_back_without_exception(self):
         self.loader.request('/a.png');self.loop.calls[-1].fire()
         self.finish(self.loop.workers[-1][0], None, 1)
-        self.assertEqual(self.shown, ['/a.png'])
+        self.assertEqual(self.shown, [])
         self.loop.fail = True
         self.loader.request('/b.png');self.loop.calls[-1].fire()
-        self.assertEqual(self.shown, ['/a.png', '/b.png'])
+        self.assertEqual(self.shown, [])
 
     def test_stalled_worker_is_terminated_without_a_blocking_wait(self):
         self.loader.request('/a.png');self.loop.calls[-1].fire()
         timeout = self.loop.calls[-1];self.assertEqual(timeout.delay, 20)
         timeout.fire();worker = self.loop.workers[-1][0]
         self.assertEqual(worker.transport.signals, ['KILL'])
-        self.finish(worker, None, 1);self.assertEqual(self.shown, ['/a.png'])
+        self.finish(worker, None, 1);self.assertEqual(self.shown, [])
 
     def test_unexpected_worker_output_cannot_load_an_arbitrary_file(self):
         self.loader.request('/a.png');self.loop.calls[-1].fire()
         self.finish(self.loop.workers[-1][0], '/etc/passwd')
-        self.assertEqual(self.shown, ['/a.png'])
+        self.assertEqual(self.shown, [])
 
     def test_duplicate_selection_does_not_restart_or_repaint(self):
         self.loader.request('/a.png');first = self.loop.calls[-1]
         self.loader.request('/a.png');self.assertIs(self.loop.calls[-1], first)
         first.fire();self.finish(self.loop.workers[-1][0], '/a.png')
         self.loader.request('/a.png');self.assertEqual(self.shown, ['/a.png'])
+
+
+    def test_missing_next_image_clears_last_successful_image(self):
+        self.loader.request('/a.png');self.loop.calls[-1].fire()
+        self.finish(self.loop.workers[-1][0], '/a.png')
+        self.loader.request('/missing.png');self.loop.calls[-1].fire()
+        with patch.object(preview.os.path,'isfile',return_value=False):
+            self.finish(self.loop.workers[-1][0], '/missing.png')
+        self.assertEqual(self.shown,['/a.png'])
+        self.assertEqual(len(self.cleared),3)
+
+
+class NativeLoopTests(unittest.TestCase):
+    def test_native_timer_and_process_drive_preview_without_twisted(self):
+        timers=[];containers=[]
+        class Timer:
+            def __init__(self):self.callback=[];self.stopped=False;timers.append(self)
+            def start(self,ms,once):self.ms=ms;self.once=once
+            def stop(self):self.stopped=True
+            def fire(self):
+                for callback in self.callback[:]:callback()
+        class Container:
+            def __init__(self):self.dataAvail=[];self.appClosed=[];self.killed=False;containers.append(self)
+            def execute(self,*args):self.args=args;return 0
+            def kill(self):self.killed=True
+        native=types.SimpleNamespace(eTimer=Timer,eConsoleAppContainer=Container)
+        shown=[]
+        with patch.dict(sys.modules,{'enigma':native}),patch.object(preview.os.path,'isfile',return_value=True):
+            loader=preview.PreviewLoader(shown.append)
+            loader.request('/a.png')
+            self.assertEqual(shown,[preview._BLANK])
+            self.assertEqual(timers[0].ms,120)
+            timers[0].fire()
+            self.assertEqual(containers[0].args[:2],('/usr/bin/python3','/usr/bin/python3'))
+            containers[0].dataAvail[0](b'"/a.png"')
+            containers[0].appClosed[0](0)
+            self.assertEqual(shown[-1],'/a.png')
+            self.assertTrue(timers[-1].stopped)
+            loader.request('/b.png');timers[-1].fire()
+            loader.close()
+            self.assertTrue(containers[-1].killed)
+            containers[-1].appClosed[0](1)
+            self.assertEqual(shown[-1],preview._BLANK)
 
 
 if __name__ == '__main__': unittest.main()

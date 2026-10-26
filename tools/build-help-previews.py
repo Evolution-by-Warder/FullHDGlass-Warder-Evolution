@@ -13,7 +13,7 @@ from pathlib import Path
 import zipfile
 import zlib
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
@@ -48,7 +48,10 @@ def build(bundle, output):
             navy = image.convert('RGB').point(lookup)
             result = Image.composite(image.convert('RGB'), navy, mask).convert('RGBA')
             alpha = image.getchannel('A')
-            glass_alpha = alpha.point(lambda value: (value * art._BACKGROUND_ALPHA + 127) // 255)
+            red, green, blue = image.convert('RGB').split()
+            shade = ImageChops.lighter(ImageChops.lighter(red, green), blue)
+            opacity = shade.point(lambda value: min(art._BACKGROUND_ALPHA, value * 3))
+            glass_alpha = ImageChops.multiply(alpha, opacity)
             result.putalpha(Image.composite(alpha, glass_alpha, mask))
             revision = hashlib.sha256((art._STYLE + ':' + entry['mask']).encode('ascii')).hexdigest()[:12]
             member = zipfile.ZipInfo(digest + '-' + revision + '.png', (1980, 1, 1, 0, 0, 0))

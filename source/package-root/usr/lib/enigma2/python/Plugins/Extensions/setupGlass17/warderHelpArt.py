@@ -17,7 +17,7 @@ _INDEX = None
 _PATH_CACHE = {}
 _CACHE_DIR = '/tmp/warder-help-art-v2'
 _PREBUILT = os.path.join(os.path.dirname(__file__), 'warder-help-previews.zip')
-_STYLE = 'navy-glass-v3'
+_STYLE = 'navy-glass-v4'
 _BACKGROUND = (16, 33, 54)
 _BACKGROUND_ALPHA = 230
 _SIGNATURE = b'\x89PNG\r\n\x1a\n'
@@ -134,7 +134,8 @@ def render(raw, entry):
         if not (mask[i >> 3] & (128 >> (i & 7))):
             # Keep the bubble contour and shading; only its background becomes
             # subtly translucent. Protected text, arrows and screenshots stay exact.
-            rgba[i * 4 + 3] = (rgba[i * 4 + 3] * _BACKGROUND_ALPHA + 127) // 255
+            opacity = min(_BACKGROUND_ALPHA, max(rgba[i * 4:i * 4 + 3]) * 3)
+            rgba[i * 4 + 3] = rgba[i * 4 + 3] * opacity // 255
             for channel, offset in enumerate(_BACKGROUND):
                 rgba[i * 4 + channel] = min(255, rgba[i * 4 + channel] + offset)
     return encode_png(width, height, rgba)
@@ -179,33 +180,50 @@ def prepared_filename(filename):
     return None
 
 
+def _write_atomic(target, raw):
+    folder = os.path.dirname(target)
+    os.makedirs(folder, mode=0o700, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=folder, prefix='.help-', delete=False) as stream:
+            temporary = stream.name
+            stream.write(raw)
+        os.replace(temporary, target)
+        temporary = None
+    finally:
+        if temporary is not None:
+            os.unlink(temporary)
+
+
 def _prepared(target):
-    """Extract one already rendered PNG; zlib and file copies run in native code."""
+    """Reuse persistent PNGs; copy to RAM in the worker before GUI display."""
     try:
         source=_PREBUILT
         if not os.path.isfile(source):
             try:from .warderPreviewAssets import bundle_path
             except ImportError:from warderPreviewAssets import bundle_path
             source=bundle_path('help')
-        with zipfile.ZipFile(source) as archive:
-            info = archive.getinfo(os.path.basename(target))
-            if info.file_size > 2 * 1024 * 1024:
-                return False
-            raw = archive.read(info)
-        if not raw.startswith(_SIGNATURE):
-            return False
-        cache = os.path.dirname(target)
-        os.makedirs(cache, mode=0o700, exist_ok=True)
-        temporary = None
+        persistent = os.path.join(os.path.dirname(source), 'help-rendered', os.path.basename(target))
+        raw = None
         try:
-            with tempfile.NamedTemporaryFile(dir=cache, prefix='.help-', delete=False) as stream:
-                temporary = stream.name
-                stream.write(raw)
-            os.replace(temporary, target)
-            temporary = None
-        finally:
-            if temporary is not None:
-                os.unlink(temporary)
+            with open(persistent, 'rb') as stream:
+                candidate = stream.read(2 * 1024 * 1024 + 1)
+            if candidate.startswith(_SIGNATURE) and len(candidate) <= 2 * 1024 * 1024:
+                raw = candidate
+        except OSError:
+            pass
+        if raw is None:
+            with zipfile.ZipFile(source) as archive:
+                info = archive.getinfo(os.path.basename(target))
+                if info.file_size > 2 * 1024 * 1024:
+                    return False
+                raw = archive.read(info)
+            if not raw.startswith(_SIGNATURE):
+                return False
+            # A read-only optional storage must not prevent displaying a preview.
+            try:_write_atomic(persistent, raw)
+            except OSError:pass
+        _write_atomic(target, raw)
         return True
     except Exception:
         return False

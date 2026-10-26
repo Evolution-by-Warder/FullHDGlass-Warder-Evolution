@@ -1,4 +1,5 @@
-> Aktualizácia1.0.22: pomocné bubliny majú jemne priehľadné pozadie, ich texty a názorné ukážky sú zachované. Predchádzajúca úprava: jemne priehľadné nastavenia a výbery bez LiveTV v štýle GSU. Hlavná ponuka s LiveTV, grafické náhľady a uložené nastavenia zostávajú zachované. Použite vstavaný aktualizátor; staršie inštalácie naďalej prejdú bezpečným bridge1.0.18. Nová grafická zmena ešte čaká na potvrdenie na prijímači. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia 1.0.23 opravuje prepínanie pomocných náhľadov a odstraňuje obdĺžnikové pozadie bublín. Použite vstavaný aktualizátor. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+
 
 # FullHDGlass - Warder Evolution
 

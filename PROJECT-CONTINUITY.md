@@ -1,3 +1,7 @@
+# 1.0.23 — stale preview correction
+
+Receiver diagnostics: 1.0.22 help ZIP verified; helper resolves 50x-0,196-1,197-1,9-1; 66-0 unavailable. On-screen picture stays stale despite different selections. Replaced Twisted scheduling with native eTimer/eConsoleAppContainer; retain single asynchronous worker, debounce, timeout and stale-generation rejection. Clear previous bitmap using existing verified fully transparent 40x40 asset. Do not fall back to a missing source path. Background alpha now follows original bubble shading, zero outside; informative mask remains byte-exact. New visual verification pending receiver.
+
 # 1.0.22 — translucent help artwork
 
 Owner requested every auxiliary bubble illustration to retain its contour and informative content with subtly translucent background. Prepared background alpha230/255, protected foreground unchanged, native alpha blend; style revision invalidates old extracted PNGs. Optional help ZIP is versioned with this release; no in-menu pixel processing and no IPK growth from preview ZIP. Native visual confirmation pending.
@@ -115,3 +119,5 @@ Old development journals and checkpoints remain as dated history. For current re
 ## Backup
 
 The complete current repository is included in set `warder-backups-20261023`. Final snapshot refs, all checksums and offline restore evidence belong to the delivered `BACKUP-MANIFEST.json`, not to a temporary Actions artifact. See `docs/BACKUP-RESTORE.md`.
+
+Pripravené PNG sa trvalo ukladajú vedľa archívu do `.warder-previews/help-rendered/`. Po reštarte sa znovu použijú bez sťahovania či rozbaľovania archívu. Pomocný proces pred zobrazením pripraví malú RAM kópiu, aby čítanie disku neblokovalo menu. Pôvodné pomocné obrázky ani používateľské súbory sa neprepisujú.
