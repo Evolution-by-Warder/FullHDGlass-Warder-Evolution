@@ -47,7 +47,9 @@ def build(bundle, output):
                 255 if bits[i >> 3] & (128 >> (i & 7)) else 0 for i in range(882 * 300)))
             navy = image.convert('RGB').point(lookup)
             result = Image.composite(image.convert('RGB'), navy, mask).convert('RGBA')
-            result.putalpha(image.getchannel('A'))
+            alpha = image.getchannel('A')
+            glass_alpha = alpha.point(lambda value: (value * art._BACKGROUND_ALPHA + 127) // 255)
+            result.putalpha(Image.composite(alpha, glass_alpha, mask))
             revision = hashlib.sha256((art._STYLE + ':' + entry['mask']).encode('ascii')).hexdigest()[:12]
             member = zipfile.ZipInfo(digest + '-' + revision + '.png', (1980, 1, 1, 0, 0, 0))
             member.compress_type = zipfile.ZIP_STORED

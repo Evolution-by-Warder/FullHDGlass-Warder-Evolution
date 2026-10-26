@@ -1,3 +1,7 @@
+# 1.0.22 — translucent help artwork
+
+Owner requested every auxiliary bubble illustration to retain its contour and informative content with subtly translucent background. Prepared background alpha230/255, protected foreground unchanged, native alpha blend; style revision invalidates old extracted PNGs. Optional help ZIP is versioned with this release; no in-menu pixel processing and no IPK growth from preview ZIP. Native visual confirmation pending.
+
 # Aktuálne vydanie — FullHDGlass1.0.21 (26. 10. 2026)
 
 **Stabilné Latest1.0.21 je vydané a overene aktívne v update-production.json.** Zdroj f13415af0d8c57bf85a29a3b50b17c2f5d15cd88; workflow40362507691 aj radio40362507737 success. Overené všetky252 pomocné ilustrácie, gettext, radiové/grafické baseline a1327 súborov IPK. Balík14 196 202 bajtov; SHA256cc9fb7789d1a3c8c7b43b95a2aed4072753a0506aba31e3a68c9e076bb35be3a. Skutočný release aj raw balík overené publisherom, API releaseasset digest a live feed zhodné.

@@ -1,7 +1,7 @@
 """Display the original help illustrations over the settings panel background.
 
 Only byte-identical illustrations from the approved help bundle are themed.
-Precomputed masks identify the background for navy tinting; no pixel is removed.
+Precomputed masks preserve text/diagrams while gently translucently tinting the background.
 The original files are never changed. No Pillow or extra receiver dependency.
 """
 import base64
@@ -17,8 +17,9 @@ _INDEX = None
 _PATH_CACHE = {}
 _CACHE_DIR = '/tmp/warder-help-art-v2'
 _PREBUILT = os.path.join(os.path.dirname(__file__), 'warder-help-previews.zip')
-_STYLE = 'navy-opaque-v2'
+_STYLE = 'navy-glass-v3'
 _BACKGROUND = (16, 33, 54)
+_BACKGROUND_ALPHA = 230
 _SIGNATURE = b'\x89PNG\r\n\x1a\n'
 
 
@@ -131,8 +132,9 @@ def render(raw, entry):
         raise ValueError('Invalid help mask')
     for i in range(count):
         if not (mask[i >> 3] & (128 >> (i & 7))):
-            # Preserve the original alpha and luminance/shape of the complete
-            # illustration. Tint background pixels instead of erasing them.
+            # Keep the bubble contour and shading; only its background becomes
+            # subtly translucent. Protected text, arrows and screenshots stay exact.
+            rgba[i * 4 + 3] = (rgba[i * 4 + 3] * _BACKGROUND_ALPHA + 127) // 255
             for channel, offset in enumerate(_BACKGROUND):
                 rgba[i * 4 + channel] = min(255, rgba[i * 4 + channel] + offset)
     return encode_png(width, height, rgba)

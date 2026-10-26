@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.21",
-  "expected_main_sha": "82fa09bcf53756b94574dd6ae8927effbab380fd",
-  "authorization": "Owner explicitly requested all FullHDGlass settings screens without LiveTV to use the approved subtle GSU panel transparency on 26 October 2026; deliver through the existing native skin updater.",
-  "changelog": "Jemná priehľadnosť nastavovacích a výberových obrazoviek bez LiveTV v jednotnom štýle GSU. Zachované hlavné menu s LiveTV, banner, grafické náhľady, nastavenia a ovládanie."
+  "version": "1.0.22",
+  "expected_main_sha": "c0f45d33f6f3641d8bc566e5355fba011274eb7b",
+  "authorization": "Owner requested subtle translucent backgrounds for every auxiliary help illustration, preserving the bubble, text and diagram; publish through the existing native skin updater.",
+  "changelog": "Jemne priehľadné pozadie všetkých pomocných obrázkov. Zachovaný tvar bubliny, texty, šípky a grafické ukážky."
 }

@@ -103,6 +103,17 @@ class HelpArtTests(unittest.TestCase):
                 self.assertEqual(art.cached_path(str(p)),str(p))
                 print('Prepared cold preview lookup: %.3f ms on build host (not a receiver timing)'%(cold*1000))
 
+    def test_background_alpha_preserves_foreground_and_original_transparency(self):
+        pixels=bytes([80,90,100,255,120,130,140,128])*(882*300//2)
+        mask=bytes([0b10101010])*(882*300//8)
+        entry={'mask':base64.b64encode(zlib.compress(mask)).decode('ascii')}
+        _,_,result=art.decode_png(art.render(art.encode_png(882,300,pixels),entry))
+        self.assertEqual(result[:4],pixels[:4])
+        self.assertEqual(result[4:8],bytes([136,163,194,115]))
+        self.assertEqual(result[3::8],pixels[3::8])
+        generator=(ROOT/'tools/style-setup-screens.py').read_text()
+        self.assertIn("fields['help_pict'].set('alphatest','blend')",generator)
+
     def test_index_covers_the_entire_approved_bundle(self):
         data=art._index();self.assertEqual(data['image_count'],252);self.assertEqual(len(data['images']),236)
         self.assertEqual(len({name for x in data['images'].values() for name in x['names']}),252)
@@ -142,8 +153,9 @@ class HelpArtTests(unittest.TestCase):
                         self.assertEqual(Image.open(target).convert('RGBA').tobytes(),Image.open(io.BytesIO(result)).convert('RGBA').tobytes(),name)
                 image=Image.open(io.BytesIO(result));self.assertEqual(image.size,(882,300))
                 styled=image.convert('RGBA').tobytes();mask=zlib.decompress(base64.b64decode(entry['mask']))
-                # No pixel is erased: original alpha and full diagram geometry survive.
-                self.assertEqual(styled[3::4],original[3::4],name)
+                # Only background alpha changes; informative pixels remain exact.
+                expected_alpha=bytes(original[i*4+3] if mask[i>>3]&(128>>(i&7)) else (original[i*4+3]*230+127)//255 for i in range(882*300))
+                self.assertEqual(styled[3::4],expected_alpha,name)
                 before_image=Image.frombytes('RGBA',(882,300),original)
                 lookup=[min(255,value+offset) for offset in (16,33,54) for value in range(256)]
                 navy=before_image.convert('RGB').point(lookup)
@@ -166,7 +178,7 @@ class HelpArtTests(unittest.TestCase):
                     self.assertEqual(Path(target).stat().st_mtime_ns,before)
                     self.assertEqual(p.read_bytes(),raw)
             if timings:print('Prepared preview lookups on build host: mean %.3f ms, max %.3f ms; receiver timing unverified'%(sum(timings)/len(timings)*1000,max(timings)*1000))
-            print('Verified all 252 help illustrations: exact original RGB content, opaque navy background and cache invalidation')
+            print('Verified all 252 help illustrations: exact original RGB content, translucent navy background and cache invalidation')
 
 
 if __name__=='__main__':unittest.main(argv=[__file__]+remaining)

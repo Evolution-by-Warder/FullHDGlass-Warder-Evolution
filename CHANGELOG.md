@@ -1,3 +1,8 @@
+# 1.0.22
+
+- Jemná priehľadnosť pozadia všetkých pomocných bublinových obrázkov; text a názorné detaily bez zmeny.
+- Alpha blending a nová revízia overovaného voliteľného balíka bez zväčšenia IPK.
+
 # FullHDGlass Warder Evolution — zmeny
 
 ## 1.0.21 — 26. 10. 2026

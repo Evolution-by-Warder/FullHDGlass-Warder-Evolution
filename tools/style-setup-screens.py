@@ -402,7 +402,7 @@ def themed(name,original):
         fields['white'].set('backgroundColor',CYAN)
         fields['white'].set('size','1790,2');fields['white'].set('position','60,574')
         # Keep the 882:300 artwork ratio with padding on all four sides.
-        fields['help_pict'].set('position','445,592');fields['help_pict'].set('size','1029,350')
+        fields['help_pict'].set('alphatest','blend');fields['help_pict'].set('position','445,592');fields['help_pict'].set('size','1029,350')
         for key in ('help_txt','helpTxtAnim'):
             fields[key].set('position','579,592');fields[key].set('size','780,350')
         for key in ('help_txt','helpTxtAnim'):

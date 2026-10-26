@@ -140,6 +140,6 @@ jobs:
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --latest \
               --title "FullHDGlass Warder Evolution ${VERSION}" \
-              --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256"
+              --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/warder-help-previews.zip
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA"
