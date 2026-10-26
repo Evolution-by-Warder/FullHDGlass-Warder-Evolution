@@ -43,6 +43,7 @@ class SetupStyleTests(unittest.TestCase):
             current=ET.fromstring(skin+close)
             if name=='setupGlass17ScreenSetup':
                 original.find("widget[@source='Canvas']").set('render','WarderSettingsCanvas')
+                original.find("widget[@render='Pig']").set('render','WarderSettingsPig')
                 original.remove(original.find("widget[@name='selected_item']"))
             self.assertTrue(set(style.widget_ids(original))<=set(style.widget_ids(current)),name)
             self.assertEqual(current.get('flags'),'wfNoBorder',name)

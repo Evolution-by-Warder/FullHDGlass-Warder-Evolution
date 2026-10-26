@@ -1,4 +1,4 @@
-> Aktualizácia1.0.20: jemne priehľadné nastavenia a výbery bez LiveTV v štýle GSU. Hlavná ponuka s LiveTV, grafické náhľady a uložené nastavenia zostávajú zachované. Použite vstavaný aktualizátor; staršie inštalácie naďalej prejdú bezpečným bridge1.0.18. Nová grafická zmena ešte čaká na potvrdenie na prijímači. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia1.0.21: jemne priehľadné nastavenia a výbery bez LiveTV v štýle GSU. Hlavná ponuka s LiveTV, grafické náhľady a uložené nastavenia zostávajú zachované. Použite vstavaný aktualizátor; staršie inštalácie naďalej prejdú bezpečným bridge1.0.18. Nová grafická zmena ešte čaká na potvrdenie na prijímači. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 

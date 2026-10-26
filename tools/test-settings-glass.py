@@ -58,6 +58,23 @@ class GlassTests(unittest.TestCase):
         screen.isMainMenu=True;scope['_warderSetPanelMode'](screen)
         screen.renderer[0].onShow.assert_called_once();screen.renderer[0].instance.show.assert_called_once()
 
+    def test_screen_resume_cannot_reopen_small_tv_while_settings_are_active(self):
+        class Pig:
+            def __init__(self):self.instance=MagicMock();self.shows=0;self.hides=0
+            def applySkin(self,desktop,parent):return True
+            def onShow(self):self.shows+=1
+            def onHide(self):self.hides+=1
+        native=ModuleType('Components.Renderer.Pig');native.Pig=Pig
+        with patch.dict(sys.modules,{'Components.Renderer.Pig':native}):
+            path=ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsPig.py'
+            spec=importlib.util.spec_from_file_location('pig',path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+            item=module.WarderSettingsPig();parent=SimpleNamespace(isMainMenu=False)
+            item.applySkin(None,parent);item.onShow();item.onShow()
+            self.assertEqual(item.shows,0);self.assertEqual(item.hides,2)
+            item.instance.hide.assert_called();item.instance.show.assert_not_called()
+            parent.isMainMenu=True;item.onShow()
+            self.assertEqual(item.shows,1);item.instance.show.assert_called_once()
+
     def test_header_decodes_existing_artwork_once_and_never_on_clock_ticks(self):
         class Renderer:
             def __init__(self):pass

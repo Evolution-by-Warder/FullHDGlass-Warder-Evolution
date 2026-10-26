@@ -38,6 +38,7 @@ on:
       - tools/test-native-skin-publisher.py
       - tools/test-settings-glass.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsHeader.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsPig.py
       - docs/CURRENT-RELEASE.md
       - design/live-update.json
       - docs/PRODUCTION-APPROVAL.json

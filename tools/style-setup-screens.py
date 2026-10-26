@@ -26,7 +26,7 @@ PANEL_INIT = """for prefix, count in (("warder_menu_panel_", 10), ("warder_setti
         self[prefix + str(index)].hide()
 """
 PANEL_MODE_OLD = 'def _warderSetPanelMode(self):\n    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):\n        for index in range(count):\n            panel = self[prefix + str(index)]\n            if visible:\n                panel.show()\n            else:\n                panel.hide()\n    if self.isMainMenu:\n        self["help_txt"].instance.resize(eSize(737, 248))\n    else:\n        self["help_txt"].instance.resize(eSize(780, 350))\n'
-PANEL_MODE = 'def _warderSetPanelMode(self):\n    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):\n        for index in range(count):\n            panel = self[prefix + str(index)]\n            if visible:\n                panel.show()\n            else:\n                panel.hide()\n    if self.isMainMenu:\n        self["help_txt"].instance.resize(eSize(737, 248))\n    else:\n        self["help_txt"].instance.resize(eSize(780, 350))\n    for renderer in getattr(self, "renderer", ()):\n        if type(renderer).__name__ == "Pig" and renderer.instance is not None:\n            if self.isMainMenu:\n                renderer.onShow()\n                renderer.instance.show()\n            else:\n                renderer.onHide()\n                renderer.instance.hide()\n'
+PANEL_MODE = 'def _warderSetPanelMode(self):\n    for prefix, count, visible in (("warder_menu_panel_", 10, self.isMainMenu), ("warder_settings_panel_", 5, not self.isMainMenu)):\n        for index in range(count):\n            panel = self[prefix + str(index)]\n            if visible:\n                panel.show()\n            else:\n                panel.hide()\n    if self.isMainMenu:\n        self["help_txt"].instance.resize(eSize(737, 248))\n    else:\n        self["help_txt"].instance.resize(eSize(780, 350))\n    for renderer in getattr(self, "renderer", ()):\n        if type(renderer).__name__ in ("Pig", "WarderSettingsPig") and renderer.instance is not None:\n            if self.isMainMenu:\n                renderer.onShow()\n                renderer.instance.show()\n            else:\n                renderer.onHide()\n                renderer.instance.hide()\n'
 COLOR_VISIBILITY = 'self.canvas.warder_sample_visible = c is not None and not self.isMainMenu'
 PANEL_CALL = 'self._warderSetPanelMode()'
 
@@ -395,6 +395,7 @@ def themed(name,original):
         fields['description'].set('position','60,174');fields['description'].set('size','1800,46')
         fields['description'].set('font','Regular;24');fields['description'].set('halign','left')
         fields['description'].set('foregroundColor','#00b5d4ec');fields['description'].set('backgroundColor',BASE)
+        fields['session.VideoPicture'].set('render','WarderSettingsPig')
         fields['session.VideoPicture'].set('position','60,242');fields['session.VideoPicture'].set('size','737,415')
         fields['list'].set('position','860,238');fields['list'].set('size','990,720')
         fields['config'].set('position','60,242');fields['config'].set('size','1790,320')

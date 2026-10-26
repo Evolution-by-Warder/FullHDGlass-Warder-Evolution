@@ -1,4 +1,4 @@
-# FullHDGlass Warder Evolution 1.0.20
+# FullHDGlass Warder Evolution 1.0.21
 
 - Nastavovacie a výberové obrazovky bez LiveTV majú jemne priehľadné pozadie v spoločnom štýle GSU.
 - Priehľadnosť sa používa aj v Histórii, adresároch, výberoch satelitov, štýlov a ikon, sťahovaní a vlastných správach, potvrdeniach a vstupných dialógoch.
@@ -7,3 +7,5 @@
 - Zachované grafické náhľady, geometria, nastavenia, riadenie sťahovania aj pôvodné autorstvo.
 
 Natívne zobrazenie tejto zmeny ešte čaká na potvrdenie používateľom. Aktualizácia zachováva identitu Balíčka vzhľadu a existujúcu migráciu starších inštalácií cez 1.0.18.
+
+Pri návrate z výberového okna do nastavení zostáva malé TV okno skryté. Vlastný Pig renderer rešpektuje aktuálny režim aj počas natívneho obnovenia obrazovky.

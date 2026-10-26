@@ -1,5 +1,9 @@
 # FullHDGlass Warder Evolution — zmeny
 
+## 1.0.21 — 26. 10. 2026
+
+Doplnená ochrana návratu z výberového dialógu: vlastný Pig renderer nedovolí zobraziť malé TV v nastaveniach ani pri natívnom onShow. Hlavná ponuka s LiveTV sa obnovuje normálne.
+
 ## 1.0.20 — 26. 10. 2026
 
 Jemná priehľadnosť nastavovacích/výberových obrazoviek bez LiveTV podľa GSU; banner zostáva hore, zachované náhľady a geometria. Hlavné menu s malou TV sa nemení. Pri vstupe do nastavení sa Pig skryje a pri návrate obnoví. Výber a posuvníky majú nepriehľadné farby. Natívne zobrazenie čaká na potvrdenie používateľom.

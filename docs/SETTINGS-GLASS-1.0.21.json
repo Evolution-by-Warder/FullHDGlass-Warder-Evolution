@@ -1,0 +1,34 @@
+{
+  "version": "1.0.21",
+  "scope": "13 settings/dialog layouts plus inherited selectors and shared configuration groups",
+  "background": "#1a102136",
+  "root": "#ff000000",
+  "header_height": 164,
+  "main_live_tv_preserved": true,
+  "controller_guard": "exact frozen normalized AST",
+  "receiver_validated": false,
+  "local_checks": {
+    "setup_style": 22,
+    "settings_glass": 5,
+    "native_publisher": 7,
+    "settings_batch": 14,
+    "help_preview": 8,
+    "legacy_publisher": 10,
+    "package_transition": 6,
+    "transition_publisher": 3,
+    "version_order": "pass",
+    "radio_baseline": "pass"
+  },
+  "native_package": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "legacy_feeds": "unchanged bridge1.0.18",
+  "native_resume_guard": "WarderSettingsPig respects parent.isMainMenu on every onShow, after all native Screen callbacks",
+  "baseline_publication": {
+    "version": "1.0.20",
+    "source_commit": "f0c2b71ee24a5aeaf7027cff7c03c95714515f9d",
+    "activation_commit": "82fa09bcf53756b94574dd6ae8927effbab380fd",
+    "ci": 40360019022,
+    "status": "success",
+    "sha256": "1acc8ad134c60a5bb435fda798c1cb94ff47a2659790f9c8d34ad289028b7757",
+    "bytes": 14195810
+  }
+}

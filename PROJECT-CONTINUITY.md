@@ -1,3 +1,7 @@
+# Finálna aktualizácia1.0.21 — návrat do nastavení bez LiveTV
+
+Verzia1.0.20 prešla CI40360019022 a je overene publikovaná. Záverečné čítanie natívneho OpenATV Screen.show ukázalo, že po onShow callbackoch zavolá renderer.onShow; samotný prepínač režimu preto nebráni opätovnému Pigu po návrate z popupu. Finálna1.0.21 používa iba v konfigurácii WarderSettingsPig, ktorý pri každom onShow rešpektuje parent.isMainMenu, inak obnoví plnú TV a skryje malý widget. Natívne Pig nemeníme globálne. Regresný test simuluje opakované resume v nastaveniach a návrat do menu.
+
 # FullHDGlass 1.0.20 — jemná priehľadnosť nastavení (26. 10. 2026)
 
 Aktuálna úloha používateľa: všetky nastavovacie a výberové obrazovky bez LiveTV majú mať jemnú priehľadnosť ako schválený GSU. Nový balík1.0.20 zachováva identitu enigma2-plugin-skins-fullhdglass-warder-evolution, runtime paths/setupGlass17 a existujúcu migračnú verziu1.0.18.
