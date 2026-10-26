@@ -5,16 +5,16 @@
   "approved_on": "2026-10-24",
   "approval": "Owner explicitly requested all FullHDGlass settings screens without LiveTV to use the approved subtle GSU panel transparency on 26 October 2026; deliver through the existing native skin updater.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "f0c2b71ee24a5aeaf7027cff7c03c95714515f9d",
+  "source_commit": "f13415af0d8c57bf85a29a3b50b17c2f5d15cd88",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.20",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.20_all.ipk",
-    "sha256": "1acc8ad134c60a5bb435fda798c1cb94ff47a2659790f9c8d34ad289028b7757",
+    "version": "1.0.21",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.21_all.ipk",
+    "sha256": "cc9fb7789d1a3c8c7b43b95a2aed4072753a0506aba31e3a68c9e076bb35be3a",
     "changelog": "Jemná priehľadnosť nastavovacích a výberových obrazoviek bez LiveTV v jednotnom štýle GSU. Zachované hlavné menu s LiveTV, banner, grafické náhľady, nastavenia a ovládanie.",
-    "tag": "v1.0.20",
-    "bytes": 14195810,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.20/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.20_all.ipk"
+    "tag": "v1.0.21",
+    "bytes": 14196202,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.21/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.21_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,7 +39,7 @@
     }
   },
   "validation": {
-    "workflow_run": 40360019022,
+    "workflow_run": 40362507691,
     "build_payloads_and_public_bytes": "verified",
     "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
   }
