@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-24",
-  "approval": "Owner approved production and explicitly authorized renaming the package to appear under installed skin packages on 24 October 2026.",
+  "approval": "Owner explicitly requested all FullHDGlass settings screens without LiveTV to use the approved subtle GSU panel transparency on 26 October 2026; deliver through the existing native skin updater.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "f5a83f8e302466d1a94e0f1c0972e5f637148bab",
+  "source_commit": "f0c2b71ee24a5aeaf7027cff7c03c95714515f9d",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.19",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.19_all.ipk",
-    "sha256": "68a73f83b74126c15825f0e2d68ade528f5a1cc0e8dd6ba38a1edc8da1402224",
-    "changelog": "FullHDGlass Warder Evolution je zaradený medzi nainštalované Balíčky vzhľadu. Vnútorné priečinky, schválená grafika a uložené nastavenia zostávajú zachované.",
-    "tag": "v1.0.19",
-    "bytes": 14194932,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.19/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.19_all.ipk"
+    "version": "1.0.20",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.20_all.ipk",
+    "sha256": "1acc8ad134c60a5bb435fda798c1cb94ff47a2659790f9c8d34ad289028b7757",
+    "changelog": "Jemná priehľadnosť nastavovacích a výberových obrazoviek bez LiveTV v jednotnom štýle GSU. Zachované hlavné menu s LiveTV, banner, grafické náhľady, nastavenia a ovládanie.",
+    "tag": "v1.0.20",
+    "bytes": 14195810,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.20/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.20_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,8 +39,8 @@
     }
   },
   "validation": {
-    "workflow_run": 40110931302,
+    "workflow_run": 40360019022,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "No physical receiver test of the package-name migration is claimed."
+    "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
   }
 }
