@@ -30,5 +30,21 @@
     "status": "success",
     "sha256": "1acc8ad134c60a5bb435fda798c1cb94ff47a2659790f9c8d34ad289028b7757",
     "bytes": 14195810
+  },
+  "publication": {
+    "status": "stable latest; production updater active",
+    "release_id": 424522646,
+    "source_commit": "f13415af0d8c57bf85a29a3b50b17c2f5d15cd88",
+    "workflow": 40362507691,
+    "workflow_conclusion": "success",
+    "radio_workflow": 40362507737,
+    "radio_conclusion": "success",
+    "package": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.21_all.ipk",
+    "bytes": 14196202,
+    "sha256": "cc9fb7789d1a3c8c7b43b95a2aed4072753a0506aba31e3a68c9e076bb35be3a",
+    "asset_and_raw_bytes_verified": true,
+    "helper_illustrations_verified": 252,
+    "payload_files_verified": 1327,
+    "native_visual_confirmation": "pending"
   }
 }

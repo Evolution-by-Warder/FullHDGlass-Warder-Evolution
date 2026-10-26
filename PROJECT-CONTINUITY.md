@@ -1,3 +1,13 @@
+# Aktuálne vydanie — FullHDGlass1.0.21 (26. 10. 2026)
+
+**Stabilné Latest1.0.21 je vydané a overene aktívne v update-production.json.** Zdroj f13415af0d8c57bf85a29a3b50b17c2f5d15cd88; workflow40362507691 aj radio40362507737 success. Overené všetky252 pomocné ilustrácie, gettext, radiové/grafické baseline a1327 súborov IPK. Balík14 196 202 bajtov; SHA256cc9fb7789d1a3c8c7b43b95a2aed4072753a0506aba31e3a68c9e076bb35be3a. Skutočný release aj raw balík overené publisherom, API releaseasset digest a live feed zhodné.
+
+Všetky13 spoločné nastavovacie/výberové layouty a vlastné dialógy majú jemný presvit #1a102136 ako GSU. Dedené výbery a skupiny používajú tieto spoločné layouty. Banner je orezaný na164px, zachovaná geometria, náhľady, nepriehľadný výber/posuvník. Hlavné menu s LiveTV zachované; WarderSettingsPig bráni jeho návratu v režime nastavení aj po natívnom onShow. Natívny vzhľad ešte čaká na potvrdenie používateľom.
+
+Staré update.json/update-test.json sú zámerne stále bridge1.0.18 s pôvodným hashom. Existujúce preview ZIPy a migračné balíky nemazať ani neprepisovať. Aktuálny native feed je update-production.json. Dokumentácia/README a strojový záznam docs/SETTINGS-GLASS-1.0.21.json sú uložené. Týmto je implementačná úloha pripravená na prijímačové vizuálne overenie; ďalšie zmeny podľa používateľovej spätnej väzby.
+
+## Implementačné a historické poznámky
+
 # Finálna aktualizácia1.0.21 — návrat do nastavení bez LiveTV
 
 Verzia1.0.20 prešla CI40360019022 a je overene publikovaná. Záverečné čítanie natívneho OpenATV Screen.show ukázalo, že po onShow callbackoch zavolá renderer.onShow; samotný prepínač režimu preto nebráni opätovnému Pigu po návrate z popupu. Finálna1.0.21 používa iba v konfigurácii WarderSettingsPig, ktorý pri každom onShow rešpektuje parent.isMainMenu, inak obnoví plnú TV a skryje malý widget. Natívne Pig nemeníme globálne. Regresný test simuluje opakované resume v nastaveniach a návrat do menu.
