@@ -6,3 +6,6 @@
 - Sťahovanie beží na pozadí, priebeh sa zobrazuje v existujúcom okne; pred zápisom sa overujú balíky a pri chybe sa zmeny obnovia.
 - DAB picony sú aj v celkových balíkoch 19,2°E a 23,5°E v troch štýloch. Pôvodné obrázky zostali zachované.
 - Oba rádiové infobary zostávajú funkčné podľa potvrdenia používateľa. Fyzické otestovanie novej voľby DAB v prijímači sa zatiaľ netvrdí.
+
+- Picony pozícií sa proporčne zmenšujú do existujúceho rámčeka: vykreslí sa celý obrázok, nie výrez z pôvodného rozlíšenia.
+- Obnovený pôvodný DVB-T CZ/SK balík v spoločnom katalógu obsahuje 2 674 PNG v prevedení Transparent 220×132. Biele a čierne prevedenie zostáva nedostupné bez overeného balíka.

@@ -2,7 +2,7 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
-  "approved_on": "2026-10-24",
+  "approved_on": "2026-10-27",
   "approval": "Owner explicitly requested DAB in the skin download menu and one shared Warder ecosystem, 27 October 2026.",
   "source_branch": "warder-modernization-work",
   "source_commit": "a6c989c5d42334bc44b6300ca9d84793588140d2",
@@ -41,6 +41,10 @@
   "validation": {
     "workflow_run": 40551517866,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded."
+    "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded.",
+    "shared_radio_runtime_tests": 11,
+    "settings_layout_tests": 22,
+    "proportional_position_picons": true,
+    "mixed_selection_checkmarks_preserved": true
   }
 }

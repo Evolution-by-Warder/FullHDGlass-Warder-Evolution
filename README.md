@@ -1,14 +1,14 @@
-> Aktualizácia **1.0.28**: rádiové picony aj v spodnom infobare po OK. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.29**: DAB a DVB-T na začiatku výberu s ikonami, celé picony pozícií bez orezania a spoločný Warder engine pre sťahovanie DAB. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Production baseline — 24 October 2026
+## Production release — 27 October 2026
 
-**FullHDGlass 1.0.19** is the owner-approved production release, based on the accepted TEST270 with clean production numbering. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.19).
+**FullHDGlass 1.0.29** is the owner-authorized production release with shared Warder DAB downloads, source icons and proportional position picons. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.29).
 
-Production packages and displayed version labels use **1.0.19**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then 1.0.19 from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
+Production packages and displayed version labels use **1.0.29**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then the current version from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
 
 The small IPK excludes the large preview archives. Help and type previews remain verified background downloads. Approved graphics, layouts, radio behavior, runtime identifiers, settings and original author credits are preserved. Exact package identity, SHA256, source revision and validation are recorded in docs/PRODUCTION.json after publication. Owner acceptance does not claim a new exhaustive physical receiver test.
 
@@ -21,7 +21,7 @@ Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR
 
 ## Project status
 
-This repository is the official home of **FullHDGlass17 - Warder Evolution**.
+This repository is the official home of **FullHDGlass - Warder Evolution**.
 
 The project preserves the character, approved graphics and visual identity of FullHDGlass while modernizing its internals for current Enigma2 environments.
 
@@ -36,7 +36,7 @@ The project preserves the character, approved graphics and visual identity of Fu
 
 ## Origins and credits
 
-**FullHDGlass17 - Warder Evolution** is based on the original **FullHDGlass** Enigma2 skin created by **Shamann**.
+**FullHDGlass - Warder Evolution** is based on the original **FullHDGlass** Enigma2 skin created by **Shamann**.
 
 Full credit and thanks belong to **Shamann** for creating the original FullHDGlass project, its design and the foundation on which this continuation is built.
 
@@ -62,7 +62,7 @@ Original authorship must not be erased or globally replaced with Warder branding
 
 ## Development
 
-Maintained and evolved by **Warder** as **FullHDGlass17 - Warder Evolution**.
+Maintained and evolved by **Warder** as **FullHDGlass - Warder Evolution**.
 
 Detailed recovery state and binding rules are maintained in `docs/PROJECT-CHECKPOINT.md`.
 

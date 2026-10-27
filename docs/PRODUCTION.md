@@ -1,27 +1,23 @@
 # FullHDGlass Warder Evolution — ostrá prevádzka
 
-Schválené vlastníkom **24. októbra 2026** spolu s PiconHubom **0.1.25**. Produkčná verzia skinu: **1.0.19**, bez označenia test.
+Aktuálna produkčná verzia je **1.0.29**. Vlastník schválil doplnenie DAB a jednotné správanie vo Warder ekosystéme 27. októbra 2026. PiconHub a skin používajú rovnaké overené rádiové dáta a sťahovacie jadro; PiconHub nemusí byť samostatne nainštalovaný.
 
-## Schválený základ a číslo verzie
+[Produkčné vydanie](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.29) · [Presný produkčný záznam](PRODUCTION.json) · [Aktuálne zmeny](CURRENT-RELEASE.md)
 
-Vydanie vychádza z používateľom prijatého TEST270. Zachováva jeho funkcie, grafiku, banner, geometriu aj nastavenia. Mení verziu runtime a hlavičiek na 1.0.19 a identifikátor IPK na štandardný balík skinu. Vnútorné cesty zostávajú zachované. Vývojové testovacie vydania a ich tagy ostávajú zachované.
+Vo výbere zdrojov sú DAB a DVB-T na začiatku, s ikonou pred názvom. Rozlíšenie sa volí samostatne. Picony pozícií sa proporčne zmenšujú do existujúceho rámčeka, takže je viditeľný celý obrázok. Opätovné otvorenie spoločného výberu DAB a satelitov zachová ich označenie.
 
-[Produkčné vydanie](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.19) · [IPK](https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.19_all.ipk)
+DAB používa existujúci cieľový priečinok a pozadia Transparent, Biele a Čierne pri 220×132. Sťahovanie beží na pozadí, archívy a PNG sa overujú a pri chybe sa zápis obnoví. Rovnaké presné rádiové referencie sú aj v celkových balíkoch 19,2°E a 23,5°E. Pôvodné súbory mimo spravovaného pokrytia sa zachovávajú.
 
-Presný zdrojový commit, veľkosť a SHA256 vzniknú pri overenom zostavení a sú zapísané v [PRODUCTION.json](PRODUCTION.json). Schválenie a totožnosť východiskového TEST270 sú v [PRODUCTION-APPROVAL.json](PRODUCTION-APPROVAL.json).
+Pôvodný obnovený DVB-T CZ/SK archív má 2 674 PNG v prevedení Transparent 220×132. Biele a čierne prevedenie zostáva nedostupné bez overených zdrojov. Historický archív nie je zárukou úplného súčasného pokrytia vysielania.
 
-## Aktualizácie a náhľady
+## Aktualizácie a súbory
 
-Staré aktualizačné kanály najprv ponúknu prípravnú **1.0.18**. Potom nový produkčný manifest ponúkne **1.0.19** s názvom `enigma2-plugin-skins-fullhdglass-warder-evolution`. Podrobnosti a postup sú v [PACKAGE-TRANSITION.md](PACKAGE-TRANSITION.md).
+Aktuálny manifest je update-production.json. Staršie inštalácie najprv využijú nemenný prechod cez 1.0.18; podrobnosti sú v [PACKAGE-TRANSITION.md](PACKAGE-TRANSITION.md). Balík má štandardný identifikátor enigma2-plugin-skins-fullhdglass-warder-evolution. Kompatibilné vnútorné cesty a uložené nastavenia zostávajú zachované.
 
-Základný IPK zostáva malý, s limitom pod 16 MiB. Nápoveda (24 621 325 bajtov) a typy infobaru (2 584 364 bajtov) sa naďalej dopĺňajú na pozadí a overujú podľa SHA256. Už uložené náhľady fungujú bez siete. TEST263 zostáva nemenným zdrojom týchto archívov a nesmie sa odstrániť.
+IPK zostáva pod limitom 16 MiB. Nápoveda používa pôvodný balík g17_setup_pict.zip a existujúce umiestnenie súborov skinu; archívy sa overujú podľa veľkosti a SHA256. Už uložené náhľady fungujú bez siete. Schválené obrázky, MASTER šablóny, autorské údaje Shamann a rádiové infobary zostávajú zachované.
 
-## Zachovaný stav
+## Overenie
 
-Spoločný banner, nižší horizont zemegule, čitateľné sekundy, dvojriadková verzia a zarovnanie hlavičky. Schválená menšia ikona, jednotné nepriehľadné konfiguračné a aktualizačné dialógy, opravy callbackov výberových okien, existujúce ovládanie, rádio, piconový katalóg a nastavenia zostávajú zachované. Pôvodné autorské údaje Shamann a kompatibilné runtime identifikátory sa nemenia.
+Cielené testy kontrolujú sťahovanie, zmiešaný výber, zrušenie operácie, obnovu súborov, poradie a ikony aj vykreslenie celého piconu. Produkčný workflow overuje rozloženie, všetkých 252 pomocných obrázkov, pôvodné piconové balíky, preklady a každý súbor IPK. Aktualizačný manifest sa sprístupní až po kontrole verejných bajtov balíka.
 
-## Overenie a obnova
-
-Produkčné zostavenie kontroluje každý súbor payloadu, bezstratovú kompresiu PNG, metadáta balíka, hlavičky, ovládače, cache Pythonu, poradie verzií a nezávislé archívy náhľadov. Verejné IPK sa overí podľa veľkosti a SHA256 pred zmenou aktualizačných feedov. Finálny produkčný záznam viaže tieto kontroly na konkrétny zdrojový commit a workflow.
-
-Používateľ prijal aktuálny skin do ostrej prevádzky. Nejde o tvrdenie o novom úplnom fyzickom teste všetkých funkcií, boxov a image. Historické výsledky a crash logy zostávajú viazané na svoje verzie. Historická recovery 1.0.15, testovacie vydania, zdroje a kontrolné súčty ostávajú dostupné.
+Presný zdroj, workflow, veľkosť a SHA256 sú v PRODUCTION.json. Fyzické overenie novej verzie 1.0.29 v prijímači sa zatiaľ netvrdí. Používateľ potvrdil zobrazenie rádiových piconov v oboch infobaroch v predchádzajúcej verzii. Historické zdroje, výsledky a nemeniteľné vydania zostávajú dostupné v Gite.
