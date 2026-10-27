@@ -303,6 +303,10 @@ class WarderRadioArtwork(Renderer):
         for item in cls._catalogueResults(artist, title):
             gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
             exact = gotArtist == wantArtist and gotTitle == wantTitle
+            # Some stations publish Title - Artist in their ICY text.
+            # Accept reversed fields only when BOTH complete identities match.
+            if not exact:
+                exact = gotArtist == wantTitle and gotTitle == wantArtist
             sameArtist = gotArtist == wantArtist or cls._artistIdentity(item.get("artistName")) == cls._artistIdentity(artist)
             if not exact and sameArtist:
                 exact = cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)

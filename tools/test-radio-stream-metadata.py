@@ -219,6 +219,13 @@ class CatalogueArtworkTests(unittest.TestCase):
     def test_catalogue_failure_does_not_prevent_next_region(self):
         self.assertTrue(self.lookup('Artist', 'Song', {'SK': TimeoutError(), 'CZ': [self.item('Artist', 'Song')]}))
 
+    def test_reversed_station_metadata_matches_both_complete_catalogue_fields(self):
+        self.assertTrue(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas', 'Uncovered Paradise')]}))
+
+    def test_reversed_fields_require_exact_artist_and_title(self):
+        self.assertFalse(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas Orchestra', 'Uncovered Paradise')]}))
+        self.assertFalse(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas', 'Uncovered Paradise Live')]}))
+
     def test_different_guest_rendition_does_not_replace_band_recording(self):
         self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Po víne (feat. Robo Grigorov)')]}))
 
