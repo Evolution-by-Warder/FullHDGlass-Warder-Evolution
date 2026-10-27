@@ -56,6 +56,10 @@ class RadioPiconTests(unittest.TestCase):
         self.scope['is_native_dab']=lambda ref:True
         self.renderer.source.text='not-the-playing-dab-reference'
         self.change();self.native.assert_called_once_with(BAYERN)
+    def test_tv_does_not_gain_legacy_directory_search(self):
+        self.renderer.source.text=BAYERN.replace(':A:',':1:')
+        self.scope['fileExists']=lambda path:'/picon_220x132/' in path
+        self.change();self.assertEqual(self.renderer.pngname,'/default.png')
     def test_tv_does_not_gain_a_new_system_lookup(self):
         self.renderer.source.text=BAYERN.replace(':A:',':1:')
         self.change();self.native.assert_not_called();self.assertEqual(self.renderer.pngname,'/default.png')
