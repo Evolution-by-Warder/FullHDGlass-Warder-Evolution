@@ -48,6 +48,7 @@ on:
       - tools/test-startup-update.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderAutoUpdate.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py
+      - tools/test-auxiliary-hybrid-runtime.py
       - tools/test-canonical-picons.py
       - docs/CURRENT-RELEASE.md
       - design/live-update.json
