@@ -139,6 +139,20 @@
       "width": 160,
       "height": 96,
       "origin": "Approved shared Warder Evolution skull and lettering, 2026-10-24"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/selectors/DAB.png",
+      "sha256": "a502bbd146897f10ea0a5d4a9e7d36d3c919f8dca8535cf6d19cf6ab53271ae6",
+      "bytes": 5688,
+      "source": "Official WorldDAB logo",
+      "reason": "Shared source icon in DAB/DVB-T selection"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/selectors/DVB-T-SK-CZ.png",
+      "sha256": "e363f76ab630185deaa9d2d3e1394542725a4f287a289696f70f434026b779c9",
+      "bytes": 6673,
+      "source": "Existing approved Warder selector picon",
+      "reason": "Shared source icon in DAB/DVB-T selection"
     }
   ]
 }
