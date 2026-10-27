@@ -11,3 +11,8 @@ DVB-T CZ/SK 220×132 je dostupné v prevedeniach Transparent, Biele a Čierne. B
 Každé pozadie DVB-T má 2 674 referenčných PNG súborov a 203 odlišných obrázkov. Počet súborov ani obrázkov sa nevydáva za presný počet staníc: v archíve nie je overený zoznam ich názvov. Pôvodné historické pokrytie zároveň nie je zárukou úplného dnešného vysielania.
 
 Nové picony sa získajú opätovným stiahnutím príslušného dátového balíka v PiconHube alebo v Ponuke sťahovania skinu. Aktualizácia samotného pluginu na tieto zmeny nie je potrebná.
+
+
+## Dopĺňanie rádií do Canal+ SK a CZ
+
+Vlastník potvrdil, že uvedené rádia patria aj do operátorských sád. Ich neprítomnosť v pôvodných ZIPoch bola neúplnosť našich archívov, nie dôvod na vynechanie. Následná publikácia pridala všetkých deväť referencií (Fun Z/S/V, Melody Z/S/V, Regina BA/BB/KE) do každého z osemnástich balíkov Canal+ SK/CZ: 50×30, 220×132 a 400×240 v prevedeniach Transparent, Biele a Čierne. Ostatné PNG zostali zachované. Prešlo 10 testov, 18 inštalačných plánov a SHA256 kontrola všetkých 18 verejných častí. Workflow 40574914251; katalóg 17ac58f68dc2016b161790781d6532d859f30c98. Podrobný výsledok: assets/warder/canal-radio-publication.json. Zdrojové operátorské priečinky v PiconHube sú tiež doplnené identickými schválenými PNG. IPK ani runtime FastScan tabuľky sa nemenili.

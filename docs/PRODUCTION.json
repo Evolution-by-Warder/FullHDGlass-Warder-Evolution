@@ -81,6 +81,18 @@
       "exact_distinct_station_count": null,
       "note": "Service references and image hashes do not contain verified station names; image count is not asserted as an exact station count.",
       "source_ref": "c662265bd085a7916289975f7c4472a25d6c9b40"
+    },
+    "canal_radio_completion": {
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+      "catalog_commit": "17ac58f68dc2016b161790781d6532d859f30c98",
+      "workflow_run": 40574914251,
+      "provider_packages": 18,
+      "radio_references_added_to_each": 9,
+      "receiver_plans_verified": 18,
+      "public_parts_sha256_verified": 18,
+      "existing_pngs_preserved": true,
+      "runtime_fastscan_tables_changed": false,
+      "ipk_changed": false
     }
   }
 }
