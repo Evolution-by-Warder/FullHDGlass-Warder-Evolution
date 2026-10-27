@@ -1,7 +1,7 @@
 # 1.0.27
 
 - Záložné systémové vyhľadávanie piconov satelitného rádia v g17PicRef pred použitím náhradného loga.
-- Zachované vlastné picony, DAB a rádiové rozloženie; osem regresných testov.
+- Zachované vlastné picony, DAB a rádiové rozloženie; jedenásť regresných testov.
 
 # 1.0.26
 

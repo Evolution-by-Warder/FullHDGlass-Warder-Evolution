@@ -41,6 +41,17 @@ class RadioPiconTests(unittest.TestCase):
         self.scope['fileExists']=lambda path:path=='/skin/picon/1_0_A_28A2_40F_1_C00000_0_0_0.png'
         self.change();self.native.assert_not_called()
         self.assertEqual(self.renderer.pngname,'/skin/picon/1_0_A_28A2_40F_1_C00000_0_0_0.png')
+    def test_existing_legacy_dimension_picon_is_read_without_moving_files(self):
+        path='/skin/picon_220x132/1_0_A_28A2_40F_1_C00000_0_0_0.png'
+        self.scope['fileExists']=lambda candidate:candidate==path
+        self.change();self.assertEqual(self.renderer.pngname,path);self.native.assert_not_called()
+    def test_canonical_picon_precedes_both_legacy_dimensions(self):
+        self.scope['fileExists']=lambda path:path.endswith('1_0_A_28A2_40F_1_C00000_0_0_0.png')
+        self.change();self.assertEqual(self.renderer.pngname,'/skin/picon/1_0_A_28A2_40F_1_C00000_0_0_0.png')
+    def test_explicit_custom_directory_is_not_replaced_with_standard_paths(self):
+        self.renderer.path='my-radio'
+        self.scope['fileExists']=lambda path:path=='/skin/my-radio/1_0_A_28A2_40F_1_C00000_0_0_0.png'
+        self.change();self.assertEqual(self.renderer.pngname,'/skin/my-radio/1_0_A_28A2_40F_1_C00000_0_0_0.png')
     def test_dab_keeps_existing_native_playing_reference_route(self):
         self.scope['is_native_dab']=lambda ref:True
         self.renderer.source.text='not-the-playing-dab-reference'

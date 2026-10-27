@@ -130,8 +130,10 @@ class g17PicRef(Renderer):
 
 	def findPicon(self, serviceName):
 		try:
-			pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, serviceName)
-			if fileExists(pngname):
-				return pngname
+			paths = ("picon", "picon_220x132", "picon_400x240") if self.path == "picon" else (self.path,)
+			for path in paths:
+				pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, path, serviceName)
+				if fileExists(pngname):
+					return pngname
 		except: pass
 		return ""

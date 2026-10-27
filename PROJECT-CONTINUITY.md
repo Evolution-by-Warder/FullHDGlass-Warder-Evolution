@@ -1,6 +1,6 @@
 # Radio picon repair1.0.27 — 27October2026
 
-User reports BAYERN3 shows picon in channel list but fallback in g17PicRef RDS/infobar. Other ordinary radio and DAB work. Added native getPiconName fallback only for radio service types2/A after existing skin reference lookup fails, before default logo. Exact custom path retains priority; native DAB route untouched. Eight executed renderer regression tests passed; XML/graphics baseline unchanged. Publish1.0.27 after completeCI and byte verification; expected production headc78f0cca49102f3c7787850d9f239a5e3a3479b1. Receiver confirmation pending. No image regeneration needed.
+User reports BAYERN3 shows picon in channel list but fallback in g17PicRef RDS/infobar. Other ordinary radio and DAB work. Added native getPiconName fallback only for radio service types2/A after existing skin reference lookup fails, before default logo. Exact custom path retains priority; native DAB route untouched. Eleven executed renderer regression tests passed; XML/graphics baseline unchanged. Publish1.0.27 after completeCI and byte verification; expected production headc78f0cca49102f3c7787850d9f239a5e3a3479b1. Receiver confirmation pending. No image regeneration needed.
 
 # Completed production — 27 October 2026
 
