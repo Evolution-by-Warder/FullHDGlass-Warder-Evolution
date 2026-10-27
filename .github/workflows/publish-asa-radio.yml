@@ -1,0 +1,33 @@
+name: Publish official ASA DE radio picons
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/publish-asa-radio.py
+      - .github/workflows/publish-asa-radio.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: warder-native-catalog-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /tools/
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify, append and publicly validate official ASA assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -u tools/publish-asa-radio.py --source b9436b30af0efeb0823ee451943d160c32c53f44 --publish
