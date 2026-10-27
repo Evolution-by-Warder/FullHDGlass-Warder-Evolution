@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-24",
-  "approval": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon. Owner additionally requested verification of startup update checks on27October2026; nonblocking native child-process check preserves offer/consent.",
+  "approval": "Owner reported satellite RDS radio picons missing while channel list and ordinary radio/DAB work; authorized restoring radio picon lookup without changing layout or DAB.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "81fd43b9a917e1e3e7b1b621b5555c11e3eafd88",
+  "source_commit": "0635b15b815f0b7529c5720a058fa36f41866b7b",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.26",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.26_all.ipk",
-    "sha256": "52d68d8637bce1d03f1c35b4fa1cd49a675c986d8e154efdce660fec9888c6df",
-    "changelog": "Pôvodné názvy piconProv.zip/piconSat.zip pre tri pozadia, kanálové picony 220×132 do picon. Staré rozmerové adresáre sa už nezakladajú. Kontrola aktualizácie pri každom otvorení beží na pozadí.",
-    "tag": "v1.0.26",
-    "bytes": 14198238,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.26/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.26_all.ipk"
+    "version": "1.0.27",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.27_all.ipk",
+    "sha256": "96f2f2e368ece20f2054b7008854aac24ecb79fbc8f05b36ff3b9c95ddd28be4",
+    "changelog": "Opravené hľadanie piconov satelitných rádií v infobare a RDS. Pri chýbajúcej priamej zhode sa použije systémové hľadanie podľa referencie alebo názvu stanice; DAB a grafika zachované.",
+    "tag": "v1.0.27",
+    "bytes": 14198444,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.27/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.27_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,8 +39,8 @@
     }
   },
   "validation": {
-    "workflow_run": 40464125832,
+    "workflow_run": 40472607046,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed FullHDGlass1.0.26 OK on receiver,27October2026; current walkthrough, not exhaustive hardware coverage."
+    "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
   }
 }
