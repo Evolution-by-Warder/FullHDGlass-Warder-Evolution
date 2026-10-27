@@ -81,6 +81,10 @@ class WarderRadioArtwork(Renderer):
             value = value.casefold()
         except Exception:
             value = value.lower()
+        # Radio tags and catalogue credits often differ only in accents.
+        # Keep every word and punctuation mark; do not weaken song identity.
+        value = "".join(ch for ch in unicodedata.normalize("NFKD", value)
+                        if not unicodedata.combining(ch))
         return " ".join(value.split())
 
     @classmethod
@@ -179,16 +183,35 @@ class WarderRadioArtwork(Renderer):
         pass
 
     @classmethod
+    def _catalogueResults(cls, artist, title):
+        term = quote(artist + " " + title)
+        # An omitted country searches the US catalogue, which omits regional
+        # releases. Stop lazily when a verified result succeeds; all I/O stays
+        # in the existing artwork worker, never in the GUI poll.
+        for country in ("SK", "CZ", "US"):
+            url = "https://itunes.apple.com/search?entity=song&limit=10&country=" + country + "&term=" + term
+            try:
+                req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0"})
+                with urlopen(req, timeout=2.5) as response:
+                    raw = response.read(1024 * 1024 + 1)
+                if len(raw) > 1024 * 1024:
+                    continue
+                if not isinstance(raw, str):
+                    raw = raw.decode("utf-8", "replace")
+                results = json.loads(raw).get("results", [])
+                if not isinstance(results, list):
+                    continue
+                cls._diag("LOOKUP country=%s artist=%r title=%r results=%d" % (country, artist, title, len(results)))
+                for item in results[:10]:
+                    if isinstance(item, dict):
+                        yield item
+            except Exception as err:
+                cls._diag("CATALOGUE_ERROR country=%s error=%s" % (country, err.__class__.__name__))
+
+    @classmethod
     def _lookupExact(cls, artist, title, key):
-        url = "https://itunes.apple.com/search?entity=song&limit=10&term=" + quote((artist + " " + title).encode("utf-8") if not isinstance(artist, str) else artist + " " + title)
-        req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0"})
-        raw = urlopen(req, timeout=2.5).read()
-        if not isinstance(raw, str):
-            raw = raw.decode("utf-8", "replace")
         wantArtist, wantTitle = cls._norm(artist), cls._norm(title)
-        results = json.loads(raw).get("results", [])
-        cls._diag("LOOKUP artist=%r title=%r results=%d" % (artist, title, len(results)))
-        for item in results:
+        for item in cls._catalogueResults(artist, title):
             gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
             exact = gotArtist == wantArtist and gotTitle == wantTitle
             sameArtist = gotArtist == wantArtist or cls._artistIdentity(item.get("artistName")) == cls._artistIdentity(artist)

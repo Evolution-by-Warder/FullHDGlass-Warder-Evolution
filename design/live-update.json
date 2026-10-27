@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.30",
-  "expected_main_sha": "8ec05afade855e919c8706b4413ce76f7f3fcb72",
-  "authorization": "Owner explicitly requested assimilation of HDF Radio song metadata and album-cover functionality into the Warder radio screen (27 October 2026).",
-  "changelog": "Internetové rádiá zobrazujú interpreta, skladbu a dohľadaný obal albumu v existujúcej rádiovej obrazovke. Prednostne sa používajú údaje prehrávača, doplnkovo ICY metadáta na pozadí. Opravené zahodenie starého obalu pri prepnutí stanice. Vzhľad rádia, RDS a DAB obrázky zostávajú zachované."
+  "version": "1.0.31",
+  "expected_main_sha": "0262816fad28912f3c6dad88998c83870da28037",
+  "authorization": "Owner explicitly requested repair and publication of the radio cover lookup after comparing HDF and Warder results (27 October 2026).",
+  "changelog": "Opravené vyhľadávanie obalov rádií: slovenský a český katalóg pred americkým, porovnávanie interpreta a skladby aj bez diakritiky. Zachovaná ochrana pred nesprávnymi obalmi a vyhľadávanie na pozadí."
 }

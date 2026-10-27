@@ -1,10 +1,9 @@
-# FullHDGlass Warder Evolution 1.0.30
+# FullHDGlass Warder Evolution 1.0.31
 
-- Internetové rádiá používajú náš existujúci obal albumu a riadok interpreta/skladby v rádiovej obrazovke.
-- Údaje sa prednostne čítajú z prehrávača OpenATV; chýbajúce údaje môže doplniť samostatné čítanie ICY metadát na pozadí.
-- Čítanie metadát má limity objemu, časový limit a jedného spoločného pracovníka. Ovládanie a prehrávanie na sieť nečakajú.
-- Prepnutie stanice zahodí oneskorený výsledok starého obalu. Neúplné údaje alebo nenájdený obal použijú existujúci neutrálny obrázok.
-- Rozloženie a grafika rádia sa nemenia. Natívny RDS text a prednosť DAB MOT obrázkov zostávajú zachované.
-- Ide o samostatnú Warder implementáciu inšpirovanú funkciou HDF Radio. Jeho binárne moduly, YouTube ani databáza staníc sa nepribaľujú.
+- Opravené vyhľadávanie obalov slovenských a českých skladieb: namiesto implicitného amerického katalógu sa prehľadávajú katalógy SK, CZ a následne US.
+- Meno interpreta a názov skladby sa porovnávajú aj bez diakritiky; celý názov a identita interpreta sa naďalej kontrolujú.
+- Nesprávny výsledok „Protože to nevzdám“ pre „Život nás má rád“ sa odmietne. Zobrazenie obalu sa nepovažuje automaticky za dôkaz jeho správnosti.
+- Vyhľadávanie zostáva na pozadí, úspešná zhoda zastaví ďalšie vyhľadávanie. Výpadok jedného katalógu neblokuje ďalší.
+- RDS, prednosť DAB MOT, grafika a rozloženie rádia zostávajú zachované.
 
-Overenie: 22 automatických testov metadát, priebežné kontroly existujúceho balíka a verejných bajtov cez CI. Spojenie na tri živé streamy z pracovného prostredia skončilo časovým limitom. Fyzické overenie nového internetového rádia na prijímači sa zatiaľ netvrdí.
+Overenie: 30 automatických testov metadát a obalov vrátane oboch nahlásených skladieb, nesprávnej skladby/umelca a výpadku katalógu. Živé sondy sú zapísané v RADIO-CATALOGUE-PROBES.json; nejde o fyzické overenie na prijímači. Úplné zostavenie a overenie balíka vykoná CI pred aktiváciou aktualizácie.

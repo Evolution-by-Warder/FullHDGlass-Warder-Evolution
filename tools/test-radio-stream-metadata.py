@@ -128,4 +128,77 @@ class NativeTextIntegrationTests(unittest.TestCase):
         with patch.object(m.monitor,'clear') as clear:controller.update_song();clear.assert_called_once()
         timer.stop.assert_called_once();label.setText.assert_not_called()
 
+
+class CatalogueArtworkTests(unittest.TestCase):
+    def setUp(self):
+        fake = {
+            'enigma': types.SimpleNamespace(**{name: Mock() for name in
+                ('ePicLoad', 'ePixmap', 'eServiceReference', 'eTimer', 'iRdsDecoder', 'iServiceInformation')}),
+            'NavigationInstance': types.SimpleNamespace(instance=None),
+            'Components.Renderer.Renderer': types.SimpleNamespace(Renderer=object),
+            'Components.Converter.WarderRadioMetadata': m,
+        }
+        spec = importlib.util.spec_from_file_location('catalogue_artwork_test', PYTHON/'Components/Renderer/WarderRadioArtwork.py')
+        self.art = importlib.util.module_from_spec(spec)
+        with patch.dict(sys.modules, fake):
+            spec.loader.exec_module(self.art)
+        self.cls = self.art.WarderRadioArtwork
+        self.cover = b'\xff\xd8' + b'x' * 2048
+
+    def lookup(self, artist, title, results):
+        import json
+        from urllib.parse import parse_qs, urlparse
+        self.calls = []
+        def opener(req, **kwargs):
+            self.calls.append(req.full_url)
+            if '/search?' not in req.full_url:
+                return io.BytesIO(self.cover)
+            country = parse_qs(urlparse(req.full_url).query)['country'][0]
+            value = results.get(country, [])
+            if isinstance(value, Exception):
+                raise value
+            return io.BytesIO(json.dumps({'results': value}).encode())
+        import tempfile
+        with tempfile.TemporaryDirectory() as cache, patch.object(self.cls, '_cacheDir', return_value=cache), patch.object(self.art, 'urlopen', side_effect=opener):
+            path = self.cls._lookupExact(artist, title, self.cls._norm(artist)+'|'+self.cls._norm(title))
+            return bool(path and Path(path).read_bytes() == self.cover)
+
+    @staticmethod
+    def item(artist, title):
+        return {'artistName': artist, 'trackName': title, 'artworkUrl100': 'https://art.example/100x100bb.jpg'}
+
+    def test_slovak_artist_without_catalogue_accents_matches(self):
+        self.assertTrue(self.lookup('Katarína Knechtová', 'Život nás má rád', {'SK': [self.item('Katarina Knechtova', 'Život nás má rád')]}))
+        self.assertEqual(len(self.calls), 2)  # one catalogue and its artwork
+        self.assertIn('country=SK', self.calls[0])
+
+    def test_lucie_sen_uses_slovak_catalogue(self):
+        self.assertTrue(self.lookup('Lucie', 'Sen', {'SK': [self.item('Lucie', 'Sen')]}))
+        self.assertEqual(len(self.calls), 2)
+
+    def test_hdf_example_wrong_song_is_rejected(self):
+        wrong = self.item('Olga Lounova, Richard Krajco, Katarina Knechtova', 'Protože to nevzdám (feat. Pavel Callta)')
+        self.assertFalse(self.lookup('Katarína Knechtová', 'Život nás má rád', {'SK': [wrong], 'CZ': [wrong], 'US': [wrong]}))
+        self.assertEqual(len(self.calls), 3)  # no image download
+
+    def test_same_title_by_another_artist_is_rejected(self):
+        self.assertFalse(self.lookup('Lucie', 'Sen', {'SK': [self.item('Lucie Vondráčková', 'Sen')]}))
+
+    def test_czech_catalogue_is_used_when_slovak_has_no_match(self):
+        self.assertTrue(self.lookup('Artist', 'Song', {'CZ': [self.item('Artist', 'Song')]}))
+        self.assertIn('country=CZ', self.calls[1])
+        self.assertEqual(len(self.calls), 3)
+
+    def test_us_catalogue_remains_available(self):
+        self.assertTrue(self.lookup('Artist', 'Song', {'US': [self.item('Artist', 'Song')]}))
+        self.assertIn('country=US', self.calls[2])
+
+    def test_catalogue_failure_does_not_prevent_next_region(self):
+        self.assertTrue(self.lookup('Artist', 'Song', {'SK': TimeoutError(), 'CZ': [self.item('Artist', 'Song')]}))
+
+    def test_accents_do_not_remove_words_or_version_markers(self):
+        self.assertEqual(self.cls._norm('KATARÍNA Knechtová'), self.cls._norm('Katarina Knechtova'))
+        self.assertNotEqual(self.cls._norm('Sen'), self.cls._norm('Sen (Live)'))
+        self.assertNotEqual(self.cls._norm('Lucie'), self.cls._norm('Lucie Bílá'))
+
 if __name__=='__main__':unittest.main()

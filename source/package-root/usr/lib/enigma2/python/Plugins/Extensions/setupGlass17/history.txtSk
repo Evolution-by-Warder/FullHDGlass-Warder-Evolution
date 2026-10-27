@@ -1,3 +1,5 @@
+1.0.31: Opravené obaly regionálnych rádií: katalógy SK, CZ a US; zhoda celého interpreta a skladby aj bez diakritiky. Nesúvisiace skladby a interpreti sa naďalej odmietajú. Vzhľad rádia bez zmeny.
+
 1.0.29: Spoločný Warder zdroj DAB; DAB a DVB-T na začiatku. Rovnaký overený katalóg a engine ako PiconHub, sťahovanie na pozadí a obnova pri chybe. DAB aj v celkových satelitných balíkoch.
 
 FullHDGlass Warder Evolution 1.0.21
