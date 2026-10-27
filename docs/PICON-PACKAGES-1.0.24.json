@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "resolution": [
+    220,
+    132
+  ],
+  "variants": {
+    "provider/black": {
+      "filename": "piconProv.zip",
+      "root": "piconProv",
+      "png_count": 1309,
+      "size": 28400191,
+      "sha256": "e0ebf09b44d4bb1cc8921b428cf6fbeee8f23059858cd39442c9e59dd896d492",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/black/piconProv.zip",
+      "publication_source_id": "fullhd-production",
+      "path": "assets/warder/downloads/picons/providers/black/piconProv.zip",
+      "resolution": [
+        220,
+        132
+      ],
+      "delivery": "canonical-220x132-v1",
+      "legacy_images_normalized": 1299
+    },
+    "provider/transparent": {
+      "filename": "piconProv.zip",
+      "root": "piconProv",
+      "png_count": 1149,
+      "size": 11655483,
+      "sha256": "3382534990cbcc83a85fa345c8c9a951812b295a58c3cf20c1eed7255cc99ffb",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/transparent/piconProv.zip",
+      "publication_source_id": "fullhd-production",
+      "path": "assets/warder/downloads/picons/providers/transparent/piconProv.zip",
+      "resolution": [
+        220,
+        132
+      ],
+      "delivery": "canonical-220x132-v1",
+      "legacy_images_normalized": 4
+    },
+    "provider/white": {
+      "filename": "piconProv.zip",
+      "root": "piconProv",
+      "png_count": 1268,
+      "size": 29626904,
+      "sha256": "4aae3dcf1055ad8c4325e2dac2ddd283faa3a7b122d893cf85aaa370ba67e9c7",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/providers/white/piconProv.zip",
+      "publication_source_id": "fullhd-production",
+      "path": "assets/warder/downloads/picons/providers/white/piconProv.zip",
+      "resolution": [
+        220,
+        132
+      ],
+      "delivery": "canonical-220x132-v1",
+      "legacy_images_normalized": 1258
+    },
+    "satellite/black": {
+      "filename": "piconSat.zip",
+      "root": "piconSat",
+      "png_count": 269,
+      "size": 7069113,
+      "sha256": "62156d69c47cd70d77a091e4243e0669a3b38c4cf0d3fa6b9c6cf59b719d52da",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/satellites/black/piconSat.zip",
+      "publication_source_id": "fullhd-production",
+      "path": "assets/warder/downloads/picons/satellites/black/piconSat.zip",
+      "resolution": [
+        220,
+        132
+      ],
+      "delivery": "canonical-220x132-v1",
+      "legacy_images_normalized": 269
+    },
+    "satellite/transparent": {
+      "filename": "piconSat.zip",
+      "root": "piconSat",
+      "png_count": 69,
+      "size": 779462,
+      "sha256": "5be9443db914991df92344d1456d9484107205866fc31feee01efe4655c3db72",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/satellites/transparent/piconSat.zip",
+      "publication_source_id": "fullhd-production",
+      "path": "assets/warder/downloads/picons/satellites/transparent/piconSat.zip",
+      "resolution": [
+        220,
+        132
+      ],
+      "delivery": "canonical-220x132-v1",
+      "legacy_images_normalized": 0
+    },
+    "satellite/white": {
+      "filename": "piconSat.zip",
+      "root": "piconSat",
+      "png_count": 269,
+      "size": 6923823,
+      "sha256": "c1d6adb5e4aa82bf9712064fbb07fc0a53cf298d76f256b82ac82338dde0c867",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/satellites/white/piconSat.zip",
+      "publication_source_id": "fullhd-production",
+      "path": "assets/warder/downloads/picons/satellites/white/piconSat.zip",
+      "resolution": [
+        220,
+        132
+      ],
+      "delivery": "canonical-220x132-v1",
+      "legacy_images_normalized": 269
+    }
+  },
+  "remove_paths": [
+    "assets/warder/downloads/picons/providers/220x132/piconProv_220x132.zip",
+    "assets/warder/downloads/picons/satellites/220x132/piconSat_220x132.zip",
+    "assets/warder/downloads/picons/providers/transparent-legacy/provider-transparent-canalplus.zip",
+    "assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk00.part",
+    "assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk01.part"
+  ]
+}
