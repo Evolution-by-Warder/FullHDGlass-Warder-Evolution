@@ -1,6 +1,6 @@
 from Components.MenuList import MenuList
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_SKIN
-from enigma import eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT
+from enigma import eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, BT_SCALE, BT_KEEP_ASPECT_RATIO
 from Tools.LoadPixmap import LoadPixmap
 
 selectionpng = LoadPixmap(cached=True, path=resolveFilename(SCOPE_CURRENT_SKIN, "skin_default/icons/selectioncross.png"))
@@ -9,7 +9,7 @@ def SelectionEntryComponent(description, value, index, selected, pict):
 	res = [
 		(description, value, index, selected, pict),
 		(eListboxPythonMultiContent.TYPE_TEXT, 140, 12, 900, 45, 0, RT_HALIGN_LEFT, description),
-		(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 55, 8, 75, 45, LoadPixmap(pict))
+		(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 55, 8, 75, 45, LoadPixmap(pict), None, None, BT_SCALE | BT_KEEP_ASPECT_RATIO)
 	]
 	if selected:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 8, 45, 45, selectionpng))

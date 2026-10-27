@@ -82,6 +82,16 @@ class RadioTests(unittest.TestCase):
             _warderDABStart=lambda:calls.append('DAB'),_warderRunChannelQueue=lambda:self.fail('Completed satellite queue restarted'))
         scope[node.name](screen)
         self.assertEqual(calls,['DAB']);self.assertFalse(screen.warderDABPending)
+    def test_position_picons_scale_the_whole_image_instead_of_cropping(self):
+        path=ROOT/'source/package-root/usr/lib/enigma2/python/Components/g17SelectionList.py'
+        tree=ast.parse(path.read_text());node=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='SelectionEntryComponent')
+        content=SimpleNamespace(TYPE_TEXT=0,TYPE_PIXMAP_ALPHABLEND=2,TYPE_PIXMAP_ALPHATEST=1)
+        scope={'eListboxPythonMultiContent':content,'RT_HALIGN_LEFT':0,'LoadPixmap':lambda path:('full-size',path),'selectionpng':'selected','BT_SCALE':1,'BT_KEEP_ASPECT_RATIO':2}
+        exec(compile(ast.Module(body=[node],type_ignores=[]),'selector','exec'),scope)
+        row=scope[node.name]('Astra','235E',0,False,'220x132.png')
+        self.assertEqual(row[2][3:5],(75,45))
+        self.assertEqual(row[2][8],3)
+        self.assertEqual(row[0][1],'235E')
     def test_actual_skin_selector_places_dab_and_dvb_t_first(self):
         tree=ast.parse((PKG/'plugin.py').read_text());cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='warderPositionSelectorScr');node=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='startSelect')
         import os
