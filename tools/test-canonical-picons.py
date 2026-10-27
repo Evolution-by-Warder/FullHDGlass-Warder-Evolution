@@ -6,6 +6,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import os
 from pathlib import Path
 import shutil
 import struct
@@ -125,6 +126,30 @@ class CanonicalTests(unittest.TestCase):
                 raise AssertionError(path)
         publisher.p.commit(Client(),'parent',{'already-removed.zip':None},'Idempotent cleanup')
         self.assertEqual(next(c[2]['tree'] for c in calls if c[1]=='/git/trees'),[])
+
+    def test_path_bootstrap_creates_only_original_picon_directories(self):
+        tree=ast.parse((P/'plugin.py').read_text());fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='chckPath')
+        scope={'os':os};exec(compile(ast.Module(body=[fn],type_ignores=[]),'directory-bootstrap','exec'),scope)
+        base=self.base/'skin-files';self.assertTrue(scope['chckPath'](str(base)))
+        for root in ('picon','piconProv','piconSat'):self.assertTrue((base/root).is_dir())
+        for root in ('picon_220x132','piconProv_220x132','piconSat_220x132'):self.assertFalse((base/root).exists())
+        legacy=base/'picon_220x132';legacy.mkdir();(legacy/'user.png').write_bytes(b'user data')
+        self.assertTrue(scope['chckPath'](str(base)));self.assertEqual((legacy/'user.png').read_bytes(),b'user data')
+    def test_auxiliary_creation_rejects_retired_dimension_directories(self):
+        tree=ast.parse((P/'plugin.py').read_text());fn=next(n for c in tree.body if isinstance(c,ast.ClassDef) for n in c.body if isinstance(n,ast.FunctionDef) and n.name=='_warderAuxiliaryDestination')
+        config=SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par39=SimpleNamespace(value=str(self.base)))))
+        scope={'os':os,'config':config};exec(compile(ast.Module(body=[fn],type_ignores=[]),'aux-directory','exec'),scope);call=scope[fn.name]
+        for root in ('piconProv_220x132','piconSat_220x132'):
+            with self.assertRaises(ValueError):call(SimpleNamespace(),root)
+            self.assertFalse((self.base/root).exists())
+        self.assertEqual(call(SimpleNamespace(),'piconProv'),str(self.base/'piconProv'))
+    def test_channel_renderer_prefers_picon_when_old_220_directory_exists(self):
+        tree=ast.parse((ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py').read_text());fn=next(n for c in tree.body if isinstance(c,ast.ClassDef) for n in c.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
+        config=SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par39=SimpleNamespace(value=str(self.base)))))
+        scope={'os':os,'config':config};exec(compile(ast.Module(body=[fn],type_ignores=[]),'channel-path','exec'),scope)
+        for root,data in [('picon',b'current'),('picon_220x132',b'old')]:
+            folder=self.base/root;folder.mkdir();(folder/'station.png').write_bytes(data)
+        owner=SimpleNamespace(**{'__enaSH':2});self.assertEqual(scope['findPicon'](owner,'station'),str(self.base/'picon/station.png'))
 
     @unittest.skipIf(args.built_dir is None,'Pass --built-dir for real packages')
     def test_all_six_real_packages_are_original_named_complete_and_220x132(self):

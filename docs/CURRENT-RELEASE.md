@@ -1,4 +1,4 @@
-# FullHDGlass Warder Evolution 1.0.25
+# FullHDGlass Warder Evolution 1.0.26
 
 - Pôvodné balíky **piconProv.zip** a **piconSat.zip** obsahujú kompletné aktuálne sady 220×132. Transparentné, biele a čierne prevedenie zostáva zachované; varianty rozlišujú priečinky na serveri.
 - Nahradené pôvodné archívy a odstránené nadbytočné archívy s príponou rozmeru. Inštalačný IPK neobsahuje tieto veľké sady obrázkov.
@@ -9,3 +9,5 @@
 Po aktualizácii stiahnite požadované picony providerov/satelitov cez Ponuku sťahovania, aby sa obnovili obrázky v prijímači. Aktualizácia samotného IPK neprepisuje používateľské obrázky bez výberu sťahovania. Overenie na skutočnom prijímači ešte čaká na potvrdenie.
 
 Doplnená obnova zapamätanej starej cesty v zobrazovači po vyčistení zhodných kópií, takže nové logo sa nájde v pôvodnom adresári aj bez dodatočného ručného reštartu GUI. Obsah piconových balíkov zostáva overený a nezmenený.
+
+Kontrola aktualizácií sa spúšťa automaticky tri sekundy po otvorení konfigurácie a sieťové čítanie prebieha v pomocnom procese. Nedostupná sieť neblokuje menu. Pri zakladaní cesty skinu sa už nevytvárajú staré rozmerové priečinky; čítanie aj sťahovanie 220×132 uprednostňuje picon.

@@ -1,4 +1,4 @@
-> Aktualizácia **1.0.25**: kompletné picony providerov a satelitov pre tri pozadia používajú pôvodné balíky `piconProv.zip`/`piconSat.zip` a pôvodné adresáre. Kanálové picony 220×132 používajú `picon/`. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.26**: kompletné picony providerov a satelitov pre tri pozadia používajú pôvodné balíky `piconProv.zip`/`piconSat.zip` a pôvodné adresáre. Kanálové picony 220×132 používajú `picon/`. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 
 

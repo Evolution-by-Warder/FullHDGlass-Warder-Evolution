@@ -146,7 +146,7 @@ class g17RefTV(Renderer):
 			if self.__enaSH is None or self.__enaSH == 1:
 				x = ("","_400x240","_220x132")
 			else:
-				x = ("_220x132","","_400x240")
+				x = ("","_220x132","_400x240")
 			for i in x:
 				pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, typ + i, serviceName)
 				if os.path.isfile(pngname):

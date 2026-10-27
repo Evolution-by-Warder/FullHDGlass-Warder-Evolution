@@ -1,3 +1,9 @@
+# 1.0.26
+
+- Odstránené automatické zakladanie starých priečinkov piconProv_220x132, piconSat_220x132 a picon_220x132. Existujúce súbory sa touto zmenou nemažú.
+- Čítanie kanálových piconov uprednostňuje pôvodný adresár picon aj pri starších rozmerových nastaveniach.
+- Automatická kontrola aktualizácií pri každom otvorení konfigurácie beží mimo hlavného vlákna; ponuka a potvrdenie inštalácie zachované.
+
 # 1.0.25
 
 - Po úspešnej výmene balíkov sa obnoví aj zapamätaná cesta k logám zo starého adresára; nie je potrebný ručný reštart GUI kvôli tejto ceste.
