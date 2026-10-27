@@ -3278,9 +3278,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 225
       },
-      "bytes": 1021464,
+      "bytes": 1086694,
       "family": "channel-transparent",
-      "filename": "warder-canalplus_sk-220x132-transparent-e3667edb0c00e41c.zip",
+      "filename": "warder-canalplus-sk-220x132-transparent-d586238b0b632784.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -3510,21 +3510,36 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-transparent-e3667edb0c00e41c.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-220x132-transparent-d586238b0b632784.zip.part00"
       ],
-      "png_count": 229,
+      "png_count": 238,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "CANALPLUS_SK",
-      "sha256": "e3667edb0c00e41c6bbb5c3e65476b96484f65448d029d9d54c982ac10210cfb",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "d586238b0b632784305c85ab151a9b9c7516f3bbe08fccba95798ef292389dfb",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e/canalplus_sk"
+      "warder_key": "23.5e/canalplus_sk",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 229
+      }
     },
     {
       "ambiguous_exclusions": [],
@@ -3534,9 +3549,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 225
       },
-      "bytes": 6297835,
+      "bytes": 6650464,
       "family": "channel-white",
-      "filename": "warder-canalplus_sk-220x132-white-22bdd1f73237f487.zip",
+      "filename": "warder-canalplus-sk-220x132-white-d29254393fea135d.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -3766,22 +3781,36 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-white-22bdd1f73237f487.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-white-22bdd1f73237f487.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-220x132-white-d29254393fea135d.zip.part00"
       ],
-      "png_count": 229,
+      "png_count": 238,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "CANALPLUS_SK",
-      "sha256": "22bdd1f73237f487edb46b64477d77553d872a1b0abf59b0ccd2925f0e50dbfe",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "d29254393fea135dd17f9d036e3ecc83056d8a82f7660dde954beb653cbfc7a6",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e/canalplus_sk"
+      "warder_key": "23.5e/canalplus_sk",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 229
+      }
     },
     {
       "ambiguous_exclusions": [],
@@ -3791,9 +3820,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 227
       },
-      "bytes": 6174001,
+      "bytes": 6520360,
       "family": "channel-black",
-      "filename": "warder-canalplus_sk-220x132-black-7fd08e2a71a059ea.zip",
+      "filename": "warder-canalplus-sk-220x132-black-39d1ef24fa765bb8.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -4025,22 +4054,36 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-black-7fd08e2a71a059ea.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-220x132-black-7fd08e2a71a059ea.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-220x132-black-39d1ef24fa765bb8.zip.part00"
       ],
-      "png_count": 231,
+      "png_count": 240,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "CANALPLUS_SK",
-      "sha256": "7fd08e2a71a059ea9378c4d6367f264219552acb749ddeff9d6edd422dd4802b",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "39d1ef24fa765bb8b22ce05ae8f416566616daf35adb7c808ce8c39485c3afc5",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e/canalplus_sk"
+      "warder_key": "23.5e/canalplus_sk",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 231
+      }
     },
     {
       "ambiguous_exclusions": [],
@@ -4050,9 +4093,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 230
       },
-      "bytes": 1062975,
+      "bytes": 1128205,
       "family": "channel-transparent",
-      "filename": "warder-canalplus_cz-220x132-transparent-08001b145aa1f8b4.zip",
+      "filename": "warder-canalplus-cz-220x132-transparent-a5d72ebc759dd9ab.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -4287,21 +4330,36 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-transparent-08001b145aa1f8b4.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-220x132-transparent-a5d72ebc759dd9ab.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "08001b145aa1f8b44558a0fd4d3cd4b82b93a12577c62703c6babd7a7473aed6",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "a5d72ebc759dd9abae4fa89fd07bb7658887e7f3b147a0fbc99a15a3f4250330",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e/canalplus_cz"
+      "warder_key": "23.5e/canalplus_cz",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "ambiguous_exclusions": [],
@@ -4311,9 +4369,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 230
       },
-      "bytes": 6432072,
+      "bytes": 6784701,
       "family": "channel-white",
-      "filename": "warder-canalplus_cz-220x132-white-6809f772baf9e570.zip",
+      "filename": "warder-canalplus-cz-220x132-white-cb7429d3659a01e3.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -4548,22 +4606,36 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-white-6809f772baf9e570.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-white-6809f772baf9e570.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-220x132-white-cb7429d3659a01e3.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "6809f772baf9e5707278d428be5a64da7837fefcf27a3af72299dcd5adb8cae4",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "cb7429d3659a01e300aa08e2e4840330232a3ba8a0478a7f9986c0357bbda76e",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e/canalplus_cz"
+      "warder_key": "23.5e/canalplus_cz",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "ambiguous_exclusions": [],
@@ -4573,9 +4645,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 230
       },
-      "bytes": 6229983,
+      "bytes": 6576342,
       "family": "channel-black",
-      "filename": "warder-canalplus_cz-220x132-black-b584578f51eb3660.zip",
+      "filename": "warder-canalplus-cz-220x132-black-db6e2329876928cc.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -4810,22 +4882,36 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-black-b584578f51eb3660.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-220x132-black-b584578f51eb3660.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-220x132-black-db6e2329876928cc.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "220x132",
       "same_content_deduplications": [],
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "b584578f51eb3660db048a3295ca06d3380d87aa6d2c1cecebf1b14294fb9106",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "db6e2329876928cc35b2aa70f612a546b66eced3073874733421acc5fa305956",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e/canalplus_cz"
+      "warder_key": "23.5e/canalplus_cz",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "additive_completion": {
@@ -17481,9 +17567,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 223
       },
-      "bytes": 290845,
+      "bytes": 313041,
       "family": "channel-transparent",
-      "filename": "warder-canalplus_sk-50x30-transparent-b3d7b6c165d7ada2.zip",
+      "filename": "warder-canalplus-sk-50x30-transparent-24614b471b184216.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -17713,20 +17799,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-50x30-transparent-b3d7b6c165d7ada2.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-50x30-transparent-24614b471b184216.zip.part00"
       ],
-      "png_count": 229,
+      "png_count": 238,
       "resolution": "50x30",
       "selector_id": "CANALPLUS_SK",
-      "sha256": "b3d7b6c165d7ada286598d0a67bfde5702cf7c6aa5d9a0ab653ae26bad04a1e8",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "24614b471b1842169d70529848dcd62f622ec927775cedd67d46c55c15e3a71c",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 229
+      }
     },
     {
       "append_only_integration": {
@@ -17739,9 +17840,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 223
       },
-      "bytes": 3629683,
+      "bytes": 4048197,
       "family": "channel-transparent",
-      "filename": "warder-canalplus_sk-400x240-transparent-52195b58b95950cd.zip",
+      "filename": "warder-canalplus-sk-400x240-transparent-97031e4b29283bcd.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -17971,20 +18072,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-transparent-52195b58b95950cd.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-400x240-transparent-97031e4b29283bcd.zip.part00"
       ],
-      "png_count": 229,
+      "png_count": 238,
       "resolution": "400x240",
       "selector_id": "CANALPLUS_SK",
-      "sha256": "52195b58b95950cdebc2d76c51dc86aa09848a58d4afe7cd93683037a4f7474e",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "97031e4b29283bcd7f14f11196f04157b1c3efd37426e41e349bc885cff9a08c",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 229
+      }
     },
     {
       "append_only_integration": {
@@ -17997,9 +18113,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 223
       },
-      "bytes": 392860,
+      "bytes": 423065,
       "family": "channel-white",
-      "filename": "warder-canalplus_sk-50x30-white-ae488dda7265cabc.zip",
+      "filename": "warder-canalplus-sk-50x30-white-c3472aa02bf35779.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -18229,20 +18345,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-50x30-white-ae488dda7265cabc.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-50x30-white-c3472aa02bf35779.zip.part00"
       ],
-      "png_count": 229,
+      "png_count": 238,
       "resolution": "50x30",
       "selector_id": "CANALPLUS_SK",
-      "sha256": "ae488dda7265cabcd617fd1508f09eb8178a693a8fdf7e03776f8fa79a9c6daf",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "c3472aa02bf35779d9738849a86bed3fe30ba3f8bcfbdf8dfd8aae33ecff2a52",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 229
+      }
     },
     {
       "append_only_integration": {
@@ -18255,9 +18386,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 223
       },
-      "bytes": 5697998,
+      "bytes": 6548954,
       "family": "channel-white",
-      "filename": "warder-canalplus_sk-400x240-white-0e29f4a48a8a6e97.zip",
+      "filename": "warder-canalplus-sk-400x240-white-0cb323df46bbc43a.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -18487,21 +18618,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-white-0e29f4a48a8a6e97.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-white-0e29f4a48a8a6e97.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-400x240-white-0cb323df46bbc43a.zip.part00"
       ],
-      "png_count": 229,
+      "png_count": 238,
       "resolution": "400x240",
       "selector_id": "CANALPLUS_SK",
-      "sha256": "0e29f4a48a8a6e973a4997da4a1b3f61d3bcad0211f534a9df7b24bd6badbf36",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "0cb323df46bbc43a86abe37721896ad30036c810c0903fe0c92a4c570e659866",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 229
+      }
     },
     {
       "append_only_integration": {
@@ -18514,9 +18659,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 225
       },
-      "bytes": 396801,
+      "bytes": 429226,
       "family": "channel-black",
-      "filename": "warder-canalplus_sk-50x30-black-24e30599b72fc486.zip",
+      "filename": "warder-canalplus-sk-50x30-black-9a54e570a1a0c2c5.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -18748,20 +18893,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-50x30-black-24e30599b72fc486.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-50x30-black-9a54e570a1a0c2c5.zip.part00"
       ],
-      "png_count": 231,
+      "png_count": 240,
       "resolution": "50x30",
       "selector_id": "CANALPLUS_SK",
-      "sha256": "24e30599b72fc486d2cdf9eae5fb833443b72c3147ee4832df0616d1d80fb27f",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "9a54e570a1a0c2c5e00bd73653d374822a39a9dcd8ccae175c7a26365ab6f42c",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 231
+      }
     },
     {
       "append_only_integration": {
@@ -18774,9 +18934,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 225
       },
-      "bytes": 5446503,
+      "bytes": 6275220,
       "family": "channel-black",
-      "filename": "warder-canalplus_sk-400x240-black-3e7ba59f8668661f.zip",
+      "filename": "warder-canalplus-sk-400x240-black-7ebb29747521b066.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -19008,21 +19168,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-black-3e7ba59f8668661f.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_sk-400x240-black-3e7ba59f8668661f.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-sk-400x240-black-7ebb29747521b066.zip.part00"
       ],
-      "png_count": 231,
+      "png_count": 240,
       "resolution": "400x240",
       "selector_id": "CANALPLUS_SK",
-      "sha256": "3e7ba59f8668661feef5ef7cd6a8497c3b194cdf8e00694b8a36d6cad53aa8c4",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "7ebb29747521b0666f39d87da953b0e9bdf0e74cc88734517be9f58dfe40b8af",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 231
+      }
     },
     {
       "append_only_integration": {
@@ -19035,9 +19209,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 228
       },
-      "bytes": 295907,
+      "bytes": 318103,
       "family": "channel-transparent",
-      "filename": "warder-canalplus_cz-50x30-transparent-27fb6a05bb5d0854.zip",
+      "filename": "warder-canalplus-cz-50x30-transparent-9ea22827eed2eb4d.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -19272,20 +19446,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-50x30-transparent-27fb6a05bb5d0854.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-50x30-transparent-9ea22827eed2eb4d.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "50x30",
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "27fb6a05bb5d0854d5d7f3193ca456000f31406c315cf64f9050d37c33266f16",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "9ea22827eed2eb4de44c68cf5ca7d342d96f303b14662283dd6e98ccc97e9b76",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "append_only_integration": {
@@ -19298,9 +19487,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 228
       },
-      "bytes": 3649916,
+      "bytes": 4068430,
       "family": "channel-transparent",
-      "filename": "warder-canalplus_cz-400x240-transparent-3d12b4fca6668992.zip",
+      "filename": "warder-canalplus-cz-400x240-transparent-1e406f6cd4666a1b.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -19535,20 +19724,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-transparent-3d12b4fca6668992.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-400x240-transparent-1e406f6cd4666a1b.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "400x240",
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "3d12b4fca6668992aa5ac1091cc48930edbdc04bce8ca283267d9b5a95254740",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "1e406f6cd4666a1b90e1e173311cb3c86c94fe031078bfd0d17f42725d090d15",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "append_only_integration": {
@@ -19561,9 +19765,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 228
       },
-      "bytes": 403074,
+      "bytes": 433279,
       "family": "channel-white",
-      "filename": "warder-canalplus_cz-50x30-white-59dcdc518b4e7e2a.zip",
+      "filename": "warder-canalplus-cz-50x30-white-28e54ae8850795eb.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -19798,20 +20002,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-50x30-white-59dcdc518b4e7e2a.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-50x30-white-28e54ae8850795eb.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "50x30",
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "59dcdc518b4e7e2a7305d25fedc446521bb0cf720dace632fa25b04492d9e553",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "28e54ae8850795ebf12c49e41c09a8387e81e93f276da3c3f9920c9319b07a59",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "append_only_integration": {
@@ -19824,9 +20043,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 228
       },
-      "bytes": 5860885,
+      "bytes": 6711841,
       "family": "channel-white",
-      "filename": "warder-canalplus_cz-400x240-white-430cff09ff8a9f31.zip",
+      "filename": "warder-canalplus-cz-400x240-white-81c9c62debea67f1.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -20061,21 +20280,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-white-430cff09ff8a9f31.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-white-430cff09ff8a9f31.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-400x240-white-81c9c62debea67f1.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "400x240",
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "430cff09ff8a9f317394c5cde3b5d41eb3f8c6d12fd9d44ea02129587264c567",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "81c9c62debea67f15ffca43841966d8b9db0c41a9870d7e971bbc97d755440f5",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "append_only_integration": {
@@ -20088,9 +20321,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 228
       },
-      "bytes": 402864,
+      "bytes": 435289,
       "family": "channel-black",
-      "filename": "warder-canalplus_cz-50x30-black-46f75e5647210b17.zip",
+      "filename": "warder-canalplus-cz-50x30-black-776c51f7c77577b6.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -20325,20 +20558,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-50x30-black-46f75e5647210b17.zip.part00"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-50x30-black-776c51f7c77577b6.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "50x30",
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "46f75e5647210b179d3f3c2a2685c27203253c794cf9d36fa28b35e266bfe58d",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "776c51f7c77577b68dce5364ba1bd2d1c8b6c233b23208297866147888943fb6",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "append_only_integration": {
@@ -20351,9 +20599,9 @@
         "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
         "unrelated_preserved": 228
       },
-      "bytes": 5566115,
+      "bytes": 6394832,
       "family": "channel-black",
-      "filename": "warder-canalplus_cz-400x240-black-fb47d3fc2482478c.zip",
+      "filename": "warder-canalplus-cz-400x240-black-5b57ae95ba3ce6d0.zip",
       "included_references": [
         "1_0_16_17EB_C82_3_EB0000_0_0_0",
         "1_0_16_371F_C8E_3_EB0000_0_0_0",
@@ -20588,21 +20836,35 @@
         "1_0_1_7473_3F0_1_C00000_0_0_0",
         "1_0_1_7729_416_1_C00000_0_0_0",
         "1_0_1_79E0_443_1_C00000_0_0_0",
-        "1_0_1_8B5_1F4_13E_820000_0_0_0"
+        "1_0_1_8B5_1F4_13E_820000_0_0_0",
+        "1_0_2_133A_CA2_3_EB0000_0_0_0",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0"
       ],
       "kind": "provider",
       "orbital_position": "23.5e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-black-fb47d3fc2482478c.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus_cz-400x240-black-fb47d3fc2482478c.zip.part01"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-canalplus-cz-400x240-black-5b57ae95ba3ce6d0.zip.part00"
       ],
-      "png_count": 234,
+      "png_count": 243,
       "resolution": "400x240",
       "selector_id": "CANALPLUS_CZ",
-      "sha256": "fb47d3fc2482478cddc8a8dc076835218fa962f6fb9698d0f459254e332c04e2",
-      "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+      "sha256": "5b57ae95ba3ce6d0071a1fd7e0ef50b611b409ef0f35da8798c82eaffab7f848",
+      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "warder_key": "23.5e"
+      "warder_key": "23.5e",
+      "approved_canal_radio_completion": {
+        "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+        "replaced": 0,
+        "added": 9,
+        "unrelated_pngs_preserved": 234
+      }
     },
     {
       "append_only_integration": {
@@ -26731,134 +26993,94 @@
       "sha256": "855e005e444641200f81eaba56ca220d337a0223b9537cbff0375b862d125525"
     },
     {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_cz-220x132-black-b584578f51eb3660.zip.part00",
-      "sha256": "8b72728bf369fe26ba36fd8a890937acf2a70455a631d4e70e5d5c205111e310"
+      "filename": "warder-canalplus-cz-220x132-black-db6e2329876928cc.zip.part00",
+      "bytes": 6576342,
+      "sha256": "db6e2329876928cc35b2aa70f612a546b66eced3073874733421acc5fa305956"
     },
     {
-      "bytes": 2035679,
-      "filename": "warder-canalplus_cz-220x132-black-b584578f51eb3660.zip.part01",
-      "sha256": "b9aa256d5964cdeb97825e8b0f700f537dce11008b0f83360983ff2df2b027d2"
+      "filename": "warder-canalplus-cz-220x132-transparent-a5d72ebc759dd9ab.zip.part00",
+      "bytes": 1128205,
+      "sha256": "a5d72ebc759dd9abae4fa89fd07bb7658887e7f3b147a0fbc99a15a3f4250330"
     },
     {
-      "bytes": 1062975,
-      "filename": "warder-canalplus_cz-220x132-transparent-08001b145aa1f8b4.zip.part00",
-      "sha256": "08001b145aa1f8b44558a0fd4d3cd4b82b93a12577c62703c6babd7a7473aed6"
+      "filename": "warder-canalplus-cz-220x132-white-cb7429d3659a01e3.zip.part00",
+      "bytes": 6784701,
+      "sha256": "cb7429d3659a01e300aa08e2e4840330232a3ba8a0478a7f9986c0357bbda76e"
     },
     {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_cz-220x132-white-6809f772baf9e570.zip.part00",
-      "sha256": "07e72bf635194ee618924854dcd1b414fd3a2453f644259e1851a7c7e7c285f8"
+      "filename": "warder-canalplus-cz-400x240-black-5b57ae95ba3ce6d0.zip.part00",
+      "bytes": 6394832,
+      "sha256": "5b57ae95ba3ce6d0071a1fd7e0ef50b611b409ef0f35da8798c82eaffab7f848"
     },
     {
-      "bytes": 2237768,
-      "filename": "warder-canalplus_cz-220x132-white-6809f772baf9e570.zip.part01",
-      "sha256": "435ac5d00743fda43d3766029938445000346473a01e4c10a75c2c295f5dca80"
+      "filename": "warder-canalplus-cz-400x240-transparent-1e406f6cd4666a1b.zip.part00",
+      "bytes": 4068430,
+      "sha256": "1e406f6cd4666a1b90e1e173311cb3c86c94fe031078bfd0d17f42725d090d15"
     },
     {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_cz-400x240-black-fb47d3fc2482478c.zip.part00",
-      "sha256": "30c548d2ac94605d8e45d10457abe721cee1a6f80257bc5ddabcea94c92a7c31"
+      "filename": "warder-canalplus-cz-400x240-white-81c9c62debea67f1.zip.part00",
+      "bytes": 6711841,
+      "sha256": "81c9c62debea67f15ffca43841966d8b9db0c41a9870d7e971bbc97d755440f5"
     },
     {
-      "bytes": 1371811,
-      "filename": "warder-canalplus_cz-400x240-black-fb47d3fc2482478c.zip.part01",
-      "sha256": "334823d9f6b3df92373b48df4ebdf23d092ddbd6c4a49a8b0e78298f1621b981"
+      "filename": "warder-canalplus-cz-50x30-black-776c51f7c77577b6.zip.part00",
+      "bytes": 435289,
+      "sha256": "776c51f7c77577b68dce5364ba1bd2d1c8b6c233b23208297866147888943fb6"
     },
     {
-      "bytes": 3649916,
-      "filename": "warder-canalplus_cz-400x240-transparent-3d12b4fca6668992.zip.part00",
-      "sha256": "3d12b4fca6668992aa5ac1091cc48930edbdc04bce8ca283267d9b5a95254740"
+      "filename": "warder-canalplus-cz-50x30-transparent-9ea22827eed2eb4d.zip.part00",
+      "bytes": 318103,
+      "sha256": "9ea22827eed2eb4de44c68cf5ca7d342d96f303b14662283dd6e98ccc97e9b76"
     },
     {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_cz-400x240-white-430cff09ff8a9f31.zip.part00",
-      "sha256": "e9dc191c142f459a5dd1eca041615109f6267c3d08275ef21d1947d2b1b46863"
+      "filename": "warder-canalplus-cz-50x30-white-28e54ae8850795eb.zip.part00",
+      "bytes": 433279,
+      "sha256": "28e54ae8850795ebf12c49e41c09a8387e81e93f276da3c3f9920c9319b07a59"
     },
     {
-      "bytes": 1666581,
-      "filename": "warder-canalplus_cz-400x240-white-430cff09ff8a9f31.zip.part01",
-      "sha256": "fca8b351d58c7aaccecb5f2e9c20ded7bcfc4d53befb97e1bed1256d624d5a86"
+      "filename": "warder-canalplus-sk-220x132-black-39d1ef24fa765bb8.zip.part00",
+      "bytes": 6520360,
+      "sha256": "39d1ef24fa765bb8b22ce05ae8f416566616daf35adb7c808ce8c39485c3afc5"
     },
     {
-      "bytes": 402864,
-      "filename": "warder-canalplus_cz-50x30-black-46f75e5647210b17.zip.part00",
-      "sha256": "46f75e5647210b179d3f3c2a2685c27203253c794cf9d36fa28b35e266bfe58d"
+      "filename": "warder-canalplus-sk-220x132-transparent-d586238b0b632784.zip.part00",
+      "bytes": 1086694,
+      "sha256": "d586238b0b632784305c85ab151a9b9c7516f3bbe08fccba95798ef292389dfb"
     },
     {
-      "bytes": 295907,
-      "filename": "warder-canalplus_cz-50x30-transparent-27fb6a05bb5d0854.zip.part00",
-      "sha256": "27fb6a05bb5d0854d5d7f3193ca456000f31406c315cf64f9050d37c33266f16"
+      "filename": "warder-canalplus-sk-220x132-white-d29254393fea135d.zip.part00",
+      "bytes": 6650464,
+      "sha256": "d29254393fea135dd17f9d036e3ecc83056d8a82f7660dde954beb653cbfc7a6"
     },
     {
-      "bytes": 403074,
-      "filename": "warder-canalplus_cz-50x30-white-59dcdc518b4e7e2a.zip.part00",
-      "sha256": "59dcdc518b4e7e2a7305d25fedc446521bb0cf720dace632fa25b04492d9e553"
+      "filename": "warder-canalplus-sk-400x240-black-7ebb29747521b066.zip.part00",
+      "bytes": 6275220,
+      "sha256": "7ebb29747521b0666f39d87da953b0e9bdf0e74cc88734517be9f58dfe40b8af"
     },
     {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_sk-220x132-black-7fd08e2a71a059ea.zip.part00",
-      "sha256": "98997d8ebe8b20742b4418ae69dac885167734355e71fc50b9e4a55f89a03934"
+      "filename": "warder-canalplus-sk-400x240-transparent-97031e4b29283bcd.zip.part00",
+      "bytes": 4048197,
+      "sha256": "97031e4b29283bcd7f14f11196f04157b1c3efd37426e41e349bc885cff9a08c"
     },
     {
-      "bytes": 1979697,
-      "filename": "warder-canalplus_sk-220x132-black-7fd08e2a71a059ea.zip.part01",
-      "sha256": "04ace2a9c3033281f5e4d5286c037337b3a41e7120d3d7fc3f48fdd084136781"
+      "filename": "warder-canalplus-sk-400x240-white-0cb323df46bbc43a.zip.part00",
+      "bytes": 6548954,
+      "sha256": "0cb323df46bbc43a86abe37721896ad30036c810c0903fe0c92a4c570e659866"
     },
     {
-      "bytes": 1021464,
-      "filename": "warder-canalplus_sk-220x132-transparent-e3667edb0c00e41c.zip.part00",
-      "sha256": "e3667edb0c00e41c6bbb5c3e65476b96484f65448d029d9d54c982ac10210cfb"
+      "filename": "warder-canalplus-sk-50x30-black-9a54e570a1a0c2c5.zip.part00",
+      "bytes": 429226,
+      "sha256": "9a54e570a1a0c2c5e00bd73653d374822a39a9dcd8ccae175c7a26365ab6f42c"
     },
     {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_sk-220x132-white-22bdd1f73237f487.zip.part00",
-      "sha256": "282e1488be9656d9026f36536698b82528cd7fff33dad76d94f09c5691f7ceca"
+      "filename": "warder-canalplus-sk-50x30-transparent-24614b471b184216.zip.part00",
+      "bytes": 313041,
+      "sha256": "24614b471b1842169d70529848dcd62f622ec927775cedd67d46c55c15e3a71c"
     },
     {
-      "bytes": 2103531,
-      "filename": "warder-canalplus_sk-220x132-white-22bdd1f73237f487.zip.part01",
-      "sha256": "a8706cad33df0f3f1b27212c60c80a39f8df9ee12d15b1fcf130108e04bb6f7f"
-    },
-    {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_sk-400x240-black-3e7ba59f8668661f.zip.part00",
-      "sha256": "97ece8963336b9721a86795ea503ff78fc8201e5f7f546cb3bc9db0985e30c24"
-    },
-    {
-      "bytes": 1252199,
-      "filename": "warder-canalplus_sk-400x240-black-3e7ba59f8668661f.zip.part01",
-      "sha256": "064e3642f789bae510ee8138a473c415a2f6fcf870b825ebde34edf995d63c90"
-    },
-    {
-      "bytes": 3629683,
-      "filename": "warder-canalplus_sk-400x240-transparent-52195b58b95950cd.zip.part00",
-      "sha256": "52195b58b95950cdebc2d76c51dc86aa09848a58d4afe7cd93683037a4f7474e"
-    },
-    {
-      "bytes": 4194304,
-      "filename": "warder-canalplus_sk-400x240-white-0e29f4a48a8a6e97.zip.part00",
-      "sha256": "9b6ebbc326777ffeaec64bceabc06e88fb821d3ee43a646fd9b424d20b927148"
-    },
-    {
-      "bytes": 1503694,
-      "filename": "warder-canalplus_sk-400x240-white-0e29f4a48a8a6e97.zip.part01",
-      "sha256": "f5c7a1ebe3f598bfe62a1c54362a66d0164428009f6661b98d74505eac1ce0b5"
-    },
-    {
-      "bytes": 396801,
-      "filename": "warder-canalplus_sk-50x30-black-24e30599b72fc486.zip.part00",
-      "sha256": "24e30599b72fc486d2cdf9eae5fb833443b72c3147ee4832df0616d1d80fb27f"
-    },
-    {
-      "bytes": 290845,
-      "filename": "warder-canalplus_sk-50x30-transparent-b3d7b6c165d7ada2.zip.part00",
-      "sha256": "b3d7b6c165d7ada286598d0a67bfde5702cf7c6aa5d9a0ab653ae26bad04a1e8"
-    },
-    {
-      "bytes": 392860,
-      "filename": "warder-canalplus_sk-50x30-white-ae488dda7265cabc.zip.part00",
-      "sha256": "ae488dda7265cabcd617fd1508f09eb8178a693a8fdf7e03776f8fa79a9c6daf"
+      "filename": "warder-canalplus-sk-50x30-white-c3472aa02bf35779.zip.part00",
+      "bytes": 423065,
+      "sha256": "c3472aa02bf35779d9738849a86bed3fe30ba3f8bcfbdf8dfd8aae33ecff2a52"
     },
     {
       "bytes": 2785374,
@@ -27366,6 +27588,15 @@
     "station_references": 9,
     "artwork_files": 81,
     "package_count": 9,
+    "unrelated_pngs_preserved": true
+  },
+  "approved_canal_radio_completion_20261027": {
+    "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+    "ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+    "approval_sha256": "93d2788f9530bfb5d778e2fa5b2197629100a58a19a10cb3a647e69d3d8a1d3e",
+    "station_references": 9,
+    "artwork_files": 81,
+    "package_count": 18,
     "unrelated_pngs_preserved": true
   }
 }
