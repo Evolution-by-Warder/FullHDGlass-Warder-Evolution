@@ -61,7 +61,8 @@ class g17PicRef(Renderer):
 				self.instance.hide()
 				return
 			if what[0] != self.CHANGED_CLEAR:
-				sname = self.source.text
+				reference = self.source.text
+				sname = reference
 				nav = NavigationInstance.instance
 				playing = nav and nav.getCurrentlyPlayingServiceReference()
 				native_dab = is_native_dab(playing)
@@ -92,6 +93,16 @@ class g17PicRef(Renderer):
 												break
 										else:
 											break
+			if pngname == "" and not native_dab:
+				# Satellite radio can use a name-based or system-configured picon
+				# that the legacy reference-only skin lookup cannot resolve.
+				fields = (reference or "").split(":", 10)
+				if len(fields) >= 10 and fields[2].upper() in ("2", "A"):
+					try:
+						from Components.Renderer.Picon import getPiconName
+						pngname = getPiconName(reference) or ""
+					except (ImportError, AttributeError):
+						pass
 			if pngname == "":
 				pngname = self.findPicon("picon_default")
 				if pngname == "":

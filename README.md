@@ -1,6 +1,4 @@
-> Aktualizácia **1.0.26**: kompletné picony providerov a satelitov pre tri pozadia používajú pôvodné balíky `piconProv.zip`/`piconSat.zip` a pôvodné adresáre. Kanálové picony 220×132 používajú `picon/`. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
-
-
+> Aktualizácia **1.0.27**: opravené hľadanie piconov satelitných rádií v RDS a infobare. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 

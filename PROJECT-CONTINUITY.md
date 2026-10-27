@@ -1,3 +1,7 @@
+# Radio picon repair1.0.27 — 27October2026
+
+User reports BAYERN3 shows picon in channel list but fallback in g17PicRef RDS/infobar. Other ordinary radio and DAB work. Added native getPiconName fallback only for radio service types2/A after existing skin reference lookup fails, before default logo. Exact custom path retains priority; native DAB route untouched. Eight executed renderer regression tests passed; XML/graphics baseline unchanged. Publish1.0.27 after completeCI and byte verification; expected production headc78f0cca49102f3c7787850d9f239a5e3a3479b1. Receiver confirmation pending. No image regeneration needed.
+
 # Completed production — 27 October 2026
 
 FullHDGlass1.0.26 successfully published and active in production updater. CI40464125832 success; source81fd43b9a917e1e3e7b1b621b5555c11e3eafd88; activation22df05850e94da74dbe001b536c57e7e8852f6bb. IPK14198238 bytes SHA25652d68d8637bce1d03f1c35b4fa1cd49a675c986d8e154efdce660fec9888c6df. Owner confirmed FullHDGlass1.0.26, GSU13.40-r88 and PiconHub0.1.25 OK. No exhaustive all-hardware validation claimed. Separate new GSU cosmetic request: opaque system and channel signal meter backgrounds, tracked in GSU repository as r90.

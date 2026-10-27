@@ -1,3 +1,8 @@
+# 1.0.27
+
+- Záložné systémové vyhľadávanie piconov satelitného rádia v g17PicRef pred použitím náhradného loga.
+- Zachované vlastné picony, DAB a rádiové rozloženie; osem regresných testov.
+
 # 1.0.26
 
 - Odstránené automatické zakladanie starých priečinkov piconProv_220x132, piconSat_220x132 a picon_220x132. Existujúce súbory sa touto zmenou nemažú.

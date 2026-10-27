@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.26",
-  "expected_main_sha": "6b255473c94329ec10fb1ab1d84b8453f4dbec15",
-  "authorization": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon. Owner additionally requested verification of startup update checks on27October2026; nonblocking native child-process check preserves offer/consent.",
-  "changelog": "Pôvodné názvy piconProv.zip/piconSat.zip pre tri pozadia, kanálové picony 220×132 do picon. Staré rozmerové adresáre sa už nezakladajú. Kontrola aktualizácie pri každom otvorení beží na pozadí."
+  "version": "1.0.27",
+  "expected_main_sha": "c78f0cca49102f3c7787850d9f239a5e3a3479b1",
+  "authorization": "Owner reported satellite RDS radio picons missing while channel list and ordinary radio/DAB work; authorized restoring radio picon lookup without changing layout or DAB.",
+  "changelog": "Opravené hľadanie piconov satelitných rádií v infobare a RDS. Pri chýbajúcej priamej zhode sa použije systémové hľadanie podľa referencie alebo názvu stanice; DAB a grafika zachované."
 }

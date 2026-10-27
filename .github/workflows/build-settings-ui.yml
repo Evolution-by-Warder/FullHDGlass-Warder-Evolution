@@ -45,6 +45,8 @@ on:
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17satTV.py
       - design/picon-package-inputs.json
       - tools/build-canonical-picons.py
+      - tools/test-radio-picon.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef.py
       - tools/test-startup-update.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderAutoUpdate.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py
@@ -100,6 +102,7 @@ jobs:
           python3 tools/test-setup-style.py -v
           python3 tools/test-help-preview.py -v
           python3 tools/test-startup-update.py -q
+          python3 tools/test-radio-picon.py -v
           python3 tools/test-runtime-safety.py
           python3 tools/test-settings-publisher.py -v
           python3 tools/test-native-skin-publisher.py -v

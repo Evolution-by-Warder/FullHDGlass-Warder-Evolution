@@ -1,13 +1,7 @@
-# FullHDGlass Warder Evolution 1.0.26
+# FullHDGlass Warder Evolution 1.0.27
 
-- Pôvodné balíky **piconProv.zip** a **piconSat.zip** obsahujú kompletné aktuálne sady 220×132. Transparentné, biele a čierne prevedenie zostáva zachované; varianty rozlišujú priečinky na serveri.
-- Nahradené pôvodné archívy a odstránené nadbytočné archívy s príponou rozmeru. Inštalačný IPK neobsahuje tieto veľké sady obrázkov.
-- Sťahovanie zapisuje do pôvodných **piconProv/** a **piconSat/**. Staré adresáre s rozmerom sa už nevytvárajú. Po úspešnej inštalácii sa odstránia iba preukázateľne zhodné staré kópie; nezhodné používateľské súbory zostávajú zachované.
-- Kanálové picony 220×132 používajú predvolený **picon/**, vrátane staršieho mapovania. Vlastná používateľská cesta sa nemení.
-- Zachovaný aktuálny obsah priorít a opravy Canal+ SK/CZ.
+- Opravené chýbajúce picony satelitných rádií, vrátane AAC staníc s RDS, v spodnom paneli aj rádiovom infobare.
+- Vlastná presná zhoda piconu má prednosť. Keď sa nenájde, použije sa systémové vyhľadanie piconu podľa referencie alebo názvu stanice.
+- DAB používa pôvodné systémové hľadanie bez zmeny; rozloženie, obaly a grafika zostávajú zachované.
 
-Po aktualizácii stiahnite požadované picony providerov/satelitov cez Ponuku sťahovania, aby sa obnovili obrázky v prijímači. Aktualizácia samotného IPK neprepisuje používateľské obrázky bez výberu sťahovania. Overenie na skutočnom prijímači ešte čaká na potvrdenie.
-
-Doplnená obnova zapamätanej starej cesty v zobrazovači po vyčistení zhodných kópií, takže nové logo sa nájde v pôvodnom adresári aj bez dodatočného ručného reštartu GUI. Obsah piconových balíkov zostáva overený a nezmenený.
-
-Kontrola aktualizácií sa spúšťa automaticky tri sekundy po otvorení konfigurácie a sieťové čítanie prebieha v pomocnom procese. Nedostupná sieť neblokuje menu. Pri zakladaní cesty skinu sa už nevytvárajú staré rozmerové priečinky; čítanie aj sťahovanie 220×132 uprednostňuje picon.
+Osem regresných testov overuje AAC/štandardné rádio, prednosť vlastnej cesty, DAB, TV, prechod staníc, vymazanie a staršie image. Potvrdenie opravy na prijímači ešte čaká.
