@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+  "base_skin_commit": "7f6eebd3c9363a427d817cc502ed3fcf79703517",
+  "base_manifest_sha256": "beb4666e9a8e6ab649f45eb33ea26196b016041495060d95ed384d0cf3855932",
+  "artwork_files": 81,
+  "packages": [
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 3,
+      "unrelated_pngs_preserved": 2209,
+      "dab_pngs_preserved": 29,
+      "selector": "235E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "before_sha256": "85192e0e03cd67c59fa0a3063b36b35a7c821b4afe0649b8db828ff46ee69c36",
+      "sha256": "88a67075c13d49ce9cd03e94339ffcfb9f95ae7a881dc00d7d69ec74f91d009c",
+      "bytes": 16041017
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 3,
+      "unrelated_pngs_preserved": 2209,
+      "dab_pngs_preserved": 29,
+      "selector": "235E",
+      "resolution": "220x132",
+      "style": "black",
+      "before_sha256": "1e106813208e22572dc33e591ca67f6679b30ff8934f1c437701670f51a99155",
+      "sha256": "55f5de4bfcd2603bfbab474ea333ebba543450b75d1f02d5bb8560fd4aa8f5d3",
+      "bytes": 51371365
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 3,
+      "unrelated_pngs_preserved": 2209,
+      "dab_pngs_preserved": 29,
+      "selector": "235E",
+      "resolution": "220x132",
+      "style": "white",
+      "before_sha256": "86667e82dbe1e8d31cc6551c504f73058eb887564111585883525edb59349407",
+      "sha256": "268d27bccad0db31ba9edbbb0332f9cadb5541ebe59a0e5906983e2ceab074e4",
+      "bytes": 46912590
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 0,
+      "unrelated_pngs_preserved": 2060,
+      "dab_pngs_preserved": 0,
+      "selector": "235E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "before_sha256": "565af2e0defa208f5a8c49d08d952fb1f1c4ffa01eac8dc01388ca932eac570b",
+      "sha256": "3dd1df4519f8668c396bc8764c11511745099b65209921db18e74b54a4d2f434",
+      "bytes": 2583305
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 0,
+      "unrelated_pngs_preserved": 2060,
+      "dab_pngs_preserved": 0,
+      "selector": "235E",
+      "resolution": "50x30",
+      "style": "white",
+      "before_sha256": "334b5f476bf78f14aa3729104e9569629b70bda50513eb3c5b4c7bd69eed7aed",
+      "sha256": "6899acbfa0e422f5c980521ecc4a40778a6fc5ae6bf267b4db8296024c535614",
+      "bytes": 3328175
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 0,
+      "unrelated_pngs_preserved": 2060,
+      "dab_pngs_preserved": 0,
+      "selector": "235E",
+      "resolution": "50x30",
+      "style": "black",
+      "before_sha256": "c65da52775f094e5c59f35643e0e07bdf9c30cfae75b4c21f745a580dc533440",
+      "sha256": "9997293975900a416b81baf63b9a3b8641cc70ce1656ae34360e5501c0815f8e",
+      "bytes": 3323555
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 0,
+      "unrelated_pngs_preserved": 2060,
+      "dab_pngs_preserved": 0,
+      "selector": "235E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "before_sha256": "795cf60663e837cfcf2ed54889ff312b42ffd2ca843d6e941d68287d7cdcd1fd",
+      "sha256": "9be740e47d7724a9b4b6014120961fe9b413fc3980f231ca89676b85c7a13c75",
+      "bytes": 35843824
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 0,
+      "unrelated_pngs_preserved": 2060,
+      "dab_pngs_preserved": 0,
+      "selector": "235E",
+      "resolution": "400x240",
+      "style": "white",
+      "before_sha256": "c2f3ca63acd6c36af81c59017a5589a062ffb3462671de8322b192431678d2b9",
+      "sha256": "3992ace5ae81667083011c9ab8e106fad4bb7ffc74c9346bd115ae1707b0fa65",
+      "bytes": 41859414
+    },
+    {
+      "replaced": [
+        "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_133C_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+        "1_0_2_135F_CA2_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "matched_unchanged": 0,
+      "unrelated_pngs_preserved": 2060,
+      "dab_pngs_preserved": 0,
+      "selector": "235E",
+      "resolution": "400x240",
+      "style": "black",
+      "before_sha256": "22ba179cc1cf76091307b1f2198fd16c5cbf007163e9dae5205b516d808b0874",
+      "sha256": "204a65fbbf4e40865ef75de17c09985a17f6d64d1f8538d484643434228816ac",
+      "bytes": 40427835
+    }
+  ],
+  "receiver_plan_checks": 9,
+  "ipk_changed": false,
+  "unrelated_pngs_preserved": true,
+  "original_dab_preserved": true,
+  "public_parts_verified": 20,
+  "public_part_sha256_verified": true
+}
