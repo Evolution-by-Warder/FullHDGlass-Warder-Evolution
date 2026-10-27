@@ -40,16 +40,17 @@ class GitHub:
         for attempt in range(5):
             try:
                 request=Request(url,headers={'User-Agent':'FullHDGlass-release-verifier','Cache-Control':'no-cache'})
+                allowed_picons={'https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/picons/'+kind+'/'+style+'/'+name+'.zip' for kind,name in [('providers','piconProv'),('satellites','piconSat')] for style in ('transparent','black','white')}
                 if url.startswith('https://github.com/'+REPO+'/releases/download/'):
                     spec=importlib.util.spec_from_file_location('verified_preview_download',ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPreviewAssets.py')
                     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
                     context=build_opener(module._Redirect()).open(request,timeout=60)
-                elif url.startswith(RAW) or url=='https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip':context=urlopen(request,timeout=60)
+                elif url in allowed_picons or url.startswith(RAW) or url=='https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip':context=urlopen(request,timeout=60)
                 else:raise ValueError('Unexpected public package/asset URL')
                 with context as response:
                     final=response.geturl()
                     if url.startswith(RAW) and not final.startswith(RAW):raise ValueError('Unsafe raw-package redirect')
-                    if '/assets/warder/downloads/ui/help/g17_setup_pict.zip' in url and final!=url:raise ValueError('Unsafe Help archive redirect')
+                    if ('/assets/warder/downloads/ui/help/g17_setup_pict.zip' in url or url in allowed_picons) and final!=url:raise ValueError('Unsafe auxiliary archive redirect')
                     return response.read(size+1)
             except (HTTPError,OSError):
                 if attempt==4:raise
@@ -73,7 +74,7 @@ def blob(client,data):
 
 def commit(client,parent,files,message):
     tree=client.request('GET','/git/commits/'+parent)['tree']['sha']
-    entries=[{'path':path,'mode':'100644','type':'blob','sha':blob(client,data)} for path,data in files.items()]
+    entries=[{'path':path,'mode':'100644','type':'blob','sha':None if data is None else blob(client,data)} for path,data in files.items()]
     tree=client.request('POST','/git/trees',{'base_tree':tree,'tree':entries})['sha']
     return client.request('POST','/git/commits',{'parents':[parent],'tree':tree,'message':message})['sha']
 

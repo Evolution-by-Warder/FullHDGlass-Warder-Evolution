@@ -1,4 +1,5 @@
-> Aktualizácia 1.0.23 opravuje prepínanie pomocných náhľadov a odstraňuje obdĺžnikové pozadie bublín. Použite vstavaný aktualizátor. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.24**: kompletné picony providerov a satelitov pre tri pozadia používajú pôvodné balíky `piconProv.zip`/`piconSat.zip` a pôvodné adresáre. Kanálové picony 220×132 používajú `picon/`. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+
 
 
 # FullHDGlass - Warder Evolution

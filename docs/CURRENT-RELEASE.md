@@ -1,14 +1,9 @@
-# FullHDGlass Warder Evolution 1.0.23
+# FullHDGlass Warder Evolution 1.0.24
 
-- Načítavanie náhľadov používa natívny časovač a asynchrónny proces Enigmy, nezávisle od integrácie Twisted reactoru daného image.
-- Pri zmene výberu sa vyčistí predchádzajúci obrázok; chýbajúci alebo chybný náhľad už nezostane nahradený nesúvisiacou starou nápovedou.
-- Okolie bubliny je plne priehľadné. Tieňovanie a obrys bubliny zostávajú viditeľné, jej vnútro je jemne priehľadné. Texty, šípky a obsah ukážok zostávajú zachované.
-- Obrázky sa naďalej sťahujú oddelene; IPK nezahŕňa veľký archív.
+- Pôvodné balíky **piconProv.zip** a **piconSat.zip** obsahujú kompletné aktuálne sady 220×132. Transparentné, biele a čierne prevedenie zostáva zachované; varianty rozlišujú priečinky na serveri.
+- Nahradené pôvodné archívy a odstránené nadbytočné archívy s príponou rozmeru. Inštalačný IPK neobsahuje tieto veľké sady obrázkov.
+- Sťahovanie zapisuje do pôvodných **piconProv/** a **piconSat/**. Staré adresáre s rozmerom sa už nevytvárajú. Po úspešnej inštalácii sa odstránia iba preukázateľne zhodné staré kópie; nezhodné používateľské súbory zostávajú zachované.
+- Kanálové picony 220×132 používajú predvolený **picon/**, vrátane staršieho mapovania. Vlastná používateľská cesta sa nemení.
+- Zachovaný aktuálny obsah priorít a opravy Canal+ SK/CZ.
 
-Diagnostika prijímača potvrdila neporušený archív 1.0.22 a úspešnú samostatnú prípravu viacerých rozdielnych obrázkov; časť starých požadovaných názvov nemá obrázok v pôvodnom archíve. Nové správanie na prijímači ešte vyžaduje potvrdenie.
-
-Pripravené PNG sa trvalo ukladajú do `preview/` v nastavenej ceste skinu (napr. `/media/hdd/hdg17_files/preview/`). Po reštarte sa znovu použijú bez sťahovania či rozbaľovania archívu. Pomocný proces pred zobrazením pripraví malú RAM kópiu, aby čítanie disku neblokovalo menu. Pôvodné pomocné obrázky ani používateľské súbory sa neprepisujú.
-
-## Jeden pôvodný balík Nápoveda
-
-Upravené obrázky sú priamo v `g17_setup_pict.zip`, so všetkými 252 pôvodnými názvami v priečinku `g17_setup_pict/`. Ponuka Nápoveda aj automatická príprava používajú rovnaký obsah. Vydanie nahrádza pôvodný sťahovaný ZIP a súčasne aktualizuje jeho veľkosť a SHA256 v katalógu. Pôvodné neupravené obrázky zostávajú ako overiteľný zdroj v histórii projektu. Samostatný balík `warder-help-previews.zip` sa pre toto vydanie nepoužíva.
+Po aktualizácii stiahnite požadované picony providerov/satelitov cez Ponuku sťahovania, aby sa obnovili obrázky v prijímači. Aktualizácia samotného IPK neprepisuje používateľské obrázky bez výberu sťahovania. Overenie na skutočnom prijímači ešte čaká na potvrdenie.

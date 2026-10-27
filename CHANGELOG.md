@@ -1,3 +1,10 @@
+# 1.0.24
+
+- Kompletné aktuálne picony providerov a satelitov vo všetkých troch pozadiach nahrádzajú pôvodné ZIP-y pod názvami piconProv.zip a piconSat.zip.
+- Inštalácia používa pôvodné piconProv/ a piconSat/; existujúce zhodné kópie v adresároch s rozmerom sa odstraňujú až po úspešnom stiahnutí a porovnaní obsahu.
+- Kanálové picony 220×132 sa sťahujú do picon/; zjednotené aj staršie mapovanie a načítavanie.
+- Zachované aktuálne logá a opravy Canal+ SK/CZ; zostávajúce staré rozmery obrázkov normalizované pri zostavení balíkov.
+
 # 1.0.23
 
 - Jediný aktualizovaný balík Nápoveda `g17_setup_pict.zip` pre ručné stiahnutie aj automatické náhľady; pôvodné názvy obrázkov zachované.

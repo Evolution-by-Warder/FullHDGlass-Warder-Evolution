@@ -39,6 +39,13 @@ on:
       - tools/test-settings-glass.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsHeader.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsPig.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderCanonicalPicons.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17provTV.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17satTV.py
+      - design/picon-package-inputs.json
+      - tools/build-canonical-picons.py
+      - tools/test-canonical-picons.py
       - docs/CURRENT-RELEASE.md
       - design/live-update.json
       - docs/PRODUCTION-APPROVAL.json
@@ -101,6 +108,9 @@ jobs:
           python3 -m pip install --quiet Pillow
           curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/81ff0fb83709344d696c73ed70530ef09651916b/assets/warder/downloads/ui/help/g17_setup_pict.zip
           python3 tools/test-settings-batch.py -v
+          python3 tools/build-canonical-picons.py
+          python3 tools/test-canonical-picons.py --built-dir /tmp/warder-canonical-picons -q
+          python3 tools/test-auxiliary-hybrid-runtime.py
           python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/g17_setup_pict.zip
           python3 tools/test-preview-assets.py -v
           python3 tools/verify-preview-release-assets.py --help-previews /tmp/g17_setup_pict.zip

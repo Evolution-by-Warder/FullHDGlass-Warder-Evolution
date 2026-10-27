@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17"
 SYNC_PATH = PLUGIN_DIR / "warderPiconSync.py"
 PLUGIN_PATH = PLUGIN_DIR / "plugin.py"
-CATALOG_PATH = ROOT / "assets/warder/downloads.json"
+CATALOG_PATH = ROOT / "tools/fixtures/auxiliary-catalog-before-canonical-1.0.23.json"
 CANDIDATE_FIXTURE = ROOT / "tools/fixtures/piconhub-candidate-downloads-db5eec9f1.json"
 
 spec = importlib.util.spec_from_file_location("warder_hybrid_sync", str(SYNC_PATH))
@@ -48,7 +48,7 @@ for kind, domain in (("provider", "piconProv"), ("satellite", "piconSat")):
 # constructed and allowlisted at db5eec9, so the representations stay separate.
 candidate_metadata_url = candidate["assets"]["piconProv-warder-safe-b"]["url"]
 candidate_url = catalog["assets"]["piconProv-warder-safe-b"]["url"]
-main_url = catalog["assets"]["piconProv-b"]["url"]
+main_url = catalog["assets"]["piconProv-b"]["url"].replace("/warder-modernization-work/", "/main/")
 assert sync.trusted_auxiliary_url(candidate_url, "piconhub-aux-candidate")
 assert sync.AUXILIARY_CANDIDATE_COMMIT in candidate_url
 assert sync.AUXILIARY_CANDIDATE_MANIFEST_ARCHIVE_REF in candidate_metadata_url
@@ -148,9 +148,9 @@ if archive_dir:
 with PLUGIN_PATH.open(encoding="utf-8") as f:
     plugin = f.read()
 assert 'self._warderRunAuxiliaryComposite(self.menuListAll[x][0], self.type_download)' in plugin
-assert 'warderPiconSync.build_auxiliary_jobs(catalog, candidate, kind, variant_id)' in plugin
-assert 'self._warderAuxiliaryDestination(job["destination"])' in plugin
-assert 'self._warderFetchAuxiliaryArchive(job, archive)' in plugin
+assert 'from .warderCanonicalPicons import install' in plugin
+assert 'screen._warderAuxiliaryDestination(root)' in (PLUGIN_DIR/'warderCanonicalPicons.py').read_text()
+assert 'screen._warderFetchAuxiliaryArchive(asset,archive)' in (PLUGIN_DIR/'warderCanonicalPicons.py').read_text()
 assert 'shutil.rmtree' not in plugin[plugin.index("def _warderRunAuxiliaryComposite"):plugin.index("def _warderRemoveStaleChannelPicons")]
 assert "piconProv_220x132" in plugin and "piconSat_220x132" in plugin
 
