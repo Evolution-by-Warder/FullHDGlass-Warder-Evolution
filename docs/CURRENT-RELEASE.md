@@ -8,4 +8,7 @@
 - Oba rádiové infobary zostávajú funkčné podľa potvrdenia používateľa. Fyzické otestovanie novej voľby DAB v prijímači sa zatiaľ netvrdí.
 
 - Picony pozícií sa proporčne zmenšujú do existujúceho rámčeka: vykreslí sa celý obrázok, nie výrez z pôvodného rozlíšenia.
-- Obnovený pôvodný DVB-T CZ/SK balík v spoločnom katalógu obsahuje 2 674 PNG v prevedení Transparent 220×132. Biele a čierne prevedenie zostáva nedostupné bez overeného balíka.
+- Obnovený pôvodný DVB-T CZ/SK balík v spoločnom katalógu obsahuje 2 674 PNG v prevedení Transparent 220×132. Biele a čierne prevedenie je už dostupné z rovnakých transparentných log na schválených Warder podkladoch.
+
+
+Dátová aktualizácia 27.10.2026: [aktuálne piconové balíky a overenie](PICON-DATA-UPDATES.md). IPK 1.0.29 zostáva nezmenené.

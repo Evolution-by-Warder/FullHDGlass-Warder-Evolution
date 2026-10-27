@@ -1,3 +1,5 @@
+> Dátové balíky 27.10.2026: opravené Fun Rádio, Melody a regionálne logá Regina vo všetkých troch rozmeroch a pozadiach. DVB-T CZ/SK je dostupné v troch pozadiach. [Podrobnosti](docs/PICON-DATA-UPDATES.md).
+
 > Aktualizácia **1.0.29**: DAB a DVB-T na začiatku výberu s ikonami, celé picony pozícií bez orezania a spoločný Warder engine pre sťahovanie DAB. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
