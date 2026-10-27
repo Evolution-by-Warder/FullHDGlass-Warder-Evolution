@@ -1,0 +1,49 @@
+{
+  "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip",
+  "sha256": "277fe3e91a482c008342e35d41a4d2c340abb5c59e54ba714040f96a7a6e1d77",
+  "bytes": 21936094,
+  "png_count": 2674,
+  "unique_images": 203,
+  "source_git_blob": "8e071ce0a9512d0c3b0a56537895d19312901e95",
+  "source_repository": "Evolution-by-Warder/Trezor",
+  "source_commit": "9cdda4ab414e7d50a97ca9285db8ebbb75fba615",
+  "source_archive": "picontransparent-220x132-czskDTT_by_chocholousek.7z",
+  "source_author": "Original Chocholousek picon collection; individual station trademarks retain their authorship.",
+  "operation": "Repack original PNG bytes into verified ZIP parts; no image changes, guessed identities or frame generation.",
+  "styles": [
+    "transparent"
+  ],
+  "resolution": "220x132",
+  "parts": [
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part00",
+      "bytes": 4194304,
+      "sha256": "2a71574f152886bdab0f07275f70c360543b905c72c8f975adfc93e1ac615b7a"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part01",
+      "bytes": 4194304,
+      "sha256": "1fa975909d22fda17558f8014ad58741155cc5034c902b0f500b5bfa7b13dc69"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part02",
+      "bytes": 4194304,
+      "sha256": "3fb6cda3b30ca761f35b13f0fc631a8274e4228dc61fbff1654ccd1b7f99b2da"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part03",
+      "bytes": 4194304,
+      "sha256": "8239620476b338e09a7ba2bb350e355d2ade164fb1af1522a069cee16315c729"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part04",
+      "bytes": 4194304,
+      "sha256": "abd37aa9b1b203be2b4aa6e26ea39b7752eb58f23c24e1656ec83f2c87d58679"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part05",
+      "bytes": 964574,
+      "sha256": "dfe8dde0a770ebfdd45f106b499fd4a35b0e6c2b9866ffbccd6e49339f463d7e"
+    }
+  ]
+}
