@@ -36,4 +36,14 @@ class PublicationTests(unittest.TestCase):
  def test_unrelated_identical_old_logo_does_not_define_service_identity(self):
   result,r=p.patch_archive(archive([(A,b'shared-old'),(B,b'shared-old')]),{A:b'new'})
   self.assertEqual(unpack(result)[B],b'shared-old')
+ def test_explicit_canal_completion_adds_all_nine_carried_radio_references(self):
+  art={'1_0_2_%X_CA2_3_EB0000_0_0_0.png'%sid:('approved-%d'%sid).encode() for sid in range(0x1350,0x1359)}
+  for selector in ('CANALPLUS_SK','CANALPLUS_CZ'):
+   original=archive([(B,b'unrelated-provider-tv')])
+   result,r=p.patch_archive(original,art,p.complete_scope(selector,True))
+   self.assertEqual(set(unpack(result)),set(art)|{B});self.assertEqual(unpack(result)[B],b'unrelated-provider-tv');self.assertEqual(len(r['added']),9)
+   for name,data in art.items():self.assertEqual(unpack(result)[name],data)
+ def test_canal_completion_does_not_expand_other_operator_archives(self):
+  original=archive([(B,b'keep')]);result,r=p.patch_archive(original,{A:b'approved'},p.complete_scope('FREESAT',True))
+  self.assertEqual(result,original);self.assertEqual(r['added'],[])
 if __name__=='__main__':unittest.main()

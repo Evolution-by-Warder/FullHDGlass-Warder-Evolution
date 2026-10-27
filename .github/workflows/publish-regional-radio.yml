@@ -1,10 +1,11 @@
-name: Publish approved Fun Melody Regina radio picons
+name: Complete approved radio in Canal+ SK and CZ packages
 on:
   push:
     branches: [main]
     paths:
       - tools/publish-regional-radio.py
       - tools/test-regional-radio.py
+      - design/canal-radio-completion.json
       - .github/workflows/publish-regional-radio.yml
   workflow_dispatch:
 permissions:
@@ -18,13 +19,14 @@ jobs:
     timeout-minutes: 60
     env:
       PYTHONDONTWRITEBYTECODE: '1'
-      EXPECTED_WORK_HEAD: b9a67183391ebccc8d760d45e6c8151e439b458e
+      EXPECTED_WORK_HEAD: c5fc5ec6ef86e4de79305e892be3afbdf866f662
     steps:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            tools
-            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /tools/
+            /design/canal-radio-completion.json
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
       - uses: actions/setup-python@v5
@@ -35,4 +37,4 @@ jobs:
       - name: Verify and publish all relevant shared catalogue archives
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 -u tools/publish-regional-radio.py --source 90d088e13f95ddc36df4369d0be4fdb0698a8ec2 --publish
+        run: python3 -u tools/publish-regional-radio.py --source 90d088e13f95ddc36df4369d0be4fdb0698a8ec2 --publish --complete-canal-radio

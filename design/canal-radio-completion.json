@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "status": "owner-authorized",
+  "date": "2026-10-27",
+  "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
+  "selectors": [
+    "CANALPLUS_SK",
+    "CANALPLUS_CZ"
+  ],
+  "references": [
+    "1_0_2_135D_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_135E_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_135F_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_1345_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_1346_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_1347_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_133A_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_133B_CA2_3_EB0000_0_0_0.png",
+    "1_0_2_133C_CA2_3_EB0000_0_0_0.png"
+  ],
+  "owner_instruction": "Owner explicitly confirmed these stations are carried in the Canal+ packages (the operator previously named Skylink) and instructed: takze tam zarad aj tieto picony.",
+  "reason": "The downloadable provider archives were missing the carried radio references. Absence in those archives must not be mistaken for absence from the operator offering. Add the same approved artwork in every supported size and background.",
+  "sizes": [
+    "50x30",
+    "220x132",
+    "400x240"
+  ],
+  "styles": [
+    "transparent",
+    "white",
+    "black"
+  ],
+  "runtime_fastscan_tables_changed": false
+}
