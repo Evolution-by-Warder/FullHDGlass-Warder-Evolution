@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.28",
-  "expected_main_sha": "08e5de87b1d7b374092a345f0e3f27ac14b532f7",
-  "authorization": "Owner confirmed radio RDS picon works in1.0.27 but bottom OK infobar still shows fallback; authorized fixing all relevant infobar renderers.",
-  "changelog": "Zjednotené hľadanie rádiových piconov aj vo variantoch spodného infobaru. Existujúce cesty a systémové vyhľadávanie sú spoločné; animácie a časovanie zachované."
+  "version": "1.0.29",
+  "expected_main_sha": "9cbb2f7f710a1373dc95381f6c2295bafa03c560",
+  "authorization": "Owner explicitly requested DAB in the skin download menu and one shared Warder ecosystem, 27 October 2026.",
+  "changelog": "DAB / DAB+ a DVB-T na začiatku výberu zdrojov. Samostatné sťahovanie DAB používa rovnaký overený Warder engine a katalóg ako PiconHub. DAB picony sú aj v celkových balíkoch svojich satelitných pozícií. Sťahovanie DAB beží na pozadí, zachováva existujúce súbory a pri chybe obnoví zmeny."
 }

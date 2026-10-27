@@ -1,0 +1,16 @@
+{
+  "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+  "commit": "afb5e14e6d6a4e1eab1fa669148e1d423144f49b",
+  "source_path": "plugin/src/Plugins/Extensions/WarderPiconHub",
+  "policy": "Exact canonical Warder engine/parser/model copies. GUI is provided by the host application. One data source and the same installation lock as PiconHub; do not independently fork these files.",
+  "sha256": {
+    "warder_engine.py": "dc1b8a17477db6fab9fe539501d8b479978b004226438737f4d36df6a03f73de",
+    "warder_dab.py": "c51b13406200040be77cfb51a8c5de7a9f9c8e3e8717c074da41a7207897b6c7",
+    "warder_skin_sync.py": "fdb761014e98cb6f1c1672e6d948d769e55ae7a807a958e37cac2870f2f1afcb",
+    "warder_model.py": "b6c1ea0fd6d78f6dd1a3d0e1266806f11eb054bb279955f455446c00300802fa",
+    "warder_i18n.py": "129e4de81b41dc87aff3f2f16d14c3ee9c4efea4c6e9f1c0e9db4250bb4e83c6",
+    "radio_references.py": "36a28bb55a18314e87b855d14ce0fbb817fc2249ee469c9a1952d7715bf4d9a1",
+    "data/skin-menu.json": "93e865f02cd6fcdddc675aed5a682dc8ab063db90cde079efc1c91fc33c32300",
+    "data/translations.json": "9a62d32c03be9486aa9ca80fc31359389fc7c6a288306cf931a41361afb7c8e7"
+  }
+}

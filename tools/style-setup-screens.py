@@ -186,10 +186,10 @@ def strip_banner_geometry(tree):
     return tree
 
 
-def strip_reviewed_batch(tree):
+def strip_reviewed_batch(tree, records=None):
     # Exact reviewed AST replacements only. A changed save/action/installer node
     # no longer matches and therefore still trips the frozen 1.0.15 fingerprint.
-    records=json.loads((ROOT/'design/settings-batch261-logic.json').read_text())
+    if records is None:records=json.loads((ROOT/'design/settings-batch261-logic.json').read_text())
     mapping={(r['scope'],json.dumps(portable(ast.parse(r['after']).body[0]),sort_keys=True)):r['before'] for r in records}
     def restore(nodes, scope):
         result=[]
@@ -207,6 +207,7 @@ def strip_reviewed_batch(tree):
 
 
 def normalized(tree):
+    tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/settings-dab-logic.json').read_text()))
     tree=strip_reviewed_batch(tree)
     tree=strip_banner_geometry(tree)
     tree=strip_help_geometry_presentation(strip_help_background_presentation(strip_duplicate_value_presentation(strip_branding_presentation(copy.deepcopy(tree)))))
