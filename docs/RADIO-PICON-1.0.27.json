@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "version": "1.0.27",
+  "renderer": "g17PicRef",
+  "renderer_sha256": "ee6c0d2aaca18f7de3b2bad5fcc2463fced22a4be0946620f5ed460926e9244c",
+  "reported_station_reference": "1:0:A:28A2:40F:1:C00000:0:0:0:",
+  "symptom": "Channel list resolves BAYERN3 picon while legacy skin RDS/infobar returns default logo.",
+  "change": "For radio types2/A, prefer original picon directory, read existing legacy dimension directories, then native getPiconName before default. Explicit custom directories and TV lookup stay unchanged.",
+  "preserved": [
+    "exact custom picon precedence",
+    "native DAB playing-reference route",
+    "TV lookup",
+    "radio XML layout and graphics",
+    "RDS text and cover art"
+  ],
+  "regressions": 12,
+  "layout_checks": 22,
+  "receiver_confirmed": false,
+  "ci_run": 40472607046,
+  "source_commit": "0635b15b815f0b7529c5720a058fa36f41866b7b",
+  "payload_files_verified": 1329,
+  "additional_check": "AAC reference also resolves an existing legacy type1 filename; original source reference retained for native name lookup.",
+  "ci_conclusion": "success",
+  "activated_commit": "b31d2ba13776a05c557c5b0687920a63483cae3d",
+  "package": {
+    "version": "1.0.27",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.27_all.ipk",
+    "sha256": "96f2f2e368ece20f2054b7008854aac24ecb79fbc8f05b36ff3b9c95ddd28be4",
+    "changelog": "Opravené hľadanie piconov satelitných rádií v infobare a RDS. Pri chýbajúcej priamej zhode sa použije systémové hľadanie podľa referencie alebo názvu stanice; DAB a grafika zachované.",
+    "tag": "v1.0.27",
+    "bytes": 14198444,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.27/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.27_all.ipk"
+  }
+}

@@ -1,6 +1,6 @@
-# Radio picon repair1.0.27 — 27October2026
+# Published radio picon repair1.0.27 — 27October2026
 
-User reports BAYERN3 shows picon in channel list but fallback in g17PicRef RDS/infobar. Other ordinary radio and DAB work. Added native getPiconName fallback only for radio service types2/A after existing skin reference lookup fails, before default logo. Exact custom path retains priority; native DAB route untouched. Twelve executed renderer regression tests passed; XML/graphics baseline unchanged. Publish1.0.27 after completeCI and byte verification; expected production headc78f0cca49102f3c7787850d9f239a5e3a3479b1. Receiver confirmation pending. No image regeneration needed.
+CI40472607046 success. Source0635b15b815f0b7529c5720a058fa36f41866b7b, activatedb31d2ba13776a05c557c5b0687920a63483cae3d on main/work. Stable Latest and production updater offer1.0.27. IPK14198444 bytes SHA25696f2f2e368ece20f2054b7008854aac24ecb79fbc8f05b36ff3b9c95ddd28be4.12 radio renderer tests,22 layout tests, full artwork/package checks and1329 payload files verified. Existing picon directory first; existing legacy dimension directories read for radio only; native reference/name lookup before default. Exact custom path retains precedence, TV and native DAB preserved. XML and graphics baseline unchanged. Receiver test pending: BAYERN3 AAC radio with RDS should show existing station logo in bottom panel and infobar. No redownload/move required. Full evidence docs/RADIO-PICON-1.0.27.json. GSU r90 receiver acceptance is recorded in GSU repository.
 
 # Completed production — 27 October 2026
 
