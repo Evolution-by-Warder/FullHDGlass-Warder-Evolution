@@ -39,6 +39,8 @@ class WarderRadioArtwork(Renderer):
         self._attempts = 0
         self._retryAt = 0.0
         self._picload = None
+        self._songPair = None
+        self._missingSince = None
         self._timer = eTimer()
         self._timer.callback.append(self._poll)
         self._diagStart = None
@@ -67,6 +69,7 @@ class WarderRadioArtwork(Renderer):
     def preWidgetRemove(self, instance):
         self._generation += 1
         self._result = None
+        self._picload = None
         try:
             self._timer.stop()
         except Exception:
@@ -393,16 +396,21 @@ class WarderRadioArtwork(Renderer):
             return
         size = self.instance.size()
         self._picload = ePicLoad()
-        self._picload.PictureData.get().append(self._decoded)
+        decoder = self._picload
+        decoder.PictureData.get().append(lambda info=None: self._decoded(info, decoder))
         # TEST174: restore the receiver-proven ePicLoad setup as executable code.
         self._picload.setPara((size.width(), size.height(), 1, 1, False, 1, "#00000000"))
         if self._picload.startDecode(path) != 0:
             self._picload = None
             self.instance.hide()
 
-    def _decoded(self, info=None):
-        if self._picload and self.instance:
-            ptr = self._picload.getData()
+    def _decoded(self, info=None, decoder=None):
+        if decoder is None:
+            decoder = self._picload
+        if decoder is not self._picload:
+            return  # A late callback must never clear a newer image decoder.
+        if decoder and self.instance:
+            ptr = decoder.getData()
             if ptr is not None:
                 self.instance.setPixmap(ptr)
                 self.instance.show()
@@ -420,6 +428,8 @@ class WarderRadioArtwork(Renderer):
             self._serviceKey = serviceKey
             self._generation += 1
             self._key = self._requestedKey = ""
+            self._songPair = None
+            self._missingSince = None
             self._result = None
             self._showFallback()
         if self._result is not None:
@@ -462,7 +472,21 @@ class WarderRadioArtwork(Renderer):
         if artist and title and not self._diagSong:
             self._diagSong = True
             self._diag("SONG epoch=%.6f t=%.3f artist=%r title=%r" % (time.time(), self._elapsed(), artist, title))
-        key = self._norm(artist) + "|" + self._norm(title) if artist and title else ""
+        pair = (self._norm(artist), self._norm(title)) if artist and title else None
+        if not pair and self._key and not self._key.startswith('dab-sls:'):
+            now = time.monotonic()
+            if self._missingSince is None:
+                self._missingSince = now
+            if now - self._missingSince < 5.0:
+                self._timer.start(250, True)
+                return  # Keep the current song through a brief metadata gap.
+        elif pair:
+            self._missingSince = None
+        key = '|'.join(pair) if pair else ''
+        if (pair and self._songPair and pair == self._songPair[::-1]
+                and self._key and not self._key.startswith('dab-sls:')):
+            key = self._key  # Native tags and ICY may swap the same two fields.
+        self._songPair = pair
         if key != self._key:
             self._key = key
             self._attempts = 0

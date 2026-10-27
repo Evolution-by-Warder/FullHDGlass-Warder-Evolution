@@ -3,5 +3,5 @@
   "version": "1.0.32",
   "expected_main_sha": "f1056dae07fc478bbc566c05be0e0abc95744c99",
   "authorization": "Owner requested improved radio cover lookup and reconfirmed preserving correct artist/song matches over arbitrary performer images (27-28 October 2026).",
-  "changelog": "Doplnený overený archív obalov MusicBrainz/Cover Art Archive pri zachovanej kontrole interpreta a skladby. Neúspešné načítanie sa raz zopakuje, chybné stiahnutie neukončí hľadanie a veľkosť obrázkov má limit. Všetko beží na pozadí."
+  "changelog": "Opravené obaly pri opačnom poradí interpreta a skladby, miznutie obrázka pri obnovení metadát a oneskorenom dekódovaní. Doplnený overený archív obalov a jeden opakovaný pokus pri chybe. Kontrola správnej zhody zostáva zachovaná."
 }

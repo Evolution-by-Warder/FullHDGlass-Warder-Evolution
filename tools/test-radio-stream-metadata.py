@@ -127,6 +127,52 @@ class ArtworkRetryTests(unittest.TestCase):
         with patch.object(art.time,'monotonic',return_value=200):obj._poll()
         obj._request.assert_called_once_with('C','D','c|d');self.assertEqual(obj._attempts,0)
 
+class ArtworkStabilityTests(unittest.TestCase):
+    def setUp(self):
+        class Renderer:
+            def __init__(self):self.instance=Mock()
+        self.timer=Mock();self.timer.callback=[]
+        enum=types.SimpleNamespace(ePicLoad=Mock(),ePixmap=Mock(),eServiceReference=Mock(),eTimer=lambda:self.timer,iRdsDecoder=Mock(),iServiceInformation=Mock())
+        self.ref=reference();self.nav=types.SimpleNamespace(getCurrentService=lambda:None,getCurrentlyPlayingServiceReference=lambda:self.ref)
+        fake={'enigma':enum,'NavigationInstance':types.SimpleNamespace(instance=self.nav),'Components.Renderer.Renderer':types.SimpleNamespace(Renderer=Renderer),'Components.Converter.WarderRadioMetadata':m}
+        spec=importlib.util.spec_from_file_location('stable_artwork',PYTHON/'Components/Renderer/WarderRadioArtwork.py');self.art=importlib.util.module_from_spec(spec)
+        with patch.dict(sys.modules,fake):spec.loader.exec_module(self.art)
+        self.obj=self.art.WarderRadioArtwork();self.obj._serviceKey=self.ref.toString();self.obj._key='tiffany aris|vertigo';self.obj._requestedKey=self.obj._key;self.obj._songPair=('tiffany aris','vertigo')
+        self.obj._showPath=Mock();self.obj._showFallback=Mock();self.obj._request=Mock();self.obj._dabSlidePath=lambda:''
+
+    def test_metadata_field_order_change_keeps_the_current_cover(self):
+        self.obj._radioText=lambda:'Vertigo - Tiffany Aris'
+        self.obj._poll()
+        self.obj._showFallback.assert_not_called();self.obj._request.assert_not_called()
+        self.assertEqual(self.obj._key,'tiffany aris|vertigo')
+
+    def test_short_metadata_gap_keeps_cover_but_long_gap_clears_it(self):
+        self.obj._radioText=lambda:''
+        with patch.object(self.art,'current_song',return_value=('','')):
+            with patch.object(self.art.time,'monotonic',return_value=100):self.obj._poll()
+            with patch.object(self.art.time,'monotonic',return_value=104):self.obj._poll()
+            self.obj._showFallback.assert_not_called()
+            with patch.object(self.art.time,'monotonic',return_value=106):self.obj._poll()
+        self.obj._showFallback.assert_called_once()
+
+    def test_new_song_clears_previous_cover_without_grace(self):
+        self.obj._radioText=lambda:'Ukitas - Uncovered Paradise';self.obj._poll()
+        self.obj._showFallback.assert_called_once();self.obj._request.assert_called_once()
+
+    def test_station_change_never_retains_old_cover_during_metadata_gap(self):
+        self.nav.getCurrentlyPlayingServiceReference=lambda:reference(url='https%3a//different.example')
+        self.obj._radioText=lambda:''
+        with patch.object(self.art,'current_song',return_value=('','')):self.obj._poll()
+        self.obj._showFallback.assert_called_once();self.assertEqual(self.obj._key,'')
+
+    def test_late_decoder_callback_cannot_clear_new_decoder_or_pixmap(self):
+        old=Mock();new=Mock();self.obj._picload=new
+        self.obj._decoded(decoder=old)
+        self.assertIs(self.obj._picload,new);self.obj.instance.setPixmap.assert_not_called()
+        self.obj._decoded(decoder=new)
+        self.obj.instance.setPixmap.assert_called_once_with(new.getData.return_value)
+        self.assertIsNone(self.obj._picload)
+
 class NativeTextIntegrationTests(unittest.TestCase):
     def load(self,ref):
         timer=Mock();timer.callback=[]
@@ -221,6 +267,7 @@ class CatalogueArtworkTests(unittest.TestCase):
 
     def test_reversed_station_metadata_matches_both_complete_catalogue_fields(self):
         self.assertTrue(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas', 'Uncovered Paradise')]}))
+        self.assertTrue(self.lookup('Ziaris', 'Majk Spirit', {'SK': [self.item('Majk Spirit', 'Žiariš')]}))
 
     def test_reversed_fields_require_exact_artist_and_title(self):
         self.assertFalse(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas Orchestra', 'Uncovered Paradise')]}))
