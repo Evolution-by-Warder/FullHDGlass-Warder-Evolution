@@ -82,6 +82,11 @@ class RadioTests(unittest.TestCase):
             _warderDABStart=lambda:calls.append('DAB'),_warderRunChannelQueue=lambda:self.fail('Completed satellite queue restarted'))
         scope[node.name](screen)
         self.assertEqual(calls,['DAB']);self.assertFalse(screen.warderDABPending)
+    def test_reopening_mixed_dab_selection_retains_satellite_checkmarks(self):
+        tree=ast.parse((PKG/'plugin.py').read_text());cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='warderPositionSelectorScr');init=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='__init__')
+        screen=SimpleNamespace();scope={'self':screen,'selected':[sync.task_binding_for_package_selector('235E'),dict(radio.DAB_BINDING)],'warderPiconSync':sync,'warderRadio':radio}
+        exec(compile(ast.Module(body=init.body[1:3],type_ignores=[]),'selector-checkmarks','exec'),scope)
+        self.assertEqual(screen.selected,{'235E','DAB'})
     def test_position_picons_scale_the_whole_image_instead_of_cropping(self):
         path=ROOT/'source/package-root/usr/lib/enigma2/python/Components/g17SelectionList.py'
         tree=ast.parse(path.read_text());node=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='SelectionEntryComponent')

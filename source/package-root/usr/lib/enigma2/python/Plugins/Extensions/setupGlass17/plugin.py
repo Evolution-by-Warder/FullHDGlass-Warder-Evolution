@@ -10123,7 +10123,7 @@ class warderPositionSelectorScr(Screen):
 
 	def __init__(self, session, selected=None):
 		Screen.__init__(self, session)
-		self.selected = set(warderPiconSync.task_package_selectors_from_bindings(selected))
+		self.selected = set(warderPiconSync.task_package_selectors_from_bindings([item for item in (selected or []) if not warderRadio.is_dab(item)]))
 		if any(warderRadio.is_dab(item) for item in (selected or [])):self.selected.add("DAB")
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Select"))
