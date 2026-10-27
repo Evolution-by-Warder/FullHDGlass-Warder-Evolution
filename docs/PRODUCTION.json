@@ -5,16 +5,16 @@
   "approved_on": "2026-10-24",
   "approval": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "206190b45ef6d4bf4e4c7d7268dfdee2d8435616",
+  "source_commit": "06b69b37fc5aacc93062d70bcc306b3b7ca5a351",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.24",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.24_all.ipk",
-    "sha256": "8daa188362266ef3b24725b99de4725445dd683f7475d9d3b7b7b0035cc9ed83",
-    "changelog": "Pôvodné názvy balíkov a adresárov piconProv a piconSat pre všetky tri pozadia. Kanálové picony 220×132 sa ukladajú do picon. Zachované aktuálne logá a opravy Canal+ SK/CZ.",
-    "tag": "v1.0.24",
-    "bytes": 14197162,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.24/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.24_all.ipk"
+    "version": "1.0.25",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.25_all.ipk",
+    "sha256": "3c7601eaa5231818fb55e434c7f39ebf9972de61d35bcf286c8e7afaca614ddf",
+    "changelog": "Pôvodné piconProv.zip a piconSat.zip pre všetky tri pozadia; kanálové picony 220×132 do picon. Po odstránení zhodných starých kópií sa automaticky obnovia cesty zobrazovača.",
+    "tag": "v1.0.25",
+    "bytes": 14197184,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.25/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.25_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,7 +39,7 @@
     }
   },
   "validation": {
-    "workflow_run": 40457239770,
+    "workflow_run": 40458665595,
     "build_payloads_and_public_bytes": "verified",
     "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
   }
