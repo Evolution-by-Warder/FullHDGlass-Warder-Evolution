@@ -22880,6 +22880,33 @@
       "source_ref": "260fe8294a633dceef88988f77d6ff0e849fb956",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "warder_key": "45.0w"
+    },
+    {
+      "selector_id": "DVB-T-SK-CZ",
+      "family": "channel-transparent",
+      "resolution": "220x132",
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip",
+      "sha256": "277fe3e91a482c008342e35d41a4d2c340abb5c59e54ba714040f96a7a6e1d77",
+      "bytes": 21936094,
+      "png_count": 2674,
+      "parts": [
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part04",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part05"
+      ],
+      "source_repository": "Evolution-by-Warder/Trezor",
+      "source_ref": "9cdda4ab414e7d50a97ca9285db8ebbb75fba615",
+      "warder_key": "dtt",
+      "orbital_position": "dtt",
+      "original_source": {
+        "archive": "picontransparent-220x132-czskDTT_by_chocholousek.7z",
+        "git_blob": "8e071ce0a9512d0c3b0a56537895d19312901e95",
+        "unique_images": 203,
+        "images_changed": false
+      }
     }
   ],
   "parts": [
@@ -27097,6 +27124,36 @@
       "bytes": 531016,
       "filename": "warder-skylink-220x132-white-8fb9894c7cefd63c.zip.part02",
       "sha256": "a5cd6a909f685dadbfebc284f901a6ac74d52c07e8bea845c2586c5e70ee66aa"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part00",
+      "bytes": 4194304,
+      "sha256": "2a71574f152886bdab0f07275f70c360543b905c72c8f975adfc93e1ac615b7a"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part01",
+      "bytes": 4194304,
+      "sha256": "1fa975909d22fda17558f8014ad58741155cc5034c902b0f500b5bfa7b13dc69"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part02",
+      "bytes": 4194304,
+      "sha256": "3fb6cda3b30ca761f35b13f0fc631a8274e4228dc61fbff1654ccd1b7f99b2da"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part03",
+      "bytes": 4194304,
+      "sha256": "8239620476b338e09a7ba2bb350e355d2ade164fb1af1522a069cee16315c729"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part04",
+      "bytes": 4194304,
+      "sha256": "abd37aa9b1b203be2b4aa6e26ea39b7752eb58f23c24e1656ec83f2c87d58679"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part05",
+      "bytes": 964574,
+      "sha256": "dfe8dde0a770ebfdd45f106b499fd4a35b0e6c2b9866ffbccd6e49339f463d7e"
     }
   ],
   "schema": 1,
@@ -27161,5 +27218,12 @@
       }
     ],
     "owner_direction": "DAB radio services belong to their owning satellite packages; explicit instruction 27 October 2026."
+  },
+  "approved_terrestrial_restore": {
+    "source_report": "assets/warder/dvb-t-original-source.json",
+    "style": "transparent",
+    "resolution": "220x132",
+    "references": 2674,
+    "scope": "Original archived CZ/SK images; no claim of current complete station coverage or newly generated variants."
   }
 }
