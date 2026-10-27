@@ -1,0 +1,275 @@
+{
+  "schema": 1,
+  "status": "verified-build",
+  "resolution": "220x132",
+  "png_count": 2674,
+  "unique_images": 203,
+  "source_transparent_zip_sha256": "277fe3e91a482c008342e35d41a4d2c340abb5c59e54ba714040f96a7a6e1d77",
+  "master_sha256": {
+    "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+    "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+  },
+  "logo_fit": [
+    192,
+    104
+  ],
+  "operation": "Preserve original colours and service basenames; crop transparent margins, fit proportionally inside frozen Warder masters, alpha-composite without recolouring or invention. Transparent archive remains unchanged.",
+  "owner_authorization": "Explicit owner instruction to derive white and black from the transparent package, 27 October 2026.",
+  "packages": {
+    "white": {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip",
+      "bytes": 90962055,
+      "sha256": "baa0ea459a27e67f24d032bf340e491065287e723c2a50385f4f51d3ddb27429",
+      "png_count": 2674,
+      "parts": [
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part00",
+          "bytes": 4194304,
+          "sha256": "71e24c1a0c6e647659d5753f7b519dfe901c091a744d066123c4aca258b12df1"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part01",
+          "bytes": 4194304,
+          "sha256": "d321f48f2db86691d4838f6fb010a18516d296b24f61a76e9344cef2af8ff33a"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part02",
+          "bytes": 4194304,
+          "sha256": "46814c73f51095a3249026f6005002e16e646f2f7625a38da1d329af5488a389"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part03",
+          "bytes": 4194304,
+          "sha256": "131b097754bb81d1c42bfb889b9206fccab33b00f1093d4ff346d6ecd1b85652"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part04",
+          "bytes": 4194304,
+          "sha256": "e8c92ebb5bec894016ce456f4acd33b1a3ce296be284a99e65c3e38e7ef738bf"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part05",
+          "bytes": 4194304,
+          "sha256": "2b079e15c10e2ac026c07a4e400da3775b73f89220b53ee1a69eb486741a127c"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part06",
+          "bytes": 4194304,
+          "sha256": "566cbdbeb3fd962201ab6f85595e8eee62a7b85219d7e6e7c366e6daf724f4cd"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part07",
+          "bytes": 4194304,
+          "sha256": "29bff43fba224e02238e97efebca6730310698564bb93d7253fcb10b561cf8fb"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part08",
+          "bytes": 4194304,
+          "sha256": "2c877ad93f09d66a704e36a0284203a4fa10d2c93eaf61be40bfe382418361ad"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part09",
+          "bytes": 4194304,
+          "sha256": "1a632de856372a150f691656de1ea3544698fefb134f90a5b2add1f13fb5648b"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part10",
+          "bytes": 4194304,
+          "sha256": "f5a331d6757950142ce4223d458fbfcbb6296653938b67b7a087e8426d2aabd1"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part11",
+          "bytes": 4194304,
+          "sha256": "93770923737b7818af98f79bd63a3453a866da6ae3ee1cfcb9db5f0869b4782e"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part12",
+          "bytes": 4194304,
+          "sha256": "5d41b45dc38513822f793ff4f52bb78adcf5d9c6ae8f6ac99eccee6ad7413332"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part13",
+          "bytes": 4194304,
+          "sha256": "598073482bb285cc7dc3ffd58f4ffa24b8242e77ada207ad11a133bc71885bfa"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part14",
+          "bytes": 4194304,
+          "sha256": "51bf60a2af3cafccbcedbd3880651bc6c8b90c30efd16ee67cfe601ff042de14"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part15",
+          "bytes": 4194304,
+          "sha256": "5fb06fd247f48c0529d30b66e9e16ed7b2472d5b29d8559b197b80f7605917d9"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part16",
+          "bytes": 4194304,
+          "sha256": "e674eef02306efe6b3ed5b4787fa581a69e3a4321c7a6ca71794a054be864432"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part17",
+          "bytes": 4194304,
+          "sha256": "d8208244830671895d3cbf8781fab83bff213196a17834163ecc4c4b4574707f"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part18",
+          "bytes": 4194304,
+          "sha256": "e061bf00073d08ffe22b7d4a00c04911d600f00ed88901e70e12a4bffc7b4ecb"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part19",
+          "bytes": 4194304,
+          "sha256": "3aaba448e6ebde53a081f26d7d8f3e0ea04ff3cfb2de349333f0c2b69d1cc24b"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part20",
+          "bytes": 4194304,
+          "sha256": "3b424fb0e7ab13ae1b2fbd3e65548bef72c01debe02dba0a70785881c3a3d67d"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part21",
+          "bytes": 2881671,
+          "sha256": "b48e89c66b8864d3074ad0e460f968091fb25317f37a150b750413cd92a6c99b"
+        }
+      ]
+    },
+    "black": {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip",
+      "bytes": 91936784,
+      "sha256": "0fbdb8db39ccd901455848885436f24c945ea6dbdd8eacd5de66f75146c082b1",
+      "png_count": 2674,
+      "parts": [
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part00",
+          "bytes": 4194304,
+          "sha256": "229705b97e9f52d6b2c307485c80c263f3dbae5352d0956e508f5358e765bf52"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part01",
+          "bytes": 4194304,
+          "sha256": "3b0f3555a05ce5e52de6d8be24c18870898f1b4d08bd1e52258eeb7e007adb7b"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part02",
+          "bytes": 4194304,
+          "sha256": "dabc619e247d195981bbcf09a2dabde1814c561c08bbc96cad88f6abe36cd1d5"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part03",
+          "bytes": 4194304,
+          "sha256": "ffb2d99a3f31b625f3953a223f425d886a9b047cf4e5b93442c82a03f73a3a34"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part04",
+          "bytes": 4194304,
+          "sha256": "c3d6caec078c57e6a55fdf59336a507c0143f9d2a56167f0d1b15a748627f39a"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part05",
+          "bytes": 4194304,
+          "sha256": "ceee6b9cd39a7839df96ea1b5204c75442ec23fe39b7776f358f55e7960bb2de"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part06",
+          "bytes": 4194304,
+          "sha256": "a4eaaa5c62813a9105f0cfed7bfa88baef9393e2cf9cd8802125510f9945d781"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part07",
+          "bytes": 4194304,
+          "sha256": "2dabd6195381bb3ff6a9e563435394b8a8700a3d1f68fe776b37fbb8cd2d0bee"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part08",
+          "bytes": 4194304,
+          "sha256": "f0e809119af4b0e9e733c505ef0201a887d741a97eb48c10b07d6f70fbb534b9"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part09",
+          "bytes": 4194304,
+          "sha256": "a962ef9aa32a9baa0cacba8f45f54f91f3614ddf87315d929ad0ab6d9053d210"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part10",
+          "bytes": 4194304,
+          "sha256": "f83f7b4faae3751704eefee6224b75d073fd39cfcc86b154e8c101cfbf86bb52"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part11",
+          "bytes": 4194304,
+          "sha256": "d93ae3a009c6716fc8c1606f81012215f022bf82b1e8dea999186294e8466dcd"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part12",
+          "bytes": 4194304,
+          "sha256": "6506fb5608a27c1baceeb39ee89a9d4afaf802dff083a9d90cd1400a20f1b6f1"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part13",
+          "bytes": 4194304,
+          "sha256": "26f5f4ae8f24b8f2d4d2eeadc8e0f3b14667a116429679693b363ebad7ca7cf5"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part14",
+          "bytes": 4194304,
+          "sha256": "aa1b1ee9841a5521f9cccb6bbcc09f7db22cb02345b4edc344cc5fffd67ec9fb"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part15",
+          "bytes": 4194304,
+          "sha256": "a859ea1c3259a01d00170a72fe9628dc4553313adb71b9a922ce772f208524a0"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part16",
+          "bytes": 4194304,
+          "sha256": "109c95c42abebb8ca685d5effb8a1596e1515d4425032c4ce8e1333eacf933d8"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part17",
+          "bytes": 4194304,
+          "sha256": "9589ab88e7802714806be776ef7bcd1717e8699b969011c937c3856eb9584a68"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part18",
+          "bytes": 4194304,
+          "sha256": "f852467b93505507bd3fe024b05a0a9850f69f049879d0a4961004285aab94d6"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part19",
+          "bytes": 4194304,
+          "sha256": "42ec00921d453d3a9bee300ae00f9a3466a917e496bf7badda0d1636d91962dd"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part20",
+          "bytes": 4194304,
+          "sha256": "08438654b0dada4035eac75d05bcf5f202d694813bd407732a1333f98cbbac77"
+        },
+        {
+          "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part21",
+          "bytes": 3856400,
+          "sha256": "cdc058ffa6d72143d0c336b9f8a74b2f04b14da5a115c1d98e4166b7bf42155b"
+        }
+      ]
+    }
+  },
+  "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+  "source_ref": "c662265bd085a7916289975f7c4472a25d6c9b40",
+  "source_catalog": "picons/DVB-T/catalog/variants.json",
+  "verification": {
+    "white": {
+      "added": 2674,
+      "changed": 0,
+      "removed": 0,
+      "all_file_sha256_verified": true,
+      "user_file_preserved": true
+    },
+    "black": {
+      "added": 2674,
+      "changed": 0,
+      "removed": 0,
+      "all_file_sha256_verified": true,
+      "user_file_preserved": true
+    }
+  }
+}
