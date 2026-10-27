@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-24",
-  "approval": "Owner confirmed radio RDS picon works in1.0.27 but bottom OK infobar still shows fallback; authorized fixing all relevant infobar renderers.",
+  "approval": "Owner explicitly requested DAB in the skin download menu and one shared Warder ecosystem, 27 October 2026.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "88d42a001529102ed51301a04cb5137cb84d2a5b",
+  "source_commit": "a6c989c5d42334bc44b6300ca9d84793588140d2",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.28",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.28_all.ipk",
-    "sha256": "49d41833ac81fd728d4db9f47eb8047b4d5f3bb990a079d12682b02bc5233413",
-    "changelog": "Zjednotené hľadanie rádiových piconov aj vo variantoch spodného infobaru. Existujúce cesty a systémové vyhľadávanie sú spoločné; animácie a časovanie zachované.",
-    "tag": "v1.0.28",
-    "bytes": 14198502,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.28/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.28_all.ipk"
+    "version": "1.0.29",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.29_all.ipk",
+    "sha256": "1239f6cb2cc345da8a5a9eca71967a2ccdae0c4e4fcfe104e16f8c5b063ee633",
+    "changelog": "DAB / DAB+ a DVB-T na začiatku výberu zdrojov s ikonami. Opravené zmenšenie celých piconov pozícií namiesto orezávania. Samostatné sťahovanie DAB používa rovnaký overený Warder engine a katalóg ako PiconHub. DAB picony sú aj v celkových balíkoch svojich satelitných pozícií. Sťahovanie DAB beží na pozadí, zachováva existujúce súbory a pri chybe obnoví zmeny.",
+    "tag": "v1.0.29",
+    "bytes": 14258434,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.29/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.29_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,8 +39,8 @@
     }
   },
   "validation": {
-    "workflow_run": 40475278006,
+    "workflow_run": 40551517866,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed1.0.27 RDS picon but reported OK infobar still missing;1.0.28 fixes remaining renderer variants and awaits receiver confirmation."
+    "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded."
   }
 }

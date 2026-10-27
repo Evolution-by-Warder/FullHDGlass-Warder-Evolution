@@ -1,6 +1,6 @@
 {
-  "version": "1.0.28",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.28_all.ipk",
-  "sha256": "49d41833ac81fd728d4db9f47eb8047b4d5f3bb990a079d12682b02bc5233413",
-  "changelog": "Zjednotené hľadanie rádiových piconov aj vo variantoch spodného infobaru. Existujúce cesty a systémové vyhľadávanie sú spoločné; animácie a časovanie zachované."
+  "version": "1.0.29",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.29_all.ipk",
+  "sha256": "1239f6cb2cc345da8a5a9eca71967a2ccdae0c4e4fcfe104e16f8c5b063ee633",
+  "changelog": "DAB / DAB+ a DVB-T na začiatku výberu zdrojov s ikonami. Opravené zmenšenie celých piconov pozícií namiesto orezávania. Samostatné sťahovanie DAB používa rovnaký overený Warder engine a katalóg ako PiconHub. DAB picony sú aj v celkových balíkoch svojich satelitných pozícií. Sťahovanie DAB beží na pozadí, zachováva existujúce súbory a pri chybe obnoví zmeny."
 }
