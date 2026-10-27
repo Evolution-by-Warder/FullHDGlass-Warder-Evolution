@@ -1,3 +1,5 @@
+1.0.32: Preserve artist/song identity; add verified MusicBrainz/Cover Art Archive fallback, bounded artwork downloads and one delayed retry.
+
 1.0.31: Correct regional radio album artwork: search SK, CZ, then US; compare complete artist/title identities without accents. Unrelated tracks and artists stay rejected. No radio layout changes.
 
 1.0.29: Shared Warder DAB download source; DAB and DVB-T first. Same verified catalog/engine as PiconHub, background transfer and rollback. DAB included in owning satellite bundles.

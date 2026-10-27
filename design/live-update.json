@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.31",
-  "expected_main_sha": "0262816fad28912f3c6dad88998c83870da28037",
-  "authorization": "Owner explicitly requested repair and publication of the radio cover lookup after comparing HDF and Warder results (27 October 2026).",
-  "changelog": "Opravené vyhľadávanie obalov rádií: slovenský a český katalóg pred americkým, porovnávanie interpreta a skladby aj bez diakritiky. Zachovaná ochrana pred nesprávnymi obalmi a vyhľadávanie na pozadí."
+  "version": "1.0.32",
+  "expected_main_sha": "f1056dae07fc478bbc566c05be0e0abc95744c99",
+  "authorization": "Owner requested improved radio cover lookup and reconfirmed preserving correct artist/song matches over arbitrary performer images (27-28 October 2026).",
+  "changelog": "Doplnený overený archív obalov MusicBrainz/Cover Art Archive pri zachovanej kontrole interpreta a skladby. Neúspešné načítanie sa raz zopakuje, chybné stiahnutie neukončí hľadanie a veľkosť obrázkov má limit. Všetko beží na pozadí."
 }

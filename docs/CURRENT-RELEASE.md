@@ -1,9 +1,9 @@
-# FullHDGlass Warder Evolution 1.0.31
+# FullHDGlass Warder Evolution 1.0.32
 
-- Opravené vyhľadávanie obalov slovenských a českých skladieb: namiesto implicitného amerického katalógu sa prehľadávajú katalógy SK, CZ a následne US.
-- Meno interpreta a názov skladby sa porovnávajú aj bez diakritiky; celý názov a identita interpreta sa naďalej kontrolujú.
-- Nesprávny výsledok „Protože to nevzdám“ pre „Život nás má rád“ sa odmietne. Zobrazenie obalu sa nepovažuje automaticky za dôkaz jeho správnosti.
-- Vyhľadávanie zostáva na pozadí, úspešná zhoda zastaví ďalšie vyhľadávanie. Výpadok jedného katalógu neblokuje ďalší.
-- RDS, prednosť DAB MOT, grafika a rozloženie rádia zostávajú zachované.
+- Zachovaná kontrola interpreta aj skladby. Iný duet sa nevyberá iba preto, že obsahuje rovnakého speváka; samotná prítomnosť obalu nie je dôkazom správnej zhody.
+- Pre nahrávky nenájdené v obchode je doplnený MusicBrainz a Cover Art Archive: presná identita interpreta a skladby, obal patriaci priradenému vydaniu, iba schválená predná strana. Nežiadané live/remix/karaoke verzie sa odmietajú.
+- Chybné stiahnutie obrázka neukončí celé hľadanie. Obrázky majú limit 4 MiB a časový limit; odpovede katalógov majú limit 1 MiB.
+- Neúspešné hľadanie sa pre aktuálnu skladbu zopakuje najviac raz, po 15 sekundách. Prepnutie stanice stále zahadzuje staré výsledky.
+- Vyhľadávanie zostáva na pozadí. Vzhľad rádia, RDS a prednosť DAB MOT zostávajú zachované.
 
-Overenie: 30 automatických testov metadát a obalov vrátane oboch nahlásených skladieb, nesprávnej skladby/umelca a výpadku katalógu. Živé sondy sú zapísané v RADIO-CATALOGUE-PROBES.json; nejde o fyzické overenie na prijímači. Úplné zostavenie a overenie balíka vykoná CI pred aktiváciou aktualizácie.
+Overenie: 43 automatických testov vrátane zamietnutia inej verzie s hosťujúcim interpretom, inej skladby/čiastočného mena, väzby archívneho obalu na vydanie a obmedzeného opakovania. Živý Cover Art Archive v pracovnom prostredí vrátil schválený predný obal pôvodného albumu. Živá požiadavka MusicBrainz bola z tohto prostredia nedostupná; funkčnosť celej cesty na prijímači sa zatiaľ netvrdí. Úplné zostavenie a overenie verejných bajtov vykoná CI pred aktiváciou aktualizácie.

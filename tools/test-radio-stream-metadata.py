@@ -104,6 +104,29 @@ class ArtworkOwnershipTests(unittest.TestCase):
         with patch.object(art,'current_song',return_value=('','')):obj._poll()
         obj._showPath.assert_not_called();obj._showFallback.assert_called_once();self.assertEqual(obj._generation,4)
 
+class ArtworkRetryTests(unittest.TestCase):
+    def test_failed_song_gets_one_delayed_retry_and_then_stops(self):
+        class Renderer:
+            def __init__(self):self.instance=Mock()
+        timer=Mock();timer.callback=[]
+        enum=types.SimpleNamespace(ePicLoad=Mock(),ePixmap=Mock(),eServiceReference=Mock(),eTimer=lambda:timer,iRdsDecoder=Mock(),iServiceInformation=Mock())
+        ref=reference();nav=types.SimpleNamespace(instance=types.SimpleNamespace(getCurrentService=lambda:None,getCurrentlyPlayingServiceReference=lambda:ref))
+        fake={'enigma':enum,'NavigationInstance':nav,'Components.Renderer.Renderer':types.SimpleNamespace(Renderer=Renderer),'Components.Converter.WarderRadioMetadata':m}
+        spec=importlib.util.spec_from_file_location('retry_artwork',PYTHON/'Components/Renderer/WarderRadioArtwork.py');art=importlib.util.module_from_spec(spec)
+        with patch.dict(sys.modules,fake):spec.loader.exec_module(art)
+        obj=art.WarderRadioArtwork();obj._serviceKey=ref.toString();obj._key='a|b';obj._requestedKey='a|b';obj._attempts=1;obj._result=(0,'a|b','')
+        obj._showPath=Mock();obj._showFallback=Mock();obj._radioText=lambda:'A - B';obj._dabSlidePath=lambda:'';obj._request=Mock()
+        with patch.object(art.time,'monotonic',return_value=100):obj._poll()
+        obj._request.assert_not_called();self.assertEqual(obj._retryAt,115)
+        with patch.object(art.time,'monotonic',return_value=116):obj._poll()
+        obj._request.assert_called_once_with('A','B','a|b')
+        obj._request.reset_mock();obj._attempts=2;obj._result=(0,'a|b','')
+        with patch.object(art.time,'monotonic',return_value=200):obj._poll()
+        obj._request.assert_not_called()
+        obj._radioText=lambda:'C - D'
+        with patch.object(art.time,'monotonic',return_value=200):obj._poll()
+        obj._request.assert_called_once_with('C','D','c|d');self.assertEqual(obj._attempts,0)
+
 class NativeTextIntegrationTests(unittest.TestCase):
     def load(self,ref):
         timer=Mock();timer.callback=[]
@@ -159,7 +182,7 @@ class CatalogueArtworkTests(unittest.TestCase):
                 raise value
             return io.BytesIO(json.dumps({'results': value}).encode())
         import tempfile
-        with tempfile.TemporaryDirectory() as cache, patch.object(self.cls, '_cacheDir', return_value=cache), patch.object(self.art, 'urlopen', side_effect=opener):
+        with tempfile.TemporaryDirectory() as cache, patch.object(self.cls, '_cacheDir', return_value=cache), patch.object(self.art, 'urlopen', side_effect=opener), patch.object(self.cls, '_archiveCover', return_value=''):
             path = self.cls._lookupExact(artist, title, self.cls._norm(artist)+'|'+self.cls._norm(title))
             return bool(path and Path(path).read_bytes() == self.cover)
 
@@ -196,9 +219,76 @@ class CatalogueArtworkTests(unittest.TestCase):
     def test_catalogue_failure_does_not_prevent_next_region(self):
         self.assertTrue(self.lookup('Artist', 'Song', {'SK': TimeoutError(), 'CZ': [self.item('Artist', 'Song')]}))
 
+    def test_different_guest_rendition_does_not_replace_band_recording(self):
+        self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Po víne (feat. Robo Grigorov)')]}))
+
+    def test_featured_artist_substring_is_not_a_match(self):
+        self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Po víne (feat. Robo Grigorov Junior)')]}))
+
+    def test_featured_credit_does_not_allow_another_song(self):
+        self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Na vysokej skale (feat. Robo Grigorov)')]}))
+
     def test_accents_do_not_remove_words_or_version_markers(self):
         self.assertEqual(self.cls._norm('KATARÍNA Knechtová'), self.cls._norm('Katarina Knechtova'))
         self.assertNotEqual(self.cls._norm('Sen'), self.cls._norm('Sen (Live)'))
         self.assertNotEqual(self.cls._norm('Lucie'), self.cls._norm('Lucie Bílá'))
+
+
+class ArchiveArtworkTests(unittest.TestCase):
+    setUp = CatalogueArtworkTests.setUp
+    item = staticmethod(CatalogueArtworkTests.item)
+    rid = '64ea2902-76ff-489e-9a8d-0b285d5eff1d'
+    def fixture(self, **changes):
+        recording = {'title': 'Po víne', 'artist-credit': [{'name': 'Robo Grigorov & Midi'}],
+                     'releases': [{'id': self.rid, 'status': 'Official'}]}
+        recording.update(changes)
+        return {'recordings': [recording]}
+    def cover_document(self, **changes):
+        image = {'approved': True, 'front': True, 'thumbnails': {'500': 'http://coverartarchive.org/release/'+self.rid+'/33849001419-500.jpg'}}
+        image.update(changes)
+        return {'release': 'https://musicbrainz.org/release/'+self.rid, 'images': [image]}
+    def archive(self, data, cover=None):
+        import tempfile
+        values = [data, cover or self.cover_document()]
+        with tempfile.TemporaryDirectory() as cache, patch.object(self.cls, '_cacheDir', return_value=cache), patch.object(self.cls, '_json', side_effect=values) as fetch, patch.object(self.art, 'urlopen', return_value=io.BytesIO(self.cover_bytes)) as download:
+            self.cls._archiveNext = 0
+            result = self.cls._archiveCover('Robo Grigorov & Midi', 'Po víne', 'archive-key')
+            self.fetch_calls = fetch.call_args_list
+            self.download_calls = download.call_args_list
+            return bool(result)
+    @property
+    def cover_bytes(self):
+        return b'\xff\xd8' + b'x'*2048
+    def test_original_recording_finds_approved_front_from_its_release(self):
+        self.assertTrue(self.archive(self.fixture()))
+        self.assertIn('coverartarchive.org/release/'+self.rid, self.fetch_calls[1].args[0])
+        self.assertTrue(self.download_calls[0].args[0].full_url.startswith('https://'))
+    def test_duet_with_different_performers_does_not_replace_original(self):
+        self.assertFalse(self.archive(self.fixture(**{'artist-credit':[{'name':'Robo Grigorov & Kristina'}]})))
+        self.assertEqual(len(self.fetch_calls),1)
+    def test_wrong_song_by_same_artist_is_rejected(self):
+        self.assertFalse(self.archive(self.fixture(title='Edo')))
+    def test_unrequested_live_recording_is_rejected(self):
+        self.assertFalse(self.archive(self.fixture(disambiguation='live in Bratislava')))
+    def test_back_cover_and_unapproved_image_are_rejected(self):
+        for changes in ({'front':False},{'approved':False}):
+            with self.subTest(changes=changes):self.assertFalse(self.archive(self.fixture(),self.cover_document(**changes)))
+    def test_cover_from_another_release_is_rejected(self):
+        cover=self.cover_document();cover['release']='https://musicbrainz.org/release/other'
+        self.assertFalse(self.archive(self.fixture(),cover))
+    def test_cover_missing_in_first_release_allows_next_release(self):
+        data=self.fixture();other='11111111-1111-1111-1111-111111111111'
+        data['recordings'][0]['releases'].insert(0,{'id':other,'status':'Official'})
+        with patch.object(self.cls,'_json',side_effect=[data,OSError('404'),self.cover_document()]), patch.object(self.cls,'_saveCover',return_value='/tmp/cover.jpg'):
+            self.cls._archiveNext=0
+            self.assertEqual(self.cls._archiveCover('Robo Grigorov & Midi','Po víne','key'),'/tmp/cover.jpg')
+    def test_archive_is_only_consulted_after_store_lookup_fails(self):
+        with patch.object(self.cls,'_catalogueResults',return_value=iter(())),patch.object(self.cls,'_archiveCover',return_value='found') as fallback:
+            self.assertEqual(self.cls._lookupExact('A','B','key'),'found')
+        fallback.assert_called_once_with('A','B','key')
+    def test_bad_download_does_not_block_next_catalogue(self):
+        first=self.item('A','B');second=self.item('A','B')
+        with patch.object(self.cls,'_catalogueResults',return_value=iter((first,second))),patch.object(self.cls,'_saveCover',side_effect=['','good']):
+            self.assertEqual(self.cls._lookupExact('A','B','key'),'good')
 
 if __name__=='__main__':unittest.main()

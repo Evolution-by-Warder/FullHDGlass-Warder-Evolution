@@ -2,7 +2,7 @@
 
 > Dátové balíky 27.10.2026: opravené Fun Rádio, Melody a regionálne logá Regina vo všetkých troch rozmeroch a pozadiach. DVB-T CZ/SK je dostupné v troch pozadiach. [Podrobnosti](docs/PICON-DATA-UPDATES.md).
 
-> Aktualizácia **1.0.31**: opravené regionálne katalógy obalov a porovnávanie diakritiky pri internetovom aj RDS rádiu. Ochrana pred nesúvisiacimi obalmi zostáva zachovaná. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.32**: rozšírené dohľadávanie cez overený archív obalov a jeden opakovaný pokus pri zachovanej kontrole interpreta a skladby pri neúspešnom načítaní. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 
@@ -10,9 +10,9 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 27 October 2026
 
-**FullHDGlass 1.0.31** is the owner-authorized production release. Internet radio now feeds the existing song/album-artwork screen through native player tags and bounded background ICY metadata. Native RDS ownership, DAB MOT slideshow priority and approved radio graphics/layout are preserved. [Production record](docs/PRODUCTION.md) · [Current release](docs/CURRENT-RELEASE.md) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.31).
+**FullHDGlass 1.0.32** is the owner-authorized production release. Internet radio now feeds the existing song/album-artwork screen through native player tags and bounded background ICY metadata. Native RDS ownership, DAB MOT slideshow priority and approved radio graphics/layout are preserved. [Production record](docs/PRODUCTION.md) · [Current release](docs/CURRENT-RELEASE.md) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.32).
 
-Production packages and displayed version labels use **1.0.31**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then the current version from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
+Production packages and displayed version labels use **1.0.32**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then the current version from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
 
 The small IPK excludes the large preview archives. Help and type previews remain verified background downloads. Approved graphics, layouts, radio behavior, runtime identifiers, settings and original author credits are preserved. Exact package identity, SHA256, source revision and validation are recorded in docs/PRODUCTION.json after publication. Owner acceptance does not claim a new exhaustive physical receiver test.
 

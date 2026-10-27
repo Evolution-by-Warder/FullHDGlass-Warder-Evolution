@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import hashlib
 import json
 import os
+import re
 import threading
 import time
 import unicodedata
@@ -23,6 +24,9 @@ class WarderRadioArtwork(Renderer):
     """Exact current-song artwork without modifying OpenATV RdsInfoDisplay."""
     GUI_WIDGET = ePixmap
     FALLBACK_ARTWORK = "/usr/share/enigma2/hd_glass17/warder-radio-no-cover.png"
+    _archiveLock = threading.Lock()
+    _archiveNext = 0.0
+    _userAgent = "FullHDGlass-Warder-Evolution/1.0 (https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution)"
 
     def __init__(self):
         Renderer.__init__(self)
@@ -32,6 +36,8 @@ class WarderRadioArtwork(Renderer):
         self._requestedKey = ""
         self._result = None
         self._busy = False
+        self._attempts = 0
+        self._retryAt = 0.0
         self._picload = None
         self._timer = eTimer()
         self._timer.callback.append(self._poll)
@@ -183,6 +189,89 @@ class WarderRadioArtwork(Renderer):
         pass
 
     @classmethod
+    def _json(cls, url):
+        with urlopen(Request(url, headers={"User-Agent": cls._userAgent}), timeout=4.0) as response:
+            raw = response.read(1024 * 1024 + 1)
+        if len(raw) > 1024 * 1024:
+            raise ValueError("Artwork catalogue response too large")
+        return json.loads(raw.decode("utf-8"))
+
+    @classmethod
+    def _saveCover(cls, url, key):
+        path = os.path.join(cls._cacheDir(), hashlib.sha1(key.encode("utf-8")).hexdigest() + ".jpg")
+        if os.path.isfile(path):
+            return path
+        try:
+            with urlopen(Request(url, headers={"User-Agent": cls._userAgent}), timeout=5.0) as response:
+                payload = response.read(4 * 1024 * 1024 + 1)
+            if not 1024 < len(payload) <= 4 * 1024 * 1024 or not payload.startswith(bytes((255, 216))):
+                return ""
+            tmp = path + ".tmp"
+            with open(tmp, "wb") as output:
+                output.write(payload)
+            os.replace(tmp, path)
+            return path
+        except Exception:
+            return ""
+
+    @classmethod
+    def _archiveCover(cls, artist, title, key):
+        # A second catalogue for recordings absent from digital stores.
+        # Never infer a match from a search score or a partial artist credit.
+        def phrase(value):
+            return '"' + value[:256].replace('\\', '\\\\').replace('"', '\\"') + '"'
+        query = 'recording:' + phrase(title) + ' AND artist:' + phrase(artist)
+        try:
+            # MusicBrainz permits one request per second. This method is only
+            # reached by the background artwork worker, never by GUI painting.
+            with cls._archiveLock:
+                delay = cls._archiveNext - time.monotonic()
+                if delay > 0:
+                    time.sleep(delay)
+                cls._archiveNext = time.monotonic() + 1.1
+                data = cls._json('https://musicbrainz.org/ws/2/recording/?fmt=json&limit=5&query=' + quote(query))
+            seen = set()
+            for recording in data.get('recordings', [])[:5]:
+                credits = recording.get('artist-credit', [])
+                credited = ''.join(c.get('name', c.get('artist', {}).get('name', '')) + c.get('joinphrase', '')
+                                   for c in credits if isinstance(c, dict))
+                if (cls._norm(recording.get('title')) != cls._norm(title)
+                        or cls._artistIdentity(credited) != cls._artistIdentity(artist)):
+                    continue
+                note = cls._norm(recording.get('disambiguation'))
+                if any(tag in note and tag not in cls._norm(title)
+                       for tag in ('live', 'remix', 'karaoke', 'instrumental', 'acoustic')):
+                    continue
+                for release in recording.get('releases', []):
+                    rid = release.get('id', '')
+                    if (not re.fullmatch(r'[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}', rid)
+                            or rid in seen or release.get('status', 'Official') != 'Official'):
+                        continue
+                    if len(seen) >= 3:
+                        return ""
+                    seen.add(rid)
+                    try:
+                        cover = cls._json('https://coverartarchive.org/release/' + rid)
+                        if cover.get('release', '').rstrip('/') != 'https://musicbrainz.org/release/' + rid:
+                            continue
+                        for entry in cover.get('images', []):
+                            if entry.get('approved') is not True or entry.get('front') is not True:
+                                continue
+                            url = entry.get('thumbnails', {}).get('500', '')
+                            if url.startswith('http://coverartarchive.org/'):
+                                url = 'https://' + url[len('http://'):]
+                            if not url.startswith('https://coverartarchive.org/release/' + rid + '/'):
+                                continue
+                            path = cls._saveCover(url, key)
+                            if path:
+                                return path
+                    except Exception:
+                        continue
+        except Exception:
+            pass
+        return ""
+
+    @classmethod
     def _catalogueResults(cls, artist, title):
         term = quote(artist + " " + title)
         # An omitted country searches the US catalogue, which omits regional
@@ -263,23 +352,17 @@ class WarderRadioArtwork(Renderer):
             cls._diag("EXACT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
             art = (item.get("artworkUrl100") or "").replace("100x100bb", "600x600bb")
             if not art:
-                return ""
-            path = os.path.join(cls._cacheDir(), hashlib.sha1(key.encode("utf-8")).hexdigest() + ".jpg")
-            if not os.path.isfile(path):
-                payload = urlopen(Request(art, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0"}), timeout=2.5).read()
-                if not payload or len(payload) <= 1024 or not payload.startswith(bytes((255, 216))):
-                    return ""
-                tmp = path + ".tmp"
-                with open(tmp, "wb") as out:
-                    out.write(payload)
-                os.rename(tmp, path)
-            cls._diag("READY path=%s" % path)
-            return path
+                continue
+            path = cls._saveCover(art, key)
+            if path:
+                cls._diag("READY path=%s" % path)
+                return path
         cls._diag("NO_EXACT artist=%r title=%r" % (artist, title))
-        return ""
+        return cls._archiveCover(artist, title, key)
 
     def _request(self, artist, title, key):
         self._busy = True
+        self._attempts += 1
         self._result = None
         generation = self._generation
         def worker():
@@ -340,6 +423,9 @@ class WarderRadioArtwork(Renderer):
             self._result = None
             if generation == self._generation and key == self._key:
                 self._showPath(path if path else self.FALLBACK_ARTWORK)
+                if not path and self._attempts < 2:
+                    self._requestedKey = ""
+                    self._retryAt = time.monotonic() + 15.0
         if service is not None and not self._diagService:
             self._diagService = True
             self._diag("SERVICE epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
@@ -375,12 +461,14 @@ class WarderRadioArtwork(Renderer):
         key = self._norm(artist) + "|" + self._norm(title) if artist and title else ""
         if key != self._key:
             self._key = key
+            self._attempts = 0
+            self._retryAt = 0.0
             # TEST181: immediately replace an old song cover with the approved
             # neutral artwork while the next lookup runs, or when RDS disappears.
             self._showFallback()
         if not key:
             self._requestedKey = ""
-        elif not self._busy and key != self._requestedKey:
+        elif not self._busy and key != self._requestedKey and time.monotonic() >= self._retryAt:
             self._requestedKey = key
             self._diag("REQUEST epoch=%.6f t=%.3f artist=%r title=%r" % (time.time(), self._elapsed(), artist, title))
             self._request(artist, title, key)
