@@ -2,7 +2,7 @@
 
 > Dátové balíky 27.10.2026: opravené Fun Rádio, Melody a regionálne logá Regina vo všetkých troch rozmeroch a pozadiach. DVB-T CZ/SK je dostupné v troch pozadiach. [Podrobnosti](docs/PICON-DATA-UPDATES.md).
 
-> Aktualizácia **1.0.29**: DAB a DVB-T na začiatku výberu s ikonami, celé picony pozícií bez orezania a spoločný Warder engine pre sťahovanie DAB. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.30**: interpret, skladba a obal albumu aj pri internetovom rádiu v existujúcej rádiovej obrazovke. Metadáta sa čítajú z prehrávača alebo cez ICY na pozadí. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 
@@ -10,7 +10,7 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 27 October 2026
 
-**FullHDGlass 1.0.29** is the owner-authorized production release with shared Warder DAB downloads, source icons and proportional position picons. [Production record](docs/PRODUCTION.md) · [Approval](docs/PRODUCTION-APPROVAL.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.29).
+**FullHDGlass 1.0.30** is the owner-authorized production release. Internet radio now feeds the existing song/album-artwork screen through native player tags and bounded background ICY metadata. Native RDS ownership, DAB MOT slideshow priority and approved radio graphics/layout are preserved. [Production record](docs/PRODUCTION.md) · [Current release](docs/CURRENT-RELEASE.md) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.30).
 
 Production packages and displayed version labels use **1.0.29**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then the current version from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
 
@@ -96,3 +96,5 @@ Use [PROJECT-CONTINUITY.md](PROJECT-CONTINUITY.md) for the current state and [ba
 
 ASA DE belongs **only to standalone DAB and the nine complete 23.5E archives** (three sizes × three backgrounds). Per the owner's correction it is excluded from Canal+ SK/CZ, legacy Skylink and complete 19.2E packages. Those 30 archives are restored byte-for-byte to their exact pre-ASA versions; their 51 public parts were verified by size and SHA256, and all 36 current receiver plans passed. Every other station picon is preserved. The complete 23.5E ASA archives and standalone DAB (52 labels / 82 references) remain unchanged. The publisher enforces the restricted selector list in the [source approval](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/main/picons/DAB/asa/approval.json). [Current publication evidence](assets/warder/asa-radio-publication.json). No IPK update is required.
 
+
+Internet-radio cover integration: [design and provenance](docs/RADIO-STREAM-METADATA.md) · [verification](docs/RADIO-STREAM-VERIFICATION.json). HDF Radio installation is not required. The 22 metadata tests and full release CI passed; live receiver confirmation remains pending.
