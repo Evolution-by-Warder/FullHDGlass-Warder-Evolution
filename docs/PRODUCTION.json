@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-24",
-  "approval": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon.",
+  "approval": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon. Owner additionally requested verification of startup update checks on27October2026; nonblocking native child-process check preserves offer/consent.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "06b69b37fc5aacc93062d70bcc306b3b7ca5a351",
+  "source_commit": "81fd43b9a917e1e3e7b1b621b5555c11e3eafd88",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.25",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.25_all.ipk",
-    "sha256": "3c7601eaa5231818fb55e434c7f39ebf9972de61d35bcf286c8e7afaca614ddf",
-    "changelog": "Pôvodné piconProv.zip a piconSat.zip pre všetky tri pozadia; kanálové picony 220×132 do picon. Po odstránení zhodných starých kópií sa automaticky obnovia cesty zobrazovača.",
-    "tag": "v1.0.25",
-    "bytes": 14197184,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.25/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.25_all.ipk"
+    "version": "1.0.26",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.26_all.ipk",
+    "sha256": "52d68d8637bce1d03f1c35b4fa1cd49a675c986d8e154efdce660fec9888c6df",
+    "changelog": "Pôvodné názvy piconProv.zip/piconSat.zip pre tri pozadia, kanálové picony 220×132 do picon. Staré rozmerové adresáre sa už nezakladajú. Kontrola aktualizácie pri každom otvorení beží na pozadí.",
+    "tag": "v1.0.26",
+    "bytes": 14198238,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.26/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.26_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,7 +39,7 @@
     }
   },
   "validation": {
-    "workflow_run": 40458665595,
+    "workflow_run": 40464125832,
     "build_payloads_and_public_bytes": "verified",
     "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
   }
