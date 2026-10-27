@@ -1,11 +1,11 @@
 {
-  "version": "1.0.27",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.27_all.ipk",
-  "sha256": "96f2f2e368ece20f2054b7008854aac24ecb79fbc8f05b36ff3b9c95ddd28be4",
-  "changelog": "Opravené hľadanie piconov satelitných rádií v infobare a RDS. Pri chýbajúcej priamej zhode sa použije systémové hľadanie podľa referencie alebo názvu stanice; DAB a grafika zachované.",
-  "bytes": 14198444,
-  "source_commit": "0635b15b815f0b7529c5720a058fa36f41866b7b",
+  "version": "1.0.28",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.28_all.ipk",
+  "sha256": "49d41833ac81fd728d4db9f47eb8047b4d5f3bb990a079d12682b02bc5233413",
+  "changelog": "Zjednotené hľadanie rádiových piconov aj vo variantoch spodného infobaru. Existujúce cesty a systémové vyhľadávanie sú spoločné; animácie a časovanie zachované.",
+  "bytes": 14198502,
+  "source_commit": "88d42a001529102ed51301a04cb5137cb84d2a5b",
   "production_status": "production-update",
-  "production_tag": "v1.0.27",
+  "production_tag": "v1.0.28",
   "legacy_bridge_version": "1.0.18"
 }
