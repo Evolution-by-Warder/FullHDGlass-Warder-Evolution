@@ -91,3 +91,7 @@ Release 1.0.15 removes the six unsupported picon positions and their legacy down
 ## Current recovery and offline backups
 
 Use [PROJECT-CONTINUITY.md](PROJECT-CONTINUITY.md) for the current state and [backup/restore instructions](docs/BACKUP-RESTORE.md) for set `warder-backups-20261023`. Historical checkpoint entries do not override the current release or live publication catalog.
+
+## ASA DE picons — shared data update, 27 October 2026
+
+The exact official ASA logo matching the owner-supplied image is now available in **39 existing satellite/provider archives**: all available 19.2E, 23.5E, legacy Skylink, Canal+ SK and Canal+ CZ sizes and backgrounds. Each archive gained its exact orbital ASA reference; all original PNG bytes were retained. The shared PiconHub/FullHDGlass catalog was activated only after 69 public parts passed size/SHA256 verification and 36 receiver selection/download plans passed. [Publication evidence](assets/warder/asa-radio-publication.json) · [Successful publication](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/40582905419) · [Official source and nine artwork variants](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/DAB/asa). No IPK update is required; download the desired picon set again. Standalone DAB also includes ASA at both verified positions (52 labels / 82 references per style).
