@@ -152,7 +152,7 @@ assert 'from .warderCanonicalPicons import install' in plugin
 assert 'screen._warderAuxiliaryDestination(root)' in (PLUGIN_DIR/'warderCanonicalPicons.py').read_text()
 assert 'screen._warderFetchAuxiliaryArchive(asset,archive)' in (PLUGIN_DIR/'warderCanonicalPicons.py').read_text()
 assert 'shutil.rmtree' not in plugin[plugin.index("def _warderRunAuxiliaryComposite"):plugin.index("def _warderRemoveStaleChannelPicons")]
-assert "piconProv_220x132" in plugin and "piconSat_220x132" in plugin
+assert '("piconProv", "piconSat")' in plugin
 
 # All 19 supported catalogs carry the user-facing task text and compile-ready translations.
 locale_root = PLUGIN_DIR / "locale"
