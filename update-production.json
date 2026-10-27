@@ -1,6 +1,6 @@
 {
-  "version": "1.0.23",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk",
-  "sha256": "9192e250d5e94062c7232a9b74a8b7397fed8c2ef5f599f0d083a7099f788cbd",
-  "changelog": "Jeden aktualizovaný balík Nápoveda g17_setup_pict.zip. Opravené prepínanie pomocných obrázkov cez natívnu slučku Enigmy. Pri chýbajúcom náhľade nezostáva stará nápoveda. Odstránené obdĺžnikové pozadie okolo bublín, zachovaný obrys a obsah. Pripravené náhľady zostávajú v priečinku preview podľa nastaveného úložiska skinu."
+  "version": "1.0.24",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.24_all.ipk",
+  "sha256": "8daa188362266ef3b24725b99de4725445dd683f7475d9d3b7b7b0035cc9ed83",
+  "changelog": "Pôvodné názvy balíkov a adresárov piconProv a piconSat pre všetky tri pozadia. Kanálové picony 220×132 sa ukladajú do picon. Zachované aktuálne logá a opravy Canal+ SK/CZ."
 }

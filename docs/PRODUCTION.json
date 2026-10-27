@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-24",
-  "approval": "Owner reported stale help previews and requested correct changing previews and translucent bubbles across all settings; fix and deliver through the existing native updater.",
+  "approval": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "1961f3753a2817419b0c0253f86511929f328245",
+  "source_commit": "206190b45ef6d4bf4e4c7d7268dfdee2d8435616",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.23",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk",
-    "sha256": "9192e250d5e94062c7232a9b74a8b7397fed8c2ef5f599f0d083a7099f788cbd",
-    "changelog": "Jeden aktualizovaný balík Nápoveda g17_setup_pict.zip. Opravené prepínanie pomocných obrázkov cez natívnu slučku Enigmy. Pri chýbajúcom náhľade nezostáva stará nápoveda. Odstránené obdĺžnikové pozadie okolo bublín, zachovaný obrys a obsah. Pripravené náhľady zostávajú v priečinku preview podľa nastaveného úložiska skinu.",
-    "tag": "v1.0.23",
-    "bytes": 14196996,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.23/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk"
+    "version": "1.0.24",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.24_all.ipk",
+    "sha256": "8daa188362266ef3b24725b99de4725445dd683f7475d9d3b7b7b0035cc9ed83",
+    "changelog": "Pôvodné názvy balíkov a adresárov piconProv a piconSat pre všetky tri pozadia. Kanálové picony 220×132 sa ukladajú do picon. Zachované aktuálne logá a opravy Canal+ SK/CZ.",
+    "tag": "v1.0.24",
+    "bytes": 14197162,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.24/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.24_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,9 +39,8 @@
     }
   },
   "validation": {
-    "workflow_run": 40373902828,
-    "build_payloads_and_public_bytes": "All tests and payload verification passed; final publisher URL guard corrected separately, then public IPK and canonical raw Help archive verified before activation.",
-    "receiver_validation": "Native visual confirmation pending",
-    "publisher_regression_tests": 19
+    "workflow_run": 40457239770,
+    "build_payloads_and_public_bytes": "verified",
+    "receiver_validation": "Native visual confirmation of the new translucent settings is pending."
   }
 }
