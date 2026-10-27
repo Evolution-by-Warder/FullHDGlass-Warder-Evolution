@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.27",
-  "expected_main_sha": "c78f0cca49102f3c7787850d9f239a5e3a3479b1",
-  "authorization": "Owner reported satellite RDS radio picons missing while channel list and ordinary radio/DAB work; authorized restoring radio picon lookup without changing layout or DAB.",
-  "changelog": "Opravené hľadanie piconov satelitných rádií v infobare a RDS. Pri chýbajúcej priamej zhode sa použije systémové hľadanie podľa referencie alebo názvu stanice; DAB a grafika zachované."
+  "version": "1.0.28",
+  "expected_main_sha": "08e5de87b1d7b374092a345f0e3f27ac14b532f7",
+  "authorization": "Owner confirmed radio RDS picon works in1.0.27 but bottom OK infobar still shows fallback; authorized fixing all relevant infobar renderers.",
+  "changelog": "Zjednotené hľadanie rádiových piconov aj vo variantoch spodného infobaru. Existujúce cesty a systémové vyhľadávanie sú spoločné; animácie a časovanie zachované."
 }

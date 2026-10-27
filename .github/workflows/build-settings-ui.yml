@@ -45,6 +45,8 @@ on:
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17satTV.py
       - design/picon-package-inputs.json
       - tools/build-canonical-picons.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef2.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef3.py
       - tools/test-radio-picon.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef.py
       - tools/test-startup-update.py

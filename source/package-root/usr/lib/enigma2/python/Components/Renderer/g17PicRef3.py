@@ -17,6 +17,7 @@
 from Tools.LoadPixmap import LoadPixmap
 from Components.Pixmap import Pixmap
 from Components.Renderer.Renderer import Renderer
+from Components.Renderer.g17PicRef import g17PicRef
 from enigma import eServiceReference, eServiceCenter, ePixmap, eTimer
 from Tools.Directories import fileExists
 from Components.config import config
@@ -87,6 +88,15 @@ class g17PicRef3(Renderer):
 									else:
 										break
 			if pngname == "":
+				reference = self.source.text or ""
+				fields = reference.split(":", 10)
+				if len(fields) >= 10 and fields[2].upper() in ("2", "A"):
+					try:
+						from Components.Renderer.Picon import getPiconName
+						pngname = getPiconName(reference) or ""
+					except (ImportError, AttributeError):
+						pass
+			if pngname == "":
 				pngname = self.findPicon("picon_default")
 				if pngname == "":
 					try:
@@ -109,9 +119,4 @@ class g17PicRef3(Renderer):
 		return serviceName
 
 	def findPicon(self, serviceName):
-		try:
-			pngname = "%s/%s/%s.png" % (config.plugins.setupGlass17.par39.value, self.path, serviceName)
-			if fileExists(pngname):
-				return pngname
-		except: pass
-		return ""
+		return g17PicRef.findPicon(self, serviceName)

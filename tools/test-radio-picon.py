@@ -74,4 +74,21 @@ class RadioPiconTests(unittest.TestCase):
         del self.module.getPiconName
         self.change();self.assertEqual(self.renderer.pngname,'/default.png')
 
+class InfobarVariantTests(unittest.TestCase):
+    setUp=RadioPiconTests.setUp
+    def test_both_additional_renderers_share_paths_and_native_radio_fallback(self):
+        for name in ('g17PicRef2','g17PicRef3'):
+            tree=ast.parse(PATH.with_name(name+'.py').read_text())
+            cls=next(n for n in tree.body if isinstance(n,ast.ClassDef))
+            scope=dict(self.scope,g17PicRef=self.scope['g17PicRef'],eTimer=Mock)
+            exec(compile(ast.Module(body=[cls],type_ignores=[]),name,'exec'),scope)
+            owner=scope[name]()
+            with patch.dict(sys.modules,{'Components.Renderer.Picon':self.module}):owner.changed((0,))
+            self.assertEqual(owner.pngname,'/system/picon/bayern3.png',name)
+            self.assertEqual(self.native.call_args.args,(BAYERN,))
+            path='/skin/picon_220x132/1_0_A_28A2_40F_1_C00000_0_0_0.png'
+            self.scope['fileExists']=lambda candidate:candidate==path
+            self.assertEqual(owner.findPicon('1_0_A_28A2_40F_1_C00000_0_0_0'),path,name)
+            self.scope['fileExists']=lambda path:False
+
 if __name__=='__main__':unittest.main()

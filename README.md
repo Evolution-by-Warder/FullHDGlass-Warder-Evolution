@@ -1,4 +1,4 @@
-> Aktualizácia **1.0.27**: opravené hľadanie piconov satelitných rádií v RDS a infobare. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.28**: rádiové picony aj v spodnom infobare po OK. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 

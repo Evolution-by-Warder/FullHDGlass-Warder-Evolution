@@ -1,3 +1,7 @@
+# 1.0.28
+
+- Zjednotené hľadanie piconov satelitného rádia v oboch ďalších variantoch infobaru, zachované ich časovače a animácie.
+
 # 1.0.27
 
 - Záložné systémové vyhľadávanie piconov satelitného rádia v g17PicRef pred použitím náhradného loga.
