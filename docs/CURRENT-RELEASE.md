@@ -1,14 +1,10 @@
-# FullHDGlass Warder Evolution 1.0.29
+# FullHDGlass Warder Evolution 1.0.30
 
-- DAB / DAB+ a DVB-T sú prvé položky vo výbere zdrojov v Ponuke sťahovania.
-- DAB používa rovnaký overený Warder sťahovací kód, katalóg, picony a zámok ako PiconHub; samostatná inštalácia PiconHubu nie je potrebná.
-- Výber DAB používa existujúce voľby 220×132, pozadia, priečinka a režimu zahŕňajúceho rádio. Nepoužíva vymyslenú satelitnú pozíciu.
-- Sťahovanie beží na pozadí, priebeh sa zobrazuje v existujúcom okne; pred zápisom sa overujú balíky a pri chybe sa zmeny obnovia.
-- DAB picony sú aj v celkových balíkoch 19,2°E a 23,5°E v troch štýloch. Pôvodné obrázky zostali zachované.
-- Oba rádiové infobary zostávajú funkčné podľa potvrdenia používateľa. Fyzické otestovanie novej voľby DAB v prijímači sa zatiaľ netvrdí.
+- Internetové rádiá používajú náš existujúci obal albumu a riadok interpreta/skladby v rádiovej obrazovke.
+- Údaje sa prednostne čítajú z prehrávača OpenATV; chýbajúce údaje môže doplniť samostatné čítanie ICY metadát na pozadí.
+- Čítanie metadát má limity objemu, časový limit a jedného spoločného pracovníka. Ovládanie a prehrávanie na sieť nečakajú.
+- Prepnutie stanice zahodí oneskorený výsledok starého obalu. Neúplné údaje alebo nenájdený obal použijú existujúci neutrálny obrázok.
+- Rozloženie a grafika rádia sa nemenia. Natívny RDS text a prednosť DAB MOT obrázkov zostávajú zachované.
+- Ide o samostatnú Warder implementáciu inšpirovanú funkciou HDF Radio. Jeho binárne moduly, YouTube ani databáza staníc sa nepribaľujú.
 
-- Picony pozícií sa proporčne zmenšujú do existujúceho rámčeka: vykreslí sa celý obrázok, nie výrez z pôvodného rozlíšenia.
-- Obnovený pôvodný DVB-T CZ/SK balík v spoločnom katalógu obsahuje 2 674 PNG v prevedení Transparent 220×132. Biele a čierne prevedenie je už dostupné z rovnakých transparentných log na schválených Warder podkladoch.
-
-
-Dátová aktualizácia 27.10.2026: [aktuálne piconové balíky a overenie](PICON-DATA-UPDATES.md). IPK 1.0.29 zostáva nezmenené.
+Overenie: 22 automatických testov metadát, priebežné kontroly existujúceho balíka a verejných bajtov cez CI. Spojenie na tri živé streamy z pracovného prostredia skončilo časovým limitom. Fyzické overenie nového internetového rádia na prijímači sa zatiaľ netvrdí.

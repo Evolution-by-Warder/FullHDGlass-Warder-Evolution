@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.29",
-  "expected_main_sha": "176bf39ebe07a35a466ce29c7190f76704934387",
-  "authorization": "Owner explicitly requested DAB in the skin download menu and one shared Warder ecosystem, 27 October 2026.",
-  "changelog": "DAB / DAB+ a DVB-T na začiatku výberu zdrojov s ikonami. Opravené zmenšenie celých piconov pozícií namiesto orezávania. Samostatné sťahovanie DAB používa rovnaký overený Warder engine a katalóg ako PiconHub. DAB picony sú aj v celkových balíkoch svojich satelitných pozícií. Sťahovanie DAB beží na pozadí, zachováva existujúce súbory a pri chybe obnoví zmeny."
+  "version": "1.0.30",
+  "expected_main_sha": "8ec05afade855e919c8706b4413ce76f7f3fcb72",
+  "authorization": "Owner explicitly requested assimilation of HDF Radio song metadata and album-cover functionality into the Warder radio screen (27 October 2026).",
+  "changelog": "Internetové rádiá zobrazujú interpreta, skladbu a dohľadaný obal albumu v existujúcej rádiovej obrazovke. Prednostne sa používajú údaje prehrávača, doplnkovo ICY metadáta na pozadí. Opravené zahodenie starého obalu pri prepnutí stanice. Vzhľad rádia, RDS a DAB obrázky zostávajú zachované."
 }

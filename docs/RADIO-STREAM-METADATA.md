@@ -1,0 +1,11 @@
+# Internet radio song metadata and album covers
+
+Owner-directed integration, 27 October 2026. The functional reference was HDF Radio 2.28.0 (koivo & oerlgrey), distributed as GPL-2.0-or-later according to the supplied IPK control. Reference package SHA256: `196475c733147d02cf97d07145090d62e2be3eec64581d5417a6382755dd2203`.
+
+Static inspection found StreamMetadataMonitor, MetadataStreamProtocol, artist/song parsing, cover search, and a separate YouTube player. The selected Warder scope is metadata and album artwork only. This is an independent implementation using the existing OpenATV service metadata interface and standard ICY metadata; no HDF binaries or extracted implementation code are redistributed.
+
+The shared metadata reader first uses sTagArtist/sTagTitle from the current radio service, then a bounded ICY lookup if no usable pair is available. Only explicit HTTP(S) radio references are eligible, never TV streams. Existing decoded URL query escapes are preserved. The artwork renderer retains its RDS and native DAB MOT paths and existing strict catalogue matching. No arbitrary title-only cover is accepted. The existing RadioText label is updated only for internet radio; RDS text ownership and every XML coordinate/image remain unchanged.
+
+A single background worker is shared by text and artwork. It reads at most 256 KiB of audio to reach one metadata block (at most 4080 bytes), uses a three-second socket timeout, a six-second read deadline after headers, and checks no more frequently than every 15 seconds. Station ownership/generation discards late results. Cover network requests stay in the existing separate background lookup. Metadata is not logged; no URLs, histories or user data are uploaded. A failed lookup preserves the existing neutral cover fallback. Legacy Shoutcast servers that return a non-HTTP ICY status line may require native player tags; this fallback expects an ordinary HTTP response carrying icy-metaint.
+
+`python3 tools/test-radio-stream-metadata.py -v` checks native tags, encodings, apostrophes, truncation, size/time limits, nonblocking reads, shared-worker ownership, stale-cover rejection and scoped native-label updates. Live tests of three owner-provided Regiocast streams timed out from the build environment. Receiver playback and live metadata/cover acquisition must still be confirmed on the owner's box.

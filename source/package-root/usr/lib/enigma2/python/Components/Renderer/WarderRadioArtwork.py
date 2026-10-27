@@ -16,6 +16,7 @@ except ImportError:
 from enigma import ePicLoad, ePixmap, eServiceReference, eTimer, iRdsDecoder, iServiceInformation
 from Components.Renderer.Renderer import Renderer
 import NavigationInstance
+from Components.Converter.WarderRadioMetadata import current_song
 
 
 class WarderRadioArtwork(Renderer):
@@ -26,6 +27,8 @@ class WarderRadioArtwork(Renderer):
     def __init__(self):
         Renderer.__init__(self)
         self._key = ""
+        self._serviceKey = ""
+        self._generation = 0
         self._requestedKey = ""
         self._result = None
         self._busy = False
@@ -56,6 +59,8 @@ class WarderRadioArtwork(Renderer):
         self._timer.start(100, True)
 
     def preWidgetRemove(self, instance):
+        self._generation += 1
+        self._result = None
         try:
             self._timer.stop()
         except Exception:
@@ -253,6 +258,7 @@ class WarderRadioArtwork(Renderer):
     def _request(self, artist, title, key):
         self._busy = True
         self._result = None
+        generation = self._generation
         def worker():
             path = ""
             try:
@@ -261,7 +267,7 @@ class WarderRadioArtwork(Renderer):
             except Exception as err:
                 self._diag("ERROR %s: %s" % (err.__class__.__name__, err))
                 path = ""
-            self._result = (key, path)
+            self._result = (generation, key, path)
             self._busy = False
         thread = threading.Thread(target=worker)
         thread.daemon = True
@@ -293,18 +299,24 @@ class WarderRadioArtwork(Renderer):
         self._picload = None
 
     def _poll(self):
-        if self._result is not None:
-            key, path = self._result
-            self._result = None
-            if key == self._key:
-                # TEST181: a failed/empty catalogue result must never leave the
-                # approved centre frame blank.
-                self._showPath(path if path else self.FALLBACK_ARTWORK)
         try:
             nav = NavigationInstance.instance
             service = nav and nav.getCurrentService()
+            reference = nav and nav.getCurrentlyPlayingServiceReference()
+            serviceKey = reference.toString() if reference else ""
         except Exception:
-            service = None
+            service, reference, serviceKey = None, None, ""
+        if serviceKey != self._serviceKey:
+            self._serviceKey = serviceKey
+            self._generation += 1
+            self._key = self._requestedKey = ""
+            self._result = None
+            self._showFallback()
+        if self._result is not None:
+            generation, key, path = self._result
+            self._result = None
+            if generation == self._generation and key == self._key:
+                self._showPath(path if path else self.FALLBACK_ARTWORK)
         if service is not None and not self._diagService:
             self._diagService = True
             self._diag("SERVICE epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
@@ -332,6 +344,8 @@ class WarderRadioArtwork(Renderer):
             self._diagRadio = True
             self._diag("RADIOTEXT epoch=%.6f t=%.3f text=%r" % (time.time(), self._elapsed(), radioText))
         artist, title = self._split(radioText)
+        if not (artist and title):
+            artist, title = current_song(service, reference)
         if artist and title and not self._diagSong:
             self._diagSong = True
             self._diag("SONG epoch=%.6f t=%.3f artist=%r title=%r" % (time.time(), self._elapsed(), artist, title))
@@ -348,3 +362,4 @@ class WarderRadioArtwork(Renderer):
             self._diag("REQUEST epoch=%.6f t=%.3f artist=%r title=%r" % (time.time(), self._elapsed(), artist, title))
             self._request(artist, title, key)
         self._timer.start(250 if not key else 750, True)
+

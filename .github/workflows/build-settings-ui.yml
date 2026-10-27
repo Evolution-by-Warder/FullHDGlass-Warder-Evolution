@@ -52,6 +52,10 @@ on:
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef2.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef3.py
       - tools/test-radio-picon.py
+      - tools/test-radio-stream-metadata.py
+      - source/package-root/usr/lib/enigma2/python/Components/Converter/WarderRadioMetadata.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioWindows.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef.py
       - tools/test-startup-update.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderAutoUpdate.py
@@ -110,6 +114,7 @@ jobs:
           python3 tools/test-startup-update.py -q
           python3 tools/test-dab-shared-runtime.py -v
           python3 tools/test-radio-picon.py -v
+          python3 tools/test-radio-stream-metadata.py -v
           python3 tools/test-runtime-safety.py
           python3 tools/test-settings-publisher.py -v
           python3 tools/test-native-skin-publisher.py -v
@@ -168,3 +173,4 @@ jobs:
               --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA"
+

@@ -1,5 +1,5 @@
 Package: enigma2-plugin-skins-fullhdglass-warder-evolution
-Version: 1.0.29-1
+Version: 1.0.30-1
 Description: FullHDGlass - Warder Evolution - modern Enigma2 skin continuation
 Section: skins
 Priority: optional
@@ -12,3 +12,4 @@ Source: None
 Provides: enigma2-skin-fullhdglass17
 Replaces: enigma2-skin-fullhdglass17 (>= 1.0.18-1)
 Conflicts: enigma2-skin-fullhdglass17 (>= 1.0.18-1)
+

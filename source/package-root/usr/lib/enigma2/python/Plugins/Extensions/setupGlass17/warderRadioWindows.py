@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Radio InfoBar windows must preserve the native RDS framebuffer below."""
 from Components.Converter.WarderRadioOnly import is_radio_reference
+from Components.Converter.WarderRadioMetadata import current_song, stream_url, monitor
+from enigma import eTimer
 
 
 def _log(value):
@@ -12,11 +14,41 @@ class RadioWindowTransparency:
     def __init__(self, bar):
         self.bar = bar
         self.original = {}
+        self._songTimer = eTimer()
+        self._songTimer.callback.append(self.update_song)
+        if hasattr(bar, "onClose"):
+            bar.onClose.append(self.close)
+
+    def close(self):
+        self._songTimer.stop()
+        monitor.clear()
+
+    def update_song(self):
+        try:
+            nav = self.bar.session.nav
+            reference = nav.getCurrentlyPlayingServiceReference()
+            if not stream_url(reference):
+                self.close()
+                return
+            artist, title = current_song(nav.getCurrentService(), reference)
+            display = getattr(self.bar, "rds_display", None)
+            if display is not None:
+                label = display["RadioText"]
+                label.setText(artist + " - " + title if artist and title else "")
+                if artist and title:
+                    label.show()
+        except Exception:
+            pass
 
     def update(self):
         try:
             reference = self.bar.session.nav.getCurrentlyPlayingServiceReference()
             radio = is_radio_reference(reference)
+            if stream_url(reference):
+                self.update_song()
+                self._songTimer.start(1000)
+            else:
+                self.close()
             for name, screen in (("InfoBar", self.bar),
                                  ("ExtraInfo17", getattr(self.bar, "g17dialog", None))):
                 root = getattr(screen, "instance", None)
@@ -61,3 +93,4 @@ def install_radio_window_transparency(bar):
         extra.onShow.append(controller.update)
     controller.update()
     return controller
+

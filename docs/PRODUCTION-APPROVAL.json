@@ -2,16 +2,16 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "approved_on": "2026-10-27",
-  "production_version": "1.0.29",
+  "production_version": "1.0.30",
   "approved_by": "repository owner",
-  "authorization": "Owner explicitly requested DAB source selection in FullHDGlass downloads and shared code/data across the Warder ecosystem.",
+  "authorization": "Owner instruction: asimiluj ten plugin; clarified scope is internet-radio song metadata and album covers in the existing Warder radio UI.",
   "baseline": {
     "version": "1.0.16-test270",
     "source_commit": "b2e3841b953d79355cd2f9c285ee7fe91f7f59ef",
     "sha256": "1604df7dfdbc4f045547b9ea0d4299a450b71231b99eaaa9280f6d335f8dc9ff",
     "bytes": 14192888
   },
-  "scope": "Shared Warder radio core and standalone DAB source in the existing skin source picker; no replacement of skin artwork, infobar behavior or existing runtime paths.",
+  "scope": "Extend current-song artwork to internet-radio services via native tags and bounded asynchronous ICY metadata; preserve confirmed radio artwork/layout, native RDS ownership and DAB MOT slideshow priority.",
   "preview_assets": {
     "help": {
       "filename": "warder-help-previews.zip",
@@ -28,7 +28,7 @@
   },
   "version_policy": "Use 1.0.17 so both the receiver updater and the package manager order it above 1.0.16-test270-1, without downgrade flags or an epoch.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "176bf39ebe07a35a466ce29c7190f76704934387",
+  "expected_main_sha": "8ec05afade855e919c8706b4413ce76f7f3fcb72",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
     "version": "1.0.17",
