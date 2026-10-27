@@ -166,10 +166,10 @@ class ArtworkStabilityTests(unittest.TestCase):
         self.obj._showFallback.assert_called_once();self.assertEqual(self.obj._key,'')
 
     def test_late_decoder_callback_cannot_clear_new_decoder_or_pixmap(self):
-        old=Mock();new=Mock();self.obj._picload=new
-        self.obj._decoded(decoder=old)
+        new=Mock();self.obj._picload=new;self.obj._decodeToken=2
+        self.obj._decoded(token=1)
         self.assertIs(self.obj._picload,new);self.obj.instance.setPixmap.assert_not_called()
-        self.obj._decoded(decoder=new)
+        self.obj._decoded(token=2)
         self.obj.instance.setPixmap.assert_called_once_with(new.getData.return_value)
         self.assertIsNone(self.obj._picload)
 

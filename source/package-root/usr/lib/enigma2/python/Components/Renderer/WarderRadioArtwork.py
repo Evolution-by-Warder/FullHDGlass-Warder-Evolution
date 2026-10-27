@@ -39,6 +39,7 @@ class WarderRadioArtwork(Renderer):
         self._attempts = 0
         self._retryAt = 0.0
         self._picload = None
+        self._decodeToken = 0
         self._songPair = None
         self._missingSince = None
         self._timer = eTimer()
@@ -69,6 +70,7 @@ class WarderRadioArtwork(Renderer):
     def preWidgetRemove(self, instance):
         self._generation += 1
         self._result = None
+        self._decodeToken += 1
         self._picload = None
         try:
             self._timer.stop()
@@ -390,25 +392,26 @@ class WarderRadioArtwork(Renderer):
         self._showPath(self.FALLBACK_ARTWORK)
 
     def _showPath(self, path):
+        self._decodeToken += 1
+        token = self._decodeToken
+        self._picload = None
         if not self.instance or not path or not os.path.isfile(path):
             if self.instance:
                 self.instance.hide()
             return
         size = self.instance.size()
         self._picload = ePicLoad()
-        decoder = self._picload
-        decoder.PictureData.get().append(lambda info=None: self._decoded(info, decoder))
+        self._picload.PictureData.get().append(lambda info=None: self._decoded(info, token))
         # TEST174: restore the receiver-proven ePicLoad setup as executable code.
         self._picload.setPara((size.width(), size.height(), 1, 1, False, 1, "#00000000"))
         if self._picload.startDecode(path) != 0:
             self._picload = None
             self.instance.hide()
 
-    def _decoded(self, info=None, decoder=None):
-        if decoder is None:
-            decoder = self._picload
-        if decoder is not self._picload:
+    def _decoded(self, info=None, token=None):
+        if token is not None and token != self._decodeToken:
             return  # A late callback must never clear a newer image decoder.
+        decoder = self._picload
         if decoder and self.instance:
             ptr = decoder.getData()
             if ptr is not None:
