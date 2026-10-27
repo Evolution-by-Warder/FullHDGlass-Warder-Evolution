@@ -1,0 +1,34 @@
+name: Include approved DAB radio in satellite picon packages
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/append-dab-satellite-picons.py
+      - tools/test-dab-satellite-publication.py
+      - .github/workflows/publish-dab-satellite-picons.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: warder-dab-satellite-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify append-only package integration
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 tools/test-dab-satellite-publication.py
+      - name: Publish verified packages and catalogue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 tools/append-dab-satellite-picons.py --publish
