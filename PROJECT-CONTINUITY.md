@@ -1,3 +1,7 @@
+# Published infobar follow-up1.0.28
+
+Stable Latest and production updater verified. CI40475278006 and radio guard40475278052 succeeded. IPK14198502 bytes SHA25649d41833ac81fd728d4db9f47eb8047b4d5f3bb990a079d12682b02bc5233413. g17PicRef2/3 share original/legacy radio paths with primary renderer and use native radio fallback before default; their timers/animations retained.13 renderer tests and22 layout checks passed before publication. Owner confirmed RDS in1.0.27, but1.0.28 OK-infobar receiver test still pending. Separate radio-source research is saved in PiconHub plugin/research/RADIO-SOURCES.md and RADIO-SOURCE-AUDIT.json. No PiconHub runtime source enabled by that research.
+
 # Infobar follow-up1.0.28
 
 Owner confirmed RDS logo works in1.0.27, but OK infobar remains default. g17PicRef2/3 retained separate old lookups. Both now delegate file lookup to g17PicRef and use native radio fallback before default. Preserve their original timers, cache and animations.13 tests pass including actual changed handlers for both variants. Expected main08e5de87b1d7b374092a345f0e3f27ac14b532f7; publish1.0.28 after CI; receiver confirmation pending.
