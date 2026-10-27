@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-27",
-  "approval": "Owner explicitly requested DAB in the skin download menu and one shared Warder ecosystem, 27 October 2026.",
+  "approval": "Owner explicitly requested assimilation of HDF Radio song metadata and album-cover functionality into the Warder radio screen (27 October 2026).",
   "source_branch": "warder-modernization-work",
-  "source_commit": "a6c989c5d42334bc44b6300ca9d84793588140d2",
+  "source_commit": "fa4d415b4761d966c4f07c464d6e4cd368eb895b",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.29",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.29_all.ipk",
-    "sha256": "1239f6cb2cc345da8a5a9eca71967a2ccdae0c4e4fcfe104e16f8c5b063ee633",
-    "changelog": "DAB / DAB+ a DVB-T na začiatku výberu zdrojov s ikonami. Opravené zmenšenie celých piconov pozícií namiesto orezávania. Samostatné sťahovanie DAB používa rovnaký overený Warder engine a katalóg ako PiconHub. DAB picony sú aj v celkových balíkoch svojich satelitných pozícií. Sťahovanie DAB beží na pozadí, zachováva existujúce súbory a pri chybe obnoví zmeny.",
-    "tag": "v1.0.29",
-    "bytes": 14258434,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.29/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.29_all.ipk"
+    "version": "1.0.30",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.30_all.ipk",
+    "sha256": "fe577de240e73af00a9ed4a607c7d14fbfa8eba647553b66e4f0ba32202105eb",
+    "changelog": "Internetové rádiá zobrazujú interpreta, skladbu a dohľadaný obal albumu v existujúcej rádiovej obrazovke. Prednostne sa používajú údaje prehrávača, doplnkovo ICY metadáta na pozadí. Opravené zahodenie starého obalu pri prepnutí stanice. Vzhľad rádia, RDS a DAB obrázky zostávajú zachované.",
+    "tag": "v1.0.30",
+    "bytes": 14261352,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.30/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.30_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,60 +39,8 @@
     }
   },
   "validation": {
-    "workflow_run": 40551517866,
+    "workflow_run": 40589153227,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded.",
-    "shared_radio_runtime_tests": 11,
-    "settings_layout_tests": 22,
-    "proportional_position_picons": true,
-    "mixed_selection_checkmarks_preserved": true,
-    "regional_radio_data": {
-      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
-      "catalog_commit": "c5fc5ec6ef86e4de79305e892be3afbdf866f662",
-      "publisher_workflow": 40572516519,
-      "station_references": 9,
-      "artwork_variants": 81,
-      "sizes": [
-        "50x30",
-        "220x132",
-        "400x240"
-      ],
-      "styles": [
-        "transparent",
-        "white",
-        "black"
-      ],
-      "updated_archives": 9,
-      "audited_relevant_archives": 30,
-      "public_parts_verified": 20,
-      "unrelated_png_bytes_preserved": true,
-      "existing_dab_bytes_preserved": true,
-      "ipk_changed": false
-    },
-    "dvb_t_inventory": {
-      "reference_files_per_style": 2674,
-      "unique_images_per_style": 203,
-      "styles": [
-        "transparent",
-        "white",
-        "black"
-      ],
-      "resolution": "220x132",
-      "exact_distinct_station_count": null,
-      "note": "Service references and image hashes do not contain verified station names; image count is not asserted as an exact station count.",
-      "source_ref": "c662265bd085a7916289975f7c4472a25d6c9b40"
-    },
-    "canal_radio_completion": {
-      "source_ref": "90d088e13f95ddc36df4369d0be4fdb0698a8ec2",
-      "catalog_commit": "17ac58f68dc2016b161790781d6532d859f30c98",
-      "workflow_run": 40574914251,
-      "provider_packages": 18,
-      "radio_references_added_to_each": 9,
-      "receiver_plans_verified": 18,
-      "public_parts_sha256_verified": 18,
-      "existing_pngs_preserved": true,
-      "runtime_fastscan_tables_changed": false,
-      "ipk_changed": false
-    }
+    "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded."
   }
 }

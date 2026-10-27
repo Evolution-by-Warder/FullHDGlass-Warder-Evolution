@@ -1,11 +1,11 @@
 {
-  "version": "1.0.29",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.29_all.ipk",
-  "sha256": "1239f6cb2cc345da8a5a9eca71967a2ccdae0c4e4fcfe104e16f8c5b063ee633",
-  "changelog": "DAB / DAB+ a DVB-T na začiatku výberu zdrojov s ikonami. Opravené zmenšenie celých piconov pozícií namiesto orezávania. Samostatné sťahovanie DAB používa rovnaký overený Warder engine a katalóg ako PiconHub. DAB picony sú aj v celkových balíkoch svojich satelitných pozícií. Sťahovanie DAB beží na pozadí, zachováva existujúce súbory a pri chybe obnoví zmeny.",
-  "bytes": 14258434,
-  "source_commit": "a6c989c5d42334bc44b6300ca9d84793588140d2",
+  "version": "1.0.30",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.30_all.ipk",
+  "sha256": "fe577de240e73af00a9ed4a607c7d14fbfa8eba647553b66e4f0ba32202105eb",
+  "changelog": "Internetové rádiá zobrazujú interpreta, skladbu a dohľadaný obal albumu v existujúcej rádiovej obrazovke. Prednostne sa používajú údaje prehrávača, doplnkovo ICY metadáta na pozadí. Opravené zahodenie starého obalu pri prepnutí stanice. Vzhľad rádia, RDS a DAB obrázky zostávajú zachované.",
+  "bytes": 14261352,
+  "source_commit": "fa4d415b4761d966c4f07c464d6e4cd368eb895b",
   "production_status": "production-update",
-  "production_tag": "v1.0.29",
+  "production_tag": "v1.0.30",
   "legacy_bridge_version": "1.0.18"
 }
