@@ -30,4 +30,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYTHONDONTWRITEBYTECODE: '1'
-        run: python3 -u tools/publish-asa-radio.py --source b9436b30af0efeb0823ee451943d160c32c53f44 --publish
+        run: python3 -u tools/publish-asa-radio.py --source 1856aa13dffec082e3cc1d226ee00a6b4e7a0c93 --publish

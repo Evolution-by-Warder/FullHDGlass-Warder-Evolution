@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Append authenticated ASA DE picons to the shared satellite/provider catalog."""
+"""Append authenticated ASA DE picons to the shared full-23.5E catalog."""
 import argparse, importlib.util, json, os, re, struct, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -39,13 +39,14 @@ def run(source_ref,publish=False):
             b=shared.public(prefix+item['path'])
             if len(b)!=item['bytes'] or sha(b)!=item['sha256'] or b[:8]!=b'\x89PNG\r\n\x1a\n' or struct.unpack('>II',b[16:24])!=tuple(map(int,size.split('x'))):raise ValueError('ASA PNG integrity failure')
             art[size,style]=b
-    selectors={'192E','235E','SKYLINK','CANALPLUS_SK','CANALPLUS_CZ'}
+    selectors={'235E'}
+    if plan.get('satellite_selectors')!=['235E']:raise ValueError('ASA is authorized only for standalone DAB and full 23.5E')
     packages=[p for p in doc['packages'] if p['selector_id'] in selectors]
     if {p['selector_id'] for p in packages}!=selectors:raise ValueError('Missing satellite/provider group')
     metadata={p['filename']:p for p in doc['parts']};new_meta={};entries=[];reports=[];updates=[];removed=set()
     for p in packages:
         sel=p['selector_id'];size=p['resolution'];style=p['family'].removeprefix('channel-')
-        image=art[size,style];orbital=192 if sel=='192E' else 235
+        image=art[size,style];orbital=235
         additions={n:image for n in expected if shared.position(n)==orbital}
         if len(additions)!=1:raise ValueError('Incorrect orbital reference')
         def download(url):
