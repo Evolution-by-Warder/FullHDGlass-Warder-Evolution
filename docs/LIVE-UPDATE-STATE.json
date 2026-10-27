@@ -1,11 +1,11 @@
 {
-  "version": "1.0.30",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.30_all.ipk",
-  "sha256": "fe577de240e73af00a9ed4a607c7d14fbfa8eba647553b66e4f0ba32202105eb",
-  "changelog": "Internetové rádiá zobrazujú interpreta, skladbu a dohľadaný obal albumu v existujúcej rádiovej obrazovke. Prednostne sa používajú údaje prehrávača, doplnkovo ICY metadáta na pozadí. Opravené zahodenie starého obalu pri prepnutí stanice. Vzhľad rádia, RDS a DAB obrázky zostávajú zachované.",
-  "bytes": 14261352,
-  "source_commit": "fa4d415b4761d966c4f07c464d6e4cd368eb895b",
+  "version": "1.0.31",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.31_all.ipk",
+  "sha256": "b59c3a364a8217db3c54e36836dff49bff2cfffc7c80147e766b8f1e9910f8d8",
+  "changelog": "Opravené vyhľadávanie obalov rádií: slovenský a český katalóg pred americkým, porovnávanie interpreta a skladby aj bez diakritiky. Zachovaná ochrana pred nesprávnymi obalmi a vyhľadávanie na pozadí.",
+  "bytes": 14262380,
+  "source_commit": "cc86a6be60065f1958a2c9b13bc80ab9b1c942f0",
   "production_status": "production-update",
-  "production_tag": "v1.0.30",
+  "production_tag": "v1.0.31",
   "legacy_bridge_version": "1.0.18"
 }
