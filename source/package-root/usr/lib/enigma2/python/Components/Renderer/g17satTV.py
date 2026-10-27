@@ -134,7 +134,7 @@ class g17satTV(Renderer):
 			if self.__enaSH is None or self.__enaSH == 1:
 				x = ("","_220x132")
 			else:
-				x = ("_220x132","")
+				x = ("","_220x132")
 			for i in x:
 				pngname = config.plugins.setupGlass17.par39.value + "/piconSat%s/" % i + serviceName + ".png"
 				if fileExists(pngname):

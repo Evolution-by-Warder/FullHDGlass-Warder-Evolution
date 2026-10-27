@@ -1930,7 +1930,7 @@ def piconSize(s):
 			if s[1] == "240":
 				ret = "picon_400x240"
 		elif s[0] == "220":
-			ret = "picon_220x132"
+			ret = "picon"
 	except: pass
 	return ret
 	
@@ -3972,7 +3972,7 @@ class ExtraInfo17(Screen):
 					self.posY_PSW = self["picProvSat"].instance.position().y()
 					self["picProvSat"].instance.setScale(1)
 					if self["picProvSat"].instance.size().width() == 220:
-						self.picProvSatSize = "_220x132"
+						self.picProvSatSize = ""
 				except: pass			
 				if self.chckWeaInafAnim():
 					self.updpicProvSat(self.pngnameWea)
@@ -8507,7 +8507,7 @@ class downloadMenu(Screen):
 		self['list'].onSelectionChanged.append(self.reactivate)	
 
 	def destDir(self,a):
-		return ({9:"picon_220x132",3:"picon_400x240",4:"picon_50x30",5:"picon",6:"picon_50x30",7:"picon",8:"piconOled"}[a])
+		return ({9:"picon",3:"picon_400x240",4:"picon_50x30",5:"picon",6:"picon_50x30",7:"picon",8:"piconOled"}[a])
 
 	def exit(self):
 		if not self.ena:
@@ -9118,75 +9118,8 @@ class downloadMenu(Screen):
 					pass
 
 	def _warderRunAuxiliaryComposite(self, row, variant_id):
-		"""Run exactly two additive jobs: legacy fallback, then safe priority overlay."""
-		kind = {"aux-prov": "provider", "aux-sat": "satellite"}.get(row)
-		variant_maps = {"provider": "piconProv", "satellite": "piconSat"}
-		if kind not in variant_maps or variant_id not in warderPiconSync.AUXILIARY_VARIANT_IDS[variant_maps[kind]]:
-			raise ValueError("invalid auxiliary hybrid selection")
-		err, assets = getWarderAssets()
-		if err:
-			raise ValueError(err)
-		hybrid = assets.pop("__auxiliary_hybrid__", None)
-		if not isinstance(hybrid, dict):
-			raise ValueError("auxiliary hybrid catalog missing")
-		candidate = None
-		candidate_error = None
-		try:
-			candidate = self._warderLoadAuxiliaryCandidateManifest(hybrid.get("candidate_manifest_url"))
-		except Exception as err:
-			# Preserve the legacy fallback job if the candidate publication is
-			# unavailable; the safe overlay will be recorded as failed below.
-			candidate_error = err
-		catalog = {"assets": assets, "auxiliary_hybrid": hybrid}
-		plan = warderPiconSync.build_auxiliary_jobs(catalog, candidate, kind, variant_id)
-		if plan.get("state") != "ready" or len(plan.get("jobs", [])) != 2:
-			raise ValueError("auxiliary composite plan rejected: " + "; ".join(plan.get("errors", [])[:3]))
-		copied = {"legacy_fallback": 0, "warder_safe_priority": 0}
-		totals = {job["layer"]: int(job["png_count"]) for job in plan["jobs"]}
-		for job in plan["jobs"]:
-			archive = None
-			stage = None
-			previous_zzz = self.zzz
-			try:
-				if job["layer"] == "warder_safe_priority" and candidate_error is not None:
-					raise ValueError("pinned auxiliary candidate manifest unavailable: " + str(candidate_error))
-				self._warderAuxiliaryDestination(job["destination"])
-				fd, archive = tempfile.mkstemp(prefix="warder-aux-", suffix=".zip", dir="/tmp")
-				os.close(fd)
-				self._warderFetchAuxiliaryArchive(job, archive)
-				stage = tempfile.mkdtemp(prefix="warder-aux-stage-", dir="/tmp")
-				self._safeExtractZip(archive, stage)
-				root = str(job["root"])
-				stage_root = os.path.join(stage, root)
-				if os.path.islink(stage_root) or not os.path.isdir(stage_root):
-					raise ValueError("auxiliary ZIP root missing after extraction")
-				self.zzz = stage + os.sep
-				updated, attempted = self.cprmFiles(root)
-				if attempted != totals[job["layer"]]:
-					print("FullHDGlass17 Warder auxiliary count mismatch (%s): %d/%d" %
-						(job["asset_id"], attempted, totals[job["layer"]]))
-				copied[job["layer"]] = updated
-			except Exception as err:
-				print("FullHDGlass17 Warder auxiliary job failed (%s): %s" % (job.get("asset_id"), err))
-			finally:
-				self.zzz = previous_zzz
-				if archive:
-					try:
-						os.unlink(archive)
-					except OSError:
-						pass
-				if stage:
-					try:
-						self.rmTmp2(stage, str(job.get("root", "")))
-						os.rmdir(stage)
-					except OSError:
-						pass
-		if kind == "provider":
-			self._warderRunCanalProviderBundle(variant_id)
-		return warderPiconSync.auxiliary_result_summary(
-			_("Provider logos" if kind == "provider" else "Satellite logos"), variant_id,
-			copied["legacy_fallback"], totals["legacy_fallback"],
-			copied["warder_safe_priority"], totals["warder_safe_priority"], _)["text"]
+	    from .warderCanonicalPicons import install
+	    return install(self, row, variant_id, getWarderAssets, _)
 
 	def _warderRemoveStaleChannelPicons(self, destination, positions, package_names):
 		"""Remove only stale service PNGs for selected orbits after package success."""

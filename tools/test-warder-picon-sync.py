@@ -438,7 +438,7 @@ for bad_positions, size, colour in (([], "220x132", "transparent"), (["UNKNOWN"]
         raise AssertionError((bad_positions, size, colour))
 assert m.legacy_channel_destination("50x30") == "picon_50x30"
 assert m.legacy_channel_destination("150x90") == "picon"
-assert m.legacy_channel_destination("220x132") == "picon_220x132"
+assert m.legacy_channel_destination("220x132") == "picon"
 assert m.legacy_channel_destination("400x240") == "picon_400x240"
 
 # Callback cancellation is explicit and the selection guard is evaluated before work starts.

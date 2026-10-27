@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.23",
-  "expected_main_sha": "81ff0fb83709344d696c73ed70530ef09651916b",
-  "authorization": "Owner reported stale help previews and requested correct changing previews and translucent bubbles across all settings; fix and deliver through the existing native updater.",
-  "changelog": "Jeden aktualizovaný balík Nápoveda g17_setup_pict.zip. Opravené prepínanie pomocných obrázkov cez natívnu slučku Enigmy. Pri chýbajúcom náhľade nezostáva stará nápoveda. Odstránené obdĺžnikové pozadie okolo bublín, zachovaný obrys a obsah. Pripravené náhľady zostávajú v priečinku preview podľa nastaveného úložiska skinu."
+  "version": "1.0.24",
+  "expected_main_sha": "3fed70880dd04614350671f05e1b2d546e203308",
+  "authorization": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon.",
+  "changelog": "Pôvodné názvy balíkov a adresárov piconProv a piconSat pre všetky tri pozadia. Kanálové picony 220×132 sa ukladajú do picon. Zachované aktuálne logá a opravy Canal+ SK/CZ."
 }

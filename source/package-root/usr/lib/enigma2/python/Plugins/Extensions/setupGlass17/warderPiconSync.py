@@ -339,7 +339,7 @@ LEGACY_CHANNEL_ARCHIVE_COLUMNS = {
 LEGACY_CHANNEL_DESTINATIONS = {
     "50x30": "picon_50x30",
     "150x90": "picon",
-    "220x132": "picon_220x132",
+    "220x132": "picon",
     "400x240": "picon_400x240",
 }
 

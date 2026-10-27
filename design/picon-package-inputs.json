@@ -1,0 +1,205 @@
+{
+  "source_commit": "3fed70880dd04614350671f05e1b2d546e203308",
+  "variants": {
+    "provider/black": {
+      "root": "piconProv",
+      "layers": [
+        {
+          "filename": "piconProv-black.zip",
+          "size": 12059628,
+          "sha256": "0a492f508eb05783d2135118f21abc370e33efe7d02db48d1577c2c2634c91e3",
+          "root": "piconProv",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/providers/black/piconProv.zip",
+          "publication_source_id": "fullhd-test",
+          "id": "piconProv-b"
+        },
+        {
+          "filename": "provider-black-warder-safe-220x132.zip",
+          "size": 5736394,
+          "sha256": "7b7499ca87529fd89859b3f10b8bd76ed8234a268f93c29e94fe3e23f075bb3d",
+          "root": "piconProv_220x132",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/provider-black-warder-safe-220x132.zip",
+          "png_count": 172,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "WARDER_SAFE_APPROVED",
+          "id": "piconProv-warder-safe-b"
+        },
+        {
+          "filename": "provider-canalplus-black.zip",
+          "root": "piconProv_220x132",
+          "png_count": 2,
+          "size": 70472,
+          "sha256": "2eb8d66c22803844a5332a35425f0d281ddeb6b348d145ea7291f3466b522e99",
+          "publication_source_id": "fullhd-provider-bundle",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/provider-canalplus-black.zip",
+          "provider": "Canal+ SK/CZ",
+          "style": "black",
+          "id": "piconProv-canalplus-b"
+        }
+      ],
+      "path": "assets/warder/downloads/picons/providers/black/piconProv.zip"
+    },
+    "provider/transparent": {
+      "root": "piconProv",
+      "layers": [
+        {
+          "filename": "provider-transparent-canalplus.zip",
+          "size": 11471774,
+          "sha256": "f9df118455826f6f240ea7b1c9b1959af7bc43ce1a6e2459ae7480f12ad4a929",
+          "root": "piconProv",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/providers/transparent-legacy/provider-transparent-canalplus.zip",
+          "png_count": 1148,
+          "publication_source_id": "fullhd-test",
+          "classification": "LEGACY_FALLBACK_ONLY",
+          "id": "piconProv-transparent-fullhd"
+        },
+        {
+          "filename": "provider-transparent-warder-safe-220x132.zip",
+          "size": 1081152,
+          "sha256": "ffb5e4a8afd2ce8f5873f67883ecbb93ba892b9983eefc3e3e9b4c76ff1189fe",
+          "root": "piconProv_220x132",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/provider-transparent-warder-safe-220x132.zip",
+          "png_count": 172,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "WARDER_SAFE_APPROVED",
+          "id": "piconProv-warder-safe-t"
+        },
+        {
+          "filename": "provider-canalplus-transparent.zip",
+          "root": "piconProv_220x132",
+          "png_count": 2,
+          "size": 12552,
+          "sha256": "54fd4770e8e102056b707beb6b492cbb3f9c4d8891ba8a0c1523f6288c85abcb",
+          "publication_source_id": "fullhd-provider-bundle",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/provider-canalplus-transparent.zip",
+          "provider": "Canal+ SK/CZ",
+          "style": "transparent",
+          "id": "piconProv-canalplus-t"
+        }
+      ],
+      "path": "assets/warder/downloads/picons/providers/transparent/piconProv.zip"
+    },
+    "provider/white": {
+      "root": "piconProv",
+      "layers": [
+        {
+          "filename": "piconProv-white.zip",
+          "size": 14038220,
+          "sha256": "68d747b5ea47611c35ba1ab93e3b63b0266298a810d09c9e0bd5c204dfa7452e",
+          "root": "piconProv",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk00.part",
+          "publication_source_id": "fullhd-test",
+          "parts": [
+            "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk00.part",
+            "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/providers/white/parts/piconProv-white.zip.chunk01.part"
+          ],
+          "id": "piconProv-w"
+        },
+        {
+          "filename": "provider-white-warder-safe-220x132.zip",
+          "size": 5752522,
+          "sha256": "5e95db06d006ef212d8d3e756ffa067fe18b0bbc5f2c8825cebaa8ba6222e4ae",
+          "root": "piconProv_220x132",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/provider-white-warder-safe-220x132.zip",
+          "png_count": 172,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "WARDER_SAFE_APPROVED",
+          "id": "piconProv-warder-safe-w"
+        },
+        {
+          "filename": "provider-canalplus-white.zip",
+          "root": "piconProv_220x132",
+          "png_count": 2,
+          "size": 70450,
+          "sha256": "816ef7c8846e3c8ce1531099e8be98690f30b57de52cd2fe4eec31b2c82466fa",
+          "publication_source_id": "fullhd-provider-bundle",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/cf9e93e60d6f345ad33a0275a980487bff45bc98/assets/warder/downloads/provider-canalplus-white.zip",
+          "provider": "Canal+ SK/CZ",
+          "style": "white",
+          "id": "piconProv-canalplus-w"
+        }
+      ],
+      "path": "assets/warder/downloads/picons/providers/white/piconProv.zip"
+    },
+    "satellite/black": {
+      "root": "piconSat",
+      "layers": [
+        {
+          "filename": "piconSat-black.zip",
+          "size": 2244970,
+          "sha256": "6458bdf32db1dddd21ecf8894864e130d5c5535fcfe7fe2681509ad7b0958d8a",
+          "root": "piconSat",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/satellites/black/piconSat.zip",
+          "publication_source_id": "fullhd-production",
+          "id": "piconSat-b"
+        },
+        {
+          "filename": "satellite-black-warder-safe-220x132.zip",
+          "size": 36521,
+          "sha256": "0808057c83a060fff98aa0bf0f1d2c2cda5b49ea9574b44af3e1a47d9477ed0e",
+          "root": "piconSat_220x132",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/satellite-black-warder-safe-220x132.zip",
+          "png_count": 1,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "WARDER_SAFE_APPROVED",
+          "id": "piconSat-warder-safe-b"
+        }
+      ],
+      "path": "assets/warder/downloads/picons/satellites/black/piconSat.zip"
+    },
+    "satellite/transparent": {
+      "root": "piconSat",
+      "layers": [
+        {
+          "filename": "satellite-transparent-legacy-fallback.zip",
+          "size": 773004,
+          "sha256": "c134ac5b7d9fdb2ba80b87e8a4b5671537ae634ef9b495b17e783b314394942a",
+          "root": "piconSat",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/satellite-transparent-legacy-fallback.zip",
+          "png_count": 69,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "LEGACY_FALLBACK_ONLY",
+          "id": "piconSat-legacy-t"
+        },
+        {
+          "filename": "satellite-transparent-warder-safe-220x132.zip",
+          "size": 8400,
+          "sha256": "9d52030633e5b88af40ea1b806862cdd6ad866fb3453ea1993aac4e6fdf33abf",
+          "root": "piconSat_220x132",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/satellite-transparent-warder-safe-220x132.zip",
+          "png_count": 1,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "WARDER_SAFE_APPROVED",
+          "id": "piconSat-warder-safe-t"
+        }
+      ],
+      "path": "assets/warder/downloads/picons/satellites/transparent/piconSat.zip"
+    },
+    "satellite/white": {
+      "root": "piconSat",
+      "layers": [
+        {
+          "filename": "piconSat-white.zip",
+          "size": 2421870,
+          "sha256": "539cda4f3f599f5e3f2b6e6690a4625fc5c678bdfb46cb9b1b68622d28b08b2b",
+          "root": "piconSat",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/3fed70880dd04614350671f05e1b2d546e203308/assets/warder/downloads/picons/satellites/white/piconSat.zip",
+          "publication_source_id": "fullhd-production",
+          "id": "piconSat-w"
+        },
+        {
+          "filename": "satellite-white-warder-safe-220x132.zip",
+          "size": 36634,
+          "sha256": "9d55e86a420bfce1e7ad25eee8e5fba823b796119efd1665ee45109af684166e",
+          "root": "piconSat_220x132",
+          "url": "https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/db5eec9f1cdb7a4d587cb1bcdeebc6b3f0d51819/reports/warder-master-production/auxiliary-hybrid-runtime-candidate-2026-10-07/archives/satellite-white-warder-safe-220x132.zip",
+          "png_count": 1,
+          "publication_source_id": "piconhub-aux-candidate",
+          "classification": "WARDER_SAFE_APPROVED",
+          "id": "piconSat-warder-safe-w"
+        }
+      ],
+      "path": "assets/warder/downloads/picons/satellites/white/piconSat.zip"
+    }
+  }
+}
