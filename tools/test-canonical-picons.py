@@ -95,12 +95,36 @@ class CanonicalTests(unittest.TestCase):
             def request(_,method,path,payload=None):
                 calls.append((method,path,payload))
                 if path.startswith('/git/commits/'):return {'tree':{'sha':'base-tree'}}
+                if path.startswith('/git/trees/') and method=='GET':return {'tree':[{'path':'obsolete.zip'}],'truncated':False}
                 if path=='/git/trees':return {'sha':'new-tree'}
                 if path=='/git/commits':return {'sha':'new-commit'}
                 raise AssertionError(path)
         self.assertEqual(publisher.p.commit(Client(),'old-commit',{'obsolete.zip':None},'Remove obsolete duplicate'),'new-commit')
         entry=next(c[2]['tree'][0] for c in calls if c[1]=='/git/trees')
         self.assertIsNone(entry['sha']);self.assertEqual(entry['path'],'obsolete.zip')
+
+    def test_renderer_reselects_original_path_after_old_copy_is_removed(self):
+        for file,method,cache,lookup,root in [('g17provTV.py','chckP','provCache','findProv','piconProv'),('g17satTV.py','chckS','satCache','findSat','piconSat')]:
+            tree=ast.parse((ROOT/'source/package-root/usr/lib/enigma2/python/Components/Renderer'/file).read_text())
+            fn=next(n for c in tree.body if isinstance(c,ast.ClassDef) for n in c.body if isinstance(n,ast.FunctionDef) and n.name==method)
+            scope={};exec(compile(ast.Module(body=[fn],type_ignores=[]),'picon-cache','exec'),scope)
+            old='/media/hdd/hdg17_files/'+root+'_220x132/logo.png';current='/media/hdd/hdg17_files/'+root+'/logo.png';calls=[]
+            screen=SimpleNamespace(**{cache:{'station':old},lookup:lambda key:(calls.append(key) or current)})
+            self.assertEqual(scope[method](screen,'station'),current)
+            self.assertEqual(scope[method](screen,'station'),current)
+            self.assertEqual(calls,['station'])
+    def test_publication_retry_skips_already_removed_archives(self):
+        calls=[]
+        class Client:
+            def request(_,method,path,payload=None):
+                calls.append((method,path,payload))
+                if path.startswith('/git/commits/'):return {'tree':{'sha':'base-tree'}}
+                if path.startswith('/git/trees/') and method=='GET':return {'tree':[],'truncated':False}
+                if path=='/git/trees':return {'sha':'same-tree'}
+                if path=='/git/commits':return {'sha':'new-commit'}
+                raise AssertionError(path)
+        publisher.p.commit(Client(),'parent',{'already-removed.zip':None},'Idempotent cleanup')
+        self.assertEqual(next(c[2]['tree'] for c in calls if c[1]=='/git/trees'),[])
 
     @unittest.skipIf(args.built_dir is None,'Pass --built-dir for real packages')
     def test_all_six_real_packages_are_original_named_complete_and_220x132(self):

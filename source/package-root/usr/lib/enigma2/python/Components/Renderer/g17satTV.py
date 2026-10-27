@@ -123,6 +123,8 @@ class g17satTV(Renderer):
 
 	def chckS(self, p):
 		a = self.satCache.get(p, "")
+		if "/piconSat_220x132/" in a:
+			a = ""
 		if a == "":
 			a = self.findSat(p)
 			if a != "":

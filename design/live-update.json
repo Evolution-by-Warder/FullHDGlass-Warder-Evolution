@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.24",
-  "expected_main_sha": "3fed70880dd04614350671f05e1b2d546e203308",
+  "version": "1.0.25",
+  "expected_main_sha": "91a04fcbbeee860aed6bdcf3bd6c7ea20e6e6db7",
   "authorization": "Owner explicitly requested all three 220x132 provider/satellite variants to replace original packages under piconProv.zip/piconSat.zip and original directories, plus default 220x132 channel downloads in picon.",
-  "changelog": "Pôvodné názvy balíkov a adresárov piconProv a piconSat pre všetky tri pozadia. Kanálové picony 220×132 sa ukladajú do picon. Zachované aktuálne logá a opravy Canal+ SK/CZ."
+  "changelog": "Pôvodné piconProv.zip a piconSat.zip pre všetky tri pozadia; kanálové picony 220×132 do picon. Po odstránení zhodných starých kópií sa automaticky obnovia cesty zobrazovača."
 }

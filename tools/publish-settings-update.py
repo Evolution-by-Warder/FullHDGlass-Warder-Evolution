@@ -74,7 +74,12 @@ def blob(client,data):
 
 def commit(client,parent,files,message):
     tree=client.request('GET','/git/commits/'+parent)['tree']['sha']
-    entries=[{'path':path,'mode':'100644','type':'blob','sha':None if data is None else blob(client,data)} for path,data in files.items()]
+    existing=None
+    if any(data is None for data in files.values()):
+        listing=client.request('GET','/git/trees/'+tree+'?recursive=1')
+        if listing.get('truncated'):raise ValueError('Cannot safely inspect obsolete archive paths')
+        existing={item['path'] for item in listing['tree']}
+    entries=[{'path':path,'mode':'100644','type':'blob','sha':None if data is None else blob(client,data)} for path,data in files.items() if data is not None or path in existing]
     tree=client.request('POST','/git/trees',{'base_tree':tree,'tree':entries})['sha']
     return client.request('POST','/git/commits',{'parents':[parent],'tree':tree,'message':message})['sha']
 

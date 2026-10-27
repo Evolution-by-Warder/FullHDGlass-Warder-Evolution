@@ -133,6 +133,8 @@ class g17provTV(Renderer):
 
 	def chckP(self, p):
 		a = self.provCache.get(p, "")
+		if "/piconProv_220x132/" in a:
+			a = ""
 		if a == "":
 			a = self.findProv(p)
 			if a != "":

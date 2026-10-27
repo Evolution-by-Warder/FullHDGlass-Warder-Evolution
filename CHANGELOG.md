@@ -1,3 +1,9 @@
+# 1.0.25
+
+- Po úspešnej výmene balíkov sa obnoví aj zapamätaná cesta k logám zo starého adresára; nie je potrebný ručný reštart GUI kvôli tejto ceste.
+- Opakované publikovanie bezpečne preskočí archívy, ktoré už boli odstránené.
+- Obsah šiestich aktuálnych balíkov zostáva rovnaký ako pri zjednotení v1.0.24.
+
 # 1.0.24
 
 - Kompletné aktuálne picony providerov a satelitov vo všetkých troch pozadiach nahrádzajú pôvodné ZIP-y pod názvami piconProv.zip a piconSat.zip.
