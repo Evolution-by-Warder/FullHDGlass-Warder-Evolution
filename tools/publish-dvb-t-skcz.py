@@ -70,7 +70,7 @@ def main():
  for part in payload['parts']:(AUDIT/part['filename']).unlink()
  (AUDIT/'catalog/variants.json').write_text(json.dumps(dict(schema=1,records=allrecords),indent=2)+'\n')
  (AUDIT/'catalog/install-inventory.json').write_text(json.dumps(proof,indent=2)+'\n')
- git('config','user.name','Warder data publication');git('config','user.email','warder-release@users.noreply.github.com');git('add',str(ROOT));git('commit','-m','Build three verified DVB-T SK/CZ picon archives with audited receiver mappings')
+ git('config','user.name','Warder data publication');git('config','user.email','warder-release@users.noreply.github.com');git('add','--sparse',str(ROOT));git('commit','-m','Build three verified DVB-T SK/CZ picon archives with audited receiver mappings')
  revision=git('rev-parse','HEAD');git('push','origin','HEAD:refs/heads/'+BRANCH)
  public=[('https://raw.githubusercontent.com/'+REPO+'/'+revision+'/'+str(CHANNELS/p['filename']),p) for p in generated]
  with ThreadPoolExecutor(max_workers=10) as pool:list(pool.map(fetch,public))
@@ -86,7 +86,7 @@ def main():
  MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  publication=dict(status='verified-and-active',payload_commit=revision,packages=newentries,verification=proof,public_parts_verified=len(generated),other_package_records_unchanged=True,application_versions_unchanged=True)
  (AUDIT/'catalog/publication.json').write_text(json.dumps(publication,indent=2)+'\n')
- git('add',str(ROOT));git('commit','-m','Activate audited terrestrial picons in the shared skin and PiconHub catalogue');git('push','origin','HEAD:refs/heads/'+BRANCH)
+ git('add','--sparse',str(ROOT));git('commit','-m','Activate audited terrestrial picons in the shared skin and PiconHub catalogue');git('push','origin','HEAD:refs/heads/'+BRANCH)
  assert head('main')==EXPECTED,'Production advanced before activation'
  git('fetch','--no-tags','--depth=1','origin','main:refs/remotes/origin/main');git('push','origin','HEAD:refs/heads/main')
  print(json.dumps(publication,indent=2))
