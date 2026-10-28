@@ -75,7 +75,7 @@ class ProviderTests(unittest.TestCase):
             return io.BytesIO(json.dumps([row] if 'q' in query else []).encode())
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(provider.lookup('Breaking Me','Topic and A7S',Path(tmp),opener=response)['text'],'Original test text')
-        self.assertEqual(len(queries),2);self.assertIn('q',queries[1])
+        self.assertEqual(len(queries),3);self.assertIn('q',queries[2])
     def test_synced_only_record_becomes_plain_text(self):
         row=self.record();row['plainLyrics']=None
         row['syncedLyrics']='[ar:Metadata]\n[00:01.00]Original test line\n[00:03.20][00:04.00]Another line'
@@ -96,6 +96,18 @@ class ProviderTests(unittest.TestCase):
             self.assertEqual(provider.lookup('Topic and A7S','Breaking Me',Path(tmp),opener=response)['text'],'Original fallback text')
         self.assertEqual(len(urls),2)
         self.assertIn('/Topic%20and%20A7S/Breaking%20Me',urls[-1])
+    def test_full_pair_reversal_is_also_available_when_primary_provider_is_offline(self):
+        from urllib.error import HTTPError
+        urls=[]
+        def response(request,**kwargs):
+            urls.append(request.full_url)
+            if request.full_url.startswith(provider.SEARCH):raise HTTPError(request.full_url,503,'busy',{'Retry-After':'20'},None)
+            if request.full_url.endswith('/Topic%20and%20A7S/Breaking%20Me'):
+                return io.BytesIO(json.dumps({'lyrics':'Original reversed test text'}).encode())
+            raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(provider.lookup('Breaking Me','Topic and A7S',Path(tmp),opener=response)['text'],'Original reversed test text')
+        self.assertEqual(len(urls),3)
     def test_rate_limit_survives_between_workers_and_failure_is_not_cached(self):
         from urllib.error import HTTPError
         urls=[]
@@ -108,7 +120,7 @@ class ProviderTests(unittest.TestCase):
             self.assertEqual(first['status'],'offline');self.assertGreaterEqual(first['retry_after'],120)
             self.assertFalse(list(folder.glob('*.json')))
             urls.clear();provider.lookup('Other Artist','Other Title',folder,opener=response,clock=lambda:1001)
-            self.assertEqual(len(urls),1);self.assertTrue(urls[0].startswith(provider.FALLBACK))
+            self.assertEqual(len(urls),2);self.assertTrue(all(u.startswith(provider.FALLBACK) for u in urls))
     def test_previous_negative_cache_is_invalidated(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);(folder/(provider.key('Žbirka','Biely kvet')+'.json')).write_text(json.dumps({'text':'','status':'not-found','saved':100}))

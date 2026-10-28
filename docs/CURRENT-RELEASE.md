@@ -32,9 +32,11 @@ TEST1 pri úprave vrstiev odfiltroval pôvodný grafický podklad InfoPanelu v r
 - Pri LRCLIB sa normalizujú diakritika a oddeľovače spoluúčinkujúcich (`ft.`, `feat.`, `and`, `&`, čiarka). Všetci interpreti a celý názov vrátane verzie musia naďalej sedieť.
 - Ak zhodný záznam obsahuje iba LRC, odstránia sa časové značky a zobrazí sa obyčajný text bez karaoke.
 - Výpadok, HTTP 503/429 ani časový limit sa neukladajú ako nenájdený text na šesť hodín. HTTP 404 sa rozlišuje od nedostupného servera. Nová verzia cache zahodí staré negatívne výsledky.
-- Pri dočasnej chybe najviac tri pokusy na tú istú skladbu, bežné pauzy 20 a 60 sekúnd. Hlavička Retry-After má prednosť a zákaz požiadaviek na LRCLIB platí aj pre ďalší pracovný proces. Každý pokus má najviac päť požiadaviek, každá časový limit 6 sekúnd; samostatný proces sa po 40 sekundách ukončí. GUI nečaká na sieť.
+- Pri dočasnej chybe najviac tri pokusy na tú istú skladbu, bežné pauzy 20 a 60 sekúnd. Hlavička Retry-After má prednosť a zákaz požiadaviek na LRCLIB platí aj pre ďalší pracovný proces. Každý pokus má najviac šesť požiadaviek, každá časový limit 6 sekúnd; samostatný proces sa po 45 sekundách ukončí. GUI nečaká na sieť.
 - Časový limit už nenechá visieť stav vyhľadávania a oneskorená odpoveď starého procesu neprepíše aktuálny obsah.
 
 **Pokrytie SK/CZ nie je vyriešené pre všetky skladby.** LRCLIB pri kontrolnej skúške našiel „Biely kvet“, ale „Sme pre seba stvorení“ zo snímky v skúšaných verejných API chýba. SuperMusic túto skladbu eviduje, jeho stránka však pri priamom načítaní vracala JavaScriptovú overovaciu stránku. Táto verzia preto nepredstiera funkčný konektor SuperMusic a neobsahuje ručne vložené texty. Žiadna percentuálna úspešnosť sa nesľubuje.
 
 - Niektoré stanice posielajú poradie skladba – interpret. Vyhľadanie v oboch poliach a prijatie obráteného poradia vyžaduje úplnú zhodu oboch údajov z databázového záznamu. Rovnaký princíp už používa vyhľadávanie obalov.
+
+Oba zdroje dostávajú aj celý pár údajov v obrátenom poradí; žiadne meno interpreta ani slovo názvu sa pri tom neodstraňuje. Záložné API vracia iba text pre požadovaný pár a neposkytuje nezávislé polia interpreta a názvu na ďalšie miestne overenie.

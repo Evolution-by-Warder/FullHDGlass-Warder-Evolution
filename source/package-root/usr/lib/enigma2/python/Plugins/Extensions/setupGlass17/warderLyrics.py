@@ -101,14 +101,16 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time):
         backoff_until = 0
     query = urlencode({'artist_name':artist, 'track_name':title})
     # Search reads the database directly. /get can trigger slow upstream work.
-    urls = [SEARCH+'?'+query, SEARCH+'?'+urlencode({'q':artist+' '+title})]
+    urls = [SEARCH+'?'+query,
+            SEARCH+'?'+urlencode({'artist_name':title, 'track_name':artist}),
+            SEARCH+'?'+urlencode({'q':artist+' '+title})]
     normalized = urlencode({'artist_name':identity(artist), 'track_name':identity(title)})
     if normalized != query:
         urls.append(SEARCH+'?'+normalized)
     # Exact title plus all credited artists are checked locally in select().
-    urls.append(SEARCH+'?'+urlencode({'track_name':title}))
     urls = list(dict.fromkeys(urls))[:4]
     urls.append(FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''))
+    urls.append(FALLBACK+quote(title,safe='')+'/'+quote(artist,safe=''))
     for url in urls:
         lrclib = url.startswith(SEARCH)
         if lrclib and backoff_until > now:
