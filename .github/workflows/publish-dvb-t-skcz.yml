@@ -1,0 +1,23 @@
+name: Publish audited DVB-T SK CZ picons
+on:
+  push:
+    branches: [data/dvb-t-skcz-refresh]
+permissions:
+  contents: write
+concurrency:
+  group: warder-terrestrial-data-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: contains(github.event.head_commit.message, 'Publish DVB-T SK/CZ audited payload')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python3 -m pip install --quiet Pillow
+      - name: Verify original archives, merge audited mappings and activate verified public data
+        run: python3 tools/publish-dvb-t-skcz.py

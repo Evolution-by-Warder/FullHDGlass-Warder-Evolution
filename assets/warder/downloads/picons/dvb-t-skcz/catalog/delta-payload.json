@@ -1,0 +1,21 @@
+{
+  "bytes": 15824029,
+  "sha256": "8109ac19a4863b14f1926fc9ccfe6a3c1b38767353bc375ebc421c85ae88b270",
+  "parts": [
+    {
+      "filename": "delta.zip.part00",
+      "bytes": 6291456,
+      "sha256": "7c89548172f50439cc5acc77f7ec2d1d451c747922c44f3c4d718ccd383832e0"
+    },
+    {
+      "filename": "delta.zip.part01",
+      "bytes": 6291456,
+      "sha256": "33ae636133b641dda0ac5921e7a18d9e8665730fbfcaa6030e9e4e17181ef0be"
+    },
+    {
+      "filename": "delta.zip.part02",
+      "bytes": 3241117,
+      "sha256": "38c592e8f60e242532d7b22c34bd3c2f34f9ef451ec521fba4c830cda0b66e2f"
+    }
+  ]
+}
