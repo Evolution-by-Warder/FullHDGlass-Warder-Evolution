@@ -50,6 +50,10 @@ print('PASS:',len(expected),'payload files match source / compressed PNGs; large
 
 assert package.stat().st_size < 16*1024*1024, 'Small IPK size budget exceeded'
 
+# The byte comparison above includes radio.mvi; additionally decode it and
+# compare with the current master to catch a perfectly packaged stale frame.
+subprocess.run(['python3',str(ROOT/'tools/build-radio-background.py')],check=True)
+
 production_feed=ROOT/'update-production.json'
 if production_feed.exists():
     current=json.loads(production_feed.read_text())

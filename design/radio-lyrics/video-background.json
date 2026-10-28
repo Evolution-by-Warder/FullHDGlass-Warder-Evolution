@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "master": "warder-radio-background.jpg",
+  "master_sha256": "f5f64c26977498037101a330f6f84586e8ea3645638d20bf62fd62680973b62c",
+  "video": "radio.mvi",
+  "video_sha256": "083ef87a6962b03a25c45ac47873edfed8fe6da236ba3534463d8521e4c5ea36",
+  "format": "MPEG2 elementary stream",
+  "size": [
+    1920,
+    1080
+  ],
+  "decoded_psnr_db": 33.408,
+  "purpose": "One scenic source for both physical HDMI video plane and OpenWebif; no static UI frames in either.",
+  "runtime_overrides_added": false
+}

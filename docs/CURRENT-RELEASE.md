@@ -1,4 +1,4 @@
-# FullHDGlass 1.0.38-test1 — rádio a texty piesní
+# FullHDGlass 1.0.38-test2 — rádio a texty piesní
 
 Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Produkčná verzia 1.0.37 a všetky jej aktualizačné adresy zostávajú zachované.
 
@@ -14,3 +14,13 @@ Zdroj slov piesní: [LRCLIB](https://lrclib.net/docs). Požiadavka obsahuje inte
 Zmeny XML sa obmedzujú na RdsInfoDisplay, RdsDisplay a RadioInfoBar; ostatné obrazovky zostávajú bajtovo rovnaké. Balík má kontrolu celého obsahu a limit 16 MiB.
 
 **Na fyzickom prijímači ešte treba overiť ostrosť písma, správne orezanie posúvaného textu, oba infobary a návrat rádio/TV. Táto verzia sa automaticky neaktivuje v produkčnom feede.**
+
+## Oprava reálneho TV pozadia
+
+Používateľ potvrdil, že OpenWebif je správny, ale na fyzickej TV presvitá pôvodný stredový rám. Príčina: TEST1 zmenil JPG podklad, ale ponechal starý pasívny MPEG2 súbor `radio.mvi`. OpenWebif nahrádza video vrstvu aktuálnym JPG, preto sa chyba na jeho snímke neprejavila.
+
+TEST2 obnovuje `radio.mvi` z aktuálneho čistého JPG bez rámov. Build aj kontrola IPK overujú obe SHA256 a porovnávajú dekódovaný TV obraz s JPG; samotná zhoda balíka so zdrojmi už nestačí. Pôvodná video konfigurácia a natívny výber rádiového podkladu zostávajú zachované. Nový podklad v reálnom HDMI výstupe ešte musí potvrdiť používateľ.
+
+## Oprava infobaru po OK
+
+TEST1 pri úprave vrstiev odfiltroval pôvodný grafický podklad InfoPanelu v rádio režime. Ostali iba jeho texty cez rádio obrazovku. TEST2 vracia vybraný grafický PNG podklad aj pre rádio s alfa prelínaním; priehľadná horná časť zachová rádio scénu a nepriehľadná plocha infobaru oddelí jeho údaje. Televízna vetva aj polohy a zdroje pôvodných údajov zostávajú zachované. Automatická kontrola prechádza všetky reálne celoplošné šablóny InfoPanelu.

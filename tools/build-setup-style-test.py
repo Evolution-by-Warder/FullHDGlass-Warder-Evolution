@@ -20,6 +20,8 @@ def main():
     args=parser.parse_args()
     version=(PLUGIN/'version').read_text().strip()
     if not re.fullmatch(r'\d+\.\d+\.\d+(?:-test\d+)?',version):raise SystemExit('Numbered stable or TEST version required')
+    # Verify the actual decoded TV background, not only the OpenWebif JPEG.
+    subprocess.run(['python3',str(ROOT/'tools/build-radio-background.py')],check=True)
     control=ROOT/'source/control'
     if 'Version: '+version+'-1\n' not in (control/'control').read_text():raise SystemExit('Control version mismatch')
     spec=importlib.util.spec_from_file_location('stable_archive',ROOT/'tools/build-release-ipk.py')

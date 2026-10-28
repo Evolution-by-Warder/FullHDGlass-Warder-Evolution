@@ -1,7 +1,7 @@
 {
   "confirmed_on_receiver": null,
   "status": "owner-approved-design; receiver validation pending",
-  "graphics_and_layout_sha256": "0d2cadea991e8381257be787ff751d528ed0061faf77cdb41890a960ae5df79c",
+  "graphics_and_layout_sha256": "027cb523aecd2797771fca0c34f7f1aedeb5afd8158c422dc38e8e5bec61e970",
   "previous_receiver_baseline": {
     "confirmed_on_receiver": "1.0.5-test250",
     "graphics_and_layout_sha256": "f6bcdcc65a667a9ff63bc92c8963006cf38b398d0679292addae81fb63c5ad95"

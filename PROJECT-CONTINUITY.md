@@ -165,3 +165,9 @@ Owner authorized weekly source merging in PiconHub and silent weekly receiver-si
 ### 2026-10-28: radio lyrics candidate
 
 Owner explicitly requested implementation of the approved blue/amber studio layout, retaining tall artwork height while narrowing its sides, centered album/lyrics group, picon and station/RDS/DAB fields left in the footer, animated spectrum above transport type at right. Lyrics must be automatic, plain text, no user button, no karaoke. Font sharpness through radio layers is a material receiver acceptance condition. Baseline production is 1.0.37 at 744075b582e26b36b5a1a25e6f00fd8450ac5123. Candidate is 1.0.38-test1 in feature/radio-lyrics-layout with feeds unchanged. See design/radio-lyrics/implementation.json and docs/CURRENT-RELEASE.md.
+
+### Radio TEST2: physical background mismatch
+
+Physical receiver report: OpenWebif looks correct while an old central cover frame remains visible on TV. Confirmed by decoding TEST1 source radio.mvi: it still contained the old framed studio image. Fixed source radio.mvi by MPEG2 encoding of the current clean 1920x1080 JPEG. Added SHA256-pair and decoded-image similarity checks to both the active package builder and full IPK verifier. Preserve native passive-radio background ownership; no config.misc.radiopic or RdsInfoDisplay startup override. Candidate 1.0.38-test2; physical HDMI confirmation pending.
+
+Radio TEST2 also restores the original selected InfoPanel PNG in the radio conditional branch. TEST1 accidentally emitted only WarderTVOnly for full-frame panel pixmaps, producing text without a backing after OK. Restored WarderRadioOnly with alpha blending; keep the TV branch and native fields unchanged. All real full-frame templates are checked in tools/test-radio-background.py.

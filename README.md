@@ -111,6 +111,6 @@ Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v 
 
 Existujúci spravovaný rádio bouquet sa raz týždenne obnoví z nášho Gitu bez hlášok a reštartu. Na začiatku zostávajú naše SK/CZ stanice, ostatné krajiny obnovuje samostatný týždenný GitHub workflow. Sťahovanie beží mimo GUI; kontroluje sa SHA256 a pri chybe zostáva starý zoznam. [Rozsah a správanie](docs/CURRENT-RELEASE.md).
 
-## Kandidát nového rádia (1.0.38-test1)
+## Kandidát nového rádia (1.0.38-test2)
 
 Vo vetve `feature/radio-lyrics-layout` je samostatný skúšobný rádio dizajn s automatickým natívnym textom piesní a zachovanými RDS/DAB údajmi. Produkčný feed sa nemení. [Rozsah a overenie](docs/CURRENT-RELEASE.md).
