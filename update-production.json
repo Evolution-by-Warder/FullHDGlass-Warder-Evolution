@@ -1,6 +1,6 @@
 {
-  "version": "1.0.32",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.32_all.ipk",
-  "sha256": "4b3e057506015a97caf51bbd1cf2f00ee8fe047f9fdc622e1a36f77054356fb0",
-  "changelog": "Opravené obaly pri opačnom poradí interpreta a skladby, miznutie obrázka pri obnovení metadát a oneskorenom dekódovaní. Doplnený overený archív obalov a jeden opakovaný pokus pri chybe. Kontrola správnej zhody zostáva zachovaná."
+  "version": "1.0.33",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.33_all.ipk",
+  "sha256": "68a938a62597666a8d9eca6dfdaff7009ae90ee6c51d8f202039abf46cab24b1",
+  "changelog": "Opravené dohľadanie obalu pri odlišnom zápise spoluúčinkujúcich interpretov: hosť môže byť v zozname mien rádia alebo v názve skladby ako feat. Zhodovať sa musia všetky mená aj názov skladby. Zachované opravy stability obalov z 1.0.32."
 }
