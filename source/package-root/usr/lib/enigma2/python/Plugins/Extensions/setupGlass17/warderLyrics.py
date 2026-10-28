@@ -8,11 +8,11 @@ import sys
 import tempfile
 import time
 import unicodedata
+from email.utils import parsedate_to_datetime
 from urllib.error import HTTPError
 from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
-API = 'https://lrclib.net/api/get'
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
 CACHE_VERSION = 2
@@ -76,7 +76,7 @@ def select(records, artist, title):
     return ''
 
 
-def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time):
+def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time, monotonic=time.monotonic):
     artist, title = str(artist).strip(), str(title).strip()
     if not artist or not title or max(len(artist), len(title)) > 250:
         return {'text': '', 'status': 'no-song'}
@@ -92,6 +92,7 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time):
     except (OSError, ValueError, KeyError, TypeError):
         pass
     text = ''
+    deadline = monotonic()+32
     failures = False
     retry_after = 20
     backoff_file = cache/'.lrclib-backoff'
@@ -107,21 +108,27 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time):
     normalized = urlencode({'artist_name':identity(artist), 'track_name':identity(title)})
     if normalized != query:
         urls.append(SEARCH+'?'+normalized)
-    # Exact title plus all credited artists are checked locally in select().
-    urls = list(dict.fromkeys(urls))[:4]
-    urls.append(FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''))
-    urls.append(FALLBACK+quote(title,safe='')+'/'+quote(artist,safe=''))
+    # Alternate independent sources instead of exhausting one before the other.
+    primary = list(dict.fromkeys(urls))[:4]
+    fallback = [FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''),
+                FALLBACK+quote(title,safe='')+'/'+quote(artist,safe='')]
+    urls = [primary[0],fallback[0],primary[1],fallback[1]]+primary[2:]
     for url in urls:
-        lrclib = url.startswith(SEARCH)
-        if lrclib and backoff_until > now:
+        remaining = deadline-monotonic()
+        if remaining <= 0:
             failures = True
-            retry_after = max(retry_after,int(backoff_until-now)+1)
+            break
+        lrclib = url.startswith(SEARCH)
+        current_time = clock()
+        if lrclib and backoff_until > current_time:
+            failures = True
+            retry_after = max(retry_after,int(backoff_until-current_time)+1)
             continue
         request = Request(url, headers={
             'User-Agent':'FullHDGlass-Warder-Evolution/1.0 (https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution)',
             'Accept':'application/json'})
         try:
-            with opener(request, timeout=6) as response:
+            with opener(request, timeout=min(10,remaining)) as response:
                 raw = response.read(MAX_RESPONSE+1)
             if len(raw) > MAX_RESPONSE:
                 raise ValueError('Oversized lyrics response')
@@ -139,9 +146,13 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time):
                 continue  # A real miss, never an internet failure.
             failures = True
             if lrclib and error.code in (429,503):
-                try:delay = max(1,int(error.headers.get('Retry-After','20')))
-                except (TypeError,ValueError):delay = 20
-                backoff_until = now+delay
+                received = clock()
+                value = error.headers.get('Retry-After','20') if error.headers else '20'
+                try:delay = max(1,int(value))
+                except (TypeError,ValueError):
+                    try:delay = max(1,int(parsedate_to_datetime(value).timestamp()-received)+1)
+                    except (TypeError,ValueError,OverflowError):delay = 20
+                backoff_until = received+delay
                 retry_after = max(retry_after,delay)
                 try:backoff_file.write_text(str(backoff_until))
                 except OSError:pass

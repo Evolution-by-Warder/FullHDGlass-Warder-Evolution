@@ -1,4 +1,4 @@
-# FullHDGlass 1.0.38-test4 — rádio a texty piesní
+# FullHDGlass 1.0.38-test5 — rádio a texty piesní
 
 Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Produkčná verzia 1.0.37 a všetky jej aktualizačné adresy zostávajú zachované.
 
@@ -40,3 +40,14 @@ TEST1 pri úprave vrstiev odfiltroval pôvodný grafický podklad InfoPanelu v r
 - Niektoré stanice posielajú poradie skladba – interpret. Vyhľadanie v oboch poliach a prijatie obráteného poradia vyžaduje úplnú zhodu oboch údajov z databázového záznamu. Rovnaký princíp už používa vyhľadávanie obalov.
 
 Oba zdroje dostávajú aj celý pár údajov v obrátenom poradí; žiadne meno interpreta ani slovo názvu sa pri tom neodstraňuje. Záložné API vracia iba text pre požadovaný pár a neposkytuje nezávislé polia interpreta a názvu na ďalšie miestne overenie.
+
+## TEST5: pomalé odpovede zdroja
+
+Presná skladba zo snímky používateľa „Janek Ledecký – Budu všechno co si budeš přát“ sa pri kontrolnom načítaní našla za 5,69 sekundy. Doterajší šesťsekundový limit bol pre takto pomalé odpovede tesný; zo snímky sa konkrétna HTTP chyba v prijímači spätne určiť nedá.
+
+- Jedna požiadavka má teraz najviac 10 sekúnd podľa zostávajúceho spoločného rozpočtu 32 sekúnd. Vonkajšie ukončenie pracovného procesu po 45 sekundách zostáva.
+- Po prvom pokuse LRCLIB nasleduje hneď záložný zdroj. Nečaká sa najprv na všetky štyri varianty v jednej databáze. Počet požiadaviek sa nezvyšuje, texty sa stále sťahujú mimo GUI.
+- Retry-After sa ráta od prijatia chyby, zahŕňa aj HTTP dátum a zostáva rešpektovaný ďalšími pracovnými procesmi.
+- Pridané kontroly pre pomalý primárny zdroj, okamžité poradie zálohy, spoločný časový rozpočet a obe podoby Retry-After.
+
+**Dostupnosť externých služieb nie je zaručená.** Pri skutočnom výpadku oboch zdrojov alebo chýbajúcom texte zostáva príslušná hláška. Táto úprava znižuje zbytočné zlyhania pri pomalej odpovedi a čas čakania na zálohu; nesľubuje text pre každú skladbu.

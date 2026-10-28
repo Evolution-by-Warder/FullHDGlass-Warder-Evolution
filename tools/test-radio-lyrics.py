@@ -75,7 +75,7 @@ class ProviderTests(unittest.TestCase):
             return io.BytesIO(json.dumps([row] if 'q' in query else []).encode())
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(provider.lookup('Breaking Me','Topic and A7S',Path(tmp),opener=response)['text'],'Original test text')
-        self.assertEqual(len(queries),3);self.assertIn('q',queries[2])
+        self.assertEqual(len(queries),5);self.assertIn('q',queries[4])
     def test_synced_only_record_becomes_plain_text(self):
         row=self.record();row['plainLyrics']=None
         row['syncedLyrics']='[ar:Metadata]\n[00:01.00]Original test line\n[00:03.20][00:04.00]Another line'
@@ -121,6 +121,44 @@ class ProviderTests(unittest.TestCase):
             self.assertFalse(list(folder.glob('*.json')))
             urls.clear();provider.lookup('Other Artist','Other Title',folder,opener=response,clock=lambda:1001)
             self.assertEqual(len(urls),2);self.assertTrue(all(u.startswith(provider.FALLBACK) for u in urls))
+    def test_slow_primary_has_ten_seconds_and_fallback_is_second(self):
+        calls=[]
+        def response(request,**kwargs):
+            calls.append((request.full_url,kwargs['timeout']))
+            if request.full_url.startswith(provider.SEARCH):raise TimeoutError('slow')
+            return io.BytesIO(json.dumps({'lyrics':'Original backup text'}).encode())
+        with tempfile.TemporaryDirectory() as tmp:
+            result=provider.lookup('Artist','Title',Path(tmp),opener=response)
+        self.assertEqual(result['text'],'Original backup text')
+        self.assertEqual(len(calls),2);self.assertEqual(calls[0][1],10)
+        self.assertTrue(calls[1][0].startswith(provider.FALLBACK))
+    def test_request_budget_stops_unbounded_network_attempts(self):
+        elapsed=[0];calls=[]
+        def response(request,**kwargs):
+            calls.append(kwargs['timeout']);elapsed[0]+=20
+            raise TimeoutError('slow network')
+        with tempfile.TemporaryDirectory() as tmp:
+            result=provider.lookup('Artist','Title',Path(tmp),opener=response,monotonic=lambda:elapsed[0])
+        self.assertEqual(result['status'],'offline');self.assertEqual(len(calls),2)
+    def test_retry_after_starts_at_error_receipt_not_request_start(self):
+        from urllib.error import HTTPError
+        wall=[1000]
+        def response(request,**kwargs):
+            wall[0]+=8
+            raise HTTPError(request.full_url,429 if request.full_url.startswith(provider.SEARCH) else 404,'limited',{'Retry-After':'120'},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            provider.lookup('Artist','Title',folder,opener=response,clock=lambda:wall[0])
+            self.assertEqual(float((folder/'.lrclib-backoff').read_text()),1128)
+    def test_retry_after_http_date_is_respected(self):
+        from urllib.error import HTTPError
+        from email.utils import formatdate
+        def response(request,**kwargs):
+            raise HTTPError(request.full_url,429 if request.full_url.startswith(provider.SEARCH) else 404,'limited',{'Retry-After':formatdate(1120,usegmt=True)},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            result=provider.lookup('Artist','Title',Path(tmp),opener=response,clock=lambda:1000)
+        self.assertGreaterEqual(result['retry_after'],120)
+
     def test_previous_negative_cache_is_invalidated(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);(folder/(provider.key('Žbirka','Biely kvet')+'.json')).write_text(json.dumps({'text':'','status':'not-found','saved':100}))

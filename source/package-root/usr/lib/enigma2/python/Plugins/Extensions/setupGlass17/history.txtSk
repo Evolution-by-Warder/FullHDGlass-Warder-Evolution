@@ -1,3 +1,5 @@
+1.0.38-test5: Pomalé zdroje textov: 10-sekundový limit, záložný zdroj hneď po prvom pokuse, spoločný časový rozpočet, presné Retry-After.
+
 1.0.38-test4: Radio lyrics: fallback provider, transient-error retries, plain display from LRC, collaboration metadata normalization. SK/CZ coverage remains partial.
 
 1.0.38-test2 - Opravený skutočný TV podklad radio.mvi: odstránený pôvodný rám. Zostavenie overuje zhodu dekódovaného MVI s aktuálnym JPG.
