@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Shared internet-radio song metadata. Network reads never run on the GUI thread.
+"""Shared internet-radio metadata; incomplete pairs carry display-only text. Network reads never run on the GUI thread.
 
 Independent Warder implementation. HDF Radio's metadata/cover feature was the
 owner's reference; no compiled HDF modules or station database are redistributed.
@@ -56,7 +56,8 @@ def native_song(service):
         artist, title = tag("sTagArtist"), tag("sTagTitle")
         if artist and title:
             return artist, title
-        return split_song(title)
+        parsed = split_song(title)
+        return parsed if all(parsed) else (artist, title)
     except Exception:
         return "", ""
 
@@ -67,7 +68,9 @@ def parse_icy(payload):
     except UnicodeDecodeError:
         text = payload.rstrip(b"\x00").decode("cp1252", "replace")
     match = re.search(r"StreamTitle\s*=\s*(['\"])(.*?)\1\s*(?:;|$)", text, re.I | re.S)
-    return split_song(match.group(2)) if match else ("", "")
+    text = clean(match.group(2)) if match else ""
+    parsed = split_song(text)
+    return parsed if all(parsed) else ("", text)
 
 
 def fetch_icy(url, opener=urlopen, clock=time.monotonic):
@@ -145,7 +148,9 @@ def current_song(service, reference):
         monitor.clear()
         return "", ""
     artist, title = native_song(service)
-    if artist and title:
+    # A standalone native announcement is current metadata too. Do not replace
+    # it with a previous song still held by the background ICY monitor.
+    if artist or title:
         monitor.clear()
         return artist, title
     return monitor.song(url)

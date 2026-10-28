@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.34",
-  "expected_main_sha": "121e0bfb256e1f2c37fd7dbb2a65b5359f759a47",
-  "authorization": "Owner continued artwork sensitivity review and supplied the Europa 2 ALL THE TIME full-credit/reversed-field example (28 October 2026).",
-  "changelog": "Opravená kombinácia obráteného poradia metadát a viacerých interpretov na Europe 2. Rozpoznávajú sa čiarky, and a & pri zachovaní celého názvu skladby a všetkých mien. Zahŕňa aj opravu feat. z 1.0.33."
+  "version": "1.0.35",
+  "expected_main_sha": "6df212238e74add118d509eb831e11246ac0f7c8",
+  "authorization": "Owner reported missing standalone Europa 2 radio announcements and requested continued refinement (28 October 2026).",
+  "changelog": "Samostatné správy rádia, napríklad Hudba na maximum, sa zobrazia vedľa loga aj bez interpreta a skladby. Vyhľadávanie obalov a vzhľad rádia zostávajú zachované."
 }

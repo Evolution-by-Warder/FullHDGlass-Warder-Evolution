@@ -34,8 +34,9 @@ class RadioWindowTransparency:
             display = getattr(self.bar, "rds_display", None)
             if display is not None:
                 label = display["RadioText"]
-                label.setText(artist + " - " + title if artist and title else "")
-                if artist and title:
+                text = " - ".join(part for part in (artist, title) if part)
+                label.setText(text)
+                if text:
                     label.show()
         except Exception:
             pass

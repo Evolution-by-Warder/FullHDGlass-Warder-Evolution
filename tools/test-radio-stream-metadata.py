@@ -34,6 +34,17 @@ class MetadataTests(unittest.TestCase):
         self.assertEqual(m.parse_icy("StreamTitle='Beyoncé - Halo';".encode('cp1252')),('Beyoncé','Halo'))
     def test_icy_empty_payload_does_not_reuse_a_previous_song(self):
         self.assertEqual(m.parse_icy(b"StreamTitle='';"),('',''))
+    def test_icy_announcement_is_preserved_without_becoming_a_song(self):
+        self.assertEqual(m.parse_icy(b"StreamTitle='Hudba na maximum';"), ('', 'Hudba na maximum'))
+        self.assertEqual(m.split_song('Hudba na maximum'), ('', ''))
+    def test_native_announcement_overrides_cached_icy_song(self):
+        enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
+        values={1:'',2:'Hudba na maximum'}
+        service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda key:values[key]))
+        with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}),patch.object(m,'monitor') as monitor:
+            monitor.song.return_value=('Old artist','Old song')
+            self.assertEqual(m.current_song(service,reference()), ('','Hudba na maximum'))
+            monitor.song.assert_not_called();monitor.clear.assert_called_once()
     def test_explicit_radio_url_is_decoded(self):
         self.assertEqual(m.stream_url(reference()),'https://radio.example/live')
     def test_tv_stream_never_starts_metadata_fetch(self):
@@ -155,6 +166,12 @@ class ArtworkStabilityTests(unittest.TestCase):
             with patch.object(self.art.time,'monotonic',return_value=106):self.obj._poll()
         self.obj._showFallback.assert_called_once()
 
+    def test_standalone_announcement_never_starts_an_artwork_lookup(self):
+        self.obj._radioText=lambda:'Hudba na maximum'
+        with patch.object(self.art,'current_song',return_value=('','Hudba na maximum')):
+            with patch.object(self.art.time,'monotonic',return_value=100):self.obj._poll()
+            with patch.object(self.art.time,'monotonic',return_value=106):self.obj._poll()
+        self.obj._request.assert_not_called();self.obj._showFallback.assert_called_once()
     def test_new_song_clears_previous_cover_without_grace(self):
         self.obj._radioText=lambda:'Ukitas - Uncovered Paradise';self.obj._poll()
         self.obj._showFallback.assert_called_once();self.obj._request.assert_called_once()
@@ -188,6 +205,14 @@ class NativeTextIntegrationTests(unittest.TestCase):
             monitor.song.return_value=('Artist','Song')
             controller.update()
         label.setText.assert_called_with('Artist - Song');label.show.assert_called_once();timer.start.assert_called_once_with(1000)
+    def test_announcement_and_song_transitions_update_the_same_label(self):
+        controller,label,timer=self.load(reference())
+        samples=[('Artist','Song'),('','Hudba na maximum'),('Next artist','Next song'),('','')]
+        with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=types.SimpleNamespace())}),patch.object(m,'monitor') as monitor:
+            monitor.song.side_effect=samples
+            for expected in ('Artist - Song','Hudba na maximum','Next artist - Next song',''):
+                controller.update_song();label.setText.assert_called_with(expected)
+        self.assertEqual(label.show.call_count,3)
     def test_dvb_rds_text_is_never_overwritten(self):
         controller,label,timer=self.load(reference(engine='1'))
         with patch.object(m,'monitor'):controller.update()
