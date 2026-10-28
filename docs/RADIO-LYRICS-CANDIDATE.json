@@ -1,35 +1,45 @@
 {
   "schema": 1,
-  "version": "1.0.38-test7",
-  "source_commit": "fd4574b751f3e321b41ea601a2b484219e6f9ff2",
+  "version": "1.0.38-test8",
+  "source_commit": "eb430332895045f5722d92dc66d71e21019617a9",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40761799276,
+  "workflow_run": 40769028712,
   "workflow_conclusion": "success",
   "python": "3.14",
-  "unit_tests": 181,
-  "verified_payload_files": 1350,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test7",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test7/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test7_all.ipk",
-  "bytes": 14505624,
-  "sha256": "aa19a898097d68e27b9e458cca63f3fd1601800a8646f149b666ae1c340cbc95",
+  "unit_tests": 196,
+  "verified_payload_files": 1351,
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test8",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test8/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test8_all.ipk",
+  "bytes": 14508670,
+  "sha256": "2bde8368f3a74d715fcef97007fc69bee994242bd57f7d5f519305a40787925d",
   "fixes": [
-    "Compact cover frame preserves image ratio, each axis <=420 px and vertical centre 496",
-    "Bounded header sizing outside GUI; original artwork matcher and decoder retained",
-    "No central RADIO; localized weekday plus dd.mm.yyyy",
-    "Adjacent smaller white .SS seconds aligned by actual Prive7 glyph metrics",
-    "Spectrum interval 110ms rather than 140ms",
-    "Hedged helper-process lyrics lookups, 5-request maximum, better misses and retries",
-    "Swapped same-song metadata preserves lyrics and reuses cache",
-    "Only last bounded diagnostic state saved, never song lyrics in logs"
+    "Adds Hudba.sk and Youradio to existing LRCLIB and lyrics.ovh lookup",
+    "After 750ms or early primary miss, alternatives run concurrently; first verified result wins",
+    "Exact whole artist and song identity checked from each HTML source; translations and scripts ignored",
+    "HTTPS same-host redirects, bounded HTML parsing and 12-request total limit",
+    "Keeps valid positive TEST7 cache and retries old negative entries with new sources",
+    "Preserves user-approved TEST7 radio artwork, layout, metadata and playback"
   ],
   "verification": {
     "full_ipk_payload": "passed",
     "public_release_size_and_sha256": "independent byte download verified",
     "jpeg_mvi_similarity_db": 33.408,
     "radio_only_xml_change": "passed",
-    "compact_square_portrait_landscape_and_stale_result_tests": "passed"
+    "compact_square_portrait_landscape_and_stale_result_tests": "passed",
+    "regional_live_test": {
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "json_apis_disabled": true,
+      "found_source": "hudba",
+      "elapsed_ms": 1297,
+      "characters": 536,
+      "text_sha256": "47d519916a7f7ea5d8ec21d50929a87f44e2666fdb1075e9bcb8845ef13f4bd7",
+      "lyrics_published": false
+    },
+    "regional_regressions": "design/radio-lyrics/regional-source-checks.json"
   },
   "receiver_validated": false,
   "production_feeds_modified": false,
-  "coverage_limit": "SK/CZ coverage remains partial; a missing text and an unavailable source are distinct outcomes."
+  "coverage_limit": "SK/CZ coverage remains partial; a missing text and an unavailable source are distinct outcomes.",
+  "owner_layout_accepted": true
 }
