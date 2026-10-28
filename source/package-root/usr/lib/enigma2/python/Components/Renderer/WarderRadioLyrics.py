@@ -180,7 +180,7 @@ class WarderRadioLyrics(Renderer):
             worker=LyricsWorker(finished);self._worker=worker
             executable='/usr/bin/python3';helper=os.path.abspath(warderLyrics.__file__)
             _NativeLoop().spawnProcess(worker,executable,[executable,helper,artist,title],env=dict(os.environ))
-            self._timeout.start(35000,True)
+            self._timeout.start(40000,True)
         except Exception:finished(None)
 
     def changed(self, what):

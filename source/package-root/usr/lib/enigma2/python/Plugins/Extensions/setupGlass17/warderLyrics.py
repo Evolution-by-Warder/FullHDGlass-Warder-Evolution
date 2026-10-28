@@ -63,11 +63,12 @@ def select(records, artist, title):
     """Whole artist/title identity only; never return the first search result."""
     if not isinstance(records, list):
         return ''
-    wanted = (artist_identity(artist), identity(title))
+    wanted = {(artist_identity(artist), identity(title)),
+              (artist_identity(title), identity(artist))}
     for row in records[:30]:
         if not isinstance(row, dict) or row.get('instrumental'):
             continue
-        if (artist_identity(row.get('artistName')), identity(row.get('trackName'))) != wanted:
+        if (artist_identity(row.get('artistName')), identity(row.get('trackName'))) not in wanted:
             continue
         text = plain_text(row)
         if text:
@@ -100,13 +101,13 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time):
         backoff_until = 0
     query = urlencode({'artist_name':artist, 'track_name':title})
     # Search reads the database directly. /get can trigger slow upstream work.
-    urls = [SEARCH+'?'+query]
+    urls = [SEARCH+'?'+query, SEARCH+'?'+urlencode({'q':artist+' '+title})]
     normalized = urlencode({'artist_name':identity(artist), 'track_name':identity(title)})
     if normalized != query:
         urls.append(SEARCH+'?'+normalized)
     # Exact title plus all credited artists are checked locally in select().
     urls.append(SEARCH+'?'+urlencode({'track_name':title}))
-    urls = list(dict.fromkeys(urls))[:3]
+    urls = list(dict.fromkeys(urls))[:4]
     urls.append(FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''))
     for url in urls:
         lrclib = url.startswith(SEARCH)

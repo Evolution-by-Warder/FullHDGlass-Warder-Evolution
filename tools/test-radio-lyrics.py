@@ -61,6 +61,21 @@ class ProviderTests(unittest.TestCase):
         self.assertEqual(provider.select([row],'Topic and A7S','Breaking Me'),'Original test text')
         self.assertEqual(provider.select([row],'Topic','Breaking Me'),'')
         self.assertEqual(provider.select([row],'Topic and Another','Breaking Me'),'')
+    def test_reversed_fields_require_both_complete_identities(self):
+        row=dict(artistName='Topic, A7S',trackName='Breaking Me',plainLyrics='Original test text')
+        self.assertEqual(provider.select([row],'Breaking Me','Topic and A7S'),'Original test text')
+        self.assertEqual(provider.select([row],'Breaking Me','Topic'),'')
+        self.assertEqual(provider.select([row],'Breaking Me (Live)','Topic and A7S'),'')
+    def test_reversed_lookup_searches_both_fields_without_guessing_first_result(self):
+        from urllib.parse import parse_qs,urlsplit
+        queries=[]
+        def response(request,**kwargs):
+            query=parse_qs(urlsplit(request.full_url).query);queries.append(query)
+            row=dict(artistName='Topic, A7S',trackName='Breaking Me',plainLyrics='Original test text')
+            return io.BytesIO(json.dumps([row] if 'q' in query else []).encode())
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(provider.lookup('Breaking Me','Topic and A7S',Path(tmp),opener=response)['text'],'Original test text')
+        self.assertEqual(len(queries),2);self.assertIn('q',queries[1])
     def test_synced_only_record_becomes_plain_text(self):
         row=self.record();row['plainLyrics']=None
         row['syncedLyrics']='[ar:Metadata]\n[00:01.00]Original test line\n[00:03.20][00:04.00]Another line'
