@@ -2,7 +2,7 @@
 
 > Dátové balíky 27.10.2026: opravené Fun Rádio, Melody a regionálne logá Regina vo všetkých troch rozmeroch a pozadiach. DVB-T CZ/SK je dostupné v troch pozadiach. [Podrobnosti](docs/PICON-DATA-UPDATES.md).
 
-> Aktualizácia **1.0.36**: spoločná ponuka IPTV rádiá SK/CZ, tri rozmery a tri pozadia. Picony pre 213 položiek a obnovený bouquet s 321 položkami. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
+> Aktualizácia **1.0.36**: spoločná ponuka IPTV rádiá SK/CZ, tri rozmery a tri pozadia. Picony pre 247 položiek a obnovený bouquet s 321 položkami. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
 
 # FullHDGlass - Warder Evolution
 
@@ -102,4 +102,7 @@ Internet-radio cover integration: [design and provenance](docs/RADIO-STREAM-META
 
 ## IPTV SK/CZ radio — 1.0.36
 
-Shared with PiconHub 0.1.30: 213 programme picons, 229 exact reference PNGs per variant, three sizes × three styles. Refreshed bouquet: 321 entries (88 SK, 233 CZ), with audio samples confirmed for 286 selected URLs; 108 entries still lack suitable verified picons. [Bouquets and coverage](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/IPTV-SK-CZ). All nine shared modules are byte-identical in both published IPKs. [Verification](docs/IPTV-SK-CZ-1.0.36.json).
+Shared with PiconHub 0.1.30: 247 programme picons, 263 exact reference PNGs per variant, three sizes × three styles. Refreshed bouquet: 321 entries (88 SK, 233 CZ), with audio samples confirmed for 286 selected URLs; 74 entries still lack suitable verified picons. [Bouquets and coverage](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/IPTV-SK-CZ). All nine shared modules are byte-identical in both published IPKs. [Verification](docs/IPTV-SK-CZ-1.0.36.json).
+
+
+Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v každom z deviatich variantov, 74 zatiaľ bez vhodného overeného piconu. Overené Radia.sk, Radia.cz a MyOnlineRadio.cz aj dodané originály. Všetkých deväť verejných archívov a obrázkov prešlo kontrolou; aktuálne dáta sa stiahnu opätovným výberom IPTV rádiá SK/CZ. Verzie IPK sa nemenia. [Zdroje a zhodovanie](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/main/picons/IPTV-SK-CZ/catalog/followup-sources.json).

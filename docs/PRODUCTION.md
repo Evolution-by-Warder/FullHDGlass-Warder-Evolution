@@ -30,6 +30,9 @@ Dátová aktualizácia 27.10.2026: [aktuálne piconové balíky a overenie](PICO
 
 ## IPTV SK/CZ — 1.0.36
 
-Nová ponuka používa rovnaké overené dáta a kód ako PiconHub 0.1.30. Picony 213 položiek / 229 referencií v každom z deviatich variantov. Bouquet 321 položiek; 286 vybraných URL vrátilo zvukové dáta pri skúške. 108 položiek zatiaľ bez vhodného overeného piconu. [Dáta a bouquety](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/IPTV-SK-CZ).
+Nová ponuka používa rovnaké overené dáta a kód ako PiconHub 0.1.30. Picony 247 položiek / 263 referencií v každom z deviatich variantov. Bouquet 321 položiek; 286 vybraných URL vrátilo zvukové dáta pri skúške. 74 položiek zatiaľ bez vhodného overeného piconu. [Dáta a bouquety](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/IPTV-SK-CZ).
 
 Kompletné CI **40687770330** prešlo vrátane 252 pomocných ilustrácií, pôvodných piconových balíkov, prekladov a overenia všetkých súborov IPK. Verejný balík má **14 271 200 bajtov**, SHA256 `e2a7e43c6cb7fe129c12f7c3bb511bbbdfd2a075ac051ad708adaec29a7d811c`. Všetkých deväť spoločných modulov v zverejnených IPK bolo porovnaných bajt po bajte. Produkčný feed ponúka 1.0.36; legacy bridge 1.0.18 zostáva nezmenený. [Dôkaz overenia](IPTV-SK-CZ-1.0.36.json).
+
+
+Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v každom z deviatich variantov, 74 zatiaľ bez vhodného overeného piconu. Overené Radia.sk, Radia.cz a MyOnlineRadio.cz aj dodané originály. Všetkých deväť verejných archívov a obrázkov prešlo kontrolou; aktuálne dáta sa stiahnu opätovným výberom IPTV rádiá SK/CZ. Verzie IPK sa nemenia. [Zdroje a zhodovanie](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/main/picons/IPTV-SK-CZ/catalog/followup-sources.json).
