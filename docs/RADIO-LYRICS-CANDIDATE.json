@@ -1,32 +1,53 @@
 {
   "schema": 1,
-  "version": "1.0.38-test2",
-  "source_commit": "e62358981d3b80f3c1131b44b0d4ecfe661faca8",
+  "version": "1.0.38-test4",
+  "source_commit": "63ee7f948c0c4cb6765e8b78ecfb15275004a573",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40746016697,
+  "workflow_run": 40753645131,
   "workflow_conclusion": "success",
   "python": "3.14",
-  "unit_tests": 147,
+  "unit_tests": 159,
   "verified_payload_files": 1349,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test2",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test2/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test2_all.ipk",
-  "bytes": 14499486,
-  "sha256": "8937518454656afed874d3c9d8a1564fb0f7100b1313b00d816a818b79dd9da7",
-  "fixes": {
-    "physical_radio_background": "Old framed MPEG2 radio.mvi replaced by the current clean JPEG encoded as MPEG2.",
-    "ok_infobar": "Original selected InfoPanel graphics restored in WarderRadioOnly branch with alpha blending; TV branch retained."
-  },
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test4",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test4/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test4_all.ipk",
+  "bytes": 14500978,
+  "sha256": "4da9764bbf8d1774c751adfd80798616b1a497ba795b3854cced6f495a8ee3b3",
+  "fixes": [
+    "Complete reversed artist/title pairs and common collaboration separators",
+    "Bounded retry after transient errors; Retry-After retained across workers",
+    "lyrics.ovh fallback using full requested pair",
+    "LRC-only verified records displayed as ordinary text",
+    "HTTP 404 separated from network failures; old negative cache invalidated",
+    "Physical MPEG2/JPEG background and original radio InfoPanel fix retained"
+  ],
+  "real_lookup_checks": [
+    {
+      "artist": "Topic and A7S",
+      "title": "Breaking Me",
+      "status": "found"
+    },
+    {
+      "artist": "Miro Žbirka",
+      "title": "Biely kvet",
+      "status": "found"
+    },
+    {
+      "artist": "Chinaski",
+      "title": "Tabáček",
+      "status": "found"
+    },
+    {
+      "artist_field": "Breaking Me",
+      "title_field": "Topic and A7S",
+      "status": "found"
+    }
+  ],
+  "coverage_limit": "SK/CZ coverage remains partial; Sme pre seba stvorení was not obtained from the tested public APIs. No complete coverage claimed. SuperMusic connector not included.",
   "verification": {
-    "jpeg_mvi_sha256_pair": "passed",
-    "decoded_video_similarity_db": 33.408,
-    "all_real_full_frame_infopanel_templates": "passed",
     "full_ipk_payload": "passed",
-    "public_release_size_and_sha256": "verified"
+    "public_release_size_and_sha256": "verified",
+    "jpeg_mvi_similarity_db": 33.408
   },
   "receiver_validated": false,
-  "receiver_checks_pending": [
-    "old central frame absent on physical TV",
-    "selected InfoBar graphic visible after OK"
-  ],
   "production_feeds_modified": false
 }
