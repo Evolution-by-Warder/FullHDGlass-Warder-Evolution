@@ -97,7 +97,7 @@ class RadioTests(unittest.TestCase):
         self.assertEqual(row[2][3:5],(75,45))
         self.assertEqual(row[2][8],3)
         self.assertEqual(row[0][1],'235E')
-    def test_actual_skin_selector_places_dab_and_dvb_t_first(self):
+    def test_actual_skin_selector_places_iptv_dab_and_dvb_t_first(self):
         tree=ast.parse((PKG/'plugin.py').read_text());cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='warderPositionSelectorScr');node=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='startSelect')
         import os
         config=SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(par39=SimpleNamespace(value='/tmp'))))
@@ -105,10 +105,11 @@ class RadioTests(unittest.TestCase):
         exec(compile(ast.Module(body=[node],type_ignores=[]),'skin','exec'),scope)
         rows=[];screen=SimpleNamespace(selected={'DAB'},list=SimpleNamespace(addSelection=lambda *value:rows.append(value)))
         scope[node.name](screen)
-        self.assertEqual([row[1]['package_selector'] for row in rows[:2]],['DAB','DVB-T-SK-CZ'])
-        self.assertTrue(rows[0][3])
-        self.assertEqual(rows[0][0],'DAB / DAB+')
-        self.assertTrue(rows[0][-1].endswith('images/selectors/DAB.png'))
-        self.assertTrue(rows[1][-1].endswith('images/selectors/DVB-T-SK-CZ.png'))
+        self.assertEqual([row[1]['package_selector'] for row in rows[:3]],['IPTV-SK-CZ','DAB','DVB-T-SK-CZ'])
+        self.assertTrue(rows[1][3])
+        self.assertEqual(rows[1][0],'DAB / DAB+')
+        self.assertTrue(rows[0][-1].endswith('images/selectors/IPTV-SK-CZ.png'))
+        self.assertTrue(rows[1][-1].endswith('images/selectors/DAB.png'))
+        self.assertTrue(rows[2][-1].endswith('images/selectors/DVB-T-SK-CZ.png'))
 
 if __name__=='__main__':unittest.main()

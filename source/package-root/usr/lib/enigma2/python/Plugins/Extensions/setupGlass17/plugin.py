@@ -8558,11 +8558,11 @@ class downloadMenu(Screen):
 		if not self.ena or self.warderChannelState == "running":
 			return
 		prepared = bool(self.warderPiconPrefs.get("prepared"))
-		if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs) and not self.warderPiconPrefs.get("include_dab"):
+		if prepared and not warderPiconSync.valid_task_selection(self.warderPiconPrefs) and not warderRadio.selected(self.warderPiconPrefs):
 			self.session.open(historyScreen, _("Result"), _("Select at least one satellite position."))
 			return
-		self.warderDABOnly = bool(self.warderPiconPrefs.get("include_dab") and not warderPiconSync.valid_task_selection(self.warderPiconPrefs))
-		if prepared and ((self.warderPiconPrefs.get("include_dab") and not warderRadio.ready(self.warderPiconPrefs)) or (not self.warderDABOnly and not warderPiconSync.channel_preferences_ready(self.warderPiconPrefs))):
+		self.warderDABOnly = bool(warderRadio.selected(self.warderPiconPrefs) and not warderPiconSync.valid_task_selection(self.warderPiconPrefs))
+		if prepared and ((warderRadio.selected(self.warderPiconPrefs) and not warderRadio.ready(self.warderPiconPrefs)) or (not self.warderDABOnly and not warderPiconSync.channel_preferences_ready(self.warderPiconPrefs))):
 			self.session.open(historyScreen, _("Result"), _("Choose a resolution, colour, location and update method before downloading."))
 			return
 		if not self.toDown:
@@ -8638,7 +8638,7 @@ class downloadMenu(Screen):
 					message = _("No legacy picon archive is available for the selected positions and variant.")
 				self.session.open(historyScreen, _("Result"), _("ERROR") + ": " + message)
 				return
-		self.warderDABPending = bool(prepared and self.warderPiconPrefs.get("include_dab"))
+		self.warderDABPending = bool(prepared and warderRadio.selected(self.warderPiconPrefs))
 		self.warderDABTaskSnapshot = dict(self.warderPiconPrefs) if self.warderDABPending else None
 		needs_sevenzip = bool(self.warderLegacyChannelQueue) or any(self.menuListAll[x][0] == "oa" and self.menuListAll[x][4] == "d" for x in self.menuListAll)
 		if needs_sevenzip and not find_sevenzip(SEVENZIP):
@@ -8686,8 +8686,8 @@ class downloadMenu(Screen):
 			"wp-dest": _("Picon location") + ": " + location,
 			"wp-mode": _("Update method") + ": " + (mode_labels.get(mode, _("No update method selected"))),
 		}
-		if prefs.get("include_dab"):
-			labels["wp-pos"] = _("Satellite positions") + ": DAB / DAB+" + (", " + position_text if positions else "")
+		if warderRadio.selected(prefs):
+			labels["wp-pos"] = _("Satellite positions") + ": " + warderRadio.label(prefs, _) + (", " + position_text if positions else "")
 		for row_id, label in labels.items():
 			for index in self.menuListAll:
 				if self.menuListAll[index][0] == row_id:
@@ -8800,6 +8800,7 @@ class downloadMenu(Screen):
 		if row == "wp-pos":
 			selected = list(self.warderPiconPrefs.get("position_bindings", []))
 			if self.warderPiconPrefs.get("include_dab"):selected.append(dict(warderRadio.DAB_BINDING))
+			if self.warderPiconPrefs.get("include_iptv"):selected.append(dict(warderRadio.IPTV_BINDING))
 			self.session.openWithCallback(self.warderPositionAnswer, warderPositionSelectorScr, selected)
 			return
 		choices = {}
@@ -8863,20 +8864,22 @@ class downloadMenu(Screen):
 			return
 		self.warderPositionSelectionAttempted = True
 		include_dab = any(warderRadio.is_dab(item) for item in answer)
-		native = [item for item in answer if not warderRadio.is_dab(item)]
+		include_iptv = any(warderRadio.is_iptv(item) for item in answer)
+		native = [item for item in answer if not warderRadio.is_radio(item)]
 		bindings = warderPiconSync.normalize_position_bindings(native)
 		if len(bindings) != len(native):
 			bindings = []
 		self.warderPiconPrefs = warderPiconSync.set_task_position_bindings(self.warderPiconPrefs, bindings)
 		self.warderPiconPrefs["include_dab"] = include_dab
+		self.warderPiconPrefs["include_iptv"] = include_iptv
 		positions = list(self.warderPiconPrefs.get("positions", []))
 		if positions:
 			preview = ", ".join(positions[:4])
 			if len(positions) > 4:
 				preview += " ..."
 			label = _("Satellite positions") + ": " + preview + " (" + str(len(bindings)) + " " + _("FastScan tables selected") + ")"
-		elif include_dab:
-			label = _("Satellite positions") + ": DAB / DAB+"
+		elif include_dab or include_iptv:
+			label = _("Satellite positions") + ": " + warderRadio.label(self.warderPiconPrefs, _)
 			self.warderPiconPrefs["prepared"] = True
 		else:
 			label = _("Satellite positions") + ": " + _("No position selected")
@@ -8888,7 +8891,7 @@ class downloadMenu(Screen):
 			if self.menuListAll[index][0] == "wp-pos":
 				self.menuListAll[index][1] = label
 				break
-		if positions or include_dab:
+		if positions or include_dab or include_iptv:
 			self.warderPiconPrefs["prepared"] = True
 			self._setWarderPiconPrepared("wp-pos")
 		self.createList()
@@ -9230,7 +9233,7 @@ class downloadMenu(Screen):
 
 
 	def _warderDABStart(self):
-		self.dwnJob = "DAB / DAB+"
+		self.dwnJob = warderRadio.label(self.warderDABTaskSnapshot or {}, _)
 		self.type_download = "DAB"
 		self.warderCurrentActionRow = "wp-pos"
 		try:
@@ -9244,7 +9247,7 @@ class downloadMenu(Screen):
 			self.warderDABWorker.start()
 		except Exception as error:
 			self.warderPiconPrefs = dict(self.warderDABTaskSnapshot or self.warderPiconPrefs)
-			self.dwnLoop(_("ERROR") + ": DAB / DAB+: " + str(error))
+			self.dwnLoop(_("ERROR") + ": " + self.dwnJob + ": " + str(error))
 
 	def _warderDABPoll(self):
 		worker = self.warderDABWorker
@@ -9253,7 +9256,7 @@ class downloadMenu(Screen):
 			if kind == "event":
 				if value[0] == "download":
 					percent = int(100 * value[2] / max(1,value[3]))
-					self["dwn"].setText("DAB / DAB+: %d%%" % percent)
+					self["dwn"].setText(self.dwnJob + ": %d%%" % percent)
 				elif value[0] == "stage":self["dwn"].setText(value[1])
 			else:
 				self.warderDABTimer.stop()
@@ -9263,7 +9266,7 @@ class downloadMenu(Screen):
 					self.dwnLoop(_("SUCCESSFUL") + ": " + warderPiconSync.success_summary(count, None, _))
 				else:
 					self.warderPiconPrefs = dict(self.warderDABTaskSnapshot or self.warderPiconPrefs)
-					self.dwnLoop(_("ERROR") + ": DAB / DAB+: " + str(value))
+					self.dwnLoop(_("ERROR") + ": " + self.dwnJob + ": " + str(value))
 				return
 
 	def _warderDABCleanup(self):
@@ -10123,8 +10126,9 @@ class warderPositionSelectorScr(Screen):
 
 	def __init__(self, session, selected=None):
 		Screen.__init__(self, session)
-		self.selected = set(warderPiconSync.task_package_selectors_from_bindings([item for item in (selected or []) if not warderRadio.is_dab(item)]))
+		self.selected = set(warderPiconSync.task_package_selectors_from_bindings([item for item in (selected or []) if not warderRadio.is_radio(item)]))
 		if any(warderRadio.is_dab(item) for item in (selected or [])):self.selected.add("DAB")
+		if any(warderRadio.is_iptv(item) for item in (selected or [])):self.selected.add("IPTV-SK-CZ")
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Select"))
 		self["key_yellow"] = Label(_("Save"))
@@ -10137,6 +10141,7 @@ class warderPositionSelectorScr(Screen):
 		self.onLayoutFinish.append(self.startSelect)
 
 	def startSelect(self):
+		self.list.addSelection(warderRadio.label({"include_iptv": True}), dict(warderRadio.IPTV_BINDING), -1, "IPTV-SK-CZ" in self.selected, PLUGINPATH + "images/selectors/IPTV-SK-CZ.png")
 		self.list.addSelection("DAB / DAB+", dict(warderRadio.DAB_BINDING), 0, "DAB" in self.selected, PLUGINPATH + "images/selectors/DAB.png")
 		ordered = sorted(range(len(SATLIST)), key=lambda i: (warderPiconSync.task_binding_for_display_label(SATLIST[i][0]) or {}).get("package_selector") != "DVB-T-SK-CZ")
 		for x in ordered:

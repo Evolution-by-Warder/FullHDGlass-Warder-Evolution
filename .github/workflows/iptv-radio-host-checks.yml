@@ -1,0 +1,32 @@
+name: IPTV shared radio host checks
+on:
+  push:
+    branches: [radio/iptv-sk-cz-refresh]
+    paths:
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/**
+      - tools/test-dab-shared-runtime.py
+      - tools/test-iptv-shared-runtime.py
+      - .github/workflows/iptv-radio-host-checks.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  host:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.9', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17
+            source/package-root/usr/lib/enigma2/python/Components
+            tools
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify canonical shared code, DAB and actual callbacks
+        run: python tools/test-dab-shared-runtime.py -v
+      - name: Verify IPTV sizes, combined transports and selection cancellation
+        run: python tools/test-iptv-shared-runtime.py -v
