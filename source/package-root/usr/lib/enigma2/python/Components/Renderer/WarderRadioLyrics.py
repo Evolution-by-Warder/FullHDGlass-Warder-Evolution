@@ -51,6 +51,8 @@ class WarderRadioLyrics(Renderer):
         self._key = None
         self._pending_since = 0
         self._requested = None
+        self._attempts = 0
+        self._retry_at = 0
         self._generation = 0
         self._text = ''
         self._offset = 0
@@ -59,7 +61,7 @@ class WarderRadioLyrics(Renderer):
         self._shown = True
         self._timer = eTimer();self._timer.callback.append(self._poll)
         self._scroll = eTimer();self._scroll.callback.append(self._tick)
-        self._timeout = eTimer();self._timeout.callback.append(self._kill_worker)
+        self._timeout = eTimer();self._timeout.callback.append(self._worker_timeout)
 
     def postWidgetCreate(self, instance):
         Renderer.postWidgetCreate(self, instance)
@@ -119,6 +121,20 @@ class WarderRadioLyrics(Renderer):
             try:worker.transport.kill()
             except Exception:pass
 
+    def _schedule_retry(self, result=None):
+        if self._attempts < 3:
+            delay = 20 if self._attempts == 1 else 60
+            try:delay = max(delay,int((result or {}).get('retry_after',0)))
+            except (TypeError,ValueError):pass
+            self._retry_at = time.monotonic()+delay
+        self._set_text(message('offline'))
+
+    def _worker_timeout(self):
+        # Invalidate callbacks before kill(); appClosed may fire immediately.
+        self._generation += 1
+        self._kill_worker()
+        self._schedule_retry()
+
     def _poll(self):
         try:
             nav=NavigationInstance.instance
@@ -139,9 +155,13 @@ class WarderRadioLyrics(Renderer):
         if candidate != self._key:
             self._generation += 1
             self._key=candidate;self._requested=None
+            self._attempts=0;self._retry_at=0
             self._pending_since=time.monotonic()
             self._kill_worker();self._set_text(message('waiting'))
-        if candidate is None or self._requested == candidate or time.monotonic()-self._pending_since < 2:return
+        if candidate is None or time.monotonic()-self._pending_since < 2:return
+        if self._requested == candidate:
+            if not self._retry_at or time.monotonic() < self._retry_at:return
+        self._retry_at=0;self._attempts+=1;self._generation+=1
         self._requested=candidate
         self._set_text(message('loading'))
         generation=self._generation
@@ -151,21 +171,23 @@ class WarderRadioLyrics(Renderer):
             if isinstance(result,dict) and result.get('text'):
                 self._set_text(result['text'])
             else:
-                self._set_text(message('offline' if not isinstance(result,dict) or result.get('status') == 'offline' else 'missing'))
+                if not isinstance(result,dict) or result.get('status') == 'offline':
+                    self._schedule_retry(result)
+                else:self._set_text(message('missing'))
         try:
             from Plugins.Extensions.setupGlass17.warderHelpPreview import _NativeLoop
             from Plugins.Extensions.setupGlass17 import warderLyrics
             worker=LyricsWorker(finished);self._worker=worker
             executable='/usr/bin/python3';helper=os.path.abspath(warderLyrics.__file__)
             _NativeLoop().spawnProcess(worker,executable,[executable,helper,artist,title],env=dict(os.environ))
-            self._timeout.start(20000,True)
+            self._timeout.start(35000,True)
         except Exception:finished(None)
 
     def changed(self, what):
         if self.instance is not None:self._poll()
 
     def onShow(self):
-        self._shown=True;self._timer.start(750)
+        self._shown=True;self._attempts=0;self._retry_at=0;self._timer.start(750)
         if self._overflow:self._scroll.start(80)
 
     def onHide(self):

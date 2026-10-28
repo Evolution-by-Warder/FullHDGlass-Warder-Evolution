@@ -1,3 +1,5 @@
+1.0.38-test3: Radio lyrics: fallback provider, transient-error retries, plain display from LRC, collaboration metadata normalization. SK/CZ coverage remains partial.
+
 1.0.38-test2 - Opravený skutočný TV podklad radio.mvi: odstránený pôvodný rám. Zostavenie overuje zhodu dekódovaného MVI s aktuálnym JPG.
 
 1.0.38-test1 - Skúšobný rádio dizajn: natívne písmo, automatické texty piesní s presnou zhodou, vysoký panel obalu a spodné údaje stanice. Produkčné aktualizácie sa nemenia.

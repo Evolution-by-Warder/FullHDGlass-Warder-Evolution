@@ -53,8 +53,53 @@ class ProviderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             def offline(*a,**kw):raise OSError('offline')
             result=provider.lookup('Artist','Title',Path(tmp),opener=offline)
-            self.assertEqual(result,{'text':'','status':'offline'})
+            self.assertEqual(result['status'],'offline')
+            self.assertEqual(result['retry_after'],20)
             self.assertEqual(list(Path(tmp).iterdir()),[])
+    def test_collaboration_separators_keep_all_performers(self):
+        row=dict(artistName='Topic, A7S',trackName='Breaking Me',plainLyrics='Original test text')
+        self.assertEqual(provider.select([row],'Topic and A7S','Breaking Me'),'Original test text')
+        self.assertEqual(provider.select([row],'Topic','Breaking Me'),'')
+        self.assertEqual(provider.select([row],'Topic and Another','Breaking Me'),'')
+    def test_synced_only_record_becomes_plain_text(self):
+        row=self.record();row['plainLyrics']=None
+        row['syncedLyrics']='[ar:Metadata]\n[00:01.00]Original test line\n[00:03.20][00:04.00]Another line'
+        self.assertEqual(provider.select([row],'Žbirka','Biely kvet'),'Original test line\nAnother line')
+    def test_404_is_a_miss_and_not_offline(self):
+        from urllib.error import HTTPError
+        def miss(request,**kwargs):raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(provider.lookup('Artist','Title',Path(tmp),opener=miss)['status'],'not-found')
+    def test_fallback_after_lrclib_failure_and_complete_identity_in_url(self):
+        from urllib.error import HTTPError
+        urls=[]
+        def response(request,**kwargs):
+            urls.append(request.full_url)
+            if request.full_url.startswith(provider.SEARCH):raise HTTPError(request.full_url,503,'busy',{'Retry-After':'120'},None)
+            return io.BytesIO(json.dumps({'lyrics':'Original fallback text'}).encode())
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(provider.lookup('Topic and A7S','Breaking Me',Path(tmp),opener=response)['text'],'Original fallback text')
+        self.assertEqual(len(urls),2)
+        self.assertIn('/Topic%20and%20A7S/Breaking%20Me',urls[-1])
+    def test_rate_limit_survives_between_workers_and_failure_is_not_cached(self):
+        from urllib.error import HTTPError
+        urls=[]
+        def response(request,**kwargs):
+            urls.append(request.full_url)
+            raise HTTPError(request.full_url,429 if request.full_url.startswith(provider.SEARCH) else 404,'limited',{'Retry-After':'120'},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            first=provider.lookup('Artist','Title',folder,opener=response,clock=lambda:1000)
+            self.assertEqual(first['status'],'offline');self.assertGreaterEqual(first['retry_after'],120)
+            self.assertFalse(list(folder.glob('*.json')))
+            urls.clear();provider.lookup('Other Artist','Other Title',folder,opener=response,clock=lambda:1001)
+            self.assertEqual(len(urls),1);self.assertTrue(urls[0].startswith(provider.FALLBACK))
+    def test_previous_negative_cache_is_invalidated(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);(folder/(provider.key('Žbirka','Biely kvet')+'.json')).write_text(json.dumps({'text':'','status':'not-found','saved':100}))
+            response=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
+            self.assertEqual(provider.lookup('Žbirka','Biely kvet',folder,opener=response,clock=lambda:101)['status'],'found')
+
     def test_display_announcements_never_reach_the_provider(self):
         self.assertEqual(provider.lookup('','Hudba na maximum')['status'],'no-song')
 
@@ -137,6 +182,25 @@ class NativeTests(unittest.TestCase):
         self.m.native_song=lambda *a:('','Hudba na maximum')
         self.m.current_song=lambda *a:(_ for _ in ()).throw(AssertionError('Must not reuse ICY song'))
         r._poll();self.assertIsNone(r._key)
+    def test_transient_failure_retries_but_stops_after_three_attempts(self):
+        r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
+        for attempt in range(3):
+            worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"offline"}');worker.complete(0)
+            self.assertEqual(r._attempts,attempt+1)
+            if attempt<2:
+                self.assertGreater(r._retry_at,0);r._retry_at=1;r._poll()
+        self.assertEqual(r._retry_at,0);r._poll();self.assertEqual(len(self.spawned),3)
+    def test_worker_timeout_is_visible_and_late_response_cannot_replace_it(self):
+        r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
+        worker=self.spawned[-1][0];r._worker_timeout()
+        self.assertIn('nedostupný',r.label.text);self.assertGreater(r._retry_at,0)
+        worker.outReceived(b'{"text":"Stale text"}');worker.complete(0)
+        self.assertNotEqual(r.label.text,'Stale text')
+    def test_real_miss_is_not_retried(self):
+        r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
+        worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"not-found"}');worker.complete(0)
+        self.assertEqual(r._retry_at,0);r._poll();self.assertEqual(len(self.spawned),1)
+
     def test_hiding_cancels_native_timers_and_worker(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
         worker=self.spawned[0][0];killed=[];worker.transport.kill=lambda:killed.append(True)

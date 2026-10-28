@@ -1,3 +1,5 @@
+1.0.38-test3: Radio lyrics: fallback provider, transient-error retries, plain display from LRC, collaboration metadata normalization. SK/CZ coverage remains partial.
+
 1.0.38-test2 - Rebuild physical-TV radio.mvi from the clean radio JPEG; package builds now decode and verify the video/JPEG pair.
 
 1.0.38-test1 - Radio design candidate: native text, automatic plain lyrics with exact song matching, portrait artwork area, station footer and transport type. Production feeds unchanged.

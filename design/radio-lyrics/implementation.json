@@ -2,15 +2,18 @@
   "schema": 1,
   "baseline_commit": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
   "baseline_version": "1.0.37",
-  "candidate_version": "1.0.38-test2",
+  "candidate_version": "1.0.38-test3",
   "receiver_validated": false,
   "non_radio_xml_sha256": "2768fa4fc7520497e9d707aad739d14fd3d92ed0021ecb59e51223f441603ec1",
   "approved_layout": "approved-layout.png",
   "scenic_source": "scenic-source.png",
   "background_prompt": "Clean scenic production background from the approved radio concept; microphone left, glowing globe right, blue and amber studio; no text, frames, covers or static UI.",
   "background_method": "built-in imagegen; standard 1920x1080 JPEG package encoding",
-  "lyrics_source": "https://lrclib.net/docs",
-  "matching": "exact complete normalized artist and song title; plain lyrics only",
+  "matching": "LRCLIB: complete title and all credited artists, common collaboration separators and accents normalized; lyrics.ovh: full artist/title endpoint; LRC timestamps stripped for plain display",
   "state": "isolated candidate; production updater unchanged",
-  "physical_video_background": "video-background.json"
+  "physical_video_background": "video-background.json",
+  "lyrics_sources": [
+    "https://lrclib.net/docs",
+    "https://github.com/NTag/lyrics.ovh"
+  ]
 }

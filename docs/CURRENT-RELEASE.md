@@ -1,4 +1,4 @@
-# FullHDGlass 1.0.38-test2 — rádio a texty piesní
+# FullHDGlass 1.0.38-test3 — rádio a texty piesní
 
 Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Produkčná verzia 1.0.37 a všetky jej aktualizačné adresy zostávajú zachované.
 
@@ -9,7 +9,7 @@ Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Pro
 - Pozadie neobsahuje texty. Rámy a písmo sa kreslia samostatne; nevytvára sa škálovaný obrázok textu. Starý dodatočný rádio nadpis v InfoPanel vrstve je potlačený, aby sa nedvojil.
 - Obaly, picony, DAB MOT/SLS, RASS vlastníctvo a RDS/ICY zdroje zostávajú v existujúcich komponentoch.
 
-Zdroj slov piesní: [LRCLIB](https://lrclib.net/docs). Požiadavka obsahuje interpreta a názov skladby. Pokrytie našich rádií nie je zmerané; predchádzajúci odhad 50 % nebol meranie. Texty sa neukladajú do Gitu. Dočasná cache v prijímači má najviac 128 záznamov.
+Zdroje textov: [LRCLIB](https://lrclib.net/docs) a záložné [lyrics.ovh](https://github.com/NTag/lyrics.ovh). Požiadavka obsahuje interpreta a názov skladby. Pokrytie našich rádií nie je zmerané; predchádzajúci odhad 50 % nebol meranie. Texty sa neukladajú do Gitu. Dočasná cache v prijímači má najviac 128 záznamov.
 
 Zmeny XML sa obmedzujú na RdsInfoDisplay, RdsDisplay a RadioInfoBar; ostatné obrazovky zostávajú bajtovo rovnaké. Balík má kontrolu celého obsahu a limit 16 MiB.
 
@@ -24,3 +24,15 @@ TEST2 obnovuje `radio.mvi` z aktuálneho čistého JPG bez rámov. Build aj kont
 ## Oprava infobaru po OK
 
 TEST1 pri úprave vrstiev odfiltroval pôvodný grafický podklad InfoPanelu v rádio režime. Ostali iba jeho texty cez rádio obrazovku. TEST2 vracia vybraný grafický PNG podklad aj pre rádio s alfa prelínaním; priehľadná horná časť zachová rádio scénu a nepriehľadná plocha infobaru oddelí jeho údaje. Televízna vetva aj polohy a zdroje pôvodných údajov zostávajú zachované. Automatická kontrola prechádza všetky reálne celoplošné šablóny InfoPanelu.
+
+## TEST3: dostupnosť textov
+
+- Primárne vyhľadávanie číta databázu LRCLIB cez `/api/search`; pomalý `/api/get`, ktorý môže spúšťať ďalšie vyhľadávanie, už nepredchádza každej skladbe.
+- Záložný zdroj lyrics.ovh dostáva celý názov interpreta aj skladby. Pri skúške našiel „Breaking Me“ s údajmi „Topic and A7S“ zo snímky používateľa.
+- Pri LRCLIB sa normalizujú diakritika a oddeľovače spoluúčinkujúcich (`ft.`, `feat.`, `and`, `&`, čiarka). Všetci interpreti a celý názov vrátane verzie musia naďalej sedieť.
+- Ak zhodný záznam obsahuje iba LRC, odstránia sa časové značky a zobrazí sa obyčajný text bez karaoke.
+- Výpadok, HTTP 503/429 ani časový limit sa neukladajú ako nenájdený text na šesť hodín. HTTP 404 sa rozlišuje od nedostupného servera. Nová verzia cache zahodí staré negatívne výsledky.
+- Pri dočasnej chybe najviac tri pokusy na tú istú skladbu, bežné pauzy 20 a 60 sekúnd. Hlavička Retry-After má prednosť a zákaz požiadaviek na LRCLIB platí aj pre ďalší pracovný proces. Každý pokus má najviac štyri požiadavky, každá časový limit 6 sekúnd; samostatný proces sa po 35 sekundách ukončí. GUI nečaká na sieť.
+- Časový limit už nenechá visieť stav vyhľadávania a oneskorená odpoveď starého procesu neprepíše aktuálny obsah.
+
+**Pokrytie SK/CZ nie je vyriešené pre všetky skladby.** LRCLIB pri kontrolnej skúške našiel „Biely kvet“, ale „Sme pre seba stvorení“ zo snímky v skúšaných verejných API chýba. SuperMusic túto skladbu eviduje, jeho stránka však pri priamom načítaní vracala JavaScriptovú overovaciu stránku. Táto verzia preto nepredstiera funkčný konektor SuperMusic a neobsahuje ručne vložené texty. Žiadna percentuálna úspešnosť sa nesľubuje.
