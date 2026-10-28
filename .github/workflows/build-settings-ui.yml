@@ -113,6 +113,7 @@ jobs:
           python3 tools/test-help-preview.py -v
           python3 tools/test-startup-update.py -q
           python3 tools/test-dab-shared-runtime.py -v
+          python3 tools/test-iptv-shared-runtime.py -v
           python3 tools/test-radio-picon.py -v
           python3 tools/test-radio-stream-metadata.py -v
           python3 tools/test-runtime-safety.py

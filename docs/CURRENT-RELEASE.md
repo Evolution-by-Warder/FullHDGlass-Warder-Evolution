@@ -1,8 +1,9 @@
-# FullHDGlass Warder Evolution 1.0.35
+# FullHDGlass Warder Evolution 1.0.36
 
-- Samostatné informačné správy internetového rádia, napríklad „Hudba na maximum“, sa zobrazujú v existujúcom spodnom riadku vedľa loga aj bez interpreta a skladby.
-- Zachované sú natívne značky prehrávača aj správy ICY. Aktuálna natívna správa má prednosť pred skladbou uloženou z predchádzajúceho čítania ICY.
-- Pri návrate k skladbe sa riadok aktualizuje; prázdne údaje odstránia starý text. Slogan bez údajov o skladbe nespustí vyhľadávanie obalu.
-- Natívne DVB/RDS, DAB MOT, rozloženie a grafika zostávajú zachované.
+Spoločná ponuka **IPTV rádiá SK/CZ** používa rovnaké dáta a kód sťahovania ako PiconHub 0.1.30. Podporuje rozmery 50×30, 220×132, 400×240 a pozadia Transparent, Biele, Čierne.
 
-Overenie: 65 automatických testov vrátane prechodov skladba → správa → skladba → prázdny text. Kompletné CI aj kontrola schválenej rádiovej grafiky prešli. Balík bol zverejnený a produkčný aktualizačný manifest overený voči vydaniu. Fyzické overenie na prijímači sa zatiaľ netvrdí.
+Picony pre 213 položiek; samostatný obnovený bouquet má 321 položiek (88 SK, 233 CZ). Pri 286 vybraných streamoch skúška vrátila zvukové dáta. 108 položiek zatiaľ nemá vhodný overený picon.
+
+Sťahovanie beží v existujúcom spoločnom okne na pozadí. Kontroluje SHA256 archívov a PNG a zachováva nesúvisiace používateľské picony. IPTV a DAB možno sťahovať spolu pri 220×132.
+
+[Bouquety a zoznam chýbajúcich piconov](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/IPTV-SK-CZ). Fyzický test tejto verzie na prijímači sa zatiaľ netvrdí.

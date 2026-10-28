@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.35",
-  "expected_main_sha": "6df212238e74add118d509eb831e11246ac0f7c8",
-  "authorization": "Owner reported missing standalone Europa 2 radio announcements and requested continued refinement (28 October 2026).",
-  "changelog": "Samostatné správy rádia, napríklad Hudba na maximum, sa zobrazia vedľa loga aj bez interpreta a skladby. Vyhľadávanie obalov a vzhľad rádia zostávajú zachované."
+  "version": "1.0.36",
+  "expected_main_sha": "6cbb756c07ef5f6f3fea48fb972d39ea0934c4a8",
+  "authorization": "Owner requested autonomous completion and deployment of shared SK/CZ IPTV radio bouquets and official picons in both Warder projects on 28 October 2026.",
+  "changelog": "Nová spoločná ponuka IPTV rádiá SK/CZ: tri rozlíšenia a tri pozadia. Picony pre 213 položiek; samostatný obnovený bouquet obsahuje 321 položiek. Kontrola SHA256, sťahovanie na pozadí a zachovanie ostatných piconov."
 }
