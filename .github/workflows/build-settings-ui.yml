@@ -142,7 +142,7 @@ jobs:
       - name: Validate existing gettext catalogs
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq gettext
+          sudo apt-get install -y -qq gettext ffmpeg
           find source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale -name '*.po' -print0 | xargs -0 -I '{}' msgfmt --check -o /dev/null '{}'
       - name: Build numbered package and verify every payload byte
         run: |
