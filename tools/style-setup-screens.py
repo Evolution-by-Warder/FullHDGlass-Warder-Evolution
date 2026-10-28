@@ -207,6 +207,7 @@ def strip_reviewed_batch(tree, records=None):
 
 
 def normalized(tree):
+    tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/settings-iptv-logic.json').read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/settings-dab-logic.json').read_text()))
     tree=strip_reviewed_batch(tree)
     tree=strip_banner_geometry(tree)
