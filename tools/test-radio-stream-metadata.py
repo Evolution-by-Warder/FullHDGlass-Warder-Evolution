@@ -273,6 +273,24 @@ class CatalogueArtworkTests(unittest.TestCase):
         self.assertFalse(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas Orchestra', 'Uncovered Paradise')]}))
         self.assertFalse(self.lookup('Uncovered Paradise', 'Ukitas', {'SK': [self.item('Ukitas', 'Uncovered Paradise Live')]}))
 
+    def test_full_comma_credit_matches_guest_moved_into_catalogue_title(self):
+        item = self.item('NERVO & B Jones', 'Wherever You Go (feat. EKe)')
+        self.assertTrue(self.lookup('Nervo, B Jones, Eke', 'Wherever You Go', {'SK': [item]}))
+
+    def test_guest_moved_into_radio_title_matches_catalogue_full_credit(self):
+        self.assertTrue(self.lookup('Nervo & B Jones', 'Wherever You Go (feat. Eke)', {'SK': [self.item('NERVO, B Jones, EKe', 'Wherever You Go')]}))
+
+    def test_credit_roster_must_keep_every_guest_and_complete_name(self):
+        item = self.item('NERVO & B Jones', 'Wherever You Go (feat. EKe)')
+        for artist in ('Nervo, B Jones', 'Nervo, B Jones, Other', 'Nervo, B Jones, Eke Junior'):
+            with self.subTest(artist=artist):
+                self.assertFalse(self.lookup(artist, 'Wherever You Go', {'SK': [item]}))
+
+    def test_full_credit_does_not_allow_another_title_or_remix(self):
+        for title in ('Another Song (feat. EKe)', 'Wherever You Go (Remix) (feat. EKe)'):
+            with self.subTest(title=title):
+                self.assertFalse(self.lookup('Nervo, B Jones, Eke', 'Wherever You Go', {'SK': [self.item('NERVO & B Jones', title)]}))
+
     def test_different_guest_rendition_does_not_replace_band_recording(self):
         self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Po víne (feat. Robo Grigorov)')]}))
 

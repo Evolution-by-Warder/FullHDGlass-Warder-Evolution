@@ -1,51 +1,69 @@
 {
-  "version": "1.0.32",
-  "checked_on": "2026-10-27",
+  "version": "1.0.33",
+  "checked_on": "2026-10-28",
   "environment": "build host, not receiver",
-  "musicbrainz_recording_probe": "Site Unavailable HTML returned instead of JSON; end-to-end archive lookup not confirmed here",
-  "cover_art_archive": {
-    "release": "https://musicbrainz.org/release/64ea2902-76ff-489e-9a8d-0b285d5eff1d",
-    "approved_front_image_ids": [
-      33849001419
-    ]
+  "full_credit_probe": {
+    "station_artist": "Nervo, B Jones, Eke",
+    "station_title": "Wherever You Go",
+    "catalogue_artist": "NERVO & B Jones",
+    "catalogue_title": "Wherever You Go (feat. EKe)",
+    "catalogue_album": "Wherever You Go (feat. EKe) - Single",
+    "countries_confirmed": [
+      "SK",
+      "CZ",
+      "US"
+    ],
+    "result": "All three artist names and base track title agree; guest credit is stored in a different field."
   },
   "previous_probe": {
-    "version": "1.0.31",
+    "version": "1.0.32",
     "checked_on": "2026-10-27",
     "environment": "build host, not receiver",
-    "results": [
-      {
-        "artist": "Katarína Knechtová",
-        "title": "Život nás má rád",
-        "downloaded_jpeg": false,
-        "bytes": 0,
-        "seconds": 7.51,
-        "events": [
-          "CATALOGUE_ERROR country=SK error=URLError",
-          "CATALOGUE_ERROR country=CZ error=URLError",
-          "CATALOGUE_ERROR country=US error=URLError",
-          "NO_EXACT artist='Katarína Knechtová' title='Život nás má rád'"
-        ]
-      },
-      {
-        "artist": "Lucie",
-        "title": "Sen",
-        "downloaded_jpeg": false,
-        "error": "URLError: <urlopen error timed out>",
-        "seconds": 4.6,
-        "events": [
-          "LOOKUP country=SK artist='Lucie' title='Sen' results=10",
-          "EXACT artist='Lucie' title='Sen'"
-        ]
-      }
-    ]
-  },
-  "europa2_metadata_probe": {
-    "station_text": "Uncovered Paradise - Ukitas",
-    "catalogue_country": "SK",
-    "catalogue_artist": "Ukitas",
-    "catalogue_title": "Uncovered Paradise",
-    "catalogue_album": "Uncovered Paradise - Single",
-    "result": "Exact reversal confirmed by live store response; no receiver confirmation of 1.0.32 claimed."
+    "musicbrainz_recording_probe": "Site Unavailable HTML returned instead of JSON; end-to-end archive lookup not confirmed here",
+    "cover_art_archive": {
+      "release": "https://musicbrainz.org/release/64ea2902-76ff-489e-9a8d-0b285d5eff1d",
+      "approved_front_image_ids": [
+        33849001419
+      ]
+    },
+    "previous_probe": {
+      "version": "1.0.31",
+      "checked_on": "2026-10-27",
+      "environment": "build host, not receiver",
+      "results": [
+        {
+          "artist": "Katarína Knechtová",
+          "title": "Život nás má rád",
+          "downloaded_jpeg": false,
+          "bytes": 0,
+          "seconds": 7.51,
+          "events": [
+            "CATALOGUE_ERROR country=SK error=URLError",
+            "CATALOGUE_ERROR country=CZ error=URLError",
+            "CATALOGUE_ERROR country=US error=URLError",
+            "NO_EXACT artist='Katarína Knechtová' title='Život nás má rád'"
+          ]
+        },
+        {
+          "artist": "Lucie",
+          "title": "Sen",
+          "downloaded_jpeg": false,
+          "error": "URLError: <urlopen error timed out>",
+          "seconds": 4.6,
+          "events": [
+            "LOOKUP country=SK artist='Lucie' title='Sen' results=10",
+            "EXACT artist='Lucie' title='Sen'"
+          ]
+        }
+      ]
+    },
+    "europa2_metadata_probe": {
+      "station_text": "Uncovered Paradise - Ukitas",
+      "catalogue_country": "SK",
+      "catalogue_artist": "Ukitas",
+      "catalogue_title": "Uncovered Paradise",
+      "catalogue_album": "Uncovered Paradise - Single",
+      "result": "Exact reversal confirmed by live store response; no receiver confirmation of 1.0.32 claimed."
+    }
   }
 }

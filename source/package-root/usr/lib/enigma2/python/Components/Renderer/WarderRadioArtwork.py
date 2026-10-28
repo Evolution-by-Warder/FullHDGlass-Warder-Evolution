@@ -140,6 +140,16 @@ class WarderRadioArtwork(Renderer):
             return artistNorm, base.strip(), guest[:-1].strip()
         return "", "", ""
 
+    @classmethod
+    def _completeSongCredit(cls, artist, title):
+        artist = cls._norm(artist)
+        main, base, guest = cls._featIdentity(artist, title)
+        if guest:
+            artist, title = main + " & " + guest, base
+        # Compare the whole credited roster, including a guest moved from the
+        # artist field into the catalogue track title. Keep every complete name.
+        return cls._norm(title), cls._artistIdentity(artist.replace(",", " & "))
+
     @staticmethod
     def _split(text):
         text = (text or "").strip()
@@ -319,6 +329,10 @@ class WarderRadioArtwork(Renderer):
                 wantFeat = cls._featIdentity(artist, title)
                 gotFeat = cls._featIdentity(item.get("artistName"), item.get("trackName"))
                 exact = bool(wantFeat[0] and wantFeat == gotFeat)
+                if not exact and wantArtist and gotArtist and (wantFeat[2] or gotFeat[2]):
+                    wantCredit = cls._completeSongCredit(artist, title)
+                    gotCredit = cls._completeSongCredit(item.get("artistName"), item.get("trackName"))
+                    exact = bool(wantCredit[1] and wantCredit == gotCredit)
             if not exact:
                 # TEST176: tolerate catalogue version/remix suffix placement when
                 # the complete artist identity still agrees. RDS often sends

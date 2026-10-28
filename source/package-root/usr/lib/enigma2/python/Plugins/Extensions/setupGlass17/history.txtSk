@@ -1,3 +1,5 @@
+1.0.33: Rozpoznanie všetkých interpretov aj pri presunutí hosťa z rádia do názvu skladby ako feat. v katalógu. Zhodovať sa musia všetky mená aj názov skladby.
+
 1.0.32: Zachovaná zhoda interpreta a skladby; doplnený MusicBrainz/Cover Art Archive, limity obrázkov a jeden opakovaný pokus.
 
 1.0.31: Opravené obaly regionálnych rádií: katalógy SK, CZ a US; zhoda celého interpreta a skladby aj bez diakritiky. Nesúvisiace skladby a interpreti sa naďalej odmietajú. Vzhľad rádia bez zmeny.
