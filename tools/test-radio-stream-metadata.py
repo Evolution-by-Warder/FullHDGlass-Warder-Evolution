@@ -302,6 +302,19 @@ class CatalogueArtworkTests(unittest.TestCase):
             with self.subTest(artist=artist, title=title):
                 self.assertFalse(self.lookup('All The Time', 'John Summit and The Chainsmokers and Ilsey', {'SK': [self.item(artist, title)]}))
 
+    def test_reversed_title_can_omit_contraction_apostrophe(self):
+        self.assertTrue(self.lookup('Cant Deny It', 'Jazzy and Spriitzz', {'SK': [self.item('Jazzy & Spriitzz', "Can't Deny It")]}))
+
+    def test_typographic_apostrophes_have_the_same_complete_title_identity(self):
+        for mark in ("'", '’', '‘', 'ʼ'):
+            with self.subTest(mark=mark):
+                self.assertTrue(self.lookup('Jazzy and Spriitzz', 'Cant Deny It', {'SK': [self.item('Jazzy & Spriitzz', 'Can'+mark+'t Deny It')]}))
+
+    def test_apostrophe_normalization_does_not_drop_artists_or_version_words(self):
+        for artist, title in [('Jazzy', "Can't Deny It"), ('Jazzy & Spriitzz', "Can't Deny You"), ('Jazzy, Spriitzz & Spray', "Can't Deny It (Spray VIP)"), ('Jazzy, Spriitzz & Dart', "Can't Deny It (Dart Remix)")]:
+            with self.subTest(artist=artist, title=title):
+                self.assertFalse(self.lookup('Cant Deny It', 'Jazzy and Spriitzz', {'SK': [self.item(artist, title)]}))
+
     def test_different_guest_rendition_does_not_replace_band_recording(self):
         self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Po víne (feat. Robo Grigorov)')]}))
 

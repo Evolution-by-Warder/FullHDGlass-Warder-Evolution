@@ -148,7 +148,10 @@ class WarderRadioArtwork(Renderer):
             artist, title = main + " & " + guest, base
         # Compare the whole credited roster, including a guest moved from the
         # artist field into the catalogue track title. Keep every complete name.
-        return cls._norm(title), cls._artistIdentity(artist.replace(",", " & "))
+        # ICY text can omit contraction apostrophes (Cant / Can't). Normalize
+        # these marks only; retain every other title character and version word.
+        title = cls._norm(title).translate(str.maketrans("", "", "'‘’ʼ"))
+        return title, cls._artistIdentity(artist.replace(",", " & "))
 
     @staticmethod
     def _split(text):
