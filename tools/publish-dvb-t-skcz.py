@@ -76,18 +76,22 @@ def main():
  with ThreadPoolExecutor(max_workers=10) as pool:list(pool.map(fetch,public))
  for style,p in base.items():
   p.update({k:v for k,v in newentries[style].items() if k!='part_filenames'})
-  p['parts']=['https://raw.githubusercontent.com/'+REPO+'/'+revision+'/'+str(CHANNELS/n) for n in newentries[style]['part_filenames']]
+  p['parts']=['https://raw.githubusercontent.com/'+REPO+'/main/'+str(CHANNELS/n) for n in newentries[style]['part_filenames']]
   p['source_repository']=REPO;p['source_ref']=revision
   p['original_source'].update(images_changed=True,revision='2026.10.28-dtt-audit',historical_original_png_count=2674,audit_url='https://raw.githubusercontent.com/'+REPO+'/'+revision+'/'+str(AUDIT/'catalog/station-list.json'))
   p['original_source'].pop('unique_images',None)
- manifest['parts']+=generated
+ referenced={u.rsplit('/',1)[-1] for p in manifest['packages'] for u in p['parts']}
+ manifest['parts']=[p for p in manifest['parts'] if p['filename'] in referenced]+generated
  # Only the three shared DTT package records may change. Other programmes and releases remain byte-for-byte equivalent.
  assert [p for p in manifest['packages'] if p.get('selector_id')!='DVB-T-SK-CZ']==[p for p in original_manifest['packages'] if p.get('selector_id')!='DVB-T-SK-CZ']
+ assert {p['filename'] for p in manifest['parts']}==referenced
+ assert len({p['filename'] for p in manifest['parts']})==len(manifest['parts'])
+ assert all(u.startswith('https://raw.githubusercontent.com/'+REPO+'/main/'+str(CHANNELS)+'/') for p in base.values() for u in p['parts'])
  MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  publication=dict(status='verified-and-active',payload_commit=revision,packages=newentries,verification=proof,public_parts_verified=len(generated),other_package_records_unchanged=True,application_versions_unchanged=True)
  (AUDIT/'catalog/publication.json').write_text(json.dumps(publication,indent=2)+'\n')
  git('add','--sparse',str(ROOT));git('commit','-m','Activate audited terrestrial picons in the shared skin and PiconHub catalogue');git('push','origin','HEAD:refs/heads/'+BRANCH)
  assert head('main')==EXPECTED,'Production advanced before activation'
- git('fetch','--no-tags','--depth=1','origin','main:refs/remotes/origin/main');git('push','origin','HEAD:refs/heads/main')
+ git('fetch','--no-tags','--filter=blob:none','--deepen=16','origin',BRANCH,'main:refs/remotes/origin/main');git('push','origin','HEAD:refs/heads/main')
  print(json.dumps(publication,indent=2))
 if __name__=='__main__':main()

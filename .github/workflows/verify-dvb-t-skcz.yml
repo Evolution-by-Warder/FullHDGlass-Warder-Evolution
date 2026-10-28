@@ -1,0 +1,33 @@
+name: Verify live DVB-T SK CZ packages with the released PiconHub engine
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/warder/downloads/picons/dvb-t-skcz/**'
+      - 'assets/warder/downloads/picons/channels/manifest.json'
+      - 'tools/verify-dvb-t-skcz.py'
+      - '.github/workflows/verify-dvb-t-skcz.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/dvb-t-skcz/catalog/
+            /tools/verify-dvb-t-skcz.py
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 2338498bb1bde99d921cf2ccf1f237730bea5c27
+          path: .picon-runtime
+          sparse-checkout: plugin/src/Plugins/Extensions/WarderPiconHub
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Verify all public parts and install all three backgrounds through the real engine
+        run: python3 tools/verify-dvb-t-skcz.py

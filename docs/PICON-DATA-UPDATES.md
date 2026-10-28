@@ -27,3 +27,9 @@ Vlastník potvrdil, že uvedené rádia patria aj do operátorských sád. Ich n
 
 
 Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v každom z deviatich variantov, 74 zatiaľ bez vhodného overeného piconu. Overené Radia.sk, Radia.cz a MyOnlineRadio.cz aj dodané originály. Všetkých deväť verejných archívov a obrázkov prešlo kontrolou; aktuálne dáta sa stiahnu opätovným výberom IPTV rádiá SK/CZ. Verzie IPK sa nemenia. [Zdroje a zhodovanie](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/main/picons/IPTV-SK-CZ/catalog/followup-sources.json).
+
+## 28. 10. 2026 — audit a vyčistenie DVB-T/T2 SK/CZ
+
+Spoločný balík pre FullHDGlass a PiconHub obsahuje 2 531 referencií v každom pozadí 220×132. Pridaných je 54 názvov PNG, aktualizovaných 148 a odstránených 197 zastaraných alebo chybných súborov. Aktuálny zoznam má 227 riadkov vrátane regiónov a technických pozícií; nejde o počet unikátnych staníc. Nepotvrdené regionálne identity a chýbajúce aktuálne referencie sú výslovne označené.
+
+[Zoznam a dôvody odstránení](../assets/warder/downloads/picons/dvb-t-skcz/README.md). Všetkých 47 verejných častí prešlo SHA-256 kontrolou. Skutočný Warder engine nainštaloval všetky tri pozadia a overil každý výsledný súbor aj zachovanie používateľského súboru. Inštalačné balíky a verzie pluginov sa nemenia.
