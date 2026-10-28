@@ -150,7 +150,7 @@ def current_song(service, reference):
     artist, title = native_song(service)
     # A standalone native announcement is current metadata too. Do not replace
     # it with a previous song still held by the background ICY monitor.
-    if artist or title:
+    if title:
         monitor.clear()
         return artist, title
     return monitor.song(url)

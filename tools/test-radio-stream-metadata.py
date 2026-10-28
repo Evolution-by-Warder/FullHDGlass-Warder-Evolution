@@ -60,6 +60,13 @@ class MetadataTests(unittest.TestCase):
         service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda key:{1:'ABBA',2:'Dancing Queen'}[key]))
         with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}),patch.object(m,'monitor') as monitor:
             self.assertEqual(m.current_song(service,reference()),('ABBA','Dancing Queen'));monitor.song.assert_not_called();monitor.clear.assert_called_once()
+    def test_artist_only_native_tag_still_allows_icy_song_lookup(self):
+        enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
+        service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda key:{1:'Station name',2:''}[key]))
+        with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}),patch.object(m,'monitor') as monitor:
+            monitor.song.return_value=('Artist','Current song')
+            self.assertEqual(m.current_song(service,reference()),('Artist','Current song'))
+            monitor.song.assert_called_once_with('https://radio.example/live');monitor.clear.assert_not_called()
     def test_native_combined_title_is_split(self):
         enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
         service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda key:{1:'',2:'ABBA - Dancing Queen'}[key]))
