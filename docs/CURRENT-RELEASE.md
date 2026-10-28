@@ -1,4 +1,4 @@
-# FullHDGlass 1.0.38-test3 — rádio a texty piesní
+# FullHDGlass 1.0.38-test4 — rádio a texty piesní
 
 Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Produkčná verzia 1.0.37 a všetky jej aktualizačné adresy zostávajú zachované.
 
