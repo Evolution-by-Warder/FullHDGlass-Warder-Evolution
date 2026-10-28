@@ -60,9 +60,8 @@ def screen(name):
     # Prive7 glyph metrics: move the smaller seconds 4 px down to share the
     # large time's visible baseline; x=1800 is the measured HH:MM advance.
     out.append(widget('global.CurrentTime','Label',1800,32,62,58,29,('ClockToText','Format:.%S'),halign='left',valign='center',noWrap=1,foregroundColor='#00ffffff'))
-    out+=panel(306,136,440,720,'#90102136')
     out+=panel(766,136,860,720,'#18102136')
-    out.append(widget('session.CurrentService','WarderRadioArtwork',316,146,420,700,alphatest='blend'))
+    out.append(widget('session.CurrentService','WarderRadioCompactArtwork',316,146,420,700,alphatest='blend'))
     out.append(widget('session.CurrentService','Label',812,170,760,65,46,('WarderRadioServiceType','Lyrics'),foregroundColor='#00ffffff'))
     out.append(node('eLabel',position='812,250',size='760,2',backgroundColor='#004feaff',zPosition=3))
     out.append(widget('session.CurrentService','WarderRadioLyrics',812,285,760,530,34))

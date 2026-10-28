@@ -388,7 +388,7 @@ class LayoutTests(unittest.TestCase):
         for name in ('RdsInfoDisplay','RdsDisplay'):
             screen=skin.find("screen[@name='%s']"%name)
             self.assertEqual({w.get('name') for w in screen.findall('widget') if w.get('name')},{'RadioText','RtpText','RassLogo'})
-            artwork=screen.find("widget[@render='WarderRadioArtwork']")
+            artwork=screen.find("widget[@render='WarderRadioCompactArtwork']")
             self.assertEqual(artwork.get('size'),'420,700')
             lyrics=screen.find("widget[@render='WarderRadioLyrics']")
             self.assertEqual(lyrics.get('size'),'760,530')
@@ -426,6 +426,73 @@ class LayoutTests(unittest.TestCase):
     def test_provider_and_renderer_syntax_is_python_39_compatible(self):
         for path in [PLUGIN/'warderLyrics.py',P/'Components/Renderer/WarderRadioLyrics.py',P/'Components/Converter/WarderRadioServiceType.py']:
             ast.parse(path.read_text(),feature_version=(3,9))
+
+
+class CompactCoverTests(unittest.TestCase):
+    def setUp(self):
+        class Base:
+            FALLBACK_ARTWORK='/approved-fallback.png'
+            def __init__(self):self.instance=None;self._decodeToken=0;self._picload=None;self.paths=[];self.skinAttributes=[];self._timer=Timer()
+            def postWidgetCreate(self,instance):self.instance=instance
+            def applySkin(self,*args):return True
+            def _showPath(self,path):self.paths.append(path)
+            def _poll(self):pass
+            def preWidgetRemove(self,instance):self.instance=None
+        class Edge:
+            def __init__(self,parent):self.parent=parent
+            def setTransparent(self,*args):pass
+            def setBackgroundColor(self,*args):pass
+            def hide(self):pass
+            def show(self):pass
+            def move(self,value):self.position=value
+            def resize(self,value):self.size=value
+        modules={'enigma':types.SimpleNamespace(eLabel=Edge,ePoint=lambda x,y:(x,y),eSize=lambda w,h:(w,h)),
+                 'skin':types.SimpleNamespace(parseColor=lambda value:value),
+                 'Components.Renderer.WarderRadioArtwork':types.SimpleNamespace(WarderRadioArtwork=Base)}
+        with patch.dict(sys.modules,modules):
+            spec=importlib.util.spec_from_file_location('compact_cover_test',P/'Components/Renderer/WarderRadioCompactArtwork.py')
+            self.m=importlib.util.module_from_spec(spec);spec.loader.exec_module(self.m)
+    def test_square_portrait_landscape_and_fallback_stay_centre_aligned_without_stretching(self):
+        for width,height in ((600,600),(300,600),(1200,600),(704,640),(100000,1)):
+            x,y,w,h=self.m.fitted_cover(width,height)
+            self.assertLessEqual(w,420);self.assertLessEqual(h,420)
+            self.assertLessEqual(abs(x+w/2-526),0.5)
+            self.assertLessEqual(abs(y+h/2-496),0.5)
+            if min(width,height)>1:self.assertLess(abs(w/h-width/height),0.01)
+        self.assertEqual(self.m.fitted_cover(600,600),(316,286,420,420))
+    def test_image_headers_are_parsed_without_a_full_decoder_or_optional_receiver_packages(self):
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as tmp:
+            for kind in ('PNG','JPEG','GIF','BMP'):
+                path=Path(tmp)/('cover.'+kind.lower());Image.new('RGB',(360,640)).save(path,format=kind)
+                self.assertEqual(self.m.picture_size(path),(360,640),kind)
+            bad=Path(tmp)/'bad.jpg';bad.write_bytes(b'not an image'*100000)
+            self.assertIsNone(self.m.picture_size(bad))
+        fallback=ROOT/'source/package-root/usr/share/enigma2/hd_glass17/warder-radio-no-cover.png'
+        self.assertEqual(self.m.picture_size(fallback),self.m.WarderRadioCompactArtwork.FALLBACK_SIZE)
+    def test_native_frame_fits_the_actual_image_instead_of_the_full_old_slot(self):
+        from unittest.mock import Mock
+        r=self.m.WarderRadioCompactArtwork();widget=Mock();r.postWidgetCreate(widget)
+        r._showPath(r.FALLBACK_ARTWORK);r._poll()
+        widget.move.assert_called_with((316,305));widget.resize.assert_called_with((420,382))
+        self.assertEqual(r.paths,[r.FALLBACK_ARTWORK])
+        self.assertTrue(all(edge.position[0]>=0 and edge.position[1]>=0 for edge in r._edges))
+    def test_late_sizing_result_cannot_replace_a_newer_cover_or_fallback(self):
+        from threading import Event
+        from unittest.mock import Mock
+        entered=Event();release=Event();finished=Event()
+        def read(path):entered.set();release.wait(1);finished.set();return (600,600)
+        r=self.m.WarderRadioCompactArtwork();widget=Mock();r.postWidgetCreate(widget)
+        with patch.object(self.m,'picture_size',side_effect=read):
+            r._showPath('/old-cover.jpg');self.assertTrue(entered.wait(0.5))
+            r._showPath(r.FALLBACK_ARTWORK);release.set();self.assertTrue(finished.wait(0.5))
+            r._poll()
+        self.assertEqual(r.paths,[r.FALLBACK_ARTWORK])
+    def test_removed_widget_rejects_pending_sizing_and_stale_decoders(self):
+        from unittest.mock import Mock
+        r=self.m.WarderRadioCompactArtwork();widget=Mock();r.postWidgetCreate(widget)
+        r._fitReady=(r._fitGeneration,'/pending-cover.jpg',(600,600));token=r._decodeToken;r.preWidgetRemove(widget);r._poll()
+        self.assertEqual(r.paths,[]);self.assertIsNone(r._fitReady);self.assertGreaterEqual(r._decodeToken,token)
 
 
 class RadioDateTests(unittest.TestCase):

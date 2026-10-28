@@ -1,4 +1,4 @@
-# FullHDGlass 1.0.38-test6 — rádio a texty piesní
+# FullHDGlass 1.0.38-test7 — rádio a texty piesní
 
 Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Produkčná verzia 1.0.37 a všetky jej aktualizačné adresy zostávajú zachované.
 
@@ -65,3 +65,12 @@ Presná skladba zo snímky používateľa „Janek Ledecký – Budu všechno co
 - `/tmp/warder-radio-lyrics/.last-result` obsahuje iba posledný stav, čas a najviac päť stručných záznamov požiadaviek. Neobsahuje text piesne ani odpovede serverov.
 
 Kontrolné príklady zo snímok: Faraon – Šlapací kolo; Sima Martausová a Miťo Bodnár – Slovo chlapa; Belle de Z – Nie som tvoja hračka. Tieto prípady sú overovaním vyhľadávania a jeho stavov, nie prísľubom, že každá databáza ich text obsahuje. Pokrytie SK/CZ zostáva čiastočné. Reálnu ostrosť a polohu natívnych textov na HDMI treba overiť na prijímači.
+
+## TEST7: kompaktné ľavé okno podľa obalu
+
+- Odstránený pôvodný vysoký rám 440×720. Nový tenký rám tesne obopína skutočný obrázok a zachováva jeho pomer strán. Každá os obrázka má najviac 420 px.
+- Štvorcový obal 420×420 má polohu 316,286; stred je (526,496). Zvislý stred ľavého panela je totožný so stredom pravého panela 766,136 / 860×720. Široké aj portrétové obaly sú vycentrované tým istým pravidlom. Neexistuje prázdny vysoký modrý panel nad/pod obalom.
+- Samostatný kompaktný renderer používa existujúce vyhľadávanie a natívny asynchrónny dekóder. Zisťovanie rozmerov číta najviac 64 KiB hlavičky PNG/JPEG/GIF/BMP/WebP v pomocnom vlákne; písmo ani obraz sa neškálujú cez screenshot. Rozmery pribaleného neutrálneho obrázka sú známe bez dodatočného čítania. Staré výsledky po zmene obrázka alebo zatvorení obrazovky sa zahodia.
+- Počas zisťovania rozmerov sa výsledok kontroluje každých 50 ms, potom sa obnoví pôvodná ľahká frekvencia. Formátovanie dní, menšie pripojené sekundy, rýchlejší equalizér a optimalizácie textov z TEST6 zostávajú súčasťou balíka.
+
+Doplnené sú kontroly štvorcového/širokého/portrétového obalu, centra a pomeru strán, čítania hlavičiek bez voliteľných balíkov, tesného natívneho rámu a odmietnutia oneskoreného výsledku. Zobrazenie na fyzickej TV ostáva na potvrdenie používateľa.

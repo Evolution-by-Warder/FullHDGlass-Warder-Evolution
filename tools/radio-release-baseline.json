@@ -1,11 +1,11 @@
 {
   "confirmed_on_receiver": null,
   "status": "owner-approved-design; receiver validation pending",
-  "graphics_and_layout_sha256": "91eb656592686cc6a2ff28991e5b3d8f01172298756b290c9cd4721ca5f5b02a",
+  "graphics_and_layout_sha256": "487317f1a2e27795a3877e9f542b71da437152995ca807d0040bcf1d9bffc39e",
   "previous_receiver_baseline": {
     "confirmed_on_receiver": "1.0.5-test250",
     "graphics_and_layout_sha256": "f6bcdcc65a667a9ff63bc92c8963006cf38b398d0679292addae81fb63c5ad95"
   },
   "scope": "Three radio XML screens and radio scenic JPEG; no TV or settings layout change.",
-  "candidate_header_revision": "User requested TEST6 radio-only header update; other screen XML pinned separately."
+  "candidate_header_revision": "Owner requested TEST6 header and TEST7 compact radio cover; other screen XML pinned separately."
 }
