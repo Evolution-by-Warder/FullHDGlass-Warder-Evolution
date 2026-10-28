@@ -3,18 +3,18 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
   "approved_on": "2026-10-28",
-  "approval": "Owner requested autonomous completion and deployment of shared SK/CZ IPTV radio bouquets and official picons in both Warder projects on 28 October 2026.",
+  "approval": "Owner requested weekly silent background download, replacement and reload of the managed Warder Radio Streams bouquet on 28 October 2026.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "e672afb9cf46ab61e8ee154ecf618b22e235c861",
+  "source_commit": "bffa0f02393e4c74a0c1eb98ad8187e1f4dff737",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.36",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.36_all.ipk",
-    "sha256": "e2a7e43c6cb7fe129c12f7c3bb511bbbdfd2a075ac051ad708adaec29a7d811c",
-    "changelog": "Nová spoločná ponuka IPTV rádiá SK/CZ: tri rozlíšenia a tri pozadia. Picony pre 213 položiek; samostatný obnovený bouquet obsahuje 321 položiek. Kontrola SHA256, sťahovanie na pozadí a zachovanie ostatných piconov.",
-    "tag": "v1.0.36",
-    "bytes": 14271200,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.36/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.36_all.ipk"
+    "version": "1.0.37",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk",
+    "sha256": "793886a459d8a3a142bd06df5525ad7603c8773637ef31d0942050d6801e1879",
+    "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania.",
+    "tag": "v1.0.37",
+    "bytes": 14273526,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.37/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,7 +39,7 @@
     }
   },
   "validation": {
-    "workflow_run": 40687770330,
+    "workflow_run": 40731688962,
     "build_payloads_and_public_bytes": "verified",
     "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded."
   }
