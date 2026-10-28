@@ -1,4 +1,4 @@
-# FullHDGlass 1.0.38-test5 — rádio a texty piesní
+# FullHDGlass 1.0.38-test6 — rádio a texty piesní
 
 Izolovaný skúšobný balík podľa odsúhlaseného modro-zlatého návrhu. Produkčná verzia 1.0.37 a všetky jej aktualizačné adresy zostávajú zachované.
 
@@ -51,3 +51,17 @@ Presná skladba zo snímky používateľa „Janek Ledecký – Budu všechno co
 - Pridané kontroly pre pomalý primárny zdroj, okamžité poradie zálohy, spoločný časový rozpočet a obe podoby Retry-After.
 
 **Dostupnosť externých služieb nie je zaručená.** Pri skutočnom výpadku oboch zdrojov alebo chýbajúcom texte zostáva príslušná hláška. Táto úprava znižuje zbytočné zlyhania pri pomalej odpovedi a čas čakania na zálohu; nesľubuje text pre každú skladbu.
+
+## TEST6: optimalizácia podľa prijímača a úprava hlavičky
+
+- Žiadne RÁDIO uprostred hornej lišty. Dátum obsahuje lokalizovaný názov dňa, napríklad `Streda 28.10.2026`. Menšie biele sekundy sú bez medzery za minútami ako `20:52.00`; polohy vychádzajú z metrík skutočného fontu Prive7. Obidva rádiové RDS panely používajú tú istú hlavičku. Názvy dní sú pripravené pre 11 jazykov a kontrolované na šírku riadka.
+- Equalizér má interval 110 ms namiesto 140 ms, teda približne o 27 % častejšie prekreslenie.
+- Záloha sa spustí po 750 ms pomalej odpovede primárneho servera alebo hneď po jeho dokončení bez textu. Prvá nájdená odpoveď vyhrá. Čakanie na iný server nepredlžuje zobrazenie výsledku. Na jeden server beží v pomocnom procese najviac jedna požiadavka naraz; nejde o ďalšie vlákna v Enigme. Zdroj lyrics.ovh môže sám používať LRCLIB, preto tieto servery nie sú zárukou nezávislého pokrytia.
+- Najviac päť požiadaviek namiesto šiestich. Doplňujúce hľadanie iba podľa názvu stále vyžaduje úplnú zhodu názvu aj všetkých interpretov zo záznamu.
+- Potvrdené nenájdenie v oboch zdrojoch neprekryje chyba neskoršieho doplnkového pokusu. Pri nedostupnom zdroji bez platnej negatívnej odpovede zostáva možnosť opakovania. Nové voliteľné požiadavky sa nespúšťajú s menej než dvoma sekundami rozpočtu.
+- Úplné negatívne výsledky sa uchovávajú 30 minút, čiastočné 5 minút; nájdené texty 14 dní. Cache je naďalej obmedzená na 128 záznamov. Obrátený pár rovnakých metadát používa tú istú cache a nevymaže zobrazený text.
+- Po bežnom výpadku sa opakuje po 5 a 20 sekundách, najviac trikrát na skladbu; Retry-After príslušného servera má prednosť. Rozbehnuté opakovanie sa odlišuje vlastnou preloženou hláškou. Obmedzenie pomalšie sa zotavujúceho servera neblokuje skorší pokus o iný dostupný server.
+- Pri spojení dvoch celých osobných mien sa normalizuje aj slovenské/české „a“. Žiadny interpret sa nevynecháva, nepoužívajú sa odhady podľa prvého výsledku.
+- `/tmp/warder-radio-lyrics/.last-result` obsahuje iba posledný stav, čas a najviac päť stručných záznamov požiadaviek. Neobsahuje text piesne ani odpovede serverov.
+
+Kontrolné príklady zo snímok: Faraon – Šlapací kolo; Sima Martausová a Miťo Bodnár – Slovo chlapa; Belle de Z – Nie som tvoja hračka. Tieto prípady sú overovaním vyhľadávania a jeho stavov, nie prísľubom, že každá databáza ich text obsahuje. Pokrytie SK/CZ zostáva čiastočné. Reálnu ostrosť a polohu natívnych textov na HDMI treba overiť na prijímači.

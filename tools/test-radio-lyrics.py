@@ -54,8 +54,8 @@ class ProviderTests(unittest.TestCase):
             def offline(*a,**kw):raise OSError('offline')
             result=provider.lookup('Artist','Title',Path(tmp),opener=offline)
             self.assertEqual(result['status'],'offline')
-            self.assertEqual(result['retry_after'],20)
-            self.assertEqual(list(Path(tmp).iterdir()),[])
+            self.assertEqual(result['retry_after'],5)
+            self.assertEqual(list(Path(tmp).glob('*.json')),[])
     def test_collaboration_separators_keep_all_performers(self):
         row=dict(artistName='Topic, A7S',trackName='Breaking Me',plainLyrics='Original test text')
         self.assertEqual(provider.select([row],'Topic and A7S','Breaking Me'),'Original test text')
@@ -66,16 +66,16 @@ class ProviderTests(unittest.TestCase):
         self.assertEqual(provider.select([row],'Breaking Me','Topic and A7S'),'Original test text')
         self.assertEqual(provider.select([row],'Breaking Me','Topic'),'')
         self.assertEqual(provider.select([row],'Breaking Me (Live)','Topic and A7S'),'')
-    def test_reversed_lookup_searches_both_fields_without_guessing_first_result(self):
+    def test_reversed_lookup_searches_titles_without_guessing_first_result(self):
         from urllib.parse import parse_qs,urlsplit
         queries=[]
         def response(request,**kwargs):
             query=parse_qs(urlsplit(request.full_url).query);queries.append(query)
             row=dict(artistName='Topic, A7S',trackName='Breaking Me',plainLyrics='Original test text')
-            return io.BytesIO(json.dumps([row] if 'q' in query else []).encode())
+            return io.BytesIO(json.dumps([row] if query.get('track_name')==['Breaking Me'] and 'artist_name' not in query else []).encode())
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(provider.lookup('Breaking Me','Topic and A7S',Path(tmp),opener=response)['text'],'Original test text')
-        self.assertEqual(len(queries),5);self.assertIn('q',queries[4])
+        self.assertTrue(any(q.get('track_name')==['Breaking Me'] and 'artist_name' not in q for q in queries))
     def test_synced_only_record_becomes_plain_text(self):
         row=self.record();row['plainLyrics']=None
         row['syncedLyrics']='[ar:Metadata]\n[00:01.00]Original test line\n[00:03.20][00:04.00]Another line'
@@ -121,25 +121,37 @@ class ProviderTests(unittest.TestCase):
             self.assertFalse(list(folder.glob('*.json')))
             urls.clear();provider.lookup('Other Artist','Other Title',folder,opener=response,clock=lambda:1001)
             self.assertEqual(len(urls),2);self.assertTrue(all(u.startswith(provider.FALLBACK) for u in urls))
-    def test_slow_primary_has_ten_seconds_and_fallback_is_second(self):
-        calls=[]
+    def test_slow_primary_does_not_block_fallback_and_keeps_ten_second_timeout(self):
+        from threading import Event
+        import time
+        release=Event();calls=[]
         def response(request,**kwargs):
             calls.append((request.full_url,kwargs['timeout']))
-            if request.full_url.startswith(provider.SEARCH):raise TimeoutError('slow')
+            if request.full_url.startswith(provider.SEARCH):
+                release.wait(0.5)
+                raise TimeoutError('slow')
             return io.BytesIO(json.dumps({'lyrics':'Original backup text'}).encode())
         with tempfile.TemporaryDirectory() as tmp:
-            result=provider.lookup('Artist','Title',Path(tmp),opener=response)
+            began=time.monotonic()
+            try:result=provider.lookup('Artist','Title',Path(tmp),opener=response,hedge_delay=0.01)
+            finally:release.set()
+            self.assertLess(time.monotonic()-began,0.4)
         self.assertEqual(result['text'],'Original backup text')
-        self.assertEqual(len(calls),2);self.assertEqual(calls[0][1],10)
-        self.assertTrue(calls[1][0].startswith(provider.FALLBACK))
-    def test_request_budget_stops_unbounded_network_attempts(self):
-        elapsed=[0];calls=[]
+        self.assertEqual(calls[0][1],10)
+        self.assertEqual(sum(u.startswith(provider.SEARCH) for u,t in calls),1)
+        self.assertTrue(any(u.startswith(provider.FALLBACK) for u,t in calls))
+    def test_request_budget_returns_without_waiting_for_pending_source(self):
+        from threading import Event
+        import time
+        release=Event();calls=[]
         def response(request,**kwargs):
-            calls.append(kwargs['timeout']);elapsed[0]+=20
-            raise TimeoutError('slow network')
+            calls.append(request.full_url);release.wait(0.4);raise TimeoutError('slow')
         with tempfile.TemporaryDirectory() as tmp:
-            result=provider.lookup('Artist','Title',Path(tmp),opener=response,monotonic=lambda:elapsed[0])
-        self.assertEqual(result['status'],'offline');self.assertEqual(len(calls),2)
+            began=time.monotonic()
+            try:result=provider.lookup('Artist','Title',Path(tmp),opener=response,hedge_delay=0.005,budget=0.05)
+            finally:release.set()
+        self.assertLess(time.monotonic()-began,0.3)
+        self.assertEqual(result['status'],'offline');self.assertLessEqual(len(calls),2)
     def test_retry_after_starts_at_error_receipt_not_request_start(self):
         from urllib.error import HTTPError
         wall=[1000]
@@ -158,6 +170,92 @@ class ProviderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             result=provider.lookup('Artist','Title',Path(tmp),opener=response,clock=lambda:1000)
         self.assertGreaterEqual(result['retry_after'],120)
+
+    def test_optional_failure_does_not_override_confirmed_misses_from_both_sources(self):
+        from urllib.error import HTTPError
+        def response(request,**kwargs):
+            if request.full_url.startswith(provider.FALLBACK):raise HTTPError(request.full_url,404,'missing',{},None)
+            if 'artist_name=' in request.full_url:return io.BytesIO(b'[]')
+            raise TimeoutError('optional query failed')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);result=provider.lookup('Faraon','Šlapací kolo',folder,opener=response)
+            self.assertEqual(result['status'],'not-found');self.assertEqual(len(list(folder.glob('*.json'))),1)
+            status=json.loads((folder/'.last-result').read_text())
+            self.assertTrue(any(r.get('status')=='request-error' for r in status['requests']))
+    def test_optional_request_still_pending_at_deadline_does_not_erase_known_misses(self):
+        from threading import Event
+        from urllib.error import HTTPError
+        release=Event()
+        def response(request,**kwargs):
+            if request.full_url.startswith(provider.FALLBACK):raise HTTPError(request.full_url,404,'missing',{},None)
+            if 'artist_name=' in request.full_url:return io.BytesIO(b'[]')
+            release.wait(3)
+            raise TimeoutError('optional request still pending')
+        with tempfile.TemporaryDirectory() as tmp:
+            try:result=provider.lookup('Artist','Title',Path(tmp),opener=response,hedge_delay=0.01,budget=2.05)
+            finally:release.set()
+            self.assertEqual(result['status'],'not-found')
+            data=json.loads((Path(tmp)/'.last-result').read_text())
+            self.assertTrue(any(row['status']=='pending' for row in data['requests']))
+    def test_partial_miss_cache_expires_sooner_and_successful_later_lookup_replaces_it(self):
+        from urllib.error import HTTPError
+        def response(request,**kwargs):
+            if request.full_url.startswith(provider.FALLBACK):raise HTTPError(request.full_url,404,'missing',{},None)
+            if 'artist_name=' in request.full_url:return io.BytesIO(b'[]')
+            raise TimeoutError('optional query failed')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);provider.lookup('Žbirka','Biely kvet',folder,opener=response,clock=lambda:1000)
+            saved=json.loads((folder/(provider.key('Žbirka','Biely kvet')+'.json')).read_text())
+            self.assertEqual(saved['ttl'],300)
+            good=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
+            self.assertEqual(provider.lookup('Žbirka','Biely kvet',folder,opener=good,clock=lambda:1301)['status'],'found')
+    def test_one_unreachable_provider_remains_retryable_even_if_other_misses(self):
+        from urllib.error import HTTPError
+        def response(request,**kwargs):
+            if request.full_url.startswith(provider.SEARCH):raise TimeoutError('offline')
+            raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);result=provider.lookup('Artist','Title',folder,opener=response)
+            self.assertEqual(result['status'],'offline');self.assertFalse(list(folder.glob('*.json')))
+    def test_retry_uses_earlier_recovering_source_without_bypassing_longer_host_limit(self):
+        from urllib.error import HTTPError
+        calls=[]
+        def response(request,**kwargs):
+            calls.append(request.full_url)
+            raise HTTPError(request.full_url,429 if request.full_url.startswith(provider.SEARCH) else 503,'busy',{'Retry-After':'120' if request.full_url.startswith(provider.SEARCH) else '20'},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);result=provider.lookup('Artist','Title',folder,opener=response,clock=lambda:1000)
+            self.assertEqual(result['retry_after'],20)
+            calls.clear();provider.lookup('Another','Song',folder,opener=response,clock=lambda:1001)
+            self.assertEqual(calls,[])
+    def test_swapped_metadata_uses_same_cached_text_without_more_network_requests(self):
+        row=dict(artistName='Topic, A7S',trackName='Breaking Me',plainLyrics='Original test text')
+        response=lambda *a,**kw:io.BytesIO(json.dumps([row]).encode())
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);provider.lookup('Topic and A7S','Breaking Me',folder,opener=response)
+            def fail(*a,**kw):raise AssertionError('Swapped fields must use cache')
+            self.assertEqual(provider.lookup('Breaking Me','Topic and A7S',folder,opener=fail)['text'],'Original test text')
+    def test_diagnostic_record_contains_no_lyrics_and_cache_hit_makes_no_requests(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);response=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
+            provider.lookup('Žbirka','Biely kvet',folder,opener=response)
+            data=(folder/'.last-result').read_text();self.assertNotIn('Original test text',data)
+            self.assertLessEqual(len(json.loads(data)['requests']),5)
+            provider.lookup('Žbirka','Biely kvet',folder,opener=response)
+            status=json.loads((folder/'.last-result').read_text())
+            self.assertTrue(status['cache_hit']);self.assertEqual(status['requests'],[])
+    def test_found_text_survives_cache_write_failure(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            response=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
+            with patch.object(provider,'atomic_json',side_effect=OSError('read-only cache')):
+                self.assertEqual(provider.lookup('Žbirka','Biely kvet',Path(tmp),opener=response)['text'],'Original test text')
+    def test_slovak_and_connector_between_full_names_keeps_entire_credit(self):
+        row=dict(artistName='Sima Martausová & Miťo Bodnár',trackName='Slovo chlapa',plainLyrics='Original test text')
+        self.assertEqual(provider.select([row],'Sima Martausová a Miťo Bodnár','Slovo chlapa'),'Original test text')
+        self.assertEqual(provider.select([row],'Sima Martausová','Slovo chlapa'),'')
+        self.assertEqual(provider.select([row],'Sima Martausová a Miťo Bodnár Junior','Slovo chlapa'),'')
+        row['artistName']='Not & Band';row['trackName']='Song'
+        self.assertEqual(provider.select([row],'Not a Band','Song'),'')
 
     def test_previous_negative_cache_is_invalidated(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -258,9 +356,21 @@ class NativeTests(unittest.TestCase):
     def test_worker_timeout_is_visible_and_late_response_cannot_replace_it(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
         worker=self.spawned[-1][0];r._worker_timeout()
-        self.assertIn('nedostupný',r.label.text);self.assertGreater(r._retry_at,0)
+        self.assertIn('znova',r.label.text);self.assertGreater(r._retry_at,0)
         worker.outReceived(b'{"text":"Stale text"}');worker.complete(0)
         self.assertNotEqual(r.label.text,'Stale text')
+    def test_reversed_same_song_metadata_keeps_display_and_does_not_spawn_again(self):
+        r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
+        worker=self.spawned[-1][0];worker.outReceived(b'{"text":"Original test text"}');worker.complete(0)
+        self.m.native_song=lambda *a:('Title','Artist');r._poll()
+        self.assertEqual(r.label.text,'Original test text');self.assertEqual(len(self.spawned),1)
+    def test_retry_is_visible_and_host_retry_after_overrides_short_pause(self):
+        r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
+        worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"offline","retry_after":120}');worker.complete(0)
+        import time
+        self.assertGreaterEqual(r._retry_at-time.monotonic(),119)
+        self.assertIn('znova',r.label.text)
+
     def test_real_miss_is_not_retried(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
         worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"not-found"}');worker.complete(0)
@@ -285,6 +395,25 @@ class LayoutTests(unittest.TestCase):
             for w in screen:
                 x,y=map(int,w.get('position').split(','));width,height=map(int,w.get('size').split(','))
                 self.assertTrue(x>=0 and y>=0 and x+width<=1920 and y+height<=1080,w.attrib)
+    def test_radio_header_removes_middle_title_and_places_seconds_next_to_minutes(self):
+        skin=ET.parse(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').getroot()
+        from PIL import ImageFont
+        for name in ('RdsInfoDisplay','RdsDisplay'):
+            screen=skin.find("screen[@name='%s']"%name)
+            self.assertFalse(any(c.text=='Radio' for c in screen.findall('widget/convert')))
+            date=next(w for w in screen.findall('widget') if w.findtext('convert')=='Date')
+            self.assertEqual(date.find('convert').get('type'),'WarderRadioServiceType')
+            large=next(w for w in screen.findall('widget') if w.findtext('convert')=='Format:%H:%M')
+            small=next(w for w in screen.findall('widget') if w.findtext('convert')=='Format:.%S')
+            self.assertEqual(int(small.get('position').split(',')[0]),int(large.get('position').split(',')[0])+int(large.get('size').split(',')[0]))
+            bottoms=[]
+            for w,text in ((large,'20:52'),(small,'.00')):
+                font=ImageFont.truetype(str(ROOT/'source/package-root/usr/share/fonts/prive7.ttf'),int(w.get('font').split(';')[1]))
+                self.assertLessEqual(font.getlength(text),int(w.get('size').split(',')[0]))
+                y=int(w.get('position').split(',')[1]);height=int(w.get('size').split(',')[1])
+                bottoms.append(y+(height-sum(font.getmetrics()))/2+font.getbbox(text)[3])
+            self.assertLessEqual(abs(bottoms[0]-bottoms[1]),1)
+
     def test_tv_and_other_screens_are_byte_identical_to_baseline(self):
         record=json.loads((ROOT/'design/radio-lyrics/implementation.json').read_text())
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
@@ -297,6 +426,30 @@ class LayoutTests(unittest.TestCase):
     def test_provider_and_renderer_syntax_is_python_39_compatible(self):
         for path in [PLUGIN/'warderLyrics.py',P/'Components/Renderer/WarderRadioLyrics.py',P/'Components/Converter/WarderRadioServiceType.py']:
             ast.parse(path.read_text(),feature_version=(3,9))
+
+
+class RadioDateTests(unittest.TestCase):
+    def test_localized_weekdays_and_full_date_fit_header(self):
+        class Converter:
+            def __init__(self,*args):pass
+        modules={'Components.Converter.Converter':types.SimpleNamespace(Converter=Converter),
+                 'Components.Element':types.SimpleNamespace(cached=lambda method:method),
+                 'NavigationInstance':types.SimpleNamespace(instance=None)}
+        with patch.dict(sys.modules,modules):
+            spec=importlib.util.spec_from_file_location('radio_type_test',P/'Components/Converter/WarderRadioServiceType.py')
+            module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        from datetime import datetime,timedelta
+        from PIL import ImageFont
+        timestamp=datetime(2026,10,28,12).timestamp()
+        self.assertEqual(module.radio_date(timestamp,'sk_SK'),'Streda 28.10.2026')
+        self.assertEqual(module.radio_date(timestamp,'cs_CZ'),'Středa 28.10.2026')
+        self.assertEqual(module.radio_date(timestamp,'fr_FR'),'Mercredi 28.10.2026')
+        self.assertEqual(module.radio_date(None,'sk_SK'),'')
+        font=ImageFont.truetype(str(ROOT/'source/package-root/usr/share/fonts/prive7.ttf'),32)
+        for code in module.WEEKDAYS:
+            for day in range(7):
+                value=module.radio_date((datetime(2026,10,26,12)+timedelta(days=day)).timestamp(),code)
+                self.assertLessEqual(font.getlength(value),520,(code,value))
 
 
 if __name__=='__main__':unittest.main()

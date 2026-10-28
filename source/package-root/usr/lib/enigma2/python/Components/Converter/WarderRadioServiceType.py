@@ -2,6 +2,28 @@
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 import NavigationInstance
+from time import localtime
+
+
+WEEKDAYS = {
+    'sk':('Pondelok','Utorok','Streda','Štvrtok','Piatok','Sobota','Nedeľa'),
+    'cs':('Pondělí','Úterý','Středa','Čtvrtek','Pátek','Sobota','Neděle'),
+    'de':('Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag'),
+    'hu':('Hétfő','Kedd','Szerda','Csütörtök','Péntek','Szombat','Vasárnap'),
+    'ru':('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'),
+    'fr':('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'),
+    'it':('Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'),
+    'es':('Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'),
+    'pl':('Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'),
+    'uk':('Понеділок','Вівторок','Середа','Четвер','П’ятниця','Субота','Неділя'),
+    'en':('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')}
+
+
+def radio_date(timestamp, code):
+    if timestamp is None:return ''
+    value = localtime(timestamp)
+    day = WEEKDAYS.get(code.split('_')[0],WEEKDAYS['en'])[value.tm_wday]
+    return '%s %02d.%02d.%04d' % (day,value.tm_mday,value.tm_mon,value.tm_year)
 
 
 class WarderRadioServiceType(Converter):
@@ -11,6 +33,9 @@ class WarderRadioServiceType(Converter):
 
     @cached
     def getText(self):
+        if self.kind == 'Date':
+            from Components.Language import language
+            return radio_date(self.source.time,language.getLanguage())
         if self.kind in ('Lyrics','Radio'):
             from Components.Language import language
             code=language.getLanguage().split('_')[0]

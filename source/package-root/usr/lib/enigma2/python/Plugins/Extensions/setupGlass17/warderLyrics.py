@@ -3,6 +3,8 @@ import hashlib
 import json
 import os
 from pathlib import Path
+from queue import Queue, Empty
+from threading import Event, Thread, Lock
 import re
 import sys
 import tempfile
@@ -15,7 +17,7 @@ from urllib.request import Request, urlopen
 
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
-CACHE_VERSION = 2
+CACHE_VERSION = 3
 CACHE = Path('/tmp/warder-radio-lyrics')
 MAX_RESPONSE = 1024 * 1024
 MAX_TEXT = 20000
@@ -32,6 +34,23 @@ def artist_identity(value):
         re.split(r'\s+(?:feat\.?|ft\.?|featuring|and)\s+|\s*[&,;]\s*', identity(value))
         if part.strip()))
 
+
+
+def artist_options(value):
+    options = {artist_identity(value)}
+    # Slovak/Czech "a" joins full personal names. Keep band names such as
+    # "Not a Band" intact, and never omit either credited performer.
+    parts = re.split(r'\s+a\s+', identity(value))
+    if len(parts) > 1 and all(len(part.split()) >= 2 for part in parts):
+        options.add(tuple(sorted(parts)))
+    return options
+
+
+def same_song(row, artist, title):
+    got_title = identity(row.get('trackName'))
+    got_artists = artist_options(row.get('artistName'))
+    return any(got_title == identity(t) and got_artists.intersection(artist_options(a))
+               for a,t in ((artist,title),(title,artist)))
 
 def clean_text(text):
     if not isinstance(text, str) or not text.strip() or len(text) > MAX_TEXT:
@@ -56,19 +75,17 @@ def plain_text(row):
 
 
 def key(artist, title):
-    return hashlib.sha256((identity(artist)+'\0'+identity(title)).encode()).hexdigest()
+    return hashlib.sha256('\0'.join(sorted((identity(artist),identity(title)))).encode()).hexdigest()
 
 
 def select(records, artist, title):
     """Whole artist/title identity only; never return the first search result."""
     if not isinstance(records, list):
         return ''
-    wanted = {(artist_identity(artist), identity(title)),
-              (artist_identity(title), identity(artist))}
     for row in records[:30]:
         if not isinstance(row, dict) or row.get('instrumental'):
             continue
-        if (artist_identity(row.get('artistName')), identity(row.get('trackName'))) not in wanted:
+        if not same_song(row,artist,title):
             continue
         text = plain_text(row)
         if text:
@@ -76,107 +93,182 @@ def select(records, artist, title):
     return ''
 
 
-def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time, monotonic=time.monotonic):
+
+def atomic_json(path, value):
+    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=str(path.parent),delete=False) as output:
+        tmp = Path(output.name)
+        json.dump(value,output,ensure_ascii=False)
+    try:os.replace(str(tmp),str(path))
+    finally:
+        try:tmp.unlink()
+        except OSError:pass
+
+
+def retry_delay(error, now):
+    value = error.headers.get('Retry-After','20') if error.headers else '20'
+    try:return max(1,int(value))
+    except (TypeError,ValueError):
+        try:return max(1,int(parsedate_to_datetime(value).timestamp()-now)+1)
+        except (TypeError,ValueError,OverflowError):return 20
+
+
+def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
+           monotonic=time.monotonic, hedge_delay=0.75, budget=32):
     artist, title = str(artist).strip(), str(title).strip()
     if not artist or not title or max(len(artist), len(title)) > 250:
-        return {'text': '', 'status': 'no-song'}
-    cache.mkdir(parents=True, exist_ok=True)
-    filename = cache/(key(artist, title)+'.json')
-    now = clock()
+        return {'text':'','status':'no-song'}
+    cache.mkdir(parents=True,exist_ok=True)
+    filename = cache/(key(artist,title)+'.json')
+    started = monotonic()
+    def finish(result, traces=None, cached=False):
+        # One bounded diagnostic record; never store lyrics or full responses.
+        diagnostic = {'artist':artist,'title':title,'status':result['status'],
+                      'cache_hit':cached,'elapsed_ms':int(max(0,monotonic()-started)*1000),
+                      'requests':(traces or [])[:5]}
+        try:atomic_json(cache/'.last-result',diagnostic)
+        except OSError:pass
+        return result
     try:
         saved = json.loads(filename.read_text())
-        ttl = 14*86400 if saved.get('text') else 6*3600
-        age = now-float(saved['saved'])
-        if saved.get('version') == CACHE_VERSION and 0 <= age < ttl:
-            return {'text': saved['text'], 'status': saved['status']}
-    except (OSError, ValueError, KeyError, TypeError):
-        pass
-    text = ''
-    deadline = monotonic()+32
-    failures = False
-    retry_after = 20
-    backoff_file = cache/'.lrclib-backoff'
+        text = clean_text(saved.get('text'))
+        valid = saved.get('version') == CACHE_VERSION
+        age = clock()-float(saved['saved'])
+        ttl = 14*86400 if text else min(1800,max(60,int(saved.get('ttl',1800))))
+        if valid and 0 <= age < ttl and saved.get('status') == ('found' if text else 'not-found'):
+            return finish({'text':text,'status':saved['status']},cached=True)
+    except (OSError,ValueError,KeyError,TypeError):pass
+
+    deadline = started+max(0.01,min(32,budget))
+    cancel = Event()
+    events = Queue()
+    trace_rows = []
+    trace_lock = Lock()
+    primary = list(dict.fromkeys((
+        SEARCH+'?'+urlencode({'artist_name':artist,'track_name':title}),
+        SEARCH+'?'+urlencode({'track_name':title}),
+        SEARCH+'?'+urlencode({'track_name':artist}))))
+    backup = [FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''),
+              FALLBACK+quote(title,safe='')+'/'+quote(artist,safe='')]
+
+    def run_source(name, urls):
+        trace = []
+        negative = False
+        failed = False
+        after = 5
+        backoff = cache/('.'+name+'-backoff')
+        try:until = float(backoff.read_text())
+        except (OSError,ValueError):until = 0
+        if until > clock():
+            events.put(('done',name,{'negative':False,'failed':True,
+                'retry_after':max(1,int(until-clock())+1),'trace':[]}))
+            return
+        for index,url in enumerate(urls):
+            if cancel.is_set():return
+            remaining = deadline-monotonic()
+            # Do not launch a predictably doomed optional request at the end.
+            if remaining <= 0 or (index > 0 and remaining < 2):
+                failed = True
+                break
+            began = monotonic()
+            item = {'source':name,'variant':index+1}
+            pending = dict(item,status='pending')
+            with trace_lock:trace_rows.append(pending)
+            text = ''
+            try:
+                request = Request(url,headers={
+                    'User-Agent':'FullHDGlass-Warder-Evolution/1.0 (https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution)',
+                    'Accept':'application/json'})
+                with opener(request,timeout=min(10,remaining)) as response:
+                    raw = response.read(MAX_RESPONSE+1)
+                if len(raw) > MAX_RESPONSE:raise ValueError('Oversized response')
+                records = json.loads(raw.decode('utf-8'))
+                if name == 'lrclib':
+                    if not isinstance(records,list):raise ValueError('Invalid result')
+                    text = select(records,artist,title)
+                else:
+                    if not isinstance(records,dict):raise ValueError('Invalid result')
+                    text = clean_text(records.get('lyrics'))
+                negative = negative or not text
+                item['status'] = 'found' if text else 'not-found'
+            except HTTPError as error:
+                item['http'] = error.code
+                if error.code == 404:
+                    negative = True;item['status'] = 'not-found'
+                else:
+                    failed = True;item['status'] = 'http-error'
+                    if error.code in (429,503):
+                        received = clock();after = retry_delay(error,received)
+                        try:
+                            # Retain a longer limit already set by another worker.
+                            try:previous = float(backoff.read_text())
+                            except (OSError,ValueError):previous = 0
+                            backoff.write_text(str(max(previous,received+after)))
+                        except OSError:pass
+                        item['retry_after'] = after
+            except Exception as error:
+                failed = True;item['status'] = 'request-error'
+                item['error'] = type(error).__name__
+            item['elapsed_ms'] = int(max(0,monotonic()-began)*1000)
+            trace.append(item)
+            with trace_lock:pending.update(item)
+            if cancel.is_set():return
+            if text:
+                events.put(('found',name,{'text':text,'trace':trace}))
+                return
+            if item.get('http') in (429,503):break
+        events.put(('done',name,{'negative':negative,'failed':failed,
+                    'retry_after':after,'trace':trace}))
+
+    def start_source(name,urls):
+        # These threads live only in the existing helper process, never Enigma.
+        Thread(target=run_source,args=(name,urls),name='lyrics-'+name,daemon=True).start()
+
+    start_source('lrclib',primary)
+    backup_started = False
+    summaries = {}
+    traces = []
+    result = None
     try:
-        backoff_until = float(backoff_file.read_text())
-    except (OSError, ValueError):
-        backoff_until = 0
-    query = urlencode({'artist_name':artist, 'track_name':title})
-    # Search reads the database directly. /get can trigger slow upstream work.
-    urls = [SEARCH+'?'+query,
-            SEARCH+'?'+urlencode({'artist_name':title, 'track_name':artist}),
-            SEARCH+'?'+urlencode({'q':artist+' '+title})]
-    normalized = urlencode({'artist_name':identity(artist), 'track_name':identity(title)})
-    if normalized != query:
-        urls.append(SEARCH+'?'+normalized)
-    # Alternate independent sources instead of exhausting one before the other.
-    primary = list(dict.fromkeys(urls))[:4]
-    fallback = [FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''),
-                FALLBACK+quote(title,safe='')+'/'+quote(artist,safe='')]
-    urls = [primary[0],fallback[0],primary[1],fallback[1]]+primary[2:]
-    for url in urls:
-        remaining = deadline-monotonic()
-        if remaining <= 0:
-            failures = True
-            break
-        lrclib = url.startswith(SEARCH)
-        current_time = clock()
-        if lrclib and backoff_until > current_time:
-            failures = True
-            retry_after = max(retry_after,int(backoff_until-current_time)+1)
-            continue
-        request = Request(url, headers={
-            'User-Agent':'FullHDGlass-Warder-Evolution/1.0 (https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution)',
-            'Accept':'application/json'})
-        try:
-            with opener(request, timeout=min(10,remaining)) as response:
-                raw = response.read(MAX_RESPONSE+1)
-            if len(raw) > MAX_RESPONSE:
-                raise ValueError('Oversized lyrics response')
-            records = json.loads(raw.decode('utf-8'))
-            if lrclib:
-                if not isinstance(records,list):raise ValueError('Invalid lyrics result')
-                text = select(records, artist, title)
-            else:
-                # This documented endpoint is keyed by the complete artist/title.
-                if not isinstance(records,dict):raise ValueError('Invalid fallback result')
-                text = clean_text(records.get('lyrics'))
-            if text:break
-        except HTTPError as error:
-            if error.code == 404:
-                continue  # A real miss, never an internet failure.
-            failures = True
-            if lrclib and error.code in (429,503):
-                received = clock()
-                value = error.headers.get('Retry-After','20') if error.headers else '20'
-                try:delay = max(1,int(value))
-                except (TypeError,ValueError):
-                    try:delay = max(1,int(parsedate_to_datetime(value).timestamp()-received)+1)
-                    except (TypeError,ValueError,OverflowError):delay = 20
-                backoff_until = received+delay
-                retry_after = max(retry_after,delay)
-                try:backoff_file.write_text(str(backoff_until))
-                except OSError:pass
-        except Exception:
-            failures = True
-    if not text and failures:
-        # Failed requests must not become a six-hour cached "not found" result.
-        return {'text':'', 'status':'offline', 'retry_after':retry_after}
-    result = {'text':text, 'status':'found' if text else 'not-found'}
-    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=str(cache), delete=False) as output:
-        json.dump(dict(result,saved=now,version=CACHE_VERSION),output,ensure_ascii=False)
-        tmp = output.name
-    os.replace(tmp,str(filename))
-    files = sorted(cache.glob('*.json'),key=lambda p:p.stat().st_mtime)
-    for old in files[:-128]:
-        try:old.unlink()
-        except OSError:pass
-    return result
+        while monotonic() < deadline:
+            elapsed = monotonic()-started
+            if not backup_started and (elapsed >= hedge_delay or 'lrclib' in summaries):
+                start_source('ovh',backup);backup_started = True
+            remaining = deadline-monotonic()
+            wait = remaining if backup_started else min(remaining,max(0.001,hedge_delay-elapsed))
+            try:kind,name,data = events.get(timeout=max(0.001,wait))
+            except Empty:continue
+            traces.extend(data['trace'])
+            if kind == 'found':
+                result = {'text':data['text'],'status':'found'}
+                break
+            summaries[name] = data
+            if len(summaries) == 2:break
+    finally:cancel.set()
+    with trace_lock:traces = [dict(row) for row in trace_rows]
+
+    if result is None:
+        # A late optional failure does not erase valid misses from both sources.
+        missing = all(any(row['source']==name and row.get('status')=='not-found'
+                          for row in traces) for name in ('lrclib','ovh'))
+        if missing:result = {'text':'','status':'not-found'}
+        else:
+            waits = [s['retry_after'] for s in summaries.values() if not s['negative']]
+            return finish({'text':'','status':'offline','retry_after':min(waits or [5])},traces)
+    try:
+        partial = any(row.get('status') in ('pending','http-error','request-error') for row in traces)
+        atomic_json(filename,dict(result,saved=clock(),version=CACHE_VERSION,ttl=300 if partial else 1800))
+        files = sorted(cache.glob('*.json'),key=lambda p:p.stat().st_mtime)
+        for old in files[:-128]:
+            try:old.unlink()
+            except OSError:pass
+    except OSError:pass  # A cache write failure must not discard a found text.
+    return finish(result,traces)
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:sys.exit(2)
     try:
         os.nice(8)
-        print(json.dumps(lookup(sys.argv[1], sys.argv[2]),ensure_ascii=False))
+        print(json.dumps(lookup(sys.argv[1],sys.argv[2]),ensure_ascii=False))
     except Exception:
-        print(json.dumps({'text':'', 'status':'offline'}))
+        print(json.dumps({'text':'','status':'offline'}))

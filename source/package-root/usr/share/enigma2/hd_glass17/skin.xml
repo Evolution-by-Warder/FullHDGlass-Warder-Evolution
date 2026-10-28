@@ -1550,10 +1550,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="28,16" size="2,86" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="1890,16" size="2,86" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel text="FullHDGlass by Warder" position="68,28" size="670,58" font="Regular;38" foregroundColor="#00ffffff" transparent="1" zPosition="3" valign="center" />
-    <widget source="session.CurrentService" render="Label" position="850,28" size="250,58" transparent="1" zPosition="3" font="Regular;40" halign="center" valign="center" foregroundColor="#00ffffff"><convert type="WarderRadioServiceType">Radio</convert></widget>
-    <widget source="global.CurrentTime" render="Label" position="1310,28" size="280,58" transparent="1" zPosition="3" font="Regular;32" halign="center" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:%d. %m. %Y</convert></widget>
-    <widget source="global.CurrentTime" render="Label" position="1620,28" size="170,58" transparent="1" zPosition="3" font="Regular;40" halign="center" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:%H:%M</convert></widget>
-    <widget source="global.CurrentTime" render="Label" position="1790,28" size="78,58" transparent="1" zPosition="3" font="Regular;29" halign="center" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format::%S</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1120,28" size="520,58" transparent="1" zPosition="3" font="Regular;32" halign="right" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="WarderRadioServiceType">Date</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1680,28" size="120,58" transparent="1" zPosition="3" font="Regular;40" halign="left" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:%H:%M</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1800,32" size="62,58" transparent="1" zPosition="3" font="Regular;29" halign="left" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:.%S</convert></widget>
     <eLabel position="306,136" size="440,720" backgroundColor="#90102136" zPosition="1" />
     <eLabel position="306,136" size="440,2" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="306,854" size="440,2" backgroundColor="#003ccfff" zPosition="2" />
@@ -1592,10 +1591,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="28,16" size="2,86" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="1890,16" size="2,86" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel text="FullHDGlass by Warder" position="68,28" size="670,58" font="Regular;38" foregroundColor="#00ffffff" transparent="1" zPosition="3" valign="center" />
-    <widget source="session.CurrentService" render="Label" position="850,28" size="250,58" transparent="1" zPosition="3" font="Regular;40" halign="center" valign="center" foregroundColor="#00ffffff"><convert type="WarderRadioServiceType">Radio</convert></widget>
-    <widget source="global.CurrentTime" render="Label" position="1310,28" size="280,58" transparent="1" zPosition="3" font="Regular;32" halign="center" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:%d. %m. %Y</convert></widget>
-    <widget source="global.CurrentTime" render="Label" position="1620,28" size="170,58" transparent="1" zPosition="3" font="Regular;40" halign="center" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:%H:%M</convert></widget>
-    <widget source="global.CurrentTime" render="Label" position="1790,28" size="78,58" transparent="1" zPosition="3" font="Regular;29" halign="center" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format::%S</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1120,28" size="520,58" transparent="1" zPosition="3" font="Regular;32" halign="right" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="WarderRadioServiceType">Date</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1680,28" size="120,58" transparent="1" zPosition="3" font="Regular;40" halign="left" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:%H:%M</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1800,32" size="62,58" transparent="1" zPosition="3" font="Regular;29" halign="left" valign="center" noWrap="1" foregroundColor="#00ffffff"><convert type="ClockToText">Format:.%S</convert></widget>
     <eLabel position="306,136" size="440,720" backgroundColor="#90102136" zPosition="1" />
     <eLabel position="306,136" size="440,2" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="306,854" size="440,2" backgroundColor="#003ccfff" zPosition="2" />

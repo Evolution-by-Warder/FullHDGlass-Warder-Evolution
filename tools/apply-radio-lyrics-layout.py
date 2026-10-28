@@ -55,9 +55,11 @@ def screen(name):
     out=[node('ePixmap',pixmap='hd_glass17/warder-radio-background.jpg',position='0,0',size='1920,1080',zPosition=0,alphatest='off')]
     out+=panel(28,16,1864,86,'#20102136')
     out.append(node('eLabel',text='FullHDGlass by Warder',position='68,28',size='670,58',font='Regular;38',foregroundColor='#00ffffff',transparent=1,zPosition=3,valign='center'))
-    out.append(widget('session.CurrentService','Label',850,28,250,58,40,('WarderRadioServiceType','Radio'),halign='center',valign='center',foregroundColor='#00ffffff'))
-    for x,w,font,fmt in ((1310,280,32,'Format:%d. %m. %Y'),(1620,170,40,'Format:%H:%M'),(1790,78,29,'Format::%S')):
-        out.append(widget('global.CurrentTime','Label',x,28,w,58,font,('ClockToText',fmt),halign='center',valign='center',noWrap=1,foregroundColor='#00ffffff'))
+    out.append(widget('global.CurrentTime','Label',1120,28,520,58,32,('WarderRadioServiceType','Date'),halign='right',valign='center',noWrap=1,foregroundColor='#00ffffff'))
+    out.append(widget('global.CurrentTime','Label',1680,28,120,58,40,('ClockToText','Format:%H:%M'),halign='left',valign='center',noWrap=1,foregroundColor='#00ffffff'))
+    # Prive7 glyph metrics: move the smaller seconds 4 px down to share the
+    # large time's visible baseline; x=1800 is the measured HH:MM advance.
+    out.append(widget('global.CurrentTime','Label',1800,32,62,58,29,('ClockToText','Format:.%S'),halign='left',valign='center',noWrap=1,foregroundColor='#00ffffff'))
     out+=panel(306,136,440,720,'#90102136')
     out+=panel(766,136,860,720,'#18102136')
     out.append(widget('session.CurrentService','WarderRadioArtwork',316,146,420,700,alphatest='blend'))

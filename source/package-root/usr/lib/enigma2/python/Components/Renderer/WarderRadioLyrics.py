@@ -7,12 +7,22 @@ from Components.Converter.WarderRadioOnly import is_radio_reference
 from Components.Converter.WarderRadioMetadata import current_song, native_song, split_song
 from enigma import eLabel, eWidget, ePoint, eSize, eTimer, gFont, iRdsDecoder
 import NavigationInstance
-from Plugins.Extensions.setupGlass17.warderLyrics import identity
+from Plugins.Extensions.setupGlass17.warderLyrics import key as song_key
 
 
 def message(kind):
     from Components.Language import language
     code=language.getLanguage().split('_')[0]
+    if kind == 'retrying':
+        return {
+            'sk':'Zdroj textu neodpovedá. Skúšam to znova…',
+            'cs':'Zdroj textu neodpovídá. Zkouším to znovu…',
+            'de':'Die Liedtextquelle antwortet nicht. Neuer Versuch…',
+            'hu':'A dalszövegforrás nem válaszol. Újrapróbálkozás…',
+            'ru':'Источник текста не отвечает. Повторная попытка…',
+            'fr':'La source ne répond pas. Nouvelle tentative…',
+            'it':'La fonte non risponde. Nuovo tentativo…',
+            'es':'La fuente no responde. Reintentando…'}.get(code,'The lyrics source is not responding. Retrying…')
     rows={
         'sk':('Čakám na údaje o skladbe.','Vyhľadávam text piesne…','Text piesne sa nenašiel.','Text piesne je dočasne nedostupný.'),
         'cs':('Čekám na údaje o skladbě.','Vyhledávám text písně…','Text písně nebyl nalezen.','Text písně je dočasně nedostupný.'),
@@ -123,11 +133,11 @@ class WarderRadioLyrics(Renderer):
 
     def _schedule_retry(self, result=None):
         if self._attempts < 3:
-            delay = 20 if self._attempts == 1 else 60
+            delay = 5 if self._attempts == 1 else 20
             try:delay = max(delay,int((result or {}).get('retry_after',0)))
             except (TypeError,ValueError):pass
             self._retry_at = time.monotonic()+delay
-        self._set_text(message('offline'))
+        self._set_text(message('retrying' if self._retry_at else 'offline'))
 
     def _worker_timeout(self):
         # Invalidate callbacks before kill(); appClosed may fire immediately.
@@ -149,7 +159,7 @@ class WarderRadioLyrics(Renderer):
                     decoder=service and service.rdsDecoder()
                     artist,title=split_song(decoder.getText(iRdsDecoder.RadioText) if decoder else '')
                 if not (artist and title) and not announcement:artist,title=current_song(service,reference)
-                candidate=(reference.toString(),identity(artist),identity(title)) if artist and title else None
+                candidate=(reference.toString(),song_key(artist,title)) if artist and title else None
         except Exception:
             candidate=None;artist=title=''
         if candidate != self._key:

@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "version": "1.0.38-test5",
+  "version": "1.0.38-test6",
   "expected_main_sha": "6e6f933450417767af53839e1fb4c3e1084e0770",
   "authorization": "Isolated owner-requested radio/lyrics redesign candidate; do not alter production feeds.",
   "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania."
