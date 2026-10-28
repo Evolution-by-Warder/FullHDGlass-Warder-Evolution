@@ -153,6 +153,17 @@
       "bytes": 6673,
       "source": "Existing approved Warder selector picon",
       "reason": "Shared source icon in DAB/DVB-T selection"
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/selectors/IPTV-SK-CZ.png",
+      "sha256": "5f73d84a15bdcaf3eac2b55301c664afc219b870fe7a9d61793c006bd4356edc",
+      "purpose": "Shared Warder IPTV SK/CZ source selector icon; settings-only addition, not a station logo.",
+      "canonical_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+      "canonical_commit": "2338498bb1bde99d921cf2ccf1f237730bea5c27",
+      "canonical_path": "plugin/src/Plugins/Extensions/WarderPiconHub/images/selectors/IPTV-SK-CZ.png",
+      "bytes": 2552,
+      "source": "Shared Warder IPTV source selector icon",
+      "reason": "New IPTV SK/CZ settings source; radio graphic baseline remains unchanged"
     }
   ]
 }
