@@ -1,6 +1,6 @@
 {
-  "version": "1.0.35",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.35_all.ipk",
-  "sha256": "c16fdee8fc7654ff59ecb96e8f283ce2cff0e66358a2211717dcee0aec61f08f",
-  "changelog": "Samostatné správy rádia, napríklad Hudba na maximum, sa zobrazia vedľa loga aj bez interpreta a skladby. Vyhľadávanie obalov a vzhľad rádia zostávajú zachované."
+  "version": "1.0.36",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.36_all.ipk",
+  "sha256": "e2a7e43c6cb7fe129c12f7c3bb511bbbdfd2a075ac051ad708adaec29a7d811c",
+  "changelog": "Nová spoločná ponuka IPTV rádiá SK/CZ: tri rozlíšenia a tri pozadia. Picony pre 213 položiek; samostatný obnovený bouquet obsahuje 321 položiek. Kontrola SHA256, sťahovanie na pozadí a zachovanie ostatných piconov."
 }
