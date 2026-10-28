@@ -5,12 +5,11 @@ from xml.etree import ElementTree as ET
 
 
 def prepare_radio_layers(skin):
-    """Give full-frame PNG panels separate TV-copy and radio-blend paths.
+    """Keep full-frame TV panels out of the independently owned radio scene.
 
     ePixmap's alpha-off path marks a full-size widget opaque. This lets the
     desktop discard the lower RDS window even where the PNG has alpha zero.
-    Radio needs alpha blending against that lower OSD, including its live
-    artwork. The existing TV path keeps its original image and alpha mode.
+    Radio keeps the native RDS scene, its live text and artwork unobstructed. The existing TV path keeps its original image and alpha mode.
     Only self-contained full-frame ePixmap tags are touched; all other skin
     text, widgets, coordinates, callbacks and artwork remain as supplied.
     """
@@ -30,7 +29,7 @@ def prepare_radio_layers(skin):
         if attributes.get("alphaTest", attributes.get("alphatest", "off")) != "off":
             return original
         output = []
-        for converter, radio in (("WarderTVOnly", False), ("WarderRadioOnly", True)):
+        for converter, radio in (("WarderTVOnly", False),):
             values = dict(attributes)
             values.pop("name", None)
             values.update(source="session.CurrentService", render="Pixmap")

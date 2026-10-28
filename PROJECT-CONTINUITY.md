@@ -161,3 +161,7 @@ Owner follow-up pending: investigate and unify provider/satellite directories pi
 ### 2026-10-28: weekly radio catalogue
 
 Owner authorized weekly source merging in PiconHub and silent weekly receiver-side refresh in FullHDGlass. PiconHub main commit 310136ed124108b4b400f1f64a6fcc16b5ec0e0e; workflow 40730407663 passed. Own 88 SK / 233 CZ entries are untouched and first; 5,120 foreign entries follow. Source attribution is in repository documentation, not the bouquet UI. Satellite automation is unchanged. FullHDGlass 1.0.37 adds a native child worker, persistent weekly timestamp, six-hour failure backoff, SHA256 validation, atomic replacement with backup and GUI-thread bouquet reload without service navigation. Only an already installed Warder bouquet is managed. Receiver testing remains outstanding.
+
+### 2026-10-28: radio lyrics candidate
+
+Owner explicitly requested implementation of the approved blue/amber studio layout, retaining tall artwork height while narrowing its sides, centered album/lyrics group, picon and station/RDS/DAB fields left in the footer, animated spectrum above transport type at right. Lyrics must be automatic, plain text, no user button, no karaoke. Font sharpness through radio layers is a material receiver acceptance condition. Baseline production is 1.0.37 at 744075b582e26b36b5a1a25e6f00fd8450ac5123. Candidate is 1.0.38-test1 in feature/radio-lyrics-layout with feeds unchanged. See design/radio-lyrics/implementation.json and docs/CURRENT-RELEASE.md.

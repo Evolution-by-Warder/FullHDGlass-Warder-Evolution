@@ -80,7 +80,7 @@ def main():
             manifest = json.loads((ROOT / name).read_text())
             assert manifest["version"] == version and manifest["sha256"] == digest
             assert manifest["package_url"].endswith("/main/packages/" + package.name)
-    print("PASS: confirmed graphics/layout, Python syntax, executable hooks, version order, full IPK and both update manifests")
+    print("PASS: pinned graphics/layout, Python syntax, executable hooks, version order, full IPK and both update manifests")
 
 
 if __name__ == "__main__":

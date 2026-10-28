@@ -1,0 +1,63 @@
+name: Build radio lyrics candidate
+on:
+  push:
+    branches: [feature/radio-lyrics-layout]
+    paths: ['source/**', 'tools/**', 'design/radio-lyrics/**', 'design/live-update.json', '.github/workflows/radio-lyrics-candidate.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: radio-lyrics-candidate
+  cancel-in-progress: true
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            docs
+            design
+            .github
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install --quiet Pillow
+      - name: Verify native lyrics, existing radio metadata and isolated layout
+        run: |
+          python tools/test-radio-lyrics.py -v
+          python tools/test-radio-stream-metadata.py -q
+          python tools/test-radio-picon.py -q
+          python tools/test-radio-weekly-update.py -q
+          python tools/test-startup-update.py -q
+          python tools/test-runtime-safety.py
+          python tools/test-setup-style.py -q
+          python tools/verify-radio-release.py
+      - name: Verify live exact-song lookup without publishing lyrics
+        run: python tools/check-radio-lyrics-provider.py
+      - name: Build candidate and verify every installed byte
+        run: |
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-radio-lyrics-candidate
+          path: packages/test/*
+          retention-days: 30
+      - name: Publish isolated prerelease without changing any update feed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
+          case "$VERSION" in *-test*) ;; *) echo 'Refusing production publication'; exit 1 ;; esac
+          PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+          gh release create "radio-lyrics-${VERSION}" "$PACKAGE" "$PACKAGE.sha256" \
+            --target "$GITHUB_SHA" --prerelease --latest=false \
+            --title "FullHDGlass radio candidate ${VERSION}" --notes-file docs/CURRENT-RELEASE.md
