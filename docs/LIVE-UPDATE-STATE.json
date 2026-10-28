@@ -1,11 +1,11 @@
 {
-  "version": "1.0.33",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.33_all.ipk",
-  "sha256": "68a938a62597666a8d9eca6dfdaff7009ae90ee6c51d8f202039abf46cab24b1",
-  "changelog": "Opravené dohľadanie obalu pri odlišnom zápise spoluúčinkujúcich interpretov: hosť môže byť v zozname mien rádia alebo v názve skladby ako feat. Zhodovať sa musia všetky mená aj názov skladby. Zachované opravy stability obalov z 1.0.32.",
-  "bytes": 14264900,
-  "source_commit": "e8ee0ad0df6332bebf51fc672a4aa477dc6d7c43",
+  "version": "1.0.34",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.34_all.ipk",
+  "sha256": "e6e185cd5820cac2de2f60955e6a8344313d1361024a7086b5273ef472c7565e",
+  "changelog": "Opravená kombinácia obráteného poradia metadát a viacerých interpretov na Europe 2. Rozpoznávajú sa čiarky, and a & pri zachovaní celého názvu skladby a všetkých mien. Zahŕňa aj opravu feat. z 1.0.33.",
+  "bytes": 14265258,
+  "source_commit": "1cfa933a2026256c3e9c78bf93c2adda7ce22c44",
   "production_status": "production-update",
-  "production_tag": "v1.0.33",
+  "production_tag": "v1.0.34",
   "legacy_bridge_version": "1.0.18"
 }
