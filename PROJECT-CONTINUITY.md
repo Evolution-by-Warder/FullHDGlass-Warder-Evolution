@@ -1,3 +1,11 @@
+# Produkčné IPTV rádiá SK/CZ — 28. októbra 2026
+
+FullHDGlass **1.0.36** a PiconHub **0.1.30** sú vydané a aktívne v aktualizačných kanáloch. Skin CI **40687770330** úspešné, zdroj `e672afb9cf46ab61e8ee154ecf618b22e235c861`. Verejné IPK má 14 271 200 bajtov, SHA256 `e2a7e43c6cb7fe129c12f7c3bb511bbbdfd2a075ac051ad708adaec29a7d811c`. Deväť spoločných modulov v oboch verejných IPK je identických.
+
+Bouquet 321 položiek (88 SK, 233 CZ), audio skúška pre 286 URL; picony 213 položiek / 229 referencií × 9 variantov. 108 položiek bez vhodného overeného piconu. Spoločné dáta sú v PiconHub main/picons/IPTV-SK-CZ. Všetkých deväť živých variantov nainštalovaných do dočasných priečinkov cez skutočný PiconRunner; nesúvisiace picony zachované. Fyzický test týchto verzií na prijímači sa netvrdí. [Presné overenie](docs/IPTV-SK-CZ-1.0.36.json).
+
+---
+
 # Published infobar follow-up1.0.28
 
 Stable Latest and production updater verified. CI40475278006 and radio guard40475278052 succeeded. IPK14198502 bytes SHA25649d41833ac81fd728d4db9f47eb8047b4d5f3bb990a079d12682b02bc5233413. g17PicRef2/3 share original/legacy radio paths with primary renderer and use native radio fallback before default; their timers/animations retained.13 renderer tests and22 layout checks passed before publication. Owner confirmed RDS in1.0.27, but1.0.28 OK-infobar receiver test still pending. Separate radio-source research is saved in PiconHub plugin/research/RADIO-SOURCES.md and RADIO-SOURCE-AUDIT.json. No PiconHub runtime source enabled by that research.

@@ -1,3 +1,11 @@
+# IPTV rádiá SK/CZ — 28. október 2026
+
+PiconHub 0.1.30 a FullHDGlass 1.0.36 pridávajú rovnakú prvú položku IPTV rádiá SK/CZ. Picony pre 213 položiek, 229 presných referenčných PNG v každom z deviatich variantov; bouquet 321 položiek, 108 zatiaľ bez vhodného overeného piconu. Pri 286 vybraných URL skúška vrátila zvukové dáta.
+
+[Bouquety, chýbajúce obrázky a pôvod](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/tree/main/picons/IPTV-SK-CZ). PNG sú samostatne sťahované, nezväčšujú IPK. Ostatné krajiny celého pôvodného bouquetu a nesúvisiace používateľské picony zostávajú zachované. Len oficiálne alebo schválené logá a zmrazené MASTER podklady.
+
+---
+
 # Spoločné Warder piconové balíky — 27. október 2026
 
 PiconHub a FullHDGlass používajú rovnaký živý katalóg. Táto aktualizácia mení iba sťahované dáta; nemení IPK ani jeho verziu.
