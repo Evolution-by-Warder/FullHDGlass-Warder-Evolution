@@ -1,3 +1,5 @@
+1.0.37 - Silent weekly refresh of Warder Radio Streams: owned SK/CZ first, SHA256, atomic replacement and background reload without interrupting playback.
+
 1.0.36: Shared IPTV SK/CZ radio source with PiconHub: three sizes and three styles. Picons for 213 entries and refreshed bouquet with 321 entries; 108 entries still lack suitable verified artwork. Checked downloads, background installation and preservation of unrelated picons.
 
 1.0.35: Display standalone internet-radio announcements in the existing native radio-text label. Preserve artist/title cover matching and clear stale text on transitions.

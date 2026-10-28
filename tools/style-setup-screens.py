@@ -206,7 +206,20 @@ def strip_reviewed_batch(tree, records=None):
     return tree
 
 
+def strip_reviewed_radio_start(tree):
+    # Only this exact, separately tested background lifecycle hook is allowed.
+    # Altered calls and all other startup/controller changes remain detectable.
+    reviewed = ast.parse('if reason != 0 or config.skin.primary_skin.value == "hd_glass17/skin.xml":\n    try:\n        from .warderRadioUpdate import start as start_radio_update\n        start_radio_update(reason)\n    except Exception:\n        pass').body[0]
+    expected = portable(reviewed)
+    tree = copy.deepcopy(tree)
+    for node in tree.body:
+        if isinstance(node, ast.FunctionDef) and node.name == 'startHdg17':
+            node.body = [child for child in node.body if portable(child) != expected]
+    return tree
+
+
 def normalized(tree):
+    tree=strip_reviewed_radio_start(tree)
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/settings-iptv-logic.json').read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/settings-dab-logic.json').read_text()))
     tree=strip_reviewed_batch(tree)

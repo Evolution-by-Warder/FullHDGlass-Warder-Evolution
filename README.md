@@ -106,3 +106,7 @@ Shared with PiconHub 0.1.30: 247 programme picons, 263 exact reference PNGs per 
 
 
 Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v každom z deviatich variantov, 74 zatiaľ bez vhodného overeného piconu. Overené Radia.sk, Radia.cz a MyOnlineRadio.cz aj dodané originály. Všetkých deväť verejných archívov a obrázkov prešlo kontrolou; aktuálne dáta sa stiahnu opätovným výberom IPTV rádiá SK/CZ. Verzie IPK sa nemenia. [Zdroje a zhodovanie](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/main/picons/IPTV-SK-CZ/catalog/followup-sources.json).
+
+## Tiché obnovenie Warder Radio Streams (1.0.37)
+
+Existujúci spravovaný rádio bouquet sa raz týždenne obnoví z nášho Gitu bez hlášok a reštartu. Na začiatku zostávajú naše SK/CZ stanice, ostatné krajiny obnovuje samostatný týždenný GitHub workflow. Sťahovanie beží mimo GUI; kontroluje sa SHA256 a pri chybe zostáva starý zoznam. [Rozsah a správanie](docs/CURRENT-RELEASE.md).

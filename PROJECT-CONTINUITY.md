@@ -157,3 +157,7 @@ The complete current repository is included in set `warder-backups-20261023`. Fi
 Pripravené PNG sa trvalo ukladajú do `preview/` v nastavenej ceste skinu (napr. `/media/hdd/hdg17_files/preview/`). Po reštarte sa znovu použijú bez sťahovania či rozbaľovania archívu. Pomocný proces pred zobrazením pripraví malú RAM kópiu, aby čítanie disku neblokovalo menu. Pôvodné pomocné obrázky ani používateľské súbory sa neprepisujú.
 
 Owner follow-up pending: investigate and unify provider/satellite directories piconProv vs piconProv_220x132 and piconSat vs piconSat_220x132. Current infobars select both paths, so do not delete directories blindly. User notes same 220x132 content duplicated; preferred canonical names are the original folders without dimension suffix. Complete active Help fix first.
+
+### 2026-10-28: weekly radio catalogue
+
+Owner authorized weekly source merging in PiconHub and silent weekly receiver-side refresh in FullHDGlass. PiconHub main commit 310136ed124108b4b400f1f64a6fcc16b5ec0e0e; workflow 40730407663 passed. Own 88 SK / 233 CZ entries are untouched and first; 5,120 foreign entries follow. Source attribution is in repository documentation, not the bouquet UI. Satellite automation is unchanged. FullHDGlass 1.0.37 adds a native child worker, persistent weekly timestamp, six-hour failure backoff, SHA256 validation, atomic replacement with backup and GUI-thread bouquet reload without service navigation. Only an already installed Warder bouquet is managed. Receiver testing remains outstanding.

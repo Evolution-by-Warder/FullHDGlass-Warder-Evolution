@@ -59,6 +59,8 @@ on:
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef.py
       - tools/test-startup-update.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderAutoUpdate.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py
+      - tools/test-radio-weekly-update.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py
       - tools/test-auxiliary-hybrid-runtime.py
       - tools/test-canonical-picons.py
@@ -112,6 +114,7 @@ jobs:
           python3 tools/test-setup-style.py -v
           python3 tools/test-help-preview.py -v
           python3 tools/test-startup-update.py -q
+          python3 tools/test-radio-weekly-update.py -v
           python3 tools/test-dab-shared-runtime.py -v
           python3 tools/test-iptv-shared-runtime.py -v
           python3 tools/test-radio-picon.py -v

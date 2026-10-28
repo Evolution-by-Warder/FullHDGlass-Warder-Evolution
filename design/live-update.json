@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.36",
-  "expected_main_sha": "6cbb756c07ef5f6f3fea48fb972d39ea0934c4a8",
-  "authorization": "Owner requested autonomous completion and deployment of shared SK/CZ IPTV radio bouquets and official picons in both Warder projects on 28 October 2026.",
-  "changelog": "Nová spoločná ponuka IPTV rádiá SK/CZ: tri rozlíšenia a tri pozadia. Picony pre 213 položiek; samostatný obnovený bouquet obsahuje 321 položiek. Kontrola SHA256, sťahovanie na pozadí a zachovanie ostatných piconov."
+  "version": "1.0.37",
+  "expected_main_sha": "6e6f933450417767af53839e1fb4c3e1084e0770",
+  "authorization": "Owner requested weekly silent background download, replacement and reload of the managed Warder Radio Streams bouquet on 28 October 2026.",
+  "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania."
 }
