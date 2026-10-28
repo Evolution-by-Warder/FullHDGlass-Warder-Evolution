@@ -6,4 +6,4 @@
 - Zamietne sa chýbajúci interpret, podobné neúplné meno aj odlišný remix v tomto obrátenom zápise.
 - Zachované opravy stability obalov, RDS, DAB MOT a vzhľad rádia.
 
-Overenie: 60 automatických testov. Živý katalóg potvrdil celé obsadenie a skladbu pre uvedený príklad Europy 2. Kompletné CI overí balík a jeho verejné bajty pred aktiváciou aktualizácie. Fyzické overenie novej verzie na prijímači sa zatiaľ netvrdí.
+Overenie: 60 automatických testov. Živý katalóg potvrdil celé obsadenie a skladbu pre uvedený príklad Europy 2. Kompletné CI, kontrola všetkých 252 pomocných obrázkov, zostavenie IPK a overenie verejných bajtov prešli. Produkčná aktualizácia 1.0.34 bola aktivovaná 28. októbra 2026. Fyzické overenie novej verzie na prijímači sa zatiaľ netvrdí.

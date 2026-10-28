@@ -81,5 +81,39 @@
         "result": "Exact reversal confirmed by live store response; no receiver confirmation of 1.0.32 claimed."
       }
     }
-  }
+  },
+  "additional_verified_examples": [
+    {
+      "station_text": "Cant Deny It - Jazzy and Spriitzz",
+      "catalogue_artist": "Jazzy & Spriitzz",
+      "catalogue_title": "Can't Deny It",
+      "distinct_versions_not_equal": [
+        "Can't Deny It (Spray VIP)",
+        "Can't Deny It (Dart Remix)"
+      ]
+    },
+    {
+      "station_text": "Sad Girls - Bebe Rexha and David Guetta",
+      "catalogue_artist": "Bebe Rexha & David Guetta",
+      "catalogue_title": "Sad Girls",
+      "catalogue_album": "DIRTY BLONDE",
+      "isolated_matcher_probe": "accepted"
+    },
+    {
+      "station_text": "Aint In La - Adela",
+      "catalogue_artist": "ADÉLA",
+      "catalogue_title": "Ain't In LA",
+      "catalogue_album": "PRIMA",
+      "album_membership_source": "https://music.apple.com/us/album/prima/6792883860",
+      "isolated_matcher_probe": "accepted"
+    },
+    {
+      "station_text": "Echame La Culpa - Luis Fonsi and Demi Lovato",
+      "catalogue_artist": "Luis Fonsi & Demi Lovato",
+      "catalogue_title": "Échame La Culpa",
+      "catalogue_album": "VIDA",
+      "distinct_version": "Échame La Culpa (Not On You Remix)",
+      "isolated_matcher_probe": "When remix is listed first, the reversed-metadata matcher skips it and selects the exact original track."
+    }
+  ]
 }
