@@ -1,6 +1,6 @@
 {
-  "version": "1.0.34",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.34_all.ipk",
-  "sha256": "e6e185cd5820cac2de2f60955e6a8344313d1361024a7086b5273ef472c7565e",
-  "changelog": "Opravená kombinácia obráteného poradia metadát a viacerých interpretov na Europe 2. Rozpoznávajú sa čiarky, and a & pri zachovaní celého názvu skladby a všetkých mien. Zahŕňa aj opravu feat. z 1.0.33."
+  "version": "1.0.35",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.35_all.ipk",
+  "sha256": "c16fdee8fc7654ff59ecb96e8f283ce2cff0e66358a2211717dcee0aec61f08f",
+  "changelog": "Samostatné správy rádia, napríklad Hudba na maximum, sa zobrazia vedľa loga aj bez interpreta a skladby. Vyhľadávanie obalov a vzhľad rádia zostávajú zachované."
 }
