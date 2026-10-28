@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "version": "1.0.38-test1",
+  "source_commit": "8917d0aeb7738c3bc7685031e253b1e6649bc771",
+  "baseline_commit": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
+  "production_version_preserved": "1.0.37",
+  "workflow_run": 40741340585,
+  "workflow_conclusion": "success",
+  "python": "3.14",
+  "unit_tests": 141,
+  "verified_payload_files": 1349,
+  "provider_live_check": "ABBA / Dancing Queen exact match succeeded without publishing lyrics",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test1",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test1/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test1_all.ipk",
+  "bytes": 14528460,
+  "sha256": "09408aeef8bd0429c4a344e9aebecc13dd0c1f29b06e3f0698d3b69c3678fac0",
+  "receiver_validated": false,
+  "receiver_checks": [
+    "font sharpness on the physical OSD",
+    "native text clipping and scrolling",
+    "both radio infobars",
+    "RDS/DAB and radio/TV transitions"
+  ],
+  "production_feeds_modified": false
+}
