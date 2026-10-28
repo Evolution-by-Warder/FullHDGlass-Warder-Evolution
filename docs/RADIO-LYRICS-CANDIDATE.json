@@ -1,25 +1,32 @@
 {
   "schema": 1,
-  "version": "1.0.38-test1",
-  "source_commit": "8917d0aeb7738c3bc7685031e253b1e6649bc771",
-  "baseline_commit": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
+  "version": "1.0.38-test2",
+  "source_commit": "e62358981d3b80f3c1131b44b0d4ecfe661faca8",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40741340585,
+  "workflow_run": 40746016697,
   "workflow_conclusion": "success",
   "python": "3.14",
-  "unit_tests": 141,
+  "unit_tests": 147,
   "verified_payload_files": 1349,
-  "provider_live_check": "ABBA / Dancing Queen exact match succeeded without publishing lyrics",
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test1",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test1/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test1_all.ipk",
-  "bytes": 14528460,
-  "sha256": "09408aeef8bd0429c4a344e9aebecc13dd0c1f29b06e3f0698d3b69c3678fac0",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test2",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test2/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test2_all.ipk",
+  "bytes": 14499486,
+  "sha256": "8937518454656afed874d3c9d8a1564fb0f7100b1313b00d816a818b79dd9da7",
+  "fixes": {
+    "physical_radio_background": "Old framed MPEG2 radio.mvi replaced by the current clean JPEG encoded as MPEG2.",
+    "ok_infobar": "Original selected InfoPanel graphics restored in WarderRadioOnly branch with alpha blending; TV branch retained."
+  },
+  "verification": {
+    "jpeg_mvi_sha256_pair": "passed",
+    "decoded_video_similarity_db": 33.408,
+    "all_real_full_frame_infopanel_templates": "passed",
+    "full_ipk_payload": "passed",
+    "public_release_size_and_sha256": "verified"
+  },
   "receiver_validated": false,
-  "receiver_checks": [
-    "font sharpness on the physical OSD",
-    "native text clipping and scrolling",
-    "both radio infobars",
-    "RDS/DAB and radio/TV transitions"
+  "receiver_checks_pending": [
+    "old central frame absent on physical TV",
+    "selected InfoBar graphic visible after OK"
   ],
   "production_feeds_modified": false
 }
