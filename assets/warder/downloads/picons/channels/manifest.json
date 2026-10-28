@@ -23214,119 +23214,122 @@
       "selector_id": "DVB-T-SK-CZ",
       "family": "channel-transparent",
       "resolution": "220x132",
-      "filename": "warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip",
-      "sha256": "277fe3e91a482c008342e35d41a4d2c340abb5c59e54ba714040f96a7a6e1d77",
-      "bytes": 21936094,
-      "png_count": 2674,
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip",
+      "sha256": "b49e66b1ab1f1f68170f749c21bc6af95f4446ca69e19bf5e4a77c371ea2f3b6",
+      "bytes": 19956939,
+      "png_count": 2531,
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part04",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-277fe3e91a482c00.zip.part05"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part04"
       ],
-      "source_repository": "Evolution-by-Warder/Trezor",
-      "source_ref": "9cdda4ab414e7d50a97ca9285db8ebbb75fba615",
+      "source_repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+      "source_ref": "bc77ee02a53349edf4fd8c4c4b46f5eb21daced0",
       "warder_key": "dtt",
       "orbital_position": "dtt",
       "original_source": {
         "archive": "picontransparent-220x132-czskDTT_by_chocholousek.7z",
         "git_blob": "8e071ce0a9512d0c3b0a56537895d19312901e95",
-        "unique_images": 203,
-        "images_changed": false
+        "images_changed": true,
+        "revision": "2026.10.28-dtt-audit",
+        "historical_original_png_count": 2674,
+        "audit_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/dvb-t-skcz/catalog/station-list.json"
       }
     },
     {
       "selector_id": "DVB-T-SK-CZ",
       "family": "channel-white",
       "resolution": "220x132",
-      "filename": "warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip",
-      "sha256": "baa0ea459a27e67f24d032bf340e491065287e723c2a50385f4f51d3ddb27429",
-      "bytes": 90962055,
-      "png_count": 2674,
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip",
+      "sha256": "8c4d28a87e10c222157230af469d361236937ce556c259773021a39fb3ba3763",
+      "bytes": 84950039,
+      "png_count": 2531,
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part04",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part05",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part06",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part07",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part08",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part09",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part10",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part11",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part12",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part13",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part14",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part15",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part16",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part17",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part18",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part19",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part20",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-baa0ea459a27e67f.zip.part21"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part04",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part05",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part06",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part07",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part08",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part09",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part10",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part11",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part12",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part13",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part14",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part15",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part16",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part17",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part18",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part19",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part20"
       ],
-      "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "source_ref": "c662265bd085a7916289975f7c4472a25d6c9b40",
+      "source_repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+      "source_ref": "bc77ee02a53349edf4fd8c4c4b46f5eb21daced0",
       "warder_key": "dtt",
       "orbital_position": "dtt",
       "original_source": {
         "archive": "picontransparent-220x132-czskDTT_by_chocholousek.7z",
         "git_blob": "8e071ce0a9512d0c3b0a56537895d19312901e95",
-        "unique_images": 203,
         "images_changed": true,
         "operation": "Same transparent logo, proportional fit on frozen Warder white master; no recolouring or invented artwork",
         "transparent_zip_sha256": "277fe3e91a482c008342e35d41a4d2c340abb5c59e54ba714040f96a7a6e1d77",
-        "master_sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589"
+        "master_sha256": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589",
+        "revision": "2026.10.28-dtt-audit",
+        "historical_original_png_count": 2674,
+        "audit_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/dvb-t-skcz/catalog/station-list.json"
       }
     },
     {
       "selector_id": "DVB-T-SK-CZ",
       "family": "channel-black",
       "resolution": "220x132",
-      "filename": "warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip",
-      "sha256": "0fbdb8db39ccd901455848885436f24c945ea6dbdd8eacd5de66f75146c082b1",
-      "bytes": 91936784,
-      "png_count": 2674,
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip",
+      "sha256": "cda8753e51f3b0369531d96354937a9bbeeee7a65da2a788582197fd4fbb621d",
+      "bytes": 85404543,
+      "png_count": 2531,
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part04",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part05",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part06",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part07",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part08",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part09",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part10",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part11",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part12",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part13",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part14",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part15",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part16",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part17",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part18",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part19",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part20",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-0fbdb8db39ccd901.zip.part21"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part04",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part05",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part06",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part07",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part08",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part09",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part10",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part11",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part12",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part13",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part14",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part15",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part16",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part17",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part18",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part19",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/channels/warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part20"
       ],
-      "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-      "source_ref": "c662265bd085a7916289975f7c4472a25d6c9b40",
+      "source_repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+      "source_ref": "bc77ee02a53349edf4fd8c4c4b46f5eb21daced0",
       "warder_key": "dtt",
       "orbital_position": "dtt",
       "original_source": {
         "archive": "picontransparent-220x132-czskDTT_by_chocholousek.7z",
         "git_blob": "8e071ce0a9512d0c3b0a56537895d19312901e95",
-        "unique_images": 203,
         "images_changed": true,
         "operation": "Same transparent logo, proportional fit on frozen Warder black master; no recolouring or invented artwork",
         "transparent_zip_sha256": "277fe3e91a482c008342e35d41a4d2c340abb5c59e54ba714040f96a7a6e1d77",
-        "master_sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe"
+        "master_sha256": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe",
+        "revision": "2026.10.28-dtt-audit",
+        "historical_original_png_count": 2674,
+        "audit_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/bc77ee02a53349edf4fd8c4c4b46f5eb21daced0/assets/warder/downloads/picons/dvb-t-skcz/catalog/station-list.json"
       }
     }
   ],
@@ -27550,6 +27553,241 @@
       "bytes": 531016,
       "filename": "warder-skylink-220x132-white-8fb9894c7cefd63c.zip.part02",
       "sha256": "a5cd6a909f685dadbfebc284f901a6ac74d52c07e8bea845c2586c5e70ee66aa"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part00",
+      "bytes": 4194304,
+      "sha256": "dbb38ed7ee256cba3c5717102de41b4979a6b54e2cc403dcdb84a9ec481f019a"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part01",
+      "bytes": 4194304,
+      "sha256": "a15e2a82420d215f151152618d78175dfdcd2f33781cfdf2ab682614eae3443a"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part02",
+      "bytes": 4194304,
+      "sha256": "88223136d0fa2edd7f36c7e922378469dd6b34679099dc1dcc93e89eab7e355e"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part03",
+      "bytes": 4194304,
+      "sha256": "9987f3908a95743f0af30ec9b1acbbaf867478f5d042983e59540a81be1fd9e4"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-transparent-b49e66b1ab1f1f68.zip.part04",
+      "bytes": 3179723,
+      "sha256": "5b611145a3beeb46b5cbd79fb838f73877a6a958d382f5e1b9b450714f7beaca"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part00",
+      "bytes": 4194304,
+      "sha256": "6e964080dd50c4b8a3dcb2c211c0a6d6338849184769522d111cb3201e90e640"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part01",
+      "bytes": 4194304,
+      "sha256": "4962d61fb6e485a2f93cf63c7e3d26642799abf78c1958f2ac2c93aebaa2c516"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part02",
+      "bytes": 4194304,
+      "sha256": "e18fe5dd81e32bc9ae5f1c66e9ed123af67b1a20db62eac3cae7790f527040f4"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part03",
+      "bytes": 4194304,
+      "sha256": "b287e34a83b79323c81a90520e0ee38d44160e705448f7d077ad6bef033e7275"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part04",
+      "bytes": 4194304,
+      "sha256": "1350cc3b4a3fb8446ed204e1ba14e7daf00731c95bbde3225a0dd91abca963fd"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part05",
+      "bytes": 4194304,
+      "sha256": "d172af5bdb40dce7e6fbc382889f2fccd4bc15caf41c2fb77036cba793afcac3"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part06",
+      "bytes": 4194304,
+      "sha256": "a41d2a25bcb64439118b79eb6f0971c2420bbdaaaa36262965fd0f2eebcbf555"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part07",
+      "bytes": 4194304,
+      "sha256": "35e8229791528c2db81a2f90d757b4bb67229819970524bb734076351558f022"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part08",
+      "bytes": 4194304,
+      "sha256": "7cf72d0be557637e963b61bbe5d1269ef8baf63e15ca97622e0f014e7ff2f03c"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part09",
+      "bytes": 4194304,
+      "sha256": "281d6069fcb602a9f33bdb04897bf2d5510ec5fd2c19752b65f4e654fb249c33"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part10",
+      "bytes": 4194304,
+      "sha256": "92b7901326c83983fe72923f72f9eb43e2d92083d786802274f247bff26bd36e"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part11",
+      "bytes": 4194304,
+      "sha256": "0db886be82959bfab1ecd74ed200b8bfd552f0a3bf49234d37ef9ae52e66151e"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part12",
+      "bytes": 4194304,
+      "sha256": "efc4a6d3620953311d466727a9c58160ce2f5ab161dda2f4258a725214501c2f"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part13",
+      "bytes": 4194304,
+      "sha256": "a14f68cb4c7094573017d94324450250bce4fa6ddbc00024e9cc3677cd35ee78"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part14",
+      "bytes": 4194304,
+      "sha256": "00d13666a0bfc14fd95eee682c40156cd37be06703332be906238e8abe0d269f"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part15",
+      "bytes": 4194304,
+      "sha256": "5a6d2d4808b1f16d8a68396e5ad467720fc6b45189d322adb8714f742cfc61ea"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part16",
+      "bytes": 4194304,
+      "sha256": "e3a2050739c93553722f244a4d92ca0f5acc823cd57096c06a56a95d94e97eb9"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part17",
+      "bytes": 4194304,
+      "sha256": "5dc31463f9cfe46a8b288ec91235ffd6eead72f88d0ac9cab4f105cbcd404db3"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part18",
+      "bytes": 4194304,
+      "sha256": "d24957355283cdd71e4d3123e6ddf8ca933c8232eae50f8afa884aa16442534c"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part19",
+      "bytes": 4194304,
+      "sha256": "8b325b61e4b1b70f9a09927306a201ad026b816b5d9d5860e95b3340db294fca"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-white-8c4d28a87e10c222.zip.part20",
+      "bytes": 1063959,
+      "sha256": "37cfbfcf982e8e6b44d25c34ce29a401058514dfe8d17036b94803d331a7359e"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part00",
+      "bytes": 4194304,
+      "sha256": "dc3bb7f6f77aeb048e8c5fb7ce1b87d556cdb3bfa0a6a019e1347ba75b2b346c"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part01",
+      "bytes": 4194304,
+      "sha256": "feb83b1a69dcc70bfd9c0c681919e87166c2a790f5588000152859bd160c2249"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part02",
+      "bytes": 4194304,
+      "sha256": "3ada558c6ed75803151f897cec4093b235a402acfaeb41de93f086d32c99782b"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part03",
+      "bytes": 4194304,
+      "sha256": "366998a295dbfad248daca4398589355b8a3aefd1dfeb1b773e7c07de5f5a7a0"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part04",
+      "bytes": 4194304,
+      "sha256": "1c31f3b3c30102e6bf0780e2ce9bb25dd8977ff8cc4a4a52674d1566091acfd8"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part05",
+      "bytes": 4194304,
+      "sha256": "c5fcf23f77109576387b6e3016342cbb3ff54d2b635546d6767af420ab535c35"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part06",
+      "bytes": 4194304,
+      "sha256": "397b6f768e322eff8ed7b23c1d3cb3a4cf1e91f26dc8486244ec4149539c5d98"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part07",
+      "bytes": 4194304,
+      "sha256": "4b1446fd85b9d7cfcc59d71c46bff4be45c2c916e8d04de1f065e950ddae2ad5"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part08",
+      "bytes": 4194304,
+      "sha256": "655af31b46c6cadd441baf98136be88629a2c67512fd9817284ad500da85f90e"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part09",
+      "bytes": 4194304,
+      "sha256": "f9fab710663dfb76b91fc0fcd5b5d206697c9450f8f90dbea0d85e002b858046"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part10",
+      "bytes": 4194304,
+      "sha256": "b1ba9669e0d698668afc003492d54776e8597157cbea9b3ea6bc7a673241cf73"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part11",
+      "bytes": 4194304,
+      "sha256": "48b1b242aefa0df46a81d2a6c9280e6cfdd02c7fb33a760eaa41aa760d4efc30"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part12",
+      "bytes": 4194304,
+      "sha256": "15eb9171d33f4645ef21e50ca890dca520de2bcaf2336cb8f6ab37a098a75e99"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part13",
+      "bytes": 4194304,
+      "sha256": "ac222336a5a4b5d825614833fafa4720e118c23404ae0ab77d9a9da35a974057"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part14",
+      "bytes": 4194304,
+      "sha256": "fc37ebeb79905114e9e603720123ce4132ec89c618efc0a123098c0f99cb62c8"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part15",
+      "bytes": 4194304,
+      "sha256": "95b55744c1c6953ed15a4805fc10b39aa02e707b93e1a108b5d801358510cd26"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part16",
+      "bytes": 4194304,
+      "sha256": "b8ef1b1b798ce0921cc3c3aae749550751536db669fc78144cf7613639d42171"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part17",
+      "bytes": 4194304,
+      "sha256": "705d77748a7da634001bf8b318ccc73b661d22ef8b32cabea6e8200e5a856dcb"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part18",
+      "bytes": 4194304,
+      "sha256": "6d8dfc92020b9e725ababdcc3029c2c9dc79b51fdafb2f2e6a1c9978eb62dc1e"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part19",
+      "bytes": 4194304,
+      "sha256": "64a7f758c203fd59e8627b06770bcda6f209a3011eda25d30fcf8741b43bd761"
+    },
+    {
+      "filename": "warder-dvb-t-sk-cz-220x132-black-cda8753e51f3b036.zip.part20",
+      "bytes": 1518463,
+      "sha256": "38aa3053e0e7ac6b1334904d0cb403459340513688370a722f2690df600cdc6c"
     }
   ],
   "schema": 1,
