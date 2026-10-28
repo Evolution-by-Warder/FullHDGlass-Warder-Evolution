@@ -5,6 +5,8 @@ from urllib.request import urlopen
 R=pathlib.Path('assets/warder/downloads/picons/dvb-t-skcz');doc=json.loads(pathlib.Path('assets/warder/downloads/picons/channels/manifest.json').read_text());records=json.loads((R/'catalog/variants.json').read_text())['records'];removed=json.loads((R/'catalog/removals.json').read_text());assert len(records)==2531 and not set(removed)&set(records)
 root=pathlib.Path('.picon-runtime/plugin/src/Plugins/Extensions/WarderPiconHub').resolve();pkg=types.ModuleType('dtt_verify');pkg.__path__=[str(root)];sys.modules[pkg.__name__]=pkg;e=importlib.import_module(pkg.__name__+'.warder_engine');s=e.sync
 assert s.validate_publication_manifest(doc)==[],s.validate_publication_manifest(doc)
+with urlopen(s.RUNTIME_MANIFEST_URL,timeout=60) as response:live=json.load(response)
+assert live==doc, 'Public main catalogue differs from committed receiver catalogue'
 packages=[p for p in doc['packages'] if p.get('selector_id')=='DVB-T-SK-CZ'];assert len(packages)==3 and all(p['png_count']==2531 for p in packages);partmeta={p['filename']:p for p in doc['parts']};urls=[u for p in packages for u in p['parts']]
 def read(url):
  entry=partmeta[url.rsplit('/',1)[1]]
