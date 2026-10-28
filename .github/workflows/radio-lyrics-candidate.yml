@@ -45,7 +45,9 @@ jobs:
           python tools/test-setup-style.py -q
           python tools/verify-radio-release.py
       - name: Verify live exact-song lookup without publishing lyrics
-        run: python tools/check-radio-lyrics-provider.py
+        run: |
+          python tools/check-radio-lyrics-provider.py
+          python tools/check-radio-lyrics-provider.py --regional
       - name: Build candidate and verify every installed byte
         run: |
           python tools/build-setup-style-test.py

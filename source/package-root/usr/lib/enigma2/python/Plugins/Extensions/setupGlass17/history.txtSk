@@ -1,3 +1,5 @@
+1.0.38-test8: Pripojené Hudba.sk a textypisni.youradio.cz, súbežné získavanie textov, úplné overenie interpreta a názvu; zachovaný schválený vzhľad rádia.
+
 1.0.38-test7: Kompaktný rám podľa skutočného pomeru obalu, zvislé vycentrovanie oproti textu; zachovaná nová hlavička, rýchlejší equalizér a optimalizácie textov z TEST6.
 
 1.0.38-test6: Rádio: hlavička s dňom, dátumom a sekundami .00; rýchlejší equalizér; súbežná záloha textov, správne stavy, menej požiadaviek, zachovanie textu pri obrátených metadátach.

@@ -16,11 +16,16 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 P=ROOT/'source/package-root/usr/lib/enigma2/python'
 PLUGIN=P/'Plugins/Extensions/setupGlass17'
+sys.path.insert(0,str(PLUGIN))
 spec=importlib.util.spec_from_file_location('lyrics_provider',PLUGIN/'warderLyrics.py')
 provider=importlib.util.module_from_spec(spec);spec.loader.exec_module(provider)
 
 
 class ProviderTests(unittest.TestCase):
+    def setUp(self):
+        from functools import partial
+        legacy=partial(provider.lookup,site_providers=())
+        patcher=patch.object(provider,'lookup',legacy);patcher.start();self.addCleanup(patcher.stop)
     def record(self,**kw):
         return dict(artistName='Žbirka',trackName='Biely kvet',plainLyrics='Original test text',**kw)
     def test_exact_identity_including_accents_and_case(self):
@@ -426,6 +431,103 @@ class LayoutTests(unittest.TestCase):
     def test_provider_and_renderer_syntax_is_python_39_compatible(self):
         for path in [PLUGIN/'warderLyrics.py',P/'Components/Renderer/WarderRadioLyrics.py',P/'Components/Converter/WarderRadioServiceType.py']:
             ast.parse(path.read_text(),feature_version=(3,9))
+
+
+class RegionalSourceTests(unittest.TestCase):
+    def setUp(self):
+        import warderLyricsSites
+        self.sites=warderLyricsSites
+    def hudba(self,artist='Pavol Habera',title='Láska necestuj tým vlakom',text='Original regional test text'):
+        return ('<h1>'+artist+'</h1><article class="song-detail"><h2>'+title+'</h2><div class="song-text-full-width">'+text+'</div></article><aside>Advertisement must never appear</aside>').encode()
+    def youradio(self,artist='Pavol Habera',title='Láska, necestuj tým vlakom'):
+        return ('<p class="title"><a href="/">Texty písní</a><a href="/pavol-habera">'+artist+'</a></p><div class="lyrics-song"><h1>'+title+'</h1><div class="lyrics-orig">Original test line<br>Another line<script>malicious()</script></div><div class="lyrics-translate">Translation must never appear</div></div>').encode()
+    def parse(self,name,raw,artist='Pavol Habera',title='Láska, necestuj tým vlakom'):
+        return self.sites.parse(name,'https://'+self.sites.HOSTS[name]+'/',raw,artist,title,provider.same_song,provider.clean_text)
+    def test_hudba_accepts_comma_difference_and_only_the_lyrics_container(self):
+        result=self.parse('hudba',self.hudba(text='First original line<br>Second original line'))
+        self.assertEqual(result['text'],'First original line\nSecond original line')
+        self.assertNotIn('Advertisement',result['text'])
+    def test_youradio_keeps_original_and_rejects_translation_and_scripts(self):
+        result=self.parse('youradio',self.youradio())
+        self.assertEqual(result['text'],'Original test line\nAnother line')
+    def test_wrong_artist_live_version_and_title_substring_are_not_accepted(self):
+        for artist,title in [('Other Artist','Láska, necestuj tým vlakom'),('Pavol Habera','Láska, necestuj tým vlakom (Live)'),('Pavol Habera','Láska')]:
+            self.assertEqual(self.parse('hudba',self.hudba(artist=artist,title=title))['text'],'')
+    def test_youradio_artist_is_verified_in_the_breadcrumb(self):
+        self.assertEqual(self.parse('youradio',self.youradio(artist='Another Singer'))['text'],'')
+    def test_search_only_accepts_complete_on_site_song_paths(self):
+        html='<h1>Výsledky vyhledávání</h1><a href="https://evil.example/pavol-habera/album/laska-necestuj-tym-vlakom">Bad</a><a href="/pavol-habera/album/laska-necestuj-tym-vlakom-live">Wrong version</a><a href="/pavol-habera/album/laska-necestuj-tym-vlakom">Correct</a>'.encode()
+        result=self.parse('youradio',html)
+        self.assertEqual(result['links'],['https://textypisni.youradio.cz/pavol-habera/album/laska-necestuj-tym-vlakom'])
+        self.assertFalse(result['negative'])
+    def test_hudba_search_candidates_are_bounded_and_still_need_final_page_identity(self):
+        links=''.join('<a href="/pavol-habera/piesen/laska-necestuj-tym-vlakom-%d/">Candidate</a>'%i for i in range(5))
+        result=self.parse('hudba',('<h1>Vyhľadávanie</h1>'+links).encode())
+        self.assertEqual(len(result['links']),2)
+    def test_blocked_login_and_changed_markup_are_not_cached_as_real_misses(self):
+        for html in (b'<h1>Access denied</h1>',b'<script>challenge()</script>',b'<h1>Login</h1><form></form>'):
+            with self.assertRaises(ValueError):self.parse('hudba',html)
+    def test_host_and_redirect_validation_rejects_external_and_local_addresses(self):
+        from urllib.request import Request
+        for url in ('http://hudba.zoznam.sk/','https://hudba.zoznam.sk.evil.example/','https://127.0.0.1/','https://x@hudba.zoznam.sk/','https://hudba.zoznam.sk:123/','javascript:alert(1)'):
+            self.assertFalse(self.sites.safe_url('hudba',url))
+        redirect=self.sites.SameHostRedirect('hudba')
+        with self.assertRaises(ValueError):redirect.redirect_request(Request('https://hudba.zoznam.sk/'),None,302,'',{},'https://evil.example/')
+    def test_malformed_link_does_not_hide_a_valid_result(self):
+        html='<h1>Výsledky vyhledávání</h1><a href="https://[invalid/">Broken</a><a href="/pavol-habera/album/laska-necestuj-tym-vlakom#original">Correct</a>'
+        result=self.parse('youradio',html.encode())
+        self.assertEqual(result['links'],['https://textypisni.youradio.cz/pavol-habera/album/laska-necestuj-tym-vlakom'])
+        self.assertFalse(self.sites.safe_url('youradio','https://[invalid/'))
+    def test_unclosed_lyrics_container_does_not_absorb_footer_or_advertisements(self):
+        html='<h1>Pavol Habera</h1><h2>Láska, necestuj tým vlakom</h2><div class="song-text-full-width">Original test line<footer>Advertisement</footer>'
+        with self.assertRaises(ValueError):self.parse('hudba',html.encode())
+    def test_cache_upgrade_preserves_found_text_but_invalidates_old_negative_results(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);file=folder/(provider.key('Artist','Song')+'.json')
+            file.write_text(json.dumps({'version':3,'saved':1000,'status':'found','text':'Original cached text'}))
+            def fail(*a,**kw):raise AssertionError('Positive cache should survive upgrade')
+            self.assertEqual(provider.lookup('Artist','Song',folder,opener=fail,clock=lambda:1001)['text'],'Original cached text')
+            file.write_text(json.dumps({'version':3,'saved':1000,'status':'not-found','text':''}))
+            def found(request,**kw):return io.BytesIO(json.dumps([dict(artistName='Artist',trackName='Song',plainLyrics='New original text')]).encode())
+            self.assertEqual(provider.lookup('Artist','Song',folder,opener=found,clock=lambda:1001)['text'],'New original text')
+    def test_regional_worker_finds_text_when_both_json_apis_fail(self):
+        def response(request,**kwargs):
+            if request.full_url.startswith('https://hudba.zoznam.sk/'):return io.BytesIO(self.hudba())
+            raise TimeoutError('Other source unavailable')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);result=provider.lookup('Pavol Habera','Láska, necestuj tým vlakom',folder,opener=response,hedge_delay=0.005)
+            self.assertEqual(result['text'],'Original regional test text')
+            status=json.loads((folder/'.last-result').read_text())
+            self.assertTrue(any(row['source']=='hudba' and row['status']=='found' for row in status['requests']))
+    def test_youradio_search_then_exact_song_finds_text(self):
+        from urllib.error import HTTPError
+        def response(request,**kwargs):
+            if request.full_url.startswith('https://textypisni.youradio.cz/hledej/'):
+                return io.BytesIO('<h1>Výsledky vyhledávání</h1><a href="/pavol-habera/album/laska-necestuj-tym-vlakom">Pavol Habera - Láska</a>'.encode())
+            if request.full_url.startswith('https://textypisni.youradio.cz/pavol-habera/'):
+                return io.BytesIO(self.youradio())
+            raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            result=provider.lookup('Pavol Habera','Láska, necestuj tým vlakom',Path(tmp),opener=response)
+            self.assertEqual(result['text'],'Original test line\nAnother line')
+    def test_recognized_empty_search_is_a_miss_and_unknown_html_remains_retryable(self):
+        from urllib.error import HTTPError
+        def response(request,**kwargs):
+            if request.full_url.startswith('https://hudba.zoznam.sk/hladaj/'):return io.BytesIO('<h1>Vyhľadávanie</h1>'.encode())
+            if request.full_url.startswith('https://textypisni.youradio.cz/'):return io.BytesIO('<h1>Výsledky vyhledávání</h1>'.encode())
+            raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(provider.lookup('Artist','Song',Path(tmp),opener=response)['status'],'not-found')
+        def blocked(request,**kwargs):return io.BytesIO(b'<h1>Blocked</h1>')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);self.assertEqual(provider.lookup('Artist','Song',folder,opener=blocked)['status'],'offline')
+            self.assertEqual(list(folder.glob('*.json')),[])
+    def test_oversized_and_deep_html_are_rejected(self):
+        with self.assertRaises(ValueError):self.parse('hudba',b'<div>'*130+b'hello'+b'</div>'*130)
+        response=lambda *a,**kw:io.BytesIO(b'x'*(provider.MAX_RESPONSE+1))
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);self.assertEqual(provider.lookup('Artist','Song',folder,opener=response)['status'],'offline')
+            status=json.loads((folder/'.last-result').read_text());self.assertLessEqual(len(status['requests']),12)
 
 
 class CompactCoverTests(unittest.TestCase):

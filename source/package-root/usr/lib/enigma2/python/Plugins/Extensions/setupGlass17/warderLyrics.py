@@ -17,7 +17,7 @@ from urllib.request import Request, urlopen
 
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
-CACHE_VERSION = 3
+CACHE_VERSION = 4
 CACHE = Path('/tmp/warder-radio-lyrics')
 MAX_RESPONSE = 1024 * 1024
 MAX_TEXT = 20000
@@ -46,10 +46,15 @@ def artist_options(value):
     return options
 
 
+def title_identity(value):
+    # RDS commonly omits commas; preserve every word and version suffix.
+    return identity(value).replace(',','')
+
+
 def same_song(row, artist, title):
-    got_title = identity(row.get('trackName'))
+    got_title = title_identity(row.get('trackName'))
     got_artists = artist_options(row.get('artistName'))
-    return any(got_title == identity(t) and got_artists.intersection(artist_options(a))
+    return any(got_title == title_identity(t) and got_artists.intersection(artist_options(a))
                for a,t in ((artist,title),(title,artist)))
 
 def clean_text(text):
@@ -113,10 +118,19 @@ def retry_delay(error, now):
 
 
 def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
-           monotonic=time.monotonic, hedge_delay=0.75, budget=32):
+           monotonic=time.monotonic, hedge_delay=0.75, budget=32,
+           site_providers=('hudba','youradio')):
     artist, title = str(artist).strip(), str(title).strip()
     if not artist or not title or max(len(artist), len(title)) > 250:
         return {'text':'','status':'no-song'}
+    site_providers=tuple(dict.fromkeys(site_providers))
+    if any(name not in ('hudba','youradio') for name in site_providers):raise ValueError('Unknown lyrics provider')
+    sites=None
+    if site_providers:
+        try:from Plugins.Extensions.setupGlass17 import warderLyricsSites as sites
+        except ImportError:import warderLyricsSites as sites
+    source_names=('lrclib','ovh')+site_providers
+    max_requests=5+sum(sites.LIMITS[name] for name in site_providers)
     cache.mkdir(parents=True,exist_ok=True)
     filename = cache/(key(artist,title)+'.json')
     started = monotonic()
@@ -124,14 +138,14 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
         # One bounded diagnostic record; never store lyrics or full responses.
         diagnostic = {'artist':artist,'title':title,'status':result['status'],
                       'cache_hit':cached,'elapsed_ms':int(max(0,monotonic()-started)*1000),
-                      'requests':(traces or [])[:5]}
+                      'requests':(traces or [])[:max_requests]}
         try:atomic_json(cache/'.last-result',diagnostic)
         except OSError:pass
         return result
     try:
         saved = json.loads(filename.read_text())
         text = clean_text(saved.get('text'))
-        valid = saved.get('version') == CACHE_VERSION
+        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') == 3 and bool(text))
         age = clock()-float(saved['saved'])
         ttl = 14*86400 if text else min(1800,max(60,int(saved.get('ttl',1800))))
         if valid and 0 <= age < ttl and saved.get('status') == ('found' if text else 'not-found'):
@@ -163,6 +177,7 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
                 'retry_after':max(1,int(until-clock())+1),'trace':[]}))
             return
         for index,url in enumerate(urls):
+            if sites is not None and name in site_providers and index>=sites.LIMITS[name]:break
             if cancel.is_set():return
             remaining = deadline-monotonic()
             # Do not launch a predictably doomed optional request at the end.
@@ -177,19 +192,28 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
             try:
                 request = Request(url,headers={
                     'User-Agent':'FullHDGlass-Warder-Evolution/1.0 (https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution)',
-                    'Accept':'application/json'})
-                with opener(request,timeout=min(10,remaining)) as response:
+                    'Accept':'text/html' if name in site_providers else 'application/json'})
+                fetch = sites.opener(name) if name in site_providers and opener is urlopen else opener
+                with fetch(request,timeout=min(10,remaining)) as response:
                     raw = response.read(MAX_RESPONSE+1)
+                    final_url=response.geturl() if name in site_providers and hasattr(response,'geturl') else url
                 if len(raw) > MAX_RESPONSE:raise ValueError('Oversized response')
-                records = json.loads(raw.decode('utf-8'))
-                if name == 'lrclib':
-                    if not isinstance(records,list):raise ValueError('Invalid result')
-                    text = select(records,artist,title)
+                if name in site_providers:
+                    page=sites.parse(name,final_url,raw,artist,title,same_song,clean_text)
+                    text=page['text'];negative=negative or page['negative']
+                    for link in page['links']:
+                        if link not in urls and len(urls)<sites.LIMITS[name]:urls.append(link)
+                    item['status']='found' if text else 'links' if page['links'] else 'not-found'
                 else:
-                    if not isinstance(records,dict):raise ValueError('Invalid result')
-                    text = clean_text(records.get('lyrics'))
-                negative = negative or not text
-                item['status'] = 'found' if text else 'not-found'
+                    records = json.loads(raw.decode('utf-8'))
+                    if name == 'lrclib':
+                        if not isinstance(records,list):raise ValueError('Invalid result')
+                        text = select(records,artist,title)
+                    else:
+                        if not isinstance(records,dict):raise ValueError('Invalid result')
+                        text = clean_text(records.get('lyrics'))
+                    negative = negative or not text
+                if name not in site_providers:item['status'] = 'found' if text else 'not-found'
             except HTTPError as error:
                 item['http'] = error.code
                 if error.code == 404:
@@ -232,7 +256,10 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
         while monotonic() < deadline:
             elapsed = monotonic()-started
             if not backup_started and (elapsed >= hedge_delay or 'lrclib' in summaries):
-                start_source('ovh',backup);backup_started = True
+                start_source('ovh',backup)
+                for site_name in site_providers:
+                    start_source(site_name,sites.initial_urls(site_name,artist,title))
+                backup_started = True
             remaining = deadline-monotonic()
             wait = remaining if backup_started else min(remaining,max(0.001,hedge_delay-elapsed))
             try:kind,name,data = events.get(timeout=max(0.001,wait))
@@ -242,14 +269,14 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
                 result = {'text':data['text'],'status':'found'}
                 break
             summaries[name] = data
-            if len(summaries) == 2:break
+            if len(summaries) == len(source_names):break
     finally:cancel.set()
     with trace_lock:traces = [dict(row) for row in trace_rows]
 
     if result is None:
         # A late optional failure does not erase valid misses from both sources.
         missing = all(any(row['source']==name and row.get('status')=='not-found'
-                          for row in traces) for name in ('lrclib','ovh'))
+                          for row in traces) for name in source_names)
         if missing:result = {'text':'','status':'not-found'}
         else:
             waits = [s['retry_after'] for s in summaries.values() if not s['negative']]

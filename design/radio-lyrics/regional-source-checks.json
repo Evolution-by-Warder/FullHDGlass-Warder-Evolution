@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "coverage_measurement": false,
+  "lyrics_saved_in_git": false,
+  "checks": [
+    {
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "json_apis_intentionally_disabled": true,
+      "status": "found",
+      "source": "hudba",
+      "characters": 536,
+      "seconds": 5.442,
+      "text_sha256": "47d519916a7f7ea5d8ec21d50929a87f44e2666fdb1075e9bcb8845ef13f4bd7"
+    },
+    {
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "status": "found",
+      "source": "youradio",
+      "characters": 754,
+      "seconds": 10.32
+    },
+    {
+      "artist": "Sima Martausová a Miťo Bodnár",
+      "title": "Slovo chlapa",
+      "status": "not-found",
+      "seconds": 14.28
+    },
+    {
+      "artist": "BELLE DE Z",
+      "title": "NIE SOM TVOJA HRACKA",
+      "status": "not-found",
+      "seconds": 12.42
+    }
+  ],
+  "limitations": [
+    "These are observations from individual requests, not guaranteed receiver latency or complete catalogue coverage.",
+    "Exact credited-performer and version matching remains mandatory."
+  ]
+}
