@@ -1,0 +1,29 @@
+{
+  "transparent": {
+    "old_png_count": 2674,
+    "new_png_count": 2531,
+    "added_files": 54,
+    "removed_files": 197,
+    "changed_existing_files": 148,
+    "unselected_original_png_bytes_preserved": true,
+    "all_pngs_decoded": true
+  },
+  "white": {
+    "old_png_count": 2674,
+    "new_png_count": 2531,
+    "added_files": 54,
+    "removed_files": 197,
+    "changed_existing_files": 148,
+    "unselected_original_png_bytes_preserved": true,
+    "all_pngs_decoded": true
+  },
+  "black": {
+    "old_png_count": 2674,
+    "new_png_count": 2531,
+    "added_files": 54,
+    "removed_files": 197,
+    "changed_existing_files": 148,
+    "unselected_original_png_bytes_preserved": true,
+    "all_pngs_decoded": true
+  }
+}
