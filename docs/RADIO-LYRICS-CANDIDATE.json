@@ -1,49 +1,35 @@
 {
   "schema": 1,
-  "version": "1.0.38-test5",
-  "source_commit": "1f6b964d544734b3feaef06e55ade3a0a1a7754e",
+  "version": "1.0.38-test7",
+  "source_commit": "fd4574b751f3e321b41ea601a2b484219e6f9ff2",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40755718619,
+  "workflow_run": 40761799276,
   "workflow_conclusion": "success",
   "python": "3.14",
-  "unit_tests": 163,
-  "verified_payload_files": 1349,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test5",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test5/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test5_all.ipk",
-  "bytes": 14501300,
-  "sha256": "f99cb7257a65ee55771648b5c051b574339851c048340d135ead673b21f2262d",
+  "unit_tests": 181,
+  "verified_payload_files": 1350,
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test7",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test7/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test7_all.ipk",
+  "bytes": 14505624,
+  "sha256": "aa19a898097d68e27b9e458cca63f3fd1601800a8646f149b666ae1c340cbc95",
   "fixes": [
-    "Per-request allowance up to 10s within a 32s request-start budget, external child timeout 45s",
-    "Independent fallback immediately after first primary lookup",
-    "Retry-After measured from receipt; integer seconds and HTTP date supported",
-    "TEST4 matching, retries, LRC plain display and physical-background fixes retained"
-  ],
-  "real_lookup_checks": [
-    {
-      "artist": "Janek Ledecký",
-      "title": "Budu všechno co si budeš přát",
-      "status": "found",
-      "seconds": 4.86,
-      "characters": 988
-    },
-    {
-      "artist": "DESMOD & ZUZANA SMATANOVA",
-      "title": "PAR DNI",
-      "status": "found",
-      "seconds": 6.95,
-      "characters": 946
-    }
-  ],
-  "receiver_observation": "User reports lyrics appeared after a short delay on their currently installed candidate; no complete TEST5 receiver acceptance claimed.",
-  "limitations": [
-    "External service availability and SK/CZ coverage remain partial",
-    "Screenshot alone does not identify the receiver HTTP error"
+    "Compact cover frame preserves image ratio, each axis <=420 px and vertical centre 496",
+    "Bounded header sizing outside GUI; original artwork matcher and decoder retained",
+    "No central RADIO; localized weekday plus dd.mm.yyyy",
+    "Adjacent smaller white .SS seconds aligned by actual Prive7 glyph metrics",
+    "Spectrum interval 110ms rather than 140ms",
+    "Hedged helper-process lyrics lookups, 5-request maximum, better misses and retries",
+    "Swapped same-song metadata preserves lyrics and reuses cache",
+    "Only last bounded diagnostic state saved, never song lyrics in logs"
   ],
   "verification": {
     "full_ipk_payload": "passed",
-    "public_release_size_and_sha256": "GitHub release asset metadata verified; independent public byte download timed out before receiving the package.",
-    "jpeg_mvi_similarity_db": 33.408
+    "public_release_size_and_sha256": "independent byte download verified",
+    "jpeg_mvi_similarity_db": 33.408,
+    "radio_only_xml_change": "passed",
+    "compact_square_portrait_landscape_and_stale_result_tests": "passed"
   },
   "receiver_validated": false,
-  "production_feeds_modified": false
+  "production_feeds_modified": false,
+  "coverage_limit": "SK/CZ coverage remains partial; a missing text and an unavailable source are distinct outcomes."
 }
