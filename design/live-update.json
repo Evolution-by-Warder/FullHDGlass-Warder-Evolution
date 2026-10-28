@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "version": "1.0.33",
-  "expected_main_sha": "56ae7813c121de23000e85cc7fbeed9378840ecd",
-  "authorization": "Owner requested verification and refinement of artwork matching for Nervo, B Jones, Eke / Wherever You Go (28 October 2026).",
-  "changelog": "Opravené dohľadanie obalu pri odlišnom zápise spoluúčinkujúcich interpretov: hosť môže byť v zozname mien rádia alebo v názve skladby ako feat. Zhodovať sa musia všetky mená aj názov skladby. Zachované opravy stability obalov z 1.0.32."
+  "version": "1.0.34",
+  "expected_main_sha": "121e0bfb256e1f2c37fd7dbb2a65b5359f759a47",
+  "authorization": "Owner continued artwork sensitivity review and supplied the Europa 2 ALL THE TIME full-credit/reversed-field example (28 October 2026).",
+  "changelog": "Opravená kombinácia obráteného poradia metadát a viacerých interpretov na Europe 2. Rozpoznávajú sa čiarky, and a & pri zachovaní celého názvu skladby a všetkých mien. Zahŕňa aj opravu feat. z 1.0.33."
 }

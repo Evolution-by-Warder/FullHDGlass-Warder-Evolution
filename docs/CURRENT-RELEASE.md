@@ -1,8 +1,8 @@
-# FullHDGlass Warder Evolution 1.0.33
+# FullHDGlass Warder Evolution 1.0.34
 
-- Opravené dohľadanie obalu pri odlišnom rozdelení údajov o hosťujúcom interpretovi: „Nervo, B Jones, Eke – Wherever You Go“ z rádia sa rozpozná ako „NERVO & B Jones – Wherever You Go (feat. EKe)“ v katalógu.
-- Porovnáva sa celý zoznam interpretov vrátane hosťa a celý základný názov skladby. Chýbajúce, doplnené alebo odlišné meno sa touto novou zhodou neprijme. Pravidlá sa neuvoľňujú na ľubovoľný obal rovnakého speváka.
-- Zachované opravy z 1.0.32: opačné poradie skladby/interpreta, ochrana obalu pri krátkom výpadku metadát, vlastníctvo dekódovania, overený archív a jeden opakovaný pokus.
-- Vzhľad rádia, RDS a prednosť DAB MOT sa nemenia.
+- Spojené rozpoznanie opačného poradia skladby/interpreta a rôznych oddeľovačov spoluúčinkujúcich: „All The Time – John Summit and The Chainsmokers and Ilsey“ z Europy 2 sa presne zhoduje s katalógovým „John Summit, The Chainsmokers & Ilsey – ALL THE TIME“.
+- Porovnáva sa celý názov skladby a úplné obsadenie vrátane všetkých hostí; žiadne meno sa nevynecháva. Podporené je aj presunutie hosťa do názvu skladby ako feat. z 1.0.33.
+- Zamietne sa chýbajúci interpret, podobné neúplné meno aj odlišný remix v tomto obrátenom zápise.
+- Zachované opravy stability obalov, RDS, DAB MOT a vzhľad rádia.
 
-Overenie: 54 automatických testov, vrátane rovnakého úplného obsadenia v oboch zápisoch a zamietnutia chýbajúceho alebo iného hosťa, či inej skladby/remixu. Živý katalóg v SK, CZ aj US vrátil rovnaký zodpovedajúci výsledok. Overenie novej verzie na fyzickom prijímači sa zatiaľ netvrdí. Úplné CI overí balík a verejné bajty pred aktiváciou aktualizácie.
+Overenie: 57 automatických testov. Živý katalóg potvrdil celé obsadenie a skladbu pre uvedený príklad Europy 2. Kompletné CI overí balík a jeho verejné bajty pred aktiváciou aktualizácie. Fyzické overenie novej verzie na prijímači sa zatiaľ netvrdí.

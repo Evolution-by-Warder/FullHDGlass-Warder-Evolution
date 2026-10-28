@@ -322,6 +322,14 @@ class WarderRadioArtwork(Renderer):
             # Accept reversed fields only when BOTH complete identities match.
             if not exact:
                 exact = gotArtist == wantTitle and gotTitle == wantArtist
+            if not exact and gotArtist and wantArtist:
+                gotCredit = cls._completeSongCredit(item.get("artistName"), item.get("trackName"))
+                # The same complete roster can use commas, '&' or 'and', and
+                # the station may reverse both fields. Neither direction may
+                # drop a performer or change the complete base track title.
+                exact = bool(gotCredit[1] and gotCredit in (
+                    cls._completeSongCredit(artist, title),
+                    cls._completeSongCredit(title, artist)))
             sameArtist = gotArtist == wantArtist or cls._artistIdentity(item.get("artistName")) == cls._artistIdentity(artist)
             if not exact and sameArtist:
                 exact = cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)
@@ -329,10 +337,6 @@ class WarderRadioArtwork(Renderer):
                 wantFeat = cls._featIdentity(artist, title)
                 gotFeat = cls._featIdentity(item.get("artistName"), item.get("trackName"))
                 exact = bool(wantFeat[0] and wantFeat == gotFeat)
-                if not exact and wantArtist and gotArtist and (wantFeat[2] or gotFeat[2]):
-                    wantCredit = cls._completeSongCredit(artist, title)
-                    gotCredit = cls._completeSongCredit(item.get("artistName"), item.get("trackName"))
-                    exact = bool(wantCredit[1] and wantCredit == gotCredit)
             if not exact:
                 # TEST176: tolerate catalogue version/remix suffix placement when
                 # the complete artist identity still agrees. RDS often sends

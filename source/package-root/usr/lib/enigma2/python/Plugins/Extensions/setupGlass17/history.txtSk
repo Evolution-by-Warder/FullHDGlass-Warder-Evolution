@@ -1,3 +1,5 @@
+1.0.34: Presná zhoda celého zoznamu interpretov v oboch poradiach metadát, aj pri oddeľovačoch čiarka, and a &. Opravený prípad Europa 2 ALL THE TIME / John Summit, The Chainsmokers & Ilsey.
+
 1.0.33: Rozpoznanie všetkých interpretov aj pri presunutí hosťa z rádia do názvu skladby ako feat. v katalógu. Zhodovať sa musia všetky mená aj názov skladby.
 
 1.0.32: Zachovaná zhoda interpreta a skladby; doplnený MusicBrainz/Cover Art Archive, limity obrázkov a jeden opakovaný pokus.

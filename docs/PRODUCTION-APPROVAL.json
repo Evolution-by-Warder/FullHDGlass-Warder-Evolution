@@ -2,16 +2,16 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "approved_on": "2026-10-28",
-  "production_version": "1.0.33",
+  "production_version": "1.0.34",
   "approved_by": "repository owner",
-  "authorization": "Owner requested correction/refinement of missing cover for the complete Nervo, B Jones, Eke collaboration; retain exact song and full-credit checks.",
+  "authorization": "Owner requested continued refinement and supplied the reversed ALL THE TIME / John Summit, The Chainsmokers, Ilsey case.",
   "baseline": {
     "version": "1.0.16-test270",
     "source_commit": "b2e3841b953d79355cd2f9c285ee7fe91f7f59ef",
     "sha256": "1604df7dfdbc4f045547b9ea0d4299a450b71231b99eaaa9280f6d335f8dc9ff",
     "bytes": 14192888
   },
-  "scope": "Normalize complete collaboration credits only when a declared featured guest moves between artist and track fields. Retain every full artist name and base title; preserve radio graphics and existing stability fixes.",
+  "scope": "Combine full-roster canonical credit matching with both metadata directions; retain every artist and the full base title. Preserve artwork stability, native radio ownership and graphics.",
   "preview_assets": {
     "help": {
       "filename": "warder-help-previews.zip",
@@ -28,7 +28,7 @@
   },
   "version_policy": "Use 1.0.17 so both the receiver updater and the package manager order it above 1.0.16-test270-1, without downgrade flags or an epoch.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "56ae7813c121de23000e85cc7fbeed9378840ecd",
+  "expected_main_sha": "121e0bfb256e1f2c37fd7dbb2a65b5359f759a47",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
     "version": "1.0.17",

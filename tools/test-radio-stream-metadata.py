@@ -291,6 +291,17 @@ class CatalogueArtworkTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertFalse(self.lookup('Nervo, B Jones, Eke', 'Wherever You Go', {'SK': [self.item('NERVO & B Jones', title)]}))
 
+    def test_reversed_complete_roster_normalizes_and_comma_and_ampersand(self):
+        self.assertTrue(self.lookup('All The Time', 'John Summit and The Chainsmokers and Ilsey', {'SK': [self.item('John Summit, The Chainsmokers & Ilsey', 'ALL THE TIME')]}))
+
+    def test_forward_complete_roster_normalizes_separators_and_credit_order(self):
+        self.assertTrue(self.lookup('John Summit and The Chainsmokers and Ilsey', 'All The Time', {'SK': [self.item('Ilsey, John Summit & The Chainsmokers', 'ALL THE TIME')]}))
+
+    def test_reversed_roster_rejects_missing_artist_and_another_version(self):
+        for artist, title in [('John Summit & The Chainsmokers', 'ALL THE TIME'), ('John Summit, The Chainsmokers & Ilsey Junior', 'ALL THE TIME'), ('Ilsey, John Summit & The Chainsmokers', 'ALL THE TIME (GorillaT Remix)')]:
+            with self.subTest(artist=artist, title=title):
+                self.assertFalse(self.lookup('All The Time', 'John Summit and The Chainsmokers and Ilsey', {'SK': [self.item(artist, title)]}))
+
     def test_different_guest_rendition_does_not_replace_band_recording(self):
         self.assertFalse(self.lookup('Robo Grigorov & Midi', 'Po víne', {'SK': [self.item('Kristina', 'Po víne (feat. Robo Grigorov)')]}))
 
