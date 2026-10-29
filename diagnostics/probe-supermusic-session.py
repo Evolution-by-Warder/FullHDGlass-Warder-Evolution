@@ -44,6 +44,22 @@ url = 'https://www.supermusic.cz/najdi.php?hladane=Laska+Mraky'
 try:
     with session.open(Request(url, headers={'User-Agent': 'FullHDGlass-Warder-Evolution/source-check'}), timeout=10) as response:
         raw = response.read().decode('utf-8', 'replace')
+    class SearchShape(HTMLParser):
+        def __init__(self):
+            super().__init__();self.stack=[];self.links=[];self.anchor=None
+        def handle_starttag(self,tag,attrs):
+            a=dict(attrs)
+            if tag=='a' and any(k in a.get('href','') for k in ('piesen.php','interpret.php')) and len(self.links)<16:
+                self.anchor={'href':a.get('href'),'label':'','parents':self.stack[-6:]};self.links.append(self.anchor)
+            if tag not in ('br','img','meta','link','input','hr'):
+                self.stack.append({'tag':tag,'class':a.get('class',''),'id':a.get('id','')})
+        def handle_endtag(self,tag):
+            if tag=='a':self.anchor=None
+            for index in range(len(self.stack)-1,-1,-1):
+                if self.stack[index]['tag']==tag:self.stack=self.stack[:index];break
+        def handle_data(self,data):
+            if self.anchor is not None:self.anchor['label']=(self.anchor['label']+data)[:150]
+    structure=SearchShape();structure.feed(raw)
     links = []
     for match in re.finditer(r'<a\b[^>]*href=["\'][^"\']*piesen\.php[^"\']*["\'][^>]*>', raw, re.I):
         opening = match.group(0)
@@ -52,6 +68,6 @@ try:
         links.append({'opening': opening[:250], 'parents': parents})
         if len(links) == 10:
             break
-    print('SUPERMUSIC_SEARCH_SHAPE ' + json.dumps({'url': url, 'song_links': links}), flush=True)
+    print('SUPERMUSIC_SEARCH_SHAPE ' + json.dumps({'url': url, 'song_links': links,'structured_links':structure.links}), flush=True)
 except Exception as error:
     print('SUPERMUSIC_SEARCH_SHAPE ' + json.dumps({'error': type(error).__name__}), flush=True)
