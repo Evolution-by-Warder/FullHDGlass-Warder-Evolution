@@ -19,7 +19,7 @@ def split_stream(value):
     for separator in (' - ',' – ',' — ',': '):
         if separator in text:
             artist,title=(part.strip() for part in text.split(separator,1))
-            if artist and title:return artist,title
+            if artist and title:return repair_pair(artist,title)
     return '',''
 
 
@@ -27,6 +27,8 @@ def repair_pair(artist,title):
     artist,title=str(artist or '').strip(),str(title or '').strip()
     if re.fullmatch(r'\d{1,3}',artist) and any(s in title for s in (' - ',' – ',' — ')):
         return split_stream(artist+' - '+title)
+    tagged=re.fullmatch(r'\d{1,3}_\s*(\S+(?:\s+\S+)+)',artist)
+    if tagged:artist=tagged.group(1)
     return artist,title
 
 
@@ -39,18 +41,25 @@ PERSON_ALIASES={
  'sima magusinova (martausova)':'sima martausova',
  'simona martausova':'sima martausova',
  'i.m.t. smile':'imt smile',
+ 'kroky f. janecka':'kroky frantiska janecka',
+ 'kroky f.janecka':'kroky frantiska janecka',
+ 'a.m.o.':'amo',
 }
 DISPLAY={
  'miroslav zbirka':'Miroslav Žbirka','vaclav neckar':'Václav Neckář',
  'sima martausova':'Sima Martausová','imt smile':'IMT Smile',
+ 'michal david':'Michal David','kroky frantiska janecka':'Kroky Františka Janečka',
+ 'amo':'A.M.O.','polemic':'Polemic',
+ 'helena vondrackova':'Helena Vondráčková','jiri korn':'Jiří Korn',
 }
 FEATURE=re.compile(r'\s*\((?:feat\.?|ft\.?|featuring)\s+([^()]+)\)\s*$',re.I)
+FEATURE_INLINE=re.compile(r'\s+(?:feat\.?|ft\.?|featuring)\s+([^()]+)\s*$',re.I)
 SEPARATORS=re.compile(r'\s+(?:feat\.?|ft\.?|featuring|and|with)\s+|\s*[&,;]\s*',re.I)
 
 
 def credit(artist,title):
     artist,title=repair_pair(artist,title)
-    featured=FEATURE.search(title)
+    featured=FEATURE.search(title) or FEATURE_INLINE.search(title)
     if featured:
         artist=artist+' & '+featured.group(1)
         title=title[:featured.start()].strip()
@@ -72,6 +81,11 @@ def title_key(value,artists=()):
        'svatovitsky chram (winchester cathedral)',
        'svatovitsky chram /chram sv. vita/ (winchester cathedral)'):
         return 'svatovitsky chram'
+    if artists in (('helena vondrackova',),('helena vondrackova','jiri korn')) and value in (
+       'kazda trampota ma svou mez','kazda trampota ma svou mez (rest your love on me)'):
+        return 'kazda trampota ma svou mez'
+    if artists==('peter bic project',) and value in ('stromy','stromy (original version)'):
+        return 'stromy'
     if artists==('pavel roth',) and value in (
        'krasnejsi nez ruze','krasnejsi nez ruze (maliconia)',
        'krasnejsi nez ruze (malinconia)','malinconia (krasnejsi nez ruze)'):
@@ -94,6 +108,8 @@ def identity_options(artist,title):
             names=('miroslav zbirka',)
         elif track=='viac' and names in (('imt smile','ivan tasler'),('ivan tasler',)):
             names=('imt smile',)
+        elif track=='kazda trampota ma svou mez' and names==('helena vondrackova',):
+            names=('helena vondrackova','jiri korn')
         elif track=='taliansky muzikal' and names in (
              ('julia heckova',),('julia a peter heckovci',),('heckovci',),
              ('julia heckova','peter hecko')):

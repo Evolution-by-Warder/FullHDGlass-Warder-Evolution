@@ -710,6 +710,48 @@ class CombinedEngineTests(unittest.TestCase):
         self.assertTrue(provider.same_song(row,'08','Krasnejsi nez ruze (Maliconia) - Pavel Roth'))
         self.assertFalse(provider.same_song(row,'Pavel Roth','Krásnější než růže (Remix)'))
         self.assertFalse(provider.same_song(self.row('Another Artist','Malinconia (Krásnější než růže)'),'Another Artist','Krásnější než růže'))
+    def test_publisher_verified_band_abbreviation_keeps_every_performer(self):
+        row=self.row('Michal David & Kroky Františka Janečka','Každý mi tě, lásko, závidí')
+        for credit in ('Michal David, Kroky F. Janecka','Michal David & Kroky F.Janečka'):
+            self.assertTrue(provider.same_song(row,credit,'Kazdy Mi Te Lasko Zavidi'))
+        for credit in ('Michal David','Kroky F. Janecka','Michal David, Kroky F. Janecka, Guest','Michal David, Kroky F. Novak'):
+            self.assertFalse(provider.same_song(row,credit,'Kazdy Mi Te Lasko Zavidi'))
+        self.assertFalse(provider.same_song(dict(row,trackName='Každý mi tě, lásko, závidí (Live)'),'Michal David, Kroky F. Janecka','Kazdy Mi Te Lasko Zavidi'))
+        self.assertEqual(self.identity.query_pair('Michal David, Kroky F. Janecka','Kazdy Mi Te Lasko Zavidi')[0],'Kroky Františka Janečka & Michal David')
+    def test_stromy_original_version_is_scoped_and_other_versions_stay_distinct(self):
+        row=self.row('Peter Bic Project','Stromy (Original Version)')
+        self.assertTrue(provider.same_song(row,'Peter Bič Project','Stromy'))
+        for track in ('Stromy (Radio Edit)','Stromy (Live)','Stromy (Remix)','Stromy (naživo - Len sa smej turné 2024)'):
+            self.assertFalse(provider.same_song(dict(row,trackName=track),'Peter Bič Project','Stromy'))
+        self.assertFalse(provider.same_song(self.row('Another Artist','Stromy (Original Version)'),'Another Artist','Stromy'))
+    def test_inline_feature_title_is_shared_without_omitting_guests(self):
+        row=self.row('A.M.O. & Polemic','Spolu')
+        for title in ('SPOLU FT. A.M.O.','Spolu feat AMO','Spolu featuring A.M.O.'):
+            self.assertTrue(provider.same_song(row,'POLEMIC',title))
+        self.assertFalse(provider.same_song(self.row('Polemic','Spolu'),'POLEMIC','SPOLU FT. A.M.O.'))
+        self.assertFalse(provider.same_song(self.row('A.M.O. & Polemic & Guest','Spolu'),'POLEMIC','SPOLU FT. A.M.O.'))
+        self.assertFalse(provider.same_song(row,'POLEMIC','Spolu (Live) ft. A.M.O.'))
+    def test_underscore_file_prefix_is_removed_from_full_artist_but_remix_remains(self):
+        self.assertEqual(self.identity.repair_pair('24_Pavol Habera','Reklama na ticho (remix)'),('Pavol Habera','Reklama na ticho (remix)'))
+        self.assertEqual(self.identity.split_stream('24_Pavol Habera - Reklama na ticho (remix)'),('Pavol Habera','Reklama na ticho (remix)'))
+        for name in ('24kGoldn','070 Shake','1975','24_Band','24_PavolHabera'):
+            self.assertEqual(self.identity.repair_pair(name,'Song'),(name,'Song'))
+        self.assertFalse(provider.same_song(self.row('Pavol Habera','Reklama na ticho'),'24_Pavol Habera','Reklama na ticho (remix)'))
+    def test_documented_helena_song_includes_its_duet_credit_only_for_known_title(self):
+        row=self.row('Helena Vondrackova & Jiri Korn','Každá trampota má svou mez (Rest Your Love On Me)')
+        self.assertTrue(provider.same_song(row,'HELENA VONDRÁČKOVÁ','Kazda trampota ma svou mez'))
+        self.assertFalse(provider.same_song(dict(row,trackName='Other song'),'Helena Vondráčková','Other song'))
+        self.assertFalse(provider.same_song(dict(row,artistName='Helena Vondrackova & Jiri Korn & Guest'),'Helena Vondráčková','Kazda trampota ma svou mez'))
+        self.assertFalse(provider.same_song(dict(row,trackName='Každá trampota má svou mez (Live)'),'Helena Vondráčková','Kazda trampota ma svou mez'))
+    def test_test10_positive_cache_survives_and_its_negative_cache_is_rechecked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);file=folder/(provider.key('Artist','Song')+'.json')
+            file.write_text(json.dumps({'version':5,'saved':1000,'status':'found','text':'Original cached test line'}))
+            with patch.object(provider,'urlopen',side_effect=AssertionError('Cache hit must not use the network')):
+                self.assertEqual(provider.lookup('Artist','Song',folder,clock=lambda:1001)['text'],'Original cached test line')
+            file.write_text(json.dumps({'version':5,'saved':1000,'status':'not-found','text':''}))
+            response=lambda *a,**kw:io.BytesIO(json.dumps([self.row('Artist','Song')]).encode())
+            self.assertEqual(provider.lookup('Artist','Song',folder,opener=response,clock=lambda:1001)['status'],'found')
     def test_feature_in_title_and_artist_keep_the_entire_roster(self):
         row=self.row('Bystrík & Fejbs','Káva')
         self.assertTrue(provider.same_song(row,'Bystrik','Káva (feat. Fejbs)'))

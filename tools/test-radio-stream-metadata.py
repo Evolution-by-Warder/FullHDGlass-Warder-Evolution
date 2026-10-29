@@ -30,6 +30,12 @@ class MetadataTests(unittest.TestCase):
         service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda n:{1:'08',2:'Krasnejsi nez ruze (Maliconia) - Pavel Roth'}[n]))
         with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}):
             self.assertEqual(m.native_song(service),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
+    def test_attached_track_number_is_repaired_in_stream_and_native_tags(self):
+        self.assertEqual(m.split_song('24_Pavol Habera - Reklama na ticho (remix)'),('Pavol Habera','Reklama na ticho (remix)'))
+        enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
+        service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda n:{1:'24_Pavol Habera',2:'Reklama na ticho (remix)'}[n]))
+        with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}):
+            self.assertEqual(m.native_song(service),('Pavol Habera','Reklama na ticho (remix)'))
     def test_unicode_artist_and_full_title_are_kept(self):
         self.assertEqual(m.split_song('  Žbirka – Biely kvet (Live)  '),('Žbirka','Biely kvet (Live)'))
     def test_station_slogan_without_artist_separator_is_not_a_song(self):
@@ -284,6 +290,21 @@ class CatalogueArtworkTests(unittest.TestCase):
         cases=[('M. Zbirka, Limit','Biely kvet','Miroslav Žbirka','Biely kvet'),('Necar Vaclav','Svatovitsky chram','Václav Neckář','Svatovítský Chrám (Chrám Sv. Víta)'),('Júlia Hečková','Taliansky muzikál','Júlia a Peter Heckovci','Taliansky muzikál'),('08','Krasnejsi nez ruze (Maliconia) - Pavel Roth','Pavel Roth','Krásnější než růže (Malinconia)')]
         for artist,title,got_artist,got_title in cases:
             with self.subTest(artist=artist):self.assertTrue(self.lookup(artist,title,{'SK':[self.item(got_artist,got_title)]}))
+    def test_abbreviated_kroky_credit_accepts_original_band_but_not_solo_or_live(self):
+        credit='Michal David, Kroky F. Janecka';title='Kazdy Mi Te Lasko Zavidi'
+        self.assertTrue(self.lookup(credit,title,{'SK':[self.item('Michal David & Kroky Františka Janečka','Každý mi tě, lásko, závidí')]}))
+        for artist,track in [('Michal David','Každý mi tě, lásko, závidí'),('Michal David & Kroky Františka Janečka','Každý mi tě, lásko, závidí (Live)')]:
+            self.assertFalse(self.lookup(credit,title,{'SK':[self.item(artist,track)]}))
+    def test_stromy_cover_accepts_verified_original_title_but_not_radio_or_live(self):
+        self.assertTrue(self.lookup('Peter Bič Project','Stromy',{'SK':[self.item('Peter Bic Project','Stromy (Original Version)')]}))
+        for title in ('Stromy (Radio Edit)','Stromy (naživo - Len sa smej turné 2024)'):
+            self.assertFalse(self.lookup('Peter Bič Project','Stromy',{'SK':[self.item('Peter Bic Project',title)]}))
+    def test_feature_outside_parentheses_matches_complete_catalogue_credit(self):
+        self.assertTrue(self.lookup('Polemic','SPOLU FT. A.M.O.',{'SK':[self.item('AMO & Polemic','Spolu')]}))
+        self.assertFalse(self.lookup('Polemic','SPOLU FT. A.M.O.',{'SK':[self.item('Polemic','Spolu')]}))
+    def test_helena_known_duet_matches_publisher_credit_without_accepting_other_guests(self):
+        self.assertTrue(self.lookup('HELENA VONDRACKOVA','Kazda trampota ma svou mez',{'SK':[self.item('Helena Vondrackova & Jiri Korn','Každá trampota má svou mez')]}))
+        self.assertFalse(self.lookup('HELENA VONDRACKOVA','Kazda trampota ma svou mez',{'SK':[self.item('Helena Vondrackova & Jiri Korn & Guest','Každá trampota má svou mez')]}))
     def test_cover_does_not_accept_a_live_recording_or_uncredited_guest(self):
         for got_artist,got_title in [('Miroslav Žbirka','Biely kvet (Live)'),('Miroslav Žbirka & Guest','Biely kvet'),('Another Singer','Biely kvet')]:
             self.assertFalse(self.lookup('M. Zbirka, Limit','Biely kvet',{'SK':[self.item(got_artist,got_title)]}))

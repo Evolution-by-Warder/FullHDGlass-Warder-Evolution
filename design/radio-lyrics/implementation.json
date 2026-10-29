@@ -2,14 +2,14 @@
   "schema": 1,
   "baseline_commit": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
   "baseline_version": "1.0.37",
-  "candidate_version": "1.0.38-test10",
+  "candidate_version": "1.0.38-test11",
   "receiver_validated": false,
   "non_radio_xml_sha256": "2768fa4fc7520497e9d707aad739d14fd3d92ed0021ecb59e51223f441603ec1",
   "approved_layout": "approved-layout.png",
   "scenic_source": "scenic-source.png",
   "background_prompt": "Clean scenic production background from the approved radio concept; microphone left, glowing globe right, blue and amber studio; no text, frames, covers or static UI.",
   "background_method": "built-in imagegen; standard 1920x1080 JPEG package encoding",
-  "matching": "Shared warderSongIdentity for metadata, lyrics and covers. Whole titles and credited rosters retained; explicitly sourced artist/recording aliases and numbered file tags repaired. No arbitrary partial, surname or first-result matching.",
+  "matching": "Shared warderSongIdentity for metadata, lyrics and covers. Whole titles and credited rosters retained; explicitly sourced artist/recording aliases and numbered file tags repaired. No arbitrary partial, surname or first-result matching. TEST11 adds verified Kroky abbreviation, Stromy original title and Helena/Korn duet; inline featured credits and attached numeric full-artist tags repaired while preserving remix/live distinctions.",
   "state": "isolated candidate; production updater unchanged",
   "physical_video_background": "video-background.json",
   "lyrics_sources": [
@@ -29,5 +29,5 @@
   "owner_layout_accepted": true,
   "owner_layout_acceptance": "Owner accepted the compact radio layout in chat on 2026-10-28; this version changes no geometry or graphical assets.",
   "absence_notice_filter": "Exact known Hudba.sk absence notice is rejected during source and cache validation; complete real texts containing the same sentence remain valid.",
-  "retry_policy": "Incomplete misses are marked partial and are not negatively cached; bounded automatic retries after 5, 20, 60 and 60 seconds, respecting longer host Retry-After. Complete misses stop. Valid TEST7/8/9 positive caches remain usable; older negative caches invalidated."
+  "retry_policy": "Incomplete misses are marked partial and are not negatively cached; bounded automatic retries after 5, 20, 60 and 60 seconds, respecting longer host Retry-After. Complete misses stop. Valid TEST7/8/9/10 positive caches remain usable; older negative caches invalidated."
 }

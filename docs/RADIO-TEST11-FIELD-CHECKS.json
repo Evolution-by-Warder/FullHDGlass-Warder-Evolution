@@ -1,0 +1,706 @@
+{
+  "schema": 1,
+  "candidate_version": "1.0.38-test11",
+  "date": "2026-10-29",
+  "receiver_version": "not captured in supplied screenshots",
+  "receiver_validated": false,
+  "lyrics_or_images_published": false,
+  "lyrics_checks": [
+    {
+      "artist": "Adam Ďurica",
+      "title": "Iskrí",
+      "status": "offline",
+      "characters": 0,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Adam Ďurica",
+        "title": "Iskrí",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 14522,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 6098
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4049
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5181
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4881
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5647
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 13768
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4394
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5520
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 6592
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5129
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5332
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "http-error",
+            "http": 503,
+            "retry_after": 1,
+            "elapsed_ms": 4544
+          }
+        ]
+      }
+    },
+    {
+      "artist": "Palo Naď",
+      "title": "Predsieň Života",
+      "status": "offline",
+      "characters": 0,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Palo Naď",
+        "title": "Predsieň Života",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 15140,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5414
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4981
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5700
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5508
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5781
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 14385
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4585
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 4729
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 3937
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 6986
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 6387
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "not-found",
+            "elapsed_ms": 4447
+          }
+        ]
+      }
+    },
+    {
+      "artist": "Peter Bič Project",
+      "title": "Stromy",
+      "status": "offline",
+      "characters": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 12722,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 6209
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4836
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 3979
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 8353
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4580
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "http-error",
+            "http": 500,
+            "elapsed_ms": 7425
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5480
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 3825
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 3386
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5013
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 4330
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "http-error",
+            "http": 503,
+            "retry_after": 1,
+            "elapsed_ms": 4494
+          }
+        ]
+      }
+    },
+    {
+      "artist": "Polemic",
+      "title": "SPOLU FT. A.M.O.",
+      "status": "offline",
+      "characters": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Polemic",
+        "title": "SPOLU FT. A.M.O.",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 15018,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 11297
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10015
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 10245
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "links",
+            "elapsed_ms": 8277
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 8362
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "http-error",
+            "http": 500,
+            "elapsed_ms": 9376
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 8319
+          },
+          {
+            "source": "youradio",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 3563
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 4415
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "http-error",
+            "http": 503,
+            "retry_after": 1,
+            "elapsed_ms": 2757
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 3677
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 3718
+          }
+        ]
+      }
+    },
+    {
+      "artist": "Medial Banana",
+      "title": "Niečo dobré",
+      "status": "not-found",
+      "characters": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Medial Banana",
+        "title": "Niečo dobré",
+        "status": "not-found",
+        "cache_hit": false,
+        "elapsed_ms": 11717,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 6244
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4147
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5474
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4252
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4697
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4338
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5044
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 3194
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4357
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5098
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5470
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "not-found",
+            "elapsed_ms": 3614
+          }
+        ]
+      }
+    }
+  ],
+  "cover_checks": [
+    {
+      "artist": "Peter Bič Project",
+      "title": "Stromy",
+      "found": true,
+      "real_http": true,
+      "archive_disabled_for_isolation": true,
+      "log": [
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "CATALOGUE_ERROR country=CZ error=URLError",
+        "CATALOGUE_ERROR country=US error=URLError",
+        "LOOKUP country=SK artist='Peter Bič Project' title='Stromy' results=25",
+        "READY path=/tmp/tmp93c4brga/b7dfd82dc3f6aa310fe563938f2d7f1bace2c085.jpg"
+      ],
+      "bytes": 109385,
+      "sha256": "4b96775f6cc5359ac04320f38f1959499445d3826971511ea9ef29a85f1fd5c8",
+      "image_size": [
+        600,
+        600
+      ]
+    },
+    {
+      "artist": "Michal David, Kroky F. Janecka",
+      "title": "Každý Mi Te Lasko Zavidi",
+      "found": true,
+      "real_http": true,
+      "archive_disabled_for_isolation": true,
+      "log": [
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "LOOKUP country=CZ artist='Kroky Františka Janečka & Michal David' title='Každý Mi Te Lasko Zavidi' results=1",
+        "READY path=/tmp/tmpc3ehxf6h/b7dfd82dc3f6aa310fe563938f2d7f1bace2c085.jpg"
+      ],
+      "bytes": 118455,
+      "sha256": "31fd27e2f2f3d724cf3110d80b32bec410b3e7be25e58bd4b72050914178030e",
+      "image_size": [
+        600,
+        600
+      ]
+    },
+    {
+      "artist": "HELENA VONDRACKOVA",
+      "title": "Kazda trampota ma svou mez",
+      "found": true,
+      "real_http": true,
+      "archive_disabled_for_isolation": true,
+      "log": [
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "LOOKUP country=CZ artist='Helena Vondráčková & Jiří Korn' title='Kazda trampota ma svou mez' results=3",
+        "READY path=/tmp/tmpuw4cn248/4790448f1f2b38510e49400df00d7bc2e3c09a61.jpg"
+      ],
+      "bytes": 107463,
+      "sha256": "8bf80ced38e0c88f68177cf6e185bc050a7bfea037e20c533d811e60be374888",
+      "image_size": [
+        600,
+        600
+      ]
+    }
+  ],
+  "kroky_before_fix": {
+    "artist": "Michal David, Kroky F. Janecka",
+    "title": "Každý Mi Te Lasko Zavidi",
+    "catalogue_record": {
+      "artistName": "Michal David & Kroky Františka Janečka",
+      "trackName": "Každý Mi Tě, Lásko, Závidí",
+      "trackId": 1380713107,
+      "collectionName": "Děti Ráje",
+      "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fd/a5/57/fda557f1-5a3d-5cae-e0e8-1f3bf863e40d/cover.jpg/100x100bb.jpg"
+    },
+    "before_fix_same_recording": false
+  },
+  "catalogue_observations": {
+    "kroky": {
+      "term": "Každý mi tě lásko závidí",
+      "records": [
+        {
+          "artistName": "Michal David & Kroky Františka Janečka",
+          "trackName": "Každý Mi Tě, Lásko, Závidí",
+          "trackId": 1380713107,
+          "collectionName": "Děti Ráje",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fd/a5/57/fda557f1-5a3d-5cae-e0e8-1f3bf863e40d/cover.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Michal David",
+          "trackName": "Kazdy Mi Te Lasko Zavidi",
+          "trackId": 1442643159,
+          "collectionName": "Classic",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9f/98/78/9f9878db-fb5d-16d3-5c13-3ec666dbde68/00602537204632.rgb.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Michal David",
+          "trackName": "Každý mi tě lásko závidí (Live)",
+          "trackId": 1439334444,
+          "collectionName": "Open Air (Live)",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/99/d2/9e/99d29ef0-f485-2198-17fc-50faad42cff6/190295528553.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Jan Kriz/Michaela Noskova",
+          "trackName": "Kazdy Mi Te Lasko Zavidi",
+          "trackId": 689300347,
+          "collectionName": "Deti Raje 2",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/93/93/95/939395cb-94a9-c755-ef56-d8fb6d374761/5099968239756_1400x1400_300dpi.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Michal David",
+          "trackName": "Kazdy Mi Te, Lasko, Zavidi",
+          "trackId": 299144775,
+          "collectionName": "Love Songs",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music/3d/29/57/mzi.xfrowizo.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Michal David",
+          "trackName": "Každý Mi Tě, Lásko, Závidí (Live)",
+          "trackId": 1394612391,
+          "collectionName": "Mejdan Roku (Live)",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/38/d7/42/38d74225-1b8c-51fd-afa5-f850bf77ff1b/cover.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Michal David",
+          "trackName": "Každý Mi Tě, Lásko, Závidí (Live)",
+          "trackId": 1397591951,
+          "collectionName": "Lucerna",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/a1/8d/e5a18dc7-7188-1385-093e-cf048ef7cbaa/cover.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Michal David",
+          "trackName": "Každý Mi Tě, Lásko, Závidí / Máma / Jak Snadno Uvěří Se Lhářům",
+          "trackId": 1385717356,
+          "collectionName": "Michal David Plays Piano (Greatest Hits)",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bd/50/ee/bd50ee80-bc67-b5a9-3151-a1b1a0992636/cover.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "Jan and Maria",
+          "trackName": "When we walk (orig: Každý mi tě lásko závidí - Michal David)",
+          "trackId": 1609180517,
+          "collectionName": "Umbrella EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/90/1f/3f/901f3f93-e4d9-a193-8ed5-defa5630e0cb/artwork.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "skaller",
+          "trackName": "Každý mi tě lásko závidí (remix)",
+          "trackId": 1816820672,
+          "collectionName": "Každý mi tě lásko závidí (remix) - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/52/8c/d3/528cd36f-f210-3e0a-f063-b08c9620c526/artwork.jpg/100x100bb.jpg"
+        },
+        {
+          "artistName": "jurass AI",
+          "trackName": "Sladká lásko má, Lehká letní láska",
+          "trackId": 1827072425,
+          "collectionName": "Sladká lásko má, Lehká letní láska - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/92/14/af/9214af5e-9aa1-6eb1-30de-f5ff6e488275/artwork.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    "stromy": [
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Stromy (Original Version)",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/63/e2/7d/63e27d29-dde5-e2ae-9b0a-69ee2a2d0b03/25UMGIM49685.rgb.jpg/100x100bb.jpg",
+        "trackId": 1811180301
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Stromy (Radio Edit)",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/45/21/5f/45215fbb-359f-541e-5606-669cff1fdd01/24UM1IM10635.rgb.jpg/100x100bb.jpg",
+        "trackId": 1773276587
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Stromy (Original Version)",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/45/21/5f/45215fbb-359f-541e-5606-669cff1fdd01/24UM1IM10635.rgb.jpg/100x100bb.jpg",
+        "trackId": 1773276892
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Stromy (Original Version)",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f1/3e/bc/f13ebcd8-a3f1-414c-90ca-e9453f965685/25UM1IM96797.rgb.jpg/100x100bb.jpg",
+        "trackId": 1854741313
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Stromy (naživo - Len sa smej turné 2024)",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/74/b5/5b/74b55b13-bc4a-ad67-44a6-98458d27068c/25UMGIM08193.rgb.jpg/100x100bb.jpg",
+        "trackId": 1793291894
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Sekera",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/77/66/7a/77667aef-4682-772f-1ad6-2f422d63d96d/21UM1IM26342.rgb.jpg/100x100bb.jpg",
+        "trackId": 1591963005
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Sekera",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/0f/34/5d/0f345d49-2929-b0f1-2879-1f9d27909296/23UMGIM63007.rgb.jpg/100x100bb.jpg",
+        "trackId": 1703113310
+      },
+      {
+        "artistName": "Peter Bic Project",
+        "trackName": "Orgován",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f1/3e/bc/f13ebcd8-a3f1-414c-90ca-e9453f965685/25UM1IM96797.rgb.jpg/100x100bb.jpg",
+        "trackId": 1854741322
+      }
+    ],
+    "helena": [
+      {
+        "artistName": "Helena Vondrackova & Jiri Korn",
+        "trackName": "Každá Trampota Má Svou Mez",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bd/00/74/bd00744c-878f-1e45-6bc0-052b3e57c689/cover.jpg/100x100bb.jpg",
+        "trackId": 1385461735
+      },
+      {
+        "artistName": "Helena Vondrackova & Jiri Korn",
+        "trackName": "Každá Trampota Má Svou Mez",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c4/c5/04/c4c5048d-b3cd-548a-ff35-9a8d2102f799/cover.jpg/100x100bb.jpg",
+        "trackId": 1385970248
+      },
+      {
+        "artistName": "Helena Vondrackova & Jiri Korn",
+        "trackName": "Každá Trampota Má Svou Mez",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/74/69/01/746901ce-98dc-c156-6fc0-cf24040fd483/cover.jpg/100x100bb.jpg",
+        "trackId": 1387610350
+      }
+    ]
+  },
+  "interpretation": "Live public retrieval from this execution environment; network failure is not proof of absence. Test11 fixes confirmed identity/tag parsing issues, not every catalogue gap. Current real renderer obtained all three targeted covers; earlier transient failures were observed. No receiver success is claimed."
+}

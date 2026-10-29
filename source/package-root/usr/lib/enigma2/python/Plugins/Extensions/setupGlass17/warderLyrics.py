@@ -17,7 +17,7 @@ from urllib.request import Request, urlopen
 
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
-CACHE_VERSION = 5
+CACHE_VERSION = 6
 CACHE = Path('/tmp/warder-radio-lyrics')
 MAX_RESPONSE = 1024 * 1024
 MAX_TEXT = 20000
@@ -156,7 +156,7 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     try:
         saved = json.loads(filename.read_text())
         text = clean_text(saved.get('text'))
-        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4) and bool(text))
+        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4,5) and bool(text))
         age = clock()-float(saved['saved'])
         ttl = 14*86400 if text else min(1800,max(60,int(saved.get('ttl',1800))))
         if valid and 0 <= age < ttl and saved.get('status') == ('found' if text else 'not-found'):

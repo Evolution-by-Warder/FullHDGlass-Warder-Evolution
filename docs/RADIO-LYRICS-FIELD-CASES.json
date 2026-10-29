@@ -495,6 +495,94 @@
         "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
       },
       "conclusion": "No matching text from the four adapters; no iTunes SK song results for full pair, title-only or artist-only search. MusicBrainz probe failed to decode and does not establish a miss. No source artwork or lyrics independently located. This is a coverage observation, not proof of absence everywhere."
+    },
+    {
+      "artist": "Adam Ďurica",
+      "title": "Iskrí",
+      "receiver_observation": {
+        "message": "not-found text; artwork displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "No verified text in current live helper check; some providers unavailable.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Palo Naď",
+      "title": "Predsieň Života",
+      "receiver_observation": {
+        "message": "source unavailable/retry; artwork displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "No verified text in current live helper check; some providers unavailable.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Michal David, Kroky F. Janecka",
+      "title": "Každý Mi Te Lasko Zavidi",
+      "receiver_observation": {
+        "message": "lyrics displayed; artwork missing",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "Verified band abbreviation repaired; actual cover retrieved.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Peter Bič Project",
+      "title": "Stromy",
+      "receiver_observation": {
+        "message": "source unavailable/retry; artwork missing",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "Verified original-title variant repaired; actual cover retrieved; no verified lyrics from live check.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "POLEMIC",
+      "title": "SPOLU FT. A.M.O.",
+      "receiver_observation": {
+        "message": "source unavailable/retry; artwork missing",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "Inline feature credit and AMO name spelling repaired; exact live text retrieval remains unverified.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "24_Pavol Habera",
+      "title": "Reklama na ticho (remix)",
+      "receiver_observation": {
+        "message": "source unavailable/retry; artwork missing",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "Numeric file prefix repaired; remix version retained; no unverified base-version substitution.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "HELENA VONDRACKOVA",
+      "title": "Kazda trampota ma svou mez",
+      "receiver_observation": {
+        "message": "lyrics displayed; artwork missing",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "Publisher-confirmed duet identity repaired; actual cover retrieved.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Medial Banana",
+      "title": "Niečo dobré",
+      "receiver_observation": {
+        "message": "text not found; artwork displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "test11_assessment": "Fresh helper check recorded separately when available; no source absence inferred from screenshot.",
+      "receiver_validated": false
     }
   ],
   "follow_up": [
@@ -504,5 +592,6 @@
   ],
   "note": "Historical receiver observations and earlier checks are preserved. TEST10 adds shared identity, additional adapters and retries; receiver validation is pending.",
   "test10_report": "docs/RADIO-COMBINED-ENGINE-CHECKS.json",
-  "current_candidate": "1.0.38-test10"
+  "current_candidate": "1.0.38-test11",
+  "test11_report": "docs/RADIO-TEST11-FIELD-CHECKS.json"
 }
