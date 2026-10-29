@@ -12,6 +12,7 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 CASES = (
     ('karaoke', 'search', 'https://www.karaoketexty.sk/search?q=Dozadu'),
     ('karaoke', 'search', 'https://www.karaoketexty.sk/search?q=Mraky'),
+    ('karaoke', 'song', 'https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696'),
     ('supermusic', 'home', 'https://www.supermusic.sk/'),
     ('supermusic', 'song', 'https://www.supermusic.sk/piesen.php?idpiesne=1007929'),
     ('genius', 'documentation', 'https://docs.genius.com/'),
@@ -57,6 +58,10 @@ class Page(HTMLParser):
         self.lyric_blocks = 0
         self.song_links = []
         self.scripts = 0
+        self.json_script = False
+        self.json_parts = []
+        self.json_documents = []
+        self.lyric_attributes = []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -64,7 +69,14 @@ class Page(HTMLParser):
             self.in_title = True
         if tag == 'script':
             self.scripts += 1
+            self.json_script = (a.get('type') in ('application/json', 'application/ld+json')
+                                or a.get('id') == '__NEXT_DATA__')
+            self.json_parts = []
         classes = a.get('class', '').split()
+        for key in ('class', 'data-testid'):
+            value = a.get(key, '')
+            if 'lyric' in value.lower() and value not in self.lyric_attributes and len(self.lyric_attributes) < 10:
+                self.lyric_attributes.append(value[:150])
         if ('para_1lyrics_col1' in classes or 'lyrics' in classes
                 or a.get('data-lyrics-container') == 'true'):
             self.lyric_blocks += 1
@@ -76,10 +88,45 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == 'title':
             self.in_title = False
+        if tag == 'script' and self.json_script:
+            try:
+                self.json_documents.append(json.loads(''.join(self.json_parts)))
+            except ValueError:
+                pass
+            self.json_script = False
+            self.json_parts = []
 
     def handle_data(self, data):
         if self.in_title:
             self.title = (self.title + data)[:150]
+        if self.json_script:
+            self.json_parts.append(data)
+
+
+def lyric_schema(documents):
+    """Only shapes, sizes and hashes of public structured fields; no text values."""
+    found = []
+    def visit(value, path, depth):
+        if depth > 14 or len(found) >= 25:
+            return
+        if isinstance(value, dict):
+            for key, child in list(value.items())[:200]:
+                if any(word in key.lower() for word in ('token', 'secret', 'password', 'cookie', 'apikey')):
+                    continue
+                if 'lyric' in key.lower():
+                    item = {'path': path + '.' + key, 'type': type(child).__name__}
+                    if isinstance(child, (str, list, dict)):
+                        item['length'] = len(child)
+                    if isinstance(child, dict):
+                        item['keys'] = list(child)[:20]
+                    found.append(item)
+                visit(child, path + '.' + key, depth + 1)
+        elif isinstance(value, list):
+            for index, child in enumerate(value[:3]):
+                visit(child, path + '[%d]' % index, depth + 1)
+    for index, value in enumerate(documents[:5]):
+        visit(value, 'script[%d]' % index, 0)
+    return found
 
 
 def check(case):
@@ -104,7 +151,8 @@ def check(case):
         page.feed(text)
         out.update(sha256=hashlib.sha256(raw).hexdigest(), page_title=page.title,
                    lyric_blocks=page.lyric_blocks, song_links=page.song_links,
-                   script_count=page.scripts)
+                   script_count=page.scripts, lyric_attributes=page.lyric_attributes,
+                   structured_lyrics_fields=lyric_schema(page.json_documents))
         lowered = text.lower()
         if out['http'] >= 400:
             kind = 'http-error'
@@ -128,6 +176,8 @@ def check(case):
                 data = json.loads(text)
                 out['api_status'] = data.get('meta', {}).get('status')
                 out['api_message_status'] = data.get('message', {}).get('header', {}).get('status_code')
+                if out['api_status'] == 401 or out['api_message_status'] == 401:
+                    out['classification'] = 'authentication-required'
             except (ValueError, AttributeError):
                 pass
     except (OSError, ValueError) as error:
