@@ -1,33 +1,90 @@
 {
   "schema": 1,
-  "date": "2026-10-29",
-  "product": "fullhdglass",
-  "candidate_version": "1.0.40-test2",
-  "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
-  "branch": "feature/radio-spectrum-refinement",
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-spectrum-1.0.40-test2",
-  "release_tag": "radio-spectrum-1.0.40-test2",
-  "prerelease": true,
-  "ipk": {
-    "filename": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test2_all.ipk",
-    "bytes": 14759486,
+  "product": "FullHDGlass Warder Evolution",
+  "status": "production-update-active",
+  "approved_on": "2026-10-29",
+  "approval": "vsetky verzie uved do ostrej prevadzky a zapis vsetko kam treba",
+  "source_branch": "warder-modernization-work",
+  "source_commit": "75d295371858880ce708f54c222ce026eebf6e6a",
+  "activation_commit": "b55499059a435308dc4482c3fd6799ac21df4168",
+  "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "release": {
+    "version": "1.0.41",
+    "tag": "v1.0.41",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.41",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
+    "bytes": 14759710,
+    "sha256": "3716a2071156fbf894f90e672d7c512196ccdd899e29f2214a2db53452f19cc8"
+  },
+  "preview_assets": {
+    "help": {
+      "filename": "g17_setup_pict.zip",
+      "size": 27041172,
+      "sha256": "0bf966980978558170d43429b7ee8de312d0eb15d29978393a3c610af0bd2c31",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.23/g17_setup_pict.zip"
+    },
+    "types": {
+      "filename": "warder-infobar-types.zip",
+      "size": 2584364,
+      "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-infobar-types.zip"
+    }
+  },
+  "baseline": {
+    "version": "1.0.40-test2",
+    "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
     "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-spectrum-1.0.40-test2/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test2_all.ipk"
+    "bytes": 14759486
   },
-  "verification": {
-    "ci_run": 40910073152,
-    "ci_job": 123575332617,
-    "ci_conclusion": "success",
-    "tests_passed": 349,
-    "optional_unchanged_archive_check_skipped": 1,
-    "payload_files": 1402,
-    "independent_public_download_sha256_verified": true,
-    "public_ipk_byte_identical_to_tested_local_build": true,
-    "receiver_verified": false
+  "validation": {
+    "python": "3.9",
+    "workflow_run": 40919233098,
+    "workflow_conclusion": "success",
+    "radio_guard_workflow_run": 40919233300,
+    "radio_guard_conclusion": "success",
+    "unit_tests": 381,
+    "unit_test_groups": [
+      10,
+      9,
+      6,
+      117,
+      22,
+      10,
+      10,
+      14,
+      11,
+      4,
+      13,
+      77,
+      10,
+      9,
+      5,
+      6,
+      3,
+      14,
+      14,
+      7,
+      10
+    ],
+    "skipped_tests": 0,
+    "verified_payload_files": 1402,
+    "all_252_original_help_images_verified": true,
+    "existing_gettext_catalogs_verified": true,
+    "live_lyrics_checks": [
+      "lrclib",
+      "karaoke",
+      "kytary",
+      "supermusic"
+    ],
+    "public_release_independent_download_verified": true,
+    "public_release_byte_identical_to_tested_local_build": true,
+    "public_raw_package_verified_by_production_publisher": true,
+    "public_update_feed_readback_verified": true,
+    "receiver_tested": false
   },
-  "pull_request": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/9",
-  "production_feed_activated": false,
-  "animation": {
+  "accepted_spectrum": {
+    "baseline": "1.0.40-test2",
     "columns": 84,
     "column_width": 3,
     "gap": 1,
@@ -35,17 +92,24 @@
       350,
       126
     ],
-    "backend": "ePixmap pre-rendered PNG frames",
-    "frame_count": 48,
+    "colours": "Original TEST2, brighter previews rejected and reverted",
+    "frames": 48,
     "interval_ms": 100,
-    "shared_rgba_pixel_budget_bytes": 8467200,
-    "native_updates_per_visible_renderer_second_max": 10,
-    "frame_loading": "one frame per callback, shared bounded cache; no further decodes after warmup",
-    "playback": "forward/reverse through adjacent frames; no repeated endpoints"
+    "decoded_rgba_pixel_budget_bytes": 8467200,
+    "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "supersedes": {
-    "version": "1.0.40-test1",
-    "reason": "Owner reported severe radio GUI overload; individual eCanvas segment rendering removed",
-    "release_marked_withdrawn": true
+  "version_policy": "1.0.41 upgrades normally from production 1.0.39 and package-manager version 1.0.40-test2-1. No downgrade/force flags needed.",
+  "legacy_bridge": {
+    "version": "1.0.18",
+    "update_json_unchanged": true,
+    "update_test_json_unchanged": true
+  },
+  "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed.",
+  "existing_startup_update_check_preserved": true,
+  "satellite_automation_modified": false,
+  "lyrics_published": false,
+  "peer_production": {
+    "piconhub": "0.1.32",
+    "gsu": "13.40-r92"
   }
 }

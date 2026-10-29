@@ -1,3 +1,7 @@
+# Published production 1.0.41 — 29 October 2026
+
+All three owner-authorized production updates are live: FullHDGlass 1.0.41, PiconHub 0.1.32 and GSU 13.40-r92. FullHDGlass source 75d295371858880ce708f54c222ce026eebf6e6a; updater activation b55499059a435308dc4482c3fd6799ac21df4168. CI 40919233098 passed 381 tests, 1,402 installed-payload checks, all 252 help illustrations and live lyrics probes. Public release IPK independently downloaded and identical to the tested local package; production publisher verified raw-GitHub delivery before activating update-production.json. Original TEST2 colours/84 columns/motion retained, rejected colour previews never published. Legacy bridge and existing picon assets preserved. Exact evidence: docs/PRODUCTION.json and docs/RADIO-PRODUCTION-1.0.41.json. No exhaustive new device/CPU claim.
+
 # Production 1.0.41 — 29 October 2026
 
 Owner explicitly requested production deployment of all three plugins and full records. Keep original TEST2 colours, 84 columns, 3px bars/1px gaps, transparency and motion; rejected brighter previews were restored and never published. Promote FullHDGlass 1.0.41, PiconHub 0.1.32 and GSU 13.40-r92 so package managers upgrade from the numbered candidates normally. Existing publisher guards, verified public bytes, SHA256 and final feed readback remain mandatory. FullHDGlass retains the shared PiconHub cleanup engine; approved artwork and live picon assets are preserved. Latest production status/evidence: docs/PRODUCTION.json. Authorization does not imply exhaustive new receiver testing.
