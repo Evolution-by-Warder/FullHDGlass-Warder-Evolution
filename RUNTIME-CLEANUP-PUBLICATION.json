@@ -102,7 +102,7 @@
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
-    "update_test_json_unchanged": true
+    "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
   "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed.",
   "existing_startup_update_check_preserved": true,
@@ -111,5 +111,13 @@
   "peer_production": {
     "piconhub": "0.1.32",
     "gsu": "13.40-r92"
+  },
+  "updater_channel_repair": {
+    "date": "2026-10-29",
+    "reason": "Installed TEST2 selected TEST URL containing old 1.0.18 and therefore did not offer production 1.0.41.",
+    "test_feed_now_matches_production": true,
+    "installed_test2_automatic_and_manual_offer_regression_verified": true,
+    "runtime_or_package_changed": false,
+    "record": "docs/UPDATE-CHANNEL-REPAIR-2026-10-29.json"
   }
 }

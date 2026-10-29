@@ -1,3 +1,7 @@
+# Update channel repair — 29 October 2026
+
+Owner reported that installed TEST2 did not see production 1.0.41. TEST2 selects warder-modernization-work/update-test.json, which incorrectly remained at legacy 1.0.18. The native TEST feed now mirrors the verified production manifest, and the publisher advances both native channels together. main/update.json alone remains the primary historical migration bridge; installer refusal of unprepared legacy packages remains. Actual TEST2 IPK updater methods and worker were compared with the regression path; automatic and manual offers passed. Runtime, package bytes, version, colour frames and settings unchanged. Details: docs/UPDATE-CHANNEL-REPAIR-2026-10-29.json.
+
 # Published production 1.0.41 — 29 October 2026
 
 All three owner-authorized production updates are live: FullHDGlass 1.0.41, PiconHub 0.1.32 and GSU 13.40-r92. FullHDGlass source 75d295371858880ce708f54c222ce026eebf6e6a; updater activation b55499059a435308dc4482c3fd6799ac21df4168. CI 40919233098 passed 381 tests, 1,402 installed-payload checks, all 252 help illustrations and live lyrics probes. Public release IPK independently downloaded and identical to the tested local package; production publisher verified raw-GitHub delivery before activating update-production.json. Original TEST2 colours/84 columns/motion retained, rejected colour previews never published. Legacy bridge and existing picon assets preserved. Exact evidence: docs/PRODUCTION.json and docs/RADIO-PRODUCTION-1.0.41.json. No exhaustive new device/CPU claim.

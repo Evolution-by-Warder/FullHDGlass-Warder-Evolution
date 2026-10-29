@@ -110,7 +110,11 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     record['validation']={'workflow_run':int(os.environ.get('GITHUB_RUN_ID','0')),'build_payloads_and_public_bytes':'verified','receiver_validation':approval.get('receiver_validation','Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded.')}
     inventory=json.loads(p.content(client,'design/settings-ui-inventory.json','main'))
     inventory['production_feed_version']=version
-    activated=p.commit(client,staged,{'update-production.json':p.encoded(feed),'docs/PRODUCTION.json':p.encoded(record),'docs/LIVE-UPDATE-STATE.json':p.encoded(dict(feed,bytes=len(raw),source_commit=revision,production_status='production-update',production_tag='v'+version,legacy_bridge_version='1.0.18')),'design/settings-ui-inventory.json':p.encoded(inventory)},'Activate verified native FullHDGlass '+version+'; preserve legacy bridge')
+    # Installed native TEST builds still read this URL. Offer the verified
+    # stable release there too; update.json alone retains the legacy bridge.
+    inventory['test_feed_version']=version
+    inventory.setdefault('feeds_sha256',{})['update-test.json']=hashlib.sha256(p.encoded(feed)).hexdigest()
+    activated=p.commit(client,staged,{'update-production.json':p.encoded(feed),'update-test.json':p.encoded(feed),'docs/PRODUCTION.json':p.encoded(record),'docs/LIVE-UPDATE-STATE.json':p.encoded(dict(feed,bytes=len(raw),source_commit=revision,production_status='production-update',production_tag='v'+version,legacy_bridge_version='1.0.18')),'design/settings-ui-inventory.json':p.encoded(inventory)},'Activate verified native FullHDGlass '+version+' on stable and native TEST channels; preserve update.json legacy bridge')
     p.advance(client,'main',staged,activated)
     p.advance(client,p.WORK,revision,activated)
     print('Activated stable native skin:',version,len(raw),digest)

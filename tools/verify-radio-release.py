@@ -87,11 +87,12 @@ def main():
                 if path.suffix == ".py":
                     assert files[name].mtime == (int(hashlib.sha256(path.read_bytes()).hexdigest()[:8], 16) & 0x7fffffff)
         digest = hashlib.sha256(package.read_bytes()).hexdigest()
-        for name in ("update.json", "update-test.json"):
+        feed_names=("update-production.json", "update-test.json") if package_id=="enigma2-plugin-skins-fullhdglass-warder-evolution" else ("update.json", "update-test.json")
+        for name in feed_names:
             manifest = json.loads((ROOT / name).read_text())
             assert manifest["version"] == version and manifest["sha256"] == digest
             assert manifest["package_url"].endswith("/main/packages/" + package.name)
-    print("PASS: pinned graphics/layout, Python syntax, executable hooks, version order, full IPK and both update manifests")
+    print("PASS: pinned graphics/layout, Python syntax, executable hooks, version order, full IPK and matching stable/native TEST manifests")
 
 
 if __name__ == "__main__":

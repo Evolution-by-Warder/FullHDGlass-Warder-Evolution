@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "issue": "Installed TEST2 does not see production update",
+  "root_cause": {
+    "installed_version": "1.0.40-test2",
+    "selected_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/warder-modernization-work/update-test.json",
+    "previous_feed_version": "1.0.18",
+    "production_feed_version": "1.0.41"
+  },
+  "repair": "Native TEST manifest matches verified production; publisher updates both native feeds together.",
+  "target": {
+    "version": "1.0.41",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
+    "sha256": "3716a2071156fbf894f90e672d7c512196ccdd899e29f2214a2db53452f19cc8",
+    "changelog": "Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy."
+  },
+  "validation": {
+    "startup_tests_passed": 12,
+    "publisher_tests_passed": 9,
+    "migration_tests_passed": 6,
+    "automatic_and_manual_test2_offer_verified": true,
+    "tested_updater_methods_and_worker_identical_to_published_test2_ipk": true,
+    "test2_ipk_sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
+    "runtime_changed": false,
+    "ipk_changed": false,
+    "primary_legacy_bridge_bytes_unchanged": true,
+    "receiver_verified": false,
+    "old_feed_reproduces_both_test2_offer_failures": true
+  }
+}

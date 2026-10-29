@@ -89,6 +89,28 @@ class StartupTests(unittest.TestCase):
         owner.updatechckact(True)
         self.assertTrue(loop.workers[0][0].transport.killed);self.assertEqual(len(owner.session.offers),1)
         self.finish(loop,self.manifest());self.assertEqual(len(owner.session.offers),1)
+    def test_installed_test2_automatic_path_offers_the_published_stable_release(self):
+        owner=self.owner();owner.version='1.0.40-test2';loop=Loop()
+        auto.AutoCheck(owner,loop)
+        self.assertEqual(loop.workers[-1][2][-1],auto.TEST)
+        native_test=json.loads((ROOT/'update-test.json').read_text())
+        production=json.loads((ROOT/'update-production.json').read_text())
+        self.finish(loop,native_test)
+        self.assertEqual(len(owner.session.offers),1)
+        self.assertEqual(owner.warderUpdate['version'],production['version'])
+        self.assertEqual(owner.warderUpdate['url'],production['package_url'])
+        self.assertEqual(owner.warderUpdate['sha256'],production['sha256'])
+    def test_installed_test2_manual_path_offers_the_published_stable_release(self):
+        owner=self.owner();owner.version='1.0.40-test2';requests=[]
+        def fetch(url):
+            requests.append(url)
+            return json.loads((ROOT/'update-test.json').read_text())
+        owner._warderFetchJson=fetch
+        owner.updatechckact(True)
+        production=json.loads((ROOT/'update-production.json').read_text())
+        self.assertEqual(requests,[auto.TEST]);self.assertEqual(len(owner.session.offers),1)
+        self.assertEqual(owner.warderUpdate['version'],production['version'])
+        self.assertEqual(owner.warderUpdate['sha256'],production['sha256'])
     def test_current_version_and_offline_failure_are_silent(self):
         for manifest,code in [(self.manifest('1.0.26'),0),(None,1)]:
             owner=self.owner();loop=Loop();auto.AutoCheck(owner,loop);self.finish(loop,manifest,code);self.assertEqual(owner.session.offers,[])

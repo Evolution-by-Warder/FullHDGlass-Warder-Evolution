@@ -48,10 +48,14 @@ class NativePublisherTests(unittest.TestCase):
         p=patch.object(m.subprocess,'check_output',return_value=buf.getvalue());p.start();self.addCleanup(p.stop)
 
     def publish(self):return m.publish(self.path,self.info,self.rev,self.approval,self.client,{})
-    def test_verified_native_feed_advances_without_touching_legacy_bridge(self):
+    def test_verified_stable_release_also_reaches_native_test_clients_without_touching_primary_legacy_bridge(self):
         self.publish();self.assertEqual(len(self.commits),2)
         files=self.commits[-1];self.assertIn('update-production.json',files)
-        self.assertNotIn('update.json',files);self.assertNotIn('update-test.json',files)
+        self.assertNotIn('update.json',files)
+        self.assertEqual(files['update-test.json'],files['update-production.json'])
+        inventory=json.loads(files['design/settings-ui-inventory.json'])
+        self.assertEqual(inventory['test_feed_version'],'1.0.20')
+        self.assertEqual(inventory['feeds_sha256']['update-test.json'],hashlib.sha256(files['update-test.json']).hexdigest())
         record=json.loads(files['docs/PRODUCTION.json']);self.assertEqual(record['transition']['version'],'1.0.18')
         self.assertEqual(self.heads['main'],self.heads[m.p.WORK])
     def test_same_canonical_help_bundle_updates_original_download_and_catalogue(self):
