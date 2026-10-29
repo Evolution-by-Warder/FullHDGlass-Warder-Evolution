@@ -1,3 +1,9 @@
+# Published production 1.0.39 — 29 October 2026
+
+Latest stable release and built-in production updater are active. Source `f2ce83c7b20d1213979d8c044bacf51f90fe916d`; activation `58e3bd3a263b9df4c779dbef22290556a11815ad`. Build **40877231891** passed **362 tests** and verified **1,353 installed files**; independent radio guard **40877231870** passed. Both public delivery paths were independently downloaded and matched: **14,515,826 bytes**, SHA256 `7bec211d1ad8ce2864a01c19a63f719de983345258eecfece03669efb898f246`. Legacy 1.0.18 bridge, user settings and satellite automation remain unchanged. Full evidence: [RADIO-PRODUCTION-1.0.39.json](docs/RADIO-PRODUCTION-1.0.39.json). TEST13 receiver confirmation and exact promotion scope are retained below.
+
+---
+
 # Production promotion — 29 October 2026
 
 Owner confirmed SuperMusic in **1.0.38-test13** functional on the receiver, then requested documenting all work and a normal version delivered through the built-in updater. **1.0.39** retains the accepted runtime and approved radio graphics, updating version labels/history only. The next patch number permits a normal package-manager upgrade from TEST13.

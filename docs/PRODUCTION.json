@@ -41,6 +41,35 @@
   "validation": {
     "workflow_run": 40877231891,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed."
+    "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed.",
+    "unit_tests": 362,
+    "unit_test_groups": [
+      6,
+      117,
+      22,
+      10,
+      10,
+      14,
+      11,
+      4,
+      13,
+      77,
+      10,
+      9,
+      5,
+      6,
+      3,
+      14,
+      14,
+      7,
+      10
+    ],
+    "radio_guard_workflow_run": 40877231870,
+    "verified_payload_files": 1353,
+    "public_release_independent_download_verified": true,
+    "public_raw_independent_download_verified": true,
+    "public_release_and_raw_identical": true,
+    "accepted_runtime_version": "1.0.38-test13",
+    "runtime_version_labels_only_normalization_verified": true
   }
 }

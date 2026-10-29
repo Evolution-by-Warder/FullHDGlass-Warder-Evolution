@@ -10,7 +10,7 @@
   "background_prompt": "Clean scenic production background from the approved radio concept; microphone left, glowing globe right, blue and amber studio; no text, frames, covers or static UI.",
   "background_method": "built-in imagegen; standard 1920x1080 JPEG package encoding",
   "matching": "Shared warderSongIdentity for metadata, lyrics and covers. Whole titles and credited rosters retained; explicitly sourced artist/recording aliases and numbered file tags repaired. No arbitrary partial, surname or first-result matching. TEST11 adds verified Kroky abbreviation, Stromy original title and Helena/Korn duet; inline featured credits and attached numeric full-artist tags repaired while preserving remix/live distinctions. TEST12 supports full-phrase unspaced separators and explicit spaced full-name slash credits; preserves hyphenated names and AC/DC.",
-  "state": "Owner accepted TEST13; production 1.0.39 approved for publication after release checks.",
+  "state": "Published production 1.0.39; update-production.json active after public byte verification.",
   "physical_video_background": "video-background.json",
   "lyrics_sources": [
     "https://lrclib.net/docs",
@@ -39,5 +39,7 @@
   },
   "supermusic_transport": "Normal site-provided FNV-1a visitor handshake, 100000 candidate / 0.4-second CPU cap; one validation hop, same-origin song destination, same-source redirects, 1 MiB response limit, original request time budget. Runs only inside the existing background helper.",
   "production_version": "1.0.39",
-  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed."
+  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed.",
+  "production_source_commit": "f2ce83c7b20d1213979d8c044bacf51f90fe916d",
+  "production_verification": "docs/RADIO-PRODUCTION-1.0.39.json"
 }

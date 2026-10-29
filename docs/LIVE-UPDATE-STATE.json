@@ -7,5 +7,7 @@
   "source_commit": "f2ce83c7b20d1213979d8c044bacf51f90fe916d",
   "production_status": "production-update",
   "production_tag": "v1.0.39",
-  "legacy_bridge_version": "1.0.18"
+  "legacy_bridge_version": "1.0.18",
+  "verification": "docs/RADIO-PRODUCTION-1.0.39.json",
+  "public_raw_and_release_identical": true
 }
