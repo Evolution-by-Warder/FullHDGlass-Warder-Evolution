@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "product": "fullhdglass",
+  "candidate_version": "1.0.40-test1",
+  "source_commit": "4e6c36da2c93a68e082748c32ebb8816a8ab7efb",
+  "branch": "feature/radio-spectrum-refinement",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-spectrum-1.0.40-test1",
+  "release_tag": "radio-spectrum-1.0.40-test1",
+  "prerelease": true,
+  "ipk": {
+    "filename": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test1_all.ipk",
+    "bytes": 14517440,
+    "sha256": "e8a565b1cdc3ab38a6e751112f7b64244bb642f9a9bbb807f6c185027bd180a8",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-spectrum-1.0.40-test1/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test1_all.ipk"
+  },
+  "verification": {
+    "ci_run": 40901959402,
+    "ci_conclusion": "success",
+    "independent_public_download_sha256_verified": true,
+    "all_uncompressed_control_and_payload_bytes_match_tested_build": true,
+    "tests_passed": 344,
+    "optional_unchanged_archive_check_skipped": 1,
+    "receiver_verified": false
+  },
+  "pull_request": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/9",
+  "production_feed_activated": false
+}
