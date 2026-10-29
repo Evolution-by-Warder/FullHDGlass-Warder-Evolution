@@ -594,6 +594,27 @@
       "owner_correction": "Až raz budem učiteľkou",
       "test11_assessment": "Exact artist/title typo repaired in shared lookup identity, no generic fuzzy spelling match.",
       "receiver_validated": false
+    },
+    {
+      "artist": "Wanastowi Vjecy",
+      "title": "Kapky Krve",
+      "receiver_observation": {
+        "message": "source unavailable/retry; artwork missing",
+        "installed_version": "not captured"
+      },
+      "fresh_helper_check": {
+        "status": "found",
+        "source": "lrclib",
+        "characters": 1737,
+        "elapsed_ms": 3944
+      },
+      "fresh_cover_check": {
+        "found": true,
+        "width": 600,
+        "height": 600
+      },
+      "receiver_cause": "not established",
+      "details": "docs/RADIO-TEST11-FIELD-CHECKS.json"
     }
   ],
   "follow_up": [
@@ -604,5 +625,6 @@
   "note": "Historical receiver observations and earlier checks are preserved. TEST10 adds shared identity, additional adapters and retries; receiver validation is pending.",
   "test10_report": "docs/RADIO-COMBINED-ENGINE-CHECKS.json",
   "current_candidate": "1.0.38-test11",
-  "test11_report": "docs/RADIO-TEST11-FIELD-CHECKS.json"
+  "test11_report": "docs/RADIO-TEST11-FIELD-CHECKS.json",
+  "candidate_source_commit": "1099a161c9f1d649a1a9905a062008f1cf689a6a"
 }

@@ -476,6 +476,141 @@
           }
         ]
       }
+    },
+    {
+      "artist": "DARINKA ROLINCOVA",
+      "title": "Az raz budem uvitelkou",
+      "status": "offline",
+      "characters": 0,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "DARINKA ROLINCOVA",
+        "title": "Az raz budem uvitelkou",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 10421,
+        "requests": [
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "http-error",
+            "http": 503,
+            "retry_after": 1,
+            "elapsed_ms": 4373
+          },
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4242
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4368
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 3467
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4260
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "http-error",
+            "http": 500,
+            "elapsed_ms": 4408
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 3764
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5287
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5405
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4320
+          }
+        ]
+      }
+    },
+    {
+      "artist": "Wanastowi Vjecy",
+      "title": "Kapky Krve",
+      "status": "found",
+      "characters": 1737,
+      "sha256": "3f2333a11ed026364ea9904718cba6a6314526ebdb4c7f4c78ad991e60edd5b9",
+      "diagnostic": {
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky Krve",
+        "status": "found",
+        "cache_hit": false,
+        "elapsed_ms": 3944,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "pending"
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "found",
+            "elapsed_ms": 3941
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "pending"
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "pending"
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "pending"
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "pending"
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "pending"
+          }
+        ]
+      }
     }
   ],
   "cover_checks": [
@@ -530,6 +665,23 @@
       ],
       "bytes": 107463,
       "sha256": "8bf80ced38e0c88f68177cf6e185bc050a7bfea037e20c533d811e60be374888",
+      "image_size": [
+        600,
+        600
+      ]
+    },
+    {
+      "artist": "Wanastowi Vjecy",
+      "title": "Kapky Krve",
+      "found": true,
+      "real_http": true,
+      "log": [
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "LOOKUP country=CZ artist='Wanastowi Vjecy' title='Kapky Krve' results=2",
+        "READY path=/tmp/tmpt_k_i_79/6db3643fe05dfab8476de29644d01af700630f0f.jpg"
+      ],
+      "bytes": 166738,
+      "sha256": "9a8241b01a879708e801758d93f4434f7a230d2284dc2599bf698c74a166d8b8",
       "image_size": [
         600,
         600
@@ -702,5 +854,7 @@
       }
     ]
   },
-  "interpretation": "Live public retrieval from this execution environment; network failure is not proof of absence. Test11 fixes confirmed identity/tag parsing issues, not every catalogue gap. Current real renderer obtained all three targeted covers; earlier transient failures were observed. No receiver success is claimed."
+  "interpretation": "Live public retrieval from this execution environment; network failure is not proof of absence. Test11 fixes confirmed identity/tag parsing issues, not every catalogue gap. Current real renderer obtained all three targeted covers; earlier transient failures were observed. No receiver success is claimed.",
+  "source_commit": "1099a161c9f1d649a1a9905a062008f1cf689a6a",
+  "wanastowi_receiver_failure": "Fresh runtime lookup found 1737 characters via LRCLIB in 3944 ms and a real 600x600 cover. The receiver cause is unknown; do not classify this as absent content."
 }
