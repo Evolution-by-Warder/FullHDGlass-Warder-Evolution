@@ -1,0 +1,4104 @@
+{
+  "status": "VERIFIED_PUBLICATION_CANDIDATE",
+  "source_ref": "5ca5b5a08c0cf2cc7720334d05f00f09db899b8c",
+  "previous_manifest_sha256": "d333e89c30bcffe8f36b5d74501a0bd0e6a2d375617e214fe21b8cb4080d264c",
+  "manifest_sha256": "1ecd3603dfec54fb813ae2f82d62f4e726e1d71ca6596d818d2d35a12eb0af99",
+  "graphic_count": 27,
+  "approved_png_count": 81,
+  "service_mappings": [
+    {
+      "slug": "yaristayiz",
+      "name": "YARIŞTAYIZ TV",
+      "reference": "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png",
+      "selector_id": "420E",
+      "provider": "Digital Platform",
+      "identity": [
+        15548,
+        50600,
+        42,
+        420
+      ]
+    },
+    {
+      "slug": "qvc-christmas",
+      "name": "QVC Christmas",
+      "reference": "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+      "selector_id": "282E",
+      "provider": "BSkyB",
+      "identity": [
+        22301,
+        2091,
+        2,
+        282
+      ]
+    },
+    {
+      "slug": "great-christmas",
+      "name": "GREAT! cristmas",
+      "reference": "1_0_1_D048_83E_2_11A0000_0_0_0.png",
+      "selector_id": "282E",
+      "provider": "BSkyB",
+      "identity": [
+        53320,
+        2110,
+        2,
+        282
+      ]
+    },
+    {
+      "slug": "filmbox-one-nl",
+      "name": "FILMBOX+ One",
+      "reference": "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+      "selector_id": "235E",
+      "provider": "M7 Group",
+      "identity": [
+        6094,
+        3202,
+        3,
+        235
+      ]
+    },
+    {
+      "slug": "vtm-xmas",
+      "name": "VTM XMAS",
+      "reference": "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+      "selector_id": "235E",
+      "provider": "M7 Group",
+      "identity": [
+        21116,
+        3222,
+        3,
+        235
+      ]
+    },
+    {
+      "slug": "magenta-highlights",
+      "name": "MagentaSportHighlights",
+      "reference": "1_0_1_193_1518_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        403,
+        5400,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport4",
+      "name": "MagentaSport4",
+      "reference": "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        7115,
+        6100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport5",
+      "name": "MagentaSport5",
+      "reference": "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        7116,
+        6100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport6",
+      "name": "MagentaSport6",
+      "reference": "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        7118,
+        6100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport2",
+      "name": "MagentaSport2",
+      "reference": "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        7123,
+        6100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport7",
+      "name": "MagentaSport7",
+      "reference": "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        15507,
+        7100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport8",
+      "name": "MagentaSport8",
+      "reference": "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        15508,
+        7100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport9",
+      "name": "MagentaSport9",
+      "reference": "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        15510,
+        7100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport1",
+      "name": "MagentaSport1",
+      "reference": "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        15517,
+        7100,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport3",
+      "name": "MagentaSport3",
+      "reference": "1_0_1_165_1C84_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "NOVA",
+      "identity": [
+        357,
+        7300,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "scifi-pl",
+      "name": "SciFi HD",
+      "reference": "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "Cyfrowy Polsat S.A.",
+      "identity": [
+        15904,
+        12000,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "scifi-pl",
+      "name": "SciFi HD",
+      "reference": "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png",
+      "selector_id": "130E",
+      "provider": "Cyfrowy Polsat S.A.",
+      "identity": [
+        15934,
+        12000,
+        318,
+        130
+      ]
+    },
+    {
+      "slug": "magenta-sport4",
+      "name": "MagentaSport4",
+      "reference": "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1039,
+        2,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport7",
+      "name": "MagentaSport7",
+      "reference": "1_0_1_443_2_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1091,
+        2,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "mad-vibes",
+      "name": "MAD Vibes",
+      "reference": "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1001,
+        2,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport6",
+      "name": "MagentaSport6",
+      "reference": "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1003,
+        2,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-history",
+      "name": "Magenta History",
+      "reference": "1_0_1_408_4_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1032,
+        4,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-series1",
+      "name": "MagentaSeries1",
+      "reference": "1_0_1_416_4_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "ΟΤΕ",
+      "identity": [
+        1046,
+        4,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-highlights",
+      "name": "MagentaSportHighlights",
+      "reference": "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1071,
+        4,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "mad-rewind",
+      "name": "MAD Rewind",
+      "reference": "1_0_1_448_4_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1096,
+        4,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport1",
+      "name": "MagentaSport1",
+      "reference": "1_0_1_447_5_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1095,
+        5,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-cinema1",
+      "name": "MagentaCinema1",
+      "reference": "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1008,
+        5,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport3",
+      "name": "MagentaSport3",
+      "reference": "1_0_1_404_6_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1028,
+        6,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-series2",
+      "name": "MagentaSeries2",
+      "reference": "1_0_1_417_6_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1047,
+        6,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-cinema3",
+      "name": "MagentaCinema3",
+      "reference": "1_0_1_446_6_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1094,
+        6,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport8",
+      "name": "MagentaSport8",
+      "reference": "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1101,
+        6,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport2",
+      "name": "MagentaSport2",
+      "reference": "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "ΟΤΕ",
+      "identity": [
+        1015,
+        6,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-cinema007",
+      "name": "MagentaCinema007",
+      "reference": "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1052,
+        8,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport5",
+      "name": "MagentaSport5",
+      "reference": "1_0_1_455_8_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1109,
+        8,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-sport9",
+      "name": "MagentaSport9",
+      "reference": "1_0_1_466_8_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1126,
+        8,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "magenta-cinema2",
+      "name": "MagentaCinema2",
+      "reference": "1_0_1_460_9_AA_5A0000_0_0_0.png",
+      "selector_id": "90E",
+      "provider": "OTE",
+      "identity": [
+        1120,
+        9,
+        170,
+        90
+      ]
+    },
+    {
+      "slug": "persiana-global",
+      "name": "Persiana Global",
+      "reference": "1_0_1_C_CE4_7E_460000_0_0_0.png",
+      "selector_id": "70E",
+      "provider": "",
+      "identity": [
+        12,
+        3300,
+        126,
+        70
+      ]
+    },
+    {
+      "slug": "duo-star",
+      "name": "Duo STAR",
+      "reference": "1_0_1_27E2_C9_55_300000_0_0_0.png",
+      "selector_id": "48E_A",
+      "provider": "TV3 Group",
+      "identity": [
+        10210,
+        201,
+        85,
+        48
+      ]
+    }
+  ],
+  "service_source": {
+    "source_url": "https://www.vhannibal.net/download_setting.php?id=5&action=download",
+    "download_sha256": "e84d67a44d46d5cefdd1be8838e6a476e38a37ca173f90af271d9be35657fecd",
+    "lamedb_sha256": "8cc6562049c104593fa6f197e83c8b4254141ab50ff29cc8ef09c31e187fc1f3",
+    "retrieved_date": "2026-10-29",
+    "content_disposition": "attachment; filename=\"Vhannibal Motor 29 ott 2026.zip\""
+  },
+  "scanned_packages": 111,
+  "total_catalog_packages": 471,
+  "changed_packages": 63,
+  "receiver_selective_installer_checks": 63,
+  "receiver_planner_checks": 63,
+  "unrelated_png_bytes_preserved": true,
+  "old_archives_retained": true,
+  "ipk_changed": false,
+  "excluded": [
+    {
+      "name": "MagentaSport3League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport1League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport2League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport4League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport1League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport2League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport3League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    },
+    {
+      "name": "MagentaSport4League",
+      "reason": "Distinct League artwork has not been previewed/approved; do not substitute ordinary Sport logo."
+    }
+  ],
+  "packages": [
+    {
+      "selector_id": "130E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-130e-220x132-transparent-4dcc37dea65f8688.zip",
+      "sha256": "4dcc37dea65f86888a5adcc9c92f55d8a093dd38b0ea812a500defd40762355d",
+      "bytes": 37728624,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4503,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip",
+      "sha256": "51e140be676a4925b64a88e06f0146198aab35e8f1624dbdd9f589b9b94179eb",
+      "bytes": 100978330,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4503,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip",
+      "sha256": "56a8ed71cd967a84ee90c5b6eba53b26318894b9233b0147eec6e8b15ea9de1a",
+      "bytes": 91064579,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4503,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-235e-220x132-transparent-78cd74a1aa3df3c4.zip",
+      "sha256": "78cd74a1aa3df3c465a8c0fa9a41eb3a690279e13a78526367c6275f8e1773fd",
+      "bytes": 16080472,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2213,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-235e-220x132-black-6c23e289984bf07d.zip",
+      "sha256": "6c23e289984bf07d3bc7dd0a2f2b0a61465e63063ac81b7a273bfc400cf3bfce",
+      "bytes": 51486747,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2213,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-235e-220x132-white-47ce8016eb017cf6.zip",
+      "sha256": "47ce8016eb017cf6f63450080f5482c71773dcaf16f73bc531994ed3df29047b",
+      "bytes": 47057362,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2213,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-282e-220x132-transparent-95f296f1363058dd.zip",
+      "sha256": "95f296f1363058dda9440a01433ebda931338a0e74faa3266835c69a36b0b541",
+      "bytes": 15867498,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1927,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-282e-220x132-black-84c1fc945daa1f75.zip",
+      "sha256": "84c1fc945daa1f75f25dad19fd24e17ec27638a402bc1e44b32af554bc2e2e97",
+      "bytes": 41683031,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1927,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-282e-220x132-white-7d7c9cf7e612681f.zip",
+      "sha256": "7d7c9cf7e612681f9cbd4371eb7cf3a558ab392a8211a737a8d7f367f6edfff1",
+      "bytes": 36947846,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1927,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-420e-220x132-transparent-3db246d5ec5207ca.zip",
+      "sha256": "3db246d5ec5207caeaf6f5b76b61a6c27fe0216ee1ede4f9eda226c5b854e495",
+      "bytes": 18486544,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 2000,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-420e-220x132-black-70e943df016b4ac1.zip",
+      "sha256": "70e943df016b4ac1d7b460285698d609d288502a0f91c34e6ef6dbff677272c5",
+      "bytes": 44248245,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 2000,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-420e-220x132-white-7459327a7fd31f75.zip",
+      "sha256": "7459327a7fd31f75e92887de03d75bb6113cb565cc2ad7037f559b6354a5d3d7",
+      "bytes": 39001959,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 2000,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-48e_a-220x132-transparent-775627e6e7fd69e0.zip",
+      "sha256": "775627e6e7fd69e00305c3b850bc7294801178a50afb3b31cb14c7d2c451d2f3",
+      "bytes": 7623137,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 842,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-48e_a-220x132-black-bcdd3869b1f5ac65.zip",
+      "sha256": "bcdd3869b1f5ac6532e755a8569401ff08e17109d89f0e26010ee1cf39331f5d",
+      "bytes": 20429483,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1047,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-48e_a-220x132-white-5f104cc128c2626a.zip",
+      "sha256": "5f104cc128c2626af94582e87927a8d6124c823fe9a480b2b557f0de5c95d520",
+      "bytes": 17478868,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1047,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-70e-220x132-transparent-6237a357fad89ad7.zip",
+      "sha256": "6237a357fad89ad7d35271b63cea3f767f97c3aa13d6b6c0840b903b59ca17e5",
+      "bytes": 1708384,
+      "replaced": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 158,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-70e-220x132-black-fa7f363abda7033d.zip",
+      "sha256": "fa7f363abda7033de9126b0c25f25160b6fe159e04b75be8edc3692637172f76",
+      "bytes": 3813025,
+      "replaced": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 158,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-70e-220x132-white-05317e9504ae7d00.zip",
+      "sha256": "05317e9504ae7d0095fea69bcd363931f60f5b2bc2030347230b06d04506ccbd",
+      "bytes": 3507045,
+      "replaced": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 158,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-90e-220x132-transparent-ed43b215f8d34c44.zip",
+      "sha256": "ed43b215f8d34c443c9e2bc9a646fc9eb84c9d76344927edaf616ecbf327c6db",
+      "bytes": 19930595,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2008,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-90e-220x132-black-d97fa9047efc928d.zip",
+      "sha256": "d97fa9047efc928d1239c5d0edd909d78b8589f45a7132c23840e0e0b119f17c",
+      "bytes": 44298037,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2017,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-90e-220x132-white-d210647f6cd7c844.zip",
+      "sha256": "d210647f6cd7c844f9d842d9eb659a4428aa340b3d0ce2721c2a71c2c353b6b1",
+      "bytes": 38951440,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2017,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-130e-50x30-transparent-4f600ebe6d98c1ff.zip",
+      "sha256": "4f600ebe6d98c1ff733b31f8c318c004c8a5281c859e33e7951fb111c14314bd",
+      "bytes": 5750906,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4350,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-130e-50x30-white-e89c5022ac1c494d.zip",
+      "sha256": "e89c5022ac1c494d5b3f90a0bb7156f564e3e30be357d2b456b1a7a9b3e96f0c",
+      "bytes": 7282470,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4362,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-130e-50x30-black-af2cfa85bf14194b.zip",
+      "sha256": "af2cfa85bf14194bc62386f68cd3f586e1b75234a8776d009e2d74c39fafce2b",
+      "bytes": 7279010,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4350,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip",
+      "sha256": "ebbfa9bd5eba6b80910e8faf21de5ea054db8881eb68f64366cb48bb8b34520c",
+      "bytes": 84686815,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4350,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip",
+      "sha256": "ccfd00b5d701207f65bf4c89ec7523bf66d3d4712930b6f17b37371bbc08d278",
+      "bytes": 91659181,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4350,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "130E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip",
+      "sha256": "e7e3a69e8246c955be13b3af408917cc4422bd0cbd2310d36e634984a12a8a51",
+      "bytes": 88522629,
+      "replaced": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 4350,
+      "changed_names": [
+        "1_0_16_165_1C84_13E_820000_0_0_0.png",
+        "1_0_16_193_1518_13E_820000_0_0_0.png",
+        "1_0_16_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_16_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_16_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_16_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_16_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_165_1C84_13E_820000_0_0_0.png",
+        "1_0_19_193_1518_13E_820000_0_0_0.png",
+        "1_0_19_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_19_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_19_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_19_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_19_3E3E_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_165_1C84_13E_820000_0_0_0.png",
+        "1_0_1_193_1518_13E_820000_0_0_0.png",
+        "1_0_1_1BCB_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCC_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BCE_17D4_13E_820000_0_0_0.png",
+        "1_0_1_1BD3_17D4_13E_820000_0_0_0.png",
+        "1_0_1_3C93_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C94_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C96_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3C9D_1BBC_13E_820000_0_0_0.png",
+        "1_0_1_3E20_2EE0_13E_820000_0_0_0.png",
+        "1_0_1_3E3E_2EE0_13E_820000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-235e-50x30-transparent-15c67cf28b1c5be0.zip",
+      "sha256": "15c67cf28b1c5be04163a295a3167a425c706dddb81ea9e44cb2c1df95a7c2b2",
+      "bytes": 2587536,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2064,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-235e-50x30-white-181ccd77dbccb450.zip",
+      "sha256": "181ccd77dbccb4509156ebb48092f7297e7db410c3740b162bdbd06d9b02b619",
+      "bytes": 3340424,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2064,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-235e-50x30-black-3969fbe43d5d28fa.zip",
+      "sha256": "3969fbe43d5d28fadb1644456270f0fc2890e3718e4ae3f5cafde8b4e6b6bf00",
+      "bytes": 3336128,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2064,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-235e-400x240-transparent-d53f5b927bfbf6f4.zip",
+      "sha256": "d53f5b927bfbf6f49db39ec3efd554deff411c04160a2feb3e8db147d4a0f11e",
+      "bytes": 35991329,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2064,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-235e-400x240-white-925eb7196ece4e97.zip",
+      "sha256": "925eb7196ece4e972357398a36a8de66b27615ae3b4abe14eefef9403a07bea5",
+      "bytes": 42384992,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2064,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-235e-400x240-black-094523616158b5cc.zip",
+      "sha256": "094523616158b5cc3eeb8d3f5dfe4a58f896292d35b6700debaecb3625627203",
+      "bytes": 40910858,
+      "replaced": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 2064,
+      "changed_names": [
+        "1_0_16_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_16_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_19_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_19_527C_C96_3_EB0000_0_0_0.png",
+        "1_0_1_17CE_C82_3_EB0000_0_0_0.png",
+        "1_0_1_527C_C96_3_EB0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-282e-50x30-transparent-edd3961583c02f13.zip",
+      "sha256": "edd3961583c02f13af3aa404e4287ee883d78e0dfb3f6d94137a41809467f399",
+      "bytes": 2401669,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1883,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-282e-50x30-white-d8c0e94308115183.zip",
+      "sha256": "d8c0e943081151834b5dd615d542171097ab542920e67184f85db1401e7866d6",
+      "bytes": 3165833,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1883,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-282e-50x30-black-80334fb7a0f9d96e.zip",
+      "sha256": "80334fb7a0f9d96e726f301b18ad546ac63fba38dc214c3f3123fa922e0d6fce",
+      "bytes": 3098793,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1883,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-282e-400x240-transparent-d7ebda81cf3a8beb.zip",
+      "sha256": "d7ebda81cf3a8bebc2a3dd4557798713c2bdfda04f559e715559e0b1c06603a7",
+      "bytes": 35185025,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1883,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-282e-400x240-white-bee1157943b14819.zip",
+      "sha256": "bee1157943b14819e9325e0c83ef65d4c22726068734aba2533c8ded80623a8d",
+      "bytes": 40340204,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1883,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "282E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-282e-400x240-black-556d42932a7a0ab5.zip",
+      "sha256": "556d42932a7a0ab503a1538a0c92376c1ee67a3dd7bbb850f1518a10d186a135",
+      "bytes": 38473870,
+      "replaced": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1883,
+      "changed_names": [
+        "1_0_16_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_16_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_19_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_19_D048_83E_2_11A0000_0_0_0.png",
+        "1_0_1_571D_82B_2_11A0000_0_0_0.png",
+        "1_0_1_D048_83E_2_11A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-48e_a-50x30-transparent-643ed130dcb8a3b4.zip",
+      "sha256": "643ed130dcb8a3b45776d24c35e5c6848e95fe89db025fdb7821dfb7d7b60ad3",
+      "bytes": 1078570,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 833,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-48e_a-50x30-white-5e9bd6b16be3ad7e.zip",
+      "sha256": "5e9bd6b16be3ad7e98613733014b4c1a3b868f0aa535128d7dd20622836ad795",
+      "bytes": 1376394,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 833,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-48e_a-50x30-black-abb7df20c7cf579e.zip",
+      "sha256": "abb7df20c7cf579e537b649df5aba750667aa94aad1c175fe1819a0a203ee6e6",
+      "bytes": 1363537,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 833,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-48e_a-400x240-transparent-1855e6955090eb4a.zip",
+      "sha256": "1855e6955090eb4a85fcc764c3ec117bfb797a9dd3650c0c7d2788edf467ea75",
+      "bytes": 15756765,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 833,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-48e_a-400x240-white-196077fbe64d25b8.zip",
+      "sha256": "196077fbe64d25b869ffc6697177a43cf38b89d83e51085231628adbe52c0691",
+      "bytes": 17128448,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 833,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "48E_A",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-48e_a-400x240-black-17df0357a0efa25e.zip",
+      "sha256": "17df0357a0efa25ecb72a5fbf351a63ebc1d240fdc5df511bde9f82c9e713792",
+      "bytes": 16361638,
+      "replaced": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 833,
+      "changed_names": [
+        "1_0_16_27E2_C9_55_300000_0_0_0.png",
+        "1_0_19_27E2_C9_55_300000_0_0_0.png",
+        "1_0_1_27E2_C9_55_300000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-420e-50x30-transparent-94c2c6b4831fd824.zip",
+      "sha256": "94c2c6b4831fd824d099a24a78197b247a63cc09a61f1840f3c5b1dac3da7138",
+      "bytes": 2348542,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 1776,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-420e-50x30-white-c0a1e525f3a54be1.zip",
+      "sha256": "c0a1e525f3a54be1164cdf667121fa2c718386f46a008fac1781aeebdf40da04",
+      "bytes": 2886048,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 1776,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-420e-50x30-black-c25aa846598c4164.zip",
+      "sha256": "c25aa846598c416469575793d5001fa32927b560780b7c1bc96662b5e8205563",
+      "bytes": 2905972,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 1776,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-420e-400x240-transparent-7c7a42787a2516e7.zip",
+      "sha256": "7c7a42787a2516e7af65e6e61a4c194953bda4867b0c3e831157a9f9c73a81b1",
+      "bytes": 38736068,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 1776,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-420e-400x240-white-8e12585438b777eb.zip",
+      "sha256": "8e12585438b777eb32f170279148dc8ec423f5e09ad049f45f53216636e6b470",
+      "bytes": 37131681,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 1776,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "420E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-420e-400x240-black-69f7eaddcc6f12d5.zip",
+      "sha256": "69f7eaddcc6f12d500e9a332eb1d557bc07d9db15f3c7e000b26a7cb543d0a60",
+      "bytes": 35929281,
+      "replaced": [],
+      "added": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ],
+      "unrelated_preserved": 1776,
+      "changed_names": [
+        "1_0_11_3CBC_C5A8_2A_1A40000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-70e-50x30-transparent-675e9b55f6ba1ee1.zip",
+      "sha256": "675e9b55f6ba1ee1999e47092803e058513b9eba6d63332afbddc213945e3f7d",
+      "bytes": 173140,
+      "replaced": [],
+      "added": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "unrelated_preserved": 119,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-70e-50x30-white-91299cb38580251f.zip",
+      "sha256": "91299cb38580251f34f16451c07d1528f891e3493bae606c491231385ce941ae",
+      "bytes": 209780,
+      "replaced": [],
+      "added": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "unrelated_preserved": 119,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-70e-50x30-black-eeab6bc90103046c.zip",
+      "sha256": "eeab6bc90103046ce8e739d5c477438a73569ddb82536b8e6d9967b3928a7f26",
+      "bytes": 205818,
+      "replaced": [],
+      "added": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "unrelated_preserved": 119,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-70e-400x240-transparent-a8d00331ff369643.zip",
+      "sha256": "a8d00331ff369643a21e4c224a47daa18b93b60346c063d238355c1b26775d30",
+      "bytes": 3489076,
+      "replaced": [],
+      "added": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "unrelated_preserved": 119,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-70e-400x240-white-a610479757dcb751.zip",
+      "sha256": "a610479757dcb7518822527c992ebd4c94eae2314af6bec43b7fa010e14c521b",
+      "bytes": 2817701,
+      "replaced": [],
+      "added": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "unrelated_preserved": 119,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "70E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-70e-400x240-black-881c9a7ee9e40eea.zip",
+      "sha256": "881c9a7ee9e40eeacedfa419b64d19cb337994c0884b3e61a6642c868191c732",
+      "bytes": 2686015,
+      "replaced": [],
+      "added": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ],
+      "unrelated_preserved": 119,
+      "changed_names": [
+        "1_0_1_C_CE4_7E_460000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-90e-50x30-transparent-2d914033d08295e2.zip",
+      "sha256": "2d914033d08295e2359e162c5dd724892ac457ddff4f36cd8bf21a2f5d12d820",
+      "bytes": 2676734,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1977,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-90e-50x30-white-62b287b781a3be2f.zip",
+      "sha256": "62b287b781a3be2fd1210b9b0030274528c0193b8c4263cb5c9fc8da818411f2",
+      "bytes": 3378628,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1977,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-90e-50x30-black-9ce5e4b9ad7a01d9.zip",
+      "sha256": "9ce5e4b9ad7a01d9b2ded1aa0a04a18ad319f0a68f54eb03c95ff2ca0a79561b",
+      "bytes": 3419790,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1977,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-90e-400x240-transparent-c26fe97b9b6c2b29.zip",
+      "sha256": "c26fe97b9b6c2b296c3264af670c9e2e2470e46aa929852b7504485fbe502197",
+      "bytes": 44643038,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1977,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-90e-400x240-white-72d1b0afca1121dd.zip",
+      "sha256": "72d1b0afca1121dd62178c5ffa76606ccfa88c59d3d323087bb689f8a439f918",
+      "bytes": 45945634,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1977,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    },
+    {
+      "selector_id": "90E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-90e-400x240-black-20473cad308923f2.zip",
+      "sha256": "20473cad308923f221c424cd6509344698a2b01163c03eec9393ce4f188e436f",
+      "bytes": 44378370,
+      "replaced": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_preserved": 1977,
+      "changed_names": [
+        "1_0_16_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_16_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_16_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_16_404_6_AA_5A0000_0_0_0.png",
+        "1_0_16_408_4_AA_5A0000_0_0_0.png",
+        "1_0_16_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_16_416_4_AA_5A0000_0_0_0.png",
+        "1_0_16_417_6_AA_5A0000_0_0_0.png",
+        "1_0_16_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_16_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_16_443_2_AA_5A0000_0_0_0.png",
+        "1_0_16_446_6_AA_5A0000_0_0_0.png",
+        "1_0_16_447_5_AA_5A0000_0_0_0.png",
+        "1_0_16_448_4_AA_5A0000_0_0_0.png",
+        "1_0_16_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_16_455_8_AA_5A0000_0_0_0.png",
+        "1_0_16_460_9_AA_5A0000_0_0_0.png",
+        "1_0_16_466_8_AA_5A0000_0_0_0.png",
+        "1_0_19_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_19_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_19_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_19_404_6_AA_5A0000_0_0_0.png",
+        "1_0_19_408_4_AA_5A0000_0_0_0.png",
+        "1_0_19_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_19_416_4_AA_5A0000_0_0_0.png",
+        "1_0_19_417_6_AA_5A0000_0_0_0.png",
+        "1_0_19_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_19_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_19_443_2_AA_5A0000_0_0_0.png",
+        "1_0_19_446_6_AA_5A0000_0_0_0.png",
+        "1_0_19_447_5_AA_5A0000_0_0_0.png",
+        "1_0_19_448_4_AA_5A0000_0_0_0.png",
+        "1_0_19_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_19_455_8_AA_5A0000_0_0_0.png",
+        "1_0_19_460_9_AA_5A0000_0_0_0.png",
+        "1_0_19_466_8_AA_5A0000_0_0_0.png",
+        "1_0_1_3E9_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3EB_2_AA_5A0000_0_0_0.png",
+        "1_0_1_3F0_5_AA_5A0000_0_0_0.png",
+        "1_0_1_3F7_6_AA_5A0000_0_0_0.png",
+        "1_0_1_404_6_AA_5A0000_0_0_0.png",
+        "1_0_1_408_4_AA_5A0000_0_0_0.png",
+        "1_0_1_40F_2_AA_5A0000_0_0_0.png",
+        "1_0_1_416_4_AA_5A0000_0_0_0.png",
+        "1_0_1_417_6_AA_5A0000_0_0_0.png",
+        "1_0_1_41C_8_AA_5A0000_0_0_0.png",
+        "1_0_1_42F_4_AA_5A0000_0_0_0.png",
+        "1_0_1_443_2_AA_5A0000_0_0_0.png",
+        "1_0_1_446_6_AA_5A0000_0_0_0.png",
+        "1_0_1_447_5_AA_5A0000_0_0_0.png",
+        "1_0_1_448_4_AA_5A0000_0_0_0.png",
+        "1_0_1_44D_6_AA_5A0000_0_0_0.png",
+        "1_0_1_455_8_AA_5A0000_0_0_0.png",
+        "1_0_1_460_9_AA_5A0000_0_0_0.png",
+        "1_0_1_466_8_AA_5A0000_0_0_0.png"
+      ]
+    }
+  ],
+  "new_parts": [
+    {
+      "filename": "warder-130e-220x132-transparent-4dcc37dea65f8688.zip.part00",
+      "bytes": 16777216,
+      "sha256": "1b96344dad297b2a17ad9b2ed945e7e3dcc343b343b1b9759bc25c3e22de36da"
+    },
+    {
+      "filename": "warder-130e-220x132-transparent-4dcc37dea65f8688.zip.part01",
+      "bytes": 16777216,
+      "sha256": "f41dc3c2168391c4b14beadf536956271d58a537f16136de30e0834f8a85c762"
+    },
+    {
+      "filename": "warder-130e-220x132-transparent-4dcc37dea65f8688.zip.part02",
+      "bytes": 4174192,
+      "sha256": "c772446eb5c76469365c91a86765a8b8d2b4504d6cb2018ccab959571db1cebe"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part00",
+      "bytes": 16777216,
+      "sha256": "42c5611eba98a6a25afb47055f55a862586894e3dfc116ef5c5b2cea982a857f"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part01",
+      "bytes": 16777216,
+      "sha256": "56c0d916ac3555f91410668d4d1c14cc2b5e5747482f449498e6323a5848c92d"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part02",
+      "bytes": 16777216,
+      "sha256": "f771378e1e59d9adb13eca61dd5d7f34ce8b878793e432205d5f3f644db038a9"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part03",
+      "bytes": 16777216,
+      "sha256": "cdea993944035390e20ce31837fa7ab8581783a40465b17ff2aa35b96a7d54f7"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part04",
+      "bytes": 16777216,
+      "sha256": "99de0f8ab3743924591a8002af935715c2e3e1797f2d6b409363c813e8842f24"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part05",
+      "bytes": 16777216,
+      "sha256": "c674da083ae3b53f9d2b3cc5c876447ae425c85a2a69774ee36f38b1e2ad8ae7"
+    },
+    {
+      "filename": "warder-130e-220x132-black-51e140be676a4925.zip.part06",
+      "bytes": 315034,
+      "sha256": "83c14ef9a3d65471a7c96dbcd5a5c303510187923312e2626a60fd09ad189cc8"
+    },
+    {
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip.part00",
+      "bytes": 16777216,
+      "sha256": "93a9378e9f47f5d46f930ebc37acbf05b081e61e7c794bd2b109beae36982c22"
+    },
+    {
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip.part01",
+      "bytes": 16777216,
+      "sha256": "595824d06db6c5012cd0ad10d85e35740f00aaae5533dadc29ba6ecee784f507"
+    },
+    {
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip.part02",
+      "bytes": 16777216,
+      "sha256": "a5003af0c68430c74adddce4274d74c59cfe0fd5e129a415ab5ac2da98c01610"
+    },
+    {
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip.part03",
+      "bytes": 16777216,
+      "sha256": "a57f9bb99860353bc688fd5c64ccdb1ae8f5d2119c7ce3f4a4cd3b8356e08921"
+    },
+    {
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip.part04",
+      "bytes": 16777216,
+      "sha256": "a0eab8c715beaaaefa6c15487e6761220dedd2f6f2ad0fbd321c63221127b577"
+    },
+    {
+      "filename": "warder-130e-220x132-white-56a8ed71cd967a84.zip.part05",
+      "bytes": 7178499,
+      "sha256": "6b93ffea7de6d6fdad4bc7a07c4ab50fd380fedcb6674689d33bf84662afc38a"
+    },
+    {
+      "filename": "warder-235e-220x132-transparent-78cd74a1aa3df3c4.zip.part00",
+      "bytes": 16080472,
+      "sha256": "78cd74a1aa3df3c465a8c0fa9a41eb3a690279e13a78526367c6275f8e1773fd"
+    },
+    {
+      "filename": "warder-235e-220x132-black-6c23e289984bf07d.zip.part00",
+      "bytes": 16777216,
+      "sha256": "c95c9c44d45945e448d827c3d37c1d5cc9da6d5643456cd063d172bfd08627d9"
+    },
+    {
+      "filename": "warder-235e-220x132-black-6c23e289984bf07d.zip.part01",
+      "bytes": 16777216,
+      "sha256": "cf78f02145753ca0897c1c1b94b54d2f7f25e9866ab96041d32324f158745f40"
+    },
+    {
+      "filename": "warder-235e-220x132-black-6c23e289984bf07d.zip.part02",
+      "bytes": 16777216,
+      "sha256": "2f3b35e015ddd6345fd143ed3138dfcb6bda449c3ad1a2609e8c38d161295f8c"
+    },
+    {
+      "filename": "warder-235e-220x132-black-6c23e289984bf07d.zip.part03",
+      "bytes": 1155099,
+      "sha256": "461e6e5cc03f5626cdaf90575c665e5df9661a98a4d4a7179141bf2323a53185"
+    },
+    {
+      "filename": "warder-235e-220x132-white-47ce8016eb017cf6.zip.part00",
+      "bytes": 16777216,
+      "sha256": "694324af74a6cfff86500b2efe4fe45a78651a0c2a57646bc1dc314334457e01"
+    },
+    {
+      "filename": "warder-235e-220x132-white-47ce8016eb017cf6.zip.part01",
+      "bytes": 16777216,
+      "sha256": "97f86b8e54af27d205887991322ec325be8e593fa6d52f2b774d2a0609004925"
+    },
+    {
+      "filename": "warder-235e-220x132-white-47ce8016eb017cf6.zip.part02",
+      "bytes": 13502930,
+      "sha256": "d438113cee99f6663f8367cd9e67779df55068e2e0aa7dd1c4ee05185fe9b4a7"
+    },
+    {
+      "filename": "warder-282e-220x132-transparent-95f296f1363058dd.zip.part00",
+      "bytes": 15867498,
+      "sha256": "95f296f1363058dda9440a01433ebda931338a0e74faa3266835c69a36b0b541"
+    },
+    {
+      "filename": "warder-282e-220x132-black-84c1fc945daa1f75.zip.part00",
+      "bytes": 16777216,
+      "sha256": "75e31cc27995669bbbbdbb33f657ab7430e1ef058869ac57ec2f6bd6c2a1251a"
+    },
+    {
+      "filename": "warder-282e-220x132-black-84c1fc945daa1f75.zip.part01",
+      "bytes": 16777216,
+      "sha256": "2e85189965a2047468d74d096546947b99e6e3c760c026360c4fb92dcf8c9b45"
+    },
+    {
+      "filename": "warder-282e-220x132-black-84c1fc945daa1f75.zip.part02",
+      "bytes": 8128599,
+      "sha256": "8f147e2c3577282367a5b12a8e892d14fda7ebc54b844bcf16cbd56ef79bc737"
+    },
+    {
+      "filename": "warder-282e-220x132-white-7d7c9cf7e612681f.zip.part00",
+      "bytes": 16777216,
+      "sha256": "787ce8f8a5b9dc578759999734020a0d28960caeaa86eed6a8e4d6a7ab6b070b"
+    },
+    {
+      "filename": "warder-282e-220x132-white-7d7c9cf7e612681f.zip.part01",
+      "bytes": 16777216,
+      "sha256": "7c1a2ad8520950ad8cb2894255205f92c3c85248c1a0cf02296cb10f8d88b7a1"
+    },
+    {
+      "filename": "warder-282e-220x132-white-7d7c9cf7e612681f.zip.part02",
+      "bytes": 3393414,
+      "sha256": "dce458acbf075468dd97d46b9ff5f406a9238590b2b7f53b436bac69b7b34bc4"
+    },
+    {
+      "filename": "warder-420e-220x132-transparent-3db246d5ec5207ca.zip.part00",
+      "bytes": 16777216,
+      "sha256": "97707450606b3c4c5ec2066d3ad1a8055527393f81636cad59c16621a47f5861"
+    },
+    {
+      "filename": "warder-420e-220x132-transparent-3db246d5ec5207ca.zip.part01",
+      "bytes": 1709328,
+      "sha256": "a9a18114c21fea677dca7c980c791d958cc168f1c288105ba0d3b651eb892ac6"
+    },
+    {
+      "filename": "warder-420e-220x132-black-70e943df016b4ac1.zip.part00",
+      "bytes": 16777216,
+      "sha256": "8caf2331d49f5705e1d096e9ff27191521ab2d8fa14ef5a00735ea197b980585"
+    },
+    {
+      "filename": "warder-420e-220x132-black-70e943df016b4ac1.zip.part01",
+      "bytes": 16777216,
+      "sha256": "5e48d553188d8b5414bc2948fb70b08494801c38603cc9549529b52e844c5b21"
+    },
+    {
+      "filename": "warder-420e-220x132-black-70e943df016b4ac1.zip.part02",
+      "bytes": 10693813,
+      "sha256": "3f6c435ad6fc659b0fbff7a9d3ac759d5873bfac6b208bf95e0f879c041c4433"
+    },
+    {
+      "filename": "warder-420e-220x132-white-7459327a7fd31f75.zip.part00",
+      "bytes": 16777216,
+      "sha256": "7c81413692eddd2ecf027514318fac22997961d845887a669cd9ec4fe94c7901"
+    },
+    {
+      "filename": "warder-420e-220x132-white-7459327a7fd31f75.zip.part01",
+      "bytes": 16777216,
+      "sha256": "e3704e88099bd1b80e333cb93891a113c6221782a3ef607dfd65b9206088e893"
+    },
+    {
+      "filename": "warder-420e-220x132-white-7459327a7fd31f75.zip.part02",
+      "bytes": 5447527,
+      "sha256": "aec532f396fa7eb5af7abe20d9921c8a43ef1be0a56ef17b5913672bb3fa3b30"
+    },
+    {
+      "filename": "warder-48e_a-220x132-transparent-775627e6e7fd69e0.zip.part00",
+      "bytes": 7623137,
+      "sha256": "775627e6e7fd69e00305c3b850bc7294801178a50afb3b31cb14c7d2c451d2f3"
+    },
+    {
+      "filename": "warder-48e_a-220x132-black-bcdd3869b1f5ac65.zip.part00",
+      "bytes": 16777216,
+      "sha256": "1a5b3f4861927e75ba1a98c6d023c6f839be9b6adc5d04aca5faa50a2a293d4a"
+    },
+    {
+      "filename": "warder-48e_a-220x132-black-bcdd3869b1f5ac65.zip.part01",
+      "bytes": 3652267,
+      "sha256": "96f439cbde97137d03a7ff2b43763e71ba8709adb5265e9d3c100972abb83b27"
+    },
+    {
+      "filename": "warder-48e_a-220x132-white-5f104cc128c2626a.zip.part00",
+      "bytes": 16777216,
+      "sha256": "001eaf2b9666752e84229caf2168c1d25884dff3ecb045a31cae590a60c50ed8"
+    },
+    {
+      "filename": "warder-48e_a-220x132-white-5f104cc128c2626a.zip.part01",
+      "bytes": 701652,
+      "sha256": "3dd745d9180d09fdce7b6dd7e542e6c65a97a51e9e1dfafc610a4f1c2492a8f7"
+    },
+    {
+      "filename": "warder-70e-220x132-transparent-6237a357fad89ad7.zip.part00",
+      "bytes": 1708384,
+      "sha256": "6237a357fad89ad7d35271b63cea3f767f97c3aa13d6b6c0840b903b59ca17e5"
+    },
+    {
+      "filename": "warder-70e-220x132-black-fa7f363abda7033d.zip.part00",
+      "bytes": 3813025,
+      "sha256": "fa7f363abda7033de9126b0c25f25160b6fe159e04b75be8edc3692637172f76"
+    },
+    {
+      "filename": "warder-70e-220x132-white-05317e9504ae7d00.zip.part00",
+      "bytes": 3507045,
+      "sha256": "05317e9504ae7d0095fea69bcd363931f60f5b2bc2030347230b06d04506ccbd"
+    },
+    {
+      "filename": "warder-90e-220x132-transparent-ed43b215f8d34c44.zip.part00",
+      "bytes": 16777216,
+      "sha256": "27d4ee02e767e882c5fe7fc8d4b7a576794c061a01cb209585ed8f1b5c90657d"
+    },
+    {
+      "filename": "warder-90e-220x132-transparent-ed43b215f8d34c44.zip.part01",
+      "bytes": 3153379,
+      "sha256": "bb4684c61f26526833dac22653b820fa7f6d761cf9fdcffbfca801e9be3fa3c0"
+    },
+    {
+      "filename": "warder-90e-220x132-black-d97fa9047efc928d.zip.part00",
+      "bytes": 16777216,
+      "sha256": "d2a90bdd2d2f60bcb43fe950f3f8511650cf433d71a3109431e8fbd6966a5d1d"
+    },
+    {
+      "filename": "warder-90e-220x132-black-d97fa9047efc928d.zip.part01",
+      "bytes": 16777216,
+      "sha256": "df2e528eb4236f0f55eaf0390155f6178b40816139c9a17e678c4590f3401b8b"
+    },
+    {
+      "filename": "warder-90e-220x132-black-d97fa9047efc928d.zip.part02",
+      "bytes": 10743605,
+      "sha256": "e261a51fa1f424ebf0b28b9a356dbd2a8fda73e2d785cd15465e633424de57cc"
+    },
+    {
+      "filename": "warder-90e-220x132-white-d210647f6cd7c844.zip.part00",
+      "bytes": 16777216,
+      "sha256": "21def1f8b446275a5965b1a91f6df585a6de5ac543fbf16053491074609c520c"
+    },
+    {
+      "filename": "warder-90e-220x132-white-d210647f6cd7c844.zip.part01",
+      "bytes": 16777216,
+      "sha256": "2308be840db92871b3ee68bf5649c74c606fac2b6ddf533ce4b5981187c54735"
+    },
+    {
+      "filename": "warder-90e-220x132-white-d210647f6cd7c844.zip.part02",
+      "bytes": 5397008,
+      "sha256": "1efef51c736ddc0b973a48ef54d7f115d2c953dd92f044972718bf44e4e94f60"
+    },
+    {
+      "filename": "warder-130e-50x30-transparent-4f600ebe6d98c1ff.zip.part00",
+      "bytes": 5750906,
+      "sha256": "4f600ebe6d98c1ff733b31f8c318c004c8a5281c859e33e7951fb111c14314bd"
+    },
+    {
+      "filename": "warder-130e-50x30-white-e89c5022ac1c494d.zip.part00",
+      "bytes": 7282470,
+      "sha256": "e89c5022ac1c494d5b3f90a0bb7156f564e3e30be357d2b456b1a7a9b3e96f0c"
+    },
+    {
+      "filename": "warder-130e-50x30-black-af2cfa85bf14194b.zip.part00",
+      "bytes": 7279010,
+      "sha256": "af2cfa85bf14194bc62386f68cd3f586e1b75234a8776d009e2d74c39fafce2b"
+    },
+    {
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip.part00",
+      "bytes": 16777216,
+      "sha256": "23b0bc6ee203e5f68e3317d25e523026eb00d2d78842b4d698df2484a32e5a60"
+    },
+    {
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip.part01",
+      "bytes": 16777216,
+      "sha256": "14651747fc9eff96fb6ba7d55809b2921efc7db62b22014c5af389a1c4f01101"
+    },
+    {
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip.part02",
+      "bytes": 16777216,
+      "sha256": "199b947597bad3d0d9bc72afdd792a6dabbdb2d68c4a20b55ac0376e97a89b34"
+    },
+    {
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip.part03",
+      "bytes": 16777216,
+      "sha256": "2bf3875501fdcf47c69f77709369385d717c6ed84a84e47945746a293e7d5d80"
+    },
+    {
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip.part04",
+      "bytes": 16777216,
+      "sha256": "b121dd598741ef8894670f4f4f2662c5e69676394ca50c20df34e556c823dbc6"
+    },
+    {
+      "filename": "warder-130e-400x240-transparent-ebbfa9bd5eba6b80.zip.part05",
+      "bytes": 800735,
+      "sha256": "58a6a4fc898a86b5183e919aa430e44e1eb18666cb31bfb5abf30e3858b75abb"
+    },
+    {
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip.part00",
+      "bytes": 16777216,
+      "sha256": "5f7563a0d9209040dc98c1d3d639e0a4a0bd1114ae369854e41ba076e80e854e"
+    },
+    {
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip.part01",
+      "bytes": 16777216,
+      "sha256": "e7591b4ccd52f8bfa6ca991d517d86f0b4ff8f8a70300c0dd0204efc3d70d0db"
+    },
+    {
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip.part02",
+      "bytes": 16777216,
+      "sha256": "c8eac103bae9a3c663c232acd5809697bb55846f8047ec18622adb5d6b815794"
+    },
+    {
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip.part03",
+      "bytes": 16777216,
+      "sha256": "d26690e168444b5890e5534eeaeb7b012cb8b6343316320c1640335666a09d55"
+    },
+    {
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip.part04",
+      "bytes": 16777216,
+      "sha256": "1457ec3cda07e730d104b2825ba558c84457404f7b3744831f99c56f8cb2da3b"
+    },
+    {
+      "filename": "warder-130e-400x240-white-ccfd00b5d701207f.zip.part05",
+      "bytes": 7773101,
+      "sha256": "cd380a3391616d4c0fb8ffcc0019d6ef1e0ec58d866a47ddad4e6fdc03b2998b"
+    },
+    {
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip.part00",
+      "bytes": 16777216,
+      "sha256": "dc8d83bd92869066c42f79184ede75bef55f6955078f1f7bcd22196ee2d46f5c"
+    },
+    {
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip.part01",
+      "bytes": 16777216,
+      "sha256": "e46119f79ed9f85cf553a29279086a2b9a22df75b92872fc3d44b5858822f95e"
+    },
+    {
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip.part02",
+      "bytes": 16777216,
+      "sha256": "744d253832b50388033ca1dc43f5d0d0824cd62e4f875149fbd5bed51af83f43"
+    },
+    {
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip.part03",
+      "bytes": 16777216,
+      "sha256": "d98e0b5858d5f66bedcf6fb03c4bdf082604a1a0646126b6e5fc490afab183cd"
+    },
+    {
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip.part04",
+      "bytes": 16777216,
+      "sha256": "77f54cb855d1272b0b336b8e7d115096a91ac46a04dc6e1abf53d494b624a198"
+    },
+    {
+      "filename": "warder-130e-400x240-black-e7e3a69e8246c955.zip.part05",
+      "bytes": 4636549,
+      "sha256": "fe5ec462d30a9fdc624e78c33c2f056b39c96e6f496d2fe3628b2ab1a2e0b00f"
+    },
+    {
+      "filename": "warder-235e-50x30-transparent-15c67cf28b1c5be0.zip.part00",
+      "bytes": 2587536,
+      "sha256": "15c67cf28b1c5be04163a295a3167a425c706dddb81ea9e44cb2c1df95a7c2b2"
+    },
+    {
+      "filename": "warder-235e-50x30-white-181ccd77dbccb450.zip.part00",
+      "bytes": 3340424,
+      "sha256": "181ccd77dbccb4509156ebb48092f7297e7db410c3740b162bdbd06d9b02b619"
+    },
+    {
+      "filename": "warder-235e-50x30-black-3969fbe43d5d28fa.zip.part00",
+      "bytes": 3336128,
+      "sha256": "3969fbe43d5d28fadb1644456270f0fc2890e3718e4ae3f5cafde8b4e6b6bf00"
+    },
+    {
+      "filename": "warder-235e-400x240-transparent-d53f5b927bfbf6f4.zip.part00",
+      "bytes": 16777216,
+      "sha256": "7e52d66b7397eac978ffcc0c0bb7186d83367041655772a41193bcaf2ac95156"
+    },
+    {
+      "filename": "warder-235e-400x240-transparent-d53f5b927bfbf6f4.zip.part01",
+      "bytes": 16777216,
+      "sha256": "708c422d673af4b3d1d1da746516efc4a212e439032b26ce473dce088a9c4047"
+    },
+    {
+      "filename": "warder-235e-400x240-transparent-d53f5b927bfbf6f4.zip.part02",
+      "bytes": 2436897,
+      "sha256": "bdada533f80588e3cd31e34b2d615930c73739b63ebcc99c797fd62aea888cee"
+    },
+    {
+      "filename": "warder-235e-400x240-white-925eb7196ece4e97.zip.part00",
+      "bytes": 16777216,
+      "sha256": "a33a6dd8f3556ce2b03ac1865dff219f3dd9debf0659ace6a097f9894b29fc72"
+    },
+    {
+      "filename": "warder-235e-400x240-white-925eb7196ece4e97.zip.part01",
+      "bytes": 16777216,
+      "sha256": "611f39763531b4c4fb6805ea0bd6a78acd644980d83b4fe9c44d22045732bafb"
+    },
+    {
+      "filename": "warder-235e-400x240-white-925eb7196ece4e97.zip.part02",
+      "bytes": 8830560,
+      "sha256": "37ff6ebb27205689c7c414bd39f5b4427f48e34b4fec1ceec17411a486c19b9e"
+    },
+    {
+      "filename": "warder-235e-400x240-black-094523616158b5cc.zip.part00",
+      "bytes": 16777216,
+      "sha256": "029b9ba5538581ce91cdc384f67fec9cee7f618411f2e00b5b1bd43207b02fa9"
+    },
+    {
+      "filename": "warder-235e-400x240-black-094523616158b5cc.zip.part01",
+      "bytes": 16777216,
+      "sha256": "febbdb57c3d8320049cabda77b4185a0b6162ca2c2e4f05f10a43e8c3f162b0f"
+    },
+    {
+      "filename": "warder-235e-400x240-black-094523616158b5cc.zip.part02",
+      "bytes": 7356426,
+      "sha256": "a80b2c4feec95c44df1f34d140f471ea8883922902a9bf242c164f80cb97b605"
+    },
+    {
+      "filename": "warder-282e-50x30-transparent-edd3961583c02f13.zip.part00",
+      "bytes": 2401669,
+      "sha256": "edd3961583c02f13af3aa404e4287ee883d78e0dfb3f6d94137a41809467f399"
+    },
+    {
+      "filename": "warder-282e-50x30-white-d8c0e94308115183.zip.part00",
+      "bytes": 3165833,
+      "sha256": "d8c0e943081151834b5dd615d542171097ab542920e67184f85db1401e7866d6"
+    },
+    {
+      "filename": "warder-282e-50x30-black-80334fb7a0f9d96e.zip.part00",
+      "bytes": 3098793,
+      "sha256": "80334fb7a0f9d96e726f301b18ad546ac63fba38dc214c3f3123fa922e0d6fce"
+    },
+    {
+      "filename": "warder-282e-400x240-transparent-d7ebda81cf3a8beb.zip.part00",
+      "bytes": 16777216,
+      "sha256": "c831cabb38c8322f4fecf59407af21d9b17442acf1f3217529fbf33dc7f5cdbd"
+    },
+    {
+      "filename": "warder-282e-400x240-transparent-d7ebda81cf3a8beb.zip.part01",
+      "bytes": 16777216,
+      "sha256": "e9b2d4573a05cc20b8480c599a1f91f5240052c55721e37eef4acf8eecc0841b"
+    },
+    {
+      "filename": "warder-282e-400x240-transparent-d7ebda81cf3a8beb.zip.part02",
+      "bytes": 1630593,
+      "sha256": "1d3e4200539c2630c7123496aaa46cfcb90c78b4961d5d4a1c665abd5566036e"
+    },
+    {
+      "filename": "warder-282e-400x240-white-bee1157943b14819.zip.part00",
+      "bytes": 16777216,
+      "sha256": "f29cf682a732354a35e0beffd414ebc3765b82dc8413c149a61dd5505bd45521"
+    },
+    {
+      "filename": "warder-282e-400x240-white-bee1157943b14819.zip.part01",
+      "bytes": 16777216,
+      "sha256": "39e95866032f92d1e0c9c6223682755d418aa757e921922e34ce6f7c8174b8e6"
+    },
+    {
+      "filename": "warder-282e-400x240-white-bee1157943b14819.zip.part02",
+      "bytes": 6785772,
+      "sha256": "e77d222f56e457171a318a342d5df9b777f8274dbee2e8d399c7e3fb67375609"
+    },
+    {
+      "filename": "warder-282e-400x240-black-556d42932a7a0ab5.zip.part00",
+      "bytes": 16777216,
+      "sha256": "1b0fda3ed1c1c15b736ab734627b39188785736737996858fb8059513fe09120"
+    },
+    {
+      "filename": "warder-282e-400x240-black-556d42932a7a0ab5.zip.part01",
+      "bytes": 16777216,
+      "sha256": "2430d58d93638eb41294931e3fcf6014200cb31fb5dd5c6c6e222abdfd7522b5"
+    },
+    {
+      "filename": "warder-282e-400x240-black-556d42932a7a0ab5.zip.part02",
+      "bytes": 4919438,
+      "sha256": "5badf0bc9f3320868c1db9e44256437583e008b8e28a1547df85526dcf769e82"
+    },
+    {
+      "filename": "warder-48e_a-50x30-transparent-643ed130dcb8a3b4.zip.part00",
+      "bytes": 1078570,
+      "sha256": "643ed130dcb8a3b45776d24c35e5c6848e95fe89db025fdb7821dfb7d7b60ad3"
+    },
+    {
+      "filename": "warder-48e_a-50x30-white-5e9bd6b16be3ad7e.zip.part00",
+      "bytes": 1376394,
+      "sha256": "5e9bd6b16be3ad7e98613733014b4c1a3b868f0aa535128d7dd20622836ad795"
+    },
+    {
+      "filename": "warder-48e_a-50x30-black-abb7df20c7cf579e.zip.part00",
+      "bytes": 1363537,
+      "sha256": "abb7df20c7cf579e537b649df5aba750667aa94aad1c175fe1819a0a203ee6e6"
+    },
+    {
+      "filename": "warder-48e_a-400x240-transparent-1855e6955090eb4a.zip.part00",
+      "bytes": 15756765,
+      "sha256": "1855e6955090eb4a85fcc764c3ec117bfb797a9dd3650c0c7d2788edf467ea75"
+    },
+    {
+      "filename": "warder-48e_a-400x240-white-196077fbe64d25b8.zip.part00",
+      "bytes": 16777216,
+      "sha256": "abb0cbeb71864802132b336dd83331f5a6599dc31868f1e1164540a1fcdaaf1d"
+    },
+    {
+      "filename": "warder-48e_a-400x240-white-196077fbe64d25b8.zip.part01",
+      "bytes": 351232,
+      "sha256": "e858fc5d3bb6958e5631f393cd3d6dca7b666d4fca68b67605ad0d1e6ef255a1"
+    },
+    {
+      "filename": "warder-48e_a-400x240-black-17df0357a0efa25e.zip.part00",
+      "bytes": 16361638,
+      "sha256": "17df0357a0efa25ecb72a5fbf351a63ebc1d240fdc5df511bde9f82c9e713792"
+    },
+    {
+      "filename": "warder-420e-50x30-transparent-94c2c6b4831fd824.zip.part00",
+      "bytes": 2348542,
+      "sha256": "94c2c6b4831fd824d099a24a78197b247a63cc09a61f1840f3c5b1dac3da7138"
+    },
+    {
+      "filename": "warder-420e-50x30-white-c0a1e525f3a54be1.zip.part00",
+      "bytes": 2886048,
+      "sha256": "c0a1e525f3a54be1164cdf667121fa2c718386f46a008fac1781aeebdf40da04"
+    },
+    {
+      "filename": "warder-420e-50x30-black-c25aa846598c4164.zip.part00",
+      "bytes": 2905972,
+      "sha256": "c25aa846598c416469575793d5001fa32927b560780b7c1bc96662b5e8205563"
+    },
+    {
+      "filename": "warder-420e-400x240-transparent-7c7a42787a2516e7.zip.part00",
+      "bytes": 16777216,
+      "sha256": "f9f3fb80241c3a636d4409ba0f05cff9a87b382f86c97c56f967d5df01fdfe8e"
+    },
+    {
+      "filename": "warder-420e-400x240-transparent-7c7a42787a2516e7.zip.part01",
+      "bytes": 16777216,
+      "sha256": "cdb0d28a69c296c5fa72cde81e975b0834423ebaa145883f023a035f7b3de7da"
+    },
+    {
+      "filename": "warder-420e-400x240-transparent-7c7a42787a2516e7.zip.part02",
+      "bytes": 5181636,
+      "sha256": "93a45b31a24a8604a2c06990edd8da2fc220b1a05dbbc920d80558b0c1a36208"
+    },
+    {
+      "filename": "warder-420e-400x240-white-8e12585438b777eb.zip.part00",
+      "bytes": 16777216,
+      "sha256": "2412153faef887b2c17c4f306be62b4cbff2e4d33568882a0fa5f65fe0a01663"
+    },
+    {
+      "filename": "warder-420e-400x240-white-8e12585438b777eb.zip.part01",
+      "bytes": 16777216,
+      "sha256": "93a46799a662e5d6a366eebbb90a61b763a8d9358224b1038b3fb174ab8c4ac3"
+    },
+    {
+      "filename": "warder-420e-400x240-white-8e12585438b777eb.zip.part02",
+      "bytes": 3577249,
+      "sha256": "6105ec6eac5ffa380f369b297f88e6e52c3878aba684a389f36bb3f014201bf9"
+    },
+    {
+      "filename": "warder-420e-400x240-black-69f7eaddcc6f12d5.zip.part00",
+      "bytes": 16777216,
+      "sha256": "431aa44511af4e2dd9d5a04ef17d3aebbdba263ddde5d3fd0a4392bdbd0d9280"
+    },
+    {
+      "filename": "warder-420e-400x240-black-69f7eaddcc6f12d5.zip.part01",
+      "bytes": 16777216,
+      "sha256": "8d88d91472814af5f0a15d251503232c430232cfda6678286e8d68f1f1189011"
+    },
+    {
+      "filename": "warder-420e-400x240-black-69f7eaddcc6f12d5.zip.part02",
+      "bytes": 2374849,
+      "sha256": "ce84e8c5b534e99f78b7942b0171aefe44370a607ac20b9a1f951dadd78bf729"
+    },
+    {
+      "filename": "warder-70e-50x30-transparent-675e9b55f6ba1ee1.zip.part00",
+      "bytes": 173140,
+      "sha256": "675e9b55f6ba1ee1999e47092803e058513b9eba6d63332afbddc213945e3f7d"
+    },
+    {
+      "filename": "warder-70e-50x30-white-91299cb38580251f.zip.part00",
+      "bytes": 209780,
+      "sha256": "91299cb38580251f34f16451c07d1528f891e3493bae606c491231385ce941ae"
+    },
+    {
+      "filename": "warder-70e-50x30-black-eeab6bc90103046c.zip.part00",
+      "bytes": 205818,
+      "sha256": "eeab6bc90103046ce8e739d5c477438a73569ddb82536b8e6d9967b3928a7f26"
+    },
+    {
+      "filename": "warder-70e-400x240-transparent-a8d00331ff369643.zip.part00",
+      "bytes": 3489076,
+      "sha256": "a8d00331ff369643a21e4c224a47daa18b93b60346c063d238355c1b26775d30"
+    },
+    {
+      "filename": "warder-70e-400x240-white-a610479757dcb751.zip.part00",
+      "bytes": 2817701,
+      "sha256": "a610479757dcb7518822527c992ebd4c94eae2314af6bec43b7fa010e14c521b"
+    },
+    {
+      "filename": "warder-70e-400x240-black-881c9a7ee9e40eea.zip.part00",
+      "bytes": 2686015,
+      "sha256": "881c9a7ee9e40eeacedfa419b64d19cb337994c0884b3e61a6642c868191c732"
+    },
+    {
+      "filename": "warder-90e-50x30-transparent-2d914033d08295e2.zip.part00",
+      "bytes": 2676734,
+      "sha256": "2d914033d08295e2359e162c5dd724892ac457ddff4f36cd8bf21a2f5d12d820"
+    },
+    {
+      "filename": "warder-90e-50x30-white-62b287b781a3be2f.zip.part00",
+      "bytes": 3378628,
+      "sha256": "62b287b781a3be2fd1210b9b0030274528c0193b8c4263cb5c9fc8da818411f2"
+    },
+    {
+      "filename": "warder-90e-50x30-black-9ce5e4b9ad7a01d9.zip.part00",
+      "bytes": 3419790,
+      "sha256": "9ce5e4b9ad7a01d9b2ded1aa0a04a18ad319f0a68f54eb03c95ff2ca0a79561b"
+    },
+    {
+      "filename": "warder-90e-400x240-transparent-c26fe97b9b6c2b29.zip.part00",
+      "bytes": 16777216,
+      "sha256": "a057acc6bdff9be3c2ef1411307008809a8f89fa9f7f3506e4a9fe3c0ed204fc"
+    },
+    {
+      "filename": "warder-90e-400x240-transparent-c26fe97b9b6c2b29.zip.part01",
+      "bytes": 16777216,
+      "sha256": "7c0e152e603b89819d37a0ea254f57ee21538c7c632ee357be3a1e10dc2110d8"
+    },
+    {
+      "filename": "warder-90e-400x240-transparent-c26fe97b9b6c2b29.zip.part02",
+      "bytes": 11088606,
+      "sha256": "ee8e89b677790b9d0a364723449d1c72d272d20e28016907fe8f41cef5ed5855"
+    },
+    {
+      "filename": "warder-90e-400x240-white-72d1b0afca1121dd.zip.part00",
+      "bytes": 16777216,
+      "sha256": "2c5c94435212649cfd53c5346b1526a41bfe9ae163716874b5435af959fd8a6c"
+    },
+    {
+      "filename": "warder-90e-400x240-white-72d1b0afca1121dd.zip.part01",
+      "bytes": 16777216,
+      "sha256": "424f3eec7a9c047abcf2c84031b3392824e2ca35427be46d50b64289f2d76e20"
+    },
+    {
+      "filename": "warder-90e-400x240-white-72d1b0afca1121dd.zip.part02",
+      "bytes": 12391202,
+      "sha256": "65c94a32aff3bd028c072fc965f9f92ae841ddacbe6ceaca5f140f9c1d6dd1f8"
+    },
+    {
+      "filename": "warder-90e-400x240-black-20473cad308923f2.zip.part00",
+      "bytes": 16777216,
+      "sha256": "38038b9f2c53198896d06738c7b55e4117bec8186df9a3e1cd1499b383b74083"
+    },
+    {
+      "filename": "warder-90e-400x240-black-20473cad308923f2.zip.part01",
+      "bytes": 16777216,
+      "sha256": "c0c449130d3eca17586962e1b698c9213eb1bac73b1ceec5f46dc7b035005f45"
+    },
+    {
+      "filename": "warder-90e-400x240-black-20473cad308923f2.zip.part02",
+      "bytes": 10823938,
+      "sha256": "e25ca624c58f6393b9a164bade7f3b32a26efa393bc13c1f6c824e8879fccc87"
+    }
+  ]
+}
