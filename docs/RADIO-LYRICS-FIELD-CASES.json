@@ -87,7 +87,106 @@
         "integrated": false,
         "automatic_retrieval_verified": false
       },
-      "purpose": "Coverage gap with a concrete external-source candidate; validate automatic access and exact identity before adding an adapter."
+      "purpose": "Coverage gap with a concrete external-source candidate; validate automatic access and exact identity before adding an adapter.",
+      "artwork_catalogue_probe": {
+        "source": "iTunes Search API",
+        "query_with_station_credit": "Júlia Hečková Taliansky Muzikál",
+        "matching_track_with_station_credit": false,
+        "query_with_title_only": "Taliansky Muzikál",
+        "matching_track": {
+          "artist": "Júlia a Peter Heckovci",
+          "title": "Taliansky muzikál",
+          "track_id": 1615992544
+        },
+        "note": "Different catalogue credit observed; no matching rule or alias changed."
+      }
+    },
+    {
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "receiver_observation": {
+        "message": "Zdroj textu neodpovedá. Skúšam to znova…",
+        "artwork": "image displayed; identity not independently verified from screenshot",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+    },
+    {
+      "artist": "Martina Schindlerova",
+      "title": "Povedz mi",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "image displayed; identity not independently verified from screenshot",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+    },
+    {
+      "artist": "Bystrík",
+      "title": "Káva (feat. Fejbs)",
+      "receiver_observation": {
+        "message": "Zdroj textu neodpovedá. Skúšam to znova…",
+        "artwork": "image displayed; identity not independently verified from screenshot",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+    },
+    {
+      "artist": "Sima Martausová featuring For You",
+      "title": "Nenahraditeľná",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "image displayed; identity not independently verified from screenshot",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks.",
+      "fresh_helper_check": {
+        "status": "not-found",
+        "cache_hit": false,
+        "elapsed_ms": 14509,
+        "characters": 0,
+        "all_four_adapters_returned_no_matching_text": true
+      },
+      "external_source_candidate": {
+        "url": "https://www.ujdeto.cz/lyrics/sima-magusinova-martausova/nenahraditelna/",
+        "indexed_identity": "Sima Magušinová (Martausová) & For You — Nenahraditeľná",
+        "integrated": false,
+        "automatic_retrieval_verified": false
+      }
+    },
+    {
+      "artist": "Ivan Tásler & IMT Smile",
+      "title": "Viac",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "image displayed; identity not independently verified from screenshot",
+        "installed_version": "not captured",
+        "diagnostic": "not captured",
+        "corrected_screenshot": true,
+        "note": "Owner replaced the earlier loading-state screenshot with a completed not-found state."
+      },
+      "root_cause": "not established from screenshot",
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+    },
+    {
+      "artist": "Samo Tomeček & Free Inna Cage",
+      "title": "To, čo chceš",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "image displayed; identity not independently verified from screenshot",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
     }
   ],
   "follow_up": [
