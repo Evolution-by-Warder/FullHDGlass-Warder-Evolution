@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read-only Genius API/page check with hidden token entry and redacted results."""
 from concurrent.futures import ThreadPoolExecutor
+import argparse
 import getpass
 import hashlib
 from html.parser import HTMLParser
@@ -59,31 +60,37 @@ class LyricsPage(HTMLParser):
     """Count public lyric containers without logging text or interpreting scripts."""
     def __init__(self):
         super().__init__()
-        self.depth = 0
+        self.stack = []
         self.active_depth = None
         self.parts = []
         self.containers = 0
 
     def handle_starttag(self, tag, attrs):
-        if tag == 'br' and self.active_depth is not None:
+        a = dict(attrs)
+        excluded = bool(self.stack and self.stack[-1][1]) or tag in ('script', 'style') or a.get('data-exclude-from-selection') == 'true' or 'LyricsHeader' in a.get('class', '')
+        if tag == 'br' and self.active_depth is not None and not excluded:
             self.parts.append('\n')
         if tag in ('area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'):
             return
-        self.depth += 1
-        if self.active_depth is None and dict(attrs).get('data-lyrics-container') == 'true':
-            self.active_depth = self.depth
+        self.stack.append((tag, excluded))
+        if self.active_depth is None and a.get('data-lyrics-container') == 'true' and not excluded:
+            self.active_depth = len(self.stack) - 1
             self.containers += 1
 
     def handle_endtag(self, tag):
         if tag in ('area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'):
             return
-        if self.active_depth == self.depth:
+        positions = [index for index, frame in enumerate(self.stack) if frame[0] == tag]
+        if not positions:
+            return
+        index = positions[-1]
+        if self.active_depth is not None and self.active_depth >= index:
             self.parts.append('\n')
             self.active_depth = None
-        self.depth = max(0, self.depth - 1)
+        del self.stack[index:]
 
     def handle_data(self, data):
-        if self.active_depth is not None:
+        if self.active_depth is not None and self.stack and not self.stack[-1][1]:
             self.parts.append(data)
 
 
@@ -122,10 +129,17 @@ def check(song, token):
 
 
 if __name__ == '__main__':
+    args = argparse.ArgumentParser(description=__doc__)
+    args.add_argument('--artist')
+    args.add_argument('--title')
+    options = args.parse_args()
+    if bool(options.artist) != bool(options.title):
+        args.error('--artist and --title must be supplied together')
+    songs = ((options.artist, options.title),) if options.artist else SONGS
     token = getpass.getpass('Genius token (vstup sa nezobrazuje): ').strip()
     if not token or re.search(r'[\r\n]', token):
         raise SystemExit('Token nebol zadaný správne.')
     with ThreadPoolExecutor(max_workers=3) as pool:
-        for row in pool.map(lambda song: check(song, token), SONGS):
+        for row in pool.map(lambda song: check(song, token), songs):
             print('GENIUS_AUTH_CHECK ' + json.dumps(row, ensure_ascii=False), flush=True)
     token = ''

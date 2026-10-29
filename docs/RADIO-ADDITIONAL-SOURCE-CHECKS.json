@@ -641,6 +641,62 @@
         ],
         "conclusion": "The exact library and constructor with supplied token were exercised. Local environment did not return genuine Genius API JSON or lyrics; token validity is not established. Do not claim library use guarantees unblocked access.",
         "metadata_note": "Owner's Aj keby / IMT Smile example differs from the previously identified Kali & Tina / Aj keby recording."
+      },
+      "python3_example_review": {
+        "date": "2026-10-29",
+        "issues": [
+          "The supplied genius.com + encoded query string builds the wrong hostname and is not a search API endpoint.",
+          "The correct endpoint is https://api.genius.com/search with a urlencode-encoded q parameter.",
+          "urllib.parse.unquote does not decode HTML entities such as &amp;; HTMLParser does.",
+          "A regex ending at the first closing div truncates nested lyric containers; the corrected parser tracks nested elements and excludes non-lyric content.",
+          "Taking the first API result may return a different recording; corrected diagnostic selects an exact normalized artist/title match.",
+          "The supplied examples have no request timeout; corrected diagnostic bounds each response to 12 seconds and 1 MiB.",
+          "A token and a library do not guarantee that requests avoid HTTP 403.",
+          "The supplied f-string code cannot execute on Python 2 despite an urllib2 import fallback."
+        ],
+        "verified_checks": [
+          "Nested HTML, br/br-slash, HTML entities and literal percent escapes.",
+          "Reject wrong first result; select exact artist/title match.",
+          "Authorization only on api.genius.com, no Authorization on song page; refuse redirects.",
+          "Token and lyrics excluded from result JSON.",
+          "Corrected standalone script imports and --help execute on local Python 3.12.14; syntax also checked with Python 3.9 feature grammar."
+        ],
+        "live_url_lib_results": [
+          {
+            "artist": "Zuzana Smatanová",
+            "title": "Úsmev a čaj",
+            "host": "api.genius.com",
+            "path": "/search",
+            "user_agent": "Enigma2-Lyrics-Box/1.0",
+            "token_supplied": true,
+            "token_logged": false,
+            "http": 200,
+            "bytes": 195,
+            "status": "environment-placeholder-not-api-json"
+          },
+          {
+            "artist": "IMT Smile",
+            "title": "Úsmev a čaj",
+            "host": "api.genius.com",
+            "path": "/search",
+            "user_agent": "Enigma2-Lyrics-Box/1.0",
+            "token_supplied": true,
+            "token_logged": false,
+            "http": 200,
+            "bytes": 195,
+            "status": "environment-placeholder-not-api-json"
+          }
+        ],
+        "receiver_authenticated_success_confirmed": false,
+        "python_command_on_receiver_verified": false,
+        "recommended_command": "python3",
+        "linked_articles": {
+          "openatv_forum": "Attempted supplied links; HTTP 403/unavailable prevented inspecting their content.",
+          "linuxos": "Article dated 2021-05-23 discusses Enigma2 generally; it does not verify this Genius script or a 403 bypass."
+        },
+        "corrected_script": "diagnostics/check-genius-auth.py",
+        "usage": "diagnostics/README.md",
+        "runtime_modified": false
       }
     },
     "musixmatch": {
