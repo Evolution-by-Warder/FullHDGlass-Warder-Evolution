@@ -1,49 +1,44 @@
 {
   "schema": 1,
-  "version": "1.0.38-test11",
-  "source_commit": "1099a161c9f1d649a1a9905a062008f1cf689a6a",
+  "version": "1.0.38-test12",
+  "source_commit": "096a60ca0bb589c648a617314f3b4066a4c82236",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40837687203,
+  "workflow_run": 40841327929,
   "workflow_conclusion": "success",
   "python": "3.14.9",
-  "unit_tests": 238,
+  "unit_tests": 246,
   "unit_test_groups": [
     6,
-    97,
-    76,
+    104,
+    77,
     13,
     14,
     10,
     22
   ],
   "verified_payload_files": 1352,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test11",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test11/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test11_all.ipk",
-  "bytes": 14512250,
-  "sha256": "ee646dd5a08a5643d8d75d078d5e32c79a43ba67a85af5bcb07d7e7ff59105d8",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test12",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test12/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test12_all.ipk",
+  "bytes": 14513342,
+  "sha256": "71d077f1b0baa17549d0f131cf7f22beb56b42999234295be2dea2d2b7b9ad7a",
+  "public_release_independent_download_verified": true,
   "receiver_validated": false,
   "production_feeds_modified": false,
-  "owner_layout_accepted": true,
   "fixes": [
-    "Verified Kroky F. Janecka abbreviation preserves complete artist credit",
-    "Scoped Stromy original-version identity",
-    "Publisher-confirmed Helena Vondrackova/Jiri Korn duet identity",
-    "Unparenthesized FT/feat/featuring title credits and AMO spelling",
-    "Numeric underscore prefix on full artist names; remix distinction preserved",
-    "Artist-scoped exact uvitelkou typo repair for Darinka Rolincova",
-    "Invalidate TEST10 negative cache and retain valid positive results"
+    "KaraokeTexty SK/CZ original paragraphs only",
+    "Akordy Kytary full chord-free lyrics sheet",
+    "Unspaced full-phrase metadata starts real lookup",
+    "Spaced full-name slash credits and verified Vidiek recording identity",
+    "Verified candidates fetched before fallback mirrors",
+    "Old negative cache rechecked, valid positive caches retained"
   ],
   "verification": {
-    "full_ipk_payload": "passed: 1352 files",
-    "public_release_size_and_sha256": "independent public byte download verified",
     "live_checks": [
       {
         "artist": "ABBA",
         "title": "Dancing Queen",
         "status": "found",
         "characters": 1106,
-        "text_sha256": "ad5786d28c463c9d64c0d9d7db95fc987e2d207762c0b1debae5226dddbeb547",
-        "elapsed_ms": 240,
         "sources_found": [
           "lrclib"
         ]
@@ -53,8 +48,6 @@
         "title": "Láska, necestuj tým vlakom",
         "status": "found",
         "characters": 867,
-        "text_sha256": "168bd9c68641041ae823a0f2662ebf240d58c9e112565cf5c94c476d0af39d0b",
-        "elapsed_ms": 842,
         "sources_found": [
           "tekstowo"
         ]
@@ -64,8 +57,6 @@
         "title": "Nenahraditeľná",
         "status": "found",
         "characters": 1071,
-        "text_sha256": "8e2fc1cb13fa6aab5447bff5c1f7b64a90e64067c9bb38b867d76190b56ab2e8",
-        "elapsed_ms": 1017,
         "sources_found": [
           "ujdeto"
         ]
@@ -75,8 +66,6 @@
         "title": "Ani ty ani já",
         "status": "offline",
         "characters": 0,
-        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "elapsed_ms": 46,
         "sources_found": []
       },
       {
@@ -84,8 +73,6 @@
         "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
         "status": "found",
         "characters": 814,
-        "text_sha256": "78f94dc0357e6d3aa1aa42a166f0d7dd9ab0c98f2131dd92a2025130327d961c",
-        "elapsed_ms": 528,
         "sources_found": [
           "roth"
         ]
@@ -95,17 +82,30 @@
         "title": "Sľub",
         "status": "found",
         "characters": 1507,
-        "text_sha256": "2e9a63188f5f0d0cae0f4e1839174fb0e5540b6025ecf4dc3926cb6b4a44beba",
-        "elapsed_ms": 553,
         "sources_found": [
           "tekstowo"
         ]
+      },
+      {
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "found",
+        "characters": 1454,
+        "sources_found": [
+          "karaoke"
+        ]
+      },
+      {
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "found",
+        "characters": 1616,
+        "sources_found": [
+          "kytary"
+        ]
       }
     ],
-    "optional_source_availability": "Pisnicky HTTP 403 from GitHub runner recorded explicitly as unavailable; parser/failure unit tests required and passed",
-    "field_checks": "docs/RADIO-TEST11-FIELD-CHECKS.json",
-    "identity_provenance": "docs/RADIO-IDENTITY-RULES.md"
-  },
-  "coverage_limit": "Identity repairs do not create missing catalogue entries. Wanastowi Vjecy / Kapky Krve returned real lyrics and cover in a fresh runtime check, but the cause of the receiver's failure is not established without its diagnostics.",
-  "lyrics_or_images_published": false
+    "field_details": "docs/RADIO-TEST12-SOURCE-CHECKS.json",
+    "lyricfind": "Not integrated; a second access test is being run from GitHub. Local failure does not establish failure in the receiver or user browser."
+  }
 }
