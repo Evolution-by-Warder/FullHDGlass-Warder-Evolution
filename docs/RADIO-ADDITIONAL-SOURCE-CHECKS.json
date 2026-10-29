@@ -511,7 +511,7 @@
     },
     "genius": {
       "integrated": false,
-      "evidence": "Anonymous web search, song page, docs and API request returned HTTP 403 from GitHub.",
+      "evidence": "Owner receiver successfully authenticated to the official API and retrieved the matched song-page text using the standalone standard-library diagnostic. Earlier workspace/GitHub failures remain environment-specific evidence, not receiver failures.",
       "library_verification": {
         "workflow_run": 40848624847,
         "results": [
@@ -697,7 +697,111 @@
         "corrected_script": "diagnostics/check-genius-auth.py",
         "usage": "diagnostics/README.md",
         "runtime_modified": false
-      }
+      },
+      "receiver_authenticated_check": {
+        "date": "2026-10-29",
+        "source": "Owner-uploaded warder-genius-test.log",
+        "status": "api_and_text_retrieval_confirmed",
+        "token_accepted": true,
+        "token_logged": false,
+        "python": "3.14.9",
+        "dns_elapsed_ms": 24,
+        "api_elapsed_ms": 852,
+        "song_page_elapsed_ms": 1396,
+        "exact_artist": "IMT Smile",
+        "exact_title": "Úsmev a čaj",
+        "characters": 831,
+        "text_sha256": "34537ee72966563104949bb793bb15f759b06e4ed24483988f618a21781a474f",
+        "lyricsgenius_installed": false,
+        "implementation": "Python standard-library urllib + HTMLParser",
+        "requests_succeeded_on_first_attempt": true,
+        "log": [
+          {
+            "stage": "start",
+            "python": "3.14.9",
+            "artist": "IMT Smile",
+            "title": "Úsmev a čaj",
+            "timeout": 20,
+            "retries": 3,
+            "overall_limit_seconds": 120,
+            "token_supplied": true,
+            "token_logged": false
+          },
+          {
+            "stage": "dns",
+            "status": "resolved",
+            "address_count": 4,
+            "elapsed_ms": 24
+          },
+          {
+            "stage": "request_start",
+            "host": "api.genius.com",
+            "path": "/search",
+            "attempt": 1,
+            "timeout": 20,
+            "authorization_present": true
+          },
+          {
+            "stage": "http_response",
+            "host": "api.genius.com",
+            "http": 200,
+            "bytes": 14701,
+            "elapsed_ms": 852,
+            "unavailable_placeholder": false
+          },
+          {
+            "stage": "standard_api",
+            "status": "json_received",
+            "api_status": 200,
+            "hits": 7,
+            "exact_matches": [
+              {
+                "artist": "IMT Smile",
+                "title": "Úsmev a čaj",
+                "url": "https://genius.com/Imt-smile-usmev-a-caj-lyrics"
+              }
+            ]
+          },
+          {
+            "stage": "request_start",
+            "host": "genius.com",
+            "path": "/Imt-smile-usmev-a-caj-lyrics",
+            "attempt": 1,
+            "timeout": 20,
+            "authorization_present": false
+          },
+          {
+            "stage": "http_response",
+            "host": "genius.com",
+            "http": 200,
+            "bytes": 233393,
+            "elapsed_ms": 1396,
+            "unavailable_placeholder": false
+          },
+          {
+            "stage": "standard_lyrics",
+            "containers": 3,
+            "characters": 831,
+            "sha256": "34537ee72966563104949bb793bb15f759b06e4ed24483988f618a21781a474f",
+            "lyrics_logged": false,
+            "note": "Embedded song-state parsing is not tested; no containers does not prove catalogue absence."
+          },
+          {
+            "stage": "lyricsgenius",
+            "status": "not_installed",
+            "note": "Standard-library API test still ran; no packages were installed."
+          },
+          {
+            "stage": "finished",
+            "log": "/tmp/warder-genius-test.log",
+            "note": "Diagnostic finished; source availability is described by the individual stages."
+          }
+        ],
+        "scope": "One exact recording and this receiver connection. Does not measure catalogue coverage or guarantee future server access.",
+        "plugin_provider_integrated": false
+      },
+      "receiver_confirmed": true,
+      "next_step": "The lightweight API-search and song-page extraction path is now verified for implementation; keep the token out of public code and release packages."
     },
     "musixmatch": {
       "integrated": false,
@@ -791,5 +895,8 @@
       ]
     },
     "lyrics_logged": false
-  }
+  },
+  "receiver_verified_sources": [
+    "genius"
+  ]
 }
