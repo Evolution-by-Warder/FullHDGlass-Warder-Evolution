@@ -1,24 +1,22 @@
 {
   "schema": 1,
-  "version": "1.0.38-test8",
-  "source_commit": "eb430332895045f5722d92dc66d71e21019617a9",
+  "version": "1.0.38-test9",
+  "source_commit": "2eb1db82bb617bf87b47ba4608dbf4a3869d41fb",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40769028712,
+  "workflow_run": 40826425870,
   "workflow_conclusion": "success",
   "python": "3.14",
-  "unit_tests": 196,
+  "unit_tests": 200,
   "verified_payload_files": 1351,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test8",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test8/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test8_all.ipk",
-  "bytes": 14508670,
-  "sha256": "2bde8368f3a74d715fcef97007fc69bee994242bd57f7d5f519305a40787925d",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test9",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test9/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test9_all.ipk",
+  "bytes": 14508934,
+  "sha256": "a8c48a59f70767cf0f6c170e9162e10405de93987118f8bc1eb7846ff11c7fa8",
   "fixes": [
-    "Adds Hudba.sk and Youradio to existing LRCLIB and lyrics.ovh lookup",
-    "After 750ms or early primary miss, alternatives run concurrently; first verified result wins",
-    "Exact whole artist and song identity checked from each HTML source; translations and scripts ignored",
-    "HTTPS same-host redirects, bounded HTML parsing and 12-request total limit",
-    "Keeps valid positive TEST7 cache and retries old negative entries with new sources",
-    "Preserves user-approved TEST7 radio artwork, layout, metadata and playback"
+    "Reject the exact Hudba.sk absence notice rather than treating it as lyrics",
+    "Continue source race after a notice so another verified source can win",
+    "Reject notices already stored as positive TEST7/TEST8 cache entries",
+    "Keep longer real text containing the sentence and preserve existing identity checks"
   ],
   "verification": {
     "full_ipk_payload": "passed",
@@ -31,15 +29,38 @@
       "title": "Láska, necestuj tým vlakom",
       "json_apis_disabled": true,
       "found_source": "hudba",
-      "elapsed_ms": 1297,
+      "elapsed_ms": 1055,
       "characters": 536,
-      "text_sha256": "47d519916a7f7ea5d8ec21d50929a87f44e2666fdb1075e9bcb8845ef13f4bd7",
       "lyrics_published": false
     },
-    "regional_regressions": "design/radio-lyrics/regional-source-checks.json"
+    "regional_regressions": "design/radio-lyrics/regional-source-checks.json",
+    "receiver_notice_regression": {
+      "artist": "Karel Gott",
+      "title": "LETA PRAZDNIN",
+      "before": {
+        "status": "found",
+        "characters": 41,
+        "source": "hudba",
+        "notice_sha256": "acce7404abb4f4e39b38c0475901635a7749fa89d3eb807b72a6c7fbc8c0acfd"
+      },
+      "after": {
+        "status": "found",
+        "characters": 1485,
+        "source": "youradio",
+        "elapsed_ms": 8733,
+        "placeholder_displayed": false
+      },
+      "details": "docs/RADIO-LYRICS-FIELD-CASES.json",
+      "receiver_validated": false
+    },
+    "benchmark_correction": "reports/radio-lyrics/2026-10-29/validated-summary.json"
   },
   "receiver_validated": false,
   "production_feeds_modified": false,
   "coverage_limit": "SK/CZ coverage remains partial; a missing text and an unavailable source are distinct outcomes.",
-  "owner_layout_accepted": true
+  "owner_layout_accepted": true,
+  "scope_limits": [
+    "No region-priority or artist-alias changes in TEST9",
+    "Fero Fabian — Tibetský mlynček remains a coverage gap in checked sources; failed MusicBrainz probe is not treated as a miss"
+  ]
 }
