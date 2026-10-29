@@ -48,7 +48,46 @@
           "youradio": "search returned no matching candidate"
         }
       },
-      "purpose": "Availability/retry case: fresh helper succeeds, but receiver failure cannot be attributed to a specific provider without receiver diagnostics. Cover lookup is independent and was not tested."
+      "purpose": "Availability/retry case: fresh helper succeeds, but receiver failure cannot be attributed to a specific provider without receiver diagnostics. Cover lookup is independent and was not tested.",
+      "receiver_follow_up": {
+        "observation": "Owner switched to another station and back; lyrics appeared shortly afterwards.",
+        "automatic_retry_without_zapping": "not established by this observation",
+        "root_cause": "not established"
+      }
+    },
+    {
+      "artist": "Júlia Hečková",
+      "title": "Taliansky Muzikál",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "fallback shown",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "fresh_helper_check": {
+        "status": "not-found",
+        "cache_hit": false,
+        "elapsed_ms": 9741,
+        "characters": 0,
+        "providers": {
+          "lrclib": "no matching result; reversed request HTTP 503",
+          "ovh": "HTTP 404 in both orientations",
+          "hudba": "direct URL HTTP 404; search no matching candidate",
+          "youradio": "search no matching candidate"
+        }
+      },
+      "external_source_candidate": {
+        "url": "https://www.supermusic.cz/piesen.php?idpiesne=341651",
+        "indexed_identity": {
+          "artist": "Júlia Hečková",
+          "title": "Taliansky Muzikál"
+        },
+        "search_index_contains_lyrics": true,
+        "live_web_open": "JavaScript-required loading page",
+        "integrated": false,
+        "automatic_retrieval_verified": false
+      },
+      "purpose": "Coverage gap with a concrete external-source candidate; validate automatic access and exact identity before adding an adapter."
     }
   ],
   "follow_up": [
