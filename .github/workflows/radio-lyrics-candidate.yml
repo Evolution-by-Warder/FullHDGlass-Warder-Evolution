@@ -11,6 +11,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   candidate:
+    if: github.ref == 'refs/heads/feature/radio-lyrics-layout'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:

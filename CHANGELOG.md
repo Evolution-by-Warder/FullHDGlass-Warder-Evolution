@@ -1,3 +1,11 @@
+# 1.0.39 — 29. 10. 2026
+
+- Produkčné vydanie prijímačom potvrdeného TEST13: natívne texty a obaly rádiových skladieb.
+- Funkčný SuperMusic bez tokenu, kanonické adresy skladieb a opätovné použitie verejnej relácie.
+- Rozšírené SK/CZ zdroje, presné párovanie interpreta/nahrávky, opravy metadát a cache.
+- Zachované schválené rozloženie, používateľské nastavenia, RDS/DAB a týždenný rádio zoznam.
+- Verzia 1.0.39 umožňuje riadnu aktualizáciu aj z 1.0.38-test13.
+
 # 1.0.28
 
 - Zjednotené hľadanie piconov satelitného rádia v oboch ďalších variantoch infobaru, zachované ich časovače a animácie.

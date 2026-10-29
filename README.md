@@ -8,13 +8,13 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Production release — 28 October 2026
+## Production release — 29 October 2026
 
-**FullHDGlass 1.0.36** is the owner-authorized production release. Internet radio now feeds the existing song/album-artwork screen through native player tags and bounded background ICY metadata. Native RDS ownership, DAB MOT slideshow priority and approved radio graphics/layout are preserved. [Production record](docs/PRODUCTION.md) · [Current release](docs/CURRENT-RELEASE.md) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.36).
+**FullHDGlass 1.0.39** is the owner-authorized production release of the receiver-confirmed TEST13 radio engine. It adds native song lyrics, compact album artwork and verified SK/CZ sources, including working SuperMusic without a shared API token. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.39).
 
-Production packages and displayed version labels use **1.0.36**, without the word test. Existing test releases remain historical. Existing users receive the 1.0.18 transition update first, then the current version from update-production.json. The real installed package is named enigma2-plugin-skins-fullhdglass-warder-evolution so OpenATV lists it under installed Skin Packages. See [migration instructions](docs/PACKAGE-TRANSITION.md). Runtime paths and saved keys containing 17 remain unchanged.
+Production packages and visible version labels use **1.0.39**. This patch number upgrades normally from **1.0.38-test13**. Existing users receive updates through `update-production.json`; the legacy **1.0.18** package transition remains unchanged. Package identity is `enigma2-plugin-skins-fullhdglass-warder-evolution`; runtime identifiers containing `17`, saved settings, native RDS/DAB and weekly radio catalogue updates are preserved.
 
-The small IPK excludes the large preview archives. Help and type previews remain verified background downloads. Approved graphics, layouts, radio behavior, runtime identifiers, settings and original author credits are preserved. Exact package identity, SHA256, source revision and validation are recorded in docs/PRODUCTION.json after publication. Owner acceptance does not claim a new exhaustive physical receiver test.
+The owner confirmed TEST13 functional on the receiver. Production promotion retains that runtime and approved artwork. Release checks and exact public IPK hashes are recorded separately; no exhaustive all-device physical test is claimed. Large optional previews remain external, keeping the IPK below the 16 MiB size limit.
 
 ## Historical receiver recovery baseline: 1.0.15
 
@@ -111,6 +111,6 @@ Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v 
 
 Existujúci spravovaný rádio bouquet sa raz týždenne obnoví z nášho Gitu bez hlášok a reštartu. Na začiatku zostávajú naše SK/CZ stanice, ostatné krajiny obnovuje samostatný týždenný GitHub workflow. Sťahovanie beží mimo GUI; kontroluje sa SHA256 a pri chybe zostáva starý zoznam. [Rozsah a správanie](docs/CURRENT-RELEASE.md).
 
-## Kandidát nového rádia (1.0.38-test2)
+## Rádio s textami piesní — 1.0.39
 
-Vo vetve `feature/radio-lyrics-layout` je samostatný skúšobný rádio dizajn s automatickým natívnym textom piesní a zachovanými RDS/DAB údajmi. Produkčný feed sa nemení. [Rozsah a overenie](docs/CURRENT-RELEASE.md).
+Schválené rozloženie s kompaktným obalom a natívnym panelom textu je súčasťou produkčnej verzie. SuperMusic v TEST13 bol potvrdený na prijímači; výsledky a limity vyhľadávania sú uložené v [overení](docs/RADIO-SUPERMUSIC-TEST13.md).

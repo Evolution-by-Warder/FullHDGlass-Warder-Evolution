@@ -1,3 +1,8 @@
+FullHDGlass Warder Evolution 1.0.39 — 29 October 2026
+Production release of the receiver-confirmed TEST13 radio engine.
+Album artwork and native lyrics panel; exact recording matching, SK/CZ sources, bounded background SuperMusic session, refreshed negative cache and preserved valid cached texts.
+Settings, RDS/DAB, approved radio layout and weekly radio bouquet updates retained.
+
 1.0.38-test13: SuperMusic.cz original lyrics via its bounded public visitor check, session cookie reuse, exact artist/title matching and chord removal. Valid positive caches retained; older negative caches rechecked. No radio layout changes.
 
 1.0.38-test12: Add original-only KaraokeTexty SK/CZ and Akordy Kytary adapters; repair unspaced full-phrase metadata and slash-separated guest names; verify Hrajte trubky credits. SuperMusic and LyricFind automatic access remains unverified.

@@ -105,9 +105,9 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     if p.head(client,p.WORK)!=revision:raise ValueError('Source advanced; production feed remains unchanged')
     feed={'version':version,'package_url':url,'sha256':digest,'changelog':approval['changelog']}
     record=json.loads(p.content(client,'docs/PRODUCTION.json','main'))
-    record.update(source_commit=revision,source_branch=p.WORK,approval=approval['authorization'])
+    record.update(source_commit=revision,source_branch=p.WORK,approval=approval['authorization'],approved_on=approval.get('approved_on',record.get('approved_on')))
     record['release']=dict(feed,tag='v'+version,bytes=len(raw),url=asset['browser_download_url'])
-    record['validation']={'workflow_run':int(os.environ.get('GITHUB_RUN_ID','0')),'build_payloads_and_public_bytes':'verified','receiver_validation':'Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded.'}
+    record['validation']={'workflow_run':int(os.environ.get('GITHUB_RUN_ID','0')),'build_payloads_and_public_bytes':'verified','receiver_validation':approval.get('receiver_validation','Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded.')}
     inventory=json.loads(p.content(client,'design/settings-ui-inventory.json','main'))
     inventory['production_feed_version']=version
     activated=p.commit(client,staged,{'update-production.json':p.encoded(feed),'docs/PRODUCTION.json':p.encoded(record),'docs/LIVE-UPDATE-STATE.json':p.encoded(dict(feed,bytes=len(raw),source_commit=revision,production_status='production-update',production_tag='v'+version,legacy_bridge_version='1.0.18')),'design/settings-ui-inventory.json':p.encoded(inventory)},'Activate verified native FullHDGlass '+version+'; preserve legacy bridge')

@@ -1,3 +1,13 @@
+# Production promotion — 29 October 2026
+
+Owner confirmed SuperMusic in **1.0.38-test13** functional on the receiver, then requested documenting all work and a normal version delivered through the built-in updater. **1.0.39** retains the accepted runtime and approved radio graphics, updating version labels/history only. The next patch number permits a normal package-manager upgrade from TEST13.
+
+Source of the accepted candidate: `83d4c2132c4d8a538c34574b5491aa0942363164`; candidate build 40873174108 passed 259 tests and verified 1,353 payload files. SuperMusic accepted 7 of 12 selected songs in comparison 40873173998; this is not a catalogue coverage estimate. Production approval and receiver scope: `docs/PRODUCTION-APPROVAL.json`. Publication runs full settings/radio checks, validates the exact IPK and advances `update-production.json` only after public byte verification. Exact final production source/package/hash/run are recorded in `docs/PRODUCTION.json` and `docs/LIVE-UPDATE-STATE.json`. Preserve the legacy 1.0.18 bridge and the existing satellite automation.
+
+Current production records above supersede dated statuses below; historical validation limits remain historical.
+
+---
+
 # Produkčné IPTV rádiá SK/CZ — 28. októbra 2026
 
 FullHDGlass **1.0.36** a PiconHub **0.1.30** sú vydané a aktívne v aktualizačných kanáloch. Skin CI **40687770330** úspešné, zdroj `e672afb9cf46ab61e8ee154ecf618b22e235c861`. Verejné IPK má 14 271 200 bajtov, SHA256 `e2a7e43c6cb7fe129c12f7c3bb511bbbdfd2a075ac051ad708adaec29a7d811c`. Deväť spoločných modulov v oboch verejných IPK je identických.

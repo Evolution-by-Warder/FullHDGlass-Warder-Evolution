@@ -1,11 +1,12 @@
 {
-  "confirmed_on_receiver": null,
-  "status": "owner-approved-design; receiver validation pending",
+  "confirmed_on_receiver": "1.0.38-test13",
+  "status": "owner-confirmed TEST13 radio; promoted without graphic changes",
   "graphics_and_layout_sha256": "487317f1a2e27795a3877e9f542b71da437152995ca807d0040bcf1d9bffc39e",
   "previous_receiver_baseline": {
     "confirmed_on_receiver": "1.0.5-test250",
     "graphics_and_layout_sha256": "f6bcdcc65a667a9ff63bc92c8963006cf38b398d0679292addae81fb63c5ad95"
   },
-  "scope": "Three radio XML screens and radio scenic JPEG; no TV or settings layout change.",
-  "candidate_header_revision": "Owner requested TEST6 header and TEST7 compact radio cover; other screen XML pinned separately."
+  "scope": "Approved radio layout retained; TEST13 SuperMusic confirmed by owner on receiver.",
+  "candidate_header_revision": "Owner requested TEST6 header and TEST7 compact radio cover; other screen XML pinned separately.",
+  "confirmed_on": "2026-10-29"
 }

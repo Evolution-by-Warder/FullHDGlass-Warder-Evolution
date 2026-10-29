@@ -22,7 +22,7 @@
   "bytes": 14515418,
   "sha256": "5598f065261b4d935d63003c818280e315ec91e047700e1ccdc3ddaf2f1008b3",
   "public_release_independent_download_verified": true,
-  "receiver_validated": false,
+  "receiver_validated": true,
   "production_feeds_modified": false,
   "fixes": [
     "SuperMusic public visitor session with bounded validation and cookie reuse",
@@ -133,5 +133,7 @@
       }
     ],
     "field_details": "docs/RADIO-SUPERMUSIC-TEST13.json"
-  }
+  },
+  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed.",
+  "promoted_to": "1.0.39"
 }

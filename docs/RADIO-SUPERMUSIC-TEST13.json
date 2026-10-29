@@ -41,8 +41,7 @@
   "limitations": [
     "Five selected songs did not produce an acceptable exact match in this run; that is not proof of absence from the entire catalogue.",
     "KaraokeTexty SK/CZ share content and are not independent catalogues.",
-    "KaraokeTexty English-page markup is still unrecognized in two cases.",
-    "Receiver installation has not yet been validated."
+    "KaraokeTexty English-page markup is still unrecognized in two cases."
   ],
   "results": [
     {
@@ -1348,5 +1347,7 @@
   ],
   "lyrics_published": false,
   "genius_integrated": false,
-  "production_feeds_modified": false
+  "production_feeds_modified": false,
+  "receiver_validated": true,
+  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed."
 }

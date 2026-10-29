@@ -1,7 +1,9 @@
 {
-  "enabled": false,
-  "version": "1.0.38-test13",
-  "expected_main_sha": "6e6f933450417767af53839e1fb4c3e1084e0770",
-  "authorization": "Isolated owner-requested radio/lyrics redesign candidate; do not alter production feeds.",
-  "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania."
+  "enabled": true,
+  "version": "1.0.39",
+  "expected_main_sha": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
+  "authorization": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026 and explicitly requested recording the work, a normal production version and activation of built-in updates.",
+  "changelog": "Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.",
+  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed.",
+  "approved_on": "2026-10-29"
 }

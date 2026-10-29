@@ -1,9 +1,12 @@
-# FullHDGlass 1.0.38-test13 — SuperMusic.cz
+# FullHDGlass Warder Evolution 1.0.39
 
-SuperMusic now supplies original lyrics through its normal public visitor-session flow. The adapter verifies the complete artist/title identity, ignores chord markup and keeps a session within the background worker so a verified visitor does not repeat the check on each song candidate.
+Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.
 
-The visitor computation is capped at 0.4 seconds / 100000 candidates and all requests stay inside the existing helper time budget. Cross-source destinations, oversized pages and repeated verification pages are not accepted. No browser, new third-party dependency or shared API key is required.
+- Natívny text skladby a obal v schválenom rozložení rádia; ostré systémové písmo.
+- SuperMusic, KaraokeTexty SK/CZ, Akordy Kytary a ďalšie existujúce zdroje. Overuje sa interpret, názov a verzia nahrávky; cudzie remixy ani prvý náhodný výsledok sa nepoužijú.
+- Sťahovanie prebieha na pozadí, s časovými a veľkostnými limitmi. SuperMusic nepotrebuje zdieľaný API token.
+- Používateľ potvrdil funkčnosť TEST13 na prijímači 29.10.2026. Produkčná verzia zachováva jeho kód a grafiku; mení označenie a históriu vydania.
+- RDS, DAB/MOT, IPTV rádio, vlastné nastavenia a tiché týždenné obnovenie Warder Radio Streams zachované.
+- Riadená aktualizácia aj z 1.0.38-test13; pôvodná migračná aktualizácia 1.0.18 zachovaná.
 
-Existing successful text caches remain valid; older negative results are checked again. The radio layout and production update feeds are unchanged.
-
-Validation: exact matching, chord removal, source/destination guards, bounded visitor checks, cache compatibility and the complete radio suite. Live SuperMusic and package-byte verification are required by CI.
+Detaily: [SuperMusic](RADIO-SUPERMUSIC-TEST13.md), [produkčné overenie](PRODUCTION.json).

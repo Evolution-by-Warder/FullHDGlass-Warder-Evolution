@@ -109,8 +109,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
+      - name: Install radio verification dependencies
+        run: |
+          python3 -m pip install --quiet Pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
       - name: Validate settings controllers and layouts
         run: |
+          python3 tools/test-radio-background.py -v
+          python3 tools/test-radio-lyrics.py -v
           python3 tools/test-setup-style.py -v
           python3 tools/test-help-preview.py -v
           python3 tools/test-startup-update.py -q
@@ -144,6 +151,12 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq gettext ffmpeg
           find source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/locale -name '*.po' -print0 | xargs -0 -I '{}' msgfmt --check -o /dev/null '{}'
+      - name: Verify live exact-song lookup without publishing lyrics
+        run: |
+          python3 tools/check-radio-lyrics-provider.py
+          python3 tools/check-radio-lyrics-provider.py --karaoke --allow-unavailable
+          python3 tools/check-radio-lyrics-provider.py --kytary --allow-unavailable
+          python3 tools/check-radio-lyrics-provider.py --supermusic
       - name: Build numbered package and verify every payload byte
         run: |
           python3 tools/build-setup-style-test.py --help-previews /tmp/g17_setup_pict.zip
@@ -177,4 +190,3 @@ jobs:
               --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA"
-

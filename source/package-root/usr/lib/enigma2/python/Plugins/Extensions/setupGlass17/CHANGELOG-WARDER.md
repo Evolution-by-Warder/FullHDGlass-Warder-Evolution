@@ -1,3 +1,11 @@
+# 1.0.39 — 29. 10. 2026
+
+- Produkčné vydanie prijímačom potvrdeného TEST13: natívne texty a obaly rádiových skladieb.
+- Funkčný SuperMusic bez tokenu, kanonické adresy skladieb a opätovné použitie verejnej relácie.
+- Rozšírené SK/CZ zdroje, presné párovanie interpreta/nahrávky, opravy metadát a cache.
+- Zachované schválené rozloženie, používateľské nastavenia, RDS/DAB a týždenný rádio zoznam.
+- Verzia 1.0.39 umožňuje riadnu aktualizáciu aj z 1.0.38-test13.
+
 ## 1.0.13
 
 - Stable channel picon downloads now read the latest approved catalogue on main instead of a catalogue pinned to an old commit. Future picon/archive updates do not require a new IPK.

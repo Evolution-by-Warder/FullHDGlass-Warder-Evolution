@@ -1,3 +1,8 @@
+FullHDGlass Warder Evolution 1.0.39 — 29. októbra 2026
+Produkčné vydanie rádiového systému overeného v TEST13 na prijímači.
+Obal a text skladby; presné párovanie nahrávok, zdroje SK/CZ, SuperMusic na pozadí bez tokenu a obnovenie neúspešných vyhľadávaní.
+Zachované nastavenia, RDS/DAB, schválená grafika a týždenné obnovenie rádio bouquetu.
+
 1.0.38-test13: SuperMusic.cz ako zdroj pôvodných textov; ohraničené bežné overenie návštevníka, použitie relácie, presná zhoda interpreta a názvu a odstránenie akordov. Zachovaná pozitívna cache, opätovné overenie starších negatívnych výsledkov. Bez zmeny grafiky rádia.
 
 1.0.38-test12: KaraokeTexty.sk/.cz a Akordy Kytary.cz ako nové zdroje pôvodných textov; opravený zápis MIROSLAV ZBIRKA-Biely Kvet bez medzier a plné mená hostí oddelené lomkou; overený kredit skladby Hrajte trúbky. SuperMusic a LyricFind sú preskúmané, ich automatické načítanie zatiaľ nie je overené.

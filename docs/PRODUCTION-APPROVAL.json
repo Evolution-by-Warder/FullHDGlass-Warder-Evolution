@@ -1,17 +1,17 @@
 {
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
-  "approved_on": "2026-10-28",
-  "production_version": "1.0.35",
+  "approved_on": "2026-10-29",
+  "production_version": "1.0.39",
   "approved_by": "repository owner",
-  "authorization": "Owner reported missing standalone Europa 2 radio announcements and requested continued refinement (28 October 2026).",
+  "authorization": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026 and explicitly requested recording the work, a normal production version and activation of built-in updates.",
   "baseline": {
-    "version": "1.0.16-test270",
-    "source_commit": "b2e3841b953d79355cd2f9c285ee7fe91f7f59ef",
-    "sha256": "1604df7dfdbc4f045547b9ea0d4299a450b71231b99eaaa9280f6d335f8dc9ff",
-    "bytes": 14192888
+    "version": "1.0.38-test13",
+    "source_commit": "83d4c2132c4d8a538c34574b5491aa0942363164",
+    "sha256": "5598f065261b4d935d63003c818280e315ec91e047700e1ccdc3ddaf2f1008b3",
+    "bytes": 14515418
   },
-  "scope": "Preserve display-only native and ICY radio announcements, prioritize current native text over cached songs, retain exact artwork matching and native RDS ownership.",
+  "scope": "Promote receiver-confirmed TEST13 radio engine and approved graphics to production; change version labels/history and publish the verified raw-GitHub update. Preserve settings, package/runtime identities, RDS/DAB and the legacy bridge.",
   "preview_assets": {
     "help": {
       "filename": "warder-help-previews.zip",
@@ -26,14 +26,18 @@
       "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-infobar-types.zip"
     }
   },
-  "version_policy": "Use 1.0.17 so both the receiver updater and the package manager order it above 1.0.16-test270-1, without downgrade flags or an epoch.",
+  "version_policy": "Use 1.0.39 so both the package manager and receiver updater order the stable package above 1.0.38-test13 without downgrade flags.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "6df212238e74add118d509eb831e11246ac0f7c8",
+  "expected_main_sha": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
-    "version": "1.0.17",
-    "source_commit": "d09bc17fbb91460892305673f4d3c130564b187d",
-    "sha256": "3e9785b440c3dd257df4e09c0d3b73bddc15c450525c39573a1a83705da15829",
-    "bytes": 14192996
-  }
+    "version": "1.0.37",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk",
+    "sha256": "793886a459d8a3a142bd06df5525ad7603c8773637ef31d0942050d6801e1879",
+    "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania.",
+    "tag": "v1.0.37",
+    "bytes": 14273526,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.37/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk"
+  },
+  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed."
 }
