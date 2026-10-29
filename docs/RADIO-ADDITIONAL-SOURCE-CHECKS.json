@@ -801,7 +801,22 @@
         "plugin_provider_integrated": false
       },
       "receiver_confirmed": true,
-      "next_step": "The lightweight API-search and song-page extraction path is now verified for implementation; keep the token out of public code and release packages."
+      "next_step": "The lightweight API-search and song-page extraction path is now verified for implementation; keep the token out of public code and release packages.",
+      "second_token_receiver_check": {
+        "date": "2026-10-29",
+        "source": "Owner-uploaded warder-genius-test(1).log",
+        "python": "3.14.9",
+        "dns_elapsed_ms": 20,
+        "http": 401,
+        "api_response_bytes": 134,
+        "api_elapsed_ms": 244,
+        "authorization_present": true,
+        "unavailable_placeholder": false,
+        "result": "authentication_rejected",
+        "interpretation": "The newly supplied credential was not accepted for the tested Genius search request. This is not a timeout or DNS failure. The earlier original-token receiver success remains valid evidence.",
+        "token_logged": false,
+        "token_committed": false
+      }
     },
     "musixmatch": {
       "integrated": false,
