@@ -32,6 +32,7 @@ jobs:
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             /assets/warder/downloads/picons/channels/manifest.json
             /assets/warder/downloads/picons/channels/SHA256SUMS
+            /reports/europe-picons-publication-20261029.json
       - uses: actions/checkout@v4
         with:
           repository: Evolution-by-Warder/PiconHub-Warder-Evolution
@@ -45,7 +46,14 @@ jobs:
       - name: Test alias scope, exact PNG preservation and deterministic resizing
         run: python tools/test-europe-picons-20261029.py -v
       - name: Build verified archives and exercise actual receiver installer
-        run: python -u tools/publish-europe-picons-20261029.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF"
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -f reports/europe-picons-publication-20261029.json; then
+            python -u tools/publish-europe-picons-20261029.py --reuse-candidate --source-ref "$APPROVED_PICON_REF"
+          else
+            python -u tools/publish-europe-picons-20261029.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF"
+          fi
       - name: Commit content-addressed archives and catalogue together
         shell: bash
         run: |
@@ -57,17 +65,21 @@ jobs:
           python - <<'PY'
           import subprocess
           paths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
-          assert paths and all(p.startswith('assets/warder/downloads/picons/channels/') or p=='reports/europe-picons-publication-20261029.json' for p in paths),paths
+          assert all(p.startswith('assets/warder/downloads/picons/channels/') or p=='reports/europe-picons-publication-20261029.json' for p in paths),paths
           PY
-          git commit -m 'Publish verified owner-approved European picon archives and catalogue'
-          git push origin HEAD:release/europe-picons-20261029
+          if git diff --cached --quiet; then
+            echo 'Verified immutable archives are already committed.'
+          else
+            git commit -m 'Publish verified owner-approved European picon archives and catalogue'
+            git push origin HEAD:release/europe-picons-20261029
+          fi
       - name: Read back every new public part and verify size and SHA256
         run: python -u tools/publish-europe-picons-20261029.py --verify-public release/europe-picons-20261029
       - name: Record public verification
         shell: bash
         run: |
           set -euo pipefail
-          git add reports/europe-picons-publication-20261029.json
+          git add --sparse reports/europe-picons-publication-20261029.json
           git commit -m 'Record successful public SHA256 verification of European picon parts'
           git push origin HEAD:release/europe-picons-20261029
       - uses: actions/upload-artifact@v4

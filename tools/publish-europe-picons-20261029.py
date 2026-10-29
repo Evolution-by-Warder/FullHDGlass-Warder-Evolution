@@ -261,14 +261,35 @@ def verify_public(ref):
     print('PUBLIC PARTS VERIFIED',len(verified),flush=True)
 
 
+def reuse_candidate(source_ref):
+    """Resume evidence writeback without rebuilding immutable verified ZIPs."""
+    report=json.loads((ROOT/'reports/europe-picons-publication-20261029.json').read_text())
+    document=json.loads((DELIVERY/'manifest.json').read_text())
+    assert report['source_ref']==source_ref
+    assert report['manifest_sha256']==sha((DELIVERY/'manifest.json').read_bytes())
+    assert report['receiver_selective_installer_checks']==report['changed_packages']
+    assert report['receiver_planner_checks']==report['changed_packages']
+    assert report['graphic_count']==27 and report['approved_png_count']==81
+    entries={(p['selector_id'],p['resolution'],p['family']):p for p in document['packages']}
+    for package in report['packages']:
+        found=entries[(package['selector_id'],package['resolution'],'channel-'+package['style'])]
+        assert found['sha256']==package['sha256'] and found['bytes']==package['bytes']
+    metadata={part['filename']:part for part in document['parts']}
+    assert all(metadata[part['filename']]==part for part in report['new_parts'])
+    print('REUSING VERIFIED CANDIDATE',report['changed_packages'],'archives; public bytes will be verified again',flush=True)
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--source-root',type=Path)
     parser.add_argument('--source-ref')
     parser.add_argument('--verify-public')
+    parser.add_argument('--reuse-candidate',action='store_true')
     args=parser.parse_args()
     if args.verify_public:
         verify_public(args.verify_public)
+    elif args.reuse_candidate:
+        reuse_candidate(args.source_ref)
     else:
         assert args.source_root and args.source_ref
         publish(args.source_root,args.source_ref)
