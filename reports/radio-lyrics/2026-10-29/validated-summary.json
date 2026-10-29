@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "raw_file": "results.json",
+  "raw_sha256": "2d9d27e19448a3596135e3923d73fcc1e822ecc9ab7603d607ea5e6b27694047",
+  "validation": "Exclude the exact SHA256 of the receiver-proven Hudba.sk absence notice; preserve original measurements unchanged. Other entries retain the original complete-identity checks; this is not a claim of full manual lyric auditing.",
+  "excluded_notice_sha256": "acce7404abb4f4e39b38c0475901635a7749fa89d3eb807b72a6c7fbc8c0acfd",
+  "rejected_attempts": [
+    {
+      "provider": "hudba",
+      "round": 1,
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "characters": 41,
+      "elapsed_ms": 4011
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "characters": 41,
+      "elapsed_ms": 4364
+    }
+  ],
+  "summary": {
+    "lrclib": {
+      "attempts": 24,
+      "accepted_found_attempts": 13,
+      "distinct_songs_found": 7,
+      "median_found_ms": 3815,
+      "confirmed_notice_rejections": 0
+    },
+    "ovh": {
+      "attempts": 24,
+      "accepted_found_attempts": 4,
+      "distinct_songs_found": 2,
+      "median_found_ms": 4473.5,
+      "confirmed_notice_rejections": 0
+    },
+    "hudba": {
+      "attempts": 24,
+      "accepted_found_attempts": 11,
+      "distinct_songs_found": 6,
+      "median_found_ms": 3540,
+      "confirmed_notice_rejections": 2
+    },
+    "youradio": {
+      "attempts": 24,
+      "accepted_found_attempts": 12,
+      "distinct_songs_found": 6,
+      "median_found_ms": 6850.0,
+      "confirmed_notice_rejections": 0
+    }
+  },
+  "combined_distinct_songs": 10
+}

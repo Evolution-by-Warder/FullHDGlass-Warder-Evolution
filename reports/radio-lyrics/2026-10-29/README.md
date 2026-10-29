@@ -1,10 +1,12 @@
 # SK/CZ lyrics-source check — 29 October 2026
 
+**Corrected after the TEST9 notice-filter finding.** The original TEST8 summary counted a Hudba.sk missing-text notice as a success twice for Lucie Bílá — Láska je láska. Those two records share the exact SHA256 of the independently reproduced 41-character notice. `validated-summary.json` excludes them; `results.json` retains the original raw observations unchanged.
+
 Twelve predefined songs (six Slovak, six Czech), two rounds per source: 96 independent lookups through the four current TEST8 adapters. Selection combines owner-reported failures and familiar songs; it is a small convenience sample, not a representative airplay or full-catalogue coverage survey.
 
 | Current adapter | Distinct songs found, out of 12 (either round) | Successful lookups, out of 24 | Median time to found text |
 | --- | ---: | ---: | ---: |
-| Hudba.sk | 7 | 13 | 3.550 s |
+| Hudba.sk | 6 | 11 | 3.540 s |
 | LRCLIB | 7 | 13 | 3.815 s |
 | Youradio | 6 | 12 | 6.850 s |
 | lyrics.ovh | 2 | 4 | 4.474 s |
@@ -15,7 +17,7 @@ At least one HTTP/transport/parsing error occurred in 9/24 LRCLIB lookups and 1/
 
 ## Interpretation and proposed priority
 
-For clearly labelled SK/CZ music formats, such as Rádio KIKS Československo and Fun Rádio Československé hity, Hudba.sk is a justified first source from this sample. Keep LRCLIB available concurrently or after a short hedge because it contributes otherwise missing songs, and keep Youradio for its complementary catalogue. lyrics.ovh is a lower-priority backup here.
+For clearly labelled SK/CZ music formats, such as Rádio KIKS Československo and Fun Rádio Československé hity, the strongest starting combination in this corrected sample is LRCLIB plus Hudba.sk: LRCLIB found more distinct songs (7 versus 6), while successful Hudba.sk responses were a little faster. Keep both available without waiting for one to time out; retain Youradio for complementary catalogue coverage. lyrics.ovh is a lower-priority backup here. The earlier recommendation based on seven Hudba.sk songs is superseded.
 
 This is a measured recommendation, not a released priority change. TEST8 already starts its alternatives after at most 750 ms (or an earlier primary miss), so merely swapping the first source can save only that initial head start; it cannot create missing texts or eliminate network failures. Do not turn this into a slow sequential wait-for-each-server chain. A station's preferred format is a hint, not proof of every song's language.
 
