@@ -12,6 +12,16 @@ retries for network failures; the entire diagnostic stops after 120 seconds.
 HTTP errors and infrastructure placeholders are distinct from missing songs.
 The test's normal exit means the diagnostic completed, not that Genius worked.
 
+For twelve SK/CZ and international recordings, run
+`python3 /tmp/warder_genius_test.py --batch`. The token can again be supplied
+through `WARDER_GENIUS_TOKEN`. This mode writes `/tmp/warder-genius-batch.log`,
+uses the standard-library path verified on the receiver, and records a summary
+per recording. Candidate metadata is retained when exact matching fails, so
+artist aliases and different versions can be investigated without silently
+accepting a wrong recording. Defaults are 10 seconds per request, no retries,
+and a 180-second total limit. Partial runs report how many cases completed.
+This small diagnostic sample is not a catalogue coverage measurement.
+
 These standalone Python 3 checks do not install or modify the Enigma2 plugin.
 
 `check-genius-auth.py` uses only the Python standard library. Enter the Genius

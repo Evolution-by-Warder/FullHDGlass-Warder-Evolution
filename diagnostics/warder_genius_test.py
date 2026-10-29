@@ -20,6 +20,21 @@ from urllib.parse import urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 LOG = Path('/tmp/warder-genius-test.log')
+CASE_CONTEXT = {}
+BATCH_SONGS = (
+    ('IMT Smile', 'Úsmev a čaj'),
+    ('Instinct', 'Dozadu'),
+    ('Kali', 'Aj keby'),
+    ('Láska', 'Mraky'),
+    ('Dara Rolins', 'Sľub'),
+    ('Peter Bič Project', 'Stromy'),
+    ('Wanastowi Vjecy', 'Kapky krve'),
+    ('Lucie', 'Chci zas v tobě spát'),
+    ('Lucie Vondráčková', 'Hodiny duchů'),
+    ('Hana Horecká', 'Den a noc'),
+    ('ABBA', 'Dancing Queen'),
+    ('Queen', 'Bohemian Rhapsody'),
+)
 
 
 class Deadline(BaseException):
@@ -32,7 +47,7 @@ class NoRedirect(HTTPRedirectHandler):
 
 
 def emit(stage, **fields):
-    line = json.dumps(dict(stage=stage, **fields), ensure_ascii=False)
+    line = json.dumps(dict(stage=stage, **CASE_CONTEXT, **fields), ensure_ascii=False)
     with LOG.open('a', encoding='utf-8') as handle:
         handle.write(line + '\n')
     print(line, flush=True)
@@ -120,21 +135,24 @@ def standard_check(options, token):
     text = fetch('https://api.genius.com/search?' + urlencode({'q': options.artist + ' ' + options.title}), options.timeout, options.retries, token)
     if text is None:
         emit('standard_api', status='no_usable_response')
-        return
+        return {'status': 'api_unavailable'}
     try:
         data = json.loads(text)
         hits = data.get('response', {}).get('hits', [])
         exact = []
+        candidates = []
         for hit in hits[:20]:
             row = hit.get('result', {})
             artist = row.get('primary_artist', {}).get('name', '')
             title = row.get('title', '')
+            if len(candidates) < 5:
+                candidates.append({'artist': artist, 'title': title, 'url': row.get('url', '')})
             if normalized(artist) == normalized(options.artist) and normalized(title) == normalized(options.title):
                 exact.append({'artist': artist, 'title': title, 'url': row.get('url', '')})
         emit('standard_api', status='json_received', api_status=data.get('meta', {}).get('status'),
-             hits=len(hits), exact_matches=exact[:3])
+             hits=len(hits), exact_matches=exact[:3], candidates=candidates)
         if not exact:
-            return
+            return {'status': 'no_exact_match', 'hits': len(hits)}
         page = fetch(exact[0]['url'], options.timeout, options.retries)
         if page is not None:
             parser = LyricsPage()
@@ -144,8 +162,11 @@ def standard_check(options, token):
                  sha256=hashlib.sha256(body.encode()).hexdigest() if body else None,
                  lyrics_logged=False,
                  note='Embedded song-state parsing is not tested; no containers does not prove catalogue absence.')
+            return {'status': 'text_retrieved' if body else 'no_lyric_containers', 'characters': len(body)}
+        return {'status': 'song_page_unavailable'}
     except (ValueError, AttributeError, TypeError) as error:
         emit('standard_api', status='parse_error', error=type(error).__name__)
+        return {'status': 'parse_error', 'error': type(error).__name__}
 
 
 def library_check(options, token):
@@ -195,12 +216,21 @@ def library_check(options, token):
 
 
 def main():
+    global LOG
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--batch', action='store_true', help='Test twelve recordings; write /tmp/warder-genius-batch.log')
     parser.add_argument('--artist', default='IMT Smile')
     parser.add_argument('--title', default='Úsmev a čaj')
-    parser.add_argument('--timeout', type=int, default=20, choices=range(1, 31))
-    parser.add_argument('--retries', type=int, default=3, choices=range(4))
+    parser.add_argument('--timeout', type=int, default=None, choices=range(1, 31))
+    parser.add_argument('--retries', type=int, default=None, choices=range(4))
     options = parser.parse_args()
+    if options.timeout is None:
+        options.timeout = 10 if options.batch else 20
+    if options.retries is None:
+        options.retries = 0 if options.batch else 3
+    if options.batch:
+        LOG = Path('/tmp/warder-genius-batch.log')
+    limit = 180 if options.batch else 120
     token = os.environ.pop('WARDER_GENIUS_TOKEN', '').strip()
     if not token:
         if not sys.stdin.isatty():
@@ -210,13 +240,15 @@ def main():
         raise SystemExit('Token nebol zadany spravne.')
     LOG.write_text('', encoding='utf-8')
     emit('start', python=sys.version.split()[0], artist=options.artist, title=options.title,
-         timeout=options.timeout, retries=options.retries, overall_limit_seconds=120,
+         timeout=options.timeout, retries=options.retries, overall_limit_seconds=limit,
+         batch=options.batch, recordings=len(BATCH_SONGS) if options.batch else 1,
          token_supplied=True, token_logged=False)
 
     def deadline(*args):
         raise Deadline()
     signal.signal(signal.SIGALRM, deadline)
-    signal.alarm(120)
+    signal.alarm(limit)
+    completed = []
     try:
         started = time.monotonic()
         try:
@@ -224,8 +256,21 @@ def main():
             emit('dns', status='resolved', address_count=len(addresses), elapsed_ms=round(1000 * (time.monotonic() - started)))
         except OSError as error:
             emit('dns', status='error', error=type(error).__name__)
-        standard_check(options, token)
-        library_check(options, token)
+        if options.batch:
+            for index, (artist, title) in enumerate(BATCH_SONGS, 1):
+                options.artist, options.title = artist, title
+                CASE_CONTEXT.update(case=index, case_artist=artist, case_title=title)
+                emit('case_start', index=index, total=len(BATCH_SONGS))
+                try:
+                    result = standard_check(options, token)
+                except Exception as error:
+                    result = {'status': 'diagnostic_error', 'error': type(error).__name__}
+                completed.append(dict(artist=artist, title=title, **result))
+                emit('case_complete', **result)
+                time.sleep(0.2)
+        else:
+            standard_check(options, token)
+            library_check(options, token)
     except Deadline:
         emit('deadline', status='overall_time_limit_reached')
     except Exception as error:
@@ -233,6 +278,11 @@ def main():
     finally:
         signal.alarm(0)
         token = ''
+        CASE_CONTEXT.clear()
+        if options.batch:
+            emit('batch_summary', requested=len(BATCH_SONGS), completed=len(completed),
+                 text_retrieved=sum(row['status'] == 'text_retrieved' for row in completed),
+                 results=completed, coverage_measurement=False)
         emit('finished', log=str(LOG), note='Diagnostic finished; source availability is described by the individual stages.')
         print('\nHotovo. Posli subor: ' + str(LOG), flush=True)
 
