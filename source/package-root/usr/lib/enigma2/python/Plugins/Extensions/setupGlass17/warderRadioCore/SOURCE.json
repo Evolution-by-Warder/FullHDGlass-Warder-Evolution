@@ -1,10 +1,10 @@
 {
   "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-  "commit": "2338498bb1bde99d921cf2ccf1f237730bea5c27",
+  "commit": "1440264fa739c42372410bc43efdea8bbaf3d5b7",
   "source_path": "plugin/src/Plugins/Extensions/WarderPiconHub",
   "policy": "Exact canonical Warder engine/parser/model copies. GUI is provided by the host application. One data source and the same installation lock as PiconHub; do not independently fork these files.",
   "sha256": {
-    "warder_engine.py": "4fb24d11262002a0010640c75ad84d7cac3db829a3b415e00c9c2f22f40af820",
+    "warder_engine.py": "c3810eb73f6d4f2f26622eef9c7edb06f218e829b34dec7809f31a30b19847e0",
     "warder_iptv.py": "6d57c1ee3ac1f02f8a510bc06e407830f2b9a1c9c5ba75723a4f801300883899",
     "warder_model.py": "9f17814c1c97132c4d35ae9ce47ce0d0266e1fa348523665b5ce56aa0dacc5d5",
     "warder_i18n.py": "129e4de81b41dc87aff3f2f16d14c3ee9c4efea4c6e9f1c0e9db4250bb4e83c6",

@@ -20,8 +20,10 @@ import NavigationInstance
 from Components.Converter.WarderRadioMetadata import current_song
 try:
     from Plugins.Extensions.setupGlass17 import warderSongIdentity as song_identity
+    from Plugins.Extensions.setupGlass17 import warderRuntimeCache as runtime_cache
 except ImportError:
     import warderSongIdentity as song_identity
+    import warderRuntimeCache as runtime_cache
 
 
 class WarderRadioArtwork(Renderer):
@@ -60,13 +62,6 @@ class WarderRadioArtwork(Renderer):
         # shown while no valid song cover exists, including stations without RDS.
         self._showFallback()
         self._diagStart = time.time()
-        try:
-            with open("/tmp/warder-radio-start", "r") as src:
-                buttonStart = float(src.read().strip())
-            if 0.0 <= self._diagStart - buttonStart <= 30.0:
-                self._diagStart = buttonStart
-        except Exception:
-            pass
         self._diag("RENDERER_START epoch=%.6f t=%.3f" % (time.time(), self._elapsed()))
         # Fast acquisition on RADIO entry; settle to a light poll once metadata is present.
         self._timer.start(100, True)
@@ -222,10 +217,8 @@ class WarderRadioArtwork(Renderer):
                 payload = response.read(4 * 1024 * 1024 + 1)
             if not 1024 < len(payload) <= 4 * 1024 * 1024 or not payload.startswith(bytes((255, 216))):
                 return ""
-            tmp = path + ".tmp"
-            with open(tmp, "wb") as output:
-                output.write(payload)
-            os.replace(tmp, path)
+            runtime_cache.write_atomic(path, payload)
+            runtime_cache.prune(os.path.dirname(path), r'[0-9a-f]{40}\.jpg', 128, 32 * 1024 * 1024, keep=(path,))
             return path
         except Exception:
             return ""

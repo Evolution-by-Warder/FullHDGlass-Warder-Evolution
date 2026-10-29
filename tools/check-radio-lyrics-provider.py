@@ -49,7 +49,7 @@ if regional:
     kwargs['profile']='skcz'
     if supermusic:kwargs['site_providers']=('supermusic',)
 with tempfile.TemporaryDirectory() as temp:
-    result=m.lookup(artist,title,Path(temp),**kwargs)
+    result=m.lookup(artist,title,Path(temp),diagnostics=True,**kwargs)
     state=json.loads((Path(temp)/'.last-result').read_text())
 record={'artist':artist,'title':title,'status':result['status'],
         'characters':len(result['text']),'text_sha256':hashlib.sha256(result['text'].encode()).hexdigest(),

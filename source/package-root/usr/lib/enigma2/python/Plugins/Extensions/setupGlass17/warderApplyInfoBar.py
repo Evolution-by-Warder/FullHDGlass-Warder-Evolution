@@ -10,17 +10,9 @@ skin_path = os.path.join(base, "usr/share/enigma2/hd_glass17/skin.xml")
 plugin_dir = os.path.join(base, "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17")
 variants_path = os.path.join(plugin_dir, "hdg17Screens.xml")
 settings_path = os.path.join(base, "etc/enigma2/settings")
-log_path = os.path.join(base, "home/root/logs/warder-infobar-install.log")
-
 def log(message):
-    try:
-        directory = os.path.dirname(log_path)
-        if not os.path.isdir(directory):
-            os.makedirs(directory)
-        with open(log_path, "a") as handle:
-            handle.write(message + "\n")
-    except Exception:
-        pass
+    # Installation status is reported by the package manager, not a disk log.
+    return None
 
 def read_lines(path):
     with open(path, "r") as handle:
@@ -78,12 +70,16 @@ def main():
         return
     mode = os.stat(skin_path).st_mode & 0o7777
     temp = skin_path + ".warder-tmp"
-    with open(temp, "w") as handle:
-        handle.write(new_data)
-        handle.flush()
-        os.fsync(handle.fileno())
-    os.chmod(temp, mode)
-    os.rename(temp, skin_path)
+    try:
+        with open(temp, "w") as handle:
+            handle.write(new_data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(temp, mode)
+        os.rename(temp, skin_path)
+    finally:
+        try: os.unlink(temp)
+        except OSError: pass
     log("APPLIED variant=%s" % selected)
 
 try:

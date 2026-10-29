@@ -52,12 +52,8 @@ except: pass
 FORECAST = ("obsdate", "sunrise", "sunset", "txtshort", "weathericon","hightemperature","lowtemperature","windspeed","winddirection","maxuv")
 EW_FILE = "/tmp/eWeather"
 def Writelog(txt):
-	log = PLUGINPATH+"e17.txt"
-	try:
-		f = open(log,"a")
-		f.write("%s\n" % str(txt))
-		f.close()
-	except IOError: pass			
+    """Production runtime does not write diagnostic logs."""
+    return None
 class mainmenu(Screen):
 
 	def __init__(self, session):

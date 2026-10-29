@@ -53,12 +53,8 @@ if not ENA_MSN:
 		import json as simplejson
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/"
 def Writelog(txt):
-	log = PLUGINPATH+"w17.txt"
-	try:
-		f = open(log,"a")
-		f.write(("%s\n" % str(txt)))
-		f.close()
-	except IOError: pass
+    """Production runtime does not write diagnostic logs."""
+    return None
 try:
 	if config.plugins.setupGlass17.par49.value:
 		weather_language = []

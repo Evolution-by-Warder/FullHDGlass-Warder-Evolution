@@ -1,3 +1,9 @@
+# Candidate 1.0.40-test1 — spectrum and ecosystem runtime cleanup, 29 October 2026
+
+Owner approved the 84-column, 3px / 1px, transparent 350x126 animated colour spectrum and requested replacing it in the skin, then auditing all three Warder receiver plugins for unnecessary logs and transient files. Implemented on `feature/radio-spectrum-refinement`. Production remains 1.0.39; no physical receiver confirmation or feed activation is claimed. See `docs/RUNTIME-CLEANUP-2026-10-29.md`, its source hashes, and `design/radio-spectrum/approval.json`. The shared engine is byte-identical to the PiconHub cleanup candidate recorded in `warderRadioCore/SOURCE.json`.
+
+---
+
 # Published production 1.0.39 — 29 October 2026
 
 Latest stable release and built-in production updater are active. Source `f2ce83c7b20d1213979d8c044bacf51f90fe916d`; activation `58e3bd3a263b9df4c779dbef22290556a11815ad`. Build **40877231891** passed **362 tests** and verified **1,353 installed files**; independent radio guard **40877231870** passed. Both public delivery paths were independently downloaded and matched: **14,515,826 bytes**, SHA256 `7bec211d1ad8ce2864a01c19a63f719de983345258eecfece03669efb898f246`. Legacy 1.0.18 bridge, user settings and satellite automation remain unchanged. Full evidence: [RADIO-PRODUCTION-1.0.39.json](docs/RADIO-PRODUCTION-1.0.39.json). TEST13 receiver confirmation and exact promotion scope are retained below.

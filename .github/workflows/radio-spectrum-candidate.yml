@@ -1,0 +1,75 @@
+name: Radio spectrum and runtime cleanup candidate
+on:
+  push:
+    branches: [feature/radio-spectrum-refinement]
+    paths: ['source/**', 'tools/**', 'design/radio-spectrum/**', 'docs/**', '.github/workflows/radio-spectrum-candidate.yml']
+permissions:
+  contents: write
+concurrency:
+  group: radio-spectrum-candidate
+  cancel-in-progress: true
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            docs
+            design
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: python -m pip install --quiet Pillow
+      - name: Install native background verification dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Check native spectrum, cleanup, radio and settings
+        run: |
+          python tools/test-radio-spectrum.py -v
+          python tools/test-runtime-cleanup.py -v
+          python tools/test-canonical-picons.py -q
+          python tools/test-radio-background.py -q
+          python tools/test-radio-lyrics.py -q
+          python tools/test-radio-stream-metadata.py -q
+          python tools/test-radio-picon.py -q
+          python tools/test-radio-weekly-update.py -q
+          python tools/test-startup-update.py -q
+          python tools/test-runtime-safety.py
+          python tools/test-setup-style.py -q
+          python tools/test-help-preview.py -q
+          python tools/test-dab-shared-runtime.py -q
+          python tools/test-iptv-shared-runtime.py -q
+          python tools/test-settings-publisher.py -q
+          python tools/test-native-skin-publisher.py -q
+          python tools/test-settings-glass.py -q
+          python tools/test-version-order.py
+          python tools/test-package-transition.py -q
+          python tools/test-package-transition-publisher.py -q
+          python tools/verify-radio-release.py
+      - name: Build and verify every installed byte
+        run: |
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-spectrum-cleanup-candidate
+          path: packages/test/*
+          retention-days: 30
+      - name: Publish isolated test package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
+          case "$VERSION" in *-test*) ;; *) exit 1 ;; esac
+          PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+          gh release create "radio-spectrum-${VERSION}" "$PACKAGE" "$PACKAGE.sha256" \
+            --target "$GITHUB_SHA" --prerelease --latest=false \
+            --title "FullHDGlass ${VERSION}: spectrum and runtime cleanup" --notes-file docs/CURRENT-RELEASE.md

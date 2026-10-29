@@ -22,19 +22,8 @@ from Components.config import config
 from enigma import ePixmap, eTimer
 
 def Writelog(txt):
-	f = "/tmp/missing_menu_icons.txt"
-	if fileExists(f):
-		try:
-			ff = open(f, "r").read()
-			if ff.find(txt) != -1:
-				txt = ""
-		except IOError: pass
-	if txt != "":
-		try:
-			f = open(f,"a")
-			f.write("%s\n" % str(txt))
-			f.close()
-		except IOError: pass
+    """Production runtime does not write diagnostic logs."""
+    return None
 
 class g17MenuEntry2(Renderer):
 

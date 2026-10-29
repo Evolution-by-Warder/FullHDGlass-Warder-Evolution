@@ -19,17 +19,8 @@ import six
 lastMenuID = None
 
 def Writelog(txt):
-	log = "/usr/lib/enigma2/python/Screens//menu.log"
-	if os.path.isfile(log) and os.path.getsize(log) > 1000000:
-		try:
-			os.remove(log)
-		except OSError:
-			pass
-	try:
-		f = open(log,"a")
-		f.write("%s\n" % str(txt))
-		f.close()
-	except IOError: pass
+    """Production runtime does not write diagnostic logs."""
+    return None
 	
 IS_VU = False
 DM8X = 0

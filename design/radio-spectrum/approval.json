@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "approved_on": "2026-10-29",
+  "authorization": "Owner accepted the final 3px columns / 1px gaps / transparent-background animated preview and explicitly requested replacing the existing skin spectrum. Owner then requested a full runtime logging and temporary-file audit of FullHDGlass, PiconHub and GSU.",
+  "widget_size": [
+    350,
+    126
+  ],
+  "screen_position": [
+    1470,
+    876
+  ],
+  "columns": 84,
+  "column_width": 3,
+  "gap": 1,
+  "occupied_width": 335,
+  "segment_height": 2,
+  "segment_pitch": 3,
+  "background": "native fully transparent gRGB alpha 255 clear",
+  "palette": "360 cached HSL colours; blue/cyan/green/yellow/orange/red, gentle temporal drift; no neon layers",
+  "render_interval_ms": 50,
+  "independent_target_interval_ms": 110,
+  "receiver_validated": false,
+  "candidate_version": "1.0.40-test1",
+  "previous_production": "1.0.39"
+}

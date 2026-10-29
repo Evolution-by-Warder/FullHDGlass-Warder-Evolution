@@ -1,5 +1,6 @@
 """One verified complete archive per style, using original picon directories."""
 import os
+import shutil
 import tempfile
 
 
@@ -42,5 +43,6 @@ def install(screen,row,variant,get_assets,translate):
             try:os.unlink(archive)
             except OSError:pass
         if stage:
-            try:screen.rmTmp2(stage,root);os.rmdir(stage)
-            except OSError:pass
+            # The whole directory belongs to this one operation, including
+            # nested archive entries left behind by an interrupted extraction.
+            shutil.rmtree(stage,ignore_errors=True)

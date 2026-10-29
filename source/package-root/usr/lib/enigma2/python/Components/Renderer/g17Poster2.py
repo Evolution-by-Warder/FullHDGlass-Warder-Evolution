@@ -35,11 +35,8 @@ try:
 	ENA = True
 except: pass
 def Writelog(txt):
-	try:
-		f = open("/usr/lib/enigma2/python/Components/Renderer/g17Poster2.log","a")
-		f.write("%s\n" % str(txt))
-		f.close()
-	except IOError: pass	
+    """Production runtime does not write diagnostic logs."""
+    return None
 PATH = "/media/cf"
 try:
 	PATH = config.plugins.setupGlass17.par39.value

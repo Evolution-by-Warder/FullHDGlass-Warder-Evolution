@@ -126,6 +126,21 @@ if [ -d "$warder_python" ] && [ ! -L "$warder_python" ]; then
 fi
 
 # Apply the selected InfoBar after all package files have been installed.
+# Retire only positively identified diagnostic files from older Warder builds.
+for warder_log in \
+    /tmp/warder-radio-webif-error.log /tmp/warder-radio-webif-hook.log \
+    /tmp/warder-radio-artwork.log /tmp/warder-radio-start \
+    /tmp/warder-radio-lyrics/.last-result \
+    /home/root/logs/warder-infobar-install.log \
+    /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/g17.txt \
+    /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/w17.txt \
+    /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/e17.txt \
+    /usr/lib/enigma2/python/Components/Renderer/g17Poster2.log; do
+    if [ -f "$warder_log" ] && [ ! -L "$warder_log" ]; then
+        rm -f "$warder_log"
+    fi
+done
+
 if [ -x /usr/bin/python ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then
     /usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
 elif [ -x /usr/bin/python3 ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py ]; then

@@ -108,13 +108,16 @@ def select(records, artist, title):
 
 
 def atomic_json(path, value):
-    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=str(path.parent),delete=False) as output:
-        tmp = Path(output.name)
-        json.dump(value,output,ensure_ascii=False)
-    try:os.replace(str(tmp),str(path))
+    tmp = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=str(path.parent),delete=False) as output:
+            tmp = Path(output.name)
+            json.dump(value,output,ensure_ascii=False)
+        os.replace(str(tmp),str(path))
     finally:
-        try:tmp.unlink()
-        except OSError:pass
+        if tmp is not None:
+            try:tmp.unlink()
+            except OSError:pass
 
 
 def retry_delay(error, now):
@@ -127,7 +130,7 @@ def retry_delay(error, now):
 
 def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
            monotonic=time.monotonic, hedge_delay=0.75, budget=32,
-           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','supermusic','roth'), profile='global'):
+           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','supermusic','roth'), profile='global', diagnostics=False):
     if profile not in ('global','skcz'):raise ValueError('Unknown radio profile')
     artist,title=song_identity.repair_pair(artist,title)
     artist, title = str(artist).strip(), str(title).strip()
@@ -146,12 +149,13 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     filename = cache/(key(artist,title)+'.json')
     started = monotonic()
     def finish(result, traces=None, cached=False):
-        # One bounded diagnostic record; never store lyrics or full responses.
-        diagnostic = {'artist':artist,'title':title,'status':result['status'],
-                      'cache_hit':cached,'elapsed_ms':int(max(0,monotonic()-started)*1000),
-                      'requests':(traces or [])[:max_requests]}
-        try:atomic_json(cache/'.last-result',diagnostic)
-        except OSError:pass
+        # Explicit developer harness only; receiver calls never write traces.
+        if diagnostics:
+            diagnostic = {'artist':artist,'title':title,'status':result['status'],
+                          'cache_hit':cached,'elapsed_ms':int(max(0,monotonic()-started)*1000),
+                          'requests':(traces or [])[:max_requests]}
+            try:atomic_json(cache/'.last-result',diagnostic)
+            except OSError:pass
         return result
     try:
         saved = json.loads(filename.read_text())

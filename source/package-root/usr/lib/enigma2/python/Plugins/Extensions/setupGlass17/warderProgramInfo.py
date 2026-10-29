@@ -7,6 +7,10 @@ import os
 import re
 import time
 try:
+    from . import warderRuntimeCache as runtime_cache
+except ImportError:
+    import warderRuntimeCache as runtime_cache
+try:
     from urllib.parse import quote_plus
     from urllib.request import urlopen
 except ImportError:
@@ -59,8 +63,9 @@ def _writeCache(title, data):
     try:
         if not os.path.isdir(CACHE_DIR):
             os.makedirs(CACHE_DIR)
-        with open(_cachePath(title), "w") as f:
-            json.dump(data, f)
+        path = _cachePath(title)
+        runtime_cache.write_atomic(path, json.dumps(data).encode('utf-8'))
+        runtime_cache.prune(CACHE_DIR, r'v[0-9]+_[a-z0-9_]+\.json', 128, 2 * 1024 * 1024, keep=(path,))
     except Exception:
         pass
 
@@ -84,10 +89,11 @@ def _artworkPath(data):
             dest = os.path.join(CACHE_DIR, "tmdb_%s_%s.jpg" % (provider_id, kind))
             if os.path.isfile(dest) and os.path.getsize(dest) > 1000:
                 return dest
-            raw = urlopen("https://image.tmdb.org/t/p/w780%s" % remote, timeout=2.5).read()
-            if raw and len(raw) > 1000 and raw[:2] == b"\xff\xd8":
-                with open(dest, "wb") as f:
-                    f.write(raw)
+            with urlopen("https://image.tmdb.org/t/p/w780%s" % remote, timeout=2.5) as response:
+                raw = response.read(4 * 1024 * 1024 + 1)
+            if 1000 < len(raw) <= 4 * 1024 * 1024 and raw[:2] == b"\xff\xd8":
+                runtime_cache.write_atomic(dest, raw)
+                runtime_cache.prune(CACHE_DIR, r'tmdb_[0-9]+_(?:backdrop|poster)\.jpg', 128, 32 * 1024 * 1024, keep=(dest,))
                 return dest
         except Exception:
             continue
@@ -99,7 +105,7 @@ def lookup(title, context=""):
         return {}
     cached = _readCache(title)
     if cached is not None:
-        if cached and not cached.get("artwork_path"):
+        if cached and not os.path.isfile(cached.get("artwork_path") or ""):
             cached["artwork_path"] = _artworkPath(cached)
         return cached
 

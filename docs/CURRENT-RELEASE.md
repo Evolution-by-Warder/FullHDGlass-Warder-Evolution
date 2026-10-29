@@ -1,12 +1,7 @@
-# FullHDGlass Warder Evolution 1.0.39
+# FullHDGlass Warder Evolution 1.0.40-test1
 
-Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.
+Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadné pozadie, plynulé farby. Vypnuté automatické diagnostické logy, opravené upratovanie dočasných súborov a ohraničené RAM cache.
 
-- Natívny text skladby a obal v schválenom rozložení rádia; ostré systémové písmo.
-- SuperMusic, KaraokeTexty SK/CZ, Akordy Kytary a ďalšie existujúce zdroje. Overuje sa interpret, názov a verzia nahrávky; cudzie remixy ani prvý náhodný výsledok sa nepoužijú.
-- Sťahovanie prebieha na pozadí, s časovými a veľkostnými limitmi. SuperMusic nepotrebuje zdieľaný API token.
-- Používateľ potvrdil funkčnosť TEST13 na prijímači 29.10.2026. Produkčná verzia zachováva jeho kód a grafiku; mení označenie a históriu vydania.
-- RDS, DAB/MOT, IPTV rádio, vlastné nastavenia a tiché týždenné obnovenie Warder Radio Streams zachované.
-- Riadená aktualizácia aj z 1.0.38-test13; pôvodná migračná aktualizácia 1.0.18 zachovaná.
+Schválený návrh equalizéra je zapracovaný bez zmeny rozmeru 350 × 126 px alebo pozícií. Texty, obaly a RDS/DAB zostávajú funkčne zachované. Diagnostika textov je dostupná iba pri výslovnom zapnutí vo vývojovom teste, nie pri používaní skinu.
 
-Detaily: [SuperMusic](RADIO-SUPERMUSIC-TEST13.md), [produkčné overenie](PRODUCTION.json).
+Izolovaný testovací balík. Produkčný aktualizátor zostáva na 1.0.39; fyzický test nového rendereru zatiaľ neprebehol.

@@ -1,3 +1,7 @@
+# 1.0.40-test1 — 29. 10. 2026
+
+Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadné pozadie, plynulé farby. Vypnuté automatické diagnostické logy, opravené upratovanie dočasných súborov a ohraničené RAM cache.
+
 # 1.0.39 — 29. 10. 2026
 
 - Produkčné vydanie prijímačom potvrdeného TEST13: natívne texty a obaly rádiových skladieb.

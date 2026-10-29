@@ -204,7 +204,7 @@ class ProviderTests(unittest.TestCase):
             if 'artist_name=' in request.full_url:return io.BytesIO(b'[]')
             raise TimeoutError('optional query failed')
         with tempfile.TemporaryDirectory() as tmp:
-            folder=Path(tmp);result=provider.lookup('Faraon','Šlapací kolo',folder,opener=response)
+            folder=Path(tmp);result=provider.lookup('Faraon','Šlapací kolo',folder,diagnostics=True,opener=response)
             self.assertEqual(result['status'],'not-found');self.assertTrue(result['partial'])
             self.assertEqual(len(list(folder.glob('*.json'))),0)
             status=json.loads((folder/'.last-result').read_text())
@@ -219,7 +219,7 @@ class ProviderTests(unittest.TestCase):
             release.wait(3)
             raise TimeoutError('optional request still pending')
         with tempfile.TemporaryDirectory() as tmp:
-            try:result=provider.lookup('Artist','Title',Path(tmp),opener=response,hedge_delay=0.01,budget=2.05)
+            try:result=provider.lookup('Artist','Title',Path(tmp),diagnostics=True,opener=response,hedge_delay=0.01,budget=2.05)
             finally:release.set()
             self.assertEqual(result['status'],'not-found')
             data=json.loads((Path(tmp)/'.last-result').read_text())
@@ -265,10 +265,10 @@ class ProviderTests(unittest.TestCase):
     def test_diagnostic_record_contains_no_lyrics_and_cache_hit_makes_no_requests(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);response=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
-            provider.lookup('Žbirka','Biely kvet',folder,opener=response)
+            provider.lookup('Žbirka','Biely kvet',folder,diagnostics=True,opener=response)
             data=(folder/'.last-result').read_text();self.assertNotIn('Original test text',data)
             self.assertLessEqual(len(json.loads(data)['requests']),5)
-            provider.lookup('Žbirka','Biely kvet',folder,opener=response)
+            provider.lookup('Žbirka','Biely kvet',folder,diagnostics=True,opener=response)
             status=json.loads((folder/'.last-result').read_text())
             self.assertTrue(status['cache_hit']);self.assertEqual(status['requests'],[])
     def test_found_text_survives_cache_write_failure(self):
@@ -566,7 +566,7 @@ class RegionalSourceTests(unittest.TestCase):
             if request.full_url.startswith('https://hudba.zoznam.sk/'):return io.BytesIO(self.hudba())
             raise TimeoutError('Other source unavailable')
         with tempfile.TemporaryDirectory() as tmp:
-            folder=Path(tmp);result=provider.lookup('Pavol Habera','Láska, necestuj tým vlakom',folder,opener=response,hedge_delay=0.005)
+            folder=Path(tmp);result=provider.lookup('Pavol Habera','Láska, necestuj tým vlakom',folder,diagnostics=True,opener=response,hedge_delay=0.005)
             self.assertEqual(result['text'],'Original regional test text')
             status=json.loads((folder/'.last-result').read_text())
             self.assertTrue(any(row['source']=='hudba' and row['status']=='found' for row in status['requests']))
@@ -597,7 +597,7 @@ class RegionalSourceTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.parse('hudba',b'<div>'*130+b'hello'+b'</div>'*130)
         response=lambda *a,**kw:io.BytesIO(b'x'*(provider.MAX_RESPONSE+1))
         with tempfile.TemporaryDirectory() as tmp:
-            folder=Path(tmp);self.assertEqual(provider.lookup('Artist','Song',folder,opener=response)['status'],'offline')
+            folder=Path(tmp);self.assertEqual(provider.lookup('Artist','Song',folder,diagnostics=True,opener=response)['status'],'offline')
             status=json.loads((folder/'.last-result').read_text());self.assertLessEqual(len(status['requests']),33)
 
 

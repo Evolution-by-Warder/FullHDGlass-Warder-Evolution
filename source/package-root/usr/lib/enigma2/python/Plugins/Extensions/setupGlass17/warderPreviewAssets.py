@@ -83,7 +83,7 @@ def _prepare():
                 if kind=='types':
                     from .warderTypePreviews import prepare_bundle
                     prepare_bundle()
-            except Exception as error:print('[FullHDGlass] Optional preview download:',str(error))
+            except Exception:pass  # Optional offline assets must not flood Enigma2 logs.
     finally:
         with _LOCK:_RUNNING=False
 
