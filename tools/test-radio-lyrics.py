@@ -752,6 +752,12 @@ class CombinedEngineTests(unittest.TestCase):
             file.write_text(json.dumps({'version':5,'saved':1000,'status':'not-found','text':''}))
             response=lambda *a,**kw:io.BytesIO(json.dumps([self.row('Artist','Song')]).encode())
             self.assertEqual(provider.lookup('Artist','Song',folder,opener=response,clock=lambda:1001)['status'],'found')
+    def test_receiver_reported_uvitelkou_typo_is_repaired_only_for_darinka(self):
+        row=self.row('Darinka Rolincová','Až raz budem učiteľkou')
+        self.assertTrue(provider.same_song(row,'DARINKA ROLINCOVA','Az raz budem uvitelkou'))
+        self.assertEqual(self.identity.query_pair('DARINKA ROLINCOVA','Az raz budem uvitelkou'),('DARINKA ROLINCOVA','Až raz budem učiteľkou'))
+        self.assertFalse(provider.same_song(self.row('Another Artist','Až raz budem učiteľkou'),'Another Artist','Az raz budem uvitelkou'))
+        self.assertFalse(provider.same_song(row,'DARINKA ROLINCOVA','Az raz budem uvitelkou (Live)'))
     def test_feature_in_title_and_artist_keep_the_entire_roster(self):
         row=self.row('Bystrík & Fejbs','Káva')
         self.assertTrue(provider.same_song(row,'Bystrik','Káva (feat. Fejbs)'))

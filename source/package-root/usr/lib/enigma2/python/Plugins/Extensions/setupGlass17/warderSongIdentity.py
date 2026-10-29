@@ -81,6 +81,8 @@ def title_key(value,artists=()):
        'svatovitsky chram (winchester cathedral)',
        'svatovitsky chram /chram sv. vita/ (winchester cathedral)'):
         return 'svatovitsky chram'
+    if artists==('darinka rolincova',) and value=='az raz budem uvitelkou':
+        return 'az raz budem ucitelkou'
     if artists in (('helena vondrackova',),('helena vondrackova','jiri korn')) and value in (
        'kazda trampota ma svou mez','kazda trampota ma svou mez (rest your love on me)'):
         return 'kazda trampota ma svou mez'
@@ -133,7 +135,9 @@ def query_pair(artist,title):
     normalized=' & '.join(DISPLAY.get(n,n) for n in names)
     if roster(artist)!=names or any(norm(p) in PERSON_ALIASES for p in SEPARATORS.split(artist)):
         artist=normalized
-    if track=='krasnejsi nez ruze (malinconia)' and names==('pavel roth',):
+    if names==('darinka rolincova',) and track=='az raz budem ucitelkou':
+        title='Až raz budem učiteľkou'
+    elif track=='krasnejsi nez ruze (malinconia)' and names==('pavel roth',):
         title='Krásnější než růže (Malinconia)'
     elif track=='svatovitsky chram' and names==('vaclav neckar',):
         title='Svatovítský chrám'

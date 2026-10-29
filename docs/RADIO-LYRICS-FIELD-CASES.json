@@ -583,6 +583,17 @@
       },
       "test11_assessment": "Fresh helper check recorded separately when available; no source absence inferred from screenshot.",
       "receiver_validated": false
+    },
+    {
+      "artist": "DARINKA ROLINCOVA",
+      "title": "Az raz budem uvitelkou",
+      "receiver_observation": {
+        "message": "source unavailable/retry; artwork missing",
+        "installed_version": "not captured"
+      },
+      "owner_correction": "Až raz budem učiteľkou",
+      "test11_assessment": "Exact artist/title typo repaired in shared lookup identity, no generic fuzzy spelling match.",
+      "receiver_validated": false
     }
   ],
   "follow_up": [

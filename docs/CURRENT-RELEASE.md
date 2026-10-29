@@ -7,6 +7,7 @@ TEST11 nadväzuje na spoločnú opravu TEST10 a rieši konkrétne ďalšie chyby
 - `Helena Vondráčková — Každá trampota má svou mez` sa priradí k overenej duetovej nahrávke s Jiřím Kornom. Pravidlo zachováva ďalších hostí a nevzťahuje sa na iné skladby.
 - Hosť po `FT.`, `feat.` alebo `featuring` na konci názvu sa spracuje aj bez zátvoriek. `POLEMIC — SPOLU FT. A.M.O.` tak už nehľadá celý chybný reťazec ako samotný názov skladby. AMO a A.M.O. sú overené zápisy tej istej skupiny.
 - Číslo súboru pred viacslovným interpretom, napríklad `24_Pavol Habera`, sa odstráni. Označenie remixu sa zachováva.
+- Konkrétny preklep rádia `Darinka Rolincová — Az raz budem uvitelkou` sa pre vyhľadávanie textu aj obalu opraví na `Až raz budem učiteľkou`. Pravidlo je viazané na túto interpretku a celý presný chybný názov.
 - Staré negatívne výsledky TEST10 sa preveria znova, aby neprekryli nové opravy. Platné kladné výsledky sa zachovajú.
 
 Pri živých skúškach sa už podarilo stiahnuť skutočné obaly pre Michala Davida/Kroky, Stromy aj Helenu Vondráčkovú. Ďalšie výsledky sú v `docs/RADIO-TEST11-FIELD-CHECKS.json`; tento súbor nezverejňuje prevzaté texty ani celé obrázky. Pravidlá a primárne podklady sú v `docs/RADIO-IDENTITY-RULES.md`.
