@@ -1,0 +1,46 @@
+{
+  "tested_original_function": "get_song_data",
+  "source_commit": "cf63e5bf580688621fca1c38c93a894448f0e86c",
+  "synthetic_selector_checks": [
+    {
+      "fixture": "modern_lyric_container",
+      "original_extracted_entries": 0,
+      "original_extracted_characters": 0
+    },
+    {
+      "fixture": "annotated_and_unannotated",
+      "original_extracted_entries": 1,
+      "original_extracted_characters": 24
+    },
+    {
+      "fixture": "multiple_link_classes",
+      "original_extracted_entries": 0,
+      "original_extracted_characters": 0
+    }
+  ],
+  "live_check": {
+    "error": "ReadTimeout"
+  },
+  "token_used": false,
+  "lyrics_logged": false,
+  "full_album_job_executed": false,
+  "test_network_timeout_added_seconds": 8,
+  "source_repository": "https://github.com/scriptpapi/Genius-NoToken-Scraper",
+  "review_date": "2026-10-29",
+  "findings": [
+    "Source last commit is from 2019-04-04.",
+    "get_song_data requires a known Genius page URL and contains no artist/title search.",
+    "The exact selector //a[@class=\"referent\"] returns annotated fragments, not necessarily the whole song.",
+    "A synthetic modern data-lyrics-container page returned zero entries; unannotated synthetic content was omitted; a multi-class referent link also returned zero.",
+    "The live request in this workspace timed out, so no successful current live extraction by the original function is claimed.",
+    "Original requests have no timeout or response-status validation.",
+    "Importing the full original file starts an interactive album/Spotify export example. Only the original get_song_data function was executed for this review."
+  ],
+  "receiver_comparison": {
+    "source": "Previously received warder-genius-test.log",
+    "known_url_page_fetch_token_used": false,
+    "modern_parser_characters": 831,
+    "interpretation": "Our verified receiver workflow already fetches the matched Genius song page without Authorization; the token is used for official API search."
+  },
+  "runtime_modified": false
+}
