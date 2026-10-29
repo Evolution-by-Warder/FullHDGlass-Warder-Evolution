@@ -1,0 +1,30 @@
+name: Compare four requested lyrics sources
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/radio-lyrics-layout]
+    paths:
+      - diagnostics/compare-radio-lyrics-sources.py
+      - .github/workflows/radio-lyrics-source-comparison.yml
+permissions:
+  contents: read
+jobs:
+  comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Fetch the diagnostic and exact engine modules without cloning assets
+        env:
+          SOURCE_ROOT: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}
+        run: |
+          mkdir -p /tmp/warder-source-comparison
+          curl --fail --location --max-time 20 --output /tmp/warder-source-comparison/compare.py "$SOURCE_ROOT/diagnostics/compare-radio-lyrics-sources.py"
+          for module in warderLyrics.py warderLyricsSites.py warderSongIdentity.py; do
+            curl --fail --location --max-time 20 --output "/tmp/warder-source-comparison/$module" "$SOURCE_ROOT/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/$module"
+          done
+      - run: python3 /tmp/warder-source-comparison/compare.py --engine-dir /tmp/warder-source-comparison
+      - uses: actions/upload-artifact@v4
+        with:
+          name: radio-four-source-comparison
+          path: /tmp/warder-radio-source-comparison.json
+          retention-days: 14
