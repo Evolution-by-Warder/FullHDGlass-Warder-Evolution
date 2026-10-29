@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.14'
-      - name: Read public source structure without publishing lyrics
+      - name: Check links from the real public home page and bounded data schema
         run: |
           python - <<'PY'
           import json,re,hashlib
@@ -21,30 +21,51 @@ jobs:
           from urllib.error import HTTPError
           from html.parser import HTMLParser
           from collections import Counter
+          BASE='https://lyrics.lyricfind.com'
+          def fetch(url):
+           try:
+            try:r=urlopen(Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'text/html'}),timeout=15)
+            except HTTPError as e:r=e
+            with r as f:raw=f.read(1048577);status=f.status
+            return status,raw
+           except Exception as e:return type(e).__name__,b''
           class Page(HTMLParser):
            def __init__(self):
-            super().__init__();self.classes=Counter();self.heads=[];self.current=None;self.scripts=[];self.forms=[];self.inputs=[];self.links=[]
+            super().__init__();self.next=False;self.data=[];self.links=[];self.scripts=[];self.classes=Counter();self.heads=[];self.head=None
            def handle_starttag(self,t,attrs):
             d=dict(attrs);self.classes.update(d.get('class','').split())
-            if t in ('h1','h2') and len(self.heads)<2:self.current=[]
-            if t=='script' and d.get('src'):self.scripts.append(d['src'].split('?')[0])
-            if t=='form':self.forms.append({k:d[k] for k in ('action','method') if k in d})
-            if t=='input':self.inputs.append({k:d[k] for k in ('type','name','placeholder') if k in d})
-            if t=='a' and any(v in d.get('href','') for v in ('search','lyrics/')) and len(self.links)<8:self.links.append(d['href'])
+            if t=='script' and d.get('id')=='__NEXT_DATA__':self.next=True
+            if t=='script' and d.get('src'):self.scripts.append(d['src'])
+            if t=='a' and d.get('href','').startswith('/lyrics/') and d['href'] not in self.links:self.links.append(d['href'])
+            if t in ('h1','h2') and len(self.heads)<2:self.head=[]
            def handle_endtag(self,t):
-            if t in ('h1','h2') and self.current is not None:
-             self.heads.append(' '.join(''.join(self.current).split())[:100]);self.current=None
+            if t=='script':self.next=False
+            if t in ('h1','h2') and self.head is not None:self.heads.append(' '.join(''.join(self.head).split())[:100]);self.head=None
            def handle_data(self,s):
-            if self.current is not None:self.current.append(s)
-          for url in ('https://lyrics.lyricfind.com/','https://lyrics.lyricfind.com/lyrics/adele-someone-like-you-2','https://www.supermusic.sk/piesen.php?idpiesne=330895'):
-           row={'url':url}
-           try:
-            try:
-             response=urlopen(Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'text/html'}),timeout=15)
-            except HTTPError as error:response=error
-            with response as f:
-             raw=f.read(1048577);row.update(status=f.status,final_url=f.geturl(),bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())
-            page=Page();page.feed(raw.decode('utf-8','replace'));row.update(headings=page.heads,classes=page.classes.most_common(20),scripts=page.scripts[:8],forms=page.forms[:4],inputs=page.inputs[:8],links=page.links,has_next_data='__NEXT_DATA__' in raw.decode('utf-8','replace'),has_nuxt='__NUXT__' in raw.decode('utf-8','replace'))
-           except Exception as error:row.update(error=type(error).__name__)
-           print('SOURCE_PROBE '+json.dumps(row,ensure_ascii=False),flush=True)
+            if self.next:self.data.append(s)
+            if self.head is not None:self.head.append(s)
+          def outline(v,depth=0):
+           if depth>5:return type(v).__name__
+           if isinstance(v,dict):return {k:('[redacted]' if re.search('token|secret|auth|cookie|key|email',k,re.I) else outline(x,depth+1)) for k,x in list(v.items())[:35]}
+           if isinstance(v,list):return {'length':len(v),'first':outline(v[0],depth+1) if v else None}
+           if isinstance(v,str):return {'string_length':len(v)}
+           return v
+          status,raw=fetch(BASE+'/');home=Page();home.feed(raw.decode('utf-8','replace'))
+          try:home_data=json.loads(''.join(home.data))
+          except Exception:home_data={}
+          print('SOURCE_SCHEMA '+json.dumps({'url':BASE,'status':status,'build_id':home_data.get('buildId'),'page':home_data.get('page'),'outline':outline(home_data.get('props',{}))}),flush=True)
+          links=home.links[:2]
+          if '/lyrics/michael-jackson-billie-jean-1' not in links:links.append('/lyrics/michael-jackson-billie-jean-1')
+          for path in links:
+           status,raw=fetch(BASE+path);p=Page();p.feed(raw.decode('utf-8','replace'))
+           try:d=json.loads(''.join(p.data))
+           except Exception:d={}
+           print('SOURCE_PAGE '+json.dumps({'url':BASE+path,'status':status,'bytes':len(raw),'heads':p.heads,'classes':p.classes.most_common(15),'outline':outline(d.get('props',{}))}),flush=True)
+          for src in home.scripts:
+           if '/pages/_app-' not in src:continue
+           status,raw=fetch(BASE+src if src.startswith('/') else src)
+           text=raw.decode('utf-8','replace')
+           routes=sorted(set(re.findall(r'["\x27](/(?:search|api/search)[^"\x27 ]{0,100})["\x27]',text)))[:10]
+           print('SOURCE_SEARCH '+json.dumps({'url':src.split('?')[0],'status':status,'bytes':len(raw),'routes':routes}),flush=True)
+           break
           PY
