@@ -1,6 +1,6 @@
 {
-  "version": "1.0.37",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk",
-  "sha256": "793886a459d8a3a142bd06df5525ad7603c8773637ef31d0942050d6801e1879",
-  "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania."
+  "version": "1.0.39",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk",
+  "sha256": "7bec211d1ad8ce2864a01c19a63f719de983345258eecfece03669efb898f246",
+  "changelog": "Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií."
 }

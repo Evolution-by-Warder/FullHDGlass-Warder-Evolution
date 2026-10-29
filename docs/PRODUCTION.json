@@ -2,19 +2,19 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "status": "production-approved",
-  "approved_on": "2026-10-28",
-  "approval": "Owner requested weekly silent background download, replacement and reload of the managed Warder Radio Streams bouquet on 28 October 2026.",
+  "approved_on": "2026-10-29",
+  "approval": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026 and explicitly requested recording the work, a normal production version and activation of built-in updates.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "bffa0f02393e4c74a0c1eb98ad8187e1f4dff737",
+  "source_commit": "f2ce83c7b20d1213979d8c044bacf51f90fe916d",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.37",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk",
-    "sha256": "793886a459d8a3a142bd06df5525ad7603c8773637ef31d0942050d6801e1879",
-    "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania.",
-    "tag": "v1.0.37",
-    "bytes": 14273526,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.37/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk"
+    "version": "1.0.39",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk",
+    "sha256": "7bec211d1ad8ce2864a01c19a63f719de983345258eecfece03669efb898f246",
+    "changelog": "Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.",
+    "tag": "v1.0.39",
+    "bytes": 14515826,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.39/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk"
   },
   "transition": {
     "version": "1.0.18",
@@ -39,8 +39,8 @@
     }
   },
   "validation": {
-    "workflow_run": 40731688962,
+    "workflow_run": 40877231891,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded."
+    "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed."
   }
 }
