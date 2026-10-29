@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "updated": "2026-10-29",
+  "helper_source_commit": "eb430332895045f5722d92dc66d71e21019617a9",
+  "lyrics_saved_in_git": false,
+  "coverage_measurement": false,
+  "cases": [
+    {
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "fresh_helper_check": {
+        "status": "not-found",
+        "cache_hit": false,
+        "elapsed_ms": 11384,
+        "characters": 0,
+        "providers": {
+          "lrclib": "no matching result; later reversed request HTTP 503",
+          "ovh": "HTTP 404 in both orientations",
+          "hudba": "direct URL HTTP 404; search returned no matching candidate",
+          "youradio": "search returned no matching candidate"
+        }
+      },
+      "purpose": "Coverage-gap case; a search miss is not proof that no lyrics exist anywhere."
+    },
+    {
+      "artist": "Damiens",
+      "title": "Stýská Se Mi",
+      "receiver_observation": {
+        "message": "Zdroj textu neodpovedá. Skúšam to znova...",
+        "artwork": "fallback shown",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "fresh_helper_check": {
+        "status": "found",
+        "source": "lrclib",
+        "cache_hit": false,
+        "elapsed_ms": 5983,
+        "characters": 534,
+        "other_providers": {
+          "ovh": "first request HTTP 404",
+          "hudba": "direct URL HTTP 404; search pending at success",
+          "youradio": "search returned no matching candidate"
+        }
+      },
+      "purpose": "Availability/retry case: fresh helper succeeds, but receiver failure cannot be attributed to a specific provider without receiver diagnostics. Cover lookup is independent and was not tested."
+    }
+  ],
+  "follow_up": [
+    "Use these artist/title pairs when changing matching, status classification and retry behavior.",
+    "Keep failures distinct from verified misses; do not weaken artist or version matching merely to display something.",
+    "Use mocked network responses for deterministic regression tests; these live observations do not imply guaranteed latency."
+  ],
+  "note": "Field observations only. No runtime changes or new IPK were necessary for recording these cases."
+}
