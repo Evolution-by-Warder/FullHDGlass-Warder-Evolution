@@ -592,6 +592,55 @@
         "conclusion": "All three authenticated requests received the local environment's 195-byte Site Unavailable placeholder instead of API JSON. Token validity and authenticated catalogue search are not established.",
         "receiver_test_script": "diagnostics/check-genius-auth.py",
         "receiver_test_pending": true
+      },
+      "authenticated_library_local_check": {
+        "date": "2026-10-29",
+        "package": "lyricsgenius",
+        "version": "3.15.0",
+        "installed_in_temporary_directory": true,
+        "token_supplied": true,
+        "token_logged": false,
+        "token_committed": false,
+        "token_saved": false,
+        "calls": [
+          {
+            "expression": "genius.search_song('Aj keby', 'IMT Smile')",
+            "status": "error",
+            "error": "Timeout"
+          },
+          {
+            "expression": "genius.search_songs('Kali Tina Aj keby')",
+            "status": "error",
+            "error": "JSONDecodeError",
+            "requests": [
+              {
+                "host": "api.genius.com",
+                "path": "/search",
+                "http": 200,
+                "authorization_present": true,
+                "bytes": 195,
+                "unavailable_placeholder": true
+              }
+            ]
+          },
+          {
+            "expression": "genius.search_songs('IMT Smile Úsmev a čaj')",
+            "status": "error",
+            "error": "JSONDecodeError",
+            "requests": [
+              {
+                "host": "api.genius.com",
+                "path": "/search",
+                "http": 200,
+                "authorization_present": true,
+                "bytes": 195,
+                "unavailable_placeholder": true
+              }
+            ]
+          }
+        ],
+        "conclusion": "The exact library and constructor with supplied token were exercised. Local environment did not return genuine Genius API JSON or lyrics; token validity is not established. Do not claim library use guarantees unblocked access.",
+        "metadata_note": "Owner's Aj keby / IMT Smile example differs from the previously identified Kali & Tina / Aj keby recording."
       }
     },
     "musixmatch": {
