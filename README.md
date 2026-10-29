@@ -106,3 +106,6 @@ Existujúci spravovaný rádio bouquet sa raz týždenne obnoví z nášho Gitu 
 ## Rádio s textami piesní — 1.0.39
 
 Schválené rozloženie s kompaktným obalom a natívnym panelom textu je súčasťou produkčnej verzie. SuperMusic v TEST13 bol potvrdený na prijímači; výsledky a limity vyhľadávania sú uložené v [overení](docs/RADIO-SUPERMUSIC-TEST13.md).
+
+
+Dátová aktualizácia piconov 29.10.2026: 27 schválených grafík, 63 živých balíkov v troch veľkostiach a prevedeniach. [Zmeny a overenie](docs/PICON-DATA-UPDATES.md). Aktualizácia dát nemení verziu skinu ani IPK.
