@@ -545,7 +545,54 @@
         "scope": "Actual installed library public search and unmodified Genius.lyrics song-page method through its token-free public client. No API token supplied; no Authorization header sent.",
         "conclusion": "LyricsGenius 3.15.0 public search failed with HTTP 403 and direct song-page lyrics() returned no result. Authenticated search remains untested without a valid owner-supplied access token; the library did not establish a working retrieval path."
       },
-      "architecture": "Search returns song metadata and URL; library separately retrieves song-page HTML and parses lyrics containers or embedded song state."
+      "architecture": "Search returns song metadata and URL; library separately retrieves song-page HTML and parses lyrics containers or embedded song state.",
+      "authenticated_local_check": {
+        "token_supplied": true,
+        "token_logged": false,
+        "token_committed": false,
+        "token_saved": false,
+        "results": [
+          {
+            "query": "ABBA Dancing Queen",
+            "token_supplied": true,
+            "token_logged": false,
+            "api": {
+              "http": 200,
+              "bytes": 195,
+              "json_received": false,
+              "page_title": "Site Unavailable",
+              "classification": "unavailable-placeholder"
+            }
+          },
+          {
+            "query": "Instinct Dozadu",
+            "token_supplied": true,
+            "token_logged": false,
+            "api": {
+              "http": 200,
+              "bytes": 195,
+              "json_received": false,
+              "page_title": "Site Unavailable",
+              "classification": "unavailable-placeholder"
+            }
+          },
+          {
+            "query": "IMT Smile Úsmev a čaj",
+            "token_supplied": true,
+            "token_logged": false,
+            "api": {
+              "http": 200,
+              "bytes": 195,
+              "json_received": false,
+              "page_title": "Site Unavailable",
+              "classification": "unavailable-placeholder"
+            }
+          }
+        ],
+        "conclusion": "All three authenticated requests received the local environment's 195-byte Site Unavailable placeholder instead of API JSON. Token validity and authenticated catalogue search are not established.",
+        "receiver_test_script": "diagnostics/check-genius-auth.py",
+        "receiver_test_pending": true
+      }
     },
     "musixmatch": {
       "integrated": false,
