@@ -258,5 +258,47 @@
   "user_browser_report": "Owner reports home page works and found Kali & Tina / Aj keby quickly; exact song URL not captured.",
   "runtime_adapter_added": false,
   "temporary_workflow_removed_after_checks": true,
-  "next_step": "Check the owner's exact song-page URL and receiver access before treating LyricFind as a usable source. Do not bypass access restrictions or invent API credentials."
+  "next_step": "Check the owner's exact song-page URL and receiver access before treating LyricFind as a usable source. Do not bypass access restrictions or invent API credentials.",
+  "owner_exact_links": {
+    "urls": [
+      "https://lyrics.lyricfind.com/lyrics/i-m-t-smile-usmev-a-caj",
+      "https://lyrics.lyricfind.com/lyrics/kali-aj-keby"
+    ],
+    "local_environment_results": [
+      {
+        "http": 200,
+        "bytes": 195,
+        "page_title": "Site Unavailable",
+        "classification": "unavailable-placeholder"
+      }
+    ],
+    "receiver_checked": false,
+    "interpretation": "HTTP 200 alone does not prove that lyrics were received. User browser and receiver access must not be inferred from this sandbox.",
+    "github_results": [
+      {
+        "url": "https://lyrics.lyricfind.com/lyrics/i-m-t-smile-usmev-a-caj",
+        "lyrics_logged": false,
+        "http": 403,
+        "final_url": "https://lyrics.lyricfind.com/lyrics/i-m-t-smile-usmev-a-caj",
+        "bytes": 919,
+        "sha256": "3f711d380f8286b3fe02f03eb203a091314ff1d5993e991061f0ca77d70c1364",
+        "page_title": "ERROR: The request could not be satisfied",
+        "has_next_data": false,
+        "classification": "http-error"
+      },
+      {
+        "url": "https://lyrics.lyricfind.com/lyrics/kali-aj-keby",
+        "lyrics_logged": false,
+        "http": 403,
+        "final_url": "https://lyrics.lyricfind.com/lyrics/kali-aj-keby",
+        "bytes": 919,
+        "sha256": "920b14226b6c49f4816753300180d7cc8f434dfaeeb368b39a7b1b95236dbea1",
+        "page_title": "ERROR: The request could not be satisfied",
+        "has_next_data": false,
+        "classification": "http-error"
+      }
+    ],
+    "workflow_run": 40845907731
+  },
+  "receiver_diagnostic": "diagnostics/check-lyricfind-access.py"
 }
