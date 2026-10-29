@@ -1,66 +1,127 @@
 {
   "schema": 1,
-  "version": "1.0.38-test9",
-  "source_commit": "2eb1db82bb617bf87b47ba4608dbf4a3869d41fb",
+  "version": "1.0.38-test10",
+  "source_commit": "ad5023aa21a304a4800612f7cb8332cafd97a983",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40826425870,
+  "workflow_run": 40832076429,
   "workflow_conclusion": "success",
-  "python": "3.14",
-  "unit_tests": 200,
-  "verified_payload_files": 1351,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test9",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test9/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test9_all.ipk",
-  "bytes": 14508934,
-  "sha256": "a8c48a59f70767cf0f6c170e9162e10405de93987118f8bc1eb7846ff11c7fa8",
+  "python": "3.14.9",
+  "unit_tests": 226,
+  "unit_test_groups": [
+    6,
+    90,
+    71,
+    13,
+    14,
+    10,
+    22
+  ],
+  "verified_payload_files": 1352,
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test10",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test10/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test10_all.ipk",
+  "bytes": 14511812,
+  "sha256": "6fb8c7694b49f90406af2184d9d1887fd31a293e9988d0a641f379c8571942db",
   "fixes": [
-    "Reject the exact Hudba.sk absence notice rather than treating it as lyrics",
-    "Continue source race after a notice so another verified source can win",
-    "Reject notices already stored as positive TEST7/TEST8 cache entries",
-    "Keep longer real text containing the sentence and preserve existing identity checks"
+    "Shared metadata/lyrics/artwork recording identity with verified scoped aliases",
+    "Repair numbered title/artist metadata before lyric or cover lookup",
+    "Start Hudba.sk and LRCLIB together on recognized SK/CZ radio formats",
+    "Add Ujdeto, Pisnicky-akordy, original-only Tekstowo and scoped official Pavel Roth adapter",
+    "Do not cache partial source failures as real misses; retry without zapping up to five attempts",
+    "Use one bounded artwork title fallback while retaining complete artist/version checks",
+    "Preserve TEST9 missing-text-notice rejection and owner-approved TEST7 graphics"
   ],
   "verification": {
-    "full_ipk_payload": "passed",
-    "public_release_size_and_sha256": "independent byte download verified",
-    "jpeg_mvi_similarity_db": 33.408,
+    "full_ipk_payload": "passed: 1352 files match source or verified PNG compression",
+    "public_release_size_and_sha256": "independent public byte download verified",
     "radio_only_xml_change": "passed",
-    "compact_square_portrait_landscape_and_stale_result_tests": "passed",
-    "regional_live_test": {
-      "artist": "Pavol Habera",
-      "title": "Láska, necestuj tým vlakom",
-      "json_apis_disabled": true,
-      "found_source": "hudba",
-      "elapsed_ms": 1055,
-      "characters": 536,
-      "lyrics_published": false
-    },
-    "regional_regressions": "design/radio-lyrics/regional-source-checks.json",
-    "receiver_notice_regression": {
-      "artist": "Karel Gott",
-      "title": "LETA PRAZDNIN",
-      "before": {
+    "native_renderers_and_stale_result_tests": "passed",
+    "python39_grammar": "passed",
+    "live_checks": [
+      {
+        "artist": "ABBA",
+        "title": "Dancing Queen",
         "status": "found",
-        "characters": 41,
-        "source": "hudba",
-        "notice_sha256": "acce7404abb4f4e39b38c0475901635a7749fa89d3eb807b72a6c7fbc8c0acfd"
+        "characters": 1106,
+        "text_sha256": "ad5786d28c463c9d64c0d9d7db95fc987e2d207762c0b1debae5226dddbeb547",
+        "elapsed_ms": 247,
+        "sources_found": [
+          "lrclib"
+        ],
+        "isolated_source": null
       },
-      "after": {
+      {
+        "artist": "Pavol Habera",
+        "title": "Láska, necestuj tým vlakom",
         "status": "found",
-        "characters": 1485,
-        "source": "youradio",
-        "elapsed_ms": 8733,
-        "placeholder_displayed": false
+        "characters": 536,
+        "text_sha256": "47d519916a7f7ea5d8ec21d50929a87f44e2666fdb1075e9bcb8845ef13f4bd7",
+        "elapsed_ms": 447,
+        "sources_found": [
+          "hudba"
+        ],
+        "isolated_source": null
       },
-      "details": "docs/RADIO-LYRICS-FIELD-CASES.json",
-      "receiver_validated": false
+      {
+        "artist": "Sima Martausová featuring For You",
+        "title": "Nenahraditeľná",
+        "status": "found",
+        "characters": 1071,
+        "text_sha256": "8e2fc1cb13fa6aab5447bff5c1f7b64a90e64067c9bb38b867d76190b56ab2e8",
+        "elapsed_ms": 750,
+        "sources_found": [
+          "ujdeto"
+        ],
+        "isolated_source": "ujdeto"
+      },
+      {
+        "artist": "David Koller",
+        "title": "Ani ty ani já",
+        "status": "offline",
+        "characters": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "elapsed_ms": 68,
+        "sources_found": [],
+        "isolated_source": "pisnicky"
+      },
+      {
+        "artist": "08",
+        "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
+        "status": "found",
+        "characters": 814,
+        "text_sha256": "78f94dc0357e6d3aa1aa42a166f0d7dd9ab0c98f2131dd92a2025130327d961c",
+        "elapsed_ms": 1155,
+        "sources_found": [
+          "roth"
+        ],
+        "isolated_source": "roth"
+      },
+      {
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "found",
+        "characters": 1507,
+        "text_sha256": "2e9a63188f5f0d0cae0f4e1839174fb0e5540b6025ecf4dc3926cb6b4a44beba",
+        "elapsed_ms": 518,
+        "sources_found": [
+          "tekstowo"
+        ],
+        "isolated_source": "tekstowo"
+      }
+    ],
+    "optional_source_availability": {
+      "source": "pisnicky",
+      "github_runner": "HTTP 403; explicitly recorded unavailable, not found",
+      "local_check": "David Koller exact text successfully retrieved",
+      "blocks_package_build": false,
+      "deterministic_parser_and_failure_tests": "required and passed"
     },
-    "benchmark_correction": "reports/radio-lyrics/2026-10-29/validated-summary.json"
+    "real_artwork_checks": "docs/RADIO-COMBINED-ENGINE-CHECKS.json",
+    "field_cases": "docs/RADIO-LYRICS-FIELD-CASES.json",
+    "identity_rules": "docs/RADIO-IDENTITY-RULES.md"
   },
   "receiver_validated": false,
   "production_feeds_modified": false,
-  "coverage_limit": "SK/CZ coverage remains partial; a missing text and an unavailable source are distinct outcomes.",
   "owner_layout_accepted": true,
-  "scope_limits": [
-    "No region-priority or artist-alias changes in TEST9",
-    "Fero Fabian — Tibetský mlynček remains a coverage gap in checked sources; failed MusicBrainz probe is not treated as a miss"
-  ]
+  "coverage_limit": "Additional sources and identity fixes improve the checked examples; some songs still have no verified result. Network failure is distinct from a confirmed miss.",
+  "lyrics_published": false
 }
