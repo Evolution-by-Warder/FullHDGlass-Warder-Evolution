@@ -1,0 +1,791 @@
+{
+  "schema": 1,
+  "version": "1.0.38-test12",
+  "date": "2026-10-29",
+  "receiver_validated": false,
+  "coverage_measurement": false,
+  "lyrics_saved_in_git": false,
+  "parser_checks": [
+    {
+      "source": "karaoke",
+      "artist": "Medial Banana",
+      "title": "Doba strieda dobu",
+      "characters": 2375,
+      "text_sha256": "2fe0e87202152faa66f70e331c42a1d76cedd2f74c30a5e2a55a94b013d85ee4",
+      "links": []
+    },
+    {
+      "source": "kytary",
+      "artist": "Lucie",
+      "title": "Chci zas v tobě spát",
+      "characters": 1616,
+      "text_sha256": "237263e5f939900ad504d626b3c0462b943400ac3f490d0e8ebf9fb02e44e3ce",
+      "links": []
+    }
+  ],
+  "isolated_live_checks": [
+    {
+      "source": "karaoke",
+      "artist": "Láska",
+      "title": "Mraky",
+      "status": "found",
+      "characters": 1454,
+      "text_sha256": "95db65a37efb3e6acf0457fe33a99a0afc5b3faf4f2137d2a8f5e47515c47dd9",
+      "diagnostic": {
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "found",
+        "cache_hit": false,
+        "elapsed_ms": 19935,
+        "requests": [
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "karaoke",
+            "variant": 1,
+            "status": "links",
+            "elapsed_ms": 6849
+          },
+          {
+            "source": "karaoke",
+            "variant": 2,
+            "status": "links",
+            "elapsed_ms": 6965
+          },
+          {
+            "source": "karaoke",
+            "variant": 3,
+            "status": "found",
+            "elapsed_ms": 6113
+          }
+        ]
+      }
+    },
+    {
+      "source": "kytary",
+      "artist": "Lucie",
+      "title": "Chci zas v tobě spát",
+      "status": "found",
+      "characters": 1616,
+      "text_sha256": "237263e5f939900ad504d626b3c0462b943400ac3f490d0e8ebf9fb02e44e3ce",
+      "diagnostic": {
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "found",
+        "cache_hit": false,
+        "elapsed_ms": 9763,
+        "requests": [
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "request-error",
+            "error": "TimeoutError",
+            "elapsed_ms": 0
+          },
+          {
+            "source": "kytary",
+            "variant": 1,
+            "status": "found",
+            "elapsed_ms": 9761
+          }
+        ]
+      }
+    }
+  ],
+  "optional_ci_checks": [
+    {
+      "artist": "Láska",
+      "title": "Mraky",
+      "status": "found",
+      "characters": 1454,
+      "text_sha256": "95db65a37efb3e6acf0457fe33a99a0afc5b3faf4f2137d2a8f5e47515c47dd9",
+      "elapsed_ms": 12897,
+      "sources_found": [
+        "karaoke"
+      ],
+      "lyrics_published": false,
+      "json_apis_disabled": true,
+      "isolated_source": "karaoke",
+      "note": "A known-song availability check is not a coverage measurement.",
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 1
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "tekstowo",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "karaoke",
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 4051
+        },
+        {
+          "source": "kytary",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "kytary",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "karaoke",
+          "variant": 2,
+          "status": "links",
+          "elapsed_ms": 5426
+        },
+        {
+          "source": "karaoke",
+          "variant": 3,
+          "status": "found",
+          "elapsed_ms": 3411
+        }
+      ],
+      "availability_check": "found"
+    },
+    {
+      "artist": "Lucie",
+      "title": "Chci zas v tobě spát",
+      "status": "found",
+      "characters": 1616,
+      "text_sha256": "237263e5f939900ad504d626b3c0462b943400ac3f490d0e8ebf9fb02e44e3ce",
+      "elapsed_ms": 6458,
+      "sources_found": [
+        "kytary"
+      ],
+      "lyrics_published": false,
+      "json_apis_disabled": true,
+      "isolated_source": "kytary",
+      "note": "A known-song availability check is not a coverage measurement.",
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "tekstowo",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "karaoke",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "karaoke",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "kytary",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 6452
+        }
+      ],
+      "availability_check": "found"
+    }
+  ],
+  "unverified_sources": {
+    "supermusic": "JS access page without lyrics; no adapter enabled",
+    "lyricfind": "Public access unavailable in this environment; licensed integration not verified"
+  },
+  "vidiek-lyrics": {
+    "artist": "Vidiek",
+    "title": "Hrajte trúbky, feat. Boban Markovic / Marko Markovic",
+    "status": "offline",
+    "characters": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostic": {
+      "artist": "Vidiek",
+      "title": "Hrajte trúbky, feat. Boban Markovic / Marko Markovic",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 13406,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3695
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4634
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5850
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4335
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5641
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 403,
+          "elapsed_ms": 4373
+        },
+        {
+          "source": "tekstowo",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3857
+        },
+        {
+          "source": "karaoke",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5407
+        },
+        {
+          "source": "kytary",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4225
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6566
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4664
+        },
+        {
+          "source": "kytary",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5120
+        },
+        {
+          "source": "karaoke",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3862
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4921
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6804
+        }
+      ]
+    }
+  },
+  "vidiek-cover": {
+    "artist": "Vidiek",
+    "title": "Hrajte trúbky, feat. Boban Markovic / Marko Markovic",
+    "found": false,
+    "real_http": true,
+    "log": [
+      "CATALOGUE_ERROR country=SK error=URLError",
+      "CATALOGUE_ERROR country=CZ error=URLError",
+      "LOOKUP country=US artist='Vidiek & Boban Markovic / Marko Markovic' title='Hrajte trúbky' results=0",
+      "CATALOGUE_ERROR country=SK error=URLError",
+      "NO_EXACT artist='Vidiek & Boban Markovic / Marko Markovic' title='Hrajte trúbky'"
+    ]
+  },
+  "kali-tina": {
+    "artist": "KALI & TINA",
+    "title": "Aj keby",
+    "status": "offline",
+    "characters": 0,
+    "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostic": {
+      "artist": "KALI & TINA",
+      "title": "Aj keby",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 15728,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4701
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4612
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5014
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5071
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 6289
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 403,
+          "elapsed_ms": 3868
+        },
+        {
+          "source": "tekstowo",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4537
+        },
+        {
+          "source": "karaoke",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5688
+        },
+        {
+          "source": "kytary",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 7346
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6902
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 7202
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4841
+        },
+        {
+          "source": "karaoke",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5481
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5085
+        },
+        {
+          "source": "kytary",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5989
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 4210
+        }
+      ]
+    }
+  },
+  "optimized_karaoke_check": {
+    "artist": "Láska",
+    "title": "Mraky",
+    "status": "found",
+    "characters": 1454,
+    "text_sha256": "95db65a37efb3e6acf0457fe33a99a0afc5b3faf4f2137d2a8f5e47515c47dd9",
+    "elapsed_ms": 11228,
+    "sources_found": [
+      "karaoke"
+    ],
+    "lyrics_published": false,
+    "json_apis_disabled": true,
+    "isolated_source": "karaoke",
+    "note": "A known-song availability check is not a coverage measurement.",
+    "requests": [
+      {
+        "source": "hudba",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "hudba",
+        "variant": 2,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "lrclib",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "lrclib",
+        "variant": 2,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "lrclib",
+        "variant": 3,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "ovh",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "ovh",
+        "variant": 2,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "ujdeto",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "ujdeto",
+        "variant": 2,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "youradio",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "tekstowo",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "pisnicky",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "karaoke",
+        "variant": 1,
+        "status": "links",
+        "elapsed_ms": 6015
+      },
+      {
+        "source": "kytary",
+        "variant": 1,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "kytary",
+        "variant": 2,
+        "status": "request-error",
+        "error": "TimeoutError",
+        "elapsed_ms": 0
+      },
+      {
+        "source": "karaoke",
+        "variant": 2,
+        "status": "found",
+        "elapsed_ms": 5206
+      }
+    ],
+    "availability_check": "found"
+  },
+  "candidate_priority": "Verified search links are fetched immediately before fallback mirror search; regression test records and rejects a premature mirror request."
+}

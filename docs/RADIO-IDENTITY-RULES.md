@@ -44,3 +44,13 @@ Podklady: [Supraphon — Michal David, Každý mi tě, lásko, závidí](https:/
 Všeobecné spracovanie metadát teraz rozpoznáva hosťa na konci názvu po `ft.`, `feat.` alebo `featuring` aj bez zátvoriek. Číslo `1–3 číslice_` sa odstráni iba pred viacslovným menom interpreta. Príklad `24_Pavol Habera` sa opraví, no názov `Reklama na ticho (remix)` zostane celý. `24kGoldn`, `070 Shake`, `1975` a jednoslovný `24_Band` sa neprepisujú.
 
 Preklep `DARINKA ROLINCOVA — Az raz budem uvitelkou` zo snímky prijímača sa opravuje na `Až raz budem učiteľkou` iba pri tomto úplnom mene a presnom chybnom názve. Správny názov a interpretku potvrdzuje aj [TV Markíza](https://www.markiza.sk/relacie/tvoja-tvar-znie-povedome/clanok/600099-zoznam-pesniciek-na-specialne-kolo-tvojej-tvare-co-zaspievaju-male-talenty). Iní interpreti a označenia Live/Remix sa tým nemenia.
+
+## TEST12 — nové zdroje a zápisy z vysielania
+
+KaraokeTexty.sk a KaraokeTexty.cz tvoria jednu explicitne povolenú rodinu HTTPS hostiteľov. Vyhľadávanie vyberie najviac dve presne pomenované skladby a cieľová stránka znovu overí meno z navigácie a celý názov. Známe odseky pôvodného textu sa čítajú samostatne, prekladový stĺpec sa ignoruje. Akordy Kytary číta iba celý kontajner `smartchordsheet`, overuje H1/H2 a ignoruje `scs-chord`; krátky JSON-LD úryvok nie je celý text.
+
+Časť `Boban Markovic / Marko Markovic` sa rozdelí na dvoch hostí iba pri medzerách okolo lomky a viacslovných menách na oboch stranách. AC/DC sa nemení. Pôvodná nahrávka [Vidiek — Hrajte trúbky](https://music.apple.com/sk/song/1510333267) uvádza oboch hostí; výnimka pre hlavný kredit Vidiek je viazaná iba na tento názov. Ďalší explicitný hosť sa nevynechá.
+
+Pri pomlčke bez medzier sa vyžaduje viacslovný interpret aj viacslovný názov; bežné formáty s medzerami majú prednosť. Táto oprava odstraňuje potvrdené čakanie pred samotným spustením hľadania pri `MIROSLAV ZBIRKA-Biely Kvet`.
+
+SuperMusic v opakovanej skúške .sk presmeroval na .cz a vrátil JavaScriptový prístupový medzikrok. LyricFind sa v tomto prostredí nepodarilo spoľahlivo načítať. Tieto stránky sa nepredstierajú ako pripojené zdroje; [Lyric Display](https://www.lyricfind.com/products/lyric-display) a [Lyric Search](https://www.lyricfind.com/products/lyric-search) sú oficiálne možnosti ďalšej integrácie.

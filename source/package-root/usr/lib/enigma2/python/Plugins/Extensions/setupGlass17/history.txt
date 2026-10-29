@@ -1,3 +1,5 @@
+1.0.38-test12: Add original-only KaraokeTexty SK/CZ and Akordy Kytary adapters; repair unspaced full-phrase metadata and slash-separated guest names; verify Hrajte trubky credits. SuperMusic and LyricFind automatic access remains unverified.
+
 1.0.38-test11: Repair abbreviated Kroky credits, verified Helena/Korn duet identity and Stromy original-version title; support unparenthesized featured credits, numbered full-artist file tags, and recheck TEST10 negative caches.
 
 1.0.38-test10: Shared song identity for lyrics and artwork, numbered-tag repairs, verified credit aliases, regional source priority, Ujdeto, Pisnicky-akordy and Tekstowo adapters, scoped official Pavel Roth source, and retries after partial failures without zapping.

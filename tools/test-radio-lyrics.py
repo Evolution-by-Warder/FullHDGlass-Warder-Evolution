@@ -359,6 +359,14 @@ class NativeTests(unittest.TestCase):
         ref=types.SimpleNamespace(toString=lambda:station)
         self.navigation.instance.getCurrentlyPlayingServiceReference=lambda:ref
         self.m.native_song=lambda *a:('Artist','Title')
+    def test_space_less_metadata_starts_lookup_instead_of_waiting_forever(self):
+        import warderSongIdentity as identity
+        r=self.renderer;self.song()
+        self.m.native_song=lambda *a:identity.split_stream('MIROSLAV ZBIRKA-Biely Kvet')
+        r._poll();r._pending_since-=3;r._poll()
+        self.assertEqual(len(self.spawned),1)
+        self.assertEqual(self.spawned[0][2][-2:],['MIROSLAV ZBIRKA','Biely Kvet'])
+        self.assertNotIn('Čakám',r.label.text)
     def test_lookup_uses_native_child_argv_and_late_station_result_is_discarded(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3
         with patch.object(provider,'lookup',side_effect=AssertionError('No provider I/O in GUI')):r._poll()
@@ -590,7 +598,7 @@ class RegionalSourceTests(unittest.TestCase):
         response=lambda *a,**kw:io.BytesIO(b'x'*(provider.MAX_RESPONSE+1))
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);self.assertEqual(provider.lookup('Artist','Song',folder,opener=response)['status'],'offline')
-            status=json.loads((folder/'.last-result').read_text());self.assertLessEqual(len(status['requests']),12)
+            status=json.loads((folder/'.last-result').read_text());self.assertLessEqual(len(status['requests']),29)
 
 
 class CompactCoverTests(unittest.TestCase):
@@ -758,6 +766,54 @@ class CombinedEngineTests(unittest.TestCase):
         self.assertEqual(self.identity.query_pair('DARINKA ROLINCOVA','Az raz budem uvitelkou'),('DARINKA ROLINCOVA','Až raz budem učiteľkou'))
         self.assertFalse(provider.same_song(self.row('Another Artist','Až raz budem učiteľkou'),'Another Artist','Az raz budem uvitelkou'))
         self.assertFalse(provider.same_song(row,'DARINKA ROLINCOVA','Az raz budem uvitelkou (Live)'))
+    def test_full_name_slash_credit_matches_without_splitting_acdc(self):
+        row=self.row('Vidiek','Hrajte trúbky (feat. Boban Markovic & Marko Markovic)')
+        self.assertTrue(provider.same_song(row,'Vidiek','Hrajte trúbky, feat. Boban Markovic / Marko Markovic'))
+        self.assertFalse(provider.same_song(self.row('Vidiek','Hrajte trúbky (feat. Boban Markovic)'),'Vidiek','Hrajte trúbky, feat. Boban Markovic / Marko Markovic'))
+        self.assertEqual(self.identity.roster('AC/DC'),('ac/dc',))
+        self.assertTrue(provider.same_song(self.row('Vidiek','Hrajte trúbky'),'Vidiek','Hrajte trúbky, feat. Boban Markovic / Marko Markovic'))
+        self.assertEqual(self.identity.site_artists('Vidiek','Hrajte trúbky, feat. Boban Markovic / Marko Markovic'),['Vidiek'])
+    def test_karaoke_reads_only_original_paragraphs_not_translation_or_ads(self):
+        url='https://www.karaoketexty.sk/texty-piesni/medial-banana/doba-strieda-dobu-793543'
+        raw='<h1 id="song_title">Doba strieda dobu <span>- text</span></h1><div class="navigation_lyrics"><a href="/texty-piesni/medial-banana-51959">Medial Banana</a></div><div class="lyrics_cont"><span class="para_1lyrics_col1">Original line<br>Second line</span><aside>Advertisement</aside><span class="para_1lyrics_col2">Translation</span><span class="para_1lyrics_col1">Third line</span></div>'
+        r=self.sites.parse('karaoke',url,raw.encode(),'Medial Banana','Doba strieda dobu',provider.same_song,provider.clean_text)
+        self.assertEqual(r['text'],'Original line\nSecond line\n\nThird line')
+        translated=raw.replace('- text</span>','- text, preklad</span>')
+        self.assertEqual(self.sites.parse('karaoke',url,translated.encode(),'Medial Banana','Doba strieda dobu',provider.same_song,provider.clean_text)['text'],r['text'])
+        self.assertEqual(self.sites.parse('karaoke',url,raw.encode(),'Other Artist','Doba strieda dobu',provider.same_song,provider.clean_text)['text'],'')
+        self.assertTrue(self.sites.safe_url('karaoke','https://www.karaoketexty.cz/search?q=Song'))
+        self.assertFalse(self.sites.safe_url('karaoke','https://www.karaoketexty.cz.evil.example/'))
+    def test_karaoke_search_requires_whole_visible_artist_and_song(self):
+        url='https://www.karaoketexty.sk/search?q=Song'
+        raw='<h1>Hľadanie</h1><a href="/texty-piesni/wrong/song-1">Other Artist - Song</a><a href="/texty-piesni/artist/song-2">Artist - Song</a><a href="https://evil.example/texty-piesni/artist/song-3">Artist - Song</a>'
+        r=self.sites.parse('karaoke',url,raw.encode(),'Artist','Song',provider.same_song,provider.clean_text)
+        self.assertEqual(r['links'],['https://www.karaoketexty.sk/texty-piesni/artist/song-2'])
+    def test_karaoke_follows_verified_result_before_searching_the_mirror(self):
+        calls=[]
+        def response(request,**kw):
+            if request.full_url.startswith('https://www.karaoketexty.sk/search?'):
+                calls.append('search')
+                return io.BytesIO(b'<h1>Hladanie</h1>'.replace(b'Hladanie','Hľadanie'.encode())+b'<a href="/texty-piesni/artist/song-1">Artist - Song</a>')
+            if request.full_url=='https://www.karaoketexty.sk/texty-piesni/artist/song-1':
+                calls.append('song')
+                return io.BytesIO(b'<h1>Song - text</h1><div class="navigation_lyrics"><a href="/texty-piesni/artist-1">Artist</a></div><span class="para_1lyrics_col1">Original test line</span>')
+            if 'karaoketexty.cz' in request.full_url:
+                calls.append('mirror');raise AssertionError('Mirror must not delay an already verified candidate')
+            raise TimeoutError('Other sources disabled')
+        with tempfile.TemporaryDirectory() as tmp:
+            result=provider.lookup('Artist','Song',Path(tmp),opener=response,site_providers=('karaoke',),hedge_delay=0)
+        self.assertEqual(result['text'],'Original test line');self.assertEqual(calls,['search','song'])
+    def test_kytary_uses_complete_sheet_and_discards_chords_and_teaser(self):
+        url='https://akordy.kytary.cz/song/song'
+        raw='<script type="application/ld+json">{"lyrics":{"text":"Truncated teaser"}}</script><h1>Song</h1><h2>Artist</h2><div class="smartchordsheet"><div><span class="scs-chord"><span class="scs-chord-label">Am</span></span>Original line<br>Second line</div></div><aside>Advertising</aside>'
+        r=self.sites.parse('kytary',url,raw.encode(),'Artist','Song',provider.same_song,provider.clean_text)
+        self.assertEqual(r['text'],'Original line\nSecond line')
+        self.assertEqual(self.sites.parse('kytary',url,raw.encode(),'Other Artist','Song',provider.same_song,provider.clean_text)['text'],'')
+    def test_kytary_search_uses_title_and_artist_labels_not_lyric_hits(self):
+        url='https://akordy.kytary.cz/songs?query=Song'
+        raw='<h1>Písně s akordy a texty</h1><a href="/song/other"><span class="song-card-name">Other song</span><span class="song-card-author">Artist</span><span>Song lyric hit</span></a><a href="/song/song"><span class="song-card-name">Song</span><span class="song-card-author">Artist</span></a>'
+        r=self.sites.parse('kytary',url,raw.encode(),'Artist','Song',provider.same_song,provider.clean_text)
+        self.assertEqual(r['links'],['https://akordy.kytary.cz/song/song'])
     def test_feature_in_title_and_artist_keep_the_entire_roster(self):
         row=self.row('Bystrík & Fejbs','Káva')
         self.assertTrue(provider.same_song(row,'Bystrik','Káva (feat. Fejbs)'))
@@ -796,7 +852,7 @@ class CombinedEngineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.sites.parse('tekstowo',url,raw.replace('id="songText"','id="other"').encode(),'Dara Rolins','Sľub',provider.same_song,provider.clean_text)
     def test_new_hosts_reject_cross_host_redirects_and_unknown_markup(self):
-        for name in ('ujdeto','pisnicky','tekstowo'):
+        for name in ('ujdeto','pisnicky','tekstowo','karaoke','kytary'):
             self.assertFalse(self.sites.safe_url(name,'https://127.0.0.1/'))
             with self.assertRaises(ValueError):
                 self.sites.parse(name,'https://'+self.sites.HOSTS[name]+'/',b'<h1>Login required</h1>','Artist','Song',provider.same_song,provider.clean_text)
@@ -857,7 +913,7 @@ class CombinedEngineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);r=provider.lookup('Pavel Roth','Krásnější než růže',folder,opener=response,profile='skcz')
             self.assertEqual(r['status'],'offline');self.assertFalse(list(folder.glob('*.json')))
-        self.assertLessEqual(len(calls),23);self.assertTrue(all(0<t<=10 for t in calls))
+        self.assertLessEqual(len(calls),30);self.assertTrue(all(0<t<=10 for t in calls))
 
 
 if __name__=='__main__':unittest.main()

@@ -615,6 +615,46 @@
       },
       "receiver_cause": "not established",
       "details": "docs/RADIO-TEST11-FIELD-CHECKS.json"
+    },
+    {
+      "artist": "MIROSLAV ZBIRKA",
+      "title": "Biely Kvet",
+      "receiver_observation": {
+        "message": "Combined raw tag MIROSLAV ZBIRKA-Biely Kvet; waiting for metadata indefinitely",
+        "installed_version": "not captured"
+      },
+      "test12_assessment": "Confirmed no-space parser issue repaired and native child-spawn regression tested.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Vidiek",
+      "title": "Hrajte trúbky, feat. Boban Markovic / Marko Markovic",
+      "receiver_observation": {
+        "message": "Missing artwork and retrying lyrics; owner found content online",
+        "installed_version": "not captured"
+      },
+      "test12_assessment": "Slash-separated complete guest roster and verified main-credit variant repaired; live requests also experienced network errors.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "LASKA",
+      "title": "Mraky",
+      "receiver_observation": {
+        "message": "Artwork displayed, lyrics retrying; owner found text on KaraokeTexty.cz",
+        "installed_version": "not captured"
+      },
+      "test12_assessment": "New isolated KaraokeTexty adapter returned 1454 characters.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "KALI & TINA",
+      "title": "Aj keby",
+      "receiver_observation": {
+        "message": "Artwork displayed; lyrics retrying; owner found text immediately on LyricFind",
+        "installed_version": "not captured"
+      },
+      "test12_assessment": "Fresh configured-source check did not return text. LyricFind is not yet integrated; do not claim content absent.",
+      "receiver_validated": false
     }
   ],
   "follow_up": [
@@ -624,7 +664,8 @@
   ],
   "note": "Historical receiver observations and earlier checks are preserved. TEST10 adds shared identity, additional adapters and retries; receiver validation is pending.",
   "test10_report": "docs/RADIO-COMBINED-ENGINE-CHECKS.json",
-  "current_candidate": "1.0.38-test11",
+  "current_candidate": "1.0.38-test12",
   "test11_report": "docs/RADIO-TEST11-FIELD-CHECKS.json",
-  "candidate_source_commit": "1099a161c9f1d649a1a9905a062008f1cf689a6a"
+  "candidate_source_commit": "1099a161c9f1d649a1a9905a062008f1cf689a6a",
+  "test12_report": "docs/RADIO-TEST12-SOURCE-CHECKS.json"
 }

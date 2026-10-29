@@ -20,6 +20,14 @@ def split_stream(value):
         if separator in text:
             artist,title=(part.strip() for part in text.split(separator,1))
             if artist and title:return repair_pair(artist,title)
+    # Some ICY tags omit spaces around the separator. Require full phrases
+    # on both sides so a lone hyphenated artist (Jay-Z/Jean-Michel Jarre)
+    # never becomes a made-up song. Existing spaced formats take priority.
+    for separator in ('-','–','—'):
+        if text.count(separator)==1:
+            artist,title=(v.strip() for v in text.split(separator,1))
+            if len(artist.split())>=2 and len(title.split())>=2:
+                return repair_pair(artist,title)
     return '',''
 
 
@@ -62,13 +70,17 @@ def credit(artist,title):
     featured=FEATURE.search(title) or FEATURE_INLINE.search(title)
     if featured:
         artist=artist+' & '+featured.group(1)
-        title=title[:featured.start()].strip()
+        title=title[:featured.start()].strip().rstrip(',').rstrip()
     return artist,title
 
 
 def roster(value):
     parts=[part.strip() for part in SEPARATORS.split(norm(value)) if part.strip()]
-    return tuple(sorted(PERSON_ALIASES.get(part,part) for part in parts))
+    expanded=[]
+    for part in parts:
+        names=re.split(r'\s+/\s+',part)
+        expanded.extend(names if len(names)>1 and all(len(n.split())>=2 for n in names) else [part])
+    return tuple(sorted(PERSON_ALIASES.get(part,part) for part in expanded))
 
 
 def title_key(value,artists=()):
@@ -110,6 +122,8 @@ def identity_options(artist,title):
             names=('miroslav zbirka',)
         elif track=='viac' and names in (('imt smile','ivan tasler'),('ivan tasler',)):
             names=('imt smile',)
+        elif track=='hrajte trubky' and names==('vidiek',):
+            names=('boban markovic','marko markovic','vidiek')
         elif track=='kazda trampota ma svou mez' and names==('helena vondrackova',):
             names=('helena vondrackova','jiri korn')
         elif track=='taliansky muzikal' and names in (
@@ -148,7 +162,9 @@ def site_artists(artist,title):
     artist,title=query_pair(artist,title)
     lead=SEPARATORS.split(artist)[0].strip()
     names=[lead]
-    if norm(lead)=='sima martausova':
+    if roster(artist)==('boban markovic','marko markovic','vidiek') and title_key(title)=='hrajte trubky':
+        names=['Vidiek']
+    elif norm(lead)=='sima martausova':
         names=['Sima Magušinová (Martausová)','Sima Martausová','Sima Magušinová']
     elif norm(lead)=='miroslav zbirka':
         names=['Miro Žbirka','Miroslav Žbirka']

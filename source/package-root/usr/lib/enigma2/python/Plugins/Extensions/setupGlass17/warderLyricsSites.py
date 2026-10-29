@@ -10,8 +10,8 @@ except ImportError:
     import warderSongIdentity as song_identity
 
 HOSTS={'hudba':'hudba.zoznam.sk','youradio':'textypisni.youradio.cz',
-       'ujdeto':'www.ujdeto.cz','pisnicky':'pisnicky-akordy.cz','roth':'www.pavelroth.cz','tekstowo':'www.tekstowo.pl'}
-LIMITS={'hudba':4,'youradio':3,'ujdeto':4,'pisnicky':3,'roth':1,'tekstowo':3}
+       'ujdeto':'www.ujdeto.cz','pisnicky':'pisnicky-akordy.cz','roth':'www.pavelroth.cz','tekstowo':'www.tekstowo.pl','karaoke':'www.karaoketexty.sk','kytary':'akordy.kytary.cz'}
+LIMITS={'hudba':4,'youradio':3,'ujdeto':4,'pisnicky':3,'roth':1,'tekstowo':3,'karaoke':4,'kytary':3}
 VOID={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 SKIP={'script','style','noscript','iframe','template'}
 
@@ -27,7 +27,7 @@ def safe_url(name,url):
         parsed=urlsplit(url)
         port=parsed.port
     except ValueError:return False
-    return parsed.scheme=='https' and parsed.hostname==HOSTS[name] and not parsed.username and not parsed.password and port in (None,443)
+    return parsed.scheme=='https' and parsed.hostname in ({HOSTS[name],'www.karaoketexty.cz'} if name=='karaoke' else {HOSTS[name]}) and not parsed.username and not parsed.password and port in (None,443)
 
 
 class SameHostRedirect(HTTPRedirectHandler):
@@ -50,6 +50,10 @@ def initial_urls(name,artist,title):
     query_artist,query_title=song_identity.query_pair(artist,title)
     names=song_identity.site_artists(artist,title)
     titles=song_identity.site_titles(artist,title)
+    if name=='karaoke':
+        return [base+'/search?'+urlencode({'q':query_title}),'https://www.karaoketexty.cz/search?'+urlencode({'q':query_title})]
+    if name=='kytary':
+        return [base+'/song/'+slug(query_title),base+'/songs?'+urlencode({'query':query_title})]
     if name=='hudba':
         # Preserve the established first URL when no normalization is needed.
         return [base+'/'+slug(n)+'/piesen/'+slug(titles[0])+'/' for n in names[:2]]+[
@@ -69,7 +73,7 @@ class Page(HTMLParser):
         self.name=name;self.stack=[];self.headers=[];self.anchors=[];self.blocks=[]
         self.header=None;self.anchor=None;self.body=None
     def ignored(self):
-        return any(t in SKIP or (self.name=='pisnicky' and ('chord' in c or 'akord' in c)) for t,c in self.stack)
+        return any(t in SKIP or (self.name=='pisnicky' and ('chord' in c or 'akord' in c)) or (self.name=='kytary' and ('scs-chord' in c or 'scs-chord-label' in c)) for t,c in self.stack)
     def handle_starttag(self,tag,attrs):
         tag=tag.lower();attributes=dict(attrs);classes=set(attributes.get('class','').split())
         if attributes.get('id'):classes.add('#'+attributes['id'])
@@ -85,11 +89,13 @@ class Page(HTMLParser):
                          'song_scope':any('#songheader' in c for t,c in self.stack)};self.headers.append(self.header)
         if tag=='a' and len(self.anchors)<512:
             self.anchor={'href':attributes.get('href',''),'depth':depth,'parts':[],
-                         'breadcrumb':any(t=='p' and 'title' in c for t,c in self.stack)}
+                         'breadcrumb':any(t=='p' and 'title' in c for t,c in self.stack),
+                         'karaoke_artist':any('navigation_lyrics' in c for t,c in self.stack),
+                         'song_title_parts':[],'song_artist_parts':[]}
             self.anchors.append(self.anchor)
         wanted={'hudba':'song-text-full-width','youradio':'lyrics-orig',
-                'ujdeto':'ltext','pisnicky':'#songtext','roth':'CDtexty','tekstowo':'inner-text'}[self.name]
-        if wanted in classes and len(self.blocks)<2 and (self.name!='tekstowo' or any('#songText' in c for t,c in self.stack)):
+                'ujdeto':'ltext','pisnicky':'#songtext','roth':'CDtexty','tekstowo':'inner-text','karaoke':'para_1lyrics_col1','kytary':'smartchordsheet'}[self.name]
+        if wanted in classes and len(self.blocks)<(128 if self.name=='karaoke' else 2) and (self.name!='tekstowo' or any('#songText' in c for t,c in self.stack)):
             self.body={'depth':depth,'parts':[]};self.blocks.append(self.body)
         if tag not in VOID:self.stack.append((tag,classes))
     def handle_startendtag(self,tag,attrs):
@@ -107,13 +113,16 @@ class Page(HTMLParser):
         del self.stack[index:]
     def handle_data(self,data):
         if self.ignored():return
+        if self.name=='kytary' and self.anchor is not None:
+            if any('song-card-name' in c for t,c in self.stack):self.anchor['song_title_parts'].append(data)
+            if any('song-card-author' in c for t,c in self.stack):self.anchor['song_artist_parts'].append(data)
         for value in (self.header,self.anchor,self.body):
             if value is not None:value['parts'].append(data)
     @staticmethod
     def text(value):return ' '.join(''.join(value['parts']).split())
     def lyrics(self):
-        if len(self.blocks)!=1:return ''
-        value=''.join(self.blocks[0]['parts']).replace('\r','')
+        if not self.blocks or (self.name!='karaoke' and len(self.blocks)!=1):return ''
+        value='\n\n'.join(''.join(b['parts']) for b in self.blocks).replace('\r','')
         lines=[line.strip() for line in value.splitlines()]
         if self.name=='pisnicky':
             chord=r'[A-H](?:#|b)?(?:m|mi|maj|min|dim|sus|aug)?\d*(?:/[A-H](?:#|b)?)?'
@@ -139,6 +148,13 @@ def parse(name,url,raw,artist,title,matches,clean):
         if heading.endswith(suffix) and ' - ' in heading[:-len(suffix)]:
             artist_name,track_name=heading[:-len(suffix)].split(' - ',1)
             row={'artistName':artist_name,'trackName':track_name}
+    elif name=='karaoke' and h1:
+        artists=[Page.text(a) for a in page.anchors if a['karaoke_artist'] and re.fullmatch(r'/texty-p(?:iesni|isni)/[^/]+-\d+',urlsplit(a['href']).path)]
+        suffix=re.search(r'\s+-\s+text(?:,\s*(?:preklad|překlad))?$',h1[0])
+        if artists and suffix:
+            row={'artistName':artists[0],'trackName':h1[0][:suffix.start()].strip()}
+    elif name=='kytary' and h1 and h2:
+        row={'artistName':h2[0],'trackName':h1[0]}
     elif name=='tekstowo' and h1 and ' - ' in h1[0]:
         artist_name,track_name=h1[0].split(' - ',1)
         row={'artistName':artist_name,'trackName':track_name}
@@ -157,6 +173,7 @@ def parse(name,url,raw,artist,title,matches,clean):
     # An expected catalogue/song page is distinguishable from a login,
     # JavaScript challenge, proxy error or unrelated markup.
     is_search=(name=='hudba' and h1 and h1[0]=='Vyhľadávanie') or (name=='youradio' and h1 and h1[0]=='Výsledky vyhledávání') or (name=='ujdeto' and urlsplit(url).path=='/hledej.php' and any(v.startswith('Výsledky vyhledávání') for v in h1))
+    is_search=is_search or (name=='karaoke' and urlsplit(url).path=='/search' and h1 and h1[0] in ('Hľadanie','Hledání')) or (name=='kytary' and urlsplit(url).path=='/songs' and h1 and h1[0]=='Písně s akordy a texty')
     missing_page=name=='ujdeto' and h1 and h1[0]=='Text písně nenalezen'
     recognized=bool((row and page.blocks) or is_search or missing_page)
     links=[]
@@ -171,7 +188,16 @@ def parse(name,url,raw,artist,title,matches,clean):
             except (TypeError,ValueError):continue
             if not safe_url(name,target):continue
             parts=urlsplit(target).path.strip('/').split('/')
-            if name=='hudba':
+            if name=='karaoke':
+                label=Page.text(anchor)
+                candidate=None
+                if ' - ' in label:
+                    aa,tt=label.split(' - ',1);candidate={'artistName':aa,'trackName':tt}
+                valid=len(parts)==3 and parts[0] in ('texty-piesni','texty-pisni') and re.fullmatch(r'.+-\d+',parts[2]) and candidate is not None and matches(candidate,artist,title)
+            elif name=='kytary':
+                candidate={'artistName':' '.join(''.join(anchor['song_artist_parts']).split()),'trackName':' '.join(''.join(anchor['song_title_parts']).split())}
+                valid=len(parts)==2 and parts[0]=='song' and matches(candidate,artist,title)
+            elif name=='hudba':
                 valid=len(parts)==3 and parts[1]=='piesen' and any(parts[0]==a and (parts[2]==t or re.fullmatch(re.escape(t)+r'-\d+',parts[2])) for a,t in pairs)
             elif name=='ujdeto':valid=len(parts)==3 and parts[0]=='lyrics' and any(parts[1]==a and parts[2]==t for a,t in pairs)
             else:valid=len(parts)==3 and any(parts[0]==a and parts[2]==t for a,t in pairs)

@@ -17,7 +17,7 @@ from urllib.request import Request, urlopen
 
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
-CACHE_VERSION = 6
+CACHE_VERSION = 7
 CACHE = Path('/tmp/warder-radio-lyrics')
 MAX_RESPONSE = 1024 * 1024
 MAX_TEXT = 20000
@@ -127,14 +127,14 @@ def retry_delay(error, now):
 
 def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
            monotonic=time.monotonic, hedge_delay=0.75, budget=32,
-           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','roth'), profile='global'):
+           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','roth'), profile='global'):
     if profile not in ('global','skcz'):raise ValueError('Unknown radio profile')
     artist,title=song_identity.repair_pair(artist,title)
     artist, title = str(artist).strip(), str(title).strip()
     if not artist or not title or max(len(artist), len(title)) > 250:
         return {'text':'','status':'no-song'}
     site_providers=tuple(dict.fromkeys(site_providers))
-    if any(name not in ('hudba','youradio','ujdeto','pisnicky','tekstowo','roth') for name in site_providers):raise ValueError('Unknown lyrics provider')
+    if any(name not in ('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','roth') for name in site_providers):raise ValueError('Unknown lyrics provider')
     sites=None
     if site_providers:
         try:from Plugins.Extensions.setupGlass17 import warderLyricsSites as sites
@@ -156,7 +156,7 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     try:
         saved = json.loads(filename.read_text())
         text = clean_text(saved.get('text'))
-        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4,5) and bool(text))
+        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4,5,6) and bool(text))
         age = clock()-float(saved['saved'])
         ttl = 14*86400 if text else min(1800,max(60,int(saved.get('ttl',1800))))
         if valid and 0 <= age < ttl and saved.get('status') == ('found' if text else 'not-found'):
@@ -213,8 +213,10 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
                 if name in site_providers:
                     page=sites.parse(name,final_url,raw,artist,title,same_song,clean_text)
                     text=page['text'];negative=negative or page['negative']
-                    for link in page['links']:
-                        if link not in urls and len(urls)<sites.LIMITS[name]:urls.append(link)
+                    linked=[link for link in page['links'] if link not in urls][:max(0,sites.LIMITS[name]-len(urls))]
+                    # Follow verified search candidates before trying another
+                    # search/mirror, avoiding an unnecessary network round trip.
+                    urls[index+1:index+1]=linked
                     item['status']='found' if text else 'links' if page['links'] else 'not-found'
                 else:
                     records = json.loads(raw.decode('utf-8'))

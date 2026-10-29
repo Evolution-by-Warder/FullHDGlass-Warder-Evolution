@@ -36,6 +36,14 @@ class MetadataTests(unittest.TestCase):
         service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda n:{1:'24_Pavol Habera',2:'Reklama na ticho (remix)'}[n]))
         with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}):
             self.assertEqual(m.native_song(service),('Pavol Habera','Reklama na ticho (remix)'))
+    def test_missing_hyphen_spaces_do_not_leave_full_song_as_an_announcement(self):
+        self.assertEqual(m.split_song('MIROSLAV ZBIRKA-Biely Kvet'),('MIROSLAV ZBIRKA','Biely Kvet'))
+        enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
+        service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda n:{1:'',2:'MIROSLAV ZBIRKA-Biely Kvet'}[n]))
+        with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}):
+            self.assertEqual(m.native_song(service),('MIROSLAV ZBIRKA','Biely Kvet'))
+        for tag in ('Jay-Z','Jean-Michel Jarre','AC-DC','Hudba na maximum'):
+            self.assertEqual(m.split_song(tag),('',''))
     def test_unicode_artist_and_full_title_are_kept(self):
         self.assertEqual(m.split_song('  Žbirka – Biely kvet (Live)  '),('Žbirka','Biely kvet (Live)'))
     def test_station_slogan_without_artist_separator_is_not_a_song(self):
