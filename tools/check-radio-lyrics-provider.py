@@ -13,6 +13,7 @@ spec=importlib.util.spec_from_file_location('provider_check',path)
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 combined='--combined' in sys.argv
 pisnicky='--pisnicky' in sys.argv
+allow_unavailable='--allow-unavailable' in sys.argv
 official='--official' in sys.argv
 tekstowo='--tekstowo' in sys.argv
 regional='--regional' in sys.argv or combined or pisnicky or official or tekstowo
@@ -42,8 +43,13 @@ record={'artist':artist,'title':title,'status':result['status'],
         'elapsed_ms':state['elapsed_ms'],'sources_found':[r['source'] for r in state['requests'] if r.get('status')=='found'],
         'lyrics_published':False,'json_apis_disabled':regional,
         'isolated_source':'tekstowo' if tekstowo else 'roth' if official else 'ujdeto' if combined else 'pisnicky' if pisnicky else None,
-        'note':'A known-song availability check is not a coverage measurement.'}
+        'note':'A known-song availability check is not a coverage measurement.',
+        'requests':state['requests'],
+        'availability_check':'unavailable' if result['status']=='offline' else result['status']}
 out=ROOT/'packages/test'/('tekstowo-provider-check.json' if tekstowo else 'official-provider-check.json' if official else 'ujdeto-provider-check.json' if combined else 'pisnicky-provider-check.json' if pisnicky else 'regional-provider-check.json' if regional else 'provider-check.json');out.parent.mkdir(parents=True,exist_ok=True)
 out.write_text(json.dumps(record,indent=2,ensure_ascii=False)+'\n')
 print(json.dumps(record,ensure_ascii=False))
-if result['status']!='found':raise SystemExit('Known-song live provider check did not return an exact match')
+if result['status']!='found':
+    if allow_unavailable and pisnicky and result['status']=='offline':
+        print('::warning::Pisnicky public source unavailable from this runner; availability result is recorded as unavailable, not found. Deterministic parser and fallback tests remain required.')
+    else:raise SystemExit('Known-song live provider check did not return an exact match')

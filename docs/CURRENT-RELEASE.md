@@ -19,3 +19,5 @@ Niektoré ďalšie zaslané skladby zostávajú bez overeného výsledku alebo p
 Sieťové operácie prebiehajú mimo GUI. Jeden helper vykonáva najviac jednu požiadavku na hostiteľa súčasne a celkovo najviac 22 požiadaviek, pri uvedenej konkrétnej skladbe Pavla Rotha 23. Ostáva 32-sekundový rozpočet plánovača a 45-sekundové vonkajšie ukončenie procesu. Texty majú limit 20 000 znakov, cache najviac 128 skladieb; skutočné nenájdenie sa drží 30 minút a kladný výsledok 14 dní.
 
 Ide o izolovanú skúšobnú verziu. Produkčný kanál 1.0.37 sa nemení. Testy a živé kontroly zdrojov nenahrádzajú overenie prijímača s týmto balíkom.
+
+Živá kontrola Písničky-akordy osobitne zaznamenáva nedostupnosť z GitHub runnera. Taký stav sa neoznačí za nájdený text a neblokuje zostavenie; presná identita, parser aj správanie pri výpadku sú povinné deterministické testy. Lokálne živé načítanie textu Davida Kollera bolo úspešné.
