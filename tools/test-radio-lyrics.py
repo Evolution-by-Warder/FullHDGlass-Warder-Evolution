@@ -935,7 +935,7 @@ class SuperMusicTests(unittest.TestCase):
         self.assertEqual(self.parse(self.song('IMT Smile','Úsmev a čaj {Live}'),'IMT Smile','Úsmev a čaj')['text'],'')
     def test_search_pairs_title_with_artist_in_same_row(self):
         raw='<h1>Vyhľadávanie</h1><div class="result-item"><a href="piesen.php?id=2">Dozadu</a>Other Artist</div><div class="result-item"><a href="piesen.php?id=3">Dozadu</a>Instinct</div>'
-        r=self.parse(raw,url='https://www.supermusic.cz/najdi.php?hladane=Dozadu');self.assertEqual(r['links'],['https://www.supermusic.cz/piesen.php?id=3'])
+        r=self.parse(raw,url='https://www.supermusic.cz/najdi.php?hladane=Dozadu');self.assertEqual(r['links'],['https://www.supermusic.cz/piesen.php?idpiesne=3'])
     def test_external_or_non_numeric_search_target_rejected(self):
         for target in ('https://evil.example/piesen.php?id=1','piesen.php?id=abc','piesen.php?id=1&amp;redirect=https://evil.example'):
             raw='<h1>Vyhľadávanie</h1><div class="result-item"><a href="'+target+'">Dozadu</a>Instinct</div>'
@@ -967,6 +967,15 @@ class SuperMusicTests(unittest.TestCase):
         self.assertEqual(len(calls),2);self.assertEqual(session.validation_count,1)
         self.assertIn('_smc=public.visitor.ticket.',calls[1][0].full_url)
         self.assertTrue(all(0<x[1]['timeout']<=2 for x in calls))
+    def test_repeated_visitor_check_stops_after_one_validation(self):
+        from urllib.request import Request
+        challenge=b'<p id="msg" data-n="4136ba37d50814e7" data-l="4294967295" data-t="public.visitor.ticket" data-u="/piesen.php?idpiesne=1"></p><script src="/js/smc.js"></script>'
+        class Response(io.BytesIO):
+            def geturl(self):return 'https://www.supermusic.cz/piesen.php?idpiesne=1'
+        session=self.transport.Session()
+        with patch.object(session.transport,'open',side_effect=lambda *a,**k:Response(challenge)):
+            with self.assertRaises(ValueError):session.open(Request('https://www.supermusic.cz/piesen.php?idpiesne=1'))
+        self.assertEqual(session.request_count,2);self.assertEqual(session.validation_count,1)
     def test_transport_rejects_credentials_and_external_destination(self):
         from urllib.request import Request
         for u in ('http://www.supermusic.cz/','https://evil.example/','https://u:p@www.supermusic.cz/'):

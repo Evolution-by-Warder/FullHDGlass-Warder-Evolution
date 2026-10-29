@@ -225,6 +225,12 @@ def parse(name,url,raw,artist,title,matches,clean):
                 row_words=set(slug(' '.join(anchor['supermusic_row']['parts'])).split('-')) if anchor.get('supermusic_row') else set()
                 artist_in_row=any(set(slug(n).split('-'))<=row_words for n in song_identity.site_artists(artist,title))
                 valid=urlsplit(target).path=='/piesen.php' and len(q)==1 and any(len(v)==1 and re.fullmatch(r'\d{1,12}',v[0]) for k,v in q.items() if k in ('id','idpiesne')) and artist_in_row and any(slug(st)==slug(label) or slug(label).startswith(slug(st)+'-') for st in song_identity.site_titles(artist,title))
+                if valid:
+                    # Search still emits the legacy id= form. Use the site's
+                    # observed canonical idpiesne= destination before opening
+                    # its visitor-check flow.
+                    number=q.get('idpiesne',q.get('id'))[0]
+                    target=urljoin(target,'/piesen.php')+'?'+urlencode({'idpiesne':number})
             elif name=='hudba':
                 valid=len(parts)==3 and parts[1]=='piesen' and any(parts[0]==a and (parts[2]==t or re.fullmatch(re.escape(t)+r'-\d+',parts[2])) for a,t in pairs)
             elif name=='ujdeto':valid=len(parts)==3 and parts[0]=='lyrics' and any(parts[1]==a and parts[2]==t for a,t in pairs)

@@ -105,7 +105,7 @@ def check(source, artist, title, sites, lyrics, timeout, budget):
                     else:
                         linked = [u for u in parsed.get('links', []) if u not in seen and allowed(source, u)]
                         urls[index:index] = linked
-                        state = 'candidate_links' if linked else 'not_found' if parsed.get('negative') else 'unverified_page'
+                        state = 'candidate_links' if linked else 'not_found' if parsed.get('negative') else 'candidates_already_checked'
                         if parsed.get('diagnostic'):
                             trace['parser_diagnostic'] = parsed['diagnostic']
                 except (ValueError, KeyError, UnicodeError):

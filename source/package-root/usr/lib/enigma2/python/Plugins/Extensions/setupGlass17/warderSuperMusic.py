@@ -111,5 +111,10 @@ class Session:
         headers['Referer'] = final
         self.validation_count += 1
         raw, result_url = self._fetch(Request(validated_url, headers=headers), deadline)
+        if len(raw) <= 4096:
+            repeated = Challenge()
+            repeated.feed(raw.decode('utf-8', 'replace'))
+            if repeated.public_client and repeated.data:
+                raise ValueError('Public visitor check was not accepted')
         # Keep the canonical URL in parser/diagnostic output, not the visitor token.
         return PageResponse(raw, canonical)
