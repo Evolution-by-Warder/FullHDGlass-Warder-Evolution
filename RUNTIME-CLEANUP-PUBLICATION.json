@@ -2,31 +2,50 @@
   "schema": 1,
   "date": "2026-10-29",
   "product": "fullhdglass",
-  "candidate_version": "1.0.40-test1",
-  "source_commit": "4e6c36da2c93a68e082748c32ebb8816a8ab7efb",
+  "candidate_version": "1.0.40-test2",
+  "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
   "branch": "feature/radio-spectrum-refinement",
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-spectrum-1.0.40-test1",
-  "release_tag": "radio-spectrum-1.0.40-test1",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-spectrum-1.0.40-test2",
+  "release_tag": "radio-spectrum-1.0.40-test2",
   "prerelease": true,
   "ipk": {
-    "filename": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test1_all.ipk",
-    "bytes": 14517440,
-    "sha256": "e8a565b1cdc3ab38a6e751112f7b64244bb642f9a9bbb807f6c185027bd180a8",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-spectrum-1.0.40-test1/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test1_all.ipk"
+    "filename": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test2_all.ipk",
+    "bytes": 14759486,
+    "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-spectrum-1.0.40-test2/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.40-test2_all.ipk"
   },
   "verification": {
-    "ci_run": 40901959402,
+    "ci_run": 40910073152,
+    "ci_job": 123575332617,
     "ci_conclusion": "success",
-    "independent_public_download_sha256_verified": true,
-    "all_uncompressed_control_and_payload_bytes_match_tested_build": true,
-    "tests_passed": 344,
+    "tests_passed": 349,
     "optional_unchanged_archive_check_skipped": 1,
+    "payload_files": 1402,
+    "independent_public_download_sha256_verified": true,
+    "public_ipk_byte_identical_to_tested_local_build": true,
     "receiver_verified": false
   },
   "pull_request": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/9",
   "production_feed_activated": false,
-  "status": "withdrawn_after_owner_reported_radio_GUI_overload",
-  "owner_receiver_report": "GUI nearly unresponsive after switching to radio on TEST1",
-  "superseded_by_candidate": "1.0.40-test2",
-  "superseded_by_release": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-spectrum-1.0.40-test2"
+  "animation": {
+    "columns": 84,
+    "column_width": 3,
+    "gap": 1,
+    "widget_size": [
+      350,
+      126
+    ],
+    "backend": "ePixmap pre-rendered PNG frames",
+    "frame_count": 48,
+    "interval_ms": 100,
+    "shared_rgba_pixel_budget_bytes": 8467200,
+    "native_updates_per_visible_renderer_second_max": 10,
+    "frame_loading": "one frame per callback, shared bounded cache; no further decodes after warmup",
+    "playback": "forward/reverse through adjacent frames; no repeated endpoints"
+  },
+  "supersedes": {
+    "version": "1.0.40-test1",
+    "reason": "Owner reported severe radio GUI overload; individual eCanvas segment rendering removed",
+    "release_marked_withdrawn": true
+  }
 }
