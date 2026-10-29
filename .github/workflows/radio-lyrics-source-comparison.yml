@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir -p /tmp/warder-source-comparison
           curl --fail --location --max-time 20 --output /tmp/warder-source-comparison/compare.py "$SOURCE_ROOT/diagnostics/compare-radio-lyrics-sources.py"
-          for module in warderLyrics.py warderLyricsSites.py warderSongIdentity.py; do
+          for module in warderLyrics.py warderLyricsSites.py warderSongIdentity.py warderSuperMusic.py; do
             curl --fail --location --max-time 20 --output "/tmp/warder-source-comparison/$module" "$SOURCE_ROOT/source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/$module"
           done
       - run: python3 /tmp/warder-source-comparison/compare.py --engine-dir /tmp/warder-source-comparison

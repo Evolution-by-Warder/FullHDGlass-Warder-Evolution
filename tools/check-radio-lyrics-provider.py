@@ -18,8 +18,10 @@ official='--official' in sys.argv
 tekstowo='--tekstowo' in sys.argv
 karaoke='--karaoke' in sys.argv
 kytary='--kytary' in sys.argv
-regional='--regional' in sys.argv or combined or pisnicky or official or tekstowo or karaoke or kytary
+supermusic='--supermusic' in sys.argv
+regional='--regional' in sys.argv or combined or pisnicky or official or tekstowo or karaoke or kytary or supermusic
 artist,title=(('08','Krasnejsi nez ruze (Maliconia) - Pavel Roth') if official else
+              ('Instinct','Dozadu') if supermusic else
               ('Láska','Mraky') if karaoke else
               ('Lucie','Chci zas v tobě spát') if kytary else
               ('Dara Rolins','Sľub') if tekstowo else
@@ -29,18 +31,23 @@ artist,title=(('08','Krasnejsi nez ruze (Maliconia) - Pavel Roth') if official e
 kwargs={}
 if regional:
     import warderLyricsSites as sites
+    transports={}
     def regional_only(request,**kwargs):
         for name,host in sites.HOSTS.items():
             if official and name!='roth':continue
             if tekstowo and name!='tekstowo':continue
             if karaoke and name!='karaoke':continue
             if kytary and name!='kytary':continue
+            if supermusic and name!='supermusic':continue
             if combined and name!='ujdeto':continue
             if pisnicky and name!='pisnicky':continue
-            if sites.safe_url(name,request.full_url):return sites.opener(name)(request,**kwargs)
+            if sites.safe_url(name,request.full_url):
+                if name not in transports:transports[name]=sites.opener(name)
+                return transports[name](request,**kwargs)
         raise TimeoutError('JSON APIs intentionally unavailable during regional-source validation')
     kwargs['opener']=regional_only
     kwargs['profile']='skcz'
+    if supermusic:kwargs['site_providers']=('supermusic',)
 with tempfile.TemporaryDirectory() as temp:
     result=m.lookup(artist,title,Path(temp),**kwargs)
     state=json.loads((Path(temp)/'.last-result').read_text())
@@ -48,11 +55,11 @@ record={'artist':artist,'title':title,'status':result['status'],
         'characters':len(result['text']),'text_sha256':hashlib.sha256(result['text'].encode()).hexdigest(),
         'elapsed_ms':state['elapsed_ms'],'sources_found':[r['source'] for r in state['requests'] if r.get('status')=='found'],
         'lyrics_published':False,'json_apis_disabled':regional,
-        'isolated_source':'karaoke' if karaoke else 'kytary' if kytary else 'tekstowo' if tekstowo else 'roth' if official else 'ujdeto' if combined else 'pisnicky' if pisnicky else None,
+        'isolated_source':'supermusic' if supermusic else 'karaoke' if karaoke else 'kytary' if kytary else 'tekstowo' if tekstowo else 'roth' if official else 'ujdeto' if combined else 'pisnicky' if pisnicky else None,
         'note':'A known-song availability check is not a coverage measurement.',
         'requests':state['requests'],
         'availability_check':'unavailable' if result['status']=='offline' else result['status']}
-out=ROOT/'packages/test'/('karaoke-provider-check.json' if karaoke else 'kytary-provider-check.json' if kytary else 'tekstowo-provider-check.json' if tekstowo else 'official-provider-check.json' if official else 'ujdeto-provider-check.json' if combined else 'pisnicky-provider-check.json' if pisnicky else 'regional-provider-check.json' if regional else 'provider-check.json');out.parent.mkdir(parents=True,exist_ok=True)
+out=ROOT/'packages/test'/('supermusic-provider-check.json' if supermusic else 'karaoke-provider-check.json' if karaoke else 'kytary-provider-check.json' if kytary else 'tekstowo-provider-check.json' if tekstowo else 'official-provider-check.json' if official else 'ujdeto-provider-check.json' if combined else 'pisnicky-provider-check.json' if pisnicky else 'regional-provider-check.json' if regional else 'provider-check.json');out.parent.mkdir(parents=True,exist_ok=True)
 out.write_text(json.dumps(record,indent=2,ensure_ascii=False)+'\n')
 print(json.dumps(record,ensure_ascii=False))
 if result['status']!='found':

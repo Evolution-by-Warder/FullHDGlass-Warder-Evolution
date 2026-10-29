@@ -2,7 +2,7 @@
   "schema": 1,
   "baseline_commit": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
   "baseline_version": "1.0.37",
-  "candidate_version": "1.0.38-test12",
+  "candidate_version": "1.0.38-test13",
   "receiver_validated": false,
   "non_radio_xml_sha256": "2768fa4fc7520497e9d707aad739d14fd3d92ed0021ecb59e51223f441603ec1",
   "approved_layout": "approved-layout.png",
@@ -23,18 +23,19 @@
     "https://www.tekstowo.pl/",
     "https://www.karaoketexty.sk/",
     "https://www.karaoketexty.cz/",
-    "https://akordy.kytary.cz/"
+    "https://akordy.kytary.cz/",
+    "https://www.supermusic.cz/"
   ],
   "header_revision": "Owner requested: no central RADIO, localized weekday dd.mm.yyyy, smaller white seconds .SS adjacent to HH:MM and glyph bottoms aligned.",
-  "lyrics_scheduler": "Recognized SK/CZ formats start Hudba.sk and LRCLIB together; global stations keep LRCLIB first. Other sources start after at most 750ms or an earlier primary completion. At most 29 requests, or 30 for the specifically scoped official recording, one per host at a time within the helper; 32s orchestration and 45s outer timeout.",
+  "lyrics_scheduler": "Recognized SK/CZ formats start Hudba.sk and LRCLIB together; global stations keep LRCLIB first. Other sources start after at most 750ms or an earlier primary completion. At most 33 logical source attempts, or 34 for the specifically scoped official recording, one per host at a time within the helper; 32s orchestration and 45s outer timeout. SuperMusic may perform one bounded public visitor validation per page; public session cookies are reused within its worker.",
   "spectrum_interval_ms": 110,
   "cover_revision": "Owner requested compact frame tightly fitted to the cover; image aspect preserved, each axis at most 420 px; slot centre (526,496), equal to lyrics panel vertical centre. Static 440x720 left panel removed. Header-only sizing reads at most 64KiB in a worker; old artwork matcher and native async decoder retained. TEST10 additionally shares verified identities with lyrics and uses one bounded short-title catalogue fallback; complete artist/version verification remains mandatory.",
   "owner_layout_accepted": true,
   "owner_layout_acceptance": "Owner accepted the compact radio layout in chat on 2026-10-28; this version changes no geometry or graphical assets.",
   "absence_notice_filter": "Exact known Hudba.sk absence notice is rejected during source and cache validation; complete real texts containing the same sentence remain valid.",
-  "retry_policy": "Incomplete misses are marked partial and are not negatively cached; bounded automatic retries after 5, 20, 60 and 60 seconds, respecting longer host Retry-After. Complete misses stop. Valid TEST7/8/9/10 positive caches remain usable; older negative caches invalidated.",
+  "retry_policy": "Incomplete misses are marked partial and are not negatively cached; bounded automatic retries after 5, 20, 60 and 60 seconds, respecting longer host Retry-After. Complete misses stop. Valid TEST7/8/9/10/11/12 positive caches remain usable; older negative caches invalidated.",
   "unverified_sources": {
-    "supermusic": "JS access page without lyrics; no adapter enabled",
     "lyricfind": "Public access unavailable in this environment; licensed integration not verified"
-  }
+  },
+  "supermusic_transport": "Normal site-provided FNV-1a visitor handshake, 100000 candidate / 0.4-second CPU cap; one validation hop, same-origin song destination, same-source redirects, 1 MiB response limit, original request time budget. Runs only inside the existing background helper."
 }

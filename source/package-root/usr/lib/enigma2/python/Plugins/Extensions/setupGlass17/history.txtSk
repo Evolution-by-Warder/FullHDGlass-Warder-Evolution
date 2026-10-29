@@ -1,3 +1,5 @@
+1.0.38-test13: SuperMusic.cz ako zdroj pôvodných textov; ohraničené bežné overenie návštevníka, použitie relácie, presná zhoda interpreta a názvu a odstránenie akordov. Zachovaná pozitívna cache, opätovné overenie starších negatívnych výsledkov. Bez zmeny grafiky rádia.
+
 1.0.38-test12: KaraokeTexty.sk/.cz a Akordy Kytary.cz ako nové zdroje pôvodných textov; opravený zápis MIROSLAV ZBIRKA-Biely Kvet bez medzier a plné mená hostí oddelené lomkou; overený kredit skladby Hrajte trúbky. SuperMusic a LyricFind sú preskúmané, ich automatické načítanie zatiaľ nie je overené.
 
 1.0.38-test11: Rozpoznanie skratky Kroky F. Janecka, overených kreditov duetu Každá trampota má svou mez a označenia Stromy (Original Version); hosť FT. bez zátvoriek, číslo súboru 24_ pred menom interpreta a obnovenie staršej negatívnej cache.

@@ -54,6 +54,7 @@ jobs:
           python tools/check-radio-lyrics-provider.py --tekstowo
           python tools/check-radio-lyrics-provider.py --karaoke --allow-unavailable
           python tools/check-radio-lyrics-provider.py --kytary --allow-unavailable
+          python tools/check-radio-lyrics-provider.py --supermusic
       - name: Build candidate and verify every installed byte
         run: |
           python tools/build-setup-style-test.py

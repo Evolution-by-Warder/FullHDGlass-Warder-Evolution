@@ -17,7 +17,7 @@ from urllib.request import Request, urlopen
 
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
-CACHE_VERSION = 7
+CACHE_VERSION = 8
 CACHE = Path('/tmp/warder-radio-lyrics')
 MAX_RESPONSE = 1024 * 1024
 MAX_TEXT = 20000
@@ -127,14 +127,14 @@ def retry_delay(error, now):
 
 def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
            monotonic=time.monotonic, hedge_delay=0.75, budget=32,
-           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','roth'), profile='global'):
+           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','supermusic','roth'), profile='global'):
     if profile not in ('global','skcz'):raise ValueError('Unknown radio profile')
     artist,title=song_identity.repair_pair(artist,title)
     artist, title = str(artist).strip(), str(title).strip()
     if not artist or not title or max(len(artist), len(title)) > 250:
         return {'text':'','status':'no-song'}
     site_providers=tuple(dict.fromkeys(site_providers))
-    if any(name not in ('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','roth') for name in site_providers):raise ValueError('Unknown lyrics provider')
+    if any(name not in ('hudba','youradio','ujdeto','pisnicky','tekstowo','karaoke','kytary','supermusic','roth') for name in site_providers):raise ValueError('Unknown lyrics provider')
     sites=None
     if site_providers:
         try:from Plugins.Extensions.setupGlass17 import warderLyricsSites as sites
@@ -156,7 +156,7 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     try:
         saved = json.loads(filename.read_text())
         text = clean_text(saved.get('text'))
-        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4,5,6) and bool(text))
+        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4,5,6,7) and bool(text))
         age = clock()-float(saved['saved'])
         ttl = 14*86400 if text else min(1800,max(60,int(saved.get('ttl',1800))))
         if valid and 0 <= age < ttl and saved.get('status') == ('found' if text else 'not-found'):
@@ -188,6 +188,9 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
             events.put(('done',name,{'negative':False,'failed':True,
                 'retry_after':max(1,int(until-clock())+1),'trace':[]}))
             return
+        # One transport per worker preserves the public visitor cookie across
+        # search and song pages without sharing sessions between providers.
+        fetch = sites.opener(name) if name in site_providers and opener is urlopen else opener
         for index,url in enumerate(urls):
             if sites is not None and name in site_providers and index>=sites.LIMITS[name]:break
             if cancel.is_set():return
@@ -205,7 +208,6 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
                 request = Request(url,headers={
                     'User-Agent':'FullHDGlass-Warder-Evolution/1.0 (https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution)',
                     'Accept':'text/html' if name in site_providers else 'application/json'})
-                fetch = sites.opener(name) if name in site_providers and opener is urlopen else opener
                 with fetch(request,timeout=min(10,remaining)) as response:
                     raw = response.read(MAX_RESPONSE+1)
                     final_url=response.geturl() if name in site_providers and hasattr(response,'geturl') else url

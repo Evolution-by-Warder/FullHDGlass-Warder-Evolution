@@ -598,7 +598,7 @@ class RegionalSourceTests(unittest.TestCase):
         response=lambda *a,**kw:io.BytesIO(b'x'*(provider.MAX_RESPONSE+1))
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);self.assertEqual(provider.lookup('Artist','Song',folder,opener=response)['status'],'offline')
-            status=json.loads((folder/'.last-result').read_text());self.assertLessEqual(len(status['requests']),29)
+            status=json.loads((folder/'.last-result').read_text());self.assertLessEqual(len(status['requests']),33)
 
 
 class CompactCoverTests(unittest.TestCase):
@@ -913,7 +913,68 @@ class CombinedEngineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);r=provider.lookup('Pavel Roth','Krásnější než růže',folder,opener=response,profile='skcz')
             self.assertEqual(r['status'],'offline');self.assertFalse(list(folder.glob('*.json')))
-        self.assertLessEqual(len(calls),30);self.assertTrue(all(0<t<=10 for t in calls))
+        self.assertLessEqual(len(calls),34);self.assertTrue(all(0<t<=10 for t in calls))
 
+
+
+class SuperMusicTests(unittest.TestCase):
+    def setUp(self):
+        import warderLyricsSites,warderSuperMusic
+        self.sites,self.transport=warderLyricsSites,warderSuperMusic
+    def parse(self,raw,artist='Instinct',title='Dozadu',url='https://www.supermusic.cz/piesen.php?id=1'):
+        return self.sites.parse('supermusic',url,raw.encode(),artist,title,provider.same_song,provider.clean_text)
+    def song(self,artist='Instinct',title='Dozadu'):
+        return '<title>'+title+' – '+artist+' | Akordy | SuperMusic.cz</title><div id="chordText">Original <span class="chord">F#</span>first line<br/>Second &amp; original line</div><footer>Advertisement</footer>'
+    def test_song_identity_and_chord_removal(self):
+        r=self.parse(self.song());self.assertEqual(r['text'],'Original first line\nSecond & original line');self.assertNotIn('Advertisement',r['text'])
+    def test_wrong_artist_or_recording_version_rejected(self):
+        for artist,title in [('Other Artist','Dozadu'),('Instinct','Dozadu (Live)'),('Instinct','Dozadu (remix)')]:
+            self.assertEqual(self.parse(self.song(artist,title))['text'],'')
+    def test_verified_imt_subtitle_is_scoped(self):
+        self.assertTrue(self.parse(self.song('IMT Smile','Úsmev a čaj {I am tea-smile}'),'IMT Smile','Úsmev a čaj')['text'])
+        self.assertEqual(self.parse(self.song('IMT Smile','Úsmev a čaj {Live}'),'IMT Smile','Úsmev a čaj')['text'],'')
+    def test_search_pairs_title_with_artist_in_same_row(self):
+        raw='<h1>Vyhľadávanie</h1><div class="result-item"><a href="piesen.php?id=2">Dozadu</a>Other Artist</div><div class="result-item"><a href="piesen.php?id=3">Dozadu</a>Instinct</div>'
+        r=self.parse(raw,url='https://www.supermusic.cz/najdi.php?hladane=Dozadu');self.assertEqual(r['links'],['https://www.supermusic.cz/piesen.php?id=3'])
+    def test_external_or_non_numeric_search_target_rejected(self):
+        for target in ('https://evil.example/piesen.php?id=1','piesen.php?id=abc','piesen.php?id=1&amp;redirect=https://evil.example'):
+            raw='<h1>Vyhľadávanie</h1><div class="result-item"><a href="'+target+'">Dozadu</a>Instinct</div>'
+            self.assertFalse(self.parse(raw,url='https://www.supermusic.cz/najdi.php?hladane=x')['links'])
+    def test_challenge_is_not_a_negative_catalogue_match(self):
+        with self.assertRaises(ValueError):self.parse('<p id="msg">Načítavam</p><script src="/js/smc.js"></script>')
+    def test_malformed_or_unclosed_body_rejected(self):
+        with self.assertRaises(ValueError):self.parse('<title>Dozadu – Instinct | SuperMusic.cz</title><div id="chordText">Original test line')
+    def test_fnv_reference_and_public_answer(self):
+        self.assertEqual(self.transport.fnv(b'hello'),0x4f9f2cab)
+        nonce='4136ba37d50814e7';n=self.transport.answer(nonce,1048576)
+        self.assertLess(self.transport.fnv((nonce+':'+str(n)).encode()),1048576)
+    def test_malformed_challenge_and_cpu_budget(self):
+        for nonce,target in [('bad!',1048576),('4136ba37d50814e7',0),('4136ba37d50814e7',2**32)]:
+            with self.assertRaises(ValueError):self.transport.answer(nonce,target)
+        with self.assertRaises(TimeoutError):self.transport.answer('4136ba37d50814e7',1,seconds=0)
+    def test_transport_public_handshake_is_bounded_and_canonical(self):
+        from urllib.request import Request
+        challenge=b'<p id="msg" data-n="4136ba37d50814e7" data-l="4294967295" data-t="public.visitor.ticket" data-u="/piesen.php?id=1"></p><script src="/js/smc.js"></script>'
+        module=self.transport
+        class Response(io.BytesIO):
+            def geturl(self):return 'https://www.supermusic.cz/piesen.php?id=1'
+        session=module.Session();calls=[]
+        def respond(request,**kwargs):
+            calls.append((request,kwargs));return Response(challenge if len(calls)==1 else b'<html>Complete public song page</html>')
+        with patch.object(session.transport,'open',side_effect=respond):
+            with session.open(Request('https://www.supermusic.cz/piesen.php?id=1'),timeout=2) as response:
+                self.assertIn(b'Complete public song',response.read());self.assertNotIn('_smc=',response.geturl())
+        self.assertEqual(len(calls),2);self.assertEqual(session.validation_count,1)
+        self.assertIn('_smc=public.visitor.ticket.',calls[1][0].full_url)
+        self.assertTrue(all(0<x[1]['timeout']<=2 for x in calls))
+    def test_transport_rejects_credentials_and_external_destination(self):
+        from urllib.request import Request
+        for u in ('http://www.supermusic.cz/','https://evil.example/','https://u:p@www.supermusic.cz/'):
+            with self.assertRaises(ValueError):self.transport.Session().open(Request(u))
+        with self.assertRaises(ValueError):self.transport.Session().open(Request('https://www.supermusic.cz/',headers={'Authorization':'Bearer not-used'}))
+    def test_positive_cache_from_test12_survives_new_source(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);p=folder/(provider.key('Artist','Song')+'.json');p.write_text(json.dumps({'version':7,'saved':1000,'status':'found','text':'Original cached test text'}))
+            self.assertEqual(provider.lookup('Artist','Song',folder,opener=lambda *a,**k:(_ for _ in ()).throw(AssertionError()),clock=lambda:1001)['text'],'Original cached test text')
 
 if __name__=='__main__':unittest.main()

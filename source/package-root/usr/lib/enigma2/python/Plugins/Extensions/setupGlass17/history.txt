@@ -1,3 +1,5 @@
+1.0.38-test13: SuperMusic.cz original lyrics via its bounded public visitor check, session cookie reuse, exact artist/title matching and chord removal. Valid positive caches retained; older negative caches rechecked. No radio layout changes.
+
 1.0.38-test12: Add original-only KaraokeTexty SK/CZ and Akordy Kytary adapters; repair unspaced full-phrase metadata and slash-separated guest names; verify Hrajte trubky credits. SuperMusic and LyricFind automatic access remains unverified.
 
 1.0.38-test11: Repair abbreviated Kroky credits, verified Helena/Korn duet identity and Stromy original-version title; support unparenthesized featured credits, numbered full-artist file tags, and recheck TEST10 negative caches.
