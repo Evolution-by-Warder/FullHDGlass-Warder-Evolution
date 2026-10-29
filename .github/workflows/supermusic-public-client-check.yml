@@ -1,0 +1,28 @@
+name: Inspect normal SuperMusic public client
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/radio-lyrics-layout]
+    paths: [.github/workflows/supermusic-public-client-check.yml]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - run: |
+          python3 - <<'PY'
+          import hashlib,json,re
+          from urllib.request import Request,urlopen
+          u='https://www.supermusic.cz/js/smc.js?v=20261001'
+          with urlopen(Request(u,headers={'User-Agent':'Mozilla/5.0'}),timeout=15) as r:
+              raw=r.read(64000);status=r.status
+          text=raw.decode('utf-8','replace')
+          terms=['crypto.subtle','digest(','fetch(','JSON.stringify','document.cookie','location.','data-n','data-l']
+          snippets=[]
+          for term in terms:
+              p=text.find(term)
+              if p>=0:snippets.append({'term':term,'code':text[max(0,p-100):p+220]})
+          print('SUPERMUSIC_CLIENT '+json.dumps({'http':status,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'snippets':snippets,'routes':sorted(set(re.findall(r'["\'](/[^"\'\\\s]{1,90})["\']',text)))[:20]}))
+          PY
