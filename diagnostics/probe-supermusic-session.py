@@ -2,6 +2,7 @@
 from collections import Counter
 from html.parser import HTMLParser
 import json
+import re
 from urllib.request import Request
 from supermusic_session import Session
 
@@ -38,3 +39,19 @@ for number in (1007929, 62753):
         print('SUPERMUSIC_SESSION ' + json.dumps({'url': url, 'bytes': len(raw), 'headers': page.headers[:10], 'blocks': page.blocks[:35], 'classes': page.classes.most_common(15), 'request_count': session.request_count, 'validation_count': session.validation_count}), flush=True)
     except Exception as error:
         print('SUPERMUSIC_SESSION ' + json.dumps({'url': url, 'error': type(error).__name__}), flush=True)
+
+url = 'https://www.supermusic.cz/najdi.php?hladane=Laska+Mraky'
+try:
+    with session.open(Request(url, headers={'User-Agent': 'FullHDGlass-Warder-Evolution/source-check'}), timeout=10) as response:
+        raw = response.read().decode('utf-8', 'replace')
+    links = []
+    for match in re.finditer(r'<a\b[^>]*href=["\'][^"\']*piesen\.php[^"\']*["\'][^>]*>', raw, re.I):
+        opening = match.group(0)
+        before = raw[max(0, match.start()-350):match.start()]
+        parents = re.findall(r'<(?:div|tr|td|span)\b[^>]*(?:class|id)=["\'][^"\']*["\'][^>]*>', before, re.I)[-3:]
+        links.append({'opening': opening[:250], 'parents': parents})
+        if len(links) == 10:
+            break
+    print('SUPERMUSIC_SEARCH_SHAPE ' + json.dumps({'url': url, 'song_links': links}), flush=True)
+except Exception as error:
+    print('SUPERMUSIC_SEARCH_SHAPE ' + json.dumps({'error': type(error).__name__}), flush=True)
