@@ -1,0 +1,2637 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "source_commit": "f68f0398c18e78504f0cb76be8198b0f7b642b30",
+  "workflow_run": 40869165455,
+  "workflow_conclusion": "success",
+  "recordings_per_source": 12,
+  "sources": [
+    "supermusic",
+    "karaoke_sk",
+    "karaoke_cz",
+    "kytary"
+  ],
+  "github": {
+    "environment": "GitHub Actions ubuntu-latest",
+    "cases": 48,
+    "summary": {
+      "supermusic": {
+        "script_intermediate": 8,
+        "unverified_page": 4
+      },
+      "karaoke_sk": {
+        "found": 7,
+        "not_found": 3,
+        "unrecognized_page": 2
+      },
+      "karaoke_cz": {
+        "found": 7,
+        "not_found": 3,
+        "unrecognized_page": 2
+      },
+      "kytary": {
+        "not_found": 10,
+        "found": 2
+      }
+    },
+    "results": [
+      {
+        "source": "supermusic",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=IMT+Smile+%C3%9Asmev+a+%C4%8Daj",
+            "http": 200,
+            "bytes": 94843,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=IMT+Smile+%C3%9Asmev+a+%C4%8Daj",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: IMT Smile Úsmev a čaj | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "15 Nájdených výsledkov pre \"IMT Smile Úsmev a čaj\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 1268
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=62753",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=62753",
+            "status": "script_intermediate",
+            "elapsed_ms": 613
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=62519",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=62519",
+            "status": "script_intermediate",
+            "elapsed_ms": 379
+          }
+        ],
+        "elapsed_ms": 2261
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "found",
+        "characters": 863,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=%C3%9Asmev+a+%C4%8Daj",
+            "http": 200,
+            "bytes": 29367,
+            "final_url": "https://www.karaoketexty.sk/search?q=%C3%9Asmev+a+%C4%8Daj",
+            "status": "candidate_links",
+            "elapsed_ms": 694
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/i-m-t-smile/usmev-a-caj-70189",
+            "http": 200,
+            "bytes": 39504,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/i-m-t-smile/usmev-a-caj-70189",
+            "status": "found",
+            "elapsed_ms": 1075
+          }
+        ],
+        "text_sha256": "c6a87db3fc1b26927f6ea27dba296a8afe30f68ce6588856b1f9dbd2af76f685",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/i-m-t-smile/usmev-a-caj-70189",
+        "elapsed_ms": 1771
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "found",
+        "characters": 863,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=%C3%9Asmev+a+%C4%8Daj",
+            "http": 200,
+            "bytes": 50119,
+            "final_url": "https://www.karaoketexty.cz/search?q=%C3%9Asmev+a+%C4%8Daj",
+            "status": "candidate_links",
+            "elapsed_ms": 1039
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/i-m-t-smile/usmev-a-caj-70189",
+            "http": 200,
+            "bytes": 63402,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/i-m-t-smile/usmev-a-caj-70189",
+            "status": "found",
+            "elapsed_ms": 927
+          }
+        ],
+        "text_sha256": "c6a87db3fc1b26927f6ea27dba296a8afe30f68ce6588856b1f9dbd2af76f685",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/i-m-t-smile/usmev-a-caj-70189",
+        "elapsed_ms": 1966
+      },
+      {
+        "source": "kytary",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/usmev-a-caj",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/usmev-a-caj",
+            "status": "http_not_found",
+            "elapsed_ms": 1279
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=%C3%9Asmev+a+%C4%8Daj",
+            "http": 200,
+            "bytes": 31520,
+            "final_url": "https://akordy.kytary.cz/songs?query=%C3%9Asmev+a+%C4%8Daj",
+            "status": "not_found",
+            "elapsed_ms": 1298
+          }
+        ],
+        "elapsed_ms": 2578
+      },
+      {
+        "source": "supermusic",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Instinct+Dozadu",
+            "http": 200,
+            "bytes": 111952,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Instinct+Dozadu",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Instinct Dozadu | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "29 Nájdených výsledkov pre \"Instinct Dozadu\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 827
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=1007929",
+            "http": 200,
+            "bytes": 547,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=1007929",
+            "status": "script_intermediate",
+            "elapsed_ms": 369
+          }
+        ],
+        "elapsed_ms": 1197
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "found",
+        "characters": 1039,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Dozadu",
+            "http": 200,
+            "bytes": 29063,
+            "final_url": "https://www.karaoketexty.sk/search?q=Dozadu",
+            "status": "candidate_links",
+            "elapsed_ms": 868
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696",
+            "http": 200,
+            "bytes": 39604,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696",
+            "status": "found",
+            "elapsed_ms": 696
+          }
+        ],
+        "text_sha256": "3de0ae00832c298d1893bae0892786b45e04b7fe5b11f09a6cf2d982223d8a5b",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696",
+        "elapsed_ms": 1565
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "found",
+        "characters": 1039,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Dozadu",
+            "http": 200,
+            "bytes": 49816,
+            "final_url": "https://www.karaoketexty.cz/search?q=Dozadu",
+            "status": "candidate_links",
+            "elapsed_ms": 898
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/instinct/dozadu-806696",
+            "http": 200,
+            "bytes": 63219,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/instinct/dozadu-806696",
+            "status": "found",
+            "elapsed_ms": 907
+          }
+        ],
+        "text_sha256": "3de0ae00832c298d1893bae0892786b45e04b7fe5b11f09a6cf2d982223d8a5b",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/instinct/dozadu-806696",
+        "elapsed_ms": 1805
+      },
+      {
+        "source": "kytary",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/dozadu",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/dozadu",
+            "status": "http_not_found",
+            "elapsed_ms": 856
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Dozadu",
+            "http": 200,
+            "bytes": 37727,
+            "final_url": "https://akordy.kytary.cz/songs?query=Dozadu",
+            "status": "not_found",
+            "elapsed_ms": 1115
+          }
+        ],
+        "elapsed_ms": 1971
+      },
+      {
+        "source": "supermusic",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Kali+%26+Tina+Aj+keby",
+            "http": 200,
+            "bytes": 67760,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Kali+%26+Tina+Aj+keby",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Kali &amp; Tina Aj keby | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "1 Nájdených výsledkov pre \"Kali &amp; Tina Aj keby\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 828
+          }
+        ],
+        "elapsed_ms": 828
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Aj+keby",
+            "http": 200,
+            "bytes": 29898,
+            "final_url": "https://www.karaoketexty.sk/search?q=Aj+keby",
+            "status": "not_found",
+            "elapsed_ms": 649
+          }
+        ],
+        "elapsed_ms": 649
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Aj+keby",
+            "http": 200,
+            "bytes": 50647,
+            "final_url": "https://www.karaoketexty.cz/search?q=Aj+keby",
+            "status": "not_found",
+            "elapsed_ms": 832
+          }
+        ],
+        "elapsed_ms": 832
+      },
+      {
+        "source": "kytary",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/aj-keby",
+            "http": 200,
+            "bytes": 151718,
+            "final_url": "https://akordy.kytary.cz/song/aj-keby",
+            "status": "not_found",
+            "elapsed_ms": 1282
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Aj+keby",
+            "http": 200,
+            "bytes": 37600,
+            "final_url": "https://akordy.kytary.cz/songs?query=Aj+keby",
+            "status": "not_found",
+            "elapsed_ms": 1404
+          }
+        ],
+        "elapsed_ms": 2686
+      },
+      {
+        "source": "supermusic",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=L%C3%A1ska+Mraky",
+            "http": 200,
+            "bytes": 133317,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=L%C3%A1ska+Mraky",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Láska Mraky | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "39 Nájdených výsledkov pre \"Láska Mraky\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 809
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=93159",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=93159",
+            "status": "script_intermediate",
+            "elapsed_ms": 653
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=57888",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=57888",
+            "status": "script_intermediate",
+            "elapsed_ms": 725
+          }
+        ],
+        "elapsed_ms": 2187
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "found",
+        "characters": 1454,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Mraky",
+            "http": 200,
+            "bytes": 32163,
+            "final_url": "https://www.karaoketexty.sk/search?q=Mraky",
+            "status": "candidate_links",
+            "elapsed_ms": 647
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/laska/mraky-1058219",
+            "http": 200,
+            "bytes": 38635,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/laska/mraky-1058219",
+            "status": "found",
+            "elapsed_ms": 685
+          }
+        ],
+        "text_sha256": "95db65a37efb3e6acf0457fe33a99a0afc5b3faf4f2137d2a8f5e47515c47dd9",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/laska/mraky-1058219",
+        "elapsed_ms": 1332
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "found",
+        "characters": 1454,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Mraky",
+            "http": 200,
+            "bytes": 52900,
+            "final_url": "https://www.karaoketexty.cz/search?q=Mraky",
+            "status": "candidate_links",
+            "elapsed_ms": 753
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/laska/mraky-1058219",
+            "http": 200,
+            "bytes": 62400,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/laska/mraky-1058219",
+            "status": "found",
+            "elapsed_ms": 751
+          }
+        ],
+        "text_sha256": "95db65a37efb3e6acf0457fe33a99a0afc5b3faf4f2137d2a8f5e47515c47dd9",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/laska/mraky-1058219",
+        "elapsed_ms": 1503
+      },
+      {
+        "source": "kytary",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/mraky",
+            "http": 200,
+            "bytes": 127891,
+            "final_url": "https://akordy.kytary.cz/song/mraky",
+            "status": "not_found",
+            "elapsed_ms": 1077
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Mraky",
+            "http": 200,
+            "bytes": 52574,
+            "final_url": "https://akordy.kytary.cz/songs?query=Mraky",
+            "status": "not_found",
+            "elapsed_ms": 872
+          }
+        ],
+        "elapsed_ms": 1950
+      },
+      {
+        "source": "supermusic",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Dara+Rolins+S%C4%BEub",
+            "http": 200,
+            "bytes": 79949,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Dara+Rolins+S%C4%BEub",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Dara Rolins Sľub | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "9 Nájdených výsledkov pre \"Dara Rolins Sľub\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 659
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=1509800",
+            "http": 200,
+            "bytes": 547,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=1509800",
+            "status": "script_intermediate",
+            "elapsed_ms": 786
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=1509801",
+            "http": 200,
+            "bytes": 547,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=1509801",
+            "status": "script_intermediate",
+            "elapsed_ms": 377
+          }
+        ],
+        "elapsed_ms": 1823
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "found",
+        "characters": 1570,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=S%C4%BEub",
+            "http": 200,
+            "bytes": 31983,
+            "final_url": "https://www.karaoketexty.sk/search?q=S%C4%BEub",
+            "status": "candidate_links",
+            "elapsed_ms": 639
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/dara-rolins/slub-1206556",
+            "http": 200,
+            "bytes": 39038,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/dara-rolins/slub-1206556",
+            "status": "found",
+            "elapsed_ms": 668
+          }
+        ],
+        "text_sha256": "244a5951ae345ea768ade9d2decab622bc7dcaa654712854f2c0fb9115d2df5e",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/dara-rolins/slub-1206556",
+        "elapsed_ms": 1307
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "found",
+        "characters": 1570,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=S%C4%BEub",
+            "http": 200,
+            "bytes": 52722,
+            "final_url": "https://www.karaoketexty.cz/search?q=S%C4%BEub",
+            "status": "candidate_links",
+            "elapsed_ms": 765
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/dara-rolins/slub-1206556",
+            "http": 200,
+            "bytes": 62203,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/dara-rolins/slub-1206556",
+            "status": "found",
+            "elapsed_ms": 892
+          }
+        ],
+        "text_sha256": "244a5951ae345ea768ade9d2decab622bc7dcaa654712854f2c0fb9115d2df5e",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/dara-rolins/slub-1206556",
+        "elapsed_ms": 1657
+      },
+      {
+        "source": "kytary",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/slub",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/slub",
+            "status": "http_not_found",
+            "elapsed_ms": 750
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=S%C4%BEub",
+            "http": 200,
+            "bytes": 50658,
+            "final_url": "https://akordy.kytary.cz/songs?query=S%C4%BEub",
+            "status": "not_found",
+            "elapsed_ms": 1299
+          }
+        ],
+        "elapsed_ms": 2049
+      },
+      {
+        "source": "supermusic",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Peter+Bi%C4%8D+Project+Stromy",
+            "http": 200,
+            "bytes": 67780,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Peter+Bi%C4%8D+Project+Stromy",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Peter Bič Project Stromy | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "1 Nájdených výsledkov pre \"Peter Bič Project Stromy\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 819
+          }
+        ],
+        "elapsed_ms": 819
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "found",
+        "characters": 1102,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Stromy",
+            "http": 200,
+            "bytes": 33383,
+            "final_url": "https://www.karaoketexty.sk/search?q=Stromy",
+            "status": "candidate_links",
+            "elapsed_ms": 643
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/peter-bic-project/stromy-1158789",
+            "http": 200,
+            "bytes": 40898,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/peter-bic-project/stromy-1158789",
+            "status": "found",
+            "elapsed_ms": 674
+          }
+        ],
+        "text_sha256": "4d568817684dc59d9abdf07b37326cb328e2ef66f441b4f4877e1358cb8370c9",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/peter-bic-project/stromy-1158789",
+        "elapsed_ms": 1317
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "found",
+        "characters": 1102,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Stromy",
+            "http": 200,
+            "bytes": 54114,
+            "final_url": "https://www.karaoketexty.cz/search?q=Stromy",
+            "status": "candidate_links",
+            "elapsed_ms": 837
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/peter-bic-project/stromy-1158789",
+            "http": 200,
+            "bytes": 64316,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/peter-bic-project/stromy-1158789",
+            "status": "found",
+            "elapsed_ms": 877
+          }
+        ],
+        "text_sha256": "4d568817684dc59d9abdf07b37326cb328e2ef66f441b4f4877e1358cb8370c9",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/peter-bic-project/stromy-1158789",
+        "elapsed_ms": 1714
+      },
+      {
+        "source": "kytary",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/stromy",
+            "http": 200,
+            "bytes": 154362,
+            "final_url": "https://akordy.kytary.cz/song/stromy",
+            "status": "not_found",
+            "elapsed_ms": 1270
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Stromy",
+            "http": 200,
+            "bytes": 53774,
+            "final_url": "https://akordy.kytary.cz/songs?query=Stromy",
+            "status": "not_found",
+            "elapsed_ms": 1083
+          }
+        ],
+        "elapsed_ms": 2354
+      },
+      {
+        "source": "supermusic",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Wanastowi+Vjecy+Kapky+krve",
+            "http": 200,
+            "bytes": 72366,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Wanastowi+Vjecy+Kapky+krve",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Wanastowi Vjecy Kapky krve | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "4 Nájdených výsledkov pre \"Wanastowi Vjecy Kapky krve\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 616
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=181640",
+            "http": 200,
+            "bytes": 546,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=181640",
+            "status": "script_intermediate",
+            "elapsed_ms": 637
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=12289",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=12289",
+            "status": "script_intermediate",
+            "elapsed_ms": 791
+          }
+        ],
+        "elapsed_ms": 2044
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "found",
+        "characters": 1352,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Kapky+krve",
+            "http": 200,
+            "bytes": 29305,
+            "final_url": "https://www.karaoketexty.sk/search?q=Kapky+krve",
+            "status": "candidate_links",
+            "elapsed_ms": 665
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/wanastowi-vjecy/kapky-krve-16405",
+            "http": 200,
+            "bytes": 39995,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/wanastowi-vjecy/kapky-krve-16405",
+            "status": "found",
+            "elapsed_ms": 683
+          }
+        ],
+        "text_sha256": "e676619f35d49f9aa5114c4a2d0af306e3587abd86fbf79036804751fcc9b915",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/wanastowi-vjecy/kapky-krve-16405",
+        "elapsed_ms": 1349
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "found",
+        "characters": 1352,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Kapky+krve",
+            "http": 200,
+            "bytes": 50057,
+            "final_url": "https://www.karaoketexty.cz/search?q=Kapky+krve",
+            "status": "candidate_links",
+            "elapsed_ms": 723
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/wanastowi-vjecy/kapky-krve-16405",
+            "http": 200,
+            "bytes": 63726,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/wanastowi-vjecy/kapky-krve-16405",
+            "status": "found",
+            "elapsed_ms": 780
+          }
+        ],
+        "text_sha256": "e676619f35d49f9aa5114c4a2d0af306e3587abd86fbf79036804751fcc9b915",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/wanastowi-vjecy/kapky-krve-16405",
+        "elapsed_ms": 1503
+      },
+      {
+        "source": "kytary",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/kapky-krve",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/kapky-krve",
+            "status": "http_not_found",
+            "elapsed_ms": 862
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Kapky+krve",
+            "http": 200,
+            "bytes": 32716,
+            "final_url": "https://akordy.kytary.cz/songs?query=Kapky+krve",
+            "status": "not_found",
+            "elapsed_ms": 887
+          }
+        ],
+        "elapsed_ms": 1749
+      },
+      {
+        "source": "supermusic",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "http": 200,
+            "bytes": 72813,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Lucie Chci zas v tobě spát | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "4 Nájdených výsledkov pre \"Lucie Chci zas v tobě spát\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 1219
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=2171",
+            "http": 200,
+            "bytes": 544,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=2171",
+            "status": "script_intermediate",
+            "elapsed_ms": 377
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=65742",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=65742",
+            "status": "script_intermediate",
+            "elapsed_ms": 388
+          }
+        ],
+        "elapsed_ms": 1984
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "found",
+        "characters": 1656,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "http": 200,
+            "bytes": 31433,
+            "final_url": "https://www.karaoketexty.sk/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "status": "candidate_links",
+            "elapsed_ms": 653
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/lucie/chci-zas-v-tobe-spat-1021",
+            "http": 200,
+            "bytes": 41775,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/lucie/chci-zas-v-tobe-spat-1021",
+            "status": "found",
+            "elapsed_ms": 794
+          }
+        ],
+        "text_sha256": "a89223d06722654fb3aef6a1f582e5ab9b4443d2da85fab376297f55f382015b",
+        "matched_url": "https://www.karaoketexty.sk/texty-piesni/lucie/chci-zas-v-tobe-spat-1021",
+        "elapsed_ms": 1447
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "found",
+        "characters": 1656,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "http": 200,
+            "bytes": 52177,
+            "final_url": "https://www.karaoketexty.cz/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "status": "candidate_links",
+            "elapsed_ms": 769
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/lucie/chci-zas-v-tobe-spat-1021",
+            "http": 200,
+            "bytes": 65847,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/lucie/chci-zas-v-tobe-spat-1021",
+            "status": "found",
+            "elapsed_ms": 755
+          }
+        ],
+        "text_sha256": "a89223d06722654fb3aef6a1f582e5ab9b4443d2da85fab376297f55f382015b",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/lucie/chci-zas-v-tobe-spat-1021",
+        "elapsed_ms": 1524
+      },
+      {
+        "source": "kytary",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "found",
+        "characters": 1616,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/chci-zas-v-tobe-spat",
+            "http": 200,
+            "bytes": 147619,
+            "final_url": "https://akordy.kytary.cz/song/chci-zas-v-tobe-spat",
+            "status": "found",
+            "elapsed_ms": 1095
+          }
+        ],
+        "text_sha256": "237263e5f939900ad504d626b3c0462b943400ac3f490d0e8ebf9fb02e44e3ce",
+        "matched_url": "https://akordy.kytary.cz/song/chci-zas-v-tobe-spat",
+        "elapsed_ms": 1095
+      },
+      {
+        "source": "supermusic",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Vondr%C3%A1%C4%8Dkov%C3%A1+Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 99491,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Vondr%C3%A1%C4%8Dkov%C3%A1+Hodiny+duch%C5%AF",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Lucie Vondráčková Hodiny duchů | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "21 Nájdených výsledkov pre \"Lucie Vondráčková Hodiny duchů\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 762
+          }
+        ],
+        "elapsed_ms": 762
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 36608,
+            "final_url": "https://www.karaoketexty.sk/search?q=Hodiny+duch%C5%AF",
+            "status": "not_found",
+            "elapsed_ms": 738
+          }
+        ],
+        "elapsed_ms": 738
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 57406,
+            "final_url": "https://www.karaoketexty.cz/search?q=Hodiny+duch%C5%AF",
+            "status": "not_found",
+            "elapsed_ms": 798
+          }
+        ],
+        "elapsed_ms": 798
+      },
+      {
+        "source": "kytary",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/hodiny-duchu",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/hodiny-duchu",
+            "status": "http_not_found",
+            "elapsed_ms": 665
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 31199,
+            "final_url": "https://akordy.kytary.cz/songs?query=Hodiny+duch%C5%AF",
+            "status": "not_found",
+            "elapsed_ms": 878
+          }
+        ],
+        "elapsed_ms": 1543
+      },
+      {
+        "source": "supermusic",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Hana+Horeck%C3%A1+Den+a+noc",
+            "http": 200,
+            "bytes": 67769,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Hana+Horeck%C3%A1+Den+a+noc",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Hana Horecká Den a noc | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "1 Nájdených výsledkov pre \"Hana Horecká Den a noc\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 919
+          }
+        ],
+        "elapsed_ms": 919
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Den+a+noc",
+            "http": 200,
+            "bytes": 30214,
+            "final_url": "https://www.karaoketexty.sk/search?q=Den+a+noc",
+            "status": "not_found",
+            "elapsed_ms": 636
+          }
+        ],
+        "elapsed_ms": 636
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Den+a+noc",
+            "http": 200,
+            "bytes": 50961,
+            "final_url": "https://www.karaoketexty.cz/search?q=Den+a+noc",
+            "status": "not_found",
+            "elapsed_ms": 723
+          }
+        ],
+        "elapsed_ms": 724
+      },
+      {
+        "source": "kytary",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/den-a-noc",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/den-a-noc",
+            "status": "http_not_found",
+            "elapsed_ms": 656
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Den+a+noc",
+            "http": 200,
+            "bytes": 50737,
+            "final_url": "https://akordy.kytary.cz/songs?query=Den+a+noc",
+            "status": "not_found",
+            "elapsed_ms": 913
+          }
+        ],
+        "elapsed_ms": 1570
+      },
+      {
+        "source": "supermusic",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=ABBA+Dancing+Queen",
+            "http": 200,
+            "bytes": 152935,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=ABBA+Dancing+Queen",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: ABBA Dancing Queen | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "61 Nájdených výsledkov pre \"ABBA Dancing Queen\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 1073
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=158570",
+            "http": 200,
+            "bytes": 546,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=158570",
+            "status": "script_intermediate",
+            "elapsed_ms": 628
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=3236",
+            "http": 200,
+            "bytes": 544,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=3236",
+            "status": "script_intermediate",
+            "elapsed_ms": 368
+          }
+        ],
+        "elapsed_ms": 2069
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "unrecognized_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Dancing+Queen",
+            "http": 200,
+            "bytes": 35324,
+            "final_url": "https://www.karaoketexty.sk/search?q=Dancing+Queen",
+            "status": "candidate_links",
+            "elapsed_ms": 632
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/abba/dancing-queen-4935",
+            "http": 200,
+            "bytes": 39902,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/abba/dancing-queen-4935",
+            "status": "unrecognized_page",
+            "elapsed_ms": 716
+          }
+        ],
+        "elapsed_ms": 1348
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "unrecognized_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Dancing+Queen",
+            "http": 200,
+            "bytes": 56030,
+            "final_url": "https://www.karaoketexty.cz/search?q=Dancing+Queen",
+            "status": "candidate_links",
+            "elapsed_ms": 846
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/abba/dancing-queen-4935",
+            "http": 200,
+            "bytes": 64796,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/abba/dancing-queen-4935",
+            "status": "unrecognized_page",
+            "elapsed_ms": 752
+          }
+        ],
+        "elapsed_ms": 1598
+      },
+      {
+        "source": "kytary",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "found",
+        "characters": 1133,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/dancing-queen",
+            "http": 200,
+            "bytes": 154647,
+            "final_url": "https://akordy.kytary.cz/song/dancing-queen",
+            "status": "found",
+            "elapsed_ms": 1041
+          }
+        ],
+        "text_sha256": "9981f50ecbe3209dff1a5a66c5e3a60fe246d38daeb16ef41ffc749c21fb9908",
+        "matched_url": "https://akordy.kytary.cz/song/dancing-queen",
+        "elapsed_ms": 1041
+      },
+      {
+        "source": "supermusic",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Queen+Bohemian+Rhapsody",
+            "http": 200,
+            "bytes": 162772,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Queen+Bohemian+Rhapsody",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Queen Bohemian Rhapsody | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "66 Nájdených výsledkov pre \"Queen Bohemian Rhapsody\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 830
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=5101",
+            "http": 200,
+            "bytes": 544,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=5101",
+            "status": "script_intermediate",
+            "elapsed_ms": 372
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=116697",
+            "http": 200,
+            "bytes": 546,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=116697",
+            "status": "script_intermediate",
+            "elapsed_ms": 388
+          }
+        ],
+        "elapsed_ms": 1590
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "unrecognized_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Bohemian+Rhapsody",
+            "http": 200,
+            "bytes": 35434,
+            "final_url": "https://www.karaoketexty.sk/search?q=Bohemian+Rhapsody",
+            "status": "candidate_links",
+            "elapsed_ms": 667
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/queen/bohemian-rhapsody-5577",
+            "http": 200,
+            "bytes": 47880,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/queen/bohemian-rhapsody-5577",
+            "status": "unrecognized_page",
+            "elapsed_ms": 741
+          }
+        ],
+        "elapsed_ms": 1409
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "unrecognized_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Bohemian+Rhapsody",
+            "http": 200,
+            "bytes": 56160,
+            "final_url": "https://www.karaoketexty.cz/search?q=Bohemian+Rhapsody",
+            "status": "candidate_links",
+            "elapsed_ms": 770
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/queen/bohemian-rhapsody-5577",
+            "http": 200,
+            "bytes": 72889,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/queen/bohemian-rhapsody-5577",
+            "status": "unrecognized_page",
+            "elapsed_ms": 784
+          }
+        ],
+        "elapsed_ms": 1555
+      },
+      {
+        "source": "kytary",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/bohemian-rhapsody",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/bohemian-rhapsody",
+            "status": "http_not_found",
+            "elapsed_ms": 642
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Bohemian+Rhapsody",
+            "http": 200,
+            "bytes": 33112,
+            "final_url": "https://akordy.kytary.cz/songs?query=Bohemian+Rhapsody",
+            "status": "not_found",
+            "elapsed_ms": 908
+          }
+        ],
+        "elapsed_ms": 1550
+      }
+    ]
+  },
+  "local": {
+    "environment": "Assistant workspace; network restrictions differ from receiver and GitHub",
+    "schema": 1,
+    "sources": [
+      "supermusic",
+      "karaoke_sk",
+      "karaoke_cz",
+      "kytary"
+    ],
+    "recordings": 12,
+    "cases": 48,
+    "timeout": 5,
+    "case_budget": 15,
+    "summary": {
+      "supermusic": {
+        "connection_error": 7,
+        "unverified_page": 3,
+        "script_intermediate": 2
+      },
+      "karaoke_sk": {
+        "connection_error": 11,
+        "unrecognized_page": 1
+      },
+      "karaoke_cz": {
+        "connection_error": 9,
+        "found": 2,
+        "not_found": 1
+      },
+      "kytary": {
+        "not_found": 5,
+        "connection_error": 5,
+        "unverified_page": 1,
+        "found": 1
+      }
+    },
+    "results": [
+      {
+        "source": "supermusic",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=IMT+Smile+%C3%9Asmev+a+%C4%8Daj",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5016
+          }
+        ],
+        "elapsed_ms": 5017
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=%C3%9Asmev+a+%C4%8Daj",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5015
+          }
+        ],
+        "elapsed_ms": 5016
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=%C3%9Asmev+a+%C4%8Daj",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5015
+          }
+        ],
+        "elapsed_ms": 5016
+      },
+      {
+        "source": "kytary",
+        "artist": "IMT Smile",
+        "title": "Úsmev a čaj",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/usmev-a-caj",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5011
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=%C3%9Asmev+a+%C4%8Daj",
+            "http": 200,
+            "bytes": 31520,
+            "final_url": "https://akordy.kytary.cz/songs?query=%C3%9Asmev+a+%C4%8Daj",
+            "status": "not_found",
+            "elapsed_ms": 4106
+          }
+        ],
+        "elapsed_ms": 9117
+      },
+      {
+        "source": "supermusic",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Instinct+Dozadu",
+            "http": 200,
+            "bytes": 111952,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Instinct+Dozadu",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Instinct Dozadu | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "29 Nájdených výsledkov pre \"Instinct Dozadu\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 5956
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=1007929",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 10962
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Dozadu",
+            "http": 200,
+            "bytes": 29063,
+            "final_url": "https://www.karaoketexty.sk/search?q=Dozadu",
+            "status": "candidate_links",
+            "elapsed_ms": 5833
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5117
+          }
+        ],
+        "elapsed_ms": 10950
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Dozadu",
+            "http": 200,
+            "bytes": 49816,
+            "final_url": "https://www.karaoketexty.cz/search?q=Dozadu",
+            "status": "candidate_links",
+            "elapsed_ms": 4940
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/instinct/dozadu-806696",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 9947
+      },
+      {
+        "source": "kytary",
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/dozadu",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/dozadu",
+            "status": "http_not_found",
+            "elapsed_ms": 5264
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Dozadu",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          }
+        ],
+        "elapsed_ms": 10272
+      },
+      {
+        "source": "supermusic",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Kali+%26+Tina+Aj+keby",
+            "http": 200,
+            "bytes": 67760,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Kali+%26+Tina+Aj+keby",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Kali &amp; Tina Aj keby | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "1 Nájdených výsledkov pre \"Kali &amp; Tina Aj keby\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 3502
+          }
+        ],
+        "elapsed_ms": 3502
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Aj+keby",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5013
+          }
+        ],
+        "elapsed_ms": 5016
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Aj+keby",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5014
+          }
+        ],
+        "elapsed_ms": 5017
+      },
+      {
+        "source": "kytary",
+        "artist": "Kali & Tina",
+        "title": "Aj keby",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/aj-keby",
+            "http": 200,
+            "bytes": 151718,
+            "final_url": "https://akordy.kytary.cz/song/aj-keby",
+            "status": "not_found",
+            "elapsed_ms": 1834
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Aj+keby",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 6842
+      },
+      {
+        "source": "supermusic",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=L%C3%A1ska+Mraky",
+            "http": 200,
+            "bytes": 133317,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=L%C3%A1ska+Mraky",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Láska Mraky | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "39 Nájdených výsledkov pre \"Láska Mraky\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 6112
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=93159",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=57888",
+            "http": 200,
+            "bytes": 545,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=57888",
+            "status": "script_intermediate",
+            "elapsed_ms": 4910
+          }
+        ],
+        "elapsed_ms": 16029
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Mraky",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 5008
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Mraky",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 5007
+      },
+      {
+        "source": "kytary",
+        "artist": "Láska",
+        "title": "Mraky",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/mraky",
+            "http": 200,
+            "bytes": 127891,
+            "final_url": "https://akordy.kytary.cz/song/mraky",
+            "status": "not_found",
+            "elapsed_ms": 1200
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Mraky",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 6207
+      },
+      {
+        "source": "supermusic",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Dara+Rolins+S%C4%BEub",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          }
+        ],
+        "elapsed_ms": 5008
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=S%C4%BEub",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5005
+          }
+        ],
+        "elapsed_ms": 5005
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "found",
+        "characters": 1570,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=S%C4%BEub",
+            "http": 200,
+            "bytes": 52722,
+            "final_url": "https://www.karaoketexty.cz/search?q=S%C4%BEub",
+            "status": "candidate_links",
+            "elapsed_ms": 5315
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/dara-rolins/slub-1206556",
+            "http": 200,
+            "bytes": 62203,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/dara-rolins/slub-1206556",
+            "status": "found",
+            "elapsed_ms": 5169
+          }
+        ],
+        "text_sha256": "244a5951ae345ea768ade9d2decab622bc7dcaa654712854f2c0fb9115d2df5e",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/dara-rolins/slub-1206556",
+        "elapsed_ms": 10484
+      },
+      {
+        "source": "kytary",
+        "artist": "Dara Rolins",
+        "title": "Sľub",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/slub",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/slub",
+            "status": "http_not_found",
+            "elapsed_ms": 1168
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=S%C4%BEub",
+            "http": 200,
+            "bytes": 50658,
+            "final_url": "https://akordy.kytary.cz/songs?query=S%C4%BEub",
+            "status": "not_found",
+            "elapsed_ms": 5319
+          }
+        ],
+        "elapsed_ms": 6488
+      },
+      {
+        "source": "supermusic",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Peter+Bi%C4%8D+Project+Stromy",
+            "http": 200,
+            "bytes": 67780,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Peter+Bi%C4%8D+Project+Stromy",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Peter Bič Project Stromy | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "1 Nájdených výsledkov pre \"Peter Bič Project Stromy\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 4024
+          }
+        ],
+        "elapsed_ms": 4024
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Stromy",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          }
+        ],
+        "elapsed_ms": 5008
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "found",
+        "characters": 1102,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Stromy",
+            "http": 200,
+            "bytes": 54114,
+            "final_url": "https://www.karaoketexty.cz/search?q=Stromy",
+            "status": "candidate_links",
+            "elapsed_ms": 5533
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/peter-bic-project/stromy-1158789",
+            "http": 200,
+            "bytes": 64316,
+            "final_url": "https://www.karaoketexty.cz/texty-pisni/peter-bic-project/stromy-1158789",
+            "status": "found",
+            "elapsed_ms": 4654
+          }
+        ],
+        "text_sha256": "4d568817684dc59d9abdf07b37326cb328e2ef66f441b4f4877e1358cb8370c9",
+        "matched_url": "https://www.karaoketexty.cz/texty-pisni/peter-bic-project/stromy-1158789",
+        "elapsed_ms": 10187
+      },
+      {
+        "source": "kytary",
+        "artist": "Peter Bič Project",
+        "title": "Stromy",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/stromy",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Stromy",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          }
+        ],
+        "elapsed_ms": 10016
+      },
+      {
+        "source": "supermusic",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Wanastowi+Vjecy+Kapky+krve",
+            "http": 200,
+            "bytes": 72366,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Wanastowi+Vjecy+Kapky+krve",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Wanastowi Vjecy Kapky krve | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "4 Nájdených výsledkov pre \"Wanastowi Vjecy Kapky krve\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 5401
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=181640",
+            "http": 200,
+            "bytes": 546,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=181640",
+            "status": "script_intermediate",
+            "elapsed_ms": 5324
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=12289",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 4282
+          }
+        ],
+        "elapsed_ms": 15007
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Kapky+krve",
+            "http": 200,
+            "bytes": 29305,
+            "final_url": "https://www.karaoketexty.sk/search?q=Kapky+krve",
+            "status": "candidate_links",
+            "elapsed_ms": 5004
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/wanastowi-vjecy/kapky-krve-16405",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 10011
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Kapky+krve",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          }
+        ],
+        "elapsed_ms": 5008
+      },
+      {
+        "source": "kytary",
+        "artist": "Wanastowi Vjecy",
+        "title": "Kapky krve",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/kapky-krve",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/kapky-krve",
+            "status": "http_not_found",
+            "elapsed_ms": 4733
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Kapky+krve",
+            "http": 200,
+            "bytes": 32716,
+            "final_url": "https://akordy.kytary.cz/songs?query=Kapky+krve",
+            "status": "not_found",
+            "elapsed_ms": 4862
+          }
+        ],
+        "elapsed_ms": 9595
+      },
+      {
+        "source": "supermusic",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5009
+          }
+        ],
+        "elapsed_ms": 5009
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "http": 200,
+            "bytes": 31433,
+            "final_url": "https://www.karaoketexty.sk/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "status": "candidate_links",
+            "elapsed_ms": 2049
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/lucie/chci-zas-v-tobe-spat-1021",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 7056
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "http": 200,
+            "bytes": 52177,
+            "final_url": "https://www.karaoketexty.cz/search?q=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "status": "candidate_links",
+            "elapsed_ms": 5419
+          },
+          {
+            "url": "https://www.karaoketexty.cz/texty-pisni/lucie/chci-zas-v-tobe-spat-1021",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5012
+          }
+        ],
+        "elapsed_ms": 10431
+      },
+      {
+        "source": "kytary",
+        "artist": "Lucie",
+        "title": "Chci zas v tobě spát",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/chci-zas-v-tobe-spat",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "http": 200,
+            "bytes": 33147,
+            "final_url": "https://akordy.kytary.cz/songs?query=Chci+zas+v+tob%C4%9B+sp%C3%A1t",
+            "status": "unverified_page",
+            "elapsed_ms": 1135
+          }
+        ],
+        "elapsed_ms": 6143
+      },
+      {
+        "source": "supermusic",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "unverified_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Vondr%C3%A1%C4%8Dkov%C3%A1+Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 99491,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Lucie+Vondr%C3%A1%C4%8Dkov%C3%A1+Hodiny+duch%C5%AF",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Lucie Vondráčková Hodiny duchů | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "21 Nájdených výsledkov pre \"Lucie Vondráčková Hodiny duchů\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "unverified_page",
+            "elapsed_ms": 6036
+          }
+        ],
+        "elapsed_ms": 6036
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Hodiny+duch%C5%AF",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5010
+          }
+        ],
+        "elapsed_ms": 5010
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 57406,
+            "final_url": "https://www.karaoketexty.cz/search?q=Hodiny+duch%C5%AF",
+            "status": "not_found",
+            "elapsed_ms": 5056
+          }
+        ],
+        "elapsed_ms": 5056
+      },
+      {
+        "source": "kytary",
+        "artist": "Lucie Vondráčková",
+        "title": "Hodiny duchů",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/hodiny-duchu",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/hodiny-duchu",
+            "status": "http_not_found",
+            "elapsed_ms": 4534
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Hodiny+duch%C5%AF",
+            "http": 200,
+            "bytes": 31199,
+            "final_url": "https://akordy.kytary.cz/songs?query=Hodiny+duch%C5%AF",
+            "status": "not_found",
+            "elapsed_ms": 6341
+          }
+        ],
+        "elapsed_ms": 10875
+      },
+      {
+        "source": "supermusic",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Hana+Horeck%C3%A1+Den+a+noc",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5010
+          }
+        ],
+        "elapsed_ms": 5010
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Den+a+noc",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5009
+          }
+        ],
+        "elapsed_ms": 5009
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Den+a+noc",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          }
+        ],
+        "elapsed_ms": 5008
+      },
+      {
+        "source": "kytary",
+        "artist": "Hana Horecká",
+        "title": "Den a noc",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/den-a-noc",
+            "http": 404,
+            "bytes": 8688,
+            "final_url": "https://akordy.kytary.cz/song/den-a-noc",
+            "status": "http_not_found",
+            "elapsed_ms": 4548
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Den+a+noc",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5005
+          }
+        ],
+        "elapsed_ms": 9553
+      },
+      {
+        "source": "supermusic",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=ABBA+Dancing+Queen",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5009
+          }
+        ],
+        "elapsed_ms": 5009
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "unrecognized_page",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Dancing+Queen",
+            "http": 200,
+            "bytes": 35324,
+            "final_url": "https://www.karaoketexty.sk/search?q=Dancing+Queen",
+            "status": "candidate_links",
+            "elapsed_ms": 906
+          },
+          {
+            "url": "https://www.karaoketexty.sk/texty-piesni/abba/dancing-queen-4935",
+            "http": 200,
+            "bytes": 39892,
+            "final_url": "https://www.karaoketexty.sk/texty-piesni/abba/dancing-queen-4935",
+            "status": "unrecognized_page",
+            "elapsed_ms": 5255
+          }
+        ],
+        "elapsed_ms": 6161
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Dancing+Queen",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5007
+          }
+        ],
+        "elapsed_ms": 5007
+      },
+      {
+        "source": "kytary",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "status": "found",
+        "characters": 1133,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/dancing-queen",
+            "http": 200,
+            "bytes": 154647,
+            "final_url": "https://akordy.kytary.cz/song/dancing-queen",
+            "status": "found",
+            "elapsed_ms": 3425
+          }
+        ],
+        "text_sha256": "9981f50ecbe3209dff1a5a66c5e3a60fe246d38daeb16ef41ffc749c21fb9908",
+        "matched_url": "https://akordy.kytary.cz/song/dancing-queen",
+        "elapsed_ms": 3426
+      },
+      {
+        "source": "supermusic",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "script_intermediate",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.supermusic.cz/najdi.php?hladane=Queen+Bohemian+Rhapsody",
+            "http": 200,
+            "bytes": 162772,
+            "final_url": "https://www.supermusic.cz/najdi.php?hladane=Queen+Bohemian+Rhapsody",
+            "parser_diagnostic": {
+              "headers": [
+                "Vyhľadávanie: Queen Bohemian Rhapsody | SuperMusic.sk",
+                "",
+                "Vyhľadávanie",
+                "66 Nájdených výsledkov pre \"Queen Bohemian Rhapsody\""
+              ],
+              "candidate_blocks": 0,
+              "block_shapes": []
+            },
+            "status": "candidate_links",
+            "elapsed_ms": 5166
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=5101",
+            "http": 503,
+            "bytes": 95,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=5101",
+            "status": "http_error",
+            "elapsed_ms": 4701
+          },
+          {
+            "url": "https://www.supermusic.cz/piesen.php?id=116697",
+            "http": 200,
+            "bytes": 546,
+            "final_url": "https://www.supermusic.cz/piesen.php?id=116697",
+            "status": "script_intermediate",
+            "elapsed_ms": 5005
+          }
+        ],
+        "elapsed_ms": 14872
+      },
+      {
+        "source": "karaoke_sk",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.sk/search?q=Bohemian+Rhapsody",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5017
+          }
+        ],
+        "elapsed_ms": 5018
+      },
+      {
+        "source": "karaoke_cz",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "connection_error",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://www.karaoketexty.cz/search?q=Bohemian+Rhapsody",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5011
+          }
+        ],
+        "elapsed_ms": 5011
+      },
+      {
+        "source": "kytary",
+        "artist": "Queen",
+        "title": "Bohemian Rhapsody",
+        "status": "not_found",
+        "characters": 0,
+        "lyrics_logged": false,
+        "requests": [
+          {
+            "url": "https://akordy.kytary.cz/song/bohemian-rhapsody",
+            "status": "connection_error",
+            "error": "URLError",
+            "elapsed_ms": 5008
+          },
+          {
+            "url": "https://akordy.kytary.cz/songs?query=Bohemian+Rhapsody",
+            "http": 200,
+            "bytes": 33112,
+            "final_url": "https://akordy.kytary.cz/songs?query=Bohemian+Rhapsody",
+            "status": "not_found",
+            "elapsed_ms": 1669
+          }
+        ],
+        "elapsed_ms": 6677
+      }
+    ],
+    "coverage_measurement": false,
+    "lyrics_saved": false,
+    "notes": [
+      "Identical small sample, not overall catalogue coverage.",
+      "SK/CZ domains isolated; cross-domain fallback is not counted as success.",
+      "SuperMusic parser is diagnostic and conservative; unverified_page is not a catalogue miss.",
+      "Live access failures are not proof that a song has no lyrics."
+    ]
+  },
+  "total_live_cases": 96,
+  "receiver_run": false,
+  "production_runtime_modified": false,
+  "lyrics_saved": false,
+  "scope": "A fixed small sample and current parser/request behavior, not a service-wide catalogue-coverage measurement.",
+  "limitations": [
+    "SuperMusic search pages were received, but candidate song pages returned a JavaScript intermediate; four search pages remained unverified. No missing-catalogue conclusion is made.",
+    "KaraokeTexty SK/CZ domains are isolated, so cross-domain fallback cannot inflate their counts. Seven successful texts had identical hashes across both domains.",
+    "Both KaraokeTexty variants returned unrecognized markup for the two English recordings. This is not evidence that the site lacks their lyrics.",
+    "Local network failures are recorded separately and must not be interpreted as catalogue misses.",
+    "SuperMusic diagnostic parser is conservative and not a production adapter."
+  ],
+  "validation": [
+    "48 paired-case construction",
+    "Strict SK/CZ domain isolation",
+    "Reject wrong artist even if title matches",
+    "Script-intermediate classification",
+    "No lyrics or credentials in result JSON",
+    "Python syntax/import checks"
+  ],
+  "genius_excluded": true
+}
