@@ -3,7 +3,8 @@
 ## One-command receiver test
 
 Run `python3 /tmp/warder_genius_test.py` after downloading that standalone file.
-It asks for the token with terminal echo disabled and automatically writes
+It accepts `WARDER_GENIUS_TOKEN` from the process environment, or asks for the
+token with terminal echo disabled when that variable is absent. It automatically writes
 `/tmp/warder-genius-test.log`. It checks DNS, authenticated API search, an exact
 matching song page and, if already installed, the real `lyricsgenius` library.
 It installs nothing. Default per-request timeout is 20 seconds with three
@@ -14,8 +15,8 @@ The test's normal exit means the diagnostic completed, not that Genius worked.
 These standalone Python 3 checks do not install or modify the Enigma2 plugin.
 
 `check-genius-auth.py` uses only the Python standard library. Enter the Genius
-Client Access Token at its hidden prompt; never put it into source, command-line
-arguments, a URL, GitHub Actions inputs or result files.
+Client Access Token at its hidden prompt; never put it into source, a URL,
+GitHub Actions inputs or result files.
 
 ```sh
 python3 check-genius-auth.py --artist 'IMT Smile' --title 'Úsmev a čaj' | tee /tmp/warder-genius-auth.log

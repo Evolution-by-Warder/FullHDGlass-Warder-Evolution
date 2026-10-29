@@ -8,6 +8,7 @@ import importlib
 import inspect
 import json
 import logging
+import os
 from pathlib import Path
 import signal
 import socket
@@ -200,9 +201,11 @@ def main():
     parser.add_argument('--timeout', type=int, default=20, choices=range(1, 31))
     parser.add_argument('--retries', type=int, default=3, choices=range(4))
     options = parser.parse_args()
-    if not sys.stdin.isatty():
-        raise SystemExit('Spusti skript v interaktivnom SSH terminali; token sa zadava skryto.')
-    token = getpass.getpass('Genius token (vstup sa nezobrazuje): ').strip()
+    token = os.environ.pop('WARDER_GENIUS_TOKEN', '').strip()
+    if not token:
+        if not sys.stdin.isatty():
+            raise SystemExit('Zadaj WARDER_GENIUS_TOKEN alebo spusti skript v interaktivnom SSH terminali.')
+        token = getpass.getpass('Genius token (vstup sa nezobrazuje): ').strip()
     if not token or '\r' in token or '\n' in token:
         raise SystemExit('Token nebol zadany spravne.')
     LOG.write_text('', encoding='utf-8')
