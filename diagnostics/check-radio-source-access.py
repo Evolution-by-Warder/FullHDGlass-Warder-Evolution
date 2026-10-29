@@ -22,6 +22,7 @@ CASES = (
     ('musixmatch', 'documentation', 'https://developer.musixmatch.com/documentation'),
     ('musixmatch', 'documentation', 'https://docs.musixmatch.com/'),
     ('musixmatch', 'song', 'https://www.musixmatch.com/lyrics/ABBA/Dancing-Queen'),
+    ('musixmatch', 'search', 'https://www.musixmatch.com/search/Instinct%20Dozadu'),
     ('musixmatch', 'anonymous-api', 'https://api.musixmatch.com/ws/1.1/track.search?q_artist=Instinct&q_track=Dozadu&format=json'),
 )
 HOSTS = {
@@ -153,6 +154,29 @@ def check(case):
                    lyric_blocks=page.lyric_blocks, song_links=page.song_links,
                    script_count=page.scripts, lyric_attributes=page.lyric_attributes,
                    structured_lyrics_fields=lyric_schema(page.json_documents))
+        if source == 'musixmatch':
+            for document in page.json_documents:
+                if not isinstance(document, dict):
+                    continue
+                props = document.get('props', {}).get('pageProps', {})
+                data = props.get('data', {})
+                if not isinstance(data, dict):
+                    continue
+                out['page_data_keys'] = list(data)[:25]
+                track_info = data.get('trackInfo', {}).get('data', {})
+                if not isinstance(track_info, dict):
+                    continue
+                out['track_info_keys'] = list(track_info)[:25]
+                track = track_info.get('track', {})
+                out['track_keys'] = list(track)[:60] if isinstance(track, dict) else []
+                if isinstance(track, dict):
+                    out['track_identity'] = {k: track[k] for k in ('name', 'artistName', 'title', 'trackName') if isinstance(track.get(k), str)}
+                body = track_info.get('lyrics', {}).get('body')
+                if isinstance(body, str):
+                    out['lyrics_body'] = {'characters': len(body), 'lines': len(body.splitlines()),
+                                          'sha256': hashlib.sha256(body.encode()).hexdigest(),
+                                          'has_preview_notice': 'not for commercial use' in body.lower()
+                                          or 'lyrics preview' in body.lower()}
         lowered = text.lower()
         if out['http'] >= 400:
             kind = 'http-error'
