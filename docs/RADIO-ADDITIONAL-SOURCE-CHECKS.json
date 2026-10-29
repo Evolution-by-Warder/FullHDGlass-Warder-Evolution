@@ -1,0 +1,643 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "runtime_candidate": "1.0.38-test12",
+  "production_version_preserved": "1.0.37",
+  "runtime_modified": false,
+  "lyrics_saved_in_git": false,
+  "receiver_checked_for_these_four_sources": false,
+  "workflow_runs": [
+    40847687154,
+    40847942314,
+    40848108943,
+    40848624847
+  ],
+  "github_anonymous_results": [
+    {
+      "source": "karaoke",
+      "role": "search",
+      "url": "https://www.karaoketexty.sk/search?q=Dozadu",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://www.karaoketexty.sk/search?q=Dozadu",
+      "bytes": 29063,
+      "sha256": "ff2f9f1b7bcbb2a08403642964bcf810390bc0fa22571ff969cfc2524e40d3e1",
+      "page_title": "Dozadu | KaraokeTexty.sk",
+      "lyric_blocks": 0,
+      "song_links": [
+        "/texty-piesni/instinct/dozadu-806696"
+      ],
+      "script_count": 21,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "response-received-content-not-yet-verified"
+    },
+    {
+      "source": "karaoke",
+      "role": "search",
+      "url": "https://www.karaoketexty.sk/search?q=Mraky",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://www.karaoketexty.sk/search?q=Mraky",
+      "bytes": 32163,
+      "sha256": "a394bbdc2a20c6fbc543b3c94f0c16530a2d8c09674b2120414198b28b705cac",
+      "page_title": "Mraky | KaraokeTexty.sk",
+      "lyric_blocks": 0,
+      "song_links": [
+        "/texty-piesni/dyzivv/mraky-1006052",
+        "/texty-piesni/traband/mraky-139224",
+        "/texty-piesni/loboda/mraky-501470",
+        "/texty-piesni/bende-petr/mraky-3091",
+        "/texty-piesni/laska/mraky-1058219",
+        "/texty-piesni/zrni/mraky-domy-les-590745",
+        "/texty-piesni/stein/mraky-feat-samey-1111627",
+        "/texty-piesni/buka/mraky-1186129"
+      ],
+      "script_count": 21,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "response-received-content-not-yet-verified"
+    },
+    {
+      "source": "karaoke",
+      "role": "song",
+      "url": "https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696",
+      "bytes": 39604,
+      "sha256": "f75bae4c3f75286f24311d5d0e9cc59a72deb98432f73c58c5ba962155b73d51",
+      "page_title": "Instinct - Dozadu - text",
+      "lyric_blocks": 12,
+      "song_links": [
+        "/texty-piesni/instinct-58857/na-inzerat-109991",
+        "/texty-piesni/instinct/medzitym-760406",
+        "/texty-piesni/instinct/na-zivot-a-na-smrt-738880",
+        "/texty-piesni/instinct/valcik-s-iluziou-612518",
+        "/texty-piesni/instinct/hviezda-vecera-844343",
+        "/texty-piesni/instinct/zazrak-814517",
+        "/texty-piesni/instinct/dozadu-806696",
+        "/texty-piesni/instinct/na-pusti-613559"
+      ],
+      "script_count": 21,
+      "lyric_attributes": [
+        "navigation navigation_lyrics",
+        "fb_like_show_lyrics",
+        "lyrics_cont",
+        "para_1lyrics_col1",
+        "register_link_lyrics",
+        "lyrics_authors"
+      ],
+      "structured_lyrics_fields": [],
+      "classification": "response-received-content-not-yet-verified"
+    },
+    {
+      "source": "supermusic",
+      "role": "home",
+      "url": "https://www.supermusic.sk/",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://www.supermusic.cz/",
+      "bytes": 118040,
+      "sha256": "7e8ce26e4cd77acdd32a8e94a7b8ea1bb816d97ac500e93d9ece37ba5290ccc9",
+      "page_title": "SuperMusic.cz – Texty piesní, akordy a taby | 328 000+ piesní",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 16,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "response-received-content-not-yet-verified"
+    },
+    {
+      "source": "supermusic",
+      "role": "song",
+      "url": "https://www.supermusic.sk/piesen.php?idpiesne=1007929",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://www.supermusic.cz/piesen.php?idpiesne=1007929",
+      "bytes": 553,
+      "sha256": "1e707b8b9ad3af68ee01a84078ebd31a4baa6404e94eb5251f8ba54688de4153",
+      "page_title": "",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 1,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "script-intermediate-not-lyrics"
+    },
+    {
+      "source": "genius",
+      "role": "documentation",
+      "url": "https://docs.genius.com/",
+      "lyrics_logged": false,
+      "http": 403,
+      "final_url": "https://docs.genius.com/",
+      "bytes": 11046,
+      "sha256": "311af7da690726cc31d0a90630fe47966e0c8e39af2255daeab39dbc0dc2b254",
+      "page_title": "Genius",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 5,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "http-error",
+      "mentions": {
+        "api_key": false,
+        "apikey": false,
+        "access_token": false,
+        "authentication": false,
+        "lyrics_endpoint": false
+      }
+    },
+    {
+      "source": "genius",
+      "role": "search",
+      "url": "https://genius.com/search?q=Instinct%20Dozadu",
+      "lyrics_logged": false,
+      "http": 403,
+      "final_url": "https://genius.com/search?q=Instinct%20Dozadu",
+      "bytes": 11155,
+      "sha256": "0b2680f229c5b3ff1ccc053c27abc2f15fdf6f0630c4bcf3b9249caa11598d5a",
+      "page_title": "Genius",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 5,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "http-error"
+    },
+    {
+      "source": "genius",
+      "role": "song",
+      "url": "https://genius.com/Abba-dancing-queen-lyrics",
+      "lyrics_logged": false,
+      "http": 403,
+      "final_url": "https://genius.com/Abba-dancing-queen-lyrics",
+      "bytes": 11137,
+      "sha256": "18306ef1b23317ee8179e938e23c55ab5c65b1262fb23f6bbd5b21efa8d15a01",
+      "page_title": "Genius",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 5,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "http-error"
+    },
+    {
+      "source": "genius",
+      "role": "anonymous-api",
+      "url": "https://api.genius.com/search?q=Instinct%20Dozadu",
+      "lyrics_logged": false,
+      "http": 403,
+      "final_url": "https://api.genius.com/search?q=Instinct%20Dozadu",
+      "bytes": 11155,
+      "sha256": "a282901acbfb70c2790081a6bb110ff781effe421e6f0dec437d69592522550b",
+      "page_title": "Genius",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 5,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "http-error"
+    },
+    {
+      "source": "musixmatch",
+      "role": "documentation",
+      "url": "https://developer.musixmatch.com/documentation",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://docs.musixmatch.com/overview",
+      "bytes": 121770,
+      "sha256": "708c5543c99d508e71127a81dabbe2946f838c49cf27c9b691be93b53ea38ba0",
+      "page_title": "Lyrics & Music Data - Musixmatch Pro API documentation",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 19,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "page_data_keys": [],
+      "track_info_keys": [],
+      "track_keys": [],
+      "track_identity": {},
+      "classification": "response-received-content-not-yet-verified",
+      "mentions": {
+        "api_key": true,
+        "apikey": false,
+        "access_token": false,
+        "authentication": false,
+        "lyrics_endpoint": false
+      }
+    },
+    {
+      "source": "musixmatch",
+      "role": "documentation",
+      "url": "https://docs.musixmatch.com/",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://docs.musixmatch.com/overview",
+      "bytes": 121770,
+      "sha256": "708c5543c99d508e71127a81dabbe2946f838c49cf27c9b691be93b53ea38ba0",
+      "page_title": "Lyrics & Music Data - Musixmatch Pro API documentation",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 19,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "page_data_keys": [],
+      "track_info_keys": [],
+      "track_keys": [],
+      "track_identity": {},
+      "classification": "response-received-content-not-yet-verified",
+      "mentions": {
+        "api_key": true,
+        "apikey": false,
+        "access_token": false,
+        "authentication": false,
+        "lyrics_endpoint": false
+      }
+    },
+    {
+      "source": "musixmatch",
+      "role": "song",
+      "url": "https://www.musixmatch.com/lyrics/ABBA/Dancing-Queen",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://www.musixmatch.com/lyrics/ABBA/Dancing-Queen",
+      "bytes": 130652,
+      "sha256": "19a65f354059a7925886e0211a8c51a7dac3c3bde11e2a448b0e034bf212464e",
+      "page_title": "ABBA - Dancing Queen lyrics | Musixmatch",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 26,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [
+        {
+          "path": "script[1].props.pageProps.analyticsData.lyrics_abstrack",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.analyticsData.lyrics_artist_id",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.analyticsData.lyrics_artist_name",
+          "type": "str",
+          "length": 4
+        },
+        {
+          "path": "script[1].props.pageProps.analyticsData.lyrics_name",
+          "type": "str",
+          "length": 13
+        },
+        {
+          "path": "script[1].props.pageProps.analyticsData.lyrics_showed",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.analyticsData.verified_lyrics",
+          "type": "str",
+          "length": 10
+        },
+        {
+          "path": "script[1].props.pageProps.data.albumGet.data.trackList[0].hasLyrics",
+          "type": "bool"
+        },
+        {
+          "path": "script[1].props.pageProps.data.albumGet.data.trackList[1].hasLyrics",
+          "type": "bool"
+        },
+        {
+          "path": "script[1].props.pageProps.data.albumGet.data.trackList[2].hasLyrics",
+          "type": "bool"
+        },
+        {
+          "path": "script[1].props.pageProps.data.lyricVideosGet",
+          "type": "dict",
+          "length": 1,
+          "keys": [
+            "data"
+          ]
+        },
+        {
+          "path": "script[1].props.pageProps.data.lyricVideosGet.data.lyricsVideo",
+          "type": "NoneType"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics",
+          "type": "dict",
+          "length": 9,
+          "keys": [
+            "body",
+            "canEdit",
+            "copyright",
+            "id",
+            "language",
+            "languageDescription",
+            "lyricsUser",
+            "pixelTrackingUrl",
+            "verifier"
+          ]
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser",
+          "type": "dict",
+          "length": 31,
+          "keys": [
+            "uaid",
+            "is_mine",
+            "user_name",
+            "user_name_alias",
+            "created",
+            "user_profile_photo",
+            "has_private_profile",
+            "has_informative_profile_page",
+            "has_distributor_profile_page",
+            "score",
+            "position",
+            "level",
+            "key",
+            "rank_level",
+            "rank_name",
+            "rank_color",
+            "rank_colors",
+            "rank_image_url",
+            "weekly_score",
+            "points_to_next_level"
+          ]
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_report_wrong_language",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_ok",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_report_freelance_noaudio",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_changed",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_ko",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_subtitle_added",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_missing",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.lyrics.lyricsUser.counters.lyrics_ranking_change",
+          "type": "int"
+        },
+        {
+          "path": "script[1].props.pageProps.data.trackInfo.data.track.hasLyrics",
+          "type": "bool"
+        }
+      ],
+      "page_data_keys": [
+        "footer",
+        "albumGet",
+        "bannerGet",
+        "creditsTrackCollaboratorsGet",
+        "crowdTrackHistoryGet",
+        "languagesGet",
+        "lyricVideosGet",
+        "previewImage",
+        "trackInfo"
+      ],
+      "track_info_keys": [
+        "lyrics",
+        "track",
+        "trackStructureList",
+        "translationStatuses",
+        "type"
+      ],
+      "track_keys": [
+        "albumId",
+        "albumName",
+        "albumVanityId",
+        "artistId",
+        "artistName",
+        "artists",
+        "commonTrackId",
+        "commontrackItunesIds",
+        "commontrackSpotifyIds",
+        "coverImage",
+        "coverImageHD",
+        "hasLyrics",
+        "hasPreReleaseRestricted",
+        "hasSync",
+        "hasTrackStructure",
+        "id",
+        "isExplicit",
+        "isInstrumental",
+        "isPreRelease",
+        "lastEditDate",
+        "lens",
+        "name",
+        "performersMiscTags",
+        "performersTagging",
+        "releaseDate",
+        "spotifyId",
+        "vanityId"
+      ],
+      "track_identity": {
+        "name": "Dancing Queen",
+        "artistName": "ABBA"
+      },
+      "lyrics_body": {
+        "characters": 1106,
+        "lines": 45,
+        "sha256": "b49373a984b246f71824bfc7a2c75721755bb9f8c19a95c70e55fd980a80e144",
+        "has_preview_notice": false
+      },
+      "classification": "response-received-content-not-yet-verified"
+    },
+    {
+      "source": "musixmatch",
+      "role": "search",
+      "url": "https://www.musixmatch.com/search/Instinct%20Dozadu",
+      "lyrics_logged": false,
+      "http": 403,
+      "final_url": "https://www.musixmatch.com/search/Instinct%20Dozadu",
+      "bytes": 118,
+      "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "page_title": "403 Forbidden",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 0,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "http-error"
+    },
+    {
+      "source": "musixmatch",
+      "role": "anonymous-api",
+      "url": "https://api.musixmatch.com/ws/1.1/track.search?q_artist=Instinct&q_track=Dozadu&format=json",
+      "lyrics_logged": false,
+      "http": 200,
+      "final_url": "https://api.musixmatch.com/ws/1.1/track.search?q_artist=Instinct&q_track=Dozadu&format=json",
+      "bytes": 86,
+      "sha256": "b26d72fa408d7c6edf78c3c76075269db34118e7c0b03c1b502a91d1c80e4ad2",
+      "page_title": "",
+      "lyric_blocks": 0,
+      "song_links": [],
+      "script_count": 0,
+      "lyric_attributes": [],
+      "structured_lyrics_fields": [],
+      "classification": "authentication-required",
+      "api_status": null,
+      "api_message_status": 401
+    }
+  ],
+  "summary": {
+    "karaoke": {
+      "integrated": true,
+      "evidence": "Fresh isolated TEST12 engine lookup for Instinct / Dozadu returned 1039 original-text characters. Public SK search and exact song page returned 200.",
+      "availability": "Observed network delays and a transient failed candidate request; not a guaranteed latency or coverage measurement."
+    },
+    "supermusic": {
+      "integrated": false,
+      "evidence": "Home page returns 200 and redirects .sk to .cz. Tested song page returns a 553-byte script intermediate, not lyrics.",
+      "conclusion": "No usable automated text retrieval verified."
+    },
+    "genius": {
+      "integrated": false,
+      "evidence": "Anonymous web search, song page, docs and API request returned HTTP 403 from GitHub.",
+      "library_verification": {
+        "workflow_run": 40848624847,
+        "results": [
+          {
+            "step": "authenticated-api",
+            "status": "not-tested-no-token",
+            "library_version": "3.15.0",
+            "token_supplied": false,
+            "lyrics_logged": false
+          },
+          {
+            "step": "public-search",
+            "library_version": "3.15.0",
+            "token_supplied": false,
+            "lyrics_logged": false,
+            "status": "error",
+            "error": "AssertionError",
+            "http": 403,
+            "elapsed_ms": 126
+          },
+          {
+            "step": "direct-song-page",
+            "library_version": "3.15.0",
+            "token_supplied": false,
+            "lyrics_logged": false,
+            "status": "no-result",
+            "elapsed_ms": 46
+          }
+        ],
+        "authenticated_api_verified": false,
+        "scope": "Actual installed library public search and unmodified Genius.lyrics song-page method through its token-free public client. No API token supplied; no Authorization header sent.",
+        "conclusion": "LyricsGenius 3.15.0 public search failed with HTTP 403 and direct song-page lyrics() returned no result. Authenticated search remains untested without a valid owner-supplied access token; the library did not establish a working retrieval path."
+      },
+      "architecture": "Search returns song metadata and URL; library separately retrieves song-page HTML and parses lyrics containers or embedded song state."
+    },
+    "musixmatch": {
+      "integrated": false,
+      "evidence": "Public ABBA / Dancing Queen page returned metadata identifying artist and song plus a 1106-character, 45-line lyrics body in Next.js data. Public Instinct / Dozadu search returned 403. Anonymous official API response has status_code 401.",
+      "conclusion": "Promising direct public-page source; end-to-end arbitrary-song search and receiver access are not verified. Official API needs an API key."
+    }
+  },
+  "references": [
+    "https://lyricsgenius.readthedocs.io/en/stable/how_it_works.html",
+    "https://lyricsgenius.readthedocs.io/en/master/setup.html",
+    "https://github.com/johnwmillr/LyricsGenius/blob/master/lyricsgenius/genius.py",
+    "https://github.com/johnwmillr/LyricsGenius/blob/master/lyricsgenius/api/base.py",
+    "https://www.postman.com/musixmatch-dev/musixmatch-apis/collection/pqm8o6w/lyrics-api",
+    "https://github.com/musixmatch/musixmatch-sdk/blob/master/README.md"
+  ],
+  "next_step": "Keep functioning KaraokeTexty active. Do not treat unavailable sources as missing catalogue content. Before enabling another adapter, verify exact artist/title identity, complete original text, bounded requests and receiver access.",
+  "karaoke_isolated_engine_check": {
+    "artist": "Instinct",
+    "title": "Dozadu",
+    "source": "karaoke",
+    "status": "found",
+    "characters": 1039,
+    "text_sha256": "3de0ae00832c298d1893bae0892786b45e04b7fe5b11f09a6cf2d982223d8a5b",
+    "diagnostic": {
+      "artist": "Instinct",
+      "title": "Dozadu",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 26924,
+      "requests": [
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 0
+        },
+        {
+          "source": "karaoke",
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 6555
+        },
+        {
+          "source": "karaoke",
+          "variant": 2,
+          "status": "request-error",
+          "error": "URLError",
+          "elapsed_ms": 10013
+        },
+        {
+          "source": "karaoke",
+          "variant": 3,
+          "status": "links",
+          "elapsed_ms": 6076
+        },
+        {
+          "source": "karaoke",
+          "variant": 4,
+          "status": "found",
+          "elapsed_ms": 4275
+        }
+      ]
+    },
+    "lyrics_logged": false
+  }
+}
