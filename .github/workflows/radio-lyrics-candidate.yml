@@ -48,6 +48,10 @@ jobs:
         run: |
           python tools/check-radio-lyrics-provider.py
           python tools/check-radio-lyrics-provider.py --regional
+          python tools/check-radio-lyrics-provider.py --combined
+          python tools/check-radio-lyrics-provider.py --pisnicky
+          python tools/check-radio-lyrics-provider.py --official
+          python tools/check-radio-lyrics-provider.py --tekstowo
       - name: Build candidate and verify every installed byte
         run: |
           python tools/build-setup-style-test.py

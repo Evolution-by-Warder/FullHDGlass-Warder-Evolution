@@ -8,6 +8,7 @@ from Components.Converter.WarderRadioMetadata import current_song, native_song, 
 from enigma import eLabel, eWidget, ePoint, eSize, eTimer, gFont, iRdsDecoder
 import NavigationInstance
 from Plugins.Extensions.setupGlass17.warderLyrics import key as song_key
+from Plugins.Extensions.setupGlass17.warderSongIdentity import station_profile
 
 
 def message(kind):
@@ -132,8 +133,9 @@ class WarderRadioLyrics(Renderer):
             except Exception:pass
 
     def _schedule_retry(self, result=None):
-        if self._attempts < 3:
-            delay = 5 if self._attempts == 1 else 20
+        self._retry_at=0
+        if self._attempts < 5:
+            delay = (5,20,60,60)[max(0,self._attempts-1)]
             try:delay = max(delay,int((result or {}).get('retry_after',0)))
             except (TypeError,ValueError):pass
             self._retry_at = time.monotonic()+delay
@@ -181,7 +183,7 @@ class WarderRadioLyrics(Renderer):
             if isinstance(result,dict) and result.get('text'):
                 self._set_text(result['text'])
             else:
-                if not isinstance(result,dict) or result.get('status') == 'offline':
+                if not isinstance(result,dict) or result.get('status') == 'offline' or result.get('partial'):
                     self._schedule_retry(result)
                 else:self._set_text(message('missing'))
         try:
@@ -189,7 +191,15 @@ class WarderRadioLyrics(Renderer):
             from Plugins.Extensions.setupGlass17 import warderLyrics
             worker=LyricsWorker(finished);self._worker=worker
             executable='/usr/bin/python3';helper=os.path.abspath(warderLyrics.__file__)
-            _NativeLoop().spawnProcess(worker,executable,[executable,helper,artist,title],env=dict(os.environ))
+            station=''
+            try:station=reference.getName() or ''
+            except (AttributeError,TypeError):pass
+            if not station:
+                try:station=service.info().getName() or ''
+                except (AttributeError,TypeError):pass
+            argv=[executable,helper,artist,title]
+            if station_profile(station)=='skcz':argv+=['--profile','skcz']
+            _NativeLoop().spawnProcess(worker,executable,argv,env=dict(os.environ))
             self._timeout.start(45000,True)
         except Exception:finished(None)
 

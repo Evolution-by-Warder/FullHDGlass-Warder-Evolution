@@ -12,6 +12,7 @@ from unittest.mock import Mock, patch
 
 ROOT=Path(__file__).resolve().parents[1]
 PYTHON=ROOT/'source/package-root/usr/lib/enigma2/python'
+sys.path.insert(0,str(PYTHON/'Plugins/Extensions/setupGlass17'))
 spec=importlib.util.spec_from_file_location('radio_metadata',PYTHON/'Components/Converter/WarderRadioMetadata.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 
@@ -22,6 +23,13 @@ class Response(io.BytesIO):
     def __init__(self,raw,interval):super().__init__(raw);self.headers={'icy-metaint':str(interval)}
 
 class MetadataTests(unittest.TestCase):
+    def test_numbered_title_artist_stream_is_parsed_without_track_number(self):
+        self.assertEqual(m.split_song('08 - Krasnejsi nez ruze (Maliconia) - Pavel Roth'),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
+    def test_native_tags_split_at_track_number_are_repaired_too(self):
+        enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
+        service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda n:{1:'08',2:'Krasnejsi nez ruze (Maliconia) - Pavel Roth'}[n]))
+        with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}):
+            self.assertEqual(m.native_song(service),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
     def test_unicode_artist_and_full_title_are_kept(self):
         self.assertEqual(m.split_song('  Žbirka – Biely kvet (Live)  '),('Žbirka','Biely kvet (Live)'))
     def test_station_slogan_without_artist_separator_is_not_a_song(self):
@@ -272,6 +280,39 @@ class CatalogueArtworkTests(unittest.TestCase):
         self.assertTrue(self.lookup('Katarína Knechtová', 'Život nás má rád', {'SK': [self.item('Katarina Knechtova', 'Život nás má rád')]}))
         self.assertEqual(len(self.calls), 2)  # one catalogue and its artwork
         self.assertIn('country=SK', self.calls[0])
+    def test_receiver_proven_credit_repairs_are_shared_with_lyrics(self):
+        cases=[('M. Zbirka, Limit','Biely kvet','Miroslav Žbirka','Biely kvet'),('Necar Vaclav','Svatovitsky chram','Václav Neckář','Svatovítský Chrám (Chrám Sv. Víta)'),('Júlia Hečková','Taliansky muzikál','Júlia a Peter Heckovci','Taliansky muzikál'),('08','Krasnejsi nez ruze (Maliconia) - Pavel Roth','Pavel Roth','Krásnější než růže (Malinconia)')]
+        for artist,title,got_artist,got_title in cases:
+            with self.subTest(artist=artist):self.assertTrue(self.lookup(artist,title,{'SK':[self.item(got_artist,got_title)]}))
+    def test_cover_does_not_accept_a_live_recording_or_uncredited_guest(self):
+        for got_artist,got_title in [('Miroslav Žbirka','Biely kvet (Live)'),('Miroslav Žbirka & Guest','Biely kvet'),('Another Singer','Biely kvet')]:
+            self.assertFalse(self.lookup('M. Zbirka, Limit','Biely kvet',{'SK':[self.item(got_artist,got_title)]}))
+        self.assertFalse(self.lookup('Artist','Song',{'SK':[self.item('Artist','Song (Live)')]}))
+    def test_title_fallback_finds_hidden_track_but_still_verifies_artist(self):
+        import json,tempfile
+        from urllib.parse import parse_qs,urlsplit
+        terms=[]
+        def opener(request,**kwargs):
+            if '/search?' not in request.full_url:return io.BytesIO(self.cover)
+            q=parse_qs(urlsplit(request.full_url).query);terms.append(q['term'][0])
+            rows=[self.item('Wrong Artist','Song'),self.item('Artist','Song')] if q['term']==['Song'] else [self.item('Artist','Another song')]
+            return io.BytesIO(json.dumps({'results':rows}).encode())
+        with tempfile.TemporaryDirectory() as folder,patch.object(self.cls,'_cacheDir',return_value=folder),patch.object(self.art,'urlopen',side_effect=opener),patch.object(self.cls,'_archiveCover',return_value=''):
+            path=self.cls._lookupExact('Artist','Song','title-fallback')
+            self.assertEqual(Path(path).read_bytes(),self.cover)
+        self.assertEqual(terms,['Artist Song','Artist Song','Artist Song','Song'])
+
+    def test_roth_title_fallback_uses_verified_short_name(self):
+        from urllib.parse import parse_qs,urlsplit
+        import json
+        terms=[]
+        def opener(req,**kwargs):
+            terms.append(parse_qs(urlsplit(req.full_url).query)['term'][0])
+            return io.BytesIO(json.dumps({'results':[]}).encode())
+        with patch.object(self.art,'urlopen',side_effect=opener):
+            list(self.cls._catalogueResults('Pavel Roth','Krásnější než růže (Malinconia)'))
+        self.assertEqual(terms[-1],'Krásnější než růže')
+        self.assertEqual(len(terms),4)
 
     def test_lucie_sen_uses_slovak_catalogue(self):
         self.assertTrue(self.lookup('Lucie', 'Sen', {'SK': [self.item('Lucie', 'Sen')]}))
@@ -280,7 +321,7 @@ class CatalogueArtworkTests(unittest.TestCase):
     def test_hdf_example_wrong_song_is_rejected(self):
         wrong = self.item('Olga Lounova, Richard Krajco, Katarina Knechtova', 'Protože to nevzdám (feat. Pavel Callta)')
         self.assertFalse(self.lookup('Katarína Knechtová', 'Život nás má rád', {'SK': [wrong], 'CZ': [wrong], 'US': [wrong]}))
-        self.assertEqual(len(self.calls), 3)  # no image download
+        self.assertEqual(len(self.calls), 4)  # three regions plus bounded title fallback, no image download
 
     def test_same_title_by_another_artist_is_rejected(self):
         self.assertFalse(self.lookup('Lucie', 'Sen', {'SK': [self.item('Lucie Vondráčková', 'Sen')]}))

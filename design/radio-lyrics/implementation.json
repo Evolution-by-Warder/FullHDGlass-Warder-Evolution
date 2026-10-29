@@ -2,27 +2,32 @@
   "schema": 1,
   "baseline_commit": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
   "baseline_version": "1.0.37",
-  "candidate_version": "1.0.38-test9",
+  "candidate_version": "1.0.38-test10",
   "receiver_validated": false,
   "non_radio_xml_sha256": "2768fa4fc7520497e9d707aad739d14fd3d92ed0021ecb59e51223f441603ec1",
   "approved_layout": "approved-layout.png",
   "scenic_source": "scenic-source.png",
   "background_prompt": "Clean scenic production background from the approved radio concept; microphone left, glowing globe right, blue and amber studio; no text, frames, covers or static UI.",
   "background_method": "built-in imagegen; standard 1920x1080 JPEG package encoding",
-  "matching": "Complete title and all credited artists; accents and collaboration separators normalized, optional comma difference accepted, version words preserved. HTML only from exact allowlisted hosts with original lyrics containers and verified page headers.",
+  "matching": "Shared warderSongIdentity for metadata, lyrics and covers. Whole titles and credited rosters retained; explicitly sourced artist/recording aliases and numbered file tags repaired. No arbitrary partial, surname or first-result matching.",
   "state": "isolated candidate; production updater unchanged",
   "physical_video_background": "video-background.json",
   "lyrics_sources": [
     "https://lrclib.net/docs",
     "https://github.com/NTag/lyrics.ovh",
     "https://hudba.zoznam.sk/",
-    "https://textypisni.youradio.cz/"
+    "https://textypisni.youradio.cz/",
+    "https://www.ujdeto.cz/",
+    "https://pisnicky-akordy.cz/",
+    "https://www.pavelroth.cz/texty.htm?skladba=36",
+    "https://www.tekstowo.pl/"
   ],
   "header_revision": "Owner requested: no central RADIO, localized weekday dd.mm.yyyy, smaller white seconds .SS adjacent to HH:MM and glyph bottoms aligned.",
-  "lyrics_scheduler": "LRCLIB starts first; after 750ms or early miss, lyrics.ovh, Hudba.sk and Youradio start concurrently. At most one request per host, at most 12 requests per helper, 32s orchestration budget and existing 45s outer termination.",
+  "lyrics_scheduler": "Recognized SK/CZ formats start Hudba.sk and LRCLIB together; global stations keep LRCLIB first. Other sources start after at most 750ms or an earlier primary completion. At most 22 requests, or 23 for the specifically scoped official recording, one per host at a time within the helper; 32s orchestration and 45s outer timeout.",
   "spectrum_interval_ms": 110,
-  "cover_revision": "Owner requested compact frame tightly fitted to the cover; image aspect preserved, each axis at most 420 px; slot centre (526,496), equal to lyrics panel vertical centre. Static 440x720 left panel removed. Header-only sizing reads at most 64KiB in a worker; old artwork matcher and native async decoder retained.",
+  "cover_revision": "Owner requested compact frame tightly fitted to the cover; image aspect preserved, each axis at most 420 px; slot centre (526,496), equal to lyrics panel vertical centre. Static 440x720 left panel removed. Header-only sizing reads at most 64KiB in a worker; old artwork matcher and native async decoder retained. TEST10 additionally shares verified identities with lyrics and uses one bounded short-title catalogue fallback; complete artist/version verification remains mandatory.",
   "owner_layout_accepted": true,
   "owner_layout_acceptance": "Owner accepted the compact radio layout in chat on 2026-10-28; this version changes no geometry or graphical assets.",
-  "absence_notice_filter": "Exact known Hudba.sk absence notice is rejected during source and cache validation; complete real texts containing the same sentence remain valid."
+  "absence_notice_filter": "Exact known Hudba.sk absence notice is rejected during source and cache validation; complete real texts containing the same sentence remain valid.",
+  "retry_policy": "Incomplete misses are marked partial and are not negatively cached; bounded automatic retries after 5, 20, 60 and 60 seconds, respecting longer host Retry-After. Complete misses stop. Valid TEST7/8/9 positive caches remain usable; older negative caches invalidated."
 }

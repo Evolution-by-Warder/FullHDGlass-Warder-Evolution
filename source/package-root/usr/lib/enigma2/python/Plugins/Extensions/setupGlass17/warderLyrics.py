@@ -17,10 +17,15 @@ from urllib.request import Request, urlopen
 
 SEARCH = 'https://lrclib.net/api/search'
 FALLBACK = 'https://api.lyrics.ovh/v1/'
-CACHE_VERSION = 4
+CACHE_VERSION = 5
 CACHE = Path('/tmp/warder-radio-lyrics')
 MAX_RESPONSE = 1024 * 1024
 MAX_TEXT = 20000
+
+try:
+    from Plugins.Extensions.setupGlass17 import warderSongIdentity as song_identity
+except ImportError:
+    import warderSongIdentity as song_identity
 
 
 def identity(value):
@@ -52,10 +57,7 @@ def title_identity(value):
 
 
 def same_song(row, artist, title):
-    got_title = title_identity(row.get('trackName'))
-    got_artists = artist_options(row.get('artistName'))
-    return any(got_title == title_identity(t) and got_artists.intersection(artist_options(a))
-               for a,t in ((artist,title),(title,artist)))
+    return song_identity.same_recording(row,artist,title)
 
 def clean_text(text):
     if not isinstance(text, str) or not text.strip() or len(text) > MAX_TEXT:
@@ -125,16 +127,19 @@ def retry_delay(error, now):
 
 def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
            monotonic=time.monotonic, hedge_delay=0.75, budget=32,
-           site_providers=('hudba','youradio')):
+           site_providers=('hudba','youradio','ujdeto','pisnicky','tekstowo','roth'), profile='global'):
+    if profile not in ('global','skcz'):raise ValueError('Unknown radio profile')
+    artist,title=song_identity.repair_pair(artist,title)
     artist, title = str(artist).strip(), str(title).strip()
     if not artist or not title or max(len(artist), len(title)) > 250:
         return {'text':'','status':'no-song'}
     site_providers=tuple(dict.fromkeys(site_providers))
-    if any(name not in ('hudba','youradio') for name in site_providers):raise ValueError('Unknown lyrics provider')
+    if any(name not in ('hudba','youradio','ujdeto','pisnicky','tekstowo','roth') for name in site_providers):raise ValueError('Unknown lyrics provider')
     sites=None
     if site_providers:
         try:from Plugins.Extensions.setupGlass17 import warderLyricsSites as sites
         except ImportError:import warderLyricsSites as sites
+        site_providers=tuple(name for name in site_providers if sites.initial_urls(name,artist,title))
     source_names=('lrclib','ovh')+site_providers
     max_requests=5+sum(sites.LIMITS[name] for name in site_providers)
     cache.mkdir(parents=True,exist_ok=True)
@@ -151,7 +156,7 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     try:
         saved = json.loads(filename.read_text())
         text = clean_text(saved.get('text'))
-        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') == 3 and bool(text))
+        valid = saved.get('version') == CACHE_VERSION or (saved.get('version') in (3,4) and bool(text))
         age = clock()-float(saved['saved'])
         ttl = 14*86400 if text else min(1800,max(60,int(saved.get('ttl',1800))))
         if valid and 0 <= age < ttl and saved.get('status') == ('found' if text else 'not-found'):
@@ -163,11 +168,12 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     events = Queue()
     trace_rows = []
     trace_lock = Lock()
+    query_artist,query_title=song_identity.query_pair(artist,title)
     primary = list(dict.fromkeys((
-        SEARCH+'?'+urlencode({'artist_name':artist,'track_name':title}),
-        SEARCH+'?'+urlencode({'track_name':title}),
+        SEARCH+'?'+urlencode({'artist_name':query_artist,'track_name':query_title}),
+        SEARCH+'?'+urlencode({'track_name':query_title}),
         SEARCH+'?'+urlencode({'track_name':artist}))))
-    backup = [FALLBACK+quote(artist,safe='')+'/'+quote(title,safe=''),
+    backup = [FALLBACK+quote(query_artist,safe='')+'/'+quote(query_title,safe=''),
               FALLBACK+quote(title,safe='')+'/'+quote(artist,safe='')]
 
     def run_source(name, urls):
@@ -253,7 +259,11 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
         # These threads live only in the existing helper process, never Enigma.
         Thread(target=run_source,args=(name,urls),name='lyrics-'+name,daemon=True).start()
 
-    start_source('lrclib',primary)
+    plans={'lrclib':primary,'ovh':backup}
+    for site_name in site_providers:
+        plans[site_name]=sites.initial_urls(site_name,artist,title)
+    first=('hudba','lrclib') if profile=='skcz' and 'hudba' in site_providers else ('lrclib',)
+    for name in first:start_source(name,plans[name])
     backup_started = False
     summaries = {}
     traces = []
@@ -261,10 +271,9 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
     try:
         while monotonic() < deadline:
             elapsed = monotonic()-started
-            if not backup_started and (elapsed >= hedge_delay or 'lrclib' in summaries):
-                start_source('ovh',backup)
-                for site_name in site_providers:
-                    start_source(site_name,sites.initial_urls(site_name,artist,title))
+            if not backup_started and (elapsed >= hedge_delay or any(name in summaries for name in first)):
+                for name in source_names:
+                    if name not in first:start_source(name,plans[name])
                 backup_started = True
             remaining = deadline-monotonic()
             wait = remaining if backup_started else min(remaining,max(0.001,hedge_delay-elapsed))
@@ -289,7 +298,13 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
             return finish({'text':'','status':'offline','retry_after':min(waits or [5])},traces)
     try:
         partial = any(row.get('status') in ('pending','http-error','request-error') for row in traces)
-        atomic_json(filename,dict(result,saved=clock(),version=CACHE_VERSION,ttl=300 if partial else 1800))
+        if partial and not result.get('text'):
+            # A source failure must not pin an apparent miss for five minutes.
+            # The renderer retries this case without a manual station change.
+            result['partial']=True
+            result['retry_after']=min([s.get('retry_after',5) for s in summaries.values() if s.get('failed')] or [5])
+        else:
+            atomic_json(filename,dict(result,saved=clock(),version=CACHE_VERSION,ttl=1800))
         files = sorted(cache.glob('*.json'),key=lambda p:p.stat().st_mtime)
         for old in files[:-128]:
             try:old.unlink()
@@ -299,9 +314,13 @@ def lookup(artist, title, cache=CACHE, opener=urlopen, clock=time.time,
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:sys.exit(2)
+    if len(sys.argv) not in (3,5):sys.exit(2)
+    profile='global'
+    if len(sys.argv)==5:
+        if sys.argv[3]!='--profile' or sys.argv[4] not in ('global','skcz'):sys.exit(2)
+        profile=sys.argv[4]
     try:
         os.nice(8)
-        print(json.dumps(lookup(sys.argv[1],sys.argv[2]),ensure_ascii=False))
+        print(json.dumps(lookup(sys.argv[1],sys.argv[2],profile=profile),ensure_ascii=False))
     except Exception:
         print(json.dumps({'text':'','status':'offline'}))

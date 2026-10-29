@@ -1,3 +1,5 @@
+1.0.38-test10: Spoločná identita skladieb pre texty a obaly, oprava číselných prefixov a overených mien, regionálna priorita, nové zdroje Ujdeto, Písničky-akordy a Tekstowo, overená oficiálna stránka Pavla Rotha a opakovanie po čiastočnom výpadku bez prepínania stanice.
+
 1.0.38-test9: Odfiltrovaný oznam Hudba.sk o chýbajúcom texte; pokračovanie v ostatných zdrojoch a vyradenie starých falošných pozitívnych záznamov z cache.
 
 1.0.38-test8: Pripojené Hudba.sk a textypisni.youradio.cz, súbežné získavanie textov, úplné overenie interpreta a názvu; zachovaný schválený vzhľad rádia.

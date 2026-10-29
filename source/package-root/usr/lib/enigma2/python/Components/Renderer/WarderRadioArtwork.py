@@ -18,6 +18,10 @@ from enigma import ePicLoad, ePixmap, eServiceReference, eTimer, iRdsDecoder, iS
 from Components.Renderer.Renderer import Renderer
 import NavigationInstance
 from Components.Converter.WarderRadioMetadata import current_song
+try:
+    from Plugins.Extensions.setupGlass17 import warderSongIdentity as song_identity
+except ImportError:
+    import warderSongIdentity as song_identity
 
 
 class WarderRadioArtwork(Renderer):
@@ -155,13 +159,7 @@ class WarderRadioArtwork(Renderer):
 
     @staticmethod
     def _split(text):
-        text = (text or "").strip()
-        for sep in (" - ", " – ", " — ", ": "):
-            if sep in text:
-                artist, title = text.split(sep, 1)
-                if artist.strip() and title.strip():
-                    return artist.strip(), title.strip()
-        return "", ""
+        return song_identity.split_stream(text)
 
     def _radioText(self):
         try:
@@ -253,8 +251,7 @@ class WarderRadioArtwork(Renderer):
                 credits = recording.get('artist-credit', [])
                 credited = ''.join(c.get('name', c.get('artist', {}).get('name', '')) + c.get('joinphrase', '')
                                    for c in credits if isinstance(c, dict))
-                if (cls._norm(recording.get('title')) != cls._norm(title)
-                        or cls._artistIdentity(credited) != cls._artistIdentity(artist)):
+                if not song_identity.same_recording({'artistName':credited,'trackName':recording.get('title')},artist,title):
                     continue
                 note = cls._norm(recording.get('disambiguation'))
                 if any(tag in note and tag not in cls._norm(title)
@@ -295,8 +292,12 @@ class WarderRadioArtwork(Renderer):
         # An omitted country searches the US catalogue, which omits regional
         # releases. Stop lazily when a verified result succeeds; all I/O stays
         # in the existing artwork worker, never in the GUI poll.
-        for country in ("SK", "CZ", "US"):
-            url = "https://itunes.apple.com/search?entity=song&limit=10&country=" + country + "&term=" + term
+        plans=[(country,term,10) for country in ("SK","CZ","US")]
+        # Album-name matches can hide the actual track in a full-pair query.
+        # One final bounded title search still verifies the complete identity.
+        plans.append(("SK",quote(song_identity.site_titles(artist,title)[0]),25))
+        for country,query,limit in plans:
+            url = "https://itunes.apple.com/search?entity=song&limit="+str(limit)+"&country=" + country + "&term=" + query
             try:
                 req = Request(url, headers={"User-Agent": "FullHDGlass17-Warder-Evolution/1.0"})
                 with urlopen(req, timeout=2.5) as response:
@@ -309,7 +310,7 @@ class WarderRadioArtwork(Renderer):
                 if not isinstance(results, list):
                     continue
                 cls._diag("LOOKUP country=%s artist=%r title=%r results=%d" % (country, artist, title, len(results)))
-                for item in results[:10]:
+                for item in results[:limit]:
                     if isinstance(item, dict):
                         yield item
             except Exception as err:
@@ -317,69 +318,10 @@ class WarderRadioArtwork(Renderer):
 
     @classmethod
     def _lookupExact(cls, artist, title, key):
-        wantArtist, wantTitle = cls._norm(artist), cls._norm(title)
+        artist,title=song_identity.query_pair(artist,title)
         for item in cls._catalogueResults(artist, title):
-            gotArtist, gotTitle = cls._norm(item.get("artistName")), cls._norm(item.get("trackName"))
-            exact = gotArtist == wantArtist and gotTitle == wantTitle
-            # Some stations publish Title - Artist in their ICY text.
-            # Accept reversed fields only when BOTH complete identities match.
-            if not exact:
-                exact = gotArtist == wantTitle and gotTitle == wantArtist
-            if not exact and gotArtist and wantArtist:
-                gotCredit = cls._completeSongCredit(item.get("artistName"), item.get("trackName"))
-                # The same complete roster can use commas, '&' or 'and', and
-                # the station may reverse both fields. Neither direction may
-                # drop a performer or change the complete base track title.
-                exact = bool(gotCredit[1] and gotCredit in (
-                    cls._completeSongCredit(artist, title),
-                    cls._completeSongCredit(title, artist)))
-            sameArtist = gotArtist == wantArtist or cls._artistIdentity(item.get("artistName")) == cls._artistIdentity(artist)
-            if not exact and sameArtist:
-                exact = cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)
-            if not exact:
-                wantFeat = cls._featIdentity(artist, title)
-                gotFeat = cls._featIdentity(item.get("artistName"), item.get("trackName"))
-                exact = bool(wantFeat[0] and wantFeat == gotFeat)
-            if not exact:
-                # TEST176: tolerate catalogue version/remix suffix placement when
-                # the complete artist identity still agrees. RDS often sends
-                # "Title [Remix]" while stores use "Title (Remix)" or append
-                # the same version wording differently.
-                def looseTitle(value):
-                    value = cls._titleCommaIdentity(value)
-                    for ch in "[](){}":
-                        value = value.replace(ch, " ")
-                    for ch in "-–—":
-                        value = value.replace(ch, " ")
-                    return " ".join(value.split())
-                if sameArtist:
-                    a, b = looseTitle(item.get("trackName")), looseTitle(title)
-                    exact = bool(a and b and (a == b or a.startswith(b + " ") or b.startswith(a + " ")))
-            if not exact:
-                # TEST179: accept a catalogue-added guest credit only when the
-                # lead artist is identical and the normalized title is exact
-                # or differs solely by a trailing catalogue version suffix.
-                # This remains deliberately stricter than a generic partial
-                # artist match and therefore does not match station slogans.
-                a, b = looseTitle(item.get("trackName")), looseTitle(title)
-                leadArtist = cls._mainArtistIdentity(item.get("artistName")) == cls._mainArtistIdentity(artist)
-                exact = bool(leadArtist and a and b and (a == b or a.startswith(b + " ") or b.startswith(a + " ")))
-            if not exact:
-                # TEST180: RDS may carry only the credited act/group while
-                # catalogue artistName expands the same act with individual
-                # performers/cast. Permit this only for an exact normalized
-                # title and only when the RDS artist is the complete leading
-                # catalogue credit before the first comma.
-                catalogueLead = gotArtist.split(",", 1)[0].strip()
-                exact = bool(
-                    cls._titleCommaIdentity(item.get("trackName")) == cls._titleCommaIdentity(title)
-                    and catalogueLead
-                    and catalogueLead == wantArtist
-                )
-            if not exact:
-                cls._diag("REJECT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
+            if not song_identity.same_recording(item,artist,title):
                 continue
-            cls._diag("EXACT artist=%r title=%r" % (item.get("artistName"), item.get("trackName")))
             art = (item.get("artworkUrl100") or "").replace("100x100bb", "600x600bb")
             if not art:
                 continue

@@ -10,6 +10,10 @@ import threading
 import time
 from urllib.parse import unquote, urlsplit
 from urllib.request import Request, urlopen
+try:
+    from Plugins.Extensions.setupGlass17.warderSongIdentity import split_stream,repair_pair
+except ImportError:
+    from warderSongIdentity import split_stream,repair_pair
 
 
 def clean(value):
@@ -17,13 +21,7 @@ def clean(value):
 
 
 def split_song(value):
-    text = clean(value)
-    for separator in (" - ", " – ", " — ", ": "):
-        if separator in text:
-            artist, title = (part.strip() for part in text.split(separator, 1))
-            if artist and title:
-                return artist, title
-    return "", ""
+    return split_stream(clean(value))
 
 
 def stream_url(reference):
@@ -55,7 +53,7 @@ def native_song(service):
             return clean(info.getInfoString(number)) if number is not None else ""
         artist, title = tag("sTagArtist"), tag("sTagTitle")
         if artist and title:
-            return artist, title
+            return repair_pair(artist,title)
         parsed = split_song(title)
         return parsed if all(parsed) else (artist, title)
     except Exception:

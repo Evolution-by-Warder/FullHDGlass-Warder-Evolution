@@ -1,16 +1,21 @@
-# FullHDGlass 1.0.38-test9 — správne rozpoznanie chýbajúceho textu
+# FullHDGlass 1.0.38-test10 — spoločná oprava rádiového enginu
 
-Pri skladbe Karel Gott — Léta prázdnin vrátila Hudba.sk vo svojom poli pre text iba oznam „Táto pieseň momentálne nemá pridaný text.“ TEST8 ho považoval za úspešný výsledok a ukončil súbežné hľadanie. TEST9 tento konkrétny oznam rozpozná ako chýbajúci text a umožní ostatným zdrojom pokračovať.
+Jedna skúšobná verzia spája opravy chýbajúcich textov, obalov, poškodených údajov z vysielania a opakovania po výpadku zdrojov. Zachováva majiteľom schválenú kompaktnú grafiku rádia.
 
-- Overenie platí pri načítaní zo zdroja aj pri čítaní staršej cache. Nesprávne uložený oznam sa znovu nezobrazí ako text piesne.
-- Filter porovnáva celý známy oznam, toleruje veľkosť písmen, diakritiku, medzery a koncovú interpunkciu. Nezahadzuje dlhší skutočný text, ktorý obsahuje rovnakú vetu.
-- Keď ostatné zdroje neodpovedajú, zostáva výsledok vhodný na opakovanie; nevytvára sa falošná pozitívna cache.
-- Štyri nové regresné testy overujú čistý oznam, starú cache, neskorší platný výsledok z iného zdroja aj výpadok ostatných služieb. Používajú ilustračné texty, nie celé texty piesní.
+- Metadáta, texty a obaly používajú spoločnú identitu skladby. Číselný zápis `08 - názov - Pavel Roth` už nevytvára interpreta „08“. Explicitné overené varianty mien a kreditov riešia Žbirku/Limit, Neckářa, Hečkovcov, Táslera/IMT Smile a Martausovú/Magušinovú. Pravidlá a pôvod sú v `docs/RADIO-IDENTITY-RULES.md`.
+- Pri rozpoznaných SK/CZ formátoch staníc, napríklad KIKS Československo a Fun Rádio Československé hity, sa Hudba.sk a LRCLIB skúšajú súčasne. Ostatné stanice zachovávajú prvý pokus LRCLIB; ďalšie zdroje začínajú najneskôr po 750 ms.
+- Pripojené sú Ujdeto, Písničky-akordy a Tekstowo. Pri konkrétnej overenej skladbe Pavla Rotha sa používa aj jeho oficiálna stránka. Číta sa iba pôvodný text a overená dvojica interpret/názov; preklady, reklamy, akordové riadky a známe oznamy o chýbajúcom texte sa nezobrazujú ako text skladby.
+- Čiastočný výpadok sa neukladá ako definitívne nenájdenie. Engine zopakuje pokus bez prepínania stanice, najviac po 5, 20, 60 a 60 sekundách; rešpektuje dlhšie obmedzenie servera. Staré negatívne záznamy cache sa preveria znova, platné pozitívne sa zachovajú.
+- Obaly využívajú tie isté overené identity a jeden ohraničený záložný dotaz podľa názvu. Aj potom sa musí zhodovať celý interpret a verzia skladby; nesprávny prvý výsledok sa neprijme.
 
-## Rozsah vydania
+## Konkrétne overenie
 
-Schválená grafika, geometria, prehrávanie, metadáta a vyhľadávanie obalov zostávajú ako v TEST8. Poradie zdrojov sa týmto vydaním nemení; regionálna priorita, nové zdroje a zlepšenie variantov mien sú ďalšie samostatné úpravy. Toto vydanie neznamená, že sa chýbajúce texty automaticky stali dostupnými.
+Pri živých kontrolách sa podarilo získať texty Nenahraditeľná (Sima Martausová & For You), Ani ty ani já (David Koller), Biely kvet, Svatovítský chrám, Viac, Prepáč, Sľub a Krásnější než růže. Opravené vyhľadávanie stiahlo aj skutočné obaly pre Žbirku/Limit, Neckářa, Hečkovú/Hečkovcov a Pavla Rotha. Záznamy obsahujú iba stav, veľkosť a kontrolné súčty, nie celé texty alebo prevzaté obrázky.
 
-Kontrola Fero Fabian — Tibetský mlynček nenašla text v štyroch aktuálnych adaptéroch ani nahrávku v slovenskom iTunes katalógu pri hľadaní celej dvojice, samotného názvu či interpreta. Samostatná požiadavka MusicBrainz sa nepodarila spracovať, preto ju nepovažujeme za potvrdené nenájdenie. Záznamy aj ďalšie prípady sú v `docs/RADIO-LYRICS-FIELD-CASES.json`; neobsahujú celé texty piesní ani prevzaté HTML.
+Niektoré ďalšie zaslané skladby zostávajú bez overeného výsledku alebo pri kontrole narazili na výpadok zdroja. Rozšírenie zdrojov nezaručuje dostupnosť každej skladby. SuperMusic poskytol iba stránku vyžadujúcu JavaScript a nie je vydávaný za funkčný adaptér. Podrobnosti sú v `docs/RADIO-LYRICS-FIELD-CASES.json` a `docs/RADIO-COMBINED-ENGINE-CHECKS.json`.
 
-Ide o izolovanú skúšobnú verziu. Produkčný kanál 1.0.37 sa týmto vydaním nemení. Zdroje zostávajú [LRCLIB](https://lrclib.net/docs), [lyrics.ovh](https://github.com/NTag/lyrics.ovh), [Hudba.sk](https://hudba.zoznam.sk/) a [Youradio](https://textypisni.youradio.cz/).
+## Prevádzkové limity
+
+Sieťové operácie prebiehajú mimo GUI. Jeden helper vykonáva najviac jednu požiadavku na hostiteľa súčasne a celkovo najviac 22 požiadaviek, pri uvedenej konkrétnej skladbe Pavla Rotha 23. Ostáva 32-sekundový rozpočet plánovača a 45-sekundové vonkajšie ukončenie procesu. Texty majú limit 20 000 znakov, cache najviac 128 skladieb; skutočné nenájdenie sa drží 30 minút a kladný výsledok 14 dní.
+
+Ide o izolovanú skúšobnú verziu. Produkčný kanál 1.0.37 sa nemení. Testy a živé kontroly zdrojov nenahrádzajú overenie prijímača s týmto balíkom.

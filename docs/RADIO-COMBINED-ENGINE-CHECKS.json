@@ -1,0 +1,1422 @@
+{
+  "schema": 1,
+  "candidate_version": "1.0.38-test10",
+  "checked_date": "2026-10-29",
+  "receiver_validated": false,
+  "coverage_measurement": false,
+  "lyrics_saved_in_git": false,
+  "text_checks": [
+    {
+      "artist": "Sima Martausová featuring For You",
+      "title": "Nenahraditeľná",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 4751,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4489
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3981
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3997
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "pending"
+        }
+      ],
+      "characters": 1071,
+      "text_sha256": "8e2fc1cb13fa6aab5447bff5c1f7b64a90e64067c9bb38b867d76190b56ab2e8",
+      "check_group": "combined-live.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "David Koller",
+      "title": "Ani ty ani já",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 6477,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3708
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 1936
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5048
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5131
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4778
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 5721
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "pending"
+        }
+      ],
+      "characters": 1189,
+      "text_sha256": "525861654c3f6f5a938576b122161f7385ecaca6c7f0ef77c8f305fb0eda1755",
+      "check_group": "combined-live.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "M. Zbirka, Limit",
+      "title": "Biely kvet",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 5185,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3477
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 3559
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 2983
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3842
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 2642
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4426
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "pending"
+        }
+      ],
+      "characters": 962,
+      "text_sha256": "aca9a4ddf60b5f63e08c98d75ec688d1138b5769315bbf17214ff6e06eb47604",
+      "check_group": "combined-live.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Necar Vaclav",
+      "title": "Svatovitsky chram",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 6564,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 1685
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 3932
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3515
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3262
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4372
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 5808
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4474
+        },
+        {
+          "source": "youradio",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "pending"
+        }
+      ],
+      "characters": 419,
+      "text_sha256": "ea6564ed9995ba856837137fc5c73237b410a9eaf2900dec844600f5454a64c4",
+      "check_group": "combined-live.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Pavel Roth",
+      "title": "Krasnejsi nez ruze (Maliconia)",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 11246,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4476
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4808
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4407
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 2777
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 1782
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 4352
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "request-error",
+          "error": "ValueError",
+          "elapsed_ms": 5657
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6769
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3524
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "combined-live.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Pavel Roth",
+      "title": "Krasnejsi nez ruze (Maliconia)",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 32000,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4561
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 6963
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 7880
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4317
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 13348
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4715
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3941
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5620
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6390
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3601
+        },
+        {
+          "source": "ujdeto",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 4366
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 6305
+        },
+        {
+          "source": "pisnicky",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 12733
+        },
+        {
+          "source": "ujdeto",
+          "variant": 4,
+          "status": "not-found",
+          "elapsed_ms": 5380
+        },
+        {
+          "source": "pisnicky",
+          "variant": 3,
+          "status": "pending"
+        }
+      ],
+      "characters": 0,
+      "check_group": "combined-live-more.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 32000,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5104
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 5316
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6886
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4537
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5239
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 14423
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3075
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3885
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6283
+        },
+        {
+          "source": "hudba",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 3987
+        },
+        {
+          "source": "ujdeto",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 4707
+        },
+        {
+          "source": "ujdeto",
+          "variant": 4,
+          "status": "not-found",
+          "elapsed_ms": 7106
+        },
+        {
+          "source": "pisnicky",
+          "variant": 2,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 14479
+        },
+        {
+          "source": "pisnicky",
+          "variant": 3,
+          "status": "pending"
+        }
+      ],
+      "characters": 0,
+      "check_group": "combined-live-more.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Ivan Tásler & IMT Smile",
+      "title": "Viac",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 3491,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3489
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "pending"
+        }
+      ],
+      "characters": 1151,
+      "check_group": "combined-live-more.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 26921,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6880
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4369
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6261
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4006
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5453
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 4199
+        },
+        {
+          "source": "pisnicky",
+          "variant": 2,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 5070
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6831
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4374
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4246
+        },
+        {
+          "source": "pisnicky",
+          "variant": 3,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 3489
+        },
+        {
+          "source": "hudba",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 3976
+        },
+        {
+          "source": "ujdeto",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 6668
+        },
+        {
+          "source": "ujdeto",
+          "variant": 4,
+          "status": "not-found",
+          "elapsed_ms": 7214
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Bystrík",
+      "title": "Káva (feat. Fejbs)",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 11647,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3513
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4913
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4666
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4393
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4839
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 3776
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4229
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6230
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4508
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Robo Opatovský",
+      "title": "Blizko ta mam",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 14694,
+      "requests": [
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3721
+        },
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6074
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4901
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4313
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4567
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "request-error",
+          "error": "TimeoutError",
+          "elapsed_ms": 13940
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4049
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 7017
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5175
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3938
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Dara Rolins",
+      "title": "Sľub",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 17368,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "request-error",
+          "error": "URLError",
+          "elapsed_ms": 10017
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 9926
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 9201
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 7761
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 8809
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 16614
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3578
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 6397
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6232
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3630
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Samo Tomeček & Free Inna Cage",
+      "title": "To, čo chceš",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 12689,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5268
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 6347
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3890
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3515
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5723
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 10081
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3368
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4337
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 6339
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5470
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 16328,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3455
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4662
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5339
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3727
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4633
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 8132
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4014
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5799
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6341
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3491
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 5863
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "status": "found",
+      "cache_hit": false,
+      "elapsed_ms": 4989,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4983
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4133
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "pending"
+        }
+      ],
+      "characters": 2235,
+      "text_sha256": "12c7772f26910cb901cef5a396873a922e6afa330749041656f2e8fdabc0c146",
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Martina Schindlerova",
+      "title": "Povedz mi",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 11241,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 1654
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4102
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3902
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4585
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 7079
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5051
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 9585
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3347
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3818
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4685
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 3475
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "Fero Fabian",
+      "title": "Tibetský mlynček",
+      "status": "offline",
+      "cache_hit": false,
+      "elapsed_ms": 12000,
+      "requests": [
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5929
+        },
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 3648
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4175
+        },
+        {
+          "source": "youradio",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3929
+        },
+        {
+          "source": "ujdeto",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5402
+        },
+        {
+          "source": "pisnicky",
+          "variant": 1,
+          "status": "http-error",
+          "http": 500,
+          "elapsed_ms": 4623
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4305
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 6069
+        },
+        {
+          "source": "ujdeto",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5237
+        }
+      ],
+      "characters": 0,
+      "text_sha256": null,
+      "check_group": "remaining-cases.json",
+      "source_scope": "Before final Tekstowo addition; see later isolated source checks."
+    },
+    {
+      "artist": "08",
+      "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
+      "status": "found",
+      "characters": 814,
+      "text_sha256": "78f94dc0357e6d3aa1aa42a166f0d7dd9ab0c98f2131dd92a2025130327d961c",
+      "elapsed_ms": 6060,
+      "sources_found": [
+        "roth"
+      ],
+      "lyrics_published": false,
+      "json_apis_disabled": true,
+      "isolated_source": "roth",
+      "note": "A known-song availability check is not a coverage measurement.",
+      "check_group": "official-provider-check.json"
+    },
+    {
+      "artist": "David Koller",
+      "title": "Ani ty ani já",
+      "status": "found",
+      "characters": 1189,
+      "text_sha256": "525861654c3f6f5a938576b122161f7385ecaca6c7f0ef77c8f305fb0eda1755",
+      "elapsed_ms": 6251,
+      "sources_found": [
+        "pisnicky"
+      ],
+      "lyrics_published": false,
+      "json_apis_disabled": true,
+      "isolated_source": "pisnicky",
+      "note": "A known-song availability check is not a coverage measurement.",
+      "check_group": "pisnicky-provider-check.json"
+    },
+    {
+      "artist": "Dara Rolins",
+      "title": "Sľub",
+      "status": "found",
+      "characters": 1507,
+      "text_sha256": "2e9a63188f5f0d0cae0f4e1839174fb0e5540b6025ecf4dc3926cb6b4a44beba",
+      "elapsed_ms": 6740,
+      "sources_found": [
+        "tekstowo"
+      ],
+      "lyrics_published": false,
+      "json_apis_disabled": true,
+      "isolated_source": "tekstowo",
+      "note": "A known-song availability check is not a coverage measurement.",
+      "check_group": "tekstowo-provider-check.json"
+    },
+    {
+      "artist": "Sima Martausová featuring For You",
+      "title": "Nenahraditeľná",
+      "status": "found",
+      "characters": 1071,
+      "text_sha256": "8e2fc1cb13fa6aab5447bff5c1f7b64a90e64067c9bb38b867d76190b56ab2e8",
+      "elapsed_ms": 4812,
+      "sources_found": [
+        "ujdeto"
+      ],
+      "lyrics_published": false,
+      "json_apis_disabled": true,
+      "isolated_source": "ujdeto",
+      "note": "A known-song availability check is not a coverage measurement.",
+      "check_group": "ujdeto-provider-check.json"
+    }
+  ],
+  "artwork_checks": [
+    {
+      "artist": "M. Zbirka, Limit",
+      "title": "Biely kvet",
+      "status": "found",
+      "archive_probe_disabled": true,
+      "bytes": 193022,
+      "sha256": "2e2c04328e3deb618d23b8e2527a8017ba5477d917e7cd83859f69c9838e7ba4",
+      "dimensions": [
+        600,
+        600
+      ]
+    },
+    {
+      "artist": "Necar Vaclav",
+      "title": "Svatovitsky chram",
+      "status": "found",
+      "archive_probe_disabled": true,
+      "bytes": 85308,
+      "sha256": "7ed5a0f764f56ba9a9b2ff8abf89a7d301f57f536767f05b91066fbc4f7eec5d",
+      "dimensions": [
+        600,
+        600
+      ]
+    },
+    {
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "status": "found",
+      "archive_probe_disabled": true,
+      "bytes": 124134,
+      "sha256": "9ddbaf18953a223dad46ff3104e779d1f33d306b76ae4902f2a7d9e3fb285c7a",
+      "dimensions": [
+        600,
+        600
+      ]
+    },
+    {
+      "artist": "08",
+      "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
+      "status": "not-found-in-this-check",
+      "archive_probe_disabled": true
+    }
+  ],
+  "final_roth_artwork_check": {
+    "artist": "08",
+    "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
+    "found": true,
+    "real_http": true,
+    "archive_disabled_for_isolation": true,
+    "bytes": 63273,
+    "sha256": "345748f7b45cc994c57d9ae75cac3229cb5b9e968f0f33616109017d3268d724",
+    "image_size": [
+      600,
+      600
+    ]
+  },
+  "interpretation": "Each row is a real check, not a catalogue coverage estimate. Offline/pending/partial failures do not prove absence. Earlier failed checks are retained alongside later successful source-specific checks."
+}

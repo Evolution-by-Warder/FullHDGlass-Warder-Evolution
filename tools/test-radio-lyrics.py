@@ -205,7 +205,8 @@ class ProviderTests(unittest.TestCase):
             raise TimeoutError('optional query failed')
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);result=provider.lookup('Faraon','Šlapací kolo',folder,opener=response)
-            self.assertEqual(result['status'],'not-found');self.assertEqual(len(list(folder.glob('*.json'))),1)
+            self.assertEqual(result['status'],'not-found');self.assertTrue(result['partial'])
+            self.assertEqual(len(list(folder.glob('*.json'))),0)
             status=json.loads((folder/'.last-result').read_text())
             self.assertTrue(any(r.get('status')=='request-error' for r in status['requests']))
     def test_optional_request_still_pending_at_deadline_does_not_erase_known_misses(self):
@@ -223,18 +224,18 @@ class ProviderTests(unittest.TestCase):
             self.assertEqual(result['status'],'not-found')
             data=json.loads((Path(tmp)/'.last-result').read_text())
             self.assertTrue(any(row['status']=='pending' for row in data['requests']))
-    def test_partial_miss_cache_expires_sooner_and_successful_later_lookup_replaces_it(self):
+    def test_partial_miss_is_not_cached_and_recovery_needs_no_station_change(self):
         from urllib.error import HTTPError
         def response(request,**kwargs):
             if request.full_url.startswith(provider.FALLBACK):raise HTTPError(request.full_url,404,'missing',{},None)
             if 'artist_name=' in request.full_url:return io.BytesIO(b'[]')
             raise TimeoutError('optional query failed')
         with tempfile.TemporaryDirectory() as tmp:
-            folder=Path(tmp);provider.lookup('Žbirka','Biely kvet',folder,opener=response,clock=lambda:1000)
-            saved=json.loads((folder/(provider.key('Žbirka','Biely kvet')+'.json')).read_text())
-            self.assertEqual(saved['ttl'],300)
+            folder=Path(tmp);result=provider.lookup('Žbirka','Biely kvet',folder,opener=response,clock=lambda:1000)
+            self.assertTrue(result['partial'])
+            self.assertFalse((folder/(provider.key('Žbirka','Biely kvet')+'.json')).exists())
             good=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
-            self.assertEqual(provider.lookup('Žbirka','Biely kvet',folder,opener=good,clock=lambda:1301)['status'],'found')
+            self.assertEqual(provider.lookup('Žbirka','Biely kvet',folder,opener=good,clock=lambda:1005)['status'],'found')
     def test_one_unreachable_provider_remains_retryable_even_if_other_misses(self):
         from urllib.error import HTTPError
         def response(request,**kwargs):
@@ -371,14 +372,14 @@ class NativeTests(unittest.TestCase):
         self.m.native_song=lambda *a:('','Hudba na maximum')
         self.m.current_song=lambda *a:(_ for _ in ()).throw(AssertionError('Must not reuse ICY song'))
         r._poll();self.assertIsNone(r._key)
-    def test_transient_failure_retries_but_stops_after_three_attempts(self):
+    def test_transient_failure_retries_but_stops_after_five_attempts(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
-        for attempt in range(3):
+        for attempt in range(5):
             worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"offline"}');worker.complete(0)
             self.assertEqual(r._attempts,attempt+1)
-            if attempt<2:
+            if attempt<4:
                 self.assertGreater(r._retry_at,0);r._retry_at=1;r._poll()
-        self.assertEqual(r._retry_at,0);r._poll();self.assertEqual(len(self.spawned),3)
+        self.assertEqual(r._retry_at,0);r._poll();self.assertEqual(len(self.spawned),5)
     def test_worker_timeout_is_visible_and_late_response_cannot_replace_it(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
         worker=self.spawned[-1][0];r._worker_timeout()
@@ -397,6 +398,20 @@ class NativeTests(unittest.TestCase):
         self.assertGreaterEqual(r._retry_at-time.monotonic(),119)
         self.assertIn('znova',r.label.text)
 
+    def test_regional_station_passes_profile_without_gui_network_io(self):
+        r=self.renderer
+        ref=types.SimpleNamespace(toString=lambda:'station',getName=lambda:'Rádio KIKS Československo')
+        self.navigation.instance.getCurrentlyPlayingServiceReference=lambda:ref
+        self.m.native_song=lambda *a:('Artist','Title')
+        r._poll();r._pending_since-=3;r._poll()
+        self.assertEqual(self.spawned[0][2][-2:],['--profile','skcz'])
+    def test_partial_miss_retries_without_zapping_and_later_text_is_displayed(self):
+        r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
+        worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"not-found","partial":true}');worker.complete(0)
+        self.assertGreater(r._retry_at,0);r._retry_at=1;r._poll()
+        self.assertEqual(len(self.spawned),2)
+        worker=self.spawned[-1][0];worker.outReceived(b'{"text":"Recovered original test text","status":"found"}');worker.complete(0)
+        self.assertEqual(r.label.text,'Recovered original test text');r._poll();self.assertEqual(len(self.spawned),2)
     def test_real_miss_is_not_retried(self):
         r=self.renderer;self.song();r._poll();r._pending_since-=3;r._poll()
         worker=self.spawned[-1][0];worker.outReceived(b'{"text":"","status":"not-found"}');worker.complete(0)
@@ -667,6 +682,134 @@ class RadioDateTests(unittest.TestCase):
             for day in range(7):
                 value=module.radio_date((datetime(2026,10,26,12)+timedelta(days=day)).timestamp(),code)
                 self.assertLessEqual(font.getlength(value),520,(code,value))
+
+
+class CombinedEngineTests(unittest.TestCase):
+    def setUp(self):
+        import warderSongIdentity,warderLyricsSites
+        self.identity=warderSongIdentity;self.sites=warderLyricsSites
+    def row(self,artist,title):
+        return dict(artistName=artist,trackName=title,plainLyrics='Illustrative original test text')
+    def test_track_number_prefix_is_repaired_but_years_and_numeric_act_names_survive(self):
+        self.assertEqual(self.identity.split_stream('08 - Krasnejsi nez ruze (Maliconia) - Pavel Roth'),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
+        self.assertEqual(self.identity.repair_pair('08','Krasnejsi nez ruze (Maliconia) - Pavel Roth'),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
+        for raw,expected in [('1970 - Chinaski',('1970','Chinaski')),('070 Shake - Song',('070 Shake','Song')),('08 - Song',('08','Song')),('Artist - Part 1 - Song',('Artist','Part 1 - Song'))]:
+            self.assertEqual(self.identity.split_stream(raw),expected)
+    def test_zbirka_alias_and_recording_credit_do_not_drop_extra_guests(self):
+        row=self.row('Miroslav Žbirka','Biely kvet')
+        self.assertTrue(provider.same_song(row,'M. Zbirka, Limit','Biely kvet'))
+        for artist,title in [('M. Zbirka, Limit, Guest','Biely kvet'),('M. Zbirka, Limit','Another song'),('M. Zbirka, Limit','Biely kvet (Live)')]:
+            self.assertFalse(provider.same_song(row,artist,title))
+    def test_neckar_known_spelling_and_exact_title_variants(self):
+        row=self.row('Václav Neckář','Svatovítský chrám /Chrám sv. Víta/ (Winchester Cathedral)')
+        self.assertTrue(provider.same_song(row,'Necar Vaclav','Svatovitsky chram'))
+        self.assertFalse(provider.same_song(row,'Other Vaclav','Svatovitsky chram'))
+        self.assertFalse(provider.same_song(row,'Necar Vaclav','Svatovitsky chram (Live)'))
+    def test_roth_title_typo_and_alternate_name_are_artist_scoped(self):
+        row=self.row('Pavel Roth','Malinconia (Krásnější než růže)')
+        self.assertTrue(provider.same_song(row,'08','Krasnejsi nez ruze (Maliconia) - Pavel Roth'))
+        self.assertFalse(provider.same_song(row,'Pavel Roth','Krásnější než růže (Remix)'))
+        self.assertFalse(provider.same_song(self.row('Another Artist','Malinconia (Krásnější než růže)'),'Another Artist','Krásnější než růže'))
+    def test_feature_in_title_and_artist_keep_the_entire_roster(self):
+        row=self.row('Bystrík & Fejbs','Káva')
+        self.assertTrue(provider.same_song(row,'Bystrik','Káva (feat. Fejbs)'))
+        self.assertFalse(provider.same_song(row,'Bystrik','Káva'))
+        self.assertFalse(provider.same_song(row,'Bystrik','Káva (feat. Fejbs Junior)'))
+    def test_married_name_does_not_turn_a_duet_into_a_solo_recording(self):
+        row=self.row('Sima Magušinová (Martausová) & For You','Nenahraditeľná')
+        self.assertTrue(provider.same_song(row,'Sima Martausová featuring For You','Nenahraditeľná'))
+        self.assertFalse(provider.same_song(row,'Sima Martausová','Nenahraditeľná'))
+    def test_recording_specific_heckovci_and_tasler_credits_keep_other_tracks_strict(self):
+        for row,artist,title in [(self.row('Júlia a Peter Heckovci','Taliansky muzikál'),'Júlia Hečková','Taliansky muzikál'),(self.row('IMT Smile','Viac'),'Ivan Tásler & IMT Smile','Viac')]:
+            self.assertTrue(provider.same_song(row,artist,title))
+            self.assertFalse(provider.same_song(dict(row,trackName='Another song'),artist,'Another song'))
+    def test_station_formats_select_regional_profile_and_unknown_names_keep_global(self):
+        for name in ('Rádio KIKS Československo','Fun Rádio Československé hity','Československé rádio','IPTV SK/CZ'):
+            self.assertEqual(self.identity.station_profile(name),'skcz')
+        for name in ('Fun Radio','BBC Radio 2','Jazz Prague',''):
+            self.assertEqual(self.identity.station_profile(name),'global')
+    def test_ujdeto_original_container_and_married_name(self):
+        raw='<h1>Sima Magušinová (Martausová) &amp; For You - Nenahraditeľná - text písně</h1><p class="ltext">Original line<br>Second line<script>bad()</script></p><aside>Advertising</aside>'
+        r=self.sites.parse('ujdeto','https://www.ujdeto.cz/lyrics/sima-magusinova-martausova/nenahraditelna/',raw.encode(),'Sima Martausová featuring For You','Nenahraditeľná',provider.same_song,provider.clean_text)
+        self.assertEqual(r['text'],'Original line\nSecond line')
+    def test_pisnicky_uses_song_heading_and_discards_chord_lines(self):
+        raw='<h1>Písničky Akordy</h1><div id="songheader"><h1>Ani ty ani já</h1><h2>David Koller</h2></div><div id="songtext"><pre>C G Am F\nOriginal test line\nSecond line</pre></div><aside>Advertising</aside>'
+        r=self.sites.parse('pisnicky','https://pisnicky-akordy.cz/david-koller/ani-ty-ani-ja',raw.encode(),'David Koller','Ani ty ani já',provider.same_song,provider.clean_text)
+        self.assertEqual(r['text'],'Original test line\nSecond line')
+        r=self.sites.parse('pisnicky','https://pisnicky-akordy.cz/david-koller/ani-ty-ani-ja',raw.encode(),'Another Artist','Ani ty ani já',provider.same_song,provider.clean_text)
+        self.assertEqual(r['text'],'')
+    def test_tekstowo_original_only_never_uses_polish_translation(self):
+        url='https://www.tekstowo.pl/dara-rolins/slub'
+        raw='<h1>Dara Rolins - Sľub</h1><div id="songText"><h2>Original</h2><div class="inner-text">Original test line<br>Second line</div><aside>Revision links</aside></div><div id="songTranslation"><div class="inner-text">Translation must not appear</div></div>'
+        result=self.sites.parse('tekstowo',url,raw.encode(),'Dara Rolins','Sľub',provider.same_song,provider.clean_text)
+        self.assertEqual(result['text'],'Original test line\nSecond line')
+        result=self.sites.parse('tekstowo',url,raw.encode(),'Other Artist','Sľub',provider.same_song,provider.clean_text)
+        self.assertEqual(result['text'],'')
+        with self.assertRaises(ValueError):
+            self.sites.parse('tekstowo',url,raw.replace('id="songText"','id="other"').encode(),'Dara Rolins','Sľub',provider.same_song,provider.clean_text)
+    def test_new_hosts_reject_cross_host_redirects_and_unknown_markup(self):
+        for name in ('ujdeto','pisnicky','tekstowo'):
+            self.assertFalse(self.sites.safe_url(name,'https://127.0.0.1/'))
+            with self.assertRaises(ValueError):
+                self.sites.parse(name,'https://'+self.sites.HOSTS[name]+'/',b'<h1>Login required</h1>','Artist','Song',provider.same_song,provider.clean_text)
+    def test_regional_profile_starts_both_primary_catalogues_without_waiting(self):
+        from threading import Barrier
+        import time
+        barrier=Barrier(2);calls=[]
+        def response(request,**kwargs):
+            calls.append(request.full_url)
+            if request.full_url.startswith(provider.SEARCH):
+                barrier.wait(0.5)
+                return io.BytesIO(json.dumps([self.row('Artist','Song')]).encode())
+            if request.full_url.startswith('https://hudba.zoznam.sk/'):
+                barrier.wait(0.5)
+                return io.BytesIO(b'<h1>Artist</h1><h2>Song</h2><div class="song-text-full-width">Original regional text</div>')
+            raise AssertionError('Slow alternatives should not be needed')
+        with tempfile.TemporaryDirectory() as tmp:
+            began=time.monotonic();r=provider.lookup('Artist','Song',Path(tmp),opener=response,profile='skcz',hedge_delay=1)
+            self.assertEqual(r['status'],'found');self.assertLess(time.monotonic()-began,0.6)
+        self.assertEqual(len(calls),2)
+    def test_global_profile_keeps_fast_lrclib_path(self):
+        calls=[]
+        def response(request,**kwargs):calls.append(request.full_url);return io.BytesIO(json.dumps([self.row('Artist','Song')]).encode())
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(provider.lookup('Artist','Song',Path(tmp),opener=response)['status'],'found')
+        self.assertEqual(len(calls),1);self.assertTrue(calls[0].startswith(provider.SEARCH))
+    def test_previous_negative_cache_is_invalidated_for_additional_sources(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);file=folder/(provider.key('Artist','Song')+'.json')
+            file.write_text(json.dumps({'version':4,'saved':1000,'status':'not-found','text':''}))
+            response=lambda *a,**kw:io.BytesIO(json.dumps([self.row('Artist','Song')]).encode())
+            self.assertEqual(provider.lookup('Artist','Song',folder,opener=response,clock=lambda:1001)['status'],'found')
+    def test_official_artist_page_is_recording_scoped_and_requires_its_brand_and_id(self):
+        self.assertEqual(self.sites.initial_urls('roth','Pavel Roth','Another song'),[])
+        url='https://www.pavelroth.cz/texty.htm?skladba=36'
+        raw='<title>Pavel Roth | texty</title><h1>Malinconia (Krásnější než růže)</h1><div class="CDtexty">Original test line<br>Second line</div>'
+        r=self.sites.parse('roth',url,raw.encode(),'08','Krasnejsi nez ruze (Maliconia) - Pavel Roth',provider.same_song,provider.clean_text)
+        self.assertEqual(r['text'],'Original test line\nSecond line')
+        for page,location in [(raw.replace('Pavel Roth | texty','Other site'),url),(raw,url.replace('36','37'))]:
+            with self.assertRaises(ValueError):self.sites.parse('roth',location,page.encode(),'Pavel Roth','Krásnější než růže',provider.same_song,provider.clean_text)
+    def test_new_sources_respect_host_backoff_between_songs(self):
+        from urllib.error import HTTPError
+        calls=[]
+        def response(request,**kwargs):
+            if request.full_url.startswith('https://www.ujdeto.cz/'):
+                calls.append(request.full_url)
+                raise HTTPError(request.full_url,429,'busy',{'Retry-After':'120'},None)
+            raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            self.assertGreaterEqual(provider.lookup('Artist','Song',folder,opener=response,clock=lambda:1000)['retry_after'],120)
+            provider.lookup('Artist','Another song',folder,opener=response,clock=lambda:1001)
+        self.assertEqual(len(calls),1)
+    def test_all_source_failures_stay_bounded_and_are_not_cached_as_a_miss(self):
+        calls=[]
+        def response(request,**kwargs):
+            calls.append(kwargs['timeout']);raise TimeoutError('all sources unavailable')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);r=provider.lookup('Pavel Roth','Krásnější než růže',folder,opener=response,profile='skcz')
+            self.assertEqual(r['status'],'offline');self.assertFalse(list(folder.glob('*.json')))
+        self.assertLessEqual(len(calls),23);self.assertTrue(all(0<t<=10 for t in calls))
 
 
 if __name__=='__main__':unittest.main()

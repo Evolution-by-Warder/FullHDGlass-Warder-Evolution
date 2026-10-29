@@ -99,7 +99,8 @@
           "track_id": 1615992544
         },
         "note": "Different catalogue credit observed; no matching rule or alias changed."
-      }
+      },
+      "test10_artwork": "Real exact-renderer HTTP lookup succeeded; size and SHA-256 in RADIO-COMBINED-ENGINE-CHECKS.json."
     },
     {
       "artist": "Alan Murin",
@@ -111,7 +112,14 @@
         "diagnostic": "not captured"
       },
       "root_cause": "not established from screenshot",
-      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks.",
+      "test10_check": {
+        "status": "found",
+        "characters": 2235,
+        "elapsed_ms": 4989,
+        "text_sha256": "12c7772f26910cb901cef5a396873a922e6afa330749041656f2e8fdabc0c146",
+        "receiver_validated": false
+      }
     },
     {
       "artist": "Martina Schindlerova",
@@ -158,8 +166,19 @@
       "external_source_candidate": {
         "url": "https://www.ujdeto.cz/lyrics/sima-magusinova-martausova/nenahraditelna/",
         "indexed_identity": "Sima Magušinová (Martausová) & For You — Nenahraditeľná",
-        "integrated": false,
-        "automatic_retrieval_verified": false
+        "integrated": true,
+        "automatic_retrieval_verified": true,
+        "candidate_version": "1.0.38-test10"
+      },
+      "test10_check": {
+        "status": "found",
+        "characters": 1071,
+        "elapsed_ms": 4812,
+        "text_sha256": "8e2fc1cb13fa6aab5447bff5c1f7b64a90e64067c9bb38b867d76190b56ab2e8",
+        "sources_found": [
+          "ujdeto"
+        ],
+        "receiver_validated": false
       }
     },
     {
@@ -174,7 +193,13 @@
         "note": "Owner replaced the earlier loading-state screenshot with a completed not-found state."
       },
       "root_cause": "not established from screenshot",
-      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+      "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks.",
+      "test10_check": {
+        "status": "found",
+        "characters": 1151,
+        "elapsed_ms": 3491,
+        "receiver_validated": false
+      }
     },
     {
       "artist": "Samo Tomeček & Free Inna Cage",
@@ -208,7 +233,15 @@
         "installed_version": "not captured",
         "diagnostic": "not captured"
       },
-      "root_cause": "not established from screenshot"
+      "root_cause": "not established from screenshot",
+      "test10_check": {
+        "status": "found",
+        "characters": 962,
+        "elapsed_ms": 5185,
+        "text_sha256": "aca9a4ddf60b5f63e08c98d75ec688d1138b5769315bbf17214ff6e06eb47604",
+        "receiver_validated": false
+      },
+      "test10_artwork": "Real exact-renderer HTTP lookup succeeded; size and SHA-256 in RADIO-COMBINED-ENGINE-CHECKS.json."
     },
     {
       "artist": "Necar Vaclav",
@@ -219,7 +252,15 @@
         "installed_version": "not captured",
         "diagnostic": "not captured"
       },
-      "root_cause": "not established from screenshot"
+      "root_cause": "not established from screenshot",
+      "test10_check": {
+        "status": "found",
+        "characters": 419,
+        "elapsed_ms": 6564,
+        "text_sha256": "ea6564ed9995ba856837137fc5c73237b410a9eaf2900dec844600f5454a64c4",
+        "receiver_validated": false
+      },
+      "test10_artwork": "Real exact-renderer HTTP lookup succeeded; size and SHA-256 in RADIO-COMBINED-ENGINE-CHECKS.json."
     },
     {
       "artist": "08",
@@ -230,7 +271,18 @@
         "installed_version": "not captured",
         "diagnostic": "not captured"
       },
-      "root_cause": "not established from screenshot"
+      "root_cause": "not established from screenshot",
+      "test10_check": {
+        "status": "found",
+        "characters": 814,
+        "elapsed_ms": 6060,
+        "text_sha256": "78f94dc0357e6d3aa1aa42a166f0d7dd9ab0c98f2131dd92a2025130327d961c",
+        "sources_found": [
+          "roth"
+        ],
+        "receiver_validated": false
+      },
+      "test10_artwork": "Real exact-renderer HTTP lookup succeeded; size and SHA-256 in RADIO-COMBINED-ENGINE-CHECKS.json."
     },
     {
       "artist": "David Koller",
@@ -241,7 +293,17 @@
         "installed_version": "not captured",
         "diagnostic": "not captured"
       },
-      "root_cause": "not established from screenshot"
+      "root_cause": "not established from screenshot",
+      "test10_check": {
+        "status": "found",
+        "characters": 1189,
+        "elapsed_ms": 6251,
+        "text_sha256": "525861654c3f6f5a938576b122161f7385ecaca6c7f0ef77c8f305fb0eda1755",
+        "sources_found": [
+          "pisnicky"
+        ],
+        "receiver_validated": false
+      }
     },
     {
       "artist": "Dara Rolins",
@@ -252,7 +314,17 @@
         "installed_version": "not captured",
         "diagnostic": "not captured"
       },
-      "root_cause": "not established from screenshot"
+      "root_cause": "not established from screenshot",
+      "test10_check": {
+        "status": "found",
+        "characters": 1507,
+        "elapsed_ms": 6740,
+        "text_sha256": "2e9a63188f5f0d0cae0f4e1839174fb0e5540b6025ecf4dc3926cb6b4a44beba",
+        "sources_found": [
+          "tekstowo"
+        ],
+        "receiver_validated": false
+      }
     },
     {
       "artist": "Karel Gott",
@@ -430,5 +502,7 @@
     "Keep failures distinct from verified misses; do not weaken artist or version matching merely to display something.",
     "Use mocked network responses for deterministic regression tests; these live observations do not imply guaranteed latency."
   ],
-  "note": "Field observations only. No runtime changes or new IPK were necessary for recording these cases."
+  "note": "Historical receiver observations and earlier checks are preserved. TEST10 adds shared identity, additional adapters and retries; receiver validation is pending.",
+  "test10_report": "docs/RADIO-COMBINED-ENGINE-CHECKS.json",
+  "current_candidate": "1.0.38-test10"
 }
