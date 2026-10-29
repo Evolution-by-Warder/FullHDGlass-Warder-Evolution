@@ -1,0 +1,20 @@
+name: Check requested radio lyric sources
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/radio-lyrics-layout]
+    paths:
+      - diagnostics/check-radio-source-access.py
+      - .github/workflows/radio-source-access-check.yml
+permissions:
+  contents: read
+jobs:
+  public-access:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch only the diagnostic at this exact commit
+        env:
+          DIAGNOSTIC_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/diagnostics/check-radio-source-access.py
+        run: curl --fail --location --max-time 20 --output /tmp/check-radio-source-access.py "$DIAGNOSTIC_URL"
+      - run: python3 /tmp/check-radio-source-access.py
