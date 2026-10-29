@@ -1,9 +1,9 @@
 {
   "enabled": true,
-  "version": "1.0.39",
-  "expected_main_sha": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
-  "authorization": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026 and explicitly requested recording the work, a normal production version and activation of built-in updates.",
-  "changelog": "Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.",
-  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed.",
+  "version": "1.0.41",
+  "expected_main_sha": "47702e420ead82ed2feb39c20e92821869512835",
+  "authorization": "vsetky verzie uved do ostrej prevadzky a zapis vsetko kam treba",
+  "changelog": "Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy.",
+  "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed.",
   "approved_on": "2026-10-29"
 }

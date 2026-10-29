@@ -1,3 +1,9 @@
+# 1.0.41 — 29.10.2026
+
+Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy.
+
+Produkčné povýšenie na výslovný pokyn vlastníka. Verzia 1.0.41 sa v správcovi balíkov radí nad 1.0.40-test2 bez vynucovania downgrade. Jasnejšie farebné návrhy neboli prijaté a nie sú súčasťou vydania.
+
 # 1.0.40-test2 — 29. 10. 2026
 
 - Oprava zahltenia GUI po prepnutí na rádio hláseného v TEST1.

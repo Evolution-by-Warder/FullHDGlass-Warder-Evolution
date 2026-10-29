@@ -1,7 +1,9 @@
 # FullHDGlass Warder Evolution — production
 
-Version **1.0.39** is the owner-authorized production promotion of **1.0.38-test13**, confirmed functional on the receiver on 29 October 2026. Runtime and approved graphics are retained; version labels and history are updated. The next patch number ensures a normal package-manager upgrade from the TEST13 package.
+Version **1.0.41** is the owner-authorized production promotion of the TEST2 radio renderer and ecosystem runtime cleanup, approved 29 October 2026. The owner retained the current 84 columns, 3px/1px geometry, original colours, transparency and motion; brighter preview variants were rejected and restored before this release.
 
-The production updater uses `main/update-production.json` and ordinary raw-GitHub IPK bytes, with SHA256 verification. Feeds activate only after tests, full installed-payload verification and independent public download verification. The 1.0.18 migration bridge in `update.json` and `update-test.json` remains unchanged. The release and exact verification record are in [PRODUCTION.json](PRODUCTION.json).
+Stable 1.0.41 upgrades normally from both production 1.0.39 and candidate 1.0.40-test2. A plain 1.0.40 would sort below the TEST2 package in Debian/opkg-style version ordering, so the patch number advances to 1.0.41.
 
-User confirmation applies to TEST13 on the receiver; a separate physical installation of 1.0.39 or exhaustive coverage of every receiver/image is not claimed. Package identity, saved settings, runtime identifiers, native RDS/DAB ownership and original author credits remain preserved.
+The built-in updater remains `main/update-production.json`, using verified raw-GitHub IPK bytes and SHA256. Feeds activate only after automated checks, every installed-payload byte and independent public download verification. The legacy 1.0.18 bridge in update.json/update-test.json remains unchanged. Existing picon archives and the authoritative live catalogue are preserved.
+
+Package/runtime identities, saved settings, existing lyrics/artwork, RDS/DAB ownership and original author credits remain. This production authorization does not claim exhaustive new physical receiver or CPU measurements. Exact source, release and validation are in [PRODUCTION.json](PRODUCTION.json).

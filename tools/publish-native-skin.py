@@ -118,11 +118,14 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--revision',required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--revision',required=True)
+    parser.add_argument('--preserve-picon-assets',action='store_true',help='Keep the existing canonical live picon packages during a runtime-only release')
+    args=parser.parse_args()
     info=json.loads((ROOT/'packages/test/settings-ui-build.json').read_text())
     approval=json.loads((ROOT/'design/live-update.json').read_text())
     assets=json.loads((ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json').read_text())
-    publish(ROOT/'packages/test'/info['package'],info,args.revision,approval,p.GitHub(os.environ['GH_TOKEN']),assets,Path('/tmp/g17_setup_pict.zip'),Path('/tmp/warder-canonical-picons'))
+    canonical=None if args.preserve_picon_assets else Path('/tmp/warder-canonical-picons')
+    publish(ROOT/'packages/test'/info['package'],info,args.revision,approval,p.GitHub(os.environ['GH_TOKEN']),assets,Path('/tmp/g17_setup_pict.zip'),canonical)
 
 
 if __name__=='__main__':main()

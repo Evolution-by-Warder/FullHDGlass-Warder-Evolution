@@ -1,22 +1,12 @@
-> **Rádio TEST2 (29.10.2026):** opravuje zahltenie GUI hlásené v TEST1. Pohyblivý 3 px equalizér používa hotové priehľadné snímky s minimom práce v prijímači. **TEST1 nepoužívať.** [Podrobnosti a overenie](docs/RADIO-SPECTRUM-PERFORMANCE-2026-10-29.md). Produkcia zostáva 1.0.39.
-
-> Doplnenie Canal+ SK/CZ 27.10.2026: opravené rádiové picony sú už aj vo všetkých 18 operátorských balíkoch (tri rozmery × tri pozadia × dva trhy). [Záznam](docs/PICON-DATA-UPDATES.md).
-
-> Dátové balíky 27.10.2026: opravené Fun Rádio, Melody a regionálne logá Regina vo všetkých troch rozmeroch a pozadiach. DVB-T CZ/SK je dostupné v troch pozadiach. [Podrobnosti](docs/PICON-DATA-UPDATES.md).
-
-> Aktualizácia **1.0.36**: spoločná ponuka IPTV rádiá SK/CZ, tri rozmery a tri pozadia. Picony pre 247 položiek a obnovený bouquet s 321 položkami. [Aktuálne zmeny](docs/CURRENT-RELEASE.md).
-
 # FullHDGlass - Warder Evolution
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
 ## Production release — 29 October 2026
 
-**FullHDGlass 1.0.39** is the owner-authorized production release of the receiver-confirmed TEST13 radio engine. It adds native song lyrics, compact album artwork and verified SK/CZ sources, including working SuperMusic without a shared API token. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.39).
+**FullHDGlass 1.0.41** is the owner-authorized production promotion of TEST2 and runtime cleanup. Original TEST2 colours, 84 columns at 3px/1px, transparency and motion are retained. Pre-rendered playback avoids the expensive per-segment eCanvas path; unnecessary automatic logs and temporary files are retired. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.41).
 
-Production packages and visible version labels use **1.0.39**. This patch number upgrades normally from **1.0.38-test13**. Existing users receive updates through `update-production.json`; the legacy **1.0.18** package transition remains unchanged. Package identity is `enigma2-plugin-skins-fullhdglass-warder-evolution`; runtime identifiers containing `17`, saved settings, native RDS/DAB and weekly radio catalogue updates are preserved.
-
-The owner confirmed TEST13 functional on the receiver. Production promotion retains that runtime and approved artwork. Release checks and exact public IPK hashes are recorded separately; no exhaustive all-device physical test is claimed. Large optional previews remain external, keeping the IPK below the 16 MiB size limit.
+The production updater offers 1.0.41 above stable 1.0.39 and 1.0.40-test2. Package identity and saved settings remain; the historical 1.0.18 bridge stays unchanged. No exhaustive new receiver test is claimed.
 
 ## Historical receiver recovery baseline: 1.0.15
 

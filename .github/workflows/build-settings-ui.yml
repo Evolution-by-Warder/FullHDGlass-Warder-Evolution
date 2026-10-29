@@ -116,6 +116,8 @@ jobs:
           sudo apt-get install -y -qq --no-install-recommends ffmpeg
       - name: Validate settings controllers and layouts
         run: |
+          python3 tools/test-radio-spectrum.py -v
+          python3 tools/test-runtime-cleanup.py -v
           python3 tools/test-radio-background.py -v
           python3 tools/test-radio-lyrics.py -v
           python3 tools/test-setup-style.py -v
@@ -189,4 +191,4 @@ jobs:
               --title "FullHDGlass Warder Evolution ${VERSION}" \
               --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
           fi
-          python3 tools/publish-native-skin.py --revision "$GITHUB_SHA"
+          python3 tools/publish-native-skin.py --revision "$GITHUB_SHA" --preserve-picon-assets

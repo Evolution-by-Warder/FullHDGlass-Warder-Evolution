@@ -2,16 +2,16 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "approved_on": "2026-10-29",
-  "production_version": "1.0.39",
+  "production_version": "1.0.41",
   "approved_by": "repository owner",
-  "authorization": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026 and explicitly requested recording the work, a normal production version and activation of built-in updates.",
+  "authorization": "vsetky verzie uved do ostrej prevadzky a zapis vsetko kam treba",
   "baseline": {
-    "version": "1.0.38-test13",
-    "source_commit": "83d4c2132c4d8a538c34574b5491aa0942363164",
-    "sha256": "5598f065261b4d935d63003c818280e315ec91e047700e1ccdc3ddaf2f1008b3",
-    "bytes": 14515418
+    "version": "1.0.40-test2",
+    "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
+    "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
+    "bytes": 14759486
   },
-  "scope": "Promote receiver-confirmed TEST13 radio engine and approved graphics to production; change version labels/history and publish the verified raw-GitHub update. Preserve settings, package/runtime identities, RDS/DAB and the legacy bridge.",
+  "scope": "Promote original TEST2 spectrum and runtime cleanup to stable; activate verified updater, preserve graphics, picon assets, settings and legacy bridge.",
   "preview_assets": {
     "help": {
       "filename": "g17_setup_pict.zip",
@@ -26,18 +26,18 @@
       "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-infobar-types.zip"
     }
   },
-  "version_policy": "Use 1.0.39 so both the package manager and receiver updater order the stable package above 1.0.38-test13 without downgrade flags.",
+  "version_policy": "1.0.41 sorts above 1.0.40-test2 in both receiver update comparison and package-manager version ordering.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "744075b582e26b36b5a1a25e6f00fd8450ac5123",
+  "expected_main_sha": "47702e420ead82ed2feb39c20e92821869512835",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
-    "version": "1.0.37",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk",
-    "sha256": "793886a459d8a3a142bd06df5525ad7603c8773637ef31d0942050d6801e1879",
-    "changelog": "Tiché týždenné obnovenie Warder Radio Streams z nášho Gitu. Vlastné slovenské a české stanice zostávajú na začiatku. Kontrola SHA256, záloha posledného zoznamu a načítanie bez hlášok, reštartu GUI alebo prerušenia prehrávania.",
-    "tag": "v1.0.37",
-    "bytes": 14273526,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.37/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.37_all.ipk"
+    "version": "1.0.39",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk",
+    "sha256": "7bec211d1ad8ce2864a01c19a63f719de983345258eecfece03669efb898f246",
+    "changelog": "Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.",
+    "tag": "v1.0.39",
+    "bytes": 14515826,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.39/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk"
   },
-  "receiver_validation": "Owner confirmed TEST13 SuperMusic functional on the receiver on 29 October 2026. Production 1.0.39 retains that runtime and approved radio design, with version labels and release history updated. No exhaustive all-device test or separate physical installation of 1.0.39 is claimed."
+  "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed."
 }

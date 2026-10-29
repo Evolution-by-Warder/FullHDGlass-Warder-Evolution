@@ -26,5 +26,8 @@
   "backend": "pre-rendered PNG frames; one ePixmap update per tick",
   "frames": 48,
   "decoded_rgba_bytes_max": 8467200,
-  "receiver_report_test1": "severe GUI unresponsiveness after switching to radio"
+  "receiver_report_test1": "severe GUI unresponsiveness after switching to radio",
+  "production_version": "1.0.41",
+  "production_authorization": "vsetky verzie uved do ostrej prevadzky a zapis vsetko kam treba",
+  "colour_decision": "Owner kept original TEST2 colours and rejected both brighter previews; all source frames restored unchanged."
 }

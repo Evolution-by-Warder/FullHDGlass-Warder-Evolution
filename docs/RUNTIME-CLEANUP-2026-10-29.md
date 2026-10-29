@@ -13,4 +13,4 @@ Prejdený celý inštalovaný zdrojový runtime: **108 Python modulov**, inštal
 
 Inštalačné kroky odstránia iba presne pomenované vlastné staré logy, ak ide o bežné súbory a nie symbolické odkazy. Neodstraňujú cudzie logy ani všeobecné priečinky. Nastavenia, nainštalované picony a používateľské obrázky zostávajú zachované.
 
-Kandidát je určený na overenie v prijímači. Statická kontrola a simulované Enigma2 rozhrania nepotvrdzujú fyzické správanie na všetkých boxoch. Produkčné aktualizačné feedy zostávajú nezmenené. Žiadne tvrdenie o čistení už bežiaceho prijímača: zmeny sa uplatnia po inštalácii nového balíka.
+Produkčné povýšenie 1.0.41 schválil vlastník 29.10.2026. Statická kontrola a simulované Enigma2 rozhrania nepotvrdzujú fyzické správanie na všetkých boxoch. Produkčný aktualizátor sa aktivuje až po overení vydaného balíka; legacy bridge zostáva nezmenený. Žiadne tvrdenie o čistení už bežiaceho prijímača: zmeny sa uplatnia po inštalácii nového balíka.

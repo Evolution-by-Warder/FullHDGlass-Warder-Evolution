@@ -1,6 +1,6 @@
 {
   "repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
-  "commit": "1440264fa739c42372410bc43efdea8bbaf3d5b7",
+  "commit": "2dc74563c629cad562c85def4cb5d16ca77bbdc6",
   "source_path": "plugin/src/Plugins/Extensions/WarderPiconHub",
   "policy": "Exact canonical Warder engine/parser/model copies. GUI is provided by the host application. One data source and the same installation lock as PiconHub; do not independently fork these files.",
   "sha256": {
