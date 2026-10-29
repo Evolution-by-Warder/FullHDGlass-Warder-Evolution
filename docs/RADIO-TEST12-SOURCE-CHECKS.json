@@ -787,5 +787,403 @@
     ],
     "availability_check": "found"
   },
-  "candidate_priority": "Verified search links are fetched immediately before fallback mirror search; regression test records and rejects a premature mirror request."
+  "candidate_priority": "Verified search links are fetched immediately before fallback mirror search; regression test records and rejects a premature mirror request.",
+  "additional_live_field_checks": {
+    "instinct-lyrics": {
+      "artist": "Instinct",
+      "title": "Dozadu",
+      "status": "found",
+      "characters": 1039,
+      "text_sha256": "3de0ae00832c298d1893bae0892786b45e04b7fe5b11f09a6cf2d982223d8a5b",
+      "diagnostic": {
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "found",
+        "cache_hit": false,
+        "elapsed_ms": 19986,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10019
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10019
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10015
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10017
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10017
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "http-error",
+            "http": 403,
+            "elapsed_ms": 8869
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 7916
+          },
+          {
+            "source": "karaoke",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10008
+          },
+          {
+            "source": "kytary",
+            "variant": 1,
+            "status": "request-error",
+            "error": "URLError",
+            "elapsed_ms": 10011
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 1205
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 997
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 1719
+          },
+          {
+            "source": "karaoke",
+            "variant": 2,
+            "status": "links",
+            "elapsed_ms": 4912
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 2147
+          },
+          {
+            "source": "kytary",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 1951
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "not-found",
+            "elapsed_ms": 4411
+          },
+          {
+            "source": "karaoke",
+            "variant": 3,
+            "status": "found",
+            "elapsed_ms": 4305
+          }
+        ]
+      }
+    },
+    "instinct-cover": {
+      "artist": "Instinct",
+      "title": "Dozadu",
+      "found": true,
+      "real_http": true,
+      "log": [
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "LOOKUP country=CZ artist='Instinct' title='Dozadu' results=1",
+        "READY path=/tmp/tmpog10iwc0/6e46489d17aaf4bcb97b3316bb500725d195528e.jpg"
+      ],
+      "bytes": 93143,
+      "sha256": "c492f64b18508b5063d33591116da23a36c9f98e22d0604ab68f03d933b5bca8"
+    },
+    "lucie-hodiny": {
+      "artist": "Lucie Vondrackova",
+      "title": "Hodiny Duchu",
+      "status": "offline",
+      "characters": 0,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Lucie Vondrackova",
+        "title": "Hodiny Duchu",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 16923,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5980
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 7062
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5791
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 6653
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 11003
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "http-error",
+            "http": 403,
+            "elapsed_ms": 4660
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5882
+          },
+          {
+            "source": "karaoke",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5888
+          },
+          {
+            "source": "kytary",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5872
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 6714
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4911
+          },
+          {
+            "source": "kytary",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 8393
+          },
+          {
+            "source": "karaoke",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 6832
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 4179
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "not-found",
+            "elapsed_ms": 4881
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5165
+          }
+        ]
+      }
+    },
+    "lucie-hodiny-cover": {
+      "artist": "Lucie Vondrackova",
+      "title": "Hodiny Duchu",
+      "real_http": true,
+      "found": false,
+      "archive_disabled_for_isolation": true,
+      "bytes": 0,
+      "sha256": null,
+      "log": [
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "CATALOGUE_ERROR country=CZ error=URLError",
+        "CATALOGUE_ERROR country=US error=URLError",
+        "CATALOGUE_ERROR country=SK error=URLError",
+        "NO_EXACT artist='Lucie Vondrackova' title='Hodiny Duchu'"
+      ]
+    },
+    "hana-den-noc": {
+      "artist": "Hana Horecka",
+      "title": "Den a noc",
+      "status": "offline",
+      "characters": 0,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": {
+        "artist": "Hana Horecka",
+        "title": "Den a noc",
+        "status": "offline",
+        "cache_hit": false,
+        "elapsed_ms": 16845,
+        "requests": [
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5979
+          },
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 7066
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 6534
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 6626
+          },
+          {
+            "source": "ujdeto",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 10738
+          },
+          {
+            "source": "pisnicky",
+            "variant": 1,
+            "status": "http-error",
+            "http": 403,
+            "elapsed_ms": 4707
+          },
+          {
+            "source": "tekstowo",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5870
+          },
+          {
+            "source": "karaoke",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5855
+          },
+          {
+            "source": "kytary",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 5861
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5871
+          },
+          {
+            "source": "karaoke",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 6781
+          },
+          {
+            "source": "kytary",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 8439
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 4793
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4518
+          },
+          {
+            "source": "ujdeto",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 5353
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "http-error",
+            "http": 503,
+            "retry_after": 1,
+            "elapsed_ms": 4158
+          }
+        ]
+      }
+    }
+  },
+  "lyricfind_access_report": "docs/RADIO-LYRICFIND-ACCESS-CHECKS.json"
 }

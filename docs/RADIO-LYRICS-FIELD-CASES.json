@@ -655,6 +655,24 @@
       },
       "test12_assessment": "Fresh configured-source check did not return text. LyricFind is not yet integrated; do not claim content absent.",
       "receiver_validated": false
+    },
+    {
+      "artist": "Instinct",
+      "title": "Dozadu",
+      "test12_assessment": "Owner reported missing cover and lyrics; TEST12 live check found both. Lyrics 1039 characters from KaraokeTexty; artwork 93143 bytes. Not yet receiver-validated.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Lucie Vondrackova",
+      "title": "Hodiny Duchu",
+      "test12_assessment": "Screenshot shows missing cover and retrying lyrics. Fresh TEST12 check returned offline, not a catalogue absence assertion. All four catalogue artwork requests failed with URLError; no successful cover download.",
+      "receiver_validated": false
+    },
+    {
+      "artist": "Hana Horecka",
+      "title": "Den a noc",
+      "test12_assessment": "Screenshot shows an album cover and retrying lyrics. Fresh TEST12 lyrics check returned offline; no text recovered.",
+      "receiver_validated": false
     }
   ],
   "follow_up": [
@@ -666,6 +684,7 @@
   "test10_report": "docs/RADIO-COMBINED-ENGINE-CHECKS.json",
   "current_candidate": "1.0.38-test12",
   "test11_report": "docs/RADIO-TEST11-FIELD-CHECKS.json",
-  "candidate_source_commit": "1099a161c9f1d649a1a9905a062008f1cf689a6a",
-  "test12_report": "docs/RADIO-TEST12-SOURCE-CHECKS.json"
+  "candidate_source_commit": "096a60ca0bb589c648a617314f3b4066a4c82236",
+  "test12_report": "docs/RADIO-TEST12-SOURCE-CHECKS.json",
+  "lyricfind_report": "docs/RADIO-LYRICFIND-ACCESS-CHECKS.json"
 }

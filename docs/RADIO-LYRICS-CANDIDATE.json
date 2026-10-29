@@ -106,6 +106,13 @@
       }
     ],
     "field_details": "docs/RADIO-TEST12-SOURCE-CHECKS.json",
-    "lyricfind": "Not integrated; a second access test is being run from GitHub. Local failure does not establish failure in the receiver or user browser."
+    "lyricfind": {
+      "report": "docs/RADIO-LYRICFIND-ACCESS-CHECKS.json",
+      "home_http": 200,
+      "tested_song_pages": 4,
+      "song_page_http": 403,
+      "integrated": false,
+      "receiver_checked": false
+    }
   }
 }

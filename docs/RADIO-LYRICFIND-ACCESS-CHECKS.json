@@ -1,0 +1,262 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "candidate": "1.0.38-test12",
+  "source_commit": "096a60ca0bb589c648a617314f3b4066a4c82236",
+  "environment": "GitHub Actions ubuntu-latest, anonymous Python urllib HTTPS; separate from user browser and receiver",
+  "runs": [
+    40842827924,
+    40843119488
+  ],
+  "first_probe": [
+    {
+      "url": "https://lyrics.lyricfind.com/",
+      "status": 200,
+      "final_url": "https://lyrics.lyricfind.com/",
+      "bytes": 498211,
+      "sha256": "551074ada669101ddcd7bcf6c69f10e47031cad574cfedebf6d6baa7fe27415f",
+      "headings": [],
+      "classes": [
+        [
+          "MuiTypography-root",
+          404
+        ],
+        [
+          "MuiBox-root",
+          232
+        ],
+        [
+          "carouselCard",
+          189
+        ],
+        [
+          "MuiButtonBase-root",
+          180
+        ],
+        [
+          "MuiPaper-root",
+          165
+        ],
+        [
+          "MuiTypography-body1",
+          162
+        ],
+        [
+          "MuiPaper-rounded",
+          162
+        ],
+        [
+          "css-1uq9ofw",
+          159
+        ],
+        [
+          "MuiPaper-outlined",
+          159
+        ],
+        [
+          "MuiCard-root",
+          159
+        ],
+        [
+          "songCard",
+          159
+        ],
+        [
+          "css-cruxcs",
+          159
+        ],
+        [
+          "MuiCardActionArea-root",
+          159
+        ],
+        [
+          "css-ehli6g",
+          159
+        ],
+        [
+          "MuiCardHeader-root",
+          159
+        ],
+        [
+          "css-1d8cr9m",
+          159
+        ],
+        [
+          "MuiCardHeader-avatar",
+          159
+        ],
+        [
+          "css-1p83tvv",
+          159
+        ],
+        [
+          "MuiCardHeader-content",
+          159
+        ],
+        [
+          "css-11qjisw",
+          159
+        ]
+      ],
+      "scripts": [
+        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+        "https://consent.cookiebot.com/uc.js",
+        "https://www.googletagmanager.com/gtag/js",
+        "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "/_next/static/chunks/webpack-2da1769ff35eb1ed.js",
+        "/_next/static/chunks/framework-b9fd9bcc3ecde907.js",
+        "/_next/static/chunks/main-e72e61353f7e52fe.js",
+        "/_next/static/chunks/pages/_app-7847a10fc43a76bc.js"
+      ],
+      "forms": [],
+      "inputs": [],
+      "links": [
+        "/lyrics/ella-langley-choosin-texas",
+        "/lyrics/pupsies-misery",
+        "/lyrics/morgan-wallen-i-cant-love-you-anymore",
+        "/lyrics/stella-lefty-boston",
+        "/lyrics/taylor-swift-i-knew-it-i-knew-you",
+        "/lyrics/alyssa-grace-bloodstream",
+        "/lyrics/malcolm-todd-earrings",
+        "/lyrics/michael-jackson-billie-jean-1"
+      ],
+      "has_next_data": true,
+      "has_nuxt": false
+    },
+    {
+      "url": "https://lyrics.lyricfind.com/lyrics/adele-someone-like-you-2",
+      "status": 403,
+      "final_url": "https://lyrics.lyricfind.com/lyrics/adele-someone-like-you-2",
+      "bytes": 919,
+      "sha256": "8e3ea22584dc3a3d7b0ead6942c153953f4bdf22de900d69757f3f748191bbc9",
+      "headings": [
+        "403 ERROR",
+        "The request could not be satisfied."
+      ],
+      "classes": [],
+      "scripts": [],
+      "forms": [],
+      "inputs": [],
+      "links": [],
+      "has_next_data": false,
+      "has_nuxt": false
+    },
+    {
+      "url": "https://www.supermusic.sk/piesen.php?idpiesne=330895",
+      "status": 200,
+      "final_url": "https://www.supermusic.cz/piesen.php?idpiesne=330895",
+      "bytes": 552,
+      "sha256": "b4e3eb315f6df8f0d8e914ebabd4dcc2c0d6b49f62de658d6031f5a1561eeaba",
+      "headings": [],
+      "classes": [],
+      "scripts": [
+        "/js/smc.js"
+      ],
+      "forms": [],
+      "inputs": [],
+      "links": [],
+      "has_next_data": false,
+      "has_nuxt": false
+    }
+  ],
+  "second_probe": [
+    {
+      "type": "SCHEMA",
+      "url": "https://lyrics.lyricfind.com",
+      "status": 200,
+      "build_id": "Y1L29cJF6dNx0WV4ccAfa",
+      "page": "/",
+      "outline": {
+        "pageProps": {
+          "dehydratedState": {
+            "mutations": {
+              "length": 0,
+              "first": null
+            },
+            "queries": {
+              "length": 3,
+              "first": {
+                "state": {
+                  "data": "dict",
+                  "dataUpdateCount": "int",
+                  "dataUpdatedAt": "int",
+                  "error": "NoneType",
+                  "errorUpdateCount": "int",
+                  "errorUpdatedAt": "int",
+                  "fetchFailureCount": "int",
+                  "fetchFailureReason": "NoneType",
+                  "fetchMeta": "NoneType",
+                  "isInvalidated": "bool",
+                  "status": "str",
+                  "fetchStatus": "str"
+                },
+                "queryKey": "[redacted]",
+                "queryHash": {
+                  "string_length": 26
+                }
+              }
+            }
+          },
+          "countryCode": {
+            "string_length": 2
+          },
+          "isSignedIn": false
+        },
+        "locale": {
+          "string_length": 5
+        },
+        "__N_SSP": true
+      }
+    },
+    {
+      "type": "PAGE",
+      "url": "https://lyrics.lyricfind.com/lyrics/ella-langley-choosin-texas",
+      "status": 403,
+      "bytes": 919,
+      "heads": [
+        "403 ERROR",
+        "The request could not be satisfied."
+      ],
+      "classes": [],
+      "outline": {}
+    },
+    {
+      "type": "PAGE",
+      "url": "https://lyrics.lyricfind.com/lyrics/pupsies-misery",
+      "status": 403,
+      "bytes": 919,
+      "heads": [
+        "403 ERROR",
+        "The request could not be satisfied."
+      ],
+      "classes": [],
+      "outline": {}
+    },
+    {
+      "type": "PAGE",
+      "url": "https://lyrics.lyricfind.com/lyrics/michael-jackson-billie-jean-1",
+      "status": 403,
+      "bytes": 919,
+      "heads": [
+        "403 ERROR",
+        "The request could not be satisfied."
+      ],
+      "classes": [],
+      "outline": {}
+    },
+    {
+      "type": "SEARCH",
+      "url": "/_next/static/chunks/pages/_app-7847a10fc43a76bc.js",
+      "status": 200,
+      "bytes": 299608,
+      "routes": []
+    }
+  ],
+  "lyrics_saved_in_git": false,
+  "conclusion": "Home and public JavaScript returned HTTP 200. Four tested lyric pages returned HTTP 403, including current links extracted from the live home page. No working lyrics or search adapter was verified. This does not establish global unavailability or absence of any song.",
+  "receiver_checked": false,
+  "user_browser_report": "Owner reports home page works and found Kali & Tina / Aj keby quickly; exact song URL not captured.",
+  "runtime_adapter_added": false,
+  "temporary_workflow_removed_after_checks": true,
+  "next_step": "Check the owner's exact song-page URL and receiver access before treating LyricFind as a usable source. Do not bypass access restrictions or invent API credentials."
+}
