@@ -8,6 +8,7 @@ import re
 import time
 
 from lyricsgenius import Genius
+from lyricsgenius.api import PublicAPI
 
 logging.disable(logging.CRITICAL)
 
@@ -39,6 +40,17 @@ def run(label, action):
 
 
 if __name__ == '__main__':
-    client = Genius(timeout=5, retries=0, sleep_time=0)
+    # No authenticated developer API can be exercised without the owner's token.
+    # Use the library's public client and the same unmodified lyric-page method.
+    # An explicit empty token avoids the library reading GENIUS_ACCESS_TOKEN;
+    # PublicAPI does not send an Authorization header.
+    class PublicLyricsClient(PublicAPI):
+        lyrics = Genius.lyrics
+        remove_section_headers = False
+    print('LYRICSGENIUS_CHECK ' + json.dumps({
+        'step': 'authenticated-api', 'status': 'not-tested-no-token',
+        'library_version': version('lyricsgenius'), 'token_supplied': False,
+        'lyrics_logged': False}), flush=True)
+    client = PublicLyricsClient(access_token='', timeout=5, retries=0, sleep_time=0)
     run('public-search', lambda: client.search_all('Instinct Dozadu'))
     run('direct-song-page', lambda: client.lyrics(song_url='https://genius.com/Abba-dancing-queen-lyrics'))
