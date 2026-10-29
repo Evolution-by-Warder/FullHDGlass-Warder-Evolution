@@ -4100,5 +4100,10 @@
       "bytes": 10823938,
       "sha256": "e25ca624c58f6393b9a164bade7f3b32a26efa393bc13c1f6c824e8879fccc87"
     }
-  ]
+  ],
+  "public_verification": {
+    "ref": "release/europe-picons-20261029",
+    "verified_parts": 137,
+    "all_sizes_and_sha256_match": true
+  }
 }
