@@ -24,5 +24,9 @@
     "receiver_verified": false
   },
   "pull_request": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/9",
-  "production_feed_activated": false
+  "production_feed_activated": false,
+  "status": "withdrawn_after_owner_reported_radio_GUI_overload",
+  "owner_receiver_report": "GUI nearly unresponsive after switching to radio on TEST1",
+  "superseded_by_candidate": "1.0.40-test2",
+  "superseded_by_release": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-spectrum-1.0.40-test2"
 }

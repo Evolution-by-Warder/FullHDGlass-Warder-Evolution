@@ -1,3 +1,7 @@
+# Candidate 1.0.40-test2 — radio GUI load fix, 29 October 2026
+
+Owner reports severe GUI unresponsiveness after switching to radio on TEST1 and explicitly requests minimal CPU use while keeping the approved appearance. The old 20fps eCanvas path issued thousands of individual fillRect calls per second, each creating a native painter and invalidating a region. TEST2 replaces it with pre-rendered transparent 350x126 frames through ePixmap, one update per 100ms, no runtime geometry/colour computation, single-shot rearming after work, native-parent visibility checks, shared lazy 48-frame decode cache (8.1 MiB RGBA pixel budget). All approved columns/spacing/positions preserved. See `docs/RADIO-SPECTRUM-PERFORMANCE-2026-10-29.md`. TEST1 is unsuitable following this receiver report; TEST2 requires receiver confirmation. Production feeds remain 1.0.39.
+
 # Candidate 1.0.40-test1 — spectrum and ecosystem runtime cleanup, 29 October 2026
 
 Owner approved the 84-column, 3px / 1px, transparent 350x126 animated colour spectrum and requested replacing it in the skin, then auditing all three Warder receiver plugins for unnecessary logs and transient files. Implemented on `feature/radio-spectrum-refinement`. Production remains 1.0.39; no physical receiver confirmation or feed activation is claimed. See `docs/RUNTIME-CLEANUP-2026-10-29.md`, its source hashes, and `design/radio-spectrum/approval.json`. The shared engine is byte-identical to the PiconHub cleanup candidate recorded in `warderRadioCore/SOURCE.json`.

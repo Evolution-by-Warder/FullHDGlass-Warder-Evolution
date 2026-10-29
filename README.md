@@ -1,3 +1,5 @@
+> **Rádio TEST2 (29.10.2026):** opravuje zahltenie GUI hlásené v TEST1. Pohyblivý 3 px equalizér používa hotové priehľadné snímky s minimom práce v prijímači. **TEST1 nepoužívať.** [Podrobnosti a overenie](docs/RADIO-SPECTRUM-PERFORMANCE-2026-10-29.md). Produkcia zostáva 1.0.39.
+
 > Doplnenie Canal+ SK/CZ 27.10.2026: opravené rádiové picony sú už aj vo všetkých 18 operátorských balíkoch (tri rozmery × tri pozadia × dva trhy). [Záznam](docs/PICON-DATA-UPDATES.md).
 
 > Dátové balíky 27.10.2026: opravené Fun Rádio, Melody a regionálne logá Regina vo všetkých troch rozmeroch a pozadiach. DVB-T CZ/SK je dostupné v troch pozadiach. [Podrobnosti](docs/PICON-DATA-UPDATES.md).

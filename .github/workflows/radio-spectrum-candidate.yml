@@ -73,3 +73,8 @@ jobs:
           gh release create "radio-spectrum-${VERSION}" "$PACKAGE" "$PACKAGE.sha256" \
             --target "$GITHUB_SHA" --prerelease --latest=false \
             --title "FullHDGlass ${VERSION}: spectrum and runtime cleanup" --notes-file docs/CURRENT-RELEASE.md
+          if [ "$VERSION" = "1.0.40-test2" ]; then
+            gh release edit radio-spectrum-1.0.40-test1 --prerelease --latest=false \
+              --title "FullHDGlass 1.0.40-test1: WITHDRAWN - radio GUI overload" \
+              --notes-file docs/RADIO-SPECTRUM-TEST1-WITHDRAWN.md
+          fi

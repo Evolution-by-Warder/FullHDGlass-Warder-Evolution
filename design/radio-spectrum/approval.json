@@ -16,11 +16,15 @@
   "occupied_width": 335,
   "segment_height": 2,
   "segment_pitch": 3,
-  "background": "native fully transparent gRGB alpha 255 clear",
-  "palette": "360 cached HSL colours; blue/cyan/green/yellow/orange/red, gentle temporal drift; no neon layers",
-  "render_interval_ms": 50,
+  "background": "fully transparent PNG alpha 0; native ePixmap alphatest 1",
+  "palette": "360 baked HSL colours; blue/cyan/green/yellow/orange/red with drift; no neon",
+  "render_interval_ms": 100,
   "independent_target_interval_ms": 110,
   "receiver_validated": false,
-  "candidate_version": "1.0.40-test1",
-  "previous_production": "1.0.39"
+  "candidate_version": "1.0.40-test2",
+  "previous_production": "1.0.39",
+  "backend": "pre-rendered PNG frames; one ePixmap update per tick",
+  "frames": 48,
+  "decoded_rgba_bytes_max": 8467200,
+  "receiver_report_test1": "severe GUI unresponsiveness after switching to radio"
 }

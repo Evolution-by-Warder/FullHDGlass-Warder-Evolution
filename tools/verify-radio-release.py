@@ -28,6 +28,17 @@ def digest_graphics():
         assert path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256'],relative
         pinned.add(path)
     assert {p for p in (PAYLOAD/prefix/'images').rglob('*.png')}=={p for p in pinned if p.suffix=='.png'}|{header}
+    # Independently pinned spectrum-only frames. Keep every previously frozen
+    # image and layout in the original digest; do not reset that baseline.
+    spectrum=json.loads((ROOT/'design/radio-spectrum/frames.json').read_text())
+    frame_root='usr/share/enigma2/hd_glass17/warder-spectrum/'
+    expected={frame_root+'frame-%02d.png' % i for i in range(48)}
+    assert {entry['path'] for entry in spectrum['assets']}==expected
+    assert {path.relative_to(PAYLOAD).as_posix() for path in (PAYLOAD/frame_root).rglob('*') if path.is_file()}==expected
+    for entry in spectrum['assets']:
+        path=PAYLOAD/entry['path']
+        assert path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256']
+        pinned.add(path)
     digest = hashlib.sha256()
     for path in sorted(PAYLOAD.rglob("*")):
         if path==header or path in pinned:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.

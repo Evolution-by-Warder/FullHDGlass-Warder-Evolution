@@ -9,7 +9,7 @@ Prejdený celý inštalovaný zdrojový runtime: **108 Python modulov**, inštal
 - Opravené upratovanie screenshotov, čiastočného IPK, JSON cache a celého dočasného rozbalenia piconov.
 - Privátna RAM cache obalov má limit 128 obrázkov / 32 MiB. PROGRAM INFO má osobitne 128 metadát / 2 MiB a 128 obrázkov / 32 MiB. Aktuálny súbor, odkazy a neznáme mená sa nemažú.
 - Zdieľaný PiconHub Stage uprace aj zlyhanie vytvorenia pracovných podpriečinkov; kanonický modul zostáva byte-identický v oboch projektoch.
-- Schválený equalizér: 84 stĺpcov × 3 px, medzery 1 px, priehľadnosť, 360 odtieňov, 350 × 126 px. Pri skrytí sa timer zastaví aj pri následnej zmene zdroja.
+- Schválený equalizér: 84 stĺpcov × 3 px, medzery 1 px, priehľadnosť, 360 odtieňov, 350 × 126 px. TEST2 používa hotové snímky ePixmap namiesto segmentového eCanvas; pri skrytí sa animácia zastaví aj pri následnej zmene zdroja. Podrobnosti: RADIO-SPECTRUM-PERFORMANCE-2026-10-29.md.
 
 Inštalačné kroky odstránia iba presne pomenované vlastné staré logy, ak ide o bežné súbory a nie symbolické odkazy. Neodstraňujú cudzie logy ani všeobecné priečinky. Nastavenia, nainštalované picony a používateľské obrázky zostávajú zachované.
 

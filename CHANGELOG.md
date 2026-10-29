@@ -1,3 +1,11 @@
+# 1.0.40-test2 — 29. 10. 2026
+
+- Oprava zahltenia GUI po prepnutí na rádio hláseného v TEST1.
+- Jemný 3 px equalizér používa hotové priehľadné snímky cez ePixmap: jeden obrazový update za 100 ms, bez vykresľovania jednotlivých segmentov v boxe.
+- Jednorazový timer sa obnoví až po práci; kontroluje aj viditeľnosť rodiča. Skrytie zastaví animáciu a zmeny metadát nepridávajú kreslenie.
+- 48 snímok sa načítava postupne a zdieľa medzi obrazovkami, najviac 8.1 MiB RGBA pixelov. Žiadne pracovné zápisy, dekódovanie zvuku ani nová závislosť v prijímači.
+- TEST1 nepoužívať; TEST2 čaká na overenie odozvy prijímača. Produkčný aktualizátor zostáva na 1.0.39.
+
 # 1.0.40-test1 — 29. 10. 2026
 
 Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadné pozadie, plynulé farby. Vypnuté automatické diagnostické logy, opravené upratovanie dočasných súborov a ohraničené RAM cache.

@@ -83,7 +83,7 @@
     },
     {
       "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioSpectrum.py",
-      "sha256": "ad8ba46b36d5eb93d9d998bd269c30137085a4ba4a9f445ede4b472f0c6e8277"
+      "sha256": "652f346d3f54cd9545d12dc9914b085a7199f2c5688ac761a5b4c276b1892ea1"
     },
     {
       "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py",
@@ -275,7 +275,7 @@
     },
     {
       "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
-      "sha256": "aa2506612db4ea71e5c87af7ce6dae705074b462ed016f61b0d8361b347da507"
+      "sha256": "8adc0650614391e0bfe36445bd14e4a184ff3379f504196bd422e05018b5085b"
     },
     {
       "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/py38.py",
@@ -448,6 +448,6 @@
     "Opravené upratovanie screenshotov, čiastočného IPK, JSON cache a celého dočasného rozbalenia piconov.",
     "Privátna RAM cache obalov má limit 128 obrázkov / 32 MiB. PROGRAM INFO má osobitne 128 metadát / 2 MiB a 128 obrázkov / 32 MiB. Aktuálny súbor, odkazy a neznáme mená sa nemažú.",
     "Zdieľaný PiconHub Stage uprace aj zlyhanie vytvorenia pracovných podpriečinkov; kanonický modul zostáva byte-identický v oboch projektoch.",
-    "Schválený equalizér: 84 stĺpcov × 3 px, medzery 1 px, priehľadnosť, 360 odtieňov, 350 × 126 px. Pri skrytí sa timer zastaví aj pri následnej zmene zdroja."
+    "Schválený equalizér: 84 stĺpcov × 3 px, medzery 1 px, priehľadnosť, 360 odtieňov, 350 × 126 px. TEST2 používa pripravené snímky ePixmap; onHide zastaví timer, zmena zdroja ho znovu nespustí."
   ]
 }

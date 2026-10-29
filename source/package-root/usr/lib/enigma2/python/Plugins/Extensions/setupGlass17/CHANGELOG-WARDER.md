@@ -1,3 +1,6 @@
+FullHDGlass Warder Evolution 1.0.40-test2 — 29.10.2026
+Oprava zahltenia rádia v TEST1: hotové priehľadné snímky, jeden ePixmap update / 100 ms, bez tisícov eCanvas operácií. Zachované 84 stĺpcov 3 px / medzery 1 px, farby a 350 × 126 px. Postupné zdieľané načítanie 48 snímok; timer sa obnoví až po práci, pri skrytí animácia stojí. TEST2 čaká na overenie v boxe; produkcia zostáva 1.0.39.
+
 FullHDGlass Warder Evolution 1.0.40-test1 — 29.10.2026
 Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadné pozadie, plynulé farby. Vypnuté automatické diagnostické logy, opravené upratovanie dočasných súborov a ohraničené RAM cache.
 Testovací balík; fyzické overenie na prijímači čaká.

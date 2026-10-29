@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "test1_source_commit": "4e6c36da2c93a68e082748c32ebb8816a8ab7efb",
+  "method": "Count native drawing API calls using stubs; host Python timing excludes real native rendering and is NOT receiver CPU measurement.",
+  "test1": {
+    "frames": 600,
+    "simulated_seconds": 30,
+    "fill_rect_calls": 895742,
+    "clear_calls": 600,
+    "fill_rect_calls_per_second": 29858.1,
+    "python_process_seconds_host": 0.884365
+  },
+  "test2": {
+    "frames": 300,
+    "simulated_seconds": 30,
+    "set_pixmap_calls": 300,
+    "updates_per_second_max": 10,
+    "extra_decodes_after_warmup": 0,
+    "python_process_seconds_host": 0.000314
+  },
+  "first_baked_frame_pixel_identical_to_test1": true,
+  "receiver_measured": false
+}
