@@ -19,7 +19,7 @@ jobs:
           with urlopen(Request(u,headers={'User-Agent':'Mozilla/5.0'}),timeout=15) as r:
               raw=r.read(64000);status=r.status
           text=raw.decode('utf-8','replace')
-          terms=['crypto.subtle','digest(','fetch(','JSON.stringify','document.cookie','location.','data-n','data-l']
+          terms=['crypto.subtle','digest(','fetch(','JSON.stringify','document.cookie','location.','data-n','data-l','function fnv','window.location.replace']
           snippets=[]
           for term in terms:
               p=text.find(term)
