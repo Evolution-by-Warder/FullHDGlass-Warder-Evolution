@@ -254,11 +254,11 @@
   ],
   "lyrics_saved_in_git": false,
   "conclusion": "Home and public JavaScript returned HTTP 200. Four tested lyric pages returned HTTP 403, including current links extracted from the live home page. No working lyrics or search adapter was verified. This does not establish global unavailability or absence of any song.",
-  "receiver_checked": false,
+  "receiver_checked": true,
   "user_browser_report": "Owner reports home page works and found Kali & Tina / Aj keby quickly; exact song URL not captured.",
   "runtime_adapter_added": false,
   "temporary_workflow_removed_after_checks": true,
-  "next_step": "Check the owner's exact song-page URL and receiver access before treating LyricFind as a usable source. Do not bypass access restrictions or invent API credentials.",
+  "next_step": "Do not enable an adapter based on successful browser access alone. A supported and working lyrics access method remains necessary; keep this access failure distinct from missing catalogue content.",
   "owner_exact_links": {
     "urls": [
       "https://lyrics.lyricfind.com/lyrics/i-m-t-smile-usmev-a-caj",
@@ -272,7 +272,7 @@
         "classification": "unavailable-placeholder"
       }
     ],
-    "receiver_checked": false,
+    "receiver_checked": true,
     "interpretation": "HTTP 200 alone does not prove that lyrics were received. User browser and receiver access must not be inferred from this sandbox.",
     "github_results": [
       {
@@ -300,5 +300,36 @@
     ],
     "workflow_run": 40845907731
   },
-  "receiver_diagnostic": "diagnostics/check-lyricfind-access.py"
+  "receiver_diagnostic": "diagnostics/check-lyricfind-access.py",
+  "receiver_check": {
+    "date": "2026-10-29",
+    "source": "Owner-uploaded warder-lyricfind-access.log",
+    "results": [
+      {
+        "url": "https://lyrics.lyricfind.com/lyrics/i-m-t-smile-usmev-a-caj",
+        "lyrics_logged": false,
+        "http": 403,
+        "final_url": "https://lyrics.lyricfind.com/lyrics/i-m-t-smile-usmev-a-caj",
+        "bytes": 919,
+        "sha256": "0474bfa0b2a4ac7b5a607f0631e0f7bd21bed060fef4baf168f0d1e7c689dd75",
+        "page_title": "ERROR: The request could not be satisfied",
+        "has_next_data": false,
+        "classification": "http-error"
+      },
+      {
+        "url": "https://lyrics.lyricfind.com/lyrics/kali-aj-keby",
+        "lyrics_logged": false,
+        "http": 403,
+        "final_url": "https://lyrics.lyricfind.com/lyrics/kali-aj-keby",
+        "bytes": 919,
+        "sha256": "e4fb241b340a20a781c670088a10956265c914674465edc09a2e401de45ce8de",
+        "page_title": "ERROR: The request could not be satisfied",
+        "has_next_data": false,
+        "classification": "http-error"
+      }
+    ],
+    "conclusion": "Both exact song URLs returned HTTP 403 from the receiver's Python urllib request. No application page or lyrics were received. This is an access failure before lyric parsing; the precise cause and browser-versus-Python difference are not established.",
+    "diagnostic_only": true,
+    "plugin_runtime_modified": false
+  }
 }
