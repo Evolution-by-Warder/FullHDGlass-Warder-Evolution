@@ -1,36 +1,36 @@
 {
   "schema": 1,
-  "version": "1.0.38-test12",
-  "source_commit": "096a60ca0bb589c648a617314f3b4066a4c82236",
+  "version": "1.0.38-test13",
+  "source_commit": "83d4c2132c4d8a538c34574b5491aa0942363164",
   "production_version_preserved": "1.0.37",
-  "workflow_run": 40841327929,
+  "workflow_run": 40873174108,
   "workflow_conclusion": "success",
   "python": "3.14.9",
-  "unit_tests": 246,
+  "unit_tests": 259,
   "unit_test_groups": [
     6,
-    104,
+    117,
     77,
     13,
     14,
     10,
     22
   ],
-  "verified_payload_files": 1352,
-  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test12",
-  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test12/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test12_all.ipk",
-  "bytes": 14513342,
-  "sha256": "71d077f1b0baa17549d0f131cf7f22beb56b42999234295be2dea2d2b7b9ad7a",
+  "verified_payload_files": 1353,
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/radio-lyrics-1.0.38-test13",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/radio-lyrics-1.0.38-test13/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.38-test13_all.ipk",
+  "bytes": 14515418,
+  "sha256": "5598f065261b4d935d63003c818280e315ec91e047700e1ccdc3ddaf2f1008b3",
   "public_release_independent_download_verified": true,
   "receiver_validated": false,
   "production_feeds_modified": false,
   "fixes": [
-    "KaraokeTexty SK/CZ original paragraphs only",
-    "Akordy Kytary full chord-free lyrics sheet",
-    "Unspaced full-phrase metadata starts real lookup",
-    "Spaced full-name slash credits and verified Vidiek recording identity",
-    "Verified candidates fetched before fallback mirrors",
-    "Old negative cache rechecked, valid positive caches retained"
+    "SuperMusic public visitor session with bounded validation and cookie reuse",
+    "Legacy song links normalized to canonical idpiesne URLs",
+    "Exact artist, title and recording checks before accepting lyrics",
+    "Chord-free text extraction from the verified song container",
+    "Old negative cache rechecked; valid positive caches retained",
+    "TEST12 source, metadata and approved graphics fixes retained"
   ],
   "verification": {
     "live_checks": [
@@ -39,80 +39,99 @@
         "title": "Dancing Queen",
         "status": "found",
         "characters": 1106,
+        "text_sha256": "ad5786d28c463c9d64c0d9d7db95fc987e2d207762c0b1debae5226dddbeb547",
         "sources_found": [
           "lrclib"
-        ]
+        ],
+        "elapsed_ms": 284
       },
       {
         "artist": "Pavol Habera",
         "title": "Láska, necestuj tým vlakom",
         "status": "found",
         "characters": 867,
+        "text_sha256": "168bd9c68641041ae823a0f2662ebf240d58c9e112565cf5c94c476d0af39d0b",
         "sources_found": [
           "tekstowo"
-        ]
+        ],
+        "elapsed_ms": 797
       },
       {
         "artist": "Sima Martausová featuring For You",
         "title": "Nenahraditeľná",
         "status": "found",
         "characters": 1071,
+        "text_sha256": "8e2fc1cb13fa6aab5447bff5c1f7b64a90e64067c9bb38b867d76190b56ab2e8",
         "sources_found": [
           "ujdeto"
-        ]
+        ],
+        "elapsed_ms": 1193
       },
       {
         "artist": "David Koller",
         "title": "Ani ty ani já",
         "status": "offline",
         "characters": 0,
-        "sources_found": []
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sources_found": [],
+        "elapsed_ms": 52
       },
       {
         "artist": "08",
         "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
         "status": "found",
         "characters": 814,
+        "text_sha256": "78f94dc0357e6d3aa1aa42a166f0d7dd9ab0c98f2131dd92a2025130327d961c",
         "sources_found": [
           "roth"
-        ]
+        ],
+        "elapsed_ms": 1073
       },
       {
         "artist": "Dara Rolins",
         "title": "Sľub",
         "status": "found",
         "characters": 1507,
+        "text_sha256": "2e9a63188f5f0d0cae0f4e1839174fb0e5540b6025ecf4dc3926cb6b4a44beba",
         "sources_found": [
           "tekstowo"
-        ]
+        ],
+        "elapsed_ms": 740
       },
       {
         "artist": "Láska",
         "title": "Mraky",
         "status": "found",
         "characters": 1454,
+        "text_sha256": "95db65a37efb3e6acf0457fe33a99a0afc5b3faf4f2137d2a8f5e47515c47dd9",
         "sources_found": [
           "karaoke"
-        ]
+        ],
+        "elapsed_ms": 1710
       },
       {
         "artist": "Lucie",
         "title": "Chci zas v tobě spát",
         "status": "found",
         "characters": 1616,
+        "text_sha256": "237263e5f939900ad504d626b3c0462b943400ac3f490d0e8ebf9fb02e44e3ce",
         "sources_found": [
           "kytary"
-        ]
+        ],
+        "elapsed_ms": 2014
+      },
+      {
+        "artist": "Instinct",
+        "title": "Dozadu",
+        "status": "found",
+        "characters": 769,
+        "text_sha256": "537217b153d8ff363c69c20915e218a0bcd6c070ef945dd03bd5c12d40bf6a29",
+        "sources_found": [
+          "supermusic"
+        ],
+        "elapsed_ms": 3674
       }
     ],
-    "field_details": "docs/RADIO-TEST12-SOURCE-CHECKS.json",
-    "lyricfind": {
-      "report": "docs/RADIO-LYRICFIND-ACCESS-CHECKS.json",
-      "home_http": 200,
-      "tested_song_pages": 4,
-      "song_page_http": 403,
-      "integrated": false,
-      "receiver_checked": false
-    }
+    "field_details": "docs/RADIO-SUPERMUSIC-TEST13.json"
   }
 }
