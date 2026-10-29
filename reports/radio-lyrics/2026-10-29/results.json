@@ -1,0 +1,2076 @@
+{
+  "schema": 1,
+  "started_utc": "2026-10-29T05:07:34.571810+00:00",
+  "finished_utc": "2026-10-29T05:10:45.325419+00:00",
+  "helper_source_commit": "eb430332895045f5722d92dc66d71e21019617a9",
+  "helper_sha256": {
+    "warderLyrics.py": "e3c1eac4a635e5b2fc272061b37a204d76c005682649878981275ed9f55b5e4c",
+    "warderLyricsSites.py": "d9a50d9b0a76d16a9430cd1c5364ae116553a2589966fb5e7eee7b362defd779"
+  },
+  "rounds": 2,
+  "songs": [
+    {
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom"
+    },
+    {
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč"
+    },
+    {
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál"
+    },
+    {
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč"
+    },
+    {
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch"
+    },
+    {
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie"
+    },
+    {
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi"
+    },
+    {
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo"
+    },
+    {
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor"
+    },
+    {
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska"
+    },
+    {
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda"
+    },
+    {
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970"
+    }
+  ],
+  "local_cache": false,
+  "lyrics_or_html_saved": false,
+  "method": "One sequential worker per provider; four providers measured concurrently. Same adapters, variants, identity matching and limits as TEST8. 1.1s minimum request-start spacing per host, Retry-After honored. Source errors separate from misses. One shared hosting network, not receiver latency or population coverage.",
+  "results": [
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5433
+        }
+      ],
+      "elapsed_ms": 5433,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3482
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3765
+        }
+      ],
+      "elapsed_ms": 7247,
+      "status": "found",
+      "characters": 868,
+      "text_sha256": "29438d1ffbdb5d9edd494f228c9f4c57a2dd14d73f8960bfdb72258f5648886c"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3546
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3264
+        }
+      ],
+      "elapsed_ms": 6810,
+      "status": "found",
+      "characters": 754,
+      "text_sha256": "ffc1d10ab61f61aba2d7ae8fa30c4d3cf0d3bd4e7cb041849dc276f811526671"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3112
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3297
+        }
+      ],
+      "elapsed_ms": 6408,
+      "status": "found",
+      "characters": 1409,
+      "text_sha256": "3ec72ada23f574d049b8b5355d7596f4f2c7a97f4c529159f27ea35720954d70"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3495
+        }
+      ],
+      "elapsed_ms": 3495,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3797
+        }
+      ],
+      "elapsed_ms": 3798,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 2972
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3308
+        }
+      ],
+      "elapsed_ms": 6281,
+      "status": "found",
+      "characters": 692,
+      "text_sha256": "f0eee7cd576a5d5d2ac17c28fbc617f90e4d5909552f9f8d91f7f8d0e3585867"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "request-error",
+          "error": "URLError",
+          "elapsed_ms": 10012
+        }
+      ],
+      "elapsed_ms": 10012,
+      "status": "source-error"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 997
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 4197
+        }
+      ],
+      "elapsed_ms": 5298,
+      "status": "found",
+      "characters": 1155,
+      "text_sha256": "8a7fcc9c0116cbe78d673277e1b627081a3b593e1bb35c2ea7e62a2ec8751464"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4327
+        }
+      ],
+      "elapsed_ms": 4327,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 2886
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3273
+        }
+      ],
+      "elapsed_ms": 6159,
+      "status": "found",
+      "characters": 852,
+      "text_sha256": "2c07c08f935d23485779b038a92ca25f45aa79bd37eca2cd01a3d52d35fb08a9"
+    },
+    {
+      "provider": "youradio",
+      "round": 1,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3763
+        }
+      ],
+      "elapsed_ms": 3763,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3422
+        }
+      ],
+      "elapsed_ms": 3422,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3655
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3948
+        }
+      ],
+      "elapsed_ms": 7604,
+      "status": "found",
+      "characters": 868,
+      "text_sha256": "29438d1ffbdb5d9edd494f228c9f4c57a2dd14d73f8960bfdb72258f5648886c"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 5343
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3670
+        }
+      ],
+      "elapsed_ms": 9014,
+      "status": "found",
+      "characters": 692,
+      "text_sha256": "f0eee7cd576a5d5d2ac17c28fbc617f90e4d5909552f9f8d91f7f8d0e3585867"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 2808
+        }
+      ],
+      "elapsed_ms": 2808,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3761
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3211
+        }
+      ],
+      "elapsed_ms": 6972,
+      "status": "found",
+      "characters": 754,
+      "text_sha256": "ffc1d10ab61f61aba2d7ae8fa30c4d3cf0d3bd4e7cb041849dc276f811526671"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 5515
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3366
+        }
+      ],
+      "elapsed_ms": 8881,
+      "status": "found",
+      "characters": 852,
+      "text_sha256": "2c07c08f935d23485779b038a92ca25f45aa79bd37eca2cd01a3d52d35fb08a9"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3260
+        }
+      ],
+      "elapsed_ms": 3260,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3713
+        }
+      ],
+      "elapsed_ms": 3713,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3215
+        }
+      ],
+      "elapsed_ms": 3215,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3544
+        }
+      ],
+      "elapsed_ms": 3544,
+      "status": "not-found"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 2925
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3770
+        }
+      ],
+      "elapsed_ms": 6696,
+      "status": "found",
+      "characters": 1155,
+      "text_sha256": "8a7fcc9c0116cbe78d673277e1b627081a3b593e1bb35c2ea7e62a2ec8751464"
+    },
+    {
+      "provider": "youradio",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "links",
+          "elapsed_ms": 3225
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 3665
+        }
+      ],
+      "elapsed_ms": 6890,
+      "status": "found",
+      "characters": 1409,
+      "text_sha256": "3ec72ada23f574d049b8b5355d7596f4f2c7a97f4c529159f27ea35720954d70"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5360
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5125
+        }
+      ],
+      "elapsed_ms": 10484,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3351
+        }
+      ],
+      "elapsed_ms": 3351,
+      "status": "found",
+      "characters": 536,
+      "text_sha256": "47d519916a7f7ea5d8ec21d50929a87f44e2666fdb1075e9bcb8845ef13f4bd7"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3967
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3390
+        }
+      ],
+      "elapsed_ms": 7357,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4011
+        }
+      ],
+      "elapsed_ms": 4011,
+      "status": "found",
+      "characters": 41,
+      "text_sha256": "acce7404abb4f4e39b38c0475901635a7749fa89d3eb807b72a6c7fbc8c0acfd"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5163
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3252
+        }
+      ],
+      "elapsed_ms": 8416,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 2942
+        }
+      ],
+      "elapsed_ms": 2942,
+      "status": "found",
+      "characters": 521,
+      "text_sha256": "a55dc1822f071386e45bd8fb873de7e7b9712447fe5a0eb67606583923dc595a"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 2963
+        }
+      ],
+      "elapsed_ms": 2963,
+      "status": "found",
+      "characters": 527,
+      "text_sha256": "4158a57876d2cebf066912fe2a6a6b1eeb8ad489697078c07cf6d6eb45adda35"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "request-error",
+          "error": "URLError",
+          "elapsed_ms": 10013
+        },
+        {
+          "variant": 2,
+          "status": "links",
+          "elapsed_ms": 920
+        }
+      ],
+      "elapsed_ms": 10933,
+      "status": "source-error"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3543
+        }
+      ],
+      "elapsed_ms": 3550,
+      "status": "found",
+      "characters": 1009,
+      "text_sha256": "6edb58f6151793def47b0d43563d4947240228f39ca8884203cb1e5b91f0fad0"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4041
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4963
+        }
+      ],
+      "elapsed_ms": 9004,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3540
+        }
+      ],
+      "elapsed_ms": 3540,
+      "status": "found",
+      "characters": 780,
+      "text_sha256": "9c8fe7086213701b101fc0ef5e68e4ff48a6962c0bcd757181335f66f94cacc6"
+    },
+    {
+      "provider": "hudba",
+      "round": 1,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3853
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4035
+        }
+      ],
+      "elapsed_ms": 7888,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3543
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3590
+        }
+      ],
+      "elapsed_ms": 7132,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4303
+        }
+      ],
+      "elapsed_ms": 4303,
+      "status": "found",
+      "characters": 536,
+      "text_sha256": "47d519916a7f7ea5d8ec21d50929a87f44e2666fdb1075e9bcb8845ef13f4bd7"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3051
+        }
+      ],
+      "elapsed_ms": 3051,
+      "status": "found",
+      "characters": 527,
+      "text_sha256": "4158a57876d2cebf066912fe2a6a6b1eeb8ad489697078c07cf6d6eb45adda35"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3506
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3022
+        }
+      ],
+      "elapsed_ms": 6527,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4262
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 9031
+        }
+      ],
+      "elapsed_ms": 13294,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3455
+        }
+      ],
+      "elapsed_ms": 3456,
+      "status": "found",
+      "characters": 780,
+      "text_sha256": "9c8fe7086213701b101fc0ef5e68e4ff48a6962c0bcd757181335f66f94cacc6"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3804
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4402
+        }
+      ],
+      "elapsed_ms": 8206,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4645
+        }
+      ],
+      "elapsed_ms": 4645,
+      "status": "found",
+      "characters": 797,
+      "text_sha256": "32e604b8ccc53150a193f660e62de8b0daf6f1036c5c682141f4040bf4d12d25"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4458
+        }
+      ],
+      "elapsed_ms": 4458,
+      "status": "found",
+      "characters": 521,
+      "text_sha256": "a55dc1822f071386e45bd8fb873de7e7b9712447fe5a0eb67606583923dc595a"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3608
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4366
+        }
+      ],
+      "elapsed_ms": 7975,
+      "status": "not-found"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 5279
+        }
+      ],
+      "elapsed_ms": 5279,
+      "status": "found",
+      "characters": 1009,
+      "text_sha256": "6edb58f6151793def47b0d43563d4947240228f39ca8884203cb1e5b91f0fad0"
+    },
+    {
+      "provider": "hudba",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4364
+        }
+      ],
+      "elapsed_ms": 4364,
+      "status": "found",
+      "characters": 41,
+      "text_sha256": "acce7404abb4f4e39b38c0475901635a7749fa89d3eb807b72a6c7fbc8c0acfd"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 5789
+        },
+        {
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 3571
+        }
+      ],
+      "elapsed_ms": 9360,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4377
+        }
+      ],
+      "elapsed_ms": 4378,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 3751
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 3349
+        },
+        {
+          "variant": 3,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 3574
+        }
+      ],
+      "elapsed_ms": 10673,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3364
+        }
+      ],
+      "elapsed_ms": 3364,
+      "status": "found",
+      "characters": 1373,
+      "text_sha256": "ca2b557b2f84ecb57dc8010f1b8b60876f5ee747d36118a98e8a9af7bc6e4d43"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3035
+        }
+      ],
+      "elapsed_ms": 3035,
+      "status": "found",
+      "characters": 534,
+      "text_sha256": "96b3b90f4346cec4c237ebd57a4d1ba624a1c5e3ef58df5bf48b4d6eb73659f8"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4199
+        }
+      ],
+      "elapsed_ms": 4199,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "request-error",
+          "error": "URLError",
+          "elapsed_ms": 10011
+        },
+        {
+          "variant": 2,
+          "status": "found",
+          "elapsed_ms": 2692
+        }
+      ],
+      "elapsed_ms": 12703,
+      "status": "found",
+      "characters": 1070,
+      "text_sha256": "c5e791f6bdd98d7dd193b5a40bd897298a1e616a3d67b250992b27586fff8840"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 5603
+        }
+      ],
+      "elapsed_ms": 5603,
+      "status": "found",
+      "characters": 797,
+      "text_sha256": "52f37d0b4d041448ae7c337ed82695eca79265d37dfc5d4938ff29af8024050c"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4555
+        }
+      ],
+      "elapsed_ms": 4555,
+      "status": "found",
+      "characters": 1175,
+      "text_sha256": "50c8b59e5a66e6e870cb71bf27856b639b23c877c7ebcd6328a986a1cc8ce1aa"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4120
+        }
+      ],
+      "elapsed_ms": 4120,
+      "status": "found",
+      "characters": 2235,
+      "text_sha256": "12c7772f26910cb901cef5a396873a922e6afa330749041656f2e8fdabc0c146"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4838
+        }
+      ],
+      "elapsed_ms": 4838,
+      "status": "found",
+      "characters": 827,
+      "text_sha256": "4bc3cdcc053175b1ea153979af7736e4ea32c948efb1e155e60f1654a8be7d0e"
+    },
+    {
+      "provider": "lrclib",
+      "round": 1,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 2688
+        },
+        {
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 3648
+        }
+      ],
+      "elapsed_ms": 6336,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4141
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 5347
+        },
+        {
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 4461
+        }
+      ],
+      "elapsed_ms": 13950,
+      "status": "not-found"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4245
+        }
+      ],
+      "elapsed_ms": 4245,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 7170
+        }
+      ],
+      "elapsed_ms": 7170,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 2918
+        }
+      ],
+      "elapsed_ms": 2918,
+      "status": "found",
+      "characters": 534,
+      "text_sha256": "96b3b90f4346cec4c237ebd57a4d1ba624a1c5e3ef58df5bf48b4d6eb73659f8"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4284
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 2969
+        },
+        {
+          "variant": 3,
+          "status": "not-found",
+          "elapsed_ms": 5209
+        }
+      ],
+      "elapsed_ms": 12463,
+      "status": "not-found"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3925
+        }
+      ],
+      "elapsed_ms": 3925,
+      "status": "found",
+      "characters": 827,
+      "text_sha256": "4bc3cdcc053175b1ea153979af7736e4ea32c948efb1e155e60f1654a8be7d0e"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4287
+        },
+        {
+          "variant": 2,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4649
+        }
+      ],
+      "elapsed_ms": 8936,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3258
+        }
+      ],
+      "elapsed_ms": 3258,
+      "status": "found",
+      "characters": 797,
+      "text_sha256": "52f37d0b4d041448ae7c337ed82695eca79265d37dfc5d4938ff29af8024050c"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "http-error",
+          "http": 503,
+          "retry_after": 1,
+          "elapsed_ms": 4079
+        }
+      ],
+      "elapsed_ms": 4079,
+      "status": "source-error"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 2692
+        }
+      ],
+      "elapsed_ms": 2692,
+      "status": "found",
+      "characters": 2235,
+      "text_sha256": "12c7772f26910cb901cef5a396873a922e6afa330749041656f2e8fdabc0c146"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3655
+        }
+      ],
+      "elapsed_ms": 3655,
+      "status": "found",
+      "characters": 1175,
+      "text_sha256": "50c8b59e5a66e6e870cb71bf27856b639b23c877c7ebcd6328a986a1cc8ce1aa"
+    },
+    {
+      "provider": "lrclib",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3815
+        }
+      ],
+      "elapsed_ms": 3815,
+      "status": "found",
+      "characters": 1373,
+      "text_sha256": "ca2b557b2f84ecb57dc8010f1b8b60876f5ee747d36118a98e8a9af7bc6e4d43"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5054
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4460
+        }
+      ],
+      "elapsed_ms": 9514,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4013
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3794
+        }
+      ],
+      "elapsed_ms": 7806,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4502
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3562
+        }
+      ],
+      "elapsed_ms": 8063,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4937
+        }
+      ],
+      "elapsed_ms": 4937,
+      "status": "found",
+      "characters": 1362,
+      "text_sha256": "4a6883fc6d82879a75acebea11d871c27d4acb53a49f81c622bfd963de4fe952"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4100
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4594
+        }
+      ],
+      "elapsed_ms": 8695,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "request-error",
+          "error": "URLError",
+          "elapsed_ms": 10011
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 2084
+        }
+      ],
+      "elapsed_ms": 12095,
+      "status": "source-error"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3954
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4380
+        }
+      ],
+      "elapsed_ms": 8334,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3417
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3553
+        }
+      ],
+      "elapsed_ms": 6970,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4795
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3647
+        }
+      ],
+      "elapsed_ms": 8442,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3621
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4161
+        }
+      ],
+      "elapsed_ms": 7782,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4109
+        }
+      ],
+      "elapsed_ms": 4109,
+      "status": "found",
+      "characters": 814,
+      "text_sha256": "5abc5a1c6b1a0d4bd7b1066842021cb990bf5273916c8a4e336851c6b98c03f1"
+    },
+    {
+      "provider": "ovh",
+      "round": 1,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4563
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4274
+        }
+      ],
+      "elapsed_ms": 8837,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "SK",
+      "artist": "Majself",
+      "title": "Posledný hráč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4582
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 6268
+        }
+      ],
+      "elapsed_ms": 10851,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "SK",
+      "artist": "Pavol Habera",
+      "title": "Láska, necestuj tým vlakom",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3587
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4679
+        }
+      ],
+      "elapsed_ms": 8266,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "SK",
+      "artist": "Richard Müller",
+      "title": "Po schodoch",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4504
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3074
+        }
+      ],
+      "elapsed_ms": 7579,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Damiens",
+      "title": "Stýská se mi",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 5341
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3193
+        }
+      ],
+      "elapsed_ms": 8534,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Faraon",
+      "title": "Šlapací kolo",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4617
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3065
+        }
+      ],
+      "elapsed_ms": 7682,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "SK",
+      "artist": "Kristína",
+      "title": "Horehronie",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3040
+        }
+      ],
+      "elapsed_ms": 3040,
+      "status": "found",
+      "characters": 814,
+      "text_sha256": "5abc5a1c6b1a0d4bd7b1066842021cb990bf5273916c8a4e336851c6b98c03f1"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "SK",
+      "artist": "Júlia Hečková",
+      "title": "Taliansky muzikál",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3004
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 3754
+        }
+      ],
+      "elapsed_ms": 6758,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Kabát",
+      "title": "Pohoda",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4837
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4472
+        }
+      ],
+      "elapsed_ms": 9309,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Karel Gott",
+      "title": "Trezor",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4979
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4610
+        }
+      ],
+      "elapsed_ms": 9589,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "SK",
+      "artist": "Alan Murin",
+      "title": "Prepáč",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4793
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4507
+        }
+      ],
+      "elapsed_ms": 9300,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Chinaski",
+      "title": "1970",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4798
+        },
+        {
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4589
+        }
+      ],
+      "elapsed_ms": 9387,
+      "status": "not-found"
+    },
+    {
+      "provider": "ovh",
+      "round": 2,
+      "country": "CZ",
+      "artist": "Lucie Bílá",
+      "title": "Láska je láska",
+      "requests": [
+        {
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4838
+        }
+      ],
+      "elapsed_ms": 4838,
+      "status": "found",
+      "characters": 1362,
+      "text_sha256": "4a6883fc6d82879a75acebea11d871c27d4acb53a49f81c622bfd963de4fe952"
+    }
+  ],
+  "summary": {
+    "lrclib": {
+      "attempts": 24,
+      "found": 13,
+      "unique_songs": 7,
+      "sk_unique": 3,
+      "cz_unique": 4,
+      "median_found_ms": 3815,
+      "median_completion_ms": 4312,
+      "errors": 9
+    },
+    "ovh": {
+      "attempts": 24,
+      "found": 4,
+      "unique_songs": 2,
+      "sk_unique": 1,
+      "cz_unique": 1,
+      "median_found_ms": 4474,
+      "median_completion_ms": 8300,
+      "errors": 1
+    },
+    "hudba": {
+      "attempts": 24,
+      "found": 13,
+      "unique_songs": 7,
+      "sk_unique": 3,
+      "cz_unique": 4,
+      "median_found_ms": 3550,
+      "median_completion_ms": 4962,
+      "errors": 1
+    },
+    "youradio": {
+      "attempts": 24,
+      "found": 12,
+      "unique_songs": 6,
+      "sk_unique": 3,
+      "cz_unique": 3,
+      "median_found_ms": 6850,
+      "median_completion_ms": 5796,
+      "errors": 1
+    }
+  }
+}
