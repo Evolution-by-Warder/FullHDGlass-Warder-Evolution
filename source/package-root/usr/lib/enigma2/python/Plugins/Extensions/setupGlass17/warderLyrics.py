@@ -62,7 +62,13 @@ def clean_text(text):
         return ''
     if any(tag in text.lower() for tag in ('<html', '<script', '<!doctype')):
         return ''
-    return ''.join(c for c in text if c in '\n\t' or ord(c) >= 32).replace('\r', '').strip()
+    text = ''.join(c for c in text if c in '\n\t' or ord(c) >= 32).replace('\r', '').strip()
+    # Hudba.sk uses its lyrics container for this absence notice too. Reject
+    # the complete notice (also in an old positive cache), not arbitrary
+    # substrings that might occur inside an actual song. Let other sources run.
+    if identity(text).rstrip(' .!?…') == 'tato piesen momentalne nema pridany text':
+        return ''
+    return text
 
 
 def plain_text(row):

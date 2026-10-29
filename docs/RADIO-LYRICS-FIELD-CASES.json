@@ -187,6 +187,242 @@
       },
       "root_cause": "not established from screenshot",
       "purpose": "Include exact station metadata, complete performer roster and punctuation in subsequent adapter and retry regression checks."
+    },
+    {
+      "artist": "Robo Opatovský",
+      "title": "Blizko ta mam",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot"
+    },
+    {
+      "artist": "M. Zbirka, Limit",
+      "title": "Biely kvet",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "fallback",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot"
+    },
+    {
+      "artist": "Necar Vaclav",
+      "title": "Svatovitsky chram",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "fallback",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot"
+    },
+    {
+      "artist": "08",
+      "title": "Krasnejsi nez ruze (Maliconia) - Pavel Roth",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "fallback",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot"
+    },
+    {
+      "artist": "David Koller",
+      "title": "Ani ty ani já",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot"
+    },
+    {
+      "artist": "Dara Rolins",
+      "title": "Sľub",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot"
+    },
+    {
+      "artist": "Karel Gott",
+      "title": "LETA PRAZDNIN",
+      "receiver_observation": {
+        "message": "Táto pieseň momentálne nemá pridaný text.",
+        "artwork": "displayed",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "confirmed_issue": "Hudba.sk absence notice was accepted as found lyrics, winning the source race.",
+      "before_fix": {
+        "status": "found",
+        "source": "hudba",
+        "characters": 41,
+        "elapsed_ms": 4096,
+        "text_sha256": "acce7404abb4f4e39b38c0475901635a7749fa89d3eb807b72a6c7fbc8c0acfd"
+      },
+      "fix": {
+        "candidate_version": "1.0.38-test9",
+        "reject_exact_notice": true,
+        "continue_other_sources": true,
+        "old_positive_notice_cache_invalidated": true,
+        "receiver_validated": false
+      },
+      "after_fix_live_check": {
+        "artist": "Karel Gott",
+        "title": "LETA PRAZDNIN",
+        "status": "found",
+        "cache_hit": false,
+        "elapsed_ms": 8733,
+        "requests": [
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "http-error",
+            "http": 503,
+            "retry_after": 1,
+            "elapsed_ms": 3511
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4239
+          },
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 4768
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "links",
+            "elapsed_ms": 4720
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "pending"
+          },
+          {
+            "source": "youradio",
+            "variant": 2,
+            "status": "found",
+            "elapsed_ms": 3258
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "pending"
+          }
+        ],
+        "characters": 1485,
+        "placeholder_displayed": false
+      }
+    },
+    {
+      "artist": "Fero Fabian",
+      "title": "Tibetský mlynček",
+      "receiver_observation": {
+        "message": "Text piesne sa nenašiel.",
+        "artwork": "fallback",
+        "installed_version": "not captured",
+        "diagnostic": "not captured"
+      },
+      "root_cause": "not established from screenshot",
+      "fresh_helper_check": {
+        "artist": "Fero Fabian",
+        "title": "Tibetský mlynček",
+        "status": "not-found",
+        "cache_hit": false,
+        "elapsed_ms": 19818,
+        "requests": [
+          {
+            "source": "lrclib",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 6671
+          },
+          {
+            "source": "ovh",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4643
+          },
+          {
+            "source": "hudba",
+            "variant": 1,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 4457
+          },
+          {
+            "source": "youradio",
+            "variant": 1,
+            "status": "not-found",
+            "elapsed_ms": 5365
+          },
+          {
+            "source": "hudba",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 3610
+          },
+          {
+            "source": "ovh",
+            "variant": 2,
+            "status": "not-found",
+            "http": 404,
+            "elapsed_ms": 3759
+          },
+          {
+            "source": "lrclib",
+            "variant": 2,
+            "status": "not-found",
+            "elapsed_ms": 6297
+          },
+          {
+            "source": "lrclib",
+            "variant": 3,
+            "status": "not-found",
+            "elapsed_ms": 6846
+          }
+        ],
+        "characters": 0
+      },
+      "artwork_probes": [
+        {
+          "term": "Fero Fabian Tibetský mlynček",
+          "records": []
+        },
+        {
+          "term": "Tibetský mlynček",
+          "records": []
+        },
+        {
+          "term": "Fero Fabian",
+          "records": []
+        }
+      ],
+      "musicbrainz_probe": {
+        "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      },
+      "conclusion": "No matching text from the four adapters; no iTunes SK song results for full pair, title-only or artist-only search. MusicBrainz probe failed to decode and does not establish a miss. No source artwork or lyrics independently located. This is a coverage observation, not proof of absence everywhere."
     }
   ],
   "follow_up": [

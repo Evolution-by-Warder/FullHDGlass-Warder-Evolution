@@ -43,6 +43,27 @@ class ProviderTests(unittest.TestCase):
         self.assertEqual(provider.select([self.record(instrumental=True)],'Žbirka','Biely kvet'),'')
         row=self.record();row['plainLyrics']='a'*(provider.MAX_TEXT+1)
         self.assertEqual(provider.select([row],'Žbirka','Biely kvet'),'')
+    def test_missing_text_notice_is_not_lyrics_but_embedded_words_are_preserved(self):
+        notice='Táto pieseň momentálne nemá pridaný text.'
+        for value in (notice,notice.upper(),'\nTato piesen\u00a0momentalne nema pridany text…\n'):
+            self.assertEqual(provider.clean_text(value),'')
+            row=self.record();row['plainLyrics']=value
+            self.assertEqual(provider.select([row],'Žbirka','Biely kvet'),'')
+        row=self.record();row['plainLyrics']='';row['syncedLyrics']='[00:01.00]'+notice
+        self.assertEqual(provider.select([row],'Žbirka','Biely kvet'),'')
+        real='Original illustrative opening line\n'+notice+'\nOriginal illustrative ending line'
+        self.assertEqual(provider.clean_text(real),real)
+    def test_old_positive_notice_cache_is_refetched_instead_of_displayed(self):
+        for version in (3,provider.CACHE_VERSION):
+            with self.subTest(version=version),tempfile.TemporaryDirectory() as tmp:
+                folder=Path(tmp);file=folder/(provider.key('Žbirka','Biely kvet')+'.json')
+                file.write_text(json.dumps({'version':version,'saved':1000,'status':'found','text':'Táto pieseň momentálne nemá pridaný text.'}))
+                calls=[]
+                def response(request,**kwargs):
+                    calls.append(request.full_url)
+                    return io.BytesIO(json.dumps([self.record()]).encode())
+                self.assertEqual(provider.lookup('Žbirka','Biely kvet',folder,opener=response,clock=lambda:1001)['text'],'Original test text')
+                self.assertTrue(calls)
     def test_cache_and_128_record_bound(self):
         with tempfile.TemporaryDirectory() as tmp:
             response=lambda *a,**kw:io.BytesIO(json.dumps([self.record()]).encode())
@@ -450,6 +471,33 @@ class RegionalSourceTests(unittest.TestCase):
     def test_youradio_keeps_original_and_rejects_translation_and_scripts(self):
         result=self.parse('youradio',self.youradio())
         self.assertEqual(result['text'],'Original test line\nAnother line')
+    def test_hudba_absence_notice_cannot_win_over_a_later_real_source(self):
+        import time
+        from urllib.error import HTTPError
+        def response(request,**kwargs):
+            if request.full_url.startswith('https://hudba.zoznam.sk/'):
+                return io.BytesIO(self.hudba(text='Táto pieseň momentálne nemá pridaný text.'))
+            if request.full_url.startswith('https://textypisni.youradio.cz/'):
+                time.sleep(0.02)
+                return io.BytesIO(self.youradio())
+            raise HTTPError(request.full_url,404,'missing',{},None)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            result=provider.lookup('Pavol Habera','Láska, necestuj tým vlakom',folder,opener=response,hedge_delay=0.005)
+            self.assertEqual(result['text'],'Original test line\nAnother line')
+            saved=json.loads((folder/(provider.key('Pavol Habera','Láska, necestuj tým vlakom')+'.json')).read_text())
+            self.assertNotIn('nemá pridaný text',saved['text'])
+    def test_hudba_notice_and_other_source_failures_remain_retryable(self):
+        def response(request,**kwargs):
+            if request.full_url.startswith('https://hudba.zoznam.sk/'):
+                return io.BytesIO(self.hudba(text='Táto pieseň momentálne nemá pridaný text.'))
+            raise TimeoutError('Other source unavailable')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            result=provider.lookup('Pavol Habera','Láska, necestuj tým vlakom',folder,opener=response,hedge_delay=0.005)
+            self.assertEqual(result['status'],'offline')
+            self.assertEqual(result['text'],'')
+            self.assertFalse(list(folder.glob('*.json')))
     def test_wrong_artist_live_version_and_title_substring_are_not_accepted(self):
         for artist,title in [('Other Artist','Láska, necestuj tým vlakom'),('Pavol Habera','Láska, necestuj tým vlakom (Live)'),('Pavol Habera','Láska')]:
             self.assertEqual(self.parse('hudba',self.hudba(artist=artist,title=title))['text'],'')
