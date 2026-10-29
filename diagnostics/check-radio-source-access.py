@@ -15,10 +15,6 @@ CASES = (
     ('karaoke', 'song', 'https://www.karaoketexty.sk/texty-piesni/instinct/dozadu-806696'),
     ('supermusic', 'home', 'https://www.supermusic.sk/'),
     ('supermusic', 'song', 'https://www.supermusic.sk/piesen.php?idpiesne=1007929'),
-    ('genius', 'documentation', 'https://docs.genius.com/'),
-    ('genius', 'search', 'https://genius.com/search?q=Instinct%20Dozadu'),
-    ('genius', 'song', 'https://genius.com/Abba-dancing-queen-lyrics'),
-    ('genius', 'anonymous-api', 'https://api.genius.com/search?q=Instinct%20Dozadu'),
     ('musixmatch', 'documentation', 'https://developer.musixmatch.com/documentation'),
     ('musixmatch', 'documentation', 'https://docs.musixmatch.com/'),
     ('musixmatch', 'song', 'https://www.musixmatch.com/lyrics/ABBA/Dancing-Queen'),
@@ -28,7 +24,6 @@ CASES = (
 HOSTS = {
     'karaoke': {'www.karaoketexty.sk', 'www.karaoketexty.cz'},
     'supermusic': {'www.supermusic.sk', 'www.supermusic.cz'},
-    'genius': {'docs.genius.com', 'genius.com', 'api.genius.com'},
     'musixmatch': {'developer.musixmatch.com', 'docs.musixmatch.com',
                    'www.musixmatch.com', 'musixmatch.com', 'api.musixmatch.com'},
 }

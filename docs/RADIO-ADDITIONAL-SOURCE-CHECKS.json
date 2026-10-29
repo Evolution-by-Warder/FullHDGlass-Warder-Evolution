@@ -801,7 +801,7 @@
         "plugin_provider_integrated": false
       },
       "receiver_confirmed": true,
-      "next_step": "The lightweight API-search and song-page extraction path is now verified for implementation; keep the token out of public code and release packages.",
+      "next_step": "No further Genius integration or token tests. Continue with the remaining lyrics providers.",
       "second_token_receiver_check": {
         "date": "2026-10-29",
         "source": "Owner-uploaded warder-genius-test(1).log",
@@ -816,6 +816,17 @@
         "interpretation": "The newly supplied credential was not accepted for the tested Genius search request. This is not a timeout or DNS failure. The earlier original-token receiver success remains valid evidence.",
         "token_logged": false,
         "token_committed": false
+      },
+      "decision": {
+        "date": "2026-10-29",
+        "status": "excluded",
+        "requested_by": "project owner",
+        "reason": "Avoid a shared API credential, aggregate request load and extra proxy infrastructure for the public skin.",
+        "runtime_provider_integrated": false,
+        "standalone_diagnostics_removed": true,
+        "library_workflow_removed": true,
+        "removed_from_remaining_access_checks": true,
+        "historical_evidence_retained": true
       }
     },
     "musixmatch": {
@@ -913,5 +924,6 @@
   },
   "receiver_verified_sources": [
     "genius"
-  ]
+  ],
+  "project_decision": "Genius is excluded from public-skin development; historical successful and failed checks are retained only as evidence."
 }
