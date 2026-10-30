@@ -40,11 +40,12 @@
   "validation": {
     "workflow_run": 41055741487,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver.",
+    "receiver_validation": "Owner confirmed the repaired virtual keyboard display on the physical receiver on 30 October 2026 and supplied a screenshot showing the input description, mode, aligned keyboard, locale and button captions.",
     "workflow_conclusion": "success",
     "unit_tests_reported": 372,
     "verified_payload_files": 1420,
-    "keyboard_contract_tests": 6
+    "keyboard_contract_tests": 6,
+    "receiver_keyboard_display_confirmed": true
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -67,7 +68,7 @@
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed.",
+  "receiver_validation": "Owner confirmed the repaired virtual keyboard display on the physical receiver on 30 October 2026 and supplied a screenshot showing the input description, mode, aligned keyboard, locale and button captions.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
@@ -89,6 +90,20 @@
   "keyboard_compatibility": {
     "report": "reports/virtual-keyboard-fix-20261030.json",
     "daily_monitor": ".github/workflows/verify-system-screen-compatibility.yml",
-    "required_release_gate": true
+    "required_release_gate": true,
+    "owner_confirmation": {
+      "date": "2026-10-30",
+      "statement": "Teraz to je ako ma byt",
+      "scope": "Correct virtual keyboard display confirmed on the physical receiver with the owner screenshot.",
+      "visible_elements": [
+        "plugin account-name prompt",
+        "input line",
+        "INS mode",
+        "aligned key grid",
+        "locale",
+        "TEXT/INFO/HELP",
+        "four coloured button captions"
+      ]
+    }
   }
 }

@@ -48,7 +48,19 @@
     "upstream_display_components": 13,
     "daily_read_only_workflow": ".github/workflows/verify-system-screen-compatibility.yml",
     "cron_utc": "15 5 * * *",
-    "scope": "Shared system virtual keyboard used by ArchiveCZSK and other plugins; other system screen overrides require their own controller-contract tests."
+    "scope": "Shared system virtual keyboard used by ArchiveCZSK and other plugins; other system screen overrides require their own controller-contract tests.",
+    "daily_monitor_initial_runs": [
+      {
+        "id": 41056981528,
+        "branch": "warder-modernization-work",
+        "conclusion": "success"
+      },
+      {
+        "id": 41056979749,
+        "branch": "main",
+        "conclusion": "success"
+      }
+    ]
   },
   "validation": {
     "keyboard_tests": 6,
@@ -81,7 +93,7 @@
     "all_other_graphics_and_layout_normalized_to_original_baseline": true,
     "public_ipk_bytes": 14768250,
     "public_ipk_sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
-    "physical_receiver_confirmation_after_fix": false
+    "physical_receiver_confirmation_after_fix": true
   },
   "retention": {
     "status": "VERIFIED",
@@ -107,5 +119,19 @@
     "trezor_accessed": false,
     "workflow_run": 41055741487
   },
-  "trezor_accessed": false
+  "trezor_accessed": false,
+  "owner_confirmation": {
+    "date": "2026-10-30",
+    "statement": "Teraz to je ako ma byt",
+    "scope": "Correct virtual keyboard display confirmed on the physical receiver with the owner screenshot.",
+    "visible_elements": [
+      "plugin account-name prompt",
+      "input line",
+      "INS mode",
+      "aligned key grid",
+      "locale",
+      "TEXT/INFO/HELP",
+      "four coloured button captions"
+    ]
+  }
 }

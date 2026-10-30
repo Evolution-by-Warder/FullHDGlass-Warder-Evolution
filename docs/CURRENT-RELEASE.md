@@ -6,4 +6,4 @@ Klávesy majú jednotnú geometriu 67×67 px; podklady pre viacnásobné kláves
 
 Povinné kontroly porovnávajú skin s overeným aj aktuálnym rozhraním OpenATV, kontrolujú prítomnosť polí a geometriu klávesov. Zmena rozhrania vyžaduje kontrolu kompatibility pred vydaním. Grafika a rozloženie ostatných obrazoviek sú chránené pôvodným kontrolným súčtom.
 
-Bežná aktualizácia z 1.0.42. Nové picony a pomocné balíky ostávajú v spoločnej štruktúre. Overenie po oprave na fyzickom prijímači zatiaľ nie je potvrdené.
+Bežná aktualizácia z 1.0.42. Nové picony a pomocné balíky ostávajú v spoločnej štruktúre. Opravu zobrazenia klávesnice potvrdil vlastník priamo na fyzickom prijímači 30.10.2026 a doložil snímkou obrazovky.
