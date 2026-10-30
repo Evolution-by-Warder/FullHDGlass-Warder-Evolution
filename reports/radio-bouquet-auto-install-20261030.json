@@ -2,7 +2,7 @@
   "schema": 1,
   "date": "2026-10-30",
   "version": "1.0.44",
-  "status": "LOCAL_VALIDATION_PASSED_PENDING_RELEASE",
+  "status": "PRODUCTION_VERIFIED",
   "request": "vies dorobit aby sa pri instalacii uzivatelovi sam potichu nainstaloval do radii bouquetu ?",
   "managed_bouquet": "userbouquet.warder.radio",
   "radio_index": "bouquets.radio",
@@ -29,5 +29,31 @@
     "sha256": "b1b9d33b4ef5702cf4d40883229aaed29613287aa3de5be4794d0f83d7e300ba",
     "actual_first_import": "PASS",
     "repeat_without_duplicate": "PASS"
-  }
+  },
+  "source_commit": "7e77331b33849b35463eef558d384da4107095e8",
+  "validation": {
+    "workflow_run": 41086881157,
+    "workflow_job": 124170237690,
+    "conclusion": "success",
+    "unit_tests_passed": 383,
+    "payload_files_verified": 1420,
+    "postinst_background_harness": {
+      "installer_returned_seconds": 0.005,
+      "returned_while_worker_still_running": true,
+      "stdout_and_stderr_silent": true,
+      "worker_arguments_verified": true
+    },
+    "public_package_readback": {
+      "version": "1.0.44",
+      "bytes": 14769110,
+      "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
+      "stable_and_native_test_feed_match": true,
+      "published_runtime_and_postinst_match_source": true
+    },
+    "initial_validation": {
+      "workflow_run": 41086329773,
+      "result": "blocked before publication: old settings version captions; corrected and all checks rerun successfully"
+    }
+  },
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.44"
 }
