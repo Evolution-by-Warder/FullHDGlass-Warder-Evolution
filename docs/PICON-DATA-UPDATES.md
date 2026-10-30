@@ -64,3 +64,14 @@ Na výslovný pokyn vlastníka bolo do spoločného katalógu skinu a PiconHubu 
 45 balíkov, 126 doplnených PNG, žiadny existujúci PNG nebol nahradený. Prešlo 45 kontrol inštalátora skinu, 45 plánov skinu, 45 plánov PiconHubu a verejné overenie 128 častí podľa veľkosti a SHA-256. Testovacie a dátové služby zo širšieho auditu sa nepridávali. Nový IPK netreba: príslušné picony stiahnite znovu cez skin alebo PiconHub. Trezor vynechaný.
 
 [Publikácia](../reports/source-candidates-publication-20261030.json) · [Aktivácia](../reports/source-candidates-activation-20261030.json)
+
+
+## Picons/picons v štandarde Warder — 30.10.2026
+
+Do spoločného katalógu bolo doplnených 70 overených servisných identít / 117 presných názvov PNG. 50 grafík používa naše existujúce presné podklady, 13 ďalších log je prispôsobených schválenému Warder štandardu. Celkom ide o 63 grafík / 189 základných PNG 220×132; distribúcia obsahuje aj 50×30 a 400×240, vždy Transparent, WHITE a BLACK. Nejde o 117 nových staníc.
+
+Aktualizovaných je 135 archívov na 15 satelitných pozíciách, spolu 1053 doplnených PNG v deviatich variantoch. Všetky predchádzajúce PNG zostali bajtovo zachované. Deväť neistých, nesprávne priradených alebo technických položiek je explicitne vyradených. Farebné brand prvky a vlastné podklady sa zachovávajú; bezpečné kontrastné zásahy majú zmrazené komponentové masky a kontrolu chránených pixelov.
+
+Prešlo 11 testov, reprodukcia 189 zdrojových PNG, 135 skúšok skutočného inštalátora skinu, 135 plánov skinu, 135 plánov PiconHubu a verejná kontrola 273 častí podľa veľkosti a SHA256. Oba pluginy používajú ten istý živý katalóg. Nové dáta získate aktualizáciou príslušných piconových balíkov; nový IPK nie je potrebný.
+
+[Podrobná publikácia](../reports/picons-assimilated-publication-20261030.json) · [Aktivácia a kontroly](../reports/picons-assimilated-activation-20261030.json)
