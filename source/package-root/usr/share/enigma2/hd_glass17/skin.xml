@@ -1444,17 +1444,31 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="help2" position="603,183" size="300,60" font="Console;30" halign="center" valign="center" />
   </screen>
   <screen name="ParentalControlChangePin" position="center,120" size="1500,840" title="Change pin code">
-    <widget name="config" position="45,45" size="1410,675" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
-    <widget source="key_red" render="Label" position="120,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
-    <widget source="key_green" render="Label" position="810,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget name="config" position="45,45" size="1410,675" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" excludes="description,footnote" />
+    <widget name="config" position="45,45" size="1410,555" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" includes="description,footnote" />
+    <widget name="description" position="45,615" size="1410,75" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" conditional="description" />
+    <widget name="footnote" position="45,705" size="1410,35" font="Prive3;24" halign="center" valign="center" foregroundColor="grey" transparent="1" conditional="footnote" />
+    <widget source="key_red" render="Label" position="120,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" excludes="description,footnote" />
+    <widget source="key_green" render="Label" position="810,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" excludes="description,footnote" />
+    <widget source="key_red" render="Label" position="45,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" includes="description,footnote" conditional="key_red" />
+    <widget source="key_green" render="Label" position="405,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" includes="description,footnote" conditional="key_green" />
+    <widget source="key_yellow" render="Label" position="765,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" includes="description,footnote" conditional="key_yellow" />
+    <widget source="key_blue" render="Label" position="1125,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" includes="description,footnote" conditional="key_blue" />
   </screen>
   <screen name="ParentalControlEditor" position="center,120" size="1500,840" title="Parental control services Editor">
     <widget name="servicelist" position="45,45" size="1410,750" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="ParentalControlSetup" position="center,120" size="1500,840" title="Parental control setup">
-    <widget name="config" position="45,45" size="1410,675" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
-    <widget source="key_red" render="Label" position="120,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" />
-    <widget source="key_green" render="Label" position="810,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
+    <widget name="config" position="45,45" size="1410,675" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" excludes="description,footnote" />
+    <widget name="config" position="45,45" size="1410,555" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" includes="description,footnote" />
+    <widget name="description" position="45,615" size="1410,75" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" conditional="description" />
+    <widget name="footnote" position="45,705" size="1410,35" font="Prive3;24" halign="center" valign="center" foregroundColor="grey" transparent="1" conditional="footnote" />
+    <widget source="key_red" render="Label" position="120,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="red" transparent="1" excludes="description,footnote" />
+    <widget source="key_green" render="Label" position="810,765" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" excludes="description,footnote" />
+    <widget source="key_red" render="Label" position="45,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" includes="description,footnote" conditional="key_red" />
+    <widget source="key_green" render="Label" position="405,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" includes="description,footnote" conditional="key_green" />
+    <widget source="key_yellow" render="Label" position="765,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" includes="description,footnote" conditional="key_yellow" />
+    <widget source="key_blue" render="Label" position="1125,765" size="330,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" includes="description,footnote" conditional="key_blue" />
   </screen>
 
   <screen name="PluginBrowser" position="135,120" size="1650,840" title="Plugin Browser">
@@ -1700,6 +1714,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget source="key_green" render="Label" position="810,825" size="570,45" font="Prive3;33" halign="center" foregroundColor="green" transparent="1" />
   </screen>
   <screen name="Setup" position="center,90" size="1650,900" title="Setup">
+    <widget source="key_menu" render="Label" position="1340,16" size="265,30" font="Prive3;24" halign="right" foregroundColor="grey" transparent="1" conditional="key_menu" />
     <widget name="config" position="45,60" size="1560,615" font="Prive3;34" itemHeight="45" scrollbarMode="showOnDemand" />
     <widget name="description" position="45,690" size="1560,80" font="Prive3;27" halign="center" valign="center" foregroundColor="grey" transparent="1" />
     <widget name="footnote" position="45,780" size="1560,30" font="Prive3;24" halign="center" valign="center" foregroundColor="grey" transparent="1" />
@@ -6716,7 +6731,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 <widget name="introduction" position="15,597" size="900,37" font="Regular;33" halign="center" />
 </screen>
 	<screen name="TextBox" position="0,0" size="1920,1080" title="TextBox" flags="wfNoBorder" backgroundColor="background">
-		<widget name="text" position="0,0" size="1920,1080" font="Prive4;32" scrollbarMode="showOnDemand" halign="center" valign="center" />
+		<widget name="text" position="0,0" size="1920,1080" font="Prive4;32" scrollbarMode="showOnDemand" halign="center" valign="center" excludes="key_red" />
+    <widget name="text" position="0,0" size="1920,990" font="Prive4;32" scrollbarMode="showOnDemand" halign="center" valign="center" includes="key_red" />
+    <widget source="key_red" render="Label" position="30,1010" size="450,48" font="Prive3;30" foregroundColor="red" halign="center" valign="center" transparent="1" conditional="key_red" />
 	</screen>
 	<screen name="MultiBootSelector" position="center,center" size="1200,800" title="MultiBoot Selector" backgroundColor="background" >
 		<widget source="description" render="Label" position="10,0" size="1180,250" font="Prive4;32" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="grey" />
@@ -7597,6 +7614,8 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget source="key_red" render="Label" position="30,765" size="360,45" font="Prive3;30" foregroundColor="red" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_green" render="Label" position="420,765" size="360,45" font="Prive3;30" foregroundColor="green" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
     <widget source="key_yellow" render="Label" position="810,765" size="360,45" font="Prive3;30" foregroundColor="yellow" halign="center" transparent="1"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_blue" render="Label" position="1200,765" size="360,45" font="Prive3;30" foregroundColor="blue" halign="center" transparent="1" conditional="key_blue"><convert type="ConditionalShowHide" /></widget>
+    <widget source="key_menu" render="Label" position="1300,725" size="300,32" font="Prive3;24" foregroundColor="grey" halign="right" transparent="1" conditional="key_menu" />
   </screen>
   <screen name="PackageActionLog" position="center,120" size="1650,840" title="Package Action Log">
     <widget name="log" position="30,30" size="1590,690" font="Prive3;28" scrollbarMode="showOnDemand" />
@@ -7955,7 +7974,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <widget name="primetime" position="30,777" size="270,36" font="Prive3;24" transparent="1" /><widget name="change_bouquet" position="315,777" size="330,36" font="Prive3;24" transparent="1" /><widget name="jump" position="660,777" size="330,36" font="Prive3;24" transparent="1" /><widget name="page" position="1005,777" size="330,36" font="Prive3;24" transparent="1" />
     <widget source="Event" render="Label" position="30,825" size="1830,42" font="Prive3;33" foregroundColor="white" transparent="1"><convert type="EventName">Name</convert></widget>
     <widget source="Event" render="Label" position="30,873" size="1830,90" font="Prive3;27" foregroundColor="#cdcdcd" transparent="1"><convert type="g17ServiceNameEvent">ExtendedDescriptionEventSingle</convert></widget>
-    <widget name="key_red" position="15,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" /><widget name="key_green" position="480,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" /><widget name="key_yellow" position="945,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" /><widget name="key_blue" position="1410,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+    <widget source="key_red" render="Label" position="15,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" /><widget source="key_green" render="Label" position="480,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="green" transparent="1" /><widget source="key_yellow" render="Label" position="945,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="yellow" transparent="1" /><widget source="key_blue" render="Label" position="1410,990" size="450,42" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
   </screen>
 
   <screen name="GraphicalEPGPIG" position="15,15" size="1890,1050" backgroundColor="black" title="FullHDGlass Graphical Guide">

@@ -1,0 +1,318 @@
+[
+  {
+    "module": "PluginBrowser.py",
+    "class": "PackageAction",
+    "aliases": [
+      "PackageAction"
+    ],
+    "removed_used_by_skin": {
+      "PackageAction": []
+    },
+    "changed_used_by_skin": {
+      "PackageAction": {}
+    },
+    "added_visible_not_in_skin": {
+      "PackageAction": {
+        "key_blue": "StaticText",
+        "key_menu": "StaticText"
+      }
+    }
+  },
+  {
+    "module": "Timers.py",
+    "class": "RecordTimerOverview",
+    "aliases": [
+      "RecordTimerOverview"
+    ],
+    "removed_used_by_skin": {
+      "RecordTimerOverview": []
+    },
+    "changed_used_by_skin": {
+      "RecordTimerOverview": {}
+    },
+    "added_visible_not_in_skin": {
+      "RecordTimerOverview": {}
+    }
+  },
+  {
+    "module": "RdsDisplay.py",
+    "class": "RdsInfoDisplay",
+    "aliases": [
+      "RdsInfoDisplay"
+    ],
+    "removed_used_by_skin": {
+      "RdsInfoDisplay": []
+    },
+    "changed_used_by_skin": {
+      "RdsInfoDisplay": {}
+    },
+    "added_visible_not_in_skin": {
+      "RdsInfoDisplay": {}
+    }
+  },
+  {
+    "module": "RdsDisplay.py",
+    "class": "RassInteractive",
+    "aliases": [
+      "RassInteractive"
+    ],
+    "removed_used_by_skin": {
+      "RassInteractive": [
+        "subpages_1",
+        "subpages_2",
+        "subpages_3",
+        "subpages_4",
+        "subpages_5",
+        "subpages_6",
+        "subpages_7",
+        "subpages_8",
+        "subpages_9"
+      ]
+    },
+    "changed_used_by_skin": {
+      "RassInteractive": {}
+    },
+    "added_visible_not_in_skin": {
+      "RassInteractive": {}
+    }
+  },
+  {
+    "module": "TextBox.py",
+    "class": "TextBox",
+    "aliases": [
+      "TextBox"
+    ],
+    "removed_used_by_skin": {
+      "TextBox": []
+    },
+    "changed_used_by_skin": {
+      "TextBox": {}
+    },
+    "added_visible_not_in_skin": {
+      "TextBox": {
+        "key_red": "StaticText"
+      }
+    }
+  },
+  {
+    "module": "EpgSelection.py",
+    "class": "EPGSelectionGrid",
+    "aliases": [
+      "GraphicalEPG",
+      "GraphicalEPGPIG",
+      "GraphicalInfoBarEPG"
+    ],
+    "removed_used_by_skin": {
+      "GraphicalEPG": [],
+      "GraphicalEPGPIG": [],
+      "GraphicalInfoBarEPG": []
+    },
+    "changed_used_by_skin": {
+      "GraphicalEPG": {},
+      "GraphicalEPGPIG": {},
+      "GraphicalInfoBarEPG": {}
+    },
+    "added_visible_not_in_skin": {
+      "GraphicalEPG": {},
+      "GraphicalEPGPIG": {
+        "primetime": "Label",
+        "change_bouquet": "Label",
+        "jump": "Label",
+        "page": "Label"
+      },
+      "GraphicalInfoBarEPG": {
+        "primetime": "Label",
+        "change_bouquet": "Label",
+        "jump": "Label",
+        "page": "Label"
+      }
+    }
+  },
+  {
+    "module": "EpgSelection.py",
+    "class": "EPGSelectionMulti",
+    "aliases": [
+      "EPGSelectionMulti"
+    ],
+    "removed_used_by_skin": {
+      "EPGSelectionMulti": []
+    },
+    "changed_used_by_skin": {
+      "EPGSelectionMulti": {}
+    },
+    "added_visible_not_in_skin": {
+      "EPGSelectionMulti": {}
+    }
+  },
+  {
+    "module": "EpgSelection.py",
+    "class": "EPGSelectionSimilar",
+    "aliases": [
+      "EPGSelection"
+    ],
+    "removed_used_by_skin": {
+      "EPGSelection": []
+    },
+    "changed_used_by_skin": {
+      "EPGSelection": {}
+    },
+    "added_visible_not_in_skin": {
+      "EPGSelection": {}
+    }
+  },
+  {
+    "module": "EpgSelection.py",
+    "class": "EPGSelectionSingle",
+    "aliases": [
+      "EPGSelection",
+      "QuickEPG"
+    ],
+    "removed_used_by_skin": {
+      "QuickEPG": [],
+      "EPGSelection": []
+    },
+    "changed_used_by_skin": {
+      "QuickEPG": {},
+      "EPGSelection": {}
+    },
+    "added_visible_not_in_skin": {
+      "QuickEPG": {},
+      "EPGSelection": {}
+    }
+  },
+  {
+    "module": "EpgSelection.py",
+    "class": "EPGSelection",
+    "aliases": [
+      "EPGSelection"
+    ],
+    "removed_used_by_skin": {
+      "EPGSelection": [
+        "Event",
+        "key_blue",
+        "key_green",
+        "key_red",
+        "key_yellow"
+      ]
+    },
+    "changed_used_by_skin": {
+      "EPGSelection": {
+        "list": [
+          "MenuList",
+          "EPGListSingle"
+        ]
+      }
+    },
+    "added_visible_not_in_skin": {
+      "EPGSelection": {}
+    }
+  },
+  {
+    "module": "SwapManager.py",
+    "class": "Swap",
+    "aliases": [
+      "Setup",
+      "Swap"
+    ],
+    "removed_used_by_skin": {
+      "Setup": [
+        "key_green",
+        "key_red"
+      ],
+      "Swap": [
+        "active",
+        "autostart_off",
+        "autostart_on",
+        "inactive",
+        "key_green",
+        "key_red",
+        "lab1",
+        "lab2",
+        "lab3",
+        "lab4",
+        "labplace",
+        "labsize"
+      ]
+    },
+    "changed_used_by_skin": {
+      "Setup": {
+        "key_yellow": [
+          "Label",
+          "StaticText"
+        ]
+      },
+      "Swap": {
+        "key_yellow": [
+          "Label",
+          "StaticText"
+        ]
+      }
+    },
+    "added_visible_not_in_skin": {
+      "Setup": {},
+      "Swap": {
+        "key_blue": "StaticText"
+      }
+    }
+  },
+  {
+    "module": "ParentalControlSetup.py",
+    "class": "ParentalControlSetup",
+    "aliases": [
+      "ParentalControlSetup"
+    ],
+    "removed_used_by_skin": {
+      "ParentalControlSetup": [
+        "key_green",
+        "key_red"
+      ]
+    },
+    "changed_used_by_skin": {
+      "ParentalControlSetup": {}
+    },
+    "added_visible_not_in_skin": {
+      "ParentalControlSetup": {}
+    }
+  },
+  {
+    "module": "ParentalControlSetup.py",
+    "class": "ParentalControlChangePin",
+    "aliases": [
+      "ParentalControlChangePin"
+    ],
+    "removed_used_by_skin": {
+      "ParentalControlChangePin": [
+        "key_green",
+        "key_red"
+      ]
+    },
+    "changed_used_by_skin": {
+      "ParentalControlChangePin": {}
+    },
+    "added_visible_not_in_skin": {
+      "ParentalControlChangePin": {}
+    }
+  },
+  {
+    "module": "Toast.py",
+    "class": "ToastScreen",
+    "aliases": [
+      "ToastScreen"
+    ],
+    "removed_used_by_skin": {
+      "ToastScreen": [
+        "border",
+        "icon"
+      ]
+    },
+    "changed_used_by_skin": {
+      "ToastScreen": {}
+    },
+    "added_visible_not_in_skin": {
+      "ToastScreen": {
+        "background": "Label",
+        "glyph": "Label"
+      }
+    }
+  }
+]

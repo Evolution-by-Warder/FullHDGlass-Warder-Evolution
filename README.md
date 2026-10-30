@@ -4,15 +4,15 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 30 October 2026
 
-**FullHDGlass 1.0.44** silently downloads the verified Warder IPTV radio bouquet after installation and registers it in the radio list. Personal bouquets, their ordering and TV lists are preserved; repeated execution does not add duplicates. Offline attempts retry in the background, with the existing weekly update policy. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Radio import](docs/RADIO-BOUQUET-INSTALL.md).
+**FullHDGlass 1.0.45** restores graphical MultiEPG colour captions and actions after OpenATV's EPG refactor. It also adapts current EPG configuration, video codec names, parental-control forms and package/text-dialog keys. [Current release](docs/CURRENT-RELEASE.md) · [Compatibility audit](docs/OPENATV-COMPATIBILITY-20261030.md) · [Production evidence](docs/PRODUCTION.json).
 
-The production updater offers 1.0.44 as a normal upgrade from 1.0.43. The owner-confirmed virtual keyboard fix and approved radio graphics remain. The new import has automated validation; physical receiver confirmation is pending.
+The production updater offers 1.0.45 as a normal upgrade. Current OpenATV interface checks gate each release and run daily on GitHub. Approved radio animation, virtual keyboard, picons and managed radio bouquet remain preserved. Automated checks are complete; physical receiver confirmation of these new fixes is pending.
 
 ## Historical receiver recovery baseline: 1.0.15
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.44/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk).
 
-Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current offered version is recorded in update.json and update-test.json.
+Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 
 
 ## Project status

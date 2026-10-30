@@ -1,42 +1,53 @@
-name: Verify current OpenATV keyboard compatibility
+name: Verify OpenATV compatibility
 on:
+  workflow_call:
+  workflow_dispatch:
   schedule:
     - cron: '15 5 * * *'
-  workflow_dispatch:
   push:
     branches: [main, warder-modernization-work]
     paths:
       - .github/workflows/verify-system-screen-compatibility.yml
+      - tools/check-openatv-interfaces.py
+      - tools/test-openatv-*.py
       - tools/test-virtual-keyboard.py
+      - design/openatv-compatibility/**
       - design/virtual-keyboard/**
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderVideoCodec.py
       - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
-      - source/package-root/usr/share/enigma2/hd_glass17/buttons/vkey_*
 permissions:
   contents: read
 jobs:
   compatibility:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /tools/test-virtual-keyboard.py
-            /design/virtual-keyboard/
-            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
-            /source/package-root/usr/share/enigma2/hd_glass17/buttons/
+            tools
+            design
+            source
       - uses: actions/setup-python@v5
         with:
           python-version: '3.14'
       - run: python -m pip install --quiet 'Pillow==12.3.0'
-      - name: Check the pinned and latest upstream display contract
+      - name: Check reviewed exports, signatures and display contracts against current OpenATV
+        run: |
+          python tools/test-openatv-interface-guard.py -v
+          python tools/check-openatv-interfaces.py --manifest design/openatv-compatibility/interfaces.json --cache-dir /tmp/warder-openatv-current
+      - name: Exercise legacy and current EPG, system screens, codec and keyboard
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p /tmp/warder-openatv-before/Screens
+          curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-openatv-before/Screens/EpgSelection.py https://raw.githubusercontent.com/openatv/enigma2/13e055d3e172679c4c3fb16da1b0462d0bd8b660/lib/python/Screens/EpgSelection.py
+          WARDER_OPENATV_BEFORE=/tmp/warder-openatv-before WARDER_OPENATV_AFTER=/tmp/warder-openatv-current python tools/test-openatv-epg-compat.py -v
+          python tools/test-openatv-codec-compat.py -v
+          python tools/test-openatv-screen-compat.py --before /tmp/warder-openatv-before --after /tmp/warder-openatv-current -v
           PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"
-          curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-latest.py https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/Screens/VirtualKeyBoard.py
-          python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-keyboard-latest.py -v
+          python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-openatv-current/Screens/VirtualKeyBoard.py -v

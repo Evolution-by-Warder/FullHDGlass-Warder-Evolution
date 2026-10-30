@@ -85,6 +85,11 @@ class KeyboardTests(unittest.TestCase):
     def test_only_the_modern_screen_changes_and_legacy_screen_is_preserved(self):
         raw=SKIN.read_text()
         self.assertEqual(raw.count(RECORD['updated_screen']),1)
+        compatibility_edits=ROOT/'design/openatv-compatibility/skin-edits.json'
+        if compatibility_edits.exists():
+            for edit in json.loads(compatibility_edits.read_text())['edits']:
+                self.assertEqual(raw.count(edit['updated_screen']),1)
+                raw=raw.replace(edit['updated_screen'],edit['original_screen'],1)
         restored=raw.replace(RECORD['updated_screen'],RECORD['original_screen'],1).encode()
         self.assertEqual(hashlib.sha256(restored).hexdigest(),RECORD['original_skin_sha256'])
         original=ET.fromstring(restored)

@@ -1,0 +1,817 @@
+{
+  "schema": 1,
+  "project": "FullHDGlass",
+  "reviewed_upstream": "26544b4af938b462c251135810e229e897689bc2",
+  "baseline_upstream": "13e055d3e172679c4c3fb16da1b0462d0bd8b660",
+  "modules": {
+    "Components.ActionMap": [
+      "ActionMap",
+      "NumberActionMap"
+    ],
+    "Components.Console": [
+      "Console"
+    ],
+    "Components.Converter.Converter": [
+      "Converter"
+    ],
+    "Components.Converter.Poll": [
+      "Poll"
+    ],
+    "Components.Element": [
+      "ElementError",
+      "cached"
+    ],
+    "Components.FileList": [
+      "FileList"
+    ],
+    "Components.GUIComponent": [
+      "GUIComponent"
+    ],
+    "Components.HTMLComponent": [
+      "HTMLComponent"
+    ],
+    "Components.Harddisk": [
+      "harddiskmanager"
+    ],
+    "Components.Input": [
+      "Input"
+    ],
+    "Components.Label": [
+      "Label"
+    ],
+    "Components.Language": [
+      "language"
+    ],
+    "Components.MenuList": [
+      "MenuList"
+    ],
+    "Components.MultiContent": [
+      "MultiContentEntryPixmap",
+      "MultiContentEntryPixmapAlphaBlend",
+      "MultiContentEntryPixmapAlphaTest",
+      "MultiContentEntryText"
+    ],
+    "Components.NimManager": [
+      "nimmanager"
+    ],
+    "Components.Pixmap": [
+      "MovingPixmap",
+      "Pixmap"
+    ],
+    "Components.PluginComponent": [
+      "plugins"
+    ],
+    "Components.ProgressBar": [
+      "ProgressBar"
+    ],
+    "Components.Renderer.Canvas": [
+      "Canvas"
+    ],
+    "Components.Renderer.Picon": [
+      "getPiconName"
+    ],
+    "Components.Renderer.Pig": [
+      "Pig"
+    ],
+    "Components.Renderer.Renderer": [
+      "Renderer"
+    ],
+    "Components.ScrollLabel": [
+      "ScrollLabel"
+    ],
+    "Components.Sensors": [
+      "sensors"
+    ],
+    "Components.ServiceEventTracker": [
+      "ServiceEventTracker"
+    ],
+    "Components.Sources.CanvasSource": [
+      "CanvasSource"
+    ],
+    "Components.Sources.List": [
+      "List"
+    ],
+    "Components.Sources.StaticText": [
+      "StaticText"
+    ],
+    "Components.SystemInfo": [
+      "SystemInfo",
+      "VideoCodec"
+    ],
+    "Components.VariableText": [
+      "VariableText"
+    ],
+    "Components.VariableValue": [
+      "VariableValue"
+    ],
+    "Components.VolumeBar": [
+      "VolumeBar"
+    ],
+    "Components.config": [
+      "ConfigBoolean",
+      "ConfigElement",
+      "ConfigPassword",
+      "ConfigSubsection",
+      "ConfigText",
+      "ConfigYesNo",
+      "KEY_0",
+      "KEY_ASCII",
+      "KEY_BACKSPACE",
+      "KEY_DELETE",
+      "KEY_END",
+      "KEY_HOME",
+      "KEY_LEFT",
+      "KEY_NUMBERS",
+      "KEY_OK",
+      "KEY_RIGHT",
+      "KEY_TIMEOUT",
+      "KEY_TOGGLEOW",
+      "config",
+      "configfile"
+    ],
+    "Screens.ChannelSelection": [
+      "service_types_radio",
+      "service_types_tv"
+    ],
+    "Screens.EpgSelection": [
+      "EPGSelection",
+      "EPGSelectionBase",
+      "EPGSelectionGrid",
+      "EPGStandardButtons"
+    ],
+    "Screens.InfoBar": [
+      "InfoBar"
+    ],
+    "Screens.InfoBarGenerics": [
+      "InfoBarPlugins"
+    ],
+    "Screens.InputBox": [
+      "InputBox"
+    ],
+    "Screens.MessageBox": [
+      "MessageBox"
+    ],
+    "Screens.PictureInPicture": [
+      "PictureInPicture"
+    ],
+    "Screens.Screen": [
+      "Screen"
+    ],
+    "Screens.Setup": [
+      "Setup",
+      "getSetupTitle"
+    ],
+    "Screens.Standby": [
+      "TryQuitMainloop"
+    ],
+    "Screens.VirtualKeyBoard": [
+      "VirtualKeyBoard"
+    ],
+    "Tools.Directories": [
+      "SCOPE_CURRENT_SKIN",
+      "SCOPE_SKIN",
+      "fileExists",
+      "resolveFilename"
+    ],
+    "Tools.HardwareInfo": [
+      "HardwareInfo"
+    ],
+    "Tools.LoadPixmap": [
+      "LoadPixmap"
+    ],
+    "Tools.Transponder": [
+      "ConvertToHumanReadable"
+    ]
+  },
+  "contracts": [
+    {
+      "module": "Components.ActionMap",
+      "class": "ActionMap",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='contexts'), arg(arg='actions'), arg(arg='prio'), arg(arg='parentScreen')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=0), Constant(value=None)])"
+    },
+    {
+      "module": "Components.Console",
+      "class": "Console",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='binary')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False)])"
+    },
+    {
+      "module": "Components.Converter.Converter",
+      "class": "Converter",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='tokens')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Converter.Poll",
+      "class": "Poll",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Element",
+      "class": "ElementError",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='message')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.FileList",
+      "class": "FileList",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='directory'), arg(arg='showDirectories'), arg(arg='showFiles'), arg(arg='showMountpoints'), arg(arg='matchingPattern'), arg(arg='useServiceRef'), arg(arg='inhibitDirs'), arg(arg='inhibitMounts'), arg(arg='isTop'), arg(arg='additionalExtensions'), arg(arg='sortDirs'), arg(arg='sortFiles'), arg(arg='firstDirs'), arg(arg='showCurrentDirectory'), arg(arg='enableWrapAround')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=True), Constant(value=True), Constant(value=True), Constant(value=None), Constant(value=False), Constant(value=False), Constant(value=False), Constant(value=False), Constant(value=None), Constant(value='0.0'), Constant(value='0.0'), Constant(value=True), Constant(value=False), Constant(value=False)])"
+    },
+    {
+      "module": "Components.GUIComponent",
+      "class": "GUIComponent",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.HTMLComponent",
+      "class": "HTMLComponent",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Input",
+      "class": "Input",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text'), arg(arg='maxSize'), arg(arg='visible_width'), arg(arg='type'), arg(arg='currPos'), arg(arg='allMarked')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Constant(value=False), Constant(value=False), Name(id='TEXT', ctx=Load()), Constant(value=0), Constant(value=True)])"
+    },
+    {
+      "module": "Components.Label",
+      "class": "Label",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value='')])"
+    },
+    {
+      "module": "Components.MenuList",
+      "class": "MenuList",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='menuList'), arg(arg='enableWrapAround'), arg(arg='content')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Name(id='eListboxPythonStringContent', ctx=Load())])"
+    },
+    {
+      "module": "Components.Pixmap",
+      "class": "Pixmap",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Pixmap",
+      "class": "MovingPixmap",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.ProgressBar",
+      "class": "ProgressBar",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Renderer.Canvas",
+      "class": "Canvas",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Renderer.Pig",
+      "class": "Pig",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Renderer.Renderer",
+      "class": "Renderer",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.ScrollLabel",
+      "class": "ScrollLabel",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value='')])"
+    },
+    {
+      "module": "Components.ServiceEventTracker",
+      "class": "ServiceEventTracker",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='screen'), arg(arg='eventmap')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Sources.CanvasSource",
+      "class": "CanvasSource",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.Sources.List",
+      "class": "List",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='list'), arg(arg='enableWrapAround'), arg(arg='item_height'), arg(arg='fonts'), arg(arg='templateName'), arg(arg='indexNames')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=0), Constant(value=None), Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "module": "Components.Sources.StaticText",
+      "class": "StaticText",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text'), arg(arg='filter')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Lambda(args=arguments(posonlyargs=[], args=[arg(arg='x')], kwonlyargs=[], kw_defaults=[], defaults=[]), body=Name(id='x', ctx=Load()))])"
+    },
+    {
+      "module": "Components.VariableText",
+      "class": "VariableText",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.VariableValue",
+      "class": "VariableValue",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.VolumeBar",
+      "class": "VolumeBar",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.config",
+      "class": "ConfigElement",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.config",
+      "class": "ConfigBoolean",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='descriptions'), arg(arg='graphic')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False), Constant(value=None), Constant(value=True)])"
+    },
+    {
+      "module": "Components.config",
+      "class": "ConfigYesNo",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='graphic')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False), Constant(value=True)])"
+    },
+    {
+      "module": "Components.config",
+      "class": "ConfigText",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='fixed_size'), arg(arg='visible_width')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Constant(value=True), Constant(value=False)])"
+    },
+    {
+      "module": "Components.config",
+      "class": "ConfigPassword",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='fixed_size'), arg(arg='visible_width'), arg(arg='censor')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Constant(value=False), Constant(value=False), Constant(value='\u2022')])"
+    },
+    {
+      "module": "Components.config",
+      "class": "ConfigSubsection",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionBase",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='epgConfig'), arg(arg='startBouquet'), arg(arg='startRef'), arg(arg='bouquets')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionGrid",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='zapFunc'), arg(arg='startBouquet'), arg(arg='startRef'), arg(arg='bouquets'), arg(arg='graphic'), arg(arg='epgType')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=False), Name(id='EPG_TYPE_GRAPH', ctx=Load())])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelection",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='service'), arg(arg='zapFunc'), arg(arg='eventid'), arg(arg='bouquetChangeCB'), arg(arg='serviceChangeCB'), arg(arg='EPGtype'), arg(arg='StartBouquet'), arg(arg='StartRef'), arg(arg='bouquets')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "module": "Screens.InfoBar",
+      "class": "InfoBar",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.InfoBarGenerics",
+      "class": "InfoBarPlugins",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.InputBox",
+      "class": "InputBox",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='title'), arg(arg='windowTitle'), arg(arg='useableChars')], kwonlyargs=[], kw_defaults=[], kwarg=arg(arg='kwargs'), defaults=[Constant(value=''), Call(func=Name(id='_', ctx=Load()), args=[Constant(value='Input')], keywords=[]), Constant(value=None)])"
+    },
+    {
+      "module": "Screens.MessageBox",
+      "class": "MessageBox",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='text'), arg(arg='type'), arg(arg='timeout'), arg(arg='list'), arg(arg='default'), arg(arg='closeOnAnyKey'), arg(arg='enableInput'), arg(arg='msgBoxID'), arg(arg='typeIcon'), arg(arg='timeoutDefault'), arg(arg='windowTitle'), arg(arg='skinName'), arg(arg='close_on_any_key'), arg(arg='enable_input'), arg(arg='timeout_default'), arg(arg='title'), arg(arg='picon'), arg(arg='skin_name'), arg(arg='simple')], kwonlyargs=[], kw_defaults=[], defaults=[Name(id='TYPE_YESNO', ctx=Load()), UnaryOp(op=USub(), operand=Constant(value=1)), Constant(value=None), Constant(value=True), Constant(value=False), Constant(value=True), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=False), Constant(value=True), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "module": "Screens.PictureInPicture",
+      "class": "PictureInPicture",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.Screen",
+      "class": "Screen",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='parent'), arg(arg='mandatoryWidgets'), arg(arg='enableHelp')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=False)])"
+    },
+    {
+      "module": "Screens.Setup",
+      "class": "Setup",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='setup'), arg(arg='plugin'), arg(arg='PluginLanguageDomain')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None)])"
+    },
+    {
+      "module": "Screens.Standby",
+      "class": "TryQuitMainloop",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='retvalue'), arg(arg='timeout'), arg(arg='default_yes')], kwonlyargs=[], kw_defaults=[], defaults=[Name(id='QUIT_SHUTDOWN', ctx=Load()), UnaryOp(op=USub(), operand=Constant(value=1)), Constant(value=True)])"
+    },
+    {
+      "module": "Screens.VirtualKeyBoard",
+      "class": "VirtualKeyBoard",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='title'), arg(arg='text'), arg(arg='maxSize'), arg(arg='visible_width'), arg(arg='type'), arg(arg='currPos'), arg(arg='allMarked'), arg(arg='style'), arg(arg='windowTitle')], kwonlyargs=[], kw_defaults=[], defaults=[Call(func=Name(id='_', ctx=Load()), args=[Constant(value='Virtual Keyboard Text:')], keywords=[]), Constant(value=''), Constant(value=False), Constant(value=False), Attribute(value=Name(id='Input', ctx=Load()), attr='TEXT', ctx=Load()), Constant(value=None), Constant(value=False), Attribute(value=Name(id='VirtualKeyboard', ctx=Load()), attr='VKB_ENTER_ICON', ctx=Load()), Constant(value=None)])"
+    },
+    {
+      "module": "Tools.HardwareInfo",
+      "class": "HardwareInfo",
+      "kind": "signature",
+      "method": "__init__",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.Screen",
+      "class": "Screen",
+      "kind": "signature",
+      "method": "setTitle",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='title'), arg(arg='showPath')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=True)])"
+    },
+    {
+      "module": "Screens.Screen",
+      "class": "Screen",
+      "kind": "signature",
+      "method": "close",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], vararg=arg(arg='retVal'), kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionBase",
+      "kind": "signature",
+      "method": "enterDateTime",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionBase",
+      "kind": "signature",
+      "method": "RecordTimerQuestion",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='manual')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False)])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionBase",
+      "kind": "signature",
+      "method": "openEPGSearch",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionBase",
+      "kind": "signature",
+      "method": "closeEventViewDialog",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGStandardButtons",
+      "kind": "signature",
+      "method": "_btn_red",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGStandardButtons",
+      "kind": "signature",
+      "method": "_btn_green",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGStandardButtons",
+      "kind": "signature",
+      "method": "_btn_yellow",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGStandardButtons",
+      "kind": "signature",
+      "method": "_btn_blue",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGStandardButtons",
+      "kind": "signature",
+      "method": "_updateButtonText",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+    },
+    {
+      "module": "Components.SystemInfo",
+      "class": "VideoCodec",
+      "kind": "signature",
+      "method": "getName",
+      "expected": "arguments(posonlyargs=[], args=[arg(arg='videoType'), arg(arg='default')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value='N/A')])"
+    },
+    {
+      "module": "Screens.Setup",
+      "class": "Setup",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "footnote": "Label",
+          "description": "Label"
+        },
+        "mandatory_widgets": [
+          "config",
+          "description",
+          "footnote"
+        ]
+      }
+    },
+    {
+      "module": "Screens.VirtualKeyBoard",
+      "class": "VirtualKeyboard",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "prompt": "Label",
+          "text": "Input",
+          "list": "VirtualKeyboardList",
+          "mode": "Label",
+          "locale": "Label",
+          "language": "Label",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "key_text": "StaticText",
+          "key_help": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.PluginBrowser",
+      "class": "PackageAction",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "key_menu": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.ParentalControlSetup",
+      "class": "ParentalControlSetup",
+      "kind": "display",
+      "expected": {
+        "components": {},
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.ParentalControlSetup",
+      "class": "ParentalControlChangePin",
+      "kind": "display",
+      "expected": {
+        "components": {},
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.TextBox",
+      "class": "TextBox",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "key_red": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.SwapManager",
+      "class": "Swap",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "swapname_summary": "StaticText",
+          "swapactive_summary": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.Toast",
+      "class": "ToastScreen",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "background": "Label",
+          "glyph": "Label",
+          "text": "Label"
+        },
+        "mandatory_widgets": [
+          "background",
+          "glyph",
+          "text"
+        ]
+      }
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGSelectionBase",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "lab1": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "key_menu": "StaticText",
+          "key_info": "StaticText",
+          "key_text": "StaticText",
+          "key_epg": "StaticText",
+          "key_play": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.EpgSelection",
+      "class": "EPGStandardButtons",
+      "kind": "display",
+      "expected": {
+        "components": {},
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Components.EpgConfig",
+      "kind": "epg-config",
+      "expected": {
+        "fields": {
+          "config.epgselection.grid": "ConfigSubsection",
+          "config.epgselection.grid.showbouquet": "ConfigYesNo",
+          "config.epgselection.grid.browse_mode": "ConfigSelection",
+          "config.epgselection.grid.preview_mode": "ConfigYesNo",
+          "config.epgselection.grid.type_mode": "ConfigSelection",
+          "config.epgselection.grid.roundto": "ConfigSelection",
+          "config.epgselection.grid.histminutes": "ConfigSelection",
+          "config.epgselection.grid.prevtime": "ConfigClock",
+          "config.epgselection.grid.prevtimeperiod": "ConfigSelection",
+          "config.epgselection.grid.primetime": "ConfigClock",
+          "config.epgselection.grid.startmode": "ConfigSelection",
+          "config.epgselection.grid.servicetitle_mode": "ConfigSelection",
+          "config.epgselection.grid.servicename_alignment": "ConfigSelection",
+          "config.epgselection.grid.event_alignment": "ConfigSelection",
+          "config.epgselection.grid.servfs": "ConfigSelectionNumber",
+          "config.epgselection.grid.eventfs": "ConfigSelectionNumber",
+          "config.epgselection.grid.timelinefs": "ConfigSelectionNumber",
+          "config.epgselection.grid.timeline24h": "ConfigYesNo",
+          "config.epgselection.grid.itemsperpage": "ConfigSelection",
+          "config.epgselection.grid.pig": "ConfigYesNo",
+          "config.epgselection.grid.heightswitch": "NoSave",
+          "config.epgselection.grid.servicewidth": "ConfigSelectionNumber",
+          "config.epgselection.grid.piconwidth": "ConfigSelectionNumber",
+          "config.epgselection.grid.infowidth": "ConfigSelectionNumber",
+          "config.epgselection.grid.rec_icon_height": "ConfigSelection",
+          "config.epgselection.grid.btn_ok": "ConfigSelection",
+          "config.epgselection.grid.btn_oklong": "ConfigSelection",
+          "config.epgselection.grid.btn_epg": "ConfigSelection",
+          "config.epgselection.grid.btn_epglong": "ConfigSelection",
+          "config.epgselection.grid.btn_info": "ConfigSelection",
+          "config.epgselection.grid.btn_infolong": "ConfigSelection",
+          "config.epgselection.grid.btn_rec": "ConfigSelection",
+          "config.epgselection.grid.btn_reclong": "ConfigSelection",
+          "config.epgselection.grid.btn_channelup": "ConfigSelection",
+          "config.epgselection.grid.btn_channeldown": "ConfigSelection",
+          "config.epgselection.grid.btn_red": "ConfigSelection",
+          "config.epgselection.grid.btn_redlong": "ConfigSelection",
+          "config.epgselection.grid.btn_green": "ConfigSelection",
+          "config.epgselection.grid.btn_greenlong": "ConfigSelection",
+          "config.epgselection.grid.btn_yellow": "ConfigSelection",
+          "config.epgselection.grid.btn_yellowlong": "ConfigSelection",
+          "config.epgselection.grid.btn_blue": "ConfigSelection",
+          "config.epgselection.grid.btn_bluelong": "ConfigSelection"
+        },
+        "actions": {
+          "epgActions": [
+            "",
+            "openIMDb",
+            "openTMDb",
+            "sortEPG",
+            "addEditTimer",
+            "addEditTimerMenu",
+            "openTimerList",
+            "openEPGSearch",
+            "addEditAutoTimer",
+            "openAutoTimerList",
+            "forward24Hours",
+            "back24Hours",
+            "prevPage",
+            "nextPage",
+            "prevBouquet",
+            "nextBouquet",
+            "toggleBouquetList",
+            "enterDateTime",
+            "openEventView",
+            "openSingleEPG",
+            "showMovies"
+          ],
+          "recActions": [
+            "addEditTimerMenu",
+            "addEditTimer",
+            "addEditZapTimerSilent",
+            "addEditAutoTimer"
+          ],
+          "infoActions": [
+            "",
+            "openEventView",
+            "openSingleEPG"
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Source contracts and mocked receiver APIs; not a hardware receiver test.",
+    "Guarded legacy ScreenAnimations and codec_data are optional; current VideoCodec is required by the FullHDGlass current-image guard.",
+    "Own bundled modules and native C++ APIs are covered by the recorded audit and runtime tests, not Python export discovery."
+  ]
+}

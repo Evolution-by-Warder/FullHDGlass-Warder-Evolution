@@ -1,0 +1,7743 @@
+{
+  "base": "13e055d3e172679c4c3fb16da1b0462d0bd8b660",
+  "head": "26544b4af938b462c251135810e229e897689bc2",
+  "complete_changed_files": [
+    {
+      "status": "M",
+      "path": ".gitignore"
+    },
+    {
+      "status": "M",
+      "path": "README.md"
+    },
+    {
+      "status": "M",
+      "path": "configure.ac"
+    },
+    {
+      "status": "M",
+      "path": "data/7segment/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "data/dab.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display128/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display128dm/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display128dm/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display220/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display220/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display220/skin_display_templates.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display240/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display240/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display390/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display390/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display400/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display400/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display400/skin_display_templates.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display480/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display480/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display480/skin_display_templates.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display720/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display720/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display800/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display800/skin_display_picon.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display800/skin_display_templates.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/display96/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/displaytext/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/displaytext/skin_display_alternate.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/fonts/enigma2icons.ttf"
+    },
+    {
+      "status": "M",
+      "path": "data/grautec70x0/skin_display_grautec.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/grautec8000/skin_display_grautec.xml"
+    },
+    {
+      "status": "A",
+      "path": "data/hybridservices.xml"
+    },
+    {
+      "status": "A",
+      "path": "data/icons/dab_radio.png"
+    },
+    {
+      "status": "A",
+      "path": "data/icons/default_dab.png"
+    },
+    {
+      "status": "A",
+      "path": "data/icons/default_radio.png"
+    },
+    {
+      "status": "M",
+      "path": "data/keymap.ntr"
+    },
+    {
+      "status": "M",
+      "path": "data/keymap.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/menu.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/networkdaemons.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/setup.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/skin_text_clock.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/startwizard.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/unicable.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/vfd128/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/vfd140/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/vfd255/skin_display.xml"
+    },
+    {
+      "status": "M",
+      "path": "data/vfd255/skin_display_picon.xml"
+    },
+    {
+      "status": "A",
+      "path": "doc/skin-rds-display.xml"
+    },
+    {
+      "status": "M",
+      "path": "lib/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "lib/actions/action.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/Makefile.inc"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/cachedtssource.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/cfile.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/cfile.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/console.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/e2avahi.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/eerror.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/esimpleconfig.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/esimpleconfig.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/base/externalvideo.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/base/externalvideo.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/httpsstream.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/httpsstream.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/httpstream.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/httpstream.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/internetcheck.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/itssource.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/rawfile.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/rawfile.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/thread.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/base/thread.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/components/file_eraser.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/components/file_eraser.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/components/tuxtxtapp.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/components/tuxtxtapp.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/driver/Makefile.inc"
+    },
+    {
+      "status": "M",
+      "path": "lib/driver/avcontrol.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/driver/avcontrol.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/driver/hdmi_cec.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/driver/hdmi_cec.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/driver/inputdevicedfu.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/driver/inputdevicedfu.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/driver/inputdevicemanager.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/driver/inputdevicemanager.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/Makefile.inc"
+    },
+    {
+      "status": "D",
+      "path": "lib/dvb/alsa.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/avsync_core.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/avsync_core.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/cahandler.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/csaengine.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/csaengine.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/csasession.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/csasession.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/db.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/decoder.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/decoder.h"
+    },
+    {
+      "status": "D",
+      "path": "lib/dvb/decoders.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/demux.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/demux.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/dvb.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/dvb.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/epgcache.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/epgcache.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/esection.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/fastscan.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/fastscan.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/filepush.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/filepush.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/frontend.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/frontend.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/hevc_hdr_detector.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/hevc_hdr_detector.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/hevc_hdr_parser.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/idemux.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/idvb.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/pmt.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/pmt.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/pmtparse.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/pvrparse.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/pvrparse.h"
+    },
+    {
+      "status": "D",
+      "path": "lib/dvb/ringbuffer.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/scan.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/sec.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/sec.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/servicetsfilter.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/servicetsfilter.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/streamserver.cpp"
+    },
+    {
+      "status": "D",
+      "path": "lib/dvb/tsparser.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/tstools.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/videoswdemux.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/videoswdemux.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/volume.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb/volume.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/warmstart.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/dvb/warmstart.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb_ci/dvbci.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/dvb_ci/dvbci.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/Makefile.inc"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/accel.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/accel.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/bcm.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/gdi/dreamge2d.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/gdi/dreamge2d.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/epng.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/fb.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/gfbdc.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/gfbdc.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/gmaindc.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/gpixmap.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/grc.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/grc.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gdi/pixmapcache.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/gdi/spinner.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/gdi/spinner.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/Makefile.inc"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/elistbox.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/elistbox.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/elistboxcontent.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/epositiongauge.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/gui/eqrcode.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/gui/eqrcode.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/estack.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/estack.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/evideo.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/ewidget.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/ewidget.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/ewindow.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/gui/ewindow.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/gui/qrcodegen.c"
+    },
+    {
+      "status": "A",
+      "path": "lib/gui/qrcodegen.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/hbbtv/Makefile.inc"
+    },
+    {
+      "status": "A",
+      "path": "lib/hbbtv/hbbtv.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/hbbtv/hbbtv.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/hbbtv/hbbtv_abi_exports.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/hbbtv/oipfapplication.cpp"
+    },
+    {
+      "status": "A",
+      "path": "lib/hbbtv/oipfapplication.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/nav/core.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/AVSwitch.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/About.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/ButtonSequence.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/ColorButtonsSequence.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/GUIAddon.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/MainMenu.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/Pager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/ScreenButtonsBar.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/ScreenHeader.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Addons/ServiceInfoBar.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/BlinkingPixmap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Button.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Clock.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ConditionalWidget.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ConfigList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/AnalogClock.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ChannelNumbers.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ClientsStreaming.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ClockToText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/Combine.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ConditionalShowHide.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ConfigEntryTest.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ConfigEntryTestVisible.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/Converter.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ConverterRotator.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/CryptoInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/EGAnalogic.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/EventInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/EventTime.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ExtendedServiceInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ExtremeInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/FrontendInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/HbbtvApplicationInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/MenuEntryCompare.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/MovieInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/MovieReference.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/PliExtraInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/Poll.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ProgressToText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/RdsInfo.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Components/Converter/RemoteControlInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/SCServicePosition.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/SensorToText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ServiceInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ServiceName.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ServiceName2.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ServiceOrbitalPosition.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ServicePosition.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ServiceTime.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/SmartInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/StaticMultiList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/StaticText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/Streaming.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/Streaming2.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/StringList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/StringListSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/TemplatedMultiContent.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/TextCase.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/TrackInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/TransponderInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/TunerInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VAudioInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VExtraNumText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VNetSpeedInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VServiceInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VServiceOrbitalPosition.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VWeather.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ValueBitTest.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ValueRange.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/ValueToPixmap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VfdDisplay.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VtiInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/VtiTempFan.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/XmlMultiContent.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/genre.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Converter/pstrCnvrt.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/DiskInfo.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Components/EpgConfig.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/EpgList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/EpgLoadSave.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/FanControl.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/FileTransfer.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/GUISkin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Harddisk.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/HdmiCec.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/HdmiRecord.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ImportChannels.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/InputDevice.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Label.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Lcd.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/MovieList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/NetworkManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/NetworkTime.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/NimManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Opkg.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ParentalControl.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/PerServiceDisplay.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Pixmap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Playlist.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/PluginComponent.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/PluginList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ProgressBar.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/PvrDescrambleConvert.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Components/QRCode.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/RFmod.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/RTLSDR.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/RecordingConfig.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/AnalogClockLCD.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/AudioIcon.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Canvas.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/ChannelNumber.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/CiModuleControl.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Cover.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/EGclock.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/FixedLabel.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/FrontpanelLed.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Label.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/LcdPicon.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Listbox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/NextEpgInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/NextEvent.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/NextEvents.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Picon.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/PiconBg.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Pig.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Pixmap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/PositionGauge.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/PrimeTime.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Progress.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Components/Renderer/QRCode.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/RatingIconLabel.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Rectangle.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/Renderer.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/RollerCharLCD.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/RollerCharLCDLong.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/RunningText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/SingleEpgList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VReference.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VRunningText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VWatches.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VWeatherUpdater.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VideoSize.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VolumeText.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VtiEmuInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/VtiImageVersion.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Renderer/pstrRndr.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Scanner.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ScrambledRecordings.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ServiceList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/ServicePosition.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Slider.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/CurrentService.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/EventInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/FrontendInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/FrontendStatus.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/RecordState.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/StreamService.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Sources/TunerInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Storage.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/SwapCheck.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/SystemInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/TimerSanityCheck.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/Timeshift.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Components/TimeshiftStorage.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/TuneTest.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/TunerInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/UsageConfig.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/VfdSymbols.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/VideoWindow.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/VolumeBar.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Components/config.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Makefile.inc"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Navigation.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/AtileHD/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/AtileHD/__init__.py"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/Extensions/AtileHD/pic/AtileHD.png"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/Extensions/AtileHD/pic/Makefile.am"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/Extensions/AtileHD/pic/button_blue.png"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/Extensions/AtileHD/pic/button_green.png"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/Extensions/AtileHD/pic/button_red.png"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/Extensions/AtileHD/pic/button_yellow.png"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/AtileHD/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/CutListEditor/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/Bludisc.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/MediumToolbox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/Process.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/Project.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/ProjectSettings.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/Title.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/TitleCutter.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/TitleList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDBurn/TitleProperties.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/DVDPlayer/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/FileCommander/plugin.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Plugins/Extensions/FileCommander/ui.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/MediaPlayer/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/MediaPlayer/settings.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/MediaScanner/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/MiniTV/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/PicturePlayer/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/PicturePlayer/ui.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/ProgrammlistenUpdater/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/QuadPip/qpip.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/SocketMMI/SocketMMI.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/SocketMMI/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/TuxboxPlugins/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/Extensions/TuxboxPlugins/pluginrunner.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/AmlFRQ/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/AnimationSetup/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/CableScan/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/DefaultServicesScanner/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/DiseqcTester/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/FSBLUpdater/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/FastChannelChange/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/FastScan/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/FastScan/plugin.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Plugins/SystemPlugins/FastScan/setup.xml"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/FrontprocessorUpgrade/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/Hotplug/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/IceTV/API.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/IceTV/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/LCNScanner/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/PositionerSetup/log.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/PositionerSetup/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/SatelliteEquipmentControl/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/Satfinder/plugin.py"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/SystemPlugins/SoftwareManager/Makefile.am"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/SystemPlugins/SoftwareManager/__init__.py"
+    },
+    {
+      "status": "D",
+      "path": "lib/python/Plugins/SystemPlugins/SoftwareManager/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/VideoClippingSetup/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/VideoEnhancement/VideoEnhancement.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/VideoEnhancement/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/VideoEnhancementAML/VideoEnhancement.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/VideoEnhancementAML/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/VideoTune/VideoFinetune.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/vps/src_py/Modifications.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/vps/src_py/Vps.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/vps/src_py/Vps_check.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/vps/src_py/Vps_setup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Plugins/SystemPlugins/vps/src_py/plugin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/RecordTimer.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Scheduler.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/AudioSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/AutoDiseqc.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/BackupRestore.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ButtonSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/CCcamInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ChannelSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ChoiceBox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Ci.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Console.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/CronTimer.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/DABScan.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/DVD.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/DeviceManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Dish.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/EpgSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/EventView.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/FactoryReset.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/FixedMenu.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/FlashExpander.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/FlashManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Globals.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/HelpMenu.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ImageBackup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/InfoBar.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/InfoBarGenerics.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Information.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/InputBox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/InputDeviceSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/LocaleSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/LocationBox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/LogManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Menu.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/MessageBox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/MinuteInput.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/MovieSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/MultiBootManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/NetworkMounts.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/NetworkServices.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/NetworkSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/NumericalTextInputHelpDialog.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/OScamInfo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Opkg.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/PVRState.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ParentalControlSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/PiPSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Picon.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/PictureInPicture.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/PluginBrowser.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/PowerLost.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/QuadPiP.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/QuickMenu.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/RTLSDRSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/RdsDisplay.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Recording.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/RestartNetwork.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SDswap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Satconfig.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ScanSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Scart.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Screen.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Screens/ScreenProtection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ScriptRunner.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/ServiceScan.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SessionGlobals.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Setup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SetupFallbacktuner.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SkinSelection.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SoftcamSetup.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SoftwareUpdate.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Standby.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SubtitleDisplay.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/SwapManager.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/TaskList.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/TaskView.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/TextBox.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Time.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/TimeDateInput.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/TimerEdit.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Timers.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Timeshift.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Toast.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/UserManual.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/VideoMode.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/VirtualKeyBoard.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/Wizard.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/WizardInstall.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/WizardStart.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Screens/WizardVideo.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/ServiceReference.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/StartEnigma.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/BugHunting.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/CIHelper.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Conversions.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/CopyFiles.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Tools/DAB.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Directories.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Downloader.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/FallbackTimer.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/FindPicon.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Geolocation.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Tools/HybridService.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/LoadPixmap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Log.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/MultiBoot.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Notifications.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Profile.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/RedirectOutput.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Tools/ScanBouquetRepair.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/ShellCompatibleFunctions.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Tools/StartupTasks.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/StbHardware.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Tools/StorageCheck.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/SubRip.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/SubtitleRenderer.py"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/Tools/Swap.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/Tools/Transponder.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/connections.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/enigma_py_patcher.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/enigma_python.i"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/python_hbbtv.i"
+    },
+    {
+      "status": "A",
+      "path": "lib/python/python_inputdevicemanager.i"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/skin.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/python/upgrade.py"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/Makefile.inc"
+    },
+    {
+      "status": "A",
+      "path": "lib/service/dabaudioframe.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/dabdecoder.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/dabdecoder.h"
+    },
+    {
+      "status": "A",
+      "path": "lib/service/dabsdrcontrol.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/eramserviceplay.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/iservice.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedab.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedab.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvb.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvb.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvbrecord.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvbrecord.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvbsoftdecoder.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvbsoftdecoder.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvbstream.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicedvd.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicemp3.cpp"
+    },
+    {
+      "status": "M",
+      "path": "lib/service/servicemp3.h"
+    },
+    {
+      "status": "M",
+      "path": "lib/timeshift/createapscfiles.cc"
+    },
+    {
+      "status": "M",
+      "path": "main/Makefile.am"
+    },
+    {
+      "status": "M",
+      "path": "main/enigma.cpp"
+    },
+    {
+      "status": "M",
+      "path": "po/aa.po"
+    },
+    {
+      "status": "M",
+      "path": "po/ar.po"
+    },
+    {
+      "status": "M",
+      "path": "po/bg.po"
+    },
+    {
+      "status": "M",
+      "path": "po/ca.po"
+    },
+    {
+      "status": "M",
+      "path": "po/cs.po"
+    },
+    {
+      "status": "M",
+      "path": "po/da.po"
+    },
+    {
+      "status": "M",
+      "path": "po/de.po"
+    },
+    {
+      "status": "M",
+      "path": "po/el.po"
+    },
+    {
+      "status": "M",
+      "path": "po/en.po"
+    },
+    {
+      "status": "M",
+      "path": "po/en_AU.po"
+    },
+    {
+      "status": "M",
+      "path": "po/en_GB.po"
+    },
+    {
+      "status": "M",
+      "path": "po/enigma2.pot"
+    },
+    {
+      "status": "M",
+      "path": "po/es.po"
+    },
+    {
+      "status": "M",
+      "path": "po/et.po"
+    },
+    {
+      "status": "M",
+      "path": "po/fa.po"
+    },
+    {
+      "status": "M",
+      "path": "po/fi.po"
+    },
+    {
+      "status": "M",
+      "path": "po/fr.po"
+    },
+    {
+      "status": "M",
+      "path": "po/fy.po"
+    },
+    {
+      "status": "M",
+      "path": "po/he.po"
+    },
+    {
+      "status": "M",
+      "path": "po/hr.po"
+    },
+    {
+      "status": "M",
+      "path": "po/hu.po"
+    },
+    {
+      "status": "M",
+      "path": "po/id.po"
+    },
+    {
+      "status": "M",
+      "path": "po/is.po"
+    },
+    {
+      "status": "M",
+      "path": "po/it.po"
+    },
+    {
+      "status": "M",
+      "path": "po/ku.po"
+    },
+    {
+      "status": "M",
+      "path": "po/lt.po"
+    },
+    {
+      "status": "M",
+      "path": "po/lv.po"
+    },
+    {
+      "status": "M",
+      "path": "po/nb.po"
+    },
+    {
+      "status": "M",
+      "path": "po/nl.po"
+    },
+    {
+      "status": "M",
+      "path": "po/nn.po"
+    },
+    {
+      "status": "M",
+      "path": "po/pl.po"
+    },
+    {
+      "status": "M",
+      "path": "po/pt.po"
+    },
+    {
+      "status": "M",
+      "path": "po/pt_BR.po"
+    },
+    {
+      "status": "M",
+      "path": "po/ro.po"
+    },
+    {
+      "status": "M",
+      "path": "po/ru.po"
+    },
+    {
+      "status": "M",
+      "path": "po/sk.po"
+    },
+    {
+      "status": "M",
+      "path": "po/sl.po"
+    },
+    {
+      "status": "M",
+      "path": "po/sq.po"
+    },
+    {
+      "status": "M",
+      "path": "po/sr.po"
+    },
+    {
+      "status": "M",
+      "path": "po/sv.po"
+    },
+    {
+      "status": "M",
+      "path": "po/ta.po"
+    },
+    {
+      "status": "M",
+      "path": "po/th.po"
+    },
+    {
+      "status": "M",
+      "path": "po/tr.po"
+    },
+    {
+      "status": "M",
+      "path": "po/uk.po"
+    },
+    {
+      "status": "M",
+      "path": "po/vi.po"
+    },
+    {
+      "status": "M",
+      "path": "po/zh_CN.po"
+    },
+    {
+      "status": "M",
+      "path": "po/zh_HK.po"
+    },
+    {
+      "status": "M",
+      "path": "sonar-project.properties"
+    },
+    {
+      "status": "M",
+      "path": "tools/enigma2.sh.in"
+    }
+  ],
+  "semantic_python_changes": [
+    "lib/python/Components/AVSwitch.py",
+    "lib/python/Components/About.py",
+    "lib/python/Components/Addons/ButtonSequence.py",
+    "lib/python/Components/Addons/ColorButtonsSequence.py",
+    "lib/python/Components/Addons/GUIAddon.py",
+    "lib/python/Components/Addons/MainMenu.py",
+    "lib/python/Components/Addons/Pager.py",
+    "lib/python/Components/Addons/ScreenButtonsBar.py",
+    "lib/python/Components/Addons/ScreenHeader.py",
+    "lib/python/Components/Addons/ServiceInfoBar.py",
+    "lib/python/Components/BlinkingPixmap.py",
+    "lib/python/Components/Button.py",
+    "lib/python/Components/Clock.py",
+    "lib/python/Components/ConditionalWidget.py",
+    "lib/python/Components/ConfigList.py",
+    "lib/python/Components/Converter/AnalogClock.py",
+    "lib/python/Components/Converter/ChannelNumbers.py",
+    "lib/python/Components/Converter/ClientsStreaming.py",
+    "lib/python/Components/Converter/ClockToText.py",
+    "lib/python/Components/Converter/Combine.py",
+    "lib/python/Components/Converter/ConditionalShowHide.py",
+    "lib/python/Components/Converter/ConfigEntryTest.py",
+    "lib/python/Components/Converter/ConfigEntryTestVisible.py",
+    "lib/python/Components/Converter/Converter.py",
+    "lib/python/Components/Converter/ConverterRotator.py",
+    "lib/python/Components/Converter/CryptoInfo.py",
+    "lib/python/Components/Converter/EGAnalogic.py",
+    "lib/python/Components/Converter/EventInfo.py",
+    "lib/python/Components/Converter/EventTime.py",
+    "lib/python/Components/Converter/ExtendedServiceInfo.py",
+    "lib/python/Components/Converter/ExtremeInfo.py",
+    "lib/python/Components/Converter/FrontendInfo.py",
+    "lib/python/Components/Converter/HbbtvApplicationInfo.py",
+    "lib/python/Components/Converter/MenuEntryCompare.py",
+    "lib/python/Components/Converter/MovieInfo.py",
+    "lib/python/Components/Converter/MovieReference.py",
+    "lib/python/Components/Converter/PliExtraInfo.py",
+    "lib/python/Components/Converter/Poll.py",
+    "lib/python/Components/Converter/ProgressToText.py",
+    "lib/python/Components/Converter/RdsInfo.py",
+    "lib/python/Components/Converter/RemoteControlInfo.py",
+    "lib/python/Components/Converter/SCServicePosition.py",
+    "lib/python/Components/Converter/SensorToText.py",
+    "lib/python/Components/Converter/ServiceInfo.py",
+    "lib/python/Components/Converter/ServiceName.py",
+    "lib/python/Components/Converter/ServiceName2.py",
+    "lib/python/Components/Converter/ServiceOrbitalPosition.py",
+    "lib/python/Components/Converter/ServicePosition.py",
+    "lib/python/Components/Converter/ServiceTime.py",
+    "lib/python/Components/Converter/SmartInfo.py",
+    "lib/python/Components/Converter/StaticMultiList.py",
+    "lib/python/Components/Converter/StaticText.py",
+    "lib/python/Components/Converter/Streaming.py",
+    "lib/python/Components/Converter/Streaming2.py",
+    "lib/python/Components/Converter/StringList.py",
+    "lib/python/Components/Converter/StringListSelection.py",
+    "lib/python/Components/Converter/TemplatedMultiContent.py",
+    "lib/python/Components/Converter/TextCase.py",
+    "lib/python/Components/Converter/TrackInfo.py",
+    "lib/python/Components/Converter/TransponderInfo.py",
+    "lib/python/Components/Converter/TunerInfo.py",
+    "lib/python/Components/Converter/VAudioInfo.py",
+    "lib/python/Components/Converter/VExtraNumText.py",
+    "lib/python/Components/Converter/VNetSpeedInfo.py",
+    "lib/python/Components/Converter/VServiceInfo.py",
+    "lib/python/Components/Converter/VServiceOrbitalPosition.py",
+    "lib/python/Components/Converter/VWeather.py",
+    "lib/python/Components/Converter/ValueBitTest.py",
+    "lib/python/Components/Converter/ValueRange.py",
+    "lib/python/Components/Converter/ValueToPixmap.py",
+    "lib/python/Components/Converter/VfdDisplay.py",
+    "lib/python/Components/Converter/VtiInfo.py",
+    "lib/python/Components/Converter/VtiTempFan.py",
+    "lib/python/Components/Converter/XmlMultiContent.py",
+    "lib/python/Components/Converter/genre.py",
+    "lib/python/Components/Converter/pstrCnvrt.py",
+    "lib/python/Components/DiskInfo.py",
+    "lib/python/Components/EpgConfig.py",
+    "lib/python/Components/EpgList.py",
+    "lib/python/Components/EpgLoadSave.py",
+    "lib/python/Components/FanControl.py",
+    "lib/python/Components/GUISkin.py",
+    "lib/python/Components/Harddisk.py",
+    "lib/python/Components/HdmiCec.py",
+    "lib/python/Components/HdmiRecord.py",
+    "lib/python/Components/ImportChannels.py",
+    "lib/python/Components/InputDevice.py",
+    "lib/python/Components/Label.py",
+    "lib/python/Components/Lcd.py",
+    "lib/python/Components/MovieList.py",
+    "lib/python/Components/NetworkManager.py",
+    "lib/python/Components/NetworkTime.py",
+    "lib/python/Components/NimManager.py",
+    "lib/python/Components/Opkg.py",
+    "lib/python/Components/ParentalControl.py",
+    "lib/python/Components/PerServiceDisplay.py",
+    "lib/python/Components/Pixmap.py",
+    "lib/python/Components/Playlist.py",
+    "lib/python/Components/PluginList.py",
+    "lib/python/Components/PvrDescrambleConvert.py",
+    "lib/python/Components/QRCode.py",
+    "lib/python/Components/RFmod.py",
+    "lib/python/Components/RTLSDR.py",
+    "lib/python/Components/Renderer/AnalogClockLCD.py",
+    "lib/python/Components/Renderer/AudioIcon.py",
+    "lib/python/Components/Renderer/Canvas.py",
+    "lib/python/Components/Renderer/ChannelNumber.py",
+    "lib/python/Components/Renderer/CiModuleControl.py",
+    "lib/python/Components/Renderer/Cover.py",
+    "lib/python/Components/Renderer/EGclock.py",
+    "lib/python/Components/Renderer/FrontpanelLed.py",
+    "lib/python/Components/Renderer/Label.py",
+    "lib/python/Components/Renderer/LcdPicon.py",
+    "lib/python/Components/Renderer/Listbox.py",
+    "lib/python/Components/Renderer/NextEpgInfo.py",
+    "lib/python/Components/Renderer/NextEvent.py",
+    "lib/python/Components/Renderer/NextEvents.py",
+    "lib/python/Components/Renderer/Picon.py",
+    "lib/python/Components/Renderer/Pig.py",
+    "lib/python/Components/Renderer/Pixmap.py",
+    "lib/python/Components/Renderer/PrimeTime.py",
+    "lib/python/Components/Renderer/Progress.py",
+    "lib/python/Components/Renderer/QRCode.py",
+    "lib/python/Components/Renderer/RatingIconLabel.py",
+    "lib/python/Components/Renderer/Renderer.py",
+    "lib/python/Components/Renderer/RollerCharLCD.py",
+    "lib/python/Components/Renderer/RollerCharLCDLong.py",
+    "lib/python/Components/Renderer/RunningText.py",
+    "lib/python/Components/Renderer/SingleEpgList.py",
+    "lib/python/Components/Renderer/VReference.py",
+    "lib/python/Components/Renderer/VRunningText.py",
+    "lib/python/Components/Renderer/VWatches.py",
+    "lib/python/Components/Renderer/VideoSize.py",
+    "lib/python/Components/Renderer/VolumeText.py",
+    "lib/python/Components/Renderer/VtiEmuInfo.py",
+    "lib/python/Components/Renderer/VtiImageVersion.py",
+    "lib/python/Components/Renderer/pstrRndr.py",
+    "lib/python/Components/Scanner.py",
+    "lib/python/Components/ServiceList.py",
+    "lib/python/Components/ServicePosition.py",
+    "lib/python/Components/Slider.py",
+    "lib/python/Components/Sources/CurrentService.py",
+    "lib/python/Components/Sources/EventInfo.py",
+    "lib/python/Components/Sources/FrontendInfo.py",
+    "lib/python/Components/Sources/FrontendStatus.py",
+    "lib/python/Components/Storage.py",
+    "lib/python/Components/SwapCheck.py",
+    "lib/python/Components/SystemInfo.py",
+    "lib/python/Components/TimerSanityCheck.py",
+    "lib/python/Components/Timeshift.py",
+    "lib/python/Components/TimeshiftStorage.py",
+    "lib/python/Components/TuneTest.py",
+    "lib/python/Components/TunerInfo.py",
+    "lib/python/Components/UsageConfig.py",
+    "lib/python/Components/VfdSymbols.py",
+    "lib/python/Components/VideoWindow.py",
+    "lib/python/Components/VolumeBar.py",
+    "lib/python/Components/config.py",
+    "lib/python/Navigation.py",
+    "lib/python/Plugins/Extensions/AtileHD/plugin.py",
+    "lib/python/Plugins/Extensions/CutListEditor/plugin.py",
+    "lib/python/Plugins/Extensions/DVDBurn/Bludisc.py",
+    "lib/python/Plugins/Extensions/DVDBurn/MediumToolbox.py",
+    "lib/python/Plugins/Extensions/DVDBurn/Process.py",
+    "lib/python/Plugins/Extensions/DVDBurn/Project.py",
+    "lib/python/Plugins/Extensions/DVDBurn/ProjectSettings.py",
+    "lib/python/Plugins/Extensions/DVDBurn/Title.py",
+    "lib/python/Plugins/Extensions/DVDBurn/TitleCutter.py",
+    "lib/python/Plugins/Extensions/DVDBurn/TitleList.py",
+    "lib/python/Plugins/Extensions/DVDBurn/TitleProperties.py",
+    "lib/python/Plugins/Extensions/DVDPlayer/plugin.py",
+    "lib/python/Plugins/Extensions/FileCommander/plugin.py",
+    "lib/python/Plugins/Extensions/FileCommander/ui.py",
+    "lib/python/Plugins/Extensions/MediaPlayer/plugin.py",
+    "lib/python/Plugins/Extensions/MediaPlayer/settings.py",
+    "lib/python/Plugins/Extensions/MediaScanner/plugin.py",
+    "lib/python/Plugins/Extensions/MiniTV/plugin.py",
+    "lib/python/Plugins/Extensions/PicturePlayer/plugin.py",
+    "lib/python/Plugins/Extensions/PicturePlayer/ui.py",
+    "lib/python/Plugins/Extensions/ProgrammlistenUpdater/plugin.py",
+    "lib/python/Plugins/Extensions/QuadPip/qpip.py",
+    "lib/python/Plugins/Extensions/TuxboxPlugins/plugin.py",
+    "lib/python/Plugins/Extensions/TuxboxPlugins/pluginrunner.py",
+    "lib/python/Plugins/SystemPlugins/AmlFRQ/plugin.py",
+    "lib/python/Plugins/SystemPlugins/AnimationSetup/plugin.py",
+    "lib/python/Plugins/SystemPlugins/CableScan/plugin.py",
+    "lib/python/Plugins/SystemPlugins/DefaultServicesScanner/plugin.py",
+    "lib/python/Plugins/SystemPlugins/DiseqcTester/plugin.py",
+    "lib/python/Plugins/SystemPlugins/FSBLUpdater/plugin.py",
+    "lib/python/Plugins/SystemPlugins/FastChannelChange/plugin.py",
+    "lib/python/Plugins/SystemPlugins/FastScan/plugin.py",
+    "lib/python/Plugins/SystemPlugins/FrontprocessorUpgrade/plugin.py",
+    "lib/python/Plugins/SystemPlugins/Hotplug/plugin.py",
+    "lib/python/Plugins/SystemPlugins/IceTV/API.py",
+    "lib/python/Plugins/SystemPlugins/IceTV/plugin.py",
+    "lib/python/Plugins/SystemPlugins/LCNScanner/plugin.py",
+    "lib/python/Plugins/SystemPlugins/PositionerSetup/log.py",
+    "lib/python/Plugins/SystemPlugins/PositionerSetup/plugin.py",
+    "lib/python/Plugins/SystemPlugins/SatelliteEquipmentControl/plugin.py",
+    "lib/python/Plugins/SystemPlugins/Satfinder/plugin.py",
+    "lib/python/Plugins/SystemPlugins/SoftwareManager/__init__.py",
+    "lib/python/Plugins/SystemPlugins/SoftwareManager/plugin.py",
+    "lib/python/Plugins/SystemPlugins/VideoClippingSetup/plugin.py",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancement/VideoEnhancement.py",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancement/plugin.py",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancementAML/VideoEnhancement.py",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancementAML/plugin.py",
+    "lib/python/Plugins/SystemPlugins/VideoTune/VideoFinetune.py",
+    "lib/python/Plugins/SystemPlugins/vps/src_py/Modifications.py",
+    "lib/python/Plugins/SystemPlugins/vps/src_py/Vps.py",
+    "lib/python/Plugins/SystemPlugins/vps/src_py/Vps_check.py",
+    "lib/python/Plugins/SystemPlugins/vps/src_py/Vps_setup.py",
+    "lib/python/Plugins/SystemPlugins/vps/src_py/plugin.py",
+    "lib/python/RecordTimer.py",
+    "lib/python/Scheduler.py",
+    "lib/python/Screens/AudioSelection.py",
+    "lib/python/Screens/AutoDiseqc.py",
+    "lib/python/Screens/BackupRestore.py",
+    "lib/python/Screens/ButtonSetup.py",
+    "lib/python/Screens/CCcamInfo.py",
+    "lib/python/Screens/ChannelSelection.py",
+    "lib/python/Screens/ChoiceBox.py",
+    "lib/python/Screens/Ci.py",
+    "lib/python/Screens/Console.py",
+    "lib/python/Screens/CronTimer.py",
+    "lib/python/Screens/DABScan.py",
+    "lib/python/Screens/DVD.py",
+    "lib/python/Screens/DeviceManager.py",
+    "lib/python/Screens/Dish.py",
+    "lib/python/Screens/EpgSelection.py",
+    "lib/python/Screens/EventView.py",
+    "lib/python/Screens/FactoryReset.py",
+    "lib/python/Screens/FixedMenu.py",
+    "lib/python/Screens/FlashExpander.py",
+    "lib/python/Screens/FlashManager.py",
+    "lib/python/Screens/Globals.py",
+    "lib/python/Screens/HelpMenu.py",
+    "lib/python/Screens/ImageBackup.py",
+    "lib/python/Screens/InfoBar.py",
+    "lib/python/Screens/InfoBarGenerics.py",
+    "lib/python/Screens/Information.py",
+    "lib/python/Screens/InputBox.py",
+    "lib/python/Screens/InputDeviceSetup.py",
+    "lib/python/Screens/LocaleSelection.py",
+    "lib/python/Screens/LocationBox.py",
+    "lib/python/Screens/LogManager.py",
+    "lib/python/Screens/Menu.py",
+    "lib/python/Screens/MessageBox.py",
+    "lib/python/Screens/MinuteInput.py",
+    "lib/python/Screens/MovieSelection.py",
+    "lib/python/Screens/MultiBootManager.py",
+    "lib/python/Screens/NetworkMounts.py",
+    "lib/python/Screens/NetworkServices.py",
+    "lib/python/Screens/NetworkSetup.py",
+    "lib/python/Screens/NumericalTextInputHelpDialog.py",
+    "lib/python/Screens/OScamInfo.py",
+    "lib/python/Screens/Opkg.py",
+    "lib/python/Screens/PVRState.py",
+    "lib/python/Screens/ParentalControlSetup.py",
+    "lib/python/Screens/PiPSetup.py",
+    "lib/python/Screens/Picon.py",
+    "lib/python/Screens/PictureInPicture.py",
+    "lib/python/Screens/PluginBrowser.py",
+    "lib/python/Screens/PowerLost.py",
+    "lib/python/Screens/QuadPiP.py",
+    "lib/python/Screens/QuickMenu.py",
+    "lib/python/Screens/RTLSDRSetup.py",
+    "lib/python/Screens/RdsDisplay.py",
+    "lib/python/Screens/Recording.py",
+    "lib/python/Screens/RestartNetwork.py",
+    "lib/python/Screens/SDswap.py",
+    "lib/python/Screens/Satconfig.py",
+    "lib/python/Screens/ScanSetup.py",
+    "lib/python/Screens/Scart.py",
+    "lib/python/Screens/Screen.py",
+    "lib/python/Screens/ScreenProtection.py",
+    "lib/python/Screens/ScriptRunner.py",
+    "lib/python/Screens/ServiceScan.py",
+    "lib/python/Screens/SessionGlobals.py",
+    "lib/python/Screens/Setup.py",
+    "lib/python/Screens/SetupFallbacktuner.py",
+    "lib/python/Screens/SkinSelection.py",
+    "lib/python/Screens/SoftcamSetup.py",
+    "lib/python/Screens/SoftwareUpdate.py",
+    "lib/python/Screens/Standby.py",
+    "lib/python/Screens/SubtitleDisplay.py",
+    "lib/python/Screens/SwapManager.py",
+    "lib/python/Screens/TaskList.py",
+    "lib/python/Screens/TaskView.py",
+    "lib/python/Screens/TextBox.py",
+    "lib/python/Screens/Time.py",
+    "lib/python/Screens/TimeDateInput.py",
+    "lib/python/Screens/TimerEdit.py",
+    "lib/python/Screens/Timers.py",
+    "lib/python/Screens/Timeshift.py",
+    "lib/python/Screens/Toast.py",
+    "lib/python/Screens/UserManual.py",
+    "lib/python/Screens/VideoMode.py",
+    "lib/python/Screens/VirtualKeyBoard.py",
+    "lib/python/Screens/Wizard.py",
+    "lib/python/Screens/WizardInstall.py",
+    "lib/python/Screens/WizardStart.py",
+    "lib/python/Screens/WizardVideo.py",
+    "lib/python/ServiceReference.py",
+    "lib/python/StartEnigma.py",
+    "lib/python/Tools/BugHunting.py",
+    "lib/python/Tools/CIHelper.py",
+    "lib/python/Tools/Conversions.py",
+    "lib/python/Tools/CopyFiles.py",
+    "lib/python/Tools/DAB.py",
+    "lib/python/Tools/Directories.py",
+    "lib/python/Tools/Downloader.py",
+    "lib/python/Tools/FallbackTimer.py",
+    "lib/python/Tools/FindPicon.py",
+    "lib/python/Tools/Geolocation.py",
+    "lib/python/Tools/HybridService.py",
+    "lib/python/Tools/LoadPixmap.py",
+    "lib/python/Tools/Log.py",
+    "lib/python/Tools/MultiBoot.py",
+    "lib/python/Tools/Notifications.py",
+    "lib/python/Tools/Profile.py",
+    "lib/python/Tools/ScanBouquetRepair.py",
+    "lib/python/Tools/ShellCompatibleFunctions.py",
+    "lib/python/Tools/StartupTasks.py",
+    "lib/python/Tools/StbHardware.py",
+    "lib/python/Tools/StorageCheck.py",
+    "lib/python/Tools/SubRip.py",
+    "lib/python/Tools/Swap.py",
+    "lib/python/Tools/Transponder.py",
+    "lib/python/enigma_py_patcher.py",
+    "lib/python/skin.py",
+    "lib/python/upgrade.py"
+  ],
+  "project_imports": [
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.Sources.List",
+      "names": [
+        "List"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "NumberActionMap"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.Sources.StaticText",
+      "names": [
+        "StaticText"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.config",
+      "names": [
+        "configfile"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.PluginComponent",
+      "names": [
+        "plugins"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.SystemInfo",
+      "names": [
+        "SystemInfo"
+      ],
+      "line": 8
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "enigma",
+      "names": [
+        "ePoint",
+        "eTimer",
+        "eSize"
+      ],
+      "line": 9
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Tools.Directories",
+      "names": [
+        "resolveFilename",
+        "SCOPE_SKIN",
+        "SCOPE_CURRENT_SKIN",
+        "fileExists"
+      ],
+      "line": 10
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 11
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.PluginComponent",
+      "names": [
+        "plugins"
+      ],
+      "line": 12
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Screens.Setup",
+      "names": [
+        "Setup",
+        "getSetupTitle"
+      ],
+      "line": 16
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/Menu-new17.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap",
+        "MovingPixmap"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17screens.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.ProgressBar",
+      "names": [
+        "ProgressBar"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.Harddisk",
+      "names": [
+        "harddiskmanager"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.ServiceEventTracker",
+      "names": [
+        "ServiceEventTracker"
+      ],
+      "line": 10
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 11
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "enigma",
+      "names": [
+        "eTimer",
+        "iServiceInformation",
+        "iPlayableService",
+        "iPlayableServicePtr",
+        "eServiceReference",
+        "eEPGCache"
+      ],
+      "line": 13
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 14
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "*"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Screens/G17_UserInfo.py",
+      "module": "Components.Sensors",
+      "names": [
+        "sensors"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17SelectionList.py",
+      "module": "Components.MenuList",
+      "names": [
+        "MenuList"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17SelectionList.py",
+      "module": "Tools.Directories",
+      "names": [
+        "resolveFilename",
+        "SCOPE_CURRENT_SKIN"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17SelectionList.py",
+      "module": "enigma",
+      "names": [
+        "eListboxPythonMultiContent",
+        "eListbox",
+        "gFont",
+        "RT_HALIGN_LEFT",
+        "BT_SCALE",
+        "BT_KEEP_ASPECT_RATIO"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17SelectionList.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "Components.HTMLComponent",
+      "names": [
+        "HTMLComponent"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "Components.GUIComponent",
+      "names": [
+        "GUIComponent"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "Components.config",
+      "names": [
+        "KEY_LEFT",
+        "KEY_RIGHT",
+        "KEY_HOME",
+        "KEY_END",
+        "KEY_0",
+        "KEY_DELETE",
+        "KEY_BACKSPACE",
+        "KEY_OK",
+        "KEY_TOGGLEOW",
+        "KEY_ASCII",
+        "KEY_TIMEOUT",
+        "KEY_NUMBERS",
+        "ConfigElement",
+        "ConfigText",
+        "ConfigPassword"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "NumberActionMap",
+        "ActionMap"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "enigma",
+      "names": [
+        "eListbox",
+        "eListboxPythonConfigContent",
+        "eTimer"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "Screens.VirtualKeyBoard",
+      "names": [
+        "VirtualKeyBoard"
+      ],
+      "line": 253
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/g17ConfigList.py",
+      "module": "enigma",
+      "names": [
+        "ePoint"
+      ],
+      "line": 241
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17TunersLabel.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17TunersLabel.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "eCanvas",
+        "eRect",
+        "eSize",
+        "gRGB",
+        "gFont",
+        "RT_HALIGN_LEFT",
+        "RT_WRAP"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17TunersLabel.py",
+      "module": "Components.NimManager",
+      "names": [
+        "nimmanager"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17TunersLabel.py",
+      "module": "enigma",
+      "names": [
+        "eDVBResourceManager",
+        "iPlayableService",
+        "iRecordableService",
+        "iPlayableServicePtr",
+        "iRecordableServicePtr",
+        "eTimer"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17TunersLabel.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_native_dab"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "ePixmap"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 24
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Components.Renderer.Picon",
+      "names": [
+        "getPiconName"
+      ],
+      "line": 70
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef.py",
+      "module": "Components.Renderer.Picon",
+      "names": [
+        "getPiconName"
+      ],
+      "line": 102
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioSpectrum.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioSpectrum.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer"
+      ],
+      "line": 8
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioSpectrum.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 9
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17HDDstate.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17HDDstate.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17HDDstate.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17HDDstate.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioInfoTop.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioInfoTop.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioArtwork.py",
+      "module": "enigma",
+      "names": [
+        "ePicLoad",
+        "ePixmap",
+        "eServiceReference",
+        "eTimer",
+        "iRdsDecoder",
+        "iServiceInformation"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioArtwork.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioArtwork.py",
+      "module": "Components.Converter.WarderRadioMetadata",
+      "names": [
+        "current_song"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV2.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV2.py",
+      "module": "enigma",
+      "names": [
+        "eVideoWidget",
+        "getDesktop",
+        "eTimer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV2.py",
+      "module": "Screens.InfoBar",
+      "names": [
+        "InfoBar"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV2.py",
+      "module": "Components.SystemInfo",
+      "names": [
+        "SystemInfo"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV.py",
+      "module": "enigma",
+      "names": [
+        "eVideoWidget",
+        "getDesktop",
+        "eTimer"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV.py",
+      "module": "Components.SystemInfo",
+      "names": [
+        "SystemInfo"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV.py",
+      "module": "Screens.InfoBar",
+      "names": [
+        "InfoBar"
+      ],
+      "line": 92
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV.py",
+      "module": "Screens.PictureInPicture",
+      "names": [
+        "PictureInPicture"
+      ],
+      "line": 93
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MiniTV.py",
+      "module": "Screens.InfoBar",
+      "names": [
+        "InfoBar"
+      ],
+      "line": 69
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MetrixHDRunningText.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MetrixHDRunningText.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MetrixHDRunningText.py",
+      "module": "enigma",
+      "names": [
+        "eCanvas",
+        "eLabel",
+        "eTimer",
+        "eRect",
+        "ePoint",
+        "eSize",
+        "gRGB",
+        "gFont",
+        "RT_HALIGN_LEFT",
+        "RT_HALIGN_CENTER",
+        "RT_HALIGN_RIGHT",
+        "RT_HALIGN_BLOCK",
+        "RT_VALIGN_TOP",
+        "RT_VALIGN_CENTER",
+        "RT_VALIGN_BOTTOM",
+        "RT_WRAP"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MetrixHDRunningText.py",
+      "module": "enigma",
+      "names": [
+        "fontRenderClass"
+      ],
+      "line": 184
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17provTV.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17provTV.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17provTV.py",
+      "module": "enigma",
+      "names": [
+        "eServiceCenter",
+        "iPlayableServicePtr",
+        "eServiceReference",
+        "ePixmap"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17provTV.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17provTV.py",
+      "module": "Screens.ChannelSelection",
+      "names": [
+        "service_types_radio",
+        "service_types_tv"
+      ],
+      "line": 84
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster2.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster2.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer",
+        "eActionMap"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster2.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster2.py",
+      "module": "enigma",
+      "names": [
+        "loadJPG"
+      ],
+      "line": 34
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17satTV.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17satTV.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17satTV.py",
+      "module": "enigma",
+      "names": [
+        "eServiceCenter",
+        "iServiceInformation",
+        "ePixmap",
+        "eServiceReference"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17satTV.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17satTV.py",
+      "module": "enigma",
+      "names": [
+        "iDVBFrontend"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderSettingsHeader.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderSettingsHeader.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eSize",
+        "eWidget"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Ahours.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Ahours.py",
+      "module": "enigma",
+      "names": [
+        "eCanvas",
+        "eSize",
+        "gRGB",
+        "eRect"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Ahours.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17EmptyEpg.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17EmptyEpg.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "eTimer",
+        "eSize",
+        "iServiceInformation",
+        "eServiceReference"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17EmptyEpg.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17EmptyEpg.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowReference.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowReference.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowReference.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowReference.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowReference.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowExtEpg.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowExtEpg.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "eServiceReference",
+        "eEPGCache",
+        "eSize"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowExtEpg.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17cutCHSS.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17cutCHSS.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17cutCHSS.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Volume.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Volume.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Volume.py",
+      "module": "enigma",
+      "names": [
+        "eDVBVolumecontrol",
+        "eTimer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Volume.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollName.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollName.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollName.py",
+      "module": "enigma",
+      "names": [
+        "ePoint",
+        "eTimer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollName.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollName.py",
+      "module": "Tools.HardwareInfo",
+      "names": [
+        "HardwareInfo"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumeGauge.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumeGauge.py",
+      "module": "enigma",
+      "names": [
+        "eDVBVolumecontrol",
+        "eTimer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumeGauge.py",
+      "module": "enigma",
+      "names": [
+        "eCanvas",
+        "eRect",
+        "gRGB"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumeGauge.py",
+      "module": "enigma",
+      "names": [
+        "eSize"
+      ],
+      "line": 43
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTV.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTV.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "ePixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTV.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer",
+        "eActionMap"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Poster.py",
+      "module": "enigma",
+      "names": [
+        "loadJPG"
+      ],
+      "line": 34
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17dateFormat.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17dateFormat.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17dateFormat.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17dateFormat.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17dateFormat.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderSettingsCanvas.py",
+      "module": "Components.Renderer.Canvas",
+      "names": [
+        "Canvas"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17showDev.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17showDev.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17showDev.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_native_dab"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "enigma",
+      "names": [
+        "eServiceCenter",
+        "iServiceInformation",
+        "eDVBFrontendParametersSatellite",
+        "eDVBFrontendParametersCable",
+        "eDVBFrontendParametersTerrestrial"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "Tools.Transponder",
+      "names": [
+        "ConvertToHumanReadable"
+      ],
+      "line": 35
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowTP.py",
+      "module": "enigma",
+      "names": [
+        "iDVBFrontend"
+      ],
+      "line": 32
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioLyrics.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioLyrics.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_radio_reference"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioLyrics.py",
+      "module": "Components.Converter.WarderRadioMetadata",
+      "names": [
+        "current_song",
+        "native_song",
+        "split_song"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioLyrics.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "eWidget",
+        "ePoint",
+        "eSize",
+        "eTimer",
+        "gFont",
+        "iRdsDecoder"
+      ],
+      "line": 8
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioLyrics.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 15
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry2.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry2.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry2.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry2.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry2.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17MenuEntry2.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioTop.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioTop.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioTop.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "eTimer"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderSettingsPig.py",
+      "module": "Components.Renderer.Pig",
+      "names": [
+        "Pig"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTVBQT.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTVBQT.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "ePixmap",
+        "eSize"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTVBQT.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17trpm.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17trpm.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17trpm.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17trpm.py",
+      "module": "Components.Sensors",
+      "names": [
+        "sensors"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollerChar.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollerChar.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollerChar.py",
+      "module": "enigma",
+      "names": [
+        "eTimer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RollerChar.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "ePixmap",
+        "iServiceInformation",
+        "eTimer"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Prov.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_native_dab"
+      ],
+      "line": 27
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Components.Renderer.g17PicRef",
+      "names": [
+        "g17PicRef"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "ePixmap",
+        "eTimer"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef2.py",
+      "module": "Components.Renderer.Picon",
+      "names": [
+        "getPiconName"
+      ],
+      "line": 92
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTV3.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTV3.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "ePixmap",
+        "eSize"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17RefTV3.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioCompactArtwork.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "ePoint",
+        "eSize"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/WarderRadioCompactArtwork.py",
+      "module": "Components.Renderer.WarderRadioArtwork",
+      "names": [
+        "WarderRadioArtwork"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowNetSpeed.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowNetSpeed.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowNetSpeed.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowNetSpeed.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17shTVpix.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17shTVpix.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "ePixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17shTVpix.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowExtraEpg.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowExtraEpg.py",
+      "module": "enigma",
+      "names": [
+        "eLabel",
+        "eCanvas",
+        "eServiceReference",
+        "eEPGCache",
+        "eRect",
+        "eSize",
+        "gRGB",
+        "gFont",
+        "fontRenderClass",
+        "RT_HALIGN_BLOCK",
+        "RT_HALIGN_RIGHT",
+        "RT_HALIGN_LEFT",
+        "RT_WRAP"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17ShowExtraEpg.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Components.Renderer.g17PicRef",
+      "names": [
+        "g17PicRef"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "ePixmap",
+        "eTimer"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17PicRef3.py",
+      "module": "Components.Renderer.Picon",
+      "names": [
+        "getPiconName"
+      ],
+      "line": 95
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumePixmap.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumePixmap.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer",
+        "eDVBVolumecontrol"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17VolumePixmap.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Progress.py",
+      "module": "Components.VariableValue",
+      "names": [
+        "VariableValue"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Progress.py",
+      "module": "Components.Renderer.Renderer",
+      "names": [
+        "Renderer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Renderer/g17Progress.py",
+      "module": "enigma",
+      "names": [
+        "eSlider"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17GenerateMenuEntry.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17GenerateMenuEntry.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNum.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNum.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNum.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNum.py",
+      "module": "enigma",
+      "names": [
+        "eServiceCenter",
+        "eServiceReference",
+        "iServiceInformation",
+        "iPlayableServicePtr",
+        "eDVBFrontendParametersTerrestrial"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17extServiceName.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 10
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17extServiceName.py",
+      "module": "enigma",
+      "names": [
+        "iServiceInformation",
+        "iPlayableService",
+        "iPlayableServicePtr",
+        "eServiceReference",
+        "eServiceCenter",
+        "eTimer",
+        "iDVBFrontend"
+      ],
+      "line": 11
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17extServiceName.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 12
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17extServiceName.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 13
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17extServiceName.py",
+      "module": "Screens.ChannelSelection",
+      "names": [
+        "service_types_radio",
+        "service_types_tv"
+      ],
+      "line": 118
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17extServiceName.py",
+      "module": "Components.NimManager",
+      "names": [
+        "nimmanager"
+      ],
+      "line": 262
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17EventTime.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17EventTime.py",
+      "module": "Components.Converter.Poll",
+      "names": [
+        "Poll"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17EventTime.py",
+      "module": "Components.Element",
+      "names": [
+        "cached",
+        "ElementError"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17EventTime.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceInfo.py",
+      "module": "Components.Converter.Poll",
+      "names": [
+        "Poll"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceInfo.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceInfo.py",
+      "module": "enigma",
+      "names": [
+        "iServiceInformation",
+        "iPlayableService"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceInfo.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceInfo.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioOnly.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioOnly.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioOnly.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference"
+      ],
+      "line": 11
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ExtraSource.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ExtraSource.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ExtraSource.py",
+      "module": "Tools.HardwareInfo",
+      "names": [
+        "HardwareInfo"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ExtraSource.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ClockToText.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ClockToText.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ClockToText.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ClockToText.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNameEvent.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNameEvent.py",
+      "module": "enigma",
+      "names": [
+        "iServiceInformation",
+        "iPlayableService",
+        "iPlayableServicePtr",
+        "eServiceReference",
+        "eEPGCache"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNameEvent.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ServiceNameEvent.py",
+      "module": "Components.Converter.Poll",
+      "names": [
+        "Poll"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioMetadata.py",
+      "module": "enigma",
+      "names": [
+        "iServiceInformation"
+      ],
+      "line": 47
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17GenerateMenuEntry2.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17GenerateMenuEntry2.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderTVOnly.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderTVOnly.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderTVOnly.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_radio_source"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioServiceType.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioServiceType.py",
+      "module": "Components.Element",
+      "names": [
+        "cached"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioServiceType.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "iServiceInformation"
+      ],
+      "line": 46
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioServiceType.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 37
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/WarderRadioServiceType.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 40
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17MiniTVDisplay.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17MiniTVDisplay.py",
+      "module": "enigma",
+      "names": [
+        "eServiceReference",
+        "eServiceCenter",
+        "getBestPlayableServiceReference",
+        "iServiceInformation"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ConditionalShowHide.py",
+      "module": "enigma",
+      "names": [
+        "eTimer"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ConditionalShowHide.py",
+      "module": "Components.Converter.Converter",
+      "names": [
+        "Converter"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Components/Converter/g17ConditionalShowHide.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Components.config",
+      "names": [
+        "config",
+        "configfile"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Screens.InputBox",
+      "names": [
+        "InputBox"
+      ],
+      "line": 16
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Components.Input",
+      "names": [
+        "Input"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Components.Sources.List",
+      "names": [
+        "List"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "enigma",
+      "names": [
+        "eTimer"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/E_weather.py",
+      "module": "Screens.VirtualKeyBoard",
+      "names": [
+        "VirtualKeyBoard"
+      ],
+      "line": 607
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/txt.py",
+      "module": "Components.config",
+      "names": [
+        "config",
+        "ConfigSubsection",
+        "ConfigYesNo"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/screenSaver.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/screenSaver.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/screenSaver.py",
+      "module": "enigma",
+      "names": [
+        "eTimer",
+        "ePoint",
+        "gRGB",
+        "eSize",
+        "iPlayableServicePtr",
+        "iPlayableService"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/screenSaver.py",
+      "module": "Components.ServiceEventTracker",
+      "names": [
+        "ServiceEventTracker"
+      ],
+      "line": 23
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weaUtils.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weaUtils.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 12
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderRadioWindows.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_radio_reference"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderRadioWindows.py",
+      "module": "Components.Converter.WarderRadioMetadata",
+      "names": [
+        "current_song",
+        "stream_url",
+        "monitor"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderRadioWindows.py",
+      "module": "enigma",
+      "names": [
+        "eTimer"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderHelpPreview.py",
+      "module": "enigma",
+      "names": [
+        "eTimer"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderHelpPreview.py",
+      "module": "enigma",
+      "names": [
+        "eConsoleAppContainer"
+      ],
+      "line": 42
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Components.ServiceEventTracker",
+      "names": [
+        "ServiceEventTracker"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "enigma",
+      "names": [
+        "eTimer",
+        "iServiceInformation",
+        "iPlayableService",
+        "ePoint",
+        "eSize",
+        "eServiceReference"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 50
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderRadioUpdate.py",
+      "module": "enigma",
+      "names": [
+        "eDVBDB"
+      ],
+      "line": 203
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.config",
+      "names": [
+        "*"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.g17ConfigList",
+      "names": [
+        "ConfigListScreen",
+        "ConfigList"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.InfoBar",
+      "names": [
+        "InfoBar"
+      ],
+      "line": 8
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.ServiceEventTracker",
+      "names": [
+        "ServiceEventTracker"
+      ],
+      "line": 9
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "BT_SCALE",
+        "BT_KEEP_ASPECT_RATIO",
+        "eConsoleAppContainer",
+        "ePoint",
+        "RT_HALIGN_CENTER",
+        "eListboxPythonMultiContent",
+        "eListbox",
+        "gFont",
+        "eSize",
+        "ePixmap",
+        "eTimer",
+        "eServiceCenter",
+        "eServiceReference",
+        "iServiceInformation",
+        "iRdsDecoder",
+        "iPlayableService",
+        "eDVBFrontendParametersSatellite",
+        "eDVBFrontendParametersTerrestrial",
+        "getEnigmaVersionString"
+      ],
+      "line": 10
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Tools.Transponder",
+      "names": [
+        "ConvertToHumanReadable"
+      ],
+      "line": 12
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 16
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Console",
+      "names": [
+        "Console"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Sources.List",
+      "names": [
+        "List"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.NimManager",
+      "names": [
+        "nimmanager"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.FileList",
+      "names": [
+        "FileList"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Input",
+      "names": [
+        "Input"
+      ],
+      "line": 86
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.Standby",
+      "names": [
+        "TryQuitMainloop"
+      ],
+      "line": 88
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Tools.HardwareInfo",
+      "names": [
+        "HardwareInfo"
+      ],
+      "line": 89
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "*"
+      ],
+      "line": 90
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 91
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.InfoBarGenerics",
+      "names": [
+        "InfoBarPlugins"
+      ],
+      "line": 100
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.MenuList",
+      "names": [
+        "MenuList"
+      ],
+      "line": 101
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.MultiContent",
+      "names": [
+        "MultiContentEntryText",
+        "MultiContentEntryPixmap",
+        "MultiContentEntryPixmapAlphaTest"
+      ],
+      "line": 102
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Sources.StaticText",
+      "names": [
+        "StaticText"
+      ],
+      "line": 105
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.g17SelectionList",
+      "names": [
+        "SelectionList"
+      ],
+      "line": 106
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Sources.CanvasSource",
+      "names": [
+        "CanvasSource"
+      ],
+      "line": 108
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Converter.WarderRadioOnly",
+      "names": [
+        "is_radio_reference",
+        "is_native_dab"
+      ],
+      "line": 132
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eDVBCI_UI"
+      ],
+      "line": 40
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eDVBCIInterfaces"
+      ],
+      "line": 41
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "CT_MPEG2",
+        "CT_H264",
+        "CT_MPEG1",
+        "CT_MPEG4_PART2",
+        "CT_VC1",
+        "CT_VC1_SIMPLE_MAIN",
+        "CT_H265",
+        "CT_DIVX311",
+        "CT_DIVX4",
+        "CT_SPARK",
+        "CT_VP6",
+        "CT_VP8",
+        "CT_VP9",
+        "CT_H263",
+        "CT_MJPEG",
+        "CT_REAL",
+        "CT_AVS",
+        "CT_UNKNOWN"
+      ],
+      "line": 46
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eHbbtv"
+      ],
+      "line": 51
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "iAudioType_ENUMS"
+      ],
+      "line": 56
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "iDVBFrontend"
+      ],
+      "line": 61
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "quitMainloop"
+      ],
+      "line": 70
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Sensors",
+      "names": [
+        "sensors"
+      ],
+      "line": 73
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eSlider"
+      ],
+      "line": 77
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "loadJPG"
+      ],
+      "line": 123
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.ScreenAnimations",
+      "names": [
+        "*"
+      ],
+      "line": 223
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eMediaDatabase"
+      ],
+      "line": 626
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.EpgSelection",
+      "names": [
+        "EPGSelection"
+      ],
+      "line": 1291
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17screens",
+      "names": [
+        "g17_extraScreen"
+      ],
+      "line": 1962
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Renderer.g17TunersLabel",
+      "names": [
+        "getTunerDesc"
+      ],
+      "line": 607
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.config",
+      "names": [
+        "ConfigBoolean"
+      ],
+      "line": 632
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17screens",
+      "names": [
+        "g17_extraScreen"
+      ],
+      "line": 1925
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17screens",
+      "names": [
+        "g17_extraScreen"
+      ],
+      "line": 1944
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17screens",
+      "names": [
+        "g17_extraScreen"
+      ],
+      "line": 2246
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.VirtualKeyBoard",
+      "names": [
+        "VirtualKeyBoard"
+      ],
+      "line": 10845
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Renderer.Picon",
+      "names": [
+        "getPiconName"
+      ],
+      "line": 449
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eEnv"
+      ],
+      "line": 4028
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Renderer.Picon",
+      "names": [
+        "getPiconName"
+      ],
+      "line": 4081
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17screens",
+      "names": [
+        "g17_extraScreen"
+      ],
+      "line": 7493
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.VolumeBar",
+      "names": [
+        "VolumeBar"
+      ],
+      "line": 10620
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eDVBVolumecontrol"
+      ],
+      "line": 10674
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17screens",
+      "names": [
+        "g17_extraScreen"
+      ],
+      "line": 10368
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Converter.PliExtraInfo",
+      "names": [
+        "codec_data"
+      ],
+      "line": 5796
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Screens.G17_UserInfo",
+      "names": [
+        "UserInfo17"
+      ],
+      "line": 1567
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderUiText.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/py38.py",
+      "module": "Components.config",
+      "names": [
+        "config",
+        "configfile"
+      ],
+      "line": 1
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 2
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 3
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Components.MenuList",
+      "names": [
+        "MenuList"
+      ],
+      "line": 4
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 5
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 6
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Screens.MessageBox",
+      "names": [
+        "MessageBox"
+      ],
+      "line": 7
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Screens.InputBox",
+      "names": [
+        "InputBox"
+      ],
+      "line": 8
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 12
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 24
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "enigma",
+      "names": [
+        "eTimer",
+        "ePoint"
+      ],
+      "line": 34
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 35
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/weather.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 210
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 18
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Components.MenuList",
+      "names": [
+        "MenuList"
+      ],
+      "line": 19
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "enigma",
+      "names": [
+        "eListboxPythonMultiContent",
+        "eTimer",
+        "gFont",
+        "RT_HALIGN_CENTER",
+        "RT_HALIGN_RIGHT",
+        "eSize",
+        "RT_VALIGN_CENTER"
+      ],
+      "line": 20
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Components.MultiContent",
+      "names": [
+        "MultiContentEntryText",
+        "MultiContentEntryPixmapAlphaBlend"
+      ],
+      "line": 21
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 22
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 168
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/Netatmo.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 186
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderRadioCore/warder_i18n.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 17
+    },
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/warderRadioCore/warder_i18n.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 21
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_brand.py",
+      "module": "Components.GUIComponent",
+      "names": [
+        "GUIComponent"
+      ],
+      "line": 2
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_brand.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "ePoint",
+        "eSize",
+        "eWidget"
+      ],
+      "line": 3
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 8
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 9
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 10
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Screens.MessageBox",
+      "names": [
+        "MessageBox"
+      ],
+      "line": 11
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 12
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "enigma",
+      "names": [
+        "eTimer"
+      ],
+      "line": 13
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "enigma",
+      "names": [
+        "getDesktop"
+      ],
+      "line": 58
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "enigma",
+      "names": [
+        "getDesktop"
+      ],
+      "line": 209
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Screens.Standby",
+      "names": [
+        "TryQuitMainloop"
+      ],
+      "line": 200
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_update_ui.py",
+      "module": "Screens.Standby",
+      "names": [
+        "TryQuitMainloop"
+      ],
+      "line": 265
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 10
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Screens.MessageBox",
+      "names": [
+        "MessageBox"
+      ],
+      "line": 11
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Screens.InputBox",
+      "names": [
+        "InputBox"
+      ],
+      "line": 12
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Screens.Standby",
+      "names": [
+        "TryQuitMainloop",
+        "inStandby"
+      ],
+      "line": 13
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 15
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 16
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 17
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 18
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.Sources.StaticText",
+      "names": [
+        "StaticText"
+      ],
+      "line": 20
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.ConfigList",
+      "names": [
+        "ConfigList",
+        "ConfigListScreen"
+      ],
+      "line": 23
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.config",
+      "names": [
+        "config",
+        "configfile",
+        "ConfigSelectionNumber",
+        "getConfigListEntry",
+        "ConfigSubsection",
+        "ConfigSubList",
+        "ConfigSelection",
+        "ConfigYesNo",
+        "ConfigText",
+        "KEY_OK",
+        "NoSave",
+        "ConfigNothing"
+      ],
+      "line": 24
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "enigma",
+      "names": [
+        "ePicLoad",
+        "eActionMap",
+        "eTimer",
+        "eEnv",
+        "getDesktop"
+      ],
+      "line": 50
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "enigma",
+      "names": [
+        "PACKAGE_VERSION"
+      ],
+      "line": 1832
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/plugin.py",
+      "module": "Components.SystemInfo",
+      "names": [
+        "SystemInfo"
+      ],
+      "line": 1840
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 9
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 10
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.MenuList",
+      "names": [
+        "MenuList"
+      ],
+      "line": 11
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.MultiContent",
+      "names": [
+        "MultiContentEntryText",
+        "MultiContentEntryPixmapAlphaBlend"
+      ],
+      "line": 12
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 13
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "Pixmap"
+      ],
+      "line": 14
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.ProgressBar",
+      "names": [
+        "ProgressBar"
+      ],
+      "line": 15
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 16
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Components.config",
+      "names": [
+        "ConfigSelection",
+        "ConfigText",
+        "config",
+        "configfile"
+      ],
+      "line": 17
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Screens.MessageBox",
+      "names": [
+        "MessageBox"
+      ],
+      "line": 18
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 19
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_gui.py",
+      "module": "enigma",
+      "names": [
+        "BT_SCALE",
+        "RT_HALIGN_LEFT",
+        "RT_VALIGN_CENTER",
+        "eListboxPythonMultiContent",
+        "eTimer",
+        "gFont",
+        "getDesktop",
+        "ePoint",
+        "eSize"
+      ],
+      "line": 20
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/__init__.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 3
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_i18n.py",
+      "module": "Components.Language",
+      "names": [
+        "language"
+      ],
+      "line": 17
+    },
+    {
+      "project": "PiconHub",
+      "file": "Plugins/Extensions/WarderPiconHub/warder_i18n.py",
+      "module": "Components.config",
+      "names": [
+        "config"
+      ],
+      "line": 21
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_right.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 346
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Sources.StaticText",
+      "names": [
+        "StaticText"
+      ],
+      "line": 29
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Tools.Directories",
+      "names": [
+        "fileExists"
+      ],
+      "line": 31
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 33
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.MenuList",
+      "names": [
+        "MenuList"
+      ],
+      "line": 34
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 35
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap",
+        "HelpableActionMap"
+      ],
+      "line": 36
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "ePixmap",
+        "eTimer",
+        "eListboxPythonMultiContent",
+        "eListbox",
+        "gFont",
+        "getDesktop",
+        "ePoint",
+        "addFont"
+      ],
+      "line": 37
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Pixmap",
+      "names": [
+        "*"
+      ],
+      "line": 38
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Tools.LoadPixmap",
+      "names": [
+        "LoadPixmap"
+      ],
+      "line": 39
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.MultiContent",
+      "names": [
+        "MultiContentEntryText",
+        "MultiContentEntryPixmapAlphaTest"
+      ],
+      "line": 40
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Screens.MessageBox",
+      "names": [
+        "MessageBox"
+      ],
+      "line": 41
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.ConfigList",
+      "names": [
+        "ConfigListScreen",
+        "ConfigList"
+      ],
+      "line": 43
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.config",
+      "names": [
+        "*"
+      ],
+      "line": 44
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 45
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.ProgressBar",
+      "names": [
+        "ProgressBar"
+      ],
+      "line": 46
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Tools.HardwareInfo",
+      "names": [
+        "HardwareInfo"
+      ],
+      "line": 76
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Sources.List",
+      "names": [
+        "List"
+      ],
+      "line": 78
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Screens.ChoiceBox",
+      "names": [
+        "ChoiceBox"
+      ],
+      "line": 79
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Screens.InputBox",
+      "names": [
+        "InputBox"
+      ],
+      "line": 80
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Input",
+      "names": [
+        "Input"
+      ],
+      "line": 81
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.FileList",
+      "names": [
+        "FileList"
+      ],
+      "line": 82
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eConsoleAppContainer"
+      ],
+      "line": 83
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eServiceCenter",
+        "eDVBDB",
+        "eServiceReference",
+        "iServiceInformation",
+        "iPlayableService",
+        "eDVBFrontendParametersTerrestrial"
+      ],
+      "line": 85
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Tools.Transponder",
+      "names": [
+        "ConvertToHumanReadable"
+      ],
+      "line": 86
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.ServiceEventTracker",
+      "names": [
+        "ServiceEventTracker"
+      ],
+      "line": 92
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Tools.Directories",
+      "names": [
+        "resolveFilename",
+        "SCOPE_CURRENT_SKIN"
+      ],
+      "line": 93
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Screens.Console",
+      "names": [
+        "Console"
+      ],
+      "line": 94
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "iDVBFrontend"
+      ],
+      "line": 60
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "quitMainloop"
+      ],
+      "line": 66
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Sensors",
+      "names": [
+        "sensors"
+      ],
+      "line": 71
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "iAudioType_ENUMS"
+      ],
+      "line": 108
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eMediaDatabase"
+      ],
+      "line": 162
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "Components.Network",
+      "names": [
+        "iNetwork"
+      ],
+      "line": 169
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin.py",
+      "module": "enigma",
+      "names": [
+        "eMediaDatabase"
+      ],
+      "line": 236
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_glass.py",
+      "module": "enigma",
+      "names": [
+        "eSize",
+        "eWidget",
+        "ePixmap"
+      ],
+      "line": 3
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_glass.py",
+      "module": "Components.GUIComponent",
+      "names": [
+        "GUIComponent"
+      ],
+      "line": 4
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInput.py",
+      "module": "Components.HTMLComponent",
+      "names": [
+        "HTMLComponent"
+      ],
+      "line": 1
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInput.py",
+      "module": "Components.GUIComponent",
+      "names": [
+        "GUIComponent"
+      ],
+      "line": 2
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInput.py",
+      "module": "Components.VariableText",
+      "names": [
+        "VariableText"
+      ],
+      "line": 3
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInput.py",
+      "module": "enigma",
+      "names": [
+        "eLabel"
+      ],
+      "line": 5
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInput.py",
+      "module": "Tools.NumericalTextInput",
+      "names": [
+        "NumericalTextInput"
+      ],
+      "line": 7
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 6
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 7
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 8
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 9
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "Screens.MessageBox",
+      "names": [
+        "MessageBox"
+      ],
+      "line": 10
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "enigma",
+      "names": [
+        "eTimer",
+        "getDesktop"
+      ],
+      "line": 11
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/plugin_update_ui.py",
+      "module": "enigma",
+      "names": [
+        "quitMainloop"
+      ],
+      "line": 188
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_ecm.py",
+      "module": "enigma",
+      "names": [
+        "ePoint",
+        "eSize"
+      ],
+      "line": 84
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_oscam.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 11
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_oscam.py",
+      "module": "enigma",
+      "names": [
+        "eSize",
+        "eWidget",
+        "ePixmap"
+      ],
+      "line": 12
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_oscam.py",
+      "module": "Components.GUIComponent",
+      "names": [
+        "GUIComponent"
+      ],
+      "line": 13
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_channel.py",
+      "module": "enigma",
+      "names": [
+        "ePoint",
+        "eSize"
+      ],
+      "line": 91
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_tools_ui.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 4
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_tools_ui.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 5
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_tools_ui.py",
+      "module": "Components.ScrollLabel",
+      "names": [
+        "ScrollLabel"
+      ],
+      "line": 6
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/warder_tools_ui.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 7
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInputBox.py",
+      "module": "enigma",
+      "names": [
+        "getPrevAsciiCode",
+        "getDesktop"
+      ],
+      "line": 1
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInputBox.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 2
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInputBox.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "NumberActionMap"
+      ],
+      "line": 3
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInputBox.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 4
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInputBox.py",
+      "module": "Components.Input",
+      "names": [
+        "Input"
+      ],
+      "line": 6
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/editInputBox.py",
+      "module": "Tools.BoundFunction",
+      "names": [
+        "boundFunction"
+      ],
+      "line": 7
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/native_start_config_ui.py",
+      "module": "Components.ActionMap",
+      "names": [
+        "ActionMap"
+      ],
+      "line": 3
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/native_start_config_ui.py",
+      "module": "Components.ConfigList",
+      "names": [
+        "ConfigListScreen"
+      ],
+      "line": 4
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/native_start_config_ui.py",
+      "module": "Components.Label",
+      "names": [
+        "Label"
+      ],
+      "line": 5
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/native_start_config_ui.py",
+      "module": "Components.config",
+      "names": [
+        "ConfigDirectory",
+        "ConfigInteger",
+        "ConfigSelection",
+        "ConfigText",
+        "ConfigYesNo",
+        "getConfigListEntry"
+      ],
+      "line": 6
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/native_start_config_ui.py",
+      "module": "Screens.Screen",
+      "names": [
+        "Screen"
+      ],
+      "line": 7
+    },
+    {
+      "project": "GSU",
+      "file": "GlassSysUtil/srv_visibility.py",
+      "module": "enigma",
+      "names": [
+        "eSize"
+      ],
+      "line": 44
+    }
+  ],
+  "affected_modules": {
+    "lib/python/Screens/Screen.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Components/config.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Components/PluginComponent.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/SystemInfo.py": [
+      "FullHDGlass",
+      "PiconHub"
+    ],
+    "lib/python/Tools/Directories.py": [
+      "FullHDGlass",
+      "GSU"
+    ],
+    "lib/python/Tools/LoadPixmap.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Screens/Setup.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Pixmap.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Components/Label.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Components/ProgressBar.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Components/Harddisk.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/VirtualKeyBoard.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Renderer/Renderer.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/NimManager.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Renderer/Picon.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/InfoBar.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/PictureInPicture.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/ChannelSelection.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Renderer/Canvas.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Tools/Transponder.py": [
+      "FullHDGlass",
+      "GSU"
+    ],
+    "lib/python/Components/Renderer/Pig.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Converter/Converter.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Converter/Poll.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/InputBox.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Screens/Standby.py": [
+      "FullHDGlass",
+      "PiconHub"
+    ],
+    "lib/python/Screens/InfoBarGenerics.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/EpgSelection.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/VolumeBar.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Components/Converter/PliExtraInfo.py": [
+      "FullHDGlass"
+    ],
+    "lib/python/Screens/MessageBox.py": [
+      "FullHDGlass",
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Components/ConfigList.py": [
+      "GSU",
+      "PiconHub"
+    ],
+    "lib/python/Screens/ChoiceBox.py": [
+      "GSU"
+    ],
+    "lib/python/Screens/Console.py": [
+      "GSU"
+    ]
+  },
+  "removed_import_candidates": [
+    {
+      "project": "FullHDGlass",
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "module": "Components.Converter.PliExtraInfo",
+      "names": [
+        "codec_data"
+      ],
+      "line": 5796,
+      "removed_symbol": "codec_data"
+    }
+  ],
+  "project_syntax_errors": []
+}

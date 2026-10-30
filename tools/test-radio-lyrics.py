@@ -466,8 +466,13 @@ class LayoutTests(unittest.TestCase):
     def test_tv_and_other_screens_are_byte_identical_to_baseline(self):
         record=json.loads((ROOT/'design/radio-lyrics/implementation.json').read_text())
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
-        # Restore only the independently verified keyboard repair before checking
-        # the original non-radio baseline. All other screen bytes stay frozen.
+        # Reverse only the exact reviewed compatibility screens, then the
+        # independently verified keyboard repair. Keep the original baseline.
+        compatibility=ROOT/'design/openatv-compatibility/skin-edits.json'
+        if compatibility.exists():
+            for edit in json.loads(compatibility.read_text())['edits']:
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
         keyboard=json.loads((ROOT/'design/virtual-keyboard/compatibility.json').read_text())
         self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),keyboard['updated_skin_sha256'])
         self.assertEqual(text.count(keyboard['updated_screen']),1)

@@ -1,10 +1,10 @@
 {
   "enabled": true,
-  "version": "1.0.44",
-  "expected_main_sha": "ab205f54efe9e1e430803d3d57777758d780ae4a",
-  "authorization": "Owner explicitly requested silent automatic first installation of the Warder IPTV radio bouquet into the receiver radio list. Prior authorization for repository writes and production updates remains in force.",
-  "changelog": "Tichá automatická inštalácia nášho IPTV rádio bouquetu a zaradenie medzi rádiá. Bez duplicitných položiek a bez zmeny osobných zoznamov. Overený obsah, sťahovanie na pozadí, opakovanie pri výpadku internetu a zachované týždenné aktualizácie.",
-  "receiver_validation": "Automated first-install, offline retry, checksum, index preservation, duplicate, concurrent-edit and lifecycle tests. Existing virtual keyboard was owner-confirmed on the receiver; this new radio import has not yet been tested on a physical receiver.",
+  "version": "1.0.45",
+  "expected_main_sha": "29e0b99b8282670efd0ad5ce3fd3d7310a9f2e0a",
+  "authorization": "Owner explicitly requested auditing all OpenATV changes affecting all our plugins and immediately fixing every confirmed compatibility issue. Existing authorization for repository writes and production publishing remains in force.",
+  "changelog": "Opravená kompatibilita s refaktorovaným OpenATV: farebné tlačidlá a ich akcie v MultiEPG, nové nastavenia EPG, názvy video kodekov, rodičovská ochrana a nové voľby systémových dialógov.",
+  "receiver_validation": "Legacy/current EPG API tests, source contract and display checks, codec fallback tests and existing release gates. No physical receiver confirmation of 1.0.45 yet.",
   "approved_on": "2026-10-30",
   "reuse_verified_preview_archives": true
 }

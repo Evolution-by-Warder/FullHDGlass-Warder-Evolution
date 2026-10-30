@@ -1,0 +1,17 @@
+# OpenATV compatibility audit — 30 October 2026
+
+Reviewed all 617 files changed in 417 commits between OpenATV `13e055d3e172679c4c3fb16da1b0462d0bd8b660` (2 October) and `26544b4af938b462c251135810e229e897689bc2` (30 October). The local git comparison is complete, including files beyond the API's 300-file response. 500 import sites in FullHDGlass, PiconHub and GSU were compared; 33 directly imported Python modules changed. Import sorting and equivalent `match` rewrites were distinguished from interface changes.
+
+OpenATV's 24 October EPG refactor (`ce3361e87258ca73f2743a088fe502e71fd3485a`) replaced the old concrete EPGSelection with a factory and EPGSelectionGrid. Our old constructor patch no longer ran, and missing RefreshColouredKeys aborted action installation inside a swallowed exception. FullHDGlass 1.0.45 patches the actual concrete controller, creates independent Warder caption sources and retains legacy support. All four actions, callback return paths, repeated RED presses, foreign skins and native long presses are tested. Current nested grid configuration uses current action identifiers.
+
+The removed PliExtraInfo.codec_data export is replaced with SystemInfo.VideoCodec.getName; older images retain guarded table/native/driver fallbacks. Six exact XML changes cover GraphicalEPG source labels, package-manager Search/MENU, parental descriptions/footnote and four colour keys, optional Setup MENU, and TextBox Exit. `design/openatv-compatibility/skin-edits.json` records the exact original and new screens. The approved GraphicalEPGPIG layout, radio graphics and keyboard remain unchanged. Controller fingerprint exceptions are exact reviewed AST replacements in `logic-edits.json`; the original baseline is not reset.
+
+Native Swap and Toast use new skin aliases with complete inherited/native fallbacks; dynamic RASS subpage fields are still present. ChannelSelection's extra arguments are optional. Existing positional converter calls, Picon APIs, ConfigListScreen, timers, native service references/events and volume interfaces remain compatible. Removed native decoder/parser internals have no callers in these plugins. Added DAB metadata and timeshift error/status interfaces require no replacement of working radio code.
+
+Two final upstream commits were reviewed too: EPG cache safety and position-gauge resizing preserve the public API; Harddisk medium detection preserves its six-value result, and MultiBoot changes only unknown-device labels.
+
+PiconHub 0.1.33 passed 198 plugin and 4 production tests; GSU 13.40-r94 passed 377 tests. Their runtime payloads, package identities, feed versions and immutable IPKs are unchanged. They receive source-interface manifests and read-only daily GitHub checks. FullHDGlass release publication additionally depends on its current upstream compatibility check. These checks never run or write diagnostics on the receiver. A changed covered export, method signature, component type or mandatory widget fails CI and requires review.
+
+Evidence: [complete inventory](../reports/openatv-cross-project-inventory-20261030.json), [screen comparison](../reports/openatv-screen-inventory-20261030.json), [audit result](../reports/openatv-compatibility-20261030.json), and [original EPG diagnosis](MULTIEPG-FOOTER-DIAGNOSIS-20261030.md).
+
+This is source/API validation with receiver stubs, not a physical receiver test. The new FullHDGlass fixes still need receiver confirmation. Trezor was not accessed or changed.

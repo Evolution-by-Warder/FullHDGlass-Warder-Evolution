@@ -53,6 +53,15 @@ def digest_graphics():
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
             raw=path.read_bytes()
             if path==keyboard_skin:
+                edits=ROOT/'design/openatv-compatibility/skin-edits.json'
+                if edits.exists():
+                    ledger=json.loads(edits.read_text())
+                    text=raw.decode()
+                    for edit in ledger['edits']:
+                        assert text.count(edit['updated_screen'])==1
+                        text=text.replace(edit['updated_screen'],edit['original_screen'],1)
+                    raw=text.encode()
+                    assert hashlib.sha256(raw).hexdigest()==ledger['before_skin_sha256']
                 assert hashlib.sha256(raw).hexdigest()==keyboard['updated_skin_sha256']
                 text=raw.decode()
                 assert text.count(keyboard['updated_screen'])==1

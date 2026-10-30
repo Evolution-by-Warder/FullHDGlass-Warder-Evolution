@@ -9,6 +9,9 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 PKG = ROOT / "source/package-root"
 PLUGIN = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py").read_text(encoding="utf-8")
+EPG_COMPAT = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py").read_text(encoding="utf-8")
+assert "_installWarderEpg(_warderEpgModule" in PLUGIN
+PLUGIN += "\n" + EPG_COMPAT
 CITY = (PKG / "etc/city_Code-17.txt").read_text(encoding="utf-8")
 SKIN = (PKG / "usr/share/enigma2/hd_glass17/skin.xml").read_text(encoding="utf-8")
 WEAUTILS = (PKG / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py").read_text(encoding="utf-8")
@@ -441,7 +444,7 @@ for screen in ("GraphicalEPG", "GraphicalEPGPIG"):
             assert ('source="warder_key_%s" render="Label"' % key) in block, (screen, key)
             assert ('source="key_%s" render="Label"' % key) not in block, (screen, key)
         else:
-            assert ('name="key_%s"' % key) in block, (screen, key)
+            assert ('source="key_%s" render="Label"' % key) in block, (screen, key)
 pigepg = re.search(r'<screen\b[^>]*name="GraphicalEPGPIG"[\s\S]*?</screen>', SKIN).group(0)
 assert 'source="session.VideoPicture" render="Pig"' in pigepg
 quickepg = re.search(r'<screen\b[^>]*name="QuickEPG"[\s\S]*?</screen>', SKIN).group(0)
@@ -484,7 +487,7 @@ assert 'warderRestartTimer.start(3000, True)' in PLUGIN
 
 # TEST27: suppress OpenATV window-decoration bouquet title only for GraphicalEPGPIG.
 assert 'def warderEPGSelectionSetTitle(self, title, *args, **kwargs):' in PLUGIN
-assert 'getattr(self, "skinName", None) == "GraphicalEPGPIG"' in PLUGIN
+assert 'names == "GraphicalEPGPIG"' in EPG_COMPAT
 assert 'title = ""' in PLUGIN
 
 # TEST28: FullHDGlass GraphicalEPGPIG color-key row and scoped actions.

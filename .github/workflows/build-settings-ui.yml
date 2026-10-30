@@ -78,6 +78,11 @@ on:
       - source/package-root/usr/share/enigma2/hd_glass17/buttons/vkey_*
       - tools/test-radio-lyrics.py
       - tools/test-virtual-keyboard.py
+      - tools/check-openatv-interfaces.py
+      - tools/test-openatv-*.py
+      - design/openatv-compatibility/**
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderVideoCodec.py
       - design/virtual-keyboard/**
       - tools/prune-stale-skin-packages.py
       - tools/test-skin-package-retention.py
@@ -101,7 +106,10 @@ concurrency:
   group: warder-settings-test
   cancel-in-progress: true
 jobs:
+  openatv-compatibility:
+    uses: ./.github/workflows/verify-system-screen-compatibility.yml
   settings-test:
+    needs: openatv-compatibility
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -131,6 +139,10 @@ jobs:
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py https://raw.githubusercontent.com/openatv/enigma2/830a20471cb3bc2ddc4f61b5e02348c71059f575/lib/python/Screens/VirtualKeyBoard.py
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-latest.py https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/Screens/VirtualKeyBoard.py
           python3 tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-keyboard-latest.py -v
+          python3 tools/test-openatv-interface-guard.py -v
+          python3 tools/test-openatv-epg-compat.py -v
+          python3 tools/test-openatv-codec-compat.py -v
+          python3 tools/test-openatv-screen-compat.py -v
           python3 tools/test-skin-package-retention.py -v
           python3 tools/test-radio-spectrum.py -v
           python3 tools/test-runtime-cleanup.py -v
