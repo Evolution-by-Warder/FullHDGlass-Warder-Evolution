@@ -6,6 +6,8 @@ on:
       - .github/workflows/publish-picons-assimilated-20261030.yml
       - tools/publish-picons-assimilated-20261030.py
       - tools/test-picons-assimilated-20261030.py
+      - tools/push-picon-archive-batches.py
+      - tools/test-picon-archive-batches.py
   workflow_dispatch:
 permissions:
   contents: write
@@ -28,6 +30,8 @@ jobs:
           sparse-checkout: |
             /tools/publish-picons-assimilated-20261030.py
             /tools/test-picons-assimilated-20261030.py
+            /tools/push-picon-archive-batches.py
+            /tools/test-picon-archive-batches.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             /assets/warder/downloads/picons/channels/manifest.json
@@ -50,7 +54,9 @@ jobs:
       - name: Verify exact source artwork, component masks and frozen masters
         run: python .approved-source/plugin/artwork/provenance/picons-assimilated-20261030/generate.py
       - name: Test alias scope, exact PNG preservation and deterministic resizing
-        run: python tools/test-picons-assimilated-20261030.py -v
+        run: |
+          python tools/test-picons-assimilated-20261030.py -v
+          python tools/test-picon-archive-batches.py -v
       - name: Build verified archives and exercise actual receiver installer
         shell: bash
         run: |
@@ -87,25 +93,13 @@ jobs:
           Path('reports/picons-assimilated-publication-20261030.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
           print('Verified PiconHub planner:',count,'packages')
           PYICON
-      - name: Commit content-addressed archives and catalogue together
+      - name: Push bounded archive batches and publish catalogue last
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'Warder picon automation'
           git config user.email 'warder-picons@users.noreply.github.com'
-          git add --sparse assets/warder/downloads/picons/channels reports/picons-assimilated-publication-20261030.json
-          git diff --cached --check
-          python - <<'PY'
-          import subprocess
-          paths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
-          assert all(p.startswith('assets/warder/downloads/picons/channels/') or p=='reports/picons-assimilated-publication-20261030.json' for p in paths),paths
-          PY
-          if git diff --cached --quiet; then
-            echo 'Verified immutable archives are already committed.'
-          else
-            git commit -m 'Publish audited missing service mappings and Warder-standard picons'
-            git push origin HEAD:release/picons-assimilated-20261030
-          fi
+          python -u tools/push-picon-archive-batches.py --report reports/picons-assimilated-publication-20261030.json --branch release/picons-assimilated-20261030
       - name: Read back every new public part and verify size and SHA256
         run: python -u tools/publish-picons-assimilated-20261030.py --verify-public release/picons-assimilated-20261030
       - name: Record public verification
