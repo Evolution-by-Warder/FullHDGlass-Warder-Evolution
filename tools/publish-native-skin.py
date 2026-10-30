@@ -66,22 +66,25 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     if 'Package: '+PACKAGE+'\n' not in control or 'Version: '+version+'-1\n' not in control:
         raise ValueError('Native package control mismatch')
     release=client.request('GET','/releases/tags/v'+version)
-    asset=next(a for a in release['assets'] if a['name']==name)
+    download_name='enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk'
+    asset=next((a for a in release['assets'] if a['name']==download_name),None)
+    if asset is None:asset=next(a for a in release['assets'] if a['name']==name)
     if release['draft'] or release['prerelease'] or asset['size']!=len(raw) or asset['digest']!='sha256:'+digest:
         raise ValueError('Stable release asset mismatch')
     p.verify_public(client,asset['browser_download_url'],len(raw),digest)
     for entry in assets.values():p.verify_public(client,entry['url'],entry['size'],entry['sha256'])
     previous=json.loads(p.content(client,'update-production.json','main'))
-    url=p.RAW+name
+    url=p.RAW+download_name
     if previous['version']==version:
-        if previous['sha256']!=digest or previous['package_url']!=url:raise ValueError('Immutable version collision')
-        p.verify_public(client,url,len(raw),digest)
+        if previous['sha256']!=digest or previous['package_url'] not in (url,p.RAW+name):raise ValueError('Immutable version collision')
+        p.verify_public(client,previous['package_url'],len(raw),digest)
         return p.head(client,'main')
     if release['target_commitish']!=revision:raise ValueError('Release source mismatch')
     main=p.head(client,'main')
     if main!=approval['expected_main_sha'] or p.head(client,p.WORK)!=revision:
         raise ValueError('Branches advanced before publication')
     staged_files={'packages/'+name:raw,'packages/'+name+'.sha256':(digest+'  '+name+'\n').encode()}
+    staged_files.update({'packages/'+download_name:raw,'packages/'+download_name+'.sha256':(digest+'  '+download_name+'\n').encode()})
     help_entry=assets.get('help',{})
     help_raw_url='https://raw.githubusercontent.com/'+p.REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip'
     if help_entry.get('filename')=='g17_setup_pict.zip':

@@ -181,6 +181,7 @@ jobs:
           fi
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
           PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+          DOWNLOAD="packages/test/enigma2-plugin-skins-fullhdglass_${VERSION}_all.ipk"
           TAG="v${VERSION}"
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/warder-verified-release
@@ -189,6 +190,6 @@ jobs:
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --latest \
               --title "FullHDGlass Warder Evolution ${VERSION}" \
-              --notes-file docs/CURRENT-RELEASE.md "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
+              --notes-file docs/CURRENT-RELEASE.md "$DOWNLOAD" "$DOWNLOAD.sha256" "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA" --preserve-picon-assets

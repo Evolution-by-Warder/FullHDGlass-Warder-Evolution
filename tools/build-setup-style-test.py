@@ -43,11 +43,14 @@ def main():
         subprocess.run(['ar','rcsD',str(package),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
     checksum=hashlib.sha256(package.read_bytes()).hexdigest()
     package.with_suffix('.ipk.sha256').write_text(checksum+'  '+package.name+'\n')
+    download=output/('enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk')
+    download.write_bytes(package.read_bytes())
+    download.with_suffix('.ipk.sha256').write_text(checksum+'  '+download.name+'\n')
     info={'version':version,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
           'package':package.name,'sha256':checksum,'bytes':package.stat().st_size,
           'stable_feed_modified':False,'receiver_validated':False,'scope':'small IPK with optional asynchronous preview downloads', 'png_compression':{'files':len(compression),'saved_bytes':sum(x['before']-x['after'] for x in compression),'lossless':True}}
     (output/'settings-ui-build.json').write_text(json.dumps(info,indent=2)+'\n')
-    print(package);print(checksum)
+    print(download);print(checksum)
 
 
 if __name__=='__main__':main()

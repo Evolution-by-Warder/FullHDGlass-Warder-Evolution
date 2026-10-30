@@ -22,7 +22,7 @@ class NativePublisherTests(unittest.TestCase):
         self.info={'version':'1.0.20','package':self.path.name,'bytes':len(self.raw),'sha256':self.hash,'source_commit':self.rev}
         self.approval={'enabled':True,'version':'1.0.20','expected_main_sha':self.base,'authorization':'Owner request','changelog':'Translucent settings'}
         self.feed={'version':'1.0.19','sha256':'old','package_url':'old'}
-        self.heads={'main':self.base,m.p.WORK:self.rev};self.commits=[];self.public={m.p.RAW+self.path.name:self.raw,'https://github.com/release.ipk':self.raw}
+        self.heads={'main':self.base,m.p.WORK:self.rev};self.commits=[];self.public={m.p.RAW+self.path.name:self.raw,m.p.RAW+'enigma2-plugin-skins-fullhdglass_1.0.20_all.ipk':self.raw,'https://github.com/release.ipk':self.raw}
         self.release={'draft':False,'prerelease':False,'target_commitish':self.rev,'assets':[{'name':self.path.name,'size':len(self.raw),'digest':'sha256:'+self.hash,'browser_download_url':'https://github.com/release.ipk'}]}
         class Client:
             def request(_,method,path):return self.release
@@ -51,6 +51,11 @@ class NativePublisherTests(unittest.TestCase):
     def test_verified_stable_release_also_reaches_native_test_clients_without_touching_primary_legacy_bridge(self):
         self.publish();self.assertEqual(len(self.commits),2)
         files=self.commits[-1];self.assertIn('update-production.json',files)
+        feed=json.loads(files['update-production.json'])
+        self.assertTrue(feed['package_url'].endswith('/enigma2-plugin-skins-fullhdglass_1.0.20_all.ipk'))
+        staged=self.commits[0]
+        self.assertEqual(staged['packages/enigma2-plugin-skins-fullhdglass_1.0.20_all.ipk'],self.raw)
+        self.assertEqual(staged['packages/'+self.path.name],self.raw)
         self.assertNotIn('update.json',files)
         self.assertEqual(files['update-test.json'],files['update-production.json'])
         inventory=json.loads(files['design/settings-ui-inventory.json'])

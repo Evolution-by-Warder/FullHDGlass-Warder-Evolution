@@ -59,7 +59,10 @@ def main():
         subprocess.run(["ar", "rcsD", str(output), "debian-binary", "control.tar.gz", "data.tar.gz"], cwd=work, check=True)
     digest = hashlib.sha256(output.read_bytes()).hexdigest()
     output.with_suffix(output.suffix + ".sha256").write_text(digest + "  " + output.name + "\n")
-    print(output)
+    download = output.with_name("enigma2-plugin-skins-fullhdglass_" + version + "_all.ipk")
+    download.write_bytes(output.read_bytes())
+    download.with_suffix(".ipk.sha256").write_text(digest + "  " + download.name + "\n")
+    print(download)
     print(digest)
 
 
