@@ -1,0 +1,24 @@
+{
+  "status": "VERIFIED",
+  "current": "1.0.43",
+  "previous": "1.0.42",
+  "retained_versions": [
+    "1.0.18",
+    "1.0.42",
+    "1.0.43"
+  ],
+  "removed_paths": [
+    "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
+    "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk.sha256",
+    "packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk",
+    "packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk.sha256"
+  ],
+  "removed_ipks": 2,
+  "removed_bytes": 29519665,
+  "removed_releases": [
+    "v1.0.41"
+  ],
+  "active_feeds_preserved": true,
+  "trezor_accessed": false,
+  "workflow_run": 41055741487
+}
