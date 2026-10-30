@@ -109,7 +109,11 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     feed={'version':version,'package_url':url,'sha256':digest,'changelog':approval['changelog']}
     record=json.loads(p.content(client,'docs/PRODUCTION.json','main'))
     record.update(source_commit=revision,source_branch=p.WORK,approval=approval['authorization'],approved_on=approval.get('approved_on',record.get('approved_on')))
-    record['release']=dict(feed,tag='v'+version,bytes=len(raw),url=asset['browser_download_url'])
+    record['release']=dict(feed,tag='v'+version,bytes=len(raw),url=asset['browser_download_url'],release_url=release.get('html_url','https://github.com/'+p.REPO+'/releases/tag/v'+version))
+    record['preview_assets']=assets
+    record['auxiliary_asset_policy']='Shared assets/warder/downloads only; release attachments contain installable packages and checksums.'
+    record.pop('activation_commit',None)
+    record['version_policy']=version+' is the next normal production update; package identity and settings preserved.'
     record['validation']={'workflow_run':int(os.environ.get('GITHUB_RUN_ID','0')),'build_payloads_and_public_bytes':'verified','receiver_validation':approval.get('receiver_validation','Physical receiver confirmation of the current feature set is not claimed; automated tests and public byte verification are recorded.')}
     inventory=json.loads(p.content(client,'design/settings-ui-inventory.json','main'))
     inventory['production_feed_version']=version

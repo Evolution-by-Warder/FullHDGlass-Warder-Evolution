@@ -76,7 +76,9 @@ on:
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py
       - tools/test-preview-assets.py
       - tools/verify-preview-release-assets.py
-      - design/preview-assets/**
+      - assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip
+      - tools/consolidate-auxiliary-assets.py
+      - tools/check-auxiliary-layout.py
       - source/control/control
       - tools/style-setup-screens.py
       - tools/test-setup-style.py
@@ -106,6 +108,7 @@ jobs:
             docs
             design
             .github
+            assets/warder/downloads/ui/icon-set-previews
       - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
@@ -116,6 +119,7 @@ jobs:
           sudo apt-get install -y -qq --no-install-recommends ffmpeg
       - name: Validate settings controllers and layouts
         run: |
+          python3 tools/check-auxiliary-layout.py
           python3 tools/test-radio-spectrum.py -v
           python3 tools/test-runtime-cleanup.py -v
           python3 tools/test-radio-background.py -v
@@ -190,6 +194,10 @@ jobs:
           else
             gh release create "$TAG" --target "$GITHUB_SHA" --latest \
               --title "FullHDGlass Warder Evolution ${VERSION}" \
-              --notes-file docs/CURRENT-RELEASE.md "$DOWNLOAD" "$DOWNLOAD.sha256" "$PACKAGE" "$PACKAGE.sha256" /tmp/g17_setup_pict.zip
+              --notes-file docs/CURRENT-RELEASE.md "$DOWNLOAD" "$DOWNLOAD.sha256" "$PACKAGE" "$PACKAGE.sha256"
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA" --preserve-picon-assets
+      - name: Remove superseded auxiliary copies after verified production activation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/consolidate-auxiliary-assets.py

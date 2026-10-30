@@ -1,3 +1,7 @@
+# 1.0.42 — 30.10.2026
+
+Zjednotené pomocné balíky v `assets/warder/downloads/`: nápoveda v `ui/help`, náhľady informačných panelov pri sadách ikon v `ui/icon-set-previews`. Odstránené paralelné umiestnenie v `design/preview-assets`; sťahovač aj zostavovanie používajú spoločnú štruktúru. Pomocné ZIP archívy sa neprikladajú k vydaniam IPK. Existujúce kontrolné súčty a cache ostávajú platné.
+
 # 1.0.41 — 29.10.2026
 
 Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy.

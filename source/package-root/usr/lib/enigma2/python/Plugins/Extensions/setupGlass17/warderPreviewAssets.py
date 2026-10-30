@@ -1,4 +1,4 @@
-"""Optional immutable preview archives, downloaded outside the GUI thread."""
+"""Verified optional previews from the shared auxiliary download structure."""
 import hashlib
 import json
 import os
@@ -30,7 +30,7 @@ class _Redirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, request, fp, code, msg, headers, newurl):
         from urllib.parse import urlparse
         parsed=urlparse(newurl)
-        if parsed.scheme!='https' or parsed.hostname not in ('github.com','release-assets.githubusercontent.com','objects.githubusercontent.com'):
+        if parsed.scheme!='https' or parsed.hostname not in ('github.com','release-assets.githubusercontent.com','objects.githubusercontent.com','raw.githubusercontent.com'):
             raise ValueError('Untrusted preview redirect')
         return super().redirect_request(request,fp,code,msg,headers,newurl)
 
@@ -48,8 +48,11 @@ def _valid(path,entry):
 def _download(kind,opener=None):
     entry=manifest()[kind];target=bundle_path(kind)
     if _valid(target,entry):return target
-    expected='https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/'
-    if not entry['url'].startswith(expected):raise ValueError('Untrusted preview source')
+    allowed={
+        'help':'https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip',
+        'types':'https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip',
+    }
+    if entry['url']!=allowed.get(kind):raise ValueError('Untrusted preview source')
     folder=os.path.dirname(target)
     if os.path.basename(folder)=='.warder-previews' and not os.path.isdir(os.path.dirname(folder)):
         raise OSError('Selected preview storage is unavailable')

@@ -1,3 +1,6 @@
+FullHDGlass Warder Evolution 1.0.42 — 30 October 2026
+Auxiliary help and infobar previews use the shared assets/warder/downloads structure. Preview ZIPs are no longer attached to installation releases; archive hashes and existing receiver cache remain valid.
+
 FullHDGlass Warder Evolution 1.0.41 — 29 October 2026
 Owner-authorized production release of TEST2: 84 columns at 3px with 1px gaps, original colours and transparent animated frames. Shared pre-rendered playback replaces expensive per-segment drawing; bounded RAM caches and silent runtime cleanup. Normal upgrade from stable 1.0.39 and 1.0.40-test2. Settings, lyrics/artwork, RDS/DAB and legacy bridge preserved.
 

@@ -4,13 +4,13 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 29 October 2026
 
-**FullHDGlass 1.0.41** is the owner-authorized production promotion of TEST2 and runtime cleanup. Original TEST2 colours, 84 columns at 3px/1px, transparency and motion are retained. Pre-rendered playback avoids the expensive per-segment eCanvas path; unnecessary automatic logs and temporary files are retired. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Release](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.41).
+**FullHDGlass 1.0.42** consolidates auxiliary help and infobar previews in the shared `assets/warder/downloads/` structure. Releases contain installation IPKs and checksums. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Auxiliary structure](docs/AUXILIARY-ASSETS.md).
 
-The production updater offers 1.0.41 above stable 1.0.39 and 1.0.40-test2. Package identity and saved settings remain; the historical 1.0.18 bridge stays unchanged. No exhaustive new receiver test is claimed.
+The production updater offers 1.0.42 as a normal upgrade from 1.0.41. Package identity and saved settings remain; the historical 1.0.18 bridge stays unchanged. No exhaustive new receiver test is claimed.
 
 ## Historical receiver recovery baseline: 1.0.15
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.42/enigma2-plugin-skins-fullhdglass_1.0.42_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current offered version is recorded in update.json and update-test.json.
 

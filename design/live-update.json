@@ -1,9 +1,9 @@
 {
   "enabled": true,
-  "version": "1.0.41",
-  "expected_main_sha": "47702e420ead82ed2feb39c20e92821869512835",
-  "authorization": "vsetky verzie uved do ostrej prevadzky a zapis vsetko kam treba",
-  "changelog": "Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy.",
-  "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed.",
-  "approved_on": "2026-10-29"
+  "version": "1.0.42",
+  "expected_main_sha": "a030eabdb976f4a6cc417cc7141a8aebc5c1ff77",
+  "authorization": "tak bleskovo naprav aby to bolo v sulade zo strukturov; tie subory mimo struktury presun k nam kam treba a potom ich na povodnych miestach zmaz",
+  "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty.",
+  "receiver_validation": "Automated archive, downloader, build and public-byte verification; no new physical receiver test claimed.",
+  "approved_on": "2026-10-30"
 }

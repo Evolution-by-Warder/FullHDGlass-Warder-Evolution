@@ -1,9 +1,9 @@
-# FullHDGlass Warder Evolution 1.0.41
+# FullHDGlass Warder Evolution 1.0.42
 
-Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy.
+Pomocné balíky majú jediné pracovné umiestnenie v `assets/warder/downloads/`, rozdelené podľa ich účelu. Nápoveda používa `ui/help/g17_setup_pict.zip`, náhľady informačných panelov `ui/icon-set-previews/warder-infobar-types.zip`.
 
-Produkčné vydanie schválené vlastníkom 29.10.2026. Aktualizácia zo stabilnej 1.0.39 aj kandidáta TEST2; legacy bridge 1.0.18 zostáva. Farby, rozmer 350 × 126 px, 84 stĺpcov a pohyb sú presne z TEST2. Neprijaté jasnejšie návrhy sa nepoužili.
+Skin sťahuje overené archívy z tejto spoločnej štruktúry. Kontrola veľkosti a SHA-256, sťahovanie na pozadí aj existujúca cache sú zachované. Releases obsahujú inštalačné IPK a ich kontrolné súčty; pomocné ZIP balíky sa k nim neprikladajú.
 
-Snímky sa používajú zo zdieľanej pamäte, pri skrytí sa animácia zastaví. Predchádzajúce opravy logov, dočasných súborov a cache sú zachované. Úplné nové fyzické overenie alebo konkrétne percento CPU sa netvrdí. Presný zdroj, CI, verejný IPK a SHA256 sú v PRODUCTION.json.
+Bežná aktualizácia z 1.0.41. Staršie inštalácie potrebujú túto aktualizáciu na použitie nových odkazov. Historický prechodový IPK 1.0.18 zostáva dostupný.
 
-[Stiahnuť enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk). Súbor má pôvodný SHA256; správca ho eviduje ako fullhdglass-warder-evolution v Balíčkoch vzhľadu.
+Overenie: automatické testy sťahovania, kontrola obsahu archívov, zostavenie IPK a porovnanie verejných súborov. Nové overenie na fyzickom prijímači sa netvrdí.

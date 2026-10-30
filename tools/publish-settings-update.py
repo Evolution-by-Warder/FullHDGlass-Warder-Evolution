@@ -41,16 +41,19 @@ class GitHub:
             try:
                 request=Request(url,headers={'User-Agent':'FullHDGlass-release-verifier','Cache-Control':'no-cache'})
                 allowed_picons={'https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/picons/'+kind+'/'+style+'/'+name+'.zip' for kind,name in [('providers','piconProv'),('satellites','piconSat')] for style in ('transparent','black','white')}
+                allowed_previews={
+                    'https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip',
+                    'https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip'}
                 if url.startswith('https://github.com/'+REPO+'/releases/download/'):
                     spec=importlib.util.spec_from_file_location('verified_preview_download',ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPreviewAssets.py')
                     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
                     context=build_opener(module._Redirect()).open(request,timeout=60)
-                elif url in allowed_picons or url.startswith(RAW) or url=='https://raw.githubusercontent.com/'+REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip':context=urlopen(request,timeout=60)
+                elif url in allowed_picons or url.startswith(RAW) or url in allowed_previews:context=urlopen(request,timeout=60)
                 else:raise ValueError('Unexpected public package/asset URL')
                 with context as response:
                     final=response.geturl()
                     if url.startswith(RAW) and not final.startswith(RAW):raise ValueError('Unsafe raw-package redirect')
-                    if ('/assets/warder/downloads/ui/help/g17_setup_pict.zip' in url or url in allowed_picons) and final!=url:raise ValueError('Unsafe auxiliary archive redirect')
+                    if (url in allowed_previews or url in allowed_picons) and final!=url:raise ValueError('Unsafe auxiliary archive redirect')
                     return response.read(size+1)
             except (HTTPError,OSError):
                 if attempt==4:raise

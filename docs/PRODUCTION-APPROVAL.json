@@ -1,43 +1,40 @@
 {
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
-  "approved_on": "2026-10-29",
-  "production_version": "1.0.41",
+  "approved_on": "2026-10-30",
+  "production_version": "1.0.42",
   "approved_by": "repository owner",
-  "authorization": "vsetky verzie uved do ostrej prevadzky a zapis vsetko kam treba",
+  "authorization": "tak bleskovo naprav aby to bolo v sulade zo strukturov; tie subory mimo struktury presun k nam kam treba a potom ich na povodnych miestach zmaz",
   "baseline": {
     "version": "1.0.40-test2",
     "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
     "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
     "bytes": 14759486
   },
-  "scope": "Promote original TEST2 spectrum and runtime cleanup to stable; activate verified updater, preserve graphics, picon assets, settings and legacy bridge.",
+  "scope": "Consolidate auxiliary archives, update canonical download URLs, stop attaching previews to releases and delete superseded copies after verified publication.",
   "preview_assets": {
     "help": {
       "filename": "g17_setup_pict.zip",
       "size": 27041172,
       "sha256": "0bf966980978558170d43429b7ee8de312d0eb15d29978393a3c610af0bd2c31",
-      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.23/g17_setup_pict.zip"
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip"
     },
     "types": {
       "filename": "warder-infobar-types.zip",
       "size": 2584364,
       "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
-      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/settings-ui-1.0.16-test263/warder-infobar-types.zip"
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip"
     }
   },
-  "version_policy": "1.0.41 sorts above 1.0.40-test2 in both receiver update comparison and package-manager version ordering.",
+  "version_policy": "1.0.42 is a normal upgrade from 1.0.41.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "47702e420ead82ed2feb39c20e92821869512835",
+  "expected_main_sha": "a030eabdb976f4a6cc417cc7141a8aebc5c1ff77",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
-    "version": "1.0.39",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk",
-    "sha256": "7bec211d1ad8ce2864a01c19a63f719de983345258eecfece03669efb898f246",
-    "changelog": "Natívne rádio s obalom a textom skladby. Rozšírené vyhľadávanie SK/CZ textov vrátane SuperMusic, KaraokeTexty a Akordy Kytary; presné overenie interpreta a skladby, opravy metadát a opakovaného hľadania. SuperMusic potvrdený na prijímači, bez zdieľaného tokenu. Zachované nastavenia, RDS, DAB a tichá aktualizácia zoznamu rádií.",
-    "tag": "v1.0.39",
-    "bytes": 14515826,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.39/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.39_all.ipk"
+    "version": "1.0.41",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk",
+    "sha256": "3716a2071156fbf894f90e672d7c512196ccdd899e29f2214a2db53452f19cc8",
+    "changelog": "Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy."
   },
-  "receiver_validation": "Owner authorized production of all three plugins on 29 October 2026 and retained the current TEST2 colours, 84 columns and motion after rejecting brighter previews. This is production authorization; no new exhaustive physical receiver or CPU measurement is claimed."
+  "receiver_validation": "Automated archive, downloader, build and public-byte verification; no new physical receiver test claimed."
 }

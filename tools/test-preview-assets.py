@@ -25,7 +25,7 @@ class AssetsTests(unittest.TestCase):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
         self.env=patch.dict(os.environ,{mod._ENV:self.temp.name});self.env.start();self.addCleanup(self.env.stop)
         self.data=b'PK-test-verified-preview'
-        self.entry={'filename':'small.zip','size':len(self.data),'sha256':hashlib.sha256(self.data).hexdigest(),'url':'https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/test/small.zip'}
+        self.entry={'filename':'g17_setup_pict.zip','size':len(self.data),'sha256':hashlib.sha256(self.data).hexdigest(),'url':'https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip'}
         self.manifest=patch.object(mod,'_MANIFEST',{'help':self.entry,'types':self.entry});self.manifest.start();self.addCleanup(self.manifest.stop)
     def test_atomic_success_then_offline_reuse_without_network(self):
         opener=Opener(self.data);path=mod._download('help',opener);self.assertEqual(Path(path).read_bytes(),self.data)
@@ -42,6 +42,22 @@ class AssetsTests(unittest.TestCase):
         with self.assertRaises(ValueError):mod._download('help',Opener(self.data))
         with self.assertRaises(ValueError):mod._Redirect().redirect_request(None,None,302,'',{},'http://github.com/file')
         with self.assertRaises(ValueError):mod._Redirect().redirect_request(None,None,302,'',{},'https://attacker.invalid/file')
+    def test_release_copies_and_other_raw_paths_are_rejected(self):
+        for url in (
+            'https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/g17_setup_pict.zip',
+            'https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/unapproved.zip',
+            'https://raw.githubusercontent.com/attacker/repo/main/assets/warder/downloads/ui/help/g17_setup_pict.zip',
+        ):
+            self.entry['url']=url
+            with self.assertRaises(ValueError):mod._download('help',Opener(self.data))
+        self.assertEqual(list(Path(self.temp.name).iterdir()),[])
+
+    def test_types_download_uses_shared_icon_preview_archive(self):
+        self.entry['url']='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip'
+        self.entry['filename']='warder-infobar-types.zip'
+        path=mod._download('types',Opener(self.data))
+        self.assertEqual(Path(path).read_bytes(),self.data)
+
     def test_opening_settings_only_schedules_one_daemon_worker(self):
         mod._RUNNING=False
         try:
@@ -56,7 +72,7 @@ class AssetsTests(unittest.TestCase):
 
 class FreshInstallTests(unittest.TestCase):
     def test_worker_uses_downloaded_archive_without_original_help_files(self):
-        archive=ROOT/'design/preview-assets/warder-infobar-types.zip'
+        archive=ROOT/'assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip'
         self.assertTrue(archive.is_file())
         manifest=__import__('json').loads((P/'preview-assets.json').read_text())
         prepared=Path('/tmp/g17_setup_pict.zip')
