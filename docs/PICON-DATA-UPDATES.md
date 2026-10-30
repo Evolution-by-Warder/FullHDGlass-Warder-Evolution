@@ -55,3 +55,12 @@ Dátové doplnenie 28.10.2026 (r2): 247 položiek s piconmi / 263 referencií v 
 Spoločný balík pre FullHDGlass a PiconHub obsahuje 2 531 referencií v každom pozadí 220×132. Pridaných je 54 názvov PNG, aktualizovaných 148 a odstránených 197 zastaraných alebo chybných súborov. Aktuálny zoznam má 227 riadkov vrátane regiónov a technických pozícií; nejde o počet unikátnych staníc. Nepotvrdené regionálne identity a chýbajúce aktuálne referencie sú výslovne označené.
 
 [Zoznam a dôvody odstránení](../assets/warder/downloads/picons/dvb-t-skcz/README.md). Všetkých 47 verejných častí prešlo SHA-256 kontrolou. Skutočný Warder engine nainštaloval všetky tri pozadia a overil každý výsledný súbor aj zachovanie používateľského súboru. Inštalačné balíky a verzie pluginov sa nemenia.
+
+
+## Doplnenie kandidátov Vhannibal/OpenATV — 30.10.2026
+
+Na výslovný pokyn vlastníka bolo do spoločného katalógu skinu a PiconHubu pridaných 10 grafík / 14 overených referencií: TVGE Internacional, Disney Cinema, CANAL+ Foot UHD HDR, RMC Sport 1, volksmusik.tv, Sky Voices, TV5 Monde Info, TBN Rus, Klan Nostalgji a Aurora TV. Pozície 13°E, 16°E, 19,2°E, 23,5°E a 28,2°E; všetky tri rozmery a tri pozadia.
+
+45 balíkov, 126 doplnených PNG, žiadny existujúci PNG nebol nahradený. Prešlo 45 kontrol inštalátora skinu, 45 plánov skinu, 45 plánov PiconHubu a verejné overenie 128 častí podľa veľkosti a SHA-256. Testovacie a dátové služby zo širšieho auditu sa nepridávali. Nový IPK netreba: príslušné picony stiahnite znovu cez skin alebo PiconHub. Trezor vynechaný.
+
+[Publikácia](../reports/source-candidates-publication-20261030.json) · [Aktivácia](../reports/source-candidates-activation-20261030.json)
