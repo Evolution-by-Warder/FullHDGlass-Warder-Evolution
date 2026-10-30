@@ -374,6 +374,13 @@
         132
       ],
       "delivery": "canonical-220x132-v1"
+    },
+    "infobar_types_preview": {
+      "filename": "warder-infobar-types.zip",
+      "size": 2584364,
+      "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip",
+      "root": ""
     }
   }
 }
