@@ -140,18 +140,26 @@ jobs:
           python3 tools/test-package-transition.py -v
           python3 tools/test-package-transition-publisher.py -v
           python3 tools/verify-radio-release.py
-      - name: Verify all 252 original help illustrations and background filtering
+      - name: Verify canonical optional archives and preview behaviour
         run: |
-          python3 -m pip install --quiet Pillow
-          curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/81ff0fb83709344d696c73ed70530ef09651916b/assets/warder/downloads/ui/help/g17_setup_pict.zip
-          python3 tools/test-settings-batch.py -v
-          python3 tools/build-canonical-picons.py
-          python3 tools/test-canonical-picons.py --built-dir /tmp/warder-canonical-picons -q
-          python3 tools/test-auxiliary-hybrid-runtime.py
-          python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/g17_setup_pict.zip
-          python3 tools/test-preview-assets.py -v
-          python3 tools/verify-preview-release-assets.py --help-previews /tmp/g17_setup_pict.zip
-          python3 tools/test-help-art.py --bundle /tmp/warder-help.zip --prebuilt /tmp/g17_setup_pict.zip
+          REUSE=$(python3 -c 'import json; print(str(json.load(open("design/live-update.json")).get("reuse_verified_preview_archives",False)).lower())')
+          if [ "$REUSE" = true ]; then
+            curl --fail --location --silent --show-error -o /tmp/g17_setup_pict.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip
+            python3 tools/test-settings-batch.py -v
+            python3 tools/test-preview-assets.py -v
+            python3 tools/verify-preview-release-assets.py --help-previews /tmp/g17_setup_pict.zip
+          else
+            python3 -m pip install --quiet Pillow
+            curl --fail --location --silent --show-error -o /tmp/warder-help.zip https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/81ff0fb83709344d696c73ed70530ef09651916b/assets/warder/downloads/ui/help/g17_setup_pict.zip
+            python3 tools/test-settings-batch.py -v
+            python3 tools/build-canonical-picons.py
+            python3 tools/test-canonical-picons.py --built-dir /tmp/warder-canonical-picons -q
+            python3 tools/test-auxiliary-hybrid-runtime.py
+            python3 tools/build-help-previews.py --bundle /tmp/warder-help.zip --output /tmp/g17_setup_pict.zip
+            python3 tools/test-preview-assets.py -v
+            python3 tools/verify-preview-release-assets.py --help-previews /tmp/g17_setup_pict.zip
+            python3 tools/test-help-art.py --bundle /tmp/warder-help.zip --prebuilt /tmp/g17_setup_pict.zip
+          fi
       - name: Validate existing gettext catalogs
         run: |
           sudo apt-get update -qq

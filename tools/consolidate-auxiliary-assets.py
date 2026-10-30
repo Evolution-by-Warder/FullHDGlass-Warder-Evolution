@@ -10,6 +10,14 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('publisher',ROOT/'tools/publish-settings-update.py')
 p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 client=p.GitHub(os.environ['GH_TOKEN'])
+def delete(path):
+    request=p.Request(p.API+path,method='DELETE',headers={
+        'Authorization':'Bearer '+client.token,
+        'Accept':'application/vnd.github+json',
+        'User-Agent':'FullHDGlass-auxiliary-consolidation'})
+    with p.urlopen(request,timeout=60) as response:
+        if response.status!=204:raise ValueError('Unexpected deletion response')
+
 expected=json.loads((ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/preview-assets.json').read_text())
 feed=json.loads(p.content(client,'update-production.json','main'))
 assert tuple(map(int,feed['version'].split('.'))) >= (1,0,42)
@@ -30,13 +38,13 @@ for release in releases:
             assert asset['name'] in allowed,(tag,asset['name'])
             size,digest=allowed[asset['name']]
             assert asset['size']==size and asset['digest']=='sha256:'+digest
-        client.request('DELETE','/releases/'+str(release['id']))
+        delete('/releases/'+str(release['id']))
         record['removed_release_copies'].append({'tag':tag,'release_id':release['id'],'assets':[a['name'] for a in release['assets']]})
     elif tag=='v1.0.41':
         for asset in release['assets']:
             if asset['name']=='g17_setup_pict.zip':
                 assert asset['size']==expected['help']['size'] and asset['digest']=='sha256:'+expected['help']['sha256']
-                client.request('DELETE','/releases/assets/'+str(asset['id']))
+                delete('/releases/assets/'+str(asset['id']))
                 record['removed_release_copies'].append({'tag':tag,'asset_id':asset['id'],'name':asset['name']})
 for entry in expected.values():p.verify_public(client,entry['url'],entry['size'],entry['sha256'])
 remaining=client.request('GET','/releases?per_page=100')

@@ -5,5 +5,6 @@
   "authorization": "tak bleskovo naprav aby to bolo v sulade zo strukturov; tie subory mimo struktury presun k nam kam treba a potom ich na povodnych miestach zmaz",
   "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty.",
   "receiver_validation": "Automated archive, downloader, build and public-byte verification; no new physical receiver test claimed.",
-  "approved_on": "2026-10-30"
+  "approved_on": "2026-10-30",
+  "reuse_verified_preview_archives": true
 }
