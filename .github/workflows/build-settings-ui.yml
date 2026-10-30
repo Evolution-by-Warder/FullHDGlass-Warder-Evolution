@@ -87,6 +87,7 @@ on:
       - tools/consolidate-auxiliary-assets.py
       - tools/check-auxiliary-layout.py
       - source/control/control
+      - source/control/postinst
       - tools/style-setup-screens.py
       - tools/test-setup-style.py
       - tools/build-setup-style-test.py

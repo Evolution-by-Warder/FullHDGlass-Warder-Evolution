@@ -1,10 +1,10 @@
 {
   "enabled": true,
-  "version": "1.0.43",
-  "expected_main_sha": "49bb08e7796151ad53e301b8332fc83b0d489b8d",
-  "authorization": "Owner-reported missing ArchiveCZSK input descriptions in FullHDGlass; repair the shared keyboard and prevent recurrence with compatibility checks. Prior authorization for production fixes and repository writes remains in force.",
-  "changelog": "Opravená spoločná virtuálna klávesnica: zobrazenie popisu mena/hesla z pluginu, režimu zadávania, jazyka a farebných tlačidiel. Jednotné 67px klávesy a povinná kontrola kompatibility s OpenATV. Zachované nastavenia a údaje; nové picony zostávajú dostupné.",
-  "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver.",
+  "version": "1.0.44",
+  "expected_main_sha": "ab205f54efe9e1e430803d3d57777758d780ae4a",
+  "authorization": "Owner explicitly requested silent automatic first installation of the Warder IPTV radio bouquet into the receiver radio list. Prior authorization for repository writes and production updates remains in force.",
+  "changelog": "Tichá automatická inštalácia nášho IPTV rádio bouquetu a zaradenie medzi rádiá. Bez duplicitných položiek a bez zmeny osobných zoznamov. Overený obsah, sťahovanie na pozadí, opakovanie pri výpadku internetu a zachované týždenné aktualizácie.",
+  "receiver_validation": "Automated first-install, offline retry, checksum, index preservation, duplicate, concurrent-edit and lifecycle tests. Existing virtual keyboard was owner-confirmed on the receiver; this new radio import has not yet been tested on a physical receiver.",
   "approved_on": "2026-10-30",
   "reuse_verified_preview_archives": true
 }

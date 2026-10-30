@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate silent weekly updates without a receiver or external HTTP requests."""
+"""Validate first radio import, index preservation and silent weekly updates."""
 import hashlib
 import importlib.util
 import io
@@ -93,17 +93,83 @@ class RefreshTests(unittest.TestCase):
             return result
         with patch.object(auto,'fetch',side_effect=edit),self.assertRaises(ValueError):auto.refresh(self.directory,NOW)
         self.assertEqual(self.target.read_bytes(),b'personal edit')
-    def test_missing_or_unmanaged_file_is_not_imported(self):
+    def test_first_install_downloads_validates_and_registers_radio(self):
         self.target.unlink()
-        self.assertEqual(self.run_refresh()['skipped'],'not-installed')
+        tv=self.directory/'bouquets.tv';tv.write_bytes(b'#NAME Personal TV\n')
+        self.assertEqual(self.run_refresh(),{'changed':True})
+        self.assertEqual(self.target.read_bytes(),self.raw)
+        self.assertEqual((self.directory/auto.INDEX_NAME).read_bytes(),b'#NAME Bouquets (Radio)\n'+auto.INDEX_ENTRY)
+        self.assertFalse((self.directory/(auto.FILENAME+'.bak')).exists())
+        self.assertEqual(tv.read_bytes(),b'#NAME Personal TV\n')
+    def test_unmanaged_file_is_not_imported_or_registered(self):
         self.target.write_bytes(b'#NAME My personal radio\n')
         self.assertEqual(self.run_refresh()['skipped'],'unmanaged')
         self.assertEqual(self.requests,[])
+        self.assertFalse((self.directory/auto.INDEX_NAME).exists())
     def test_symlink_is_not_replaced(self):
         self.target.unlink();self.target.symlink_to(self.directory/'personal')
         (self.directory/'personal').write_bytes(self.old)
-        self.assertEqual(self.run_refresh()['skipped'],'not-installed')
+        self.assertEqual(self.run_refresh()['skipped'],'unsafe-path')
         self.assertTrue(self.target.is_symlink())
+    def test_index_symlink_is_never_followed(self):
+        personal=self.directory/'personal-index';personal.write_bytes(b'untouched')
+        (self.directory/auto.INDEX_NAME).symlink_to(personal)
+        self.assertEqual(self.run_refresh()['skipped'],'unsafe-path')
+        self.assertEqual(personal.read_bytes(),b'untouched');self.assertEqual(self.requests,[])
+    def test_registration_preserves_other_bouquets_and_missing_final_newline(self):
+        index=self.directory/auto.INDEX_NAME
+        original=b'#NAME My Radios\r\n#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.personal.radio" ORDER BY bouquet'
+        index.write_bytes(original)
+        self.run_refresh()
+        self.assertEqual(index.read_bytes(),original+b'\n'+auto.INDEX_ENTRY)
+        self.run_refresh(NOW+1)
+        self.assertEqual(index.read_bytes(),original+b'\n'+auto.INDEX_ENTRY)
+    def test_existing_reference_with_crlf_is_not_duplicated(self):
+        index=self.directory/auto.INDEX_NAME
+        original=b'#NAME My Radios\r\n'+auto.INDEX_ENTRY.replace(b'\n',b'\r\n')
+        index.write_bytes(original);self.run_refresh()
+        self.assertEqual(index.read_bytes(),original)
+    def test_missing_registration_is_repaired_even_when_network_is_not_due(self):
+        self.run_refresh();self.requests.clear()
+        index=self.directory/auto.INDEX_NAME;index.write_bytes(b'#NAME Mine\n')
+        self.assertEqual(self.run_refresh(NOW+1),{'changed':True})
+        self.assertEqual(index.read_bytes(),b'#NAME Mine\n'+auto.INDEX_ENTRY)
+        self.assertEqual(self.requests,[])
+    def test_offline_first_install_has_no_empty_bouquet_or_registration(self):
+        self.target.unlink()
+        with patch.object(auto,'fetch',side_effect=OSError('offline')):
+            with self.assertRaises(OSError):auto.refresh(self.directory,NOW)
+        self.assertFalse(self.target.exists());self.assertFalse((self.directory/auto.INDEX_NAME).exists())
+        self.assertEqual(self.run_refresh(NOW+1)['skipped'],'not-due')
+        self.assertTrue(self.run_refresh(NOW+auto.RETRY)['changed'])
+        self.assertEqual(self.target.read_bytes(),self.raw)
+    def test_invalid_first_download_is_not_registered(self):
+        self.target.unlink();self.raw=b'broken'
+        with self.assertRaises(ValueError):self.run_refresh()
+        self.assertFalse(self.target.exists());self.assertFalse((self.directory/auto.INDEX_NAME).exists())
+    def test_first_install_preserves_a_concurrently_created_file(self):
+        self.target.unlink();fetch=self.fetch
+        def edit(url,limit):
+            result=fetch(url,limit)
+            if url.endswith('.radio'):self.target.write_bytes(b'personal edit')
+            return result
+        with patch.object(auto,'fetch',side_effect=edit),self.assertRaises(FileExistsError):auto.refresh(self.directory,NOW)
+        self.assertEqual(self.target.read_bytes(),b'personal edit')
+        self.assertFalse((self.directory/auto.INDEX_NAME).exists())
+    def test_concurrent_index_additions_survive_download(self):
+        self.target.unlink();fetch=self.fetch;index=self.directory/auto.INDEX_NAME
+        def edit(url,limit):
+            result=fetch(url,limit)
+            if url.endswith('.radio'):index.write_bytes(b'#NAME Added during download\n')
+            return result
+        with patch.object(auto,'fetch',side_effect=edit):auto.refresh(self.directory,NOW)
+        self.assertEqual(index.read_bytes(),b'#NAME Added during download\n'+auto.INDEX_ENTRY)
+    def test_postinst_starts_worker_without_blocking_or_logging(self):
+        import subprocess
+        postinst=ROOT/'source/control/postinst'
+        subprocess.run(['sh','-n',str(postinst)],check=True)
+        text=postinst.read_text()
+        self.assertIn('/usr/bin/python3 -B "$warder_radio_update" --refresh </dev/null >/dev/null 2>&1 &',text)
     def test_incorrect_system_clock_does_not_download(self):
         self.assertEqual(self.run_refresh(123)['skipped'],'clock')
         self.assertEqual(self.requests,[])
@@ -124,6 +190,12 @@ class RefreshTests(unittest.TestCase):
         ctl.check();loop.workers[-1][0].complete(1)
         self.assertEqual(reloads,[True])
         ctl.close()
+    def test_first_gui_check_reloads_data_already_installed_by_postinst_once(self):
+        reloads=[];loop=Loop();ctl=auto.Controller(loop,lambda:reloads.append(True))
+        for _ in range(2):
+            ctl.check();worker=loop.workers[-1][0]
+            worker.outReceived(b'{"changed":false,"skipped":"not-due"}');worker.complete(0)
+        self.assertEqual(reloads,[True]);ctl.close()
     def test_frozen_guard_rejects_modified_background_hook(self):
         import ast
         spec=importlib.util.spec_from_file_location('weekly_style_guard',ROOT/'tools/style-setup-screens.py')

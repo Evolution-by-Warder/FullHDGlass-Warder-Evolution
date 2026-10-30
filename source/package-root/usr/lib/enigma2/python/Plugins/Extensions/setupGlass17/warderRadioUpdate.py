@@ -1,10 +1,11 @@
-"""Silently refresh the managed Warder radio bouquet in a native child process."""
+"""Silently install and refresh the managed Warder radio bouquet off the GUI."""
 import fcntl
 import hashlib
 import json
 import os
 from pathlib import Path
 import re
+import signal
 import sys
 import tempfile
 import time
@@ -20,6 +21,8 @@ WEEK = 7 * 24 * 60 * 60
 RETRY = 6 * 60 * 60
 LIMIT = 4 * 1024 * 1024
 HEADER = b'#NAME Warder Radio Streams\n'
+INDEX_NAME = 'bouquets.radio'
+INDEX_ENTRY = ('#SERVICE 1:7:2:0:0:0:0:0:0:0:FROM BOUQUET "' + FILENAME + '" ORDER BY bouquet\n').encode()
 _controller = None
 
 
@@ -67,6 +70,39 @@ def write_atomic(path, data):
             except OSError:pass
 
 
+def install_if_missing(path, data):
+    """Publish a complete download without replacing a concurrently created file."""
+    temp = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=str(path.parent), delete=False) as handle:
+            temp = Path(handle.name)
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(str(temp), 0o644)
+        os.link(str(temp), str(path))
+    finally:
+        if temp is not None:
+            temp.unlink()
+
+
+def register_radio(directory):
+    """Append only our reference; preserve the user's index bytes and ordering."""
+    path = directory / INDEX_NAME
+    flags = os.O_RDWR | os.O_CREAT | os.O_APPEND | os.O_NOFOLLOW
+    with os.fdopen(os.open(str(path), flags, 0o644), 'a+b') as handle:
+        handle.seek(0)
+        before = handle.read()
+        pattern = rb'^#SERVICE[^\r\n]*FROM BOUQUET "' + re.escape(FILENAME.encode()) + rb'"(?:[ \t]|\r?$)'
+        if re.search(pattern, before, re.MULTILINE):
+            return False
+        addition = (b'#NAME Bouquets (Radio)\n' if not before else b'' if before.endswith(b'\n') else b'\n') + INDEX_ENTRY
+        handle.write(addition)
+        handle.flush()
+        os.fsync(handle.fileno())
+    return True
+
+
 def validate(raw, report):
     if hashlib.sha256(raw).hexdigest() != report.get('bouquet_sha256'):
         raise ValueError('Radio bouquet checksum mismatch')
@@ -97,13 +133,15 @@ def validate(raw, report):
 def refresh(directory=Path('/etc/enigma2'), now=None):
     """No Enigma imports: all file/network work happens outside the GUI thread."""
     target = directory / FILENAME
-    if not target.is_file() or target.is_symlink():
-        return {'changed': False, 'skipped': 'not-installed'}
+    index = directory / INDEX_NAME
+    if target.is_symlink() or (target.exists() and not target.is_file()) or index.is_symlink() or (index.exists() and not index.is_file()):
+        return {'changed': False, 'skipped': 'unsafe-path'}
     # Exact managed filename and header prevent touching arbitrary user bouquets.
-    before = target.read_bytes()
-    if not before.startswith(HEADER):
+    before = target.read_bytes() if target.exists() else None
+    if before is not None and not before.startswith(HEADER):
         return {'changed': False, 'skipped': 'unmanaged'}
-    with open(str(directory / (STATE_NAME + '.lock')), 'a') as lock:
+    lock_flags = os.O_WRONLY | os.O_CREAT | os.O_NOFOLLOW
+    with os.fdopen(os.open(str(directory / (STATE_NAME + '.lock')), lock_flags, 0o644), 'a') as lock:
         try:fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:return {'changed': False, 'skipped': 'busy'}
         now = time.time() if now is None else now
@@ -111,15 +149,16 @@ def refresh(directory=Path('/etc/enigma2'), now=None):
         if now < 1700000000:
             return {'changed': False, 'skipped': 'clock'}
         state = read_state(directory)
+        registered = register_radio(directory) if before is not None else False
         if not due(state, now):
-            return {'changed': False, 'skipped': 'not-due'}
+            return {'changed': True} if registered else {'changed': False, 'skipped': 'not-due'}
         state['last_attempt'] = now
         write_atomic(directory / STATE_NAME, json.dumps(state).encode())
         report = json.loads(fetch(REPORT_URL, 16384).decode('utf-8'))
         expected = report.get('bouquet_sha256', '')
         if not re.fullmatch('[0-9a-f]{64}', expected):
             raise ValueError('Invalid radio catalogue checksum')
-        changed = hashlib.sha256(before).hexdigest() != expected
+        changed = before is None or hashlib.sha256(before).hexdigest() != expected
         if changed:
             # Resolve main once. Both files are then read at the same commit to
             # avoid mixing a manifest with a concurrently refreshed bouquet.
@@ -132,15 +171,19 @@ def refresh(directory=Path('/etc/enigma2'), now=None):
             raw = fetch(BASE+revision+'/'+BOUQUET_PATH, LIMIT)
             validate(raw, report)
             # Respect concurrent user/import edits made while downloads ran.
-            if target.is_symlink() or target.read_bytes() != before:
+            if target.is_symlink() or (before is not None and target.read_bytes() != before):
                 raise ValueError('Radio bouquet changed during download')
             changed = raw != before
             if changed:
-                write_atomic(directory / (FILENAME + '.bak'), before)
-                write_atomic(target, raw)
+                if before is None:
+                    install_if_missing(target, raw)
+                else:
+                    write_atomic(directory / (FILENAME + '.bak'), before)
+                    write_atomic(target, raw)
+        registered = register_radio(directory) or registered
         state.update(last_success=now, sha256=report['bouquet_sha256'])
         write_atomic(directory / STATE_NAME, json.dumps(state).encode())
-        return {'changed': changed}
+        return {'changed': changed or registered}
 
 
 class Controller:
@@ -152,6 +195,8 @@ class Controller:
         self.pending = self.loop.callLater(60, self.check)
         self.timeout = None
         self.closed = False
+        # postinst may already have installed the data while Enigma was running.
+        self.initial_reload = True
 
     @staticmethod
     def _reload():
@@ -176,8 +221,11 @@ class Controller:
         if self.timeout is not None and self.timeout.active():self.timeout.cancel()
         self.timeout = None
         if self.closed:return
-        if isinstance(result, dict) and result.get('changed'):
-            try:self.reload()
+        ready = isinstance(result, dict) and ('changed' in result) and result.get('skipped') in (None, 'not-due')
+        if ready and (result.get('changed') or self.initial_reload):
+            try:
+                self.reload()
+                self.initial_reload = False
             except Exception:pass
         self.pending = self.loop.callLater(3600, self.check)
 
@@ -209,6 +257,7 @@ def start(reason=0):
 if __name__ == '__main__':
     if sys.argv[1:] != ['--refresh']:sys.exit(2)
     try:
+        signal.alarm(90)
         os.nice(10)
         print(json.dumps(refresh()))
     except Exception:

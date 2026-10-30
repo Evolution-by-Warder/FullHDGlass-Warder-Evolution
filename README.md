@@ -2,15 +2,15 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Production release — 29 October 2026
+## Production release — 30 October 2026
 
-**FullHDGlass 1.0.43** repairs the shared OpenATV virtual keyboard: plugin prompts, mode, locale and button captions are visible, and 67px key graphics align. Mandatory compatibility checks cover the pinned and current upstream controller. Auxiliary archives remain in `assets/warder/downloads/`. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Auxiliary structure](docs/AUXILIARY-ASSETS.md).
+**FullHDGlass 1.0.44** silently downloads the verified Warder IPTV radio bouquet after installation and registers it in the radio list. Personal bouquets, their ordering and TV lists are preserved; repeated execution does not add duplicates. Offline attempts retry in the background, with the existing weekly update policy. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json) · [Radio import](docs/RADIO-BOUQUET-INSTALL.md).
 
-The production updater offers 1.0.43 as a normal upgrade from 1.0.42. Package identity and saved settings remain; the historical 1.0.18 bridge stays unchanged. No exhaustive new receiver test is claimed.
+The production updater offers 1.0.44 as a normal upgrade from 1.0.43. The owner-confirmed virtual keyboard fix and approved radio graphics remain. The new import has automated validation; physical receiver confirmation is pending.
 
 ## Historical receiver recovery baseline: 1.0.15
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.43/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.44/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current offered version is recorded in update.json and update-test.json.
 

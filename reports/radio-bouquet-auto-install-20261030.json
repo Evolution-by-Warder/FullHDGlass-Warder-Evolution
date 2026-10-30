@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "date": "2026-10-30",
+  "version": "1.0.44",
+  "status": "LOCAL_VALIDATION_PASSED_PENDING_RELEASE",
+  "request": "vies dorobit aby sa pri instalacii uzivatelovi sam potichu nainstaloval do radii bouquetu ?",
+  "managed_bouquet": "userbouquet.warder.radio",
+  "radio_index": "bouquets.radio",
+  "postinst": "background, no stdin/stdout/stderr log, 90-second bound, low priority",
+  "preserved": [
+    "personal radio bouquets",
+    "TV bouquets",
+    "existing index ordering",
+    "approved radio graphics",
+    "virtual keyboard fix",
+    "weekly update policy"
+  ],
+  "receiver_tested": false,
+  "trezor_accessed": false,
+  "local_tests": {
+    "radio_import_and_update": 25,
+    "quiet_runtime": 9,
+    "bytecode_and_package_hooks": "PASS"
+  },
+  "live_catalogue_validation": {
+    "immutable_revision": "310136ed124108b4b400f1f64a6fcc16b5ec0e0e",
+    "stations": 5441,
+    "bytes": 705146,
+    "sha256": "b1b9d33b4ef5702cf4d40883229aaed29613287aa3de5be4794d0f83d7e300ba",
+    "actual_first_import": "PASS",
+    "repeat_without_duplicate": "PASS"
+  }
+}

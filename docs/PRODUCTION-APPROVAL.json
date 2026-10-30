@@ -2,16 +2,16 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "approved_on": "2026-10-30",
-  "production_version": "1.0.43",
+  "production_version": "1.0.44",
   "approved_by": "repository owner",
-  "authorization": "Owner-reported missing ArchiveCZSK input descriptions in FullHDGlass; repair the shared keyboard and prevent recurrence with compatibility checks. Prior authorization for production fixes and repository writes remains in force.",
+  "authorization": "Owner explicitly requested silent automatic first installation of the Warder IPTV radio bouquet into the receiver radio list. Prior authorization for repository writes and production updates remains in force.",
   "baseline": {
     "version": "1.0.40-test2",
     "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
     "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
     "bytes": 14759486
   },
-  "scope": "Repair the shared modern OpenATV virtual keyboard skin override and block incomplete/unsupported keyboard layouts during release builds.",
+  "scope": "Silent first import of the verified Warder IPTV radio bouquet after package installation and radio-list registration, with existing updates and user bouquets preserved.",
   "preview_assets": {
     "help": {
       "filename": "g17_setup_pict.zip",
@@ -26,15 +26,15 @@
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip"
     }
   },
-  "version_policy": "1.0.43 upgrades normally from 1.0.42.",
+  "version_policy": "1.0.44 upgrades normally from 1.0.43.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "49bb08e7796151ad53e301b8332fc83b0d489b8d",
+  "expected_main_sha": "ab205f54efe9e1e430803d3d57777758d780ae4a",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
-    "version": "1.0.42",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.42_all.ipk",
-    "sha256": "bdab1dec7ad56287f80da08e420b87a8f7da438d53fc68bc43f4b2111e36fffe",
-    "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty."
+    "version": "1.0.43",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
+    "sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
+    "changelog": "Opravená spoločná virtuálna klávesnica: zobrazenie popisu mena/hesla z pluginu, režimu zadávania, jazyka a farebných tlačidiel. Jednotné 67px klávesy a povinná kontrola kompatibility s OpenATV. Zachované nastavenia a údaje; nové picony zostávajú dostupné."
   },
-  "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver."
+  "receiver_validation": "Automated first-install, offline retry, checksum, index preservation, duplicate, concurrent-edit and lifecycle tests. Existing virtual keyboard was owner-confirmed on the receiver; this new radio import has not yet been tested on a physical receiver."
 }
