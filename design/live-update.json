@@ -1,10 +1,10 @@
 {
   "enabled": true,
-  "version": "1.0.42",
-  "expected_main_sha": "a030eabdb976f4a6cc417cc7141a8aebc5c1ff77",
-  "authorization": "tak bleskovo naprav aby to bolo v sulade zo strukturov; tie subory mimo struktury presun k nam kam treba a potom ich na povodnych miestach zmaz",
-  "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty.",
-  "receiver_validation": "Automated archive, downloader, build and public-byte verification; no new physical receiver test claimed.",
+  "version": "1.0.43",
+  "expected_main_sha": "49bb08e7796151ad53e301b8332fc83b0d489b8d",
+  "authorization": "Owner-reported missing ArchiveCZSK input descriptions in FullHDGlass; repair the shared keyboard and prevent recurrence with compatibility checks. Prior authorization for production fixes and repository writes remains in force.",
+  "changelog": "Opravená spoločná virtuálna klávesnica: zobrazenie popisu mena/hesla z pluginu, režimu zadávania, jazyka a farebných tlačidiel. Jednotné 67px klávesy a povinná kontrola kompatibility s OpenATV. Zachované nastavenia a údaje; nové picony zostávajú dostupné.",
+  "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver.",
   "approved_on": "2026-10-30",
   "reuse_verified_preview_archives": true
 }

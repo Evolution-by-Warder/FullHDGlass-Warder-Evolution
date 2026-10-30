@@ -1,9 +1,9 @@
-# FullHDGlass Warder Evolution 1.0.42
+# FullHDGlass Warder Evolution 1.0.43
 
-Pomocné balíky majú jediné pracovné umiestnenie v `assets/warder/downloads/`, rozdelené podľa ich účelu. Nápoveda používa `ui/help/g17_setup_pict.zip`, náhľady informačných panelov `ui/icon-set-previews/warder-infobar-types.zip`.
+Oprava spoločnej virtuálnej klávesnice OpenATV, napríklad pri prihlasovaní v ArchivCZSK. Skin teraz zobrazuje popis zadávaného mena alebo hesla, režim INS/OVR, miestne nastavenia, popisy farebných tlačidiel a TEXT/INFO/HELP.
 
-Skin sťahuje overené archívy z tejto spoločnej štruktúry. Kontrola veľkosti a SHA-256, sťahovanie na pozadí aj existujúca cache sú zachované. Releases obsahujú inštalačné IPK a ich kontrolné súčty; pomocné ZIP balíky sa k nim neprikladajú.
+Klávesy majú jednotnú geometriu 67×67 px; podklady pre viacnásobné klávesy vznikajú presným rozdelením existujúcej grafiky. Vstupné údaje, prípadné maskovanie hesla a správanie tlačidiel naďalej obsluhuje systémová klávesnica. Staršia definícia VirtualKeyBoard zostáva zachovaná.
 
-Bežná aktualizácia z 1.0.41. Staršie inštalácie potrebujú túto aktualizáciu na použitie nových odkazov. Historický prechodový IPK 1.0.18 zostáva dostupný.
+Povinné kontroly porovnávajú skin s overeným aj aktuálnym rozhraním OpenATV, kontrolujú prítomnosť polí a geometriu klávesov. Zmena rozhrania vyžaduje kontrolu kompatibility pred vydaním. Grafika a rozloženie ostatných obrazoviek sú chránené pôvodným kontrolným súčtom.
 
-Overenie: automatické testy sťahovania, kontrola obsahu archívov, zostavenie IPK a porovnanie verejných súborov. Nové overenie na fyzickom prijímači sa netvrdí.
+Bežná aktualizácia z 1.0.42. Nové picony a pomocné balíky ostávajú v spoločnej štruktúre. Overenie po oprave na fyzickom prijímači zatiaľ nie je potvrdené.

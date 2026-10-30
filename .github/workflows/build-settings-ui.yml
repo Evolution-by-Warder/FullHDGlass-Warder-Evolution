@@ -74,6 +74,12 @@ on:
       - tools/test-package-transition-publisher.py
       - source/control/prerm
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py
+      - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - source/package-root/usr/share/enigma2/hd_glass17/buttons/vkey_*
+      - tools/test-virtual-keyboard.py
+      - design/virtual-keyboard/**
+      - tools/prune-stale-skin-packages.py
+      - tools/test-skin-package-retention.py
       - tools/test-preview-assets.py
       - tools/verify-preview-release-assets.py
       - assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip
@@ -120,6 +126,10 @@ jobs:
       - name: Validate settings controllers and layouts
         run: |
           python3 tools/check-auxiliary-layout.py
+          curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py https://raw.githubusercontent.com/openatv/enigma2/830a20471cb3bc2ddc4f61b5e02348c71059f575/lib/python/Screens/VirtualKeyBoard.py
+          curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-latest.py https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/Screens/VirtualKeyBoard.py
+          python3 tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-keyboard-latest.py -v
+          python3 tools/test-skin-package-retention.py -v
           python3 tools/test-radio-spectrum.py -v
           python3 tools/test-runtime-cleanup.py -v
           python3 tools/test-radio-background.py -v
@@ -205,7 +215,7 @@ jobs:
               --notes-file docs/CURRENT-RELEASE.md "$DOWNLOAD" "$DOWNLOAD.sha256" "$PACKAGE" "$PACKAGE.sha256"
           fi
           python3 tools/publish-native-skin.py --revision "$GITHUB_SHA" --preserve-picon-assets
-      - name: Remove superseded auxiliary copies after verified production activation
+      - name: Keep current, previous and active migration packages only
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 tools/consolidate-auxiliary-assets.py
+        run: python3 tools/prune-stale-skin-packages.py

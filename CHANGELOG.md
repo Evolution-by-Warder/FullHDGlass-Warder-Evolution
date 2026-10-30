@@ -1,3 +1,7 @@
+# 1.0.43 — 30.10.2026
+
+Opravená moderná systémová virtuálna klávesnica: prompt, režim zadávania, jazyk, popisy tlačidiel a zhodná geometria 67 px. Povinná kontrola kompatibility voči overenému aj aktuálnemu OpenATV. Staršia klávesnica a ostatná grafika zachované.
+
 # 1.0.42 — 30.10.2026
 
 Zjednotené pomocné balíky v `assets/warder/downloads/`: nápoveda v `ui/help`, náhľady informačných panelov pri sadách ikon v `ui/icon-set-previews`. Odstránené paralelné umiestnenie v `design/preview-assets`; sťahovač aj zostavovanie používajú spoločnú štruktúru. Pomocné ZIP archívy sa neprikladajú k vydaniam IPK. Existujúce kontrolné súčty a cache ostávajú platné.

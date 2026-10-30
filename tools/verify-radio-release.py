@@ -39,12 +39,26 @@ def digest_graphics():
         path=PAYLOAD/entry['path']
         assert path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256']
         pinned.add(path)
+    keyboard=json.loads((ROOT/'design/virtual-keyboard/compatibility.json').read_text())
+    keyboard_skin=PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml'
+    for entry in keyboard['assets']:
+        asset=PAYLOAD/entry['path']
+        assert hashlib.sha256(asset.read_bytes()).hexdigest()==entry['sha256']
+        assert hashlib.sha256((PAYLOAD/entry['source']).read_bytes()).hexdigest()==entry['source_sha256']
+        pinned.add(asset)
     digest = hashlib.sha256()
     for path in sorted(PAYLOAD.rglob("*")):
         if path==header or path in pinned:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.
         if path.is_file() and path.suffix.lower() in (".png", ".jpg", ".mvi", ".xml"):
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
-            digest.update(hashlib.sha256(path.read_bytes()).digest())
+            raw=path.read_bytes()
+            if path==keyboard_skin:
+                assert hashlib.sha256(raw).hexdigest()==keyboard['updated_skin_sha256']
+                text=raw.decode()
+                assert text.count(keyboard['updated_screen'])==1
+                raw=text.replace(keyboard['updated_screen'],keyboard['original_screen'],1).encode()
+                assert hashlib.sha256(raw).hexdigest()==keyboard['original_skin_sha256']
+            digest.update(hashlib.sha256(raw).digest())
     return digest.hexdigest()
 
 

@@ -1,0 +1,275 @@
+{
+  "schema": 1,
+  "scope": "Only the modern VirtualKeyboard screen and additive 67px segmented key assets. All existing artwork and the legacy VirtualKeyBoard screen remain unchanged.",
+  "original_skin_sha256": "68e0bf5166ea2a6bf6590bdae16c885a235bb6118c3f7b3ebabbf449963bde4c",
+  "updated_skin_sha256": "7af1ecd32e972d723b1bf05309c4cfffefbc1f1e15e18629db2d46fd14e63a42",
+  "original_screen": "<screen name=\"VirtualKeyboard\" position=\"center,90\" size=\"1500,900\" zPosition=\"99\" title=\"Virtual Keyboard\">\n    <widget source=\"country\" render=\"Pixmap\" position=\"1365,20\" size=\"90,60\" alphatest=\"on\" borderWidth=\"2\" borderColor=\"yellow\"><convert type=\"ValueToPixmap\">LanguageCode</convert></widget>\n    <widget name=\"header\" position=\"45,30\" size=\"1260,45\" font=\"Prive3;31\" halign=\"left\" transparent=\"1\" noWrap=\"1\" />\n    <eLabel position=\"45,155\" size=\"1410,2\" zPosition=\"1\" backgroundColor=\"grey\" />\n    <widget name=\"text\" position=\"45,90\" size=\"1410,60\" zPosition=\"3\" font=\"Regular;42\" transparent=\"1\" noWrap=\"1\" halign=\"right\" />\n    <widget name=\"list\" position=\"45,190\" size=\"1410,630\" transparent=\"1\" selectionDisabled=\"1\" />\n  </screen>",
+  "updated_screen": "<screen name=\"VirtualKeyboard\" position=\"center,90\" size=\"1500,900\" zPosition=\"99\" title=\"Virtual Keyboard\">\n    <widget name=\"prompt\" position=\"45,30\" size=\"1410,110\" font=\"Prive3;32\" halign=\"left\" valign=\"center\" transparent=\"1\" />\n    <widget name=\"text\" position=\"45,170\" size=\"1410,70\" zPosition=\"3\" font=\"Regular;42\" transparent=\"1\" noWrap=\"1\" halign=\"right\" />\n    <eLabel position=\"45,245\" size=\"1410,2\" zPosition=\"1\" backgroundColor=\"grey\" />\n    <widget name=\"mode\" position=\"45,255\" size=\"1410,35\" font=\"Regular;26\" transparent=\"1\" />\n    <widget name=\"list\" position=\"281,335\" size=\"938,335\" transparent=\"1\" selectionDisabled=\"1\" scrollbarMode=\"showNever\" />\n    <widget name=\"locale\" position=\"45,700\" size=\"1410,45\" font=\"Prive3;29\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_text\" render=\"Label\" position=\"45,770\" size=\"450,40\" font=\"Prive3;28\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_info\" render=\"Label\" position=\"525,770\" size=\"450,40\" font=\"Prive3;28\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_help\" render=\"Label\" position=\"1005,770\" size=\"450,40\" font=\"Prive3;28\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_red\" render=\"Label\" position=\"0,830\" size=\"375,45\" font=\"Prive3;31\" foregroundColor=\"red\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_green\" render=\"Label\" position=\"375,830\" size=\"375,45\" font=\"Prive3;31\" foregroundColor=\"green\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_yellow\" render=\"Label\" position=\"750,830\" size=\"375,45\" font=\"Prive3;31\" foregroundColor=\"yellow\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n    <widget source=\"key_blue\" render=\"Label\" position=\"1125,830\" size=\"375,45\" font=\"Prive3;31\" foregroundColor=\"blue\" halign=\"center\" valign=\"center\" transparent=\"1\" />\n  </screen>",
+  "assets": [
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_bg_l.png",
+      "sha256": "610ba0bf16a8e984631baff0095e3dd45e0732e56b4ac084f5249e3983d52133",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_bg.png",
+      "source_sha256": "98a2a6487287035a1a73d3ee880f3db4bd8cc2c21a95f11facb71d80aa861933",
+      "crop": [
+        0,
+        0,
+        15,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_bg_m.png",
+      "sha256": "588cf739e166d543b0e282ca56678dd42c80fa3d4595e72c594900e7939ae877",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_bg.png",
+      "source_sha256": "98a2a6487287035a1a73d3ee880f3db4bd8cc2c21a95f11facb71d80aa861933",
+      "crop": [
+        15,
+        0,
+        52,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_bg_r.png",
+      "sha256": "12addd0cc0bc02673c88c827b107dd347f98bcd341103d06bb6ec71be32b83d8",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_bg.png",
+      "source_sha256": "98a2a6487287035a1a73d3ee880f3db4bd8cc2c21a95f11facb71d80aa861933",
+      "crop": [
+        52,
+        0,
+        67,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_sel_l.png",
+      "sha256": "d7f216b673ddd079145dcb83b9ebd29cf1dc166a4d42fb62a3e9cd919aef15c5",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_sel.png",
+      "source_sha256": "dc2689bf4fcaf29c037c991c4480157562be930fdb6b6768f25840e2ab98234e",
+      "crop": [
+        0,
+        0,
+        15,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_sel_m.png",
+      "sha256": "4094a2c817881eb6bfbc77c50eb2ada658b9dcfa2fd6878458f4e1939e27700b",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_sel.png",
+      "source_sha256": "dc2689bf4fcaf29c037c991c4480157562be930fdb6b6768f25840e2ab98234e",
+      "crop": [
+        15,
+        0,
+        52,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_sel_r.png",
+      "sha256": "800ac2daffeb6e57745e43444c36f02e419f8d27fae229b8a69c40799d6faf16",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_sel.png",
+      "source_sha256": "dc2689bf4fcaf29c037c991c4480157562be930fdb6b6768f25840e2ab98234e",
+      "crop": [
+        52,
+        0,
+        67,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_red_l.png",
+      "sha256": "c8cdc7fd6629a7dbacbebbef10aa504d2af5a36d0dcf9d871fe0419feca2634f",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_red.png",
+      "source_sha256": "c60efae7e5af6def4ef33da5c4116a431efa1f9ac39d4513347c882941024c93",
+      "crop": [
+        0,
+        0,
+        15,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_red_m.png",
+      "sha256": "0210f33330c337c13e6a9736f40a79d2ee4f51233a80467794884e34ecd193a5",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_red.png",
+      "source_sha256": "c60efae7e5af6def4ef33da5c4116a431efa1f9ac39d4513347c882941024c93",
+      "crop": [
+        15,
+        0,
+        52,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_red_r.png",
+      "sha256": "f7ce3653c42baea1591b23ad38a6a1bfda85e023ec1d5fa3239bf7eb4f2ccb21",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_red.png",
+      "source_sha256": "c60efae7e5af6def4ef33da5c4116a431efa1f9ac39d4513347c882941024c93",
+      "crop": [
+        52,
+        0,
+        67,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_green_l.png",
+      "sha256": "4bb9ff3538f9d9b706bb2a27156782086182bc2d2db4a8a46e163ae5d1e8841f",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_green.png",
+      "source_sha256": "1180304fc481fc45e44adbff84db830e07f09546050737ed25f282b1222463a5",
+      "crop": [
+        0,
+        0,
+        15,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_green_m.png",
+      "sha256": "4ca6e5d51c520c4c40cda2025cb6232df306c55b609ecf70370e601de006062a",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_green.png",
+      "source_sha256": "1180304fc481fc45e44adbff84db830e07f09546050737ed25f282b1222463a5",
+      "crop": [
+        15,
+        0,
+        52,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_green_r.png",
+      "sha256": "1a5d716b0c9099b58ac8b79da11476ad286eab8d854cfbe5f087da785273f752",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_green.png",
+      "source_sha256": "1180304fc481fc45e44adbff84db830e07f09546050737ed25f282b1222463a5",
+      "crop": [
+        52,
+        0,
+        67,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_yellow_l.png",
+      "sha256": "066b867857f2223a31ed4221446bd7226d0e75bf5a9d24738e2a480afa0900ed",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_yellow.png",
+      "source_sha256": "67560e6d09d85ad4328789d787228a410fc5490b9d05e1d93d726de971c6f2c4",
+      "crop": [
+        0,
+        0,
+        15,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_yellow_m.png",
+      "sha256": "c233d3db47d81fe557f72a757db494733c6743e640a935afe05647ff457128aa",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_yellow.png",
+      "source_sha256": "67560e6d09d85ad4328789d787228a410fc5490b9d05e1d93d726de971c6f2c4",
+      "crop": [
+        15,
+        0,
+        52,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_yellow_r.png",
+      "sha256": "8bb25a07620fcd3504c2b299c92e81b457f60d1e575a59ff6c053f47ca974199",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_yellow.png",
+      "source_sha256": "67560e6d09d85ad4328789d787228a410fc5490b9d05e1d93d726de971c6f2c4",
+      "crop": [
+        52,
+        0,
+        67,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_blue_l.png",
+      "sha256": "128d9aaa5c0336e6004756a8e09ef1a3e479268267dc0e7ab7e5525a306cd8ce",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_blue.png",
+      "source_sha256": "0efb20dc313c7876f0ffcfbd33644e68135073a946e49cfcaea45b693b223dc0",
+      "crop": [
+        0,
+        0,
+        15,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_blue_m.png",
+      "sha256": "2d559bc325b96d687e05ef27ef0e8fe37c38938d453d2439fd0526d3c4a77b35",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_blue.png",
+      "source_sha256": "0efb20dc313c7876f0ffcfbd33644e68135073a946e49cfcaea45b693b223dc0",
+      "crop": [
+        15,
+        0,
+        52,
+        67
+      ]
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/buttons/vkey_blue_r.png",
+      "sha256": "0f51643a6e2fd7c8308bc34991495c56525643e940b9fc0f7efc221ddd81beb6",
+      "source": "usr/share/enigma2/hd_glass17/buttons/vkey_blue.png",
+      "source_sha256": "0efb20dc313c7876f0ffcfbd33644e68135073a946e49cfcaea45b693b223dc0",
+      "crop": [
+        52,
+        0,
+        67,
+        67
+      ]
+    }
+  ],
+  "required_widget_names": [
+    "prompt",
+    "text",
+    "list",
+    "mode",
+    "locale"
+  ],
+  "required_sources": [
+    "key_red",
+    "key_green",
+    "key_yellow",
+    "key_blue",
+    "key_text",
+    "key_info",
+    "key_help"
+  ],
+  "geometry": {
+    "cell": [
+      67,
+      67
+    ],
+    "columns": 14,
+    "rows": 5,
+    "list": [
+      938,
+      335
+    ]
+  },
+  "upstream": "https://raw.githubusercontent.com/openatv/enigma2/830a20471cb3bc2ddc4f61b5e02348c71059f575/lib/python/Screens/VirtualKeyBoard.py",
+  "upstream_ref": "830a20471cb3bc2ddc4f61b5e02348c71059f575",
+  "upstream_sha256": "c215c653e175e52184d050f7d38fef0a70975303ac6c02083c1c79fac2276f79",
+  "upstream_component_contract": {
+    "prompt": "Label",
+    "text": "Input",
+    "list": "VirtualKeyboardList",
+    "mode": "Label",
+    "locale": "Label",
+    "language": "Label",
+    "key_info": "StaticText",
+    "key_red": "StaticText",
+    "key_green": "StaticText",
+    "key_yellow": "StaticText",
+    "key_blue": "StaticText",
+    "key_text": "StaticText",
+    "key_help": "StaticText"
+  },
+  "optional_widgets": {
+    "language": "The locale widget already includes language and country in the actual controller."
+  }
+}

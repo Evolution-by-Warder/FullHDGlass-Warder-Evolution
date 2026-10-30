@@ -1,3 +1,6 @@
+FullHDGlass Warder Evolution 1.0.43 — 30.10.2026
+Modern OpenATV virtual keyboard now shows plugin prompts, input mode, locale and button captions. Matching 67px key segments fix overlapping/misaligned key graphics. Build checks verify the pinned and latest upstream display contract.
+
 FullHDGlass Warder Evolution 1.0.42 — 30 October 2026
 Auxiliary help and infobar previews use the shared assets/warder/downloads structure. Preview ZIPs are no longer attached to installation releases; archive hashes and existing receiver cache remain valid.
 
