@@ -466,6 +466,13 @@ class LayoutTests(unittest.TestCase):
     def test_tv_and_other_screens_are_byte_identical_to_baseline(self):
         record=json.loads((ROOT/'design/radio-lyrics/implementation.json').read_text())
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        # Restore only the independently verified keyboard repair before checking
+        # the original non-radio baseline. All other screen bytes stay frozen.
+        keyboard=json.loads((ROOT/'design/virtual-keyboard/compatibility.json').read_text())
+        self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),keyboard['updated_skin_sha256'])
+        self.assertEqual(text.count(keyboard['updated_screen']),1)
+        text=text.replace(keyboard['updated_screen'],keyboard['original_screen'],1)
+        self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),keyboard['original_skin_sha256'])
         for name in ('RdsInfoDisplay','RdsDisplay','RadioInfoBar'):
             text=re.sub(r'<screen\b[^>]*name="'+name+r'"[^>]*>.*?</screen>','<RADIO_SCREEN '+name+'/>',text,flags=re.S)
         self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['non_radio_xml_sha256'])

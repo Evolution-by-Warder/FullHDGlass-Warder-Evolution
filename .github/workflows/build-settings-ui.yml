@@ -76,6 +76,7 @@ on:
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py
       - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
       - source/package-root/usr/share/enigma2/hd_glass17/buttons/vkey_*
+      - tools/test-radio-lyrics.py
       - tools/test-virtual-keyboard.py
       - design/virtual-keyboard/**
       - tools/prune-stale-skin-packages.py
