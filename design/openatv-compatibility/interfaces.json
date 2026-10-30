@@ -189,392 +189,392 @@
       "class": "ActionMap",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='contexts'), arg(arg='actions'), arg(arg='prio'), arg(arg='parentScreen')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=0), Constant(value=None)])"
+      "expected": "self, contexts=None, actions=None, prio=0, parentScreen=None"
     },
     {
       "module": "Components.Console",
       "class": "Console",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='binary')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False)])"
+      "expected": "self, binary=False"
     },
     {
       "module": "Components.Converter.Converter",
       "class": "Converter",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='tokens')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self, tokens"
     },
     {
       "module": "Components.Converter.Poll",
       "class": "Poll",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Element",
       "class": "ElementError",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='message')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self, message"
     },
     {
       "module": "Components.FileList",
       "class": "FileList",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='directory'), arg(arg='showDirectories'), arg(arg='showFiles'), arg(arg='showMountpoints'), arg(arg='matchingPattern'), arg(arg='useServiceRef'), arg(arg='inhibitDirs'), arg(arg='inhibitMounts'), arg(arg='isTop'), arg(arg='additionalExtensions'), arg(arg='sortDirs'), arg(arg='sortFiles'), arg(arg='firstDirs'), arg(arg='showCurrentDirectory'), arg(arg='enableWrapAround')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=True), Constant(value=True), Constant(value=True), Constant(value=None), Constant(value=False), Constant(value=False), Constant(value=False), Constant(value=False), Constant(value=None), Constant(value='0.0'), Constant(value='0.0'), Constant(value=True), Constant(value=False), Constant(value=False)])"
+      "expected": "self, directory, showDirectories=True, showFiles=True, showMountpoints=True, matchingPattern=None, useServiceRef=False, inhibitDirs=False, inhibitMounts=False, isTop=False, additionalExtensions=None, sortDirs='0.0', sortFiles='0.0', firstDirs=True, showCurrentDirectory=False, enableWrapAround=False"
     },
     {
       "module": "Components.GUIComponent",
       "class": "GUIComponent",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.HTMLComponent",
       "class": "HTMLComponent",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Input",
       "class": "Input",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text'), arg(arg='maxSize'), arg(arg='visible_width'), arg(arg='type'), arg(arg='currPos'), arg(arg='allMarked')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Constant(value=False), Constant(value=False), Name(id='TEXT', ctx=Load()), Constant(value=0), Constant(value=True)])"
+      "expected": "self, text='', maxSize=False, visible_width=False, type=TEXT, currPos=0, allMarked=True"
     },
     {
       "module": "Components.Label",
       "class": "Label",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value='')])"
+      "expected": "self, text=''"
     },
     {
       "module": "Components.MenuList",
       "class": "MenuList",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='menuList'), arg(arg='enableWrapAround'), arg(arg='content')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Name(id='eListboxPythonStringContent', ctx=Load())])"
+      "expected": "self, menuList, enableWrapAround=None, content=eListboxPythonStringContent"
     },
     {
       "module": "Components.Pixmap",
       "class": "Pixmap",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Pixmap",
       "class": "MovingPixmap",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.ProgressBar",
       "class": "ProgressBar",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Renderer.Canvas",
       "class": "Canvas",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Renderer.Pig",
       "class": "Pig",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Renderer.Renderer",
       "class": "Renderer",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.ScrollLabel",
       "class": "ScrollLabel",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value='')])"
+      "expected": "self, text=''"
     },
     {
       "module": "Components.ServiceEventTracker",
       "class": "ServiceEventTracker",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='screen'), arg(arg='eventmap')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self, screen, eventmap"
     },
     {
       "module": "Components.Sources.CanvasSource",
       "class": "CanvasSource",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.Sources.List",
       "class": "List",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='list'), arg(arg='enableWrapAround'), arg(arg='item_height'), arg(arg='fonts'), arg(arg='templateName'), arg(arg='indexNames')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=0), Constant(value=None), Constant(value=None), Constant(value=None)])"
+      "expected": "self, list=None, enableWrapAround=None, item_height=0, fonts=None, templateName=None, indexNames=None"
     },
     {
       "module": "Components.Sources.StaticText",
       "class": "StaticText",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='text'), arg(arg='filter')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Lambda(args=arguments(posonlyargs=[], args=[arg(arg='x')], kwonlyargs=[], kw_defaults=[], defaults=[]), body=Name(id='x', ctx=Load()))])"
+      "expected": "self, text='', filter=lambda x: x"
     },
     {
       "module": "Components.VariableText",
       "class": "VariableText",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.VariableValue",
       "class": "VariableValue",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.VolumeBar",
       "class": "VolumeBar",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.config",
       "class": "ConfigElement",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.config",
       "class": "ConfigBoolean",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='descriptions'), arg(arg='graphic')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False), Constant(value=None), Constant(value=True)])"
+      "expected": "self, default=False, descriptions=None, graphic=True"
     },
     {
       "module": "Components.config",
       "class": "ConfigYesNo",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='graphic')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False), Constant(value=True)])"
+      "expected": "self, default=False, graphic=True"
     },
     {
       "module": "Components.config",
       "class": "ConfigText",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='fixed_size'), arg(arg='visible_width')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Constant(value=True), Constant(value=False)])"
+      "expected": "self, default='', fixed_size=True, visible_width=False"
     },
     {
       "module": "Components.config",
       "class": "ConfigPassword",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='default'), arg(arg='fixed_size'), arg(arg='visible_width'), arg(arg='censor')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=''), Constant(value=False), Constant(value=False), Constant(value='\u2022')])"
+      "expected": "self, default='', fixed_size=False, visible_width=False, censor='\u2022'"
     },
     {
       "module": "Components.config",
       "class": "ConfigSubsection",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelectionBase",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='epgConfig'), arg(arg='startBouquet'), arg(arg='startRef'), arg(arg='bouquets')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=None)])"
+      "expected": "self, session, epgConfig, startBouquet=None, startRef=None, bouquets=None"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelectionGrid",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='zapFunc'), arg(arg='startBouquet'), arg(arg='startRef'), arg(arg='bouquets'), arg(arg='graphic'), arg(arg='epgType')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=False), Name(id='EPG_TYPE_GRAPH', ctx=Load())])"
+      "expected": "self, session, zapFunc=None, startBouquet=None, startRef=None, bouquets=None, graphic=False, epgType=EPG_TYPE_GRAPH"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelection",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='service'), arg(arg='zapFunc'), arg(arg='eventid'), arg(arg='bouquetChangeCB'), arg(arg='serviceChangeCB'), arg(arg='EPGtype'), arg(arg='StartBouquet'), arg(arg='StartRef'), arg(arg='bouquets')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None)])"
+      "expected": "self, session, service=None, zapFunc=None, eventid=None, bouquetChangeCB=None, serviceChangeCB=None, EPGtype=None, StartBouquet=None, StartRef=None, bouquets=None"
     },
     {
       "module": "Screens.InfoBar",
       "class": "InfoBar",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self, session"
     },
     {
       "module": "Screens.InfoBarGenerics",
       "class": "InfoBarPlugins",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.InputBox",
       "class": "InputBox",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='title'), arg(arg='windowTitle'), arg(arg='useableChars')], kwonlyargs=[], kw_defaults=[], kwarg=arg(arg='kwargs'), defaults=[Constant(value=''), Call(func=Name(id='_', ctx=Load()), args=[Constant(value='Input')], keywords=[]), Constant(value=None)])"
+      "expected": "self, session, title='', windowTitle=_('Input'), useableChars=None, **kwargs"
     },
     {
       "module": "Screens.MessageBox",
       "class": "MessageBox",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='text'), arg(arg='type'), arg(arg='timeout'), arg(arg='list'), arg(arg='default'), arg(arg='closeOnAnyKey'), arg(arg='enableInput'), arg(arg='msgBoxID'), arg(arg='typeIcon'), arg(arg='timeoutDefault'), arg(arg='windowTitle'), arg(arg='skinName'), arg(arg='close_on_any_key'), arg(arg='enable_input'), arg(arg='timeout_default'), arg(arg='title'), arg(arg='picon'), arg(arg='skin_name'), arg(arg='simple')], kwonlyargs=[], kw_defaults=[], defaults=[Name(id='TYPE_YESNO', ctx=Load()), UnaryOp(op=USub(), operand=Constant(value=1)), Constant(value=None), Constant(value=True), Constant(value=False), Constant(value=True), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=False), Constant(value=True), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None), Constant(value=None)])"
+      "expected": "self, session, text, type=TYPE_YESNO, timeout=-1, list=None, default=True, closeOnAnyKey=False, enableInput=True, msgBoxID=None, typeIcon=None, timeoutDefault=None, windowTitle=None, skinName=None, close_on_any_key=False, enable_input=True, timeout_default=None, title=None, picon=None, skin_name=None, simple=None"
     },
     {
       "module": "Screens.PictureInPicture",
       "class": "PictureInPicture",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self, session"
     },
     {
       "module": "Screens.Screen",
       "class": "Screen",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='parent'), arg(arg='mandatoryWidgets'), arg(arg='enableHelp')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None), Constant(value=False)])"
+      "expected": "self, session, parent=None, mandatoryWidgets=None, enableHelp=False"
     },
     {
       "module": "Screens.Setup",
       "class": "Setup",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='setup'), arg(arg='plugin'), arg(arg='PluginLanguageDomain')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=None), Constant(value=None)])"
+      "expected": "self, session, setup, plugin=None, PluginLanguageDomain=None"
     },
     {
       "module": "Screens.Standby",
       "class": "TryQuitMainloop",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='retvalue'), arg(arg='timeout'), arg(arg='default_yes')], kwonlyargs=[], kw_defaults=[], defaults=[Name(id='QUIT_SHUTDOWN', ctx=Load()), UnaryOp(op=USub(), operand=Constant(value=1)), Constant(value=True)])"
+      "expected": "self, session, retvalue=QUIT_SHUTDOWN, timeout=-1, default_yes=True"
     },
     {
       "module": "Screens.VirtualKeyBoard",
       "class": "VirtualKeyBoard",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='session'), arg(arg='title'), arg(arg='text'), arg(arg='maxSize'), arg(arg='visible_width'), arg(arg='type'), arg(arg='currPos'), arg(arg='allMarked'), arg(arg='style'), arg(arg='windowTitle')], kwonlyargs=[], kw_defaults=[], defaults=[Call(func=Name(id='_', ctx=Load()), args=[Constant(value='Virtual Keyboard Text:')], keywords=[]), Constant(value=''), Constant(value=False), Constant(value=False), Attribute(value=Name(id='Input', ctx=Load()), attr='TEXT', ctx=Load()), Constant(value=None), Constant(value=False), Attribute(value=Name(id='VirtualKeyboard', ctx=Load()), attr='VKB_ENTER_ICON', ctx=Load()), Constant(value=None)])"
+      "expected": "self, session, title=_('Virtual Keyboard Text:'), text='', maxSize=False, visible_width=False, type=Input.TEXT, currPos=None, allMarked=False, style=VirtualKeyboard.VKB_ENTER_ICON, windowTitle=None"
     },
     {
       "module": "Tools.HardwareInfo",
       "class": "HardwareInfo",
       "kind": "signature",
       "method": "__init__",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.Screen",
       "class": "Screen",
       "kind": "signature",
       "method": "setTitle",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='title'), arg(arg='showPath')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=True)])"
+      "expected": "self, title, showPath=True"
     },
     {
       "module": "Screens.Screen",
       "class": "Screen",
       "kind": "signature",
       "method": "close",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], vararg=arg(arg='retVal'), kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self, *retVal"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelectionBase",
       "kind": "signature",
       "method": "enterDateTime",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelectionBase",
       "kind": "signature",
       "method": "RecordTimerQuestion",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self'), arg(arg='manual')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value=False)])"
+      "expected": "self, manual=False"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelectionBase",
       "kind": "signature",
       "method": "openEPGSearch",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGSelectionBase",
       "kind": "signature",
       "method": "closeEventViewDialog",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGStandardButtons",
       "kind": "signature",
       "method": "_btn_red",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGStandardButtons",
       "kind": "signature",
       "method": "_btn_green",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGStandardButtons",
       "kind": "signature",
       "method": "_btn_yellow",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGStandardButtons",
       "kind": "signature",
       "method": "_btn_blue",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Screens.EpgSelection",
       "class": "EPGStandardButtons",
       "kind": "signature",
       "method": "_updateButtonText",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='self')], kwonlyargs=[], kw_defaults=[], defaults=[])"
+      "expected": "self"
     },
     {
       "module": "Components.SystemInfo",
       "class": "VideoCodec",
       "kind": "signature",
       "method": "getName",
-      "expected": "arguments(posonlyargs=[], args=[arg(arg='videoType'), arg(arg='default')], kwonlyargs=[], kw_defaults=[], defaults=[Constant(value='N/A')])"
+      "expected": "videoType, default='N/A'"
     },
     {
       "module": "Screens.Setup",
