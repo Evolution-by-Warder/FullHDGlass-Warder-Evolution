@@ -3,19 +3,19 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-update-active",
   "approved_on": "2026-10-30",
-  "approval": "tak bleskovo naprav aby to bolo v sulade zo strukturov; tie subory mimo struktury presun k nam kam treba a potom ich na povodnych miestach zmaz",
+  "approval": "Owner-reported missing ArchiveCZSK input descriptions in FullHDGlass; repair the shared keyboard and prevent recurrence with compatibility checks. Prior authorization for production fixes and repository writes remains in force.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "3e341513e38d5dc1fc4a45167650e53900700f51",
+  "source_commit": "67bab8466831765752b7d90082fadfa853f0798d",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.42",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.42_all.ipk",
-    "sha256": "bdab1dec7ad56287f80da08e420b87a8f7da438d53fc68bc43f4b2111e36fffe",
-    "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty.",
-    "tag": "v1.0.42",
-    "bytes": 14760022,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.42/enigma2-plugin-skins-fullhdglass_1.0.42_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.42"
+    "version": "1.0.43",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
+    "sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
+    "changelog": "Opravená spoločná virtuálna klávesnica: zobrazenie popisu mena/hesla z pluginu, režimu zadávania, jazyka a farebných tlačidiel. Jednotné 67px klávesy a povinná kontrola kompatibility s OpenATV. Zachované nastavenia a údaje; nové picony zostávajú dostupné.",
+    "tag": "v1.0.43",
+    "bytes": 14768250,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.43/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.43"
   },
   "preview_assets": {
     "help": {
@@ -38,9 +38,9 @@
     "bytes": 14759486
   },
   "validation": {
-    "workflow_run": 41026161672,
+    "workflow_run": 41055741487,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Automated archive, downloader, build and public-byte verification; no new physical receiver test claimed."
+    "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver."
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -57,7 +57,7 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "1.0.42 is the next normal production update; package identity and settings preserved.",
+  "version_policy": "1.0.43 is the next normal production update; package identity and settings preserved.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
