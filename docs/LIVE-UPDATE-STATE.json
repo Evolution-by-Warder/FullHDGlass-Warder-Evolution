@@ -1,11 +1,11 @@
 {
-  "version": "1.0.41",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk",
-  "sha256": "3716a2071156fbf894f90e672d7c512196ccdd899e29f2214a2db53452f19cc8",
-  "changelog": "Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pôvodné farby TEST2. Hotové snímky znižujú náklady na vykresľovanie rádia. Tichá prevádzka bez zbytočných automatických logov, upratovanie dočasných súborov a ohraničené RAM cache. Zachované nastavenia, texty, obaly, RDS/DAB a rádio zoznamy.",
-  "bytes": 14759710,
-  "source_commit": "75d295371858880ce708f54c222ce026eebf6e6a",
+  "version": "1.0.42",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.42_all.ipk",
+  "sha256": "bdab1dec7ad56287f80da08e420b87a8f7da438d53fc68bc43f4b2111e36fffe",
+  "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty.",
+  "bytes": 14760022,
+  "source_commit": "3e341513e38d5dc1fc4a45167650e53900700f51",
   "production_status": "production-update",
-  "production_tag": "v1.0.41",
+  "production_tag": "v1.0.42",
   "legacy_bridge_version": "1.0.18"
 }
