@@ -1706,5 +1706,13 @@
     "ref": "release/source-candidates-20261030",
     "verified_parts": 128,
     "all_sizes_and_sha256_match": true
+  },
+  "production_public_verification": {
+    "status": "PUBLIC_MAIN_VERIFIED",
+    "manifest_sha256": "e82eca9e6ad8df01391590147a90084c85c768f328d2bd2c004964761c1bc2cc",
+    "verified_parts": 128,
+    "public_root": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/",
+    "verified_bytes": 1669006387,
+    "all_sizes_and_sha256_match": true
   }
 }
