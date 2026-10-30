@@ -37,5 +37,11 @@
   "runtime_unchanged": true,
   "internal_package_identity_unchanged": true,
   "new_ipk_required": false,
-  "trezor_accessed": false
+  "trezor_accessed": false,
+  "validation": {
+    "publisher_unit_tests_passed": 9,
+    "payload_files_verified": 1420,
+    "local_rebuild_sha256_matches_existing_release": true,
+    "canonical_feeds_unchanged": true
+  }
 }
