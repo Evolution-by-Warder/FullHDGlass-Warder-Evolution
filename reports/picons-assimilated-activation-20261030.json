@@ -1,5 +1,5 @@
 {
-  "status": "VERIFIED_PUBLICATION_READY_FOR_PRODUCTION",
+  "status": "PRODUCTION_DATA_VERIFIED",
   "date": "2026-10-30",
   "authorization": "laska zober co nam chyba aleb osa nam hodi a asimiluj to do nasho standardu.",
   "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
@@ -63,7 +63,43 @@
       "verified_parts": 273,
       "all_sizes_and_sha256_match": true
     },
-    "production_public_readback": "PENDING_AFTER_ACTIVATION"
+    "production_public_readback": {
+      "status": "PUBLIC_PRODUCTION_VERIFIED",
+      "manifest_sha256": "cc64bc82a1f8c27841f155323afbd0060e3f9cab2f602d7e2e8e3861692df42b",
+      "source_ref": "8a5e6b93da310dd5091ce17e233b8872a4939ce8",
+      "verified_parts": 273,
+      "verified_bytes": 3040744226,
+      "all_sizes_and_sha256_match": true,
+      "skin_installer_checks": 135,
+      "skin_planner_checks": 135,
+      "piconhub_planner_checks": 135,
+      "new_pngs": 1053,
+      "existing_png_replacements": 0,
+      "entrypoints": [
+        "FullHDGlass download menu",
+        "PiconHub shared catalogue"
+      ]
+    },
+    "independent_production_workflow": {
+      "run_id": 41076989537,
+      "job_id": 124135696189,
+      "conclusion": "success",
+      "proof": {
+        "status": "PUBLIC_PRODUCTION_VERIFIED",
+        "manifest_sha256": "cc64bc82a1f8c27841f155323afbd0060e3f9cab2f602d7e2e8e3861692df42b",
+        "source_ref": "8a5e6b93da310dd5091ce17e233b8872a4939ce8",
+        "verified_parts": 273,
+        "verified_bytes": 3040744226,
+        "all_sizes_and_sha256_match": true,
+        "skin_installer_checks": 135,
+        "skin_planner_checks": 135,
+        "piconhub_planner_checks": 135,
+        "new_pngs": 1053,
+        "existing_png_replacements": 0
+      }
+    },
+    "publication_workflow_conclusion": "success",
+    "bounded_archive_pushes": 6
   },
   "existing_png_bytes_preserved": true,
   "canonical_download_structure_preserved": true,
@@ -148,5 +184,6 @@
       "quality": "PENDING_VISUAL_QC",
       "reason": "REVIEW: generic CCTV4 service does not independently establish the America regional artwork; paired upstream variant also changes its own 4 badge. Do not guess region or recolour a protected badge."
     }
-  ]
+  ],
+  "activation_commit": "a25ae96685c254a1b13430b9203ea2a749b754ab"
 }
