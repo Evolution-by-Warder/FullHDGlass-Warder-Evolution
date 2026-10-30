@@ -109,3 +109,5 @@ Schválené rozloženie s kompaktným obalom a natívnym panelom textu je súča
 
 
 Dátová aktualizácia piconov 29.10.2026: 27 schválených grafík, 63 živých balíkov v troch veľkostiach a prevedeniach. [Zmeny a overenie](docs/PICON-DATA-UPDATES.md). Aktualizácia dát nemení verziu skinu ani IPK.
+
+Dátové doplnenie 30.10.2026: schválené D1 (Magenta Sport League 1–4) je aktívne v 18 spoločných balíkoch 9°E/13°E. Spolu A/B/C/D: 31 grafík, 93 originálov v 63 živých balíkoch. [Overenie a inštalácia](docs/PICON-DATA-UPDATES.md). Nový IPK netreba; príslušné dáta stiahnite znova v režime nahradenia.

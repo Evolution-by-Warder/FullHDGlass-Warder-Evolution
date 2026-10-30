@@ -1,3 +1,13 @@
+# Magenta Sport League — 30. október 2026
+
+Schválenie D1 pridáva štyri grafiky / 12 originálov 220×132 pre League 1–4. Osem servisných priradení na 9°E/13°E bolo potvrdených vo Vhannibal Motor 29. októbra. Zo 66 súvisiacich balíkov sa zmenilo 18 (tri veľkosti × tri pozadia × dve polohy); ostatné PNG a staré archívy sú zachované. Natívne schválené bajty sa nemenia, ďalšie veľkosti používajú prednásobenú alfu.
+
+Prešlo 7 regresných testov, 18 reálnych selektívnych inštalácií, 18 plánov, 57 verejných častí podľa SHA256 a oba produkčné načítavače katalógu. Katalóg má 1 224 513 bajtov a obsahuje pôvodných 471 balíkov. Zdroj: `b3e433927738a37f87dcfa9e7376ad73c642b644`; aktivácia: `3da58ae8dd4f7c41d6b64f7f9b924b2d9ce617d0`; úspešný workflow: 41013742748. [Podrobná správa](../reports/magenta-league-picons-publication-20261030.json) · [Živý záznam](PICON-MAGENTA-LEAGUE-20261030.json).
+
+Spolu schválené a zverejnené A/B/C/D: 31 grafík, 93 originálov, 46 servisných priradení v 63 živých balíkoch siedmich polôh. IPK a runtime sa nemenia. Dáta sa získajú opätovným stiahnutím zvolenej sady v režime nahradenia.
+
+---
+
 # Európske picony — 29. október 2026
 
 Živé spoločné balíky FullHDGlass a PiconHub obsahujú 27 schválených grafík (listy A1/A2, B1/B2/B3, C1), 81 presných originálov 220×132. Dve ďalšie veľkosti 50×30 a 400×240 sa odvodili pomerne s prednásobenou alfou. Dnešný Vhannibal Motor 29 ott 2026 potvrdil 38 servisných priradení. Zmenilo sa 63 celopozičných balíkov na 4,8°E, 7°E, 9°E, 13°E, 23,5°E, 28,2°E a 42°E. Zo 111 relevantných celopozičných a operátorských archívov zostali ostatné bez zmeny.
@@ -6,7 +16,7 @@ Kontroly: 6 regresných testov, 63 plánov reálneho downloadera, 63 skúšok sk
 
 Zdroj grafík: `5ca5b5a08c0cf2cc7720334d05f00f09db899b8c` v PiconHube. Aktivácia katalógu: `6fe13bbcd00dc6ccd129f2727b081f8091013ac2`. Úspešný publikačný workflow: 40941891149; prvé úplné zostavenie a inštalačné kontroly: 40940899348 (jeho posledný zápis správy opravený v úspešnom pokračovaní). [Podrobný záznam](../reports/europe-picons-publication-20261029.json).
 
-Samostatné Magenta Sport League 1–4 sú výslovne vylúčené: ďalší náhľad D1 čaká na schválenie; nesmú dostať obrázok bežných Sport 1–4. Grafické doplnenie nepredstiera dokončenie všetkých historických neistých aliasov z auditu.
+V pôvodnej dávke A/B/C boli Magenta Sport League 1–4 vylúčené. Vlastník ich následne schválil v D1 a samostatná publikácia 30. októbra ich aktivovala; ich grafiky zostávajú odlišné od bežných Sport 1–4. Grafické doplnenie nepredstiera dokončenie všetkých historických neistých aliasov z auditu.
 
 ---
 
