@@ -73,7 +73,7 @@ jobs:
           set -euo pipefail
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
           case "$VERSION" in *-test*) ;; *) echo 'Refusing production publication'; exit 1 ;; esac
-          PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass-warder-evolution_${VERSION}_all.ipk"
+          PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass_${VERSION}_all.ipk"
           gh release create "radio-lyrics-${VERSION}" "$PACKAGE" "$PACKAGE.sha256" \
             --target "$GITHUB_SHA" --prerelease --latest=false \
             --title "FullHDGlass radio candidate ${VERSION}" --notes-file docs/CURRENT-RELEASE.md

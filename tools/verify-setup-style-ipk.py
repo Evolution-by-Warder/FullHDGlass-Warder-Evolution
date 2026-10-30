@@ -18,7 +18,7 @@ spec=importlib.util.spec_from_file_location('png_optimizer',ROOT/'tools/optimize
 optimizer=importlib.util.module_from_spec(spec);spec.loader.exec_module(optimizer)
 metadata=(ROOT/'source/control/control').read_text()
 package_id=next(line.split(':',1)[1].strip() for line in metadata.splitlines() if line.startswith('Package:'))
-prefix=package_id if package_id.startswith('enigma2-plugin-') else 'enigma2-skin-fullhdglass-warder-evolution'
+prefix='enigma2-plugin-skins-fullhdglass' if package_id=='enigma2-plugin-skins-fullhdglass-warder-evolution' else 'enigma2-skin-fullhdglass-warder-evolution'
 package=ROOT/'packages/test'/(prefix+'_'+version+'_all.ipk')
 assert subprocess.check_output(['ar','p',str(package),'debian-binary'])==b'2.0\n'
 with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(package),'control.tar.gz'])),mode='r:gz') as archive:
