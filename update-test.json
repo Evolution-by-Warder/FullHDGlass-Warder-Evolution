@@ -1,6 +1,6 @@
 {
-  "version": "1.0.43",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
-  "sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
-  "changelog": "Opravená spoločná virtuálna klávesnica: zobrazenie popisu mena/hesla z pluginu, režimu zadávania, jazyka a farebných tlačidiel. Jednotné 67px klávesy a povinná kontrola kompatibility s OpenATV. Zachované nastavenia a údaje; nové picony zostávajú dostupné."
+  "version": "1.0.44",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
+  "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
+  "changelog": "Tichá automatická inštalácia nášho IPTV rádio bouquetu a zaradenie medzi rádiá. Bez duplicitných položiek a bez zmeny osobných zoznamov. Overený obsah, sťahovanie na pozadí, opakovanie pri výpadku internetu a zachované týždenné aktualizácie."
 }

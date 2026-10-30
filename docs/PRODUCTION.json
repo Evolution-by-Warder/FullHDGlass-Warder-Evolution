@@ -3,19 +3,19 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-update-active",
   "approved_on": "2026-10-30",
-  "approval": "Owner-reported missing ArchiveCZSK input descriptions in FullHDGlass; repair the shared keyboard and prevent recurrence with compatibility checks. Prior authorization for production fixes and repository writes remains in force.",
+  "approval": "Owner explicitly requested silent automatic first installation of the Warder IPTV radio bouquet into the receiver radio list. Prior authorization for repository writes and production updates remains in force.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "67bab8466831765752b7d90082fadfa853f0798d",
+  "source_commit": "7e77331b33849b35463eef558d384da4107095e8",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.43",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
-    "sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
-    "changelog": "Opravená spoločná virtuálna klávesnica: zobrazenie popisu mena/hesla z pluginu, režimu zadávania, jazyka a farebných tlačidiel. Jednotné 67px klávesy a povinná kontrola kompatibility s OpenATV. Zachované nastavenia a údaje; nové picony zostávajú dostupné.",
-    "tag": "v1.0.43",
-    "bytes": 14768250,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.43/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.43"
+    "version": "1.0.44",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
+    "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
+    "changelog": "Tichá automatická inštalácia nášho IPTV rádio bouquetu a zaradenie medzi rádiá. Bez duplicitných položiek a bez zmeny osobných zoznamov. Overený obsah, sťahovanie na pozadí, opakovanie pri výpadku internetu a zachované týždenné aktualizácie.",
+    "tag": "v1.0.44",
+    "bytes": 14769110,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.44/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.44"
   },
   "preview_assets": {
     "help": {
@@ -38,14 +38,9 @@
     "bytes": 14759486
   },
   "validation": {
-    "workflow_run": 41055741487,
+    "workflow_run": 41086881157,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed the repaired virtual keyboard display on the physical receiver on 30 October 2026 and supplied a screenshot showing the input description, mode, aligned keyboard, locale and button captions.",
-    "workflow_conclusion": "success",
-    "unit_tests_reported": 372,
-    "verified_payload_files": 1420,
-    "keyboard_contract_tests": 6,
-    "receiver_keyboard_display_confirmed": true
+    "receiver_validation": "Automated first-install, offline retry, checksum, index preservation, duplicate, concurrent-edit and lifecycle tests. Existing virtual keyboard was owner-confirmed on the receiver; this new radio import has not yet been tested on a physical receiver."
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -62,7 +57,7 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "1.0.43 is the next normal production update; package identity and settings preserved.",
+  "version_policy": "1.0.44 is the next normal production update; package identity and settings preserved.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
