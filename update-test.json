@@ -1,6 +1,6 @@
 {
-  "version": "1.0.44",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
-  "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
-  "changelog": "Tichá automatická inštalácia nášho IPTV rádio bouquetu a zaradenie medzi rádiá. Bez duplicitných položiek a bez zmeny osobných zoznamov. Overený obsah, sťahovanie na pozadí, opakovanie pri výpadku internetu a zachované týždenné aktualizácie."
+  "version": "1.0.45",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
+  "sha256": "3fdd6d42edc5761fe2007026529b5f58daa9b60ee87256bac0d819a7002bcfdb",
+  "changelog": "Opravená kompatibilita s refaktorovaným OpenATV: farebné tlačidlá a ich akcie v MultiEPG, nové nastavenia EPG, názvy video kodekov, rodičovská ochrana a nové voľby systémových dialógov."
 }
