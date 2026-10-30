@@ -1,0 +1,42 @@
+name: Verify current OpenATV keyboard compatibility
+on:
+  schedule:
+    - cron: '15 5 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main, warder-modernization-work]
+    paths:
+      - .github/workflows/verify-system-screen-compatibility.yml
+      - tools/test-virtual-keyboard.py
+      - design/virtual-keyboard/**
+      - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - source/package-root/usr/share/enigma2/hd_glass17/buttons/vkey_*
+permissions:
+  contents: read
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/test-virtual-keyboard.py
+            /design/virtual-keyboard/
+            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+            /source/package-root/usr/share/enigma2/hd_glass17/buttons/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install --quiet 'Pillow==12.3.0'
+      - name: Check the pinned and latest upstream display contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
+          curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"
+          curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-latest.py https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/Screens/VirtualKeyBoard.py
+          python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-keyboard-latest.py -v

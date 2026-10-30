@@ -40,7 +40,11 @@
   "validation": {
     "workflow_run": 41055741487,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver."
+    "receiver_validation": "Owner supplied Matrix/FullHDGlass screenshots demonstrating the missing keyboard fields. Automated controller-contract, layout, asset and release checks; the fix has not yet been confirmed on the physical receiver.",
+    "workflow_conclusion": "success",
+    "unit_tests_reported": 372,
+    "verified_payload_files": 1420,
+    "keyboard_contract_tests": 6
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -81,5 +85,10 @@
   },
   "download_naming_changed_on": "2026-10-30",
   "package_identity_unchanged": true,
-  "auxiliary_asset_policy": "Shared assets/warder/downloads only; release attachments contain installable packages and checksums."
+  "auxiliary_asset_policy": "Shared assets/warder/downloads only; release attachments contain installable packages and checksums.",
+  "keyboard_compatibility": {
+    "report": "reports/virtual-keyboard-fix-20261030.json",
+    "daily_monitor": ".github/workflows/verify-system-screen-compatibility.yml",
+    "required_release_gate": true
+  }
 }

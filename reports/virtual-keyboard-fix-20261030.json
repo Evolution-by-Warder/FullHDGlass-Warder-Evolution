@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-30",
+  "status": "PRODUCTION_LIVE",
+  "version": "1.0.43",
+  "source_commit": "67bab8466831765752b7d90082fadfa853f0798d",
+  "workflow_run": 41055741487,
+  "workflow_conclusion": "success",
+  "cause": [
+    "Legacy skin override expected header instead of the current prompt component.",
+    "Required input mode, locale and button-caption widgets were absent.",
+    "Existing 67px key icons were mixed with fallback 45px segmented key backgrounds."
+  ],
+  "fix": {
+    "screen": "VirtualKeyboard",
+    "rendered_widgets": [
+      "prompt",
+      "text",
+      "list",
+      "mode",
+      "locale"
+    ],
+    "rendered_sources": [
+      "key_red",
+      "key_green",
+      "key_yellow",
+      "key_blue",
+      "key_text",
+      "key_info",
+      "key_help"
+    ],
+    "segmented_assets_added": 18,
+    "cell_size": [
+      67,
+      67
+    ],
+    "grid": [
+      14,
+      5
+    ],
+    "legacy_screen_preserved": true,
+    "image_owned_code_modified": false,
+    "credential_handling_modified": false,
+    "receiver_logs_added": false
+  },
+  "prevention": {
+    "required_release_gate": true,
+    "pinned_and_current_OpenATV_contract_checked": true,
+    "upstream_display_components": 13,
+    "daily_read_only_workflow": ".github/workflows/verify-system-screen-compatibility.yml",
+    "cron_utc": "15 5 * * *",
+    "scope": "Shared system virtual keyboard used by ArchiveCZSK and other plugins; other system screen overrides require their own controller-contract tests."
+  },
+  "validation": {
+    "keyboard_tests": 6,
+    "retention_tests": 5,
+    "unit_test_groups": [
+      6,
+      5,
+      10,
+      9,
+      6,
+      117,
+      22,
+      10,
+      12,
+      14,
+      11,
+      4,
+      13,
+      77,
+      10,
+      9,
+      5,
+      6,
+      3,
+      14,
+      9
+    ],
+    "unit_tests_reported": 372,
+    "verified_payload_files": 1420,
+    "all_other_graphics_and_layout_normalized_to_original_baseline": true,
+    "public_ipk_bytes": 14768250,
+    "public_ipk_sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
+    "physical_receiver_confirmation_after_fix": false
+  },
+  "retention": {
+    "status": "VERIFIED",
+    "current": "1.0.43",
+    "previous": "1.0.42",
+    "retained_versions": [
+      "1.0.18",
+      "1.0.42",
+      "1.0.43"
+    ],
+    "removed_paths": [
+      "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
+      "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk.sha256",
+      "packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk",
+      "packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk.sha256"
+    ],
+    "removed_ipks": 2,
+    "removed_bytes": 29519665,
+    "removed_releases": [
+      "v1.0.41"
+    ],
+    "active_feeds_preserved": true,
+    "trezor_accessed": false,
+    "workflow_run": 41055741487
+  },
+  "trezor_accessed": false
+}
