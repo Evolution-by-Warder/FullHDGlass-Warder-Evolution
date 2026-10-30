@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "verified_at": "2026-10-30T21:14:56Z",
+  "production_commit": "9331e6734614f44555ba577662a8a0f2e699ceac",
+  "version": "1.0.45",
+  "filename": "enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
+  "bytes": 14770780,
+  "sha256": "3fdd6d42edc5761fe2007026529b5f58daa9b60ee87256bac0d819a7002bcfdb",
+  "native_stable_and_test_feeds_identical": true,
+  "legacy_migration_feed_version": "1.0.18",
+  "payload_files_verified": 1422,
+  "lossless_pngs_verified": 1210,
+  "release_asset_and_feed_package_identical": true,
+  "short_package_names_only": true,
+  "full_payload_matches_reviewed_source": true,
+  "hardware_receiver_validated": false,
+  "source_commit": "46e1acb9d3bfc41c62ebbde246bb7116fc6794f9",
+  "source_upload_bytes_verified": true,
+  "release_assets": [
+    {
+      "name": "enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
+      "size": 14770780,
+      "digest": "sha256:3fdd6d42edc5761fe2007026529b5f58daa9b60ee87256bac0d819a7002bcfdb",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk"
+    },
+    {
+      "name": "enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk.sha256",
+      "size": 114,
+      "digest": "sha256:de4c402e13cbd55627c6db8ddbf26195ff36eb00487c6f17349834f5f7a6a80a",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk.sha256"
+    }
+  ],
+  "ci": {
+    "FullHDGlass": {
+      "release_run": 41128599355,
+      "release_conclusion": "success",
+      "compatibility_run": 41128599432,
+      "compatibility_conclusion": "success",
+      "unit_tests": 410
+    },
+    "PiconHub": {
+      "main_run": 41128617762,
+      "runtime_run": 41128623669,
+      "conclusion": "success",
+      "unit_tests": 198,
+      "production_tests": 4,
+      "runtime_diff": {
+        "project": "PiconHub",
+        "before": "5ec0099736e738b7629d6948ff857df53a9729f8",
+        "after": "24876f112c7512856cecc7b1eda9aabe573b1838",
+        "files": [
+          ".github/workflows/verify-openatv-compatibility.yml",
+          "compatibility/audit-20261030.json",
+          "compatibility/check-openatv-interfaces.py",
+          "compatibility/interfaces.json"
+        ],
+        "runtime_payload_changed": false,
+        "ipk_or_feed_changed": false
+      }
+    },
+    "GSU": {
+      "main_run": 41128629660,
+      "runtime_run": 41128636117,
+      "conclusion": "success",
+      "unit_tests": 377,
+      "runtime_diff": {
+        "project": "GSU",
+        "before": "ea4f27d3f4d8a7d8c9945d9e631121c6074debc4",
+        "after": "b86779f0b75ca0a18eb7d091413e079cdad4964e",
+        "files": [
+          ".github/workflows/verify-openatv-compatibility.yml",
+          "compatibility/audit-20261030.json",
+          "compatibility/check-openatv-interfaces.py",
+          "compatibility/interfaces.json"
+        ],
+        "runtime_payload_changed": false,
+        "ipk_or_feed_changed": false
+      }
+    }
+  },
+  "trezor_accessed_or_changed": false,
+  "receiver_logs_workers_or_timers_added": false
+}

@@ -8,7 +8,7 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 The production updater offers 1.0.45 as a normal upgrade. Current OpenATV interface checks gate each release and run daily on GitHub. Approved radio animation, virtual keyboard, picons and managed radio bouquet remain preserved. Automated checks are complete; physical receiver confirmation of these new fixes is pending.
 
-## Historical receiver recovery baseline: 1.0.15
+## Installation
 
 [Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk).
 

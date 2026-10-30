@@ -26,7 +26,8 @@
         "Nested grid config/action IDs",
         "Modern VideoCodec resolver with legacy/native/driver fallbacks",
         "Six individually recorded XML screen changes"
-      ]
+      ],
+      "release_unit_tests": 410
     },
     "PiconHub": {
       "main": "d7bb05131b8290b45a753f4adcfb20bdb5e403f7",
@@ -75,5 +76,7 @@
     "existing_full_release_suites": "All 16 focused suites pass after exact recorded XML compatibility reversal; release CI runs complete required gates.",
     "graphics_baseline": "Original baseline retained, six exact XML reversals and existing keyboard reversal.",
     "source_guard": "154 imported exports, 124 controller contracts and current EPG grid configuration/action IDs across all projects."
-  }
+  },
+  "publication_status": "published-and-independently-verified",
+  "publication_report": "openatv-publication-20261030.json"
 }
