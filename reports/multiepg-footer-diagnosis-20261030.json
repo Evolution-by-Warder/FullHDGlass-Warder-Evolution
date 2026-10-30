@@ -1,0 +1,86 @@
+{
+  "status": "cause-reproduced",
+  "fullhdglass_version": "1.0.44",
+  "fullhdglass_source_commit": "29e0b99b8282670efd0ad5ce3fd3d7310a9f2e0a",
+  "unchanged_published_plugin_sha256": "3bb8b1190254d8425048405c939780b17248a6387838a87a7979beb91d6522e2",
+  "upstream_refactor": {
+    "commit": "ce3361e87258ca73f2743a088fe502e71fd3485a",
+    "date": "2026-10-24",
+    "title": "EPG: refactor screens, lists and configuration",
+    "url": "https://github.com/openatv/enigma2/commit/ce3361e87258ca73f2743a088fe502e71fd3485a"
+  },
+  "snapshot_revisions": {
+    "before": "06de0c9cfe7c449f1327dfe7e3f6057448526945",
+    "after": "f3aa19683fbbe8350b8b6627a341e5581a42eb12"
+  },
+  "snapshot_sha256": {
+    "before": "144e8dbfe0b2bf70bf580a6231124f6ade148568ecd3c5c8e91504fa0e54bf4b",
+    "after": "6b5955bfe4c31faff072bf527ef6ef081ab56426f89f40ea1128fe187cda9392"
+  },
+  "legacy_result": {
+    "api": "pre-refactor",
+    "created_class": "EPGSelection",
+    "visible_footer_sources": {
+      "warder_key_red": "PROGRAM INFO",
+      "warder_key_green": "Add Timer",
+      "warder_key_yellow": "Goto Date/Time",
+      "warder_key_blue": "EPG Search"
+    },
+    "source_count": 4,
+    "silently_suppressed_exceptions": []
+  },
+  "modern_result": {
+    "api": "post-refactor",
+    "created_class": "EPGSelectionGrid",
+    "visible_footer_sources": {},
+    "source_count": 0,
+    "silently_suppressed_exceptions": [
+      {
+        "type": "AttributeError",
+        "message": "type object 'EPGSelection' has no attribute 'RefreshColouredKeys'",
+        "line": 1321
+      }
+    ]
+  },
+  "skin_footer_geometry": [
+    {
+      "source": "warder_key_red",
+      "y": 930,
+      "height": 42,
+      "inside_screen": true
+    },
+    {
+      "source": "warder_key_green",
+      "y": 930,
+      "height": 42,
+      "inside_screen": true
+    },
+    {
+      "source": "warder_key_yellow",
+      "y": 930,
+      "height": 42,
+      "inside_screen": true
+    },
+    {
+      "source": "warder_key_blue",
+      "y": 930,
+      "height": 42,
+      "inside_screen": true
+    }
+  ],
+  "cause": [
+    "Modern OpenATV constructs EPGSelectionGrid through EPGSelection.__new__. The patched legacy EPGSelection.__init__ therefore does not create warder_key_* sources.",
+    "RefreshColouredKeys was removed from the new API. The unguarded lookup raises AttributeError, swallowed by the outer except Exception: pass, and installation stops before the custom button handlers.",
+    "The XML still renders the four custom warder_key_* sources; without their creation, all four captions remain absent."
+  ],
+  "validation_scope": "Exact published patch; actual upstream modern metaclass/factory; minimal GUI/controller-interface stand-ins. No physical receiver access.",
+  "production_changed": false,
+  "installed_receiver_build_identified": false,
+  "published_ipk_verification": {
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.44/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
+    "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
+    "plugin_matches_source": true,
+    "skin_xml_matches_source": true
+  },
+  "verification_gap": "Existing footer regression assertions check XML/source strings; they do not execute the Warder integration against the refactored OpenATV controller."
+}
