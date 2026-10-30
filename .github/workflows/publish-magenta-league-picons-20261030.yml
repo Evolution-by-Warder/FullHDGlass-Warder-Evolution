@@ -1,0 +1,90 @@
+name: Publish approved Magenta Sport League picons 30 October
+on:
+  push:
+    branches: [release/magenta-league-picons-20261030]
+    paths:
+      - .github/workflows/publish-magenta-league-picons-20261030.yml
+      - tools/publish-magenta-league-picons-20261030.py
+      - tools/test-magenta-league-picons-20261030.py
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: warder-magenta-league-picons-20261030
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/release/magenta-league-picons-20261030'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      APPROVED_PICON_REF: b3e433927738a37f87dcfa9e7376ad73c642b644
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-magenta-league-picons-20261030.py
+            /tools/test-magenta-league-picons-20261030.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /reports/magenta-league-picons-publication-20261030.json
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: ${{ env.APPROVED_PICON_REF }}
+          path: .approved-source
+          sparse-checkout: plugin/artwork/provenance/magenta-league-approved-20261030
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install 'Pillow==11.3.0'
+      - name: Test alias scope, exact PNG preservation and deterministic resizing
+        run: python tools/test-magenta-league-picons-20261030.py -v
+      - name: Build verified archives and exercise actual receiver installer
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -f reports/magenta-league-picons-publication-20261030.json; then
+            python -u tools/publish-magenta-league-picons-20261030.py --reuse-candidate --source-ref "$APPROVED_PICON_REF"
+          else
+            python -u tools/publish-magenta-league-picons-20261030.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF"
+          fi
+      - name: Commit content-addressed archives and catalogue together
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/magenta-league-picons-publication-20261030.json
+          git diff --cached --check
+          python - <<'PY'
+          import subprocess
+          paths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          assert all(p.startswith('assets/warder/downloads/picons/channels/') or p=='reports/magenta-league-picons-publication-20261030.json' for p in paths),paths
+          PY
+          if git diff --cached --quiet; then
+            echo 'Verified immutable archives are already committed.'
+          else
+            git commit -m 'Publish verified owner-approved Magenta Sport League picon archives and catalogue'
+            git push origin HEAD:release/magenta-league-picons-20261030
+          fi
+      - name: Read back every new public part and verify size and SHA256
+        run: python -u tools/publish-magenta-league-picons-20261030.py --verify-public release/magenta-league-picons-20261030
+      - name: Record public verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add --sparse reports/magenta-league-picons-publication-20261030.json
+          git commit -m 'Record successful public SHA256 verification of Magenta Sport League picon parts'
+          git push origin HEAD:release/magenta-league-picons-20261030
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: europe-picons-publication-verification-20261029
+          path: reports/magenta-league-picons-publication-20261030.json
+          if-no-files-found: warn
