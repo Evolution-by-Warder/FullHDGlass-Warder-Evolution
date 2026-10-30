@@ -1,0 +1,50 @@
+name: Verify live Warder picon data 30 October
+on:
+  push:
+    branches: [verify/picons-production-20261030]
+    paths: [.github/workflows/verify-picons-production-20261030.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-picons-assimilated-20261030.py
+            /reports/picons-assimilated-publication-20261030.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install 'Pillow==12.3.0'
+      - name: Read back every live production part and verify SHA256 and size
+        run: |
+          python -u - <<'PY'
+          import hashlib,importlib.util,json,pathlib,urllib.request
+          path=pathlib.Path('tools/publish-picons-assimilated-20261030.py')
+          spec=importlib.util.spec_from_file_location('publisher',path)
+          p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
+          report_path=pathlib.Path('reports/picons-assimilated-publication-20261030.json')
+          report=json.loads(report_path.read_text())
+          expected='cc64bc82a1f8c27841f155323afbd0060e3f9cab2f602d7e2e8e3861692df42b'
+          assert report['manifest_sha256']==expected
+          assert report['source_ref']=='8a5e6b93da310dd5091ce17e233b8872a4939ce8'
+          assert hashlib.sha256(p.fetch(p.MANIFEST_URL)).hexdigest()==expected
+          p.verify_public('main')
+          assert hashlib.sha256(p.fetch(p.MANIFEST_URL)).hexdigest()==expected
+          verified=json.loads(report_path.read_text())['public_verification']
+          assert verified['ref']=='main' and verified['verified_parts']==273 and verified['all_sizes_and_sha256_match']
+          result={'status':'PUBLIC_PRODUCTION_VERIFIED','manifest_sha256':expected,'source_ref':report['source_ref'],'verified_parts':273,'verified_bytes':sum(x['bytes'] for x in report['new_parts']),'all_sizes_and_sha256_match':True,'skin_installer_checks':report['receiver_selective_installer_checks'],'skin_planner_checks':report['receiver_planner_checks'],'piconhub_planner_checks':report['piconhub_planner_checks'],'new_pngs':sum(len(x['added']) for x in report['packages']),'existing_png_replacements':sum(len(x['replaced']) for x in report['packages'])}
+          pathlib.Path('reports/picons-production-readback-20261030.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('PRODUCTION_READBACK_PROOF '+json.dumps(result),flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: picons-production-readback-20261030
+          path: reports/picons-production-readback-20261030.json
