@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-30",
+  "authorization": "tie subory mimo struktury presun k nam kam treba a potom ich na povodnych miestach zmaz",
+  "canonical_assets": {
+    "help": {
+      "filename": "g17_setup_pict.zip",
+      "size": 27041172,
+      "sha256": "0bf966980978558170d43429b7ee8de312d0eb15d29978393a3c610af0bd2c31",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/help/g17_setup_pict.zip"
+    },
+    "types": {
+      "filename": "warder-infobar-types.zip",
+      "size": 2584364,
+      "sha256": "7cce388af950491a02106926d679a8254bc62313eaaccdd6fcf37b8ef585c22c",
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip"
+    }
+  },
+  "production_feed": {
+    "version": "1.0.42",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.42_all.ipk",
+    "sha256": "bdab1dec7ad56287f80da08e420b87a8f7da438d53fc68bc43f4b2111e36fffe",
+    "changelog": "Pomocné balíky nápovedy a náhľadov sú zjednotené v spoločnej štruktúre assets/warder/downloads. Sťahovanie používa tieto balíky s overením veľkosti a SHA-256; vydania obsahujú iba IPK a kontrolné súčty."
+  },
+  "archive_bytes_unchanged": true,
+  "removed_release_copies": [
+    {
+      "tag": "v1.0.41",
+      "asset_id": 689329925,
+      "name": "g17_setup_pict.zip"
+    },
+    {
+      "tag": "v1.0.23",
+      "release_id": 424592424,
+      "assets": [
+        "g17_setup_pict.zip"
+      ]
+    },
+    {
+      "tag": "settings-ui-1.0.16-test263",
+      "release_id": 422594694,
+      "assets": [
+        "settings-ui-build.json",
+        "warder-help-previews.zip",
+        "warder-infobar-types.zip"
+      ]
+    }
+  ],
+  "removed_development_path": "design/preview-assets/warder-infobar-types.zip",
+  "older_installations": "Update to 1.0.42 to receive canonical URLs; verified local caches continue working.",
+  "remaining_releases": [
+    "v1.0.42",
+    "v1.0.41",
+    "v1.0.18"
+  ],
+  "validation": {
+    "workflow_run": 41026161672,
+    "public_archive_hashes_before_and_after": "passed",
+    "active_production_package": "verified",
+    "release_auxiliary_zip_count": 0
+  }
+}
