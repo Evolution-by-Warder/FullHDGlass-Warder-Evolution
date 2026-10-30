@@ -1,6 +1,0 @@
-TEST220 — pôvodné grafiky s tmavým priehľadným pozadím
-
-Všetky obrázky boli načítané z používateľských originálnych ZIPov.
-Zmenená bola iba alfa hodnota presne čiernych pixelov podkladovej vrstvy: 128→206 v 121-originálovom balíku a 145→206 v šiestich dodaných obrázkoch. RGB, objekty, kompozícia a rozmery zostali zachované.
-Prehliadač pluginov aj alias plugin_selection používajú pôvodný manage_plugins.png z dodaného 121-originálového archívu; herný ovládač sa nepoužíva.
-Overené: 121 menu ID, 125 PNG v každom runtime ZIPe, 810×810, RGBA, alfa v rohoch, rozlíšenie PNG, SHA-256, CRC ZIP a rozdielne obrázky Vypnut/Pohotovostný režim.

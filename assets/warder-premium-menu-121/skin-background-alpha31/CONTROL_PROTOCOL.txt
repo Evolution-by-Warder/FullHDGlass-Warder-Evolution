@@ -1,7 +1,0 @@
-WARDER EVOLUTION — KONTROLNÝ PROTOKOL
-Základ: WARDER_EVOLUTION_MENU_121_PREMIUM_FINAL(6).zip; 121 menu IDs.
-Doplnkové zdroje: iba menovite zhodné používateľské obrázky z WARDER_6_SAMOSTATNYCH_810x810(6).zip (info, pluginy, vypnutie, pohotovostný režim, reštart GUI, počasie).
-Pozadie menu skin.xml: #31000000 (čierna, alpha=49).
-Úprava: pôvodné PNG kompozície zachované; tmavá čierna podkladová vrstva alpha=49. Šesť vstupných obrázkov s alpha145 bolo odmatovaných a prekrytých alpha49.
-Kontroly: 121/121 PNG dekódované, 810x810 RGBA; menuIcons.zip a menuIconsBig.zip 125 súborov vrátane 4 kompatibilných aliasov, všetky dekódované, alpha>=49; SHA-256 v manifeste.
-Nebola menená skin.xml, renderer, IPK ani produkčná vetva.

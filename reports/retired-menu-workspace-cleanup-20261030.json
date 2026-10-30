@@ -1,0 +1,1300 @@
+{
+  "date": "2026-10-30",
+  "authorization": "ak to je stary a uz nepotrebny tak ho komplet zmaz",
+  "removed_directory": "assets/warder-premium-menu-121",
+  "removed_files": 255,
+  "removed_bytes": 110490837,
+  "reason": "Superseded menu experiments TEST208–TEST221 and unused working PNG variants. Current installation source, tools, workflows and maintained docs have no reference to this path.",
+  "reference_audit": {
+    "tools_and_workflow_files": 153,
+    "runtime_source_and_control_files": 128,
+    "empty_python_initializer_verified": true,
+    "docs_and_design_files": 101,
+    "matches": 0,
+    "failed_reads": 0
+  },
+  "preserved_current_assets": [
+    "assets/warder/downloads/ui/menu-icons/",
+    "assets/warder/downloads/ui/menu-icons-big/"
+  ],
+  "inventory": [
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/CONTROL_PROTOCOL.txt",
+      "bytes": 1517,
+      "git_blob": "589edb0bcd684fbbd8e3fb8cfa082be86503aaf8"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/FHD_Glass17_Setup.png",
+      "bytes": 456072,
+      "git_blob": "1ad2c0e545dfafbb348d01c334c899f04bcf31e2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/LED_Giga.png",
+      "bytes": 345979,
+      "git_blob": "042cc7d0bc949ddb5c4b107ac004e6030f30f1a3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/advanced_restore.png",
+      "bytes": 786364,
+      "git_blob": "d8ad095315cf1737c82099e7f5eb9127cd030a18"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/advanced_software.png",
+      "bytes": 776953,
+      "git_blob": "dfc6fa7c2dbe9b17ec15435196a8f040457798fa"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/atilehd_setup.png",
+      "bytes": 469117,
+      "git_blob": "8ab76b26b4731d8fd2c0930528759a40d309a2d0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/audio_menu.png",
+      "bytes": 284463,
+      "git_blob": "43e431d2cb70a518923c11e0f1efcf8f724466e1"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/audio_setup.png",
+      "bytes": 689715,
+      "git_blob": "7892af399399a9c83c5620aa1265ff2b5b4aab57"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/auto_scan.png",
+      "bytes": 323277,
+      "git_blob": "7647ccdb9c84c1c2f508e60db9bf5a837e541e05"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/autobouquetsmakermaker.png",
+      "bytes": 442834,
+      "git_blob": "c85e06c8da2c59c43b8bbfb04fb8321393cf6ebe"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/autocam_settings.png",
+      "bytes": 362396,
+      "git_blob": "6e38cf7cfba13137ec3421d0f4eb3072d8db71e0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/autolanguage_setup.png",
+      "bytes": 806179,
+      "git_blob": "738078babd8b230d212b91c6122df8b962b6d008"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/autotimer_setup.png",
+      "bytes": 837178,
+      "git_blob": "e7989680344fb48c325df3112f07baaeac2b83be"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/backup_additional.png",
+      "bytes": 555632,
+      "git_blob": "112a3fdc3b4471f1360e51f39b239e6aabd77e6b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/backup_default.png",
+      "bytes": 743921,
+      "git_blob": "61817d6c0334e0160e1ad39f3a590e1f932dc821"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/backup_excluded.png",
+      "bytes": 683674,
+      "git_blob": "510b22e8af27be51a9581de257a97f2350d71386"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/backup_image.png",
+      "bytes": 503484,
+      "git_blob": "a554cb07ebbd90aacd77d1c9ff2c3d798ab118df"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/backup_system.png",
+      "bytes": 514937,
+      "git_blob": "4216593571b25cd60ced7a653dfb30d1a12eb6f8"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/buttonsetup_setup.png",
+      "bytes": 720371,
+      "git_blob": "ab738be31da882fcbb4e8e726dc508c7d8e1ccf1"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/cam.png",
+      "bytes": 357219,
+      "git_blob": "77057a71cb611397c2fef74f707369044090374c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/channelselection_setup.png",
+      "bytes": 801197,
+      "git_blob": "45755b65ec55dc8f55eed899e2f1e3b7d05bbe4b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/ci_helper.png",
+      "bytes": 402654,
+      "git_blob": "0cef4b5bd90b0f1ff42d066bec9435253cb4bfbe"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/ci_selection.png",
+      "bytes": 350888,
+      "git_blob": "85c704033144fd9b2c390b5c19cceada576745fe"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/crontimer_edit.png",
+      "bytes": 382131,
+      "git_blob": "65841d95381d4245f95b31d7b1a446e4631e4611"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/dab_scan.png",
+      "bytes": 348884,
+      "git_blob": "f0bc20925d328f81dc66f1b1b25fa482ce6f0461"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/dab_usb_setup.png",
+      "bytes": 576915,
+      "git_blob": "0b6c99ccab22df56e2d61a4c3687348ab27e6cfd"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/deep_standby.png",
+      "bytes": 207168,
+      "git_blob": "45dc0f937aa7cf6f241732faa8eb3d18e62edbc3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/deleteepgcache.png",
+      "bytes": 717348,
+      "git_blob": "b319f2d60a14fa84680906f6ace5595c94939545"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/device_manager.png",
+      "bytes": 258068,
+      "git_blob": "930c95985168d9a0c9be61fe1a48b91d7ae8879b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/display_setup.png",
+      "bytes": 300676,
+      "git_blob": "2931e694f4a69f46f2155ddcf20e664d8ef41e97"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/distribution_info_screen.png",
+      "bytes": 791761,
+      "git_blob": "b62ab4d0d1375eccc35330ab2e36ba0c3fdb79d0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/dns_setup.png",
+      "bytes": 170154,
+      "git_blob": "b944b2100090a72fa5296329a1d73317e5078ddd"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/epg.png",
+      "bytes": 386293,
+      "git_blob": "bd5a8cc95e763df73cd68643c654db3b06d29a6a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/epg_setup.png",
+      "bytes": 639892,
+      "git_blob": "9c67f195ba2250924835497347e7e07d200264c6"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/epgimporter.png",
+      "bytes": 259441,
+      "git_blob": "904414994bb30a648af645aa6b3e6ddf69c3ad6a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/extended.png",
+      "bytes": 361400,
+      "git_blob": "5e2d7634aef51dcbea0ac1897ef441e06f67c2f1"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/factory_reset.png",
+      "bytes": 235751,
+      "git_blob": "98d137d087fde86047c72b9cf82b11f89cd441b9"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/fallbacktuner_settings.png",
+      "bytes": 484465,
+      "git_blob": "f005cb5dd9fa581fe373417495e3ee637965e6e7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/fastscan.png",
+      "bytes": 594143,
+      "git_blob": "af8b329351fbbee07dcac3815647f060769e4291"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/flash_expander.png",
+      "bytes": 437484,
+      "git_blob": "306984ab2b6f2b8ea83bec4d8b956a5cc3aaf03c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/flash_online.png",
+      "bytes": 489848,
+      "git_blob": "7e9540229781cf85f01a81045116cc124535b609"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/geolocation_info_screen.png",
+      "bytes": 736569,
+      "git_blob": "e2ddde75e61420c4f0ebd4829e14773e6614aefe"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/harddisk.png",
+      "bytes": 719851,
+      "git_blob": "d509551633f4fca7680f19875ffa17a6d8a22be4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/hdmicec.png",
+      "bytes": 339844,
+      "git_blob": "d10f6f138952dc7b6746ede3284e1780ab70e54c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/hdmirecord_setup.png",
+      "bytes": 311326,
+      "git_blob": "5a3d8600c5c545563b825ab4e9ebdf780cada27a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/information.png",
+      "bytes": 626879,
+      "git_blob": "90bb8c787c5de19e29ac8c9447bc16683b68bedd"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/input_device_setup.png",
+      "bytes": 421203,
+      "git_blob": "a94ee2cb84fb9a56a5912c45754a33be0226e930"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/install_local.png",
+      "bytes": 368304,
+      "git_blob": "e2e93e72874836935352adae811159f67d01e3ed"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/keyboard.png",
+      "bytes": 334808,
+      "git_blob": "c82dc82ff69c4fd047007732a384716f029cc115"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/loadepgcache.png",
+      "bytes": 342582,
+      "git_blob": "064051d9ae2ff1028a9b511fe6abc23f4dab7b2b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/locale_setup.png",
+      "bytes": 703279,
+      "git_blob": "3d0a60720da32f1798693f5e28ff974a9ab08601"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/logs_setup.png",
+      "bytes": 434486,
+      "git_blob": "13bee3e35552fa68b01719a5ccb5d079dc129be9"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/manage_plugins.png",
+      "bytes": 284717,
+      "git_blob": "0703aa9c879a923c6d8ef36f00c5e510b0572daa"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/manual_scan.png",
+      "bytes": 436439,
+      "git_blob": "2f3925a97a7a3ac1957e1ce7b01d7b3af16b00d7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/memory_info_screen.png",
+      "bytes": 730112,
+      "git_blob": "bf24ff570ddc1644e594d61ee135686a95e7f3ac"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/mount_setup.png",
+      "bytes": 325251,
+      "git_blob": "3b9c573109cc505066dc75697bbba15ab0d9859d"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/multiboot.png",
+      "bytes": 758075,
+      "git_blob": "7ebadb69a70768576277c8b0e698eca1fa0e3be0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/multiboot_info_screen.png",
+      "bytes": 713517,
+      "git_blob": "a631051455b30f33c8a370a625b0687ff988054f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/netnfs_setup.png",
+      "bytes": 314197,
+      "git_blob": "4afe22ddcab10fb8f643858de9a8df37d2d6e951"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/netsamba_setup.png",
+      "bytes": 263645,
+      "git_blob": "27625e468f18aa2c9dc428b7277be8a55d0edcc4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/network.png",
+      "bytes": 231149,
+      "git_blob": "7eff08e20700a5dcae31cd00ddd6d0096df0c9f0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/network_info_screen.png",
+      "bytes": 500829,
+      "git_blob": "6dfcea3f55937cd3ea89f5c233412ed2b2b513c5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/networkservices_setup.png",
+      "bytes": 181375,
+      "git_blob": "75b415d0a40261ceaf6ecfa52b513582e344d71f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/openwebif.png",
+      "bytes": 374111,
+      "git_blob": "52054231716fa38644de27d8803b8bbc70b5ead0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/oscam_info.png",
+      "bytes": 485900,
+      "git_blob": "2aca8ca5de96e5b1822ba64f00ba52e72414e632"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/osdsetup.png",
+      "bytes": 514638,
+      "git_blob": "5ab481e49a8554926b81e212a1316c6b491e9ff7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/package_manager.png",
+      "bytes": 381229,
+      "git_blob": "0ab06d64e75f702451d0d45780c1b96b66f32ceb"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/parental_setup.png",
+      "bytes": 292440,
+      "git_blob": "9787a8fe73523097ecee3a485f1e02e59e77050c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/password_setup.png",
+      "bytes": 286904,
+      "git_blob": "17f6bb72bedcdd731e2be2023bd642257acb194b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/picon_setup.png",
+      "bytes": 503452,
+      "git_blob": "0dee39a61e1280b0365b0dd3e6742e9ea66a2037"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/playback_setup.png",
+      "bytes": 389658,
+      "git_blob": "79617e988730678c2166e466d50e8a80a7f23eb5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/powertimer_edit.png",
+      "bytes": 798466,
+      "git_blob": "a840e3bec3661b53367b165aa86bedb8e45189bb"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/rec.png",
+      "bytes": 237730,
+      "git_blob": "f126b50a524bc75a4d4275d8375a8eaa8de58e9e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/receiver_info_screen.png",
+      "bytes": 451900,
+      "git_blob": "398d44d214f7e4f55f0e06e06d627b723480a707"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/recording_setup.png",
+      "bytes": 444288,
+      "git_blob": "97f168a2d5dfd4057a4ebe5920014eee566a906b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/remote_setup.png",
+      "bytes": 339119,
+      "git_blob": "4a0b5d95c471eccce3b2f482c6604618fe0e7f6e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/remotecontrolcode.png",
+      "bytes": 430285,
+      "git_blob": "94cff80d5cd5b40b9009ee4a6e120b96b7bb5fd0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/restart.png",
+      "bytes": 457835,
+      "git_blob": "76f10b26ba51cdda1ed4dece3677b5f038e28a49"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/restart_enigma.png",
+      "bytes": 248340,
+      "git_blob": "8ca7ec8cfcfcd7767e2ab98a4fc8a14d6550ca20"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/restore_system.png",
+      "bytes": 670548,
+      "git_blob": "d51e74008615d3f310ef6281e7bb61314a1175f8"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/satfinder.png",
+      "bytes": 499545,
+      "git_blob": "d058664e526665c01a2c05ef57d653119982a08a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/saveepgcache.png",
+      "bytes": 702185,
+      "git_blob": "92c5d0359a74ccdc405f49511f1f8a9ed586e1d4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/scan.png",
+      "bytes": 691130,
+      "git_blob": "0e2180ce6b87b307c0b2d1284301cea294dd5652"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/script_manager.png",
+      "bytes": 726422,
+      "git_blob": "4f24f69bf75f8e8d121230d26a8c6cc039126079"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/service_info_screen.png",
+      "bytes": 724231,
+      "git_blob": "f8f8d7ef3f734f8e6db3af89b3260d10ef998aec"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/serviceapp_setup.png",
+      "bytes": 417055,
+      "git_blob": "6b7626ee027f25481042766d915716b2e055a130"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup.png",
+      "bytes": 708639,
+      "git_blob": "4641606610bf92c69db6b4a204c23c5dc1b2d55d"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_epgenhanced.png",
+      "bytes": 735203,
+      "git_blob": "29165d613da793261512ead73f2066dfa5ab0e7a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_epggraphical.png",
+      "bytes": 676329,
+      "git_blob": "df0c6c6f9465de069214a22c24f6b32f4389a482"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_epginfobar.png",
+      "bytes": 424521,
+      "git_blob": "0f2a0c0ec68fb16a2d7b0fa63a28d014cc05e6c1"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_epginfobargraphical.png",
+      "bytes": 571791,
+      "git_blob": "f568d0a2d2c3fa4b93c5884e63c8e42f715576a7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_epgmulti.png",
+      "bytes": 624098,
+      "git_blob": "1aec8e6b0e8ee7f384b28ec4d60c4bbf6801741e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_epgvertical.png",
+      "bytes": 708122,
+      "git_blob": "ca55b7755aa9488156244a1cf4e0d122415a2d33"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/setup_osd3d.png",
+      "bytes": 807587,
+      "git_blob": "707e4f7bc4f93802a402994ff8429e207e4a3d26"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/shutdown.png",
+      "bytes": 212253,
+      "git_blob": "7b3aa9716457cfcad7cd3d15afc37e624e0e404a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/skin_setup.png",
+      "bytes": 558834,
+      "git_blob": "0e7a8121cbb44c01e50e1e45c6ad230850005668"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/sleep.png",
+      "bytes": 725835,
+      "git_blob": "c5005766706f417a68d4f9b9c59df02973f4957e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/softcam_settings.png",
+      "bytes": 635676,
+      "git_blob": "d702218dd713bef87572ae955f58cf7a03df91aa"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/softcsa_settings.png",
+      "bytes": 526637,
+      "git_blob": "08c92befa86cc70d68676bd54616de3ea0519112"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/software_manager.png",
+      "bytes": 583620,
+      "git_blob": "5c61e04219e9663fd9098b31421e9d52885dd704"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/software_update.png",
+      "bytes": 388438,
+      "git_blob": "bc636d16394e2097851093da6fd1164ec46a5f13"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/storage_info_screen.png",
+      "bytes": 533485,
+      "git_blob": "12be3c12754d7d42f11b952bd35b79ddcd129b4a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/streaming_info_screen.png",
+      "bytes": 877850,
+      "git_blob": "97f157462039d3ca53863568335b97184de64aa0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/streamrelay_settings.png",
+      "bytes": 262779,
+      "git_blob": "cea87d6a3c7a4be124866d5fdb0d91686a35f2af"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/subtitle_setup.png",
+      "bytes": 475083,
+      "git_blob": "d88f1d232ac0546a53a4b5835d2b4e55badbab1c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/swap_manager.png",
+      "bytes": 353322,
+      "git_blob": "3204a53411bb636f3f4fd93e552d495c4ddf8288"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/system.png",
+      "bytes": 483440,
+      "git_blob": "8de252a7b10f560106a985750da71115f4cc8801"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/time_setup.png",
+      "bytes": 639051,
+      "git_blob": "9cc22c36751c2dbe772b19944b7b97458d2c99bc"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/timermenu.png",
+      "bytes": 678180,
+      "git_blob": "041d6fa0d16a81dab9d0146b1395f546b77ebb67"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/timshift_setup.png",
+      "bytes": 556013,
+      "git_blob": "e8b20a60495f4fc2319f876de8b94a43ca13a8d2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/tuner_basic_settings.png",
+      "bytes": 583647,
+      "git_blob": "fbbba5ac6271990de1db0276ac42f67dcd841fe0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/tuner_info_screen.png",
+      "bytes": 930130,
+      "git_blob": "21fdb63b4ee7fef521235f79b92be059db92854f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/tuner_setup.png",
+      "bytes": 473511,
+      "git_blob": "ed9643062ed438872103625fdeb055413b203527"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/upgrade_settings.png",
+      "bytes": 528757,
+      "git_blob": "15b20d83498ced531c643bb0f7605d4e1c2293d2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/upgrade_source.png",
+      "bytes": 416342,
+      "git_blob": "1afc3643e7a79104f0dccb323948cba15ce5e5c9"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/usage_setup.png",
+      "bytes": 885734,
+      "git_blob": "7590c0d1dd7fee620903947a2ceecbbc1f259321"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/user_interface.png",
+      "bytes": 548163,
+      "git_blob": "1ee7cfd1c043439af5e74b5cd93f459204879787"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/video_finetune.png",
+      "bytes": 417491,
+      "git_blob": "c86d6011b94ea20e1dbd66c444d3b0835cf7992f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/video_menu.png",
+      "bytes": 686596,
+      "git_blob": "b84b7c5b76d031a89e00bdbf8222a70fb24460d4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/video_setup.png",
+      "bytes": 273321,
+      "git_blob": "7e77b1ee26321e43397869c89dc1ba1ef57bf260"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/videoenhancement_setup.png",
+      "bytes": 383131,
+      "git_blob": "6abdc010a4ba7ca529b895701736dafeff44804c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/images/volume_adjust.png",
+      "bytes": 363995,
+      "git_blob": "13d729fd6fed479558729c48e29df16ebe9b9f84"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_BG49_FIX/manifest.csv",
+      "bytes": 53343,
+      "git_blob": "73d054a253c2ad03b0d8e7371c4b75c114a6ade3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_VERIFIED/CONTROL_PROTOCOL.txt",
+      "bytes": 837,
+      "git_blob": "5e61fd5392f5554a4cf4ac51f70f9a30bb977aa8"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST208_VERIFIED/manifest.csv",
+      "bytes": 52859,
+      "git_blob": "457bf54edd56071d7d1392efdce21046bd60b13d"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST209_ALPHA_RENDER_FIX/CONTROL_PROTOCOL.md",
+      "bytes": 1290,
+      "git_blob": "344b47c26c50661c8ad9478594f927a668699af4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST209_ALPHA_RENDER_FIX/runtime-aliases.csv",
+      "bytes": 662,
+      "git_blob": "5b5dbb1f33acd6ec7e2c28076e02b5f450cb1a50"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST210_BG_DARK/CONTROL_PROTOCOL.md",
+      "bytes": 1142,
+      "git_blob": "f946407051fd50028a1c364dcc979831ae1c01cd"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST210_BG_DARK/manifest.csv",
+      "bytes": 38116,
+      "git_blob": "8a873422ec813d7f73e187a25ed3a57c0f2f5c31"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST210_BG_DARK/runtime-aliases.csv",
+      "bytes": 125,
+      "git_blob": "65c311ae9156e46b185127ea3b55ae394afc7638"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST211_ORIGINALS/CONTROL_PROTOCOL.md",
+      "bytes": 1299,
+      "git_blob": "e4147e15f17f4fa7b307b4a3aaa1471e18b9d505"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST211_ORIGINALS/manifest.csv",
+      "bytes": 18674,
+      "git_blob": "dbf0f45b68e91965321c486d3f97af7dc6735cae"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST211_ORIGINALS/verification.json",
+      "bytes": 1824,
+      "git_blob": "35f80fd1a556fafc34a387733de0b81510ec4e64"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST212_SKIN_BG/CONTROL_PROTOCOL.md",
+      "bytes": 963,
+      "git_blob": "c49d83b362088446481654b87c914e66a0a4dc6f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST212_SKIN_BG/manifest.csv",
+      "bytes": 24144,
+      "git_blob": "1ce7750b88ec7d9f70a753969789636aba40cff5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST212_SKIN_BG/verification.json",
+      "bytes": 1097,
+      "git_blob": "c4d42500e1449f9fc05e445e9c3d67b95f47434d"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST213-original-background-plugin/README.md",
+      "bytes": 803,
+      "git_blob": "1fb97a328c9273cf234ebe0ed37a74bc14520ac3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST213-original-background-plugin/downloads.json",
+      "bytes": 55282,
+      "git_blob": "b614926ed70cefd72d7388882c1a9f24a224c873"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST213-original-background-plugin/manifest.csv",
+      "bytes": 24143,
+      "git_blob": "d40524ca98581ec5ca92e4f1118686d48bffa22a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST213-original-background-plugin/plugin_selection.png",
+      "bytes": 426728,
+      "git_blob": "8d9b90983a247fe75a0e9d058b949c4299cde8a5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST213-original-background-plugin/verification.json",
+      "bytes": 1410,
+      "git_blob": "7225d363ef98dc1b9c3c8f727aa9d06faa4eadd8"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST214-background-dehalo-plugin/README.md",
+      "bytes": 1009,
+      "git_blob": "034caf6ec96c4e31502d5274c295aa81ee51d9c2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST214-background-dehalo-plugin/manifest.csv",
+      "bytes": 24993,
+      "git_blob": "185a7cff78a132475edd53adf730957aa60d451e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST214-background-dehalo-plugin/plugin_selection.png",
+      "bytes": 426728,
+      "git_blob": "8d9b90983a247fe75a0e9d058b949c4299cde8a5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/TEST214-background-dehalo-plugin/verification.json",
+      "bytes": 1629,
+      "git_blob": "6f7523e1e3461d8c2b5ab870dd847516ba35c0b7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/CONTROL_PROTOCOL_TEST218.txt",
+      "bytes": 835,
+      "git_blob": "62ae1c1424377f87d4c72f50a86cb59db8d60dc7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST208-control-protocol.md",
+      "bytes": 1782,
+      "git_blob": "739ff559941280bc2df8c438265e84df62ec60e3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST219-originals-alpha145/CONTROL_PROTOCOL.txt",
+      "bytes": 463,
+      "git_blob": "46059b380765c00ef5a87c22cbf26803577d35c2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST219-originals-alpha145/manifest.csv",
+      "bytes": 39563,
+      "git_blob": "e52a73ed6d3b241655583cb08effbb5886d5c766"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST219-originals-alpha145/verification.json",
+      "bytes": 1015,
+      "git_blob": "488660f772b763a6d2206f32b74bc877f4e19ede"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST220-originals-alpha206/CONTROL_PROTOCOL.txt",
+      "bytes": 692,
+      "git_blob": "0e7cab137102dc11307a8d53ad78ebeec9c95b85"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST220-originals-alpha206/manifest.csv",
+      "bytes": 38156,
+      "git_blob": "f066117e96f78767fc83b738ab13845071520885"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST220-originals-alpha206/verification.json",
+      "bytes": 1332,
+      "git_blob": "d75aea9f15b06cf96c4e4a2d8b74d368cc75af4d"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST221-power-standby-fix/CONTROL_PROTOCOL.txt",
+      "bytes": 619,
+      "git_blob": "b14f43a24561354e34f1f3ce0dfa761e9ab9abd0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST221-power-standby-fix/manifest.csv",
+      "bytes": 38185,
+      "git_blob": "c20e8fc25e9ddcaf3f5319805ec1a547bb7771e9"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/TEST221-power-standby-fix/verification.json",
+      "bytes": 1278,
+      "git_blob": "a35867f10a8761b51a6d63291ad29b244fe8cd29"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/manifest.csv",
+      "bytes": 39435,
+      "git_blob": "f93cf2de865a9c7afc56b2735624939d7af8869e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/manifests/verification_TEST218.json",
+      "bytes": 705,
+      "git_blob": "6f7d765ef8e2dc2ef6e61fa9a3c0853bead3b801"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/advanced_restore.png",
+      "bytes": 801402,
+      "git_blob": "99055a70d0a2238236883187f63a01f1ae718117"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/advanced_software.png",
+      "bytes": 795362,
+      "git_blob": "53e5148148ecb8409cc7c45e8b29a40644ec5450"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/atilehd_setup.png",
+      "bytes": 476238,
+      "git_blob": "d183395057d2dee913a8cb77bd8e85e9a4cd48fb"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/backup_additional.png",
+      "bytes": 566857,
+      "git_blob": "8317b8fbfcc813b7f99e428a185fdf484df6df6a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/backup_default.png",
+      "bytes": 759897,
+      "git_blob": "87d923529a3786787353738c18c011b0fa5c9d9c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/epg_setup.png",
+      "bytes": 652886,
+      "git_blob": "423652df3f6d09082a20537f3b08479b38ffa819"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/osdsetup.png",
+      "bytes": 525817,
+      "git_blob": "8d985dc01bfac7fa24a5ae61c9ea1bcad7902ce2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/powertimer_edit.png",
+      "bytes": 820681,
+      "git_blob": "79d23335991f466b400e1301f8a891d844b32d54"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/setup_epginfobar.png",
+      "bytes": 434376,
+      "git_blob": "46fe6f1f000f657a4c2c684a3e8162986785d23f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-10/skin_setup.png",
+      "bytes": 566812,
+      "git_blob": "8813ab8d93ecd2cd624bb70a7e2b0e7b505db183"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/LED_Giga.png",
+      "bytes": 353241,
+      "git_blob": "0d675b8039b5bb4f9740884d37e2134945327626"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/audio_menu.png",
+      "bytes": 288834,
+      "git_blob": "b167907762375115b34d57116046bd3c6b81f221"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/auto_scan.png",
+      "bytes": 327535,
+      "git_blob": "1b3e977fd99145229a062e87c8614de324313fd2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/autobouquetsmakermaker.png",
+      "bytes": 448564,
+      "git_blob": "42e654c66a9a1126ce21dcac3a41e4788e8b03a2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/autocam_settings.png",
+      "bytes": 369094,
+      "git_blob": "f5fb0ab1e78356cf3a42a9b116cd84bd56b5cc72"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/autolanguage_setup.png",
+      "bytes": 821924,
+      "git_blob": "db8fb7ec9c179ff77d2cc7c925b1fa3113a4c056"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/autotimer_setup.png",
+      "bytes": 857075,
+      "git_blob": "67ec233a204068963ccc1b8bdf49ac80626a6051"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/buttonsetup_setup.png",
+      "bytes": 739118,
+      "git_blob": "2b89a0f7f943f3967892469cbd49f4d33ce08b19"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/cam.png",
+      "bytes": 361274,
+      "git_blob": "9cb1210f8e07a625b6a611875fd893114c0695db"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/channelselection_setup.png",
+      "bytes": 819600,
+      "git_blob": "45fe19f2be7f3b7abff7a15ec4c41efe9d85bd1f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/ci_helper.png",
+      "bytes": 405399,
+      "git_blob": "bd3c64b5ff74fc498dd626a240509c32e4650d21"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/ci_selection.png",
+      "bytes": 355159,
+      "git_blob": "6e4e2f6e82506e836829e501e970997d1efc660f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/crontimer_edit.png",
+      "bytes": 388453,
+      "git_blob": "5eb8df1185cf168f0d5edfc591fc718bb11aab29"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/dab_scan.png",
+      "bytes": 357866,
+      "git_blob": "69853fe6dbc17a73c7f2500d9440a9c908918cbe"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/deep_standby.png",
+      "bytes": 385283,
+      "git_blob": "f59f86a78a21e1b030e08d2c1aa07766d9dba0b6"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/deleteepgcache.png",
+      "bytes": 730278,
+      "git_blob": "99869dafbd96959cdae1910f355d947532e54c6b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/device_manager.png",
+      "bytes": 261669,
+      "git_blob": "36f48e8a4ab2ca29897869fcceae681d75d1dfbf"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/display_setup.png",
+      "bytes": 304600,
+      "git_blob": "10db071226a48536df9e089f00a62a9d2c71029a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/distribution_info_screen.png",
+      "bytes": 808543,
+      "git_blob": "91f8c9f8a3ed794e13c8ed253ffd5aeac8bd44a4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/dns_setup.png",
+      "bytes": 171940,
+      "git_blob": "f2aec6b33bed1f842b6a1e2fe0ca0a83029351ec"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/epgimporter.png",
+      "bytes": 263816,
+      "git_blob": "3ce50f6dac2c1b895cee3ed830e1842ffc03e0ed"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/factory_reset.png",
+      "bytes": 239690,
+      "git_blob": "d4b55833f3eb6a7a1677af00231a9553713c05b5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/fallbacktuner_settings.png",
+      "bytes": 494555,
+      "git_blob": "7e9514a827b87d36fe7e10fbc762c31fa8f81645"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/fastscan.png",
+      "bytes": 608162,
+      "git_blob": "ccd995b6d754d179e77f29ed05d9ae03f5c78704"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/flash_online.png",
+      "bytes": 499485,
+      "git_blob": "ae1658927b2523fdb6350bcea3be5aeae89de111"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/geolocation_info_screen.png",
+      "bytes": 740730,
+      "git_blob": "e19c1e0efdce60c56e3341f1deb5b8301bca5d36"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/harddisk.png",
+      "bytes": 736377,
+      "git_blob": "38199594240c85faf2e108623ee89ae4ef6e6537"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/hdmicec.png",
+      "bytes": 345476,
+      "git_blob": "e7e446de4b07b836c370cbcbfd28f8a45feddf39"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/hdmirecord_setup.png",
+      "bytes": 315538,
+      "git_blob": "779de3af23a825112f6428de7a27880b29b1f147"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/input_device_setup.png",
+      "bytes": 427826,
+      "git_blob": "e8c4c9268597ed7287a8a6ef450b32ce020fd781"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/install_local.png",
+      "bytes": 373000,
+      "git_blob": "eefd9f9f01b41c7e97f67ba4dfc0ac0e10f85881"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/keyboard.png",
+      "bytes": 339123,
+      "git_blob": "a69d43b9e37a4051328ff55be169af070332954c"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/loadepgcache.png",
+      "bytes": 346228,
+      "git_blob": "d03b599fe3f6113afd492dc183b348f65695eabb"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/locale_setup.png",
+      "bytes": 714552,
+      "git_blob": "a737aaa49b49ad6672c02d8017b933e6b81501f0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/logs_setup.png",
+      "bytes": 458471,
+      "git_blob": "4d2a9b3fbae511a86f02735ebcb90eb2008f6e5e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/manual_scan.png",
+      "bytes": 441625,
+      "git_blob": "a4c5f34d6b5e3d9dc695335a9714fd28d4d29a3a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/mount_setup.png",
+      "bytes": 332628,
+      "git_blob": "32419d50170a787bb6e6ca2c5231847ede10f288"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/multiboot.png",
+      "bytes": 775757,
+      "git_blob": "d306961ada5795215f9f4316d66dbce1d74b2bdf"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/multiboot_info_screen.png",
+      "bytes": 728713,
+      "git_blob": "ba6289dddeec5826cf3d032a7dab1c036185a8f2"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/netnfs_setup.png",
+      "bytes": 316243,
+      "git_blob": "c2ca6ac8e42c40dcaeaab49ee9af9962acfb7db5"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/netsamba_setup.png",
+      "bytes": 267153,
+      "git_blob": "79178997e4708c80bfa0e673a69c1ae7f4e3fac3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/network.png",
+      "bytes": 234267,
+      "git_blob": "c0241e66f7b0715db37a29cc821938532754c229"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/networkservices_setup.png",
+      "bytes": 181990,
+      "git_blob": "6fa4be140ebefc7267b3f253b42873152fa920ad"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/openwebif.png",
+      "bytes": 381283,
+      "git_blob": "4803d36f25adfd4d7563aa1dfe1e7e5fc5c51c6b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/oscam_info.png",
+      "bytes": 493934,
+      "git_blob": "2e4ab0bb1a4a5bde2feda76e7cac90f1bf503e93"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/package_manager.png",
+      "bytes": 386433,
+      "git_blob": "7dbad3fe45e95d60e84b3c765f59def57cfc3b84"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/parental_setup.png",
+      "bytes": 294729,
+      "git_blob": "ff099a32deb8f2c0413872e2ff45da33757a58ee"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/password_setup.png",
+      "bytes": 289680,
+      "git_blob": "91396d468b4c715825a3b39b67199f66be5c75ca"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/picon_setup.png",
+      "bytes": 514728,
+      "git_blob": "f4258343441dc88e7eb74b6faf41ef81b7e1505e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/playback_setup.png",
+      "bytes": 394311,
+      "git_blob": "8c83119c7721153ecff4fe8f7e7420e74ed8165b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/rec.png",
+      "bytes": 240550,
+      "git_blob": "efacef94742d472524d3c5c39ac29477c0229d2e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/recording_setup.png",
+      "bytes": 450435,
+      "git_blob": "9d24b6f5b2aca97593b33e68e9662400922cbb7e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/remote_setup.png",
+      "bytes": 344497,
+      "git_blob": "b69d364a24ab875a42056f73c143824291ce1de7"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/remotecontrolcode.png",
+      "bytes": 436891,
+      "git_blob": "8807ba91d7f3df9a2b1d3f2d75356b6d3ae90d2e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/restart.png",
+      "bytes": 463994,
+      "git_blob": "7fc64d9a67c8dedfd99f360dfb56a10c9ee2d47f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/restart_enigma.png",
+      "bytes": 597024,
+      "git_blob": "84bf89120feef9cabe00a26c9dee80f4d6690856"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/satfinder.png",
+      "bytes": 507196,
+      "git_blob": "a9550491818c3daa461d37a205ef0924d5e624f1"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/saveepgcache.png",
+      "bytes": 717345,
+      "git_blob": "28617a58dd2fb964d176ded2756828a9acc34210"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/scan.png",
+      "bytes": 705160,
+      "git_blob": "e51770a6204a212b1a003ee08fe76ffa39efd0c1"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/script_manager.png",
+      "bytes": 743970,
+      "git_blob": "5a32278345efb7c40db23b539007688324600468"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/service_info_screen.png",
+      "bytes": 737801,
+      "git_blob": "a94287d4dc814c6350e8c1ea8cada8b47cf11c44"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/serviceapp_setup.png",
+      "bytes": 420953,
+      "git_blob": "054131cd08f632e7c08f37e434606c27ae59625b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/setup_epgenhanced.png",
+      "bytes": 752050,
+      "git_blob": "486465b0d422d037770e8de8d44d54430d659880"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/setup_epggraphical.png",
+      "bytes": 684509,
+      "git_blob": "c756b07efd8edc865a4af9cf701ee995eff9214a"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/setup_epginfobargraphical.png",
+      "bytes": 579098,
+      "git_blob": "9722a43d0d41090294bf5b8b6c0d94f1547e9a2b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/setup_epgmulti.png",
+      "bytes": 634714,
+      "git_blob": "aa5c694d7bfc8108097d2fcee72a81a6e8d08578"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/setup_epgvertical.png",
+      "bytes": 721057,
+      "git_blob": "6f301a3ccffab847e9d262628eccbd18385d4ced"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/setup_osd3d.png",
+      "bytes": 821871,
+      "git_blob": "219a646027dc4e8630a442a4428c89143946d84b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/shutdown.png",
+      "bytes": 580995,
+      "git_blob": "10a08089733959948ceabfd02208e2776485b7de"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/softcam_settings.png",
+      "bytes": 646425,
+      "git_blob": "15ea2eb80c87949ed882bb9e3c49d63569a1de5e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/softcsa_settings.png",
+      "bytes": 535247,
+      "git_blob": "ffc38b7cc72d35a3045aaa932489ef67dbc97e78"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/software_update.png",
+      "bytes": 396492,
+      "git_blob": "4fbd3c524ccc0864efeca882f06cbf970c5bd3ee"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/streamrelay_settings.png",
+      "bytes": 263134,
+      "git_blob": "70f8504f170037fc92476ed305140a09ebe47b60"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/subtitle_setup.png",
+      "bytes": 481872,
+      "git_blob": "62ac76b3bdf4f066351c74759ba3385f3bb37d94"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/swap_manager.png",
+      "bytes": 356415,
+      "git_blob": "811f12167317f2878fd258dc76d43db8c1a8a52e"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/time_setup.png",
+      "bytes": 649982,
+      "git_blob": "4dce625cefaefcd0446306f61e276c1e1dc22cb9"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/timshift_setup.png",
+      "bytes": 563979,
+      "git_blob": "75f67e821c28b3da10319c87bf7468fe2c1d2f85"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/tuner_basic_settings.png",
+      "bytes": 594051,
+      "git_blob": "4a2900829d3872d4b0fc5d7232d02f2a6dacc5e0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/tuner_setup.png",
+      "bytes": 481723,
+      "git_blob": "54b91cbccb16cdca94eb643d5deee705814409dd"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/upgrade_settings.png",
+      "bytes": 535752,
+      "git_blob": "5ac932f87cc3b3859cac8d2266445780ab8162d0"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/usage_setup.png",
+      "bytes": 902202,
+      "git_blob": "6604d6c8a449bbb14722edcc7af260aabbe87ca4"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/video_finetune.png",
+      "bytes": 422903,
+      "git_blob": "f8338f042031a758ecd53c95f64daccaa8d8418b"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/video_setup.png",
+      "bytes": 279722,
+      "git_blob": "37d559b08b04f12ba4e285d5b2e14e09a10d7fd3"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/videoenhancement_setup.png",
+      "bytes": 389572,
+      "git_blob": "715f6ee8a27a021a1de67ae49a297c00a5b3624f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/new-85/volume_adjust.png",
+      "bytes": 366420,
+      "git_blob": "2f77b9aade31ad2ad2e05645b6cd99684498983f"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/skin-background-alpha31/CONTROL_PROTOCOL.txt",
+      "bytes": 765,
+      "git_blob": "7be1ad642ad56f98f08953ccd768d80e01ce06a6"
+    },
+    {
+      "path": "assets/warder-premium-menu-121/skin-background-alpha31/manifest.csv",
+      "bytes": 27336,
+      "git_blob": "9057f3d6d79019f8a6d2fd362d00d0102c860b82"
+    }
+  ],
+  "source_before_cleanup": "6dcbade2f68c1a048fcdbfcada1d63e521f15bc5",
+  "git_history_preserved": true,
+  "trezor_excluded": true
+}

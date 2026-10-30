@@ -1,9 +1,0 @@
-TEST208 — OPRAVA POZADIA GRAFÍK MENU
-
-Prijatá spätná väzba zo snímok: celé pozadie štvorcového PNG musí byť tmavé a polopriehľadné, nie iba výrez okolo motívu.
-
-Pozadie všetkých PNG je teraz na celom plátne 810×810 nastavené na #31000000, RGBA (0,0,0,49), čo zodpovedá translucentnému pozadiu skinu. Predná grafika zostáva zachovaná; obrázky neboli zmenšené ani znovu generované.
-
-121 schválených obrázkov v kolekcii. extended.png používa schválenú weather grafiku Rozsirene_pocasie.png. Alias plugin_selection.png ukazuje na manage_plugins.png; alias e.png na extended.png. Alias zdroj Prehliadac_pluginov.png (ovládač) sa nepoužil.
-
-Každý ZIP obsahuje 121 jedinečných grafík plus 2 názvové aliasy pre runtime ID (123 PNG záznamov). Standard ZIP: menuIcons/1/. Big ZIP: menuIconsBig/.

@@ -1,13 +1,15 @@
 # Update packages
 
-FullHDGlass Warder Evolution update packages are stored as ordinary repository files and are downloaded directly through raw GitHub URLs.
+`packages/` contains only the current production version, one previous production version, and any package still required by an active migration feed. Matching short and compatibility filenames contain identical IPK bytes.
 
-GitHub Releases are intentionally not used for updater packages.
+- Current production: **1.0.42**, offered by `update-production.json` and the native `update-test.json`.
+- Previous production: **1.0.41**.
+- Required legacy bridge: **1.0.18**, still served by `update.json`.
 
-The active package URL and SHA-256 checksum are published in `/update.json`.
+The updater downloads verified IPKs through their raw GitHub URLs. Releases provide installation downloads and checksum files. Auxiliary ZIPs belong in `assets/warder/downloads/`.
 
-## TEST packages
+`packages/test/` is ignored by Git and contains transient local/CI build output only. Test downloads are CI artifacts or explicitly published candidates; superseded test IPKs are not retained in the working tree.
 
-Receiver-test builds are generated into `packages/test/` and are intentionally ignored by Git. They are CI artifacts, not stable updater assets. A TEST package must not be copied into this stable package directory or referenced by `update.json` until receiver acceptance and explicit release approval.
+After a production activation, remove obsolete package versions and their checksums while preserving every active feed target and the previous production version. Record the removal in `reports/`. Git history is preserved. Trezor is excluded from housekeeping.
 
-Current test candidate: `1.0.5-test1`. Stable remains `1.0.4`.
+[Cleanup evidence](../reports/package-cleanup-20261030.json) · [Auxiliary structure](../docs/AUXILIARY-ASSETS.md)
