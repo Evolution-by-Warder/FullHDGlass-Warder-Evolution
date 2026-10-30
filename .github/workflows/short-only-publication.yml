@@ -1,0 +1,48 @@
+name: Verify and retire duplicate long IPK filenames
+on:
+  push:
+    branches: [maintenance/short-only-packages-20261030]
+    paths: ['docs/short-only-publication-20261030.json', '.github/workflows/short-only-publication.yml']
+permissions:
+  contents: write
+concurrency:
+  group: short-only-publication-20261030
+  cancel-in-progress: false
+jobs:
+  verify-and-clean:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            plugin
+            docs
+            design
+            reports
+            restoration
+            .github
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - name: Verify short-only packaging and existing updater compatibility
+        run: |
+          python -m pip install --quiet Pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+          python tools/test-native-skin-publisher.py -v
+          python tools/test-release-bytecode.py
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          test "$(find packages/test -name '*.ipk' | wc -l)" -eq 1
+      - name: Verify public bytes, promote tooling, then remove only proven duplicates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/retire-long-ipk-aliases.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: short-only-publication-proof
+          path: reports/short-only-publication-20261030.json

@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "targets": {
+    "main": "af91aaecc960b59c1b9ae3f03ede02e823fb5f7f",
+    "warder-modernization-work": "af91aaecc960b59c1b9ae3f03ede02e823fb5f7f"
+  },
+  "original_files": {
+    ".github/workflows/build-settings-ui.yml": "abd97282756fd0a9b8160cce8494434409f44803",
+    ".github/workflows/radio-lyrics-candidate.yml": "6cdb7d3675b61b6e123eac0573eb82ba8fd15f87",
+    ".github/workflows/radio-spectrum-candidate.yml": "769f7afb8682a8ccbd94018cb4f0a6d886c93aaa",
+    ".github/workflows/verify-radio-release.yml": "fa40c0390ce4b4e3d55d7576edccfac034e4b087",
+    "tools/build-release-ipk.py": "fe2c5fdf8f4050c9ddc5034b11cf72051585346f",
+    "tools/build-setup-style-test.py": "c5ece29e7ce88f268905925226b62e7f1eeab515",
+    "tools/publish-native-skin.py": "518d1328570039f03cc983b59647e3a6252f809c",
+    "tools/test-native-skin-publisher.py": "e834fab56d9c0dca45779076f06734e2a6db4349",
+    "tools/verify-radio-release.py": "fa2754cd19b23076096a5ca0c4265e1efece35de",
+    "tools/verify-setup-style-ipk.py": "27d0b80b725b5c36cca53ae1eb99c4b33ec4629c",
+    "docs/INSTALLATION-PACKAGE-NAMES.md": null
+  },
+  "protected_files": {
+    "update-production.json": "0aae9484f3a5ed69b1889f573af72c9ac3ff00df",
+    "update-test.json": "0aae9484f3a5ed69b1889f573af72c9ac3ff00df",
+    "update.json": "8c61eb062a3f2588bd4f39f9ac936c3e2008c3e6",
+    "source/control/control": "00f18f0999a88f7ecf1188659a8ce20e7a4848f0",
+    "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py": "2a19f96c4ee367f1634fac84a095550c1303f7eb",
+    "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py": "a19d2cc1c82c23a4ac83186817bb12e69be0ea44",
+    "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version": "6ae122fc79881f578a09569c4823c97e4f9e4ac9",
+    "packages/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk": "d0fca9a074faabb97a9e50c594f11edeb5292a9d",
+    "packages/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk": "ff7e752362b115c0cfe911a184148a4b138a6f9d",
+    "packages/enigma2-skin-fullhdglass-warder-evolution_1.0.18_all.ipk": "4691aa33fa3c40bf2de927ce43fb4b68b8efdf60"
+  },
+  "feeds": [
+    {
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update-production.json",
+      "sha256": "7a6ee1a0241d0335da9a4d117e6dc498a08b2ac6e2694a9639ae43060e1905a0"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update-test.json",
+      "sha256": "7a6ee1a0241d0335da9a4d117e6dc498a08b2ac6e2694a9639ae43060e1905a0"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/update.json",
+      "sha256": "c344299d26d32f7cd17451a3b07c31c3b016f92057df881d99f2bd9298056038"
+    }
+  ],
+  "releases": [
+    {
+      "tag": "v1.0.44",
+      "short": "enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
+      "long": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk",
+      "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
+      "bytes": 14769110
+    },
+    {
+      "tag": "v1.0.43",
+      "short": "enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
+      "long": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk",
+      "sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
+      "bytes": 14768250
+    }
+  ],
+  "remove_paths": [
+    [
+      "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk",
+      "packages/enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk"
+    ],
+    [
+      "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk",
+      "packages/enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk"
+    ]
+  ]
+}
