@@ -6779,5 +6779,10 @@
       "sha256": "a5889d5d4d3ab4e0ba2ed695e92cf28079620949af0f0cf1cef6a7a788870dc5"
     }
   ],
-  "piconhub_planner_checks": 135
+  "piconhub_planner_checks": 135,
+  "public_verification": {
+    "ref": "release/picons-assimilated-20261030",
+    "verified_parts": 273,
+    "all_sizes_and_sha256_match": true
+  }
 }
