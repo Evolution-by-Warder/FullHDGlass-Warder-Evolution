@@ -16,6 +16,7 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('skin_publisher',ROOT/'tools/publish-settings-update.py')
 p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 PACKAGE='enigma2-plugin-skins-fullhdglass-warder-evolution'
+DOWNLOAD_PREFIX='enigma2-plugin-skins-fullhdglass'
 
 
 def canonical_files(directory,catalogue):
@@ -57,7 +58,7 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     raw=package.read_bytes();digest=hashlib.sha256(raw).hexdigest();version=info['version']
     if not re.fullmatch(r'\d+\.\d+\.\d+',version) or not approval.get('enabled') or approval.get('version')!=version:
         raise ValueError('Stable update is not explicitly authorized')
-    name=PACKAGE+'_'+version+'_all.ipk'
+    name=DOWNLOAD_PREFIX+'_'+version+'_all.ipk'
     if (package.name,info['package'],info['source_commit'],info['bytes'],info['sha256'])!=(name,name,revision,len(raw),digest):
         raise ValueError('Build identity mismatch')
     if not 0<len(raw)<16*1024*1024:raise ValueError('Small package size budget exceeded')
@@ -68,7 +69,6 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     release=client.request('GET','/releases/tags/v'+version)
     download_name='enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk'
     asset=next((a for a in release['assets'] if a['name']==download_name),None)
-    if asset is None:asset=next(a for a in release['assets'] if a['name']==name)
     if release['draft'] or release['prerelease'] or asset['size']!=len(raw) or asset['digest']!='sha256:'+digest:
         raise ValueError('Stable release asset mismatch')
     p.verify_public(client,asset['browser_download_url'],len(raw),digest)
@@ -84,7 +84,6 @@ def publish(package,info,revision,approval,client,assets,help_bundle=None,canoni
     if main!=approval['expected_main_sha'] or p.head(client,p.WORK)!=revision:
         raise ValueError('Branches advanced before publication')
     staged_files={'packages/'+name:raw,'packages/'+name+'.sha256':(digest+'  '+name+'\n').encode()}
-    staged_files.update({'packages/'+download_name:raw,'packages/'+download_name+'.sha256':(digest+'  '+download_name+'\n').encode()})
     help_entry=assets.get('help',{})
     help_raw_url='https://raw.githubusercontent.com/'+p.REPO+'/main/assets/warder/downloads/ui/help/g17_setup_pict.zip'
     if help_entry.get('filename')=='g17_setup_pict.zip':

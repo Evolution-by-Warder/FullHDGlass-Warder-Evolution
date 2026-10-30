@@ -17,7 +17,7 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 class NativePublisherTests(unittest.TestCase):
     def setUp(self):
         self.folder=tempfile.TemporaryDirectory();self.addCleanup(self.folder.cleanup)
-        self.path=Path(self.folder.name)/(m.PACKAGE+'_1.0.20_all.ipk');self.raw=b'tested native IPK';self.path.write_bytes(self.raw)
+        self.path=Path(self.folder.name)/(m.DOWNLOAD_PREFIX+'_1.0.20_all.ipk');self.raw=b'tested native IPK';self.path.write_bytes(self.raw)
         self.hash=hashlib.sha256(self.raw).hexdigest();self.rev='a'*40;self.base='b'*40
         self.info={'version':'1.0.20','package':self.path.name,'bytes':len(self.raw),'sha256':self.hash,'source_commit':self.rev}
         self.approval={'enabled':True,'version':'1.0.20','expected_main_sha':self.base,'authorization':'Owner request','changelog':'Translucent settings'}
@@ -55,7 +55,7 @@ class NativePublisherTests(unittest.TestCase):
         self.assertTrue(feed['package_url'].endswith('/enigma2-plugin-skins-fullhdglass_1.0.20_all.ipk'))
         staged=self.commits[0]
         self.assertEqual(staged['packages/enigma2-plugin-skins-fullhdglass_1.0.20_all.ipk'],self.raw)
-        self.assertEqual(staged['packages/'+self.path.name],self.raw)
+        self.assertEqual({p for p in staged if p.startswith('packages/')},{'packages/'+self.path.name,'packages/'+self.path.name+'.sha256'})
         self.assertNotIn('update.json',files)
         self.assertEqual(files['update-test.json'],files['update-production.json'])
         inventory=json.loads(files['design/settings-ui-inventory.json'])

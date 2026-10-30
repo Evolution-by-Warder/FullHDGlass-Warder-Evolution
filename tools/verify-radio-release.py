@@ -82,7 +82,7 @@ def main():
         subprocess.run(["sh", "-n", str(path)], check=True)
         assert path.stat().st_mode & 0o111 == 0o111
     package_id = next(line.split(":",1)[1].strip() for line in (ROOT/"source/control/control").read_text().splitlines() if line.startswith("Package:"))
-    prefix = package_id if package_id.startswith("enigma2-plugin-") else "enigma2-skin-fullhdglass-warder-evolution"
+    prefix = "enigma2-plugin-skins-fullhdglass" if package_id == "enigma2-plugin-skins-fullhdglass-warder-evolution" else "enigma2-skin-fullhdglass-warder-evolution"
     package = ROOT / "packages" / (prefix+"_%s_all.ipk" % version)
     if package.is_file():
         assert subprocess.check_output(["ar", "p", str(package), "debian-binary"]) == b"2.0\n"

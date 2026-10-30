@@ -48,7 +48,7 @@ def main():
     assert "Version: %s-1\n" % version in metadata
     for name in ("preinst", "postinst", "postrm"):
         assert (control / name).stat().st_mode & 0o111 == 0o111
-    prefix = package_id if package_id.startswith("enigma2-plugin-") else "enigma2-skin-fullhdglass-warder-evolution"
+    prefix = "enigma2-plugin-skins-fullhdglass" if package_id == "enigma2-plugin-skins-fullhdglass-warder-evolution" else "enigma2-skin-fullhdglass-warder-evolution"
     output = ROOT / "packages" / (prefix+"_%s_all.ipk" % version)
     output.parent.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory() as work:
@@ -59,10 +59,7 @@ def main():
         subprocess.run(["ar", "rcsD", str(output), "debian-binary", "control.tar.gz", "data.tar.gz"], cwd=work, check=True)
     digest = hashlib.sha256(output.read_bytes()).hexdigest()
     output.with_suffix(output.suffix + ".sha256").write_text(digest + "  " + output.name + "\n")
-    download = output.with_name("enigma2-plugin-skins-fullhdglass_" + version + "_all.ipk")
-    download.write_bytes(output.read_bytes())
-    download.with_suffix(".ipk.sha256").write_text(digest + "  " + download.name + "\n")
-    print(download)
+    print(output)
     print(digest)
 
 
