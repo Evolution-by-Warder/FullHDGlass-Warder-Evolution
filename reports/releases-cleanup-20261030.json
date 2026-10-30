@@ -1,0 +1,259 @@
+{
+  "status": "COMPLETED",
+  "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "authorization": "ok, skontroluj to a premaz",
+  "deleted_releases": [
+    {
+      "id": 427877998,
+      "tag": "v1.0.39"
+    },
+    {
+      "id": 428110179,
+      "tag": "radio-spectrum-1.0.40-test2"
+    },
+    {
+      "id": 428051930,
+      "tag": "radio-spectrum-1.0.40-test1"
+    },
+    {
+      "id": 427514578,
+      "tag": "radio-lyrics-1.0.38-test9"
+    },
+    {
+      "id": 427839165,
+      "tag": "radio-lyrics-1.0.38-test13"
+    },
+    {
+      "id": 427609304,
+      "tag": "radio-lyrics-1.0.38-test12"
+    },
+    {
+      "id": 427584279,
+      "tag": "radio-lyrics-1.0.38-test11"
+    },
+    {
+      "id": 427548456,
+      "tag": "radio-lyrics-1.0.38-test10"
+    },
+    {
+      "id": 426961206,
+      "tag": "v1.0.37"
+    },
+    {
+      "id": 426649066,
+      "tag": "v1.0.36"
+    },
+    {
+      "id": 426353232,
+      "tag": "v1.0.35"
+    },
+    {
+      "id": 426327040,
+      "tag": "v1.0.34"
+    },
+    {
+      "id": 426314092,
+      "tag": "v1.0.33"
+    },
+    {
+      "id": 427193358,
+      "tag": "radio-lyrics-1.0.38-test8"
+    },
+    {
+      "id": 427148671,
+      "tag": "radio-lyrics-1.0.38-test7"
+    },
+    {
+      "id": 427136560,
+      "tag": "radio-lyrics-1.0.38-test6"
+    },
+    {
+      "id": 427109753,
+      "tag": "radio-lyrics-1.0.38-test5"
+    },
+    {
+      "id": 427096832,
+      "tag": "radio-lyrics-1.0.38-test4"
+    },
+    {
+      "id": 427092084,
+      "tag": "radio-lyrics-1.0.38-test3"
+    },
+    {
+      "id": 427044840,
+      "tag": "radio-lyrics-1.0.38-test2"
+    },
+    {
+      "id": 427015104,
+      "tag": "radio-lyrics-1.0.38-test1"
+    },
+    {
+      "id": 426096287,
+      "tag": "v1.0.32"
+    },
+    {
+      "id": 426069056,
+      "tag": "v1.0.31"
+    },
+    {
+      "id": 426024973,
+      "tag": "v1.0.30"
+    },
+    {
+      "id": 425790882,
+      "tag": "v1.0.29"
+    },
+    {
+      "id": 425213152,
+      "tag": "v1.0.28"
+    },
+    {
+      "id": 425191726,
+      "tag": "v1.0.27"
+    },
+    {
+      "id": 425126534,
+      "tag": "v1.0.26"
+    },
+    {
+      "id": 425088019,
+      "tag": "v1.0.25"
+    },
+    {
+      "id": 425079816,
+      "tag": "v1.0.24"
+    },
+    {
+      "id": 424550444,
+      "tag": "v1.0.22"
+    },
+    {
+      "id": 424522646,
+      "tag": "v1.0.21"
+    },
+    {
+      "id": 424505916,
+      "tag": "v1.0.20"
+    },
+    {
+      "id": 422844570,
+      "tag": "v1.0.19"
+    },
+    {
+      "id": 422827434,
+      "tag": "v1.0.17"
+    },
+    {
+      "id": 422722503,
+      "tag": "settings-ui-1.0.16-test270"
+    },
+    {
+      "id": 422712552,
+      "tag": "settings-ui-1.0.16-test269"
+    },
+    {
+      "id": 422699007,
+      "tag": "settings-ui-1.0.16-test268"
+    },
+    {
+      "id": 422660388,
+      "tag": "settings-ui-1.0.16-test267"
+    },
+    {
+      "id": 422625677,
+      "tag": "settings-ui-1.0.16-test266"
+    },
+    {
+      "id": 422621228,
+      "tag": "settings-ui-1.0.16-test265"
+    },
+    {
+      "id": 422611125,
+      "tag": "settings-ui-1.0.16-test264"
+    },
+    {
+      "id": 422584754,
+      "tag": "settings-ui-1.0.16-test262"
+    },
+    {
+      "id": 422568729,
+      "tag": "settings-ui-1.0.16-test261"
+    },
+    {
+      "id": 422533577,
+      "tag": "settings-ui-1.0.16-test260"
+    },
+    {
+      "id": 422275603,
+      "tag": "settings-ui-1.0.16-test258"
+    },
+    {
+      "id": 422252845,
+      "tag": "settings-ui-1.0.16-test257"
+    },
+    {
+      "id": 422235384,
+      "tag": "settings-ui-1.0.16-test256"
+    },
+    {
+      "id": 422227577,
+      "tag": "settings-ui-1.0.16-test255"
+    },
+    {
+      "id": 422219165,
+      "tag": "settings-ui-1.0.16-test254"
+    },
+    {
+      "id": 422212932,
+      "tag": "settings-ui-1.0.16-test253"
+    },
+    {
+      "id": 422183220,
+      "tag": "settings-ui-1.0.16-test251"
+    }
+  ],
+  "deleted_release_count": 52,
+  "already_absent_release_ids": [],
+  "deleted_auxiliary_ipk_assets": [
+    {
+      "id": 679014401,
+      "name": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk"
+    },
+    {
+      "id": 679014397,
+      "name": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.23_all.ipk.sha256"
+    },
+    {
+      "id": 671640070,
+      "name": "enigma2-skin-fullhdglass-warder-evolution_1.0.16-test263_all.ipk"
+    },
+    {
+      "id": 671640069,
+      "name": "enigma2-skin-fullhdglass-warder-evolution_1.0.16-test263_all.ipk.sha256"
+    }
+  ],
+  "kept_releases": [
+    {
+      "id": 428180682,
+      "tag": "v1.0.41"
+    },
+    {
+      "id": 424592424,
+      "tag": "v1.0.23"
+    },
+    {
+      "id": 422844537,
+      "tag": "v1.0.18"
+    },
+    {
+      "id": 422594694,
+      "tag": "settings-ui-1.0.16-test263"
+    }
+  ],
+  "remaining_release_count": 4,
+  "all_live_feeds_unchanged": true,
+  "all_protected_public_downloads_verified": true,
+  "git_tags_unchanged": true,
+  "source_and_ipks_in_git_unchanged": true,
+  "workflow_run": 41021299991
+}
