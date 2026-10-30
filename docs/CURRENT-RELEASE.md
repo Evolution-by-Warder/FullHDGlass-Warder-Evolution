@@ -5,3 +5,5 @@ Jemný farebný equalizér: 84 stĺpcov 3 px, medzery 1 px, priehľadnosť a pô
 Produkčné vydanie schválené vlastníkom 29.10.2026. Aktualizácia zo stabilnej 1.0.39 aj kandidáta TEST2; legacy bridge 1.0.18 zostáva. Farby, rozmer 350 × 126 px, 84 stĺpcov a pohyb sú presne z TEST2. Neprijaté jasnejšie návrhy sa nepoužili.
 
 Snímky sa používajú zo zdieľanej pamäte, pri skrytí sa animácia zastaví. Predchádzajúce opravy logov, dočasných súborov a cache sú zachované. Úplné nové fyzické overenie alebo konkrétne percento CPU sa netvrdí. Presný zdroj, CI, verejný IPK a SHA256 sú v PRODUCTION.json.
+
+[Stiahnuť enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk). Súbor má pôvodný SHA256; správca ho eviduje ako fullhdglass-warder-evolution v Balíčkoch vzhľadu.

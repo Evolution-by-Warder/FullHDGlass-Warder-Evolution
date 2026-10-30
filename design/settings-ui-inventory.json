@@ -25,7 +25,7 @@
   "config_entries": 202,
   "feeds_sha256": {
     "update.json": "c344299d26d32f7cd17451a3b07c31c3b016f92057df881d99f2bd9298056038",
-    "update-test.json": "c3275c14eefc9a520c27c340ed0978919be9bff4837c7b29c0e14348fc942b5b"
+    "update-test.json": "8a00e72717901625576303c17485cc030a9b2455c3dffa1b3418579f19c77722"
   },
   "current_feed_version": "1.0.18",
   "production_feed_version": "1.0.41",

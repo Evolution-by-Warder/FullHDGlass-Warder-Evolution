@@ -12,8 +12,8 @@
     "version": "1.0.41",
     "tag": "v1.0.41",
     "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.41",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.41_all.ipk",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk",
     "bytes": 14759710,
     "sha256": "3716a2071156fbf894f90e672d7c512196ccdd899e29f2214a2db53452f19cc8"
   },
@@ -119,5 +119,7 @@
     "installed_test2_automatic_and_manual_offer_regression_verified": true,
     "runtime_or_package_changed": false,
     "record": "docs/UPDATE-CHANNEL-REPAIR-2026-10-29.json"
-  }
+  },
+  "download_naming_changed_on": "2026-10-30",
+  "package_identity_unchanged": true
 }

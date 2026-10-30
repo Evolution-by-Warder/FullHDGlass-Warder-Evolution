@@ -10,7 +10,7 @@ The production updater offers 1.0.41 above stable 1.0.39 and 1.0.40-test2. Packa
 
 ## Historical receiver recovery baseline: 1.0.15
 
-[Download the installable IPK](packages/enigma2-skin-fullhdglass17-warder-evolution_1.0.15_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.41/enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current offered version is recorded in update.json and update-test.json.
 
@@ -111,3 +111,5 @@ Schválené rozloženie s kompaktným obalom a natívnym panelom textu je súča
 Dátová aktualizácia piconov 29.10.2026: 27 schválených grafík, 63 živých balíkov v troch veľkostiach a prevedeniach. [Zmeny a overenie](docs/PICON-DATA-UPDATES.md). Aktualizácia dát nemení verziu skinu ani IPK.
 
 Dátové doplnenie 30.10.2026: schválené D1 (Magenta Sport League 1–4) je aktívne v 18 spoločných balíkoch 9°E/13°E. Spolu A/B/C/D: 31 grafík, 93 originálov v 63 živých balíkoch. [Overenie a inštalácia](docs/PICON-DATA-UPDATES.md). Nový IPK netreba; príslušné dáta stiahnite znova v režime nahradenia.
+
+Názov IPK od 30.10.2026: `enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk`. Bajty, verzia aj vnútorná identita sú zachované. Správca pluginov: **Balíčky vzhľadu → fullhdglass-warder-evolution**. [Overenie všetkých troch kategórií](docs/PLUGIN-PACKAGE-GROUPS.json).
