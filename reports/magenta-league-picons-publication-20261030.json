@@ -1003,5 +1003,10 @@
       "bytes": 11543140,
       "sha256": "bfba2ca5a8250191e1699af6635fb5ee5b5d72e3597bf39e31bb75ef77036e36"
     }
-  ]
+  ],
+  "public_verification": {
+    "ref": "release/magenta-league-picons-20261030",
+    "verified_parts": 57,
+    "all_sizes_and_sha256_match": true
+  }
 }
