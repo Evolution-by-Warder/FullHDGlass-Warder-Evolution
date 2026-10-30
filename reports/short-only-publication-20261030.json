@@ -1,0 +1,41 @@
+{
+  "status": "PRODUCTION_VERIFIED",
+  "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "source_commit": "4e91a10512bbee174391e8e5f9779b0949eda21d",
+  "workflow_run": 41100397014,
+  "releases": [
+    {
+      "tag": "v1.0.44",
+      "short": "enigma2-plugin-skins-fullhdglass_1.0.44_all.ipk",
+      "long": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk",
+      "sha256": "ea63f63ec18f623050feb1c45ce845abb7661d5176428e45fbf4cf56203ca1dd",
+      "bytes": 14769110,
+      "short_public_bytes_verified": true
+    },
+    {
+      "tag": "v1.0.43",
+      "short": "enigma2-plugin-skins-fullhdglass_1.0.43_all.ipk",
+      "long": "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk",
+      "sha256": "7da5ca31c2d3655cd1781d28c6c39e28a211900e764acc8142424eefd5b88a6f",
+      "bytes": 14768250,
+      "short_public_bytes_verified": true
+    }
+  ],
+  "removed_release_assets": [
+    "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk",
+    "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk.sha256",
+    "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk",
+    "enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk.sha256"
+  ],
+  "removed_repository_paths": [
+    "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk",
+    "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.44_all.ipk.sha256",
+    "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk",
+    "packages/enigma2-plugin-skins-fullhdglass-warder-evolution_1.0.43_all.ipk.sha256"
+  ],
+  "active_feeds_unchanged": true,
+  "runtime_unchanged": true,
+  "internal_package_identity_unchanged": true,
+  "new_ipk_required": false,
+  "trezor_accessed": false
+}
