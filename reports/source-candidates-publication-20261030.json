@@ -1701,5 +1701,10 @@
       "sha256": "945286562ef21a8a225cc9fc839f7312b2c95753a110d9a261bda26362a63375"
     }
   ],
-  "piconhub_planner_checks": 45
+  "piconhub_planner_checks": 45,
+  "public_verification": {
+    "ref": "release/source-candidates-20261030",
+    "verified_parts": 128,
+    "all_sizes_and_sha256_match": true
+  }
 }
