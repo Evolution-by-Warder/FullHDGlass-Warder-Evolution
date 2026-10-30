@@ -18,6 +18,8 @@ jobs:
         with:
           sparse-checkout: |
             tools
+            source
+            design
             docs
             .github
       - uses: actions/setup-python@v5
