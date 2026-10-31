@@ -43,7 +43,7 @@ jobs:
           cp /tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256 packages/
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add --sparse packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256
+          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256
           if ! git diff --cached --quiet; then
             git commit -m 'Publish verified FullHDGlass 1.0.51 bytes at compatible updater URL'
             git push origin HEAD:main
