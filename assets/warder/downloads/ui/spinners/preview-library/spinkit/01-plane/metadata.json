@@ -1,0 +1,74 @@
+{
+  "id": "spinkit-plane",
+  "folder": "01-plane",
+  "name": "Plane",
+  "title": "Otáčajúca sa doštička",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 12,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1200,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "1d05c26d43aecdcf3409642df668f288df7e4122e61e021368671e5f15d80137"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "5e5eb95e00bf1124dc85f5bd4144b97ece887256683cccb1a75196c814ad8d0f"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "1f13420169342b60a28c6eedd9c5e97e90c8c2fdf6e0c4c18f6cc56d052d7140"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "587886728a8b2b10a22660a68536233e4b4d74f17cd0ca07f2fd4951bd840eb7"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "1ead633f4325b43b004ebf5beab1ef1454c2c98fa9fee2c70655a4bbe243e675"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "c8147364195e77eee1ff373046a4d85fb414d3a20cbd462d42b1fe2a35c63b78"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "a04b3ae18dab522be364ba6c0deb6dc64e68767e38303d860364b5eb22324397"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "2e4ef3cf0a8d745cb197b977e74c8954add13c7147c45832c9b6f291152919d3"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "214bcdec1897d65351c9d85643b4949c17b6bbb86a85f79c03bd2556abfdc92b"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "e35e2e6189102b2b6a02a236f0727a2a76297fa1c53d49546d85ab8a2b609427"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "ed1a8b1781b14aaaf13abb772b68df989c8be055307b4e25ed0ecdcf7665a92b"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "ff52dc4b56aa546271f9b59a324fa8a1d469c334196717266ad4ed35dca0a2f0"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183"
+}

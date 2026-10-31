@@ -1,0 +1,74 @@
+{
+  "id": "spinkit-circle-fade",
+  "folder": "09-circle-fade",
+  "name": "Circle Fade",
+  "title": "Postupne svietiaci kruh",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 12,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1200,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "299d10da7274d215e0533c5113e781468fbf5f78169ad544ab41ca50f30399c5"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "5799db0cd86f0be9bbeb7e9b284bea8497cae3713e6ba95d3036bbde9ee44803"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "8349c08eb93738404d6a02f5a704892a67684acb91bd9aec66332630d39bbe0f"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "dc4a63378bc0251e2b5842f6077457668939bb878a9aac9a0d31a7287f1e56e3"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "eef04f2f82430a620e62fc1db779500dc5ce5e3e6c727ef3cac600ff1a05a557"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "d5310a2b022b00cc575f03335399290ba5316086ff904711dea73dfc2dfe879b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "f51bb6a8407d1d06450f8a472fb6f9c70c1a7df1473360aaddc88c7bcd34adeb"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "6f532646a119b68712be7579e5391706f7b7a996e58129f316b96d96d824725f"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "589f877ab1a42253b81d001841e6e82ff682eedbf032f9698b7d850d26211e4c"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "a2db805620124e57b80760541f13dfbd16ec943ee489524a8f36f602cf0e3e53"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "b49b939615ba88881fbb1aca2a229662482552189462fb4b897835741aecfcfe"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "44783b309199a4db83bf80ea329026997bb2da72835cb549c0560464ebd7d8fe"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "spinkit-chase",
+  "folder": "02-chase",
+  "name": "Chase",
+  "title": "Krúžiace body",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 20,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 2000,
+  "timing_adaptation": "Container synchronized to the existing two-second child animation; original geometry and keyframes preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "3d08fb60e759b2ddc96417cd179f71904ada4ef22c3e37dc6d0091dc5ca031d1"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "37f15a907aa85f2024632cc15e67ac3b13f2b9ed5e4089535b632a0cb9c67bf3"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "bc9edf093c1ed81aaee5d55827fed144aa187f391f63723112208b8d2d931ab4"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "66e4006c3a4404351d414ade4ddbbd12fd4243dd9884f095b8784e974d7c1443"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "ea0955b378087aed38efbe207eaef3866b582d1533c78855155f017496479db6"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "83646015b4029412118beb32d63092159de427107debdfe084e86f61b1b84f6b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "ba08bbb53d386dd4b0070aeb8d734359e569a975aaa5a6bf1a45f2f0c22aefbe"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "2333ef4768d53e70a81c2810d2393215f6ab7e2d06b5cb0f77b6ce47e736bceb"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "4ba751bb107b7468415417b047795aaa120a85b6e0ffdb0f99480d25d680b042"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "d56ae41d2ffab4c49a7cd15cc490567b6e32980a0417e6f06ab8521a16a03301"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "e1e0c2641cac8f01840341f1fea31c1621b3bb880e76b543c79982b7565f0c16"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "e2614603efed1afa9384db3fcc956aaa256cd67d09dcca8a0d27ffffbccddc2f"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "a9e493fab256d5269f8bf029e3ee4aa50a3f44a697ae40e86245fe2e9f2a3e19"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "449ce7564e30460fa83959616b4d631ed2d37e16acf450079ee2029ba8bdd512"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "f421a9cc4d1374a80837faa7b265a85b27b6d04dac1f58901b2da77e6383dcbf"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "9b8197508aae2f649592d3b100bb5a1bb515981f2e32fe7f58b4ae34c7680b41"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "17214ea04d4d71c03151ccedd3d279e221d883bfcc9bc557a4d4499a9b3b319c"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "7be8a3d85825901922bab7388a06807b35be91800d74586b9fad9a8682968a4f"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "7d5984e40231533e21953868e6236ce1ef3665cf768941208852361d6da55c61"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "e5400281475841d57a08ea1cc45fa963cfc4232b908b15f81c769c948531bf2e"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183"
+}

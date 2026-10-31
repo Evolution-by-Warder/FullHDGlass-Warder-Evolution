@@ -1,0 +1,74 @@
+{
+  "id": "spinkit-wave",
+  "folder": "04-wave",
+  "name": "Wave",
+  "title": "Vlna",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 12,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1200,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "eaec5ac2a92444e1344c2f12c299d7e95d877159e8fcd0e883bea89128d7cdd9"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "16e34910ff4b8cd81f27d79aec80f75ee7253cca2d2a5d3c9a29ce7d62fc02a1"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "24d28729d2f0e7155d2e1489e3f9da9b6b0b93b2f9e55a1a4e54ae044e02f6df"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d67fa141f51c7441833663c56438d523e8a39a11c4fc75517f4e3913f0a16bb8"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "99c7ed5654ffaf1fcf1aae5cc5a4596a31c74e057734bc53250b23b261bf0aa9"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "895606a8fe7058da8e1822978d6a79317e8acdc40094258fff517d1c81947988"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "c9ffbb29b0e9ae0e274065f0314e2c8bd016edbad9ad7cd5958e7389c1685326"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "0d4a2f61509cfd33f8b3b98f3952c761dbf6d351dcac1929a5ca7bda7df87d87"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "4aa7cb32e645b476a5285f2ee4d9daba6f1b31d22be8da5b95ca5e9d522802e9"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "eaec5ac2a92444e1344c2f12c299d7e95d877159e8fcd0e883bea89128d7cdd9"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "eaec5ac2a92444e1344c2f12c299d7e95d877159e8fcd0e883bea89128d7cdd9"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "eaec5ac2a92444e1344c2f12c299d7e95d877159e8fcd0e883bea89128d7cdd9"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183"
+}

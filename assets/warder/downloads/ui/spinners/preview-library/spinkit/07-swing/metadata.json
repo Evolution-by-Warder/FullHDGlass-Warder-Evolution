@@ -1,0 +1,106 @@
+{
+  "id": "spinkit-swing",
+  "folder": "07-swing",
+  "name": "Swing",
+  "title": "Obiehajúce kruhy",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 20,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 2000,
+  "timing_adaptation": "Container synchronized to the existing two-second child animation; original geometry and keyframes preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "9afdb5fcbc529ca7e005d049bf3418ce774d2c9113329241f688ea12c9fe09ee"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "fabb5b8007e927553d9e6706bc59a76ce1af5ea2127ed23ca51a7bd60e649411"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "52ba12e0d0348836f55a9716e3a4dbb0b2365db2b63db8c63dbea68eccdf61bd"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "7d551871724fe1466a13352e73f4ccec7de4847b735673cc3633a7979839fe1d"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "66b89452394037c823200468bdf2a561861e60638c1a484c1ffefe98d8867522"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "3aee3df0c537842e4aff73750b39cc7478ca8393dd9810070049a95c201d7eaf"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "921b7bf53f87e046390f545f598af9d2854c9a0a7441a49c30cf8b3274cf7c94"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "cd5addb3989d73ada0b0e4de2d11619924dbf844dbda906c1ae84a1de07fbd7a"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "b21410fe12d7393d6f7af78f4a781f6a4fb76825013a4f20af8d07b287a19fc5"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "87260f82999c2242faca5090ce3005ff23748d26fbe95eb050e69087166164b0"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "273b1f6ce641576a26b3fd9dd6cc7532660923273680b562a641d8f8d8a49028"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "0640b1a903badecad448144c434e390d53ade8e212bd4f9adf3e134c0456b3c4"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "b80ca6d49c9050c817c9c2163f9851bf41da2d46362790d8f5ba0f9f115eb93f"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "8fa284f4edb5bcf75eb8d9838bc37a80e4f5c7a1f92f55893ceee192d60a5861"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "e0b752ddb565eaf8f9e8815854c411f24e018bc4a76fa7d9573ed1ebf10b8b4b"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "567846c114d49f6671d264f873c99e5f2973c8b219c0fa316222ae411d67bae0"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "5cf2fc597814b45718ca74f5cee424e817892e56d8d905d33ea237dda78b86b4"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "8615a9b406bd449ad3999a74d56ef78521444692e1da64e07000d9295983df2c"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "03ba5f97c2ce69ad1d9f649fe1548dfb6245ee50c9f08ee47a083759f6d2f870"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "3400d9e69d706af36d546387cc692b9b62a42615cf0522f90ec865706d1dba92"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183"
+}

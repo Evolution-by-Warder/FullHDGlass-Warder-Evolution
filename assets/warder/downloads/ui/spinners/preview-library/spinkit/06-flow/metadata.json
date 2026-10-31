@@ -1,0 +1,82 @@
+{
+  "id": "spinkit-flow",
+  "folder": "06-flow",
+  "name": "Flow",
+  "title": "Tri bodky",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 14,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1400,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "1dc95968580c5bb0eb61a729355f88af7a5dd1f1748c69a05cea3635e320d691"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "eb6fec7be559301bdbe00d013f39fa0f87b2b13a9b8de5bffe9390f8a68d0c04"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "27b62c13b43d17cdcb5c095f85561de30f1a3d0e4f3bf66110f9d0ce9bdec371"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "bb79a17482ba08ced4623d12daffe98fd882971f5a2c77a274196866c113a244"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "035e1be7ae511378a438c9793c527058daa15eba909489a2a95a4216f4a7fec2"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "6538009879acc35fb9fabe917ba6a1e67a3f834524dd5570a9428b4db88c3410"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "0ddbc48a2e9013db679a88e076dfd317523d0d1063b9939ae380fc6d481e3ef9"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "1495c0f1c767d3e16f5ddff7789ead9089bb4cbee7ae0edccbe96d26d9982875"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "f0ed3cdcda8653125c7e58d6b2133f8ecdea490dade82717947f98c05b655661"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "ebb8bb85f5375501b05bb438a79d1927c2268e52031c410733d4cc19367b2520"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "67cf9374d42299084b92434b47170c01956b9222e698d7b50ed9ccaf69055afc"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "75d0d8bc345277cbdc7a56d1bb59f926229faef800a156189aac04d3996b4a4d"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "0ccbc614b3fd5c538a96180eb360464cce19032267bd318db64c45a8b40bc476"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "d0656913c9ea625b73772e440f4b79451b629ea1e7b114cc013a9a5642b06e1e"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183"
+}
