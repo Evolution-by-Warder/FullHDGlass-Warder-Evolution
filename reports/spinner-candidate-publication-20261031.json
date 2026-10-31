@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "verified_at": "2026-10-31T05:31:21Z",
+  "version": "1.0.46-test1",
+  "filename": "enigma2-plugin-skins-fullhdglass_1.0.46-test1_all.ipk",
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/spinner-1.0.46-test1/enigma2-plugin-skins-fullhdglass_1.0.46-test1_all.ipk",
+  "bytes": 14898026,
+  "sha256": "738d691203900bb04207f83e960f08d3aa190ee70b8d929d2a9dbca57972d26d",
+  "payload_files_verified": 1442,
+  "native_spinner_rgba_frames_verified": 18,
+  "all_payload_pixels_and_code_match_reviewed_candidate": true,
+  "system_hooks_unchanged": true,
+  "checksum_verified": true,
+  "physical_receiver_validated": false,
+  "source_commit": "184f927d330ac066121f8d597d7b373bf132e4a1",
+  "github_workflow_run": 41172621546,
+  "github_workflow_conclusion": "success",
+  "source_upload_bytes_verified": true,
+  "native_allocation_predicate_compiled": true,
+  "unit_tests_in_candidate_job": 189,
+  "production_main_unchanged": true,
+  "production_main_commit": "c5736f7e2c30698b772150ac8efeb5bc11fb2d6e",
+  "production_version": "1.0.45",
+  "prerelease": true,
+  "trezor_changed": false,
+  "receiver_acceptance": [
+    "Observe the original dove animation and the image beneath it during playback.",
+    "Check that its complete background is restored when it disappears.",
+    "Check TV/radio transitions and a GUI restart on the affected receiver."
+  ]
+}
