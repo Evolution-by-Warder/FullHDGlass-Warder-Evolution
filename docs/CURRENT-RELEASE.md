@@ -1,9 +1,5 @@
-# FullHDGlass 1.0.49
+FullHDGlass 1.0.51
 
-- **DAB+ informácie:** keď stanica neposiela obrázky, horné okno zobrazuje vlastnú predvolenú grafiku s označením podľa jazyka prostredia.
-- **Automatické prepínanie:** prijatý DAB obrázok nahradí predvolenú grafiku; obal skladby zostáva v samostatnom spodnom okne.
-- **Satelitné a IPTV rádiá:** zachované pôvodné jedno okno pre obal, jeho veľkosť aj umiestnenie.
+Opravený pád pri číselnom prepínaní kanálov so zapnutými piconmi. Spoľahlivejšia inštalácia a prechod zo starších verzií, opravené náhľady ikon menu, priestrannejší inštalačný výpis a správne zobrazovanie čísla verzie. Pridaný výber animácie čakania a spresnené rozpoznávanie interpretov v rádiovom režime.
 
-Obsahuje aj čistejšiu hlavičku nastavení, opravený spinner a prehľadnú Históriu.
-
-Po aktualizácii reštartovať GUI.
+Po aktualizácii reštartujte GUI.
