@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "spinners": 154,
+  "catalog_bytes": 74257,
+  "archive_bytes": 12636553,
+  "thumbnail_bytes": 819081,
+  "separate_archives": true,
+  "static_thumbnails": true,
+  "receiver_pillow_dependency": false,
+  "native_frames_in_main_ipk": "Only the two bundled defaults; online library is external"
+}
