@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "network_verification": {
+    "asset": "menuiconsbig",
+    "bytes": 64183138,
+    "sha256": "83f65a74001189e0febdd8ed988f3d607782ac36ca0d49b9dfc2890c9fddb3c1",
+    "parts_downloaded": 86,
+    "zip_crc_valid": true,
+    "png_count": 125,
+    "png_sizes": {
+      "(810, 810)": 125
+    },
+    "png_modes": {
+      "RGBA": 125
+    }
+  },
+  "isolated_actual_code_verification": {
+    "actual_catalog_download_extract_copy_flow_replayed": true,
+    "actual_archive_hash_and_all_125_output_png_hashes_match": true,
+    "success_with_working_staging_directory": true,
+    "no_hdd_staging_path_exists": false,
+    "no_hdd_original_flow_blocks": true,
+    "user_reported_icon_cause_confirmed": false
+  },
+  "receiver_screenshots": {
+    "selection": "1(20261031-193400).jpg",
+    "result": "2(20261031-193400).jpg",
+    "reported_normal_menu_icons_installed": 125,
+    "reported_large_menu_icons_installed": 125,
+    "other_selected_graphics_downloads_reported_success": true,
+    "large_icon_visual_display_confirmation": "pending"
+  },
+  "interpretation": "The published large-menu archive and the ordinary download/extract/copy flow are verified. The supplied result screenshot also reports a successful 125-icon large-menu installation. The original forum receiver issue is not independently explained by this successful attempt.",
+  "additional_reproducible_environment_case": "The current code blocks large downloads if its preferred HDD staging path cannot be created; this produces a low-free-space message. This is not established as the forum receiver cause, and no speculative staging-path change is published.",
+  "original_octagon_report": {
+    "cause_confirmed": false,
+    "needed": "Download result and graphics path from the affected receiver"
+  },
+  "new_ipk_published": false,
+  "stable_feed_changed": false
+}
