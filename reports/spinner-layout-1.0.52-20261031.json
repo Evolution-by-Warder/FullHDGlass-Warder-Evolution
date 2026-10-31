@@ -1,0 +1,64 @@
+{
+  "version": "1.0.52",
+  "bytes": 16724360,
+  "sha256": "63196da663a7ffb1f39b0a935c677bdfe55c4d19deba6bfc9a17de155f9c3bdd",
+  "compared_with_verified_public_1_0_51": true,
+  "payload_files": 1486,
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py"
+  ],
+  "all_artwork_and_native_spinner_bytes_unchanged": true,
+  "all_maintainer_hooks_unchanged": true,
+  "new_layout": {
+    "width": 1590,
+    "height": 704,
+    "columns": 2,
+    "rows": 8,
+    "items": 16,
+    "cell": [
+      795,
+      88
+    ],
+    "preview": [
+      72,
+      72
+    ],
+    "aspect_ratio_preserved": true
+  },
+  "receiver_test": false,
+  "status": "STABLE_UPDATE_ACTIVE",
+  "packaged_source_commit": "adbcdad577ac5edeee220fcada2175f2d190b31b",
+  "workflow_run": 41244154321,
+  "ci": "success",
+  "navigation_and_page_tests": 15,
+  "total_catalog_entries": 154,
+  "original_1_0_51_assets_unchanged": true,
+  "upstream_native_api": "https://github.com/openatv/enigma2/tree/aaa789a",
+  "native_api_review": [
+    "eListbox.orGrid",
+    "setOrientation",
+    "setItemHeight",
+    "setItemWidth",
+    "setItemSpacing",
+    "BT_KEEP_ASPECT_RATIO",
+    "BT_HALIGN_CENTER",
+    "BT_VALIGN_CENTER"
+  ],
+  "gui_preview_rendered_from_actual_entries": true,
+  "user_instruction": "Number of items should fit the page logically; no fixed target of twenty.",
+  "update_activation_authorized": true,
+  "promotion_workflow_run": 41244454168,
+  "public_release_and_raw_ipk_identical": true,
+  "strict_opkg_upgrade_from_1_0_51": true,
+  "feeds": {
+    "production": "main/update-production.json",
+    "test": "warder-modernization-work/update-test.json",
+    "version": "1.0.52"
+  },
+  "physical_receiver_layout_test": false
+}
