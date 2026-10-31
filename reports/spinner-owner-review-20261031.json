@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "state": "owner-review-in-progress",
+  "library_commit": "0ea1295bb32ffa78fb43b8f29fe2b4c0b86197c2",
+  "library_count": 154,
+  "numbering_frozen_during_review": true,
+  "feedback": [
+    {
+      "numbers": [
+        8,
+        9
+      ],
+      "ids": [
+        "spinkit-circle",
+        "spinkit-circle-fade"
+      ],
+      "titles": [
+        "Kruh bodiek",
+        "Postupne svietiaci kruh"
+      ],
+      "owner_comment": "8 a 9 je to isté.",
+      "classification": "visual-duplicate-by-owner",
+      "resolution": "Keep at most one of this pair in the final selection; representative not chosen yet."
+    }
+  ],
+  "new_ipk_authorized": false
+}
