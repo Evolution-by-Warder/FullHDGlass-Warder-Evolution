@@ -1,0 +1,55 @@
+name: Prepare separate spinner preview folders
+on:
+  push:
+    branches: [feature/spinner-preview-library-20261031]
+    paths:
+      - .github/workflows/spinner-preview-library.yml
+      - tools/render-spinkit-previews.cjs
+      - tools/finalize-spinkit-previews.py
+      - assets/warder/downloads/ui/spinners/sources/spinkit/**
+permissions:
+  contents: write
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools
+            assets/warder/downloads/ui/spinners/sources/spinkit
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install build-only renderer dependencies
+        run: |
+          npm install --prefix /tmp/warder-spinner-render --no-audit --no-fund playwright@1.56.1
+          python -m pip install --quiet Pillow==11.3.0
+          command -v google-chrome
+          command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg; }
+      - name: Render original licensed CSS and build separate native folders
+        env:
+          NODE_PATH: /tmp/warder-spinner-render/node_modules
+          CHROME_BIN: /usr/bin/google-chrome
+        run: |
+          node tools/render-spinkit-previews.cjs
+          python tools/finalize-spinkit-previews.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SpinKit-separate-spinner-previews
+          path: assets/warder/downloads/ui/spinners/preview-library/
+          retention-days: 30
+      - name: Save preview assets on this branch only
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add --sparse assets/warder/downloads/ui/spinners/preview-library
+          git diff --cached --quiet && exit 0
+          git commit -m "Add twelve separately attributed native spinner preview folders"
+          git push origin HEAD:feature/spinner-preview-library-20261031
