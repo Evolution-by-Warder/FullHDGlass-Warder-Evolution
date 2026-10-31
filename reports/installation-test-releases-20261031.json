@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "fullhdglass": {
+    "version": "1.0.50-test3",
+    "bytes": 16723432,
+    "sha256": "79b62496571da7ba31e08a68ea569bee469a7cd5da68785cd1892e48717a3bc9",
+    "public_file_verified": true,
+    "control_and_runtime_version_match": true,
+    "preinst_matches_reviewed_fix": true,
+    "native_spinner_frame_hashes_verified": true,
+    "system_spinner_replaced": false,
+    "source_commit": "e4a76cca4bfd0c287b2be5edf9e88e5009c5b557",
+    "branch": "test/installation-spinners-1.0.50-test3",
+    "tag": "install-spinners-1.0.50-test3",
+    "workflow_run": 41215468602,
+    "workflow_conclusion": "success",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/install-spinners-1.0.50-test3/enigma2-plugin-skins-fullhdglass_1.0.50-test3_all.ipk",
+    "receiver_first_upgrade_test": "Owner is reinstalling legacy 9.50-r12.2 before first GUI-only TEST3 attempt; pending."
+  },
+  "spinner_online": {
+    "entries": 154,
+    "catalog_sha256": "9bb9872881aa059c5c690b60d76e902d61327ccc26f0db82272b871fbde9980c",
+    "all_public_zip_and_thumbnail_hashes_verified": true,
+    "publication_commit": "f5a733f94823c1d35d1c2dbc9224772ede19e6d9"
+  },
+  "piconhub": {
+    "version": "0.1.34-rc1",
+    "tag": "install-health-0.1.34-rc1",
+    "source_commit": "55765410cd82f0c9d8ddcaf87c187f8217e27d7e",
+    "workflow_run": 41212084202,
+    "workflow_conclusion": "success",
+    "bytes": 2879442,
+    "sha256": "8b634199e49e7cb3f252930dbeae8a36f008e923ba592a6db2e7aaaa7b911387",
+    "receiver_transition_root_cause": "Unconfirmed; final payload/status checks added."
+  },
+  "scope": "Test prereleases and spinner data only; no stable updater manifests or existing released package bytes changed."
+}
