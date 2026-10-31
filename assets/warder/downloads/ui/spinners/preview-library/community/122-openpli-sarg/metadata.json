@@ -1,0 +1,116 @@
+{
+  "id": "122-openpli-sarg",
+  "folder": "122-openpli-sarg",
+  "title": "Sarg",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Sarg",
+      "name": "Sarg",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    141,
+    105
+  ],
+  "inner_size": [
+    96,
+    71
+  ],
+  "frame_count": 16,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "714294f0680c6a15b898fae7f3aab39d51e8052d4c087d59623bd75aaaa59c32"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "e948686e96381714adae9e20111344dc4161b03fb19efa971797c000370e2d1a"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "0e63d9a6268cf2af70b6c5975b311843dfec8d72fb62e317b279145e2ec9f446"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "f5bbaffcb8c0e57a059d6ce8e5bf1a5c73a2266cc104c2ceb4cf0583431d0a0f"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "b95827765bc3b5e086e52c5e70f8fe3d7699b5f9e1a54aeccf6a834bf3e714e2"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "101f41c1382c57025dd4e26a55b9ebccca2e81de34b41a7c9f6fbdfb9eb67abb"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "b7ce0c2f31dbc7e8d996b040583ba6dd25e425056356667f2d90db3d1ad9e0b9"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "102375c35adccb2f19eae1dde9ec5f64f08396cb43b65878d1caf68ba7100f08"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "98a79af9adf038d86a571e8bc1bb1965254b1dc540738164f96859ea8f4f6212"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "5bf3f0fec5a104cb351acd64679f7abd387fbb4a9dc63ba49ddf09a1f30962d0"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "0146049d60afb183ea9fa1a570e1c3d861f123fb238ddb0f2067efbb35975b9f"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "74645194c0f39d34297ae0237442f54edf43cc451760bdb2c74cd99099a41a99"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "cba0668b588d3ec50ede7b56c26942a52f3e506a0d816d679f092bf2c1a5edec"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "b30bc6d92dca203ef66f6f53aa25c91cb6ae85ca8ec0cc6844bb966a87293496"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "d0987f4d13c6ee67a34bc7d96d078cda05659a1a4f130e626df47800599982af"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "db769efa6cf539791d611bcf43816c2672efbe4647d8ddf2f2f5a63cc2a0e34b"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 134
+}

@@ -23,6 +23,14 @@ class Response(io.BytesIO):
     def __init__(self,raw,interval):super().__init__(raw);self.headers={'icy-metaint':str(interval)}
 
 class MetadataTests(unittest.TestCase):
+    def test_receiver_reported_compound_name_is_repaired_in_icy_metadata(self):
+        self.assertEqual(m.parse_icy(b"StreamTitle='KARMEN PAL - BALAZ-Pustam ta';"),('Karmen Pál-Baláž','Pustam ta'))
+    def test_compound_name_repair_is_shared_by_split_native_and_combined_tags(self):
+        enum=types.SimpleNamespace(sTagArtist=1,sTagTitle=2)
+        for artist,title in [('KARMEN PAL','BALAZ-Pustam ta'),('','KARMEN PAL - BALAZ-Pustam ta')]:
+            service=types.SimpleNamespace(info=lambda:types.SimpleNamespace(getInfoString=lambda n:{1:artist,2:title}[n]))
+            with patch.dict(sys.modules,{'enigma':types.SimpleNamespace(iServiceInformation=enum)}):
+                self.assertEqual(m.native_song(service),('Karmen Pál-Baláž','Pustam ta'))
     def test_numbered_title_artist_stream_is_parsed_without_track_number(self):
         self.assertEqual(m.split_song('08 - Krasnejsi nez ruze (Maliconia) - Pavel Roth'),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
     def test_native_tags_split_at_track_number_are_repaired_too(self):

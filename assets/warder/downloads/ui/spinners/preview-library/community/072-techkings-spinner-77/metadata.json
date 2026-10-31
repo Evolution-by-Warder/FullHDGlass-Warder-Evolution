@@ -1,0 +1,66 @@
+{
+  "id": "072-techkings-spinner-77",
+  "folder": "072-techkings-spinner-77",
+  "title": "Spinner 77",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 77",
+      "name": "Spinner 77",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    138,
+    138
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "b55f8575000231e3fe00d42e5f8d9a56ce47c4ca2fbe3fd68663feda7276b1a4"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "8b4f1b662bb3f906750120625da2de54496e8dca6f520e6d711b905f7ad12492"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "59f7c0adcfe5b08460938751174fef199f0860ad49dfdfe7c67b175b5c2b0d15"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "7ef06f00857a55608b5e35a3c9147829a5df84a93fc7e059b85e4c9e475003d1"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "9702397ffca28291c90b4dab76784060b8c29713949521e92745b263d6ad162e"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "6091e14d0ebe90e12492e0ad6addb042f3d52ad0909fad4006cf8171fb046a2d"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 84
+}

@@ -1,0 +1,107 @@
+{
+  "id": "spinkit-bounce",
+  "folder": "03-bounce",
+  "name": "Bounce",
+  "title": "Pulzujúce kruhy",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 20,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 2000,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "8b84b75efd82267f0b7ec537b6fde153f74cb62903f1901e82ca1561094304cc"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "401e97fffbefe904cad15c12aa22e12d23b051961f607eda9ad70c95ac71b569"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "80d0a4d183c82c6cbee4843edaea4f5f2c84856b3b872513828d0f1653240458"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "a21c7fe82d4017035a4522c805d29174e7b96ee4b79280f967e63859f7223872"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "99614ad95afbc5f42fd0fc27199316debdd65819eefa37333fa6b49b4b73058d"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "ea4dc857b4bf8284ff8ce89ca7fb87c76dad7f1b8d967eb3c9579dbaec7dfeec"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "718c2d73b910defe881d344910ea115c91234bdc0b05ff0e4c1f64a704b04877"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "cf3ba3c25111684b5d8bdf61c6fbbb80e1fa61dd7c6b242a95747a2dce9c6726"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "15086198efd30271bfb289b2cba9fd42b839d82c64d0eef817f6bef98f5cfff3"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "5fec9a064e00fd9dcc3df73f9d86416d9e559fb9c4cc6b9f78123deb72f32878"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "8b84b75efd82267f0b7ec537b6fde153f74cb62903f1901e82ca1561094304cc"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "8dc4c04b0b5689a797ae25b52ee6b4375c8e3fd946991abbdbd5e980bf290e40"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "3be66f530b1ff10a84bfa788e09fe6abfef8319c2584dddfda712da5882399ba"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "abd873094823e401a94866074f44202b72cef90ac74f87280f87d91b445549d8"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "ee12df6f1397e47d80d928686ac28aaaf3a44d374867eff5b5ad5169b7f90833"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "f2ac36d3a1eda915c0dcbb8aa413a2b8262eed1f57c06120ae18264820d27d76"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "4e18a7d800c5376817500c9a399edfe8d9f42a608cf66d96b8973b66c35b2c3d"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "b477f4954a61c1d8cf255628f5b0326cc54e351744f801e84ed6c07362fd0efa"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "c11b62cebb9dafd494f6214ffd4fe401cd6442d07d73a356c5bb88d45d671020"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "a2489586d78ecb5732154de39c3b333d64c1ec87f94cff7eda1af0944a483764"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+  "original_review_number": 3
+}

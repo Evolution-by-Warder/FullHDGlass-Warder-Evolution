@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '15 5 * * *'
   push:
-    branches: [main, warder-modernization-work]
+    branches: [main, warder-modernization-work, fix/opkg-numberzap-20261031]
     paths:
       - .github/workflows/verify-system-screen-compatibility.yml
       - tools/check-openatv-interfaces.py
@@ -47,6 +47,7 @@ jobs:
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-openatv-before/Screens/EpgSelection.py https://raw.githubusercontent.com/openatv/enigma2/13e055d3e172679c4c3fb16da1b0462d0bd8b660/lib/python/Screens/EpgSelection.py
           WARDER_OPENATV_BEFORE=/tmp/warder-openatv-before WARDER_OPENATV_AFTER=/tmp/warder-openatv-current python tools/test-openatv-epg-compat.py -v
           python tools/test-openatv-codec-compat.py -v
+          python tools/test-numberzap-picon.py -v
           python tools/test-openatv-screen-compat.py --before /tmp/warder-openatv-before --after /tmp/warder-openatv-current -v
           PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"

@@ -1,0 +1,46 @@
+{
+  "id": "093-openpli-gargoyle",
+  "folder": "093-openpli-gargoyle",
+  "title": "Gargoyle",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Gargoyle",
+      "name": "Gargoyle",
+      "source_indices": [
+        1,
+        2
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    90,
+    90
+  ],
+  "inner_size": [
+    90,
+    90
+  ],
+  "frame_count": 2,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "1ddc43b5f98552eef2bdfdb110d1084de825f7ea1aa4fd0931cdff35b76bc9c3"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "8ffb9280ef16b8cead64865fe1e86e1761f6f536b61cb1b76fd1a447bfd5c0ec"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 105
+}

@@ -84,6 +84,13 @@ on:
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioDabSlideshow.py
       - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioCompactArtwork.py
       - design/spinner-repair/production.json
+      - design/spinner-choice/**
+      - tools/build-spinner-themes.py
+      - tools/test-spinner-choice.py
+      - source/package-root/usr/share/enigma2/hd_glass17/spinner-themes/**
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinner.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-spinners.json
+      - source/control/postinst
       - source/package-root/usr/share/enigma2/hd_glass17/spinner/**
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHistory.py
       - tools/test-virtual-keyboard.py
@@ -159,6 +166,7 @@ jobs:
           python3 tools/test-history-radio-header.py -v
           python3 tools/test-dab-artwork-layout.py -v
           python3 tools/test-spinner-candidate.py -v
+          python3 tools/test-spinner-choice.py -v
           python3 tools/test-radio-lyrics.py -v
           python3 tools/test-setup-style.py -v
           python3 tools/test-help-preview.py -v

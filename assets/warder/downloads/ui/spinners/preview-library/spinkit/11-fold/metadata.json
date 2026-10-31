@@ -1,0 +1,123 @@
+{
+  "id": "spinkit-fold",
+  "folder": "11-fold",
+  "name": "Fold",
+  "title": "Skladaná kocka",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 24,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 2400,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "bd1db9ff3e50877debde83a5a083dffd39eb996f8b15952a5fbabf82f5f3cb4e"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "a433a9d26b949a2cb6d38a27ba15945a6f1eb32b8e73046528e6c71b4e835ec7"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "125c1a8ccf49cdb76dbe8fd3c78c63763ee08877a9e8dcf14066cc72445bce98"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "7b1196990b0417be40cbb4bac1cd08795a781d7676bd3b3aeb899d6751a4066b"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "4d141e6f9f6d8c7b035138c0907f362bc25ca574f9659546a3b7bd2f0106dd7f"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "8daf3d47e068ede9a3259c8ef0e6edcb4fb012a426e6c95467e6c6d8b52ad7b6"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "52d06c02e9968e46e63bfef01466a217b11e7fd71c780e543921f926a8f4ebc6"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "5968d66238f98b484eaa7af420ab83d95b775ca03b15ab3ac5e6d71059df078b"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "fb57741ac36d60d08e5e9d73dca205bb42323927b7d66f72e584a891f6939200"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "703451e7d3e46ce29301219ed9e64de0eba3272349094841fb05152ccd6d8b55"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "76f3b19b8d44c181b3146c94ed3b1c466ffb4b7a7654abcee2574a6612365e0b"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "4dc3c37dc1e77159a88c8240d7649294fb8003fd370f64b16f69ddf18f772878"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "22db04148e836d83ee890cda5c019f14b4693579c814cc412ada90f2add97517"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "22db04148e836d83ee890cda5c019f14b4693579c814cc412ada90f2add97517"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "22db04148e836d83ee890cda5c019f14b4693579c814cc412ada90f2add97517"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "22db04148e836d83ee890cda5c019f14b4693579c814cc412ada90f2add97517"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "9caa055ee56c56cf5a477fbc8b8bc7ec5968779a4af67ae4e8c89285f534b732"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "ce20482a8f61a7b1f38f0179556cb9dcbce2155c1b03ffc930c5a7f3d77b8b43"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "2629c24e244d7780124b577481490170f7577e8b30c0acc2f43b66ac1c005af0"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "74717c7276b8ca8da000b573169ed1706131a2e65f13045167e8a4fd01606811"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "977beb9a3cf66520735e7a63ee43d259b647cf32aa96eb334624ecee3bf13bc6"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+  "original_review_number": 11
+}

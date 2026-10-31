@@ -1,0 +1,76 @@
+{
+  "id": "114-openpli-pingudrink",
+  "folder": "114-openpli-pingudrink",
+  "title": "PinguDrink",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/PinguDrink",
+      "name": "PinguDrink",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    110,
+    105
+  ],
+  "inner_size": [
+    96,
+    92
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "0d404aead7ec392b6996b436694c974cd81d1e7ae2b605b5bdc4df3e412d0ecf"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "5f1835ba6dc0dd327de260d98d1e85c9ee4802a2d4dcfdac6e26fd96890c0efe"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "662fa24e0991d1774ea1f232a2fad2fa3a5afa84536997a10d0976910ecfee0b"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "a19eb2366cf6e01022f9eba56e4acb2caa1d5b11e2e60a7b7c22588d1784a5d9"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "145274b32e675ebf27ca0534036c5784208d918d9a7896b66b104c8b15afc6e3"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "5f1835ba6dc0dd327de260d98d1e85c9ee4802a2d4dcfdac6e26fd96890c0efe"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "0d404aead7ec392b6996b436694c974cd81d1e7ae2b605b5bdc4df3e412d0ecf"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "ddb487ea1cdc92c19fac15c9cbba50299cfc13d69960b65ce8fbf7da09847e3d"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 126
+}

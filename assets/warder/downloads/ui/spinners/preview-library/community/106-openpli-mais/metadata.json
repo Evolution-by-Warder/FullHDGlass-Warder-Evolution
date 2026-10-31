@@ -1,0 +1,76 @@
+{
+  "id": "106-openpli-mais",
+  "folder": "106-openpli-mais",
+  "title": "Mais",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Mais",
+      "name": "Mais",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    81,
+    91
+  ],
+  "inner_size": [
+    81,
+    91
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "eb6940a80cdd10be4fc655233f5b2274c402f23184d81980d473e0a69bbda94b"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "1b037209cbc004daacc1d66182885647812e9bf8a6a2336116e03605a8defd16"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "9e858c8b27666a9dded825238d17ebca1ff91388b33f291acd9bf3cbe68f739a"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "8fd64416b0015f55757fd9745205402b6c816b1406d565f14ebd43bab5652b3c"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "bfa4b756c36d477f3294ed82eb5c1168432bb57e8a1909827d1ca5ba34b1f113"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "4dc6f0b9a2089aeee074ca9f9f43783cbb756fb715a8a6acef1d93feaeffb1c8"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "d742ec70897cbdd74437cee81f646ba62f1beee089217547443ac3eab0d9b8a2"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "56ca6bf4ff11c45efd55cc70c2f211d571a008f8990d9f10a4f84cedcac7a9ac"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 118
+}

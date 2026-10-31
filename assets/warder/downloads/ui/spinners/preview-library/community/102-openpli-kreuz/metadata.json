@@ -1,0 +1,131 @@
+{
+  "id": "102-openpli-kreuz",
+  "folder": "102-openpli-kreuz",
+  "title": "Kreuz",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Kreuz",
+      "name": "Kreuz",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    80,
+    105
+  ],
+  "inner_size": [
+    73,
+    96
+  ],
+  "frame_count": 19,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "c4cbb9b3b0ba5a4c65780a3f16877a90155739f314dc36a1a8e24920e60f431a"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "9fdb02b16a02ebe9aaf20f341fde859e9a51a9241bb385721f72cb0a913d0346"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "3a768e285583414b3033021bc1326961f36d0fadee31d885b36f246b1df69e0c"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "e17cfc70829e371742f2dcb37461b78e6443c19781f05c359b175b3479475e40"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "9b0a411b51b42fec16c1c6ae6ce922ec8f670bf7cb868f4b9e6b1b45dcd013cf"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "6c9192baa6cd3fc55e2f723e7ce57cf04f22fd749354314aabd57e412484e4db"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "da87cc18fefb66c0d610a2e242090401799891888c89b63ac180bf0ed9ae671f"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "990cf13125ff56f067feaac4141c3702c706983ba2e8af265b6b3df7e3b2907c"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "eb4601fa75d15ecc8c765bcb0e360164eb82c862b2406ceea768e75f92dd8faf"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "56b7571dd6afad3e8db9a154c265dd39ae380d77807d1bcf40c920e4840208b1"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "b7f77a85f0f00526a69203125f83919a21de5a09ef929938b5546fa7f73f6ea8"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "8b661ecf6cc044080b7a6bcc0147771f64dd3e373e38bed87ca82fc43107e8e0"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "a2a06073088e8efcf2e7035603fc14e28f2572d9b8ba2d7ac7230dbb457c170a"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "f8dc372e15743634bdfcf3d30d02955a1e35a2d2f165d15d7ca00b99f51b8730"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "f0717a93afba761af8d495aa459889415802f7c8ff554870adc7c9896053baa6"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "cfe5083d097897d8de3d298c3410dddc0a77ef8d3c197387afef0b2b78db241a"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "b0de16ad1af00c7ca29d9f1b60d31b95e1d3d39dc16208d288c10af9b98a25d9"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "f526eb6af30f129b504590dbb4c626554ee25ee446d5d162283859c03c1484a7"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "a55e5dcdee37fb30c7f687421bb5fc5865136904f3040689cd9754b1705002d6"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 114
+}

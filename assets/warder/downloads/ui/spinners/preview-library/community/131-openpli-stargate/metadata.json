@@ -1,0 +1,106 @@
+{
+  "id": "131-openpli-stargate",
+  "folder": "131-openpli-stargate",
+  "title": "Stargate",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Stargate",
+      "name": "Stargate",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    90,
+    90
+  ],
+  "inner_size": [
+    90,
+    90
+  ],
+  "frame_count": 14,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "00ec12071514a8e5b6c32ad2a43f475fd88d73d22f832cb4c810ff307bb8407f"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "6184ea734ca293b256a044010ecb9eb4f8ab1f0b8b49c996d18eb5ffc00fd850"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "aa7971f957c4e010030fd6142ad5b419170d9937b15b768d11b1d479940eeda5"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "1b648c5091ecf2c4263a85cc04b4811874159d79beba1d99bbebc8e6ae68f87e"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "3dfd523068748715b4c1c05908feede5f0bfcc77aede71691a47b7015b0fc2d5"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "a4f291ffb2ef0aa5816b0db1f7a59af45f2d97296fdb871aa22d94fe7782a6b1"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "c1e67bd38f7d04028ae8440094d44af6dd767aec5904ed3f10c3b19d80b0821b"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "8d6c82188243ba30d67762a586688f4dce96ee9ef2799f002fe2f283a54aeb7b"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "4ea776e6e7dec12481ee4031df6c16f9a2b49a00a0c2d4929255c9b53cfb41a4"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "4cf8b9d0e749b73271272dc46f7304ca2eedb4efb1d707955ebc940d1cbf2cb6"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "c9fd50e5777423684e0006765d5279e206d387c0541be1fe3c225e312b3ce295"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "6adfe4348e1f01fb3c49e1504ecd7102d60838bf670d60c4be428b630d55ef34"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "f4790090468506b88591decb344a7abc6addd441ff39395cab7a2ca0be6dc4d6"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "908f095f0e8e5284be86c26f59b2f9b1a336fe842e54703ba62639da39bd08dc"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 143
+}

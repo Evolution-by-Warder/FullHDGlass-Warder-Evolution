@@ -1,0 +1,56 @@
+{
+  "id": "005-techkings-spinner-10",
+  "folder": "005-techkings-spinner-10",
+  "title": "Spinner 10",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 10",
+      "name": "Spinner 10",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    65,
+    192
+  ],
+  "inner_size": [
+    32,
+    96
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "87a5b63dec68e0345daa63ea3226f91591de8850db89151674babc11b0a44d9a"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "493a83df7616f6b5c02bffe9e1717bdd81feb2ea3a462f9b77caadb84990b14d"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "7ea7933e316957415fc792f063619e7204dc220913d59d6e7c863626ebdafe3d"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "493a83df7616f6b5c02bffe9e1717bdd81feb2ea3a462f9b77caadb84990b14d"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 17
+}

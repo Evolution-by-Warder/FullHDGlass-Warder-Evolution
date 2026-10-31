@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "opkg_version": "opkg version 0.10.0 (libsolv 0.7.40)",
+  "source_inputs": {
+    "upload/enigma2-skin-fullhdglass17_9.50-r12.2_all.ipk": "66dc55c17e615330acc002d683662e06db71b66aecbc85d7293aeea31de97e9f",
+    "/tmp/warder-original-chocholousek-5.0.240904.ipk": "ed89bd4a4ac3b450585ff28ceb8d8a7ce263c47753f4d781f5304b4102daef86"
+  },
+  "cases": [
+    {
+      "product": "skin",
+      "force_reinstall_and_overwrite": false,
+      "new_install": {
+        "exit_code": 0,
+        "output": "Prepared obsolete legacy entry: /tmp/warder-opkg-order-8_3b5pim/skin-normal/tmp/plugin-17.py\nPrepared obsolete legacy entry: /tmp/warder-opkg-order-8_3b5pim/skin-normal/usr/lib/enigma2/python/Screens/Menu-new17-38.py\nVerified legacy upgrade preparation completed.\n******************************************************************\n*              FullHDGlass - Warder Evolution                 *\n******************************************************************\nImage version looks compatible.\nUpgrading enigma2-skin-fullhdglass17 (9.50-r12.2) to enigma2-plugin-skins-fullhdglass-warder-evolution (1.0.51) on root\nRemoving obsolete file /tmp/warder-opkg-order-8_3b5pim/skin-normal/tmp/plugin-17.py.\nRemoving obsolete file /tmp/warder-opkg-order-8_3b5pim/skin-normal/usr/lib/enigma2/python/Screens/Menu-new17-38.py.\nConfiguring enigma2-plugin-skins-fullhdglass-warder-evolution.\n"
+      },
+      "hook_order": [
+        "old-postinst configure",
+        "new-preinst upgrade 9.50-r12.2",
+        "old-postrm upgrade 1.0.51-1",
+        "new-postinst configure"
+      ],
+      "new_critical_file_exists": true,
+      "new_critical_file_matches": true,
+      "settings_unchanged": true,
+      "status_new": {
+        "exit_code": 0,
+        "output": "Package: enigma2-plugin-skins-fullhdglass-warder-evolution\nVersion: 1.0.51-1\nProvides: enigma2-skin-fullhdglass17\nReplaces: enigma2-skin-fullhdglass17 (>= 1.0.18-1)\nConflicts: enigma2-skin-fullhdglass17 (>= 1.0.18-1)\nStatus: install ok installed\nArchitecture: all\nInstalled-Size: 29\nInstalled-Time: 1793478249\n\n"
+      },
+      "status_old": {
+        "exit_code": 0,
+        "output": ""
+      },
+      "second_attempt_recovery": null,
+      "legacy_tracked_but_self_deleted": [
+        "tmp/plugin-17.py",
+        "usr/lib/enigma2/python/Screens/Menu-new17-38.py"
+      ],
+      "transition_manifest_present": true,
+      "obsolete_removal_errors": 0,
+      "scope": "Real opkg; minimal synthetic data and inert new postinst; actual rewritten preinst/legacy postrm. Not a full product or receiver install."
+    },
+    {
+      "product": "skin",
+      "force_reinstall_and_overwrite": true,
+      "new_install": {
+        "exit_code": 0,
+        "output": "Prepared obsolete legacy entry: /tmp/warder-opkg-order-8_3b5pim/skin-force/tmp/plugin-17.py\nPrepared obsolete legacy entry: /tmp/warder-opkg-order-8_3b5pim/skin-force/usr/lib/enigma2/python/Screens/Menu-new17-38.py\nVerified legacy upgrade preparation completed.\n******************************************************************\n*              FullHDGlass - Warder Evolution                 *\n******************************************************************\nImage version looks compatible.\nUpgrading enigma2-skin-fullhdglass17 (9.50-r12.2) to enigma2-plugin-skins-fullhdglass-warder-evolution (1.0.51) on root\nRemoving obsolete file /tmp/warder-opkg-order-8_3b5pim/skin-force/tmp/plugin-17.py.\nRemoving obsolete file /tmp/warder-opkg-order-8_3b5pim/skin-force/usr/lib/enigma2/python/Screens/Menu-new17-38.py.\nConfiguring enigma2-plugin-skins-fullhdglass-warder-evolution.\n"
+      },
+      "hook_order": [
+        "old-postinst configure",
+        "new-preinst upgrade 9.50-r12.2",
+        "old-postrm upgrade 1.0.51-1",
+        "new-postinst configure"
+      ],
+      "new_critical_file_exists": true,
+      "new_critical_file_matches": true,
+      "settings_unchanged": true,
+      "status_new": {
+        "exit_code": 0,
+        "output": "Package: enigma2-plugin-skins-fullhdglass-warder-evolution\nVersion: 1.0.51-1\nProvides: enigma2-skin-fullhdglass17\nReplaces: enigma2-skin-fullhdglass17 (>= 1.0.18-1)\nConflicts: enigma2-skin-fullhdglass17 (>= 1.0.18-1)\nStatus: install ok installed\nArchitecture: all\nInstalled-Size: 29\nInstalled-Time: 1793478249\n\n"
+      },
+      "status_old": {
+        "exit_code": 0,
+        "output": ""
+      },
+      "second_attempt_recovery": null,
+      "legacy_tracked_but_self_deleted": [
+        "tmp/plugin-17.py",
+        "usr/lib/enigma2/python/Screens/Menu-new17-38.py"
+      ],
+      "transition_manifest_present": true,
+      "obsolete_removal_errors": 0,
+      "scope": "Real opkg; minimal synthetic data and inert new postinst; actual rewritten preinst/legacy postrm. Not a full product or receiver install."
+    },
+    {
+      "product": "picons",
+      "force_reinstall_and_overwrite": false,
+      "new_install": {
+        "exit_code": 0,
+        "output": "Upgrading enigma2-plugin-extensions-chocholousek-picons (5.0.240904) to enigma2-plugin-extensions-piconhub-warder-evolution (0.1.33) on root\nRemoving obsolete file /tmp/warder-opkg-order-8_3b5pim/picons-normal/usr/lib/enigma2/python/Plugins/Extensions/ChocholousekPicons/plugin.py.\nConfiguring enigma2-plugin-extensions-piconhub-warder-evolution.\n"
+      },
+      "hook_order": [
+        "new-preinst upgrade 5.0.240904",
+        "old-postrm upgrade 0.1.33",
+        "new-postinst configure"
+      ],
+      "new_critical_file_exists": true,
+      "new_critical_file_matches": true,
+      "settings_unchanged": true,
+      "status_new": {
+        "exit_code": 0,
+        "output": "Package: enigma2-plugin-extensions-piconhub-warder-evolution\nVersion: 0.1.33\nReplaces: enigma2-plugin-extensions-chocholousek-picons\nConflicts: enigma2-plugin-extensions-chocholousek-picons\nStatus: install ok installed\nArchitecture: all\nInstalled-Size: 20\nInstalled-Time: 1793478249\n\n"
+      },
+      "status_old": {
+        "exit_code": 0,
+        "output": ""
+      },
+      "second_attempt_recovery": null,
+      "legacy_tracked_but_self_deleted": [],
+      "transition_manifest_present": false,
+      "obsolete_removal_errors": 0,
+      "scope": "Real opkg; minimal synthetic data and inert new postinst; actual rewritten preinst/legacy postrm. Not a full product or receiver install."
+    },
+    {
+      "product": "picons",
+      "force_reinstall_and_overwrite": true,
+      "new_install": {
+        "exit_code": 0,
+        "output": "Upgrading enigma2-plugin-extensions-chocholousek-picons (5.0.240904) to enigma2-plugin-extensions-piconhub-warder-evolution (0.1.33) on root\nRemoving obsolete file /tmp/warder-opkg-order-8_3b5pim/picons-force/usr/lib/enigma2/python/Plugins/Extensions/ChocholousekPicons/plugin.py.\nConfiguring enigma2-plugin-extensions-piconhub-warder-evolution.\n"
+      },
+      "hook_order": [
+        "new-preinst upgrade 5.0.240904",
+        "old-postrm upgrade 0.1.33",
+        "new-postinst configure"
+      ],
+      "new_critical_file_exists": true,
+      "new_critical_file_matches": true,
+      "settings_unchanged": true,
+      "status_new": {
+        "exit_code": 0,
+        "output": "Package: enigma2-plugin-extensions-piconhub-warder-evolution\nVersion: 0.1.33\nReplaces: enigma2-plugin-extensions-chocholousek-picons\nConflicts: enigma2-plugin-extensions-chocholousek-picons\nStatus: install ok installed\nArchitecture: all\nInstalled-Size: 20\nInstalled-Time: 1793478249\n\n"
+      },
+      "status_old": {
+        "exit_code": 0,
+        "output": ""
+      },
+      "second_attempt_recovery": null,
+      "legacy_tracked_but_self_deleted": [],
+      "transition_manifest_present": false,
+      "obsolete_removal_errors": 0,
+      "scope": "Real opkg; minimal synthetic data and inert new postinst; actual rewritten preinst/legacy postrm. Not a full product or receiver install."
+    }
+  ],
+  "receiver_modified": false,
+  "published_ipk_created": false
+}

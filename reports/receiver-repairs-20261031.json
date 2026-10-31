@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-31",
+  "target_version": "1.0.51",
+  "fixes": {
+    "legacy_gui_install": {
+      "r12_test4_receiver_pass": true,
+      "original_950_and_r12_real_opkg_isolated_cases": "passed",
+      "new_receiver_package_test": "pending"
+    },
+    "number_zap_picon": {
+      "source": "Octagon SF8008 Combo crash log",
+      "exception": "AttributeError: 'ServiceEvent' object has no attribute 'text'",
+      "repair": "Native ServiceName Reference converter",
+      "upstream_regression_tests": 4,
+      "receiver_retest": "pending"
+    },
+    "header_version": {
+      "native_labels_synchronized": 13,
+      "actual_package_headers_checked": true
+    },
+    "installer_layout": {
+      "window": "1800x960",
+      "output": "1680x720",
+      "bindings_preserved": true,
+      "receiver_retest": "pending"
+    },
+    "menu_icon_preview": {
+      "native_scale": "centerScaled",
+      "current_names_and_legacy_fallback": true,
+      "tests": 4,
+      "current_normal_archive": {
+        "sha256": "5c6567ca5255a9ace2fada77295bf9effb810693dc4278174b539a3191a63513",
+        "png_count": 125,
+        "sizes": {
+          "(810, 810)": 125
+        },
+        "current_preview_sample_names": {
+          "video_setup": [
+            "menuIcons/1/video_setup.png"
+          ],
+          "setup": [
+            "menuIcons/1/setup.png"
+          ],
+          "shutdown": [
+            "menuIcons/1/shutdown.png"
+          ],
+          "system": [
+            "menuIcons/1/system.png"
+          ],
+          "timer_edit": [
+            "menuIcons/1/timer_edit.png"
+          ],
+          "tuner_setup": [
+            "menuIcons/1/tuner_setup.png"
+          ],
+          "information": [
+            "menuIcons/1/information.png"
+          ],
+          "manual_scan": [
+            "menuIcons/1/manual_scan.png"
+          ],
+          "network": [
+            "menuIcons/1/network.png"
+          ]
+        },
+        "crc_valid": true
+      },
+      "receiver_retest": "pending"
+    },
+    "unavailable_hdd_staging": {
+      "fallback": "/tmp, existing free-space checks retained",
+      "tests": 3,
+      "original_forum_cause_confirmed": false
+    }
+  },
+  "other_preserved_features": [
+    "approved native spinner defaults and online selector",
+    "compound artist metadata repair",
+    "existing radio, DAB artwork and EPG compatibility fixes"
+  ],
+  "guards": "Frozen historical fingerprints unchanged; exact reviewed AST changes registered separately.",
+  "limits": [
+    "Original forum large-menu failure cause is not established. Owner confirmed current large menu works.",
+    "Automated checks and isolated package-manager simulations do not assert a physical receiver retest of 1.0.51."
+  ],
+  "stable_feeds_changed": false,
+  "published_old_ipks_changed": false
+}

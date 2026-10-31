@@ -1,0 +1,126 @@
+{
+  "id": "041-techkings-spinner-46",
+  "folder": "041-techkings-spinner-46",
+  "title": "Spinner 46",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 46",
+      "name": "Spinner 46",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    44,
+    40
+  ],
+  "inner_size": [
+    44,
+    40
+  ],
+  "frame_count": 18,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "6dd75db2a5b8aa3e96b8a54e9c018390b75a2f52b8b05c9ac398432f18c1da17"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "3e549a5657ddaefe15d5520e3c5a4fadbf405a8d89bf13d1f145126354cac278"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "58274cd92bc140de3ed9e1bd86db69e700e077b2f1fdea8e257160d456592bd0"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "43ba608efb0587e18fb404e90396eb2f2056b67bec50c7b062fd7786bb9c39f3"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "f3347e278c21820e5a2a4a7d962fcf156ee5411a9a27748c8adef098a51a0115"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "00c482c3c73ecd3a7118f9c96959f295f4ecb3705eaf6e84e293104feac1bbd8"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "42dfff82c1ad6e0e00d097978cffd7b01cd328254bceabcaa5e853e1f9af44db"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "5f14cf81ed977dbe3216ecd96e43ff019355039597d0c83aa8ac470c2f9c2cbe"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "7461a9f2662ad8c8ed40102ee90b33149abc6f8eed5530c7fd99f00c528f0514"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "f1a6fb3dc245480cd4582883eb910df009a8eada09870c9a332eb4ffa4644fd2"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "948325869d05696ae12c226bf72f010230d7aeb67438123541263a7fbc377bc6"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "1677c474ecebf2bb897e8de65dafefc6a24620e05fddf866b19274127de813e3"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "f261c0c7daeaf4ce8f5cee76081779ca56c16ab196cd8fc1612f62f50039691e"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "4387d3ae455bd04f804f56ecf6e1b66962578acc4bd965283e76e6e0f597eb22"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "c83e0ad57958788dc52756ca3380ef7c0fd910eda44f862bffba2a40a5f75520"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "6a767c1a99598183b3335cfa1c37f0edbf1d74207bbca560e31636f2ebb6e8dc"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "834c9ec21ee1ae8eb5880f4840c373fd4f962dc816b89226163ec073f34bc946"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "37ce7c8d724dbe254954c6d765bc3dd1032e91ccbeadd4ae6737073ce8f16431"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 53
+}

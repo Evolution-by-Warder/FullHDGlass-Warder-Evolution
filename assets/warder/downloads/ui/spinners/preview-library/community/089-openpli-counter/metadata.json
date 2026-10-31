@@ -1,0 +1,86 @@
+{
+  "id": "089-openpli-counter",
+  "folder": "089-openpli-counter",
+  "title": "Counter",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Counter",
+      "name": "Counter",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    95,
+    21
+  ],
+  "inner_size": [
+    95,
+    21
+  ],
+  "frame_count": 10,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "d53e58e1504ac1035d441edb3ee389339bc7a8dfd5038eae9e1a68e877c422e1"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "a36be8e1e9a05b69e15ee04ba2ddae37fc741b3d7ee175c6036ad6232faa63be"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "7a05f21f083603c6dee442b1bc5635c08833deb6518404e80238e252f7809804"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "9436bc4dffcf7ea1d07ab99ab1982fce707a438cbff8a35ca9923de2131b55d7"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "06dda00e46a2a7fbf2d2af25814184af2fd296b2edafc5bd8c9ab2ba619f698c"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "c64afca56ec7e63a4ea413165a414a0a33b5c4c92fd7c4a73d9f127f5e55e97b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "791a0cabb8e9de0771e3677647bb83c08d093c071845d7495a4ed8645240f0ca"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "8d7f91f71c42f6f7325a9cc34b8b3b5d52d8f10e9c4c573ac1acabdf9a29c45c"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "3eedae1c8b562a4e75da1f4b2ae1fb7402f61b12025a2fe89fb005aec01d7b19"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "a97bc25f6032813562fe17e48c91944da3af9b037b92a3637fce545a5f704580"
+    }
+  ],
+  "source_has_opaque_frames": true,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 101
+}

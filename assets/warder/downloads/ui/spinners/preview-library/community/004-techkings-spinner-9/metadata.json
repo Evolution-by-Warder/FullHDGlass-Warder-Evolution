@@ -1,0 +1,46 @@
+{
+  "id": "004-techkings-spinner-9",
+  "folder": "004-techkings-spinner-9",
+  "title": "Spinner 9",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 9",
+      "name": "Spinner 9",
+      "source_indices": [
+        1,
+        2
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    83,
+    72
+  ],
+  "inner_size": [
+    83,
+    72
+  ],
+  "frame_count": 2,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "aa26cb668faa2aaa8908e7150e2808ab05fa43c1ef5d375e604b6d15a64ae106"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "d85ce6f7a4f03e24485959b6e0e27ac122eb8488cc9b93f05039edd5bed1f5d8"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 16
+}

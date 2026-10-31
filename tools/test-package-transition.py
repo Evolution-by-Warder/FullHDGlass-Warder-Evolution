@@ -104,7 +104,7 @@ class TransitionTests(unittest.TestCase):
                                     env=dict(os.environ, PATH=str(bindir) + ":" + os.environ["PATH"]),
                                     capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn("1.0.18", result.stdout)
+            self.assertIn("verified transition", result.stdout)
 
 
 if __name__ == "__main__":

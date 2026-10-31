@@ -1,0 +1,71 @@
+{
+  "id": "116-openpli-pingupc",
+  "folder": "116-openpli-pingupc",
+  "title": "PinguPC",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/PinguPC",
+      "name": "PinguPC",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    105,
+    105
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 7,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "55095d8251235aa63a36ba1b20af65f1cc42c6b06ecf2233cfc92838adfa8c8e"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "87887920b5c43a3d3370af27aef2e56feb0dd65bd99dc2ee04e1d5ce69696cb9"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "0fe11b6213e18953b2e2fda044f8c20c8614bfb96ebf8bc81c25e9d14a12746c"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "424ba30aac0322087899ae287e6bb36cc5ba7e4fa627d7903cc9406571463d93"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "fe9a31af74e02d5d6fea249ed1a79818084e30410b72eb57eb203c81a9216b04"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "52dec20cf42ba446fd69b9833e89f36421e9291236a65ad76adf9cb83c2f7ff5"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "687a5f8a441f13b3fc812e2f959093aa8c878cb2e90ea91a452c7f87912fb31e"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 128
+}

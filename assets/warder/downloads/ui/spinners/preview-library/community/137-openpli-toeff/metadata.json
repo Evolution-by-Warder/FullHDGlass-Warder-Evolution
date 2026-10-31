@@ -1,0 +1,96 @@
+{
+  "id": "137-openpli-toeff",
+  "folder": "137-openpli-toeff",
+  "title": "Toeff",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Toeff",
+      "name": "Toeff",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    127,
+    99
+  ],
+  "inner_size": [
+    96,
+    75
+  ],
+  "frame_count": 12,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "af9a95964ac831ffa0221a4636b1d5555a8b7f69c236ccf4c284c2d5030838b7"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "94f01b5f8a2db2b1ad07bf1042cedd620e362720e463f041b4ed8e89f3e13437"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "b30703c1db3808eacc3c63e3f81b88cd71828386dd65be229f2f1665559cb8f3"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "3aead987d45aa9bf33739757bd8af6227bf32b1551a5a40e9e3c3073657a4717"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "1a4855dbdfb3b8cbfd22b68414893a492c30f53e4084fde2d528f18c10e009b2"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "9e00d177b16ea24fcb91dcd299c6cb98eb88e04452e3716003d2f2717ff03d9b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "581d2b9d3785f2a6a79dc925d86332a0a3a27be80a27f60307bc6d9365f254e7"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "0360b378bc85516a06e456da7631f4875e4566e7f86ab43940ae1a41e8da10e7"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "00c03494eff2122aecbf924985c28f2766deb02f07481a6862e25d4bd2262430"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "537e3eb024d7d35c70c928e52313e00f12dd48204f5c6f9644dc0fad25d2fd13"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "1e06bbb6319f402aa3abd9462dd5dbbb45747f62d3f23979b9e74727dc3a36f8"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "d50c77acb42a164252682a2f672d514efa0a0c9bc94d42cfb7ecc23898684d5b"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 149
+}

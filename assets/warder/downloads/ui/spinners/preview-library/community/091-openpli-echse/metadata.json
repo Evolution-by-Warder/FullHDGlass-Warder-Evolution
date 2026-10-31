@@ -1,0 +1,56 @@
+{
+  "id": "091-openpli-echse",
+  "folder": "091-openpli-echse",
+  "title": "Echse",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Echse",
+      "name": "Echse",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    157,
+    86
+  ],
+  "inner_size": [
+    96,
+    53
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "48bb519267014e81b5db087d6103b28125bace9e04fa83a1fba414cca1d7f572"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "9d93703b6d1d228124f4bfa6d77c8c4ed8d740f2229f9a1e31f379557b18331b"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "8a03bee6f3b6e0dd525e17f735a524ee38ca064dfd5e4a5adc19322e819967fe"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "2117f249afab9323027bd98aae611476b0e73a2a2c07b4f946bf1a79c4e517f1"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 103
+}

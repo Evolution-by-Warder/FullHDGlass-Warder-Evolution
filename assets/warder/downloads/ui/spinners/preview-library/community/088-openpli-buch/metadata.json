@@ -1,0 +1,76 @@
+{
+  "id": "088-openpli-buch",
+  "folder": "088-openpli-buch",
+  "title": "Buch",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Buch",
+      "name": "Buch",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    105,
+    87
+  ],
+  "inner_size": [
+    96,
+    80
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "b13d9f027aca320b132058a0801a0381ebc325a06e956cfe428a1891de092316"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "c01dac3889006350956ae751fef135e66d204dba2a676f198c471c3bd142c931"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "0e2c1d57bd983015ac85d17359a1fc538cd96158ad0ac49c55394f69ca50326b"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "7f1f7f40f8ad2b19f0d9d2caa4f715f675868980daa11b7e579f7230a124a206"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "f64c9ba1cd88e19a9d16c338faa8c8494e447cb4f2b2b9b419f8336160adcf94"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "e2c16852c3fa67aa8354a25e617e83e7edeadb4d6118ad7d41b627020164ed6a"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "401df18b69086aa952505cb5c83901d5965c5fa8ddc7a604289318c953712097"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "e5ea4cf1e108c03beae64827111cffe56b7f872fd5c23a476cb276cca7c42511"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 100
+}

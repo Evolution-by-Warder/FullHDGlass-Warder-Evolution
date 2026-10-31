@@ -1,0 +1,56 @@
+{
+  "id": "128-openpli-sonne",
+  "folder": "128-openpli-sonne",
+  "title": "Sonne",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Sonne",
+      "name": "Sonne",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    61,
+    58
+  ],
+  "inner_size": [
+    61,
+    58
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "0cf65ce478d45c0a10d02691b2a54d0636aabf6736e3a6765f67cca8ac7b9201"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "aacdf4957bf79783847d8fdb76a5a441d16398502d127db59e5998da666ff3c6"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "15ff7bec0c64934f48a3451e90e1eed7017e98617d3d9187a8d87944baa20aad"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "0f3fc714fd9f41ca5743765869fe3bc0a27c2cd7a37bb95badc15f275dd211f9"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 140
+}

@@ -1,0 +1,76 @@
+{
+  "id": "139-openpli-vogel",
+  "folder": "139-openpli-vogel",
+  "title": "Vogel",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Vogel",
+      "name": "Vogel",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    85,
+    78
+  ],
+  "inner_size": [
+    85,
+    78
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "05e0ef4524e55e6ba13bf2083dfedb78a07b7d7c1aae59301e432b65f3431b12"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "d152154060fb588d26d6e0ed5cb3b89519e651264e22c31c9c31c005eebbcac2"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "9346872786506b86c5af5a5ccb6bb11e91fc3ca7b12b175506ffa9d707092254"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d76bd434b51e0a486650157f37d78a08011874fbe43c8e6b6a6b5aae1ba6a96c"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "524d14f8c3bf34d055f2885a760b594a475263f226b1104cbf7a8f11a4342f79"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "ed7f243632c1595e130fdd0fcaa89903e8157b588f4c39858b91481d1f2a855b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "9787c026e02d4331700fc50e01452b17c0273413283c16fdbab4a5fec0ea3c33"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "3f47367ae5b25021bb5346fcb2ae0fbab5512f63d9a776cc56e40b9fcad2321c"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 151
+}

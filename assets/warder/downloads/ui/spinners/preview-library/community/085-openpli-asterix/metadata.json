@@ -1,0 +1,46 @@
+{
+  "id": "085-openpli-asterix",
+  "folder": "085-openpli-asterix",
+  "title": "Asterix",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Asterix",
+      "name": "Asterix",
+      "source_indices": [
+        1,
+        2
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    83,
+    105
+  ],
+  "inner_size": [
+    76,
+    96
+  ],
+  "frame_count": 2,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "aefd20a85b439907cc815aa197c723a1b1a8002fa9b52b08dd0ddf89cbab296a"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "77d56e0ba0acec3a4e5ec459998b6b11242c06f8c0909d0946c3de65cb439ac1"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 97
+}

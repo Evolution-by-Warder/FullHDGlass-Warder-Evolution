@@ -1,0 +1,56 @@
+{
+  "id": "117-openpli-pumpkigcurving",
+  "folder": "117-openpli-pumpkigcurving",
+  "title": "PumpkigCurving",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/PumpkigCurving",
+      "name": "PumpkigCurving",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    103,
+    105
+  ],
+  "inner_size": [
+    94,
+    96
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "cb2fdb163594ab8e06e9a0b6d5bcfd1b42aee4b9740078816de9eedb659aba87"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "074a19b90d44c641f0b4052b7c9e93c971d449a3e650b52f10105a79ab347216"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "af6754021019f98f33cd270437d6d4a24f592690b94b8bd438cce8673ae7abc5"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "c47670173033796169d52fbf17fe171acfef6cd248fadf7a92e22f5fea194703"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 129
+}

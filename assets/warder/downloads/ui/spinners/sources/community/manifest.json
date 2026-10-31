@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "archives": [
+    {
+      "id": "techkings",
+      "filename": "spinners-with-setup-original.zip",
+      "original_filename": "spinners with setup.zip",
+      "sha256": "96c8b5131d0e10a45663cc24454afce946b39a47813575d9e1f9943bd6e0bbab",
+      "groups": 83,
+      "bytes": 5580061
+    },
+    {
+      "id": "openpli",
+      "filename": "spinner-pack-2-1-original.rar",
+      "original_filename": "Spinner Pack_2_1.rar",
+      "sha256": "bb4159ff9bd7fde37bfcfb12df747d1aa7631bc605b5fdac5285443f4faaa110",
+      "groups": 58,
+      "bytes": 2152616
+    },
+    {
+      "id": "football",
+      "filename": "spinner-football-soccer-original.zip",
+      "original_filename": "spinner_football_soccer.zip",
+      "sha256": "1cc8da9d04553bd51808e6cb22f3fb68a705b16829d500b6d48aae5e63e65e95",
+      "groups": 1,
+      "bytes": 13934
+    }
+  ]
+}

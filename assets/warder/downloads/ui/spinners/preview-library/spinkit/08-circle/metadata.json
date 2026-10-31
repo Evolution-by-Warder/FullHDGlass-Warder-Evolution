@@ -1,0 +1,75 @@
+{
+  "id": "spinkit-circle",
+  "folder": "08-circle",
+  "name": "Circle",
+  "title": "Kruh bodiek",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 12,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1200,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "07ea09cc2ae4e27dd25ac4d9cf02dec0bed2f45c7d0bf70284e4f2e383508d50"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "134a8eb12d060ec0f6a61da47300477e4126683693fd3e69784ddfea44f050e0"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "d802db7447ce3c51e6c44fa0438de0d485d355877ffa036d2ff6e6c240228f02"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "344cb6d0bf8dbfbfe2c6a69c09f528c2b0fd28ef2952dd2b26977d515f582c16"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "c873acd0f81c01b35a944e7ee0059a3271fd54daba98ab22e8aca459d09ed9c2"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "2cd2448c6b3906c8987a746a8ac6f1d4561912cd0737d8f589019758fda52b5c"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "6d9c646976154186497150f7825d68684c97790833780caef8217ee665cbf8a5"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "1baaadd981e66f42a8c90707c6b373ff182da3a153dceacb042047b731676174"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "0e9cefad6f38cb26134ff6823cdb78f598342dd5959d7b399705bf1a35162a58"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "de5eeac79039c269e6929636857ea35bdf382af16e42e937767d35b1a46fffce"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "b46980adc496d061d3a4077f9eb011b76678b4028a05cafd5b3816ea36f74e7a"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "189bdf737face62a5d1ed1fe9e878367f87a584814d5f68ba1826ad17b6b90a6"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+  "original_review_number": 8
+}

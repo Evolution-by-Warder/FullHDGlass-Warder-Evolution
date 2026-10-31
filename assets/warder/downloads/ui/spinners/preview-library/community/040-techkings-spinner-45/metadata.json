@@ -1,0 +1,56 @@
+{
+  "id": "040-techkings-spinner-45",
+  "folder": "040-techkings-spinner-45",
+  "title": "Spinner 45",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 45",
+      "name": "Spinner 45",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    55,
+    55
+  ],
+  "inner_size": [
+    55,
+    55
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "9fa2ad326334697026d6bd1684e26518e374e126d3b8ee6550c4b9ba6ab28988"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "5c5be5a22f92f8bd1cebddfee4ee7b5fc56566747073b9fc1b415bb7ec2a20ff"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "51d843531fa12d5de62c864c49b247579aaad48d2634fed1cb64dc6000373c45"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d65ac38a9fb8afe17c5afe2ed39d95d1e89f99a19b096d593eb579a0123bb751"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 52
+}

@@ -1,0 +1,81 @@
+{
+  "id": "097-openpli-hexe",
+  "folder": "097-openpli-hexe",
+  "title": "Hexe",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Hexe",
+      "name": "Hexe",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    76,
+    105
+  ],
+  "inner_size": [
+    69,
+    96
+  ],
+  "frame_count": 9,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "195b2f4f72069950a60bfa535bfbc80af0c636e66103da371d4a07f3d0f24644"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "195b2f4f72069950a60bfa535bfbc80af0c636e66103da371d4a07f3d0f24644"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "195b2f4f72069950a60bfa535bfbc80af0c636e66103da371d4a07f3d0f24644"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "f690decaf2b2f453a831e96898ac3ab6894108e7ec826d4a55b0bd6c28c8a444"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "f690decaf2b2f453a831e96898ac3ab6894108e7ec826d4a55b0bd6c28c8a444"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "f690decaf2b2f453a831e96898ac3ab6894108e7ec826d4a55b0bd6c28c8a444"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "195b2f4f72069950a60bfa535bfbc80af0c636e66103da371d4a07f3d0f24644"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "195b2f4f72069950a60bfa535bfbc80af0c636e66103da371d4a07f3d0f24644"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "195b2f4f72069950a60bfa535bfbc80af0c636e66103da371d4a07f3d0f24644"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 109
+}

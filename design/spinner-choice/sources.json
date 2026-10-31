@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "default": "dove",
+  "themes": [
+    {
+      "id": "dove",
+      "title": "Dove",
+      "author": "",
+      "frames": 18,
+      "size": [
+        128,
+        88
+      ],
+      "source": {
+        "type": "directory",
+        "path": "design/spinner-repair/frames",
+        "manifest": "design/spinner-repair/production.json"
+      }
+    },
+    {
+      "id": "bakussa",
+      "title": "HDGlass - bakussa",
+      "author": "bakussa",
+      "frames": 20,
+      "size": [
+        104,
+        104
+      ],
+      "source": {
+        "type": "prepared",
+        "path": "design/spinner-choice/bakussa-blue-centered/frames",
+        "manifest": "design/spinner-choice/bakussa-blue-centered/review.json",
+        "original_archive": "assets/warder/downloads/ui/spinners/bakussa-original.zip",
+        "original_sha256": "47f12b9654349e3bfe909111a5bfdbd260954f311a251b079cf3d1f53848f3ee",
+        "size": [
+          104,
+          104
+        ]
+      },
+      "legacy_frames": [
+        {
+          "name": "wait1.png",
+          "sha256": "b18d75f3040ecc4a9f1af1fdad8fc6487ce0e1ec6b2c3bbf1a24e71664d43b01"
+        },
+        {
+          "name": "wait2.png",
+          "sha256": "1f76e069198a664a892993e48ef925daef239058f8db5bf83e9e6a7af7772946"
+        },
+        {
+          "name": "wait3.png",
+          "sha256": "aa6f5795dd439fdbafd1ca91c9b702656fb1fa66ee9d4f3d42a428a38e93fc93"
+        },
+        {
+          "name": "wait4.png",
+          "sha256": "aa6f5795dd439fdbafd1ca91c9b702656fb1fa66ee9d4f3d42a428a38e93fc93"
+        },
+        {
+          "name": "wait5.png",
+          "sha256": "70ea918c20b166fb3d4043c6ce87d9652a78122687b821b04223f36c17c1fd70"
+        },
+        {
+          "name": "wait6.png",
+          "sha256": "70ea918c20b166fb3d4043c6ce87d9652a78122687b821b04223f36c17c1fd70"
+        },
+        {
+          "name": "wait7.png",
+          "sha256": "aba056dfc7f87f6a7fdb13801ddfae523525d8bfd8269557bd2c7458073fc2ba"
+        },
+        {
+          "name": "wait8.png",
+          "sha256": "aba056dfc7f87f6a7fdb13801ddfae523525d8bfd8269557bd2c7458073fc2ba"
+        },
+        {
+          "name": "wait9.png",
+          "sha256": "e5cad97acd5a7ce1ef484c3f7f9b5ab62c619e98add0b1521e0384c0a436e6e6"
+        },
+        {
+          "name": "wait10.png",
+          "sha256": "e5cad97acd5a7ce1ef484c3f7f9b5ab62c619e98add0b1521e0384c0a436e6e6"
+        },
+        {
+          "name": "wait11.png",
+          "sha256": "30cf54b430cf86aef24ba63c8aae445dbdec39640b8b66866933a5fcb263ce3e"
+        },
+        {
+          "name": "wait12.png",
+          "sha256": "30cf54b430cf86aef24ba63c8aae445dbdec39640b8b66866933a5fcb263ce3e"
+        },
+        {
+          "name": "wait13.png",
+          "sha256": "105169eef4899a6cb2d022ebf92e22ffbdba8a153635fcd2343252f901af6b7e"
+        },
+        {
+          "name": "wait14.png",
+          "sha256": "105169eef4899a6cb2d022ebf92e22ffbdba8a153635fcd2343252f901af6b7e"
+        },
+        {
+          "name": "wait15.png",
+          "sha256": "d9cfb4a01361884c7f17ec9a31074b0b103a942b8d0a65d769c23f1bee6938af"
+        },
+        {
+          "name": "wait16.png",
+          "sha256": "d9cfb4a01361884c7f17ec9a31074b0b103a942b8d0a65d769c23f1bee6938af"
+        },
+        {
+          "name": "wait17.png",
+          "sha256": "1a34f70fb9b5eb0ca39d99098c5e95d438d1bf6925aa3608616199a9b4e56a62"
+        },
+        {
+          "name": "wait18.png",
+          "sha256": "1a34f70fb9b5eb0ca39d99098c5e95d438d1bf6925aa3608616199a9b4e56a62"
+        },
+        {
+          "name": "wait19.png",
+          "sha256": "1afa5b53790d816d2d4501a2cac422dea6cc4a33ffffe668ec0a1cc22d783bf3"
+        },
+        {
+          "name": "wait20.png",
+          "sha256": "1afa5b53790d816d2d4501a2cac422dea6cc4a33ffffe668ec0a1cc22d783bf3"
+        }
+      ]
+    }
+  ]
+}

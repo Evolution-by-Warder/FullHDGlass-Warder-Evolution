@@ -1,0 +1,75 @@
+{
+  "id": "spinkit-pulse",
+  "folder": "05-pulse",
+  "name": "Pulse",
+  "title": "Pulz",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 12,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1200,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "02a0dd6e4ffb0a3291173e0beb6276916ac9421d6693bb8c9f2218772862c927"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "ba3507803fb1d8447c04e7fbf636a8c45f165f0ddc4010f9ef07bc3c2215d174"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "c5495aacf245ecb77ff22cdfcc6e5dd03f6f2ee6b855e44375094e12b721fa71"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "bc403cafe0ced9e745917851ba667f3776cf27693076fbe74975c0414ab465a0"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "732e7a9f7db2d091042a4da7a69b3fde79efc5878c9d4391a85c2fd830536746"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "96cb22146da61917bee9b236c838ae11914dac2c35b01fa9e252d875f28554e2"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "5d6380145d1290e3d53a3ffc5350b37c702ab3d36095700237c56c05a8ce72f2"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "c2a27dbe933f036c2aee6e2bbc97c536a2cd8f3bc6594e63b68bb675c824b573"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "3d6d90aa14f7068e08ebd36b7c1b77274a2b096d38ecf19d930088a2c0071099"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "c0c65da42edab2b65e14041a025b1e1f112f103672a78d5eb29faad216e21779"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "01883ac2bc0dc3ff57a3aadbba2324c21e011608f82d480f7a625960114c0e64"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+  "original_review_number": 5
+}

@@ -1,0 +1,86 @@
+{
+  "id": "038-techkings-spinner-43",
+  "folder": "038-techkings-spinner-43",
+  "title": "Spinner 43",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 43",
+      "name": "Spinner 43",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    57,
+    72
+  ],
+  "inner_size": [
+    57,
+    72
+  ],
+  "frame_count": 10,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "fbb04d37e92d48959b1d8bb04c7b986a141ae3cc759eb247cee4430ce10a8d36"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "1ae7b12bd2669014cca9a60dec83b4e64b03a572cd6db43c803baac89bddb553"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "07aad0082c999359023365f7f1b0c41cc34e6ee79cc56831ee10eacfadbf16ed"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "c9e01024886498895817a467baa97d20ccb3e2034594de82ed4214aa364ec7c5"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "1134fef569698956aaaf2e6195910f6448374c6fb77ca8a4a13ce76cac2bf887"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "bfec4c00d82750bae38203eb77303481acce8ceb8e89848388445b57dbafea2c"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "fd5895d03d2c953ebec84f237ffcb0e25b5cc18bae7bbea61eeadc5439267d11"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "34d6ae782290014a7c3debd930bf18d2d78535000ca82e99c98bd0da3932c9c3"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "53223ac8cec51f5d92cf05c13d35b6e7497968acf5db5a0729b24b340e8244dc"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "f59b5f36435ce0f2ac270846641c5a12ec08cbb1b65f9fab4b582c2a79eb9470"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 50
+}

@@ -1,0 +1,126 @@
+{
+  "id": "124-openpli-schaedelschwert",
+  "folder": "124-openpli-schaedelschwert",
+  "title": "SchaedelSchwert",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/SchaedelSchwert",
+      "name": "SchaedelSchwert",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    31,
+    105
+  ],
+  "inner_size": [
+    28,
+    96
+  ],
+  "frame_count": 18,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "0ade47df68d24e3a279d6f7f2e25a9297fca58f38a1cf8f6e18170192db90daa"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "f5ed1a46d3566d791c78b0181bb2c9960ce86b61ab845d6a06a71420eeec332c"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "005c47c8b2739aab668358559ef13cb4958162c69df17f34108b953f99b1c7bf"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d6cdd3398e3b67803951a650b8980e24daea04a7315e27470a5be994d2897a61"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "331189c37d5f9a609ac7b3005643c8cb3295594773a5a002c0fb4c64bf8b97c5"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "d6df5ee530ae9b81abc31a77785d9e057a937607b34e3a6f5769895e2f325888"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "502b3e89ddc478398378888969a0a1a4b9f870131307d701801ba99d79fd765d"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "d50e8e17c21d95e1b1b61814624160a4dfc994b095afb935f424f65d0de397be"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "23e9448c36d0ea57ae05ea086e583c4e9360e0dada548aa22af0470f8b4293a5"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "9e2bd7739587fa95f80edf3ccd427a18e15439c307d93ba2fc7f80860465c238"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "199619b615271bd1d99c0eb8d6cf4eb590749eddd197ef2d56509de4f2cb44ff"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "5675261c79aa8487cf3f08e324305b1a5ab44efdeb492585daa2a77b5a1bdc77"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "7abb96a1d4aa56107aa1d943175c2345c846b4ba8a9134080bd217418cf6a785"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "b5dd4326b50b65f4fda9cf75c5635ff1e48670ac64e12a9d629fcd5bb28fb5ce"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "7830a6c8aad385afeca070d4e3068ecc1921ca5d98d486597a61ef326e5659ac"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "b88d831e4e24e73e1db8d88ec0ea95c4e78cd8afa75d4e5b4532b0967593f82d"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "a148aa2bf3eff8495a22a57b5d5043d940f4d6510c4b789be03c14a9be24e914"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "b28c89ee8ff859b5576882d710726b6755c367f469958cf185419c02875122f0"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 136
+}

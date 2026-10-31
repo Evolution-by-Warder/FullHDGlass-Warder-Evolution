@@ -1,0 +1,79 @@
+{
+  "id": "spinkit-grid",
+  "folder": "10-grid",
+  "name": "Grid",
+  "title": "Mriežka",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 13,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 1300,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "88fdcc546721b69d0be4ff956cfc6f274db285e1252498c601aebb2438f98f48"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "dc4ad35b5fa42f0ceb8885341ca6ed10612161cb093c7c18aa62065e894b61b1"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "3c5db0b02d4808cc6dbb9343959570099a959927109f262f91c53f1a2473a11d"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "b3004b637c5e5444896c5e8b6fa43f70b5c4d2982fb3c1bf2438459db20abf25"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "42657e455ac547650df555636dff6cad3fff41c8bc39e8f3b916376ddb35e2b6"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "6b4b3663ff0683b3d82179dcda2eed25686625b33e12120a73f32c7b76353fc2"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "c527943ec46d3432d460c1f34bca9cdaaea0cae662fd7623cbe74cdacc913abd"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "b94cacad0a49d843242dcbac518ddf5a05e8b1b3acd510f12fa7f90480303408"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "944aba52080cb19a8e4e44decce685f64c98b1ddb9199a8684fddc1685cb9318"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "11026d55bc0fff7ee622a62e1211da6dbf0c5d755410a79e8d2454ab52861a17"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "0c0566d6e6887cc0b8faed871b1c5d3a1c261d55a79ba195916e49cb1e991494"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "e0251f007f0f1ff61214474c4191d453b49c694e814f5afb3b3beff4c5770c31"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "88e546e0553e1037674361256c8bc0de70e0b4cf2e969aa20e3f7c92105619e0"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+  "original_review_number": 10
+}

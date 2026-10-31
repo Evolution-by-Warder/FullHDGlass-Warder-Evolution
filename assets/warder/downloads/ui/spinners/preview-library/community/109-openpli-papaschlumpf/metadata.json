@@ -1,0 +1,66 @@
+{
+  "id": "109-openpli-papaschlumpf",
+  "folder": "109-openpli-papaschlumpf",
+  "title": "PapaSchlumpf",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/PapaSchlumpf",
+      "name": "PapaSchlumpf",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    88,
+    105
+  ],
+  "inner_size": [
+    80,
+    96
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "ca56d1391c0cc140dc2e3b4fb415f224ba66780ae7124b368669cf751e1c5ba9"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "ca56d1391c0cc140dc2e3b4fb415f224ba66780ae7124b368669cf751e1c5ba9"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "ca56d1391c0cc140dc2e3b4fb415f224ba66780ae7124b368669cf751e1c5ba9"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "1e0ccd85723023717530b121b60815121b7bc2be853e326c9105392d9beaeab6"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "1e0ccd85723023717530b121b60815121b7bc2be853e326c9105392d9beaeab6"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "1e0ccd85723023717530b121b60815121b7bc2be853e326c9105392d9beaeab6"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 121
+}

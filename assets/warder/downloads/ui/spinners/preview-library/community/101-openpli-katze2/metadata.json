@@ -1,0 +1,246 @@
+{
+  "id": "101-openpli-katze2",
+  "folder": "101-openpli-katze2",
+  "title": "Katze2",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Katze2",
+      "name": "Katze2",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    500,
+    50
+  ],
+  "inner_size": [
+    96,
+    10
+  ],
+  "frame_count": 42,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "07f2df23c03e15d9fd6af46c07c217852a5c2a1165a78c68c8bc0f2a6e7775f3"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "200684009390de8b83a281b7eed1adf2f20d00a69f12392cea69c4a2abf1f3e0"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "f55ab74cf17b2878f0150094e6af59b0525af982d5ad1f2f2247c9cc28d059b8"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "3e04dc34397f8da941c1142c4c8e79578d16d8bc2a9f2590779e0e6afb075687"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "1c854ca4e77f379d7ca18edec129c8618beb4a2603c83bcbd2681e0dfa532796"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "cb1febc8b5b2517e4bdb1991d8f8568baab8f816d317587290cefb5808b30dd4"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "2243cf14ec142f732d3378516d4f11776afcbe471d55d3254ebd6bed5896bf2a"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "612eab72457f66f481f1b27d2b4f385faa9b8d32cf9efb4dfca3b9296fea8ae4"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "38270cfb7b8288ded2a29437f7b816a3ee77c362de029b3c170ba44cb8949852"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "da75aaf2aa33b561814b439ae3484cab15f5f67c1d26f30dc1080823daaad967"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "bbd4343f65bfac3aa47d587bb74fc7b6b04c44ba33fd8b31e4f85183775dc2fc"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "0d47265a2518b028d04725f6ad1ede07fa6ceffb912d577450bc5d0956b2ff37"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "4c297d5e03de9ab4787297a85c4eaa36d3746671f1a3ddbe38e7cd4e9613ade7"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "925189a9613f1bf82bbcb2ee2caca67e9ed37a0668e3dc160269cb23a1248d14"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "2dabda6b8c92b15e0fa62e59787ab0c6ca4462b9175a1a34f9fc0398c8f73044"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "2dabda6b8c92b15e0fa62e59787ab0c6ca4462b9175a1a34f9fc0398c8f73044"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "7d421817dc37ac6a7344f1fdb81e36ca35bcbaa915d829136730266d227d79ad"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "878a106b0223516ea5ee3a23a3345dfa99a3f8d273c005d44b2d0642e0e6e72a"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "e304b1e53b5ac3d1f07745fe844cc1588ca44461e26272984595fb94c28e8242"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "67cca5386cf04708ffadf72b6f922ffc224f49fcb2df933673398841b16d458e"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "3ea2799df1dc4e2379268aa9470c055d9ceb15a9cf6a3cb8b1aa28fb5f514a2b"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "eb31d382b44aa55d7d7f6ccffd74b42f2d0a08acb2b2c948ea47b76ab2f50268"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "9bcc8b1f1795bd9101e2f78a6746170a0d76cc1a26572b0b79152502ef154b01"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "2ebad6ee98df490a1051b87dedbba4a1bbcd51142d154720bd79f696dde2b75b"
+    },
+    {
+      "name": "wait25.png",
+      "sha256": "2a664eefbfaec723c988a0cc9e84e6b2679c2b32314a10445bfc2533c9d08a2a"
+    },
+    {
+      "name": "wait26.png",
+      "sha256": "9468d12a573039ebf76db1a29bc3f798f183830bfe6f61fc617f827e3790e5e8"
+    },
+    {
+      "name": "wait27.png",
+      "sha256": "fef18650e2fdd4460d7615934b0fbed528487c01e574de6370c92caa5caaf190"
+    },
+    {
+      "name": "wait28.png",
+      "sha256": "7ebeb3c8a94c05ff43ebe93b639bc2139c603f6422a9bbad4e94454c437ff164"
+    },
+    {
+      "name": "wait29.png",
+      "sha256": "ffd55ff7150ee6b171b211bbe4559dbf4a8b3ff50fd33fa0eb8a22065f257966"
+    },
+    {
+      "name": "wait30.png",
+      "sha256": "4904e9a1342a6926daea69b0eeab8d9a4666d7692ebe43bd105166c7d2a7dd32"
+    },
+    {
+      "name": "wait31.png",
+      "sha256": "7102b900a1b5c4768cbd983441c9afbff04b8c6173c867c96adb84a2e938f161"
+    },
+    {
+      "name": "wait32.png",
+      "sha256": "014bfbd729e850f6b50ef5b4fafa1641253a17792357bc3e02f9bc9d76403a59"
+    },
+    {
+      "name": "wait33.png",
+      "sha256": "98b1e4cfec317445c0d8b0dc95d8d8865eee96d8927bdd273594bb7a68c4a54a"
+    },
+    {
+      "name": "wait34.png",
+      "sha256": "05ce41c95d0d39ab36d5e55a377e3f8ed42ad6a898d3aab9382f42c53c0291f5"
+    },
+    {
+      "name": "wait35.png",
+      "sha256": "0eccd361399de2e5412780c6e03cf8f71749e5ac8d1fba62133f77c781a5741d"
+    },
+    {
+      "name": "wait36.png",
+      "sha256": "bf7814c21d07f4c056c521f4e30a3f954c737499d149ef51a7ff2b2e7a99c226"
+    },
+    {
+      "name": "wait37.png",
+      "sha256": "0417db4f1281bd4b9fed08bda18f217b3878aa910af27798ceec70286d7dedcc"
+    },
+    {
+      "name": "wait38.png",
+      "sha256": "a966711be7a6166bb131dc13a9c6cbecb12149164e41f6852a98b075e00535f9"
+    },
+    {
+      "name": "wait39.png",
+      "sha256": "94e50ba4f146c0a612b4b6f7cef7ff83c9f84a311012098989e6b3f408ea78ca"
+    },
+    {
+      "name": "wait40.png",
+      "sha256": "0082fb3fb169a7ed85e8e0be5e00fa98c3fbba7ec5f11fcd4aca16a2e4fea23e"
+    },
+    {
+      "name": "wait41.png",
+      "sha256": "92360558244fbdd7459321493cdfcedac766f34dfc69915c21a4eafa823f8be6"
+    },
+    {
+      "name": "wait42.png",
+      "sha256": "7b02e6cbb20f06267071b55663f0b4a590cc14f5c786cdb698ae978662f73d8e"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 113
+}

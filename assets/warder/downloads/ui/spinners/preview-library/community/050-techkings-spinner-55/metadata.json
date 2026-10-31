@@ -1,0 +1,241 @@
+{
+  "id": "050-techkings-spinner-55",
+  "folder": "050-techkings-spinner-55",
+  "title": "Spinner 55",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 55",
+      "name": "Spinner 55",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    100,
+    100
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 41,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "5e58da092bf3eb00b5a3c6db0c1be47ad737cb40f5456f40dcae1f642ff7c5e7"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "ee23bfbd41478a5997833daa6db09d750ed77c1fa7133c381d5a548787edc9b7"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "e3a738bf88eecc2de232120912ce1c4d6ea57d51f02d21f36d7ca24b40fec4fa"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "e43fc2290337aeeb2321c9f55dd9e637be266a8e61982a063d1b7aa09456c3f8"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "636a90aea961664f322c2028a26d7f165b72b0acdaccfb695b7a5319a096ca4a"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "448f5a2017ca297263b81096aafa55e165d34a426034206ae4e33b3056bc3a0e"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "593684f14bbe0a90a9f66997e4c711b16b198cbc598e15cd6edd8721a6cde977"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "d785d8397db5b673d7f7114b0fac2e2d31424bf4a0b165f2c24e6c5e4cef745f"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "0004adddee66700622f878345d921089b4139267d3064907ded33fe87aa7ce74"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "3e3e8dbc491072ee891ed23e31ac2fdadcaf7e247d381d12a6993840e1ce1539"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "57f2b8bb7acbc473a5ff2c131efe5fa59df1c51d36e253d25d6b7c6ed77bea44"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "df6cb832de9ff8f230846f4b1eadc8806628364966d6b4ae783330f72c115f73"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "7c235b526fdb0981d32214fa3557e6a7a7395e7d34757a69d43ec64345747619"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "20da9a8295309b22d12b00d80f9528d26d7c80c3a3e82ac02f486a8ecbe11c3d"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "365e679ade59e190164646bd9a8e0246f063a1baa7b9683ef08e43f9fcb35af2"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "b110c8534d8cfba0328f1cffd0ac784394d2f4be2cd28680285ac6ae201ca259"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "a7a13eee2ae42d7e853eef60e79c06b9fa1da71c239696ae88c09c8dc7426074"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "ba059c9d45c3c1c4246c52911cd64e2c3f048ffee72f23cad965e844449501cc"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "10a32ca2fea01dabeff265488b95c220d97b225393ee60b6afdc6061bad6a7a3"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "f8a412193ced913e836a4a3cb5ea03ca87d75c1165d4c2bca96b3e1d144aa0c7"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "24681cb190af70195ccb9675db2110ac502489c4e76a8a46c2ddc4ab8bd175b3"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "572afe51f9b3ea26000c76689c9ee49a233b2f2cebec79de4b9b9a8b1e06b9c6"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "20bf629b16e10cf314408047c84d968afa71486be835db4accd6e4a2e5350133"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "d9fa055dfc2486f0594849a3a4ba91b1a4a009549434ab5e8b1d4d1686ba1450"
+    },
+    {
+      "name": "wait25.png",
+      "sha256": "bd16a293cfb1800ef9f85fc14d35a43692f2fca6abd5b0f7292685b18882cc1c"
+    },
+    {
+      "name": "wait26.png",
+      "sha256": "fc62988439b69b0b444a4c9c63bb040d5752506b3303c0e3314ef2a5ae366e42"
+    },
+    {
+      "name": "wait27.png",
+      "sha256": "5496549904c0130942b22e54371cbbeb609719decdab7fca0e54e659f1b0626c"
+    },
+    {
+      "name": "wait28.png",
+      "sha256": "1c458a8c38f999b42646467b72e45a7293a96d4c90ff52d38e0fb3e5239f615f"
+    },
+    {
+      "name": "wait29.png",
+      "sha256": "88e9bc11858e3a35b43f72ced7407da0e9fa00f9c502195fe71e6ad999d6dd4a"
+    },
+    {
+      "name": "wait30.png",
+      "sha256": "fb53c90e6df42945aae5e57d440b4df7a317733804270ac65137ddac112f82cd"
+    },
+    {
+      "name": "wait31.png",
+      "sha256": "9cdfc8b6067b803607ecc8ed937b4b993ca0d6fd7bbe4ae168cdfd36cf599565"
+    },
+    {
+      "name": "wait32.png",
+      "sha256": "95378cbad43bb31f26729fc40150b5152b89805fffa32fcc98b334761c8ebefe"
+    },
+    {
+      "name": "wait33.png",
+      "sha256": "77b13f72c3fca90cc19db7895746ecf76039f1dc070136c09a7df354426c205f"
+    },
+    {
+      "name": "wait34.png",
+      "sha256": "12cd04b381d1a58a49c4017e1619d4430717ba0664a28c16b15d03163ceb88ef"
+    },
+    {
+      "name": "wait35.png",
+      "sha256": "1ae84d3436fe6f1ec3ee2420d41f98d5691537f6c455e93586fc9cc286b6166e"
+    },
+    {
+      "name": "wait36.png",
+      "sha256": "65b26c5dcfe81f9d4605e601ab1a1058b0f73352ef2f600ec1dd7d8f717136f6"
+    },
+    {
+      "name": "wait37.png",
+      "sha256": "0df5a10b4f785ae8c7f86b8b418dd2c05d6a91671b2e73667c086ed95c31db8e"
+    },
+    {
+      "name": "wait38.png",
+      "sha256": "2ae843c2032bf49d635965628108b88b1c4d6b6c52232ed241b8eef153c31d20"
+    },
+    {
+      "name": "wait39.png",
+      "sha256": "149c46747e68418ed51f4aac18c0a60b009bdb045c625b7fdb5a7ef13e59126a"
+    },
+    {
+      "name": "wait40.png",
+      "sha256": "76c2524f729111f4f16043a4848fe45e400e8eaa59b5c874c59f996cdc5fcbbc"
+    },
+    {
+      "name": "wait41.png",
+      "sha256": "72685e6f3cd7377e46bf5f39430862ad57e5b2473e5939f9147851a7817838e1"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 62
+}

@@ -219,6 +219,18 @@ def strip_reviewed_radio_start(tree):
 
 
 def normalized(tree):
+    repair_ledger=ROOT/'design/receiver-repairs/logic.json'
+    if repair_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(repair_ledger.read_text()))
+    online_ledger=ROOT/'design/spinner-online/logic.json'
+    if online_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(online_ledger.read_text()))
+    installation_ledger=ROOT/'design/install-transition/logic.json'
+    if installation_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(installation_ledger.read_text()))
+    spinner_ledger=ROOT/'design/spinner-choice/logic.json'
+    if spinner_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(spinner_ledger.read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/radio-header/history-logic.json').read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/openatv-compatibility/logic-edits.json').read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/runtime-cleanup-logic.json').read_text()))

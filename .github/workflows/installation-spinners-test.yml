@@ -1,0 +1,98 @@
+name: FullHDGlass installation and spinner test
+on:
+  push:
+    branches: [fix/receiver-repairs-20261031]
+    paths:
+      - source/**
+      - tools/**
+      - design/**
+      - docs/RECEIVER-REPAIRS-20261031.md
+      - .github/workflows/installation-spinners-test.yml
+permissions:
+  contents: read
+concurrency:
+  group: fullhdglass-installation-spinners-test
+  cancel-in-progress: true
+jobs:
+  openatv:
+    uses: ./.github/workflows/verify-system-screen-compatibility.yml
+  test-release:
+    needs: openatv
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
+            assets/warder/downloads/ui/spinners
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Build-only dependencies
+        run: |
+          python -m pip install --quiet Pillow==11.3.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Prepare native defaults, individual ZIPs and static thumbnails
+        run: |
+          python tools/build-spinner-themes.py
+          python tools/build-spinner-online-library.py
+      - name: Verify installation, native switching, static selector and existing behavior
+        run: |
+          python tools/test-menu-icon-preview.py -q
+          python tools/test-install-transition.py -q
+          python tools/test-package-transition.py -q
+          python tools/test-spinner-choice.py -q
+          python tools/test-spinner-online.py -q
+          python tools/test-spinner-candidate.py -q
+          python tools/test-history-radio-header.py -q
+          python tools/test-radio-lyrics.py -q
+          python tools/test-radio-stream-metadata.py -q
+          python tools/test-runtime-cleanup.py -q
+          python tools/test-startup-update.py -q
+          python tools/test-setup-style.py -q
+          python tools/test-runtime-safety.py
+          python tools/test-release-bytecode.py
+      - name: Preserve generated assets on the test branch only
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add --sparse assets/warder/downloads/ui/spinners/online source/package-root/usr/share/enigma2/hd_glass17/spinner-themes source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warder-spinners.json design/spinner-choice/assets.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Build individually verified spinner ZIPs, static thumbnails and approved blue native frames"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - name: Build isolated TEST IPK and inspect every payload byte
+        run: |
+          python tools/prepare-spinner-choice-test.py
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          python tools/verify-spinner-choice-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.51
+          path: packages/test/*
+          retention-days: 30
+      - name: Publish one short test IPK without updating any feeds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk
+          TAG=v1.0.51
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/immutable
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
+            cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$(git rev-parse HEAD)" --prerelease --latest=false --title "FullHDGlass 1.0.51" --notes-file docs/RECEIVER-REPAIRS-20261031.md
+          fi

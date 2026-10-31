@@ -1,0 +1,96 @@
+{
+  "id": "077-techkings-spinner-by-ekremtt-04b",
+  "folder": "077-techkings-spinner-by-ekremtt-04b",
+  "title": "spinner-by-ekremtt-04b",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/spinner-by-ekremtt-04b",
+      "name": "spinner-by-ekremtt-04b",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    48,
+    48
+  ],
+  "inner_size": [
+    48,
+    48
+  ],
+  "frame_count": 12,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "2eb38487c4617905206ea593b0e0f5bce5444619fc813894d2fb56e687a8bf43"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "f600c327d668a6e3c27577ae78383840ca1710b091b35360b8c2ea8e9ee44952"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "5ae4cf8bd30d973c6eac141583af10aff493d8d78c15ffee7e5fb1b7816091f7"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "b844e73339e7aaa3463672a4d8a39d0955640bd8a64c3930545135c6fccbd94b"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "20eeb3a6d8e88e6a052c003846d538194b4a1a7b448118ed63d36b6dfa780681"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "23c4f29bce91a5475f43993f59a16b21f294b5fc59ca3e4346154d23b6d8502a"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "1cb902df28c21edaee760228d17cd74a3a88b6f2f147e9ff7b54230d55b84173"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "c37dbf783374ca31b865a84a366b2d4219a65823d0bccdd0d238027ec5792773"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "040bc542ca761ceaeec78645e29dee9c93cee4b3762495a80c1b586a7307633c"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "b64423fe89c757541f7a306774fc50d29f11249c1401fb90025125a32ebf1c33"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "5621650cd163178f3951006e05424123c1c10d7da73dc7fc2a1153e42f53976c"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "1e564066a8de47d22a0d139065c8d44b2b51f643d7d64f84d309df5e9a7f7954"
+    }
+  ],
+  "source_has_opaque_frames": true,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 89
+}

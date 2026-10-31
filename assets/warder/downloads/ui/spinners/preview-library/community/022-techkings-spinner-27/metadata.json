@@ -1,0 +1,56 @@
+{
+  "id": "022-techkings-spinner-27",
+  "folder": "022-techkings-spinner-27",
+  "title": "Spinner 27",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 27",
+      "name": "Spinner 27",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    108,
+    140
+  ],
+  "inner_size": [
+    74,
+    96
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "a9a4fb14cd739d3d3eb5f28cc25bc7ec77d6f50a117c3a0bbe35a781fd0b9e75"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "0c037ad6ae00e505cac0489b881131df681252f0d2325ae1ee26c09d92021a5c"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "8abda09d9d428f77cb6724653047e35a55df8428dfc9e26ed63382241914aa49"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "372be05151dff176d580ea2a47d8afd7b9042ae583ae33135b6758489a9e80a0"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 34
+}

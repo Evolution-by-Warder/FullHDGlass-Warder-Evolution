@@ -1,0 +1,91 @@
+{
+  "id": "135-openpli-taz",
+  "folder": "135-openpli-taz",
+  "title": "Taz",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Taz",
+      "name": "Taz",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    123,
+    105
+  ],
+  "inner_size": [
+    96,
+    82
+  ],
+  "frame_count": 11,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "e6467ea8048d985f6d07429782f6db1e41a5497f0e7713361a85ae2e0e336976"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "e6467ea8048d985f6d07429782f6db1e41a5497f0e7713361a85ae2e0e336976"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "e6467ea8048d985f6d07429782f6db1e41a5497f0e7713361a85ae2e0e336976"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d94fb8671a6c0aec20f1e2542b16832acbbe7590593683819ce466b8cb5fae52"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "d94fb8671a6c0aec20f1e2542b16832acbbe7590593683819ce466b8cb5fae52"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "1cb5900abc56b9057220fdc425e686d0a7c391a12e0d337e76ded2564527b835"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "1cb5900abc56b9057220fdc425e686d0a7c391a12e0d337e76ded2564527b835"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "0685baefae6a12e31e26198e2e77bbec933e9a4609f582ce82104a67cc6d4462"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "0685baefae6a12e31e26198e2e77bbec933e9a4609f582ce82104a67cc6d4462"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "e6467ea8048d985f6d07429782f6db1e41a5497f0e7713361a85ae2e0e336976"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "e6467ea8048d985f6d07429782f6db1e41a5497f0e7713361a85ae2e0e336976"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 147
+}

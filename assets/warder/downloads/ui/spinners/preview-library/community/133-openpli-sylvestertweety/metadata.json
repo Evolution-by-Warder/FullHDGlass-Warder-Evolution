@@ -1,0 +1,66 @@
+{
+  "id": "133-openpli-sylvestertweety",
+  "folder": "133-openpli-sylvestertweety",
+  "title": "SylvesterTweety",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/SylvesterTweety",
+      "name": "SylvesterTweety",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    308,
+    87
+  ],
+  "inner_size": [
+    96,
+    27
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "6d9d394ff98c9c1e8fab5c5261a420fa99471530b6f161671ddad5dcb185efff"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "f328788f21429e53775510b0c9d23c529012b300f075790413f8a0cdfc9c0a70"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "749a5f971b6f82083f72bd8c62d9f9be60282b34bc3bc981aab1290fd1fdbff3"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "52000072b725f46fffbb9d5aa96890190bbb7bdd693807dace83d32e2c277c33"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "0159c239e4ee649901b8d5fab88a997094567e63dfbcf0b9da1e1f3913d707f4"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "4927745f44f4c5acad7bf90fbcb8eea7c90c3d7f11d2420c6de9a05f932f9a9f"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 145
+}

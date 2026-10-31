@@ -1419,7 +1419,9 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="servicename" position="45,90" size="810,50" font="Prive3;36" halign="center" valign="center" />
   </screen>
   <screen name="NumberZapPicon" position="center,435" size="1050,240" title="Channel">
-    <widget source="Service" render="Picon" position="45,45" size="180,108" alphatest="on" />
+    <widget source="Service" render="Picon" position="45,45" size="180,108" alphatest="on">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
     <widget name="channel" position="270,35" size="210,42" font="Prive3;33" />
     <widget name="number" position="495,35" size="150,42" halign="right" font="Prive3;33" />
     <widget name="servicenumber" position="495,35" size="150,42" halign="right" font="Prive3;33" />
@@ -1938,16 +1940,15 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
 				</convert>
     </widget>
   </screen>
-  <screen name="Opkg" position="center,180" size="1350,720" title="Software update">
-    <widget name="activityslider" position="300,155" size="750,15" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
-    <widget name="slider" position="75,675" size="1200,8" />
-    <widget source="package" render="Label" position="60,35" size="1230,90" font="Prive3;30" halign="center" valign="center" />
-    <widget source="status" render="Label" position="60,190" size="1230,90" font="Prive3;30" halign="center" valign="center" />
-    <widget name="log" position="60,300" size="1230,315" font="Prive3;27" scrollbarMode="showOnDemand" />
-    <widget source="key_red" render="Label" position="60,630" size="300,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
-    <widget source="key_blue" render="Label" position="990,630" size="300,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
-    <ePixmap position="450,310" size="450,322" pixmap="hd_glass17/menu/box.png" alphatest="blend" transparent="1" />
-  </screen>
+  <screen name="Opkg" position="center,60" size="1800,960" title="Software update">
+  <widget name="activityslider" position="60,92" size="1680,10" pixmap="hd_glass17/slider/slider_tv.png" transparent="1" />
+  <widget name="slider" position="60,865" size="1680,8" />
+  <widget source="package" render="Label" position="60,52" size="1680,36" font="Prive3;24" halign="left" valign="center" />
+  <widget source="status" render="Label" position="60,10" size="1680,40" font="Prive3;28" halign="left" valign="center" />
+  <widget name="log" position="60,120" size="1680,720" font="Prive3;27" scrollbarMode="showOnDemand" />
+  <widget source="key_red" render="Label" position="60,900" size="420,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+  <widget source="key_blue" render="Label" position="1320,900" size="420,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+</screen>
   <screen name="OPKGMenu" position="center,150" size="1350,780" title="Select upgrade source to edit.">
     <widget source="key_red" render="Label" position="45,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />
     <widget source="key_green" render="Label" position="405,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="green" transparent="1" />

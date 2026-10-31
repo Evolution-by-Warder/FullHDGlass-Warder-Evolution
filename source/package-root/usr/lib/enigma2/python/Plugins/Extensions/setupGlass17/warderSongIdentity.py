@@ -16,6 +16,8 @@ def split_stream(value):
     numbered=re.fullmatch(r'\d{1,3}\s+[-–—]\s+(.+)\s+[-–—]\s+([^-–—]+)',text)
     if numbered:
         return numbered.group(2).strip(),numbered.group(1).strip()
+    compound = _compound_stream(text)
+    if compound:return compound
     for separator in (' - ',' – ',' — ',': '):
         if separator in text:
             artist,title=(part.strip() for part in text.split(separator,1))
@@ -37,6 +39,8 @@ def repair_pair(artist,title):
         return split_stream(artist+' - '+title)
     tagged=re.fullmatch(r'\d{1,3}_\s*(\S+(?:\s+\S+)+)',artist)
     if tagged:artist=tagged.group(1)
+    compound = _compound_stream(artist+' - '+title)
+    if compound:return compound
     return artist,title
 
 
@@ -52,6 +56,7 @@ PERSON_ALIASES={
  'kroky f. janecka':'kroky frantiska janecka',
  'kroky f.janecka':'kroky frantiska janecka',
  'a.m.o.':'amo',
+ 'karmen pal balaz':'karmen pal-balaz',
 }
 DISPLAY={
  'miroslav zbirka':'Miroslav Žbirka','vaclav neckar':'Václav Neckář',
@@ -59,7 +64,29 @@ DISPLAY={
  'michal david':'Michal David','kroky frantiska janecka':'Kroky Františka Janečka',
  'amo':'A.M.O.','polemic':'Polemic',
  'helena vondrackova':'Helena Vondráčková','jiri korn':'Jiří Korn',
+ 'karmen pal-balaz':'Karmen Pál-Baláž',
 }
+# Verified full artist identities only. A station can space an internal name
+# hyphen while omitting spaces at the actual artist/title separator. Taking
+# the last hyphen for all artists would corrupt song titles and version tags.
+COMPOUND_ARTISTS = frozenset(('karmen pal-balaz',))
+
+
+def _compound_artist(value):
+    value = re.sub(r'\s*[-–—]\s*','-',norm(value))
+    value = PERSON_ALIASES.get(value,value)
+    return value if value in COMPOUND_ARTISTS else ''
+
+
+def _compound_stream(value):
+    # Bound prefix inspection independently of an arbitrary title length.
+    for separator in re.finditer(r'[-–—]|:\s+',value[:96]):
+        artist = _compound_artist(value[:separator.start()])
+        title = value[separator.end():].strip()
+        if artist and title:return DISPLAY[artist],title
+    return None
+
+
 FEATURE=re.compile(r'\s*\((?:feat\.?|ft\.?|featuring)\s+([^()]+)\)\s*$',re.I)
 FEATURE_INLINE=re.compile(r'\s+(?:feat\.?|ft\.?|featuring)\s+([^()]+)\s*$',re.I)
 SEPARATORS=re.compile(r'\s+(?:feat\.?|ft\.?|featuring|and|with)\s+|\s*[&,;]\s*',re.I)
@@ -80,7 +107,7 @@ def roster(value):
     for part in parts:
         names=re.split(r'\s+/\s+',part)
         expanded.extend(names if len(names)>1 and all(len(n.split())>=2 for n in names) else [part])
-    return tuple(sorted(PERSON_ALIASES.get(part,part) for part in expanded))
+    return tuple(sorted(_compound_artist(part) or PERSON_ALIASES.get(part,part) for part in expanded))
 
 
 def title_key(value,artists=()):

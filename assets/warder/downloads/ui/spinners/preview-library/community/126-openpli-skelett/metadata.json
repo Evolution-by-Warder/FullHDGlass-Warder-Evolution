@@ -1,0 +1,56 @@
+{
+  "id": "126-openpli-skelett",
+  "folder": "126-openpli-skelett",
+  "title": "Skelett",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Skelett",
+      "name": "Skelett",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    129,
+    105
+  ],
+  "inner_size": [
+    96,
+    78
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "b764bda1a9c3bc621e571cfa3477342d99573daf9a3e471e7ce82064f8bda8ff"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "b764bda1a9c3bc621e571cfa3477342d99573daf9a3e471e7ce82064f8bda8ff"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "72419c1e080c90e07f453702f66c9dc2d3ba642cdfbb83cb9988dcb879a7f631"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "72419c1e080c90e07f453702f66c9dc2d3ba642cdfbb83cb9988dcb879a7f631"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 138
+}

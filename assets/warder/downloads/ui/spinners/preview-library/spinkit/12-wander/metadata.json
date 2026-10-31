@@ -1,0 +1,107 @@
+{
+  "id": "spinkit-wander",
+  "folder": "12-wander",
+  "name": "Wander",
+  "title": "Putujúce kocky",
+  "author": "Tobias Ahlin",
+  "license": "MIT",
+  "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
+  "source_url": "https://github.com/tobiasahlin/SpinKit",
+  "frame_count": 20,
+  "interval_ms": 100,
+  "size": [
+    104,
+    104
+  ],
+  "color": "#3CCFFF",
+  "inner_css_size": 64,
+  "css_render_scale": 4,
+  "native_cycle_ms": 2000,
+  "timing_adaptation": "Original cycle preserved.",
+  "state": "preview-only-not-installed",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "e70d3ea53fbf03bb8db6536bc1d12e2e24606fca0b1a1d5659ff92ff8fd2ff50"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "ac117bc2afb78e554d80542e249cab7610fbaf886ba082e1e04d82871bd6244c"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "a43ad0bcb27ade21b4d06f7da57676ea3d9ef6768b3863f9dd82e3b1f0332581"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "1fe23d1ab15fc98131f72bf2892a5ec6b176cab690585e80c814d38627227c99"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "e4adb81c81e92f6696ef938bd37135a2e4b972ab6f0f5254ae89540d8abea6c0"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "b677283cffc207ffb8822dcf5ef8d2df261a79e7f795c15bba4f245d7b4dbf68"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "26208448833ff60d08dbae7465cc05a0654bbd657f594ad1b0a9e36ef6afb063"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "59e0b1e71fa73b5758d6217fd4159fd43fbab9f8a065ef34929ff89d4534b7b8"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "1063c438aa379104fa064d7142e0042464424cbb6c6317731b88fb614d9f0b32"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "09dbd79b36bb6060115143fd0236c449f406d1e5d5b2e2db1226f27748e72e3c"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "79c15695df51133c86c4dc3d9a5ece8edd9d0563c784ab45c2b1aa41b35d0340"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "e9fe63fa2c26c65b0bcd7716cc1792f685b7d3f8e8140cc2636dcae4c465986c"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "0aa0ba6552aab418e3cb54c1769c7fa1f2fa8dfff1570cda9421397fcb78e9ca"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "6ed4cca5d9c3a5696ae24fa3826cf725f236b553140f56945135e6574c6bd981"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "feb2f8df80680a3896e7039e400e355921f336cab230632b8119b0a8c3cee911"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "a104ce7d0264fc0045d8e88c4d068a5639ae40a43f47c977e49638d1241d3a64"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "f2d11c5a46854fc3322f719dbf5cb09d3ad8dc11856196aa10794de3726db810"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "8858b4a4bf0a76fc30c3dac6de9e58cb947c35f20a2ba23ce8b3af858dbd6846"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "860d5ed98c5b0c9ee3249ae1d7cef7b86f0dda91e15421d8d12787e65ef7ddd6"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "348dc1a104bbdc3bdf6be1a239141d8473a47b5be3ab6c19280b5476aa8c7019"
+    }
+  ],
+  "decoded_32bit_surface_bytes": 43264,
+  "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+  "original_review_number": 12
+}

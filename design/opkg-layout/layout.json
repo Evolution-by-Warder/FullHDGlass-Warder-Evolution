@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "scope": "Only Opkg screen geometry and obstructing static ornament. Preserve component bindings and package manager behavior.",
+  "before_skin_sha256": "cfa5a238f7c9e9e747316f742d72437c6eb14583f21d17890e6b90bc65b76897",
+  "after_skin_sha256": "89ffc49c8e3a11518f0613ae8ea6642726d76a8784240138cf1de4eb924ea7ad",
+  "edits": [
+    {
+      "name": "Opkg",
+      "original_screen": "<screen name=\"Opkg\" position=\"center,180\" size=\"1350,720\" title=\"Software update\">\n    <widget name=\"activityslider\" position=\"300,155\" size=\"750,15\" pixmap=\"hd_glass17/slider/slider_tv.png\" transparent=\"1\" />\n    <widget name=\"slider\" position=\"75,675\" size=\"1200,8\" />\n    <widget source=\"package\" render=\"Label\" position=\"60,35\" size=\"1230,90\" font=\"Prive3;30\" halign=\"center\" valign=\"center\" />\n    <widget source=\"status\" render=\"Label\" position=\"60,190\" size=\"1230,90\" font=\"Prive3;30\" halign=\"center\" valign=\"center\" />\n    <widget name=\"log\" position=\"60,300\" size=\"1230,315\" font=\"Prive3;27\" scrollbarMode=\"showOnDemand\" />\n    <widget source=\"key_red\" render=\"Label\" position=\"60,630\" size=\"300,45\" font=\"Prive3;30\" halign=\"center\" foregroundColor=\"red\" transparent=\"1\" />\n    <widget source=\"key_blue\" render=\"Label\" position=\"990,630\" size=\"300,45\" font=\"Prive3;30\" halign=\"center\" foregroundColor=\"blue\" transparent=\"1\" />\n    <ePixmap position=\"450,310\" size=\"450,322\" pixmap=\"hd_glass17/menu/box.png\" alphatest=\"blend\" transparent=\"1\" />\n  </screen>",
+      "updated_screen": "<screen name=\"Opkg\" position=\"center,60\" size=\"1800,960\" title=\"Software update\">\n  <widget name=\"activityslider\" position=\"60,92\" size=\"1680,10\" pixmap=\"hd_glass17/slider/slider_tv.png\" transparent=\"1\" />\n  <widget name=\"slider\" position=\"60,865\" size=\"1680,8\" />\n  <widget source=\"package\" render=\"Label\" position=\"60,52\" size=\"1680,36\" font=\"Prive3;24\" halign=\"left\" valign=\"center\" />\n  <widget source=\"status\" render=\"Label\" position=\"60,10\" size=\"1680,40\" font=\"Prive3;28\" halign=\"left\" valign=\"center\" />\n  <widget name=\"log\" position=\"60,120\" size=\"1680,720\" font=\"Prive3;27\" scrollbarMode=\"showOnDemand\" />\n  <widget source=\"key_red\" render=\"Label\" position=\"60,900\" size=\"420,45\" font=\"Prive3;30\" halign=\"center\" foregroundColor=\"red\" transparent=\"1\" />\n  <widget source=\"key_blue\" render=\"Label\" position=\"1320,900\" size=\"420,45\" font=\"Prive3;30\" halign=\"center\" foregroundColor=\"blue\" transparent=\"1\" />\n</screen>"
+    }
+  ],
+  "verified": {
+    "xml_parses": true,
+    "all_other_skin_bytes_unchanged": true,
+    "component_bindings_unchanged": true,
+    "widgets_within_window": true,
+    "status_log_progress_and_footer_do_not_overlap": true
+  },
+  "openatv_reference": {
+    "repo": "openatv/enigma2",
+    "path": "lib/python/Screens/Opkg.py",
+    "git_blob_sha": "118d272e31c6f953d0dbd19afd028037a62498fe"
+  },
+  "receiver_visual_verification": false,
+  "new_ipk_published": false
+}

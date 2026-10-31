@@ -23,13 +23,16 @@ def active(widget,keys):
 
 def widgets(name,keys):return [w for w in screen(name).findall('widget') if active(w,keys)]
 class ScreenCompatTests(unittest.TestCase):
- def test_approved_pig_screen_is_byte_identical_and_only_six_registered_screens_change(self):
+ def test_approved_pig_screen_is_byte_identical_and_only_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  layout=ROOT/'design/opkg-layout/layout.json'
+  if layout.exists():
+   for edit in json.loads(layout.read_text())['edits']:self.assertEqual(text.count(edit['updated_screen']),1);text=text.replace(edit['updated_screen'],edit['original_screen'],1)
   split=ROOT/'design/radio-dab-split/layout.json'
   if split.exists():
    for edit in json.loads(split.read_text())['edits']:self.assertEqual(text.count(edit['updated_screen']),1);text=text.replace(edit['updated_screen'],edit['original_screen'],1)
   for title in json.loads((ROOT/'design/radio-header/title.json').read_text())['edits']:self.assertEqual(text.count(title['updated_screen']),1);text=text.replace(title['updated_screen'],title['original_screen'],1)
-  self.assertEqual({x['name'] for x in record['edits']},{'GraphicalEPG','PackageAction','ParentalControlSetup','ParentalControlChangePin','Setup','TextBox'})
+  self.assertEqual({x['name'] for x in record['edits']},{'GraphicalEPG','PackageAction','ParentalControlSetup','ParentalControlChangePin','Setup','TextBox','NumberZapPicon'})
   for item in record['edits']:self.assertEqual(text.count(item['updated_screen']),1);text=text.replace(item['updated_screen'],item['original_screen'],1)
   import hashlib
   self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['before_skin_sha256'])

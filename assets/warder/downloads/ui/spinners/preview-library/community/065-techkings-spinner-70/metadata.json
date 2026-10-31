@@ -1,0 +1,156 @@
+{
+  "id": "065-techkings-spinner-70",
+  "folder": "065-techkings-spinner-70",
+  "title": "Spinner 70",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 70",
+      "name": "Spinner 70",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    82,
+    86
+  ],
+  "inner_size": [
+    82,
+    86
+  ],
+  "frame_count": 24,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "68fabf23fa4aebee5709c387c3ab52d364c7385846d0ad739d9c682001dbeff3"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "b2f09b9fd1c8d67c95a29a0153d314fd3c45fe1a91f96de4cd5212d6d41e1577"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "8bf023139e674f6594ba21750e0f5f824300307720fbe079a5eff8501d4612e3"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "ecc7308875323887f2bf8d8ae6ed1b93c735f34ee3e84ef46b6ff43184e2041d"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "a37f9c34a4d5d20625820c17a7dea2f88ec87aece647d0111e631267c24439fe"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "fb40f35d51b7b581af8f2592767428526771d058c6acf9b00cf2299d44475210"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "e1ddd3c230daa65b1ec96279f7e490cd967dade587cff45e4f94f83dcfa25848"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "456e2725e85e3f45d30b08e74ff54a7cefe4636c8402ccec325cdaf2df6b636a"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "2bf7bd399e1bdee1b54af481eb3ee2981be424a621f51e7c9fb18b624e24cea3"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "6511c14b44994d8ce8ee278cdf12ad9f2d0c45c66d95545808d4c65ebf94c7b4"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "f5a5ebcf0fc7f14b2f053f4119a29e04c4641002f3c52d27538cf28766dd5ba9"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "d068393760c6e34059b6e6c6a47ad14c3a45e0d9a635c2048abf71358c3964a5"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "bcdbaddc60d61d72a21148f53c04c0f2c50a1d83e54f772b63fcbc22f1d11940"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "3412eba0ea58023f56b2465446c7a8a9ae48fd1ad3c61f2ab715ce8874b7f79a"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "5ab369b6f56f4a438f0cd9d331bcb872cbe19d64e62ba4190a81e05636b3fc1f"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "705f941961c138e304d465b3c391c98c4d99418442093f556e2e39752d595ea6"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "601c9994b00c148caaa75b1be386b735526a17fcdec0f1f3df1ffb446f498d75"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "4ebe0b95efe620a0f95b005bbd4a9686740c446ebd72e3f46569cba61db345d4"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "85642430749cc88b75b471dc4f26a67a2f224ddc93502a8079ef5de6b9a9229e"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "1d50c3543cef6ae60db998771391653ff12af39c9453ddcda9d8c8856dae9b59"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "487d6729f342e5b54100d7640afc454bb36d2bf85c49e375e8623a1d8f452f9d"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "35fc692b69a60a58643fa46c93e515541c1d7c98efa5acb97642727c620cecfb"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "b38541ab733a4648b02dc4e913b12b96e95b3e2e853dd5557a92b64f011aae78"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "ed0266caab748f0629fcae1c6a9d907602338169c36e13b3d66f2ad1319ccd5d"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 77
+}

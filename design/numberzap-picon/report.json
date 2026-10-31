@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "owner_report": {
+    "receiver": "Octagon SF8008 Combo",
+    "reported_image": "Clean OpenATV 8.1 from 2026-10-30",
+    "log_build": "2026-10-30 / 8.0 36117+aaa789a",
+    "trigger": "Show picons in number zapping enabled; enter channel number",
+    "logs_reviewed": 2,
+    "exception": "AttributeError: 'ServiceEvent' object has no attribute 'text'",
+    "stack": [
+      "Screens/InfoBarGenerics.py:NumberZap.showPicon",
+      "Components/Sources/ServiceEvent.py:newService",
+      "Components/Renderer/Picon.py:changed"
+    ]
+  },
+  "cause": "NumberZapPicon connected ServiceEvent directly to native Picon. The matching upstream renderer reads source.text.",
+  "fix": "Insert the native ServiceName Reference converter in the NumberZapPicon Picon widget. All widget geometry and other NumberZap variants are unchanged.",
+  "verification": {
+    "matching_upstream": "openatv/enigma2@aaa789a",
+    "actual_upstream_exception_reproduced": true,
+    "actual_reference_converter_and_renderer_pass": true,
+    "next_digit_refresh_and_clear_pass": true,
+    "missing_icon_native_fallback_pass": true,
+    "all_native_Service_Picon_widgets_audited": true,
+    "numberzap_regressions": 4,
+    "screen_compatibility_tests": 8,
+    "radio_lyrics_tests": 121,
+    "dab_layout_tests": 15,
+    "keyboard_tests": 6
+  },
+  "large_menu_icons": {
+    "cause_confirmed": false,
+    "runtime_and_main_manifest_match": true,
+    "archive_root": "menuIconsBig",
+    "archive_size": 64183138,
+    "archive_parts": 86,
+    "archive_central_directory_entries": 125,
+    "archive_member_names_match_expected_root": true,
+    "complete_archive_download_hash_tested": false,
+    "needed_receiver_evidence": "Download result message and configured graphics path; the crash logs do not explain this separate download/copy issue."
+  },
+  "scope": {
+    "receiver_retest": false,
+    "new_ipk_published": false,
+    "stable_feed_changed": false,
+    "system_Enigma_files_modified": false,
+    "private_crash_logs_published": false
+  }
+}

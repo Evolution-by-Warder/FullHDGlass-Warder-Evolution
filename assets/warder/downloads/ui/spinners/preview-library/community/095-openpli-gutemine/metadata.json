@@ -1,0 +1,181 @@
+{
+  "id": "095-openpli-gutemine",
+  "folder": "095-openpli-gutemine",
+  "title": "Gutemine",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Gutemine",
+      "name": "Gutemine",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    93,
+    105
+  ],
+  "inner_size": [
+    85,
+    96
+  ],
+  "frame_count": 29,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "54b9c8684c84a4d5c5c3070d84e9a6465b1f57b0be467e894f60892adcfc55dc"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "54b9c8684c84a4d5c5c3070d84e9a6465b1f57b0be467e894f60892adcfc55dc"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "54b9c8684c84a4d5c5c3070d84e9a6465b1f57b0be467e894f60892adcfc55dc"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "53e6109e961fcc754998d8910b6dc141b50f3ccf0119c2c0cfb409a5659f68f9"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "53e6109e961fcc754998d8910b6dc141b50f3ccf0119c2c0cfb409a5659f68f9"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "53e6109e961fcc754998d8910b6dc141b50f3ccf0119c2c0cfb409a5659f68f9"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "c7dc86ed04fe8a7677c05cfed3b6b0986ce377ce7db438ebd22815cc2297571f"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "c7dc86ed04fe8a7677c05cfed3b6b0986ce377ce7db438ebd22815cc2297571f"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "c7dc86ed04fe8a7677c05cfed3b6b0986ce377ce7db438ebd22815cc2297571f"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "ca985f89f5aab092add1a558d58b1f32087df020480fe0468df4f32ba5548049"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "ca985f89f5aab092add1a558d58b1f32087df020480fe0468df4f32ba5548049"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "ca985f89f5aab092add1a558d58b1f32087df020480fe0468df4f32ba5548049"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "06a99343e7e37507dd5e87dafb859e6fd49e3afab467db25778dd2c40d6031b3"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "06a99343e7e37507dd5e87dafb859e6fd49e3afab467db25778dd2c40d6031b3"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "06a99343e7e37507dd5e87dafb859e6fd49e3afab467db25778dd2c40d6031b3"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "220ea2e6ee06debfbfd7d058a0da8ff8e946e4ab16e4bf9d06044fabe12dbbc3"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "220ea2e6ee06debfbfd7d058a0da8ff8e946e4ab16e4bf9d06044fabe12dbbc3"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "220ea2e6ee06debfbfd7d058a0da8ff8e946e4ab16e4bf9d06044fabe12dbbc3"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "8504b7ae13bd4708af083082d79c9bb18fa8169cb125d7097abdf171a1487d29"
+    },
+    {
+      "name": "wait25.png",
+      "sha256": "8504b7ae13bd4708af083082d79c9bb18fa8169cb125d7097abdf171a1487d29"
+    },
+    {
+      "name": "wait26.png",
+      "sha256": "8504b7ae13bd4708af083082d79c9bb18fa8169cb125d7097abdf171a1487d29"
+    },
+    {
+      "name": "wait27.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait28.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    },
+    {
+      "name": "wait29.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 107
+}

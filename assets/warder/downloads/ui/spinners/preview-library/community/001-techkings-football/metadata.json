@@ -1,0 +1,66 @@
+{
+  "id": "001-techkings-football",
+  "folder": "001-techkings-football",
+  "title": "Football",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Football",
+      "name": "Football",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    69,
+    67
+  ],
+  "inner_size": [
+    69,
+    67
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "c750fbae7fec9687d149a0b5ceadab60e1cb341d7f7074ae3460aac047fac3ce"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "a9f93b2ba31f78261aaea1c3dfb3bcfc3adf2e2f84b65f467c41b2cf41750688"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "36393eae9fbf913d69306cfa03c5cce95c1b20eb1f566d8c9a2394aba4372061"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "88b6d559962e6e97f2dab76f6d8959bae97578169d9e17c013bda2f4a30db183"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "895f05cca1261adfecdab972b54e95d1638d02b2f93c8ea496880832e61d8b92"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "e08d02e02e9c69783595f79d201f3034980adbb0759116be15b0421659498fab"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 13
+}

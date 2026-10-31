@@ -1,0 +1,96 @@
+{
+  "id": "096-openpli-harddrive",
+  "folder": "096-openpli-harddrive",
+  "title": "Harddrive",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Harddrive",
+      "name": "Harddrive",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    81,
+    105
+  ],
+  "inner_size": [
+    74,
+    96
+  ],
+  "frame_count": 12,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "e6e96e77647df4976d75bddb91da89581ec72f8ebcdcd8ffdde176060893e2bf"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "c478608e868c219f5ae02707568666d6f4f109f8df30aaf20f880f1f3d499a23"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "c90586a6ac5c733b24667aa2f5ff40773a0ae83ab93e79f4919d60ae0176b0ea"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "56d068c2df863fe351b13af149bd68d2eabcb39639dcb76fe1201d62d58d2a80"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "b5a4eee75835e85fac3fad64a0902d4b4ded507257e734cfbf63673f962e478e"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "518d7d3ff438ab342c491cc874d097461c3737d77d4d4ecfc74f7777dee6a62f"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "80de7e7d60d58ee039c4f8780cd18d147975ece2b9322a4c8ed9cc769122d097"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "2fcb1fdc94dfdaf827e3fa5b24f9afe52a1ab6adbe43d6f0fe85f11a22a425aa"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "7f703f38e8b1f4d955bf6ca7377a01aedc9727b41c3c0b76e879dfb78227aada"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "83f9af2de1f08403d0cdc494bc48ead55e860015e058608ec330b2d4f3ad2915"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "5b885827d8c408ffd4008559f2fed5d7197b48f08ae8fe5e9752bedef8ae80eb"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "71eac02b81afcaeb1095e3349a1956e1ad799535f2891db561f8164b3b5143ee"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed",
+  "original_review_number": 108
+}
