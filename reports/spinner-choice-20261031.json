@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "product": "FullHDGlass",
+  "state": "prepared-source-not-released",
+  "branch": "feature/spinner-choice-20261031",
+  "base_commit": "f7fb5fefd69649824468c6fa99318e7dfc28964e",
+  "public_version_unchanged": "1.0.49",
+  "new_ipk_created": false,
+  "production_feeds_changed": false,
+  "trezor_changed": false,
+  "approved_menu_entries_sk": [
+    "Holubica",
+    "HDGlass - bakussa"
+  ],
+  "contributor": "bakussa",
+  "source_archive": "assets/warder/downloads/ui/spinners/bakussa-original.zip",
+  "source_archive_sha256": "47f12b9654349e3bfe909111a5bfdbd260954f311a251b079cf3d1f53848f3ee",
+  "themes": {
+    "dove": {
+      "frames": 18,
+      "size": [
+        128,
+        88
+      ],
+      "decoded_32bit_surface_bytes": 45056
+    },
+    "bakussa": {
+      "frames": 20,
+      "size": [
+        104,
+        104
+      ],
+      "decoded_32bit_surface_bytes": 43264
+    }
+  },
+  "behavior": {
+    "default_dove_byte_preserved": true,
+    "ok_choice_list_and_left_right_selection": true,
+    "cancel_does_not_apply": true,
+    "saved_choice_reapplied_after_upgrade": true,
+    "owned_extra_frames_removed_before_uninstall": true,
+    "unknown_user_files_and_symlinks_preserved": true,
+    "failed_copy_or_swap_keeps_previous_set": true,
+    "catalog_extension_tested_with_third_theme": true,
+    "native_loader_playback": true,
+    "additional_playback_workers_or_timers": false,
+    "persistent_diagnostic_logs": false,
+    "system_and_user_spinner_paths_changed": false,
+    "user_spinner_retains_precedence": true
+  },
+  "validation": {
+    "spinner_selection_tests": 29,
+    "existing_spinner_asset_tests": 13,
+    "settings_style_tests": 22,
+    "history_and_radio_header_tests": 8,
+    "settings_batch_tests": 14,
+    "package_transition_tests": 6,
+    "bytecode_upgrade_guard": "passed",
+    "runtime_safety_guard": "passed",
+    "shell_syntax": "passed",
+    "frozen_radio_graphics_layout_and_production_package_guard": "passed",
+    "optional_preview_fixture": "Initial sparse-worktree fixture absence corrected using the exact tracked Git blob; the isolated failed test passed on rerun."
+  },
+  "receiver_test": {
+    "existing_dove": "previously confirmed by owner",
+    "bakussa_and_selection": "pending; desktop checks are not a framebuffer/device test"
+  },
+  "next_release": "Include pending compound-artist fix 95990e2dd78a29a1070b48dab28517342754c7f5 when a new release is authorized.",
+  "source_commit": "5b62d9087a82bc50e9994b33e0b110609ee85a10"
+}
