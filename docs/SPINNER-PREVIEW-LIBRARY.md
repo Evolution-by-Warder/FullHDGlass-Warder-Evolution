@@ -21,18 +21,37 @@ No browser, CSS rendering or conversion is required on a receiver.
 The collection is outside the install payload. It is for review; later release
 work must account for package size and include only approved/runtime-ready assets.
 
-## Sources still awaiting archives
+## Community archives supplied by the owner
 
-* TechKings `spinners with setup.zip`: advertised 88 animations. The page and
-  the exact attachment URL returned HTTP 403 when retrieval was attempted.
-  Attachment: https://www.techkings.org/attachments/spinners-with-setup-zip.14106/
-* OpenPLi `Spinner Pack_2_1.rar`: the source topic returned HTTP 403 and the web
-  retrieval service could not open it. Contents have not been obtained or checked.
-  Topic: https://forums.openpli.org/topic/57875-anderen-spinner-und-vil-anderes-bootlogo-gesucht/
+Both forums initially returned HTTP 403. The owner then attached the actual
+archives, so no further remote access or login is needed:
 
-These two are not counted as assimilated. Obtain the original archives from
-the owner or a legitimately accessible source before importing, crediting and
-checking them. Do not run old selector installers or replace system spinner paths.
+* `spinners with setup.zip`: actual contents contain **83** PNG sequences,
+  rather than the 88 advertised in the source post. SHA-256
+  `96c8b5131d0e10a45663cc24454afce946b39a47813575d9e1f9943bd6e0bbab`.
+* `Spinner Pack_2_1.rar`: **58** PNG sequences. SHA-256
+  `bb4159ff9bd7fde37bfcfb12df747d1aa7631bc605b5fdac5285443f4faaa110`.
+* `spinner_football_soccer.zip`: one six-frame sequence. SHA-256
+  `1cc8da9d04553bd51808e6cb22f3fb68a705b16829d500b6d48aae5e63e65e95`.
+
+All 142 sequences were read and validated, producing 1,797 native RGBA frames.
+No exact duplicates were found after normalization. Community artwork retains
+its original colors and numeric frame order. Small originals are not enlarged;
+large frames fit a 96-pixel inner area on the common transparent 104×104 canvas.
+Existing opaque backgrounds are not guessed away; metadata records their presence.
+The archive originals are preserved unchanged under `sources/community/`.
+Thumbnail caches and the setup PDF are not included in the runtime-frame folders.
+No installers are executed and no system spinner paths are replaced.
+
+The collection's ekremtt credit is carried as an attributed collection credit.
+Missing author or license details are stated as unknown, never invented. Each
+folder retains its source archive/folder and frame checksums. SpinKit's MIT
+license applies to SpinKit only and is not asserted for the community archives.
+
+Together there are **154** spinner folders and **1,988** native frames. The root
+`index.html` shows exactly one animation at a time. Every spinner also has its
+own page, preview, native frames and attribution. The complete viewing archive is
+`assets/warder/downloads/ui/spinners/preview-library/warder-spinnery-na-vyber.zip`.
 
 The approved blue bakussa derivative remains on the base branch in
 `design/spinner-choice/bakussa-blue-centered/`. Its original archive remains
