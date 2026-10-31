@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "source_branch": "fix/opkg-numberzap-20261031",
+  "source_commit": "45bdc880ad75bb156744d8b4599b3bdc3eb19e90",
+  "base_header_fix": "07b1d4e93f5937cb964bc5e4bfa3651a0ddd4801",
+  "compatibility_workflow_run": 41231306503,
+  "compatibility_conclusion": "success",
+  "crash": {
+    "reported_box": "Octagon SF8008 Combo",
+    "reported_image": "OpenATV 8.1 clean installation dated 2026-10-30",
+    "log_build": "2026-10-30 / 8.0 36117+aaa789a",
+    "confirmed_exception": "AttributeError: 'ServiceEvent' object has no attribute 'text'",
+    "confirmed_source_defect": "NumberZapPicon directly connected ServiceEvent to a renderer requiring source.text.",
+    "prepared_fix": "Native ServiceName Reference converter inserted in the skin XML.",
+    "matching_upstream_reproduction_and_fix_tests": 4,
+    "physical_receiver_retest": "pending",
+    "private_logs_published": false
+  },
+  "installer_layout": {
+    "window_before": "1350x720",
+    "window_after": "1800x960",
+    "log_before": "1230x315 at y=300",
+    "log_after": "1680x720 at y=120",
+    "component_bindings": "unchanged",
+    "other_screen_bytes": "unchanged apart from separately registered NumberZap fix",
+    "receiver_preview": "pending"
+  },
+  "large_menu_icons": {
+    "cause_confirmed": false,
+    "runtime_and_main_manifest_match": true,
+    "archive_central_directory_entries": 125,
+    "expected_root": "menuIconsBig",
+    "complete_archive_hash_download_checked": false,
+    "required_evidence": "Download result message and configured graphics path"
+  },
+  "validation": {
+    "radio_lyrics_tests": 121,
+    "screen_compatibility_tests": 8,
+    "dab_artwork_tests": 15,
+    "keyboard_tests": 6,
+    "copy_result_checks": "passed",
+    "radio_release_guard": "passed"
+  },
+  "next_release": "Include reviewed installer layout, header version synchronization and NumberZap fix with the next package. Existing TEST4 IPK and stable feeds are unchanged.",
+  "new_ipk_published": false
+}
