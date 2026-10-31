@@ -289,6 +289,16 @@ class PinnedLayoutTests(unittest.TestCase):
     def test_only_two_reviewed_radio_screens_gain_the_one_extra_slideshow_widget(self):
         record = json.loads((ROOT/'design/radio-dab-split/layout.json').read_text())
         text = (ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        layout=ROOT/'design/opkg-layout/layout.json'
+        if layout.exists():
+            for edit in json.loads(layout.read_text())['edits']:
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
+        compatibility=ROOT/'design/openatv-compatibility/skin-edits.json'
+        for edit in json.loads(compatibility.read_text())['edits']:
+            if edit['name']=='NumberZapPicon':
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
         self.assertEqual(hashlib.sha256(text.encode()).hexdigest(), record['updated_skin_sha256'])
         self.assertEqual({edit['name'] for edit in record['edits']}, {'RdsInfoDisplay','RdsDisplay'})
         for edit in record['edits']:

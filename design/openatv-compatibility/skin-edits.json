@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "scope": "Only the six reviewed controller compatibility changes; the approved GraphicalEPGPIG and all radio artwork remain byte-for-byte unchanged.",
+  "scope": "Seven reviewed controller compatibility screens, including the typed NumberZapPicon ServiceEvent-to-reference conversion. Approved PIG/radio artwork remains unchanged.",
   "before_skin_sha256": "7af1ecd32e972d723b1bf05309c4cfffefbc1f1e15e18629db2d46fd14e63a42",
-  "after_skin_sha256": "0756ec621802385bf22665d9346a34e8e15f88952c0a18a568fa758394e6dae6",
+  "after_skin_sha256": "1b86069e4488c97ea64615e739aca6b32b2dd71e8e5c68c56f105bfc8602d410",
   "edits": [
     {
       "name": "GraphicalEPG",
@@ -33,6 +33,11 @@
       "name": "TextBox",
       "original_screen": "<screen name=\"TextBox\" position=\"0,0\" size=\"1920,1080\" title=\"TextBox\" flags=\"wfNoBorder\" backgroundColor=\"background\">\n\t\t<widget name=\"text\" position=\"0,0\" size=\"1920,1080\" font=\"Prive4;32\" scrollbarMode=\"showOnDemand\" halign=\"center\" valign=\"center\" />\n\t</screen>",
       "updated_screen": "<screen name=\"TextBox\" position=\"0,0\" size=\"1920,1080\" title=\"TextBox\" flags=\"wfNoBorder\" backgroundColor=\"background\">\n\t\t<widget name=\"text\" position=\"0,0\" size=\"1920,1080\" font=\"Prive4;32\" scrollbarMode=\"showOnDemand\" halign=\"center\" valign=\"center\" excludes=\"key_red\" />\n    <widget name=\"text\" position=\"0,0\" size=\"1920,990\" font=\"Prive4;32\" scrollbarMode=\"showOnDemand\" halign=\"center\" valign=\"center\" includes=\"key_red\" />\n    <widget source=\"key_red\" render=\"Label\" position=\"30,1010\" size=\"450,48\" font=\"Prive3;30\" foregroundColor=\"red\" halign=\"center\" valign=\"center\" transparent=\"1\" conditional=\"key_red\" />\n\t</screen>"
+    },
+    {
+      "name": "NumberZapPicon",
+      "original_screen": "<screen name=\"NumberZapPicon\" position=\"center,435\" size=\"1050,240\" title=\"Channel\">\n    <widget source=\"Service\" render=\"Picon\" position=\"45,45\" size=\"180,108\" alphatest=\"on\" />\n    <widget name=\"channel\" position=\"270,35\" size=\"210,42\" font=\"Prive3;33\" />\n    <widget name=\"number\" position=\"495,35\" size=\"150,42\" halign=\"right\" font=\"Prive3;33\" />\n    <widget name=\"servicenumber\" position=\"495,35\" size=\"150,42\" halign=\"right\" font=\"Prive3;33\" />\n    <widget name=\"servicename\" position=\"270,105\" size=\"735,60\" font=\"Prive3;36\" halign=\"left\" valign=\"center\" />\n  </screen>",
+      "updated_screen": "<screen name=\"NumberZapPicon\" position=\"center,435\" size=\"1050,240\" title=\"Channel\">\n    <widget source=\"Service\" render=\"Picon\" position=\"45,45\" size=\"180,108\" alphatest=\"on\">\n      <convert type=\"ServiceName\">Reference</convert>\n    </widget>\n    <widget name=\"channel\" position=\"270,35\" size=\"210,42\" font=\"Prive3;33\" />\n    <widget name=\"number\" position=\"495,35\" size=\"150,42\" halign=\"right\" font=\"Prive3;33\" />\n    <widget name=\"servicenumber\" position=\"495,35\" size=\"150,42\" halign=\"right\" font=\"Prive3;33\" />\n    <widget name=\"servicename\" position=\"270,105\" size=\"735,60\" font=\"Prive3;36\" halign=\"left\" valign=\"center\" />\n  </screen>"
     }
   ]
 }
