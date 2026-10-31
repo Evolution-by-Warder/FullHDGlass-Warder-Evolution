@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-31",
+  "authorization": "Owner requested activating all three existing-version update channels and short web descriptions.",
+  "package_bytes_unchanged": true,
+  "owner_receiver_evidence": {
+    "batch_gui_installation_completed": true,
+    "settings_preserved_banner": true,
+    "numberzap_picon_visible_without_crash": true,
+    "device": "GigaBlue Quad4KPro",
+    "image": "OpenATV 8.0.1",
+    "original_forum_octagon_retest": false,
+    "all_features_tested": false
+  },
+  "limits": [
+    "PiconHub 0.1.32 requires one manual short-name IPK install; no long filename alias is created.",
+    "Legacy FullHDGlass 1.0.18 and GSU r93 identity bridge feeds remain unchanged.",
+    "FullHDGlass updater accepts raw repository package URLs, so the byte-identical IPK is also published there."
+  ],
+  "product": "FullHDGlass",
+  "release": {
+    "version": "1.0.51",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk",
+    "sha256": "499ef0eaf5785c7a07eea4e52911350b3bb14fc251b5236b391fff1a8c6b266a",
+    "changelog": "Opravený pád pri číselnom prepínaní kanálov so zapnutými piconmi. Spoľahlivejšia inštalácia a prechod zo starších verzií, opravené náhľady ikon menu, priestrannejší inštalačný výpis a správne zobrazovanie čísla verzie. Pridaný výber animácie čakania a spresnené rozpoznávanie interpretov v rádiovom režime."
+  },
+  "packaged_source_commit": "7823d0cbe7ab6d864f6d3e9324cc78f4cd086509",
+  "raw_public_package_bytes_verified": true,
+  "production_feed": "main/update-production.json",
+  "test_feed": "warder-modernization-work/update-test.json",
+  "frozen_legacy_feed": "main/update.json"
+}
