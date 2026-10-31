@@ -4,13 +4,13 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 30 October 2026
 
-**FullHDGlass 1.0.45** restores graphical MultiEPG colour captions and actions after OpenATV's EPG refactor. It also adapts current EPG configuration, video codec names, parental-control forms and package/text-dialog keys. [Current release](docs/CURRENT-RELEASE.md) · [Compatibility audit](docs/OPENATV-COMPATIBILITY-20261030.md) · [Production evidence](docs/PRODUCTION.json).
+**FullHDGlass 1.0.47** shows the four latest History entries as separate, concise blocks and restores a translated radio-mode caption in the header. It includes the repaired dove spinner confirmed by the owner on their receiver. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
 
-The production updater offers 1.0.45 as a normal upgrade. Current OpenATV interface checks gate each release and run daily on GitHub. Approved radio animation, virtual keyboard, picons and managed radio bouquet remain preserved. Automated checks are complete; physical receiver confirmation of these new fixes is pending.
+The normal updater offers 1.0.47 to both production 1.0.45 and spinner-test users. Full historical records remain in the repository; only their UI view is compact. Approved graphics, settings, keyboard and EPG are preserved.
 
 ## Installation
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.47/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 

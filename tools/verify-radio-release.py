@@ -46,6 +46,13 @@ def digest_graphics():
         assert hashlib.sha256(asset.read_bytes()).hexdigest()==entry['sha256']
         assert hashlib.sha256((PAYLOAD/entry['source']).read_bytes()).hexdigest()==entry['source_sha256']
         pinned.add(asset)
+    spinner=json.loads((ROOT/'design/spinner-repair/production.json').read_text())
+    expected_spinner={entry['path'] for entry in spinner['assets']}
+    assert {p.relative_to(PAYLOAD).as_posix() for p in (PAYLOAD/'usr/share/enigma2/hd_glass17/spinner').glob('*.png')}==expected_spinner
+    for entry in spinner['assets']:
+        path=PAYLOAD/entry['path']
+        assert hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256']
+        pinned.add(path)
     digest = hashlib.sha256()
     for path in sorted(PAYLOAD.rglob("*")):
         if path==header or path in pinned:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.
@@ -53,6 +60,13 @@ def digest_graphics():
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
             raw=path.read_bytes()
             if path==keyboard_skin:
+                title=ROOT/'design/radio-header/title.json'
+                if title.exists():
+                    text=raw.decode()
+                    for edit in json.loads(title.read_text())['edits']:
+                        assert text.count(edit['updated_screen'])==1
+                        text=text.replace(edit['updated_screen'],edit['original_screen'],1)
+                    raw=text.encode()
                 edits=ROOT/'design/openatv-compatibility/skin-edits.json'
                 if edits.exists():
                     ledger=json.loads(edits.read_text())

@@ -25,6 +25,7 @@ def widgets(name,keys):return [w for w in screen(name).findall('widget') if acti
 class ScreenCompatTests(unittest.TestCase):
  def test_approved_pig_screen_is_byte_identical_and_only_six_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  for title in json.loads((ROOT/'design/radio-header/title.json').read_text())['edits']:self.assertEqual(text.count(title['updated_screen']),1);text=text.replace(title['updated_screen'],title['original_screen'],1)
   self.assertEqual({x['name'] for x in record['edits']},{'GraphicalEPG','PackageAction','ParentalControlSetup','ParentalControlChangePin','Setup','TextBox'})
   for item in record['edits']:self.assertEqual(text.count(item['updated_screen']),1);text=text.replace(item['updated_screen'],item['original_screen'],1)
   import hashlib

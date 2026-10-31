@@ -77,6 +77,11 @@ on:
       - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
       - source/package-root/usr/share/enigma2/hd_glass17/buttons/vkey_*
       - tools/test-radio-lyrics.py
+      - tools/test-history-radio-header.py
+      - design/radio-header/**
+      - design/spinner-repair/production.json
+      - source/package-root/usr/share/enigma2/hd_glass17/spinner/**
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHistory.py
       - tools/test-virtual-keyboard.py
       - tools/check-openatv-interfaces.py
       - tools/test-openatv-*.py
@@ -147,6 +152,8 @@ jobs:
           python3 tools/test-radio-spectrum.py -v
           python3 tools/test-runtime-cleanup.py -v
           python3 tools/test-radio-background.py -v
+          python3 tools/test-history-radio-header.py -v
+          python3 tools/test-spinner-candidate.py -v
           python3 tools/test-radio-lyrics.py -v
           python3 tools/test-setup-style.py -v
           python3 tools/test-help-preview.py -v

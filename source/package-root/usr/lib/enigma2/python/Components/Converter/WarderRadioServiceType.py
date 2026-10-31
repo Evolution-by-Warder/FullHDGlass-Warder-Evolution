@@ -33,6 +33,9 @@ class WarderRadioServiceType(Converter):
 
     @cached
     def getText(self):
+        if self.kind == 'RadioMode':
+            from Plugins.Extensions.setupGlass17.warderUiText import ui_text
+            return ui_text('Radio mode').upper()
         if self.kind == 'Date':
             from Components.Language import language
             return radio_date(self.source.time,language.getLanguage())

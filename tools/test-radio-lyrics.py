@@ -444,12 +444,12 @@ class LayoutTests(unittest.TestCase):
             for w in screen:
                 x,y=map(int,w.get('position').split(','));width,height=map(int,w.get('size').split(','))
                 self.assertTrue(x>=0 and y>=0 and x+width<=1920 and y+height<=1080,w.attrib)
-    def test_radio_header_removes_middle_title_and_places_seconds_next_to_minutes(self):
+    def test_radio_header_restores_one_localized_mode_title_and_keeps_seconds_next_to_minutes(self):
         skin=ET.parse(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').getroot()
         from PIL import ImageFont
         for name in ('RdsInfoDisplay','RdsDisplay'):
             screen=skin.find("screen[@name='%s']"%name)
-            self.assertFalse(any(c.text=='Radio' for c in screen.findall('widget/convert')))
+            self.assertEqual(len([c for c in screen.findall('widget/convert') if c.text=='RadioMode']),1)
             date=next(w for w in screen.findall('widget') if w.findtext('convert')=='Date')
             self.assertEqual(date.find('convert').get('type'),'WarderRadioServiceType')
             large=next(w for w in screen.findall('widget') if w.findtext('convert')=='Format:%H:%M')
@@ -468,6 +468,11 @@ class LayoutTests(unittest.TestCase):
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
         # Reverse only the exact reviewed compatibility screens, then the
         # independently verified keyboard repair. Keep the original baseline.
+        title_edits=ROOT/'design/radio-header/title.json'
+        if title_edits.exists():
+            for edit in json.loads(title_edits.read_text())['edits']:
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
         compatibility=ROOT/'design/openatv-compatibility/skin-edits.json'
         if compatibility.exists():
             for edit in json.loads(compatibility.read_text())['edits']:

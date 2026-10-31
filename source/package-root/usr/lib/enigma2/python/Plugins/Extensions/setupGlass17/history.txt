@@ -1,3 +1,11 @@
+FullHDGlass 1.0.47 — 31.10.2026
+Readable History: four latest entries, separate headings, dividers and brief wrapped descriptions.
+A radio-mode title is restored in the centre of the header and follows the active OSD language.
+Includes the repaired animated dove spinner confirmed by the owner on their receiver.
+
+FullHDGlass 1.0.46-test1 — 31.10.2026
+Repaired transparent original dove spinner; test candidate confirmed by the owner on their receiver.
+
 FullHDGlass Warder Evolution 1.0.45 — 30.10.2026
 OpenATV compatibility: restored MultiEPG colour captions and actions on the refactored grid, current EPG settings and video codec API, complete parental-control forms and package/text-dialog keys. Read-only source compatibility gates run on GitHub, without receiver logs or polling.
 

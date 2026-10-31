@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "version": "1.0.47",
+  "owner_confirmed_on": "2026-10-31",
+  "owner_confirmation": "laska teraz to je prefektne",
+  "confirmation_scope": "Owner reported spinner candidate 1.0.46-test1 perfect on their receiver. This is owner feedback, not an independent all-receiver test.",
+  "assets": [
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait1.png",
+      "sha256": "82337fd1aeea02cf5acfdec8e0d03f7a305e8fbc23353867fbf9f0bc69c7aa66"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait2.png",
+      "sha256": "ea44102ba98de5385d74f9974148f29404a4ce273641f261613a76420f9ef6c1"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait3.png",
+      "sha256": "3b17f785212a4338368ee6dc8ce78ac1510f2f10dc2ef1731166002b687cfc04"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait4.png",
+      "sha256": "778bbd80a363383d506de5e1bc64e13d299f4ce1cedfb6420544ec4b4d9778fe"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait5.png",
+      "sha256": "787eb5ccec7a64b89d567bbb70b443cdba7a41a053ca24d3e417c0b10f4a8b7c"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait6.png",
+      "sha256": "27e3f3b73c2fd796060b85376dc4350f7ff75a2f05c9d38a6536054020e4b41a"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait7.png",
+      "sha256": "dc5281bbe54779fb80b782c67a09f2d131b58402eb92253c9d8631c0059ab330"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait8.png",
+      "sha256": "f9400e96755521a6fa59b557e91a4f030323a21a6c6230a0c0c88060d7a0b777"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait9.png",
+      "sha256": "a0576a6c2c6a982b9a603f93a76a03a033aa0cb2a531f528d2080a494ecb119f"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait10.png",
+      "sha256": "1c071e63be8af121993b8244a09458ea1525c81c5c6ec6d5ec752792445d3282"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait11.png",
+      "sha256": "16bbff281be22809653af2a191dc5d3bdf978bdbea62be92d9f012d6f3624b1d"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait12.png",
+      "sha256": "01604668e8f020daa6f1a06c6570002f5c76f8bf665fb46ce23eac94d843ae8c"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait13.png",
+      "sha256": "5ad2a794e3f261fff5f7d12e25b5f792e3c8ce7351d56061fe491915d410d6c0"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait14.png",
+      "sha256": "d7d557903bf341c8584a0ae9ae351702c3e74f4c6bd87706e8ddf928e5a92428"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait15.png",
+      "sha256": "a9afa24f7211d594701434f1df578b93c0b702a3592a2aa94d5a4a89ba171ea7"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait16.png",
+      "sha256": "989a18d5d2124d445d0161bfbdfc412371b2969cd2d4b50474bb7a9aefa98ed2"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait17.png",
+      "sha256": "c072a92d66f9d6f3879ec92a1c488605326df7e1d43110e99e71f14e654b72ea"
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/spinner/wait18.png",
+      "sha256": "d0cc15173860301eed72327b3202037b028b7a0e02b0eb7c827ff76ef8fe3533"
+    }
+  ]
+}

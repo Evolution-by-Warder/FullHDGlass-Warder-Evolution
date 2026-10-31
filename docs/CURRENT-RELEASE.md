@@ -1,14 +1,11 @@
-# FullHDGlass 1.0.45
+# FullHDGlass 1.0.47
 
-Kompatibilita s aktuálnym OpenATV po refaktorovaní EPG a systémových obrazoviek.
+História skinu teraz zobrazuje posledné štyri záznamy. Každý má samostatný svetlomodrý nadpis s verziou a dátumom, krátky popis najviac na troch riadkoch a deliacu čiaru. Text sa zalamuje podľa skutočnej šírky písma v prijímači. Úplné záznamy zostávajú zachované v súboroch a na Gite; výpis výsledkov inštalácie sa nemení.
 
-- MultiEPG znova vytvára všetky štyri farebné popisy a pripája ich k skutočnému novému ovládaču mriežky. Červené otvorí náš PROGRAM INFO, zelené časovač, žlté dátum/čas a modré vyhľadávanie EPG. Ošetrené opakované stlačenie aj návrat z PROGRAM INFO. Starší ovládač zostáva podporovaný.
-- Nové nastavenia EPG používajú aktuálnu štruktúru a platné identifikátory akcií. Zachované rozloženie GraphicalEPGPIG, PIG, počet riadkov a picony. Bežné GraphicalEPG správne vykresľuje zdroje farebných popisov.
-- Video kodeky používajú autoritatívnu tabuľku OpenATV vrátane AVS2; zachované staršie tabuľky a náhradné načítanie z ovládača.
-- Rodičovská ochrana a zmena PIN obsahujú nové povinné popisy a pätičku; staršie systémy si zachovajú pôvodný zoznam. Správca balíkov zobrazí novú modrú voľbu vyhľadávania a MENU. Textový dialóg zobrazí nové červené ukončenie. Spoločné Setup zobrazí voliteľnú voľbu MENU.
+V strede hornej lišty rádia sa znova zobrazuje označenie režimu: napríklad **REŽIM RÁDIA** v slovenčine a **RADIO MODE** v angličtine. Používa existujúci prekladový mechanizmus, má pripravené preklady pre všetkých 20 podporovaných jazykov a nemení polohu názvu skinu, dátumu ani hodín.
 
-Kontrola aktuálnych rozhraní OpenATV je povinnou podmienkou zostavenia a beží aj denne na Gite. Nepridáva diagnostiku ani prácu na prijímači. Podrobnosti a overené revízie sú v [zázname kontroly](OPENATV-COMPATIBILITY-20261030.md).
+Súčasťou je presná animácia holubice z testu 1.0.46-test1, ktorú používateľ potvrdil ako perfektnú v prijímači. Jej 18 snímok RGBA 128 × 88 px sa načíta natívne z priečinka skinu. Systémové spinner súbory sa nepresúvajú ani neprepisujú.
 
-Inštalačný súbor má výhradne krátky názov. Aktualizátor ponúkne 1.0.45 ako bežnú aktualizáciu. Schválená animácia rádia, klávesnica, picony a rádio bouquet zostávajú zachované.
+Ide o bežnú aktualizáciu z produkčnej 1.0.45 aj skúšobnej 1.0.46-test1. Po inštalácii reštartovať GUI. Automatické kontroly chránia existujúce nastavenia, grafiku, rádio, klávesnicu aj EPG. Nový nadpis a formát Histórie ešte čakajú na fyzické potvrdenie.
 
-Overené automatickými kontrolami; nové opravy ešte vyžadujú potvrdenie na fyzickom prijímači.
+Úprava Histórie GSU a PiconHubu je podľa pokynu vlastníka zaznamenaná v ich `NEXT-RELEASE.md`; nevydávajú sa pre ne samostatné IPK.

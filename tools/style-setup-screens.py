@@ -219,6 +219,7 @@ def strip_reviewed_radio_start(tree):
 
 
 def normalized(tree):
+    tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/radio-header/history-logic.json').read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/openatv-compatibility/logic-edits.json').read_text()))
     tree=strip_reviewed_batch(tree,json.loads((ROOT/'design/runtime-cleanup-logic.json').read_text()))
     tree=strip_reviewed_radio_start(tree)
