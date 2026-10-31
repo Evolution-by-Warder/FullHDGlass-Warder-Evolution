@@ -78,3 +78,9 @@ Prepared branch: `feature/spinner-preview-library-20261031`, frozen preview-asse
 The owner also approved the blue bakussa derivative with trailing 17 removed and the original caption centered. That review variant is preserved at `fb405579a9ba145a22a371790642452d3133c0ec`; the already published receiver-test IPK remains unchanged. Before shipping updated bakussa frames, handle previously installed bakussa hashes during private-folder upgrade cleanup (including the old twenty-frame tail) and test migration to the new artwork. Do not replace bytes in an already published IPK.
 
 Production and native TEST feeds remain 1.0.49. Pending compound-artist recognition stays deferred for the next authorized production release. No further Trezor changes were made for the preview collection.
+
+## Owner review complete — duplicates removed
+
+Owner finished reviewing the complete spinner library and requested removing duplicates. Original review entry 9 (Circle Fade) is removed, entry 8 (Circle) is kept, and original entry 146 (Taube) is removed as a duplicate of the installed Dove. Active collection: **152** folders / **1,958** native frames. Current cleaned assets: branch `review/spinner-library-20261031`, commit `62ef4033be67693619d5ab98d2f8266bed309dc7`. Folders, group/combined catalogues and viewing ZIPs were cleaned; remaining images and original source archives are preserved. Original review numbers stay recorded in metadata, while the finished-review gallery can use its current list positions. Policy is reapplied by generators to prevent duplicates returning.
+
+Original review entry 31 (`019-techkings-spinner-24`) remains pending a brighter variant. The blue centered-caption bakussa derivative is already approved as noted above. No new IPK, updater change or Trezor change was authorized or made for this cleanup. See `reports/spinner-owner-review-20261031.json`.

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "date": "2026-10-31",
-  "state": "owner-review-in-progress",
+  "state": "owner-review-completed-duplicates-removed",
   "library_commit": "0ea1295bb32ffa78fb43b8f29fe2b4c0b86197c2",
   "library_count": 154,
   "numbering_frozen_during_review": true,
@@ -21,7 +21,7 @@
       ],
       "owner_comment": "8 a 9 je to isté.",
       "classification": "visual-duplicate-by-owner",
-      "resolution": "Keep at most one of this pair in the final selection; representative not chosen yet."
+      "resolution": "Removed original review entry 9; kept entry 8."
     },
     {
       "numbers": [
@@ -49,8 +49,31 @@
       ],
       "owner_comment": "146 je naša holubica, čiže dupla.",
       "classification": "duplicate-of-existing-dove",
-      "resolution": "Exclude entry 146 from the final additions; retain the existing receiver-confirmed Dove. Keep review numbering unchanged."
+      "resolution": "Removed original review entry 146 from folders, gallery and viewing ZIPs; existing receiver-confirmed Dove remains."
     }
   ],
-  "new_ipk_authorized": false
+  "new_ipk_authorized": false,
+  "review_completed_by_owner": true,
+  "active_library_count": 152,
+  "active_library_branch": "review/spinner-library-20261031",
+  "active_library_commit": "62ef4033be67693619d5ab98d2f8266bed309dc7",
+  "native_frames": 1958,
+  "removed_original_review_numbers": [
+    9,
+    146
+  ],
+  "excluded_ids": [
+    "spinkit-circle-fade",
+    "134-openpli-taube"
+  ],
+  "pending_brightness_id": "019-techkings-spinner-24",
+  "original_review_numbers_retained_in_metadata": true,
+  "verification": {
+    "workflow_run": 41201826821,
+    "conclusion": "success",
+    "published_spinkit_directories": 11,
+    "published_community_directories": 141,
+    "remaining_png_and_gif_files_verified_unchanged": 2110,
+    "original_source_archives_unchanged": true
+  }
 }
