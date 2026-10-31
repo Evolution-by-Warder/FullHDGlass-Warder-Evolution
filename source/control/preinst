@@ -11,7 +11,8 @@ warder_prepare_legacy_obsolete_files() {
     for warder_obsolete in /tmp/plugin-17.py /usr/lib/enigma2/python/Screens/Menu-new17-38.py; do
         if awk -v path="$warder_obsolete" '$1 == path { found = 1 } END { exit !found }' "$warder_old_list" &&
            [ ! -e "$warder_obsolete" ] && [ ! -L "$warder_obsolete" ]; then
-            (set -C; umask 077; : > "$warder_obsolete") || return 1
+            (set -C; umask 077; : > "$warder_obsolete") || return 2
+            echo "Prepared obsolete legacy entry: $warder_obsolete"
         fi
     done
     return 0
@@ -55,10 +56,24 @@ warder_verified_r12_upgrade() {
     done
     return 1
 }
-if [ "$WARDER_PACKAGE_ID" = enigma2-plugin-skins-fullhdglass-warder-evolution ] && command -v opkg >/dev/null 2>&1; then
-    if opkg status enigma2-skin-fullhdglass17 2>/dev/null | awk '$1 == "Package:" { package = $2 } /^Status:/ { if (package == "enigma2-skin-fullhdglass17" && $NF == "installed") found = 1 } END { exit !found }' &&
+if [ "$WARDER_PACKAGE_ID" = enigma2-plugin-skins-fullhdglass-warder-evolution ]; then
+    # This preparation must not be short-circuited by a retained transition
+    # manifest or by a nested status query during the parent opkg invocation.
+    warder_upgrade_prepared=0
+    if warder_verified_r12_upgrade "$@"; then
+        warder_upgrade_prepared=1
+        echo "Verified legacy upgrade preparation completed."
+    else
+        warder_prepare_result=$?
+        if [ "$warder_prepare_result" -eq 2 ]; then
+            echo "Could not prepare a tracked obsolete legacy entry. Installation aborted."
+            exit 1
+        fi
+    fi
+    if command -v opkg >/dev/null 2>&1 &&
+       opkg status enigma2-skin-fullhdglass17 2>/dev/null | awk '$1 == "Package:" { package = $2 } /^Status:/ { if (package == "enigma2-skin-fullhdglass17" && $NF == "installed") found = 1 } END { exit !found }' &&
        [ ! -f /var/lib/fullhdglass17/package-transition-v1/manifest.json ] &&
-       ! warder_verified_r12_upgrade "$@"; then
+       [ "$warder_upgrade_prepared" -ne 1 ]; then
         echo "This legacy installation needs a verified transition before replacing it."
         exit 1
     fi

@@ -114,6 +114,29 @@ class DirectLegacyTests(unittest.TestCase):
             self.assertEqual(path.read_bytes(),b'')
             path.unlink()  # The subsequent real opkg prune must now succeed.
 
+    def test_tracked_cleanup_runs_even_with_previous_transition_manifest(self):
+        path=self.root/'tmp/plugin-17.py';path.parent.mkdir()
+        self.legacy_list('/tmp/plugin-17.py')
+        manifest=self.root/'var/lib/fullhdglass17/package-transition-v1/manifest.json'
+        manifest.parent.mkdir(parents=True);manifest.write_text('{}')
+        self.assertEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        self.assertTrue(path.is_file())
+
+    def test_tracked_cleanup_does_not_depend_on_nested_status_command(self):
+        path=self.root/'tmp/plugin-17.py';path.parent.mkdir()
+        self.legacy_list('/tmp/plugin-17.py')
+        (self.bin/'opkg').write_text('#!/bin/sh\nexit 1\n')
+        self.assertEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        self.assertTrue(path.is_file())
+
+    def test_failed_tracked_preparation_aborts_even_with_retained_manifest(self):
+        self.legacy_list('/usr/lib/enigma2/python/Screens/Menu-new17-38.py')
+        manifest=self.root/'var/lib/fullhdglass17/package-transition-v1/manifest.json'
+        manifest.parent.mkdir(parents=True);manifest.write_text('{}')
+        result=self.run_preinst('upgrade','9.50-r12.2')
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('Could not prepare',result.stdout)
+
     def test_untracked_or_unknown_missing_files_are_not_created(self):
         (self.root/'tmp').mkdir()
         self.legacy_list('/tmp/unknown-user-file', '/tmp/plugin-17.py.other')

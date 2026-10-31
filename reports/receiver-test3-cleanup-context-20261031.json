@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "candidate": "1.0.50-test4",
+  "receiver_test3": {
+    "box": "GigaBlue Quad 4K Pro",
+    "image": "OpenATV 8.0.1",
+    "baseline": "9.50-r12.2",
+    "target_visible": "1.0.50-test3",
+    "selection_visible": "enigma2-plugin-skins-fullhdglass_1.0.50-test3_all.ipk",
+    "observed_error": "unlinking /tmp/plugin-17.py failed: No such file or directory",
+    "configuration_reached": true,
+    "functional_restart_result": "Not observed; owner removed the package and reinstalled legacy r12 before checking it.",
+    "complete_clean_transition": false
+  },
+  "additional_code_defect": "TEST3 invokes verified preparation only after a nested installed-status check and only when no previous transition manifest exists. Either condition can skip the cleanup.",
+  "receiver_cause_confirmed": false,
+  "fix": "Run the exact verified-hook preparation independently before status/manifest admission checks; stop if a tracked entry cannot be prepared. Preserve the existing gate for unknown removers. Emit a short visible preparation result in the installation output.",
+  "regression_tests": {
+    "before": "Two new tests fail against the published TEST3 logic: retained manifest and failed nested status command.",
+    "after": "Both pass; an additional test requires preparation failure to abort even with retained metadata.",
+    "real_opkg": "With retained manifest and the known legacy postinst deletion effect, TEST3 reproduces three errors; the fix has zero obsolete removal errors, correct payload and unchanged settings in normal and force fixture cases. Minimal fixtures, not a full receiver test."
+  },
+  "stable_feeds_changed": false,
+  "test3_published_bytes_changed": false
+}

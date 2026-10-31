@@ -10,7 +10,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '1.0.50-test3'
+VERSION = '1.0.50-test4'
 PACKAGE = ROOT / ('packages/test/enigma2-plugin-skins-fullhdglass_' + VERSION + '_all.ipk')
 PREFIX = 'usr/share/enigma2/hd_glass17/'
 PLUGIN = 'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/'

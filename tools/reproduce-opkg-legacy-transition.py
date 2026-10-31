@@ -174,6 +174,10 @@ def run_case(args, product, force, parent):
         listing=root/'var/lib/opkg/info'/str(legacy_id+'.list')
         tracked = {line.split('\t')[0] for line in listing.read_text().splitlines()}
         assert all('/'+name in tracked for name in self_deleted)
+    if args.transition_manifest and product == 'skin':
+        manifest=root/'var/lib/fullhdglass17/package-transition-v1/manifest.json'
+        manifest.parent.mkdir(parents=True,exist_ok=True)
+        manifest.write_text('{}\n')
     result = call((['--force-reinstall', '--force-overwrite'] if force else []) + ['install', str(second)])
     trace = (root/'hook-order').read_text().splitlines() if (root/'hook-order').exists() else []
     status_new, status_old = call(['status', current_id]), call(['status', legacy_id])
@@ -191,6 +195,7 @@ def run_case(args, product, force, parent):
             'settings_unchanged': settings.read_bytes() == before_settings,
             'status_new': status_new, 'status_old': status_old, 'second_attempt_recovery': recovery,
             'legacy_tracked_but_self_deleted': self_deleted,
+            'transition_manifest_present': bool(args.transition_manifest and product == 'skin'),
             'obsolete_removal_errors': result['output'].count('unlinking ') + result['output'].count('Failed to determine obsolete files'),
             'scope': 'Real opkg; minimal synthetic data and inert new postinst; actual rewritten preinst/legacy postrm. Not a full product or receiver install.'}
 
@@ -204,6 +209,8 @@ def main():
     parser.add_argument('--preinst', type=Path, help='Optional original preinst for before/after comparison')
     parser.add_argument('--legacy-self-deleted', action='store_true',
                         help='Model original postinst deletion of two still-tracked payload entries')
+    parser.add_argument('--transition-manifest', action='store_true',
+                        help='Model retained transition metadata from an earlier installation')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     version = subprocess.check_output([str(args.opkg), '--version'], text=True).strip()
