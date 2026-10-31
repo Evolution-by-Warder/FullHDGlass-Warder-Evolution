@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "repository": "https://github.com/openatv/enigma2",
+  "revision": "3c727a17071116c98342feaafae25a3a4d2a8523",
+  "checked_on": "2026-10-31",
+  "native_per_skin_spinner_commit": "be4ff6f5136ffecc43f7f24582d630707fb947e5",
+  "files": [
+    {
+      "path": "lib/gdi/gpixmap.cpp",
+      "purpose": "48,000-byte surface acceleration threshold and actual allocation predicate",
+      "url": "https://github.com/openatv/enigma2/blob/3c727a17071116c98342feaafae25a3a4d2a8523/lib/gdi/gpixmap.cpp"
+    },
+    {
+      "path": "lib/gdi/gpixmap.h",
+      "purpose": "gPixmap(eSize,int,int=0) defaults to automatic allocation",
+      "url": "https://github.com/openatv/enigma2/blob/3c727a17071116c98342feaafae25a3a4d2a8523/lib/gdi/gpixmap.h"
+    },
+    {
+      "path": "lib/gdi/grc.cpp",
+      "purpose": "Legacy PNG background save/temp/restore buffers and 100 ms frame cadence",
+      "url": "https://github.com/openatv/enigma2/blob/3c727a17071116c98342feaafae25a3a4d2a8523/lib/gdi/grc.cpp"
+    },
+    {
+      "path": "main/enigma.cpp",
+      "purpose": "Native user-spinner and active-skin/spinner loader precedence",
+      "url": "https://github.com/openatv/enigma2/blob/3c727a17071116c98342feaafae25a3a4d2a8523/main/enigma.cpp"
+    }
+  ],
+  "limits": [
+    "Compiled allocation decision and CPU compositing tests only; no receiver framebuffer/GPU access.",
+    "Correlation between the original corruption and automatic acceleration is a concrete hypothesis, not a receiver-proven root cause.",
+    "Image builds with different allocation thresholds or forced acceleration require separate receiver validation."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "Compiled original upstream allocation predicate",
+  "threshold": 48000,
+  "old_backing_bytes": 53064,
+  "new_frame_and_backing_bytes": 45056,
+  "old_backing_acceleration_candidate": true,
+  "new_frame_and_backing_acceleration_candidate": false,
+  "source_sha256": "205bb22199938c5cb6d9c277cfa156e1970c162b7c4cc4540b5a3a65ad3b4114",
+  "receiver_test": false
+}

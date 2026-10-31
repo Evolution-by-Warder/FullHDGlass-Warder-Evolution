@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "original_author": "Shamann",
+  "source_package": "enigma2-skin-fullhdglass17_9.50_all.ipk",
+  "source_package_sha256": "2ed51772c67f75f4dc4dff783a56e0868eee678e5c8cc53d609191f34a608bc8",
+  "source_package_bytes": 11298578,
+  "archive_directory": "usr/share/enigma2/hd_glass17/skin_default/spinner",
+  "original_size": [
+    134,
+    99
+  ],
+  "original_png_mode": "indexed palette with tRNS",
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "133f2ae9c21c3a8031a2abf629ae84a7030aa0d85cdbd4c14ac404858697d565",
+      "bytes": 2643
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "5ca034beedc1a8c287260758527ef43347757b9b1bb267a06b77fc48d40583f3",
+      "bytes": 2198
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "9744074cb09d15293a2a6444b6364498578e00b48d463b51cabd2fd5b8326c06",
+      "bytes": 1921
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "e4b79a4161fc8396e470f857bca58626615692c17ce2a9536ed978c46edb5a63",
+      "bytes": 1620
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "d0807901ed0c926462244ef5772c821ae617f9982b1a341af98e61c810831f14",
+      "bytes": 1716
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "27413e787d8bcc2ec3fb0ba47c49fc0208bed55e3a1893670a0b7895a20a2a70",
+      "bytes": 1938
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "3dd7b4c6d2e51f2ccc6d636058ce7fe00072192aee639f75cf2fc7af8cdbcf74",
+      "bytes": 2686
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "7f62fdc4f74674c9f8f89d6fc1810e073bc625fc6e56d623e2dcbdfb2d800476",
+      "bytes": 2423
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "8d972cd17ed88a4d8e3cfac32e2d09cc6ad079b2b55973e6c86af0d01cde28c5",
+      "bytes": 2137
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "f057bf34a2942347b5725aca2fcd1c86528a0d6af41f2ae78584ddca1fb486df",
+      "bytes": 1967
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "c1864e52893a3abbbbfb8e5e197f17377dc5e575662c4569e012e4b28f7a85c5",
+      "bytes": 1739
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "6f544e1a8a4a61f0ece8ff830cd5be61b7eb66dfcaccaf5ec312dc1e7b862a07",
+      "bytes": 1650
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "9718dde97189fd6ec4b6565a0bfd553b9aa057888a018c2a72929846c7c6af1d",
+      "bytes": 2202
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "34d109749930bc9fd8f016b2b591c2f1b427b7159bafbc78304c08a93e8f715f",
+      "bytes": 2591
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "d38a69dccd0e45b360f624fc2844fee80763a2e3371ea8190ce1ce0786439e5e",
+      "bytes": 2775
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "8ea0f6840c09b03173c2a377ef401d9e8fcc84d3d9fa165b0526d38850246121",
+      "bytes": 2647
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "d7793fdbbc523d4c79dcd0e7a551bae414fee8e925227a32455de4ac8faa5a0d",
+      "bytes": 2693
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "a84a66c15a36cf6dcc5a6dae077c56e9a0f91e07c8c07484e91421c906f1fa9a",
+      "bytes": 2590
+    }
+  ],
+  "purpose": "Owner supplied original animation; retained byte-for-byte for repair and provenance."
+}

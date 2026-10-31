@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "product": "FullHDGlass",
+  "production_base": "c5736f7e2c30698b772150ac8efeb5bc11fb2d6e",
+  "candidate_version": "1.0.46-test1",
+  "upstream_revision": "3c727a17071116c98342feaafae25a3a4d2a8523",
+  "observed_report": "Owner reports framebuffer fragmentation beneath the retired 9.50 dove spinner.",
+  "observations": {
+    "original_frames": 18,
+    "original_size": [
+      134,
+      99
+    ],
+    "original_format": "PNG indexed palette + binary tRNS transparency",
+    "original_32bit_background_surface_bytes": 53064,
+    "stock_surface_acceleration_threshold_bytes": 48000,
+    "legacy_save_and_temp_buffers": "gDC::setSpinner allocates HD/FHD buffers using gPixmap automatic allocation.",
+    "frame_buffer_size_comes_from": "Native loader passes the first PNG dimensions to gDC::setSpinner."
+  },
+  "candidate": {
+    "size": [
+      128,
+      88
+    ],
+    "format": "Truecolor RGBA PNG, no palette or tRNS",
+    "decoded_stride": 512,
+    "decoded_surface_bytes": 45056,
+    "buffer_allocation": "Below the reviewed stock acceleration threshold; CPU-backed frame, save and temp surfaces.",
+    "native_loading": "Active skin's spinner folder. User /etc/enigma2/spinner retains precedence.",
+    "system_spinner_replacement": false,
+    "legacy_spinner_symlink_reenabled": false,
+    "added_runtime_timers_workers_or_logs": false,
+    "manual_owned_rollback": true
+  },
+  "verification": {
+    "asset_and_cpu_compositor_and_rollback_tests": 13,
+    "actual_native_allocation_predicate_compiled_and_executed": true,
+    "original_artwork_sources_byte_preserved": true,
+    "physical_receiver_test": false
+  },
+  "causality": "Automatic acceleration of the original background buffers is a concrete, source-backed hypothesis. Without the receiver framebuffer/driver trace this is not a proven root cause or proof that all fragmentation is fixed.",
+  "rollout": "Isolated receiver-test prerelease; no production/test updater feed activation.",
+  "trezor_changed": false
+}
