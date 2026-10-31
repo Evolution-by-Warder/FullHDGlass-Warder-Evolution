@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "state": "quality-audit-completed-no-artwork-changes",
+  "source_commit": "62ef4033be67693619d5ab98d2f8266bed309dc7",
+  "audit_branch": "audit/spinner-quality-20261031",
+  "audit_commit": "63f150879ec69c2252fa6d81448eaeb66c5db26c",
+  "report_path": "reports/spinner-quality-20261031/README.md",
+  "metrics_path": "reports/spinner-quality-20261031/audit.json",
+  "catalogue_sha256": "00ddbb222db63a6efa6d4df29954b2bcaec7f0c982bdd6a2697d61c2f9301b66",
+  "summary": {
+    "spinners": 152,
+    "native_frames": 1958,
+    "native_png_bytes": 11793706,
+    "preview_gif_bytes": 4209375,
+    "canvas_px": [
+      104,
+      104
+    ],
+    "rgba_bytes_per_frame": 43264,
+    "max_frame_count": 56,
+    "max_rgba_frame_buffers_bytes": 2422784,
+    "max_native_png_bytes_per_spinner": 478248,
+    "min_native_png_bytes_per_spinner": 4361,
+    "flag_counts": {
+      "thin-or-small-drawing": 3,
+      "drawing-touches-canvas-edge": 1,
+      "small-raster-source": 18,
+      "tiny-per-frame-drawing": 3,
+      "low-dark-background-contrast": 7,
+      "owner-requested-brightening": 1,
+      "opaque-source-background": 12,
+      "many-held-frames": 7
+    },
+    "integrity_errors": [],
+    "all_at_most_64_frames": true,
+    "all_animated": true
+  },
+  "source_verification": {
+    "original_archives": [
+      {
+        "filename": "spinners-with-setup-original.zip",
+        "bytes": 5580061,
+        "sha256": "96c8b5131d0e10a45663cc24454afce946b39a47813575d9e1f9943bd6e0bbab"
+      },
+      {
+        "filename": "spinner-pack-2-1-original.rar",
+        "bytes": 2152616,
+        "sha256": "bb4159ff9bd7fde37bfcfb12df747d1aa7631bc605b5fdac5285443f4faaa110"
+      },
+      {
+        "filename": "spinner-football-soccer-original.zip",
+        "bytes": 13934,
+        "sha256": "1cc8da9d04553bd51808e6cb22f3fb68a705b16829d500b6d48aae5e63e65e95"
+      }
+    ],
+    "community_frames_reconstructed": 1779,
+    "pixel_differences": []
+  },
+  "visual_review": {
+    "method": "Representative native-size 104x104 frames for every candidate on dark and light backgrounds; ten contact sheets; multiple phases of selected problematic animations.",
+    "receiver_playback_test": false,
+    "original_review_numbers": true
+  },
+  "pending": {
+    "brightening": [
+      31,
+      86,
+      87,
+      88,
+      89,
+      92,
+      95
+    ],
+    "opaque_source_background": [
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      101,
+      115
+    ],
+    "motion_and_scale": [
+      24,
+      113,
+      122
+    ],
+    "edge_reserve": [
+      11
+    ],
+    "held_frame_timing_review": [
+      107,
+      109,
+      115,
+      121,
+      137,
+      138,
+      147
+    ]
+  },
+  "scope_limits": {
+    "new_ipk": false,
+    "production_runtime_changed": false,
+    "updater_changed": false,
+    "artwork_changed": false,
+    "original_archives_changed": false,
+    "trezor_changed": false,
+    "cpu_benchmark": false
+  },
+  "reference_sets": [
+    {
+      "title": "Holubica",
+      "path": "source/package-root/usr/share/enigma2/hd_glass17/spinner",
+      "frames": 18,
+      "dimensions_px": [
+        [
+          128,
+          88
+        ]
+      ],
+      "png_bytes": 125170,
+      "rgba_frame_buffers_bytes": 811008
+    },
+    {
+      "title": "HDGlass - bakussa: original",
+      "path": "source/package-root/usr/share/enigma2/hd_glass17/spinner-themes/bakussa",
+      "frames": 20,
+      "dimensions_px": [
+        [
+          104,
+          104
+        ]
+      ],
+      "png_bytes": 177192,
+      "rgba_frame_buffers_bytes": 865280
+    },
+    {
+      "title": "HDGlass - bakussa: approved blue review variant",
+      "path": "design/spinner-choice/bakussa-blue-centered/frames",
+      "frames": 20,
+      "dimensions_px": [
+        [
+          104,
+          104
+        ]
+      ],
+      "png_bytes": 374478,
+      "rgba_frame_buffers_bytes": 865280
+    }
+  ]
+}
