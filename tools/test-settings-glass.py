@@ -27,6 +27,7 @@ class GlassTests(unittest.TestCase):
             self.assertFalse(root.findall("ePixmap[@pixmap='%s']"%s.BANNER_IMAGE),name)
             header=root.findall("widget[@render='WarderSettingsHeader']")
             self.assertEqual(len(header),1,name);self.assertEqual(header[0].get('size'),'1920,164')
+            self.assertFalse(root.findall("widget[@source='Title']"),name)
             glass=[n for n in root if n.get('backgroundColor')==s.GLASS]
             self.assertEqual(len(glass),1,name)
             self.assertLess(int(glass[0].get('zPosition')),0,name)

@@ -286,7 +286,7 @@ BANNER_HEIGHT = 164
 BANNER_IMAGE = '/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/warder-settings-background.png'
 
 
-def header(root,download=False,context=False):
+def header(root,download=False):
     # A static, native pixmap, decoded once when the screen opens. No work on
     # selection changes; panels above it retain their existing opaque fill.
     root.insert(0,element('ePixmap',0,0,1920,1080,pixmap=BANNER_IMAGE,scale='1',zPosition='0'))
@@ -302,8 +302,6 @@ def header(root,download=False,context=False):
     root.append(label(1680,25,210,36,text='Version:',size=25,color=CYAN,halign='center',transparent='1',backgroundColor=BASE))
     root.append(label(1680,70,210,36,text=version,size=24,color=CYAN,halign='center',transparent='1',backgroundColor=BASE))
     for x in (1392,1664):root.append(element('eLabel',x,25,2,84,backgroundColor=CYAN,zPosition='5'))
-    if context:
-        root.append(label(850,120,700,38,size=25,color=CYAN,source='Title',halign='center',transparent='1',noWrap='1',backgroundColor=BASE,shadowColor=BASE,shadowOffset='1,1'))
 
 
 def fullscreen_dialog(root,shift):
@@ -332,7 +330,7 @@ def fullscreen_dialog(root,shift):
         if node.tag=='widget':node.set('zPosition',str(max(4,int(node.get('zPosition','0')))))
     root.set('position','0,0');root.set('size','1920,1080');root.set('backgroundColor',BASE)
     panel(root,dx,dy,w,body)
-    header(root,context=True)
+    header(root)
 
 
 def glass(root):
@@ -490,7 +488,7 @@ def themed(name,original):
 def dialog_skin(kind):
     root=ET.Element('screen',name='WarderSettings'+kind,position='0,0',size='1920,1080',flags='wfNoBorder',backgroundColor=BASE)
     panel(root,135,184,1650,776)
-    header(root,context=True)
+    header(root)
     if kind=='Message':
         root.append(element('widget',170,220,70,70,name='icon',pixmaps=','.join('icons/input_'+x+'.png' for x in ('question','info','warning','error','message')),scale='1',alphatest='blend',conditional='icon',zPosition='4'))
         root.append(label(260,220,1480,520,size=30,name='text',noWrap='0'))
