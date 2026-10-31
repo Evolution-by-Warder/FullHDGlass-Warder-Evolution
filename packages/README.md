@@ -1,6 +1,6 @@
 # Update packages
 
-Current production: **1.0.48**. Previous production: **1.0.47**. Active migration versions are retained according to update.json.
+Current production: **1.0.49**. Previous production: **1.0.48**. Active migration versions are retained according to update.json.
 
 Only these versions and matching compatibility filenames/checksums are retained. Unreferenced TEST IPKs are removed; packages/test remains ignored build output. Shared auxiliary archives belong in assets/warder/downloads/.
 

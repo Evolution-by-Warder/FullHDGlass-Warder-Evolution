@@ -1,0 +1,22 @@
+{
+  "status": "VERIFIED",
+  "current": "1.0.49",
+  "previous": "1.0.48",
+  "retained_versions": [
+    "1.0.18",
+    "1.0.48",
+    "1.0.49"
+  ],
+  "removed_paths": [
+    "packages/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+    "packages/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk.sha256"
+  ],
+  "removed_ipks": 1,
+  "removed_bytes": 14897788,
+  "removed_releases": [
+    "v1.0.47"
+  ],
+  "active_feeds_preserved": true,
+  "trezor_accessed": false,
+  "workflow_run": 41182087395
+}
