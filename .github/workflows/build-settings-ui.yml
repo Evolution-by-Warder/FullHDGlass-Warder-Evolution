@@ -22,6 +22,7 @@ on:
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderTools.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py
+      - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSongIdentity.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk
       - source/package-root/usr/lib/enigma2/python/Components/g17ConfigList.py
