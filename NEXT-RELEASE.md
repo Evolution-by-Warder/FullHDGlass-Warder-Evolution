@@ -17,3 +17,13 @@ Public release description: Presnejšie rozpoznávanie zložených mien interpre
 GSU/PiconHub History formatting remains deferred to their next functional changes in their own repositories.
 
 Pending source commit: `95990e2dd78a29a1070b48dab28517342754c7f5`.
+
+## Legacy r12.2 installation report — investigate before migration
+
+Owner supplied the actual `enigma2-skin-fullhdglass17_9.50-r12.2_all.ipk` after a Vu+ Uno 4K SE / OpenATV 8.0.1 user reported loss of the skin selection entry after a direct update. The supplied legacy removal hook preserves `upgrade` and `disappear`, but `remove` deletes the skin XML, plugin and g17 components and returns exit code 0. This behavior was reproduced only in isolated rewritten temporary roots.
+
+Current replacement metadata also matches legacy 9.50-r12.2, while the 1.0.18 bridge is a downgrade from that version. Review actual opkg transaction ordering and migration protection before recommending a direct replacement. Do not claim the exact receiver root cause without installed package status and file checks.
+
+Await read-only receiver outputs: `opkg --version`; `opkg status enigma2-skin-fullhdglass17`; `opkg status enigma2-plugin-skins-fullhdglass-warder-evolution`; `ls -l /usr/share/enigma2/hd_glass17/skin.xml`.
+
+Evidence: `reports/r12-upgrade-analysis-20261031.json`. No runtime/package/feed changes or new IPK were made for this investigation. The pending compound-artist fix above remains deferred.

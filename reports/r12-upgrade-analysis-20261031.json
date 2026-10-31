@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "status": "diagnosis-pending-receiver-output",
+  "date": "2026-10-31",
+  "owner_supplied_package": "enigma2-skin-fullhdglass17_9.50-r12.2_all.ipk",
+  "bytes": 11442816,
+  "sha256": "66dc55c17e615330acc002d683662e06db71b66aecbc85d7293aeea31de97e9f",
+  "legacy_control": "Package: enigma2-skin-fullhdglass17\nVersion: 9.50-r12.2\nDescription:  full hd glass 17\nSection: base\nPriority: optional\nMaintainer: Shamann\nArchitecture: all\nOE: enigma2-skin-fullhdglass17\nHomepage: unknown\nDepends: \nSource: None\n",
+  "reported_receiver": "Vu+ Uno 4K SE",
+  "reported_image": "OpenATV 8.0.1, latest update",
+  "reported_symptoms": "Direct update from old r12; MetrixHD after restart, FullHDGlass absent from skin selection, no visible GUI installation error.",
+  "current_package": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "legacy_package": "enigma2-skin-fullhdglass17",
+  "legacy_postrm_cases": [
+    {
+      "hook_argument": "upgrade",
+      "exit_code": 0,
+      "remaining": {
+        "usr/share/enigma2/hd_glass17/skin.xml": true,
+        "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py": true,
+        "usr/lib/enigma2/python/Components/Renderer/g17PicRef.py": true,
+        "etc/enigma2/settings": true
+      },
+      "isolated_temp_root": true
+    },
+    {
+      "hook_argument": "disappear",
+      "exit_code": 0,
+      "remaining": {
+        "usr/share/enigma2/hd_glass17/skin.xml": true,
+        "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py": true,
+        "usr/lib/enigma2/python/Components/Renderer/g17PicRef.py": true,
+        "etc/enigma2/settings": true
+      },
+      "isolated_temp_root": true
+    },
+    {
+      "hook_argument": "remove",
+      "exit_code": 0,
+      "remaining": {
+        "usr/share/enigma2/hd_glass17/skin.xml": false,
+        "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py": false,
+        "usr/lib/enigma2/python/Components/Renderer/g17PicRef.py": false,
+        "etc/enigma2/settings": true
+      },
+      "isolated_temp_root": true
+    }
+  ],
+  "version_findings": {
+    "legacy_9_50_r12_2_matches_current_conflict_lower_bound": true,
+    "bridge_1_0_18_is_a_downgrade_from_9_50_r12_2": true
+  },
+  "limitations": [
+    "This executes only the supplied legacy removal hook against rewritten paths inside isolated temporary directories.",
+    "The exact opkg transaction ordering/version and on-disk installed package state on the reported receiver are not yet available.",
+    "Deletion by this hook is reproduced; it is not claimed as the confirmed receiver root cause."
+  ],
+  "needed_receiver_output": [
+    "opkg --version",
+    "opkg status enigma2-skin-fullhdglass17",
+    "opkg status enigma2-plugin-skins-fullhdglass-warder-evolution",
+    "ls -l /usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "published": false,
+  "receiver_modified": false,
+  "trezor_accessed": false,
+  "related_opkg_reference": "https://lxr.openwrt.org/source/opkg-lede/libopkg/opkg_install.c",
+  "opkg_reference_limit": "This is an authoritative OpenWrt opkg source reference, not proof of the exact opkg implementation or call ordering on the reported OpenATV receiver.",
+  "migration_review_needed": [
+    "Current Conflicts/Replaces lower-bound range also includes 9.50-r12.2.",
+    "The supplied legacy postrm preserves upgrade/disappear but deletes the skin and plugin for remove, returning success.",
+    "Review protection ordering against the actual receiver package manager before recommending a migration.",
+    "The 1.0.18 bridge is numerically older than 9.50-r12.2, so its documented normal-upgrade route cannot be assumed for this legacy release."
+  ]
+}
+
