@@ -28,10 +28,10 @@
   ],
   "source_groups": 142,
   "input_frames": 1797,
-  "unique_spinners": 142,
+  "unique_spinners": 141,
   "duplicate_sequences": 0,
   "duplicates": [],
-  "native_frames": 1797,
+  "native_frames": 1779,
   "entries": [
     {
       "id": "001-techkings-football",
@@ -96,7 +96,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 13
     },
     {
       "id": "002-techkings-spinner-7",
@@ -186,7 +187,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 14
     },
     {
       "id": "003-techkings-spinner-8",
@@ -236,7 +238,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 15
     },
     {
       "id": "004-techkings-spinner-9",
@@ -281,7 +284,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 16
     },
     {
       "id": "005-techkings-spinner-10",
@@ -336,7 +340,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 17
     },
     {
       "id": "006-techkings-spinner-11",
@@ -411,7 +416,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 18
     },
     {
       "id": "007-techkings-spinner-12",
@@ -486,7 +492,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 19
     },
     {
       "id": "008-techkings-spinner-13",
@@ -606,7 +613,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 20
     },
     {
       "id": "009-techkings-spinner-14",
@@ -671,7 +679,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 21
     },
     {
       "id": "010-techkings-spinner-15",
@@ -746,7 +755,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 22
     },
     {
       "id": "011-techkings-spinner-16",
@@ -811,7 +821,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 23
     },
     {
       "id": "012-techkings-spinner-17",
@@ -916,7 +927,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 24
     },
     {
       "id": "013-techkings-spinner-18",
@@ -1031,7 +1043,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 25
     },
     {
       "id": "014-techkings-spinner-19",
@@ -1106,7 +1119,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 26
     },
     {
       "id": "015-techkings-spinner-20",
@@ -1221,7 +1235,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 27
     },
     {
       "id": "016-techkings-spinner-21",
@@ -1316,7 +1331,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 28
     },
     {
       "id": "017-techkings-spinner-22",
@@ -1371,7 +1387,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 29
     },
     {
       "id": "018-techkings-spinner-23",
@@ -1536,7 +1553,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 30
     },
     {
       "id": "019-techkings-spinner-24",
@@ -1721,7 +1739,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 31
     },
     {
       "id": "020-techkings-spinner-25",
@@ -1821,7 +1840,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 32
     },
     {
       "id": "021-techkings-spinner-26",
@@ -1901,7 +1921,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 33
     },
     {
       "id": "022-techkings-spinner-27",
@@ -1956,7 +1977,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 34
     },
     {
       "id": "023-techkings-spinner-28",
@@ -2006,7 +2028,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 35
     },
     {
       "id": "024-techkings-spinner-29",
@@ -2061,7 +2084,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 36
     },
     {
       "id": "025-techkings-spinner-30",
@@ -2136,7 +2160,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 37
     },
     {
       "id": "026-techkings-spinner-31",
@@ -2211,7 +2236,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 38
     },
     {
       "id": "027-techkings-spinner-32",
@@ -2301,7 +2327,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 39
     },
     {
       "id": "028-techkings-spinner-33",
@@ -2376,7 +2403,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 40
     },
     {
       "id": "029-techkings-spinner-34",
@@ -2516,7 +2544,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 41
     },
     {
       "id": "030-techkings-spinner-35",
@@ -2601,7 +2630,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 42
     },
     {
       "id": "031-techkings-spinner-36",
@@ -2686,7 +2716,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 43
     },
     {
       "id": "032-techkings-spinner-37",
@@ -2781,7 +2812,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 44
     },
     {
       "id": "033-techkings-spinner-38",
@@ -2916,7 +2948,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 45
     },
     {
       "id": "034-techkings-spinner-39",
@@ -3031,7 +3064,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 46
     },
     {
       "id": "035-techkings-spinner-40",
@@ -3126,7 +3160,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 47
     },
     {
       "id": "036-techkings-spinner-41",
@@ -3211,7 +3246,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 48
     },
     {
       "id": "037-techkings-spinner-42",
@@ -3321,7 +3357,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 49
     },
     {
       "id": "038-techkings-spinner-43",
@@ -3406,7 +3443,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 50
     },
     {
       "id": "039-techkings-spinner-44",
@@ -3501,7 +3539,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 51
     },
     {
       "id": "040-techkings-spinner-45",
@@ -3556,7 +3595,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 52
     },
     {
       "id": "041-techkings-spinner-46",
@@ -3681,7 +3721,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 53
     },
     {
       "id": "042-techkings-spinner-47",
@@ -3776,7 +3817,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 54
     },
     {
       "id": "043-techkings-spinner-48",
@@ -3961,7 +4003,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 55
     },
     {
       "id": "044-techkings-spinner-49",
@@ -4036,7 +4079,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 56
     },
     {
       "id": "045-techkings-spinner-50",
@@ -4116,7 +4160,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 57
     },
     {
       "id": "046-techkings-spinner-51",
@@ -4171,7 +4216,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 58
     },
     {
       "id": "047-techkings-spinner-52",
@@ -4281,7 +4327,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 59
     },
     {
       "id": "048-techkings-spinner-53",
@@ -4361,7 +4408,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 60
     },
     {
       "id": "049-techkings-spinner-54",
@@ -4416,7 +4464,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 61
     },
     {
       "id": "050-techkings-spinner-55",
@@ -4656,7 +4705,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 62
     },
     {
       "id": "051-techkings-spinner-56",
@@ -4856,7 +4906,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 63
     },
     {
       "id": "052-techkings-spinner-57",
@@ -4916,7 +4967,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 64
     },
     {
       "id": "053-techkings-spinner-58",
@@ -5006,7 +5058,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 65
     },
     {
       "id": "054-techkings-spinner-59",
@@ -5141,7 +5194,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 66
     },
     {
       "id": "055-techkings-spinner-60",
@@ -5276,7 +5330,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 67
     },
     {
       "id": "056-techkings-spinner-61",
@@ -5411,7 +5466,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 68
     },
     {
       "id": "057-techkings-spinner-62",
@@ -5506,7 +5562,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 69
     },
     {
       "id": "058-techkings-spinner-63",
@@ -5661,7 +5718,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 70
     },
     {
       "id": "059-techkings-spinner-64",
@@ -5741,7 +5799,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 71
     },
     {
       "id": "060-techkings-spinner-65",
@@ -5821,7 +5880,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 72
     },
     {
       "id": "061-techkings-spinner-66",
@@ -5936,7 +5996,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 73
     },
     {
       "id": "062-techkings-spinner-67",
@@ -6091,7 +6152,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 74
     },
     {
       "id": "063-techkings-spinner-68",
@@ -6246,7 +6308,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 75
     },
     {
       "id": "064-techkings-spinner-69",
@@ -6401,7 +6464,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 76
     },
     {
       "id": "065-techkings-spinner-70",
@@ -6556,7 +6620,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 77
     },
     {
       "id": "066-techkings-spinner-71",
@@ -6691,7 +6756,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 78
     },
     {
       "id": "067-techkings-spinner-72",
@@ -6766,7 +6832,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 79
     },
     {
       "id": "068-techkings-spinner-73",
@@ -6831,7 +6898,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 80
     },
     {
       "id": "069-techkings-spinner-74",
@@ -6991,7 +7059,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 81
     },
     {
       "id": "070-techkings-spinner-75",
@@ -7176,7 +7245,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 82
     },
     {
       "id": "071-techkings-spinner-76",
@@ -7241,7 +7311,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 83
     },
     {
       "id": "072-techkings-spinner-77",
@@ -7306,7 +7377,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 84
     },
     {
       "id": "073-techkings-spinner-78",
@@ -7436,7 +7508,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 85
     },
     {
       "id": "074-techkings-spinner-by-ekremtt-02b",
@@ -7501,7 +7574,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 86
     },
     {
       "id": "075-techkings-spinner-by-ekremtt-02r",
@@ -7566,7 +7640,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 87
     },
     {
       "id": "076-techkings-spinner-by-ekremtt-03b",
@@ -7641,7 +7716,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 88
     },
     {
       "id": "077-techkings-spinner-by-ekremtt-04b",
@@ -7736,7 +7812,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 89
     },
     {
       "id": "078-techkings-spinner-by-ekremtt-05r",
@@ -7831,7 +7908,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 90
     },
     {
       "id": "079-techkings-spinner-by-ekremtt-06g",
@@ -7906,7 +7984,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 91
     },
     {
       "id": "080-techkings-spinner-by-ekremtt-06r",
@@ -7981,7 +8060,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 92
     },
     {
       "id": "081-techkings-spinner-by-ekremtt-07p",
@@ -8056,7 +8136,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 93
     },
     {
       "id": "082-techkings-spinner-by-ekremtt-08",
@@ -8151,7 +8232,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 94
     },
     {
       "id": "083-techkings-spinner-by-ekremtt-09",
@@ -8286,7 +8368,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 95
     },
     {
       "id": "084-openpli-a10",
@@ -8366,7 +8449,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 96
     },
     {
       "id": "085-openpli-asterix",
@@ -8411,7 +8495,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 97
     },
     {
       "id": "086-openpli-baum",
@@ -8521,7 +8606,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 98
     },
     {
       "id": "087-openpli-beholder",
@@ -8611,7 +8697,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 99
     },
     {
       "id": "088-openpli-buch",
@@ -8686,7 +8773,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 100
     },
     {
       "id": "089-openpli-counter",
@@ -8771,7 +8859,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 101
     },
     {
       "id": "090-openpli-dart",
@@ -8836,7 +8925,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 102
     },
     {
       "id": "091-openpli-echse",
@@ -8891,7 +8981,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 103
     },
     {
       "id": "092-openpli-fackel",
@@ -8956,7 +9047,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 104
     },
     {
       "id": "093-openpli-gargoyle",
@@ -9001,7 +9093,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 105
     },
     {
       "id": "094-openpli-ghost",
@@ -9086,7 +9179,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 106
     },
     {
       "id": "095-openpli-gutemine",
@@ -9266,7 +9360,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 107
     },
     {
       "id": "096-openpli-harddrive",
@@ -9361,7 +9456,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 108
     },
     {
       "id": "097-openpli-hexe",
@@ -9441,7 +9537,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 109
     },
     {
       "id": "098-openpli-hexe1",
@@ -9516,7 +9613,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 110
     },
     {
       "id": "099-openpli-hobby",
@@ -9601,7 +9699,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 111
     },
     {
       "id": "100-openpli-idefix",
@@ -9711,7 +9810,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 112
     },
     {
       "id": "101-openpli-katze2",
@@ -9956,7 +10056,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 113
     },
     {
       "id": "102-openpli-kreuz",
@@ -10086,7 +10187,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 114
     },
     {
       "id": "103-openpli-love",
@@ -10291,7 +10393,8 @@
       ],
       "source_has_opaque_frames": true,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 115
     },
     {
       "id": "104-openpli-maggie",
@@ -10426,7 +10529,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 116
     },
     {
       "id": "105-openpli-magier",
@@ -10496,7 +10600,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 117
     },
     {
       "id": "106-openpli-mais",
@@ -10571,7 +10676,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 118
     },
     {
       "id": "107-openpli-motor",
@@ -10656,7 +10762,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 119
     },
     {
       "id": "108-openpli-obelix",
@@ -10731,7 +10838,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 120
     },
     {
       "id": "109-openpli-papaschlumpf",
@@ -10796,7 +10904,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 121
     },
     {
       "id": "110-openpli-papierflieger",
@@ -11111,7 +11220,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 122
     },
     {
       "id": "111-openpli-pentagramm",
@@ -11196,7 +11306,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 123
     },
     {
       "id": "112-openpli-pentagramm1",
@@ -11291,7 +11402,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 124
     },
     {
       "id": "113-openpli-pingu",
@@ -11366,7 +11478,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 125
     },
     {
       "id": "114-openpli-pingudrink",
@@ -11441,7 +11554,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 126
     },
     {
       "id": "115-openpli-pinguhahn",
@@ -11626,7 +11740,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 127
     },
     {
       "id": "116-openpli-pingupc",
@@ -11696,7 +11811,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 128
     },
     {
       "id": "117-openpli-pumpkigcurving",
@@ -11751,7 +11867,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 129
     },
     {
       "id": "118-openpli-roadrunner",
@@ -11801,7 +11918,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 130
     },
     {
       "id": "119-openpli-roboter",
@@ -11896,7 +12014,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 131
     },
     {
       "id": "120-openpli-ryu",
@@ -11971,7 +12090,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 132
     },
     {
       "id": "121-openpli-ryu1",
@@ -12046,7 +12166,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 133
     },
     {
       "id": "122-openpli-sarg",
@@ -12161,7 +12282,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 134
     },
     {
       "id": "123-openpli-schaedel",
@@ -12346,7 +12468,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 135
     },
     {
       "id": "124-openpli-schaedelschwert",
@@ -12471,7 +12594,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 136
     },
     {
       "id": "125-openpli-simba",
@@ -12556,7 +12680,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 137
     },
     {
       "id": "126-openpli-skelett",
@@ -12611,7 +12736,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 138
     },
     {
       "id": "127-openpli-skull",
@@ -12721,7 +12847,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 139
     },
     {
       "id": "128-openpli-sonne",
@@ -12776,7 +12903,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 140
     },
     {
       "id": "129-openpli-spanner",
@@ -12871,7 +12999,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 141
     },
     {
       "id": "130-openpli-spinne",
@@ -12926,7 +13055,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 142
     },
     {
       "id": "131-openpli-stargate",
@@ -13031,7 +13161,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 143
     },
     {
       "id": "132-openpli-streetfighter",
@@ -13141,7 +13272,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 144
     },
     {
       "id": "133-openpli-sylvestertweety",
@@ -13206,132 +13338,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
-    },
-    {
-      "id": "134-openpli-taube",
-      "folder": "134-openpli-taube",
-      "title": "Taube",
-      "author": "Autor v archíve neuvedený",
-      "license": "not-specified-in-submitted-archive",
-      "origins": [
-        {
-          "source": "openpli",
-          "archive_folder": "usr/share/enigma2/Spinner/Taube",
-          "name": "Taube",
-          "source_indices": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18
-          ]
-        }
-      ],
-      "size": [
-        104,
-        104
-      ],
-      "source_canvas": [
-        134,
-        99
-      ],
-      "inner_size": [
-        96,
-        71
-      ],
-      "frame_count": 18,
-      "interval_ms": 100,
-      "frames": [
-        {
-          "name": "wait1.png",
-          "sha256": "c8dac2197a6533aaed921b3d5b2f26901d6255521dda0304debaa3518f256d5e"
-        },
-        {
-          "name": "wait2.png",
-          "sha256": "fe4ef1fb5d51fd5a6672567aaa5d229e05b1afe03145fc82fbac0dc99e900a2f"
-        },
-        {
-          "name": "wait3.png",
-          "sha256": "4081358080c4c734005ddefb22d93268cd3450c281519a79f3909b62bb8bb964"
-        },
-        {
-          "name": "wait4.png",
-          "sha256": "3de517f4cb95683f982c77aa421f7acef899a8b2598fad0bef80fa1c25494e25"
-        },
-        {
-          "name": "wait5.png",
-          "sha256": "2bef825e7f8bcb18fad2692fabd7cee4c9119562b88b7c13ed09a88f81a91731"
-        },
-        {
-          "name": "wait6.png",
-          "sha256": "fc03de414860f428bd9b1aa8b4dd7fcaee85d27621c6a16da1540eb365b1231a"
-        },
-        {
-          "name": "wait7.png",
-          "sha256": "cd615daa9bbcd10f8c7211dd59aab5a98be740decac9e5bf094a8f1358c4dc60"
-        },
-        {
-          "name": "wait8.png",
-          "sha256": "47e89f9d764f8f0d598d6727817c5b8ae0a860c1426b2e225497c29c34915407"
-        },
-        {
-          "name": "wait9.png",
-          "sha256": "10c4c4ce39361610881be605f4990b9a3eda7f8ac5de5aab9bd913432ba337ec"
-        },
-        {
-          "name": "wait10.png",
-          "sha256": "e0ba148e7d0cf9c21b96d2d91333823463fb160893ed2a77743cc2fa6b5e550a"
-        },
-        {
-          "name": "wait11.png",
-          "sha256": "be80ac4561eeb89dd88a31dd4ba4f441a5d0bdbdddcdfb127a807d32374f1daa"
-        },
-        {
-          "name": "wait12.png",
-          "sha256": "612b950abb3094210d0f8c06190b4ddd68c3cc6a761140bc64ec4672d637d27a"
-        },
-        {
-          "name": "wait13.png",
-          "sha256": "a36210985b43d620188c30a10a1e1d7c1392fe4ba8b5b93f4eed3ac8841ce106"
-        },
-        {
-          "name": "wait14.png",
-          "sha256": "66086eb429db0a1b0bde05229bd0140617af94ae69c1a8618ba171e4f220499d"
-        },
-        {
-          "name": "wait15.png",
-          "sha256": "47b9d39d9c84bdb5a5bdec92588991b2561a5032104ab606560fa04cd583341e"
-        },
-        {
-          "name": "wait16.png",
-          "sha256": "a0e138430f162665064524e8e9f6f04caa4ab9495d4644dad76dde1da69f6f18"
-        },
-        {
-          "name": "wait17.png",
-          "sha256": "1aa2dbbb8ca9699d98060fc9799909cf252b21c48808d0960474fa1f4557a271"
-        },
-        {
-          "name": "wait18.png",
-          "sha256": "4babaa21bb8bf30b733f8214eb52145561385db29daae1a6a28591db1371c945"
-        }
-      ],
-      "source_has_opaque_frames": false,
-      "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 145
     },
     {
       "id": "135-openpli-taz",
@@ -13421,7 +13429,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 147
     },
     {
       "id": "136-openpli-teufel",
@@ -13521,7 +13530,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 148
     },
     {
       "id": "137-openpli-toeff",
@@ -13616,7 +13626,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 149
     },
     {
       "id": "138-openpli-tool",
@@ -13686,7 +13697,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 150
     },
     {
       "id": "139-openpli-vogel",
@@ -13761,7 +13773,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 151
     },
     {
       "id": "140-openpli-weissekatze",
@@ -13856,7 +13869,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 152
     },
     {
       "id": "141-openpli-zahnraeder",
@@ -13921,7 +13935,8 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 153
     },
     {
       "id": "142-football-football-soccer",
@@ -13986,9 +14001,14 @@
       ],
       "source_has_opaque_frames": false,
       "motion": true,
-      "state": "preview-only-not-installed"
+      "state": "preview-only-not-installed",
+      "original_review_number": 154
     }
   ],
   "new_ipk": false,
-  "receiver_test": false
+  "receiver_test": false,
+  "excluded_by_owner": [
+    "134-openpli-taube"
+  ],
+  "prepared_unique_spinners": 142
 }

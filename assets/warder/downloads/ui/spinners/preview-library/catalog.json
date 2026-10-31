@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "spinners": 154,
+  "spinners": 152,
   "entries": [
     {
       "id": "spinkit-plane",
@@ -75,6 +75,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 1,
       "preview_path": "spinkit/01-plane/preview.gif",
       "directory": "spinkit/01-plane"
     },
@@ -183,6 +184,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 2,
       "preview_path": "spinkit/02-chase/preview.gif",
       "directory": "spinkit/02-chase"
     },
@@ -291,6 +293,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 3,
       "preview_path": "spinkit/03-bounce/preview.gif",
       "directory": "spinkit/03-bounce"
     },
@@ -367,6 +370,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 4,
       "preview_path": "spinkit/04-wave/preview.gif",
       "directory": "spinkit/04-wave"
     },
@@ -443,6 +447,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 5,
       "preview_path": "spinkit/05-pulse/preview.gif",
       "directory": "spinkit/05-pulse"
     },
@@ -527,6 +532,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 6,
       "preview_path": "spinkit/06-flow/preview.gif",
       "directory": "spinkit/06-flow"
     },
@@ -635,6 +641,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 7,
       "preview_path": "spinkit/07-swing/preview.gif",
       "directory": "spinkit/07-swing"
     },
@@ -711,84 +718,9 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 8,
       "preview_path": "spinkit/08-circle/preview.gif",
       "directory": "spinkit/08-circle"
-    },
-    {
-      "id": "spinkit-circle-fade",
-      "folder": "09-circle-fade",
-      "name": "Circle Fade",
-      "title": "Postupne svietiaci kruh",
-      "author": "Tobias Ahlin",
-      "license": "MIT",
-      "source_commit": "742a71277c49b69053b5beb9fad80d720840a2ab",
-      "source_url": "https://github.com/tobiasahlin/SpinKit",
-      "frame_count": 12,
-      "interval_ms": 100,
-      "size": [
-        104,
-        104
-      ],
-      "color": "#3CCFFF",
-      "inner_css_size": 64,
-      "css_render_scale": 4,
-      "native_cycle_ms": 1200,
-      "timing_adaptation": "Original cycle preserved.",
-      "state": "preview-only-not-installed",
-      "frames": [
-        {
-          "name": "wait1.png",
-          "sha256": "299d10da7274d215e0533c5113e781468fbf5f78169ad544ab41ca50f30399c5"
-        },
-        {
-          "name": "wait2.png",
-          "sha256": "5799db0cd86f0be9bbeb7e9b284bea8497cae3713e6ba95d3036bbde9ee44803"
-        },
-        {
-          "name": "wait3.png",
-          "sha256": "8349c08eb93738404d6a02f5a704892a67684acb91bd9aec66332630d39bbe0f"
-        },
-        {
-          "name": "wait4.png",
-          "sha256": "dc4a63378bc0251e2b5842f6077457668939bb878a9aac9a0d31a7287f1e56e3"
-        },
-        {
-          "name": "wait5.png",
-          "sha256": "eef04f2f82430a620e62fc1db779500dc5ce5e3e6c727ef3cac600ff1a05a557"
-        },
-        {
-          "name": "wait6.png",
-          "sha256": "d5310a2b022b00cc575f03335399290ba5316086ff904711dea73dfc2dfe879b"
-        },
-        {
-          "name": "wait7.png",
-          "sha256": "f51bb6a8407d1d06450f8a472fb6f9c70c1a7df1473360aaddc88c7bcd34adeb"
-        },
-        {
-          "name": "wait8.png",
-          "sha256": "6f532646a119b68712be7579e5391706f7b7a996e58129f316b96d96d824725f"
-        },
-        {
-          "name": "wait9.png",
-          "sha256": "589f877ab1a42253b81d001841e6e82ff682eedbf032f9698b7d850d26211e4c"
-        },
-        {
-          "name": "wait10.png",
-          "sha256": "a2db805620124e57b80760541f13dfbd16ec943ee489524a8f36f602cf0e3e53"
-        },
-        {
-          "name": "wait11.png",
-          "sha256": "b49b939615ba88881fbb1aca2a229662482552189462fb4b897835741aecfcfe"
-        },
-        {
-          "name": "wait12.png",
-          "sha256": "44783b309199a4db83bf80ea329026997bb2da72835cb549c0560464ebd7d8fe"
-        }
-      ],
-      "decoded_32bit_surface_bytes": 43264,
-      "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
-      "preview_path": "spinkit/09-circle-fade/preview.gif",
-      "directory": "spinkit/09-circle-fade"
     },
     {
       "id": "spinkit-grid",
@@ -867,6 +799,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 10,
       "preview_path": "spinkit/10-grid/preview.gif",
       "directory": "spinkit/10-grid"
     },
@@ -991,6 +924,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 11,
       "preview_path": "spinkit/11-fold/preview.gif",
       "directory": "spinkit/11-fold"
     },
@@ -1099,6 +1033,7 @@
       ],
       "decoded_32bit_surface_bytes": 43264,
       "source_css_sha256": "815541240caae9f1fad3299a9f343e777acb24de1795e0a3ada4802699694183",
+      "original_review_number": 12,
       "preview_path": "spinkit/12-wander/preview.gif",
       "directory": "spinkit/12-wander"
     },
@@ -1166,6 +1101,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 13,
       "preview_path": "community/001-techkings-football/preview.gif",
       "directory": "community/001-techkings-football"
     },
@@ -1258,6 +1194,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 14,
       "preview_path": "community/002-techkings-spinner-7/preview.gif",
       "directory": "community/002-techkings-spinner-7"
     },
@@ -1310,6 +1247,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 15,
       "preview_path": "community/003-techkings-spinner-8/preview.gif",
       "directory": "community/003-techkings-spinner-8"
     },
@@ -1357,6 +1295,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 16,
       "preview_path": "community/004-techkings-spinner-9/preview.gif",
       "directory": "community/004-techkings-spinner-9"
     },
@@ -1414,6 +1353,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 17,
       "preview_path": "community/005-techkings-spinner-10/preview.gif",
       "directory": "community/005-techkings-spinner-10"
     },
@@ -1491,6 +1431,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 18,
       "preview_path": "community/006-techkings-spinner-11/preview.gif",
       "directory": "community/006-techkings-spinner-11"
     },
@@ -1568,6 +1509,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 19,
       "preview_path": "community/007-techkings-spinner-12/preview.gif",
       "directory": "community/007-techkings-spinner-12"
     },
@@ -1690,6 +1632,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 20,
       "preview_path": "community/008-techkings-spinner-13/preview.gif",
       "directory": "community/008-techkings-spinner-13"
     },
@@ -1757,6 +1700,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 21,
       "preview_path": "community/009-techkings-spinner-14/preview.gif",
       "directory": "community/009-techkings-spinner-14"
     },
@@ -1834,6 +1778,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 22,
       "preview_path": "community/010-techkings-spinner-15/preview.gif",
       "directory": "community/010-techkings-spinner-15"
     },
@@ -1901,6 +1846,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 23,
       "preview_path": "community/011-techkings-spinner-16/preview.gif",
       "directory": "community/011-techkings-spinner-16"
     },
@@ -2008,6 +1954,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 24,
       "preview_path": "community/012-techkings-spinner-17/preview.gif",
       "directory": "community/012-techkings-spinner-17"
     },
@@ -2125,6 +2072,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 25,
       "preview_path": "community/013-techkings-spinner-18/preview.gif",
       "directory": "community/013-techkings-spinner-18"
     },
@@ -2202,6 +2150,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 26,
       "preview_path": "community/014-techkings-spinner-19/preview.gif",
       "directory": "community/014-techkings-spinner-19"
     },
@@ -2319,6 +2268,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 27,
       "preview_path": "community/015-techkings-spinner-20/preview.gif",
       "directory": "community/015-techkings-spinner-20"
     },
@@ -2416,6 +2366,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 28,
       "preview_path": "community/016-techkings-spinner-21/preview.gif",
       "directory": "community/016-techkings-spinner-21"
     },
@@ -2473,6 +2424,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 29,
       "preview_path": "community/017-techkings-spinner-22/preview.gif",
       "directory": "community/017-techkings-spinner-22"
     },
@@ -2640,6 +2592,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 30,
       "preview_path": "community/018-techkings-spinner-23/preview.gif",
       "directory": "community/018-techkings-spinner-23"
     },
@@ -2827,6 +2780,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 31,
       "preview_path": "community/019-techkings-spinner-24/preview.gif",
       "directory": "community/019-techkings-spinner-24"
     },
@@ -2929,6 +2883,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 32,
       "preview_path": "community/020-techkings-spinner-25/preview.gif",
       "directory": "community/020-techkings-spinner-25"
     },
@@ -3011,6 +2966,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 33,
       "preview_path": "community/021-techkings-spinner-26/preview.gif",
       "directory": "community/021-techkings-spinner-26"
     },
@@ -3068,6 +3024,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 34,
       "preview_path": "community/022-techkings-spinner-27/preview.gif",
       "directory": "community/022-techkings-spinner-27"
     },
@@ -3120,6 +3077,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 35,
       "preview_path": "community/023-techkings-spinner-28/preview.gif",
       "directory": "community/023-techkings-spinner-28"
     },
@@ -3177,6 +3135,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 36,
       "preview_path": "community/024-techkings-spinner-29/preview.gif",
       "directory": "community/024-techkings-spinner-29"
     },
@@ -3254,6 +3213,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 37,
       "preview_path": "community/025-techkings-spinner-30/preview.gif",
       "directory": "community/025-techkings-spinner-30"
     },
@@ -3331,6 +3291,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 38,
       "preview_path": "community/026-techkings-spinner-31/preview.gif",
       "directory": "community/026-techkings-spinner-31"
     },
@@ -3423,6 +3384,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 39,
       "preview_path": "community/027-techkings-spinner-32/preview.gif",
       "directory": "community/027-techkings-spinner-32"
     },
@@ -3500,6 +3462,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 40,
       "preview_path": "community/028-techkings-spinner-33/preview.gif",
       "directory": "community/028-techkings-spinner-33"
     },
@@ -3642,6 +3605,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 41,
       "preview_path": "community/029-techkings-spinner-34/preview.gif",
       "directory": "community/029-techkings-spinner-34"
     },
@@ -3729,6 +3693,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 42,
       "preview_path": "community/030-techkings-spinner-35/preview.gif",
       "directory": "community/030-techkings-spinner-35"
     },
@@ -3816,6 +3781,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 43,
       "preview_path": "community/031-techkings-spinner-36/preview.gif",
       "directory": "community/031-techkings-spinner-36"
     },
@@ -3913,6 +3879,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 44,
       "preview_path": "community/032-techkings-spinner-37/preview.gif",
       "directory": "community/032-techkings-spinner-37"
     },
@@ -4050,6 +4017,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 45,
       "preview_path": "community/033-techkings-spinner-38/preview.gif",
       "directory": "community/033-techkings-spinner-38"
     },
@@ -4167,6 +4135,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 46,
       "preview_path": "community/034-techkings-spinner-39/preview.gif",
       "directory": "community/034-techkings-spinner-39"
     },
@@ -4264,6 +4233,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 47,
       "preview_path": "community/035-techkings-spinner-40/preview.gif",
       "directory": "community/035-techkings-spinner-40"
     },
@@ -4351,6 +4321,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 48,
       "preview_path": "community/036-techkings-spinner-41/preview.gif",
       "directory": "community/036-techkings-spinner-41"
     },
@@ -4463,6 +4434,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 49,
       "preview_path": "community/037-techkings-spinner-42/preview.gif",
       "directory": "community/037-techkings-spinner-42"
     },
@@ -4550,6 +4522,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 50,
       "preview_path": "community/038-techkings-spinner-43/preview.gif",
       "directory": "community/038-techkings-spinner-43"
     },
@@ -4647,6 +4620,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 51,
       "preview_path": "community/039-techkings-spinner-44/preview.gif",
       "directory": "community/039-techkings-spinner-44"
     },
@@ -4704,6 +4678,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 52,
       "preview_path": "community/040-techkings-spinner-45/preview.gif",
       "directory": "community/040-techkings-spinner-45"
     },
@@ -4831,6 +4806,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 53,
       "preview_path": "community/041-techkings-spinner-46/preview.gif",
       "directory": "community/041-techkings-spinner-46"
     },
@@ -4928,6 +4904,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 54,
       "preview_path": "community/042-techkings-spinner-47/preview.gif",
       "directory": "community/042-techkings-spinner-47"
     },
@@ -5115,6 +5092,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 55,
       "preview_path": "community/043-techkings-spinner-48/preview.gif",
       "directory": "community/043-techkings-spinner-48"
     },
@@ -5192,6 +5170,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 56,
       "preview_path": "community/044-techkings-spinner-49/preview.gif",
       "directory": "community/044-techkings-spinner-49"
     },
@@ -5274,6 +5253,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 57,
       "preview_path": "community/045-techkings-spinner-50/preview.gif",
       "directory": "community/045-techkings-spinner-50"
     },
@@ -5331,6 +5311,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 58,
       "preview_path": "community/046-techkings-spinner-51/preview.gif",
       "directory": "community/046-techkings-spinner-51"
     },
@@ -5443,6 +5424,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 59,
       "preview_path": "community/047-techkings-spinner-52/preview.gif",
       "directory": "community/047-techkings-spinner-52"
     },
@@ -5525,6 +5507,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 60,
       "preview_path": "community/048-techkings-spinner-53/preview.gif",
       "directory": "community/048-techkings-spinner-53"
     },
@@ -5582,6 +5565,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 61,
       "preview_path": "community/049-techkings-spinner-54/preview.gif",
       "directory": "community/049-techkings-spinner-54"
     },
@@ -5824,6 +5808,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 62,
       "preview_path": "community/050-techkings-spinner-55/preview.gif",
       "directory": "community/050-techkings-spinner-55"
     },
@@ -6026,6 +6011,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 63,
       "preview_path": "community/051-techkings-spinner-56/preview.gif",
       "directory": "community/051-techkings-spinner-56"
     },
@@ -6088,6 +6074,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 64,
       "preview_path": "community/052-techkings-spinner-57/preview.gif",
       "directory": "community/052-techkings-spinner-57"
     },
@@ -6180,6 +6167,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 65,
       "preview_path": "community/053-techkings-spinner-58/preview.gif",
       "directory": "community/053-techkings-spinner-58"
     },
@@ -6317,6 +6305,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 66,
       "preview_path": "community/054-techkings-spinner-59/preview.gif",
       "directory": "community/054-techkings-spinner-59"
     },
@@ -6454,6 +6443,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 67,
       "preview_path": "community/055-techkings-spinner-60/preview.gif",
       "directory": "community/055-techkings-spinner-60"
     },
@@ -6591,6 +6581,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 68,
       "preview_path": "community/056-techkings-spinner-61/preview.gif",
       "directory": "community/056-techkings-spinner-61"
     },
@@ -6688,6 +6679,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 69,
       "preview_path": "community/057-techkings-spinner-62/preview.gif",
       "directory": "community/057-techkings-spinner-62"
     },
@@ -6845,6 +6837,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 70,
       "preview_path": "community/058-techkings-spinner-63/preview.gif",
       "directory": "community/058-techkings-spinner-63"
     },
@@ -6927,6 +6920,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 71,
       "preview_path": "community/059-techkings-spinner-64/preview.gif",
       "directory": "community/059-techkings-spinner-64"
     },
@@ -7009,6 +7003,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 72,
       "preview_path": "community/060-techkings-spinner-65/preview.gif",
       "directory": "community/060-techkings-spinner-65"
     },
@@ -7126,6 +7121,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 73,
       "preview_path": "community/061-techkings-spinner-66/preview.gif",
       "directory": "community/061-techkings-spinner-66"
     },
@@ -7283,6 +7279,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 74,
       "preview_path": "community/062-techkings-spinner-67/preview.gif",
       "directory": "community/062-techkings-spinner-67"
     },
@@ -7440,6 +7437,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 75,
       "preview_path": "community/063-techkings-spinner-68/preview.gif",
       "directory": "community/063-techkings-spinner-68"
     },
@@ -7597,6 +7595,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 76,
       "preview_path": "community/064-techkings-spinner-69/preview.gif",
       "directory": "community/064-techkings-spinner-69"
     },
@@ -7754,6 +7753,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 77,
       "preview_path": "community/065-techkings-spinner-70/preview.gif",
       "directory": "community/065-techkings-spinner-70"
     },
@@ -7891,6 +7891,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 78,
       "preview_path": "community/066-techkings-spinner-71/preview.gif",
       "directory": "community/066-techkings-spinner-71"
     },
@@ -7968,6 +7969,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 79,
       "preview_path": "community/067-techkings-spinner-72/preview.gif",
       "directory": "community/067-techkings-spinner-72"
     },
@@ -8035,6 +8037,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 80,
       "preview_path": "community/068-techkings-spinner-73/preview.gif",
       "directory": "community/068-techkings-spinner-73"
     },
@@ -8197,6 +8200,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 81,
       "preview_path": "community/069-techkings-spinner-74/preview.gif",
       "directory": "community/069-techkings-spinner-74"
     },
@@ -8384,6 +8388,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 82,
       "preview_path": "community/070-techkings-spinner-75/preview.gif",
       "directory": "community/070-techkings-spinner-75"
     },
@@ -8451,6 +8456,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 83,
       "preview_path": "community/071-techkings-spinner-76/preview.gif",
       "directory": "community/071-techkings-spinner-76"
     },
@@ -8518,6 +8524,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 84,
       "preview_path": "community/072-techkings-spinner-77/preview.gif",
       "directory": "community/072-techkings-spinner-77"
     },
@@ -8650,6 +8657,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 85,
       "preview_path": "community/073-techkings-spinner-78/preview.gif",
       "directory": "community/073-techkings-spinner-78"
     },
@@ -8717,6 +8725,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 86,
       "preview_path": "community/074-techkings-spinner-by-ekremtt-02b/preview.gif",
       "directory": "community/074-techkings-spinner-by-ekremtt-02b"
     },
@@ -8784,6 +8793,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 87,
       "preview_path": "community/075-techkings-spinner-by-ekremtt-02r/preview.gif",
       "directory": "community/075-techkings-spinner-by-ekremtt-02r"
     },
@@ -8861,6 +8871,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 88,
       "preview_path": "community/076-techkings-spinner-by-ekremtt-03b/preview.gif",
       "directory": "community/076-techkings-spinner-by-ekremtt-03b"
     },
@@ -8958,6 +8969,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 89,
       "preview_path": "community/077-techkings-spinner-by-ekremtt-04b/preview.gif",
       "directory": "community/077-techkings-spinner-by-ekremtt-04b"
     },
@@ -9055,6 +9067,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 90,
       "preview_path": "community/078-techkings-spinner-by-ekremtt-05r/preview.gif",
       "directory": "community/078-techkings-spinner-by-ekremtt-05r"
     },
@@ -9132,6 +9145,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 91,
       "preview_path": "community/079-techkings-spinner-by-ekremtt-06g/preview.gif",
       "directory": "community/079-techkings-spinner-by-ekremtt-06g"
     },
@@ -9209,6 +9223,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 92,
       "preview_path": "community/080-techkings-spinner-by-ekremtt-06r/preview.gif",
       "directory": "community/080-techkings-spinner-by-ekremtt-06r"
     },
@@ -9286,6 +9301,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 93,
       "preview_path": "community/081-techkings-spinner-by-ekremtt-07p/preview.gif",
       "directory": "community/081-techkings-spinner-by-ekremtt-07p"
     },
@@ -9383,6 +9399,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 94,
       "preview_path": "community/082-techkings-spinner-by-ekremtt-08/preview.gif",
       "directory": "community/082-techkings-spinner-by-ekremtt-08"
     },
@@ -9520,6 +9537,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 95,
       "preview_path": "community/083-techkings-spinner-by-ekremtt-09/preview.gif",
       "directory": "community/083-techkings-spinner-by-ekremtt-09"
     },
@@ -9602,6 +9620,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 96,
       "preview_path": "community/084-openpli-a10/preview.gif",
       "directory": "community/084-openpli-a10"
     },
@@ -9649,6 +9668,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 97,
       "preview_path": "community/085-openpli-asterix/preview.gif",
       "directory": "community/085-openpli-asterix"
     },
@@ -9761,6 +9781,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 98,
       "preview_path": "community/086-openpli-baum/preview.gif",
       "directory": "community/086-openpli-baum"
     },
@@ -9853,6 +9874,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 99,
       "preview_path": "community/087-openpli-beholder/preview.gif",
       "directory": "community/087-openpli-beholder"
     },
@@ -9930,6 +9952,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 100,
       "preview_path": "community/088-openpli-buch/preview.gif",
       "directory": "community/088-openpli-buch"
     },
@@ -10017,6 +10040,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 101,
       "preview_path": "community/089-openpli-counter/preview.gif",
       "directory": "community/089-openpli-counter"
     },
@@ -10084,6 +10108,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 102,
       "preview_path": "community/090-openpli-dart/preview.gif",
       "directory": "community/090-openpli-dart"
     },
@@ -10141,6 +10166,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 103,
       "preview_path": "community/091-openpli-echse/preview.gif",
       "directory": "community/091-openpli-echse"
     },
@@ -10208,6 +10234,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 104,
       "preview_path": "community/092-openpli-fackel/preview.gif",
       "directory": "community/092-openpli-fackel"
     },
@@ -10255,6 +10282,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 105,
       "preview_path": "community/093-openpli-gargoyle/preview.gif",
       "directory": "community/093-openpli-gargoyle"
     },
@@ -10342,6 +10370,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 106,
       "preview_path": "community/094-openpli-ghost/preview.gif",
       "directory": "community/094-openpli-ghost"
     },
@@ -10524,6 +10553,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 107,
       "preview_path": "community/095-openpli-gutemine/preview.gif",
       "directory": "community/095-openpli-gutemine"
     },
@@ -10621,6 +10651,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 108,
       "preview_path": "community/096-openpli-harddrive/preview.gif",
       "directory": "community/096-openpli-harddrive"
     },
@@ -10703,6 +10734,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 109,
       "preview_path": "community/097-openpli-hexe/preview.gif",
       "directory": "community/097-openpli-hexe"
     },
@@ -10780,6 +10812,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 110,
       "preview_path": "community/098-openpli-hexe1/preview.gif",
       "directory": "community/098-openpli-hexe1"
     },
@@ -10867,6 +10900,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 111,
       "preview_path": "community/099-openpli-hobby/preview.gif",
       "directory": "community/099-openpli-hobby"
     },
@@ -10979,6 +11013,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 112,
       "preview_path": "community/100-openpli-idefix/preview.gif",
       "directory": "community/100-openpli-idefix"
     },
@@ -11226,6 +11261,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 113,
       "preview_path": "community/101-openpli-katze2/preview.gif",
       "directory": "community/101-openpli-katze2"
     },
@@ -11358,6 +11394,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 114,
       "preview_path": "community/102-openpli-kreuz/preview.gif",
       "directory": "community/102-openpli-kreuz"
     },
@@ -11565,6 +11602,7 @@
       "source_has_opaque_frames": true,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 115,
       "preview_path": "community/103-openpli-love/preview.gif",
       "directory": "community/103-openpli-love"
     },
@@ -11702,6 +11740,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 116,
       "preview_path": "community/104-openpli-maggie/preview.gif",
       "directory": "community/104-openpli-maggie"
     },
@@ -11774,6 +11813,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 117,
       "preview_path": "community/105-openpli-magier/preview.gif",
       "directory": "community/105-openpli-magier"
     },
@@ -11851,6 +11891,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 118,
       "preview_path": "community/106-openpli-mais/preview.gif",
       "directory": "community/106-openpli-mais"
     },
@@ -11938,6 +11979,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 119,
       "preview_path": "community/107-openpli-motor/preview.gif",
       "directory": "community/107-openpli-motor"
     },
@@ -12015,6 +12057,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 120,
       "preview_path": "community/108-openpli-obelix/preview.gif",
       "directory": "community/108-openpli-obelix"
     },
@@ -12082,6 +12125,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 121,
       "preview_path": "community/109-openpli-papaschlumpf/preview.gif",
       "directory": "community/109-openpli-papaschlumpf"
     },
@@ -12399,6 +12443,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 122,
       "preview_path": "community/110-openpli-papierflieger/preview.gif",
       "directory": "community/110-openpli-papierflieger"
     },
@@ -12486,6 +12531,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 123,
       "preview_path": "community/111-openpli-pentagramm/preview.gif",
       "directory": "community/111-openpli-pentagramm"
     },
@@ -12583,6 +12629,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 124,
       "preview_path": "community/112-openpli-pentagramm1/preview.gif",
       "directory": "community/112-openpli-pentagramm1"
     },
@@ -12660,6 +12707,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 125,
       "preview_path": "community/113-openpli-pingu/preview.gif",
       "directory": "community/113-openpli-pingu"
     },
@@ -12737,6 +12785,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 126,
       "preview_path": "community/114-openpli-pingudrink/preview.gif",
       "directory": "community/114-openpli-pingudrink"
     },
@@ -12924,6 +12973,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 127,
       "preview_path": "community/115-openpli-pinguhahn/preview.gif",
       "directory": "community/115-openpli-pinguhahn"
     },
@@ -12996,6 +13046,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 128,
       "preview_path": "community/116-openpli-pingupc/preview.gif",
       "directory": "community/116-openpli-pingupc"
     },
@@ -13053,6 +13104,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 129,
       "preview_path": "community/117-openpli-pumpkigcurving/preview.gif",
       "directory": "community/117-openpli-pumpkigcurving"
     },
@@ -13105,6 +13157,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 130,
       "preview_path": "community/118-openpli-roadrunner/preview.gif",
       "directory": "community/118-openpli-roadrunner"
     },
@@ -13202,6 +13255,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 131,
       "preview_path": "community/119-openpli-roboter/preview.gif",
       "directory": "community/119-openpli-roboter"
     },
@@ -13279,6 +13333,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 132,
       "preview_path": "community/120-openpli-ryu/preview.gif",
       "directory": "community/120-openpli-ryu"
     },
@@ -13356,6 +13411,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 133,
       "preview_path": "community/121-openpli-ryu1/preview.gif",
       "directory": "community/121-openpli-ryu1"
     },
@@ -13473,6 +13529,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 134,
       "preview_path": "community/122-openpli-sarg/preview.gif",
       "directory": "community/122-openpli-sarg"
     },
@@ -13660,6 +13717,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 135,
       "preview_path": "community/123-openpli-schaedel/preview.gif",
       "directory": "community/123-openpli-schaedel"
     },
@@ -13787,6 +13845,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 136,
       "preview_path": "community/124-openpli-schaedelschwert/preview.gif",
       "directory": "community/124-openpli-schaedelschwert"
     },
@@ -13874,6 +13933,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 137,
       "preview_path": "community/125-openpli-simba/preview.gif",
       "directory": "community/125-openpli-simba"
     },
@@ -13931,6 +13991,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 138,
       "preview_path": "community/126-openpli-skelett/preview.gif",
       "directory": "community/126-openpli-skelett"
     },
@@ -14043,6 +14104,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 139,
       "preview_path": "community/127-openpli-skull/preview.gif",
       "directory": "community/127-openpli-skull"
     },
@@ -14100,6 +14162,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 140,
       "preview_path": "community/128-openpli-sonne/preview.gif",
       "directory": "community/128-openpli-sonne"
     },
@@ -14197,6 +14260,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 141,
       "preview_path": "community/129-openpli-spanner/preview.gif",
       "directory": "community/129-openpli-spanner"
     },
@@ -14254,6 +14318,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 142,
       "preview_path": "community/130-openpli-spinne/preview.gif",
       "directory": "community/130-openpli-spinne"
     },
@@ -14361,6 +14426,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 143,
       "preview_path": "community/131-openpli-stargate/preview.gif",
       "directory": "community/131-openpli-stargate"
     },
@@ -14473,6 +14539,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 144,
       "preview_path": "community/132-openpli-streetfighter/preview.gif",
       "directory": "community/132-openpli-streetfighter"
     },
@@ -14540,135 +14607,9 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 145,
       "preview_path": "community/133-openpli-sylvestertweety/preview.gif",
       "directory": "community/133-openpli-sylvestertweety"
-    },
-    {
-      "id": "134-openpli-taube",
-      "folder": "134-openpli-taube",
-      "title": "Taube",
-      "author": "Autor v archíve neuvedený",
-      "license": "not-specified-in-submitted-archive",
-      "origins": [
-        {
-          "source": "openpli",
-          "archive_folder": "usr/share/enigma2/Spinner/Taube",
-          "name": "Taube",
-          "source_indices": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18
-          ]
-        }
-      ],
-      "size": [
-        104,
-        104
-      ],
-      "source_canvas": [
-        134,
-        99
-      ],
-      "inner_size": [
-        96,
-        71
-      ],
-      "frame_count": 18,
-      "interval_ms": 100,
-      "frames": [
-        {
-          "name": "wait1.png",
-          "sha256": "c8dac2197a6533aaed921b3d5b2f26901d6255521dda0304debaa3518f256d5e"
-        },
-        {
-          "name": "wait2.png",
-          "sha256": "fe4ef1fb5d51fd5a6672567aaa5d229e05b1afe03145fc82fbac0dc99e900a2f"
-        },
-        {
-          "name": "wait3.png",
-          "sha256": "4081358080c4c734005ddefb22d93268cd3450c281519a79f3909b62bb8bb964"
-        },
-        {
-          "name": "wait4.png",
-          "sha256": "3de517f4cb95683f982c77aa421f7acef899a8b2598fad0bef80fa1c25494e25"
-        },
-        {
-          "name": "wait5.png",
-          "sha256": "2bef825e7f8bcb18fad2692fabd7cee4c9119562b88b7c13ed09a88f81a91731"
-        },
-        {
-          "name": "wait6.png",
-          "sha256": "fc03de414860f428bd9b1aa8b4dd7fcaee85d27621c6a16da1540eb365b1231a"
-        },
-        {
-          "name": "wait7.png",
-          "sha256": "cd615daa9bbcd10f8c7211dd59aab5a98be740decac9e5bf094a8f1358c4dc60"
-        },
-        {
-          "name": "wait8.png",
-          "sha256": "47e89f9d764f8f0d598d6727817c5b8ae0a860c1426b2e225497c29c34915407"
-        },
-        {
-          "name": "wait9.png",
-          "sha256": "10c4c4ce39361610881be605f4990b9a3eda7f8ac5de5aab9bd913432ba337ec"
-        },
-        {
-          "name": "wait10.png",
-          "sha256": "e0ba148e7d0cf9c21b96d2d91333823463fb160893ed2a77743cc2fa6b5e550a"
-        },
-        {
-          "name": "wait11.png",
-          "sha256": "be80ac4561eeb89dd88a31dd4ba4f441a5d0bdbdddcdfb127a807d32374f1daa"
-        },
-        {
-          "name": "wait12.png",
-          "sha256": "612b950abb3094210d0f8c06190b4ddd68c3cc6a761140bc64ec4672d637d27a"
-        },
-        {
-          "name": "wait13.png",
-          "sha256": "a36210985b43d620188c30a10a1e1d7c1392fe4ba8b5b93f4eed3ac8841ce106"
-        },
-        {
-          "name": "wait14.png",
-          "sha256": "66086eb429db0a1b0bde05229bd0140617af94ae69c1a8618ba171e4f220499d"
-        },
-        {
-          "name": "wait15.png",
-          "sha256": "47b9d39d9c84bdb5a5bdec92588991b2561a5032104ab606560fa04cd583341e"
-        },
-        {
-          "name": "wait16.png",
-          "sha256": "a0e138430f162665064524e8e9f6f04caa4ab9495d4644dad76dde1da69f6f18"
-        },
-        {
-          "name": "wait17.png",
-          "sha256": "1aa2dbbb8ca9699d98060fc9799909cf252b21c48808d0960474fa1f4557a271"
-        },
-        {
-          "name": "wait18.png",
-          "sha256": "4babaa21bb8bf30b733f8214eb52145561385db29daae1a6a28591db1371c945"
-        }
-      ],
-      "source_has_opaque_frames": false,
-      "motion": true,
-      "state": "preview-only-not-installed",
-      "preview_path": "community/134-openpli-taube/preview.gif",
-      "directory": "community/134-openpli-taube"
     },
     {
       "id": "135-openpli-taz",
@@ -14759,6 +14700,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 147,
       "preview_path": "community/135-openpli-taz/preview.gif",
       "directory": "community/135-openpli-taz"
     },
@@ -14861,6 +14803,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 148,
       "preview_path": "community/136-openpli-teufel/preview.gif",
       "directory": "community/136-openpli-teufel"
     },
@@ -14958,6 +14901,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 149,
       "preview_path": "community/137-openpli-toeff/preview.gif",
       "directory": "community/137-openpli-toeff"
     },
@@ -15030,6 +14974,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 150,
       "preview_path": "community/138-openpli-tool/preview.gif",
       "directory": "community/138-openpli-tool"
     },
@@ -15107,6 +15052,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 151,
       "preview_path": "community/139-openpli-vogel/preview.gif",
       "directory": "community/139-openpli-vogel"
     },
@@ -15204,6 +15150,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 152,
       "preview_path": "community/140-openpli-weissekatze/preview.gif",
       "directory": "community/140-openpli-weissekatze"
     },
@@ -15271,6 +15218,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 153,
       "preview_path": "community/141-openpli-zahnraeder/preview.gif",
       "directory": "community/141-openpli-zahnraeder"
     },
@@ -15338,6 +15286,7 @@
       "source_has_opaque_frames": false,
       "motion": true,
       "state": "preview-only-not-installed",
+      "original_review_number": 154,
       "preview_path": "community/142-football-football-soccer/preview.gif",
       "directory": "community/142-football-football-soccer"
     }
