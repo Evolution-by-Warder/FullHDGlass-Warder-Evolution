@@ -466,6 +466,11 @@ class LayoutTests(unittest.TestCase):
     def test_tv_and_other_screens_are_byte_identical_to_baseline(self):
         record=json.loads((ROOT/'design/radio-lyrics/implementation.json').read_text())
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
+        if cover_layout.exists():
+            for edit in json.loads(cover_layout.read_text())['edits']:
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
         layout=ROOT/'design/opkg-layout/layout.json'
         if layout.exists():
             for edit in json.loads(layout.read_text())['edits']:

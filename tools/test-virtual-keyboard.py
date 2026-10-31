@@ -84,6 +84,11 @@ class KeyboardTests(unittest.TestCase):
 
     def test_only_the_modern_screen_changes_and_legacy_screen_is_preserved(self):
         raw=SKIN.read_text()
+        cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
+        if cover_layout.exists():
+            for edit in json.loads(cover_layout.read_text())['edits']:
+                self.assertEqual(raw.count(edit['updated_screen']),1)
+                raw=raw.replace(edit['updated_screen'],edit['original_screen'],1)
         layout=ROOT/'design/opkg-layout/layout.json'
         if layout.exists():
             for edit in json.loads(layout.read_text())['edits']:

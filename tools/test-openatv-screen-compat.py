@@ -25,6 +25,11 @@ def widgets(name,keys):return [w for w in screen(name).findall('widget') if acti
 class ScreenCompatTests(unittest.TestCase):
  def test_approved_pig_screen_is_byte_identical_and_only_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
+  if cover_layout.exists():
+      for edit in json.loads(cover_layout.read_text())['edits']:
+          self.assertEqual(text.count(edit['updated_screen']),1)
+          text=text.replace(edit['updated_screen'],edit['original_screen'],1)
   layout=ROOT/'design/opkg-layout/layout.json'
   if layout.exists():
    for edit in json.loads(layout.read_text())['edits']:self.assertEqual(text.count(edit['updated_screen']),1);text=text.replace(edit['updated_screen'],edit['original_screen'],1)
