@@ -60,6 +60,13 @@ def digest_graphics():
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
             raw=path.read_bytes()
             if path==keyboard_skin:
+                split=ROOT/'design/radio-dab-split/layout.json'
+                if split.exists():
+                    text=raw.decode()
+                    for edit in json.loads(split.read_text())['edits']:
+                        assert text.count(edit['updated_screen'])==1
+                        text=text.replace(edit['updated_screen'],edit['original_screen'],1)
+                    raw=text.encode()
                 title=ROOT/'design/radio-header/title.json'
                 if title.exists():
                     text=raw.decode()

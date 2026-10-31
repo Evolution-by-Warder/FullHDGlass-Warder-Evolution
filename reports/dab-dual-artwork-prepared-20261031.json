@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "status": "prepared-not-released",
+  "date": "2026-10-31",
+  "production_version": "1.0.47",
+  "pending_branch": "fix/settings-section-titles-20261031",
+  "authorization": "Owner requested DAB slideshow above a separate song cover together with pending header cleanup, preserving ordinary radio layout. Earlier instruction to defer a new version/IPK remains in force.",
+  "source_baseline": "a4f001ee20228556e08b5881ba4b293fdc5e1b56",
+  "includes_header_cleanup_commit": "871f7f177f618b9c4e62ee59d77356c723a2c3b3",
+  "layout": {
+    "dab_slideshow": [
+      316,
+      146,
+      420,
+      340
+    ],
+    "dab_cover": [
+      316,
+      506,
+      420,
+      340
+    ],
+    "non_dab_cover": [
+      316,
+      146,
+      420,
+      700
+    ],
+    "aspect_preserved": true,
+    "new_slideshow_network_requests": false,
+    "new_slideshow_cache_writes": false,
+    "single_existing_cover_lookup": true
+  },
+  "validation": {
+    "dab_artwork_tests": 11,
+    "lyrics_artwork_tests": 117,
+    "metadata_tests": 77,
+    "openatv_screen_tests": 8,
+    "history_radio_tests": 8,
+    "keyboard_tests": 6,
+    "runtime_cleanup_tests": 9,
+    "previous_header_settings_tests": 22,
+    "previous_shared_dialog_tests": 5,
+    "runtime_safety": "passed",
+    "original_graphics_layout_digest": "passed-after-exact-reviewed-reversal",
+    "python_39_syntax": "passed",
+    "station_and_mode_transition_callbacks": "mocked-native-widgets"
+  },
+  "receiver_tested": false,
+  "version_files_changed": false,
+  "feeds_changed": false,
+  "ipk_built": false,
+  "published": false,
+  "changed_runtime": [
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioCompactArtwork.py",
+      "sha256": "c35a4e40fb4ecaada391db08e9edf930d7f0bf68d68092930335abc97c1121b8"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "sha256": "e557997e0ad279ff9ae30b5e8c83dc9b534d327bbf859c33b151bdcc6b66c336"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+      "sha256": "e0ea9bcc5f4455daa31050817b8632d2805177e1cfdc6dafde96083a6aa7894a"
+    },
+    {
+      "path": "source/package-root/usr/share/enigma2/hd_glass17/skin.xml",
+      "sha256": "cfa5a238f7c9e9e747316f742d72437c6eb14583f21d17890e6b90bc65b76897"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioDabSlideshow.py",
+      "sha256": "16453242d04c3c0834e88747d5b5ef2074f5fb855728f1297ba0611985572fb1"
+    }
+  ]
+}

@@ -468,6 +468,11 @@ class LayoutTests(unittest.TestCase):
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
         # Reverse only the exact reviewed compatibility screens, then the
         # independently verified keyboard repair. Keep the original baseline.
+        split_edits=ROOT/'design/radio-dab-split/layout.json'
+        if split_edits.exists():
+            for edit in json.loads(split_edits.read_text())['edits']:
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
         title_edits=ROOT/'design/radio-header/title.json'
         if title_edits.exists():
             for edit in json.loads(title_edits.read_text())['edits']:
