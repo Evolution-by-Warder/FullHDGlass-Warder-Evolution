@@ -7723,6 +7723,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		target_version = getattr(self, "warderUpdate", {}).get("version", "")
 		installed = self.readVersion()
 		exitCode = getattr(self, "warderInstallExitCode", -1)
+		if exitCode == 0 and target_version:
+			try:
+				from .warderInstallHealth import verify_installation
+				manager = "dpkg" if getattr(self, "fileName", "").endswith(".deb") else "opkg"
+				verify_installation(target_version, manager=manager)
+			except (OSError, ValueError, subprocess.SubprocessError) as error:
+				exitCode = 1
+				self.warderInstallOutput = list(getattr(self, "warderInstallOutput", [])) + ["\n" + str(error)]
 		if exitCode == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
 			self.warderRestartBox = self.session.open(MessageBox, update_text("success", "FullHDGlass Warder Evolution", new=installed, language=config.osd.language.value), MessageBox.TYPE_INFO, 3, enable_input=False)
 			self.warderRestartTimer = eTimer()

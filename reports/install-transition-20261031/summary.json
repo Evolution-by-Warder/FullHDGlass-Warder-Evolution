@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "state": "verified-cause-and-prepared-fix-no-product-release",
+  "base_commit": "142d7c84ef8834526cf49e1fb9fcc546657c7d69",
+  "engine": {
+    "version": "opkg version 0.10.0 (libsolv 0.7.40)",
+    "source_url": "https://downloads.yoctoproject.org/releases/opkg/opkg-0.10.0.tar.gz",
+    "source_sha256": "4d099e010a5d262b34184fee4766bc60a8c7439741fb210aa11d51704afd04d1",
+    "libsolv_dependency_sha256": "ba93c280f69f21ae60154de83b833b237b1601422d10857fabd7aa89621159ad"
+  },
+  "findings": {
+    "skin": "The preinst legacy bridge gate rejects a direct 9.50-r12.2 replacement. With actual opkg/libsolv it leaves the new identity half-installed and the old status query empty; a second force reinstall passes. Force flags do not fix the first attempt.",
+    "piconhub": "The minimal 5.0.240904 original-plugin replacement passes with and without force flags; the reported receiver-specific first failure is not reproduced.",
+    "gsu": "Current main updater reviewed at 40f1a615d15e7b24c8cccee217bab3dacef7d55c. It uses a guarded r93 identity transition with a verified recovery package and rollback. No GSU runtime change made.",
+    "success_checks": "Both product updaters previously relied on insufficient final evidence: skin exit code plus version, PiconHub exit code. New checks validate critical payload and exact fully installed package status."
+  },
+  "fix": {
+    "direct_r12": "Admit only upgrade 9.50-r12.2 with exact owner-supplied postrm SHA-256 and no prerm; known postrm skips upgrade cleanup. Retain the prepared-transition gate for unknown scripts or invocations.",
+    "postrm_sha256": "d830f49a50c719a877aeb059c2f62e04105db1d3d9affbe467f8d2ae2788731d",
+    "payload_checks": "Postinst validates critical files before returning success; updater validates complete package status after opkg exits. No logs or new background jobs."
+  },
+  "validation": {
+    "skin_unit_tests": {
+      "installation_health_and_r12": 12,
+      "existing_transition": 6,
+      "frozen_settings_controller_and_layout": 22,
+      "radio_weekly_install": 25,
+      "startup_updater": 12
+    },
+    "piconhub_unit_tests": {
+      "health": 5,
+      "existing_updater": 31,
+      "existing_runtime_transition": 9
+    },
+    "real_opkg_transactions": {
+      "before": 4,
+      "after": 4,
+      "failed_baseline_skin_recoveries": 2,
+      "after_all_new_files_match": true,
+      "after_all_settings_preserved": true
+    },
+    "bytecode_regression": "Passed existing test-release-bytecode.py",
+    "payload_validation": "Both actual candidate source trees passed payload validation",
+    "shell_syntax": "FullHDGlass preinst/postinst and generated PiconHub postinst passed",
+    "known_preexisting_failure": "test-r12-regressions.py expects main/update.json in the updater; untouched baseline already uses main/update-production.json. Failure confirmed unchanged at base commit. This historical smoke script was not rewritten."
+  },
+  "limits": [
+    "Real x86_64 opkg/libsolv with minimal fixture payloads and actual rewritten preinst/legacy postrm; new postinst is inert in ordering fixtures. Payload and UI checks are tested separately.",
+    "Not a full product installation or a physical VU+ framebuffer/runtime test.",
+    "Reproduces the half-installed/status/reinstall pattern; cannot prove every action of the receiver GUI or the separate missing-skin-file symptom without the original transaction log.",
+    "Known r12 direct transition only; unrecognized legacy removal scripts remain gated."
+  ],
+  "scope": {
+    "new_product_ipk_created": false,
+    "public_ipk_or_feeds_changed": false,
+    "trezor_changed": false
+  }
+}

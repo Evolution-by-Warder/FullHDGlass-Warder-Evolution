@@ -154,6 +154,10 @@ if [ -x /usr/bin/python3 ] && [ -f "$warder_radio_update" ]; then
     /usr/bin/python3 -B "$warder_radio_update" --refresh </dev/null >/dev/null 2>&1 &
 fi
 
+# Check files while still in postinst. Fully installed opkg status is checked
+# only after opkg exits, because configure has not yet committed that state.
+/usr/bin/python3 -B /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderInstallHealth.py --payload-only || exit 1
+
 echo "************************************************"
 echo "Install/upgrade finished: FullHDGlass - Warder Evolution"
 echo "Existing FullHDGlass settings were preserved."

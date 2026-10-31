@@ -98,3 +98,13 @@ This is an audit and a pending work record only. No candidate was removed or red
 ## User receiver report — OpenATV 7.6 / VU+ Uno 4K SE
 
 On 31 October the owner relayed a successful second-receiver report on OpenATV 7.6: GSU directly replaced its previous version; FullHDGlass and PiconHub worked after Telnet reinstallation, while their first installation/upgrade attempt had not completed the expected replacement. The original PiconHub predecessor was Chocholousek. Exact installed versions and transaction logs were not supplied. Record this as user-reported operation after recovery and a migration investigation item, not a proven root cause or a blanket compatibility guarantee. See `reports/openatv-76-user-receiver-20261031.json`. No IPK or runtime changes were made for this record.
+
+## Installation repair and spinner choice must ship together
+
+Owner instruction on 31 October: include the spinners when the installation repair is released; do not issue a skin release containing only the installer repair.
+
+Prepared installer source is on `fix/install-transition-20261031`. The verified opkg 0.10.0 / libsolv 0.7.40 reproduction and a guarded direct replacement of the exact supplied 9.50-r12.2 are documented in `docs/INSTALL-TRANSITION-20261031.md`; transaction evidence is in `reports/install-transition-20261031/`. Unknown legacy removal scripts remain protected. Postinst and updater now verify critical payload, and the updater also requires a fully installed package state after opkg exits.
+
+Release checklist: combine this repair with the already prepared native spinner selector and approved blue centered-caption bakussa. Complete the approved online spinner design: one separately verified ZIP per spinner, a small extendable catalog, static thumbnails with name/author in the selection list, and downloading only the selected animation. No animated previews are requested. Keep the bundled Dove usable offline, bound transient thumbnail storage, retain the existing native playback path, and preserve the user's cancel/save semantics. Apply the earlier approved duplicate exclusions and pending artwork checks. The online spinner implementation is not yet complete.
+
+The deferred shared radio identity fix listed above also remains part of the next authorized production release. Perform the required combined receiver/package checks before publication. Current production IPK and feeds remain unchanged; no new product IPK was built or issued for this investigation. Public release notes should use only a general description such as improved installation reliability and a choice of waiting animations.
