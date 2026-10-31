@@ -2,11 +2,11 @@
   "schema": 1,
   "date": "2026-10-31",
   "product": "FullHDGlass",
-  "state": "prepared-source-not-released",
+  "state": "source-available-as-isolated-receiver-test",
   "branch": "feature/spinner-choice-20261031",
   "base_commit": "f7fb5fefd69649824468c6fa99318e7dfc28964e",
   "public_version_unchanged": "1.0.49",
-  "new_ipk_created": false,
+  "new_ipk_created": true,
   "production_feeds_changed": false,
   "trezor_changed": false,
   "approved_menu_entries_sk": [
@@ -67,5 +67,7 @@
     "bakussa_and_selection": "pending; desktop checks are not a framebuffer/device test"
   },
   "next_release": "Include pending compound-artist fix 95990e2dd78a29a1070b48dab28517342754c7f5 when a new release is authorized.",
-  "source_commit": "5b62d9087a82bc50e9994b33e0b110609ee85a10"
+  "source_commit": "5b62d9087a82bc50e9994b33e0b110609ee85a10",
+  "test_version": "1.0.50-test1",
+  "test_release": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/spinner-choice-1.0.50-test1"
 }

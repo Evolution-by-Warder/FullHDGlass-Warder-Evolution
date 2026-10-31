@@ -63,3 +63,8 @@ instructions, checks and receiver-test limits. Do not publish a replacement
 include the pending radio identity fix when a new release is authorized.
 
 Prepared spinner source commit: `5b62d9087a82bc50e9994b33e0b110609ee85a10`.
+
+## Spinner receiver test available
+
+Owner asked how to test on their receiver. Isolated **1.0.50-test1** is now published as prerelease `spinner-choice-1.0.50-test1`, with exactly one short IPK and its checksum. Source: `dd233e61d31050949bcd5fb2c4768dc411524f5a`. Production and native TEST updater manifests remain 1.0.49; the legacy bridge remains 1.0.18. New spinner/menu receiver confirmation is pending. See `reports/spinner-choice-test-release-20261031.json`.
+
