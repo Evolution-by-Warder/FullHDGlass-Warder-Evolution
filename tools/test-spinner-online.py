@@ -132,21 +132,37 @@ class CacheTests(unittest.TestCase):
 
 
 class ScreenContractTests(unittest.TestCase):
-    def test_real_screen_renders_only_six_rows_and_releases_temp_images(self):
+    def screen(self, grid=True):
+        class Native:
+            def __init__(self, widget):self.widget=widget;self.orientation=1
+            def size(self):return SimpleNamespace(width=lambda:1590,height=lambda:704)
+            def setItemHeight(self,height):self.widget.height=height
+            def setItemWidth(self,width):self.widget.width=width
+            def setOrientation(self,value):self.orientation=value
+            def setItemSpacing(self,value):self.spacing=value
         class Widget:
-            def __init__(self,*args,**kwargs):self.items=[];self.l=self;self.instance=True
-            def setItemHeight(self,*a):pass
-            def setFont(self,*a):pass
-            def setList(self,items):self.items=items
+            def __init__(self,*args,**kwargs):
+                self.items=[];self.l=self;self.instance=Native(self);self.fonts={}
+                self.actions=args[1] if len(args)>1 and isinstance(args[1],dict) else {}
+            def setItemHeight(self,height):self.height=height
+            def setItemWidth(self,width):self.width=width
+            def setOrientation(self,value):self.orientation=value
+            def setFont(self,index,font):self.fonts[index]=font
+            def setList(self,items):self.items=items;self.index=0
             def moveToIndex(self,index):self.index=index
             def setText(self,text):self.text=text
+            def enableAutoNavigation(self,value):self.auto_navigation=value
         class Screen(dict):
             def __init__(self,session):dict.__init__(self);self.onLayoutFinish=[];self.onClose=[]
             def setTitle(self,title):self.title=title
             def close(self,answer):self.answer=answer;self.cleanup()
         class Deferred:
+            def __init__(self,worker):self.worker=worker
             def addCallbacks(self,*args):return self
             def addBoth(self,*args):return self
+        workers=[]
+        def defer(worker):
+            result=Deferred(worker);workers.append(result);return result
         config=ModuleType('Components.config');config.config=SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk_SK')))
         modules={
             'Components.ActionMap':SimpleNamespace(ActionMap=Widget),
@@ -154,25 +170,84 @@ class ScreenContractTests(unittest.TestCase):
             'Components.MenuList':SimpleNamespace(MenuList=Widget),
             'Components.MultiContent':SimpleNamespace(MultiContentEntryText=lambda **kw:kw,MultiContentEntryPixmapAlphaBlend=lambda **kw:kw),
             'Screens.Screen':SimpleNamespace(Screen=Screen),
-            'enigma':SimpleNamespace(eListboxPythonMultiContent=object,gFont=lambda *a:a,loadPNG=lambda path:path,BT_SCALE=1),
-            'twisted.internet.threads':SimpleNamespace(deferToThread=lambda worker:Deferred()),
+            'enigma':SimpleNamespace(eListbox=SimpleNamespace(**({'orGrid':3} if grid else {})),eListboxPythonMultiContent=object,ePoint=lambda *a:a,
+                                    gFont=lambda *a:a,loadPNG=lambda path:path,BT_SCALE=4,BT_KEEP_ASPECT_RATIO=8,BT_HALIGN_CENTER=16,BT_VALIGN_CENTER=64),
+            'twisted.internet.threads':SimpleNamespace(deferToThread=defer),
             'Components.config':config,
         }
         package=ModuleType('spinner_screen_contract');package.__path__=[str(P)]
         modules[package.__name__]=package
         modules[package.__name__+'.warderSpinner']=backend
         modules[package.__name__+'.warderSpinnerOnline']=online
-        with patch.dict(sys.modules,modules):
-            module=load(package.__name__+'.warderSpinnerScreen',P/'warderSpinnerScreen.py')
-            box=module.SpinnerChoice(None);box.rows=copy.deepcopy(ROWS);box.show_page()
-            self.assertEqual(len(box['list'].items),6)
-            self.assertFalse(box.busy)
-            self.assertEqual(box.pending_page,None)
-            box.step(6);self.assertEqual(len(box['list'].items),6)
-            box.loaded(copy.deepcopy(ROWS));self.assertLessEqual(len(box['list'].items),6)
-            temp=Path(box.temp.name);box.cancel();self.assertFalse(temp.exists())
-            self.assertTrue(box.closed)
-            self.assertIsNone(box.answer)
+        patcher=patch.dict(sys.modules,modules);patcher.start();self.addCleanup(patcher.stop)
+        module=load(package.__name__+'.warderSpinnerScreen',P/'warderSpinnerScreen.py')
+        box=module.SpinnerChoice(None);self.addCleanup(lambda:box.cleanup() if not box.closed else None)
+        # Reproduce skin application after construction: the old inherited
+        # itemHeight=58 overrode content's 104 and clipped its 80px previews.
+        import xml.etree.ElementTree as ET
+        widget=ET.fromstring(module.screen_skin()).find("widget[@name='list']")
+        box['list'].height=int(widget.get('itemHeight'))
+        box.rows=copy.deepcopy(ROWS);box.start()
+        return module,box,workers
+
+    def test_skin_and_native_grid_use_all_complete_rows_without_clipping(self):
+        module,box,workers=self.screen()
+        self.assertEqual((box.columns,box.page_size,box.item_width),(2,16,795))
+        self.assertEqual(box['list'].instance.orientation,3)
+        self.assertEqual(box['list'].height,module.ITEM_HEIGHT)
+        self.assertEqual(len(box['list'].items),16)
+        self.assertFalse(box['list'].auto_navigation)
+        box.pictures={row['id']:'preview' for row in ROWS[:16]};box.redraw()
+        for item in box['list'].items:
+            for content in item[1:]:
+                x,y=content['pos'];w,h=content['size']
+                self.assertGreaterEqual(min(x,y,w,h),0)
+                self.assertLessEqual(x+w,box.item_width)
+                self.assertLessEqual(y+h,module.ITEM_HEIGHT)
+                if 'png' in content:
+                    self.assertEqual((w,h),(72,72))
+                    self.assertTrue(content['flags'] & 8)
+        self.assertEqual(box.page_size//box.columns*module.ITEM_HEIGHT,module.LIST_SIZE[1])
+
+    def test_navigation_reaches_every_item_and_last_page_then_wraps(self):
+        module,box,workers=self.screen()
+        box['actions'].actions['right']();self.assertEqual(box.cursor,1)
+        box['actions'].actions['down']();self.assertEqual(box.cursor,3)
+        box['actions'].actions['up']();self.assertEqual(box.cursor,1)
+        box['actions'].actions['left']();self.assertEqual(box.cursor,0)
+        seen=[]
+        for index in range(len(ROWS)):
+            self.assertEqual(box['list'].items[box['list'].index][0]['id'],ROWS[index]['id'])
+            seen.append(box.rows[box.cursor]['id']);box.step(1)
+        self.assertEqual(len(set(seen)),154)
+        self.assertEqual(box.cursor,0)
+        box.step(-1);self.assertEqual(box.cursor,153)
+        self.assertEqual(len(box['list'].items),10)
+        temp=Path(box.temp.name);box.cancel();self.assertFalse(temp.exists())
+        self.assertTrue(box.closed);self.assertIsNone(box.answer)
+
+    def test_only_visible_static_thumbnails_are_fetched_and_stale_results_are_ignored(self):
+        module,box,workers=self.screen();calls=[]
+        def resource(item,suffix,limit):
+            calls.append(item['path']);return (ASSETS/item['path']).read_bytes()
+        with patch.object(online,'checked_resource',resource):
+            result=workers[0].worker()
+        self.assertEqual(len(calls),box.page_size)
+        self.assertTrue(all(p.startswith('thumbnails/') and p.endswith('.png') for p in calls))
+        box.step(box.page_size)
+        box.thumbnails_done(result)
+        self.assertEqual(box.pictures,{})
+        self.assertEqual(list(Path(box.temp.name).glob('*.png')),[])
+        self.assertEqual(box.page,1)
+        self.assertEqual(box['list'].items[0][0]['id'],ROWS[16]['id'])
+
+    def test_old_native_listbox_without_grid_still_fills_its_vertical_page(self):
+        module,box,workers=self.screen(grid=False)
+        self.assertEqual((box.columns,box.page_size),(1,8))
+        self.assertEqual(len(box['list'].items),8)
+        self.assertEqual(box['list'].height,88)
+        for width,height,expected in [(1590,704,(2,16,795)),(1060,470,(1,5,1060)),(2100,880,(3,30,700))]:
+            self.assertEqual(module.page_layout(width,height),expected)
 
     def test_approved_old_bakussa_tail_is_recognized_after_default_overlay(self):
         from PIL import Image

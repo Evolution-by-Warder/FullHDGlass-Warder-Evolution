@@ -10,7 +10,8 @@ from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend
 from Screens.Screen import Screen
-from enigma import eListboxPythonMultiContent, gFont, loadPNG, BT_SCALE
+from enigma import (eListbox, eListboxPythonMultiContent, ePoint, gFont, loadPNG,
+                    BT_SCALE, BT_KEEP_ASPECT_RATIO, BT_HALIGN_CENTER, BT_VALIGN_CENTER)
 from twisted.internet.threads import deferToThread
 
 from . import warderSpinner as backend
@@ -19,30 +20,48 @@ from .warderDialogSkins import CHOICE_SKIN
 from .warderUiText import ui_text
 
 
+LIST_POSITION = (165, 208)
+LIST_SIZE = (1590, 704)
+ITEM_HEIGHT = 88
+MIN_ITEM_WIDTH = 700
+PREVIEW_SIZE = 72
+PREVIEW_FLAGS = BT_SCALE | BT_KEEP_ASPECT_RATIO | BT_HALIGN_CENTER | BT_VALIGN_CENTER
+
+
+def page_layout(width, height, grid=True):
+    """Use complete readable cells; derive capacity from the actual widget."""
+    columns = max(1, width // MIN_ITEM_WIDTH) if grid else 1
+    rows = max(1, height // ITEM_HEIGHT)
+    return columns, rows * columns, width // columns
+
+
 def screen_skin():
     root = ET.fromstring(CHOICE_SKIN)
     root.set('name', 'WarderSpinnerChoice')
     widget = root.find("widget[@name='list']")
-    widget.set('position', '180,250')
-    widget.set('size', '1560,624')
+    widget.set('position', '%d,%d' % LIST_POSITION)
+    widget.set('size', '%d,%d' % LIST_SIZE)
+    widget.set('itemHeight', str(ITEM_HEIGHT))
+    widget.set('font', 'Regular;28')
+    widget.set('scrollbarMode', 'showNever')
     hint = root.find("widget[@name='hint']")
-    hint.set('position', '180,895')
-    hint.set('size', '1560,55')
+    hint.set('position', '165,920')
+    hint.set('size', '1590,30')
     return ET.tostring(root, encoding='unicode')
 
 
 class SpinnerChoice(Screen):
     skin = screen_skin()
-    PAGE = 6
 
     def __init__(self, session, selected='dove'):
         Screen.__init__(self, session)
         self.skinName = ['WarderSpinnerChoice']
         self.setTitle(ui_text('Spinner'))
         self['list'] = MenuList([], content=eListboxPythonMultiContent)
-        self['list'].l.setItemHeight(104)
-        self['list'].l.setFont(0, gFont('Regular', 30))
-        self['list'].l.setFont(1, gFont('Regular', 23))
+        self['list'].l.setItemHeight(ITEM_HEIGHT)
+        self['list'].l.setFont(0, gFont('Regular', 28))
+        self['list'].l.setFont(1, gFont('Regular', 22))
+        self.columns, self.page_size, self.item_width = page_layout(*LIST_SIZE, grid=False)
         self['hint'] = Label(ui_text('Loading spinner list...'))
         self['line_red'] = Label('')
         self['line_green'] = Label('')
@@ -50,8 +69,8 @@ class SpinnerChoice(Screen):
         self['key_green'] = Label(ui_text('Confirm selection'))
         self['actions'] = ActionMap(['OkCancelActions', 'ColorActions', 'DirectionActions'], {
             'ok': self.choose, 'green': self.choose, 'cancel': self.cancel, 'red': self.cancel,
-            'up': lambda:self.step(-1), 'down': lambda:self.step(1),
-            'left': lambda:self.step(-self.PAGE), 'right': lambda:self.step(self.PAGE),
+            'up': lambda:self.step(-self.columns), 'down': lambda:self.step(self.columns),
+            'left': lambda:self.step(-1), 'right': lambda:self.step(1),
         }, -3)
         self.selected, self.cursor, self.page = selected, 0, -1
         self.closed, self.busy, self.thumb_busy = False, False, False
@@ -75,6 +94,22 @@ class SpinnerChoice(Screen):
         return rows
 
     def start(self):
+        instance = self['list'].instance
+        size = instance.size()
+        grid = (hasattr(eListbox, 'orGrid') and hasattr(instance, 'setOrientation')
+                and hasattr(instance, 'setItemWidth') and hasattr(self['list'].l, 'setItemWidth')
+                and hasattr(self['list'].l, 'setOrientation'))
+        self.columns, self.page_size, self.item_width = page_layout(size.width(), size.height(), grid)
+        instance.setItemHeight(ITEM_HEIGHT)
+        if grid:
+            instance.setOrientation(eListbox.orGrid)
+            self['list'].l.setOrientation(eListbox.orGrid)
+            instance.setItemWidth(self.item_width)
+            self['list'].l.setItemWidth(self.item_width)
+            if hasattr(instance, 'setItemSpacing'):
+                instance.setItemSpacing(ePoint(0, 0))
+        if hasattr(self['list'], 'enableAutoNavigation'):
+            self['list'].enableAutoNavigation(False)
         self.cursor = next((i for i,r in enumerate(self.rows) if r['id']==self.selected), 0)
         self.show_page()
         deferToThread(lambda:online.parse_catalog(online.fetch(online.CATALOG_URL, online.MAX_CATALOG))).addCallbacks(self.loaded, self.offline)
@@ -104,37 +139,37 @@ class SpinnerChoice(Screen):
         self.show_page()
 
     def show_page(self):
-        page = self.cursor//self.PAGE
+        page = self.cursor//self.page_size
         if page != self.page:
             self.page = page
             self.generation += 1
             self.pictures.clear()
             for path in Path(self.temp.name).glob('*.png'):
                 path.unlink()
-            self.pending_page = (self.generation, list(self.rows[page*self.PAGE:(page+1)*self.PAGE]))
+            self.pending_page = (self.generation, list(self.rows[page*self.page_size:(page+1)*self.page_size]))
             self.redraw()
             self.load_thumbnails()
         else:
-            self['list'].moveToIndex(self.cursor % self.PAGE)
+            self['list'].moveToIndex(self.cursor % self.page_size)
         self['hint'].setText('%d / %d  ·  ' % (self.cursor+1, len(self.rows)) + ui_text('Choose with OK'))
 
     def redraw(self):
         if self.closed:
             return
         entries = []
-        for row in self.rows[self.page*self.PAGE:(self.page+1)*self.PAGE]:
+        for row in self.rows[self.page*self.page_size:(self.page+1)*self.page_size]:
             item = [row,
-                    MultiContentEntryText(pos=(116,12), size=(1400,40), font=0, text=ui_text(row['title'])),
-                    MultiContentEntryText(pos=(116,58), size=(1400,32), font=1, text=row['author'])]
+                    MultiContentEntryText(pos=(96,8), size=(self.item_width-112,36), font=0, text=ui_text(row['title'])),
+                    MultiContentEntryText(pos=(96,48), size=(self.item_width-112,30), font=1, text=row['author'])]
             image = self.pictures.get(row['id'])
             if image is None and row.get('local_picture'):
                 try:image = loadPNG(row['local_picture'])
                 except Exception:image = None
             if image is not None:
-                item.append(MultiContentEntryPixmapAlphaBlend(pos=(12,12), size=(80,80), png=image, flags=BT_SCALE))
+                item.append(MultiContentEntryPixmapAlphaBlend(pos=(8,8), size=(PREVIEW_SIZE,PREVIEW_SIZE), png=image, flags=PREVIEW_FLAGS))
             entries.append(item)
         self['list'].setList(entries)
-        self['list'].moveToIndex(self.cursor % self.PAGE)
+        self['list'].moveToIndex(self.cursor % self.page_size)
 
     def load_thumbnails(self):
         if self.closed or self.thumb_busy or self.pending_page is None:
