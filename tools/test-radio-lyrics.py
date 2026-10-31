@@ -720,6 +720,39 @@ class CombinedEngineTests(unittest.TestCase):
         self.identity=warderSongIdentity;self.sites=warderLyricsSites
     def row(self,artist,title):
         return dict(artistName=artist,trackName=title,plainLyrics='Illustrative original test text')
+    def test_verified_compound_artist_is_not_split_at_the_internal_name_hyphen(self):
+        for raw in ('KARMEN PAL - BALAZ-Pustam ta','KARMEN PAL-BALAZ-Pustam ta',
+                    'Karmen Pál – Baláž – Pustam ta','Karmen Pal Balaz: Pustam ta'):
+            self.assertEqual(self.identity.split_stream(raw),('Karmen Pál-Baláž','Pustam ta'))
+        self.assertEqual(self.identity.repair_pair('KARMEN PAL','BALAZ-Pustam ta'),('Karmen Pál-Baláž','Pustam ta'))
+        self.assertEqual(self.identity.repair_pair('24_KARMEN PAL','BALAZ-Pustam ta (Live)'),('Karmen Pál-Baláž','Pustam ta (Live)'))
+    def test_compound_artist_repair_keeps_recording_versions_and_guests_distinct(self):
+        row=self.row('Karmen Pál-Baláž','Púšťam ťa')
+        self.assertTrue(provider.same_song(row,'KARMEN PAL','BALAZ-Pustam ta'))
+        for changed in (dict(row,trackName='Púšťam ťa (Live)'),dict(row,trackName='Púšťam ťa (Remix)'),
+                        dict(row,artistName='Karmen Pál-Baláž & Guest'),dict(row,artistName='Other Artist')):
+            self.assertFalse(provider.same_song(changed,'KARMEN PAL','BALAZ-Pustam ta'))
+        self.assertFalse(provider.same_song(row,'Karmen Pál-Baláž & Guest','Púšťam ťa'))
+    def test_unknown_hyphenated_artists_and_title_hyphens_keep_the_original_parser_rules(self):
+        for raw,expected in [('Jay-Z - Empire State of Mind',('Jay-Z','Empire State of Mind')),
+                             ('Jean-Michel Jarre - Oxygene',('Jean-Michel Jarre','Oxygene')),
+                             ('Artist - Mother-in-Law',('Artist','Mother-in-Law')),
+                             ('Unknown Name - Tail-Song Name',('Unknown Name','Tail-Song Name'))]:
+            self.assertEqual(self.identity.split_stream(raw),expected)
+        for raw in ('Jay-Z','Jean-Michel Jarre','AC-DC'):
+            self.assertEqual(self.identity.split_stream(raw),('',''))
+    def test_old_malformed_negative_cache_does_not_hide_the_repaired_lyrics(self):
+        row=self.row('Karmen Pál-Baláž','Púšťam ťa')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)
+            bad=folder/(provider.key('KARMEN PAL','BALAZ-Pustam ta')+'.json')
+            bad.write_text(json.dumps({'version':provider.CACHE_VERSION,'saved':1000,'status':'not-found','text':''}))
+            response=lambda *args,**kwargs:io.BytesIO(json.dumps([row]).encode())
+            result=provider.lookup('KARMEN PAL','BALAZ-Pustam ta',folder,opener=response,clock=lambda:1001,site_providers=())
+            self.assertEqual(result['status'],'found')
+            self.assertEqual(result['text'],row['plainLyrics'])
+            self.assertTrue(bad.exists())
+            self.assertNotEqual(provider.key('KARMEN PAL','BALAZ-Pustam ta'),provider.key('Karmen Pál-Baláž','Pustam ta'))
     def test_track_number_prefix_is_repaired_but_years_and_numeric_act_names_survive(self):
         self.assertEqual(self.identity.split_stream('08 - Krasnejsi nez ruze (Maliconia) - Pavel Roth'),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))
         self.assertEqual(self.identity.repair_pair('08','Krasnejsi nez ruze (Maliconia) - Pavel Roth'),('Pavel Roth','Krasnejsi nez ruze (Maliconia)'))

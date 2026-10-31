@@ -63,7 +63,8 @@ class AssetTests(unittest.TestCase):
             for index in range(1, 21):
                 name = 'wait%d.png' % index
                 original = Image.open(io.BytesIO(archive.read('HG glass17 spinner  (bakussa)/' + name)))
-                expected = original.convert('RGBa').resize((104, 104), Image.Resampling.LANCZOS).convert('RGBA')
+                self.assertEqual(original.size, (130,130))
+                expected = Image.open(ROOT/'design/spinner-choice/bakussa-blue-centered/frames'/name).convert('RGBA')
                 actual = Image.open(SKIN / 'spinner-themes/bakussa' / name)
                 self.assertEqual(actual.tobytes(), expected.tobytes())
 
@@ -279,7 +280,7 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(rows, [('Spinner', setup.par230)])
 
     def test_ok_opens_two_choices_in_catalog_order_and_callback_is_cancel_safe(self):
-        setup = SimpleNamespace(par124=object(), par230=SimpleNamespace(value='dove'))
+        setup = SimpleNamespace(par124=object(), par230=SimpleNamespace(value='dove', setChoices=lambda *a,**kw:None))
         cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=setup))
         events = []
         callback = self.method('spinnerChoiceSelected')
@@ -292,11 +293,13 @@ class ControllerTests(unittest.TestCase):
             def doMyHelpWindow(self):
                 events.append('help')
         screen = Screen()
-        scope = {'config':cfg, 'warderSpinner':SimpleNamespace(choices=lambda translate:[('dove','Holubica'),('bakussa','HDGlass - bakussa')]), 'ui_text':lambda text:text, 'ChoiceBox':object()}
+        scope = {'__package__':'spinner_screen_test', 'config':cfg, 'warderSpinner':SimpleNamespace(choices=lambda translate:[('dove','Holubica'),('bakussa','HDGlass - bakussa')]), 'ui_text':lambda text:text, 'ChoiceBox':object()}
         exec(compile(ast.Module(body=[activate, callback], type_ignores=[]), 'actual-choice-box', 'exec'), scope)
         screen.spinnerChoiceSelected = lambda answer:scope['spinnerChoiceSelected'](screen, answer)
-        scope['ActivateselectedFnc'](screen)
-        self.assertEqual(events[0][1], {'title':'Spinner', 'list':[('Holubica','dove'),('HDGlass - bakussa','bakussa')], 'selection':0})
+        module = SimpleNamespace(SpinnerChoice=object())
+        with patch.dict(sys.modules, {'spinner_screen_test':SimpleNamespace(), 'spinner_screen_test.warderSpinnerScreen':module}):
+            scope['ActivateselectedFnc'](screen)
+        self.assertEqual(events[0][1], {'selected':'dove'})
         screen.spinnerChoiceSelected(None)
         self.assertEqual(setup.par230.value, 'dove')
         screen.spinnerChoiceSelected(('HDGlass - bakussa','bakussa'))

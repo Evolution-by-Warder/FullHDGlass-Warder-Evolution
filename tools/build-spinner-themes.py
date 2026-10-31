@@ -2,6 +2,7 @@
 """Build native spinner assets; Pillow is used only on the build machine."""
 import hashlib
 import io
+import importlib.util
 import json
 from pathlib import Path
 import zipfile
@@ -12,6 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SKIN = ROOT / 'source/package-root/usr/share/enigma2/hd_glass17'
 PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 SOURCES = ROOT / 'design/spinner-choice/sources.json'
+spec = importlib.util.spec_from_file_location('spinner_png_optimizer', ROOT/'tools/optimize-png.py')
+optimizer = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(optimizer)
 
 
 def sha(raw):
@@ -38,6 +42,11 @@ def build():
         elif source['type'] == 'directory':
             pinned = json.loads((ROOT / source['manifest']).read_text())
             approved = {Path(entry['path']).name: entry['sha256'] for entry in pinned['assets']}
+        elif source['type'] == 'prepared':
+            pinned = json.loads((ROOT/source['manifest']).read_text())
+            approved = {entry['name']:entry['sha256'] for entry in pinned['frames']}
+            if sha((ROOT/source['original_archive']).read_bytes()) != source['original_sha256']:
+                raise ValueError('Original spinner archive changed')
         else:
             raise ValueError('Unsupported spinner source type')
         try:
@@ -56,6 +65,8 @@ def build():
                         output = io.BytesIO()
                         image.save(output, format='PNG', compress_level=9)
                         raw = output.getvalue()
+                if source['type'] == 'prepared':
+                    raw = optimizer.optimize(raw)
                 (folder / name).write_bytes(raw)
                 entries.append({'name': name, 'sha256': sha(raw)})
         finally:
@@ -64,6 +75,10 @@ def build():
         catalog['themes'][theme] = {'title': title, 'author': author, 'size': list(size), 'frames': entries}
         if source['type'] == 'zip':
             catalog['themes'][theme]['source_sha256'] = source['sha256']
+        if source['type'] == 'prepared':
+            catalog['themes'][theme]['source_sha256'] = source['original_sha256']
+        if definition.get('legacy_frames'):
+            catalog['themes'][theme]['legacy_frames'] = definition['legacy_frames']
     (PLUGIN / 'warder-spinners.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
     assets = [{'path': 'usr/share/enigma2/hd_glass17/spinner-themes/' + key + '/' + entry['name'],
                'sha256': entry['sha256']} for key, theme in catalog['themes'].items() for entry in theme['frames']]

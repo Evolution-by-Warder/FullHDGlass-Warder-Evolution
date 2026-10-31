@@ -6888,9 +6888,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if t == config.plugins.setupGlass17.par124:
 				self.session.openWithCallback(self.dirSelected, dirBrowser, config.plugins.setupGlass17.par124.value)
 			elif t == config.plugins.setupGlass17.par230:
-				items = [(title, value) for value, title in warderSpinner.choices(ui_text)]
-				selected = next((i for i, item in enumerate(items) if item[1] == t.value), 0)
-				self.session.openWithCallback(self.spinnerChoiceSelected, ChoiceBox, title=ui_text("Spinner"), list=items, selection=selected)
+				from .warderSpinnerScreen import SpinnerChoice
+				self.session.openWithCallback(self.spinnerChoiceSelected, SpinnerChoice, selected=t.value)
 			elif t == config.plugins.setupGlass17.par144:
 				self.session.openWithCallback(self.dirConf, dirBrowser, config.plugins.setupGlass17.par144.value)
 			elif t == config.plugins.setupGlass17.par141:
@@ -7740,6 +7739,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		target_version = getattr(self, "warderUpdate", {}).get("version", "")
 		installed = self.readVersion()
 		exitCode = getattr(self, "warderInstallExitCode", -1)
+		if exitCode == 0 and target_version:
+			try:
+				from .warderInstallHealth import verify_installation
+				manager = "dpkg" if getattr(self, "fileName", "").endswith(".deb") else "opkg"
+				verify_installation(target_version, manager=manager)
+			except (OSError, ValueError, subprocess.SubprocessError) as error:
+				exitCode = 1
+				self.warderInstallOutput = list(getattr(self, "warderInstallOutput", [])) + ["\n" + str(error)]
 		if exitCode == 0 and target_version and self._warderVersionTuple(installed) >= self._warderVersionTuple(target_version):
 			self.warderRestartBox = self.session.open(MessageBox, update_text("success", "FullHDGlass Warder Evolution", new=installed, language=config.osd.language.value), MessageBox.TYPE_INFO, 3, enable_input=False)
 			self.warderRestartTimer = eTimer()
@@ -7770,6 +7777,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		if answer is None:
 			return
 		if answer[1] in {value for value, title in warderSpinner.choices(ui_text)}:
+			config.plugins.setupGlass17.par230.setChoices(warderSpinner.choices(ui_text), default="dove")
 			config.plugins.setupGlass17.par230.value = answer[1]
 			self["config"].invalidateCurrent()
 			self.doMyHelpWindow()
