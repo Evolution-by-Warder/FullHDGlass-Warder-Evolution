@@ -20,6 +20,7 @@ jobs:
         with:
           sparse-checkout: |
             tools
+            design/spinner-choice
             assets/warder/downloads/ui/spinners/sources/spinkit
       - uses: actions/setup-node@v4
         with:
@@ -40,6 +41,7 @@ jobs:
         run: |
           node tools/render-spinkit-previews.cjs
           python tools/finalize-spinkit-previews.py
+          python tools/apply-spinner-preview-review.py
       - uses: actions/upload-artifact@v4
         with:
           name: SpinKit-separate-spinner-previews

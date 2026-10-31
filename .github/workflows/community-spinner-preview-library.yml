@@ -19,6 +19,7 @@ jobs:
         with:
           sparse-checkout: |
             tools
+            design/spinner-choice
             assets/warder/downloads/ui/spinners/sources/community
             assets/warder/downloads/ui/spinners/preview-library
       - uses: actions/setup-python@v5
@@ -30,7 +31,9 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq --no-install-recommends libarchive-tools ffmpeg
       - name: Import PNG sequences into separate preview directories
-        run: python tools/import-community-spinner-previews.py
+        run: |
+          python tools/import-community-spinner-previews.py
+          python tools/apply-spinner-preview-review.py
       - uses: actions/upload-artifact@v4
         with:
           name: Warder-154-separate-spinner-previews
