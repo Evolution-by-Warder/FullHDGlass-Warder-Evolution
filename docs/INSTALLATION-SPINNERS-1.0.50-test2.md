@@ -1,6 +1,6 @@
 # FullHDGlass 1.0.50-test2
 
-Testovacie vydanie obsahuje opravu prvého prechodu z overenej pôvodnej r12.2,
+Testovacie vydanie obsahuje opravu prvého prechodu z overenej pôvodnej r12.2 a 9.50,
 overenie dokončenej inštalácie, výber spinnerov a presnejšie rozpoznávanie mien
 interpretov pri vyhľadávaní obalov a textov piesní.
 
@@ -23,8 +23,8 @@ fungujú bez internetu. Pôvodný archív autora bakussa je zachovaný bez úpra
    autora, zrušenie výberu a výber jednej stiahnutej animácie. Výber aktivovať
    uložením nastavení a reštartom GUI. Overiť aj návrat na Holubicu bez internetu.
 
-Priamy prechod je povolený len pre overený odinštalačný skript dodanej
-9.50-r12.2. Neznámy starý skript zostáva chránený pred neoverenou výmenou.
+Priamy prechod je povolený len pre overené odinštalačné skripty dodanej
+9.50-r12.2 a 9.50. Neznámy starý skript zostáva chránený pred neoverenou výmenou.
 Toto vydanie nie je tvrdením, že boli otestované všetky staré balíky a image.
 
 Ostré vydanie, existujúce IPK a aktualizačné kanály sa nemenia. Nejde o ostrú

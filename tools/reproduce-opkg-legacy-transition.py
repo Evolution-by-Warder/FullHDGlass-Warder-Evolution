@@ -138,6 +138,9 @@ def run_case(args, product, force, parent):
     if product == 'skin':
         new_preinst = new_preinst.replace(hashlib.sha256(old['postrm'].encode()).hexdigest(),
                                         hashlib.sha256(old_hooks['postrm'].encode()).hexdigest())
+        guard = '#!/bin/sh\n# FullHDGlass verified legacy upgrade guard v1\ncase "${1:-}" in upgrade|failed-upgrade|abort-upgrade|disappear) exit 0 ;; esac\n'
+        new_preinst = new_preinst.replace(hashlib.sha256((guard+old['postrm']).encode()).hexdigest(),
+                                        hashlib.sha256((guard+old_hooks['postrm']).encode()).hexdigest())
     new_hooks = {'preinst': guarded(new_preinst, root, 'new-preinst'),
                  'postinst': guarded('exit 0\n', root, 'new-postinst')}
     first, second = root/'old-fixture.ipk', root/'new-fixture.ipk'

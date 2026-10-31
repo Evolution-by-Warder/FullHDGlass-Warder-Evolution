@@ -69,6 +69,34 @@ class DirectLegacyTests(unittest.TestCase):
         hook.symlink_to(hook.with_suffix('.saved'))
         self.assertNotEqual(self.run_preinst('upgrade', '9.50-r12.2').returncode, 0)
 
+    def test_original_950_gets_only_a_verified_upgrade_guard_and_is_retry_safe(self):
+        data=json.loads((ROOT/'tools/fixtures/legacy-950-control.json').read_text())
+        hook=self.info/'enigma2-skin-fullhdglass17.postrm'
+        hook.write_text(data['postrm'])
+        self.assertEqual(self.run_preinst('upgrade','9.50').returncode,0)
+        self.assertEqual(hook.read_text(),data['guard_prefix']+data['postrm'])
+        self.assertEqual(self.run_preinst('upgrade','9.50').returncode,0)
+        self.assertFalse(list(self.info.glob('*.warder-guard.*')))
+
+    def test_guarded_950_upgrade_does_not_run_old_cleanup(self):
+        data=json.loads((ROOT/'tools/fixtures/legacy-950-control.json').read_text())
+        hook=self.info/'enigma2-skin-fullhdglass17.postrm'
+        hook.write_text(data['postrm'])
+        self.assertEqual(self.run_preinst('upgrade','9.50').returncode,0)
+        skin=self.root/'usr/share/enigma2/hd_glass17/skin.xml'
+        skin.parent.mkdir(parents=True);skin.write_text('keep installed skin')
+        rewritten=re.sub(r'/(?:etc|usr|var|tmp)/',lambda m:str(self.root)+m[0],hook.read_text())
+        result=subprocess.run(['sh','-c',rewritten,'postrm','upgrade','1.0.50-test2'],capture_output=True)
+        self.assertEqual(result.returncode,0)
+        self.assertEqual(skin.read_text(),'keep installed skin')
+
+    def test_modified_950_remover_is_rejected_without_writing_it(self):
+        data=json.loads((ROOT/'tools/fixtures/legacy-950-control.json').read_text())
+        hook=self.info/'enigma2-skin-fullhdglass17.postrm'
+        changed=data['postrm']+'\n# unknown modification\n';hook.write_text(changed)
+        self.assertNotEqual(self.run_preinst('upgrade','9.50').returncode,0)
+        self.assertEqual(hook.read_text(),changed)
+
 
 class InstallationHealthTests(unittest.TestCase):
     def setUp(self):
