@@ -8696,12 +8696,16 @@ class downloadMenu(Screen):
 		return ret,ret1
 
 	def setWdir(self):
-		if not os.path.exists(HDDTMP):
-			try:
-				os.makedirs(HDDTMP, exist_ok=True)
-			except OSError:
-				pass
-		return ({False:"/tmp/",True:"%s/" % HDDTMP}['big' in self.type_download or 'ZZPicon' in self.type_download or '400' in self.type_download])
+		if not any(kind in self.type_download for kind in ('big', 'ZZPicon', '400')):
+			return "/tmp/"
+		try:
+			os.makedirs(HDDTMP, exist_ok=True)
+			if os.path.isdir(HDDTMP) and os.access(HDDTMP, os.W_OK | os.X_OK):
+				return HDDTMP.rstrip('/') + '/'
+		except OSError:
+			pass
+		# The existing free-space checks also apply to this fallback.
+		return "/tmp/"
 
 	def doSelection(self):
 		if not self.ena:
@@ -10367,7 +10371,7 @@ class selectIconsDisplayed(Screen):
 				elif x > 2:
 					y = 187
 					off = 3
-				self.skin += '<widget name="ico'+str(x)+'" position="'+str(672+(x-off)*300)+','+str(221+y)+'" size="300,183" zPosition="2" backgroundColor="background" alphatest="blend" />'
+				self.skin += '<widget name="ico'+str(x)+'" position="'+str(672+(x-off)*300)+','+str(221+y)+'" size="300,183" scale="centerScaled" zPosition="2" backgroundColor="background" alphatest="blend" />'
 		else:
 			self["scr_preview"] = Pixmap()
 			self.skin += """<widget name="scr_preview" position="748,260" size="768,432" zPosition="2" backgroundColor="background" alphatest="blend"/>"""
@@ -10402,6 +10406,22 @@ class selectIconsDisplayed(Screen):
 					config.plugins.setupGlass17.par1.value = int(tmp)
 		self.close()
 		
+	def previewIconPath(self, number, sample):
+		# Prefer current menu IDs; retain older downloaded icon sets.
+		aliases = {
+			"av_setup": ("video_setup", "av_setup"),
+			"standby_restart_list": ("shutdown", "standby_restart_list"),
+			"system_selection": ("system", "system_selection"),
+			"info_screen": ("information", "info_screen"),
+			"network_setup": ("network", "network_setup"),
+		}
+		names = aliases.get(sample, (sample,)) if self.what == 1 else (sample,)
+		for name in names:
+			path = config.plugins.setupGlass17.par39.value + self.wahtType + str(number) + "/" + name + ".png"
+			if fileExists(path):
+				return path
+		return ""
+
 	def mainFnc(self):
 		self.setWindowTitle()
 		self.list = []
@@ -10411,7 +10431,7 @@ class selectIconsDisplayed(Screen):
 				num = 0
 				tmp = False
 				for sample in self.samle:
-					fileSample = config.plugins.setupGlass17.par39.value + self.wahtType + str(x) + "/" + sample + ".png"
+					fileSample = self.previewIconPath(x, sample)
 					if fileExists(fileSample):
 						num += 1
 				if num == 9:
@@ -10441,7 +10461,7 @@ class selectIconsDisplayed(Screen):
 				if self.what != 0:
 					i = 0
 					for sample in self.samle:
-						fileSample = config.plugins.setupGlass17.par39.value + self.wahtType + tmp + "/" + sample + ".png"
+						fileSample = self.previewIconPath(tmp, sample)
 						try:
 							if fileExists(fileSample):
 								self["ico%s" % i].instance.setPixmapFromFile(fileSample)

@@ -219,6 +219,9 @@ def strip_reviewed_radio_start(tree):
 
 
 def normalized(tree):
+    repair_ledger=ROOT/'design/receiver-repairs/logic.json'
+    if repair_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(repair_ledger.read_text()))
     online_ledger=ROOT/'design/spinner-online/logic.json'
     if online_ledger.exists():
         tree=strip_reviewed_batch(tree,json.loads(online_ledger.read_text()))

@@ -7,7 +7,7 @@ from sync_header_version import sync_headers
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
-VERSION = '1.0.50-test4'
+VERSION = '1.0.51'
 
 
 def main():
@@ -24,8 +24,8 @@ def main():
         control.write_text(text.replace('Version: ' + old + '-1\n', 'Version: ' + VERSION + '-1\n', 1))
         version.write_text(VERSION + '\n')
         for name, body in {
-            'history.txtSk': 'Spoľahlivejšia inštalácia a overenie dokončenej aktualizácie.\nVýber animácie čakania s náhľadmi a samostatným sťahovaním.\nPresnejšie rozpoznávanie interpretov pri obaloch a textoch piesní.',
-            'history.txt': 'More reliable installation and completed-update verification.\nWaiting animation selection with previews and individual downloads.\nMore accurate artist recognition for covers and lyrics.',
+            'history.txtSk': 'Opravené číselné prepínanie kanálov a spoľahlivejšia inštalácia.\nPrehľadnejšie náhľady ikon, inštalačný výpis a správne číslo verzie.\nVýber animácie čakania a presnejšie rozpoznávanie interpretov.',
+            'history.txt': 'Fixed number zapping and more reliable installation.\nClearer icon previews, installation output and correct version headers.\nWaiting animation selection and more accurate artist recognition.',
         }.items():
             path = PLUGIN / name
             path.write_text('FullHDGlass ' + VERSION + ' — 31.10.2026\n' + body + '\n\n' + path.read_text())
