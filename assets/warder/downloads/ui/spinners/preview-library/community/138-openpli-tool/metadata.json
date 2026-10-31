@@ -1,0 +1,70 @@
+{
+  "id": "138-openpli-tool",
+  "folder": "138-openpli-tool",
+  "title": "Tool",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Tool",
+      "name": "Tool",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    140,
+    105
+  ],
+  "inner_size": [
+    96,
+    72
+  ],
+  "frame_count": 7,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "40e4cc908cb8f36e7368d611b1e4f184bb8c8cd0d741070be321c3ad90e83ecc"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "b424156e741e369b189e251f33b5ef7c79ec3171e46b3e9bd107b10e2153ad46"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "ce0c4224362e457bca381f46063710e2a1d09b27ac5ad6293dfe76d651de6146"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "eb30e14fd41d77ffffe04e902327ec69d2e6b44de7d3c79b1174d9436cd1062b"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "1a5a2cee5e467a0e86815108ae0ac190760d7134513ffbb2a2b78a532d9cff66"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "842c0e6364e779087385ec1b5fb944efd69277e7327c5229ac2708c9262ba8c0"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "a0b81074b77a354b193a14f2bcf168bf3a6615b1edf341030ad6b2355d39b9af"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

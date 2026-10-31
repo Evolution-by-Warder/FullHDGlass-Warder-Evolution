@@ -1,0 +1,50 @@
+{
+  "id": "118-openpli-roadrunner",
+  "folder": "118-openpli-roadrunner",
+  "title": "Roadrunner",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Roadrunner",
+      "name": "Roadrunner",
+      "source_indices": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    123,
+    57
+  ],
+  "inner_size": [
+    96,
+    44
+  ],
+  "frame_count": 3,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "7c768d6927e98f8c759faa3d240db0767d1fd5509306022d99065014df6d97af"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "bda84db692fc0e601332b9e3ea862b2bdd359521db0d38e3aa978d9f9576b582"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "b425f6d8ffc43a9741a0b2c4819757ecd4d1766d5ddb3f8998725ba6ec7fd975"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

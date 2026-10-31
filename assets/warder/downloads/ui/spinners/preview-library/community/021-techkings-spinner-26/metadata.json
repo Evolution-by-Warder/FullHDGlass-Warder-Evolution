@@ -1,0 +1,80 @@
+{
+  "id": "021-techkings-spinner-26",
+  "folder": "021-techkings-spinner-26",
+  "title": "Spinner 26",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 26",
+      "name": "Spinner 26",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    55,
+    54
+  ],
+  "inner_size": [
+    55,
+    54
+  ],
+  "frame_count": 9,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "66bfd7c80f7f79acdd220453284df47b2b8b57e028772c7c8c345b08869d3711"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "933c5a8ee449e3927991f8e226a7bb60d4ae5fdae73b8c04604333f482b2b6bf"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "543c4437afba31ee15e841afedbfd9cb64feb0464a83777f466092e0e94b95bf"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "ceff3c8069f23878da0b1a6134630fa413c387d87d2b7c4f59433a7714070c1e"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "5ebf3b2a9bf954e2b874891eb56eec13d54120935625b64b9b30d78e96f48257"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "f5bb49bf14c5bd7b058d9c61c36b4084f6cbe2d2a7387c1e6460f370e08d2502"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "2cfcb51faae99d36da573825443f214ed7895c5750ff4bde1290b879d6ec0310"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "cbe1b81048456a4e13f6dc6147d645ec89c8f6fdba36357011134dd175d78abc"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "9a964dd3b002ed5cadf3c117cee9fde8eb85fa3518ad7f57956b82297da90fc7"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

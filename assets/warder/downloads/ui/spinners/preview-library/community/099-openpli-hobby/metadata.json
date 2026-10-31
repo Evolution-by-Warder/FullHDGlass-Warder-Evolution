@@ -1,0 +1,85 @@
+{
+  "id": "099-openpli-hobby",
+  "folder": "099-openpli-hobby",
+  "title": "Hobby",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Hobby",
+      "name": "Hobby",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    100,
+    100
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 10,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "2e3d5266d91e45fa334ec5c0de4708b481079683a349a33505b02767c9dce69e"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "4fa6705eef94c58735ca528292cb6e3fbcbd302a117d808f237752107bde6c17"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "fdc232e132029066f6809520fcce2d0b43507e071942b72babb0b7558687a209"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "a6e400cff5e64093c4e3ab4496b3e9d1e54cc77abc29a7624c6885a6894be441"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "18ca2f0e6629955e9b90afa42c2d68518a6ad58c910dc065fdc3489dd8263221"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "24dd42da06d7ff2307674b29c4eafc6a7cf12b8c2530ce39ba0b357877a948a8"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "18ca2f0e6629955e9b90afa42c2d68518a6ad58c910dc065fdc3489dd8263221"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "a6e400cff5e64093c4e3ab4496b3e9d1e54cc77abc29a7624c6885a6894be441"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "fdc232e132029066f6809520fcce2d0b43507e071942b72babb0b7558687a209"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "4fa6705eef94c58735ca528292cb6e3fbcbd302a117d808f237752107bde6c17"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

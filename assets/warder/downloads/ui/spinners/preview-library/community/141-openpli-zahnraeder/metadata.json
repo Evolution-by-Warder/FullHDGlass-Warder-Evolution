@@ -1,0 +1,65 @@
+{
+  "id": "141-openpli-zahnraeder",
+  "folder": "141-openpli-zahnraeder",
+  "title": "Zahnraeder",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Zahnraeder",
+      "name": "Zahnraeder",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    84,
+    76
+  ],
+  "inner_size": [
+    84,
+    76
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "0ac1ebbd8c2035ee530bb2a27ba0c802e7fb6790fa3df805611f45e516947bfe"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "1a0c90b0cd1260f8dc8798ccc09f3c7c374e10899068393cf6c48a2b426f7bab"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "d3ee1ccac765cf0adfadaf1bd71b2ce259f484170b72ccf2a11999279b284125"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d0453eb42f3d511a7f43ec680e77d59640773b6f0f33dec4e140dde4b5fcb40e"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "ef6afcbfa69ce4fa43f7441169173102f49c19dea849d7c8b1895d9092b49c7d"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "348d5c96d767aeeb995f0765979aca8fbf4887d2b2e13cfea34f5bfd550f2df9"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

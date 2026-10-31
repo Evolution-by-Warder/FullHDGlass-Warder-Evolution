@@ -1,0 +1,55 @@
+{
+  "id": "130-openpli-spinne",
+  "folder": "130-openpli-spinne",
+  "title": "Spinne",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Spinne",
+      "name": "Spinne",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    124,
+    105
+  ],
+  "inner_size": [
+    96,
+    81
+  ],
+  "frame_count": 4,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "7caa780804f6767ed43811a1729119ff86724b4939b2b388673a7e65d8bd4d9f"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "dd0307b33cbd36cb36dfd9ed3da57d31389c19b854be9d4235bc3e2d0548c3d8"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "447033218e94a19e86952a569606a2a9ae579edb6301d5c2fd0c8b5aeac3ed77"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "dd0307b33cbd36cb36dfd9ed3da57d31389c19b854be9d4235bc3e2d0548c3d8"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

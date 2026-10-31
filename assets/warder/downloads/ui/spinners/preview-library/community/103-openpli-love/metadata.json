@@ -1,0 +1,205 @@
+{
+  "id": "103-openpli-love",
+  "folder": "103-openpli-love",
+  "title": "Love",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Love",
+      "name": "Love",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    105,
+    105
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 34,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "18c2c94719cfebe16209873874fd5030bd0ac44389eb36df8a0a880a00be1f9d"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "bd8e39dab0d959cfbae99fc6c336b87f5002c9221351d31eb90e894379d42025"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "cc4500520d52305cee733d1933b21197c2aafc59b1fde886ead2e1012b97f4d9"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "bdb41acacb6caefffc0e01cb4d5cf836ce6830f580e36a3898290c7d8d748cab"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "2b09de235451d13fa7f67453b2affc01fb1ca460785b4d41e81bee431c563ce7"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "6c7817dfd40570c9ef076b71e37131f2b024437b0fc70c865c8e57b57e2c999d"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "f7a4dafaf26d7bbcd2d171ade4b94b5875f74c8910ed4ea08660fb9d5915e13e"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "26202ca8c1d672bf7808684146af5e7519e0224cf24104634253fe99402061ad"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "4f0a7c454e8a052e18a6d131d4be3f96482d6ba8cbf74fc740c068f867ce6086"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "2ac060e6a1be0295835eb7c5f1dbb378b3f17e638264b7bb42f0cdedca869b5d"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "128f02e27385bd0d69ccae55052a757bd83f62abb44e8d0a5c48126fb76fc772"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "8189a842f1510147f21593fc5e482b38b1eb0f06024a2ed6106d50432f84c054"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait25.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait26.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait27.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait28.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait29.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait30.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait31.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait32.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait33.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    },
+    {
+      "name": "wait34.png",
+      "sha256": "026293ea52cbfb617a07ad0f08e0dbb94c0bdedaf6fe3aee24b6878eff385821"
+    }
+  ],
+  "source_has_opaque_frames": true,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "094-openpli-ghost",
+  "folder": "094-openpli-ghost",
+  "title": "Ghost",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Ghost",
+      "name": "Ghost",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    251,
+    105
+  ],
+  "inner_size": [
+    96,
+    40
+  ],
+  "frame_count": 10,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "07b5a1e3896146816224cdcb20e29f6fed901b42a6a99f89028d9740400f68be"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "07b5a1e3896146816224cdcb20e29f6fed901b42a6a99f89028d9740400f68be"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "07b5a1e3896146816224cdcb20e29f6fed901b42a6a99f89028d9740400f68be"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "07b5a1e3896146816224cdcb20e29f6fed901b42a6a99f89028d9740400f68be"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "c7900f67cadf26059291e024f924e080312e20c8d2da87f803afc5c68154d3ca"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "6669b07f7a7fbf6084253577116c3f84b28bfe2d03dc9720c17eec70cc165f7c"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "84bf231fbdcce66645881d600aede818677412499599c176653e33b509413b8c"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "17ed0db2a5ce9666a4b68f9fb8c5a416a38648860aed0ca468231bb32d8cb61a"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "3de8f5e26c4f749aca0208f34d42c9e16272efe103d24a8df6b012c5284d86f2"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "4744d73419286ccf484d74bee7840f583921e87b20095dfcd303b587cd9a94ce"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

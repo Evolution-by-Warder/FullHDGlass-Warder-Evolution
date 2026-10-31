@@ -1,0 +1,70 @@
+{
+  "id": "105-openpli-magier",
+  "folder": "105-openpli-magier",
+  "title": "Magier",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Magier",
+      "name": "Magier",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    68,
+    105
+  ],
+  "inner_size": [
+    62,
+    96
+  ],
+  "frame_count": 7,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "09f583aff2cd4a059e78a3368724050005f043a023822f958609c1a2f39f7e6b"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "058827a0c56cdf2cf129907e6ae451ef505da4a372e1024a6df2a3682901f3f3"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "072175387893c61e5b068563fa705bf098734ee0368eed82936fa2cf03c0b249"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "da0581d95ca9ae9f06d9deac9f15533ebd01ad4efee6d9b5ceaa1170b0d3b2e0"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "c50484057c023bdb17392c7caac8c9834214f04fda0cdfffac77f295cb1ceba9"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "8d49eb5248c30aca1b18b058e745f85363c48fb1582ac99a41595985e17c11b7"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "936b3c724ddb5c06116d837309e963a282472a07478b3b34c39bffd3edd47b43"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

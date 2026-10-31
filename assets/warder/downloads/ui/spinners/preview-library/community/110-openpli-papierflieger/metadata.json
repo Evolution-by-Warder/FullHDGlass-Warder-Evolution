@@ -1,0 +1,315 @@
+{
+  "id": "110-openpli-papierflieger",
+  "folder": "110-openpli-papierflieger",
+  "title": "PapierFlieger",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/PapierFlieger",
+      "name": "PapierFlieger",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    350,
+    189
+  ],
+  "inner_size": [
+    96,
+    52
+  ],
+  "frame_count": 56,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "c8bcadc7fe18d941ac60315f3c31714be17afb00ecd2c1a0cd6f194a39e9e219"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "c9dd396909e312e67b30346a9394c49aa04c124c2824124f9b3a93f4781bbe43"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "4164d2116ded67b2314e6c62f02d7f88cf4be1367f16fcf2e8fa3c4c7f59365c"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "e977e0f8f49ff730944e77c5d6b039bccd9f4979fe5ca251d584db2ca642b6d8"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "fbf50b532bfd3986ad8c5953685888749d16c72d430006594d1023e04139bd8a"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "6312d9c1af82ad1468fdb9f331b9f3b1efb2d21f236140dbc29ea3af7965d1cc"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "07d3fed128252abfd96d187cb8d348d3302e57dc8ae95072e0d30f6076b3fcca"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "b6eb0757551fe081a2b021f6827abf2cec6c907ec91b8e6cc36964442bb9eae7"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "db0beee2488a52b258725d630d5f65b4188cc893f852e3632e510fef106594c7"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "d849b171fa83dc710a34e1d59b221a2065c4b202e082f8b91b2d851a55aadaed"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "983ef30afbf5238b7e95e2d9a15c46a3b95c8e3a2c07e9f6a48a3f05e8986f1c"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "843b44120414fbfd28555ac78623ed8462861e9eda7b3a16ef1ff07e94b64984"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "04c796ebef089cd316d5a7130969cd400178aab1b9545766ac6b15a808bcbb9d"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "1d5a2d4fa5603ac91675a8744ff7ecb35e76131c14658fba32c3bf4e80cb42b5"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "aa202948ba19b3f80eee4b9fb1cccc321b529496324c20c2eb98a460d43d12d7"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "c3d5db067772b57cf08a4728ea5365b8f85945b5953c2cd3be4ed2b9ef46c4c6"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "2026dbc05d958e0499b6136c685e5cb27be0dc81aff9ecc5739a172118f0e454"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "0486aced420527ba0f663b62234362d01dcbee36e5bae281658e9b6988304c1c"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "2e4e5f8616463ffaaf115774560aeee62a73a5418f5116a5a96b08ca6322852b"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "00ececd84462739dee3a914366184c5dc99f839f19075678dbb397ab21e57de3"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "240f5ccad803e45d06d2b91f81ab56cf8448e768673ae3230462efe76bd30a7d"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "851dca726c12e66135222ac1e437dab4afc96d47f31d7df3e090689d414c8e02"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "1538c6362294cef68d59796479ce7a87f30db2514552c535eb3713af358fc6c5"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "495086f6e0fd96f35b0e5f3869d1aa9b674f64552a0c4676373d2589cede2c0a"
+    },
+    {
+      "name": "wait25.png",
+      "sha256": "f58f65ddd8f11492d66f8b168d186f92933167707b892ca530bec167139f0f65"
+    },
+    {
+      "name": "wait26.png",
+      "sha256": "2222febaaf86fb719e72495c2047abab9fb946cf77c820a0524b4bfa077d2a3a"
+    },
+    {
+      "name": "wait27.png",
+      "sha256": "0bdfa6657ece7589cdf2fa7e80a11199ef79ca80682b91222bc5fa45bca19d21"
+    },
+    {
+      "name": "wait28.png",
+      "sha256": "368fc669734a2dcdca5a9ff5c093b00c6c706f45bc30db2cba15da969782445a"
+    },
+    {
+      "name": "wait29.png",
+      "sha256": "07ef3f16b48d3be792b34dc136d0970ecc04514c8e6ca1c174567f2152445fb8"
+    },
+    {
+      "name": "wait30.png",
+      "sha256": "f804f9d0dd666b2f99eb10fab86e5463f023d7beb8f44930d4d8a5ab6433ebbb"
+    },
+    {
+      "name": "wait31.png",
+      "sha256": "98797bfb091618945b72040e603860a8a32c62c2499aefbe6d127a585e37b61a"
+    },
+    {
+      "name": "wait32.png",
+      "sha256": "c901a6acad2d181a0181c0d4cf51c89edad7fa885c1d78050fdd91c46c50e992"
+    },
+    {
+      "name": "wait33.png",
+      "sha256": "926cb7d45d2b45a1941ae3f11ec3eec957a3c818e164c57402ec392510a37bf0"
+    },
+    {
+      "name": "wait34.png",
+      "sha256": "3be574601c96a7b4629edb2fe2b9fc694778e26430b00048bfd14db3f8b02884"
+    },
+    {
+      "name": "wait35.png",
+      "sha256": "54ba42f7db6fd03a02cfdc0291ef24670901a5147c7aaafa6cc49742e60869d4"
+    },
+    {
+      "name": "wait36.png",
+      "sha256": "976230b9f7f0e903e5e89258e37abd78d07b0b86b0b76f9f4a7b1664e2f8a215"
+    },
+    {
+      "name": "wait37.png",
+      "sha256": "d117f30599fb6c595dea0b6574c6f194cc83646599a07e736a3ee551b43ae764"
+    },
+    {
+      "name": "wait38.png",
+      "sha256": "acfb5564e7db1b8586ff11d9baf6ec37ea121fc30a67449591c16cf423be91d1"
+    },
+    {
+      "name": "wait39.png",
+      "sha256": "d8304c3ecfcdf022b9519a4f643160bde0870ee765b9c298a229d239e81d8af7"
+    },
+    {
+      "name": "wait40.png",
+      "sha256": "1297561bd29293ce2110186fb97946330797996a3ff97f19fb292fdec58070f6"
+    },
+    {
+      "name": "wait41.png",
+      "sha256": "e47e4cb7399ed14209588eeb869627894730e488b2ef8d37abaec4e35c69c4fb"
+    },
+    {
+      "name": "wait42.png",
+      "sha256": "60da9b746a07364bb6b5ed4a5d4f134cd8988b6f91dc74bc865346e9ee9fc3ec"
+    },
+    {
+      "name": "wait43.png",
+      "sha256": "adc965fbba90a1fcb43adc5872c566d10114b0210885737ae6e800e43a0a50f7"
+    },
+    {
+      "name": "wait44.png",
+      "sha256": "8ded843eec4df6c51c0f954986f8833da4787d09ddbf6dd43d4ad0aec6a8f938"
+    },
+    {
+      "name": "wait45.png",
+      "sha256": "a2c7346909fa632921722527f86c793c8da3656fc73fe8211224922cc75a99f3"
+    },
+    {
+      "name": "wait46.png",
+      "sha256": "3a70b078a0f8af0ae08ce4ec6c0be0dae70da788205e7892c5df70dcf2f432bc"
+    },
+    {
+      "name": "wait47.png",
+      "sha256": "f496dcf36091f0e86a03bff8980444d641e89f47c36fe4119e683707f0b59460"
+    },
+    {
+      "name": "wait48.png",
+      "sha256": "7537e0afb3fca42f628f36d11c971ce567a3421e61e17adb2521b9923b0fc6d0"
+    },
+    {
+      "name": "wait49.png",
+      "sha256": "a8afd21a260c949f1595b0729480f7a86bdbe4b2a9183e32bac04a9ff735bf3c"
+    },
+    {
+      "name": "wait50.png",
+      "sha256": "4b1406d5fa545163a22e7676a1e461b57dc44070a180ebcc82fe538f4ea5d6ee"
+    },
+    {
+      "name": "wait51.png",
+      "sha256": "e9a0270c6230432049c904f607759fbb675cbbbcefe49ab02495426b789fb902"
+    },
+    {
+      "name": "wait52.png",
+      "sha256": "6a8e688c3420f9c07ee50cf9b63e596d66d9e0a13f80b3b86582f08c341ddbe9"
+    },
+    {
+      "name": "wait53.png",
+      "sha256": "fbd5cc83f371cf9cfd3877700d4b68ad5e73698a3b6b91b60d61c4417535127b"
+    },
+    {
+      "name": "wait54.png",
+      "sha256": "59043ae4bcfc84c39fb7a6462d820a604bc4470b03bc0a0f278c5a0accf5f9c8"
+    },
+    {
+      "name": "wait55.png",
+      "sha256": "20cbda3fd386b3a515887452d578e10bddae33ce704ee907eb0d994ad848eec3"
+    },
+    {
+      "name": "wait56.png",
+      "sha256": "26c10ef2dda212bb4b598c25c7ee1c83a7ed8724d01f462e260af0b541ee3dfb"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

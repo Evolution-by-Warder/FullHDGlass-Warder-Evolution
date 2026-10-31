@@ -1,0 +1,75 @@
+{
+  "id": "113-openpli-pingu",
+  "folder": "113-openpli-pingu",
+  "title": "Pingu",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Pingu",
+      "name": "Pingu",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    80,
+    80
+  ],
+  "inner_size": [
+    80,
+    80
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "61d103b2ec3e9e93b176dd17e0b3af8fdddde8a74ed5b6d6fc2e4af0ee44b93d"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "61d103b2ec3e9e93b176dd17e0b3af8fdddde8a74ed5b6d6fc2e4af0ee44b93d"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "660a130bbef7d75f8b3c098e754715b13acd26c1df25b956ffd635cd7b539f2c"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "61d103b2ec3e9e93b176dd17e0b3af8fdddde8a74ed5b6d6fc2e4af0ee44b93d"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "796d1995325239fd74b687f0936247a14f7a29dca01567b98895854a1568cb77"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "796d1995325239fd74b687f0936247a14f7a29dca01567b98895854a1568cb77"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "154969c196a1d2c80baa65d240e9c28d46998ea0ac5b71cf88dd8ac05cc0b80f"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "154969c196a1d2c80baa65d240e9c28d46998ea0ac5b71cf88dd8ac05cc0b80f"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

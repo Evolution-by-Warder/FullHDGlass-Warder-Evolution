@@ -1,0 +1,90 @@
+{
+  "id": "087-openpli-beholder",
+  "folder": "087-openpli-beholder",
+  "title": "Beholder",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Beholder",
+      "name": "Beholder",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    65,
+    72
+  ],
+  "inner_size": [
+    65,
+    72
+  ],
+  "frame_count": 11,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "016ddc350bb13bc0e84222f9de13693790a7e1bbcb826f1278ecf73a43044777"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "e66b18c311e97f41bffc0e787d884dcd9ef4d9268bcbeb3fa19f8a68a96e457e"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "bee94333b1be5e574e5eabfd21523d712578c0b6ef148b2619cdcb90aba53a35"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "0dcb3c20eac3cd1c2d44eeccc35a945e267cabce934c46226ffb5a56e0f0e2a6"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "652d2017a255d95d017f306091fe4171b9146301a4b5dc9f2a8c397d272410c7"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "e66b18c311e97f41bffc0e787d884dcd9ef4d9268bcbeb3fa19f8a68a96e457e"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "3fe012e81b4076c41e1c91b1c3d9c83fe89fea23c4bf8e574644d56241545d07"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "0dcb3c20eac3cd1c2d44eeccc35a945e267cabce934c46226ffb5a56e0f0e2a6"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "652d2017a255d95d017f306091fe4171b9146301a4b5dc9f2a8c397d272410c7"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "5e2cc34b171f35aaad089514e9c864382b80eea6f14441931ba5dd7b76211127"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "53ad223463b5aa029170e53a34c6f2f3c6d98e16c4fd99e283724d911d7b85c7"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

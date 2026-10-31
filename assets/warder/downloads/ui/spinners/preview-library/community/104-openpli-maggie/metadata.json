@@ -1,0 +1,135 @@
+{
+  "id": "104-openpli-maggie",
+  "folder": "104-openpli-maggie",
+  "title": "Maggie",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Maggie",
+      "name": "Maggie",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    112,
+    105
+  ],
+  "inner_size": [
+    96,
+    90
+  ],
+  "frame_count": 20,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "ddaeec3116bdbc24ab8905f941d49b234bebd77bcd62f17359327e7d7c01a4c6"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "eaba850f597f6e00648e89b9be89966f444cc1b9d8f336e68c034c9e4158b7a1"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "e29100c9db403c9b3ec66a6e5f8cedef4e241183fdb898880e910cc8454a9bbc"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "d3be35c614a1a53a8dc8cb241c4e803a4cfd9f448b29b81a8e2ac81228dc45c7"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "ddaeec3116bdbc24ab8905f941d49b234bebd77bcd62f17359327e7d7c01a4c6"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "eaba850f597f6e00648e89b9be89966f444cc1b9d8f336e68c034c9e4158b7a1"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "e29100c9db403c9b3ec66a6e5f8cedef4e241183fdb898880e910cc8454a9bbc"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "d3be35c614a1a53a8dc8cb241c4e803a4cfd9f448b29b81a8e2ac81228dc45c7"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "ddaeec3116bdbc24ab8905f941d49b234bebd77bcd62f17359327e7d7c01a4c6"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "eaba850f597f6e00648e89b9be89966f444cc1b9d8f336e68c034c9e4158b7a1"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "e29100c9db403c9b3ec66a6e5f8cedef4e241183fdb898880e910cc8454a9bbc"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "d3be35c614a1a53a8dc8cb241c4e803a4cfd9f448b29b81a8e2ac81228dc45c7"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "5243bdf4d1ac25ae19bbd877cf6ddfb0aacfbaac12a438bc951547dce6ac6919"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "a72e5672973b835509e596ece59e3c02417aa3c8206c1b4496d2b35a77243128"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "aa81de6dff0f8e9cd64ff634b28c538bf4f7a850a27e75367a8fca8d2cd35043"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "32e8a97aa69c1df4121ea2031d6f3316f91b67df3a0815f97e83910f384a862c"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "527290f780ab743dcc1ee5b5a589ae0596312f99d4fb7a684b2014a85dd0d41e"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "4cceea24d967a98580c8abf5f3c81cddb22c3a2da6c581ad89c3203ab2674d4e"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "5dc33a6ea6b7c0f0812b62f21244aad6ef0e8a876622694c87a12c771029216f"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "81acd26efbfa925b514f530a797b46cf03c50895d3fee72c0d13b00f48e377bf"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

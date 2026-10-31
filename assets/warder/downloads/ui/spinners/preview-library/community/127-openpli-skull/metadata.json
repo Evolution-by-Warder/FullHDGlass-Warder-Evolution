@@ -1,0 +1,110 @@
+{
+  "id": "127-openpli-skull",
+  "folder": "127-openpli-skull",
+  "title": "Skull",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Skull",
+      "name": "Skull",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    105,
+    105
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 15,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "86e5341cf96f31d8d2ffb70540ca652e9559ba5ee425892c0c61b0b14586eb63"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "0d377b62f6302dbe4df73c30509771a8edc004651e4069512a9fbdd60e8168e7"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "84697698e0c35a1acaa6c46b66b128664d8a2380fd74aa26a46f6ce00ed17aed"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "473dc3ed4e85d3c36a7c5f38f4b534acfd443ff941950c29ffeba09971934adf"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "6f0fc8e0ca8706b41448b2f290ef93d26fa529c92b513da2324e894bda9391dc"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "ab104039c9f686be854844f12067f3c9d0b05726e45e8f07a847e1a367241c5b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "f6efd0dc380f298d9627ad971b9a86a0cd0ad62dccb062d2e61d6b613a2013aa"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "f1ec5a76ff00f1dead453a7e79799a1e83bf6d88c09dc1ac75bbe88d14847ba2"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "6aab4075397dadb22041c64d7365e8d6b7d2194ff660302e088bee9f0d960697"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "079ff7301c936354cdc5b427dcf885f65aa8ba660fb862ec0271a090946f077d"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "be05cc70f8b2cbb00cd381c78f8b60e7030bef59adbb526dea15e390322999d2"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "311603cccce66a40482ea0df035ff29e220ee09341dea33abd91ccd1053b8d0f"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "a526582eab7aa9ed53be6c4b2886f076c7b2ecf6c3b029b181f8500764b8b900"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "1f69200daf4f556b3f135aa46140ab89bfca80d2a6647fd336cf6fb048b315a3"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "b2cd3addd18002c0aacaa5e5186284000e20a42b58ee691a631443e50e39c64a"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

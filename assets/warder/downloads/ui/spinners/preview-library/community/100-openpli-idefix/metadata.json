@@ -1,0 +1,110 @@
+{
+  "id": "100-openpli-idefix",
+  "folder": "100-openpli-idefix",
+  "title": "Idefix",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Idefix",
+      "name": "Idefix",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    87,
+    105
+  ],
+  "inner_size": [
+    80,
+    96
+  ],
+  "frame_count": 15,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "466e69b7c98c8e7501ff684cd4d090c2582504c95487037d2ae000ceefca58ac"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "bac9f890da149396d65fdcd8544b4fa31664f2ded44444c7bdf1c44d468fbba8"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "fc8d8023c657c0d9e793f827d2aee2f4fe94ceaa02bd9c7208f02ad24de4f1dd"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "1b117996533d20bbfb4d97d0741f2277da6902310ed62e634e1f6ccb8a5433db"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "fc8d8023c657c0d9e793f827d2aee2f4fe94ceaa02bd9c7208f02ad24de4f1dd"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "1b117996533d20bbfb4d97d0741f2277da6902310ed62e634e1f6ccb8a5433db"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "fc8d8023c657c0d9e793f827d2aee2f4fe94ceaa02bd9c7208f02ad24de4f1dd"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "bac9f890da149396d65fdcd8544b4fa31664f2ded44444c7bdf1c44d468fbba8"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "466e69b7c98c8e7501ff684cd4d090c2582504c95487037d2ae000ceefca58ac"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "47bf0b94764ab9bbac827f34464ed20745ffcd0ba019fb615e7fbc9389e7c789"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "fec0ce3236506ed22171d6f0ea60c31d24c3221ccfd356059760bb24a6ff058a"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "47bf0b94764ab9bbac827f34464ed20745ffcd0ba019fb615e7fbc9389e7c789"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "1b117996533d20bbfb4d97d0741f2277da6902310ed62e634e1f6ccb8a5433db"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "fec0ce3236506ed22171d6f0ea60c31d24c3221ccfd356059760bb24a6ff058a"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "47bf0b94764ab9bbac827f34464ed20745ffcd0ba019fb615e7fbc9389e7c789"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

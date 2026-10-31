@@ -1,0 +1,90 @@
+{
+  "id": "027-techkings-spinner-32",
+  "folder": "027-techkings-spinner-32",
+  "title": "Spinner 32",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 32",
+      "name": "Spinner 32",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    69,
+    57
+  ],
+  "inner_size": [
+    69,
+    57
+  ],
+  "frame_count": 11,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "07e5da0b17c8b40f90a0d6ed0a3178c1669ffd458bd298868280d789c8704657"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "b8eb08a21b8e86fda15aa6c00108a8cdf979c09d90aefd7ab43c4214b8bd78b7"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "3ed3726bfb008aca59cbfc36eaba9879942f055aa8dbc3e7faefc512205552f6"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "48420da169609ab34a6bf2f74c7ab41d8be0fe18d30ef6163f7a17362529a2cb"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "39090c831644644b6ea3d44943c7c5477e03e801a1b548336a7a9eba06fdccd1"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "7b370ffe94ca46e2e34bbd3b36fff3b37694bebe60fa9e3a4d79602202236d7e"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "6be6d3c60676655f8b4fc6cb9094434d3de074be011ab10c570fa22b62e3c166"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "2b8a20272b749b449b01e6793c2eb4f30a625a8683087509941f8f169f88b90a"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "856978ba27424aea08a18e925a4f775918115df01ab16b2462921c04e0110082"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "8fdacd32e45eb92a1ff946a6b66508448bf24a8d6caf824ccfe749029180c340"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "20e07948951f9eae1b733032802f3daedbbe2237e14916261504a20aad52f266"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

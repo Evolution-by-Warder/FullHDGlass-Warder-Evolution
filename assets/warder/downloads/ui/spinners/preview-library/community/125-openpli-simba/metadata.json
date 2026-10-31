@@ -1,0 +1,85 @@
+{
+  "id": "125-openpli-simba",
+  "folder": "125-openpli-simba",
+  "title": "Simba",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Simba",
+      "name": "Simba",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    89,
+    105
+  ],
+  "inner_size": [
+    81,
+    96
+  ],
+  "frame_count": 10,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "e42902473778b969b1e195984b80835f31a0c7bcd93398003cf5e4e51ecf0e15"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "e42902473778b969b1e195984b80835f31a0c7bcd93398003cf5e4e51ecf0e15"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "bb120ed3ca1213213ed3a2a24fb5aa9cfb8e068c78e07c94de2377b0a35be600"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "bb120ed3ca1213213ed3a2a24fb5aa9cfb8e068c78e07c94de2377b0a35be600"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "d261630fc62f3fe7e6dac344a03a6c0e69b3f787ec421deb7844a2ac3f7ac5f5"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "d261630fc62f3fe7e6dac344a03a6c0e69b3f787ec421deb7844a2ac3f7ac5f5"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "81f37f53e08db3a4e21dd58247803938786b71cb69dc8af70e7ccc42bc7e4219"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "81f37f53e08db3a4e21dd58247803938786b71cb69dc8af70e7ccc42bc7e4219"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "d70cc8e3dffe0a4c4d2a7d1ba970d609e20202a0210d6a4dc97ad2a1ef2f3879"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "d70cc8e3dffe0a4c4d2a7d1ba970d609e20202a0210d6a4dc97ad2a1ef2f3879"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

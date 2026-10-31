@@ -1,0 +1,75 @@
+{
+  "id": "121-openpli-ryu1",
+  "folder": "121-openpli-ryu1",
+  "title": "Ryu1",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Ryu1",
+      "name": "Ryu1",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    63,
+    64
+  ],
+  "inner_size": [
+    63,
+    64
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "276ea8e40eb0fed6506f398f7e3a7de2882a0db697cbecf79b2701aab06e78e5"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "5fa84e6d8bb1293596f013d4e2edfcd56bfffabe8d9d0ddab7489d3053eb3d32"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "c27fbdb4f041f870941151213519d29ca8bc3f9bcd3d2ed03439ccee8543e000"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "61ede04936a82df88e55959549af61df288d7cca05c2391e66585cc69e6e1f08"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "a3c877fc046e00e45ae5e63dc3b8a70d315a85da1aba8ff0400c04defcf8ce26"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "ed6b1b45df512c1d8f548f5bb61a3db72924793138e41bc57633e03f4b9dfe2b"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "c27fbdb4f041f870941151213519d29ca8bc3f9bcd3d2ed03439ccee8543e000"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "c8a337e90b27c09ec4abb6c717e51bdd15e6961b855e24f59970d5cd082fde01"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

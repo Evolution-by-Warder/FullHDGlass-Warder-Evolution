@@ -1,0 +1,75 @@
+{
+  "id": "108-openpli-obelix",
+  "folder": "108-openpli-obelix",
+  "title": "Obelix",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Obelix",
+      "name": "Obelix",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    74,
+    105
+  ],
+  "inner_size": [
+    68,
+    96
+  ],
+  "frame_count": 8,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "787a2bcde490a3736b7c5c3cfef6051148cf185ab79820deebddac18007a80ee"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "a20ff8c59710f81cfbf06f3d207236993acd85ee3172f5772f9587341e278db1"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "554e44b532f68818e312c55f2c4d602006c7e35d17505dca589c123fc6a18052"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "1e77b6957789752ced4d1aebe327a98ef8269cf86c92b81906dc57c0e9b47f90"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "0341e0e08254e00d57d6696ea101717fc3c8b15eb320bd2b8988b2b6237cab00"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "1e77b6957789752ced4d1aebe327a98ef8269cf86c92b81906dc57c0e9b47f90"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "554e44b532f68818e312c55f2c4d602006c7e35d17505dca589c123fc6a18052"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "a20ff8c59710f81cfbf06f3d207236993acd85ee3172f5772f9587341e278db1"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

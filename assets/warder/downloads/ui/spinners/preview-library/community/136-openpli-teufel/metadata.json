@@ -1,0 +1,100 @@
+{
+  "id": "136-openpli-teufel",
+  "folder": "136-openpli-teufel",
+  "title": "Teufel",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Teufel",
+      "name": "Teufel",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    112,
+    105
+  ],
+  "inner_size": [
+    96,
+    90
+  ],
+  "frame_count": 13,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "018e3ce16803c95729c937343764644349cfb826938338f6745ccf6df00bec14"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "fe03819f8bc83eb6da89339b18d35e14f1a924da552884a0edf534ccd8292682"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "f5f7afb5ae88a0d5e35d4cbdfa89533f2312da0d404d3e6bf69748f64ea391f3"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "a1049f1c4384758d94fc24c4dbbea0a659dc85aad6054cc46739750e25dcb3b1"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "9249849d9ea9c999eec3fd420274df0fb14ab3810190e0a052889620d4ecb6bd"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "ac11ab6a1956c38cf00dffb56ac75356efdd7aec5517a755e710966f0eba98d1"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "42016e6169918b373065f20be5dfe45aff7721f2bb131d3b9fbef27978fef5cb"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "f8b240027fe65326b538a84d19652a2df9f55a8d2b8db92a698f7b1661191634"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "b91f14048f0f97fa578764f37d4a912a114a621093186786b1a4526e4c50086a"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "5185c658aa9cff859df2262fcf9c99e88cbd9e5ea64da6fece03260702e5b7b3"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "ed52ca739b30c402cd90f2bd14ad35dd6c9fb1b01fb08c1aacb797700799a219"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "53434464c789a515859ea963300e0612ff89aee65af91a0ff2b086091de4a081"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "0eb3b462f6f541a0b8eada7caac5831237a63b42daf3b5f8e68dfe31abc98897"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

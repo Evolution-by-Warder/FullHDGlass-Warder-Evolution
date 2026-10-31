@@ -1,0 +1,155 @@
+{
+  "id": "062-techkings-spinner-67",
+  "folder": "062-techkings-spinner-67",
+  "title": "Spinner 67",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 67",
+      "name": "Spinner 67",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    82,
+    84
+  ],
+  "inner_size": [
+    82,
+    84
+  ],
+  "frame_count": 24,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "216dfb961e0809e6dd4f4c3e810d8d29516daee27cfac60727b742af3010a6f0"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "adfce99231fa80bf552ce9de5390e583ff2c712ca03dcf259074b003ec7233ce"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "502f1122babad94467af9bce161c1c396ca5952ba5fd9e36a516591ab6f8c966"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "1bdda79accc7ccdc811039a08c9a8c437be88944618b992d11e8c083e131acf2"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "4e47b61514dadfec243340fa545f4639bdecdf7f635600ac0bc10d04a8398b73"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "722325c54f37d6e7efab168c8e3c7fe695e349a3e0c9f8658007f24e21ff98ea"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "1f16b62d9a4dc30c04b48704ede554417d7d90c587e40810bad4f3ba4352b5d6"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "26a32d315967186c7fda133a84d9084c54fe81e6fd0d1191ace1a3bd3efaf256"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "4956451e17d556f5c955ae410e0ff0c459d37d6d2246935fac1bf4d02e497a89"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "a7762d5bc1a312b68a7668523e44bef038ef57f27c80ae930d31ae037be2c6f6"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "8f59a3a4f51fa59694b9048f80b0f3ea4e85d1986ae867a69cfc461bd26cbb96"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "a2ddb214471bbe9f56ff65913d1f847529c4c2e2c5ffac7316b0798e250a00a5"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "ab8c683193470ec8fc808ed5453ace49cc27b72bfa7dacbb48ab5a1096584fb3"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "0a6f62131f6d07f9a4552e729b67e32e5a6f34b7ceee05d08698df6c97184ae5"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "6d77a7f2baba9a02f7021f0b526e7662bcad6bf3340dda2955534317aaed4faa"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "4aca9b4ea6006e88cae22a09738c28e2c849f76241f8a1ab8c2fd65984641903"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "607d48d874b6cabdee30243003f5df69054c81c90daf65366d0901136f23d0f5"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "461683f2499c6dd2d75357616110010f63cef936e99f06b7a7a23590b7ae7ffe"
+    },
+    {
+      "name": "wait19.png",
+      "sha256": "19d7e4b296f66dc7b9053cefdfcabd5d265895c56952fd10650c88675457114b"
+    },
+    {
+      "name": "wait20.png",
+      "sha256": "b8d0247a7044981f3d9a8c63b6be71d8ce8fb5426c7b3957349c8a49ceabbc3b"
+    },
+    {
+      "name": "wait21.png",
+      "sha256": "8ec98904e2f4e71464657c9a726f4cc2ed22ee48c386a19144e5a5a404a356d5"
+    },
+    {
+      "name": "wait22.png",
+      "sha256": "336e1da2b704763bdeb1fb1151e8a65410bfc9d9e3f76b17c670239c80521d22"
+    },
+    {
+      "name": "wait23.png",
+      "sha256": "333b09c5e9726555bc9b5b37069d049a5b0e00625961799dcc04ec2dd5603833"
+    },
+    {
+      "name": "wait24.png",
+      "sha256": "66b3523d28ae22b316f8d2770ea8b4a1467f48080a0ca17b31425003ab2f1796"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

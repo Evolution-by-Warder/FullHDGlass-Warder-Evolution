@@ -1,0 +1,80 @@
+{
+  "id": "084-openpli-a10",
+  "folder": "084-openpli-a10",
+  "title": "A10",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/A10",
+      "name": "A10",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    105,
+    105
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 9,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "574dcedcede4faa88a085719b61c30cdd371a3c01f704b3959747401b89b374a"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "1a755d1f36506d3e3426156b306c51f2cee694584a56ab121e28e29b8ba69f80"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "c10e36f64bfa8e0c8ce577beb6f803ce9d749e132d97ec169a237c08276f80c4"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "497ad72288adaf345130b1a0560c7bbda289c43bf6c7090f89834725fad19fe3"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "b262e85ed4985e2b4be4ebc89e167ca7df21bb708f81ae7ed03d3137e7aab6ec"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "33ea20469cf3bc559b339d62ad0da29d9e189b43a07f780a1f9441479024a28c"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "72dc486a97f317bf5000c687ba956a2f61a0b407f9af0698de67c8fb1493a15b"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "6a62e9af4576f62e53b1f64b3ae7d94d5ebe66d3359ad71ceb6bd5c2c5b20766"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "9dcb3b783b9f649e49f30330076304b77f2858ddfcd049cee15666b9da7e7639"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

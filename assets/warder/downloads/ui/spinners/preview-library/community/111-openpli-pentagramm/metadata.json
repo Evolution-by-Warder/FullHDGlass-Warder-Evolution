@@ -1,0 +1,85 @@
+{
+  "id": "111-openpli-pentagramm",
+  "folder": "111-openpli-pentagramm",
+  "title": "Pentagramm",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Pentagramm",
+      "name": "Pentagramm",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    100,
+    100
+  ],
+  "inner_size": [
+    96,
+    96
+  ],
+  "frame_count": 10,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "5d61d666644ebfb1899b529f9c24a83f93de8b277cc573716689aea5d9775eb5"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "b18f2b75f6f4be257d69c66fa7376c28a15db92573619c6461edca7b48f66dc3"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "6fe1097f308b767d08191eabf36c8f70536ea521f1bfe3cfc423440038b26888"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "30db6ec05918d7492d872c2a9d86991fd331193a42e34f0defdcb09c6fd952bd"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "2c7c1c21ad022b13f7d223457e24358f45e066ab389feba523ed6c82bd9fb72b"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "0db58c0313293d638c63de42a05e58e0aad0fbd97d88109b6d97a1079bb5b7a7"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "74cd0f341073b3ca425740a5578efbd2d2ddb96525bd051b9899fb119867b2ad"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "6868e97698dfce4414f838fac2d266ebdb29406e6085de4f96a45871323ff614"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "2b43113a15853dcf15ca31d51afb86cebc8da91c85a780212e649b78cdde5254"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "0b87519036bec585aa8f14c304227f5d412fb6c1fdd52c354fc48bef07548d50"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

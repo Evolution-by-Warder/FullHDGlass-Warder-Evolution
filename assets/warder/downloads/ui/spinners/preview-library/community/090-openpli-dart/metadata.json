@@ -1,0 +1,65 @@
+{
+  "id": "090-openpli-dart",
+  "folder": "090-openpli-dart",
+  "title": "Dart",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Dart",
+      "name": "Dart",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    138,
+    105
+  ],
+  "inner_size": [
+    96,
+    73
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "fdc53c9e4e4586fca73381967bd03608acf183bb0555b417151f6b9943705239"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "7ab50cb8c0eab6be9e05d677d2fade09417a0ef6723d0952f2e9dab944fd69c1"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "6633debd8c2ea0a77765c10a193d30ec21d2cb1ffb329aff7dd5e21ea7f569c5"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "5764057c8ba524fad05221cfedd1fc70f3cda829e525632590d0ee7c3a094499"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "934aad505727bb7626c349d9805dd33757b8eb1d992c2ac0209f01f4c9dac928"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "b0637978eafc1c7054cc9bf62a50821d6d780756d8ebc11eef9743190ee52e9a"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

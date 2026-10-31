@@ -1,0 +1,115 @@
+{
+  "id": "013-techkings-spinner-18",
+  "folder": "013-techkings-spinner-18",
+  "title": "Spinner 18",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 18",
+      "name": "Spinner 18",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    75,
+    75
+  ],
+  "inner_size": [
+    75,
+    75
+  ],
+  "frame_count": 16,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "339c5df9e7c7243094e8b570a235b35e173ea0f9f8aecc35bc3ae31745577158"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "bcece429b6cbf2c92c19f33a5f73cdd480bc5a54211cbc798f928445d9d28817"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "57d07d6f24ec3591c7819f7a03e44305a70d68ad35095df7da6a3ce662852471"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "bcb85a51cac52a6bf055ca4975c0d1013e7bb1b7b7532b5d19e25a5ebba8f136"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "d81fb5d33ac4bd6ad267245820995973ed1c85e518ae7117c5deeecca1f99ff9"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "63480b1147b34e44fb269488877051703f961c6000a147150750e4db5b94801e"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "634620bf2eaf724d12f543119c08527f6a4e612b4e2b02d4219c3b7486ebdae4"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "970f95dfb2fdfff0f4866ef524005ed9829e6f47ad6ce996ffdcf1cc3716ae45"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "268021c7d98c376eacb19eeda94f29620f456b05559bd8abe4c732aeba2f9032"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "262d04798f62abc43bd461c21fd9e330daa2105ddfbd5e019271ccc4d469b8ab"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "63f685776a6d96a403456c8a8914d5175245d409f264fd9753fd9bb46f1b534b"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "f3ae87df9c84a33c35a894fa0a3aea2692b4533caf2ecf9aa96c9f8f01a63a7b"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "6b59c237b72635873df7df8ba7bd2c3a818a82bef82fa1d09fdb6dc9c90cda63"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "b57598046f11203e04f76becf1b1af4a138b209ca3482d813e0458136b3cab9c"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "f68a6e549b242d0ff3b3f62fa48b55de65560fa5fc12efcc131bbd4f7332bb97"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "5821e4c887bf5f23ebe2ba1cb2419c6c5fb53d62c173284c145c61a5ad93cd8c"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

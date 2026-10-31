@@ -1,0 +1,125 @@
+{
+  "id": "134-openpli-taube",
+  "folder": "134-openpli-taube",
+  "title": "Taube",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Taube",
+      "name": "Taube",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    134,
+    99
+  ],
+  "inner_size": [
+    96,
+    71
+  ],
+  "frame_count": 18,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "c8dac2197a6533aaed921b3d5b2f26901d6255521dda0304debaa3518f256d5e"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "fe4ef1fb5d51fd5a6672567aaa5d229e05b1afe03145fc82fbac0dc99e900a2f"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "4081358080c4c734005ddefb22d93268cd3450c281519a79f3909b62bb8bb964"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "3de517f4cb95683f982c77aa421f7acef899a8b2598fad0bef80fa1c25494e25"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "2bef825e7f8bcb18fad2692fabd7cee4c9119562b88b7c13ed09a88f81a91731"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "fc03de414860f428bd9b1aa8b4dd7fcaee85d27621c6a16da1540eb365b1231a"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "cd615daa9bbcd10f8c7211dd59aab5a98be740decac9e5bf094a8f1358c4dc60"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "47e89f9d764f8f0d598d6727817c5b8ae0a860c1426b2e225497c29c34915407"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "10c4c4ce39361610881be605f4990b9a3eda7f8ac5de5aab9bd913432ba337ec"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "e0ba148e7d0cf9c21b96d2d91333823463fb160893ed2a77743cc2fa6b5e550a"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "be80ac4561eeb89dd88a31dd4ba4f441a5d0bdbdddcdfb127a807d32374f1daa"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "612b950abb3094210d0f8c06190b4ddd68c3cc6a761140bc64ec4672d637d27a"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "a36210985b43d620188c30a10a1e1d7c1392fe4ba8b5b93f4eed3ac8841ce106"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "66086eb429db0a1b0bde05229bd0140617af94ae69c1a8618ba171e4f220499d"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "47b9d39d9c84bdb5a5bdec92588991b2561a5032104ab606560fa04cd583341e"
+    },
+    {
+      "name": "wait16.png",
+      "sha256": "a0e138430f162665064524e8e9f6f04caa4ab9495d4644dad76dde1da69f6f18"
+    },
+    {
+      "name": "wait17.png",
+      "sha256": "1aa2dbbb8ca9699d98060fc9799909cf252b21c48808d0960474fa1f4557a271"
+    },
+    {
+      "name": "wait18.png",
+      "sha256": "4babaa21bb8bf30b733f8214eb52145561385db29daae1a6a28591db1371c945"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

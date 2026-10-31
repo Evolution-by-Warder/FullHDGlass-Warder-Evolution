@@ -1,0 +1,50 @@
+{
+  "id": "003-techkings-spinner-8",
+  "folder": "003-techkings-spinner-8",
+  "title": "Spinner 8",
+  "author": "ekremtt — podľa označenia v zdrojovej kolekcii",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "techkings",
+      "archive_folder": "spinners with setup/23 spinners by ekremtt/Spinner 8",
+      "name": "Spinner 8",
+      "source_indices": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    75,
+    77
+  ],
+  "inner_size": [
+    75,
+    77
+  ],
+  "frame_count": 3,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "6d7cbf2b496a28ab5efc669ec5ae0bb58691830dbaab260217728739877a02dd"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "906022c98074561ab13b80f9bc5127c06aca43acfaaf80b08ab94c760e2ee839"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "d5ad7605e35f679bcf125e67b676bad27b2757cd3dc62bdaa9af5f5be59a1f58"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

@@ -1,0 +1,95 @@
+{
+  "id": "140-openpli-weissekatze",
+  "folder": "140-openpli-weissekatze",
+  "title": "WeisseKatze",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/WeisseKatze",
+      "name": "WeisseKatze",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    116,
+    53
+  ],
+  "inner_size": [
+    96,
+    44
+  ],
+  "frame_count": 12,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "37af0cf9cc5e3fc5ba6ee7d716570d78808c6681963af057f79d699e07ddd067"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "dcfde4cdc9b922b1ed559cb11a3af0d5365b57ec20e38060ed7a7928c8f4c82c"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "a900a4e6d9ffece5bee8e0b399c7c4077e78311d4bd44a6c98fd8ec10bdd3393"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "a12fd800803e0fa03d3e42c187348ac6b70725aab58a8f2ef9d8b808f2bc8444"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "74d8d156e5d1ec658ec16fbb5badb015b9a21799740b1b9292019666be1393b9"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "96d0a37b3f3a766e26478f702e5e6e379d85f66e2773649675b184eb3b5de365"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "1192093059e0342b1d619d3218543caaccf15c84fd93240f6c4bcaf941e3ccde"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "d080f5ecc976034aaf32edfafd0368d610d820039b05194522021b56737f9ca9"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "5f4e46e7e94cfb9480d58656eeca04bda4f7893d55b5b41a164fc860d168dd16"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "4d0624aee61dcce12c0de8299bf4817488acbcb857721e9b2a4b7b91d46557e8"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "877272fc31aa3431986004693a7121fb9ede77207892c947ac249d03d18ffd1e"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "d48c2989f02fd0670a47c16242afb242a10aa90fdbe6eb56d4d017fb0880382f"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

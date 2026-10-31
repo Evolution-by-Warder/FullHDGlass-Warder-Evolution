@@ -1,0 +1,95 @@
+{
+  "id": "112-openpli-pentagramm1",
+  "folder": "112-openpli-pentagramm1",
+  "title": "Pentagramm1",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Pentagramm1",
+      "name": "Pentagramm1",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    82,
+    82
+  ],
+  "inner_size": [
+    82,
+    82
+  ],
+  "frame_count": 12,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "f4c009eac4c714bc619e505e53df97664ef08edefb27e5a193390cf19c32302f"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "d2001df5544a9344d5a08bd8b53c0182b31f259945e7ec5006107bb82eeffc31"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "b0b47ee9be1246767afceb09883703a606f4be9dad07385c3b16e86cfcf4c66d"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "e2d72b166558d53039efb836491f6867af576afcac149569716ddfebc0e1fdf9"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "658481f466b40de4da5af0617848564d75ae641a6801328037c8b7fb24598645"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "74f54d2bd5bab68cfc470299454b6c23f4c2dc91570aaf0d7a1fc9e0d026bd8e"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "db7590b7f907eddd39226dcab0fee7e3f30ea63b947deb5c3abf567c4a835cd9"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "79314d6bc16ed763468e70830f989668ee7017a49bc5f39cc339117637c66865"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "aaa873f9ffb052a30e15bc9f02a96257ab255238889f8122282fad9504276734"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "7ae356420cb101ae66c8ad7701c82f5a7bb3d62bc3cce3537582baebbc01b34e"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "93aaf728845462d0870e874c20804417a9c82fcb5fe73ad490d56c2cc6d8395f"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "a25573ddbec8e32ca3ce5f30e485bfcec659dbc975f9e54a0ff9da364c06646f"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

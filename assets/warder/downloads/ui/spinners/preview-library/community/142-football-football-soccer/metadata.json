@@ -1,0 +1,65 @@
+{
+  "id": "142-football-football-soccer",
+  "folder": "142-football-football-soccer",
+  "title": "Football Soccer",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "football",
+      "archive_folder": "",
+      "name": "Football Soccer",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    45,
+    44
+  ],
+  "inner_size": [
+    45,
+    44
+  ],
+  "frame_count": 6,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "60286182fa07d94f6bfa69062c3b20235cc2fd600e09a886fef421538de3ccca"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "917de253877f14eeed732a3c35a24c93e7aa56310acbdc05391d70c235645736"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "7af8c8ae9eee9a5a98ca5e54cf30889e77617c424678f6e1129dc79e487edc4a"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "71246b52baf481b8e89fb3a10fa48c6f124ff2f55ca40c7a82cf70c5bc482fdd"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "654796b6d71d532c7c41bb452fadd3789113b1c2120ed88dccd52ed100bfafdc"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "bd60bbd2cd3fe7395cfb62f9a92223cf9b924aaa0819c31d68b8ccf6c3dce569"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}

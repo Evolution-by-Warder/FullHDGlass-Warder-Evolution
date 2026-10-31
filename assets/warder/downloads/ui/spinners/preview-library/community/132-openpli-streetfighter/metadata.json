@@ -1,0 +1,110 @@
+{
+  "id": "132-openpli-streetfighter",
+  "folder": "132-openpli-streetfighter",
+  "title": "Streetfighter",
+  "author": "Autor v archíve neuvedený",
+  "license": "not-specified-in-submitted-archive",
+  "origins": [
+    {
+      "source": "openpli",
+      "archive_folder": "usr/share/enigma2/Spinner/Streetfighter",
+      "name": "Streetfighter",
+      "source_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  ],
+  "size": [
+    104,
+    104
+  ],
+  "source_canvas": [
+    120,
+    92
+  ],
+  "inner_size": [
+    96,
+    74
+  ],
+  "frame_count": 15,
+  "interval_ms": 100,
+  "frames": [
+    {
+      "name": "wait1.png",
+      "sha256": "5989b863ab28316abb2542b8ba29e94f7b266df7aa8c3be41ea10555d6521ca0"
+    },
+    {
+      "name": "wait2.png",
+      "sha256": "830980caafddc9415d0ef1b98932c2d8c3814725dbcf147193a3918d4228c1b8"
+    },
+    {
+      "name": "wait3.png",
+      "sha256": "607b5b21337c75113472db0648fb793970428505cf04f0f25d83cecef8701ed0"
+    },
+    {
+      "name": "wait4.png",
+      "sha256": "25490907878f8f8aa7cd0fc3f50d662858dba716143038a86a9c714d8d699eeb"
+    },
+    {
+      "name": "wait5.png",
+      "sha256": "c664d72bbc02dae00fe91b49afd4826ed31268a0d36aa805a251cf8ab030b483"
+    },
+    {
+      "name": "wait6.png",
+      "sha256": "10bc258b032cb7f636bcd60114196c7691e615cd1a4e66583737c7afcbe28fd3"
+    },
+    {
+      "name": "wait7.png",
+      "sha256": "58abdad59679f3b7dab2118500f7b73aecff5b177ec40fa3040653dce409c0e5"
+    },
+    {
+      "name": "wait8.png",
+      "sha256": "edfc9b1644a1bdb03ab499bc166108be2abed9cc1d921df93954213bf7bf8600"
+    },
+    {
+      "name": "wait9.png",
+      "sha256": "a25a296739910bd432d5027214c0fb6eb2fc28dd47fe8bf152eb8c38f1ffe9cd"
+    },
+    {
+      "name": "wait10.png",
+      "sha256": "7d317285346fa2663a184c15f79217afa1a71fbd75150fc8dde97f35bb421c44"
+    },
+    {
+      "name": "wait11.png",
+      "sha256": "88d49121459bf2f583c27d34482aacdf7ca067e3b708e1c2b81b0ac791d12427"
+    },
+    {
+      "name": "wait12.png",
+      "sha256": "d2e028a1a24977bf1a5586effd82021c00511bdd4f1ea4b60943e388706f4974"
+    },
+    {
+      "name": "wait13.png",
+      "sha256": "c86be09c19b68ee1be2a35a190047f73fe8bdae68ee9ecc26135ee3e59c09a4a"
+    },
+    {
+      "name": "wait14.png",
+      "sha256": "8ba64ac6425f5d1fb385d42879ad214988d346a967680c224fea810dd0f75ea1"
+    },
+    {
+      "name": "wait15.png",
+      "sha256": "5989b863ab28316abb2542b8ba29e94f7b266df7aa8c3be41ea10555d6521ca0"
+    }
+  ],
+  "source_has_opaque_frames": false,
+  "motion": true,
+  "state": "preview-only-not-installed"
+}
