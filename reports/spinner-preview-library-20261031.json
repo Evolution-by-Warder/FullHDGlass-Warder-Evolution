@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "prepared_for": "one-spinner-per-directory review",
+  "spinners": 154,
+  "native_frames": 1988,
+  "community_source_groups": 142,
+  "exact_duplicate_sequences": 0,
+  "separate_directories": true,
+  "preview_gif_and_source_metadata_per_directory": true,
+  "one_at_a_time_html_gallery": true,
+  "new_ipk_created": false,
+  "runtime_payload_changed": false,
+  "production_feeds_changed": false,
+  "trezor_changed": false,
+  "source_archives_sha256": [
+    "1cc8da9d04553bd51808e6cb22f3fb68a705b16829d500b6d48aae5e63e65e95",
+    "bb4159ff9bd7fde37bfcfb12df747d1aa7631bc605b5fdac5285443f4faaa110",
+    "96c8b5131d0e10a45663cc24454afce946b39a47813575d9e1f9943bd6e0bbab"
+  ],
+  "prepared_branch": "feature/spinner-preview-library-20261031",
+  "prepared_commit": "0ea1295bb32ffa78fb43b8f29fe2b4c0b86197c2",
+  "workflow_runs": [
+    41199743005,
+    41200429578
+  ],
+  "public_bundle_bytes": 16707740,
+  "public_bundle_sha256": "96f626b622e92b40d9f4b0dc15585b6837846ed73991ab99ac8747597e2793de",
+  "download_checked_against_all_frame_hashes": true,
+  "approved_blue_bakussa_preview_commit": "fb405579a9ba145a22a371790642452d3133c0ec"
+}
