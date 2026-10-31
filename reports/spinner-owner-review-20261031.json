@@ -36,6 +36,20 @@
       "owner_comment": "31 je taká tmavá a nevýrazná, že vôbec nie je vidieť.",
       "classification": "too-dark-low-visibility",
       "resolution": "Prepare a brighter, more visible variant for review before final selection."
+    },
+    {
+      "numbers": [
+        146
+      ],
+      "ids": [
+        "134-openpli-taube"
+      ],
+      "titles": [
+        "Taube"
+      ],
+      "owner_comment": "146 je naša holubica, čiže dupla.",
+      "classification": "duplicate-of-existing-dove",
+      "resolution": "Exclude entry 146 from the final additions; retain the existing receiver-confirmed Dove. Keep review numbering unchanged."
     }
   ],
   "new_ipk_authorized": false
