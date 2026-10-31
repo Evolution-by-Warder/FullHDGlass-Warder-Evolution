@@ -1,0 +1,54 @@
+{
+  "version": "1.0.53",
+  "bytes": 16724540,
+  "sha256": "79706cfe0a6e33444d303089de9a3ecd2f99d32134acccea398893943d8f6c52",
+  "payload_files": 1486,
+  "changed_payload_files": [
+    "usr/lib/enigma2/python/Components/Renderer/WarderRadioCompactArtwork.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "all_picture_assets_and_spinners_unchanged": true,
+  "all_maintainer_hooks_unchanged": true,
+  "normal_radio_geometry_unchanged": true,
+  "dab_song_cover_size": [
+    420,
+    420
+  ],
+  "dab_slide_bounds": [
+    316,
+    136,
+    420,
+    315
+  ],
+  "dab_cover_bounds": [
+    316,
+    453,
+    420,
+    420
+  ],
+  "lyrics_top": 136,
+  "footer_top": 874,
+  "picture_aspect_ratio_preserved": true,
+  "receiver_test": false,
+  "status": "STABLE_UPDATE_ACTIVE",
+  "source_commit": "271097559ed97b2dd576361a33c51bd72b43365f",
+  "ci_workflow_run": 41245170622,
+  "ci": "success",
+  "dab_renderer_tests": 17,
+  "lyrics_tests": 121,
+  "spinner_tests": 15,
+  "keyboard_tests": 6,
+  "graphics_baseline": "487317f1a2e27795a3877e9f542b71da437152995ca807d0040bcf1d9bffc39e",
+  "previous_frozen_baselines_preserved": true,
+  "promotion_workflow_run": 41245470248,
+  "public_updater_ipk_byte_identical": true,
+  "strict_opkg_upgrade_from_1_0_52": true,
+  "production_feed": "main/update-production.json",
+  "test_feed": "warder-modernization-work/update-test.json",
+  "physical_receiver_test": false
+}
