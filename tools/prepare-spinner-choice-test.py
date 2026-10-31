@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+from sync_header_version import sync_headers
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
@@ -28,6 +29,7 @@ def main():
         }.items():
             path = PLUGIN / name
             path.write_text('FullHDGlass ' + VERSION + ' — 31.10.2026\n' + body + '\n\n' + path.read_text())
+    sync_headers(ROOT / 'source/package-root')
     assert before == {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in ROOT.glob('update*.json')}
     out = ROOT / 'packages/test'
     out.mkdir(parents=True, exist_ok=True)

@@ -19,6 +19,8 @@ def main():
     parser.add_argument('--help-previews',type=Path)
     args=parser.parse_args()
     version=(PLUGIN/'version').read_text().strip()
+    from sync_header_version import sync_headers
+    sync_headers(ROOT/'source/package-root', check=True)
     if not re.fullmatch(r'\d+\.\d+\.\d+(?:-test\d+)?',version):raise SystemExit('Numbered stable or TEST version required')
     # Verify the actual decoded TV background, not only the OpenWebif JPEG.
     subprocess.run(['python3',str(ROOT/'tools/build-radio-background.py')],check=True)

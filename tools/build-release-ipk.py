@@ -38,6 +38,8 @@ def archive(directory, output, payload=False):
 
 def main():
     payload = ROOT / "source/package-root"
+    from sync_header_version import sync_headers
+    sync_headers(payload, check=True)
     control = ROOT / "source/control"
     version = (payload / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version").read_text().strip()
     if not re.fullmatch(r"\d+\.\d+\.\d+", version):

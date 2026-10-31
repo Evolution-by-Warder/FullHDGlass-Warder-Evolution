@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "receiver_test4": {
+    "baseline": "9.50-r12.2",
+    "target": "1.0.50-test4",
+    "box": "GigaBlue Quad 4K Pro",
+    "image": "OpenATV 8.0.1",
+    "method": "System software manager, install local IPK from /tmp; no Telnet or force reinstall",
+    "installation_screenshots": "1(20261031-181205).jpg through 11(2).jpg",
+    "legacy_preparation_visible": true,
+    "original_obsolete_file_errors_visible": false,
+    "configuration_completed_banner": true,
+    "owner_confirmed_skin_functional_after_restart": true,
+    "running_settings_screenshot": "1(20261031-181732).jpg",
+    "updater_reports_runtime_version": "1.0.50-test4",
+    "updater_screenshot": "1(20261031-181930).jpg"
+  },
+  "scope_limit": "Confirms this r12.2 first GUI transition and startup on this receiver. Original 9.50 receiver transition and other plugins remain separate tests.",
+  "header_issue": {
+    "main_menu_shows": "1.0.49",
+    "dialog_shows": "1.0.47",
+    "confirmed_cause": "Generated static eLabel version values inside plugin.py and warderDialogSkins.py were not synchronized when the TEST version file changed. The public IPK runtime version is 1.0.50-test4.",
+    "fix": "Synchronize only the native header version eLabels from the runtime version file during TEST preparation. Stable and TEST builders reject mismatches. Existing source dialog labels synchronized to current source 1.0.49.",
+    "verification": "The new checker rejects the actual published TEST4 header texts. In an isolated extraction, synchronization fixes 10 plugin header labels and 3 dialog labels; all other source text is byte-identical after masking version label values. Idempotence and subsequent stable-version synchronization verified.",
+    "new_ipk_for_this_cosmetic_fix": false
+  },
+  "stable_feeds_changed": false,
+  "published_test4_bytes_changed": false
+}
