@@ -3,7 +3,7 @@
   "version": "1.0.47",
   "expected_main_sha": "c5736f7e2c30698b772150ac8efeb5bc11fb2d6e",
   "authorization": "Owner requested restoring a localized radio-mode header and cleaning skin History to show only the four latest concise, clearly separated entries. Owner confirmed spinner 1.0.46-test1 perfect on the receiver. Existing authorization for repository writes and normal production updates remains in force. GSU/PiconHub History is explicitly deferred to their next functional changes.",
-  "changelog": "Prehľadná História s poslednými štyrmi záznamami a oddelenými krátkymi popismi. Prekladaný nadpis rádiového režimu v strede hornej lišty. Opravený spinner overený používateľom v prijímači.",
+  "changelog": "Prehľadnejšia História s krátkymi záznamami. Označenie režimu rádia podľa jazyka prostredia. Vylepšená animácia počas čakania.",
   "receiver_validation": "Owner confirmed spinner test 1.0.46-test1 on their receiver on 31 October 2026. New History and localized radio header are covered by automated checks; no physical confirmation of those two additions is claimed.",
   "approved_on": "2026-10-31",
   "reuse_verified_preview_archives": true

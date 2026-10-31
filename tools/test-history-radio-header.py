@@ -43,6 +43,13 @@ class HistoryTests(unittest.TestCase):
         self.assertLessEqual(len(rows), 19)
         self.assertLessEqual(len(rows) * 37, 740)
 
+    def test_visible_history_contains_only_public_change_descriptions(self):
+        forbidden = r'(?:/usr/|/etc/|assets/|\.(?:py|cpp|json|xml|ipk|zip)\b|SHA-?256|\bgRC\b|\bCI\b|workflow|unit test|owner.confirm|používateľom|prijímači overené používateľom)'
+        for name in ('history.txt', 'history.txtSk'):
+            for entry in history.entries((PLUGIN / name).read_text())[:4]:
+                for description in entry['paragraphs']:
+                    self.assertNotRegex(description, forbidden)
+
     def test_no_empty_lines_required_between_mixed_legacy_version_formats(self):
         text = 'FullHDGlass Warder Evolution 1.0.47 — 31.10.2026\nLatest change\n1.0.46-test1: Spinner checked\n1.0.45 - Compatibility repaired\n1.0.44: Radio import\n1.0.43: Keyboard'
         entries = history.entries(text)

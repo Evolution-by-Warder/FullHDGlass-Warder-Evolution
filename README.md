@@ -4,7 +4,7 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 30 October 2026
 
-**FullHDGlass 1.0.47** shows the four latest History entries as separate, concise blocks and restores a translated radio-mode caption in the header. It includes the repaired dove spinner confirmed by the owner on their receiver. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
+**FullHDGlass 1.0.47** shows the four latest History entries as separate, concise blocks and restores a translated radio-mode caption in the header. It includes the improved animated dove waiting indicator. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
 
 The normal updater offers 1.0.47 to both production 1.0.45 and spinner-test users. Full historical records remain in the repository; only their UI view is compact. Approved graphics, settings, keyboard and EPG are preserved.
 

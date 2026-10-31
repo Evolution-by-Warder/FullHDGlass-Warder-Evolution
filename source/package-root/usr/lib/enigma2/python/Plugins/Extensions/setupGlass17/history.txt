@@ -1,16 +1,18 @@
 FullHDGlass 1.0.47 — 31.10.2026
-Readable History: four latest entries, separate headings, dividers and brief wrapped descriptions.
-A radio-mode title is restored in the centre of the header and follows the active OSD language.
-Includes the repaired animated dove spinner confirmed by the owner on their receiver.
+A clearer History view with four recent updates and short descriptions.
+Radio mode is clearly labelled in the selected interface language.
+An improved animated waiting indicator.
 
 FullHDGlass 1.0.46-test1 — 31.10.2026
-Repaired transparent original dove spinner; test candidate confirmed by the owner on their receiver.
+Smoother display of the original dove animation while waiting.
 
-FullHDGlass Warder Evolution 1.0.45 — 30.10.2026
-OpenATV compatibility: restored MultiEPG colour captions and actions on the refactored grid, current EPG settings and video codec API, complete parental-control forms and package/text-dialog keys. Read-only source compatibility gates run on GitHub, without receiver logs or polling.
+FullHDGlass 1.0.45 — 30.10.2026
+More reliable programme guide buttons and improved compatibility.
+More complete settings screens and clearer video information.
 
-FullHDGlass Warder Evolution 1.0.44 — 30.10.2026
-Silent first installation of the verified Warder IPTV radio bouquet after package installation. Appends its reference to bouquets.radio without changing personal lists or TV bouquets. Background retries, checksum validation, weekly updates and no-duplicate registration.
+FullHDGlass 1.0.44 — 30.10.2026
+Radio stations are added automatically after installation.
+Existing personal station lists are preserved.
 
 FullHDGlass Warder Evolution 1.0.43 — 30.10.2026
 Modern OpenATV virtual keyboard now shows plugin prompts, input mode, locale and button captions. Matching 67px key segments fix overlapping/misaligned key graphics. Build checks verify the pinned and latest upstream display contract.

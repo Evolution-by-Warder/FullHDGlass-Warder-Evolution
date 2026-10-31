@@ -1,0 +1,130 @@
+FullHDGlass 1.0.47 — 31.10.2026
+Readable History: four latest entries, separate headings, dividers and brief wrapped descriptions.
+A radio-mode title is restored in the centre of the header and follows the active OSD language.
+Includes the repaired animated dove spinner confirmed by the owner on their receiver.
+
+FullHDGlass 1.0.46-test1 — 31.10.2026
+Repaired transparent original dove spinner; test candidate confirmed by the owner on their receiver.
+
+FullHDGlass Warder Evolution 1.0.45 — 30.10.2026
+OpenATV compatibility: restored MultiEPG colour captions and actions on the refactored grid, current EPG settings and video codec API, complete parental-control forms and package/text-dialog keys. Read-only source compatibility gates run on GitHub, without receiver logs or polling.
+
+FullHDGlass Warder Evolution 1.0.44 — 30.10.2026
+Silent first installation of the verified Warder IPTV radio bouquet after package installation. Appends its reference to bouquets.radio without changing personal lists or TV bouquets. Background retries, checksum validation, weekly updates and no-duplicate registration.
+
+FullHDGlass Warder Evolution 1.0.43 — 30.10.2026
+Modern OpenATV virtual keyboard now shows plugin prompts, input mode, locale and button captions. Matching 67px key segments fix overlapping/misaligned key graphics. Build checks verify the pinned and latest upstream display contract.
+
+FullHDGlass Warder Evolution 1.0.42 — 30 October 2026
+Auxiliary help and infobar previews use the shared assets/warder/downloads structure. Preview ZIPs are no longer attached to installation releases; archive hashes and existing receiver cache remain valid.
+
+FullHDGlass Warder Evolution 1.0.41 — 29 October 2026
+Owner-authorized production release of TEST2: 84 columns at 3px with 1px gaps, original colours and transparent animated frames. Shared pre-rendered playback replaces expensive per-segment drawing; bounded RAM caches and silent runtime cleanup. Normal upgrade from stable 1.0.39 and 1.0.40-test2. Settings, lyrics/artwork, RDS/DAB and legacy bridge preserved.
+
+FullHDGlass Warder Evolution 1.0.40-test1 — 29.10.2026
+Fine colour spectrum: 84 columns at 3 px, 1 px gaps, transparent background and smooth colour flow. Automatic diagnostic logs retired; temporary-file cleanup and bounded RAM caches.
+Testovací balík; fyzické overenie na prijímači čaká.
+
+FullHDGlass Warder Evolution 1.0.39 — 29 October 2026
+Production release of the receiver-confirmed TEST13 radio engine.
+Album artwork and native lyrics panel; exact recording matching, SK/CZ sources, bounded background SuperMusic session, refreshed negative cache and preserved valid cached texts.
+Settings, RDS/DAB, approved radio layout and weekly radio bouquet updates retained.
+
+1.0.38-test13: SuperMusic.cz original lyrics via its bounded public visitor check, session cookie reuse, exact artist/title matching and chord removal. Valid positive caches retained; older negative caches rechecked. No radio layout changes.
+
+1.0.38-test12: Add original-only KaraokeTexty SK/CZ and Akordy Kytary adapters; repair unspaced full-phrase metadata and slash-separated guest names; verify Hrajte trubky credits. SuperMusic and LyricFind automatic access remains unverified.
+
+1.0.38-test11: Repair abbreviated Kroky credits, verified Helena/Korn duet identity and Stromy original-version title; support unparenthesized featured credits, numbered full-artist file tags, and recheck TEST10 negative caches.
+
+1.0.38-test10: Shared song identity for lyrics and artwork, numbered-tag repairs, verified credit aliases, regional source priority, Ujdeto, Pisnicky-akordy and Tekstowo adapters, scoped official Pavel Roth source, and retries after partial failures without zapping.
+
+1.0.38-test9: Reject Hudba.sk missing-lyrics notices, continue alternative lookups, and invalidate old positive caches containing the notice.
+
+1.0.38-test8: Pripojené Hudba.sk a textypisni.youradio.cz, súbežné získavanie textov, úplné overenie interpreta a názvu; zachovaný schválený vzhľad rádia.
+
+1.0.38-test7: Kompaktný rám podľa skutočného pomeru obalu, zvislé vycentrovanie oproti textu; zachovaná nová hlavička, rýchlejší equalizér a optimalizácie textov z TEST6.
+
+1.0.38-test6: Rádio: hlavička s dňom, dátumom a sekundami .00; rýchlejší equalizér; súbežná záloha textov, správne stavy, menej požiadaviek, zachovanie textu pri obrátených metadátach.
+
+1.0.38-test5: Pomalé zdroje textov: 10-sekundový limit, záložný zdroj hneď po prvom pokuse, spoločný časový rozpočet, presné Retry-After.
+
+1.0.38-test4: Radio lyrics: fallback provider, transient-error retries, plain display from LRC, collaboration metadata normalization. SK/CZ coverage remains partial.
+
+1.0.38-test2 - Rebuild physical-TV radio.mvi from the clean radio JPEG; package builds now decode and verify the video/JPEG pair.
+
+1.0.38-test1 - Radio design candidate: native text, automatic plain lyrics with exact song matching, portrait artwork area, station footer and transport type. Production feeds unchanged.
+
+1.0.37 - Silent weekly refresh of Warder Radio Streams: owned SK/CZ first, SHA256, atomic replacement and background reload without interrupting playback.
+
+1.0.36: Shared IPTV SK/CZ radio source with PiconHub: three sizes and three styles. Picons for 213 entries and refreshed bouquet with 321 entries; 108 entries still lack suitable verified artwork. Checked downloads, background installation and preservation of unrelated picons.
+
+1.0.35: Display standalone internet-radio announcements in the existing native radio-text label. Preserve artist/title cover matching and clear stale text on transitions.
+
+1.0.34: Compare exact full collaboration credits in both metadata directions, including comma, and and ampersand separators. Fixes Europa 2 ALL THE TIME / John Summit, The Chainsmokers & Ilsey.
+
+1.0.33: Compare the complete artist roster when a guest moves between comma-separated radio credits and a catalogue feat. track title. All names and the song title must match.
+
+1.0.32: Preserve artist/song identity; add verified MusicBrainz/Cover Art Archive fallback, bounded artwork downloads and one delayed retry.
+
+1.0.31: Correct regional radio album artwork: search SK, CZ, then US; compare complete artist/title identities without accents. Unrelated tracks and artists stay rejected. No radio layout changes.
+
+1.0.29: Shared Warder DAB download source; DAB and DVB-T first. Same verified catalog/engine as PiconHub, background transfer and rollback. DAB included in owning satellite bundles.
+
+FullHDGlass Warder Evolution 1.0.21
+Prevent small LiveTV from reappearing when returning to translucent settings.
+
+FullHDGlass Warder Evolution 1.0.20
+Subtle translucent settings panels without LiveTV, matching GSU; preserved controls and preview artwork.
+
+1.0.19
+Native installed-skins category; safe two-stage package-name migration via 1.0.18. Runtime paths and user settings are retained.
+
+1.0.17
+Owner-approved production release based on TEST270. Clean production version in the package and all settings headers; approved behavior and graphics retained.
+
+1.0.16-test270
+- Nižší horizont zemegule v bannere zlepšuje čitateľnosť sekúnd. Verzia je zobrazená v dvoch riadkoch: označenie Verzia: a pod ním číslo, vo všetkých obrazovkách s hlavičkou.
+
+1.0.16-test269
+- Pravý zoznam úvodnej ponuky je natiahnutý po spodný rám. Výška 720 px zobrazí 18 riadkov namiesto 17 a odstráni tmavú medzeru. Horný okraj je posunutý o 4 px nahor, aby sa celý ďalší riadok zmestil v pôvodnom ráme.
+
+1.0.16-test268
+- Spoločná viacjazyčná šablóna textov aktualizácie vo FullHDGlass a PiconHub: rovnaká ponuka, priebeh, dokončenie a tlačidlo Potvrdiť. Mení sa iba názov projektu, verzia a popis zmien.
+
+1.0.16-test267
+- Kratšie farebné čiary nad tlačidlami v dialógových oknách. Čiary sú vycentrované nad príslušným nápisom a zladené s PiconHub.
+
+1.0.16-test266
+- Opravený pád výberových okien v OpenATV pri otvorení rozlíšenia piconov a ďalších volieb.
+
+1.0.16-test265
+- Zjednotené logo FullHDGlass a PiconHub: spoločná okrúhla lebka a čitateľné dvojriadkové názvy.
+
+1.0.16-test264
+- Fix invisible update question, release notes and message text above the opaque dialog background.
+
+* FullHDGlass by Warder — 1.0.16-test263
+- Small IPK: optional preview archives download in the background.
+- Persistent verified cache in the selected skin data directory.
+- HDD access and PNG preparation stay outside the GUI event loop.
+
+* FullHDGlass by Warder — 1.0.16-test262
+- Plugin browser entry: FullHDGlass Warder Evolution configuration.
+- Readable PiconHub-family icon: skull + FullHD / Glass on transparent background.
+
+* FullHDGlass by Warder — 1.0.16-test261
+- Configuration moved exclusively to the plugin list.
+- Shared FullHDGlass banner, localized live date/time and version.
+- Unified choice, input, confirmation, update and reset dialogs.
+- Smaller download graphics with transparent backgrounds; more visible rows.
+- Extra infobar: clear type labels and opaque preview backing.
+- Icon type list centered vertically beside the icon preview.
+- OLED selection opens without requiring 7zip; extraction checks the helper.
+- Recognize image-provided 7zz / 7z / 7za and the private 7zip helper.
+- Prepared help previews and asynchronous fallback keep navigation responsive.
+- Duplicate version line and obsolete changelog entries removed.
+
+* Credits
+FullHDGlass continuation by Warder.
+Original FullHDGlass authors and contributions remain credited in the project.
+Picon resources include work by s3n0 and Chocholousek.

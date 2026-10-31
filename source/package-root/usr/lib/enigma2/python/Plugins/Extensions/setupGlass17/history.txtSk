@@ -1,16 +1,18 @@
 FullHDGlass 1.0.47 — 31.10.2026
-História: posledné 4 záznamy, jasné oddelenie a krátke popisy.
-Prekladaný nadpis rádiového režimu v strede hornej lišty.
-Opravená animácia holubice overená v prijímači.
+Prehľadnejšia História so štyrmi poslednými záznamami a krátkymi popismi.
+Jasné označenie režimu rádia v zvolenom jazyku prostredia.
+Vylepšená animácia počas čakania.
 
 FullHDGlass 1.0.46-test1 — 31.10.2026
-Opravená priehľadná animácia pôvodnej holubice; skúšobná verzia potvrdená používateľom v prijímači.
+Plynulejšie zobrazenie pôvodnej animácie holubice počas čakania.
 
-FullHDGlass Warder Evolution 1.0.45 — 30.10.2026
-Opravená kompatibilita s refaktorovaným OpenATV: farebné tlačidlá a ich akcie v MultiEPG, nové nastavenia EPG, názvy video kodekov, rodičovská ochrana a nové voľby systémových dialógov.
+FullHDGlass 1.0.45 — 30.10.2026
+Spoľahlivejšie tlačidlá a lepšia kompatibilita programového sprievodcu.
+Úplnejšie obrazovky nastavení a správnejšie informácie o videu.
 
-FullHDGlass Warder Evolution 1.0.44 — 30.10.2026
-Tichá prvá inštalácia overeného IPTV rádio bouquetu Warder po inštalácii balíka. Zaradenie medzi rádiá bez zmeny osobných zoznamov a TV bouquetov. Sťahovanie na pozadí, overenie kontrolného súčtu, opakovanie po výpadku a týždenné aktualizácie; bez duplicít.
+FullHDGlass 1.0.44 — 30.10.2026
+Rádiové stanice sa po inštalácii pridajú automaticky.
+Vlastné zoznamy staníc zostávajú zachované.
 
 FullHDGlass Warder Evolution 1.0.43 — 30.10.2026
 Virtuálna klávesnica zobrazuje popis poľa z pluginu, režim zadávania, jazyk a popisy tlačidiel. Podklady klávesov majú jednotných 67 px. Zostavovanie kontroluje kompatibilitu s overenou aj aktuálnou klávesnicou OpenATV.
