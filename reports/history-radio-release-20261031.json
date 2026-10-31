@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "verified_at": "2026-10-31T06:14:29Z",
+  "production_commit": "c67067f1969dca2fe646126c856b89696cdaa78a",
+  "version": "1.0.47",
+  "filename": "enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.47/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+  "bytes": 14897674,
+  "sha256": "82ed5dc016a00611e6428f93a513bbffe571ad98bc9768b5d26070343a073e20",
+  "native_stable_and_test_feeds_identical": true,
+  "legacy_bridge": "1.0.18",
+  "payload_files_verified": 1441,
+  "png_pixel_contents_verified": 1228,
+  "receiver_confirmed_spinner_frames_preserved": 18,
+  "localized_mode_titles": [
+    "RdsInfoDisplay",
+    "RdsDisplay"
+  ],
+  "history_ui_limit": 4,
+  "history_body_line_limit": 3,
+  "history_descriptions_public_facing": true,
+  "history_install_result_output_unchanged": true,
+  "other_plugins_history_deferred": true,
+  "new_header_and_history_hardware_validated": false,
+  "spinner_owner_validation": "Owner confirmed 1.0.46-test1 perfect before this release.",
+  "source_commit": "6d7ce5f34a02be6746140e0fb73d82ed68bcb958",
+  "workflow_run": 41175302193,
+  "workflow_conclusion": "success",
+  "release_unit_tests": 431,
+  "history_text_policy": "Only general user-facing descriptions; no implementation filenames/paths, testing notes or working conversations. Full detailed source text retained in Git documentation.",
+  "radio_mode_supported_languages": 20,
+  "deferred_history_tasks": {
+    "GSU": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/blob/main/NEXT-RELEASE.md",
+    "PiconHub": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/main/NEXT-RELEASE.md",
+    "standalone_ipks_created": false
+  },
+  "trezor_changed": false
+}
