@@ -3,19 +3,19 @@
   "product": "FullHDGlass Warder Evolution",
   "status": "production-update-active",
   "approved_on": "2026-10-31",
-  "approval": "Owner explicitly requested publishing both prepared changes as a normal new production version: independent DAB slideshow and current-song cover, and removal of redundant settings section names below the date. Original satellite/IPTV single-window geometry must remain. This supersedes the earlier release hold.",
+  "approval": "Owner accepted the generated DAB+ information fallback and requested replacing the old version with the updated release. Since 1.0.48 was already publicly published, the owner was informed that 1.0.49 will replace it in the updater and replied OK. Existing DAB dual windows, original satellite/IPTV single-window layout and settings-header cleanup remain included.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "ff838739e7b4dc66cd32b9143e1801512f3cb6d2",
+  "source_commit": "ea6addb334e0b838ba2bb6334f42caee0043fc06",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.48",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.48_all.ipk",
-    "sha256": "94c84b5db63879789f34c3bfba8c51f392ce6b4743afc39ccdfeede9f44a0f52",
-    "changelog": "V DAB režime sa obrázky stanice a obal skladby zobrazujú samostatne. Čistejšia hlavička nastavení bez názvov rubrík pod dátumom.",
-    "tag": "v1.0.48",
-    "bytes": 14898516,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.48/enigma2-plugin-skins-fullhdglass_1.0.48_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.48"
+    "version": "1.0.49",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.49_all.ipk",
+    "sha256": "2287117cb037aca0ddf5ba2bc76ecd3b7cc7232862d53218fbdcce8483d85d63",
+    "changelog": "Predvolená grafika DAB+ informácií pri chýbajúcom obrázku stanice. Prijaté DAB obrázky ju automaticky nahradia.",
+    "tag": "v1.0.49",
+    "bytes": 16341854,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.49/enigma2-plugin-skins-fullhdglass_1.0.49_all.ipk",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.49"
   },
   "preview_assets": {
     "help": {
@@ -38,9 +38,9 @@
     "bytes": 14759486
   },
   "validation": {
-    "workflow_run": 41181171411,
+    "workflow_run": 41182087395,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed the spinner and compact History in 1.0.47 on their receiver. DAB dual artwork and header-title removal pass automated controller/layout checks; physical receiver confirmation of those two new changes is pending."
+    "receiver_validation": "Owner confirmed spinner and compact History in 1.0.47. DAB dual artwork, section-title removal and the new fallback are automatically checked. Owner approved the generated fallback preview; physical receiver confirmation of these newer changes is pending."
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -57,7 +57,7 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "1.0.48 is the next normal production update; package identity and settings preserved.",
+  "version_policy": "1.0.49 is the next normal production update; package identity and settings preserved.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
