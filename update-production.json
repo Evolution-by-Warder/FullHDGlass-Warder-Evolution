@@ -1,6 +1,6 @@
 {
-  "version": "1.0.45",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
-  "sha256": "3fdd6d42edc5761fe2007026529b5f58daa9b60ee87256bac0d819a7002bcfdb",
-  "changelog": "Opravená kompatibilita s refaktorovaným OpenATV: farebné tlačidlá a ich akcie v MultiEPG, nové nastavenia EPG, názvy video kodekov, rodičovská ochrana a nové voľby systémových dialógov."
+  "version": "1.0.47",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+  "sha256": "82ed5dc016a00611e6428f93a513bbffe571ad98bc9768b5d26070343a073e20",
+  "changelog": "Prehľadnejšia História s krátkymi záznamami. Označenie režimu rádia podľa jazyka prostredia. Vylepšená animácia počas čakania."
 }

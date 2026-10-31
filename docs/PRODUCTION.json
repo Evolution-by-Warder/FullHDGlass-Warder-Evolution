@@ -2,20 +2,20 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "status": "production-update-active",
-  "approved_on": "2026-10-30",
-  "approval": "Owner explicitly requested auditing all OpenATV changes affecting all our plugins and immediately fixing every confirmed compatibility issue. Existing authorization for repository writes and production publishing remains in force.",
+  "approved_on": "2026-10-31",
+  "approval": "Owner requested restoring a localized radio-mode header and cleaning skin History to show only the four latest concise, clearly separated entries. Owner confirmed spinner 1.0.46-test1 perfect on the receiver. Existing authorization for repository writes and normal production updates remains in force. GSU/PiconHub History is explicitly deferred to their next functional changes.",
   "source_branch": "warder-modernization-work",
-  "source_commit": "46e1acb9d3bfc41c62ebbde246bb7116fc6794f9",
+  "source_commit": "6d7ce5f34a02be6746140e0fb73d82ed68bcb958",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.45",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
-    "sha256": "3fdd6d42edc5761fe2007026529b5f58daa9b60ee87256bac0d819a7002bcfdb",
-    "changelog": "Opravená kompatibilita s refaktorovaným OpenATV: farebné tlačidlá a ich akcie v MultiEPG, nové nastavenia EPG, názvy video kodekov, rodičovská ochrana a nové voľby systémových dialógov.",
-    "tag": "v1.0.45",
-    "bytes": 14770780,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.45/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.45"
+    "version": "1.0.47",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+    "sha256": "82ed5dc016a00611e6428f93a513bbffe571ad98bc9768b5d26070343a073e20",
+    "changelog": "Prehľadnejšia História s krátkymi záznamami. Označenie režimu rádia podľa jazyka prostredia. Vylepšená animácia počas čakania.",
+    "tag": "v1.0.47",
+    "bytes": 14897674,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.47/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.47"
   },
   "preview_assets": {
     "help": {
@@ -38,9 +38,9 @@
     "bytes": 14759486
   },
   "validation": {
-    "workflow_run": 41128599355,
+    "workflow_run": 41175302193,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Legacy/current EPG API tests, source contract and display checks, codec fallback tests and existing release gates. No physical receiver confirmation of 1.0.45 yet."
+    "receiver_validation": "Owner confirmed spinner test 1.0.46-test1 on their receiver on 31 October 2026. New History and localized radio header are covered by automated checks; no physical confirmation of those two additions is claimed."
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -57,7 +57,7 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "1.0.45 is the next normal production update; package identity and settings preserved.",
+  "version_policy": "1.0.47 is the next normal production update; package identity and settings preserved.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
