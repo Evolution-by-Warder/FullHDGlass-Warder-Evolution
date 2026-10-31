@@ -1,0 +1,202 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "status": "REPAIR_PACKAGE_VERIFIED_PHYSICAL_RETEST_PENDING",
+  "product": "FullHDGlass",
+  "version": "1.0.51",
+  "release": {
+    "tag": "v1.0.51",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.51",
+    "prerelease": true,
+    "assets": [
+      {
+        "name": "enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk",
+        "bytes": 16723846,
+        "digest": "sha256:499ef0eaf5785c7a07eea4e52911350b3bb14fc251b5236b391fff1a8c6b266a",
+        "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.51/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk"
+      },
+      {
+        "name": "enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256",
+        "bytes": 114,
+        "digest": "sha256:235ebf1ccf15dd08b71237a928a22bde5651b773932bfa1f342ba2940bf833fa",
+        "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.51/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256"
+      }
+    ]
+  },
+  "source": {
+    "packaged_commit": "7823d0cbe7ab6d864f6d3e9324cc78f4cd086509",
+    "integrated_head": "3c5832cdc0facea4b20eb952c8065e2c61592063",
+    "branch": "fix/receiver-repairs-20261031",
+    "pull_request": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/10",
+    "integration_changes": "Current reports, release status and non-runtime review preview only; packaged code unchanged."
+  },
+  "validation": {
+    "workflow_run": 41239159565,
+    "workflow_conclusion": "success",
+    "public_package": {
+      "product": "FullHDGlass",
+      "version": "1.0.51",
+      "file": "enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk",
+      "bytes": 16723846,
+      "sha256": "499ef0eaf5785c7a07eea4e52911350b3bb14fc251b5236b391fff1a8c6b266a",
+      "public_equals_fully_inspected_local_ipk": true,
+      "payload_files": 1486,
+      "headers": {
+        "version": "1.0.51",
+        "headers": {
+          "plugin.py": 10,
+          "warderDialogSkins.py": 3
+        }
+      },
+      "numberzap_reference_converter": true,
+      "opkg_window": "1800x960",
+      "preview_scaling_and_names": true,
+      "native_spinner_frames_verified": 38,
+      "all_control_hooks_match": true,
+      "receiver_retest": false
+    },
+    "current_version_upgrade": {
+      "product": "FullHDGlass",
+      "old_package": "enigma2-plugin-skins-fullhdglass_1.0.50-test4_all.ipk",
+      "new_package": "enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk",
+      "opkg_exit": 0,
+      "fully_installed": true,
+      "all_non_conffile_payload_bytes_match": true,
+      "user_settings_preserved": true,
+      "force_reinstall_or_overwrite": false,
+      "offline_inert_hooks_enabled": true
+    },
+    "current_version_upgrade_scope": "Real opkg version/ownership transitions with complete public payloads; dependencies omitted and maintainer hooks inert in disposable offline roots; --force-postinstall only enables those inert hooks in offline opkg. Native hooks have separate tests; this is not a physical receiver test."
+  },
+  "stable_update_feeds_changed": false,
+  "published_old_ipks_changed": false,
+  "limits": [
+    "New repair package physical receiver retest is pending.",
+    "Original forum first-failure causes are not generalized beyond the verified evidence."
+  ],
+  "implemented_repairs": [
+    "Verified original 9.50 and r12.2 GUI replacement admission/obsolete-file preparation",
+    "NumberZap ServiceEvent/Picon Reference converter",
+    "13 synchronized header version labels",
+    "Expanded system installation window and output area",
+    "Aspect-preserving menu preview scaling, current IDs and legacy sample fallback",
+    "Unavailable HDD staging fallback with existing free-space checks",
+    "Combined approved native/online spinner selector and compound-artist metadata repair"
+  ],
+  "cross_project": {
+    "products": [
+      {
+        "product": "FullHDGlass",
+        "version": "1.0.51",
+        "file": "enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk",
+        "bytes": 16723846,
+        "sha256": "499ef0eaf5785c7a07eea4e52911350b3bb14fc251b5236b391fff1a8c6b266a",
+        "public_equals_fully_inspected_local_ipk": true,
+        "payload_files": 1486,
+        "headers": {
+          "version": "1.0.51",
+          "headers": {
+            "plugin.py": 10,
+            "warderDialogSkins.py": 3
+          }
+        },
+        "numberzap_reference_converter": true,
+        "opkg_window": "1800x960",
+        "preview_scaling_and_names": true,
+        "native_spinner_frames_verified": 38,
+        "all_control_hooks_match": true,
+        "receiver_retest": false
+      },
+      {
+        "product": "PiconHub",
+        "version": "0.1.35",
+        "file": "enigma2-plugin-extensions-piconhub_0.1.35_all.ipk",
+        "bytes": 2879430,
+        "sha256": "52cc24b4af666262f2faa70cb80b25c2c0a72c9bf13a3d744950c45a8c1c14b0",
+        "source_python_modules_match": 18,
+        "packaged_health_and_history_checked": true,
+        "receiver_retest": false
+      },
+      {
+        "product": "GSU",
+        "version": "13.40-r95",
+        "file": "enigma2-plugin-extensions-gsu_13.40-r95_all.ipk",
+        "bytes": 3689270,
+        "sha256": "370e6a26fed222616944f226d50dc30c1de66b44debb606468efc288058904a3",
+        "source_python_modules_match": 48,
+        "packaged_health_and_history_checked": true,
+        "receiver_retest": false
+      }
+    ],
+    "current_version_upgrades": {
+      "cases": [
+        {
+          "product": "FullHDGlass",
+          "old_package": "enigma2-plugin-skins-fullhdglass_1.0.50-test4_all.ipk",
+          "new_package": "enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk",
+          "opkg_exit": 0,
+          "fully_installed": true,
+          "all_non_conffile_payload_bytes_match": true,
+          "user_settings_preserved": true,
+          "force_reinstall_or_overwrite": false,
+          "offline_inert_hooks_enabled": true
+        },
+        {
+          "product": "PiconHub",
+          "old_package": "enigma2-plugin-extensions-piconhub_0.1.34-rc1_all.ipk",
+          "new_package": "enigma2-plugin-extensions-piconhub_0.1.35_all.ipk",
+          "opkg_exit": 0,
+          "fully_installed": true,
+          "all_non_conffile_payload_bytes_match": true,
+          "user_settings_preserved": true,
+          "force_reinstall_or_overwrite": false,
+          "offline_inert_hooks_enabled": true
+        },
+        {
+          "product": "GSU",
+          "old_package": "enigma2-plugin-extensions-gsu_13.40-r94_all.ipk",
+          "new_package": "enigma2-plugin-extensions-gsu_13.40-r95_all.ipk",
+          "opkg_exit": 0,
+          "fully_installed": true,
+          "all_non_conffile_payload_bytes_match": true,
+          "user_settings_preserved": true,
+          "force_reinstall_or_overwrite": false,
+          "offline_inert_hooks_enabled": true
+        }
+      ],
+      "limits": "Real opkg version/ownership transitions with complete public payloads; dependencies omitted and maintainer hooks inert in disposable offline roots; --force-postinstall only enables those inert hooks in offline opkg. Native hooks have separate tests; this is not a physical receiver test."
+    },
+    "gsu_legacy": {
+      "original_ipk_sha256": "81aea6eb25b5ed519e904af87a3d7bece5d32ae6886a1690dac8ab47306fe3f7",
+      "opkg_version": "opkg version 0.10.0 (libsolv 0.7.40)",
+      "before": {
+        "preparation_enabled": false,
+        "opkg_exit": 0,
+        "obsolete_file_errors": 12,
+        "final_package_installed": true,
+        "all_new_payload_bytes_match": true,
+        "settings_preserved": true
+      },
+      "fixed": {
+        "preparation_enabled": true,
+        "opkg_exit": 0,
+        "obsolete_file_errors": 0,
+        "final_package_installed": true,
+        "all_new_payload_bytes_match": true,
+        "settings_preserved": true
+      },
+      "limits": "Isolated host test: original legacy hook/inventory with minimal old file contents, complete new payload; not a receiver test."
+    },
+    "other_repositories": [
+      {
+        "repo": "Evolution-by-Warder/PiconHub-Warder-Evolution",
+        "report": "reports/receiver-repair-0.1.35-public-20261031.json"
+      },
+      {
+        "repo": "Evolution-by-Warder/GSU-Warder-Evolution",
+        "report": "reports/receiver-repair-r95-public-20261031.json"
+      }
+    ]
+  },
+  "unconfirmed_forum_large_icon_cause": true
+}
