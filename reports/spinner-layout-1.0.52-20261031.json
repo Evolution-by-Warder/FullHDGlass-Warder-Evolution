@@ -31,7 +31,7 @@
     "aspect_ratio_preserved": true
   },
   "receiver_test": false,
-  "status": "PUBLIC_IPK_VERIFIED",
+  "status": "STABLE_UPDATE_ACTIVE",
   "packaged_source_commit": "adbcdad577ac5edeee220fcada2175f2d190b31b",
   "workflow_run": 41244154321,
   "ci": "success",
@@ -51,5 +51,14 @@
   ],
   "gui_preview_rendered_from_actual_entries": true,
   "user_instruction": "Number of items should fit the page logically; no fixed target of twenty.",
-  "update_activation_authorized": true
+  "update_activation_authorized": true,
+  "promotion_workflow_run": 41244454168,
+  "public_release_and_raw_ipk_identical": true,
+  "strict_opkg_upgrade_from_1_0_51": true,
+  "feeds": {
+    "production": "main/update-production.json",
+    "test": "warder-modernization-work/update-test.json",
+    "version": "1.0.52"
+  },
+  "physical_receiver_layout_test": false
 }

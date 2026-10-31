@@ -1,5 +1,5 @@
-FullHDGlass 1.0.51
+FullHDGlass 1.0.52
 
-Opravený pád pri číselnom prepínaní kanálov so zapnutými piconmi. Spoľahlivejšia inštalácia a prechod zo starších verzií, opravené náhľady ikon menu, priestrannejší inštalačný výpis a správne zobrazovanie čísla verzie. Pridaný výber animácie čakania a spresnené rozpoznávanie interpretov v rádiovom režime.
+Výber spinnerov lepšie využíva plochu obrazovky. Počet položiek sa vypočíta podľa dostupného priestoru; vo Full HD sa zobrazí 16 položiek v dvoch stĺpcoch. Opravená veľkosť, zarovnanie a pomer strán náhľadov bez orezávania. Ovládanie šípkami zodpovedá rozloženiu položiek.
 
 Po aktualizácii reštartujte GUI.
