@@ -97,6 +97,54 @@ class DirectLegacyTests(unittest.TestCase):
         self.assertNotEqual(self.run_preinst('upgrade','9.50').returncode,0)
         self.assertEqual(hook.read_text(),changed)
 
+    def legacy_list(self, *paths):
+        (self.info/'enigma2-skin-fullhdglass17.list').write_text(
+            ''.join(str(self.root/path.lstrip('/'))+'\n' for path in paths))
+
+    def test_missing_tracked_self_deleted_files_can_be_pruned_by_opkg(self):
+        paths=('/tmp/plugin-17.py', '/usr/lib/enigma2/python/Screens/Menu-new17-38.py')
+        for name in paths:
+            (self.root/name.lstrip('/')).parent.mkdir(parents=True,exist_ok=True)
+        self.legacy_list(*paths)
+        listing=self.info/'enigma2-skin-fullhdglass17.list'
+        listing.write_text(listing.read_text().replace('\n','\t0100644\n'))
+        self.assertEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        for name in paths:
+            path=self.root/name.lstrip('/')
+            self.assertEqual(path.read_bytes(),b'')
+            path.unlink()  # The subsequent real opkg prune must now succeed.
+
+    def test_untracked_or_unknown_missing_files_are_not_created(self):
+        (self.root/'tmp').mkdir()
+        self.legacy_list('/tmp/unknown-user-file', '/tmp/plugin-17.py.other')
+        self.assertEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        self.assertFalse((self.root/'tmp/plugin-17.py').exists())
+        self.assertFalse((self.root/'tmp/unknown-user-file').exists())
+
+    def test_existing_file_and_dangling_symlink_are_preserved(self):
+        first=self.root/'tmp/plugin-17.py'
+        second=self.root/'usr/lib/enigma2/python/Screens/Menu-new17-38.py'
+        first.parent.mkdir();second.parent.mkdir(parents=True)
+        first.write_text('existing contents')
+        second.symlink_to('missing-original')
+        self.legacy_list('/tmp/plugin-17.py','/usr/lib/enigma2/python/Screens/Menu-new17-38.py')
+        self.assertEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        self.assertEqual(first.read_text(),'existing contents')
+        self.assertEqual(os.readlink(second),'missing-original')
+
+    def test_symlinked_legacy_list_and_unknown_hook_cannot_create_files(self):
+        (self.root/'tmp').mkdir()
+        self.legacy_list('/tmp/plugin-17.py')
+        listing=self.info/'enigma2-skin-fullhdglass17.list'
+        listing.rename(listing.with_suffix('.saved'))
+        listing.symlink_to(listing.with_suffix('.saved'))
+        self.assertEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        self.assertFalse((self.root/'tmp/plugin-17.py').exists())
+        listing.unlink();self.legacy_list('/tmp/plugin-17.py')
+        (self.info/'enigma2-skin-fullhdglass17.postrm').write_text('# unknown\n')
+        self.assertNotEqual(self.run_preinst('upgrade','9.50-r12.2').returncode,0)
+        self.assertFalse((self.root/'tmp/plugin-17.py').exists())
+
 
 class InstallationHealthTests(unittest.TestCase):
     def setUp(self):

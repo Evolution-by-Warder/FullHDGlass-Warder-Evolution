@@ -71,6 +71,10 @@ def guarded(source, root, label):
     import re
     # One pass: do not process inserted /tmp prefixes a second time.
     source = re.sub(r'/(?:etc|usr|var|tmp)/', lambda m: str(root) + m[0], source)
+    # Offline-root .list entries retain receiver paths, whereas rewritten
+    # fixture hooks operate on host paths inside PKG_ROOT.
+    source = source.replace('-v path="$warder_obsolete"',
+                            '-v path="${warder_obsolete#${PKG_ROOT%/}}"')
     prefix = ('#!/bin/sh\ncase "$PKG_ROOT" in ' + shlex.quote(str(root)) +
               '|' + shlex.quote(str(root)+'/') + ') ;; *) exit 73 ;; esac\n' +
               'printf "%s\\n" ' + shlex.quote(label) + '" $*" >> ' + shlex.quote(str(root/'hook-order')) + '\n')
@@ -132,6 +136,18 @@ def run_case(args, product, force, parent):
         critical = 'usr/lib/enigma2/python/Plugins/Extensions/WarderPiconHub/plugin.py'
     old_control = '\n'.join(l for l in old['control'].splitlines() if not l.startswith('Depends:'))+'\n'
     old_hooks = {n: guarded(old[n], root, 'old-'+n) for n in ('prerm', 'postrm') if n in old}
+    self_deleted = []
+    if product == 'skin' and args.legacy_self_deleted:
+        # The original postinst removes both shipped entries, while opkg still
+        # owns them. Model exactly that side effect, not the entire old runtime.
+        assert 'rm -rf /tmp/plugin-17.py' in old['postinst']
+        assert 'rm -rf $SCREENPATH/Menu-new17-38.py' in old['postinst']
+        self_deleted = ['tmp/plugin-17.py',
+                        'usr/lib/enigma2/python/Screens/Menu-new17-38.py']
+        legacy_files.update({name: '# legacy temporary payload\n' for name in self_deleted})
+        old_hooks['postinst'] = guarded(
+            'rm -f /tmp/plugin-17.py /usr/lib/enigma2/python/Screens/Menu-new17-38.py\n',
+            root, 'old-postinst')
     # The test guard and rewritten paths necessarily change the old hook hash.
     # Substitute its fixture hash only in the test copy of the new preinst.
     # The production allowlist retains the untouched original hook's hash.
@@ -153,6 +169,11 @@ def run_case(args, product, force, parent):
     install_old = call(['install', str(first)])
     if install_old['exit_code']:
         raise RuntimeError('Fixture setup failed: '+install_old['output'])
+    if self_deleted:
+        assert all(not (root/name).exists() for name in self_deleted)
+        listing=root/'var/lib/opkg/info'/str(legacy_id+'.list')
+        tracked = {line.split('\t')[0] for line in listing.read_text().splitlines()}
+        assert all('/'+name in tracked for name in self_deleted)
     result = call((['--force-reinstall', '--force-overwrite'] if force else []) + ['install', str(second)])
     trace = (root/'hook-order').read_text().splitlines() if (root/'hook-order').exists() else []
     status_new, status_old = call(['status', current_id]), call(['status', legacy_id])
@@ -169,6 +190,8 @@ def run_case(args, product, force, parent):
             'new_critical_file_matches': critical_matches,
             'settings_unchanged': settings.read_bytes() == before_settings,
             'status_new': status_new, 'status_old': status_old, 'second_attempt_recovery': recovery,
+            'legacy_tracked_but_self_deleted': self_deleted,
+            'obsolete_removal_errors': result['output'].count('unlinking ') + result['output'].count('Failed to determine obsolete files'),
             'scope': 'Real opkg; minimal synthetic data and inert new postinst; actual rewritten preinst/legacy postrm. Not a full product or receiver install.'}
 
 
@@ -179,6 +202,8 @@ def main():
     parser.add_argument('--legacy-picons', type=Path, required=True)
     parser.add_argument('--picon-root', type=Path, required=True)
     parser.add_argument('--preinst', type=Path, help='Optional original preinst for before/after comparison')
+    parser.add_argument('--legacy-self-deleted', action='store_true',
+                        help='Model original postinst deletion of two still-tracked payload entries')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     version = subprocess.check_output([str(args.opkg), '--version'], text=True).strip()

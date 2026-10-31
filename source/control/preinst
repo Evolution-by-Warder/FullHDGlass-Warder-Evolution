@@ -2,6 +2,20 @@
 set -u
 
 WARDER_PACKAGE_ID=enigma2-plugin-skins-fullhdglass-warder-evolution
+# The original installer deletes these two payload files but leaves them in
+# its opkg file list. Restore only missing, explicitly tracked legacy entries
+# so opkg can prune them without ENOENT. Never overwrite files or symlinks.
+warder_prepare_legacy_obsolete_files() {
+    warder_old_list="$1/enigma2-skin-fullhdglass17.list"
+    [ -f "$warder_old_list" ] && [ ! -L "$warder_old_list" ] || return 0
+    for warder_obsolete in /tmp/plugin-17.py /usr/lib/enigma2/python/Screens/Menu-new17-38.py; do
+        if awk -v path="$warder_obsolete" '$1 == path { found = 1 } END { exit !found }' "$warder_old_list" &&
+           [ ! -e "$warder_obsolete" ] && [ ! -L "$warder_obsolete" ]; then
+            (set -C; umask 077; : > "$warder_obsolete") || return 1
+        fi
+    done
+    return 0
+}
 # opkg/libsolv treats a differently named replacement as an upgrade and calls
 # this preinst before the old postrm. The owner-supplied r12.2 postrm exits
 # immediately for upgrade. Original 9.50 needs an exact verified upgrade guard.
@@ -18,7 +32,8 @@ warder_verified_r12_upgrade() {
             warder_hook_sha=$(sha256sum "$warder_old_postrm" 2>/dev/null | awk '{print $1}')
             case "$warder_hook_sha:${2:-}" in
                 d830f49a50c719a877aeb059c2f62e04105db1d3d9affbe467f8d2ae2788731d:9.50-r12.2|221154b0da30c99aae9ebbde247b29ed8462ee29bd2eaf30b3897e623d7e4b55:9.50)
-                    return 0 ;;
+                    warder_prepare_legacy_obsolete_files "$warder_info"
+                    return $? ;;
                 f83221f89db5b50fb3b6ad6b8cb21ace89d195f9f5cc8a71543432a4f600c96a:9.50)
                     # Keep the complete original remove behavior. Add only an
                     # upgrade-family early exit to this exact known remover.
@@ -30,7 +45,8 @@ warder_verified_r12_upgrade() {
                     } > "$warder_hook_tmp") &&
                        [ "$(sha256sum "$warder_hook_tmp" 2>/dev/null | awk '{print $1}')" = 221154b0da30c99aae9ebbde247b29ed8462ee29bd2eaf30b3897e623d7e4b55 ] &&
                        chmod 755 "$warder_hook_tmp" && mv -f "$warder_hook_tmp" "$warder_old_postrm"; then
-                        return 0
+                        warder_prepare_legacy_obsolete_files "$warder_info"
+                        return $?
                     fi
                     rm -f "$warder_hook_tmp"
                     return 1 ;;

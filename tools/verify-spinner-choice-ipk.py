@@ -10,7 +10,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '1.0.50-test2'
+VERSION = '1.0.50-test3'
 PACKAGE = ROOT / ('packages/test/enigma2-plugin-skins-fullhdglass_' + VERSION + '_all.ipk')
 PREFIX = 'usr/share/enigma2/hd_glass17/'
 PLUGIN = 'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/'
@@ -19,6 +19,13 @@ PLUGIN = 'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/'
 def main():
     expected_feeds = json.loads((ROOT / 'packages/test/spinner-choice-feed-isolation.json').read_text())
     assert expected_feeds == {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in ROOT.glob('update*.json')}
+    with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar', 'p', str(PACKAGE), 'control.tar.gz'])), mode='r:gz') as archive:
+        control_files = {m.name.removeprefix('./'): m for m in archive if m.isfile()}
+        metadata = archive.extractfile(control_files['control']).read().decode()
+        assert ('Version: ' + VERSION + '-1\n') in metadata
+        preinst = archive.extractfile(control_files['preinst']).read()
+        assert preinst == (ROOT / 'source/control/preinst').read_bytes()
+        assert b'warder_prepare_legacy_obsolete_files' in preinst
     with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar', 'p', str(PACKAGE), 'data.tar.gz'])), mode='r:gz') as archive:
         files = {m.name.removeprefix('./'): m for m in archive if m.isfile()}
         assert PREFIX + 'skin.xml' in files
