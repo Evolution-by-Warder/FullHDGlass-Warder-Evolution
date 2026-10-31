@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "source": "Owner relayed a forum user's receiver report in chat",
+  "receiver": {
+    "model": "VU+ Uno 4K SE",
+    "image": "OpenATV 7.6",
+    "second_receiver": true
+  },
+  "results": {
+    "FullHDGlass": {
+      "initial_gui_install_or_upgrade": "Did not become usable on first attempt",
+      "recovery": "Reinstallation through Telnet",
+      "user_reported_result": "Working after reinstall",
+      "previous_version": "Not supplied"
+    },
+    "GSU": {
+      "initial_upgrade": "Succeeded and replaced previous version",
+      "user_reported_result": "Working"
+    },
+    "PiconHub": {
+      "initial_upgrade": "Did not replace the original Chocholousek plugin on first attempt",
+      "recovery": "Reinstallation through Telnet",
+      "user_reported_result": "Working after reinstall",
+      "legacy_version": "Not supplied"
+    }
+  },
+  "interpretation": {
+    "evidence_type": "User-reported operation on this receiver and image; not a comprehensive compatibility certification",
+    "installation_migration_issue_reported": true,
+    "root_cause_confirmed": false,
+    "transaction_log_available": false
+  },
+  "pending": [
+    "Review migration from legacy FullHDGlass during a future functional change",
+    "Review PiconHub migration from the original Chocholousek plugin; obtain transaction output if the issue recurs"
+  ],
+  "scope": {
+    "new_ipk": false,
+    "runtime_changed": false,
+    "trezor_changed": false
+  }
+}

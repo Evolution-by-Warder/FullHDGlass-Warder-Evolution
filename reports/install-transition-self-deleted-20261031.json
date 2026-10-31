@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "candidate": "1.0.50-test3",
+  "receiver_evidence": {
+    "baseline": "9.50-r12.2",
+    "image": "OpenATV 8.0.1",
+    "box": "GigaBlue Quad 4K Pro",
+    "errors": [
+      "missing /tmp/plugin-17.py",
+      "missing /usr/lib/enigma2/python/Screens/Menu-new17-38.py",
+      "Failed to determine obsolete files"
+    ],
+    "printed_target": "1.0.50-test1",
+    "user_supplied_download_target": "1.0.50-test2",
+    "download_label_mismatch": "The supplied Markdown label says test1 while its URL names test2; original receiver artifact identity is not independently established."
+  },
+  "cause": "The legacy postinst deletes two payload files without updating its installed-file list. opkg 0.10.0 reports ENOENT while pruning them, and may still return zero and install the payload.",
+  "fix": "On a verified original 9.50/r12.2 upgrade, recreate only these two allowlisted missing entries if tracked by the legacy .list; exclusive creation, no changes to existing files or symlinks. opkg removes them in its normal upgrade flow. No status database edits, force flags or receiver shell commands.",
+  "results": {
+    "before": [
+      {
+        "product": "skin",
+        "force": false,
+        "exit": 0,
+        "obsolete_errors": 3,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "skin",
+        "force": true,
+        "exit": 0,
+        "obsolete_errors": 3,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "picons",
+        "force": false,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "picons",
+        "force": true,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      }
+    ],
+    "after": [
+      {
+        "product": "skin",
+        "force": false,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "skin",
+        "force": true,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "picons",
+        "force": false,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "picons",
+        "force": true,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      }
+    ],
+    "950-after": [
+      {
+        "product": "skin",
+        "force": false,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "skin",
+        "force": true,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "picons",
+        "force": false,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      },
+      {
+        "product": "picons",
+        "force": true,
+        "exit": 0,
+        "obsolete_errors": 0,
+        "payload_matches": true,
+        "settings_unchanged": true
+      }
+    ]
+  },
+  "limits": "Real opkg with minimal payload, actual rewritten legacy hooks and the legacy postinst deletion side effect. Not a complete receiver installation.",
+  "stable_feeds_changed": false
+}

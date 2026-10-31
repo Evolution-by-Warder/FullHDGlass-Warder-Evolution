@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "version": "1.0.50-test1",
+  "package": "enigma2-plugin-skins-fullhdglass_1.0.50-test1_all.ipk",
+  "bytes": 16574920,
+  "sha256": "bc6295cdf1c1b64ac4463f8680d7b587deefc48954663ffc8c126299d02837a7",
+  "packaged_frame_hashes_verified": true,
+  "packaged_helper_switches_both_directions": true,
+  "updater_manifests_unchanged": true,
+  "system_spinner_replaced": false,
+  "receiver_test": false,
+  "date": "2026-10-31",
+  "state": "published-prerelease-awaiting-receiver-test",
+  "source_commit": "dd233e61d31050949bcd5fb2c4768dc411524f5a",
+  "implementation_commit": "5b62d9087a82bc50e9994b33e0b110609ee85a10",
+  "release_tag": "spinner-choice-1.0.50-test1",
+  "package_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/spinner-choice-1.0.50-test1/enigma2-plugin-skins-fullhdglass_1.0.50-test1_all.ipk",
+  "payload_files": 1483,
+  "workflow_run": 41191846336,
+  "compatibility_job": 124510054584,
+  "candidate_job": 124510120440,
+  "workflow_conclusion": "success",
+  "public_download_byte_identical_to_independently_verified_local_package": true,
+  "release_asset_names": [
+    "enigma2-plugin-skins-fullhdglass_1.0.50-test1_all.ipk",
+    "enigma2-plugin-skins-fullhdglass_1.0.50-test1_all.ipk.sha256"
+  ],
+  "feed_versions_unchanged": {
+    "production": "1.0.49",
+    "native_test": "1.0.49",
+    "legacy_bridge": "1.0.18"
+  },
+  "scope": "Spinner selector and bakussa artwork only. Deferred compound-artist fix remains pending for the next production release.",
+  "original_bakussa_zip_archived_unchanged_at_owner_request": true
+}

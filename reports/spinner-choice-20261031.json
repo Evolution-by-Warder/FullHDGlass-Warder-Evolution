@@ -2,20 +2,37 @@
   "schema": 1,
   "date": "2026-10-31",
   "product": "FullHDGlass",
-  "state": "prepared-source-not-released",
+  "state": "source-available-as-isolated-receiver-test",
   "branch": "feature/spinner-choice-20261031",
   "base_commit": "f7fb5fefd69649824468c6fa99318e7dfc28964e",
   "public_version_unchanged": "1.0.49",
-  "new_ipk_created": false,
+  "new_ipk_created": true,
   "production_feeds_changed": false,
   "trezor_changed": false,
-  "approved_menu_entries_sk": ["Holubica", "HDGlass - bakussa"],
+  "approved_menu_entries_sk": [
+    "Holubica",
+    "HDGlass - bakussa"
+  ],
   "contributor": "bakussa",
   "source_archive": "assets/warder/downloads/ui/spinners/bakussa-original.zip",
   "source_archive_sha256": "47f12b9654349e3bfe909111a5bfdbd260954f311a251b079cf3d1f53848f3ee",
   "themes": {
-    "dove": {"frames": 18, "size": [128, 88], "decoded_32bit_surface_bytes": 45056},
-    "bakussa": {"frames": 20, "size": [104, 104], "decoded_32bit_surface_bytes": 43264}
+    "dove": {
+      "frames": 18,
+      "size": [
+        128,
+        88
+      ],
+      "decoded_32bit_surface_bytes": 45056
+    },
+    "bakussa": {
+      "frames": 20,
+      "size": [
+        104,
+        104
+      ],
+      "decoded_32bit_surface_bytes": 43264
+    }
   },
   "behavior": {
     "default_dove_byte_preserved": true,
@@ -49,5 +66,8 @@
     "existing_dove": "previously confirmed by owner",
     "bakussa_and_selection": "pending; desktop checks are not a framebuffer/device test"
   },
-  "next_release": "Include pending compound-artist fix 95990e2dd78a29a1070b48dab28517342754c7f5 when a new release is authorized."
+  "next_release": "Include pending compound-artist fix 95990e2dd78a29a1070b48dab28517342754c7f5 when a new release is authorized.",
+  "source_commit": "5b62d9087a82bc50e9994b33e0b110609ee85a10",
+  "test_version": "1.0.50-test1",
+  "test_release": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/spinner-choice-1.0.50-test1"
 }

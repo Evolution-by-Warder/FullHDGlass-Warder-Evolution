@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "source_commit": "8aed0b1cbbd6b97868d20b8463d472745a679bb0",
+  "asset_tree": "62b64a87160db02d80b5b783cafd8fb7061dee10",
+  "entries": 154,
+  "individual_zip_archives": true,
+  "static_thumbnails": true,
+  "scope": "Publish the already verified assets at the runtime's main-branch URL for the owner-authorized spinner test. Runtime source, stable feeds and existing IPK bytes are unchanged.",
+  "test_release": "install-spinners-1.0.50-test3",
+  "receiver_validation": "pending"
+}

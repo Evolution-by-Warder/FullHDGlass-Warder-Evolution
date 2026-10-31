@@ -23,7 +23,8 @@
     "confirmed_cause": "Generated static eLabel version values inside plugin.py and warderDialogSkins.py were not synchronized when the TEST version file changed. The public IPK runtime version is 1.0.50-test4.",
     "fix": "Synchronize only the native header version eLabels from the runtime version file during TEST preparation. Stable and TEST builders reject mismatches. Existing source dialog labels synchronized to current source 1.0.49.",
     "verification": "The new checker rejects the actual published TEST4 header texts. In an isolated extraction, synchronization fixes 10 plugin header labels and 3 dialog labels; all other source text is byte-identical after masking version label values. Idempotence and subsequent stable-version synchronization verified.",
-    "new_ipk_for_this_cosmetic_fix": false
+    "new_ipk_for_this_cosmetic_fix": false,
+    "fix_commit": "07b1d4e93f5937cb964bc5e4bfa3651a0ddd4801"
   },
   "stable_feeds_changed": false,
   "published_test4_bytes_changed": false
