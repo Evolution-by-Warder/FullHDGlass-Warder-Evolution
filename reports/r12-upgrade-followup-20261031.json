@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "status": "receiver-installation-incomplete-confirmed",
+  "receiver": "Vu+ Uno 4K SE",
+  "reported_image": "OpenATV 8.0.1",
+  "evidence": "Owner-forwarded screenshot hd glass.jpg",
+  "opkg_version": "0.10.0",
+  "libsolv_version": "0.7.40",
+  "legacy_status_output": "No output for opkg status enigma2-skin-fullhdglass17",
+  "native_package": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "native_version": "1.0.47-1",
+  "native_status": "install ok half-installed",
+  "skin_file_check": "Command is visible at the prompt without a result; file existence is not yet proven by this screenshot.",
+  "confirmed": "The native package installation did not complete. The screenshot alone does not identify the failing command or transaction stage.",
+  "legacy_removal_hypothesis": "Still unconfirmed for this receiver; isolated legacy-hook findings remain documented separately.",
+  "next_read_only_checks": [
+    "ls -l /usr/share/enigma2/hd_glass17/skin.xml",
+    "df -h / /tmp"
+  ],
+  "recovery_candidate": "After confirming filesystem state/space, reinstall the current verified short 1.0.49 IPK through Telnet and retain its complete console output. Do not bypass dependency/space checks or edit the package status database.",
+  "versions_or_feeds_changed": false,
+  "new_ipk": false,
+  "trezor_accessed": false
+}

@@ -27,3 +27,7 @@ Current replacement metadata also matches legacy 9.50-r12.2, while the 1.0.18 br
 Await read-only receiver outputs: `opkg --version`; `opkg status enigma2-skin-fullhdglass17`; `opkg status enigma2-plugin-skins-fullhdglass-warder-evolution`; `ls -l /usr/share/enigma2/hd_glass17/skin.xml`.
 
 Evidence: `reports/r12-upgrade-analysis-20261031.json`. No runtime/package/feed changes or new IPK were made for this investigation. The pending compound-artist fix above remains deferred.
+
+### Receiver status follow-up
+
+Screenshot `hd glass.jpg` shows opkg 0.10.0 / libsolv 0.7.40 and native FullHDGlass **1.0.47-1** in **install ok half-installed** state. The legacy status query printed nothing. The final skin.xml `ls` command is visible at the prompt without an execution result, so file existence remains unconfirmed. Installation incompleteness is confirmed; the original failure cause and exact transaction stage are still unknown. Request the completed `ls` and `df -h / /tmp` output before further diagnosis. See `reports/r12-upgrade-followup-20261031.json`.
