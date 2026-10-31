@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "owner-approved",
+  "approved_on": "2026-10-31",
+  "path": "usr/share/enigma2/hd_glass17/warder-dab-information.png",
+  "bytes": 1696682,
+  "sha256": "46fb05746ce2dd5503768f4e158e9adbe7c076f3361f98381c0ee135c4c5576f",
+  "dimensions": [
+    1448,
+    1086
+  ],
+  "creation": "Built-in ImageGen; generated preview accepted by owner. Original generated PNG copied unchanged.",
+  "prompt": "Static 4:3 DAB fallback; dark navy, blue and amber radio theme, silver transmission symbol and DAB+ only, clear lower area for native translated information caption.",
+  "caption_key": "DAB+ information",
+  "caption_font": "Regular;24",
+  "behavior": "DAB only. Native station slideshow replaces this fallback. No repeated image decode while unchanged; no animation, network lookup or extra cache."
+}

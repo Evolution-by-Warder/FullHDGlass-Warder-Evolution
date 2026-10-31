@@ -1,9 +1,9 @@
-# FullHDGlass 1.0.48
+# FullHDGlass 1.0.49
 
-- **DAB/DAB+:** obrázky vysielané stanicou sa zobrazujú hore a obal aktuálnej skladby samostatne pod nimi.
+- **DAB+ informácie:** keď stanica neposiela obrázky, horné okno zobrazuje vlastnú predvolenú grafiku s označením podľa jazyka prostredia.
+- **Automatické prepínanie:** prijatý DAB obrázok nahradí predvolenú grafiku; obal skladby zostáva v samostatnom spodnom okne.
 - **Satelitné a IPTV rádiá:** zachované pôvodné jedno okno pre obal, jeho veľkosť aj umiestnenie.
-- **Čistejšia hlavička nastavení:** názvy rubrík, napríklad História, sa už nezobrazujú pod dátumom.
 
-Zachovaný opravený spinner, prehľadná História aj označenie režimu rádia.
+Obsahuje aj čistejšiu hlavičku nastavení, opravený spinner a prehľadnú Históriu.
 
 Po aktualizácii reštartovať GUI.

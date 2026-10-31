@@ -1,12 +1,9 @@
 # FullHDGlass release work
 
-The owner authorized publishing the prepared DAB dual-artwork and settings-header cleanup together as FullHDGlass 1.0.48 on 31 October 2026. The earlier instruction to hold publication is superseded.
+The owner authorized the approved DAB+ information fallback as production 1.0.49, replacing 1.0.48 in the normal updater. The owner was informed of the version increment and replied OK.
 
-- DAB slideshow above an independent current-song cover.
-- Original single-window arrangement retained for satellite and IPTV radio.
-- Section names removed from settings headers; logo, date, time and version retain their positions.
-- Existing spinner, compact History, translated radio-mode caption and approved graphics retained.
+The approved fallback appears only when a DAB station has no picture. Its information caption follows the environment language. Received broadcast pictures replace it automatically. There are no new animations, internet requests or cache writes for the default picture, and an unchanged default is decoded only once.
 
-Release approval: `docs/PRODUCTION-APPROVAL.json`; publication evidence is recorded after public package verification. No further skin changes are pending in this note.
+This release retains the separate DAB slideshow and cover windows, original satellite/IPTV single cover window, settings-header cleanup, approved graphics, spinner and compact History.
 
-The corresponding History formatting work for GSU and PiconHub remains deferred to their next functional changes in their own repositories.
+No further skin changes are pending in this note. GSU/PiconHub History formatting remains deferred to their next functional changes in their own repositories.

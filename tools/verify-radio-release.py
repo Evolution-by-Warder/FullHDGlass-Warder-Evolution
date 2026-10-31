@@ -53,6 +53,13 @@ def digest_graphics():
         path=PAYLOAD/entry['path']
         assert hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256']
         pinned.add(path)
+    fallback_record=ROOT/'design/radio-dab-split/fallback.json'
+    if fallback_record.exists():
+        fallback=json.loads(fallback_record.read_text())
+        assert fallback['path']=='usr/share/enigma2/hd_glass17/warder-dab-information.png'
+        asset=PAYLOAD/fallback['path']
+        assert asset.is_file() and hashlib.sha256(asset.read_bytes()).hexdigest()==fallback['sha256']
+        pinned.add(asset)
     digest = hashlib.sha256()
     for path in sorted(PAYLOAD.rglob("*")):
         if path==header or path in pinned:continue  # Independently pinned settings-only addition; the radio baseline stays frozen.

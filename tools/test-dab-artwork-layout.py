@@ -27,6 +27,7 @@ def load(name, filename):
 
 
 class Widget:
+    alignCenter = 1
     def __init__(self, parent=None):
         self.position = (0, 0)
         self.dimensions = (420, 700)
@@ -39,6 +40,12 @@ class Widget:
     def show(self): self.visible = True
     def setTransparent(self, value): pass
     def setBackgroundColor(self, value): pass
+    def setForegroundColor(self, value): pass
+    def setNoWrap(self, value): pass
+    def setFont(self, value): self.font = value
+    def setHAlign(self, value): pass
+    def setVAlign(self, value): pass
+    def setText(self, value): self.text = value
     def setPixmap(self, value): self.pictures.append(value)
     def size(self):
         return SimpleNamespace(width=lambda: self.dimensions[0], height=lambda: self.dimensions[1])
@@ -81,8 +88,10 @@ class DabArtworkTests(unittest.TestCase):
                                        rdsDecoder=lambda: None)
         self.nav = SimpleNamespace(getCurrentlyPlayingServiceReference=lambda: self.reference,
                                    getCurrentService=lambda: self.service)
+        self.config = SimpleNamespace(osd=SimpleNamespace(language=SimpleNamespace(value='sk_SK')))
         native = SimpleNamespace(eLabel=Widget, ePixmap=Widget, ePoint=lambda x,y:(x,y),
                                  eSize=lambda w,h:(w,h), eTimer=Timer, ePicLoad=Decoder,
+                                 gFont=lambda *args:args,
                                  eServiceReference=SimpleNamespace(idServiceDAB=4115),
                                  iRdsDecoder=SimpleNamespace(RadioText=1),
                                  iServiceInformation=SimpleNamespace(sTagPreviewImage=3))
@@ -92,6 +101,7 @@ class DabArtworkTests(unittest.TestCase):
             'NavigationInstance': SimpleNamespace(instance=self.nav),
             'Components.Renderer.Renderer': SimpleNamespace(Renderer=Renderer),
             'Components.Converter.WarderRadioMetadata': SimpleNamespace(current_song=lambda *args:('Artist', 'Song')),
+            'Components.config': SimpleNamespace(config=self.config),
         })
         self.modules.start(); self.addCleanup(self.modules.stop)
         # Load the same native cover logic that is shipped to receivers.
@@ -102,6 +112,9 @@ class DabArtworkTests(unittest.TestCase):
         self.compact = load('dab_test_compact', PYTHON / 'Components/Renderer/WarderRadioCompactArtwork.py')
         self.compact_name = patch.dict(sys.modules, {'Components.Renderer.WarderRadioCompactArtwork': self.compact})
         self.compact_name.start(); self.addCleanup(self.compact_name.stop)
+        self.ui = load('dab_information_text', PLUGIN / 'warderUiText.py')
+        self.ui_name = patch.dict(sys.modules, {'Plugins.Extensions.setupGlass17.warderUiText':self.ui})
+        self.ui_name.start(); self.addCleanup(self.ui_name.stop)
         self.slides = load('dab_test_slides', PYTHON / 'Components/Renderer/WarderRadioDabSlideshow.py')
 
     def make_cover(self):
@@ -112,6 +125,7 @@ class DabArtworkTests(unittest.TestCase):
 
     def make_slideshow(self):
         slideshow = self.slides.WarderRadioDabSlideshow()
+        slideshow.FALLBACK_ARTWORK = str(PYTHON.parents[2]/'share/enigma2/hd_glass17/warder-dab-information.png')
         slideshow.skinAttributes = [('position','316,146'), ('size','420,340')]
         slideshow.applySkin(None, None)
         slideshow.postWidgetCreate(Widget())
@@ -156,6 +170,7 @@ class DabArtworkTests(unittest.TestCase):
             self.assertEqual(cover.instance.position+cover.instance.dimensions, expected)
 
     def test_slideshow_stays_hidden_outside_dab_and_never_decodes_song_placeholders(self):
+        self.reference.type = 1
         slideshow = self.make_slideshow()
         self.assertFalse(slideshow.instance.visible)
         self.assertIsNone(slideshow._picload)
@@ -171,8 +186,10 @@ class DabArtworkTests(unittest.TestCase):
         cover, slideshow = self.make_cover(), self.make_slideshow()
         cover._poll(); slideshow._poll()
         cover._request.assert_called_once()
-        self.assertFalse(slideshow.instance.visible)
-        self.assertIsNone(slideshow._picload)
+        self.assertEqual(slideshow._picload.path, slideshow.FALLBACK_ARTWORK)
+        slideshow._picload.finish()
+        self.assertTrue(slideshow.instance.visible)
+        self.assertEqual(slideshow._caption.text,'DAB+ informácie')
 
     def test_unchanged_slides_are_not_redecoded_but_same_path_updates_are(self):
         slideshow = self.make_slideshow()
@@ -203,8 +220,44 @@ class DabArtworkTests(unittest.TestCase):
         self.preview = ''
         slideshow._poll()
         self.assertIsNone(slideshow._fitReady)
-        self.assertIsNone(slideshow._picload)
+        self.assertEqual(slideshow._picload.path, slideshow.FALLBACK_ARTWORK)
         self.assertEqual(slideshow.instance.pictures, [])
+
+    def test_fallback_is_decoded_once_until_a_broadcast_slide_arrives_or_disappears(self):
+        self.preview = ''
+        slideshow = self.make_slideshow()
+        slideshow._picload.finish()
+        with patch.object(slideshow,'_showPath',wraps=slideshow._showPath) as show:
+            for _ in range(30):slideshow._poll()
+            show.assert_not_called()
+            self.preview = str(self.slide)
+            slideshow._poll();self.flush(slideshow)
+            self.assertFalse(slideshow._caption.visible)
+            self.assertEqual(slideshow._picload.path,str(self.slide))
+            self.preview = ''
+            slideshow._poll()
+            self.assertEqual(slideshow._picload.path,slideshow.FALLBACK_ARTWORK)
+            self.assertTrue(slideshow._caption.visible)
+            for _ in range(30):slideshow._poll()
+            self.assertEqual(show.call_count,2)
+
+    def test_active_language_changes_only_the_native_caption_not_the_bitmap(self):
+        self.preview = ''
+        slideshow = self.make_slideshow()
+        with patch.object(slideshow,'_showPath',wraps=slideshow._showPath) as show:
+            for locale,expected in [('sk_SK','DAB+ informácie'),('cs_CZ','DAB+ informace'),('de_DE','DAB+ Informationen'),('en_GB','DAB+ information')]:
+                self.config.osd.language.value=locale;slideshow._poll()
+                self.assertEqual(slideshow._caption.text,expected)
+            show.assert_not_called()
+
+    def test_all_translated_information_captions_fit_the_default_image(self):
+        from PIL import ImageFont
+        font=ImageFont.truetype(str(ROOT/'source/package-root/usr/share/fonts/prive7.ttf'),24)
+        for code in self.ui.TEXT:
+            if 'Radio mode' not in self.ui.TEXT[code]:continue
+            self.config.osd.language.value=code+'_XX'
+            self.assertIn('DAB+ information',self.ui.TEXT[code])
+            self.assertLessEqual(font.getlength(self.ui.ui_text('DAB+ information')),396)
 
     def test_portrait_and_square_images_fit_without_overlapping_the_two_slots(self):
         top, bottom = (316,146,420,340), (316,506,420,340)
@@ -227,6 +280,12 @@ class DabArtworkTests(unittest.TestCase):
 
 
 class PinnedLayoutTests(unittest.TestCase):
+    def test_default_information_bitmap_is_the_exact_approved_original(self):
+        record=json.loads((ROOT/'design/radio-dab-split/fallback.json').read_text())
+        path=ROOT/'source/package-root'/record['path']
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),record['sha256'])
+        with Image.open(path) as image:self.assertEqual(list(image.size),record['dimensions'])
+
     def test_only_two_reviewed_radio_screens_gain_the_one_extra_slideshow_widget(self):
         record = json.loads((ROOT/'design/radio-dab-split/layout.json').read_text())
         text = (ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()

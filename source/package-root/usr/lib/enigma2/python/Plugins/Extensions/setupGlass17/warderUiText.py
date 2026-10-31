@@ -118,3 +118,7 @@ for _lang, _selection in {'sk': 'Máš zvolené', 'cs': 'Máš zvoleno', 'en': '
 # Radio header follows the same active-OSD translation resolver as settings.
 for _lang, _radio_mode in {'al': 'Mënyra radio', 'cs': 'Režim rádia', 'de': 'Radiomodus', 'en': 'Radio mode', 'es': 'Modo radio', 'et': 'Raadiorežiim', 'fa': 'حالت رادیو', 'fr': 'Mode radio', 'hu': 'Rádió üzemmód', 'it': 'Modalità radio', 'lt': 'Radijo režimas', 'nl': 'Radiomodus', 'pl': 'Tryb radia', 'pt': 'Modo rádio', 'ro': 'Mod radio', 'ru': 'Режим радио', 'sk': 'Režim rádia', 'tr': 'Radyo modu', 'uk': 'Режим радіо', 'zh': '收音机模式'}.items():
     TEXT.setdefault(_lang, {})["Radio mode"] = _radio_mode
+
+# Native caption stays translatable; the approved bitmap contains only DAB+.
+for _lang, _dab_information in {'al': 'Informacione DAB+', 'cs': 'DAB+ informace', 'de': 'DAB+ Informationen', 'en': 'DAB+ information', 'es': 'Información DAB+', 'et': 'DAB+ teave', 'fa': 'اطلاعات DAB+', 'fr': 'Informations DAB+', 'hu': 'DAB+ információk', 'it': 'Informazioni DAB+', 'lt': 'DAB+ informacija', 'nl': 'DAB+ informatie', 'pl': 'Informacje DAB+', 'pt': 'Informações DAB+', 'ro': 'Informații DAB+', 'ru': 'Информация DAB+', 'sk': 'DAB+ informácie', 'tr': 'DAB+ bilgileri', 'uk': 'Інформація DAB+', 'zh': 'DAB+ 信息'}.items():
+    TEXT.setdefault(_lang, {})["DAB+ information"] = _dab_information

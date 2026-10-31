@@ -1,10 +1,10 @@
 {
   "enabled": true,
-  "version": "1.0.48",
-  "expected_main_sha": "21e6fae69e4065ff63510d7d7c346a557b66d6d3",
-  "authorization": "Owner explicitly requested publishing both prepared changes as a normal new production version: independent DAB slideshow and current-song cover, and removal of redundant settings section names below the date. Original satellite/IPTV single-window geometry must remain. This supersedes the earlier release hold.",
-  "changelog": "V DAB režime sa obrázky stanice a obal skladby zobrazujú samostatne. Čistejšia hlavička nastavení bez názvov rubrík pod dátumom.",
-  "receiver_validation": "Owner confirmed the spinner and compact History in 1.0.47 on their receiver. DAB dual artwork and header-title removal pass automated controller/layout checks; physical receiver confirmation of those two new changes is pending.",
+  "version": "1.0.49",
+  "expected_main_sha": "46412809b5abd813c1e86b8bb74dfbc43b15f25d",
+  "authorization": "Owner accepted the generated DAB+ information fallback and requested replacing the old version with the updated release. Since 1.0.48 was already publicly published, the owner was informed that 1.0.49 will replace it in the updater and replied OK. Existing DAB dual windows, original satellite/IPTV single-window layout and settings-header cleanup remain included.",
+  "changelog": "Predvolená grafika DAB+ informácií pri chýbajúcom obrázku stanice. Prijaté DAB obrázky ju automaticky nahradia.",
+  "receiver_validation": "Owner confirmed spinner and compact History in 1.0.47. DAB dual artwork, section-title removal and the new fallback are automatically checked. Owner approved the generated fallback preview; physical receiver confirmation of these newer changes is pending.",
   "approved_on": "2026-10-31",
   "reuse_verified_preview_archives": true
 }
