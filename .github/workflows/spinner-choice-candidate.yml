@@ -1,0 +1,84 @@
+name: FullHDGlass spinner choice test package
+on:
+  push:
+    branches: [test/spinner-choice-1.0.50-test1]
+    paths:
+      - .github/workflows/spinner-choice-candidate.yml
+      - tools/prepare-spinner-choice-test.py
+      - tools/verify-spinner-choice-ipk.py
+      - docs/SPINNER-CHOICE-TEST-20261031.md
+permissions:
+  contents: read
+concurrency:
+  group: warder-spinner-choice-candidate
+  cancel-in-progress: true
+jobs:
+  openatv-compatibility:
+    uses: ./.github/workflows/verify-system-screen-compatibility.yml
+  candidate:
+    needs: openatv-compatibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            docs
+            design
+            reports
+            assets/warder/downloads/ui/icon-set-previews
+            assets/warder/downloads/ui/spinners
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Install build dependencies
+        run: |
+          python -m pip install --quiet 'Pillow==11.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Check spinner selection and preserved settings
+        run: |
+          python tools/test-spinner-choice.py -v
+          python tools/test-spinner-candidate.py -q
+          python tools/test-setup-style.py -q
+          python tools/test-settings-batch.py -q
+          python tools/test-history-radio-header.py -q
+          python tools/test-package-transition.py -q
+          python tools/test-release-bytecode.py
+          python tools/test-runtime-safety.py
+          python tools/verify-radio-release.py
+      - name: Build isolated test IPK and verify every installed byte
+        run: |
+          python tools/prepare-spinner-choice-test.py
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          python tools/verify-spinner-choice-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-spinner-choice-test
+          path: packages/test/*
+          retention-days: 30
+      - name: Publish one short test IPK without changing updater feeds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PACKAGE="packages/test/enigma2-plugin-skins-fullhdglass_1.0.50-test1_all.ipk"
+          TAG="spinner-choice-1.0.50-test1"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/warder-spinner-choice-immutable
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/warder-spinner-choice-immutable
+            cmp "$PACKAGE" "/tmp/warder-spinner-choice-immutable/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" \
+              --target "$GITHUB_SHA" --prerelease --latest=false \
+              --title "FullHDGlass 1.0.50-test1: výber spinnera" \
+              --notes-file docs/SPINNER-CHOICE-TEST-20261031.md
+          fi
