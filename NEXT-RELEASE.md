@@ -1,9 +1,19 @@
-# FullHDGlass release work
+# Pending next FullHDGlass release
 
-The owner authorized the approved DAB+ information fallback as production 1.0.49, replacing 1.0.48 in the normal updater. The owner was informed of the version increment and replied OK.
+## Shared radio metadata recognition
 
-The approved fallback appears only when a DAB station has no picture. Its information caption follows the environment language. Received broadcast pictures replace it automatically. There are no new animations, internet requests or cache writes for the default picture, and an unchanged default is decoded only once.
+Prepared on branch `fix/radio-compound-artist-20261031`. Merge that pending source into the next authorized release before publishing.
 
-This release retains the separate DAB slideshow and cover windows, original satellite/IPTV single cover window, settings-header cleanup, approved graphics, spinner and compact History.
+**Do not create a new version or IPK solely for this change.** The owner explicitly requested holding publication on 31 October 2026. Production remains 1.0.49; updater manifests and package controls remain unchanged.
 
-No further skin changes are pending in this note. GSU/PiconHub History formatting remains deferred to their next functional changes in their own repositories.
+A receiver supplied `KARMEN PAL - BALAZ-Pustam ta`. The old parser split it into `KARMEN PAL` and `BALAZ-Pustam ta`; the fix recognizes the verified complete artist Karmen Pál-Baláž and the separate title Pustam ta. It applies to both full stream titles and already separated native artist/title tags.
+
+The shared helper is used by cover and lyrics lookup. Exact recording identity, guest credits and Live/Remix suffixes remain enforced. Unknown hyphenated names retain the old conservative parsing rules. The malformed negative cache is left intact and no longer blocks the repaired identity.
+
+Validation: 121 lyrics/artwork checks and 79 stream metadata checks passed. Live lookup from the original malformed pair returned a verified 600×600 cover and 1,259 characters of original lyrics from Hudba.sk. Only metadata, counts and text hashes are stored; no lyrics are published. Physical receiver confirmation of the pending fix is not claimed.
+
+Public release description: Presnejšie rozpoznávanie zložených mien interpretov pri vyhľadávaní obalov a textov piesní.
+
+GSU/PiconHub History formatting remains deferred to their next functional changes in their own repositories.
+
+Pending source commit: `95990e2dd78a29a1070b48dab28517342754c7f5`.

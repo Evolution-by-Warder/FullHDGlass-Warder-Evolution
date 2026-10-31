@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "status": "prepared-not-released",
+  "date": "2026-10-31",
+  "production_version": "1.0.49",
+  "source_baseline": "6f69cc4d631e5f3bf40c4e98a318e365214561e5",
+  "pending_branch": "fix/radio-compound-artist-20261031",
+  "owner_instruction": "Investigate missing artwork and lyrics for the attached radio metadata. Owner explicitly requested no immediate new release.",
+  "reported_stream_title": "KARMEN PAL - BALAZ-Pustam ta",
+  "before_parse": [
+    "KARMEN PAL",
+    "BALAZ-Pustam ta"
+  ],
+  "after_parse": [
+    "Karmen Pál-Baláž",
+    "Pustam ta"
+  ],
+  "cause": "A spaced internal artist-name hyphen was preferred over the unspaced actual artist/title separator. Both cover and lyrics received the truncated artist and title prefixed by the surname tail.",
+  "repair_scope": "Shared verified full compound-artist prefix recognition and native-pair repair; no global last-hyphen heuristic, no dropped guests or version suffixes. Covers, ICY, native tags and lyrics share the same helper.",
+  "identity_sources": [
+    "https://music.apple.com/sk/album/p%C3%BA%C5%A1%C5%A5am-%C5%A5a-single/1483051097",
+    "https://music.apple.com/sk/song/1483150807",
+    "https://hudba.zoznam.sk/karmen-pal-balaz/piesen/pustam-ta/"
+  ],
+  "live_before": [
+    {
+      "kind": "cover",
+      "case": "screen",
+      "artist": "KARMEN PAL",
+      "title": "BALAZ-Pustam ta",
+      "status": "no-exact-result",
+      "elapsed_ms": 6302,
+      "matches": []
+    },
+    {
+      "kind": "cover",
+      "case": "correct",
+      "artist": "Karmen Pál-Baláž",
+      "title": "Púšťam ťa",
+      "status": "found",
+      "elapsed_ms": 3024,
+      "matches": [
+        {
+          "artistName": "Karmen Pál-Baláž",
+          "trackName": "Púšťam ťa",
+          "collectionName": "Púšťam ťa - Single",
+          "trackId": 1483051226,
+          "collectionId": 1483051097,
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/c6/0f/eb/c60febd9-844c-04ce-57b5-6e9810edbe78/19UMGIM92159.rgb.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    {
+      "kind": "lyrics",
+      "case": "screen",
+      "artist": "KARMEN PAL",
+      "title": "BALAZ-Pustam ta",
+      "status": "offline",
+      "characters": 0,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_ms": 8889,
+      "sources_found": [],
+      "requests": [
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 502,
+          "elapsed_ms": 2495
+        },
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 4289
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 2497
+        },
+        {
+          "source": "supermusic",
+          "variant": 1,
+          "status": "not-found",
+          "elapsed_ms": 4395
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "http-error",
+          "http": 502,
+          "elapsed_ms": 2250
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 2611
+        },
+        {
+          "source": "hudba",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 4597
+        },
+        {
+          "source": "lrclib",
+          "variant": 3,
+          "status": "http-error",
+          "http": 502,
+          "elapsed_ms": 2469
+        },
+        {
+          "source": "supermusic",
+          "variant": 2,
+          "status": "not-found",
+          "elapsed_ms": 2941
+        }
+      ],
+      "lyrics_published": false
+    },
+    {
+      "kind": "lyrics",
+      "case": "correct",
+      "artist": "Karmen Pál-Baláž",
+      "title": "Púšťam ťa",
+      "status": "found",
+      "characters": 1259,
+      "text_sha256": "8b303aa409b8981db85a731d8465c3cecd69f6f75c33795e43eeb32c9d4f2b85",
+      "elapsed_ms": 4591,
+      "sources_found": [
+        "hudba"
+      ],
+      "requests": [
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "http-error",
+          "http": 502,
+          "elapsed_ms": 2496
+        },
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 4587
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "not-found",
+          "http": 404,
+          "elapsed_ms": 2922
+        },
+        {
+          "source": "supermusic",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "lrclib",
+          "variant": 2,
+          "status": "pending"
+        },
+        {
+          "source": "ovh",
+          "variant": 2,
+          "status": "pending"
+        }
+      ],
+      "lyrics_published": false
+    }
+  ],
+  "live_after": [
+    {
+      "image": {
+        "bytes": 98657,
+        "sha256": "48ee7313c20f906c8a0d4ab96286223c8a93ea50305d8d622494a4d3561d9be6",
+        "dimensions": [
+          600,
+          600
+        ]
+      },
+      "kind": "cover",
+      "case": "screen",
+      "artist": "Karmen Pál-Baláž",
+      "title": "Pustam ta",
+      "status": "found",
+      "elapsed_ms": 6002,
+      "matches": [
+        {
+          "artistName": "Karmen Pál-Baláž",
+          "trackName": "Púšťam ťa",
+          "collectionName": "Púšťam ťa - Single",
+          "trackId": 1483051226,
+          "collectionId": 1483051097,
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/c6/0f/eb/c60febd9-844c-04ce-57b5-6e9810edbe78/19UMGIM92159.rgb.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    {
+      "kind": "lyrics",
+      "case": "screen",
+      "artist": "KARMEN PAL",
+      "title": "BALAZ-Pustam ta",
+      "status": "found",
+      "characters": 1259,
+      "text_sha256": "8b303aa409b8981db85a731d8465c3cecd69f6f75c33795e43eeb32c9d4f2b85",
+      "elapsed_ms": 3459,
+      "resolved_artist": "Karmen Pál-Baláž",
+      "resolved_title": "Pustam ta",
+      "sources_found": [
+        "hudba"
+      ],
+      "requests": [
+        {
+          "source": "lrclib",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "hudba",
+          "variant": 1,
+          "status": "found",
+          "elapsed_ms": 3456
+        },
+        {
+          "source": "ovh",
+          "variant": 1,
+          "status": "pending"
+        },
+        {
+          "source": "supermusic",
+          "variant": 1,
+          "status": "pending"
+        }
+      ],
+      "lyrics_published": false
+    }
+  ],
+  "validation": {
+    "lyrics_artwork_tests": 121,
+    "stream_metadata_tests": 79,
+    "new_regression_tests": 6,
+    "negative_old_cache_preserved_and_bypassed": true,
+    "python39_syntax": "passed",
+    "receiver_tested": false
+  },
+  "version_files_changed": false,
+  "feeds_changed": false,
+  "ipk_built": false,
+  "published": false,
+  "lyrics_published": false
+}
