@@ -22,6 +22,20 @@
       "owner_comment": "8 a 9 je to isté.",
       "classification": "visual-duplicate-by-owner",
       "resolution": "Keep at most one of this pair in the final selection; representative not chosen yet."
+    },
+    {
+      "numbers": [
+        31
+      ],
+      "ids": [
+        "019-techkings-spinner-24"
+      ],
+      "titles": [
+        "Spinner 24"
+      ],
+      "owner_comment": "31 je taká tmavá a nevýrazná, že vôbec nie je vidieť.",
+      "classification": "too-dark-low-visibility",
+      "resolution": "Prepare a brighter, more visible variant for review before final selection."
     }
   ],
   "new_ipk_authorized": false
