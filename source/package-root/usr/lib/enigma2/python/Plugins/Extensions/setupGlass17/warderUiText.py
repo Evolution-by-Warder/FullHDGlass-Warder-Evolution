@@ -122,3 +122,33 @@ for _lang, _radio_mode in {'al': 'Mënyra radio', 'cs': 'Režim rádia', 'de': '
 # Native caption stays translatable; the approved bitmap contains only DAB+.
 for _lang, _dab_information in {'al': 'Informacione DAB+', 'cs': 'DAB+ informace', 'de': 'DAB+ Informationen', 'en': 'DAB+ information', 'es': 'Información DAB+', 'et': 'DAB+ teave', 'fa': 'اطلاعات DAB+', 'fr': 'Informations DAB+', 'hu': 'DAB+ információk', 'it': 'Informazioni DAB+', 'lt': 'DAB+ informacija', 'nl': 'DAB+ informatie', 'pl': 'Informacje DAB+', 'pt': 'Informações DAB+', 'ro': 'Informații DAB+', 'ru': 'Информация DAB+', 'sk': 'DAB+ informácie', 'tr': 'DAB+ bilgileri', 'uk': 'Інформація DAB+', 'zh': 'DAB+ 信息'}.items():
     TEXT.setdefault(_lang, {})["DAB+ information"] = _dab_information
+
+# Spinner names and help use the active environment language. Author nicknames
+# remain literal in the catalog.
+for _lang, (_dove, _help, _error) in {
+    'al': ('Pëllumbi', 'Zgjidh animacionin e pritjes. Ruaje për ta zbatuar pas rinisjes së GUI.', 'Animacioni nuk mund të ndryshohej. Skedarët ekzistues u ruajtën.'),
+    'cs': ('Holubice', 'Vyberte animaci čekání. Po uložení se použije po restartu GUI.', 'Animaci se nepodařilo změnit. Vaše původní soubory zůstaly zachovány.'),
+    'de': ('Taube', 'Wählen Sie die Warteanimation. Nach dem Speichern wird sie beim GUI-Neustart aktiviert.', 'Die Animation konnte nicht geändert werden. Ihre bisherigen Dateien wurden beibehalten.'),
+    'en': ('Dove', 'Choose the waiting animation. Save to apply it after a GUI restart.', 'The spinner could not be changed. Your existing files were preserved.'),
+    'es': ('Paloma', 'Elija la animación de espera. Guarde para aplicarla tras reiniciar la interfaz.', 'No se pudo cambiar la animación. Se conservaron sus archivos existentes.'),
+    'et': ('Tuvi', 'Valige ooteanimatsioon. Pärast salvestamist rakendub see kasutajaliidese taaskäivitamisel.', 'Animatsiooni ei saanud muuta. Olemasolevad failid säilitati.'),
+    'fa': ('کبوتر', 'پویانمایی انتظار را انتخاب کنید. پس از ذخیره و راه‌اندازی مجدد رابط اعمال می‌شود.', 'تغییر پویانمایی ممکن نشد. پرونده‌های موجود شما حفظ شدند.'),
+    'fr': ('Colombe', 'Choisissez l’animation d’attente. Enregistrez pour l’appliquer au redémarrage de l’interface.', 'L’animation n’a pas pu être modifiée. Vos fichiers existants ont été conservés.'),
+    'hu': ('Galamb', 'Válassza ki a várakozási animációt. Mentés után a kezelőfelület újraindításakor lép életbe.', 'Az animáció nem módosítható. A meglévő fájlok megmaradtak.'),
+    'it': ('Colomba', 'Scegli l’animazione di attesa. Salva per applicarla dopo il riavvio dell’interfaccia.', 'Impossibile cambiare l’animazione. I file esistenti sono stati conservati.'),
+    'lt': ('Balandis', 'Pasirinkite laukimo animaciją. Išsaugojus ji bus pritaikyta paleidus sąsają iš naujo.', 'Animacijos pakeisti nepavyko. Esami failai išsaugoti.'),
+    'nl': ('Duif', 'Kies de wachtanimatie. Sla op om deze na een GUI-herstart toe te passen.', 'De animatie kon niet worden gewijzigd. Uw bestaande bestanden zijn behouden.'),
+    'pl': ('Gołąb', 'Wybierz animację oczekiwania. Po zapisaniu zostanie zastosowana po restarcie GUI.', 'Nie udało się zmienić animacji. Dotychczasowe pliki zostały zachowane.'),
+    'pt': ('Pomba', 'Escolha a animação de espera. Guarde para aplicar após reiniciar a interface.', 'Não foi possível alterar a animação. Os ficheiros existentes foram preservados.'),
+    'ro': ('Porumbel', 'Alegeți animația de așteptare. Salvați pentru a o aplica după repornirea interfeței.', 'Animația nu a putut fi schimbată. Fișierele existente au fost păstrate.'),
+    'ru': ('Голубь', 'Выберите анимацию ожидания. Сохраните для применения после перезапуска интерфейса.', 'Не удалось изменить анимацию. Ваши существующие файлы сохранены.'),
+    'sk': ('Holubica', 'Vyberte animáciu čakania. Po uložení sa použije po reštarte GUI.', 'Animáciu sa nepodarilo zmeniť. Vaše pôvodné súbory zostali zachované.'),
+    'tr': ('Güvercin', 'Bekleme animasyonunu seçin. Kaydettikten sonra arayüz yeniden başlatıldığında uygulanır.', 'Animasyon değiştirilemedi. Mevcut dosyalarınız korundu.'),
+    'uk': ('Голуб', 'Виберіть анімацію очікування. Збережіть для застосування після перезапуску інтерфейсу.', 'Не вдалося змінити анімацію. Ваші наявні файли збережено.'),
+    'zh': ('鸽子', '选择等待动画。保存后将在界面重启时应用。', '无法更改等待动画。现有文件已保留。'),
+}.items():
+    TEXT.setdefault(_lang, {}).update({
+        'Dove': _dove,
+        'Choose the waiting animation. Save to apply it after a GUI restart.': _help,
+        'The spinner could not be changed. Your existing files were preserved.': _error,
+    })

@@ -147,6 +147,13 @@ elif [ -x /usr/bin/python3 ] && [ -f /usr/lib/enigma2/python/Plugins/Extensions/
     /usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py / || true
 fi
 
+# Reapply the saved native skin spinner after opkg overlays package defaults.
+# This optional selection never alters system/user spinner paths or settings.
+warder_spinner=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinner.py
+if [ -x /usr/bin/python3 ] && [ -f "$warder_spinner" ]; then
+    /usr/bin/python3 -B "$warder_spinner" || true
+fi
+
 # First radio import runs outside opkg and the GUI, with bounded network time.
 # Offline failures stay silent; the session controller retries automatically.
 warder_radio_update=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py

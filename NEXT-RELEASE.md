@@ -31,3 +31,33 @@ Evidence: `reports/r12-upgrade-analysis-20261031.json`. No runtime/package/feed 
 ### Receiver status follow-up
 
 Screenshot `hd glass.jpg` shows opkg 0.10.0 / libsolv 0.7.40 and native FullHDGlass **1.0.47-1** in **install ok half-installed** state. The legacy status query printed nothing. The final skin.xml `ls` command is visible at the prompt without an execution result, so file existence remains unconfirmed. Installation incompleteness is confirmed; the original failure cause and exact transaction stage are still unknown. Request the completed `ls` and `df -h / /tmp` output before further diagnosis. See `reports/r12-upgrade-followup-20261031.json`.
+
+### Receiver recovery outcome
+
+Later screenshots confirmed missing skin.xml, about 2.5 GB available on root
+and 352 MB in /tmp. A controlled reinstall/upgrade to 1.0.49 completed its
+configuration successfully and reported that existing settings were preserved.
+After GUI restart the forum user confirmed that the skin was available again.
+This establishes recovery on that receiver, not the original failure cause.
+
+## Spinner choice
+
+Prepared on `feature/spinner-choice-20261031`. The owner requested two menu
+entries, exactly **Holubica** and **HDGlass - bakussa**, and easy future extension.
+Credit the supplied animation to **bakussa** by name only.
+
+The existing approved dove remains the default. A source registry generates
+the runtime catalog and native PNG sets; later themes need no menu/controller
+rewrite. The contributed twenty-frame animation is proportionally prepared as
+104×104 truecolor RGBA, below the reviewed native allocation threshold. Originals
+are preserved in the canonical auxiliary-asset structure, outside Releases.
+
+Selection uses the skin's own spinner folder after save and GUI restart. Cancel
+does not apply it. Install hooks restore the saved choice after package updates.
+System/user spinner paths remain untouched and retain their native precedence.
+No additional playback timer, drawing worker or diagnostic logs are introduced.
+
+See `docs/SPINNERS.md` and `reports/spinner-choice-20261031.json` for extension
+instructions, checks and receiver-test limits. Do not publish a replacement
+1.0.49 IPK with these changed bytes. The current public package/feed is unchanged;
+include the pending radio identity fix when a new release is authorized.

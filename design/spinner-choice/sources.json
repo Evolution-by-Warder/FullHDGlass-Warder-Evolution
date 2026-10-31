@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "default": "dove",
+  "themes": [
+    {
+      "id": "dove",
+      "title": "Dove",
+      "author": "",
+      "frames": 18,
+      "size": [128, 88],
+      "source": {
+        "type": "directory",
+        "path": "design/spinner-repair/frames",
+        "manifest": "design/spinner-repair/production.json"
+      }
+    },
+    {
+      "id": "bakussa",
+      "title": "HDGlass - bakussa",
+      "author": "bakussa",
+      "frames": 20,
+      "size": [104, 104],
+      "source": {
+        "type": "zip",
+        "path": "assets/warder/downloads/ui/spinners/bakussa-original.zip",
+        "prefix": "HG glass17 spinner  (bakussa)/",
+        "sha256": "47f12b9654349e3bfe909111a5bfdbd260954f311a251b079cf3d1f53848f3ee",
+        "size": [130, 130]
+      }
+    }
+  ]
+}

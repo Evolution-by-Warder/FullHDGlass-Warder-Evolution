@@ -5,4 +5,10 @@ case "${1:-}" in
         /usr/bin/python3 /usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py backup
         ;;
 esac
+if [ "${1:-}" = remove ]; then
+    warder_spinner=/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinner.py
+    if [ -f "$warder_spinner" ]; then
+        /usr/bin/python3 -B "$warder_spinner" --prepare-removal || true
+    fi
+fi
 exit 0

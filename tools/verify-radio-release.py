@@ -53,6 +53,18 @@ def digest_graphics():
         path=PAYLOAD/entry['path']
         assert hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256']
         pinned.add(path)
+    spinner_choices=ROOT/'design/spinner-choice/assets.json'
+    if spinner_choices.exists():
+        choices=json.loads(spinner_choices.read_text())
+        catalog=PAYLOAD/prefix/'warder-spinners.json'
+        assert hashlib.sha256(catalog.read_bytes()).hexdigest()==choices['catalog_sha256']
+        theme_root='usr/share/enigma2/hd_glass17/spinner-themes/'
+        assert {entry['path'] for entry in choices['assets']}=={p.relative_to(PAYLOAD).as_posix() for p in (PAYLOAD/theme_root).rglob('*') if p.is_file()}
+        for entry in choices['assets']:
+            assert entry['path'].startswith(theme_root)
+            asset=PAYLOAD/entry['path']
+            assert asset.is_file() and hashlib.sha256(asset.read_bytes()).hexdigest()==entry['sha256']
+            pinned.add(asset)
     fallback_record=ROOT/'design/radio-dab-split/fallback.json'
     if fallback_record.exists():
         fallback=json.loads(fallback_record.read_text())

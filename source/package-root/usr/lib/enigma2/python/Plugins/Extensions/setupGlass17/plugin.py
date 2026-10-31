@@ -96,6 +96,7 @@ from .warderDialogs import ChoiceBox
 from . import warderPiconSync
 from .warderTools import find_sevenzip
 from .warderUiText import ui_text
+from . import warderSpinner
 from .warderTypePreviews import thumbnail_path
 from Screens.InfoBarGenerics import InfoBarPlugins
 from Components.MenuList import MenuList
@@ -565,7 +566,7 @@ ALL_CFG = [
 		'CI informations','ECM from current displayed channel','','','Show PID in ECM line','Show CHID in ECM line','Show poster','','Poster x-position','Poster y-position','Poster size',
 		'Poster animation','Poster provider','Poster search delay','','Removing current Poster','VTi SplitScreen','Net Speed','Net speed x-position','Net speed y-position','','Net speed color',		
 		'Progress bar background color','Progress bar foreground color','','','','','','','Progress bar pixmap','Hide SNR/AGC (Q/S) if value is 0','Movie Selection type',
-		'IPTV Radio Detection','Net Speed type','Extended Number ZAP','Weather API-Key OpenWeatherMap','EventView type'
+		'IPTV Radio Detection','Net Speed type','Extended Number ZAP','Weather API-Key OpenWeatherMap','EventView type','Spinner theme'
 		]
 ENA_ELFS = False                                                                
 ENA_ELPLI = False
@@ -923,6 +924,7 @@ config.plugins.setupGlass17.par226 = ConfigSelection(default="1", choices = [("1
 config.plugins.setupGlass17.par227 = ConfigSelection(default="5", choices = [("5",_("Default")),("7",_("Default")+" 2"),("0",_("Auto")),("1","150x90"),("2","220x132"),("6","220x132 (2)"),("3","400x170"),("4","400x240")]) # Extended Number ZAP Picon Size
 config.plugins.setupGlass17.par228 = ConfigText(default="-", fixed_size=False, visible_width=50)
 config.plugins.setupGlass17.par229 = ConfigSelection(default="1", choices = [("1",_("Default")),("2",_("Poster"))]) # EventView
+config.plugins.setupGlass17.par230 = ConfigSelection(default="dove", choices=warderSpinner.choices(ui_text))
 config.plugins.setupGlass17.par101 = ConfigYesNo(default = True) # 
 ##########################################################################################################################
 ENA_MSN = chMSN()
@@ -6381,6 +6383,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.isTunerLabel = False
 		self.rst = False
 		self._weatherCityAtOpen = config.plugins.setupGlass17.par13.value
+		self._spinnerAtOpen = config.plugins.setupGlass17.par230.value
 		self.firststart = True
 		self.start_rst = eTimer()
 		try:
@@ -6804,6 +6807,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("(Menu) Big Icons/Icons"), config.plugins.setupGlass17.par165))
 					self.list.append(getConfigListEntry(S0 % _("(Channel selection) picon/Prov/Sat"), config.plugins.setupGlass17.par166))
 			elif tt == 28:   
+				self.list.append(getConfigListEntry(S0 % ui_text("Spinner"), config.plugins.setupGlass17.par230))
 				if not os.path.isdir(PYTHONPATH+"Plugins/Extensions/EnhancedMovieCenter"):
 					self.list.append(getConfigListEntry(S0 % _("Movie selection type"), config.plugins.setupGlass17.par224))
 				if ISVTI:
@@ -6883,6 +6887,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			t = self["config"].getCurrent()[1]
 			if t == config.plugins.setupGlass17.par124:
 				self.session.openWithCallback(self.dirSelected, dirBrowser, config.plugins.setupGlass17.par124.value)
+			elif t == config.plugins.setupGlass17.par230:
+				items = [(title, value) for value, title in warderSpinner.choices(ui_text)]
+				selected = next((i for i, item in enumerate(items) if item[1] == t.value), 0)
+				self.session.openWithCallback(self.spinnerChoiceSelected, ChoiceBox, title=ui_text("Spinner"), list=items, selection=selected)
 			elif t == config.plugins.setupGlass17.par144:
 				self.session.openWithCallback(self.dirConf, dirBrowser, config.plugins.setupGlass17.par144.value)
 			elif t == config.plugins.setupGlass17.par141:
@@ -6969,6 +6977,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		t = self["config"].getCurrent()[1]
 		filename = "00" 
 		ed = False
+		if t == config.plugins.setupGlass17.par230:
+			if ENA_ANIM:
+				self["helpPicon"].hide()
+				self["helpPiconFrame"].hide()
+				self["helpTxtAnim"].hide()
+			self["help_pict"].hide()
+			self["selected_item"].setText("")
+			self["help_txt"].setText(ui_text("Choose the waiting animation. Save to apply it after a GUI restart."))
+			return
 		if t in (config.plugins.setupGlass17.par215, config.plugins.setupGlass17.par214, config.plugins.setupGlass17.par213, config.plugins.setupGlass17.par177, config.plugins.setupGlass17.par176, config.plugins.setupGlass17.par175, config.plugins.setupGlass17.par174, config.plugins.setupGlass17.par137, config.plugins.setupGlass17.par136, config.plugins.setupGlass17.par135, config.plugins.setupGlass17.par130, config.plugins.setupGlass17.par129, config.plugins.setupGlass17.par128, config.plugins.setupGlass17.par123, config.plugins.setupGlass17.par121, config.plugins.setupGlass17.par122, config.plugins.setupGlass17.par20, config.plugins.setupGlass17.par115, config.plugins.setupGlass17.par116, config.plugins.setupGlass17.par118, config.plugins.setupGlass17.par119):
 			ed = True
 			t = t.value
@@ -7749,6 +7766,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			config.plugins.setupGlass17.par124.value = answer
 			setPathFiles()
       			
+	def spinnerChoiceSelected(self, answer):
+		if answer is None:
+			return
+		if answer[1] in {value for value, title in warderSpinner.choices(ui_text)}:
+			config.plugins.setupGlass17.par230.value = answer[1]
+			self["config"].invalidateCurrent()
+			self.doMyHelpWindow()
+
 	def dirConf(self, answer):
 		if answer is not None:
 			config.plugins.setupGlass17.par144.value = answer
@@ -7764,6 +7789,8 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		msg = _("GUI will now be restarted to activate changes in:") + "\n"
 		msgScr = ""
 		tmp = False
+		if self._spinnerAtOpen != config.plugins.setupGlass17.par230.value:
+			msg += ui_text("Spinner") + "\n"
 		if self.d[39] != config.plugins.setupGlass17.par80.value:
 			if not isIP(config.plugins.setupGlass17.par80.value):
 				self.session.open(MessageBox, _("IP Address")+": " + str(config.plugins.setupGlass17.par80.value) + ER_F, MessageBox.TYPE_ERROR, 5)
@@ -8098,6 +8125,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 		self.start_rst.start(8000, True)
 
 	def saving(self):
+		if self._spinnerAtOpen != config.plugins.setupGlass17.par230.value:
+			try:
+				warderSpinner.apply(config.plugins.setupGlass17.par230.value)
+			except (OSError, ValueError, KeyError, TypeError):
+				self.rst = False
+				self.session.open(MessageBox, ui_text("The spinner could not be changed. Your existing files were preserved."), MessageBox.TYPE_ERROR)
+				return
 		allLines = ""
 		try:
 			a = config.plugins.setupGlass17.dict()
