@@ -7,10 +7,11 @@ permissions:
   contents: read
 concurrency:
   group: approved-receiver-repair
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   promote:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
     env:
@@ -18,6 +19,8 @@ jobs:
       GH_REPO: Evolution-by-Warder/FullHDGlass-Warder-Evolution
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: docs
       - name: Verify immutable public IPK and checksum before promotion
         run: |
           set -euo pipefail
@@ -40,7 +43,7 @@ jobs:
           cp /tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256 packages/
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256
+          git add --sparse packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.51_all.ipk.sha256
           if ! git diff --cached --quiet; then
             git commit -m 'Publish verified FullHDGlass 1.0.51 bytes at compatible updater URL'
             git push origin HEAD:main
