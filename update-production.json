@@ -1,6 +1,6 @@
 {
-  "version": "1.0.52",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.52_all.ipk",
-  "sha256": "63196da663a7ffb1f39b0a935c677bdfe55c4d19deba6bfc9a17de155f9c3bdd",
-  "changelog": "Výber spinnerov využíva dostupnú plochu: vo Full HD 16 položiek v dvoch stĺpcoch. Opravená veľkosť a pomer strán náhľadov bez orezávania."
+  "version": "1.0.53",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.53_all.ipk",
+  "sha256": "79706cfe0a6e33444d303089de9a3ecd2f99d32134acccea398893943d8f6c52",
+  "changelog": "Obaly skladieb pri DAB majú rovnakú veľkosť ako pri bežnom rádiu. Horné DAB okno je zarovnané s panelom textu piesne."
 }

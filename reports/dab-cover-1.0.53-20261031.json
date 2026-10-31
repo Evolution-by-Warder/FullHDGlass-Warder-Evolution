@@ -35,7 +35,7 @@
   "footer_top": 874,
   "picture_aspect_ratio_preserved": true,
   "receiver_test": false,
-  "status": "PUBLIC_REPAIR_IPK_VERIFIED",
+  "status": "STABLE_UPDATE_ACTIVE",
   "source_commit": "271097559ed97b2dd576361a33c51bd72b43365f",
   "ci_workflow_run": 41245170622,
   "ci": "success",
@@ -44,5 +44,11 @@
   "spinner_tests": 15,
   "keyboard_tests": 6,
   "graphics_baseline": "487317f1a2e27795a3877e9f542b71da437152995ca807d0040bcf1d9bffc39e",
-  "previous_frozen_baselines_preserved": true
+  "previous_frozen_baselines_preserved": true,
+  "promotion_workflow_run": 41245470248,
+  "public_updater_ipk_byte_identical": true,
+  "strict_opkg_upgrade_from_1_0_52": true,
+  "production_feed": "main/update-production.json",
+  "test_feed": "warder-modernization-work/update-test.json",
+  "physical_receiver_test": false
 }

@@ -1,5 +1,5 @@
-FullHDGlass 1.0.52
+FullHDGlass 1.0.53
 
-Výber spinnerov lepšie využíva plochu obrazovky. Počet položiek sa vypočíta podľa dostupného priestoru; vo Full HD sa zobrazí 16 položiek v dvoch stĺpcoch. Opravená veľkosť, zarovnanie a pomer strán náhľadov bez orezávania. Ovládanie šípkami zodpovedá rozloženiu položiek.
+Obaly skladieb pri DAB sa zobrazujú v rovnakej veľkosti ako pri bežných rádiových staniciach, pri štvorcovom obale 420 × 420 px. Horné DAB okno je zarovnané s hornou hranou panela textu piesne. Obrázky zachovávajú pomer strán a neprekrývajú sa so spodným informačným panelom.
 
 Po aktualizácii reštartujte GUI.
