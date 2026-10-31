@@ -143,7 +143,10 @@ class WarderRadioCompactArtwork(WarderRadioArtwork):
 
     def _updateCoverBounds(self):
         x,y,w,h = self._normalCoverBounds
-        bounds = (x,y+(h+20)//2,w,(h-20)//2) if dab_service_reference() else self._normalCoverBounds
+        # DAB covers retain the normal 420px limit. The full-height left slot
+        # has 28px spare before the footer; use 27px, leaving its border clear.
+        cover_height = min(420,w)
+        bounds = (x,y+h-cover_height+27,w,cover_height) if dab_service_reference() else self._normalCoverBounds
         if bounds != self._coverBounds:
             self._coverBounds = bounds
             if self._activeSize is not None:self._placeCover(self._activeSize)

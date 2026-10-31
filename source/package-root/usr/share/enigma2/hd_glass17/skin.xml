@@ -1575,7 +1575,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="766,854" size="860,2" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="766,136" size="2,720" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="1624,136" size="2,720" backgroundColor="#003ccfff" zPosition="2" />
-    <widget source="session.CurrentService" render="WarderRadioDabSlideshow" position="316,146" size="420,340" transparent="1" zPosition="3" alphatest="blend" />
+    <widget source="session.CurrentService" render="WarderRadioDabSlideshow" position="316,136" size="420,315" transparent="1" zPosition="3" alphatest="blend" />
     <widget source="session.CurrentService" render="WarderRadioCompactArtwork" position="316,146" size="420,700" transparent="1" zPosition="3" alphatest="blend" />
     <widget source="session.CurrentService" render="Label" position="812,170" size="760,65" transparent="1" zPosition="3" font="Regular;46" foregroundColor="#00ffffff"><convert type="WarderRadioServiceType">Lyrics</convert></widget>
     <eLabel position="812,250" size="760,2" backgroundColor="#004feaff" zPosition="3" />
@@ -1613,7 +1613,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <eLabel position="766,854" size="860,2" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="766,136" size="2,720" backgroundColor="#003ccfff" zPosition="2" />
     <eLabel position="1624,136" size="2,720" backgroundColor="#003ccfff" zPosition="2" />
-    <widget source="session.CurrentService" render="WarderRadioDabSlideshow" position="316,146" size="420,340" transparent="1" zPosition="3" alphatest="blend" />
+    <widget source="session.CurrentService" render="WarderRadioDabSlideshow" position="316,136" size="420,315" transparent="1" zPosition="3" alphatest="blend" />
     <widget source="session.CurrentService" render="WarderRadioCompactArtwork" position="316,146" size="420,700" transparent="1" zPosition="3" alphatest="blend" />
     <widget source="session.CurrentService" render="Label" position="812,170" size="760,65" transparent="1" zPosition="3" font="Regular;46" foregroundColor="#00ffffff"><convert type="WarderRadioServiceType">Lyrics</convert></widget>
     <eLabel position="812,250" size="760,2" backgroundColor="#004feaff" zPosition="3" />

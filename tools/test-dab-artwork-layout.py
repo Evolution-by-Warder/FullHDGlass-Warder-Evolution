@@ -126,7 +126,9 @@ class DabArtworkTests(unittest.TestCase):
     def make_slideshow(self):
         slideshow = self.slides.WarderRadioDabSlideshow()
         slideshow.FALLBACK_ARTWORK = str(PYTHON.parents[2]/'share/enigma2/hd_glass17/warder-dab-information.png')
-        slideshow.skinAttributes = [('position','316,146'), ('size','420,340')]
+        document=ET.parse(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml')
+        widget=document.find("screen[@name='RdsInfoDisplay']/widget[@render='WarderRadioDabSlideshow']")
+        slideshow.skinAttributes = [(key,widget.get(key)) for key in ('position','size')]
         slideshow.applySkin(None, None)
         slideshow.postWidgetCreate(Widget())
         slideshow._request = Mock(side_effect=AssertionError('Slideshow must never search the internet'))
@@ -144,11 +146,26 @@ class DabArtworkTests(unittest.TestCase):
         self.assertEqual(self.art.WarderRadioArtwork._dabSlidePath(cover), str(self.slide))
         cover._poll(); slideshow._poll(); self.flush(slideshow)
         cover._request.assert_called_once_with('Artist', 'Song', 'artist|song')
-        self.assertEqual(cover._coverBounds, (316,506,420,340))
+        self.assertEqual(cover._coverBounds, (316,453,420,420))
         self.assertEqual(slideshow._picload.path, str(self.slide))
-        self.assertEqual(slideshow.instance.position, (316,158))
+        self.assertEqual(slideshow.instance.position, (316,136))
         self.assertEqual(slideshow.instance.dimensions, (420,315))
         slideshow._request.assert_not_called()
+
+    def test_dab_album_matches_normal_radio_and_both_frames_stay_clear_of_footer(self):
+        cover=self.make_cover();slideshow=self.make_slideshow()
+        cover._updateCoverBounds();cover._placeCover((600,600))
+        self.assertEqual(cover.instance.dimensions,(420,420))
+        self.assertEqual(cover.instance.position,(316,453))
+        slideshow._placeCover((320,240))
+        self.assertEqual(slideshow.instance.position,(316,136))
+        self.assertEqual(slideshow.instance.dimensions,(420,315))
+        self.assertLess(slideshow.instance.position[1]+slideshow.instance.dimensions[1],cover.instance.position[1])
+        self.assertLess(cover.instance.position[1]+cover.instance.dimensions[1],874)
+        self.reference.type=4097
+        cover._updateCoverBounds();cover._placeCover((600,600))
+        self.assertEqual(cover.instance.dimensions,(420,420))
+        self.assertEqual(cover.instance.position,(316,286))
 
     def test_ordinary_satellite_and_iptv_radios_keep_original_cover_geometry(self):
         cover = self.make_cover()
@@ -163,8 +180,8 @@ class DabArtworkTests(unittest.TestCase):
 
     def test_dab_to_ordinary_radio_transition_restores_the_original_window(self):
         cover = self.make_cover()
-        for service_type, expected in [(4115,(356,506,340,340)),(4097,(316,286,420,420)),
-                                        (4115,(356,506,340,340)),(1,(316,286,420,420))]:
+        for service_type, expected in [(4115,(316,453,420,420)),(4097,(316,286,420,420)),
+                                        (4115,(316,453,420,420)),(1,(316,286,420,420))]:
             self.reference.type = service_type
             cover._updateCoverBounds(); cover._placeCover((600,600))
             self.assertEqual(cover.instance.position+cover.instance.dimensions, expected)
@@ -260,14 +277,14 @@ class DabArtworkTests(unittest.TestCase):
             self.assertLessEqual(font.getlength(self.ui.ui_text('DAB+ information')),396)
 
     def test_portrait_and_square_images_fit_without_overlapping_the_two_slots(self):
-        top, bottom = (316,146,420,340), (316,506,420,340)
+        top, bottom = (316,136,420,315), (316,453,420,420)
         for size in ((320,240),(600,600),(300,600),(1200,400),(704,640)):
             for slot in (top,bottom):
                 x,y,w,h = self.compact.fitted_cover(*size, bounds=slot)
                 self.assertGreaterEqual(x,slot[0]); self.assertGreaterEqual(y,slot[1])
                 self.assertLessEqual(x+w,slot[0]+slot[2]); self.assertLessEqual(y+h,slot[1]+slot[3])
                 self.assertLess(abs(w/h-size[0]/size[1]),.015)
-        self.assertLessEqual(top[1]+top[3]+20,bottom[1])
+        self.assertLessEqual(top[1]+top[3]+2,bottom[1])
         self.assertLessEqual(bottom[1]+bottom[3],874)
 
     def test_disposal_cancels_polling_and_discards_pending_sizing(self):
@@ -280,6 +297,24 @@ class DabArtworkTests(unittest.TestCase):
 
 
 class PinnedLayoutTests(unittest.TestCase):
+    def test_cover_size_overlay_changes_only_the_two_dab_picture_slots(self):
+        record=json.loads((ROOT/'design/radio-dab-cover-size/layout.json').read_text())
+        text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['updated_skin_sha256'])
+        self.assertEqual({edit['name'] for edit in record['edits']},{'RdsInfoDisplay','RdsDisplay'})
+        for edit in record['edits']:
+            actual=ET.fromstring(edit['updated_screen']);previous=ET.fromstring(edit['original_screen'])
+            slide=actual.find("widget[@render='WarderRadioDabSlideshow']")
+            self.assertEqual(slide.get('position'),'316,136')
+            self.assertEqual(slide.get('size'),'420,315')
+            self.assertIsNotNone(actual.find("eLabel[@position='766,136']"))
+            old=previous.find("widget[@render='WarderRadioDabSlideshow']")
+            slide.set('position',old.get('position'));slide.set('size',old.get('size'))
+            self.assertEqual(ET.tostring(actual),ET.tostring(previous))
+            self.assertEqual(text.count(edit['updated_screen']),1)
+            text=text.replace(edit['updated_screen'],edit['original_screen'],1)
+        self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['before_skin_sha256'])
+
     def test_default_information_bitmap_is_the_exact_approved_original(self):
         record=json.loads((ROOT/'design/radio-dab-split/fallback.json').read_text())
         path=ROOT/'source/package-root'/record['path']
@@ -289,6 +324,11 @@ class PinnedLayoutTests(unittest.TestCase):
     def test_only_two_reviewed_radio_screens_gain_the_one_extra_slideshow_widget(self):
         record = json.loads((ROOT/'design/radio-dab-split/layout.json').read_text())
         text = (ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
+        if cover_layout.exists():
+            for edit in json.loads(cover_layout.read_text())['edits']:
+                self.assertEqual(text.count(edit['updated_screen']),1)
+                text=text.replace(edit['updated_screen'],edit['original_screen'],1)
         layout=ROOT/'design/opkg-layout/layout.json'
         if layout.exists():
             for edit in json.loads(layout.read_text())['edits']:
