@@ -50,10 +50,24 @@ def picture_size(path):
 def fitted_cover(width,height,bounds=(316,146,420,700)):
     """Preserve aspect, cap both image axes at 420 px and centre in the slot."""
     x,y,available_width,available_height = bounds
-    limit = min(420,available_width,available_height)
-    scale = min(limit/max(1,width),limit/max(1,height))
+    scale = min(min(420,available_width)/max(1,width),
+                min(420,available_height)/max(1,height))
     w,h = max(1,round(width*scale)),max(1,round(height*scale))
     return x+(available_width-w)//2,y+(available_height-h)//2,w,h
+
+
+def dab_service_reference():
+    """Match the native DAB service type; an IPTV station name is insufficient."""
+    try:
+        import NavigationInstance
+        from enigma import eServiceReference
+        nav = NavigationInstance.instance
+        reference = nav and nav.getCurrentlyPlayingServiceReference()
+        if reference and reference.type == eServiceReference.idServiceDAB:
+            return reference
+    except (AttributeError, ImportError, RuntimeError):
+        pass
+    return None
 
 
 class WarderRadioCompactArtwork(WarderRadioArtwork):
@@ -63,6 +77,7 @@ class WarderRadioCompactArtwork(WarderRadioArtwork):
     def __init__(self):
         WarderRadioArtwork.__init__(self)
         self._coverBounds = (316,146,420,700)
+        self._normalCoverBounds = self._coverBounds
         self._fitLock = threading.Lock()
         self._fitGeneration = 0
         self._fitReady = None
@@ -84,6 +99,7 @@ class WarderRadioCompactArtwork(WarderRadioArtwork):
             if name == 'position':position = tuple(map(int,value.split(',')))
             elif name == 'size':size = tuple(map(int,value.split(',')))
         self._coverBounds = position+size
+        self._normalCoverBounds = self._coverBounds
         result = WarderRadioArtwork.applySkin(self,desktop,parent)
         if self._activeSize is not None:self._placeCover(self._activeSize)
         return result
@@ -120,8 +136,19 @@ class WarderRadioCompactArtwork(WarderRadioArtwork):
             ex,ey,ew,eh = rectangle
             edge.move(ePoint(ex,ey));edge.resize(eSize(ew,eh));edge.show()
 
-    def _poll(self):
-        if self.instance is None:return
+    def _dabSlidePath(self):
+        # Slideshow has its own DAB-only window. This renderer keeps the one
+        # existing song lookup and its cache/retry policy for every radio type.
+        return ""
+
+    def _updateCoverBounds(self):
+        x,y,w,h = self._normalCoverBounds
+        bounds = (x,y+(h+20)//2,w,(h-20)//2) if dab_service_reference() else self._normalCoverBounds
+        if bounds != self._coverBounds:
+            self._coverBounds = bounds
+            if self._activeSize is not None:self._placeCover(self._activeSize)
+
+    def _decodeSizedPicture(self):
         with self._fitLock:
             ready,self._fitReady = self._fitReady,None
         if ready is not None and ready[0] == self._fitGeneration and self.instance is not None:
@@ -129,6 +156,22 @@ class WarderRadioCompactArtwork(WarderRadioArtwork):
             self._fitPending = False
             self._placeCover(size)
             WarderRadioArtwork._showPath(self,path)
+
+    def _clearPicture(self):
+        with self._fitLock:
+            self._fitGeneration += 1
+            self._fitReady = None
+            self._fitPending = False
+        self._decodeToken += 1
+        self._picload = None
+        self._activeSize = None
+        if self.instance is not None:self.instance.hide()
+        for edge in self._edges:edge.hide()
+
+    def _poll(self):
+        if self.instance is None:return
+        self._updateCoverBounds()
+        self._decodeSizedPicture()
         WarderRadioArtwork._poll(self)
         if self._fitPending and self.instance is not None:
             self._timer.start(50,True)

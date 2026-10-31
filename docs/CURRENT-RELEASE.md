@@ -1,7 +1,9 @@
-# FullHDGlass 1.0.47
+# FullHDGlass 1.0.48
 
-- **Prehľadnejšia História:** posledné štyri záznamy majú samostatné nadpisy, deliace čiary a krátke popisy. Text je správne zalomený a zostáva v priestore obrazovky.
-- **Označenie režimu rádia:** v strede hornej lišty sa zobrazí názov podľa zvoleného jazyka prostredia, napríklad REŽIM RÁDIA alebo RADIO MODE.
-- **Vylepšená animácia počas čakania:** obnovená pôvodná pohyblivá holubica.
+- **DAB/DAB+:** obrázky vysielané stanicou sa zobrazujú hore a obal aktuálnej skladby samostatne pod nimi.
+- **Satelitné a IPTV rádiá:** zachované pôvodné jedno okno pre obal, jeho veľkosť aj umiestnenie.
+- **Čistejšia hlavička nastavení:** názvy rubrík, napríklad História, sa už nezobrazujú pod dátumom.
 
-Bežná aktualizácia zo staršej aj skúšobnej verzie. Po inštalácii reštartovať GUI.
+Zachovaný opravený spinner, prehľadná História aj označenie režimu rádia.
+
+Po aktualizácii reštartovať GUI.

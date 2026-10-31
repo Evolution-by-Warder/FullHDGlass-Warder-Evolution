@@ -70,14 +70,14 @@ class SetupStyleTests(unittest.TestCase):
                     self.assertEqual(node.get('halign'),'center');self.assertEqual(node.get('valign'),'center')
                     self.assertEqual(node.get('transparent'),'0' if int(node.get('position').split(',')[1])>=980 else '1')
 
-    def test_native_title_date_clock_and_seconds_sources_are_present(self):
+    def test_native_date_clock_and_seconds_remain_without_section_titles(self):
         for name in LAYOUTS:
             root=ET.fromstring(LAYOUTS[name][1]+('</screen>' if name=='selectIconsDisplayed' else ''))
             self.assertEqual(len(root.findall("widget[@source='global.CurrentTime'][@render='Label']")),4)
             self.assertEqual({x.get('type') for x in root.findall('widget/convert')},{'g17ClockToText'})
         for name in set(LAYOUTS)-{'setupGlass17ScreenSetup','downloadMenu'}:
             root=ET.fromstring(LAYOUTS[name][1]+('</screen>' if name=='selectIconsDisplayed' else ''))
-            self.assertEqual(len(root.findall("widget[@source='Title']")),1,name)
+            self.assertEqual(len(root.findall("widget[@source='Title']")),0,name)
 
     def test_dynamic_download_and_history_coordinates_remain_compatible(self):
         down=ET.fromstring(LAYOUTS['downloadMenu'][1]);dwn=down.find("widget[@name='dwn']")

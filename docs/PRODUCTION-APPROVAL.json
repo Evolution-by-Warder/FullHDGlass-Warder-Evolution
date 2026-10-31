@@ -2,16 +2,16 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "approved_on": "2026-10-31",
-  "production_version": "1.0.47",
+  "production_version": "1.0.48",
   "approved_by": "repository owner",
-  "authorization": "Owner requested restoring a localized radio-mode header and cleaning skin History to show only the four latest concise, clearly separated entries. Owner confirmed spinner 1.0.46-test1 perfect on the receiver. Existing authorization for repository writes and normal production updates remains in force. GSU/PiconHub History is explicitly deferred to their next functional changes.",
+  "authorization": "Owner explicitly requested publishing both prepared changes as a normal new production version: independent DAB slideshow and current-song cover, and removal of redundant settings section names below the date. Original satellite/IPTV single-window geometry must remain. This supersedes the earlier release hold.",
   "baseline": {
     "version": "1.0.40-test2",
     "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
     "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
     "bytes": 14759486
   },
-  "scope": "Prehľadnejšia História s krátkymi záznamami. Označenie režimu rádia podľa jazyka prostredia. Vylepšená animácia počas čakania.",
+  "scope": "V DAB režime sa obrázky stanice a obal skladby zobrazujú samostatne. Čistejšia hlavička nastavení bez názvov rubrík pod dátumom.",
   "preview_assets": {
     "help": {
       "filename": "g17_setup_pict.zip",
@@ -26,15 +26,15 @@
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip"
     }
   },
-  "version_policy": "1.0.47 is a normal opkg upgrade from both production 1.0.45 and the receiver-confirmed 1.0.46-test1-1 candidate; no downgrade flags required.",
+  "version_policy": "1.0.48 is a normal opkg upgrade from 1.0.47; package identity and user settings remain preserved.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "c5736f7e2c30698b772150ac8efeb5bc11fb2d6e",
+  "expected_main_sha": "21e6fae69e4065ff63510d7d7c346a557b66d6d3",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
-    "version": "1.0.45",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.45_all.ipk",
-    "sha256": "3fdd6d42edc5761fe2007026529b5f58daa9b60ee87256bac0d819a7002bcfdb",
-    "changelog": "Kompatibilita EPG, kodekov a systémových obrazoviek s OpenATV."
+    "version": "1.0.47",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.47_all.ipk",
+    "sha256": "82ed5dc016a00611e6428f93a513bbffe571ad98bc9768b5d26070343a073e20",
+    "changelog": "Prehľadnejšia História s krátkymi záznamami. Označenie režimu rádia podľa jazyka prostredia. Vylepšená animácia počas čakania."
   },
-  "receiver_validation": "Owner confirmed spinner test 1.0.46-test1 on their receiver on 31 October 2026. New History and localized radio header are covered by automated checks; no physical confirmation of those two additions is claimed."
+  "receiver_validation": "Owner confirmed the spinner and compact History in 1.0.47 on their receiver. DAB dual artwork and header-title removal pass automated controller/layout checks; physical receiver confirmation of those two new changes is pending."
 }

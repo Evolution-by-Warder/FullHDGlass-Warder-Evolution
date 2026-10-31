@@ -79,6 +79,10 @@ on:
       - tools/test-radio-lyrics.py
       - tools/test-history-radio-header.py
       - design/radio-header/**
+      - design/radio-dab-split/**
+      - tools/test-dab-artwork-layout.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioDabSlideshow.py
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioCompactArtwork.py
       - design/spinner-repair/production.json
       - source/package-root/usr/share/enigma2/hd_glass17/spinner/**
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHistory.py
@@ -153,6 +157,7 @@ jobs:
           python3 tools/test-runtime-cleanup.py -v
           python3 tools/test-radio-background.py -v
           python3 tools/test-history-radio-header.py -v
+          python3 tools/test-dab-artwork-layout.py -v
           python3 tools/test-spinner-candidate.py -v
           python3 tools/test-radio-lyrics.py -v
           python3 tools/test-setup-style.py -v

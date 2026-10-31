@@ -1,10 +1,10 @@
 {
   "enabled": true,
-  "version": "1.0.47",
-  "expected_main_sha": "c5736f7e2c30698b772150ac8efeb5bc11fb2d6e",
-  "authorization": "Owner requested restoring a localized radio-mode header and cleaning skin History to show only the four latest concise, clearly separated entries. Owner confirmed spinner 1.0.46-test1 perfect on the receiver. Existing authorization for repository writes and normal production updates remains in force. GSU/PiconHub History is explicitly deferred to their next functional changes.",
-  "changelog": "Prehľadnejšia História s krátkymi záznamami. Označenie režimu rádia podľa jazyka prostredia. Vylepšená animácia počas čakania.",
-  "receiver_validation": "Owner confirmed spinner test 1.0.46-test1 on their receiver on 31 October 2026. New History and localized radio header are covered by automated checks; no physical confirmation of those two additions is claimed.",
+  "version": "1.0.48",
+  "expected_main_sha": "21e6fae69e4065ff63510d7d7c346a557b66d6d3",
+  "authorization": "Owner explicitly requested publishing both prepared changes as a normal new production version: independent DAB slideshow and current-song cover, and removal of redundant settings section names below the date. Original satellite/IPTV single-window geometry must remain. This supersedes the earlier release hold.",
+  "changelog": "V DAB režime sa obrázky stanice a obal skladby zobrazujú samostatne. Čistejšia hlavička nastavení bez názvov rubrík pod dátumom.",
+  "receiver_validation": "Owner confirmed the spinner and compact History in 1.0.47 on their receiver. DAB dual artwork and header-title removal pass automated controller/layout checks; physical receiver confirmation of those two new changes is pending.",
   "approved_on": "2026-10-31",
   "reuse_verified_preview_archives": true
 }
