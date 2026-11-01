@@ -7,6 +7,7 @@ from pathlib import Path
 from types import SimpleNamespace
 import unittest
 import xml.etree.ElementTree as ET
+from textwrap import dedent
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
@@ -135,9 +136,13 @@ def static_lists():
 
 class ListFitTests(unittest.TestCase):
     def native_screen_layout(self, gui, parent):
-        source=ast.parse((args.upstream/'Screens/Screen.py').read_text())
-        cls=next(n for n in source.body if isinstance(n,ast.ClassDef) and n.name=='Screen')
-        method=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='createGUIScreen')
+        # Keep the exact method body, without parsing unrelated native match/case
+        # methods on the Python 3.9 packaging worker.
+        lines=(args.upstream/'Screens/Screen.py').read_text().splitlines(keepends=True)
+        start=next(i for i,line in enumerate(lines) if line.startswith('\tdef createGUIScreen('))
+        end=next((i for i in range(start+1,len(lines)) if lines[i].startswith('\tdef ')),len(lines))
+        source=ast.parse(dedent(''.join(lines[start:end])))
+        method=source.body[0]
         scope={'GUIComponent':gui,'applyAllAttributes':apply_attributes}
         exec(compile(ast.Module(body=[method],type_ignores=[]),'native-Screen-createGUIScreen','exec'),scope)
         parent.stacks=[];parent.additionalWidgets=[];parent.screenImage=None;parent.ignoreWidgets=[]
