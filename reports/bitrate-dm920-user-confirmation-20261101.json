@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-01",
+  "product": "FullHDGlass",
+  "release": "1.0.55",
+  "evidence_type": "Owner-relayed user report following the 1.0.55 update recommendation",
+  "receiver": "Dreambox DM920",
+  "image": "OpenATV 8.0.2 Devel",
+  "confirmed": {
+    "satellite_bitrate_functional": true,
+    "terrestrial_bitrate_functional": true,
+    "fast_startup": true,
+    "no_further_problem_reported_at_time_of_feedback": true
+  },
+  "original_report": "Skvělá práce,už bitrate plně funkční jak při satelitním příjmu,tak i pozemní tv a opravdu neběhne velmi rychle,na další problém jsem zatím nenarazil.\nVelká poklona a jen tak dále.",
+  "scope": "Confirms operation as reported by the DM920 user; this is not a direct agent hardware test or a guarantee for other receiver models.",
+  "package_runtime_or_feeds_changed": false
+}

@@ -40,11 +40,12 @@
   "validation": {
     "workflow_run": 41292891930,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
+    "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
     "live_updater_report": "reports/bitrate-stable55-update-activation-20261101.json",
     "final_main_workflow": 41293319631,
     "final_native_test_workflow": 41293336911,
-    "report": "reports/bitrate-stable55-20261101.json"
+    "report": "reports/bitrate-stable55-20261101.json",
+    "dm920_user_confirmation": "reports/bitrate-dm920-user-confirmation-20261101.json"
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -67,7 +68,7 @@
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
+  "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,

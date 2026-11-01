@@ -20,10 +20,11 @@
   "install_scripts_and_package_identity_preserved": true,
   "normal_upgrade_from_stable53_and_test54": true,
   "diagnostics_default_disabled": true,
-  "physical_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
+  "physical_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
   "source_commit": "f712696ce3d2688fe363b09023b43cd74bfcc4a2",
   "workflow_run": 41292891930,
   "workflow_conclusion": "success",
   "update_profiles_active": true,
-  "live_updater_report": "reports/bitrate-stable55-update-activation-20261101.json"
+  "live_updater_report": "reports/bitrate-stable55-update-activation-20261101.json",
+  "dm920_user_confirmation": "reports/bitrate-dm920-user-confirmation-20261101.json"
 }

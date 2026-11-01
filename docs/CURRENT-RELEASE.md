@@ -4,4 +4,4 @@ Opravené meranie bitrate videa a zvuku pri DVB vysielaní a zrýchlený nábeh 
 
 Aktualizované pomocné programy pre ARM, MIPS32r2 a AArch64; odstránený nahradený ARM program. Existujúce nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.
 
-Funkčnosť a rýchly nábeh potvrdil majiteľ na GigaBlue, vrátane FTA a kódovaných staníc. MIPS a Dreambox DM 9x0/ONE/TWO majú pripravenú podporu a automatické kontroly; fyzický test týchto prijímačov zatiaľ nebol vykonaný.
+Funkčnosť a rýchly nábeh potvrdil majiteľ na GigaBlue, vrátane FTA a kódovaných staníc. Následná používateľská spätná väzba potvrdila funkčný a rýchlo nabiehajúci bitrate aj na Dreambox DM920 / OpenATV 8.0.2 Devel pri satelitnom a pozemnom príjme. Hardvérové overenie na MIPS, DM900, ONE a TWO zostáva otvorené.
