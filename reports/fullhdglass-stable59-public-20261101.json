@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.59",
+  "bytes": 17206616,
+  "package_sha256": "2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee",
+  "changed_files_from_approved_test3": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py"
+  ],
+  "all_runtime_code_layout_artwork_and_helpers_identical_to_approved_test3_except_version_labels": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "normal_upgrade_from_stable57_and_all_test58": true,
+  "receiver_confirmation": "Owner reports all OK on test3 and explicitly authorizes normal release; attached screenshots show CacheFlush, LCD4linux and Quick Menu. Physical TV colour operation is owner-reported; the underlying rendering cause remains unestablished.",
+  "source_commit": "34f27bf5e911f3caeaf043b5bd50db68c7fbae76",
+  "ci_run": 41330777795,
+  "ci_conclusion": "success"
+}
