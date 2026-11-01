@@ -60,3 +60,5 @@ jobs:
         run: |
           python tools/fetch-openatv81-fixture.py /tmp/warder-openatv81-pinned
           python tools/test-openatv81-animation.py --upstream /tmp/warder-openatv81-pinned -v
+          python tools/test-opkg-screen-compat.py --upstream /tmp/warder-openatv81-pinned -v
+          python tools/test-config-font-compat.py -v

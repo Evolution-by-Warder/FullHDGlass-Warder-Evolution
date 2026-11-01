@@ -16,3 +16,9 @@ for name,expected in record['normalised_text_sha256'].items():
     assert hashlib.sha256(raw).hexdigest()==expected,name
     path=target/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(raw)
 print('Verified pinned OpenATV 8.1 Python fixture:',record['commit'])
+for name,entry in record.get('extra_revisions',{}).items():
+    url='https://raw.githubusercontent.com/openatv/enigma2/'+entry['commit']+'/lib/python/'+entry['path']
+    with urlopen(url,timeout=30) as response:
+        raw=(response.read().decode('utf-8').rstrip()+'\n').encode('utf-8')
+    assert hashlib.sha256(raw).hexdigest()==entry['sha256'],name
+    path=target/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(raw)

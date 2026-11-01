@@ -2,7 +2,7 @@ name: FullHDGlass OpenATV 8.1 receiver repair
 on:
   push:
     branches: [fix/openatv81-animation-20261101]
-    paths: [source/**, tools/**, docs/OPENATV81-1.0.56-test1.md, .github/workflows/openatv81-receiver-repair.yml]
+    paths: [source/**, tools/**, docs/OPENATV81-1.0.56-test2.md, .github/workflows/openatv81-receiver-repair.yml]
 permissions:
   contents: read
 concurrency:
@@ -39,6 +39,7 @@ jobs:
           sudo apt-get install -y -qq --no-install-recommends ffmpeg
       - name: Verify real catalog, native selection, paging, sizing and existing behavior
         run: |
+          python tools/test-config-font-compat.py -q
           python tools/test-bitrate-runtime.py -q
           python tools/test-bitrate-diagnostic.py -q
           python tools/test-bitrate-compat.py -q
@@ -60,7 +61,7 @@ jobs:
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.56-test1
+          name: FullHDGlass-1.0.56-test2
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable IPK without advancing existing update feeds
@@ -68,12 +69,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.56-test1_all.ipk
-          TAG=v1.0.56-test1
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.56-test2_all.ipk
+          TAG=v1.0.56-test2
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.56-test1' --notes-file docs/OPENATV81-1.0.56-test1.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.56-test2' --notes-file docs/OPENATV81-1.0.56-test2.md
           fi
