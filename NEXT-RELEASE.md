@@ -1,3 +1,13 @@
+# FullHDGlass 1.0.59 — owner approval — 1 November 2026
+
+The owner reports everything is now OK on test3 and explicitly authorizes a normal release. Retain the exact approved LCD4linux/Quick Menu runtime and artwork as 1.0.59, which upgrades natively over all 1.0.58-test versions. Include the regular production and native test update feeds.
+
+The physical TV colour workaround is receiver-confirmed; its low-level HDMI/rendering cause is not established. Use the existing opaque solid PNG colour rules below captions, persistent LCD MENU and the complete Quick Menu layout without further design changes. Five-entry History is already included from 1.0.57. PiconHub/GSU keep their own pending five-entry request for the next functional releases.
+
+Historical records below are superseded where later releases or explicit approval are recorded.
+
+---
+
 # FullHDGlass 1.0.57 — owner approval — 1 November 2026
 
 The owner confirmed test3 works and explicitly authorized a normal public release and activation in updates. Ship the approved font, compact installer and VideoEnhancementSetup repairs as 1.0.57 (native upgrade ordering after test builds).
