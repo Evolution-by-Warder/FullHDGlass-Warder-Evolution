@@ -23,5 +23,7 @@
   "physical_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
   "source_commit": "f712696ce3d2688fe363b09023b43cd74bfcc4a2",
   "workflow_run": 41292891930,
-  "workflow_conclusion": "success"
+  "workflow_conclusion": "success",
+  "update_profiles_active": true,
+  "live_updater_report": "reports/bitrate-stable55-update-activation-20261101.json"
 }
