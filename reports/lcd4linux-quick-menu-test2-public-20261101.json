@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.58-test2",
+  "bytes": 17206416,
+  "sha256": "13ac5e7d836c04e515b8695c4c151d0804adcb54bba7fa1bbb45847536ff3bed",
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "only_registered_lcd4linux_and_quick_menu_xml_changes_plus_metadata": true,
+  "all_other_runtime_code_artwork_and_helpers_identical_to_stable57": true,
+  "native_controls_and_preview_geometry_preserved": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "physical_receiver_confirmation": false,
+  "next_normal_version": "1.0.59",
+  "source_commit": "0d9f0465686608526343485063283f41534a2eb6",
+  "ci_run": 41328108509,
+  "ci_conclusion": "success",
+  "lcd_footer_checks": 6,
+  "native_menu_and_layout_checks": 5,
+  "test1_receiver_feedback": "Colour captions fit; shared key_menu disappeared on some rows. Quick Menu showed eight rows and a clipped decorated fullscreen title.",
+  "menu_hint_fix": "Static MENU eLabel independent of ConfigListScreen.handleInputHelpers; native actions unchanged.",
+  "quick_menu_rows": 10,
+  "production_update_version": "1.0.57"
+}
