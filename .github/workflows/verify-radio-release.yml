@@ -2,7 +2,7 @@ name: Verify approved radio release
 on:
   push:
     branches: [main, warder-modernization-work]
-    paths: ['source/**', 'tools/*release*', 'tools/radio-release-baseline.json', 'update*.json', '.github/workflows/verify-radio-release.yml']
+    paths: ['source/**', 'tools/*release*', 'tools/radio-release-baseline.json', 'update*.json', 'design/settings-ui-inventory.json', '.github/workflows/verify-radio-release.yml']
   workflow_dispatch:
 permissions:
   contents: read
