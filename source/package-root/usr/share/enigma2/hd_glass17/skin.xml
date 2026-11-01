@@ -4557,43 +4557,43 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
   <widget name="Timeline" position="718,915" size="1044,30" zPosition="3" backgroundColor="#808888" pointer="skin_default/position_arrow.png:3,5" foregroundColor="black"/>
   <ePixmap position="262,915" size="444,30" pixmap="hd_glass17/mp_dvr.png" alphatest="blend" />
 </screen>
-	<screen name="QuickMenu" position="0,0" size="1920,1080" backgroundColor="background" title="Quick Launch Menu">
-	<widget source="Title" render="Label" position="98,46" size="700,45" font="Prive4;38" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
-     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="980,46" size="700,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1112,46" size="710,45" font="Prive4;38" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
+	<screen name="QuickMenu" position="0,0" size="1920,1080" backgroundColor="background" flags="wfNoBorder" title="Quick Launch Menu">
+	<widget source="Title" render="Label" position="80,35" size="820,48" font="Prive3;34" valign="center" halign="left" foregroundColor="#A1A1A1" transparent="1" />
+     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="970,35" size="650,48" font="Prive3;28" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" zPosition="1" position="1650,35" size="190,48" font="Prive3;34" valign="center" halign="right" foregroundColor="#A1A1A1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-		<widget source="mainlist" render="Listbox" position="190,200" size="760,560" itemHeight="70" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black" foregroundColor="grey">
+		<widget source="mainlist" render="Listbox" position="80,140" size="860,720" itemHeight="72" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black" foregroundColor="grey">
       <templates>
-        <template name="Default" fonts="Regular;32,Regular;24" itemWidth="760" itemHeight="70">
+        <template name="Default" fonts="Prive3;28,Prive3;22" itemWidth="860" itemHeight="72">
           <mode name="default">
-            <pixmap index="2" position="10,10" size="50,50" alpha="blend" scale="centerScaled" />
-            <text index="0" position="75,0" size="e-85,42" font="0" verticalAlignment="center" />
-            <text index="1" position="95,42" size="e-105,28" font="1" verticalAlignment="center" />
+            <pixmap index="2" position="10,11" size="50,50" alpha="blend" scale="centerScaled" />
+            <text index="0" position="75,0" size="e-85,36" font="0" verticalAlignment="center" />
+            <text index="1" position="95,38" size="e-105,30" font="1" verticalAlignment="center" />
           </mode>
         </template>
       </templates>
     </widget>
-		<widget source="sublist" render="Listbox" position="980,200" size="760,560" itemHeight="70" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black" foregroundColor="grey">
+		<widget source="sublist" render="Listbox" position="980,140" size="860,720" itemHeight="72" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black" foregroundColor="grey">
       <templates>
-        <template name="Default" fonts="Regular;32,Regular;24" itemWidth="760" itemHeight="70">
+        <template name="Default" fonts="Prive3;28,Prive3;22" itemWidth="860" itemHeight="72">
           <mode name="default">
-            <text index="0" position="15,0" size="e-30,42" font="0" verticalAlignment="center" />
-            <text index="1" position="35,42" size="e-50,28" font="1" verticalAlignment="center" />
+            <text index="0" position="15,0" size="e-30,36" font="0" verticalAlignment="center" />
+            <text index="1" position="35,38" size="e-50,30" font="1" verticalAlignment="center" />
           </mode>
         </template>
       </templates>
     </widget>
-		<widget name="description" position="200,760" size="1520,222" zPosition="1" font="Regular;28" halign="center" valign="center" foregroundColor="#A1A1A1" transparent="1" />
+		<widget name="description" position="80,875" size="1760,60" zPosition="1" font="Prive3;25" halign="center" valign="center" foregroundColor="#A1A1A1" transparent="1" />
     <eLabel position="80,100" size="1760,1" backgroundColor="#A1A1A1" zPosition="5" transparent="0" />
     <widget source="key_red" render="Label" position="80,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#FFCDD2" zPosition="2" transparent="1" />
     <widget source="key_green" render="Label" position="534,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#DDEDC8" zPosition="2" transparent="1" />
     <widget source="key_yellow" render="Label" position="988,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#FFF9C5" zPosition="2" transparent="1" />
     <widget source="key_blue" render="Label" position="1443,959" size="397,66" font="Prive4;28" valign="center" halign="center" foregroundColor="#B3E5FC" zPosition="2" transparent="1" />
-    <eLabel position="80,1019" size="397,1" backgroundColor="#D60000" zPosition="5" transparent="0" />
-    <eLabel position="534,1019" size="397,1" backgroundColor="#64DD16" zPosition="5" transparent="0" />
-    <eLabel position="988,1019" size="397,1" backgroundColor="#FFD600" zPosition="5" transparent="0" />
-    <eLabel position="1443,1019" size="397,1" backgroundColor="#0091EA" zPosition="5" transparent="0" />
+    <ePixmap position="80,1019" size="397,4" pixmap="hd_glass17/videodb/red.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
+    <ePixmap position="534,1019" size="397,4" pixmap="hd_glass17/videodb/green.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
+    <ePixmap position="988,1019" size="397,4" pixmap="hd_glass17/videodb/yellow.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
+    <ePixmap position="1443,1019" size="397,4" pixmap="hd_glass17/videodb/blue.png" scale="1" alphatest="off" zPosition="5" transparent="1" />
 	</screen>
 	<screen name="VirtualKeyboard" position="center,90" size="1500,900" zPosition="99" title="Virtual Keyboard">
     <widget name="prompt" position="45,30" size="1410,110" font="Prive3;32" halign="left" valign="center" transparent="1" />
@@ -8033,4 +8033,22 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <eLabel text="9" position="8,380" size="24,33" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_9" position="53,380" size="54,30" alphatest="on" />
   </screen>
 
+  <screen name="LCDdisplayConfig" position="center,50" size="1820,980" title="LCD4linux Settings">
+    <widget name="config" position="0,0" size="910,800" scrollbarMode="showOnDemand" enableWrapAround="1" />
+    <widget source="introduction" render="Label" position="5,812" size="690,52" zPosition="10" font="Prive3;24" halign="center" valign="center" transparent="1" />
+    <widget name="key_red" position="0,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget name="key_green" position="205,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget name="key_yellow" position="410,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget name="key_blue" position="615,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="blue" transparent="1" />
+    <eLabel text="MENU" position="820,875" size="90,64" zPosition="4" font="Prive3;24" halign="center" valign="center" foregroundColor="white" transparent="1" />
+    <widget source="Version" render="Label" position="710,842" size="200,22" font="Prive3;18" halign="right" valign="center" transparent="1" />
+    <widget source="LibUSB" render="Label" position="710,812" size="200,26" font="Prive3;18" halign="right" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="About" render="Label" position="710,812" size="200,26" font="Prive3;18" halign="right" valign="center" transparent="1" />
+    <widget name="LCD1" position="910,0" size="910,490" zPosition="1" transparent="1" alphatest="on" />
+    <widget name="LCD2" position="910,490" size="910,490" zPosition="1" transparent="1" alphatest="on" />
+    <widget name="LCD3" position="910,980" size="910,490" zPosition="1" transparent="1" alphatest="on" />
+    <widget source="LCD1text" render="Label" position="910,5" size="200,20" font="Regular;11" halign="left" valign="center" transparent="1" />
+    <widget source="LCD2text" render="Label" position="910,495" size="200,20" font="Regular;11" halign="left" valign="center" transparent="1" />
+    <widget source="LCD3text" render="Label" position="910,985" size="200,20" font="Regular;11" halign="left" valign="center" transparent="1" />
+  </screen>
 </skin>

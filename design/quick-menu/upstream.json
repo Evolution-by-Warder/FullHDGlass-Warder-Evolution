@@ -1,0 +1,16 @@
+{
+  "commit": "266beaa50c464f1a6983a3a64133f6047482aee8",
+  "normalisation": "UTF-8 rstrip followed by one LF",
+  "files": [
+    {
+      "path": "lib/python/Components/ConfigList.py",
+      "local_file": "native-configlist-menu.py",
+      "sha256": "a08941afc424ff0a9f649bbd6eae7ddaac1c10e9736455cc181e49ee901ea2ab"
+    },
+    {
+      "path": "lib/python/Screens/QuickMenu.py",
+      "local_file": "native-quickmenu.py",
+      "sha256": "2fea4c37bac1791f18e6a74f2b5368808d7eff474869c3a777d3bc122b4aa7d0"
+    }
+  ]
+}

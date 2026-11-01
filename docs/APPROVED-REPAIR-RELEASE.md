@@ -1,10 +1,9 @@
-FullHDGlass 1.0.57
+FullHDGlass 1.0.59
 
 Ostrá verzia opráv potvrdených používateľom na prijímači.
 
-- Opravená veľkosť písma v nastaveniach LCD4linux, CacheFlush a ďalších pluginov používajúcich spoločný konfiguračný zoznam.
-- Menšie, vycentrované okno inštalácie so správnym zobrazením stavu, oboch ukazovateľov priebehu a denníka.
-- Opravené otvorenie nastavenia vylepšenia obrazu.
-- História zobrazuje päť posledných zmien v prehľadnom kompaktnom rozložení.
+- LCD4linux má čitateľné farebné popisy tlačidiel a trvalo viditeľné MENU aj pri pohybe po riadkoch.
+- Rýchle menu má upravenú hlavičku, primerané písmo a desať viditeľných riadkov v oboch stĺpcoch. Dlhšie ponuky zostávajú posúvateľné.
+- Farebné prúžky pod tlačidlami Rýchleho menu sa správne zobrazujú aj na TV.
 
-Nastavenia používateľa zostávajú zachované. Po aktualizácii reštartujte GUI.
+Existujúce nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.

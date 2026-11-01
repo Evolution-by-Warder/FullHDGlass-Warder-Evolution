@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.58-test3",
+  "bytes": 17206568,
+  "sha256": "c0799bac59be8db252c26515d82ca84f3c3706cbf3acf42779ca6d4169483fd8",
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "only_registered_lcd4linux_and_quick_menu_xml_changes_plus_metadata": true,
+  "all_other_runtime_code_artwork_and_helpers_identical_to_stable57": true,
+  "native_controls_and_preview_geometry_preserved": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "physical_receiver_confirmation": false,
+  "next_normal_version": "1.0.59",
+  "source_commit": "eedf223d9d6f81b137760847aec5dd803184b472",
+  "ci_run": 41329584157,
+  "ci_conclusion": "success",
+  "tv_colour_report": "Owner reports white rules on TV while OpenWebif is coloured; cause not established.",
+  "rules_position": "Below captions as explicitly requested, y1019.",
+  "colour_implementation": "Existing opaque solid videodb red/green/yellow/blue PNGs scaled to 397x4, alpha testing off.",
+  "lcd_menu": "Owner confirms operation.",
+  "graphic_preview_is_not_physical_receiver_validation": true,
+  "production_update_version": "1.0.57"
+}
