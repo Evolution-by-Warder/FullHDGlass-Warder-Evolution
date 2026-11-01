@@ -52,11 +52,13 @@ def wrap(value, width):
     return lines
 
 class FooterTests(unittest.TestCase):
-    def test_native_bitmap_menu_is_replaced_by_existing_static_text_source(self):
+    def test_native_bitmap_menu_is_replaced_by_always_visible_caption(self):
         self.assertIsNotNone(original.find("ePixmap[@pixmap='skin_default/buttons/key_menu.png']"))
         self.assertIsNone(screen.find('ePixmap'))
-        menu=screen.find("widget[@source='key_menu']")
-        self.assertEqual(menu.get('render'),'Label')
+        menu=screen.find("eLabel[@text='MENU']")
+        self.assertNotIn('source',menu.attrib)
+        self.assertNotIn('conditional',menu.attrib)
+        self.assertIsNone(screen.find("widget[@source='key_menu']"))
         self.assertEqual(menu.get('foregroundColor'),'white')
         self.assertIn("self['key_menu'] = StaticText",ast.unparse(initial))
         self.assertIn("'menu': self.SetupMenu",ast.unparse(initial))
@@ -74,7 +76,7 @@ class FooterTests(unittest.TestCase):
 
     def test_footer_bounds_clear_old_bottom_edge_and_do_not_overlap(self):
         nodes=[screen.find("widget[@name='%s']"%n) for n in ('key_red','key_green','key_yellow','key_blue')]
-        nodes.append(screen.find("widget[@source='key_menu']"))
+        nodes.append(screen.find("eLabel[@text='MENU']"))
         right=0
         for node in nodes:
             x,y,w,h=rectangle(node)
