@@ -2442,5 +2442,26 @@
   "header_fix": "Only title/path labels with less than two font heights are forced to a single line. Full title source text, descriptions and deliberately multiline titles are preserved.",
   "physical_receiver_confirmation": false,
   "production_feed_changed": false,
-  "test_feed_changed": false
+  "test_feed_changed": false,
+  "legacy_openatv_validation": {
+    "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+    "native_gui_component_sha256": "79a503af18cc38ad9b42b9add05dd5d87ecdd25728db87e9e5d41100461888f1",
+    "native_menu_list_sha256": "d1a08e969efb5b565137360ced7ba231592974177fd6df5f30df77cc20ead150",
+    "focused_tests": 11,
+    "result": "PASS",
+    "native_methods_verified": [
+      "eListbox.getOrientation",
+      "eListbox.getItemHeight",
+      "eLabel.getFont",
+      "eLabel.setNoWrap"
+    ]
+  },
+  "existing_regressions": {
+    "configuration_fonts": 13,
+    "lcd4linux_footer": 6,
+    "quick_menu": 6,
+    "history_radio_header": 8,
+    "result": "PASS"
+  },
+  "public_package_proof": "reports/list-row-clipping-test1-public-20261101.json"
 }
