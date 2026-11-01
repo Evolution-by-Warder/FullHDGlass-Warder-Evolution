@@ -84,6 +84,8 @@ class KeyboardTests(unittest.TestCase):
 
     def test_only_the_modern_screen_changes_and_legacy_screen_is_preserved(self):
         raw=SKIN.read_text()
+        from openatv81_skin import revert_skin
+        raw=revert_skin(ROOT,raw)
         cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
         if cover_layout.exists():
             for edit in json.loads(cover_layout.read_text())['edits']:

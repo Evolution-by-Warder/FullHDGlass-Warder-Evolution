@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-01",
+  "receiver": "GigaBlue Quad 4K Pro",
+  "machinebuild": "gbquad4kpro",
+  "image": "8.1.0~beta",
+  "imagebuild": "20261031",
+  "upstream_commit": "266beaa50c464f1a6983a3a64133f6047482aee8",
+  "crash_log_filename": "20261101-152548-enigma2-crash.log",
+  "crash_log_sha256": "7da66b5ab774dc3a78c2b490ea8150651f10c34cd0ceff80a55ad8b8ebea9321",
+  "fatal_trigger": "Opening VideoEnhancementSetup from the native menu",
+  "exception": "AttributeError: 'Label' object has no attribute 'isAnimated'",
+  "root_cause": "Skin source=description render=Label connects native GUIComponent Label to a renderer expecting an Element source; its animation policy dereferences source.isAnimated during Screen.show.",
+  "repair": "Bind the existing native component through name=description. Preserve every geometry/style attribute and leave native animated StaticText sources intact.",
+  "regression": {
+    "original_crash_reproduced": true,
+    "corrected_open_hide_reopen": true,
+    "live_description_updates": true,
+    "native_source_animation_policy_preserved": true,
+    "tests": 6,
+    "native_widget_backend": "stubbed; actual pinned Python classes executed"
+  },
+  "pending_nonfatal_messages": [
+    "SetupSummary missing source entry",
+    "SetupSummary missing source value"
+  ],
+  "pending_message_scope": "Exact active summary controller and display skin are not identified by this log; no confirmed repair is claimed for these warnings.",
+  "physical_receiver_confirmation": false,
+  "production_or_native_test_update_feeds_modified": false
+}
