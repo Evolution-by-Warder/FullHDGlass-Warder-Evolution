@@ -1,3 +1,11 @@
+# Stable 1.0.55 — 1 November 2026
+
+Owner confirmed fast bitrate startup and measured video/audio on GigaBlue, including FTA and encrypted CANAL+ services. Stable v1.0.55 is public/latest and both native update profiles now point to its verified raw main/packages IPK. Public package SHA256: 9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db; 17204826 bytes. Build: f712696ce3d2688fe363b09023b43cd74bfcc4a2; workflow 41292891930. Promotion workflow 41293148989 succeeded without rebuilding. See reports/bitrate-stable55-20261101.json.
+
+The normal version 1.0.55 intentionally follows 1.0.54-test5 so native package ordering accepts the upgrade. Receiver-approved helper bytes are identical to test5. Diagnostic logging is disabled by default. The legacy update.json migration bridge remains 1.0.18. MIPS and Dreambox physical validation remains pending. Do not replace any published IPK bytes.
+
+---
+
 # Update channel repair — 29 October 2026
 
 Owner reported that installed TEST2 did not see production 1.0.41. TEST2 selects warder-modernization-work/update-test.json, which incorrectly remained at legacy 1.0.18. The native TEST feed now mirrors the verified production manifest, and the publisher advances both native channels together. main/update.json alone remains the primary historical migration bridge; installer refusal of unprepared legacy packages remains. Actual TEST2 IPK updater methods and worker were compared with the regression path; automatic and manual offers passed. Runtime, package bytes, version, colour frames and settings unchanged. Details: docs/UPDATE-CHANNEL-REPAIR-2026-10-29.json.

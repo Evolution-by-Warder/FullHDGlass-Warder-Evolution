@@ -2,20 +2,20 @@
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
   "status": "production-update-active",
-  "approved_on": "2026-10-31",
-  "approval": "Owner accepted the generated DAB+ information fallback and requested replacing the old version with the updated release. Since 1.0.48 was already publicly published, the owner was informed that 1.0.49 will replace it in the updater and replied OK. Existing DAB dual windows, original satellite/IPTV single-window layout and settings-header cleanup remain included.",
-  "source_branch": "warder-modernization-work",
-  "source_commit": "ea6addb334e0b838ba2bb6334f42caee0043fc06",
+  "approved_on": "2026-11-01",
+  "approval": "Owner confirmed actual bitrate and fast startup on GigaBlue and requested a normal release immediately in the update profile.",
+  "source_branch": "main",
+  "source_commit": "f712696ce3d2688fe363b09023b43cd74bfcc4a2",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.49",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.49_all.ipk",
-    "sha256": "2287117cb037aca0ddf5ba2bc76ecd3b7cc7232862d53218fbdcce8483d85d63",
-    "changelog": "Predvolená grafika DAB+ informácií pri chýbajúcom obrázku stanice. Prijaté DAB obrázky ju automaticky nahradia.",
-    "tag": "v1.0.49",
-    "bytes": 16341854,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.49/enigma2-plugin-skins-fullhdglass_1.0.49_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.49"
+    "version": "1.0.55",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk",
+    "sha256": "9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db",
+    "changelog": "Opravené meranie bitrate videa a zvuku a rýchlejší nábeh po prepnutí kanála. Oprava platí pre všetky typy infobaru. Po aktualizácii reštartujte GUI.",
+    "tag": "v1.0.55",
+    "bytes": 17204826,
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.55/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.55"
   },
   "preview_assets": {
     "help": {
@@ -38,9 +38,10 @@
     "bytes": 14759486
   },
   "validation": {
-    "workflow_run": 41182087395,
+    "workflow_run": 41292891930,
     "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed spinner and compact History in 1.0.47. DAB dual artwork, section-title removal and the new fallback are automatically checked. Owner approved the generated fallback preview; physical receiver confirmation of these newer changes is pending."
+    "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
+    "report": "reports/bitrate-stable55-20261101.json"
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -57,13 +58,13 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "1.0.49 is the next normal production update; package identity and settings preserved.",
+  "version_policy": "Normal stable 1.0.55 upgrades from stable 1.0.53 and 1.0.54-test5 without force installation. Published IPKs are immutable.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner confirmed the repaired virtual keyboard display on the physical receiver on 30 October 2026 and supplied a screenshot showing the input description, mode, aligned keyboard, locale and button captions.",
+  "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
