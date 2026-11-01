@@ -1,0 +1,147 @@
+{
+  "package_sha256": "e00abf5a30741152b3e1d1ea7908bb95914f87befbe94d91a97e80c65b2083a7",
+  "bytes": 17204828,
+  "helpers": {
+    "arm": {
+      "sha256": "3c84e25e402eafa0806b967396c23ea0ae773ded21fbc525f86c8b5c8e43ccb0",
+      "bytes": 341188,
+      "static": true,
+      "machine": 40
+    },
+    "mipsel": {
+      "sha256": "f9206f37ce997dcd114375bb01c12538eab52611c40f60a637301ae170a52cb4",
+      "bytes": 56976,
+      "static": true,
+      "machine": 8,
+      "soft_float": true
+    },
+    "aarch64": {
+      "sha256": "02662c720ba8f152a1c8033688772c1ea6bef99de2eeb6eb297e07a208cf012e",
+      "bytes": 532408,
+      "static": true,
+      "machine": 183
+    }
+  },
+  "obsolete_arm_helper_removed": true,
+  "remaining_legacy_helpers_and_approved_artwork_unchanged": true,
+  "packaged_runtime_matches_tested_source": true,
+  "mips_targets": {
+    "mipsel": {
+      "isa": "mips32r2",
+      "byteorder": "little",
+      "minimum_kernel": [
+        3,
+        2,
+        0
+      ],
+      "requires_fpu": false
+    }
+  },
+  "date": "2026-11-01",
+  "source_commit": "6e9cd1b3af66235b8a7d5324efc6b59c13fd8622",
+  "workflow_run": 41291158005,
+  "workflow_conclusion": "success",
+  "builds": [
+    {
+      "source_sha256": "79be9e63e01aab60cc66b753d6add647874f7a4a343da50f1ea85de6ac4d27d5",
+      "helper_sha256": "3c84e25e402eafa0806b967396c23ea0ae773ded21fbc525f86c8b5c8e43ccb0",
+      "bytes": 341188,
+      "compiler": "arm-linux-gnueabihf-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "architecture": "arm, static little endian",
+      "minimum_kernel": [
+        3,
+        2,
+        0
+      ],
+      "requires_fpu": null,
+      "qemu_probes": {
+        "default": {
+          "passed": true,
+          "returncode": 0,
+          "cli_checked": true,
+          "missing_device_checked": true
+        }
+      },
+      "legacy_helpers_modified": false
+    },
+    {
+      "source_sha256": "79be9e63e01aab60cc66b753d6add647874f7a4a343da50f1ea85de6ac4d27d5",
+      "helper_sha256": "f9206f37ce997dcd114375bb01c12538eab52611c40f60a637301ae170a52cb4",
+      "bytes": 56976,
+      "compiler": "clang version 18.1.6 (https://github.com/ziglang/zig-bootstrap 98bc6bf4fc4009888d33941daf6b600d20a42a56)",
+      "architecture": "mipsel, static little endian",
+      "minimum_kernel": [
+        3,
+        2,
+        0
+      ],
+      "requires_fpu": false,
+      "qemu_probes": {
+        "24Kc": {
+          "passed": true,
+          "returncode": 0,
+          "cli_checked": true,
+          "missing_device_checked": true
+        },
+        "24Kf": {
+          "passed": true,
+          "returncode": 0,
+          "cli_checked": true,
+          "missing_device_checked": true
+        }
+      },
+      "legacy_helpers_modified": false,
+      "toolchain_url": "https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz",
+      "toolchain_archive_sha256": "d45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea",
+      "libc": "musl, software floating point"
+    },
+    {
+      "source_sha256": "79be9e63e01aab60cc66b753d6add647874f7a4a343da50f1ea85de6ac4d27d5",
+      "helper_sha256": "02662c720ba8f152a1c8033688772c1ea6bef99de2eeb6eb297e07a208cf012e",
+      "bytes": 532408,
+      "compiler": "aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "architecture": "aarch64, static little endian",
+      "minimum_kernel": [
+        3,
+        7,
+        0
+      ],
+      "requires_fpu": null,
+      "qemu_probes": {
+        "default": {
+          "passed": true,
+          "returncode": 0,
+          "cli_checked": true,
+          "missing_device_checked": true
+        }
+      },
+      "legacy_helpers_modified": false
+    }
+  ],
+  "tests": {
+    "runtime_methods": 19,
+    "diagnostic": 3,
+    "architecture_compatibility": 10,
+    "native_executable_dvb_simulator": 6,
+    "ts_read_boundaries_per_probe": 565,
+    "arm_qemu": "pass",
+    "mips_24Kc_no_fpu": "pass",
+    "mips_24Kf": "pass",
+    "aarch64_qemu": "pass",
+    "old_arm_helper_removed": true,
+    "initial_delay_ms": 750,
+    "pmt_retry_ms": 250,
+    "maximum_pmt_retries": 20,
+    "initial_zero_measurements_not_displayed": true
+  },
+  "physical_validation": {
+    "gigaBlue_arm_test3_ts_recovery": "confirmed by receiver diagnostic and screenshot",
+    "test5_faster_startup": "pending",
+    "mips": "not tested on physical receiver",
+    "dm900_dm920": "not tested on physical receiver",
+    "one_two": "not tested on physical receiver",
+    "requested_image": "OpenATV"
+  },
+  "public_update_feeds_modified": false,
+  "release": "v1.0.54-test5"
+}
