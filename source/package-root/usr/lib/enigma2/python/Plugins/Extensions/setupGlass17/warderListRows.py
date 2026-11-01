@@ -101,7 +101,7 @@ def install(gui_component, is_active, listbox, make_size, label=None):
                         fit(component, listbox, make_size)
                         fit_title(component, parent, label)
             # Screen.createGUIScreen treats plain functions as applet source
-            # and passes them to exec(). Native callbacks must be bound methods.
+            # and executes their source. Native callbacks must be bound methods.
             callback = MethodType(finish, parent)
             callbacks.append(callback)
             if hasattr(parent, 'onShow'):
