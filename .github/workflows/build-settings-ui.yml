@@ -118,6 +118,7 @@ jobs:
   openatv-compatibility:
     uses: ./.github/workflows/verify-system-screen-compatibility.yml
   settings-test:
+    if: github.event_name == 'workflow_dispatch'
     needs: openatv-compatibility
     runs-on: ubuntu-latest
     permissions:
@@ -245,3 +246,19 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 tools/prune-stale-skin-packages.py
+
+  stop-superseded-automatic-publisher:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: Evolution-by-Warder/FullHDGlass-Warder-Evolution
+    steps:
+      - name: Stop obsolete automatic build without touching published packages
+        run: |
+          STATUS=$(gh run view 41341912138 --json status --jq .status)
+          if [ "$STATUS" != completed ]; then gh run cancel 41341912138; fi
+          echo "This historical branch mirrors the native test feed. Normal releases are published and verified from main."

@@ -1,0 +1,3 @@
+# Historical test-channel mirror
+
+The installed native TEST updater still reads this branch's update-test.json. It mirrors the verified main production manifest, currently 1.0.61, and downloads the exact production IPK from main/packages. Source on this historical branch is older than main and is not the approved release source. Feed isolation inventory is kept current. Normal release build/promotion occurs from main and the approved repair branch. Automatic pushes here must not republish the obsolete source version or prune current release packages; the historical publisher runs only on explicit workflow_dispatch.
