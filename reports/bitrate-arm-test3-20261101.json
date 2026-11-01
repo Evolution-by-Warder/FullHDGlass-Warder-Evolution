@@ -45,7 +45,23 @@
     "legacy_helper_binaries_byte_identical": true,
     "approved_artwork_byte_identical": true,
     "public_update_feeds_modified": false,
-    "receiver_test3_verified": false
+    "receiver_test3_verified": true
   },
-  "publication_gate": "Do not promote until nonzero video is confirmed on the receiver. Future stable builds must compile and include the new ARM helper."
+  "publication_gate": "ARM recovery confirmed on the user's GigaBlue FTA DVB-S2 service. Other receivers and MIPS remain unverified on physical hardware.",
+  "receiver_confirmation": {
+    "device": "User GigaBlue",
+    "cpu": "armv7l",
+    "service": "Das Erste HD (FTA, DVB-S2)",
+    "helper_sha256": "79f21c0a5176b5def8e3c7465439d4afc5b4f8e60c1123587711ef590cec4c94",
+    "initial_zero_pes_samples": 3,
+    "ts_fallback_seconds": 3.21,
+    "first_nonzero_video_kbps": 7052,
+    "first_nonzero_seconds": 4.277,
+    "continued_nonzero_video_samples": 6,
+    "screenshot": {
+      "video_kbps": 12015,
+      "audio_kbps": 514
+    },
+    "user_confirmed_working": true
+  }
 }
