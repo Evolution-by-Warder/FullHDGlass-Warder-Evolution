@@ -1,3 +1,11 @@
+# FullHDGlass 1.0.61 — approved release — 1 November 2026
+
+The owner approved TEST3 and requested the normal release. Menu row clipping, long header wrapping, graphical EPG timeline, CoolTVGuide captions/window frames and setup receiver-display sources are completed in 1.0.61. The TEST1 startup regression is fixed and covered by native callback tests. Keep all approved 1.0.59 behavior, graphics, helpers and five-entry History.
+
+After this release, continue the broader OpenATV 8.1 skin/plugin audit on a separate candidate. PiconHub/GSU retain their pending five-entry History request for their next functional releases. The older holds and pending repair entries below are historical; they do not override this explicit release approval.
+
+---
+
 # FullHDGlass 1.0.59 — owner approval — 1 November 2026
 
 The owner reports everything is now OK on test3 and explicitly authorizes a normal release. Retain the exact approved LCD4linux/Quick Menu runtime and artwork as 1.0.59, which upgrades natively over all 1.0.58-test versions. Include the regular production and native test update feeds.

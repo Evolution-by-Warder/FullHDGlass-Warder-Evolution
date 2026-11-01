@@ -1,8 +1,8 @@
-name: FullHDGlass list row clipping test 1.0.60-test3
+name: FullHDGlass approved stable release 1.0.61
 on:
   push:
     branches: [fix/list-row-clipping-20261101]
-    paths: [source/**, tools/**, docs/FULLHDGLASS-1.0.60-test3.md, .github/workflows/openatv81-receiver-repair.yml]
+    paths: [source/**, tools/**, docs/FULLHDGLASS-1.0.61.md, .github/workflows/openatv81-receiver-repair.yml]
 permissions:
   contents: read
 concurrency:
@@ -17,6 +17,7 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: write
+      pull-requests: write
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
@@ -72,7 +73,7 @@ jobs:
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.60-test3
+          name: FullHDGlass-1.0.61
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable IPK without advancing existing update feeds
@@ -80,14 +81,19 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.60-test3_all.ipk
-          TAG=v1.0.60-test3
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk
+          TAG=v1.0.61
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.60-test3' --notes-file docs/FULLHDGLASS-1.0.60-test3.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest --title 'FullHDGlass 1.0.61' --notes-file docs/FULLHDGLASS-1.0.61.md
           fi
-          gh release edit v1.0.60-test1 --prerelease --latest=false --title 'FullHDGlass 1.0.60-test1 - nahradene opravou test2' --notes 'Nepouzivajte test1: obsahuje chybu spatneho volania, ktora moze sposobit pad pri starte GUI. Opraveny balik: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.60-test3'
+          gh release edit v1.0.60-test1 --prerelease --latest=false --title 'FullHDGlass 1.0.60-test1 - nahradene opravou test2' --notes 'Nepouzivajte test1: obsahuje chybu spatneho volania, ktora moze sposobit pad pri starte GUI. Opraveny balik: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.61'
 
+
+      - name: Mark the approved repair pull request ready for integration
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr ready 18
