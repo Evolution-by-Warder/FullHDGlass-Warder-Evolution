@@ -153,6 +153,7 @@ def main():
     values.update({p['filename']:p['sha256'] for p in new_meta});values['manifest.json']=sha(manifest.read_bytes())
     sums.write_text(''.join(h+'  '+n+'\n' for n,h in sorted(values.items())))
     report={'policy':'Copy existing identical Canal+ SK/CZ native 23.5E PNG bytes to full-position packages; retain all unrelated artwork and published archives.','package_variants':len(reports),'replaced_pngs':sum(len(r['replaced']) for r in reports),'added_native_pngs':sum(len(r['added']) for r in reports),'unrelated_packages_preserved':len(untouched_before),'canal_provider_packages_unchanged':True,'other_positions_unchanged':True,'old_immutable_archives_preserved':True,'ipk_changed':False,'packages':reports,'receiver_checks':checks}
+    (ROOT/'reports').mkdir(parents=True,exist_ok=True)
     (ROOT/'reports/canal-unification-20261101.json').write_text(json.dumps(report,indent=2)+'\n')
     write_summary(report)
     print('COMPLETE',json.dumps({k:report[k] for k in ('package_variants','replaced_pngs','added_native_pngs','unrelated_packages_preserved')}),flush=True)

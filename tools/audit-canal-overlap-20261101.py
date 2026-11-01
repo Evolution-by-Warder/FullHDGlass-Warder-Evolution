@@ -74,7 +74,7 @@ def audit(document):
 
 def main():
  document=json.loads((DATA/'manifest.json').read_text());loaded,reports=audit(document)
- path=ROOT/'reports/canal-overlap-audit-20261101.json';path.write_text(json.dumps({'groups':reports,'total_replacements':sum(len(r['replacements']) for r in reports)},indent=2)+'\n')
+ path=ROOT/'reports/canal-overlap-audit-20261101.json';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps({'groups':reports,'total_replacements':sum(len(r['replacements']) for r in reports)},indent=2)+'\n')
  print(json.dumps({'total_replacements':sum(len(r['replacements']) for r in reports),'groups':[{'resolution':r['resolution'],'family':r['family'],'replacements':len(r['replacements']),'conflicts':len(r['provider_conflicts']),'invalid':r['invalid_native_images'],'missing':len(r['missing_from_full'])} for r in reports]},indent=2),flush=True)
 
 if __name__=='__main__':main()
