@@ -1940,14 +1940,14 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
 				</convert>
     </widget>
   </screen>
-  <screen name="Opkg" position="center,60" size="1800,960" title="Software update">
-  <widget name="activityslider" position="60,92" size="1680,16" borderWidth="1" borderColor="#006ab2e7" foregroundColor="#002a70ad" backgroundColor="#00102136" />
-  <widget name="slider" position="60,865" size="1680,16" borderWidth="1" borderColor="#006ab2e7" foregroundColor="#002a70ad" backgroundColor="#00102136" />
-  <widget name="package" position="60,52" size="1680,36" font="Prive3;24" halign="left" valign="center" />
-  <widget name="status" position="60,10" size="1680,40" font="Prive3;28" halign="left" valign="center" />
-  <widget name="log" position="60,120" size="1680,720" font="Prive3;27" scrollbarMode="showOnDemand" />
-  <widget source="key_red" render="Label" position="60,900" size="420,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
-  <widget source="key_blue" render="Label" position="1320,900" size="420,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
+  <screen name="Opkg" position="center,center" size="1200,675" title="Software update">
+  <widget name="activityslider" position="30,150" size="1140,16" borderWidth="1" borderColor="#006ab2e7" foregroundColor="#002a70ad" backgroundColor="#00102136" />
+  <widget name="slider" position="30,560" size="1140,16" borderWidth="1" borderColor="#006ab2e7" foregroundColor="#002a70ad" backgroundColor="#00102136" />
+  <widget name="package" position="30,100" size="1140,36" font="Prive3;24" halign="left" valign="center" />
+  <widget name="status" position="30,20" size="1140,72" font="Prive3;28" halign="left" valign="center" />
+  <widget name="log" position="30,185" size="1140,360" font="Prive3;27" scrollbarMode="showOnDemand" />
+  <widget source="key_red" render="Label" position="30,600" size="420,45" font="Prive3;30" halign="center" foregroundColor="red" transparent="1" />
+  <widget source="key_blue" render="Label" position="750,600" size="420,45" font="Prive3;30" halign="center" foregroundColor="blue" transparent="1" />
 </screen>
   <screen name="OPKGMenu" position="center,150" size="1350,780" title="Select upgrade source to edit.">
     <widget source="key_red" render="Label" position="45,20" size="330,55" font="Regular;30" halign="center" valign="center" foregroundColor="red" transparent="1" />

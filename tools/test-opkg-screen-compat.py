@@ -118,7 +118,7 @@ class OpkgTests(unittest.TestCase):
         for name in ('status','package'):
             self.assertIsNotNone(screen.find("widget[@name='%s']"%name));self.assertIsNone(screen.find("widget[@source='%s']"%name))
         for name in ('activityslider','slider'):
-            bar=screen.find("widget[@name='%s']"%name);self.assertNotIn('pixmap',bar.attrib);self.assertEqual(bar.get('size'),'1680,16')
+            bar=screen.find("widget[@name='%s']"%name);self.assertNotIn('pixmap',bar.attrib);self.assertEqual(bar.get('size'),'1140,16')
         for name in ('Opkg','IpkgInstaller','OpkgInstaller'):
             screen=skin.find("screen[@name='%s']"%name);width,height=map(int,screen.get('size').split(','))
             for w in screen.findall('widget'):
