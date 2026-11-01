@@ -25,43 +25,47 @@ jobs:
         run: |
           set -euo pipefail
           mkdir /tmp/approved-repair
-          gh release download 'v1.0.59' --pattern 'enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk' --pattern 'enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk.sha256' --dir /tmp/approved-repair
-          test "$(stat -c %s '/tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk')" = '17206616'
-          printf '%s  %s\n' '2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee' '/tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk' | sha256sum --check
+          gh release download 'v1.0.61' --pattern 'enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk' --pattern 'enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk.sha256' --dir /tmp/approved-repair
+          test "$(stat -c %s '/tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk')" = '17210068'
+          printf '%s  %s\n' 'dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d' '/tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk' | sha256sum --check
           cd /tmp/approved-repair
-          sha256sum --check 'enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk.sha256'
+          sha256sum --check 'enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk.sha256'
       - name: Promote existing release without rebuilding or replacing assets
         run: |
           set -euo pipefail
-          gh release edit 'v1.0.59' --draft=false --prerelease=false --latest --notes-file docs/APPROVED-REPAIR-RELEASE.md
-          gh release view 'v1.0.59' --json tagName,isDraft,isPrerelease,assets
+          gh release edit 'v1.0.61' --draft=false --prerelease=false --latest --notes-file docs/APPROVED-REPAIR-RELEASE.md
+          gh release view 'v1.0.61' --json tagName,isDraft,isPrerelease,assets
       - name: Publish the same verified bytes at the installed updater URL
         run: |
           set -euo pipefail
           mkdir -p packages
-          cp /tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk packages/
-          cp /tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk.sha256 packages/
+          cp /tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk packages/
+          cp /tmp/approved-repair/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk.sha256 packages/
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
           bridge = Path('update.json').read_bytes()
           assert json.loads(bridge)['version'] == '1.0.18'
-          package = Path('packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk')
-          assert hashlib.sha256(package.read_bytes()).hexdigest() == '2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee'
+          package = Path('packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk')
+          assert hashlib.sha256(package.read_bytes()).hexdigest() == 'dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d'
           for filename in ('update-production.json', 'update-test.json'):
               data = json.loads(Path(filename).read_text())
-              assert data['version'] in ('1.0.57', '1.0.59'), filename
-              data.update(version='1.0.59',
-                  package_url='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk',
-                  sha256='2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee',
-                  changelog='Čitateľné farebné tlačidlá a trvalé Menu v LCD4linux, prehľadnejšie Rýchle menu a správne farebné prúžky aj na TV. Po aktualizácii reštartujte GUI.')
+              assert data['version'] in ('1.0.59', '1.0.61'), filename
+              data.update(version='1.0.61',
+                  package_url='https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk',
+                  sha256='dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d',
+                  changelog='Opravené orezávanie ponúk, hlavičiek a časovej osi EPG, popisy CoolTVGuide a displej nastavení prijímača. Po aktualizácii reštartujte GUI.')
               Path(filename).write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+          production = Path('docs/PRODUCTION.json')
+          status = json.loads(production.read_text())
+          status['status'] = 'production-update-active'
+          production.write_text(json.dumps(status, ensure_ascii=False, indent=2) + '\n')
           assert Path('update.json').read_bytes() == bridge
           PY
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk.sha256 update-production.json update-test.json
+          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk.sha256 update-production.json update-test.json docs/PRODUCTION.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Activate verified FullHDGlass 1.0.59 package and native update feeds atomically'
+            git commit -m 'Activate verified FullHDGlass 1.0.61 package and native update feeds atomically'
             git push origin HEAD:main
           fi
