@@ -1,0 +1,44 @@
+name: Publish approved TA3 from Canal+ in full 23.5E
+on:
+  push:
+    branches: [picons/ta3-canal-20261101]
+    paths: [tools/publish-ta3-canal-20261101.py, .github/workflows/publish-ta3-canal-20261101.yml]
+permissions:
+  contents: write
+concurrency:
+  group: warder-ta3-canal-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-ta3-canal-20261101.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replace one approved PNG and verify all other bytes
+        run: python tools/publish-ta3-canal-20261101.py
+      - name: Commit verified data-only publication
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/ta3-canal-235e-20261101.json
+          git diff --cached --check
+          git commit -m 'Unify TA3 black 220x132 with approved Canal+ artwork'
+          git push origin HEAD:refs/heads/picons/ta3-canal-20261101
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ta3-canal-publication-verification
+          path: reports/ta3-canal-235e-20261101.json
