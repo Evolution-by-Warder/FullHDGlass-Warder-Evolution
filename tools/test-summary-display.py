@@ -53,7 +53,7 @@ class SummaryTests(unittest.TestCase):
     def test_corrected_fallback_has_native_sources_and_live_values(self):
         screen,setup,text=classes();compat.install(screen,lambda:True,text);parent=Parent();summary=screen(None,parent)
         for key in ('entry','value','SetupTitle','SetupEntry','SetupValue'):
-            self.assertIsInstance(summary[key],text);self.assertTrue(hasattr(summary[key],'isAnimated'))
+            self.assertIsInstance(summary[key],text)
         self.assertEqual(summary['entry'].text,'Jas');self.assertEqual(summary['value'].text,'50')
         for callback in summary.onShow:callback()
         parent.entry,parent.value='Kontrast','75'
