@@ -1,3 +1,10 @@
+## 1.0.62-test1 — 2026-11-01 — isolated OpenATV 8.1 candidate
+
+- Fix PicturePlayer caption sources and optional blue-caption binding, PiP dish Boolean/pixmap rendering, PositionerSetupLog native buttons and legacy Swap Label captions.
+- Preserve all existing geometry, fonts, images, helpers and 1.0.61 behavior. Normal production remains 1.0.61; receiver confirmation of this candidate is pending.
+- Add stable/beta/master native checks, typed skin binding inspection and native replay. Preserve the frozen original controller fingerprint through exact reviewed bitrate/adapter records.
+- Public byte verification: reports/openatv81-candidate-public-20261101.json.
+
 ## 1.0.61 — 2026-11-01
 
 - Promote owner-approved 1.0.60-test3 repairs: whole native list rows, safe single-line headers and complete graphical EPG timeline.

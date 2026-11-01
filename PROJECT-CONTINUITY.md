@@ -1,3 +1,15 @@
+# OpenATV 8.1 candidate verified — 1 November 2026
+
+Public immutable prerelease 1.0.62-test1 is available, with production 1.0.61 unchanged. Build source 7ed8406eaa7967d423fde5972a521a7fc6acf1cb; successful release workflow 41347139394; PR19 stays draft for receiver confirmation. Public IPK: 17,210,206 bytes, SHA256 8c3f807614d5c48caa9e54399cb1447c1f13b2753a4ae8a5694c80ba9add6013. Independent public download, sidecar, all 1,497 payload files, unchanged installer hooks/helpers and the exact four XML edits were verified. Runtime Python differs from 1.0.61 only in version labels; localized History is updated.
+
+Three-ref native interface/binding/replay checks passed for 8.0, 8.0-next and master. All 24 presentation/controller regression tests passed while preserving the original 1.0.15 controller fingerprint; exact previously approved bitrate/adapter hooks are now registered instead of resetting it. The package worker also passed the existing menu row, EPG, CoolTVGuide, summary display, font, LCD, Quick Menu, bitrate, radio, spinner, startup and bytecode checks. Initial package testing exposed an older-worker parser limitation for unrelated new f-string syntax; the fixture now parses the exact constructor without changing receiver code.
+
+PiconHub PR15 merged as ea574670389dc18b47af034b467600a24aea664a; main matrix 41346221689 passed and 214 plugin tests passed locally. GSU PR3 merged as 47d5ecd296754da07781ac59fd4054d2965acc99; main matrix 41346225920 passed and 393 plugin tests passed locally. Each change is limited to six compatibility/workflow files: no receiver runtime, package version, asset or feed changes.
+
+FullHDGlass main production/test profiles and the historical native TEST mirror are byte-identical to 1.0.61. main/update.json remains the unchanged 1.0.18 bridge. Physical receiver/GLES/WQHD validation and the recorded dynamic/generated-layout work remain pending. If approved, use normal 1.0.63 for native upgrade ordering. Evidence: reports/openatv81-candidate-public-20261101.json and reports/openatv81-continuation-20261101.json.
+
+---
+
 # OpenATV 8.1 continuation — 1 November 2026
 
 Owner requested continuing autonomously while asleep. Work is isolated on audit/openatv81-continuation-20261101; production 1.0.61 and all updater manifests remain unchanged. Candidate 1.0.62-test1 repairs four reviewed screens: PicturePlayer captions, PiP dish Boolean/pixmap binding, PositionerSetupLog native Button bindings, and legacy Swap Label captions. Exact edits are recorded in design/openatv81-bindings/skin-edits.json. These are source/native-class tests, not physical receiver/GLES validation.

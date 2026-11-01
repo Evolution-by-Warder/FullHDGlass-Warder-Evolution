@@ -4,7 +4,7 @@ Owner requested continuing autonomously while asleep. Work is isolated on audit/
 
 Cross-project checks now cover stable 8.0, 8.0-next (8.1 beta) and current master, including pull requests. FullHDGlass adds typed/inherited widget binding inspection and native screen replay. Five additional display contracts include setup summaries and the affected controllers. Reports distinguish checked bindings from dynamic/unresolved ones. PiconHub/GSU runtime and version remain unchanged; their separate five-entry History request stays pending until a functional release.
 
-Remaining: generated/assembled plugin layouts and the recorded unresolved fields need separate native replay/review; physical receiver/GLES/WQHD validation remains pending. Never claim the static audit covers all dynamic plugin screens. Review the candidate before any new normal release.
+Remaining: generated/assembled plugin layouts and the recorded unresolved fields need separate native replay/review; physical receiver/GLES/WQHD validation remains pending. Never claim the static audit covers all dynamic plugin screens. Review the candidate before any new normal release. If accepted, use normal 1.0.63 so native package ordering upgrades from 1.0.62-test1 without a downgrade override.
 
 ---
 
