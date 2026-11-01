@@ -1,12 +1,12 @@
-name: FullHDGlass approved stable 1.0.59
+name: FullHDGlass list row clipping test 1.0.60-test1
 on:
   push:
-    branches: [fix/lcd4linux-footer-20261101]
-    paths: [source/**, tools/**, docs/FULLHDGLASS-1.0.59.md, .github/workflows/openatv81-receiver-repair.yml]
+    branches: [fix/list-row-clipping-20261101]
+    paths: [source/**, tools/**, docs/FULLHDGLASS-1.0.60-test1.md, .github/workflows/openatv81-receiver-repair.yml]
 permissions:
   contents: read
 concurrency:
-  group: fullhdglass-lcd4linux-footer
+  group: fullhdglass-list-row-clipping
   cancel-in-progress: true
 jobs:
   openatv:
@@ -39,6 +39,8 @@ jobs:
           sudo apt-get install -y -qq --no-install-recommends ffmpeg
       - name: Verify real catalog, native selection, paging, sizing and existing behavior
         run: |
+          python tools/fetch-openatv81-fixture.py /tmp/warder-list-row-fixture
+          python tools/test-list-row-fit.py --upstream /tmp/warder-list-row-fixture -v
           python tools/test-config-font-compat.py -q
           python tools/test-history-radio-header.py -q
           python tools/test-lcd4linux-footer.py -q
@@ -64,7 +66,7 @@ jobs:
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.59
+          name: FullHDGlass-1.0.60-test1
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable IPK without advancing existing update feeds
@@ -72,12 +74,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk
-          TAG=v1.0.59
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.60-test1_all.ipk
+          TAG=v1.0.60-test1
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.59' --notes-file docs/FULLHDGLASS-1.0.59.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.60-test1' --notes-file docs/FULLHDGLASS-1.0.60-test1.md
           fi
+

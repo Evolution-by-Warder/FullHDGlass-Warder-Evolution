@@ -14,7 +14,8 @@
     "Components/VariableValue.py": "15a5d2b6b2d37cb8bc38eb14930d879776c6b9eb1e16d11841777006f9736e16",
     "Plugins/SystemPlugins/VideoEnhancement/plugin.py": "e57e24b24ce01db763075f343763112dd035f59b08435d67f27d9e90ae185fc5",
     "Screens/Opkg.py": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4",
-    "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0"
+    "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
+    "Components/MenuList.py": "abe4edfc4aab2b98a25ca722100c26e35d214f0c87a653ef2ed500d30922b106"
   },
   "extra_revisions": {
     "legacy/Screens/Opkg.py": {
