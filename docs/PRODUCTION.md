@@ -1,9 +1,9 @@
-# FullHDGlass Warder Evolution — production
+# FullHDGlass 1.0.61 — production
 
-Version **1.0.41** is the owner-authorized production promotion of the TEST2 radio renderer and ecosystem runtime cleanup, approved 29 October 2026. The owner retained the current 84 columns, 3px/1px geometry, original colours, transparency and motion; brighter preview variants were rejected and restored before this release.
+The owner approved 1.0.60-test3 on 1 November 2026 and explicitly requested a normal release. Version 1.0.61 contains the approved repairs for complete menu rows, long headers, EPG timeline, CoolTVGuide captions/window framing and live setup receiver-display text. The bound layout callback startup correction is preserved.
 
-Stable 1.0.41 upgrades normally from both production 1.0.39 and candidate 1.0.40-test2. A plain 1.0.40 would sort below the TEST2 package in Debian/opkg-style version ordering, so the patch number advances to 1.0.41.
+The public IPK passed the release workflow and independent download/payload verification. Runtime code, layouts, graphics and helpers are identical to TEST3 apart from version labels; localized History is updated. Native package ordering accepts upgrades from 1.0.59 and all 1.0.60-test builds.
 
-The built-in updater remains `main/update-production.json`, using verified raw-GitHub IPK bytes and SHA256. Feeds activate only after automated checks, every installed-payload byte and independent public download verification. The primary legacy 1.0.18 bridge in main/update.json remains unchanged. The native TEST channel update-test.json follows the verified stable release, so installed TEST2 clients also receive 1.0.41. Existing picon archives and the authoritative live catalogue are preserved.
+Production activation verifies the immutable public IPK and checksum before publishing exactly the same bytes to main/packages and advancing both main native update profiles together. The historical modernization test profile mirrors production. main/update.json stays at the unchanged legacy 1.0.18 bridge. Exact release and activation status is recorded in PRODUCTION.json and reports/stable61-public-20261101.json; actual installed updater checks are recorded in reports/stable61-live-updater-20261101.json.
 
-Package/runtime identities, saved settings, existing lyrics/artwork, RDS/DAB ownership and original author credits remain. This production authorization does not claim exhaustive new physical receiver or CPU measurements. Exact source, release and validation are in [PRODUCTION.json](PRODUCTION.json).
+Existing settings, graphics, approved LCD4linux/Quick Menu behavior, bitrate helpers and original author credits remain. This release does not claim exhaustive physical receiver validation.

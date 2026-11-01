@@ -14,13 +14,56 @@
     "Components/VariableValue.py": "15a5d2b6b2d37cb8bc38eb14930d879776c6b9eb1e16d11841777006f9736e16",
     "Plugins/SystemPlugins/VideoEnhancement/plugin.py": "e57e24b24ce01db763075f343763112dd035f59b08435d67f27d9e90ae185fc5",
     "Screens/Opkg.py": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4",
-    "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0"
+    "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
+    "Components/MenuList.py": "abe4edfc4aab2b98a25ca722100c26e35d214f0c87a653ef2ed500d30922b106",
+    "Components/EpgList.py": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488",
+    "Screens/Setup.py": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af"
   },
   "extra_revisions": {
     "legacy/Screens/Opkg.py": {
       "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
       "path": "Screens/Opkg.py",
       "sha256": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4"
+    },
+    "legacy/Components/GUIComponent.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Components/GUIComponent.py",
+      "sha256": "93abe69e6f10de1929aeaf3a291d8b73fe769e1197e8f523e3d0cdc4e4f11ab7"
+    },
+    "legacy/Components/MenuList.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Components/MenuList.py",
+      "sha256": "abe4edfc4aab2b98a25ca722100c26e35d214f0c87a653ef2ed500d30922b106"
+    },
+    "legacy/Screens/Screen.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Screens/Screen.py",
+      "sha256": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0"
+    },
+    "legacy/Components/EpgList.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Components/EpgList.py",
+      "sha256": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488"
+    },
+    "legacy/Screens/Setup.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Screens/Setup.py",
+      "sha256": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af"
+    },
+    "legacy/Components/Element.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Components/Element.py",
+      "sha256": "f743d337938bc6de766e4361e10599c9d106a6279bcc72eebd883bb7241615da"
+    },
+    "legacy/Components/Sources/Source.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Components/Sources/Source.py",
+      "sha256": "7803fe01e02f64972709f1968d691e29d27878fc0dc7f115f78059b5a0b97572"
+    },
+    "legacy/Components/Sources/StaticText.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Components/Sources/StaticText.py",
+      "sha256": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42"
     }
   }
 }

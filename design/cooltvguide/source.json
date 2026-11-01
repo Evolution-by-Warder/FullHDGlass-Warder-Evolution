@@ -1,0 +1,18 @@
+{
+  "source_upload": "enigma2-plugin-extensions-cooltvguide_Coolman_V8.0_py3_all(5).ipk",
+  "package_sha256": "ddd85ffeffdf74a2824d8395edd403aa2116747f4dff7db5a459f74990bb7379",
+  "plugin_sha256": "d7a9909248677a7a18ab382a1a007cfbedea40683cb405feb85db04332b025ba",
+  "fixture_sha256": "ef16abf6802a1903d85030b7d21f9a6e07aabb6e2a89bd2cab138ef3d53fca84",
+  "normalization": "AST unparse of reviewed fAzez constructor and painter dependencies; remove only constant if-0 dead code; no plugin imports or event logic executed during extraction.",
+  "class": "fAzez",
+  "builder": "ZiGNvxobF",
+  "methods": [
+    "ZiGNvxobF",
+    "__init__",
+    "aIVrvgXXkshxzE",
+    "rSOMAOuiujeAG",
+    "tdFZINDIiyzUx"
+  ],
+  "wrap_flag": 64,
+  "ellipsis_flag": 128
+}

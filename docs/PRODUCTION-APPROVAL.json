@@ -1,17 +1,17 @@
 {
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
-  "approved_on": "2026-10-31",
-  "production_version": "1.0.49",
+  "approved_on": "2026-11-01",
+  "production_version": "1.0.61",
   "approved_by": "repository owner",
-  "authorization": "Owner accepted the generated DAB+ information fallback and requested replacing the old version with the updated release. Since 1.0.48 was already publicly published, the owner was informed that 1.0.49 will replace it in the updater and replied OK. Existing DAB dual windows, original satellite/IPTV single-window layout and settings-header cleanup remain included.",
+  "authorization": "Ok, vydaj ostru verziu a zapis vsade co treba",
   "baseline": {
-    "version": "1.0.40-test2",
-    "source_commit": "2ea52ae40075944ca94fdcce1613db1faa59d82a",
-    "sha256": "07b1768dc735b92d92cdd1139a26b921c7abec57a41ad0ffd790ab16d0f23547",
-    "bytes": 14759486
+    "version": "1.0.60-test3",
+    "source_commit": "36c9121577fe1d10ae17680f165e204de7ccf2cd",
+    "sha256": "1bc971df06467db57e527d249958b735146fc7abe9f86e17d3f4c29b45ba30e8",
+    "bytes": 17210058
   },
-  "scope": "Predvolená grafika DAB+ informácií pri chýbajúcom obrázku stanice. Prijaté DAB obrázky ju automaticky nahradia.",
+  "scope": "Opravy orezávania ponúk, hlavičiek a časovej osi EPG, popisov CoolTVGuide a displeja prijímača.",
   "preview_assets": {
     "help": {
       "filename": "g17_setup_pict.zip",
@@ -26,15 +26,15 @@
       "url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/ui/icon-set-previews/warder-infobar-types.zip"
     }
   },
-  "version_policy": "1.0.49 normally upgrades already-published 1.0.48. Published version contents are not overwritten; internal package identity and settings remain preserved.",
+  "version_policy": "Normal 1.0.61 upgrades from 1.0.59 and all 1.0.60-test builds without forced installation. Published IPK bytes remain immutable.",
   "transition_version": "1.0.18",
-  "expected_main_sha": "46412809b5abd813c1e86b8bb74dfbc43b15f25d",
+  "expected_main_sha": "f33912e611e93a536aaaa1a6990dac64324a3bd5",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "previous_production": {
-    "version": "1.0.48",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.48_all.ipk",
-    "sha256": "94c84b5db63879789f34c3bfba8c51f392ce6b4743afc39ccdfeede9f44a0f52",
-    "changelog": "V DAB režime sa obrázky stanice a obal skladby zobrazujú samostatne. Čistejšia hlavička nastavení bez názvov rubrík pod dátumom."
+    "version": "1.0.59",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk",
+    "sha256": "2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee",
+    "changelog": "Čitateľné farebné tlačidlá a trvalé Menu v LCD4linux, prehľadnejšie Rýchle menu a správne farebné prúžky aj na TV. Po aktualizácii reštartujte GUI."
   },
-  "receiver_validation": "Owner confirmed spinner and compact History in 1.0.47. DAB dual artwork, section-title removal and the new fallback are automatically checked. Owner approved the generated fallback preview; physical receiver confirmation of these newer changes is pending."
+  "receiver_validation": "Owner approved the current TEST3 for normal release. This is not a claim of physical validation of all OpenATV versions or receiver models."
 }

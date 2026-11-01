@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.61",
+  "bytes": 17210068,
+  "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+  "source_commit": "72b921fcfb31722d0fbce85c08deade376d13cb0",
+  "workflow_run": 41341165906,
+  "approved_baseline": "1.0.60-test3",
+  "changed_files_from_approved_test3": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py"
+  ],
+  "all_runtime_code_layout_artwork_and_helpers_identical_to_approved_test3_except_version_labels": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "normal_upgrade_from_stable57_stable59_and_all_test60": true,
+  "owner_authorization": "Ok, vydaj ostru verziu a zapis vsade co treba",
+  "all_hardware_validation_claimed": false,
+  "public_checksum_sidecar_verified": true,
+  "workflow_conclusion": "success",
+  "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
+  "update_activation": "Verified activation follows on main via promote-approved-repair workflow; see stable61-live-updater-20261101.json for final feed evidence."
+}

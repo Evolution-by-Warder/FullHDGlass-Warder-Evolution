@@ -1,0 +1,2467 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.60-test1",
+  "baseline": "1.0.59",
+  "scope": "All packaged XML and literal Python screen definitions; shared runtime hook also covers inherited/default/plugin list row heights after desktop scaling. Horizontal/grid/spaced layouts are intentionally excluded.",
+  "tests": 11,
+  "backend": "Actual pinned GUIComponent and MenuList Python classes; list painting/navigation backend is a host fixture, not physical receiver validation.",
+  "static_vertical_lists": 243,
+  "fractional_viewports": 79,
+  "rows": [
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AdapterSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 315,
+      "row_height": 45,
+      "fitted_height": 315,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AdapterSetupConfiguration",
+      "widget": "menulist",
+      "width": 690,
+      "allocated_height": 480,
+      "row_height": 45,
+      "fitted_height": 450,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AudioSelection",
+      "widget": "config",
+      "width": 1380,
+      "allocated_height": 350,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BouquetSelector",
+      "widget": "menu",
+      "width": 1440,
+      "allocated_height": 780,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ChannelContextMenu",
+      "widget": "menu",
+      "width": 1440,
+      "allocated_height": 780,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ChoiceBox",
+      "widget": "list",
+      "width": 1110,
+      "allocated_height": 585,
+      "row_height": 45,
+      "fitted_height": 585,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DefaultSatLists",
+      "widget": "config",
+      "width": 840,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DefaultWizard",
+      "widget": "config",
+      "width": 900,
+      "allocated_height": 390,
+      "row_height": 45,
+      "fitted_height": 360,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGSelection",
+      "widget": "list",
+      "width": 870,
+      "allocated_height": 500,
+      "row_height": 50,
+      "fitted_height": 500,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "GraphMultiEPG",
+      "widget": "list",
+      "width": 1170,
+      "allocated_height": 648,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 8
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MessageBox",
+      "widget": "list",
+      "width": 1300,
+      "allocated_height": 200,
+      "row_height": 50,
+      "fitted_height": 200,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MessageBoxModal",
+      "widget": "list",
+      "width": 1300,
+      "allocated_height": 280,
+      "row_height": 50,
+      "fitted_height": 250,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MessageBox-template",
+      "widget": "list",
+      "width": 1140,
+      "allocated_height": 250,
+      "row_height": 50,
+      "fitted_height": 250,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MyTubePlayerMainScreen",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 42,
+      "row_height": 40,
+      "fitted_height": 40,
+      "partial_pixels_removed": 2
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MyTubeSettingsScreen",
+      "widget": "config",
+      "width": 915,
+      "allocated_height": 555,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 35
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MovieContextMenu",
+      "widget": "menu",
+      "width": 840,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MovieLocationBox",
+      "widget": "bookmarklist",
+      "width": 1590,
+      "allocated_height": 150,
+      "row_height": 40,
+      "fitted_height": 120,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "LocationBox",
+      "widget": "bookmarklist",
+      "width": 1590,
+      "allocated_height": 150,
+      "row_height": 40,
+      "fitted_height": 120,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MovieSelection",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 600,
+      "row_height": 75,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SuomipoekaMenu",
+      "widget": "config",
+      "width": 1620,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MovieSelectionSP",
+      "widget": "list",
+      "width": 1140,
+      "allocated_height": 690,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 10
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "NameserverSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 650,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "NetworkSetup",
+      "widget": "menu",
+      "width": 1260,
+      "allocated_height": 630,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "NimSetup",
+      "widget": "config",
+      "width": 1460,
+      "allocated_height": 790,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ParentalControlChangePin",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 675,
+      "row_height": 45,
+      "fitted_height": 675,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ParentalControlChangePin",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 555,
+      "row_height": 45,
+      "fitted_height": 540,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ParentalControlEditor",
+      "widget": "servicelist",
+      "width": 1410,
+      "allocated_height": 750,
+      "row_height": 45,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ParentalControlSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 675,
+      "row_height": 45,
+      "fitted_height": 675,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ParentalControlSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 555,
+      "row_height": 45,
+      "fitted_height": 540,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PluginDownloadBrowser",
+      "widget": "list",
+      "width": 1540,
+      "allocated_height": 720,
+      "row_height": 80,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Satfinder",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 510,
+      "row_height": 45,
+      "fitted_height": 495,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ScanSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 690,
+      "row_height": 45,
+      "fitted_height": 675,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ScanSimple",
+      "widget": "config",
+      "width": 1450,
+      "allocated_height": 630,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ServiceInfoSimple",
+      "widget": "infolist",
+      "width": 1780,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ServiceInfo",
+      "widget": "infolist",
+      "width": 1540,
+      "allocated_height": 720,
+      "row_height": 45,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ServiceScan",
+      "widget": "servicelist",
+      "width": 1410,
+      "allocated_height": 500,
+      "row_height": 45,
+      "fitted_height": 495,
+      "partial_pixels_removed": 5
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Setup",
+      "widget": "config",
+      "width": 1560,
+      "allocated_height": 615,
+      "row_height": 45,
+      "fitted_height": 585,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SkinSelection",
+      "widget": "config",
+      "width": 1560,
+      "allocated_height": 720,
+      "row_height": 45,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SimpleChannelSelection",
+      "widget": "list",
+      "width": 1620,
+      "allocated_height": 700,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SkinSelector",
+      "widget": "SkinList",
+      "width": 900,
+      "allocated_height": 750,
+      "row_height": 45,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Subtitles",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 750,
+      "row_height": 45,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimerOverview",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 610,
+      "row_height": 105,
+      "fitted_height": 525,
+      "partial_pixels_removed": 85
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SchedulerOverview",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 610,
+      "row_height": 105,
+      "fitted_height": 525,
+      "partial_pixels_removed": 85
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RecordTimerOverview",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 610,
+      "row_height": 105,
+      "fitted_height": 525,
+      "partial_pixels_removed": 85
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ConflictTimerOverview",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 610,
+      "row_height": 105,
+      "fitted_height": 525,
+      "partial_pixels_removed": 85
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimerEditList",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 735,
+      "row_height": 105,
+      "fitted_height": 735,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimerEntry",
+      "widget": "config",
+      "width": 1620,
+      "allocated_height": 520,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimerSanityConflict",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 610,
+      "row_height": 105,
+      "fitted_height": 525,
+      "partial_pixels_removed": 85
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimerSelection",
+      "widget": "timerlist",
+      "width": 1620,
+      "allocated_height": 840,
+      "row_height": 105,
+      "fitted_height": 840,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CDInfo",
+      "widget": "config",
+      "width": 1140,
+      "allocated_height": 712,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 32
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "OpkgInstaller",
+      "widget": "list",
+      "width": 1186,
+      "allocated_height": 540,
+      "row_height": 50,
+      "fitted_height": 500,
+      "partial_pixels_removed": 40
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "IpkgInstaller",
+      "widget": "list",
+      "width": 1186,
+      "allocated_height": 540,
+      "row_height": 50,
+      "fitted_height": 500,
+      "partial_pixels_removed": 40
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SoftwareManagerSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 650,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ImageWizard",
+      "widget": "config",
+      "width": 660,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RestoreMenu",
+      "widget": "filelist",
+      "width": 1180,
+      "allocated_height": 700,
+      "row_height": 50,
+      "fitted_height": 700,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BackupSelection",
+      "widget": "checkList",
+      "width": 1180,
+      "allocated_height": 700,
+      "row_height": 50,
+      "fitted_height": 700,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BackupSetup",
+      "widget": "config",
+      "width": 1620,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WebIfConfigScreen",
+      "widget": "config",
+      "width": 1620,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WebIfInterfaceConfigScreen",
+      "widget": "config",
+      "width": 1620,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VlcServerConfigScreen",
+      "widget": "config",
+      "width": 1620,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimeDateInput",
+      "widget": "config",
+      "width": 810,
+      "allocated_height": 150,
+      "row_height": 50,
+      "fitted_height": 150,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DreamPackageWizard",
+      "widget": "config",
+      "width": 660,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ScriptExecuter",
+      "widget": "list",
+      "width": 870,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoMountEdit",
+      "widget": "config",
+      "width": 1110,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "UserDialog",
+      "widget": "config",
+      "width": 1110,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CiSelection",
+      "widget": "entries",
+      "width": 870,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CAidSelect",
+      "widget": "list",
+      "width": 885,
+      "allocated_height": 607,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 7
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MMIDialog",
+      "widget": "entries",
+      "width": 870,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CIselectMainMenu",
+      "widget": "CiList",
+      "width": 885,
+      "allocated_height": 660,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "easyCIconfigMenu",
+      "widget": "ServiceList",
+      "width": 1047,
+      "allocated_height": 675,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 35
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "myProviderSelection",
+      "widget": "list",
+      "width": 1620,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "myChannelSelection",
+      "widget": "list",
+      "width": 1620,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CIconfigMenu",
+      "widget": "ServiceList",
+      "width": 1320,
+      "allocated_height": 225,
+      "row_height": 40,
+      "fitted_height": 200,
+      "partial_pixels_removed": 25
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VideoSetup",
+      "widget": "config",
+      "width": 1590,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VideoEnhancementSetup",
+      "widget": "config",
+      "width": 1590,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VideoEnhancementPreview",
+      "widget": "config",
+      "width": 825,
+      "allocated_height": 80,
+      "row_height": 40,
+      "fitted_height": 80,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CrashlogAutoSubmitConfiguration",
+      "widget": "config",
+      "width": 1035,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CleanupWizardConfiguration",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RSSFeedEdit",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RSSSetup",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ChoiceExplorer",
+      "widget": "list",
+      "width": 909,
+      "allocated_height": 301,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 21
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DiseqcTesterTestTypeSelection",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SecParameterSetup",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "GboxSuiteMainMenu",
+      "widget": "menu",
+      "width": 450,
+      "allocated_height": 750,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Settings",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 675,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 35
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "OnlineCardInfo",
+      "widget": "list",
+      "width": 1350,
+      "allocated_height": 675,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 35
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PeerStatus",
+      "widget": "list",
+      "width": 795,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Filecheck",
+      "widget": "list",
+      "width": 1350,
+      "allocated_height": 750,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PasswordChanger",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WizardInstall",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 630,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "InstallWizard",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 630,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VideoWizard",
+      "widget": "config",
+      "width": 660,
+      "allocated_height": 300,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "StartWizard",
+      "widget": "config",
+      "width": 750,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "NetworkWizard",
+      "widget": "config",
+      "width": 660,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RemoteTimerScreen",
+      "widget": "timerlist",
+      "width": 1350,
+      "allocated_height": 525,
+      "row_height": 105,
+      "fitted_height": 525,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RemoteTimerSetup",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PictureViewer",
+      "widget": "menu",
+      "width": 660,
+      "allocated_height": 690,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 10
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WebcamViewerMenu",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WebcamViewer",
+      "widget": "menu",
+      "width": 1350,
+      "allocated_height": 750,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "StartupToStandbyConfiguration",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EmailConfigScreen",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "LastFMConfigScreen",
+      "widget": "config",
+      "width": 1350,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "FilebrowserConfigScreen",
+      "widget": "config",
+      "width": 804,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SHOUTcastWidget",
+      "widget": "list",
+      "width": 855,
+      "allocated_height": 697,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 17
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SHOUTcastSetup",
+      "widget": "config",
+      "width": 900,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SHOUTcastStreamripperRecordingPath",
+      "widget": "filelist",
+      "width": 900,
+      "allocated_height": 675,
+      "row_height": 30,
+      "fitted_height": 660,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RecordPathsSettings",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 690,
+      "row_height": 45,
+      "fitted_height": 675,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AboutReleaseNotes",
+      "widget": "list",
+      "width": 840,
+      "allocated_height": 800,
+      "row_height": 40,
+      "fitted_height": 800,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteBluePanel",
+      "widget": "list",
+      "width": 600,
+      "allocated_height": 35,
+      "row_height": 35,
+      "fitted_height": 35,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteSetupOSDConf2",
+      "widget": "config",
+      "width": 870,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteInaSetup",
+      "widget": "config",
+      "width": 870,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteCCcSetup",
+      "widget": "config",
+      "width": 960,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteEpgGlobalSetup",
+      "widget": "config",
+      "width": 870,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteEpgChannels",
+      "widget": "config",
+      "width": 870,
+      "allocated_height": 420,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteExtdatSetup",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteEpgAddProvider",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 200,
+      "row_height": 40,
+      "fitted_height": 200,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteSetupCronConf",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteKernelModules",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteSetupAutocam",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeliteSetupDevicePanelConf",
+      "widget": "config",
+      "width": 1260,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Bh_Bepg_setuP",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Bh_Bpersonal_setuP",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 520,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Bh_Bfull_main",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 80,
+      "row_height": 40,
+      "fitted_height": 80,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BhRedPanel",
+      "widget": "list",
+      "width": 870,
+      "allocated_height": 675,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 35
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BhUniverseConfig",
+      "widget": "config",
+      "width": 1170,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BhGreenPluginsSetup",
+      "widget": "config",
+      "width": 870,
+      "allocated_height": 440,
+      "row_height": 40,
+      "fitted_height": 440,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BhSpeedUp",
+      "widget": "config",
+      "width": 1140,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "eHueSetupConfigScreen",
+      "widget": "config",
+      "width": 555,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "rgbLampConfigScreen",
+      "widget": "config",
+      "width": 540,
+      "allocated_height": 200,
+      "row_height": 40,
+      "fitted_height": 200,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "dimLampConfigScreen",
+      "widget": "config",
+      "width": 540,
+      "allocated_height": 200,
+      "row_height": 40,
+      "fitted_height": 200,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoTimerSettings",
+      "widget": "config",
+      "width": 1230,
+      "allocated_height": 520,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoTimerEditor",
+      "widget": "config",
+      "width": 1230,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoTimerFilterEditor",
+      "widget": "config",
+      "width": 1230,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoTimerServiceEditor",
+      "widget": "config",
+      "width": 1230,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoTimerImporter",
+      "widget": "list",
+      "width": 1230,
+      "allocated_height": 650,
+      "row_height": 50,
+      "fitted_height": 650,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoTimerOverview",
+      "widget": "entries",
+      "width": 1230,
+      "allocated_height": 675,
+      "row_height": 30,
+      "fitted_height": 660,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "QuickMenu",
+      "widget": "mainlist",
+      "width": 860,
+      "allocated_height": 720,
+      "row_height": 72,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "QuickMenu",
+      "widget": "sublist",
+      "width": 860,
+      "allocated_height": 720,
+      "row_height": 72,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "FileBrowser",
+      "widget": "filelist",
+      "width": 1620,
+      "allocated_height": 750,
+      "row_height": 50,
+      "fitted_height": 750,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "FileDirBrowser",
+      "widget": "filelist",
+      "width": 1620,
+      "allocated_height": 750,
+      "row_height": 50,
+      "fitted_height": 750,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "HdmiCECSetupScreen",
+      "widget": "config",
+      "width": 1160,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SoftcamSetup",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 300,
+      "row_height": 45,
+      "fitted_height": 270,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PauliRemoteControlSetup",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Pauli",
+      "widget": "menu",
+      "width": 960,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGRefreshConfiguration",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGPanel",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoShutDownConfiguration",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 700,
+      "row_height": 50,
+      "fitted_height": 700,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "FastScanScreen",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 650,
+      "row_height": 50,
+      "fitted_height": 650,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SATIPTuner",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 300,
+      "row_height": 50,
+      "fitted_height": 300,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PositionerSetup",
+      "widget": "list",
+      "width": 820,
+      "allocated_height": 240,
+      "row_height": 40,
+      "fitted_height": 240,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolEasyGuide",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 547,
+      "row_height": 42,
+      "fitted_height": 546,
+      "partial_pixels_removed": 1
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolEasyGuide2",
+      "widget": "list",
+      "width": 735,
+      "allocated_height": 900,
+      "row_height": 90,
+      "fitted_height": 900,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolEasyGuide3",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 757,
+      "row_height": 42,
+      "fitted_height": 756,
+      "partial_pixels_removed": 1
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolChannelGuide",
+      "widget": "list",
+      "width": 735,
+      "allocated_height": 720,
+      "row_height": 90,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolInfoGuide",
+      "widget": "CoolEvent",
+      "width": 1770,
+      "allocated_height": 45,
+      "row_height": 45,
+      "fitted_height": 45,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolMultiGuide",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 540,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolNiceGuide",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 540,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolSearch",
+      "widget": "list",
+      "width": 1785,
+      "allocated_height": 547,
+      "row_height": 42,
+      "fitted_height": 546,
+      "partial_pixels_removed": 1
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolSingleGuide",
+      "widget": "list",
+      "width": 1200,
+      "allocated_height": 547,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 27
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolTinyGuide",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolTVGuide",
+      "widget": "list",
+      "width": 1800,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CoolTVGuideSetup",
+      "widget": "config",
+      "width": 1580,
+      "allocated_height": 520,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EMCSelection",
+      "widget": "list",
+      "width": 1200,
+      "allocated_height": 840,
+      "row_height": 40,
+      "fitted_height": 840,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EnhancedMovieCenterMenu",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 520,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EMCImdbScan",
+      "widget": "menulist",
+      "width": 1158,
+      "allocated_height": 630,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "imdbSetup",
+      "widget": "config",
+      "width": 765,
+      "allocated_height": 480,
+      "row_height": 40,
+      "fitted_height": 480,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "getCover",
+      "widget": "menulist",
+      "width": 1140,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MovieInfoTMDb",
+      "widget": "previewlist",
+      "width": 1110,
+      "allocated_height": 588,
+      "row_height": 28,
+      "fitted_height": 588,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EMCMovieInfoSetup",
+      "widget": "config",
+      "width": 855,
+      "allocated_height": 520,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PermanentClockMenu",
+      "widget": "list",
+      "width": 1170,
+      "allocated_height": 160,
+      "row_height": 40,
+      "fitted_height": 160,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AspectRatioSwitchSetup",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "OpenWebifConfig",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TranscodingSetup",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGImportConfig",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGImportSources",
+      "widget": "list",
+      "width": 1180,
+      "allocated_height": 700,
+      "row_height": 50,
+      "fitted_height": 700,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGImportLog",
+      "widget": "list",
+      "width": 1180,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGImportProfile",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGRefreshServiceEditor",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGSaveLoadConfiguration",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGRefreshProfile",
+      "widget": "config",
+      "width": 600,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "OMBManagerPreferences",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "OMBManagerList",
+      "widget": "list",
+      "width": 1180,
+      "allocated_height": 550,
+      "row_height": 40,
+      "fitted_height": 520,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "OMBManagerInstall",
+      "widget": "list",
+      "width": 1180,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SoftcamPanel",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 160,
+      "row_height": 40,
+      "fitted_height": 160,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ImageBackup",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 480,
+      "row_height": 40,
+      "fitted_height": 480,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ScriptRunner",
+      "widget": "list",
+      "width": 1180,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Infopanel",
+      "widget": "Mlist",
+      "width": 880,
+      "allocated_height": 600,
+      "row_height": 75,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "YoutubeTVSettings",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoPinConfigurePlus",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ChromiumOSSettings",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ChromiumOSWindow",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 120,
+      "row_height": 40,
+      "fitted_height": 120,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoPin",
+      "widget": "config",
+      "width": 1485,
+      "allocated_height": 640,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PartnerboxEntryConfigScreen",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PartnerboxSetup",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PartnerboxEntriesListConfigScreen",
+      "widget": "entrylist",
+      "width": 860,
+      "allocated_height": 560,
+      "row_height": 70,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DevicePanelConf",
+      "widget": "config",
+      "width": 1250,
+      "allocated_height": 425,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 25
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "NamezapSetup",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "QuickSubtitlesConfigMenu",
+      "widget": "config",
+      "width": 710,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "QuickSubtitlesClearRests",
+      "widget": "config",
+      "width": 710,
+      "allocated_height": 200,
+      "row_height": 40,
+      "fitted_height": 200,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Execute",
+      "widget": "linelist",
+      "width": 1820,
+      "allocated_height": 880,
+      "row_height": 40,
+      "fitted_height": 880,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGSelectionEPGBar_HD",
+      "widget": "list",
+      "width": 825,
+      "allocated_height": 252,
+      "row_height": 36,
+      "fitted_height": 252,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VIXBackupManager",
+      "widget": "list",
+      "width": 800,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VIXBackupManagerMenu",
+      "widget": "config",
+      "width": 780,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "VIXImageManager",
+      "widget": "list",
+      "width": 800,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "ImageManagerDownload",
+      "widget": "list",
+      "width": 800,
+      "allocated_height": 400,
+      "row_height": 40,
+      "fitted_height": 400,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EventViewContextMenuChoiceBox",
+      "widget": "menu",
+      "width": 780,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SoftwareUpdateChoices",
+      "widget": "list",
+      "width": 820,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "DeviceBrowser",
+      "widget": "filelist",
+      "width": 1180,
+      "allocated_height": 680,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "RemoteControlCode",
+      "widget": "config",
+      "width": 1200,
+      "allocated_height": 80,
+      "row_height": 40,
+      "fitted_height": 80,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "BluetoothSetupConfig",
+      "widget": "config",
+      "width": 1200,
+      "allocated_height": 80,
+      "row_height": 40,
+      "fitted_height": 80,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AnimationSetupScreen",
+      "widget": "list",
+      "width": 1200,
+      "allocated_height": 640,
+      "row_height": 40,
+      "fitted_height": 640,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AnimationSetupConfig",
+      "widget": "config",
+      "width": 1200,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SelectImage",
+      "widget": "list",
+      "width": 1200,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Blindscan",
+      "widget": "config",
+      "width": 900,
+      "allocated_height": 560,
+      "row_height": 40,
+      "fitted_height": 560,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MultiBootSelector",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 480,
+      "row_height": 40,
+      "fitted_height": 480,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "MultiBootWizard",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 480,
+      "row_height": 40,
+      "fitted_height": 480,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TunerScreen",
+      "widget": "config",
+      "width": 1180,
+      "allocated_height": 760,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PositionerSetupLog",
+      "widget": "list",
+      "width": 1180,
+      "allocated_height": 720,
+      "row_height": 40,
+      "fitted_height": 720,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "FileCommanderContextMenu",
+      "widget": "menu",
+      "width": 810,
+      "allocated_height": 810,
+      "row_height": 45,
+      "fitted_height": 810,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "Fantastic",
+      "widget": "menu",
+      "width": 1180,
+      "allocated_height": 700,
+      "row_height": 40,
+      "fitted_height": 680,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PackageFeedSelection",
+      "widget": "feeds",
+      "width": 1260,
+      "allocated_height": 465,
+      "row_height": 42,
+      "fitted_height": 462,
+      "partial_pixels_removed": 3
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TaskView",
+      "widget": "config",
+      "width": 1440,
+      "allocated_height": 60,
+      "row_height": 45,
+      "fitted_height": 45,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "JobView",
+      "widget": "config",
+      "width": 1440,
+      "allocated_height": 60,
+      "row_height": 45,
+      "fitted_height": 45,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "uShareSelection",
+      "widget": "checkList",
+      "width": 1440,
+      "allocated_height": 600,
+      "row_height": 45,
+      "fitted_height": 585,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "AutoDiseqc",
+      "widget": "config",
+      "width": 1410,
+      "allocated_height": 390,
+      "row_height": 45,
+      "fitted_height": 360,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "SelectSatsEntryScreen",
+      "widget": "list",
+      "width": 1410,
+      "allocated_height": 600,
+      "row_height": 45,
+      "fitted_height": 585,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EPGBouquetSelector",
+      "widget": "menu",
+      "width": 1440,
+      "allocated_height": 780,
+      "row_height": 40,
+      "fitted_height": 760,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "PlaybackLocationBox",
+      "widget": "bookmarklist",
+      "width": 1590,
+      "allocated_height": 150,
+      "row_height": 40,
+      "fitted_height": 120,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TimeshiftLocationBox",
+      "widget": "bookmarklist",
+      "width": 1590,
+      "allocated_height": 150,
+      "row_height": 40,
+      "fitted_height": 120,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WizardStart",
+      "widget": "config",
+      "width": 750,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WizardLanguage",
+      "widget": "config",
+      "width": 750,
+      "allocated_height": 280,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "WizardVideo",
+      "widget": "config",
+      "width": 660,
+      "allocated_height": 300,
+      "row_height": 40,
+      "fitted_height": 280,
+      "partial_pixels_removed": 20
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "TagEditor",
+      "widget": "taglist",
+      "width": 1410,
+      "allocated_height": 630,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CCcamInfoMain",
+      "widget": "menu",
+      "width": 1410,
+      "allocated_height": 750,
+      "row_height": 45,
+      "fitted_height": 720,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CCcamInfoEcmInfoSelection",
+      "widget": "list",
+      "width": 1260,
+      "allocated_height": 630,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CCcamInfoSubMenu",
+      "widget": "list",
+      "width": 1410,
+      "allocated_height": 600,
+      "row_height": 45,
+      "fitted_height": 585,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CCcamInfoServerMenu",
+      "widget": "list",
+      "width": 1410,
+      "allocated_height": 600,
+      "row_height": 45,
+      "fitted_height": 585,
+      "partial_pixels_removed": 15
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "CCcamInfoRemoteBoxMenu",
+      "widget": "list",
+      "width": 1410,
+      "allocated_height": 630,
+      "row_height": 45,
+      "fitted_height": 630,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "EventViewContextMenu",
+      "widget": "menu",
+      "width": 780,
+      "allocated_height": 600,
+      "row_height": 40,
+      "fitted_height": 600,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/share/enigma2/hd_glass17/skin.xml",
+      "screen": "QuickEPG",
+      "widget": "list",
+      "width": 1470,
+      "allocated_height": 180,
+      "row_height": 50,
+      "fitted_height": 150,
+      "partial_pixels_removed": 30
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "screen": "setupGlass17",
+      "widget": "config",
+      "width": 1790,
+      "allocated_height": 320,
+      "row_height": 40,
+      "fitted_height": 320,
+      "partial_pixels_removed": 0
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+      "screen": "WarderSettingsMessage",
+      "widget": "list",
+      "width": 1480,
+      "allocated_height": 160,
+      "row_height": 50,
+      "fitted_height": 150,
+      "partial_pixels_removed": 10
+    },
+    {
+      "path": "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+      "screen": "WarderSettingsChoice",
+      "widget": "list",
+      "width": 1590,
+      "allocated_height": 650,
+      "row_height": 58,
+      "fitted_height": 638,
+      "partial_pixels_removed": 12
+    }
+  ],
+  "header_fix": "Only title/path labels with less than two font heights are forced to a single line. Full title source text, descriptions and deliberately multiline titles are preserved.",
+  "physical_receiver_confirmation": false,
+  "production_feed_changed": false,
+  "test_feed_changed": false,
+  "legacy_openatv_validation": {
+    "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+    "native_gui_component_sha256": "79a503af18cc38ad9b42b9add05dd5d87ecdd25728db87e9e5d41100461888f1",
+    "native_menu_list_sha256": "d1a08e969efb5b565137360ced7ba231592974177fd6df5f30df77cc20ead150",
+    "focused_tests": 11,
+    "result": "PASS",
+    "native_methods_verified": [
+      "eListbox.getOrientation",
+      "eListbox.getItemHeight",
+      "eLabel.getFont",
+      "eLabel.setNoWrap"
+    ]
+  },
+  "existing_regressions": {
+    "configuration_fonts": 13,
+    "lcd4linux_footer": 6,
+    "quick_menu": 6,
+    "history_radio_header": 8,
+    "result": "PASS"
+  },
+  "public_package_proof": "reports/list-row-clipping-test1-public-20261101.json"
+}

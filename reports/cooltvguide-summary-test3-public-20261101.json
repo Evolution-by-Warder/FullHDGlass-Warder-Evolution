@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.60-test3",
+  "bytes": 17210058,
+  "sha256": "1bc971df06467db57e527d249958b735146fc7abe9f86e17d3f4c29b45ba30e8",
+  "source_commit": "36c9121577fe1d10ae17680f165e204de7ccf2cd",
+  "workflow_run": 41339778303,
+  "workflow_conclusion": "success",
+  "baseline": "1.0.60-test2",
+  "added": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderCoolText.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSummaryCompat.py"
+  ],
+  "changed": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "removed": [],
+  "startup_repair_identical_to_test2": true,
+  "skin_only_three_summary_source_bindings_changed": true,
+  "all_other_existing_files_identical": true,
+  "physical_receiver_confirmed": false,
+  "feeds_modified": false,
+  "next_normal_version": "1.0.61"
+}

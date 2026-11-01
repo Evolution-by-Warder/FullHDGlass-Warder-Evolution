@@ -1,21 +1,21 @@
 {
   "schema": 1,
   "product": "FullHDGlass Warder Evolution",
-  "status": "production-update-active",
+  "status": "release-verified-awaiting-update-activation",
   "approved_on": "2026-11-01",
-  "approval": "Owner confirmed actual bitrate and fast startup on GigaBlue and requested a normal release immediately in the update profile.",
+  "approval": "Owner explicitly approved the current 1.0.60-test3 and requested a normal release and all necessary records.",
   "source_branch": "main",
-  "source_commit": "f712696ce3d2688fe363b09023b43cd74bfcc4a2",
+  "source_commit": "72b921fcfb31722d0fbce85c08deade376d13cb0",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.55",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk",
-    "sha256": "9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db",
-    "changelog": "Opravené meranie bitrate videa a zvuku a rýchlejší nábeh po prepnutí kanála. Oprava platí pre všetky typy infobaru. Po aktualizácii reštartujte GUI.",
-    "tag": "v1.0.55",
-    "bytes": 17204826,
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.55/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.55"
+    "version": "1.0.61",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
+    "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+    "bytes": 17210068,
+    "tag": "v1.0.61",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.61",
+    "changelog": "Opravené orezávanie ponúk, hlavičiek a časovej osi EPG, popisy CoolTVGuide a displej nastavení prijímača. Po aktualizácii reštartujte GUI."
   },
   "preview_assets": {
     "help": {
@@ -38,14 +38,14 @@
     "bytes": 14759486
   },
   "validation": {
-    "workflow_run": 41292891930,
-    "build_payloads_and_public_bytes": "verified",
-    "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
-    "live_updater_report": "reports/bitrate-stable55-update-activation-20261101.json",
-    "final_main_workflow": 41293319631,
-    "final_native_test_workflow": 41293336911,
-    "report": "reports/bitrate-stable55-20261101.json",
-    "dm920_user_confirmation": "reports/bitrate-dm920-user-confirmation-20261101.json"
+    "workflow_run": 41341165906,
+    "workflow_conclusion": "success",
+    "report": "reports/stable61-public-20261101.json",
+    "public_ipk_sha256_verified": true,
+    "approved_test3_runtime_and_graphics_preserved": true,
+    "live_updater_report": "reports/stable61-live-updater-20261101.json",
+    "native_classes": "Pinned current and legacy OpenATV; actual supplied CoolTVGuide painter fixture",
+    "legacy_bridge_unchanged": true
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -62,13 +62,13 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "Normal stable 1.0.55 upgrades from stable 1.0.53 and 1.0.54-test5 without force installation. Published IPKs are immutable.",
+  "version_policy": "Normal 1.0.61 upgrades from 1.0.59 and all 1.0.60-test builds without forced installation. Published IPK bytes remain immutable.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
+  "receiver_validation": "Owner approved the current TEST3 for normal release. This is not a claim of physical validation of all OpenATV versions or receiver models.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
@@ -105,5 +105,12 @@
         "four coloured button captions"
       ]
     }
-  }
+  },
+  "previous_production": {
+    "version": "1.0.59",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk",
+    "sha256": "2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee",
+    "changelog": "Čitateľné farebné tlačidlá a trvalé Menu v LCD4linux, prehľadnejšie Rýchle menu a správne farebné prúžky aj na TV. Po aktualizácii reštartujte GUI."
+  },
+  "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending."
 }

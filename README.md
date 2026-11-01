@@ -4,11 +4,11 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Production release — 1 November 2026
 
-**FullHDGlass 1.0.55** repairs video/audio bitrate measurement and speeds up startup across infobar types. Receiver-approved helpers are included for ARM, with guarded MIPS32r2 and AArch64 support. Existing DAB artwork, spinner selection and settings are preserved. [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
+**FullHDGlass 1.0.61** fixes clipped menu rows and headers, the graphical EPG timeline, CoolTVGuide captions and setup text on receiver displays. Includes the approved compact installer, LCD4linux footer and Quick Menu improvements. [Release notes](docs/FULLHDGLASS-1.0.61.md) · [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
 
 ## Installation
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.55/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 

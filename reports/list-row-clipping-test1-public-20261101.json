@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.60-test1",
+  "sha256": "76dec3e964c86fc20910edb8c8ec1cf38118f75679a3ea82611b6bcfe4f195b1",
+  "bytes": 17207786,
+  "workflow_run": 41334639182,
+  "workflow_conclusion": "success",
+  "source_commit": "c598860dc9a1dad9100b5250669f091e77667134",
+  "baseline_version": "1.0.59",
+  "added": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderListRows.py"
+  ],
+  "removed": [],
+  "changed": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py"
+  ],
+  "unchanged_existing_files": 1491,
+  "graphics_and_bitrate_helpers_identical": true,
+  "control_scripts_identical": true,
+  "physical_receiver_confirmation": false,
+  "update_feeds_modified": false
+}

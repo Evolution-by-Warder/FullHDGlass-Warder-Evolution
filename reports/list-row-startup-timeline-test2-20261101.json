@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.60-test2",
+  "baseline": "1.0.60-test1",
+  "crashes": [
+    {
+      "filename": "20261101-191425-enigma2-crash.log",
+      "sha256": "a4c38e0e6db5e1da8883ee1446cf6ba2c0aa4e1a11b639f5ed9df48a9d76e38f"
+    },
+    {
+      "filename": "20261101-191456-enigma2-crash.log",
+      "sha256": "0c80d72770fd3a5fb06370bd02d70746c6cc9a7f812fb8b23c2ac77bb2d24d23"
+    },
+    {
+      "filename": "20261101-191527-enigma2-crash.log",
+      "sha256": "c078e2ab957f73ad7042bbb394f83d6f6952c79c7cfb6fc43b66ea88d4427733"
+    },
+    {
+      "filename": "20261101-191559-enigma2-crash.log",
+      "sha256": "d89b5598efd02d808da2101c89613ee8c42426d68d7b15990fd5fcdc86e3539b"
+    }
+  ],
+  "root_cause": "test1 registers a plain function in onLayoutFinish; native Screen.createGUIScreen accepts bound methods and sends other entries to exec().",
+  "repair": "Register MethodType(finish,parent); preserve native Screen implementation.",
+  "native_startup_regression": "Actual pinned Screen.createGUIScreen executes; original plain callback reproduces the exact reported TypeError and corrected method passes startup/reapply/reopen.",
+  "focused_list_tests": 13,
+  "native_timeline_tests": 5,
+  "native_timeline_scope": "Current native TimelineText applySkin/setEntries, graphics/text modes, graphical and infobar EPG, all packaged ruler sizes. CoolTVGuide controller version itself is not available for replay.",
+  "cool_frame_repairs": [
+    "CoolTVGuide",
+    "CoolTinyGuide"
+  ],
+  "pending": [
+    "CoolTVGuide event-cell word wrapping in very narrow program cells; need actual plugin source/version to verify safely."
+  ],
+  "physical_receiver_confirmed": false,
+  "update_feeds_modified": false
+}

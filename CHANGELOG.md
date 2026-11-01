@@ -1,3 +1,11 @@
+## 1.0.61 — 2026-11-01
+
+- Promote owner-approved 1.0.60-test3 repairs: whole native list rows, safe single-line headers and complete graphical EPG timeline.
+- Fix CoolTVGuide/CoolTinyGuide window framing and shorten wrapped event captions with an ellipsis without changing event data or detail descriptions.
+- Provide correctly typed and live setup summary sources for receiver displays; preserve native SetupSummary behavior.
+- Preserve the bound layout callback startup correction and all approved 1.0.59 runtime/artwork. Native package upgrade from test versions is supported.
+- See docs/FULLHDGLASS-1.0.61.md and reports/stable61-public-20261101.json for the final package and update-channel evidence.
+
 ## 1.0.55 — 2026-11-01
 
 - Repair shared DVB video/audio bitrate measurement and fast startup; retain starting status until a real nonzero sample.

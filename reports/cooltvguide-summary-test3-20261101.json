@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.60-test3",
+  "baseline": "1.0.60-test2",
+  "cooltvguide": {
+    "input_package_sha256": "ddd85ffeffdf74a2824d8395edd403aa2116747f4dff7db5a459f74990bb7379",
+    "reviewed_builder": "Plugins.Extensions.CoolTVGuide.plugin.fAzez.ZiGNvxobF",
+    "repair": "Replace RT_WRAP with RT_ELLIPSIS only on returned wrapped text cells; keep original event data, detail text, fonts, rectangles, colours and pixmaps. Gate the adapter by active FullHDGlass skin and exact supported component class.",
+    "tests": 7,
+    "original_plugin_files_overwritten": false
+  },
+  "display": {
+    "repair": "Supply current and legacy StaticText setup fields for a generic ScreenSummary selecting SetupSummary, follow parent selection callbacks and remove watchers on hide/close. Preserve native SetupSummary watchers and other skins. Correct display-id=1 source/render bindings without geometry changes.",
+    "tests": 8,
+    "log_diagnosis_limit": "The old log does not identify its exact summary controller; tests reproduce and repair the native fallback source mismatch, not a physical receiver confirmation."
+  },
+  "startup_callback_regression_preserved": true,
+  "physical_receiver_confirmation": false,
+  "production_or_test_feeds_modified": false,
+  "next_normal_version": "1.0.61"
+}

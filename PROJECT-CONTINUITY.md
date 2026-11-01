@@ -1,3 +1,13 @@
+# Stable 1.0.61 — 1 November 2026
+
+The owner explicitly approved the current TEST3 and requested a normal release and all release records. Version 1.0.61 promotes its row fitting, header/timeline, CoolTVGuide caption and setup display fixes. Preserve the corrected bound callback that prevents the TEST1 startup failure. The approved adapters, graphics and helpers are unchanged apart from version labels and localized History.
+
+Build and regression workflow runs before publication; production activation verifies immutable public release bytes and updates both native main profiles together. The historical modernization test profile must mirror production. Keep main/update.json at its immutable 1.0.18 migration bridge. Exact final evidence is recorded in reports/stable61-public-20261101.json and docs/PRODUCTION.json. No blanket physical hardware compatibility claim is made.
+
+Earlier records below are historical and superseded by this release where applicable. The broader OpenATV 8.1 audit and separate PiconHub/GSU pending work remain separate.
+
+---
+
 # Stable 1.0.55 — 1 November 2026
 
 Owner confirmed fast bitrate startup and measured video/audio on GigaBlue, including FTA and encrypted CANAL+ services. Stable v1.0.55 is public/latest and both native update profiles now point to its verified raw main/packages IPK. Public package SHA256: 9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db; 17204826 bytes. Build: f712696ce3d2688fe363b09023b43cd74bfcc4a2; workflow 41292891930. Promotion workflow 41293148989 succeeded without rebuilding. See reports/bitrate-stable55-20261101.json.
