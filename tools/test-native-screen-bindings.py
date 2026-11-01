@@ -5,6 +5,8 @@ import ast
 from functools import reduce
 import json
 from pathlib import Path
+import re
+import textwrap
 from types import SimpleNamespace
 import unittest
 import xml.etree.ElementTree as ET
@@ -65,8 +67,24 @@ ConditionalShowHide = native('Components/Converter/ConditionalShowHide.py', 'Con
 EDITS = {e['name']: e for e in json.loads((ROOT / 'design/openatv81-bindings/skin-edits.json').read_text())['edits']}
 
 
+def controller(path, name):
+    # Some legacy image methods use Python 3.12 f-string grammar. The package
+    # builder also runs on 3.9, so replay the exact reviewed constructor only.
+    lines = (UPSTREAM / path).read_text().splitlines(keepends=True)
+    start = next(i for i, line in enumerate(lines) if re.match(r'^class ' + re.escape(name) + r'\b', line))
+    end = next((i for i in range(start + 1, len(lines)) if lines[i].startswith('class ')), len(lines))
+    begin = next(i for i in range(start + 1, end) if lines[i].lstrip().startswith('def __init__('))
+    indent = len(lines[begin]) - len(lines[begin].lstrip())
+    finish = next((i for i in range(begin + 1, end) if lines[i].strip() and not lines[i].lstrip().startswith('#')
+                   and len(lines[i]) - len(lines[i].lstrip()) <= indent), end)
+    init = ast.parse(textwrap.dedent(''.join(lines[begin:finish]))).body[0]
+    cls = ast.parse(lines[start] + '    pass\n').body[0]
+    cls.body = [init]
+    return cls
+
+
 def fields(path, name):
-    cls = next(n for n in ast.parse((UPSTREAM / path).read_text()).body if isinstance(n, ast.ClassDef) and n.name == name)
+    cls = controller(path, name)
     init = next(n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == '__init__')
     scope = {'self': {}, '_': lambda s: s, 'Label': Label, 'StaticText': StaticText,
              'Boolean': Boolean, 'Button': Button, 'Pixmap': Pixmap}
@@ -182,8 +200,7 @@ class NativeBindingTests(unittest.TestCase):
         screen.show()
 
     def test_legacy_swap_uses_live_label_widgets_and_modern_swap_keeps_setup(self):
-        tree = ast.parse((UPSTREAM / 'Screens/SwapManager.py').read_text())
-        cls = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'Swap')
+        cls = controller('Screens/SwapManager.py', 'Swap')
         if any(isinstance(n, ast.Name) and n.id == 'Setup' for n in cls.bases):
             aliases = [n.value for n in ast.walk(cls) if isinstance(n, ast.Assign)
                        and any(isinstance(t, ast.Attribute) and t.attr == 'skinName' for t in n.targets)]
