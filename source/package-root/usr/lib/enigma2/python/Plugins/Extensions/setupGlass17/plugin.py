@@ -22,6 +22,7 @@ import time as time1
 import re, os
 import threading
 from Plugins.Extensions.setupGlass17 import warderRadio
+from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
 import unicodedata
 import json
 import hashlib
@@ -4435,8 +4436,10 @@ class ExtraInfo17(Screen):
 				self.bitrateBuffer = ""
 				self.bitrateVideoSample = None
 				self.isBit = True
+				self.bitrateDiagnostic = BitrateDiagnostic(vpid, apid, cmd[1:], streamdata)
 				try:
 					result = self.container.execute(*cmd)
+					self.bitrateDiagnostic.record("execute", result=result)
 				except Exception as error:
 					Writelog("Bitrate launch: %s" % error)
 					result = -1
@@ -4499,6 +4502,7 @@ class ExtraInfo17(Screen):
 			return
 		if isinstance(data, bytes):
 			data = data.decode("ascii", "replace")
+		self.bitrateDiagnostic.record("raw", text=data[:240])
 		self.bitrateBuffer += data
 		while "\n" in self.bitrateBuffer:
 			line, self.bitrateBuffer = self.bitrateBuffer.split("\n", 1)
@@ -4514,6 +4518,7 @@ class ExtraInfo17(Screen):
 			video = self.bitrateVideoSample
 			self.bitrateVideoSample = None
 			self.bitrateStartTimer.stop()
+			self.bitrateDiagnostic.sample(video, values, self.session.nav.getCurrentService(), iServiceInformation)
 			self.bitrateSample(video, values)
 			if not self.isBit:
 				self.bitrateBuffer = ""

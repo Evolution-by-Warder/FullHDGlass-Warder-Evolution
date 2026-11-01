@@ -19,7 +19,7 @@ settings = NS(par35=NS(value='9999999'), par25=NS(value=False), par115=NS(value=
 logs = []
 namespace = {'config': NS(plugins=NS(setupGlass17=settings)), '_': lambda s:s,
              'ENAEBTR': False, 'ENA_Z': False, 'XCPU':'arm', 'fileExists':lambda p:True,
-             'iServiceInformation':NS(sVideoPID=0, sAudioPID=1), 'Writelog':logs.append}
+             'iServiceInformation':NS(sVideoPID=0, sAudioPID=1), 'Writelog':logs.append, 'BitrateDiagnostic':lambda *args:NS(record=lambda *args,**kw:None, sample=lambda *args:None)}
 exec(compile(class_module, str(PLUGIN), 'exec'), namespace)
 Runtime = namespace['Runtime']
 
