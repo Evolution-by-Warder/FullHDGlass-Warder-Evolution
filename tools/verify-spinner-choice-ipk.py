@@ -61,18 +61,8 @@ def main():
             assert len(list((skin / 'spinner').iterdir())) == 18
             assert not list(skin.glob('.warder-spinner-*'))
     raw = PACKAGE.read_bytes()
-    size_budget = 16 * 1024 * 1024
-    # Match the package verifier: only the exact new static helper receives
-    # an allowance; the spinner and artwork budget remains unchanged.
-    bitrate_helper = ROOT / 'source/package-root/usr/bin/warder-bitrate-arm'
-    if bitrate_helper.exists():
-        helper_raw = bitrate_helper.read_bytes()
-        build = json.loads((ROOT / 'packages/test/bitrate-helper-build.json').read_text())
-        assert 0 < len(helper_raw) <= 512 * 1024
-        assert build['helper_sha256'] == hashlib.sha256(helper_raw).hexdigest()
-        assert build['source_sha256'] == hashlib.sha256((ROOT / 'tools/bitrate-helper/warder-bitrate.c').read_bytes()).hexdigest()
-        size_budget += len(helper_raw)
-    assert 0 < len(raw) < size_budget
+    from bitrate_package import validate_helpers
+    assert 0 < len(raw) < validate_helpers(ROOT)
     report = {'schema': 1, 'version': VERSION, 'package': PACKAGE.name, 'bytes': len(raw),
               'sha256': hashlib.sha256(raw).hexdigest(), 'packaged_frame_hashes_verified': True,
               'packaged_helper_switches_both_directions': True, 'updater_manifests_unchanged': True,

@@ -23,6 +23,7 @@ int main(void) {
     assert(!number("5101",-1,8190,&n) && n==5101);
     assert(number("0x13ed",-1,8190,&n)); assert(number("99999999999999999999",-1,8190,&n));
     assert(number("5101x",-1,8190,&n)); assert(number("8191",-1,8190,&n));
+    { struct meter m; memset(&m,0,sizeof(m)); m.minimum=UINT64_MAX; m.interval=m.total=125000; print_sample(&m,1000,1000); assert(m.minimum==1000 && m.maximum==1000 && m.interval==0); }
     puts("PASS: TS payload, adaptation/TEI/PID handling, all 565 read splits, resync, rates and argument validation");
     return 0;
 }

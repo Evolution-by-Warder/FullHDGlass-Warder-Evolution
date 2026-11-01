@@ -137,8 +137,9 @@ int main(int argc, char **argv) {
         fprintf(stderr,"usage: %s <adapter> <demux> <video-pid> <audio-pid>\n",argv[0]); return 2;
     }
     signal(SIGTERM,stop_signal); signal(SIGINT,stop_signal);
-    for (i=0;i<2;i++) if (meters[i].pid>0 && open_filter(&meters[i],adapter,demux,0)) {
-        if (i!=0 || open_filter(&meters[i],adapter,demux,1)) { status=2; goto done; }
+    for (i=0;i<2;i++) if (meters[i].pid>0 && open_filter(&meters[i],adapter,demux,i==0)) {
+        /* TS is preferred for video; retain PES-only driver compatibility. */
+        if (i!=0 || open_filter(&meters[i],adapter,demux,0)) { status=2; goto done; }
     }
     last=now_ms();
     if (!last) { status=2; goto done; }
@@ -157,16 +158,7 @@ int main(int argc, char **argv) {
         for (i=0;i<2;i++) print_sample(&meters[i],now-meters[i].started,now-last);
         if (fflush(stdout)) { status=2; break; }
         last=now;
-        /* Some receiver drivers accept the PES filter but never return video.
-         * Change only our video filter to TS, leaving playback and audio alone.
-         */
-        if (meters[0].fd>=0 && !meters[0].ts && meters[0].zero_samples>=3) {
-            fprintf(stderr,"WarderBitrate: video PID %d returned no PES bytes; switching to TS payload measurement\n",meters[0].pid);
-            close_filter(&meters[0]);
-            if (open_filter(&meters[0],adapter,demux,1)) { status=2; break; }
-            meters[0].total=meters[0].interval=0; meters[0].started=now;
-            meters[0].minimum=UINT64_MAX; meters[0].maximum=0; meters[0].zero_samples=0;
-        }
+
     }
 done:
     for (i=0;i<2;i++) close_filter(&meters[i]);

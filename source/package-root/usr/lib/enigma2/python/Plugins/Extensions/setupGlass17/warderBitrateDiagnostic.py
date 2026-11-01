@@ -13,7 +13,7 @@ class BitrateDiagnostic(object):
         self.path = path
         self.events = []
         self.started = time.time()
-        self.data = {'build':'1.0.54-test3', 'cpu':os.uname()[4],
+        self.data = {'build':'1.0.54-test4', 'cpu':os.uname()[4],
                      'video_pid':video_pid, 'audio_pid':audio_pid,
                      'argv':argv, 'stream':self.stream_fields(streamdata), 'events':self.events}
         try:

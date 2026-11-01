@@ -23,6 +23,7 @@ import re, os
 import threading
 from Plugins.Extensions.setupGlass17 import warderRadio
 from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
+from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
 import unicodedata
 import json
 import hashlib
@@ -493,6 +494,8 @@ try:
 	cpu = open("/proc/cpuinfo", "r").read()
 	if cpu.find("sh4") != -1:
 		XCPU = "sh4"
+	elif "aarch64" in os.uname()[4].lower():
+		XCPU = "aarch64"
 	elif cpu.find("ARMv7") != -1:
 		XCPU = "arm"
 	elif HardwareInfo().get_device_name() in ('one', 'two'):
@@ -3114,7 +3117,8 @@ class AutoStartChck17():
 		if XCPU != "mipsel":
 			# Select architecture helpers without deleting package-owned variants.
 			try:
-				shutil.copy2("/usr/bin/btrGen17-%s" % XCPU, "/usr/bin/btrGen17")
+				if XCPU == "sh4":
+					shutil.copy2("/usr/bin/btrGen17-sh4", "/usr/bin/btrGen17")
 				shutil.copy2("/usr/bin/hdd_temp_hdg17-%s" % XCPU, "/usr/bin/hdd_temp_hdg17")
 				msg += _("Set binaries") + "\n"
 			except OSError:
@@ -3701,6 +3705,7 @@ class ExtraInfo17(Screen):
 		self["back_enhanced"] = Pixmap()
 		self["bitrate_info"] = ColorLabel(_("Bitrate Stopped"))
 		self.bitNotActive = True
+		self.bitratePrepareAttempts = 0
 		self.state = None
 		self.enaIcoTun = True
 		self.allCaidPid = ""		
@@ -3768,7 +3773,7 @@ class ExtraInfo17(Screen):
 			self.runHBBTimer_conn = self.runHBBTimer.timeout.connect(self.checkHBB)
 		except AttributeError:
 			self.runHBBTimer.timeout.get().append(self.checkHBB)
-		if not ENAEBTR and not ENA_Z:
+		if external_helper_available(XCPU, ENA_Z, exists=fileExists):
 			self.container = eConsoleAppContainer()
 			self.container.dataAvail.append(self.dataAvail)
 			self.container.appClosed.append(self.bitrateClosed)
@@ -4366,6 +4371,8 @@ class ExtraInfo17(Screen):
 		service = self.session.nav.getCurrentService()
 		info = service and service.info()
 		ena = True
+		if not info and select_helper(XCPU, exists=fileExists) != "/usr/bin/btrGen17" and self.waitBitrateReady():
+			return
 		if info:
 			vpid = apid = dvbnamespace = tsid = onid = -1
 			serviceinfo = service.info()
@@ -4413,7 +4420,7 @@ class ExtraInfo17(Screen):
 							self.audioBitrate.callback.append(self.getAudioBitrateData)
 							ena = False
 						except: pass
-			elif not ENA_Z and (fileExists("/usr/bin/btrGen17")) and not self.isBit:
+			if ena and external_helper_available(XCPU, ENA_Z, exists=fileExists) and not self.isBit:
 				demux = 2
 				streamdata = {}
 				try:
@@ -4427,9 +4434,31 @@ class ExtraInfo17(Screen):
 					pass
 				# Enigma2 execute(program, argv0, ...): the executable must also
 				# occupy argv[0], otherwise the adapter/demux argument is lost.
-				helper = "/usr/bin/warder-bitrate-arm" if XCPU == "arm" and fileExists("/usr/bin/warder-bitrate-arm") else "/usr/bin/btrGen17"
+				helper = select_helper(XCPU, exists=fileExists)
+				modern = helper != "/usr/bin/btrGen17"
+				if modern:
+					expect_video = vpid > 0
+					try:
+						ref = self.session.nav.getCurrentlyPlayingServiceReference()
+						expect_video = ref.getData(0) not in (2, 10)
+					except Exception:
+						pass
+					ready = isinstance(streamdata.get("demux"), int) and streamdata["demux"] >= 0 and (vpid > 0 or apid > 0) and (not expect_video or vpid > 0)
+					pids = streamdata.get("pids") or []
+					if pids:
+						ready = ready and (vpid <= 0 or [vpid, "video"] in [list(entry) for entry in pids]) and (apid <= 0 or [apid, "audio"] in [list(entry) for entry in pids])
+					if not ready:
+						if self.waitBitrateReady():
+							return
+						self["bitrate_info"].setText(_("Bitrate") + _(" failed"))
+						self["bitrate_info"].color4(config.plugins.setupGlass17.par115.value)
+						return
+				self.bitrateModern = modern
+				self.bitrateExpectedVideo = vpid > 0
+				self.bitrateReady = False
+				self.bitratePrepareAttempts = 0
 				cmd = [helper, helper]
-				if XCPU == "arm":
+				if XCPU == "arm" or helper.startswith("/usr/bin/warder-bitrate-"):
 					cmd.append(str(streamdata.get("adapter", 0)))
 				cmd.extend([str(demux), str(vpid), str(apid)])
 				self["bitrate_info"].setText(_("Starting Bitrate"))
@@ -4488,6 +4517,14 @@ class ExtraInfo17(Screen):
 					self["bitrate_info"].color2(aa)
 			except: pass
 			
+	def waitBitrateReady(self):
+		self.bitratePrepareAttempts = getattr(self, "bitratePrepareAttempts", 0) + 1
+		if self.bitratePrepareAttempts > 20:
+			return False
+		self["bitrate_info"].setText(_("Preparing Bitrate"))
+		self.runBitTimer.start(250, True)
+		return True
+
 	def bitrateClosed(self, retval):
 		if self.isBit and not self.container.running():
 			Writelog("Bitrate helper exited: %s" % retval)
@@ -4518,8 +4555,11 @@ class ExtraInfo17(Screen):
 				continue
 			video = self.bitrateVideoSample
 			self.bitrateVideoSample = None
-			self.bitrateStartTimer.stop()
 			self.bitrateDiagnostic.sample(video, values, self.session.nav.getCurrentService(), iServiceInformation)
+			if self.bitrateModern and not self.bitrateReady and int(video[3] if self.bitrateExpectedVideo else values[3]) <= 0:
+				continue
+			self.bitrateReady = True
+			self.bitrateStartTimer.stop()
 			self.bitrateSample(video, values)
 			if not self.isBit:
 				self.bitrateBuffer = ""
@@ -4556,6 +4596,8 @@ class ExtraInfo17(Screen):
 		except: pass
 
 	def __stopBitrate(self):
+		self.runBitTimer.stop()
+		self.bitratePrepareAttempts = 0
 		self.bitNotActive = True
 		self.hbboff = True
 		self.lastIco = ""
@@ -4571,7 +4613,7 @@ class ExtraInfo17(Screen):
 			self.audioBitrate = None
 			self["bitrate_info"].setText(_("Bitrate stopped"))
 			self["bitrate_info"].color1(config.plugins.setupGlass17.par115.value)
-		elif not ENAEBTR and self.isBit and fileExists("/usr/bin/btrGen17"):
+		if self.isBit and hasattr(self, "container"):
 			self.stopBitrateNow()
 		self.allCaidPid = ""
 		self['active_caidPid'].hide()
@@ -4709,9 +4751,8 @@ class ExtraInfo17(Screen):
 			if ENAHBB:
 				self.runHBBTimer.start(4000, True)
 			if self.enaBit and self.bitNotActive and config.plugins.setupGlass17.par2.value:
-				t = 8000
-				if ENAEBTR:
-					t = 5000
+				t = startup_delay(XCPU, ENAEBTR, exists=fileExists)
+				self.bitratePrepareAttempts = 0
 				self.runBitTimer.start(t)
 				self["bitrate_info"].setText(_("Preparing Bitrate"))
 				self["bitrate_info"].color3(config.plugins.setupGlass17.par115.value)

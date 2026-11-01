@@ -29,23 +29,23 @@ class HelperTests(unittest.TestCase):
         self.assertTrue(all(len(row)==4 for row in rows))
         self.assertEqual(len(rows)%2,0)
         return process.returncode,rows,err
-    def test_zero_pes_video_recovers_using_ts_with_audio_still_measured(self):
-        code,rows,err=self.run_helper(seconds=5.3)
-        self.assertEqual(code,0,err);self.assertGreaterEqual(len(rows),8)
-        self.assertEqual(rows[0][3],0)
-        self.assertTrue(any(row[3]>0 for row in rows[6::2]),rows)
-        self.assertTrue(all(row[3]>0 for row in rows[1::2]),rows)
-        self.assertIn('switching to TS payload measurement',err)
-        self.assertIn('mode=ts',err)
-    def test_working_pes_is_retained(self):
-        code,rows,err=self.run_helper({'MOCK_VIDEO_PES':'1'})
+    def test_video_uses_ts_from_first_sample_with_audio_still_measured(self):
+        code,rows,err=self.run_helper(seconds=2.3)
+        self.assertEqual(code,0,err);self.assertGreaterEqual(len(rows),4)
+        self.assertTrue(all(row[3]>0 for row in rows),rows)
+        self.assertIn('pid=5101 mode=ts',err)
+        self.assertIn('pid=5106 mode=pes',err)
+        self.assertNotIn('switching',err)
+    def test_pes_only_driver_is_retained(self):
+        code,rows,err=self.run_helper({'MOCK_TS_FAIL':'1','MOCK_VIDEO_PES':'1'})
         self.assertEqual(code,0,err);self.assertTrue(rows)
         self.assertTrue(all(row[3]>0 for row in rows))
-        self.assertNotIn('mode=ts',err)
-    def test_failed_video_pes_filter_falls_back_immediately(self):
+        self.assertIn('mode=ts: Operation not supported',err)
+        self.assertIn('pid=5101 mode=pes adapter=',err)
+    def test_legacy_pes_failure_does_not_delay_ts_measurement(self):
         code,rows,err=self.run_helper({'MOCK_PES_FAIL':'1'},seconds=1.3)
         self.assertEqual(code,0,err);self.assertGreater(rows[0][3],0)
-        self.assertIn('mode=pes: Operation not supported',err);self.assertIn('mode=ts',err)
+        self.assertIn('pid=5101 mode=ts',err)
     def test_unsupported_filters_report_failure(self):
         code,rows,err=self.run_helper({'MOCK_PES_FAIL':'1','MOCK_TS_FAIL':'1'},seconds=1)
         self.assertEqual(code,2);self.assertFalse(rows);self.assertIn('mode=ts: Operation not supported',err)

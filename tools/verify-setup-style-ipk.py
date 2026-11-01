@@ -49,20 +49,10 @@ for name in ('update.json','update-test.json'):
 print('PASS:',len(expected),'payload files match source / compressed PNGs; large preview archives excluded; package metadata, Python cache invalidation and stable/test feeds verified')
 
 
-# Keep the original asset budget. Allow only the exact additional, checked
-# static ARM helper, rather than increasing the graphics/archive allowance.
-size_budget = 16*1024*1024
-helper = PAYLOAD/'usr/bin/warder-bitrate-arm'
-if helper.exists():
-    helper_raw = helper.read_bytes()
-    assert 0 < len(helper_raw) <= 512*1024, 'ARM helper exceeds its explicit budget'
-    assert helper_raw[:6] == b'\x7fELF\x01\x01' and int.from_bytes(helper_raw[18:20], 'little') == 40
-    build = json.loads((ROOT/'packages/test/bitrate-helper-build.json').read_text())
-    assert build['helper_sha256'] == hashlib.sha256(helper_raw).hexdigest()
-    assert build['source_sha256'] == hashlib.sha256((ROOT/'tools/bitrate-helper/warder-bitrate.c').read_bytes()).hexdigest()
-    assert files['usr/bin/warder-bitrate-arm'].mode & 0o111 == 0o111
-    size_budget += len(helper_raw)
-assert package.stat().st_size < size_budget, 'Small IPK size budget exceeded'
+from bitrate_package import validate_helpers
+assert package.stat().st_size < validate_helpers(ROOT), 'Small IPK size budget exceeded'
+for helper in ('arm','mipsel','aarch64'):
+    assert files['usr/bin/warder-bitrate-'+helper].mode & 0o111 == 0o111
 
 # The byte comparison above includes radio.mvi; additionally decode it and
 # compare with the current master to catch a perfectly packaged stale frame.
