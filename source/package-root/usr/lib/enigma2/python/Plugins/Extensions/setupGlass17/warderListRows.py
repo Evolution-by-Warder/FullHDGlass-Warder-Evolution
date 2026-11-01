@@ -1,5 +1,6 @@
 """Keep vertical list viewports within their allocated area and on whole rows."""
 from functools import wraps
+from types import MethodType
 
 
 def fit_title(component, parent, label):
@@ -46,6 +47,20 @@ def fit(component, listbox, make_size):
             allocated = current
         else:
             allocated = previous[1]
+        if getattr(component, '_warder_timeline_axis', False):
+            # TimelineText draws exactly one MultiContent row. Its text cells
+            # use listHeight, but OpenATV defaults its content row to 30 px.
+            # Keep all three heights equal; do not round this ruler as a menu.
+            if allocated[0] <= 0 or allocated[1] <= 0:
+                return False
+            changed = instance.getItemHeight() != allocated[1] or current != allocated
+            component.itemHeight = allocated[1]
+            component.listHeight = allocated[1]
+            component.l.setItemHeight(allocated[1])
+            if current != allocated:
+                instance.resize(make_size(*allocated))
+            component._warder_list_row_area = (instance, allocated, allocated)
+            return changed
         row = int(instance.getItemHeight())
         if row <= 0 or allocated[0] <= 0 or allocated[1] < row:
             return False
@@ -72,6 +87,7 @@ def install(gui_component, is_active, listbox, make_size, label=None):
         fit_title(self, parent, label)
         if not isinstance(getattr(self, 'instance', None), listbox):
             return result
+        self._warder_timeline_axis = getattr(parent, 'get', lambda key: None)('timeline_text') is self
         # applySkin has applied the desktop scale and skin's size/itemHeight.
         # A subclass can still change its content row height afterwards, so
         # repeat after the screen's own layout callbacks and when reopening.
@@ -79,14 +95,17 @@ def install(gui_component, is_active, listbox, make_size, label=None):
         fit(self, listbox, make_size)
         callbacks = getattr(parent, 'onLayoutFinish', None)
         if callbacks is not None and not getattr(parent, '_warder_list_rows_finish', False):
-            def finish():
+            def finish(screen):
                 if is_active():
-                    for component in list(parent.values()) + list(getattr(parent, 'renderer', ())):
+                    for component in list(screen.values()) + list(getattr(screen, 'renderer', ())):
                         fit(component, listbox, make_size)
                         fit_title(component, parent, label)
-            callbacks.append(finish)
+            # Screen.createGUIScreen treats plain functions as applet source
+            # and passes them to exec(). Native callbacks must be bound methods.
+            callback = MethodType(finish, parent)
+            callbacks.append(callback)
             if hasattr(parent, 'onShow'):
-                parent.onShow.append(finish)
+                parent.onShow.append(callback)
             parent._warder_list_rows_finish = True
         return result
 

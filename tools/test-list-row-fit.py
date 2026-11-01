@@ -89,6 +89,7 @@ class Parent(dict):
         super().__init__()
         self.onLayoutFinish, self.onShow, self.renderer = [], [], []
         self.scale = ((1,1),(1,1))
+    def close(self): pass
 
 
 def setup(active=True):
@@ -133,6 +134,31 @@ def static_lists():
 
 
 class ListFitTests(unittest.TestCase):
+    def native_screen_layout(self, gui, parent):
+        source=ast.parse((args.upstream/'Screens/Screen.py').read_text())
+        cls=next(n for n in source.body if isinstance(n,ast.ClassDef) and n.name=='Screen')
+        method=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='createGUIScreen')
+        scope={'GUIComponent':gui,'applyAllAttributes':apply_attributes}
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'native-Screen-createGUIScreen','exec'),scope)
+        parent.stacks=[];parent.additionalWidgets=[];parent.screenImage=None;parent.ignoreWidgets=[]
+        scope['createGUIScreen'](parent,None,None,updateonly=True)
+
+    def test_original_plain_callback_reproduces_exact_startup_crash(self):
+        gui, menu, component, parent=setup()
+        parent.onLayoutFinish.append(lambda: None)
+        with self.assertRaisesRegex(TypeError,'exec\\(\\) arg 1 must be a string, bytes or code object'):
+            self.native_screen_layout(gui,parent)
+
+    def test_native_startup_layout_accepts_bound_callback_and_can_reopen(self):
+        from types import MethodType
+        gui, menu, component, parent=setup()
+        self.native_screen_layout(gui,parent)
+        self.assertTrue(all(isinstance(callback,MethodType) for callback in parent.onLayoutFinish))
+        self.assertEqual(component.instance.size().height(),585)
+        self.native_screen_layout(gui,parent)
+        self.assertEqual(len(parent.onLayoutFinish),1)
+        for callback in parent.onShow:callback()
+        self.assertEqual(component.instance.size().height(),585)
     def test_reported_setup_original_has_partial_row_and_repair_removes_it(self):
         gui, menu, component, parent = setup()
         self.assertEqual(component.instance.partial_rows(), [(13,30)])

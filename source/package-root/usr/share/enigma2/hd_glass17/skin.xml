@@ -5194,7 +5194,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 	<widget name="key_blue" position="1342,1018" size="330,45" font="Regular;30" halign="left" valign="top" foregroundColor="blue" backgroundColor="#000000" transparent="1" />
 </screen>
 
- <screen name="CoolTinyGuide" position="center,center" size="1920,1080" backgroundColor="#000000" title="Cool Tiny Guide">
+ <screen name="CoolTinyGuide" position="center,center" size="1920,1080" backgroundColor="#000000" title="Cool Tiny Guide" flags="wfNoBorder">
    <eLabel text="C  o  o  l    T  i  n  y    G  u  i  d  e" position="735,30" size="720,45" font="Regular2;39" foregroundColor="#FFFFFF" backgroundColor="#000000" shadowColor="#000000" halign="center" transparent="1" />
    <widget name="date" position="60,30" size="270,45" font="Regular;39" halign="left"  foregroundColor="#00e5b243" backgroundColor="#000000" transparent="1" />
    <ePixmap pixmap="skin_default/icons/clock.png" position="379,40" zPosition="1" size="39,39" alphatest="on" />
@@ -5239,7 +5239,7 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
    <widget name="key_blue" position="1342,1018" size="330,45" font="Regular;30" halign="left" valign="top" foregroundColor="blue" backgroundColor="#000000" transparent="1" />
   </screen>
 
-<screen name="CoolTVGuide" position="center,center" size="1920,1080" backgroundColor="#000000" title="Cool TV Guide">
+<screen name="CoolTVGuide" position="center,center" size="1920,1080" backgroundColor="#000000" title="Cool TV Guide" flags="wfNoBorder">
 	<eLabel text="C  o  o  l    T  V    G  u  i  d  e" position="735,30" size="720,45" font="Regular2;39" foregroundColor="#FFFFFF" backgroundColor="#000000" shadowColor="#000000" halign="center" transparent="1" />
 	<widget name="date" position="60,30" size="270,45" font="Regular;39" halign="left"  foregroundColor="#00e5b243" backgroundColor="#000000" transparent="1" />
 	<ePixmap pixmap="skin_default/icons/clock.png" position="379,40" zPosition="1" size="39,39" alphatest="on" />
