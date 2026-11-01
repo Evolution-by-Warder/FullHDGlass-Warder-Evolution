@@ -16,7 +16,8 @@
     "Screens/Opkg.py": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4",
     "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
     "Components/MenuList.py": "abe4edfc4aab2b98a25ca722100c26e35d214f0c87a653ef2ed500d30922b106",
-    "Components/EpgList.py": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488"
+    "Components/EpgList.py": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488",
+    "Screens/Setup.py": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af"
   },
   "extra_revisions": {
     "legacy/Screens/Opkg.py": {
@@ -43,6 +44,11 @@
       "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
       "path": "Components/EpgList.py",
       "sha256": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488"
+    },
+    "legacy/Screens/Setup.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Screens/Setup.py",
+      "sha256": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af"
     }
   }
 }
