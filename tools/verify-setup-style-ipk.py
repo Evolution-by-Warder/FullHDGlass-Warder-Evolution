@@ -49,7 +49,10 @@ for name in ('update.json','update-test.json'):
 print('PASS:',len(expected),'payload files match source / compressed PNGs; large preview archives excluded; package metadata, Python cache invalidation and stable/test feeds verified')
 
 
-assert package.stat().st_size < 16*1024*1024, 'Small IPK size budget exceeded'
+from bitrate_package import validate_helpers
+assert package.stat().st_size < validate_helpers(ROOT), 'Small IPK size budget exceeded'
+for helper in ('arm','mipsel','aarch64'):
+    assert files['usr/bin/warder-bitrate-'+helper].mode & 0o111 == 0o111
 
 # The byte comparison above includes radio.mvi; additionally decode it and
 # compare with the current master to catch a perfectly packaged stale frame.

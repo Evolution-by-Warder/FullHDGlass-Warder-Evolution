@@ -22,6 +22,8 @@ import time as time1
 import re, os
 import threading
 from Plugins.Extensions.setupGlass17 import warderRadio
+from Plugins.Extensions.setupGlass17.warderBitrateDiagnostic import BitrateDiagnostic
+from Plugins.Extensions.setupGlass17.warderBitrateCompat import select_helper, external_helper_available, startup_delay
 import unicodedata
 import json
 import hashlib
@@ -492,6 +494,8 @@ try:
 	cpu = open("/proc/cpuinfo", "r").read()
 	if cpu.find("sh4") != -1:
 		XCPU = "sh4"
+	elif "aarch64" in os.uname()[4].lower():
+		XCPU = "aarch64"
 	elif cpu.find("ARMv7") != -1:
 		XCPU = "arm"
 	elif HardwareInfo().get_device_name() in ('one', 'two'):
@@ -3113,7 +3117,8 @@ class AutoStartChck17():
 		if XCPU != "mipsel":
 			# Select architecture helpers without deleting package-owned variants.
 			try:
-				shutil.copy2("/usr/bin/btrGen17-%s" % XCPU, "/usr/bin/btrGen17")
+				if XCPU == "sh4":
+					shutil.copy2("/usr/bin/btrGen17-sh4", "/usr/bin/btrGen17")
 				shutil.copy2("/usr/bin/hdd_temp_hdg17-%s" % XCPU, "/usr/bin/hdd_temp_hdg17")
 				msg += _("Set binaries") + "\n"
 			except OSError:
@@ -3700,6 +3705,7 @@ class ExtraInfo17(Screen):
 		self["back_enhanced"] = Pixmap()
 		self["bitrate_info"] = ColorLabel(_("Bitrate Stopped"))
 		self.bitNotActive = True
+		self.bitratePrepareAttempts = 0
 		self.state = None
 		self.enaIcoTun = True
 		self.allCaidPid = ""		
@@ -3767,9 +3773,17 @@ class ExtraInfo17(Screen):
 			self.runHBBTimer_conn = self.runHBBTimer.timeout.connect(self.checkHBB)
 		except AttributeError:
 			self.runHBBTimer.timeout.get().append(self.checkHBB)
-		if not ENAEBTR and not ENA_Z:
+		if external_helper_available(XCPU, ENA_Z, exists=fileExists):
 			self.container = eConsoleAppContainer()
 			self.container.dataAvail.append(self.dataAvail)
+			self.container.appClosed.append(self.bitrateClosed)
+			self.bitrateBuffer = ""
+			self.bitrateVideoSample = None
+			self.bitrateStartTimer = eTimer()
+			try:
+				self.bitrateStartTimer_conn = self.bitrateStartTimer.timeout.connect(self.bitrateTimedOut)
+			except AttributeError:
+				self.bitrateStartTimer.timeout.get().append(self.bitrateTimedOut)
 			if XCPU == "arm":
 				self.restartBtrTimer = eTimer()
 				self.restartBtrTimer.timeout.get().append(self.restartBtrStop)
@@ -4357,6 +4371,8 @@ class ExtraInfo17(Screen):
 		service = self.session.nav.getCurrentService()
 		info = service and service.info()
 		ena = True
+		if not info and select_helper(XCPU, exists=fileExists) != "/usr/bin/btrGen17" and self.waitBitrateReady():
+			return
 		if info:
 			vpid = apid = dvbnamespace = tsid = onid = -1
 			serviceinfo = service.info()
@@ -4404,35 +4420,69 @@ class ExtraInfo17(Screen):
 							self.audioBitrate.callback.append(self.getAudioBitrateData)
 							ena = False
 						except: pass
-			elif not ENA_Z and (fileExists("/usr/bin/btrGen17")) and not self.isBit:
+			if ena and external_helper_available(XCPU, ENA_Z, exists=fileExists) and not self.isBit:
 				demux = 2
-				a = ""
+				streamdata = {}
 				try:
 					stream = service.stream()
 					if stream:
-						streamdata = stream.getStreamingData()
+						streamdata = stream.getStreamingData() or {}
 						if streamdata:
 							if 'demux' in streamdata:
 								demux = streamdata["demux"]
-							if XCPU == "arm":
-								a = "0 "
-								if 'adapter' in streamdata:
-									a = str(streamdata["adapter"]) + " "
 				except:
 					pass
-				cmd = ["/usr/bin/btrGen17"]
-				if XCPU == "arm":
+				# Enigma2 execute(program, argv0, ...): the executable must also
+				# occupy argv[0], otherwise the adapter/demux argument is lost.
+				helper = select_helper(XCPU, exists=fileExists)
+				modern = helper != "/usr/bin/btrGen17"
+				if modern:
+					expect_video = vpid > 0
+					try:
+						ref = self.session.nav.getCurrentlyPlayingServiceReference()
+						expect_video = ref.getData(0) not in (2, 10)
+					except Exception:
+						pass
+					ready = isinstance(streamdata.get("demux"), int) and streamdata["demux"] >= 0 and (vpid > 0 or apid > 0) and (not expect_video or vpid > 0)
+					pids = streamdata.get("pids") or []
+					if pids:
+						ready = ready and (vpid <= 0 or [vpid, "video"] in [list(entry) for entry in pids]) and (apid <= 0 or [apid, "audio"] in [list(entry) for entry in pids])
+					if not ready:
+						if self.waitBitrateReady():
+							return
+						self["bitrate_info"].setText(_("Bitrate") + _(" failed"))
+						self["bitrate_info"].color4(config.plugins.setupGlass17.par115.value)
+						return
+				self.bitrateModern = modern
+				self.bitrateExpectedVideo = vpid > 0
+				self.bitrateReady = False
+				self.bitratePrepareAttempts = 0
+				cmd = [helper, helper]
+				if XCPU == "arm" or helper.startswith("/usr/bin/warder-bitrate-"):
 					cmd.append(str(streamdata.get("adapter", 0)))
 				cmd.extend([str(demux), str(vpid), str(apid)])
 				self["bitrate_info"].setText(_("Starting Bitrate"))
 				self["bitrate_info"].color2(config.plugins.setupGlass17.par115.value)
-				self.container.execute(*cmd)
-				if XCPU == "arm":
-					if self.restartBtrTimer.isActive():
-						self.restartBtrTimer.stop()
-					self.restartBtrTimer.startLongTimer(720)
+				self.bitrateBuffer = ""
+				self.bitrateVideoSample = None
 				self.isBit = True
-				ena = False
+				self.bitrateDiagnostic = BitrateDiagnostic(vpid, apid, cmd[1:], streamdata)
+				try:
+					result = self.container.execute(*cmd)
+					self.bitrateDiagnostic.record("execute", result=result)
+				except Exception as error:
+					Writelog("Bitrate launch: %s" % error)
+					result = -1
+				if result:
+					self.isBit = False
+					Writelog("Bitrate launch failed: %s" % result)
+				elif self.isBit:
+					ena = False
+					self.bitrateStartTimer.startLongTimer(20)
+					if XCPU == "arm":
+						if self.restartBtrTimer.isActive():
+							self.restartBtrTimer.stop()
+						self.restartBtrTimer.startLongTimer(720)
 		self.bitNotActive = ena
 		if ena:				
 			self["bitrate_info"].setText(_("Bitrate")+_(" failed"))
@@ -4467,38 +4517,87 @@ class ExtraInfo17(Screen):
 					self["bitrate_info"].color2(aa)
 			except: pass
 			
-	def dataAvail(self, str):
+	def waitBitrateReady(self):
+		self.bitratePrepareAttempts = getattr(self, "bitratePrepareAttempts", 0) + 1
+		if self.bitratePrepareAttempts > 20:
+			return False
+		self["bitrate_info"].setText(_("Preparing Bitrate"))
+		self.runBitTimer.start(250, True)
+		return True
+
+	def bitrateClosed(self, retval):
+		if self.isBit and not self.container.running():
+			Writelog("Bitrate helper exited: %s" % retval)
+			self.stopBitrateNow(_("Bitrate") + _(" failed"))
+
+	def bitrateTimedOut(self):
+		if self.isBit:
+			Writelog("Bitrate helper produced no complete sample within 20 seconds")
+			self.stopBitrateNow(_("Bitrate") + _(" failed"))
+
+	def dataAvail(self, data):
+		if not self.isBit:
+			return
+		if isinstance(data, bytes):
+			data = data.decode("ascii", "replace")
+		self.bitrateDiagnostic.record("raw", text=data[:240])
+		self.bitrateBuffer += data
+		while "\n" in self.bitrateBuffer:
+			line, self.bitrateBuffer = self.bitrateBuffer.split("\n", 1)
+			values = line.split()
+			if len(values) != 4 or not all(value.isdigit() for value in values):
+				self.bitrateVideoSample = None
+				if line.strip():
+					Writelog("Bitrate helper: %s" % line[:240])
+				continue
+			if self.bitrateVideoSample is None:
+				self.bitrateVideoSample = values
+				continue
+			video = self.bitrateVideoSample
+			self.bitrateVideoSample = None
+			self.bitrateDiagnostic.sample(video, values, self.session.nav.getCurrentService(), iServiceInformation)
+			if self.bitrateModern and not self.bitrateReady and int(video[3] if self.bitrateExpectedVideo else values[3]) <= 0:
+				continue
+			self.bitrateReady = True
+			self.bitrateStartTimer.stop()
+			self.bitrateSample(video, values)
+			if not self.isBit:
+				self.bitrateBuffer = ""
+				break
+		# Bound malformed or unterminated helper output on every image.
+		if len(self.bitrateBuffer) > 4096:
+			self.bitrateBuffer = ""
+			self.bitrateVideoSample = None
+
+	def bitrateSample(self, video, audio):
 		try:
-			if ISP38:
-				str = str.decode("ascii")
-			cmddata = str.split(" ")
-			tmp = cmddata[3].split("\n")
-			tmp1 = cmddata[6]
-			if int(tmp[0]) > int(config.plugins.setupGlass17.par35.value):
+			if int(video[3]) > int(config.plugins.setupGlass17.par35.value):
 				self.stopBitrateNow(_("Btr: too high - stopped"))
 			elif config.plugins.setupGlass17.par25.value:
 				aa = config.plugins.setupGlass17.par115.value
 				if self.numBit == 0:
-					self["bitrate_info"].setText(("Act: V: " + tmp[0] + " kb/s, A: " + tmp1[:-1] + " kb/s"))
+					self["bitrate_info"].setText(("Act: V: " + video[3] + " kb/s, A: " + audio[3] + " kb/s"))
 					self["bitrate_info"].color1(aa)
 				elif self.numBit == 2:
-					self["bitrate_info"].setText(("Avg: V: " + cmddata[2] + " kb/s, A: " + cmddata[5] + " kb/s"))
+					self["bitrate_info"].setText(("Avg: V: " + video[2] + " kb/s, A: " + audio[2] + " kb/s"))
 					self["bitrate_info"].color3(aa)
 				elif self.numBit == 4:
-					self["bitrate_info"].setText(("Min: V: " + cmddata[0] + " kb/s, A: " + tmp[1] + " kb/s"))
+					self["bitrate_info"].setText(("Min: V: " + video[0] + " kb/s, A: " + audio[0] + " kb/s"))
 					self["bitrate_info"].color4(aa)
 				elif self.numBit == 6:
-					self["bitrate_info"].setText(("Max: V: " + cmddata[1] + " kb/s, A: " + cmddata[4] + " kb/s"))
+					self["bitrate_info"].setText(("Max: V: " + video[1] + " kb/s, A: " + audio[1] + " kb/s"))
 					self["bitrate_info"].color2(aa)
 					self.numBit = -2
 				self.numBit += 1
 			else:
-				self.dataV = tmp[0]
-				self.dataA = tmp1[:-1]
+				self.dataV = video[3]
+				self.dataA = audio[3]
 				self.updBtrData()
 		except: pass
 
 	def __stopBitrate(self):
+		self.runBitTimer.stop()
+		self.bitratePrepareAttempts = 0
 		self.bitNotActive = True
 		self.hbboff = True
 		self.lastIco = ""
@@ -4514,7 +4613,7 @@ class ExtraInfo17(Screen):
 			self.audioBitrate = None
 			self["bitrate_info"].setText(_("Bitrate stopped"))
 			self["bitrate_info"].color1(config.plugins.setupGlass17.par115.value)
-		elif not ENAEBTR and self.isBit and fileExists("/usr/bin/btrGen17"):
+		if self.isBit and hasattr(self, "container"):
 			self.stopBitrateNow()
 		self.allCaidPid = ""
 		self['active_caidPid'].hide()
@@ -4627,6 +4726,11 @@ class ExtraInfo17(Screen):
 	def stopBitrateNow(self, tmp=_("Bitrate stopped")):
 		self.isBit = False
 		self.bitNotActive = True
+		self.bitrateStartTimer.stop()
+		self.bitrateBuffer = ""
+		self.bitrateVideoSample = None
+		if XCPU == "arm":
+			self.restartBtrTimer.stop()
 		self.container.kill()
 		self["bitrate_info"].setText(tmp)
 		self["bitrate_info"].color4(config.plugins.setupGlass17.par115.value)
@@ -4647,9 +4751,8 @@ class ExtraInfo17(Screen):
 			if ENAHBB:
 				self.runHBBTimer.start(4000, True)
 			if self.enaBit and self.bitNotActive and config.plugins.setupGlass17.par2.value:
-				t = 8000
-				if ENAEBTR:
-					t = 5000
+				t = startup_delay(XCPU, ENAEBTR, exists=fileExists)
+				self.bitratePrepareAttempts = 0
 				self.runBitTimer.start(t)
 				self["bitrate_info"].setText(_("Preparing Bitrate"))
 				self["bitrate_info"].color3(config.plugins.setupGlass17.par115.value)
@@ -6216,7 +6319,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 <widget name="helpPiconFrame" position="865,705" pixmap="hd_glass17/frame_hd.png" size="189,123" zPosition="8" alphatest="on" />
 <widget name="helpPicon" position="885,721" size="150,90" zPosition="9" alphatest="on" />
 <widget name="helpTxtAnim" position="579,592" size="780,350" backgroundColor="#ff000000" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00b5d4ec" />
-<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="50,232" size="760,728" name="warder_menu_panel_0" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="50,232" size="760,2" name="warder_menu_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,958" size="760,2" name="warder_menu_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="2,728" name="warder_menu_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="808,232" size="2,728" name="warder_menu_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="1010,728" name="warder_menu_panel_5" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="850,232" size="1010,2" name="warder_menu_panel_6" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,958" size="1010,2" name="warder_menu_panel_7" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="2,728" name="warder_menu_panel_8" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="1858,232" size="2,728" name="warder_menu_panel_9" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="1810,728" name="warder_settings_panel_0" backgroundColor="#1a102136" transparent="0" zPosition="-1" /><widget position="50,232" size="1810,2" name="warder_settings_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,958" size="1810,2" name="warder_settings_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,232" size="2,728" name="warder_settings_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1858,232" size="2,728" name="warder_settings_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,68" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,232" size="50,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1860,232" size="60,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
+<eLabel position="60,974" size="500,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="1360,974" size="500,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="50,232" size="760,728" name="warder_menu_panel_0" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="50,232" size="760,2" name="warder_menu_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,958" size="760,2" name="warder_menu_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="2,728" name="warder_menu_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="808,232" size="2,728" name="warder_menu_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="1010,728" name="warder_menu_panel_5" backgroundColor="#00102136" transparent="0" zPosition="0" /><widget position="850,232" size="1010,2" name="warder_menu_panel_6" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,958" size="1010,2" name="warder_menu_panel_7" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="850,232" size="2,728" name="warder_menu_panel_8" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="1858,232" size="2,728" name="warder_menu_panel_9" backgroundColor="#003ee8ff" transparent="0" zPosition="1" /><widget position="50,232" size="1810,728" name="warder_settings_panel_0" backgroundColor="#1a102136" transparent="0" zPosition="-1" /><widget position="50,232" size="1810,2" name="warder_settings_panel_1" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,958" size="1810,2" name="warder_settings_panel_2" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="50,232" size="2,728" name="warder_settings_panel_3" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1858,232" size="2,728" name="warder_settings_panel_4" backgroundColor="#003ee8ff" transparent="0" zPosition="3" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,68" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,232" size="50,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1860,232" size="60,728" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
   	
 	def __init__(self, session):
@@ -8378,7 +8481,7 @@ class downloadMenu(Screen):
 	<widget name="key_green" position="494,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_yellow" position="968,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_blue" position="1442,1006" size="458,50" zPosition="2" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00071627" noWrap="1" />
-   <eLabel position="20,1000" size="458,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="494,1000" size="458,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1000" size="458,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1442,1000" size="458,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,33" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1880,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,975" size="1920,105" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="20,1000" size="458,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="494,1000" size="458,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1000" size="458,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1442,1000" size="458,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,33" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1880,197" size="40,778" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,975" size="1920,105" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self,session):
@@ -10002,7 +10105,7 @@ class satSelectorScr(Screen):
 	<widget name="key_red" position="444,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="793,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_yellow" position="1142,969" size="333,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00f5d54e" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="444,963" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="793,963" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1142,963" size="333,2" backgroundColor="#00f5d54e" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="424,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1495,164" size="425,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,1019" size="1920,61" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="444,963" size="333,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="793,963" size="333,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1142,963" size="333,2" backgroundColor="#00f5d54e" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="424,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1495,164" size="425,855" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,1019" size="1920,61" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, delP = 1):
@@ -10127,7 +10230,7 @@ class styleSelectorScr(Screen):
 	<widget name="key_red" position="650,696" size="196,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="862,696" size="196,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_blue" position="1074,696" size="196,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0045b9ff" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="650,690" size="196,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="862,690" size="196,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1074,690" size="196,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,210" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1290,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,746" size="1920,334" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="650,690" size="196,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="862,690" size="196,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1074,690" size="196,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,210" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1290,374" size="630,372" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,746" size="1920,334" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, style, scrNum):
@@ -10236,7 +10339,7 @@ class selectScreenShowed(Screen):
 	<widget name="key_red" position="196,888" size="498,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="710,888" size="498,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_blue" position="1224,888" size="498,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0045b9ff" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="196,882" size="498,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="710,882" size="498,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1224,882" size="498,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,17" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,181" size="176,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1743,181" size="177,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,938" size="1920,142" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="196,882" size="498,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="710,882" size="498,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="1224,882" size="498,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,17" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,181" size="176,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1743,181" size="177,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,938" size="1920,142" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self,session):
@@ -10342,7 +10445,7 @@ class selectIconsDisplayed(Screen):
   <widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="267,164" size="1386,757" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1651,164" size="2,757" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="267,164" size="2,757" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="267,919" size="1386,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="267,164" size="1386,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="list" position="312,291" size="315,370" zPosition="4" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget name="key_red" position="267,871" size="693,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget name="key_green" position="960,871" size="693,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="267,865" size="693,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="960,865" size="693,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1653,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,921" size="1920,159" backgroundColor="#00071627" zPosition="-2" />
+   <eLabel position="267,865" size="693,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="960,865" size="693,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1653,164" size="267,757" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,921" size="1920,159" backgroundColor="#00071627" zPosition="-2" />
 """
 
 	def __init__(self,session,what=0):
@@ -10489,7 +10592,7 @@ class historyScreen(Screen):
 	<widget name="key_green" position="960,1006" size="825,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
    <widget name="line_red" position="135,996" size="825,2" backgroundColor="#00ff526a" zPosition="5" transparent="0" foregroundColor="#00ffffff" />
     <widget name="line_green" position="960,996" size="825,2" backgroundColor="#0039ff59" zPosition="5" transparent="0" foregroundColor="#00ffffff" />
-<widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1785,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
+<widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1785,164" size="135,796" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,960" size="1920,120" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
                         
 	def __init__(self, session, ver="", new=""):
@@ -10707,7 +10810,7 @@ class weatherCitySelector(Screen):
 		<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="510,210" size="900,700" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1408,210" size="2,700" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="510,210" size="2,700" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="510,908" size="900,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="510,210" size="900,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="list" position="535,235" size="850,590" scrollbarMode="showOnDemand" backgroundColor="#ff000000" foregroundColor="#00ffffff" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" zPosition="4" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 		<widget name="key_red" position="530,860" size="422,50" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" zPosition="4" />
 		<widget name="key_green" position="968,860" size="422,50" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" zPosition="4" />
-	<eLabel position="530,854" size="422,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,854" size="422,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,46" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1410,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,910" size="1920,170" backgroundColor="#00071627" zPosition="-2" /></screen>
+	<eLabel position="530,854" size="422,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,854" size="422,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,46" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1410,210" size="510,700" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,910" size="1920,170" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session, current=None):
@@ -10752,7 +10855,7 @@ class cityFinder(Screen):
 	<widget name="key_green" position="599,1030" size="353,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0039ff59" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_yellow" position="968,1030" size="353,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#00f5d54e" backgroundColor="#00071627" noWrap="1" />
 	<widget name="key_blue" position="1337,1030" size="353,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="0" foregroundColor="#0045b9ff" backgroundColor="#00071627" noWrap="1" />
-   <eLabel position="230,1024" size="353,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="599,1024" size="353,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1024" size="353,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1337,1024" size="353,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1710,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="230,1024" size="353,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="599,1024" size="353,2" backgroundColor="#0039ff59" zPosition="1" /><eLabel position="968,1024" size="353,2" backgroundColor="#00f5d54e" zPosition="1" /><eLabel position="1337,1024" size="353,2" backgroundColor="#0045b9ff" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1710,164" size="210,916" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
 
 	def __init__(self, session):
@@ -11056,7 +11159,7 @@ class dirBrowser(Screen):
 			<widget position="0,0" size="1920,164" source="global.CurrentTime" render="WarderSettingsHeader" zPosition="-3" /><eLabel position="570,185" size="780,750" backgroundColor="#1a102136" zPosition="-1" /><eLabel position="1348,185" size="2,750" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="570,185" size="2,750" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="570,933" size="780,2" backgroundColor="#003ee8ff" zPosition="1" /><eLabel position="570,185" size="780,2" backgroundColor="#003ee8ff" zPosition="1" /><widget name="filelist" position="585,200" size="750,660" scrollbarMode="showOnDemand" foregroundColor="#00ffffff" backgroundColor="#ff000000" transparent="1" foregroundColorSelected="#00ffffff" backgroundColorSelected="#002a70ad" zPosition="4" scrollbarBackgroundColor="#00102136" scrollbarForegroundColor="#003ee8ff" />
 	<widget source="key_red" render="Label" position="590,885" size="362,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#00ff526a" backgroundColor="#ff000000" noWrap="1" />
 	<widget source="key_green" render="Label" position="968,885" size="362,50" zPosition="4" valign="center" halign="center" font="Regular;28" transparent="1" foregroundColor="#0039ff59" backgroundColor="#ff000000" noWrap="1" />
-   <eLabel position="590,879" size="362,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,879" size="362,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.49" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,21" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1350,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,935" size="1920,145" backgroundColor="#00071627" zPosition="-2" /></screen>
+   <eLabel position="590,879" size="362,2" backgroundColor="#00ff526a" zPosition="1" /><eLabel position="968,879" size="362,2" backgroundColor="#0039ff59" zPosition="1" /><widget position="1120,25" size="250,36" font="Regular;25" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%A</convert></widget><widget position="1020,70" size="350,36" font="Regular;24" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="right" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format:%d. %B %Y</convert></widget><widget position="1398,32" size="190,85" font="Regular;62" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Default</convert></widget><widget position="1590,58" size="66,54" font="Regular;38" foregroundColor="#00ffffff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="left" shadowColor="#00071627" shadowOffset="1,1" source="global.CurrentTime" render="Label"><convert type="g17ClockToText">Format::%S</convert></widget><eLabel position="1680,25" size="210,36" font="Regular;25" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="Version:" /><eLabel position="1680,70" size="210,36" font="Regular;24" foregroundColor="#003ee8ff" backgroundColor="#00071627" transparent="1" zPosition="5" valign="center" noWrap="1" halign="center" text="1.0.55" /><eLabel position="1392,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="1664,25" size="2,84" backgroundColor="#003ee8ff" zPosition="5" /><eLabel position="0,164" size="1920,21" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="1350,185" size="570,750" backgroundColor="#00071627" zPosition="-2" /><eLabel position="0,935" size="1920,145" backgroundColor="#00071627" zPosition="-2" /></screen>
 """
     
 	def __init__(self, session, dd, files=False):

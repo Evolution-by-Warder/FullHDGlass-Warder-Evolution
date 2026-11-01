@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-01",
+  "source_commit": "59258f7bd63992c4449aa427037419f091e8cab9",
+  "release": "v1.0.54-test1",
+  "ipk": "enigma2-plugin-skins-fullhdglass_1.0.54-test1_all.ipk",
+  "bytes": 16725134,
+  "sha256": "6519e2ce180c0f1218b28864845dde64ea77a06e58cd948fd826ebe449e92afb",
+  "workflow_run": 41284802188,
+  "ci": "success",
+  "focused_runtime_tests": 12,
+  "openatv80_binding_verified": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89:lib/python/python_console.i",
+  "downloaded_package_verified": true,
+  "packaged_extrainfo_ast_matches_tested_source": true,
+  "baseline": "v1.0.53",
+  "baseline_bytes": 16724540,
+  "changed_payload_files": [
+    "history.txt",
+    "history.txtSk",
+    "plugin.py",
+    "version",
+    "warderDialogSkins.py"
+  ],
+  "approved_artwork_and_helper_binaries_byte_identical": true,
+  "update_feeds_modified": false,
+  "receiver_validation": false,
+  "pull_request": 15
+}

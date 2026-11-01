@@ -61,7 +61,8 @@ def main():
             assert len(list((skin / 'spinner').iterdir())) == 18
             assert not list(skin.glob('.warder-spinner-*'))
     raw = PACKAGE.read_bytes()
-    assert 0 < len(raw) < 16 * 1024 * 1024
+    from bitrate_package import validate_helpers
+    assert 0 < len(raw) < validate_helpers(ROOT)
     report = {'schema': 1, 'version': VERSION, 'package': PACKAGE.name, 'bytes': len(raw),
               'sha256': hashlib.sha256(raw).hexdigest(), 'packaged_frame_hashes_verified': True,
               'packaged_helper_switches_both_directions': True, 'updater_manifests_unchanged': True,

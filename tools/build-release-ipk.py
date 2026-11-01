@@ -37,6 +37,8 @@ def archive(directory, output, payload=False):
 
 
 def main():
+    from bitrate_package import validate_helpers
+    validate_helpers(ROOT)
     payload = ROOT / "source/package-root"
     from sync_header_version import sync_headers
     sync_headers(payload, check=True)

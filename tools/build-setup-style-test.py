@@ -22,6 +22,8 @@ def main():
     from sync_header_version import sync_headers
     sync_headers(ROOT/'source/package-root', check=True)
     if not re.fullmatch(r'\d+\.\d+\.\d+(?:-test\d+)?',version):raise SystemExit('Numbered stable or TEST version required')
+    from bitrate_package import validate_helpers
+    validate_helpers(ROOT)
     # Verify the actual decoded TV background, not only the OpenWebif JPEG.
     subprocess.run(['python3',str(ROOT/'tools/build-radio-background.py')],check=True)
     control=ROOT/'source/control'
