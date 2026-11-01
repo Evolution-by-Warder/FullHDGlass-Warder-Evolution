@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.58-test1",
+  "bytes": 17206330,
+  "sha256": "a0a602fb6189376f45e55bdaf02fa1f8aa6506d669729fc75f9c8ff58de94758",
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "only_lcd4linux_screen_addition_and_version_history_metadata": true,
+  "all_other_runtime_code_artwork_and_helpers_identical_to_stable57": true,
+  "native_controls_and_preview_geometry_preserved": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "physical_receiver_confirmation": false,
+  "next_normal_version": "1.0.59",
+  "source_commit": "4d54d62aeb36152fe0b064f9919b1320fd0b18d9",
+  "ci_run": 41326503315,
+  "ci_conclusion": "success",
+  "native_footer_contract_checks": 6,
+  "production_update_version": "1.0.57"
+}
