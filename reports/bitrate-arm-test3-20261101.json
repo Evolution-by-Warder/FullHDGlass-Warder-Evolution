@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-01",
+  "candidate_commit": "db12f7acd242a432a2891831b108203f85840f15",
+  "release": "v1.0.54-test3",
+  "package": "enigma2-plugin-skins-fullhdglass_1.0.54-test3_all.ipk",
+  "bytes": 16928726,
+  "sha256": "8c4a556e048a1a4cb324836e49e928050fd859baaf3dc77bc4b765a465be1531",
+  "workflow_run": 41288327244,
+  "workflow_conclusion": "success",
+  "receiver_diagnostic_input": {
+    "build": "1.0.54-test2",
+    "cpu": "armv7l",
+    "video_pid": 5101,
+    "audio_pid": 5106,
+    "adapter": 0,
+    "demux": 0,
+    "complete_samples": 11,
+    "elapsed_seconds": 12.672,
+    "video_pid_stable": true,
+    "raw_video_all_zero": true,
+    "audio_current_range_kbps": [
+      373,
+      444
+    ],
+    "legacy_helper_sha256": "ea28cb65036e0c2176e7a067ded1c970e13f9ff2b89884a1508ed7b2d1d4f850"
+  },
+  "helper": {
+    "path": "usr/bin/warder-bitrate-arm",
+    "sha256": "79f21c0a5176b5def8e3c7465439d4afc5b4f8e60c1123587711ef590cec4c94",
+    "bytes": 341188,
+    "static_arm_eabi5": true,
+    "source": "tools/bitrate-helper/warder-bitrate.c",
+    "source_sha256": "ea2156aeb5b49bc819cd7f50a4b41c84d5ef8b41733ba0c4be63ca217088f2ff",
+    "build": "tools/build-bitrate-helper.py"
+  },
+  "validation": {
+    "runtime_tests": 13,
+    "diagnostic_tests": 3,
+    "native_executable_tests": 6,
+    "ts_read_boundary_cases": 565,
+    "native_address_undefined_sanitizers": "pass (leak check disabled due to sandbox ptrace)",
+    "arm_qemu_unit_and_startup": "pass",
+    "public_download_checksum": "pass",
+    "packaged_runtime_matches_tested_source": true,
+    "legacy_helper_binaries_byte_identical": true,
+    "approved_artwork_byte_identical": true,
+    "public_update_feeds_modified": false,
+    "receiver_test3_verified": false
+  },
+  "publication_gate": "Do not promote until nonzero video is confirmed on the receiver. Future stable builds must compile and include the new ARM helper."
+}
