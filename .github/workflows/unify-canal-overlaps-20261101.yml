@@ -1,0 +1,66 @@
+name: Unify 23.5E and Canal+ shared picons
+on:
+  push:
+    branches: [picons/canal-unification-20261101]
+    paths:
+      - tools/audit-canal-overlap-20261101.py
+      - tools/unify-canal-overlaps-20261101.py
+      - .github/workflows/unify-canal-overlaps-20261101.yml
+permissions:
+  contents: write
+concurrency:
+  group: warder-canal-unification
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PICONHUB_RUNTIME: .piconhub/plugin/src/Plugins/Extensions/WarderPiconHub
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/audit-canal-overlap-20261101.py
+            /tools/unify-canal-overlaps-20261101.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 4ac22bf74265ae2728c0d1263f91dbb34f19636b
+          path: .piconhub
+          persist-credentials: false
+          sparse-checkout: |
+            plugin
+            picons/DAB
+            picons/IPTV-SK-CZ/catalog
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==11.3.0
+      - name: Check the current PiconHub regression suite
+        env:
+          PYTHONPATH: .piconhub/plugin/src
+        run: python -m unittest discover -s .piconhub/plugin/tests -q
+      - name: Reconcile exact approved PNGs and run real combined downloads
+        run: python -u tools/unify-canal-overlaps-20261101.py
+      - name: Commit verified data and review report
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add --sparse assets/warder/downloads/picons/channels reports/canal-unification-20261101.json reports/CANAL-UNIFICATION-20261101.md
+          git diff --cached --check
+          git commit -m 'Unify shared Canal+ artwork in nine full 23.5E package variants'
+          git push origin HEAD:refs/heads/picons/canal-unification-20261101
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canal-unification-verification
+          path: |
+            reports/canal-unification-20261101.json
+            reports/CANAL-UNIFICATION-20261101.md
