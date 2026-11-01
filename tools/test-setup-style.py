@@ -21,6 +21,16 @@ class SetupStyleTests(unittest.TestCase):
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 
+    def test_modified_compatibility_installation_hook_is_not_silently_approved(self):
+        changed=CURRENT.replace('_WarderCoolContent.TYPE_TEXT,','_WarderCoolContent.TYPE_PIXMAP,',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
+    def test_modified_approved_bitrate_readiness_limit_still_fails(self):
+        changed=CURRENT.replace('self.bitratePrepareAttempts > 20','self.bitratePrepareAttempts > 0',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
     def test_fingerprint_is_portable_but_still_detects_changed_save_action(self):
         tree=ast.parse(CURRENT);before=style.normalized(tree)
         # Exercise both older and newer grammar shapes on either interpreter.

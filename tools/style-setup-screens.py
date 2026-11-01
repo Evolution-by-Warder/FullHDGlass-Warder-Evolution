@@ -219,6 +219,9 @@ def strip_reviewed_radio_start(tree):
 
 
 def normalized(tree):
+    adapter_ledger=ROOT/'design/openatv81-compatibility/runtime-hooks.json'
+    if adapter_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(adapter_ledger.read_text()))
     repair_ledger=ROOT/'design/receiver-repairs/logic.json'
     if repair_ledger.exists():
         tree=strip_reviewed_batch(tree,json.loads(repair_ledger.read_text()))
@@ -249,6 +252,11 @@ def normalized(tree):
         for node in ast.walk(cls):
             if isinstance(node,ast.keyword) and node.arg in ('color_sel','backcolor_sel'):
                 node.value=ast.Constant('<selection-color>')
+    bitrate_ledger=ROOT/'design/bitrate-runtime/logic.json'
+    if bitrate_ledger.exists():
+        # These exact approved nodes were reviewed after the earlier canonical
+        # reversions. Retain the original frozen 1.0.15 controller fingerprint.
+        tree=strip_reviewed_batch(tree,json.loads(bitrate_ledger.read_text()))
     serialized=json.dumps(portable(tree),sort_keys=True,separators=(',',':'),ensure_ascii=True)
     return hashlib.sha256(serialized.encode()).hexdigest()
 

@@ -1,0 +1,26 @@
+[
+  {
+    "scope": "module",
+    "before": "",
+    "after": "try:\n    from Components.GUIComponent import GUIComponent as _WarderGUIComponent\n    from enigma import eListbox as _WarderListbox, eSize as _WarderListSize, eLabel as _WarderTitleLabel\n    from .warderListRows import install as _installWarderListRows\n    _installWarderListRows(_WarderGUIComponent, lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml', _WarderListbox, _WarderListSize, _WarderTitleLabel)\nexcept (ImportError, AttributeError):\n    pass",
+    "review": "Exact installation hook shipped in approved 1.0.61; runtime adapter has separate native regression tests."
+  },
+  {
+    "scope": "module",
+    "before": "",
+    "after": "try:\n    from enigma import eListboxPythonMultiContent as _WarderCoolContent, RT_WRAP as _WarderCoolWrap, RT_ELLIPSIS as _WarderCoolEllipsis\n    from .warderCoolText import install as _installWarderCoolText\n    _installWarderCoolText(_WarderGUIComponent, lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml', _WarderCoolContent.TYPE_TEXT, _WarderCoolWrap, _WarderCoolEllipsis)\nexcept (ImportError, AttributeError, NameError):\n    pass",
+    "review": "Exact installation hook shipped in approved 1.0.61; runtime adapter has separate native regression tests."
+  },
+  {
+    "scope": "module",
+    "before": "",
+    "after": "try:\n    from Screens.Screen import ScreenSummary as _WarderScreenSummary\n    from Components.Sources.StaticText import StaticText as _WarderSummaryText\n    from .warderSummaryCompat import install as _installWarderSummaryCompat\n    _installWarderSummaryCompat(_WarderScreenSummary, lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml', _WarderSummaryText)\nexcept (ImportError, AttributeError):\n    pass",
+    "review": "Exact installation hook shipped in approved 1.0.61; runtime adapter has separate native regression tests."
+  },
+  {
+    "scope": "module",
+    "before": "",
+    "after": "try:\n    from Components.ConfigList import ConfigList as _WarderConfigList\n    from skin import parseFont as _warderParseConfigFont\n    from .warderConfigFonts import install as _installWarderConfigFonts\n    _installWarderConfigFonts(_WarderConfigList, lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml', gFont, _warderParseConfigFont)\nexcept (ImportError, AttributeError):\n    pass",
+    "review": "Exact installation hook shipped in approved 1.0.61; runtime adapter has separate native regression tests."
+  }
+]

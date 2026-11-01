@@ -20,10 +20,12 @@ class Dialog:
 
 
 class GuardTests(unittest.TestCase):
-    def check(self, source):
+    def check(self, source, ref='master', variant_source=None):
         import ast
         contract = {'module': 'Screens.Dialog', 'class': 'Dialog', 'kind': 'display'}
         contract['expected'] = guard.inspect_contract(ast.parse(SOURCE), contract)
+        if variant_source is not None:
+            contract['expected_by_ref'] = {'8.0': guard.inspect_contract(ast.parse(variant_source), contract)}
         signature = {'module': 'Screens.Dialog', 'class': 'Dialog', 'method': '__init__', 'kind': 'signature'}
         signature['expected'] = guard.inspect_contract(ast.parse(SOURCE), signature)
         with tempfile.TemporaryDirectory() as directory:
@@ -32,7 +34,7 @@ class GuardTests(unittest.TestCase):
             (root / 'Screens/Dialog.py').write_text(source)
             manifest = root / 'interfaces.json'
             manifest.write_text(json.dumps({'project': 'fixture', 'modules': {'Screens.Dialog': ['Dialog', 'Label']}, 'contracts': [contract, signature]}))
-            return subprocess.run([sys.executable, str(SCRIPT), '--manifest', str(manifest), '--upstream', str(root)], capture_output=True, text=True)
+            return subprocess.run([sys.executable, str(SCRIPT), '--manifest', str(manifest), '--upstream', str(root), '--ref', ref], capture_output=True, text=True)
 
     def test_reviewed_interface_passes(self):
         result = self.check(SOURCE)
@@ -54,6 +56,17 @@ class GuardTests(unittest.TestCase):
 
     def test_added_mandatory_widget_fails(self):
         self.assertNotEqual(self.check(SOURCE.replace('["prompt"]', '["prompt", "description"]')).returncode, 0)
+
+    def test_reviewed_alternative_is_selected_only_for_its_exact_ref(self):
+        variant = SOURCE.replace('Label(title)', 'StaticText(title)')
+        self.assertEqual(self.check(variant, '8.0', variant).returncode, 0)
+        self.assertNotEqual(self.check(variant, 'master', variant).returncode, 0)
+        self.assertNotEqual(self.check(variant, '8.0-next', variant).returncode, 0)
+
+    def test_later_changes_to_a_reviewed_ref_still_fail(self):
+        variant = SOURCE.replace('Label(title)', 'StaticText(title)')
+        changed = variant + '        self["description"] = Label("new")\n'
+        self.assertNotEqual(self.check(changed, '8.0', variant).returncode, 0)
 
 
 if __name__ == '__main__':

@@ -17,7 +17,18 @@
     "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
     "Components/MenuList.py": "abe4edfc4aab2b98a25ca722100c26e35d214f0c87a653ef2ed500d30922b106",
     "Components/EpgList.py": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488",
-    "Screens/Setup.py": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af"
+    "Screens/Setup.py": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af",
+    "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf",
+    "Components/Button.py": "4df482731990e0c1766a2ecfd6dd8d028be3d9c7fe6fee803f224ed636b8c951",
+    "Components/Pixmap.py": "2f381f10fc168e0ff797c0b4d33975618498cd62057339a431676dda22e4113a",
+    "Components/Renderer/Pixmap.py": "0ea2b521a66b040b6b5e6de7cb2a6bf71184086003c70c01827db0fa249c81d6",
+    "Components/Sources/Boolean.py": "a164b0226e8d8ffbab339aac629e811b21f941a25d406402efff34a289f814a7",
+    "Components/Converter/Converter.py": "968f9534c18ca58c32af3c0618126bfd88de1087fd21af42d065cd918d83728f",
+    "Components/Converter/ConditionalShowHide.py": "34dd484923ed0ab80011cee10a0da12c64185455b2a78a7904970e57dafd0856",
+    "Plugins/Extensions/PicturePlayer/ui.py": "c3e4029da7889644a278513debc8bd8e4deb9ae55582797f5f398e010aded951",
+    "Plugins/SystemPlugins/PositionerSetup/plugin.py": "93963b8251a765bc4c0fe2fe10aed6d0d2383063b5a715084f1f714924065f2d",
+    "Screens/Dish.py": "6905e62ab487adce02451e46e064bd101154f1d2293fbf6a7127b05ff22913d2",
+    "Screens/SwapManager.py": "927a195dd226d95e482877b9c7cb1495106018a766bcec866f52806cef1cf9e6"
   },
   "extra_revisions": {
     "legacy/Screens/Opkg.py": {
@@ -64,6 +75,81 @@
       "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
       "path": "Components/Sources/StaticText.py",
       "sha256": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42"
+    },
+    "legacy/Tools/CList.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Tools/CList.py",
+      "sha256": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf"
+    },
+    "legacy/Components/Button.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Button.py",
+      "sha256": "4df482731990e0c1766a2ecfd6dd8d028be3d9c7fe6fee803f224ed636b8c951"
+    },
+    "legacy/Components/Pixmap.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Pixmap.py",
+      "sha256": "2f381f10fc168e0ff797c0b4d33975618498cd62057339a431676dda22e4113a"
+    },
+    "legacy/Components/Renderer/Pixmap.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Renderer/Pixmap.py",
+      "sha256": "e356c8e680a3c72d2e70719de5c5ebfb6220107acb2eb6120c6e8d4628f75947"
+    },
+    "legacy/Components/Sources/Boolean.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Sources/Boolean.py",
+      "sha256": "a164b0226e8d8ffbab339aac629e811b21f941a25d406402efff34a289f814a7"
+    },
+    "legacy/Components/Converter/Converter.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Converter/Converter.py",
+      "sha256": "968f9534c18ca58c32af3c0618126bfd88de1087fd21af42d065cd918d83728f"
+    },
+    "legacy/Components/Converter/ConditionalShowHide.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Converter/ConditionalShowHide.py",
+      "sha256": "34dd484923ed0ab80011cee10a0da12c64185455b2a78a7904970e57dafd0856"
+    },
+    "legacy/Plugins/Extensions/PicturePlayer/ui.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Plugins/Extensions/PicturePlayer/ui.py",
+      "sha256": "dda926d7ceb6cca2d51e29bbbb0f62ba39a6506ed9a3857e5f074d272e1449a9"
+    },
+    "legacy/Plugins/SystemPlugins/PositionerSetup/plugin.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Plugins/SystemPlugins/PositionerSetup/plugin.py",
+      "sha256": "93963b8251a765bc4c0fe2fe10aed6d0d2383063b5a715084f1f714924065f2d"
+    },
+    "legacy/Screens/Dish.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Screens/Dish.py",
+      "sha256": "6905e62ab487adce02451e46e064bd101154f1d2293fbf6a7127b05ff22913d2"
+    },
+    "legacy/Screens/SwapManager.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Screens/SwapManager.py",
+      "sha256": "809ad01d135d7279bc4b4d838e2bac20e24f3f61b1453bb8d59719151902f4db"
+    },
+    "legacy/Components/Label.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Label.py",
+      "sha256": "7aaaa1831d903b0953abf3fd57f62ed3148e1d8a7a6e5192f0cf6bb556a2a88c"
+    },
+    "legacy/Components/VariableText.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/VariableText.py",
+      "sha256": "31c251d0abd3444879e93ff8d5e2075ad163e8f46bbca4bc59db222203e318f1"
+    },
+    "legacy/Components/Renderer/Renderer.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Renderer/Renderer.py",
+      "sha256": "aebe71630013e07648993f359974e328a99fab6515df25d1bd3b63c167ab033b"
+    },
+    "legacy/Components/Renderer/Label.py": {
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "path": "Components/Renderer/Label.py",
+      "sha256": "2a54f95c3c7ebf661592ab7d3a51aabf22e676e837e516b039f71080d64ba643"
     }
   }
 }

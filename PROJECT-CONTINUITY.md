@@ -1,3 +1,13 @@
+# OpenATV 8.1 continuation — 1 November 2026
+
+Owner requested continuing autonomously while asleep. Work is isolated on audit/openatv81-continuation-20261101; production 1.0.61 and all updater manifests remain unchanged. Candidate 1.0.62-test1 repairs four reviewed screens: PicturePlayer captions, PiP dish Boolean/pixmap binding, PositionerSetupLog native Button bindings, and legacy Swap Label captions. Exact edits are recorded in design/openatv81-bindings/skin-edits.json. These are source/native-class tests, not physical receiver/GLES validation.
+
+Cross-project checks now cover stable 8.0, 8.0-next (8.1 beta) and current master, including pull requests. FullHDGlass adds typed/inherited widget binding inspection and native screen replay. Five additional display contracts include setup summaries and the affected controllers. Reports distinguish checked bindings from dynamic/unresolved ones. PiconHub/GSU runtime and version remain unchanged; their separate five-entry History request stays pending until a functional release.
+
+Remaining: generated/assembled plugin layouts and the recorded unresolved fields need separate native replay/review; physical receiver/GLES/WQHD validation remains pending. Never claim the static audit covers all dynamic plugin screens. Review the candidate before any new normal release.
+
+---
+
 # Stable 1.0.61 — 1 November 2026
 
 The owner explicitly approved the current TEST3 and requested a normal release and all release records. Version 1.0.61 promotes its row fitting, header/timeline, CoolTVGuide caption and setup display fixes. Preserve the corrected bound callback that prevents the TEST1 startup failure. The approved adapters, graphics and helpers are unchanged apart from version labels and localized History.
