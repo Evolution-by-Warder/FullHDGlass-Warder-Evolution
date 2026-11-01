@@ -4427,7 +4427,8 @@ class ExtraInfo17(Screen):
 					pass
 				# Enigma2 execute(program, argv0, ...): the executable must also
 				# occupy argv[0], otherwise the adapter/demux argument is lost.
-				cmd = ["/usr/bin/btrGen17", "/usr/bin/btrGen17"]
+				helper = "/usr/bin/warder-bitrate-arm" if XCPU == "arm" and fileExists("/usr/bin/warder-bitrate-arm") else "/usr/bin/btrGen17"
+				cmd = [helper, helper]
 				if XCPU == "arm":
 					cmd.append(str(streamdata.get("adapter", 0)))
 				cmd.extend([str(demux), str(vpid), str(apid)])

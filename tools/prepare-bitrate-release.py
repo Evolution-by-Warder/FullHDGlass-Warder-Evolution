@@ -7,7 +7,7 @@ import sys
 from sync_header_version import sync_headers
 ROOT=Path(__file__).resolve().parents[1]
 PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
-VERSION='1.0.54-test2'
+VERSION='1.0.54-test3'
 def main():
     before={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in ROOT.glob('update*.json')}
     if (PLUGIN/'version').read_text().strip()!=VERSION:
@@ -17,8 +17,8 @@ def main():
         path.write_text(text.replace('Version: 1.0.53-1\n','Version: '+VERSION+'-1\n',1))
         (PLUGIN/'version').write_text(VERSION+'\n')
         for name,note in {
-            'history.txtSk':'Diagnostika nulového video bitrate: PID-y, demux a číselné vzorky.\nMalý záznam sa vytvorí v /tmp/fullhdglass-bitrate.json.',
-            'history.txt':'Fixed bitrate helper arguments shared by all infobar types.\nHandle partial output, launch errors, process exit and startup timeout.',
+            'history.txtSk':'Nový ARM pomocný program s kontrolou chýb filtrov.\nPri nulovom video PES toku automaticky meria obsah TS paketov.',
+            'history.txt':'New checked ARM helper with automatic TS payload fallback for video.\nRetained audio measurement, complete samples and bounded diagnostics.',
         }.items():
             path=PLUGIN/name
             path.write_text('FullHDGlass '+VERSION+' — 01.11.2026\n'+note+'\n\n'+path.read_text())

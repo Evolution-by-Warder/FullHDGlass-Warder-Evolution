@@ -59,13 +59,18 @@ class Harness(Runtime):
 class BitrateTests(unittest.TestCase):
     def setUp(self):
         namespace['XCPU'] = 'arm'
+        namespace['fileExists'] = lambda path:True
         settings.par25.value = False; settings.par35.value = '9999999'
     def running(self):
         obj = Harness({'adapter':1,'demux':3}); obj.start(); return obj
     def test_arm_arguments_reach_helper_in_order(self):
         obj = self.running()
-        self.assertEqual(obj.container.argv, ('/usr/bin/btrGen17','1','3','7297','7298'))
+        self.assertEqual(obj.container.argv, ('/usr/bin/warder-bitrate-arm','1','3','7297','7298'))
         self.assertFalse(obj.bitNotActive)
+    def test_missing_new_helper_uses_existing_legacy_helper(self):
+        namespace['fileExists'] = lambda path:path!='/usr/bin/warder-bitrate-arm'
+        obj = self.running()
+        self.assertEqual(obj.container.argv,('/usr/bin/btrGen17','1','3','7297','7298'))
     def test_mips_and_sh4_do_not_receive_adapter(self):
         for cpu in ('mipsel', 'sh4'):
             namespace['XCPU'] = cpu
@@ -74,7 +79,7 @@ class BitrateTests(unittest.TestCase):
     def test_missing_stream_metadata_does_not_crash(self):
         for obj in (Harness(), Harness(stream_error=True)):
             obj.start()
-            self.assertEqual(obj.container.argv, ('/usr/bin/btrGen17','0','2','7297','7298'))
+            self.assertEqual(obj.container.argv, ('/usr/bin/warder-bitrate-arm','0','2','7297','7298'))
     def test_launch_failure_is_visible_and_not_marked_running(self):
         obj = Harness(); obj.container.result = -1; obj.start()
         self.assertEqual(obj.label.text, 'Bitrate failed')
