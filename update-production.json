@@ -1,6 +1,6 @@
 {
-  "version": "1.0.55",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk",
-  "sha256": "9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db",
-  "changelog": "Opravené meranie bitrate videa a zvuku a rýchlejší nábeh po prepnutí kanála. Oprava platí pre všetky typy infobaru. Po aktualizácii reštartujte GUI."
+  "version": "1.0.57",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.57_all.ipk",
+  "sha256": "2cfcfa64d98ba8eead5e0c0ef33a9a0cc3a99a0a7690c1b4daa2c6ffcd20eb1f",
+  "changelog": "Opravené písmo v nastaveniach pluginov, menšie inštalačné okno so správnym stavom a priebehom, opravené nastavenie obrazu a päť posledných zmien v histórii. Po aktualizácii reštartujte GUI."
 }
