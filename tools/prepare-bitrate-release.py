@@ -7,7 +7,7 @@ import sys
 from sync_header_version import sync_headers
 ROOT=Path(__file__).resolve().parents[1]
 PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
-VERSION='1.0.54-test4'
+VERSION='1.0.54-test5'
 def main():
     before={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in ROOT.glob('update*.json')}
     if (PLUGIN/'version').read_text().strip()!=VERSION:
