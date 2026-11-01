@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-01",
+  "live_installed_updater_checks": [
+    {
+      "installed": "1.0.55",
+      "offer_count": 1,
+      "version": "1.0.57",
+      "sha256": "2cfcfa64d98ba8eead5e0c0ef33a9a0cc3a99a0a7690c1b4daa2c6ffcd20eb1f",
+      "actual_installed_download_method_verified": true
+    },
+    {
+      "installed": "1.0.56-test3",
+      "offer_count": 1,
+      "version": "1.0.57",
+      "sha256": "2cfcfa64d98ba8eead5e0c0ef33a9a0cc3a99a0a7690c1b4daa2c6ffcd20eb1f",
+      "actual_installed_download_method_verified": true
+    },
+    {
+      "installed": "1.0.57",
+      "offer_count": 0
+    }
+  ],
+  "legacy_migration_bridge_preserved": true,
+  "version": "1.0.57",
+  "release_is_latest": true,
+  "production_manifest_verified": true,
+  "native_test_manifest_verified": true,
+  "alternate_test_commit": "3aa54062f2b266eab00866ccfb28394a77160ad7",
+  "promotion_run": 41323000744,
+  "promotion_conclusion": "success"
+}
