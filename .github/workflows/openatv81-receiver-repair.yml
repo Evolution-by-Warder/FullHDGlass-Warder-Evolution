@@ -1,12 +1,12 @@
-name: FullHDGlass approved stable 1.0.57
+name: FullHDGlass LCD4linux footer test 1.0.58-test1
 on:
   push:
-    branches: [fix/openatv81-animation-20261101]
-    paths: [source/**, tools/**, docs/FULLHDGLASS-1.0.57.md, .github/workflows/openatv81-receiver-repair.yml]
+    branches: [fix/lcd4linux-footer-20261101]
+    paths: [source/**, tools/**, docs/LCD4LINUX-FOOTER-1.0.58-test1.md, .github/workflows/openatv81-receiver-repair.yml]
 permissions:
   contents: read
 concurrency:
-  group: fullhdglass-openatv81-repair
+  group: fullhdglass-lcd4linux-footer
   cancel-in-progress: true
 jobs:
   openatv:
@@ -41,6 +41,7 @@ jobs:
         run: |
           python tools/test-config-font-compat.py -q
           python tools/test-history-radio-header.py -q
+          python tools/test-lcd4linux-footer.py -q
           python tools/test-bitrate-runtime.py -q
           python tools/test-bitrate-diagnostic.py -q
           python tools/test-bitrate-compat.py -q
@@ -62,7 +63,7 @@ jobs:
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.57
+          name: FullHDGlass-1.0.58-test1
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable IPK without advancing existing update feeds
@@ -70,12 +71,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.57_all.ipk
-          TAG=v1.0.57
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.58-test1_all.ipk
+          TAG=v1.0.58-test1
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.57' --notes-file docs/FULLHDGLASS-1.0.57.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.58-test1' --notes-file docs/LCD4LINUX-FOOTER-1.0.58-test1.md
           fi

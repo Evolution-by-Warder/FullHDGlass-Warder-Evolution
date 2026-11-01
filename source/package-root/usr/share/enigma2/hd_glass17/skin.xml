@@ -8033,4 +8033,22 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
     <eLabel text="9" position="8,380" size="24,33" font="Prive3;27" foregroundColor="white" backgroundColor="transpBlack" /><widget name="subpages_9" position="53,380" size="54,30" alphatest="on" />
   </screen>
 
+  <screen name="LCDdisplayConfig" position="center,50" size="1820,980" title="LCD4linux Settings">
+    <widget name="config" position="0,0" size="910,800" scrollbarMode="showOnDemand" enableWrapAround="1" />
+    <widget source="introduction" render="Label" position="5,812" size="690,52" zPosition="10" font="Prive3;24" halign="center" valign="center" transparent="1" />
+    <widget name="key_red" position="0,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="red" transparent="1" />
+    <widget name="key_green" position="205,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="green" transparent="1" />
+    <widget name="key_yellow" position="410,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="yellow" transparent="1" />
+    <widget name="key_blue" position="615,875" size="195,64" zPosition="4" font="Prive3;26" halign="center" valign="center" foregroundColor="blue" transparent="1" />
+    <widget source="key_menu" render="Label" position="820,875" size="90,64" zPosition="4" font="Prive3;24" halign="center" valign="center" foregroundColor="white" transparent="1" />
+    <widget source="Version" render="Label" position="710,842" size="200,22" font="Prive3;18" halign="right" valign="center" transparent="1" />
+    <widget source="LibUSB" render="Label" position="710,812" size="200,26" font="Prive3;18" halign="right" valign="center" foregroundColor="red" transparent="1" />
+    <widget source="About" render="Label" position="710,812" size="200,26" font="Prive3;18" halign="right" valign="center" transparent="1" />
+    <widget name="LCD1" position="910,0" size="910,490" zPosition="1" transparent="1" alphatest="on" />
+    <widget name="LCD2" position="910,490" size="910,490" zPosition="1" transparent="1" alphatest="on" />
+    <widget name="LCD3" position="910,980" size="910,490" zPosition="1" transparent="1" alphatest="on" />
+    <widget source="LCD1text" render="Label" position="910,5" size="200,20" font="Regular;11" halign="left" valign="center" transparent="1" />
+    <widget source="LCD2text" render="Label" position="910,495" size="200,20" font="Regular;11" halign="left" valign="center" transparent="1" />
+    <widget source="LCD3text" render="Label" position="910,985" size="200,20" font="Regular;11" halign="left" valign="center" transparent="1" />
+  </screen>
 </skin>
