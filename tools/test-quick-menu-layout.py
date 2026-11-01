@@ -5,7 +5,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from urllib.request import urlopen
 import xml.etree.ElementTree as ET
-from PIL import ImageFont
+from PIL import ImageFont, Image
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(add_help=False)
 parser.add_argument('--upstream',type=Path)
@@ -108,5 +108,21 @@ class QuickTests(unittest.TestCase):
             self.assertEqual([n.get('index') for n in before.iter() if n.get('index')],[n.get('index') for n in after.iter() if n.get('index')])
             self.assertEqual(after.get('scrollbarMode'),'showOnDemand')
             self.assertEqual(after.find('templates/template').get('itemHeight'),after.get('itemHeight'))
+
+    def test_tv_colour_rules_use_opaque_solid_pngs_below_captions(self):
+        expected={'red':(255,0,0,255),'green':(29,215,31,255),'yellow':(253,234,0,255),'blue':(0,19,255,255)}
+        for (name,rgba),x in zip(expected.items(),(80,534,988,1443)):
+            relative='hd_glass17/videodb/'+name+'.png'
+            node=quick.find("ePixmap[@pixmap='%s']"%relative)
+            self.assertIsNotNone(node)
+            self.assertEqual(node.get('position'),str(x)+',1019')
+            self.assertEqual(node.get('size'),'397,4')
+            self.assertEqual(node.get('scale'),'1')
+            self.assertEqual(node.get('alphatest'),'off')
+            pixels=Image.open(ROOT/'source/package-root/usr/share/enigma2'/relative).convert('RGBA')
+            self.assertEqual(set(pixels.getdata()),{rgba})
+            self.assertLessEqual(1019+4,1080)
+        self.assertFalse(any(n.get('position','').endswith(',1019') for n in quick.findall('eLabel')))
+
 if __name__=='__main__':
     unittest.main(argv=[__file__]+remaining)
