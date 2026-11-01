@@ -20,11 +20,22 @@ on:
       - tools/test-openatv81-animation.py
       - tools/fetch-openatv81-fixture.py
       - tools/openatv81_skin.py
+      - tools/audit-openatv-skin-bindings.py
+      - tools/test-native-screen-bindings.py
+      - tools/test-skin-binding-audit.py
+      - design/openatv81-bindings/**
+  pull_request:
+    paths: [source/**, tools/**, design/openatv*/**, .github/workflows/verify-system-screen-compatibility.yml]
 permissions:
   contents: read
 jobs:
   compatibility:
     runs-on: ubuntu-latest
+    name: OpenATV ${{ matrix.upstream_ref }}
+    strategy:
+      fail-fast: false
+      matrix:
+        upstream_ref: ["8.0", 8.0-next, master]
     timeout-minutes: 10
     env:
       PYTHONDONTWRITEBYTECODE: '1'
@@ -35,6 +46,13 @@ jobs:
             tools
             design
             source
+      - uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: ${{ matrix.upstream_ref }}
+          path: upstream/enigma2
+          sparse-checkout: lib/python
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.14'
@@ -42,23 +60,28 @@ jobs:
       - name: Check reviewed exports, signatures and display contracts against current OpenATV
         run: |
           python tools/test-openatv-interface-guard.py -v
-          python tools/check-openatv-interfaces.py --manifest design/openatv-compatibility/interfaces.json --cache-dir /tmp/warder-openatv-current
+          python tools/check-openatv-interfaces.py --manifest design/openatv-compatibility/interfaces.json --ref "${{ matrix.upstream_ref }}" --upstream upstream/enigma2/lib/python
       - name: Exercise legacy and current EPG, system screens, codec and keyboard
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p /tmp/warder-openatv-before/Screens
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-openatv-before/Screens/EpgSelection.py https://raw.githubusercontent.com/openatv/enigma2/13e055d3e172679c4c3fb16da1b0462d0bd8b660/lib/python/Screens/EpgSelection.py
-          WARDER_OPENATV_BEFORE=/tmp/warder-openatv-before WARDER_OPENATV_AFTER=/tmp/warder-openatv-current python tools/test-openatv-epg-compat.py -v
+          WARDER_OPENATV_BEFORE=/tmp/warder-openatv-before WARDER_OPENATV_AFTER=upstream/enigma2/lib/python python tools/test-openatv-epg-compat.py -v
           python tools/test-openatv-codec-compat.py -v
           python tools/test-numberzap-picon.py -v
-          python tools/test-openatv-screen-compat.py --before /tmp/warder-openatv-before --after /tmp/warder-openatv-current -v
+          python tools/test-openatv-screen-compat.py --before /tmp/warder-openatv-before --after upstream/enigma2/lib/python -v
           PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"
-          python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-openatv-current/Screens/VirtualKeyBoard.py -v
+          python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest upstream/enigma2/lib/python/Screens/VirtualKeyBoard.py -v
       - name: Reproduce and repair the reported OpenATV 8.1 animation crash
         run: |
           python tools/fetch-openatv81-fixture.py /tmp/warder-openatv81-pinned
           python tools/test-openatv81-animation.py --upstream /tmp/warder-openatv81-pinned -v
           python tools/test-opkg-screen-compat.py --upstream /tmp/warder-openatv81-pinned -v
           python tools/test-config-font-compat.py -v
+      - name: Verify native bindings and replay repaired screens
+        run: |
+          python tools/test-skin-binding-audit.py -v
+          python tools/audit-openatv-skin-bindings.py --upstream upstream/enigma2/lib/python
+          python tools/test-native-screen-bindings.py --upstream upstream/enigma2/lib/python -v

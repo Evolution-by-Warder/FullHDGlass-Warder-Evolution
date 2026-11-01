@@ -1,0 +1,246 @@
+{
+  "schema": 1,
+  "literal_inline_templates_checked": 24,
+  "typed_widget_bindings_checked": 64,
+  "unresolved_or_dynamic_widget_bindings": 53,
+  "unresolved_bindings": [
+    {
+      "controller": "Plugins.Extensions.setupGlass17.infoEcm_by_duri.InfoEcmScreen",
+      "field": "frameCam"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.infoEcm_by_duri.InfoEcmScreen",
+      "field": "frameCode"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.infoEcm_by_duri.InfoEcmScreen",
+      "field": "piconCam"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.infoEcm_by_duri.InfoEcmScreen",
+      "field": "piconCode"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.SelectPosition",
+      "field": "cover"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "broadcast"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "broadcastLabel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "channel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "countryLabel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "countryMeta"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "description"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "durationLabel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "durationMeta"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "genreLabel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "genreMeta"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "keyBlue"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "keyGreen"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "keyRed"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "keyYellow"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "nowDate"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "nowTime"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "programArtwork"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "ratingMeta"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "ratingStars"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "short"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "stationLabel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "stationPicon"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "title"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "when"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "yearLabel"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.WarderProgramInfo",
+      "field": "yearMeta"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.dirBrowser",
+      "field": "filelist"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.satSelectorScr",
+      "field": "list"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.selectScreenShowed",
+      "field": "scr_preview"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "Canvas"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "helpPicon"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "helpPiconFrame"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "help_pict"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_0"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_1"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_2"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_3"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_4"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_5"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_6"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_7"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_8"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_9"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_0"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_1"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_2"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_3"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_4"
+    }
+  ],
+  "dynamic_skin_controllers_requiring_separate_tests": [
+    "Plugins.Extensions.setupGlass17.E_weather.mainmenu",
+    "Plugins.Extensions.setupGlass17.E_weather.selectCity",
+    "Plugins.Extensions.setupGlass17.Netatmo.NetatmoScreen",
+    "Plugins.Extensions.setupGlass17.infoEcm_by_duri.InfoEcmScreen",
+    "Plugins.Extensions.setupGlass17.plugin.ExtraInfo17",
+    "Plugins.Extensions.setupGlass17.plugin.SpecialScreen",
+    "Plugins.Extensions.setupGlass17.plugin.cityFinder",
+    "Plugins.Extensions.setupGlass17.plugin.downloadMenu",
+    "Plugins.Extensions.setupGlass17.plugin.historyScreen",
+    "Plugins.Extensions.setupGlass17.plugin.selectIconsDisplayed",
+    "Plugins.Extensions.setupGlass17.plugin.selectScreenShowed",
+    "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+    "Plugins.Extensions.setupGlass17.plugin.styleSelectorScr",
+    "Plugins.Extensions.setupGlass17.plugin.warderPositionSelectorScr",
+    "Plugins.Extensions.setupGlass17.screenSaver.ScreenSaverScreen",
+    "Plugins.Extensions.setupGlass17.warderDialogs.ChoiceBox",
+    "Plugins.Extensions.setupGlass17.warderDialogs.InputBox",
+    "Plugins.Extensions.setupGlass17.warderDialogs.MessageBox",
+    "Plugins.Extensions.setupGlass17.warderSpinnerScreen.SpinnerChoice",
+    "Plugins.Extensions.setupGlass17.weather.WeatherScreen",
+    "Screens.G17_UserInfo.UserInfo17"
+  ],
+  "parse_errors": [],
+  "binding_errors": [],
+  "limitations": "Literal inline XML only; generated/assembled skins, dynamic fields and actual GUI rendering need their separate native/layout tests."
+}

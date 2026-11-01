@@ -6,6 +6,10 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 **FullHDGlass 1.0.61** fixes clipped menu rows and headers, the graphical EPG timeline, CoolTVGuide captions and setup text on receiver displays. Includes the approved compact installer, LCD4linux footer and Quick Menu improvements. [Release notes](docs/FULLHDGLASS-1.0.61.md) · [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
 
+## OpenATV 8.1 test candidate
+
+[FullHDGlass 1.0.62-test1](docs/FULLHDGLASS-1.0.62-test1.md) repairs additional native screen bindings. It is an isolated prerelease awaiting receiver confirmation; normal updates remain on 1.0.61. [Verification](reports/openatv81-candidate-public-20261101.json).
+
 ## Installation
 
 [Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk).

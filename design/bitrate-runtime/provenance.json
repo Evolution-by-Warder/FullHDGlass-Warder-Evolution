@@ -1,0 +1,11 @@
+{
+  "baseline_version": "1.0.15",
+  "baseline_commit": "5c09eb9688414971ddf9559e47938f8fccd32157",
+  "baseline_logic_sha256": "b9d18190bc0ca886407495914086033840360586fd55dfb491c346f3036e1eea",
+  "approved_version": "1.0.55",
+  "approved_source_commit": "f712696ce3d2688fe363b09023b43cd74bfcc4a2",
+  "public_package_sha256": "9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db",
+  "normalised_before_bitrate_reversion": "0cd8e161b1561e191ebffd1d3d4ee60ac0380fb0011a8ff6a5ca5d80f33233a7",
+  "exact_ast_replacements": 14,
+  "reason": "The existing presentation guard omitted the already approved bitrate runtime repair. Restore only exact reviewed AST nodes at the canonical stage; keep the original 1.0.15 frozen fingerprint. 1.0.61 differs from approved 1.0.55 only by the four separately recorded compatibility installation hooks after other reviewed reversions."
+}

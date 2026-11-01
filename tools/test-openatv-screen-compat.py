@@ -75,7 +75,13 @@ class ScreenCompatTests(unittest.TestCase):
   red=screen('TextBox').find("widget[@source='key_red']");self.assertEqual(red.get('conditional'),'key_red')
  def test_native_swap_and_toast_use_their_verified_native_fallback_names(self):
   if not args.after:return
-  swap=cls(args.after,'Screens/SwapManager.py','Swap');self.assertTrue(any(isinstance(n,ast.Assign) and any(isinstance(t,ast.Attribute) and t.attr=='skinName' for t in n.targets) and ast.literal_eval(n.value)==['SwapManagerSetup','Setup'] for n in ast.walk(swap)));self.assertIsNone(screen('SwapManagerSetup'));self.assertIsNotNone(screen('Setup').find("widget[@name='footnote']"))
+  swap=cls(args.after,'Screens/SwapManager.py','Swap')
+  if any(isinstance(base,ast.Name) and base.id=='Setup' for base in swap.bases):
+   self.assertTrue(any(isinstance(n,ast.Assign) and any(isinstance(t,ast.Attribute) and t.attr=='skinName' for t in n.targets) and ast.literal_eval(n.value)==['SwapManagerSetup','Setup'] for n in ast.walk(swap)));self.assertIsNone(screen('SwapManagerSetup'));self.assertIsNotNone(screen('Setup').find("widget[@name='footnote']"))
+  else:
+   # Stable 8.0 deliberately retains the old GUI Label controller.
+   for colour in ('red','green','yellow'):
+    self.assertIsNotNone(screen('Swap').find("widget[@name='key_%s']"%colour))
   toast=cls(args.after,'Screens/Toast.py','ToastScreen');self.assertIn("['Toast']",ast.unparse(toast));self.assertIsNone(screen('Toast'))
   inline=next(n.value.value for n in toast.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='skin' for t in n.targets));names={w.get('name') for w in ET.fromstring(inline).findall('widget')};self.assertTrue(mandatory(toast)<=names)
  def test_parental_new_descriptions_and_footers_fit_without_overlap(self):

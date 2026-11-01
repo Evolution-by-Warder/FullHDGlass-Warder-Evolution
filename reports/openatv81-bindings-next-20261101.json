@@ -1,0 +1,906 @@
+{
+  "schema": 1,
+  "matched_controller_screen_pairs": 229,
+  "typed_widget_bindings_checked": 995,
+  "unresolved_or_dynamic_widget_bindings": 162,
+  "unresolved_bindings": [
+    {
+      "controller": "Components.Console.Console",
+      "screen": "Console",
+      "field": "key_green"
+    },
+    {
+      "controller": "Components.Console.Console",
+      "screen": "Console",
+      "field": "key_help"
+    },
+    {
+      "controller": "Components.Console.Console",
+      "screen": "Console",
+      "field": "key_red"
+    },
+    {
+      "controller": "Components.Console.Console",
+      "screen": "Console",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Components.Console.Console",
+      "screen": "Console",
+      "field": "text"
+    },
+    {
+      "controller": "Components.Converter.ServiceInfo.ServiceInfo",
+      "screen": "ServiceInfo",
+      "field": "Title"
+    },
+    {
+      "controller": "Components.Converter.ServiceInfo.ServiceInfo",
+      "screen": "ServiceInfo",
+      "field": "blue"
+    },
+    {
+      "controller": "Components.Converter.ServiceInfo.ServiceInfo",
+      "screen": "ServiceInfo",
+      "field": "green"
+    },
+    {
+      "controller": "Components.Converter.ServiceInfo.ServiceInfo",
+      "screen": "ServiceInfo",
+      "field": "infolist"
+    },
+    {
+      "controller": "Components.Converter.ServiceInfo.ServiceInfo",
+      "screen": "ServiceInfo",
+      "field": "red"
+    },
+    {
+      "controller": "Components.Converter.ServiceInfo.ServiceInfo",
+      "screen": "ServiceInfo",
+      "field": "yellow"
+    },
+    {
+      "controller": "Plugins.Extensions.DVDBurn.ProjectSettings.FileBrowser",
+      "screen": "FileBrowser",
+      "field": "filelist"
+    },
+    {
+      "controller": "Plugins.Extensions.MediaPlayer.plugin.MediaPlayer",
+      "screen": "MediaPlayer",
+      "field": "filelist"
+    },
+    {
+      "controller": "Plugins.Extensions.MediaPlayer.plugin.MediaPlayer",
+      "screen": "MediaPlayer",
+      "field": "playlist"
+    },
+    {
+      "controller": "Plugins.Extensions.MediaPlayer.settings.DirectoryBrowser",
+      "screen": "FileBrowser",
+      "field": "filelist"
+    },
+    {
+      "controller": "Plugins.Extensions.PicturePlayer.ui.picshow",
+      "screen": "picshow",
+      "field": "filelist"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.CommonInterfaceAssignment.plugin.CAidSelect",
+      "screen": "CAidSelect",
+      "field": "list"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.CommonInterfaceAssignment.plugin.CIconfigMenu",
+      "screen": "CIconfigMenu",
+      "field": "ServiceList"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.CommonInterfaceAssignment.plugin.CIselectMainMenu",
+      "screen": "CIselectMainMenu",
+      "field": "CiList"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.CommonInterfaceAssignment.plugin.easyCIconfigMenu",
+      "screen": "easyCIconfigMenu",
+      "field": "ServiceList"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.CommonInterfaceAssignment.plugin.myChannelSelection",
+      "screen": "myChannelSelection",
+      "field": "list"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.CommonInterfaceAssignment.plugin.myProviderSelection",
+      "screen": "myProviderSelection",
+      "field": "list"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Devices",
+      "screen": "Devices",
+      "field": "HDDHeader"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Devices",
+      "screen": "Devices",
+      "field": "MountsHeader"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Devices",
+      "screen": "Devices",
+      "field": "TunerHeader"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Devices",
+      "screen": "Devices",
+      "field": "hdd"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Devices",
+      "screen": "Devices",
+      "field": "mounts"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Devices",
+      "screen": "Devices",
+      "field": "nims"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Settings",
+      "screen": "Settings",
+      "field": "config"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.IceTV.API.Settings",
+      "screen": "Settings",
+      "field": "introduction"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetup",
+      "screen": "PositionerSetup",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetup",
+      "screen": "PositionerSetup",
+      "field": "key_green"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetup",
+      "screen": "PositionerSetup",
+      "field": "key_red"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetup",
+      "screen": "PositionerSetup",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.BackupRestore.BackupSelection",
+      "screen": "BackupSelection",
+      "field": "checkList"
+    },
+    {
+      "controller": "Screens.ChannelSelection.ChannelSelection",
+      "screen": "ChannelSelection",
+      "field": "list"
+    },
+    {
+      "controller": "Screens.DeviceManager.DevicesPanelSummary",
+      "screen": "SetupSummary",
+      "field": "SetupEntry"
+    },
+    {
+      "controller": "Screens.DeviceManager.DevicesPanelSummary",
+      "screen": "SetupSummary",
+      "field": "SetupTitle"
+    },
+    {
+      "controller": "Screens.DeviceManager.DevicesPanelSummary",
+      "screen": "SetupSummary",
+      "field": "SetupValue"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionGrid",
+      "screen": "GraphicalInfoBarEPG",
+      "field": "timeline_now"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionInfobarGrid",
+      "screen": "GraphicalInfoBarEPG",
+      "field": "timeline_now"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "date"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "more_button_sel"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "more_text"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "next_button_sel"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "next_text"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "now_button_sel"
+    },
+    {
+      "controller": "Screens.EpgSelection.EPGSelectionMulti",
+      "screen": "EPGSelectionMulti",
+      "field": "now_text"
+    },
+    {
+      "controller": "Screens.EventView.EventViewSimple",
+      "screen": "EventView",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.EventView.EventViewSimple",
+      "screen": "EventView",
+      "field": "key_green"
+    },
+    {
+      "controller": "Screens.EventView.EventViewSimple",
+      "screen": "EventView",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationBase",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationBase",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationBase",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationBase",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationBenchmark",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationBenchmark",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationBenchmark",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationBenchmark",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationBuild",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationBuild",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationBuild",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationBuild",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationCommit",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationDistribution",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationGeolocation",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationGeolocation",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationGeolocation",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationGeolocation",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationMemory",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationMemory",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationMemory",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationMultiBoot",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationMultiBoot",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationMultiBoot",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationMultiBoot",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationNetwork",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationNetwork",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationNetwork",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationReceiver",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationService",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationStorage",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationStorage",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationStorage",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationStorage",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationStreaming",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationStreaming",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationSystem",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationTranslation",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationTranslation",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationTranslation",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationTranslation",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.Information.InformationTuner",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.Information.InformationTuner",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.Information.InformationTuner",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.Information.InformationTuner",
+      "screen": "Information",
+      "field": "key_yellow"
+    },
+    {
+      "controller": "Screens.LogManager.LogManager",
+      "screen": "LogManager",
+      "field": "list"
+    },
+    {
+      "controller": "Screens.NetworkMounts.NetworkMountsSummary",
+      "screen": "SetupSummary",
+      "field": "SetupEntry"
+    },
+    {
+      "controller": "Screens.NetworkMounts.NetworkMountsSummary",
+      "screen": "SetupSummary",
+      "field": "SetupTitle"
+    },
+    {
+      "controller": "Screens.NetworkMounts.NetworkMountsSummary",
+      "screen": "SetupSummary",
+      "field": "SetupValue"
+    },
+    {
+      "controller": "Screens.NetworkServices.uShareSelection",
+      "screen": "uShareSelection",
+      "field": "checkList"
+    },
+    {
+      "controller": "Screens.NetworkSetup.NetworkInformation",
+      "screen": "Information",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.NetworkSetup.NetworkInformation",
+      "screen": "Information",
+      "field": "key_info"
+    },
+    {
+      "controller": "Screens.NetworkSetup.NetworkInformation",
+      "screen": "Information",
+      "field": "key_menu"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key0"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key1"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key2"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key3"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key4"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key5"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key6"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key7"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key8"
+    },
+    {
+      "controller": "Screens.NumericalTextInputHelpDialog.NumericalTextInputHelpDialog",
+      "screen": "NumericalTextInputHelpDialog",
+      "field": "key9"
+    },
+    {
+      "controller": "Screens.Opkg.IpkgInstaller",
+      "screen": "IpkgInstaller",
+      "field": "list"
+    },
+    {
+      "controller": "Screens.Opkg.Opkg",
+      "screen": "Opkg",
+      "field": "activityslider"
+    },
+    {
+      "controller": "Screens.Opkg.Opkg",
+      "screen": "Opkg",
+      "field": "package"
+    },
+    {
+      "controller": "Screens.Opkg.Opkg",
+      "screen": "Opkg",
+      "field": "slider"
+    },
+    {
+      "controller": "Screens.Opkg.Opkg",
+      "screen": "Opkg",
+      "field": "status"
+    },
+    {
+      "controller": "Screens.Processing.Processing",
+      "screen": "Processing",
+      "field": "description"
+    },
+    {
+      "controller": "Screens.Processing.Processing",
+      "screen": "Processing",
+      "field": "progress"
+    },
+    {
+      "controller": "Screens.QuickMenu.QuickMenu",
+      "screen": "QuickMenu",
+      "field": "key_blue"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_1"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_2"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_3"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_4"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_5"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_6"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_7"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_8"
+    },
+    {
+      "controller": "Screens.RdsDisplay.RassInteractive",
+      "screen": "RassInteractive",
+      "field": "subpages_9"
+    },
+    {
+      "controller": "Screens.Timers.TimerOverviewBase",
+      "screen": "TimerOverview",
+      "field": "timerlist"
+    },
+    {
+      "controller": "Screens.WizardLanguage.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowdown"
+    },
+    {
+      "controller": "Screens.WizardLanguage.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowdown2"
+    },
+    {
+      "controller": "Screens.WizardLanguage.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowup"
+    },
+    {
+      "controller": "Screens.WizardLanguage.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowup2"
+    },
+    {
+      "controller": "Screens.WizardLanguage.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "rc"
+    },
+    {
+      "controller": "Screens.WizardLanguage.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "wizard"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowdown"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowdown2"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowup"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "arrowup2"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardLanguage",
+      "screen": "WizardLanguage",
+      "field": "languagetext"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardStart",
+      "screen": "WizardStart",
+      "field": "arrowdown"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardStart",
+      "screen": "WizardStart",
+      "field": "arrowdown2"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardStart",
+      "screen": "WizardStart",
+      "field": "arrowup"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardStart",
+      "screen": "WizardStart",
+      "field": "arrowup2"
+    },
+    {
+      "controller": "Screens.WizardStart.WizardStart",
+      "screen": "WizardStart",
+      "field": "languagetext"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "arrowdown"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "arrowdown2"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "arrowup"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "arrowup2"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "languagetext"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "portpic"
+    },
+    {
+      "controller": "Screens.WizardVideo.WizardVideo",
+      "screen": "WizardVideo",
+      "field": "wizard"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "HelpWindow"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "cancel"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "canceltext"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "config"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "description"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "ok"
+    },
+    {
+      "controller": "timer.TimerEntry",
+      "screen": "TimerEntry",
+      "field": "oktext"
+    }
+  ],
+  "parse_errors": [],
+  "binding_errors": [],
+  "limitations": "Static imported constructor/inheritance inspection. Dynamic fields, aliases, external plugins and actual GUI rendering require separate validation.",
+  "upstream_ref": "8.0-next",
+  "upstream_commit": "266beaa50c464f1a6983a3a64133f6047482aee8",
+  "baseline_1_0_61_binding_errors": [
+    {
+      "controller": "Plugins.Extensions.PicturePlayer.ui.picshow",
+      "screen": "picshow",
+      "display_id": null,
+      "field": "label",
+      "binding": "name",
+      "constructor": "Components.Sources.StaticText.StaticText",
+      "expected_binding": "source"
+    },
+    {
+      "controller": "Plugins.Extensions.PicturePlayer.ui.picshow",
+      "screen": "picshow",
+      "display_id": null,
+      "field": "key_red",
+      "binding": "name",
+      "constructor": "Components.Sources.StaticText.StaticText",
+      "expected_binding": "source"
+    },
+    {
+      "controller": "Plugins.Extensions.PicturePlayer.ui.picshow",
+      "screen": "picshow",
+      "display_id": null,
+      "field": "key_green",
+      "binding": "name",
+      "constructor": "Components.Sources.StaticText.StaticText",
+      "expected_binding": "source"
+    },
+    {
+      "controller": "Plugins.Extensions.PicturePlayer.ui.picshow",
+      "screen": "picshow",
+      "display_id": null,
+      "field": "key_yellow",
+      "binding": "name",
+      "constructor": "Components.Sources.StaticText.StaticText",
+      "expected_binding": "source"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetupLog",
+      "screen": "PositionerSetupLog",
+      "display_id": null,
+      "field": "key_red",
+      "binding": "source",
+      "constructor": "Components.Button.Button",
+      "expected_binding": "name"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetupLog",
+      "screen": "PositionerSetupLog",
+      "display_id": null,
+      "field": "key_green",
+      "binding": "source",
+      "constructor": "Components.Button.Button",
+      "expected_binding": "name"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetupLog",
+      "screen": "PositionerSetupLog",
+      "display_id": null,
+      "field": "key_yellow",
+      "binding": "source",
+      "constructor": "Components.Button.Button",
+      "expected_binding": "name"
+    },
+    {
+      "controller": "Plugins.SystemPlugins.PositionerSetup.plugin.PositionerSetupLog",
+      "screen": "PositionerSetupLog",
+      "display_id": null,
+      "field": "key_blue",
+      "binding": "source",
+      "constructor": "Components.Button.Button",
+      "expected_binding": "name"
+    },
+    {
+      "controller": "Screens.Dish.Dishpip",
+      "screen": "Dishpip",
+      "display_id": null,
+      "field": "Dishpixmap",
+      "binding": "name",
+      "constructor": "Components.Sources.Boolean.Boolean",
+      "expected_binding": "source"
+    }
+  ]
+}

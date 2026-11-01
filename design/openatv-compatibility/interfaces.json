@@ -676,7 +676,30 @@
           "swapactive_summary": "StaticText"
         },
         "mandatory_widgets": []
-      }
+      },
+      "expected_by_ref": {
+        "8.0": {
+          "components": {
+            "lab1": "Label",
+            "autostart_on": "Pixmap",
+            "autostart_off": "Pixmap",
+            "lab2": "Label",
+            "labplace": "Label",
+            "lab3": "Label",
+            "labsize": "Label",
+            "lab4": "Label",
+            "inactive": "Label",
+            "active": "Label",
+            "key_red": "Label",
+            "key_green": "Label",
+            "key_yellow": "Label",
+            "swapname_summary": "StaticText",
+            "swapactive_summary": "StaticText"
+          },
+          "mandatory_widgets": []
+        }
+      },
+      "variant_review": "8.0 c1b227eaa7226a3b15d1670461af69fcbe4623d7 retains the original Screen/Label controller; 8.0-next/master deliberately select SwapManagerSetup/Setup. Only the exact named 8.0 ref selects this reviewed alternative."
     },
     {
       "module": "Screens.Toast",
@@ -810,11 +833,91 @@
           ]
         }
       }
+    },
+    {
+      "module": "Screens.Setup",
+      "class": "SetupSummary",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "entry": "StaticText",
+          "value": "StaticText",
+          "SetupTitle": "StaticText",
+          "SetupEntry": "StaticText",
+          "SetupValue": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.Screen",
+      "class": "ScreenSummary",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "Title": "StaticText"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Screens.Dish",
+      "class": "Dishpip",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "Dishpixmap": "Boolean",
+          "turnTime": "Label",
+          "posFrom": "Label",
+          "posGoto": "Label",
+          "From": "Label",
+          "Goto": "Label",
+          "Tuner": "Label",
+          "tunerName": "Label",
+          "turnSpeed": "Label"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Plugins.Extensions.PicturePlayer.ui",
+      "class": "picshow",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "label": "StaticText",
+          "thn": "Pixmap"
+        },
+        "mandatory_widgets": []
+      }
+    },
+    {
+      "module": "Plugins.SystemPlugins.PositionerSetup.plugin",
+      "class": "PositionerSetupLog",
+      "kind": "display",
+      "expected": {
+        "components": {
+          "key_red": "Button",
+          "key_green": "Button",
+          "key_yellow": "Button",
+          "key_blue": "Button",
+          "list": "ScrollLabel"
+        },
+        "mandatory_widgets": []
+      }
     }
   ],
   "limitations": [
     "Source contracts and mocked receiver APIs; not a hardware receiver test.",
     "Guarded legacy ScreenAnimations and codec_data are optional; current VideoCodec is required by the FullHDGlass current-image guard.",
     "Own bundled modules and native C++ APIs are covered by the recorded audit and runtime tests, not Python export discovery."
-  ]
+  ],
+  "reviewed_additional_upstreams": {
+    "master": "f219f5754c748a68f6dc5e99b1ce742df3d4c383",
+    "8.0-next": "266beaa50c464f1a6983a3a64133f6047482aee8",
+    "8.0": "c1b227eaa7226a3b15d1670461af69fcbe4623d7"
+  }
 }

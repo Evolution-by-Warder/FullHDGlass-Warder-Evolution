@@ -36,7 +36,7 @@ def display_contract(node):
         if not isinstance(assignment, ast.Assign) or not isinstance(assignment.value, ast.Call):
             continue
         call = assignment.value.func
-        if not isinstance(call, ast.Name) or call.id not in ('Label', 'StaticText', 'Input', 'ScrollLabel', 'VirtualKeyboardList', 'Pixmap', 'ProgressBar', 'ConfigList'):
+        if not isinstance(call, ast.Name) or call.id not in ('Label', 'StaticText', 'Button', 'Boolean', 'ObsoleteSource', 'Input', 'ScrollLabel', 'VirtualKeyboardList', 'Pixmap', 'ProgressBar', 'ConfigList'):
             continue
         for target in assignment.targets:
             if isinstance(target, ast.Subscript) and isinstance(target.value, ast.Name) and target.value.id == 'self':
@@ -114,7 +114,8 @@ def main():
         for contract in manifest['contracts']:
             label = '%s.%s%s' % (contract['module'], contract.get('class', contract['kind']), '.' + contract['method'] if 'method' in contract else '')
             try:
-                if inspect_contract(trees[contract['module']], contract) != contract['expected']:
+                expected = contract.get('expected_by_ref', {}).get(args.ref, contract['expected'])
+                if inspect_contract(trees[contract['module']], contract) != expected:
                     failures.append(label + ': reviewed interface changed; review compatibility before release')
             except (StopIteration, TypeError, ValueError):
                 failures.append(label + ': reviewed controller/method contract is missing')

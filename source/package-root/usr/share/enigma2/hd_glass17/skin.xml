@@ -1642,7 +1642,7 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
     <widget name="posGoto" position="86,210" size="102,30" zPosition="1" font="Prive3;27" halign="left" transparent="1" />
   </screen>
   <screen name="Dishpip" flags="wfNoBorder" position="1530,150" size="195,240" title="Dish" zPosition="9" backgroundColor="transparent">
-    <widget name="Dishpixmap" pixmap="hd_glass17/icons/dish.png" position="0,0" size="195,240" alphatest="off" />
+    <widget source="Dishpixmap" render="Pixmap" pixmap="hd_glass17/icons/dish.png" position="0,0" size="195,240" alphatest="off"><convert type="ConditionalShowHide" /></widget>
     <widget name="turnTime" position="8,0" size="180,30" zPosition="1" font="Prive3;27" halign="right" transparent="1" />
     <widget name="From" position="8,156" size="75,27" zPosition="1" font="Prive3;24" halign="left" transparent="1" />
     <widget name="posFrom" position="86,153" size="102,30" zPosition="1" font="Prive3;27" halign="left" transparent="1" />
@@ -2174,13 +2174,13 @@ self.instance.move(ePoint((deskwidth - wsizex)//2, (deskheight - wsizey)//2))
   </screen>
   <!-- Picture Player -->
   <screen name="picshow" position="135,150" size="1650,840" title="PicturePlayer">
-    <widget name="label" render="Label" position="30,30" size="390,240" font="Prive3;30" transparent="1" />
+    <widget source="label" render="Label" position="30,30" size="390,240" font="Prive3;30" transparent="1" />
     <widget name="thn" position="30,300" size="390,450" alphatest="on" />
     <widget name="filelist" position="480,30" size="1140,720" zPosition="3" scrollbarMode="showOnDemand" />
-    <widget name="key_red" render="Label" position="30,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="red" />
-    <widget name="key_green" render="Label" position="435,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="green" />
-    <widget name="key_yellow" render="Label" position="840,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="yellow" />
-    <widget name="key_blue" render="Label" position="1245,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="blue" />
+    <widget source="key_red" render="Label" position="30,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="red" />
+    <widget source="key_green" render="Label" position="435,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="green" />
+    <widget source="key_yellow" render="Label" position="840,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="yellow" />
+    <widget name="key_blue" render="Label" conditional="key_blue" position="1245,787" size="375,45" font="Prive3;36" halign="center" valign="center" foregroundColor="blue" />
   </screen>
   <screen name="Pic_Exif" position="510,201" size="900,753" title="Info">
     <widget source="key_red" render="Label" position="180,694" zPosition="1" size="270,54" foregroundColor="red" font="Prive3;33" halign="center" valign="center" transparent="1" />
@@ -5702,9 +5702,9 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 		<widget name="autostart_off" position="10,200" zPosition="1" pixmap="skin_default/icons/lock_off.png" size="32,32" alphatest="on" />
 		<widget name="autostart_on" position="10,200" zPosition="2" pixmap="skin_default/icons/lock_on.png" size="32,32" alphatest="on" />
 		<widget name="lab1" position="110,200" size="700,40" font="Regular;30" backgroundColor="background" valign="center" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="400,750" size="400,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="800,750" size="400,40" valign="center" halign="center" transparent="1" />
 	</screen> 
 <screen name="Infopanel" position="center,center" size="900,650" title="INFO Panel" >
 	<widget name="Mlist" position="10,10" size="880,600" font="Prive4;33" itemHeight="75" zPosition="1" scrollbarMode="showOnDemand" backgroundColor="background" transparent="1" />
@@ -6758,10 +6758,10 @@ MultiContentEntryPixmapAlphaTest(pos = (4, 4), size = (60, 60), png = 1),
 	</screen> 	
 	<screen name="PositionerSetupLog" position="center,center" size="1200,800" title="Positioner Setup Log" backgroundColor="background" >
     <widget name="list" position="10,10" size="1180,720" font="Prive4;30" itemHeight="40" enableWrapAround="1" backgroundColor="background" scrollbarMode="showOnDemand" transparent="1"/>
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
-    <widget backgroundColor="background" font="Prive4;32" render="Label" source="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_red" foregroundColor="red" position="0,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_green" foregroundColor="green" position="300,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_yellow" foregroundColor="yellow" position="600,750" size="300,40" valign="center" halign="center" transparent="1" />
+    <widget backgroundColor="background" font="Prive4;32" name="key_blue" foregroundColor="blue" position="900,750" size="300,40" valign="center" halign="center" transparent="1" />
 	</screen> 
   <screen name="iptvArchiveInfoBar" position="0,0" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder">
     <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="hd_glass17/general/infobar.png" alphatest="off" />

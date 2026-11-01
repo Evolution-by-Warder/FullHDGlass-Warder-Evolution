@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-01",
+  "candidate": "1.0.62-test1",
+  "production": "1.0.61",
+  "updates_unchanged": true,
+  "scopes": [
+    "native display bindings",
+    "cross-project import/signature contracts",
+    "literal inline plugin skins"
+  ],
+  "upstreams": [
+    {
+      "ref": "8.0",
+      "commit": "c1b227eaa7226a3b15d1670461af69fcbe4623d7",
+      "typed_bindings": 1009,
+      "baseline_errors": 12,
+      "errors": 0
+    },
+    {
+      "ref": "8.0-next",
+      "commit": "266beaa50c464f1a6983a3a64133f6047482aee8",
+      "typed_bindings": 995,
+      "baseline_errors": 9,
+      "errors": 0
+    },
+    {
+      "ref": "master",
+      "commit": "f219f5754c748a68f6dc5e99b1ce742df3d4c383",
+      "typed_bindings": 1005,
+      "baseline_errors": 9,
+      "errors": 0
+    }
+  ],
+  "fixed_screens": [
+    "picshow",
+    "Dishpip",
+    "Swap",
+    "PositionerSetupLog"
+  ],
+  "geometry_fonts_graphics_unchanged": true,
+  "native_replay_tests": 7,
+  "audit_semantics_tests": 8,
+  "interface_guard_tests": 7,
+  "physical_receiver_gles_wqhd_validation": false,
+  "dynamic_fields_and_generated_skins": "Explicitly reported as unresolved; require additional native/generated layout review.",
+  "cross_project_changes": {
+    "piconhub": {
+      "pull_request": 15,
+      "merge_commit": "ea574670389dc18b47af034b467600a24aea664a",
+      "workflow_run": 41346073946,
+      "conclusion": "success",
+      "unit_tests": 214,
+      "runtime_changed": false
+    },
+    "gsu": {
+      "pull_request": 3,
+      "merge_commit": "47d5ecd296754da07781ac59fd4054d2965acc99",
+      "workflow_run": 41346080400,
+      "conclusion": "success",
+      "unit_tests": 393,
+      "runtime_changed": false
+    }
+  },
+  "controller_guard_repair": {
+    "approved_installation_hooks": 4,
+    "approved_bitrate_ast_replacements": 14,
+    "original_1_0_15_fingerprint_preserved": "b9d18190bc0ca886407495914086033840360586fd55dfb491c346f3036e1eea",
+    "provenance": "design/bitrate-runtime/provenance.json",
+    "source": "Verified immutable public 1.0.55 package and original 1.0.15 commit; no runtime change from this guard repair."
+  }
+}
