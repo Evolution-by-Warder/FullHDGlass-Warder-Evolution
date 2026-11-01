@@ -31,9 +31,10 @@ jobs:
           sudo apt-get install -y -qq --no-install-recommends ffmpeg
           VERSION=$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)
           python3 - <<'PY'
-          import importlib.util
+          import importlib.util, sys
           from pathlib import Path
           root = Path.cwd()
+          sys.path.insert(0, str(root/'tools'))
           spec = importlib.util.spec_from_file_location('approved_helpers', root/'tools/prepare-bitrate-stable-release.py')
           module = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(module)
