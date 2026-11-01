@@ -1,6 +1,6 @@
 {
-  "version": "1.0.59",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.59_all.ipk",
-  "sha256": "2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee",
-  "changelog": "Čitateľné farebné tlačidlá a trvalé Menu v LCD4linux, prehľadnejšie Rýchle menu a správne farebné prúžky aj na TV. Po aktualizácii reštartujte GUI."
+  "version": "1.0.61",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
+  "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+  "changelog": "Opravené orezávanie ponúk, hlavičiek a časovej osi EPG, popisy CoolTVGuide a displej nastavení prijímača. Po aktualizácii reštartujte GUI."
 }
