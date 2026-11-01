@@ -1,3 +1,13 @@
+# FullHDGlass 1.0.57 — owner approval — 1 November 2026
+
+The owner confirmed test3 works and explicitly authorized a normal public release and activation in updates. Ship the approved font, compact installer and VideoEnhancementSetup repairs as 1.0.57 (native upgrade ordering after test builds).
+
+The five-entry History request is included for FullHDGlass: two compact description rows per version preserve the existing 740-pixel list. Full source history is retained; processing/installation logs are not limited. PiconHub and GSU remain pending for their next functional releases.
+
+The records below are historical and superseded where a later release or owner approval is documented.
+
+---
+
 # Pending owner request — History: five entries — 1 November 2026
 
 At the next normal release, expand the displayed History from the latest 4 entries to the latest 5 entries in all three projects: FullHDGlass, PiconHub and GSU. This instruction supersedes the earlier four-entry limit recorded below.

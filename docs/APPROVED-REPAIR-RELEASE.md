@@ -1,7 +1,10 @@
-FullHDGlass 1.0.55
+FullHDGlass 1.0.57
 
-Opravené meranie bitrate videa a zvuku pri DVB vysielaní a zrýchlený nábeh po prepnutí kanála. Úvodné nulové hodnoty už nenahrádzajú stav spúšťania. Oprava je spoločná pre všetky typy infobaru.
+Ostrá verzia opráv potvrdených používateľom na prijímači.
 
-Aktualizované pomocné programy pre ARM, MIPS32r2 a AArch64; odstránený nahradený ARM program. Existujúce nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.
+- Opravená veľkosť písma v nastaveniach LCD4linux, CacheFlush a ďalších pluginov používajúcich spoločný konfiguračný zoznam.
+- Menšie, vycentrované okno inštalácie so správnym zobrazením stavu, oboch ukazovateľov priebehu a denníka.
+- Opravené otvorenie nastavenia vylepšenia obrazu.
+- História zobrazuje päť posledných zmien v prehľadnom kompaktnom rozložení.
 
-Funkčnosť a rýchly nábeh potvrdil majiteľ na GigaBlue, vrátane FTA a kódovaných staníc. MIPS a Dreambox DM 9x0/ONE/TWO majú pripravenú podporu a automatické kontroly; fyzický test týchto prijímačov zatiaľ nebol vykonaný.
+Nastavenia používateľa zostávajú zachované. Po aktualizácii reštartujte GUI.

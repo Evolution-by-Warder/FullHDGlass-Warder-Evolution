@@ -16,6 +16,10 @@ on:
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderVideoCodec.py
       - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - design/openatv81-compatibility/**
+      - tools/test-openatv81-animation.py
+      - tools/fetch-openatv81-fixture.py
+      - tools/openatv81_skin.py
 permissions:
   contents: read
 jobs:
@@ -52,3 +56,9 @@ jobs:
           PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"
           python tools/test-virtual-keyboard.py --upstream /tmp/warder-keyboard-pinned.py --latest /tmp/warder-openatv-current/Screens/VirtualKeyBoard.py -v
+      - name: Reproduce and repair the reported OpenATV 8.1 animation crash
+        run: |
+          python tools/fetch-openatv81-fixture.py /tmp/warder-openatv81-pinned
+          python tools/test-openatv81-animation.py --upstream /tmp/warder-openatv81-pinned -v
+          python tools/test-opkg-screen-compat.py --upstream /tmp/warder-openatv81-pinned -v
+          python tools/test-config-font-compat.py -v

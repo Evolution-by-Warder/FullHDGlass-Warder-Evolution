@@ -1,0 +1,26 @@
+{
+  "commit": "266beaa50c464f1a6983a3a64133f6047482aee8",
+  "normalization": "UTF-8, trailing whitespace stripped, one final LF",
+  "normalised_text_sha256": {
+    "Components/Element.py": "f2b0045bdb2d4399430ef1cb65d1355887f9dc1e34f968a9178a600a698c288d",
+    "Components/GUIComponent.py": "93abe69e6f10de1929aeaf3a291d8b73fe769e1197e8f523e3d0cdc4e4f11ab7",
+    "Components/Label.py": "7aaaa1831d903b0953abf3fd57f62ed3148e1d8a7a6e5192f0cf6bb556a2a88c",
+    "Components/Renderer/Label.py": "63de17d77b62809a027c3d57128cb86bfb29ac0db122fcc5e034a05b0c695f90",
+    "Components/Renderer/Renderer.py": "d5209f1d4991e2e3d27d66f4e31fb87a7e01cd24c2a0d50697a7ab10c02677a5",
+    "Components/Slider.py": "43a9ee13ebd1cba42005d0d77e7ae58246efccadbf2cff0656dbbb0017d2fb48",
+    "Components/Sources/Source.py": "7803fe01e02f64972709f1968d691e29d27878fc0dc7f115f78059b5a0b97572",
+    "Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+    "Components/VariableText.py": "31c251d0abd3444879e93ff8d5e2075ad163e8f46bbca4bc59db222203e318f1",
+    "Components/VariableValue.py": "15a5d2b6b2d37cb8bc38eb14930d879776c6b9eb1e16d11841777006f9736e16",
+    "Plugins/SystemPlugins/VideoEnhancement/plugin.py": "e57e24b24ce01db763075f343763112dd035f59b08435d67f27d9e90ae185fc5",
+    "Screens/Opkg.py": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4",
+    "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0"
+  },
+  "extra_revisions": {
+    "legacy/Screens/Opkg.py": {
+      "commit": "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+      "path": "Screens/Opkg.py",
+      "sha256": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4"
+    }
+  }
+}

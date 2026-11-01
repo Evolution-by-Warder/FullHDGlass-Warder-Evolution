@@ -466,6 +466,8 @@ class LayoutTests(unittest.TestCase):
     def test_tv_and_other_screens_are_byte_identical_to_baseline(self):
         record=json.loads((ROOT/'design/radio-lyrics/implementation.json').read_text())
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        from openatv81_skin import revert_skin
+        text=revert_skin(ROOT,text)
         cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
         if cover_layout.exists():
             for edit in json.loads(cover_layout.read_text())['edits']:

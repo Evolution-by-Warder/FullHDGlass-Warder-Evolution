@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.57",
+  "package_sha256": "2cfcfa64d98ba8eead5e0c0ef33a9a0cc3a99a0a7690c1b4daa2c6ffcd20eb1f",
+  "bytes": 17205920,
+  "changed_files_from_receiver_approved_test3": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHistory.py"
+  ],
+  "all_other_payload_bytes_identical_to_receiver_approved_test3": true,
+  "install_hooks_and_identity_preserved": true,
+  "normal_upgrade_from_stable55_and_all_test56": true,
+  "five_history_entries_both_languages_fit_existing_list": true,
+  "receiver_confirmation": "Owner confirmed test3 works and authorized stable release and updates; five-entry History validated automatically.",
+  "ci_run": 41322652031,
+  "ci_conclusion": "success",
+  "source_commit": "d461cdf6dd3e0642de8e704cb47879dc99e99885"
+}

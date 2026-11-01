@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.56-test3",
+  "sha256": "4d5f44d41df862496b28f73289dcabe8c6a163246908b40a2449af4b8954244f",
+  "bytes": 17205790,
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "added_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderConfigFonts.py"
+  ],
+  "all_other_runtime_code_artwork_and_bitrate_helpers_identical_to_stable55": true,
+  "only_registered_xml_edits_and_exact_font_activation_hook": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "normal_upgrade_from_stable55_and_test1": true,
+  "physical_receiver_confirmation": false,
+  "next_normal_version_after_this_test": "1.0.57",
+  "ci_run": 41321849605,
+  "ci_conclusion": "success",
+  "source_commit": "727dbaebaaf7b1300d186fd6ebd205236902447e",
+  "window": {
+    "position": "center,center",
+    "size": "1200,675",
+    "status_height": 72
+  },
+  "native_upgrade_checked_from": [
+    "1.0.55-1",
+    "1.0.56-test1-1",
+    "1.0.56-test2-1"
+  ],
+  "test2_receiver_screenshots": "User screenshots show fitted LCD4linux/CacheFlush fonts and changing installer states.",
+  "test3_receiver_confirmation": "pending"
+}

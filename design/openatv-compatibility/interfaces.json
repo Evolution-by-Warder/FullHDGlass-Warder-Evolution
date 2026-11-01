@@ -181,6 +181,9 @@
     ],
     "Tools.Transponder": [
       "ConvertToHumanReadable"
+    ],
+    "Components.ConfigList": [
+      "ConfigList"
     ]
   },
   "contracts": [
@@ -392,7 +395,7 @@
       "class": "ConfigPassword",
       "kind": "signature",
       "method": "__init__",
-      "expected": "self, default='', fixed_size=False, visible_width=False, censor='\u2022'"
+      "expected": "self, default='', fixed_size=False, visible_width=False, censor='•'"
     },
     {
       "module": "Components.config",

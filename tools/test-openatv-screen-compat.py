@@ -25,6 +25,8 @@ def widgets(name,keys):return [w for w in screen(name).findall('widget') if acti
 class ScreenCompatTests(unittest.TestCase):
  def test_approved_pig_screen_is_byte_identical_and_only_registered_screens_change(self):
   record=json.loads((ROOT/'design/openatv-compatibility/skin-edits.json').read_text());text=SKIN
+  from openatv81_skin import revert_skin
+  text=revert_skin(ROOT,text)
   cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
   if cover_layout.exists():
       for edit in json.loads(cover_layout.read_text())['edits']:

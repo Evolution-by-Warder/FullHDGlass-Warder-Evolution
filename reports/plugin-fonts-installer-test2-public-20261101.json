@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.56-test2",
+  "sha256": "6b96e1a40864a08da34a0c1f99f7fa43ad9f4f3cc435822be057c0a190987d38",
+  "bytes": 17205678,
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "added_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderConfigFonts.py"
+  ],
+  "all_other_runtime_code_artwork_and_bitrate_helpers_identical_to_stable55": true,
+  "only_registered_xml_edits_and_exact_font_activation_hook": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "normal_upgrade_from_stable55_and_test1": true,
+  "physical_receiver_confirmation": false,
+  "next_normal_version_after_this_test": "1.0.57",
+  "source_commit": "e4f27af25367cce95f0a09f0f752cb198cc57f3b",
+  "workflow_run": 41320036551,
+  "workflow_conclusion": "success",
+  "shared_font_regressions": 13,
+  "installer_regressions": 8,
+  "previous_animation_regressions": 6,
+  "release_is_prerelease": true,
+  "production_latest_remains": "1.0.55",
+  "scope": "Image-version-independent FullHDGlass compatibility fixes"
+}

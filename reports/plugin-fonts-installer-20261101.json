@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.56-test2",
+  "scope": "Shared FullHDGlass configuration-list font compatibility and native installer display, independent of image version.",
+  "owner_screenshot_context": "Owner clarified the supplied font/installer screenshots were taken on OpenATV 8.0.2; the problems are not restricted to the 8.1 beta.",
+  "font_root_cause": "Plugin fallback layouts use 25 pixel rows without local font attributes, inheriting FullHDGlass window-style fonts Prive3 33/30.",
+  "font_repair": "Scoped, idempotent ConfigList.applySkin adapter fits fonts to the final native row height, respects suitable explicit fonts, restores fonts on taller re-skins, and delegates other skins unchanged. No configuration values or plugin files are changed.",
+  "font_regressions": 13,
+  "installer_root_cause": "The earlier Opkg geometry repair preserved source/render binding for native GUI Labels status/package. They display an initial snapshot and fail to track native event updates and visibility.",
+  "installer_repair": "Use the existing native status/package components by name; draw full-width native progress bars and fit both installation-selection lists inside their windows.",
+  "installer_regressions": 8,
+  "native_installer_revisions": [
+    "523e29bc69bd407cb4c6ffe8a1cee9c15edfcb89",
+    "266beaa50c464f1a6983a3a64133f6047482aee8"
+  ],
+  "native_process_invoked_in_tests": false,
+  "physical_receiver_confirmation": false,
+  "production_and_native_test_feed_changes": false,
+  "next_normal_version_after_this_test": "1.0.57"
+}

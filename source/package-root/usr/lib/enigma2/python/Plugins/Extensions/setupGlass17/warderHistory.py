@@ -62,7 +62,7 @@ def wrap(text, measure, width):
 
 def layout(text, measure, width):
     rows = []
-    for entry in entries(text)[:4]:
+    for entry in entries(text)[:5]:
         if rows:
             rows.append(('rule', ''))
         if entry['heading']:
@@ -70,12 +70,12 @@ def layout(text, measure, width):
         body = []
         for paragraph in entry['paragraphs']:
             body.extend(wrap(paragraph, lambda value: measure(value, False), width))
-        if len(body) > 3:
-            last = body[2]
+        if len(body) > 2:
+            last = body[1]
             while last and measure(last + '…', False) > width:
                 last = last.rsplit(' ', 1)[0] if ' ' in last else last[:-1]
-            body[2] = last.rstrip(' .') + '…'
-        rows.extend(('body', value) for value in body[:3])
+            body[1] = last.rstrip(' .') + '…'
+        rows.extend(('body', value) for value in body[:2])
     return rows
 
 

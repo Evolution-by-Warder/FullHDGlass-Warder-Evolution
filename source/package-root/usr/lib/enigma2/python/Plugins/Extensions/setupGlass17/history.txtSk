@@ -1,3 +1,20 @@
+FullHDGlass 1.0.57 — 01.11.2026
+Čitateľné písmo v nastaveniach pluginov podľa výšky riadkov.
+Menšie inštalačné okno so správnym stavom a priebehom.
+Opravené nastavenie obrazu a päť posledných zmien v histórii.
+
+1.0.56-test3
+- Zmenšené a vycentrované okno inštalácie (1200 × 675), čitateľný stav, priebeh a denník.
+
+FullHDGlass 1.0.56-test2 — 01.11.2026
+Písmo nastavení pluginov sa prispôsobuje výške riadkov.
+Opravené stavové texty, priebeh a denník pri inštalácii.
+Zachovaná oprava otvorenia nastavenia vylepšenia obrazu.
+
+FullHDGlass 1.0.56-test1 — 01.11.2026
+Opravené otvorenie nastavení vylepšenia obrazu v OpenATV 8.1.
+Testovacia verzia; rozloženie a nastavenia zostávajú zachované.
+
 FullHDGlass 1.0.55 — 01.11.2026
 Opravené meranie videa a zvuku a rýchlejší nábeh bitrate.
 Pomocné programy pre ARM, MIPS32r2 a AArch64; odstránený starý ARM program.

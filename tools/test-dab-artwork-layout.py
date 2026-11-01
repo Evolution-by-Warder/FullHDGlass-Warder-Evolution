@@ -300,6 +300,8 @@ class PinnedLayoutTests(unittest.TestCase):
     def test_cover_size_overlay_changes_only_the_two_dab_picture_slots(self):
         record=json.loads((ROOT/'design/radio-dab-cover-size/layout.json').read_text())
         text=(ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        from openatv81_skin import revert_skin
+        text=revert_skin(ROOT,text)
         self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['updated_skin_sha256'])
         self.assertEqual({edit['name'] for edit in record['edits']},{'RdsInfoDisplay','RdsDisplay'})
         for edit in record['edits']:
@@ -324,6 +326,8 @@ class PinnedLayoutTests(unittest.TestCase):
     def test_only_two_reviewed_radio_screens_gain_the_one_extra_slideshow_widget(self):
         record = json.loads((ROOT/'design/radio-dab-split/layout.json').read_text())
         text = (ROOT/'source/package-root/usr/share/enigma2/hd_glass17/skin.xml').read_text()
+        from openatv81_skin import revert_skin
+        text=revert_skin(ROOT,text)
         cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
         if cover_layout.exists():
             for edit in json.loads(cover_layout.read_text())['edits']:

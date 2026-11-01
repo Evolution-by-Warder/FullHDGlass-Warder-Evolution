@@ -79,6 +79,8 @@ def digest_graphics():
             digest.update(path.relative_to(PAYLOAD).as_posix().encode() + b"\0")
             raw=path.read_bytes()
             if path==keyboard_skin:
+                from openatv81_skin import revert_skin
+                raw=revert_skin(ROOT,raw.decode()).encode()
                 cover_layout=ROOT/'design/radio-dab-cover-size/layout.json'
                 if cover_layout.exists():
                     text=raw.decode()

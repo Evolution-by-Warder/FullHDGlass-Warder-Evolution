@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.56-test1",
+  "bytes": 17204910,
+  "sha256": "893973137ff56e7c2ac4f2a79d0f0a4c63b074f5fa5844ea65121f2fc9251dda",
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/share/enigma2/hd_glass17/skin.xml"
+  ],
+  "only_registered_xml_binding_changes": true,
+  "all_approved_artwork_and_bitrate_helpers_byte_identical_to_stable55": true,
+  "install_hooks_and_package_identity_preserved": true,
+  "normal_upgrade_from_stable55": true,
+  "next_normal_version_after_this_test": "1.0.57",
+  "physical_receiver_confirmation": false,
+  "source_commit": "656574b0f630e9d26dc9cdb1f68f9cb668454be5",
+  "workflow_run": 41317611974,
+  "workflow_conclusion": "success",
+  "production_and_native_test_feeds_remain": "1.0.55",
+  "release_is_prerelease": true,
+  "release_is_latest": false
+}
