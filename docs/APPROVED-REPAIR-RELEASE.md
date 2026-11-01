@@ -1,5 +1,7 @@
-FullHDGlass 1.0.53
+FullHDGlass 1.0.55
 
-Obaly skladieb pri DAB sa zobrazujú v rovnakej veľkosti ako pri bežných rádiových staniciach, pri štvorcovom obale 420 × 420 px. Horné DAB okno je zarovnané s hornou hranou panela textu piesne. Obrázky zachovávajú pomer strán a neprekrývajú sa so spodným informačným panelom.
+Opravené meranie bitrate videa a zvuku pri DVB vysielaní a zrýchlený nábeh po prepnutí kanála. Úvodné nulové hodnoty už nenahrádzajú stav spúšťania. Oprava je spoločná pre všetky typy infobaru.
 
-Po aktualizácii reštartujte GUI.
+Aktualizované pomocné programy pre ARM, MIPS32r2 a AArch64; odstránený nahradený ARM program. Existujúce nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.
+
+Funkčnosť a rýchly nábeh potvrdil majiteľ na GigaBlue, vrátane FTA a kódovaných staníc. MIPS a Dreambox DM 9x0/ONE/TWO majú pripravenú podporu a automatické kontroly; fyzický test týchto prijímačov zatiaľ nebol vykonaný.

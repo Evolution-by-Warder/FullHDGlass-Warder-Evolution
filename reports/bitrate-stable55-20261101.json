@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-01",
+  "version": "1.0.55",
+  "package_sha256": "9164c640b58e579f76ceaaeb7c57cd4e0e036ec73db23d549eccaad4727319db",
+  "bytes": 17204826,
+  "helpers_identical_to_receiver_approved_test5": {
+    "arm": "3c84e25e402eafa0806b967396c23ea0ae773ded21fbc525f86c8b5c8e43ccb0",
+    "mipsel": "f9206f37ce997dcd114375bb01c12538eab52611c40f60a637301ae170a52cb4",
+    "aarch64": "02662c720ba8f152a1c8033688772c1ea6bef99de2eeb6eb297e07a208cf012e"
+  },
+  "all_other_payload_bytes_identical_to_test5": true,
+  "changed_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderBitrateDiagnostic.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py"
+  ],
+  "install_scripts_and_package_identity_preserved": true,
+  "normal_upgrade_from_stable53_and_test54": true,
+  "diagnostics_default_disabled": true,
+  "physical_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. MIPS and DM 9x0/ONE/TWO not physically tested.",
+  "source_commit": "f712696ce3d2688fe363b09023b43cd74bfcc4a2",
+  "workflow_run": 41292891930,
+  "workflow_conclusion": "success"
+}
