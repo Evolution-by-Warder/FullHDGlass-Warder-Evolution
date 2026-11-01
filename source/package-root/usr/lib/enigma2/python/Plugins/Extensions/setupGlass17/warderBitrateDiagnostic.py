@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bounded receiver diagnostics for the isolated bitrate test build."""
+"""Optional bounded receiver diagnostics, disabled in the stable build."""
 import hashlib
 import json
 import os
@@ -7,15 +7,19 @@ import time
 
 PATH = '/tmp/fullhdglass-bitrate.json'
 LIMIT = 24
+DIAGNOSTICS_ENABLED = False
 
 class BitrateDiagnostic(object):
     def __init__(self, video_pid, audio_pid, argv, streamdata, path=PATH):
+        self.enabled = DIAGNOSTICS_ENABLED
         self.path = path
         self.events = []
         self.started = time.time()
-        self.data = {'build':'1.0.54-test5', 'cpu':os.uname()[4],
+        self.data = {'build':'1.0.55', 'cpu':os.uname()[4],
                      'video_pid':video_pid, 'audio_pid':audio_pid,
                      'argv':argv, 'stream':self.stream_fields(streamdata), 'events':self.events}
+        if not self.enabled:
+            return
         try:
             with open(argv[0], 'rb') as helper:
                 self.data['helper_sha256'] = hashlib.sha256(helper.read()).hexdigest()
@@ -30,7 +34,7 @@ class BitrateDiagnostic(object):
         return {key:data[key] for key in ('adapter','demux','pids','video','audio') if key in data}
 
     def record(self, event, **fields):
-        if len(self.events) >= LIMIT:
+        if not self.enabled or len(self.events) >= LIMIT:
             return
         try:
             fields.update(event=event, seconds=round(time.time()-self.started,3))
@@ -46,7 +50,7 @@ class BitrateDiagnostic(object):
             pass
 
     def sample(self, video, audio, service, keys):
-        if len(self.events) >= LIMIT:
+        if not self.enabled or len(self.events) >= LIMIT:
             return
         fields = {'video':video, 'audio':audio}
         try:

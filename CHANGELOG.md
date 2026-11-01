@@ -1,3 +1,10 @@
+## 1.0.55 — 2026-11-01
+
+- Repair shared DVB video/audio bitrate measurement and fast startup; retain starting status until a real nonzero sample.
+- Include the exact receiver-approved ARM/MIPS32r2/AArch64 test5 helpers; remove the obsolete ARM helper and disable routine diagnostic logging.
+- Preserve settings, package identity, DAB layouts and artwork. Version 1.0.55 upgrades normally from 1.0.53 and 1.0.54-test5.
+- GigaBlue receiver confirmation covers FTA and encrypted services. MIPS and Dreambox hardware validation remains pending.
+
 # 1.0.43 — 30.10.2026
 
 Opravená moderná systémová virtuálna klávesnica: prompt, režim zadávania, jazyk, popisy tlačidiel a zhodná geometria 67 px. Povinná kontrola kompatibility voči overenému aj aktuálnemu OpenATV. Staršia klávesnica a ostatná grafika zachované.

@@ -1,8 +1,8 @@
-name: FullHDGlass bitrate startup correction
+name: FullHDGlass stable bitrate release
 on:
   push:
     branches: [fix/bitrate-startup-20261101]
-    paths: [source/**, tools/**, docs/BITRATE-1.0.54-test5.md, .github/workflows/bitrate-startup-candidate.yml]
+    paths: [source/**, tools/**, docs/BITRATE-1.0.55.md, .github/workflows/bitrate-stable-release.yml]
 permissions:
   contents: read
 concurrency:
@@ -27,6 +27,7 @@ jobs:
             tools
             design
             docs
+            reports
             assets/warder/downloads/ui/spinners
       - uses: actions/setup-python@v5
         with:
@@ -35,7 +36,7 @@ jobs:
         run: |
           python -m pip install --quiet Pillow==11.3.0
           sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends ffmpeg gcc-arm-linux-gnueabihf libc6-dev-armhf-cross linux-libc-dev-armhf-cross gcc-mipsel-linux-gnu libc6-dev-mipsel-cross linux-libc-dev-mipsel-cross gcc-aarch64-linux-gnu libc6-dev-arm64-cross linux-libc-dev-arm64-cross qemu-user
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
       - name: Verify real catalog, native selection, paging, sizing and existing behavior
         run: |
           python tools/test-bitrate-runtime.py -q
@@ -53,14 +54,13 @@ jobs:
           python tools/test-release-bytecode.py
       - name: Prepare new version and verify every packaged file
         run: |
-          python tools/build-bitrate-helper.py
-          python tools/prepare-bitrate-release.py
+          python tools/prepare-bitrate-stable-release.py
           python tools/build-setup-style-test.py
           python tools/verify-setup-style-ipk.py
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.54-test5
+          name: FullHDGlass-1.0.55
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable IPK without advancing existing update feeds
@@ -68,12 +68,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.54-test5_all.ipk
-          TAG=v1.0.54-test5
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.55_all.ipk
+          TAG=v1.0.55
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.54-test5' --notes-file docs/BITRATE-1.0.54-test5.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.55' --notes-file docs/BITRATE-1.0.55.md
           fi

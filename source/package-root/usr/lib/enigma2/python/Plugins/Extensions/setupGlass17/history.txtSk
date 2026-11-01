@@ -1,3 +1,20 @@
+FullHDGlass 1.0.55 — 01.11.2026
+Opravené meranie videa a zvuku a rýchlejší nábeh bitrate.
+Pomocné programy pre ARM, MIPS32r2 a AArch64; odstránený starý ARM program.
+
+FullHDGlass 1.0.53 — 31.10.2026
+Obaly skladieb pri DAB majú rovnakú veľkosť ako pri bežnom rádiu.
+Horné DAB okno je zarovnané s panelom textu piesne.
+
+FullHDGlass 1.0.52 — 31.10.2026
+Výber spinnerov využíva dostupnú plochu obrazovky.
+Správna veľkosť a pomer strán náhľadov bez orezávania.
+
+FullHDGlass 1.0.51 — 31.10.2026
+Opravené číselné prepínanie kanálov a spoľahlivejšia inštalácia.
+Prehľadnejšie náhľady ikon, inštalačný výpis a správne číslo verzie.
+Výber animácie čakania a presnejšie rozpoznávanie interpretov.
+
 FullHDGlass 1.0.49 — 31.10.2026
 Predvolená grafika DAB+ informácií pri chýbajúcich obrázkoch stanice.
 Po prijatí obrázka sa automaticky zobrazí obsah vysielaný stanicou.

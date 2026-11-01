@@ -1,3 +1,20 @@
+FullHDGlass 1.0.55 — 01.11.2026
+Fixed video/audio bitrate measurement and faster startup.
+ARM, MIPS32r2 and AArch64 helpers; obsolete ARM helper removed.
+
+FullHDGlass 1.0.53 — 31.10.2026
+DAB song covers use the same size as ordinary radio covers.
+The upper DAB window aligns with the lyrics panel.
+
+FullHDGlass 1.0.52 — 31.10.2026
+Spinner selection fills the available screen area.
+Correct thumbnail sizing and aspect ratio without clipping.
+
+FullHDGlass 1.0.51 — 31.10.2026
+Fixed number zapping and more reliable installation.
+Clearer icon previews, installation output and correct version headers.
+Waiting animation selection and more accurate artist recognition.
+
 FullHDGlass 1.0.49 — 31.10.2026
 Default DAB+ information artwork when no station picture is available.
 Received station pictures automatically replace the default artwork.

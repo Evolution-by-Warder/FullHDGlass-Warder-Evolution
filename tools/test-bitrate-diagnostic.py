@@ -9,6 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 p=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderBitrateDiagnostic.py'
 spec=importlib.util.spec_from_file_location('bitrate_diag',p); module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 class Tests(unittest.TestCase):
+    def setUp(self):module.DIAGNOSTICS_ENABLED=True
     def test_exact_launch_and_live_pids_and_zero_sample(self):
         with tempfile.TemporaryDirectory() as d:
             path=str(Path(d)/'log.json')
@@ -35,4 +36,13 @@ class Tests(unittest.TestCase):
         diag=module.BitrateDiagnostic(1,2,['/absent-helper'],{},'/absent-parent/log.json')
         diag.record('raw',text='1 2 3 4\n')
         self.assertEqual(len(diag.events),2)
+    def test_stable_default_does_not_write_diagnostic_file(self):
+        with tempfile.TemporaryDirectory() as d:
+            module.DIAGNOSTICS_ENABLED=False
+            path=str(Path(d)/'log.json')
+            diag=module.BitrateDiagnostic(1,2,['/absent-helper'],{},path)
+            diag.record('raw',text='1 2 3 4\n')
+            diag.sample(['1']*4,['2']*4,None,NS())
+            self.assertFalse(Path(path).exists())
+            self.assertEqual(diag.events,[])
 if __name__=='__main__':unittest.main()
