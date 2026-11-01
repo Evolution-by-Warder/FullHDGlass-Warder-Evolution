@@ -1,0 +1,19 @@
+{
+  "reference": "1_0_1_1328_CA2_3_EB0000_0_0_0.png",
+  "style": "black",
+  "resolution": "220x132",
+  "source_ref": "09e6e6ed78f3dbd18daeefe3fb88108e14f4e9d7",
+  "source_png_sha256": "6654300f844e34b151a855bd5fe3e2636b6170134f1b25d9f361a94e49bdcf10",
+  "old_png_sha256": "73cb4d642b0338904aa68ca50b587ff5faa1f33d23b9d56d57afc57f1df35326",
+  "old_archive_sha256": "8f3be7598749dbe7e4fda3bb3ab823dc7910dac35adb8d6a855063bbacf4fbb9",
+  "archive_sha256": "ba3b37ab9d335f05d0ef5071f1d71a9a2350bba1646035d021a30e682adc9d2d",
+  "archive_filename": "warder-235e-220x132-black-ba3b37ab9d335f05.zip",
+  "archive_bytes": 51600228,
+  "png_count": 2223,
+  "pngs_replaced": 1,
+  "unrelated_pngs_verified_unchanged": 2222,
+  "other_packages_verified_unchanged": 470,
+  "all_three_ta3_pngs_identical": true,
+  "ipk_changed": false,
+  "old_immutable_archives_preserved": true
+}
