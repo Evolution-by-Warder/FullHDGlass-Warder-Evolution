@@ -247,18 +247,26 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 tools/prune-stale-skin-packages.py
 
-  stop-superseded-automatic-publisher:
+  verify-native-test-feed:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
-      actions: write
       contents: read
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: Evolution-by-Warder/FullHDGlass-Warder-Evolution
     steps:
-      - name: Stop obsolete automatic build without touching published packages
+      - name: Verify the historical test feed mirrors current production
         run: |
-          STATUS=$(gh run view 41341912138 --json status --jq .status)
-          if [ "$STATUS" != completed ]; then gh run cancel 41341912138; fi
-          echo "This historical branch mirrors the native test feed. Normal releases are published and verified from main."
+          gh api 'repos/Evolution-by-Warder/FullHDGlass-Warder-Evolution/contents/update-production.json?ref=main' --jq .content | base64 --decode > /tmp/production-feed.json
+          gh api 'repos/Evolution-by-Warder/FullHDGlass-Warder-Evolution/contents/update-test.json?ref=warder-modernization-work' --jq .content | base64 --decode > /tmp/native-test-feed.json
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+          production = json.loads(Path('/tmp/production-feed.json').read_text())
+          mirrored = json.loads(Path('/tmp/native-test-feed.json').read_text())
+          assert mirrored == production
+          assert re.fullmatch(r'[0-9a-f]{64}', mirrored['sha256'])
+          assert mirrored['package_url'].startswith('https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/')
+          print('Verified native TEST mirror:', mirrored['version'])
+          PY
