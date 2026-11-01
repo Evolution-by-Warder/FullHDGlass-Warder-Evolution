@@ -32,3 +32,7 @@ Ostatných 462 balíkov aj oba zdrojové Canal+ balíky zostávajú zachované. 
 Po zverejnení do produkčného katalógu stačí znovu spustiť sťahovanie piconov. Nové IPK ani zmena nastavení profilov nie sú potrebné. Táto dátová oprava nemení stabilný aktualizačný kanál pluginu.
 
 Podrobné referencie a pôvodné/nové SHA256: [canal-unification-20261101.json](canal-unification-20261101.json).
+
+## Stav zverejnenia
+
+Oprava je zverejnená v produkčnom katalógu (commit `24a32b227f60dbc92b42579dd7f52dfd864ad220`). Po zverejnení bolo všetkých 27 verejných archívov znovu stiahnutých a overených podľa SHA256. Vo všetkých deviatich variantoch zostáva **0 nezhodných spoločných PNG a 0 chýbajúcich natívnych referencií Canal+**. Ostatných 462 záznamov balíkov sa nezmenilo. [Záznam verejného overenia](canal-live-verification-20261101.json).
