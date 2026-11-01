@@ -25,5 +25,6 @@
   ],
   "pending_message_scope": "Exact active summary controller and display skin are not identified by this log; no confirmed repair is claimed for these warnings.",
   "physical_receiver_confirmation": false,
-  "production_or_native_test_update_feeds_modified": false
+  "production_or_native_test_update_feeds_modified": false,
+  "next_normal_version_after_this_test": "1.0.57"
 }
