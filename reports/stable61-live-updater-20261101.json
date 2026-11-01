@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-01",
+  "live_installed_updater_checks": [
+    {
+      "installed": "1.0.57",
+      "offer_count": 1,
+      "version": "1.0.61",
+      "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+      "actual_installed_download_method_verified": true
+    },
+    {
+      "installed": "1.0.58-test3",
+      "offer_count": 1,
+      "version": "1.0.61",
+      "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+      "actual_installed_download_method_verified": true
+    },
+    {
+      "installed": "1.0.59",
+      "offer_count": 1,
+      "version": "1.0.61",
+      "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+      "actual_installed_download_method_verified": true
+    },
+    {
+      "installed": "1.0.60-test3",
+      "offer_count": 1,
+      "version": "1.0.61",
+      "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
+      "actual_installed_download_method_verified": true
+    },
+    {
+      "installed": "1.0.61",
+      "offer_count": 0
+    }
+  ],
+  "legacy_migration_bridge_preserved": true,
+  "production_and_native_test_version": "1.0.61",
+  "historical_native_test_profile_matches_production": true,
+  "activation_commit": "d607204ceaa4d3849a0dc739fd8a80320a0fa9bd",
+  "native_test_mirror_commit": "29afe57971550b6ce8da9144aec2c1a1ce48eaab",
+  "native_test_mirror_workflow": 41342203808,
+  "historical_public_cache_propagation_verified": true
+}

@@ -45,7 +45,17 @@
     "approved_test3_runtime_and_graphics_preserved": true,
     "live_updater_report": "reports/stable61-live-updater-20261101.json",
     "native_classes": "Pinned current and legacy OpenATV; actual supplied CoolTVGuide painter fixture",
-    "legacy_bridge_unchanged": true
+    "legacy_bridge_unchanged": true,
+    "promotion_workflow": 41341581867,
+    "final_main_workflow": 41341581771,
+    "native_test_mirror_workflow": 41342203808,
+    "live_installed_automatic_offers_and_downloads_verified": [
+      "1.0.57",
+      "1.0.58-test3",
+      "1.0.59",
+      "1.0.60-test3"
+    ],
+    "current_1_0_61_does_not_offer_itself": true
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -112,5 +122,7 @@
     "sha256": "2c4a1b53cd0817bf4a49e29a37284dd909b2ee3bfe4f9568c7d3845eaaf4faee",
     "changelog": "Čitateľné farebné tlačidlá a trvalé Menu v LCD4linux, prehľadnejšie Rýchle menu a správne farebné prúžky aj na TV. Po aktualizácii reštartujte GUI."
   },
-  "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending."
+  "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
+  "activation_commit": "d607204ceaa4d3849a0dc739fd8a80320a0fa9bd",
+  "native_test_mirror_commit": "29afe57971550b6ce8da9144aec2c1a1ce48eaab"
 }

@@ -21,5 +21,17 @@
   "public_checksum_sidecar_verified": true,
   "workflow_conclusion": "success",
   "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
-  "update_activation": "Verified activation follows on main via promote-approved-repair workflow; see stable61-live-updater-20261101.json for final feed evidence."
+  "update_activation": "production-update-active",
+  "promotion_workflow": 41341581867,
+  "activation_commit": "d607204ceaa4d3849a0dc739fd8a80320a0fa9bd",
+  "integration_commit": "53723dc1256c2da20454a6b1d4633a7ddcc8741f",
+  "native_main_profiles_match": true,
+  "historical_native_test_profile_matches": true,
+  "native_test_mirror_commit": "29afe57971550b6ce8da9144aec2c1a1ce48eaab",
+  "native_test_mirror_workflow": 41342203808,
+  "native_test_mirror_workflow_conclusion": "success",
+  "legacy_update_json_byte_identical": true,
+  "installed_updater_live_report": "reports/stable61-live-updater-20261101.json",
+  "final_main_regression_workflow": 41341581771,
+  "final_main_regression_conclusion": "success"
 }
