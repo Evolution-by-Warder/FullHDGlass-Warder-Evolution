@@ -1,4 +1,4 @@
-"""Four readable history blocks, real font widths and translated radio titles."""
+"""Five readable history blocks, real font widths and translated radio titles."""
 import ast
 import importlib.util
 import json
@@ -34,19 +34,19 @@ def measure(value, heading):
 
 
 class HistoryTests(unittest.TestCase):
-    def test_full_history_kept_but_only_four_entries_displayed(self):
+    def test_full_history_kept_but_only_five_entries_displayed(self):
         text = (PLUGIN / 'history.txtSk').read_text()
-        self.assertGreater(len(history.entries(text)), 4)
+        self.assertGreater(len(history.entries(text)), 5)
         rows = history.layout(text, measure, 1552)
-        self.assertEqual(len([r for r in rows if r[0] == 'heading']), 4)
-        self.assertEqual(len([r for r in rows if r[0] == 'rule']), 3)
+        self.assertEqual(len([r for r in rows if r[0] == 'heading']), 5)
+        self.assertEqual(len([r for r in rows if r[0] == 'rule']), 4)
         self.assertLessEqual(len(rows), 19)
         self.assertLessEqual(len(rows) * 37, 740)
 
     def test_visible_history_contains_only_public_change_descriptions(self):
         forbidden = r'(?:/usr/|/etc/|assets/|\.(?:py|cpp|json|xml|ipk|zip)\b|SHA-?256|\bgRC\b|\bCI\b|workflow|unit test|owner.confirm|používateľom|prijímači overené používateľom)'
         for name in ('history.txt', 'history.txtSk'):
-            for entry in history.entries((PLUGIN / name).read_text())[:4]:
+            for entry in history.entries((PLUGIN / name).read_text())[:5]:
                 for description in entry['paragraphs']:
                     self.assertNotRegex(description, forbidden)
 
@@ -56,13 +56,13 @@ class HistoryTests(unittest.TestCase):
         self.assertEqual(len(entries), 5)
         self.assertEqual(entries[1]['heading'], 'FullHDGlass 1.0.46-test1')
         self.assertEqual(entries[1]['paragraphs'], ['Spinner checked'])
-        self.assertEqual(len([r for r in history.layout(text, measure, 1552) if r[0] == 'heading']), 4)
+        self.assertEqual(len([r for r in history.layout(text, measure, 1552) if r[0] == 'heading']), 5)
 
     def test_long_sentences_and_unsplit_tokens_fit_actual_receiver_font_width(self):
         text = 'FullHDGlass 1.0.47 — 31.10.2026\n' + ('Wide WWW text with Slovak diacritics žľščť and a very long description. ' * 20)
         rows = history.layout(text, measure, 700)
         body = [value for kind, value in rows if kind == 'body']
-        self.assertEqual(len(body), 3)
+        self.assertEqual(len(body), 2)
         self.assertTrue(body[-1].endswith('…'))
         for kind, value in rows:
             if kind in ('body', 'heading'):
