@@ -3770,6 +3770,14 @@ class ExtraInfo17(Screen):
 		if not ENAEBTR and not ENA_Z:
 			self.container = eConsoleAppContainer()
 			self.container.dataAvail.append(self.dataAvail)
+			self.container.appClosed.append(self.bitrateClosed)
+			self.bitrateBuffer = ""
+			self.bitrateVideoSample = None
+			self.bitrateStartTimer = eTimer()
+			try:
+				self.bitrateStartTimer_conn = self.bitrateStartTimer.timeout.connect(self.bitrateTimedOut)
+			except AttributeError:
+				self.bitrateStartTimer.timeout.get().append(self.bitrateTimedOut)
 			if XCPU == "arm":
 				self.restartBtrTimer = eTimer()
 				self.restartBtrTimer.timeout.get().append(self.restartBtrStop)
@@ -4406,33 +4414,42 @@ class ExtraInfo17(Screen):
 						except: pass
 			elif not ENA_Z and (fileExists("/usr/bin/btrGen17")) and not self.isBit:
 				demux = 2
-				a = ""
+				streamdata = {}
 				try:
 					stream = service.stream()
 					if stream:
-						streamdata = stream.getStreamingData()
+						streamdata = stream.getStreamingData() or {}
 						if streamdata:
 							if 'demux' in streamdata:
 								demux = streamdata["demux"]
-							if XCPU == "arm":
-								a = "0 "
-								if 'adapter' in streamdata:
-									a = str(streamdata["adapter"]) + " "
 				except:
 					pass
-				cmd = ["/usr/bin/btrGen17"]
+				# Enigma2 execute(program, argv0, ...): the executable must also
+				# occupy argv[0], otherwise the adapter/demux argument is lost.
+				cmd = ["/usr/bin/btrGen17", "/usr/bin/btrGen17"]
 				if XCPU == "arm":
 					cmd.append(str(streamdata.get("adapter", 0)))
 				cmd.extend([str(demux), str(vpid), str(apid)])
 				self["bitrate_info"].setText(_("Starting Bitrate"))
 				self["bitrate_info"].color2(config.plugins.setupGlass17.par115.value)
-				self.container.execute(*cmd)
-				if XCPU == "arm":
-					if self.restartBtrTimer.isActive():
-						self.restartBtrTimer.stop()
-					self.restartBtrTimer.startLongTimer(720)
+				self.bitrateBuffer = ""
+				self.bitrateVideoSample = None
 				self.isBit = True
-				ena = False
+				try:
+					result = self.container.execute(*cmd)
+				except Exception as error:
+					Writelog("Bitrate launch: %s" % error)
+					result = -1
+				if result:
+					self.isBit = False
+					Writelog("Bitrate launch failed: %s" % result)
+				elif self.isBit:
+					ena = False
+					self.bitrateStartTimer.startLongTimer(20)
+					if XCPU == "arm":
+						if self.restartBtrTimer.isActive():
+							self.restartBtrTimer.stop()
+						self.restartBtrTimer.startLongTimer(720)
 		self.bitNotActive = ena
 		if ena:				
 			self["bitrate_info"].setText(_("Bitrate")+_(" failed"))
@@ -4467,34 +4484,68 @@ class ExtraInfo17(Screen):
 					self["bitrate_info"].color2(aa)
 			except: pass
 			
-	def dataAvail(self, str):
+	def bitrateClosed(self, retval):
+		if self.isBit and not self.container.running():
+			Writelog("Bitrate helper exited: %s" % retval)
+			self.stopBitrateNow(_("Bitrate") + _(" failed"))
+
+	def bitrateTimedOut(self):
+		if self.isBit:
+			Writelog("Bitrate helper produced no complete sample within 20 seconds")
+			self.stopBitrateNow(_("Bitrate") + _(" failed"))
+
+	def dataAvail(self, data):
+		if not self.isBit:
+			return
+		if isinstance(data, bytes):
+			data = data.decode("ascii", "replace")
+		self.bitrateBuffer += data
+		while "\n" in self.bitrateBuffer:
+			line, self.bitrateBuffer = self.bitrateBuffer.split("\n", 1)
+			values = line.split()
+			if len(values) != 4 or not all(value.isdigit() for value in values):
+				self.bitrateVideoSample = None
+				if line.strip():
+					Writelog("Bitrate helper: %s" % line[:240])
+				continue
+			if self.bitrateVideoSample is None:
+				self.bitrateVideoSample = values
+				continue
+			video = self.bitrateVideoSample
+			self.bitrateVideoSample = None
+			self.bitrateStartTimer.stop()
+			self.bitrateSample(video, values)
+			if not self.isBit:
+				self.bitrateBuffer = ""
+				break
+		# Bound malformed or unterminated helper output on every image.
+		if len(self.bitrateBuffer) > 4096:
+			self.bitrateBuffer = ""
+			self.bitrateVideoSample = None
+
+	def bitrateSample(self, video, audio):
 		try:
-			if ISP38:
-				str = str.decode("ascii")
-			cmddata = str.split(" ")
-			tmp = cmddata[3].split("\n")
-			tmp1 = cmddata[6]
-			if int(tmp[0]) > int(config.plugins.setupGlass17.par35.value):
+			if int(video[3]) > int(config.plugins.setupGlass17.par35.value):
 				self.stopBitrateNow(_("Btr: too high - stopped"))
 			elif config.plugins.setupGlass17.par25.value:
 				aa = config.plugins.setupGlass17.par115.value
 				if self.numBit == 0:
-					self["bitrate_info"].setText(("Act: V: " + tmp[0] + " kb/s, A: " + tmp1[:-1] + " kb/s"))
+					self["bitrate_info"].setText(("Act: V: " + video[3] + " kb/s, A: " + audio[3] + " kb/s"))
 					self["bitrate_info"].color1(aa)
 				elif self.numBit == 2:
-					self["bitrate_info"].setText(("Avg: V: " + cmddata[2] + " kb/s, A: " + cmddata[5] + " kb/s"))
+					self["bitrate_info"].setText(("Avg: V: " + video[2] + " kb/s, A: " + audio[2] + " kb/s"))
 					self["bitrate_info"].color3(aa)
 				elif self.numBit == 4:
-					self["bitrate_info"].setText(("Min: V: " + cmddata[0] + " kb/s, A: " + tmp[1] + " kb/s"))
+					self["bitrate_info"].setText(("Min: V: " + video[0] + " kb/s, A: " + audio[0] + " kb/s"))
 					self["bitrate_info"].color4(aa)
 				elif self.numBit == 6:
-					self["bitrate_info"].setText(("Max: V: " + cmddata[1] + " kb/s, A: " + cmddata[4] + " kb/s"))
+					self["bitrate_info"].setText(("Max: V: " + video[1] + " kb/s, A: " + audio[1] + " kb/s"))
 					self["bitrate_info"].color2(aa)
 					self.numBit = -2
 				self.numBit += 1
 			else:
-				self.dataV = tmp[0]
-				self.dataA = tmp1[:-1]
+				self.dataV = video[3]
+				self.dataA = audio[3]
 				self.updBtrData()
 		except: pass
 
@@ -4627,6 +4678,11 @@ class ExtraInfo17(Screen):
 	def stopBitrateNow(self, tmp=_("Bitrate stopped")):
 		self.isBit = False
 		self.bitNotActive = True
+		self.bitrateStartTimer.stop()
+		self.bitrateBuffer = ""
+		self.bitrateVideoSample = None
+		if XCPU == "arm":
+			self.restartBtrTimer.stop()
 		self.container.kill()
 		self["bitrate_info"].setText(tmp)
 		self["bitrate_info"].color4(config.plugins.setupGlass17.par115.value)
