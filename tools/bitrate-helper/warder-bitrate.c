@@ -38,7 +38,7 @@ static uint64_t now_ms(void) {
 static size_t packet_payload(const unsigned char *p, unsigned pid) {
     unsigned control;
     size_t start = 4;
-    if (p[0] != 0x47 || (p[1] & 0x80) || (((p[1]&31)<<8)|p[2]) != pid) return 0;
+    if (p[0] != 0x47 || (p[1] & 0x80) || (unsigned)(((p[1]&31)<<8)|p[2]) != pid) return 0;
     control = (p[3] >> 4) & 3;
     if (!(control & 1)) return 0;
     if (control & 2) start += 1 + p[4];
@@ -53,7 +53,7 @@ static uint64_t consume_ts(struct ts_counter *c, const unsigned char *data, size
         if (take > size) take = size;
         memcpy(c->pending + c->used, data, take);
         c->used += take; data += take; size -= take;
-        if (c->used >= 4 && (c->pending[0]!=0x47 || (((c->pending[1]&31)<<8)|c->pending[2])!=c->pid || !(c->pending[3]&0x30))) {
+        if (c->used >= 4 && (c->pending[0]!=0x47 || (unsigned)(((c->pending[1]&31)<<8)|c->pending[2])!=c->pid || !(c->pending[3]&0x30))) {
             memmove(c->pending,c->pending+1,--c->used); c->invalid++;
         }
         if (c->used == PACKET) {
