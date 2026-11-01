@@ -21,7 +21,7 @@
 #define READ_SIZE (PACKET * 128)
 struct ts_counter { unsigned char pending[PACKET]; size_t used; unsigned pid; uint64_t invalid; };
 struct meter {
-    int fd, pid, ts, zero_samples;
+    int fd, pid, ts;
     uint64_t total, interval, started, minimum, maximum;
     struct ts_counter parser;
 };
@@ -115,7 +115,6 @@ static void print_sample(struct meter *m, uint64_t elapsed, uint64_t duration) {
     if (m->minimum==UINT64_MAX || current<m->minimum) m->minimum=current;
     if (current>m->maximum) m->maximum=current;
     printf("%"PRIu64" %"PRIu64" %"PRIu64" %"PRIu64"\n",m->minimum,m->maximum,average,current);
-    m->zero_samples=current ? 0 : m->zero_samples+1;
     m->interval=0;
 }
 static int number(const char *s, int lower, int upper, int *out) {

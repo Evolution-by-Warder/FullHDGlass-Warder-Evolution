@@ -39,14 +39,16 @@ for name,prefix,emulator,machine,extra in (
         for cpu in (['24Kc','24Kf'] if name=='mipsel' else ['default']):
             command=[emulator]+([] if cpu=='default' else ['-cpu',cpu])+['-r','.'.join(map(str,minimum_kernel)),unit]
             test=subprocess.run(command,capture_output=True,text=True,timeout=30)
-            probes[cpu]={'passed':test.returncode==0,'returncode':test.returncode}
+            cli=subprocess.run(command[:-1]+[str(output),'0','0','8191','5106'],capture_output=True,text=True,timeout=30)
+            missing=subprocess.run(command[:-1]+[str(output),'0','0','5101','5106'],capture_output=True,text=True,timeout=30)
+            probes[cpu]={'passed':test.returncode==0 and cli.returncode==2 and 'usage:' in cli.stderr and missing.returncode==2 and 'open /dev/dvb/' in missing.stderr,'returncode':test.returncode,'cli_checked':cli.returncode==2,'missing_device_checked':missing.returncode==2 and 'open /dev/dvb/' in missing.stderr}
             print(name,cpu,test.stdout.strip(),test.stderr.strip()[:120])
     requires_fpu=name=='mipsel' and not probes['24Kc']['passed']
     assert probes['24Kf' if name=='mipsel' else 'default']['passed'],'Target parser/rate test failed'
     execution=[emulator]+(['-cpu','24Kf' if requires_fpu else '24Kc'] if name=='mipsel' else [])+['-r','.'.join(map(str,minimum_kernel))]
     check=subprocess.run(execution+[str(output),'0','0','8191','5106'],capture_output=True,text=True,timeout=30)
     assert check.returncode==2 and 'usage:' in check.stderr,'Packaged helper must execute and reject invalid PIDs'
-    report={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'helper_sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),'compiler':subprocess.check_output([compiler,'--version'],text=True).splitlines()[0],'architecture':name+', static little endian','minimum_kernel':minimum_kernel,'requires_fpu':requires_fpu,'qemu_probes':probes,'legacy_helpers_modified':False}
+    report={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'helper_sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),'compiler':subprocess.check_output([compiler,'--version'],text=True).splitlines()[0],'architecture':name+', static little endian','minimum_kernel':minimum_kernel,'requires_fpu':requires_fpu if name=='mipsel' else None,'qemu_probes':probes,'legacy_helpers_modified':False}
     (folder/('bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json')).write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
     if name=='mipsel':targets[name]={'isa':'mips32r2','byteorder':'little','minimum_kernel':minimum_kernel,'requires_fpu':requires_fpu}
