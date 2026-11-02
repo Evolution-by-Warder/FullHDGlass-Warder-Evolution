@@ -13,7 +13,7 @@ import tempfile
 from types import SimpleNamespace
 import xml.etree.ElementTree as ET
 
-VERSION='1.0.62-test3'
+VERSION='1.0.62-test4'
 PACKAGE='enigma2-plugin-skins-fullhdglass-warder-evolution'
 PLUGIN='usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
@@ -52,6 +52,11 @@ def verify(package,report):
         assert channel.find("widget[@source='key_red']") is not None
         assert adapter['install'](registry,'hd_glass17/skin.xml','openpli')>0
         assert registry['ChannelSelection'][0].find("widget[@name='key_red']") is not None
+        browser=registry['PluginBrowser'][0]
+        assert browser.find("widget[@name='list']") is not None
+        assert browser.find("widget[@source='pluginList']") is None
+        assert browser.find("widget[@source='pluginGrid']") is None
+        assert browser.find("widget[@name='list']").get('itemHeight')=='90'
         keys={w.get('name') or w.get('source') for w in registry['VirtualKeyBoard'][0].iter('widget')}
         assert {'prompt','text','list','locale','key_red','key_green','key_yellow','key_blue'}.issubset(keys)
         # The shared source XML and shipped native image classes remain untouched.
@@ -61,6 +66,7 @@ def verify(package,report):
                 'shipped_postinst_payload_function_passed':True,
                 'installed_version_status_fixture_passed':True,
                 'packaged_openpli_adapter_and_keyboard_passed':True,
+                'packaged_native_plugin_list_present':True,
                 'physical_receiver_verified':False,'production_feeds_changed':False}
         report.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))
 

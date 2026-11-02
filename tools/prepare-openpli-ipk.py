@@ -5,7 +5,7 @@ from pathlib import Path
 from sync_header_version import sync_headers
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='1.0.62-test3'
+VERSION='1.0.62-test4'
 PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
 def main():
@@ -17,12 +17,18 @@ def main():
     if text.count(old)!=1:raise ValueError('Unexpected control version')
     path.write_text(text.replace(old,'Version: '+VERSION+'-1\n',1))
     notes={
-        'history.txt':'OpenPLi: corrected native colour-caption bindings and complete virtual keyboard.\nLegacy replacements of image-owned Enigma2 files are disabled on OpenPLi.\n',
-        'history.txtSk':'OpenPLi: opravené väzby farebných tlačidiel a kompletná virtuálna klávesnica.\nZablokované staré prepisovanie systémových súborov Enigma2 na OpenPLi.\n'}
+        'history.txt':'OpenPLi: restored installed plugin list, descriptions, icons and launch actions.\nCorrected row heights in plugin browsing, downloads and removal.\n',
+        'history.txtSk':'OpenPLi: obnovený zoznam pluginov, popisy, ikony a spúšťanie.\nOpravená výška riadkov pri prehliadaní, sťahovaní a odstraňovaní pluginov.\n'}
     heading='FullHDGlass '+VERSION+' — 02.11.2026\n'
     for name,body in notes.items():
         path=PLUGIN/name
-        if not path.read_text().startswith(heading):path.write_text(heading+body+'\n'+path.read_text())
+        text=path.read_text()
+        previous='FullHDGlass 1.0.62-test3 — 02.11.2026\n'
+        if previous not in text:
+            previous_notes=('OpenPLi: corrected native captions and complete virtual keyboard.\nNative Enigma2 file ownership is preserved.\n' if name=='history.txt' else 'OpenPLi: opravené natívne tlačidlá a kompletná klávesnica.\nSystémové súbory Enigma2 zostávajú zachované.\n')
+            text=previous+previous_notes+'\n'+text
+        if not text.startswith(heading):text=heading+body+'\n'+text
+        path.write_text(text)
     sync_headers(ROOT/'source/package-root')
     spec=importlib.util.spec_from_file_location('approved_helpers',ROOT/'tools/prepare-bitrate-stable-release.py')
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
