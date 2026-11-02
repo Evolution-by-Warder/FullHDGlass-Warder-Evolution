@@ -1,3 +1,11 @@
+# Public GLES/WQHD test packages verified — 2 November 2026
+
+FullHDGlass 1.0.62-test2, PiconHub 0.1.39-test1 and GSU 13.40-r95-test2 are published as isolated prereleases. All public IPKs were downloaded, hashed and inspected. GSU test2 restores the production r95 History entry; its Python runtime is identical to test1. Production remains FullHDGlass 1.0.61, PiconHub 0.1.38 and GSU 13.40-r95. Install hooks, approved graphics and helpers remain byte-identical. No update feed was promoted. Physical GLES receiver verification remains pending.
+
+Evidence: reports/gles-wqhd-candidates-public-20261102.json on audit/gles-wqhd-proof-20261102. Active reviews: FullHDGlass #20 (supersedes closed #19), PiconHub #16, GSU #4. Future normal versions: 1.0.63 / >=0.1.40 / >=13.40-r96.
+
+---
+
 # GLES / WQHD plugin preparation — 2 November 2026
 
 Owner requested reviewing every maintained plugin for OpenATV 8.1, GLES and WQHD. Work is isolated on fix/openatv81-gles-wqhd-20261102. Candidate FullHDGlass 1.0.62-test2 adds desktop-aware owned screens and Python geometry, preserves the exact frozen controller/action fingerprint and retains all four test1 native binding fixes. Source inventory and binding reports are in reports/gles-wqhd-*. Production remains 1.0.61, and old releases and all feed manifests stay unchanged. Physical GLES receiver validation is pending. Main skin output remains approved FHD; no untested WQHD primary-skin variant is activated.
