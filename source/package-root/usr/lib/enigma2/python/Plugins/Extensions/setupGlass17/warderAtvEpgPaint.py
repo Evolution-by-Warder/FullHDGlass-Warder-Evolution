@@ -394,7 +394,7 @@ def install_painter(listing):
     alignment=NS(value=RT_HALIGN_LEFT|RT_VALIGN_CENTER)
     cfg=NS(epgselection=NS(grid=NS(servicename_alignment=alignment,event_alignment=alignment,rec_icon_height=NS(value='bottom'))),epg=NS(eit=NS(value=True)))
     def clock(name):
-        return LoadPixmap(path=resolveFilename(SCOPE_CURRENT_SKIN,'icons/'+name+'.png'),cached=True)
+        return LoadPixmap(path=join(base,'clock-'+name+'.png'),cached=True)
     api=NS(**locals())
     api.config=cfg
     api.time=time
