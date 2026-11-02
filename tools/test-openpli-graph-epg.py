@@ -110,6 +110,14 @@ class Tests(unittest.TestCase):
   a=setup();s=a.plugin.main(Session());self.assertIs(type(s).zapTo,a.native.zapTo);self.assertIs(type(s).eventSelected,a.native.eventSelected)
   self.assertEqual(s['gmepgactions'].actions['red'].__func__,a.native.zapTo)
   self.assertEqual(s['warderEpgActions'].prio,-2)
+ def test_cpp_dispatch_receives_consumed_integer_and_never_native_red_zap(self):
+  a=setup();s=a.plugin.main(Session());s.onSelectionChanged()
+  for colour in ('red','red','blue'):
+   result=s['warderEpgActions'].action('GMEPGSelectActions',colour)
+   self.assertIs(type(result),int);self.assertNotEqual(result,0)
+  self.assertEqual(len(s.session.opens),1);self.assertEqual(s.closed,[])
+  s.warderProgramInfoClosed();s['list'].current=(None,SERVICE)
+  self.assertEqual(s['warderEpgActions'].action('GMEPGSelectActions','red'),1)
  def test_help_lists_only_the_actual_owned_short_colour_actions(self):
   a=setup();s=a.plugin.main(Session())
   for colour in ('red','yellow','blue'):

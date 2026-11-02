@@ -164,19 +164,22 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
 
         def warderProgramInfo(self):
             if self._warderProgramInfoOpen:
-                return
+                return 1
             current = self['list'].getCurrent()
             event, service = current if current else (None, None)
             if event is None:
-                return
+                return 1
             self._warderProgramInfoOpen = True
             try:
                 self.showhideWindow(True)
-                return self.session.openWithCallback(self.warderProgramInfoClosed,
-                                                     program_info, event, service)
+                self.session.openWithCallback(self.warderProgramInfoClosed,
+                                              program_info, event, service)
             except Exception as error:
                 self._warderProgramInfoOpen = False
                 report_error('FullHDGlass OpenPLi programme info: %s' % error)
+            # OpenPLi's C++ action dispatcher consumes only integer results.
+            # Returning the opened Screen would also run native red/zap below.
+            return 1
 
         def warderProgramInfoClosed(self, action=None):
             self._warderProgramInfoOpen = False
@@ -190,7 +193,8 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
         def warderSearch(self):
             current = self['list'].getCurrent()
             event = current[0] if current else None
-            return search(self.session, event, translate)
+            search(self.session, event, translate)
+            return 1
 
     def graph_factory(*args, **kwargs):
         if active():

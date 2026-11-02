@@ -236,6 +236,9 @@ def strip_openpli_compatibility(tree):
 
 
 def normalized(tree):
+    graph_ledger=ROOT/'design/openpli-graph-epg/runtime-hooks.json'
+    if graph_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(graph_ledger.read_text()))
     tree=strip_openpli_compatibility(tree)
     resolution_ledger=ROOT/'design/wqhd-compatibility/logic-edits.json'
     if resolution_ledger.exists():
