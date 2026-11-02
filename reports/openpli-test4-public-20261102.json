@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-02",
+  "version": "1.0.62-test4",
+  "source": "e54e7b9bea2a5c8db76264b1f52f8dff1dc93b2c",
+  "base": "11d1cb9dd31cc766a90fd7387590c1cec3a098d9",
+  "tag": "v1.0.62-test4",
+  "prerelease": true,
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.62-test4",
+  "assets": [
+    {
+      "name": "enigma2-plugin-skins-fullhdglass_1.0.62-test4_all.ipk",
+      "bytes": 17213032,
+      "digest": "sha256:8e0cc1e9dc002e0199159d8af1ae22b4caaa389ec6e593c5f27ba6762a86dd30",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62-test4/enigma2-plugin-skins-fullhdglass_1.0.62-test4_all.ipk"
+    },
+    {
+      "name": "enigma2-plugin-skins-fullhdglass_1.0.62-test4_all.ipk.sha256",
+      "bytes": 120,
+      "digest": "sha256:af35e72bda961eb0bee4f2c127485ee2e6373da70f3efd47f9015fc6ee1a1b1b",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62-test4/enigma2-plugin-skins-fullhdglass_1.0.62-test4_all.ipk.sha256"
+    }
+  ],
+  "reported_problem": "Original OpenPLi skin shows installed plugins, FullHDGlass test3 shows an empty plugin browser.",
+  "root_cause": "The template only had conditional OpenATV pluginList/pluginGrid sources, while OpenPLi populates a GUI component named list. Prior binding-only checks skipped both absent sources and missed the missing primary view.",
+  "repair": "Bind OpenPLi's native PluginList and align its content/listbox row heights to 90 px, including download/remove views. Preserve native catalogue, icons, descriptions and launch/reorder actions. OpenATV templates unchanged.",
+  "tests": {
+    "openpli_native_tests_per_ref": 11,
+    "refs": [
+      "release-9.2",
+      "develop"
+    ],
+    "native_populated_list_visibility_replayed": true,
+    "native_plugin_population_and_launch_action_replayed": true,
+    "old_empty_primary_view_reproduced": true,
+    "native_shared_font_registry_checked": true,
+    "openatv_refs": [
+      "8.0",
+      "8.0-next",
+      "master"
+    ]
+  },
+  "verification": {
+    "version": "1.0.62-test4",
+    "bytes": 17213032,
+    "sha256": "8e0cc1e9dc002e0199159d8af1ae22b4caaa389ec6e593c5f27ba6762a86dd30",
+    "python_payloads_compiled_for_39_grammar": 124,
+    "shipped_postinst_payload_function_passed": true,
+    "installed_version_status_fixture_passed": true,
+    "packaged_openpli_adapter_and_keyboard_passed": true,
+    "packaged_native_plugin_list_present": true,
+    "physical_receiver_verified": false,
+    "production_feeds_changed": false,
+    "public_sidecar_matches": true,
+    "public_bytes_equal_locally_verified_ipk": true,
+    "independent_python_compile_count": 124
+  },
+  "ci": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41467717909",
+  "ci_conclusion": "success",
+  "production_feeds_changed": false,
+  "physical_receiver_acceptance_pending": true
+}
