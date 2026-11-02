@@ -1,0 +1,26 @@
+{
+  "product": "FullHDGlass",
+  "version": "1.0.64-test1",
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.64-test1/enigma2-plugin-skins-fullhdglass_1.0.64-test1_all.ipk",
+  "sha256": "d00e2779f940a2fb03f6f0c8e658523e435d6b3328cfd94334b22cf235905152",
+  "bytes": 17219896,
+  "source_commit": "a3595d687016076e92ba8d1ba7b6c31b3483b030",
+  "workflow_run": 41515640324,
+  "pull_request": 25,
+  "native_OpenPLi_refs": [
+    "release-9.2",
+    "develop"
+  ],
+  "native_OpenATV_refs": [
+    "8.0",
+    "8.0-next",
+    "master"
+  ],
+  "public_ipk_and_sidecar_verified": true,
+  "packaged_native_programme_detail_and_colour_actions_checked": true,
+  "packaged_installer_function_checked": true,
+  "cpp_action_consumption_checked": true,
+  "stable_production_version": "1.0.63",
+  "production_feeds_changed": false,
+  "physical_receiver_visual_parity_confirmed": false
+}

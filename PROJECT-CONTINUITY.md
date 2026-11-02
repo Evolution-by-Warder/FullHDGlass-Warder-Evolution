@@ -1,3 +1,15 @@
+## Active follow-up — 2026-11-02: OpenPLi graphical Multi EPG TEST
+
+**FullHDGlass 1.0.64-test1** is published as an isolated TEST candidate for OpenPLi parity with OpenATV. The shared programme-detail window opens on red; green keeps the native timer editor, yellow selects date/time and blue searches the selected title. Standard Multi EPG and the explicit FullHDGlass Multi EPG entry open the owned guide. Native OK/zap/preview, bouquet changes and settings remain with OpenPLi.
+
+Public IPK: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.64-test1/enigma2-plugin-skins-fullhdglass_1.0.64-test1_all.ipk
+SHA-256: d00e2779f940a2fb03f6f0c8e658523e435d6b3328cfd94334b22cf235905152
+Source: a3595d687016076e92ba8d1ba7b6c31b3483b030; CI: 41515640324; draft PR: #25.
+Proof: reports/openpli-graph-epg-test1-public-20261102.json and reports/openpli-graph-epg-test1-install-20261102.json.
+The public package passed 17 actual native guide/action-map checks, 5 dialog regressions, 6 framed-preview regressions and shipped install verification. OpenPLi release-9.2/develop and OpenATV 8.0/8.0-next/master checks passed. Key callbacks explicitly consume integer action results to prevent native red/zap or blue/primetime fall-through. The exact new layout/hooks are registered in the frozen audits; existing baseline checks remain intact.
+
+**Pending:** physical receiver confirmation of visual and interaction parity. Stable production and native TEST updater feeds remain on **1.0.63**; no test promotion is authorized by this checkpoint. A later ordinary release must exceed 1.0.64-test1, e.g. 1.0.65. Existing font/settings choices remain preserved.
+
 ## Current checkpoint — 2026-11-02: common stable release completed
 
 Authoritative state: FullHDGlass **1.0.63**, GSU **13.41-r4**, PiconHub **0.1.40** are normal published releases and their live updater channels are active. Earlier publishing pauses and candidate-only statements below are historical and were superseded by the owner's explicit release authorization.
