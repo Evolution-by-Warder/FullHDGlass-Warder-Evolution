@@ -1,0 +1,56 @@
+name: Verify OpenPLi compatibility
+on:
+  push:
+    branches: [compat/openpli9-20261102]
+  pull_request:
+    paths: [source/**, plugin/**, tools/**, compatibility/**, design/openpli-compatibility/**, .github/workflows/verify-openpli-compatibility.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        upstream_ref: [release-9.2, develop]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenPLi/enigma2
+          ref: ${{ matrix.upstream_ref }}
+          path: upstream/enigma2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Check imports and real native call signatures
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONWARNINGS: ignore
+        run: |
+          python tools/test-openpli-interface-guard.py -q
+          python tools/check-openpli-interfaces.py --plugin-root source/package-root/usr/lib/enigma2/python --upstream upstream/enigma2/lib/python --report /tmp/openpli-interfaces.json
+          python tools/test-openpli-compat.py --upstream upstream/enigma2/lib/python --report /tmp/openpli-bindings.json -q
+          python tools/test-native-reference-scale.py --upstream upstream/enigma2/lib/python -q
+          python tools/test-list-row-fit.py --upstream upstream/enigma2/lib/python -q
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass-OpenPLi-${{ matrix.upstream_ref }}
+          path: /tmp/openpli-*.json
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install --quiet 'Pillow==12.3.0'
+      - run: |
+          python tools/test-setup-style.py -q
+          python tools/test-runtime-safety.py
+          python tools/test-wqhd-plugins.py -q
+          python tools/test-config-font-compat.py -q

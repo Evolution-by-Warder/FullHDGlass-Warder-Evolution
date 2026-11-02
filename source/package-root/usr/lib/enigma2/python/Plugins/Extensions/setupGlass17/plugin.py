@@ -92,6 +92,17 @@ from Screens.Standby import TryQuitMainloop
 from Tools.HardwareInfo import HardwareInfo
 from Components.Pixmap import *
 
+_WarderOpenPli = False
+try:
+    from Components.SystemInfo import BoxInfo as _WarderImageInfo
+    from skin import domScreens as _WarderSkinScreens
+    from .warderOpenPli import install as _installWarderOpenPli
+    _WarderImageDistro = _WarderImageInfo.getItem('displaydistro') or _WarderImageInfo.getItem('distro')
+    _WarderOpenPli = str(_WarderImageDistro).strip().lower() == 'openpli'
+    _installWarderOpenPli(_WarderSkinScreens, config.skin.primary_skin.value, _WarderImageDistro)
+except (ImportError, AttributeError):
+    pass
+
 try:
     from Components.GUIComponent import GUIComponent as _WarderGUIComponent
     from enigma import eListbox as _WarderListbox, eSize as _WarderListSize, eLabel as _WarderTitleLabel
@@ -702,7 +713,7 @@ for x in aall:
 E2OK = False
 # The legacy ChannelSelection 2xOK feature rewrites image-owned Python.
 # Warder Evolution must never offer or activate that patch on OpenATV.
-if not isATV and os.path.isfile(CHANSEL_FILE):
+if not (isATV or _WarderOpenPli) and os.path.isfile(CHANSEL_FILE):
 	try:
 		cpu = open(CHANSEL_FILE, 'r').read()
 		if cpu.find('self.closePiG()') == -1 and cpu.find('__close:') == -1:
@@ -2266,7 +2277,7 @@ def chnlSelPatch(direct=True):
 	# Warder Evolution safety rule: never patch image-owned ChannelSelection.py
 	# on modern OpenATV. Preserve the legacy setting for old configurations,
 	# but disable it instead of modifying core Enigma2 Python at runtime.
-	if isATV:
+	if isATV or _WarderOpenPli:
 		setCFGoff(62)
 		return False
 	if not direct and fileExists(CHANSEL_FILE) and fileExists(CHANSEL_FILE.replace(".py","-ori17.py")):
@@ -2423,8 +2434,8 @@ def readcolorStyle(num):
 	return color
 ##########################################################################################################################
 def setMenuPyo(what="new17"):
-	# Modern OpenATV owns Screens/Menu.py. Do not swap image Python modules at runtime.
-	if isATV:
+	# OpenATV and OpenPLi own Screens/Menu.py; retain their native menu controller.
+	if isATV or _WarderOpenPli:
 		return False
 	whatOld = "orig17"
 	if what == "orig17":
@@ -2688,7 +2699,7 @@ class thumbList2(MenuList):
 ##########################################################################################################################
 def setEncodingUser(direction=True):
 	# encoding.conf belongs to the image on OpenATV; keep the legacy option inert.
-	if isATV:
+	if isATV or _WarderOpenPli:
 		setCFGoff(59)
 		return False
 	state = False
@@ -3043,7 +3054,7 @@ def lbs():
 
 def chckFifo():
 	# Modern OpenATV owns Screens/ServiceScan.py; never rewrite image Python.
-	if isATV:
+	if isATV or _WarderOpenPli:
 		config.plugins.setupGlass17.par67.value = False
 		config.plugins.setupGlass17.par67.save()
 		configfile.save()
@@ -6959,7 +6970,7 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % _("Localization of the skin"), config.plugins.setupGlass17.par49))            
 				if ECL:
 					self.list.append(getConfigListEntry(S0 % _("Enable Clear memory"), config.plugins.setupGlass17.par58))      
-				if not isATV and not os.path.exists('/etc/dpkg'):
+				if not (isATV or _WarderOpenPli) and not os.path.exists('/etc/dpkg'):
 					self.list.append(getConfigListEntry(S0 % _("Enable user encoding.conf"), config.plugins.setupGlass17.par59))          
 				if ENA_ONOFF:
 					self.list.append(getConfigListEntry(S0 % _("On/Off icons"), config.plugins.setupGlass17.par190))

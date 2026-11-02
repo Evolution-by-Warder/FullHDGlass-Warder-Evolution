@@ -18,6 +18,16 @@ LAYOUTS=style.extract(CURRENT)
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_openpli_hook_changes_are_not_silently_approved(self):
+        changed=CURRENT.replace('domScreens as _WarderSkinScreens','screens as _WarderSkinScreens',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
+    def test_openpli_guard_cannot_drop_existing_openatv_protection(self):
+        changed=CURRENT.replace('if isATV or _WarderOpenPli:', 'if _WarderOpenPli:',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 

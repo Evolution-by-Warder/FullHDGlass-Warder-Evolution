@@ -1,0 +1,32 @@
+[
+  {
+    "scope": "module",
+    "before": "not isATV and os.path.isfile(CHANSEL_FILE)",
+    "after": "not (isATV or _WarderOpenPli) and os.path.isfile(CHANSEL_FILE)"
+  },
+  {
+    "scope": "module.chnlSelPatch",
+    "before": "isATV",
+    "after": "isATV or _WarderOpenPli"
+  },
+  {
+    "scope": "module.setMenuPyo",
+    "before": "isATV",
+    "after": "isATV or _WarderOpenPli"
+  },
+  {
+    "scope": "module.setEncodingUser",
+    "before": "isATV",
+    "after": "isATV or _WarderOpenPli"
+  },
+  {
+    "scope": "module.chckFifo",
+    "before": "isATV",
+    "after": "isATV or _WarderOpenPli"
+  },
+  {
+    "scope": "module.setupGlass17ScreenSetup.runSetup",
+    "before": "not isATV and (not os.path.exists('/etc/dpkg'))",
+    "after": "not (isATV or _WarderOpenPli) and (not os.path.exists('/etc/dpkg'))"
+  }
+]

@@ -89,16 +89,16 @@ if "PiconHub-Warder/FullHDGlass-Warder-Evolution" in plugin:
     fail("plugin.py: obsolete Warder repository owner returned")
 if "unsafe asset manifest redirect" not in plugin:
     fail("plugin.py: official asset manifest redirect guard missing")
-if "if isATV:" not in plugin[plugin.find("def chnlSelPatch"):plugin.find("def writeStyleCfg")]:
+if "if isATV or _WarderOpenPli:" not in plugin[plugin.find("def chnlSelPatch"):plugin.find("def writeStyleCfg")]:
     fail("plugin.py: OpenATV ChannelSelection patch guard missing")
 menu_guard = plugin[plugin.find("def setMenuPyo"):plugin.find("def chckPath")]
-if "if isATV:" not in menu_guard:
+if "if isATV or _WarderOpenPli:" not in menu_guard:
     fail("plugin.py: OpenATV Menu.py ownership guard missing")
 encoding_guard = plugin[plugin.find("def setEncodingUser"):plugin.find("def setCFGoff")]
-if "if isATV:" not in encoding_guard:
+if "if isATV or _WarderOpenPli:" not in encoding_guard:
     fail("plugin.py: OpenATV encoding.conf ownership guard missing")
 fifo_guard = plugin[plugin.find("def chckFifo"):plugin.find("def chckPigFont")]
-if "if isATV:" not in fifo_guard:
+if "if isATV or _WarderOpenPli:" not in fifo_guard:
     fail("plugin.py: OpenATV ServiceScan.py ownership guard missing")
 if "def _atomicWriteText(" not in plugin or 'open(SKINXML,"w")' in plugin or "open(SKINXML, 'w')" in plugin:
     fail("plugin.py: generated skin.xml writes must remain atomic")

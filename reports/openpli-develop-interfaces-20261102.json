@@ -1,0 +1,45 @@
+{
+  "source_files": 124,
+  "import_statements": 321,
+  "calls_checked": 1037,
+  "dynamic_calls": 3,
+  "missing_imports": [],
+  "guarded_imports": [
+    {
+      "file": "Components/Converter/WarderRadioOnly.py",
+      "line": 19,
+      "module": "ServiceReference",
+      "missing": [
+        "isRadioServiceReference"
+      ]
+    },
+    {
+      "file": "Plugins/Extensions/setupGlass17/plugin.py",
+      "line": 269,
+      "module": "Components.ScreenAnimations",
+      "missing": [
+        "<module>"
+      ]
+    },
+    {
+      "file": "Plugins/Extensions/setupGlass17/warderVideoCodec.py",
+      "line": 5,
+      "module": "Components.SystemInfo",
+      "missing": [
+        "VideoCodec"
+      ]
+    }
+  ],
+  "inactive_legacy_imports": [
+    {
+      "file": "Screens/Menu-new17.py",
+      "line": 16,
+      "module": "Screens.Setup",
+      "missing": [
+        "getSetupTitle"
+      ]
+    }
+  ],
+  "invalid_calls": [],
+  "limitations": "Static Python imports and directly imported callable shapes; dynamic dispatch, wildcard names and C++ exports/ABI require separate validation. No receiver execution."
+}

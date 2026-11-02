@@ -1,0 +1,12 @@
+[
+  {
+    "scope": "module",
+    "before": "",
+    "after": "_WarderOpenPli = False"
+  },
+  {
+    "scope": "module",
+    "before": "",
+    "after": "try:\n    from Components.SystemInfo import BoxInfo as _WarderImageInfo\n    from skin import domScreens as _WarderSkinScreens\n    from .warderOpenPli import install as _installWarderOpenPli\n    _WarderImageDistro = _WarderImageInfo.getItem('displaydistro') or _WarderImageInfo.getItem('distro')\n    _WarderOpenPli = str(_WarderImageDistro).strip().lower() == 'openpli'\n    _installWarderOpenPli(_WarderSkinScreens, config.skin.primary_skin.value, _WarderImageDistro)\nexcept (ImportError, AttributeError):\n    pass"
+  }
+]

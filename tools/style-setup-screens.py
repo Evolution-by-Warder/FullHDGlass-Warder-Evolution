@@ -218,7 +218,25 @@ def strip_reviewed_radio_start(tree):
     return tree
 
 
+def strip_openpli_compatibility(tree):
+    folder=ROOT/'design/openpli-compatibility'
+    if not folder.exists():return tree
+    tree=strip_reviewed_batch(tree,json.loads((folder/'runtime-hooks.json').read_text()))
+    records=json.loads((folder/'guard-conditions.json').read_text())
+    exact={(r['scope'],json.dumps(portable(ast.parse(r['after'],mode='eval').body),sort_keys=True)):r['before'] for r in records}
+    def visit(node,scope='module'):
+        if isinstance(node,ast.If):
+            before=exact.get((scope,json.dumps(portable(node.test),sort_keys=True)))
+            if before is not None:node.test=ast.parse(before,mode='eval').body
+        for child in ast.iter_child_nodes(node):
+            nested=scope+'.'+child.name if isinstance(child,(ast.ClassDef,ast.FunctionDef)) else scope
+            visit(child,nested)
+    visit(tree)
+    return tree
+
+
 def normalized(tree):
+    tree=strip_openpli_compatibility(tree)
     resolution_ledger=ROOT/'design/wqhd-compatibility/logic-edits.json'
     if resolution_ledger.exists():
         tree=strip_reviewed_batch(tree,json.loads(resolution_ledger.read_text()))

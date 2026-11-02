@@ -27,6 +27,7 @@ class Size:
 
 class Listbox:
     orVertical, orHorizontal, orGrid = 1, 2, 3
+    pageDown, pageUp, moveDown, moveUp, moveTop, moveEnd = range(6)
     def __init__(self, width=1560, height=615, row=45):
         self.dimensions = Size(width, height)
         self.row = row
@@ -50,6 +51,12 @@ class Listbox:
     def goPageDown(self): self.moveSelectionTo(self.index + self.size().height() // self.row)
     def goLineDown(self): self.moveSelectionTo(self.index+1)
     def goLineUp(self): self.moveSelectionTo(self.index-1)
+    def moveSelection(self, operation):
+        offsets = {self.pageDown:self.size().height()//self.row,
+                   self.pageUp:-(self.size().height()//self.row),
+                   self.moveDown:1,self.moveUp:-1,
+                   self.moveTop:-len(self.items),self.moveEnd:len(self.items)}
+        self.moveSelectionTo(self.index+offsets[operation])
     def partial_rows(self):
         return [(index, min(self.row, self.size().height() - (index-self.top)*self.row))
                 for index in range(self.top, len(self.items))
@@ -95,7 +102,8 @@ class Parent(dict):
 
 def setup(active=True):
     gui = native_class('Components/GUIComponent.py', 'GUIComponent', {
-        'eSize':Size, 'ePoint':Size, 'applyAllAttributes':apply_attributes})
+        'eSize':Size, 'ePoint':Size, 'applyAllAttributes':apply_attributes,
+        'skin':SimpleNamespace(applyAllAttributes=apply_attributes)})
     menu = native_class('Components/MenuList.py', 'MenuList', {
         'GUIComponent':gui, 'eListbox':Listbox,
         'eListboxPythonStringContent':lambda:SimpleNamespace(setList=lambda values:None)})
@@ -145,7 +153,7 @@ class ListFitTests(unittest.TestCase):
         method=source.body[0]
         scope={'GUIComponent':gui,'applyAllAttributes':apply_attributes}
         exec(compile(ast.Module(body=[method],type_ignores=[]),'native-Screen-createGUIScreen','exec'),scope)
-        parent.stacks=[];parent.additionalWidgets=[];parent.screenImage=None;parent.ignoreWidgets=[]
+        parent.stacks=[];parent.additionalWidgets=[];parent.screenImage=None;parent.ignoreWidgets=[];parent.handledWidgets=[]
         scope['createGUIScreen'](parent,None,None,updateonly=True)
 
     def test_original_plain_callback_reproduces_exact_startup_crash(self):

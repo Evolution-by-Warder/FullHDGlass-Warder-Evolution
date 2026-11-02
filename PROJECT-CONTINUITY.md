@@ -1,3 +1,7 @@
+# OpenPLi source compatibility review — 2 November 2026
+
+Owner accepted the repaired OpenATV candidates and requested an OpenPLi review. Work is isolated on compat/openpli9-20261102 from accepted FullHDGlass 1.0.62-test2. FullHDGlass needs OpenPLi-only native caption bindings, the complete modern keyboard alias, and protection against legacy replacements of image-owned files. Both release-9.2 and develop are checked; PiconHub/GSU source checks and regressions pass without runtime edits. No packages or production feeds changed. Physical OpenPLi receiver/GLES/WQHD acceptance is pending; use a new test version before binary distribution. Details: docs/OPENPLI-20261102.md and reports/openpli*-20261102.json. Earlier advice below is historical.
+
 # GLES / WQHD plugin preparation — 2 November 2026
 
 Owner requested reviewing every maintained plugin for OpenATV 8.1, GLES and WQHD. Work is isolated on fix/openatv81-gles-wqhd-20261102. Candidate FullHDGlass 1.0.62-test2 adds desktop-aware owned screens and Python geometry, preserves the exact frozen controller/action fingerprint and retains all four test1 native binding fixes. Source inventory and binding reports are in reports/gles-wqhd-*. Production remains 1.0.61, and old releases and all feed manifests stay unchanged. Physical GLES receiver validation is pending. Main skin output remains approved FHD; no untested WQHD primary-skin variant is activated.

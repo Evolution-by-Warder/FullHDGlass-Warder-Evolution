@@ -225,12 +225,12 @@ assert "os.unlink(spinner)" in spinner
 
 # OpenATV ownership boundary: legacy controls that would rewrite image-owned
 # ChannelSelection.py or encoding.conf must not be exposed on modern OpenATV.
-assert "if not isATV and os.path.isfile(CHANSEL_FILE):" in PLUGIN
-assert 'if not isATV and not os.path.exists(\'/etc/dpkg\'):' in PLUGIN
+assert "if not (isATV or _WarderOpenPli) and os.path.isfile(CHANSEL_FILE):" in PLUGIN
+assert 'if not (isATV or _WarderOpenPli) and not os.path.exists(\'/etc/dpkg\'):' in PLUGIN
 for fn, guard in (
-    ("def chnlSelPatch(", "if isATV:"),
-    ("def setEncodingUser(", "if isATV:"),
-    ("def setMenuPyo(", "if isATV:"),
+    ("def chnlSelPatch(", "if isATV or _WarderOpenPli:"),
+    ("def setEncodingUser(", "if isATV or _WarderOpenPli:"),
+    ("def setMenuPyo(", "if isATV or _WarderOpenPli:"),
 ):
     block = PLUGIN[PLUGIN.find(fn):PLUGIN.find("################################################################", PLUGIN.find(fn) + 20)]
     assert guard in block, fn
