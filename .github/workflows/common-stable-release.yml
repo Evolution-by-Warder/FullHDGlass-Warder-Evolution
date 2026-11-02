@@ -94,5 +94,8 @@ jobs:
           PYADD
           git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk.sha256
           git commit -m 'Release FullHDGlass 1.0.63: verified common OpenPLi and OpenATV stable [skip ci]'
-          git push origin HEAD:main
+          # Include the verified main head explicitly because this sparse source
+          # checkout intentionally does not download the repository's full history.
+          INTEGRATION=$(git commit-tree 'HEAD^{tree}' -p HEAD -p origin/main -m 'Integrate verified FullHDGlass 1.0.63 stable release [skip ci]')
+          git push origin "$INTEGRATION:refs/heads/main"
           gh release edit v1.0.63 --latest
