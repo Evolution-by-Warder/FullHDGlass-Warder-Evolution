@@ -186,3 +186,5 @@ Release checklist: combine this repair with the already prepared native spinner 
 The deferred shared radio identity fix listed above also remains part of the next authorized production release. Perform the required combined receiver/package checks before publication. Current production IPK and feeds remain unchanged; no new product IPK was built or issued for this investigation. Public release notes should use only a general description such as improved installation reliability and a choice of waiting animations.
 
 Prepared source commit: `680bab699ff934b92b891a771ed465ce8d71e53c`. Related skin source: `680bab699ff934b92b891a771ed465ce8d71e53c`; related PiconHub source: `487e46aef74323cb81ce7af554a90dd74cf36468`.
+
+OpenPLi receiver crash follow-up: FullHDGlass 1.0.62-test5 and GSU 13.41-r3 TEST repair actual MessageBox/eLabel API errors. Native-controller regressions and public package verification required before receiver retest. Do not promote without physical confirmation.

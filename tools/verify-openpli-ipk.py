@@ -8,16 +8,17 @@ import json
 from pathlib import Path,PurePosixPath
 import runpy
 import subprocess
+import sys
 import tarfile
 import tempfile
 from types import SimpleNamespace
 import xml.etree.ElementTree as ET
 
-VERSION='1.0.62-test4'
+VERSION='1.0.62-test5'
 PACKAGE='enigma2-plugin-skins-fullhdglass-warder-evolution'
 PLUGIN='usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
-def verify(package,report):
+def verify(package,report,upstream):
     raw=package.read_bytes()
     with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(package),'control.tar.gz'])),mode='r:gz') as archive:
         control=archive.extractfile('./control').read().decode()
@@ -61,12 +62,14 @@ def verify(package,report):
         assert {'prompt','text','list','locale','key_red','key_green','key_yellow','key_blue'}.issubset(keys)
         # The shared source XML and shipped native image classes remain untouched.
         assert channel.find("widget[@source='key_red']") is not None
+        subprocess.run([sys.executable,str(Path(__file__).with_name('test-openpli-crash-regressions.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
         result={'version':VERSION,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),
                 'python_payloads_compiled_for_39_grammar':python_files,
                 'shipped_postinst_payload_function_passed':True,
                 'installed_version_status_fixture_passed':True,
                 'packaged_openpli_adapter_and_keyboard_passed':True,
                 'packaged_native_plugin_list_present':True,
+                'packaged_native_dialog_regressions_passed':True,
                 'physical_receiver_verified':False,'production_feeds_changed':False}
         report.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))
 
@@ -74,4 +77,5 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('package',type=Path)
     parser.add_argument('--report',type=Path,required=True)
-    args=parser.parse_args();verify(args.package,args.report)
+    parser.add_argument('--upstream',type=Path,required=True)
+    args=parser.parse_args();verify(args.package,args.report,args.upstream)

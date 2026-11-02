@@ -34,7 +34,7 @@ class MessageBox(NativeMessageBox):
         self["key_red"] = Label(ui_text("Back"))
         self["key_green"] = Label(update_text("confirm", "FullHDGlass Warder Evolution", language=config.osd.language.value) if self.list else "")
         enabled = kwargs.get("enable_input", True) and kwargs.get("enableInput", True)
-        self["warderActions"] = ActionMap(["ColorActions"], {"red": self.cancel, "green": self.select}, -3)
+        self["warderActions"] = ActionMap(["ColorActions"], {"red": self.cancel, "green": self._warderConfirm}, -3)
         self["warderActions"].setEnabled(enabled)
         self["warderScroll"] = ActionMap(["DirectionActions"], {"up": self["text"].pageUp, "down": self["text"].pageDown}, -3)
         self["warderScroll"].setEnabled(enabled and not bool(self.list))
@@ -44,7 +44,21 @@ class MessageBox(NativeMessageBox):
             self["line_red"].hide()
             self["key_red"].hide()
             self["key_green"].hide()
-        self.onClose.append(self.timer.stop)
+        self.onClose.append(self._warderStopTimer)
+
+    def _warderConfirm(self):
+        # OpenATV calls this select; OpenPLi calls it ok. Keep the native
+        # selection result, including a yes/no list with default=False.
+        confirm = getattr(NativeMessageBox, "select", None)
+        if confirm is None:
+            confirm = NativeMessageBox.ok
+        return confirm(self)
+
+    def _warderStopTimer(self):
+        # OpenPLi creates the timer only when timeout > 0 and may delete it.
+        timer = getattr(self, "timer", None)
+        if timer is not None:
+            timer.stop()
 
     def autoResize(self):
         # The settings layout has explicit bounds independent of text length.

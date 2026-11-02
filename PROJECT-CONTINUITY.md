@@ -269,3 +269,7 @@ Owner explicitly requested implementation of the approved blue/amber studio layo
 Physical receiver report: OpenWebif looks correct while an old central cover frame remains visible on TV. Confirmed by decoding TEST1 source radio.mvi: it still contained the old framed studio image. Fixed source radio.mvi by MPEG2 encoding of the current clean 1920x1080 JPEG. Added SHA256-pair and decoded-image similarity checks to both the active package builder and full IPK verifier. Preserve native passive-radio background ownership; no config.misc.radiopic or RdsInfoDisplay startup override. Candidate 1.0.38-test2; physical HDMI confirmation pending.
 
 Radio TEST2 also restores the original selected InfoPanel PNG in the radio conditional branch. TEST1 accidentally emitted only WarderTVOnly for full-frame panel pixmaps, producing text without a backing after OK. Restored WarderRadioOnly with alpha blending; keep the TV branch and native fields unchanged. All real full-frame templates are checked in tools/test-radio-background.py.
+
+## 2026-11-02 OpenPLi receiver crash repair TEST5
+
+Receiver test4 installation succeeded. New logs show owned MessageBox.select absence and GSU eLabel.setWrap absence. FullHDGlass test5 delegates to the native confirmation method and safely closes optional timers; GSU 13.41-r3 TEST uses shared setNoWrap API at all three sites. Historical 30 August softcam applet failure is already integer-safe in current payload and now regression tested. Production feeds unchanged; physical validation pending.
