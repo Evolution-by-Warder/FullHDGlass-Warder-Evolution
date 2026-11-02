@@ -1,0 +1,20 @@
+name: Cancel superseded EPG font candidate
+on:
+  push:
+    branches: [ops/cancel-obsolete-epg-fonts-20261102]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          RUN=41526149079
+          test "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .head_sha)" = 53445a92b248b4a959695e456550e192f60ee8ef
+          if test "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .status)" != completed; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/actions/runs/$RUN/force-cancel"
+          fi
