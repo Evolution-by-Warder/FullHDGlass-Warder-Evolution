@@ -1,0 +1,85 @@
+name: Common stable release FullHDGlass 1.0.62
+on:
+  push:
+    branches: [release/common-stable-20261102]
+permissions:
+  contents: read
+concurrency:
+  group: common-stable-20261102
+  cancel-in-progress: false
+jobs:
+  openpli:
+    uses: ./.github/workflows/verify-openpli-compatibility.yml
+  openatv:
+    uses: ./.github/workflows/verify-system-screen-compatibility.yml
+  package:
+    needs: [openpli, openatv]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenPLi/enigma2
+          ref: release-9.2
+          path: upstream/enigma2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: |
+          python -m pip install --quiet 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Prepare authorized stable versions and history
+        run: python tools/prepare-common-stable.py
+      - name: Build stable IPK and execute shipped installation checks
+        run: |
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk --version 1.0.62 --report reports/common-stable/final-install.json --upstream upstream/enigma2/lib/python
+          python tools/verify-spinner-choice-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.62-final-package
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk.sha256
+            reports/common-stable/*.json
+          retention-days: 90
+      - name: Publish immutable stable package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk
+          TAG=v1.0.62
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/immutable
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
+            cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.62' --notes-file docs/COMMON-STABLE-20261102.md
+          fi
+      - name: Verify public download, compare candidate runtime and stage production records
+        run: python tools/activate-common-stable.py
+      - name: Fast-forward main with release sources, records and verified feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          EXPECTED=$(python -c 'import json; print(json.load(open("docs/COMMON-STABLE-20261102.json"))["expected_main"])')
+          test "$(git rev-parse origin/main)" = "$EXPECTED"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A -- . ':!upstream' ':!packages/test' ':!plugin/build' ':!plugin/dist' ':!reports/common-stable/candidate.ipk'
+          git commit -m 'Release FullHDGlass 1.0.62: verified common OpenPLi and OpenATV stable [skip ci]'
+          git push origin HEAD:main
+          gh release edit v1.0.62 --latest

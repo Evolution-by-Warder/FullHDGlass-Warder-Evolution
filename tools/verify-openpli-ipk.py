@@ -80,4 +80,5 @@ if __name__=='__main__':
     parser.add_argument('package',type=Path)
     parser.add_argument('--report',type=Path,required=True)
     parser.add_argument('--upstream',type=Path,required=True)
-    args=parser.parse_args();verify(args.package,args.report,args.upstream)
+    parser.add_argument('--version',default=VERSION)
+    args=parser.parse_args();VERSION=args.version;verify(args.package,args.report,args.upstream)

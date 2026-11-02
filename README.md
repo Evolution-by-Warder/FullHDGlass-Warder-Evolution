@@ -1,25 +1,21 @@
-# FullHDGlass - Warder Evolution
+# FullHDGlass
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Production release — 1 November 2026
+## Spoločné ostré vydanie — 2. november 2026
 
-**FullHDGlass 1.0.61** fixes clipped menu rows and headers, the graphical EPG timeline, CoolTVGuide captions and setup text on receiver displays. Includes the approved compact installer, LCD4linux footer and Quick Menu improvements. [Release notes](docs/FULLHDGLASS-1.0.61.md) · [Current release](docs/CURRENT-RELEASE.md) · [Production evidence](docs/PRODUCTION.json).
-
-## OpenATV 8.1 test candidate
-
-[FullHDGlass 1.0.62-test1](docs/FULLHDGLASS-1.0.62-test1.md) repairs additional native screen bindings. It is an isolated prerelease awaiting receiver confirmation; normal updates remain on 1.0.61. [Verification](reports/openatv81-candidate-public-20261101.json).
+**FullHDGlass 1.0.62** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/COMMON-STABLE-20261102.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk).
 
 ## Installation
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 
 
 ## Project status
 
-This repository is the official home of **FullHDGlass - Warder Evolution**.
+This repository is the official home of **FullHDGlass**.
 
 The project preserves the character, approved graphics and visual identity of FullHDGlass while modernizing its internals for current Enigma2 environments.
 
