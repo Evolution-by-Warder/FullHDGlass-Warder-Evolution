@@ -45,7 +45,7 @@ def main():
         rel['changelog']=C['notes_i18n']['sk']
         feed={k:rel[k] for k in ('version','package_url','sha256','changelog')}
         for name in ('update-production.json','update-test.json'):put(ROOT/name,feed)
-        path=ROOT/'docs/PRODUCTION.json';record=get(path);record['previous_production']=record['release'];record['release']=rel;record['peer_production']=C['peers'];record['version_policy']='Normal 1.0.62 upgrades from 1.0.61 and every 1.0.62-test build. Published packages are immutable.'
+        path=ROOT/'docs/PRODUCTION.json';record=get(path);record['previous_production']=record['release'];record['release']=rel;record['peer_production']=C['peers'];record['version_policy']='Normal 1.0.63 upgrades from 1.0.61 and every 1.0.62-test build. Published packages are immutable.'
         for key in ('activation_commit','native_test_mirror_commit'):record.pop(key,None)
         assert (ROOT/'update.json').read_bytes()==frozen
         # Keep build inventory synchronized with the now-active feeds.

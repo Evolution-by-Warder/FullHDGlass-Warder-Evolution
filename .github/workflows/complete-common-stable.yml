@@ -1,4 +1,4 @@
-name: Complete verified FullHDGlass 1.0.62 stable
+name: Complete verified FullHDGlass 1.0.63 stable
 on:
   push:
     branches: [release/complete-common-stable-20261102]
@@ -54,14 +54,14 @@ jobs:
         run: |
           python tools/build-setup-style-test.py
           python tools/verify-setup-style-ipk.py
-          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk --version 1.0.62 --report reports/common-stable/final-install.json --upstream upstream/enigma2/lib/python
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk --version 1.0.63 --report reports/common-stable/final-install.json --upstream upstream/enigma2/lib/python
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
           name: FullHDGlass-1.0.62-final-package
           path: |
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk
-            packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk.sha256
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk.sha256
             reports/common-stable/*.json
           retention-days: 90
       - name: Publish immutable stable package
@@ -69,14 +69,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk
-          TAG=v1.0.62
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk
+          TAG=v1.0.63
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.62' --notes-file docs/COMMON-STABLE-20261102.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.63' --notes-file docs/COMMON-STABLE-20261102.md
           fi
       - name: Verify public download, compare candidate runtime and stage production records
         run: python tools/activate-common-stable.py
@@ -97,7 +97,7 @@ jobs:
           paths=[p for p in paths if p and not p.startswith(('upstream/','packages/test/','plugin/build/','plugin/dist/')) and p!='reports/common-stable/candidate.ipk']
           if paths:subprocess.run(['git','add','--']+paths,check=True)
           PYADD
-          git add -f packages/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk.sha256
-          git commit -m 'Release FullHDGlass 1.0.62: verified common OpenPLi and OpenATV stable [skip ci]'
+          git add -f packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk.sha256
+          git commit -m 'Release FullHDGlass 1.0.63: verified common OpenPLi and OpenATV stable [skip ci]'
           git push origin HEAD:main
-          gh release edit v1.0.62 --latest
+          gh release edit v1.0.63 --latest

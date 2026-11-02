@@ -193,4 +193,4 @@ Stable publishing remains PAUSED. FullHDGlass test6 retains framed previews and 
 
 ## 2026-11-02 common stable release authorised
 
-Owner resumed publication and explicitly requested all accumulated repairs as normal releases: FullHDGlass 1.0.62, GSU 13.41-r4, PiconHub 0.1.40. The earlier pause is superseded. Preserve settings and deliberately enlarged fonts. Source, public package checks, immutable releases and live update feeds are recorded by the common release workflow. See docs/COMMON-STABLE-20261102.md.
+Owner resumed publication and explicitly requested all accumulated repairs as normal releases: FullHDGlass 1.0.63, GSU 13.41-r4, PiconHub 0.1.40. The earlier pause is superseded. Preserve settings and deliberately enlarged fonts. Source, public package checks, immutable releases and live update feeds are recorded by the common release workflow. See docs/COMMON-STABLE-20261102.md.

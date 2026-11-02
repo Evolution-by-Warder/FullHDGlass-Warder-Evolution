@@ -1,13 +1,13 @@
 {
   "product": "FullHDGlass",
   "repo": "FullHDGlass-Warder-Evolution",
-  "version": "1.0.62",
+  "version": "1.0.63",
   "candidate": "1.0.62-test6",
   "candidate_sha": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde",
   "prefix": "enigma2-plugin-skins-fullhdglass",
   "expected_main": "74d7c859b063bdd9562d3c158b264fe3a4f84fc1",
   "tool_dir": "tools",
-  "package": "packages/test/enigma2-plugin-skins-fullhdglass_1.0.62_all.ipk",
+  "package": "packages/test/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk",
   "runtime": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17",
   "notes_sk": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované.",
   "notes_en": "Common OpenPLi and OpenATV release. Fixes plugin-browser content and row heights, native screen bindings, keyboard, confirmation/information dialogs and optional timers. Preserves preview frames in 15 layouts and aligns video with a shifted or reduced OSD. Includes OpenATV 8.1, GLES and WQHD compatibility work. Existing settings, including custom font sizes, are preserved.",
@@ -17,7 +17,7 @@
   "source_branch": "release/common-stable-20261102",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "peers": {
-    "fullhdglass": "1.0.62",
+    "fullhdglass": "1.0.63",
     "gsu": "13.41-r4",
     "piconhub": "0.1.40"
   },
