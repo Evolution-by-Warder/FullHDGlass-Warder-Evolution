@@ -1,11 +1,11 @@
-name: FullHDGlass OpenPLi test IPK 1.0.62-test5
+name: FullHDGlass framed preview TEST IPK 1.0.62-test6
 on:
   push:
-    branches: [test/openpli-1.0.62-test5-20261102]
+    branches: [test/pig-frame-1.0.62-test6-20261102]
 permissions:
   contents: read
 concurrency:
-  group: fullhdglass-openpli-test5
+  group: fullhdglass-openpli-test6
   cancel-in-progress: true
 jobs:
   openpli:
@@ -48,11 +48,11 @@ jobs:
         run: |
           python tools/build-setup-style-test.py
           python tools/verify-setup-style-ipk.py
-          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test5_all.ipk --report packages/test/openpli-install-verification.json --upstream upstream/enigma2/lib/python
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test6_all.ipk --report packages/test/openpli-install-verification.json --upstream upstream/enigma2/lib/python
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.62-test5-OpenPLi
+          name: FullHDGlass-1.0.62-test6-OpenPLi
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable isolated TEST without changing updates
@@ -60,12 +60,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test5_all.ipk
-          TAG=v1.0.62-test5
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test6_all.ipk
+          TAG=v1.0.62-test6
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.62-test5 — OpenPLi / OpenATV TEST' --notes-file docs/FULLHDGLASS-1.0.62-test5.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.62-test6 — OpenPLi / OpenATV TEST' --notes-file docs/FULLHDGLASS-1.0.62-test6.md
           fi

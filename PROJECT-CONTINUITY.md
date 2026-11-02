@@ -273,3 +273,7 @@ Radio TEST2 also restores the original selected InfoPanel PNG in the radio condi
 ## 2026-11-02 OpenPLi receiver crash repair TEST5
 
 Receiver test4 installation succeeded. New logs show owned MessageBox.select absence and GSU eLabel.setWrap absence. FullHDGlass test5 delegates to the native confirmation method and safely closes optional timers; GSU 13.41-r3 TEST uses shared setNoWrap API at all three sites. Historical 30 August softcam applet failure is already integer-safe in current payload and now regression tested. Production feeds unchanged; physical validation pending.
+
+## 2026-11-02 framed preview alignment TEST6 — stable release paused
+
+User requested retaining and aligning frames across channel-selection types. Scope: 15 framed catalog templates, including legacy MiniTV type 27. Project existing OSD viewport into native video-widget geometry without writing proc nodes or patching image controllers. Keep all artwork and nominal layout coordinates. New native lifecycle/projection regressions run on OpenPLi/OpenATV and on the extracted final IPK. Reported receiver/image/OSD calibration are unknown, so physical confirmation is still required. No stable publishing or production-feed change is authorised while the user's pause remains active.

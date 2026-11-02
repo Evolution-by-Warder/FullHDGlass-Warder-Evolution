@@ -88,3 +88,4 @@ jobs:
           python tools/audit-openatv-skin-bindings.py --upstream upstream/enigma2/lib/python --plugin-root source/package-root/usr/lib/enigma2/python
           python tools/audit-openatv-skin-bindings.py --upstream upstream/enigma2/lib/python
           python tools/test-native-screen-bindings.py --upstream upstream/enigma2/lib/python -v
+          python tools/test-framed-pig.py --upstream upstream/enigma2/lib/python -q

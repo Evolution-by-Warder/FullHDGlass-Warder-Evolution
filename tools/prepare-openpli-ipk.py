@@ -5,7 +5,7 @@ from pathlib import Path
 from sync_header_version import sync_headers
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='1.0.62-test5'
+VERSION='1.0.62-test6'
 PLUGIN=ROOT/'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
 def main():
@@ -17,8 +17,8 @@ def main():
     if text.count(old)!=1:raise ValueError('Unexpected control version')
     path.write_text(text.replace(old,'Version: '+VERSION+'-1\n',1))
     notes={
-        'history.txt':'OpenPLi: fixed settings confirmation and information dialogs, including optional timer cleanup.\nNative yes/no selection and cancellation are preserved.\n',
-        'history.txtSk':'OpenPLi: opravené potvrdzovacie a informačné okná nastavení vrátane voliteľného časovača.\nZachované natívne potvrdenie výberu a zrušenie.\n'}
+        'history.txt':'Framed channel previews: align video with a shifted or resized OSD viewport.\nFrames, radio previews and native decoder/PiP lifecycle are retained.\n',
+        'history.txtSk':'Náhľady s rámikom: zarovnanie videa pri posunutom alebo zmenšenom OSD.\nRámiky, rádiové náhľady aj natívna obsluha dekodéra a PiP zostávajú zachované.\n'}
     heading='FullHDGlass '+VERSION+' — 02.11.2026\n'
     for name,body in notes.items():
         path=PLUGIN/name
@@ -31,6 +31,10 @@ def main():
         if previous4 not in text:
             previous4_notes=('OpenPLi: restored installed plugin list, descriptions, icons and launch actions.\nCorrected row heights in plugin browsing, downloads and removal.\n' if name=='history.txt' else 'OpenPLi: obnovený zoznam pluginov, popisy, ikony a spúšťanie.\nOpravená výška riadkov pri prehliadaní, sťahovaní a odstraňovaní pluginov.\n')
             text=previous4+previous4_notes+'\n'+text
+        previous5='FullHDGlass 1.0.62-test5 — 02.11.2026\n'
+        if previous5 not in text:
+            previous5_notes=('OpenPLi: fixed settings confirmation and information dialogs, including optional timer cleanup.\nNative yes/no selection and cancellation are preserved.\n' if name=='history.txt' else 'OpenPLi: opravené potvrdzovacie a informačné okná nastavení vrátane voliteľného časovača.\nZachované natívne potvrdenie výberu a zrušenie.\n')
+            text=previous5+previous5_notes+'\n'+text
         if not text.startswith(heading):text=heading+body+'\n'+text
         path.write_text(text)
     sync_headers(ROOT/'source/package-root')

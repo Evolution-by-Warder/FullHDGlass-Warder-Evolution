@@ -14,7 +14,7 @@ import tempfile
 from types import SimpleNamespace
 import xml.etree.ElementTree as ET
 
-VERSION='1.0.62-test5'
+VERSION='1.0.62-test6'
 PACKAGE='enigma2-plugin-skins-fullhdglass-warder-evolution'
 PLUGIN='usr/lib/enigma2/python/Plugins/Extensions/setupGlass17'
 
@@ -63,6 +63,7 @@ def verify(package,report,upstream):
         # The shared source XML and shipped native image classes remain untouched.
         assert channel.find("widget[@source='key_red']") is not None
         subprocess.run([sys.executable,str(Path(__file__).with_name('test-openpli-crash-regressions.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
+        subprocess.run([sys.executable,str(Path(__file__).with_name('test-framed-pig.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
         result={'version':VERSION,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),
                 'python_payloads_compiled_for_39_grammar':python_files,
                 'shipped_postinst_payload_function_passed':True,
@@ -70,6 +71,7 @@ def verify(package,report,upstream):
                 'packaged_openpli_adapter_and_keyboard_passed':True,
                 'packaged_native_plugin_list_present':True,
                 'packaged_native_dialog_regressions_passed':True,
+                'packaged_framed_video_projection_and_lifecycle_passed':True,
                 'physical_receiver_verified':False,'production_feeds_changed':False}
         report.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))
 

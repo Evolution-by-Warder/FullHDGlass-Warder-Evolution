@@ -188,3 +188,5 @@ The deferred shared radio identity fix listed above also remains part of the nex
 Prepared source commit: `680bab699ff934b92b891a771ed465ce8d71e53c`. Related skin source: `680bab699ff934b92b891a771ed465ce8d71e53c`; related PiconHub source: `487e46aef74323cb81ce7af554a90dd74cf36468`.
 
 OpenPLi receiver crash follow-up: FullHDGlass 1.0.62-test5 and GSU 13.41-r3 TEST repair actual MessageBox/eLabel API errors. Native-controller regressions and public package verification required before receiver retest. Do not promote without physical confirmation.
+
+Stable publishing remains PAUSED. FullHDGlass test6 retains framed previews and accounts for existing OSD viewport offsets/scaling in 15 channel-selection templates. Validate on the reporting receiver before including this repair in the resumed common OpenPLi/OpenATV stable release.
