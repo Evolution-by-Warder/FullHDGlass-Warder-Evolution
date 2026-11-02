@@ -36,7 +36,8 @@ with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['ar','p',str(packa
         path=expected[name]
         assert '__pycache__' not in name and path.suffix not in ('.pyc','.pyo')
         raw=path.read_bytes()
-        expected_raw=optimizer.optimize(raw) if path.suffix.lower()=='.png' else raw
+        pinned_atv=name.startswith('usr/share/enigma2/hd_glass17/epg/atv/')
+        expected_raw=optimizer.optimize(raw) if path.suffix.lower()=='.png' and not pinned_atv else raw
         assert archive.extractfile(files[name]).read()==expected_raw,name
         if path.suffix=='.py':assert files[name].mtime==(int(hashlib.sha256(raw).hexdigest()[:8],16)&0x7fffffff),name
 for name in ('update.json','update-test.json'):
