@@ -17,7 +17,21 @@ jobs:
         upstream_ref: [release-9.2, develop]
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
         with:
           repository: OpenPLi/enigma2
           ref: ${{ matrix.upstream_ref }}
@@ -45,6 +59,13 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
       - uses: actions/setup-python@v5
         with:
           python-version: '3.14'
