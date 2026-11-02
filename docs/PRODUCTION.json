@@ -72,7 +72,17 @@
     ],
     "matrices_passed": true,
     "physical_receiver_all_features_verified": false,
-    "custom_font_settings_preserved": true
+    "custom_font_settings_preserved": true,
+    "live_updater_report": "reports/common-stable/live-updater.json",
+    "packaging_workflow_run": 41502247782,
+    "matrix_workflow_run": 41500637153,
+    "activation_workflow_run": 41503087831,
+    "actual_installed_updater_offers_and_downloads_verified": [
+      "1.0.61",
+      "1.0.62-test6"
+    ],
+    "current_version_does_not_offer_itself": true,
+    "legacy_bridge_unchanged": true
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -149,5 +159,7 @@
   "accepted_candidate": {
     "version": "1.0.62-test6",
     "sha256": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde"
-  }
+  },
+  "activation_commit": "18f3fdc3855709ca81c48aca689db7d46899f29e",
+  "native_test_mirror_commit": "7c863819c21be1b88b1e9f82c2c10ffd3262bf37"
 }
