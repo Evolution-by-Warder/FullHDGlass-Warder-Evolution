@@ -1,0 +1,12 @@
+{
+  "mipsel": {
+    "isa": "mips32r2",
+    "byteorder": "little",
+    "minimum_kernel": [
+      3,
+      2,
+      0
+    ],
+    "requires_fpu": false
+  }
+}

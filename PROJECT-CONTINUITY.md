@@ -281,3 +281,7 @@ User requested retaining and aligning frames across channel-selection types. Sco
 ## 2026-11-02 common stable release authorised
 
 Owner resumed publication and explicitly requested all accumulated repairs as normal releases: FullHDGlass 1.0.63, GSU 13.41-r4, PiconHub 0.1.40. The earlier pause is superseded. Preserve settings and deliberately enlarged fonts. Source, public package checks, immutable releases and live update feeds are recorded by the common release workflow. See docs/COMMON-STABLE-20261102.md.
+
+## Stable activation 2026-11-02
+
+FullHDGlass 1.0.63 published as a normal release; public IPK and checksum verified. Main metadata updated. Runtime updater branch activation is recorded separately after verification. Earlier TEST publishing pause is superseded by the owner’s explicit stable-release request.

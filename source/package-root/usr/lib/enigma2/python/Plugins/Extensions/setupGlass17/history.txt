@@ -1,3 +1,22 @@
+FullHDGlass 1.0.63 — 02.11.2026
+Common OpenPLi and OpenATV release. Fixes plugin-browser content and row heights, native screen bindings, keyboard, confirmation/information dialogs and optional timers. Preserves preview frames in 15 layouts and aligns video with a shifted or reduced OSD. Includes OpenATV 8.1, GLES and WQHD compatibility work. Existing settings, including custom font sizes, are preserved. Restart the GUI after updating.
+
+FullHDGlass 1.0.62-test6 — 02.11.2026
+Framed channel previews: align video with a shifted or resized OSD viewport.
+Frames, radio previews and native decoder/PiP lifecycle are retained.
+
+FullHDGlass 1.0.62-test5 — 02.11.2026
+OpenPLi: fixed settings confirmation and information dialogs, including optional timer cleanup.
+Native yes/no selection and cancellation are preserved.
+
+FullHDGlass 1.0.62-test4 — 02.11.2026
+OpenPLi: restored installed plugin list, descriptions, icons and launch actions.
+Corrected row heights in plugin browsing, downloads and removal.
+
+FullHDGlass 1.0.62-test3 — 02.11.2026
+OpenPLi: corrected native captions and complete virtual keyboard.
+Native Enigma2 file ownership is preserved.
+
 FullHDGlass 1.0.62-test2 — 02.11.2026
 Desktop-aware setup, weather, ECM and spinner layouts for WQHD.
 Prepared native bindings and complete list rows for OpenATV 8.1.

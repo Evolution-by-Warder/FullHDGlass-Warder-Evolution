@@ -1,14 +1,11 @@
-# FullHDGlass 1.0.61
+# FullHDGlass 1.0.63
 
-Ostrá verzia schválená používateľom 1. novembra 2026 po overení 1.0.60-test3.
+Aktívne ostré vydanie pre OpenPLi a OpenATV.
 
-- Opravené orezávanie posledných riadkov v dlhých ponukách a nastaveniach.
-- Dlhé názvy v nízkych hlavičkách sa už nezalamujú do odrezaného druhého riadka.
-- Opravená výška časovej osi v grafickom EPG a rámovanie okien CoolTVGuide/CoolTinyGuide.
-- Popisy programov CoolTVGuide sa v bunkách zobrazujú v jednom riadku; dlhý text sa skráti výpustkou. Podrobný popis programu zostáva zachovaný.
-- Opravené zdroje textu na displeji prijímača pri nastaveniach a ich aktualizácia pri pohybe v ponuke.
-- Zachované menšie inštalačné okno, čitateľné nastavenia pluginov, trvalé MENU v LCD4linux a farebné prúžky Rýchleho menu.
+Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI.
 
-Aktualizácia je určená aj pre používateľov 1.0.60-test3; po inštalácii reštartujte GUI. Verzia 1.0.61 sa v správcovi balíkov radí vyššie než testovacie verzie. Nastavenia a pôvodná grafika zostávajú zachované.
+[Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.63/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk)
 
-Opravy vychádzajú zo schváleného TEST3. Automatické kontroly používajú natívne triedy OpenATV a skutočný renderer dodaného CoolTVGuide; nepredstavujú fyzické overenie všetkých modelov prijímačov.
+SHA-256: `b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03`
+
+Overené verejné bajty, dodané inštalačné kontroly a natívne rozhrania OpenPLi/OpenATV. Úplné fyzické testovanie všetkých modelov a rozlíšení sa netvrdí.

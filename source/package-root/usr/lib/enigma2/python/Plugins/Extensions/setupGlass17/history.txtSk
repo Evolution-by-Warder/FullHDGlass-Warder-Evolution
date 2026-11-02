@@ -1,3 +1,22 @@
+FullHDGlass 1.0.63 — 02.11.2026
+Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI.
+
+FullHDGlass 1.0.62-test6 — 02.11.2026
+Náhľady s rámikom: zarovnanie videa pri posunutom alebo zmenšenom OSD.
+Rámiky, rádiové náhľady aj natívna obsluha dekodéra a PiP zostávajú zachované.
+
+FullHDGlass 1.0.62-test5 — 02.11.2026
+OpenPLi: opravené potvrdzovacie a informačné okná nastavení vrátane voliteľného časovača.
+Zachované natívne potvrdenie výberu a zrušenie.
+
+FullHDGlass 1.0.62-test4 — 02.11.2026
+OpenPLi: obnovený zoznam pluginov, popisy, ikony a spúšťanie.
+Opravená výška riadkov pri prehliadaní, sťahovaní a odstraňovaní pluginov.
+
+FullHDGlass 1.0.62-test3 — 02.11.2026
+OpenPLi: opravené natívne tlačidlá a kompletná klávesnica.
+Systémové súbory Enigma2 zostávajú zachované.
+
 FullHDGlass 1.0.62-test2 — 02.11.2026
 Škálovanie nastavení, počasia, ECM a spinnerov pre WQHD.
 Pripravené natívne väzby a celé riadky pre OpenATV 8.1.

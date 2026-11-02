@@ -1,0 +1,24 @@
+{
+  "version": "1.0.63",
+  "package_source_commit": "d1caaffb15dd6d519e2667e6c87ae726fd1b2318",
+  "workflow_run": "41503087831",
+  "public_ipk_sha256_verified": true,
+  "public_ipk_sidecar_verified": true,
+  "sha256": "b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03",
+  "bytes": 17214876,
+  "candidate_sha256": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde",
+  "candidate_python_files_compared": 126,
+  "only_generated_version_labels_changed": true,
+  "OpenPLi_refs": [
+    "release-9.2",
+    "develop"
+  ],
+  "OpenATV_refs": [
+    "8.0",
+    "8.0-next",
+    "master"
+  ],
+  "matrices_passed": true,
+  "physical_receiver_all_features_verified": false,
+  "custom_font_settings_preserved": true
+}
