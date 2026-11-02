@@ -4,7 +4,7 @@
 Captures the real MultiContent draw commands, not a replacement mock renderer.
 Physical C++/TV rendering still requires receiver confirmation.
 """
-import argparse,ast,base64,hashlib,importlib.util,json,sys,time,unittest
+import argparse,ast,base64,hashlib,importlib.util,json,sys,time,unittest,textwrap
 from pathlib import Path
 from types import ModuleType,SimpleNamespace as NS
 from unittest.mock import patch
@@ -46,19 +46,21 @@ def environment():
  skin=PAYLOAD/'usr/share/enigma2/hd_glass17'
  def resolve(scope,path):return str(skin/path)
  def load(path=None,cached=False):return Path(path).name if path and Path(path).is_file() else None
- env={'GUIComponent':GUI,'gFont':lambda *a:a,'applySkinFactor':lambda n:n,'eListboxPythonMultiContent':Content,'eEPGCache':NS(getInstance=lambda:None),'eListbox':object(),'LoadPixmap':load,'resolveFilename':resolve,'SCOPE_CURRENT_SKIN':0,'time':lambda:1050,'config':NS(misc=NS(graph_mepg=NS(ev_fontsize=V(0),show_record_clocks=V(True))))}
+ env={'GUIComponent':GUI,'Rect':Rect,'gFont':lambda *a:a,'applySkinFactor':lambda n:n,'eListboxPythonMultiContent':Content,'eEPGCache':NS(getInstance=lambda:None),'eListbox':object(),'LoadPixmap':load,'resolveFilename':resolve,'SCOPE_CURRENT_SKIN':0,'time':lambda:1050,'config':NS(misc=NS(graph_mepg=NS(ev_fontsize=V(0),show_record_clocks=V(True))))}
  cls=next(n for n in TREE.body if isinstance(n,ast.ClassDef) and n.name=='EPGList');exec(compile(ast.Module(body=[cls],type_ignores=[]),str(NATIVE),'exec'),env)
  flags={'RT_HALIGN_LEFT':1,'RT_HALIGN_CENTER':2,'RT_HALIGN_RIGHT':4,'RT_VALIGN_CENTER':8,'BT_SCALE':16,'BT_KEEP_ASPECT_RATIO':32}
  mods={'enigma':module('enigma',**flags,gFont=lambda *a:a,eSize=Size),'Components.EpgList':module('Components.EpgList',Rect=Rect),'Components.MultiContent':module('Components.MultiContent',MultiContentEntryText=command('text'),MultiContentEntryPixmapAlphaTest=command('pixmap'),MultiContentEntryPixmapAlphaBlend=command('blend')),'Components.Renderer.Picon':module('Components.Renderer.Picon',getPiconName=lambda s:'picon.png'),'Tools.LoadPixmap':module('Tools.LoadPixmap',LoadPixmap=load),'Tools.Alternatives':module('Tools.Alternatives',CompareWithAlternatives=lambda a,b:a==b),'Tools.TextBoundary':module('Tools.TextBoundary',getTextBoundarySize=lambda *a:Size(60,30)),'Tools.Directories':module('Tools.Directories',resolveFilename=resolve,SCOPE_CURRENT_SKIN=0)}
  listing=env['EPGList'](timer=NS(isInTimer=lambda *a:None));listing.listWidth=1845;listing.listHeight=495;listing.time_base=1000;listing.time_epoch=180;listing.offs=0;listing.cur_service=('station','Station',[],None,None);listing.showPicon=True;listing.showChannelNumber=False
  listing.list=[listing.cur_service];listing.select_rect=Rect(60,0,200,33)
- with patch.dict(sys.modules,mods):painter=paint.install_painter(listing);timeline=NS();timeline_builder=paint.install_timeline(timeline,painter)
+ with patch.dict(sys.modules,mods),patch.object(paint,'time',lambda:1050):painter=paint.install_painter(listing);timeline=NS();timeline_builder=paint.install_timeline(timeline,painter)
  listing.recalcEntrySize();painter.api.time=lambda:1050;painter.paint=paint.make_graph_builder(painter.api).__get__(painter,type(painter));listing.l.setBuildFunc(painter.paint)
  return listing,painter,timeline,timeline_builder
 class Tests(unittest.TestCase):
  def test_copied_atv_painter_body_is_unchanged(self):
-  tree=ast.parse((RUNTIME/'warderAtvEpgPaint.py').read_text());fn=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='buildGraphEntry')
-  self.assertEqual(hashlib.sha256(ast.dump(fn,include_attributes=False).encode()).hexdigest(),RECORD['painter_ast_sha256'])
+  source=(RUNTIME/'warderAtvEpgPaint.py').read_text();tree=ast.parse(source)
+  for name,key in [('buildGraphEntry','painter_source_sha256'),('setEntries','timeline_source_sha256')]:
+   fn=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name==name);body=textwrap.dedent('\n'.join(source.splitlines()[fn.lineno-1:fn.end_lineno])).strip()
+   self.assertEqual(hashlib.sha256(body.encode()).hexdigest(),RECORD[key])
  def test_all_pinned_pngs_are_shipped_and_original(self):
   for name,item in RECORD['assets'].items():
    data=(PAYLOAD/'usr/share/enigma2/hd_glass17/epg/atv'/name).read_bytes();self.assertEqual(hashlib.sha256(data).hexdigest(),item['sha256']);self.assertEqual(data,base64.b64decode(item['base64']));self.assertTrue(data.startswith(b'\x89PNG\r\n\x1a\n'))
@@ -81,7 +83,6 @@ class Tests(unittest.TestCase):
   class Pix:
    def __init__(self):self.position=(75,423);self.instance=Widget(28);self.visible=False
    def setPosition(self,x,y):self.position=(x,y)
-  listing.getEventRect=lambda:Rect(75,0,1785,33);listing.getServiceRect=lambda:Rect(15,0,60,33)
   now=Pix();lines=[Pix() for _ in range(6)];build(listing,now,lines,True);commands=timeline.l.rows[0]
-  self.assertTrue(any(c.get('png')=='TimeLineTime.png' for c in commands[1:]));times=[c['text'] for c in commands[1:] if c.get('text','').count(':')==1];self.assertEqual(len(times),6);self.assertTrue(all(c['size'][1]==36 for c in commands[1:]));self.assertEqual(listing.time_epoch,180)
+  self.assertTrue(any(c.get('png')=='TimeLineTime.png' for c in commands[1:]));times=[c['text'] for c in commands[1:] if c.get('text','').count(':')==1];self.assertEqual(len(times),6);self.assertTrue(all(c['size'][1]==36 for c in commands[1:]));self.assertEqual(listing.time_epoch,180);self.assertTrue(now.visible);self.assertEqual(now.position[0],int(50*1785/10800-14)+75)
 if __name__=='__main__':unittest.main(argv=[sys.argv[0]]+rest)

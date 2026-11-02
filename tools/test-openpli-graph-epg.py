@@ -163,7 +163,7 @@ class Tests(unittest.TestCase):
    for font_offset in (0,12):
     a=setup();s=a.plugin.main(Session());listing=s['list'];listing.listHeight=round(495*factor);listing.listWidth=round(1845*factor);listing.entryFontSize=round(27*factor);a.config.misc.graph_mepg.ev_fontsize.value=font_offset;listing.setItemsPerPage();height=listing.instance.size().height();self.assertEqual(height%listing.l.height,0);self.assertLessEqual(height,listing.listHeight);self.assertGreaterEqual(listing.l.height,listing.entryFontSize+font_offset+4)
  def test_native_timeline_uses_complete_header_and_marker_does_not_drift(self):
-  a=setup();s=a.plugin.main(Session());timeline=s['timeline_text'];timeline.applySkin(None,s);self.assertEqual(timeline.l.height,36);timeline.setDateFormat('picon');self.assertEqual(timeline.datefmt,'')
+  a=setup();s=a.plugin.main(Session());timeline=s['timeline_text'];timeline.applySkin(None,s);self.assertEqual(timeline.l.height,36)
   for force in (True,False,True,False):
    s.moveTimeLines(force);self.assertEqual(s['timeline0'].position[0],79);self.assertEqual(timeline.l.rows[0][1]['size'][1],36)
  def test_xml_matches_openatv_geometry_and_has_all_native_timeline_widgets(self):

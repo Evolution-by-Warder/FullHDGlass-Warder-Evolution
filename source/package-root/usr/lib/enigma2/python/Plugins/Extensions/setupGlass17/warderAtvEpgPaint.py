@@ -364,7 +364,7 @@ TEXTURES = {
     'othEvPix':'OtherEvent.png', 'selEvPix':'SelectedEvent.png',
     'othServPix':'OtherService.png', 'nowServPix':'CurrentService.png',
     'recEvPix':'RecordEvent.png', 'recSelEvPix':'SelectedRecordEvent.png',
-    'recordingEvPix':'RecordEvent.png', 'zapEvPix':'ZapEvent.png',
+    'recordingEvPix':'RecordingEvent.png', 'zapEvPix':'ZapEvent.png',
     'zapSelEvPix':'SelectedZapEvent.png', 'borderTopPix':'BorderTop.png',
     'borderBottomPix':'BorderBottom.png', 'borderLeftPix':'BorderLeft.png',
     'borderRightPix':'BorderRight.png', 'borderSelectedTopPix':'SelectedBorderTop.png',

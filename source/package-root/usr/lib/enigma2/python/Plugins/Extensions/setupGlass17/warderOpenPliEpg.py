@@ -93,7 +93,6 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
             listing.time_epoch = 180
             original_mode = listing.setShowServiceMode
             timeline = self['timeline_text']
-            original_date = timeline.setDateFormat
             original_skin = timeline.applySkin
             original_entries = timeline_installer(timeline, painter) if timeline_installer else timeline.setEntries
 
@@ -105,11 +104,6 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
 
             def mode(component, requested):
                 return original_mode('picon')
-
-            def date(component, requested):
-                result = original_date('picon')
-                component.datefmt = ''  # Date already shown in the shared top bar.
-                return result
 
             def timeline_skin(component, desktop, screen):
                 result = original_skin(desktop, screen)
@@ -127,7 +121,6 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
 
             listing.setItemsPerPage = MethodType(rows, listing)
             listing.setShowServiceMode = MethodType(mode, listing)
-            timeline.setDateFormat = MethodType(date, timeline)
             timeline.applySkin = MethodType(timeline_skin, timeline)
             timeline.setEntries = MethodType(entries, timeline)
 
