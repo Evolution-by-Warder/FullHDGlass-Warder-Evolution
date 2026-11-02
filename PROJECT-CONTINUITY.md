@@ -1,3 +1,19 @@
+## Current checkpoint — 2026-11-02: common stable release completed
+
+Authoritative state: FullHDGlass **1.0.63**, GSU **13.41-r4**, PiconHub **0.1.40** are normal published releases and their live updater channels are active. Earlier publishing pauses and candidate-only statements below are historical and were superseded by the owner's explicit release authorization.
+
+- Immutable public IPKs and SHA-256 sidecars were verified; sources, bundled histories, README and production records were updated.
+- FullHDGlass main production and native TEST updater feeds offer the same verified 1.0.63 IPK. The main 1.0.18 migration bridge remains frozen.
+- GSU original-python314 stable and PiconHub plugin/futuristic-rebuild stable feeds are active. GSU r93 identity bridges remain frozen; PiconHub 0.1.32 retains its documented one-time manual installation path.
+- Existing settings, four PiconHub profiles, downloaded picons, managed CAM startup and deliberate user font sizes are preserved.
+- Final public download checks and actual installed updater offer/parser checks are recorded in reports/common-stable/live-updater.json. These are host checks; exhaustive physical receiver/GLES/resolution coverage is not claimed.
+- The three technical Slovak web descriptions supplied in chat are archived in each repository's docs/CURRENT-RELEASE.md. No separate website publication was performed.
+- TEST preparation PRs were closed with stable-release references. No additional candidate or release is awaiting publication from this session.
+
+FullHDGlass uses 1.0.63 rather than the initially planned 1.0.62 so package version ordering permits normal upgrades from 1.0.62-test6. Continue future development from current main and prepare new changes as separately versioned candidates; do not rebuild or overwrite the released IPKs.
+
+Historical notes follow.
+
 # OpenPLi Plugin Browser test4 — 2 November 2026
 
 Owner screenshots reproduce an empty FullHDGlass Plugin Browser while the original OpenPLi skin shows installed plugins. Root cause: no widget binds OpenPLi's native GUI list; both OpenATV pluginList/pluginGrid sources are conditionally absent. Prior typed-binding audits skipped absent sources and therefore missed a completely empty primary view. Fix only the OpenPLi in-memory template, preserve native list population/launch/reorder actions, and align PluginBrowser0 content/listbox rows to 90 px for the existing 81 px two-line cells. Apply the row correction to download/remove views too. Add end-to-end native list population, conditional visibility, plugin launch and startup-font registry regressions; retain OpenATV templates. Prepare immutable 1.0.62-test4 from test3 source 11d1cb9dd31cc766a90fd7387590c1cec3a098d9. Production feeds and old IPKs remain unchanged. Receiver confirmation is pending. Details: docs/FULLHDGLASS-1.0.62-test4.md.

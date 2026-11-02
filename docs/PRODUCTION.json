@@ -161,5 +161,14 @@
     "sha256": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde"
   },
   "activation_commit": "18f3fdc3855709ca81c48aca689db7d46899f29e",
-  "native_test_mirror_commit": "7c863819c21be1b88b1e9f82c2c10ffd3262bf37"
+  "native_test_mirror_commit": "7c863819c21be1b88b1e9f82c2c10ffd3262bf37",
+  "documentation_checkpoint": {
+    "date": "2026-11-02",
+    "status": "stable-publication-and-session-records-complete",
+    "web_copy": "docs/CURRENT-RELEASE.md",
+    "web_copy_language": "sk",
+    "web_copy_archived": true,
+    "separate_website_publication_performed": false,
+    "continuation": "Current main is the release baseline. Preserve published IPKs and settings; prepare further implementation changes as separate candidates."
+  }
 }
