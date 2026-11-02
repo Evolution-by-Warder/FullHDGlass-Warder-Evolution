@@ -26,13 +26,6 @@ jobs:
             reports
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: |
-            source
-            tools
-            design
-            docs
-            reports
-        with:
           repository: OpenPLi/enigma2
           ref: ${{ matrix.upstream_ref }}
           path: upstream/enigma2
