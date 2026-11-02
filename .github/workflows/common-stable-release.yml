@@ -85,14 +85,14 @@ jobs:
           test "$(git rev-parse origin/main)" = "$EXPECTED"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -u
+          git add --sparse -u
           python - <<'PYADD'
           import subprocess
           paths=subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z']).decode().split('\0')
           paths=[p for p in paths if p and not p.startswith(('upstream/','packages/test/','plugin/build/','plugin/dist/')) and p!='reports/common-stable/candidate.ipk']
-          if paths:subprocess.run(['git','add','--']+paths,check=True)
+          if paths:subprocess.run(['git','add','--sparse','--']+paths,check=True)
           PYADD
-          git add -f packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk.sha256
+          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk.sha256
           git commit -m 'Release FullHDGlass 1.0.63: verified common OpenPLi and OpenATV stable [skip ci]'
           git push origin HEAD:main
           gh release edit v1.0.63 --latest

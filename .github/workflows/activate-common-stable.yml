@@ -1,0 +1,71 @@
+name: Activate verified common stable FullHDGlass 1.0.63
+on:
+  push:
+    branches: [release/activate-fullhdglass-1.0.63-20261102]
+permissions:
+  contents: read
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PACKAGE_SOURCE_SHA: d1caaffb15dd6d519e2667e6c87ae726fd1b2318
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Confirm previous package checks and native matrices passed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/$GITHUB_REPOSITORY/actions/runs/41502247782/jobs --paginate > /tmp/verified-jobs.json
+          python - <<'PYGATE'
+          import json
+          jobs=json.load(open('/tmp/verified-jobs.json'))['jobs']
+          assert jobs and all(j['conclusion']=='success' for j in jobs if j['name']!='package')
+          package=next(j for j in jobs if j['name']=='package')
+          passed={s['name'] for s in package['steps'] if s['conclusion']=='success'}
+          assert {'Build stable IPK and execute shipped installation checks','Publish immutable stable package','Verify public download, compare candidate runtime and stage production records'} <= passed
+          PYGATE
+      - name: Prepare exact approved stable sources and history
+        run: python tools/prepare-common-stable.py
+      - name: Reuse immutable verified release without rebuilding
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p packages/test
+          gh release download v1.0.63 --pattern 'enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk*' --dir packages/test
+          python tools/activate-common-stable.py
+      - name: Commit release sources and production records
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin main:refs/remotes/origin/main
+          EXPECTED=$(python -c 'import json; print(json.load(open("docs/COMMON-STABLE-20261102.json"))["expected_main"])')
+          test "$(git rev-parse origin/main)" = "$EXPECTED"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse -u
+          python - <<'PYADD'
+          import subprocess
+          paths=subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z']).decode().split('\0')
+          paths=[p for p in paths if p and not p.startswith(('upstream/','packages/test/','plugin/build/','packages/test/')) and p!='reports/common-stable/candidate.ipk']
+          if paths:subprocess.run(['git','add','--sparse','--']+paths,check=True)
+          PYADD
+          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk.sha256
+          git commit -m 'Activate FullHDGlass 1.0.63: verified common stable sources and records [skip ci]'
+          git push origin HEAD:main
+          gh release edit v1.0.63 --latest
