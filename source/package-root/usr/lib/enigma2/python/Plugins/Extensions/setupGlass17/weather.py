@@ -16,7 +16,7 @@
 #    GNU General Public License for more details.
 #    
 #######################################################################
-from Screens.Screen import Screen
+from .warderResolution import Screen
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 import time as time1

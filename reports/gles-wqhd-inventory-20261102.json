@@ -1,0 +1,693 @@
+{
+  "date": "2026-11-02",
+  "scope": "All maintained Python payload files in this package. Archived upstream replacements are not activated. External third-party installations are not modified. Hashes describe the source payload before candidate version/header staging.",
+  "source_parent": "15a09bb9633779247cb426f979315cb8e14c498e",
+  "python_files": [
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/WarderRadioMetadata.py",
+      "sha256": "eb011abd9bbca0b955d373dda5c00570d049af81d16b67c8692a0836332cd928"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/WarderRadioOnly.py",
+      "sha256": "6d8e37e8ec3c2fadd0e78898707e2f7ce86e864dd5949f3bbea130b090e6c725"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/WarderRadioServiceType.py",
+      "sha256": "24e45e2f122d585520a6d7cf2e7f7370d1eb37a1f63a6d0e277237a94ca2ecd7"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/WarderTVOnly.py",
+      "sha256": "b0febf159c3b985a06e4299b7b1bd0d47ecc00470f827dd6f5749beecd22a921"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17ClockToText.py",
+      "sha256": "ef7e8d8eed18a26fec098dc43fae2de1a24634c7c6646fa18492d303543a14ac"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17ConditionalShowHide.py",
+      "sha256": "356690f0dfca5d7e08516110d392c8a1da3bbeba9693bb58bee29965d3896fad"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17EventTime.py",
+      "sha256": "9f29ba9bc262e8b2f983a8bdbeb1edde2c7763fe1203256883656f986a78484f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17ExtraSource.py",
+      "sha256": "72291b25dc2e7b096a290be11a5af91def7878c0f7e7efdeb7d20b8e08e0c1cf"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17GenerateMenuEntry.py",
+      "sha256": "4d2b0a9edfe43a82ae3eb94e6687b4ed4ae39f43a50ebf7b273387cf53df3be3"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17GenerateMenuEntry2.py",
+      "sha256": "703ba8ab3c92e2d74bea89fc1c4cd941171ca8c3584d8d30f33686eb5c9b552c"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17MiniTVDisplay.py",
+      "sha256": "e7e1d7272c81eb450d7dae534cc6f01d0c8d9a45439643489cd40bc306fd6688"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17ServiceInfo.py",
+      "sha256": "4a71e26b58c6c0e03c3ca6531ac08b89ad30ae048589a74e2995d8aea4f00b26"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17ServiceNameEvent.py",
+      "sha256": "859265a55de5fa55a5c34e8eae6ec9094297d3c3073e12221b201cee7341336d"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17ServiceNum.py",
+      "sha256": "9ec8c4c996983c5a017a9874ce4efb1fe1f67ceb3ae772c356265bed310d5fce"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Converter/g17extServiceName.py",
+      "sha256": "16a864c9cc292b10845ef09207ddf5f9025d3c4698c1cccc4c1bb21d835038ac"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioArtwork.py",
+      "sha256": "ea34440f9544145b9d0d726a054472dc939d62e42378c27f1f43645f927cfc9f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioCompactArtwork.py",
+      "sha256": "c210b3bd2ccb0c652c59cb9779f1f69b9756a518c175f6e08cc2bcb4e7fcde52"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioDabSlideshow.py",
+      "sha256": "ee2cbe7eabb9828f21c4ccf83763836770cd78254419a514a31e99e31d123168"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioInfoTop.py",
+      "sha256": "ebb3877ac50c43d982d2c0d294e1ac3f2bad53dc682d05898a0f7a90420aeb9a"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioLyrics.py",
+      "sha256": "3041f7c10d8725a1b48ff28dbec53c777145359b9da6c33c5861ba86e35fb471"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioSpectrum.py",
+      "sha256": "652f346d3f54cd9545d12dc9914b085a7199f2c5688ac761a5b4c276b1892ea1"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderRadioTop.py",
+      "sha256": "50ff82b6a14a32cf1ccd4cef5a1bcd97dd0b8cf53241d6473763c499fb922dd8"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsCanvas.py",
+      "sha256": "997e15d5ddcb0700ae48a3162548d87ffb3d3952129b55b24de998fa34dca9ce"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsHeader.py",
+      "sha256": "5bc448d0059b651e976902a8626a0d168333a256399a7eca0d32022a5ed6827b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderSettingsPig.py",
+      "sha256": "9f8429b3ffd3d94c75386eb1c499f80c44db4ce442c63b77d9087e71f952b35b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Ahours.py",
+      "sha256": "90ea8c11db9c7c9ed725dec6e97c53c16d398d28ecc2958bd6afa85a99a97df1"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py",
+      "sha256": "949ae71997f21c8cbf1f501194003ba73d789e61927125eac1fb2a2eb1b797bb"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17HDDstate.py",
+      "sha256": "a4b204ca7da4bc85568ba36009e154c7cfbb46d1e49d568726d8f0fb3714a416"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry.py",
+      "sha256": "026ea9fa3b0014f3aa0f554e62c5ea80cd143dc9c96adc9fbd578cff7c7756a5"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MenuEntry2.py",
+      "sha256": "841702c6c14cd6d81f86dd8538868d412bf1805d227b177a742b1852f6a59410"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py",
+      "sha256": "3c1c1577c747a09fdc2a6dbaec905bdd8b50ffd241fd558b53ad8e4de1c8f0c3"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MiniTV.py",
+      "sha256": "d26a9656dba836cab95c36452cf2dd4e7b160de474282a64f19e9a315bf01d39"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MiniTV2.py",
+      "sha256": "d322147f1421b262ab353a74a7abf764bab70aadcf8286d3d27461ea2a360881"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef.py",
+      "sha256": "ee6c0d2aaca18f7de3b2bad5fcc2463fced22a4be0946620f5ed460926e9244c"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef2.py",
+      "sha256": "734bd21fd9c0ce2adc08f5aa49866188ede3f4e8118a1aa441cd07a67e599e7b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17PicRef3.py",
+      "sha256": "6e3f0ee9741f42cb4ebcb95e3ac34120e1f627fb4dca1ba3c6dce62cd8dcf436"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster.py",
+      "sha256": "395a9553e62a33985e6c3a5807f79af7bdf16bef15b90e232838a7da34343d70"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Poster2.py",
+      "sha256": "783534f3543b53dec43afdb9a3a9b05c5506d235e99c067f759d484bd04ed12a"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Progress.py",
+      "sha256": "510d11dc19ea4b64b3642de53c6507693b1a34a6895cfa64d4f75d26fcbaa68a"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Prov.py",
+      "sha256": "fbc606e097a8f04b2d03ca4cd54a55918df6735b7e8e09ce21edf1d9928d14dc"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV.py",
+      "sha256": "e16b8a0873cbe2f177b0a22944a0fd1ed043714e31f7ba7b3b349ab1759be661"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTV3.py",
+      "sha256": "808d785655b13893ce66771f45b94e79429c925a68deab14254b2ec310e7f302"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RefTVBQT.py",
+      "sha256": "195563ee474ca36a45aee6b5b7fdfa067d56ea4de90cadeff9e1208d400b9a3e"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RollName.py",
+      "sha256": "0ed9872837d032ed1af929bd385d86c8e5844426ddbcb7fc6b5984c95df27264"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17RollerChar.py",
+      "sha256": "e87be634852c4287dde4605d5ead7d61dbf5fdd33bbb31a959a8343477d44ea5"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py",
+      "sha256": "4ad49ee87858e1cffe71f60669e5f4b6db4e02a95a5e7a6db4f65ba4cdcd4caa"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py",
+      "sha256": "5e268a4ea84a202b49b1bab351063e7f528890308ccc7d6f1478e4ca002bd178"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowNetSpeed.py",
+      "sha256": "486de7f1f79f0d4e19372c7052d36f67adc9cabd0a367b6ca1aef0403676cfa9"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowReference.py",
+      "sha256": "53ba17c5c953c589270e3b91f343af7c8914755208870bc3ce6755ba2365132b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowTP.py",
+      "sha256": "524d69b9340c4e805a080bf5225d332561023d086c60419ea03db8c34055b0cb"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17TunersLabel.py",
+      "sha256": "ba3898fdadebc23e3288a7c7294846e0856e8a8ccd60be3716246cb9a2e08a4f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17Volume.py",
+      "sha256": "1535f45d53e4a085096a9c3bc094e57bf065e3e23539b7cb644b36d6d21bde0b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17VolumeGauge.py",
+      "sha256": "9aee8def7cfd12dc5a7f865cb613ffda050137b29e0aeafb9eb5c6bb40af3bc8"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17VolumePixmap.py",
+      "sha256": "d5367d444a547b623bb8ccd613444e36508447d6db4be6b6a72a0fb2bbc7dfc8"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17cutCHSS.py",
+      "sha256": "c6d6659aa1e23aec38e585240b3a0de5ef2a9f567e78adad5fb565d7145d3017"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17dateFormat.py",
+      "sha256": "1ef506d3b6bc798a4b1015aa70d74cc0e700c155410b961f50bfe283a87750ef"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17provTV.py",
+      "sha256": "a3e9a66dcf166893fec781e490988cb4afe6a83b87dbee00ebd0eb81d34c7f1b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17satTV.py",
+      "sha256": "b0b0f8d24042a66f9c17e2019032e7ec01d1000ccbdd5a0d516982b15ff8c91e"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17shTVpix.py",
+      "sha256": "e8c832624056883ed32b4e5a60dcd0559970d4dda5128d39d085fef80bc0d038"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17showDev.py",
+      "sha256": "c0d355a2b419ced35fd80d41832f597ccee1a4e3f82bca2d5bfdc49950bcdf13"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17trpm.py",
+      "sha256": "1a66b9d49884a516ae08fbbb9539ad13d8278ced28540b8c32b92df1f6f7cf66"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/g17ConfigList.py",
+      "sha256": "412d70f4d1344af0640971787478190d21e13e2ab085bfeea5bd69d517571733"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Components/g17SelectionList.py",
+      "sha256": "6de9355df6261ec42928bc68c50fe203852d15dc3537188bfe83e70220750864"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py",
+      "sha256": "d5f3d157f2856fa5482d7cbbd5c5cc75492eaaeed355daa7e722faf41256de85"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/Netatmo.py",
+      "sha256": "234efddbf70639b4e14c9098338d447402f50d1d1c933452eee59a880d48f842"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/g17weather_skins.py",
+      "sha256": "6a65b38f088509eb2129af5544bffc1266659277416370666eed5cac17a01ddf"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "sha256": "b2226b52a5d766c7dd66bf7ad93b21a1f934ddfe3a32d7cce5a13853c10d9ef3"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "sha256": "450cc57603c2bdafbd94a9364169ef0697f60a6123bb2d74889ce6964743e63f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/py38.py",
+      "sha256": "55f1676ca456570e84abb91410726671d74c8b7abc7d2ce8e22df16651dff006"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/screenSaver.py",
+      "sha256": "9162028482c041961d488d02057959db6a1d158383d366a02f23536a91207e34"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/txt.py",
+      "sha256": "35d4b5a930718ecba5c379e1993f4c3829f136bab144f4b26bce74de22a5bb80"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderApplyInfoBar.py",
+      "sha256": "64a100f818c6969a309604eb77dbed39741fbebc88b71b76db8a0be1001c5afb"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderAutoUpdate.py",
+      "sha256": "30600eeff319df265ef3c0f239f936545176463c8dd0861ab5a9a9dd7f8b5b9f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderBitrateCompat.py",
+      "sha256": "0f444ddf7dc8eb6755af02a897723d07029ddbea014eec0399af8a1b733c6169"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderBitrateDiagnostic.py",
+      "sha256": "ad6820a02d8bf192526e8cc0d76862f57e6302c04c8f3cb16b9f89906b7f75e4"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderCanonicalPicons.py",
+      "sha256": "f00ee5dbfc980fb6f5bf2e001732ac6dc28683ffce7a003e88d3a6542a0d0dac"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderConfigFonts.py",
+      "sha256": "1515ae10f283a4e53a014c13eb25703f81200613b2dd5c86cf131f4e313e1dcb"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderCoolText.py",
+      "sha256": "e8c4e0bc9e57af964343e84c146124d6f2f03db3b6f1702e7fb4277aaf0673b1"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+      "sha256": "2dde33fb3cbba5e80593889359e3cbc00279b918182ea014fa2b794da5fd2f79"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "sha256": "7720b150c3fa5d1bb81e1975991ca15be28ca86013719926a4c99140c7675a19"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgCompat.py",
+      "sha256": "c6c4389cf620b1bd6e9a1e892eb47f99c634f48cc3ea32d29df6ee483010f87b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHelpArt.py",
+      "sha256": "312f1f522cc4829aa222a356700b07b07d9e2ad59e6d41224e3ace2c39ddebfc"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHelpPreview.py",
+      "sha256": "70976d9cfc8d5057ae536a01a1f8f64396458f07cdb6aae412cf7fc958065c87"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderHistory.py",
+      "sha256": "43e16ca38802ef1e5b70e078f4442c3c4dadc5ac54ffbf805b82f828d093a409"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderInstallHealth.py",
+      "sha256": "417672643531df265de43e78d4f776c617fe4b9233098708916affc69addb17e"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderListRows.py",
+      "sha256": "f1a76c4960f47b102302339db55312a949ed8a025aada9bc162ea06b7068c063"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLyrics.py",
+      "sha256": "4b68e908c9377157358cd2044c7ffcb27f8129a362f8ec9729f5160efaf09362"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderLyricsSites.py",
+      "sha256": "39876f13a366f2ab1737df96b7f309a5be6a405b788899b72432002aa082a74f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPackageTransition.py",
+      "sha256": "a60f10f2144a62a10964d5e71ce22d93440e002e5a958b3a81b6068f3207c467"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py",
+      "sha256": "0db47c4ae16558f541c01c7cab6a9ce173340d6738dbe8ff43b326001ff37207"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPreviewAssets.py",
+      "sha256": "6b82ce547f76e331185f4d8b97191a3a1d66aca1a50d2523cee2af40e5cc072a"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderProgramInfo.py",
+      "sha256": "b54e81d829efba30d880e6c3c9d5d6d527932c42d5fed5b4a25dbcbc0553685c"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadio.py",
+      "sha256": "db9f546762754cd17544b373935989d2f4f19592ec9f783a77bcde0fc90cefd9"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/__init__.py",
+      "sha256": "3f118bcbcafa6184a8de32a99f92d86b9cade0fdc8c4dec3145149fbd991cca5"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/radio_references.py",
+      "sha256": "36a28bb55a18314e87b855d14ce0fbb817fc2249ee469c9a1952d7715bf4d9a1"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/warder_dab.py",
+      "sha256": "c51b13406200040be77cfb51a8c5de7a9f9c8e3e8717c074da41a7207897b6c7"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/warder_engine.py",
+      "sha256": "c3810eb73f6d4f2f26622eef9c7edb06f218e829b34dec7809f31a30b19847e0"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/warder_i18n.py",
+      "sha256": "129e4de81b41dc87aff3f2f16d14c3ee9c4efea4c6e9f1c0e9db4250bb4e83c6"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/warder_iptv.py",
+      "sha256": "6d57c1ee3ac1f02f8a510bc06e407830f2b9a1c9c5ba75723a4f801300883899"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/warder_model.py",
+      "sha256": "9f17814c1c97132c4d35ae9ce47ce0d0266e1fa348523665b5ce56aa0dacc5d5"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioCore/warder_skin_sync.py",
+      "sha256": "fdb761014e98cb6f1c1672e6d948d769e55ae7a807a958e37cac2870f2f1afcb"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioLayers.py",
+      "sha256": "e6b63b026d56be4ee0febf867914f4687c601ffa8849a5f9fc13736638dda674"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioUpdate.py",
+      "sha256": "6e1535ee62bcb831b95d71091811080a4979e3107e86df8db496980cc1966c2e"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRadioWindows.py",
+      "sha256": "9eb8979bc71f409d469ad16d7879f4b6fa2b06618cc1bb5374ce104c9a40a97b"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderResolution.py",
+      "sha256": "fa121a535f0fb7a4f0009e8aa3a506e7fd679fa8ba2404da0c040b546dacc761"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderRuntimeCache.py",
+      "sha256": "51aff1dc5785f93df28d6efcee0c7ef4143b8a6414d5d4d37902fb53e5980386"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSongIdentity.py",
+      "sha256": "a7f9af0e15390511cc1ebd5c19cd2118a0c9ccf061027096aee11c38306a192f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinner.py",
+      "sha256": "a5d862d657f308dbce828a818a1976de5727d525d21437012b2c545d656cee82"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerOnline.py",
+      "sha256": "0de551806329b090c78fa9585d0de3b25f2b15be3cd5ea8ba6c386cb46559ac4"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py",
+      "sha256": "dfa32e59b274c34e4967ce88453017a876ff90b245d9d20347a0ec01f45e315c"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSummaryCompat.py",
+      "sha256": "baee63c83c20a6681524a28cd188f284f58bf6c3c3738f79ee19e651deb9f86c"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSuperMusic.py",
+      "sha256": "f3a4ae5c1f39aabe7f6a77b1778e89489d9efbbcf57bdd4b9ccb8cb643483968"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderTools.py",
+      "sha256": "97ead678c2da14db2288bd58ecef408a0b0de0c75d892ab787a4bd1f8edde18f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderTypePreviews.py",
+      "sha256": "fd32a78e38f5233e57771bcf208833d2d1434e2c313353029ec6a43b8f1614c7"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUiText.py",
+      "sha256": "1f0d3a8c2ba5db18aff4a69707bde2b8f1cadb7dc9326e3da937f8a20aacdad7"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderUpdateText.py",
+      "sha256": "50cf7ff1cdd7464c90862aab7e89ce781eb73f7aa2364082edb5e3ffc425a3de"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderVideoCodec.py",
+      "sha256": "c7a94ed632226e927b367b839fc711a68cf70104655c2ec81e626241b7b61950"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weaUtils.py",
+      "sha256": "82c13fa49bfe1fe4f82c1678016a409460c93b5b86745d3b7688cb6ac5d91013"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather.py",
+      "sha256": "1afd1d9cd82a1013e3be914387dd44aedd5118bcee251fdb889b35932d7a89a0"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py",
+      "sha256": "4dc83f4d4c31864313f1d5ab0ccb5a5c2f0c5a9446dbb17dc531175599d7de6f"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/G17screens.py",
+      "sha256": "d201b1c54e6adfb5e956297eb26d192542e4b8354ef663de1d4d3ce97b7cf14e"
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/Menu-new17.py",
+      "sha256": "4738b9e67d49c756b62f0845b3d0c221a528168e646403a5e8483d470118fe83"
+    }
+  ],
+  "screen_classes": [
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py",
+      "class": "mainmenu",
+      "line": 57
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py",
+      "class": "selectCity",
+      "line": 428
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/E_weather.py",
+      "class": "addSelectCity",
+      "line": 645
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/Netatmo.py",
+      "class": "NetatmoScreen",
+      "line": 61
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/infoEcm_by_duri.py",
+      "class": "InfoEcmScreen",
+      "line": 22
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "WarderProgramInfo",
+      "line": 288
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "SpecialScreen",
+      "line": 3507
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "ExtraInfo17",
+      "line": 3695
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "setupGlass17ScreenSetup",
+      "line": 6337
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "g17SetupSummary",
+      "line": 8475
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "downloadMenu",
+      "line": 8506
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "satSelectorScr",
+      "line": 10133
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "warderPositionSelectorScr",
+      "line": 10202
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "styleSelectorScr",
+      "line": 10257
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "selectScreenShowed",
+      "line": 10364
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "selectIconsDisplayed",
+      "line": 10473
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "historyScreen",
+      "line": 10619
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "SelectPosition",
+      "line": 10727
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "weatherCitySelector",
+      "line": 10837
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "cityFinder",
+      "line": 10879
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "class": "dirBrowser",
+      "line": 11187
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/screenSaver.py",
+      "class": "ScreenSaverScreen",
+      "line": 29
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "class": "MessageBox",
+      "line": 24
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogs.py",
+      "class": "ChoiceBox",
+      "line": 54
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderResolution.py",
+      "class": "Screen",
+      "line": 87
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderSpinnerScreen.py",
+      "class": "SpinnerChoice",
+      "line": 54
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/weather.py",
+      "class": "WeatherScreen",
+      "line": 136
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/G17_UserInfo.py",
+      "class": "UserInfo17",
+      "line": 25
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/Menu-new17.py",
+      "class": "MenuSummaryIcon",
+      "line": 101
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/Menu-new17.py",
+      "class": "MenuSummary",
+      "line": 137
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Screens/Menu-new17.py",
+      "class": "Menu",
+      "line": 149
+    }
+  ],
+  "plugin_descriptor_calls": [
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "line": 1228
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "line": 1229
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "line": 1230
+    },
+    {
+      "path": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+      "line": 1232
+    }
+  ],
+  "resolutions": [
+    [
+      1280,
+      720
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      2560,
+      1440
+    ],
+    [
+      3840,
+      2160
+    ]
+  ],
+  "physical_gles_receiver_verified": false
+}

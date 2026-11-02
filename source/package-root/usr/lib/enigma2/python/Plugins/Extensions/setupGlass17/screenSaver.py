@@ -15,9 +15,10 @@
 #    
 #######################################################################
 
-from Screens.Screen import Screen
+from .warderResolution import Screen
 from Components.Label import Label
 from enigma import eTimer, ePoint, gRGB, eSize, iPlayableServicePtr, iPlayableService
+from .warderResolution import ePoint, eSize, logical
 from time import localtime, time, strftime
 import random
 from Components.ServiceEventTracker import ServiceEventTracker
@@ -74,8 +75,8 @@ class ScreenSaverScreen(Screen):
 		self.__colorTimer.start(10)
 		
 	def readPosition(self):
-		self.posX = self['saver_text'].instance.position().x()
-		self.posY = self['saver_text'].instance.position().y()
+		self.posX = logical(self['saver_text'].instance.position().x(),0)
+		self.posY = logical(self['saver_text'].instance.position().y(),1)
 		self.newposY = self.posY
 		
 	def readServiceName(self):

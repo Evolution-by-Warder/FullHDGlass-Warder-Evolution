@@ -9,6 +9,7 @@ def limits(height):
             'value': max(1, height * 80 // 100 - 2)}
 
 def install(config_list, is_active, make_font, parse_font):
+    make_font = getattr(make_font, '_warder_native_font', make_font)
     original = config_list.applySkin
     if getattr(original, '_warder_config_fonts', False):
         return False
@@ -17,7 +18,7 @@ def install(config_list, is_active, make_font, parse_font):
     def apply_skin(self, desktop, parent):
         attributes = list(self.skinAttributes or [])
         result = original(self, desktop, parent)
-        if not is_active() or self.instance is None:
+        if not (is_active() or getattr(parent, '_warder_owned_resolution', False)) or self.instance is None:
             return result
         instance = self.instance
         try:

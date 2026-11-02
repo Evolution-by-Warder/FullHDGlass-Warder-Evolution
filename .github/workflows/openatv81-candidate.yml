@@ -1,8 +1,8 @@
-name: FullHDGlass OpenATV 8.1 candidate 1.0.62-test1
+name: FullHDGlass OpenATV 8.1 candidate 1.0.62-test2
 on:
   push:
-    branches: [audit/openatv81-continuation-20261101]
-    paths: [source/**, tools/**, design/**, docs/FULLHDGLASS-1.0.62-test1.md, .github/workflows/openatv81-candidate.yml]
+    branches: [fix/openatv81-gles-wqhd-20261102]
+    paths: [source/**, tools/**, design/**, docs/FULLHDGLASS-1.0.62-test2.md, .github/workflows/openatv81-candidate.yml]
 permissions:
   contents: read
 concurrency:
@@ -47,6 +47,7 @@ jobs:
           python tools/test-native-screen-bindings.py --upstream /tmp/warder-list-row-fixture -v
           python tools/test-native-screen-bindings.py --upstream /tmp/warder-list-row-fixture/legacy -v
           python tools/test-skin-binding-audit.py -v
+          python tools/test-wqhd-plugins.py -v
           python tools/test-setup-style.py -q
           python tools/test-cooltvguide-captions.py -v
           python tools/test-summary-display.py --upstream /tmp/warder-list-row-fixture -v
@@ -76,7 +77,7 @@ jobs:
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.62-test1
+          name: FullHDGlass-1.0.62-test2
           path: packages/test/*
           retention-days: 30
       - name: Publish an isolated immutable candidate; retain production 1.0.61
@@ -84,12 +85,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test1_all.ipk
-          TAG=v1.0.62-test1
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test2_all.ipk
+          TAG=v1.0.62-test2
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.62-test1 – OpenATV 8.1' --notes-file docs/FULLHDGLASS-1.0.62-test1.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.62-test2 – OpenATV 8.1' --notes-file docs/FULLHDGLASS-1.0.62-test2.md
           fi

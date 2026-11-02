@@ -14,11 +14,12 @@
 #    GNU General Public License for more details.
 #    
 #######################################################################
-from Screens.Screen import Screen
+from .warderResolution import Screen, pixel as _warderPixel
 from Components.config import config
 from Components.MenuList import MenuList
 from enigma import eListboxPythonMultiContent, eTimer, gFont, RT_HALIGN_CENTER, RT_HALIGN_RIGHT, eSize, RT_VALIGN_CENTER
-from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend
+from .warderResolution import gFont, eSize
+from .warderResolution import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend
 from Tools.LoadPixmap import LoadPixmap
 import gettext
 import os
@@ -55,7 +56,7 @@ class netatmoList(MenuList):
 		self.l.setFont(0, gFont('Prive3', 30))
 		self.l.setFont(1, gFont('Prive3', 25))
 		self.l.setFont(2, gFont('Prive3', 27))
-		self.l.setItemHeight(150)
+		self.l.setItemHeight(_warderPixel(150))
 
 class NetatmoScreen(Screen):
 

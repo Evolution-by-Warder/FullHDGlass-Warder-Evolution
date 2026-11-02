@@ -1,3 +1,11 @@
+# GLES / WQHD plugin preparation — 2 November 2026
+
+Owner requested reviewing every maintained plugin for OpenATV 8.1, GLES and WQHD. Work is isolated on fix/openatv81-gles-wqhd-20261102. Candidate FullHDGlass 1.0.62-test2 adds desktop-aware owned screens and Python geometry, preserves the exact frozen controller/action fingerprint and retains all four test1 native binding fixes. Source inventory and binding reports are in reports/gles-wqhd-*. Production remains 1.0.61, and old releases and all feed manifests stay unchanged. Physical GLES receiver validation is pending. Main skin output remains approved FHD; no untested WQHD primary-skin variant is activated.
+
+PiconHub 0.1.39-test1 and GSU 13.40-r95-test1 are prepared on their fix/generated-list-rows-20261102 branches, including WQHD/native viewport fixes and the five-entry/two-line History request. GSU includes fixed-height, complete colored OSCam log lines. Candidates are isolated prereleases. Future normal versions must be >=0.1.40 / >=13.40-r96 and FullHDGlass 1.0.63 for native upgrade ordering.
+
+---
+
 # OpenATV 8.1 candidate verified — 1 November 2026
 
 Public immutable prerelease 1.0.62-test1 is available, with production 1.0.61 unchanged. Build source 7ed8406eaa7967d423fde5972a521a7fc6acf1cb; successful release workflow 41347139394; PR19 stays draft for receiver confirmation. Public IPK: 17,210,206 bytes, SHA256 8c3f807614d5c48caa9e54399cb1447c1f13b2753a4ae8a5694c80ba9add6013. Independent public download, sidecar, all 1,497 payload files, unchanged installer hooks/helpers and the exact four XML edits were verified. Runtime Python differs from 1.0.61 only in version labels; localized History is updated.

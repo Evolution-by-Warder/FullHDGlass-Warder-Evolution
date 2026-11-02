@@ -3,7 +3,7 @@ from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.ScrollLabel import ScrollLabel
-from Screens.Screen import Screen
+from .warderResolution import Screen
 from Screens.MessageBox import MessageBox as NativeMessageBox
 from Screens.InputBox import InputBox as NativeInputBox
 from .warderDialogSkins import MESSAGE_SKIN, CHOICE_SKIN, INPUT_SKIN

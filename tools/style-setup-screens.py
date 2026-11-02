@@ -219,6 +219,9 @@ def strip_reviewed_radio_start(tree):
 
 
 def normalized(tree):
+    resolution_ledger=ROOT/'design/wqhd-compatibility/logic-edits.json'
+    if resolution_ledger.exists():
+        tree=strip_reviewed_batch(tree,json.loads(resolution_ledger.read_text()))
     adapter_ledger=ROOT/'design/openatv81-compatibility/runtime-hooks.json'
     if adapter_ledger.exists():
         tree=strip_reviewed_batch(tree,json.loads(adapter_ledger.read_text()))

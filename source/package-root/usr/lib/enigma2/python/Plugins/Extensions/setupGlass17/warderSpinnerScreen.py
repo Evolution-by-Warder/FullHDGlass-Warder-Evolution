@@ -9,9 +9,10 @@ from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend
-from Screens.Screen import Screen
+from .warderResolution import Screen
 from enigma import (eListbox, eListboxPythonMultiContent, ePoint, gFont, loadPNG,
                     BT_SCALE, BT_KEEP_ASPECT_RATIO, BT_HALIGN_CENTER, BT_VALIGN_CENTER)
+from .warderResolution import ePoint, gFont, pixel, factors
 from twisted.internet.threads import deferToThread
 
 from . import warderSpinner as backend
@@ -28,10 +29,10 @@ PREVIEW_SIZE = 72
 PREVIEW_FLAGS = BT_SCALE | BT_KEEP_ASPECT_RATIO | BT_HALIGN_CENTER | BT_VALIGN_CENTER
 
 
-def page_layout(width, height, grid=True):
+def page_layout(width, height, grid=True, scale=1):
     """Use complete readable cells; derive capacity from the actual widget."""
-    columns = max(1, width // MIN_ITEM_WIDTH) if grid else 1
-    rows = max(1, height // ITEM_HEIGHT)
+    columns = max(1, width // round(MIN_ITEM_WIDTH*scale)) if grid else 1
+    rows = max(1, height // round(ITEM_HEIGHT*scale))
     return columns, rows * columns, width // columns
 
 
@@ -58,10 +59,10 @@ class SpinnerChoice(Screen):
         self.skinName = ['WarderSpinnerChoice']
         self.setTitle(ui_text('Spinner'))
         self['list'] = MenuList([], content=eListboxPythonMultiContent)
-        self['list'].l.setItemHeight(ITEM_HEIGHT)
+        self['list'].l.setItemHeight(pixel(ITEM_HEIGHT))
         self['list'].l.setFont(0, gFont('Regular', 28))
         self['list'].l.setFont(1, gFont('Regular', 22))
-        self.columns, self.page_size, self.item_width = page_layout(*LIST_SIZE, grid=False)
+        self.columns, self.page_size, self.item_width = page_layout(pixel(LIST_SIZE[0],0),pixel(LIST_SIZE[1]),grid=False,scale=factors()[1])
         self['hint'] = Label(ui_text('Loading spinner list...'))
         self['line_red'] = Label('')
         self['line_green'] = Label('')
@@ -99,8 +100,8 @@ class SpinnerChoice(Screen):
         grid = (hasattr(eListbox, 'orGrid') and hasattr(instance, 'setOrientation')
                 and hasattr(instance, 'setItemWidth') and hasattr(self['list'].l, 'setItemWidth')
                 and hasattr(self['list'].l, 'setOrientation'))
-        self.columns, self.page_size, self.item_width = page_layout(size.width(), size.height(), grid)
-        instance.setItemHeight(ITEM_HEIGHT)
+        self.columns, self.page_size, self.item_width = page_layout(size.width(), size.height(), grid, scale=factors()[1])
+        instance.setItemHeight(pixel(ITEM_HEIGHT))
         if grid:
             instance.setOrientation(eListbox.orGrid)
             self['list'].l.setOrientation(eListbox.orGrid)
@@ -159,14 +160,14 @@ class SpinnerChoice(Screen):
         entries = []
         for row in self.rows[self.page*self.page_size:(self.page+1)*self.page_size]:
             item = [row,
-                    MultiContentEntryText(pos=(96,8), size=(self.item_width-112,36), font=0, text=ui_text(row['title'])),
-                    MultiContentEntryText(pos=(96,48), size=(self.item_width-112,30), font=1, text=row['author'])]
+                    MultiContentEntryText(pos=(pixel(96,0),pixel(8)), size=(self.item_width-pixel(112,0),pixel(36)), font=0, text=ui_text(row['title'])),
+                    MultiContentEntryText(pos=(pixel(96,0),pixel(48)), size=(self.item_width-pixel(112,0),pixel(30)), font=1, text=row['author'])]
             image = self.pictures.get(row['id'])
             if image is None and row.get('local_picture'):
                 try:image = loadPNG(row['local_picture'])
                 except Exception:image = None
             if image is not None:
-                item.append(MultiContentEntryPixmapAlphaBlend(pos=(8,8), size=(PREVIEW_SIZE,PREVIEW_SIZE), png=image, flags=PREVIEW_FLAGS))
+                item.append(MultiContentEntryPixmapAlphaBlend(pos=(pixel(8,0),pixel(8)), size=(pixel(PREVIEW_SIZE,0),pixel(PREVIEW_SIZE)), png=image, flags=PREVIEW_FLAGS))
             entries.append(item)
         self['list'].setList(entries)
         self['list'].moveToIndex(self.cursor % self.page_size)

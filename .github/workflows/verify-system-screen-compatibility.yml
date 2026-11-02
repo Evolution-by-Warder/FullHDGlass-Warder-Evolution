@@ -83,5 +83,8 @@ jobs:
       - name: Verify native bindings and replay repaired screens
         run: |
           python tools/test-skin-binding-audit.py -v
+          python tools/test-wqhd-plugins.py -v
+          python tools/test-native-reference-scale.py --upstream upstream/enigma2/lib/python -v
+          python tools/audit-openatv-skin-bindings.py --upstream upstream/enigma2/lib/python --plugin-root source/package-root/usr/lib/enigma2/python
           python tools/audit-openatv-skin-bindings.py --upstream upstream/enigma2/lib/python
           python tools/test-native-screen-bindings.py --upstream upstream/enigma2/lib/python -v

@@ -1,6 +1,6 @@
 """Clip the existing full-size Warder artwork to the banner; no per-tick decoding."""
 from Components.Renderer.Renderer import Renderer
-from enigma import ePixmap, eSize, eWidget
+from enigma import ePixmap, eSize, eWidget, getDesktop
 
 
 class WarderSettingsHeader(Renderer):
@@ -12,7 +12,8 @@ class WarderSettingsHeader(Renderer):
 
     def postWidgetCreate(self, instance):
         self.picture = ePixmap(instance)
-        self.picture.resize(eSize(1920, 1080))
+        size = getDesktop(0).size()
+        self.picture.resize(eSize(size.width(), size.height()))
         self.picture.setScale(1)
         self.picture.setPixmapFromFile('/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/images/warder-settings-background.png')
         self.picture.show()

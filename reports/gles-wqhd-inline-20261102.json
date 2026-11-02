@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "literal_or_imported_templates_checked": 47,
+  "typed_widget_bindings_checked": 225,
+  "unresolved_or_dynamic_widget_bindings": 20,
+  "unresolved_bindings": [
+    {
+      "controller": "Plugins.Extensions.setupGlass17.Netatmo.NetatmoScreen",
+      "field": "info"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.dirBrowser",
+      "field": "filelist"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.satSelectorScr",
+      "field": "list"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "Canvas"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_0"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_1"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_2"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_3"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_4"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_5"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_6"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_7"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_8"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_menu_panel_9"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_0"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_1"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_2"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_3"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.setupGlass17ScreenSetup",
+      "field": "warder_settings_panel_4"
+    },
+    {
+      "controller": "Plugins.Extensions.setupGlass17.plugin.warderPositionSelectorScr",
+      "field": "list"
+    }
+  ],
+  "dynamic_skin_controllers_requiring_separate_tests": [
+    "Plugins.Extensions.setupGlass17.E_weather.mainmenu",
+    "Plugins.Extensions.setupGlass17.plugin.ExtraInfo17",
+    "Plugins.Extensions.setupGlass17.plugin.selectIconsDisplayed",
+    "Plugins.Extensions.setupGlass17.warderResolution.Screen",
+    "Plugins.Extensions.setupGlass17.warderSpinnerScreen.SpinnerChoice",
+    "Plugins.Extensions.setupGlass17.weather.WeatherScreen",
+    "Screens.G17_UserInfo.UserInfo17"
+  ],
+  "parse_errors": [],
+  "binding_errors": [],
+  "limitations": "Literal/imported XML includes conditional resolution imports; generator calls, helper-assigned fields and actual GUI rendering still require separate validation."
+}

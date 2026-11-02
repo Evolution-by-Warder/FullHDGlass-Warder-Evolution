@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Screens.Screen import Screen
+from .warderResolution import Screen
 from Components.config import config, configfile
 from Components.ActionMap import ActionMap
 from Components.Label import Label

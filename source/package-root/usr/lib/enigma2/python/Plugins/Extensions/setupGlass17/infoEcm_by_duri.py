@@ -1,7 +1,8 @@
-from Screens.Screen import Screen
+from .warderResolution import Screen
 from Components.Label import Label
 from Components.ServiceEventTracker import ServiceEventTracker
 from enigma import eTimer, iServiceInformation, iPlayableService, ePoint, eSize, eServiceReference 
+from .warderResolution import ePoint, eSize
 from Components.Pixmap import Pixmap
 from Tools.Directories import fileExists
 from Components.config import config

@@ -67,6 +67,11 @@ class FontTests(unittest.TestCase):
     def test_other_skins_are_delegated_without_font_changes(self):
         obj,parent,_=self.create(active=False);self.apply(obj,parent)
         self.assertEqual(obj.instance.calls,[]);self.assertEqual(obj.original_calls,1)
+    def test_owned_resolution_screen_is_fitted_with_another_primary_skin(self):
+        obj,parent,_=self.create(active=False);parent._warder_owned_resolution=True
+        self.apply(obj,parent)
+        self.assertEqual(obj.instance.fonts['entry'].pointSize,20)
+
     def test_repeated_install_does_not_stack_wrappers(self):
         obj,parent,cls=self.create();self.assertFalse(module.install(cls,lambda:True,Font,parse_font))
         self.apply(obj,parent);self.assertEqual(obj.original_calls,1)

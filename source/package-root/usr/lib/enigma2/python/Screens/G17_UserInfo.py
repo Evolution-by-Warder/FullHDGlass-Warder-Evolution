@@ -1,4 +1,4 @@
-from Screens.Screen import Screen
+from Plugins.Extensions.setupGlass17.warderResolution import Screen
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 try:

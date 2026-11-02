@@ -175,6 +175,11 @@ class ScreenContractTests(unittest.TestCase):
             'twisted.internet.threads':SimpleNamespace(deferToThread=defer),
             'Components.config':config,
         }
+        components=ModuleType('Components');components.MultiContent=modules['Components.MultiContent']
+        modules['Components']=components
+        modules['enigma'].ePixmap=type('NativePixmap',(),{})
+        modules['enigma'].eSize=lambda *values:values
+        modules['enigma'].getDesktop=lambda unused:SimpleNamespace(size=lambda:SimpleNamespace(width=lambda:1920,height=lambda:1080))
         package=ModuleType('spinner_screen_contract');package.__path__=[str(P)]
         modules[package.__name__]=package
         modules[package.__name__+'.warderSpinner']=backend
