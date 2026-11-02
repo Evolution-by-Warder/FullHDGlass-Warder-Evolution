@@ -677,29 +677,7 @@
         },
         "mandatory_widgets": []
       },
-      "expected_by_ref": {
-        "8.0": {
-          "components": {
-            "lab1": "Label",
-            "autostart_on": "Pixmap",
-            "autostart_off": "Pixmap",
-            "lab2": "Label",
-            "labplace": "Label",
-            "lab3": "Label",
-            "labsize": "Label",
-            "lab4": "Label",
-            "inactive": "Label",
-            "active": "Label",
-            "key_red": "Label",
-            "key_green": "Label",
-            "key_yellow": "Label",
-            "swapname_summary": "StaticText",
-            "swapactive_summary": "StaticText"
-          },
-          "mandatory_widgets": []
-        }
-      },
-      "variant_review": "8.0 c1b227eaa7226a3b15d1670461af69fcbe4623d7 retains the original Screen/Label controller; 8.0-next/master deliberately select SwapManagerSetup/Setup. Only the exact named 8.0 ref selects this reviewed alternative."
+      "variant_review": "8.0 ed5ece12c32264fccd61f2bc65b4635954e7efd4 backports the Setup-based Swap controller already reviewed on 8.0-next/master. The legacy 8.0 c1b227e Screen/Label alternative no longer matches this moving branch; all current refs use the unchanged default component contract and native Setup layout."
     },
     {
       "module": "Screens.Toast",
@@ -918,6 +896,6 @@
   "reviewed_additional_upstreams": {
     "master": "f219f5754c748a68f6dc5e99b1ce742df3d4c383",
     "8.0-next": "266beaa50c464f1a6983a3a64133f6047482aee8",
-    "8.0": "c1b227eaa7226a3b15d1670461af69fcbe4623d7"
+    "8.0": "ed5ece12c32264fccd61f2bc65b4635954e7efd4"
   }
 }
