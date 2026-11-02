@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-02",
+  "version": "1.0.62-test6",
+  "source_commit": "6dfbad23372d6f3b5b5ae57581e32332a438d53d",
+  "ci_run": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41495191515",
+  "ci_conclusion": "success",
+  "bytes": 17214500,
+  "sha256": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde",
+  "public_ipk_downloaded": true,
+  "sha256_sidecar_verified": true,
+  "packaged_payload_hashes_passed": true,
+  "packaged_python_39_grammar_files": 126,
+  "packaged_dialog_regressions_passed": 5,
+  "packaged_framed_preview_tests_passed": 6,
+  "framed_channel_types": [
+    2,
+    4,
+    9,
+    10,
+    11,
+    15,
+    21,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    38,
+    41
+  ],
+  "frames_and_nominal_layout_retained": true,
+  "osd_viewport_projection_tested": true,
+  "framebuffer_sizes_tested": [
+    [
+      720,
+      576
+    ],
+    [
+      1280,
+      720
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      2560,
+      1440
+    ],
+    [
+      3840,
+      2160
+    ]
+  ],
+  "native_pig_classes_exercised": [
+    "OpenPLi release-9.2",
+    "OpenPLi develop",
+    "OpenATV"
+  ],
+  "native_decoder_pip_and_fullscreen_lifecycle_retained": true,
+  "legacy_miniptv_activation_cleanup_tested": true,
+  "scope": "Software projection and native Python lifecycle with GUI doubles; no physical receiver validation.",
+  "reported_receiver_osd_calibration": "unknown",
+  "photo_variant": "Likely ChannelSelection-28; not confirmed by reporter",
+  "physical_receiver_verified": false,
+  "production_feeds_changed": false,
+  "stable_release_pause_remains": true
+}
