@@ -1,0 +1,34 @@
+{
+  "version": "1.0.63",
+  "bytes": 17214876,
+  "sha256": "b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03",
+  "public_release_and_raw_update_ipk_identical": true,
+  "main_and_native_test_branch_feeds_match": true,
+  "legacy_1_0_18_bridge_unchanged": true,
+  "updater_checks": [
+    {
+      "updater": "previous-stable",
+      "installed_version": "1.0.61",
+      "automatic_offer": true,
+      "no_self_offer": true,
+      "live_download_sha256_verified": true
+    },
+    {
+      "updater": "approved-test",
+      "installed_version": "1.0.62-test6",
+      "automatic_offer": true,
+      "no_self_offer": true,
+      "live_download_sha256_verified": true
+    },
+    {
+      "updater": "current",
+      "installed_version": "1.0.63",
+      "automatic_offer": false,
+      "no_self_offer": true,
+      "live_download_sha256_verified": true
+    }
+  ],
+  "dpkg_version_ordering_checks_passed": true,
+  "native_opkg_installation_performed": false,
+  "custom_font_settings_preserved": true
+}
