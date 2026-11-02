@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-02",
+  "root_cause": "PiconHub runtime version parser rejected its own -test1 label; exact extracted public verifier reproduced exit 1 Invalid plugin version. GSU had the same gap in startup/updater validation.",
+  "fix": "Accept installed test labels without offering prereleases in production feeds; run actual runtime parser in both builders and shipped verifier from final IPK before publication. GSU uses isolated TEST prerelease 13.41-r1 so opkg can upgrade legacy 13.40-r95-testN without force.",
+  "piconhub": {
+    "version": "0.1.39-test2",
+    "sha256": "cf7cbcfd67313728a952de8e1488c7c1e2cb3ad2f56915caefd74d881582f71d",
+    "shipped_postinst_verifier_exit": 0,
+    "installed_version_parser_passed": true,
+    "public_download_verified": true
+  },
+  "gsu": {
+    "version": "13.41-r1",
+    "prerelease": true,
+    "sha256": "815420741410d2feeb1d913d0b2a756586d5c46530d39f051ae3df1f2773a3ee",
+    "shipped_postinst_verifier_exit": 0,
+    "installed_version_parser_passed": true,
+    "public_download_verified": true
+  },
+  "limitations": "Final IPKs extracted and shipped verifier commands executed; full receiver postinst/opkg and physical GLES/WQHD rendering await receiver validation.",
+  "production_feeds_changed": false
+}

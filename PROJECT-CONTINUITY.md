@@ -1,3 +1,9 @@
+# Postinst version repair verified — 2 November 2026
+
+Current isolated candidates: FullHDGlass 1.0.62-test2 (unchanged), PiconHub 0.1.39-test2 and GSU 13.41-r1 — TEST. The previous PiconHub -test1 failed its own version parser; GSU startup had the same gap. Both builders now validate the installed version, and publication executes the shipped install verifier from the final IPK. Downloaded public repaired packages match published SHA256 values and pass these checks. GSU 13.41-r1 replaces all 13.40-r95-test candidates because native opkg splits at the last hyphen; same-minor r96 would not upgrade them. Future normal minimums are FullHDGlass 1.0.63, PiconHub 0.1.40 and GSU 13.41-r2. Earlier candidate/version advice below is historical and superseded by this entry.
+
+Production remains FullHDGlass 1.0.61, PiconHub 0.1.38 and GSU 13.40-r95; no production feed changed. Physical receiver/GLES/WQHD validation remains pending. Evidence: reports/postinst-version-repair-20261102.json and the updated reports/gles-wqhd-candidates-public-20261102.json.
+
 # Public GLES/WQHD test packages verified — 2 November 2026
 
 FullHDGlass 1.0.62-test2, PiconHub 0.1.39-test1 and GSU 13.40-r95-test2 are published as isolated prereleases. All public IPKs were downloaded, hashed and inspected. GSU test2 restores the production r95 History entry; its Python runtime is identical to test1. Production remains FullHDGlass 1.0.61, PiconHub 0.1.38 and GSU 13.40-r95. Install hooks, approved graphics and helpers remain byte-identical. No update feed was promoted. Physical GLES receiver verification remains pending.

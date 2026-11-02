@@ -33,52 +33,52 @@
     },
     {
       "repo": "piconhub",
-      "source": "974c4e07178e5523baf95b5e66149a2223ed6c33",
-      "tag": "v0.1.39-test1",
+      "source": "aa1d2010d192a97124b7737297f6cdcd6150012f",
+      "tag": "v0.1.39-test2",
       "prerelease": true,
-      "target": "974c4e07178e5523baf95b5e66149a2223ed6c33",
-      "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.39-test1",
+      "target": "aa1d2010d192a97124b7737297f6cdcd6150012f",
+      "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.39-test2",
       "assets": [
         {
-          "name": "enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk",
-          "size": 2884944,
-          "digest": "sha256:ec11e4c1cddcd4968cc4b1431749e3c705bb2379d36f4b43f0006934ea7b50b1",
-          "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.39-test1/enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk"
+          "name": "enigma2-plugin-extensions-piconhub_0.1.39-test2_all.ipk",
+          "size": 2884958,
+          "digest": "sha256:cf7cbcfd67313728a952de8e1488c7c1e2cb3ad2f56915caefd74d881582f71d",
+          "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.39-test2/enigma2-plugin-extensions-piconhub_0.1.39-test2_all.ipk"
         },
         {
-          "name": "enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk.sha256",
+          "name": "enigma2-plugin-extensions-piconhub_0.1.39-test2_all.ipk.sha256",
           "size": 122,
-          "digest": "sha256:4d1404fb34631e6d7a526af3f6dba97136f424b32355a8deee66b48fdde85a13",
-          "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.39-test1/enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk.sha256"
+          "digest": "sha256:f26831d4294a66978428519e75b2918cdada4f218f582afec913e6d3d5020fe7",
+          "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.39-test2/enigma2-plugin-extensions-piconhub_0.1.39-test2_all.ipk.sha256"
         }
       ]
     },
     {
       "repo": "gsu",
-      "source": "44bdef52fc1dc1d485cdc71c8313b63ab4b775bd",
-      "tag": "v13.40-r95-test2",
+      "source": "f7b9726bb81cdd872146004c6e20e978f9bf96c5",
+      "tag": "v13.41-r1",
       "prerelease": true,
-      "target": "44bdef52fc1dc1d485cdc71c8313b63ab4b775bd",
-      "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/tag/v13.40-r95-test2",
+      "target": "f7b9726bb81cdd872146004c6e20e978f9bf96c5",
+      "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/tag/v13.41-r1",
       "assets": [
         {
-          "name": "enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk",
-          "size": 3691484,
-          "digest": "sha256:8df0512eb2f6dffde80d64e04a71e7385c1ab341535f230ced3aacb1029176cc",
-          "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/download/v13.40-r95-test2/enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk"
+          "name": "enigma2-plugin-extensions-gsu_13.41-r1_all.ipk",
+          "size": 3691586,
+          "digest": "sha256:815420741410d2feeb1d913d0b2a756586d5c46530d39f051ae3df1f2773a3ee",
+          "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/download/v13.41-r1/enigma2-plugin-extensions-gsu_13.41-r1_all.ipk"
         },
         {
-          "name": "enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk.sha256",
-          "size": 120,
-          "digest": "sha256:2a3b888d1a87d68647a9e131e4a965208cce7e3e847cdedad414f7254f2e2071",
-          "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/download/v13.40-r95-test2/enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk.sha256"
+          "name": "enigma2-plugin-extensions-gsu_13.41-r1_all.ipk.sha256",
+          "size": 113,
+          "digest": "sha256:e1013fa653d027c0f60458c16d409656cd851991a382d530d2ca57e101680d6e",
+          "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/download/v13.41-r1/enigma2-plugin-extensions-gsu_13.41-r1_all.ipk.sha256"
         }
       ]
     }
   ],
   "validation": {
-    "piconhub_plugin_tests_per_python_version": 223,
-    "gsu_plugin_tests_per_python_version": 409,
+    "piconhub_plugin_tests_per_python_version": 226,
+    "gsu_plugin_tests_per_python_version": 411,
     "fullhdglass_setup_style_tests": 24,
     "fullhdglass_resolution_tests": 9,
     "fullhdglass_config_font_tests": 14,
@@ -100,16 +100,28 @@
     },
     "no_bytecode_shipped": true,
     "no_production_feed_changes": true,
-    "approved_assets_and_install_hooks_byte_identical": true
+    "approved_assets_and_install_hooks_byte_identical": true,
+    "shipped_postinst_verifiers_executed": true,
+    "installed_version_parsers_executed": true
   },
   "ci": {
     "fullhdglass": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41429463065",
-    "piconhub": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/41429471198",
-    "gsu": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/actions/runs/41430624710"
+    "piconhub": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/41444948191",
+    "gsu": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/actions/runs/41447024262"
   },
   "reviews": {
     "fullhdglass": 20,
     "piconhub": 16,
     "gsu": 4
+  },
+  "supersedes": [
+    "PiconHub 0.1.39-test1: own installed-version parser rejected -test1 in postinst",
+    "GSU 13.40-r95-test1/test2: startup version parser gap",
+    "GSU 13.40-r95-test3: replaced by upstream minor increment for native opkg ordering"
+  ],
+  "future_normal_minimum": {
+    "fullhdglass": "1.0.63",
+    "piconhub": "0.1.40",
+    "gsu": "13.41-r2"
   }
 }
