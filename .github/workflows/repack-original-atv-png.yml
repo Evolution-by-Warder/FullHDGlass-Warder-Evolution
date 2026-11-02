@@ -1,0 +1,75 @@
+name: Repack verified OpenPLi EPG with original PNG bytes
+on:
+  push:
+    branches: [ops/repack-original-atv-png-20261102]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenPLi/enigma2
+          ref: release-9.2
+          path: upstream/enigma2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: |
+          python -m pip install --quiet 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Verify completed native checks cover the exact unchanged runtime and design
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          BASE=3e4e6506c75d55b1a149d7d1757398a3af7d2c65
+          git fetch --no-tags --depth=1 origin "$BASE"
+          test "$(git rev-parse HEAD:source)" = "$(git rev-parse $BASE:source)"
+          test "$(git rev-parse HEAD:design)" = "$(git rev-parse $BASE:design)"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/41527113716/jobs" --jq '[.jobs[] | select(.name != "package")] | length == 6 and all(.conclusion == "success")' | grep -qx true
+      - name: Prepare isolated version and preserve every feed
+        run: python tools/prepare-openpli-graph-epg.py
+      - name: Build and exercise the actual shipped guide and installer
+        run: |
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.64-test2_all.ipk --version 1.0.64-test2 --report packages/test/openpli-guide-install-verification.json --upstream upstream/enigma2/lib/python
+          python tools/verify-spinner-choice-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.64-test2-OpenPLi-guide
+          path: packages/test/*
+          retention-days: 30
+      - name: Publish immutable TEST without advancing stable updates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.64-test2_all.ipk
+          TAG=v1.0.64-test2
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/immutable
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
+            cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.64-test2 — OpenPLi Multi EPG TEST' --notes-file docs/FULLHDGLASS-1.0.64-test2.md
+          fi
