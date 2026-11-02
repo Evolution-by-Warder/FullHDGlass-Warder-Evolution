@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-02",
+  "scope": "All three maintained package Python sources and owned screens; physical rendering remains pending.",
+  "physical_gles_receiver_verified": false,
+  "primary_fullhdglass_output": "1920x1080 (approved FHD declaration retained)",
+  "production_latest_preserved": {
+    "fullhdglass": "v1.0.61",
+    "piconhub": "v0.1.38",
+    "gsu": "v13.40-r95"
+  },
+  "candidates": [
+    {
+      "repo": "fullhdglass",
+      "source": "9d1539b96440b1cc6390561fbf76992f85582c03",
+      "tag": "v1.0.62-test2",
+      "prerelease": true,
+      "target": "9d1539b96440b1cc6390561fbf76992f85582c03",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.62-test2",
+      "assets": [
+        {
+          "name": "enigma2-plugin-skins-fullhdglass_1.0.62-test2_all.ipk",
+          "size": 17211700,
+          "digest": "sha256:450d3afd6c268143fafb1a75e6e6ee3ed9a2ff7be06702f5111e8e3b6153585f",
+          "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62-test2/enigma2-plugin-skins-fullhdglass_1.0.62-test2_all.ipk"
+        },
+        {
+          "name": "enigma2-plugin-skins-fullhdglass_1.0.62-test2_all.ipk.sha256",
+          "size": 120,
+          "digest": "sha256:3659d511f96bb1eebd9e35b5beedad307a9972f3a511860d4cf87b52458f8fc7",
+          "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62-test2/enigma2-plugin-skins-fullhdglass_1.0.62-test2_all.ipk.sha256"
+        }
+      ]
+    },
+    {
+      "repo": "piconhub",
+      "source": "974c4e07178e5523baf95b5e66149a2223ed6c33",
+      "tag": "v0.1.39-test1",
+      "prerelease": true,
+      "target": "974c4e07178e5523baf95b5e66149a2223ed6c33",
+      "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.39-test1",
+      "assets": [
+        {
+          "name": "enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk",
+          "size": 2884944,
+          "digest": "sha256:ec11e4c1cddcd4968cc4b1431749e3c705bb2379d36f4b43f0006934ea7b50b1",
+          "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.39-test1/enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk"
+        },
+        {
+          "name": "enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk.sha256",
+          "size": 122,
+          "digest": "sha256:4d1404fb34631e6d7a526af3f6dba97136f424b32355a8deee66b48fdde85a13",
+          "url": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/download/v0.1.39-test1/enigma2-plugin-extensions-piconhub_0.1.39-test1_all.ipk.sha256"
+        }
+      ]
+    },
+    {
+      "repo": "gsu",
+      "source": "44bdef52fc1dc1d485cdc71c8313b63ab4b775bd",
+      "tag": "v13.40-r95-test2",
+      "prerelease": true,
+      "target": "44bdef52fc1dc1d485cdc71c8313b63ab4b775bd",
+      "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/tag/v13.40-r95-test2",
+      "assets": [
+        {
+          "name": "enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk",
+          "size": 3691484,
+          "digest": "sha256:8df0512eb2f6dffde80d64e04a71e7385c1ab341535f230ced3aacb1029176cc",
+          "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/download/v13.40-r95-test2/enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk"
+        },
+        {
+          "name": "enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk.sha256",
+          "size": 120,
+          "digest": "sha256:2a3b888d1a87d68647a9e131e4a965208cce7e3e847cdedad414f7254f2e2071",
+          "url": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/releases/download/v13.40-r95-test2/enigma2-plugin-extensions-gsu_13.40-r95-test2_all.ipk.sha256"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "piconhub_plugin_tests_per_python_version": 223,
+    "gsu_plugin_tests_per_python_version": 409,
+    "fullhdglass_setup_style_tests": 24,
+    "fullhdglass_resolution_tests": 9,
+    "fullhdglass_config_font_tests": 14,
+    "fullhdglass_native_reference_scale_replay": true,
+    "openatv_refs": [
+      "8.0",
+      "8.0-next",
+      "master"
+    ],
+    "plugin_python_versions": [
+      "3.9",
+      "3.14"
+    ],
+    "public_packages_downloaded_and_ar_metadata_verified": true,
+    "python_payloads_compiled": {
+      "fullhdglass": 123,
+      "piconhub": 19,
+      "gsu": 52
+    },
+    "no_bytecode_shipped": true,
+    "no_production_feed_changes": true,
+    "approved_assets_and_install_hooks_byte_identical": true
+  },
+  "ci": {
+    "fullhdglass": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41429463065",
+    "piconhub": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/41429471198",
+    "gsu": "https://github.com/Evolution-by-Warder/GSU-Warder-Evolution/actions/runs/41430624710"
+  },
+  "reviews": {
+    "fullhdglass": 20,
+    "piconhub": 16,
+    "gsu": 4
+  }
+}
