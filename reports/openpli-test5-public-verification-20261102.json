@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-02",
+  "version": "1.0.62-test5",
+  "source_commit": "53164dbdd2678cd77c2ebbdcc636684f4ac58d47",
+  "ci_run": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41482211732",
+  "ci_conclusion": "success",
+  "bytes": 17213166,
+  "sha256": "3bcec06f41879702a5acf7e0e4aa77a171d84718241c7902f2654019aa6e2827",
+  "public_ipk_downloaded": true,
+  "sha256_sidecar_verified": true,
+  "packaged_payload_hashes_passed": true,
+  "packaged_python_39_grammar_files": 124,
+  "packaged_native_dialog_regressions_passed": 5,
+  "native_dialog_matrices": [
+    "OpenPLi release-9.2",
+    "OpenPLi develop",
+    "OpenATV"
+  ],
+  "old_test4_missing_select_reproduced": true,
+  "optional_timer_close_checked": true,
+  "native_default_false_selection_and_cancel_checked": true,
+  "style_regressions": 26,
+  "plugin_browser_regressions_retained": true,
+  "historical_log": {
+    "file": "enigma2_crash.log",
+    "crashdate": "2026-08-30",
+    "current_message_applet_integer_coordinates_passed": true
+  },
+  "related_gsu_version": "13.41-r3 TEST",
+  "production_feeds_changed": false,
+  "physical_receiver_validation": "pending"
+}
