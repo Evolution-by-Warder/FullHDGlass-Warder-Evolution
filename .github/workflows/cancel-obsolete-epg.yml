@@ -1,0 +1,24 @@
+name: Cancel obsolete EPG test2 build
+on:
+  push:
+    branches: [ops/cancel-obsolete-epg-test2-20261102]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stop only the superseded pre-icon candidate before release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          RUN=41525098377
+          EXPECTED=863720c098f7e59bbbc0e22f1b0c98d0658edd60
+          ACTUAL=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .head_sha)
+          test "$ACTUAL" = "$EXPECTED"
+          STATUS=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .status)
+          if test "$STATUS" != completed; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/actions/runs/$RUN/force-cancel"
+          fi
