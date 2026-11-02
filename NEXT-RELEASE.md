@@ -1,3 +1,7 @@
+## Active follow-up — 2026-11-02: OpenPLi Multi EPG parity
+
+Owner requires the same FullHDGlass graphical Multi EPG appearance and short-colour behaviour as OpenATV, including the shared programme-detail screen on red. Prepare isolated **1.0.64-test1** from stable 1.0.63; stable feeds remain unchanged. Use OpenPLi's native GraphMultiEPG service/zap/timer controller, the shared PIG/detail geometry, picons and explicit matching colours. Keep native OK/zap semantics, complete rows/timeline text, the selected event on return and user settings. Registration must be visible in EPG/extensions and the ordinary Multi EPG entry. Host checks run actual native constructors/actions on release-9.2 and develop, and on the final extracted IPK. Physical appearance and parity on the receiver await owner confirmation. See docs/FULLHDGLASS-1.0.64-test1.md. A future normal release must exceed the TEST upstream version, e.g. 1.0.65.
+
 ## Current checkpoint — 2026-11-02: common stable release completed
 
 Authoritative state: FullHDGlass **1.0.63**, GSU **13.41-r4**, PiconHub **0.1.40** are normal published releases and their live updater channels are active. Earlier publishing pauses and candidate-only statements below are historical and were superseded by the owner's explicit release authorization.
