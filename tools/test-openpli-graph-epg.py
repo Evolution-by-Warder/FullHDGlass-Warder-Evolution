@@ -56,19 +56,20 @@ class Session:
  def open(self,screen,*args,**kwargs):self.opens.append((None,screen,args,kwargs));return self.opens[-1]
 REF=NS(toString=lambda:'1:0:1:A:B:C:0:0:0:0:');SERVICE=NS(ref=REF,getServiceName=lambda:'Selected station');EVENT=NS(getEventName=lambda:'Selected future programme',getEventId=lambda:42,getBeginTime=lambda:2000000000,getDuration=lambda:3600)
 class Listing:
- def __init__(self,selChangedCB=None,**kwargs):self.current=(EVENT,SERVICE);self.onSel=selChangedCB;self.l=Content();self.instance=Widget(1845);self.listHeight=495;self.listWidth=1845;self.entryFontSize=27;self.calls=[];self.epoch=120;self.base=2000000000
+ def __init__(self,selChangedCB=None,**kwargs):self.current=(EVENT,SERVICE);self.onSel=selChangedCB;self.l=Content();self.instance=Widget(1845);self.listHeight=495;self.listWidth=1845;self.entryFontSize=27;self.calls=[];self.time_epoch=kwargs.get("time_epoch",120);self.base=2000000000
  def getCurrent(self):return self.current
  def setItemsPerPage(self):self.l.setItemHeight(82)
+ def recalcEntrySize(self):pass
  def setShowServiceMode(self,mode):self.calls.append(('service-mode',mode))
  def fillMultiEPG(self,*args):self.calls.append(('fill',args));self.onSel()
  def moveToService(self,ref):self.calls.append(('select',ref))
  def setCurrentlyPlaying(self,ref):self.calls.append(('playing',ref))
- def getServiceRect(self):return Rect(0,64)
- def getEventRect(self):return Rect(64,1781)
- def getTimeEpoch(self):return self.epoch
+ def getServiceRect(self):return Rect(15,64)
+ def getEventRect(self):return Rect(79,1781)
+ def getTimeEpoch(self):return self.time_epoch
  def getTimeBase(self):return self.base
  def resetOffset(self):pass
- def setEpoch(self,e):self.epoch=e
+ def setEpoch(self,e):self.time_epoch=e
  def moveTo(self,*a):pass
 class Timeline:
  def __init__(self):self.position=(15,387);self.instance=Widget(1845,36);self.l=Content();self.time_base=0;self.time_epoch=0;self.foreColor=1;self.backColor=0;self.datefmt='%d-%m'
@@ -94,7 +95,7 @@ def setup(active=True,listscreen=False):
  plugin=NS(GraphMultiEPG=native)
  def launch(session,servicelist=None,**kwargs):return plugin.GraphMultiEPG(session,[SERVICE],lambda *a,**kw:None)
  plugin.main=launch;errors=[];searches=[];program=object()
- compat.install(NS(GraphMultiEPG=native),plugin,InfoBar,cfg,Text,action_scope['HelpableActionMap'],Size,program,lambda s:'translated:'+s,search=lambda session,event,tr:searches.append(event),report_error=errors.append)
+ compat.install(NS(GraphMultiEPG=native),plugin,InfoBar,cfg,Text,action_scope['HelpableActionMap'],Size,program,lambda s:'translated:'+s,search=lambda session,event,tr:searches.append(event),report_error=errors.append,paint_installer=lambda listing:None)
  return NS(config=cfg,plugin=plugin,native=native,InfoBar=InfoBar,program=program,errors=errors,searches=searches)
 class Tests(unittest.TestCase):
  def test_native_multi_entry_opens_owned_layout_and_keeps_selected_event(self):
@@ -155,6 +156,8 @@ class Tests(unittest.TestCase):
   a.config.skin.primary_skin.value='hd_glass17/skin.xml';self.assertEqual(bar.openMultiServiceEPG(False),'native-multi')
  def test_picon_mode_is_per_instance_and_native_config_is_not_overwritten(self):
   a=setup();s=a.plugin.main(Session());s['list'].setShowServiceMode('picon+servicename');self.assertEqual(s['list'].calls[-1],('service-mode','picon'));self.assertEqual(a.config.misc.graph_mepg.servicetitle_mode.value,'picon+servicename')
+ def test_epoch_changes_are_owned_and_do_not_overwrite_native_settings(self):
+  a=setup();s=a.plugin.main(Session());self.assertEqual(s['list'].time_epoch,180);s.updEpoch(240);self.assertEqual(s['list'].time_epoch,240);self.assertEqual(a.config.misc.graph_mepg.prev_time_period.value,120)
  def test_complete_rows_at_hd_fhd_wqhd_uhd_and_large_fonts(self):
   for factor in (2/3,1,4/3,2):
    for font_offset in (0,12):
@@ -164,7 +167,7 @@ class Tests(unittest.TestCase):
   for force in (True,False,True,False):
    s.moveTimeLines(force);self.assertEqual(s['timeline0'].position[0],79);self.assertEqual(timeline.l.rows[0][1]['size'][1],36)
  def test_xml_matches_openatv_geometry_and_has_all_native_timeline_widgets(self):
-  skin=ET.parse(PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml').getroot();own=skin.find("screen[@name='FullHDGlassOpenPLiGraphEPG']");atv=skin.find("screen[@name='GraphicalEPGPIG']");self.assertEqual(own.get('size'),atv.get('size'))
+  skin=ET.parse(PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml').getroot();own=skin.find("screen[@name='FullHDGlassOpenPLiGraphEPG']");atv=skin.find("screen[@name='GraphicalEPGPIG']");self.assertEqual(own.attrib,{**atv.attrib,'name':'FullHDGlassOpenPLiGraphEPG'})
   for source in ('Event','session.VideoPicture','warder_key_red','warder_key_green','warder_key_yellow','warder_key_blue'):
    original=atv.find("widget[@source='%s']"%source);target=own.find("widget[@source='%s']"%source);self.assertIsNotNone(target);self.assertEqual(target.get('position'),original.get('position'));self.assertEqual(target.get('size'),original.get('size'))
   for n in range(6):self.assertIsNotNone(own.find("widget[@name='timeline%d']"%n))

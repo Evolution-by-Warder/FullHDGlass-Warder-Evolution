@@ -7,32 +7,6 @@ or saved graphical-EPG preferences are changed.
 from types import MethodType
 
 
-class _TimelinePixmap:
-    """Translate native timeline coordinates into the owned widget's offset."""
-    def __init__(self, target, offset):
-        self.target, self.offset = target, offset
-
-    @property
-    def position(self):
-        x, y = self.target.position
-        return x - self.offset, y
-
-    @property
-    def instance(self):
-        return self.target.instance
-
-    @property
-    def visible(self):
-        return self.target.visible
-
-    @visible.setter
-    def visible(self, value):
-        self.target.visible = value
-
-    def setPosition(self, x, y):
-        self.target.setPosition(x + self.offset, y)
-
-
 def fit_graph_rows(listing, font_offset, size_class):
     """Use complete rows; larger user fonts reduce rows instead of clipping."""
     height, width = listing.listHeight, listing.listWidth
@@ -60,7 +34,7 @@ def open_search(session, event, translate):
 
 def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
             action_map, size_class, program_info, translate, search=open_search,
-            report_error=None):
+            report_error=None, paint_installer=None, timeline_installer=None):
     """Install a skin-scoped dispatch, including the standard Multi EPG entry."""
     if getattr(graph_plugin, '_fullhdglass_epg_installed', False):
         return True
@@ -72,6 +46,9 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
             not callable(getattr(graph_plugin, 'main', None)) or
             any(not callable(getattr(native, key, None)) for key in required)):
         return False
+    if paint_installer is None:
+        from .warderAtvEpgPaint import install_painter, install_timeline
+        paint_installer, timeline_installer = install_painter, install_timeline
     original_factory = graph_plugin.GraphMultiEPG
     report_error = report_error or (lambda message: None)
 
@@ -111,18 +88,20 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
 
         def _fit_native_list(self):
             listing = self['list']
-            original_rows = listing.setItemsPerPage
+            painter = paint_installer(listing)
+            # Default to the approved three-hour span without changing PLi settings.
+            listing.time_epoch = 180
             original_mode = listing.setShowServiceMode
             timeline = self['timeline_text']
             original_date = timeline.setDateFormat
             original_skin = timeline.applySkin
-            original_entries = timeline.setEntries
+            original_entries = timeline_installer(timeline, painter) if timeline_installer else timeline.setEntries
 
             def rows(component):
-                result = original_rows()
                 offset = config.misc.graph_mepg.ev_fontsize.getValue()
                 fit_graph_rows(component, offset, size_class)
-                return result
+                component.recalcEntrySize()
+                return None
 
             def mode(component, requested):
                 return original_mode('picon')
@@ -135,19 +114,33 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
             def timeline_skin(component, desktop, screen):
                 result = original_skin(desktop, screen)
                 if component.instance:
-                    component.l.setItemHeight(component.instance.size().height())
+                    component.listHeight = component.instance.size().height()
+                    component.listWidth = component.instance.size().width()
+                    component.l.setItemHeight(component.listHeight)
                 return result
 
             def entries(component, epg_list, now, lines, force):
-                offset = component.position[0]
-                return original_entries(epg_list, _TimelinePixmap(now, offset),
-                                        [_TimelinePixmap(line, offset) for line in lines], force)
+                result = original_entries(epg_list, now, lines, force)
+                for line in lines:
+                    line.visible = False
+                return result
 
             listing.setItemsPerPage = MethodType(rows, listing)
             listing.setShowServiceMode = MethodType(mode, listing)
             timeline.setDateFormat = MethodType(date, timeline)
             timeline.applySkin = MethodType(timeline_skin, timeline)
             timeline.setEntries = MethodType(entries, timeline)
+
+        def updEpoch(self, minutes):
+            self['list'].setEpoch(minutes)
+            self.moveTimeLines(True)
+
+        def onSetupClose(self, ignore=-1):
+            epoch = self['list'].time_epoch
+            result = native.onSetupClose(self, ignore)
+            self['list'].setEpoch(epoch)
+            self.moveTimeLines(True)
+            return result
 
         def _sync_labels(self):
             if 'warder_key_red' not in self:

@@ -1,11 +1,11 @@
-name: FullHDGlass OpenPLi Multi EPG TEST 1.0.64-test1
+name: FullHDGlass OpenPLi Multi EPG TEST 1.0.64-test2
 on:
   push:
-    branches: [test/openpli-graph-epg-1.0.64-test1-20261102]
+    branches: [test/openpli-graph-epg-1.0.64-test2-20261102]
 permissions:
   contents: read
 concurrency:
-  group: fullhdglass-openpli-graph-epg-test1
+  group: fullhdglass-openpli-graph-epg-test2
   cancel-in-progress: true
 jobs:
   openpli:
@@ -48,11 +48,11 @@ jobs:
         run: |
           python tools/build-setup-style-test.py
           python tools/verify-setup-style-ipk.py
-          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.64-test1_all.ipk --version 1.0.64-test1 --report packages/test/openpli-guide-install-verification.json --upstream upstream/enigma2/lib/python
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.64-test2_all.ipk --version 1.0.64-test2 --report packages/test/openpli-guide-install-verification.json --upstream upstream/enigma2/lib/python
           python tools/verify-spinner-choice-ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: FullHDGlass-1.0.64-test1-OpenPLi-guide
+          name: FullHDGlass-1.0.64-test2-OpenPLi-guide
           path: packages/test/*
           retention-days: 30
       - name: Publish immutable TEST without advancing stable updates
@@ -60,12 +60,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.64-test1_all.ipk
-          TAG=v1.0.64-test1
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.64-test2_all.ipk
+          TAG=v1.0.64-test2
           if gh release view "$TAG" >/dev/null 2>&1; then
             mkdir -p /tmp/immutable
             gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
             cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
           else
-            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.64-test1 — OpenPLi Multi EPG TEST' --notes-file docs/FULLHDGLASS-1.0.64-test1.md
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.64-test2 — OpenPLi Multi EPG TEST' --notes-file docs/FULLHDGLASS-1.0.64-test2.md
           fi

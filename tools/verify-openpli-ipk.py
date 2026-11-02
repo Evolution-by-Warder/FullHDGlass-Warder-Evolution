@@ -65,6 +65,7 @@ def verify(package,report,upstream):
         subprocess.run([sys.executable,str(Path(__file__).with_name('test-openpli-crash-regressions.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
         subprocess.run([sys.executable,str(Path(__file__).with_name('test-framed-pig.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
         if (plugin/'warderOpenPliEpg.py').is_file():
+            subprocess.run([sys.executable,str(Path(__file__).with_name('test-atv-epg-paint.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
             subprocess.run([sys.executable,str(Path(__file__).with_name('test-openpli-graph-epg.py')),'--upstream',str(upstream),'--package-root',str(root),'-q'],check=True)
         result={'version':VERSION,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),
                 'python_payloads_compiled_for_39_grammar':python_files,
