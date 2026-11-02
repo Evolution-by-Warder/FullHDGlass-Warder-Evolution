@@ -1,3 +1,7 @@
+# OpenPLi test IPK requested — 2 November 2026
+
+Owner requested a downloadable OpenPLi test. Prepare isolated FullHDGlass 1.0.62-test3 from verified OpenPLi compatibility source 908dc1c1213cffeebcda7d196649ce0b0fe5fd8a on test/openpli-1.0.62-test3-20261102. Version/control/header/history labels are staged reproducibly by tools/prepare-openpli-ipk.py. Both native OpenPLi and OpenATV CI matrices gate publication, followed by every-byte IPK verification and the actual shipped install-health function/adapter replay. No production feed changes. Public proof is recorded after verifying the final download; physical OpenPLi receiver confirmation remains pending. PiconHub/GSU runtime and packages remain unchanged.
+
 # OpenPLi source compatibility review — 2 November 2026
 
 Owner accepted the repaired OpenATV candidates and requested an OpenPLi review. Work is isolated on compat/openpli9-20261102 from accepted FullHDGlass 1.0.62-test2. FullHDGlass needs OpenPLi-only native caption bindings, the complete modern keyboard alias, and protection against legacy replacements of image-owned files. Both release-9.2 and develop are checked; PiconHub/GSU source checks and regressions pass without runtime edits. No packages or production feeds changed. Physical OpenPLi receiver/GLES/WQHD acceptance is pending; use a new test version before binary distribution. Details: docs/OPENPLI-20261102.md and reports/openpli*-20261102.json. Earlier advice below is historical.

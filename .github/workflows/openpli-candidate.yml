@@ -1,0 +1,65 @@
+name: FullHDGlass OpenPLi test IPK 1.0.62-test3
+on:
+  push:
+    branches: [test/openpli-1.0.62-test3-20261102]
+permissions:
+  contents: read
+concurrency:
+  group: fullhdglass-openpli-test3
+  cancel-in-progress: true
+jobs:
+  openpli:
+    uses: ./.github/workflows/verify-openpli-compatibility.yml
+  openatv:
+    uses: ./.github/workflows/verify-system-screen-compatibility.yml
+  package:
+    needs: [openpli, openatv]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: |
+          python -m pip install --quiet 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Stage new version, preserve approved helpers and all feeds
+        run: python tools/prepare-openpli-ipk.py
+      - name: Build and verify every payload byte and shipped install checks
+        run: |
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test3_all.ipk --report packages/test/openpli-install-verification.json
+          python tools/verify-spinner-choice-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.62-test3-OpenPLi
+          path: packages/test/*
+          retention-days: 30
+      - name: Publish immutable isolated TEST without changing updates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.62-test3_all.ipk
+          TAG=v1.0.62-test3
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/immutable
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable
+            cmp "$PACKAGE" "/tmp/immutable/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --prerelease --latest=false --title 'FullHDGlass 1.0.62-test3 — OpenPLi / OpenATV TEST' --notes-file docs/FULLHDGLASS-1.0.62-test3.md
+          fi
