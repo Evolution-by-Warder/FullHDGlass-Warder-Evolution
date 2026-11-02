@@ -110,6 +110,11 @@ class Tests(unittest.TestCase):
   a=setup();s=a.plugin.main(Session());self.assertIs(type(s).zapTo,a.native.zapTo);self.assertIs(type(s).eventSelected,a.native.eventSelected)
   self.assertEqual(s['gmepgactions'].actions['red'].__func__,a.native.zapTo)
   self.assertEqual(s['warderEpgActions'].prio,-2)
+ def test_help_lists_only_the_actual_owned_short_colour_actions(self):
+  a=setup();s=a.plugin.main(Session())
+  for colour in ('red','yellow','blue'):
+   entries=[(owner,entry) for owner,context,items in s.helpList for entry in items if context=='GMEPGSelectActions' and entry[0]==colour]
+   self.assertEqual(len(entries),1);self.assertIs(entries[0][0],s['warderEpgActions'])
  def test_program_info_lock_cancel_empty_event_and_open_failure(self):
   a=setup();s=a.plugin.main(Session());s.warderProgramInfo();s.warderProgramInfo();self.assertEqual(len(s.session.opens),1);s.session.opens[-1][0]();s.warderProgramInfo();self.assertEqual(len(s.session.opens),2)
   s.warderProgramInfoClosed();s.session.fail=True;s.warderProgramInfo();self.assertFalse(s._warderProgramInfoOpen);self.assertEqual(len(a.errors),1)
@@ -155,6 +160,14 @@ class Tests(unittest.TestCase):
   for source in ('Event','session.VideoPicture','warder_key_red','warder_key_green','warder_key_yellow','warder_key_blue'):
    original=atv.find("widget[@source='%s']"%source);target=own.find("widget[@source='%s']"%source);self.assertIsNotNone(target);self.assertEqual(target.get('position'),original.get('position'));self.assertEqual(target.get('size'),original.get('size'))
   for n in range(6):self.assertIsNotNone(own.find("widget[@name='timeline%d']"%n))
+ def test_registered_addition_keeps_the_entire_stable_skin_unchanged(self):
+  import hashlib
+  record=json.loads((ROOT/'design/openpli-graph-epg/layout.json').read_text());text=(PAYLOAD/'usr/share/enigma2/hd_glass17/skin.xml').read_text()
+  for item in record['additions']:
+   self.assertEqual(text.count(item['inserted_text']),1);text=text.replace(item['inserted_text'],'',1)
+  self.assertEqual(hashlib.sha256(text.encode()).hexdigest(),record['stable_skin_sha256'])
+  changed=text.replace('FullHDGlass Graphical Guide','unexpected OpenATV change',1)
+  self.assertNotEqual(hashlib.sha256(changed.encode()).hexdigest(),record['stable_skin_sha256'])
  def test_registration_and_bootstrap_are_openpli_only(self):
   tree=ast.parse((RUNTIME/'plugin.py').read_text());pli=next(n for n in tree.body if isinstance(n,ast.If) and ast.unparse(n.test)=='_WarderOpenPli');self.assertIn('_installWarderOpenPliEpg',ast.unparse(pli));plugins=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='Plugins');self.assertIn('FullHDGlass Multi EPG',ast.unparse(plugins))
 if __name__=='__main__':unittest.main(argv=[sys.argv[0]]+rest)

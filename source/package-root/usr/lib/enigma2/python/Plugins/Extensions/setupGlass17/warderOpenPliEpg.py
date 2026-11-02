@@ -90,6 +90,14 @@ def install(graph_module, graph_plugin, info_bar_epg, config, static_text,
                 'yellow': (self.enterDateTime, translate('Goto Date/Time')),
                 'blue': (self.warderSearch, translate('EPG Search')),
             }, -2)
+            # HELP must describe the active colour actions, not also advertise
+            # the native red-zap/yellow-mode/blue-primetime bindings underneath.
+            native_actions = self['gmepgactions']
+            for index, record in enumerate(self.helpList):
+                if len(record) == 3 and record[0] is native_actions:
+                    owner, context, entries = record
+                    self.helpList[index] = (owner, context, [entry for entry in entries
+                                            if entry[0] not in ('red', 'yellow', 'blue')])
             self._fit_native_list()
             self._sync_labels()
             self.setTitle('')
