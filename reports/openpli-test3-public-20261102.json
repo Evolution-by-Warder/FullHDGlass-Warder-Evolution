@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-02",
+  "product": "FullHDGlass",
+  "version": "1.0.62-test3",
+  "source": "11d1cb9dd31cc766a90fd7387590c1cec3a098d9",
+  "base_compatibility_source": "908dc1c1213cffeebcda7d196649ce0b0fe5fd8a",
+  "tag": "v1.0.62-test3",
+  "prerelease": true,
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.62-test3",
+  "assets": [
+    {
+      "name": "enigma2-plugin-skins-fullhdglass_1.0.62-test3_all.ipk",
+      "bytes": 17212388,
+      "digest": "sha256:e0fbe2d3889be86acefa187de18b7c3d1735178d9d6962964c7cd9ca679ed66b",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62-test3/enigma2-plugin-skins-fullhdglass_1.0.62-test3_all.ipk"
+    },
+    {
+      "name": "enigma2-plugin-skins-fullhdglass_1.0.62-test3_all.ipk.sha256",
+      "bytes": 120,
+      "digest": "sha256:b004abed8d3b708b259565c3fb51cffe01ee5acd3328b8ca130fdbb26028d660",
+      "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.62-test3/enigma2-plugin-skins-fullhdglass_1.0.62-test3_all.ipk.sha256"
+    }
+  ],
+  "verification": {
+    "version": "1.0.62-test3",
+    "bytes": 17212388,
+    "sha256": "e0fbe2d3889be86acefa187de18b7c3d1735178d9d6962964c7cd9ca679ed66b",
+    "python_payloads_compiled_for_39_grammar": 124,
+    "shipped_postinst_payload_function_passed": true,
+    "installed_version_status_fixture_passed": true,
+    "packaged_openpli_adapter_and_keyboard_passed": true,
+    "physical_receiver_verified": false,
+    "production_feeds_changed": false,
+    "public_sidecar_matches": true,
+    "public_bytes_equal_locally_verified_ipk": true,
+    "independent_python_compile_count": 124
+  },
+  "ci": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41462063798",
+  "ci_conclusion": "success",
+  "target": "OpenPLi 9.2/develop Python 3, with existing OpenATV changes retained",
+  "scope_limit": "Shipped install-health function and adapter replay, with an installed-status fixture; full receiver installation and physical OpenPLi/GLES/display validation await user testing.",
+  "production_feeds_changed": false,
+  "next_normal_minimum": "1.0.63"
+}
