@@ -1,3 +1,19 @@
+## Queued follow-up — 2026-11-03: Radio Mode artwork lookup
+
+Owner requests reviewing the FullHDGlass Radio Mode artwork engine after the
+Radio Warder Evolution lookup fix is confirmed. Apply the same verified public
+catalogue query order and artwork matching to the skin: an initial global iTunes
+music query (`media=music`, `limit=20`), regional fallbacks, complete named artists
+within abbreviated ICY credits, and missing descriptive title subtitles.
+Exact recording matches retain priority; unrelated artists and conflicting
+remix/live/acoustic/instrumental versions must still be rejected.
+
+Verify CHILL77 / PAPAOUTAI against the full catalogue credit and descriptive
+subtitle, then check latency, caches, stale results on song/service changes,
+OpenATV and OpenPLi. Preserve shared lyrics identity, approved graphics,
+settings and the bounded background worker. This is a queued task only;
+no skin runtime, package version or update feed is changed by this note.
+
 ## Active follow-up — 2026-11-02: OpenPLi graphical Multi EPG TEST
 
 **FullHDGlass 1.0.64-test1** is published as an isolated TEST candidate for OpenPLi parity with OpenATV. The shared programme-detail window opens on red; green keeps the native timer editor, yellow selects date/time and blue searches the selected title. Standard Multi EPG and the explicit FullHDGlass Multi EPG entry open the owned guide. Native OK/zap/preview, bouquet changes and settings remain with OpenPLi.
