@@ -1,9 +1,10 @@
 name: Publish Vivacom 13E references
 on:
   push:
-    branches: [release/vivacom-13e-refs-20261103]
+    branches: [release/vivacom-approved-20261103]
     paths:
       - .github/workflows/publish-vivacom-13e-20261103.yml
+      - tools/publish-vivacom-13e-20261103.py
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: release/vivacom-13e-refs-20261103
+          ref: release/vivacom-approved-20261103
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /tools/publish-vivacom-13e-20261103.py
@@ -42,8 +43,8 @@ jobs:
               group=files[start:start+2]
               subprocess.run(['git','add','--sparse','-f','--',*[str(x) for x in group]],check=True)
               subprocess.run(['git','commit','-m',f'Publish verified Vivacom 13E parts {start+1}-{start+len(group)}'],check=True)
-              subprocess.run(['git','push','origin','HEAD:release/vivacom-13e-refs-20261103'],check=True)
+              subprocess.run(['git','push','origin','HEAD:release/vivacom-approved-20261103'],check=True)
           subprocess.run(['git','add','--sparse','assets/warder/downloads/picons/channels/manifest.json','assets/warder/downloads/picons/channels/SHA256SUMS'],check=True)
           subprocess.run(['git','commit','-m','Activate Vivacom 13E reference aliases in live catalogue'],check=True)
-          subprocess.run(['git','push','origin','HEAD:release/vivacom-13e-refs-20261103'],check=True)
+          subprocess.run(['git','push','origin','HEAD:release/vivacom-approved-20261103'],check=True)
           PY
