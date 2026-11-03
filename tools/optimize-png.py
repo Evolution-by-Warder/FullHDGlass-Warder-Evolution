@@ -62,6 +62,9 @@ def optimize(raw):
 def optimize_tree(root):
     records=[]
     for path in sorted(Path(root).rglob('*.png')):
+        # These source-pinned ATV assets are checked byte-for-byte in the IPK.
+        if path.relative_to(root).as_posix().startswith('usr/share/enigma2/hd_glass17/epg/atv/'):
+            continue
         raw=path.read_bytes();packed=optimize(raw)
         if packed!=raw:
             path.write_bytes(packed)

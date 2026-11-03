@@ -283,8 +283,8 @@ def _warderUiText(text):
 	except Exception:
 		lang = "en"
 	warder = {
-		"sk": {"PROGRAM INFO": "Info o programe", "Station name:": "Názov stanice:", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Genre:": "Žáner:", "Year:": "Rok:", "Country:": "Krajina:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:", "Rating:": "Hodnotenie:"},
-		"cs": {"PROGRAM INFO": "Info o programu", "Station name:": "Název stanice:", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Genre:": "Žánr:", "Year:": "Rok:", "Country:": "Země:", "Duration:": "Délka:", "Broadcast:": "Vysílání:", "Rating:": "Hodnocení:"}
+		"sk": {"PROGRAM INFO": "Info o programe", "Station name:": "Názov stanice:", "Close": "Zavrieť", "Add Timer": "Pridať časovač", "Goto Date/Time": "Prejsť na dátum/čas", "EPG Search": "Vyhľadať v EPG", "Station:": "Stanica:", "Genre:": "Žáner:", "Year:": "Rok:", "Country:": "Krajina:", "Duration:": "Dĺžka:", "Broadcast:": "Vysielanie:", "Rating:": "Hodnotenie:", "EPG Search is not installed.": "Vyhľadávanie EPG nie je nainštalované."},
+		"cs": {"PROGRAM INFO": "Info o programu", "Station name:": "Název stanice:", "Close": "Zavřít", "Add Timer": "Přidat časovač", "Goto Date/Time": "Přejít na datum/čas", "EPG Search": "Vyhledat v EPG", "Station:": "Stanice:", "Genre:": "Žánr:", "Year:": "Rok:", "Country:": "Země:", "Duration:": "Délka:", "Broadcast:": "Vysílání:", "Rating:": "Hodnocení:", "EPG Search is not installed.": "Vyhledávání EPG není nainstalováno."}
 	}
 	if text in warder.get(lang, {}):
 		return warder[lang][text]
@@ -1239,6 +1239,8 @@ def Plugins(path, **kwargs):
 		ret = [ PluginDescriptor(name=ui_text("FullHDGlass configuration"), description=ui_text("Configure the FullHDGlass skin"), where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="images/warder-config.png"),
 				PluginDescriptor(where=PluginDescriptor.WHERE_MENU, fnc=startSetup17),
 							PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startHdg17)]
+		if _warderOpenPliEpgReady:
+			ret.append(PluginDescriptor(name="FullHDGlass Multi EPG", description=_warderUiText("PROGRAM INFO"), where=[PluginDescriptor.WHERE_EVENTINFO, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=warderOpenPliMultiEpg))
 		if config.plugins.setupGlass17.par78.value != "n":
 			ret.append(PluginDescriptor(name=config.plugins.setupGlass17.par78.getText()+" (FullHDGlass)",where = PluginDescriptor.WHERE_EXTENSIONSMENU,fnc = main17))
 	return ret
@@ -1341,6 +1343,27 @@ try:
 	_installWarderEpg(_warderEpgModule, config, StaticText, _warderUiText, WarderProgramInfo, Writelog, InfoBar)
 except (ImportError, AttributeError):
 	pass
+
+
+_warderOpenPliEpgReady = False
+if _WarderOpenPli:
+	try:
+		from Plugins.Extensions.GraphMultiEPG import GraphMultiEpg as _warderPliGraph
+		from Plugins.Extensions.GraphMultiEPG import plugin as _warderPliGraphPlugin
+		from Screens.InfoBarGenerics import InfoBarEPG as _warderPliInfoBarEpg
+		from Components.ActionMap import HelpableActionMap as _warderPliEpgActions
+		from enigma import eSize as _warderPliNativeSize
+		from .warderOpenPliEpg import install as _installWarderOpenPliEpg
+		_warderOpenPliEpgReady = _installWarderOpenPliEpg(
+			_warderPliGraph, _warderPliGraphPlugin, _warderPliInfoBarEpg,
+			config, StaticText, _warderPliEpgActions, _warderPliNativeSize,
+			WarderProgramInfo, _warderUiText, report_error=Writelog)
+	except (ImportError, AttributeError) as error:
+		Writelog("FullHDGlass OpenPLi graphical EPG: %s" % error)
+
+
+def warderOpenPliMultiEpg(session, servicelist=None, **kwargs):
+	return _warderPliGraphPlugin.main(session, servicelist=servicelist, **kwargs)
 
 
 def _warderRadioButtonTrace(self, *args, **kwargs):

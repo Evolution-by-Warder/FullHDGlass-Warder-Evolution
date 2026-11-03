@@ -18,6 +18,11 @@ LAYOUTS=style.extract(CURRENT)
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_openpli_graph_hook_changes_are_not_silently_approved(self):
+        changed=CURRENT.replace('WarderProgramInfo, _warderUiText, report_error=Writelog)', 'None, _warderUiText, report_error=Writelog)',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
     def test_openpli_hook_changes_are_not_silently_approved(self):
         changed=CURRENT.replace('domScreens as _WarderSkinScreens','screens as _WarderSkinScreens',1)
         self.assertNotEqual(changed,CURRENT)

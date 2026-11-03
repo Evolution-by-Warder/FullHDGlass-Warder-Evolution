@@ -39,6 +39,9 @@ jobs:
           PYTHONDONTWRITEBYTECODE: '1'
           PYTHONWARNINGS: ignore
         run: |
+          python tools/materialize-atv-epg-assets.py
+          python tools/test-atv-epg-paint.py --upstream upstream/enigma2/lib/python -q
+          python tools/test-openpli-graph-epg.py --upstream upstream/enigma2/lib/python -q
           python tools/test-openpli-interface-guard.py -q
           python tools/check-openpli-interfaces.py --plugin-root source/package-root/usr/lib/enigma2/python --upstream upstream/enigma2/lib/python --report /tmp/openpli-interfaces.json
           python tools/test-framed-pig.py --upstream upstream/enigma2/lib/python -q

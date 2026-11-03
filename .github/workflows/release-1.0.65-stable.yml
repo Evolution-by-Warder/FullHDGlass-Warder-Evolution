@@ -1,0 +1,124 @@
+name: Publish approved FullHDGlass 1.0.65 stable
+on:
+  push:
+    branches: [release/fullhdglass-1.0.65-stable-20261103]
+permissions:
+  contents: read
+concurrency:
+  group: fullhdglass-stable-1.0.65
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      actions: read
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            source
+            tools
+            design
+            docs
+            reports
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenPLi/enigma2
+          ref: 65dc39356b2863915745176a16a562ec1aa366b4
+          path: upstream/enigma2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Install build dependencies
+        run: |
+          python -m pip install --quiet 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Confirm exact approved source and successful native/package checks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          CANDIDATE=9189b418bfc7fd8c055d41c6f5b10800b24e974d
+          git fetch --no-tags --depth=1 origin "$CANDIDATE"
+          test "$(git rev-parse HEAD:source)" = "$(git rev-parse $CANDIDATE:source)"
+          test "$(git rev-parse HEAD:design)" = "$(git rev-parse $CANDIDATE:design)"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/41527113716/jobs" --jq '[.jobs[] | select(.name != "package")] | length == 6 and all(.conclusion == "success")' | grep -qx true
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/41528506927/jobs" --jq '.jobs | length > 0 and all(.conclusion == "success")' | grep -qx true
+      - name: Prepare stable version and original assets
+        run: python tools/prepare-fullhdglass-1.0.65.py
+      - name: Build and verify actual stable IPK and exact test2 parity
+        run: |
+          python tools/build-setup-style-test.py
+          python tools/verify-setup-style-ipk.py
+          python tools/verify-openpli-ipk.py packages/test/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk --version 1.0.65 --report reports/fullhdglass-1.0.65/final-install.json --upstream upstream/enigma2/lib/python
+          python tools/verify-spinner-choice-ipk.py
+          python tools/verify-fullhdglass-1.0.65-parity.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-1.0.65-stable
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk*
+            reports/fullhdglass-1.0.65/*.json
+          retention-days: 90
+      - name: Publish immutable normal release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE=packages/test/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk
+          TAG=v1.0.65
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            mkdir -p /tmp/immutable-fullhdglass
+            gh release download "$TAG" --pattern "$(basename "$PACKAGE")" --dir /tmp/immutable-fullhdglass
+            cmp "$PACKAGE" "/tmp/immutable-fullhdglass/$(basename "$PACKAGE")"
+          else
+            gh release create "$TAG" "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest=false --title 'FullHDGlass 1.0.65' --notes-file docs/FULLHDGLASS-1.0.65.md
+          fi
+      - name: Verify public package and prepare release records and feeds
+        run: python tools/activate-fullhdglass-1.0.65.py
+      - name: Publish stable sources, package copy and main update feeds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin main:refs/remotes/origin/main
+          EXPECTED=$(python -c 'import json; print(json.load(open("docs/FULLHDGLASS-1.0.65-STABLE.json"))["expected_main"])')
+          test "$(git rev-parse origin/main)" = "$EXPECTED"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse -u
+          python - <<'PYADD'
+          import subprocess
+          paths=subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z']).decode().split('\0')
+          paths=[p for p in paths if p and not p.startswith(('upstream/','packages/test/','plugin/build/','plugin/dist/')) and p!='reports/fullhdglass-1.0.65/candidate.ipk']
+          if paths:subprocess.run(['git','add','--sparse','--']+paths,check=True)
+          PYADD
+          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk.sha256
+          git commit -m 'Release FullHDGlass 1.0.65: approved OpenPLi EPG and production records [skip ci]'
+          INTEGRATION=$(git commit-tree 'HEAD^{tree}' -p HEAD -p origin/main -m 'Integrate approved FullHDGlass 1.0.65 stable [skip ci]')
+          git push origin "$INTEGRATION:refs/heads/main"
+      - name: Activate the actual installed TEST updater and mark latest stable
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for FEED_PATH in update-test.json update-production.json; do
+            export FEED_PATH
+            gh api "repos/$GITHUB_REPOSITORY/contents/$FEED_PATH?ref=warder-modernization-work" > /tmp/fullhdglass-live-feed.json
+            python - <<'PYFEED'
+          import os,json,base64
+          from pathlib import Path
+          old=json.loads(Path('/tmp/fullhdglass-live-feed.json').read_text());name=os.environ['FEED_PATH']
+          body={'message':'Activate FullHDGlass 1.0.65 stable update channel','branch':'warder-modernization-work','sha':old['sha'],'content':base64.b64encode(Path(name).read_bytes()).decode()}
+          Path('/tmp/fullhdglass-live-feed-put.json').write_text(json.dumps(body))
+          PYFEED
+            gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/$FEED_PATH" --input /tmp/fullhdglass-live-feed-put.json > /tmp/fullhdglass-live-feed-result.json
+          done
+          gh release edit v1.0.65 --latest

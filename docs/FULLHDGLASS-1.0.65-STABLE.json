@@ -1,0 +1,32 @@
+{
+  "product": "FullHDGlass",
+  "repo": "FullHDGlass-Warder-Evolution",
+  "version": "1.0.65",
+  "candidate": "1.0.64-test2",
+  "candidate_sha": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323",
+  "prefix": "enigma2-plugin-skins-fullhdglass",
+  "expected_main": "ac87819e571f812465a9852bfb8cad83de8a59bf",
+  "tool_dir": "tools",
+  "package": "packages/test/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
+  "runtime": "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17",
+  "notes_sk": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.",
+  "notes_en": "Fixes the FullHDGlass graphical Multi EPG on OpenPLi using the approved OpenATV page, painters and graphics. Aligns fonts, event backgrounds and timeline; bundles original textures and timer icons. Red opens the shared programme detail, green the native timer, yellow date/time and blue EPG search. Common OpenPLi/OpenATV package. Restart the GUI after updating.",
+  "key": "full",
+  "date": "2026-11-03",
+  "authorization": "Owner explicitly requested the tested OpenPLi EPG test2 repairs as a normal stable release on 3 November 2026.",
+  "source_branch": "release/fullhdglass-1.0.65-stable-20261103",
+  "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "peers": {
+    "fullhdglass": "1.0.65",
+    "gsu": "13.41-r4",
+    "piconhub": "0.1.40"
+  },
+  "notes_i18n": {
+    "sk": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.",
+    "en": "Fixes the FullHDGlass graphical Multi EPG on OpenPLi using the approved OpenATV page, painters and graphics. Aligns fonts, event backgrounds and timeline; bundles original textures and timer icons. Red opens the shared programme detail, green the native timer, yellow date/time and blue EPG search. Common OpenPLi/OpenATV package. Restart the GUI after updating."
+  },
+  "candidate_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.64-test2/enigma2-plugin-skins-fullhdglass_1.0.64-test2_all.ipk",
+  "native_validation_run": 41527113716,
+  "candidate_packaging_run": 41528506927,
+  "candidate_source": "9189b418bfc7fd8c055d41c6f5b10800b24e974d"
+}
