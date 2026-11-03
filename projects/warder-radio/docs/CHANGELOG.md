@@ -1,3 +1,24 @@
+# 0.1.0-test5
+
+Moves the country heading entirely into the centre panel as Select country –
+Slovakia ▾, translated for the selected UI language and current country. The
+permanent down arrow indicates that the control opens a selection list. The
+Select country label and separator are white, while the country and arrow are
+cyan blue, including when focused. Remote focus adds a leading pointer. The duplicate left-panel heading is removed from
+view. The Settings action remains Choose country and Now playing is unchanged.
+Slovak and Czech country names are localized without changing catalogue IDs.
+
+Opening Warder Radio now automatically resumes the user's last played radio
+station from existing persistent history and selects it in its list. Fresh
+catalogue data is preferred for that station identity, with the remembered entry
+as fallback. First use remains idle until a station is selected. Resume makes
+one attempt, does not rewrite history, and restores the previous TV service on
+close. No playback is started during installation or plugin discovery.
+
+The new strings are complete in all 21 UI languages. Includes native regression
+coverage for startup resume, custom streams, failed starts, focused selector and
+return to the previous TV service.
+
 # 0.1.0-test4
 
 Renames the first Settings action to Choose country, using the same translated

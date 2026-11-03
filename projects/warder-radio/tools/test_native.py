@@ -67,6 +67,7 @@ class Widget:
     def hide(self): pass
     def setText(self, text): self.text = text
     def setTitle(self, text): self.text = text
+    def setForegroundColor(self, color): self.foreground = color
     def setPixmap(self, value): self.pixmap = value
     def setPixmapFromFile(self, path):
         assert Path(path).is_file(), path
@@ -127,7 +128,7 @@ DESKTOP = [1920, 1080]
 getDesktop = lambda unused: NS(size=lambda: NS(width=lambda: DESKTOP[0], height=lambda: DESKTOP[1]))
 gfont = lambda name, size: (name, size)
 module('enigma', eTimer=Timer, eServiceReference=Reference, eListboxPythonMultiContent=Content,
-       eListboxPythonStringContent=Content, gFont=gfont, getDesktop=getDesktop,
+       eListboxPythonStringContent=Content, gFont=gfont, getDesktop=getDesktop, gRGB=lambda value: value,
        RT_HALIGN_LEFT=1, RT_VALIGN_CENTER=2, RT_ELLIPSIS=4,
        BT_SCALE=1, BT_KEEP_ASPECT_RATIO=2, BT_HALIGN_CENTER=4, BT_VALIGN_CENTER=8,
        iPlayableService=NS(evStart=0, evUpdatedInfo=1, evEOF=2, evTuneFailed=3),
@@ -377,13 +378,18 @@ class NativeTests(unittest.TestCase):
 
     def test_country_header_opens_directly_and_selection_persists_without_interrupting_audio(self):
         screen, session, _ = self.new()
-        self.assertEqual(screen['navtitle'].getText(), radio.t('Country'))
+        self.assertEqual(screen['navtitle'].getText(), '')
+        self.assertIn(radio.t('Select country'), screen['heading'].getText())
+        self.assertIn('▾', screen['heading'].getText())
+        self.assertTrue(screen['heading'].getText().startswith('\\c00ffffff'))
+        self.assertIn('\\c0000ceff' + radio.group_label(screen.active_group), screen['heading'].getText())
         self.assertEqual(screen['nowlabel'].getText(), radio.t('Now playing'))
         screen.play()
         playing = session.nav.current
         screen.up()
         self.assertEqual(screen.focus, 'country')
         self.assertFalse(screen['stations'].instance.selectionEnabled)
+        self.assertEqual(screen['heading'].instance.foreground, 0xffffff)
         screen.ok()
         dialog = session.dialogs[-1]
         self.assertEqual(dialog[-1]['title'], radio.t('Choose country'))
@@ -392,7 +398,7 @@ class NativeTests(unittest.TestCase):
         self.assertEqual(screen.focus, 'stations')
         self.assertEqual(screen.active_group, 'Čechy')
         self.assertTrue(all(item['group'] == 'Čechy' for item in screen.rows))
-        self.assertIn('Čechy', screen['heading'].getText())
+        self.assertIn(radio.group_label('Čechy'), screen['heading'].getText())
         self.assertEqual(Store(self.tmp.name).group, 'Čechy')
         self.assertIs(session.nav.current, playing)
         screen.up(); screen.down()
@@ -414,9 +420,39 @@ class NativeTests(unittest.TestCase):
         self.assertEqual(screen.current(), before)
         screen.mode = 'history'; screen.refresh_rows()
         self.assertEqual(screen['section'].getText(), radio.t('History'))
-        self.assertIn(screen.active_group, screen['heading'].getText())
+        self.assertIn(radio.group_label(screen.active_group), screen['heading'].getText())
         screen.set_focus('country'); screen.page_down()
         self.assertEqual(screen.focus, 'stations')
+
+    def test_reopening_resumes_last_played_station_and_restores_previous_tv_on_exit(self):
+        from WarderRadio.model import Catalogue
+        item = Catalogue(self.tmp.name).search(group='Čechy')[7]
+        store = Store(self.tmp.name)
+        store.played(item)
+        screen, session, _ = self.new()
+        self.assertEqual(len(session.nav.calls), 1)
+        self.assertTrue(screen.playback.owns())
+        self.assertEqual(screen.playback.current['id'], item['id'])
+        self.assertEqual(screen.current()['id'], item['id'])
+        self.assertEqual(screen.active_group, 'Čechy')
+        self.assertEqual(len(Store(self.tmp.name).history), 1)
+        original = screen.playback.previous
+        screen.cleanup()
+        self.assertIs(session.nav.current, original)
+
+    def test_reopening_uses_remembered_custom_station_and_handles_start_failure_once(self):
+        store = Store(self.tmp.name)
+        item = store.add('My saved station', 'https://radio.example/custom')
+        store.played(item)
+        screen, session, _ = self.new()
+        self.assertEqual(screen.current()['name'], 'My saved station')
+        self.assertEqual(screen.playback.current['url'], item['url'])
+        screen.cleanup()
+        with patch.object(Navigation, 'playService', return_value=1) as start:
+            failed, _, _ = self.new()
+            self.assertEqual(start.call_count, 1)
+            self.assertEqual(failed['status'].getText(), radio.t('Cannot play station'))
+            self.assertFalse(failed.playback.owns())
 
     def test_timer_signal_connection_api_also_disconnects(self):
         class SignalTimer:

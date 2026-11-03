@@ -34,3 +34,9 @@ def t(text):
 
 def rtl():
     return language_code() == 'fa'
+
+
+def group_label(group):
+    """Translate display names while retaining catalogue group identities."""
+    names = {'Slovensko': 'Slovakia', 'Čechy': 'Czechia', 'Custom': 'Custom'}
+    return t(names[group]) if group in names else group

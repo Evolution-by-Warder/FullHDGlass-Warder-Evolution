@@ -20,7 +20,7 @@ from Screens.MessageBox import MessageBox
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 
 from . import ROOT, VERSION
-from .i18n import t, rtl
+from .i18n import t, rtl, group_label
 from .jobs import Jobs
 from .model import Store, Catalogue, Playback
 from .recording import Recording
@@ -82,7 +82,7 @@ class RadioList(MenuList):
                 MultiContentEntryText(pos=(n(126), n(7)), size=(n(460), n(44)), font=0,
                                       flags=flags, text=item['name']),
                 MultiContentEntryText(pos=(n(126), n(54)), size=(n(460), n(30)), font=1,
-                                      flags=flags, text=item.get('group', ''),
+                                      flags=flags, text=group_label(item.get('group', '')),
                                       color=0x89acc4, color_sel=0xb8e8f8)]
 
 
@@ -126,7 +126,7 @@ class WarderRadio(Screen):
         self['art'] = Pixmap()
         self['activity'] = CanvasSource()
         self['version'].setText('v' + VERSION)
-        self['navtitle'].setText(t('Country'))
+        self['navtitle'].setText('')
         self['nowlabel'].setText(t('Now playing'))
         self['station'].setText(t('Ready to listen'))
         self['track'].setText(t('Select a station and press OK'))
@@ -164,6 +164,7 @@ class WarderRadio(Screen):
         self.poll_timer.start(150)
         self.clock_timer.start(1000)
         self.visual_timer.start(180)
+        self.resume_last_station()
         self.check_updates()
 
     def notify(self, message, error=False):
@@ -269,15 +270,32 @@ class WarderRadio(Screen):
         row = self['stations'].getCurrent()
         return row[0] if row else None
 
+    def resume_last_station(self):
+        if not self.store.history:
+            return
+        previous = self.store.history[0]
+        item = next((row for row in self.catalogue.items + self.store.custom
+                     if row['id'] == previous['id']), previous)
+        if not any(row['id'] == item['id'] for row in self.rows):
+            self.active_group = item['group']
+            self.refresh_rows()
+        index = next((i for i, row in enumerate(self.rows) if row['id'] == item['id']), None)
+        if index is not None:
+            self['stations'].moveToIndex(index)
+            self.update_count()
+        self.play_item(item, remember=False)
+
     def play(self):
-        item = self.current()
+        self.play_item(self.current())
+
+    def play_item(self, item, remember=True):
         if item is None:
             return
         self.playing = False
         self['artist'].setText('')
         self['track'].setText(t('Connecting…'))
         self['station'].setText(item['name'])
-        self['details'].setText(item.get('group', ''))
+        self['details'].setText(group_label(item.get('group', '')))
         self['status'].setText(t('Connecting…'))
         self.show_art(item)
         try:
@@ -285,10 +303,11 @@ class WarderRadio(Screen):
                 self.playback.play_file(item)
             else:
                 self.playback.play(item)
-                try:
-                    self.store.played(item)
-                except OSError:
-                    self.notify(t('Cannot save settings'), True)
+                if remember:
+                    try:
+                        self.store.played(item)
+                    except OSError:
+                        self.notify(t('Cannot save settings'), True)
         except Exception:
             self['status'].setText(t('Cannot play station'))
             self['track'].setText(t('Cannot play station'))
@@ -405,16 +424,20 @@ class WarderRadio(Screen):
                         + t('Recordings folder') + ':\n' + self.recording.directory)
 
     def update_country_caption(self):
-        country = self.active_group or t('All groups')
+        country = group_label(self.active_group) if self.active_group else t('All groups')
         prefix = '› ' if self.focus == 'country' else ''
-        self['heading'].setText(prefix + country + '  ▾')
+        self['heading'].setText('\\c00ffffff' + prefix + t('Select country') + ' – '
+                                + '\\c0000ceff' + country + '  ▾' + '\\C')
+        if self['heading'].instance:
+            color = 0xffffff
+            self['heading'].instance.setForegroundColor(enigma.gRGB(color))
 
     def choose_group(self):
         if self.closed or self.installing:
             return
         self.country_return_focus = self.focus
         self.set_focus('country')
-        choices = [(t('All groups'), '')] + [(group, group) for group in self.catalogue.groups()]
+        choices = [(t('All groups'), '')] + [(group_label(group), group) for group in self.catalogue.groups()]
         if self.store.custom:
             choices.append((t('Custom'), 'Custom'))
         selection = next((i for i, item in enumerate(choices) if item[1] == self.active_group), 0)

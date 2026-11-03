@@ -1,7 +1,7 @@
 # Warder Radio — World of Radio Stations
 
 Independent native Enigma2 internet radio plugin. Current receiver-test candidate:
-**0.1.0-test4**. It is not a production release and is not added to existing stable feeds.
+**0.1.0-test5**. It is not a production release and is not added to existing stable feeds.
 
 Test2 fixes a receiver-reported bug where static artwork covered all live
 widgets. Background, opaque dark panels and live controls now use explicit
@@ -46,16 +46,23 @@ lyrics, a sleep timer or recording schedules.
 Copy the IPK to `/tmp`, then run:
 
 ```sh
-opkg install /tmp/enigma2-plugin-extensions-warderradio_0.1.0-test4_all.ipk
+opkg install /tmp/enigma2-plugin-extensions-warderradio_0.1.0-test5_all.ipk
 ```
 
 Restart the GUI manually, then open **Warder Radio** from Plugins or Extensions.
-No stream starts during installation or plugin discovery. Select a station and
-press OK or green. Left/right switch between the function and station panels;
+No stream starts during installation or plugin discovery. On opening the plugin,
+the last played radio station resumes automatically and is selected in its list.
+On first use, choose a station and press OK or green. Resume uses the newest
+catalogue URL for the remembered identity where available, with the saved entry
+as fallback. It makes one attempt and leaves the interface usable on failure. Left/right switch between the function and station panels;
 up/down move within a panel. From the first station, UP focuses the country
 selector above the station list; OK opens the selection directly. DOWN returns
 to the station list. The native country button also supports its click action.
-The left panel heading reads Country; Now playing stays on the right.
+The centre header reads Select country – Slovakia ▾ (translated for the receiver
+language and current country). Select country and the separator are white; the country and down arrow are
+cyan blue, using the native Enigma2 inline text colours. The permanent down
+arrow marks the selectable value; remote focus adds a leading pointer. The former Country
+heading on the left is blank; Now playing stays on the right.
 Selecting a country preserves playback and saves the choice. Cancel keeps the
 previous selection. The smaller section label still identifies favourites,
 history, recordings and search results. CH+/CH− change pages. Yellow toggles a favourite;
