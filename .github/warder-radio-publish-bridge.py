@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 
 SOURCE_REPO = 'Evolution-by-Warder/Radio-Warder-Evolution'
 LEGACY_REPO = 'Evolution-by-Warder/FullHDGlass-Warder-Evolution'
-VERSION = '0.1.0-test7'
+VERSION = '0.1.0-test8'
 PACKAGE = 'enigma2-plugin-extensions-warderradio'
 TAG = 'warder-radio-v' + VERSION
 SOURCE_FEED = 'https://raw.githubusercontent.com/' + SOURCE_REPO + '/main/update/testing.json'
