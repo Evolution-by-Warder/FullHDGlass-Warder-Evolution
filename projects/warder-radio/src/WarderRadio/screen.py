@@ -377,7 +377,7 @@ class WarderRadio(Screen):
         self.set_focus('stations')
 
     def options(self):
-        choices = [(t('Choose group'), 'group'), (t('Update catalogue'), 'update'),
+        choices = [(t('Choose country'), 'group'), (t('Update catalogue'), 'update'),
                    (t('Add station'), 'add'), (t('Check for updates'), 'plugin-update'),
                    (t('Stop recording' if self.recording.running() else 'Start recording'), 'record'),
                    (t('Stop'), 'stop'), (t('About'), 'about')]

@@ -1,3 +1,9 @@
+# 0.1.0-test4
+
+Renames the first Settings action to Choose country, using the same translated
+label and selector as the direct country button. This follow-up preserves the
+published test3 build and advances the normal testing update feed.
+
 # 0.1.0-test3
 
 Replaces the repeated left-panel Warder Radio heading with the translated Country

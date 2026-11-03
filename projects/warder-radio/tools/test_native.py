@@ -402,6 +402,8 @@ class NativeTests(unittest.TestCase):
     def test_native_country_button_click_cancel_and_other_section_heading(self):
         screen, session, root = self.new()
         self.assertIsInstance(screen['heading'], Button)
+        screen.options()
+        self.assertEqual(session.dialogs[-1][-1]['list'][0], (radio.t('Choose country'), 'group'))
         screen['stations'].moveToIndex(3)
         before = screen.current()
         for callback in list(screen['heading'].instance.selected.get()):
