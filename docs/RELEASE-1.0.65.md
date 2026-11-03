@@ -1,0 +1,11 @@
+# FullHDGlass 1.0.65
+
+Aktívne ostré vydanie pre OpenPLi a OpenATV.
+
+Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.
+
+[Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk)
+
+SHA-256: `acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8`
+
+Overené verejné bajty, dodané inštalačné kontroly a natívne rozhrania OpenPLi/OpenATV. Úplné fyzické testovanie všetkých modelov a rozlíšení sa netvrdí.

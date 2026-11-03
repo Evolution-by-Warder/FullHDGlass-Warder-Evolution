@@ -1,0 +1,14 @@
+{
+  "version": "1.0.65",
+  "bytes": 17252474,
+  "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
+  "python_payloads_compiled_for_39_grammar": 128,
+  "shipped_postinst_payload_function_passed": true,
+  "installed_version_status_fixture_passed": true,
+  "packaged_openpli_adapter_and_keyboard_passed": true,
+  "packaged_native_plugin_list_present": true,
+  "packaged_native_dialog_regressions_passed": true,
+  "packaged_framed_video_projection_and_lifecycle_passed": true,
+  "physical_receiver_verified": false,
+  "production_feeds_changed": false
+}

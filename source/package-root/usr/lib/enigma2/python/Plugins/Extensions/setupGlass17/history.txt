@@ -1,3 +1,6 @@
+FullHDGlass 1.0.65 — 03.11.2026
+Fixes the FullHDGlass graphical Multi EPG on OpenPLi using the approved OpenATV page, painters and graphics. Aligns fonts, event backgrounds and timeline; bundles original textures and timer icons. Red opens the shared programme detail, green the native timer, yellow date/time and blue EPG search. Common OpenPLi/OpenATV package. Restart the GUI after updating.
+
 FullHDGlass 1.0.63 — 02.11.2026
 Common OpenPLi and OpenATV release. Fixes plugin-browser content and row heights, native screen bindings, keyboard, confirmation/information dialogs and optional timers. Preserves preview frames in 15 layouts and aligns video with a shifted or reduced OSD. Includes OpenATV 8.1, GLES and WQHD compatibility work. Existing settings, including custom font sizes, are preserved. Restart the GUI after updating.
 

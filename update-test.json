@@ -1,6 +1,6 @@
 {
-  "version": "1.0.63",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk",
-  "sha256": "b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03",
-  "changelog": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI."
+  "version": "1.0.65",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
+  "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
+  "changelog": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI."
 }

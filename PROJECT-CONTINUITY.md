@@ -324,3 +324,7 @@ Public TEST2: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolutio
 SHA256: `81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323`; 17,252,426 bytes. Release source `9189b418bfc7fd8c055d41c6f5b10800b24e974d`; candidate `8b01aff4d44e6c26f3d6947d7356830fed958b6b`; draft PR #26. Native/source checks passed for identical source/design trees at `3e4e6506c75d55b1a149d7d1757398a3af7d2c65` (run 41527113716); targeted packaging repair and all extracted-IPK checks passed in run 41528506927. The public IPK and sidecar were downloaded again and verified. Reports: `reports/openpli-graph-epg-test2-public-20261102.json`, `reports/openpli-graph-epg-test2-install-20261102.json`.
 
 Physical TV visual parity is NOT yet confirmed. Production feeds, including the actual TEST updater branch, remain approved 1.0.63. Do not promote this candidate before receiver confirmation. A future stable must use 1.0.65 or later because native opkg orders 1.0.64 below 1.0.64-testN-1. Preserve the asset materialization step when preparing that stable release.
+
+## Stable activation 2026-11-03
+
+FullHDGlass 1.0.65 published as a normal release; public IPK and checksum verified. Main metadata updated. Runtime updater branch activation is recorded separately after verification. Earlier TEST publishing pause is superseded by the owner’s explicit stable-release request.

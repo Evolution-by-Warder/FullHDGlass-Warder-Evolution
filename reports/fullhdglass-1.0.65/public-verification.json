@@ -1,0 +1,26 @@
+{
+  "version": "1.0.65",
+  "package_source_commit": "bc6e308444d7af79a87f5670f475388c338ba1c9",
+  "workflow_run": "41581654546",
+  "public_ipk_sha256_verified": true,
+  "public_ipk_sidecar_verified": true,
+  "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
+  "bytes": 17252474,
+  "candidate_sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323",
+  "candidate_payload_files_compared": 1542,
+  "native_validation_workflow_run": 41527113716,
+  "candidate_packaging_workflow_run": 41528506927,
+  "only_generated_version_labels_changed": true,
+  "OpenPLi_refs": [
+    "release-9.2",
+    "develop"
+  ],
+  "OpenATV_refs": [
+    "8.0",
+    "8.0-next",
+    "master"
+  ],
+  "matrices_passed": true,
+  "physical_receiver_all_features_verified": false,
+  "custom_font_settings_preserved": true
+}

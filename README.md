@@ -2,13 +2,13 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Spoločné ostré vydanie — 2. november 2026
+## Spoločné ostré vydanie — 3. november 2026
 
-**FullHDGlass 1.0.63** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/COMMON-STABLE-20261102.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.63/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk).
+**FullHDGlass 1.0.65** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/FULLHDGLASS-1.0.65.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk).
 
 ## Installation
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.63/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 

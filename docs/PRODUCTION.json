@@ -2,33 +2,25 @@
   "schema": 1,
   "product": "FullHDGlass",
   "status": "production-update-active",
-  "approved_on": "2026-11-02",
-  "approval": "Owner explicitly requested all latest repairs in all our plugins as normal full releases and all required records; this supersedes the earlier publishing pause.",
+  "approved_on": "2026-11-03",
+  "approval": "Owner explicitly requested the tested OpenPLi EPG test2 repairs as a normal stable release on 3 November 2026.",
   "source_branch": "main",
-  "source_commit": "d1caaffb15dd6d519e2667e6c87ae726fd1b2318",
+  "source_commit": "bc6e308444d7af79a87f5670f475388c338ba1c9",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.63",
-    "tag": "v1.0.63",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.63/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk",
-    "sha256": "b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03",
-    "bytes": 17214876,
-    "notes": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "version": "1.0.65",
+    "tag": "v1.0.65",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
+    "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
+    "bytes": 17252474,
+    "notes": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.",
     "notes_i18n": {
-      "cs": "Společné vydání pro OpenPLi a OpenATV. Opravy instalace, kompatibility a zobrazení; dosavadní nastavení zůstávají zachována. Po aktualizaci restartujte GUI.",
-      "de": "Gemeinsame Ausgabe für OpenPLi und OpenATV. Korrekturen an Installation, Kompatibilität und Darstellung; vorhandene Einstellungen bleiben erhalten. Nach dem Update die GUI neu starten.",
-      "pl": "Wspólne wydanie dla OpenPLi i OpenATV. Poprawki instalacji, zgodności i wyświetlania; dotychczasowe ustawienia pozostają zachowane. Po aktualizacji uruchom ponownie GUI.",
-      "hu": "Közös kiadás OpenPLi és OpenATV rendszerekhez. Telepítési, kompatibilitási és megjelenítési javítások; a meglévő beállítások megmaradnak. Frissítés után indítsd újra a GUI-t.",
-      "ru": "Общий выпуск для OpenPLi и OpenATV. Исправлены установка, совместимость и отображение; существующие настройки сохраняются. После обновления перезапустите GUI.",
-      "fr": "Version commune pour OpenPLi et OpenATV. Corrections d’installation, de compatibilité et d’affichage ; les réglages existants sont conservés. Redémarrez l’interface après la mise à jour.",
-      "it": "Versione comune per OpenPLi e OpenATV. Correzioni di installazione, compatibilità e visualizzazione; le impostazioni esistenti vengono conservate. Riavviare la GUI dopo l’aggiornamento.",
-      "es": "Versión común para OpenPLi y OpenATV. Correcciones de instalación, compatibilidad y visualización; se conservan los ajustes existentes. Reinicie la interfaz tras actualizar.",
-      "sk": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI.",
-      "en": "Common OpenPLi and OpenATV release. Fixes plugin-browser content and row heights, native screen bindings, keyboard, confirmation/information dialogs and optional timers. Preserves preview frames in 15 layouts and aligns video with a shifted or reduced OSD. Includes OpenATV 8.1, GLES and WQHD compatibility work. Existing settings, including custom font sizes, are preserved. Restart the GUI after updating."
+      "sk": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.",
+      "en": "Fixes the FullHDGlass graphical Multi EPG on OpenPLi using the approved OpenATV page, painters and graphics. Aligns fonts, event backgrounds and timeline; bundles original textures and timer icons. Red opens the shared programme detail, green the native timer, yellow date/time and blue EPG search. Common OpenPLi/OpenATV package. Restart the GUI after updating."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.63",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk",
-    "changelog": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI."
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.65",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
+    "changelog": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI."
   },
   "preview_assets": {
     "help": {
@@ -51,15 +43,17 @@
     "bytes": 14759486
   },
   "validation": {
-    "version": "1.0.63",
-    "package_source_commit": "d1caaffb15dd6d519e2667e6c87ae726fd1b2318",
-    "workflow_run": "41503087831",
+    "version": "1.0.65",
+    "package_source_commit": "bc6e308444d7af79a87f5670f475388c338ba1c9",
+    "workflow_run": "41581654546",
     "public_ipk_sha256_verified": true,
     "public_ipk_sidecar_verified": true,
-    "sha256": "b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03",
-    "bytes": 17214876,
-    "candidate_sha256": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde",
-    "candidate_python_files_compared": 126,
+    "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
+    "bytes": 17252474,
+    "candidate_sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323",
+    "candidate_payload_files_compared": 1542,
+    "native_validation_workflow_run": 41527113716,
+    "candidate_packaging_workflow_run": 41528506927,
     "only_generated_version_labels_changed": true,
     "OpenPLi_refs": [
       "release-9.2",
@@ -72,17 +66,7 @@
     ],
     "matrices_passed": true,
     "physical_receiver_all_features_verified": false,
-    "custom_font_settings_preserved": true,
-    "live_updater_report": "reports/common-stable/live-updater.json",
-    "packaging_workflow_run": 41502247782,
-    "matrix_workflow_run": 41500637153,
-    "activation_workflow_run": 41503087831,
-    "actual_installed_updater_offers_and_downloads_verified": [
-      "1.0.61",
-      "1.0.62-test6"
-    ],
-    "current_version_does_not_offer_itself": true,
-    "legacy_bridge_unchanged": true
+    "custom_font_settings_preserved": true
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -99,18 +83,18 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "Normal 1.0.63 upgrades from 1.0.61 and every 1.0.62-test build. Published packages are immutable.",
+  "version_policy": "Normal 1.0.65 upgrades from 1.0.63 and all 1.0.64 TEST packages; published packages remain immutable.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner approved the current TEST3 for normal release. This is not a claim of physical validation of all OpenATV versions or receiver models.",
+  "receiver_validation": "Owner authorized promotion of test2 on 2026-11-03; this is not a claim of testing every receiver model or display mode.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
   "peer_production": {
-    "fullhdglass": "1.0.63",
+    "fullhdglass": "1.0.65",
     "gsu": "13.41-r4",
     "piconhub": "0.1.40"
   },
@@ -145,30 +129,40 @@
     }
   },
   "previous_production": {
-    "version": "1.0.61",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
-    "sha256": "dfe56dadc23ab93f5132f9a975dd3997db9c4b48335742a1a5f9e271762f733d",
-    "bytes": 17210068,
-    "tag": "v1.0.61",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.61/enigma2-plugin-skins-fullhdglass_1.0.61_all.ipk",
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.61",
-    "changelog": "Opravené orezávanie ponúk, hlavičiek a časovej osi EPG, popisy CoolTVGuide a displej nastavení prijímača. Po aktualizácii reštartujte GUI."
+    "version": "1.0.63",
+    "tag": "v1.0.63",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.63/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk",
+    "sha256": "b0695cf36b9382a0319e83f1c26a63c689d684108c49b14b5595e029f4ab6c03",
+    "bytes": 17214876,
+    "notes": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "notes_i18n": {
+      "cs": "Společné vydání pro OpenPLi a OpenATV. Opravy instalace, kompatibility a zobrazení; dosavadní nastavení zůstávají zachována. Po aktualizaci restartujte GUI.",
+      "de": "Gemeinsame Ausgabe für OpenPLi und OpenATV. Korrekturen an Installation, Kompatibilität und Darstellung; vorhandene Einstellungen bleiben erhalten. Nach dem Update die GUI neu starten.",
+      "pl": "Wspólne wydanie dla OpenPLi i OpenATV. Poprawki instalacji, zgodności i wyświetlania; dotychczasowe ustawienia pozostają zachowane. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "Közös kiadás OpenPLi és OpenATV rendszerekhez. Telepítési, kompatibilitási és megjelenítési javítások; a meglévő beállítások megmaradnak. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Общий выпуск для OpenPLi и OpenATV. Исправлены установка, совместимость и отображение; существующие настройки сохраняются. После обновления перезапустите GUI.",
+      "fr": "Version commune pour OpenPLi et OpenATV. Corrections d’installation, de compatibilité et d’affichage ; les réglages existants sont conservés. Redémarrez l’interface après la mise à jour.",
+      "it": "Versione comune per OpenPLi e OpenATV. Correzioni di installazione, compatibilità e visualizzazione; le impostazioni esistenti vengono conservate. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "Versión común para OpenPLi y OpenATV. Correcciones de instalación, compatibilidad y visualización; se conservan los ajustes existentes. Reinicie la interfaz tras actualizar.",
+      "sk": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI.",
+      "en": "Common OpenPLi and OpenATV release. Fixes plugin-browser content and row heights, native screen bindings, keyboard, confirmation/information dialogs and optional timers. Preserves preview frames in 15 layouts and aligns video with a shifted or reduced OSD. Includes OpenATV 8.1, GLES and WQHD compatibility work. Existing settings, including custom font sizes, are preserved. Restart the GUI after updating."
+    },
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.63",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.63_all.ipk",
+    "changelog": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI."
   },
   "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
-  "package_source_commit": "d1caaffb15dd6d519e2667e6c87ae726fd1b2318",
+  "package_source_commit": "bc6e308444d7af79a87f5670f475388c338ba1c9",
   "accepted_candidate": {
-    "version": "1.0.62-test6",
-    "sha256": "0430fbad50dd914d9dd4b393eb503196488236f1cd656e0dd59c1e52083aecde"
+    "version": "1.0.64-test2",
+    "sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323"
   },
-  "activation_commit": "18f3fdc3855709ca81c48aca689db7d46899f29e",
-  "native_test_mirror_commit": "7c863819c21be1b88b1e9f82c2c10ffd3262bf37",
   "documentation_checkpoint": {
-    "date": "2026-11-02",
-    "status": "stable-publication-and-session-records-complete",
+    "date": "2026-11-03",
+    "status": "stable-publication-records-complete",
     "web_copy": "docs/CURRENT-RELEASE.md",
     "web_copy_language": "sk",
     "web_copy_archived": true,
-    "separate_website_publication_performed": false,
-    "continuation": "Current main is the release baseline. Preserve published IPKs and settings; prepare further implementation changes as separate candidates."
+    "separate_website_publication_performed": false
   }
 }
