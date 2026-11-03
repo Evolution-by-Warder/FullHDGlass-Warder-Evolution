@@ -1,0 +1,59 @@
+name: Warder Radio TEST
+on:
+  push:
+    branches: [warder-radio-development]
+    paths:
+      - 'projects/warder-radio/**'
+      - '.github/workflows/warder-radio-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    if: github.ref == 'refs/heads/warder-radio-development'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/warder-radio
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: projects/warder-radio
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONPATH: src
+        run: python3 -m unittest discover -s tests -v
+      - name: Fetch and verify pinned native fixtures
+        run: python3 tools/fetch_native.py
+      - name: Native OpenPLi and OpenATV replays
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 tools/test_native.py --upstream fixtures/openpli-release-9.2 -v
+          python3 tools/test_native.py --upstream fixtures/openatv-81-reviewed-base -v
+          python3 tools/test_native.py --upstream fixtures/openatv-8.0-next -v
+      - name: Build and verify independent IPK
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 tools/build_ipk.py
+          python3 tools/verify_ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: warder-radio-0.1.0-test1
+          path: projects/warder-radio/dist/*
+      - name: Publish receiver-test prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tag=warder-radio-v0.1.0-test1
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --target "$GITHUB_SHA" --prerelease \
+              --title 'Warder Radio 0.1.0-test1' --notes-file docs/CHANGELOG.md
+          fi
+          gh release upload "$tag" dist/*.ipk dist/SHA256SUMS dist/build.json --clobber
