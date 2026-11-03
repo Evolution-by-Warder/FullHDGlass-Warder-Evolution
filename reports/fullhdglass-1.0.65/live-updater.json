@@ -1,0 +1,55 @@
+{
+  "version": "1.0.65",
+  "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
+  "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
+  "bytes": 17252474,
+  "public_ipk_and_sidecar_verified": true,
+  "all_four_active_feed_copies_verified": true,
+  "real_shipped_update_offer_cases": [
+    {
+      "current": "1.0.63",
+      "automatic": false,
+      "offer": true
+    },
+    {
+      "current": "1.0.63",
+      "automatic": true,
+      "offer": true
+    },
+    {
+      "current": "1.0.64-test1",
+      "automatic": false,
+      "offer": true
+    },
+    {
+      "current": "1.0.64-test1",
+      "automatic": true,
+      "offer": true
+    },
+    {
+      "current": "1.0.64-test2",
+      "automatic": false,
+      "offer": true
+    },
+    {
+      "current": "1.0.64-test2",
+      "automatic": true,
+      "offer": true
+    },
+    {
+      "current": "1.0.65",
+      "automatic": false,
+      "offer": false
+    },
+    {
+      "current": "1.0.65",
+      "automatic": true,
+      "offer": false
+    }
+  ],
+  "real_shipped_downloader_raw_main_package_verified": true,
+  "original_graphic_files_verified": 41,
+  "legacy_bridge_unchanged": true,
+  "python39_grammar_passed": true,
+  "owner_authorized_stable_promotion": true
+}

@@ -66,7 +66,17 @@
     ],
     "matrices_passed": true,
     "physical_receiver_all_features_verified": false,
-    "custom_font_settings_preserved": true
+    "custom_font_settings_preserved": true,
+    "live_updater_report": "reports/fullhdglass-1.0.65/live-updater.json",
+    "actual_installed_updater_offers_and_downloads_verified": [
+      "1.0.63",
+      "1.0.64-test1",
+      "1.0.64-test2"
+    ],
+    "automatic_and_manual_checks_verified": true,
+    "current_version_does_not_offer_itself": true,
+    "legacy_bridge_unchanged": true,
+    "original_graphic_files_verified": 41
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -159,10 +169,12 @@
   },
   "documentation_checkpoint": {
     "date": "2026-11-03",
-    "status": "stable-publication-records-complete",
+    "status": "stable-publication-updater-and-session-records-complete",
     "web_copy": "docs/CURRENT-RELEASE.md",
     "web_copy_language": "sk",
     "web_copy_archived": true,
     "separate_website_publication_performed": false
-  }
+  },
+  "activation_commit": "a6124cff1efc05a3a7ed6493dd27c7052fc791be",
+  "native_test_mirror_commit": "ca91a1ee210c4d7c8d6c13b6e7f6c46541c1a3fe"
 }
