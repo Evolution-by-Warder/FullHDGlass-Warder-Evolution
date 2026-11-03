@@ -1,3 +1,14 @@
+# 0.1.0-test6
+
+Adds a fifth footer button, INFO · Update, for manual plugin updates. The four
+existing colour actions are preserved and the footer uses five evenly spaced
+slots. The Update control is a native clickable button with an INFO remote-key
+shortcut. It uses the same verified update path as Settings. If an automatic
+check is already running, pressing Update displays its result as a manual check
+without launching a duplicate worker. The new label is translated in all 21
+languages. Includes native footer placement, click/key routing and in-flight
+check regression coverage.
+
 # 0.1.0-test5
 
 Moves the country heading entirely into the centre panel as Select country –

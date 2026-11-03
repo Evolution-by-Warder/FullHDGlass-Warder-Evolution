@@ -454,6 +454,32 @@ class NativeTests(unittest.TestCase):
             self.assertEqual(failed['status'].getText(), radio.t('Cannot play station'))
             self.assertFalse(failed.playback.owns())
 
+    def test_footer_update_button_and_info_key_use_manual_check_without_duplicate_jobs(self):
+        screen, session, root = self.new()
+        self.assertIsInstance(screen['update'], Button)
+        self.assertIn(radio.t('Update'), screen['update'].getText())
+        self.assertIn('INFO', screen['update'].getText())
+        screen['actions'].actions['update']()
+        self.assertTrue(screen.update_manual)
+        self.assertEqual(screen['status'].getText(), radio.t('Checking for updates…'))
+        screen.update_checked(None, None)
+        self.assertEqual(session.dialogs[-1][1][0], radio.t('No update available'))
+        queued = []
+        screen.jobs.close()
+        screen.jobs.submit = lambda key, work, callback: queued.append(key) or True
+        for callback in list(screen['update'].instance.selected.get()): callback()
+        self.assertEqual(queued, ['plugin-update-check'])
+        screen['actions'].actions['update']()
+        self.assertEqual(queued, ['plugin-update-check'])
+        buttons = [node for node in root.findall('widget')
+                   if node.attrib.get('name') in ('red', 'green', 'yellow', 'blue', 'update')]
+        self.assertEqual(len(buttons), 5)
+        for previous, following in zip(buttons, buttons[1:]):
+            x, _ = map(int, previous.attrib['position'].split(','))
+            width, _ = map(int, previous.attrib['size'].split(','))
+            next_x = int(following.attrib['position'].split(',')[0])
+            self.assertLess(x + width, next_x)
+
     def test_timer_signal_connection_api_also_disconnects(self):
         class SignalTimer:
             def __init__(self): self.timeout = Signal(); self.active = False

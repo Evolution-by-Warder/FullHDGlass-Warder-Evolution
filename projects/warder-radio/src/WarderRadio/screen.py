@@ -123,6 +123,7 @@ class WarderRadio(Screen):
                      'red', 'green', 'yellow', 'blue'):
             self[name] = Label('')
         self['heading'] = Button('', onClick=[self.choose_group])
+        self['update'] = Button('INFO · ' + t('Update'), onClick=[self.manual_update])
         self['art'] = Pixmap()
         self['activity'] = CanvasSource()
         self['version'].setText('v' + VERSION)
@@ -141,7 +142,7 @@ class WarderRadio(Screen):
             'up': self.up, 'down': self.down, 'left': self.left, 'right': self.right,
             'green': self.play, 'yellow': self.favourite, 'blue': self.search,
             'menu': self.options, 'pageDown': self.page_down, 'pageUp': self.page_up,
-            'instantRecord': self.toggle_recording, 'stop': self.stop,
+            'instantRecord': self.toggle_recording, 'stop': self.stop, 'update': self.manual_update,
         }, -2)
         events = {}
         for event, callback in [('evUpdatedInfo', self.metadata), ('evStart', self.started),
@@ -560,8 +561,16 @@ class WarderRadio(Screen):
         if not self.closed:
             self.jobs.poll()
 
+    def manual_update(self):
+        self.check_updates(manual=True)
+
     def check_updates(self, manual=False):
-        if self.update_pending or self.installing or self.closed:
+        if self.installing or self.closed:
+            return
+        if self.update_pending:
+            if manual:
+                self.update_manual = True
+                self['status'].setText(t('Checking for updates…'))
             return
         self.update_manual = manual
         self.update_pending = self.jobs.submit('plugin-update-check',

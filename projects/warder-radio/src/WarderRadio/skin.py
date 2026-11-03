@@ -56,9 +56,10 @@ def make_skin(width, height):
                  % (n(55), n(307), n(390), n(94) * 5))
     parts.append('<widget name="art" zPosition="2" %s alphatest="blend" scale="1" />' % rect(1350, 300, 360, 180))
     parts.append('<widget source="activity" render="Canvas" zPosition="2" %s />' % rect(1250, 813, 580, 70))
-    for name, x, color in [('red', 40, '#ff3b37'), ('green', 510, '#4bc951'),
-                           ('yellow', 980, '#e4c83d'), ('blue', 1450, '#00a5ff')]:
-        parts.append(label(name, x, 1001, 430, 44, 28, color, 'center'))
-        parts.append('<eLabel zPosition="1" %s backgroundColor="%s" />' % (rect(x, 1051, 430, 4), color))
+    for name, x, color in [('red', 40, '#ff3b37'), ('green', 416, '#4bc951'),
+                           ('yellow', 792, '#e4c83d'), ('blue', 1168, '#00a5ff'),
+                           ('update', 1544, '#ffffff')]:
+        parts.append(label(name, x, 1001, 336, 44, 28, color, 'center'))
+        parts.append('<eLabel zPosition="1" %s backgroundColor="%s" />' % (rect(x, 1051, 336, 4), color))
     parts.append('</screen>')
     return ''.join(parts)

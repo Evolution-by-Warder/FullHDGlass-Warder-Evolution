@@ -1,7 +1,7 @@
 # Warder Radio — World of Radio Stations
 
 Independent native Enigma2 internet radio plugin. Current receiver-test candidate:
-**0.1.0-test5**. It is not a production release and is not added to existing stable feeds.
+**0.1.0-test6**. It is not a production release and is not added to existing stable feeds.
 
 Test2 fixes a receiver-reported bug where static artwork covered all live
 widgets. Background, opaque dark panels and live controls now use explicit
@@ -46,7 +46,7 @@ lyrics, a sleep timer or recording schedules.
 Copy the IPK to `/tmp`, then run:
 
 ```sh
-opkg install /tmp/enigma2-plugin-extensions-warderradio_0.1.0-test5_all.ipk
+opkg install /tmp/enigma2-plugin-extensions-warderradio_0.1.0-test6_all.ipk
 ```
 
 Restart the GUI manually, then open **Warder Radio** from Plugins or Extensions.
@@ -66,7 +66,8 @@ heading on the left is blank; Now playing stays on the right.
 Selecting a country preserves playback and saves the choice. Cancel keeps the
 previous selection. The smaller section label still identifies favourites,
 history, recordings and search results. CH+/CH− change pages. Yellow toggles a favourite;
-blue searches all stations. The first MENU/Settings entry is Choose country and opens the same selector.
+blue searches all stations. The fifth footer button is INFO · Update; press
+INFO or activate the button to check/install plugin updates manually. The first MENU/Settings entry is Choose country and opens the same selector.
 MENU also updates the catalogue, adds a
 station, controls recording and opens About. STOP stops radio playback and
 returns to the previous service. EXIT/red closes the plugin and restores the
