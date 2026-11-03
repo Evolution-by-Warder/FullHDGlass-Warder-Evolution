@@ -48,3 +48,5 @@ jobs:
           subprocess.run(['git','commit','-m','Activate Vivacom 13E reference aliases in live catalogue'],check=True)
           subprocess.run(['git','push','origin','HEAD:release/vivacom-approved-20261103'],check=True)
           PY
+
+# Owner-approved artwork only.
