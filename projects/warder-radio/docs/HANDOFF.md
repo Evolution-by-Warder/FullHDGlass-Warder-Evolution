@@ -1,19 +1,16 @@
-# Warder Radio 0.1.0-test4 — current handoff
+# Warder Radio 0.1.0-test5 — current handoff
 
-Source: `b98d9031ff31d4d8a7f3f1f0725629540da6d050`.
-CI run: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41618002419 — success.
-Verified testing-feed publication: `8c18e11a312f92f1d0e64173bb0164bfce0a5452`.
+Source commit: `d1c851b4ecbe52a80105a678d12e7d9b3e73aa6b`.
+CI: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41621151267 — success.
+Testing-feed publication: `e808052a634bdc67633eaddd0380bacdd9929f3d`.
 
-- Left body heading is now Country, translated across all 21 locales.
-- Current country beside it is a native Enigma2 Button. UP from the first station focuses it; OK opens the selector; DOWN returns. Native click signal opens the same dialog.
-- First Settings entry is Choose country and opens that same selector. Current choice is preselected, selecting saves it without stopping playback, and cancel keeps the previous station/section.
-- Now playing remains unchanged. A small section label preserves the active favourites/history/recordings/search heading.
-- The selector reuses existing catalogue groups; the underlying source still contains country groups and themed/broadcaster groups. No station identity or country classification was rewritten in this UI change.
-- All 21 languages, automatic verified updates, test/stable separation, catalogue of 5,444 stations/203 groups and persisted user data are retained.
-- Validation: 25 unit cases and 11 native cases on each of three pinned revisions, 58 executions; package verification passed. Native Button fixtures were pinned from the same upstream commits.
-- Public IPK: 2,795,814 bytes, SHA-256 `c09ba7c7ff42580162cec621e0b9ccb3edcb319aa9d95cd495757404b6865381`.
-- Test2's updater can offer test4 on reopening/manual check. Stable channel remains empty. Older published test builds are preserved.
+The left Country heading is now blank. The centre native button reads Select country – Slovakia ▾, translated for the receiver language and actual chosen group. Select country and the separator are white; the country and arrow stay cyan blue even when focused. A leading pointer marks remote focus. Native inline colour commands are supported by both inspected OpenPLi and OpenATV font renderers. Settings remains Choose country and Now playing is unchanged. Slovak/Czech display country names are localized without changing persisted catalogue identities.
 
-Receiver verification of the new header navigation/click action is pending; native tests stub the C++/OS boundary. The test2 receiver screenshot confirmed the previously fixed live interface displays successfully.
+Opening the plugin resumes the last played radio station from existing history, preferring fresh catalogue data for its identity and falling back to the remembered record. It selects the station in the corresponding list, makes one start attempt, does not rewrite history during resume, and restores the previous TV service on close. Fresh installations without history stay idle until selection. Installation/plugin discovery do not start playback.
 
-Release: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/warder-radio-v0.1.0-test4
+Validation: 25 unit cases, 13 native cases on each of three pinned upstream revisions (64 executions), package verification, successful GitHub CI and verified public release download. The test4 updater offers test5. All 21 languages now contain all 65 UI strings. The underlying catalogue still contains 5,444 references/203 country and themed groups; no classification rewrite was included.
+
+IPK: 2,797,010 bytes; SHA-256 `35856a0e73bb03f046e0f1ccdef6ba71cad1f50720e110d89248388205d0d209`.
+Release: https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/warder-radio-v0.1.0-test5
+
+Physical receiver confirmation of mixed header colours and startup resume is pending. Other production feeds remain unchanged; the independent stable channel remains empty.
