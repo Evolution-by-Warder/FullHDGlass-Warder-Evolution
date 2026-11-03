@@ -25,14 +25,13 @@ for p in m["packages"]:
    dst=f"1_0_{typ}_{sid}_{tsid}_13E_820000_0_0_0.png"
    src=f"1_0_{oldtype}_{sid}_{tsid}_D5_820000_0_0_0.png"
    assert dst not in names
-   if src in names:data=z.read(src)
-   else:
-    source=f"https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/main/picons/13.0e/vivacom/{style}/{src}"
-    data=get(source)
-    if size!="220x132":
-     im=Image.open(io.BytesIO(data)).convert("RGBA").convert("RGBa")
-     im=im.resize(tuple(map(int,size.split("x"))),Image.Resampling.LANCZOS).convert("RGBA")
-     f=io.BytesIO();im.save(f,"PNG");data=f.getvalue()
+   # Use owner-approved Warder artwork, not the inherited D5 source image.
+   approved=f"https://raw.githubusercontent.com/Evolution-by-Warder/PiconHub-Warder-Evolution/b39d1ad978208c0afe9941f71e0ef8174f94ac58/picons/13.0e/vivacom/{style}/{dst}"
+   data=get(approved)
+   if size!="220x132":
+    im=Image.open(io.BytesIO(data)).convert("RGBA").convert("RGBa")
+    im=im.resize(tuple(map(int,size.split("x"))),Image.Resampling.LANCZOS).convert("RGBA")
+    f=io.BytesIO();im.save(f,"PNG");data=f.getvalue()
    assert Image.open(io.BytesIO(data)).size==tuple(map(int,size.split("x")))
    extra[dst]=data
   out=io.BytesIO()
