@@ -58,5 +58,7 @@
   "Update installed. Restart GUI now?": "Actualización instalada. ¿Reiniciar la interfaz?",
   "Not enough free space": "No hay espacio libre suficiente",
   "Invalid stream address": "Dirección del flujo no válida",
-  "Cannot add station": "No se pudo añadir la emisora"
+  "Cannot add station": "No se pudo añadir la emisora",
+  "Country": "País",
+  "Choose country": "Elegir país"
 }

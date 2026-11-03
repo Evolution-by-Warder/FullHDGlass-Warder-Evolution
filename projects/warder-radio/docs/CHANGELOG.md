@@ -1,3 +1,17 @@
+# 0.1.0-test3
+
+Replaces the repeated left-panel Warder Radio heading with the translated Country
+label. The current country beside it becomes a native clickable button. UP from
+the first station focuses it; OK opens the existing country/group selector, and
+DOWN returns to the stations. The current choice is preselected. Selection is
+saved without interrupting playback; cancel preserves the station and section.
+Now playing remains in its approved position. Section headings for favourites,
+history, recordings and search stay visible below the country selector.
+
+Adds the two new labels in all 21 languages. Existing automatic updates and
+catalogue data are preserved. Validation includes native Button signal handling,
+remote focus navigation, selection/cancel/persistence and unchanged playback.
+
 # 0.1.0-test2
 
 Fixes the receiver-reported blank interface: explicit z-order keeps background

@@ -58,5 +58,7 @@
   "Update installed. Restart GUI now?": "Aktualizácia je nainštalovaná. Reštartovať GUI?",
   "Not enough free space": "Nedostatok voľného miesta",
   "Invalid stream address": "Neplatná adresa streamu",
-  "Cannot add station": "Stanicu sa nepodarilo pridať"
+  "Cannot add station": "Stanicu sa nepodarilo pridať",
+  "Country": "Krajina",
+  "Choose country": "Vybrať krajinu"
 }

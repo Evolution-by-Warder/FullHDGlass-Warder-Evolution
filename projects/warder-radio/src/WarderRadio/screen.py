@@ -7,6 +7,7 @@ import enigma
 from enigma import eTimer, eServiceReference, eListboxPythonMultiContent, gFont, getDesktop
 from Components.ActionMap import ActionMap
 from Components.Label import Label
+from Components.Button import Button
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend
 from Tools.LoadPixmap import LoadPixmap
@@ -117,14 +118,15 @@ class WarderRadio(Screen):
                                       (t('History'), 'history'), (t('Recordings'), 'recordings'),
                                       (t('Settings'), 'settings')], self.ui_scale, True)
         self['stations'] = RadioList([], self.ui_scale)
-        for name in ('date', 'clock', 'version', 'navtitle', 'heading', 'nowlabel', 'station',
+        for name in ('date', 'clock', 'version', 'navtitle', 'section', 'nowlabel', 'station',
                      'artist', 'track', 'details', 'activitylabel', 'count', 'status', 'hint',
                      'red', 'green', 'yellow', 'blue'):
             self[name] = Label('')
+        self['heading'] = Button('', onClick=[self.choose_group])
         self['art'] = Pixmap()
         self['activity'] = CanvasSource()
         self['version'].setText('v' + VERSION)
-        self['navtitle'].setText('Warder Radio')
+        self['navtitle'].setText(t('Country'))
         self['nowlabel'].setText(t('Now playing'))
         self['station'].setText(t('Ready to listen'))
         self['track'].setText(t('Select a station and press OK'))
@@ -173,6 +175,7 @@ class WarderRadio(Screen):
         self.focus = focus
         self['functions'].selectionEnabled(focus == 'functions')
         self['stations'].selectionEnabled(focus == 'stations')
+        self.update_country_caption()
 
     def left(self):
         self.set_focus('functions')
@@ -181,22 +184,37 @@ class WarderRadio(Screen):
         self.set_focus('stations')
 
     def up(self):
-        self[self.focus].up()
+        if self.focus == 'country':
+            return
+        if self[self.focus].getSelectionIndex() == 0 or not self[self.focus].list:
+            self.set_focus('country')
+        else:
+            self[self.focus].up()
         self.update_count()
 
     def down(self):
-        self[self.focus].down()
+        if self.focus == 'country':
+            self.set_focus('stations')
+        else:
+            self[self.focus].down()
         self.update_count()
 
     def page_up(self):
+        if self.focus == 'country':
+            self.set_focus('stations')
         self[self.focus].pageUp()
         self.update_count()
 
     def page_down(self):
+        if self.focus == 'country':
+            self.set_focus('stations')
         self[self.focus].pageDown()
         self.update_count()
 
     def ok(self):
+        if self.focus == 'country':
+            self.choose_group()
+            return
         if self.focus == 'stations':
             self.play()
             return
@@ -224,7 +242,8 @@ class WarderRadio(Screen):
             self.rows, heading = [], t('Recordings')
             if not self.jobs.submit('recordings', self.recording.files, self.files_loaded):
                 self['status'].setText(t('No recordings'))
-        self['heading'].setText(heading)
+        self['section'].setText(heading if self.mode != 'radio' or self.query else '')
+        self.update_country_caption()
         self['stations'].setList([(item,) for item in self.rows])
         self['stations'].moveToIndex(0)
         self.update_count()
@@ -369,9 +388,7 @@ class WarderRadio(Screen):
             return
         action = choice[1]
         if action == 'group':
-            self.session.openWithCallback(self.group_done, ChoiceBox, title=t('Choose group'),
-                                          list=[(t('All groups'), '')] + [(g, g) for g in self.catalogue.groups()]
-                                          + ([(t('Custom'), 'Custom')] if self.store.custom else []))
+            self.choose_group()
         elif action == 'update':
             self.update_catalogue()
         elif action == 'plugin-update':
@@ -386,6 +403,31 @@ class WarderRadio(Screen):
             self.notify('Warder Radio ' + VERSION + '\nWorld of Radio Stations\n\n'
                         + 'OpenPLi / OpenATV\n' + str(len(self.catalogue.items)) + ' stations · PiconHub\n\n'
                         + t('Recordings folder') + ':\n' + self.recording.directory)
+
+    def update_country_caption(self):
+        country = self.active_group or t('All groups')
+        prefix = '› ' if self.focus == 'country' else ''
+        self['heading'].setText(prefix + country + '  ▾')
+
+    def choose_group(self):
+        if self.closed or self.installing:
+            return
+        self.country_return_focus = self.focus
+        self.set_focus('country')
+        choices = [(t('All groups'), '')] + [(group, group) for group in self.catalogue.groups()]
+        if self.store.custom:
+            choices.append((t('Custom'), 'Custom'))
+        selection = next((i for i, item in enumerate(choices) if item[1] == self.active_group), 0)
+        self.session.openWithCallback(self.country_done, ChoiceBox,
+            title=t('Choose country'), list=choices, selection=selection)
+
+    def country_done(self, choice):
+        if self.closed:
+            return
+        if not choice:
+            self.set_focus(getattr(self, 'country_return_focus', 'stations'))
+            return
+        self.group_done(choice)
 
     def group_done(self, choice):
         if not choice or self.closed:

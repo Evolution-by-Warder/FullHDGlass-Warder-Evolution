@@ -62,7 +62,7 @@ class Widget:
         self.created = Widget.serial
         self.attributes = {}
         self.text = ''; self.pixmap = None; self.content = None
-        self.selectionChanged = Signal(); self.selectionEnabled = True
+        self.selectionChanged = Signal(); self.selected = Signal(); self.selectionEnabled = True
     def show(self): pass
     def hide(self): pass
     def setText(self, text): self.text = text
@@ -144,6 +144,7 @@ GUIComponent = native('Components/GUIComponent.py', 'GUIComponent',
     {'skin': NS(applyAllAttributes=apply_attributes), 'applyAllAttributes': apply_attributes})
 VariableText = native('Components/VariableText.py', 'VariableText', {})
 Label = native('Components/Label.py', 'Label', {'VariableText': VariableText, 'GUIComponent': GUIComponent, 'eLabel': Widget})
+Button = native('Components/Button.py', 'Button', {'VariableText': VariableText, 'GUIComponent': GUIComponent, 'eButton': Widget})
 Pixmap = native('Components/Pixmap.py', 'Pixmap', {'GUIComponent': GUIComponent, 'ePixmap': Widget})
 MenuList = native('Components/MenuList.py', 'MenuList', {'GUIComponent': GUIComponent,
                   'eListboxPythonStringContent': Content, 'eListbox': Widget})
@@ -163,6 +164,7 @@ ServiceEventTracker.event.__globals__['ServiceEventTracker'] = ServiceEventTrack
 PluginDescriptor = native('Plugins/Plugin.py', 'PluginDescriptor', {'os': os})
 module('Components.MenuList', MenuList=MenuList)
 module('Components.Label', Label=Label)
+module('Components.Button', Button=Button)
 module('Components.Pixmap', Pixmap=Pixmap)
 MultiContentEntryPixmapAlphaBlend = native('Components/MultiContent.py', 'MultiContentEntryPixmapAlphaBlend',
     {'eListboxPythonMultiContent': Content, '__resolvePixmap': lambda value: value, '__resolveColor': lambda value: value})
@@ -372,6 +374,47 @@ class NativeTests(unittest.TestCase):
         self.assertTrue(screen['actions'].enabled)
         screen.update_installed('0.1.1', None)
         self.assertEqual(session.dialogs[-1][-1]['type'], 2)
+
+    def test_country_header_opens_directly_and_selection_persists_without_interrupting_audio(self):
+        screen, session, _ = self.new()
+        self.assertEqual(screen['navtitle'].getText(), radio.t('Country'))
+        self.assertEqual(screen['nowlabel'].getText(), radio.t('Now playing'))
+        screen.play()
+        playing = session.nav.current
+        screen.up()
+        self.assertEqual(screen.focus, 'country')
+        self.assertFalse(screen['stations'].instance.selectionEnabled)
+        screen.ok()
+        dialog = session.dialogs[-1]
+        self.assertEqual(dialog[-1]['title'], radio.t('Choose country'))
+        self.assertEqual(dialog[-1]['list'][dialog[-1]['selection']][1], screen.active_group)
+        screen.country_done(('Čechy', 'Čechy'))
+        self.assertEqual(screen.focus, 'stations')
+        self.assertEqual(screen.active_group, 'Čechy')
+        self.assertTrue(all(item['group'] == 'Čechy' for item in screen.rows))
+        self.assertIn('Čechy', screen['heading'].getText())
+        self.assertEqual(Store(self.tmp.name).group, 'Čechy')
+        self.assertIs(session.nav.current, playing)
+        screen.up(); screen.down()
+        self.assertEqual(screen.focus, 'stations')
+        self.assertEqual(screen['stations'].getSelectionIndex(), 0)
+
+    def test_native_country_button_click_cancel_and_other_section_heading(self):
+        screen, session, root = self.new()
+        self.assertIsInstance(screen['heading'], Button)
+        screen['stations'].moveToIndex(3)
+        before = screen.current()
+        for callback in list(screen['heading'].instance.selected.get()):
+            callback()
+        self.assertEqual(session.dialogs[-1][-1]['title'], radio.t('Choose country'))
+        screen.country_done(None)
+        self.assertEqual(screen.focus, 'stations')
+        self.assertEqual(screen.current(), before)
+        screen.mode = 'history'; screen.refresh_rows()
+        self.assertEqual(screen['section'].getText(), radio.t('History'))
+        self.assertIn(screen.active_group, screen['heading'].getText())
+        screen.set_focus('country'); screen.page_down()
+        self.assertEqual(screen.focus, 'stations')
 
     def test_timer_signal_connection_api_also_disconnects(self):
         class SignalTimer:

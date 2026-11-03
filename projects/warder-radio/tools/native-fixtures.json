@@ -17,7 +17,8 @@
       "Components/VariableText.py": "e5679d97aedcd9ab74f07c9b6436febabe22f7fd3acd72238382c7751f273148",
       "Plugins/Plugin.py": "7f2e9e82dc7efe3d8a6a1305332188d6a827ba6dc2fd304ded215a7d0c7271e8",
       "Screens/Screen.py": "3b4b88fe33e51fe543602f12ca86f1cde65c2d1ffa1a1d9f80f98fc22dbfff31",
-      "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf"
+      "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf",
+      "Components/Button.py": "1faa07cda705ddc45d1703b868ba8a48faaa282b58465e20f2fd8d67002b9577"
     }
   },
   {
@@ -38,7 +39,8 @@
       "Components/VariableText.py": "31c251d0abd3444879e93ff8d5e2075ad163e8f46bbca4bc59db222203e318f1",
       "Plugins/Plugin.py": "605844b8a39860504b5eccf1d112ab12e0cf3a6a75bf5597423f2b5568083bc1",
       "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
-      "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf"
+      "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf",
+      "Components/Button.py": "4df482731990e0c1766a2ecfd6dd8d028be3d9c7fe6fee803f224ed636b8c951"
     }
   },
   {
@@ -59,7 +61,8 @@
       "Components/VariableText.py": "31c251d0abd3444879e93ff8d5e2075ad163e8f46bbca4bc59db222203e318f1",
       "Plugins/Plugin.py": "605844b8a39860504b5eccf1d112ab12e0cf3a6a75bf5597423f2b5568083bc1",
       "Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
-      "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf"
+      "Tools/CList.py": "138b58b8b5488a26acb095785a281b6fad6617391f99a8048bbbafa885c31cdf",
+      "Components/Button.py": "4df482731990e0c1766a2ecfd6dd8d028be3d9c7fe6fee803f224ed636b8c951"
     }
   }
 ]

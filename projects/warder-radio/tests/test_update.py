@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import Mock
 
 from WarderRadio import warder_update as update
+from WarderRadio import VERSION
 
 
 def manifest(version='0.1.0-test3', channel='testing'):
@@ -63,16 +64,16 @@ class UpdateTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         build = json.loads((root / 'dist/build.json').read_text())
         path = root / 'dist' / build['file']
-        release = update.Release('0.1.0-test2', '', hashlib.sha256(path.read_bytes()).hexdigest(), path.stat().st_size)
+        release = update.Release(VERSION, '', hashlib.sha256(path.read_bytes()).hexdigest(), path.stat().st_size)
         update.validate_ipk(path, release)
         with self.assertRaises(update.UpdateError):
-            update.validate_ipk(path, release._replace(version='0.1.0-test3'))
+            update.validate_ipk(path, release._replace(version='9.9.9'))
 
     def test_install_verification_checks_opkg_status_and_runtime_version(self):
         root = Path(__file__).resolve().parents[1] / 'src/WarderRadio'
-        self.assertEqual(update.verify_payload('0.1.0-test2', root), '0.1.0-test2')
-        runner = Mock(return_value=Mock(returncode=0, stdout='Package: ' + update.PACKAGE_ID + '\nVersion: 0.1.0-test2-1\nStatus: install ok installed\n'))
-        self.assertEqual(update.verify_installation('0.1.0-test2', runner=runner, runtime=root), '0.1.0-test2')
+        self.assertEqual(update.verify_payload(VERSION, root), VERSION)
+        runner = Mock(return_value=Mock(returncode=0, stdout='Package: ' + update.PACKAGE_ID + '\nVersion: ' + VERSION + '-1\nStatus: install ok installed\n'))
+        self.assertEqual(update.verify_installation(VERSION, runner=runner, runtime=root), VERSION)
         runner.return_value.stdout = runner.return_value.stdout.replace('install ok installed', 'install ok unpacked')
         with self.assertRaises(update.UpdateError):
-            update.verify_installation('0.1.0-test2', runner=runner, runtime=root)
+            update.verify_installation(VERSION, runner=runner, runtime=root)
