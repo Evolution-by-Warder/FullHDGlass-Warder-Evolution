@@ -3,12 +3,12 @@
   "product": "Warder Radio",
   "channel": "testing",
   "release": {
-    "version": "0.1.0-test6",
-    "tag": "warder-radio-v0.1.0-test6",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/warder-radio-v0.1.0-test6/enigma2-plugin-extensions-warderradio_0.1.0-test6_all.ipk",
-    "sha256": "af533508cb5ea7ccd056a28e141f82fb28b4b69cde760a49cdbdd701498ee395",
-    "bytes": 2797264,
-    "notes": "Warder Radio 0.1.0-test6",
+    "version": "0.1.0-test8",
+    "tag": "warder-radio-v0.1.0-test8",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/warder-radio-v0.1.0-test8/enigma2-plugin-extensions-warderradio_0.1.0-test8_all.ipk",
+    "sha256": "5d9f3dd951baf1ff0fd052b750a397d5322dbe199b1a08ecfd3e5c6a9a79d5a5",
+    "bytes": 2798248,
+    "notes": "Warder Radio 0.1.0-test8",
     "notes_i18n": {}
   }
 }
