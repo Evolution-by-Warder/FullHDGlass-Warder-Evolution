@@ -1,7 +1,7 @@
 name: Publish Vivacom 13E references
 on:
   push:
-    branches: [release/vivacom-13e-refs-20261103]
+    branches: [release/vivacom-approved-20261103]
     paths:
       - .github/workflows/publish-vivacom-13e-20261103.yml
   workflow_dispatch:
