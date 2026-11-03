@@ -1,0 +1,37 @@
+name: Warder Radio standalone migration
+on:
+  push:
+    branches: [warder-radio-development]
+    paths: ['.github/RADIO-MIGRATION.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bridge:
+    if: github.ref == 'refs/heads/warder-radio-development'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+            projects/warder-radio/src
+            projects/warder-radio/update
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Mirror verified standalone package to compatible legacy URL
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 .github/warder-radio-publish-bridge.py
+      - name: Advance only the legacy radio testing feed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add projects/warder-radio/update/testing.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish verified Warder Radio standalone migration feed [skip ci]'
+            git push origin HEAD:warder-radio-development
+          fi
