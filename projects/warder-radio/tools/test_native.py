@@ -55,8 +55,12 @@ class Timer:
 
 
 class Widget:
+    serial = 0
     pageUp, pageDown, moveUp, moveDown = -6, 6, -1, 1
     def __init__(self, *args):
+        Widget.serial += 1
+        self.created = Widget.serial
+        self.attributes = {}
         self.text = ''; self.pixmap = None; self.content = None
         self.selectionChanged = Signal(); self.selectionEnabled = True
     def show(self): pass
@@ -133,7 +137,11 @@ Element = native('Components/Element.py', 'Element', {'CList': CList, 'reduce': 
 Source = native('Components/Sources/Source.py', 'Source', {'Element': Element})
 StaticText = native('Components/Sources/StaticText.py', 'StaticText', {'Source': Source})
 CanvasSource = native('Components/Sources/CanvasSource.py', 'CanvasSource', {'Source': Source})
-GUIComponent = native('Components/GUIComponent.py', 'GUIComponent', {'skin': NS(applyAllAttributes=lambda *args: None), 'applyAllAttributes': lambda *args: None})
+def apply_attributes(widget, desktop, attributes, scale):
+    widget.attributes.update(dict(attributes))
+
+GUIComponent = native('Components/GUIComponent.py', 'GUIComponent',
+    {'skin': NS(applyAllAttributes=apply_attributes), 'applyAllAttributes': apply_attributes})
 VariableText = native('Components/VariableText.py', 'VariableText', {})
 Label = native('Components/Label.py', 'Label', {'VariableText': VariableText, 'GUIComponent': GUIComponent, 'eLabel': Widget})
 Pixmap = native('Components/Pixmap.py', 'Pixmap', {'GUIComponent': GUIComponent, 'ePixmap': Widget})
@@ -146,7 +154,7 @@ config = NS(usage=NS(showScreenPath=NS(value='off')))
 Screen = native('Screens/Screen.py', 'Screen', {'eWindow': Widget, 'eTimer': Timer,
     'GUIComponent': GUIComponent, 'Pixmap': Pixmap, 'Source': Source, 'StaticText': StaticText,
     'CList': CList, 'config': config, 'menus': {}, 'screens': {}, 'setups': {},
-    'getDesktop': getDesktop, 'GUI_SKIN_ID': 0, 'applyAllAttributes': lambda *args: None,
+    'getDesktop': getDesktop, 'GUI_SKIN_ID': 0, 'applyAllAttributes': apply_attributes,
     'isfile': os.path.isfile, 'ScreenSummary': type('ScreenSummary', (), {}),
     'CodeType': types.CodeType, '_': lambda text: text})
 InfoBarBase = native('Components/ServiceEventTracker.py', 'InfoBarBase', {})
@@ -167,12 +175,14 @@ module('Components.Language', language=NS(getLanguage=lambda: 'sk_SK'))
 module('Screens.Screen', Screen=Screen)
 module('Screens.ChoiceBox', ChoiceBox=type('ChoiceBox', (), {}))
 module('Screens.VirtualKeyBoard', VirtualKeyBoard=type('VirtualKeyBoard', (), {}))
-module('Screens.MessageBox', MessageBox=type('MessageBox', (), {'TYPE_ERROR': 1, 'TYPE_INFO': 0}))
+module('Screens.MessageBox', MessageBox=type('MessageBox', (), {'TYPE_ERROR': 1, 'TYPE_INFO': 0, 'TYPE_YESNO': 2}))
 module('Plugins.Plugin', PluginDescriptor=PluginDescriptor)
 
 class ActionMap:
     def __init__(self, contexts, actions, prio):
         self.contexts, self.actions, self.prio = contexts, actions, prio
+        self.enabled = True
+    def setEnabled(self, value): self.enabled = value
 
 module('Components.ActionMap', ActionMap=ActionMap)
 from WarderRadio import screen as radio
@@ -188,6 +198,9 @@ def mount(screen):
     screen.additionalWidgets = []
     screen.stacks = []
     screen.desktop = getDesktop(0)
+    for node in root:
+        if node.tag in ('ePixmap', 'eLabel'):
+            screen.additionalWidgets.append(NS(widget=Widget, skinAttributes=list(node.attrib.items())))
     for child in root.findall('widget'):
         if 'name' in child.attrib:
             value = screen[child.attrib['name']]
@@ -204,6 +217,8 @@ class NativeTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.patch = patch.object(radio, 'Store', lambda: Store(self.tmp.name))
         self.patch.start(); self.addCleanup(self.patch.stop)
+        self.update_patch = patch.object(radio, 'check_release', return_value=None)
+        self.update_patch.start(); self.addCleanup(self.update_patch.stop)
         DESKTOP[:] = 1920, 1080
 
     def new(self):
@@ -236,7 +251,7 @@ class NativeTests(unittest.TestCase):
                 self.assertEqual(len(screen['activity'].drawlist[1]), 41)
                 self.assertTrue(screen.rows)
                 self.assertTrue(screen['art'].instance.pixmap.endswith('plugin.png'))
-                self.assertIn('0.1.0-test1', screen['version'].getText())
+                self.assertIn(radio.VERSION, screen['version'].getText())
                 screen.cleanup()
                 self.assertFalse(screen.poll_timer.timer.active)
                 self.assertFalse(screen.clock_timer.timer.active)
@@ -295,6 +310,68 @@ class NativeTests(unittest.TestCase):
         actions = {node.attrib['mapto'] for node in maps[0]}
         self.assertEqual(actions, set(screen['actions'].actions))
         self.assertEqual(screen['actions'].contexts, ['WarderRadioActions'])
+
+    def test_live_widgets_are_above_static_artwork_in_native_creation_order(self):
+        # Real createGUIScreen creates additionalWidgets after named components.
+        # eWidget inserts equal-z children after existing ones (ewidget.cpp).
+        screen, _, root = self.new()
+        static = [item.instance for item in screen.additionalWidgets]
+        def order(widget):
+            return (int(widget.attributes.get('zPosition', 0)), widget.created)
+        for node in root.findall('widget'):
+            if 'name' not in node.attrib:
+                self.assertGreater(int(node.attrib['zPosition']), 1)
+                continue
+            widget = screen[node.attrib['name']].instance
+            x, y = map(int, node.attrib['position'].split(','))
+            w, h = map(int, node.attrib['size'].split(','))
+            for background in static:
+                bx, by = map(int, background.attributes['position'].split(','))
+                bw, bh = map(int, background.attributes['size'].split(','))
+                if x < bx + bw and x + w > bx and y < by + bh and y + h > by:
+                    self.assertGreater(order(widget), order(background), node.attrib['name'])
+        panels = [node for node in root.findall('eLabel') if node.attrib.get('size', '').endswith(',730')]
+        self.assertEqual(len(panels), 3)
+        self.assertTrue(all(node.attrib['backgroundColor'].startswith('#00') for node in panels))
+
+    def test_original_test1_reproduces_occlusion_and_corrected_skin_does_not(self):
+        text = (ROOT / 'tools/fixtures/skin-test1.py.txt').read_text()
+        tree = ast.parse(text)
+        tree.body = [node for node in tree.body if not isinstance(node, (ast.Import, ast.ImportFrom))]
+        from xml.sax.saxutils import escape
+        scope = {'ROOT': str(ROOT / 'src/WarderRadio'), 'escape': escape}
+        exec(compile(tree, '<published test1 skin>', 'exec'), scope)
+        with patch.object(radio, 'make_skin', scope['make_skin']):
+            before, _, _ = self.new()
+        after, _, _ = self.new()
+        def obscured(screen):
+            background = screen.additionalWidgets[0].instance
+            def order(widget):
+                return (int(widget.attributes.get('zPosition', 0)), widget.created)
+            return [name for name in ('clock', 'version', 'stations', 'functions', 'red', 'art')
+                    if order(screen[name].instance) < order(background)]
+        self.assertEqual(len(obscured(before)), 6)
+        self.assertEqual(obscured(after), [])
+
+    def test_update_checks_automatically_and_install_requires_acceptance(self):
+        screen, session, _ = self.new()
+        self.assertTrue(screen.update_pending)
+        release = NS(version='0.1.1')
+        screen.update_checked(release, None)
+        self.assertIn('0.1.1', session.dialogs[-1][2][0])
+        screen.update_answered(False)
+        self.assertFalse(screen.installing)
+        screen.jobs.close()
+        captured = []
+        screen.jobs.submit = lambda key, work, callback: captured.append((key, work, callback)) or True
+        screen.update_answered(True)
+        self.assertTrue(screen.installing)
+        self.assertFalse(screen['actions'].enabled)
+        screen.update_installed(None, 'opkg error')
+        self.assertFalse(screen.installing)
+        self.assertTrue(screen['actions'].enabled)
+        screen.update_installed('0.1.1', None)
+        self.assertEqual(session.dialogs[-1][-1]['type'], 2)
 
     def test_timer_signal_connection_api_also_disconnects(self):
         class SignalTimer:

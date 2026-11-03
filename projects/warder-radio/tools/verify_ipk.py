@@ -11,6 +11,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION = (ROOT / 'src/WarderRadio/version.txt').read_text().strip()
 manifest = json.loads((ROOT / 'dist/build.json').read_text())
 path = ROOT / 'dist' / manifest['file']
 raw = path.read_bytes()
@@ -44,12 +45,13 @@ with tarfile.open(fileobj=io.BytesIO(parts['data.tar.gz']), mode='r:gz') as tar:
 assert len(files) == manifest['files']
 base = 'usr/lib/enigma2/python/Plugins/Extensions/WarderRadio/'
 assert len(json.loads(files[base + 'seed.json'])) == 5444
+assert len([name for name in files if name.startswith(base + 'locale/') and name.endswith('.json')]) == 21
 assert files[base + 'plugin.png'] == (ROOT / 'src/WarderRadio/artwork/warder-radio-logo.png').read_bytes()
-assert files[base + 'version.txt'].decode().strip() == '0.1.0-test1'
+assert files[base + 'version.txt'].decode().strip() == VERSION
 with tempfile.TemporaryDirectory() as tmp:
     with tarfile.open(fileobj=io.BytesIO(parts['control.tar.gz']), mode='r:gz') as tar:
         control = tar.extractfile('./control').read().decode()
-        assert 'Version: 0.1.0-test1-1\n' in control
+        assert 'Version: ' + VERSION + '-1\n' in control
         assert 'Architecture: all\n' in control
         for script in ('preinst', 'postinst'):
             body = tar.extractfile('./' + script).read()

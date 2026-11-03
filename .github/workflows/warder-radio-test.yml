@@ -22,6 +22,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Build test payload
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 tools/build_ipk.py
+          echo "RADIO_VERSION=$(cat src/WarderRadio/version.txt)" >> "$GITHUB_ENV"
       - name: Unit tests
         env:
           PYTHONDONTWRITEBYTECODE: '1'
@@ -40,20 +46,34 @@ jobs:
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
-          python3 tools/build_ipk.py
           python3 tools/verify_ipk.py
       - uses: actions/upload-artifact@v4
         with:
-          name: warder-radio-0.1.0-test1
+          name: warder-radio-${{ env.RADIO_VERSION }}
           path: projects/warder-radio/dist/*
       - name: Publish receiver-test prerelease
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          tag=warder-radio-v0.1.0-test1
+          tag="warder-radio-v$RADIO_VERSION"
           if ! gh release view "$tag" >/dev/null 2>&1; then
             gh release create "$tag" --target "$GITHUB_SHA" --prerelease \
-              --title 'Warder Radio 0.1.0-test1' --notes-file docs/CHANGELOG.md
+              --title "Warder Radio $RADIO_VERSION" --notes-file docs/CHANGELOG.md
           fi
           gh release upload "$tag" dist/*.ipk dist/SHA256SUMS dist/build.json --clobber
+      - name: Verify public download and advance testing feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git fetch origin warder-radio-development
+          git switch -C warder-radio-feed origin/warder-radio-development
+          test "$(cat src/WarderRadio/version.txt)" = "$RADIO_VERSION"
+          python3 tools/publish_feed.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- update/testing.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish verified Warder Radio $RADIO_VERSION testing feed [skip ci]"
+            git push origin HEAD:warder-radio-development
+          fi

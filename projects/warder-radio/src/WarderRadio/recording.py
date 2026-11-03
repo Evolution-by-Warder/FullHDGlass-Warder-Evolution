@@ -24,7 +24,7 @@ class Recording:
         if not os.path.ismount(os.path.realpath(self.root)):
             raise ValueError('Recording requires a mounted disk')
         if shutil.disk_usage(self.root).free < 100 * 1024 * 1024:
-            raise OSError('Less than 100 MB of free disk space')
+            raise OSError('Not enough free space')
         if self.running():
             return
         os.makedirs(self.directory, exist_ok=True)

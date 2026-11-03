@@ -1,7 +1,11 @@
 # Warder Radio — World of Radio Stations
 
-Independent native Enigma2 internet radio plugin. First receiver-test candidate:
-**0.1.0-test1**. It is not a production release and is not added to existing stable feeds.
+Independent native Enigma2 internet radio plugin. Current receiver-test candidate:
+**0.1.0-test2**. It is not a production release and is not added to existing stable feeds.
+
+Test2 fixes a receiver-reported bug where static artwork covered all live
+widgets. Background, opaque dark panels and live controls now use explicit
+z-order layers; the regression replay includes additional static widgets.
 
 The approved layout uses the Warder graphic family, functions on the left,
 stations in the centre and the player on the right. The header places the actual
@@ -20,7 +24,16 @@ registered in the plugin browser.
 - Mounted-disk recordings folder `/media/hdd/WarderRadio`; playback of recordings.
   Optional recording uses the separately installed `streamripper` executable.
   Its stream/codec/TLS support depends on the receiver's streamripper build.
-- Slovak, Czech and English UI. Other receiver languages use English.
+- All 21 languages used across FullHDGlass, GSU and PiconHub: Albanian, Czech,
+  German, Greek, English, Spanish, Estonian, Persian, French, Hungarian, Italian,
+  Lithuanian, Dutch, Polish, Portuguese, Romanian, Russian, Slovak, Turkish,
+  Ukrainian and Chinese. Language follows the receiver; Albanian supports both
+  `al` and `sq` codes. The approved subtitle stays in English.
+- Automatic update check on opening, plus MENU → Check for updates. Installation
+  is offered with confirmation, then size, SHA-256, package identity/version and
+  installed opkg status are verified. GUI restart is offered after success.
+  Test builds use the testing channel; stable builds use the separate stable
+  channel. The feed advances only after the public IPK download is verified.
 - Native layouts at 1280×720, 1920×1080, 2560×1440 and 3840×2160; list heights
   always contain an exact number of complete rows.
 
@@ -33,7 +46,7 @@ lyrics, a sleep timer or recording schedules.
 Copy the IPK to `/tmp`, then run:
 
 ```sh
-opkg install /tmp/enigma2-plugin-extensions-warderradio_0.1.0-test1_all.ipk
+opkg install /tmp/enigma2-plugin-extensions-warderradio_0.1.0-test2_all.ipk
 ```
 
 Restart the GUI manually, then open **Warder Radio** from Plugins or Extensions.

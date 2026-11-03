@@ -19,11 +19,12 @@ from Screens.MessageBox import MessageBox
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 
 from . import ROOT, VERSION
-from .i18n import t
+from .i18n import t, rtl
 from .jobs import Jobs
 from .model import Store, Catalogue, Playback
 from .recording import Recording
 from .picons import path_for
+from .warder_update import check_release, install_release
 from .skin import make_skin, geometry
 
 
@@ -64,7 +65,7 @@ class RadioList(MenuList):
     def build(self, item, key=None):
         def n(value):
             return max(1, round(value * self.ui_scale))
-        flags = enigma.RT_HALIGN_LEFT | enigma.RT_VALIGN_CENTER | getattr(enigma, 'RT_ELLIPSIS', 0)
+        flags = (getattr(enigma, 'RT_HALIGN_RIGHT', enigma.RT_HALIGN_LEFT) if self.functions and rtl() else enigma.RT_HALIGN_LEFT) | enigma.RT_VALIGN_CENTER | getattr(enigma, 'RT_ELLIPSIS', 0)
         if self.functions:
             return [None, MultiContentEntryText(pos=(n(16), n(12)), size=(n(350), n(65)),
                                                font=0, flags=flags, text=item)]
@@ -98,6 +99,9 @@ class WarderRadio(Screen):
         self.jobs = Jobs()
         self.closed = False
         self.updating = False
+        self.update_pending = False
+        self.update_manual = False
+        self.installing = False
         self.mode = 'radio'
         self.query = ''
         self.focus = 'stations'
@@ -158,6 +162,7 @@ class WarderRadio(Screen):
         self.poll_timer.start(150)
         self.clock_timer.start(1000)
         self.visual_timer.start(180)
+        self.check_updates()
 
     def notify(self, message, error=False):
         if not self.closed:
@@ -354,7 +359,7 @@ class WarderRadio(Screen):
 
     def options(self):
         choices = [(t('Choose group'), 'group'), (t('Update catalogue'), 'update'),
-                   (t('Add station'), 'add'),
+                   (t('Add station'), 'add'), (t('Check for updates'), 'plugin-update'),
                    (t('Stop recording' if self.recording.running() else 'Start recording'), 'record'),
                    (t('Stop'), 'stop'), (t('About'), 'about')]
         self.session.openWithCallback(self.option_done, ChoiceBox, title=t('Settings'), list=choices)
@@ -369,6 +374,8 @@ class WarderRadio(Screen):
                                           + ([(t('Custom'), 'Custom')] if self.store.custom else []))
         elif action == 'update':
             self.update_catalogue()
+        elif action == 'plugin-update':
+            self.check_updates(manual=True)
         elif action == 'add':
             self.session.openWithCallback(self.add_name_done, VirtualKeyBoard, title=t('Station name'), text='')
         elif action == 'record':
@@ -402,8 +409,11 @@ class WarderRadio(Screen):
             return
         try:
             self.store.add(self.new_station_name, url)
-        except (ValueError, OSError) as error:
-            self.notify(str(error), True)
+        except ValueError:
+            self.notify(t('Invalid stream address'), True)
+            return
+        except OSError:
+            self.notify(t('Cannot add station'), True)
             return
         self.active_group, self.mode, self.query = 'Custom', 'radio', ''
         self.refresh_rows()
@@ -485,8 +495,62 @@ class WarderRadio(Screen):
         if not self.closed:
             self.jobs.poll()
 
+    def check_updates(self, manual=False):
+        if self.update_pending or self.installing or self.closed:
+            return
+        self.update_manual = manual
+        self.update_pending = self.jobs.submit('plugin-update-check',
+            lambda: check_release(VERSION), self.update_checked)
+        if manual:
+            self['status'].setText(t('Checking for updates…' if self.update_pending else 'Update check failed'))
+
+    def update_checked(self, release, error):
+        self.update_pending = False
+        if error:
+            if self.update_manual:
+                self.notify(t('Update check failed'), True)
+            return
+        if release is None:
+            if self.update_manual:
+                self.notify(t('No update available'))
+            return
+        self.update_release = release
+        self.session.openWithCallback(self.update_answered, MessageBox,
+            t('Install update {version}?').format(version=release.version),
+            type=MessageBox.TYPE_YESNO, default=False)
+
+    def update_answered(self, accepted):
+        if not accepted or self.closed or self.installing:
+            return
+        release = self.update_release
+        self.installing = self.jobs.submit('plugin-update-install',
+            lambda: install_release(release), self.update_installed)
+        if self.installing:
+            self['actions'].setEnabled(False)
+            self['status'].setText(t('Installing update…'))
+        else:
+            self.notify(t('Update failed'), True)
+
+    def update_installed(self, version, error):
+        self.installing = False
+        self['actions'].setEnabled(True)
+        if error:
+            self['status'].setText(t('Update failed'))
+            self.notify(t('Update failed'), True)
+            return
+        self['status'].setText(t('Update installed. Restart GUI now?'))
+        self.session.openWithCallback(self.update_restart, MessageBox,
+            t('Update installed. Restart GUI now?'), type=MessageBox.TYPE_YESNO, default=False)
+
+    def update_restart(self, accepted):
+        if accepted and not self.closed:
+            from Screens.Standby import TryQuitMainloop
+            self.cleanup()
+            self.session.open(TryQuitMainloop, 3)
+
     def exit(self):
-        self.close()
+        if not self.installing:
+            self.close()
 
     def cleanup(self):
         if self.closed:
