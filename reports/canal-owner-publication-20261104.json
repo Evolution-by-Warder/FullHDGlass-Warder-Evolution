@@ -1,0 +1,1738 @@
+{
+  "status": "PUBLIC_CANDIDATE_VERIFIED",
+  "source_ref": "b498c30b11f47f28bbc7a068d5bd671395ca4e8c",
+  "owner_approval_sha256": "030ea93b53f85c32bcb462bc5d5f384a292cc2f4dfc8ee1b194b28ba9e60613a",
+  "previous_manifest_sha256": "16ba3067257cb0ef816615d526909e3096dcfa2c75b9c8b55b34310819b95721",
+  "manifest_sha256": "7390ec5f558bb7a8070d37b0728e9aaed5a3e150b11d976eb856f20211b5b814",
+  "changed_packages": 45,
+  "approved_output_count": 36,
+  "reference_count": 11,
+  "skin_actual_installer_checks": 45,
+  "piconhub_actual_engine_checks": 45,
+  "skin_planner_checks": 45,
+  "piconhub_planner_checks": 45,
+  "all_unrelated_png_bytes_preserved": true,
+  "old_archives_retained": true,
+  "ipk_changed": false,
+  "packages": [
+    {
+      "selector_id": "235E",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-235e-220x132-transparent-a53bdbea2c826e09.zip",
+      "sha256": "a53bdbea2c826e09ba094ab3e47f0516ee0e3779c50a5305dc77c72d4b76bbdf",
+      "bytes": 16098795,
+      "old_sha256": "f09ee70155e935c2059ac12639ab22cb62200ea01ce74f0ff244c43fd3f55908",
+      "replaced": [
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 2217,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "01c5759dc11f5b786f782b451886b5921b4304ccb165748eed6070878211d9df",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "01c5759dc11f5b786f782b451886b5921b4304ccb165748eed6070878211d9df",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "d07878c1c65f25473842394c79eb9d2eaa53182f78aa931b524248598082d5f1",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "d07878c1c65f25473842394c79eb9d2eaa53182f78aa931b524248598082d5f1",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "0ad127e76828bf59f46671c05be4e37cb62a96555705b03e8a84fabf77e15a8a",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "0ad127e76828bf59f46671c05be4e37cb62a96555705b03e8a84fabf77e15a8a"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-235e-220x132-black-a259bd49546c0e6a.zip",
+      "sha256": "a259bd49546c0e6a03a38235a28b29b96b2cc9bd9ed3bba58196dbf93327ead7",
+      "bytes": 50934319,
+      "old_sha256": "b36d009b729e25983fc8b324d070d6a470937e1a8962588b89da47407006d7b6",
+      "replaced": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 2232,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "d1209824dc9c42c81b6ddfb053b033cb11fdcaa22414cc32dec4cd0cb11fb0e0",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "d1209824dc9c42c81b6ddfb053b033cb11fdcaa22414cc32dec4cd0cb11fb0e0",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "e4eaeed5cc3a08a2d55693633f06f17b6b20b4b4606f323a3450958eb87ab9cd",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "e4eaeed5cc3a08a2d55693633f06f17b6b20b4b4606f323a3450958eb87ab9cd",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "8c47492ce0f3e3b3c7b9324cf2542b976312d880b6b58a2a6754d6e07f940f10",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "8c47492ce0f3e3b3c7b9324cf2542b976312d880b6b58a2a6754d6e07f940f10"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-235e-220x132-white-d202c213068eaa92.zip",
+      "sha256": "d202c213068eaa928206b226c455fc0f031491081c4be7026f1d89d10d48278d",
+      "bytes": 46547334,
+      "old_sha256": "70e92443faddbac663f624ab2999ff5130f0604b9c01f308f3c96173efda2244",
+      "replaced": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 2232,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "2da50eb686c111e4853a1a1fbcb20cc722b2906ec5c2488a33b5c3ff225a3741",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "2da50eb686c111e4853a1a1fbcb20cc722b2906ec5c2488a33b5c3ff225a3741",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "daac0b3c2e4abd5e0f760eff14745dfdcd0ee37db28f4eb6f19c02523603d321",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "daac0b3c2e4abd5e0f760eff14745dfdcd0ee37db28f4eb6f19c02523603d321",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "62951b18fcc90273bd371f5d39a774ad788e7918234e55f2797091a40b40a301",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "62951b18fcc90273bd371f5d39a774ad788e7918234e55f2797091a40b40a301"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-digi_telly-220x132-transparent-5215a099c2f96c17.zip",
+      "sha256": "5215a099c2f96c174e8039000d63525d7fc4db928242fdc605202c1c0c490351",
+      "bytes": 367093,
+      "old_sha256": "bdb6264dec6b5b7a64ae066e3ace0e731ee7bfcd0fe35b60fe9cb762389e045f",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-digi_telly-220x132-black-ec14dad53d18a22d.zip",
+      "sha256": "ec14dad53d18a22d58d0200a331aa7e1b8f17610a5ef056c6ae5d921e959024c",
+      "bytes": 2855532,
+      "old_sha256": "24dd5d685bba89f10160f65be99e31581f361b0f84d170f9e913253c7ecf2582",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-digi_telly-220x132-white-2849f629af8ba120.zip",
+      "sha256": "2849f629af8ba1209bfbcab00a916954de2425caf1fc594994fea81b6e135002",
+      "bytes": 2908719,
+      "old_sha256": "0cc61e3236ca2f30809fda3877a6415d16f6606e7a8a0808d1e1f58a8a031db0",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip",
+      "sha256": "f42ac50b5adfc3a6fe6d6a5520b0e229b475b072a4c63dc20d5fcf51049f4221",
+      "bytes": 1088006,
+      "old_sha256": "d586238b0b632784305c85ab151a9b9c7516f3bbe08fccba95798ef292389dfb",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 234,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "01c5759dc11f5b786f782b451886b5921b4304ccb165748eed6070878211d9df",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "01c5759dc11f5b786f782b451886b5921b4304ccb165748eed6070878211d9df",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "d07878c1c65f25473842394c79eb9d2eaa53182f78aa931b524248598082d5f1",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "d07878c1c65f25473842394c79eb9d2eaa53182f78aa931b524248598082d5f1",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "0ad127e76828bf59f46671c05be4e37cb62a96555705b03e8a84fabf77e15a8a",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "0ad127e76828bf59f46671c05be4e37cb62a96555705b03e8a84fabf77e15a8a"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-canalplus_sk-220x132-white-16d0b4cc5986e48e.zip",
+      "sha256": "16d0b4cc5986e48e36c06ca7e91f1833b6a20abc0c05e06c95b6596d02d960b2",
+      "bytes": 6799001,
+      "old_sha256": "d29254393fea135dd17f9d036e3ecc83056d8a82f7660dde954beb653cbfc7a6",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 234,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "2da50eb686c111e4853a1a1fbcb20cc722b2906ec5c2488a33b5c3ff225a3741",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "2da50eb686c111e4853a1a1fbcb20cc722b2906ec5c2488a33b5c3ff225a3741",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "daac0b3c2e4abd5e0f760eff14745dfdcd0ee37db28f4eb6f19c02523603d321",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "daac0b3c2e4abd5e0f760eff14745dfdcd0ee37db28f4eb6f19c02523603d321",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "62951b18fcc90273bd371f5d39a774ad788e7918234e55f2797091a40b40a301",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "62951b18fcc90273bd371f5d39a774ad788e7918234e55f2797091a40b40a301"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-canalplus_sk-220x132-black-148f5818dd9193f6.zip",
+      "sha256": "148f5818dd9193f6b1fe68f60c66e21abae4df2ed09e2d23c327edcfb576e1e8",
+      "bytes": 6665636,
+      "old_sha256": "39d1ef24fa765bb8b22ce05ae8f416566616daf35adb7c808ce8c39485c3afc5",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 236,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "d1209824dc9c42c81b6ddfb053b033cb11fdcaa22414cc32dec4cd0cb11fb0e0",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "d1209824dc9c42c81b6ddfb053b033cb11fdcaa22414cc32dec4cd0cb11fb0e0",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "e4eaeed5cc3a08a2d55693633f06f17b6b20b4b4606f323a3450958eb87ab9cd",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "e4eaeed5cc3a08a2d55693633f06f17b6b20b4b4606f323a3450958eb87ab9cd",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "8c47492ce0f3e3b3c7b9324cf2542b976312d880b6b58a2a6754d6e07f940f10",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "8c47492ce0f3e3b3c7b9324cf2542b976312d880b6b58a2a6754d6e07f940f10"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip",
+      "sha256": "87d905f9027e7a0a0366e7820ab8342deaefaca8376081e33af5bc08c6a8792d",
+      "bytes": 1129517,
+      "old_sha256": "a5d72ebc759dd9abae4fa89fd07bb7658887e7f3b147a0fbc99a15a3f4250330",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "01c5759dc11f5b786f782b451886b5921b4304ccb165748eed6070878211d9df",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "01c5759dc11f5b786f782b451886b5921b4304ccb165748eed6070878211d9df",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "d07878c1c65f25473842394c79eb9d2eaa53182f78aa931b524248598082d5f1",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "d07878c1c65f25473842394c79eb9d2eaa53182f78aa931b524248598082d5f1",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "0ad127e76828bf59f46671c05be4e37cb62a96555705b03e8a84fabf77e15a8a",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "0ad127e76828bf59f46671c05be4e37cb62a96555705b03e8a84fabf77e15a8a"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-canalplus_cz-220x132-white-de20059b06ae4ffd.zip",
+      "sha256": "de20059b06ae4ffdf75d1295c75a9939cf87a55acd663483b9bb896b58ed1ace",
+      "bytes": 6933238,
+      "old_sha256": "cb7429d3659a01e300aa08e2e4840330232a3ba8a0478a7f9986c0357bbda76e",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "2da50eb686c111e4853a1a1fbcb20cc722b2906ec5c2488a33b5c3ff225a3741",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "2da50eb686c111e4853a1a1fbcb20cc722b2906ec5c2488a33b5c3ff225a3741",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "daac0b3c2e4abd5e0f760eff14745dfdcd0ee37db28f4eb6f19c02523603d321",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "daac0b3c2e4abd5e0f760eff14745dfdcd0ee37db28f4eb6f19c02523603d321",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "62951b18fcc90273bd371f5d39a774ad788e7918234e55f2797091a40b40a301",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "62951b18fcc90273bd371f5d39a774ad788e7918234e55f2797091a40b40a301"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-canalplus_cz-220x132-black-caebfc2732e954a9.zip",
+      "sha256": "caebfc2732e954a9a7f90787897cab26b65f3b605e88eb131684c98044cb0abf",
+      "bytes": 6721618,
+      "old_sha256": "db6e2329876928cc35b2aa70f612a546b66eced3073874733421acc5fa305956",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "d1209824dc9c42c81b6ddfb053b033cb11fdcaa22414cc32dec4cd0cb11fb0e0",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "d1209824dc9c42c81b6ddfb053b033cb11fdcaa22414cc32dec4cd0cb11fb0e0",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "e4eaeed5cc3a08a2d55693633f06f17b6b20b4b4606f323a3450958eb87ab9cd",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "e4eaeed5cc3a08a2d55693633f06f17b6b20b4b4606f323a3450958eb87ab9cd",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "8c47492ce0f3e3b3c7b9324cf2542b976312d880b6b58a2a6754d6e07f940f10",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "8c47492ce0f3e3b3c7b9324cf2542b976312d880b6b58a2a6754d6e07f940f10"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "220x132",
+      "style": "black",
+      "filename": "warder-08w-220x132-black-2623f65c9ff01f52.zip",
+      "sha256": "2623f65c9ff01f525e744e428db3f17cc2f3272bcc9d203b4ad2d306836295d0",
+      "bytes": 67373233,
+      "old_sha256": "fc6c5d928548c9822ccfba9c647fd391ec8c87b209041c7a18b2feeccfb5d589",
+      "replaced": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 3139,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "4253e1c7a80c24ea70dd9520f239ad786d0a4249d774cf0a312508f3627e3c93"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "220x132",
+      "style": "transparent",
+      "filename": "warder-08w-220x132-transparent-c6c0ef51680ea9a6.zip",
+      "sha256": "c6c0ef51680ea9a653d1d1de843422eae15c8ab1bedf98218947fc2dcb9dd602",
+      "bytes": 22813988,
+      "old_sha256": "22bd7e538998c6d1f43a1192d02c598c3d8fa234c8e2f44ae3e0b89e05727393",
+      "replaced": [
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 3013,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "c931b0436d5432e90467b6f464d5d21efb12c9b27cb3e1219649c09d11c3e081"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "220x132",
+      "style": "white",
+      "filename": "warder-08w-220x132-white-88b403b2de4e1c9f.zip",
+      "sha256": "88b403b2de4e1c9fe74f89197a83a5c6523b5bf8b068624067f4a9e985e58835",
+      "bytes": 60089827,
+      "old_sha256": "ee9398b1da2f2a87e3baac94ff2e6de072f34aa446861336e60232c14812b3ce",
+      "replaced": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 3139,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "b80b6c2ebded07b2585ab2eefe857ef805ecddba64e5d046a714da335d5db761"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-08w-50x30-transparent-462e007441eb1877.zip",
+      "sha256": "462e007441eb1877226766f8ba1c20a52985290898069250d5b498ecaf7d3643",
+      "bytes": 3651078,
+      "old_sha256": "e48963ed0e783b19d78a3bb7571ed145b6d2f1d7d129702dbb676bb267dd19a6",
+      "replaced": [
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 2938,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-08w-50x30-white-d2bb98fb13add894.zip",
+      "sha256": "d2bb98fb13add8946450eee3ebdb94c067bb79d4b9981bc3cbe4058a5b1c8e73",
+      "bytes": 5172508,
+      "old_sha256": "1dc42f2c93a75a69186dc132e1eaa12c54e6584d9213185309306162664bc4fc",
+      "replaced": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 3064,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-08w-50x30-black-e05fa108257e0154.zip",
+      "sha256": "e05fa108257e0154f47dec0e5adff76083e4edd03daf3703656d83f21b7f3965",
+      "bytes": 5207161,
+      "old_sha256": "6f67c8caf35ff012896e2e2e99cb951f568aec02730a6d7e88ef12f9793c8e94",
+      "replaced": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 3064,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-08w-400x240-transparent-16c7209ab4e34288.zip",
+      "sha256": "16c7209ab4e342883fe135c22d531c4416312c721505dfb703d9bd7b15cd60d3",
+      "bytes": 48889984,
+      "old_sha256": "d7acb46e6cc59a6d45fc7ef9744ca2b5d669a1740429b9eefccbdfd4a9e1a7af",
+      "replaced": [
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 2938,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-08w-400x240-white-9f963c27a584d60a.zip",
+      "sha256": "9f963c27a584d60ab5c42a43750f18a3f6b78b07938cd22c6e4943543a53c077",
+      "bytes": 73122934,
+      "old_sha256": "d2b919a6b8b311c8f5ab647fc128c8903ae2cff731ddf0c06a47c5dce7d40965",
+      "replaced": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 3064,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "08W",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-08w-400x240-black-4476da3cc02465b8.zip",
+      "sha256": "4476da3cc02465b8ac0c223d0a7985aa9d61f25418126a93f6c31f6087622b7d",
+      "bytes": 69662847,
+      "old_sha256": "b752e985ba91e14099ea73f175554db3a221dd6b0f5e78a86870f69cd4a1bbaf",
+      "replaced": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 3064,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_19_7A57_2CB_600_E080000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-235e-50x30-transparent-e07782963ccbfa00.zip",
+      "sha256": "e07782963ccbfa00e6ba48e76f62ab1abd7b368a5b19b48ae795ec82dff2f1ee",
+      "bytes": 2607937,
+      "old_sha256": "67c09e21849ea46167ce97dd6d6d26256de795910e81ece68a7e14ba82a830c7",
+      "replaced": [
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 2077,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "379a81538a1e817fe0ffd9794e510bf82d3c90963a5c57f074dce14f9e3065da",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "379a81538a1e817fe0ffd9794e510bf82d3c90963a5c57f074dce14f9e3065da",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "96f6acb249bbb7237dd8f0250c58c123415f57be13511f9c0e2618ede57a648e",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "96f6acb249bbb7237dd8f0250c58c123415f57be13511f9c0e2618ede57a648e",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "b0e11198f9755303af3382861e9cd5ceb4c429da2b2e1ee801a3d65590507ac1",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "b0e11198f9755303af3382861e9cd5ceb4c429da2b2e1ee801a3d65590507ac1"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-235e-50x30-white-5dfc5ae08f7ceab2.zip",
+      "sha256": "5dfc5ae08f7ceab24fe1fe44f958e77c1391cc6db61e8e36d2991758b2a05362",
+      "bytes": 3446280,
+      "old_sha256": "e9c54f7157eb86e3604819284ba75bcc3be2f6e51e378072f7153ac79eecdfe8",
+      "replaced": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 2092,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "414e9ffd3e7362792c82447c06cf2e5b3e2a3d933464ab808ffc0b5bba13cfe7",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "414e9ffd3e7362792c82447c06cf2e5b3e2a3d933464ab808ffc0b5bba13cfe7",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "8de606369ec03d4fec6558618ec8b57ad0670cd813a562bea6760258dee78802",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8de606369ec03d4fec6558618ec8b57ad0670cd813a562bea6760258dee78802",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "3a5201d4d12fb12f82923550d54e06e5bf911f472534b510b29af6cecda2ec24",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "3a5201d4d12fb12f82923550d54e06e5bf911f472534b510b29af6cecda2ec24"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-235e-50x30-black-5c0c5e9b3e4fcc6c.zip",
+      "sha256": "5c0c5e9b3e4fcc6c9d2cedc62e0a5e1bdfc19299de57625e8e8137e2871f5c9e",
+      "bytes": 3448091,
+      "old_sha256": "1c56336d2ba29c1c760dfec23362bd2e6fc1ed01cc22611c4f145443cfd44485",
+      "replaced": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 2092,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "37c56bdccddb0208eef63bbf3cba36b468daf2cf15a775fb86fae1b4fbcd610f",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "37c56bdccddb0208eef63bbf3cba36b468daf2cf15a775fb86fae1b4fbcd610f",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "679661b5654990f829a5c5db9e9d1bb68c5d2574d271477d27dd333a5e3a9c34",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "679661b5654990f829a5c5db9e9d1bb68c5d2574d271477d27dd333a5e3a9c34",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "c630dd6e64ddfa088d53bb160b58e83c6c649214529e11fdf4b4c801aecaeb65",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c630dd6e64ddfa088d53bb160b58e83c6c649214529e11fdf4b4c801aecaeb65"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-235e-400x240-transparent-4ddf9eb5692b495d.zip",
+      "sha256": "4ddf9eb5692b495d1d4a85e359986daa5b964c76ddb61cae3a3c0324528c2aee",
+      "bytes": 36286234,
+      "old_sha256": "2fb87ae20b01adb91bf7382b8509799f1b070820d382834cae9300a82cee8061",
+      "replaced": [
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 2077,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "82d4107dbd3a670123cd73fd1918c5839e73be2cca8cf7b76f06a304a1fd3985",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "82d4107dbd3a670123cd73fd1918c5839e73be2cca8cf7b76f06a304a1fd3985",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "11cb70ac27a495729668a2a89a84dc2592967d7b16c0050b102e44248b567102",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "11cb70ac27a495729668a2a89a84dc2592967d7b16c0050b102e44248b567102",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "1b0b3abb8a6e599d1c5e0bcef34a2ec0a06a8ab36f03021410a7776353439622",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "1b0b3abb8a6e599d1c5e0bcef34a2ec0a06a8ab36f03021410a7776353439622"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-235e-400x240-white-e2800f698f66b375.zip",
+      "sha256": "e2800f698f66b3750dc3269f8fb79f6ee2da5f12fc8e0645ce11a168719a4c71",
+      "bytes": 45436353,
+      "old_sha256": "46f1154cc87e0f0fc22d9e9204882343246d5e739103ae2434cbc53590d7949a",
+      "replaced": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 2092,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "051688db40ed048af3b2bab243473f43510856abd47b23e1052e4ee5b1a155be",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "051688db40ed048af3b2bab243473f43510856abd47b23e1052e4ee5b1a155be",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "492988696aa389197d63b65e52b06c35341b6c8cacad3090d62a99f88de93855",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "492988696aa389197d63b65e52b06c35341b6c8cacad3090d62a99f88de93855",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "2a6d3d0e92075ba6f68a8e58012a957487d35ddc3b15473f42c5aa044d90c0b6",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "2a6d3d0e92075ba6f68a8e58012a957487d35ddc3b15473f42c5aa044d90c0b6"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "235E",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-235e-400x240-black-3fca78f1d3226892.zip",
+      "sha256": "3fca78f1d32268921f357c88d6ff55c835921b873ad17ebb36ab8c9e0ac4d03f",
+      "bytes": 43796018,
+      "old_sha256": "b14c109aa4fa8b749434aa2653badbcf93031010c54fb15f37e12d457400c427",
+      "replaced": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [],
+      "unrelated_pngs_preserved": 2092,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "9cdc24fc1da8752e24aceba2776871e555a89dd864ddfd00d403bac92e7346e8",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "9cdc24fc1da8752e24aceba2776871e555a89dd864ddfd00d403bac92e7346e8",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "da7116dfbfa730111c9740eaf23864dab8b7f07928e693db96570b2a6d68e261",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "da7116dfbfa730111c9740eaf23864dab8b7f07928e693db96570b2a6d68e261",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "717b02e75d081bd994d1ee5af977a0cbc74ef848c7a206392cef3b1cedae344f",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "717b02e75d081bd994d1ee5af977a0cbc74ef848c7a206392cef3b1cedae344f"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-canalplus_sk-50x30-transparent-6cacdecbc8c81173.zip",
+      "sha256": "6cacdecbc8c81173859de0bce9a5471662ae9e66f639c80c7900e03ded14d07f",
+      "bytes": 313288,
+      "old_sha256": "24614b471b1842169d70529848dcd62f622ec927775cedd67d46c55c15e3a71c",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 234,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "379a81538a1e817fe0ffd9794e510bf82d3c90963a5c57f074dce14f9e3065da",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "379a81538a1e817fe0ffd9794e510bf82d3c90963a5c57f074dce14f9e3065da",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "96f6acb249bbb7237dd8f0250c58c123415f57be13511f9c0e2618ede57a648e",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "96f6acb249bbb7237dd8f0250c58c123415f57be13511f9c0e2618ede57a648e",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "b0e11198f9755303af3382861e9cd5ceb4c429da2b2e1ee801a3d65590507ac1",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "b0e11198f9755303af3382861e9cd5ceb4c429da2b2e1ee801a3d65590507ac1"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-canalplus_sk-400x240-transparent-1469150c69e5f38b.zip",
+      "sha256": "1469150c69e5f38b8ad6f7364e968ed0da60ed0a14b51aa9268a47e056ef2849",
+      "bytes": 4057912,
+      "old_sha256": "97031e4b29283bcd7f14f11196f04157b1c3efd37426e41e349bc885cff9a08c",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 234,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "82d4107dbd3a670123cd73fd1918c5839e73be2cca8cf7b76f06a304a1fd3985",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "82d4107dbd3a670123cd73fd1918c5839e73be2cca8cf7b76f06a304a1fd3985",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "11cb70ac27a495729668a2a89a84dc2592967d7b16c0050b102e44248b567102",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "11cb70ac27a495729668a2a89a84dc2592967d7b16c0050b102e44248b567102",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "1b0b3abb8a6e599d1c5e0bcef34a2ec0a06a8ab36f03021410a7776353439622",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "1b0b3abb8a6e599d1c5e0bcef34a2ec0a06a8ab36f03021410a7776353439622"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-canalplus_sk-50x30-white-ef9eec01cd368a46.zip",
+      "sha256": "ef9eec01cd368a4697e6b375255f6d113783204cf28d48223e187666ca48546e",
+      "bytes": 439577,
+      "old_sha256": "c3472aa02bf35779d9738849a86bed3fe30ba3f8bcfbdf8dfd8aae33ecff2a52",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 234,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "414e9ffd3e7362792c82447c06cf2e5b3e2a3d933464ab808ffc0b5bba13cfe7",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "414e9ffd3e7362792c82447c06cf2e5b3e2a3d933464ab808ffc0b5bba13cfe7",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "8de606369ec03d4fec6558618ec8b57ad0670cd813a562bea6760258dee78802",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8de606369ec03d4fec6558618ec8b57ad0670cd813a562bea6760258dee78802",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "3a5201d4d12fb12f82923550d54e06e5bf911f472534b510b29af6cecda2ec24",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "3a5201d4d12fb12f82923550d54e06e5bf911f472534b510b29af6cecda2ec24"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-canalplus_sk-400x240-white-693cadd1ab08d96d.zip",
+      "sha256": "693cadd1ab08d96d38c9a06cc74f5c7cccb6fba470736ba66f67a00bf000af38",
+      "bytes": 7039475,
+      "old_sha256": "0cb323df46bbc43a86abe37721896ad30036c810c0903fe0c92a4c570e659866",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 234,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "051688db40ed048af3b2bab243473f43510856abd47b23e1052e4ee5b1a155be",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "051688db40ed048af3b2bab243473f43510856abd47b23e1052e4ee5b1a155be",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "492988696aa389197d63b65e52b06c35341b6c8cacad3090d62a99f88de93855",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "492988696aa389197d63b65e52b06c35341b6c8cacad3090d62a99f88de93855",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "2a6d3d0e92075ba6f68a8e58012a957487d35ddc3b15473f42c5aa044d90c0b6",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "2a6d3d0e92075ba6f68a8e58012a957487d35ddc3b15473f42c5aa044d90c0b6"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-canalplus_sk-50x30-black-78fed665dfd44a4b.zip",
+      "sha256": "78fed665dfd44a4b3f88e83f3f5b7221f99a34ebbea7720367a943f83971a8db",
+      "bytes": 446598,
+      "old_sha256": "9a54e570a1a0c2c5e00bd73653d374822a39a9dcd8ccae175c7a26365ab6f42c",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 236,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "37c56bdccddb0208eef63bbf3cba36b468daf2cf15a775fb86fae1b4fbcd610f",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "37c56bdccddb0208eef63bbf3cba36b468daf2cf15a775fb86fae1b4fbcd610f",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "679661b5654990f829a5c5db9e9d1bb68c5d2574d271477d27dd333a5e3a9c34",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "679661b5654990f829a5c5db9e9d1bb68c5d2574d271477d27dd333a5e3a9c34",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "c630dd6e64ddfa088d53bb160b58e83c6c649214529e11fdf4b4c801aecaeb65",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c630dd6e64ddfa088d53bb160b58e83c6c649214529e11fdf4b4c801aecaeb65"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_SK",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-canalplus_sk-400x240-black-d93dedee57a80a4a.zip",
+      "sha256": "d93dedee57a80a4ab7ea29380a2d7a8be5d403e7a71ca69838c56037c54d685b",
+      "bytes": 6758680,
+      "old_sha256": "7ebb29747521b0666f39d87da953b0e9bdf0e74cc88734517be9f58dfe40b8af",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 236,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "9cdc24fc1da8752e24aceba2776871e555a89dd864ddfd00d403bac92e7346e8",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "9cdc24fc1da8752e24aceba2776871e555a89dd864ddfd00d403bac92e7346e8",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "da7116dfbfa730111c9740eaf23864dab8b7f07928e693db96570b2a6d68e261",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "da7116dfbfa730111c9740eaf23864dab8b7f07928e693db96570b2a6d68e261",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "717b02e75d081bd994d1ee5af977a0cbc74ef848c7a206392cef3b1cedae344f",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "717b02e75d081bd994d1ee5af977a0cbc74ef848c7a206392cef3b1cedae344f"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-canalplus_cz-50x30-transparent-ca1b8443f0ceae71.zip",
+      "sha256": "ca1b8443f0ceae71a461ac559cf9c5ea95038891a6af67af040dfb83dbb4ac78",
+      "bytes": 318350,
+      "old_sha256": "9ea22827eed2eb4de44c68cf5ca7d342d96f303b14662283dd6e98ccc97e9b76",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "379a81538a1e817fe0ffd9794e510bf82d3c90963a5c57f074dce14f9e3065da",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "379a81538a1e817fe0ffd9794e510bf82d3c90963a5c57f074dce14f9e3065da",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "96f6acb249bbb7237dd8f0250c58c123415f57be13511f9c0e2618ede57a648e",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "96f6acb249bbb7237dd8f0250c58c123415f57be13511f9c0e2618ede57a648e",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "b0e11198f9755303af3382861e9cd5ceb4c429da2b2e1ee801a3d65590507ac1",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "b0e11198f9755303af3382861e9cd5ceb4c429da2b2e1ee801a3d65590507ac1"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-canalplus_cz-400x240-transparent-63864e5f39285be5.zip",
+      "sha256": "63864e5f39285be5bbe8e133a0e5e84db9414c9e968f3dc696ab87c17d62bd27",
+      "bytes": 4078145,
+      "old_sha256": "1e406f6cd4666a1b90e1e173311cb3c86c94fe031078bfd0d17f42725d090d15",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "82d4107dbd3a670123cd73fd1918c5839e73be2cca8cf7b76f06a304a1fd3985",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "82d4107dbd3a670123cd73fd1918c5839e73be2cca8cf7b76f06a304a1fd3985",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "11cb70ac27a495729668a2a89a84dc2592967d7b16c0050b102e44248b567102",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "11cb70ac27a495729668a2a89a84dc2592967d7b16c0050b102e44248b567102",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "1b0b3abb8a6e599d1c5e0bcef34a2ec0a06a8ab36f03021410a7776353439622",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "1b0b3abb8a6e599d1c5e0bcef34a2ec0a06a8ab36f03021410a7776353439622"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-canalplus_cz-50x30-white-a770792d92b1a45a.zip",
+      "sha256": "a770792d92b1a45ad4812d3315cfd71e54f8ef8c7070c4d5e8e451fea6be9381",
+      "bytes": 449791,
+      "old_sha256": "28e54ae8850795ebf12c49e41c09a8387e81e93f276da3c3f9920c9319b07a59",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "414e9ffd3e7362792c82447c06cf2e5b3e2a3d933464ab808ffc0b5bba13cfe7",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "414e9ffd3e7362792c82447c06cf2e5b3e2a3d933464ab808ffc0b5bba13cfe7",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "8de606369ec03d4fec6558618ec8b57ad0670cd813a562bea6760258dee78802",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "8de606369ec03d4fec6558618ec8b57ad0670cd813a562bea6760258dee78802",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "3a5201d4d12fb12f82923550d54e06e5bf911f472534b510b29af6cecda2ec24",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "3a5201d4d12fb12f82923550d54e06e5bf911f472534b510b29af6cecda2ec24"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-canalplus_cz-400x240-white-2361de5893401a1f.zip",
+      "sha256": "2361de5893401a1f5afb2b39243687dbff5ddaf99fdd8f7a00045e903f00a9d1",
+      "bytes": 7202362,
+      "old_sha256": "81c9c62debea67f15ffca43841966d8b9db0c41a9870d7e971bbc97d755440f5",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "051688db40ed048af3b2bab243473f43510856abd47b23e1052e4ee5b1a155be",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "051688db40ed048af3b2bab243473f43510856abd47b23e1052e4ee5b1a155be",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "492988696aa389197d63b65e52b06c35341b6c8cacad3090d62a99f88de93855",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "492988696aa389197d63b65e52b06c35341b6c8cacad3090d62a99f88de93855",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "2a6d3d0e92075ba6f68a8e58012a957487d35ddc3b15473f42c5aa044d90c0b6",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "2a6d3d0e92075ba6f68a8e58012a957487d35ddc3b15473f42c5aa044d90c0b6"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-canalplus_cz-50x30-black-d212dc31031570c0.zip",
+      "sha256": "d212dc31031570c024ba1c309c91eee96c9d04600a3b5716ebd537b50de17213",
+      "bytes": 452661,
+      "old_sha256": "776c51f7c77577b68dce5364ba1bd2d1c8b6c233b23208297866147888943fb6",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "37c56bdccddb0208eef63bbf3cba36b468daf2cf15a775fb86fae1b4fbcd610f",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "37c56bdccddb0208eef63bbf3cba36b468daf2cf15a775fb86fae1b4fbcd610f",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "679661b5654990f829a5c5db9e9d1bb68c5d2574d271477d27dd333a5e3a9c34",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "679661b5654990f829a5c5db9e9d1bb68c5d2574d271477d27dd333a5e3a9c34",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "c630dd6e64ddfa088d53bb160b58e83c6c649214529e11fdf4b4c801aecaeb65",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "c630dd6e64ddfa088d53bb160b58e83c6c649214529e11fdf4b4c801aecaeb65"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "CANALPLUS_CZ",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-canalplus_cz-400x240-black-88da0a3e1b54e36b.zip",
+      "sha256": "88da0a3e1b54e36be4268c1bedcb3e9330cdf94382c43f5476584da217b4ac5f",
+      "bytes": 6878292,
+      "old_sha256": "5b57ae95ba3ce6d0071a1fd7e0ef50b611b409ef0f35da8798c82eaffab7f848",
+      "replaced": [
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "added": [
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png",
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 239,
+      "approved_pngs": {
+        "1_0_19_3736_C8E_3_EB0000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_1_3736_C8E_3_EB0000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_19_3CFA_C95_3_EB0000_0_0_0.png": "9cdc24fc1da8752e24aceba2776871e555a89dd864ddfd00d403bac92e7346e8",
+        "1_0_1_3CFA_C95_3_EB0000_0_0_0.png": "9cdc24fc1da8752e24aceba2776871e555a89dd864ddfd00d403bac92e7346e8",
+        "1_0_19_52B3_C99_3_EB0000_0_0_0.png": "da7116dfbfa730111c9740eaf23864dab8b7f07928e693db96570b2a6d68e261",
+        "1_0_1_52B3_C99_3_EB0000_0_0_0.png": "da7116dfbfa730111c9740eaf23864dab8b7f07928e693db96570b2a6d68e261",
+        "1_0_19_1F53_CA1_3_EB0000_0_0_0.png": "717b02e75d081bd994d1ee5af977a0cbc74ef848c7a206392cef3b1cedae344f",
+        "1_0_1_1F53_CA1_3_EB0000_0_0_0.png": "717b02e75d081bd994d1ee5af977a0cbc74ef848c7a206392cef3b1cedae344f"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "50x30",
+      "style": "transparent",
+      "filename": "warder-digi_telly-50x30-transparent-08b6ac82ac94d44f.zip",
+      "sha256": "08b6ac82ac94d44fcd3dbb0706aeacd5434990ab4f2c21478cf67245e10408fd",
+      "bytes": 97044,
+      "old_sha256": "e62097f6aa6127feed9f5b156f3fadb16e65998aed5f7b99b0b7399387e3f5f5",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "67fb3b1b39b8634f4e00d6d9b3a0e8c8d14cbf4bfe44197da34771200f3f21ad"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "400x240",
+      "style": "transparent",
+      "filename": "warder-digi_telly-400x240-transparent-94d78e5a255cdb65.zip",
+      "sha256": "94d78e5a255cdb65bb11331c7cf5ae924f62c848a9cf8747f5ff03673edcc9ee",
+      "bytes": 1076006,
+      "old_sha256": "16a3ce0df3e436e2e747df35b7b226c811d5689d4ef568187ce525f122abc992",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "383ec14d2e814643409995d9730f8ef78eacd8e88e6a6eb3a163a7cce3467c5c"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "50x30",
+      "style": "white",
+      "filename": "warder-digi_telly-50x30-white-88e4d4102c8afa3a.zip",
+      "sha256": "88e4d4102c8afa3a4434c1f09eccbb97d26b201a32c711b0bc93ea2833002d05",
+      "bytes": 186598,
+      "old_sha256": "1ef91e5b575636875acbbfff4bc2991d9849dff23b524c29406f94ba5a01600b",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "4e26540cc11b6951f462fa79088815a495f63af276bfe3208f4e35898bd59852"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "400x240",
+      "style": "white",
+      "filename": "warder-digi_telly-400x240-white-c11b7dd2d840d953.zip",
+      "sha256": "c11b7dd2d840d953d89420399e32cc03ffbe72053ebd18427c809593a2b0ae03",
+      "bytes": 4090079,
+      "old_sha256": "5931622c235b7f80644aa0b4cbe0a63eebce57700feda87f6a4a7acb3585ea6e",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "3f128cdf3099cc9221f02385777d4ef9d41707e8ff2b000571cb070b441fdb09"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "50x30",
+      "style": "black",
+      "filename": "warder-digi_telly-50x30-black-7cc8d39e1d41a747.zip",
+      "sha256": "7cc8d39e1d41a747295c2a4517700bd203f23903aac24e2d52564d04ad213fa0",
+      "bytes": 195259,
+      "old_sha256": "ae2a1a81fde20a05f286022b6b77f641c5b754928edc2e6fca57f1b110461d5f",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "05966b92301ced06790a8ab6d3d6f050e8cb33f66e7d83b55c807cb4db70ebc4"
+      },
+      "piconhub_actual_engine_install": true
+    },
+    {
+      "selector_id": "DIGI_TELLY",
+      "resolution": "400x240",
+      "style": "black",
+      "filename": "warder-digi_telly-400x240-black-e594d0118bcee2c8.zip",
+      "sha256": "e594d0118bcee2c8512e2b4633dd3aa56ebd61fac54b7fa33970b75f7b82be9e",
+      "bytes": 3974891,
+      "old_sha256": "a918c300f5eddcff7df145ee544c25ad8dc7fcc04aabf53aca66dfbb7919aa72",
+      "replaced": [],
+      "added": [
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png"
+      ],
+      "unrelated_pngs_preserved": 80,
+      "approved_pngs": {
+        "1_0_19_2346_AF9_BB_E080000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655",
+        "1_0_19_2B0B_AFB_BB_E080000_0_0_0.png": "23954faff5b0c0273082532460c790b4509d21862fd1f1117d65b180eb10a655"
+      },
+      "piconhub_actual_engine_install": true
+    }
+  ],
+  "new_parts": [
+    {
+      "filename": "warder-235e-220x132-transparent-a53bdbea2c826e09.zip.part00",
+      "bytes": 16098795,
+      "sha256": "a53bdbea2c826e09ba094ab3e47f0516ee0e3779c50a5305dc77c72d4b76bbdf"
+    },
+    {
+      "filename": "warder-235e-220x132-black-a259bd49546c0e6a.zip.part00",
+      "bytes": 16777216,
+      "sha256": "bcbb5b62c45fc7dbb778605ae8a51c504ca9dc072caa2761f40e99582c6613f9"
+    },
+    {
+      "filename": "warder-235e-220x132-black-a259bd49546c0e6a.zip.part01",
+      "bytes": 16777216,
+      "sha256": "7efed4e0f0d943d76196ac31967c6b04b9ee89795790295d8281ba81650c62d8"
+    },
+    {
+      "filename": "warder-235e-220x132-black-a259bd49546c0e6a.zip.part02",
+      "bytes": 16777216,
+      "sha256": "89598bf592c1ba287bb9065ae43a33ed125c82ce52418fcb8ad0eb8810216a0c"
+    },
+    {
+      "filename": "warder-235e-220x132-black-a259bd49546c0e6a.zip.part03",
+      "bytes": 602671,
+      "sha256": "79fb1a487b499469a6b527dfe7dc4de9883477e25ac62137bfe95fb86154d40d"
+    },
+    {
+      "filename": "warder-235e-220x132-white-d202c213068eaa92.zip.part00",
+      "bytes": 16777216,
+      "sha256": "c498e24251d888dc6fd2b323279dd1387de1c2648a427585ebef4ed2287a4a3a"
+    },
+    {
+      "filename": "warder-235e-220x132-white-d202c213068eaa92.zip.part01",
+      "bytes": 16777216,
+      "sha256": "507870adcad5da640c7e0aef79278edefbc5233578c0b3e48ed74e54b59b3718"
+    },
+    {
+      "filename": "warder-235e-220x132-white-d202c213068eaa92.zip.part02",
+      "bytes": 12992902,
+      "sha256": "bf571290a1fd45fcae7af907d1c56658e89a11de1e10de4d06427bc421db0bf0"
+    },
+    {
+      "filename": "warder-digi_telly-220x132-transparent-5215a099c2f96c17.zip.part00",
+      "bytes": 367093,
+      "sha256": "5215a099c2f96c174e8039000d63525d7fc4db928242fdc605202c1c0c490351"
+    },
+    {
+      "filename": "warder-digi_telly-220x132-black-ec14dad53d18a22d.zip.part00",
+      "bytes": 2855532,
+      "sha256": "ec14dad53d18a22d58d0200a331aa7e1b8f17610a5ef056c6ae5d921e959024c"
+    },
+    {
+      "filename": "warder-digi_telly-220x132-white-2849f629af8ba120.zip.part00",
+      "bytes": 2908719,
+      "sha256": "2849f629af8ba1209bfbcab00a916954de2425caf1fc594994fea81b6e135002"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip.part00",
+      "bytes": 1088006,
+      "sha256": "f42ac50b5adfc3a6fe6d6a5520b0e229b475b072a4c63dc20d5fcf51049f4221"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-white-16d0b4cc5986e48e.zip.part00",
+      "bytes": 6799001,
+      "sha256": "16d0b4cc5986e48e36c06ca7e91f1833b6a20abc0c05e06c95b6596d02d960b2"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-black-148f5818dd9193f6.zip.part00",
+      "bytes": 6665636,
+      "sha256": "148f5818dd9193f6b1fe68f60c66e21abae4df2ed09e2d23c327edcfb576e1e8"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip.part00",
+      "bytes": 1129517,
+      "sha256": "87d905f9027e7a0a0366e7820ab8342deaefaca8376081e33af5bc08c6a8792d"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-white-de20059b06ae4ffd.zip.part00",
+      "bytes": 6933238,
+      "sha256": "de20059b06ae4ffdf75d1295c75a9939cf87a55acd663483b9bb896b58ed1ace"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-black-caebfc2732e954a9.zip.part00",
+      "bytes": 6721618,
+      "sha256": "caebfc2732e954a9a7f90787897cab26b65f3b605e88eb131684c98044cb0abf"
+    },
+    {
+      "filename": "warder-08w-220x132-black-2623f65c9ff01f52.zip.part00",
+      "bytes": 16777216,
+      "sha256": "e924291810702355c35a9b8574e4a38658594cb1c7ac9114f8c8b85f4fd689b6"
+    },
+    {
+      "filename": "warder-08w-220x132-black-2623f65c9ff01f52.zip.part01",
+      "bytes": 16777216,
+      "sha256": "ee6d01dbb5be6a447f439683f3b0bffcb7228cc56db4d91e4c40bf4d97a046ac"
+    },
+    {
+      "filename": "warder-08w-220x132-black-2623f65c9ff01f52.zip.part02",
+      "bytes": 16777216,
+      "sha256": "08a60f441266d0730e643d4a8a2277cab8cd2a12b3b793913d19c02c3662a62f"
+    },
+    {
+      "filename": "warder-08w-220x132-black-2623f65c9ff01f52.zip.part03",
+      "bytes": 16777216,
+      "sha256": "94816532ad6e5026fb1b944891ca8c933415e3044545845e3583c8f2842a6b2a"
+    },
+    {
+      "filename": "warder-08w-220x132-black-2623f65c9ff01f52.zip.part04",
+      "bytes": 264369,
+      "sha256": "2b75eb5ba32ebe35b72bda3685b5677bb6e7f0cec6e45e2848f689e6d6b22d75"
+    },
+    {
+      "filename": "warder-08w-220x132-transparent-c6c0ef51680ea9a6.zip.part00",
+      "bytes": 16777216,
+      "sha256": "5508f1e039a9b0ae9dbaaf34bf842a17939865e625471592851186d178a9bd2c"
+    },
+    {
+      "filename": "warder-08w-220x132-transparent-c6c0ef51680ea9a6.zip.part01",
+      "bytes": 6036772,
+      "sha256": "5408c818eda783019d095733daa1979bdae72ebe03b50062eea464fafda196eb"
+    },
+    {
+      "filename": "warder-08w-220x132-white-88b403b2de4e1c9f.zip.part00",
+      "bytes": 16777216,
+      "sha256": "ea10d9017d2b39b069d2a35581d0f94ef7e221cd484d542598dff663d079afce"
+    },
+    {
+      "filename": "warder-08w-220x132-white-88b403b2de4e1c9f.zip.part01",
+      "bytes": 16777216,
+      "sha256": "afd0639adf4f9ca7250adc3131a770cd0d454a58b2a68eea7d46c27af98946a0"
+    },
+    {
+      "filename": "warder-08w-220x132-white-88b403b2de4e1c9f.zip.part02",
+      "bytes": 16777216,
+      "sha256": "6d000d4c36394a42d7645a676f04365472cde9a5aaceff5f0ce2e276c064f727"
+    },
+    {
+      "filename": "warder-08w-220x132-white-88b403b2de4e1c9f.zip.part03",
+      "bytes": 9758179,
+      "sha256": "eeaefd14933bccc32abc4315281fb37a20cd96be1879f449643c714721f2c674"
+    },
+    {
+      "filename": "warder-08w-50x30-transparent-462e007441eb1877.zip.part00",
+      "bytes": 3651078,
+      "sha256": "462e007441eb1877226766f8ba1c20a52985290898069250d5b498ecaf7d3643"
+    },
+    {
+      "filename": "warder-08w-50x30-white-d2bb98fb13add894.zip.part00",
+      "bytes": 5172508,
+      "sha256": "d2bb98fb13add8946450eee3ebdb94c067bb79d4b9981bc3cbe4058a5b1c8e73"
+    },
+    {
+      "filename": "warder-08w-50x30-black-e05fa108257e0154.zip.part00",
+      "bytes": 5207161,
+      "sha256": "e05fa108257e0154f47dec0e5adff76083e4edd03daf3703656d83f21b7f3965"
+    },
+    {
+      "filename": "warder-08w-400x240-transparent-16c7209ab4e34288.zip.part00",
+      "bytes": 16777216,
+      "sha256": "1cf3cf768d5654d0e9532792770c79256f7fb3e91f8812c3958f025911636f55"
+    },
+    {
+      "filename": "warder-08w-400x240-transparent-16c7209ab4e34288.zip.part01",
+      "bytes": 16777216,
+      "sha256": "410739013f3b6864f29f959c13ea11c9cf254be360306741c55a696493c6aa04"
+    },
+    {
+      "filename": "warder-08w-400x240-transparent-16c7209ab4e34288.zip.part02",
+      "bytes": 15335552,
+      "sha256": "dc7fbd688cf1cc14d20bcb75899f55e264770e451811099f4cac187ba6921d41"
+    },
+    {
+      "filename": "warder-08w-400x240-white-9f963c27a584d60a.zip.part00",
+      "bytes": 16777216,
+      "sha256": "c16e407fe075a77300d80c7cbaebd62677b2e888c13dbf12360cf89c89077a82"
+    },
+    {
+      "filename": "warder-08w-400x240-white-9f963c27a584d60a.zip.part01",
+      "bytes": 16777216,
+      "sha256": "8add6bb3943ebd4e3a69e30a2d9b9e62521d8628ccee51e926d70069ac3a7b11"
+    },
+    {
+      "filename": "warder-08w-400x240-white-9f963c27a584d60a.zip.part02",
+      "bytes": 16777216,
+      "sha256": "eac6ac955c09fb5244aee444313cb260531fa4db37af519427c42c5d90ac7736"
+    },
+    {
+      "filename": "warder-08w-400x240-white-9f963c27a584d60a.zip.part03",
+      "bytes": 16777216,
+      "sha256": "7505d5ca720879b7c8de92dfc5f5458dded6578c5b2b82da5ad786faa8a0655e"
+    },
+    {
+      "filename": "warder-08w-400x240-white-9f963c27a584d60a.zip.part04",
+      "bytes": 6014070,
+      "sha256": "a308b3af9acfde1c768b53c6a2f76d31ecefcff142c402c7d1513e5f215e5fc4"
+    },
+    {
+      "filename": "warder-08w-400x240-black-4476da3cc02465b8.zip.part00",
+      "bytes": 16777216,
+      "sha256": "013a0984669b74bad08bd0456d0daf261c9e921711a3fcbe4157fe59b55bb919"
+    },
+    {
+      "filename": "warder-08w-400x240-black-4476da3cc02465b8.zip.part01",
+      "bytes": 16777216,
+      "sha256": "29cc47cfaa64bbe2084bb5576f2f1729ed5d67527c99a509197bbbf20ee024c8"
+    },
+    {
+      "filename": "warder-08w-400x240-black-4476da3cc02465b8.zip.part02",
+      "bytes": 16777216,
+      "sha256": "6da118d0799e68d96001814d931f9e33ff9eed773dc1d81fcf55b774f11cda35"
+    },
+    {
+      "filename": "warder-08w-400x240-black-4476da3cc02465b8.zip.part03",
+      "bytes": 16777216,
+      "sha256": "fd2ecc6fe7171d934f0e79332ff72612b4113a38ab278a80bdd8a4df9a0be010"
+    },
+    {
+      "filename": "warder-08w-400x240-black-4476da3cc02465b8.zip.part04",
+      "bytes": 2553983,
+      "sha256": "2f43d16a1b9dce8bdc1cb60e93aa843931cf5af43ba8313c2e5af36c464739b1"
+    },
+    {
+      "filename": "warder-235e-50x30-transparent-e07782963ccbfa00.zip.part00",
+      "bytes": 2607937,
+      "sha256": "e07782963ccbfa00e6ba48e76f62ab1abd7b368a5b19b48ae795ec82dff2f1ee"
+    },
+    {
+      "filename": "warder-235e-50x30-white-5dfc5ae08f7ceab2.zip.part00",
+      "bytes": 3446280,
+      "sha256": "5dfc5ae08f7ceab24fe1fe44f958e77c1391cc6db61e8e36d2991758b2a05362"
+    },
+    {
+      "filename": "warder-235e-50x30-black-5c0c5e9b3e4fcc6c.zip.part00",
+      "bytes": 3448091,
+      "sha256": "5c0c5e9b3e4fcc6c9d2cedc62e0a5e1bdfc19299de57625e8e8137e2871f5c9e"
+    },
+    {
+      "filename": "warder-235e-400x240-transparent-4ddf9eb5692b495d.zip.part00",
+      "bytes": 16777216,
+      "sha256": "6f8ca5fcfdd88983848eb8128e1d5b3ee22b4758ef0aeb31dea4c6a9aab6b75e"
+    },
+    {
+      "filename": "warder-235e-400x240-transparent-4ddf9eb5692b495d.zip.part01",
+      "bytes": 16777216,
+      "sha256": "645feb39aeed413778b85e315fe1a2dfb9f663bcff09efdbe25d7770bafc88c1"
+    },
+    {
+      "filename": "warder-235e-400x240-transparent-4ddf9eb5692b495d.zip.part02",
+      "bytes": 2731802,
+      "sha256": "59d236787b191a71305eee169722d23d090b2afa97ed3e147bb3f6ddb0a39337"
+    },
+    {
+      "filename": "warder-235e-400x240-white-e2800f698f66b375.zip.part00",
+      "bytes": 16777216,
+      "sha256": "2e66457afe12a775b64c3a32e2baed92325e6de735d67a1011a0cd124ded7184"
+    },
+    {
+      "filename": "warder-235e-400x240-white-e2800f698f66b375.zip.part01",
+      "bytes": 16777216,
+      "sha256": "097e1b99bb529e91f95e52464127487e0be49c7d81b91a87d1437aa7e7702064"
+    },
+    {
+      "filename": "warder-235e-400x240-white-e2800f698f66b375.zip.part02",
+      "bytes": 11881921,
+      "sha256": "a307685f2979a5de3c4804128d23454c1ab3073bfc713930c41b5b31cb6f761e"
+    },
+    {
+      "filename": "warder-235e-400x240-black-3fca78f1d3226892.zip.part00",
+      "bytes": 16777216,
+      "sha256": "6a791d9535bfd2b59033fcd94ceb2067dba8b447b6ce3441e3996dfc80117285"
+    },
+    {
+      "filename": "warder-235e-400x240-black-3fca78f1d3226892.zip.part01",
+      "bytes": 16777216,
+      "sha256": "9967b98d08dd62206fb41c26815879ce60f3dd61f90eb017650b4aab34980243"
+    },
+    {
+      "filename": "warder-235e-400x240-black-3fca78f1d3226892.zip.part02",
+      "bytes": 10241586,
+      "sha256": "9001eaff2daaa566265e96e505fc26278c6eb8d3f81e5d13d49d3440c51da485"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-transparent-6cacdecbc8c81173.zip.part00",
+      "bytes": 313288,
+      "sha256": "6cacdecbc8c81173859de0bce9a5471662ae9e66f639c80c7900e03ded14d07f"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-transparent-1469150c69e5f38b.zip.part00",
+      "bytes": 4057912,
+      "sha256": "1469150c69e5f38b8ad6f7364e968ed0da60ed0a14b51aa9268a47e056ef2849"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-white-ef9eec01cd368a46.zip.part00",
+      "bytes": 439577,
+      "sha256": "ef9eec01cd368a4697e6b375255f6d113783204cf28d48223e187666ca48546e"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-white-693cadd1ab08d96d.zip.part00",
+      "bytes": 7039475,
+      "sha256": "693cadd1ab08d96d38c9a06cc74f5c7cccb6fba470736ba66f67a00bf000af38"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-black-78fed665dfd44a4b.zip.part00",
+      "bytes": 446598,
+      "sha256": "78fed665dfd44a4b3f88e83f3f5b7221f99a34ebbea7720367a943f83971a8db"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-black-d93dedee57a80a4a.zip.part00",
+      "bytes": 6758680,
+      "sha256": "d93dedee57a80a4ab7ea29380a2d7a8be5d403e7a71ca69838c56037c54d685b"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-transparent-ca1b8443f0ceae71.zip.part00",
+      "bytes": 318350,
+      "sha256": "ca1b8443f0ceae71a461ac559cf9c5ea95038891a6af67af040dfb83dbb4ac78"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-transparent-63864e5f39285be5.zip.part00",
+      "bytes": 4078145,
+      "sha256": "63864e5f39285be5bbe8e133a0e5e84db9414c9e968f3dc696ab87c17d62bd27"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-white-a770792d92b1a45a.zip.part00",
+      "bytes": 449791,
+      "sha256": "a770792d92b1a45ad4812d3315cfd71e54f8ef8c7070c4d5e8e451fea6be9381"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-white-2361de5893401a1f.zip.part00",
+      "bytes": 7202362,
+      "sha256": "2361de5893401a1f5afb2b39243687dbff5ddaf99fdd8f7a00045e903f00a9d1"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-black-d212dc31031570c0.zip.part00",
+      "bytes": 452661,
+      "sha256": "d212dc31031570c024ba1c309c91eee96c9d04600a3b5716ebd537b50de17213"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-black-88da0a3e1b54e36b.zip.part00",
+      "bytes": 6878292,
+      "sha256": "88da0a3e1b54e36be4268c1bedcb3e9330cdf94382c43f5476584da217b4ac5f"
+    },
+    {
+      "filename": "warder-digi_telly-50x30-transparent-08b6ac82ac94d44f.zip.part00",
+      "bytes": 97044,
+      "sha256": "08b6ac82ac94d44fcd3dbb0706aeacd5434990ab4f2c21478cf67245e10408fd"
+    },
+    {
+      "filename": "warder-digi_telly-400x240-transparent-94d78e5a255cdb65.zip.part00",
+      "bytes": 1076006,
+      "sha256": "94d78e5a255cdb65bb11331c7cf5ae924f62c848a9cf8747f5ff03673edcc9ee"
+    },
+    {
+      "filename": "warder-digi_telly-50x30-white-88e4d4102c8afa3a.zip.part00",
+      "bytes": 186598,
+      "sha256": "88e4d4102c8afa3a4434c1f09eccbb97d26b201a32c711b0bc93ea2833002d05"
+    },
+    {
+      "filename": "warder-digi_telly-400x240-white-c11b7dd2d840d953.zip.part00",
+      "bytes": 4090079,
+      "sha256": "c11b7dd2d840d953d89420399e32cc03ffbe72053ebd18427c809593a2b0ae03"
+    },
+    {
+      "filename": "warder-digi_telly-50x30-black-7cc8d39e1d41a747.zip.part00",
+      "bytes": 195259,
+      "sha256": "7cc8d39e1d41a747295c2a4517700bd203f23903aac24e2d52564d04ad213fa0"
+    },
+    {
+      "filename": "warder-digi_telly-400x240-black-e594d0118bcee2c8.zip.part00",
+      "bytes": 3974891,
+      "sha256": "e594d0118bcee2c8512e2b4633dd3aa56ebd61fac54b7fa33970b75f7b82be9e"
+    }
+  ],
+  "excluded": [
+    {
+      "reference": "1_0_19_17CF_C82_3_EB0000_0_0_0.png",
+      "name": "CANAL+ Action",
+      "attributes": "p:M7 Group,c:050001",
+      "raw_service": "17cf:00eb0000:0c82:0003:25:0",
+      "bouquets": [
+        "userbouquet.dbe105.tv"
+      ],
+      "slug": "action",
+      "position": "23.5e",
+      "namespace": "EB0000",
+      "technical_reference_evidence": "Exact full reference in 3 November 2026 lamedb and named bouquet; not a live receiver test.",
+      "reason": "Regional programme/branding confirmation required; name alone does not authorize Czech/Slovak HD artwork."
+    },
+    {
+      "reference": "1_0_19_101C_451_35_C00000_0_0_0.png",
+      "name": "CANAL+ Action",
+      "attributes": "p:M7 Group",
+      "raw_service": "101c:00c00000:0451:0035:25:0",
+      "bouquets": [
+        "userbouquet.dbe07.tv",
+        "userbouquet.dbe32.tv"
+      ],
+      "slug": "action",
+      "position": "19.2e",
+      "namespace": "C00000",
+      "technical_reference_evidence": "Exact full reference in 3 November 2026 lamedb and named bouquet; not a live receiver test.",
+      "reason": "Regional programme/branding confirmation required; name alone does not authorize Czech/Slovak HD artwork."
+    },
+    {
+      "reference": "1_0_1F_101F_451_35_C00000_0_0_0.png",
+      "name": "Canal+ Action B2B",
+      "attributes": "p:M7 Group",
+      "raw_service": "101f:00c00000:0451:0035:31:0",
+      "bouquets": [
+        "userbouquet.dbe07.tv",
+        "userbouquet.dbe32.tv"
+      ],
+      "slug": "action",
+      "position": "19.2e",
+      "namespace": "C00000",
+      "technical_reference_evidence": "Exact full reference in 3 November 2026 lamedb and named bouquet; not a live receiver test.",
+      "reason": "Supplied Action artwork says HD; SD and UHD/B2B references excluded."
+    },
+    {
+      "reference": "1_0_1_79E2_2C8_600_E080000_0_0_0.png",
+      "name": "CANAL+ Action",
+      "attributes": "p:M7",
+      "raw_service": "79e2:0e080000:02c8:0600:1:0",
+      "bouquets": [
+        "userbouquet.dbe75.tv"
+      ],
+      "slug": "action",
+      "position": "0.8w",
+      "namespace": "E080000",
+      "technical_reference_evidence": "Exact full reference in 3 November 2026 lamedb and named bouquet; not a live receiver test.",
+      "reason": "Supplied Action artwork says HD; SD and UHD/B2B references excluded."
+    },
+    {
+      "reference": "1_0_1_79E8_2C8_600_E080000_0_0_0.png",
+      "name": "CANAL+ Action.",
+      "attributes": "p:M7",
+      "raw_service": "79e8:0e080000:02c8:0600:1:0",
+      "bouquets": [
+        "userbouquet.dbe75.tv"
+      ],
+      "slug": "action",
+      "position": "0.8w",
+      "namespace": "E080000",
+      "technical_reference_evidence": "Exact full reference in 3 November 2026 lamedb and named bouquet; not a live receiver test.",
+      "reason": "Supplied Action artwork says HD; SD and UHD/B2B references excluded."
+    }
+  ],
+  "public_verification": {
+    "verified_archive_commit": "00662aabcd65df35614c588b943675a5cc2dd18a",
+    "verified_parts": 74,
+    "all_part_and_archive_sha256_match": true,
+    "all_approved_png_sha256_match": true,
+    "manifest_matches": true
+  }
+}

@@ -1,0 +1,60 @@
+name: Publish owner-approved Canal+ Warder picons
+on:
+  push:
+    branches: [release/canal-owner-20261104]
+    paths:
+      - tools/publish-canal-owner-20261104.py
+      - tools/test-canal-owner-20261104.py
+      - .github/workflows/publish-canal-owner-20261104.yml
+permissions:
+  contents: write
+concurrency:
+  group: warder-canal-owner-channel-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-canal-owner-20261104.py
+            /tools/test-canal-owner-20261104.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: b498c30b11f47f28bbc7a068d5bd671395ca4e8c
+          path: .approved-source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/artwork/provenance/canal-owner-20261104/
+            /plugin/artwork/templates/picons/
+            /plugin/src/Plugins/Extensions/WarderPiconHub/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install Pillow
+      - name: Exercise compact archives with both actual installers and preservation checks
+        run: python -u tools/test-canal-owner-20261104.py
+      - name: Build archives and verify exact artwork, preservation and both actual installers
+        run: python -u tools/publish-canal-owner-20261104.py --build
+      - name: Stage immutable archive parts and complete candidate catalogue
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          python -u tools/publish-canal-owner-20261104.py --stage
+      - name: Read back all public bytes, complete archives and approved PNGs
+        run: python -u tools/publish-canal-owner-20261104.py --readback "$(git rev-parse HEAD)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: canal-owner-publication-evidence
+          path: reports/canal-owner-publication-20261104.json
+          if-no-files-found: warn
