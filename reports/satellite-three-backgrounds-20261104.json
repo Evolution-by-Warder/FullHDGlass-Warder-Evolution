@@ -1,5 +1,5 @@
 {
-  "status": "VERIFIED_PUBLICATION_CANDIDATE",
+  "status": "PRODUCTION_LIVE_VERIFIED",
   "date": "2026-11-04",
   "source_ref": "8211a03345b9e1dfd93c30e26e5b665ed7b9b4f2",
   "new_packages": 9,
@@ -78,5 +78,28 @@
     "new_parts_verified": 9,
     "all_sizes_and_sha256_match": true,
     "manifest_matches": true
-  }
+  },
+  "activation_commit": "92f0d7b1cedc68a052f70bfcfc75f67df9fdccf9",
+  "client_release_verification": {
+    "piconhub": {
+      "version": "0.1.43",
+      "pull_request": 55,
+      "transport_fix_pull_request": 56,
+      "workflow": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/41909723426",
+      "sha256": "459a46a82515469bc1dbfe38cbd1d7984b20e556f68f0d671566f03e868b09f7",
+      "bytes": 2896202,
+      "main_and_installed_stable_feeds_verified": true,
+      "release": "https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.43"
+    },
+    "fullhdglass": {
+      "version": "1.0.66",
+      "pull_request": 34,
+      "workflow": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41908766598",
+      "sha256": "6e207f7440331fa2fd1fac219cdd691377596bf4ee46bd15e0922f0fd5a1d7c9",
+      "bytes": 17252846,
+      "main_and_installed_stable_feeds_verified": true,
+      "release": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.66"
+    }
+  },
+  "blocked_identity_conflicts_retained": 13
 }
