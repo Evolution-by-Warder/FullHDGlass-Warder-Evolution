@@ -1924,5 +1924,10 @@
       "sha256": "776aead708bce9b92d0950667dc7492dc9f2fd93ef36d5ad69055db2e83f2da6"
     }
   ],
-  "piconhub_planner_checks": 63
+  "piconhub_planner_checks": 63,
+  "public_verification": {
+    "ref": "release/warder-approved11-20261104",
+    "verified_parts": 122,
+    "all_sizes_and_sha256_match": true
+  }
 }
