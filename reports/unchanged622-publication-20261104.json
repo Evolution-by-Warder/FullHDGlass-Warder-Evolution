@@ -9078,7 +9078,38 @@
       "235E"
     ],
     "reused_verified_package_builds": 162,
-    "superseded_manifest_sha256": "70abe0c9cea98f752f94a2f6ceb2990dd38b2f25bffc5a41415d240c03e279b1"
+    "superseded_manifest_sha256": "70abe0c9cea98f752f94a2f6ceb2990dd38b2f25bffc5a41415d240c03e279b1",
+    "unactivated_draft_parts_removed_from_final_tree": [
+      "warder-antiksat-220x132-black-a71a9392b8fc5fc4.zip.part00",
+      "warder-antiksat-220x132-white-25428b60b191d9cf.zip.part00",
+      "warder-digitelly-220x132-black-05a661a0d05b9b59.zip.part00",
+      "warder-digitelly-220x132-white-286bce56db5f47d8.zip.part00",
+      "warder-canalpluscz-220x132-white-2be18faa03e7b23b.zip.part00",
+      "warder-canalpluscz-220x132-black-ac8f2b2947084887.zip.part00",
+      "warder-antiksat-50x30-white-21ab1d1faa815f3e.zip.part00",
+      "warder-antiksat-400x240-white-2fbdf2875150d88d.zip.part00",
+      "warder-antiksat-50x30-black-000bfa79d08ad76b.zip.part00",
+      "warder-antiksat-400x240-black-3ea24922eed7a870.zip.part00",
+      "warder-canalpluscz-50x30-white-255d0fd804a47a33.zip.part00",
+      "warder-canalpluscz-400x240-white-0c7aaf54b78ef22b.zip.part00",
+      "warder-canalpluscz-50x30-black-b6c87a3091f3f0c0.zip.part00",
+      "warder-canalpluscz-400x240-black-1f3049ed2087ff26.zip.part00",
+      "warder-digitelly-50x30-white-f6d2c2cfaab7bfa5.zip.part00",
+      "warder-digitelly-400x240-white-ce2b0f0fd9a88975.zip.part00",
+      "warder-digitelly-50x30-black-1c9cdc69abd8eec1.zip.part00",
+      "warder-digitelly-400x240-black-b83a09a94d5af73b.zip.part00"
+    ]
   },
-  "all_provider_packages_preserved": true
+  "all_provider_packages_preserved": true,
+  "public_verification": {
+    "ref": "9bcc7b719beffc32f0ed2338fc8693bf61694010",
+    "mode": "RAW_IMMUTABLE_COMMIT_FULL_BYTES_WITH_IDENTICAL_BLOB_REUSE",
+    "verified_parts": 321,
+    "all_sizes_and_sha256_match": true,
+    "manifest_matches": true,
+    "newly_downloaded_parts": 53,
+    "reused_sha256_verified_git_blobs": 268,
+    "reuse_source_ref": "50ff74d4015836231b82f329b10c2f38cc9dce15",
+    "reuse_source_report": "reports/unchanged622-superseded-readback-20261104.json"
+  }
 }

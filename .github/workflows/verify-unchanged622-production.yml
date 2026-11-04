@@ -1,0 +1,32 @@
+name: Verify live unchanged Vhannibal picon packages
+on:
+  push:
+    branches: [main]
+    paths:
+      - reports/unchanged622-publication-20261104.json
+      - .github/workflows/verify-unchanged622-production.yml
+      - tools/verify-unchanged622-production.py
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/verify-unchanged622-production.py
+            /reports/unchanged622-publication-20261104.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Verify activated Git blobs and every public main URL
+        env:
+          VERIFIED_PARTS_REF: 9bcc7b719beffc32f0ed2338fc8693bf61694010
+        run: python -u tools/verify-unchanged622-production.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unchanged622-production-main-verification
+          path: reports/unchanged622-publication-20261104.json
