@@ -72,5 +72,11 @@
       "bytes": 3014,
       "sha256": "174c0369fc0ff22d763b6c436b0d80562a44f259df1c339b27ce9ce8d19fe6c9"
     }
-  ]
+  ],
+  "public_verification": {
+    "ref": "0b5322b5ca35eedeace4b861d7aa642e05999bde",
+    "new_parts_verified": 9,
+    "all_sizes_and_sha256_match": true,
+    "manifest_matches": true
+  }
 }
