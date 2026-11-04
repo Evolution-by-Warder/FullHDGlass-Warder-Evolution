@@ -1,0 +1,71 @@
+name: Publish approved unchanged Vhannibal picons
+on:
+  push:
+    branches: [release/unchanged622-20261104]
+    paths:
+      - tools/publish-unchanged622-20261104.py
+      - tools/test-unchanged622-20261104.py
+      - .github/workflows/publish-unchanged622-20261104.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: warder-unchanged622-20261104
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/release/unchanged622-20261104'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      APPROVED_PICON_REF: e6ec4c9d3d9be47b7272810c26f03a5d7f276c08
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-unchanged622-20261104.py
+            /tools/test-unchanged622-20261104.py
+            /tools/publish-warder-approved11-20261104.py
+            /tools/push-warder-approved11-20261104.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: ${{ env.APPROVED_PICON_REF }}
+          path: .approved-source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/artwork/provenance/warder-unchanged622-20261104/
+            /plugin/src/Plugins/Extensions/WarderPiconHub/warder_skin_sync.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install 'Pillow==12.3.0'
+      - name: Verify approved hashes, preservation and exact-reference exclusions
+        run: python tools/test-unchanged622-20261104.py
+      - name: Build additive archives and test actual receiver installation
+        run: python -u tools/publish-unchanged622-20261104.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF"
+      - name: Push bounded archive batches with catalogue last
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          python -u tools/publish-unchanged622-20261104.py --push
+      - name: Read back public archive parts and catalogue
+        run: python -u tools/publish-unchanged622-20261104.py --verify-public release/unchanged622-20261104
+      - name: Record verified public publication
+        run: |
+          git add --sparse reports/unchanged622-publication-20261104.json
+          git commit -m 'Record public SHA256 verification of all unchanged picon parts'
+          git push origin HEAD:release/unchanged622-20261104
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unchanged622-publication-verification
+          path: reports/unchanged622-publication-20261104.json
+          if-no-files-found: ignore
