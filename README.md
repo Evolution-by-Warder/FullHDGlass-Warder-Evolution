@@ -2,13 +2,16 @@
 
 Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by **Warder**.
 
-## Spoločné ostré vydanie — 3. november 2026
+## Spoločné ostré vydanie — 4. november 2026
 
-**FullHDGlass 1.0.65** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/FULLHDGLASS-1.0.65.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk).
+**FullHDGlass 1.0.66** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/CURRENT-RELEASE.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.66/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk).
+
+
+34,5°W a 50°E: všetky tri rozmery a pozadia Transparent, White a Black. Úplnosť troch pozadí sa kontroluje pre všetky satelity aj providery. [Pravidlo pozadí](docs/WARDER-BACKGROUND-POLICY.txt).
 
 ## Installation
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.66/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 
@@ -42,7 +45,7 @@ Shamann's Sat-Universe profile: https://www.sat-universe.com/index.php?members/s
 
 The Warder Evolution branch starts a new release line at **1.0** rather than continuing the original FullHDGlass version numbering.
 
-The historical receiver recovery baseline is **1.0.15**; the current offered settings release is recorded in update.json. The 1.0.4 extraction and GOLDEN archive are historical origins, not the current backup.
+The historical receiver recovery baseline is **1.0.15**; the current offered settings release is recorded in update-production.json. The 1.0.4 extraction and GOLDEN archive are historical origins, not the current backup.
 
 ## Protected project rules
 
