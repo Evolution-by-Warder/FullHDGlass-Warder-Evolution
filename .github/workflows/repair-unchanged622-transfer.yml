@@ -1,0 +1,21 @@
+name: Resume bounded unchanged picon transfer
+on:
+  push:
+    branches: [repair/unchanged622-transfer]
+    paths: [.github/workflows/repair-unchanged622-transfer.yml]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  stop_slow_attempt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Stop only the superseded large-batch publication attempt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          state=$(gh api repos/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41868109316 --jq .status)
+          if [ "$state" != completed ]; then
+            gh run cancel 41868109316 --repo Evolution-by-Warder/FullHDGlass-Warder-Evolution
+          fi
