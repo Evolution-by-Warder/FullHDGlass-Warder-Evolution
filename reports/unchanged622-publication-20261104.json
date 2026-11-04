@@ -1,5 +1,5 @@
 {
-  "status": "VERIFIED_PUBLICATION_CANDIDATE",
+  "status": "PRODUCTION_LIVE_VERIFIED",
   "date": "2026-11-04",
   "source_ref": "ffe78c5733b84f2911554f547691b6f6bb10b64b",
   "previous_manifest_sha256": "71ea8801f04aff75531ebcb961f064b4fb94c8dd9ded1ec5e9e67a9d8b952636",
@@ -9111,5 +9111,28 @@
     "reused_sha256_verified_git_blobs": 268,
     "reuse_source_ref": "50ff74d4015836231b82f329b10c2f38cc9dce15",
     "reuse_source_report": "reports/unchanged622-superseded-readback-20261104.json"
+  },
+  "production_main_verification": {
+    "status": "PRODUCTION_MAIN_VERIFIED",
+    "main_commit": "2b485bd5fd0080559c5d7a9aa8a6dd7c943d50a0",
+    "verified_parts_ref": "9bcc7b719beffc32f0ed2338fc8693bf61694010",
+    "matching_verified_git_blobs": 321,
+    "public_main_headers_verified": 321,
+    "part_sizes_match": true,
+    "live_manifest_sha256_matches": true,
+    "full_part_sha256_proof": {
+      "ref": "9bcc7b719beffc32f0ed2338fc8693bf61694010",
+      "mode": "RAW_IMMUTABLE_COMMIT_FULL_BYTES_WITH_IDENTICAL_BLOB_REUSE",
+      "verified_parts": 321,
+      "all_sizes_and_sha256_match": true,
+      "manifest_matches": true,
+      "newly_downloaded_parts": 53,
+      "reused_sha256_verified_git_blobs": 268,
+      "reuse_source_ref": "50ff74d4015836231b82f329b10c2f38cc9dce15",
+      "reuse_source_report": "reports/unchanged622-superseded-readback-20261104.json"
+    },
+    "workflow_run": 41880202114,
+    "workflow_job": 126750357795,
+    "workflow_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41880202114"
   }
 }
