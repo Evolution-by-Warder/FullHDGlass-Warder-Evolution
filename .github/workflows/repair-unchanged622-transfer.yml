@@ -17,5 +17,5 @@ jobs:
         run: |
           state=$(gh api repos/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41868109316 --jq .status)
           if [ "$state" != completed ]; then
-            gh run cancel 41868109316 --repo Evolution-by-Warder/FullHDGlass-Warder-Evolution
+            gh api --method POST repos/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/41868109316/force-cancel
           fi
