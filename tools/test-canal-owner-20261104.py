@@ -15,6 +15,7 @@ with tempfile.TemporaryDirectory() as tmp:
  for p in doc['packages']:
   if p['selector_id'] not in plan['target_selectors']:continue
   mappings=[r for r in plan['references'] if p['selector_id'] in r['target_selectors']];names=[r['reference'] for r in mappings][1:];names+=['1_0_19_FFFC_C82_3_'+mappings[0]['namespace']+'_0_0_0.png']
+  old=io.BytesIO();Image.new('RGBA',tuple(map(int,p['resolution'].split('x'))),'red').save(old,format='PNG');preserved=old.getvalue()
   b=io.BytesIO()
   with zipfile.ZipFile(b,'w',zipfile.ZIP_DEFLATED) as z:
    for n in names:z.writestr(n,preserved)
