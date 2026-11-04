@@ -111,3 +111,9 @@ Dátová aktualizácia piconov 29.10.2026: 27 schválených grafík, 63 živých
 Dátové doplnenie 30.10.2026: schválené D1 (Magenta Sport League 1–4) je aktívne v 18 spoločných balíkoch 9°E/13°E. Spolu A/B/C/D: 31 grafík, 93 originálov v 63 živých balíkoch. [Overenie a inštalácia](docs/PICON-DATA-UPDATES.md). Nový IPK netreba; príslušné dáta stiahnite znova v režime nahradenia.
 
 Názov IPK od 30.10.2026: `enigma2-plugin-skins-fullhdglass_1.0.41_all.ipk`. Bajty, verzia aj vnútorná identita sú zachované. Správca pluginov: **Balíčky vzhľadu → fullhdglass-warder-evolution**. [Overenie všetkých troch kategórií](docs/PLUGIN-PACKAGE-GROUPS.json).
+
+## FullHDGlass 1.0.66 — 34,5°W a 50°E
+
+Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.
+
+[Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.66/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk). Overené všetky tri pozadia satelitov aj providerov, verejné IPK a kontrolné súčty.
