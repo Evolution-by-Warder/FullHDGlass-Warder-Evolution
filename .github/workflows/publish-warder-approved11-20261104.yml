@@ -1,0 +1,146 @@
+name: Publish the 11 owner-approved Warder triplets
+on:
+  push:
+    branches: [release/warder-approved11-20261104]
+    paths:
+      - .github/workflows/publish-warder-approved11-20261104.yml
+      - tools/publish-warder-approved11-20261104.py
+      - tools/test-warder-approved11-20261104.py
+      - tools/push-warder-approved11-20261104.py
+      - tools/test-picon-archive-batches.py
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: warder-warder-approved11-20261104
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/release/warder-approved11-20261104'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      APPROVED_PICON_REF: c05cdf60245b141e48c20985bd4d2f82c4335349
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-warder-approved11-20261104.py
+            /tools/test-warder-approved11-20261104.py
+            /tools/push-warder-approved11-20261104.py
+            /tools/test-picon-archive-batches.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /reports/warder-approved11-publication-20261104.json
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: ${{ env.APPROVED_PICON_REF }}
+          path: .approved-source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/artwork/provenance/warder-approved11-20261104/
+            /plugin/artwork/templates/picons/
+            /picons/0.8w/telenor/black/1_0_A_1B61_4E_46_E080000_0_0_0.png
+            /picons/0.8w/telenor/transparent/1_0_A_1B61_4E_46_E080000_0_0_0.png
+            /picons/0.8w/telenor/white/1_0_A_1B61_4E_46_E080000_0_0_0.png
+            /picons/39.0e/hellassat/black/1_0_19_C_2_20C4_1860000_0_0_0.png
+            /picons/39.0e/hellassat/transparent/1_0_19_C_2_20C4_1860000_0_0_0.png
+            /picons/39.0e/hellassat/white/1_0_19_C_2_20C4_1860000_0_0_0.png
+            /picons/42.0e/turksat/black/1_0_19_C738_EC55_42E_1A40000_0_0_0.png
+            /picons/42.0e/turksat/transparent/1_0_19_C738_EC55_42E_1A40000_0_0_0.png
+            /picons/42.0e/turksat/white/1_0_19_C738_EC55_42E_1A40000_0_0_0.png
+            /picons/51.5e/belintersat/black/1_0_16_85A_2_FF00_2032C1A_0_0_0.png
+            /picons/51.5e/belintersat/black/1_0_16_85D_3_FF00_2032C56_0_0_0.png
+            /picons/51.5e/belintersat/transparent/1_0_16_85A_2_FF00_2032C1A_0_0_0.png
+            /picons/51.5e/belintersat/transparent/1_0_16_85D_3_FF00_2032C56_0_0_0.png
+            /picons/51.5e/belintersat/white/1_0_16_85A_2_FF00_2032C1A_0_0_0.png
+            /picons/51.5e/belintersat/white/1_0_16_85D_3_FF00_2032C56_0_0_0.png
+            /picons/54.9e/htb/black/1_0_16_D8D4_22B_70_2250000_0_0_0.png
+            /picons/54.9e/htb/black/1_0_16_D9FC_22E_70_2250000_0_0_0.png
+            /picons/54.9e/htb/black/1_0_16_D9FF_22E_70_2250000_0_0_0.png
+            /picons/54.9e/htb/transparent/1_0_16_D8D4_22B_70_2250000_0_0_0.png
+            /picons/54.9e/htb/transparent/1_0_16_D9FC_22E_70_2250000_0_0_0.png
+            /picons/54.9e/htb/transparent/1_0_16_D9FF_22E_70_2250000_0_0_0.png
+            /picons/54.9e/htb/white/1_0_16_D8D4_22B_70_2250000_0_0_0.png
+            /picons/54.9e/htb/white/1_0_16_D9FC_22E_70_2250000_0_0_0.png
+            /picons/54.9e/htb/white/1_0_16_D9FF_22E_70_2250000_0_0_0.png
+            /picons/7.0w/muxip/black/1_0_1_1FC_9E34_77E_DCA0000_0_0_0.png
+            /picons/7.0w/muxip/black/1_0_1_204_9E34_77E_DCA0000_0_0_0.png
+            /picons/7.0w/muxip/transparent/1_0_1_1FC_9E34_77E_DCA0000_0_0_0.png
+            /picons/7.0w/muxip/transparent/1_0_1_204_9E34_77E_DCA0000_0_0_0.png
+            /picons/7.0w/muxip/white/1_0_1_1FC_9E34_77E_DCA0000_0_0_0.png
+            /picons/7.0w/muxip/white/1_0_1_204_9E34_77E_DCA0000_0_0_0.png
+            /picons/9.0e/persidera/black/1_0_16_22_204_1D_5A0000_0_0_0.png
+            /picons/9.0e/persidera/transparent/1_0_16_22_204_1D_5A0000_0_0_0.png
+            /picons/9.0e/persidera/white/1_0_16_22_204_1D_5A0000_0_0_0.png
+            /plugin/src/Plugins/Extensions/WarderPiconHub/warder_skin_sync.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install 'Pillow==12.3.0'
+      - name: Verify approved PNG hashes and preservation rules
+        run: python tools/test-warder-approved11-20261104.py
+      - name: Build verified archives and exercise actual receiver installer
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -f reports/warder-approved11-publication-20261104.json; then
+            python -u tools/publish-warder-approved11-20261104.py --reuse-candidate --source-ref "$APPROVED_PICON_REF"
+          else
+            python -u tools/publish-warder-approved11-20261104.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF"
+          fi
+      - name: Validate the shared catalogue with the installed PiconHub planner
+        run: |
+          python - <<'PYICON'
+          import importlib.util,json
+          from pathlib import Path
+          path=Path('.approved-source/plugin/src/Plugins/Extensions/WarderPiconHub/warder_skin_sync.py')
+          spec=importlib.util.spec_from_file_location('piconhub_sync',path)
+          sync=importlib.util.module_from_spec(spec);spec.loader.exec_module(sync)
+          document=json.loads(Path('assets/warder/downloads/picons/channels/manifest.json').read_text())
+          assert not sync.validate_publication_manifest(document,sync.RUNTIME_MANIFEST_URL)
+          report=json.loads(Path('reports/warder-approved11-publication-20261104.json').read_text())
+          count=0
+          for entry in report['packages']:
+              binding=sync.task_binding_for_package_selector(entry['selector_id'])
+              prefs=sync.set_task_position_bindings(sync.default_preferences(),[binding])
+              prefs.update(resolution=entry['resolution'],style=entry['style'],update_mode=sync.UPDATE_MODE_REPLACE_ALL)
+              queue=sync.build_runtime_queue(prefs,publication={'persistent':True,'manifest_url':sync.RUNTIME_MANIFEST_URL})
+              plan=sync.plan_runtime_packages(document,queue,sync.RUNTIME_MANIFEST_URL)
+              jobs=sync.build_download_jobs(document,plan,sync.RUNTIME_MANIFEST_URL)
+              assert jobs['state']=='ready' and len(jobs['jobs'])==1
+              assert jobs['jobs'][0]['sha256']==entry['sha256']
+              count+=1
+          assert count==report['changed_packages']
+          report['piconhub_planner_checks']=count
+          Path('reports/warder-approved11-publication-20261104.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print('Verified PiconHub planner:',count,'packages')
+          PYICON
+      - name: Push bounded archive batches and publish catalogue last
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          python -u tools/push-warder-approved11-20261104.py --report reports/warder-approved11-publication-20261104.json --branch release/warder-approved11-20261104
+      - name: Read back every new public part and verify size and SHA256
+        run: python -u tools/publish-warder-approved11-20261104.py --verify-public release/warder-approved11-20261104
+      - name: Record public verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add --sparse reports/warder-approved11-publication-20261104.json
+          git commit -m 'Record successful public SHA256 verification of European picon parts'
+          git push origin HEAD:release/warder-approved11-20261104
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: picons-assimilated-publication-verification-20261030
+          path: reports/warder-approved11-publication-20261104.json
+          if-no-files-found: warn
