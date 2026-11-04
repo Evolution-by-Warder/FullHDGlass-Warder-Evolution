@@ -186,14 +186,35 @@ def publish(source_root,source_ref):
 def git(*args,capture=False):
     return subprocess.run(['git',*args],cwd=ROOT,check=True,text=True,stdout=subprocess.PIPE if capture else None).stdout
 
+def bounded_push(branch):
+    assert branch==BRANCH
+    head=git('rev-parse','HEAD',capture=True).strip()
+    for attempt in range(3):
+        try:
+            result=subprocess.run(['git','push','origin','HEAD:'+branch],cwd=ROOT,timeout=300)
+            if result.returncode==0:return
+        except subprocess.TimeoutExpired:
+            print('Transfer exceeded five minutes; checking remote state before retry',flush=True)
+        remote=git('ls-remote','origin','refs/heads/'+branch,capture=True).split()
+        if remote and remote[0]==head:return
+    raise RuntimeError('Bounded archive transfer failed; retain the last complete production catalogue')
+
+
 def push_changes():
     report=json.loads(REPORT.read_text());assert report['status']=='VERIFIED_PUBLICATION_CANDIDATE'
     assert report['reference_style_size_checks']==4776
     spec=importlib.util.spec_from_file_location('bounded_push',ROOT/'tools/push-warder-approved11-20261104.py')
     mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
-    for i,group in enumerate(mod.batches(report['new_parts']),1):
+    # PNG ZIP parts are already compressed. Disable expensive binary delta
+    # searches and avoid large chunked HTTP requests on a resumed publication.
+    for key,value in [('pack.window','0'),('pack.depth','0'),('pack.compression','0'),('core.compression','0'),('http.postBuffer','157286400'),('http.version','HTTP/1.1'),('http.lowSpeedLimit','1024'),('http.lowSpeedTime','120')]:
+        git('config',key,value)
+    mod.push=bounded_push
+    groups=mod.batches(report['new_parts'],128*1024*1024)
+    for i,group in enumerate(groups,1):
         paths=['assets/warder/downloads/picons/channels/'+p['filename'] for p in group]
-        mod.commit_files(paths,'Stage approved unchanged picon archive parts %d'%i,BRANCH)
+        mod.commit_files(paths,'Stage approved unchanged picon archive parts %d of %d'%(i,len(groups)),BRANCH)
+        print('TRANSFER BATCH',i,'/',len(groups),'complete',flush=True)
     mod.commit_files(['assets/warder/downloads/picons/channels/manifest.json','assets/warder/downloads/picons/channels/SHA256SUMS',str(REPORT.relative_to(ROOT))], 'Activate complete additive unchanged-picon catalogue after all archive parts',BRANCH)
 
 def verify_public(ref):
