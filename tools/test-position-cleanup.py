@@ -13,7 +13,7 @@ for legacy in [False,True]:
  assert any(row[0].startswith('(75.0E)') for row in rows)
  assert any(row[0].startswith('(45.0W)') for row in rows)
 for sid in RETIRED:assert sync.task_binding_for_package_selector(sid) is None
-numeric={k:v for k,v in sync._SELECTOR_ID_TO_POSITION.items() if re.fullmatch(r'\d+[EW]',k)};assert len(numeric)==45,numeric
+numeric={k:v for k,v in sync._SELECTOR_ID_TO_POSITION.items() if re.fullmatch(r'\d+[EW]',k)};assert len(numeric)==47,numeric
 for sid in ['750E','800E','160E','235E','450W','CANALPLUS_SK','CANALPLUS_CZ']:assert sync.task_binding_for_package_selector(sid)
 manifest_path=ROOT/'assets/warder/downloads/picons/channels/manifest.json'
 if manifest_path.exists():

@@ -1,3 +1,6 @@
+FullHDGlass 1.0.66 — 04.11.2026
+Support for 34.5°W and 50°E in all three sizes and Transparent, White and Black backgrounds. Complete background validation for satellites and providers; saved profiles are preserved. Restart the GUI after updating.
+
 FullHDGlass 1.0.65 — 03.11.2026
 Fixes the FullHDGlass graphical Multi EPG on OpenPLi using the approved OpenATV page, painters and graphics. Aligns fonts, event backgrounds and timeline; bundles original textures and timer icons. Red opens the shared programme detail, green the native timer, yellow date/time and blue EPG search. Common OpenPLi/OpenATV package. Restart the GUI after updating.
 
