@@ -1,5 +1,5 @@
 {
-  "status": "VERIFIED_PUBLICATION_CANDIDATE",
+  "status": "PUBLIC_CANDIDATE_VERIFIED",
   "source_ref": "b498c30b11f47f28bbc7a068d5bd671395ca4e8c",
   "owner_approval_sha256": "030ea93b53f85c32bcb462bc5d5f384a292cc2f4dfc8ee1b194b28ba9e60613a",
   "previous_manifest_sha256": "16ba3067257cb0ef816615d526909e3096dcfa2c75b9c8b55b34310819b95721",
@@ -1727,5 +1727,12 @@
       "technical_reference_evidence": "Exact full reference in 3 November 2026 lamedb and named bouquet; not a live receiver test.",
       "reason": "Supplied Action artwork says HD; SD and UHD/B2B references excluded."
     }
-  ]
+  ],
+  "public_verification": {
+    "verified_archive_commit": "00662aabcd65df35614c588b943675a5cc2dd18a",
+    "verified_parts": 74,
+    "all_part_and_archive_sha256_match": true,
+    "all_approved_png_sha256_match": true,
+    "manifest_matches": true
+  }
 }
