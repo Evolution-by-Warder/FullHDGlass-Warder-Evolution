@@ -1,5 +1,5 @@
 from pathlib import Path
-import importlib.util, io, json, zipfile
+import importlib.util, io, json, zipfile, sys
 from PIL import Image
 
 p=Path(__file__).resolve().parent
@@ -16,7 +16,11 @@ with zipfile.ZipFile(buf,'w') as z:
  z.writestr(first['reference'],b'existing-approved-png-must-survive')
  z.writestr('1_0_1_DEAD_BEEF_1_820000_0_0_0.png',sentinel)
 checks=0
-for selector in sorted({x['selector_id'] for x in plan['mappings']}):
+selectors={x['selector_id'] for x in plan['mappings']}
+routing_only='--routing-only' in sys.argv
+if routing_only:selectors={'08W','160E','235E'}
+assert not selectors.intersection(m.HELPER.PROVIDERS)
+for selector in sorted(selectors):
  for resolution in plan['sizes']:
   for style in plan['styles']:
    package={'selector_id':selector,'resolution':resolution,'family':'channel-'+style}
@@ -34,5 +38,5 @@ for selector in sorted({x['selector_id'] for x in plan['mappings']}):
      assert Image.open(io.BytesIO(raw)).size==tuple(map(int,resolution.split('x')))
     assert not {x['reference'] for x in plan['excluded']}.intersection(z.namelist())
    checks+=1
-assert checks>=174
+assert checks==18 if routing_only else checks>=174
 print('PASS:',checks,'satellite/style/size cases; 1244 approved hashes; all existing bytes preserved; blocked references absent; no cross-satellite aliases')

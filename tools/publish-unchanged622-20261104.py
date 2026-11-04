@@ -21,6 +21,9 @@ def approved_inputs(source):
     assert plan['status']=='OWNER_AUTHORIZED_INTEGRATION'
     assert plan['eligible_references']==796 and len(plan['mappings'])==796 and len(plan['excluded'])==13
     assert plan['styles']==['white','black']
+    assert not HELPER.PROVIDERS.intersection(m['selector_id'] for m in plan['mappings'])
+    routes={m['position']:m['selector_id'] for m in plan['mappings']}
+    assert routes['0.8w']=='08W' and routes['16.0e']=='160E' and routes['23.5e']=='235E'
     blocked={m['reference'] for m in plan['excluded']}
     assert not blocked.intersection(m['reference'] for m in plan['mappings'])
     assert len({m['reference'] for m in plan['mappings']})==796
@@ -99,22 +102,46 @@ def verify_planners(document,records,source_root):
         checks[label+'_new_selectors_requiring_client_update']=sorted(set(direct))
     return checks
 
-def publish(source_root,source_ref):
+def publish(source_root,source_ref,repair_routing=False):
     plan,artwork=approved_inputs(source_root)
     manifest=DELIVERY/'manifest.json'
-    assert sha(manifest.read_bytes())==plan['base_manifest_sha256'],'Production catalogue changed: rebase and compare before publication'
-    document=json.loads(manifest.read_text());before=copy.deepcopy(document)
-    previous=sha(manifest.read_bytes())
-    parts={x['filename']:x for x in document['parts']}
-    selectors={m['selector_id'] for m in plan['mappings']}
-    candidates=[p for p in document['packages'] if p['selector_id'] in selectors and p['family'] in ('channel-white','channel-black')]
-    for selector,position in plan['new_satellite_selectors'].items():
-        assert not any(p['selector_id']==selector for p in document['packages'])
-        for resolution in plan['sizes']:
-            for style in plan['styles']:
-                # No orbital_position declaration: legacy clients cannot resolve
-                # these two new selectors yet, but validate the catalogue safely.
-                candidates.append({'selector_id':selector,'warder_key':position,'family':'channel-'+style,'resolution':resolution,'new_standalone_satellite_package':True})
+    document=json.loads(manifest.read_text())
+    reused_records=[];reused_parts={};routing_repair=None
+    if repair_routing:
+        old_report=json.loads(REPORT.read_text())
+        assert sha(manifest.read_bytes())==old_report['manifest_sha256']
+        baseline_raw=(ROOT/'reports/unchanged622-base-manifest-20261104.json').read_bytes()
+        assert sha(baseline_raw)==plan['base_manifest_sha256']
+        baseline=json.loads(baseline_raw)
+        base_pkgs={(p['selector_id'],p['family'],p['resolution']):p for p in baseline['packages']}
+        wrong={'ANTIKSAT','DIGI_TELLY','CANALPLUS_CZ'}
+        corrected={'08W','160E','235E'}
+        for i,p in enumerate(document['packages']):
+            key=p['selector_id'],p['family'],p['resolution']
+            if p['selector_id'] in wrong:document['packages'][i]=copy.deepcopy(base_pkgs[key])
+        reused_records=[r for r in old_report['packages'] if r['selector_id'] not in wrong]
+        assert len(reused_records)==162
+        reused_names={url.rsplit('/',1)[-1] for p in document['packages'] if p['selector_id'] not in HELPER.PROVIDERS for url in p.get('parts',[])}
+        reused_parts={p['filename']:p for p in old_report['new_parts'] if p['filename'] in reused_names}
+        previous=plan['base_manifest_sha256']
+        parts={p['filename']:p for p in baseline['parts']}
+        parts.update({p['filename']:p for p in document['parts']})
+        candidates=[p for p in document['packages'] if p['selector_id'] in corrected and p['family'] in ('channel-white','channel-black')]
+        assert len(candidates)==18
+        routing_repair={'restored_provider_packages':sorted(wrong),'correct_satellite_selectors':sorted(corrected),'reused_verified_package_builds':162,'superseded_manifest_sha256':old_report['manifest_sha256']}
+    else:
+        assert sha(manifest.read_bytes())==plan['base_manifest_sha256'],'Production catalogue changed: rebase and compare before publication'
+        previous=sha(manifest.read_bytes())
+        baseline=copy.deepcopy(document)
+        parts={x['filename']:x for x in document['parts']}
+        selectors={m['selector_id'] for m in plan['mappings']}
+        candidates=[p for p in document['packages'] if p['selector_id'] in selectors and p['family'] in ('channel-white','channel-black')]
+        for selector,position in plan['new_satellite_selectors'].items():
+            assert not any(p['selector_id']==selector for p in document['packages'])
+            for resolution in plan['sizes']:
+                for style in plan['styles']:
+                    candidates.append({'selector_id':selector,'warder_key':position,'family':'channel-'+style,'resolution':resolution,'new_standalone_satellite_package':True})
+    before=copy.deepcopy(document)
     sync,install=HELPER.receiver_installer()
     def process(package):
         original=b''
@@ -156,14 +183,14 @@ def publish(source_root,source_ref):
         item['unchanged622_20261104']={'added':len(evidence['added']),'all_existing_png_bytes_preserved':True,'source_ref':source_ref}
         print('VERIFIED',base['selector_id'],base['resolution'],base['style'],len(evidence['added']),'added;',len(evidence['retained_existing_exact_references']),'already present',flush=True)
         return item,metadata,dict(base,filename=filename,sha256=digest,bytes=len(packed),changed=True)
-    results={};new_parts={};records=[]
+    results={};new_parts=dict(reused_parts);records=list(reused_records)
     with ThreadPoolExecutor(max_workers=4) as pool:
         for item,metadata,record in pool.map(process,candidates):
             records.append(record)
             if item:results[item['selector_id'],item['family'],item['resolution']]=item
             new_parts.update({p['filename']:p for p in metadata})
-    expected={(m['reference'],style,resolution) for m in plan['mappings'] for style in plan['styles'] for resolution in plan['sizes']}
-    actual={(name,r['style'],r['resolution']) for r in records for name in r['added']+r['retained_existing_exact_references']}
+    expected={(m['selector_id'],m['reference'],style,resolution) for m in plan['mappings'] for style in plan['styles'] for resolution in plan['sizes']}
+    actual={(r['selector_id'],name,r['style'],r['resolution']) for r in records for name in r['added']+r['retained_existing_exact_references']}
     assert actual==expected and len(actual)==4776
     old_keys={(p['selector_id'],p['family'],p['resolution']) for p in document['packages']}
     for i,p in enumerate(document['packages']):
@@ -171,6 +198,10 @@ def publish(source_root,source_ref):
         if key in results: document['packages'][i]=results[key]
         else: assert p==before['packages'][i]
     document['packages'].extend(value for key,value in sorted(results.items()) if key not in old_keys)
+    base_provider={(p['selector_id'],p['family'],p['resolution']):p for p in baseline['packages'] if p['selector_id'] in HELPER.PROVIDERS}
+    actual_provider={(p['selector_id'],p['family'],p['resolution']):p for p in document['packages'] if p['selector_id'] in HELPER.PROVIDERS}
+    assert actual_provider==base_provider,'Provider packages must stay byte-for-byte bound to the original production archives'
+    assert [p for p in document['packages'] if p['family']=='channel-transparent']==[p for p in baseline['packages'] if p['family']=='channel-transparent']
     metadata={**parts,**new_parts};needed={u.rsplit('/',1)[-1] for p in document['packages'] for u in p.get('parts',[])}
     document['parts']=[metadata[name] for name in sorted(needed)]
     checks=verify_planners(document,records,source_root)
@@ -179,9 +210,11 @@ def publish(source_root,source_ref):
     sums=DELIVERY/'SHA256SUMS';lines={line.split()[-1]:line.split()[0] for line in sums.read_text().splitlines() if line.strip()}
     lines.update({n:p['sha256'] for n,p in new_parts.items()});lines['manifest.json']=sha(manifest.read_bytes())
     sums.write_text(''.join(digest+'  '+name+'\n' for name,digest in sorted(lines.items())))
-    report={'status':'VERIFIED_PUBLICATION_CANDIDATE','date':'2026-11-04','source_ref':source_ref,'previous_manifest_sha256':previous,'manifest_sha256':sha(manifest.read_bytes()),'approved_png_hashes_checked':1244,'eligible_references':796,'verified_programme_mappings':661,'technical_references':135,'blocked_references':plan['excluded'],'changed_packages':len(results),'scanned_packages':len(records),'new_satellite_packages':12,'reference_style_size_checks':len(actual),'receiver_selective_installer_checks':len(results),'added_png_entries':sum(len(r['added']) for r in records),'retained_existing_png_entries':sum(len(r['retained_existing_exact_references']) for r in records),'all_existing_png_bytes_preserved':True,'all_transparent_packages_preserved':True,'frozen_master_unchanged':True,'ipk_changed':False,'packages':records,'new_parts':list(new_parts.values()),**checks}
+    report={'status':'VERIFIED_PUBLICATION_CANDIDATE','date':'2026-11-04','source_ref':source_ref,'previous_manifest_sha256':previous,'manifest_sha256':sha(manifest.read_bytes()),'approved_png_hashes_checked':1244,'eligible_references':796,'verified_programme_mappings':661,'technical_references':135,'blocked_references':plan['excluded'],'changed_packages':sum(r['changed'] for r in records),'scanned_packages':len(records),'new_satellite_packages':12,'reference_style_size_checks':len(actual),'receiver_selective_installer_checks':sum(r['changed'] for r in records),'added_png_entries':sum(len(r['added']) for r in records),'retained_existing_png_entries':sum(len(r['retained_existing_exact_references']) for r in records),'all_existing_png_bytes_preserved':True,'all_transparent_packages_preserved':True,'frozen_master_unchanged':True,'ipk_changed':False,'packages':records,'new_parts':list(new_parts.values()),**checks}
+    if routing_repair:report['routing_correction']=routing_repair
+    report['all_provider_packages_preserved']=True
     REPORT.parent.mkdir(exist_ok=True);REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-    print('COMPLETE',len(results),'changed packages;',len(actual),'exact reference/style/size decisions;',len(new_parts),'parts',flush=True)
+    print('COMPLETE',sum(r['changed'] for r in records),'changed packages;',len(actual),'exact reference/style/size decisions;',len(new_parts),'parts',flush=True)
 
 def git(*args,capture=False):
     return subprocess.run(['git',*args],cwd=ROOT,check=True,text=True,stdout=subprocess.PIPE if capture else None).stdout
@@ -212,8 +245,12 @@ def push_changes():
     mod.push=bounded_push
     groups=mod.batches(report['new_parts'],128*1024*1024)
     for i,group in enumerate(groups,1):
-        paths=['assets/warder/downloads/picons/channels/'+p['filename'] for p in group]
-        mod.commit_files(paths,'Stage approved unchanged picon archive parts %d of %d'%(i,len(groups)),BRANCH)
+        paths=[]
+        for part in group:
+            name='assets/warder/downloads/picons/channels/'+part['filename']
+            if (ROOT/name).is_file():paths.append(name)
+            else:assert git('ls-files','--error-unmatch','--',name,capture=True).strip()==name
+        if paths:mod.commit_files(paths,'Stage approved unchanged picon archive parts %d of %d'%(i,len(groups)),BRANCH)
         print('TRANSFER BATCH',i,'/',len(groups),'complete',flush=True)
     mod.commit_files(['assets/warder/downloads/picons/channels/manifest.json','assets/warder/downloads/picons/channels/SHA256SUMS',str(REPORT.relative_to(ROOT))], 'Activate complete additive unchanged-picon catalogue after all archive parts',BRANCH)
 
@@ -229,8 +266,8 @@ def verify_public(ref):
     print('PUBLIC VERIFIED',len(verified),'parts and manifest',flush=True)
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--source-root',type=Path);parser.add_argument('--source-ref');parser.add_argument('--push',action='store_true');parser.add_argument('--verify-public')
+    parser=argparse.ArgumentParser();parser.add_argument('--source-root',type=Path);parser.add_argument('--source-ref');parser.add_argument('--push',action='store_true');parser.add_argument('--verify-public');parser.add_argument('--repair-routing',action='store_true')
     args=parser.parse_args()
     if args.push:push_changes()
     elif args.verify_public:verify_public(args.verify_public)
-    else:publish(args.source_root,args.source_ref)
+    else:publish(args.source_root,args.source_ref,args.repair_routing)

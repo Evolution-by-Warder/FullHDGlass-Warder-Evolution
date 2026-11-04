@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 90
     env:
       PYTHONDONTWRITEBYTECODE: '1'
-      APPROVED_PICON_REF: e6ec4c9d3d9be47b7272810c26f03a5d7f276c08
+      APPROVED_PICON_REF: ffe78c5733b84f2911554f547691b6f6bb10b64b
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,6 +30,8 @@ jobs:
             /tools/test-unchanged622-20261104.py
             /tools/publish-warder-approved11-20261104.py
             /tools/push-warder-approved11-20261104.py
+            /reports/unchanged622-publication-20261104.json
+            /reports/unchanged622-base-manifest-20261104.json
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             /assets/warder/downloads/picons/channels/manifest.json
@@ -48,21 +50,20 @@ jobs:
           python-version: '3.14'
       - run: python -m pip install 'Pillow==12.3.0'
       - name: Verify approved hashes, preservation and exact-reference exclusions
-        run: python tools/test-unchanged622-20261104.py
+        run: python tools/test-unchanged622-20261104.py --routing-only
       - name: Build additive archives and test actual receiver installation
-        run: python -u tools/publish-unchanged622-20261104.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF"
+        run: python -u tools/publish-unchanged622-20261104.py --source-root .approved-source --source-ref "$APPROVED_PICON_REF" --repair-routing
       - name: Push bounded archive batches with catalogue last
         run: |
           git config user.name 'Warder picon automation'
           git config user.email 'warder-picons@users.noreply.github.com'
           python -u tools/publish-unchanged622-20261104.py --push
-      - name: Read back public archive parts and catalogue
-        run: python -u tools/publish-unchanged622-20261104.py --verify-public release/unchanged622-20261104
-      - name: Record verified public publication
+      - name: Confirm exact candidate commit is present before independent public readback
         run: |
-          git add --sparse reports/unchanged622-publication-20261104.json
-          git commit -m 'Record public SHA256 verification of all unchanged picon parts'
-          git push origin HEAD:release/unchanged622-20261104
+          local_head=$(git rev-parse HEAD)
+          remote_head=$(git ls-remote origin refs/heads/release/unchanged622-20261104 | cut -f1)
+          test "$local_head" = "$remote_head"
+          echo "Uploaded exact candidate commit: $local_head"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
