@@ -1,0 +1,31 @@
+name: Verify activated Canal+ Warder picons
+on:
+  push:
+    branches: [main]
+    paths:
+      - reports/canal-owner-publication-20261104.json
+      - tools/publish-canal-owner-20261104.py
+      - .github/workflows/verify-canal-owner-20261104.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-canal-owner-20261104.py
+            /reports/canal-owner-publication-20261104.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install Pillow
+      - name: Verify approved archive blobs and all activated public URLs
+        run: python -u tools/publish-canal-owner-20261104.py --verify-live
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canal-owner-production-verification
+          path: reports/canal-owner-publication-20261104.json
