@@ -1,0 +1,82 @@
+{
+  "status": "VERIFIED_PUBLICATION_CANDIDATE",
+  "date": "2026-11-04",
+  "source_ref": "8211a03345b9e1dfd93c30e26e5b665ed7b9b4f2",
+  "new_packages": 9,
+  "new_transparent_new_position_pngs": 54,
+  "new_45w_50x30_pngs": 15,
+  "existing_packages_preserved": 483,
+  "total_packages": 492,
+  "all_satellite_and_provider_backgrounds_complete": true,
+  "frozen_masters_unchanged": true,
+  "original_white_black_new_position_packages_preserved": true,
+  "manifest_sha256": "50ed99e82d9935b1ceb9d9aecb5663dba5a1842f502d71ebf1097fc8fd1faa3e",
+  "checks": {
+    "status": "ALL_SATELLITE_PROVIDER_BACKGROUNDS_VERIFIED",
+    "physical_positions": 49,
+    "native_download_selectors": 54,
+    "satellite_variants": 441,
+    "selector_resolution_groups": 164,
+    "download_plans_both_clients": 972,
+    "actual_fullhdglass_installs": 21,
+    "actual_piconhub_mode_installs": 84,
+    "all_three_backgrounds": true,
+    "provider_and_satellite_missing_style_rejections": true,
+    "foreign_position_files_preserved": true,
+    "repeat_incremental_zero_changes": true,
+    "physical_receiver_tested": false
+  },
+  "new_parts": [
+    {
+      "filename": "warder-345w-220x132-transparent-7c16acd383da9a47.zip.part00",
+      "bytes": 256908,
+      "sha256": "7c16acd383da9a478bee07a77f7743fcd484b0cfa508cd0cffd55c81dd068cdc"
+    },
+    {
+      "filename": "warder-345w-400x240-transparent-3a2d42a510df56b6.zip.part00",
+      "bytes": 735194,
+      "sha256": "3a2d42a510df56b6976886f0ff67287b1ca700c77923e5f49b5d7747b5cbcb3c"
+    },
+    {
+      "filename": "warder-345w-50x30-transparent-eda729e13c745138.zip.part00",
+      "bytes": 35661,
+      "sha256": "eda729e13c745138b59d6cd416c102d92ebd53649b2b4119b9a3308b4745caa0"
+    },
+    {
+      "filename": "warder-450w-50x30-black-c97d55ce69764676.zip.part00",
+      "bytes": 16974,
+      "sha256": "c97d55ce697646766e0d66de2779828da8d0dccbfc95c6fa65cb0e3ffef1cd82"
+    },
+    {
+      "filename": "warder-450w-50x30-transparent-7f9b27bbfb71e025.zip.part00",
+      "bytes": 9698,
+      "sha256": "7f9b27bbfb71e0259c2287961f3dbf66f3784871877ab7af77af8b39e9222983"
+    },
+    {
+      "filename": "warder-450w-50x30-white-9aba0396cb852c24.zip.part00",
+      "bytes": 13269,
+      "sha256": "9aba0396cb852c24821d3e60bfbcc5b20ef2e31d74c46ecfe226ceb72d4dabdd"
+    },
+    {
+      "filename": "warder-500e-220x132-transparent-885f75384dc95a04.zip.part00",
+      "bytes": 18938,
+      "sha256": "885f75384dc95a04b8dd130d1daaafcf3e708102416787213fd55b031ffc35fc"
+    },
+    {
+      "filename": "warder-500e-400x240-transparent-eb11388dd3f2d025.zip.part00",
+      "bytes": 58678,
+      "sha256": "eb11388dd3f2d0255661306c8ba964d64f8a73590870a9d6cb99b1e48b502d8b"
+    },
+    {
+      "filename": "warder-500e-50x30-transparent-174c0369fc0ff22d.zip.part00",
+      "bytes": 3014,
+      "sha256": "174c0369fc0ff22d763b6c436b0d80562a44f259df1c339b27ce9ce8d19fe6c9"
+    }
+  ],
+  "public_verification": {
+    "ref": "0b5322b5ca35eedeace4b861d7aa642e05999bde",
+    "new_parts_verified": 9,
+    "all_sizes_and_sha256_match": true,
+    "manifest_matches": true
+  }
+}
