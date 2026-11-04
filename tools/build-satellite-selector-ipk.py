@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Update only the selector runtime over the exact published 1.0.65 payload."""
 from pathlib import Path
-import argparse,copy,gzip,hashlib,io,json,subprocess,tarfile,urllib.request
+import argparse,ast,copy,gzip,hashlib,io,json,subprocess,tarfile,urllib.request
 ROOT=Path(__file__).resolve().parents[1]
 BASE_URL='https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk'
 BASE_SHA='acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8'
@@ -36,7 +36,13 @@ def main():
  for n,b in replacements.items():
   if n.endswith('.py'):compile(b,n,'exec')
  control=read_files(old['control.tar.gz']);old_control=control['control'].decode();assert 'Version: 1.0.65-1\n' in old_control;new_control=old_control.replace('Version: 1.0.65-1\n','Version: '+version+'-1\n');assert new_control==(ROOT/'source/control/control').read_text();new_data,preserved=rewrite(old['data.tar.gz'],replacements);new_meta,preserved_controls=rewrite(old['control.tar.gz'],{'control':new_control.encode()});actual=read_files(new_data);assert actual.keys()==old_files.keys();assert all(sha(actual[n])==h for n,h in preserved.items());assert all(actual[n]==b for n,b in replacements.items())
- source={m.name:m for m in []};out=bytearray(b'!<arch>\n')
+ # Legacy receiver preferences may refer to existing SATLIST row indices.
+ for legacy in [False,True]:
+  tables=[]
+  for text in [old_files[PREFIX+'txt.py'].decode(),replacements[PREFIX+'txt.py'].decode()]:
+   node=next(n for n in ast.parse(text).body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='SATLIST' for t in n.targets));scope={'L':legacy};exec(compile(ast.Module(body=[node],type_ignores=[]),'packaged-SATLIST','exec'),scope);tables.append(scope['SATLIST'])
+  assert tables[1][:len(tables[0])]==tables[0] and len(tables[1])==len(tables[0])+2
+ out=bytearray(b'!<arch>\n')
  for name,b in [('debian-binary',b'2.0\n'),('control.tar.gz',new_meta),('data.tar.gz',new_data)]:
   out.extend(('%-16s%-12s%-6s%-6s%-8s%-10s`\n'%(name+'/',0,0,0,'100644',len(b))).encode());out.extend(b)
   if len(b)%2:out.extend(b'\n')

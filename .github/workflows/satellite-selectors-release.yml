@@ -1,0 +1,95 @@
+name: FullHDGlass 1.0.66 satellite selector release
+on:
+  push:
+    branches: [feature/satellite-selectors-20261104, main]
+    paths: [.github/workflows/satellite-selectors-release.yml, docs/SATELLITE-SELECTORS-RELEASE.json]
+permissions:
+  contents: read
+concurrency:
+  group: fullhdglass-satellite-selector-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/
+            /docs/
+            /source/control/
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 54dbeef19fb9b3fd5faf9dd129aa0f05696b9aad
+          path: .piconhub-source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/src/
+            /plugin/tools/publish_plugin_release.py
+            /tools/test_satellite_backgrounds.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Verify native selector rows and all satellite/provider backgrounds with both actual installers
+        run: |
+          python tools/test-position-cleanup.py
+          python - <<'PYFETCH'
+          import urllib.request
+          from pathlib import Path
+          Path('/tmp/satellite-manifest.json').write_bytes(urllib.request.urlopen('https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/manifest.json').read())
+          PYFETCH
+          python .piconhub-source/tools/test_satellite_backgrounds.py --manifest /tmp/satellite-manifest.json --skin-root . --report reports/satellite-selectors-20261104/installation.json
+      - name: Build and verify exact production payload preservation
+        run: python tools/build-satellite-selector-ipk.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass-1.0.66-verified
+          path: |
+            packages/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk*
+            reports/satellite-selectors-20261104/*.json
+  publish:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/publish-selector-release.py
+            /docs/SATELLITE-SELECTORS-RELEASE.json
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 54dbeef19fb9b3fd5faf9dd129aa0f05696b9aad
+          path: .piconhub-source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/src/
+            /plugin/tools/publish_plugin_release.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - uses: actions/download-artifact@v4
+        with:
+          name: fullhdglass-1.0.66-verified
+          path: .release-artifacts
+      - name: Place tested IPK at the configured path
+        run: |
+          mkdir -p packages
+          find .release-artifacts -name 'enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk' -exec cp '{}' packages/ \;
+      - name: Publish verified IPK and activate main and installed updater feeds
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/publish-selector-release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass-1.0.66-production
+          path: reports/satellite-selectors-20261104/production.json
