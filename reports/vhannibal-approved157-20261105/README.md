@@ -1,0 +1,13 @@
+# Approved Vhannibal batch integration — 2026-11-05
+
+All 157 owner-approved graphics from batches 01–06 and Film Europe are accounted for: 138 use the exact approved PNG triplets, 8 reuse existing same-variant Warder masters because the proposed alternative offered no verified brand/quality improvement, and 11 are already satisfied by protected CANAL+ artwork. No new visual approval is pending for these 157 graphics.
+
+The 146 non-CANAL graphic mappings bind 175 exact November DVB references on 0.8W, 19.2E and 13E. Service types are read as decimal in lamedb and written in hexadecimal in filenames; full namespaces are preserved. Existing service-type aliases are updated only against the same complete physical service identity. New provider membership requires the provider bouquet; Telly additions come from the supplied Telly bouquet. No provider membership is inferred from a warder_key that happens to equal a satellite position.
+
+Production changes: 45 package variants, 3,878 replaced PNG entries and 192 additions across sizes/backgrounds. All 101,403 unrelated archive entries retain their original bytes, as do all 18 CANAL source package objects. The original compressed ZIP records are retained and only the central directory and approved payloads are updated. Old content-addressed archives remain available. Size derivatives use the established premultiplied-alpha Lanczos pipeline; native 220x132 PNGs retain their exact canonical bytes.
+
+PiconHub master integration: 546 PNG paths (528 additions and 18 replacements), commit `7fecd45d9baf16b721e2a74c4fdc89107d811f41`. Factory source and approval provenance: `e7dc0bdbdf016d4a5fc0fe9d293fbb35305ff8c6`. The 8 preserved master designs and the 11 CANAL replacements are explicit deduplication decisions, not unfinished graphics. Film Europe's intentional line is retained.
+
+Validation: exact source/settings/output hashes; independent current service metadata; complete archive CRC checks; every changed PNG compared with its canonical source; every unrelated entry byte comparison; the fail-closed CANAL protection guard; production manifest validation; and the actual receiver selective installer run against all 45 changed ZIPs, including a repeated installation and preservation of an unrelated user file. The remote publication must match the independently tested local manifest and verification hashes.
+
+See `verification.json`, `receiver-checks.json`, and the compressed `publication-plan.json.gz` for detailed mappings, hashes and provenance. Warder IDs, receiver code, IPKs and Radio-plugin work are unchanged. The separate withdrawn Astra235 batch07 and its 9 held non-CANAL groups are not part of this approved157 integration.
