@@ -70,6 +70,7 @@ jobs:
           WARDER_OPENATV_BEFORE=/tmp/warder-openatv-before WARDER_OPENATV_AFTER=upstream/enigma2/lib/python python tools/test-openatv-epg-compat.py -v
           python tools/test-openatv-codec-compat.py -v
           python tools/test-numberzap-picon.py -v
+          python tools/test-channel-picons.py --upstream upstream/enigma2/lib/python -v
           python tools/test-openatv-screen-compat.py --before /tmp/warder-openatv-before --after upstream/enigma2/lib/python -v
           PINNED=$(python -c 'import json; print(json.load(open("design/virtual-keyboard/compatibility.json"))["upstream"])')
           curl --fail --location --silent --show-error --connect-timeout 15 --max-time 60 --retry 2 -o /tmp/warder-keyboard-pinned.py "$PINNED"
@@ -89,3 +90,4 @@ jobs:
           python tools/audit-openatv-skin-bindings.py --upstream upstream/enigma2/lib/python
           python tools/test-native-screen-bindings.py --upstream upstream/enigma2/lib/python -v
           python tools/test-framed-pig.py --upstream upstream/enigma2/lib/python -q
+

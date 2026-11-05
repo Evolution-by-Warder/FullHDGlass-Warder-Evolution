@@ -1182,6 +1182,17 @@ def setPathFiles(chck=True):
 				elif not os.path.lexists(x):
 					makelnk(x)
 setPathFiles()
+try:
+	import Components.ServiceList as _WarderPiconServiceList
+	from Tools.Alternatives import GetWithAlternative as _warderPiconAlternative
+	from Tools.Directories import sanitizeFilename as _warderPiconSanitize
+	from .warderChannelPicons import install as _installWarderChannelPicons
+	_installWarderChannelPicons(_WarderPiconServiceList,
+		lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml',
+		lambda: config.plugins.setupGlass17.par39.value,
+		_warderPiconAlternative, lambda ref: ServiceReference(ref).getServiceName(), _warderPiconSanitize)
+except (ImportError, AttributeError):
+	pass
 ENAFINDER = False
 try:
 	if ISP38:
@@ -11299,5 +11310,6 @@ class dirBrowser(Screen):
 		if self["filelist"].canDescent():
 			self["filelist"].descent()
 			self.updTitle()					
+
 
 
