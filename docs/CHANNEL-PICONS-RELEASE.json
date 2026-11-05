@@ -1,0 +1,30 @@
+{
+  "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
+  "version": "1.0.68",
+  "previous_version": "1.0.67",
+  "release_branch": "release/channel-picons-1.0.68-20261105",
+  "compatibility_branch": "warder-modernization-work",
+  "compatibility_head": "094ebcae654dd9ce5472e928eae9f9b6d0a39816",
+  "source_base_tree": "1f3fed5e045fbf0d02c53e46a0fa1e191ed80bc5",
+  "package": "packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+  "release_paths": [
+    "tools/build-channel-picon-ipk.py",
+    "tools/publish-channel-picons-release.py",
+    "tools/test-channel-picons.py",
+    "docs/CHANNEL-PICONS-RELEASE.json",
+    "docs/CHANNEL-PICONS-20261105.md"
+  ],
+  "notes_i18n": {
+    "sk": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
+    "cs": "Obnovené samostatné picony 50×30 v seznamu stanic. Chybějící malé logo se automaticky použije ze společné složky picon; velké náhledy si zachovají vlastní sadu. Používá se nastavená cesta skinu. Po aktualizaci restartujte GUI.",
+    "en": "Restores separate 50x30 channel-list picons with a per-service fallback to the shared picon folder. Large selected previews retain their own artwork. Uses the skin's configured data path. Restart the GUI after updating.",
+    "de": "Separate 50x30-Picons in der Senderliste mit Ersatz aus dem gemeinsamen picon-Ordner. Große Vorschauen behalten ihre eigenen Grafiken. Der konfigurierte Datenpfad wird verwendet. Nach dem Update die GUI neu starten.",
+    "pl": "Osobne picony 50x30 na liście kanałów z zastępowaniem brakujących ikon z folderu picon. Duże podglądy zachowują własne grafiki. Używana jest ustawiona ścieżka danych. Po aktualizacji uruchom ponownie GUI.",
+    "hu": "Külön 50x30 piconok a csatornalistában, hiányzó ikon esetén a közös picon mappa használatával. A nagy előnézetek megtartják saját képeiket. A beállított adatútvonal érvényes. Frissítés után indítsd újra a GUI-t.",
+    "ru": "Отдельные пиконы 50x30 в списке каналов с заменой отсутствующих из общей папки picon. Большие превью сохраняют свои изображения. Используется настроенный путь данных. После обновления перезапустите GUI.",
+    "fr": "Picons 50x30 distincts dans la liste des chaînes, avec remplacement des icônes absentes depuis le dossier picon commun. Les grands aperçus conservent leurs images. Le chemin configuré est utilisé. Redémarrez l’interface après la mise à jour.",
+    "it": "Picon 50x30 separati nell’elenco canali, con recupero delle icone mancanti dalla cartella picon condivisa. Le anteprime grandi conservano le proprie immagini. Viene usato il percorso configurato. Riavviare la GUI dopo l’aggiornamento.",
+    "es": "Picons 50x30 independientes en la lista de canales, con sustitución de los ausentes desde la carpeta picon compartida. Las vistas grandes conservan sus imágenes. Se utiliza la ruta configurada. Reinicie la interfaz tras actualizar."
+  },
+  "approval": "Explicit owner request on 2026-11-05 to publish this fix through the updater so the reporting user can update and confirm the requested behavior."
+}

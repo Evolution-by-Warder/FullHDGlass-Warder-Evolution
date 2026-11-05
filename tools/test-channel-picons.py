@@ -3,6 +3,7 @@
 import argparse
 import ast
 import importlib.util
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -11,7 +12,7 @@ import unittest
 from unittest.mock import Mock
 
 ROOT = Path(__file__).resolve().parents[1]
-PKG = ROOT/'source/package-root/usr/lib/enigma2/python'
+PKG = Path(os.environ.get('WARDER_PICON_PACKAGE_ROOT', str(ROOT/'source/package-root/usr/lib/enigma2/python')))
 spec = importlib.util.spec_from_file_location('channel_picons', PKG/'Plugins/Extensions/setupGlass17/warderChannelPicons.py')
 picons = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(picons)
@@ -204,3 +205,4 @@ if __name__=='__main__':
     args,remaining=parser.parse_known_args()
     UPSTREAM=args.upstream
     unittest.main(argv=[sys.argv[0]]+remaining)
+

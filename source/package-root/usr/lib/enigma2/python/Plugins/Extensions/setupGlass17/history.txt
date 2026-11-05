@@ -1,3 +1,8 @@
+FullHDGlass 1.0.68 — 05.11.2026
+Channel rows prefer picon_50x30 and fall back per service to picon.
+Large selected previews retain their own set and support shared fallback.
+Restart the GUI after updating.
+
 FullHDGlass 1.0.67 — 05.11.2026
 Sorts 34.5°W and 50°E by orbital position in the selectors. Saved selections, original row indices and all three backgrounds are preserved. Restart the GUI after updating.
 

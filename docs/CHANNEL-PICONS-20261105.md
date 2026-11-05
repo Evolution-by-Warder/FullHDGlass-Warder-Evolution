@@ -41,6 +41,8 @@ The test is included in the OpenATV and OpenPLi compatibility matrices.
 The exact startup hook is recorded in the existing controller change ledger;
 an altered hook must still fail the frozen controller fingerprint check.
 
-This is an isolated source change. The current 1.0.67 packages and updater
-feeds are unchanged. Receiver validation on OpenATV 8.1 remains pending;
-source checks do not establish physical rendering or USB timing performance.
+The owner authorized normal FullHDGlass 1.0.68 publication on 5 November 2026
+so the reported behavior can be checked on a receiver. The immutable package
+and both installed update channels are verified by the release workflow.
+Receiver feedback on OpenATV 8.1 remains pending; source checks do not establish
+physical rendering or USB timing performance.
