@@ -83,7 +83,7 @@
   "satellite_automation_modified": false,
   "lyrics_published": false,
   "peer_production": {
-    "fullhdglass": "1.0.65",
+    "fullhdglass": "1.0.68",
     "gsu": "13.41-r4",
     "piconhub": "0.1.40"
   },
@@ -147,15 +147,15 @@
     "sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323"
   },
   "documentation_checkpoint": {
-    "date": "2026-11-03",
-    "status": "stable-publication-updater-and-session-records-complete",
+    "date": "2026-11-05",
+    "status": "stable-publication-updater-and-verification-complete",
     "web_copy": "docs/CURRENT-RELEASE.md",
     "web_copy_language": "sk",
     "web_copy_archived": true,
     "separate_website_publication_performed": false
   },
-  "activation_commit": "a6124cff1efc05a3a7ed6493dd27c7052fc791be",
-  "native_test_mirror_commit": "ca91a1ee210c4d7c8d6c13b6e7f6c46541c1a3fe",
+  "activation_commit": "3b64e96252695edb0e7e12d35af024caf5f1305b",
+  "native_test_mirror_commit": "f3c8eac56254c54a907066a1b89cf040295c4230",
   "previous_release": {
     "version": "1.0.67",
     "tag": "v1.0.67",
