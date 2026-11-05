@@ -3,7 +3,7 @@ on:
   push:
     branches: [picons/canal-reuse-20261105]
     paths:
-      - tools/reuse-canal-20261105.py
+      - tools/finish-canal-reuse-20261105.py
       - tools/checkpoint-canal-reuse-20261105.py
       - reports/canal-reuse-20261105/reuse-map.json
       - .github/workflows/reuse-canal-20261105.yml
@@ -23,7 +23,7 @@ jobs:
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /tools/reuse-canal-20261105.py
+            /tools/finish-canal-reuse-20261105.py
             /tools/checkpoint-canal-reuse-20261105.py
             /reports/canal-reuse-20261105/
             /assets/warder/downloads/picons/channels/manifest.json
@@ -37,7 +37,7 @@ jobs:
           git config user.name 'Warder picon automation'
           git config user.email 'warder-picons@users.noreply.github.com'
       - name: Reuse exact PNG bytes and verify every archive member
-        run: python -u tools/reuse-canal-20261105.py --root . --inputs reports/canal-reuse-20261105 --cache /tmp/canal-cache --write
+        run: python -u tools/finish-canal-reuse-20261105.py
       - name: Validate production catalogue using the receiver engine
         run: |
           python - <<'PY'

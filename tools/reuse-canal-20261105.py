@@ -113,12 +113,14 @@ def run(root,inputs,cache,write):
     subprocess.run(['python3',checkpoint],check=True)
    if plan.get('purge_processed_cache'):
     for u in p['parts']:(cache/u.rsplit('/',1)[-1]).unlink(missing_ok=True)
+ doc['canal_reuse_20261105']={'method':'BYTE_EXACT_COPY_NO_RENDER','canonical_catalogue_commit':plan['catalogue_commit'],'canonical_source_repository':'Evolution-by-Warder/PiconHub-Warder-Evolution','canonical_source_ref':'b498c30b11f47f28bbc7a068d5bd671395ca4e8c','master_sync_ref':'ea20b2328333763f0c06c18411c8c5dbe58d2a74','service_settings_sha256':'64d8d143422945679d491d139bca95667ab0a14809ccb4e50adb09f1d55a061c','verification_report':'reports/canal-reuse-20261105/verification.json','replaced_pngs':stats['replaced'],'added_pngs':stats['added'],'held_candidate_services':plan['held_candidate_services']}
  oldcanon=[p for p in before['packages'] if p['selector_id'] in ('CANALPLUS_SK','CANALPLUS_CZ')]
  assert oldcanon==[p for p in doc['packages'] if p['selector_id'] in ('CANALPLUS_SK','CANALPLUS_CZ')]
  for p,q in zip(before['packages'],doc['packages']):
   if (p['selector_id'],p['resolution'],p['family']) not in changedkeys:assert p==q
- # Keep historical parts metadata as well as immutable archive files.
- doc['parts']=sorted(doc['parts']+newparts,key=lambda x:x['filename']);assert len({p['filename'] for p in doc['parts']})==len(doc['parts'])
+ # Historical archive files stay immutable; receiver metadata lists only live parts.
+ referenced={u.rsplit('/',1)[-1] for p in doc['packages'] for u in p['parts']}
+ doc['parts']=sorted([p for p in doc['parts']+newparts if p['filename'] in referenced],key=lambda x:x['filename']);assert len({p['filename'] for p in doc['parts']})==len(doc['parts'])
  report={'canonical_packages_unchanged':len(oldcanon),'rendered_images':0,'changed_packages':len(changes),'changed_selectors':sorted({x['selector'] for x in changes}),'replaced_pngs':stats['replaced'],'added_pngs':stats['added'],'unrelated_original_entries_preserved':unrelated,'held_candidate_services':plan['held_candidate_services'],'changes':changes}
  expected_report=plan.get('expected_verification_sha256')
  if expected_report:assert sha((json.dumps(report,ensure_ascii=False,indent=2)+'\n').encode())==expected_report,'Verification differs from independently tested local run'

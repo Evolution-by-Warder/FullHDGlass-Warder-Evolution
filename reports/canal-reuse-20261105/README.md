@@ -1,13 +1,26 @@
-# CANAL+ SK/CZ: reuse existing artwork
+# Reuse CANAL+ SK/CZ artwork across satellite and provider sets
 
-Owner instruction, 2026-11-05: use the completed CANAL+ SK/CZ picons in full 23.5E and on other positions/providers carrying the same station and variant. Do not recreate artwork or replace it with stale Vhannibal logos.
+The completed CANAL+ SK/CZ PNGs are copied byte for byte wherever the reviewed service mapping identifies the same station and variant. No artwork is rendered, resized or recreated.
 
-The immutable source is the live catalogue at FullHDGlass commit `0a7f09b96cd73091d7ab53ca3976e8f1957b170b`, sourced from PiconHub `b498c30b11f47f28bbc7a068d5bd671395ca4e8c`. Its 18 CANAL packages (three sizes, three backgrounds, two markets) remain unchanged. PNGs are copied byte for byte; no rendering, resizing, colour or background edits occur.
+| Verified scope | Result |
+|---|---:|
+| Original CANAL+ SK/CZ package variants preserved | 18 |
+| Updated package variants | 144 |
+| Satellite positions | 16 |
+| Provider selectors | 4 |
+| Replaced PNG entries | 5,486 |
+| Added exact current-reference PNG entries | 2,046 |
+| Original unrelated archive entries preserved | 241,880 |
+| Rendered graphics | 0 |
 
-The existing native 23.5E CANAL reference roster already matches the full-position packages. The reconciliation also validates current November service types and other providers/positions. Existing aliases are preserved; exact current references are added only where independently present in the supplied November lamedb.
+Provider selectors: Antiksat, Digi/Telly, freeSAT and Skylink. Positions: 0.8W, 5W, 7W, 8W, 22W, 24.5W, 30W, 9E, 13E, 16E, 19.2E, 23.5E, 26E, 28.2E, 39E and 42E.
 
-Reuse requires exact service identity or a reviewed same-name, same-variant market mapping. Generic/cross-market collisions such as Czech Nova vs Bulgarian NOVA, Hungarian RTL vs German RTL, German ONE vs Egyptian ON E, and test services are held. HD/SD/UHD, regional and language labels are retained. The reviewed mapping contains 480 current services; 161 name candidates are held for missing identity evidence.
+Jednotka and Dvojka use the same approved CANAL source in 23.5E, 0.8W, 16E and the matching provider packages. Existing native CANAL references in the full 23.5E package already matched; other current service types and aliases are synchronized while retaining their original exact filenames. Newly added references come from the supplied November 3 lamedb, including full namespaces and decimal-to-hex service types.
 
-`canal235-protection/guard.py` allows the explicit `CANAL_CANONICAL_REUSE` operation only when the target identity and exact source PNG hash match the pinned evidence. It continues to reject source CANAL package writes, unverified hashes/identities and ordinary Vhannibal replacements on protected 23.5E.
+The 480 accepted service mappings retain HD/SD/UHD, country, language and regional labels. Another 161 name candidates are held for independent identity/variant evidence. These are candidate service mappings, not a count of unfinished artwork. In particular, a shared generic name does not justify mixing Czech Nova and Bulgarian NOVA, Hungarian and German RTL, German ONE and Egyptian ON E, or generic test services.
 
-Detailed master paths and PNG hashes are recorded in `reports/warder-master-production/canal-reuse-20261105.json`. Live archive propagation is independently validated and reported in FullHDGlass `reports/canal-reuse-20261105/verification.json`; preparing source/master data alone is not live publication.
+The original source is pinned to FullHDGlass catalogue commit `0a7f09b96cd73091d7ab53ca3976e8f1957b170b` and PiconHub source `b498c30b11f47f28bbc7a068d5bd671395ca4e8c`. Master/source reuse was recorded in [PiconHub master](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/ea20b2328333763f0c06c18411c8c5dbe58d2a74), covering 1,815 PNG path changes. The guard also blocks ordinary Vhannibal writes to these reused identities across positions.
+
+Validation: every original and resulting ZIP passed CRC checks; every changed PNG matched its canonical source bytes; every unrelated member retained its original bytes; all 18 CANAL source package objects remained identical. Published staged part Git object hashes are compared against the independently verified local part hashes. The receiver's production manifest validator passes. Original content-addressed archives remain available; no IPK changes are needed.
+
+The detailed [verification.json](verification.json) lists every archive and reference, before/after hashes and identity evidence. [reuse-map.json](reuse-map.json) records the reviewed mapping; [held-candidates.json](held-candidates.json) records unresolved market/variant candidates. Radio-plugin work is separate and unchanged.
