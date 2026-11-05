@@ -63,7 +63,9 @@ jobs:
           ref: 22fee2af336b0a16508fa01e71568315b0799427
           path: .piconhub-source
           sparse-checkout-cone-mode: false
-          sparse-checkout: /plugin/tools/publish_plugin_release.py
+          sparse-checkout: |
+            /plugin/src/
+            /plugin/tools/publish_plugin_release.py
       - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
