@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Publish the verified picon fix, then activate both installed updater paths."""
+import argparse
 import base64
 import hashlib
 import importlib.util
@@ -14,14 +15,27 @@ SHA=lambda value:hashlib.sha256(value).hexdigest()
 
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--verified-source')
+    parser.add_argument('--verified-run',type=int)
+    args=parser.parse_args()
     config=json.loads((ROOT/'docs/CHANNEL-PICONS-RELEASE.json').read_text())
-    repo=os.environ['GITHUB_REPOSITORY']; revision=os.environ['GITHUB_SHA']
-    assert repo==config['repository'] and os.environ['GITHUB_REF_NAME']==config['release_branch']
+    repo=os.environ['GITHUB_REPOSITORY']; tools_revision=os.environ['GITHUB_SHA']
+    revision=args.verified_source or tools_revision
+    assert repo==config['repository']
+    assert os.environ['GITHUB_REF_NAME']==(config['release_branch'].replace('-20261105','-recovery-20261105') if args.verified_source else config['release_branch'])
     module_path=ROOT/'.piconhub-source/plugin/tools/publish_plugin_release.py'
     spec=importlib.util.spec_from_file_location('picon_release_core',module_path)
     core=importlib.util.module_from_spec(spec); spec.loader.exec_module(core)
     core.REPO=repo; core.API='https://api.github.com/repos/'+repo
     client=core.GitHub(os.environ['GITHUB_TOKEN'])
+    if args.verified_source:
+        assert args.verified_run
+        run=client.request('GET','/actions/runs/'+str(args.verified_run))
+        assert run['head_sha']==revision and run['head_branch']==config['release_branch'] and run['status']=='completed'
+        jobs=client.request('GET','/actions/runs/'+str(args.verified_run)+'/jobs?per_page=100')['jobs']
+        required={'build','openatv / OpenATV 8.0','openatv / OpenATV 8.0-next','openatv / OpenATV master','openpli / native (release-9.2)','openpli / native (develop)','openpli / regression'}
+        assert {j['name'] for j in jobs if j['conclusion']=='success'}>=required
     version=config['version']; tag='v'+version
     package=ROOT/config['package']; raw=package.read_bytes(); digest=SHA(raw)
     proof=json.loads((ROOT/'reports/channel-picons-1.0.69/ipk-verification.json').read_text())
@@ -80,13 +94,23 @@ def main():
     public_url='https://github.com/'+repo+'/releases/download/'+tag+'/'+package.name
     verify_public(public_url)
 
-    revision_tree,revision_entries=root_entries(revision)
-    listing=client.request('GET','/git/trees/'+revision_tree+'?recursive=1')
-    assert not listing.get('truncated')
-    by_path={e['path']:e for e in listing['tree']}
+    _,revision_entries=root_entries(revision)
+    _,tool_entries=root_entries(tools_revision)
+    assert tool_entries['source']['sha']==revision_entries['source']['sha'],'Recovery must preserve the verified runtime source'
+    tree_cache={}
+    def exact_entry(path):
+        entries=tool_entries
+        parts=path.split('/')
+        for index,part in enumerate(parts):
+            item=entries[part]
+            if index==len(parts)-1:return item
+            assert item['type']=='tree'
+            if item['sha'] not in tree_cache:
+                tree_cache[item['sha']]={e['path']:e for e in client.request('GET','/git/trees/'+item['sha'])['tree']}
+            entries=tree_cache[item['sha']]
     entries=[dict(path='source',mode='040000',type='tree',sha=revision_entries['source']['sha'])]
     for path in config['release_paths']:
-        item=by_path[path]
+        item=exact_entry(path)
         entries.append(dict(path=path,mode=item['mode'],type=item['type'],sha=item['sha']))
     package_path='packages/'+package.name
     staged=commit('main',current_main,{package_path:raw,package_path+'.sha256':(digest+'  '+package.name+'\n').encode()},
@@ -133,6 +157,7 @@ def main():
     verify_public(public_url); verify_public(package_url)
     client.request('PATCH','/releases/'+str(release['id']),dict(draft=False,prerelease=False,make_latest='true'))
     report=dict(status='PRODUCTION_VERIFIED',release=release_record,source_commit=revision,
+        publication_tool_commit=tools_revision,verified_source_workflow_run=args.verified_run or int(os.environ['GITHUB_RUN_ID']),
         main_activation_commit=active,compatibility_activation_commit=compatibility,
         workflow_run=int(os.environ['GITHUB_RUN_ID']),physical_receiver_tested=False)
     output=ROOT/'reports/channel-picons-1.0.69/production.json'
