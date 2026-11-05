@@ -1,3 +1,7 @@
+## FullHDGlass 1.0.68 — 5 November 2026
+
+Owner authorized normal publication of the channel-list picon fix for receiver feedback. Rows prefer picon_50x30 with a per-service picon fallback; large selected previews keep their own sets. OpenATV/OpenPLi automated checks and public package verification passed. Physical receiver feedback is pending. The legacy bridge is preserved.
+
 ## Queued follow-up — 2026-11-03: Radio Mode artwork lookup
 
 Owner requests reviewing the FullHDGlass Radio Mode artwork engine after the

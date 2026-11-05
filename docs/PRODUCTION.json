@@ -3,31 +3,31 @@
   "product": "FullHDGlass",
   "status": "production-update-active",
   "approved_on": "2026-11-05",
-  "approval": "Owner supplied receiver screenshots and requested correct orbital ordering in FullHDGlass and original position logos in PiconHub.",
-  "source_branch": "main",
-  "source_commit": "c6761a5ce610b430d23e9ea340f9d62ad4fce12b",
+  "approval": "Explicit owner request on 2026-11-05 to publish this fix through the updater so the reporting user can update and confirm the requested behavior.",
+  "source_branch": "release/channel-picons-1.0.68-20261105",
+  "source_commit": "086cc7214bc6faaadad4542d841bdeb8e3296297",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.67",
-    "tag": "v1.0.67",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk",
-    "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
-    "bytes": 17253106,
-    "notes": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "version": "1.0.68",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+    "sha256": "28f83dd386dd81e7e4427bbf943ea2bccbffd9e774682b453940d851590061a2",
+    "changelog": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
+    "tag": "v1.0.68",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.68/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+    "bytes": 17254618,
     "notes_i18n": {
-      "sk": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
-      "en": "Sorts 34.5°W and 50°E by orbital position in the selectors. Saved selections, original row indices and all three backgrounds are preserved. Restart the GUI after updating.",
-      "cs": "Pozice 34,5°W a 50°E jsou ve výběrech seřazeny podle orbitální pozice. Uložené výběry, původní indexy a tři pozadí zůstávají zachovány. Po aktualizaci restartujte GUI.",
-      "de": "34,5°W und 50°E werden nach Orbitalposition sortiert. Gespeicherte Auswahl, ursprüngliche Zeilenindizes und alle drei Hintergründe bleiben erhalten. Nach dem Update die GUI neu starten.",
-      "pl": "Pozycje 34,5°W i 50°E są sortowane według pozycji orbitalnej. Zapisany wybór, pierwotne indeksy i trzy tła są zachowane. Po aktualizacji uruchom ponownie GUI.",
-      "hu": "A 34,5°W és 50°E elemek pályapozíció szerint rendezve jelennek meg. A mentett kijelölések, az eredeti sorindexek és mindhárom háttér megmarad. Frissítés után indítsd újra a GUI-t.",
-      "ru": "Позиции 34,5°W и 50°E отсортированы по орбитальной позиции. Сохраненные выборы, исходные индексы строк и все три фона сохранены. После обновления перезапустите GUI.",
-      "fr": "Tri de 34,5°W et 50°E selon leur position orbitale. Sélections enregistrées, indices de lignes et trois fonds conservés. Redémarrez l’interface après la mise à jour.",
-      "it": "34,5°W e 50°E ordinati per posizione orbitale. Selezioni salvate, indici originali e tre sfondi conservati. Riavviare la GUI dopo l’aggiornamento.",
-      "es": "34,5°W y 50°E ordenados por posición orbital. Selecciones guardadas, índices originales y tres fondos conservados. Reinicie la interfaz tras actualizar."
+      "sk": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
+      "cs": "Obnovené samostatné picony 50×30 v seznamu stanic. Chybějící malé logo se automaticky použije ze společné složky picon; velké náhledy si zachovají vlastní sadu. Používá se nastavená cesta skinu. Po aktualizaci restartujte GUI.",
+      "en": "Restores separate 50x30 channel-list picons with a per-service fallback to the shared picon folder. Large selected previews retain their own artwork. Uses the skin's configured data path. Restart the GUI after updating.",
+      "de": "Separate 50x30-Picons in der Senderliste mit Ersatz aus dem gemeinsamen picon-Ordner. Große Vorschauen behalten ihre eigenen Grafiken. Der konfigurierte Datenpfad wird verwendet. Nach dem Update die GUI neu starten.",
+      "pl": "Osobne picony 50x30 na liście kanałów z zastępowaniem brakujących ikon z folderu picon. Duże podglądy zachowują własne grafiki. Używana jest ustawiona ścieżka danych. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "Külön 50x30 piconok a csatornalistában, hiányzó ikon esetén a közös picon mappa használatával. A nagy előnézetek megtartják saját képeiket. A beállított adatútvonal érvényes. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Отдельные пиконы 50x30 в списке каналов с заменой отсутствующих из общей папки picon. Большие превью сохраняют свои изображения. Используется настроенный путь данных. После обновления перезапустите GUI.",
+      "fr": "Picons 50x30 distincts dans la liste des chaînes, avec remplacement des icônes absentes depuis le dossier picon commun. Les grands aperçus conservent leurs images. Le chemin configuré est utilisé. Redémarrez l’interface après la mise à jour.",
+      "it": "Picon 50x30 separati nell’elenco canali, con recupero delle icone mancanti dalla cartella picon condivisa. Le anteprime grandi conservano le proprie immagini. Viene usato il percorso configurato. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "Picons 50x30 independientes en la lista de canales, con sustitución de los ausentes desde la carpeta picon compartida. Las vistas grandes conservan sus imágenes. Se utiliza la ruta configurada. Reinicie la interfaz tras actualizar."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.67",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk"
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.68"
   },
   "preview_assets": {
     "help": {
@@ -51,11 +51,10 @@
   },
   "validation": {
     "ci": "passed",
-    "workflow_run": 41978562968,
+    "workflow_run": 42037878790,
     "public_ipk_verified": true,
-    "three_background_catalogue_verified": true,
-    "selector_presentation_verified": true,
-    "all_profiles_and_other_payload_preserved": true,
+    "channel_picon_lookup_verified": true,
+    "all_other_payload_bytes_preserved": true,
     "physical_receiver_tested": false
   },
   "accepted_spectrum": {
@@ -73,13 +72,13 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "Normal 1.0.65 upgrades from 1.0.63 and all 1.0.64 TEST packages; published packages remain immutable.",
+  "version_policy": "1.0.68 is the normal picon compatibility update; previous packages and the legacy migration bridge remain immutable.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner authorized promotion of test2 on 2026-11-03; this is not a claim of testing every receiver model or display mode.",
+  "receiver_validation": "Owner authorized normal publication for receiver feedback; physical confirmation of the picon change is pending.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
@@ -142,7 +141,7 @@
     "changelog": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI."
   },
   "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
-  "package_source_commit": "c6761a5ce610b430d23e9ea340f9d62ad4fce12b",
+  "package_source_commit": "086cc7214bc6faaadad4542d841bdeb8e3296297",
   "accepted_candidate": {
     "version": "1.0.64-test2",
     "sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323"
@@ -158,25 +157,25 @@
   "activation_commit": "a6124cff1efc05a3a7ed6493dd27c7052fc791be",
   "native_test_mirror_commit": "ca91a1ee210c4d7c8d6c13b6e7f6c46541c1a3fe",
   "previous_release": {
-    "version": "1.0.66",
-    "tag": "v1.0.66",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.66/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk",
-    "sha256": "6e207f7440331fa2fd1fac219cdd691377596bf4ee46bd15e0922f0fd5a1d7c9",
-    "bytes": 17252846,
-    "notes": "Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "version": "1.0.67",
+    "tag": "v1.0.67",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk",
+    "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
+    "bytes": 17253106,
+    "notes": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
     "notes_i18n": {
-      "cs": "Podpora 34,5°W a 50°E ve všech třech rozměrech a pozadích Transparent, White a Black. Kontrola úplnosti pozadí satelitů i operátorů; uložené profily zůstávají zachované. Po aktualizaci restartujte GUI.",
-      "de": "Unterstützung für 34,5°W und 50°E in allen drei Größen und Hintergründen Transparent, White und Black. Vollständige Hintergrundprüfung für Satelliten und Anbieter; gespeicherte Profile bleiben erhalten. Nach dem Update die GUI neu starten.",
-      "pl": "Obsługa 34,5°W i 50°E we wszystkich trzech rozmiarach i stylach Transparent, White i Black. Kontrola kompletności teł dla satelitów i operatorów; zapisane profile pozostają zachowane. Po aktualizacji uruchom ponownie GUI.",
-      "hu": "A 34,5°W és 50°E támogatása mindhárom méretben és Transparent, White, Black háttérrel. A műholdak és szolgáltatók háttereinek teljességellenőrzése; a mentett profilok megmaradnak. Frissítés után indítsd újra a GUI-t.",
-      "ru": "Поддержка 34,5°W и 50°E во всех трех размерах и стилях Transparent, White и Black. Проверка полноты фонов спутников и операторов; сохраненные профили остаются. После обновления перезапустите GUI.",
-      "fr": "Prise en charge de 34,5°W et 50°E dans les trois tailles et styles Transparent, White et Black. Vérification des fonds pour les satellites et fournisseurs ; profils conservés. Redémarrez l’interface après la mise à jour.",
-      "it": "Supporto di 34,5°W e 50°E in tutte e tre le dimensioni e negli stili Transparent, White e Black. Verifica degli sfondi per satelliti e operatori; profili salvati conservati. Riavviare la GUI dopo l’aggiornamento.",
-      "es": "Compatibilidad con 34,5°W y 50°E en los tres tamaños y estilos Transparent, White y Black. Verificación de fondos para satélites y proveedores; perfiles guardados conservados. Reinicie la interfaz tras actualizar.",
-      "sk": "Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.",
-      "en": "Support for 34.5°W and 50°E in all three sizes and Transparent, White and Black backgrounds. Complete background validation for satellites and providers; saved profiles are preserved. Restart the GUI after updating."
+      "sk": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+      "en": "Sorts 34.5°W and 50°E by orbital position in the selectors. Saved selections, original row indices and all three backgrounds are preserved. Restart the GUI after updating.",
+      "cs": "Pozice 34,5°W a 50°E jsou ve výběrech seřazeny podle orbitální pozice. Uložené výběry, původní indexy a tři pozadí zůstávají zachovány. Po aktualizaci restartujte GUI.",
+      "de": "34,5°W und 50°E werden nach Orbitalposition sortiert. Gespeicherte Auswahl, ursprüngliche Zeilenindizes und alle drei Hintergründe bleiben erhalten. Nach dem Update die GUI neu starten.",
+      "pl": "Pozycje 34,5°W i 50°E są sortowane według pozycji orbitalnej. Zapisany wybór, pierwotne indeksy i trzy tła są zachowane. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "A 34,5°W és 50°E elemek pályapozíció szerint rendezve jelennek meg. A mentett kijelölések, az eredeti sorindexek és mindhárom háttér megmarad. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Позиции 34,5°W и 50°E отсортированы по орбитальной позиции. Сохраненные выборы, исходные индексы строк и все три фона сохранены. После обновления перезапустите GUI.",
+      "fr": "Tri de 34,5°W et 50°E selon leur position orbitale. Sélections enregistrées, indices de lignes et trois fonds conservés. Redémarrez l’interface après la mise à jour.",
+      "it": "34,5°W e 50°E ordinati per posizione orbitale. Selezioni salvate, indici originali e tre sfondi conservati. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "34,5°W y 50°E ordenados por posición orbital. Selecciones guardadas, índices originales y tres fondos conservados. Reinicie la interfaz tras actualizar."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.66",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk"
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.67",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk"
   }
 }

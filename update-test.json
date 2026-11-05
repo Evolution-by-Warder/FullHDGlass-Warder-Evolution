@@ -1,6 +1,6 @@
 {
-  "version": "1.0.67",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk",
-  "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
-  "changelog": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI."
+  "version": "1.0.68",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+  "sha256": "28f83dd386dd81e7e4427bbf943ea2bccbffd9e774682b453940d851590061a2",
+  "changelog": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI."
 }

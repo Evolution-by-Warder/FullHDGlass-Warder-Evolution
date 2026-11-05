@@ -4,14 +4,14 @@ Modern continuation and evolution of the FullHDGlass Enigma2 skin, maintained by
 
 ## Spoločné ostré vydanie — 5. november 2026
 
-**FullHDGlass 1.0.67** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/CURRENT-RELEASE.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk).
+**FullHDGlass 1.0.68** pre OpenPLi a OpenATV. [Poznámky k vydaniu](docs/CURRENT-RELEASE.md). [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.68/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk).
 
 
 34,5°W a 50°E: všetky tri rozmery a pozadia Transparent, White a Black. Úplnosť troch pozadí sa kontroluje pre všetky satelity aj providery. [Pravidlo pozadí](docs/WARDER-BACKGROUND-POLICY.txt).
 
 ## Installation
 
-[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk).
+[Download the installable IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.68/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk).
 
 Radio behavior is based on receiver-confirmed test250: DVB/AAC, RDS, DAB and WDR, physical TV/OpenWebif parity, transparent equalizer, and opaque black radio channel selection with an image preview. Temporary diagnostics are retired on upgrade. The current native version is recorded in update-production.json and update-test.json; update.json retains the required legacy migration bridge.
 
@@ -126,3 +126,7 @@ Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, W
 Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.
 
 [Stiahnuť IPK](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk). Overené všetky tri pozadia satelitov aj providerov, verejné IPK a kontrolné súčty.
+
+## FullHDGlass 1.0.68 — picony v zozname staníc
+
+Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.
