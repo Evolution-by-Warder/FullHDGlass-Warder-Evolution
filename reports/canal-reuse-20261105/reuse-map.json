@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "catalogue_commit": "0a7f09b96cd73091d7ab53ca3976e8f1957b170b",
-  "manifest_sha256": "8c6f493a2e6302098c90725c39ad395155c7d13838795b8301a1a844266b2557",
+  "manifest_sha256": "50ed99e82d9935b1ceb9d9aecb5663dba5a1842f502d71ebf1097fc8fd1faa3e",
   "canonical_packages_immutable": true,
   "no_render": true,
   "target_selectors": [
