@@ -129,7 +129,9 @@ class g17RefTV3(Renderer):
 
 	def findPicon(self, serviceName):
 		try:
-			for path in dict.fromkeys((self.path, "picon")):
+			source = getattr(config.plugins.setupGlass17, "par231", None)
+			paths = (self.path, "picon") if source is not None and source.value == "mini" else (self.path,)
+			for path in dict.fromkeys(paths):
 				pngname = config.plugins.setupGlass17.par39.value + "/" + path + "/" + serviceName + ".png"
 				if os.path.isfile(pngname):
 					return pngname
@@ -144,4 +146,5 @@ class g17RefTV3(Renderer):
 			except: pass
 		return tmp
 		
+
 

@@ -1,5 +1,8 @@
 # Channel selection picons — 5 November 2026
 
+**1.0.69 update:** the 50x30 behavior described below is now opt-in. The default
+restores the original image lookup. See [setting and migration](CHANNEL-PICON-SOURCE-20261105.md).
+
 When a user keeps a separate 50x30 set, the channel rows must show that set
 while the selected-service preview keeps its own larger artwork. When a
 particular small picon is absent, the row uses the matching shared picon.
@@ -49,3 +52,4 @@ matches the original request: “ano super je to ono přesně tak to bylo”.
 Their earlier report identified OpenATV 8.1. The confirmation did not identify
 the specific receiver or establish testing of all three reported models.
 The publication-time host-test flag remains a historical record.
+

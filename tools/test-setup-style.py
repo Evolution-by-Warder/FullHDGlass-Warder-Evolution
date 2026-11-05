@@ -18,6 +18,11 @@ LAYOUTS=style.extract(CURRENT)
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_picon_source_default_cannot_silently_change_to_mini(self):
+        changed=CURRENT.replace('par231 = ConfigSelection(default="system"','par231 = ConfigSelection(default="mini"',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
     def test_modified_channel_picon_hook_is_not_silently_approved(self):
         changed=CURRENT.replace('lambda: config.plugins.setupGlass17.par39.value,','lambda: "/tmp",',1)
         self.assertNotEqual(changed,CURRENT)
@@ -355,4 +360,5 @@ class SetupStyleTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
 

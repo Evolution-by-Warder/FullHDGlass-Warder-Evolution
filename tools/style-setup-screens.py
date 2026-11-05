@@ -235,7 +235,33 @@ def strip_openpli_compatibility(tree):
     return tree
 
 
+def strip_reviewed_scoped(tree, records):
+    """Reverse exact setting statements only in their reviewed method scope."""
+    mapping={(r['scope'],json.dumps(portable(ast.parse(r['after']).body[0]),sort_keys=True)):r['before'] for r in records}
+    def restore(node, scope):
+        if isinstance(node,(ast.ClassDef,ast.FunctionDef,ast.AsyncFunctionDef)):
+            scope=node.name if scope=='module' else scope+'.'+node.name
+        for field,value in ast.iter_fields(node):
+            if isinstance(value,list):
+                result=[]
+                for child in value:
+                    if isinstance(child,ast.stmt):
+                        key=(scope,json.dumps(portable(child),sort_keys=True))
+                        if key in mapping:
+                            result.extend(ast.parse(mapping[key]).body)
+                            continue
+                    result.append(restore(child,scope) if isinstance(child,ast.AST) else child)
+                setattr(node,field,result)
+            elif isinstance(value,ast.AST):
+                setattr(node,field,restore(value,scope))
+        return node
+    return restore(copy.deepcopy(tree),'module')
+
+
 def normalized(tree):
+    picon_ledger=ROOT/'design/channel-picon-source/logic.json'
+    if picon_ledger.exists():
+        tree=strip_reviewed_scoped(tree,json.loads(picon_ledger.read_text()))
     selector_ledger=ROOT/'design/selector-presentation/logic.json'
     if selector_ledger.exists():
         tree=strip_reviewed_batch(tree,json.loads(selector_ledger.read_text()))
@@ -625,3 +651,4 @@ def apply():
 
 
 if __name__=='__main__':apply()
+
