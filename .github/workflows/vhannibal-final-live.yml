@@ -1,0 +1,61 @@
+name: Complete Vhannibal production catalogue
+on:
+  push:
+    branches: [factory/vhannibal-live-final-20261105]
+    paths:
+      - tools/vhannibal-final-live.py
+      - tools/vhannibal-final-commit.py
+      - reports/vhannibal-final-live-input/**
+      - .github/workflows/vhannibal-final-live.yml
+permissions:
+  contents: write
+concurrency:
+  group: warder-vhannibal-final-live
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/vhannibal-final-live.py
+            /tools/vhannibal-final-commit.py
+            /reports/vhannibal-final-live-input/
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==13.0.0
+      - name: Verify and unpack pinned terminal plans
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,tarfile,io
+          b=Path('reports/vhannibal-final-live-input');m=json.load(open(b/'input-manifest.json'));raw=b''
+          for part in m['parts']:
+              v=(b/part['filename']).read_bytes();assert len(v)==part['bytes'] and hashlib.sha256(v).hexdigest()==part['sha256'];raw+=v
+          assert len(raw)==m['bytes'] and hashlib.sha256(raw).hexdigest()==m['sha256']
+          with tarfile.open(fileobj=io.BytesIO(raw),mode='r:gz') as t:
+              assert {x.name for x in t.getmembers()}==set(m['members'])
+              for entry in t.getmembers():
+                  assert entry.isfile() and not entry.name.startswith('/') and '..' not in Path(entry.name).parts
+                  v=t.extractfile(entry).read();assert hashlib.sha256(v).hexdigest()==m['members'][entry.name]
+                  p=Path('.completion-input')/entry.name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(v)
+          PY
+      - name: Reproduce catalogue and verify all original bytes and references
+        run: python -u tools/vhannibal-final-live.py --root . --inputs .completion-input --cache .completion-cache
+      - name: Publish verified Git objects and catalogue atomically
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          python -u tools/vhannibal-final-commit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vhannibal-final-live-result
+          path: .completion-input/publish-result.json
