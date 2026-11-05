@@ -18,6 +18,11 @@ LAYOUTS=style.extract(CURRENT)
 
 
 class SetupStyleTests(unittest.TestCase):
+    def test_modified_channel_picon_hook_is_not_silently_approved(self):
+        changed=CURRENT.replace('lambda: config.plugins.setupGlass17.par39.value,','lambda: "/tmp",',1)
+        self.assertNotEqual(changed,CURRENT)
+        self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
+
     def test_openpli_graph_hook_changes_are_not_silently_approved(self):
         changed=CURRENT.replace('WarderProgramInfo, _warderUiText, report_error=Writelog)', 'None, _warderUiText, report_error=Writelog)',1)
         self.assertNotEqual(changed,CURRENT)
@@ -350,3 +355,4 @@ class SetupStyleTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+

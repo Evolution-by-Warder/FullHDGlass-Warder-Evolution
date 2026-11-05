@@ -48,6 +48,7 @@ jobs:
           python tools/test-openpli-crash-regressions.py --upstream upstream/enigma2/lib/python -q
           python tools/test-openpli-compat.py --upstream upstream/enigma2/lib/python --report /tmp/openpli-bindings.json -q
           python tools/test-native-reference-scale.py --upstream upstream/enigma2/lib/python -q
+          python tools/test-channel-picons.py --upstream upstream/enigma2/lib/python -q
           python tools/test-list-row-fit.py --upstream upstream/enigma2/lib/python -q
       - uses: actions/upload-artifact@v4
         with:
@@ -74,3 +75,4 @@ jobs:
           python tools/test-runtime-safety.py
           python tools/test-wqhd-plugins.py -q
           python tools/test-config-font-compat.py -q
+
