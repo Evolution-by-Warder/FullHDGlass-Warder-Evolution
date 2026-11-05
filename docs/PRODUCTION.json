@@ -2,32 +2,32 @@
   "schema": 1,
   "product": "FullHDGlass",
   "status": "production-update-active",
-  "approved_on": "2026-11-04",
-  "approval": "Owner requested full support for 34.5W and 50E in both clients and three Warder backgrounds for every satellite and provider.",
+  "approved_on": "2026-11-05",
+  "approval": "Owner supplied receiver screenshots and requested correct orbital ordering in FullHDGlass and original position logos in PiconHub.",
   "source_branch": "main",
-  "source_commit": "0ae9b2a4197bdca4daac9cc38ed48688d86cc43e",
+  "source_commit": "c6761a5ce610b430d23e9ea340f9d62ad4fce12b",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.66",
-    "tag": "v1.0.66",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.66/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk",
-    "sha256": "6e207f7440331fa2fd1fac219cdd691377596bf4ee46bd15e0922f0fd5a1d7c9",
-    "bytes": 17252846,
-    "notes": "Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "version": "1.0.67",
+    "tag": "v1.0.67",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk",
+    "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
+    "bytes": 17253106,
+    "notes": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
     "notes_i18n": {
-      "cs": "Podpora 34,5°W a 50°E ve všech třech rozměrech a pozadích Transparent, White a Black. Kontrola úplnosti pozadí satelitů i operátorů; uložené profily zůstávají zachované. Po aktualizaci restartujte GUI.",
-      "de": "Unterstützung für 34,5°W und 50°E in allen drei Größen und Hintergründen Transparent, White und Black. Vollständige Hintergrundprüfung für Satelliten und Anbieter; gespeicherte Profile bleiben erhalten. Nach dem Update die GUI neu starten.",
-      "pl": "Obsługa 34,5°W i 50°E we wszystkich trzech rozmiarach i stylach Transparent, White i Black. Kontrola kompletności teł dla satelitów i operatorów; zapisane profile pozostają zachowane. Po aktualizacji uruchom ponownie GUI.",
-      "hu": "A 34,5°W és 50°E támogatása mindhárom méretben és Transparent, White, Black háttérrel. A műholdak és szolgáltatók háttereinek teljességellenőrzése; a mentett profilok megmaradnak. Frissítés után indítsd újra a GUI-t.",
-      "ru": "Поддержка 34,5°W и 50°E во всех трех размерах и стилях Transparent, White и Black. Проверка полноты фонов спутников и операторов; сохраненные профили остаются. После обновления перезапустите GUI.",
-      "fr": "Prise en charge de 34,5°W et 50°E dans les trois tailles et styles Transparent, White et Black. Vérification des fonds pour les satellites et fournisseurs ; profils conservés. Redémarrez l’interface après la mise à jour.",
-      "it": "Supporto di 34,5°W e 50°E in tutte e tre le dimensioni e negli stili Transparent, White e Black. Verifica degli sfondi per satelliti e operatori; profili salvati conservati. Riavviare la GUI dopo l’aggiornamento.",
-      "es": "Compatibilidad con 34,5°W y 50°E en los tres tamaños y estilos Transparent, White y Black. Verificación de fondos para satélites y proveedores; perfiles guardados conservados. Reinicie la interfaz tras actualizar.",
-      "sk": "Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.",
-      "en": "Support for 34.5°W and 50°E in all three sizes and Transparent, White and Black backgrounds. Complete background validation for satellites and providers; saved profiles are preserved. Restart the GUI after updating."
+      "sk": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+      "en": "Sorts 34.5°W and 50°E by orbital position in the selectors. Saved selections, original row indices and all three backgrounds are preserved. Restart the GUI after updating.",
+      "cs": "Pozice 34,5°W a 50°E jsou ve výběrech seřazeny podle orbitální pozice. Uložené výběry, původní indexy a tři pozadí zůstávají zachovány. Po aktualizaci restartujte GUI.",
+      "de": "34,5°W und 50°E werden nach Orbitalposition sortiert. Gespeicherte Auswahl, ursprüngliche Zeilenindizes und alle drei Hintergründe bleiben erhalten. Nach dem Update die GUI neu starten.",
+      "pl": "Pozycje 34,5°W i 50°E są sortowane według pozycji orbitalnej. Zapisany wybór, pierwotne indeksy i trzy tła są zachowane. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "A 34,5°W és 50°E elemek pályapozíció szerint rendezve jelennek meg. A mentett kijelölések, az eredeti sorindexek és mindhárom háttér megmarad. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Позиции 34,5°W и 50°E отсортированы по орбитальной позиции. Сохраненные выборы, исходные индексы строк и все три фона сохранены. После обновления перезапустите GUI.",
+      "fr": "Tri de 34,5°W et 50°E selon leur position orbitale. Sélections enregistrées, indices de lignes et trois fonds conservés. Redémarrez l’interface après la mise à jour.",
+      "it": "34,5°W e 50°E ordinati per posizione orbitale. Selezioni salvate, indici originali e tre sfondi conservati. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "34,5°W y 50°E ordenados por posición orbital. Selecciones guardadas, índices originales y tres fondos conservados. Reinicie la interfaz tras actualizar."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.66",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk"
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.67",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk"
   },
   "preview_assets": {
     "help": {
@@ -51,9 +51,10 @@
   },
   "validation": {
     "ci": "passed",
-    "workflow_run": 41908766598,
+    "workflow_run": 41978562968,
     "public_ipk_verified": true,
     "three_background_catalogue_verified": true,
+    "selector_presentation_verified": true,
     "all_profiles_and_other_payload_preserved": true,
     "physical_receiver_tested": false
   },
@@ -141,7 +142,7 @@
     "changelog": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI."
   },
   "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
-  "package_source_commit": "0ae9b2a4197bdca4daac9cc38ed48688d86cc43e",
+  "package_source_commit": "c6761a5ce610b430d23e9ea340f9d62ad4fce12b",
   "accepted_candidate": {
     "version": "1.0.64-test2",
     "sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323"
@@ -157,18 +158,25 @@
   "activation_commit": "a6124cff1efc05a3a7ed6493dd27c7052fc791be",
   "native_test_mirror_commit": "ca91a1ee210c4d7c8d6c13b6e7f6c46541c1a3fe",
   "previous_release": {
-    "version": "1.0.65",
-    "tag": "v1.0.65",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.65/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
-    "sha256": "acd7b63fdf6c8f6a117177003e29c3bb66e06f01d772196982f6a8333be922f8",
-    "bytes": 17252474,
-    "notes": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.",
+    "version": "1.0.66",
+    "tag": "v1.0.66",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.66/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk",
+    "sha256": "6e207f7440331fa2fd1fac219cdd691377596bf4ee46bd15e0922f0fd5a1d7c9",
+    "bytes": 17252846,
+    "notes": "Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.",
     "notes_i18n": {
-      "sk": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI.",
-      "en": "Fixes the FullHDGlass graphical Multi EPG on OpenPLi using the approved OpenATV page, painters and graphics. Aligns fonts, event backgrounds and timeline; bundles original textures and timer icons. Red opens the shared programme detail, green the native timer, yellow date/time and blue EPG search. Common OpenPLi/OpenATV package. Restart the GUI after updating."
+      "cs": "Podpora 34,5°W a 50°E ve všech třech rozměrech a pozadích Transparent, White a Black. Kontrola úplnosti pozadí satelitů i operátorů; uložené profily zůstávají zachované. Po aktualizaci restartujte GUI.",
+      "de": "Unterstützung für 34,5°W und 50°E in allen drei Größen und Hintergründen Transparent, White und Black. Vollständige Hintergrundprüfung für Satelliten und Anbieter; gespeicherte Profile bleiben erhalten. Nach dem Update die GUI neu starten.",
+      "pl": "Obsługa 34,5°W i 50°E we wszystkich trzech rozmiarach i stylach Transparent, White i Black. Kontrola kompletności teł dla satelitów i operatorów; zapisane profile pozostają zachowane. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "A 34,5°W és 50°E támogatása mindhárom méretben és Transparent, White, Black háttérrel. A műholdak és szolgáltatók háttereinek teljességellenőrzése; a mentett profilok megmaradnak. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Поддержка 34,5°W и 50°E во всех трех размерах и стилях Transparent, White и Black. Проверка полноты фонов спутников и операторов; сохраненные профили остаются. После обновления перезапустите GUI.",
+      "fr": "Prise en charge de 34,5°W et 50°E dans les trois tailles et styles Transparent, White et Black. Vérification des fonds pour les satellites et fournisseurs ; profils conservés. Redémarrez l’interface après la mise à jour.",
+      "it": "Supporto di 34,5°W e 50°E in tutte e tre le dimensioni e negli stili Transparent, White e Black. Verifica degli sfondi per satelliti e operatori; profili salvati conservati. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "Compatibilidad con 34,5°W y 50°E en los tres tamaños y estilos Transparent, White y Black. Verificación de fondos para satélites y proveedores; perfiles guardados conservados. Reinicie la interfaz tras actualizar.",
+      "sk": "Podpora 34,5°W a 50°E vo všetkých troch rozmeroch a pozadiach Transparent, White a Black. Kontrola kompletných pozadí satelitov aj providerov; uložené profily zostávajú zachované. Po aktualizácii reštartujte GUI.",
+      "en": "Support for 34.5°W and 50°E in all three sizes and Transparent, White and Black backgrounds. Complete background validation for satellites and providers; saved profiles are preserved. Restart the GUI after updating."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.65",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.65_all.ipk",
-    "changelog": "Opravené grafické Multi EPG FullHDGlass pre OpenPLi so schváleným rozložením, vykresľovaním a grafikou z OpenATV. Zjednotené fonty, pozadia buniek a časová os; priamo pribalené pôvodné grafické súbory a ikony časovačov. Červené tlačidlo otvára spoločný detail programu, zelené časovač, žlté dátum a čas a modré vyhľadávanie v EPG. Spoločný balík pre OpenPLi a OpenATV. Po aktualizácii reštartujte GUI."
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.66",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.66_all.ipk"
   }
 }

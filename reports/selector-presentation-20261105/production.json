@@ -1,0 +1,45 @@
+{
+  "status": "PRODUCTION_VERIFIED",
+  "product": "FullHDGlass",
+  "version": "1.0.67",
+  "release": {
+    "version": "1.0.67",
+    "tag": "v1.0.67",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk",
+    "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
+    "bytes": 17253106,
+    "notes": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "notes_i18n": {
+      "sk": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+      "en": "Sorts 34.5°W and 50°E by orbital position in the selectors. Saved selections, original row indices and all three backgrounds are preserved. Restart the GUI after updating.",
+      "cs": "Pozice 34,5°W a 50°E jsou ve výběrech seřazeny podle orbitální pozice. Uložené výběry, původní indexy a tři pozadí zůstávají zachovány. Po aktualizaci restartujte GUI.",
+      "de": "34,5°W und 50°E werden nach Orbitalposition sortiert. Gespeicherte Auswahl, ursprüngliche Zeilenindizes und alle drei Hintergründe bleiben erhalten. Nach dem Update die GUI neu starten.",
+      "pl": "Pozycje 34,5°W i 50°E są sortowane według pozycji orbitalnej. Zapisany wybór, pierwotne indeksy i trzy tła są zachowane. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "A 34,5°W és 50°E elemek pályapozíció szerint rendezve jelennek meg. A mentett kijelölések, az eredeti sorindexek és mindhárom háttér megmarad. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Позиции 34,5°W и 50°E отсортированы по орбитальной позиции. Сохраненные выборы, исходные индексы строк и все три фона сохранены. После обновления перезапустите GUI.",
+      "fr": "Tri de 34,5°W et 50°E selon leur position orbitale. Sélections enregistrées, indices de lignes et trois fonds conservés. Redémarrez l’interface après la mise à jour.",
+      "it": "34,5°W e 50°E ordinati per posizione orbitale. Selezioni salvate, indici originali e tre sfondi conservati. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "34,5°W y 50°E ordenados por posición orbital. Selecciones guardadas, índices originales y tres fondos conservados. Reinicie la interfaz tras actualizar."
+    },
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.67",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk"
+  },
+  "source_commit": "c6761a5ce610b430d23e9ea340f9d62ad4fce12b",
+  "source_workflow": 41978562968,
+  "positions": [
+    "34.5w",
+    "50.0e"
+  ],
+  "styles": [
+    "transparent",
+    "white",
+    "black"
+  ],
+  "resolutions": [
+    "50x30",
+    "220x132",
+    "400x240"
+  ],
+  "coverage": "Every satellite and provider resolution has all three backgrounds",
+  "physical_receiver_tested": false
+}
