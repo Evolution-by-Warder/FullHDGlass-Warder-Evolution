@@ -1,0 +1,63 @@
+name: Reuse canonical CANAL SK CZ picons
+on:
+  push:
+    branches: [picons/canal-reuse-20261105]
+    paths:
+      - tools/finish-canal-reuse-20261105.py
+      - tools/checkpoint-canal-reuse-20261105.py
+      - reports/canal-reuse-20261105/reuse-map.json
+      - .github/workflows/reuse-canal-20261105.yml
+permissions:
+  contents: write
+concurrency:
+  group: warder-canal-reuse-20261105
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/finish-canal-reuse-20261105.py
+            /tools/checkpoint-canal-reuse-20261105.py
+            /reports/canal-reuse-20261105/
+            /assets/warder/downloads/picons/channels/manifest.json
+            /assets/warder/downloads/picons/channels/SHA256SUMS
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Configure archive staging commits
+        run: |
+          git config user.name 'Warder picon automation'
+          git config user.email 'warder-picons@users.noreply.github.com'
+      - name: Reuse exact PNG bytes and verify every archive member
+        run: python -u tools/finish-canal-reuse-20261105.py
+      - name: Validate production catalogue using the receiver engine
+        run: |
+          python - <<'PY'
+          import importlib.util,json
+          path='source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py'
+          spec=importlib.util.spec_from_file_location('sync',path);sync=importlib.util.module_from_spec(spec);spec.loader.exec_module(sync)
+          m=json.load(open('assets/warder/downloads/picons/channels/manifest.json'))
+          errors=sync.validate_publication_manifest(m,'production')
+          assert not errors,errors
+          PY
+      - name: Publish staging branch for review
+        env:
+          FINAL_CANAL_CHECKPOINT: '1'
+        run: |
+          python tools/checkpoint-canal-reuse-20261105.py
+          git add --sparse assets/warder/downloads/picons/channels/manifest.json assets/warder/downloads/picons/channels/SHA256SUMS reports/canal-reuse-20261105/verification.json
+          git diff --cached --check
+          git commit -m 'Reuse canonical CANAL artwork across verified positions and providers'
+          git push origin HEAD:refs/heads/picons/canal-reuse-20261105
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canal-reuse-verification
+          path: reports/canal-reuse-20261105/verification.json
