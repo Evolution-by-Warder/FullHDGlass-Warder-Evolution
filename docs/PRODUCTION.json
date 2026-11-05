@@ -56,7 +56,8 @@
     "channel_picon_lookup_verified": true,
     "channel_picon_default_system_verified": true,
     "all_other_payload_bytes_preserved": true,
-    "physical_receiver_tested": false
+    "physical_receiver_tested": false,
+    "verified_source_workflow_run": 42067107460
   },
   "accepted_spectrum": {
     "baseline": "1.0.40-test2",
@@ -84,7 +85,7 @@
   "satellite_automation_modified": false,
   "lyrics_published": false,
   "peer_production": {
-    "fullhdglass": "1.0.68",
+    "fullhdglass": "1.0.69",
     "gsu": "13.41-r4",
     "piconhub": "0.1.40"
   },
@@ -155,8 +156,8 @@
     "web_copy_archived": true,
     "separate_website_publication_performed": false
   },
-  "activation_commit": "3b64e96252695edb0e7e12d35af024caf5f1305b",
-  "native_test_mirror_commit": "f3c8eac56254c54a907066a1b89cf040295c4230",
+  "activation_commit": "43e899fd5ba584c18f1e1357c1333ecc24f80fb6",
+  "native_test_mirror_commit": "cb5bc6bc1f0d41e20c254cc3f1c4fc131537b4e6",
   "previous_release": {
     "version": "1.0.68",
     "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
@@ -189,5 +190,6 @@
     "specific_receiver_not_identified": true,
     "all_three_reported_receivers_tested": false,
     "installed_version_independently_verified": false
-  }
+  },
+  "publication_tool_commit": "ec93c488c90b797694eb0b51ac3a3c0b27d1a1dd"
 }

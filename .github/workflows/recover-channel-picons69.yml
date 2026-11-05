@@ -1,0 +1,50 @@
+name: Complete verified FullHDGlass 1.0.69 publication
+on:
+  push:
+    branches: [release/channel-picons-1.0.69-recovery-20261105]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: fullhdglass-channel-picons-1.0.69
+  cancel-in-progress: false
+jobs:
+  publish-verified:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools
+            docs
+      - uses: actions/checkout@v4
+        with:
+          repository: Evolution-by-Warder/PiconHub-Warder-Evolution
+          ref: 22fee2af336b0a16508fa01e71568315b0799427
+          path: .piconhub-source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /plugin/src/
+            /plugin/tools/publish_plugin_release.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - uses: actions/download-artifact@v4
+        with:
+          name: fullhdglass-1.0.69-verified
+          run-id: 42067107460
+          github-token: ${{ github.token }}
+          path: .release-artifacts
+      - name: Verify source gates and publish the exact tested IPK
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p packages reports/channel-picons-1.0.69
+          find .release-artifacts -name 'enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk*' -exec cp '{}' packages/ \;
+          find .release-artifacts -name ipk-verification.json -exec cp '{}' reports/channel-picons-1.0.69/ \;
+          python tools/publish-channel-picons-release.py --verified-source cdf8172b59e116b2c2ecbbe1cdab06c8ce69d574 --verified-run 42067107460
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fullhdglass-1.0.69-production
+          path: reports/channel-picons-1.0.69/production.json

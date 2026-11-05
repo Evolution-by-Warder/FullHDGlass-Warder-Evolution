@@ -1,0 +1,32 @@
+{
+  "status": "PRODUCTION_VERIFIED",
+  "release": {
+    "version": "1.0.69",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk",
+    "sha256": "ed6ce655b3506606c9f424b5b55854453dd39bce7aac2572691c4318c1c07f4e",
+    "changelog": "Nová voľba Zdroj piconov v zozname staníc vo VÝBER KANÁLOV, hneď pod Typ. Predvolené Systémové nastavenie obnovuje pôvodné vyhľadávanie spred 1.0.68. Preferovať 50×30 je voliteľné a zachováva náhradu z picon. Po aktualizácii reštartujte GUI.",
+    "tag": "v1.0.69",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.69/enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk",
+    "bytes": 17255968,
+    "notes_i18n": {
+      "sk": "Nová voľba Zdroj piconov v zozname staníc vo VÝBER KANÁLOV, hneď pod Typ. Predvolené Systémové nastavenie obnovuje pôvodné vyhľadávanie spred 1.0.68. Preferovať 50×30 je voliteľné a zachováva náhradu z picon. Po aktualizácii reštartujte GUI.",
+      "cs": "Nová volba Zdroj piconů v seznamu stanic ve VÝBĚRU KANÁLŮ, hned pod Typ. Výchozí Systémové nastavení obnovuje původní vyhledávání před 1.0.68. Preferovat 50×30 je volitelné a zachovává náhradu z picon. Po aktualizaci restartujte GUI.",
+      "en": "Adds Channel-list picon source below Type in Channel Selection. System setting restores the original lookup by default. Prefer 50x30 is explicit opt-in with shared picon fallback. Restart the GUI after updating.",
+      "de": "Neue Picon-Quelle der Senderliste unter Typ. Die Systemeinstellung stellt standardmäßig die ursprüngliche Suche wieder her. 50×30 bevorzugen ist optional, mit Ersatz aus picon. Nach dem Update die GUI neu starten.",
+      "pl": "Nowe źródło piconów listy kanałów pod pozycją Typ. Domyślne ustawienie systemowe przywraca pierwotne wyszukiwanie. Preferuj 50×30 jest opcjonalne, z zastępowaniem z picon. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "Új piconforrás a csatornalista Típus sora alatt. Alapértelmezésben a rendszer eredeti keresése érvényes. Az 50×30 mód külön választható, picon tartalékkal. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Новый источник пиконов списка каналов под пунктом Тип. По умолчанию восстановлен исходный системный поиск. Режим 50×30 включается отдельно, с заменой из picon. После обновления перезапустите GUI.",
+      "fr": "Nouvelle source de picons sous Type dans la sélection des chaînes. Le réglage système rétablit par défaut la recherche d’origine. Préférer 50×30 est facultatif, avec remplacement depuis picon. Redémarrez l’interface après la mise à jour.",
+      "it": "Nuova origine picon sotto Tipo nell’elenco canali. L’impostazione di sistema ripristina la ricerca originale predefinita. Preferisci 50×30 è opzionale, con recupero da picon. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "Nuevo origen de picons bajo Tipo en la lista de canales. El ajuste del sistema restaura por defecto la búsqueda original. Preferir 50×30 es opcional, con sustitución desde picon. Reinicie la interfaz tras actualizar."
+    },
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.69"
+  },
+  "source_commit": "cdf8172b59e116b2c2ecbbe1cdab06c8ce69d574",
+  "publication_tool_commit": "ec93c488c90b797694eb0b51ac3a3c0b27d1a1dd",
+  "verified_source_workflow_run": 42067107460,
+  "main_activation_commit": "43e899fd5ba584c18f1e1357c1333ecc24f80fb6",
+  "compatibility_activation_commit": "cb5bc6bc1f0d41e20c254cc3f1c4fc131537b4e6",
+  "workflow_run": 42068718755,
+  "physical_receiver_tested": false
+}
