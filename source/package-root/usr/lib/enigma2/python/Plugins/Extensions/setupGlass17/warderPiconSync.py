@@ -1023,6 +1023,25 @@ def task_binding_for_package_selector(package_selector):
     return {"canonical_position": position_token(position).upper(), "package_selector": selector}
 
 
+def task_satlist_display_order(rows):
+    """Sort presentation only; retain SATLIST indices and stored selector identities."""
+    def key(index):
+        row = rows[index]
+        binding = task_binding_for_display_label(row[0]) or {}
+        if binding.get("package_selector") == "DVB-T-SK-CZ":
+            return (0, 0, index)
+        if not row[1]:
+            return (1, 0, index)
+        try:
+            orbital = int(row[1], 16)
+            if not 0 <= orbital <= 3600:
+                raise ValueError("Not a satellite orbital namespace")
+            return (2, orbital - 3600 if orbital > 1800 else orbital, index)
+        except (ValueError, TypeError):
+            return (3, 0, index)
+    return sorted(range(len(rows)), key=key)
+
+
 def normalize_position_bindings(bindings):
     """Validate task bindings without deriving identity from display text."""
     result = []

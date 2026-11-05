@@ -1,0 +1,21 @@
+{
+  "status": "VERIFIED_SOURCE_DELTA_PACKAGE",
+  "version": "1.0.67",
+  "baseline_sha256": "6e207f7440331fa2fd1fac219cdd691377596bf4ee46bd15e0922f0fd5a1d7c9",
+  "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
+  "bytes": 17253106,
+  "changed_payload_files": [
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txt",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/history.txtSk",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/txt.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderDialogSkins.py",
+    "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPiconSync.py"
+  ],
+  "unchanged_payload_files_verified": 1538,
+  "unchanged_control_files_verified": 5,
+  "all_radio_epg_artwork_and_other_payload_preserved": true,
+  "installed_identity": "enigma2-plugin-skins-fullhdglass-warder-evolution",
+  "physical_receiver_tested": false
+}
