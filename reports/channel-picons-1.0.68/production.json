@@ -54,5 +54,16 @@
     }
   ],
   "public_asset_metadata_verified": true,
-  "verified_release_workflow": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42037878790"
+  "verified_release_workflow": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42037878790",
+  "receiver_confirmation": {
+    "received_on": "2026-11-05",
+    "source": "Reporting user's reply relayed by the project owner",
+    "status": "requested_behavior_confirmed",
+    "statement": "ano super je to ono přesně tak to bylo",
+    "release_context": "1.0.68",
+    "image_previously_reported": "OpenATV 8.1",
+    "specific_receiver_not_identified": true,
+    "all_three_reported_receivers_tested": false,
+    "installed_version_independently_verified": false
+  }
 }

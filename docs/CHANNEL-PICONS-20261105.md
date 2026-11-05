@@ -44,5 +44,8 @@ an altered hook must still fail the frozen controller fingerprint check.
 The owner authorized normal FullHDGlass 1.0.68 publication on 5 November 2026
 so the reported behavior can be checked on a receiver. The immutable package
 and both installed update channels are verified by the release workflow.
-Receiver feedback on OpenATV 8.1 remains pending; source checks do not establish
-physical rendering or USB timing performance.
+On 5 November 2026 the reporting user confirmed that the restored behavior
+matches the original request: “ano super je to ono přesně tak to bylo”.
+Their earlier report identified OpenATV 8.1. The confirmation did not identify
+the specific receiver or establish testing of all three reported models.
+The publication-time host-test flag remains a historical record.

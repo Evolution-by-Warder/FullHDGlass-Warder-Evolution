@@ -78,7 +78,7 @@
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "Owner authorized normal publication for receiver feedback; physical confirmation of the picon change is pending.",
+  "receiver_validation": "The reporting user confirmed that the restored behavior matches the original request on 2026-11-05. The specific receiver was not identified; testing all reported models is not claimed.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
@@ -177,5 +177,16 @@
     },
     "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.67",
     "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk"
+  },
+  "receiver_confirmation": {
+    "received_on": "2026-11-05",
+    "source": "Reporting user's reply relayed by the project owner",
+    "status": "requested_behavior_confirmed",
+    "statement": "ano super je to ono přesně tak to bylo",
+    "release_context": "1.0.68",
+    "image_previously_reported": "OpenATV 8.1",
+    "specific_receiver_not_identified": true,
+    "all_three_reported_receivers_tested": false,
+    "installed_version_independently_verified": false
   }
 }
