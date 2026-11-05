@@ -1,0 +1,212 @@
+[
+  {
+    "reference": "1_0_19_12_1F4_3E8_2120000_0_0_0",
+    "name": "Zagros 24",
+    "provider": "MENASAT",
+    "provider_slug": "menasat",
+    "position": "53.0e",
+    "raw_service_line": "0012:02120000:01f4:03e8:25:0",
+    "raw_attributes": "p:MENASAT",
+    "transponder": [
+      "s 12594000:27500000:1:2:530:2:0"
+    ],
+    "bouquets": [
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe140.tv"
+    ],
+    "selector": "530E",
+    "native_existing": {},
+    "source_candidates": [
+      {
+        "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_16_12_1F4_3E8_2120000_0_0_0.png",
+        "source_reference": "1_0_16_12_1F4_3E8_2120000_0_0_0",
+        "current_reference": "1_0_19_12_1F4_3E8_2120000_0_0_0",
+        "disposition": "BOUND_UNIQUE_CURRENT_SERVICE_TYPE",
+        "resolution": "HOLD_KNOWN_BLOCKED_REFERENCE"
+      }
+    ],
+    "hold_reason": "HOLD_KNOWN_BLOCKED_REFERENCE",
+    "asset_key": "zagros",
+    "operation": "INDEPENDENT_IDENTITY_RESOLVED_CANONICAL_REUSE"
+  },
+  {
+    "reference": "1_0_19_25A_C418_16E_A00000_0_0_0",
+    "name": "Kanal1 HD",
+    "provider": "Antik",
+    "provider_slug": "antik",
+    "position": "16.0e",
+    "raw_service_line": "025a:00a00000:c418:016e:25:0",
+    "raw_attributes": "p:Antik,c:050001",
+    "transponder": [
+      "s 11471000:30000000:1:4:160:2:0:1:2:0:2"
+    ],
+    "bouquets": [
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe50.tv",
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe51.tv"
+    ],
+    "selector": "160E",
+    "native_existing": {},
+    "source_candidates": [
+      {
+        "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_19_25A_C418_16E_A00000_0_0_0.png",
+        "source_reference": "1_0_19_25A_C418_16E_A00000_0_0_0",
+        "current_reference": "1_0_19_25A_C418_16E_A00000_0_0_0",
+        "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+        "resolution": "HOLD_CONFLICTING_MASTER_TRIPLETS"
+      }
+    ],
+    "hold_reason": "HOLD_CONFLICTING_MASTER_TRIPLETS",
+    "asset_key": "kanal1",
+    "operation": "INDEPENDENT_IDENTITY_RESOLVED_CANONICAL_REUSE"
+  },
+  {
+    "reference": "1_0_1_C_1CEA_1_1040000_0_0_0",
+    "name": "OMAN TV",
+    "provider": "",
+    "provider_slug": "unassigned",
+    "position": "26.0e",
+    "raw_service_line": "000c:01040000:1cea:0001:1:0",
+    "raw_attributes": "p:,c:050001",
+    "transponder": [
+      "s 11230000:27500000:1:3:260:2:0:1:2:0:2"
+    ],
+    "bouquets": [
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe113.tv"
+    ],
+    "selector": "260E",
+    "native_existing": {},
+    "source_candidates": [
+      {
+        "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_C_1CEA_1_1040000_0_0_0.png",
+        "source_reference": "1_0_1_C_1CEA_1_1040000_0_0_0",
+        "current_reference": "1_0_1_C_1CEA_1_1040000_0_0_0",
+        "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+        "resolution": "SOURCE_GRAPHIC_PROCESS"
+      }
+    ],
+    "choice": "SOURCE_GRAPHIC_PROCESS",
+    "source": {
+      "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_C_1CEA_1_1040000_0_0_0.png",
+      "source_reference": "1_0_1_C_1CEA_1_1040000_0_0_0",
+      "current_reference": "1_0_1_C_1CEA_1_1040000_0_0_0",
+      "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+      "resolution": "SOURCE_GRAPHIC_PROCESS"
+    },
+    "asset_id": "src-2359593d6f967cece3dc",
+    "hold_reason": "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: UBC logo does not establish an Oman TV identity",
+    "asset_key": "oman",
+    "operation": "INDEPENDENT_IDENTITY_RESOLVED_CANONICAL_REUSE"
+  },
+  {
+    "reference": "1_0_1_3F_2_0_D7AAA7_0_0_0",
+    "name": "CHC-F",
+    "provider": "",
+    "provider_slug": "unassigned",
+    "position": "21.5e",
+    "raw_service_line": "003f:00d7aaa7:0002:0000:1:0",
+    "raw_attributes": "p:",
+    "transponder": [
+      "s 10919000:30000000:1:1:215:2:0:1:1:0:2"
+    ],
+    "bouquets": [
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe103.tv"
+    ],
+    "selector": "216E",
+    "native_existing": {},
+    "source_candidates": [
+      {
+        "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_3F_2_0_D7AAA7_0_0_0.png",
+        "source_reference": "1_0_1_3F_2_0_D7AAA7_0_0_0",
+        "current_reference": "1_0_1_3F_2_0_D7AAA7_0_0_0",
+        "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+        "resolution": "SOURCE_GRAPHIC_PROCESS"
+      }
+    ],
+    "choice": "SOURCE_GRAPHIC_PROCESS",
+    "source": {
+      "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_3F_2_0_D7AAA7_0_0_0.png",
+      "source_reference": "1_0_1_3F_2_0_D7AAA7_0_0_0",
+      "current_reference": "1_0_1_3F_2_0_D7AAA7_0_0_0",
+      "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+      "resolution": "SOURCE_GRAPHIC_PROCESS"
+    },
+    "asset_id": "src-b5bb74c9540d49bf5838",
+    "hold_reason": "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: b HD logo does not establish a CHC-F identity",
+    "asset_key": "chc",
+    "operation": "INDEPENDENT_IDENTITY_RESOLVED_LOGO_CORRECTION"
+  },
+  {
+    "reference": "1_0_1_11A0_2D_800_DCA0000_0_0_0",
+    "name": "Bloomberg Originals",
+    "provider": "",
+    "provider_slug": "unassigned",
+    "position": "7.0w",
+    "raw_service_line": "11a0:0dca0000:002d:0800:1:0",
+    "raw_attributes": "p:",
+    "transponder": [
+      "s 12073000:30000000:0:3:-70:2:0:1:2:2:2"
+    ],
+    "bouquets": [
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe86.tv"
+    ],
+    "selector": "70W",
+    "native_existing": {},
+    "source_candidates": [
+      {
+        "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_11A0_2D_800_DCA0000_0_0_0.png",
+        "source_reference": "1_0_1_11A0_2D_800_DCA0000_0_0_0",
+        "current_reference": "1_0_1_11A0_2D_800_DCA0000_0_0_0",
+        "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+        "resolution": "SOURCE_GRAPHIC_PROCESS"
+      }
+    ],
+    "choice": "SOURCE_GRAPHIC_PROCESS",
+    "source": {
+      "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_11A0_2D_800_DCA0000_0_0_0.png",
+      "source_reference": "1_0_1_11A0_2D_800_DCA0000_0_0_0",
+      "current_reference": "1_0_1_11A0_2D_800_DCA0000_0_0_0",
+      "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+      "resolution": "SOURCE_GRAPHIC_PROCESS"
+    },
+    "asset_id": "src-5613583740842130c131",
+    "hold_reason": "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Source logo explicitly says TV Bulgaria, a different regional programme",
+    "asset_key": "originals",
+    "operation": "INDEPENDENT_IDENTITY_RESOLVED_LOGO_CORRECTION"
+  },
+  {
+    "reference": "1_0_1_38_2_0_D7AAA7_0_0_0",
+    "name": "CHC-HD",
+    "provider": "",
+    "provider_slug": "unassigned",
+    "position": "21.5e",
+    "raw_service_line": "0038:00d7aaa7:0002:0000:1:0",
+    "raw_attributes": "p:,c:050007",
+    "transponder": [
+      "s 10919000:30000000:1:1:215:2:0:1:1:0:2"
+    ],
+    "bouquets": [
+      "Vhannibal Motor 03 nov 2026/userbouquet.dbe103.tv"
+    ],
+    "selector": "216E",
+    "native_existing": {},
+    "source_candidates": [
+      {
+        "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_38_2_0_D7AAA7_0_0_0.png",
+        "source_reference": "1_0_1_38_2_0_D7AAA7_0_0_0",
+        "current_reference": "1_0_1_38_2_0_D7AAA7_0_0_0",
+        "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+        "resolution": "SOURCE_GRAPHIC_PROCESS"
+      }
+    ],
+    "choice": "SOURCE_GRAPHIC_PROCESS",
+    "source": {
+      "source_member": "PICON Vhannibal Motor 03 nov 2026/1_0_1_38_2_0_D7AAA7_0_0_0.png",
+      "source_reference": "1_0_1_38_2_0_D7AAA7_0_0_0",
+      "current_reference": "1_0_1_38_2_0_D7AAA7_0_0_0",
+      "disposition": "BOUND_EXACT_CURRENT_REFERENCE",
+      "resolution": "SOURCE_GRAPHIC_PROCESS"
+    },
+    "asset_id": "src-c78da900b11b653ed9e5",
+    "asset_key": "chc",
+    "operation": "INDEPENDENT_IDENTITY_RESOLVED_LOGO_CORRECTION"
+  }
+]
