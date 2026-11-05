@@ -1,3 +1,7 @@
+FullHDGlass 1.0.69 — 05.11.2026
+New channel-list picon source setting: System setting is the default and restores the original image lookup.
+Prefer 50x30 remains an explicit option, with shared fallback. Save and restart GUI.
+
 FullHDGlass 1.0.68 — 05.11.2026
 Channel rows prefer picon_50x30 and fall back per service to picon.
 Large selected previews retain their own set and support shared fallback.
@@ -233,3 +237,4 @@ Owner-approved production release based on TEST270. Clean production version in 
 FullHDGlass continuation by Warder.
 Original FullHDGlass authors and contributions remain credited in the project.
 Picon resources include work by s3n0 and Chocholousek.
+

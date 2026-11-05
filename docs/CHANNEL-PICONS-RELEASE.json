@@ -1,30 +1,36 @@
 {
   "repository": "Evolution-by-Warder/FullHDGlass-Warder-Evolution",
-  "version": "1.0.68",
-  "previous_version": "1.0.67",
-  "release_branch": "release/channel-picons-1.0.68-20261105",
+  "version": "1.0.69",
+  "previous_version": "1.0.68",
+  "release_branch": "release/channel-picons-1.0.69-20261105",
   "compatibility_branch": "warder-modernization-work",
-  "compatibility_head": "094ebcae654dd9ce5472e928eae9f9b6d0a39816",
-  "source_base_tree": "1f3fed5e045fbf0d02c53e46a0fa1e191ed80bc5",
-  "package": "packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+  "compatibility_head": "f3c8eac56254c54a907066a1b89cf040295c4230",
+  "source_base_tree": "4e5225591bd08bb830e2e8a4f9ab951db8d21b8c",
+  "package": "packages/enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk",
   "release_paths": [
     "tools/build-channel-picon-ipk.py",
     "tools/publish-channel-picons-release.py",
     "tools/test-channel-picons.py",
+    "tools/test-channel-picon-settings.py",
+    "tools/style-setup-screens.py",
+    "tools/test-setup-style.py",
+    "design/channel-picon-source/logic.json",
     "docs/CHANNEL-PICONS-RELEASE.json",
-    "docs/CHANNEL-PICONS-20261105.md"
+    "docs/CHANNEL-PICONS-20261105.md",
+    "docs/CHANNEL-PICON-SOURCE-20261105.md"
   ],
   "notes_i18n": {
-    "sk": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
-    "cs": "Obnovené samostatné picony 50×30 v seznamu stanic. Chybějící malé logo se automaticky použije ze společné složky picon; velké náhledy si zachovají vlastní sadu. Používá se nastavená cesta skinu. Po aktualizaci restartujte GUI.",
-    "en": "Restores separate 50x30 channel-list picons with a per-service fallback to the shared picon folder. Large selected previews retain their own artwork. Uses the skin's configured data path. Restart the GUI after updating.",
-    "de": "Separate 50x30-Picons in der Senderliste mit Ersatz aus dem gemeinsamen picon-Ordner. Große Vorschauen behalten ihre eigenen Grafiken. Der konfigurierte Datenpfad wird verwendet. Nach dem Update die GUI neu starten.",
-    "pl": "Osobne picony 50x30 na liście kanałów z zastępowaniem brakujących ikon z folderu picon. Duże podglądy zachowują własne grafiki. Używana jest ustawiona ścieżka danych. Po aktualizacji uruchom ponownie GUI.",
-    "hu": "Külön 50x30 piconok a csatornalistában, hiányzó ikon esetén a közös picon mappa használatával. A nagy előnézetek megtartják saját képeiket. A beállított adatútvonal érvényes. Frissítés után indítsd újra a GUI-t.",
-    "ru": "Отдельные пиконы 50x30 в списке каналов с заменой отсутствующих из общей папки picon. Большие превью сохраняют свои изображения. Используется настроенный путь данных. После обновления перезапустите GUI.",
-    "fr": "Picons 50x30 distincts dans la liste des chaînes, avec remplacement des icônes absentes depuis le dossier picon commun. Les grands aperçus conservent leurs images. Le chemin configuré est utilisé. Redémarrez l’interface après la mise à jour.",
-    "it": "Picon 50x30 separati nell’elenco canali, con recupero delle icone mancanti dalla cartella picon condivisa. Le anteprime grandi conservano le proprie immagini. Viene usato il percorso configurato. Riavviare la GUI dopo l’aggiornamento.",
-    "es": "Picons 50x30 independientes en la lista de canales, con sustitución de los ausentes desde la carpeta picon compartida. Las vistas grandes conservan sus imágenes. Se utiliza la ruta configurada. Reinicie la interfaz tras actualizar."
+    "sk": "Nová voľba Zdroj piconov v zozname staníc vo VÝBER KANÁLOV, hneď pod Typ. Predvolené Systémové nastavenie obnovuje pôvodné vyhľadávanie spred 1.0.68. Preferovať 50×30 je voliteľné a zachováva náhradu z picon. Po aktualizácii reštartujte GUI.",
+    "cs": "Nová volba Zdroj piconů v seznamu stanic ve VÝBĚRU KANÁLŮ, hned pod Typ. Výchozí Systémové nastavení obnovuje původní vyhledávání před 1.0.68. Preferovat 50×30 je volitelné a zachovává náhradu z picon. Po aktualizaci restartujte GUI.",
+    "en": "Adds Channel-list picon source below Type in Channel Selection. System setting restores the original lookup by default. Prefer 50x30 is explicit opt-in with shared picon fallback. Restart the GUI after updating.",
+    "de": "Neue Picon-Quelle der Senderliste unter Typ. Die Systemeinstellung stellt standardmäßig die ursprüngliche Suche wieder her. 50×30 bevorzugen ist optional, mit Ersatz aus picon. Nach dem Update die GUI neu starten.",
+    "pl": "Nowe źródło piconów listy kanałów pod pozycją Typ. Domyślne ustawienie systemowe przywraca pierwotne wyszukiwanie. Preferuj 50×30 jest opcjonalne, z zastępowaniem z picon. Po aktualizacji uruchom ponownie GUI.",
+    "hu": "Új piconforrás a csatornalista Típus sora alatt. Alapértelmezésben a rendszer eredeti keresése érvényes. Az 50×30 mód külön választható, picon tartalékkal. Frissítés után indítsd újra a GUI-t.",
+    "ru": "Новый источник пиконов списка каналов под пунктом Тип. По умолчанию восстановлен исходный системный поиск. Режим 50×30 включается отдельно, с заменой из picon. После обновления перезапустите GUI.",
+    "fr": "Nouvelle source de picons sous Type dans la sélection des chaînes. Le réglage système rétablit par défaut la recherche d’origine. Préférer 50×30 est facultatif, avec remplacement depuis picon. Redémarrez l’interface après la mise à jour.",
+    "it": "Nuova origine picon sotto Tipo nell’elenco canali. L’impostazione di sistema ripristina la ricerca originale predefinita. Preferisci 50×30 è opzionale, con recupero da picon. Riavviare la GUI dopo l’aggiornamento.",
+    "es": "Nuevo origen de picons bajo Tipo en la lista de canales. El ajuste del sistema restaura por defecto la búsqueda original. Preferir 50×30 es opcional, con sustitución desde picon. Reinicie la interfaz tras actualizar."
   },
-  "approval": "Explicit owner request on 2026-11-05 to publish this fix through the updater so the reporting user can update and confirm the requested behavior."
+  "approval": "Explicit owner request on 2026-11-05 to add the channel-list picon selector immediately and restore the pre-1.0.68 native image lookup as the default for existing users."
 }
+

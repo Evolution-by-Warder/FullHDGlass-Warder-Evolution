@@ -27,6 +27,7 @@ class LookupFixture:
         self.addCleanup(self.temp.cleanup)
         self.base = Path(self.temp.name)
         self.active = True
+        self.prefer_mini = True
         self.get_name = Mock(return_value='ČT 1 HD')
         self.native = Mock(return_value='/image/picon.png')
         self.native_renderer = NS(getPiconName=self.native)
@@ -35,7 +36,7 @@ class LookupFixture:
 
     def install(self):
         return picons.install(self.module, lambda:self.active, lambda:str(self.base),
-                              lambda ref:ref, self.get_name, lambda name:name)
+                              lambda ref:ref, self.get_name, lambda name:name, lambda:self.prefer_mini)
 
     def put(self, folder, name=NAME):
         path = self.base/folder/(name+'.png')
@@ -48,6 +49,24 @@ class LookupFixture:
 
 
 class LookupTests(LookupFixture, unittest.TestCase):
+    def test_system_mode_restores_native_lookup_even_with_both_skin_sets(self):
+        self.put('picon_50x30'); self.put('picon'); self.prefer_mini=False
+        self.assertEqual(self.lookup(),'/image/picon.png')
+        self.get_name.assert_not_called()
+
+    def test_missing_mode_callback_defaults_to_original_system_lookup(self):
+        self.put('picon_50x30')
+        module=NS(getPiconName=self.native)
+        picons.install(module,lambda:True,lambda:str(self.base),lambda ref:ref,self.get_name,lambda n:n)
+        self.assertEqual(module.getPiconName(REF),'/image/picon.png')
+
+    def test_mode_changes_are_read_by_existing_callbacks(self):
+        mini=self.put('picon_50x30'); callback=self.module.getPiconName
+        self.prefer_mini=False
+        self.assertEqual(callback(REF),'/image/picon.png')
+        self.prefer_mini=True
+        self.assertEqual(callback(REF),mini)
+
     def test_mini_precedes_shared_set(self):
         mini=self.put('picon_50x30'); self.put('picon')
         self.assertEqual(self.lookup(),mini)
@@ -111,7 +130,7 @@ class LookupTests(LookupFixture, unittest.TestCase):
     def test_alternative_group_resolves_before_lookup(self):
         mini=self.put('picon_50x30')
         self.module=NS(getPiconName=self.native)
-        picons.install(self.module,lambda:True,lambda:str(self.base),lambda ref:REF,self.get_name,lambda n:n)
+        picons.install(self.module,lambda:True,lambda:str(self.base),lambda ref:REF,self.get_name,lambda n:n,lambda:True)
         self.assertEqual(self.module.getPiconName('1:134:1:0:0:0:0:0:0:0:'),mini)
 
     def test_name_based_mini_set_precedes_shared_reference(self):
@@ -129,7 +148,7 @@ class LookupTests(LookupFixture, unittest.TestCase):
 
     def test_unavailable_data_path_keeps_native_lookup(self):
         self.module=NS(getPiconName=self.native)
-        picons.install(self.module,lambda:True,lambda:None,lambda ref:ref,self.get_name,lambda n:n)
+        picons.install(self.module,lambda:True,lambda:None,lambda ref:ref,self.get_name,lambda n:n,lambda:True)
         self.assertEqual(self.module.getPiconName(REF),'/image/picon.png')
 
     def test_disabled_and_reenabled_skin_uses_current_files(self):
@@ -145,7 +164,8 @@ class SelectedPiconTests(LookupFixture, unittest.TestCase):
         owner=next(n for n in tree.body if isinstance(n,ast.ClassDef))
         method=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='findPicon')
         import os
-        scope=dict(os=os,config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base))))))
+        setting=NS(value='mini')
+        scope=dict(os=os,config=NS(plugins=NS(setupGlass17=NS(par39=NS(value=str(self.base)),par231=setting))))
         exec(compile(ast.Module(body=[method],type_ignores=[]),'g17RefTV3.py','exec'),scope)
         shared=self.put('picon'); self.put('picon_50x30')
         for folder in ('picon_400x240','ZZPicon'):
@@ -153,6 +173,11 @@ class SelectedPiconTests(LookupFixture, unittest.TestCase):
             self.assertEqual(scope['findPicon'](widget,NAME),shared)
             own=self.put(folder)
             self.assertEqual(scope['findPicon'](widget,NAME),own)
+            setting.value='system'
+            self.assertEqual(scope['findPicon'](widget,NAME),own)
+            Path(own).unlink()
+            self.assertEqual(scope['findPicon'](widget,NAME),'')
+            setting.value='mini'
 
 
 class WiringTests(unittest.TestCase):
@@ -163,6 +188,7 @@ class WiringTests(unittest.TestCase):
         call=next(n for n in ast.walk(node) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='_installWarderChannelPicons')
         self.assertEqual(ast.unparse(call.args[1]),"lambda: config.skin.primary_skin.value == 'hd_glass17/skin.xml'")
         self.assertEqual(ast.unparse(call.args[2]),'lambda: config.plugins.setupGlass17.par39.value')
+        self.assertEqual(ast.unparse(call.args[6]),"lambda: config.plugins.setupGlass17.par231.value == 'mini'")
 
 
 class NativeHandoffTests(LookupFixture, unittest.TestCase):
@@ -180,6 +206,8 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         callback=content.setGetPiconNameFunc.call_args.args[0]
         self.assertIs(callback,getattr(self.module,name))
         self.assertEqual(callback(REF),mini)
+        self.prefer_mini=False
+        self.assertEqual(callback(REF),'/image/picon.png')
         scope['config'].usage.service_icon_enable.value=False
         exec(compile(ast.Module(body=[binding],type_ignores=[]),'native-ServiceList.py','exec'),scope)
         self.assertIsNone(content.setGetPiconNameFunc.call_args.args[0])
@@ -197,6 +225,10 @@ class NativeHandoffTests(LookupFixture, unittest.TestCase):
         self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),mini)
         Path(mini).unlink()
         self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),shared)
+        self.put('picon_50x30')
+        system=self.put('native-system','original')
+        self.native.return_value=system;self.prefer_mini=False
+        self.assertEqual(scope['buildOptionEntryServicePicon'](None,service),system)
 
 
 if __name__=='__main__':
@@ -205,4 +237,5 @@ if __name__=='__main__':
     args,remaining=parser.parse_known_args()
     UPSTREAM=args.upstream
     unittest.main(argv=[sys.argv[0]]+remaining)
+
 

@@ -7,6 +7,10 @@ from Components.config import config
 
 TEXT = {
     "sk": {
+        "Channel-list picon source": "Zdroj piconov v zozname staníc",
+        "System setting": "Systémové nastavenie",
+        "Prefer 50x30": "Preferovať 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "Systémové nastavenie zachová pôvodné vyhľadávanie piconov podľa image. Preferovať 50×30 použije picon_50x30 a chýbajúce logo doplní z picon. Uložte a reštartujte GUI.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Nastavenie skinu FullHDGlass",
         "Back": "Naspäť",
@@ -17,6 +21,10 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainštalujte 7zip z Ponuky sťahovania a potom spustite vybrané sťahovanie znova."
     },
     "cs": {
+        "Channel-list picon source": "Zdroj piconů v seznamu stanic",
+        "System setting": "Systémové nastavení",
+        "Prefer 50x30": "Preferovat 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "Systémové nastavení zachová původní vyhledávání piconů podle image. Preferovat 50×30 použije picon_50x30 a chybějící logo doplní z picon. Uložte a restartujte GUI.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Nastavení skinu FullHDGlass",
         "Back": "Zpět",
@@ -27,6 +35,10 @@ TEXT = {
         "Install 7zip from the Download menu, then retry the selected download.": "Nainstalujte 7zip z Nabídky stahování a potom spusťte vybrané stahování znovu."
     },
     "de": {
+        "Channel-list picon source": "Picon-Quelle der Senderliste",
+        "System setting": "Systemeinstellung",
+        "Prefer 50x30": "50×30 bevorzugen",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "Die Systemeinstellung erhält die ursprüngliche Picon-Suche des Images. 50×30 bevorzugen nutzt picon_50x30 und ersetzt fehlende Logos aus picon. Speichern und GUI neu starten.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "FullHDGlass-Skin einrichten",
         "Back": "Zurück",
@@ -36,6 +48,10 @@ TEXT = {
         "Confirm": "Bestätigen"
     },
     "hu": {
+        "Channel-list picon source": "Csatornalista piconforrása",
+        "System setting": "Rendszerbeállítás",
+        "Prefer 50x30": "50×30 előnyben",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "A rendszerbeállítás megtartja az image eredeti piconkeresését. Az 50×30 mód a picon_50x30 mappát használja, hiányzó logónál a picon mappát. Ments és indítsd újra a GUI-t.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "FullHDGlass felület beállítása",
         "Back": "Vissza",
@@ -45,6 +61,10 @@ TEXT = {
         "Confirm": "Megerősítés"
     },
     "ru": {
+        "Channel-list picon source": "Источник пиконов списка каналов",
+        "System setting": "Системная настройка",
+        "Prefer 50x30": "Предпочитать 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "Системная настройка сохраняет исходный поиск пиконов образа. Режим 50×30 использует picon_50x30, а для отсутствующих логотипов — picon. Сохраните и перезапустите GUI.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Настройка скина FullHDGlass",
         "Back": "Назад",
@@ -54,6 +74,10 @@ TEXT = {
         "Confirm": "Подтвердить"
     },
     "fr": {
+        "Channel-list picon source": "Source des picons de la liste",
+        "System setting": "Réglage système",
+        "Prefer 50x30": "Préférer 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "Le réglage système conserve la recherche de picons de l’image. Préférer 50×30 utilise picon_50x30, puis picon pour chaque logo absent. Enregistrez et redémarrez l’interface.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Configurer le thème FullHDGlass",
         "Back": "Retour",
@@ -63,6 +87,10 @@ TEXT = {
         "Confirm": "Confirmer"
     },
     "it": {
+        "Channel-list picon source": "Origine picon nell’elenco canali",
+        "System setting": "Impostazione di sistema",
+        "Prefer 50x30": "Preferisci 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "L’impostazione di sistema mantiene la ricerca originale dei picon. Preferisci 50×30 usa picon_50x30, poi picon per ogni logo mancante. Salvare e riavviare la GUI.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Configura il tema FullHDGlass",
         "Back": "Indietro",
@@ -72,6 +100,10 @@ TEXT = {
         "Confirm": "Conferma"
     },
     "es": {
+        "Channel-list picon source": "Origen de picons de la lista",
+        "System setting": "Ajuste del sistema",
+        "Prefer 50x30": "Preferir 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "El ajuste del sistema conserva la búsqueda original de picons. Preferir 50×30 utiliza picon_50x30 y después picon para los logos ausentes. Guarde y reinicie la interfaz.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Configurar el tema FullHDGlass",
         "Back": "Atrás",
@@ -81,6 +113,10 @@ TEXT = {
         "Confirm": "Confirmar"
     },
     "pl": {
+        "Channel-list picon source": "Źródło piconów na liście kanałów",
+        "System setting": "Ustawienie systemowe",
+        "Prefer 50x30": "Preferuj 50×30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "Ustawienie systemowe zachowuje oryginalne wyszukiwanie piconów. Preferuj 50×30 używa picon_50x30, a brakujące ikony pobiera z picon. Zapisz i uruchom ponownie GUI.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution",
         "Configure the FullHDGlass skin": "Ustawienia skórki FullHDGlass",
         "Back": "Wstecz",
@@ -90,6 +126,10 @@ TEXT = {
         "Confirm": "Potwierdź"
     },
     "en": {
+        "Channel-list picon source": "Channel-list picon source",
+        "System setting": "System setting",
+        "Prefer 50x30": "Prefer 50x30",
+        "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.": "System setting keeps the image's original picon lookup. Prefer 50x30 uses picon_50x30, then picon for each missing logo. Save and restart the GUI.",
         "FullHDGlass configuration": "FullHDGlass Warder Evolution"
     }
 }
@@ -156,3 +196,4 @@ for _lang, (_dove, _help, _error) in {
 # On-demand spinner selection status follows the active OSD language.
 for _lang, _values in {'sk': ['Načítavam zoznam spinnerov…', 'Online zoznam je nedostupný. Nainštalované spinnery sú k dispozícii.', 'Sťahujem vybraný spinner…', 'Spinner sa nepodarilo stiahnuť. Skúste znova.'], 'cs': ['Načítám seznam spinnerů…', 'Online seznam je nedostupný. Nainstalované spinnery jsou k dispozici.', 'Stahuji vybraný spinner…', 'Spinner se nepodařilo stáhnout. Zkuste znovu.'], 'de': ['Spinner-Liste wird geladen…', 'Online-Liste nicht verfügbar. Installierte Spinner sind verfügbar.', 'Gewählter Spinner wird geladen…', 'Spinner konnte nicht geladen werden. Erneut versuchen.'], 'en': ['Loading spinner list...', 'Online list unavailable. Installed spinners are available.', 'Downloading selected spinner...', 'Spinner download failed. Try again.'], 'pl': ['Wczytywanie listy animacji…', 'Lista online jest niedostępna. Zainstalowane animacje są dostępne.', 'Pobieranie wybranej animacji…', 'Nie udało się pobrać animacji. Spróbuj ponownie.'], 'hu': ['Animációlista betöltése…', 'Az online lista nem érhető el. A telepített animációk elérhetők.', 'A kiválasztott animáció letöltése…', 'Az animáció letöltése sikertelen. Próbálja újra.'], 'ru': ['Загрузка списка анимаций…', 'Онлайн-список недоступен. Установленные анимации доступны.', 'Загрузка выбранной анимации…', 'Не удалось загрузить анимацию. Повторите попытку.'], 'fr': ['Chargement des animations…', 'Liste en ligne indisponible. Les animations installées restent disponibles.', 'Téléchargement de l’animation choisie…', 'Échec du téléchargement. Réessayez.'], 'it': ['Caricamento delle animazioni…', 'Elenco online non disponibile. Le animazioni installate sono disponibili.', 'Download dell’animazione selezionata…', 'Download non riuscito. Riprova.'], 'es': ['Cargando animaciones…', 'Lista en línea no disponible. Las animaciones instaladas están disponibles.', 'Descargando la animación seleccionada…', 'No se pudo descargar. Inténtalo de nuevo.'], 'pt': ['A carregar animações…', 'Lista online indisponível. As animações instaladas estão disponíveis.', 'A transferir a animação selecionada…', 'Não foi possível transferir. Tente novamente.'], 'nl': ['Animatielijst laden…', 'Onlinelijst niet beschikbaar. Geïnstalleerde animaties zijn beschikbaar.', 'Geselecteerde animatie downloaden…', 'Download mislukt. Probeer opnieuw.'], 'ro': ['Se încarcă animațiile…', 'Lista online nu este disponibilă. Animațiile instalate sunt disponibile.', 'Se descarcă animația aleasă…', 'Descărcarea a eșuat. Încercați din nou.'], 'uk': ['Завантаження списку анімацій…', 'Онлайн-список недоступний. Установлені анімації доступні.', 'Завантаження вибраної анімації…', 'Не вдалося завантажити. Спробуйте ще раз.'], 'lt': ['Įkeliamas animacijų sąrašas…', 'Internetinis sąrašas nepasiekiamas. Įdiegtos animacijos pasiekiamos.', 'Atsisiunčiama pasirinkta animacija…', 'Atsisiųsti nepavyko. Bandykite dar kartą.'], 'et': ['Animatsioonide loendi laadimine…', 'Veebiloend pole saadaval. Paigaldatud animatsioonid on saadaval.', 'Valitud animatsiooni allalaadimine…', 'Allalaadimine ebaõnnestus. Proovige uuesti.'], 'al': ['Duke ngarkuar animacionet…', 'Lista në internet nuk është e disponueshme. Animacionet e instaluara janë të disponueshme.', 'Duke shkarkuar animacionin e zgjedhur…', 'Shkarkimi dështoi. Provo sërish.'], 'tr': ['Animasyon listesi yükleniyor…', 'Çevrimiçi liste kullanılamıyor. Yüklü animasyonlar kullanılabilir.', 'Seçilen animasyon indiriliyor…', 'İndirme başarısız. Yeniden deneyin.'], 'fa': ['در حال بارگیری فهرست پویانمایی\u200cها…', 'فهرست آنلاین در دسترس نیست. پویانمایی\u200cهای نصب\u200cشده در دسترس هستند.', 'در حال دریافت پویانمایی انتخاب\u200cشده…', 'دریافت ناموفق بود. دوباره تلاش کنید.'], 'zh': ['正在加载动画列表…', '在线列表不可用。仍可使用已安装的动画。', '正在下载所选动画…', '下载失败，请重试。']}.items():
     TEXT.setdefault(_lang, {}).update(dict(zip(['Loading spinner list...', 'Online list unavailable. Installed spinners are available.', 'Downloading selected spinner...', 'Spinner download failed. Try again.'], _values)))
+

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply the reviewed picon delta to the exact published 1.0.67 payload."""
+"""Apply the reviewed picon delta to the exact published 1.0.68 payload."""
 import argparse
 import copy
 import gzip
@@ -12,13 +12,12 @@ import tarfile
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '1.0.68'
-BASE_SHA = 'b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3'
-BASE_URL = 'https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk'
+VERSION = '1.0.69'
+BASE_SHA = '28f83dd386dd81e7e4427bbf943ea2bccbffd9e774682b453940d851590061a2'
+BASE_URL = 'https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.68/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk'
 PLUGIN = 'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/'
-NEW = PLUGIN + 'warderChannelPicons.py'
-CHANGED = tuple(PLUGIN+n for n in ('plugin.py','warderDialogSkins.py','version','history.txt','history.txtSk')) + ('usr/lib/enigma2/python/Components/Renderer/g17RefTV3.py',)
-REPORT = ROOT/'reports/channel-picons-1.0.68'
+CHANGED = tuple(PLUGIN+n for n in ('plugin.py','warderDialogSkins.py','version','history.txt','history.txtSk','warderChannelPicons.py','warderUiText.py')) + ('usr/lib/enigma2/python/Components/Renderer/g17RefTV3.py',)
+REPORT = ROOT/'reports/channel-picons-1.0.69'
 
 
 def sha(data):
@@ -83,18 +82,18 @@ def main():
     payload=ROOT/'source/package-root'
     assert (payload/PLUGIN/'version').read_text().strip()==VERSION
     replacements={name:(payload/name).read_bytes() for name in CHANGED}
-    additions={NEW:(payload/NEW).read_bytes()}
+    additions={}
     for name,data in dict(replacements,**additions).items():
         if name.endswith('.py'):compile(data,name,'exec')
     control=read_files(old['control.tar.gz'])
     original_control=control['control'].decode()
-    assert original_control.count('Version: 1.0.67-1\n')==1
-    new_control=original_control.replace('Version: 1.0.67-1\n','Version: '+VERSION+'-1\n')
+    assert original_control.count('Version: 1.0.68-1\n')==1
+    new_control=original_control.replace('Version: 1.0.68-1\n','Version: '+VERSION+'-1\n')
     assert new_control==(ROOT/'source/control/control').read_text()
     data,preserved=rewrite(old['data.tar.gz'],replacements,additions)
     meta,preserved_controls=rewrite(old['control.tar.gz'],{'control':new_control.encode()})
     actual=read_files(data)
-    assert set(actual)==set(before)|{NEW}
+    assert set(actual)==set(before)
     assert all(sha(actual[name])==digest for name,digest in preserved.items())
     assert all(actual[name]==value for name,value in dict(replacements,**additions).items())
     assert all(read_files(meta)[name]==control[name] for name in preserved_controls)
@@ -114,7 +113,7 @@ def main():
         path=installed/name; path.parent.mkdir(parents=True,exist_ok=True); path.write_bytes(value)
     proof=dict(version=VERSION,source_commit=os.environ.get('GITHUB_SHA'),baseline_sha256=BASE_SHA,
         sha256=sha(result),bytes=len(result),changed_payload_files=sorted(replacements),
-        added_payload_files=[NEW],unchanged_payload_files_verified=len(preserved),
+        added_payload_files=[],unchanged_payload_files_verified=len(preserved),
         unchanged_control_files_verified=len(preserved_controls),
         all_other_payload_bytes_preserved=True,physical_receiver_tested=False)
     (REPORT/'ipk-verification.json').write_text(json.dumps(proof,indent=2)+'\n')
@@ -122,3 +121,4 @@ def main():
 
 
 if __name__=='__main__':main()
+

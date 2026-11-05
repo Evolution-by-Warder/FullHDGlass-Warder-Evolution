@@ -1,3 +1,7 @@
+FullHDGlass 1.0.69 — 05.11.2026
+Nový výber zdroja piconov v zozname staníc: predvolené Systémové nastavenie obnoví pôvodné vyhľadávanie podľa image.
+Preferovať 50×30 zostáva voliteľné, s náhradou zo spoločnej sady. Uložte a reštartujte GUI.
+
 FullHDGlass 1.0.68 — 05.11.2026
 Zoznam staníc uprednostní picon_50x30; chýbajúce logá použije z picon.
 Veľké náhľady zachovajú vlastnú sadu a podporujú spoločnú náhradu.
@@ -233,3 +237,4 @@ Používateľom schválená ostrá verzia založená na TEST270. Čisté číslo
 Pokračovanie FullHDGlass od Warder.
 Pôvodní autori a prispievatelia FullHDGlass zostávajú uvedení v projekte.
 Zdroje piconov zahŕňajú prácu s3n0 a Chocholousek.
+

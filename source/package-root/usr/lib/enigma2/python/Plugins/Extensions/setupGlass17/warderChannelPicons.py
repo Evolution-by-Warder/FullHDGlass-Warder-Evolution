@@ -55,12 +55,12 @@ def find_picon(reference, base, alternative, get_name, sanitize):
     return ''
 
 
-def install(service_list, is_active, get_base, alternative, get_name, sanitize):
+def install(service_list, is_active, get_base, alternative, get_name, sanitize, prefer_mini=None):
     """Wrap only ServiceList's imported lookup; keep the image renderer intact."""
     def wrap(original):
         @wraps(original)
         def lookup(reference, *args, **kwargs):
-            if is_active():
+            if is_active() and prefer_mini is not None and prefer_mini():
                 try:
                     path = find_picon(reference, get_base(), alternative, get_name, sanitize)
                     if path:
@@ -78,3 +78,4 @@ def install(service_list, is_active, get_base, alternative, get_name, sanitize):
             setattr(service_list, name, wrap(original))
             changed = True
     return changed
+

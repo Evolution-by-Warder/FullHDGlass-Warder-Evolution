@@ -24,9 +24,9 @@ def main():
     client=core.GitHub(os.environ['GITHUB_TOKEN'])
     version=config['version']; tag='v'+version
     package=ROOT/config['package']; raw=package.read_bytes(); digest=SHA(raw)
-    proof=json.loads((ROOT/'reports/channel-picons-1.0.68/ipk-verification.json').read_text())
+    proof=json.loads((ROOT/'reports/channel-picons-1.0.69/ipk-verification.json').read_text())
     assert (proof['version'],proof['source_commit'],proof['sha256'],proof['bytes'])==(version,revision,digest,len(raw))
-    assert proof['all_other_payload_bytes_preserved'] and proof['added_payload_files']==['usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderChannelPicons.py']
+    assert proof['all_other_payload_bytes_preserved'] and proof['added_payload_files']==[]
 
     def head(branch):
         return client.request('GET','/git/ref/heads/'+quote(branch,safe=''))['object']['sha']
@@ -101,13 +101,15 @@ def main():
         release_url='https://github.com/'+repo+'/releases/tag/'+tag)
     production=json.loads(read('docs/PRODUCTION.json'))
     production['previous_release']=production.get('release')
+    if production.get('receiver_confirmation'):
+        production['previous_receiver_confirmation']=production.pop('receiver_confirmation')
     production.update(status='production-update-active',approved_on='2026-11-05',approval=config['approval'],
         source_branch=config['release_branch'],source_commit=revision,package_source_commit=revision,release=release_record)
     production['validation']=dict(ci='passed',workflow_run=int(os.environ['GITHUB_RUN_ID']),
-        public_ipk_verified=True,channel_picon_lookup_verified=True,all_other_payload_bytes_preserved=True,
+        public_ipk_verified=True,channel_picon_lookup_verified=True,channel_picon_default_system_verified=True,all_other_payload_bytes_preserved=True,
         physical_receiver_tested=False)
     production['receiver_validation']='Owner authorized normal publication for receiver feedback; physical confirmation of the picon change is pending.'
-    production['version_policy']='1.0.68 is the normal picon compatibility update; previous packages and the legacy migration bridge remain immutable.'
+    production['version_policy']='1.0.69 restores the original image picon lookup by default and adds an explicit 50x30 option; previous packages and the legacy migration bridge remain immutable.'
     inventory=json.loads(read('design/settings-ui-inventory.json'))
     inventory.update(production_feed_version=version,test_feed_version=version)
     inventory.setdefault('feeds_sha256',{}).update({name:SHA(ENCODE(feed)) for name in feeds})
@@ -115,13 +117,13 @@ def main():
     if end>=0:readme=readme[:end].replace(config['previous_version'],version)+readme[end:]
     readme+='\n## FullHDGlass '+version+' — picony v zozname staníc\n\n'+feed['changelog']+'\n'
     current='# FullHDGlass '+version+'\n\n'+feed['changelog']+'\n\n[Stiahnuť IPK]('+public_url+')\n\nSHA256: '+digest+'\n\nAutomatické kontroly OpenATV a OpenPLi a overenie skutočného balíka prešli. Čakáme na spätnú väzbu z prijímača.\n'
-    checkpoint='## FullHDGlass 1.0.68 — 5 November 2026\n\nOwner authorized normal publication of the channel-list picon fix for receiver feedback. Rows prefer picon_50x30 with a per-service picon fallback; large selected previews keep their own sets. OpenATV/OpenPLi automated checks and public package verification passed. Physical receiver feedback is pending. The legacy bridge is preserved.\n\n'
+    checkpoint='## FullHDGlass 1.0.69 — 5 November 2026\n\nOwner authorized immediate publication of the channel-list picon source selector. System setting restores the original image lookup by default; Prefer 50x30 is explicit opt-in. OpenATV/OpenPLi automated checks and public package verification passed. Physical receiver feedback is pending. The legacy bridge is preserved.\n\n'
     changes={name:ENCODE(feed) for name in feeds}
     changes.update({'docs/PRODUCTION.json':ENCODE(production),'design/settings-ui-inventory.json':ENCODE(inventory),
         'docs/LIVE-UPDATE-STATE.json':ENCODE(dict(feed,bytes=len(raw),source_commit=revision,production_status='production-update-active',physical_receiver_tested=False)),
         'README.md':readme.encode(),'docs/CURRENT-RELEASE.md':current.encode(),
         'PROJECT-CONTINUITY.md':checkpoint.encode()+read('PROJECT-CONTINUITY.md'),
-        'reports/channel-picons-1.0.68/ipk-verification.json':ENCODE(proof)})
+        'reports/channel-picons-1.0.69/ipk-verification.json':ENCODE(proof)})
     active=commit('main',staged,changes,'Activate FullHDGlass '+version+' channel picon fix [skip ci]')
     compatibility=commit(config['compatibility_branch'],config['compatibility_head'],{name:ENCODE(feed) for name in feeds},
         'Activate FullHDGlass '+version+' installed updater feeds [skip ci]')
@@ -133,9 +135,10 @@ def main():
     report=dict(status='PRODUCTION_VERIFIED',release=release_record,source_commit=revision,
         main_activation_commit=active,compatibility_activation_commit=compatibility,
         workflow_run=int(os.environ['GITHUB_RUN_ID']),physical_receiver_tested=False)
-    output=ROOT/'reports/channel-picons-1.0.68/production.json'
+    output=ROOT/'reports/channel-picons-1.0.69/production.json'
     output.parent.mkdir(parents=True,exist_ok=True); output.write_bytes(ENCODE(report))
     print(json.dumps(report),flush=True)
 
 
 if __name__=='__main__':main()
+
