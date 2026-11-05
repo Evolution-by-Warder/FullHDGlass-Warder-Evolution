@@ -1,3 +1,7 @@
+## FullHDGlass 1.0.69 — 5 November 2026
+
+Owner authorized immediate publication of the channel-list picon source selector. System setting restores the original image lookup by default; Prefer 50x30 is explicit opt-in. OpenATV/OpenPLi automated checks and public package verification passed. Physical receiver feedback is pending. The legacy bridge is preserved.
+
 ## FullHDGlass 1.0.68 — 5 November 2026
 
 Owner authorized normal publication of the channel-list picon fix for receiver feedback. Rows prefer picon_50x30 with a per-service picon fallback; large selected previews keep their own sets. OpenATV/OpenPLi automated checks and public package verification passed. Physical receiver feedback is pending. The legacy bridge is preserved.

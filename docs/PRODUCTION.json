@@ -3,31 +3,31 @@
   "product": "FullHDGlass",
   "status": "production-update-active",
   "approved_on": "2026-11-05",
-  "approval": "Explicit owner request on 2026-11-05 to publish this fix through the updater so the reporting user can update and confirm the requested behavior.",
-  "source_branch": "release/channel-picons-1.0.68-20261105",
-  "source_commit": "086cc7214bc6faaadad4542d841bdeb8e3296297",
+  "approval": "Explicit owner request on 2026-11-05 to add the channel-list picon selector immediately and restore the pre-1.0.68 native image lookup as the default for existing users.",
+  "source_branch": "release/channel-picons-1.0.69-20261105",
+  "source_commit": "cdf8172b59e116b2c2ecbbe1cdab06c8ce69d574",
   "package_id": "enigma2-plugin-skins-fullhdglass-warder-evolution",
   "release": {
-    "version": "1.0.68",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
-    "sha256": "28f83dd386dd81e7e4427bbf943ea2bccbffd9e774682b453940d851590061a2",
-    "changelog": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
-    "tag": "v1.0.68",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.68/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
-    "bytes": 17254618,
+    "version": "1.0.69",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk",
+    "sha256": "ed6ce655b3506606c9f424b5b55854453dd39bce7aac2572691c4318c1c07f4e",
+    "changelog": "Nová voľba Zdroj piconov v zozname staníc vo VÝBER KANÁLOV, hneď pod Typ. Predvolené Systémové nastavenie obnovuje pôvodné vyhľadávanie spred 1.0.68. Preferovať 50×30 je voliteľné a zachováva náhradu z picon. Po aktualizácii reštartujte GUI.",
+    "tag": "v1.0.69",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.69/enigma2-plugin-skins-fullhdglass_1.0.69_all.ipk",
+    "bytes": 17255968,
     "notes_i18n": {
-      "sk": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
-      "cs": "Obnovené samostatné picony 50×30 v seznamu stanic. Chybějící malé logo se automaticky použije ze společné složky picon; velké náhledy si zachovají vlastní sadu. Používá se nastavená cesta skinu. Po aktualizaci restartujte GUI.",
-      "en": "Restores separate 50x30 channel-list picons with a per-service fallback to the shared picon folder. Large selected previews retain their own artwork. Uses the skin's configured data path. Restart the GUI after updating.",
-      "de": "Separate 50x30-Picons in der Senderliste mit Ersatz aus dem gemeinsamen picon-Ordner. Große Vorschauen behalten ihre eigenen Grafiken. Der konfigurierte Datenpfad wird verwendet. Nach dem Update die GUI neu starten.",
-      "pl": "Osobne picony 50x30 na liście kanałów z zastępowaniem brakujących ikon z folderu picon. Duże podglądy zachowują własne grafiki. Używana jest ustawiona ścieżka danych. Po aktualizacji uruchom ponownie GUI.",
-      "hu": "Külön 50x30 piconok a csatornalistában, hiányzó ikon esetén a közös picon mappa használatával. A nagy előnézetek megtartják saját képeiket. A beállított adatútvonal érvényes. Frissítés után indítsd újra a GUI-t.",
-      "ru": "Отдельные пиконы 50x30 в списке каналов с заменой отсутствующих из общей папки picon. Большие превью сохраняют свои изображения. Используется настроенный путь данных. После обновления перезапустите GUI.",
-      "fr": "Picons 50x30 distincts dans la liste des chaînes, avec remplacement des icônes absentes depuis le dossier picon commun. Les grands aperçus conservent leurs images. Le chemin configuré est utilisé. Redémarrez l’interface après la mise à jour.",
-      "it": "Picon 50x30 separati nell’elenco canali, con recupero delle icone mancanti dalla cartella picon condivisa. Le anteprime grandi conservano le proprie immagini. Viene usato il percorso configurato. Riavviare la GUI dopo l’aggiornamento.",
-      "es": "Picons 50x30 independientes en la lista de canales, con sustitución de los ausentes desde la carpeta picon compartida. Las vistas grandes conservan sus imágenes. Se utiliza la ruta configurada. Reinicie la interfaz tras actualizar."
+      "sk": "Nová voľba Zdroj piconov v zozname staníc vo VÝBER KANÁLOV, hneď pod Typ. Predvolené Systémové nastavenie obnovuje pôvodné vyhľadávanie spred 1.0.68. Preferovať 50×30 je voliteľné a zachováva náhradu z picon. Po aktualizácii reštartujte GUI.",
+      "cs": "Nová volba Zdroj piconů v seznamu stanic ve VÝBĚRU KANÁLŮ, hned pod Typ. Výchozí Systémové nastavení obnovuje původní vyhledávání před 1.0.68. Preferovat 50×30 je volitelné a zachovává náhradu z picon. Po aktualizaci restartujte GUI.",
+      "en": "Adds Channel-list picon source below Type in Channel Selection. System setting restores the original lookup by default. Prefer 50x30 is explicit opt-in with shared picon fallback. Restart the GUI after updating.",
+      "de": "Neue Picon-Quelle der Senderliste unter Typ. Die Systemeinstellung stellt standardmäßig die ursprüngliche Suche wieder her. 50×30 bevorzugen ist optional, mit Ersatz aus picon. Nach dem Update die GUI neu starten.",
+      "pl": "Nowe źródło piconów listy kanałów pod pozycją Typ. Domyślne ustawienie systemowe przywraca pierwotne wyszukiwanie. Preferuj 50×30 jest opcjonalne, z zastępowaniem z picon. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "Új piconforrás a csatornalista Típus sora alatt. Alapértelmezésben a rendszer eredeti keresése érvényes. Az 50×30 mód külön választható, picon tartalékkal. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Новый источник пиконов списка каналов под пунктом Тип. По умолчанию восстановлен исходный системный поиск. Режим 50×30 включается отдельно, с заменой из picon. После обновления перезапустите GUI.",
+      "fr": "Nouvelle source de picons sous Type dans la sélection des chaînes. Le réglage système rétablit par défaut la recherche d’origine. Préférer 50×30 est facultatif, avec remplacement depuis picon. Redémarrez l’interface après la mise à jour.",
+      "it": "Nuova origine picon sotto Tipo nell’elenco canali. L’impostazione di sistema ripristina la ricerca originale predefinita. Preferisci 50×30 è opzionale, con recupero da picon. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "Nuevo origen de picons bajo Tipo en la lista de canales. El ajuste del sistema restaura por defecto la búsqueda original. Preferir 50×30 es opcional, con sustitución desde picon. Reinicie la interfaz tras actualizar."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.68"
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.69"
   },
   "preview_assets": {
     "help": {
@@ -51,9 +51,10 @@
   },
   "validation": {
     "ci": "passed",
-    "workflow_run": 42037878790,
+    "workflow_run": 42068718755,
     "public_ipk_verified": true,
     "channel_picon_lookup_verified": true,
+    "channel_picon_default_system_verified": true,
     "all_other_payload_bytes_preserved": true,
     "physical_receiver_tested": false
   },
@@ -72,13 +73,13 @@
     "decoded_rgba_pixel_budget_bytes": 8467200,
     "renderer_and_all_source_frame_bytes_identical_to_test2": true
   },
-  "version_policy": "1.0.68 is the normal picon compatibility update; previous packages and the legacy migration bridge remain immutable.",
+  "version_policy": "1.0.69 restores the original image picon lookup by default and adds an explicit 50x30 option; previous packages and the legacy migration bridge remain immutable.",
   "legacy_bridge": {
     "version": "1.0.18",
     "update_json_unchanged": true,
     "native_test_channel": "update-test.json follows the verified stable production release; it is no longer the migration bridge"
   },
-  "receiver_validation": "The reporting user confirmed that the restored behavior matches the original request on 2026-11-05. The specific receiver was not identified; testing all reported models is not claimed.",
+  "receiver_validation": "Owner authorized normal publication for receiver feedback; physical confirmation of the picon change is pending.",
   "existing_startup_update_check_preserved": true,
   "satellite_automation_modified": false,
   "lyrics_published": false,
@@ -141,7 +142,7 @@
     "changelog": "Spoločná verzia pre OpenPLi a OpenATV. Opravený prehliadač pluginov a výška jeho riadkov, natívne väzby obrazoviek, klávesnica, potvrdzovacie a informačné okná a voliteľné časovače. Rámiky v 15 rozloženiach náhľadu zostávajú zachované; video zohľadňuje posunutie a zmenšenie OSD. Zahrnuté sú úpravy pre OpenATV 8.1, GLES a WQHD. Existujúce nastavenia vrátane používateľskej veľkosti písma zostávajú zachované. Po aktualizácii reštartujte GUI."
   },
   "previous_bitrate_receiver_validation": "Owner confirmed fast startup and real video/audio bitrate on GigaBlue with FTA and encrypted services. A user follow-up relayed by the owner on 2026-11-01 confirms functional, fast bitrate on Dreambox DM920 / OpenATV 8.0.2 Devel for satellite and terrestrial TV, with no further issue reported so far. MIPS, DM900, ONE and TWO hardware validation remains pending.",
-  "package_source_commit": "086cc7214bc6faaadad4542d841bdeb8e3296297",
+  "package_source_commit": "cdf8172b59e116b2c2ecbbe1cdab06c8ce69d574",
   "accepted_candidate": {
     "version": "1.0.64-test2",
     "sha256": "81af4c1a2774036002318717b2ebf5c29ae6d3e113fe9f81fc8c1540e991d323"
@@ -157,28 +158,28 @@
   "activation_commit": "3b64e96252695edb0e7e12d35af024caf5f1305b",
   "native_test_mirror_commit": "f3c8eac56254c54a907066a1b89cf040295c4230",
   "previous_release": {
-    "version": "1.0.67",
-    "tag": "v1.0.67",
-    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.67/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk",
-    "sha256": "b56aed07908807d6bf02fbd2fbfc9be72f84d12bc5f26e98c8bba0e506becad3",
-    "bytes": 17253106,
-    "notes": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
+    "version": "1.0.68",
+    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+    "sha256": "28f83dd386dd81e7e4427bbf943ea2bccbffd9e774682b453940d851590061a2",
+    "changelog": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
+    "tag": "v1.0.68",
+    "url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/download/v1.0.68/enigma2-plugin-skins-fullhdglass_1.0.68_all.ipk",
+    "bytes": 17254618,
     "notes_i18n": {
-      "sk": "Pozície 34,5°W a 50°E sú vo výberoch zoradené podľa orbitálnej pozície. Uložené výbery, pôvodné indexy a všetky tri pozadia zostávajú zachované. Po aktualizácii reštartujte GUI.",
-      "en": "Sorts 34.5°W and 50°E by orbital position in the selectors. Saved selections, original row indices and all three backgrounds are preserved. Restart the GUI after updating.",
-      "cs": "Pozice 34,5°W a 50°E jsou ve výběrech seřazeny podle orbitální pozice. Uložené výběry, původní indexy a tři pozadí zůstávají zachovány. Po aktualizaci restartujte GUI.",
-      "de": "34,5°W und 50°E werden nach Orbitalposition sortiert. Gespeicherte Auswahl, ursprüngliche Zeilenindizes und alle drei Hintergründe bleiben erhalten. Nach dem Update die GUI neu starten.",
-      "pl": "Pozycje 34,5°W i 50°E są sortowane według pozycji orbitalnej. Zapisany wybór, pierwotne indeksy i trzy tła są zachowane. Po aktualizacji uruchom ponownie GUI.",
-      "hu": "A 34,5°W és 50°E elemek pályapozíció szerint rendezve jelennek meg. A mentett kijelölések, az eredeti sorindexek és mindhárom háttér megmarad. Frissítés után indítsd újra a GUI-t.",
-      "ru": "Позиции 34,5°W и 50°E отсортированы по орбитальной позиции. Сохраненные выборы, исходные индексы строк и все три фона сохранены. После обновления перезапустите GUI.",
-      "fr": "Tri de 34,5°W et 50°E selon leur position orbitale. Sélections enregistrées, indices de lignes et trois fonds conservés. Redémarrez l’interface après la mise à jour.",
-      "it": "34,5°W e 50°E ordinati per posizione orbitale. Selezioni salvate, indici originali e tre sfondi conservati. Riavviare la GUI dopo l’aggiornamento.",
-      "es": "34,5°W y 50°E ordenados por posición orbital. Selecciones guardadas, índices originales y tres fondos conservados. Reinicie la interfaz tras actualizar."
+      "sk": "Obnovené samostatné picony 50×30 v zozname staníc. Chýbajúce malé logo sa automaticky použije zo spoločného priečinka picon; veľké náhľady si zachovajú vlastnú sadu. Používa sa nastavená cesta skinu. Po aktualizácii reštartujte GUI.",
+      "cs": "Obnovené samostatné picony 50×30 v seznamu stanic. Chybějící malé logo se automaticky použije ze společné složky picon; velké náhledy si zachovají vlastní sadu. Používá se nastavená cesta skinu. Po aktualizaci restartujte GUI.",
+      "en": "Restores separate 50x30 channel-list picons with a per-service fallback to the shared picon folder. Large selected previews retain their own artwork. Uses the skin's configured data path. Restart the GUI after updating.",
+      "de": "Separate 50x30-Picons in der Senderliste mit Ersatz aus dem gemeinsamen picon-Ordner. Große Vorschauen behalten ihre eigenen Grafiken. Der konfigurierte Datenpfad wird verwendet. Nach dem Update die GUI neu starten.",
+      "pl": "Osobne picony 50x30 na liście kanałów z zastępowaniem brakujących ikon z folderu picon. Duże podglądy zachowują własne grafiki. Używana jest ustawiona ścieżka danych. Po aktualizacji uruchom ponownie GUI.",
+      "hu": "Külön 50x30 piconok a csatornalistában, hiányzó ikon esetén a közös picon mappa használatával. A nagy előnézetek megtartják saját képeiket. A beállított adatútvonal érvényes. Frissítés után indítsd újra a GUI-t.",
+      "ru": "Отдельные пиконы 50x30 в списке каналов с заменой отсутствующих из общей папки picon. Большие превью сохраняют свои изображения. Используется настроенный путь данных. После обновления перезапустите GUI.",
+      "fr": "Picons 50x30 distincts dans la liste des chaînes, avec remplacement des icônes absentes depuis le dossier picon commun. Les grands aperçus conservent leurs images. Le chemin configuré est utilisé. Redémarrez l’interface après la mise à jour.",
+      "it": "Picon 50x30 separati nell’elenco canali, con recupero delle icone mancanti dalla cartella picon condivisa. Le anteprime grandi conservano le proprie immagini. Viene usato il percorso configurato. Riavviare la GUI dopo l’aggiornamento.",
+      "es": "Picons 50x30 independientes en la lista de canales, con sustitución de los ausentes desde la carpeta picon compartida. Las vistas grandes conservan sus imágenes. Se utiliza la ruta configurada. Reinicie la interfaz tras actualizar."
     },
-    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.67",
-    "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.67_all.ipk"
+    "release_url": "https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.68"
   },
-  "receiver_confirmation": {
+  "previous_receiver_confirmation": {
     "received_on": "2026-11-05",
     "source": "Reporting user's reply relayed by the project owner",
     "status": "requested_behavior_confirmed",
