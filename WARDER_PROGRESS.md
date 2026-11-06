@@ -24,6 +24,12 @@
 
 ## Denník významných zmien
 
+### 6. 11. 2026 – produkčné zlúčenie Vhannibal #47 a prvá ďalšia oprava
+
+- [PR #47](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/47) po schválení zlúčený do `main` ako [`fd0a57d`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/fd0a57d56d04e03d5e4560d718595fa5aa28e255). Znovu overených 69 ZIPov, 127 934 nesúvisiacich položiek a bitová zhoda všetkých 18 CANAL+ SK/CZ balíkov. Produkčný strom, manifest a `SHA256SUMS` sa zhodujú s overeným kandidátom. Produkcia má 10 313 z 10 433 aktuálnych TV referencií s deviatimi platnými variantmi.
+- [Samostatná dávka Mezzo SD](reports/vhannibal-followup-20261106/README.md) pridáva jednu presnú referenciu do deviatich balíkov 13°E bez zmeny existujúcich PNG. Po prípadnom schválení dávky bude technicky otvorených 119 referencií. Rádiové picony a chránené CANAL+ SK/CZ zostávajú mimo dávky.
+- Z pôvodných 120 otvorených referencií malo v už vytvorenej revízii MASTER V9 stav REVIEW 17 a pozastavených bolo 103. Ďalší krok je nezávisle overiť konkrétne identity a platné existujúce grafiky. Bez schválenia sa nenasadzuje nová grafika ani ďalšia dávka.
+
 ### 6. 11. 2026 – spoločný kandidát Vhannibal #47 a #49
 
 - [Spoločný výsledok](reports/vhannibal-completeness-20261106/CURRENT.md) používa overené balíky z oboch vetiev. Karavan TV je bitovo totožný, Quest Red preberá pixelovo doloženú sadu #47 a Viasat Kino dopĺňa #49. Telesur English a Daystar na 11067.5 V zostávajú zdokumentované ako dva odchody.

@@ -1,0 +1,82 @@
+{
+  "target": "1_0_1_37A0_44C_13E_820000_0_0_0",
+  "donor": "1_0_1_422B_2F44_13E_820000_0_0_0",
+  "reference_source": "https://www.satindex.de/channel/40880/",
+  "programme_source": "https://www.mezzo.tv/en/channels",
+  "manifest_sha256": "3f0cac7d35bdc2d77c10bac185778c564682c5efa686e0fabe5b897879886253",
+  "status": "PASS",
+  "checks": [
+    {
+      "size": "220x132",
+      "family": "channel-transparent",
+      "old_sha256": "306fc353b53474338ce9d05ef6b95cad8b89b3befecfb47675247bfa4e5b57aa",
+      "archive_sha256": "105816aff40dc417f8c1b710a7b7d52a5fee936151b4f1bd93b211fd502496f3",
+      "png_sha256": "31682e7b38d5d274d1f34c73b09425d1fb56e5bd6b7a39467c52077a4fee7f63",
+      "tail": "warder-130e-220x132-transparent-105816aff40dc417.zip.part13"
+    },
+    {
+      "size": "220x132",
+      "family": "channel-black",
+      "old_sha256": "c2b15647c82a723c3e2505bf50fe4fc421f5e0099d720b43cca1100b60b58608",
+      "archive_sha256": "d5dd2a5d0c290cb2da8fcd3d635e99889342340b0baa0575e1f84e2c05851da5",
+      "png_sha256": "18e9c370d59fadcbdf1fa92882d54ab2984ef2384764ac1031de812e312a065f",
+      "tail": "warder-130e-220x132-black-d5dd2a5d0c290cb2.zip.part30"
+    },
+    {
+      "size": "220x132",
+      "family": "channel-white",
+      "old_sha256": "33d8a63fec841497fee75e5a0640e0f99013991bd22e030359498f74bfc143a7",
+      "archive_sha256": "a97a3f4acb18e7f6ddf17bac2581d8926c503f8d7def535e0523b6ddece2ce73",
+      "png_sha256": "012aed1c434e9753086268f69cb32fa52ee675f1118be5455dfb67a11f1acd71",
+      "tail": "warder-130e-220x132-white-a97a3f4acb18e7f6.zip.part27"
+    },
+    {
+      "size": "50x30",
+      "family": "channel-transparent",
+      "old_sha256": "8764ed842babf3d012ad0cb1baba4dfd170244d0e90539e8021d9d175fb53c95",
+      "archive_sha256": "9e9c5a32e5ec7e0f312072838ccc7599f787c20cafcbdadb0cfd3358b04c9547",
+      "png_sha256": "29565a7e1cf8c42205e1d2d12cae416f8a22b1d35363d9787143e8e052c1b95a",
+      "tail": "warder-130e-50x30-transparent-9e9c5a32e5ec7e0f.zip.part05"
+    },
+    {
+      "size": "50x30",
+      "family": "channel-white",
+      "old_sha256": "7d13052724e04a69412f27f4c7671b63e88309eccc4d2aa58de7c282da97e386",
+      "archive_sha256": "7f2fc566c43a65dba399e1bd47f74a32b996f051a88e6b3adb7736e354878672",
+      "png_sha256": "e700f9fed4c8b0349291debcdcbbe81107da1be46c5bf9a8386641ca79c277ea",
+      "tail": "warder-130e-50x30-white-7f2fc566c43a65db.zip.part05"
+    },
+    {
+      "size": "50x30",
+      "family": "channel-black",
+      "old_sha256": "7858137122f55d85b018bdadc3ebd58154ff53107e1145a659e885e0a1464ada",
+      "archive_sha256": "69d1e28f686d29a8a1cc4d186beb2ba2188b2200550a9d97e7c5b314eae17acb",
+      "png_sha256": "542e967287d0e5f22d63796e6c5eaf92654ed9336e7fad77c14a242b5b0be16b",
+      "tail": "warder-130e-50x30-black-69d1e28f686d29a8.zip.part05"
+    },
+    {
+      "size": "400x240",
+      "family": "channel-transparent",
+      "old_sha256": "0e857f28371042bb8282a5fbeda3ca6ccdbcfd5f0cd6b8be65f2cf22c1d37019",
+      "archive_sha256": "ceadc6a0d700fca503c7f785c1cf16f181ba7ab401d297b53c3e56dc9f9ad2ca",
+      "png_sha256": "be5deb776653284d162eead900ddea9dd812be7901e7643a44fceb73dc5e2ec4",
+      "tail": "warder-130e-400x240-transparent-ceadc6a0d700fca5.zip.part27"
+    },
+    {
+      "size": "400x240",
+      "family": "channel-white",
+      "old_sha256": "bebaeefa69bd23e07c3ccf2ce48f0858f5399d00c764bdd4335aad245313496e",
+      "archive_sha256": "61c2ac027be53638e10100fb94992099e3d71fc01758cc93ab3af64ee11dbf51",
+      "png_sha256": "a2949af4e5313f75645ed78f8e8edcfaa0b67c03fde18eea6a0d213424b9ded5",
+      "tail": "warder-130e-400x240-white-61c2ac027be53638.zip.part31"
+    },
+    {
+      "size": "400x240",
+      "family": "channel-black",
+      "old_sha256": "92c40f51fcc11e6b4b2526a37c62cc2623ec0d12c2f100af298896b027e1035f",
+      "archive_sha256": "56e99f39a378d6d5842236cc52f9675f3836128919b3649f7113f1675f2ac128",
+      "png_sha256": "b7ad98fd947d664c62ea001698853ec4afaf822d748d4714a0fa4aac6fd825ef",
+      "tail": "warder-130e-400x240-black-56e99f39a378d6d5.zip.part30"
+    }
+  ]
+}
