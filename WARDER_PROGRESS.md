@@ -1,5 +1,15 @@
 # Warder Evolution – stav projektu
 
+## Praktické dokončenie po PR #47 — pracovný checkpoint 6. 11. 2026
+
+- Vetva `work/vhannibal-practical-completion-20261106` vychádza z PR #47 (`96a5d6c93f75af1c8100c7ed05b2b229a48ffefd`); všetkých 26 opráv ostáva zdedených.
+- Používateľ schválil ďalšie pracovné dávky; produkčný merge, vydanie a zmeny chránených CANAL+ balíkov vyžadujú samostatné výslovné schválenie. Warder Radio mimo rozsahu.
+- Existujúci artefakt 49 365 PNG sa nerenderoval znovu. [Beh 42212579788](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42212579788) overil pôvodný ZIP SHA256 a vybral 32 910 existujúcich PNG do menších pracovných dávok; automatická triáž nie je schválením grafík.
+- Spracováva sa všetkých 118 zostávajúcich referencií. Číselné názvy a DSNS sa nepovažujú automaticky za dátové služby; nejasné identity ostávajú otvorené.
+- Získané oficiálne originály TV5MONDE (nová identita 2025), Bloomberg HT, Dom kino Premium, Dijlah a Al Mawqef. Generovaný TV5MONDE návrh nezodpovedá aktuálnemu oficiálnemu originálu a bol odmietnutý. Nové grafiky sa najskôr pripravia na pracovnej vetve, chránené balíky oddelene.
+- Stav: rozpracované, bez produkčnej publikácie. Najbližší krok: vizuálna kontrola deviatich variantov z autentických originálov, zapracovanie jednoznačných opráv a evidencia všetkých otvorených identít.
+
+
 **Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
 
 ## Overené vetvy
