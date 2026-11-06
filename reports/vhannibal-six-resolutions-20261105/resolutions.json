@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-05",
+  "owner_request": "tak to vyries",
+  "cases": [
+    {
+      "status": "RESOLVED_EXACT_CURRENT_HD_REFERENCE",
+      "identity": [
+        "https://www.lyngsat.com/muxes/Express-AM6_Ku-Fixed-2_12594-V.html",
+        "https://zagros24.net/"
+      ],
+      "facts": "Current independent multiplex roster identifies SID 18, ONID 1000, TSID 500, 12594 V 27500 at 53E as Zagros 24 HD; it agrees with supplied lamedb type 25 (0x19). Earlier block is resolved for this full reference only. Same-programme existing 7W logo carries no SD/HD badge and is reused in all nine native variants.",
+      "asset_key": "zagros",
+      "references": [
+        "1_0_19_12_1F4_3E8_2120000_0_0_0"
+      ]
+    },
+    {
+      "status": "RESOLVED_CANONICAL_GENERAL_CHANNEL",
+      "identity": [
+        "https://www.lyngsat.com/muxes/Eutelsat-16A_Europe-B_11471-V.html",
+        "https://www.kanal1group.sk/kanal/kanal1/",
+        "https://kanal1.sk/ako-naladit-kanal-1/"
+      ],
+      "facts": "SID 602, ONID 366, TSID 50200 and provider Antik identify Slovak general Kanal1 HD. Sport/Xtra are distinct programmes. Existing Antik package logo agrees with official general-channel wordmark; A1 master Sport graphic is incorrect for this exact reference.",
+      "asset_key": "kanal1",
+      "references": [
+        "1_0_19_25A_C418_16E_A00000_0_0_0"
+      ]
+    },
+    {
+      "status": "RESOLVED_EXISTING_LOGO_CONFIRMED_CORRECT",
+      "identity": [
+        "https://www.lyngsat.com/muxes/Badr-7_East-MENA_11230-V.html",
+        "https://www.omaninfo.om/en/omantv",
+        "https://tonyoconnorsthirdwebsite.com/portfolio/oman-tv/"
+      ],
+      "facts": "SID 12, ONID 1, TSID 7402 at 11230 V 27500 is Oman General TV HD. Author of the official visual identity shows the same stylized Arabic Oman primary mark. Earlier UBC interpretation was incorrect. Reuse existing same-programme HD variants; preserve other correct Oman logo copies.",
+      "asset_key": "oman",
+      "references": [
+        "1_0_1_C_1CEA_1_1040000_0_0_0"
+      ]
+    },
+    {
+      "status": "RESOLVED_FAN_MOVIES_REBRAND",
+      "identity": [
+        "https://en.kingofsat.net/tv.php?aff=zap&filtre=no&lim=20&ordre=freq&pos=21.6E&standard=All",
+        "https://www.lyngsat.com/muxes/Eutelsat-21B_Wide_10919-V.html",
+        "https://www.chc2004.cn/catid/74",
+        "https://www.chc2004.cn/about/aboutus/",
+        "https://www.sohu.com/a/761238498_100111246"
+      ],
+      "facts": "Supplied CHC-F SID 63 at ONID 0/TSID 2/10919 V is listed as Chinese CHC HD. Official operator renamed CHC HD as CHC Fan Movies in 2024. Current multiplex also identifies legacy CHC-HD SID 56 as CHC Fan Movies. Both full source references remain separate and share the confirmed current Fan Movies artwork; old b HD is not used. Source logo from fanmingming is cross-checked against operator name and broadcaster 1905 brand announcement.",
+      "artwork_url": "https://live.fanmingming.cn/tv/CHC%E5%BD%B1%E8%BF%B7%E7%94%B5%E5%BD%B1.png",
+      "asset_key": "chc",
+      "references": [
+        "1_0_1_3F_2_0_D7AAA7_0_0_0",
+        "1_0_1_38_2_0_D7AAA7_0_0_0"
+      ]
+    },
+    {
+      "status": "RESOLVED_US_ORIGINALS_OSN_FEED",
+      "identity": [
+        "https://www.lyngsat.com/tvchannels/us/Bloomberg-Originals.html",
+        "https://en.digitalbitrate.com/dtv.php?lang=en&live=76&mux=12073&pid=4512&sec=0",
+        "https://www.bloombergmedia.com/press/bloomberg-originals-launches-as-new-brand-for-exclusive-premium-video-programming-on-connected-tv-bloomberg-tv-primetime-and-bloomberg-com/"
+      ],
+      "facts": "SID 4512, TSID 45, ONID 2048 at 12073 H identifies English Bloomberg Originals. Provider Plex transparent logo matches official Bloomberg Originals brand. TV Bulgaria, Europe, Adria and HT are distinct and untouched. WHITE uses same alpha silhouette in black monochrome for contrast; Transparent/BLACK retain original white.",
+      "artwork_url": "https://provider-static.plex.tv/epg/cms/production/a69341a2-fce3-4a05-af2e-469540b25d73/BBOriginals_2023_Plex_Stacked_WHTrdx.png",
+      "asset_key": "originals",
+      "references": [
+        "1_0_1_11A0_2D_800_DCA0000_0_0_0"
+      ]
+    },
+    {
+      "name": "RADIO CLASSICA TV",
+      "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
+      "status": "EXCLUDED_DATA_SERVICE_NO_CONFIRMED_TV_REFERENCE",
+      "identity": [
+        "https://en.kingofsat.net/data-9E"
+      ],
+      "facts": "Current roster classifies RADIO CLASSICA TV, SID 67 at 12341 V, TSID 512 as data, with no video/audio PID and PCR 8191. Roster ONID is 0 while retained input ONID is 29; no new ONID alias is inferred. No verified active TV programme exists at the retained full reference. Close as technical/stale-reference exclusion, not missing logo work."
+    }
+  ],
+  "source_settings_sha256": "64d8d143422945679d491d139bca95667ab0a14809ccb4e50adb09f1d55a061c",
+  "no_service_reference_aliases_created": true,
+  "canonical_canal_packages_preserved": 18
+}
