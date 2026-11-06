@@ -6,7 +6,7 @@
 
 | Repozitár a vetva | Posledný overený commit | Stav |
 | --- | --- | --- |
-| FullHDGlass-Warder-Evolution · `main` | [`5966de55871c1fd3ab912885ab102a0a100b853e`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5966de55871c1fd3ab912885ab102a0a100b853e) | [PR #43](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/43) zaviedol spoločný register a pokyny pre nový Work. Posledný doložený stabilný IPK je [1.0.69](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.69). |
+| FullHDGlass-Warder-Evolution · `main` | [`3e299d34ddf621a7d68d089541e4b924eb813359`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/3e299d34ddf621a7d68d089541e4b924eb813359) | [PR #44](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/44) zaznamenal overený satelitný katalóg a rozdelenie práce medzi Worky. Posledný doložený stabilný IPK je [1.0.69](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.69). |
 | PiconHub-Warder-Evolution · `main` | [`e90a1fe3a2734b555f48f343284f9103530180fb`](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/e90a1fe3a2734b555f48f343284f9103530180fb) | Verejné overenie selektorov cez [PR #63](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/63). Posledný doložený stabilný IPK je [0.1.44](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.44). |
 | PiconHub-Warder-Evolution · `warder-master-production` | [`a740b6da429b8d93eb0f3123158d81b8724f9d19`](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/a740b6da429b8d93eb0f3123158d81b8724f9d19) | Overený HEAD samostatnej produkčnej vetvy. |
 | Warder Radio a GSU | Posledné doložené verzie v odovzdávke sú 0.1.8 a 13.41-r4. | Pred samostatnou úlohou over aktuálne vydanie a SHA príslušného repozitára. |
@@ -23,6 +23,13 @@
 | GSU a Trezor | GSU je súčasťou [spoločného stabilného vydania](docs/COMMON-STABLE-20261102.md). [Trezor](https://github.com/Evolution-by-Warder/Trezor) uchováva zdrojové archívy a checkpointy. Pri práci s jeho podkladmi vychádzaj z presného SHA uvedeného v príslušnom produkčnom manifeste alebo reporte. |
 
 ## Denník významných zmien
+
+### 6. 11. 2026 – uzavreté porovnanie historickej dávky Vhannibal
+
+- Po schválení zlúčený [FullHDGlass PR #44](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/44). Verejný satelitný manifest a strom produkčných balíkov sa zhodujú s overeným stavom po PR #42.
+- Všetkých 3 388 historických kandidátov z [PiconHub #30](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/issues/30) je vysvetlených porovnaním presných plných servisných referencií. **3 198** je v aktuálnom `plans.json` medzi prijatými, **179** sa zhoduje s aktuálnymi evidovanými výnimkami a zvyšných **11** má v zdrojovej klasifikácii stav `PRESERVE_KNOWN_BLOCKED_REFERENCE`. Posledných 11 je blokovaných na úrovni vstupných položiek a eviduje sa oddelene od 193 aktuálnych výnimiek.
+- Overil sa SHA256 [artefaktu pôvodného auditu](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/actions/runs/41815468668/artifacts/13314088933), zhodné SHA256 oboch zdrojových archívov podľa [záznamu klasifikácie](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/beb243b68317baf736e4c4a96ae3ad5eed38ec58/factory/temp/vhannibal-final-20261105/summary.json) a úplné rozdelenie bez prekryvu. Stav posledných 11 je doložený v [zdrojovom registri](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/blob/beb243b68317baf736e4c4a96ae3ad5eed38ec58/factory/temp/vhannibal-final-20261105/source-dispositions.json). Ide o porovnanie registrov a overenie produkčného manifestu.
+- Ďalšiu satelitnú dávku založ na nových zmenách služieb voči živým balíkom. Evidované blokácie otváraj až po novom dôkaze o identite.
 
 ### 6. 11. 2026 – prevzatie satelitného auditu po Vhannibalovi
 
