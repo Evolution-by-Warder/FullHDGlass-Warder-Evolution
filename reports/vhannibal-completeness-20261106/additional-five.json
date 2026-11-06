@@ -1,0 +1,84 @@
+[
+  {
+    "reference": "1_0_16_DA79_22F_70_2250000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Дом Кино Премиум"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_2C9_20B_73_2080000_0_0_0",
+      "1_0_16_DA78_22F_70_2250000_0_0_0"
+    ],
+    "prior_names": [
+      "Дом Кино",
+      "Дом Кино Премиум HD"
+    ],
+    "source_reference": "1_0_16_DA79_22F_70_2250000_0_0_0",
+    "original_pixel_digest": "efe19648bb948687cf7555c97815b02d6527458e37e43127d1fcfe6bf2cee676"
+  },
+  {
+    "reference": "1_0_19_34_14_6E_DCA0000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "AL AHAD VOICE"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_A_34_14_6E_DCA0000_0_0_0"
+    ],
+    "prior_names": [
+      "AL AHAD VOICE"
+    ],
+    "source_reference": "1_0_A_34_14_6E_DCA0000_0_0_0",
+    "original_pixel_digest": "0ac26e112fdeae721d255386998d268477a3bb3fd7b965b00853ceca088cd4e7"
+  },
+  {
+    "reference": "1_0_19_D7A3_228_70_2250000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Дом Кино Премиум HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_2C9_20B_73_2080000_0_0_0",
+      "1_0_16_DA78_22F_70_2250000_0_0_0"
+    ],
+    "prior_names": [
+      "Дом Кино",
+      "Дом Кино Премиум HD"
+    ],
+    "source_reference": "1_0_19_D7A3_228_70_2250000_0_0_0",
+    "original_pixel_digest": "efe19648bb948687cf7555c97815b02d6527458e37e43127d1fcfe6bf2cee676"
+  },
+  {
+    "reference": "1_0_1_15F_19C8_9E_5A0000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "TELE CONGO HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_15F_19C8_9E_5A0000_0_0_0"
+    ],
+    "prior_names": [
+      "TELE CONGO HD"
+    ],
+    "source_reference": "1_0_1_15F_19C8_9E_5A0000_0_0_0",
+    "original_pixel_digest": "dcd9528c94326ba279576ac6d11ac758d7b016ee67ad25ab8d43f3022e28e786"
+  },
+  {
+    "reference": "1_0_1_22_14_6E_DCA0000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Alsharqiya TV HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_19_1_9C7C_77E_DCA0000_0_0_0",
+      "1_0_19_22_14_6E_DCA0000_0_0_0",
+      "1_0_19_716_12_800_DCA0000_0_0_0"
+    ],
+    "prior_names": [
+      "AL SHARQIYA HD",
+      "Alsharqiya TV HD"
+    ],
+    "source_reference": "1_0_19_22_14_6E_DCA0000_0_0_0",
+    "original_pixel_digest": "71f7b75d10850b2aff2d79aab4ef940af09138ef2082a21068d5b4c1e5421b4d"
+  }
+]

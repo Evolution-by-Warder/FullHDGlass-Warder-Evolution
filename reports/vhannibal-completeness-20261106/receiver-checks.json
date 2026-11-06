@@ -1,0 +1,493 @@
+{
+  "status": "PASS",
+  "production_manifest_validator": "PASS",
+  "receiver_source_ref": "603218ea8fa51176f686f14f303509a4c64dc7e1",
+  "changed_archives_installed": 69,
+  "installed_updated_png_entries": 198,
+  "all_chunk_and_archive_sha256_verified": true,
+  "checks": [
+    {
+      "selector": "130E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 17,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 17,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "130E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 11,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "192E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "235E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "282E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "70W",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 2,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "90E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "90E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "90E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "90E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "90E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    },
+    {
+      "selector": "90E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "installed_pngs": 1,
+      "unrelated_user_file_preserved": true
+    }
+  ]
+}

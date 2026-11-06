@@ -1,0 +1,563 @@
+{
+  "status": "PASS",
+  "archives": 69,
+  "added": 168,
+  "replaced": 21,
+  "unrelated_members_byte_identical": 127934,
+  "protected_canal_archives_identical": 18,
+  "receiver_install_replays": 69,
+  "checks": [
+    {
+      "selector": "130E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4608
+    },
+    {
+      "selector": "130E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4604
+    },
+    {
+      "selector": "130E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4608
+    },
+    {
+      "selector": "130E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4573
+    },
+    {
+      "selector": "130E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 11,
+      "replaced": 6,
+      "preserved": 4563
+    },
+    {
+      "selector": "130E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4573
+    },
+    {
+      "selector": "130E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4573
+    },
+    {
+      "selector": "130E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 11,
+      "replaced": 6,
+      "preserved": 4563
+    },
+    {
+      "selector": "130E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 11,
+      "replaced": 0,
+      "preserved": 4585
+    },
+    {
+      "selector": "19E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "19E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 0,
+      "replaced": 1,
+      "preserved": 499
+    },
+    {
+      "selector": "235E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2240
+    },
+    {
+      "selector": "235E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2228
+    },
+    {
+      "selector": "235E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2240
+    },
+    {
+      "selector": "235E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2113
+    },
+    {
+      "selector": "235E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2101
+    },
+    {
+      "selector": "235E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2113
+    },
+    {
+      "selector": "235E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2113
+    },
+    {
+      "selector": "235E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2101
+    },
+    {
+      "selector": "235E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2113
+    },
+    {
+      "selector": "282E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1966
+    },
+    {
+      "selector": "282E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1966
+    },
+    {
+      "selector": "282E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1966
+    },
+    {
+      "selector": "282E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1965
+    },
+    {
+      "selector": "282E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1965
+    },
+    {
+      "selector": "282E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1965
+    },
+    {
+      "selector": "282E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1965
+    },
+    {
+      "selector": "282E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1965
+    },
+    {
+      "selector": "282E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 1965
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 1078
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 862
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 1078
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 872
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 861
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 872
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 872
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 861
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 872
+    },
+    {
+      "selector": "70W",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2294
+    },
+    {
+      "selector": "70W",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2294
+    },
+    {
+      "selector": "70W",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2294
+    },
+    {
+      "selector": "70W",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2238
+    },
+    {
+      "selector": "70W",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2238
+    },
+    {
+      "selector": "70W",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2238
+    },
+    {
+      "selector": "70W",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2238
+    },
+    {
+      "selector": "70W",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2238
+    },
+    {
+      "selector": "70W",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 2,
+      "replaced": 0,
+      "preserved": 2238
+    },
+    {
+      "selector": "90E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2085
+    },
+    {
+      "selector": "90E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2085
+    },
+    {
+      "selector": "90E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2085
+    },
+    {
+      "selector": "90E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2085
+    },
+    {
+      "selector": "90E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2085
+    },
+    {
+      "selector": "90E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 2085
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    },
+    {
+      "selector": "SKYLINK",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "added": 1,
+      "replaced": 0,
+      "preserved": 455
+    }
+  ]
+}

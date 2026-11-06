@@ -1,0 +1,350 @@
+[
+  {
+    "reference": "1_0_16_5319_C96_3_EB0000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "RTL GOLD."
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_5314_C96_3_EB0000_0_0_0",
+      "1_0_1_4F0A_CA5_3_EB0000_0_0_0"
+    ],
+    "prior_names": [
+      "RTL GOLD",
+      "RTL Gold"
+    ]
+  },
+  {
+    "reference": "1_0_19_7A4B_410_1_C00000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Telesur English"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_19_18F9_3F4_1_C00000_0_0_0"
+    ],
+    "prior_names": [
+      "Telesur English"
+    ]
+  },
+  {
+    "reference": "1_0_19_7A4E_410_1_C00000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Daystar"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_18F7_3F4_1_C00000_0_0_0",
+      "1_0_1_1C85_332C_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "Daystar Espanol",
+      "Daystar SD"
+    ]
+  },
+  {
+    "reference": "1_0_1_1137_2AF8_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "CANAL+ EXTRA 2"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_3783_44C_13E_820000_0_0_0",
+      "1_0_1_37B5_44C_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "CANAL+ EXTRA 2"
+    ]
+  },
+  {
+    "reference": "1_0_1_1169_2AF8_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "CANAL+ EXTRA 2"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_3783_44C_13E_820000_0_0_0",
+      "1_0_1_37B5_44C_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "CANAL+ EXTRA 2"
+    ]
+  },
+  {
+    "reference": "1_0_1_12_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Boyles"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_12_C9_1_300000_0_0_0"
+    ],
+    "prior_names": [
+      "Boyles"
+    ]
+  },
+  {
+    "reference": "1_0_1_13_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "SISSP"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_14_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "BF1"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_15_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "BF2"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_16_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "BF3"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_17_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "SIS1"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_18_65_1_300000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "SIS2"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_1C99_332C_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Eco TV"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_6B9_3138_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "Eko TV"
+    ]
+  },
+  {
+    "reference": "1_0_1_1C9A_332C_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "MILADY TV"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_6BA_3138_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "Milady"
+    ]
+  },
+  {
+    "reference": "1_0_1_1C9B_332C_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Natali TV"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_6BB_3138_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "Nataly"
+    ]
+  },
+  {
+    "reference": "1_0_1_1C9C_332C_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Provence TV"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_6BC_3138_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "Provence"
+    ]
+  },
+  {
+    "reference": "1_0_1_1C9D_332C_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "KARAVAN TV"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_1805_C_55_300000_0_0_0",
+      "1_0_1_6BD_3138_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "Karavan TV"
+    ]
+  },
+  {
+    "reference": "1_0_1_1_1_1_D72B76_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "2STV"
+    ],
+    "pixel_exact_prior_refs": [],
+    "prior_names": []
+  },
+  {
+    "reference": "1_0_1_32CF_190_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "CANAL+ DOKUMENT HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_3D58_2C88_13E_820000_0_0_0",
+      "1_0_1_3D8A_2C88_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "CANAL+ DOKUMENT HD"
+    ]
+  },
+  {
+    "reference": "1_0_1_32D0_190_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "CANAL+ SERIALE HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_3D57_2C88_13E_820000_0_0_0",
+      "1_0_1_3D89_2C88_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "CANAL+ SERIALE HD"
+    ]
+  },
+  {
+    "reference": "1_0_1_3301_190_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "CANAL+ DOKUMENT HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_3D58_2C88_13E_820000_0_0_0",
+      "1_0_1_3D8A_2C88_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "CANAL+ DOKUMENT HD"
+    ]
+  },
+  {
+    "reference": "1_0_1_3302_190_13E_820000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "CANAL+ SERIALE HD"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_3D57_2C88_13E_820000_0_0_0",
+      "1_0_1_3D89_2C88_13E_820000_0_0_0"
+    ],
+    "prior_names": [
+      "CANAL+ SERIALE HD"
+    ]
+  },
+  {
+    "reference": "1_0_1_33B0_3EB_1_C00000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Service 13232"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_332D_45B_1_C00000_0_0_0",
+      "1_0_16_33AF_3EB_1_C00000_0_0_0",
+      "1_0_16_33B0_3EB_1_C00000_0_0_0",
+      "1_0_1_3337_45B_1_C00000_0_0_0",
+      "1_0_1_33AA_3EB_1_C00000_0_0_0",
+      "1_0_1_33B1_3EB_1_C00000_0_0_0"
+    ],
+    "prior_names": [
+      "Service 13101",
+      "Service 13111",
+      "Service 13226",
+      "Service 13233",
+      "Test42",
+      "Test43"
+    ]
+  },
+  {
+    "reference": "1_0_1_B62_7F3_2_11A0000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Quest Red"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_1_CCE2_7E1_2_11A0000_0_0_0",
+      "1_0_1_CCFE_7E1_2_11A0000_0_0_0",
+      "1_0_1_CD00_7E1_2_11A0000_0_0_0"
+    ],
+    "prior_names": [
+      "Quest Red",
+      "Quest Red+1"
+    ]
+  },
+  {
+    "reference": "1_0_1_B82_7F3_2_11A0000_0_0_0",
+    "scope": "SATELLITE_TV",
+    "names": [
+      "Food Network"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_16_1823_C_55_300000_0_0_0",
+      "1_0_16_CB_25E4_D5_820000_0_0_0",
+      "1_0_19_16A8_C3AA_9E_5A0000_0_0_0",
+      "1_0_19_3DD9_640_13E_820000_0_0_0",
+      "1_0_19_3DEC_640_13E_820000_0_0_0",
+      "1_0_19_9E40_FD2_E0_1040000_0_0_0",
+      "1_0_1_3C9A_1BBC_13E_820000_0_0_0",
+      "1_0_1_3F9_1_1_E08318F_0_0_0",
+      "1_0_1_7C_A_1_D7A0000_0_0_0",
+      "1_0_1_CCF8_7E1_2_11A0000_0_0_0",
+      "1_0_1_CD10_7E1_2_11A0000_0_0_0"
+    ],
+    "prior_names": [
+      "FOOD",
+      "Food Network",
+      "Food Network EMEA HD",
+      "Food Network HD",
+      "Food Network HD_"
+    ]
+  },
+  {
+    "reference": "1_0_2_7A4F_410_1_C00000_0_0_0",
+    "scope": "RADIO_OUT_OF_SCOPE",
+    "names": [
+      "NAIZ irratia"
+    ],
+    "pixel_exact_prior_refs": [
+      "1_0_2_18F6_3F4_1_C00000_0_0_0"
+    ],
+    "prior_names": [
+      "NAIZ irratia"
+    ]
+  }
+]

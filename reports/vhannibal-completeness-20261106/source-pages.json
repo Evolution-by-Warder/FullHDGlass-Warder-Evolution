@@ -1,0 +1,70 @@
+[
+  {
+    "page": "",
+    "ids": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sha256": "2857851bb141b8a9f2a472e778ae0d6279607633cb4b9d91c715308e4bc488c4"
+  },
+  {
+    "page": "hot_bird.php",
+    "ids": [
+      2,
+      11,
+      14,
+      17,
+      20,
+      23
+    ],
+    "sha256": "af95475fc9cc2563f7d1144bb1485a2583373e6323f6db85088a6de3bbd9dbe1"
+  },
+  {
+    "page": "dual_feed.php",
+    "ids": [
+      3,
+      12,
+      15,
+      18,
+      21,
+      24
+    ],
+    "sha256": "3c5e9271a46a9b7d3f1a711d729b339e0843f4eef21e93319f4057db53253031"
+  },
+  {
+    "page": "motor.php",
+    "ids": [
+      5,
+      13,
+      16,
+      19,
+      22,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "sha256": "2bcc8038798757047e4d0e72c29940e4ad4e9b46b62ea063e22a308bf0a79e78"
+  },
+  {
+    "page": "quadri_trial.php",
+    "ids": [
+      6,
+      7,
+      8
+    ],
+    "sha256": "dcb7377aeec31b15c942df20d47dc0c429958ff34f3be453dec833d103e8849c"
+  },
+  {
+    "page": "autosetting.php",
+    "ids": [],
+    "sha256": "e2afa18218a02cb7e389f7b54e3384c84fda80fe82f7f9bfca600cdcc26bf09f"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "bytes": 595954,
+  "sha256": "1f89611c2b641e3186afdadf66c3d516fcdab19724d0c22279512117544f4023",
+  "parts": [
+    {
+      "filename": "repair-input.json.gz.part00",
+      "bytes": 180000,
+      "sha256": "cede3c0c6cf09329e744ea2ea4def352a95b1b609174152a45fb6a2ac0bfb7cd"
+    },
+    {
+      "filename": "repair-input.json.gz.part01",
+      "bytes": 180000,
+      "sha256": "fe595f0e7fe9a0fa193543a91461edcb69e3336c97bf5ea7a7ff7abbed96934b"
+    },
+    {
+      "filename": "repair-input.json.gz.part02",
+      "bytes": 180000,
+      "sha256": "3cc69f1a98139f938c6576f883d1449b24e2dd02fa4d4535f8d7915c7522a2f8"
+    },
+    {
+      "filename": "repair-input.json.gz.part03",
+      "bytes": 55954,
+      "sha256": "8ab5f9428d4b0808d92124650b12de39b175f3e235eb911e10e24cfa7ae826d3"
+    }
+  ]
+}
