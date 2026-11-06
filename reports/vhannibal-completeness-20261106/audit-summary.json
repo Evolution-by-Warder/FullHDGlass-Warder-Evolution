@@ -1,0 +1,227 @@
+{
+  "source_references": 14635,
+  "current_source_references": 14084,
+  "historical_only": 551,
+  "invalid_current_png_members": [
+    "1_0_19_1396_50E1_217C_5A0000_0_0_0 (2).png",
+    "1_0_1F_463_B11_39E_1860000_0_0_0 (1).png",
+    "1_0_1F_463_B11_39E_1860000_0_0_0 (2).png",
+    "1_0_2_12_2_FFFF_104B0EB_0_0_0 (2).png"
+  ],
+  "official_settings": [
+    {
+      "id": 11,
+      "sha256": "99a36fa4f944d01aefe5831b7ba2c2782b275ea0dbc2e4d0f68a29357dede66e",
+      "services": 1740,
+      "tv_bouquet_refs": 1484,
+      "radio_bouquet_refs": 256
+    },
+    {
+      "id": 12,
+      "sha256": "3b9ff934ef6c0467fff856d99941fd0f59ab6e63cd9d00e2b4eb744609bb39f9",
+      "services": 2757,
+      "tv_bouquet_refs": 2366,
+      "radio_bouquet_refs": 391
+    },
+    {
+      "id": 13,
+      "sha256": "cf4bad9a3dd33a2749d946500ca0c3d1971ce7662a4b6e42988b134ae4570df0",
+      "services": 12965,
+      "tv_bouquet_refs": 10665,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 14,
+      "sha256": "efeb71d80145635be96c15d008c9d8a721290a0ae9b256db2786057b65ed2897",
+      "services": 1775,
+      "tv_bouquet_refs": 1519,
+      "radio_bouquet_refs": 256
+    },
+    {
+      "id": 15,
+      "sha256": "9e2dee23acc5713ff1fc0999290270787536e179795cfb3fb331ab7f8e6df396",
+      "services": 2792,
+      "tv_bouquet_refs": 2401,
+      "radio_bouquet_refs": 391
+    },
+    {
+      "id": 16,
+      "sha256": "9fb4854abdc1c0ceb7f54942068b2ab64526b0ee29afae8a88d7878895660bdd",
+      "services": 13000,
+      "tv_bouquet_refs": 10700,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 17,
+      "sha256": "90fdfe5bc114849192348e4d66324968a03e46af40f67c6c62d1f7516a9bb096",
+      "services": 1787,
+      "tv_bouquet_refs": 1531,
+      "radio_bouquet_refs": 256
+    },
+    {
+      "id": 18,
+      "sha256": "ce848162693c77a974931ae979e966b1dffb572ab6aa38b8b2f0d18e092fa9ce",
+      "services": 2804,
+      "tv_bouquet_refs": 2413,
+      "radio_bouquet_refs": 391
+    },
+    {
+      "id": 19,
+      "sha256": "8f500196284aff9b55ea728f40261a1715eed33f63519eaf854594bed29495c5",
+      "services": 13012,
+      "tv_bouquet_refs": 10712,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 2,
+      "sha256": "506ceb5318581336fd3079ecb425935c65500f09529ab476c912d897cd5b4e50",
+      "services": 1454,
+      "tv_bouquet_refs": 1198,
+      "radio_bouquet_refs": 256
+    },
+    {
+      "id": 20,
+      "sha256": "57df945e2db583c3b677c7625d900220350dea47716a6978cd2a5881c4bcf551",
+      "services": 1777,
+      "tv_bouquet_refs": 1521,
+      "radio_bouquet_refs": 256
+    },
+    {
+      "id": 21,
+      "sha256": "b7776205e3259d0a6da82a0e5ab3e289810771e9d068ffe189ebe9c83deddc48",
+      "services": 2794,
+      "tv_bouquet_refs": 2403,
+      "radio_bouquet_refs": 391
+    },
+    {
+      "id": 22,
+      "sha256": "6e0200d75d990485f3a2907f556650f4d9b4ba553550fcb5b92b0e0a0b00d3b9",
+      "services": 13002,
+      "tv_bouquet_refs": 10702,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 23,
+      "sha256": "4f241a5eec56351ac753218706e58b855880ad9f8305fba3cea1e89754ea7b52",
+      "services": 1766,
+      "tv_bouquet_refs": 1510,
+      "radio_bouquet_refs": 256
+    },
+    {
+      "id": 24,
+      "sha256": "9395c1862ee3479fa6cce6e1dc6e4e075d46f8c89cae1c99210f13d46aab541b",
+      "services": 2783,
+      "tv_bouquet_refs": 2392,
+      "radio_bouquet_refs": 391
+    },
+    {
+      "id": 25,
+      "sha256": "2735c372f0c75ebaa8f5610650d1a74a1145abadcde3ade68686b4f2e3ac48e7",
+      "services": 12991,
+      "tv_bouquet_refs": 10691,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 26,
+      "sha256": "fce08a0d9b51b102d7dad90c6584375606793401cac98b8b75a55f4bc7d36c8c",
+      "services": 12993,
+      "tv_bouquet_refs": 10693,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 27,
+      "sha256": "00eeaec6878943555a55ad981fb90be4bd176668f56338376278b1cf5eb763dd",
+      "services": 12980,
+      "tv_bouquet_refs": 10679,
+      "radio_bouquet_refs": 2301
+    },
+    {
+      "id": 28,
+      "sha256": "f8a54b61f5133fb2a96f8fbcb22386405141b93cdd6471c4be2ba68c4178c413",
+      "services": 13106,
+      "tv_bouquet_refs": 10787,
+      "radio_bouquet_refs": 2319
+    },
+    {
+      "id": 29,
+      "sha256": "c318038d264cde4bee834995875eecfe979a550b6b2be80cceaab8ee4c36d807",
+      "services": 12679,
+      "tv_bouquet_refs": 10379,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 3,
+      "sha256": "dfaa51fcd31371ed6a2842e9c48df4c54b7de83de9b6b5887f0cf96974956567",
+      "services": 2471,
+      "tv_bouquet_refs": 2080,
+      "radio_bouquet_refs": 391
+    },
+    {
+      "id": 30,
+      "sha256": "6e9f27c7c5f158cb06254aea2aac7736e3a8733ef13736f77c43f22b1690e9d6",
+      "services": 12679,
+      "tv_bouquet_refs": 10379,
+      "radio_bouquet_refs": 2300
+    },
+    {
+      "id": 5,
+      "sha256": "899db389c7cc977868706848a36b756d12eb3af973133e22c43f64d014c5d519",
+      "services": 12721,
+      "tv_bouquet_refs": 10402,
+      "radio_bouquet_refs": 2319
+    },
+    {
+      "id": 6,
+      "sha256": "f893155ca6b788666fa23b770e2729de42609b2c5fbad2143813a45db8d81e46",
+      "services": 5295,
+      "tv_bouquet_refs": 4550,
+      "radio_bouquet_refs": 745
+    },
+    {
+      "id": 7,
+      "sha256": "9e7e4d1acd7a526e6efb7514de50f1fa497640a6fec057ccc69f1eb3cf786b2e",
+      "services": 3741,
+      "tv_bouquet_refs": 3136,
+      "radio_bouquet_refs": 605
+    },
+    {
+      "id": 8,
+      "sha256": "24175fc143a7658c61b98ee640c4e445a0cffd2d5c8dee44b5e57c270f141e39",
+      "services": 2985,
+      "tv_bouquet_refs": 2394,
+      "radio_bouquet_refs": 591
+    }
+  ],
+  "settings_references": 13417,
+  "counts": {
+    "excluded": 3866,
+    "processed": 10209,
+    "unresolved": 560
+  },
+  "current_counts": {
+    "excluded": 3437,
+    "processed": 10186,
+    "unresolved": 461
+  },
+  "accepted_verified_against_zip_index": true,
+  "excluded_reasons": {
+    "no binding in the 26 current official settings archives": 1281,
+    "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Platform data label": 1,
+    "EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY": 121,
+    "RADIO CLASSICA TV recorded data/stale reference": 1,
+    "radio outside current satellite TV scope": 2458,
+    "reported departed 2026-11-05, 11067.5 V on 19.2E": 2,
+    "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Software/data service": 2
+  },
+  "unresolved_reasons": {
+    "HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL": 13,
+    "no verified production artwork binding": 422,
+    "type alias without recorded artwork binding": 76,
+    "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork": 12,
+    "HOLD_235E_INDEPENDENT_CANAL_BRAND_CHECK": 28,
+    "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity": 1,
+    "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label": 1,
+    "station label differs from the accepted identity": 6,
+    "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity": 1
+  }
+}

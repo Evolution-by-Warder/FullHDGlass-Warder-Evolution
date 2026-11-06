@@ -24,6 +24,11 @@
 
 ## Denník významných zmien
 
+### 6. 11. 2026 – audit úplnosti Vhannibal
+
+- [Pracovný audit](reports/vhannibal-completeness-20261106/README.md) porovnáva nový Picon Motor z 5. novembra, tri dostupné historické inventúry a starší importný výpis so stavom živého katalógu. Obsahuje počty, vylúčenia a samostatný zoznam otvorených referencií.
+- V centrálnych adresároch 498 produkčných ZIPov je 400 476 PNG položiek, bez duplicity názvu v jednom balíku. Všetkých 12 508 doteraz prijatých referencií má v určenom satelitnom balíku deväť variantov. Rozdelenie podľa providerov má osobitné otvorené položky.
+
 ### 6. 11. 2026 – prevzatie satelitného auditu po Vhannibalovi
 
 - Po schválení je [PR #43](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/43) zlúčený. `AGENTS.md` aj `WARDER_PROGRESS.md` na `main` boli overené voči schváleným verziám.
