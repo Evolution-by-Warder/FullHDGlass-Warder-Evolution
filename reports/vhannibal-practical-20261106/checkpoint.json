@@ -1,0 +1,24 @@
+{
+  "status": "IN_PROGRESS",
+  "base_pr": 47,
+  "base_sha": "96a5d6c93f75af1c8100c7ed05b2b229a48ffefd",
+  "working_branch": "work/vhannibal-practical-completion-20261106",
+  "original_repairs": 26,
+  "missing_input": 118,
+  "existing_pngs": 49365,
+  "reused_pngs": 32910,
+  "regenerated_existing_pngs": 0,
+  "source_artifact": 13498420081,
+  "extraction_run": 42212579788,
+  "production_merged": false,
+  "radio_changes": 0,
+  "protected_canal_changes": 0,
+  "official_sources_obtained": [
+    "TV5MONDE 2025 identity PNG and press guide",
+    "BloombergHT black and white SVG",
+    "Dom kino Premium broadcaster and distributor brandkit",
+    "Dijlah broadcaster header",
+    "Al Mawqef broadcaster header"
+  ],
+  "tv5_generated_image_rejected": true
+}

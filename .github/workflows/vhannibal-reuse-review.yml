@@ -1,0 +1,61 @@
+name: Reuse existing Vhannibal review PNGs
+on:
+  push:
+    branches: [work/vhannibal-practical-completion-20261106]
+    paths:
+      - reports/vhannibal-practical-20261106/reuse-existing-review.py
+      - .github/workflows/vhannibal-reuse-review.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /reports/vhannibal-practical-20261106/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet Pillow==13.0.0 numpy==2.3.5
+      - uses: actions/download-artifact@v4
+        with:
+          name: vhannibal-completeness-v9-review
+          path: existing-review
+          run-id: 42206982364
+          github-token: ${{ github.token }}
+      - run: python -u reports/vhannibal-practical-20261106/reuse-existing-review.py
+      - name: Save reusable selection evidence
+        run: |
+          test "$GITHUB_REF_NAME" = work/vhannibal-practical-completion-20261106
+          cp existing-review-batches/summary.json reports/vhannibal-practical-20261106/existing-review-summary.json
+          cp existing-review-batches/native-triage.json.gz reports/vhannibal-practical-20261106/native-triage.json.gz
+          git config user.name 'Warder satellite review'
+          git config user.email 'warder-picons@users.noreply.github.com'
+          git add reports/vhannibal-practical-20261106/existing-review-summary.json reports/vhannibal-practical-20261106/native-triage.json.gz
+          git commit -m 'Reuse all existing V9 review native PNGs without re-rendering'
+          git push origin HEAD:refs/heads/work/vhannibal-practical-completion-20261106
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vhannibal-existing-native-00
+          path: existing-review-batches/existing-native-00.zip
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        if: hashFiles('existing-review-batches/existing-native-01.zip') != ''
+        with:
+          name: vhannibal-existing-native-01
+          path: existing-review-batches/existing-native-01.zip
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vhannibal-existing-native-contacts
+          path: |
+            existing-review-batches/contact-*.png
+            existing-review-batches/native-triage.json.gz
+            existing-review-batches/summary.json
