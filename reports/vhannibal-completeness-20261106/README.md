@@ -1,3 +1,5 @@
+> **Stav po zosúladení #47 a #49 je v [spoločnom výsledku](CURRENT.md).** Čísla nižšie opisujú historický kandidát #47 a slúžia ako pôvodný auditný dôkaz.
+
 # Vhannibal – finálny audit úplnosti, 6. 11. 2026
 
 **Výsledok: Vhannibal nie je úplne spracovaný.** Úplnosť názvov v starom registri nepreukazovala všetky pôvodné sady, všetky referencie ani grafickú zhodu s MASTER V9. Toto je negatívny výsledok auditu, nie certifikát správnosti všetkých log.

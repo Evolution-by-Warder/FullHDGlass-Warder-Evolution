@@ -24,6 +24,12 @@
 
 ## Denník významných zmien
 
+### 6. 11. 2026 – spoločný kandidát Vhannibal #47 a #49
+
+- [Spoločný výsledok](reports/vhannibal-completeness-20261106/CURRENT.md) používa overené balíky z oboch vetiev. Karavan TV je bitovo totožný, Quest Red preberá pixelovo doloženú sadu #47 a Viasat Kino dopĺňa #49. Telesur English a Daystar na 11067.5 V zostávajú zdokumentované ako dva odchody.
+- Opravených je 25 rôznych referencií v 69 ZIPoch. Po kandidátovi má 10 313 z 10 433 aktuálnych satelitných TV referencií všetkých deväť platných variantov. Zostáva 118 neúplných a dva chránené prázdne TV5MONDE. Grafický audit V9 zostáva samostatný.
+- Stav častí, SHA256, prípady prekryvu a testy sú v spoločnom reporte. Zlúčenie a produkčná publikácia čakajú na schválenie.
+
 ### 6. 11. 2026 – prevzatie satelitného auditu po Vhannibalovi
 
 - Po schválení je [PR #43](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/43) zlúčený. `AGENTS.md` aj `WARDER_PROGRESS.md` na `main` boli overené voči schváleným verziám.
