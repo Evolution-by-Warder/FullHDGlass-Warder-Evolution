@@ -195,13 +195,15 @@
   "settings_references": 13417,
   "counts": {
     "excluded": 3866,
-    "processed": 10209,
-    "unresolved": 560
+    "processed": 10210,
+    "unresolved": 556,
+    "repaired": 3
   },
   "current_counts": {
     "excluded": 3437,
-    "processed": 10186,
-    "unresolved": 461
+    "processed": 10187,
+    "unresolved": 457,
+    "repaired": 3
   },
   "accepted_verified_against_zip_index": true,
   "excluded_reasons": {
@@ -215,13 +217,67 @@
   },
   "unresolved_reasons": {
     "HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL": 13,
-    "no verified production artwork binding": 422,
+    "no verified production artwork binding": 419,
     "type alias without recorded artwork binding": 76,
     "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork": 12,
     "HOLD_235E_INDEPENDENT_CANAL_BRAND_CHECK": 28,
     "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity": 1,
     "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label": 1,
-    "station label differs from the accepted identity": 6,
+    "station label differs from the accepted identity": 5,
     "HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity": 1
-  }
+  },
+  "verified_existing_artwork": [
+    {
+      "reference": "1_0_1_2E2_2025_2BE_1040000_0_0_0",
+      "selector": "260E",
+      "source_sha256": "6acbea0c28fcef621be10534a257c20665966d2a1e273eff29c95b20bf1dec37",
+      "variants": [
+        [
+          "220x132",
+          "channel-transparent",
+          "6acbea0c28fcef621be10534a257c20665966d2a1e273eff29c95b20bf1dec37"
+        ],
+        [
+          "220x132",
+          "channel-black",
+          "9af745f2d9e5e77f8ca61a69c3d1c803d4a939dfa2a6c6bc3b990901a92d7996"
+        ],
+        [
+          "220x132",
+          "channel-white",
+          "6742e90064d0826030dc342c35fb075e99638d8ce8198eebea1540bdac7cf269"
+        ],
+        [
+          "50x30",
+          "channel-transparent",
+          "76fbac069e5c5ac36b15b4e88a2de4ee3f74c7420dbe6c5c671d5f71df1da08d"
+        ],
+        [
+          "50x30",
+          "channel-white",
+          "4249a6f9c0ef1734c17c045380a798ac9d042dcd176c4a8c5a9b81d78195416d"
+        ],
+        [
+          "50x30",
+          "channel-black",
+          "a441849a24c66d2a40136e8787732fc851c68fb0f37beae14b1eb7ff16124640"
+        ],
+        [
+          "400x240",
+          "channel-transparent",
+          "5b97ad067a11dd8766629982cdb1c5adb04b569b196b60618684140cbf985a84"
+        ],
+        [
+          "400x240",
+          "channel-white",
+          "35ef4c5e77d027ccd7ba7d13f7423aec3a40271f8ce71cf2b91567cd047ca165"
+        ],
+        [
+          "400x240",
+          "channel-black",
+          "e18edb82ed53dcf7973e11f55011a5aefa333f0fb4b672bbdb7ca1048687f1ed"
+        ]
+      ]
+    }
+  ]
 }

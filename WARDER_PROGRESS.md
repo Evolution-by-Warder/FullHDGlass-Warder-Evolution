@@ -28,6 +28,7 @@
 
 - [Pracovný audit](reports/vhannibal-completeness-20261106/README.md) porovnáva nový Picon Motor z 5. novembra, tri dostupné historické inventúry a starší importný výpis so stavom živého katalógu. Obsahuje počty, vylúčenia a samostatný zoznam otvorených referencií.
 - V centrálnych adresároch 498 produkčných ZIPov je 400 476 PNG položiek, bez duplicity názvu v jednom balíku. Všetkých 12 508 doteraz prijatých referencií má v určenom satelitnom balíku deväť variantov. Rozdelenie podľa providerov má osobitné otvorené položky.
+- Tri opravy pre Quest Red, Karavan TV a Viasat Kino sú otestované v 27 ZIPoch na pracovnej vetve. Zo 14 635 platných zdrojových referencií je 10 210 spracovaných, tri opravené v kandidátovi, 3 866 doložene vynechaných a 556 otvorených. Produkčné zlúčenie čaká na schválenie.
 
 ### 6. 11. 2026 – prevzatie satelitného auditu po Vhannibalovi
 
