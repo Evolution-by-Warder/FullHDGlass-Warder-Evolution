@@ -1,0 +1,89 @@
+{
+  "audit_date": "2026-11-06",
+  "conclusion": "VHANNIBAL_NOT_COMPLETE_NO_FULL_GRAPHIC_COMPLIANCE_CERTIFICATE",
+  "production_base_sha": "603218ea8fa51176f686f14f303509a4c64dc7e1",
+  "production_manifest_sha256": "de84a39aa3abc278917d5955b66d1220b7b49abdb6c2a6cb4ea2699f39764467",
+  "candidate_manifest_sha256": "866c8bf9b30dba9f0d068b3febbadef955672ace112107fd52ec7a07dda465ff",
+  "audited_reference_union": 14808,
+  "reference_scope_counts": {
+    "NO_CURRENT_SETTINGS_EVIDENCE": 1162,
+    "CURRENT_DATA_OR_UNSPECIFIED_SERVICE": 100,
+    "HISTORICAL_REPORT_ONLY": 507,
+    "NON_SATELLITE": 367,
+    "CURRENT_TV": 10435,
+    "RADIO_OUT_OF_SCOPE": 2237
+  },
+  "current_tv_references": 10435,
+  "tv_coverage_before": {
+    "COVERED_9_VALID": 10293,
+    "MISSING_VARIANTS": 138,
+    "EMPTY_OR_INVALID_PNG": 4
+  },
+  "tv_coverage_after_working_candidate": {
+    "COVERED_9_VALID": 10315,
+    "MISSING_VARIANTS": 118,
+    "EMPTY_OR_INVALID_PNG": 2
+  },
+  "justified_out_of_scope_references": 2704,
+  "historical_or_no_exact_current_match_references": 1669,
+  "official_downloads_checked": 27,
+  "official_settings_sets_checked": 26,
+  "archive_files_physically_checked": 31,
+  "distinct_current_and_nov3_picon_reference_names": 14104,
+  "latest_picon_items": 14088,
+  "latest_valid_picon_reference_names": 14084,
+  "invalid_latest_png_filenames_quarantined": 4,
+  "production_packages_verified": 498,
+  "production_parts_verified": 1804,
+  "production_pngs_decoded": 400476,
+  "empty_production_png_entries": 21,
+  "repairs": {
+    "coverage_references_repaired": 20,
+    "existing_reference_derivatives_repaired": 6,
+    "distinct_references_repaired": 26,
+    "current_tv_references_improved": 22,
+    "legacy_service_type_aliases_repaired": 4,
+    "new_exact_current_reference_names_added": 19,
+    "partial_reference_completed": 1,
+    "changed_packages": 69,
+    "added_png_entries": 186,
+    "corrected_png_entries": 12,
+    "updated_png_entries": 198,
+    "new_part_bytes": 17018526,
+    "canonical_canal_packages_changed": 0,
+    "radio_references_changed": 0,
+    "publication": "WORKING_BRANCH_ONLY_PENDING_OWNER_APPROVAL"
+  },
+  "current_tv_references_with_exact_outer_edge_deviation": 10183,
+  "v9_review": {
+    "status": "REVIEW_ONLY_NO_PRODUCTION_PUBLICATION",
+    "input_sha256": "1f89611c2b641e3186afdadf66c3d516fcdab19724d0c22279512117544f4023",
+    "production_sha": "603218ea8fa51176f686f14f303509a4c64dc7e1",
+    "source_archive_sha256": "011f4f931088e6a3a6be1e4fe69a22b1909caf522384de371d27cc64b7dbd052",
+    "master_sha256": {
+      "black": "61e69f7fc46e340453bf74ccd7af6ac9d8eba9f8e232884659e1ea99f6abf3fe",
+      "white": "c6ae4a808a65ffc8e6458336fccbfe4216de1e832ec0a9abf800907f2f783589"
+    },
+    "unique_artworks": 5485,
+    "candidate_pngs": 49365,
+    "candidate_references": 8962,
+    "qc_pass_references": 125,
+    "qc_review_references": 8837,
+    "held_references": 1428,
+    "canonical_packages_changed": 0,
+    "radio_pngs_changed": 0,
+    "owner_approval_required": true
+  },
+  "receiver_validation": {
+    "status": "PASS",
+    "production_manifest_validator": "PASS",
+    "receiver_source_ref": "603218ea8fa51176f686f14f303509a4c64dc7e1",
+    "changed_archives_installed": 69,
+    "installed_updated_png_entries": 198,
+    "all_chunk_and_archive_sha256_verified": true
+  },
+  "source_checkpoint_sha256": "a81330ba86a56d108af334d40a05e1e3db6cb034e2337b15ef3c8f2448e2b408",
+  "canonical_canal_packages_preserved": 18,
+  "warder_radio_changes": 0,
+  "publication_status": "DRAFT_PR_47_ONLY_AWAITING_OWNER_APPROVAL"
+}

@@ -1,28 +1,57 @@
-# Vhannibal completeness audit — 2026-11-06
+# Vhannibal – finálny audit úplnosti, 6. 11. 2026
 
-Status: IN PROGRESS. This is not a completeness certificate.
+**Výsledok: Vhannibal nie je úplne spracovaný.** Úplnosť názvov v starom registri nepreukazovala všetky pôvodné sady, všetky referencie ani grafickú zhodu s MASTER V9. Toto je negatívny výsledok auditu, nie certifikát správnosti všetkých log.
 
-Authorized scope: satellite TV picons only; no Warder Radio or radio-picon changes. All fixes and reports stay on this working branch. No merge, release or production publication without owner approval.
+## Rozsah a presné počty
 
-Verified starting points:
-- FullHDGlass main: 603218ea8fa51176f686f14f303509a4c64dc7e1
-- PiconHub main: e90a1fe3a2734b555f48f343284f9103530180fb
-- PiconHub warder-master-production: a740b6da429b8d93eb0f3123158d81b8724f9d19
-- Trezor main: 342e111a9b4adff06121c317d04ba2cfe4f82595
-- GSU main: c3978f69303de59391c1ff43b2563592526e97e2
+Skontrolovaný inventár má **14 808 unikátnych plných referencií**. Zahŕňa 14 104 platných názvov z originálov 3. a 5. novembra, ďalšie historicky evidované referencie a služby zo všetkých 26 aktuálne ponúkaných sád nastavení. Zachované sú celé namespace vrátane nízkych bitov. Autoritatívne počty a jeden riadok pre každú referenciu sú v `summary.json`, `reference-ledger.json.gz` a `reference-ledger.csv.gz`.
 
-Read root AGENTS.md and WARDER_PROGRESS.md. Open satellite PR #45 records only the historical 3388-candidate comparison; it does not establish full source coverage. Production catalogue has 498 packages / 1804 parts (5,946,489,105 bytes). Reconciled existing plans independently materialize 12508 accepted references.
+| Kategória | Počet |
+| --- | ---: |
+| Aktuálne satelitné TV referencie v zjednotení všetkých oficiálnych sád | 10 435 |
+| Rádiové referencie mimo rozsahu | 2 237 |
+| Nesatelitné referencie mimo rozsahu | 367 |
+| Dátové alebo neurčené služby typu 0/3/0xC mimo TV rozsahu | 100 |
+| Spolu oprávnene vynechané mimo TV rozsahu | **2 704** |
+| Historické / bez presnej zhody v aktuálnych nastaveniach | 1 669 |
 
-New evidence: official Vhannibal site offers a November 5 picon release and Motor settings, newer than the previous November 3 source snapshot. Original current picon ZIP downloaded successfully. Next: discover all official source sets, parse every reference and lamedb/transponder/provider record; inspect the real production archives in all nine variants, retain unresolved identities explicitly, protect approved CANAL+ SK/CZ bytes.
+Posledná skupina sa **neoznačuje automaticky za zaniknutú**. Obsahuje aj staré typové aliasy; ich dôkazy a existujúce súbory sú zachované. Štyri chybne pomenované PNG v novom origináli sú karantenizované osobitne a nepočítajú sa ako platné referencie.
 
-The Trezor recursive tree (604 entries, not truncated) contains no Vhannibal-named source archive. Historical Vhannibal imports are documented in PiconHub provenance for September 13 and October 18; original byte availability still to be established.
+| Pokrytie 10 435 TV referencií | Produkčný základ | Kandidát v tomto PR |
+| --- | ---: | ---: |
+| Všetkých 9 PNG prítomných, dekódovateľných, správne rozmery a neprázdne alfa | 10 293 | **10 315** |
+| Chýba aspoň jeden variant | 138 | **118** |
+| Prítomný prázdny PNG | 4 | **2** |
 
-## Source and physical-audit checkpoint
+Tieto počty nevyjadrujú potvrdenie identity loga, jeho aktuálnosti, kontrastu ani úplnú grafickú zhodu s V9. Zjednotenie metadát obsahuje 40 orbitálnych pozícií a 631 rôznych providerových označení vrátane prázdneho. Produkčný katalóg bol skontrolovaný celý: 49 orbitálnych selektorov, šesť satelitných providerových selektorov a pôvodný DTT selektor; DTT sa nemení. Rozpis je v `by-orbital-position.json` a `by-provider.json`.
 
-- Downloaded and CRC-parsed all 26 advertised official downloads: one November 5 picon archive plus 25 settings sets across all six site sections. Also downloaded both identical November 3 original picon copies and both identical matching settings copies from the owner's prior files. SHA-256 inventories are being persisted with the final audit.
-- November 5: 14,088 PNG items, 14,084 valid unique reference names. November 3: 14,081 PNG items, 14,078 valid names. Union: 14,104 valid names; 26 new names, 20 removed, 41 same-reference RGBA changes. Radio references are counted as out of scope and never modified.
-- Full union classification across all 25 current settings sets: 10,338 exact satellite non-radio matches; 2,237 satellite radio; 367 non-satellite; 1,162 lack exact current settings evidence (not treated as proven obsolete). Latest Motor has precedence over older regional metadata.
-- Physical checks have found fully transparent production PNGs for Sky Adventure (13E) and TV5MONDE EUROPE HD (19.2E/0.8W), including legacy service-type aliases. Missing/empty members are real defects, not filename-only candidates.
-- Sampled production White archives also contain legacy Chocholousek frames alongside approved MASTER V9 frames. Thus file/reference coverage alone cannot certify V9 artwork compliance. Full background census is required and visual/editorial uncertainty must remain visible.
-- Frozen renderer and both current MASTER files have been downloaded and their exact documented SHA-256 digests verified. No source/logo or master is invented or altered.
-- Ongoing: all 498 production packages / 1,804 parts are downloaded and decoded incrementally. Safe repairs will copy complete existing nine-variant approved station graphics; ambiguous identities or new compositions remain held for review.
+## Opravy na pracovnej vetve
+
+**26 rôznych referencií, 69 ZIPov a 198 PNG záznamov:** 19 skutočne chýbajúcich plných referencií doplnených v deviatich variantoch; jedna čiastočná referencia doplnená v šiestich chýbajúcich variantoch; šesť existujúcich referencií Sky Adventure vrátane štyroch starších typových aliasov má opravených 12 prázdnych derivátov. Ďalších deväť záznamov rozširuje existujúci Skylink roster o overenú novú RTL GOLD referenciu. Spolu pribudlo 186 PNG záznamov a 12 bolo nahradených. Aktuálnych TV identít sa zlepšilo 22; ďalšie štyri sú zachované staré aliasy.
+
+Nové referencie: RTL GOLD., Telesur English, Daystar, dva CANAL+ EXTRA 2, Boyles, Eco TV, MILADY TV, Natali TV, Provence TV, KARAVAN TV, dva CANAL+ DOKUMENT HD, dva CANAL+ SERIALE HD, Quest Red, Food Network, AL AHAD VOICE a Alsharqiya TV HD. TELE CONGO HD dopĺňa iba chýbajúce veľkosti. Každé prevzatie má plnú referenciu, zdrojovú identitu, lamedb dôkaz, pôvodnú grafiku alebo pixelovú zhodu a deväť kontrolných súčtov. Posledné tri sú overené typové aliasy v regionálnych sadách, nie odhady odvodené iba z namespace.
+
+Grafiky sa pre tieto opravy nekreslili. Opätovne sa používajú existujúce PNG. Nová RTL GOLD používa kanonické schválené CANAL+ bajty. Všetkých **18 CANAL+ SK/CZ balíkov zostáva bitovo identických**, aj pôvodný DTT a všetky rádiové referencie. Existujúce súbory mimo uvedených 12 prázdnych derivátov sú v zmenených archívoch zachované po bajtoch. Tieto opravy dopĺňajú pokrytie; prevzaté staršie grafiky tým automaticky nezískavajú potvrdenie V9.
+
+Dva aktuálne TV5MONDE prípady zostávajú blokované: kanonický 220×132 Transparent je prázdny aj v chránených CANAL+ balíkoch. Ich náhrada by menila schválený podklad, preto sa bez novej grafickej revízie neprepisuje.
+
+## MASTER V9 a identity
+
+Presné SHA256 oboch MASTERov a zmrazeného renderera sú overené. Porovnanie vonkajšieho okraja našlo odchýlku pri 10 183 aktuálnych TV referenciách aspoň v jednom ich orbitálnom balíku. Ide o presný pixelový test okraja, nie o automatický rozsudok, že všetky tieto logá sú nesprávne. Vizuálna vzorka potvrdila aj staršie Chocholousek rámy medzi V9 grafikami.
+
+Z presných pôvodných PNG bolo vytvorených **5 485 grafických návrhov, 49 365 PNG pre 8 962 referencií**. Kontrolou zmrazeného renderera prešlo 55 grafických skupín / 125 referencií. **5 430 skupín / 8 837 referencií má REVIEW**; neboli povýšené na PASS. Ďalších 1 428 referencií zostalo pozastavených z dôvodov uvedených v indexe. Ani PASS sa nepovažuje za súhlas vlastníka s novou grafikou.
+
+[Úspešné zostavenie a kompletné kontrolné hárky](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/actions/runs/42206982364) obsahujú návrhy iba na revíziu. Index, súhrn a prvý hárok sú uložené priamo na vetve; celý artefakt má platnosť do 4. 2. 2027. Originály aktuálnych 27 downloadov sú navyše zachované v súkromnom checkpointe vlastníka `Vhannibal-originals-20261105-audit-checkpoint.zip` (SHA256 `a81330ba86a56d108af334d40a05e1e3db6cb034e2337b15ef3c8f2448e2b408`), takže sa návrhy dajú znovu zostaviť aj po zmene upstream downloadu.
+
+Samostatne sú evidované **osem konkrétnych konfliktov**: Eurosport 2 s grafikou Eurosport 1; dve BLOOMBERGHT referencie s inou Bloomberg edíciou; SPORSMART s grafikou SPORSMART 2; dve Dom Kino Premium referencie bez PREMIUM v originálnej grafike; Dijlah a ALMAWQEF s technickým obrazcom. Ani pixelová zhoda s nesprávnym programom neoprávňuje kopírovať logo. Podrobnosti sú v `identity-conflicts.json`. Ich V9 náhľady sú odmietnuté z hľadiska identity bez ohľadu na kontrastnú klasifikáciu.
+
+## Overenie a pokračovanie
+
+- Vstup: všetkých 1 804 častí zodpovedá manifestu aj SHA256SUMS; všetkých 498 ZIPov má platné CRC. Dekódovaných je všetkých 400 476 PNG. Rozmery sú kontrolované po jednotlivých súboroch; nájdených je 21 prázdnych alfa záznamov v rôznych aliasoch a balíkoch.
+- Opravy: SHA256 všetkých častí a ZIPov, CRC, duplicity, názvy, všetky varianty a zachovanie ostatných PNG overené. Po rozdelení na kanonické časti prešiel produkčný validátor manifestu.
+- Skutočná inštalačná metóda prijímača z pripnutého zdroja prešla na všetkých 69 zmenených archívoch a 198 upravených PNG; nesúvisiaci používateľský súbor zostal pri každej skúške zachovaný. Nie je to RF ani hardvérový test prijímača.
+- Nezískané historické originály zo septembra/októbra a nejasné identity sú výslovne oddelené od skontrolovaných obrazových bajtov. Neexistuje tvrdenie, že bola vizuálne potvrdená správnosť všetkých historických log.
+
+**Produkcia sa nezlúčila a nevydal sa žiadny balík ani IPK.** [PR #47](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/47) je draft. Ďalší vykonateľný krok je posúdiť konkrétne V9 návrhy a identity, osobitne kanonický TV5MONDE. Produkčný merge vyžaduje výslovné schválenie vlastníka. Warder Radio ani jeho rádiové picony neboli upravené.
+
+Všetky zdroje a dostupnostné obmedzenia: [SOURCES.md](SOURCES.md). Strojový register: [summary.json](summary.json), [reference-ledger.csv.gz](reference-ledger.csv.gz). Pôvodné míľniky zostávajú v koreňovom WARDER_PROGRESS.md.

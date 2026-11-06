@@ -1,0 +1,3187 @@
+{
+  "RASCOM": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "(empty upstream provider)": {
+    "references": 1147,
+    "MISSING_VARIANTS": 33,
+    "frame_deviation_references": 1094,
+    "COVERED_9_VALID": 1113,
+    "EMPTY_OR_INVALID_PNG": 1
+  },
+  "Rai": {
+    "references": 195,
+    "COVERED_9_VALID": 195,
+    "frame_deviation_references": 193
+  },
+  "Digital Platform": {
+    "references": 73,
+    "COVERED_9_VALID": 72,
+    "frame_deviation_references": 73,
+    "MISSING_VARIANTS": 1
+  },
+  "Slovak Telekom": {
+    "references": 147,
+    "COVERED_9_VALID": 147,
+    "frame_deviation_references": 147
+  },
+  "Amagi": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "TSA": {
+    "references": 25,
+    "COVERED_9_VALID": 23,
+    "frame_deviation_references": 23,
+    "MISSING_VARIANTS": 2
+  },
+  "M7": {
+    "references": 264,
+    "COVERED_9_VALID": 264,
+    "frame_deviation_references": 256
+  },
+  "M7 Group": {
+    "references": 243,
+    "COVERED_9_VALID": 242,
+    "frame_deviation_references": 239,
+    "MISSING_VARIANTS": 1
+  },
+  "DigitALB": {
+    "references": 91,
+    "COVERED_9_VALID": 91,
+    "frame_deviation_references": 91
+  },
+  "VIVACOM": {
+    "references": 165,
+    "COVERED_9_VALID": 165,
+    "frame_deviation_references": 162
+  },
+  "neosat": {
+    "references": 159,
+    "COVERED_9_VALID": 159,
+    "frame_deviation_references": 158
+  },
+  "Bulsatcom": {
+    "references": 122,
+    "COVERED_9_VALID": 122,
+    "frame_deviation_references": 122
+  },
+  "Discovery": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "CANAL+": {
+    "references": 164,
+    "COVERED_9_VALID": 157,
+    "frame_deviation_references": 141,
+    "MISSING_VARIANTS": 7
+  },
+  "SES": {
+    "references": 86,
+    "COVERED_9_VALID": 86,
+    "frame_deviation_references": 86
+  },
+  "T-HT": {
+    "references": 67,
+    "COVERED_9_VALID": 67,
+    "frame_deviation_references": 67
+  },
+  "Global": {
+    "references": 10,
+    "COVERED_9_VALID": 10,
+    "frame_deviation_references": 10
+  },
+  "IP Broadcast": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "BASIS 1": {
+    "references": 26,
+    "COVERED_9_VALID": 26,
+    "frame_deviation_references": 26
+  },
+  "C3T": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RADIO BRUNO": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "ProSiebenSat.1": {
+    "references": 41,
+    "COVERED_9_VALID": 41,
+    "frame_deviation_references": 41
+  },
+  "BetaDigital": {
+    "references": 66,
+    "COVERED_9_VALID": 66,
+    "frame_deviation_references": 66
+  },
+  "GLOBECAST-B": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "GLOBECAST": {
+    "references": 35,
+    "COVERED_9_VALID": 35,
+    "frame_deviation_references": 34
+  },
+  "MY TV": {
+    "references": 32,
+    "COVERED_9_VALID": 32,
+    "frame_deviation_references": 31
+  },
+  "Harris": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SKY": {
+    "references": 72,
+    "COVERED_9_VALID": 72,
+    "frame_deviation_references": 72
+  },
+  "1plus1 Media": {
+    "references": 19,
+    "COVERED_9_VALID": 19,
+    "frame_deviation_references": 19
+  },
+  "VIASAT": {
+    "references": 47,
+    "COVERED_9_VALID": 47,
+    "frame_deviation_references": 47
+  },
+  "Suresh": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "TOTOPARTNER": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "In Aria!": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "EUTELSAT": {
+    "references": 94,
+    "COVERED_9_VALID": 92,
+    "frame_deviation_references": 94,
+    "MISSING_VARIANTS": 2
+  },
+  "Persidera": {
+    "references": 93,
+    "COVERED_9_VALID": 92,
+    "frame_deviation_references": 92,
+    "MISSING_VARIANTS": 1
+  },
+  "Telenor": {
+    "references": 349,
+    "COVERED_9_VALID": 347,
+    "frame_deviation_references": 347,
+    "MISSING_VARIANTS": 2
+  },
+  "Nilesat": {
+    "references": 123,
+    "COVERED_9_VALID": 123,
+    "frame_deviation_references": 123
+  },
+  "Streamline Media": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "BFBS": {
+    "references": 42,
+    "COVERED_9_VALID": 30,
+    "frame_deviation_references": 31,
+    "MISSING_VARIANTS": 12
+  },
+  "AREF": {
+    "references": 195,
+    "COVERED_9_VALID": 180,
+    "frame_deviation_references": 163,
+    "MISSING_VARIANTS": 15
+  },
+  "Orion Express": {
+    "references": 290,
+    "COVERED_9_VALID": 290,
+    "frame_deviation_references": 290
+  },
+  "BRT": {
+    "references": 24,
+    "MISSING_VARIANTS": 23,
+    "frame_deviation_references": 24,
+    "COVERED_9_VALID": 1
+  },
+  "RAI": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 6
+  },
+  "STN": {
+    "references": 15,
+    "COVERED_9_VALID": 15,
+    "frame_deviation_references": 15
+  },
+  "IKOMG": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "DU": {
+    "references": 61,
+    "COVERED_9_VALID": 60,
+    "frame_deviation_references": 59,
+    "MISSING_VARIANTS": 1
+  },
+  "Warner Bros. Discovery": {
+    "references": 35,
+    "COVERED_9_VALID": 35,
+    "frame_deviation_references": 35
+  },
+  "Antik": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "iKO Media Group": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "GLOBAL": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "A1 Broadcasting": {
+    "references": 106,
+    "COVERED_9_VALID": 106,
+    "frame_deviation_references": 106
+  },
+  "A1 HR": {
+    "references": 44,
+    "COVERED_9_VALID": 44,
+    "frame_deviation_references": 44
+  },
+  "Digitalb": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "EshailSat": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "RTL": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "SMTD DTH": {
+    "references": 8,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7,
+    "MISSING_VARIANTS": 1
+  },
+  "Net Insight AB": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ORF": {
+    "references": 18,
+    "COVERED_9_VALID": 18,
+    "frame_deviation_references": 18
+  },
+  "-": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "ORS": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "MIT-xperts GmbH": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "TV2000plus": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTI": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TTNET": {
+    "references": 55,
+    "COVERED_9_VALID": 55,
+    "frame_deviation_references": 55
+  },
+  "OVERON": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "VALENZA TV": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "NOVA Broadcasting Group": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MULTI 4": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "COSMONOVA LLC": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "M-Three Satcom": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "pink": {
+    "references": 48,
+    "COVERED_9_VALID": 48,
+    "frame_deviation_references": 48
+  },
+  "ARQIVA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "EshialSat": {
+    "references": 11,
+    "COVERED_9_VALID": 11,
+    "frame_deviation_references": 11
+  },
+  "NILESAT": {
+    "references": 127,
+    "COVERED_9_VALID": 127,
+    "frame_deviation_references": 127
+  },
+  "MENASAT": {
+    "references": 26,
+    "COVERED_9_VALID": 26,
+    "frame_deviation_references": 25
+  },
+  "AMC Networks Int CE": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "Asharq Bloomberg": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "Overon": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "Belintersat": {
+    "references": 68,
+    "COVERED_9_VALID": 68,
+    "frame_deviation_references": 65
+  },
+  "Mediaset": {
+    "references": 62,
+    "COVERED_9_VALID": 62,
+    "frame_deviation_references": 62
+  },
+  "iKOMG": {
+    "references": 10,
+    "COVERED_9_VALID": 10,
+    "frame_deviation_references": 10
+  },
+  "RTSH": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 4
+  },
+  "Rai Way": {
+    "references": 16,
+    "COVERED_9_VALID": 16,
+    "frame_deviation_references": 16
+  },
+  "MCK": {
+    "references": 24,
+    "COVERED_9_VALID": 18,
+    "frame_deviation_references": 18,
+    "MISSING_VARIANTS": 6
+  },
+  "INTELSAT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 0
+  },
+  "SMTD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "HTB+": {
+    "references": 164,
+    "COVERED_9_VALID": 162,
+    "frame_deviation_references": 155,
+    "MISSING_VARIANTS": 2
+  },
+  "Gulfsat": {
+    "references": 29,
+    "COVERED_9_VALID": 29,
+    "frame_deviation_references": 28
+  },
+  "Dasto Semtel": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "KABELIO.CH": {
+    "references": 59,
+    "COVERED_9_VALID": 59,
+    "frame_deviation_references": 41
+  },
+  "SkyItalia": {
+    "references": 135,
+    "COVERED_9_VALID": 133,
+    "frame_deviation_references": 131,
+    "EMPTY_OR_INVALID_PNG": 2
+  },
+  "BSkyB": {
+    "references": 562,
+    "COVERED_9_VALID": 560,
+    "frame_deviation_references": 558,
+    "MISSING_VARIANTS": 2
+  },
+  "SES ASTRA": {
+    "references": 22,
+    "COVERED_9_VALID": 22,
+    "frame_deviation_references": 22
+  },
+  "TVN WBD": {
+    "references": 27,
+    "COVERED_9_VALID": 27,
+    "frame_deviation_references": 27
+  },
+  "Du": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "SNRT": {
+    "references": 51,
+    "COVERED_9_VALID": 51,
+    "frame_deviation_references": 51
+  },
+  "HellasSat": {
+    "references": 14,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 9,
+    "MISSING_VARIANTS": 1
+  },
+  "Palsat": {
+    "references": 21,
+    "COVERED_9_VALID": 21,
+    "frame_deviation_references": 21
+  },
+  "OSN": {
+    "references": 32,
+    "COVERED_9_VALID": 32,
+    "frame_deviation_references": 32
+  },
+  "Globecast UK": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "A1": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "TV QUI HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "VR": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "GlobeCast": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ECLUTCH": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "MBC": {
+    "references": 63,
+    "COVERED_9_VALID": 63,
+    "frame_deviation_references": 63
+  },
+  "France Médias Monde": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "Towercom": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "ServusTV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "DF1 Medien": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Gulsat": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "NOITV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVL": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telegranducato": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELETRURIA 2000srl": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "50 CANALE": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ITALIA 7": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TSD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Alert System TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Al Jazeera": {
+    "references": 24,
+    "COVERED_9_VALID": 24,
+    "frame_deviation_references": 24
+  },
+  "ViewMedia": {
+    "references": 90,
+    "COVERED_9_VALID": 90,
+    "frame_deviation_references": 90
+  },
+  "BMT": {
+    "references": 9,
+    "COVERED_9_VALID": 9,
+    "frame_deviation_references": 9
+  },
+  "TVCM": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "VERA TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVRS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ROSSINI": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SLM": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "BASIS 2": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "TRT": {
+    "references": 40,
+    "COVERED_9_VALID": 40,
+    "frame_deviation_references": 40
+  },
+  "TDA": {
+    "references": 58,
+    "COVERED_9_VALID": 58,
+    "frame_deviation_references": 58
+  },
+  "SETTE GOLD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telemolise": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "AjV-Ottcast": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "TELEREGIONE": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Vera Abruzzo": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "BBC": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ECTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CESKA TELEVIZE": {
+    "references": 9,
+    "COVERED_9_VALID": 9,
+    "frame_deviation_references": 9
+  },
+  "LIRA TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "STILETV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Paramount": {
+    "references": 22,
+    "COVERED_9_VALID": 22,
+    "frame_deviation_references": 22
+  },
+  "Tele Dehon bkp": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Vislink": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Alsumaria TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Hellas SAT": {
+    "references": 12,
+    "COVERED_9_VALID": 11,
+    "frame_deviation_references": 11,
+    "MISSING_VARIANTS": 1
+  },
+  "{Y": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTA INT.": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELEVISA": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "Romania TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "kSCG": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SBA": {
+    "references": 58,
+    "COVERED_9_VALID": 58,
+    "frame_deviation_references": 58
+  },
+  "CM5000": {
+    "references": 3,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 3,
+    "COVERED_9_VALID": 2
+  },
+  "Eurovision Services": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "HDT": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "Dogan Media International": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CSAT": {
+    "references": 146,
+    "COVERED_9_VALID": 145,
+    "frame_deviation_references": 146,
+    "MISSING_VARIANTS": 1
+  },
+  "NTN": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "M-Three satcom": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "beIN SPORTS": {
+    "references": 28,
+    "COVERED_9_VALID": 28,
+    "frame_deviation_references": 28
+  },
+  "beIN": {
+    "references": 44,
+    "COVERED_9_VALID": 44,
+    "frame_deviation_references": 44
+  },
+  "beIN Sports": {
+    "references": 19,
+    "COVERED_9_VALID": 19,
+    "frame_deviation_references": 19
+  },
+  "JMC": {
+    "references": 59,
+    "COVERED_9_VALID": 59,
+    "frame_deviation_references": 59
+  },
+  "Calabria TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telespazio TV HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "LA TV CROSSMEDIALE": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Harmonic - NT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Uno4-Ighitta": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CARTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TV3 Group": {
+    "references": 73,
+    "COVERED_9_VALID": 73,
+    "frame_deviation_references": 73
+  },
+  "ARD": {
+    "references": 38,
+    "COVERED_9_VALID": 38,
+    "frame_deviation_references": 38
+  },
+  "SHOW HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "HABERTURK HD": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "BLOOMBERGHT HD": {
+    "references": 2,
+    "MISSING_VARIANTS": 2,
+    "frame_deviation_references": 0
+  },
+  "HT SPOR HD": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SHOW MAX HD": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "KANAL 1 HD": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SHOW TURK HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ZDFvision": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "DEMIROREN MEDYA": {
+    "references": 177,
+    "COVERED_9_VALID": 176,
+    "frame_deviation_references": 176,
+    "MISSING_VARIANTS": 1
+  },
+  "Amtecco": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DEMIRORENMEDYA": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "Hellas Sat": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "TCLM": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "KSCG": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "DTVI": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Globecast": {
+    "references": 29,
+    "COVERED_9_VALID": 28,
+    "frame_deviation_references": 29,
+    "EMPTY_OR_INVALID_PNG": 1
+  },
+  "EWTN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ATV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Etisalat": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "GUC TELEKOM MEDYA": {
+    "references": 26,
+    "COVERED_9_VALID": 26,
+    "frame_deviation_references": 25
+  },
+  "RUDAW": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MEDIAPASON": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Eutelsat": {
+    "references": 51,
+    "COVERED_9_VALID": 51,
+    "frame_deviation_references": 51
+  },
+  "TELECUPOLE-TLT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Primantenna": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RETE 7": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "GRP TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "VIDEONOVARA": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "TV5Monde": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "AB SAT": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "Schweizer Radio und Fernsehen": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "Radio Television Suisse": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SRG SSR": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Radiotelevisione svizzera": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "MOI": {
+    "references": 10,
+    "COVERED_9_VALID": 10,
+    "frame_deviation_references": 10
+  },
+  "Arqiva": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "Telekom Srbija": {
+    "references": 349,
+    "COVERED_9_VALID": 349,
+    "frame_deviation_references": 347
+  },
+  "DIGI HU": {
+    "references": 42,
+    "COVERED_9_VALID": 42,
+    "frame_deviation_references": 37
+  },
+  "DIGITALB": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SMR6": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "MTVA": {
+    "references": 12,
+    "COVERED_9_VALID": 12,
+    "frame_deviation_references": 12
+  },
+  "Svoboda Satellite": {
+    "references": 12,
+    "COVERED_9_VALID": 12,
+    "frame_deviation_references": 5
+  },
+  "Telefonica Servicios Audiovisuales": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTV Networks Europe": {
+    "references": 10,
+    "COVERED_9_VALID": 10,
+    "frame_deviation_references": 10
+  },
+  "Intelsat": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "Movistar+": {
+    "references": 101,
+    "COVERED_9_VALID": 101,
+    "frame_deviation_references": 101
+  },
+  "DIGITAL+": {
+    "references": 37,
+    "COVERED_9_VALID": 37,
+    "frame_deviation_references": 37
+  },
+  "MOVISTAR+": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "Movistar": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "PRISA TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "PRISAT TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Espansione TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "EI-TOWERS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "PIU VALLI TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telecolor": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "40412": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "beIN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MHD7": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "RTTR OPIM TRENTO": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telepace_Trento": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELEPADOVA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telenuovo-VR": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MEDIANORDEST": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "VIDEOMEDIA-TN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "EIT": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "CCTV": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "TURKSAT": {
+    "references": 159,
+    "COVERED_9_VALID": 158,
+    "frame_deviation_references": 157,
+    "MISSING_VARIANTS": 1
+  },
+  "OIV": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "CBC": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "TELECOLOR": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TravelXP": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MX1": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "A1 BG": {
+    "references": 141,
+    "COVERED_9_VALID": 141,
+    "frame_deviation_references": 141
+  },
+  "A1 Broadcsting": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "A1 GB": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Cyfrowy Polsat S.A.": {
+    "references": 140,
+    "COVERED_9_VALID": 140,
+    "frame_deviation_references": 140
+  },
+  "A1BG": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "DIGI": {
+    "references": 15,
+    "COVERED_9_VALID": 15,
+    "frame_deviation_references": 15
+  },
+  "Harmonic": {
+    "references": 44,
+    "COVERED_9_VALID": 39,
+    "frame_deviation_references": 39,
+    "MISSING_VARIANTS": 5
+  },
+  "TV-Provider": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "GR1 B": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "TTS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sentech": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "SOREAD 2M": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "WNS": {
+    "references": 125,
+    "COVERED_9_VALID": 125,
+    "frame_deviation_references": 122
+  },
+  "Hope Channel": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "ALMAJD": {
+    "references": 21,
+    "COVERED_9_VALID": 21,
+    "frame_deviation_references": 21
+  },
+  "Persiana Cast": {
+    "references": 31,
+    "COVERED_9_VALID": 31,
+    "frame_deviation_references": 29
+  },
+  "SIS": {
+    "references": 12,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5,
+    "MISSING_VARIANTS": 7
+  },
+  "GAZPROM_SS": {
+    "references": 11,
+    "COVERED_9_VALID": 11,
+    "frame_deviation_references": 9
+  },
+  "Tring TV": {
+    "references": 63,
+    "COVERED_9_VALID": 63,
+    "frame_deviation_references": 63
+  },
+  "GR1": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Dolce": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "Vector A.G": {
+    "references": 18,
+    "COVERED_9_VALID": 18,
+    "frame_deviation_references": 18
+  },
+  "Encoder": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SID National Geographic HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Star Channel HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID AXN HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "NOS Studios HD": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Kuriakos TV HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "AMC Break": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Baby TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Vin TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canção Nova": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Disney Junior": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canal de Teste": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Intecgroup": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "M-Three": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "12 TV PARMA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sestarete & Rete 8": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canale Italia": {
+    "references": 22,
+    "COVERED_9_VALID": 22,
+    "frame_deviation_references": 22
+  },
+  "Icaro TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RADIO STUDIO DELTA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "E TV RETE 7": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "NOVA": {
+    "references": 128,
+    "COVERED_9_VALID": 128,
+    "frame_deviation_references": 124
+  },
+  "SIS Ltd": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telespazio": {
+    "references": 36,
+    "COVERED_9_VALID": 36,
+    "frame_deviation_references": 36
+  },
+  "DVB-S2 8PSK 10939H 330.0Â°E": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sport TV 4 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTV38": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Toscana TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVR Teleitalia 7Gold": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELEREGIONE TOSCANA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Hollywood": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S2 8PSK 12398H 330.0Â°E": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "PlayBox Technology Limited": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Artmotion": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Odisseia": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Eurosport 2": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Cartoon Network": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canal Q": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVR": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SIC Radical": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SIC Caras": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "FTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MCM Pop": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Bloomberg": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CNBC": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TV Galicia": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ERT": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "TELEDIFFUSION DU CONGO": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 0
+  },
+  "Twofour54": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "HenMax": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "SV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Deutsche Welle": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "EasyTools": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Service Provider": {
+    "references": 19,
+    "MISSING_VARIANTS": 2,
+    "frame_deviation_references": 17,
+    "COVERED_9_VALID": 17
+  },
+  "DigiTV": {
+    "references": 48,
+    "COVERED_9_VALID": 48,
+    "frame_deviation_references": 48
+  },
+  "e'TV MARCHE": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "7 GOLD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "FANO TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "e'TV +": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Henmax": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "BBC World Service": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "FFmpeg": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "SBT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Profen": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "AXN Movies HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID 24 Kitchen HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Star Crime HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Travel Channel": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "AXN White HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Eurosport 1 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Star Life HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CONNECTO.TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "CANALE 10": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "GOLD TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Teleuniverso": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "GOLDTV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Amici Network": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Radio Roma Tv": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TeleRoma": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "MANA' MANA' SPORT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Tele In": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "GLOBO TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canale81": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Vivacom": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "RETE8": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "IKO Media Group": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Radio Parsifal": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "BOVA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "EPIQA": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "phabvision": {
+    "references": 18,
+    "COVERED_9_VALID": 18,
+    "frame_deviation_references": 18
+  },
+  "Cyfrowy Polsat S.A": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "Volant Media": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "Cyfrowy Polsat SA": {
+    "references": 9,
+    "COVERED_9_VALID": 9,
+    "frame_deviation_references": 9
+  },
+  "ID Investigation Discovery": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "BasmaRadio": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Libya Alaan": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "National Geographic WILD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "PROTV": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "Protv": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "IRAN PRESS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "OMAN TV": {
+    "references": 9,
+    "COVERED_9_VALID": 9,
+    "frame_deviation_references": 9
+  },
+  "EBU Eurovision": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CANALE 21": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELEVOMERO": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canale 9": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CANALE 8": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Otto Channel": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Primativvù": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "KISS KISS NAPOLI TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ASSOCIAZIONE DREAMER": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CANALE 58": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TDS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "VIDEONOLA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "105TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELENOSTRA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RADIO MARTE TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "NOTIX TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MuxIP": {
+    "references": 20,
+    "COVERED_9_VALID": 20,
+    "frame_deviation_references": 20
+  },
+  "Itep Pictures": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RSCC": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "Antena Group": {
+    "references": 7,
+    "COVERED_9_VALID": 7,
+    "frame_deviation_references": 7
+  },
+  "SES USA": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "ONT TUNISIA": {
+    "references": 12,
+    "COVERED_9_VALID": 12,
+    "frame_deviation_references": 12
+  },
+  "DVB-S2 8PSK 11695V 7.0Â°E": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 1
+  },
+  "ADMC": {
+    "references": 12,
+    "COVERED_9_VALID": 12,
+    "frame_deviation_references": 12
+  },
+  "khalij": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SYR": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S2 QPSK 11593V 45.0Â°E": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 12520V 45.0Â°E": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 1
+  },
+  "TandbergTV": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "DVB-S QPSK 11089V 66.0Â°E": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 1
+  },
+  "THAQALAYN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RAI Radio Televisione Italiana": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "none": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "EPQ": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DMC": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 0
+  },
+  "AL Manar": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SHAFIK/ERIC/ Television": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Basra": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "IMAM ALI HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DTVi": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DBS": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "BAYYINATTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Telstra": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "Jose Mederos": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "IDC": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TANDBERG Television": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Al Arabiya": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Al Dawri Al Kass": {
+    "references": 11,
+    "COVERED_9_VALID": 11,
+    "frame_deviation_references": 11
+  },
+  "QMC": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "TDA DZ": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S2 QPSK 11341V 345.0Â°E": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "du": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "IRIB": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "DM-SAT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Service 1": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "PEOPLETV-RETE7": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DAZN 1": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DAZN 4": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DAZN 5": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 12363V 19.2Â°E": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "ERTU": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "FTA BIS-AFRICA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Video Calabria": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Teleuropa": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ESPERIA TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "KTO": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "L'altro corriere": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "REGGIO TV HD": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Telemormanno": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "JONICA RADIO TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Eccellenza Calabria": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Auranex": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ADN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ONDASARDA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CATALAN TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SUPERTV ARISTANIS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Media Group": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DOGUS": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "TURKUVAZ": {
+    "references": 11,
+    "COVERED_9_VALID": 11,
+    "frame_deviation_references": 11
+  },
+  "TV Group": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Custom": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "A": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTL Deutschland": {
+    "references": 12,
+    "COVERED_9_VALID": 12,
+    "frame_deviation_references": 12
+  },
+  "Total TV": {
+    "references": 117,
+    "COVERED_9_VALID": 117,
+    "frame_deviation_references": 117
+  },
+  "RMC BFM": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Syrendis": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 0
+  },
+  "hirTV / AH / HDT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "AUX C": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ALARABIYA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ENCODER": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TWDC TURKEY": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MyIntProvider": {
+    "references": 5,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4,
+    "MISSING_VARIANTS": 1
+  },
+  "TVCine ACTION HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Trace Toca": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Nickelodeon": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Fuel TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Caça e Pesca": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Nick Jr.": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Discovery HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Disney Channel": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S2 8PSK 12437H 330.0Â°E": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SBB": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "DVB-S2 8PSK 12360H 330.0Â°E": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SID SIC N": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Panda": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "V+TVI": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DCM STA2-61P/FR/STA": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 1
+  },
+  "ARQIVA LTD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVCine TOP HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 12682V 68.5Â°E": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "OTE": {
+    "references": 110,
+    "COVERED_9_VALID": 110,
+    "frame_deviation_references": 110
+  },
+  "INTECGROUP": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELECITY": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "ΟΤΕ": {
+    "references": 21,
+    "COVERED_9_VALID": 21,
+    "frame_deviation_references": 21
+  },
+  "VCO AZZURRA TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Motori TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ARABSAT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TURKMEDYA": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "Telewizja Polska S.A.": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 1
+  },
+  "DIGEA": {
+    "references": 14,
+    "COVERED_9_VALID": 14,
+    "frame_deviation_references": 14
+  },
+  "ZAP VIVA - PROD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Adtec Digital": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Oman TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "AMC HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Motorvision": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "NewsNOW": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SIC Novelas": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canal 11 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "AB Sat": {
+    "references": 17,
+    "COVERED_9_VALID": 17,
+    "frame_deviation_references": 17
+  },
+  "SENTECH": {
+    "references": 5,
+    "COVERED_9_VALID": 5,
+    "frame_deviation_references": 5
+  },
+  "TV2000": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canal NOS": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "Tring": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "SIS Limited": {
+    "references": 9,
+    "COVERED_9_VALID": 9,
+    "frame_deviation_references": 9
+  },
+  "tda": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVCine EMOTION HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Casa e Cozinha": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVCine EDITION HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ACISPORT TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "PRIMASET": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 0
+  },
+  "SERVICEPROVIDER": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "UBN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTNTV": {
+    "references": 13,
+    "COVERED_9_VALID": 13,
+    "frame_deviation_references": 13
+  },
+  "MTNTTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTV Network europe": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SRTV": {
+    "references": 6,
+    "COVERED_9_VALID": 6,
+    "frame_deviation_references": 6
+  },
+  "RETE 7 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SISAL": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "AL KASS": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "sisal": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "FOXGE": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "La2": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "AXN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "BARNA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MAINDATA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 11097V 19.2Â°E": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Digital +": {
+    "references": 4,
+    "COVERED_9_VALID": 4,
+    "frame_deviation_references": 4
+  },
+  "Digital+": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "Contactanos": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 10847V 19.2Â°E": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DIGITAL +": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "MEZZO": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVE 1": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TCM": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "NC": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CMA30": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TDEP": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CANAL +": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CAZPES": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "COSMO": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "24H": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Playboy TV": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "NATGEO": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CL13": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 10936V 19.2Â°E": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SES Astra": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "MTTNTV": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "RADIO MATER DAB*": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TSN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SUPERTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "COELMEDIA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTNNTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP 1 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP 2 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SIC HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVI HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP Notícias": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CNN Portugal": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CMTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Globo": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Porto Canal": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "A Bola TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Cartoonito": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SAB": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Canal História": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Djemba ITC": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Djemba IT C": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP Memória": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ARTV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP África": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP Açores": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "RTP Madeira": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TV Record": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Vb33": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "nilesat": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SIC Mulher": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "CNN": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Star Comedy": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Star Movies": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Euronews": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Venus": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sky News": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DTK-SATELIO": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "PTM": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "iKO Media": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELEMEDIA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Turkmenistan": {
+    "references": 8,
+    "COVERED_9_VALID": 8,
+    "frame_deviation_references": 8
+  },
+  "Sport TV 5 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Sport TV 1 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sport TV 6 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Sport TV 2 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID Sport TV 3 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID BTV 1 HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sport TV 7": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "France 24 (I)": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Hot": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Mezzo": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "OneToro TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Panda Kids": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVE 24h": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVE Internacional": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TRACE": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "DAZN 2": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DAZN 3": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "E! Entertainment": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SID SIC K": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "ZAP Viva HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SYFY": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TLC": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TV5 Monde": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TVI Reality": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "SPORT TV+": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "Sporting TV": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "MTV Portugal": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELENORD HD": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TELERADIOPACE": {
+    "references": 2,
+    "COVERED_9_VALID": 2,
+    "frame_deviation_references": 2
+  },
+  "TEGENOVA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "TLS": {
+    "references": 3,
+    "COVERED_9_VALID": 3,
+    "frame_deviation_references": 3
+  },
+  "PRIMANTENNA": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "UT": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S QPSK 12418V 359.2Â°E": {
+    "references": 1,
+    "MISSING_VARIANTS": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S2 8PSK 12671V 330.0Â°E": {
+    "references": 5,
+    "MISSING_VARIANTS": 5,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 12631V 330.0Â°E": {
+    "references": 4,
+    "MISSING_VARIANTS": 4,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 12584V 330.0Â°E": {
+    "references": 2,
+    "MISSING_VARIANTS": 2,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 QPSK 12562H 330.0Â°E": {
+    "references": 4,
+    "MISSING_VARIANTS": 4,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 11653H 330.0Â°E": {
+    "references": 3,
+    "MISSING_VARIANTS": 3,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 11675H 330.0Â°E": {
+    "references": 7,
+    "MISSING_VARIANTS": 7,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 12548V 330.0Â°E": {
+    "references": 4,
+    "MISSING_VARIANTS": 4,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 11502V 330.0Â°E": {
+    "references": 2,
+    "MISSING_VARIANTS": 2,
+    "frame_deviation_references": 0
+  },
+  "MyServiceProvider": {
+    "references": 4,
+    "MISSING_VARIANTS": 2,
+    "frame_deviation_references": 3,
+    "COVERED_9_VALID": 2
+  },
+  "EUMETSATServer2": {
+    "references": 1,
+    "COVERED_9_VALID": 1,
+    "frame_deviation_references": 1
+  },
+  "DVB-S2 8PSK 11222H 330.0Â°E": {
+    "references": 11,
+    "MISSING_VARIANTS": 11,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 11302H 330.0Â°E": {
+    "references": 10,
+    "MISSING_VARIANTS": 10,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 11347H 330.0Â°E": {
+    "references": 8,
+    "MISSING_VARIANTS": 8,
+    "frame_deviation_references": 0
+  },
+  "DVB-S2 8PSK 11382H 330.0Â°E": {
+    "references": 10,
+    "MISSING_VARIANTS": 10,
+    "frame_deviation_references": 0
+  }
+}
