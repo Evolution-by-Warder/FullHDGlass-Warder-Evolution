@@ -1,12 +1,12 @@
 # Warder Evolution – stav projektu
 
-**Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
+**Aktualizované 6. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
 
 ## Overené vetvy
 
 | Repozitár a vetva | Posledný overený commit | Stav |
 | --- | --- | --- |
-| FullHDGlass-Warder-Evolution · `main` | [`2079d56bb8f3337d2196d055ea3938952dc91077`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/2079d56bb8f3337d2196d055ea3938952dc91077) | Zlúčenie Vhannibal [PR #42](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/42). Posledný doložený stabilný IPK je [1.0.69](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.69). |
+| FullHDGlass-Warder-Evolution · `main` | [`5966de55871c1fd3ab912885ab102a0a100b853e`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5966de55871c1fd3ab912885ab102a0a100b853e) | [PR #43](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/43) zaviedol spoločný register a pokyny pre nový Work. Posledný doložený stabilný IPK je [1.0.69](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/releases/tag/v1.0.69). |
 | PiconHub-Warder-Evolution · `main` | [`e90a1fe3a2734b555f48f343284f9103530180fb`](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/e90a1fe3a2734b555f48f343284f9103530180fb) | Verejné overenie selektorov cez [PR #63](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/pull/63). Posledný doložený stabilný IPK je [0.1.44](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/releases/tag/v0.1.44). |
 | PiconHub-Warder-Evolution · `warder-master-production` | [`a740b6da429b8d93eb0f3123158d81b8724f9d19`](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/commit/a740b6da429b8d93eb0f3123158d81b8724f9d19) | Overený HEAD samostatnej produkčnej vetvy. |
 | Warder Radio a GSU | Posledné doložené verzie v odovzdávke sú 0.1.8 a 13.41-r4. | Pred samostatnou úlohou over aktuálne vydanie a SHA príslušného repozitára. |
@@ -23,6 +23,13 @@
 | GSU a Trezor | GSU je súčasťou [spoločného stabilného vydania](docs/COMMON-STABLE-20261102.md). [Trezor](https://github.com/Evolution-by-Warder/Trezor) uchováva zdrojové archívy a checkpointy. Pri práci s jeho podkladmi vychádzaj z presného SHA uvedeného v príslušnom produkčnom manifeste alebo reporte. |
 
 ## Denník významných zmien
+
+### 6. 11. 2026 – prevzatie satelitného auditu po Vhannibalovi
+
+- Po schválení je [PR #43](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/pull/43) zlúčený. `AGENTS.md` aj `WARDER_PROGRESS.md` na `main` boli overené voči schváleným verziám.
+- Overený verejný [manifest](assets/warder/downloads/picons/channels/manifest.json) a jeho SHA256. Všetkých 1 804 deklarovaných častí má záznam v `SHA256SUMS` a súbor v Git strome. Katalóg obsahuje 498 ZIPov, 56 selektorov a 166 kombinácií selektora a rozmeru, každú s troma pozadiami. Táto kontrola overila úplnosť katalógu a evidencie častí. Fyzické testy ZIPov sú zaznamenané pri PR #42 nižšie.
+- Z pripnutého vstupu bol znova zostavený `plans.json`. Overených 12 508 unikátnych plných referencií, všetkých 12 503 pôvodných referencií zachovaných, päť pridaných a jeden záznam CHC-HD aktualizovaný. Živý manifest eviduje 193 výnimiek.
+- Otvorený [PiconHub #30](https://github.com/Evolution-by-Warder/PiconHub-Warder-Evolution/issues/30) obsahuje historické porovnanie 3 388 kandidátov podľa názvov súborov a vtedajších bouquetov. Na novú dávku použi živý katalóg po zlúčení #40–#42. Starý počet nevyjadruje aktuálne chýbajúce stanice. Najbližší krok je porovnať nové alebo zmenené služby s presnými referenciami a grafikami v živých ZIPoch a prehodnocovať výnimky len s novým dôkazom.
 
 ### 6. 11. 2026 – Vhannibal PR #42 v produkcii
 
