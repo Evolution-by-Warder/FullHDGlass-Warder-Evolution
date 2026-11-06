@@ -10,5 +10,5 @@
 
 ## Samostatný Warder Radio
 
-- Samostatný plugin Warder Radio a jeho rádiové picony patria výhradne rádiovému Worku. Stav a pravidlá odovzdania vedie v [RADIO_PROGRESS.md](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/blob/work/radio-continuity/RADIO_PROGRESS.md) a [rádiových pokynoch](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/blob/work/radio-continuity/AGENTS.md). Po zlúčení rádiovej dokumentačnej vetvy používaj tieto súbory z jej hlavnej vetvy.
+- Samostatný plugin Warder Radio a jeho rádiové picony patria výhradne rádiovému Worku. Stav a pravidlá odovzdania vedie v [RADIO_PROGRESS.md](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/blob/main/RADIO_PROGRESS.md) a [rádiových pokynoch](https://github.com/Evolution-by-Warder/Radio-Warder-Evolution/blob/main/AGENTS.md).
 - V spoločnom Worku sa riaď existujúcimi pravidlami pre skin, PiconHub a satelitné picony. Samostatný plugin a jeho rádiové balíky odovzdaj rádiovému Worku.
