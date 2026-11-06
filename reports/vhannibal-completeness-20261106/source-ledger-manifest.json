@@ -1,0 +1,56 @@
+{
+  "bytes": 1636293,
+  "sha256": "0abed8dfcfc96429261916a3ca526d69fbbf72e5c2a7d7e72ee1ab067b9ea5fd",
+  "parts": [
+    {
+      "filename": "source-ledger.json.gz.part00",
+      "bytes": 180000,
+      "sha256": "1974cacb7b906d4b36f52e6cb0253bb091d14a9f9633fc40b27b511e4dadccbf"
+    },
+    {
+      "filename": "source-ledger.json.gz.part01",
+      "bytes": 180000,
+      "sha256": "41b17c71b0ddd2b2c3170cd2db42681b7cac1b7b813ad937c38d0f61de3f5456"
+    },
+    {
+      "filename": "source-ledger.json.gz.part02",
+      "bytes": 180000,
+      "sha256": "b9295878a558b6a268cfe4a03df31cd188206f822908c6977b6f6614e65f7cb6"
+    },
+    {
+      "filename": "source-ledger.json.gz.part03",
+      "bytes": 180000,
+      "sha256": "f5822958e11d5d85e6443db3ed9a2d2e24a11a094fbdea3858bb3585b8ac86f8"
+    },
+    {
+      "filename": "source-ledger.json.gz.part04",
+      "bytes": 180000,
+      "sha256": "36aea18e207218609051c75aa97b56f8b8d8d51ec1454fffffaa662621fe1a13"
+    },
+    {
+      "filename": "source-ledger.json.gz.part05",
+      "bytes": 180000,
+      "sha256": "b14d28500b1e3157724f7ce32fab8039355a0e9b0703d72305a4a38287fe95a8"
+    },
+    {
+      "filename": "source-ledger.json.gz.part06",
+      "bytes": 180000,
+      "sha256": "5b46507675f75c4366fdb23d55432ddc7bf3afc7a7424ed0c8f64a85d6b1bb1f"
+    },
+    {
+      "filename": "source-ledger.json.gz.part07",
+      "bytes": 180000,
+      "sha256": "fbdbd053ffa1888ad6bc3781b1f2db41a5b97637572f6926dddca4d6f18c81a4"
+    },
+    {
+      "filename": "source-ledger.json.gz.part08",
+      "bytes": 180000,
+      "sha256": "a114bd5caba16c88d90811a9a06bf25f93a27070040874c64cc1ad452a209d69"
+    },
+    {
+      "filename": "source-ledger.json.gz.part09",
+      "bytes": 16293,
+      "sha256": "d6d16db0bda05ba00740f6817964648d5eb7a3e9b4c189ccfdc9c9fd3a238ecc"
+    }
+  ]
+}

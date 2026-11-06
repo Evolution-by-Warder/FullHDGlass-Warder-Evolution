@@ -1,0 +1,446 @@
+[
+  {
+    "source": "official-1.zip",
+    "sha256": "011f4f931088e6a3a6be1e4fe69a22b1909caf522384de371d27cc64b7dbd052",
+    "bytes": 76040901,
+    "members": 14091,
+    "lamedbs": [],
+    "picon_items": 14088
+  },
+  {
+    "source": "official-11.zip",
+    "sha256": "99a36fa4f944d01aefe5831b7ba2c2782b275ea0dbc2e4d0f68a29357dede66e",
+    "bytes": 50960,
+    "members": 39,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Hot Bird Dtt Italia 01 nov 2026/lamedb",
+        "sha256": "248ca5ca096bff0ea9c06c247742ef24623650beeb686b85d7f46d8209aaad1a",
+        "services": 1740,
+        "satellite_tv": 1210
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-12.zip",
+    "sha256": "3b9ff934ef6c0467fff856d99941fd0f59ab6e63cd9d00e2b4eb744609bb39f9",
+    "bytes": 80571,
+    "members": 56,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Dual Feeds Dtt Italia 01 nov 2026/lamedb",
+        "sha256": "a5ada522ac184ca8a11b7c8716eda25b642e4af93d6807c0aca03bd9736038fd",
+        "services": 2757,
+        "satellite_tv": 2092
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-13.zip",
+    "sha256": "cf4bad9a3dd33a2749d946500ca0c3d1971ce7662a4b6e42988b134ae4570df0",
+    "bytes": 303221,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Italia 01 nov 2026/lamedb",
+        "sha256": "9ad4b245ef323d4e297674c5aaaf3093d957345f5348e1d449c085280f1ce668",
+        "services": 12965,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-14.zip",
+    "sha256": "efeb71d80145635be96c15d008c9d8a721290a0ae9b256db2786057b65ed2897",
+    "bytes": 52222,
+    "members": 39,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Hot Bird Dtt Lazio 01 nov 2026/lamedb",
+        "sha256": "9ff8c99058e1a9a0441a6152d925b290bad0c173feb18bc3f9b846a4c4077193",
+        "services": 1775,
+        "satellite_tv": 1210
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-15.zip",
+    "sha256": "9e2dee23acc5713ff1fc0999290270787536e179795cfb3fb331ab7f8e6df396",
+    "bytes": 81762,
+    "members": 56,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Dual Feeds Dtt Lazio 01 nov 2026/lamedb",
+        "sha256": "ca9904842be0367f2712c92f5a2018d704fc9696fe469b170fcbfc38f0697545",
+        "services": 2792,
+        "satellite_tv": 2092
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-16.zip",
+    "sha256": "9fb4854abdc1c0ceb7f54942068b2ab64526b0ee29afae8a88d7878895660bdd",
+    "bytes": 304205,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Lazio 01 nov 2026/lamedb",
+        "sha256": "67e2d86a4b12e3b5dc9166eeaa20f76766bfff4e1e75ee7e66fbdb34ea29791f",
+        "services": 13000,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-17.zip",
+    "sha256": "90fdfe5bc114849192348e4d66324968a03e46af40f67c6c62d1f7516a9bb096",
+    "bytes": 52760,
+    "members": 39,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Hot Bird Dtt Lombardia 01 nov 2026/lamedb",
+        "sha256": "b3cdf534ed922559a00b1c6321077745d0912d850f4cdc675c3f0028d83a2129",
+        "services": 1787,
+        "satellite_tv": 1210
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-18.zip",
+    "sha256": "ce848162693c77a974931ae979e966b1dffb572ab6aa38b8b2f0d18e092fa9ce",
+    "bytes": 82447,
+    "members": 56,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Dual Feeds Dtt Lombardia 01 nov 2026/lamedb",
+        "sha256": "e23859c3ea38ad3c5abc56b30b12dae8a3a62efe9c81a878dc1dad213b77834f",
+        "services": 2804,
+        "satellite_tv": 2092
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-19.zip",
+    "sha256": "8f500196284aff9b55ea728f40261a1715eed33f63519eaf854594bed29495c5",
+    "bytes": 305935,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Lombardia 01 nov 2026/lamedb",
+        "sha256": "656f82c0817bc86e5f28e6617e9c9031462a480de2904003f504a2c3ee513fe7",
+        "services": 13012,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-2.zip",
+    "sha256": "506ceb5318581336fd3079ecb425935c65500f09529ab476c912d897cd5b4e50",
+    "bytes": 45867,
+    "members": 39,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Hot Bird 01 nov 2026/lamedb",
+        "sha256": "e8ad1eeed053d37cae6b0485faa2885d638b38f35d1127567190847bd2e0306e",
+        "services": 1454,
+        "satellite_tv": 1210
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-20.zip",
+    "sha256": "57df945e2db583c3b677c7625d900220350dea47716a6978cd2a5881c4bcf551",
+    "bytes": 52571,
+    "members": 39,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Hot Bird Dtt Campania 01 nov 2026/lamedb",
+        "sha256": "c8253b9094616019ffd73244400ba8896cb401006614bb403a576b149dac1fa9",
+        "services": 1777,
+        "satellite_tv": 1210
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-21.zip",
+    "sha256": "b7776205e3259d0a6da82a0e5ab3e289810771e9d068ffe189ebe9c83deddc48",
+    "bytes": 82265,
+    "members": 56,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Dual Feeds Dtt Campania 01 nov 2026/lamedb",
+        "sha256": "b58d3e83e24b1b7aeb406cd0b660abf589abb9a7e1c135a4abebe4ac3c884473",
+        "services": 2794,
+        "satellite_tv": 2092
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-22.zip",
+    "sha256": "6e0200d75d990485f3a2907f556650f4d9b4ba553550fcb5b92b0e0a0b00d3b9",
+    "bytes": 305477,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Campania 01 nov 2026/lamedb",
+        "sha256": "deb5b9cf560594e0132e43afe9bf2e823d18c327e737955692f2b7a4bd8ed1a0",
+        "services": 13002,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-23.zip",
+    "sha256": "4f241a5eec56351ac753218706e58b855880ad9f8305fba3cea1e89754ea7b52",
+    "bytes": 52260,
+    "members": 39,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Hot Bird Dtt Piemonte 01 nov 2026/lamedb",
+        "sha256": "bf2460af63a14fafae57fae9aede7dab211c01df7a6922f6837a75db649f1ec2",
+        "services": 1766,
+        "satellite_tv": 1210
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-24.zip",
+    "sha256": "9395c1862ee3479fa6cce6e1dc6e4e075d46f8c89cae1c99210f13d46aab541b",
+    "bytes": 81885,
+    "members": 56,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Dual Feeds Dtt Piemonte 01 nov 2026/lamedb",
+        "sha256": "d1a340bde24fdfe21959d84625b106e337b8cda4119371971d7b1aea51f45e86",
+        "services": 2783,
+        "satellite_tv": 2092
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-25.zip",
+    "sha256": "2735c372f0c75ebaa8f5610650d1a74a1145abadcde3ade68686b4f2e3ac48e7",
+    "bytes": 305139,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Piemonte 01 nov 2026/lamedb",
+        "sha256": "a1bf18daf84b4b339cdd31d09ba64ae0d6444b9735a5acffb417c0c34144210c",
+        "services": 12991,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-26.zip",
+    "sha256": "fce08a0d9b51b102d7dad90c6584375606793401cac98b8b75a55f4bc7d36c8c",
+    "bytes": 304716,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Sicilia 01 nov 2026/lamedb",
+        "sha256": "555d755c4fa3775604d47354ea65a6651bce4172fb5c2dd706f6ef4e35f9341f",
+        "services": 12993,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-27.zip",
+    "sha256": "00eeaec6878943555a55ad981fb90be4bd176668f56338376278b1cf5eb763dd",
+    "bytes": 305512,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Sardegna 02 nov 2026/lamedb",
+        "sha256": "2b7b7488d252550e56ae5fa97f29156b99e506c3611a51d169aa1c543609fa54",
+        "services": 12980,
+        "satellite_tv": 10460
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-28.zip",
+    "sha256": "f8a54b61f5133fb2a96f8fbcb22386405141b93cdd6471c4be2ba68c4178c413",
+    "bytes": 305892,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor Dtt Romagna 05 nov 2026/lamedb",
+        "sha256": "c78e0c01f7f8c6b3dcffbf3343730c1e014450590e376ab4fe668cd1a9f030c9",
+        "services": 13106,
+        "satellite_tv": 10487
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-29.zip",
+    "sha256": "c318038d264cde4bee834995875eecfe979a550b6b2be80cceaab8ee4c36d807",
+    "bytes": 295921,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor DE 01 nov 2026/lamedb",
+        "sha256": "47956f979ec051ecf69038503b3ef7945aeac8e794660cf8e42124730a88c886",
+        "services": 12679,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-3.zip",
+    "sha256": "dfaa51fcd31371ed6a2842e9c48df4c54b7de83de9b6b5887f0cf96974956567",
+    "bytes": 75104,
+    "members": 56,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Dual Feeds 01 nov 2026/lamedb",
+        "sha256": "6e63eb82100b19c4ea6150c14f5183fbfe40b8327a3a6bc64517311a42a7a034",
+        "services": 2471,
+        "satellite_tv": 2092
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-30.zip",
+    "sha256": "6e9f27c7c5f158cb06254aea2aac7736e3a8733ef13736f77c43f22b1690e9d6",
+    "bytes": 296257,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor PL 01 lis 2026/lamedb",
+        "sha256": "47956f979ec051ecf69038503b3ef7945aeac8e794660cf8e42124730a88c886",
+        "services": 12679,
+        "satellite_tv": 10464
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-5.zip",
+    "sha256": "899db389c7cc977868706848a36b756d12eb3af973133e22c43f64d014c5d519",
+    "bytes": 295340,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor 05 nov 2026/lamedb",
+        "sha256": "0472c279c910cb28c374d5966b1b3911c84fdbda7ad2245338b12cd9e5b6289f",
+        "services": 12721,
+        "satellite_tv": 10487
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-6.zip",
+    "sha256": "f893155ca6b788666fa23b770e2729de42609b2c5fbad2143813a45db8d81e46",
+    "bytes": 137697,
+    "members": 86,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Multi 9-13-16-19-23-28 est 01 nov 2026/lamedb",
+        "sha256": "d491ca97b89643458f8619eceb3571295d5f03def0500d16514f2c0e00812f74",
+        "services": 5295,
+        "satellite_tv": 4620
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-7.zip",
+    "sha256": "9e7e4d1acd7a526e6efb7514de50f1fa497640a6fec057ccc69f1eb3cf786b2e",
+    "bytes": 104584,
+    "members": 69,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Quadri Multistream 01 nov 2026/lamedb",
+        "sha256": "279fea6dd062a73322caab1326ce1c592f83f061a982328e8d6223f02867680e",
+        "services": 3741,
+        "satellite_tv": 3090
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "official-8.zip",
+    "sha256": "24175fc143a7658c61b98ee640c4e445a0cffd2d5c8dee44b5e57c270f141e39",
+    "bytes": 85968,
+    "members": 62,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Trial 30 ovest 01 nov 2026/lamedb",
+        "sha256": "ec2dd5e04fdf8464149367307beb3921770b131e35fee761575b6bd5fb4fed9f",
+        "services": 2985,
+        "satellite_tv": 2406
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "PICON Vhannibal Motor 03 nov 2026,(1).zip",
+    "sha256": "388a5fd838c3815b9acea070f28ca4cb8cc55f0851b1a0b04bddc57f9f3218c1",
+    "bytes": 75635760,
+    "members": 14084,
+    "lamedbs": [],
+    "picon_items": 14081
+  },
+  {
+    "source": "PICON Vhannibal Motor 03 nov 2026,.zip",
+    "sha256": "388a5fd838c3815b9acea070f28ca4cb8cc55f0851b1a0b04bddc57f9f3218c1",
+    "bytes": 75635760,
+    "members": 14084,
+    "lamedbs": [],
+    "picon_items": 14081
+  },
+  {
+    "source": "Vhannibal Motor 03 nov 2026(1).zip",
+    "sha256": "64d8d143422945679d491d139bca95667ab0a14809ccb4e50adb09f1d55a061c",
+    "bytes": 295150,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor 03 nov 2026/lamedb",
+        "sha256": "339f39f9c1b8a6bc5d4987576cd5ae47cc7d6eda643ca48f030abd61f5220eb1",
+        "services": 12713,
+        "satellite_tv": 10480
+      }
+    ],
+    "picon_items": 0
+  },
+  {
+    "source": "Vhannibal Motor 03 nov 2026.zip",
+    "sha256": "64d8d143422945679d491d139bca95667ab0a14809ccb4e50adb09f1d55a061c",
+    "bytes": 295150,
+    "members": 192,
+    "lamedbs": [
+      {
+        "member": "Vhannibal Motor 03 nov 2026/lamedb",
+        "sha256": "339f39f9c1b8a6bc5d4987576cd5ae47cc7d6eda643ca48f030abd61f5220eb1",
+        "services": 12713,
+        "satellite_tv": 10480
+      }
+    ],
+    "picon_items": 0
+  }
+]
