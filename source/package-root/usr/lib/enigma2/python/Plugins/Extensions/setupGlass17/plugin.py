@@ -2884,13 +2884,14 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
 			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line:
 				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
-				# Reserve the footer strip only when enabled; 6 EPG entries
-				# remain available above it and the header never steals a row.
+				# Six slots total: five regular EPG programmes plus Prime Time
+				# as the final row; otherwise all six are regular EPG programmes.
 				if prime_time_enabled:
 					line = line.replace('position="1150,695" size="685,226"', 'position="1150,695" size="685,194"')
+					line = line.replace('numEvents="8"', 'numEvents="5"').replace('numEvents="6"', 'numEvents="5"')
 				else:
 					line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
-				line = line.replace('numEvents="8"', 'numEvents="6"')
+					line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
 			if ena and line.__contains__('<widget name="list"'):
 				# Apply only to the active ChannelSelection runtime copy.
 				# Keep approved source skin.xml byte-for-byte unchanged.
