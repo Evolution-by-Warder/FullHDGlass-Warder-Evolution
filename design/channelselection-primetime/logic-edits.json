@@ -38,5 +38,15 @@
     "scope": "setupGlass17ScreenSetup.exitNow",
     "after": "try:\n    config.plugins.warderEvolutionPrimeTime.enabled.cancel()\n    config.plugins.warderEvolutionPrimeTime.clock.cancel()\nexcept AttributeError:\n    pass",
     "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if ena and 'render=\"g17MetrixHDRunningText\"' in line and 'position=\"1150,455\"' in line:\n    line = line.replace('size=\"685,240\"', 'size=\"685,224\"')",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if ena and 'render=\"g17ShowExtraEpg\"' in line and 'position=\"1150,685\"' in line:\n    line = line.replace('position=\"1150,685\" size=\"685,236\"', 'position=\"1150,695\" size=\"685,226\"')",
+    "before": ""
   }
 ]
