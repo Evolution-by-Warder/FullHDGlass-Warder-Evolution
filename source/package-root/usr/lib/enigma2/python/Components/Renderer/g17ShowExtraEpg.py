@@ -98,6 +98,9 @@ class g17ShowExtraEpg(Renderer):
 				ret = ret[:pos].rstrip(' ')
 			return ret
 		if self.instance:
+			if what[0] == self.CHANGED_CLEAR:
+				self.instance.clear(self.bcolor)
+				return
 			if what[0] != self.CHANGED_CLEAR:
 				self.instance.clear(self.bcolor)
 				service = None
