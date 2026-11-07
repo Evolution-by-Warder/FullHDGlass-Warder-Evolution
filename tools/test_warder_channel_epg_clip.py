@@ -406,6 +406,36 @@ class ClippedEventTests(unittest.TestCase):
         self.assertFalse(target._native_hidden)
         self.assertIsNone(target._component)
 
+    def test_component_switch_restores_old_before_disabling_new(self):
+        events = []
+        def component(name):
+            return types.SimpleNamespace(
+                l=types.SimpleNamespace(celServiceInfo=2,
+                    setElementFont=lambda *args: events.append((name, "font", args))),
+                ServiceInfoFont=name + "-original",
+                instance=types.SimpleNamespace(invalidate=lambda: events.append((name, "invalidate"))))
+        previous = component("old")
+        current = component("new")
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=previous,
+            _native_hidden=True, _native_disable_unsupported=False,
+            _last=None, _scroll_mode="barright", _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: current,
+            _progress_mode=lambda: "barright",
+            _draw_rows=lambda c: events.append(("new", "draw")) or True)
+        def restore():
+            method("_restore_native")(target)
+        target._restore_native = restore
+        method("refresh")(target)
+        self.assertEqual(events[:4], [
+            ("old", "font", (2, "old-original")),
+            ("new", "font", (2, None)),
+            ("new", "invalidate"),
+            ("new", "draw")])
+        self.assertIs(target._component, current)
+        self.assertTrue(target._native_hidden)
+
     def test_pre_widget_remove_stops_timer_and_restores_native(self):
         calls = []
         target = types.SimpleNamespace(
