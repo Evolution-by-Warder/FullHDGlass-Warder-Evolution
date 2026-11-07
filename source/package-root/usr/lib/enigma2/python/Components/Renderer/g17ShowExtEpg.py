@@ -61,6 +61,7 @@ class g17ShowExtEpg(VariableText, Renderer):
 		if self.instance:
 			self.text = "Extended EPG is not available!"
 			if what[0] != self.CHANGED_CLEAR:
+				service = None
 				try:
 					service = self.source.service
 					marker = (service.flags & eServiceReference.isMarker == eServiceReference.isMarker)
