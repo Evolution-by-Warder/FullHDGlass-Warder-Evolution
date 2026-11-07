@@ -175,6 +175,19 @@ class ClippedEventTests(unittest.TestCase):
         # An unscrolled long name still advertises truncation.
         self.assertTrue(scroll_title_window(title, 30, measure, 0).endswith("…"))
 
+    def test_variable_width_scroll_reaches_final_glyphs(self):
+        title = "WWWWiiiiABC"
+        widths = {"W": 17, "i": 4, "A": 11, "B": 10, "C": 9}
+        def measure(value):
+            return sum(widths[ch] for ch in value)
+        width = 31
+        overflow = measure(title) - width
+        end = scroll_title_window(title, width, measure, overflow)
+        self.assertTrue(end.endswith("ABC"))
+        self.assertLessEqual(measure(end), width)
+        # Offsets beyond the end cannot make the terminal glyph disappear.
+        self.assertEqual(scroll_title_window(title, width, measure, overflow + 50), end)
+
     def test_scrolling_event_changes_while_short_event_stays_still(self):
         from time import time
         self.renderer._scroll_started = time() - 7
