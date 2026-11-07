@@ -154,6 +154,8 @@ jobs:
                   assert 'self._warderAudioIcon = tmp' in pt_plugin
                   assert 'self._warderAspectIcon = aspect_icon' in pt_plugin
                   assert 'pig28 = (' in pt_plugin
+                  assert 'position="94,121" size="600,360"' in pt_plugin
+                  assert 'position="75,105" size="639,393"' in pt_plugin
                   assert 'pixmap="hd_glass17/frame/Frame.png"' in pt_plugin
                   assert 'default=[20, 25]' in pt_plugin
                   assert 'default_geometry = bool(' in pt_plugin
