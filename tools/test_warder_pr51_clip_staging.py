@@ -26,6 +26,8 @@ class StagingTests(unittest.TestCase):
             changed = load_stager()(target, progress_width=90, marker=True)
             self.assertIn('warderProgressWidth="90"', changed)
             self.assertIn('warderTestMarker="1"', changed)
+            self.assertIn('position="1000,102" size="44,12"', changed)
+            self.assertIn('backgroundColor="#00ff00" zPosition="20"', changed)
             self.assertEqual(changed.count('render="WarderChannelEpgClip"'), 1)
         self.assertEqual(BASE.read_text(encoding="utf-8"), original)
 
