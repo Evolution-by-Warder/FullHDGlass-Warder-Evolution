@@ -33,6 +33,9 @@ def stage_skin(skin_path):
     if screen.count(old_epg) != 1:
         raise RuntimeError("Unexpected upcoming EPG geometry")
     screen = screen.replace(old_epg, 'position="1150,695" size="685,226"', 1)
+    if screen.count('numEvents="8"') != 1:
+        raise RuntimeError("Unexpected default upcoming EPG count")
+    screen = screen.replace('numEvents="8"', 'numEvents="6"', 1)
     list_pattern = re.compile(r'<widget\s+name="list"[^>]*picServiceEventProgressbar=[^>]*\s/>')
     m = list_pattern.search(screen)
     if m is None:
