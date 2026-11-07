@@ -124,6 +124,7 @@ class ClippedEventTests(unittest.TestCase):
             _draw_progress=lambda x, y, width, row_height, elapsed: None,
             _opaque_black="#000000", _progress_border="#dfdfdf",
             _warder_bar_width=None, _warder_test_marker=False,
+            _native_right_bar_enabled=lambda: True,
             _diag=lambda *args: None)
         self.service_stub = types.ModuleType("enigma")
         self.service_stub.eServiceCenter = types.SimpleNamespace(getInstance=lambda: object())
@@ -201,6 +202,26 @@ class ClippedEventTests(unittest.TestCase):
         new_written = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"][-3:]
         self.assertTrue(new_written[0].endswith("…"))
         self.assertTrue(new_written[2].endswith("…"))
+
+    def test_non_right_progress_modes_fall_back_to_native(self):
+        method_fn = method("_native_right_bar_enabled")
+        usage = types.SimpleNamespace(
+            show_event_progress_in_servicelist=types.SimpleNamespace(value="barright"),
+            servicelist_twolines=types.SimpleNamespace(value=False))
+        method_fn.__globals__["config"] = types.SimpleNamespace(usage=usage)
+        for mode in ("no", "barleft", "percleft", "percright",
+                     "minsleft", "minsright", "unknown"):
+            usage.show_event_progress_in_servicelist.value = mode
+            self.assertFalse(method_fn(self.renderer), mode)
+        usage.show_event_progress_in_servicelist.value = "barright"
+        self.assertTrue(method_fn(self.renderer))
+        usage.servicelist_twolines.value = True
+        self.assertFalse(method_fn(self.renderer))
+
+    def test_fallback_does_not_draw_synthetic_progress_or_text(self):
+        self.renderer._native_right_bar_enabled = lambda: False
+        self.assertFalse(self.draw())
+        self.assertEqual(self.renderer.instance.calls, [])
 
     def test_no_events_causes_no_native_suppression_candidate(self):
         self.refs = [Service("No EPG", "")]
