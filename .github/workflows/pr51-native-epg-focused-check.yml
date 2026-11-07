@@ -6,6 +6,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
       - 'tools/test_warder_channel_epg_clip.py'
       - 'tools/test_warder_native_progressbar_independence.py'
+      - 'tools/apply-native-progressbar-event-fix.py'
       - 'compatibility/native-enigma2-patches/**'
       - 'tools/test_warder_epg_text_fit.py'
       - 'tools/test_warder_pr51_clip_staging.py'
@@ -25,7 +26,6 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /tools/
-            /compatibility/native-enigma2-patches/
             /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
             /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
@@ -58,13 +58,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: compatibility/native-enigma2-patches
+          sparse-checkout: tools/apply-native-progressbar-event-fix.py
       - uses: actions/checkout@v4
         with:
           repository: openatv/enigma2
           ref: master
           path: upstream/enigma2
           persist-credentials: false
-      - name: Verify patch applies to current OpenATV native source
+      - name: Apply exact native progressbar source correction
         run: |
-          git -C upstream/enigma2 apply --check ../../compatibility/native-enigma2-patches/0001-progressbar-event-independent-of-epg-font.patch
+          python3 tools/apply-native-progressbar-event-fix.py upstream/enigma2/lib/service/listboxservice.cpp
+          git -C upstream/enigma2 diff --check
+          git -C upstream/enigma2 diff --exit-code -- lib/service/listboxservice.h
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp
+          grep -F 'service_info->getEvent(*m_cursor, evt);' upstream/enigma2/lib/service/listboxservice.cpp
