@@ -53,7 +53,7 @@ jobs:
           PACKAGE='packages/test/enigma2-plugin-skins-fullhdglass_1.0.70_all.ipk'
           test -s "$PACKAGE"
           ar t "$PACKAGE" | grep -qx 'data.tar.gz'
-          sha256sum -c "$PACKAGE.sha256"
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.70_all.ipk.sha256)
       - name: Stage official package and compare exact bytes
         run: |
           set -euo pipefail
