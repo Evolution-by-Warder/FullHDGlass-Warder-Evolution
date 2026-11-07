@@ -115,6 +115,7 @@ class ClippedEventTests(unittest.TestCase):
             _progress_fraction=lambda center, ref: 0.35,
             _draw_progress=lambda x, y, width, row_height, elapsed: None,
             _opaque_black="#000000", _progress_border="#dfdfdf",
+            _warder_bar_width=None, _warder_test_marker=False,
             _diag=lambda *args: None)
         self.service_stub = types.ModuleType("enigma")
         self.service_stub.eServiceCenter = types.SimpleNamespace(getInstance=lambda: object())
@@ -205,6 +206,34 @@ class ClippedEventTests(unittest.TestCase):
         initial = len(self.renderer.instance.calls)
         self.assertTrue(self.draw())
         self.assertEqual(len(self.renderer.instance.calls), initial)
+
+    def test_receiver_width_override_and_test_only_marker(self):
+        self.renderer._warder_bar_width = 90
+        self.renderer._warder_test_marker = True
+        self.assertTrue(self.draw())
+        writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
+        for _, (x, y, width, height), *_ in writes:
+            self.assertLessEqual(x + width, 700 - 25 - 90 - 12)
+        marks = [x for x in self.renderer.instance.calls if x[0] == "fill"
+                 and x[1] == (0, 0, 16, 6)]
+        self.assertEqual(len(marks), 1)
+
+    def test_private_skin_attributes_are_consumed_safely(self):
+        target = types.SimpleNamespace(
+            skinAttributes=[("warderProgressWidth", "90"),
+                            ("warderTestMarker", "1"),
+                            ("size", "1065,842")],
+            _warder_bar_width=None, _warder_test_marker=False)
+        f = method("applySkin")
+        class StubRenderer:
+            @staticmethod
+            def applySkin(self, desktop, parent):
+                return True
+        with patch.dict(f.__globals__, {"Renderer": StubRenderer}):
+            self.assertTrue(f(target, None, None))
+        self.assertEqual(target._warder_bar_width, 90)
+        self.assertTrue(target._warder_test_marker)
+        self.assertEqual(target.skinAttributes, [("size", "1065,842")])
 
     def test_progress_redraw_obscures_transparent_underlay(self):
         self.renderer.instance.calls.clear()
