@@ -70,7 +70,7 @@ jobs:
           assert len(proof['builds']) == 3
           for name,report in zip(('arm','mipsel','aarch64'),proof['builds']):
               filename='bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json'
-              (out/filename).write_text(json.dumps(report,indent=2)+'\\n')
+              (out/filename).write_text(json.dumps(report,indent=2)+'\n')
           validate_helpers(Path.cwd())
           PY
           python3 tools/build-setup-style-test.py
