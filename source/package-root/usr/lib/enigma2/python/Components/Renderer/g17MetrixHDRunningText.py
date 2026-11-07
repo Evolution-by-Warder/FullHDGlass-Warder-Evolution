@@ -187,19 +187,19 @@ class g17MetrixHDRunningText(Renderer):
 			from enigma import fontRenderClass
 			flh = int(fontRenderClass.getInstance().getLineHeight(self.txfont) or self.txfont.pointSize // 6 + self.txfont.pointSize)
 			self.test_label.setText("WQq")
-			if flh > self.test_label.calculateSize().height():
+			if flh > self.test_label.calculateSize().height() or self.warderWholeLineScroll:
 				self.lineHeight = flh
 			self.test_label.setText("")
-		# Opt-in for the default ChannelSelection description only. Use
-		# complete line-height units for both viewport and movement, so
-		# animated EPG lines cannot stop as half-visible bottom rows.
+		# Keep the description inside complete font-height rows, but
+		# scroll smoothly in small pixel steps. TEST52 could fall back
+		# to a 1px step every 800ms when lineHeight was unset.
 		if self.warderWholeLineScroll and self.direction in (TOP, BOTTOM):
 			self.lineHeight = max(1, self.lineHeight)
 			if self.H >= self.lineHeight:
 				self.H = (self.H // self.lineHeight) * self.lineHeight
 				self.instance.setSize(eSize(self.W, self.H))
-			self.mStep = self.lineHeight
-			self.mStepTimeout = max(self.mStepTimeout, 800)
+			self.mStep = 2
+			self.mStepTimeout = 40
 		return ret
 
 	def doSuspend(self, suspended):
