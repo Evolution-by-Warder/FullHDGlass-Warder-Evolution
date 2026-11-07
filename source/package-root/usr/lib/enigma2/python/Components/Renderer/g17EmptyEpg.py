@@ -110,9 +110,10 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.lastText = tmp
 			self.testSizeLabel.setText(tmp)
 			text_width = self.testSizeLabel.calculateSize().width()
-			if text_width > (self.sizeX - 30):
-				while (text_width > (self.sizeX - 30)):
-					tmp = tmp[:-1] 
+			available_width = max(0, self.sizeX - 30)
+			if text_width > available_width:
+				while tmp and text_width > available_width:
+					tmp = tmp[:-1]
 					self.testSizeLabel.setText(tmp)
 					text_width = self.testSizeLabel.calculateSize().width()
 				pos = tmp.rfind(' ')
