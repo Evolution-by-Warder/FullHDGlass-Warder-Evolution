@@ -114,7 +114,8 @@ class ClippedEventTests(unittest.TestCase):
             _name_and_event=lambda center, ref: (ref.name, ref.title),
             _progress_fraction=lambda center, ref: 0.35,
             _draw_progress=lambda x, y, width, row_height, elapsed: None,
-            _opaque_black="#000000", _progress_border="#dfdfdf")
+            _opaque_black="#000000", _progress_border="#dfdfdf",
+            _diag=lambda *args: None)
         self.service_stub = types.ModuleType("enigma")
         self.service_stub.eServiceCenter = types.SimpleNamespace(getInstance=lambda: object())
 
@@ -160,6 +161,7 @@ class ClippedEventTests(unittest.TestCase):
             instance=Canvas(), _label=Label(), _native_hidden=False,
             _component=None, _transparent="#transparent", _timer=types.SimpleNamespace(
                 start=lambda *args: None),
+            _diag=lambda *args: None,
             _find_component=lambda: object(),
             _draw_rows=lambda c: (_ for _ in ()).throw(AttributeError("test failure")),
             _restore_native=lambda: None,
@@ -187,6 +189,7 @@ class ClippedEventTests(unittest.TestCase):
             skinAttributes=[("size", "1065,842")],
             _label=None, _last=None,
             _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None,
         )
         fn = method("postWidgetCreate")
         # The postWidgetCreate AST function resolves eLabel/eSize globally.
@@ -212,6 +215,23 @@ class ClippedEventTests(unittest.TestCase):
         self.assertEqual(fills[0][2], "#000000")
         self.assertTrue(any(item[2] == "#dfdfdf" for item in fills))
         self.assertTrue(all(item[1][2] > 0 and item[1][3] > 0 for item in fills))
+
+    def test_diagnostics_are_bounded_and_fail_open(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            logfile = Path(d) / "diagnostics.log"
+            instance = types.SimpleNamespace(_diag_seen=set())
+            def fake_open(filename, mode):
+                self.assertEqual(mode, "a")
+                return logfile.open("a", encoding="utf-8")
+            fn = method("_diag")
+            with patch.dict(fn.__globals__, {"open": fake_open}):
+                for i in range(40):
+                    fn(instance, "code%d" % i, "no event titles")
+            lines = logfile.read_text().splitlines()
+            self.assertEqual(len(lines), 32)
+            self.assertTrue(lines[0].startswith("code0 "))
+            self.assertTrue(lines[-1].startswith("code31 "))
 
     def test_renderer_is_fail_open_and_default_only(self):
         content = RENDERER.read_text(encoding="utf-8")
