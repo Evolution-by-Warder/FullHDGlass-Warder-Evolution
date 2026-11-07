@@ -16,6 +16,18 @@ BASE = ROOT / "source/package-root/usr/share/enigma2/hd_glass17/skin.xml"
 
 
 class DefaultEpgPanelRuntimeTests(unittest.TestCase):
+    def test_scroll_is_opt_in_and_uses_complete_line_heights(self):
+        renderer = (ROOT / "source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py").read_text(encoding="utf-8")
+        self.assertIn('self.warderWholeLineScroll = False', renderer)
+        self.assertIn('elif attrib == "warderWholeLineScroll":', renderer)
+        self.assertIn('self.H = (self.H // self.lineHeight) * self.lineHeight', renderer)
+        self.assertIn('self.mStep = self.lineHeight', renderer)
+        self.assertIn('self.mStepTimeout = max(self.mStepTimeout, 800)', renderer)
+        # The layout hook is limited to the default ChannelSelection screen.
+        source = PLUGIN.read_text(encoding="utf-8")
+        self.assertIn('if in_default_channel_screen and', source)
+        self.assertIn('warderWholeLineScroll="1"', source)
+
     def test_description_and_event_rows_have_a_gap_and_other_screens_untouched(self):
         source = PLUGIN.read_text(encoding="utf-8")
         tree = ast.parse(source)
@@ -51,6 +63,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         changed_screen = changed.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
         self.assertIn('position="1150,455"', changed_screen)
         self.assertIn('size="685,224"', changed_screen)
+        self.assertIn('warderWholeLineScroll="1"', changed_screen)
         self.assertIn('position="1150,695" size="685,226"', changed_screen)
         self.assertNotIn('size="685,240"', changed_screen)
         self.assertNotIn('position="1150,685" size="685,236"', changed_screen)
