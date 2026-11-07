@@ -189,6 +189,7 @@ class ClippedEventTests(unittest.TestCase):
         mock = types.SimpleNamespace(
             skinAttributes=[("size", "1065,842")],
             _label=None, _last=None,
+            _warder_bar_width=None, _warder_test_marker=False,
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None,
         )
