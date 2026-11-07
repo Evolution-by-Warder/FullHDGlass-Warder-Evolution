@@ -27,6 +27,7 @@ class g17ShowExtraEpg(Renderer):
 		Renderer.__init__(self)
 		self.EPGcache = eEPGCache.getInstance()
 		self.numEvents = 4
+		self.playingServiceReference = False
 		self.numDescLines = 1
 		self.testSizeLabel = None           	
 		self.fcolor = gRGB(255,255,255)
@@ -43,7 +44,9 @@ class g17ShowExtraEpg(Renderer):
 	def applySkin(self, desktop, parent):
 		attribs = [ ]
 		for (attrib, value) in self.skinAttributes:
-			if attrib == "numEvents":
+			if attrib == "playingServiceReference":
+				self.playingServiceReference = value == "1"
+			elif attrib == "numEvents":
 				self.numEvents = int(value)
 			elif attrib == "maxDescriptionLines":
 				self.numDescLines = int(value)
@@ -104,23 +107,39 @@ class g17ShowExtraEpg(Renderer):
 			if what[0] != self.CHANGED_CLEAR:
 				self.instance.clear(self.bcolor)
 				service = None
-				try:
-					service = self.source.service
-					marker = (service.flags & eServiceReference.isMarker == eServiceReference.isMarker)
-					bouquet = (service.flags & eServiceReference.flagDirectory == eServiceReference.flagDirectory)
-					sname = service.toString()
-				except:
-					marker = False
-					bouquet = False
-					sname = self.source.text
+				marker = bouquet = False
+				sname = None
+				if self.playingServiceReference:
+					# CurrentService is a playable service, not necessarily an
+					# eServiceReference. Resolve the actual tuned reference explicitly.
+					try:
+						import NavigationInstance
+						nav = NavigationInstance.instance
+						service = nav and nav.getCurrentlyPlayingServiceReference()
+						if service is not None:
+							sname = service.toString()
+						except (AttributeError, TypeError):
+						service = None
+				if not sname:
+					try:
+						service = self.source.service
+						marker = bool(service.flags & eServiceReference.isMarker)
+						bouquet = bool(service.flags & eServiceReference.flagDirectory)
+						sname = service.toString()
+					except (AttributeError, TypeError):
+						sname = self.source.text or ''
 				if not marker and not bouquet and self.EPGcache is not None:
 					pos = sname.rfind(':')
 					if pos != -1:
 						sname = sname[:pos].rstrip(':')
 						if not "::" in sname:
-							try:
-								info = service and self.source.info
-							except: info = True
+							if self.playingServiceReference:
+								info = True
+							else:
+								try:
+									info = service and self.source.info
+								except AttributeError:
+									info = True
 							if info is not None:
 								epgList =  self.EPGcache.lookupEvent(['IBDCTSERNX', (sname, 1, -1, 1440)])
 								y = 0 
