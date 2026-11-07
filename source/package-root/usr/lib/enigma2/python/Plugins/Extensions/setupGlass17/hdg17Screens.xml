@@ -1884,7 +1884,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="225,540" zPosition="1" size="720,45" font="Prive4;37" halign="left" foregroundColor="#ffcc00" backgroundColor="#00444444" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>    
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="225,540" size="720,45" font="Prive4;37" foregroundColor="#ffcc00" backgroundColor="#00444444" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />    
     <widget source="ServiceEvent" render="Label" position="60,585" zPosition="1" size="885,360" font="Prive4;37" halign="block" backgroundColor="#00444444" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescription</convert>
     </widget>    
@@ -2082,7 +2084,9 @@
 		</widget>
 		<widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="15,678" zPosition="1" size="1395,195" backgroundColor="background" font="Prive4;40" halign="block" foregroundColor="#cccccc">
 			<convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="15,678" size="1395,195" font="Prive4;40" foregroundColor="#cccccc" backgroundColor="background" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1425,829" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
     <screen name="ChannelSelection-13" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder" >
@@ -2112,7 +2116,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="225,540" zPosition="1" size="720,45" font="Prive4;37" halign="left" foregroundColor="yellow" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>    
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="225,540" size="720,45" font="Prive4;37" foregroundColor="yellow" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />    
     <widget source="ServiceEvent" render="Label" position="60,585" zPosition="1" size="885,360" font="Prive4;37" halign="block" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescription</convert>
     </widget>
@@ -2141,7 +2147,9 @@
     <ePixmap position="855,624" zPosition="8" size="510,1" pixmap="hd_glass17/tib.png" />
 		<widget source="ServiceEvent" render="Label" position="15,633" zPosition="1" size="690,33" font="Prive4;28" noWrap="1">
 			<convert type="EventName">Name</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="45,18" size="300,48" font="Prive4;33" foregroundColor="#ffffff" backgroundColor="un353e575e" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		<ePixmap pixmap="hd_glass17/icons/clock.png" position="1287,639" zPosition="1" size="21,21" alphatest="on" />
 		<widget source="global.CurrentTime" render="Label" position="1290,633" zPosition="1" size="120,33" font="Prive4;28" halign="right">
 			<convert type="g17ClockToText"></convert>
@@ -2199,7 +2207,9 @@
     </widget>    
 		<widget source="ServiceEvent" render="Label" foregroundColor="#ff9c00" position="1288,742" zPosition="1" size="474,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="g17ServiceNameEvent">NextEvent</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="1288,742" size="474,33" font="Prive4;27" foregroundColor="#ff9c00" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		<widget source="ServiceEvent" render="Label" position="1198,742" zPosition="1" size="90,33" font="Prive4;27" halign="left" foregroundColor="#ff9c00" backgroundColor="backgroundf" transparent="1">
 			<convert type="g17ServiceNameEvent">StartTime</convert>
 		</widget>
@@ -2266,7 +2276,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="1162,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="1162,864" size="690,33" font="Prive3;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="1162,828" zPosition="1" size="90,33" font="Prive3;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2358,7 +2370,9 @@
     </widget>
     <widget position="352,865" size="465,30" source="ServiceEvent" render="g17EmptyEpg" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" foregroundColor="un777777" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="352,865" size="465,30" font="Prive3;27" foregroundColor="un777777" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget position="802,865" size="150,30" source="ServiceEvent" render="Label" font="Prive3;27" valign="bottom" halign="right" foregroundColor="un777777" transparent="1">
       <convert type="g17ServiceNameEvent">Duration</convert>
     </widget>
@@ -2445,7 +2459,9 @@
 		</widget>
 		<widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="EventName">Name</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="262,864" size="690,33" font="Prive3;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		
 		<widget position="997,916" size="862,37" source="ServiceEvent" render="g17ShowReference" halign="center" font="Prive3;25" foregroundColor="un6cbcf0" zPosition="1" transparent="1" />1
 		<widget position="60,916" size="862,37" source="ServiceEvent" render="g17ShowTP" font="Prive3;25" halign="center" foregroundColor="un6cbcf0" zPosition="1" transparent="1" />
@@ -2496,7 +2512,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="189,427" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="189,427" size="618,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="201,393" zPosition="1" size="90,33" font="Prive4;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2567,7 +2585,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="262,864" size="690,33" font="Prive3;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="262,828" zPosition="1" size="90,33" font="Prive3;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2633,7 +2653,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="189,427" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="189,427" size="618,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="201,393" zPosition="1" size="90,33" font="Prive4;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2740,7 +2762,9 @@
     </widget> 
     <widget source="ServiceEvent" render="Label" position="258,559" zPosition="2" size="684,33" font="Prive4;27" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>   
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="258,559" size="684,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="un353e575e" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />   
     <widget source="ServiceEvent" render="Label" position="168,604" zPosition="3" size="774,258" font="Prive4;24" halign="block" backgroundColor="background" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescription</convert>
     </widget>
@@ -2801,7 +2825,9 @@
     </widget>
     <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,205" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="EventName">Name</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="189,205" size="618,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="201,171" zPosition="1" size="90,33" font="Prive4;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="g17ClockToText">
