@@ -4,6 +4,7 @@ Execute only the production cChannelsel function from AST: no Enigma2 runtime
 or edits to packaged skin.xml. Covers toggling and repeated startup calls.
 """
 import ast
+import re
 from pathlib import Path
 from types import SimpleNamespace
 import tempfile
@@ -25,7 +26,7 @@ def runtime_function(path, enabled):
             par109=value("#cdcdcd"), par110=value("#6cbcf0"),
             par111=value("#6cbcf0"), par117=value("#dddddd"))))
     context = {
-        "config": config, "SKINXML": str(path), "ENA_P_CH": False,
+        "config": config, "SKINXML": str(path), "ENA_P_CH": False, "re": re,
         "_atomicWriteText": lambda p, content: Path(p).write_text(content, encoding="utf-8"),
     }
     exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), context)
@@ -122,6 +123,73 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
         enabled.value = False
         scope["changed"](widget, (0,))
         self.assertEqual(calls, ["hide", "show", "hide"])
+
+
+    def test_every_template_preserves_its_native_positions_except_approved_35(self):
+        """Audit every shipped ChannelSelection variant, including PIG 4.
+
+        Fixed-coordinate EPG overlays are legal only on the original
+        60,96 / 1065x842 layout with the matching right-side EPG.
+        """
+        templates = (ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml").read_text(encoding="utf-8")
+        matches = list(re.finditer(r'<screen name="ChannelSelection-([^"]+)"', templates))
+        self.assertGreaterEqual(len(matches), 50)
+        for enabled in (False, True):
+            render = runtime_function(self.path, enabled)
+            for match in matches:
+                variant = match.group(1)
+                close = templates.index("</screen>", match.start()) + len("</screen>")
+                screen = templates[match.start():close]
+                screen = screen.replace('name="ChannelSelection-' + variant + '"',
+                                        'name="ChannelSelection"', 1)
+                self.path.write_text("<skin>\n" + screen + "\n</skin>\n", encoding="utf-8")
+                original = channel_section(self.path.read_text(encoding="utf-8"))
+                orig_list = re.search(r'<widget name="list"[^>]*>', original)
+                self.assertIsNotNone(orig_list, variant)
+                render()
+                updated = channel_section(self.path.read_text(encoding="utf-8"))
+                current_list = re.search(r'<widget name="list"[^>]*>', updated)
+                self.assertIsNotNone(current_list, variant)
+                for attr in ("position", "size", "serviceItemHeight"):
+                    orig = re.search(r'\\b' + attr + r'="([^"]*)"', orig_list.group(0))
+                    now = re.search(r'\\b' + attr + r'="([^"]*)"', current_list.group(0))
+                    self.assertEqual(orig.group(1) if orig else None,
+                                     now.group(1) if now else None, (variant, attr))
+                for marker in ('render="Pig"', 'render="g17MiniTV"',
+                               'render="g17ShowExtraEpg"'):
+                    self.assertEqual(original.count(marker), updated.count(marker),
+                                     (variant, marker))
+                if variant == "35":
+                    self.assertEqual(updated.count('render="WarderChannelEpgClip"'), 1)
+                    self.assertEqual(updated.count('render="WarderPrimeTime"'), 1)
+                else:
+                    for renderer in ("WarderChannelEpgClip", "WarderPrimeTime",
+                                     "WarderPrimeTimeDivider"):
+                        self.assertNotIn('render="' + renderer + '"', updated, variant)
+                    # An unrelated template never receives default geometry
+                    # or a special 6-event/Prime-Time override.
+                    self.assertEqual(original.count('render="g17MetrixHDRunningText"'),
+                                     updated.count('render="g17MetrixHDRunningText"'), variant)
+
+    def test_pig4_removes_legacy_fixed_overlay_on_reselection(self):
+        templates = (ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml").read_text(encoding="utf-8")
+        m = re.search(r'<screen name="ChannelSelection-4"', templates)
+        self.assertIsNotNone(m)
+        fragment = templates[m.start():templates.index("</screen>", m.start())]
+        fragment = fragment.replace('name="ChannelSelection-4"', 'name="ChannelSelection"', 1)
+        wrong = (
+            '<widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" />\n'
+            '<widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" />\n'
+            '<widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" />\n'
+        )
+        self.path.write_text("<skin>\n" + fragment + wrong + "</screen>\n</skin>\n", encoding="utf-8")
+        for enabled in (False, True):
+            runtime_function(self.path, enabled)()
+            updated = channel_section(self.path.read_text(encoding="utf-8"))
+            for name in ("WarderChannelEpgClip", "WarderPrimeTime",
+                         "WarderPrimeTimeDivider"):
+                self.assertNotIn('render="' + name + '"', updated)
+            self.assertIn('position="967,120"', updated)
 
 
 if __name__ == "__main__":
