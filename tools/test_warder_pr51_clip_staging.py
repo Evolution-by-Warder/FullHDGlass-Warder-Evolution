@@ -54,6 +54,7 @@ class StagingTests(unittest.TestCase):
         self.assertIn('size="685,224"', default)
         self.assertIn('position="1150,695" size="685,226"', default)
         self.assertIn('numEvents="6"', default)
+        self.assertIn('alphaTest="blend"', default)
         self.assertNotIn('numEvents="8"', default)
         self.assertIn('fieldMargins="26"', default)
         self.assertEqual(455 + 224 + 16, 695)
