@@ -47,5 +47,25 @@ Do not merge/release PR #51 until a native-image QA pass exists.
 - Warder targeted renderer tests: no masks and no synthetic bars.
 - Receiver: TEST70 confirmed native left/right bars missing without native
   patch; patched Enigma2 has **not yet been compiled or installed**.
-- OpenPLi: a separately verified patch is needed for its possibly different
-  C++ rendering structure. Do not reuse the OpenATV patch untested.
+- OpenPLi `develop`: source contract verified independently by CI. Its native
+  `paint()` retrieves `evt` before the event-text and progressbar branches,
+  so the OpenATV-specific event-fetch patch is not applicable to that source
+  structure. Do not modify OpenPLi with the OpenATV patch.
+
+## Compatibility gate for GigaBlue Quad 4K Pro
+
+The box model and installed Warder test skin do not identify the exact running
+Enigma2 build. Before attempting native image rebuild/deployment, obtain from
+receiver **read-only** outputs:
+
+```sh
+cat /etc/image-version 2>/dev/null
+cat /etc/issue 2>/dev/null
+opkg list-installed | grep -E '^enigma2([ -]|$)' | head -20
+uname -m
+```
+
+Compare these with the selected image's exact source revision and build
+metadata. The CI-validated patch targets **upstream OpenATV master**; it must
+not be assumed binary-compatible with a different or vendor-customized image.
+No native binary was built or installed by this PR.
