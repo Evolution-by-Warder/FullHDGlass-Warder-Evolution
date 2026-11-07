@@ -384,6 +384,30 @@ class ClippedEventTests(unittest.TestCase):
         self.assertFalse(target._native_hidden)
         self.assertFalse(any(call[0] == "fill" for call in target.instance.calls))
 
+    def test_rejected_null_font_is_not_retried_each_timer_tick(self):
+        attempts = []
+        def rejected(*args):
+            attempts.append(args)
+            raise TypeError("None is not a gFont pointer")
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2, setElementFont=rejected),
+            instance=types.SimpleNamespace(invalidate=lambda: None))
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=component,
+            _native_hidden=False, _native_disable_unsupported=False,
+            _scroll_mode="barright", _last=None, _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _progress_mode=lambda: "barright",
+            _draw_rows=lambda c: self.fail("A rejected native disable must not draw"),
+            _restore_native=lambda: setattr(target, "_native_hidden", False))
+        fn = method("refresh")
+        fn(target)
+        self.assertTrue(target._native_disable_unsupported)
+        fn(target)
+        self.assertEqual(attempts, [(2, None)])
+        self.assertFalse(any(call[0] in ("write", "fill") for call in target.instance.calls))
+
     def test_native_font_disable_is_reasserted_after_external_reset(self):
         calls = []
         component = types.SimpleNamespace(
