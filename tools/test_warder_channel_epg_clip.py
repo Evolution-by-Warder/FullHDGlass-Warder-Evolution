@@ -215,7 +215,7 @@ class ClippedEventTests(unittest.TestCase):
         for _, (x, y, width, height), *_ in writes:
             self.assertLessEqual(x + width, 700 - 25 - 90 - 12)
         marks = [x for x in self.renderer.instance.calls if x[0] == "fill"
-                 and x[1] == (0, 0, 16, 6)]
+                 and x[1] == (925, 14, 24, 14)]
         self.assertEqual(len(marks), 1)
 
     def test_private_skin_attributes_are_consumed_safely(self):
@@ -223,7 +223,8 @@ class ClippedEventTests(unittest.TestCase):
             skinAttributes=[("warderProgressWidth", "90"),
                             ("warderTestMarker", "1"),
                             ("size", "1065,842")],
-            _warder_bar_width=None, _warder_test_marker=False)
+            _warder_bar_width=None, _warder_test_marker=False,
+            _diag=lambda *args: None)
         f = method("applySkin")
         class StubRenderer:
             @staticmethod
