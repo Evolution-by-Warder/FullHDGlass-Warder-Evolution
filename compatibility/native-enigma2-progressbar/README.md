@@ -69,3 +69,37 @@ Compare these with the selected image's exact source revision and build
 metadata. The CI-validated patch targets **upstream OpenATV master**; it must
 not be assumed binary-compatible with a different or vendor-customized image.
 No native binary was built or installed by this PR.
+
+## GigaBlue Quad 4K Pro — actual receiver identity (owner SSH, 2026-11-07)
+
+| Key | Confirmed value |
+| --- | --- |
+| Model / machine | `gbquad4kpro` |
+| Distro | `openatv` |
+| Image | `8.1.0~beta`, built `2026-11-06` |
+| Enigma2 package | `8.1.0~beta+git36061+da455f50+da455f57dd-r1` |
+| Package architecture | `cortexa15hf-neon-vfpv4` |
+| Kernel architecture | `armv7l` |
+| OE base | `OE-Alliance 6.0` |
+
+The public OpenATV GitHub repository did not resolve the running package
+prefix `da455f50` as a commit during the PR audit. This means
+`openatv/enigma2:master` **is not proven to be the exact source of the
+receiver's installed binary**. A public dated commit
+`66df86bd9fa56f817e33099c09ee1811c9aa1aab` (Nov 6) and current master
+both passed `git apply --check` and real patch application tests. This
+demonstrates source-level portability, **not binary compatibility**.
+
+The experimental `meta-warder-native` BitBake layer carries a proper
+`enigma2_%.bbappend` and a C++ patch in `SRC_URI:append:openatv`.
+To use it, a trusted OE-Alliance 6.0 build environment for **this exact
+receiver** must add the layer to `BBLAYERS`, select
+`MACHINE=gbquad4kpro` and `DISTRO=openatv`, confirm the appropriate
+`ENIGMA2_URI` and `SRCREV` from the receiver's package build provenance,
+then run `bitbake -c patch enigma2` followed by the supported native
+package build and packaging QA. A `bitbake -c patch` pass alone does not
+mean an ARM binary is available or tested.
+
+Never install a binary from a different `SRCREV`/image feed or copy an
+Enigma2 executable into a live box outside the supported image packaging
+and recovery path.
