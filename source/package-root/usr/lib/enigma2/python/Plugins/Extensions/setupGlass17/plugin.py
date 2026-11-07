@@ -6601,6 +6601,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			
 	def chckSetup(self):
 		t = self["config"].getCurrent()[1]
+		# Rebuild only the Channel Selection settings rows when Prime Time
+		# is toggled; the clock appears immediately without leaving the menu.
+		if t is config.plugins.warderEvolutionPrimeTime.enabled:
+			self.runSetup()
+			return
 		if t in (config.plugins.setupGlass17.par229, config.plugins.setupGlass17.par226, config.plugins.setupGlass17.par222, config.plugins.setupGlass17.par209, config.plugins.setupGlass17.par104, config.plugins.setupGlass17.par143, config.plugins.setupGlass17.par180, config.plugins.setupGlass17.par171, config.plugins.setupGlass17.par172, config.plugins.setupGlass17.par169, config.plugins.setupGlass17.par161, config.plugins.setupGlass17.par8, config.plugins.setupGlass17.par56, config.plugins.setupGlass17.par125, config.plugins.setupGlass17.par15, config.plugins.setupGlass17.par22, config.plugins.setupGlass17.par95, config.plugins.setupGlass17.par93, config.plugins.setupGlass17.par94, config.plugins.setupGlass17.par31, config.plugins.setupGlass17.par78, config.plugins.setupGlass17.par12, config.plugins.setupGlass17.par76, config.plugins.setupGlass17.par66, config.plugins.setupGlass17.par7, config.plugins.setupGlass17.par27, config.plugins.setupGlass17.par2, config.plugins.setupGlass17.par57):
 			self.runSetup()
 		elif t in (config.plugins.setupGlass17.par14, config.plugins.setupGlass17.par4):
