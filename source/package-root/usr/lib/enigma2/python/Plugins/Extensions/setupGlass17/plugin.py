@@ -2906,11 +2906,10 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
 			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line:
 				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
-				# The canvas always retains its full six-row geometry. The EPG
-			# renderer reads the live Prime Time setting and paints 6 or 5
-			# programme rows; only the last row changes to Prime Time.
-			line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
-			line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
+				# This specific list remains six slots tall. Prime Time
+				# replaces slot six dynamically without altering any other skin.
+				line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
+				line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
 			# When the user selects another template, strip only Warder's
 			# previously injected fixed-coordinate helpers. Never erase or
 			# relocate a native template widget (PIG, service list or EPG).
