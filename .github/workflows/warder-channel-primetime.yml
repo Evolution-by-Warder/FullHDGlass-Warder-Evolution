@@ -16,6 +16,11 @@ on:
       - '.github/workflows/warder-channel-primetime.yml'
   workflow_dispatch:
 
+# Keep the latest PR validation only; older queued commits are superseded.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   validate-source-and-geometry:
     runs-on: ubuntu-latest
