@@ -79,12 +79,10 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
-        # SWIG bindings do not universally accept None for gFont*; a 1px
-        # temporary font is ABI-compatible and keeps original user fonts
-        # untouched, restored when the overlay is removed.
-        self._quiet_font = gFont("Regular", 1)
+        # Never fake native EPG suppression with a tiny font. The C++ list
+        # skips elements whose font pointer is null; where the image's SWIG
+        # binding rejects None, leave its native list untouched.
         self._transparent = parseColor("#ff000000")
-        self._opaque_black = parseColor("#00000000")
         self._progress_border = parseColor("#dfdfdf")
         self._diag_seen = set()
         # Optional receiver-QA dimensions; absent in production XML.
@@ -381,18 +379,12 @@ class WarderChannelEpgClip(Renderer):
         highlighted = parseColor(config.plugins.setupGlass17.par110.value)
         self.instance.clear(self._transparent)
         for x, y, w, h, value, is_selected, progress in drawing:
-            # Repaint the text field and the bar above native C++ rendering,
-            # regardless of whether the image accepts our native font change.
-            mask_right = bar_left + bar_width if mode == "barright" else text_end
-            mask_width = max(0, mask_right - x)
-            if mask_width:
-                self.instance.fillRect(eRect(x, y + 2, mask_width, h - 4),
-                                       self._opaque_black)
+            # Native C++ must already have stopped rendering celServiceInfo.
+            # Paint only our own fitted letters; never black-mask native rows
+            # or repaint the indicator that belongs to the native list.
             self.instance.writeText(eRect(x, y, w, h), highlighted if is_selected else normal,
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
-            if mode == "barright" and progress is not None:
-                self._draw_progress(bar_left, y, bar_width, h, progress)
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
@@ -417,8 +409,23 @@ class WarderChannelEpgClip(Renderer):
                 self._restore_native()
                 self._component = component
                 self._last = None
-            # Draw first; hide the C++ event text only after a complete frame
-            # has been produced, so unsupported environments do not go blank.
+            # C++ paint() only skips an element when its font pointer is
+            # null. A 1px substitute still paints garbage glyphs. SWIG may
+            # reject None on older images: fail open without any overlay.
+            if not self._native_hidden:
+                try:
+                    component.l.setElementFont(component.l.celServiceInfo, None)
+                except (AttributeError, RuntimeError, TypeError) as exc:
+                    self._diag("native_event_disable_unsupported", type(exc).__name__)
+                    self.instance.clear(self._transparent)
+                    self._last = None
+                    return
+                self._native_hidden = True
+                self._last = None
+                try:
+                    component.instance.invalidate()
+                except (AttributeError, TypeError, RuntimeError):
+                    pass
             if not self._draw_rows(component):
                 self._diag("draw_rows_declined")
                 # Mode can change while ChannelSelection stays open.
@@ -436,25 +443,6 @@ class WarderChannelEpgClip(Renderer):
                     except (AttributeError, TypeError, RuntimeError):
                         pass
                 return
-            if not self._native_hidden:
-                try:
-                    component.l.setElementFont(component.l.celServiceInfo, self._quiet_font)
-                except (AttributeError, RuntimeError, TypeError) as exc:
-                    self._diag("native_font_suppress_error", type(exc).__name__)
-                    self.instance.clear(self._transparent)
-                    self._component = None
-                    return
-                self._native_hidden = True
-                self._diag("native_font_suppressed")
-                # A native font adjustment is visible only on freshly
-                # invalidated rows; the overlay paints the original size.
-                # Force the native list to repaint without its unbounded EPG
-                # text, including the selected and non-selected rows.
-                self._last = None
-                try:
-                    component.instance.invalidate()
-                except (AttributeError, TypeError, RuntimeError):
-                    pass
         except (AttributeError, RuntimeError, TypeError, ValueError, IndexError) as exc:
             self._diag("refresh_exception", type(exc).__name__)
             self._restore_native()
