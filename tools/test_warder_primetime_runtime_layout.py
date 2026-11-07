@@ -190,9 +190,13 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
         for enabled in (False, True):
             runtime_function(self.path, enabled)()
             updated = channel_section(self.path.read_text(encoding="utf-8"))
-            for name in ("WarderChannelEpgClip", "WarderPrimeTime",
-                         "WarderPrimeTimeDivider"):
+            for name in ("WarderChannelEpgClip", "WarderPrimeTimeDivider"):
                 self.assertNotIn('render="' + name + '"', updated)
+            # PIG 4 already ships its OWN correctly positioned Prime Time
+            # widget; retain it, removing only the wrong 1150,898 copy.
+            self.assertEqual(updated.count('render="WarderPrimeTime"'),
+                             fragment.count('render="WarderPrimeTime"'))
+            self.assertNotIn('render="WarderPrimeTime" position="1150,898"', updated)
             self.assertIn('position="967,120"', updated)
 
 
