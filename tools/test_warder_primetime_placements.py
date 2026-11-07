@@ -78,6 +78,7 @@ class LayoutTests(unittest.TestCase):
         renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py').read_text(encoding='utf-8')
         self.assertIn('available_width = max(0, self.sizeX - 30)', renderer)
         self.assertIn('while tmp and text_width > available_width:', renderer)
+        self.assertIn('if self.testSizeLabel.calculateSize().width() <= available_width:', renderer)
 
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
