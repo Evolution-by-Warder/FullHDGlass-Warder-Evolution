@@ -2885,14 +2885,11 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
 			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line:
 				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
-				# Six slots total: five regular EPG programmes plus Prime Time
-				# as the final row; otherwise all six are regular EPG programmes.
-				if prime_time_enabled:
-					line = line.replace('position="1150,695" size="685,226"', 'position="1150,695" size="685,194"')
-					line = line.replace('numEvents="8"', 'numEvents="5"').replace('numEvents="6"', 'numEvents="5"')
-				else:
-					line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
-					line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
+				# The canvas always retains its full six-row geometry. The EPG
+			# renderer reads the live Prime Time setting and paints 6 or 5
+			# programme rows; only the last row changes to Prime Time.
+			line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
+			line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
 			if ena and line.__contains__('<widget name="list"'):
 				# Apply only to the active ChannelSelection runtime copy.
 				# Keep approved source skin.xml byte-for-byte unchanged.
@@ -2904,18 +2901,18 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				ena = False
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
 				has_clipped_events = True
+			# Strip the TEST74 static line: it remains visible after
+			# turning Prime Time off without rebuilding ChannelSelection.
 			if in_default_channel_screen and '<eLabel position="1150,892" size="685,1"' in line:
-				if not prime_time_enabled:
-					continue
+				continue
+			if in_default_channel_screen and 'render="WarderPrimeTimeDivider"' in line:
 				has_prime_time_divider = True
 			if in_default_channel_screen and 'render="WarderPrimeTime"' in line:
-				if not prime_time_enabled:
-					continue
 				has_prime_time = True
 			if in_default_channel_screen and '</screen>' in line:
-				if prime_time_enabled and not has_prime_time_divider:
-					allLines += '    <eLabel position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
-				if prime_time_enabled and not has_prime_time:
+				if not has_prime_time_divider:
+					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
+				if not has_prime_time:
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
 				if not has_clipped_events:
 					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
