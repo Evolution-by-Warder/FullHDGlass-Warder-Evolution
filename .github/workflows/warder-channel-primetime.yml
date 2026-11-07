@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
@@ -24,6 +25,7 @@ jobs:
       - name: Validate Python syntax
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
