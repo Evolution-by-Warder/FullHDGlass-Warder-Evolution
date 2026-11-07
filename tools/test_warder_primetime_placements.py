@@ -47,6 +47,20 @@ class LayoutTests(unittest.TestCase):
             gated = re.findall(r'<widget\b[^>]*>[\s\S]*?WarderPrimeTimeGate[\s\S]*?</widget>', body)
             # The original service EPG widget must be gated, not the list.
             self.assertTrue(any('source="ServiceEvent"' in candidate for candidate in gated), screen_name)
+            # Confirm the gate belongs to the *same* EPG cell as the
+            # PrimeTime label. A misplaced gate can hide an unrelated item.
+            gate_index = body.index('WarderPrimeTimeGate')
+            widget_start = body.rfind('<widget', 0, gate_index)
+            self.assertGreaterEqual(widget_start, 0, screen_name)
+            original_tag = body[widget_start:body.index('>', widget_start) + 1]
+            self.assertIn('source="ServiceEvent"', original_tag, screen_name)
+            self.assertIn('position="%s"' % position, original_tag, screen_name)
+            original_size = re.search(r'size="(\\d+),(\\d+)"', original_tag)
+            overlay_size = re.search(r'size="(\\d+),(\\d+)"', overlay)
+            self.assertIsNotNone(original_size, screen_name)
+            self.assertIsNotNone(overlay_size, screen_name)
+            self.assertGreaterEqual(int(original_size[1]), int(overlay_size[1]), screen_name)
+            self.assertGreaterEqual(int(original_size[2]), int(overlay_size[2]), screen_name)
             count += 1
         self.assertEqual(count, len(TARGETS))
 
