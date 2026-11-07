@@ -279,6 +279,12 @@ class WarderChannelEpgClip(Renderer):
         if (selected != getattr(self, "_scroll_selected", None)
                 or mode != getattr(self, "_scroll_mode", None)):
             self._scroll_selected = selected
+            if mode != getattr(self, "_scroll_mode", None):
+                # ServiceListLegacy.setMode() restores celServiceInfo font
+                # when changing indicator placement. Reapply the tiny native
+                # font once, after the mode switch, or its full event title
+                # will bleed past our clipping area into percentage/minutes.
+                self._native_hidden = False
             self._scroll_mode = mode
             self._scroll_started = time()
             self._last = None
