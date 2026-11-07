@@ -67,6 +67,13 @@ jobs:
           persist-credentials: false
       - name: Apply exact native progressbar source correction
         run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path("upstream/enigma2/lib/service/listboxservice.cpp").read_text()
+          for key in ("eRect area = m_element_position[celServiceEventProgressbar]", "if (area.width() > 0 && evt", "m_pixmaps[picServiceEventProgressbar]"):
+              pos = source.find(key)
+              print("UPSTREAM ANCHOR", repr(key), pos, repr(source[max(0, pos-250):pos+350]) if pos >= 0 else "NOT FOUND", flush=True)
+          PY
           python3 tools/apply-native-progressbar-event-fix.py upstream/enigma2/lib/service/listboxservice.cpp
           git -C upstream/enigma2 diff --check
           git -C upstream/enigma2 diff --exit-code -- lib/service/listboxservice.h
