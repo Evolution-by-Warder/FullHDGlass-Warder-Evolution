@@ -139,6 +139,8 @@ class WarderChannelEpgClip(Renderer):
             if fitted:
                 drawing.append((start, row_index * row_height, remaining, row_height,
                                 fitted, index == selected))
+        if not drawing:
+            return False
         signature = (top, selected, row_height, width, height, tuple(drawing))
         if signature == self._last:
             return True
@@ -179,6 +181,13 @@ class WarderChannelEpgClip(Renderer):
                     self._component = None
                     return
                 self._native_hidden = True
+                # Force the native list to repaint without its unbounded EPG
+                # text, including the selected and non-selected rows.
+                self._last = None
+                try:
+                    component.instance.invalidate()
+                except (AttributeError, TypeError, RuntimeError):
+                    pass
         except (AttributeError, RuntimeError, TypeError, ValueError, IndexError):
             self._restore_native()
             if self.instance:
