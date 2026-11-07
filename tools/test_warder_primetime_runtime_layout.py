@@ -170,6 +170,19 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
                         self.assertEqual(original.count('render="' + renderer + '"'),
                                          updated.count('render="' + renderer + '"'),
                                          (variant, renderer))
+                    # PIG 4 and every other alternate template must retain
+                    # all native PIG, EPG, list, icon and label coordinates,
+                    # not merely the native list's main geometry.
+                    def native_geometry(xml):
+                        result = []
+                        for tag in re.findall(r'<(?:widget|ePixmap|eLabel)\\b[^>]*>', xml):
+                            position = re.search(r'\\bposition="([^"]+)"', tag)
+                            size = re.search(r'\\bsize="([^"]+)"', tag)
+                            if position and size:
+                                result.append((position.group(1), size.group(1)))
+                        return sorted(result)
+                    self.assertEqual(native_geometry(original),
+                                     native_geometry(updated), variant)
                     # An unrelated template never receives default geometry
                     # or a special 6-event/Prime-Time override.
                     self.assertEqual(original.count('render="g17MetrixHDRunningText"'),
