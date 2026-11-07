@@ -11,25 +11,25 @@ import sys
 
 
 def patch(source: str) -> str:
+    # OpenATV versions differ in the trailing progressbar condition
+    # (notably two-line modes). Preserve it exactly; touch only event lookup.
     pattern = re.compile(
-        r"(?m)^(?P<indent>[ \t]*)eRect area = m_element_position\[celServiceEventProgressbar\];\n"
-        r"(?P=indent)if \(area\.width\(\) > 0 && evt && !m_element_font\[celServiceEventProgressbar\]\)"
+        r"(?m)^(?P<indent>[ \\t]*)eRect area = m_element_position\\[celServiceEventProgressbar\\];\\n"
+        r"(?P=indent)if \\(area\\.width\\(\\) > 0 && evt && [^\\n]+"
     )
     matches = list(pattern.finditer(source))
     if len(matches) != 1:
         raise RuntimeError("Expected exactly one native progressbar paint anchor; found %d" % len(matches))
     match = matches[0]
     indent = match.group("indent")
-    lines = [
-        "eRect area = m_element_position[celServiceEventProgressbar];",
-        "// Native progressbar event lookup must not depend on the EPG text font.",
-        "if (area.width() > 0 && !evt && !m_element_font[celServiceEventProgressbar]",
-        "\t&& isPlayable && service_info)",
-        "\tservice_info->getEvent(*m_cursor, evt);",
-        "if (area.width() > 0 && evt && !m_element_font[celServiceEventProgressbar])",
-    ]
-    replacement = "\n".join(indent + line for line in lines)
-    return source[:match.start()] + replacement + source[match.end():]
+    insert = (
+        indent + "// Fetch progress events even when the native EPG text font is disabled.\\n"
+        + indent + "if (area.width() > 0 && !evt && isPlayable && service_info)\\n"
+        + indent + "\\tservice_info->getEvent(*m_cursor, evt);\\n"
+    )
+    original = match.group(0)
+    first_line = original.split("\\n", 1)[0]
+    return source[:match.start()] + first_line + "\\n" + insert + original.split("\\n", 1)[1] + source[match.end():]
 
 
 if __name__ == "__main__":
