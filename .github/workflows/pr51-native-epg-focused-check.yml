@@ -114,7 +114,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        upstream: [master, 66df86b]
+        upstream: [master, 66df86bd9fa56f817e33099c09ee1811c9aa1aab]
     steps:
       - uses: actions/checkout@v4
         with:
