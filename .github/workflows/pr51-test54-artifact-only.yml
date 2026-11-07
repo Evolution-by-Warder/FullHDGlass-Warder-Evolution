@@ -3,7 +3,7 @@ name: PR51 TEST54 receiver candidate IPK (artifact only)
 on:
   push:
     branches:
-      - work/pr51-epg-scroll-test54-20261107
+      - work/pr51-epg-clip-test54-20261107
 
 permissions:
   contents: read
