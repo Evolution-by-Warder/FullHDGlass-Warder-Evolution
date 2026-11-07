@@ -9,7 +9,7 @@ native renderer is left completely unchanged.
 from time import time
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
-from enigma import eCanvas, eLabel, eTimer, eRect, eSize, gFont, RT_VALIGN_CENTER, RT_HALIGN_LEFT
+from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
 from skin import parseColor
 from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
 
@@ -83,7 +83,6 @@ class WarderChannelEpgClip(Renderer):
         # skips elements whose font pointer is null; where the image's SWIG
         # binding rejects None, leave its native list untouched.
         self._transparent = parseColor("#ff000000")
-        self._progress_border = parseColor("#dfdfdf")
         self._diag_seen = set()
         # Optional receiver-QA dimensions; absent in production XML.
         self._warder_bar_width = None
@@ -215,33 +214,6 @@ class WarderChannelEpgClip(Renderer):
             return int(max(0.0, min(1.0, elapsed / float(duration))) * 100) / 100.0
         except (AttributeError, RuntimeError, TypeError, ValueError, ZeroDivisionError):
             return None
-
-    def _draw_progress(self, x, y, width, row_height, elapsed):
-        # Match the native 2px border and 6px interior; opaque underlay
-        # prevents the inherited native event text showing through the bar.
-        top = y + (row_height - 10) // 2
-        self.instance.fillRect(eRect(x, top, width, 10), self._opaque_black)
-        b = self._progress_border
-        self.instance.fillRect(eRect(x, top, width, 2), b)
-        self.instance.fillRect(eRect(x, top + 8, width, 2), b)
-        self.instance.fillRect(eRect(x, top + 2, 2, 6), b)
-        self.instance.fillRect(eRect(x + width - 2, top + 2, 2, 6), b)
-        filled = int(max(0, width - 4) * elapsed)
-        # Draw only 8 gradient segments to keep timer CPU use low.
-        for segment in range(8):
-            a = (filled * segment) // 8
-            z = (filled * (segment + 1)) // 8
-            if z <= a:
-                continue
-            t = ((a + z) / 2.0) / max(1, width - 4)
-            if t < .55:
-                u = t / .55
-                rgb = (int(53 + 179 * u), int(177 + 23 * u), int(63 - 14 * u))
-            else:
-                u = (t - .55) / .45
-                rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
-            self.instance.fillRect(eRect(x + 2 + a, top + 2, z - a, 6),
-                                   parseColor("#%02x%02x%02x" % rgb))
 
     def _progress_mode(self):
         """Supported single-line native modes; unknown modes remain native."""
@@ -415,7 +387,7 @@ class WarderChannelEpgClip(Renderer):
             if not self._native_hidden:
                 try:
                     component.l.setElementFont(component.l.celServiceInfo, None)
-                except (AttributeError, RuntimeError, TypeError) as exc:
+                except (AttributeError, RuntimeError, TypeError, ValueError) as exc:
                     self._diag("native_event_disable_unsupported", type(exc).__name__)
                     self.instance.clear(self._transparent)
                     self._last = None
