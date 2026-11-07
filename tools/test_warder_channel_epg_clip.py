@@ -16,6 +16,11 @@ FIT = ROOT / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setu
 scope_fit = {}
 exec(compile(FIT.read_text(encoding="utf-8"), str(FIT), "exec"), scope_fit)
 fit_title_to_width = scope_fit["fit_title_to_width"]
+scroll_scope = {"fit_title_to_width": fit_title_to_width}
+scroll_fn = next(n for n in ast.parse(RENDERER.read_text(encoding="utf-8")).body
+                 if isinstance(n, ast.FunctionDef) and n.name == "scroll_title_window")
+exec(compile(ast.Module(body=[scroll_fn], type_ignores=[]), str(RENDERER), "exec"), scroll_scope)
+scroll_title_window = scroll_scope["scroll_title_window"]
 
 
 class Label:
@@ -92,6 +97,8 @@ def method(name):
                 par109=types.SimpleNamespace(value="#ffffff"),
                 par110=types.SimpleNamespace(value="#62aaff")))),
         "fit_title_to_width": fit_title_to_width,
+        "scroll_title_window": scroll_title_window,
+        "time": __import__("time").time,
         "parseColor": lambda value: value,
         "eRect": lambda *args: args,
         "RT_HALIGN_LEFT": 1,
@@ -143,6 +150,27 @@ class ClippedEventTests(unittest.TestCase):
         self.assertEqual(writes[1][-1], "Nové bývanie")
         self.assertEqual(writes[1][2], "#62aaff")
         self.assertLessEqual(writes[2][1][0] + writes[2][1][2], bar_start - 12)
+
+    def test_long_title_scrolls_without_overflowing_reserved_field(self):
+        text = "Very long event name with additional details " * 5
+        measure = lambda item: len(item) * 10
+        width = 170
+        first = scroll_title_window(text, width, measure, 0)
+        after = scroll_title_window(text, width, measure, 110)
+        self.assertNotEqual(first, after)
+        self.assertTrue(after.startswith(text[11:15]))
+        self.assertLessEqual(measure(after), width)
+        self.assertEqual(scroll_title_window("Short show", width, measure, 100), "Short show")
+        self.assertEqual(scroll_title_window(text, 0, measure, 10), "")
+
+    def test_scrolling_event_changes_while_short_event_stays_still(self):
+        from time import time
+        self.renderer._scroll_started = time() - 7
+        self.assertTrue(self.draw())
+        writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
+        self.assertLessEqual(len(writes[0][-1]) * 10, writes[0][1][2])
+        self.assertEqual(writes[1][-1], "Nové bývanie")
+        self.assertLessEqual(writes[2][1][0] + writes[2][1][2], 700 - 25 - 90 - 12)
 
     def test_no_events_causes_no_native_suppression_candidate(self):
         self.refs = [Service("No EPG", "")]
