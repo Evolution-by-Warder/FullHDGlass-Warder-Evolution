@@ -32,6 +32,10 @@ class WarderChannelEpgClip(Renderer):
 
     def postWidgetCreate(self, instance):
         self._label = eLabel(instance)
+        # Measure actual glyph widths with a large, non-wrapping label.
+        # A zero-sized helper could silently report false-fitting long text.
+        self._label.setNoWrap(1)
+        self._label.resize(eSize(4096, 120))
         self._label.hide()
         self._last = None
         self._timer.start(250, True)
