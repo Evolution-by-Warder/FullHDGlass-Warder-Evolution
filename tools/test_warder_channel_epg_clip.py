@@ -212,25 +212,32 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(new_written[0].endswith("…"))
         self.assertTrue(new_written[2].endswith("…"))
 
-    def test_mode_switch_reapplies_native_event_suppression(self):
-        # Native ServiceList.setMode restores the original event font.
-        # A cached _native_hidden=True must be reset on each mode change.
-        from time import time
-        self.component.selected = 1
-        self.renderer._scroll_selected = 1
-        self.renderer._scroll_mode = "barright"
-        self.renderer._scroll_started = time() - 4
-        self.renderer._native_hidden = True
-        self.renderer._progress_mode = lambda: "percright"
-        self.assertTrue(self.draw())
-        self.assertFalse(self.renderer._native_hidden)
-        self.assertEqual(self.renderer._scroll_mode, "percright")
-        self.renderer._native_hidden = True
-        self.assertTrue(self.draw())
-        self.assertTrue(self.renderer._native_hidden)
-        self.renderer._progress_mode = lambda: "minsleft"
-        self.assertTrue(self.draw())
-        self.assertFalse(self.renderer._native_hidden)
+    def test_mode_switch_reapplies_native_disable_before_drawing(self):
+        events = []
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2,
+                                    setElementFont=lambda *args: events.append(("font", args))),
+            instance=types.SimpleNamespace(invalidate=lambda: events.append(("invalidate",))))
+        current = ["percright"]
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=component,
+            _native_hidden=True, _native_disable_unsupported=False,
+            _last=None, _scroll_mode="barright", _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _progress_mode=lambda: current[0],
+            _draw_rows=lambda c: events.append(("draw",)) or True,
+            _restore_native=lambda: None)
+        method("refresh")(target)
+        self.assertEqual(events[:3], [
+            ("font", (2, None)), ("invalidate",), ("draw",)])
+        self.assertTrue(target._native_hidden)
+        events.clear()
+        current[0] = "minsleft"
+        method("refresh")(target)
+        self.assertEqual(events[:3], [
+            ("font", (2, None)), ("invalidate",), ("draw",)])
+        self.assertTrue(target._native_hidden)
 
     def test_native_progress_modes_selected_safely(self):
         mode_method = method("_progress_mode")
