@@ -31,6 +31,61 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('if in_default_channel_screen and', source)
         self.assertIn('warderWholeLineScroll="1"', source)
 
+    def test_custom_font_pass_does_not_drop_last_service_event_overlay(self):
+        # Receiver TEST61 proved the installed skin had lost the overlay.
+        # A terminal self-closing ServiceEvent widget was buffered in
+        # changeChF() and discarded at </screen>. Exercise both actual
+        # plugin functions in their native sequence with enlarged fonts.
+        original = BASE.read_text(encoding="utf-8")
+        tree = ast.parse(PLUGIN.read_text(encoding="utf-8"))
+        names = {"cChannelsel", "changeChF"}
+        nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef)
+                 and n.name in names]
+        self.assertEqual({n.name for n in nodes}, names)
+
+        def setting(value):
+            return SimpleNamespace(value=value)
+
+        plugin_config = SimpleNamespace(
+            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+            par111=setting("#6cbcf0"), par117=setting("#dddddd"),
+            par145=setting("40"), par146=setting("38"),
+            par147=setting("1"), par148=setting("30"))
+        with TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / "skin.xml"
+            runtime.write_text(original, encoding="utf-8")
+
+            def write_text(path, text):
+                self.assertEqual(Path(path), runtime)
+                runtime.write_text(text, encoding="utf-8")
+                return True
+
+            def calc(line, key, new):
+                import re
+                return re.sub(re.escape(key) + r'[^"]*',
+                              lambda m: key + str(new), line, count=1)
+
+            scope = dict(config=SimpleNamespace(plugins=SimpleNamespace(
+                setupGlass17=plugin_config)), SKINXML=str(runtime),
+                ENA_P_CH=False, _atomicWriteText=write_text, calc=calc)
+            exec(compile(ast.Module(body=nodes, type_ignores=[]),
+                         str(PLUGIN), "exec"), scope)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            self.assertEqual(scope["changeChF"](), "o")
+            result = runtime.read_text(encoding="utf-8")
+            screen = result.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
+            self.assertEqual(screen.count('render="WarderChannelEpgClip"'), 1)
+            self.assertIn('numEvents="6"', screen)
+            self.assertIn('serviceNameFont="Prive4;40"', screen)
+            self.assertIn('serviceInfoFont="Prive4;38"', screen)
+            self.assertNotIn('warderTestMarker=', screen)
+            # Repeated font application should also be idempotent.
+            self.assertEqual(scope["changeChF"](), "o")
+            screen2 = runtime.read_text(encoding="utf-8").split(
+                '<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
+            self.assertEqual(screen2.count('render="WarderChannelEpgClip"'), 1)
+            self.assertEqual(BASE.read_text(encoding="utf-8"), original)
+
     def test_description_and_event_rows_have_a_gap_and_other_screens_untouched(self):
         source = PLUGIN.read_text(encoding="utf-8")
         tree = ast.parse(source)
