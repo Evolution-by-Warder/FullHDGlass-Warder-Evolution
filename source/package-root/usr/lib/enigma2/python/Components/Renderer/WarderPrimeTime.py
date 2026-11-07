@@ -9,7 +9,7 @@ from time import time
 from Components.Renderer.Renderer import Renderer
 from Components.VariableText import VariableText
 from Components.config import config
-from enigma import eLabel, eEPGCache
+from enigma import eLabel, eEPGCache, eServiceReference
 from Plugins.Extensions.setupGlass17.warderPrimeTime import prime_time_event
 
 
@@ -41,7 +41,7 @@ class WarderPrimeTime(VariableText, Renderer):
                 self.instance.hide()
                 return
             # Exclude bouquet folders and markers.
-            if getattr(service, "flags", 0) & 0x40:
+            if getattr(service, "flags", 0) & (eServiceReference.isMarker | eServiceReference.flagDirectory):
                 self.text = ""
                 self.instance.hide()
                 return
