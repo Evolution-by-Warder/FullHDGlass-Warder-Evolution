@@ -1,0 +1,151 @@
+name: Publish FullHDGlass Warder Evolution 1.0.71
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-warder-1.0.71.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-warder-1.0.71
+  cancel-in-progress: true
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/
+            /tools/
+            /design/
+            /docs/
+            /reports/
+            /update*.json
+            /.github/workflows/publish-warder-1.0.71.yml
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original reproducible build dependencies
+        run: |
+          python -m pip install --quiet 'Pillow==11.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+      - name: Validate published source, version and excluded geometry experiment
+        run: |
+          set -euo pipefail
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = '1.0.71'
+          grep -qx 'Version: 1.0.71-1' source/control/control
+          python3 tools/sync_header_version.py --check
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py').read_text()
+          assert '_warderIptvReference' in p
+          assert 'warderEvolutionPrimeTime.enabled' in p
+          assert 'pig28 = (' not in p
+          assert 'WarderPrimeTimeDivider' in p
+          PY
+          for name in preinst postinst postrm prerm; do sh -n "source/control/$name"; done
+      - name: Build unchanged reviewed payload and verify every packaged file
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          # Recreate only the build-time verification reports from the pinned
+          # receiver-approved test5 proof. Never rewrite shipped binaries.
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('tools').resolve()))
+          from bitrate_package import validate_helpers
+          proof=json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
+          out=Path('packages/test')
+          out.mkdir(parents=True, exist_ok=True)
+          assert len(proof['builds']) == 3
+          for name,report in zip(('arm','mipsel','aarch64'),proof['builds']):
+              filename='bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json'
+              (out/filename).write_text(json.dumps(report,indent=2)+'\n')
+          validate_helpers(Path.cwd())
+          PY
+          python3 tools/test-legacy-950-upgrade.py -q
+          python3 tools/test-package-transition.py -q
+          python3 tools/build-setup-style-test.py
+          python3 tools/verify-setup-style-ipk.py
+          python3 tools/test-release-bytecode.py
+          PACKAGE='packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk'
+          test -s "$PACKAGE"
+          ar t "$PACKAGE" | grep -qx 'data.tar.gz'
+          (cd packages/test && sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256)
+      - name: Stage official package and compare exact bytes
+        run: |
+          set -euo pipefail
+          mkdir -p packages
+          cp packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk packages/
+          cp packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256 packages/
+          cmp packages/test/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-Warder-Evolution-1.0.71-official
+          path: |
+            packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk
+            packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256
+          if-no-files-found: error
+          retention-days: 90
+      - name: Create public official GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          PACKAGE=packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk
+          if gh release view v1.0.71 >/dev/null 2>&1; then
+            mkdir -p /tmp/previous-release
+            gh release download v1.0.71 --pattern "$(basename "$PACKAGE")" --dir /tmp/previous-release
+            cmp "$PACKAGE" "/tmp/previous-release/$(basename "$PACKAGE")"
+          else
+            gh release create v1.0.71 "$PACKAGE" "$PACKAGE.sha256" --target "$GITHUB_SHA" --latest --title 'FullHDGlass – Warder Evolution 1.0.71' --notes-file docs/warder-1.0.71-release-notes.md
+          fi
+          gh release view v1.0.71 --json tagName,isDraft,isPrerelease,assets --jq '.tagName == "v1.0.71" and .isDraft == false and .isPrerelease == false and (.assets | map(.name) | index("enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk") != null)' | grep -qx true
+      - name: Publish verified package into main production update channel
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          package=Path('packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk')
+          digest=hashlib.sha256(package.read_bytes()).hexdigest()
+          record={
+            "version":"1.0.71",
+            "package_url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"+package.name,
+            "sha256":digest,
+            "changelog":"Fix migration from original FullHDGlass 9.50 revisions including 9.50-r12; all 1.0.70 EPG, IPTV, Prime Time and skin features preserved. Restart GUI after updating."
+          }
+          Path('update-production.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
+          assert digest in Path('packages/'+package.name+'.sha256').read_text()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse -f packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk.sha256 update-production.json
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish official 1.0.71 IPK and production feed [skip ci]'
+            git push origin HEAD:main
+          fi
+      - name: Verify published feed after pushing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if gh api "repos/$GITHUB_REPOSITORY/contents/update-production.json" -H 'Accept: application/vnd.github.raw+json' | grep -q '"version": "1.0.71"'; then
+              echo 'Production feed verified at 1.0.71'
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
