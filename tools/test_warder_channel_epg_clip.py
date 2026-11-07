@@ -121,8 +121,7 @@ class ClippedEventTests(unittest.TestCase):
             _label=Label(), instance=Canvas(), _last=None, _transparent="#transparent",
             _name_and_event=lambda center, ref: (ref.name, ref.title),
             _progress_fraction=lambda center, ref: 0.35,
-            _draw_progress=lambda x, y, width, row_height, elapsed: None,
-            _opaque_black="#000000", _progress_border="#dfdfdf",
+            # Native indicators belong exclusively to ServiceListLegacy.
             _warder_bar_width=None, _warder_test_marker=False,
             _progress_mode=lambda: "barright",
             _native_right_bar_enabled=lambda: True,
@@ -145,11 +144,7 @@ class ClippedEventTests(unittest.TestCase):
             self.assertLessEqual(len(title) * 10, width)
             self.assertLessEqual(y + height, 222)
         self.assertTrue(writes[0][-1].endswith("…"))
-        masks = [item for item in self.renderer.instance.calls if item[0] == "fill"]
-        self.assertEqual(len(masks), 3)
-        for _, rect, color in masks:
-            self.assertGreater(rect[2], 0)
-            self.assertEqual(color, "#000000")
+        self.assertFalse(any(item[0] == "fill" for item in self.renderer.instance.calls))
         self.assertEqual(writes[1][-1], "Nové bývanie")
         self.assertEqual(writes[1][2], "#62aaff")
         self.assertLessEqual(writes[2][1][0] + writes[2][1][2], bar_start - 12)
@@ -257,7 +252,6 @@ class ClippedEventTests(unittest.TestCase):
     def test_left_bar_shifts_names_and_keeps_native_bars(self):
         self.renderer._progress_mode = lambda: "barleft"
         bars = []
-        self.renderer._draw_progress = lambda *args: bars.append(args)
         self.assertTrue(self.draw())
         writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
         self.assertEqual(len(writes), 3)
@@ -266,6 +260,7 @@ class ClippedEventTests(unittest.TestCase):
         self.assertGreater(writes[0][1][0], 200)
         self.assertTrue(all(x[1][0] + x[1][2] <= 700 - 25 - 12 for x in writes))
         self.assertEqual(bars, [])
+        self.assertFalse(any(call[0] == "fill" for call in self.renderer.instance.calls))
 
     def test_disabled_bar_uses_full_text_width_without_redraw(self):
         self.renderer._progress_mode = lambda: "no"
@@ -281,7 +276,7 @@ class ClippedEventTests(unittest.TestCase):
         # The native progress/percent/minutes cells are never repainted by
         # our canvas except the legacy verified right-hand bar layout.
         modes = {
-            "barright": (True, 700 - 25 - 90 - 26),
+            "barright": (False, 700 - 25 - 90 - 26),
             "barleft": (False, 700 - 25 - 12),
             "percright": (False, 700 - 25 - 146),
             "percleft": (False, 700 - 25 - 12),
@@ -295,12 +290,13 @@ class ClippedEventTests(unittest.TestCase):
             self.renderer._last = None
             self.renderer._progress_mode = lambda m=mode: m
             bar_calls = []
-            self.renderer._draw_progress = lambda *args: bar_calls.append(args)
             self.assertTrue(self.draw(), mode)
             writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
             self.assertEqual(len(writes), 3, mode)
             self.assertTrue(all(x[1][0] + x[1][2] <= text_end for x in writes), mode)
-            self.assertEqual(bool(bar_calls), draw_bar, mode)
+            # Native indicator cells are never painted on our canvas.
+            self.assertEqual(bar_calls, [], mode)
+            self.assertFalse(any(x[0] == "fill" for x in self.renderer.instance.calls), mode)
             starts[mode] = writes[0][1][0]
         self.assertGreater(starts["barleft"], starts["no"])
         self.assertGreater(starts["percleft"], starts["no"])
@@ -340,30 +336,44 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
-    def test_refresh_reinstalls_quiet_font_after_native_mode_change(self):
-        font_calls = []
-        invalidates = []
-        native = types.SimpleNamespace(
+    def test_refresh_disables_native_event_at_cpp_boundary_before_paint(self):
+        events = []
+        component = types.SimpleNamespace(
             l=types.SimpleNamespace(
-                celServiceInfo=2,
-                setElementFont=lambda *args: font_calls.append(args)),
-            ServiceInfoFont="original",
-            instance=types.SimpleNamespace(
-                invalidate=lambda: invalidates.append(True)))
+                celServiceInfo=2, setElementFont=lambda *args: events.append(("font", args))),
+            instance=types.SimpleNamespace(invalidate=lambda: events.append(("invalidate",))))
         target = types.SimpleNamespace(
-            instance=Canvas(), _label=Label(), _component=native,
-            _native_hidden=True, _quiet_font="quiet",
+            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False,
+            _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
-            _diag=lambda *args: None,
-            _find_component=lambda: native)
-        def draw_and_detect_mode_change(component):
-            target._native_hidden = False
-            return True
-        target._draw_rows = draw_and_detect_mode_change
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _draw_rows=lambda c: events.append(("draw",)) or True,
+            _restore_native=lambda: None)
         method("refresh")(target)
-        self.assertEqual(font_calls, [(2, "quiet")])
-        self.assertEqual(invalidates, [True])
+        self.assertEqual(events[0], ("font", (2, None)))
+        self.assertEqual(events[1], ("invalidate",))
+        self.assertEqual(events[2], ("draw",))
         self.assertTrue(target._native_hidden)
+
+    def test_unsupported_null_font_fails_open_without_canvas_mask(self):
+        calls = []
+        def rejecting_font(*args):
+            calls.append(args)
+            raise TypeError("SWIG rejects null gFont")
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2, setElementFont=rejecting_font),
+            instance=types.SimpleNamespace(invalidate=lambda: None))
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False,
+            _last=None, _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _draw_rows=lambda c: self.fail("Do not draw if C++ disable fails"),
+            _restore_native=lambda: None)
+        method("refresh")(target)
+        self.assertEqual(calls, [(2, None)])
+        self.assertFalse(target._native_hidden)
+        self.assertFalse(any(call[0] == "fill" for call in target.instance.calls))
 
     def test_refresh_error_handler_does_not_require_flush(self):
         import types
@@ -446,16 +456,6 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(target._warder_test_marker)
         self.assertEqual(target.skinAttributes, [("size", "1065,842")])
 
-    def test_progress_redraw_obscures_transparent_underlay(self):
-        self.renderer.instance.calls.clear()
-        method("_draw_progress")(self.renderer, 870, 37, 90, 37, 0.35)
-        fills = [x for x in self.renderer.instance.calls if x[0] == "fill"]
-        self.assertGreaterEqual(len(fills), 6)
-        self.assertEqual(fills[0][1], (870, 50, 90, 10))
-        self.assertEqual(fills[0][2], "#000000")
-        self.assertTrue(any(item[2] == "#dfdfdf" for item in fills))
-        self.assertTrue(all(item[1][2] > 0 and item[1][3] > 0 for item in fills))
-
     def test_diagnostics_are_bounded_and_fail_open(self):
         import tempfile
         with tempfile.TemporaryDirectory() as d:
@@ -475,16 +475,15 @@ class ClippedEventTests(unittest.TestCase):
 
     def test_renderer_is_fail_open_and_default_only(self):
         content = RENDERER.read_text(encoding="utf-8")
-        self.assertIn("component.l.setElementFont(component.l.celServiceInfo, self._quiet_font)", content)
-        self.assertIn('self._quiet_font = gFont("Regular", 1)', content)
-        self.assertNotIn("setElementFont(component.l.celServiceInfo, None)", content)
+        self.assertIn("component.l.setElementFont(component.l.celServiceInfo, None)", content)
+        self.assertNotIn('gFont("Regular", 1)', content)
         self.assertIn("self._restore_native()", content)
         self.assertIn("component.instance.invalidate()", content)
         self.assertIn("self._label.setNoWrap(1)", content)
         self.assertIn("self._label.resize(eSize(4096, 120))", content)
         self.assertIn("instance.setSize(eSize(width, height))", content)
-        self.assertIn("self.instance.fillRect(", content)
-        self.assertIn("self._draw_progress(bar_left", content)
+        self.assertNotIn("self.instance.fillRect(eRect(x, y + 2", content)
+        self.assertNotIn("self._draw_progress(", content)
         self.assertIn("if not drawing:", content)
         self.assertNotIn("fontSize = 0", content)
         self.assertNotIn("self.instance.flush()", content)
