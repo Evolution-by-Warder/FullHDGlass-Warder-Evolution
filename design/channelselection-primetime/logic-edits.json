@@ -77,6 +77,6 @@
   {
     "scope": "changeChF",
     "before": "",
-    "after": "if line.__contains__('source=\"ServiceEvent'):\n    if line.__contains__('render=\"g17MetrixHDRunningText'):\n        allLines += calc(line,' font=\"Prive4;',config.plugins.setupGlass17.par148.value)\n    elif line.rstrip().endswith('/>'):\n        allLines += line\n    else:\n        buffLine = line\n        ena2 = True"
+    "after": "if line.__contains__('source=\"ServiceEvent') and line.rstrip().endswith('/>'):\n    allLines += line\n    continue"
   }
 ]
