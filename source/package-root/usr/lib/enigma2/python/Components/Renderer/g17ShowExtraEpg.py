@@ -153,6 +153,10 @@ class g17ShowExtraEpg(Renderer):
 								except (AttributeError, IndexError, TypeError, ValueError, RuntimeError):
 									pass
 								for x in range(0,visible_events):
+									# A full event row must fit. Checking only y > H
+									# after painting used to leave the last line half visible.
+									if y + self.lineHeight > self.H:
+										break
 									try:
 										t = localtime(int(epgList[x][1]))
 										tmp = "%02d:%02d" % (t.tm_hour, t.tm_min)
