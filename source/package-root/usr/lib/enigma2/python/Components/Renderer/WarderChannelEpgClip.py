@@ -437,6 +437,7 @@ class WarderChannelEpgClip(Renderer):
             # ServiceListLegacy.setMode() restores the native EPG font.
             # Detect the mode change BEFORE disabling it and BEFORE painting,
             # rather than resetting _native_hidden inside _draw_rows().
+            current_mode = self._progress_mode()
             if current_mode != getattr(self, "_scroll_mode", None):
                 self._native_hidden = False
             # C++ paint() only skips an element when its font pointer is
