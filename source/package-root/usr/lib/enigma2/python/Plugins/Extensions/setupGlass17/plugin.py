@@ -2898,7 +2898,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				has_clipped_events = True
 			if in_default_channel_screen and '</screen>' in line:
 				if not has_clipped_events:
-					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" transparent="1" />\n'
+					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
 				in_default_channel_screen = None
 			allLines += line
 		r.close()
