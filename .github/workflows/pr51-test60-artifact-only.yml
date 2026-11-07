@@ -64,6 +64,12 @@ jobs:
               shutil.copytree(source / "control", control, symlinks=True)
               stage = runpy.run_path(str(root / "tools/stage-pr51-clip-candidate.py"))["stage_skin"]
               stage(payload / "usr/share/enigma2/hd_glass17/skin.xml", progress_width=90, marker=True)
+              # Staged-only diagnostic log name; do not alter PR or production files.
+              clip_file = payload / "usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py"
+              clip_code = clip_file.read_text(encoding="utf-8")
+              assert "warder-epg-clip-test59.log" in clip_code
+              clip_file.write_text(clip_code.replace("warder-epg-clip-test59.log",
+                                                     "warder-epg-clip-test60.log"), encoding="utf-8")
               version_file = payload / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version"
               version_file.write_text(version + "\n", encoding="utf-8")
               control_file = control / "control"
