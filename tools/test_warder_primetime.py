@@ -20,6 +20,15 @@ class PrimeTimeTests(unittest.TestCase):
         self.assertEqual(datetime.datetime.fromtimestamp(target_timestamp(noon)), datetime.datetime(2026, 11, 7, 20, 25))
         self.assertEqual(datetime.datetime.fromtimestamp(target_timestamp(evening)), datetime.datetime(2026, 11, 8, 20, 25))
 
+    def test_exact_cutoff_still_uses_todays_event(self):
+        cutoff = datetime.datetime(2026, 11, 7, 20, 25, 0).timestamp()
+        self.assertEqual(target_timestamp(cutoff), int(cutoff))
+        after = cutoff + 1
+        self.assertEqual(
+            datetime.datetime.fromtimestamp(target_timestamp(after)),
+            datetime.datetime(2026, 11, 8, 20, 25),
+        )
+
     def test_clock_validation(self):
         with self.assertRaises(ValueError):
             target_timestamp(0, 25, 0)
