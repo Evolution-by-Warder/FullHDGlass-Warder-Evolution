@@ -44,7 +44,7 @@ def stage_skin(skin_path, progress_width=None, marker=False):
         patched = m.group().replace('/>', ' fieldMargins="26" />')
         screen = screen[:m.start()] + patched + screen[m.end():]
     overlay = ('    <widget source="ServiceEvent" render="WarderChannelEpgClip" '
-               'position="60,96" size="1065,842" zPosition="4" transparent="1" />')
+               'position="60,96" size="1065,842" zPosition="4" alphaTest="blend" transparent="1" />')
     if progress_width is not None:
         try:
             progress_width = int(progress_width)
