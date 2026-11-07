@@ -116,6 +116,16 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('if what[0] == self.CHANGED_CLEAR:', extended)
         self.assertIn('self.text = ""', extended)
 
+    def test_epg_timers_are_stopped_on_clear_and_teardown(self):
+        renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py').read_text(encoding='utf-8')
+        clear_handler = renderer.split('def changed(self, what):', 1)[1].split('def work(self):', 1)[0]
+        teardown = renderer.split('def preWidgetRemove(self, instance):', 1)[1].split('def postWidgetCreate', 1)[0]
+        gated = renderer.split('def work(self):', 1)[1].split('tmp = self.tt', 1)[0]
+        for block in (clear_handler, gated, teardown):
+            self.assertIn('self.fillTimer.stop()', block)
+            self.assertIn('self.__tagTimer.stop()', block)
+        self.assertIn('if self.readTag and self.__tagTimer.isActive():', teardown)
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
