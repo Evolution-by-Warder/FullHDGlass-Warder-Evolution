@@ -39,8 +39,8 @@ class Canvas:
     def writeText(self, rect, foreground, background, font, text, flags):
         self.calls.append(("write", rect, foreground, font, text))
 
-    def flush(self):
-        self.calls.append(("flush",))
+    # OpenATV 8.0-next eCanvas has no flush() method. Do not add a
+    # mock: exercising draw/exception paths must catch accidental use.
 
 
 class Service:
@@ -137,6 +137,25 @@ class ClippedEventTests(unittest.TestCase):
         self.assertFalse(self.draw())
         self.assertEqual(self.renderer.instance.calls, [])
 
+    def test_openatv_canvas_without_flush_renders_and_caches(self):
+        self.assertFalse(hasattr(self.renderer.instance, "flush"))
+        self.assertTrue(self.draw())
+        self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
+        self.assertTrue(self.draw())
+
+    def test_refresh_error_handler_does_not_require_flush(self):
+        import types
+        renderer = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _native_hidden=False,
+            _component=None, _transparent="#transparent", _timer=types.SimpleNamespace(
+                start=lambda *args: None),
+            _find_component=lambda: object(),
+            _draw_rows=lambda c: (_ for _ in ()).throw(AttributeError("test failure")),
+            _restore_native=lambda: None,
+        )
+        method("refresh")(renderer)
+        self.assertTrue(any(call[0] == "clear" for call in renderer.instance.calls))
+
     def test_rendering_same_frame_is_cached(self):
         self.assertTrue(self.draw())
         initial = len(self.renderer.instance.calls)
@@ -152,6 +171,7 @@ class ClippedEventTests(unittest.TestCase):
         self.assertIn("self._label.resize(eSize(4096, 120))", content)
         self.assertIn("if not drawing:", content)
         self.assertNotIn("fontSize = 0", content)
+        self.assertNotIn("self.instance.flush()", content)
         xml = (ROOT / "source/package-root/usr/share/enigma2/hd_glass17/skin.xml").read_text(encoding="utf-8")
         self.assertNotIn('render="WarderChannelEpgClip"', xml)
 
