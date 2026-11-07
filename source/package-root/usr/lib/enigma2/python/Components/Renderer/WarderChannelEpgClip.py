@@ -8,7 +8,7 @@ native renderer is left completely unchanged.
 """
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
-from enigma import eCanvas, eLabel, eTimer, eRect, eSize, RT_VALIGN_CENTER, RT_HALIGN_LEFT
+from enigma import eCanvas, eLabel, eTimer, eRect, eSize, gFont, RT_VALIGN_CENTER, RT_HALIGN_LEFT
 from skin import parseColor
 from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
 
@@ -28,6 +28,10 @@ class WarderChannelEpgClip(Renderer):
         self._component = None
         self._native_hidden = False
         self._last = None
+        # SWIG bindings do not universally accept None for gFont*; a 1px
+        # temporary font is ABI-compatible and keeps original user fonts
+        # untouched, restored when the overlay is removed.
+        self._quiet_font = gFont("Regular", 1)
         self._transparent = parseColor("#ff000000")
 
     def postWidgetCreate(self, instance):
@@ -177,12 +181,14 @@ class WarderChannelEpgClip(Renderer):
                 return
             if not self._native_hidden:
                 try:
-                    component.l.setElementFont(component.l.celServiceInfo, None)
+                    component.l.setElementFont(component.l.celServiceInfo, self._quiet_font)
                 except (AttributeError, RuntimeError, TypeError):
                     self.instance.clear(self._transparent)
                     self._component = None
                     return
                 self._native_hidden = True
+                # A native font adjustment is visible only on freshly
+                # invalidated rows; the overlay paints the original size.
                 # Force the native list to repaint without its unbounded EPG
                 # text, including the selected and non-selected rows.
                 self._last = None
