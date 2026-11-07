@@ -393,7 +393,7 @@ class ClippedEventTests(unittest.TestCase):
         target = types.SimpleNamespace(
             instance=Canvas(), _label=Label(), _component=component,
             _native_hidden=True, _native_disable_unsupported=False,
-            _last=None, _transparent="clear",
+            _last=None, _scroll_mode="barright", _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
             _progress_mode=lambda: "barright",
