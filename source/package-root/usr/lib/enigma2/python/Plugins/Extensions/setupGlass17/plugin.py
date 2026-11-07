@@ -2868,7 +2868,6 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		r = open(SKINXML,"r")
 		ena = False
 		in_default_channel_screen = False
-		has_clipped_events = False
 		for line in r.readlines():
 			if line.__contains__('<screen name="ChannelSelection"'):
 				ena = True
