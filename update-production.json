@@ -1,6 +1,6 @@
 {
-  "version": "1.0.70",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.70_all.ipk",
-  "sha256": "42d52162a711d3fd4d0e466e12acc84d3355717121f0190359e4fe38b807fb20",
-  "changelog": "Prime Time (Channel Selection 35), improved EPG and PIG positioning, IPTV InfoBar metadata recovery; user settings preserved. Restart GUI after updating."
+  "version": "1.0.71",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk",
+  "sha256": "64342f30625b1b7a8f87b51651195e9535508735b165fc4a55016fe1fd58852e",
+  "changelog": "Fix migration from original FullHDGlass 9.50 revisions including 9.50-r12; all 1.0.70 EPG, IPTV, Prime Time and skin features preserved. Restart GUI after updating."
 }
