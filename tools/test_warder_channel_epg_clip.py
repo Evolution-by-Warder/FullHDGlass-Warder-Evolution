@@ -347,6 +347,7 @@ class ClippedEventTests(unittest.TestCase):
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
+            _progress_mode=lambda: "barright",
             _draw_rows=lambda c: events.append(("draw",)) or True,
             _restore_native=lambda: None)
         method("refresh")(target)
@@ -368,12 +369,31 @@ class ClippedEventTests(unittest.TestCase):
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
+            _progress_mode=lambda: "barright",
             _draw_rows=lambda c: self.fail("Do not draw if C++ disable fails"),
             _restore_native=lambda: None)
         method("refresh")(target)
         self.assertEqual(calls, [(2, None)])
         self.assertFalse(target._native_hidden)
         self.assertFalse(any(call[0] == "fill" for call in target.instance.calls))
+
+    def test_unsupported_indicator_mode_never_touches_native_font(self):
+        calls = []
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2,
+                                    setElementFont=lambda *args: calls.append(args)),
+            instance=types.SimpleNamespace(invalidate=lambda: calls.append("invalidate")))
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False,
+            _last=None, _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _progress_mode=lambda: None,
+            _draw_rows=lambda c: self.fail("Unsupported mode must not draw"),
+            _restore_native=lambda: None)
+        method("refresh")(target)
+        self.assertEqual(calls, [])
+        self.assertEqual(target.instance.calls, [])
 
     def test_refresh_error_handler_does_not_require_flush(self):
         import types
@@ -383,6 +403,7 @@ class ClippedEventTests(unittest.TestCase):
                 start=lambda *args: None),
             _diag=lambda *args: None,
             _find_component=lambda: object(),
+            _progress_mode=lambda: "barright",
             _draw_rows=lambda c: (_ for _ in ()).throw(AttributeError("test failure")),
             _restore_native=lambda: None,
         )
