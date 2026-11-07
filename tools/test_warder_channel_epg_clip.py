@@ -163,6 +163,16 @@ class ClippedEventTests(unittest.TestCase):
         self.assertEqual(scroll_title_window("Short show", width, measure, 100), "Short show")
         self.assertEqual(scroll_title_window(text, 0, measure, 10), "")
 
+    def test_scrolling_reveals_full_suffix_without_ellipsis(self):
+        title = "ABCDEFGHIJ"
+        measure = lambda item: len(item) * 10
+        # Scrolled past seven characters, the last three must be visible.
+        self.assertEqual(scroll_title_window(title, 30, measure, 70), "HIJ")
+        # Early moving windows are bounded and contain no artificial dots.
+        self.assertEqual(scroll_title_window(title, 30, measure, 20), "CDE")
+        # An unscrolled long name still advertises truncation.
+        self.assertTrue(scroll_title_window(title, 30, measure, 0).endswith("…"))
+
     def test_scrolling_event_changes_while_short_event_stays_still(self):
         from time import time
         self.renderer._scroll_started = time() - 7
