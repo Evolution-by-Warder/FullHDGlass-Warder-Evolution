@@ -231,7 +231,26 @@ class WarderChannelEpgClip(Renderer):
             self.instance.fillRect(eRect(x + 2 + a, top + 2, z - a, 6),
                                    parseColor("#%02x%02x%02x" % rgb))
 
+    def _native_right_bar_enabled(self):
+        """Never paint a synthetic right bar over left, percentage or off modes.
+
+        The receiver's native ServiceList owns all non-barright layouts.
+        Unknown/unsupported configurations fail open to the native renderer.
+        """
+        try:
+            usage = config.usage
+            if getattr(getattr(usage, "servicelist_twolines", None), "value", False):
+                return False
+            mode = usage.show_event_progress_in_servicelist.value
+            return mode == "barright"
+        except (AttributeError, TypeError, ValueError):
+            return False
+
     def _draw_rows(self, component):
+        # All other modes must use native placement, without any overlay.
+        if not self._native_right_bar_enabled():
+            self._diag("native_progress_mode_fallback")
+            return False
         from enigma import eServiceCenter
         rows = component.getList()
         if rows is None:
@@ -356,7 +375,16 @@ class WarderChannelEpgClip(Renderer):
             # has been produced, so unsupported environments do not go blank.
             if not self._draw_rows(component):
                 self._diag("draw_rows_declined")
+                # Mode can change while ChannelSelection stays open.
+                # Remove old right-hand canvas bars before restoring
+                # native text; otherwise a ghost bar remains on screen.
+                self.instance.clear(self._transparent)
+                self._last = None
                 self._restore_native()
+                try:
+                    component.instance.invalidate()
+                except (AttributeError, TypeError, RuntimeError):
+                    pass
                 return
             if not self._native_hidden:
                 try:
