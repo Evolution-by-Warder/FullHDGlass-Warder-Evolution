@@ -137,3 +137,25 @@ jobs:
           git -C upstream/enigma2 apply "../../$PATCH"
           git -C upstream/enigma2 diff --check
           git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp
+
+      - name: Package validated OpenATV release 8.0 BitBake layer
+        if: matrix.upstream == '8.0'
+        run: |
+          set -euo pipefail
+          mkdir -p release-source-bundle
+          cp -R compatibility/native-enigma2-progressbar/meta-warder-native release-source-bundle/
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp > release-source-bundle/verified-openatv-8.0.patch
+          test -s release-source-bundle/verified-openatv-8.0.patch
+          UPSTREAM_COMMIT="$(git -C upstream/enigma2 rev-parse HEAD)"
+          printf 'Target: OpenATV 8.0 release source patch only; no receiver binary.\nSource repository: https://github.com/openatv/enigma2\nSource branch: 8.0\nSource commit: %s\nReceiver reported: openATV 8.1.0~beta+git36096+f9f72e10+f9f72e1115-r1\nReceiver source commit match: NOT ESTABLISHED\nNative ARMv7 compilation: NOT PERFORMED\nInstall on receiver: NO\n' "$UPSTREAM_COMMIT" > release-source-bundle/PROVENANCE.txt
+          (cd release-source-bundle && find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+          cat release-source-bundle/PROVENANCE.txt
+          cat release-source-bundle/SHA256SUMS
+      - name: Upload OpenATV 8.0 source-only integration bundle
+        if: matrix.upstream == '8.0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr51-openatv-8.0-native-bitbake-layer-SOURCE-ONLY
+          path: release-source-bundle/
+          if-no-files-found: error
+          retention-days: 14
