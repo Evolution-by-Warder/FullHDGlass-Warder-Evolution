@@ -87,6 +87,8 @@ class g17EmptyEpg(VariableText, Renderer):
 		if what[0] == self.CHANGED_CLEAR:
 			if self.fillTimer.isActive():
 				self.fillTimer.stop()
+			if self.readTag and self.__tagTimer.isActive():
+				self.__tagTimer.stop()
 			self.tt = self.lastText = self.backText = ""
 			self.text = ""
 			return
@@ -101,6 +103,8 @@ class g17EmptyEpg(VariableText, Renderer):
 				if config.plugins.warderEvolutionPrimeTime.enabled.value:
 					if self.fillTimer.isActive():
 						self.fillTimer.stop()
+					if self.readTag and self.__tagTimer.isActive():
+						self.__tagTimer.stop()
 					self.lastText = self.backText = ""
 					self.text = ""
 					return
@@ -162,6 +166,10 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.text = self.backText 					
 					
 	def preWidgetRemove(self, instance):
+		if self.fillTimer.isActive():
+			self.fillTimer.stop()
+		if self.readTag and self.__tagTimer.isActive():
+			self.__tagTimer.stop()
 		self.testSizeLabel = None
 
 	def postWidgetCreate(self, instance):
