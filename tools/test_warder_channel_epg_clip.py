@@ -39,6 +39,9 @@ class Canvas:
     def writeText(self, rect, foreground, background, font, text, flags):
         self.calls.append(("write", rect, foreground, font, text))
 
+    def fillRect(self, rect, color):
+        self.calls.append(("fill", rect, color))
+
     # OpenATV 8.0-next eCanvas has no flush() method. Do not add a
     # mock: exercising draw/exception paths must catch accidental use.
 
@@ -108,7 +111,10 @@ class ClippedEventTests(unittest.TestCase):
         self.component = Component(self.refs)
         self.renderer = types.SimpleNamespace(
             _label=Label(), instance=Canvas(), _last=None, _transparent="#transparent",
-            _name_and_event=lambda center, ref: (ref.name, ref.title))
+            _name_and_event=lambda center, ref: (ref.name, ref.title),
+            _progress_fraction=lambda center, ref: 0.35,
+            _draw_progress=lambda x, y, width, row_height, elapsed: None,
+            _opaque_black="#000000", _progress_border="#dfdfdf")
         self.service_stub = types.ModuleType("enigma")
         self.service_stub.eServiceCenter = types.SimpleNamespace(getInstance=lambda: object())
 
@@ -127,6 +133,11 @@ class ClippedEventTests(unittest.TestCase):
             self.assertLessEqual(len(title) * 10, width)
             self.assertLessEqual(y + height, 222)
         self.assertTrue(writes[0][-1].endswith("…"))
+        masks = [item for item in self.renderer.instance.calls if item[0] == "fill"]
+        self.assertEqual(len(masks), 3)
+        for _, rect, color in masks:
+            self.assertGreater(rect[2], 0)
+            self.assertEqual(color, "#000000")
         self.assertEqual(writes[1][-1], "Nové bývanie")
         self.assertEqual(writes[1][2], "#62aaff")
         self.assertLessEqual(writes[2][1][0] + writes[2][1][2], bar_start - 12)
@@ -156,6 +167,36 @@ class ClippedEventTests(unittest.TestCase):
         method("refresh")(renderer)
         self.assertTrue(any(call[0] == "clear" for call in renderer.instance.calls))
 
+    def test_canvas_pixmap_is_allocated_from_runtime_skin(self):
+        class FakeLabel:
+            def __init__(self, parent):
+                self.parent = parent
+            def setNoWrap(self, value):
+                pass
+            def resize(self, dimensions):
+                pass
+            def hide(self):
+                pass
+        class FakeCanvas:
+            def __init__(self):
+                self.sizes = []
+            def setSize(self, dims):
+                self.sizes.append(dims)
+        canvas = FakeCanvas()
+        mock = types.SimpleNamespace(
+            skinAttributes=[("size", "1065,842")],
+            _label=None, _last=None,
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+        )
+        fn = method("postWidgetCreate")
+        # The postWidgetCreate AST function resolves eLabel/eSize globally.
+        with patch.dict(fn.__globals__, {
+            "eLabel": FakeLabel,
+            "eSize": lambda width, height: (width, height),
+        }):
+            fn(mock, canvas)
+        self.assertEqual(canvas.sizes, [(1065, 842)])
+
     def test_rendering_same_frame_is_cached(self):
         self.assertTrue(self.draw())
         initial = len(self.renderer.instance.calls)
@@ -171,6 +212,9 @@ class ClippedEventTests(unittest.TestCase):
         self.assertIn("component.instance.invalidate()", content)
         self.assertIn("self._label.setNoWrap(1)", content)
         self.assertIn("self._label.resize(eSize(4096, 120))", content)
+        self.assertIn("instance.setSize(eSize(width, height))", content)
+        self.assertIn("self.instance.fillRect(", content)
+        self.assertIn("self._draw_progress(bar_left", content)
         self.assertIn("if not drawing:", content)
         self.assertNotIn("fontSize = 0", content)
         self.assertNotIn("self.instance.flush()", content)
