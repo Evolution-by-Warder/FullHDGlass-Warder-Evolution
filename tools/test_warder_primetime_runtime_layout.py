@@ -151,8 +151,8 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
                 current_list = re.search(r'<widget name="list"[^>]*>', updated)
                 self.assertIsNotNone(current_list, variant)
                 for attr in ("position", "size", "serviceItemHeight"):
-                    orig = re.search(r'\\b' + attr + r'="([^"]*)"', orig_list.group(0))
-                    now = re.search(r'\\b' + attr + r'="([^"]*)"', current_list.group(0))
+                    orig = re.search(r'\b' + attr + r'="([^"]*)"', orig_list.group(0))
+                    now = re.search(r'\b' + attr + r'="([^"]*)"', current_list.group(0))
                     self.assertEqual(orig.group(1) if orig else None,
                                      now.group(1) if now else None, (variant, attr))
                 for marker in ('render="Pig"', 'render="g17MiniTV"',
@@ -165,7 +165,11 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
                 else:
                     for renderer in ("WarderChannelEpgClip", "WarderPrimeTime",
                                      "WarderPrimeTimeDivider"):
-                        self.assertNotIn('render="' + renderer + '"', updated, variant)
+                        # Some shipped templates legitimately own a Prime Time
+                        # widget at their own specific position.
+                        self.assertEqual(original.count('render="' + renderer + '"'),
+                                         updated.count('render="' + renderer + '"'),
+                                         (variant, renderer))
                     # An unrelated template never receives default geometry
                     # or a special 6-event/Prime-Time override.
                     self.assertEqual(original.count('render="g17MetrixHDRunningText"'),
