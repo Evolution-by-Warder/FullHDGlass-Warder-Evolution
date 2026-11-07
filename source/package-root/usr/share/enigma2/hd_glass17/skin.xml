@@ -723,7 +723,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="60,76" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <eLabel position="1158,96" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
