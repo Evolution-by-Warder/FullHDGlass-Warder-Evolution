@@ -25,8 +25,8 @@ class WarderPrimeTime(VariableText, Renderer):
         if not self.instance:
             return
         try:
-            enabled = config.plugins.setupGlass17.warderPrimeTimeEnabled.value
-            clock = config.plugins.setupGlass17.warderPrimeTimeClock.value
+            enabled = config.plugins.warderEvolutionPrimeTime.enabled.value
+            clock = config.plugins.warderEvolutionPrimeTime.clock.value
             hour, minute = int(clock[0]), int(clock[1])
         except (AttributeError, ValueError, TypeError, IndexError):
             enabled, hour, minute = False, 20, 25
