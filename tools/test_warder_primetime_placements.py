@@ -107,6 +107,15 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('eServiceReference.isMarker | eServiceReference.flagDirectory', renderer)
         self.assertIn('except (AttributeError, RuntimeError, TypeError, ValueError):\n            self.text = ""\n            self.instance.hide()\n            return', renderer)
 
+    def test_epg_renderers_clear_stale_output(self):
+        base = ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer'
+        extra = (base / 'g17ShowExtraEpg.py').read_text(encoding='utf-8')
+        extended = (base / 'g17ShowExtEpg.py').read_text(encoding='utf-8')
+        self.assertIn('if what[0] == self.CHANGED_CLEAR:', extra)
+        self.assertIn('self.instance.clear(self.bcolor)', extra)
+        self.assertIn('if what[0] == self.CHANGED_CLEAR:', extended)
+        self.assertIn('self.text = ""', extended)
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
