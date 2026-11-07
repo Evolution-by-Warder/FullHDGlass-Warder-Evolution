@@ -125,7 +125,30 @@ class g17ShowExtraEpg(Renderer):
 								try:
 									rem = config.plugins.setupGlass17.par142.value
 								except: pass
-								for x in range(0,self.numEvents):
+								# Optional Prime Time shares the existing EPG canvas. Use
+								# one existing row, so no other widget or menu is covered.
+								visible_events = self.numEvents
+								try:
+									pt_cfg = config.plugins.warderEvolutionPrimeTime
+									if pt_cfg.enabled.value and self.numEvents > 0:
+										from Plugins.Extensions.setupGlass17.warderPrimeTime import prime_time_event
+										from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+										hour, minute = [int(v) for v in pt_cfg.clock.value]
+										pt = prime_time_event(self.EPGcache, service, time(), hour, minute)
+										header = "Prime Time %02d:%02d: %s" % (hour, minute, pt[1] if pt else "EPG unavailable")
+										self.testSizeLabel.setFont(self.used_font)
+										self.testSizeLabel.resize(eSize(self.W + 500, 30))
+										self.testSizeLabel.setNoWrap(1)
+										def measure_pt(text):
+											self.testSizeLabel.setText(text)
+											return self.testSizeLabel.calculateSize().width()
+										header = fit_title_to_width(header, self.W, measure_pt)
+										self.instance.writeText(eRect(0, y, self.W, self.lineHeight), self.timecolor, self.bcolor, self.used_font, header, RT_HALIGN_LEFT)
+										y += self.lineHeight + 2
+										visible_events = max(0, self.numEvents - 1)
+								except (AttributeError, IndexError, TypeError, ValueError, RuntimeError):
+									pass
+								for x in range(0,visible_events):
 									try:
 										t = localtime(int(epgList[x][1]))
 										tmp = "%02d:%02d" % (t.tm_hour, t.tm_min)
