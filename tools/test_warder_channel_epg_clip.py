@@ -203,6 +203,16 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(self.draw())
         self.assertEqual(len(self.renderer.instance.calls), initial)
 
+    def test_progress_redraw_obscures_transparent_underlay(self):
+        self.renderer.instance.calls.clear()
+        method("_draw_progress")(self.renderer, 870, 37, 90, 37, 0.35)
+        fills = [x for x in self.renderer.instance.calls if x[0] == "fill"]
+        self.assertGreaterEqual(len(fills), 6)
+        self.assertEqual(fills[0][1], (870, 50, 90, 10))
+        self.assertEqual(fills[0][2], "#000000")
+        self.assertTrue(any(item[2] == "#dfdfdf" for item in fills))
+        self.assertTrue(all(item[1][2] > 0 and item[1][3] > 0 for item in fills))
+
     def test_renderer_is_fail_open_and_default_only(self):
         content = RENDERER.read_text(encoding="utf-8")
         self.assertIn("component.l.setElementFont(component.l.celServiceInfo, self._quiet_font)", content)
