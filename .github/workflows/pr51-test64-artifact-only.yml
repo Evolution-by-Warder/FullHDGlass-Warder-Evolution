@@ -3,7 +3,7 @@ name: PR51 TEST64 receiver candidate IPK (artifact only)
 on:
   push:
     branches:
-      - work/pr51-alpha-blend-test64-20261107
+      - work/channelselection-primetime-overlap-20261107
 
 permissions:
   contents: read
