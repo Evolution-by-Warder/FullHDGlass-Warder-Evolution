@@ -80,6 +80,12 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('while tmp and text_width > available_width:', renderer)
         self.assertIn('if self.testSizeLabel.calculateSize().width() <= available_width:', renderer)
 
+    def test_empty_epg_clears_stale_typewriter_on_service_reset(self):
+        renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py').read_text(encoding='utf-8')
+        self.assertIn('if what[0] == self.CHANGED_CLEAR:', renderer)
+        self.assertIn('self.tt = self.lastText = self.backText = ""', renderer)
+        self.assertIn('if ena and tmp:', renderer)
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
