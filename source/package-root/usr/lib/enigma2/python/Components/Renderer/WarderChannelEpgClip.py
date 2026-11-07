@@ -75,6 +75,7 @@ class WarderChannelEpgClip(Renderer):
         self._label = None
         self._component = None
         self._native_hidden = False
+        self._native_disable_unsupported = False
         self._last = None
         self._scroll_started = time()
         self._scroll_selected = None
@@ -380,6 +381,7 @@ class WarderChannelEpgClip(Renderer):
             if component is not self._component:
                 self._restore_native()
                 self._component = component
+                self._native_disable_unsupported = False
                 self._last = None
             # Unsupported views must remain completely native; never
             # toggle celServiceInfo on every timer tick for those modes.
@@ -398,15 +400,24 @@ class WarderChannelEpgClip(Renderer):
             # C++ paint() only skips an element when its font pointer is
             # null. A 1px substitute still paints garbage glyphs. SWIG may
             # reject None on older images: fail open without any overlay.
-            if not self._native_hidden:
-                try:
-                    component.l.setElementFont(component.l.celServiceInfo, None)
-                except (AttributeError, RuntimeError, TypeError, ValueError) as exc:
-                    self._diag("native_event_disable_unsupported", type(exc).__name__)
-                    self.instance.clear(self._transparent)
-                    self._last = None
-                    return
-                self._native_hidden = True
+            if self._native_disable_unsupported:
+                return
+            # Reassert on every refresh without repeatedly invalidating.
+            # Native setMode()/setFontsize() can restore celServiceInfo
+            # between two ticks even when the indicator mode is unchanged.
+            first_disable = not self._native_hidden
+            try:
+                component.l.setElementFont(component.l.celServiceInfo, None)
+            except (AttributeError, RuntimeError, TypeError, ValueError) as exc:
+                self._diag("native_event_disable_unsupported", type(exc).__name__)
+                self._native_disable_unsupported = True
+                self.instance.clear(self._transparent)
+                self._last = None
+                self._restore_native()
+                self._component = component
+                return
+            self._native_hidden = True
+            if first_disable:
                 self._last = None
                 try:
                     component.instance.invalidate()
