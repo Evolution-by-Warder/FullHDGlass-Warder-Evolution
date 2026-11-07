@@ -223,10 +223,11 @@ class ClippedEventTests(unittest.TestCase):
             show_event_progress_in_servicelist=types.SimpleNamespace(value="barright"),
             servicelist_twolines=types.SimpleNamespace(value=False))
         mode_method.__globals__["config"] = types.SimpleNamespace(usage=usage)
-        for mode in ("barright", "barleft", "no"):
+        for mode in ("barright", "barleft", "no", "percleft",
+                     "percright", "minsleft", "minsright"):
             usage.show_event_progress_in_servicelist.value = mode
             self.assertEqual(mode_method(self.renderer), mode)
-        for mode in ("percleft", "percright", "minsleft", "minsright", "unknown"):
+        for mode in ("unknown", "barcenter"):
             usage.show_event_progress_in_servicelist.value = mode
             self.assertIsNone(mode_method(self.renderer))
         usage.servicelist_twolines.value = True
@@ -255,6 +256,35 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(all(x[1][0] + x[1][2] <= 700 - 25 - 12 for x in writes))
         self.assertEqual(bars, [])
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
+
+    def test_all_seven_progress_modes_preserve_indicator_column(self):
+        # The native progress/percent/minutes cells are never repainted by
+        # our canvas except the legacy verified right-hand bar layout.
+        modes = {
+            "barright": (True, 700 - 25 - 90 - 26),
+            "barleft": (False, 700 - 25 - 12),
+            "percright": (False, 700 - 25 - 150),
+            "percleft": (False, 700 - 25 - 12),
+            "minsright": (False, 700 - 25 - 205),
+            "minsleft": (False, 700 - 25 - 12),
+            "no": (False, 700 - 25 - 12),
+        }
+        starts = {}
+        for mode, (draw_bar, text_end) in modes.items():
+            self.renderer.instance = Canvas()
+            self.renderer._last = None
+            self.renderer._progress_mode = lambda m=mode: m
+            bar_calls = []
+            self.renderer._draw_progress = lambda *args: bar_calls.append(args)
+            self.assertTrue(self.draw(), mode)
+            writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
+            self.assertEqual(len(writes), 3, mode)
+            self.assertTrue(all(x[1][0] + x[1][2] <= text_end for x in writes), mode)
+            self.assertEqual(bool(bar_calls), draw_bar, mode)
+            starts[mode] = writes[0][1][0]
+        self.assertGreater(starts["barleft"], starts["no"])
+        self.assertGreater(starts["percleft"], starts["no"])
+        self.assertGreater(starts["minsleft"], starts["percleft"])
 
     def test_unsupported_modes_do_not_draw_synthetic_bar_or_text(self):
         self.renderer._progress_mode = lambda: None
