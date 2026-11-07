@@ -5,6 +5,7 @@ on:
     paths:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
@@ -27,6 +28,7 @@ jobs:
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
