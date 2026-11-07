@@ -2926,7 +2926,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 			if ena and line.__contains__('<widget name="list"'):
 				# Apply only to the active ChannelSelection runtime copy.
 				# Keep approved source skin.xml byte-for-byte unchanged.
-				if 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:
+				if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:
 					line = line.replace('/>', ' fieldMargins="26" />')
 				line = line.replace('colorServiceDescription="'+c1+'"'+' colorServiceDescriptionSelected="'+c2+'"'+' foregroundColorSelected="'+c3+'"'+' foregroundColor="'+c4+'"', what)
 				if ENA_P_CH and not 'progressBarWidth="90"' in line:
