@@ -148,7 +148,6 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
                          changed_screen.count('font="Prive4;26"'))
         # cChannelsel also adds existing margins to other ChannelSelection
         # variants; compare only unrelated menus for unintended changes.
-        import re
         pattern = re.compile(r'<screen\\b[^>]*name="([^"]+)"[^>]*>.*?</screen>', re.S)
         def unrelated(text):
             return [(m.group(1), m.group(0)) for m in pattern.finditer(text)
