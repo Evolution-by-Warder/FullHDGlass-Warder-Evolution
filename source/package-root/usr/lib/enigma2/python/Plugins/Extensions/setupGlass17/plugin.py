@@ -2904,7 +2904,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				ena = False
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
 				has_clipped_events = True
-			if in_default_channel_screen and 'warderPrimeTimeDivider="1"' in line:
+			if in_default_channel_screen and '<eLabel position="1150,892" size="685,1"' in line:
 				if not prime_time_enabled:
 					continue
 				has_prime_time_divider = True
@@ -2914,7 +2914,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				has_prime_time = True
 			if in_default_channel_screen and '</screen>' in line:
 				if prime_time_enabled and not has_prime_time_divider:
-					allLines += '    <eLabel warderPrimeTimeDivider="1" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
+					allLines += '    <eLabel position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
 				if prime_time_enabled and not has_prime_time:
 					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
 				if not has_clipped_events:
