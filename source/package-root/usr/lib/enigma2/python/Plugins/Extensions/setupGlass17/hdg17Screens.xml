@@ -2149,7 +2149,7 @@
 			<convert type="EventName">Name</convert>
 		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
 </widget>
-    <widget source="ServiceEvent" render="WarderPrimeTime" position="45,18" size="300,48" font="Prive4;33" foregroundColor="#ffffff" backgroundColor="un353e575e" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="15,633" size="690,33" font="Prive4;28" foregroundColor="#ffffff" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		<ePixmap pixmap="hd_glass17/icons/clock.png" position="1287,639" zPosition="1" size="21,21" alphatest="on" />
 		<widget source="global.CurrentTime" render="Label" position="1290,633" zPosition="1" size="120,33" font="Prive4;28" halign="right">
 			<convert type="g17ClockToText"></convert>
