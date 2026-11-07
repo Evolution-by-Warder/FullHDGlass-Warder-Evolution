@@ -3905,6 +3905,19 @@ class ExtraInfo17(Screen):
 			self.runChkTimer_conn = self.runChkTimer.timeout.connect(self.__updCamECM)
 		except AttributeError:
 			self.runChkTimer.timeout.get().append(self.__updCamECM)
+		# IPTV decoders may report width, aspect and audio tracks after evStart.
+		# Retry only until their metadata is ready; never poll continuously.
+		self._warderIptvReference = None
+		self._warderIptvRetryCount = 0
+		self._warderVideoWidth = None
+		self._warderVideoHeight = None
+		self._warderAspectIcon = None
+		self._warderAudioIcon = None
+		self.iptvInfoRetryTimer = eTimer()
+		try:
+			self.iptvInfoRetryTimer_conn = self.iptvInfoRetryTimer.timeout.connect(self.__warderIptvRetry)
+		except AttributeError:
+			self.iptvInfoRetryTimer.timeout.get().append(self.__warderIptvRetry)
 		self.emm_timer = eTimer()
 		try:
 			self.emm_timer_conn = self.emm_timer.timeout.connect(self.__updateEMM)
@@ -4027,6 +4040,7 @@ class ExtraInfo17(Screen):
 
 	def setOn(self):
 		self.__isOn = True
+		self.__warderScheduleIptvRetry()
 		if self.timerpics and self.chckWeaInafAnim():
 			if not self.timerpics.isActive():
 				self.timerpics.start(config.plugins.setupGlass17.par170.value)
@@ -4113,7 +4127,42 @@ class ExtraInfo17(Screen):
 						self['TP_type'].instance.setShowHideAnimation(config.plugins.setupGlass17.par167.value)
 					except: pass
                                         
+	def __warderPlayingIPTVReference(self):
+		"""Return the tuned IPTV identity, never a cursor-selected service."""
+		try:
+			ref = self.session.nav.getCurrentlyPlayingServiceReference()
+			name = ref.toString() if ref is not None else ""
+		except (AttributeError, TypeError, RuntimeError):
+			return None
+		if name.startswith(("4097:", "5001:", "5002:", "8193:")) or "://" in name or "http" in name.lower() or "rtsp" in name.lower():
+			return name
+		return None
+
+	def __warderScheduleIptvRetry(self):
+		if (self.__isOn and self._warderIptvReference and self._warderIptvRetryCount < 10
+				and not self.iptvInfoRetryTimer.isActive()):
+			self.iptvInfoRetryTimer.start(1500, True)
+
+	def __warderIptvRetry(self):
+		self.iptvInfoRetryTimer.stop()
+		if (not self._warderIptvReference
+				or self.__warderPlayingIPTVReference() != self._warderIptvReference
+				or self._warderIptvRetryCount >= 10):
+			return
+		self._warderIptvRetryCount += 1
+		self.__evUpdatedInfo()
+
 	def __evStart(self):
+		self.iptvInfoRetryTimer.stop()
+		self._warderIptvReference = self.__warderPlayingIPTVReference()
+		self._warderIptvRetryCount = 0
+		self._warderVideoWidth = None
+		self._warderVideoHeight = None
+		self._warderAspectIcon = None
+		self._warderAudioIcon = None
+		# A new channel must never inherit the previous stream's icons.
+		for widget in ("hd_sd", "wide", "dolby"):
+			self[widget].hide()
 		self.noReplace = True
 		try:
 			from enigma import eEnv
@@ -4148,6 +4197,7 @@ class ExtraInfo17(Screen):
 			except: pass
 		self.netStateMove(self.x_dyn_pos_CA)
 		self.chckSS()
+		self.__warderScheduleIptvRetry()
             		
 	def __uhdTypeSW(self):
 		self.uhdTimer.stop()
@@ -4222,6 +4272,7 @@ class ExtraInfo17(Screen):
 
 	def stopEcmCaidInfo(self):
 		self.__isOn = False
+		self.iptvInfoRetryTimer.stop()
 		if self.ecmCaidTimer.isActive():
 			self.ecmCaidTimer.stop()
 		if self.provRPMTimer.isActive():
@@ -5652,6 +5703,8 @@ class ExtraInfo17(Screen):
 		if noforced:
 			service = self.session.nav.getCurrentService()
 			info = service and service.info()
+			if info is None:
+				self.__warderScheduleIptvRetry()
 			if info is not None:
 				enaIp = False
 				refer = eServiceReference(info.getInfoString(iServiceInformation.sServiceref))
@@ -5671,7 +5724,26 @@ class ExtraInfo17(Screen):
 					if enaIp:
 						self.setTunerInfo(service, chckIPTVprov(refer))
 						self.actFta(False, service)
-				tmp = self.getServiceInfoString(info, iServiceInformation.sVideoWidth)
+				# An IPTV decoder can transiently return N/A after it has
+				# already supplied valid values. Keep only THIS service's data.
+				active_ip = self.__warderPlayingIPTVReference() if enaIp else None
+				if active_ip != self._warderIptvReference:
+					self._warderIptvReference = active_ip
+					self._warderIptvRetryCount = 0
+					self._warderVideoWidth = self._warderVideoHeight = None
+					self._warderAspectIcon = self._warderAudioIcon = None
+				width = self.getServiceInfoString(info, iServiceInformation.sVideoWidth)
+				height = self.getServiceInfoString(info, iServiceInformation.sVideoHeight)
+				valid_video = (str(width).isdigit() and str(height).isdigit()
+					and int(width) > 0 and int(height) > 0)
+				if enaIp and valid_video:
+					self._warderVideoWidth = width
+					self._warderVideoHeight = height
+				elif enaIp and self._warderVideoWidth and self._warderVideoHeight:
+					width = self._warderVideoWidth
+					height = self._warderVideoHeight
+				tmp = width if (not enaIp or (str(width).isdigit() and str(height).isdigit()
+					and int(width) > 0 and int(height) > 0)) else "N/A"
 				tpid = enaIp and self.noReplace and not refer.startswith("5001:") and not refer.startswith("5002:") and config.plugins.setupGlass17.par225.value
 				if tmp and str(tmp).isdigit():
 					vpid = ""
@@ -5687,7 +5759,7 @@ class ExtraInfo17(Screen):
 							try:
 								vpid = ({False:'i', True:'p'}[info.getInfo(iServiceInformation.sProgressive) == 1])
 							except: pass
-					apid = "%sx%s%s" % (tmp,self.getServiceInfoString(info, iServiceInformation.sVideoHeight),vpid)
+					apid = "%sx%s%s" % (tmp,height,vpid)
 					if vpid == "":
 						apid = apid.replace("x"," x ")
 					self["Video_size"].setText(apid)
@@ -5847,6 +5919,10 @@ class ExtraInfo17(Screen):
 								elif idx in (iAt.atDDP, iAt.atAC3):
 									tmp = 0
 							except: pass
+				if enaIp and tmp >= 0:
+					self._warderAudioIcon = tmp
+				elif enaIp and self._warderAudioIcon is not None:
+					tmp = self._warderAudioIcon
 				if tmp != -1:
 					self["dolby"].setPixmapNum(tmp)
 					self["dolby"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
@@ -5879,6 +5955,8 @@ class ExtraInfo17(Screen):
 						except: pass
 				try:
 					if tmp != 0:
+						if enaIp:
+							self._warderAspectIcon = tmp
 						self["wide"].setPixmapNum(tmp)
 						self["wide"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
 						self["wide"].show()
@@ -5888,10 +5966,12 @@ class ExtraInfo17(Screen):
 				if tmp == 0:
 					tmp = self.getServiceInfoString(info, iServiceInformation.sAspect)
 					if tmp != "N/A":
-						if (info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)):
-							self["wide"].setPixmapNum(1)
-						else:
-							self["wide"].setPixmapNum(0)
+						aspect_icon = 1 if info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10) else 0
+						if enaIp:
+							self._warderAspectIcon = aspect_icon
+						self["wide"].setPixmapNum(aspect_icon)
+					elif enaIp and self._warderAspectIcon is not None:
+						self["wide"].setPixmapNum(self._warderAspectIcon)
 						self["wide"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
 						self["wide"].show()
 						self.x_dyn_pos -=  self.widthDynIco
@@ -5924,6 +6004,18 @@ class ExtraInfo17(Screen):
 					self.lastIco = "subserv"
 				else:
 					self["subserv"].hide()
+				# Retry only missing technical metadata, not the entire InfoBar
+				# indefinitely. Once complete, new decoder events still update it.
+				if enaIp:
+					need_video = not (self._warderVideoWidth and self._warderVideoHeight)
+					need_aspect = self._warderAspectIcon is None
+					need_audio = config.plugins.setupGlass17.par42.value and self._warderAudioIcon is None
+					if need_video or need_aspect or need_audio:
+						self.__warderScheduleIptvRetry()
+					else:
+						self.iptvInfoRetryTimer.stop()
+						self._warderIptvRetryCount = 0
+
 		if not self.hbboff:
 			if self.lastIcoSwitch == 0:
 				if self.x_dyn_pos == self.maxDynX:
