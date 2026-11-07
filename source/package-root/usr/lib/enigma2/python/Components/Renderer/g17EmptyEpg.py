@@ -146,6 +146,14 @@ class g17EmptyEpg(VariableText, Renderer):
           					
 	def __fillText(self):
 		self.fillTimer.stop()
+		if self.warderPrimeTimeGate:
+			try:
+				if config.plugins.warderEvolutionPrimeTime.enabled.value:
+					self.lastText = self.backText = ""
+					self.text = ""
+					return
+			except AttributeError:
+				pass
 		self.posIdx += 1
 		if self.posIdx <= self.endPoint:
 			self.text = self.backText[:self.posIdx] + "_"
