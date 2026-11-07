@@ -391,10 +391,28 @@ class WarderChannelEpgClip(Renderer):
                     except (AttributeError, TypeError, RuntimeError):
                         pass
                 return
+            # On stock OpenATV, C++ progressbar painting needs an event
+            # fetched by the native EPG text cell. Nulling that font makes
+            # both left/right bars disappear (receiver TEST70). We cannot
+            # require every Enigma2 image to carry our optional C++ patch.
+            # Fail open for bar modes: preserve the complete native row,
+            # including its native progressbar, with no replacement drawing.
+            current_mode = self._progress_mode()
+            if current_mode in ("barleft", "barright"):
+                had_overlay = self._native_hidden or self._last is not None
+                if had_overlay:
+                    self.instance.clear(self._transparent)
+                self._last = None
+                self._restore_native()
+                if had_overlay:
+                    try:
+                        component.instance.invalidate()
+                    except (AttributeError, TypeError, RuntimeError):
+                        pass
+                return
             # ServiceListLegacy.setMode() restores the native EPG font.
             # Detect the mode change BEFORE disabling it and BEFORE painting,
             # rather than resetting _native_hidden inside _draw_rows().
-            current_mode = self._progress_mode()
             if current_mode != getattr(self, "_scroll_mode", None):
                 self._native_hidden = False
             # C++ paint() only skips an element when its font pointer is
