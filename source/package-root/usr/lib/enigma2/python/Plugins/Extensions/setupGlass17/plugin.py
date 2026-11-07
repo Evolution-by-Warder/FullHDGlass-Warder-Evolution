@@ -2882,6 +2882,9 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
 			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line and 'position="1150,685"' in line:
 				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
+				# Six upcoming programmes at most; the renderer's height guard
+				# will display fewer where the user's font requires more room.
+				line = line.replace('numEvents="8"', 'numEvents="6"')
 			if ena and line.__contains__('<widget name="list"'):
 				# Apply only to the active ChannelSelection runtime copy.
 				# Keep approved source skin.xml byte-for-byte unchanged.
