@@ -252,7 +252,7 @@ class WarderChannelEpgClip(Renderer):
             if getattr(getattr(usage, "servicelist_twolines", None), "value", False):
                 return None
             mode = usage.show_event_progress_in_servicelist.value
-            return mode if mode in ("barright", "barleft", "no") else None
+            return mode if mode in ("barright", "barleft", "percright", "percleft", "minsright", "minsleft", "no") else None
         except (AttributeError, TypeError, ValueError):
             return None
 
@@ -294,14 +294,21 @@ class WarderChannelEpgClip(Renderer):
         # override comes from this overlay's own XML attributes.
         bar_width = self._warder_bar_width or int(component.progressBarWidth)
         bar_left = width - int(component.listMarginRight) - bar_width
-        # OpenATV shifts the service-name rectangle right of a LEFT bar.
-        # In OFF mode it leaves the whole row available to name/EPG.
-        # Only the right-bar mode reserves a right-hand progress column.
-        text_end = (bar_left - max(12, int(component.fieldMargins))
-                    if mode == "barright"
-                    else width - int(component.listMarginRight) - 12)
-        left_shift = (bar_width + int(component.fieldMargins)
-                      if mode == "barleft" else 0)
+        # Numeric indicators are native service-list cells, not progressbars.
+        # Reserve conservative widths for their complete value and the gap
+        # to the event title. Never paint over percentages/minutes.
+        right_reserve = {
+            "barright": bar_width + max(12, int(component.fieldMargins)),
+            "percright": 150,
+            "minsright": 205,
+        }
+        left_reserve = {
+            "barleft": bar_width + int(component.fieldMargins),
+            "percleft": 120,
+            "minsleft": 170,
+        }
+        text_end = width - int(component.listMarginRight) - right_reserve.get(mode, 12)
+        left_shift = left_reserve.get(mode, 0)
         available_rows = min(len(rows) - top, (height + row_height - 1) // row_height)
         if available_rows < 0 or text_end < 100:
             self._diag("native_bar_invalid", "%d,%d" % (text_end, available_rows))
@@ -351,8 +358,8 @@ class WarderChannelEpgClip(Renderer):
         if not drawing:
             self._diag("native_no_fitted_rows", "rows=%d top=%d visible=%d" % (len(rows), top, available_rows))
             return False
-        self._diag("native_rows_ready", "visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
-                   (available_rows, len(drawing), width, bar_left, bar_width))
+        self._diag("native_rows_ready", "mode=%s visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
+                   (mode, available_rows, len(drawing), width, bar_left, bar_width))
         signature = (mode, top, selected, row_height, width, height, tuple(drawing))
         if signature == self._last:
             return True
