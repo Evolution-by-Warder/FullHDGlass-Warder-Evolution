@@ -6847,11 +6847,14 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 					self.list.append(getConfigListEntry(S0 % _("Enable Animation (Menu: Icons/Icons Bar)"), config.plugins.setupGlass17.par63)) 
 			elif tt == 13:	
 				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par19))
-				self.list.append(getConfigListEntry(S0 % _("Show Prime Time for selected channel"), config.plugins.setupGlass17.warderPrimeTimeEnabled))
-				if config.plugins.setupGlass17.warderPrimeTimeEnabled.value:
-					self.list.append(getConfigListEntry(S0 % _("Prime Time clock"), config.plugins.setupGlass17.warderPrimeTimeClock))               
+               
 				self.list.append(getConfigListEntry(S0 % ui_text("Channel-list picon source"), config.plugins.setupGlass17.par231))
 				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par132))
+				# Keep legacy Type -> Picon source -> Date order for existing tests/menus.
+				if hasattr(config.plugins.setupGlass17, "warderPrimeTimeEnabled"):
+					self.list.append(getConfigListEntry(S0 % _("Show Prime Time for selected channel"), config.plugins.setupGlass17.warderPrimeTimeEnabled))
+					if config.plugins.setupGlass17.warderPrimeTimeEnabled.value:
+						self.list.append(getConfigListEntry(S0 % _("Prime Time clock"), config.plugins.setupGlass17.warderPrimeTimeClock))
 				self.list.append(getConfigListEntry(S0 % _("Display remaining time in extra EPG"), config.plugins.setupGlass17.par142))
 				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
 				if E2OK:
