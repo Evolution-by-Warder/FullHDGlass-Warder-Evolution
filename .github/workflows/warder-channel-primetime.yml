@@ -7,6 +7,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
@@ -59,6 +60,7 @@ jobs:
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
@@ -79,3 +81,4 @@ jobs:
           python -m unittest discover -s tools -p 'test_warder_primetime_gate.py' -v
           python -m unittest discover -s tools -p 'test_warder_cross_menu_isolation.py' -v
           python -m unittest discover -s tools -p 'test_warder_default_epg_panel_runtime.py' -v
+          python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
