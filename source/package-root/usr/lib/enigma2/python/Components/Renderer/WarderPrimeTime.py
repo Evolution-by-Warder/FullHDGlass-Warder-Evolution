@@ -28,6 +28,8 @@ class WarderPrimeTime(VariableText, Renderer):
             enabled = config.plugins.warderEvolutionPrimeTime.enabled.value
             clock = config.plugins.warderEvolutionPrimeTime.clock.value
             hour, minute = int(clock[0]), int(clock[1])
+            if not 0 <= hour <= 23 or not 0 <= minute <= 59:
+                raise ValueError("Invalid Prime Time clock")
         except (AttributeError, ValueError, TypeError, IndexError):
             enabled, hour, minute = False, 20, 25
         if not enabled or what[0] == self.CHANGED_CLEAR:
