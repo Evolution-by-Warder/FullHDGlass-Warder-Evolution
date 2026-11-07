@@ -30,6 +30,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The full repository contains large artwork and release payloads.
+          # CI only needs the Python tests, reviewed ledgers, and EPG skin sources.
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/
+            /design/
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/*.py
+            /source/package-root/usr/lib/enigma2/python/Components/Converter/*.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.xml
+            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
