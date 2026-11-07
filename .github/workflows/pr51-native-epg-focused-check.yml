@@ -161,3 +161,42 @@ jobs:
           path: release-source-bundle/
           if-no-files-found: error
           retention-days: 14
+
+  oe-alliance-6-recipe-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: compatibility/native-enigma2-progressbar/meta-warder-native
+      - uses: actions/checkout@v4
+        with:
+          repository: oe-alliance/oe-alliance-core
+          ref: '6.0'
+          path: upstream/oe-alliance-core
+          persist-credentials: false
+          sparse-checkout: |
+            meta-oe/conf/layer.conf
+            meta-oe/conf/distro/openatv.conf
+            meta-oe/recipes-oe-alliance/enigma2/enigma2.bb
+      - name: Verify BitBake recipe selectors and experimental overlay contract
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('upstream/oe-alliance-core/meta-oe')
+          recipe = (root / 'recipes-oe-alliance/enigma2/enigma2.bb').read_text()
+          distro = (root / 'conf/distro/openatv.conf').read_text()
+          base_layer = (root / 'conf/layer.conf').read_text()
+          addon = Path('compatibility/native-enigma2-progressbar/meta-warder-native')
+          append = (addon / 'recipes-oe-alliance/enigma2/enigma2_%.bbappend').read_text()
+          layer = (addon / 'conf/layer.conf').read_text()
+          assert 'SRC_URI = "${ENIGMA2_URI}"' in recipe
+          assert 'SRC_URI:append:openatv' in recipe
+          assert 'git://github.com/openatv/enigma2.git;protocol=https;branch=8.0' in distro
+          assert 'SRC_URI:append:openatv' in append
+          assert 'FILESEXTRAPATHS:prepend' in append
+          assert 'LAYERSERIES_COMPAT_oe-alliance-layer = "wrynose blacksail"' in base_layer
+          assert 'wrynose blacksail' in layer
+          assert (addon / 'recipes-oe-alliance/enigma2/files/0001-progressbar-event-independent-of-epg-font.patch').is_file()
+          print('OE-Alliance 6.0 recipe + branch + experimental patch layer source contract: PASS')
+          PY
