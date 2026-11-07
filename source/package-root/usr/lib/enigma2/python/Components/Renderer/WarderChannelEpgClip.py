@@ -243,24 +243,24 @@ class WarderChannelEpgClip(Renderer):
             self.instance.fillRect(eRect(x + 2 + a, top + 2, z - a, 6),
                                    parseColor("#%02x%02x%02x" % rgb))
 
-    def _native_right_bar_enabled(self):
-        """Never paint a synthetic right bar over left, percentage or off modes.
-
-        The receiver's native ServiceList owns all non-barright layouts.
-        Unknown/unsupported configurations fail open to the native renderer.
-        """
+    def _progress_mode(self):
+        """Supported single-line native modes; unknown modes remain native."""
         try:
             usage = config.usage
             if getattr(getattr(usage, "servicelist_twolines", None), "value", False):
-                return False
+                return None
             mode = usage.show_event_progress_in_servicelist.value
-            return mode == "barright"
+            return mode if mode in ("barright", "barleft", "no") else None
         except (AttributeError, TypeError, ValueError):
-            return False
+            return None
+
+    def _native_right_bar_enabled(self):
+        # Compatibility for legacy renderer tests and native callers.
+        return self._progress_mode() == "barright"
 
     def _draw_rows(self, component):
-        # All other modes must use native placement, without any overlay.
-        if not self._native_right_bar_enabled():
+        mode = self._progress_mode()
+        if mode is None:
             self._diag("native_progress_mode_fallback")
             return False
         from enigma import eServiceCenter
@@ -290,9 +290,17 @@ class WarderChannelEpgClip(Renderer):
         # override comes from this overlay's own XML attributes.
         bar_width = self._warder_bar_width or int(component.progressBarWidth)
         bar_left = width - int(component.listMarginRight) - bar_width
+        # OpenATV shifts the service-name rectangle right of a LEFT bar.
+        # In OFF mode it leaves the whole row available to name/EPG.
+        # Only the right-bar mode reserves a right-hand progress column.
+        text_end = (bar_left - max(12, int(component.fieldMargins))
+                    if mode == "barright"
+                    else width - int(component.listMarginRight) - 12)
+        left_shift = (bar_width + int(component.fieldMargins)
+                      if mode == "barleft" else 0)
         available_rows = min(len(rows) - top, (height + row_height - 1) // row_height)
-        if available_rows < 0 or bar_left < 100:
-            self._diag("native_bar_invalid", "%d,%d" % (bar_left, available_rows))
+        if available_rows < 0 or text_end < 100:
+            self._diag("native_bar_invalid", "%d,%d" % (text_end, available_rows))
             return False
         font = component.ServiceInfoFont
         name_font = component.ServiceNameFont
@@ -315,8 +323,8 @@ class WarderChannelEpgClip(Renderer):
             picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
                               int(config.usage.servicelist_picon_ratio.value) / 100)
             start = max(0, int(component.listMarginLeft) + picon_width +
-                        2 * int(component.itemsDistances) + name_width)
-            end = bar_left - max(12, int(component.fieldMargins))
+                        2 * int(component.itemsDistances) + name_width + left_shift)
+            end = text_end
             remaining = end - start
             if remaining <= 0:
                 continue
@@ -341,7 +349,7 @@ class WarderChannelEpgClip(Renderer):
             return False
         self._diag("native_rows_ready", "visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
                    (available_rows, len(drawing), width, bar_left, bar_width))
-        signature = (top, selected, row_height, width, height, tuple(drawing))
+        signature = (mode, top, selected, row_height, width, height, tuple(drawing))
         if signature == self._last:
             return True
         normal = parseColor(config.plugins.setupGlass17.par109.value)
@@ -350,14 +358,15 @@ class WarderChannelEpgClip(Renderer):
         for x, y, w, h, value, is_selected, progress in drawing:
             # Repaint the text field and the bar above native C++ rendering,
             # regardless of whether the image accepts our native font change.
-            mask_width = max(0, bar_left + bar_width - x)
+            mask_right = bar_left + bar_width if mode == "barright" else text_end
+            mask_width = max(0, mask_right - x)
             if mask_width:
                 self.instance.fillRect(eRect(x, y + 2, mask_width, h - 4),
                                        self._opaque_black)
             self.instance.writeText(eRect(x, y, w, h), highlighted if is_selected else normal,
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
-            if progress is not None:
+            if mode == "barright" and progress is not None:
                 self._draw_progress(bar_left, y, bar_width, h, progress)
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
