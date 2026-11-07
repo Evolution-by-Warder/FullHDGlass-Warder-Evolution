@@ -199,7 +199,7 @@ class g17MetrixHDRunningText(Renderer):
 				self.H = (self.H // self.lineHeight) * self.lineHeight
 				self.instance.setSize(eSize(self.W, self.H))
 			self.mStep = 2
-			self.mStepTimeout = 40
+			self.mStepTimeout = 55
 		return ret
 
 	def doSuspend(self, suspended):
