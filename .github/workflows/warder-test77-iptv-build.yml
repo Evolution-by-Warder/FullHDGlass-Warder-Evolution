@@ -203,7 +203,7 @@ jobs:
         with:
           name: warder-TEST77-iptv-fix
           path: |
-            pr51-candidate/*.ipk
-            pr51-candidate/*.sha256
+            test77-candidate/*.ipk
+            test77-candidate/*.sha256
           if-no-files-found: error
           retention-days: 14
