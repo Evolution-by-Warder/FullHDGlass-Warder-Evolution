@@ -59,6 +59,9 @@ class g17ShowExtEpg(VariableText, Renderer):
 		
 	def changed(self, what):
 		if self.instance:
+			if what[0] == self.CHANGED_CLEAR:
+				self.text = ""
+				return
 			self.text = "Extended EPG is not available!"
 			if what[0] != self.CHANGED_CLEAR:
 				service = None
