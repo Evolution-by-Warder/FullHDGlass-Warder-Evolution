@@ -57,6 +57,37 @@ class ChannelSelectionLayoutTests(unittest.TestCase):
             self.assertIn('source="ServiceEvent"', screens[name])
 
 
+    def test_dual_epg_panels_keep_independent_sources_and_coordinates(self):
+        """Seven pre-existing dual panels use playing vs cursor service independently."""
+        source = FILES[0].read_text(encoding="utf-8")
+        screens = dict(SCREEN.findall(source))
+        expected = ("ChannelSelection-1", "ChannelSelection-2", "ChannelSelection-9",
+                    "ChannelSelection-31", "ChannelSelection-32",
+                    "ChannelSelection-48", "ChannelSelection-a48")
+        import xml.etree.ElementTree as ET
+        for name in expected:
+            root = ET.fromstring('<screen>' + screens[name] + '</screen>')
+            widgets = root.findall("widget")
+            upper = [w for w in widgets if w.get("source") in
+                     ("session.CurrentService", "session.Event_Now", "session.Event_Next")]
+            lower = [w for w in widgets if w.get("source") == "ServiceEvent"]
+            self.assertTrue(upper, name)
+            self.assertTrue(lower, name)
+            upper_logos = [w for w in upper if w.get("render") == "g17PicRef"]
+            lower_logos = [w for w in lower if w.get("render") == "g17RefTV"]
+            self.assertEqual(len(upper_logos), 1, name)
+            self.assertEqual(len(lower_logos), 1, name)
+            # Upper EPG must not accidentally depend on cursor-selected ServiceEvent.
+            self.assertTrue(
+                any(w.get("source") == "session.Event_Now"
+                    or (w.get("source") == "session.CurrentService"
+                        and w.get("render") == "g17ShowExtraEpg") for w in upper),
+                name)
+            # Preserve original positions instead of moving EPG to another panel.
+            for w in upper_logos + lower_logos:
+                self.assertIn("position", w.attrib, name)
+                self.assertIn("size", w.attrib, name)
+
     def test_no_font_or_row_height_policy_changed_by_fix(self):
         for path in FILES:
             text = path.read_text(encoding="utf-8")
