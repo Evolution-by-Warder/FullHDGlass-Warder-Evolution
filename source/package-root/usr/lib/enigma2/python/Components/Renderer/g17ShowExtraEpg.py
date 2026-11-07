@@ -130,7 +130,14 @@ class g17ShowExtraEpg(Renderer):
 									rem = config.plugins.setupGlass17.par142.value
 								except: pass
 								# Keep all six EPG events. Prime Time has its own footer widget.
-								visible_events = self.numEvents
+								# Determine the visible count from the LIVE setting, not the
+								# widget's creation-time skin attributes. When Prime
+								# Time is disabled all six ordinary programmes return.
+								try:
+									prime_enabled = bool(config.plugins.warderEvolutionPrimeTime.enabled.value)
+								except (AttributeError, TypeError, ValueError):
+									prime_enabled = False
+								visible_events = min(self.numEvents, 5 if prime_enabled else 6)
 								for x in range(0,visible_events):
 									# A full event row must fit. Checking only y > H
 									# after painting used to leave the last line half visible.
