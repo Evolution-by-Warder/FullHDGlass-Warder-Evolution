@@ -36,7 +36,8 @@ class ChannelSelectionLayoutTests(unittest.TestCase):
 
     def test_runtime_hook_guards_approved_skin_xml(self):
         plugin = (ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py').read_text(encoding='utf-8')
-        self.assertIn('if \'picServiceEventProgressbar=\' in line and \'fieldMargins=\' not in line:', plugin)
+        self.assertIn("if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:", plugin)
+        self.assertIn('default_geometry = bool(', plugin)
         self.assertIn('line = line.replace(\'/>\', \' fieldMargins="26" />\')', plugin)
 
     def test_dual_epg_panels_keep_independent_sources_and_coordinates(self):
