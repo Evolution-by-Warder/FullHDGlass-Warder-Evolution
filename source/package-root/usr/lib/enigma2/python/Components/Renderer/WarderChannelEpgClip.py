@@ -27,6 +27,18 @@ def scroll_title_window(title, width, measure, pixel_offset):
         return title
     if pixel_offset <= 0:
         return fit_title_to_width(title, width, measure)
+    # At the rightmost end, anchor the visible window to the *last* glyph.
+    # Cutting from the left by pixel offset alone can discard the final
+    # one or two letters when glyph widths are not uniform.
+    if pixel_offset >= max(0, measure(title) - width):
+        lo, hi = 0, len(title)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if measure(title[mid:]) <= width:
+                hi = mid
+            else:
+                lo = mid + 1
+        return title[lo:]
     lo, hi = 0, len(title)
     while lo < hi:
         mid = (lo + hi + 1) // 2
