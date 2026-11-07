@@ -2890,9 +2890,11 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		)
 		ena = False
 		in_default_channel_screen = False
+		in_any_channel_screen = False
 		for line in lines:
 			if line.__contains__('<screen name="ChannelSelection"'):
 				ena = True
+				in_any_channel_screen = True
 				in_default_channel_screen = default_geometry
 				has_clipped_events = False
 				has_prime_time = False
@@ -2910,13 +2912,14 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				# replaces slot six dynamically without altering any other skin.
 				line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
 				line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
-			# When the user selects another template, strip only Warder's
-			# previously injected fixed-coordinate helpers. Never erase or
-			# relocate a native template widget (PIG, service list or EPG).
-			if ena and not default_geometry and (
+			# When switching templates, strip ONLY the fixed-position
+			# widgets inserted by earlier TEST builds. Other templates may
+			# legitimately own their own WarderPrimeTime widgets elsewhere.
+			# This check must stay active AFTER the native list widget.
+			if in_any_channel_screen and not default_geometry and (
 				'render="WarderChannelEpgClip"' in line
-				or 'render="WarderPrimeTime"' in line
-				or 'render="WarderPrimeTimeDivider"' in line
+				or ('render="WarderPrimeTime"' in line and 'position="1150,898"' in line)
+				or ('render="WarderPrimeTimeDivider"' in line and 'position="1150,892"' in line)
 				or '<eLabel position="1150,892" size="685,1" backgroundColor="grey" zPosition="5"' in line
 			):
 				continue
@@ -2947,6 +2950,8 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				if not has_clipped_events:
 					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
 				in_default_channel_screen = None
+			if in_any_channel_screen and '</screen>' in line:
+				in_any_channel_screen = False
 			allLines += line
 		r.close()
 		_atomicWriteText(SKINXML, allLines)
