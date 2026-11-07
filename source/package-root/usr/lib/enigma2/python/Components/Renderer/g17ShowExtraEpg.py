@@ -118,7 +118,7 @@ class g17ShowExtraEpg(Renderer):
 						service = nav and nav.getCurrentlyPlayingServiceReference()
 						if service is not None:
 							sname = service.toString()
-						except (AttributeError, TypeError):
+					except (AttributeError, TypeError):
 						service = None
 				if not sname:
 					try:
