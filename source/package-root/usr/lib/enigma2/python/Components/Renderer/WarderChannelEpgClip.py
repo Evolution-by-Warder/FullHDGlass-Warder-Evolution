@@ -6,6 +6,7 @@ repaint those titles inside the reserved field. Service names, picons, progress
 bars, selection and fonts remain owned by the image. On unsupported images the
 native renderer is left completely unchanged.
 """
+from time import time
 from Components.Renderer.Renderer import Renderer
 from Components.config import config
 from enigma import eCanvas, eLabel, eTimer, eRect, eSize, gFont, RT_VALIGN_CENTER, RT_HALIGN_LEFT
@@ -33,8 +34,16 @@ class WarderChannelEpgClip(Renderer):
         # untouched, restored when the overlay is removed.
         self._quiet_font = gFont("Regular", 1)
         self._transparent = parseColor("#ff000000")
+        self._opaque_black = parseColor("#00000000")
+        self._progress_border = parseColor("#dfdfdf")
 
     def postWidgetCreate(self, instance):
+        # eCanvas needs an allocated backing pixmap, not only GUI geometry.
+        size = next((v for k, v in (self.skinAttributes or []) if k == "size"), None)
+        if size:
+            width, height = (int(v) for v in size.split(","))
+            if width > 0 and height > 0:
+                instance.setSize(eSize(width, height))
         self._label = eLabel(instance)
         # Measure actual glyph widths with a large, non-wrapping label.
         # A zero-sized helper could silently report false-fitting long text.
@@ -96,6 +105,46 @@ class WarderChannelEpgClip(Renderer):
         except (AttributeError, RuntimeError, TypeError):
             return "", ""
 
+    def _progress_fraction(self, center, ref):
+        try:
+            event = center.info(ref).getEvent(ref)
+            if event is None:
+                return None
+            duration = int(event.getDuration())
+            if duration <= 0:
+                return None
+            elapsed = time() - int(event.getBeginTime())
+            return max(0.0, min(1.0, elapsed / float(duration)))
+        except (AttributeError, RuntimeError, TypeError, ValueError, ZeroDivisionError):
+            return None
+
+    def _draw_progress(self, x, y, width, row_height, elapsed):
+        # Match the native 2px border and 6px interior; opaque underlay
+        # prevents the inherited native event text showing through the bar.
+        top = y + (row_height - 10) // 2
+        self.instance.fillRect(eRect(x, top, width, 10), self._opaque_black)
+        b = self._progress_border
+        self.instance.fillRect(eRect(x, top, width, 2), b)
+        self.instance.fillRect(eRect(x, top + 8, width, 2), b)
+        self.instance.fillRect(eRect(x, top + 2, 2, 6), b)
+        self.instance.fillRect(eRect(x + width - 2, top + 2, 2, 6), b)
+        filled = int(max(0, width - 4) * elapsed)
+        # Draw only 8 gradient segments to keep timer CPU use low.
+        for segment in range(8):
+            a = (filled * segment) // 8
+            z = (filled * (segment + 1)) // 8
+            if z <= a:
+                continue
+            t = ((a + z) / 2.0) / max(1, width - 4)
+            if t < .55:
+                u = t / .55
+                rgb = (int(53 + 179 * u), int(177 + 23 * u), int(63 - 14 * u))
+            else:
+                u = (t - .55) / .45
+                rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
+            self.instance.fillRect(eRect(x + 2 + a, top + 2, z - a, 6),
+                                   parseColor("#%02x%02x%02x" % rgb))
+
     def _draw_rows(self, component):
         from enigma import eServiceCenter
         rows = component.getList()
@@ -146,7 +195,7 @@ class WarderChannelEpgClip(Renderer):
             fitted = fit_title_to_width(title, remaining, measure)
             if fitted:
                 drawing.append((start, row_index * row_height, remaining, row_height,
-                                fitted, index == selected))
+                                fitted, index == selected, self._progress_fraction(center, ref)))
         if not drawing:
             return False
         signature = (top, selected, row_height, width, height, tuple(drawing))
@@ -155,10 +204,18 @@ class WarderChannelEpgClip(Renderer):
         normal = parseColor(config.plugins.setupGlass17.par109.value)
         highlighted = parseColor(config.plugins.setupGlass17.par110.value)
         self.instance.clear(self._transparent)
-        for x, y, w, h, value, is_selected in drawing:
+        for x, y, w, h, value, is_selected, progress in drawing:
+            # Repaint the text field and the bar above native C++ rendering,
+            # regardless of whether the image accepts our native font change.
+            mask_width = max(0, bar_left + int(component.progressBarWidth) - x)
+            if mask_width:
+                self.instance.fillRect(eRect(x, y + 2, mask_width, h - 4),
+                                       self._opaque_black)
             self.instance.writeText(eRect(x, y, w, h), highlighted if is_selected else normal,
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
+            if progress is not None:
+                self._draw_progress(bar_left, y, int(component.progressBarWidth), h, progress)
         self._last = signature
         return True
 
