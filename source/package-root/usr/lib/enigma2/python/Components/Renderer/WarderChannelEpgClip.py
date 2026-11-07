@@ -155,7 +155,6 @@ class WarderChannelEpgClip(Renderer):
             self.instance.writeText(eRect(x, y, w, h), highlighted if is_selected else normal,
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
-        self.instance.flush()
         self._last = signature
         return True
 
@@ -181,7 +180,6 @@ class WarderChannelEpgClip(Renderer):
                     component.l.setElementFont(component.l.celServiceInfo, None)
                 except (AttributeError, RuntimeError, TypeError):
                     self.instance.clear(self._transparent)
-                    self.instance.flush()
                     self._component = None
                     return
                 self._native_hidden = True
@@ -196,7 +194,6 @@ class WarderChannelEpgClip(Renderer):
             self._restore_native()
             if self.instance:
                 self.instance.clear(self._transparent)
-                self.instance.flush()
         finally:
             if self.instance:
                 self._timer.start(250, True)
