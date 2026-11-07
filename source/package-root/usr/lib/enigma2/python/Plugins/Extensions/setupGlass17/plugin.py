@@ -2877,6 +2877,8 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 			# without changing the approved source skin.xml or user fonts.
 			if in_default_channel_screen and 'render="g17MetrixHDRunningText"' in line and 'position="1150,455"' in line:
 				line = line.replace('size="685,240"', 'size="685,224"')
+				if 'warderWholeLineScroll=' not in line:
+					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
 			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line and 'position="1150,685"' in line:
 				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
 			if ena and line.__contains__('<widget name="list"'):
