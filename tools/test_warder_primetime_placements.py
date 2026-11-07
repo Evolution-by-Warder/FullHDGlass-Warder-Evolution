@@ -86,6 +86,14 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('self.tt = self.lastText = self.backText = ""', renderer)
         self.assertIn('if ena and tmp:', renderer)
 
+    def test_queued_typewriter_tick_respects_prime_time_gate(self):
+        renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py').read_text(encoding='utf-8')
+        tick = renderer.split('def __fillText(self):', 1)[1].split('def preWidgetRemove', 1)[0]
+        self.assertIn('self.fillTimer.stop()', tick)
+        self.assertIn('if self.warderPrimeTimeGate:', tick)
+        self.assertIn('if config.plugins.warderEvolutionPrimeTime.enabled.value:', tick)
+        self.assertLess(tick.index('if self.warderPrimeTimeGate:'), tick.index('self.posIdx += 1'))
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
