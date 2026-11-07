@@ -267,7 +267,7 @@ class ClippedEventTests(unittest.TestCase):
         self.assertGreater(writes[0][1][0], 200)
         self.assertTrue(all(x[1][0] + x[1][2] <= 700 - 25 - 12 for x in writes))
         self.assertEqual(bars, [])
-        self.assertFalse(any(call[0] == "fill" for call in self.renderer.instance.calls))
+        self.assertTrue(any(call[0] == "fill" for call in self.renderer.instance.calls))
 
     def test_disabled_bar_uses_full_text_width_without_redraw(self):
         self.renderer._progress_mode = lambda: "no"
@@ -303,7 +303,7 @@ class ClippedEventTests(unittest.TestCase):
             self.assertTrue(all(x[1][0] + x[1][2] <= text_end for x in writes), mode)
             # Native indicator cells are never painted on our canvas.
             self.assertEqual(bar_calls, [], mode)
-            self.assertFalse(any(x[0] == "fill" for x in self.renderer.instance.calls), mode)
+            self.assertEqual(bool([x for x in self.renderer.instance.calls if x[0] == "fill"]), mode in ("barleft", "barright"), mode)
             starts[mode] = writes[0][1][0]
         self.assertGreater(starts["barleft"], starts["no"])
         self.assertGreater(starts["percleft"], starts["no"])
@@ -354,7 +354,7 @@ class ClippedEventTests(unittest.TestCase):
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
-            _progress_mode=lambda: "barright",
+            _progress_mode=lambda: "percright",
             _draw_rows=lambda c: events.append(("draw",)) or True,
             _restore_native=lambda: None)
         method("refresh")(target)
@@ -376,7 +376,7 @@ class ClippedEventTests(unittest.TestCase):
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
-            _progress_mode=lambda: "barright",
+            _progress_mode=lambda: "percright",
             _draw_rows=lambda c: self.fail("Do not draw if C++ disable fails"),
             _restore_native=lambda: None)
         method("refresh")(target)
@@ -422,7 +422,7 @@ class ClippedEventTests(unittest.TestCase):
             _last=None, _scroll_mode="barright", _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: current,
-            _progress_mode=lambda: "barright",
+            _progress_mode=lambda: "percright",
             _draw_rows=lambda c: events.append(("new", "draw")) or True)
         def restore():
             method("_restore_native")(target)
@@ -459,7 +459,7 @@ class ClippedEventTests(unittest.TestCase):
             _scroll_mode="barright", _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
-            _progress_mode=lambda: "barright",
+            _progress_mode=lambda: "percright",
             _draw_rows=lambda c: self.fail("A rejected native disable must not draw"),
             _restore_native=lambda: setattr(target, "_native_hidden", False))
         fn = method("refresh")
@@ -481,7 +481,7 @@ class ClippedEventTests(unittest.TestCase):
             _last=None, _scroll_mode="barright", _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
-            _progress_mode=lambda: "barright",
+            _progress_mode=lambda: "percright",
             _draw_rows=lambda c: True, _restore_native=lambda: None)
         method("refresh")(target)
         method("refresh")(target)
@@ -616,6 +616,7 @@ class ClippedEventTests(unittest.TestCase):
         self.assertIn("instance.setSize(eSize(width, height))", content)
         self.assertNotIn("self.instance.fillRect(eRect(x, y + 2", content)
         self.assertNotIn("self._draw_progress(", content)
+        self.assertIn('if mode in ("barleft", "barright"):', content)
         self.assertIn("if not drawing:", content)
         self.assertNotIn("fontSize = 0", content)
         self.assertNotIn("self.instance.flush()", content)
