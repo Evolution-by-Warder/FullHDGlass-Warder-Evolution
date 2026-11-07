@@ -2867,12 +2867,33 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		prime_time_enabled = bool(config.plugins.warderEvolutionPrimeTime.enabled.value)
 		what = 'colorServiceDescription="'+config.plugins.setupGlass17.par109.value+'"'+' colorServiceDescriptionSelected="'+config.plugins.setupGlass17.par110.value+'"'+' foregroundColorSelected="'+config.plugins.setupGlass17.par111.value+'"'+' foregroundColor="'+config.plugins.setupGlass17.par117.value+'"' 
 		r = open(SKINXML,"r")
+		lines = r.readlines()
+		# The stock 35 layout is the ONLY geometry for our fixed EPG canvas.
+		# Every other ChannelSelection variant (including s PIG 4) owns
+		# independent PIG/list/EPG coordinates. Never put a 60,96 overlay
+		# over a screen whose native list lives elsewhere.
+		channel_begin = next((i for i, v in enumerate(lines)
+			if '<screen name="ChannelSelection"' in v), -1)
+		channel_end = next((i for i in range(channel_begin + 1, len(lines))
+			if '</screen>' in lines[i]), -1) if channel_begin >= 0 else -1
+		channel_xml = ''.join(lines[channel_begin:channel_end + 1]) if channel_end >= 0 else ''
+		list_tag = re.search(r'<widget\\s+name="list"[^>]*>', channel_xml)
+		epg_tag = re.search(r'<widget\\b[^>]*render="g17ShowExtraEpg"[^>]*>', channel_xml)
+		desc_tag = re.search(r'<widget\\b[^>]*render="g17MetrixHDRunningText"[^>]*>', channel_xml)
+		default_geometry = bool(
+			list_tag and 'position="60,96"' in list_tag.group(0)
+			and 'size="1065,842"' in list_tag.group(0)
+			and desc_tag and 'position="1150,455"' in desc_tag.group(0)
+			and epg_tag and
+			('position="1150,685"' in epg_tag.group(0) or
+			 'position="1150,695"' in epg_tag.group(0))
+		)
 		ena = False
 		in_default_channel_screen = False
-		for line in r.readlines():
+		for line in lines:
 			if line.__contains__('<screen name="ChannelSelection"'):
 				ena = True
-				in_default_channel_screen = True
+				in_default_channel_screen = default_geometry
 				has_clipped_events = False
 				has_prime_time = False
 				has_prime_time_divider = False
@@ -2890,6 +2911,16 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 			# programme rows; only the last row changes to Prime Time.
 			line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
 			line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
+			# When the user selects another template, strip only Warder's
+			# previously injected fixed-coordinate helpers. Never erase or
+			# relocate a native template widget (PIG, service list or EPG).
+			if ena and not default_geometry and (
+				'render="WarderChannelEpgClip"' in line
+				or 'render="WarderPrimeTime"' in line
+				or 'render="WarderPrimeTimeDivider"' in line
+				or '<eLabel position="1150,892" size="685,1" backgroundColor="grey" zPosition="5"' in line
+			):
+				continue
 			if ena and line.__contains__('<widget name="list"'):
 				# Apply only to the active ChannelSelection runtime copy.
 				# Keep approved source skin.xml byte-for-byte unchanged.
