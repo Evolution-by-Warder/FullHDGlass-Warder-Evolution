@@ -53,6 +53,23 @@ class WarderChannelEpgClip(Renderer):
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
+    def applySkin(self, desktop, parent):
+        # Private, per-overlay receiver QA flags must never be forwarded to
+        # generic Enigma2 skin attribute processing as unknown properties.
+        passthrough = []
+        for key, value in (self.skinAttributes or []):
+            if key == "warderProgressWidth":
+                try:
+                    self._warder_bar_width = max(1, int(value))
+                except (ValueError, TypeError):
+                    self._warder_bar_width = None
+            elif key == "warderTestMarker":
+                self._warder_test_marker = value == "1"
+            else:
+                passthrough.append((key, value))
+        self.skinAttributes = passthrough
+        return Renderer.applySkin(self, desktop, parent)
+
     def postWidgetCreate(self, instance):
         # eCanvas needs an allocated backing pixmap, not only GUI geometry.
         size = next((v for k, v in (self.skinAttributes or []) if k == "size"), None)
@@ -60,12 +77,6 @@ class WarderChannelEpgClip(Renderer):
             width, height = (int(v) for v in size.split(","))
             if width > 0 and height > 0:
                 instance.setSize(eSize(width, height))
-        attrs = dict(self.skinAttributes or [])
-        try:
-            self._warder_bar_width = max(1, int(attrs["warderProgressWidth"])) if "warderProgressWidth" in attrs else None
-        except (ValueError, TypeError):
-            self._warder_bar_width = None
-        self._warder_test_marker = attrs.get("warderTestMarker") == "1"
         self._diag("canvas_created", "allocated=%s barOverride=%s marker=%s" %
                    (bool(size), self._warder_bar_width, self._warder_test_marker))
         self._label = eLabel(instance)
