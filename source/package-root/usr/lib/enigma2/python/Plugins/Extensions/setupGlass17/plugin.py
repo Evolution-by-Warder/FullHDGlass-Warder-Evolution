@@ -742,8 +742,9 @@ config.plugins.setupGlass17.par17 = ConfigSelection(default="0", choices = [("0"
 config.plugins.setupGlass17.par18 = ConfigSelection(default="1", choices = [("1",_("Glass17")),("2",_("Percentage")),("3",_("Colored gauge")),("4",_("Percentage")+"2"),("5",_("Glass17")+" (2)"),("6",_("Glass17")+" (3)")]) # volume type 
 config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT) # channel selection type
 # Prime Time is opt-in, local-time based and never changes the channel list by default.
-config.plugins.setupGlass17.warderPrimeTimeEnabled = ConfigYesNo(default=False)
-config.plugins.setupGlass17.warderPrimeTimeClock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
+config.plugins.warderEvolutionPrimeTime = ConfigSubsection()
+config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)
+config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
 config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
 config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
 config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
@@ -6855,10 +6856,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(S0 % ui_text("Channel-list picon source"), config.plugins.setupGlass17.par231))
 				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par132))
 				# Keep legacy Type -> Picon source -> Date order for existing tests/menus.
-				if hasattr(config.plugins.setupGlass17, "warderPrimeTimeEnabled"):
-					self.list.append(getConfigListEntry(S0 % _("Show Prime Time for selected channel"), config.plugins.setupGlass17.warderPrimeTimeEnabled))
-					if config.plugins.setupGlass17.warderPrimeTimeEnabled.value:
-						self.list.append(getConfigListEntry(S0 % _("Prime Time clock"), config.plugins.setupGlass17.warderPrimeTimeClock))
+				if hasattr(config.plugins, "warderEvolutionPrimeTime"):
+					self.list.append(getConfigListEntry(S0 % _("Show Prime Time for selected channel"), config.plugins.warderEvolutionPrimeTime.enabled))
+					if config.plugins.warderEvolutionPrimeTime.enabled.value:
+						self.list.append(getConfigListEntry(S0 % _("Prime Time clock"), config.plugins.warderEvolutionPrimeTime.clock))
 				self.list.append(getConfigListEntry(S0 % _("Display remaining time in extra EPG"), config.plugins.setupGlass17.par142))
 				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
 				if E2OK:
@@ -8363,6 +8364,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if allLines != "":
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
+		# Prime Time lives outside the legacy par1..par231 settings registry.
+		# Saving it separately must not disturb their backup/save pass.
+		try:
+			config.plugins.warderEvolutionPrimeTime.enabled.save()
+			config.plugins.warderEvolutionPrimeTime.clock.save()
+		except AttributeError:
+			pass
 		configfile.save()
 		if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:
 			_refreshLiveWeather()
@@ -8493,6 +8501,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							i[1].cancel()
 							break
 		except: pass
+		try:
+			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
+			config.plugins.warderEvolutionPrimeTime.clock.cancel()
+		except AttributeError:
+			pass
 		if self.rst:
 			self.sDr()
 		else:
