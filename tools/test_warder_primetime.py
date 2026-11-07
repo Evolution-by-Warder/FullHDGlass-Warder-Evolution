@@ -1,5 +1,7 @@
 """Dependency-free unit tests for the Warder PrimeTime lookup core."""
 import datetime
+import os
+import time
 import unittest
 from unittest.mock import Mock
 from importlib.util import module_from_spec, spec_from_file_location
@@ -83,6 +85,34 @@ class PrimeTimeTests(unittest.TestCase):
             self.assertIsNone(prime_time_event(cache, ref, now, 21, 15))
             cache.lookupEventTime.assert_called_with(ref, target_timestamp(now, 21, 15))
         self.assertEqual(cache.lookupEventTime.call_count, 2)
+
+    @unittest.skipUnless(hasattr(time, "tzset"), "requires POSIX timezone support")
+    def test_dst_transition_days_keep_local_prime_time_clock(self):
+        original = os.environ.get("TZ")
+        try:
+            os.environ["TZ"] = "Europe/Bratislava"
+            time.tzset()
+            # DST starts March 29 and ends October 25 in 2026.
+            for year, month, day in ((2026, 3, 29), (2026, 10, 25)):
+                at_noon = datetime.datetime(year, month, day, 12, 0).timestamp()
+                result = datetime.datetime.fromtimestamp(target_timestamp(at_noon))
+                self.assertEqual(
+                    (result.year, result.month, result.day, result.hour, result.minute),
+                    (year, month, day, 20, 25),
+                )
+                after_evening = datetime.datetime(year, month, day, 21, 0).timestamp()
+                next_result = datetime.datetime.fromtimestamp(target_timestamp(after_evening))
+                expected = datetime.datetime(year, month, day) + datetime.timedelta(days=1)
+                self.assertEqual(
+                    (next_result.year, next_result.month, next_result.day, next_result.hour, next_result.minute),
+                    (expected.year, expected.month, expected.day, 20, 25),
+                )
+        finally:
+            if original is None:
+                os.environ.pop("TZ", None)
+            else:
+                os.environ["TZ"] = original
+            time.tzset()
 
     def test_absent_epg(self):
         self.assertIsNone(prime_time_event(None, "service", 0))
