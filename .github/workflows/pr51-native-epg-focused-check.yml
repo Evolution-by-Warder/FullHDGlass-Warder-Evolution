@@ -51,3 +51,20 @@ jobs:
           assert 'self.instance.fillRect(eRect(x, y + 2' not in source
           assert 'gFont("Regular", 1)' not in source
           PY
+
+  upstream-native-patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: compatibility/native-enigma2-patches
+      - uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: master
+          path: upstream/enigma2
+          persist-credentials: false
+      - name: Verify patch applies to current OpenATV native source
+        run: |
+          git -C upstream/enigma2 apply --check ../../compatibility/native-enigma2-patches/0001-progressbar-event-independent-of-epg-font.patch
