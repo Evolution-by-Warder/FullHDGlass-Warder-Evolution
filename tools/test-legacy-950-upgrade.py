@@ -2,6 +2,7 @@
 """Regression tests for guarded native upgrades from the original 9.50 family."""
 from pathlib import Path
 import os
+import re
 import subprocess
 import tempfile
 import unittest
@@ -32,8 +33,10 @@ class Legacy950UpgradeTests(unittest.TestCase):
         settings.parent.mkdir(parents=True)
         settings.write_text("config.skin.primary_skin=hd_glass17/skin.xml\ncustom=user\n")
         script = PREINST.read_text()
-        for prefix in ("/etc/", "/usr/", "/var/", "/tmp/"):
-            script = script.replace(prefix, str(root) + prefix)
+        # One substitution pass avoids replacing /tmp inside an already
+        # translated path and accidentally prefixing it twice.
+        script = re.sub(r"/(?:etc|usr|var|tmp)/",
+                        lambda match: str(root) + match.group(0), script)
         fake_preinst = root / "preinst"
         fake_preinst.write_text(script)
         fake_preinst.chmod(0o755)
