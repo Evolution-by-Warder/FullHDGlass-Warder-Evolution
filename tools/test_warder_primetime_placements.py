@@ -105,7 +105,7 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('if not enabled or what[0] == self.CHANGED_CLEAR:', renderer)
         self.assertIn('if service is None:', renderer)
         self.assertIn('eServiceReference.isMarker | eServiceReference.flagDirectory', renderer)
-        self.assertIn('except (AttributeError, RuntimeError, TypeError, ValueError):\\n            self.text = ""\\n            self.instance.hide()\\n            return', renderer)
+        self.assertIn('except (AttributeError, RuntimeError, TypeError, ValueError):\n            self.text = ""\n            self.instance.hide()\n            return', renderer)
 
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
