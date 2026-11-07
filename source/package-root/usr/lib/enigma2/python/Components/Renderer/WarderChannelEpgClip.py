@@ -78,6 +78,7 @@ class WarderChannelEpgClip(Renderer):
         self._last = None
         self._scroll_started = time()
         self._scroll_selected = None
+        self._scroll_mode = None
         # SWIG bindings do not universally accept None for gFont*; a 1px
         # temporary font is ABI-compatible and keeps original user fonts
         # untouched, restored when the overlay is removed.
@@ -139,6 +140,7 @@ class WarderChannelEpgClip(Renderer):
         self._last = None
         self._scroll_started = time()
         self._scroll_selected = None
+        self._scroll_mode = None
         self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
@@ -274,8 +276,10 @@ class WarderChannelEpgClip(Renderer):
             return False
         selected = component.instance.getCurrentIndex()
         # A new focused service starts its own scroll at the beginning.
-        if selected != getattr(self, "_scroll_selected", None):
+        if (selected != getattr(self, "_scroll_selected", None)
+                or mode != getattr(self, "_scroll_mode", None)):
             self._scroll_selected = selected
+            self._scroll_mode = mode
             self._scroll_started = time()
             self._last = None
         width = component.instance.size().width()
