@@ -15,6 +15,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml'
       - 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml'
       - 'tools/test_warder_*'
+      - 'tools/stage-pr51-clip-candidate.py'
       - 'tools/test-setup-style.py'
       - 'tools/style-setup-screens.py'
       - 'design/channelselection-primetime/logic-edits.json'
@@ -61,6 +62,7 @@ jobs:
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python -m py_compile tools/stage-pr51-clip-candidate.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
@@ -82,3 +84,4 @@ jobs:
           python -m unittest discover -s tools -p 'test_warder_cross_menu_isolation.py' -v
           python -m unittest discover -s tools -p 'test_warder_default_epg_panel_runtime.py' -v
           python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
+          python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
