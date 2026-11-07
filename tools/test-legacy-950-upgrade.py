@@ -45,7 +45,7 @@ class Legacy950UpgradeTests(unittest.TestCase):
             with self.subTest(version=version), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
                 preinst, old, original, settings, env = self.prepare(root)
-                result = subprocess.run(["sh", str(preinst), "upgrade", version],
+                result = subprocess.run(["sh", "-x", str(preinst), "upgrade", version],
                                         env=env, capture_output=True, text=True)
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
                 self.assertIn("Verified legacy upgrade preparation completed.", result.stdout)
