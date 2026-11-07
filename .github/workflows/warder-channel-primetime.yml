@@ -40,3 +40,4 @@ jobs:
           python -m unittest discover -s tools -p 'test_warder_primetime.py' -v
           python -m unittest discover -s tools -p 'test_warder_primetime_settings.py' -v
           python -m unittest discover -s tools -p 'test_warder_primetime_placements.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime_renderer.py' -v
