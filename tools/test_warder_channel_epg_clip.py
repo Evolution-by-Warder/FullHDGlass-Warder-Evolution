@@ -263,9 +263,9 @@ class ClippedEventTests(unittest.TestCase):
         modes = {
             "barright": (True, 700 - 25 - 90 - 26),
             "barleft": (False, 700 - 25 - 12),
-            "percright": (False, 700 - 25 - 150),
+            "percright": (False, 700 - 25 - 146),
             "percleft": (False, 700 - 25 - 12),
-            "minsright": (False, 700 - 25 - 205),
+            "minsright": (False, 700 - 25 - 201),
             "minsleft": (False, 700 - 25 - 12),
             "no": (False, 700 - 25 - 12),
         }
@@ -285,6 +285,23 @@ class ClippedEventTests(unittest.TestCase):
         self.assertGreater(starts["barleft"], starts["no"])
         self.assertGreater(starts["percleft"], starts["no"])
         self.assertGreater(starts["minsleft"], starts["percleft"])
+
+    def test_numeric_indicator_uses_progress_font_when_wider(self):
+        class WideProgressLabel(Label):
+            def calculateSize(self):
+                if getattr(self, "font", None) == "progress":
+                    return types.SimpleNamespace(width=lambda: 225)
+                return super().calculateSize()
+        self.component.ProgressInfoFont = "progress"
+        self.renderer._label = WideProgressLabel()
+        for mode in ("percright", "minsright"):
+            self.renderer.instance = Canvas()
+            self.renderer._last = None
+            self.renderer._progress_mode = lambda m=mode: m
+            self.assertTrue(self.draw())
+            writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
+            self.assertTrue(all(x[1][0] + x[1][2] <= 700 - 25 - 225 - 26
+                                for x in writes), mode)
 
     def test_unsupported_modes_do_not_draw_synthetic_bar_or_text(self):
         self.renderer._progress_mode = lambda: None
