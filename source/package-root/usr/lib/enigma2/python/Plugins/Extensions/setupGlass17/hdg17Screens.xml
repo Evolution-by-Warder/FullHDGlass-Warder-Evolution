@@ -6,7 +6,7 @@
       <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
     <eLabel position="10,80" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
-    <widget name="list" position="10,95" zPosition="3" size="1040,851" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;22" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="10,95" zPosition="3" size="1040,851" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;22" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" fieldMargins="26" />
     <widget source="ServiceEvent" render="g17shTVpix" position="1100,95" size="189,123" pixPath="/usr/share/enigma2/hd_glass17/frame_hd.png" zPosition="3" backgroundColor="black" alphatest="blend" />  
     <widget source="ServiceEvent" render="g17RefTV" position="1119,111" size="150,90" zPosition="4" backgroundColor="black" alphatest="blend" />
     <widget source="ServiceEvent" render="g17shTVpix" position="1387,95" size="189,123" pixPath="/usr/share/enigma2/hd_glass17/frame_hd.png" zPosition="3" backgroundColor="black" alphatest="blend" />  
@@ -41,7 +41,7 @@
     </widget>
     <eLabel position="60,76" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />
 
-    <widget name="list" position="60,96" zPosition="3" size="1050,890" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;28" serviceInfoFont="Prive4;26" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,96" zPosition="3" size="1050,890" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;28" serviceInfoFont="Prive4;26" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
      <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" zPosition="1" position="1067,24" size="645,45" font="Prive4;33" valign="center" halign="right" foregroundColor="#cdcdcd" transparent="1" />
   
@@ -84,7 +84,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="10,80" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
-    <widget name="list" position="10,95" zPosition="3" size="1037,855" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="10,95" zPosition="3" size="1037,855" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" fieldMargins="26" />
 
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="1060,105" size="189,118" backgroundColor="black" zPosition="3" alphatest="blend" />   
     <widget source="ServiceEvent" render="g17RefTV" position="1079,116" size="150,90" zPosition="4" backgroundColor="black" alphatest="blend" />
@@ -132,7 +132,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="60,90" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
-    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" fieldMargins="26" />
 
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="1010,105" size="189,118" backgroundColor="black" zPosition="3" alphatest="blend" />   
     <widget source="ServiceEvent" render="g17RefTV" position="1029,116" size="150,90" zPosition="4" backgroundColor="black" alphatest="blend" />
@@ -181,7 +181,7 @@
     <eLabel position="10,53" size="965,1" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="10,102" size="965,1" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="976,0" size="1,1080" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget name="list" position="10,113" zPosition="3" size="965,800" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="10,113" zPosition="3" size="965,800" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <eLabel position="1013,26" size="894,2" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1013,28" size="2,450" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -245,7 +245,7 @@
 		<widget source="session.CurrentService" render="Label" foregroundColor="un6cbcf0" position="1198,45" zPosition="1" size="654,60" font="Prive3;31" valign="center" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-    <widget name="list" position="67,120" zPosition="3" size="1116,820" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />		                                                              
+    <widget name="list" position="67,120" zPosition="3" size="1116,820" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />		                                                              
     <widget source="ServiceEvent" render="Label" position="1365,477" zPosition="1" size="496,33" font="Prive3;31" halign="center" foregroundColor="un6cbcf0" backgroundColor="backgroundf" transparent="1">
  			<convert type="ServiceName">Name</convert>
  		</widget>		
@@ -303,7 +303,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="620,40" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-     <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+     <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="50,803" zPosition="1" size="1150,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -378,7 +378,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="620,40" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="50,803" zPosition="1" size="1150,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -437,7 +437,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="620,40" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="50,803" zPosition="1" size="1150,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -485,7 +485,7 @@
       <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
     <eLabel position="60,90" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
-    <widget name="list" position="920,105" zPosition="3" size="940,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;22" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="920,105" zPosition="3" size="940,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;22" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" fieldMargins="26" />
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="60,105" size="189,123" backgroundColor="black" zPosition="3" alphatest="blend" />   
     <widget source="ServiceEvent" render="g17RefTV" position="79,121" size="150,90" zPosition="4" backgroundColor="black" alphatest="blend" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="272,105" size="189,123" backgroundColor="black" zPosition="3" alphatest="blend" />
@@ -527,7 +527,7 @@
       <convert type="g17ClockToText">Format:%H:%M:%S</convert>
     </widget>
     <eLabel position="10,80" size="1900,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
-    <widget name="list" position="10,95" zPosition="3" size="1040,851" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;22" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="10,95" zPosition="3" size="1040,851" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;22" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" backgroundColor="black" backgroundColorSelected="black" scrollbarMode="showOnDemand" fieldMargins="26" />
 
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="1070,95" size="189,123" backgroundColor="black" zPosition="3" alphatest="blend" />   
     <widget source="ServiceEvent" render="g17RefTV" position="1089,111" size="150,90" zPosition="4" backgroundColor="black" alphatest="blend" />
@@ -569,7 +569,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="7,0" size="810,37" font="Prive3;31" valign="center" halign="center" zPosition="2" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="7,49" zPosition="3" size="810,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2n.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="7,49" zPosition="3" size="810,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2n.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="832,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="852,19" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="1453,3" size="189,123" zPosition="3" alphatest="off" />
@@ -622,7 +622,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="832,0" size="810,37" font="Prive3;31" valign="center" halign="center" zPosition="2" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2n.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2n.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="27,19" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="628,3" size="189,123" zPosition="3" alphatest="off" />
@@ -675,7 +675,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="60,90" size="1800,2" backgroundColor="#1546AF" zPosition="5" transparent="0" />
-    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" scrollbarMode="showOnDemand" fieldMargins="26" />
 		<ePixmap position="1218,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
     <widget source="session.VideoPicture" render="WarderFramedPig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1237,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
@@ -719,7 +719,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1305,45" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="710,100" zPosition="3" size="1160,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="710,100" zPosition="3" size="1160,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		           
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="730,808" zPosition="1" size="1140,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -768,7 +768,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="832,0" size="810,37" font="Prive3;31" valign="center" halign="center" zPosition="2" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="27,19" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="628,3" size="189,123" zPosition="3" alphatest="off" />
@@ -820,7 +820,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" backgroundColor="black" scrollbarMode="showOnDemand" fieldMargins="26" />
 		<ePixmap position="1218,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
     <widget source="session.VideoPicture" render="WarderFramedPig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
     <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-background.jpg" position="1237,121" size="600,360" zPosition="2" scaleFlags="centerScaled" alphatest="blend"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
@@ -855,7 +855,7 @@
     <eLabel position="60,73" size="915,1" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="60,122" size="915,1" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="976,0" size="1,1080" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget name="list" position="60,133" zPosition="3" size="915,756" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,133" zPosition="3" size="915,756" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <eLabel position="1013,46" size="844,2" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1013,48" size="2,430" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -913,7 +913,7 @@
         <eLabel position="60,73" size="915,1" backgroundColor="grey" zPosition="5" transparent="0" />
         <eLabel position="60,122" size="915,1" backgroundColor="grey" zPosition="5" transparent="0" />
         <eLabel position="976,0" size="1,1080" backgroundColor="grey" zPosition="5" transparent="0" />
-        <widget name="list" position="60,133" zPosition="3" size="915,756" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+        <widget name="list" position="60,133" zPosition="3" size="915,756" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
         <eLabel position="1013,46" size="844,2" backgroundColor="grey" zPosition="5" transparent="0" />
         <eLabel position="1013,48" size="2,430" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -1298,7 +1298,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="60,76" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <eLabel position="1158,96" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -1332,7 +1332,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="60,76" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <eLabel position="1158,96" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,98" size="2,330" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -1365,7 +1365,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <eLabel position="60,76" size="1800,1" backgroundColor="grey" zPosition="5" transparent="0" />
-    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,96" zPosition="3" size="1065,842" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <eLabel position="1158,96" size="669,2" backgroundColor="grey" zPosition="5" transparent="0" />
     <eLabel position="1158,98" size="2,374" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -1402,7 +1402,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1275,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="922,112" zPosition="3" size="937,787" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="922,112" zPosition="3" size="937,787" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="720,120" size="189,123" zPosition="3" alphatest="off" />   
     <widget source="session.CurrentService" render="g17PicRef" position="739,136" size="150,90" zPosition="4" transparent="1" alphatest="on">
@@ -1415,7 +1415,7 @@
     <widget position="66,517" size="843,30" source="session.CurrentService" render="Label" font="Prive4;27" valign="center" halign="center" noWrap="1" backgroundColor="#00000000" foregroundColor="white" transparent="1">
       <convert type="g17ServiceNum">NumberAndName</convert>
     </widget>		
-    <widget position="66,550" size="843,123" source="session.CurrentService" render="g17ShowExtraEpg" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="un6cbcf0" backgroundColor="black" zPosition="2" transparent="1">     
+    <widget position="66,550" size="843,123" source="session.CurrentService" render="g17ShowExtraEpg" playingServiceReference="1" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="un6cbcf0" backgroundColor="black" zPosition="2" transparent="1">     
 			<convert type="ServiceName">Reference</convert>
 		</widget>	   		
     <widget source="ServiceEvent" render="Label" position="66,685" zPosition="3" size="843,30" font="Prive4;27"  valign="center" halign="center" noWrap="1" backgroundColor="black" foregroundColor="#00ff6000" transparent="1">
@@ -1447,12 +1447,12 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1275,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="967,112" zPosition="3" size="892,787" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="967,112" zPosition="3" size="892,787" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		<ePixmap position="60,660" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
 		<widget source="session.CurrentService" render="g17PicRef" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on">
 			<convert type="ServiceName">Reference</convert>
 		</widget>		
-    <widget position="262,660" size="690,123" source="session.CurrentService" render="g17ShowExtraEpg" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="white" backgroundColor="black" zPosition="2" transparent="1">     
+    <widget position="262,660" size="690,123" source="session.CurrentService" render="g17ShowExtraEpg" playingServiceReference="1" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="white" backgroundColor="black" zPosition="2" transparent="1">     
 			<convert type="ServiceName">Reference</convert>
 		</widget>	
 		<ePixmap pixmap="hd_glass17/frame_hd.png" position="60,783" size="189,123" zPosition="1" alphatest="off" />
@@ -1478,7 +1478,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
 		<ePixmap position="1218,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
     <widget source="session.VideoPicture" render="WarderFramedPig" position="1237,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
@@ -1516,7 +1516,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,105" zPosition="3" size="937,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
 		<ePixmap position="1113,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
     <widget source="session.VideoPicture" render="WarderFramedPig" position="1132,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
@@ -1545,7 +1545,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
 		<ePixmap position="75,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
     <widget source="session.VideoPicture" render="WarderFramedPig" position="94,121" size="600,360" zPosition="1" backgroundColor="#ff000000" ><convert type="WarderTVOnly" /><convert type="ConditionalShowHide" /></widget>
@@ -1594,7 +1594,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="94,136" size="600,330" pixmap="hd_glass17/icons/pic-pip.png" zPosition="1" alphatest="on" /> 
 		<ePixmap position="75,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" transparent="1" alphatest="on" />
     <widget source="ServiceEvent" render="WarderFramedMiniTV" position="94,121" size="600,360" backgroundColor="transparent" zPosition="2">
@@ -1658,7 +1658,7 @@
 		<widget source="session.CurrentService" render="Label" foregroundColor="un6cbcf0" position="1198,45" zPosition="1" size="654,60" font="Prive3;31" valign="center" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-    <widget name="list" position="67,120" zPosition="3" size="1116,820" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />		                                                              
+    <widget name="list" position="67,120" zPosition="3" size="1116,820" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />		                                                              
     <widget source="ServiceEvent" render="Label" position="1365,477" zPosition="1" size="496,33" font="Prive3;31" halign="center" foregroundColor="un6cbcf0" backgroundColor="backgroundf" transparent="1">
  			<convert type="ServiceName">Name</convert>
  		</widget>		
@@ -1712,7 +1712,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%B" fTyp="2" position="1305,45" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		           
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" position="795,696" zPosition="1" size="1065,280" options="movetype=swimming,direction=top,startpoint=0,startdelay=10000,wrap=1,always=0,repeat=2,oneshot=1" font="Prive4;28" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -1771,7 +1771,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%B" fTyp="2" position="1305,45" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		           
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="795,660" zPosition="1" size="1065,315" font="Prive4;28" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -1826,7 +1826,7 @@
 		<widget source="ServiceEvent" render="Label" foregroundColor="un6cbcf0" position="1198,45" zPosition="1" size="654,60" font="Prive3;31" valign="center" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-    <widget name="list" position="67,120" zPosition="3" size="1116,775" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="67,120" zPosition="3" size="1116,775" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		
 		<widget source="ServiceEvent" render="Label" foregroundColor="un6cbcf0" position="1288,555" zPosition="1" size="474,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="EventName">Name</convert>
@@ -1867,7 +1867,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="975,45" size="600,60" font="Prive3;37" zPosition="1" valign="center" halign="right" foregroundColor="white" transparent="1" />
-    <widget name="list" position="960,135" zPosition="3" size="900,810" picServiceEventProgressbar="bar_ch-fs8.png" backgroundColor="#00444444" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="54" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;43" serviceInfoFont="Prive4;42" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="960,135" zPosition="3" size="900,810" picServiceEventProgressbar="bar_ch-fs8.png" backgroundColor="#00444444" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="54" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;43" serviceInfoFont="Prive4;42" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <widget source="ServiceEvent" render="Label" position="60,135" zPosition="1" size="150,45" font="Prive4;37" halign="left" foregroundColor="#ffcc00" backgroundColor="#00444444" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="g17ClockToText">
@@ -1884,7 +1884,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="225,540" zPosition="1" size="720,45" font="Prive4;37" halign="left" foregroundColor="#ffcc00" backgroundColor="#00444444" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>    
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="225,540" size="720,45" font="Prive4;37" foregroundColor="#ffcc00" backgroundColor="#00444444" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />    
     <widget source="ServiceEvent" render="Label" position="60,585" zPosition="1" size="885,360" font="Prive4;37" halign="block" backgroundColor="#00444444" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescription</convert>
     </widget>    
@@ -1916,7 +1918,7 @@
     <ePixmap position="145,67" size="175,138" pixmap="hd_glass17/frame25-fs8.png" zPosition="1" alphatest="on" />
     <widget source="ServiceEvent" render="g17RefTV" position="157,88" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     
-    <widget name="list" position="957,226" zPosition="3" size="789,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;34" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="957,226" zPosition="3" size="789,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;34" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="Label" position="168,228" zPosition="1" size="90,33" font="Prive4;27" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="EventTime">StartTime</convert>
@@ -1955,7 +1957,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="832,0" size="810,37" font="Prive3;31" valign="center" halign="center" zPosition="2" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="27,19" size="150,90" zPosition="2" transparent="1" alphatest="on" />
 
@@ -2011,7 +2013,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1275,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		
 		<ePixmap pixmap="hd_glass17/frame_hd.png" position="60,660" size="189,123" zPosition="1" alphatest="off" />
 		<widget source="ServiceEvent" render="g17RefTV" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on" />
@@ -2062,7 +2064,7 @@
 		<widget name="key_green" position="390,18" zPosition="1" size="300,48" font="Prive4;33" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
 		<widget name="key_yellow" position="735,18" zPosition="1" size="300,48" font="Prive4;33" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
 		<widget name="key_blue" position="1080,18" zPosition="1" size="300,48" font="Prive4;33" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-		<widget name="list" position="15,120" size="1395,487" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="54" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;45" serviceInfoFont="Prive4;40" transparent="1" scrollbarMode="showOnDemand" />
+		<widget name="list" position="15,120" size="1395,487" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="54" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;45" serviceInfoFont="Prive4;40" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="15,624" zPosition="8" size="840,1" pixmap="hd_glass17/tib.png" />
     <ePixmap position="855,624" zPosition="8" size="510,1" pixmap="hd_glass17/tib.png" />
 		<ePixmap pixmap="hd_glass17/icons/clock.png" position="1275,648" zPosition="1" size="21,21" alphatest="on" />
@@ -2082,7 +2084,9 @@
 		</widget>
 		<widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="15,678" zPosition="1" size="1395,195" backgroundColor="background" font="Prive4;40" halign="block" foregroundColor="#cccccc">
 			<convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="15,678" size="1395,45" font="Prive4;40" foregroundColor="#cccccc" backgroundColor="background" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1425,829" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
     <screen name="ChannelSelection-13" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder" >
@@ -2093,7 +2097,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="975,45" size="600,60" font="Prive3;37" zPosition="1" valign="center" halign="right" foregroundColor="white" transparent="1" />
-    <widget name="list" position="960,135" zPosition="3" size="900,810" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;36" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="960,135" zPosition="3" size="900,810" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;36" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="Label" position="60,135" zPosition="1" size="150,45" font="Prive4;37" halign="left" foregroundColor="yellow" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">StartTime</convert>
@@ -2112,7 +2116,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="225,540" zPosition="1" size="720,45" font="Prive4;37" halign="left" foregroundColor="yellow" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>    
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="225,540" size="720,45" font="Prive4;37" foregroundColor="yellow" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />    
     <widget source="ServiceEvent" render="Label" position="60,585" zPosition="1" size="885,360" font="Prive4;37" halign="block" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescription</convert>
     </widget>
@@ -2136,12 +2142,14 @@
 		<widget name="key_green" position="390,18" zPosition="1" size="300,48" font="Prive4;33" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
 		<widget name="key_yellow" position="735,18" zPosition="1" size="300,48" font="Prive4;33" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
 		<widget name="key_blue" position="1080,18" zPosition="1" size="300,48" font="Prive4;33" halign="center" valign="center" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1" />
-		<widget name="list" position="15,120" size="1395,487" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+		<widget name="list" position="15,120" size="1395,487" picServiceEventProgressbar="bar_ch-fs8.png" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="15,624" zPosition="8" size="840,1" pixmap="hd_glass17/tib.png" />
     <ePixmap position="855,624" zPosition="8" size="510,1" pixmap="hd_glass17/tib.png" />
 		<widget source="ServiceEvent" render="Label" position="15,633" zPosition="1" size="690,33" font="Prive4;28" noWrap="1">
 			<convert type="EventName">Name</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="15,633" size="690,33" font="Prive4;28" foregroundColor="#ffffff" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		<ePixmap pixmap="hd_glass17/icons/clock.png" position="1287,639" zPosition="1" size="21,21" alphatest="on" />
 		<widget source="global.CurrentTime" render="Label" position="1290,633" zPosition="1" size="120,33" font="Prive4;28" halign="right">
 			<convert type="g17ClockToText"></convert>
@@ -2179,7 +2187,7 @@
 		<widget source="ServiceEvent" render="Label" foregroundColor="un6cbcf0" position="1198,45" zPosition="1" size="654,60" font="Prive3;31" valign="center" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-    <widget name="list" position="67,120" zPosition="3" size="1116,775" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="67,120" zPosition="3" size="1116,775" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		
 		<widget source="ServiceEvent" render="Label" foregroundColor="un6cbcf0" position="1288,555" zPosition="1" size="474,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="EventName">Name</convert>
@@ -2199,7 +2207,9 @@
     </widget>    
 		<widget source="ServiceEvent" render="Label" foregroundColor="#ff9c00" position="1288,742" zPosition="1" size="474,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
 			<convert type="g17ServiceNameEvent">NextEvent</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="1288,742" size="474,33" font="Prive4;27" foregroundColor="#ff9c00" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		<widget source="ServiceEvent" render="Label" position="1198,742" zPosition="1" size="90,33" font="Prive4;27" halign="left" foregroundColor="#ff9c00" backgroundColor="backgroundf" transparent="1">
 			<convert type="g17ServiceNameEvent">StartTime</convert>
 		</widget>
@@ -2235,7 +2245,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="45,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="67,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="67,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		
 		<ePixmap pixmap="hd_glass17/frame_hd.png" position="960,660" size="189,123" zPosition="1" alphatest="off" />
 		<widget source="ServiceEvent" render="g17RefTV" position="979,676" size="150,90" zPosition="2" transparent="1" alphatest="on" />
@@ -2266,7 +2276,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="1162,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="1162,864" size="690,33" font="Prive3;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="1162,828" zPosition="1" size="90,33" font="Prive3;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2302,7 +2314,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1275,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="white" transparent="1" />
-    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     
     <ePixmap position="60,660" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="session.CurrentService" render="g17PicRef" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on">
@@ -2356,9 +2368,11 @@
     <widget position="262,865" size="105,30" source="ServiceEvent" render="Label" font="Prive3;27" valign="bottom" foregroundColor="un777777" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
-    <widget position="352,865" size="465,30" source="ServiceEvent" render="g17EmptyEpg" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" foregroundColor="un777777" transparent="1">
+    <widget position="352,865" size="465,30" source="ServiceEvent" render="g17EmptyEpg" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" foregroundColor="un777777" transparent="1" warderPrimeTimeGate="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="352,865" size="465,30" font="Prive3;27" foregroundColor="un777777" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget position="802,865" size="150,30" source="ServiceEvent" render="Label" font="Prive3;27" valign="bottom" halign="right" foregroundColor="un777777" transparent="1">
       <convert type="g17ServiceNameEvent">Duration</convert>
     </widget>
@@ -2390,7 +2404,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1275,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		
 		<ePixmap position="60,660" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
 		<widget source="session.CurrentService" render="g17PicRef" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on">
@@ -2443,9 +2457,11 @@
 		<widget source="ServiceEvent" render="Progress" position="421,841" zPosition="1" pixmap="hd_glass17/slider/slider_tv.png" size="372,12" borderWidth="1" borderColor="grey">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
+		<widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1" warderPrimeTimeGate="1">
 			<convert type="EventName">Name</convert>
-		</widget>
+		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="262,864" size="690,33" font="Prive3;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 		
 		<widget position="997,916" size="862,37" source="ServiceEvent" render="g17ShowReference" halign="center" font="Prive3;25" foregroundColor="un6cbcf0" zPosition="1" transparent="1" />1
 		<widget position="60,916" size="862,37" source="ServiceEvent" render="g17ShowTP" font="Prive3;25" halign="center" foregroundColor="un6cbcf0" zPosition="1" transparent="1" />
@@ -2461,7 +2477,7 @@
 	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
   <screen name="ChannelSelection-3" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
-    <widget name="list" position="832,9" zPosition="3" size="805,688" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="832,9" zPosition="3" size="805,688" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="27,19" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="7,349" size="189,123" zPosition="1" alphatest="off" />
@@ -2496,7 +2512,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="189,427" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="189,427" size="618,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="201,393" zPosition="1" size="90,33" font="Prive4;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2536,7 +2554,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1275,45" size="450,60" font="Prive3;31" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="967,120" zPosition="3" size="892,772" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;37" serviceInfoFont="Prive4;31" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		
 		<ePixmap pixmap="hd_glass17/frame_hd.png" position="60,660" size="189,123" zPosition="1" alphatest="off" />
 		<widget source="ServiceEvent" render="g17RefTV" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on" />
@@ -2567,7 +2585,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="262,864" size="690,33" font="Prive3;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="262,828" zPosition="1" size="90,33" font="Prive3;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2598,7 +2618,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="832,0" size="810,37" font="Prive3;31" valign="center" halign="center" zPosition="2" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="832,49" zPosition="3" size="805,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="27,19" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="7,349" size="189,123" zPosition="1" alphatest="off" />
@@ -2633,7 +2653,9 @@
     </widget>
     <widget source="ServiceEvent" render="Label" position="189,427" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="189,427" size="618,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="201,393" zPosition="1" size="90,33" font="Prive4;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
@@ -2670,7 +2692,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="1" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="60,105" zPosition="3" size="750,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" backgroundColor="background" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="60,105" zPosition="3" size="750,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" backgroundColor="background" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
      <ePixmap pixmap="hd_glass17/frame_hd.png" position="825,105" size="189,123" zPosition="3" alphatest="off" />   
     <widget source="session.CurrentService" render="g17PicRef" position="844,121" size="150,90" zPosition="4" transparent="1" alphatest="on">
@@ -2721,7 +2743,7 @@
     <ePixmap position="145,67" size="175,138" pixmap="hd_glass17/frame25-fs8.png" zPosition="1" alphatest="on" />
     <widget source="ServiceEvent" render="g17RefTV" position="157,88" size="150,90" zPosition="2" transparent="1" alphatest="on" />
     
-    <widget name="list" position="957,226" zPosition="3" size="789,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="957,226" zPosition="3" size="789,648" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="Label" position="168,228" zPosition="1" size="90,33" font="Prive4;27" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="EventTime">StartTime</convert>
@@ -2740,7 +2762,9 @@
     </widget> 
     <widget source="ServiceEvent" render="Label" position="258,559" zPosition="2" size="684,33" font="Prive4;27" halign="left" noWrap="1" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
-    </widget>   
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="258,559" size="684,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="un353e575e" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />   
     <widget source="ServiceEvent" render="Label" position="168,604" zPosition="3" size="774,258" font="Prive4;24" halign="block" backgroundColor="background" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescription</convert>
     </widget>
@@ -2761,7 +2785,7 @@
       <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1920,1080" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen> 
   <screen name="ChannelSelection-1" position="center,148" size="1657,843" backgroundColor="background" title="Channel Selection">
-    <widget name="list" position="832,9" zPosition="3" size="805,688" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;28" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="832,9" zPosition="3" size="805,688" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;28" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
     <ePixmap position="7,3" size="189,123" pixmap="hd_glass17/frame_hd.png" zPosition="1" alphatest="off" />
     <widget source="session.CurrentService" render="g17PicRef" position="27,19" size="150,90" zPosition="2" transparent="1" alphatest="on">
       <convert type="ServiceName">Reference</convert>
@@ -2799,9 +2823,11 @@
     <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,136" zPosition="1" size="618,33" font="Prive4;30" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,205" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
+    <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,205" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1" warderPrimeTimeGate="1">
       <convert type="EventName">Name</convert>
-    </widget>
+      <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
+</widget>
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="189,205" size="618,33" font="Prive4;27" foregroundColor="#ffffff" backgroundColor="backgroundf" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
     <widget source="ServiceEvent" render="Label" position="201,171" zPosition="1" size="90,33" font="Prive4;27" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="g17ClockToText">
@@ -4824,7 +4850,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="1305,45" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="710,100" zPosition="3" size="1160,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="710,100" zPosition="3" size="1160,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		           
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="730,808" zPosition="1" size="1140,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -4875,7 +4901,7 @@
         <eLabel position="60,73" size="915,1" backgroundColor="grey" zPosition="5" transparent="0" />
         <eLabel position="60,122" size="915,1" backgroundColor="grey" zPosition="5" transparent="0" />
         <eLabel position="976,0" size="1,1080" backgroundColor="grey" zPosition="5" transparent="0" />
-        <widget name="list" position="60,133" zPosition="3" size="915,756" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+        <widget name="list" position="60,133" zPosition="3" size="915,756" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
         <eLabel position="1013,46" size="844,2" backgroundColor="grey" zPosition="5" transparent="0" />
         <eLabel position="1013,48" size="2,430" backgroundColor="grey" zPosition="5" transparent="0" />
@@ -4929,7 +4955,7 @@
     <widget source="global.CurrentTime" render="Label" zPosition="3" position="1710,30" size="135,60" font="Prive4;33" valign="center" halign="right" backgroundColor="un353e575e" shadowColor="#1A58A6" shadowOffset="-2,-1" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="739,105" zPosition="3" size="685,810" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;31" serviceInfoFont="Prive4;27" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		<ePixmap position="75,105" size="639,393" pixmap="hd_glass17/frame/Frame.png" zPosition="2" alphatest="blend" />
 		<widget source="ServiceEvent" render="g17MiniTV2" position2="0,0" size2="1920,1080" position="94,121" size="600,360" backgroundColor="transparent" zPosition="0" />
         <eLabel position="0,0" size="94,1080" backgroundColor="background" zPosition="1" transparent="0" />
@@ -4986,7 +5012,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%B" fTyp="2" position="1305,45" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		           
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" position="795,696" zPosition="1" size="1065,280" options="movetype=swimming,direction=top,startpoint=0,startdelay=10000,wrap=1,always=0,repeat=2,oneshot=1" font="Prive4;28" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -5040,7 +5066,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%d.%B" fTyp="2" position="1305,45" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="795,111" zPosition="3" size="1065,526" enableWrapAround="1" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" picServiceEventProgressbar="bar_ch-fs8.png" selectionPixmap="hd_glass17/buttons/selected-2b.png" foregroundColorServiceNotAvail="#666666" serviceItemHeight="40" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;30" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 		           
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="795,660" zPosition="1" size="1065,315" font="Prive4;28" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -5096,7 +5122,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="620,40" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-     <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+     <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="50,803" zPosition="1" size="1150,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -5167,7 +5193,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="620,40" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="50,803" zPosition="1" size="1150,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
@@ -5222,7 +5248,7 @@
       <convert type="g17ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="g17dateFormat" format="%A  %d.%B %Y" fTyp="2" position="620,40" size="450,60" font="Prive3;28" zPosition="1" valign="center" halign="right" foregroundColor="un6cbcf0" transparent="1" />
-    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" />
+    <widget name="list" position="40,95" zPosition="3" size="1190,700" enableWrapAround="1" picServiceEventProgressbar="bar_ch-fs8.png" colorServiceDescription="#cdcdcd" colorServiceDescriptionSelected="#6cbcf0" foregroundColorSelected="#6cbcf0" foregroundColor="#dddddd" foregroundColorServiceNotAvail="#666666" serviceItemHeight="37" serviceNumberFont="Prive4;24" serviceNameFont="Prive4;33" serviceInfoFont="Prive4;30" transparent="1" scrollbarMode="showOnDemand" fieldMargins="26" />
 
     <widget source="ServiceEvent" render="g17MetrixHDRunningText" alphatest="off" options="movetype=swimming,direction=top,startpoint=0,startdelay=8000,wrap=1,always=0,repeat=2,oneshot=1" position="50,803" zPosition="1" size="1150,160" font="Prive4;26" halign="block" foregroundColor="grey" backgroundColor="black" transparent="1">
       <convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>

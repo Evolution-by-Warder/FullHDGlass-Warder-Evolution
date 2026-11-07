@@ -27,6 +27,7 @@ class g17ShowExtraEpg(Renderer):
 		Renderer.__init__(self)
 		self.EPGcache = eEPGCache.getInstance()
 		self.numEvents = 4
+		self.playingServiceReference = False
 		self.numDescLines = 1
 		self.testSizeLabel = None           	
 		self.fcolor = gRGB(255,255,255)
@@ -43,7 +44,9 @@ class g17ShowExtraEpg(Renderer):
 	def applySkin(self, desktop, parent):
 		attribs = [ ]
 		for (attrib, value) in self.skinAttributes:
-			if attrib == "numEvents":
+			if attrib == "playingServiceReference":
+				self.playingServiceReference = value == "1"
+			elif attrib == "numEvents":
 				self.numEvents = int(value)
 			elif attrib == "maxDescriptionLines":
 				self.numDescLines = int(value)
@@ -98,25 +101,45 @@ class g17ShowExtraEpg(Renderer):
 				ret = ret[:pos].rstrip(' ')
 			return ret
 		if self.instance:
+			if what[0] == self.CHANGED_CLEAR:
+				self.instance.clear(self.bcolor)
+				return
 			if what[0] != self.CHANGED_CLEAR:
 				self.instance.clear(self.bcolor)
-				try:
-					service = self.source.service
-					marker = (service.flags & eServiceReference.isMarker == eServiceReference.isMarker)
-					bouquet = (service.flags & eServiceReference.flagDirectory == eServiceReference.flagDirectory)
-					sname = service.toString()
-				except:
-					marker = False
-					bouquet = False
-					sname = self.source.text
+				service = None
+				marker = bouquet = False
+				sname = None
+				if self.playingServiceReference:
+					# CurrentService is a playable service, not necessarily an
+					# eServiceReference. Resolve the actual tuned reference explicitly.
+					try:
+						import NavigationInstance
+						nav = NavigationInstance.instance
+						service = nav and nav.getCurrentlyPlayingServiceReference()
+						if service is not None:
+							sname = service.toString()
+					except (AttributeError, TypeError):
+						service = None
+				if not sname:
+					try:
+						service = self.source.service
+						marker = bool(service.flags & eServiceReference.isMarker)
+						bouquet = bool(service.flags & eServiceReference.flagDirectory)
+						sname = service.toString()
+					except (AttributeError, TypeError):
+						sname = self.source.text or ''
 				if not marker and not bouquet and self.EPGcache is not None:
 					pos = sname.rfind(':')
 					if pos != -1:
 						sname = sname[:pos].rstrip(':')
 						if not "::" in sname:
-							try:
-								info = service and self.source.info
-							except: info = True
+							if self.playingServiceReference:
+								info = True
+							else:
+								try:
+									info = service and self.source.info
+								except AttributeError:
+									info = True
 							if info is not None:
 								epgList =  self.EPGcache.lookupEvent(['IBDCTSERNX', (sname, 1, -1, 1440)])
 								y = 0 
@@ -125,7 +148,20 @@ class g17ShowExtraEpg(Renderer):
 								try:
 									rem = config.plugins.setupGlass17.par142.value
 								except: pass
-								for x in range(0,self.numEvents):
+								# Keep all six EPG events. Prime Time has its own footer widget.
+								# Determine the visible count from the LIVE setting, not the
+								# widget's creation-time skin attributes. When Prime
+								# Time is disabled all six ordinary programmes return.
+								try:
+									prime_enabled = bool(config.plugins.warderEvolutionPrimeTime.enabled.value)
+								except (AttributeError, TypeError, ValueError):
+									prime_enabled = False
+								visible_events = min(self.numEvents, 5 if prime_enabled else 6)
+								for x in range(0,visible_events):
+									# A full event row must fit. Checking only y > H
+									# after painting used to leave the last line half visible.
+									if y + self.lineHeight > self.H:
+										break
 									try:
 										t = localtime(int(epgList[x][1]))
 										tmp = "%02d:%02d" % (t.tm_hour, t.tm_min)
@@ -145,20 +181,21 @@ class g17ShowExtraEpg(Renderer):
 											self.instance.writeText(eRect(self.W-h, y, h, self.lineHeight), self.timecolor, self.bcolor, self.used_font, tmp, RT_HALIGN_RIGHT)
 										tmp = epgList[x][4].replace("\r", " ").replace("\n", " ").replace("\xc2\x8a", " ")
 										tmp = re.sub(r'[\s\t]+', ' ', tmp)
-										pos = self.W-self.timeWidth-h
+										# Progress duration has a reserved width: never paint an
+										# unbroken EPG title beneath it or outside the canvas.
+										pos = max(0, self.W - self.timeWidth - h)
 										self.testSizeLabel.setFont(self.used_font)
-										self.testSizeLabel.resize(eSize(self.W+500,30))
+										self.testSizeLabel.resize(eSize(self.W + 500, 30))
 										self.testSizeLabel.setVAlign(eLabel.alignTop)
 										self.testSizeLabel.setHAlign(eLabel.alignLeft)
 										self.testSizeLabel.setNoWrap(1)
-										self.testSizeLabel.setText(tmp)
-										h = self.testSizeLabel.calculateSize().width()
-										if h > pos:
-											while h > pos and ' ' in tmp:
-												tmp = cutMe(tmp.rstrip(' ')) 
-												self.testSizeLabel.setText(tmp)
-												h = self.testSizeLabel.calculateSize().width()
-										self.instance.writeText(eRect(self.timeWidth, y, pos, self.lineHeight), self.fcolor, self.bcolor, self.used_font, tmp, RT_HALIGN_LEFT)
+										if pos:
+											from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+											def measure(text):
+												self.testSizeLabel.setText(text)
+												return self.testSizeLabel.calculateSize().width()
+											tmp = fit_title_to_width(tmp, pos, measure)
+											self.instance.writeText(eRect(self.timeWidth, y, pos, self.lineHeight), self.fcolor, self.bcolor, self.used_font, tmp, RT_HALIGN_LEFT)
 										y += self.lineHeight+2
 										if self.numDescLines > 0: 
 											tmp = ""

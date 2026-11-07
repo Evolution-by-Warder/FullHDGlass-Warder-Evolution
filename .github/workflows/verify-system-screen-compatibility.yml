@@ -28,6 +28,11 @@ on:
     paths: [source/**, tools/**, design/openatv*/**, .github/workflows/verify-system-screen-compatibility.yml]
 permissions:
   contents: read
+# Keep the latest PR validation only; older queued commits are superseded.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   compatibility:
     runs-on: ubuntu-latest

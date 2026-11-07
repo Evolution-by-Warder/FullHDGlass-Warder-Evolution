@@ -259,6 +259,12 @@ def strip_reviewed_scoped(tree, records):
 
 
 def normalized(tree):
+    # Only exact, scope-bound reviewed Prime Time additions are ignored by the
+    # frozen legacy fingerprint. Any changed save/cancel or progress hook must
+    # still fail the baseline comparison.
+    prime_ledger = ROOT / 'design/channelselection-primetime/logic-edits.json'
+    if prime_ledger.exists():
+        tree = strip_reviewed_scoped(tree, json.loads(prime_ledger.read_text()))
     picon_ledger=ROOT/'design/channel-picon-source/logic.json'
     if picon_ledger.exists():
         tree=strip_reviewed_scoped(tree,json.loads(picon_ledger.read_text()))

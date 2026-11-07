@@ -37,7 +37,8 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.fillTimer.timeout.get().append(self.__fillText)
 		self.backText = ""
 		self.vvv = ""
-		self.testSizeLabel = None 
+		self.testSizeLabel = None
+		self.warderPrimeTimeGate = False 
     		
 	def applySkin(self, desktop, parent):
 		attribs = [ ]
@@ -52,6 +53,8 @@ class g17EmptyEpg(VariableText, Renderer):
 				attribs.append((attrib,value))
 			elif attrib == "readTagInfo":
 				self.readTag = value
+			elif attrib == "warderPrimeTimeGate":
+				self.warderPrimeTimeGate = value == "1"
 			else:
 				attribs.append((attrib,value))
 		self.skinAttributes = attribs
@@ -79,11 +82,34 @@ class g17EmptyEpg(VariableText, Renderer):
 		self.changed((self.CHANGED_DEFAULT,))
 		
 	def changed(self, what):
-		if self.instance and what[0] != self.CHANGED_CLEAR:
-			self.tt = self.source.text
-			self.work()
+		if not self.instance:
+			return
+		if what[0] == self.CHANGED_CLEAR:
+			if self.fillTimer.isActive():
+				self.fillTimer.stop()
+			if self.readTag and self.__tagTimer.isActive():
+				self.__tagTimer.stop()
+			self.tt = self.lastText = self.backText = ""
+			self.text = ""
+			return
+		self.tt = self.source.text or ""
+		self.work()
 
 	def work(self):
+		# Hide a gated EPG cell *without* displaying its fallback or the
+		# legacy typewriter animation while optional Prime Time owns it.
+		if self.warderPrimeTimeGate:
+			try:
+				if config.plugins.warderEvolutionPrimeTime.enabled.value:
+					if self.fillTimer.isActive():
+						self.fillTimer.stop()
+					if self.readTag and self.__tagTimer.isActive():
+						self.__tagTimer.stop()
+					self.lastText = self.backText = ""
+					self.text = ""
+					return
+			except AttributeError:
+				pass
 		tmp = self.tt
 		if self.readTag and self.tt == "":
 			if self.__tagTimer.isActive():
@@ -95,20 +121,24 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.lastText = tmp
 			self.testSizeLabel.setText(tmp)
 			text_width = self.testSizeLabel.calculateSize().width()
-			if text_width > (self.sizeX - 30):
-				while (text_width > (self.sizeX - 30)):
-					tmp = tmp[:-1] 
+			available_width = max(0, self.sizeX - 30)
+			if text_width > available_width:
+				while tmp and text_width > available_width:
+					tmp = tmp[:-1]
 					self.testSizeLabel.setText(tmp)
 					text_width = self.testSizeLabel.calculateSize().width()
 				pos = tmp.rfind(' ')
 				if pos != -1:
-					tmp = tmp[:pos].rstrip(' ') + "..."
+					candidate = tmp[:pos].rstrip(' ') + "..."
+					self.testSizeLabel.setText(candidate)
+					if self.testSizeLabel.calculateSize().width() <= available_width:
+						tmp = candidate
 			if self.backText != tmp:
 				self.backText = tmp					
 				ena = True
 				try: ena = config.plugins.setupGlass17.par30.value
 				except: pass
-				if ena:
+				if ena and tmp:
 					self.text = "_"				
 					self.endPoint = len(self.backText)
 					self.posIdx = 0                    
@@ -120,6 +150,14 @@ class g17EmptyEpg(VariableText, Renderer):
           					
 	def __fillText(self):
 		self.fillTimer.stop()
+		if self.warderPrimeTimeGate:
+			try:
+				if config.plugins.warderEvolutionPrimeTime.enabled.value:
+					self.lastText = self.backText = ""
+					self.text = ""
+					return
+			except AttributeError:
+				pass
 		self.posIdx += 1
 		if self.posIdx <= self.endPoint:
 			self.text = self.backText[:self.posIdx] + "_"
@@ -128,6 +166,10 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.text = self.backText 					
 					
 	def preWidgetRemove(self, instance):
+		if self.fillTimer.isActive():
+			self.fillTimer.stop()
+		if self.readTag and self.__tagTimer.isActive():
+			self.__tagTimer.stop()
 		self.testSizeLabel = None
 
 	def postWidgetCreate(self, instance):

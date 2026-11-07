@@ -1,0 +1,202 @@
+name: PR51 native EPG renderer focused checks
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
+      - 'tools/test_warder_channel_epg_clip.py'
+      - 'tools/test_warder_native_progressbar_independence.py'
+      - 'tools/apply-native-progressbar-event-fix.py'
+      - 'tools/check-openpli-native-progressbar-event.py'
+      - 'tools/pr51-receiver-build-provenance-readonly.sh'
+      - 'compatibility/native-enigma2-progressbar/**'
+      - 'tools/test_warder_epg_text_fit.py'
+      - 'tools/test_warder_pr51_clip_staging.py'
+      - 'tools/stage-pr51-clip-candidate.py'
+      - '.github/workflows/pr51-native-epg-focused-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  renderer-no-mask:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax and isolated regression suite
+        run: |
+          sh -n tools/pr51-receiver-build-provenance-readonly.sh
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
+          python -m unittest discover -s tools -p 'test_warder_native_progressbar_independence.py' -v
+          python -m unittest discover -s tools -p 'test_warder_epg_text_fit.py' -v
+          python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
+      - name: Enforce no masking or bar redraw
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source = Path('source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py').read_text()
+          assert 'setElementFont(component.l.celServiceInfo, None)' in source
+          assert 'native_event_disable_unsupported' in source
+          assert '_opaque_black' not in source
+          assert 'self._draw_progress(' not in source
+          assert 'self.instance.fillRect(eRect(x, y + 2' not in source
+          assert 'gFont("Regular", 1)' not in source
+          PY
+
+  upstream-native-patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools/apply-native-progressbar-event-fix.py
+      - uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: master
+          path: upstream/enigma2
+          persist-credentials: false
+      - name: Apply exact native progressbar source correction
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path("upstream/enigma2/lib/service/listboxservice.cpp").read_text()
+          for key in ("eRect area = m_element_position[celServiceEventProgressbar]", "if (area.width() > 0 && evt", "m_pixmaps[picServiceEventProgressbar]"):
+              pos = source.find(key)
+              print("UPSTREAM ANCHOR", repr(key), pos, repr(source[max(0, pos-250):pos+350]) if pos >= 0 else "NOT FOUND", flush=True)
+          PY
+          python3 tools/apply-native-progressbar-event-fix.py upstream/enigma2/lib/service/listboxservice.cpp
+          git -C upstream/enigma2 diff --check
+          git -C upstream/enigma2 diff --exit-code -- lib/service/listboxservice.h
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp
+          grep -F 'service_info->getEvent(*m_cursor, evt);' upstream/enigma2/lib/service/listboxservice.cpp
+          mkdir -p native-patch
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp > native-patch/0001-progressbar-event-lookup-independent-of-epg-font.patch
+          test -s native-patch/0001-progressbar-event-lookup-independent-of-epg-font.patch
+      - name: Export validated native Enigma2 patch (not an IPK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr51-native-enigma2-progressbar-source-patch
+          path: native-patch/*.patch
+          if-no-files-found: error
+          retention-days: 14
+
+  openpli-native-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools/check-openpli-native-progressbar-event.py
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenPLi/enigma2
+          ref: develop
+          path: upstream/openpli
+          persist-credentials: false
+      - name: Verify native event lookup before progress painting
+        run: |
+          python3 tools/check-openpli-native-progressbar-event.py upstream/openpli/lib/service/listboxservice.cpp
+
+  bitbake-layer-source-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        upstream: ['8.0', master, 66df86bd9fa56f817e33099c09ee1811c9aa1aab]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: compatibility/native-enigma2-progressbar
+      - uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: ${{ matrix.upstream }}
+          path: upstream/enigma2
+          persist-credentials: false
+      - name: Verify native BitBake layer and apply patch
+        run: |
+          set -euo pipefail
+          LAYER=compatibility/native-enigma2-progressbar/meta-warder-native
+          test -f "$LAYER/conf/layer.conf"
+          test -f "$LAYER/recipes-oe-alliance/enigma2/enigma2_%.bbappend"
+          grep -F 'SRC_URI:append:openatv' "$LAYER/recipes-oe-alliance/enigma2/enigma2_%.bbappend"
+          PATCH="$LAYER/recipes-oe-alliance/enigma2/files/0001-progressbar-event-independent-of-epg-font.patch"
+          git -C upstream/enigma2 apply --check "../../$PATCH"
+          git -C upstream/enigma2 apply "../../$PATCH"
+          git -C upstream/enigma2 diff --check
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp
+
+      - name: Package validated OpenATV release 8.0 BitBake layer
+        if: matrix.upstream == '8.0'
+        run: |
+          set -euo pipefail
+          mkdir -p release-source-bundle
+          cp -R compatibility/native-enigma2-progressbar/meta-warder-native release-source-bundle/
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp > release-source-bundle/verified-openatv-8.0.patch
+          test -s release-source-bundle/verified-openatv-8.0.patch
+          UPSTREAM_COMMIT="$(git -C upstream/enigma2 rev-parse HEAD)"
+          printf 'Target: OpenATV 8.0 release source patch only; no receiver binary.\nSource repository: https://github.com/openatv/enigma2\nSource branch: 8.0\nSource commit: %s\nReceiver reported: openATV 8.1.0~beta+git36096+f9f72e10+f9f72e1115-r1\nReceiver source commit match: NOT ESTABLISHED\nNative ARMv7 compilation: NOT PERFORMED\nInstall on receiver: NO\n' "$UPSTREAM_COMMIT" > release-source-bundle/PROVENANCE.txt
+          (cd release-source-bundle && find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+          cat release-source-bundle/PROVENANCE.txt
+          cat release-source-bundle/SHA256SUMS
+      - name: Upload OpenATV 8.0 source-only integration bundle
+        if: matrix.upstream == '8.0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr51-openatv-8.0-native-bitbake-layer-SOURCE-ONLY
+          path: release-source-bundle/
+          if-no-files-found: error
+          retention-days: 14
+
+  oe-alliance-6-recipe-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: compatibility/native-enigma2-progressbar/meta-warder-native
+      - uses: actions/checkout@v4
+        with:
+          repository: oe-alliance/oe-alliance-core
+          ref: '6.0'
+          path: upstream/oe-alliance-core
+          persist-credentials: false
+          sparse-checkout: |
+            meta-oe/conf/layer.conf
+            meta-oe/conf/distro/openatv.conf
+            meta-oe/recipes-oe-alliance/enigma2/enigma2.bb
+      - name: Verify BitBake recipe selectors and experimental overlay contract
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('upstream/oe-alliance-core/meta-oe')
+          recipe = (root / 'recipes-oe-alliance/enigma2/enigma2.bb').read_text()
+          distro = (root / 'conf/distro/openatv.conf').read_text()
+          base_layer = (root / 'conf/layer.conf').read_text()
+          addon = Path('compatibility/native-enigma2-progressbar/meta-warder-native')
+          append = (addon / 'recipes-oe-alliance/enigma2/enigma2_%.bbappend').read_text()
+          layer = (addon / 'conf/layer.conf').read_text()
+          assert 'SRC_URI = "${ENIGMA2_URI}"' in recipe
+          assert 'SRC_URI:append:openatv' in recipe
+          assert 'git://github.com/openatv/enigma2.git;protocol=https;branch=8.0' in distro
+          assert 'SRC_URI:append:openatv' in append
+          assert 'FILESEXTRAPATHS:prepend' in append
+          assert 'LAYERSERIES_COMPAT_oe-alliance-layer = "wrynose blacksail"' in base_layer
+          assert 'wrynose blacksail' in layer
+          assert (addon / 'recipes-oe-alliance/enigma2/files/0001-progressbar-event-independent-of-epg-font.patch').is_file()
+          print('OE-Alliance 6.0 recipe + branch + experimental patch layer source contract: PASS')
+          PY
