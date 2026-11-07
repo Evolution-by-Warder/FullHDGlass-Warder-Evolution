@@ -741,6 +741,10 @@ config.plugins.setupGlass17.par16 = ConfigYesNo(default = False) # enable bar ba
 config.plugins.setupGlass17.par17 = ConfigSelection(default="0", choices = [("0",_("Ecminfo only")),("1",_("Ecminfo and CAID")),("2",_("CAID and SID")),("3",_("SID only")),("4",_("CAID, SID, VPID"))]) # ECM line type
 config.plugins.setupGlass17.par18 = ConfigSelection(default="1", choices = [("1",_("Glass17")),("2",_("Percentage")),("3",_("Colored gauge")),("4",_("Percentage")+"2"),("5",_("Glass17")+" (2)"),("6",_("Glass17")+" (3)")]) # volume type 
 config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT) # channel selection type
+# Prime Time is opt-in, local-time based and never changes the channel list by default.
+config.plugins.warderEvolutionPrimeTime = ConfigSubsection()
+config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)
+config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
 config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
 config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
 config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
@@ -2862,15 +2866,91 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		allLines = ""
 		what = 'colorServiceDescription="'+config.plugins.setupGlass17.par109.value+'"'+' colorServiceDescriptionSelected="'+config.plugins.setupGlass17.par110.value+'"'+' foregroundColorSelected="'+config.plugins.setupGlass17.par111.value+'"'+' foregroundColor="'+config.plugins.setupGlass17.par117.value+'"' 
 		r = open(SKINXML,"r")
+		lines = r.readlines()
+		# The stock 35 layout is the ONLY geometry for our fixed EPG canvas.
+		# Every other ChannelSelection variant (including s PIG 4) owns
+		# independent PIG/list/EPG coordinates. Never put a 60,96 overlay
+		# over a screen whose native list lives elsewhere.
+		channel_begin = next((i for i, v in enumerate(lines)
+			if '<screen name="ChannelSelection"' in v), -1)
+		channel_end = next((i for i in range(channel_begin + 1, len(lines))
+			if '</screen>' in lines[i]), -1) if channel_begin >= 0 else -1
+		channel_xml = ''.join(lines[channel_begin:channel_end + 1]) if channel_end >= 0 else ''
+		list_tag = re.search(r'<widget\s+name="list"[^>]*>', channel_xml)
+		epg_tag = re.search(r'<widget\b[^>]*render="g17ShowExtraEpg"[^>]*>', channel_xml)
+		desc_tag = re.search(r'<widget\b[^>]*render="g17MetrixHDRunningText"[^>]*>', channel_xml)
+		default_geometry = bool(
+			list_tag and 'position="60,96"' in list_tag.group(0)
+			and 'size="1065,842"' in list_tag.group(0)
+			and desc_tag and 'position="1150,455"' in desc_tag.group(0)
+			and epg_tag and
+			('position="1150,685"' in epg_tag.group(0) or
+			 'position="1150,695"' in epg_tag.group(0))
+		)
 		ena = False
-		for line in r.readlines():
+		in_default_channel_screen = False
+		in_any_channel_screen = False
+		for line in lines:
 			if line.__contains__('<screen name="ChannelSelection"'):
 				ena = True
+				in_any_channel_screen = True
+				in_default_channel_screen = default_geometry
+				has_clipped_events = False
+				has_prime_time = False
+				has_prime_time_divider = False
+			# Receiver QA: the default description ended at Y=695 while
+			# the following EPG rows began at Y=685. Keep a visible gap,
+			# without changing the approved source skin.xml or user fonts.
+			if in_default_channel_screen and 'render="g17MetrixHDRunningText"' in line and 'position="1150,455"' in line:
+				line = line.replace('size="685,240"', 'size="685,224"')
+				if 'warderWholeLineScroll=' not in line:
+					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
+			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line:
+				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
+				# This specific list remains six slots tall. Prime Time
+				# replaces slot six dynamically without altering any other skin.
+				line = line.replace('position="1150,695" size="685,194"', 'position="1150,695" size="685,226"')
+				line = line.replace('numEvents="8"', 'numEvents="6"').replace('numEvents="5"', 'numEvents="6"')
+			# When switching templates, strip ONLY the fixed-position
+			# widgets inserted by earlier TEST builds. Other templates may
+			# legitimately own their own WarderPrimeTime widgets elsewhere.
+			# This check must stay active AFTER the native list widget.
+			if in_any_channel_screen and not default_geometry and (
+				'render="WarderChannelEpgClip"' in line
+				or ('render="WarderPrimeTime"' in line and 'position="1150,898"' in line)
+				or ('render="WarderPrimeTimeDivider"' in line and 'position="1150,892"' in line)
+				or '<eLabel position="1150,892" size="685,1" backgroundColor="grey" zPosition="5"' in line
+			):
+				continue
 			if ena and line.__contains__('<widget name="list"'):
+				# Apply only to the active ChannelSelection runtime copy.
+				# Keep approved source skin.xml byte-for-byte unchanged.
+				if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:
+					line = line.replace('/>', ' fieldMargins="26" />')
 				line = line.replace('colorServiceDescription="'+c1+'"'+' colorServiceDescriptionSelected="'+c2+'"'+' foregroundColorSelected="'+c3+'"'+' foregroundColor="'+c4+'"', what)
 				if ENA_P_CH and not 'progressBarWidth="90"' in line:
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
+			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
+				has_clipped_events = True
+			# Strip the TEST74 static line: it remains visible after
+			# turning Prime Time off without rebuilding ChannelSelection.
+			if in_default_channel_screen and '<eLabel position="1150,892" size="685,1"' in line:
+				continue
+			if in_default_channel_screen and 'render="WarderPrimeTimeDivider"' in line:
+				has_prime_time_divider = True
+			if in_default_channel_screen and 'render="WarderPrimeTime"' in line:
+				has_prime_time = True
+			if in_default_channel_screen and '</screen>' in line:
+				if not has_prime_time_divider:
+					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTimeDivider" position="1150,892" size="685,1" backgroundColor="grey" zPosition="5" transparent="0" />\n'
+				if not has_prime_time:
+					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,898" size="685,38" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
+				if not has_clipped_events:
+					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
+				in_default_channel_screen = None
+			if in_any_channel_screen and '</screen>' in line:
+				in_any_channel_screen = False
 			allLines += line
 		r.close()
 		_atomicWriteText(SKINXML, allLines)
@@ -2908,6 +2988,12 @@ def changeChF():
 						allLines += buffLine + line
 					ena2 = False
 				else:
+					# Preserve self-closing ServiceEvent widgets: they have
+					# no following converter, so buffering the terminal
+					# WarderChannelEpgClip widget would discard it.
+					if line.__contains__('source="ServiceEvent') and line.rstrip().endswith('/>'):
+						allLines += line
+						continue
 					if line.__contains__('source="ServiceEvent'):
 						if line.__contains__('render="g17MetrixHDRunningText'):
 							allLines += calc(line,' font="Prive4;',config.plugins.setupGlass17.par148.value)
@@ -6593,6 +6679,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			
 	def chckSetup(self):
 		t = self["config"].getCurrent()[1]
+		# Rebuild only the Channel Selection settings rows when Prime Time
+		# is toggled; the clock appears immediately without leaving the menu.
+		if t is config.plugins.warderEvolutionPrimeTime.enabled:
+			self.runSetup()
+			return
 		if t in (config.plugins.setupGlass17.par229, config.plugins.setupGlass17.par226, config.plugins.setupGlass17.par222, config.plugins.setupGlass17.par209, config.plugins.setupGlass17.par104, config.plugins.setupGlass17.par143, config.plugins.setupGlass17.par180, config.plugins.setupGlass17.par171, config.plugins.setupGlass17.par172, config.plugins.setupGlass17.par169, config.plugins.setupGlass17.par161, config.plugins.setupGlass17.par8, config.plugins.setupGlass17.par56, config.plugins.setupGlass17.par125, config.plugins.setupGlass17.par15, config.plugins.setupGlass17.par22, config.plugins.setupGlass17.par95, config.plugins.setupGlass17.par93, config.plugins.setupGlass17.par94, config.plugins.setupGlass17.par31, config.plugins.setupGlass17.par78, config.plugins.setupGlass17.par12, config.plugins.setupGlass17.par76, config.plugins.setupGlass17.par66, config.plugins.setupGlass17.par7, config.plugins.setupGlass17.par27, config.plugins.setupGlass17.par2, config.plugins.setupGlass17.par57):
 			self.runSetup()
 		elif t in (config.plugins.setupGlass17.par14, config.plugins.setupGlass17.par4):
@@ -6843,9 +6934,15 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 						self.list.append(getConfigListEntry(S0 % _("Enable empty icons in Menu type - Icons"), config.plugins.setupGlass17.par60))           
 					self.list.append(getConfigListEntry(S0 % _("Enable Animation (Menu: Icons/Icons Bar)"), config.plugins.setupGlass17.par63)) 
 			elif tt == 13:	
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par19))               
+				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par19))
+               
 				self.list.append(getConfigListEntry(S0 % ui_text("Channel-list picon source"), config.plugins.setupGlass17.par231))
 				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par132))
+				# Keep legacy Type -> Picon source -> Date order for existing tests/menus.
+				if hasattr(config.plugins, "warderEvolutionPrimeTime"):
+					self.list.append(getConfigListEntry(S0 % _("Show Prime Time for selected channel"), config.plugins.warderEvolutionPrimeTime.enabled))
+					if config.plugins.warderEvolutionPrimeTime.enabled.value:
+						self.list.append(getConfigListEntry(S0 % _("Prime Time clock"), config.plugins.warderEvolutionPrimeTime.clock))
 				self.list.append(getConfigListEntry(S0 % _("Display remaining time in extra EPG"), config.plugins.setupGlass17.par142))
 				self.list.append(getConfigListEntry(S0 % _("Picon default, marker, next ..."), config.plugins.setupGlass17.par41))       
 				if E2OK:
@@ -8350,6 +8447,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			if allLines != "":
 				_atomicWriteText(config.plugins.setupGlass17.par144.value+"hdg17.conf", allLines)
 		except: pass
+		# Prime Time lives outside the legacy par1..par231 settings registry.
+		# Saving it separately must not disturb their backup/save pass.
+		try:
+			config.plugins.warderEvolutionPrimeTime.enabled.save()
+			config.plugins.warderEvolutionPrimeTime.clock.save()
+		except AttributeError:
+			pass
 		configfile.save()
 		if self._weatherCityAtOpen != config.plugins.setupGlass17.par13.value:
 			_refreshLiveWeather()
@@ -8480,6 +8584,11 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 							i[1].cancel()
 							break
 		except: pass
+		try:
+			config.plugins.warderEvolutionPrimeTime.enabled.cancel()
+			config.plugins.warderEvolutionPrimeTime.clock.cancel()
+		except AttributeError:
+			pass
 		if self.rst:
 			self.sDr()
 		else:
