@@ -34,8 +34,19 @@ def scroll_title_window(title, width, measure, pixel_offset):
             lo = mid
         else:
             hi = mid - 1
-    # The renderer draws exclusively inside the measured event rectangle.
-    return fit_title_to_width(title[lo:], width, measure)
+    # A moving window must reveal the real suffix, not keep inserting an
+    # ellipsis.  Use measured glyph boundaries; the event field owns clipping.
+    suffix = title[lo:]
+    if measure(suffix) <= width:
+        return suffix
+    lo, hi = 0, len(suffix)
+    while lo < hi:
+        mid = (lo + hi + 1) // 2
+        if measure(suffix[:mid]) <= width:
+            lo = mid
+        else:
+            hi = mid - 1
+    return suffix[:lo]
 
 
 class WarderChannelEpgClip(Renderer):
