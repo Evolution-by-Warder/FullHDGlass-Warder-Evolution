@@ -17,8 +17,9 @@
 from Components.Renderer.Renderer import Renderer
 from enigma import eLabel, eServiceReference, eEPGCache, eSize
 from Components.VariableText import VariableText
-from time import localtime
+from time import localtime, time
 from skin import parseFont
+from Components.config import config
 
 class g17ShowExtEpg(VariableText, Renderer):
 
@@ -79,23 +80,33 @@ class g17ShowExtEpg(VariableText, Renderer):
 							except: info = True
 							if info is not None:
 								epgList =  self.EPGcache.lookupEvent(['TBX', (sname, 1, -1, 1440)])
-								extEpg = "" 
-								for x in range(1,self.numEvents):
+								extEpg = ""
+								visible_events = self.numEvents
+								from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+								def measure_epg(text):
+									self.testSizeLabel.setText(text)
+									return self.testSizeLabel.calculateSize().width()
+								# Use one of the existing upcoming-event lines, not
+								# additional screen height, when Prime Time is enabled.
+								try:
+									pt_cfg = config.plugins.warderEvolutionPrimeTime
+									if pt_cfg.enabled.value:
+										from Plugins.Extensions.setupGlass17.warderPrimeTime import prime_time_event
+										hour, minute = [int(v) for v in pt_cfg.clock.value]
+										pt = prime_time_event(self.EPGcache, service, time(), hour, minute)
+										header = "Prime Time %02d:%02d: %s" % (hour, minute, pt[1] if pt else "EPG unavailable")
+										extEpg = fit_title_to_width(header, max(0, self.sizeX - 30), measure_epg) + "\n"
+										visible_events = max(1, self.numEvents - 1)
+								except (AttributeError, IndexError, TypeError, ValueError, RuntimeError):
+									pass
+								for x in range(1,visible_events):
 									try:
 										t = localtime(int(epgList[x][1]))
 										tmp = "%02d:%02d  %s" % (t.tm_hour, t.tm_min, epgList[x][0])
-										self.testSizeLabel.setText(tmp)
-										text_width = self.testSizeLabel.calculateSize().width()
-										if text_width > (self.sizeX - 30):
-											while (text_width > (self.sizeX - 30)):
-												tmp = tmp[:-1] 
-												self.testSizeLabel.setText(tmp)
-												text_width = self.testSizeLabel.calculateSize().width()
-											pos = tmp.rfind(' ')
-											if pos != -1:
-												tmp = tmp[:pos].rstrip(' ') + ".."
+										tmp = fit_title_to_width(tmp, max(0, self.sizeX - 30), measure_epg)
 										extEpg += "%s\n" % tmp
-									except: pass
+									except (IndexError, TypeError, ValueError):
+										pass
 								if extEpg != "":
 									self.text = extEpg
 
