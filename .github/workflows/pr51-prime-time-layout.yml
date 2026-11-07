@@ -7,6 +7,8 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTimeDivider.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
       - 'tools/test_warder_primetime.py'
       - 'tools/test_warder_primetime_runtime_layout.py'
       - '.github/workflows/pr51-prime-time-layout.yml'
@@ -15,6 +17,8 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTimeDivider.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
       - 'tools/test_warder_primetime.py'
       - 'tools/test_warder_primetime_runtime_layout.py'
       - '.github/workflows/pr51-prime-time-layout.yml'
@@ -35,6 +39,8 @@ jobs:
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
             /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTimeDivider.py
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -46,4 +52,6 @@ jobs:
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTimeDivider.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
           python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
