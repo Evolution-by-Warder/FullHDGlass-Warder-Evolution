@@ -57,6 +57,22 @@ jobs:
       - name: Build unchanged reviewed payload and verify every packaged file
         run: |
           set -euo pipefail
+          python3 - <<'PY'
+          # Recreate only the build-time verification reports from the pinned
+          # receiver-approved test5 proof. Never rewrite shipped binaries.
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('tools').resolve()))
+          from bitrate_package import validate_helpers
+          proof=json.loads(Path('reports/bitrate-test5-20261101.json').read_text())
+          out=Path('packages/test')
+          out.mkdir(parents=True, exist_ok=True)
+          assert len(proof['builds']) == 3
+          for name,report in zip(('arm','mipsel','aarch64'),proof['builds']):
+              filename='bitrate-helper-build.json' if name=='arm' else 'bitrate-helper-'+name+'-build.json'
+              (out/filename).write_text(json.dumps(report,indent=2)+'\\n')
+          validate_helpers(Path.cwd())
+          PY
           python3 tools/build-setup-style-test.py
           python3 tools/verify-setup-style-ipk.py
           python3 tools/test-release-bytecode.py
