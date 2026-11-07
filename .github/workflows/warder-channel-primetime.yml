@@ -1,0 +1,34 @@
+name: Warder channel list and Prime Time unit checks
+
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml'
+      - 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml'
+      - 'tools/test_warder_*'
+      - '.github/workflows/warder-channel-primetime.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-source-and-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate Python syntax
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+      - name: Run EPG geometry and algorithm tests
+        run: |
+          python -m unittest discover -s tools -p 'test_warder_channelselection_layouts.py' -v
+          python -m unittest discover -s tools -p 'test_warder_epg_text_fit.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime.py' -v
