@@ -741,6 +741,9 @@ config.plugins.setupGlass17.par16 = ConfigYesNo(default = False) # enable bar ba
 config.plugins.setupGlass17.par17 = ConfigSelection(default="0", choices = [("0",_("Ecminfo only")),("1",_("Ecminfo and CAID")),("2",_("CAID and SID")),("3",_("SID only")),("4",_("CAID, SID, VPID"))]) # ECM line type
 config.plugins.setupGlass17.par18 = ConfigSelection(default="1", choices = [("1",_("Glass17")),("2",_("Percentage")),("3",_("Colored gauge")),("4",_("Percentage")+"2"),("5",_("Glass17")+" (2)"),("6",_("Glass17")+" (3)")]) # volume type 
 config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT) # channel selection type
+# Prime Time is opt-in, local-time based and never changes the channel list by default.
+config.plugins.setupGlass17.warderPrimeTimeEnabled = ConfigYesNo(default=False)
+config.plugins.setupGlass17.warderPrimeTimeClock = ConfigClock(default=20 * 3600 + 25 * 60)
 config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
 config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
 config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
@@ -6843,7 +6846,10 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 						self.list.append(getConfigListEntry(S0 % _("Enable empty icons in Menu type - Icons"), config.plugins.setupGlass17.par60))           
 					self.list.append(getConfigListEntry(S0 % _("Enable Animation (Menu: Icons/Icons Bar)"), config.plugins.setupGlass17.par63)) 
 			elif tt == 13:	
-				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par19))               
+				self.list.append(getConfigListEntry(S0 % _("Type"), config.plugins.setupGlass17.par19))
+				self.list.append(getConfigListEntry(S0 % _("Show Prime Time for selected channel"), config.plugins.setupGlass17.warderPrimeTimeEnabled))
+				if config.plugins.setupGlass17.warderPrimeTimeEnabled.value:
+					self.list.append(getConfigListEntry(S0 % _("Prime Time clock"), config.plugins.setupGlass17.warderPrimeTimeClock))               
 				self.list.append(getConfigListEntry(S0 % ui_text("Channel-list picon source"), config.plugins.setupGlass17.par231))
 				self.list.append(getConfigListEntry(S0 % _("Date format"), config.plugins.setupGlass17.par132))
 				self.list.append(getConfigListEntry(S0 % _("Display remaining time in extra EPG"), config.plugins.setupGlass17.par142))
