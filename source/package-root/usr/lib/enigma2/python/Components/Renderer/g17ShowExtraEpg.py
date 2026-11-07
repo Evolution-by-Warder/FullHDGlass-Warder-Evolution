@@ -145,20 +145,21 @@ class g17ShowExtraEpg(Renderer):
 											self.instance.writeText(eRect(self.W-h, y, h, self.lineHeight), self.timecolor, self.bcolor, self.used_font, tmp, RT_HALIGN_RIGHT)
 										tmp = epgList[x][4].replace("\r", " ").replace("\n", " ").replace("\xc2\x8a", " ")
 										tmp = re.sub(r'[\s\t]+', ' ', tmp)
-										pos = self.W-self.timeWidth-h
+										# Progress duration has a reserved width: never paint an
+										# unbroken EPG title beneath it or outside the canvas.
+										pos = max(0, self.W - self.timeWidth - h)
 										self.testSizeLabel.setFont(self.used_font)
-										self.testSizeLabel.resize(eSize(self.W+500,30))
+										self.testSizeLabel.resize(eSize(self.W + 500, 30))
 										self.testSizeLabel.setVAlign(eLabel.alignTop)
 										self.testSizeLabel.setHAlign(eLabel.alignLeft)
 										self.testSizeLabel.setNoWrap(1)
-										self.testSizeLabel.setText(tmp)
-										h = self.testSizeLabel.calculateSize().width()
-										if h > pos:
-											while h > pos and ' ' in tmp:
-												tmp = cutMe(tmp.rstrip(' ')) 
-												self.testSizeLabel.setText(tmp)
-												h = self.testSizeLabel.calculateSize().width()
-										self.instance.writeText(eRect(self.timeWidth, y, pos, self.lineHeight), self.fcolor, self.bcolor, self.used_font, tmp, RT_HALIGN_LEFT)
+										if pos:
+											from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
+											def measure(text):
+												self.testSizeLabel.setText(text)
+												return self.testSizeLabel.calculateSize().width()
+											tmp = fit_title_to_width(tmp, pos, measure)
+											self.instance.writeText(eRect(self.timeWidth, y, pos, self.lineHeight), self.fcolor, self.bcolor, self.used_font, tmp, RT_HALIGN_LEFT)
 										y += self.lineHeight+2
 										if self.numDescLines > 0: 
 											tmp = ""
