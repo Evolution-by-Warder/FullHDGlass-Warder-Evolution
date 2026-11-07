@@ -22,7 +22,7 @@ TARGETS = {
     "ChannelSelection-11": ("1288,742", "474,33"),
     "ChannelSelection-12": ("15,633", "690,33"),
     "ChannelSelection-13": ("225,540", "720,45"),
-    "ChannelSelection-14": ("15,678", "1395,195"),
+    "ChannelSelection-14": ("15,678", "1395,45"),
     "ChannelSelection-18": ("225,540", "720,45"),
 }
 
