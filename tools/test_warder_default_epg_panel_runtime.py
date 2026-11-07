@@ -60,6 +60,10 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
                          str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
             self.assertEqual(len(output), 1)
+            # Reapplying the runtime customization must not stack overlays.
+            self.assertEqual(scope["cChannelsel"](), "c")
+            self.assertEqual(len(output), 2)
+            self.assertEqual(output[-1].count('render="WarderChannelEpgClip"'), 1)
             changed = output[0]
 
         original_screen = original.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
@@ -67,6 +71,8 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('position="1150,455"', changed_screen)
         self.assertIn('size="685,224"', changed_screen)
         self.assertIn('warderWholeLineScroll="1"', changed_screen)
+        self.assertEqual(changed_screen.count('render="WarderChannelEpgClip"'), 1)
+        self.assertIn('position="60,96" size="1065,842"', changed_screen)
         self.assertIn('position="1150,695" size="685,226"', changed_screen)
         self.assertNotIn('size="685,240"', changed_screen)
         self.assertNotIn('position="1150,685" size="685,236"', changed_screen)
