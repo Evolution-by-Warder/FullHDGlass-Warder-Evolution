@@ -47,7 +47,9 @@ class WarderPrimeTime(VariableText, Renderer):
                 return
             result = prime_time_event(self._cache, service, time(), hour, minute)
         except (AttributeError, RuntimeError, TypeError, ValueError):
-            result = None
+            self.text = ""
+            self.instance.hide()
+            return
         self.text = "Prime Time %02d:%02d: %s" % (hour, minute, result[1]) if result else (
             "Prime Time %02d:%02d: EPG unavailable" % (hour, minute))
         self.instance.show()
