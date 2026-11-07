@@ -98,7 +98,11 @@ class LayoutTests(unittest.TestCase):
         base = ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer'
         for name in ('g17ShowExtraEpg.py', 'g17ShowExtEpg.py'):
             renderer = (base / name).read_text(encoding='utf-8')
-            self.assertIn('service = None\n\t\t\t\ttry:\n\t\t\t\t\tservice = self.source.service', renderer, name)
+            self.assertIn('service = None', renderer, name)
+            self.assertIn('service = self.source.service', renderer, name)
+        extra = (base / 'g17ShowExtraEpg.py').read_text(encoding='utf-8')
+        self.assertIn('if self.playingServiceReference:', extra)
+        self.assertIn('getCurrentlyPlayingServiceReference()', extra)
 
     def test_prime_time_renderer_hides_invalid_source_and_clear(self):
         renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py').read_text(encoding='utf-8')
