@@ -2868,10 +2868,12 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		r = open(SKINXML,"r")
 		ena = False
 		in_default_channel_screen = False
+		has_clipped_events = False
 		for line in r.readlines():
 			if line.__contains__('<screen name="ChannelSelection"'):
 				ena = True
 				in_default_channel_screen = True
+				has_clipped_events = False
 			# Receiver QA: the default description ended at Y=695 while
 			# the following EPG rows began at Y=685. Keep a visible gap,
 			# without changing the approved source skin.xml or user fonts.
@@ -2890,7 +2892,11 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				if ENA_P_CH and not 'progressBarWidth="90"' in line:
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
+			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
+				has_clipped_events = True
 			if in_default_channel_screen and '</screen>' in line:
+				if not has_clipped_events:
+					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" transparent="1" />\\n'
 				in_default_channel_screen = None
 			allLines += line
 		r.close()
