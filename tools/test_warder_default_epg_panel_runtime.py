@@ -144,8 +144,13 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertEqual(BASE.read_text(encoding="utf-8"), original)
         self.assertEqual(original_screen.count('font="Prive4;25"'),
                          changed_screen.count('font="Prive4;25"'))
-        self.assertEqual(original_screen.count('font="Prive4;26"'),
-                         changed_screen.count('font="Prive4;26"'))
+        # Ignore only the intentionally injected Prime Time footer font.
+        # Existing user-configurable font declarations must stay intact.
+        old_font_widgets = re.findall(r'<widget\\b[^>]*>', original_screen)
+        new_font_widgets = [tag for tag in re.findall(r'<widget\\b[^>]*>', changed_screen)
+                            if 'render="WarderPrimeTime"' not in tag]
+        self.assertEqual(sum('font="Prive4;26"' in tag for tag in old_font_widgets),
+                         sum('font="Prive4;26"' in tag for tag in new_font_widgets))
         # cChannelsel also adds existing margins to other ChannelSelection
         # variants; compare only unrelated menus for unintended changes.
         pattern = re.compile(r'<screen\\b[^>]*name="([^"]+)"[^>]*>.*?</screen>', re.S)
