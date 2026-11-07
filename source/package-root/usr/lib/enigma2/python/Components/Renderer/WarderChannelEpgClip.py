@@ -37,6 +37,9 @@ class WarderChannelEpgClip(Renderer):
         self._opaque_black = parseColor("#00000000")
         self._progress_border = parseColor("#dfdfdf")
         self._diag_seen = set()
+        # Optional receiver-QA dimensions; absent in production XML.
+        self._warder_bar_width = None
+        self._warder_test_marker = False
 
     def _diag(self, key, details=""):
         # TEST59 only: bounded, local status events; never include EPG titles.
@@ -57,7 +60,14 @@ class WarderChannelEpgClip(Renderer):
             width, height = (int(v) for v in size.split(","))
             if width > 0 and height > 0:
                 instance.setSize(eSize(width, height))
-        self._diag("canvas_created", "allocated=%s" % bool(size))
+        attrs = dict(self.skinAttributes or [])
+        try:
+            self._warder_bar_width = max(1, int(attrs["warderProgressWidth"])) if "warderProgressWidth" in attrs else None
+        except (ValueError, TypeError):
+            self._warder_bar_width = None
+        self._warder_test_marker = attrs.get("warderTestMarker") == "1"
+        self._diag("canvas_created", "allocated=%s barOverride=%s marker=%s" %
+                   (bool(size), self._warder_bar_width, self._warder_test_marker))
         self._label = eLabel(instance)
         # Measure actual glyph widths with a large, non-wrapping label.
         # A zero-sized helper could silently report false-fitting long text.
@@ -184,7 +194,11 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_geometry_invalid", "%d,%d,%d" % (width, height, row_height))
             return False
         # The native progressbar remains at the far-right edge.
-        bar_left = width - int(component.listMarginRight) - int(component.progressBarWidth)
+        # Image-specific progress mode can allocate a wider native bar than
+        # ServiceListLegacy.progressBarWidth reports. A receiver-scoped
+        # override comes from this overlay's own XML attributes.
+        bar_width = self._warder_bar_width or int(component.progressBarWidth)
+        bar_left = width - int(component.listMarginRight) - bar_width
         available_rows = min(len(rows) - top, (height + row_height - 1) // row_height)
         if available_rows < 0 or bar_left < 100:
             self._diag("native_bar_invalid", "%d,%d" % (bar_left, available_rows))
@@ -224,7 +238,8 @@ class WarderChannelEpgClip(Renderer):
         if not drawing:
             self._diag("native_no_fitted_rows", "rows=%d top=%d visible=%d" % (len(rows), top, available_rows))
             return False
-        self._diag("native_rows_ready", "visible=%d fitted=%d width=%d bar=%d" % (available_rows, len(drawing), width, bar_left))
+        self._diag("native_rows_ready", "visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
+                   (available_rows, len(drawing), width, bar_left, bar_width))
         signature = (top, selected, row_height, width, height, tuple(drawing))
         if signature == self._last:
             return True
@@ -234,7 +249,7 @@ class WarderChannelEpgClip(Renderer):
         for x, y, w, h, value, is_selected, progress in drawing:
             # Repaint the text field and the bar above native C++ rendering,
             # regardless of whether the image accepts our native font change.
-            mask_width = max(0, bar_left + int(component.progressBarWidth) - x)
+            mask_width = max(0, bar_left + bar_width - x)
             if mask_width:
                 self.instance.fillRect(eRect(x, y + 2, mask_width, h - 4),
                                        self._opaque_black)
@@ -242,7 +257,11 @@ class WarderChannelEpgClip(Renderer):
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
             if progress is not None:
-                self._draw_progress(bar_left, y, int(component.progressBarWidth), h, progress)
+                self._draw_progress(bar_left, y, bar_width, h, progress)
+        # Receiver visual probe: 16x6 magenta marker at the list's top-left.
+        # Enabled ONLY through a diagnostic skin attribute in TEST60.
+        if self._warder_test_marker:
+            self.instance.fillRect(eRect(0, 0, 16, 6), parseColor("#ff00ff"))
         self._last = signature
         self._diag("canvas_painted")
         return True
