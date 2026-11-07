@@ -14,9 +14,9 @@ EPGSelectionMulti, MovieSelectionSP, ChannelSelection_summary and other speciali
 
 ## Prime Time integration
 
-`g17ShowExtraEpg` reused in 24 ChannelSelection variants (including base); `g17ShowExtEpg` in 21, yielding **45 of 58** current display paths. Thirteen variants still require individual collision-free placement or a safely shared presenter: `ChannelSelection-18, -14, -13, -12, -11, -10, -9, -2, -3, -4, -6, -8, -1`.
+`g17ShowExtraEpg` reused in 24 ChannelSelection variants (including base); `g17ShowExtEpg` in 21. The last 13 variants now use a gated original EPG text cell and an identically positioned `WarderPrimeTime` label: `ChannelSelection-18, -14, -13, -12, -11, -10, -9, -2, -3, -4, -6, -8, -1`. **All 58/58 have source-level candidate display paths.** The last 13 are checked by `tools/test_warder_primetime_placements.py`. This is not proof of correct live painting.
 
-The default is OFF and the time is user-configurable, initialized to 20:25. The new 45 render paths insert one row only when enabled, borrowing an existing EPG row. Receiver behavior remains unverified.
+The default is OFF and the time is user-configurable, initialized to 20:25. The 45 existing-renderer paths insert one row only when enabled, borrowing an existing EPG row; the other 13 reuse an original EPG cell by hiding its old label only while Prime Time is enabled. Receiver behavior remains unverified.
 
 ## Acceptance checks before release
 
