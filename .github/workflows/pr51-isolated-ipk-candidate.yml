@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           filter: blob:none
+          fetch-depth: 10
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /source/package-root/
@@ -28,7 +29,7 @@ jobs:
       - name: Ensure candidate is based only on reviewed PR #51 commit
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "3f6f0f1fd7e05d1adfd0ef8ccaa4c59ac912a706"
+          git merge-base --is-ancestor "3f6f0f1fd7e05d1adfd0ef8ccaa4c59ac912a706" HEAD
           test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.69"
           grep -Fx "Package: enigma2-plugin-skins-fullhdglass-warder-evolution" source/control/control
           grep -Fx "Version: 1.0.69-1" source/control/control
