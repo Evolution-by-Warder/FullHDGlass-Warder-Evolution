@@ -56,6 +56,13 @@ def stage_skin(skin_path, progress_width=None, marker=False):
     if marker:
         overlay = overlay.replace('transparent="1"', 'warderTestMarker="1" transparent="1"')
     screen = screen.replace('</screen>', overlay + '\n  </screen>', 1)
+    if marker:
+        # Independent native widget to distinguish an invisible eCanvas
+        # from failed staging or unexpected widget composition order.
+        native_probe = ('    <eLabel position="1000,102" size="44,12" '
+                        'backgroundColor="#00ff00" zPosition="20" '
+                        'transparent="0" />')
+        screen = screen.replace('</screen>', native_probe + '\n  </screen>', 1)
     content = content[:match.start()] + screen + content[match.end():]
     skin_path.write_text(content, encoding="utf-8")
     return content
