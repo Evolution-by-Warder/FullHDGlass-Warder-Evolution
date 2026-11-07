@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - work/channelselection-primetime-overlap-20261107
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/pr51-test64-artifact-only.yml'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
+      - 'tools/test_warder_channel_epg_clip.py'
 
 permissions:
   contents: read
