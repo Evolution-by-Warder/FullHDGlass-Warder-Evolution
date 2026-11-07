@@ -12,7 +12,7 @@ def target_timestamp(now, hour=20, minute=25):
         raise ValueError("Invalid prime-time clock")
     local = datetime.fromtimestamp(now)
     target = local.replace(hour=hour, minute=minute, second=0, microsecond=0)
-    if local >= target:
+    if local > target:
         target = (local + timedelta(days=1)).replace(
             hour=hour, minute=minute, second=0, microsecond=0)
     return int(target.timestamp())
