@@ -128,6 +128,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('warderWholeLineScroll="1"', changed_screen)
         self.assertEqual(changed_screen.count('render="WarderChannelEpgClip"'), 1)
         self.assertIn('position="60,96" size="1065,842"', changed_screen)
+        self.assertIn('warderProgressWidth="90"', changed_screen)
         self.assertIn('position="1150,695" size="685,226"', changed_screen)
         # Default list should offer at most 6; larger fonts may fit fewer.
         self.assertIn('numEvents="6"', changed_screen)
