@@ -65,6 +65,7 @@ class WarderChannelEpgClip(Renderer):
         self._native_hidden = False
         self._last = None
         self._scroll_started = time()
+        self._scroll_selected = None
         # SWIG bindings do not universally accept None for gFont*; a 1px
         # temporary font is ABI-compatible and keeps original user fonts
         # untouched, restored when the overlay is removed.
@@ -125,6 +126,7 @@ class WarderChannelEpgClip(Renderer):
         self._label.hide()
         self._last = None
         self._scroll_started = time()
+        self._scroll_selected = None
         self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
@@ -240,6 +242,11 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
+        # A new focused service starts its own scroll at the beginning.
+        if selected != getattr(self, "_scroll_selected", None):
+            self._scroll_selected = selected
+            self._scroll_started = time()
+            self._last = None
         width = component.instance.size().width()
         height = component.instance.size().height()
         row_height = int(component.ItemHeight)
@@ -290,7 +297,10 @@ class WarderChannelEpgClip(Renderer):
             # Pause at both ends; replay the whole title from its beginning.
             # 2px per 55ms virtual motion, with safe glyph-aligned painting.
             journey = overflow + 220
-            position = min(overflow, max(0, (pixel_clock % journey) - 110)) if overflow else 0
+            # Only the focused row animates; every other event remains
+            # ellipsized and stable even while the timer refreshes the canvas.
+            position = (min(overflow, max(0, (pixel_clock % journey) - 110))
+                        if overflow and index == selected else 0)
             fitted = scroll_title_window(title, remaining, measure, position)
             if fitted:
                 drawing.append((start, row_index * row_height, remaining, row_height,
