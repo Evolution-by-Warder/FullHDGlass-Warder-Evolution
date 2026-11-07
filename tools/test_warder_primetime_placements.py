@@ -94,6 +94,12 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('if config.plugins.warderEvolutionPrimeTime.enabled.value:', tick)
         self.assertLess(tick.index('if self.warderPrimeTimeGate:'), tick.index('self.posIdx += 1'))
 
+    def test_epg_renderers_initialize_optional_service_reference(self):
+        base = ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer'
+        for name in ('g17ShowExtraEpg.py', 'g17ShowExtEpg.py'):
+            renderer = (base / name).read_text(encoding='utf-8')
+            self.assertIn('service = None\\n\\t\\t\\t\\ttry:\\n\\t\\t\\t\\t\\tservice = self.source.service', renderer, name)
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
