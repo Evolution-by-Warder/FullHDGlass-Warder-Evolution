@@ -384,6 +384,37 @@ class ClippedEventTests(unittest.TestCase):
         self.assertFalse(target._native_hidden)
         self.assertFalse(any(call[0] == "fill" for call in target.instance.calls))
 
+    def test_restore_native_font_when_overlay_is_removed(self):
+        calls = []
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2,
+                                    setElementFont=lambda *args: calls.append(args)),
+            ServiceInfoFont="original-user-font")
+        target = types.SimpleNamespace(
+            _component=component, _native_hidden=True, _diag=lambda *args: None)
+        method("_restore_native")(target)
+        self.assertEqual(calls, [(2, "original-user-font")])
+        self.assertFalse(target._native_hidden)
+        self.assertIsNone(target._component)
+        method("_restore_native")(target)
+        self.assertEqual(len(calls), 1)
+
+    def test_restore_native_font_is_safe_if_component_disappears(self):
+        target = types.SimpleNamespace(
+            _component=None, _native_hidden=True, _diag=lambda *args: None)
+        method("_restore_native")(target)
+        self.assertFalse(target._native_hidden)
+        self.assertIsNone(target._component)
+
+    def test_pre_widget_remove_stops_timer_and_restores_native(self):
+        calls = []
+        target = types.SimpleNamespace(
+            _timer=types.SimpleNamespace(stop=lambda: calls.append("stop")),
+            _restore_native=lambda: calls.append("restore"), _label=object())
+        method("preWidgetRemove")(target, object())
+        self.assertEqual(calls, ["stop", "restore"])
+        self.assertIsNone(target._label)
+
     def test_rejected_null_font_is_not_retried_each_timer_tick(self):
         attempts = []
         def rejected(*args):
