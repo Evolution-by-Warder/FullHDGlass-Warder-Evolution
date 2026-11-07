@@ -8,6 +8,7 @@ on:
       - 'tools/test_warder_native_progressbar_independence.py'
       - 'tools/apply-native-progressbar-event-fix.py'
       - 'tools/check-openpli-native-progressbar-event.py'
+      - 'tools/pr51-receiver-build-provenance-readonly.sh'
       - 'compatibility/native-enigma2-progressbar/**'
       - 'tools/test_warder_epg_text_fit.py'
       - 'tools/test_warder_pr51_clip_staging.py'
@@ -35,6 +36,7 @@ jobs:
           python-version: '3.11'
       - name: Syntax and isolated regression suite
         run: |
+          sh -n tools/pr51-receiver-build-provenance-readonly.sh
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
           python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
           python -m unittest discover -s tools -p 'test_warder_native_progressbar_independence.py' -v
