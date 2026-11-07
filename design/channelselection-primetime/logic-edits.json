@@ -1,0 +1,42 @@
+[
+  {
+    "scope": "module",
+    "after": "config.plugins.warderEvolutionPrimeTime = ConfigSubsection()",
+    "before": ""
+  },
+  {
+    "scope": "module",
+    "after": "config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)",
+    "before": ""
+  },
+  {
+    "scope": "module",
+    "after": "config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=\":\", limits=[(0, 23), (0, 59)], default=[20, 25])",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:\n    line = line.replace('/>', ' fieldMargins=\"26\" />')",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.chckSetup",
+    "after": "if t is config.plugins.warderEvolutionPrimeTime.enabled:\n    self.runSetup()\n    return",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.runSetup",
+    "after": "if hasattr(config.plugins, \"warderEvolutionPrimeTime\"):\n    self.list.append(getConfigListEntry(S0 % _(\"Show Prime Time for selected channel\"), config.plugins.warderEvolutionPrimeTime.enabled))\n    if config.plugins.warderEvolutionPrimeTime.enabled.value:\n        self.list.append(getConfigListEntry(S0 % _(\"Prime Time clock\"), config.plugins.warderEvolutionPrimeTime.clock))",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.saving",
+    "after": "try:\n    config.plugins.warderEvolutionPrimeTime.enabled.save()\n    config.plugins.warderEvolutionPrimeTime.clock.save()\nexcept AttributeError:\n    pass",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.exitNow",
+    "after": "try:\n    config.plugins.warderEvolutionPrimeTime.enabled.cancel()\n    config.plugins.warderEvolutionPrimeTime.clock.cancel()\nexcept AttributeError:\n    pass",
+    "before": ""
+  }
+]
