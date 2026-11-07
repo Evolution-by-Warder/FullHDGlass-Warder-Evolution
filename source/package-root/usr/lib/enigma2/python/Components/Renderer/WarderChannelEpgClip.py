@@ -114,7 +114,7 @@ class WarderChannelEpgClip(Renderer):
             if duration <= 0:
                 return None
             elapsed = time() - int(event.getBeginTime())
-            return max(0.0, min(1.0, elapsed / float(duration)))
+            return int(max(0.0, min(1.0, elapsed / float(duration))) * 100) / 100.0
         except (AttributeError, RuntimeError, TypeError, ValueError, ZeroDivisionError):
             return None
 
