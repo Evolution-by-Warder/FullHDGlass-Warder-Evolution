@@ -37,7 +37,8 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.fillTimer.timeout.get().append(self.__fillText)
 		self.backText = ""
 		self.vvv = ""
-		self.testSizeLabel = None 
+		self.testSizeLabel = None
+		self.warderPrimeTimeGate = False 
     		
 	def applySkin(self, desktop, parent):
 		attribs = [ ]
@@ -52,6 +53,8 @@ class g17EmptyEpg(VariableText, Renderer):
 				attribs.append((attrib,value))
 			elif attrib == "readTagInfo":
 				self.readTag = value
+			elif attrib == "warderPrimeTimeGate":
+				self.warderPrimeTimeGate = value == "1"
 			else:
 				attribs.append((attrib,value))
 		self.skinAttributes = attribs
@@ -84,6 +87,18 @@ class g17EmptyEpg(VariableText, Renderer):
 			self.work()
 
 	def work(self):
+		# Hide a gated EPG cell *without* displaying its fallback or the
+		# legacy typewriter animation while optional Prime Time owns it.
+		if self.warderPrimeTimeGate:
+			try:
+				if config.plugins.warderEvolutionPrimeTime.enabled.value:
+					if self.fillTimer.isActive():
+						self.fillTimer.stop()
+					self.lastText = self.backText = ""
+					self.text = ""
+					return
+			except AttributeError:
+				pass
 		tmp = self.tt
 		if self.readTag and self.tt == "":
 			if self.__tagTimer.isActive():
