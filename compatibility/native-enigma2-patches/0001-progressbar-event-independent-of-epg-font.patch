@@ -10,7 +10,7 @@ changes to percentage/minute text modes.
 
 --- a/lib/service/listboxservice.cpp
 +++ b/lib/service/listboxservice.cpp
-@@
+@@ -1000,3 +1000,9 @@
  		eRect area = m_element_position[celServiceEventProgressbar];
 +		// A progressbar is independent of the optional EPG-description font.
 +		// If celServiceInfo was disabled, evt has not been fetched by the
