@@ -341,7 +341,7 @@ class WarderChannelEpgClip(Renderer):
         if mode in ("barleft", "barright"):
             bar_x = (int(component.listMarginLeft) if mode == "barleft"
                      else width - int(component.listMarginRight) - bar_width)
-            bar_h = max(3, min(9, row_height // 5))
+            bar_h = 10
             for row_index in range(available_rows):
                 ref = rows[top + row_index]
                 fraction = self._progress_fraction(center, ref)
@@ -368,15 +368,33 @@ class WarderChannelEpgClip(Renderer):
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
         if progress_bars:
-            background = parseColor("#ff555555")
-            foreground = highlighted
+            # Restore the original Warder progressbar design from the
+            # pre-TEST69 renderer, without its former opaque text mask.
+            border = parseColor("#dfdfdf")
             for bx, by, bw, bh, fraction in progress_bars:
-                # eCanvas has transparent backing; limit paint strictly to the
-                # native bar column and never cover a picon or EPG title.
-                self.instance.fillRect(eRect(bx, by, bw, bh), background)
-                done = max(0, min(bw, int(bw * fraction)))
-                if done:
-                    self.instance.fillRect(eRect(bx, by, done, bh), foreground)
+                if bw <= 4 or bh <= 4:
+                    continue
+                self.instance.fillRect(eRect(bx, by, bw, 2), border)
+                self.instance.fillRect(eRect(bx, by + bh - 2, bw, 2), border)
+                self.instance.fillRect(eRect(bx, by + 2, 2, bh - 4), border)
+                self.instance.fillRect(eRect(bx + bw - 2, by + 2, 2, bh - 4), border)
+                inner_width = bw - 4
+                filled = int(inner_width * fraction)
+                for segment in range(8):
+                    a = filled * segment // 8
+                    z = filled * (segment + 1) // 8
+                    if z <= a:
+                        continue
+                    t = ((a + z) / 2.0) / max(1, inner_width)
+                    if t < .55:
+                        u = t / .55
+                        rgb = (int(53 + 179 * u), int(177 + 23 * u), int(63 - 14 * u))
+                    else:
+                        u = (t - .55) / .45
+                        rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
+                    self.instance.fillRect(
+                        eRect(bx + 2 + a, by + 2, z - a, bh - 4),
+                        parseColor("#%02x%02x%02x" % rgb))
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
