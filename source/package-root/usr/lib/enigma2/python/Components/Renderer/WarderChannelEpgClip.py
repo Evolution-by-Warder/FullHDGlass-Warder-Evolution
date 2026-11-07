@@ -334,12 +334,27 @@ class WarderChannelEpgClip(Renderer):
             if fitted:
                 drawing.append((start, row_index * row_height, remaining, row_height,
                                 fitted, index == selected, self._progress_fraction(center, ref)))
+        # On stock OpenATV, disabling native EPG text also prevents the native
+        # C++ progressbar from receiving its event. Draw its real elapsed
+        # fraction in the reserved bar cell: no C++ patch or black mask.
+        progress_bars = []
+        if mode in ("barleft", "barright"):
+            bar_x = (int(component.listMarginLeft) if mode == "barleft"
+                     else width - int(component.listMarginRight) - bar_width)
+            bar_h = max(3, min(9, row_height // 5))
+            for row_index in range(available_rows):
+                ref = rows[top + row_index]
+                fraction = self._progress_fraction(center, ref)
+                if fraction is None:
+                    continue
+                progress_bars.append((bar_x, row_index * row_height + (row_height - bar_h) // 2,
+                                      bar_width, bar_h, fraction))
         if not drawing:
             self._diag("native_no_fitted_rows", "rows=%d top=%d visible=%d" % (len(rows), top, available_rows))
             return False
         self._diag("native_rows_ready", "mode=%s visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
                    (mode, available_rows, len(drawing), width, bar_left, bar_width))
-        signature = (mode, top, selected, row_height, width, height, tuple(drawing))
+        signature = (mode, top, selected, row_height, width, height, tuple(drawing), tuple(progress_bars))
         if signature == self._last:
             return True
         normal = parseColor(config.plugins.setupGlass17.par109.value)
@@ -352,6 +367,16 @@ class WarderChannelEpgClip(Renderer):
             self.instance.writeText(eRect(x, y, w, h), highlighted if is_selected else normal,
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
+        if progress_bars:
+            background = parseColor("#ff555555")
+            foreground = highlighted
+            for bx, by, bw, bh, fraction in progress_bars:
+                # eCanvas has transparent backing; limit paint strictly to the
+                # native bar column and never cover a picon or EPG title.
+                self.instance.fillRect(eRect(bx, by, bw, bh), background)
+                done = max(0, min(bw, int(bw * fraction)))
+                if done:
+                    self.instance.fillRect(eRect(bx, by, done, bh), foreground)
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
@@ -380,25 +405,6 @@ class WarderChannelEpgClip(Renderer):
             # Unsupported views must remain completely native; never
             # toggle celServiceInfo on every timer tick for those modes.
             if self._progress_mode() is None:
-                had_overlay = self._native_hidden or self._last is not None
-                if had_overlay:
-                    self.instance.clear(self._transparent)
-                self._last = None
-                self._restore_native()
-                if had_overlay:
-                    try:
-                        component.instance.invalidate()
-                    except (AttributeError, TypeError, RuntimeError):
-                        pass
-                return
-            # On stock OpenATV, C++ progressbar painting needs an event
-            # fetched by the native EPG text cell. Nulling that font makes
-            # both left/right bars disappear (receiver TEST70). We cannot
-            # require every Enigma2 image to carry our optional C++ patch.
-            # Fail open for bar modes: preserve the complete native row,
-            # including its native progressbar, with no replacement drawing.
-            current_mode = self._progress_mode()
-            if current_mode in ("barleft", "barright"):
                 had_overlay = self._native_hidden or self._last is not None
                 if had_overlay:
                     self.instance.clear(self._transparent)
