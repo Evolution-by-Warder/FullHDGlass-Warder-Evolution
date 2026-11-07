@@ -164,7 +164,9 @@ class ClippedEventTests(unittest.TestCase):
 
     def test_renderer_is_fail_open_and_default_only(self):
         content = RENDERER.read_text(encoding="utf-8")
-        self.assertIn("component.l.setElementFont(component.l.celServiceInfo, None)", content)
+        self.assertIn("component.l.setElementFont(component.l.celServiceInfo, self._quiet_font)", content)
+        self.assertIn('self._quiet_font = gFont("Regular", 1)', content)
+        self.assertNotIn("setElementFont(component.l.celServiceInfo, None)", content)
         self.assertIn("self._restore_native()", content)
         self.assertIn("component.instance.invalidate()", content)
         self.assertIn("self._label.setNoWrap(1)", content)
