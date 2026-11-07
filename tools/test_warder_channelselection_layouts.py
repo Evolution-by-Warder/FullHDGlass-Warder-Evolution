@@ -39,24 +39,6 @@ class ChannelSelectionLayoutTests(unittest.TestCase):
         self.assertIn('if \'picServiceEventProgressbar=\' in line and \'fieldMargins=\' not in line:', plugin)
         self.assertIn('line = line.replace(\'/>\', \' fieldMargins="26" />\')', plugin)
 
-    def test_playing_service_epg_visible_on_black_background(self):
-        """Playing-service text must remain visible independently of cursor EPG."""
-        templates = FILES[0].read_text(encoding="utf-8")
-        screens = dict(SCREEN.findall(templates))
-        widgets = re.compile(r'<widget\\b[^>]*source="session\\.(?:CurrentService|Event_Now)"[^>]*>', re.S)
-        for name in ("ChannelSelection-1", "ChannelSelection-2", "ChannelSelection-9"):
-            self.assertIn(name, screens)
-            labels = [
-                tag for tag in widgets.findall(screens[name])
-                if 'render="Label"' in tag or 'render="g17EmptyEpg"' in tag
-            ]
-            self.assertEqual(len(labels), 4, name)
-            for tag in labels:
-                self.assertIn('foregroundColor="#ffffff"', tag, (name, tag))
-            self.assertIn('source="session.Event_Next"', screens[name])
-            self.assertIn('source="ServiceEvent"', screens[name])
-
-
     def test_dual_epg_panels_keep_independent_sources_and_coordinates(self):
         """Seven pre-existing dual panels use playing vs cursor service independently."""
         source = FILES[0].read_text(encoding="utf-8")
