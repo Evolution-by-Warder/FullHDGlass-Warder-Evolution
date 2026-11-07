@@ -1,0 +1,118 @@
+name: PR51 TEST54 receiver candidate IPK (artifact only)
+
+on:
+  push:
+    branches:
+      - work/pr51-epg-scroll-test54-20261107
+
+permissions:
+  contents: read
+
+jobs:
+  build-isolated-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          fetch-depth: 10
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/package-root/
+            /source/control/
+            /tools/build-release-ipk.py
+            /tools/stage-pr51-clip-candidate.py
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ensure candidate is based only on reviewed PR #51 commit
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "3f743c30f59ef0be5922378bcd4a5344ea760304" HEAD
+          test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.69"
+          grep -Fx "Package: enigma2-plugin-skins-fullhdglass-warder-evolution" source/control/control
+          grep -Fx "Version: 1.0.69-1" source/control/control
+      - name: Build uniquely marked TEST candidate without modifying Git branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import gzip
+          import hashlib
+          import importlib.util
+          import io
+          from pathlib import Path
+          import shutil
+          import runpy
+          import subprocess
+          import tempfile
+          import tarfile
+
+          root = Path.cwd()
+          source = root / "source"
+          version = "1.0.69-test54"
+          package = "enigma2-plugin-skins-fullhdglass-warder-evolution"
+          outdir = root / "pr51-candidate"
+          outdir.mkdir(exist_ok=True)
+          with tempfile.TemporaryDirectory() as tmp:
+              tmp = Path(tmp)
+              payload = tmp / "payload"
+              control = tmp / "control"
+              shutil.copytree(source / "package-root", payload, symlinks=True)
+              shutil.copytree(source / "control", control, symlinks=True)
+              stage = runpy.run_path(str(root / "tools/stage-pr51-clip-candidate.py"))["stage_skin"]
+              stage(payload / "usr/share/enigma2/hd_glass17/skin.xml")
+              version_file = payload / "usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version"
+              version_file.write_text(version + "\n", encoding="utf-8")
+              control_file = control / "control"
+              metadata = control_file.read_text(encoding="utf-8")
+              assert metadata.count("Version: 1.0.69-1\n") == 1
+              metadata = metadata.replace("Version: 1.0.69-1\n", "Version: " + version + "-1\n", 1)
+              control_file.write_text(metadata, encoding="utf-8")
+              # Visible origin marker in the candidate payload, never written to main.
+              marker = payload / "usr/share/enigma2/hd_glass17/PR51-TEST-CANDIDATE.txt"
+              marker.write_text("PR51 EXPERIMENTAL TEST54. Source commit: 3f743c30f59ef0be5922378bcd4a5344ea760304\nNo automatic feed publication.\n", encoding="utf-8")
+              spec = importlib.util.spec_from_file_location("warder_release_builder", root / "tools/build-release-ipk.py")
+              builder = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(builder)
+              build = tmp / "build"
+              build.mkdir()
+              (build / "debian-binary").write_bytes(b"2.0\n")
+              builder.archive(control, build / "control.tar.gz")
+              builder.archive(payload, build / "data.tar.gz", payload=True)
+              target = outdir / (package + "_" + version + "_all.ipk")
+              subprocess.run(["ar", "rcsD", str(target), "debian-binary", "control.tar.gz", "data.tar.gz"], cwd=build, check=True)
+              digest = hashlib.sha256(target.read_bytes()).hexdigest()
+              target.with_suffix(".ipk.sha256").write_text(digest + "  " + target.name + "\n", encoding="utf-8")
+              entries = subprocess.check_output(["ar", "t", str(target)], text=True).splitlines()
+              assert entries == ["debian-binary", "control.tar.gz", "data.tar.gz"], entries
+              with tarfile.open(build / "control.tar.gz", "r:gz") as tar:
+                  metadata = tar.extractfile("./control").read().decode("utf-8")
+                  assert "Version: " + version + "-1\n" in metadata
+                  assert "Package: " + package + "\n" in metadata
+              with tarfile.open(build / "data.tar.gz", "r:gz") as tar:
+                  names = tar.getnames()
+                  assert "./usr/share/enigma2/hd_glass17/PR51-TEST-CANDIDATE.txt" in names
+                  assert "./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py" in names
+                  assert "./usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py" in names
+                  assert "./usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py" in names
+                  assert "./usr/share/enigma2/hd_glass17/skin.xml" in names
+                  assert "./usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py" in names
+                  skin_text = tar.extractfile("./usr/share/enigma2/hd_glass17/skin.xml").read().decode("utf-8")
+                  assert skin_text.count('render="WarderChannelEpgClip"') == 1
+                  assert 'warderWholeLineScroll="1"' in skin_text
+                  runtime = tar.extractfile("./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version").read().decode().strip()
+                  assert runtime == version
+              print("ISOLATED CANDIDATE SUCCESS", target.name, digest, flush=True)
+          PY
+      - name: Upload artifact for manual receiver QA only
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr51-TEST54-ONLY-3f743c30
+          path: |
+            pr51-candidate/*.ipk
+            pr51-candidate/*.sha256
+          if-no-files-found: error
+          retention-days: 14
