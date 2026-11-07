@@ -343,7 +343,7 @@ class ClippedEventTests(unittest.TestCase):
                 celServiceInfo=2, setElementFont=lambda *args: events.append(("font", args))),
             instance=types.SimpleNamespace(invalidate=lambda: events.append(("invalidate",))))
         target = types.SimpleNamespace(
-            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False,
+            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False, _native_disable_unsupported=False,
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
@@ -365,7 +365,7 @@ class ClippedEventTests(unittest.TestCase):
             l=types.SimpleNamespace(celServiceInfo=2, setElementFont=rejecting_font),
             instance=types.SimpleNamespace(invalidate=lambda: None))
         target = types.SimpleNamespace(
-            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False,
+            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False, _native_disable_unsupported=False,
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
@@ -377,6 +377,25 @@ class ClippedEventTests(unittest.TestCase):
         self.assertFalse(target._native_hidden)
         self.assertFalse(any(call[0] == "fill" for call in target.instance.calls))
 
+    def test_native_font_disable_is_reasserted_after_external_reset(self):
+        calls = []
+        component = types.SimpleNamespace(
+            l=types.SimpleNamespace(celServiceInfo=2,
+                                    setElementFont=lambda *args: calls.append(args)),
+            instance=types.SimpleNamespace(invalidate=lambda: calls.append("invalidate")))
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=component,
+            _native_hidden=True, _native_disable_unsupported=False,
+            _last=None, _transparent="clear",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None, _find_component=lambda: component,
+            _progress_mode=lambda: "barright",
+            _draw_rows=lambda c: True, _restore_native=lambda: None)
+        method("refresh")(target)
+        method("refresh")(target)
+        self.assertEqual(calls, [(2, None), (2, None)])
+        self.assertNotIn("invalidate", calls)
+
     def test_unsupported_indicator_mode_never_touches_native_font(self):
         calls = []
         component = types.SimpleNamespace(
@@ -384,7 +403,7 @@ class ClippedEventTests(unittest.TestCase):
                                     setElementFont=lambda *args: calls.append(args)),
             instance=types.SimpleNamespace(invalidate=lambda: calls.append("invalidate")))
         target = types.SimpleNamespace(
-            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False,
+            instance=Canvas(), _label=Label(), _component=component, _native_hidden=False, _native_disable_unsupported=False,
             _last=None, _transparent="clear",
             _timer=types.SimpleNamespace(start=lambda *args: None),
             _diag=lambda *args: None, _find_component=lambda: component,
@@ -398,7 +417,7 @@ class ClippedEventTests(unittest.TestCase):
     def test_refresh_error_handler_does_not_require_flush(self):
         import types
         renderer = types.SimpleNamespace(
-            instance=Canvas(), _label=Label(), _native_hidden=False,
+            instance=Canvas(), _label=Label(), _native_hidden=False, _native_disable_unsupported=False,
             _component=None, _transparent="#transparent", _timer=types.SimpleNamespace(
                 start=lambda *args: None),
             _diag=lambda *args: None,
