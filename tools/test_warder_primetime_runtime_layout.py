@@ -64,27 +64,29 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
         self.assertIn('size="685,224"', section)
         self.assertEqual(SKIN.read_bytes(), self.original)
 
-    def test_enabled_adds_dedicated_header_without_six_epg_overlap(self):
+    def test_enabled_adds_footer_below_six_epg_without_moving_description(self):
         section = self.run_layout(True)
-        self.check_approved_regions(section)
-        self.assertIn('render="WarderPrimeTime" position="1150,455" size="685,44"', section)
+        self.assertIn('render="WarderChannelEpgClip"', section)
+        self.assertIn('render="WarderPrimeTime" position="1150,898" size="685,38"', section)
+        self.assertIn('position="1150,695" size="685,194"', section)
+        self.assertIn('numEvents="6"', section)
         self.assertIn('render="g17MetrixHDRunningText"', section)
-        self.assertIn('position="1150,505"', section)
-        self.assertIn('size="685,174"', section)
-        # Header 455..499; description 505..679; six EPG rows start 695.
-        self.assertLess(455 + 44, 505)
-        self.assertLess(505 + 174, 695)
+        self.assertIn('position="1150,455"', section)
+        self.assertIn('size="685,224"', section)
+        self.assertLessEqual(695 + 194, 898)
+        self.assertLess(898 + 38, 943)
         self.assertEqual(SKIN.read_bytes(), self.original)
 
     def test_reopening_and_disabling_are_idempotent(self):
         first = self.run_layout(True)
         second = self.run_layout(True)
-        self.check_approved_regions(second)
+        self.assertIn('position="1150,695" size="685,194"', second)
         self.assertEqual(first, second)
         self.assertEqual(second.count('render="WarderPrimeTime"'), 1)
         reverted = self.run_layout(False)
         self.check_approved_regions(reverted)
         self.assertNotIn('render="WarderPrimeTime"', reverted)
+        self.assertIn('position="1150,695" size="685,226"', reverted)
         self.assertIn('position="1150,455"', reverted)
         self.assertIn('size="685,224"', reverted)
         self.assertEqual(SKIN.read_bytes(), self.original)
