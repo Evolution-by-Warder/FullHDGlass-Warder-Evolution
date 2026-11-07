@@ -100,6 +100,13 @@ class LayoutTests(unittest.TestCase):
             renderer = (base / name).read_text(encoding='utf-8')
             self.assertIn('service = None\n\t\t\t\ttry:\n\t\t\t\t\tservice = self.source.service', renderer, name)
 
+    def test_prime_time_renderer_hides_invalid_source_and_clear(self):
+        renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py').read_text(encoding='utf-8')
+        self.assertIn('if not enabled or what[0] == self.CHANGED_CLEAR:', renderer)
+        self.assertIn('if service is None:', renderer)
+        self.assertIn('eServiceReference.isMarker | eServiceReference.flagDirectory', renderer)
+        self.assertIn('except (AttributeError, RuntimeError, TypeError, ValueError):\\n            self.text = ""\\n            self.instance.hide()\\n            return', renderer)
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
