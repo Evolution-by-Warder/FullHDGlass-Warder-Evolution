@@ -82,9 +82,16 @@ class g17EmptyEpg(VariableText, Renderer):
 		self.changed((self.CHANGED_DEFAULT,))
 		
 	def changed(self, what):
-		if self.instance and what[0] != self.CHANGED_CLEAR:
-			self.tt = self.source.text
-			self.work()
+		if not self.instance:
+			return
+		if what[0] == self.CHANGED_CLEAR:
+			if self.fillTimer.isActive():
+				self.fillTimer.stop()
+			self.tt = self.lastText = self.backText = ""
+			self.text = ""
+			return
+		self.tt = self.source.text or ""
+		self.work()
 
 	def work(self):
 		# Hide a gated EPG cell *without* displaying its fallback or the
@@ -127,7 +134,7 @@ class g17EmptyEpg(VariableText, Renderer):
 				ena = True
 				try: ena = config.plugins.setupGlass17.par30.value
 				except: pass
-				if ena:
+				if ena and tmp:
 					self.text = "_"				
 					self.endPoint = len(self.backText)
 					self.posIdx = 0                    
