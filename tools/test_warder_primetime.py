@@ -2,7 +2,15 @@
 import datetime
 import unittest
 from unittest.mock import Mock
-from warderPrimeTime import prime_time_event, target_timestamp
+from importlib.util import module_from_spec, spec_from_file_location
+from pathlib import Path
+
+MODULE = Path(__file__).resolve().parents[1] / "source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py"
+spec = spec_from_file_location("warderPrimeTime", MODULE)
+warder = module_from_spec(spec)
+spec.loader.exec_module(warder)
+prime_time_event = warder.prime_time_event
+target_timestamp = warder.target_timestamp
 
 
 class PrimeTimeTests(unittest.TestCase):
