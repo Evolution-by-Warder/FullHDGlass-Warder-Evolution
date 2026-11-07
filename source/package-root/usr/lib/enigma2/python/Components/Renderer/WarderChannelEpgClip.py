@@ -14,6 +14,30 @@ from skin import parseColor
 from Plugins.Extensions.setupGlass17.warderEpgTextFit import fit_title_to_width
 
 
+def scroll_title_window(title, width, measure, pixel_offset):
+    """Return a width-bounded moving title window without painting into native cells.
+
+    A canvas text rectangle cannot safely extend past the event field: such an
+    extension would overwrite the native station name or progress bar. Scroll
+    at glyph boundaries while retaining a pixel-clock for consistent speed.
+    """
+    if not title or width <= 0:
+        return ""
+    if measure(title) <= width:
+        return title
+    if pixel_offset <= 0:
+        return fit_title_to_width(title, width, measure)
+    lo, hi = 0, len(title)
+    while lo < hi:
+        mid = (lo + hi + 1) // 2
+        if measure(title[:mid]) <= pixel_offset:
+            lo = mid
+        else:
+            hi = mid - 1
+    # The renderer draws exclusively inside the measured event rectangle.
+    return fit_title_to_width(title[lo:], width, measure)
+
+
 class WarderChannelEpgClip(Renderer):
     GUI_WIDGET = eCanvas
 
@@ -29,6 +53,7 @@ class WarderChannelEpgClip(Renderer):
         self._component = None
         self._native_hidden = False
         self._last = None
+        self._scroll_started = time()
         # SWIG bindings do not universally accept None for gFont*; a 1px
         # temporary font is ABI-compatible and keeps original user fonts
         # untouched, restored when the overlay is removed.
@@ -88,7 +113,8 @@ class WarderChannelEpgClip(Renderer):
         self._label.resize(eSize(4096, 120))
         self._label.hide()
         self._last = None
-        self._timer.start(250, True)
+        self._scroll_started = time()
+        self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
@@ -98,6 +124,7 @@ class WarderChannelEpgClip(Renderer):
     def changed(self, what):
         if self.instance:
             self._last = None
+            self._scroll_started = time()
             self.refresh()
 
     def _restore_native(self):
@@ -223,6 +250,8 @@ class WarderChannelEpgClip(Renderer):
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
         drawing = []
+        scroll_age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
+        pixel_clock = int(scroll_age * 1000.0 / 55.0) * 2
         for row_index in range(available_rows):
             index = top + row_index
             ref = rows[index]
@@ -246,7 +275,12 @@ class WarderChannelEpgClip(Renderer):
             def measure(text):
                 self._label.setText(text)
                 return self._label.calculateSize().width()
-            fitted = fit_title_to_width(title, remaining, measure)
+            overflow = max(0, measure(title) - remaining)
+            # Pause at both ends; replay the whole title from its beginning.
+            # 2px per 55ms virtual motion, with safe glyph-aligned painting.
+            journey = overflow + 220
+            position = min(overflow, max(0, (pixel_clock % journey) - 110)) if overflow else 0
+            fitted = scroll_title_window(title, remaining, measure, position)
             if fitted:
                 drawing.append((start, row_index * row_height, remaining, row_height,
                                 fitted, index == selected, self._progress_fraction(center, ref)))
@@ -329,4 +363,4 @@ class WarderChannelEpgClip(Renderer):
                 self.instance.clear(self._transparent)
         finally:
             if self.instance:
-                self._timer.start(250, True)
+                self._timer.start(55, True)
