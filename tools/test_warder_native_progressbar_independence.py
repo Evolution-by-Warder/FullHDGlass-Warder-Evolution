@@ -23,7 +23,7 @@ class NativeProgressbarIndependenceTests(unittest.TestCase):
             "\t\t{\n"
         )
         fixed = load_patch()(old)
-        self.assertIn("!evt && !m_element_font[celServiceEventProgressbar]", fixed)
+        self.assertIn("area.width() > 0 && !evt && isPlayable && service_info", fixed)
         self.assertIn("service_info->getEvent(*m_cursor, evt);", fixed)
         self.assertIn("if (area.width() > 0 && evt && !m_element_font[celServiceEventProgressbar])", fixed)
         self.assertEqual(fixed.count("getEvent(*m_cursor, evt)"), 1)
