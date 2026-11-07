@@ -4,6 +4,8 @@ on:
     branches: [fix/legacy-950-r12-migration-20261107]
     paths:
       - '.github/workflows/test-warder-1.0.71-migration.yml'
+      - 'source/control/preinst'
+      - 'tools/test-legacy-950-upgrade.py'
   workflow_dispatch:
 permissions:
   contents: write
