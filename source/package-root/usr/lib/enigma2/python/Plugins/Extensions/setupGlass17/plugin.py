@@ -2864,9 +2864,6 @@ def chckVolMute():
 def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 	try:
 		allLines = ""
-		# Prime Time is optional and belongs only to the active default
-		# ChannelSelection runtime copy. Never mutate the distributed skin XML.
-		prime_time_enabled = bool(config.plugins.warderEvolutionPrimeTime.enabled.value)
 		what = 'colorServiceDescription="'+config.plugins.setupGlass17.par109.value+'"'+' colorServiceDescriptionSelected="'+config.plugins.setupGlass17.par110.value+'"'+' foregroundColorSelected="'+config.plugins.setupGlass17.par111.value+'"'+' foregroundColor="'+config.plugins.setupGlass17.par117.value+'"' 
 		r = open(SKINXML,"r")
 		ena = False
@@ -2876,24 +2873,13 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				ena = True
 				in_default_channel_screen = True
 				has_clipped_events = False
-				has_prime_time = False
 			# Receiver QA: the default description ended at Y=695 while
 			# the following EPG rows began at Y=685. Keep a visible gap,
 			# without changing the approved source skin.xml or user fonts.
 			if in_default_channel_screen and 'render="g17MetrixHDRunningText"' in line and 'position="1150,455"' in line:
-				if prime_time_enabled:
-					# Reserve 44px above the extended description; the approved
-					# six-event EPG list below Y=695 remains byte-identical.
-					line = line.replace('position="1150,455"', 'position="1150,505"')
-					line = line.replace('size="685,240"', 'size="685,174"')
-				else:
-					line = line.replace('size="685,240"', 'size="685,224"')
+				line = line.replace('size="685,240"', 'size="685,224"')
 				if 'warderWholeLineScroll=' not in line:
 					line = line.replace('render="g17MetrixHDRunningText"', 'render="g17MetrixHDRunningText" warderWholeLineScroll="1"')
-			# Reopening this screen must also undo an earlier enabled layout.
-			if in_default_channel_screen and 'render="g17MetrixHDRunningText"' in line and 'position="1150,505"' in line and not prime_time_enabled:
-				line = line.replace('position="1150,505"', 'position="1150,455"')
-				line = line.replace('size="685,174"', 'size="685,224"')
 			if in_default_channel_screen and 'render="g17ShowExtraEpg"' in line and 'position="1150,685"' in line:
 				line = line.replace('position="1150,685" size="685,236"', 'position="1150,695" size="685,226"')
 				# Six upcoming programmes at most; the renderer's height guard
@@ -2908,15 +2894,9 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 				if ENA_P_CH and not 'progressBarWidth="90"' in line:
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
-			if in_default_channel_screen and 'render="WarderPrimeTime"' in line:
-				if not prime_time_enabled:
-					continue
-				has_prime_time = True
 			if in_default_channel_screen and 'render="WarderChannelEpgClip"' in line:
 				has_clipped_events = True
 			if in_default_channel_screen and '</screen>' in line:
-				if prime_time_enabled and not has_prime_time:
-					allLines += '    <widget source="ServiceEvent" render="WarderPrimeTime" position="1150,455" size="685,44" font="Prive4;26" halign="left" valign="center" foregroundColor="#6cbcf0" zPosition="2" transparent="1" />\n'
 				if not has_clipped_events:
 					allLines += '    <widget source="ServiceEvent" render="WarderChannelEpgClip" position="60,96" size="1065,842" zPosition="4" warderProgressWidth="90" alphaTest="blend" transparent="1" />\n'
 				in_default_channel_screen = None
