@@ -18,6 +18,17 @@ def load_stager():
 
 
 class StagingTests(unittest.TestCase):
+    def test_opt_in_receiver_progress_geometry_and_marker_are_isolated(self):
+        original = BASE.read_text(encoding="utf-8")
+        with TemporaryDirectory() as directory:
+            target = Path(directory) / "skin.xml"
+            target.write_text(original, encoding="utf-8")
+            changed = load_stager()(target, progress_width=90, marker=True)
+            self.assertIn('warderProgressWidth="90"', changed)
+            self.assertIn('warderTestMarker="1"', changed)
+            self.assertEqual(changed.count('render="WarderChannelEpgClip"'), 1)
+        self.assertEqual(BASE.read_text(encoding="utf-8"), original)
+
     def test_default_screen_only_and_no_font_modification(self):
         original = BASE.read_text(encoding="utf-8")
         with TemporaryDirectory() as directory:
