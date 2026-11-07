@@ -378,13 +378,17 @@ class WarderChannelEpgClip(Renderer):
                 # Mode can change while ChannelSelection stays open.
                 # Remove old right-hand canvas bars before restoring
                 # native text; otherwise a ghost bar remains on screen.
-                self.instance.clear(self._transparent)
+                had_overlay = self._native_hidden or self._last is not None
+                if had_overlay:
+                    self.instance.clear(self._transparent)
                 self._last = None
                 self._restore_native()
-                try:
-                    component.instance.invalidate()
-                except (AttributeError, TypeError, RuntimeError):
-                    pass
+                # Invalidate once on mode transition, never at every 55ms tick.
+                if had_overlay:
+                    try:
+                        component.instance.invalidate()
+                    except (AttributeError, TypeError, RuntimeError):
+                        pass
                 return
             if not self._native_hidden:
                 try:
