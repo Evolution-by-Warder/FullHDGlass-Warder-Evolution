@@ -2086,7 +2086,7 @@
 			<convert type="g17ServiceNameEvent">ExtendedDescriptionEvent</convert>
 		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
 </widget>
-    <widget source="ServiceEvent" render="WarderPrimeTime" position="15,678" size="1395,195" font="Prive4;40" foregroundColor="#cccccc" backgroundColor="background" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
+    <widget source="ServiceEvent" render="WarderPrimeTime" position="15,678" size="1395,45" font="Prive4;40" foregroundColor="#cccccc" backgroundColor="background" zPosition="4" transparent="1" noWrap="1" valign="center" halign="left" />
 	    <widget source="session.CurrentService" render="Pixmap" pixmap="hd_glass17/warder-radio-list-background.png" position="0,0" size="1425,829" zPosition="-100" scaleFlags="scale" alphatest="off"><convert type="WarderRadioOnly" /><convert type="ConditionalShowHide" /></widget>
   </screen>
     <screen name="ChannelSelection-13" position="0,0" size="1920,1080" backgroundColor="background" title="Channel Selection" flags="wfNoBorder" >
