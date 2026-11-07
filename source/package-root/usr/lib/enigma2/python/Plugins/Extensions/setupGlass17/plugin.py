@@ -3954,6 +3954,7 @@ class ExtraInfo17(Screen):
 
 	def setOn(self):
 		self.__isOn = True
+		self.__warderScheduleIptvRetry()
 		if self.timerpics and self.chckWeaInafAnim():
 			if not self.timerpics.isActive():
 				self.timerpics.start(config.plugins.setupGlass17.par170.value)
@@ -4047,12 +4048,12 @@ class ExtraInfo17(Screen):
 			name = ref.toString() if ref is not None else ""
 		except (AttributeError, TypeError, RuntimeError):
 			return None
-		if name.startswith(("4097:", "5001:", "5002:", "8193:")) or "://" in name:
+		if name.startswith(("4097:", "5001:", "5002:", "8193:")) or "://" in name or "http" in name.lower() or "rtsp" in name.lower():
 			return name
 		return None
 
 	def __warderScheduleIptvRetry(self):
-		if (self._warderIptvReference and self._warderIptvRetryCount < 10
+		if (self.__isOn and self._warderIptvReference and self._warderIptvRetryCount < 10
 				and not self.iptvInfoRetryTimer.isActive()):
 			self.iptvInfoRetryTimer.start(1500, True)
 
@@ -5868,6 +5869,8 @@ class ExtraInfo17(Screen):
 						except: pass
 				try:
 					if tmp != 0:
+						if enaIp:
+							self._warderAspectIcon = tmp
 						self["wide"].setPixmapNum(tmp)
 						self["wide"].move(ePoint(self.x_dyn_pos, self.posY_DynIco))
 						self["wide"].show()
