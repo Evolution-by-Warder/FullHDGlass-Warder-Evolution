@@ -2877,9 +2877,9 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 		channel_end = next((i for i in range(channel_begin + 1, len(lines))
 			if '</screen>' in lines[i]), -1) if channel_begin >= 0 else -1
 		channel_xml = ''.join(lines[channel_begin:channel_end + 1]) if channel_end >= 0 else ''
-		list_tag = re.search(r'<widget\${x}+name="list"[^>]*>', channel_xml)
-		epg_tag = re.search(r'<widget\${x}[^>]*render="g17ShowExtraEpg"[^>]*>', channel_xml)
-		desc_tag = re.search(r'<widget\${x}[^>]*render="g17MetrixHDRunningText"[^>]*>', channel_xml)
+		list_tag = re.search(r'<widget\s+name="list"[^>]*>', channel_xml)
+		epg_tag = re.search(r'<widget\b[^>]*render="g17ShowExtraEpg"[^>]*>', channel_xml)
+		desc_tag = re.search(r'<widget\b[^>]*render="g17MetrixHDRunningText"[^>]*>', channel_xml)
 		default_geometry = bool(
 			list_tag and 'position="60,96"' in list_tag.group(0)
 			and 'size="1065,842"' in list_tag.group(0)
