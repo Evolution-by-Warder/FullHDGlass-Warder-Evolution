@@ -1415,7 +1415,7 @@
     <widget position="66,517" size="843,30" source="session.CurrentService" render="Label" font="Prive4;27" valign="center" halign="center" noWrap="1" backgroundColor="#00000000" foregroundColor="white" transparent="1">
       <convert type="g17ServiceNum">NumberAndName</convert>
     </widget>		
-    <widget position="66,550" size="843,123" source="session.CurrentService" render="g17ShowExtraEpg" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="un6cbcf0" backgroundColor="black" zPosition="2" transparent="1">     
+    <widget position="66,550" size="843,123" source="session.CurrentService" render="g17ShowExtraEpg" playingServiceReference="1" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="un6cbcf0" backgroundColor="black" zPosition="2" transparent="1">     
 			<convert type="ServiceName">Reference</convert>
 		</widget>	   		
     <widget source="ServiceEvent" render="Label" position="66,685" zPosition="3" size="843,30" font="Prive4;27"  valign="center" halign="center" noWrap="1" backgroundColor="black" foregroundColor="#00ff6000" transparent="1">
@@ -1452,7 +1452,7 @@
 		<widget source="session.CurrentService" render="g17PicRef" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on">
 			<convert type="ServiceName">Reference</convert>
 		</widget>		
-    <widget position="262,660" size="690,123" source="session.CurrentService" render="g17ShowExtraEpg" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="white" backgroundColor="black" zPosition="2" transparent="1">     
+    <widget position="262,660" size="690,123" source="session.CurrentService" render="g17ShowExtraEpg" playingServiceReference="1" foregroundColorTime="yellow" maxDescriptionLines="0" numEvents="4" font="Prive4;24" fontDescription="Prive4;20" foregroundColor="white" backgroundColor="black" zPosition="2" transparent="1">     
 			<convert type="ServiceName">Reference</convert>
 		</widget>	
 		<ePixmap pixmap="hd_glass17/frame_hd.png" position="60,783" size="189,123" zPosition="1" alphatest="off" />
