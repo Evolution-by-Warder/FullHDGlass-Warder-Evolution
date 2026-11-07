@@ -144,7 +144,7 @@ class ClippedEventTests(unittest.TestCase):
             self.assertLessEqual(len(title) * 10, width)
             self.assertLessEqual(y + height, 222)
         self.assertTrue(writes[0][-1].endswith("…"))
-        self.assertFalse(any(item[0] == "fill" for item in self.renderer.instance.calls))
+        self.assertTrue(any(item[0] == "fill" for item in self.renderer.instance.calls))
         self.assertEqual(writes[1][-1], "Nové bývanie")
         self.assertEqual(writes[1][2], "#62aaff")
         self.assertLessEqual(writes[2][1][0] + writes[2][1][2], bar_start - 12)
