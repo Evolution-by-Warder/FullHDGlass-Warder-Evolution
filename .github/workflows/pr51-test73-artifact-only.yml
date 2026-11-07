@@ -137,7 +137,7 @@ jobs:
                   extra = tar.extractfile("./usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py").read().decode("utf-8")
                   assert 'render="WarderPrimeTime" position="1150,898" size="685,38"' in pt_plugin
                   assert 'position="1150,695" size="685,194"' in pt_plugin
-                  assert 'numEvents="8"\x27, \x27numEvents="5"' in pt_plugin
+                  assert 'numEvents="5"' in pt_plugin
                   assert 'visible_events = self.numEvents' in extra
                   assert 'visible_events = max(0, self.numEvents - 1)' not in extra
                   assert 'default=[20, 25]' in pt_plugin
