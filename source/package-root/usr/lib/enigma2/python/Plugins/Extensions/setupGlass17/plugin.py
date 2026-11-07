@@ -2937,14 +2937,15 @@ def changeChF():
 						allLines += buffLine + line
 					ena2 = False
 				else:
+					# Preserve self-closing ServiceEvent widgets: they have
+					# no following converter, so buffering the terminal
+					# WarderChannelEpgClip widget would discard it.
+					if line.__contains__('source="ServiceEvent') and line.rstrip().endswith('/>'):
+						allLines += line
+						continue
 					if line.__contains__('source="ServiceEvent'):
 						if line.__contains__('render="g17MetrixHDRunningText'):
 							allLines += calc(line,' font="Prive4;',config.plugins.setupGlass17.par148.value)
-						elif line.rstrip().endswith('/>'):
-							# A self-closing widget has no following converter to
-							# consume. The legacy lookahead otherwise silently
-							# discards the last ChannelSelection widget.
-							allLines += line
 						else:
 							buffLine = line
 							ena2 = True
