@@ -8,7 +8,7 @@ on:
       - 'tools/test_warder_native_progressbar_independence.py'
       - 'tools/apply-native-progressbar-event-fix.py'
       - 'tools/check-openpli-native-progressbar-event.py'
-      - 'compatibility/native-enigma2-patches/**'
+      - 'compatibility/native-enigma2-progressbar/**'
       - 'tools/test_warder_epg_text_fit.py'
       - 'tools/test_warder_pr51_clip_staging.py'
       - 'tools/stage-pr51-clip-candidate.py'
@@ -107,3 +107,33 @@ jobs:
       - name: Verify native event lookup before progress painting
         run: |
           python3 tools/check-openpli-native-progressbar-event.py upstream/openpli/lib/service/listboxservice.cpp
+
+  bitbake-layer-source-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        upstream: [master, 66df86b]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: compatibility/native-enigma2-progressbar
+      - uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: ${{ matrix.upstream }}
+          path: upstream/enigma2
+          persist-credentials: false
+      - name: Verify native BitBake layer and apply patch
+        run: |
+          set -euo pipefail
+          LAYER=compatibility/native-enigma2-progressbar/meta-warder-native
+          test -f "$LAYER/conf/layer.conf"
+          test -f "$LAYER/recipes-oe-alliance/enigma2/enigma2_%.bbappend"
+          grep -F 'SRC_URI:append:openatv' "$LAYER/recipes-oe-alliance/enigma2/enigma2_%.bbappend"
+          PATCH="$LAYER/recipes-oe-alliance/enigma2/files/0001-progressbar-event-independent-of-epg-font.patch"
+          git -C upstream/enigma2 apply --check "../../$PATCH"
+          git -C upstream/enigma2 apply "../../$PATCH"
+          git -C upstream/enigma2 diff --check
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp
