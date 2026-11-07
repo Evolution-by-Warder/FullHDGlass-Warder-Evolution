@@ -74,6 +74,11 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('self.fillTimer.stop()', renderer)
         self.assertIn('self.lastText = self.backText = ""', renderer)
 
+    def test_empty_epg_text_truncation_is_bounded(self):
+        renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py').read_text(encoding='utf-8')
+        self.assertIn('available_width = max(0, self.sizeX - 30)', renderer)
+        self.assertIn('while tmp and text_width > available_width:', renderer)
+
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
         self.assertNotIn('WarderPrimeTime', content)
