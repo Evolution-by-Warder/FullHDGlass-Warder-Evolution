@@ -60,6 +60,29 @@ class SetupStyleTests(unittest.TestCase):
             self.assertNotEqual(changed, CURRENT)
             self.assertNotEqual(style.normalized(ast.parse(changed)), BASELINE['logic_sha256'])
 
+    def test_each_reviewed_prime_time_ast_node_occurs_once_in_its_scope(self):
+        ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
+        expected = [(r['scope'], style.portable(ast.parse(r['after']).body[0])) for r in ledger]
+        counts = [0] * len(expected)
+
+        def visit(node, scope='module'):
+            if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                scope = node.name if scope == 'module' else scope + '.' + node.name
+            if isinstance(node, ast.stmt):
+                portable_node = style.portable(node)
+                for index, (record_scope, reviewed_node) in enumerate(expected):
+                    if scope == record_scope and portable_node == reviewed_node:
+                        counts[index] += 1
+            for child in ast.iter_child_nodes(node):
+                visit(child, scope)
+
+        visit(ast.parse(CURRENT))
+        self.assertEqual(counts, [1] * len(expected), list(zip(
+            [r['scope'] for r in ledger], counts)))
+        # A stale ledger record must not silently remove protection.
+        for record in ledger:
+            self.assertEqual(record['before'], '')
+
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 
