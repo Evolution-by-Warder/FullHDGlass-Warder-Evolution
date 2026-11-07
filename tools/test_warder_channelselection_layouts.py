@@ -25,11 +25,19 @@ class ChannelSelectionLayoutTests(unittest.TestCase):
                 for widget in LIST.findall(body):
                     if 'picServiceEventProgressbar=' not in widget:
                         continue
-                    self.assertIn('fieldMargins="26"', widget, (name, str(path)))
+                    if path.name == 'skin.xml':
+                        self.assertNotIn('fieldMargins="26"', widget, (name, str(path)))
+                    else:
+                        self.assertIn('fieldMargins="26"', widget, (name, str(path)))
                     checked += 1
                     seen.add(name)
-        self.assertGreaterEqual(checked, 58)
+        self.assertEqual(checked, 58)
         self.assertEqual(len(seen), 58)
+
+    def test_runtime_hook_guards_approved_skin_xml(self):
+        plugin = (ROOT / 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py').read_text(encoding='utf-8')
+        self.assertIn('if \'picServiceEventProgressbar=\' in line and \'fieldMargins=\' not in line:', plugin)
+        self.assertIn('line = line.replace(\'/>\', \' fieldMargins="26" />\')', plugin)
 
     def test_no_font_or_row_height_policy_changed_by_fix(self):
         for path in FILES:
