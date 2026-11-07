@@ -2320,20 +2320,20 @@
     <widget source="session.CurrentService" render="g17PicRef" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget position="262,663" size="585,45" source="session.CurrentService" render="Label" font="Prive3;31" valign="bottom" halign="left" noWrap="1" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="262,663" size="585,45" source="session.CurrentService" render="Label" font="Prive3;31" valign="bottom" halign="left" noWrap="1" backgroundColor="backgroundf" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
     <widget  position="843,663" source="global.CurrentTime" render="Label" size="109,45" font="Prive3;31" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget position="262,706" size="105,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="262,706" size="105,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget position="352,706" size="465,30" source="session.Event_Now" render="g17EmptyEpg" readTagInfo="1" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="352,706" size="465,30" source="session.Event_Now" render="g17EmptyEpg" readTagInfo="1" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" backgroundColor="backgroundf" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget position="802,706" size="150,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="802,706" size="150,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">Remaining</convert>
       <convert type="RemainingToText">InMinutes</convert>
     </widget>
@@ -2410,20 +2410,20 @@
 		<widget source="session.CurrentService" render="g17PicRef" position="79,676" size="150,90" zPosition="2" transparent="1" alphatest="on">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-		<widget position="262,663" size="585,45" source="session.CurrentService" render="Label" font="Prive3;31" valign="bottom" halign="left" noWrap="1" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+		<widget position="262,663" size="585,45" source="session.CurrentService" render="Label" font="Prive3;31" valign="bottom" halign="left" noWrap="1" backgroundColor="backgroundf" transparent="1">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 		<widget  position="843,663" source="global.CurrentTime" render="Label" size="109,45" font="Prive3;31" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1">
 			<convert type="g17ClockToText">Default</convert>
 		</widget>
-		<widget position="262,706" size="105,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+		<widget position="262,706" size="105,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" backgroundColor="backgroundf" transparent="1">
 			<convert type="EventTime">StartTime</convert>
 			<convert type="g17ClockToText">Default</convert>
 		</widget>
-		<widget position="352,706" size="465,30" source="session.Event_Now" render="g17EmptyEpg" readTagInfo="1" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+		<widget position="352,706" size="465,30" source="session.Event_Now" render="g17EmptyEpg" readTagInfo="1" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" backgroundColor="backgroundf" transparent="1">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget position="832,706" size="120,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+		<widget position="832,706" size="120,30" source="session.Event_Now" render="Label" font="Prive3;27" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1">
 			<convert type="EventTime">Remaining</convert>
 			<convert type="RemainingToText">InMinutes</convert>
 		</widget>
@@ -2792,20 +2792,20 @@
     </widget>
     <ePixmap pixmap="hd_glass17/frame_hd.png" position="7,127" size="189,123" zPosition="1" alphatest="off" />
     <widget source="ServiceEvent" render="g17RefTV" position="27,144" size="150,90" zPosition="2" transparent="1" alphatest="on" />
-    <widget position="210,6" size="450,45" source="session.CurrentService" render="Label" font="Prive4;31" valign="bottom" halign="left" noWrap="1" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="210,6" size="450,45" source="session.CurrentService" render="Label" font="Prive4;31" valign="bottom" halign="left" noWrap="1" backgroundColor="backgroundf" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="685,6" size="109,45" font="Prive4;31" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget position="210,49" size="105,30" source="session.Event_Now" render="Label" font="Prive4;27" valign="bottom" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="210,49" size="105,30" source="session.Event_Now" render="Label" font="Prive4;27" valign="bottom" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="g17ClockToText">Default</convert>
     </widget>
-    <widget position="300,49" size="375,30" source="session.Event_Now" render="g17EmptyEpg" readTagInfo="1" emptyText="EPG data unavailable" font="Prive4;27" valign="bottom" noWrap="1" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="300,49" size="375,30" source="session.Event_Now" render="g17EmptyEpg" readTagInfo="1" emptyText="EPG data unavailable" font="Prive4;27" valign="bottom" noWrap="1" backgroundColor="backgroundf" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget position="675,49" size="120,30" source="session.Event_Now" render="Label" font="Prive4;27" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1" foregroundColor="#ffffff">
+    <widget position="675,49" size="120,30" source="session.Event_Now" render="Label" font="Prive4;27" valign="bottom" halign="right" backgroundColor="backgroundf" transparent="1">
       <convert type="EventTime">Remaining</convert>
       <convert type="RemainingToText">InMinutes</convert>
     </widget>
