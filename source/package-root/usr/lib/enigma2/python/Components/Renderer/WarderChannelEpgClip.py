@@ -297,18 +297,26 @@ class WarderChannelEpgClip(Renderer):
         # Numeric indicators are native service-list cells, not progressbars.
         # Reserve conservative widths for their complete value and the gap
         # to the event title. Never paint over percentages/minutes.
-        right_reserve = {
-            "barright": bar_width + max(12, int(component.fieldMargins)),
-            "percright": 150,
-            "minsright": 205,
-        }
-        left_reserve = {
-            "barleft": bar_width + int(component.fieldMargins),
-            "percleft": 120,
-            "minsleft": 170,
-        }
-        text_end = width - int(component.listMarginRight) - right_reserve.get(mode, 12)
-        left_shift = left_reserve.get(mode, 0)
+        # ServiceListLegacy uses ProgressInfoFont and measures "+000 min"
+        # or "100 %" to set the native numeric indicator width. Match that
+        # font, with a conservative fallback for unsupported image builds.
+        indicator_width = bar_width
+        if mode.startswith(("perc", "mins")):
+            numeric_sample = "+000 min." if mode.startswith("mins") else "100 %"
+            fallback_width = 175 if mode.startswith("mins") else 120
+            try:
+                progress_font = component.ProgressInfoFont
+                self._label.setFont(progress_font)
+                self._label.setText(numeric_sample)
+                indicator_width = max(1, self._label.calculateSize().width(), fallback_width)
+            except (AttributeError, TypeError, RuntimeError, ValueError):
+                indicator_width = fallback_width
+        field_gap = max(12, int(component.fieldMargins))
+        right_reserve = (indicator_width + field_gap
+                         if mode.endswith("right") else 12)
+        left_shift = (indicator_width + field_gap
+                      if mode.endswith("left") else 0)
+        text_end = width - int(component.listMarginRight) - right_reserve
         available_rows = min(len(rows) - top, (height + row_height - 1) // row_height)
         if available_rows < 0 or text_end < 100:
             self._diag("native_bar_invalid", "%d,%d" % (text_end, available_rows))
