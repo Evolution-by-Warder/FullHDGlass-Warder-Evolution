@@ -55,8 +55,8 @@ class LayoutTests(unittest.TestCase):
             original_tag = body[widget_start:body.index('>', widget_start) + 1]
             self.assertIn('source="ServiceEvent"', original_tag, screen_name)
             self.assertIn('position="%s"' % position, original_tag, screen_name)
-            original_size = re.search(r'size="(\\d+),(\\d+)"', original_tag)
-            overlay_size = re.search(r'size="(\\d+),(\\d+)"', overlay)
+            original_size = re.search(r'size="(\d+),(\d+)"', original_tag)
+            overlay_size = re.search(r'size="(\d+),(\d+)"', overlay)
             self.assertIsNotNone(original_size, screen_name)
             self.assertIsNotNone(overlay_size, screen_name)
             self.assertGreaterEqual(int(original_size[1]), int(overlay_size[1]), screen_name)
