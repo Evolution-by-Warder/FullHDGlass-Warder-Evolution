@@ -69,6 +69,7 @@ class Component:
 
     def __init__(self, refs):
         self.refs = refs
+        self.selected = 1
         self.instance = self
         self.l = types.SimpleNamespace(celServiceInfo=2)
 
@@ -79,7 +80,7 @@ class Component:
         return 0
 
     def getCurrentIndex(self):
-        return 1
+        return self.selected
 
     def size(self):
         return types.SimpleNamespace(width=lambda: 700, height=lambda: 222)
@@ -181,6 +182,25 @@ class ClippedEventTests(unittest.TestCase):
         self.assertLessEqual(len(writes[0][-1]) * 10, writes[0][1][2])
         self.assertEqual(writes[1][-1], "Nové bývanie")
         self.assertLessEqual(writes[2][1][0] + writes[2][1][2], 700 - 25 - 90 - 12)
+
+    def test_only_focused_long_event_scrolls(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_started = time() - 8
+        self.assertTrue(self.draw())
+        written = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"]
+        self.assertNotEqual(written[0], scroll_title_window(
+            self.refs[0].title, 100, lambda text: len(text) * 10, 0))
+        self.assertTrue(written[2].endswith("…"))
+        self.assertEqual(written[1], "Nové bývanie")
+        self.component.selected = 2
+        self.assertTrue(self.draw())
+        self.assertEqual(self.renderer._scroll_selected, 2)
+        self.assertLess(time() - self.renderer._scroll_started, 2)
+        new_written = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"][-3:]
+        self.assertTrue(new_written[0].endswith("…"))
+        self.assertTrue(new_written[2].endswith("…"))
 
     def test_no_events_causes_no_native_suppression_candidate(self):
         self.refs = [Service("No EPG", "")]
