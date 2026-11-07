@@ -2864,7 +2864,6 @@ def chckVolMute():
 def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 	try:
 		allLines = ""
-		prime_time_enabled = bool(config.plugins.warderEvolutionPrimeTime.enabled.value)
 		what = 'colorServiceDescription="'+config.plugins.setupGlass17.par109.value+'"'+' colorServiceDescriptionSelected="'+config.plugins.setupGlass17.par110.value+'"'+' foregroundColorSelected="'+config.plugins.setupGlass17.par111.value+'"'+' foregroundColor="'+config.plugins.setupGlass17.par117.value+'"' 
 		r = open(SKINXML,"r")
 		lines = r.readlines()
