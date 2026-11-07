@@ -124,6 +124,7 @@ class ClippedEventTests(unittest.TestCase):
             _draw_progress=lambda x, y, width, row_height, elapsed: None,
             _opaque_black="#000000", _progress_border="#dfdfdf",
             _warder_bar_width=None, _warder_test_marker=False,
+            _progress_mode=lambda: "barright",
             _native_right_bar_enabled=lambda: True,
             _diag=lambda *args: None)
         self.service_stub = types.ModuleType("enigma")
@@ -216,23 +217,47 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(new_written[0].endswith("…"))
         self.assertTrue(new_written[2].endswith("…"))
 
-    def test_non_right_progress_modes_fall_back_to_native(self):
-        method_fn = method("_native_right_bar_enabled")
+    def test_native_progress_modes_selected_safely(self):
+        mode_method = method("_progress_mode")
         usage = types.SimpleNamespace(
             show_event_progress_in_servicelist=types.SimpleNamespace(value="barright"),
             servicelist_twolines=types.SimpleNamespace(value=False))
-        method_fn.__globals__["config"] = types.SimpleNamespace(usage=usage)
-        for mode in ("no", "barleft", "percleft", "percright",
-                     "minsleft", "minsright", "unknown"):
+        mode_method.__globals__["config"] = types.SimpleNamespace(usage=usage)
+        for mode in ("barright", "barleft", "no"):
             usage.show_event_progress_in_servicelist.value = mode
-            self.assertFalse(method_fn(self.renderer), mode)
-        usage.show_event_progress_in_servicelist.value = "barright"
-        self.assertTrue(method_fn(self.renderer))
+            self.assertEqual(mode_method(self.renderer), mode)
+        for mode in ("percleft", "percright", "minsleft", "minsright", "unknown"):
+            usage.show_event_progress_in_servicelist.value = mode
+            self.assertIsNone(mode_method(self.renderer))
         usage.servicelist_twolines.value = True
-        self.assertFalse(method_fn(self.renderer))
+        usage.show_event_progress_in_servicelist.value = "barright"
+        self.assertIsNone(mode_method(self.renderer))
 
-    def test_fallback_does_not_draw_synthetic_progress_or_text(self):
-        self.renderer._native_right_bar_enabled = lambda: False
+    def test_left_bar_shifts_names_and_keeps_native_bars(self):
+        self.renderer._progress_mode = lambda: "barleft"
+        bars = []
+        self.renderer._draw_progress = lambda *args: bars.append(args)
+        self.assertTrue(self.draw())
+        writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
+        self.assertEqual(len(writes), 3)
+        # At 700px list width, 90px native left bar plus 26px margin
+        # moves event text right; no second right-hand bar is rendered.
+        self.assertGreater(writes[0][1][0], 200)
+        self.assertTrue(all(x[1][0] + x[1][2] <= 700 - 25 - 12 for x in writes))
+        self.assertEqual(bars, [])
+
+    def test_disabled_bar_uses_full_text_width_without_redraw(self):
+        self.renderer._progress_mode = lambda: "no"
+        bars = []
+        self.renderer._draw_progress = lambda *args: bars.append(args)
+        self.assertTrue(self.draw())
+        writes = [x for x in self.renderer.instance.calls if x[0] == "write"]
+        self.assertTrue(all(x[1][0] + x[1][2] <= 700 - 25 - 12 for x in writes))
+        self.assertEqual(bars, [])
+        self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
+
+    def test_unsupported_modes_do_not_draw_synthetic_bar_or_text(self):
+        self.renderer._progress_mode = lambda: None
         self.assertFalse(self.draw())
         self.assertEqual(self.renderer.instance.calls, [])
 
