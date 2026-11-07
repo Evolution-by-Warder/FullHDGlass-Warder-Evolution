@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 
 
-def stage_skin(skin_path):
+def stage_skin(skin_path, progress_width=None, marker=False):
     skin_path = Path(skin_path)
     content = skin_path.read_text(encoding="utf-8")
     pattern = re.compile(r'<screen\b[^>]*name="ChannelSelection"[^>]*>.*?</screen>', re.S)
@@ -45,6 +45,16 @@ def stage_skin(skin_path):
         screen = screen[:m.start()] + patched + screen[m.end():]
     overlay = ('    <widget source="ServiceEvent" render="WarderChannelEpgClip" '
                'position="60,96" size="1065,842" zPosition="4" transparent="1" />')
+    if progress_width is not None:
+        try:
+            progress_width = int(progress_width)
+        except (TypeError, ValueError):
+            raise RuntimeError("Invalid diagnostic progress width")
+        if not 1 <= progress_width <= 200:
+            raise RuntimeError("Diagnostic progress width out of range")
+        overlay = overlay.replace('transparent="1"', 'warderProgressWidth="%d" transparent="1"' % progress_width)
+    if marker:
+        overlay = overlay.replace('transparent="1"', 'warderTestMarker="1" transparent="1"')
     screen = screen.replace('</screen>', overlay + '\n  </screen>', 1)
     content = content[:match.start()] + screen + content[match.end():]
     skin_path.write_text(content, encoding="utf-8")
