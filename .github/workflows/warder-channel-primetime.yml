@@ -1,0 +1,90 @@
+name: Warder channel list and Prime Time unit checks
+
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml'
+      - 'source/package-root/usr/share/enigma2/hd_glass17/skin.xml'
+      - 'tools/test_warder_*'
+      - 'tools/stage-pr51-clip-candidate.py'
+      - 'tools/test-setup-style.py'
+      - 'tools/style-setup-screens.py'
+      - 'design/channelselection-primetime/logic-edits.json'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - '.github/workflows/warder-channel-primetime.yml'
+  workflow_dispatch:
+
+# Keep the latest PR validation only; older queued commits are superseded.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate-source-and-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The full repository contains large artwork and release payloads.
+          # CI only needs the Python tests, reviewed ledgers, and EPG skin sources.
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/
+            /design/
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/*.py
+            /source/package-root/usr/lib/enigma2/python/Components/Converter/*.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/*.xml
+            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify approved base skin is byte-identical to main
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          git show origin/main:source/package-root/usr/share/enigma2/hd_glass17/skin.xml > /tmp/warder-approved-skin.xml
+          cmp /tmp/warder-approved-skin.xml source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - name: Validate Python syntax
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtEpg.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/g17MetrixHDRunningText.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python -m py_compile tools/stage-pr51-clip-candidate.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Converter/WarderPrimeTimeGate.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+      - name: Verify Prime Time legacy setup fingerprint exceptions
+        run: |
+          python tools/test-setup-style.py SetupStyleTests.test_configuration_actions_callbacks_and_controller_logic_are_unchanged -v
+          python tools/test-setup-style.py SetupStyleTests.test_prime_time_exceptions_are_exact_and_scope_bound -v
+          python tools/test-setup-style.py SetupStyleTests.test_each_reviewed_prime_time_ast_node_occurs_once_in_its_scope -v
+      - name: Run EPG geometry and algorithm tests
+        # Continue independent EPG checks after a legacy fingerprint failure.
+        # The earlier failed guard still fails this job and blocks release.
+        if: ${{ success() || failure() }}
+        run: |
+          python -m unittest discover -s tools -p 'test_warder_channelselection_layouts.py' -v
+          python -m unittest discover -s tools -p 'test_warder_epg_text_fit.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime_settings.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime_placements.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime_renderer.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime_gate.py' -v
+          python -m unittest discover -s tools -p 'test_warder_cross_menu_isolation.py' -v
+          python -m unittest discover -s tools -p 'test_warder_default_epg_panel_runtime.py' -v
+          python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
+          python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v

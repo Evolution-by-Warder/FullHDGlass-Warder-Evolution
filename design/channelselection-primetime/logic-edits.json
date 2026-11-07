@@ -1,0 +1,82 @@
+[
+  {
+    "scope": "module",
+    "after": "config.plugins.warderEvolutionPrimeTime = ConfigSubsection()",
+    "before": ""
+  },
+  {
+    "scope": "module",
+    "after": "config.plugins.warderEvolutionPrimeTime.enabled = ConfigYesNo(default=False)",
+    "before": ""
+  },
+  {
+    "scope": "module",
+    "after": "config.plugins.warderEvolutionPrimeTime.clock = ConfigSequence(seperator=\":\", limits=[(0, 23), (0, 59)], default=[20, 25])",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:\n    line = line.replace('/>', ' fieldMargins=\"26\" />')",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.chckSetup",
+    "after": "if t is config.plugins.warderEvolutionPrimeTime.enabled:\n    self.runSetup()\n    return",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.runSetup",
+    "after": "if hasattr(config.plugins, \"warderEvolutionPrimeTime\"):\n    self.list.append(getConfigListEntry(S0 % _(\"Show Prime Time for selected channel\"), config.plugins.warderEvolutionPrimeTime.enabled))\n    if config.plugins.warderEvolutionPrimeTime.enabled.value:\n        self.list.append(getConfigListEntry(S0 % _(\"Prime Time clock\"), config.plugins.warderEvolutionPrimeTime.clock))",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.saving",
+    "after": "try:\n    config.plugins.warderEvolutionPrimeTime.enabled.save()\n    config.plugins.warderEvolutionPrimeTime.clock.save()\nexcept AttributeError:\n    pass",
+    "before": ""
+  },
+  {
+    "scope": "setupGlass17ScreenSetup.exitNow",
+    "after": "try:\n    config.plugins.warderEvolutionPrimeTime.enabled.cancel()\n    config.plugins.warderEvolutionPrimeTime.clock.cancel()\nexcept AttributeError:\n    pass",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if in_default_channel_screen and 'render=\"g17MetrixHDRunningText\"' in line and 'position=\"1150,455\"' in line:\n    line = line.replace('size=\"685,240\"', 'size=\"685,224\"')\n    if 'warderWholeLineScroll=' not in line:\n        line = line.replace('render=\"g17MetrixHDRunningText\"', 'render=\"g17MetrixHDRunningText\" warderWholeLineScroll=\"1\"')",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line and 'position=\"1150,685\"' in line:\n    line = line.replace('position=\"1150,685\" size=\"685,236\"', 'position=\"1150,695\" size=\"685,226\"')\n    line = line.replace('numEvents=\"8\"', 'numEvents=\"6\"')",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "in_default_channel_screen = False",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "in_default_channel_screen = True",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if in_default_channel_screen and '</screen>' in line:\n    if not has_clipped_events:\n        allLines += '    <widget source=\"ServiceEvent\" render=\"WarderChannelEpgClip\" position=\"60,96\" size=\"1065,842\" zPosition=\"4\" warderProgressWidth=\"90\" alphaTest=\"blend\" transparent=\"1\" />\\n'\n    in_default_channel_screen = None",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "has_clipped_events = False",
+    "before": ""
+  },
+  {
+    "scope": "cChannelsel",
+    "after": "if in_default_channel_screen and 'render=\"WarderChannelEpgClip\"' in line:\n    has_clipped_events = True",
+    "before": ""
+  },
+  {
+    "scope": "changeChF",
+    "before": "",
+    "after": "if line.__contains__('source=\"ServiceEvent') and line.rstrip().endswith('/>'):\n    allLines += line\n    continue"
+  }
+]

@@ -43,6 +43,56 @@ class SetupStyleTests(unittest.TestCase):
         self.assertNotEqual(changed,CURRENT)
         self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
 
+    def test_prime_time_exceptions_are_exact_and_scope_bound(self):
+        ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
+        self.assertEqual(len(ledger), 16)
+        self.assertTrue(all(record['scope'] and record['after'] and record['before'] == '' for record in ledger))
+        self.assertTrue(all('warderEvolutionPrimeTime' in record['after']
+                            or 'fieldMargins' in record['after']
+                            or 'g17MetrixHDRunningText' in record['after']
+                            or 'g17ShowExtraEpg' in record['after']
+                            or 'in_default_channel_screen' in record['after']
+                            or 'has_clipped_events' in record['after']
+                            or ("line.rstrip().endswith('/>')" in record['after'] and record['scope'] == 'changeChF')
+                            for record in ledger))
+        # Altered new settings/actions must still change the frozen fingerprint.
+        for old, new in (
+            ('ConfigYesNo(default=False)', 'ConfigYesNo(default=True)'),
+            ('warderEvolutionPrimeTime.enabled.save()', 'warderEvolutionPrimeTime.enabled.cancel()'),
+            ('warderEvolutionPrimeTime.clock.cancel()', 'warderEvolutionPrimeTime.clock.save()'),
+            ('fieldMargins="26"', 'fieldMargins="0"'),
+            ('size="685,224"', 'size="685,240"'),
+            ('position="1150,695" size="685,226"', 'position="1150,685" size="685,236"'),
+            ('render="WarderChannelEpgClip"', 'render="UnknownRenderer"'),
+            ("and line.rstrip().endswith('/>'):", "and False:"),
+        ):
+            changed = CURRENT.replace(old, new, 1)
+            self.assertNotEqual(changed, CURRENT)
+            self.assertNotEqual(style.normalized(ast.parse(changed)), BASELINE['logic_sha256'])
+
+    def test_each_reviewed_prime_time_ast_node_occurs_once_in_its_scope(self):
+        ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
+        expected = [(r['scope'], style.portable(ast.parse(r['after']).body[0])) for r in ledger]
+        counts = [0] * len(expected)
+
+        def visit(node, scope='module'):
+            if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                scope = node.name if scope == 'module' else scope + '.' + node.name
+            if isinstance(node, ast.stmt):
+                portable_node = style.portable(node)
+                for index, (record_scope, reviewed_node) in enumerate(expected):
+                    if scope == record_scope and portable_node == reviewed_node:
+                        counts[index] += 1
+            for child in ast.iter_child_nodes(node):
+                visit(child, scope)
+
+        visit(ast.parse(CURRENT))
+        self.assertEqual(counts, [1] * len(expected), list(zip(
+            [r['scope'] for r in ledger], counts)))
+        # A stale ledger record must not silently remove protection.
+        for record in ledger:
+            self.assertEqual(record['before'], '')
+
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 

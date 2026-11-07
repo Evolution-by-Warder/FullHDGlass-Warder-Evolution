@@ -61,6 +61,7 @@ class g17MetrixHDRunningText(Renderer):
 		self.mRepeat = 0
 		self.mPageDelay = self.mPageLength = 0
 		self.lineHeight = 0		# for text height auto correction on dmm-enigma2
+		self.warderWholeLineScroll = False
 
 	GUI_WIDGET = eCanvas
 
@@ -125,6 +126,8 @@ class g17MetrixHDRunningText(Renderer):
 				elif attrib == "halign" and value in ("left","center","right","block"):
 					self.halign = { "left": eLabel.alignLeft, "center": eLabel.alignCenter, "right": eLabel.alignRight, "block": eLabel.alignBlock }[value]
 					self.txtflags |= { "left": RT_HALIGN_LEFT, "center": RT_HALIGN_CENTER, "right": RT_HALIGN_RIGHT, "block": RT_HALIGN_BLOCK }[value]
+				elif attrib == "warderWholeLineScroll":
+					self.warderWholeLineScroll = value == "1"
 				elif attrib == "noWrap":
 					setWrapFlag(attrib, value)
 				elif attrib == "options":
@@ -184,9 +187,19 @@ class g17MetrixHDRunningText(Renderer):
 			from enigma import fontRenderClass
 			flh = int(fontRenderClass.getInstance().getLineHeight(self.txfont) or self.txfont.pointSize // 6 + self.txfont.pointSize)
 			self.test_label.setText("WQq")
-			if flh > self.test_label.calculateSize().height():
+			if flh > self.test_label.calculateSize().height() or self.warderWholeLineScroll:
 				self.lineHeight = flh
 			self.test_label.setText("")
+		# Keep the description inside complete font-height rows, but
+		# scroll smoothly in small pixel steps. TEST52 could fall back
+		# to a 1px step every 800ms when lineHeight was unset.
+		if self.warderWholeLineScroll and self.direction in (TOP, BOTTOM):
+			self.lineHeight = max(1, self.lineHeight)
+			if self.H >= self.lineHeight:
+				self.H = (self.H // self.lineHeight) * self.lineHeight
+				self.instance.setSize(eSize(self.W, self.H))
+			self.mStep = 2
+			self.mStepTimeout = 55
 		return ret
 
 	def doSuspend(self, suspended):
