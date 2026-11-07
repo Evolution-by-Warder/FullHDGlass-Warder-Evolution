@@ -1,0 +1,49 @@
+name: PR51 native EPG renderer focused checks
+on:
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
+      - 'tools/test_warder_channel_epg_clip.py'
+      - 'tools/test_warder_epg_text_fit.py'
+      - 'tools/test_warder_pr51_clip_staging.py'
+      - 'tools/stage-pr51-clip-candidate.py'
+      - '.github/workflows/pr51-native-epg-focused-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  renderer-no-mask:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/
+            /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+            /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax and isolated regression suite
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
+          python -m unittest discover -s tools -p 'test_warder_epg_text_fit.py' -v
+          python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
+      - name: Enforce no masking or bar redraw
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source = Path('source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py').read_text()
+          assert 'setElementFont(component.l.celServiceInfo, None)' in source
+          assert 'native_event_disable_unsupported' in source
+          assert '_opaque_black' not in source
+          assert 'self._draw_progress(' not in source
+          assert 'self.instance.fillRect(eRect(x, y + 2' not in source
+          assert 'gFont("Regular", 1)' not in source
+          PY
