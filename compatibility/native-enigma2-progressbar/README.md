@@ -78,14 +78,24 @@ No native binary was built or installed by this PR.
 | Distro | `openatv` |
 | Image | `8.1.0~beta`, build `20261107`, compiled `20261107020925` |
 | Enigma2 package | `8.1.0~beta+git36096+f9f72e10+f9f72e1115-r1` |
-| Package architecture | `cortexa15hf-neon-vfpv4` |
+| Installed `enigma2` package architecture (`opkg status` and `opkg info`) | `gbquad4kpro` |
 | Kernel architecture | `armv7l` |
 | OE base | `OE-Alliance 6.0` |
+| Image architecture (`/etc/image-version`: `arch`) | `cortexa15hf-neon-vfpv4` |
 | Feed architecture | `gb7252` |
+| Binary package recipe (`opkg info`: `Source`) | `enigma2.bb` |
+| Package maintainer (`opkg info`) | `OE-Alliance` |
 
 The receiver was **updated** from the previous 2026-11-06 image:
 `8.1.0~beta+git36061+da455f50+da455f57dd-r1`.
 That version is historic and must not be used for a new native binary.
+
+The receiver's **actual installed Enigma2 package** is machine-scoped
+`Architecture: gbquad4kpro`, as confirmed independently by `opkg status enigma2`
+and `opkg info enigma2`. The `cortexa15hf-neon-vfpv4` value belongs to the
+**image's** `arch` field and must not be substituted for the installed
+Enigma2 package architecture. `Source: enigma2.bb` confirms the recipe
+filename, **not** a source Git URL, branch, `SRCREV` or reproducible build.
 
 Public `openatv/enigma2` GitHub lookup did **not** resolve the new
 `f9f72e10` or `f9f72e1115` prefixes as commits during this audit.
