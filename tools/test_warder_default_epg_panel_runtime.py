@@ -5,6 +5,7 @@ upcoming EPG. Only a generated runtime skin may be adjusted; never the
 approved source skin.xml or user font sizes.
 """
 import ast
+import re
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from types import SimpleNamespace
@@ -67,7 +68,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
 
             scope = dict(config=SimpleNamespace(plugins=SimpleNamespace(
                 setupGlass17=plugin_config)), SKINXML=str(runtime),
-                ENA_P_CH=False, _atomicWriteText=write_text, calc=calc)
+                ENA_P_CH=False, _atomicWriteText=write_text, calc=calc, re=re)
             exec(compile(ast.Module(body=nodes, type_ignores=[]),
                          str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
@@ -110,7 +111,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
                 runtime.write_text(text, encoding="utf-8")
 
             scope = dict(config=config, SKINXML=str(runtime),
-                         ENA_P_CH=False, _atomicWriteText=write_text)
+                         ENA_P_CH=False, _atomicWriteText=write_text, re=re)
             exec(compile(ast.Module(body=[fn], type_ignores=[]),
                          str(PLUGIN), "exec"), scope)
             self.assertEqual(scope["cChannelsel"](), "c")
