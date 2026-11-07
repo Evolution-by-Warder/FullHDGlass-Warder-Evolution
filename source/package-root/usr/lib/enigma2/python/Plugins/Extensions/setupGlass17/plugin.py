@@ -2889,7 +2889,7 @@ def cChannelsel(c1="#cdcdcd",c2="#6cbcf0",c3="#6cbcf0",c4="#dddddd"):
 					line = line.replace('picServiceEventProgressbar="bar_ch-fs8.png"','picServiceEventProgressbar="bar_ch-fs8.png" progressBarWidth="90"')				
 				ena = False
 			if in_default_channel_screen and '</screen>' in line:
-				in_default_channel_screen = False
+				in_default_channel_screen = None
 			allLines += line
 		r.close()
 		_atomicWriteText(SKINXML, allLines)
