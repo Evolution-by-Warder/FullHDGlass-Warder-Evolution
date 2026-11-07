@@ -340,6 +340,31 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(any(call[0] == "write" for call in self.renderer.instance.calls))
         self.assertTrue(self.draw())
 
+    def test_refresh_reinstalls_quiet_font_after_native_mode_change(self):
+        font_calls = []
+        invalidates = []
+        native = types.SimpleNamespace(
+            l=types.SimpleNamespace(
+                celServiceInfo=2,
+                setElementFont=lambda *args: font_calls.append(args)),
+            ServiceInfoFont="original",
+            instance=types.SimpleNamespace(
+                invalidate=lambda: invalidates.append(True)))
+        target = types.SimpleNamespace(
+            instance=Canvas(), _label=Label(), _component=native,
+            _native_hidden=True, _quiet_font="quiet",
+            _timer=types.SimpleNamespace(start=lambda *args: None),
+            _diag=lambda *args: None,
+            _find_component=lambda: native)
+        def draw_and_detect_mode_change(component):
+            target._native_hidden = False
+            return True
+        target._draw_rows = draw_and_detect_mode_change
+        method("refresh")(target)
+        self.assertEqual(font_calls, [(2, "quiet")])
+        self.assertEqual(invalidates, [True])
+        self.assertTrue(target._native_hidden)
+
     def test_refresh_error_handler_does_not_require_flush(self):
         import types
         renderer = types.SimpleNamespace(
