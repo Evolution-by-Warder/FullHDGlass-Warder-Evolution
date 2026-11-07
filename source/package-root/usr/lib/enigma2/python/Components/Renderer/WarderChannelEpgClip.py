@@ -381,6 +381,20 @@ class WarderChannelEpgClip(Renderer):
                 self._restore_native()
                 self._component = component
                 self._last = None
+            # Unsupported views must remain completely native; never
+            # toggle celServiceInfo on every timer tick for those modes.
+            if self._progress_mode() is None:
+                had_overlay = self._native_hidden or self._last is not None
+                if had_overlay:
+                    self.instance.clear(self._transparent)
+                self._last = None
+                self._restore_native()
+                if had_overlay:
+                    try:
+                        component.instance.invalidate()
+                    except (AttributeError, TypeError, RuntimeError):
+                        pass
+                return
             # C++ paint() only skips an element when its font pointer is
             # null. A 1px substitute still paints garbage glyphs. SWIG may
             # reject None on older images: fail open without any overlay.
