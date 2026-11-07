@@ -1,0 +1,40 @@
+name: PR51 Prime Time runtime layout checks
+on:
+  push:
+    branches:
+      - work/channelselection-primetime-overlap-20261107
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
+      - 'tools/test_warder_primetime.py'
+      - 'tools/test_warder_primetime_runtime_layout.py'
+      - '.github/workflows/pr51-prime-time-layout.yml'
+  pull_request:
+    paths:
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py'
+      - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py'
+      - 'tools/test_warder_primetime.py'
+      - 'tools/test_warder_primetime_runtime_layout.py'
+      - '.github/workflows/pr51-prime-time-layout.yml'
+permissions:
+  contents: read
+jobs:
+  prime-time-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prime Time lookup and runtime screen layout
+        run: |
+          python -m unittest discover -s tools -p 'test_warder_primetime.py' -v
+          python -m unittest discover -s tools -p 'test_warder_primetime_runtime_layout.py' -v
+      - name: Compile Python entrypoints without Enigma2 receiver dependencies
+        run: |
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
+          python -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
