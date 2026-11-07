@@ -2653,7 +2653,36 @@ def changePIGres():
 		direct = False
 	try:
 		r = open(SKINXML,"r")
-		for line in r.readlines():
+		lines = r.readlines()
+		# The menu pictured with video LEFT / station list CENTER / EPG RIGHT
+		# is ChannelSelection-28. Its Frame.png is not the legacy fs8 marker.
+		# Match the complete, unique geometry before changing anything.
+		screen_begin = next((i for i, line in enumerate(lines)
+			if '<screen name="ChannelSelection"' in line), -1)
+		screen_end = next((i for i in range(screen_begin + 1, len(lines))
+			if '</screen>' in lines[i]), -1) if screen_begin >= 0 else -1
+		screen_xml = ''.join(lines[screen_begin:screen_end + 1]) if screen_end >= 0 else ''
+		pig28 = (
+			'<widget name="list" position="739,105"' in screen_xml
+			and 'pixmap="hd_glass17/frame/Frame.png"' in screen_xml
+			and 'position="94,121" size="600,360"' in screen_xml
+			and 'position="1440,105" size="405,810"' in screen_xml
+		) or (
+			'<widget name="list" position="739,105"' in screen_xml
+			and 'pixmap="hd_glass17/frame/Frame.png"' in screen_xml
+			and 'position="75,105" size="639,393"' in screen_xml
+			and 'position="1440,105" size="405,810"' in screen_xml
+		)
+		for line_index, line in enumerate(lines):
+			if pig28 and screen_begin < line_index < screen_end:
+				if '<ePixmap position="75,105" size="639,393" pixmap="hd_glass17/frame/Frame.png"' in line:
+					line = line.replace('zPosition="0"', 'zPosition="2"') if not direct else line.replace('zPosition="2"', 'zPosition="0"')
+				elif ('source="session.VideoPicture"' in line or
+						'pixmap="hd_glass17/warder-radio-background.jpg"' in line):
+					if direct:
+						line = line.replace('position="94,121" size="600,360"', 'position="75,105" size="639,393"')
+					else:
+						line = line.replace('position="75,105" size="639,393"', 'position="94,121" size="600,360"')
 			if ena and line.__contains__('session.VideoPicture'):
 				if direct:
 					line = line.replace('position="157,166"', 'position="66,120"').replace('size="697,435"', 'size="882,528"')
