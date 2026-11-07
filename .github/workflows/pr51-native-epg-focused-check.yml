@@ -79,3 +79,13 @@ jobs:
           git -C upstream/enigma2 diff --exit-code -- lib/service/listboxservice.h
           git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp
           grep -F 'service_info->getEvent(*m_cursor, evt);' upstream/enigma2/lib/service/listboxservice.cpp
+          mkdir -p native-patch
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp > native-patch/0001-progressbar-event-lookup-independent-of-epg-font.patch
+          test -s native-patch/0001-progressbar-event-lookup-independent-of-epg-font.patch
+      - name: Export validated native Enigma2 patch (not an IPK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr51-native-enigma2-progressbar-source-patch
+          path: native-patch/*.patch
+          if-no-files-found: error
+          retention-days: 14
