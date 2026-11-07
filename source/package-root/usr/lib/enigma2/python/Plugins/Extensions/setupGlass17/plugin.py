@@ -743,7 +743,7 @@ config.plugins.setupGlass17.par18 = ConfigSelection(default="1", choices = [("1"
 config.plugins.setupGlass17.par19 = ConfigSelection(default="35", choices = chsT) # channel selection type
 # Prime Time is opt-in, local-time based and never changes the channel list by default.
 config.plugins.setupGlass17.warderPrimeTimeEnabled = ConfigYesNo(default=False)
-config.plugins.setupGlass17.warderPrimeTimeClock = ConfigClock(default=20 * 3600 + 25 * 60)
+config.plugins.setupGlass17.warderPrimeTimeClock = ConfigSequence(seperator=":", limits=[(0, 23), (0, 59)], default=[20, 25])
 config.plugins.setupGlass17.par20 = ConfigSelection(default="AutoColors", choices = colors) # color of bitrate and ecmline, CPU/Mem, Fan 
 config.plugins.setupGlass17.par21 = ConfigYesNo(default = False) # HDD forced wake up      
 config.plugins.setupGlass17.par22 = ConfigSelection(default="/dev/sda", choices = [("A",_("Auto")),("None",_("None")),("/dev/sda","sda"),("/dev/sdb","sdb"),("/dev/sdc","sdc"),("/dev/sdd","sdd"),("/dev/sde","sde"),("/dev/sdf","sdf")]) # path to hdd - dev
