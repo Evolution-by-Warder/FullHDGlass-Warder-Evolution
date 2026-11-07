@@ -36,6 +36,19 @@ class WarderChannelEpgClip(Renderer):
         self._transparent = parseColor("#ff000000")
         self._opaque_black = parseColor("#00000000")
         self._progress_border = parseColor("#dfdfdf")
+        self._diag_seen = set()
+
+    def _diag(self, key, details=""):
+        # TEST59 only: bounded, local status events; never include EPG titles.
+        # Silently skip unavailable/readonly /tmp; diagnosis must not crash GUI.
+        try:
+            if key in self._diag_seen or len(self._diag_seen) >= 32:
+                return
+            self._diag_seen.add(key)
+            with open("/tmp/warder-epg-clip-test59.log", "a") as output:
+                output.write("%s %s\n" % (key, details))
+        except (OSError, AttributeError, TypeError, ValueError):
+            pass
 
     def postWidgetCreate(self, instance):
         # eCanvas needs an allocated backing pixmap, not only GUI geometry.
@@ -44,6 +57,7 @@ class WarderChannelEpgClip(Renderer):
             width, height = (int(v) for v in size.split(","))
             if width > 0 and height > 0:
                 instance.setSize(eSize(width, height))
+        self._diag("canvas_created", "allocated=%s" % bool(size))
         self._label = eLabel(instance)
         # Measure actual glyph widths with a large, non-wrapping label.
         # A zero-sized helper could silently report false-fitting long text.
@@ -79,17 +93,24 @@ class WarderChannelEpgClip(Renderer):
             screen = InfoBar.instance.servicelist
             component = screen["list"]
             if not hasattr(component, "ServiceInfoFont"):
+                self._diag("no_service_info_font")
                 return None
             if not hasattr(component, "ServiceNameFont"):
+                self._diag("no_service_name_font")
                 return None
             if not hasattr(component.l, "celServiceInfo"):
+                self._diag("no_native_event_cell")
                 return None
             if not hasattr(component.l, "getList"):
+                self._diag("no_native_get_list")
                 return None
             if component.instance is None or not hasattr(component.instance, "getTopIndex"):
+                self._diag("no_native_top_index")
                 return None
+            self._diag("native_component_found", "component=%s" % type(component).__name__)
             return component
-        except (AttributeError, KeyError, TypeError):
+        except (AttributeError, KeyError, TypeError) as exc:
+            self._diag("native_lookup_error", "%s" % type(exc).__name__)
             return None
 
     def _name_and_event(self, center, ref):
@@ -149,20 +170,24 @@ class WarderChannelEpgClip(Renderer):
         from enigma import eServiceCenter
         rows = component.getList()
         if rows is None:
+            self._diag("native_rows_none")
             return False
         top = component.instance.getTopIndex()
         if top < 0:
+            self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
         width = component.instance.size().width()
         height = component.instance.size().height()
         row_height = int(component.ItemHeight)
         if row_height < 10 or width < 120 or height < row_height:
+            self._diag("native_geometry_invalid", "%d,%d,%d" % (width, height, row_height))
             return False
         # The native progressbar remains at the far-right edge.
         bar_left = width - int(component.listMarginRight) - int(component.progressBarWidth)
         available_rows = min(len(rows) - top, (height + row_height - 1) // row_height)
         if available_rows < 0 or bar_left < 100:
+            self._diag("native_bar_invalid", "%d,%d" % (bar_left, available_rows))
             return False
         font = component.ServiceInfoFont
         name_font = component.ServiceNameFont
@@ -197,7 +222,9 @@ class WarderChannelEpgClip(Renderer):
                 drawing.append((start, row_index * row_height, remaining, row_height,
                                 fitted, index == selected, self._progress_fraction(center, ref)))
         if not drawing:
+            self._diag("native_no_fitted_rows", "rows=%d top=%d visible=%d" % (len(rows), top, available_rows))
             return False
+        self._diag("native_rows_ready", "visible=%d fitted=%d width=%d bar=%d" % (available_rows, len(drawing), width, bar_left))
         signature = (top, selected, row_height, width, height, tuple(drawing))
         if signature == self._last:
             return True
@@ -217,6 +244,7 @@ class WarderChannelEpgClip(Renderer):
             if progress is not None:
                 self._draw_progress(bar_left, y, int(component.progressBarWidth), h, progress)
         self._last = signature
+        self._diag("canvas_painted")
         return True
 
     def refresh(self):
@@ -225,6 +253,7 @@ class WarderChannelEpgClip(Renderer):
                 return
             component = self._find_component()
             if component is None:
+                self._diag("native_component_absent")
                 self._restore_native()
                 return
             if component is not self._component:
@@ -234,16 +263,19 @@ class WarderChannelEpgClip(Renderer):
             # Draw first; hide the C++ event text only after a complete frame
             # has been produced, so unsupported environments do not go blank.
             if not self._draw_rows(component):
+                self._diag("draw_rows_declined")
                 self._restore_native()
                 return
             if not self._native_hidden:
                 try:
                     component.l.setElementFont(component.l.celServiceInfo, self._quiet_font)
-                except (AttributeError, RuntimeError, TypeError):
+                except (AttributeError, RuntimeError, TypeError) as exc:
+                    self._diag("native_font_suppress_error", type(exc).__name__)
                     self.instance.clear(self._transparent)
                     self._component = None
                     return
                 self._native_hidden = True
+                self._diag("native_font_suppressed")
                 # A native font adjustment is visible only on freshly
                 # invalidated rows; the overlay paints the original size.
                 # Force the native list to repaint without its unbounded EPG
@@ -253,7 +285,8 @@ class WarderChannelEpgClip(Renderer):
                     component.instance.invalidate()
                 except (AttributeError, TypeError, RuntimeError):
                     pass
-        except (AttributeError, RuntimeError, TypeError, ValueError, IndexError):
+        except (AttributeError, RuntimeError, TypeError, ValueError, IndexError) as exc:
+            self._diag("refresh_exception", type(exc).__name__)
             self._restore_native()
             if self.instance:
                 self.instance.clear(self._transparent)
