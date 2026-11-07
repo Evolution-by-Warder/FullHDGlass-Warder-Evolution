@@ -55,6 +55,9 @@ class LayoutTests(unittest.TestCase):
             original_tag = body[widget_start:body.index('>', widget_start) + 1]
             self.assertIn('source="ServiceEvent"', original_tag, screen_name)
             self.assertIn('position="%s"' % position, original_tag, screen_name)
+            if screen_name in ("ChannelSelection-1", "ChannelSelection-2", "ChannelSelection-9"):
+                self.assertIn('render="g17EmptyEpg"', original_tag, screen_name)
+                self.assertIn('warderPrimeTimeGate="1"', original_tag, screen_name)
             original_size = re.search(r'size="(\d+),(\d+)"', original_tag)
             overlay_size = re.search(r'size="(\d+),(\d+)"', overlay)
             self.assertIsNotNone(original_size, screen_name)
@@ -63,6 +66,13 @@ class LayoutTests(unittest.TestCase):
             self.assertGreaterEqual(int(original_size[2]), int(overlay_size[2]), screen_name)
             count += 1
         self.assertEqual(count, len(TARGETS))
+
+    def test_fallback_is_explicitly_suppressed_only_in_gated_cells(self):
+        renderer = (ROOT / 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17EmptyEpg.py').read_text(encoding='utf-8')
+        self.assertIn('elif attrib == "warderPrimeTimeGate"', renderer)
+        self.assertIn('if self.warderPrimeTimeGate:', renderer)
+        self.assertIn('self.fillTimer.stop()', renderer)
+        self.assertIn('self.lastText = self.backText = ""', renderer)
 
     def test_base_source_is_unchanged_and_no_global_overlay(self):
         content = BASE.read_text(encoding="utf-8")
