@@ -68,6 +68,8 @@ class WarderChannelEpgClip(Renderer):
             else:
                 passthrough.append((key, value))
         self.skinAttributes = passthrough
+        self._diag("apply_skin_flags", "width=%s marker=%s" %
+                   (self._warder_bar_width, self._warder_test_marker))
         return Renderer.applySkin(self, desktop, parent)
 
     def postWidgetCreate(self, instance):
@@ -100,6 +102,8 @@ class WarderChannelEpgClip(Renderer):
 
     def _restore_native(self):
         component = self._component
+        if self._native_hidden:
+            self._diag("native_font_restoring")
         if self._native_hidden and component is not None:
             try:
                 component.l.setElementFont(component.l.celServiceInfo, component.ServiceInfoFont)
@@ -272,7 +276,10 @@ class WarderChannelEpgClip(Renderer):
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
-            self.instance.fillRect(eRect(0, 0, 16, 6), parseColor("#ff00ff"))
+            # Bright magenta in the progress-column region: intentionally
+            # distinct from the independent green native eLabel test marker.
+            self.instance.fillRect(eRect(925, 14, 24, 14), parseColor("#00ff00ff"))
+            self._diag("canvas_test_marker_drawn")
         self._last = signature
         self._diag("canvas_painted")
         return True
