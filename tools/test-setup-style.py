@@ -43,6 +43,23 @@ class SetupStyleTests(unittest.TestCase):
         self.assertNotEqual(changed,CURRENT)
         self.assertNotEqual(style.normalized(ast.parse(changed)),BASELINE['logic_sha256'])
 
+    def test_prime_time_exceptions_are_exact_and_scope_bound(self):
+        ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
+        self.assertEqual(len(ledger), 8)
+        self.assertTrue(all(record['scope'] and record['after'] and record['before'] == '' for record in ledger))
+        self.assertTrue(all('warderEvolutionPrimeTime' in record['after']
+                            or 'fieldMargins' in record['after'] for record in ledger))
+        # Altered new settings/actions must still change the frozen fingerprint.
+        for old, new in (
+            ('ConfigYesNo(default=False)', 'ConfigYesNo(default=True)'),
+            ('warderEvolutionPrimeTime.enabled.save()', 'warderEvolutionPrimeTime.enabled.cancel()'),
+            ('warderEvolutionPrimeTime.clock.cancel()', 'warderEvolutionPrimeTime.clock.save()'),
+            ('fieldMargins="26"', 'fieldMargins="0"'),
+        ):
+            changed = CURRENT.replace(old, new, 1)
+            self.assertNotEqual(changed, CURRENT)
+            self.assertNotEqual(style.normalized(ast.parse(changed)), BASELINE['logic_sha256'])
+
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 
