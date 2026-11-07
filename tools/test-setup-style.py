@@ -45,13 +45,14 @@ class SetupStyleTests(unittest.TestCase):
 
     def test_prime_time_exceptions_are_exact_and_scope_bound(self):
         ledger = json.loads((ROOT / 'design/channelselection-primetime/logic-edits.json').read_text())
-        self.assertEqual(len(ledger), 13)
+        self.assertEqual(len(ledger), 15)
         self.assertTrue(all(record['scope'] and record['after'] and record['before'] == '' for record in ledger))
         self.assertTrue(all('warderEvolutionPrimeTime' in record['after']
                             or 'fieldMargins' in record['after']
                             or 'g17MetrixHDRunningText' in record['after']
                             or 'g17ShowExtraEpg' in record['after']
-                            or 'in_default_channel_screen' in record['after'] for record in ledger))
+                            or 'in_default_channel_screen' in record['after']
+                            or 'has_clipped_events' in record['after'] for record in ledger))
         # Altered new settings/actions must still change the frozen fingerprint.
         for old, new in (
             ('ConfigYesNo(default=False)', 'ConfigYesNo(default=True)'),
@@ -60,6 +61,7 @@ class SetupStyleTests(unittest.TestCase):
             ('fieldMargins="26"', 'fieldMargins="0"'),
             ('size="685,224"', 'size="685,240"'),
             ('position="1150,695" size="685,226"', 'position="1150,685" size="685,236"'),
+            ('render="WarderChannelEpgClip"', 'render="UnknownRenderer"'),
         ):
             changed = CURRENT.replace(old, new, 1)
             self.assertNotEqual(changed, CURRENT)
