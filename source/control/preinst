@@ -17,42 +17,63 @@ warder_prepare_legacy_obsolete_files() {
     done
     return 0
 }
-# opkg/libsolv treats a differently named replacement as an upgrade and calls
-# this preinst before the old postrm. The owner-supplied r12.2 postrm exits
-# immediately for upgrade. Original 9.50 needs an exact verified upgrade guard.
-# Admit only these verified hooks and the actual upgrade invocation;
-# an unknown legacy remover still requires the existing prepared transition.
+# opkg/libsolv uses the original FullHDGlass postrm after the new preinst.
+# Upgrade is safe only after the old removal hook has been guarded. Accept the
+# 9.50 revision family, but never run an unreviewed remover during replacement.
+# An unrecognised hook is wrapped unchanged for genuine remove operations; only
+# upgrade-family operations are intercepted. Preserve original bytes separately.
 warder_verified_r12_upgrade() {
     [ "${1:-}" = upgrade ] || return 1
-    case "${2:-}" in 9.50|9.50-r12.2) ;; *) return 1 ;; esac
+    case "${2:-}" in 9.50|9.50-*) ;; *) return 1 ;; esac
     for warder_info in /var/lib/opkg/info /usr/lib/opkg/info; do
         warder_old_postrm="$warder_info/enigma2-skin-fullhdglass17.postrm"
         warder_old_prerm="$warder_info/enigma2-skin-fullhdglass17.prerm"
-        if [ -f "$warder_old_postrm" ] && [ ! -L "$warder_old_postrm" ] &&
-           [ ! -e "$warder_old_prerm" ] && [ ! -L "$warder_old_prerm" ]; then
-            warder_hook_sha=$(sha256sum "$warder_old_postrm" 2>/dev/null | awk '{print $1}')
-            case "$warder_hook_sha:${2:-}" in
-                d830f49a50c719a877aeb059c2f62e04105db1d3d9affbe467f8d2ae2788731d:9.50-r12.2|221154b0da30c99aae9ebbde247b29ed8462ee29bd2eaf30b3897e623d7e4b55:9.50)
-                    warder_prepare_legacy_obsolete_files "$warder_info"
-                    return $? ;;
-                f83221f89db5b50fb3b6ad6b8cb21ace89d195f9f5cc8a71543432a4f600c96a:9.50)
-                    # Keep the complete original remove behavior. Add only an
-                    # upgrade-family early exit to this exact known remover.
-                    # Atomic replacement; no opkg status database is modified.
-                    warder_hook_tmp="$warder_old_postrm.warder-guard.$$"
-                    if (umask 022; {
-                        printf '%s\n' '#!/bin/sh' '# FullHDGlass verified legacy upgrade guard v1' 'case "${1:-}" in upgrade|failed-upgrade|abort-upgrade|disappear) exit 0 ;; esac'
-                        cat "$warder_old_postrm"
-                    } > "$warder_hook_tmp") &&
-                       [ "$(sha256sum "$warder_hook_tmp" 2>/dev/null | awk '{print $1}')" = 221154b0da30c99aae9ebbde247b29ed8462ee29bd2eaf30b3897e623d7e4b55 ] &&
-                       chmod 755 "$warder_hook_tmp" && mv -f "$warder_hook_tmp" "$warder_old_postrm"; then
-                        warder_prepare_legacy_obsolete_files "$warder_info"
-                        return $?
-                    fi
-                    rm -f "$warder_hook_tmp"
-                    return 1 ;;
-            esac
+        [ -f "$warder_old_postrm" ] && [ ! -L "$warder_old_postrm" ] || continue
+        # If an unknown prerm is installed, it can run before this preinst;
+        # do not claim that the legacy transition is protected.
+        [ ! -e "$warder_old_prerm" ] && [ ! -L "$warder_old_prerm" ] || return 1
+        [ -s "$warder_old_postrm" ] && [ -r "$warder_old_postrm" ] || return 1
+        IFS= read -r warder_first_line < "$warder_old_postrm" || return 1
+        case "$warder_first_line" in '#!'*/sh|'#!'*/bash) ;; *) return 1 ;; esac
+        # The original remover stays intact as a forensic fallback. Do not
+        # alter /var/lib/opkg/status or any actual receiver configuration.
+        warder_old_backup="$warder_old_postrm.warder-original"
+        if [ -e "$warder_old_backup" ] || [ -L "$warder_old_backup" ]; then
+            [ -f "$warder_old_backup" ] && [ ! -L "$warder_old_backup" ] || return 1
+            # A repeated transaction is safe only if the installed script
+            # already has our exact upgrade guard marker.
+            grep -q '^# Warder legacy 9.50 upgrade guard v2$' "$warder_old_postrm" || return 1
+        else
+            warder_hook_tmp="$warder_old_postrm.warder-guard.$$"
+            warder_backup_tmp="$warder_old_backup.tmp.$$"
+            if ! (umask 077; cp -p "$warder_old_postrm" "$warder_backup_tmp"); then
+                rm -f "$warder_backup_tmp"
+                return 1
+            fi
+            if ! (umask 022; {
+                printf '%s\n' '#!/bin/sh' '# Warder legacy 9.50 upgrade guard v2' \
+                    'case "${1:-}" in upgrade|failed-upgrade|abort-upgrade|disappear) exit 0 ;; esac'
+                cat "$warder_backup_tmp"
+            } > "$warder_hook_tmp"); then
+                rm -f "$warder_hook_tmp" "$warder_backup_tmp"
+                return 1
+            fi
+            if ! sh -n "$warder_hook_tmp"; then
+                rm -f "$warder_hook_tmp" "$warder_backup_tmp"
+                return 1
+            fi
+            chmod 755 "$warder_hook_tmp" || return 1
+            # Write the backup first so failed installation can be audited.
+            if ! mv -f "$warder_backup_tmp" "$warder_old_backup"; then
+                rm -f "$warder_hook_tmp" "$warder_backup_tmp"
+                return 1
+            fi
+            if ! mv -f "$warder_hook_tmp" "$warder_old_postrm"; then
+                return 1
+            fi
         fi
+        warder_prepare_legacy_obsolete_files "$warder_info"
+        return $?
     done
     return 1
 }
