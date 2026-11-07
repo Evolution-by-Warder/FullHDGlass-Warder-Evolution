@@ -93,6 +93,15 @@ Neither did public web search. Therefore **no exact source provenance** is
 established for the installed Enigma2 binary, and source patch compatibility
 with the running image is **unverified**.
 
+The OE-Alliance 6.0 distro configuration `meta-oe/conf/distro/openatv.conf`
+selects `openatv/enigma2` branch **`8.0`** when BitBake's
+`DISTRO_TYPE` is `release`, and `master` otherwise. The receiver reports
+`imagetype=release`, making branch `8.0` a particularly important source
+candidate, although the actual resolved BitBake `DISTRO_TYPE` and `SRCREV`
+are not yet proven from the installed image. The PR CI explicitly checks
+the native patch against `8.0` as well as `master`. This does not
+establish that either branch's current HEAD equals `f9f72e10`.
+
 The OpenATV patch was independently applied by CI to public dated commit
 `66df86bd9fa56f817e33099c09ee1811c9aa1aab` and current upstream
 `master`. These are **source applicability checks**, not a native compile
