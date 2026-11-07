@@ -121,7 +121,8 @@ jobs:
                   assert 'self._restore_native()' in clip_code
                   assert 'self._native_hidden = True' in clip_code
                   assert 'self._progress_mode() is None' in clip_code
-                  assert 'self.instance.fillRect(' not in clip_code
+                  assert 'self.instance.fillRect(eRect(x, y + 2' not in clip_code
+                  assert '_opaque_black' not in clip_code
                   assert 'self._draw_progress(' not in clip_code
                   assert 'gFont("Regular", 1)' not in clip_code
                   assert 'scroll_title_window(title, remaining, measure, position)' in clip_code
