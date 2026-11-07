@@ -148,6 +148,8 @@ class ClippedEventTests(unittest.TestCase):
         self.assertIn("component.l.setElementFont(component.l.celServiceInfo, None)", content)
         self.assertIn("self._restore_native()", content)
         self.assertIn("component.instance.invalidate()", content)
+        self.assertIn("self._label.setNoWrap(1)", content)
+        self.assertIn("self._label.resize(eSize(4096, 120))", content)
         self.assertIn("if not drawing:", content)
         self.assertNotIn("fontSize = 0", content)
         xml = (ROOT / "source/package-root/usr/share/enigma2/hd_glass17/skin.xml").read_text(encoding="utf-8")
