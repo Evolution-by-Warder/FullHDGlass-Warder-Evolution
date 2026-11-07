@@ -21,8 +21,11 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('self.warderWholeLineScroll = False', renderer)
         self.assertIn('elif attrib == "warderWholeLineScroll":', renderer)
         self.assertIn('self.H = (self.H // self.lineHeight) * self.lineHeight', renderer)
-        self.assertIn('self.mStep = self.lineHeight', renderer)
-        self.assertIn('self.mStepTimeout = max(self.mStepTimeout, 800)', renderer)
+        self.assertIn('self.lineHeight = flh', renderer)
+        self.assertIn('or self.warderWholeLineScroll:', renderer)
+        self.assertIn('self.mStep = 2', renderer)
+        self.assertIn('self.mStepTimeout = 40', renderer)
+        self.assertNotIn('self.mStepTimeout = max(self.mStepTimeout, 800)', renderer)
         # The layout hook is limited to the default ChannelSelection screen.
         source = PLUGIN.read_text(encoding="utf-8")
         self.assertIn('if in_default_channel_screen and', source)
