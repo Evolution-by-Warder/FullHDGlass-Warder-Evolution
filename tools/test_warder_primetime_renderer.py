@@ -130,10 +130,12 @@ class PrimeTimeRendererTests(unittest.TestCase):
 
     def test_invalid_clock_falls_back_to_disabled(self):
         enabled.value = True
-        clock.value = ["bad", 25]
-        self.renderer.changed((Renderer.CHANGED_DEFAULT,))
-        self.assertFalse(self.renderer.instance.visible)
-        self.assertEqual(self.renderer.text, "")
+        for invalid in (["bad", 25], [24, 0], [-1, 0], [20, 60], [20]):
+            clock.value = invalid
+            self.renderer.changed((Renderer.CHANGED_DEFAULT,))
+            self.assertFalse(self.renderer.instance.visible)
+            self.assertEqual(self.renderer.text, "")
+
 
 
 if __name__ == "__main__":
