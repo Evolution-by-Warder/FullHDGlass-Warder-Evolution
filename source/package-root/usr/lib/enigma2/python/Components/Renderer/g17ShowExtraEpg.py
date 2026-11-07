@@ -100,6 +100,7 @@ class g17ShowExtraEpg(Renderer):
 		if self.instance:
 			if what[0] != self.CHANGED_CLEAR:
 				self.instance.clear(self.bcolor)
+				service = None
 				try:
 					service = self.source.service
 					marker = (service.flags & eServiceReference.isMarker == eServiceReference.isMarker)
