@@ -11,6 +11,7 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/g17ShowExtraEpg.py'
       - 'tools/test_warder_primetime.py'
       - 'tools/test_warder_primetime_runtime_layout.py'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml'
       - '.github/workflows/pr51-prime-time-layout.yml'
   pull_request:
     paths:
@@ -36,6 +37,7 @@ jobs:
           sparse-checkout: |
             /tools/
             /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
+            /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderPrimeTime.py
             /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderPrimeTime.py
