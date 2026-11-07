@@ -61,6 +61,7 @@ class g17MetrixHDRunningText(Renderer):
 		self.mRepeat = 0
 		self.mPageDelay = self.mPageLength = 0
 		self.lineHeight = 0		# for text height auto correction on dmm-enigma2
+		self.warderWholeLineScroll = False
 
 	GUI_WIDGET = eCanvas
 
@@ -125,6 +126,8 @@ class g17MetrixHDRunningText(Renderer):
 				elif attrib == "halign" and value in ("left","center","right","block"):
 					self.halign = { "left": eLabel.alignLeft, "center": eLabel.alignCenter, "right": eLabel.alignRight, "block": eLabel.alignBlock }[value]
 					self.txtflags |= { "left": RT_HALIGN_LEFT, "center": RT_HALIGN_CENTER, "right": RT_HALIGN_RIGHT, "block": RT_HALIGN_BLOCK }[value]
+				elif attrib == "warderWholeLineScroll":
+					self.warderWholeLineScroll = value == "1"
 				elif attrib == "noWrap":
 					setWrapFlag(attrib, value)
 				elif attrib == "options":
@@ -187,6 +190,16 @@ class g17MetrixHDRunningText(Renderer):
 			if flh > self.test_label.calculateSize().height():
 				self.lineHeight = flh
 			self.test_label.setText("")
+		# Opt-in for the default ChannelSelection description only. Use
+		# complete line-height units for both viewport and movement, so
+		# animated EPG lines cannot stop as half-visible bottom rows.
+		if self.warderWholeLineScroll and self.direction in (TOP, BOTTOM):
+			self.lineHeight = max(1, self.lineHeight)
+			if self.H >= self.lineHeight:
+				self.H = (self.H // self.lineHeight) * self.lineHeight
+				self.instance.setSize(eSize(self.W, self.H))
+			self.mStep = self.lineHeight
+			self.mStepTimeout = max(self.mStepTimeout, 800)
 		return ret
 
 	def doSuspend(self, suspended):
