@@ -5,6 +5,8 @@ on:
       - 'source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py'
       - 'tools/test_warder_channel_epg_clip.py'
+      - 'tools/test_warder_native_progressbar_independence.py'
+      - 'compatibility/native-enigma2-patches/**'
       - 'tools/test_warder_epg_text_fit.py'
       - 'tools/test_warder_pr51_clip_staging.py'
       - 'tools/stage-pr51-clip-candidate.py'
@@ -23,6 +25,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /tools/
+            /compatibility/native-enigma2-patches/
             /source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
             /source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
             /source/package-root/usr/share/enigma2/hd_glass17/skin.xml
@@ -33,6 +36,7 @@ jobs:
         run: |
           python -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
           python -m unittest discover -s tools -p 'test_warder_channel_epg_clip.py' -v
+          python -m unittest discover -s tools -p 'test_warder_native_progressbar_independence.py' -v
           python -m unittest discover -s tools -p 'test_warder_epg_text_fit.py' -v
           python -m unittest discover -s tools -p 'test_warder_pr51_clip_staging.py' -v
       - name: Enforce no masking or bar redraw
