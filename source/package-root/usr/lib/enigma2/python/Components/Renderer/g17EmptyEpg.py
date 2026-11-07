@@ -118,7 +118,10 @@ class g17EmptyEpg(VariableText, Renderer):
 					text_width = self.testSizeLabel.calculateSize().width()
 				pos = tmp.rfind(' ')
 				if pos != -1:
-					tmp = tmp[:pos].rstrip(' ') + "..."
+					candidate = tmp[:pos].rstrip(' ') + "..."
+					self.testSizeLabel.setText(candidate)
+					if self.testSizeLabel.calculateSize().width() <= available_width:
+						tmp = candidate
 			if self.backText != tmp:
 				self.backText = tmp					
 				ena = True
