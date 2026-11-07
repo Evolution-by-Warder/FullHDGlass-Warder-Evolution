@@ -61,7 +61,7 @@
   },
   {
     "scope": "cChannelsel",
-    "after": "if in_default_channel_screen and '</screen>' in line:\n    in_default_channel_screen = False",
+    "after": "if in_default_channel_screen and '</screen>' in line:\n    in_default_channel_screen = None",
     "before": ""
   }
 ]
