@@ -2368,7 +2368,7 @@
     <widget position="262,865" size="105,30" source="ServiceEvent" render="Label" font="Prive3;27" valign="bottom" foregroundColor="un777777" transparent="1">
       <convert type="g17ServiceNameEvent">StartTime</convert>
     </widget>
-    <widget position="352,865" size="465,30" source="ServiceEvent" render="g17EmptyEpg" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" foregroundColor="un777777" transparent="1">
+    <widget position="352,865" size="465,30" source="ServiceEvent" render="g17EmptyEpg" emptyText="EPG data unavailable" font="Prive3;27" valign="bottom" noWrap="1" foregroundColor="un777777" transparent="1" warderPrimeTimeGate="1">
       <convert type="g17ServiceNameEvent">NextEvent</convert>
       <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
 </widget>
@@ -2457,7 +2457,7 @@
 		<widget source="ServiceEvent" render="Progress" position="421,841" zPosition="1" pixmap="hd_glass17/slider/slider_tv.png" size="372,12" borderWidth="1" borderColor="grey">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1">
+		<widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="262,864" zPosition="1" size="690,33" font="Prive3;27" halign="center" backgroundColor="backgroundf" transparent="1" warderPrimeTimeGate="1">
 			<convert type="EventName">Name</convert>
 		  <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
 </widget>
@@ -2823,7 +2823,7 @@
     <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,136" zPosition="1" size="618,33" font="Prive4;30" halign="center" backgroundColor="backgroundf" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,205" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1">
+    <widget source="ServiceEvent" render="g17EmptyEpg" emptyText="Event data unavailable" position="189,205" zPosition="1" size="618,33" font="Prive4;27" halign="center" backgroundColor="backgroundf" transparent="1" warderPrimeTimeGate="1">
       <convert type="EventName">Name</convert>
       <convert type="WarderPrimeTimeGate">HideWhenEnabled</convert>
 </widget>
