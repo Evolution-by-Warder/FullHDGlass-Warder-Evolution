@@ -37,7 +37,7 @@ jobs:
       - name: Ensure candidate is based only on reviewed PR #51 commit
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor "65b47ebd049f9ce3ded84eb4de253539faa60a5f" HEAD
+          git merge-base --is-ancestor "fd0a57d56d04e03d5e4560d718595fa5aa28e255" HEAD
           test "$(cat source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version)" = "1.0.69"
           grep -Fx "Package: enigma2-plugin-skins-fullhdglass-warder-evolution" source/control/control
           grep -Fx "Version: 1.0.69-1" source/control/control
@@ -86,7 +86,7 @@ jobs:
               control_file.write_text(metadata, encoding="utf-8")
               # Visible origin marker in the candidate payload, never written to main.
               marker = payload / "usr/share/enigma2/hd_glass17/PR51-TEST-CANDIDATE.txt"
-              marker.write_text("PR51 EXPERIMENTAL TEST76. Source commit: 65b47ebd049f9ce3ded84eb4de253539faa60a5f\nNo automatic feed publication.\n", encoding="utf-8")
+              marker.write_text("PR51 EXPERIMENTAL TEST76. Source commit: " + subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip() + "\nNo automatic feed publication.\n", encoding="utf-8")
               spec = importlib.util.spec_from_file_location("warder_release_builder", root / "tools/build-release-ipk.py")
               builder = importlib.util.module_from_spec(spec)
               spec.loader.exec_module(builder)
