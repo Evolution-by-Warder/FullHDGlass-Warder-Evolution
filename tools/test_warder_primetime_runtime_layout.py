@@ -64,12 +64,13 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
         self.assertIn('size="685,224"', section)
         self.assertEqual(SKIN.read_bytes(), self.original)
 
-    def test_enabled_adds_footer_below_six_epg_without_moving_description(self):
+    def test_enabled_uses_sixth_slot_for_prime_time_after_five_epg_programmes(self):
         section = self.run_layout(True)
         self.assertIn('render="WarderChannelEpgClip"', section)
         self.assertIn('render="WarderPrimeTime" position="1150,898" size="685,38"', section)
         self.assertIn('position="1150,695" size="685,194"', section)
-        self.assertIn('numEvents="6"', section)
+        self.assertIn('numEvents="5"', section)
+        self.assertNotIn('numEvents="6"', section)
         self.assertIn('render="g17MetrixHDRunningText"', section)
         self.assertIn('position="1150,455"', section)
         self.assertIn('size="685,224"', section)
@@ -81,6 +82,7 @@ class PrimeTimeRuntimeLayoutTests(unittest.TestCase):
         first = self.run_layout(True)
         second = self.run_layout(True)
         self.assertIn('position="1150,695" size="685,194"', second)
+        self.assertIn('numEvents="5"', second)
         self.assertEqual(first, second)
         self.assertEqual(second.count('render="WarderPrimeTime"'), 1)
         reverted = self.run_layout(False)
