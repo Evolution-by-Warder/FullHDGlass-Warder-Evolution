@@ -64,7 +64,7 @@ class SetupStyleTests(unittest.TestCase):
             ('size="685,224"', 'size="685,240"'),
             ('position="1150,695" size="685,226"', 'position="1150,685" size="685,236"'),
             ('render="WarderChannelEpgClip"', 'render="UnknownRenderer"'),
-            ("elif line.rstrip().endswith('/>'):", "elif False:"),
+            ("and line.rstrip().endswith('/>'):", "and False:"),
         ):
             changed = CURRENT.replace(old, new, 1)
             self.assertNotEqual(changed, CURRENT)
