@@ -120,7 +120,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             self.assertIn('serviceInfoFont=', base_screen)
             self.assertEqual(scope["cChannelsel"](), "c")
             self.assertEqual(updated, runtime.read_text(encoding="utf-8"))
-            names = re.findall(r'<screen\\b[^>]*name="([^"]+)"', updated)
+            names = re.findall(r'<screen\b[^>]*name="([^"]+)"', updated)
             self.assertTrue(any(name.startswith("ChannelSelection-") for name in names))
             self.assertEqual(BASE.read_text(encoding="utf-8"), original)
 
@@ -165,7 +165,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('size="685,224"', changed_screen)
         self.assertIn('warderWholeLineScroll="1"', changed_screen)
         self.assertEqual(changed_screen.count('render="WarderChannelEpgClip"'), 0)
-        self.assertIn('position="60,96" size="1065,842"', changed_screen)
+        self.assertRegex(changed_screen, r'<widget name="list"[^>]*position="60,96"[^>]*size="1065,842"')
         self.assertIn('fieldMargins="26"', changed_screen)
         self.assertIn('position="1150,695" size="685,226"', changed_screen)
         # Default list should offer at most 6; larger fonts may fit fewer.
