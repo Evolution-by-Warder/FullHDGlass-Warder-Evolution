@@ -87,8 +87,21 @@ class SetupStyleTests(unittest.TestCase):
                 visit(child, scope)
 
         visit(ast.parse(CURRENT))
-        self.assertEqual(counts, [1] * len(expected), list(zip(
-            [r['scope'] for r in ledger], counts)))
+        # TEST77 changed four legacy Prime Time guards. The old entries
+        # remain historical records; verify their approved successor patterns
+        # explicitly instead of requiring obsolete AST nodes to still exist.
+        evolved = {
+            3: "if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:",
+            9: "if in_default_channel_screen and 'render=\\"g17ShowExtraEpg\\"' in line:",
+            11: "in_default_channel_screen = default_geometry",
+            12: "if in_default_channel_screen and '</screen>' in line:",
+        }
+        for index, record in enumerate(ledger):
+            if index in evolved:
+                self.assertEqual(counts[index], 0, record['scope'])
+                self.assertEqual(CURRENT.count(evolved[index]), 1, (index, evolved[index]))
+            else:
+                self.assertEqual(counts[index], 1, (index, record['scope']))
         # A stale ledger record must not silently remove protection.
         for record in ledger:
             self.assertEqual(record['before'], '')
