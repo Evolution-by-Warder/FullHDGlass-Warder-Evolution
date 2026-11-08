@@ -1448,7 +1448,8 @@
       "reason": "Official broadcaster confirms SID10702 and12303V. GenericBloomberg, BloombergBG andAdria artwork are wrong editions. PriorPR48checkpoint records officialHTSVG obtained; recover it before any render."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Technical identity verified. Original is wrong global Bloomberg edition; official HT SVG sources preserved, need MASTER V9 candidate rendering and artwork approval."
+    "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
+    "artwork_review": "bloomberght-review/review.json"
   },
   {
     "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
@@ -1492,7 +1493,8 @@
       "reason": "Exact tuple established by liveSatindex. SameHTedition asSID10702, but no approvedHTdonor in current referenceledger."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Technical identity verified. Original is wrong global Bloomberg edition; official HT SVG sources preserved, need MASTER V9 candidate rendering and artwork approval."
+    "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
+    "artwork_review": "bloomberght-review/review.json"
   },
   {
     "reference": "1_0_19_32_14_6E_DCA0000_0_0_0",

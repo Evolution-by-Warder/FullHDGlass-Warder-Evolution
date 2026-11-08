@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "working_commit": "5e3143a5581a1d5d952b6ca719069d72b7fdf172",
+  "regression": "tools/test-picon-publication-integrity.py",
+  "output": "Picon publication integrity regressions: PASS (metadata, ZIP coverage, orbital binding, explicit candidate count)",
+  "physical_checks": "batch-20261107.json + mezzo-recheck-20261107.json",
+  "remote_checks": "remote-verification-20261108.json",
+  "github_actions_at_check": "No workflow runs returned while PR remained draft; local integration checks are recorded, no claim of CI success.",
+  "production_merge": false,
+  "radio_changes": 0
+}

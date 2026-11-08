@@ -1,6 +1,6 @@
 # Warder Evolution – stav projektu
 
-**Aktualizované 7. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
+**Aktualizované 8. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
 
 
 ### 7. 11. 2026 – Channel Selection: dlhé EPG názvy a voliteľný Prime Time (pracovný kandidát, draft PR #51)
@@ -29,7 +29,9 @@
 - Znova overených deväť Mezzo ZIPov a 18 chránených CANAL+ SK/CZ (SHA256, CRC); nové balíky prešli porovnaním pôvodných položiek, rozmermi, platnosťou manifestu a aktuálnou inštalačnou funkciou prijímača s neporušeným používateľským súborom. Žiadna nová/renderovaná grafika sa nepridáva.
 - Front pôvodných 120: 6 opravených v kandidátovi, 3 doložené odchody presných referencií bez mazania historických PNG, 111 aktuálne blokovaných (10 z pôvodných REVIEW a 101 held). Fyzická neúplnosť pôvodného frontu je stále 114, z toho 3 odchody; odchody sa nepočítajú medzi opravy. Produkcia sa nemenila a tieto kandidátske počty nie sú publikované pokrytie.
 - [Dôkazy a presné počty](reports/vhannibal-followup-20261106/identity-evidence-20261107.json), [balíkové testy](reports/vhannibal-followup-20261106/batch-20261107.json), [Mezzo a CANAL kontrola](reports/vhannibal-followup-20261106/mezzo-recheck-20261107.json), [existujúci register dôvodov](reports/vhannibal-followup-20261106/remaining-review.json). Dôkazy PR #48 prečítané a zachované; jeho stará vetva sa nepoužila na prepísanie novšej produkcie.
-- Najbližšie: kontrolovaný MASTER V9 návrh BloombergHT z uložených oficiálnych SVG (žiadny nesprávny globálny Bloomberg), doloženie mapovania SIS/Betfred, aktuálna mesačná identita Kuukauden a správny FUNBOX HD. Produkčný merge PR #50 vyžaduje nový výslovný súhlas vlastníka.
+- Balíková dávka skutočne uložená ako [`5e3143a5581a1d5d952b6ca719069d72b7fdf172`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/5e3143a5581a1d5d952b6ca719069d72b7fdf172). Overených 371/371 vzdialených ciest a 27/27 nových binárnych častí stiahnutých a bitovo zhodných; aktualizované dôkazy sú v `remote-verification-20261108.json`. Regresný test `tools/test-picon-publication-integrity.py` PASS.
+- 8.11. pripravený [nový BloombergHT návrh](reports/vhannibal-followup-20261106/bloomberght-review/review.json): 9 PNG z oficiálnych čiernych/bielych SVG pre dve referencie, chránené farebné pixely a alfa, nemenné MASTER V9. **Čaká na schválenie grafiky, nie je v ZIPoch a neznižuje 111 otvorených.**
+- Najbližšie: schválenie BloombergHT grafiky a následné vloženie do existujúcich 42E balíkov; nezávisle dôkaz mapovania SIS/Betfred, mesačnej identity Kuukauden a správneho FUNBOX HD. Produkčný merge PR #50 vyžaduje nový výslovný súhlas vlastníka.
 
 ## Overené vetvy
 
