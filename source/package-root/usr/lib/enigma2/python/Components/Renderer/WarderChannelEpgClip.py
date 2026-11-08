@@ -268,8 +268,7 @@ class WarderChannelEpgClip(Renderer):
             if len(self._epg_snapshots) >= 96:
                 # The visible list is usually <= 30. Bound long browsing
                 # sessions without affecting currently visible rows.
-                if hasattr(self, '_epg_snapshots'):
-            self._epg_snapshots.clear()
+                self._epg_snapshots.clear()
             self._epg_snapshots[key] = (now, snapshot)
             self._epg_cache_misses += 1
             return snapshot
