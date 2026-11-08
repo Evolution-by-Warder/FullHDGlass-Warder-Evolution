@@ -512,7 +512,7 @@ class WarderChannelEpgClip(Renderer):
                 self._restore_native()
                 self._component = component
                 if hasattr(self, '_epg_snapshots'):
-            self._epg_snapshots.clear()
+                    self._epg_snapshots.clear()
                 self._native_disable_unsupported = False
                 self._last = None
             # Unsupported views must remain completely native; never
