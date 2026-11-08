@@ -1,5 +1,5 @@
 {
-  "status": "PASS_WORKING_CANDIDATE_ONLY",
+  "status": "QUARANTINED_IDENTITY_CONFLICT_NOT_COMPLETED",
   "date": "2026-11-08",
   "base_production_sha": "63489718287327be969fa36e24dd384736776720",
   "base_candidate_sha": "d401bbb3ed78bc6b043c29568b26580402d2ac86",
@@ -256,8 +256,12 @@
     "artwork": "Existing published ZOR TV gold artwork; nine PNG byte copies, no render. Same Uzbek TV programme; no generic numbered-service logo used.",
     "provider_coverage": "AREF service assigned to existing 520E selection. No dedicated AREF selector in live manifest."
   },
-  "remaining_open_after": 114,
-  "pr_total_repaired": 30,
-  "pr_total_png": 267,
-  "pr_total_unique_changed_zips": 99
+  "remaining_open_after": 115,
+  "pr_total_repaired": 29,
+  "pr_total_png": 258,
+  "pr_total_unique_changed_zips": 99,
+  "reason": "Later independent review found LyngSat exact SID900/TSID525/ONID115 identifies NOW since2026-10-16, PID2850/2950; Morpheus/KingOfSat still Zor TV PID208/308. Do not choose by crawl time. Restore active manifest/checksums and review counts to prior checkpoint. Uploaded immutable ZIP parts remain historical evidence only, not active packages.",
+  "conflicting_source": "https://www.lyngsat.com/muxes/TurkmenAlem-MonacoSat_East_10887-H.html",
+  "payload_commit": "0ca6a3c1daa72f7a3edb278366f364eef5b597a4",
+  "new_completed_references": 0
 }

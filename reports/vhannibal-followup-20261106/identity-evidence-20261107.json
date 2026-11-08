@@ -2416,9 +2416,9 @@
     "expanded_source_counts": {
       "source_union": 14856,
       "current_tv_in_source_cohort": 10458,
-      "covered_9_valid_candidate": 10344,
-      "technical_open": 114,
-      "original_cohort_open": 95,
+      "covered_9_valid_candidate": 10343,
+      "technical_open": 115,
+      "original_cohort_open": 96,
       "new_delta_technical_open": 19,
       "out_of_scope_including14new_radio": 2724,
       "dated_exact_departures": 5,
@@ -2549,13 +2549,6 @@
         "delta_unchanged": true,
         "asset_paths_changed": 0
       }
-    },
-    "scope_batch_20261108_02": {
-      "report": "scope-batch-20261108-02.json",
-      "references": 1,
-      "png": 9,
-      "zips": 9,
-      "remaining": 114
     }
   }
 }

@@ -3891,19 +3891,18 @@
         "added": 982,
         "preserved": 323
       },
-      "bytes": 16415772,
+      "bytes": 16278976,
       "family": "channel-transparent",
-      "filename": "warder-520e-220x132-transparent-260be34368e56295.zip",
+      "filename": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-260be34368e56295.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-260be34368e56295.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-260be34368e56295.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-260be34368e56295.zip.part03"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip.part02"
       ],
-      "png_count": 1459,
+      "png_count": 1458,
       "resolution": "220x132",
       "selector_id": "520E",
-      "sha256": "260be34368e56295ff259fa8ff70d510931e3af48c2411a6a832aa692b4f82ce",
+      "sha256": "4f3aecbaf7596e5bb1ba95afe32f14f1a6d0d6b5cc74d5005ce07e4bc9eb4643",
       "source_ref": "1be99df112e0c22038e98841160d4dd763d5ad70",
       "source_repository": "Evolution-by-Warder/Trezor",
       "vhannibal_complete_20261105": {
@@ -3918,12 +3917,6 @@
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
       },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
-      },
       "warder_key": "52.0e"
     },
     {
@@ -3936,20 +3929,19 @@
         "added": 982,
         "preserved": 323
       },
-      "bytes": 34847625,
+      "bytes": 34693597,
       "family": "channel-black",
-      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip",
+      "filename": "warder-520e-220x132-black-69e947187eb7dabc.zip",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-b162136f8d2a32f4.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-b162136f8d2a32f4.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-b162136f8d2a32f4.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-b162136f8d2a32f4.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-b162136f8d2a32f4.zip.part04"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-69e947187eb7dabc.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-69e947187eb7dabc.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-69e947187eb7dabc.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-black-69e947187eb7dabc.zip.part03"
       ],
-      "png_count": 1459,
+      "png_count": 1458,
       "resolution": "220x132",
       "selector_id": "520E",
-      "sha256": "b162136f8d2a32f4eb9b710a58254d17cdea3d565092a0cc59b52331f556725c",
+      "sha256": "69e947187eb7dabcac71c9c6e2516e5e12b4ccc5792ea991865fcf5db231b0a6",
       "source_ref": "e6ec4c9d3d9be47b7272810c26f03a5d7f276c08",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "unchanged622_20261104": {
@@ -3968,12 +3960,6 @@
           "1_0_16_2C0_20B_73_2080000_0_0_0"
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
-      },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
       },
       "warder_key": "52.0e"
     },
@@ -3987,20 +3973,19 @@
         "added": 982,
         "preserved": 323
       },
-      "bytes": 31605441,
+      "bytes": 31451338,
       "family": "channel-white",
-      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip",
+      "filename": "warder-520e-220x132-white-bbb9718559b700c0.zip",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-0430ae5f7919da3c.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-0430ae5f7919da3c.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-0430ae5f7919da3c.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-0430ae5f7919da3c.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-0430ae5f7919da3c.zip.part04"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-bbb9718559b700c0.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-bbb9718559b700c0.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-bbb9718559b700c0.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-220x132-white-bbb9718559b700c0.zip.part03"
       ],
-      "png_count": 1459,
+      "png_count": 1458,
       "resolution": "220x132",
       "selector_id": "520E",
-      "sha256": "0430ae5f7919da3c24530e3b160430aed76b7ad861be34049ae7e8a7682980e7",
+      "sha256": "bbb9718559b700c0ae20ed0ed14183dbb5aa6f8ebe591192e55c08796120b29e",
       "source_ref": "e6ec4c9d3d9be47b7272810c26f03a5d7f276c08",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "unchanged622_20261104": {
@@ -4019,12 +4004,6 @@
           "1_0_16_2C0_20B_73_2080000_0_0_0"
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
-      },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
       },
       "warder_key": "52.0e"
     },
@@ -22253,21 +22232,20 @@
         "added": 1089,
         "preserved": 0
       },
-      "bytes": 2293560,
+      "bytes": 2184496,
       "family": "channel-transparent",
-      "filename": "warder-520e-50x30-transparent-ca157bc5bef8a901.zip",
+      "filename": "warder-520e-50x30-transparent-de654008e4705a75.zip",
       "kind": "satellite",
       "orbital_position": "52.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part03"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-de654008e4705a75.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-de654008e4705a75.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-transparent-de654008e4705a75.zip.part02"
       ],
-      "png_count": 1340,
+      "png_count": 1339,
       "resolution": "50x30",
       "selector_id": "520E",
-      "sha256": "ca157bc5bef8a9016197da8dc5feaaa42ac02e15602ec47b8a5b8aa3be90c3ee",
+      "sha256": "de654008e4705a75cac23d6643d3bca4819cf02d80f5d724e0ea843b1f3021d5",
       "source_ref": "1be99df112e0c22038e98841160d4dd763d5ad70",
       "source_repository": "Evolution-by-Warder/Trezor",
       "vhannibal_complete_20261105": {
@@ -22282,12 +22260,6 @@
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
       },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
-      },
       "warder_key": "52.0e"
     },
     {
@@ -22295,21 +22267,20 @@
         "added": 1089,
         "preserved": 0
       },
-      "bytes": 2893428,
+      "bytes": 2783961,
       "family": "channel-white",
-      "filename": "warder-520e-50x30-white-d665a4c8857ef8d2.zip",
+      "filename": "warder-520e-50x30-white-05c5042379bdd087.zip",
       "kind": "satellite",
       "orbital_position": "52.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-d665a4c8857ef8d2.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-d665a4c8857ef8d2.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-d665a4c8857ef8d2.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-d665a4c8857ef8d2.zip.part03"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-05c5042379bdd087.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-05c5042379bdd087.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-white-05c5042379bdd087.zip.part02"
       ],
-      "png_count": 1340,
+      "png_count": 1339,
       "resolution": "50x30",
       "selector_id": "520E",
-      "sha256": "d665a4c8857ef8d2dbef2f345bafcbf1e357fb9b553fa4e95354d7bb09f052d4",
+      "sha256": "05c5042379bdd0872530c5082657197a84c5076e2d9783a42ca69cda596232d2",
       "source_ref": "e6ec4c9d3d9be47b7272810c26f03a5d7f276c08",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "unchanged622_20261104": {
@@ -22329,12 +22300,6 @@
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
       },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
-      },
       "warder_key": "52.0e"
     },
     {
@@ -22342,21 +22307,20 @@
         "added": 1089,
         "preserved": 0
       },
-      "bytes": 2959221,
+      "bytes": 2849113,
       "family": "channel-black",
-      "filename": "warder-520e-50x30-black-a4293c9b7feae148.zip",
+      "filename": "warder-520e-50x30-black-c0624ddac6603fe7.zip",
       "kind": "satellite",
       "orbital_position": "52.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-a4293c9b7feae148.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-a4293c9b7feae148.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-a4293c9b7feae148.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-a4293c9b7feae148.zip.part03"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-c0624ddac6603fe7.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-c0624ddac6603fe7.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-50x30-black-c0624ddac6603fe7.zip.part02"
       ],
-      "png_count": 1340,
+      "png_count": 1339,
       "resolution": "50x30",
       "selector_id": "520E",
-      "sha256": "a4293c9b7feae14808a662ddf8104a1617219d5c39653ca0068628a0400be4fa",
+      "sha256": "c0624ddac6603fe7dc81be5b485293ed455a6c9103672f5003185f25c0e190f2",
       "source_ref": "e6ec4c9d3d9be47b7272810c26f03a5d7f276c08",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "unchanged622_20261104": {
@@ -22376,12 +22340,6 @@
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
       },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
-      },
       "warder_key": "52.0e"
     },
     {
@@ -22389,24 +22347,23 @@
         "added": 1089,
         "preserved": 0
       },
-      "bytes": 40628062,
+      "bytes": 40458034,
       "family": "channel-transparent",
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip",
       "kind": "satellite",
       "orbital_position": "52.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part04",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part05",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part06"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part04",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part05"
       ],
-      "png_count": 1340,
+      "png_count": 1339,
       "resolution": "400x240",
       "selector_id": "520E",
-      "sha256": "bdf7fa6057316d40b0ced31d3a09c5144d7aa00f8daf8afb73e8068266be38f1",
+      "sha256": "c58c5c4c9ec57cb629c61b75e823ef3c786f8d80f49244f19439ee199a9248c2",
       "source_ref": "1be99df112e0c22038e98841160d4dd763d5ad70",
       "source_repository": "Evolution-by-Warder/Trezor",
       "vhannibal_complete_20261105": {
@@ -22421,12 +22378,6 @@
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
       },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
-      },
       "warder_key": "52.0e"
     },
     {
@@ -22434,26 +22385,25 @@
         "added": 1089,
         "preserved": 0
       },
-      "bytes": 48679603,
+      "bytes": 48469985,
       "family": "channel-white",
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip",
       "kind": "satellite",
       "orbital_position": "52.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part04",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part05",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part06",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part07",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6ad6782edc78d596.zip.part08"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part04",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part05",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part06",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-white-6b601621d5210256.zip.part07"
       ],
-      "png_count": 1340,
+      "png_count": 1339,
       "resolution": "400x240",
       "selector_id": "520E",
-      "sha256": "6ad6782edc78d596c9de8abe0e44a0d5282a8732faefe4fd8e7af6dc11ea3a74",
+      "sha256": "6b601621d52102569b1c6cb4c9c616e3ee23d433a3dcd7355555cd86d821df3b",
       "source_ref": "e6ec4c9d3d9be47b7272810c26f03a5d7f276c08",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "unchanged622_20261104": {
@@ -22472,12 +22422,6 @@
           "1_0_16_2C0_20B_73_2080000_0_0_0"
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
-      },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
       },
       "warder_key": "52.0e"
     },
@@ -22486,26 +22430,25 @@
         "added": 1089,
         "preserved": 0
       },
-      "bytes": 46994440,
+      "bytes": 46784110,
       "family": "channel-black",
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip",
       "kind": "satellite",
       "orbital_position": "52.0e",
       "parts": [
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part00",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part01",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part02",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part03",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part04",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part05",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part06",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part07",
-        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-cb4459a5917cf8fd.zip.part08"
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part00",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part01",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part02",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part03",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part04",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part05",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part06",
+        "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/assets/warder/downloads/picons/channels/warder-520e-400x240-black-2cb86f56960a72c6.zip.part07"
       ],
-      "png_count": 1340,
+      "png_count": 1339,
       "resolution": "400x240",
       "selector_id": "520E",
-      "sha256": "cb4459a5917cf8fd1e186569b53319d1eaf0746ada0f86c3dbe948ed11106e2b",
+      "sha256": "2cb86f56960a72c6f483c995c069231f21f568e5c45a40899c06d3f0909bb56e",
       "source_ref": "e6ec4c9d3d9be47b7272810c26f03a5d7f276c08",
       "source_repository": "Evolution-by-Warder/PiconHub-Warder-Evolution",
       "unchanged622_20261104": {
@@ -22524,12 +22467,6 @@
           "1_0_16_2C0_20B_73_2080000_0_0_0"
         ],
         "report": "reports/vhannibal-followup-20261106/batch-20261107.json"
-      },
-      "vhannibal_scope02_20261108": {
-        "references": [
-          "1_0_16_384_20D_73_2080000_0_0_0"
-        ],
-        "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
       },
       "warder_key": "52.0e"
     },
@@ -42751,258 +42688,213 @@
     },
     {
       "bytes": 16777216,
-      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip.part00",
+      "filename": "warder-520e-220x132-black-69e947187eb7dabc.zip.part00",
       "sha256": "3eb4105249d6644481e9b03b644d45ce83ace847fdaad10ef2b4c56c65db2582"
     },
     {
       "bytes": 14335167,
-      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip.part01",
+      "filename": "warder-520e-220x132-black-69e947187eb7dabc.zip.part01",
       "sha256": "f6ed50c780e5ce6c806ff91cbd28905a89e793b15ac0ee523408bd84773b4e0e"
     },
     {
       "bytes": 3430396,
-      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip.part02",
+      "filename": "warder-520e-220x132-black-69e947187eb7dabc.zip.part02",
       "sha256": "12923c7a0c4e5e70efe28d68e6f783ee3b20077c33f89fd0a852011456fd0ea2"
     },
     {
       "bytes": 150818,
-      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip.part03",
+      "filename": "warder-520e-220x132-black-69e947187eb7dabc.zip.part03",
       "sha256": "0b1241c865a3bd0934929e986b62c7c941b2cd55f1b9f56ded7bb7beccc8410c"
     },
     {
-      "bytes": 154028,
-      "filename": "warder-520e-220x132-black-b162136f8d2a32f4.zip.part04",
-      "sha256": "f0cdaba0bd23d807c821ddc4f1a0ec9de2eaf933803e8760f88cba59fcc99e91"
-    },
-    {
       "bytes": 14236147,
-      "filename": "warder-520e-220x132-transparent-260be34368e56295.zip.part00",
+      "filename": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip.part00",
       "sha256": "0b37f5bc4fecdb4301ac04903acb207956032b5bb870d1b2fc9c7afca0c19d7f"
     },
     {
       "bytes": 1924729,
-      "filename": "warder-520e-220x132-transparent-260be34368e56295.zip.part01",
+      "filename": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip.part01",
       "sha256": "65e3e33f2c52140cd91c282a5b99a872d62b4ca197072dae91b33acd35dd7670"
     },
     {
       "bytes": 118100,
-      "filename": "warder-520e-220x132-transparent-260be34368e56295.zip.part02",
+      "filename": "warder-520e-220x132-transparent-4f3aecbaf7596e5b.zip.part02",
       "sha256": "3b40acc61d4e1516b0c266e79e22a8f8ea5b743a5c968440ad3dc5cdd1c75f06"
     },
     {
-      "bytes": 136796,
-      "filename": "warder-520e-220x132-transparent-260be34368e56295.zip.part03",
-      "sha256": "d7fb32f75c7d8c7f1de6a53e1e779ae762b261968cdc43a4e269102eeb31c26b"
-    },
-    {
       "bytes": 16777216,
-      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip.part00",
+      "filename": "warder-520e-220x132-white-bbb9718559b700c0.zip.part00",
       "sha256": "619d5aeb64d31e2ef5a08417f6a00e6760c13f672316e085dca13747c27bef88"
     },
     {
       "bytes": 11026720,
-      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip.part01",
+      "filename": "warder-520e-220x132-white-bbb9718559b700c0.zip.part01",
       "sha256": "9d1cdb7b26732cc2f8d589b730429aaf6576ebbac07a996824c6ed641514b970"
     },
     {
       "bytes": 3496292,
-      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip.part02",
+      "filename": "warder-520e-220x132-white-bbb9718559b700c0.zip.part02",
       "sha256": "7e854efeafd8deecf263750ea0886abec8e7e121b902ec922e2cc3459640551d"
     },
     {
       "bytes": 151110,
-      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip.part03",
+      "filename": "warder-520e-220x132-white-bbb9718559b700c0.zip.part03",
       "sha256": "eb9fe968477154a0bbca78a1bc197d5aadf4ec0849aeb2c40661336c657dd598"
     },
     {
-      "bytes": 154103,
-      "filename": "warder-520e-220x132-white-0430ae5f7919da3c.zip.part04",
-      "sha256": "6c9f1c32521b0f99bb9f94f0d048e2e3485b17723db56f185c6acded5b2b7557"
-    },
-    {
       "bytes": 16777216,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part00",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part00",
       "sha256": "eaf4d13619c36d740fe5a68a020f975e69e66ea14b7ce8b478a8727455740705"
     },
     {
       "bytes": 12476811,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part01",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part01",
       "sha256": "51f45d81a7709f308d4d951bad8e89ee7645ad91e77893a7533fa213b447141a"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part02",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part02",
       "sha256": "f7a1f3020bf14a9ba3b84d9def15e08852070d00ccced90cca7c3d0227e4554d"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part03",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part03",
       "sha256": "93320f75ccced7239a2a00cec2ab5df494edb03433dc45d97eff56633684d225"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part04",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part04",
       "sha256": "eb3d1befbc15aff58370445dda8b67f56719f7ec9ceb5ab4e2b4351b400b8f13"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part05",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part05",
       "sha256": "9742fc8ead9ccc3e55e6ab817b50333cac274af1b8bfaee63aac06ad4bc1e2c5"
     },
     {
       "bytes": 629439,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part06",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part06",
       "sha256": "b03db23262c71bcea511c44ee3a951ca5c2f1c105e432ab65e3cd42de4d5626c"
     },
     {
       "bytes": 123428,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part07",
+      "filename": "warder-520e-400x240-black-2cb86f56960a72c6.zip.part07",
       "sha256": "d34366a5f68abeec78e952bf99ed43b150ee540235f49ca90c7cef52a2ffc2d5"
     },
     {
-      "bytes": 210330,
-      "filename": "warder-520e-400x240-black-cb4459a5917cf8fd.zip.part08",
-      "sha256": "7d8955450b5a404ff3f37e9ec6426bd40315109ebbd8919cc127597e0b5b1aa5"
-    },
-    {
       "bytes": 18874368,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part00",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part00",
       "sha256": "ba8ae0bb4d2763f39b6b66b1f5bd712955368c5cdfd9b831a5f0bbd1677f90c9"
     },
     {
       "bytes": 9917736,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part01",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part01",
       "sha256": "ba63215b321e15032ed4310ef3d6b375c73bc34f904a188a361aaa69926cfdd6"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part02",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part02",
       "sha256": "3cf3e3b7ff96953d9eb43e9a8d172c43ca1d23d91948d4d976a20fe8e2085788"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part03",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part03",
       "sha256": "97fa300f8ab61913fdeaac404d5b455cff8127b5dc07e82be6d1711cb684009c"
     },
     {
       "bytes": 3163205,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part04",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part04",
       "sha256": "a182436d42ec8800f574071a8d7d19804bae373ae8b0e21fc36197d476f2e466"
     },
     {
       "bytes": 114117,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part05",
+      "filename": "warder-520e-400x240-transparent-c58c5c4c9ec57cb6.zip.part05",
       "sha256": "4704c86c374df4300562e6566bb7998aa8456a8980a2cfc9be0a03eee377a60f"
     },
     {
-      "bytes": 170028,
-      "filename": "warder-520e-400x240-transparent-bdf7fa6057316d40.zip.part06",
-      "sha256": "5c45c39bcfc0009749968028bd9b7afba942610cc55ca12547a71357442eaba0"
-    },
-    {
       "bytes": 16777216,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part00",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part00",
       "sha256": "259823623936f55f7c11f3655853221f2fefedc5048b0ecfe63991bf1f168a9f"
     },
     {
       "bytes": 13637816,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part01",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part01",
       "sha256": "0d315a8745906be5a04f59162dd2b4636edaba2f831f2816de911e80331ad1c4"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part02",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part02",
       "sha256": "35db930a6fdf50d4fb9026e1d2e5580a44aff970439a423f6982cdef17283abd"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part03",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part03",
       "sha256": "6b4a325e1dd3e8d87f27693c8a33d8d9964d84eb6bb33af41553cb0c360a47ee"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part04",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part04",
       "sha256": "9ea05178715e561577a598d9e29dcaece34c97eec94edac3e4cae2e42166a365"
     },
     {
       "bytes": 4194304,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part05",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part05",
       "sha256": "5dd83dc34b33cae8669e5e419e47c740d40d2ea515d5af2e90b47b462d0bc993"
     },
     {
       "bytes": 1152172,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part06",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part06",
       "sha256": "79539badd548125bc0a2ad82a30499e4c4efd5d2b901d906e88d4a14d913598d"
     },
     {
       "bytes": 125565,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part07",
+      "filename": "warder-520e-400x240-white-6b601621d5210256.zip.part07",
       "sha256": "1f29588e003502c6664269a4d9ccfe9cb301cc5e802bf1ccdf1a067d682357e1"
     },
     {
-      "bytes": 209618,
-      "filename": "warder-520e-400x240-white-6ad6782edc78d596.zip.part08",
-      "sha256": "b517c1cec227f0d53d27e61a8619892640b1900d915c50f127edfb1f992c4f55"
-    },
-    {
       "bytes": 2002893,
-      "filename": "warder-520e-50x30-black-a4293c9b7feae148.zip.part00",
+      "filename": "warder-520e-50x30-black-c0624ddac6603fe7.zip.part00",
       "sha256": "da5b9f5d3e08f46fdca4f6eb4e191a5450cdf331002992818957ba9c0e7c4b49"
     },
     {
       "bytes": 738798,
-      "filename": "warder-520e-50x30-black-a4293c9b7feae148.zip.part01",
+      "filename": "warder-520e-50x30-black-c0624ddac6603fe7.zip.part01",
       "sha256": "1b356df2eae367026b4235f71665ecf0a8c0e770c2b8e7afc621ace8534acdff"
     },
     {
       "bytes": 107422,
-      "filename": "warder-520e-50x30-black-a4293c9b7feae148.zip.part02",
+      "filename": "warder-520e-50x30-black-c0624ddac6603fe7.zip.part02",
       "sha256": "9a88b260d3655dc8d4d3ded08ebe30a78e2f9b3fac6c861b58418f39c0a1a828"
     },
     {
-      "bytes": 110108,
-      "filename": "warder-520e-50x30-black-a4293c9b7feae148.zip.part03",
-      "sha256": "14f4b844de6d73d962d1bcba20d0dc18b46664f56389826ee875c2ea1c2db77e"
-    },
-    {
       "bytes": 1432945,
-      "filename": "warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part00",
+      "filename": "warder-520e-50x30-transparent-de654008e4705a75.zip.part00",
       "sha256": "0d73b997013fbdb488d0cf3f7c2da8d7b3b1646acccc8db100d4f2e907edc390"
     },
     {
       "bytes": 644720,
-      "filename": "warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part01",
+      "filename": "warder-520e-50x30-transparent-de654008e4705a75.zip.part01",
       "sha256": "b8b7330a39760fae9fc9478cf26673a179d40f9324e85714da2a899b5373d461"
     },
     {
       "bytes": 106831,
-      "filename": "warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part02",
+      "filename": "warder-520e-50x30-transparent-de654008e4705a75.zip.part02",
       "sha256": "042c0709916b8ab5d716500bd2b021f7f02ae833387bd4d1f2cc43a1d5120f6e"
     },
     {
-      "bytes": 109064,
-      "filename": "warder-520e-50x30-transparent-ca157bc5bef8a901.zip.part03",
-      "sha256": "662d9f390dc90196f2e140a868ef8dbf80942708534df655caf6397c0a0ec670"
-    },
-    {
       "bytes": 1990019,
-      "filename": "warder-520e-50x30-white-d665a4c8857ef8d2.zip.part00",
+      "filename": "warder-520e-50x30-white-05c5042379bdd087.zip.part00",
       "sha256": "1b87d1221490622afb691f1b4c408eda90c7fd37ca3f1a9f49a143e88271c271"
     },
     {
       "bytes": 686512,
-      "filename": "warder-520e-50x30-white-d665a4c8857ef8d2.zip.part01",
+      "filename": "warder-520e-50x30-white-05c5042379bdd087.zip.part01",
       "sha256": "dc1b1eb770ccc7cd75eae02a6778773733e2c31e20833ee24a724650f9763473"
     },
     {
       "bytes": 107430,
-      "filename": "warder-520e-50x30-white-d665a4c8857ef8d2.zip.part02",
+      "filename": "warder-520e-50x30-white-05c5042379bdd087.zip.part02",
       "sha256": "5cae7faf8a905d2a95ed1f5408c4f37cb0a4bc1802ee7c4f9e3de24be0cb321d"
-    },
-    {
-      "bytes": 109467,
-      "filename": "warder-520e-50x30-white-d665a4c8857ef8d2.zip.part03",
-      "sha256": "0e2821aa3cc11764d634881833282877cf091594879d0c3e9a7643fa41fc7364"
     },
     {
       "bytes": 295511,
@@ -46001,14 +45893,6 @@
     "production_merged": false,
     "rendered_artworks": 0,
     "report": "reports/vhannibal-followup-20261106/rtp-rebrand-batch-20261108.json"
-  },
-  "vhannibal_scope02_20261108": {
-    "added_png_entries": 9,
-    "changed_archives": 9,
-    "new_references": 1,
-    "production_merged": false,
-    "rendered_artworks": 0,
-    "report": "reports/vhannibal-followup-20261106/scope-batch-20261108-02.json"
   },
   "vhannibal_sky_boxoffice_20261108": {
     "added_png_entries": 9,
