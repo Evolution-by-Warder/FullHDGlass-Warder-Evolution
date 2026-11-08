@@ -1,6 +1,25 @@
 # Warder Evolution – stav projektu
 
+### Záchrana po páde Worku – 8. 11. 2026
+
+Zachované lokálne výstupy approved-output boli nájdené a znova overené: 6 referencií / 54 PNG / 18 ZIPov; 27 698 pôvodných členov bitovo identických. Zdrojové PNG majú presné SHA256 a Git bloby checkpointu `5dc376fcfd76a4f1255c93c5eac9e518ba79ae60`. Schválenie vlastníka bolo dohľadané v rozhovore z 8.11.2026 10:14:51 UTC a týka sa presne BloombergHT HD ×2, BETFRED TV1–3 a SIS Racing/SISSP. Staršie označenie čakajúce na schválenie nižšie je historické. Bez ďalších SISSP aliasov.
+
+Živý FullHDGlass main pri obnove: `63489718287327be969fa36e24dd384736776720`, produkcia 1.0.74. PiconHub main: `2b294878b14ca322fa277ba1e9781f83ec5649cf`. Staršie údaje 1.0.72 nižšie opisujú historické testy. Aktuálna záchrana mení iba existujúcu pracovnú vetvu PR #50. Spätný audit GitHubu bude zapísaný po uložení balíkov. Inštalačná funkcia produkcie 1.0.74 bola načítaná z aktuálneho main a jej AST sa zhoduje s otestovanou funkciou. Produkčné záznamy packages a parts manifestu sú zhodné s pôvodným základom; novší skin sa neprepisuje. Zachránený prieskum 20 kandidátov oproti 11 584 TV artworkom je v recovered-donor-search-20261108.json. Antena TSID má aj pri čerstvom vyhľadaní rozporné údaje, žiadny nový alias sa preto nevydáva za overený.
+
+Opakované lokálne overenie SHA256, častí, CRC, 54 zdrojových PNG, 18 chránených CANAL+ archívov a historického inštalátora PASS; fyzický prijímač netestovaný.
+
+
 **Aktualizované 8. 11. 2026.** Spoločný register pre pokračovanie v novom Worku. Tento Work rieši skin, PiconHub a satelitné picony vrátane Vhannibala. Rádiové picony a Warder Radio má na starosti samostatný Work. SHA nižšie sú overené východiská tejto inventúry. Pri ďalšej práci over živé vetvy, PR a vydania podľa [projektových pokynov](AGENTS.md).
+
+### Schválených šesť grafík zapracovaných – 8. 11. 2026
+
+Vlastník výslovne schválil pripravené BloombergHT HD (2 referencie), BETFRED TV1–3 a SIS Racing/SISSP. Do existujúcich 420E a 48E_A balíkov sa vložilo 54 PNG v 18 ZIPoch. Každý vstup má presný SHA256 z kontrolného prehľadu a Git blob zo schváleného checkpointu `5dc376f`; žiadne logo sa neprerobilo. Skratka SP sa nerozvíja a schválenie sa nevzťahuje na ďalšie aliasy.
+
+27 698 pôvodných archívnych položiek zostalo bitovo identických. Časti/ZIPy SHA256, CRC, rozmery, alfa, referencie, zhoda schválených vstupov, manifest a skutočný inštalátor stabilného 1.0.72 s platným používateľským PNG prešli. Všetkých 18 CANAL+ SK/CZ archívov prešlo SHA256/CRC a zostalo nezmenených. Regresie publikácie PASS; fyzický prijímač netestovaný.
+
+PR #50 má po tejto dávke 29 opravených referencií / 258 doplnených PNG / 99 jedinečných zmenených ZIPov. Zostáva 117 otvorených (98 pôvodných + 19 z nového zdrojového rozdielu). Produkčný main ostáva `12247acc20f699606f6d40f3783e4162b92674b9`; PiconHub main `8180aa0df6e185efad120338bc53ca04bc5e492a`. Žiadny merge, feed, skin, IPK ani rádio sa nemení. Pokračuje overovanie Antena TSID, FUNBOX a hľadanie donorov v celej existujúcej satelitnej a providerskej databáze.
+
+
 
 ### Overený koncový checkpoint satelitných piconov
 

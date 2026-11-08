@@ -2372,9 +2372,9 @@
     "expanded_source_counts": {
       "source_union": 14856,
       "current_tv_in_source_cohort": 10460,
-      "covered_9_valid_candidate": 10337,
-      "technical_open": 123,
-      "original_cohort_open": 104,
+      "covered_9_valid_candidate": 10343,
+      "technical_open": 117,
+      "original_cohort_open": 98,
       "new_delta_technical_open": 19,
       "out_of_scope_including14new_radio": 2722,
       "dated_exact_departures": 5,
@@ -2411,6 +2411,17 @@
         "https://www.lyngsat.com/muxes/Astra-2F_UK_12168-V.html",
         "https://channelpedia.yavdr.com/gen/DVB-S/S28.2E/LNBSetupHelperTable.html"
       ]
+    },
+    "owner_approved_six_20261108": {
+      "base": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+      "proof": "approved-artwork-six-batch-20261108.json",
+      "new_repaired_references": 6,
+      "new_png": 54,
+      "changed_zips": 18,
+      "pr_total_repaired_references": 29,
+      "pr_total_new_png": 258,
+      "pr_total_unique_changed_zips": 99,
+      "production_merged": false
     }
   }
 }

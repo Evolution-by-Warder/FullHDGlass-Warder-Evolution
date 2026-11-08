@@ -1,5 +1,5 @@
 {
-  "status": "GRAPHIC_REVIEW_READY_OWNER_APPROVAL_PENDING",
+  "status": "OWNER_APPROVED_20261108_INSERTED_IN_PR50_NOT_PRODUCTION",
   "checked_date": "2026-11-08",
   "files_unchanged_from_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
   "official_live_svg_hashes_still_match": true,
@@ -87,5 +87,11 @@
     }
   ],
   "visual_review": "Logo is BloombergHT circular HT brand, not global Bloomberg. Red element, letter geometry and immutable MASTER frames checked at all three sizes;50x30 is naturally small. The24 chromatic edge guard pixels are disclosed in review.json.",
-  "production_zip_changes": 0
+  "production_zip_changes": 0,
+  "prior_status_before_owner_approval": "GRAPHIC_REVIEW_READY_OWNER_APPROVAL_PENDING",
+  "owner_approval": {
+    "date": "2026-11-08",
+    "scope": "Exact prepared BloombergHT2,BetfredTV1-3,SIS Racing/SISSP1; user personally reviewed ARTWORK_APPROVAL.md. SISSP identity is limited to this prepared artwork; no expansion of SP or unrelated aliases.",
+    "production_merge_authorized": false
+  }
 }

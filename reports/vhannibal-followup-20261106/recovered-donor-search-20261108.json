@@ -1,0 +1,912 @@
+{
+  "status": "RECOVERED_SEARCH_NOT_APPROVAL",
+  "scanned_unique_published_tv_artworks": 11584,
+  "targets": 20,
+  "new_approved_references": 0,
+  "note": "Recovered completed search from interrupted Work; image similarity and even byte identity do not prove service identity. Existing holds remain.",
+  "candidates": [
+    {
+      "reference": "1_0_16_1E8C_D160_77E_DCA0000_0_0_0",
+      "name": "EL JUMHURIA TV",
+      "existing_hold_reason": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+      "matches": [
+        {
+          "score": 2298.1109619140625,
+          "selector": "235E",
+          "member": "1_0_16_36EE_C8C_3_EB0000_0_0_0.png",
+          "sha256": "9c36a234b63b5cbf86df9068aed03c0bd455c95925d93833352912be06524b04"
+        },
+        {
+          "score": 2379.784912109375,
+          "selector": "192E",
+          "member": "1_0_1_20_21_85_C00000_0_0_0.png",
+          "sha256": "dabf10c2d141881ffdaf4554da3425253767a0f32297d33d6c1b5755949c4518"
+        },
+        {
+          "score": 2457.9439697265625,
+          "selector": "130E",
+          "member": "1_0_1_13FC_5DC_13E_820000_0_0_0.png",
+          "sha256": "621aff701b3881eea1285d920a34ff764c9f1f3354e73dc653429371d422f0c5"
+        },
+        {
+          "score": 2460.9971923828125,
+          "selector": "390E",
+          "member": "1_0_1_16D_11_1C_1860000_0_0_0.png",
+          "sha256": "c49c79546c363dd730a0ca7595fd2b85e5ea600b554e2580af7574aa59568202"
+        },
+        {
+          "score": 2537.5223388671875,
+          "selector": "130E",
+          "member": "1_0_16_146_2648_D5_820000_0_0_0.png",
+          "sha256": "020f9ebf9073f76865a6ebfc8dccb8ae9fee82030809b5bed5e279c06c0dee90"
+        },
+        {
+          "score": 2541.39208984375,
+          "selector": "160E",
+          "member": "1_0_1_5E7_4E84_16E_A00000_0_0_0.png",
+          "sha256": "b1e211aa6d9684013ca0d96eba5ae40fe290c238cd69a43fbaa3f7aad376478f"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_16_1_A_16E_1860000_0_0_0",
+      "name": "Antena1",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "390E",
+          "member": "1_0_1_1_0_16E_1860000_0_0_0.png",
+          "sha256": "f706eb8c63e173518b4ba5dd841689672d5cecec80a87c76edbf8a8254f79601"
+        },
+        {
+          "score": 2393.47265625,
+          "selector": "390E",
+          "member": "1_0_1_6_0_16E_1860000_0_0_0.png",
+          "sha256": "36aef94befd6ce3987489a592c04f07318e5a11f4fc2212fea7398826b923b91"
+        },
+        {
+          "score": 2662.4671630859375,
+          "selector": "70W",
+          "member": "1_0_1_89D_16_800_DCA0000_0_0_0.png",
+          "sha256": "4c3cb0fde741c9df975cdb3b922db5452fc84e3cfb0c40bafd75caf683b8c1e4"
+        },
+        {
+          "score": 2795.2135009765625,
+          "selector": "70W",
+          "member": "1_0_1_1AC_10_6E_DCA0000_0_0_0.png",
+          "sha256": "712a217e04dd701764e4e5791fff6b82f6f441897e7d0c94cc099524c0975034"
+        },
+        {
+          "score": 2823.3798828125,
+          "selector": "282E",
+          "member": "1_0_16_D329_836_2_11A0000_0_0_0.png",
+          "sha256": "328508d23453ecd8f31cf6f5e3920750b6409d196f70e16217bfafcc4a3f0243"
+        },
+        {
+          "score": 2831.06982421875,
+          "selector": "282E",
+          "member": "1_0_1_CFA1_83A_2_11A0000_0_0_0.png",
+          "sha256": "16a2a516b41f2d9be69dcec9b6697d16d0738a9fcb175f7fad0735d5f33a0307"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_16_2_A_16E_1860000_0_0_0",
+      "name": "AntenaStars",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "08W",
+          "member": "1_0_1_76D2_2C0_600_E080000_0_0_0.png",
+          "sha256": "debe950505d2f709a785d8dfdb1ea733daf8a2e2273aea71e01eb6fa52b829de"
+        },
+        {
+          "score": 1226.0324096679688,
+          "selector": "390E",
+          "member": "1_0_1_2_0_16E_1860000_0_0_0.png",
+          "sha256": "896fed33bf65a0be18f0395a7466b05292e2c9c5d40014f2e126bc8404bb443f"
+        },
+        {
+          "score": 1950.161865234375,
+          "selector": "420E",
+          "member": "1_0_19_2C43_3_42_1A40000_0_0_0.png",
+          "sha256": "41dd8293e6e3d362667df2d5c081fff5805615b88bf0f80575f574149e89eda0"
+        },
+        {
+          "score": 1956.590087890625,
+          "selector": "420E",
+          "member": "1_0_19_CA6B_7B0E_42E_1A40000_0_0_0.png",
+          "sha256": "f58ce896d126d553035f2d043f0d6ded16e2b5d5f9d9eae3a1f1d38427eeebbb"
+        },
+        {
+          "score": 2036.374755859375,
+          "selector": "260E",
+          "member": "1_0_1_3_3_1_1040000_0_0_0.png",
+          "sha256": "83d7474f608ecfd81136ce363ba3a9c9680bb4e2b89a542ada8f1c36a992084d"
+        },
+        {
+          "score": 2037.89453125,
+          "selector": "390E",
+          "member": "1_0_16_2BE_146C_A7_1860000_0_0_0.png",
+          "sha256": "3097b22db29ac65a2a6a6dfc827cdeda495564a5014f8b955ad9336b6532e853"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_16_3_A_16E_1860000_0_0_0",
+      "name": "Antena3",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "192E",
+          "member": "1_0_1F_2BC0_40C_1_C00000_0_0_0.png",
+          "sha256": "5771ee2791a0be0ef4a8e79a5137bd33354f865727ec4974b553e58c3d039ee5"
+        },
+        {
+          "score": 4097.83447265625,
+          "selector": "130E",
+          "member": "1_0_16_13AE_2710_D5_820000_0_0_0.png",
+          "sha256": "df1d45ff7c1c22ef5ebe31dc51ecf95d9bd1d85a6e79b544d9665c425f509808"
+        },
+        {
+          "score": 4105.52587890625,
+          "selector": "420E",
+          "member": "1_0_19_C579_EBF1_42E_1A40000_0_0_0.png",
+          "sha256": "4b94d651d31a7af2ffdc9966ea8adf93651115be4d232bb1ae51f71539422c63"
+        },
+        {
+          "score": 4207.68603515625,
+          "selector": "390E",
+          "member": "1_0_16_2BD_146C_A7_1860000_0_0_0.png",
+          "sha256": "d8051514af9fe09cd5d6c6f21630641c3a9f86859248eef5063875618fde3ad1"
+        },
+        {
+          "score": 4232.91455078125,
+          "selector": "390E",
+          "member": "1_0_16_BE_D_1C_1860000_0_0_0.png",
+          "sha256": "4af1ddeadfd6b8848c2977207e198a075cd7aa788413d3377e58df5dc6708e7a"
+        },
+        {
+          "score": 4336.174560546875,
+          "selector": "390E",
+          "member": "1_0_1_51E_3F2_39E_1860000_0_0_0.png",
+          "sha256": "412dc11b5fbf5433ee1fd9e34cb6b5f85512a2393fcbb6bc060c1fc5a529bd8b"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_16_4_A_16E_1860000_0_0_0",
+      "name": "Happy Channel",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "390E",
+          "member": "1_0_1_4_0_16E_1860000_0_0_0.png",
+          "sha256": "3a1234c3aa341724c7c78b769aff5fb3e4ff083b017d9d787464ed11c56d7703"
+        },
+        {
+          "score": 2538.1505126953125,
+          "selector": "235E",
+          "member": "1_0_1_4E82_C8B_3_EB0000_0_0_0.png",
+          "sha256": "05dcc1569fc0248cf31436d263e0533aeb20a19b2c2d223c8c8f99747b9aacf1"
+        },
+        {
+          "score": 2600.037109375,
+          "selector": "130E",
+          "member": "1_0_1_427C_2BC0_13E_820000_0_0_0.png",
+          "sha256": "dab8f7188296cac077bec69a90cc1eb8d0b5f609bf8a647333347411c5897c25"
+        },
+        {
+          "score": 2600.30078125,
+          "selector": "130E",
+          "member": "1_0_1_427B_2BC0_13E_820000_0_0_0.png",
+          "sha256": "7959e91110dfea74b7282eb3d5afe53c14eacb64b056d08ce0fba39ff3553937"
+        },
+        {
+          "score": 2622.7218017578125,
+          "selector": "160E",
+          "member": "1_0_1_6D8_C544_16E_A00000_0_0_0.png",
+          "sha256": "d860df4a0ce58853daf407fc7118b1956de6b5cd7804ad76bfc3a75b28c3bfa5"
+        },
+        {
+          "score": 2626.5604248046875,
+          "selector": "150W",
+          "member": "1_0_1_8C_A_1_D7A0000_0_0_0.png",
+          "sha256": "0e5c2ca1dc79fcb91c60651933afefd75e60a166fcc68df5f2a00f2ddea9419e"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_16_5_A_16E_1860000_0_0_0",
+      "name": "Chefi.ro",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "08W",
+          "member": "1_0_1_76C7_2C0_600_E080000_0_0_0.png",
+          "sha256": "da0437b5b18123ea402dac95d4ab9434938c4cfecf79e9f81f4959c553c1a7a8"
+        },
+        {
+          "score": 2064.400634765625,
+          "selector": "260E",
+          "member": "1_0_16_5148_820_E0_1040000_0_0_0.png",
+          "sha256": "e72f8b01deb9612bc522fc8ae7a6f027c17c57b6d0b324bcd6a98d8985af139c"
+        },
+        {
+          "score": 2183.874267578125,
+          "selector": "420E",
+          "member": "1_0_11_40A2_9FC5_2A_1A40000_0_0_0.png",
+          "sha256": "2b958197ddf3fae7878a7a92870125d02d158e14434d9153b30540a399aa10be"
+        },
+        {
+          "score": 2270.692138671875,
+          "selector": "70W",
+          "member": "1_0_1_C8A_20_800_DCA0000_0_0_0.png",
+          "sha256": "7e6c85c41cac27192827744134363536f2c7dad1995e3fb94514e0ca8925e3af"
+        },
+        {
+          "score": 2281.8565673828125,
+          "selector": "70W",
+          "member": "1_0_1_B_9D08_77E_DCA0000_0_0_0.png",
+          "sha256": "c74f9cb72daf9938c0e14e981e312acc7495b907d4620fbb4ab87b5b9f45e5d4"
+        },
+        {
+          "score": 2328.3111572265625,
+          "selector": "130E",
+          "member": "1_0_19_392_2134_13E_820000_0_0_0.png",
+          "sha256": "b808cb10f42212f506566ddae08c549101ecb82398065cb8cd3f66942c3a4b85"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_16_6_A_16E_1860000_0_0_0",
+      "name": "Antena International",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 321.4592742919922,
+          "selector": "390E",
+          "member": "1_0_1_6_0_16E_1860000_0_0_0.png",
+          "sha256": "36aef94befd6ce3987489a592c04f07318e5a11f4fc2212fea7398826b923b91"
+        },
+        {
+          "score": 1780.55029296875,
+          "selector": "216E",
+          "member": "1_0_16_FA1_190_7FE_D70000_0_0_0.png",
+          "sha256": "b282101da3f1b0e7936683f9f272e4db2681a897c11eaa6d7a788e362e06753f"
+        },
+        {
+          "score": 2118.99609375,
+          "selector": "560E",
+          "member": "1_0_16_2AFA_B_FE_2300000_0_0_0.png",
+          "sha256": "9fded0bff5ebef22d4c3d3450c5d837de244b1c3da4cac1a3b925de9bf450966"
+        },
+        {
+          "score": 2166.51708984375,
+          "selector": "282E",
+          "member": "1_0_16_D329_836_2_11A0000_0_0_0.png",
+          "sha256": "328508d23453ecd8f31cf6f5e3920750b6409d196f70e16217bfafcc4a3f0243"
+        },
+        {
+          "score": 2176.1683349609375,
+          "selector": "260E",
+          "member": "1_0_1_A3C_0_0_1040000_0_0_0.png",
+          "sha256": "c7a2b2559bffc822226e4280af2e6af041f6309f6e838104939ef6767e8d1fac"
+        },
+        {
+          "score": 2308.5194091796875,
+          "selector": "282E",
+          "member": "1_0_16_EDB_7EB_2_11A0000_0_0_0.png",
+          "sha256": "fecf478602f14f143d5fcb72d1e88e9c6b2d782795680091754e85236728aba1"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_19_1E14_D160_77E_DCA0000_0_0_0",
+      "name": "AL-KAFEL TV",
+      "existing_hold_reason": "Same-name existing donor was inspected and has a different/conflicting graphic. EL JUMHURIA differs from new source; AL-KAFEL existing PNG spells ART Aflam1. No automatic copy or redesign. Need verified programme artwork.",
+      "matches": [
+        {
+          "score": 1394.9609985351562,
+          "selector": "390E",
+          "member": "1_0_1_146_11_1C_1860000_0_0_0.png",
+          "sha256": "9b196cdd76aa5bc73e7104fe8216b74ce0667429219b69827ee04ce0d254d47b"
+        },
+        {
+          "score": 1497.2557373046875,
+          "selector": "520E",
+          "member": "1_0_1_10_211E_211E_2080000_0_0_0.png",
+          "sha256": "e1ee080234c96dd7de01df08378e30ebbba085d294873aad846727cb6e4a3cdd"
+        },
+        {
+          "score": 1503.463134765625,
+          "selector": "282E",
+          "member": "1_0_1_C4B0_811_2_11A0000_0_0_0.png",
+          "sha256": "332e172d48a1df1cc1a083d6f6411bc6e1eaef1f8d833d11a59f603f82e74bc8"
+        },
+        {
+          "score": 1513.1022338867188,
+          "selector": "800E",
+          "member": "1_0_16_1FF_CB_1_3200000_0_0_0.png",
+          "sha256": "73d79e2125f757899763c85463801a7c101247990267cd16d1a65957d099b59b"
+        },
+        {
+          "score": 1526.6238403320312,
+          "selector": "130E",
+          "member": "1_0_1_1151_2AF8_13E_820000_0_0_0.png",
+          "sha256": "c276840cef183fc54f5096b49cd6cd221a3e5b37fbb9c2438a8980885f8dd7aa"
+        },
+        {
+          "score": 1585.7113037109375,
+          "selector": "192E",
+          "member": "1_0_19_1581_41F_1_C00000_0_0_0.png",
+          "sha256": "c9d1186f0ead7de0c55da6e85b07edc154601d3e5940c93b87f5ca28bf8a3579"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_19_6AC_1FB5_2BE_1040000_0_0_0",
+      "name": "StarzPlay-Movies",
+      "existing_hold_reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+      "matches": [
+        {
+          "score": 775.0661010742188,
+          "selector": "260E",
+          "member": "1_0_19_6A8_1FB5_2BE_1040000_0_0_0.png",
+          "sha256": "c9cc4c5a90e40f0bf861d35f857b4615f4437a47cdb02a66b41ed438e5eb6360"
+        },
+        {
+          "score": 785.5,
+          "selector": "260E",
+          "member": "1_0_19_6AA_1FB5_2BE_1040000_0_0_0.png",
+          "sha256": "36a7d753e833d61aa093512835b4724289022ab5905913a3325f318e1b936772"
+        },
+        {
+          "score": 851.1317749023438,
+          "selector": "260E",
+          "member": "1_0_19_6AB_1FB5_2BE_1040000_0_0_0.png",
+          "sha256": "671f64b03822bd13f4f7bdb980562b321a3a03a8faffdf2f211f9f90eeb7e13e"
+        },
+        {
+          "score": 893.5277404785156,
+          "selector": "260E",
+          "member": "1_0_19_6A9_1FB5_2BE_1040000_0_0_0.png",
+          "sha256": "e4c5935ec88fa9df153ab28f8c2e29139e8ded8e311bdaa047f82edd32d700db"
+        },
+        {
+          "score": 903.1573791503906,
+          "selector": "260E",
+          "member": "1_0_19_6A5_1FB5_2BE_1040000_0_0_0.png",
+          "sha256": "05e0a1c6ccc42a79aabf658eb5a66ac97dd3f62ef519519b647195ab9e12990c"
+        },
+        {
+          "score": 1178.47265625,
+          "selector": "260E",
+          "member": "1_0_19_6A6_1FB5_2BE_1040000_0_0_0.png",
+          "sha256": "1d74b459f9425230225d443cc019aeaef10cd2d044fb449ed0f52bb56569ef33"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_19_7_A_16E_1860000_0_0_0",
+      "name": "Antena HD",
+      "existing_hold_reason": "Current official Vhannibal setting has TSID10, independent transponder listings still TSID0 at same12656H/NID366. Do not invent the new service binding until discrepancy is resolved.",
+      "matches": [
+        {
+          "score": 849.0626525878906,
+          "selector": "390E",
+          "member": "1_0_1_1_0_16E_1860000_0_0_0.png",
+          "sha256": "f706eb8c63e173518b4ba5dd841689672d5cecec80a87c76edbf8a8254f79601"
+        },
+        {
+          "score": 2469.2840576171875,
+          "selector": "390E",
+          "member": "1_0_1_6_0_16E_1860000_0_0_0.png",
+          "sha256": "36aef94befd6ce3987489a592c04f07318e5a11f4fc2212fea7398826b923b91"
+        },
+        {
+          "score": 3065.023681640625,
+          "selector": "282E",
+          "member": "1_0_16_D329_836_2_11A0000_0_0_0.png",
+          "sha256": "328508d23453ecd8f31cf6f5e3920750b6409d196f70e16217bfafcc4a3f0243"
+        },
+        {
+          "score": 3080.956298828125,
+          "selector": "70W",
+          "member": "1_0_1_89D_16_800_DCA0000_0_0_0.png",
+          "sha256": "4c3cb0fde741c9df975cdb3b922db5452fc84e3cfb0c40bafd75caf683b8c1e4"
+        },
+        {
+          "score": 3103.4879150390625,
+          "selector": "549E",
+          "member": "1_0_16_D8DF_22B_70_2250000_0_0_0.png",
+          "sha256": "570545a69b3542bf8ba965c02ff52d276a99bc9b50ec036c892920c745d7c56d"
+        },
+        {
+          "score": 3143.558349609375,
+          "selector": "216E",
+          "member": "1_0_16_FA1_190_7FE_D70000_0_0_0.png",
+          "sha256": "b282101da3f1b0e7936683f9f272e4db2681a897c11eaa6d7a788e362e06753f"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_19_C782_83D_2_11A0000_0_0_0",
+      "name": "2117",
+      "existing_hold_reason": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "282E",
+          "member": "1_0_19_13B7_7ED_2_11A0000_0_0_0.png",
+          "sha256": "04314cbf61ba3da8d07df35c78b1e92d402991a35a61d3fa1221fcc8c3c3510b"
+        },
+        {
+          "score": 2201.2005615234375,
+          "selector": "48E_A",
+          "member": "1_0_1_42_C9_1_300000_0_0_0.png",
+          "sha256": "7c011cc805665f5ab5689d5fc04cd49c996bbc7a5298f4d551accc85e2c9e7de"
+        },
+        {
+          "score": 2324.5260009765625,
+          "selector": "08W",
+          "member": "1_0_16_7AB6_2CC_600_FFF80000_0_0_0.png",
+          "sha256": "e6607517efa51da0277779120e16d108f9d3cb6ba1c71754e4b1eccc6b0cf215"
+        },
+        {
+          "score": 2329.00439453125,
+          "selector": "235E",
+          "member": "1_0_16_36FE_C8C_3_EB0000_0_0_0.png",
+          "sha256": "768c716b956f0d42838d4e4953abe0334f1c02c7f987109b428665b0d1012d14"
+        },
+        {
+          "score": 2351.9827880859375,
+          "selector": "300W",
+          "member": "1_0_1_177E_26_36_CE40000_0_0_0.png",
+          "sha256": "4ea3034a965a8ef2226b393e6f64c071e8443b77dbe16fabf48264a723e672e6"
+        },
+        {
+          "score": 2371.850341796875,
+          "selector": "90E",
+          "member": "1_0_1_44B_4_AA_5A0000_0_0_0.png",
+          "sha256": "0c57ce337926baca1c58833e81e443926634fac31520a5b27116019ab35cd4d1"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_19_C786_83D_2_11A0000_0_0_0",
+      "name": "2118",
+      "existing_hold_reason": "Numbered technical service; source pixels match many different Sky test services, no unique programme identity.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "282E",
+          "member": "1_0_19_13B7_7ED_2_11A0000_0_0_0.png",
+          "sha256": "04314cbf61ba3da8d07df35c78b1e92d402991a35a61d3fa1221fcc8c3c3510b"
+        },
+        {
+          "score": 2201.2005615234375,
+          "selector": "48E_A",
+          "member": "1_0_1_42_C9_1_300000_0_0_0.png",
+          "sha256": "7c011cc805665f5ab5689d5fc04cd49c996bbc7a5298f4d551accc85e2c9e7de"
+        },
+        {
+          "score": 2324.5260009765625,
+          "selector": "08W",
+          "member": "1_0_16_7AB6_2CC_600_FFF80000_0_0_0.png",
+          "sha256": "e6607517efa51da0277779120e16d108f9d3cb6ba1c71754e4b1eccc6b0cf215"
+        },
+        {
+          "score": 2329.00439453125,
+          "selector": "235E",
+          "member": "1_0_16_36FE_C8C_3_EB0000_0_0_0.png",
+          "sha256": "768c716b956f0d42838d4e4953abe0334f1c02c7f987109b428665b0d1012d14"
+        },
+        {
+          "score": 2351.9827880859375,
+          "selector": "300W",
+          "member": "1_0_1_177E_26_36_CE40000_0_0_0.png",
+          "sha256": "4ea3034a965a8ef2226b393e6f64c071e8443b77dbe16fabf48264a723e672e6"
+        },
+        {
+          "score": 2371.850341796875,
+          "selector": "90E",
+          "member": "1_0_1_44B_4_AA_5A0000_0_0_0.png",
+          "sha256": "0c57ce337926baca1c58833e81e443926634fac31520a5b27116019ab35cd4d1"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_1C2A_D160_77E_DCA0000_0_0_0",
+      "name": "Eutelsat 1",
+      "existing_hold_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "70W",
+          "member": "1_0_1_50A_A0F0_396_DCA0000_0_0_0.png",
+          "sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854"
+        },
+        {
+          "score": 1334.9155883789062,
+          "selector": "160E",
+          "member": "1_0_1_5E7_4E84_16E_A00000_0_0_0.png",
+          "sha256": "b1e211aa6d9684013ca0d96eba5ae40fe290c238cd69a43fbaa3f7aad376478f"
+        },
+        {
+          "score": 1367.7515869140625,
+          "selector": "192E",
+          "member": "1_0_19_151B_455_1_C00000_0_0_0.png",
+          "sha256": "96c6485f514fead1318be5ace2efcb293eae4ae32fd78ae5798d254b7d8f80f3"
+        },
+        {
+          "score": 1418.783203125,
+          "selector": "130E",
+          "member": "1_0_19_1390_2710_D5_820000_0_0_0.png",
+          "sha256": "973096072d5779dc9d5084ab288eff6518b7eed9df1156e452558a2164862262"
+        },
+        {
+          "score": 1426.0528564453125,
+          "selector": "130E",
+          "member": "1_0_16_378C_44C_13E_820000_0_0_0.png",
+          "sha256": "e7c215d709d6a3b4634c2d645952e32f64f6e0e8a4e837f8fceebc006fb298b5"
+        },
+        {
+          "score": 1458.939697265625,
+          "selector": "260E",
+          "member": "1_0_1_3_3_1_1040000_0_0_0.png",
+          "sha256": "83d7474f608ecfd81136ce363ba3a9c9680bb4e2b89a542ada8f1c36a992084d"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_1C34_D160_77E_DCA0000_0_0_0",
+      "name": "Eutelsat 2",
+      "existing_hold_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "70W",
+          "member": "1_0_1_50A_A0F0_396_DCA0000_0_0_0.png",
+          "sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854"
+        },
+        {
+          "score": 1334.9155883789062,
+          "selector": "160E",
+          "member": "1_0_1_5E7_4E84_16E_A00000_0_0_0.png",
+          "sha256": "b1e211aa6d9684013ca0d96eba5ae40fe290c238cd69a43fbaa3f7aad376478f"
+        },
+        {
+          "score": 1367.7515869140625,
+          "selector": "192E",
+          "member": "1_0_19_151B_455_1_C00000_0_0_0.png",
+          "sha256": "96c6485f514fead1318be5ace2efcb293eae4ae32fd78ae5798d254b7d8f80f3"
+        },
+        {
+          "score": 1418.783203125,
+          "selector": "130E",
+          "member": "1_0_19_1390_2710_D5_820000_0_0_0.png",
+          "sha256": "973096072d5779dc9d5084ab288eff6518b7eed9df1156e452558a2164862262"
+        },
+        {
+          "score": 1426.0528564453125,
+          "selector": "130E",
+          "member": "1_0_16_378C_44C_13E_820000_0_0_0.png",
+          "sha256": "e7c215d709d6a3b4634c2d645952e32f64f6e0e8a4e837f8fceebc006fb298b5"
+        },
+        {
+          "score": 1458.939697265625,
+          "selector": "260E",
+          "member": "1_0_1_3_3_1_1040000_0_0_0.png",
+          "sha256": "83d7474f608ecfd81136ce363ba3a9c9680bb4e2b89a542ada8f1c36a992084d"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_1C3E_D160_77E_DCA0000_0_0_0",
+      "name": "Eutelsat 3",
+      "existing_hold_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "70W",
+          "member": "1_0_1_50A_A0F0_396_DCA0000_0_0_0.png",
+          "sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854"
+        },
+        {
+          "score": 1334.9155883789062,
+          "selector": "160E",
+          "member": "1_0_1_5E7_4E84_16E_A00000_0_0_0.png",
+          "sha256": "b1e211aa6d9684013ca0d96eba5ae40fe290c238cd69a43fbaa3f7aad376478f"
+        },
+        {
+          "score": 1367.7515869140625,
+          "selector": "192E",
+          "member": "1_0_19_151B_455_1_C00000_0_0_0.png",
+          "sha256": "96c6485f514fead1318be5ace2efcb293eae4ae32fd78ae5798d254b7d8f80f3"
+        },
+        {
+          "score": 1418.783203125,
+          "selector": "130E",
+          "member": "1_0_19_1390_2710_D5_820000_0_0_0.png",
+          "sha256": "973096072d5779dc9d5084ab288eff6518b7eed9df1156e452558a2164862262"
+        },
+        {
+          "score": 1426.0528564453125,
+          "selector": "130E",
+          "member": "1_0_16_378C_44C_13E_820000_0_0_0.png",
+          "sha256": "e7c215d709d6a3b4634c2d645952e32f64f6e0e8a4e837f8fceebc006fb298b5"
+        },
+        {
+          "score": 1458.939697265625,
+          "selector": "260E",
+          "member": "1_0_1_3_3_1_1040000_0_0_0.png",
+          "sha256": "83d7474f608ecfd81136ce363ba3a9c9680bb4e2b89a542ada8f1c36a992084d"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_1C48_D160_77E_DCA0000_0_0_0",
+      "name": "Eutelsat 4",
+      "existing_hold_reason": "Technical Eutelsat service label and shared generic SERVICE artwork; programme identity not proved.",
+      "matches": [
+        {
+          "score": 0.0,
+          "selector": "70W",
+          "member": "1_0_1_50A_A0F0_396_DCA0000_0_0_0.png",
+          "sha256": "d137a03053835330ab2ff75907a4a16a58598d5d4d94f147126855c2eeb9f854"
+        },
+        {
+          "score": 1334.9155883789062,
+          "selector": "160E",
+          "member": "1_0_1_5E7_4E84_16E_A00000_0_0_0.png",
+          "sha256": "b1e211aa6d9684013ca0d96eba5ae40fe290c238cd69a43fbaa3f7aad376478f"
+        },
+        {
+          "score": 1367.7515869140625,
+          "selector": "192E",
+          "member": "1_0_19_151B_455_1_C00000_0_0_0.png",
+          "sha256": "96c6485f514fead1318be5ace2efcb293eae4ae32fd78ae5798d254b7d8f80f3"
+        },
+        {
+          "score": 1418.783203125,
+          "selector": "130E",
+          "member": "1_0_19_1390_2710_D5_820000_0_0_0.png",
+          "sha256": "973096072d5779dc9d5084ab288eff6518b7eed9df1156e452558a2164862262"
+        },
+        {
+          "score": 1426.0528564453125,
+          "selector": "130E",
+          "member": "1_0_16_378C_44C_13E_820000_0_0_0.png",
+          "sha256": "e7c215d709d6a3b4634c2d645952e32f64f6e0e8a4e837f8fceebc006fb298b5"
+        },
+        {
+          "score": 1458.939697265625,
+          "selector": "260E",
+          "member": "1_0_1_3_3_1_1040000_0_0_0.png",
+          "sha256": "83d7474f608ecfd81136ce363ba3a9c9680bb4e2b89a542ada8f1c36a992084d"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_1_1_FFFF_104AB59_0_0_0",
+      "name": "1TV IRAQ",
+      "existing_hold_reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review.",
+      "matches": [
+        {
+          "score": 3538.045166015625,
+          "selector": "192E",
+          "member": "1_0_19_1006_451_35_C00000_0_0_0.png",
+          "sha256": "f664c995565f173c1e99274a21575ffadbbed782fa53ebaec61c7ba84de482a6"
+        },
+        {
+          "score": 3763.396240234375,
+          "selector": "515E",
+          "member": "1_0_16_858_2_FF00_2032C1A_0_0_0.png",
+          "sha256": "928272e90b2dcca7cd6d28bb0e35cf41a62832a4e5760881c8507a14e37ae00f"
+        },
+        {
+          "score": 3843.218994140625,
+          "selector": "460E",
+          "member": "1_0_16_F_0_0_1CC2B57_0_0_0.png",
+          "sha256": "e17b8f269fdc1c67fb93b2b3cfedd4bbd668f0740b042a3490f0a16fe4b1a2f4"
+        },
+        {
+          "score": 3849.902587890625,
+          "selector": "130E",
+          "member": "1_0_16_C23_1E78_71_820000_0_0_0.png",
+          "sha256": "fb71238247075dfd09274893ad01f78fc364470ceffc70589b6bf3b2cf7563a1"
+        },
+        {
+          "score": 3853.804931640625,
+          "selector": "160E",
+          "member": "1_0_19_44_3_40_A00000_0_0_0.png",
+          "sha256": "856ce924d956dba26cfa0e71ce6977a31b98a6c115e1c50eb7db018c5dec3c44"
+        },
+        {
+          "score": 3862.738525390625,
+          "selector": "282E",
+          "member": "1_0_1_D7B9_840_2_11A0000_0_0_0.png",
+          "sha256": "39acdf86e371b859f4ecbd61257d7fd48bce8b93ebf337a93d95c16b0ebd2ebc"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+      "name": "UNKNOWN RUSSIA",
+      "existing_hold_reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor.",
+      "matches": [
+        {
+          "score": 2059.0921630859375,
+          "selector": "520E",
+          "member": "1_0_1_10_4_1_2080000_0_0_0.png",
+          "sha256": "9c9fec7869f7d11bd64a29100290d71d3e633752d48d324ace62985e5e1d5934"
+        },
+        {
+          "score": 2086.597412109375,
+          "selector": "282E",
+          "member": "1_0_1_C4B0_811_2_11A0000_0_0_0.png",
+          "sha256": "332e172d48a1df1cc1a083d6f6411bc6e1eaef1f8d833d11a59f603f82e74bc8"
+        },
+        {
+          "score": 2128.3243408203125,
+          "selector": "130E",
+          "member": "1_0_16_378C_44C_13E_820000_0_0_0.png",
+          "sha256": "e7c215d709d6a3b4634c2d645952e32f64f6e0e8a4e837f8fceebc006fb298b5"
+        },
+        {
+          "score": 2135.359375,
+          "selector": "560E",
+          "member": "1_0_16_2B1C_B_FE_2300000_0_0_0.png",
+          "sha256": "b42629f278e204d9305a27bc333a8441c915a0959ccc7e2de28d1bfc926371f7"
+        },
+        {
+          "score": 2147.1915283203125,
+          "selector": "150W",
+          "member": "1_0_1_6B_A_1_D7A0000_0_0_0.png",
+          "sha256": "48df6a2b559550ce002fa417da3a14b81b6a25d646c20404413ea69828edbea3"
+        },
+        {
+          "score": 2189.3526611328125,
+          "selector": "235E",
+          "member": "1_0_1_4EA1_CA6_3_EB0000_0_0_0.png",
+          "sha256": "60d9e79a590375b5f36129e70f45dd946516af8a02e952f4787a57f54bdd23ed"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
+      "name": "UNKNOWN RUSSIA",
+      "existing_hold_reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor.",
+      "matches": [
+        {
+          "score": 2059.0921630859375,
+          "selector": "520E",
+          "member": "1_0_1_10_4_1_2080000_0_0_0.png",
+          "sha256": "9c9fec7869f7d11bd64a29100290d71d3e633752d48d324ace62985e5e1d5934"
+        },
+        {
+          "score": 2086.597412109375,
+          "selector": "282E",
+          "member": "1_0_1_C4B0_811_2_11A0000_0_0_0.png",
+          "sha256": "332e172d48a1df1cc1a083d6f6411bc6e1eaef1f8d833d11a59f603f82e74bc8"
+        },
+        {
+          "score": 2128.3243408203125,
+          "selector": "130E",
+          "member": "1_0_16_378C_44C_13E_820000_0_0_0.png",
+          "sha256": "e7c215d709d6a3b4634c2d645952e32f64f6e0e8a4e837f8fceebc006fb298b5"
+        },
+        {
+          "score": 2135.359375,
+          "selector": "560E",
+          "member": "1_0_16_2B1C_B_FE_2300000_0_0_0.png",
+          "sha256": "b42629f278e204d9305a27bc333a8441c915a0959ccc7e2de28d1bfc926371f7"
+        },
+        {
+          "score": 2147.1915283203125,
+          "selector": "150W",
+          "member": "1_0_1_6B_A_1_D7A0000_0_0_0.png",
+          "sha256": "48df6a2b559550ce002fa417da3a14b81b6a25d646c20404413ea69828edbea3"
+        },
+        {
+          "score": 2189.3526611328125,
+          "selector": "235E",
+          "member": "1_0_1_4EA1_CA6_3_EB0000_0_0_0.png",
+          "sha256": "60d9e79a590375b5f36129e70f45dd946516af8a02e952f4787a57f54bdd23ed"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    },
+    {
+      "reference": "1_0_19_7_1FC7_2BE_1040000_0_0_0",
+      "name": "FUNBOX review",
+      "existing_hold_reason": "HD/UHD edition requires proof",
+      "matches": [
+        {
+          "score": 482.23529052734375,
+          "selector": "160E",
+          "member": "1_0_1F_262_C418_16E_A00000_0_0_0.png",
+          "sha256": "48ace2cb77c3d783ae348f546bb19f5a7c25d655def5ea4c27e45ec09c7e56a7"
+        },
+        {
+          "score": 2760.00830078125,
+          "selector": "160E",
+          "member": "1_0_16_262_C418_16E_A00000_0_0_0.png",
+          "sha256": "887bee7d9098a040b039d15133ddbb2198d478bb7cf56111bb54d605f8a0bdb1"
+        },
+        {
+          "score": 5527.49072265625,
+          "selector": "235E",
+          "member": "1_0_16_3721_C8E_3_EB0000_0_0_0.png",
+          "sha256": "59d9edf9f24ef685bc9b87ab831b9f01535207292463371a8464e07a05c0928e"
+        },
+        {
+          "score": 5581.59912109375,
+          "selector": "160E",
+          "member": "1_0_1_74_9F60_16E_A00000_0_0_0.png",
+          "sha256": "69dea753d8f0718c4d72549141134fc9ba3b7fe90ead1e5b7da34d092ee58f11"
+        },
+        {
+          "score": 5590.96923828125,
+          "selector": "235E",
+          "member": "1_0_16_4E48_CA7_3_EB0000_0_0_0.png",
+          "sha256": "4af24144b773235bbceab88ae487429f5a539c9d4e213bf524555686ea1b22ed"
+        },
+        {
+          "score": 5598.60498046875,
+          "selector": "160E",
+          "member": "1_0_19_714_C5A8_16E_A00000_0_0_0.png",
+          "sha256": "6e58be5b6c921ad19efd8d67e70bb9bf1fe3a0bdc17507f2eba545f0bf2baa22"
+        }
+      ],
+      "action": "QUARANTINE_PENDING_IDENTITY_PROOF"
+    }
+  ],
+  "fresh_antena_lookup": {
+    "date": "2026-11-08",
+    "status": "CONFLICT_REMAINS",
+    "observations": [
+      {
+        "url": "https://gr.kingofsat.eu/tp11817",
+        "nid": 366,
+        "tsid": 10
+      },
+      {
+        "url": "https://kingofsat.net/detail-chefiro",
+        "nid": 0,
+        "tsid": 0
+      },
+      {
+        "url": "https://www.lyngsat.com/muxes/Hellas-Sat-3_Europe_12656-H.html",
+        "nid": 366,
+        "tsid": 0,
+        "page_updated": "2026-08-18"
+      }
+    ],
+    "decision": "Do not select one conflicting listing by similarity; retain exact Vhannibal tuple and quarantine pending independent service evidence."
+  }
+}

@@ -3078,20 +3078,10 @@
     "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
     "name": "BLOOMBERGHT HD",
     "selector": "420E",
-    "missing": [
-      "220x132|channel-black",
-      "220x132|channel-transparent",
-      "220x132|channel-white",
-      "400x240|channel-black",
-      "400x240|channel-transparent",
-      "400x240|channel-white",
-      "50x30|channel-black",
-      "50x30|channel-transparent",
-      "50x30|channel-white"
-    ],
+    "missing": [],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "PENDING_OWNER_ARTWORK_APPROVAL_GRAPHIC_CHECKED",
+    "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
       "name": "BloombergHT HD",
@@ -3117,7 +3107,7 @@
       "reason": "Official broadcaster confirms SID10702 and12303V. GenericBloomberg, BloombergBG andAdria artwork are wrong editions. PriorPR48checkpoint records officialHTSVG obtained; recover it before any render."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
+    "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "artwork_review": "bloomberght-review/check-20261108.json",
     "technical_uid": {
       "sid": 10702,
@@ -3143,26 +3133,17 @@
         1070,
         27525120
       ]
-    }
+    },
+    "owner_graphic_approval_date": "2026-11-08"
   },
   {
     "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
     "name": "BLOOMBERGHT HD",
     "selector": "420E",
-    "missing": [
-      "220x132|channel-black",
-      "220x132|channel-transparent",
-      "220x132|channel-white",
-      "400x240|channel-black",
-      "400x240|channel-transparent",
-      "400x240|channel-white",
-      "50x30|channel-black",
-      "50x30|channel-transparent",
-      "50x30|channel-white"
-    ],
+    "missing": [],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "PENDING_OWNER_ARTWORK_APPROVAL_GRAPHIC_CHECKED",
+    "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
       "name": "BloombergHT HD",
@@ -3187,7 +3168,7 @@
       "reason": "Exact tuple established by liveSatindex. SameHTedition asSID10702, but no approvedHTdonor in current referenceledger."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
+    "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "artwork_review": "bloomberght-review/check-20261108.json",
     "technical_uid": {
       "sid": 11002,
@@ -3213,7 +3194,8 @@
         1070,
         27525120
       ]
-    }
+    },
+    "owner_graphic_approval_date": "2026-11-08"
   },
   {
     "reference": "1_0_19_32_14_6E_DCA0000_0_0_0",
@@ -3619,20 +3601,10 @@
     "reference": "1_0_1_13_65_1_300000_0_0_0",
     "name": "SISSP",
     "selector": "48E_A",
-    "missing": [
-      "220x132|channel-black",
-      "220x132|channel-transparent",
-      "220x132|channel-white",
-      "400x240|channel-black",
-      "400x240|channel-transparent",
-      "400x240|channel-white",
-      "50x30|channel-black",
-      "50x30|channel-transparent",
-      "50x30|channel-white"
-    ],
+    "missing": [],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
+    "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_1_13_65_1_300000_0_0_0",
       "name": "SISSP",
@@ -3666,7 +3638,7 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact-reference original is current SIS Racing; SIS Spanish published donor is generic older SIS artwork and is not a proven same-edition replacement.",
+    "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 19,
       "tsid": 101,
@@ -3692,26 +3664,17 @@
         3145728
       ]
     },
-    "artwork_review": "sis-betfred-review/review.json"
+    "artwork_review": "sis-betfred-review/review.json",
+    "owner_graphic_approval_date": "2026-11-08"
   },
   {
     "reference": "1_0_1_14_65_1_300000_0_0_0",
     "name": "BF1",
     "selector": "48E_A",
-    "missing": [
-      "220x132|channel-black",
-      "220x132|channel-transparent",
-      "220x132|channel-white",
-      "400x240|channel-black",
-      "400x240|channel-transparent",
-      "400x240|channel-white",
-      "50x30|channel-black",
-      "50x30|channel-transparent",
-      "50x30|channel-white"
-    ],
+    "missing": [],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
+    "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_1_14_65_1_300000_0_0_0",
       "name": "BF1",
@@ -3745,7 +3708,7 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact-reference upstream original spells BETFRED TV1/2/3. Published donor has older checkered BETFRED 1/2/3 artwork: do not copy old edition automatically. Existing V9 review outputs will be recovered for approval.",
+    "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 20,
       "tsid": 101,
@@ -3771,26 +3734,17 @@
         3145728
       ]
     },
-    "artwork_review": "sis-betfred-review/review.json"
+    "artwork_review": "sis-betfred-review/review.json",
+    "owner_graphic_approval_date": "2026-11-08"
   },
   {
     "reference": "1_0_1_15_65_1_300000_0_0_0",
     "name": "BF2",
     "selector": "48E_A",
-    "missing": [
-      "220x132|channel-black",
-      "220x132|channel-transparent",
-      "220x132|channel-white",
-      "400x240|channel-black",
-      "400x240|channel-transparent",
-      "400x240|channel-white",
-      "50x30|channel-black",
-      "50x30|channel-transparent",
-      "50x30|channel-white"
-    ],
+    "missing": [],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
+    "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_1_15_65_1_300000_0_0_0",
       "name": "BF2",
@@ -3824,7 +3778,7 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact-reference upstream original spells BETFRED TV1/2/3. Published donor has older checkered BETFRED 1/2/3 artwork: do not copy old edition automatically. Existing V9 review outputs will be recovered for approval.",
+    "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 21,
       "tsid": 101,
@@ -3850,7 +3804,8 @@
         3145728
       ]
     },
-    "artwork_review": "sis-betfred-review/review.json"
+    "artwork_review": "sis-betfred-review/review.json",
+    "owner_graphic_approval_date": "2026-11-08"
   },
   {
     "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
@@ -3992,20 +3947,10 @@
     "reference": "1_0_1_16_65_1_300000_0_0_0",
     "name": "BF3",
     "selector": "48E_A",
-    "missing": [
-      "220x132|channel-black",
-      "220x132|channel-transparent",
-      "220x132|channel-white",
-      "400x240|channel-black",
-      "400x240|channel-transparent",
-      "400x240|channel-white",
-      "50x30|channel-black",
-      "50x30|channel-transparent",
-      "50x30|channel-white"
-    ],
+    "missing": [],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "PENDING_OWNER_ARTWORK_APPROVAL_EXISTING_V9_REVIEW_READY",
+    "action": "FIXED_IN_PR50_OWNER_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_1_16_65_1_300000_0_0_0",
       "name": "BF3",
@@ -4039,7 +3984,7 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Exact-reference upstream original spells BETFRED TV1/2/3. Published donor has older checkered BETFRED 1/2/3 artwork: do not copy old edition automatically. Existing V9 review outputs will be recovered for approval.",
+    "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 22,
       "tsid": 101,
@@ -4065,7 +4010,8 @@
         3145728
       ]
     },
-    "artwork_review": "sis-betfred-review/review.json"
+    "artwork_review": "sis-betfred-review/review.json",
+    "owner_graphic_approval_date": "2026-11-08"
   },
   {
     "reference": "1_0_1_17_65_1_300000_0_0_0",

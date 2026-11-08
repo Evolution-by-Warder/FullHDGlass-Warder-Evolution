@@ -1,10 +1,10 @@
 {
-  "status": "PENDING_OWNER_APPROVAL_NOT_IN_ZIPS",
+  "status": "OWNER_APPROVED_20261108_INSERTED_IN_PR50_NOT_PRODUCTION",
   "references": [
     {
       "reference": "1_0_1_13_65_1_300000_0_0_0",
       "identity": "SIS Racing (SISSP)",
-      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "status": "OWNER_APPROVED_EXACT_PREPARED_ARTWORK",
       "prior_qc": {
         "black": {
           "status": "REVIEW",
@@ -73,7 +73,7 @@
     {
       "reference": "1_0_1_14_65_1_300000_0_0_0",
       "identity": "BETFRED TV1",
-      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "status": "OWNER_APPROVED_EXACT_PREPARED_ARTWORK",
       "prior_qc": {
         "black": {
           "status": "REVIEW",
@@ -142,7 +142,7 @@
     {
       "reference": "1_0_1_15_65_1_300000_0_0_0",
       "identity": "BETFRED TV2",
-      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "status": "OWNER_APPROVED_EXACT_PREPARED_ARTWORK",
       "prior_qc": {
         "black": {
           "status": "REVIEW",
@@ -211,7 +211,7 @@
     {
       "reference": "1_0_1_16_65_1_300000_0_0_0",
       "identity": "BETFRED TV3",
-      "status": "EXISTING_V9_REVIEW_REQUIRES_OWNER_APPROVAL",
+      "status": "OWNER_APPROVED_EXACT_PREPARED_ARTWORK",
       "prior_qc": {
         "black": {
           "status": "REVIEW",
@@ -284,5 +284,11 @@
   "reused_pngs": 24,
   "reproduced_missing_400_outputs_matching_existing_sha": 12,
   "all_36_outputs_match_existing_review_index": true,
-  "no_qc_review_promoted_to_approved": true
+  "no_qc_review_promoted_to_approved": true,
+  "prior_status_before_owner_approval": "PENDING_OWNER_APPROVAL_NOT_IN_ZIPS",
+  "owner_approval": {
+    "date": "2026-11-08",
+    "scope": "Exact prepared BloombergHT2,BetfredTV1-3,SIS Racing/SISSP1; user personally reviewed ARTWORK_APPROVAL.md. SISSP identity is limited to this prepared artwork; no expansion of SP or unrelated aliases.",
+    "production_merge_authorized": false
+  }
 }

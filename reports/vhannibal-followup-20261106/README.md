@@ -1,5 +1,14 @@
 # Vhannibal – pokračovanie po PR #47
 
+### Schválených šesť grafík zapracovaných – 8. 11. 2026
+
+Vlastník výslovne schválil pripravené BloombergHT HD (2 referencie), BETFRED TV1–3 a SIS Racing/SISSP. Do existujúcich 420E a 48E_A balíkov sa vložilo 54 PNG v 18 ZIPoch. Každý vstup má presný SHA256 z kontrolného prehľadu a Git blob zo schváleného checkpointu `5dc376f`; žiadne logo sa neprerobilo. Skratka SP sa nerozvíja a schválenie sa nevzťahuje na ďalšie aliasy.
+
+27 698 pôvodných archívnych položiek zostalo bitovo identických. Časti/ZIPy SHA256, CRC, rozmery, alfa, referencie, zhoda schválených vstupov, manifest a skutočný inštalátor stabilného 1.0.72 s platným používateľským PNG prešli. Všetkých 18 CANAL+ SK/CZ archívov prešlo SHA256/CRC a zostalo nezmenených. Regresie publikácie PASS; fyzický prijímač netestovaný.
+
+PR #50 má po tejto dávke 29 opravených referencií / 258 doplnených PNG / 99 jedinečných zmenených ZIPov. Zostáva 117 otvorených (98 pôvodných + 19 z nového zdrojového rozdielu). Produkčný main ostáva `12247acc20f699606f6d40f3783e4162b92674b9`; PiconHub main `8180aa0df6e185efad120338bc53ca04bc5e492a`. Žiadny merge, feed, skin, IPK ani rádio sa nemení. Pokračuje overovanie Antena TSID, FUNBOX a hľadanie donorov v celej existujúcej satelitnej a providerskej databáze.
+
+
 Záverečné vzdialené overenie 8. 11. 2026: balíkový commit [`d5cbb323770fdbf9c67ed4b58c8a4290fade1740`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/d5cbb323770fdbf9c67ed4b58c8a4290fade1740), strom `c16255a9b0d41b40f705935578e0a5643a866e96`. Overených **1 164 očakávaných ciest**; všetkých 20 nových súborov poslednej dávky (z toho 9 binárnych koncových častí ZIPov), spolu 4 685 517 bajtov, bolo z GitHubu stiahnutých a bitovo porovnaných. Predchádzajúca dávka `19809be` má overených 1 068 ciest a všetkých 103 nahraných súborov (15 188 989 bajtov). Súhrn je v `remote-verification-20261108.json → continuation_20261108`; staršie overenia zostávajú zachované.
 
 **Finálny stav tohto behu: 17 nových opráv / 153 PNG / 63 jedinečných ZIPov. Celý PR #50: 23 opráv / 204 PNG / 99 ZIPov. Otvorených: 123 (104 pôvodných + 19 nových).** Šesť referencií čaká na konkrétne grafické schválenie v `ARTWORK_APPROVAL.md`; ostatné majú technické alebo identitné blokácie v existujúcich registroch. Štyri preukázané dátové služby nie sú vykázané ako opravené picony.

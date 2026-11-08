@@ -1,0 +1,1217 @@
+{
+  "status": "PASS_WORKING_CANDIDATE_ONLY",
+  "date": "2026-11-08",
+  "base_production_sha": "12247acc20f699606f6d40f3783e4162b92674b9",
+  "base_candidate_sha": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+  "new_references": 6,
+  "added_png_entries": 54,
+  "changed_zip_archives": 18,
+  "untouched_png_entries_byte_identical": 27698,
+  "protected_canal_packages_unchanged": 18,
+  "radio_changes": 0,
+  "new_or_rendered_artworks": 0,
+  "manifest_validator": "PASS",
+  "references": [
+    {
+      "reference": "1_0_1_13_65_1_300000_0_0_0",
+      "name": "SIS Racing (SISSP)",
+      "selector": "48E_A",
+      "donor": null,
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-transparent.png",
+          "sha256": "b8d78773931451c81575d026a3e7d721588a6159b0e7956315939ef20afc38be",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-white.png",
+          "sha256": "80c65515903cd730aab47feed4b0292948654649937874080f681c4c6ef0538e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            25,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/50x30-black.png",
+          "sha256": "4795c93f6ee3e452b4434f9000ccf8c186825e73d33046c8270f3ffd5bd7fe69",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            9,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-transparent.png",
+          "sha256": "f0849d251e1460c76a5c7e0329e26831f3cc3f98ebb35e68cc944bf28b915895",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-white.png",
+          "sha256": "a9c006852a507cb810690416a115cec10f1eb9247e3af09911e2116e763cf6b8",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/220x132-black.png",
+          "sha256": "d3a7fef62560249f40d11b90ec71605e1605c15d3151993b5a5a692d93ba1b03",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-transparent.png",
+          "sha256": "be70225bda22fce5957dd3ecc0faad0f159f829e35c1077c4ab6c2e853de3c76",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-white.png",
+          "sha256": "413f65a48f5f5c4bc043559e60f67a3cf807cce38aaaf511f165a50c5b64ef93",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/ca02a8e640876dce213f57a69e6a49d0c02495c18dffde043d3c63de2b0d9430/400x240-black.png",
+          "sha256": "a8ace3c694019c049c140ecf7c38df2c67b07f613bff4cc98d133b2d0f26f728",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_1_14_65_1_300000_0_0_0",
+      "name": "BETFRED TV1",
+      "selector": "48E_A",
+      "donor": null,
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-transparent.png",
+          "sha256": "33ea8cf3693ba12dd8e61735afc53b47d03d3cbccbb5e39b80a6e554cea3778b",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-white.png",
+          "sha256": "9856eb4379a1e1110fc852cf4bdbd2462f2f6f6354851c6ae7d062a3c59112c4",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            25,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/50x30-black.png",
+          "sha256": "c223365b993d998fd0456851245d90907fdbe6a1531fe40cb514d13441fc64a5",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            9,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-transparent.png",
+          "sha256": "7f45a657341d37a2b728385a654f8e52d611ad00ff01c34ec194d111fa537f96",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-white.png",
+          "sha256": "d06f583a8b0674161e8b3ea7b7c04412a9f9233e5084f652f5d2924e82762dbb",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/220x132-black.png",
+          "sha256": "8fa6e0bf16a6f64301d9edc9f51b2e925913f2560cf548f50b2bb560bdc92156",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-transparent.png",
+          "sha256": "7e154a430c4a573e9fa63ce111f926036ca520a2259fdea293c654e27392f5c1",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-white.png",
+          "sha256": "dd30a274a09e7341cd17261d95ef0df7f32228640124d64fb103059c7a593e80",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/024b10be1db5938027e1627a965f2bef7bebcea75931014cc21c41636bc2cc15/400x240-black.png",
+          "sha256": "244ed4693dc5a13da5517e636385a9d34185aa06aa8010d3bf483a96fd3ff961",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_1_15_65_1_300000_0_0_0",
+      "name": "BETFRED TV2",
+      "selector": "48E_A",
+      "donor": null,
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-transparent.png",
+          "sha256": "20bccdfd8212bc325cbb0ced16fb5e7d2cc7699dbba5b2e54d5d6e15a29672a7",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-white.png",
+          "sha256": "41db3813aa692b5ff1851add608bee54e46f3e86eb35ce352502b1e2097f5554",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            25,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/50x30-black.png",
+          "sha256": "20d368918abdccbf0463c4f1b56c8ee250e4f3c47e88fa0e75ac02bb3f4c8d4e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            9,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-transparent.png",
+          "sha256": "fe7da23e7eaac6454e29682438c87cf71ef68b41a0d5ac2874443f63a1c0ff86",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-white.png",
+          "sha256": "af8770ed06033cd6aa5cf373a054d6c48531a6a851992038f1b29da37d44f016",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/220x132-black.png",
+          "sha256": "fce19b9fc12b060c205fc9f097cbf54dc13d1668171eb68897d461bdc0757321",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-transparent.png",
+          "sha256": "6d974d2a86590a7faf3564f13376ea697d76c31d6514c492c9f51dc9f4a67633",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-white.png",
+          "sha256": "db0c37927bf53daf0c4f6b37f74870fa9ac96c1c2e1c8a757e30772ac9753b6c",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/337c735f6abfcf1e0e8a8a2991bc075b990b7470db8ddc514b3ce795511dd18a/400x240-black.png",
+          "sha256": "eb4234dbbce68b050cf8abc3a00108553bc5b300375875023ec76b5eac7bfd49",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_1_16_65_1_300000_0_0_0",
+      "name": "BETFRED TV3",
+      "selector": "48E_A",
+      "donor": null,
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-transparent.png",
+          "sha256": "b1f21ad51559a2abe116c269bad7b49eb10d4c1d0293d6451b8c9bdad7becc5f",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-white.png",
+          "sha256": "f763043adf90dd7de047a7f9951485322bc7a20946540f76dfe9d4c60fcfbd82",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            25,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/50x30-black.png",
+          "sha256": "c8e36d61733d619e8b799254dd52b6cd0e4aad43b0e33fe299e6ba5a024359c6",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            9,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-transparent.png",
+          "sha256": "295d3d0fccf1d6ef98fe3b7c2fdf5cd5de4bf10716fc0fcc39dd30af950c4c2f",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-white.png",
+          "sha256": "4c46b5bded3e67a2622820c37c3e879539d828a30796095a3832a20a6fac071e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/220x132-black.png",
+          "sha256": "36d19ef7e91dfdc7739fb6bc66e6d2457ba0dc533fcd9180fa304744a86dba6e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-transparent.png",
+          "sha256": "dfe681150464f759cd26c0f49cc97390aa7591b0449e49b83c6c3c86aa3fbec9",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-white.png",
+          "sha256": "7d3aec72f4a9e4ba7432f2ce85fc5432e180142c28791f0d103f79a8977076a8",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/sis-betfred-review/eec1a721f6acd3670337bf5914010384288d8124037df309cddac8d513a4b7d0/400x240-black.png",
+          "sha256": "c9f725966b2101af1b928c78bdebf561bc0f70f20021e1ea6e28937680372d8e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
+      "name": "BloombergHT HD",
+      "selector": "420E",
+      "donor": null,
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/50x30-transparent.png",
+          "sha256": "d93d8eabe68fa7941f0ca7c8ecb30bf03ed4348de85c4e8f630c88e9e2f18054",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/50x30-white.png",
+          "sha256": "07e9bf1621f16ff1306b886bc5f4db3987da29e85e8eadf94a2af52ec6386794",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            25,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/50x30-black.png",
+          "sha256": "47adaccc7e646fe9e71512e5edf1cc59b29440fa1ef8caa162e5a1c21fe4ad04",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            9,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/220x132-transparent.png",
+          "sha256": "7646d0efd5d3652f0f12d85b40334c70c2bc8ac13733ead58cc276740cd6623e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/220x132-white.png",
+          "sha256": "0031a42a6ae22a530d3bd2bd630760e174ff15b917252c134e4d2591d9e34cca",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/220x132-black.png",
+          "sha256": "94573514ad3a4aa0cb5917799ceb48d3d31e4cfde3f16ad1c564ccea48186992",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/400x240-transparent.png",
+          "sha256": "cfa1f4b395dcc1df6b97951be02c824702060b985a76e1f956cee65ddb893051",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/400x240-white.png",
+          "sha256": "eda7d65e84871fd0453b666172f406bfe518880e0cbb3c083f3bea7736a18ad1",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/400x240-black.png",
+          "sha256": "a4999f1c1fbd56f16994cd6de7f22ac7ebdd131859874360c3571ff6bbeea0bc",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "rendered_pixels": 0
+    },
+    {
+      "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
+      "name": "BloombergHT HD",
+      "selector": "420E",
+      "donor": null,
+      "variants": [
+        {
+          "size": "50x30",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/50x30-transparent.png",
+          "sha256": "d93d8eabe68fa7941f0ca7c8ecb30bf03ed4348de85c4e8f630c88e9e2f18054",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/50x30-white.png",
+          "sha256": "07e9bf1621f16ff1306b886bc5f4db3987da29e85e8eadf94a2af52ec6386794",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            25,
+            255
+          ]
+        },
+        {
+          "size": "50x30",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/50x30-black.png",
+          "sha256": "47adaccc7e646fe9e71512e5edf1cc59b29440fa1ef8caa162e5a1c21fe4ad04",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            9,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/220x132-transparent.png",
+          "sha256": "7646d0efd5d3652f0f12d85b40334c70c2bc8ac13733ead58cc276740cd6623e",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/220x132-white.png",
+          "sha256": "0031a42a6ae22a530d3bd2bd630760e174ff15b917252c134e4d2591d9e34cca",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "220x132",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/220x132-black.png",
+          "sha256": "94573514ad3a4aa0cb5917799ceb48d3d31e4cfde3f16ad1c564ccea48186992",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-transparent",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/400x240-transparent.png",
+          "sha256": "cfa1f4b395dcc1df6b97951be02c824702060b985a76e1f956cee65ddb893051",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-white",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/400x240-white.png",
+          "sha256": "eda7d65e84871fd0453b666172f406bfe518880e0cbb3c083f3bea7736a18ad1",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "size": "400x240",
+          "family": "channel-black",
+          "approved_checkpoint": "5dc376fcfd76a4f1255c93c5eac9e518ba79ae60",
+          "approved_source_file": "reports/vhannibal-followup-20261106/bloomberght-review/400x240-black.png",
+          "sha256": "a4999f1c1fbd56f16994cd6de7f22ac7ebdd131859874360c3571ff6bbeea0bc",
+          "operation": "COPY_APPROVED_PNG_BYTES",
+          "alpha_extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "rendered_pixels": 0
+    }
+  ],
+  "packages": [
+    {
+      "selector": "420E",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "before_filename": "warder-420e-220x132-black-d3690594813d9d39.zip",
+      "filename": "warder-420e-220x132-black-a4d11bd8e9957e19.zip",
+      "before_sha256": "d3690594813d9d3938f7994ea716cf91bcb7ef9545e50ff10365336a5efb0120",
+      "sha256": "a4d11bd8e9957e19b30da2415cebe881d357fa2f48ce817f2fd41f0b54c94b56",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "94573514ad3a4aa0cb5917799ceb48d3d31e4cfde3f16ad1c564ccea48186992",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "94573514ad3a4aa0cb5917799ceb48d3d31e4cfde3f16ad1c564ccea48186992"
+      },
+      "preserved_members": 2168,
+      "old_prefix_preserved": 50622597,
+      "new_tail_bytes": 254221,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "before_filename": "warder-420e-220x132-transparent-7c6f232f8ccc1c1e.zip",
+      "filename": "warder-420e-220x132-transparent-a2de2a5d850fd11a.zip",
+      "before_sha256": "7c6f232f8ccc1c1e49538dfbcdb3e8a24754a6c3d2d1565a41daa915a07c2a22",
+      "sha256": "a2de2a5d850fd11a1308a226ffbe7b066c474e517f3f8f0f6b0f135aa520d64d",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "7646d0efd5d3652f0f12d85b40334c70c2bc8ac13733ead58cc276740cd6623e",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "7646d0efd5d3652f0f12d85b40334c70c2bc8ac13733ead58cc276740cd6623e"
+      },
+      "preserved_members": 2165,
+      "old_prefix_preserved": 21268029,
+      "new_tail_bytes": 192530,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "before_filename": "warder-420e-220x132-white-db6d07f6ec5bdeb8.zip",
+      "filename": "warder-420e-220x132-white-05b602a5ba83024d.zip",
+      "before_sha256": "db6d07f6ec5bdeb82c306ee5a70ebcff31d48578c584a05191fdf963a7e02dd6",
+      "sha256": "05b602a5ba83024d040efc8bb16342a865acffbde937a0d087eab97f9781163d",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "0031a42a6ae22a530d3bd2bd630760e174ff15b917252c134e4d2591d9e34cca",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "0031a42a6ae22a530d3bd2bd630760e174ff15b917252c134e4d2591d9e34cca"
+      },
+      "preserved_members": 2168,
+      "old_prefix_preserved": 45487898,
+      "new_tail_bytes": 254559,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "before_filename": "warder-420e-400x240-black-1bf1f03a1f78fdd6.zip",
+      "filename": "warder-420e-400x240-black-01761965279e2469.zip",
+      "before_sha256": "1bf1f03a1f78fdd6ee4850a1c8541ef645f88ea57bdcba822c1557790673e96b",
+      "sha256": "01761965279e2469b40b80228d834b79c2ceb500dde9fe992062464ab2670871",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "a4999f1c1fbd56f16994cd6de7f22ac7ebdd131859874360c3571ff6bbeea0bc",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "a4999f1c1fbd56f16994cd6de7f22ac7ebdd131859874360c3571ff6bbeea0bc"
+      },
+      "preserved_members": 2158,
+      "old_prefix_preserved": 71883895,
+      "new_tail_bytes": 370216,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "before_filename": "warder-420e-400x240-transparent-51517b08ffcad80a.zip",
+      "filename": "warder-420e-400x240-transparent-21352a32738a5b44.zip",
+      "before_sha256": "51517b08ffcad80a451b51c8e6882ec59be48a9f9f1766026a89a24af764bd72",
+      "sha256": "21352a32738a5b4495d3b97b10ee20f8554413f656cffcc62354d55cb5960fce",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "cfa1f4b395dcc1df6b97951be02c824702060b985a76e1f956cee65ddb893051",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "cfa1f4b395dcc1df6b97951be02c824702060b985a76e1f956cee65ddb893051"
+      },
+      "preserved_members": 2155,
+      "old_prefix_preserved": 56303427,
+      "new_tail_bytes": 224499,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "before_filename": "warder-420e-400x240-white-9297c55b28eaab78.zip",
+      "filename": "warder-420e-400x240-white-f5806b5b9c82145f.zip",
+      "before_sha256": "9297c55b28eaab78c0a19e87b5de569a05eefacb8d812844247a8563dfaf983c",
+      "sha256": "f5806b5b9c82145f7215f4df4bce59fea2dac887828928bcd7a26927891af2cc",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "eda7d65e84871fd0453b666172f406bfe518880e0cbb3c083f3bea7736a18ad1",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "eda7d65e84871fd0453b666172f406bfe518880e0cbb3c083f3bea7736a18ad1"
+      },
+      "preserved_members": 2158,
+      "old_prefix_preserved": 73942431,
+      "new_tail_bytes": 374868,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "before_filename": "warder-420e-50x30-black-5d535f210afb6343.zip",
+      "filename": "warder-420e-50x30-black-e82852b6f79add75.zip",
+      "before_sha256": "5d535f210afb6343620018f9a0b4623b58e6db305c583dc803eb2168f41f5354",
+      "sha256": "e82852b6f79add75748ab2138b5015ed5d113f8ef6f297ab54c94b5092e89731",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "47adaccc7e646fe9e71512e5edf1cc59b29440fa1ef8caa162e5a1c21fe4ad04",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "47adaccc7e646fe9e71512e5edf1cc59b29440fa1ef8caa162e5a1c21fe4ad04"
+      },
+      "preserved_members": 2158,
+      "old_prefix_preserved": 4584691,
+      "new_tail_bytes": 183696,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "before_filename": "warder-420e-50x30-transparent-84d1e1a24111242b.zip",
+      "filename": "warder-420e-50x30-transparent-dc8c66585be83e6b.zip",
+      "before_sha256": "84d1e1a24111242b66fb61e3b65e02ee659e4117309df9ec9eddfd63b474a72a",
+      "sha256": "dc8c66585be83e6bf1632b3c2c4be3a2d9dc254ab760bbfa9c9d17ce2191db14",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "d93d8eabe68fa7941f0ca7c8ecb30bf03ed4348de85c4e8f630c88e9e2f18054",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "d93d8eabe68fa7941f0ca7c8ecb30bf03ed4348de85c4e8f630c88e9e2f18054"
+      },
+      "preserved_members": 2155,
+      "old_prefix_preserved": 3546154,
+      "new_tail_bytes": 178857,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "420E",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "before_filename": "warder-420e-50x30-white-a47f7ba3b0992532.zip",
+      "filename": "warder-420e-50x30-white-e33143a2b032c8c0.zip",
+      "before_sha256": "a47f7ba3b0992532cabf98cd6e532b8dc55d1bc1d8afcb9839c6f723bb7cf02b",
+      "sha256": "e33143a2b032c8c046aed70b867f0d55f5516bd1c956cad7ca67ea0a2efe324c",
+      "updated_members": {
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0.png": "07e9bf1621f16ff1306b886bc5f4db3987da29e85e8eadf94a2af52ec6386794",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0.png": "07e9bf1621f16ff1306b886bc5f4db3987da29e85e8eadf94a2af52ec6386794"
+      },
+      "preserved_members": 2158,
+      "old_prefix_preserved": 4458946,
+      "new_tail_bytes": 183252,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-black",
+      "before_filename": "warder-48e_a-220x132-black-4cb4366418fe640f.zip",
+      "filename": "warder-48e_a-220x132-black-8f391db26a43677b.zip",
+      "before_sha256": "4cb4366418fe640fd2d76f04187759e3b41404045a07c4802d2317ad3507c556",
+      "sha256": "8f391db26a43677b5f2c1a7c587ff9fea5ef93b843149ead201b89c714126afd",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "d3a7fef62560249f40d11b90ec71605e1605c15d3151993b5a5a692d93ba1b03",
+        "1_0_1_14_65_1_300000_0_0_0.png": "8fa6e0bf16a6f64301d9edc9f51b2e925913f2560cf548f50b2bb560bdc92156",
+        "1_0_1_15_65_1_300000_0_0_0.png": "fce19b9fc12b060c205fc9f097cbf54dc13d1668171eb68897d461bdc0757321",
+        "1_0_1_16_65_1_300000_0_0_0.png": "36d19ef7e91dfdc7739fb6bc66e6d2457ba0dc533fcd9180fa304744a86dba6e"
+      },
+      "preserved_members": 1081,
+      "old_prefix_preserved": 21897294,
+      "new_tail_bytes": 215524,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-transparent",
+      "before_filename": "warder-48e_a-220x132-transparent-984f4cc557a5b5c3.zip",
+      "filename": "warder-48e_a-220x132-transparent-c1dd0852053185f2.zip",
+      "before_sha256": "984f4cc557a5b5c3b3d4e6e8a19be3652f96514f4cceba43282b62773857cebf",
+      "sha256": "c1dd0852053185f2aa7c484522208ee4bef4b2ceb54b35912cfabed780867168",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "f0849d251e1460c76a5c7e0329e26831f3cc3f98ebb35e68cc944bf28b915895",
+        "1_0_1_14_65_1_300000_0_0_0.png": "7f45a657341d37a2b728385a654f8e52d611ad00ff01c34ec194d111fa537f96",
+        "1_0_1_15_65_1_300000_0_0_0.png": "fe7da23e7eaac6454e29682438c87cf71ef68b41a0d5ac2874443f63a1c0ff86",
+        "1_0_1_16_65_1_300000_0_0_0.png": "295d3d0fccf1d6ef98fe3b7c2fdf5cd5de4bf10716fc0fcc39dd30af950c4c2f"
+      },
+      "preserved_members": 865,
+      "old_prefix_preserved": 8291428,
+      "new_tail_bytes": 104641,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "220x132",
+      "family": "channel-white",
+      "before_filename": "warder-48e_a-220x132-white-8464007fb6ca6dd1.zip",
+      "filename": "warder-48e_a-220x132-white-34213357bb2571f2.zip",
+      "before_sha256": "8464007fb6ca6dd1b58f470c8fea25226e9bb5bd2de4bd64a1a57ea0196301e4",
+      "sha256": "34213357bb2571f260f8b2e2373e685dd3e47d29cca89251799645240b57cebf",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "a9c006852a507cb810690416a115cec10f1eb9247e3af09911e2116e763cf6b8",
+        "1_0_1_14_65_1_300000_0_0_0.png": "d06f583a8b0674161e8b3ea7b7c04412a9f9233e5084f652f5d2924e82762dbb",
+        "1_0_1_15_65_1_300000_0_0_0.png": "af8770ed06033cd6aa5cf373a054d6c48531a6a851992038f1b29da37d44f016",
+        "1_0_1_16_65_1_300000_0_0_0.png": "4c46b5bded3e67a2622820c37c3e879539d828a30796095a3832a20a6fac071e"
+      },
+      "preserved_members": 1081,
+      "old_prefix_preserved": 18985369,
+      "new_tail_bytes": 219503,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-black",
+      "before_filename": "warder-48e_a-400x240-black-05d766caf726b19e.zip",
+      "filename": "warder-48e_a-400x240-black-cd733efca2741fe3.zip",
+      "before_sha256": "05d766caf726b19ee32bb6cbc9a9b1bccfd8dc4868a8be06d261eb7205a9f6bf",
+      "sha256": "cd733efca2741fe3a3b58257214819308563dad435578a3c17dc0077e6beb351",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "a8ace3c694019c049c140ecf7c38df2c67b07f613bff4cc98d133b2d0f26f728",
+        "1_0_1_14_65_1_300000_0_0_0.png": "244ed4693dc5a13da5517e636385a9d34185aa06aa8010d3bf483a96fd3ff961",
+        "1_0_1_15_65_1_300000_0_0_0.png": "eb4234dbbce68b050cf8abc3a00108553bc5b300375875023ec76b5eac7bfd49",
+        "1_0_1_16_65_1_300000_0_0_0.png": "c9f725966b2101af1b928c78bdebf561bc0f70f20021e1ea6e28937680372d8e"
+      },
+      "preserved_members": 875,
+      "old_prefix_preserved": 20261142,
+      "new_tail_bytes": 398129,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-transparent",
+      "before_filename": "warder-48e_a-400x240-transparent-66da6f2fa6c93d06.zip",
+      "filename": "warder-48e_a-400x240-transparent-6d6529233d6df165.zip",
+      "before_sha256": "66da6f2fa6c93d0663b06cbeab9807024bf84c707557db46dcf947f2f6808292",
+      "sha256": "6d6529233d6df165a38193d13957faeccbcf6f90d302b31bb4452c21d839fe3e",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "be70225bda22fce5957dd3ecc0faad0f159f829e35c1077c4ab6c2e853de3c76",
+        "1_0_1_14_65_1_300000_0_0_0.png": "7e154a430c4a573e9fa63ce111f926036ca520a2259fdea293c654e27392f5c1",
+        "1_0_1_15_65_1_300000_0_0_0.png": "6d974d2a86590a7faf3564f13376ea697d76c31d6514c492c9f51dc9f4a67633",
+        "1_0_1_16_65_1_300000_0_0_0.png": "dfe681150464f759cd26c0f49cc97390aa7591b0449e49b83c6c3c86aa3fbec9"
+      },
+      "preserved_members": 864,
+      "old_prefix_preserved": 17503490,
+      "new_tail_bytes": 173197,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "400x240",
+      "family": "channel-white",
+      "before_filename": "warder-48e_a-400x240-white-ecbbe34f96fbbaf2.zip",
+      "filename": "warder-48e_a-400x240-white-335aa1fe9b0cc49a.zip",
+      "before_sha256": "ecbbe34f96fbbaf2d4a35ec306cb78bde89cb96ca30fb62273682e1e14288b63",
+      "sha256": "335aa1fe9b0cc49a3b2e3751d13528668c70f50ad72e4c6c5cb0496c38b4db58",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "413f65a48f5f5c4bc043559e60f67a3cf807cce38aaaf511f165a50c5b64ef93",
+        "1_0_1_14_65_1_300000_0_0_0.png": "dd30a274a09e7341cd17261d95ef0df7f32228640124d64fb103059c7a593e80",
+        "1_0_1_15_65_1_300000_0_0_0.png": "db0c37927bf53daf0c4f6b37f74870fa9ac96c1c2e1c8a757e30772ac9753b6c",
+        "1_0_1_16_65_1_300000_0_0_0.png": "7d3aec72f4a9e4ba7432f2ce85fc5432e180142c28791f0d103f79a8977076a8"
+      },
+      "preserved_members": 875,
+      "old_prefix_preserved": 21162970,
+      "new_tail_bytes": 412082,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-black",
+      "before_filename": "warder-48e_a-50x30-black-46477dcf1d9adc18.zip",
+      "filename": "warder-48e_a-50x30-black-2f7ce18148fc5fa9.zip",
+      "before_sha256": "46477dcf1d9adc189b3ae26fae3ca40f76ed260e489e429faf5a488d52e2d7fe",
+      "sha256": "2f7ce18148fc5fa92c27d24318842103446d3327bc51a7ef217ac000dcad339d",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "4795c93f6ee3e452b4434f9000ccf8c186825e73d33046c8270f3ffd5bd7fe69",
+        "1_0_1_14_65_1_300000_0_0_0.png": "c223365b993d998fd0456851245d90907fdbe6a1531fe40cb514d13441fc64a5",
+        "1_0_1_15_65_1_300000_0_0_0.png": "20d368918abdccbf0463c4f1b56c8ee250e4f3c47e88fa0e75ac02bb3f4c8d4e",
+        "1_0_1_16_65_1_300000_0_0_0.png": "c8e36d61733d619e8b799254dd52b6cd0e4aad43b0e33fe299e6ba5a024359c6"
+      },
+      "preserved_members": 875,
+      "old_prefix_preserved": 1699381,
+      "new_tail_bytes": 81273,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-transparent",
+      "before_filename": "warder-48e_a-50x30-transparent-6f776221847e0a35.zip",
+      "filename": "warder-48e_a-50x30-transparent-9fbd481cd9c88c77.zip",
+      "before_sha256": "6f776221847e0a35c7a476e2372bdc1effd1ef4912f5211cc153b833155f39c5",
+      "sha256": "9fbd481cd9c88c77b2d58ce71803c16b97ec3d9725e7d0bfff7514d3f4feb00a",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "b8d78773931451c81575d026a3e7d721588a6159b0e7956315939ef20afc38be",
+        "1_0_1_14_65_1_300000_0_0_0.png": "33ea8cf3693ba12dd8e61735afc53b47d03d3cbccbb5e39b80a6e554cea3778b",
+        "1_0_1_15_65_1_300000_0_0_0.png": "20bccdfd8212bc325cbb0ced16fb5e7d2cc7699dbba5b2e54d5d6e15a29672a7",
+        "1_0_1_16_65_1_300000_0_0_0.png": "b1f21ad51559a2abe116c269bad7b49eb10d4c1d0293d6451b8c9bdad7becc5f"
+      },
+      "preserved_members": 864,
+      "old_prefix_preserved": 1342750,
+      "new_tail_bytes": 74421,
+      "receiver_install": "PASS"
+    },
+    {
+      "selector": "48E_A",
+      "resolution": "50x30",
+      "family": "channel-white",
+      "before_filename": "warder-48e_a-50x30-white-48a210cda5e527d0.zip",
+      "filename": "warder-48e_a-50x30-white-4ebb99b8af04d324.zip",
+      "before_sha256": "48a210cda5e527d0b381c5e9e3e12d79322fd21c0ffdb987ee292d570cdb4afa",
+      "sha256": "4ebb99b8af04d324e00b4c03ad339fb9fca9519cacaa9a27c632db2e635b4d03",
+      "updated_members": {
+        "1_0_1_13_65_1_300000_0_0_0.png": "80c65515903cd730aab47feed4b0292948654649937874080f681c4c6ef0538e",
+        "1_0_1_14_65_1_300000_0_0_0.png": "9856eb4379a1e1110fc852cf4bdbd2462f2f6f6354851c6ae7d062a3c59112c4",
+        "1_0_1_15_65_1_300000_0_0_0.png": "41db3813aa692b5ff1851add608bee54e46f3e86eb35ce352502b1e2097f5554",
+        "1_0_1_16_65_1_300000_0_0_0.png": "f763043adf90dd7de047a7f9951485322bc7a20946540f76dfe9d4c60fcfbd82"
+      },
+      "preserved_members": 875,
+      "old_prefix_preserved": 1703633,
+      "new_tail_bytes": 80526,
+      "receiver_install": "PASS"
+    }
+  ],
+  "owner_approval": {
+    "date": "2026-11-08",
+    "scope": "Exact prepared BloombergHT2,BetfredTV1-3,SIS Racing/SISSP1; user personally reviewed ARTWORK_APPROVAL.md. SISSP identity is limited to this prepared artwork; no expansion of SP or unrelated aliases.",
+    "production_merge_authorized": false
+  },
+  "current_installer_checks": [
+    {
+      "filename": "warder-420e-220x132-black-a4d11bd8e9957e19.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-220x132-transparent-a2de2a5d850fd11a.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-220x132-white-05b602a5ba83024d.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-400x240-black-01761965279e2469.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-400x240-transparent-21352a32738a5b44.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-400x240-white-f5806b5b9c82145f.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-50x30-black-e82852b6f79add75.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-50x30-transparent-dc8c66585be83e6b.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-420e-50x30-white-e33143a2b032c8c0.zip",
+      "png_count_added": 2,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-220x132-black-8f391db26a43677b.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-220x132-transparent-c1dd0852053185f2.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-220x132-white-34213357bb2571f2.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-400x240-black-cd733efca2741fe3.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-400x240-transparent-6d6529233d6df165.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-400x240-white-335aa1fe9b0cc49a.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-50x30-black-2f7ce18148fc5fa9.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-50x30-transparent-9fbd481cd9c88c77.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    },
+    {
+      "filename": "warder-48e_a-50x30-white-4ebb99b8af04d324.zip",
+      "png_count_added": 4,
+      "parts_sha256_crc_installer_user_png": "PASS"
+    }
+  ],
+  "protected_canal_sha256_crc": [
+    {
+      "filename": "warder-canalplus_sk-220x132-transparent-f42ac50b5adfc3a6.zip",
+      "sha256": "f42ac50b5adfc3a6fe6d6a5520b0e229b475b072a4c63dc20d5fcf51049f4221"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-white-16d0b4cc5986e48e.zip",
+      "sha256": "16d0b4cc5986e48e36c06ca7e91f1833b6a20abc0c05e06c95b6596d02d960b2"
+    },
+    {
+      "filename": "warder-canalplus_sk-220x132-black-148f5818dd9193f6.zip",
+      "sha256": "148f5818dd9193f6b1fe68f60c66e21abae4df2ed09e2d23c327edcfb576e1e8"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-transparent-87d905f9027e7a0a.zip",
+      "sha256": "87d905f9027e7a0a0366e7820ab8342deaefaca8376081e33af5bc08c6a8792d"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-white-de20059b06ae4ffd.zip",
+      "sha256": "de20059b06ae4ffdf75d1295c75a9939cf87a55acd663483b9bb896b58ed1ace"
+    },
+    {
+      "filename": "warder-canalplus_cz-220x132-black-caebfc2732e954a9.zip",
+      "sha256": "caebfc2732e954a9a7f90787897cab26b65f3b605e88eb131684c98044cb0abf"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-transparent-6cacdecbc8c81173.zip",
+      "sha256": "6cacdecbc8c81173859de0bce9a5471662ae9e66f639c80c7900e03ded14d07f"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-transparent-1469150c69e5f38b.zip",
+      "sha256": "1469150c69e5f38b8ad6f7364e968ed0da60ed0a14b51aa9268a47e056ef2849"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-white-ef9eec01cd368a46.zip",
+      "sha256": "ef9eec01cd368a4697e6b375255f6d113783204cf28d48223e187666ca48546e"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-white-693cadd1ab08d96d.zip",
+      "sha256": "693cadd1ab08d96d38c9a06cc74f5c7cccb6fba470736ba66f67a00bf000af38"
+    },
+    {
+      "filename": "warder-canalplus_sk-50x30-black-78fed665dfd44a4b.zip",
+      "sha256": "78fed665dfd44a4b3f88e83f3f5b7221f99a34ebbea7720367a943f83971a8db"
+    },
+    {
+      "filename": "warder-canalplus_sk-400x240-black-d93dedee57a80a4a.zip",
+      "sha256": "d93dedee57a80a4ab7ea29380a2d7a8be5d403e7a71ca69838c56037c54d685b"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-transparent-ca1b8443f0ceae71.zip",
+      "sha256": "ca1b8443f0ceae71a461ac559cf9c5ea95038891a6af67af040dfb83dbb4ac78"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-transparent-63864e5f39285be5.zip",
+      "sha256": "63864e5f39285be5bbe8e133a0e5e84db9414c9e968f3dc696ab87c17d62bd27"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-white-a770792d92b1a45a.zip",
+      "sha256": "a770792d92b1a45ad4812d3315cfd71e54f8ef8c7070c4d5e8e451fea6be9381"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-white-2361de5893401a1f.zip",
+      "sha256": "2361de5893401a1f5afb2b39243687dbff5ddaf99fdd8f7a00045e903f00a9d1"
+    },
+    {
+      "filename": "warder-canalplus_cz-50x30-black-d212dc31031570c0.zip",
+      "sha256": "d212dc31031570c024ba1c309c91eee96c9d04600a3b5716ebd537b50de17213"
+    },
+    {
+      "filename": "warder-canalplus_cz-400x240-black-88da0a3e1b54e36b.zip",
+      "sha256": "88da0a3e1b54e36be4268c1bedcb3e9330cdf94382c43f5476584da217b4ac5f"
+    }
+  ],
+  "installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
+  "hardware_receiver_tested": false
+}
