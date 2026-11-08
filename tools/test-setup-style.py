@@ -92,7 +92,7 @@ class SetupStyleTests(unittest.TestCase):
         # explicitly instead of requiring obsolete AST nodes to still exist.
         evolved = {
             3: "if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:",
-            9: "if in_default_channel_screen and 'render=\\"g17ShowExtraEpg\\"' in line:",
+            9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
             11: "in_default_channel_screen = default_geometry",
             12: "if in_default_channel_screen and '</screen>' in line:",
         }
