@@ -5734,6 +5734,17 @@ class ExtraInfo17(Screen):
 					self._warderAspectIcon = self._warderAudioIcon = None
 				width = self.getServiceInfoString(info, iServiceInformation.sVideoWidth)
 				height = self.getServiceInfoString(info, iServiceInformation.sVideoHeight)
+				if enaIp and (not str(width).isdigit() or not str(height).isdigit()
+						or int(width) <= 0 or int(height) <= 0):
+					try:
+						from enigma import eAVControl
+						av = eAVControl.getInstance()
+						if not str(width).isdigit() or int(width) <= 0:
+							width = str(av.getResolutionX(0))
+						if not str(height).isdigit() or int(height) <= 0:
+							height = str(av.getResolutionY(0))
+					except (ImportError, AttributeError, TypeError, ValueError, RuntimeError):
+						pass
 				valid_video = (str(width).isdigit() and str(height).isdigit()
 					and int(width) > 0 and int(height) > 0)
 				if enaIp and valid_video:
