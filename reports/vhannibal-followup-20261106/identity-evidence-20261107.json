@@ -2416,9 +2416,9 @@
     "expanded_source_counts": {
       "source_union": 14856,
       "current_tv_in_source_cohort": 10457,
-      "covered_9_valid_candidate": 10350,
-      "technical_open": 107,
-      "original_cohort_open": 88,
+      "covered_9_valid_candidate": 10351,
+      "technical_open": 106,
+      "original_cohort_open": 87,
       "new_delta_technical_open": 19,
       "out_of_scope_including14new_radio": 2725,
       "dated_exact_departures": 5,
@@ -2742,6 +2742,18 @@
       },
       "remaining": 107,
       "next_safe_work": "TV8 Turkey approved donor search by verified brand across historical MASTER sources; fresh raw transport evidence for52E SID900 conflict and39E AntenaTSID. New artwork remains outside candidate until owner approval."
+    },
+    "scope_batch_20261108_05": {
+      "report": "scope-batch-20261108-05.json",
+      "new_tv": 1,
+      "new_png": 9,
+      "changed_zips": 9,
+      "remaining": 106,
+      "original_open": 87,
+      "delta_open": 19,
+      "total_tv": 37,
+      "total_png": 330,
+      "total_unique_zips": 99
     }
   }
 }

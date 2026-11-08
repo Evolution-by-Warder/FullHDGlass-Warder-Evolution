@@ -3597,7 +3597,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_19_7_1FC7_2BE_1040000_0_0_0",
       "name": "FUNBOX HD",
@@ -3622,8 +3622,8 @@
       "donor_candidates": [],
       "reason": "Exact tuple confirmed. Current named alternatives areFunBoxUHD andFastandFunBoxHD, distinct channels; cannot assign theirlogos merely byname."
     },
-    "remaining_current_technical": true,
-    "resolution_reason": "The transport label is HD but original artwork says FUNBOX UHD. Same-edition identity has not been proved; do not copy either UHD or Fast&FunBox without that evidence.",
+    "remaining_current_technical": false,
+    "resolution_reason": "Named contributed service table explicitly binds exact target tuple to FunBox UHD brand while reporting HD video. Same table separately identifies Fast & FunBox at SID3, so this is not name-similarity inference. Donor's exact tuple is separately named FunBox UHD. Published approved gold-UHD artwork visually matches official SPI brand. Nine PNG bytes reused; neither label nor source reference rewritten.",
     "technical_uid": {
       "sid": 7,
       "tsid": 8135,
@@ -3653,7 +3653,37 @@
       "decision": "HOLD_HD_UHD_EDITION",
       "finding": "FUNBOX HD tuple7/8135/702 cannot borrow original FUNBOX UHD or Fast&FunBox solely by similar name.",
       "sources": []
-    }
+    },
+    "resolution_batch_20261108_05": {
+      "target": "1_0_19_7_1FC7_2BE_1040000_0_0_0",
+      "programme_brand": "FunBox UHD",
+      "transport_label_preserved": "FUNBOX HD",
+      "video_format": "MPEG-4 HD",
+      "sid": 7,
+      "tsid": 8135,
+      "onid": 702,
+      "frequency": "12380H",
+      "position": "26E",
+      "video_pid": 1007,
+      "audio_pid": 2007,
+      "donor": "1_0_1F_262_C418_16E_A00000_0_0_0",
+      "donor_tuple": {
+        "sid": 610,
+        "tsid": 50200,
+        "onid": 366,
+        "position": "16E",
+        "frequency": "11471V"
+      },
+      "sources": [
+        "https://www.lyngsat.com/muxes/Badr-8_MENA-BSS_12380-H.html",
+        "https://www.lyngsat.com/muxes/Eutelsat-16A_Europe-B_11471-V.html",
+        "https://spiintl.com/channels/funbox-uhd",
+        "https://spiintl.com/data/files/kcfinderUploadDir/images/logo/FunBoxUHD-logo.png"
+      ],
+      "reason": "Named contributed service table explicitly binds exact target tuple to FunBox UHD brand while reporting HD video. Same table separately identifies Fast & FunBox at SID3, so this is not name-similarity inference. Donor's exact tuple is separately named FunBox UHD. Published approved gold-UHD artwork visually matches official SPI brand. Nine PNG bytes reused; neither label nor source reference rewritten.",
+      "checked_date": "2026-11-08"
+    },
+    "physical_valid_slots_after_candidate": 9
   },
   {
     "reference": "1_0_19_D7A3_228_70_2250000_0_0_0",

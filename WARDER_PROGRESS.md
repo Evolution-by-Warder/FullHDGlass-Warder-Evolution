@@ -1,5 +1,12 @@
 # Warder Evolution – stav projektu
 
+### Dávka05 – FUNBOX presná identita potvrdená – 8.11.2026
+
+- **1 TV referencia / 9 PNG / 9 ZIPov / 0 technických výnimiek**. Zostáva **106 = 87 pôvodných + 19 delta**. PR spolu **37 TV referencií / 330 PNG / 99 jedinečných ZIPov**.
+- Presný SID7/TSID8135/ONID702 na26°E/12380H je v pomenovanom multiplexe FunBox UHD vysielaný v HD; Fast&FunBox je samostatný SID3. Existujúci schválený donor FunBox UHD zo16°E/SID610/TSID50200/ONID366; značka vizuálne porovnaná s oficiálnym SPI logom. Pôvodný servisný názov FUNBOX HD a referencia zachované.
+- Deväť PNG bajtovo skopírovaných, žiadne renderovanie. Lokálne SHA256/CRC/rozmery/alfa PASS, 17 934 pôvodných členov ZIPov a pôvodné ZIP prefixy zachované.18 CANAL+ balíkov nezmenených. Validátor manifestu a inštalačná funkcia1.0.74 PASS; fyzický prijímač netestovaný.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261108-05.json`. Vzdialený audit nasleduje po uložení payloadu. Produkcia a rádio bez zmien.
+
 ### Dávka 04 – preukázaný profesionálny feed EBU – 8. 11. 2026
 
 - EBU 1 ENC, presný SID1/TSID17185/ONID235 na13°E/11039H, vyradený z fronty spotrebiteľských TV grafík ako profesionálny spravodajský prenos. Podklad: zhodný prijímačový scan, Satindex feed a oficiálny opis služby EBU. Nie je označený ako dátová služba.
