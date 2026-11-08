@@ -12,6 +12,7 @@ on:
       - tools/test_channel_selection_progress_paint_cache.py
       - tools/test_warder_channel_epg_clip.py
       - tools/test_warder_default_epg_panel_runtime.py
+      - source/package-root/usr/share/enigma2/hd_glass17/skin.xml
       - source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
   workflow_dispatch:
 permissions:
