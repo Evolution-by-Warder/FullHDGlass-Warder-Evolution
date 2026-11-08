@@ -1,3 +1,10 @@
+## 1.0.72 — 08.11.2026
+
+- IPTV: obnovené zisťovanie rozlíšenia pri nedostupných metadátach služby pomocou údajov dekodéra.
+- Infobar 76: odstránené prekrývanie CAID indikátorov; úplné CAID, SID a VPID sa plynulo posúvajú (220 ms).
+- Text zmien pri aktualizácii sa vyberá podľa jazyka systému Enigma2, s angličtinou ako náhradou.
+- Zachované pôvodné funkcie aj nastavenia; overené na GigaBlue Quad 4K Pro v TEST61.
+
 FullHDGlass Warder Evolution 1.0.41 — 29.10.2026
 Produkčné vydanie na pokyn vlastníka: 84 stĺpcov 3 px, medzery 1 px, pôvodné farby a priehľadný pohyblivý equalizér TEST2. Hotové snímky namiesto drahého segmentového vykresľovania, tichá prevádzka, ohraničené RAM cache a upratovanie dočasných súborov. Riadna aktualizácia z 1.0.39 aj TEST2; nastavenia, texty, obaly a RDS/DAB zachované.
 
