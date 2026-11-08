@@ -80,6 +80,7 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        self._scroll_identity = None
         # Never fake native EPG suppression with a tiny font. The C++ list
         # skips elements whose font pointer is null; where the image's SWIG
         # binding rejects None, leave its native list untouched.
@@ -193,6 +194,7 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        self._scroll_identity = None
         if hasattr(self, '_row_fit_cache'):
             self._row_fit_cache.clear()
         if hasattr(self, '_glyph_width_cache'):
@@ -215,9 +217,9 @@ class WarderChannelEpgClip(Renderer):
     def changed(self, what):
         if self.instance:
             self._last = None
-            self._scroll_started = time()
-            # Selection notifications must NOT wipe the other visible rows.
-            # Their snapshots expire naturally after at most one second.
+            # EPG/source notifications may fire frequently while the selected
+            # station stays the same. Do not restart its marquee on each one.
+            # _draw_rows resets it for real selection/title/mode changes.
             self.refresh()
 
     def _restore_native(self):
@@ -349,6 +351,7 @@ class WarderChannelEpgClip(Renderer):
                 or mode != getattr(self, "_scroll_mode", None)):
             self._scroll_selected = selected
             self._scroll_mode = mode
+            self._scroll_identity = None
             self._scroll_started = time()
             self._last = None
         width = component.instance.size().width()
@@ -413,8 +416,6 @@ class WarderChannelEpgClip(Renderer):
         # selected-row text and for the original progress indicator.
         # Avoid asking the native EPG cache twice on every 55ms refresh.
         fractions = {}
-        scroll_age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
-        pixel_clock = int(scroll_age * 1000.0 / 55.0) * 2
         for row_index in range(available_rows):
             index = top + row_index
             ref = rows[index]
@@ -470,15 +471,24 @@ class WarderChannelEpgClip(Renderer):
                     if len(row_cache) >= 128:
                         row_cache.clear()
                     row_cache[row_key] = (start, remaining, overflow, first_frame)
+            position = 0
             if index == selected:
                 self._focused_title_overflow = overflow > 0
-            # Pause at both ends; replay the whole title from its beginning.
-            # 2px per 55ms virtual motion, with safe glyph-aligned painting.
-            journey = overflow + 220
-            # Only the focused row animates; every other event remains
-            # ellipsized and stable even while the timer refreshes the canvas.
-            position = (min(overflow, max(0, (pixel_clock % journey) - 110))
-                        if overflow and index == selected else 0)
+                current_identity = (name, title)
+                previous_identity = getattr(self, '_scroll_identity', None)
+                if previous_identity is not None and previous_identity != current_identity:
+                    # New programme on the same station, or a changed station
+                    # at the same row index: restart from the beginning.
+                    self._scroll_started = time()
+                self._scroll_identity = current_identity
+                if overflow:
+                    # Pause at the start, scroll at a glyph-aligned 2px/55ms
+                    # clock, pause at the end and repeat from the beginning.
+                    age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
+                    pixel_clock = int(age * 1000.0 / 55.0) * 2
+                    journey = overflow + 220
+                    position = min(overflow, max(0, (pixel_clock % journey) - 110))
+            # Other rows remain statically fitted within their own field.
             fitted = (first_frame if position == 0 else
                       scroll_title_window(title, remaining, measure, position))
             if fitted:
