@@ -184,12 +184,14 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
-        self._epg_snapshots.clear()
+        if hasattr(self, '_epg_snapshots'):
+            self._epg_snapshots.clear()
         self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
-        self._epg_snapshots.clear()
+        if hasattr(self, '_epg_snapshots'):
+            self._epg_snapshots.clear()
         self._restore_native()
         self._label = None
 
@@ -266,7 +268,8 @@ class WarderChannelEpgClip(Renderer):
             if len(self._epg_snapshots) >= 96:
                 # The visible list is usually <= 30. Bound long browsing
                 # sessions without affecting currently visible rows.
-                self._epg_snapshots.clear()
+                if hasattr(self, '_epg_snapshots'):
+            self._epg_snapshots.clear()
             self._epg_snapshots[key] = (now, snapshot)
             self._epg_cache_misses += 1
             return snapshot
@@ -509,7 +512,8 @@ class WarderChannelEpgClip(Renderer):
             if component is not self._component:
                 self._restore_native()
                 self._component = component
-                self._epg_snapshots.clear()
+                if hasattr(self, '_epg_snapshots'):
+            self._epg_snapshots.clear()
                 self._native_disable_unsupported = False
                 self._last = None
             # Unsupported views must remain completely native; never
