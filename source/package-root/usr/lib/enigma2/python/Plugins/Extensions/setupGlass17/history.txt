@@ -1,3 +1,9 @@
+FullHDGlass 1.0.72 — 08.11.2026
+Fixed IPTV video resolution detection using decoder fallback when service metadata is missing.
+InfoBar 76: CAID/SID/VPID text scrolls seamlessly within its reserved space without overlapping colored indicators, with slightly faster 220 ms steps.
+Update notifications now show release changes in the Enigma2 system language where translations are available.
+Previous features and user settings are preserved. Restart the GUI after updating.
+
 FullHDGlass 1.0.69 — 05.11.2026
 New channel-list picon source setting: System setting is the default and restores the original image lookup.
 Prefer 50x30 remains an explicit option, with shared fallback. Save and restart GUI.
