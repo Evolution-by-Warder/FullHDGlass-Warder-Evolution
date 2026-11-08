@@ -5864,9 +5864,7 @@ self.autoResize()
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>	
 	</screen>
-  <screen name="PluginBrowserList-1" position="0,0" size="1920,1080" backgroundColor="background" title="Plugin browser">
-    <!-- TEST: cover only the unused top 32px; previous menu remains visible through the translucent screen background on some OpenATV compositors. Keep the title at y=46 and every existing widget untouched. -->
-    <eLabel position="0,0" size="1920,32" backgroundColor="#00000000" zPosition="0" transparent="0" />
+  <screen name="PluginBrowserList-1" position="0,0" size="1920,1080" backgroundColor="background" title="Plugin browser" flags="wfNoBorder">
 		<widget source="pluginList" render="Listbox" position="80,150" size="1760,720" conditional="pluginList" listOrientation="vertical" backgroundColor="background" scrollbarMode="showOnDemand">
 			<convert type="TemplatedMultiContent">
 				{
