@@ -1371,9 +1371,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify Dream Turk. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 913,
       "tsid": 525,
@@ -1398,7 +1398,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_2DB9_7_42_1A40000_0_0_0",
+    "verified_programme": "Dream Turk"
   },
   {
     "reference": "1_0_16_392_20D_73_2080000_0_0_0",
@@ -1417,9 +1420,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify Kanal D Turkey. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 914,
       "tsid": 525,
@@ -1444,7 +1447,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_2DB5_7_42_1A40000_0_0_0",
+    "verified_programme": "Kanal D Turkey"
   },
   {
     "reference": "1_0_16_394_20D_73_2080000_0_0_0",
@@ -1463,9 +1469,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify Show TV. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 916,
       "tsid": 525,
@@ -1490,7 +1496,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_29CC_A2E8_42E_1A40000_0_0_0",
+    "verified_programme": "Show TV"
   },
   {
     "reference": "1_0_16_395_20D_73_2080000_0_0_0",
@@ -1509,9 +1518,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify Show Max. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 917,
       "tsid": 525,
@@ -1536,7 +1545,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_29D0_A2E8_42E_1A40000_0_0_0",
+    "verified_programme": "Show Max"
   },
   {
     "reference": "1_0_16_396_20D_73_2080000_0_0_0",
@@ -1555,9 +1567,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify TRT1. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 918,
       "tsid": 525,
@@ -1582,7 +1594,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_2A30_A15A_42E_1A40000_0_0_0",
+    "verified_programme": "TRT1"
   },
   {
     "reference": "1_0_16_398_20D_73_2080000_0_0_0",
@@ -1601,9 +1616,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify TRT Belgesel. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 920,
       "tsid": 525,
@@ -1628,7 +1643,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_2A34_A15A_42E_1A40000_0_0_0",
+    "verified_programme": "TRT Belgesel"
   },
   {
     "reference": "1_0_16_399_20D_73_2080000_0_0_0",
@@ -1647,9 +1665,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact SID/TSID/ONID and matching current AV PIDs identify Kanal7 domestic. All nine approved donor PNGs copied byte-for-byte; original label retained.",
     "technical_uid": {
       "sid": 921,
       "tsid": 525,
@@ -1674,7 +1692,10 @@
         115,
         34078720
       ]
-    }
+    },
+    "resolution_evidence": "scope-batch-20261108-03.json",
+    "donor": "1_0_19_CB20_A4DB_42E_1A40000_0_0_0",
+    "verified_programme": "Kanal7 domestic"
   },
   {
     "reference": "1_0_16_3_C_2C_EB0000_0_0_0",

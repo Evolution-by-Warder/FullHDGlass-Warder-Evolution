@@ -2416,9 +2416,9 @@
     "expanded_source_counts": {
       "source_union": 14856,
       "current_tv_in_source_cohort": 10458,
-      "covered_9_valid_candidate": 10343,
-      "technical_open": 115,
-      "original_cohort_open": 96,
+      "covered_9_valid_candidate": 10350,
+      "technical_open": 108,
+      "original_cohort_open": 89,
       "new_delta_technical_open": 19,
       "out_of_scope_including14new_radio": 2724,
       "dated_exact_departures": 5,
@@ -2549,6 +2549,17 @@
         "delta_unchanged": true,
         "asset_paths_changed": 0
       }
+    },
+    "scope_batch_20261108_03": {
+      "report": "scope-batch-20261108-03.json",
+      "new_references": 7,
+      "new_png": 63,
+      "changed_zips": 9,
+      "remaining_open": 108
+    },
+    "quarantine_20261108_02": {
+      "commit": "7923bfd4f8639d15b4705c9354da7b5ee2fcd14a",
+      "reason": "Later independent review found LyngSat exact SID900/TSID525/ONID115 identifies NOW since2026-10-16, PID2850/2950; Morpheus/KingOfSat still Zor TV PID208/308. Do not choose by crawl time. Restore active manifest/checksums and review counts to prior checkpoint. Uploaded immutable ZIP parts remain historical evidence only, not active packages."
     }
   }
 }

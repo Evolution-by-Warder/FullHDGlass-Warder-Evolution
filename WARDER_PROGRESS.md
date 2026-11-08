@@ -1,5 +1,14 @@
 # Warder Evolution – stav projektu
 
+### Dávka 03 – sedem presne identifikovaných AREF TV služieb – 8. 11. 2026
+
+- **7 opravených TV referencií / 63 nových PNG / 9 ZIPov / 0 dátových výnimiek**. Zostáva **108 otvorených: 89 pôvodných + 19 delta**. PR spolu **36 opravených / 321 PNG / 99 jedinečných ZIPov**.
+- SID913 Dream Türk, 914 Kanal D Turkey, 916 Show TV, 917 Show Max, 918 TRT1, 920 TRT Belgesel, 921 Kanal7 domestic. Všetky 52°E/10887H, TSID525/ONID115; pomenovaný servisný prehľad a nezávislý scan zhodných AV PID. Servisné názvy a referencie v pôvodnom registri zachované.
+- Deväť variantov každej stanice je bajtovou kópiou existujúceho schváleného donora z42°E. Vizuálne skontrolované všetky tri pozadia. Kanal7 používa domáci donor CB20, nie AVRUPA/C579. TV8/SID912 ostáva pre rozdiel artworku otvorené.
+- Lokálne PASS: SHA256/CRC, rozmery, alfa, presné PNG, 12 408 pôvodných členov a pôvodné ZIP prefixy zachované; všetkých18 CANAL+ archívov nezmenených. Validátor manifestu a test inštalačnej funkcie1.0.74 PASS. Bez testu fyzického prijímača.
+- Základ `7923bfd4f8639d15b4705c9354da7b5ee2fcd14a`; Zor/NOW karanténa trvá. RADIO CLASSICA TV má pri čerstvom zdroji rozpor ONID/TSID, preto sa nevyraďuje podľa staršieho cache.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261108-03.json`; vzdialené overenie nasleduje po commite. Bez produkčného merge, feedu, IPK a rádia.
+
 ### Dávka 02 – karanténa po zistení rozporu identity – 8. 11. 2026
 
 - Pripravený Zor TV payload v `0ca6a3c1daa72f7a3edb278366f364eef5b597a4` **nie je dokončená dávka**. Dodatočný LyngSat záznam priraďuje presný SID900/TSID525/ONID115 stanici NOW od 16. 10. 2026 (PID2850/2950), kým Morpheus/KingOfSat uvádzajú Zor (PID208/308).
