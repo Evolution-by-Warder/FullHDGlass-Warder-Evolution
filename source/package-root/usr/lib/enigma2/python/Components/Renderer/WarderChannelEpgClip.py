@@ -197,7 +197,8 @@ class WarderChannelEpgClip(Renderer):
         if self.instance:
             self._last = None
             self._scroll_started = time()
-            self._epg_snapshots.clear()
+            # Selection notifications must NOT wipe the other visible rows.
+            # Their snapshots expire naturally after at most one second.
             self.refresh()
 
     def _restore_native(self):
