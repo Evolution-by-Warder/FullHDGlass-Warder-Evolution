@@ -1,5 +1,14 @@
 # Warder Evolution – stav projektu
 
+### Dávka 02 – Zor TV, presne identifikovaný Service-900 – 8. 11. 2026
+
+- Základ `d401bbb3ed78bc6b043c29568b26580402d2ac86`; živé main SHA oboch repozitárov bezo zmeny oproti predchádzajúcemu auditu.
+- **1 opravená TV referencia / 9 nových PNG / 9 aktualizovaných ZIPov / 0 dátových výnimiek**. Zostáva **114 otvorených (95 pôvodných + 19 delta)**.
+- `1_0_16_384_20D_73_2080000_0_0_0`: Service-900 presne doložený ako Zor TV (52°E SID900/TSID525/ONID115); použité existujúce schválené PNG donora `1_0_16_CD8F_20E_73_2080000_0_0_0` bez zmeny bajtov. Pôvodný servisný názov zachovaný v registri.
+- Lokálne PASS: SHA256, CRC, všetkých deväť rozmerov/pozadí, 12 408 pôvodných členov bitovo zachovaných, staré ZIP prefixy zachované, 18 CANAL+ balíkov nezmenených, validátor manifestu a inštalačná funkcia produkčnej 1.0.74. Fyzický prijímač netestovaný.
+- Celý PR: **30 opravených referencií / 267 PNG / 99 jedinečných ZIPov**. Detaily a kontrolné súčty: `reports/vhannibal-followup-20261106/scope-batch-20261108-02.json`. Vzdialené overenie bude doplnené po commite.
+- Antena ostáva blokovaná: nový nezávislý prehľad Morpheus39 stále TSID0, Vhannibal TSID10; bez automatického aliasu. Produkcia a rádio bez zmien.
+
 ### Malá dávka 01 – BFBS dátové výnimky – 8. 11. 2026
 
 - **115 otvorených: 96 pôvodných + 19 delta**, pred dávkou 117.
