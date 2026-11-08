@@ -15,6 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/package-root/
+            /source/control/
+            /tools/build-release-ipk.py
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
