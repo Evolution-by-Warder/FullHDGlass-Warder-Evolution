@@ -105,6 +105,10 @@ class WarderChannelEpgClip(Renderer):
         # Neither cache stores channel references or paints pixels.
         self._row_fit_cache = {}
         self._glyph_width_cache = {}
+        # TEST6: reusable exact pixel paint plans (not raster approximations).
+        self._progress_paint_cache = {}
+        self._perf_bar_plan_hits = 0
+        self._perf_bar_plan_misses = 0
         self._perf_text_measure_calls = 0
         self._perf_text_cache_hits = 0
 
@@ -126,13 +130,14 @@ class WarderChannelEpgClip(Renderer):
             count = self._perf_ticks
             if count > 0:
                 with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
-                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d mode=%s\n' % (
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d bar_plan_hits=%d bar_plan_misses=%d mode=%s\n' % (
                         now - self._perf_since, count, self._perf_elapsed_ms / count,
                         self._perf_worst_ms, self._perf_over_20ms,
                         self._perf_row_changes, self._perf_name_calls,
                         self._perf_progress_calls, self._epg_cache_hits,
                         self._epg_cache_misses, self._perf_text_measure_calls,
-                        self._perf_text_cache_hits, str(self._progress_mode())))
+                        self._perf_text_cache_hits, self._perf_bar_plan_hits,
+                        self._perf_bar_plan_misses, str(self._progress_mode())))
             self._perf_since = now
             self._perf_ticks = 0
             self._perf_elapsed_ms = 0.0
@@ -145,6 +150,8 @@ class WarderChannelEpgClip(Renderer):
             self._epg_cache_misses = 0
             self._perf_text_measure_calls = 0
             self._perf_text_cache_hits = 0
+            self._perf_bar_plan_hits = 0
+            self._perf_bar_plan_misses = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -513,33 +520,57 @@ class WarderChannelEpgClip(Renderer):
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
         if progress_bars:
-            # Restore the original Warder progressbar design from the
-            # pre-TEST69 renderer, without its former opaque text mask.
+            # The exact eight-segment gradient, frame width, rectangles and
+            # source colors remain identical to TEST5. Only geometry and
+            # parseColor conversion are reused across rows/timer frames.
+            #
+            # Cache by actual pixel width/height and integer filled length,
+            # *not* by service: a programme changing does not inherit an
+            # outdated bar, and no user-selected position is shared.
+            paint_cache = getattr(self, '_progress_paint_cache', None)
+            if paint_cache is None:
+                paint_cache = {}
             border = parseColor("#dfdfdf")
             for bx, by, bw, bh, fraction in progress_bars:
                 if bw <= 4 or bh <= 4:
                     continue
+                inner_width = bw - 4
+                filled = int(inner_width * fraction)
+                key = (bw, bh, filled)
+                plan = paint_cache.get(key)
+                if plan is None:
+                    if hasattr(self, '_perf_bar_plan_misses'):
+                        self._perf_bar_plan_misses += 1
+                    # Immutable relative rectangles preserve every original
+                    # eCanvas fillRect call; only offset by the current row.
+                    segments = []
+                    for segment in range(8):
+                        a = filled * segment // 8
+                        z = filled * (segment + 1) // 8
+                        if z <= a:
+                            continue
+                        t = ((a + z) / 2.0) / max(1, inner_width)
+                        if t < .55:
+                            u = t / .55
+                            rgb = (int(53 + 179 * u), int(177 + 23 * u),
+                                   int(63 - 14 * u))
+                        else:
+                            u = (t - .55) / .45
+                            rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
+                        segments.append((2 + a, 2, z - a, bh - 4,
+                                         parseColor("#%02x%02x%02x" % rgb)))
+                    plan = tuple(segments)
+                    if len(paint_cache) >= 128:
+                        paint_cache.clear()
+                    paint_cache[key] = plan
+                elif hasattr(self, '_perf_bar_plan_hits'):
+                    self._perf_bar_plan_hits += 1
                 self.instance.fillRect(eRect(bx, by, bw, 2), border)
                 self.instance.fillRect(eRect(bx, by + bh - 2, bw, 2), border)
                 self.instance.fillRect(eRect(bx, by + 2, 2, bh - 4), border)
                 self.instance.fillRect(eRect(bx + bw - 2, by + 2, 2, bh - 4), border)
-                inner_width = bw - 4
-                filled = int(inner_width * fraction)
-                for segment in range(8):
-                    a = filled * segment // 8
-                    z = filled * (segment + 1) // 8
-                    if z <= a:
-                        continue
-                    t = ((a + z) / 2.0) / max(1, inner_width)
-                    if t < .55:
-                        u = t / .55
-                        rgb = (int(53 + 179 * u), int(177 + 23 * u), int(63 - 14 * u))
-                    else:
-                        u = (t - .55) / .45
-                        rgb = (232, int(200 - 139 * u), int(49 + 5 * u))
-                    self.instance.fillRect(
-                        eRect(bx + 2 + a, by + 2, z - a, bh - 4),
-                        parseColor("#%02x%02x%02x" % rgb))
+                for dx, dy, pw, ph, color in plan:
+                    self.instance.fillRect(eRect(bx + dx, by + dy, pw, ph), color)
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
