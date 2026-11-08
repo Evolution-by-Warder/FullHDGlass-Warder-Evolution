@@ -5864,7 +5864,7 @@ self.autoResize()
 			<convert type="g17GenerateMenuEntry2">entryID</convert>
 		</widget>	
 	</screen>
-  <screen name="PluginBrowserList-1" position="0,0" size="1920,1080" backgroundColor="background" title="Plugin browser">
+  <screen name="PluginBrowserList-1" position="0,0" size="1920,1080" backgroundColor="background" title="Plugin browser" flags="wfNoBorder">
     <!-- Keep the unused top 32px fully opaque and above all other skin widgets: prevent the preceding menu title from showing through the translucent PluginBrowser background. The actual header begins at y=46. -->
     <eLabel position="0,0" size="1920,32" backgroundColor="#00000000" zPosition="10" transparent="0" />
 		<widget source="pluginList" render="Listbox" position="80,150" size="1760,720" conditional="pluginList" listOrientation="vertical" backgroundColor="background" scrollbarMode="showOnDemand">
