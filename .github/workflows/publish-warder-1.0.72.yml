@@ -134,8 +134,8 @@ jobs:
             "sha256":digest,
             "changelog":"IPTV resolution fix and smooth CAID scrolling in InfoBar 76. Restart GUI.",
             "changelog_i18n":{
-              "en":"Fixed IPTV resolution display. InfoBar 76: seamless CAID text scrolling without overlapping indicators, slightly faster (220 ms). Existing settings and earlier improvements preserved. Restart GUI.",
-              "sk":"Opravené zobrazovanie rozlíšenia IPTV. Infobar 76: plynulé rolovanie CAID údajov bez prekrývania indikátorov, mierne zrýchlené (220 ms). Nastavenia a predchádzajúce vylepšenia zostávajú zachované. Reštartujte GUI.",
+              "en":"IPTV: improved detection of video width and height, fallback to the active decoder when metadata is missing, real dimensions and original DVB handling retained. InfoBar 76: dedicated CAID text area, no overlap with colored indicators, complete CAID/SID/VPID scrolling, seamless repeat without a long blank tail, gently increased 220 ms speed. Update description follows Enigma2 language. Settings preserved; restart GUI.",
+              "sk":"IPTV: vylepšené načítanie šírky a výšky obrazu, náhradné údaje z dekodéra pri chýbajúcich metadátach, skutočné rozlíšenie a zachované spracovanie DVB. Infobar 76: samostatný priestor pre CAID, bez prekrývania farebných indikátorov, úplné rolovanie CAID/SID/VPID, plynulý cyklus bez dlhej prázdnej časti, jemne zrýchlené na 220 ms. Popis aktualizácie podľa jazyka Enigma2. Nastavenia zachované; reštartujte GUI.",
               "cs":"Opraveno zobrazování rozlišení IPTV. Infobar 76: plynulé posouvání CAID údajů bez překrývání indikátorů, mírně zrychlené (220 ms). Nastavení a předchozí vylepšení zůstávají zachována. Restartujte GUI.",
               "de":"IPTV-Auflösungsanzeige korrigiert. Infobar 76: nahtlos laufender CAID-Text ohne Überlagerung der Symbole, etwas schneller (220 ms). Einstellungen bleiben erhalten. GUI neu starten.",
               "pl":"Poprawiono wyświetlanie rozdzielczości IPTV. Infobar 76: płynne przewijanie CAID bez nakładania na ikony, nieco szybsze (220 ms). Ustawienia zostały zachowane. Uruchom ponownie GUI.",
