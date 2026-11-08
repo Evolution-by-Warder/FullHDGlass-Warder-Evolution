@@ -478,9 +478,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "VERIFIED_DATA_SERVICE_OUT_OF_TV_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted.",
     "technical_uid": {
       "sid": 8019,
       "tsid": 1,
@@ -505,6 +505,28 @@
         16,
         6553600
       ]
+    },
+    "scope_evidence": {
+      "reference": "1_0_16_1F53_1_10_640000_0_0_0",
+      "name": "16",
+      "sid": 8019,
+      "tsid": 1,
+      "onid": 16,
+      "namespace": 6553600,
+      "service_type": 22,
+      "position": "10.0E",
+      "provider": "BFBS",
+      "pmt": 1019,
+      "video_pid": 0,
+      "audio_pid": 8191,
+      "pcr_pid": 8191,
+      "primary_source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=10",
+      "classification_source": "https://en.kingofsat.net/data-10E",
+      "classification": "Data",
+      "classification_record_date": "2024-10-23",
+      "retrieved": "2026-11-08",
+      "namespace_note": "Morpheus 0064ABD5 vs Vhannibal 00640000: same orbital position, SID/TSID/ONID, provider and 11221V/11222V 24760 multiplex. Original references preserved.",
+      "reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted."
     }
   },
   {
@@ -524,9 +546,9 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "action": "VERIFIED_DATA_SERVICE_OUT_OF_TV_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted.",
     "technical_uid": {
       "sid": 8020,
       "tsid": 1,
@@ -551,6 +573,28 @@
         16,
         6553600
       ]
+    },
+    "scope_evidence": {
+      "reference": "1_0_16_1F54_1_10_640000_0_0_0",
+      "name": "14",
+      "sid": 8020,
+      "tsid": 1,
+      "onid": 16,
+      "namespace": 6553600,
+      "service_type": 22,
+      "position": "10.0E",
+      "provider": "BFBS",
+      "pmt": 1020,
+      "video_pid": 0,
+      "audio_pid": 8191,
+      "pcr_pid": 8191,
+      "primary_source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=10",
+      "classification_source": "https://en.kingofsat.net/data-10E",
+      "classification": "Data",
+      "classification_record_date": "2024-10-23",
+      "retrieved": "2026-11-08",
+      "namespace_note": "Morpheus 0064ABD5 vs Vhannibal 00640000: same orbital position, SID/TSID/ONID, provider and 11221V/11222V 24760 multiplex. Original references preserved.",
+      "reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted."
     }
   },
   {
@@ -3106,7 +3150,7 @@
       "donor_candidates": [],
       "reason": "Official broadcaster confirms SID10702 and12303V. GenericBloomberg, BloombergBG andAdria artwork are wrong editions. PriorPR48checkpoint records officialHTSVG obtained; recover it before any render."
     },
-    "remaining_current_technical": true,
+    "remaining_current_technical": false,
     "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "artwork_review": "bloomberght-review/check-20261108.json",
     "technical_uid": {
@@ -3167,7 +3211,7 @@
       "donor_candidates": [],
       "reason": "Exact tuple established by liveSatindex. SameHTedition asSID10702, but no approvedHTdonor in current referenceledger."
     },
-    "remaining_current_technical": true,
+    "remaining_current_technical": false,
     "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "artwork_review": "bloomberght-review/check-20261108.json",
     "technical_uid": {
@@ -3637,7 +3681,7 @@
       "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
-    "remaining_current_technical": true,
+    "remaining_current_technical": false,
     "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 19,
@@ -3707,7 +3751,7 @@
       "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
-    "remaining_current_technical": true,
+    "remaining_current_technical": false,
     "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 20,
@@ -3777,7 +3821,7 @@
       "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
-    "remaining_current_technical": true,
+    "remaining_current_technical": false,
     "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 21,
@@ -3983,7 +4027,7 @@
       "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
-    "remaining_current_technical": true,
+    "remaining_current_technical": false,
     "resolution_reason": "Exact owner-approved nine prepared PNG copied unchanged from checkpoint5dc376f; see approved-artwork-six-batch-20261108.json. SISSP artwork approval does not establish unrelated aliases.",
     "technical_uid": {
       "sid": 22,

@@ -1,5 +1,14 @@
 # Warder Evolution – stav projektu
 
+### Malá dávka 01 – BFBS dátové výnimky – 8. 11. 2026
+
+- **115 otvorených: 96 pôvodných + 19 delta**, pred dávkou 117.
+- BFBS 10°E: `1_0_16_1F53_1_10_640000_0_0_0` (16/SID8019) a `1_0_16_1F54_1_10_640000_0_0_0` (14/SID8020), TSID1/ONID16, doložené ako dátové služby mimo TV rozsahu. Zdroje a rozhodnutia: `reports/vhannibal-followup-20261106/scope-batch-20261108-01.json`.
+- **2 dátové výnimky / 0 nových PNG / 0 ZIPov**. Celkový výsledok PR ostáva **29 opravených TV referencií / 258 PNG / 99 ZIPov**.
+- Opravených aj šesť zastaraných boolean príznakov `remaining_current_technical` pri už dokončenej schválenej dávke. Ich artworky a rozhodnutia sa nemenia; nejde o nové opravy piconov.
+- Zachovaných 120 riadkov, všetky pôvodné zoznamy chýbajúcich variantov a 19 delta holdov. DMDU_T, BFBS SID8016, Quadrille 75°E a ASSOCIATION MATERIEL zostávajú otvorené.
+- Iba dokumentácia a register; produkcia, rádio a grafiky bez zmeny. Základ `6f5f7ebf8e51aa0faab7ae5ba9464f5b2f68c4f0`; spätné overenie nasleduje po zápise.
+
 ### Spätné overenie zachránenej dávky dokončené – 8. 11. 2026
 
 - Balíkový commit: [`7d36ea4e7a8b92aabac5605a569224ae2769ec7c`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/7d36ea4e7a8b92aabac5605a569224ae2769ec7c), rodič je pôvodný checkpoint `5dc376fcfd76a4f1255c93c5eac9e518ba79ae60`.

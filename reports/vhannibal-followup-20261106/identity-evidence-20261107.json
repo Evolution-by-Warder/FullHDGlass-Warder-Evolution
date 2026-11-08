@@ -643,6 +643,50 @@
         "frequency": "11411H",
         "source": "https://en.kingofsat.net/datapack-ncplus",
         "reason": "Exact service SID14299 on NID318/TSID1100 is a Data record without video/audio; not a TV channel."
+      },
+      "1_0_16_1F53_1_10_640000_0_0_0": {
+        "reference": "1_0_16_1F53_1_10_640000_0_0_0",
+        "name": "16",
+        "sid": 8019,
+        "tsid": 1,
+        "onid": 16,
+        "namespace": 6553600,
+        "service_type": 22,
+        "position": "10.0E",
+        "provider": "BFBS",
+        "pmt": 1019,
+        "video_pid": 0,
+        "audio_pid": 8191,
+        "pcr_pid": 8191,
+        "primary_source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=10",
+        "classification_source": "https://en.kingofsat.net/data-10E",
+        "classification": "Data",
+        "classification_record_date": "2024-10-23",
+        "retrieved": "2026-11-08",
+        "namespace_note": "Morpheus 0064ABD5 vs Vhannibal 00640000: same orbital position, SID/TSID/ONID, provider and 11221V/11222V 24760 multiplex. Original references preserved.",
+        "reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted."
+      },
+      "1_0_16_1F54_1_10_640000_0_0_0": {
+        "reference": "1_0_16_1F54_1_10_640000_0_0_0",
+        "name": "14",
+        "sid": 8020,
+        "tsid": 1,
+        "onid": 16,
+        "namespace": 6553600,
+        "service_type": 22,
+        "position": "10.0E",
+        "provider": "BFBS",
+        "pmt": 1020,
+        "video_pid": 0,
+        "audio_pid": 8191,
+        "pcr_pid": 8191,
+        "primary_source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=10",
+        "classification_source": "https://en.kingofsat.net/data-10E",
+        "classification": "Data",
+        "classification_record_date": "2024-10-23",
+        "retrieved": "2026-11-08",
+        "namespace_note": "Morpheus 0064ABD5 vs Vhannibal 00640000: same orbital position, SID/TSID/ONID, provider and 11221V/11222V 24760 multiplex. Original references preserved.",
+        "reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted."
       }
     },
     "original_cohort_counts": {
@@ -2371,12 +2415,12 @@
     },
     "expanded_source_counts": {
       "source_union": 14856,
-      "current_tv_in_source_cohort": 10460,
+      "current_tv_in_source_cohort": 10458,
       "covered_9_valid_candidate": 10343,
-      "technical_open": 117,
-      "original_cohort_open": 98,
+      "technical_open": 115,
+      "original_cohort_open": 96,
       "new_delta_technical_open": 19,
-      "out_of_scope_including14new_radio": 2722,
+      "out_of_scope_including14new_radio": 2724,
       "dated_exact_departures": 5,
       "historical_without_exact_match": 1669
     },
@@ -2422,6 +2466,89 @@
       "pr_total_new_png": 258,
       "pr_total_unique_changed_zips": 99,
       "production_merged": false
+    },
+    "scope_batch_20261108_01": {
+      "batch": "scope-batch-20261108-01",
+      "base_commit": "6f5f7ebf8e51aa0faab7ae5ba9464f5b2f68c4f0",
+      "decisions": [
+        {
+          "reference": "1_0_16_1F53_1_10_640000_0_0_0",
+          "name": "16",
+          "sid": 8019,
+          "tsid": 1,
+          "onid": 16,
+          "namespace": 6553600,
+          "service_type": 22,
+          "position": "10.0E",
+          "provider": "BFBS",
+          "pmt": 1019,
+          "video_pid": 0,
+          "audio_pid": 8191,
+          "pcr_pid": 8191,
+          "primary_source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=10",
+          "classification_source": "https://en.kingofsat.net/data-10E",
+          "classification": "Data",
+          "classification_record_date": "2024-10-23",
+          "retrieved": "2026-11-08",
+          "namespace_note": "Morpheus 0064ABD5 vs Vhannibal 00640000: same orbital position, SID/TSID/ONID, provider and 11221V/11222V 24760 multiplex. Original references preserved.",
+          "reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted."
+        },
+        {
+          "reference": "1_0_16_1F54_1_10_640000_0_0_0",
+          "name": "14",
+          "sid": 8020,
+          "tsid": 1,
+          "onid": 16,
+          "namespace": 6553600,
+          "service_type": 22,
+          "position": "10.0E",
+          "provider": "BFBS",
+          "pmt": 1020,
+          "video_pid": 0,
+          "audio_pid": 8191,
+          "pcr_pid": 8191,
+          "primary_source": "https://ftp.morpheus883.altervista.org/srv.php/?chart=10",
+          "classification_source": "https://en.kingofsat.net/data-10E",
+          "classification": "Data",
+          "classification_record_date": "2024-10-23",
+          "retrieved": "2026-11-08",
+          "namespace_note": "Morpheus 0064ABD5 vs Vhannibal 00640000: same orbital position, SID/TSID/ONID, provider and 11221V/11222V 24760 multiplex. Original references preserved.",
+          "reason": "Exact service explicitly catalogued Data; independent chart has no AV stream. Outside TV artwork scope, no PNG repaired or deleted."
+        }
+      ],
+      "counts": {
+        "before_open": 117,
+        "after_open": 115,
+        "original_open": 96,
+        "delta_open": 19,
+        "new_png": 0,
+        "changed_zips": 0,
+        "total_repaired": 29,
+        "total_png": 258,
+        "total_zips": 99
+      },
+      "corrected_stale_remaining_flags_on_already_approved_six": [
+        "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
+        "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
+        "1_0_1_13_65_1_300000_0_0_0",
+        "1_0_1_14_65_1_300000_0_0_0",
+        "1_0_1_15_65_1_300000_0_0_0",
+        "1_0_1_16_65_1_300000_0_0_0"
+      ],
+      "pending_checks": {
+        "DMDU_T": "No AV alone insufficient.",
+        "BFBS_SID8016": "Explicit data classification not corroborated.",
+        "Quadrille_75E": "Listings on other satellites not applicable.",
+        "ASSOCIATION_MATERIEL": "Departure history conflicts with current listing."
+      },
+      "validation": {
+        "original_rows": 120,
+        "new_scope_decisions": 2,
+        "stale_flags_corrected": 6,
+        "missing_arrays_preserved": true,
+        "delta_unchanged": true,
+        "asset_paths_changed": 0
+      }
     }
   }
 }
