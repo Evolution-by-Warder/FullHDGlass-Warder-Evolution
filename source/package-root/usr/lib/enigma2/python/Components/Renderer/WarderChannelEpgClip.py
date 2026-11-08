@@ -408,6 +408,7 @@ class WarderChannelEpgClip(Renderer):
                 self._glyph_width_cache.clear()
             self._row_geometry_key = geometry_key
         drawing = []
+        self._focused_title_overflow = False
         # One progress lookup per visible service: reuse it for the
         # selected-row text and for the original progress indicator.
         # Avoid asking the native EPG cache twice on every 55ms refresh.
@@ -469,6 +470,8 @@ class WarderChannelEpgClip(Renderer):
                     if len(row_cache) >= 128:
                         row_cache.clear()
                     row_cache[row_key] = (start, remaining, overflow, first_frame)
+            if index == selected:
+                self._focused_title_overflow = overflow > 0
             # Pause at both ends; replay the whole title from its beginning.
             # 2px per 55ms virtual motion, with safe glyph-aligned painting.
             journey = overflow + 220
@@ -677,4 +680,12 @@ class WarderChannelEpgClip(Renderer):
             if hasattr(self, '_perf_tick'):
                 self._perf_tick((monotonic() - started) * 1000.0)
             if self.instance:
-                self._timer.start(55, True)
+                # TEST10: retain the original 55 ms motion during active
+                # focused-title scrolling, but avoid repainting all visible
+                # rows 18x/sec while the text is stationary. The native
+                # scroll position is derived from wall time, so slow/fast
+                # timer transitions cannot change the displayed title.
+                age = time() - getattr(self, '_scroll_started', time())
+                active = bool(getattr(self, '_focused_title_overflow', False)
+                              and age >= 1.2)
+                self._timer.start(55 if active else 130, True)
