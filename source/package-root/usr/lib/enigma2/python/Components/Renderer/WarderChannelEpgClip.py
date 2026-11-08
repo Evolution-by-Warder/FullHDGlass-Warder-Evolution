@@ -287,8 +287,8 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_top_negative")
             return False
         selected = component.instance.getCurrentIndex()
-        if self._perf_last_row is not None and selected != self._perf_last_row:
-            self._perf_row_changes += 1
+        if getattr(self, '_perf_last_row', None) is not None and selected != self._perf_last_row:
+            self._perf_row_changes = getattr(self, '_perf_row_changes', 0) + 1
         self._perf_last_row = selected
         # A new focused service starts its own scroll at the beginning.
         if (selected != getattr(self, "_scroll_selected", None)
@@ -543,6 +543,7 @@ class WarderChannelEpgClip(Renderer):
             if self.instance:
                 self.instance.clear(self._transparent)
         finally:
-            self._perf_tick((monotonic() - started) * 1000.0)
+            if hasattr(self, '_perf_tick'):
+                self._perf_tick((monotonic() - started) * 1000.0)
             if self.instance:
                 self._timer.start(55, True)
