@@ -32,7 +32,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('if in_default_channel_screen and', source)
         self.assertIn('warderWholeLineScroll="1"', source)
 
-    def test_custom_font_pass_does_not_drop_last_service_event_overlay(self):
+    def test_custom_font_pass_preserves_native_service_list_without_overlay(self):
         # Receiver TEST61 proved the installed skin had lost the overlay.
         # A terminal self-closing ServiceEvent widget was buffered in
         # changeChF() and discarded at </screen>. Exercise both actual
@@ -75,7 +75,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             self.assertEqual(scope["changeChF"](), "o")
             result = runtime.read_text(encoding="utf-8")
             screen = result.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
-            self.assertEqual(screen.count('render="WarderChannelEpgClip"'), 1)
+            self.assertEqual(screen.count('render="WarderChannelEpgClip"'), 0)
             self.assertIn('numEvents="6"', screen)
             self.assertIn('serviceNameFont="Prive4;40"', screen)
             self.assertIn('serviceInfoFont="Prive4;38"', screen)
@@ -84,7 +84,44 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             self.assertEqual(scope["changeChF"](), "o")
             screen2 = runtime.read_text(encoding="utf-8").split(
                 '<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
-            self.assertEqual(screen2.count('render="WarderChannelEpgClip"'), 1)
+            self.assertEqual(screen2.count('render="WarderChannelEpgClip"'), 0)
+            self.assertEqual(BASE.read_text(encoding="utf-8"), original)
+
+    def test_test8_overlay_is_removed_without_touching_pig_templates(self):
+        original = BASE.read_text(encoding="utf-8")
+        tree = ast.parse(PLUGIN.read_text(encoding="utf-8"))
+        fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef)
+                  and n.name == "cChannelsel")
+        tag = ('    <widget source="ServiceEvent" render="WarderChannelEpgClip" '
+               'position="60,96" size="1065,842" zPosition="4" '
+               'warderProgressWidth="90" alphaTest="blend" transparent="1" />\\n')
+        index = original.find('<screen name="ChannelSelection"')
+        end = original.find('</screen>', index)
+        self.assertGreater(end, index)
+        seeded = original[:end] + tag + original[end:]
+        def setting(v):
+            return SimpleNamespace(value=v)
+        cfg = SimpleNamespace(plugins=SimpleNamespace(setupGlass17=SimpleNamespace(
+            par109=setting("#cdcdcd"), par110=setting("#6cbcf0"),
+            par111=setting("#6cbcf0"), par117=setting("#dddddd"))))
+        with TemporaryDirectory() as tmp:
+            runtime = Path(tmp) / "skin.xml"
+            runtime.write_text(seeded, encoding="utf-8")
+            scope = dict(config=cfg, SKINXML=str(runtime), ENA_P_CH=False,
+                         _atomicWriteText=lambda p, s: Path(p).write_text(s, encoding="utf-8"),
+                         re=re)
+            exec(compile(ast.Module(body=[fn], type_ignores=[]), str(PLUGIN), "exec"), scope)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            updated = runtime.read_text(encoding="utf-8")
+            base_screen = updated.split('<screen name="ChannelSelection"',1)[1].split('</screen>',1)[0]
+            self.assertNotIn('render="WarderChannelEpgClip"', base_screen)
+            self.assertIn('fieldMargins="26"', base_screen)
+            self.assertIn('picServiceEventProgressbar=', base_screen)
+            self.assertIn('serviceInfoFont=', base_screen)
+            self.assertEqual(scope["cChannelsel"](), "c")
+            self.assertEqual(updated, runtime.read_text(encoding="utf-8"))
+            names = re.findall(r'<screen\\b[^>]*name="([^"]+)"', updated)
+            self.assertTrue(any(name.startswith("ChannelSelection-") for name in names))
             self.assertEqual(BASE.read_text(encoding="utf-8"), original)
 
     def test_description_and_event_rows_have_a_gap_and_other_screens_untouched(self):
@@ -119,7 +156,7 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
             # Reapplying the runtime customization must not stack overlays.
             self.assertEqual(scope["cChannelsel"](), "c")
             self.assertEqual(len(output), 2)
-            self.assertEqual(output[-1].count('render="WarderChannelEpgClip"'), 1)
+            self.assertEqual(output[-1].count('render="WarderChannelEpgClip"'), 0)
             changed = output[0]
 
         original_screen = original.split('<screen name="ChannelSelection"', 1)[1].split('</screen>', 1)[0]
@@ -127,10 +164,9 @@ class DefaultEpgPanelRuntimeTests(unittest.TestCase):
         self.assertIn('position="1150,455"', changed_screen)
         self.assertIn('size="685,224"', changed_screen)
         self.assertIn('warderWholeLineScroll="1"', changed_screen)
-        self.assertEqual(changed_screen.count('render="WarderChannelEpgClip"'), 1)
+        self.assertEqual(changed_screen.count('render="WarderChannelEpgClip"'), 0)
         self.assertIn('position="60,96" size="1065,842"', changed_screen)
-        self.assertIn('warderProgressWidth="90"', changed_screen)
-        self.assertIn('alphaTest="blend"', changed_screen)
+        self.assertIn('fieldMargins="26"', changed_screen)
         self.assertIn('position="1150,695" size="685,226"', changed_screen)
         # Default list should offer at most 6; larger fonts may fit fewer.
         self.assertIn('numEvents="6"', changed_screen)
