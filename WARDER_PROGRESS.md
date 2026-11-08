@@ -1,5 +1,16 @@
 # Warder Evolution – stav projektu
 
+### Spätné overenie zachránenej dávky dokončené – 8. 11. 2026
+
+- Balíkový commit: [`7d36ea4e7a8b92aabac5605a569224ae2769ec7c`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/7d36ea4e7a8b92aabac5605a569224ae2769ec7c), rodič je pôvodný checkpoint `5dc376fcfd76a4f1255c93c5eac9e518ba79ae60`.
+- **Vzdialený audit PASS:** 168 súborových ciest, 452 291 303 bajtov spätne načítaných z GitHubu; všetkých 18 ZIPov zostavených zo vzdialených častí, SHA256/CRC a 54 vložených PNG zhodné. Lokálne porovnanie pred/po potvrdilo 27 698 bitovo zachovaných pôvodných členov.
+- Dôkaz uložený v commite `9b06440462cacdb833b53724fcae089d8672d524`: `reports/vhannibal-followup-20261106/remote-verification-20261108.json`, sekcia `recovery_approved_six_20261108`. Pôvodné overenia zostávajú zachované.
+- PR #50: **29 opravených referencií / 258 pridaných PNG / 99 jedinečných zmenených ZIPov**; zostáva **117 technicky otvorených** (98 pôvodných + 19 nových). Schválené BloombergHT ×2, BETFRED TV1–3 a SIS Racing/SISSP už nečakajú na opakované schválenie. Bez ďalších SISSP aliasov.
+- Inštalačná funkcia načítaná z produkčnej 1.0.74 je AST zhodná s otestovanou funkciou. Regresie publikácie PASS. GitHub nevrátil PR-triggered Actions beh pre balíkový commit; úspech CI sa netvrdí. Fyzický prijímač netestovaný.
+- Zachránený dokončený prieskum 20 kandidátov / 11 584 existujúcich TV artworkov je v `recovered-donor-search-20261108.json`; žiadna podobnosť obrázka sa nepovýšila na identitu alebo schválenie. Čerstvé overenie Antena stále prinieslo konfliktné NID/TSID; tieto prípady zostávajú v karanténe.
+- Ďalší krok: doložiť presný Antena tuple z nezávislého aktuálneho servisného zdroja, preveriť celé deviatky rovnakých edícií donorov, ponechať FUNBOX HD/UHD a chránené TV5MONDE oddelené. Pred prípadným merge preveriť aktuálny main a mesačný Kuukauden alias. Žiadny merge, produkčný feed, IPK, stabilný skin ani rádio neboli zmenené.
+
+
 ### Záchrana po páde Worku – 8. 11. 2026
 
 Zachované lokálne výstupy approved-output boli nájdené a znova overené: 6 referencií / 54 PNG / 18 ZIPov; 27 698 pôvodných členov bitovo identických. Zdrojové PNG majú presné SHA256 a Git bloby checkpointu `5dc376fcfd76a4f1255c93c5eac9e518ba79ae60`. Schválenie vlastníka bolo dohľadané v rozhovore z 8.11.2026 10:14:51 UTC a týka sa presne BloombergHT HD ×2, BETFRED TV1–3 a SIS Racing/SISSP. Staršie označenie čakajúce na schválenie nižšie je historické. Bez ďalších SISSP aliasov.
