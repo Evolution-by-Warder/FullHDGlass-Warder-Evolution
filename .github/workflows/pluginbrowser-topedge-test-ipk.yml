@@ -48,7 +48,7 @@ jobs:
           import tempfile
           import tarfile
           root=Path.cwd()
-          version='1.0.74-test2'
+          version='1.0.74-test3'
           name='enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk'
           out=root/'receiver-candidate'
           out.mkdir(exist_ok=True)
@@ -75,7 +75,8 @@ jobs:
               assert subprocess.check_output(['ar','t',str(package)],text=True).splitlines()==['debian-binary','control.tar.gz','data.tar.gz']
               with tarfile.open(work/'data.tar.gz','r:gz') as tar:
                   src=tar.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/hdg17Screens.xml').read().decode()
-                  assert '<eLabel position="0,0" size="1920,32" backgroundColor="#00000000" zPosition="10" transparent="0" />' in src
+                  assert '<eLabel position="0,0" size="1920,32"' not in src
+                  assert 'name="PluginBrowserList-1" position="0,0" size="1920,1080" backgroundColor="background" title="Plugin browser" flags="wfNoBorder"' in src
                   assert tar.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read().decode().strip()==version
               digest=hashlib.sha256(package.read_bytes()).hexdigest()
               (out/(name+'.sha256')).write_text(digest+'  '+name+'\n')
@@ -85,7 +86,7 @@ jobs:
           sha256sum -c *.sha256
       - uses: actions/upload-artifact@v4
         with:
-          name: Warder-PluginBrowser-1.0.74-test2
+          name: Warder-PluginBrowser-1.0.74-test3
           path: receiver-candidate/*
           retention-days: 14
           if-no-files-found: error
