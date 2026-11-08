@@ -132,7 +132,19 @@ jobs:
             "version":"1.0.72",
             "package_url":"https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/"+package.name,
             "sha256":digest,
-            "changelog":"IPTV decoder-resolution recovery and InfoBar 76 CAID line scrolling without overlap (220 ms, seamless wraparound); TEST61 receiver verified. Includes safe 9.50 migration and previous skin features. Restart GUI."
+            "changelog":"IPTV resolution fix and smooth CAID scrolling in InfoBar 76. Restart GUI.",
+            "changelog_i18n":{
+              "en":"Fixed IPTV resolution display. InfoBar 76: seamless CAID text scrolling without overlapping indicators, slightly faster (220 ms). Existing settings and earlier improvements preserved. Restart GUI.",
+              "sk":"Opravené zobrazovanie rozlíšenia IPTV. Infobar 76: plynulé rolovanie CAID údajov bez prekrývania indikátorov, mierne zrýchlené (220 ms). Nastavenia a predchádzajúce vylepšenia zostávajú zachované. Reštartujte GUI.",
+              "cs":"Opraveno zobrazování rozlišení IPTV. Infobar 76: plynulé posouvání CAID údajů bez překrývání indikátorů, mírně zrychlené (220 ms). Nastavení a předchozí vylepšení zůstávají zachována. Restartujte GUI.",
+              "de":"IPTV-Auflösungsanzeige korrigiert. Infobar 76: nahtlos laufender CAID-Text ohne Überlagerung der Symbole, etwas schneller (220 ms). Einstellungen bleiben erhalten. GUI neu starten.",
+              "pl":"Poprawiono wyświetlanie rozdzielczości IPTV. Infobar 76: płynne przewijanie CAID bez nakładania na ikony, nieco szybsze (220 ms). Ustawienia zostały zachowane. Uruchom ponownie GUI.",
+              "hu":"Javítva az IPTV felbontás kijelzése. Infobar 76: folyamatos CAID-szöveggörgetés az ikonok átfedése nélkül, kissé gyorsabban (220 ms). A beállítások megmaradnak. Indítsa újra a kezelőfelületet.",
+              "ru":"Исправлено отображение разрешения IPTV. Инфобар 76: плавная прокрутка CAID без перекрытия значков, немного быстрее (220 мс). Настройки сохранены. Перезапустите интерфейс.",
+              "fr":"Correction de l'affichage de la résolution IPTV. Infobar 76 : défilement CAID continu sans chevauchement des icônes, légèrement accéléré (220 ms). Paramètres conservés. Redémarrez l'interface.",
+              "it":"Corretta la visualizzazione della risoluzione IPTV. Infobar 76: scorrimento CAID continuo senza sovrapporsi alle icone, leggermente più veloce (220 ms). Impostazioni conservate. Riavviare l'interfaccia.",
+              "es":"Corregida la visualización de la resolución IPTV. Infobar 76: desplazamiento continuo de CAID sin superponer los iconos, algo más rápido (220 ms). Ajustes conservados. Reinicia la interfaz."
+            }
           }
           Path('update-production.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
           assert digest in Path('packages/'+package.name+'.sha256').read_text()
