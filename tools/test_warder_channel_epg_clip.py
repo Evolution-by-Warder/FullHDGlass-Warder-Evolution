@@ -212,6 +212,55 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(new_written[0].endswith("…"))
         self.assertTrue(new_written[2].endswith("…"))
 
+    def test_epg_change_notification_preserves_active_marquee_clock(self):
+        from time import time
+        started = time() - 10.0
+        calls = []
+        target = types.SimpleNamespace(
+            instance=Canvas(), _last=("previous",),
+            _scroll_started=started,
+            refresh=lambda: calls.append("refresh"))
+        method("changed")(target, ("updated",))
+        self.assertEqual(calls, ["refresh"])
+        self.assertIsNone(target._last)
+        self.assertEqual(target._scroll_started, started)
+
+    def test_same_station_new_event_restarts_marquee_once(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_mode = "barright"
+        self.renderer._scroll_identity = (self.refs[0].name, self.refs[0].title)
+        self.renderer._scroll_started = time() - 8
+        self.assertTrue(self.draw())
+        previous = self.renderer._scroll_started
+        writes = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"]
+        self.assertFalse(writes[0].endswith("…"))
+        self.refs[0].title = "Vymenený dlhý názov relácie " * 15
+        self.renderer.instance.calls.clear()
+        self.assertTrue(self.draw())
+        self.assertGreater(self.renderer._scroll_started, previous + 1)
+        new_start = self.renderer._scroll_started
+        updated = [call[-1] for call in self.renderer.instance.calls if call[0] == "write"]
+        self.assertTrue(updated[0].endswith("…"))
+        self.assertEqual(self.renderer._scroll_identity,
+                         (self.refs[0].name, self.refs[0].title))
+        self.assertTrue(self.draw())
+        self.assertEqual(self.renderer._scroll_started, new_start)
+
+    def test_same_position_new_station_restarts_marquee(self):
+        from time import time
+        self.component.selected = 0
+        self.renderer._scroll_selected = 0
+        self.renderer._scroll_mode = "barright"
+        self.renderer._scroll_identity = (self.refs[0].name, self.refs[0].title)
+        self.renderer._scroll_started = time() - 8
+        self.refs[0].name = "Nová stanica HD"
+        self.assertTrue(self.draw())
+        self.assertLess(time() - self.renderer._scroll_started, 2)
+        self.assertEqual(self.renderer._scroll_identity,
+                         (self.refs[0].name, self.refs[0].title))
+
     def test_mode_switch_reapplies_native_disable_before_drawing(self):
         events = []
         component = types.SimpleNamespace(
