@@ -3861,6 +3861,17 @@ class ExtraInfo17(Screen):
 		self["piconCam"] = Pixmap()
 		self["piconEcm"] = Pixmap()
 		self['ecmLineInfo'] = ColorLabel(_("No info from Cam"))
+		# Only InfoBar 76 scrolls the CAID line within its reserved width.
+		self._warderCaidScrollText = ""
+		self._warderCaidScrollOffset = 0
+		self._warderCaidScrollNeeded = False
+		self.warderCaidScrollTimer = eTimer()
+		try:
+			self.warderCaidScrollTimer_conn = self.warderCaidScrollTimer.timeout.connect(self.__warderAdvanceCaidLine)
+		except AttributeError:
+			self.warderCaidScrollTimer.timeout.get().append(self.__warderAdvanceCaidLine)
+		self.onHide.append(self.warderCaidScrollTimer.stop)
+		self.onShow.append(self.__warderResumeCaidLine)
 		self['active_caidPid'] = Label()
 		self['caidPids'] = Label()
 		self['caidPids_back'] = Pixmap()
@@ -4544,40 +4555,79 @@ class ExtraInfo17(Screen):
 		else:
 			return ret, temp 
             			
+	def __warderResumeCaidLine(self):
+		if self._warderCaidScrollNeeded and not self.warderCaidScrollTimer.isActive():
+			self.warderCaidScrollTimer.start(2500, True)
+
+	def __warderAdvanceCaidLine(self):
+		if not self._warderCaidScrollNeeded or str(config.plugins.setupGlass17.par6.value) != "76":
+			return
+		text = self._warderCaidScrollText
+		if not text:
+			return
+		self._warderCaidScrollOffset += 1
+		if self._warderCaidScrollOffset >= len(text):
+			self._warderCaidScrollOffset = 0
+			self["ecmLineInfo"].setText(text)
+			self.warderCaidScrollTimer.start(2500, True)
+		else:
+			self["ecmLineInfo"].setText(text[self._warderCaidScrollOffset:])
+			self.warderCaidScrollTimer.start(250, True)
+
+	def __warderSetEcmLineText(self, text):
+		if str(config.plugins.setupGlass17.par6.value) != "76":
+			self["ecmLineInfo"].setText(text)
+			return
+		if text == self._warderCaidScrollText:
+			return
+		self.warderCaidScrollTimer.stop()
+		self._warderCaidScrollText = text
+		self._warderCaidScrollOffset = 0
+		self["ecmLineInfo"].setText(text)
+		# eLabel measures actual glyph widths; do not guess a character limit.
+		try:
+			label = self["ecmLineInfo"].instance
+			self._warderCaidScrollNeeded = (label is not None and
+				label.calculateSize().width() > label.size().width())
+		except (AttributeError, TypeError, RuntimeError):
+			self._warderCaidScrollNeeded = len(text) > 80
+		if self._warderCaidScrollNeeded:
+			self.warderCaidScrollTimer.start(2500, True)
+
 	def ecmCaidSwitch(self):
 		self.ecmCaidTimer.stop()
 		aa = config.plugins.setupGlass17.par116.value
 		if self.is_ecm:
-			self["ecmLineInfo"].setText(self.caidLineTxt)
+			self.__warderSetEcmLineText(self.caidLineTxt)
 			self["ecmLineInfo"].color3(aa)
 			self.is_ecm = False
 		else:
-			self["ecmLineInfo"].setText(self.ecmLineTxt)
+			self.__warderSetEcmLineText(self.ecmLineTxt)
 			self["ecmLineInfo"].color1(aa)
 			self.is_ecm = True                               
 		if config.plugins.setupGlass17.par17.value == "1" and self.ecmLineTxt != _("Free To Air") and self.ecmLineTxt != ".....":
 			self.ecmCaidTimer.start(2400)
 		else:
-			self["ecmLineInfo"].setText(self.ecmLineTxt)
+			self.__warderSetEcmLineText(self.ecmLineTxt)
 			self["ecmLineInfo"].color2(aa)
 			
 	def ecmLineShowFnc(self):                            
 		aa = config.plugins.setupGlass17.par116.value
 		if self.ecmLineTxt != _("Free To Air") and self.ecmLineTxt != ".....":
 			if config.plugins.setupGlass17.par17.value == "0":
-				self["ecmLineInfo"].setText(self.ecmLineTxt)
+				self.__warderSetEcmLineText(self.ecmLineTxt)
 				self["ecmLineInfo"].color1(aa)
 			elif config.plugins.setupGlass17.par17.value == "2":
-				self["ecmLineInfo"].setText(self.caidLineTxt)
+				self.__warderSetEcmLineText(self.caidLineTxt)
 				self["ecmLineInfo"].color3(aa)
 			elif config.plugins.setupGlass17.par17.value == "3":
-				self["ecmLineInfo"].setText("SID: %s" % self.sid)
+				self.__warderSetEcmLineText("SID: %s" % self.sid)
 				self["ecmLineInfo"].color6(aa)
 			elif config.plugins.setupGlass17.par17.value == "4":
-				self["ecmLineInfo"].setText(self.caidLineTxt + ",VPID: %s" % self.vpid)
+				self.__warderSetEcmLineText(self.caidLineTxt + ",VPID: %s" % self.vpid)
 				self["ecmLineInfo"].color6(aa)
 		else:
-			self["ecmLineInfo"].setText(self.ecmLineTxt)
+			self.__warderSetEcmLineText(self.ecmLineTxt)
 			self["ecmLineInfo"].color2(aa)
       			
 	def __startBitrate(self):
