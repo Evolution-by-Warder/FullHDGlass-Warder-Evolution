@@ -1,0 +1,71 @@
+name: Native OpenATV legacy EPG clipping - source-only
+on:
+  push:
+    branches:
+      - native/openatv-legacy-epg-text-clip-20261108
+    paths:
+      - tools/apply-native-servicelist-clip.py
+      - tools/test_native_servicelist_clip.py
+      - .github/workflows/native-servicelist-clip-exact.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-openatv-source-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Warder native patch script only
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/apply-native-servicelist-clip.py
+            tools/test_native_servicelist_clip.py
+          sparse-checkout-cone-mode: false
+      - name: Fetch exact original OpenATV Enigma2 revision reported by GigaBlue
+        uses: actions/checkout@v4
+        with:
+          repository: openatv/enigma2
+          ref: f9f72e11152cab6cd4cadccf412cf7013370fc4a
+          path: upstream/enigma2
+          sparse-checkout: |
+            lib/service/listboxservice.cpp
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run native source patch unit tests
+        run: python3 tools/test_native_servicelist_clip.py -v
+      - name: Apply patch and verify exact scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C upstream/enigma2 rev-parse HEAD | grep -Fx f9f72e11152cab6cd4cadccf412cf7013370fc4a
+          cp upstream/enigma2/lib/service/listboxservice.cpp /tmp/listbox-before.cpp
+          python3 tools/apply-native-servicelist-clip.py upstream/enigma2/lib/service/listboxservice.cpp
+          git -C upstream/enigma2 diff --check
+          python3 - <<'PY'
+          from pathlib import Path
+          before=Path('/tmp/listbox-before.cpp').read_text()
+          after=Path('upstream/enigma2/lib/service/listboxservice.cpp').read_text()
+          assert 'painter.clip(eventClip);' in after
+          assert before.count('painter.renderPara(para, offset+ePoint(xoffs, yoffs));')==1
+          assert after.count('painter.renderPara(para, offset+ePoint(xoffs, yoffs));')==2
+          assert before.count('service_info->getEvent(*m_cursor, evt)')==after.count('service_info->getEvent(*m_cursor, evt)')
+          assert after.count('celServiceEventProgressbar') >= before.count('celServiceEventProgressbar')
+          assert before.split('eRect area = m_element_position[celServiceEventProgressbar];', 1)[1] == after.split('eRect area = m_element_position[celServiceEventProgressbar];', 1)[1]
+          assert before.count('painter.fill(')==after.count('painter.fill(')
+          assert 'if (e == celServiceInfo)' in after
+          print('PASS: native progress bar/percent/minutes painters and EPG fetching untouched')
+          PY
+          mkdir -p output
+          git -C upstream/enigma2 diff -- lib/service/listboxservice.cpp > output/openatv-f9f72e1115-legacy-epg-clip.patch
+          test -s output/openatv-f9f72e1115-legacy-epg-clip.patch
+          printf 'SOURCE ONLY, NOT A RUNNABLE IPK OR ENIGMA2 BINARY\nOpenATV source: f9f72e11152cab6cd4cadccf412cf7013370fc4a\nARM build: NOT PERFORMED\nReceiver test: NOT PERFORMED\n' > output/PROVENANCE.txt
+          sha256sum output/*.patch > output/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: openatv-native-epg-clip-SOURCE-ONLY
+          path: output/
+          retention-days: 30
+          if-no-files-found: error
