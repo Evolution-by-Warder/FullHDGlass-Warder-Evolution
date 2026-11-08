@@ -297,6 +297,10 @@ class WarderChannelEpgClip(Renderer):
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
         drawing = []
+        # One progress lookup per visible service: reuse it for the
+        # selected-row text and for the original progress indicator.
+        # Avoid asking the native EPG cache twice on every 55ms refresh.
+        fractions = {}
         scroll_age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
         pixel_clock = int(scroll_age * 1000.0 / 55.0) * 2
         for row_index in range(available_rows):
@@ -332,8 +336,10 @@ class WarderChannelEpgClip(Renderer):
                         if overflow and index == selected else 0)
             fitted = scroll_title_window(title, remaining, measure, position)
             if fitted:
+                fraction = self._progress_fraction(center, ref)
+                fractions[row_index] = fraction
                 drawing.append((start, row_index * row_height, remaining, row_height,
-                                fitted, index == selected, self._progress_fraction(center, ref)))
+                                fitted, index == selected, fraction))
         # On stock OpenATV, disabling native EPG text also prevents the native
         # C++ progressbar from receiving its event. Draw its real elapsed
         # fraction in the reserved bar cell: no C++ patch or black mask.
@@ -343,8 +349,11 @@ class WarderChannelEpgClip(Renderer):
                      else width - int(component.listMarginRight) - bar_width)
             bar_h = 10
             for row_index in range(available_rows):
-                ref = rows[top + row_index]
-                fraction = self._progress_fraction(center, ref)
+                # No second EPG lookup when this row already has a fraction.
+                fraction = fractions.get(row_index)
+                if row_index not in fractions:
+                    ref = rows[top + row_index]
+                    fraction = self._progress_fraction(center, ref)
                 if fraction is None:
                     continue
                 progress_bars.append((bar_x, row_index * row_height + (row_height - bar_h) // 2,
