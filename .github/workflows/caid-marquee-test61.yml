@@ -1,0 +1,93 @@
+name: CAID seamless marquee TEST61 IPK (artifact only)
+on:
+  push:
+    branches:
+      - fix/caid-marquee-infobar76-test61-20261108
+    paths:
+      - '.github/workflows/caid-marquee-test61.yml'
+      - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
+      - 'source/package-root/usr/lib/enigma2/python/Screens/G17screens.py'
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /source/package-root/
+            /source/control/
+            /tools/build-release-ipk.py
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify changed converter path and Python syntax
+        run: |
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          grep -F 'av.getResolutionX(0)' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          grep -F 'av.getResolutionY(0)' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Screens/G17screens.py
+          grep -F 'self.__warderSetEcmLineText' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          grep -F 'self.warderCaidScrollTimer.start(220, True)' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          grep -F 'loop[offset:] + loop[:offset]' source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py
+          grep -F 'position="300,998" size="1020,30"' source/package-root/usr/lib/enigma2/python/Screens/G17screens.py
+          find source/package-root -type d -name __pycache__ -prune -exec rm -rf {} +
+      - name: Build isolated TEST61 IPK from 1.0.71 source
+        run: |
+          python3 - <<'PY'
+          import importlib.util, pathlib, shutil, subprocess, tempfile, hashlib, tarfile
+          root=pathlib.Path.cwd()
+          source=root/'source'
+          version='1.0.71-test61'
+          outdir=root/'test61-output'
+          outdir.mkdir(exist_ok=True)
+          with tempfile.TemporaryDirectory() as td:
+              td=pathlib.Path(td)
+              payload=td/'payload'
+              control=td/'control'
+              shutil.copytree(source/'package-root', payload, symlinks=True)
+              shutil.copytree(source/'control', control, symlinks=True)
+              vf=payload/'usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version'
+              assert vf.read_text().strip()=='1.0.71'
+              vf.write_text(version+'\n')
+              cf=control/'control'
+              metadata=cf.read_text()
+              assert 'Version: 1.0.71-1\n' in metadata
+              cf.write_text(metadata.replace('Version: 1.0.71-1\n', 'Version: '+version+'-1\n', 1))
+              marker=payload/'usr/share/enigma2/hd_glass17/TEST61-CAID-MARQUEE.txt'
+              marker.write_text('Receiver test only. IPTV TEST58 plus CAID seamless marquee for InfoBar 76. No production release.\n')
+              spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+              mod=importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(mod)
+              build=td/'build'
+              build.mkdir()
+              (build/'debian-binary').write_bytes(b'2.0\n')
+              mod.archive(control,build/'control.tar.gz')
+              mod.archive(payload,build/'data.tar.gz',payload=True)
+              target=outdir/('enigma2-plugin-skins-fullhdglass_'+version+'_all.ipk')
+              subprocess.run(['ar','rcsD',str(target),'debian-binary','control.tar.gz','data.tar.gz'],cwd=build,check=True)
+              assert subprocess.check_output(['ar','t',str(target)],text=True).splitlines()==['debian-binary','control.tar.gz','data.tar.gz']
+              with tarfile.open(build/'data.tar.gz','r:gz') as archive:
+                  data=archive.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py').read()
+                  assert b'av.getResolutionX(0)' in data and b'av.getResolutionY(0)' in data
+                  assert b'__warderAdvanceCaidLine' in data
+                  assert b'loop[offset:] + loop[:offset]' in data
+                  assert b'warderCaidScrollTimer.start(220, True)' in data
+                  screen=archive.extractfile('./usr/lib/enigma2/python/Screens/G17screens.py').read()
+                  assert b'position="300,998" size="1020,30"' in screen
+                  assert archive.extractfile('./usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version').read().strip()==version.encode()
+              digest=hashlib.sha256(target.read_bytes()).hexdigest()
+              (outdir/(target.name+'.sha256')).write_text(digest+'  '+target.name+'\n')
+              print(target, digest)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-TEST61-CAID-marquee-IPK
+          path: test61-output/*
+          if-no-files-found: error
+          retention-days: 14
