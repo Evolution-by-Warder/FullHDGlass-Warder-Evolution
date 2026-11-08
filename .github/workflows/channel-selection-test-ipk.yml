@@ -23,6 +23,7 @@ jobs:
             tools/sync_header_version.py
             tools/test_channel_selection_epg_performance.py
             tools/test_warder_channel_epg_clip.py
+            tools/test-pluginbrowser-top-edge.py
           sparse-checkout-cone-mode: true
       - uses: actions/setup-python@v5
         with:
@@ -31,6 +32,7 @@ jobs:
         run: |
           python3 tools/test_warder_channel_epg_clip.py -q
           python3 tools/test_channel_selection_epg_performance.py -q
+          python3 tools/test-pluginbrowser-top-edge.py
       - name: Stage test version without altering committed production metadata
         run: |
           set -euo pipefail
