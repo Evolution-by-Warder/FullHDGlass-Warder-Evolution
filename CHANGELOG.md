@@ -1,3 +1,11 @@
+## 1.0.72 — 2026-11-08 — receiver-approved IPTV/CAID release
+
+- Fix missing IPTV video resolution with decoder fallback; preserve DVB behavior and dynamic dimensions.
+- Prevent CAID text overlap with colored indicators in InfoBar 76; scroll full CAID/SID/VPID details seamlessly at 220 ms.
+- Localize update release notes according to the Enigma2 system language (English fallback).
+- Preserve existing settings, migration protections from 9.50 and previous Prime Time/EPG changes. Receiver validation: GigaBlue Quad 4K Pro, IPTV and DVB-S2 and movie player.
+- Release notes: docs/warder-1.0.72-release-notes.md.
+
 ## 1.0.62-test1 — 2026-11-01 — isolated OpenATV 8.1 candidate
 
 - Fix PicturePlayer caption sources and optional blue-caption binding, PiP dish Boolean/pixmap rendering, PositionerSetupLog native buttons and legacy Swap Label captions.
