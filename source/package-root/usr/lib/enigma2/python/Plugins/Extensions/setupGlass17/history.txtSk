@@ -1,3 +1,16 @@
+FullHDGlass 1.0.73 — 08.11.2026
+Výber staníc: opravené dlhé názvy EPG zasahujúce do pravých indikátorov priebehu na OpenATV.
+Dlhý názov programu na vybranej stanici sa plynulo posúva vo vyhradenom priestore a umožní prečítať aj jeho koniec bez prekrytia progressbaru.
+Názvy programov na ostatných staniciach zostávajú pokojné a bezpečne skrátené.
+Obmedzené zbytočné prekresľovanie stojaceho textu; zachovaná plynulosť posúvania vybraného dlhého názvu.
+Zachované zvýraznenie stanice, picony, pôvodné fonty a nastavenia veľkosti písma.
+Farebné progressbary, percentá a zostávajúci čas zostávajú vo svojich stĺpcoch.
+OpenPLi 9.2: opravený prázdny predvolený zoznam staníc použitím natívneho vykresľovania OpenPLi namiesto vrstvy určenej pre OpenATV.
+Zachované pôvodné indikátory a správanie zoznamu OpenPLi; rolovanie názvov na OpenPLi táto verzia nepridáva.
+Zachované funkčné rozloženia PIG, oddeľovač Prime Time a panel so šiestimi nasledujúcimi udalosťami.
+Zachované rozloženie PluginBrowser a schválená oprava horného okraja.
+Overené na GigaBlue s OpenATV 7.6 a 8.1 a OpenPLi 9.2; po aktualizácii reštartujte GUI.
+
 FullHDGlass 1.0.72 — 08.11.2026
 Vylepšené zisťovanie rozlíšenia IPTV aj pri neúplných údajoch služby.
 Doplnené náhradné načítanie šírky obrazu priamo z dekodéra.
