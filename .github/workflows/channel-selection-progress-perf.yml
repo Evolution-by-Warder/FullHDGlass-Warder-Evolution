@@ -1,0 +1,37 @@
+name: ChannelSelection EPG progress optimization tests
+on:
+  push:
+    branches:
+      - perf/channelselection-reuse-event-20261108
+    paths:
+      - .github/workflows/channel-selection-progress-perf.yml
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+      - tools/test_channel_selection_epg_performance.py
+      - tools/test_warder_channel_epg_clip.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  channel-epg-regressions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            tools/test_warder_channel_epg_clip.py
+            tools/test_channel_selection_epg_performance.py
+            source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+            source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/warderEpgTextFit.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile renderer and test code
+        run: |
+          python3 -m py_compile source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+          python3 -m py_compile tools/test_channel_selection_epg_performance.py
+      - name: Existing rendered-canvas and scroll tests
+        run: python3 tools/test_warder_channel_epg_clip.py -v
+      - name: New once-per-visible-row EPG query guard
+        run: python3 tools/test_channel_selection_epg_performance.py -v
