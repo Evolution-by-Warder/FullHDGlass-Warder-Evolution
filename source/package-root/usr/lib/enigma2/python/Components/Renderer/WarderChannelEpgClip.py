@@ -408,6 +408,7 @@ class WarderChannelEpgClip(Renderer):
                 self._glyph_width_cache.clear()
             self._row_geometry_key = geometry_key
         drawing = []
+        self._focused_title_overflow = False
         # One progress lookup per visible service: reuse it for the
         # selected-row text and for the original progress indicator.
         # Avoid asking the native EPG cache twice on every 55ms refresh.
@@ -469,6 +470,8 @@ class WarderChannelEpgClip(Renderer):
                     if len(row_cache) >= 128:
                         row_cache.clear()
                     row_cache[row_key] = (start, remaining, overflow, first_frame)
+            if index == selected:
+                self._focused_title_overflow = overflow > 0
             # Pause at both ends; replay the whole title from its beginning.
             # 2px per 55ms virtual motion, with safe glyph-aligned painting.
             journey = overflow + 220
@@ -682,22 +685,7 @@ class WarderChannelEpgClip(Renderer):
                 # rows 18x/sec while the text is stationary. The native
                 # scroll position is derived from wall time, so slow/fast
                 # timer transitions cannot change the displayed title.
-                active = False
-                try:
-                    age = time() - self._scroll_started
-                    # Selected overflow is cached per actual current row.
-                    selected = self._scroll_selected
-                    component = self._component
-                    if component is not None and selected is not None:
-                        rows = component.getList()
-                        top = component.instance.getTopIndex()
-                        row = rows[selected] if rows and 0 <= selected < len(rows) else None
-                        if row is not None:
-                            center = __import__("enigma").eServiceCenter.getInstance()
-                            name, title = self._name_and_event(center, row)
-                            geometry_key = getattr(self, '_row_geometry_key', None)
-                            cached = self._row_fit_cache.get((name, title, geometry_key))
-                            active = bool(cached and cached[2] > 0 and age >= 1.2)
-                except (AttributeError, RuntimeError, TypeError, ValueError, IndexError):
-                    active = True
+                age = time() - self._scroll_started
+                active = bool(getattr(self, '_focused_title_overflow', False)
+                              and age >= 1.2)
                 self._timer.start(55 if active else 130, True)
