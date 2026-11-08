@@ -33,6 +33,15 @@
 - 8.11. pripravený [nový BloombergHT návrh](reports/vhannibal-followup-20261106/bloomberght-review/review.json): 9 PNG z oficiálnych čiernych/bielych SVG pre dve referencie, chránené farebné pixely a alfa, nemenné MASTER V9. **Čaká na schválenie grafiky, nie je v ZIPoch a neznižuje 111 otvorených.**
 - Najbližšie: schválenie BloombergHT grafiky a následné vloženie do existujúcich 42E balíkov; nezávisle dôkaz mapovania SIS/Betfred, mesačnej identity Kuukauden a správneho FUNBOX HD. Produkčný merge PR #50 vyžaduje nový výslovný súhlas vlastníka.
 
+
+### 8.11.2026 – pokračovanie po checkpoint a4e720d, SIS a mesačný alias
+
+- Aktuálne main FullHDGlass `12247acc20f699606f6d40f3783e4162b92674b9`, PiconHub `8180aa0df6e185efad120338bc53ca04bc5e492a`. Stabilný skin1.0.72, aktualizátor a všetky novšie produkčné súbory zachované. PR50 stále bez produkčného merge.
+- Pripravené tri ďalšie opravy existujúcimi schválenými PNG: SIS One, SIS Two, Kuukauden TSID72→presný stream Viasat Explore (prednostný CANAL+SK artwork). 27PNG/18ZIPov48E_A+08W;36338nedotknutých členov bitovo zachovaných;27variantov,CRC,SHA256,manifest,aktuálny inštalátor a publikácia-regresie PASS. Kuukauden je mesačný alias, pred merge znovu over aktuálny stream.
+- PR50 spolu9opravených referencií/78PNG/54ZIPov; pôvodných120=9kandidátskych opráv+3odchody+4preukázané dátové služby+104otvorených. Produkcia nemá tieto kandidátske opravy. Chránených18CANAL+balíkov a rádio sa nemení. Presné dôvody v existujúcom `reports/vhannibal-followup-20261106/remaining-review.json`.
+- SISSP/BF1–3 nie sú automatické aliasy starších schválených grafík: pripraviť samostatné schválenie už existujúcich V9návrhov. BloombergHT9PNG čaká na schválenie mimo ZIPov. FUNBOX HD originál je nesprávne UHD; dve TV5MONDE referencie zostávajú chránené.
+- Nový pôvodný piconový zdroj8Nov má48referencií mimo registra14808. Tento deltafront je ďalšia samostatná kontrola; neuvádzať104ako úplný počet otvorených všetkých dostupných nových zdrojov. Pôvodný veľký reviewartifact2.2GB odmietnutý limitom512MB; prevzatá existujúca menšia časť319579614B rovnakým autorizovaným nástrojom.
+
 ## Overené vetvy
 
 | Repozitár a vetva | Posledný overený commit | Stav |

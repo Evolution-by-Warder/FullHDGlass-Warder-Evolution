@@ -1,6 +1,18 @@
 {
-  "version": "1.0.71",
-  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.71_all.ipk",
-  "sha256": "64342f30625b1b7a8f87b51651195e9535508735b165fc4a55016fe1fd58852e",
-  "changelog": "Fix migration from original FullHDGlass 9.50 revisions including 9.50-r12; all 1.0.70 EPG, IPTV, Prime Time and skin features preserved. Restart GUI after updating."
+  "version": "1.0.72",
+  "package_url": "https://raw.githubusercontent.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/main/packages/enigma2-plugin-skins-fullhdglass_1.0.72_all.ipk",
+  "sha256": "e19a6c192da4bf695caef6459b0b9976b99ebfce516691c31170dc05c84d84a6",
+  "changelog": "IPTV resolution fix and smooth CAID scrolling in InfoBar 76. Restart GUI.",
+  "changelog_i18n": {
+    "en": "IPTV: improved detection of video width and height, fallback to the active decoder when metadata is missing, real dimensions and original DVB handling retained. InfoBar 76: dedicated CAID text area, no overlap with colored indicators, complete CAID/SID/VPID scrolling, seamless repeat without a long blank tail, gently increased 220 ms speed. Update description follows Enigma2 language. Settings preserved; restart GUI.",
+    "sk": "IPTV: vylepšené načítanie šírky a výšky obrazu, náhradné údaje z dekodéra pri chýbajúcich metadátach, skutočné rozlíšenie a zachované spracovanie DVB. Infobar 76: samostatný priestor pre CAID, bez prekrývania farebných indikátorov, úplné rolovanie CAID/SID/VPID, plynulý cyklus bez dlhej prázdnej časti, jemne zrýchlené na 220 ms. Popis aktualizácie podľa jazyka Enigma2. Nastavenia zachované; reštartujte GUI.",
+    "cs": "Opraveno zobrazování rozlišení IPTV. Infobar 76: plynulé posouvání CAID údajů bez překrývání indikátorů, mírně zrychlené (220 ms). Nastavení a předchozí vylepšení zůstávají zachována. Restartujte GUI.",
+    "de": "IPTV-Auflösungsanzeige korrigiert. Infobar 76: nahtlos laufender CAID-Text ohne Überlagerung der Symbole, etwas schneller (220 ms). Einstellungen bleiben erhalten. GUI neu starten.",
+    "pl": "Poprawiono wyświetlanie rozdzielczości IPTV. Infobar 76: płynne przewijanie CAID bez nakładania na ikony, nieco szybsze (220 ms). Ustawienia zostały zachowane. Uruchom ponownie GUI.",
+    "hu": "Javítva az IPTV felbontás kijelzése. Infobar 76: folyamatos CAID-szöveggörgetés az ikonok átfedése nélkül, kissé gyorsabban (220 ms). A beállítások megmaradnak. Indítsa újra a kezelőfelületet.",
+    "ru": "Исправлено отображение разрешения IPTV. Инфобар 76: плавная прокрутка CAID без перекрытия значков, немного быстрее (220 мс). Настройки сохранены. Перезапустите интерфейс.",
+    "fr": "Correction de l'affichage de la résolution IPTV. Infobar 76 : défilement CAID continu sans chevauchement des icônes, légèrement accéléré (220 ms). Paramètres conservés. Redémarrez l'interface.",
+    "it": "Corretta la visualizzazione della risoluzione IPTV. Infobar 76: scorrimento CAID continuo senza sovrapporsi alle icone, leggermente più veloce (220 ms). Impostazioni conservate. Riavviare l'interfaccia.",
+    "es": "Corregida la visualización de la resolución IPTV. Infobar 76: desplazamiento continuo de CAID sin superponer los iconos, algo más rápido (220 ms). Ajustes conservados. Reinicia la interfaz."
+  }
 }

@@ -603,5 +603,95 @@
     "remaining_prior_review": 10,
     "remaining_prior_held": 101
   },
-  "count_limits": "Reconciles existing 14808-reference source snapshot with new evidence for the 120-item queue. Not a new full upstream crawl. Departure is not counted as an artwork repair. Production unchanged."
+  "count_limits": "Reconciles existing 14808-reference source snapshot with new evidence for the 120-item queue. Not a new full upstream crawl. Departure is not counted as an artwork repair. Production unchanged.",
+  "continuation_20261108": {
+    "production_sha": "12247acc20f699606f6d40f3783e4162b92674b9",
+    "candidate_parent": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "new_repaired": 3,
+    "data_exclusions": {
+      "1_0_1_206C_146C_A7_1860000_0_0_0": {
+        "name": "SSU",
+        "sid": 8300,
+        "tsid": 5228,
+        "onid": 167,
+        "frequency": "12251V",
+        "source": "https://en.kingofsat.net/datasat-hellas3",
+        "reason": "Explicit Data category with no video or audio; software upgrade service, not a TV programme."
+      },
+      "1_0_1_2076_146C_A7_1860000_0_0_0": {
+        "name": "SSU CAM",
+        "sid": 8310,
+        "tsid": 5228,
+        "onid": 167,
+        "frequency": "12251V",
+        "source": "https://en.kingofsat.net/datasat-hellas3",
+        "reason": "Explicit Data category with no video or audio; CAM software update service."
+      },
+      "1_0_1_320_3E9_2_820000_0_0_0": {
+        "name": "SERVICE IP/MAC NOTIFICATION",
+        "sid": 800,
+        "tsid": 1001,
+        "onid": 2,
+        "source": "https://en.kingofsat.net/freqs.php?filtre=no&lim=310&ordre=sid&pos=13E&standard=All",
+        "reason": "Exact NID2/TSID1001/SID800 is catalogued Data, no video/audio. Do not confuse with parallel TSID1000/1003 services."
+      },
+      "1_0_1_37DB_44C_13E_820000_0_0_0": {
+        "name": "DATA",
+        "sid": 14299,
+        "tsid": 1100,
+        "onid": 318,
+        "frequency": "11411H",
+        "source": "https://en.kingofsat.net/datapack-ncplus",
+        "reason": "Exact service SID14299 on NID318/TSID1100 is a Data record without video/audio; not a TV channel."
+      }
+    },
+    "original_cohort_counts": {
+      "original_open": 120,
+      "candidate_repairs": 9,
+      "exact_departures": 3,
+      "verified_data_out_of_scope": 4,
+      "still_open": 104
+    },
+    "source_snapshot_counts": {
+      "unique_source_references": 14808,
+      "current_tv_reconciled": 10426,
+      "candidate_covered_9_valid": 10322,
+      "candidate_open": 104,
+      "out_of_scope": 2708,
+      "dated_departures": 5,
+      "historical_without_exact_current_match": 1669
+    },
+    "sis_identity_basis": "Current exact SID/TSID/ONID and provider SIS, exact-reference frozen upstream PNG visibly names SIS One/Two; approved donor contains same current named brand. No assertion of shared PIDs across different transponders.",
+    "kuukauden_identity_basis": {
+      "reference": "1_0_16_42BC_48_46_E080000_0_0_0",
+      "sid": 17084,
+      "tsid": 72,
+      "onid": 70,
+      "frequency": "10872H",
+      "video_pid": 1535,
+      "audio_pids": [
+        3365,
+        4009
+      ],
+      "identical_stream_reference": "1_0_19_1D53_48_46_E080000_0_0_0",
+      "technical_sources": [
+        "https://www.satindex.de/channel/34924/",
+        "https://www.satindex.de/channeleng/37436/"
+      ],
+      "approved_artwork_donor": "1_0_1_3C2F_C90_3_EB0000_0_0_0",
+      "approved_donor_selector": "CANALPLUS_SK",
+      "validity": "Checked 8Nov2026. Monthly programme alias must be rechecked before merge and at next monthly move."
+    },
+    "source_archive_8nov_sha256": "dcf9a7a0ff72e85eb0536b04a2da43deb76ea116896365e494d2304146f16c35",
+    "six_sis_original_png_hashes_match_frozen_index": true,
+    "upstream_delta_new_reference_count": 48,
+    "upstream_delta_note": "Additional source delta is recorded separately from original120 cohort; no blanket completeness claim for these48 new refs.",
+    "artifact_transfer": {
+      "rejected_id": 13498420081,
+      "reason": "Artifact exceeds max size of536870912 bytes:2227856648 bytes. No retry of oversized artifact.",
+      "reused_existing_smaller_id": 13499302234,
+      "sha256": "26e2448a32e8637eb803cc13fd5844357360654af0924a634200bd35a6d37658",
+      "method": "Existing authorized download_workflow_artifact; no new authentication."
+    }
+  }
 }

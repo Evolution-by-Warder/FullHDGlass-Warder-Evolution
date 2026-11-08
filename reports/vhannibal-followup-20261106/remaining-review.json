@@ -12,7 +12,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Platform data label",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Platform data label"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Platform data label",
+    "technical_uid": {
+      "sid": 15541,
+      "tsid": 50600,
+      "onid": 42,
+      "namespace": 27525120,
+      "service_type": 17
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_189D_C97_3_EB0000_0_0_0",
@@ -34,7 +42,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6301,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_189E_C97_3_EB0000_0_0_0",
@@ -56,7 +72,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6302,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_189F_C97_3_EB0000_0_0_0",
@@ -78,7 +102,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6303,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_18A1_C97_3_EB0000_0_0_0",
@@ -100,7 +132,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6305,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_18A2_C97_3_EB0000_0_0_0",
@@ -122,7 +162,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6306,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_18A3_C97_3_EB0000_0_0_0",
@@ -144,7 +192,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6307,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_18AB_C97_3_EB0000_0_0_0",
@@ -166,7 +222,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6315,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_18AC_C97_3_EB0000_0_0_0",
@@ -188,7 +252,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6316,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1F50_1_10_640000_0_0_0",
@@ -209,7 +281,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8016,
+      "tsid": 1,
+      "onid": 16,
+      "namespace": 6553600,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1F53_1_10_640000_0_0_0",
@@ -230,7 +310,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8019,
+      "tsid": 1,
+      "onid": 16,
+      "namespace": 6553600,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1F54_1_10_640000_0_0_0",
@@ -251,7 +339,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8020,
+      "tsid": 1,
+      "onid": 16,
+      "namespace": 6553600,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FAF_3_11_2EE0000_0_0_0",
@@ -272,7 +368,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8111,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB0_3_11_2EE0000_0_0_0",
@@ -293,7 +397,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8112,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB1_3_11_2EE0000_0_0_0",
@@ -314,7 +426,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8113,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB2_3_11_2EE0000_0_0_0",
@@ -335,7 +455,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8114,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB3_3_11_2EE0000_0_0_0",
@@ -356,7 +484,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8115,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB4_3_11_2EE0000_0_0_0",
@@ -377,7 +513,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8116,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB7_3_11_2EE0000_0_0_0",
@@ -398,7 +542,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8119,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1FB8_3_11_2EE0000_0_0_0",
@@ -419,7 +571,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8120,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1_C_2C_300000_0_0_0",
@@ -434,7 +594,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_1_C_2C_EB0000_0_0_0",
@@ -450,7 +618,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_2218_3_11_2EE0000_0_0_0",
@@ -465,7 +641,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 8728,
+      "tsid": 3,
+      "onid": 17,
+      "namespace": 49152000,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_2C0_20B_73_2080000_0_0_0",
@@ -529,7 +713,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 2,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_2_C_2C_EB0000_0_0_0",
@@ -545,7 +737,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 2,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_384_20D_73_2080000_0_0_0",
@@ -566,7 +766,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 900,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_38F_20D_73_2080000_0_0_0",
@@ -587,7 +795,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 911,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_390_20D_73_2080000_0_0_0",
@@ -608,7 +824,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 912,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_391_20D_73_2080000_0_0_0",
@@ -629,7 +853,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 913,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_392_20D_73_2080000_0_0_0",
@@ -650,7 +882,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 914,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_394_20D_73_2080000_0_0_0",
@@ -671,7 +911,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 916,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_395_20D_73_2080000_0_0_0",
@@ -692,7 +940,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 917,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_396_20D_73_2080000_0_0_0",
@@ -713,7 +969,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 918,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_398_20D_73_2080000_0_0_0",
@@ -734,7 +998,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 920,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_399_20D_73_2080000_0_0_0",
@@ -755,7 +1027,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 921,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_3_C_2C_EB0000_0_0_0",
@@ -771,7 +1051,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 3,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_42BC_48_46_E080000_0_0_0",
@@ -790,9 +1078,17 @@
     ],
     "empty_or_invalid": [],
     "v9": "NO_UNAMBIGUOUS_ORIGINAL_PICON",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "Monthly variable programme service. Current service label alone does not prove the current promoted channel artwork."
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
+    "remaining_current_technical": false,
+    "resolution_reason": "All nine existing approved PNG variants physically added and tested in batch-20261108.json.",
+    "technical_uid": {
+      "sid": 17084,
+      "tsid": 72,
+      "onid": 70,
+      "namespace": 235405312,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_42BC_A_46_E080000_0_0_0",
@@ -833,7 +1129,15 @@
       "reason": "Monthlychannelservice is current; secondSID17084onTSID72alsoexists. Staticprogrammeidentity and currentmonthlylogo requireoperatorconfirmation. Genericplaceholder must not be deployed."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Monthly variable programme service. Current service label alone does not prove the current promoted channel artwork."
+    "resolution_reason": "Older TSID10 reference conflicts with 3Nov move to TSID72. Legacy PID1538 is not current Explore PID1535. Retain historical record without copying the new edition to old tuple.",
+    "technical_uid": {
+      "sid": 17084,
+      "tsid": 10,
+      "onid": 70,
+      "namespace": 235405312,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_43_204_1D_5A0000_0_0_0",
@@ -854,7 +1158,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OPAQUE_OR_EMPTY_SOURCE",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OPAQUE_OR_EMPTY_SOURCE"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OPAQUE_OR_EMPTY_SOURCE",
+    "technical_uid": {
+      "sid": 67,
+      "tsid": 516,
+      "onid": 29,
+      "namespace": 5898240,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_4_C_2C_300000_0_0_0",
@@ -869,7 +1181,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 4,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_4_C_2C_EB0000_0_0_0",
@@ -885,7 +1205,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 4,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_5_C_2C_300000_0_0_0",
@@ -900,7 +1228,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 5,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_5_C_2C_EB0000_0_0_0",
@@ -916,7 +1252,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 5,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_6_C_2C_300000_0_0_0",
@@ -931,7 +1275,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 6,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_6_C_2C_EB0000_0_0_0",
@@ -947,7 +1299,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_7_C_2C_300000_0_0_0",
@@ -962,7 +1322,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 7,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_7_C_2C_EB0000_0_0_0",
@@ -978,7 +1346,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 7,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_8_1_1F90_CB70000_0_0_0",
@@ -999,7 +1375,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 8,
+      "tsid": 1,
+      "onid": 8080,
+      "namespace": 213319680,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_8_C_2C_300000_0_0_0",
@@ -1014,7 +1398,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 8,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_8_C_2C_EB0000_0_0_0",
@@ -1030,7 +1422,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 8,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_9_C_2C_300000_0_0_0",
@@ -1045,7 +1445,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 9,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_9_C_2C_EB0000_0_0_0",
@@ -1061,7 +1469,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 9,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_A_C_2C_300000_0_0_0",
@@ -1076,7 +1492,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 10,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_A_C_2C_EB0000_0_0_0",
@@ -1092,7 +1516,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 10,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_B72_1D_1800_2AD0000_0_0_0",
@@ -1113,7 +1545,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 2930,
+      "tsid": 29,
+      "onid": 6144,
+      "namespace": 44892160,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_B77_1D_1800_2AD0000_0_0_0",
@@ -1134,7 +1574,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 2935,
+      "tsid": 29,
+      "onid": 6144,
+      "namespace": 44892160,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_B_C_2C_300000_0_0_0",
@@ -1149,7 +1597,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 11,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_B_C_2C_EB0000_0_0_0",
@@ -1165,7 +1621,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 11,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_C_C_2C_300000_0_0_0",
@@ -1180,7 +1644,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 12,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 3145728,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_C_C_2C_EB0000_0_0_0",
@@ -1196,7 +1668,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 12,
+      "tsid": 12,
+      "onid": 44,
+      "namespace": 15400960,
+      "service_type": 22
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_16_DA79_22F_70_2250000_0_0_0",
@@ -1265,7 +1745,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 4515,
+      "tsid": 45,
+      "onid": 2048,
+      "namespace": 231342080,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_18A0_C97_3_EB0000_0_0_0",
@@ -1287,7 +1775,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6304,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_18A9_C97_3_EB0000_0_0_0",
@@ -1309,7 +1805,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6313,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_18AA_C97_3_EB0000_0_0_0",
@@ -1331,7 +1835,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6314,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_19_9C68_77E_DCA0000_0_0_0",
@@ -1352,7 +1864,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 25,
+      "tsid": 40040,
+      "onid": 1918,
+      "namespace": 231342080,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_1CB_10_6E_DCA0000_0_0_0",
@@ -1373,7 +1893,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 459,
+      "tsid": 16,
+      "onid": 110,
+      "namespace": 231342080,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_1_4321_EB_820000_0_0_0",
@@ -1388,7 +1916,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Contribution feed without confirmed station identity",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 17185,
+      "onid": 235,
+      "namespace": 8519680,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_23A4_44A_1_C00000_0_0_0",
@@ -1403,7 +1939,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 9124,
+      "tsid": 1098,
+      "onid": 1,
+      "namespace": 12582912,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_29CE_A2E8_42E_1A40000_0_0_0",
@@ -1449,7 +1993,15 @@
     },
     "remaining_current_technical": true,
     "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
-    "artwork_review": "bloomberght-review/review.json"
+    "artwork_review": "bloomberght-review/review.json",
+    "technical_uid": {
+      "sid": 10702,
+      "tsid": 41704,
+      "onid": 1070,
+      "namespace": 27525120,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_2AFA_A92B_42E_1A40000_0_0_0",
@@ -1494,7 +2046,15 @@
     },
     "remaining_current_technical": true,
     "resolution_reason": "Exact technical identity verified; nine official-source MASTER V9 review PNGs prepared in bloomberght-review/, awaiting explicit artwork approval; no package changes and still counted open.",
-    "artwork_review": "bloomberght-review/review.json"
+    "artwork_review": "bloomberght-review/review.json",
+    "technical_uid": {
+      "sid": 11002,
+      "tsid": 43307,
+      "onid": 1070,
+      "namespace": 27525120,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_32_14_6E_DCA0000_0_0_0",
@@ -1563,7 +2123,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Satellite operator logo under a technical service label",
+    "technical_uid": {
+      "sid": 6,
+      "tsid": 1,
+      "onid": 8388,
+      "namespace": 25559040,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_7BD_9_42_1A40000_0_0_0",
@@ -1659,7 +2227,15 @@
       "reason": "Exact tuple confirmed. Current named alternatives areFunBoxUHD andFastandFunBoxHD, distinct channels; cannot assign theirlogos merely byname."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Technical identity verified. No approved same-edition nine-variant donor; FunBox UHD and Fast&FunBox are different programmes."
+    "resolution_reason": "Exact SID7/TSID8135/ONID702 confirmed. Upstream picon is explicitly FUNBOX UHD, while another same-transponder service is Fast&FunBox: reject both wrong editions; no approved plain HD donor found.",
+    "technical_uid": {
+      "sid": 7,
+      "tsid": 8135,
+      "onid": 702,
+      "namespace": 17039360,
+      "service_type": 25
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_19_D7A3_228_70_2250000_0_0_0",
@@ -1727,7 +2303,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: SERVICE placeholder artwork",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 0,
+      "onid": 1,
+      "namespace": 4631439,
+      "service_type": 31
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1F_32B_20C_73_2080000_0_0_0",
@@ -1748,7 +2332,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 811,
+      "tsid": 524,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 31
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_11A4_2D_800_DCA0000_0_0_0",
@@ -1769,7 +2361,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 4516,
+      "tsid": 45,
+      "onid": 2048,
+      "namespace": 231342080,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_13_65_1_300000_0_0_0",
@@ -1822,7 +2422,15 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Current technical tuple verified; mapping to older SIS/Betfred donor identity is not independently proved; existing V9 result has low-contrast REVIEW on both backgrounds."
+    "resolution_reason": "Exact-reference original is current SIS Racing; SIS Spanish published donor is generic older SIS artwork and is not a proven same-edition replacement.",
+    "technical_uid": {
+      "sid": 19,
+      "tsid": 101,
+      "onid": 1,
+      "namespace": 3145728,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_14_65_1_300000_0_0_0",
@@ -1875,7 +2483,15 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Current technical tuple verified; mapping to older SIS/Betfred donor identity is not independently proved; existing V9 result has low-contrast REVIEW on both backgrounds."
+    "resolution_reason": "Exact-reference upstream original spells BETFRED TV1/2/3. Published donor has older checkered BETFRED 1/2/3 artwork: do not copy old edition automatically. Existing V9 review outputs will be recovered for approval.",
+    "technical_uid": {
+      "sid": 20,
+      "tsid": 101,
+      "onid": 1,
+      "namespace": 3145728,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_15_65_1_300000_0_0_0",
@@ -1928,7 +2544,15 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Current technical tuple verified; mapping to older SIS/Betfred donor identity is not independently proved; existing V9 result has low-contrast REVIEW on both backgrounds."
+    "resolution_reason": "Exact-reference upstream original spells BETFRED TV1/2/3. Published donor has older checkered BETFRED 1/2/3 artwork: do not copy old edition automatically. Existing V9 review outputs will be recovered for approval.",
+    "technical_uid": {
+      "sid": 21,
+      "tsid": 101,
+      "onid": 1,
+      "namespace": 3145728,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_162D_236_800_DCA0000_0_0_0",
@@ -1949,7 +2573,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 5677,
+      "tsid": 566,
+      "onid": 2048,
+      "namespace": 231342080,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_162E_236_800_DCA0000_0_0_0",
@@ -1970,7 +2602,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 5678,
+      "tsid": 566,
+      "onid": 2048,
+      "namespace": 231342080,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_167_C9_800_DCA0000_0_0_0",
@@ -2067,7 +2707,15 @@
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
     "remaining_current_technical": true,
-    "resolution_reason": "Current technical tuple verified; mapping to older SIS/Betfred donor identity is not independently proved; existing V9 result has low-contrast REVIEW on both backgrounds."
+    "resolution_reason": "Exact-reference upstream original spells BETFRED TV1/2/3. Published donor has older checkered BETFRED 1/2/3 artwork: do not copy old edition automatically. Existing V9 review outputs will be recovered for approval.",
+    "technical_uid": {
+      "sid": 22,
+      "tsid": 101,
+      "onid": 1,
+      "namespace": 3145728,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_17_65_1_300000_0_0_0",
@@ -2086,7 +2734,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_1_17_65_1_300000_0_0_0",
       "name": "SIS1",
@@ -2119,8 +2767,16 @@
       "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
-    "remaining_current_technical": true,
-    "resolution_reason": "Current technical tuple verified; mapping to older SIS/Betfred donor identity is not independently proved; existing V9 result has low-contrast REVIEW on both backgrounds."
+    "remaining_current_technical": false,
+    "resolution_reason": "All nine existing approved PNG variants physically added and tested in batch-20261108.json.",
+    "technical_uid": {
+      "sid": 23,
+      "tsid": 101,
+      "onid": 1,
+      "namespace": 3145728,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_18A4_C97_3_EB0000_0_0_0",
@@ -2142,7 +2798,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6308,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_18A5_C97_3_EB0000_0_0_0",
@@ -2164,7 +2828,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6309,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_18A6_C97_3_EB0000_0_0_0",
@@ -2186,7 +2858,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6310,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_18A7_C97_3_EB0000_0_0_0",
@@ -2208,7 +2888,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6311,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_18A8_C97_3_EB0000_0_0_0",
@@ -2230,7 +2918,15 @@
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
     "resolution_reason": "No exact reference in any of 18 protected canonical packages. Test/DSNS service labels do not establish programme identity; do not invent a logo.",
-    "canonical_exact_reference_slots": 0
+    "canonical_exact_reference_slots": 0,
+    "technical_uid": {
+      "sid": 6312,
+      "tsid": 3223,
+      "onid": 3,
+      "namespace": 15400960,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_18_65_1_300000_0_0_0",
@@ -2249,7 +2945,7 @@
     ],
     "empty_or_invalid": [],
     "v9": "REVIEW",
-    "action": "RETAIN_PENDING",
+    "action": "FIXED_IN_PR50_EXISTING_ARTWORK",
     "identity_review_20261107": {
       "reference": "1_0_1_18_65_1_300000_0_0_0",
       "name": "SIS2",
@@ -2282,8 +2978,16 @@
       "donor_status": "COVERED_9_VALID in existing ledger, not sufficient evidence of same programme edition",
       "artwork_decision": "HOLD: exact stream/programme alias to donor not independently proven; existing Vhannibal source has V9REVIEW low contrast on both backgrounds. Do not turn REVIEW into approval."
     },
-    "remaining_current_technical": true,
-    "resolution_reason": "Current technical tuple verified; mapping to older SIS/Betfred donor identity is not independently proved; existing V9 result has low-contrast REVIEW on both backgrounds."
+    "remaining_current_technical": false,
+    "resolution_reason": "All nine existing approved PNG variants physically added and tested in batch-20261108.json.",
+    "technical_uid": {
+      "sid": 24,
+      "tsid": 101,
+      "onid": 1,
+      "namespace": 3145728,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1B03_3FE_1_C00000_0_0_0",
@@ -2296,7 +3000,15 @@
     "v9": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL"
+    "resolution_reason": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
+    "technical_uid": {
+      "sid": 6915,
+      "tsid": 1022,
+      "onid": 1,
+      "namespace": 12582912,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1C2D_48_1_DC00000_0_0_0",
@@ -2317,7 +3029,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 7213,
+      "tsid": 72,
+      "onid": 1,
+      "namespace": 230686720,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1CF3_4A_800_DC00000_0_0_0",
@@ -2338,7 +3058,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
+    "technical_uid": {
+      "sid": 7411,
+      "tsid": 74,
+      "onid": 2048,
+      "namespace": 230686720,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1_1000_0_46ADAF_0_0_0",
@@ -2353,7 +3081,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 4096,
+      "onid": 0,
+      "namespace": 4631983,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1_1_1_1C2AD49_0_0_0",
@@ -2368,7 +3104,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 1,
+      "onid": 1,
+      "namespace": 29535561,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1_1_1_1C2B0E8_0_0_0",
@@ -2383,7 +3127,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 1,
+      "onid": 1,
+      "namespace": 29536488,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1_1_1_294AB51_0_0_0",
@@ -2398,7 +3150,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 1,
+      "onid": 1,
+      "namespace": 43297617,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_1_1_1_D72B76_0_0_0",
@@ -2479,7 +3239,15 @@
     "v9": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY"
+    "resolution_reason": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 1,
+      "tsid": 1,
+      "onid": 65535,
+      "namespace": 1977753,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_206C_146C_A7_1860000_0_0_0",
@@ -2498,9 +3266,26 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Software/data service",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Software/data service"
+    "action": "VERIFIED_DATA_SERVICE_OUT_OF_TV_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Explicit Data category with no video or audio; software upgrade service, not a TV programme.",
+    "technical_uid": {
+      "sid": 8300,
+      "tsid": 5228,
+      "onid": 167,
+      "namespace": 25559040,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "scope_evidence": {
+      "name": "SSU",
+      "sid": 8300,
+      "tsid": 5228,
+      "onid": 167,
+      "frequency": "12251V",
+      "source": "https://en.kingofsat.net/datasat-hellas3",
+      "reason": "Explicit Data category with no video or audio; software upgrade service, not a TV programme."
+    }
   },
   {
     "reference": "1_0_1_2076_146C_A7_1860000_0_0_0",
@@ -2519,9 +3304,26 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Software/data service",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Software/data service"
+    "action": "VERIFIED_DATA_SERVICE_OUT_OF_TV_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Explicit Data category with no video or audio; CAM software update service.",
+    "technical_uid": {
+      "sid": 8310,
+      "tsid": 5228,
+      "onid": 167,
+      "namespace": 25559040,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "scope_evidence": {
+      "name": "SSU CAM",
+      "sid": 8310,
+      "tsid": 5228,
+      "onid": 167,
+      "frequency": "12251V",
+      "source": "https://en.kingofsat.net/datasat-hellas3",
+      "reason": "Explicit Data category with no video or audio; CAM software update service."
+    }
   },
   {
     "reference": "1_0_1_2FC_2025_2BE_1040000_0_0_0",
@@ -2542,7 +3344,15 @@
     "v9": "NO_UNAMBIGUOUS_ORIGINAL_PICON",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "NO_UNAMBIGUOUS_ORIGINAL_PICON"
+    "resolution_reason": "NO_UNAMBIGUOUS_ORIGINAL_PICON",
+    "technical_uid": {
+      "sid": 764,
+      "tsid": 8229,
+      "onid": 702,
+      "namespace": 17039360,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_320_3E9_2_820000_0_0_0",
@@ -2561,9 +3371,25 @@
     ],
     "empty_or_invalid": [],
     "v9": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "TECHNICAL_OR_UNCONFIRMED_PROGRAMME_IDENTITY"
+    "action": "VERIFIED_DATA_SERVICE_OUT_OF_TV_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact NID2/TSID1001/SID800 is catalogued Data, no video/audio. Do not confuse with parallel TSID1000/1003 services.",
+    "technical_uid": {
+      "sid": 800,
+      "tsid": 1001,
+      "onid": 2,
+      "namespace": 8519680,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "scope_evidence": {
+      "name": "SERVICE IP/MAC NOTIFICATION",
+      "sid": 800,
+      "tsid": 1001,
+      "onid": 2,
+      "source": "https://en.kingofsat.net/freqs.php?filtre=no&lim=310&ordre=sid&pos=13E&standard=All",
+      "reason": "Exact NID2/TSID1001/SID800 is catalogued Data, no video/audio. Do not confuse with parallel TSID1000/1003 services."
+    }
   },
   {
     "reference": "1_0_1_37A0_44C_13E_820000_0_0_0",
@@ -2603,9 +3429,26 @@
     ],
     "empty_or_invalid": [],
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL",
-    "action": "RETAIN_PENDING",
-    "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_TECHNICAL_OR_UNCONFIRMED_LABEL"
+    "action": "VERIFIED_DATA_SERVICE_OUT_OF_TV_SCOPE",
+    "remaining_current_technical": false,
+    "resolution_reason": "Exact service SID14299 on NID318/TSID1100 is a Data record without video/audio; not a TV channel.",
+    "technical_uid": {
+      "sid": 14299,
+      "tsid": 1100,
+      "onid": 318,
+      "namespace": 8519680,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c",
+    "scope_evidence": {
+      "name": "DATA",
+      "sid": 14299,
+      "tsid": 1100,
+      "onid": 318,
+      "frequency": "11411H",
+      "source": "https://en.kingofsat.net/datapack-ncplus",
+      "reason": "Exact service SID14299 on NID318/TSID1100 is a Data record without video/audio; not a TV channel."
+    }
   },
   {
     "reference": "1_0_1_38A_20D_73_2080000_0_0_0",
@@ -2626,7 +3469,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 906,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_38B_20D_73_2080000_0_0_0",
@@ -2647,7 +3498,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 907,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_38C_20D_73_2080000_0_0_0",
@@ -2668,7 +3527,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 908,
+      "tsid": 525,
+      "onid": 115,
+      "namespace": 34078720,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_412_519_2_E080000_0_0_0",
@@ -2681,7 +3548,15 @@
     "v9": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL"
+    "resolution_reason": "PROTECTED_CANAL_ARTWORK_PRESERVED_REQUIRES_CANONICAL_REPAIR_APPROVAL",
+    "technical_uid": {
+      "sid": 1042,
+      "tsid": 1305,
+      "onid": 2,
+      "namespace": 235405312,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_69_A_1_D7A0000_0_0_0",
@@ -2702,7 +3577,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: HOLD_OBSERVED_LABEL_OR_REGIONAL_LOGO_CONFLICT: Temporary feed without confirmed station identity",
+    "technical_uid": {
+      "sid": 105,
+      "tsid": 10,
+      "onid": 1,
+      "namespace": 226099200,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_B13_1C_1800_2AD0000_0_0_0",
@@ -2723,7 +3606,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 2835,
+      "tsid": 28,
+      "onid": 6144,
+      "namespace": 44892160,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_B18_1C_1800_2AD0000_0_0_0",
@@ -2744,7 +3635,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 2840,
+      "tsid": 28,
+      "onid": 6144,
+      "namespace": 44892160,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_B1D_1C_1800_2AD0000_0_0_0",
@@ -2765,7 +3664,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 2845,
+      "tsid": 28,
+      "onid": 6144,
+      "namespace": 44892160,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_B7C_1D_1800_2AD0000_0_0_0",
@@ -2786,7 +3693,15 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 2940,
+      "tsid": 29,
+      "onid": 6144,
+      "namespace": 44892160,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   },
   {
     "reference": "1_0_1_C672_A477_42E_1A40000_0_0_0",
@@ -2871,6 +3786,14 @@
     "v9": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
     "action": "RETAIN_PENDING",
     "remaining_current_technical": true,
-    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY"
+    "resolution_reason": "PRIOR_IDENTITY_OR_ARTWORK_HOLD: EXCLUDE_TECHNICAL_OR_NUMBERED_SERVICE_WITHOUT_PROGRAMME_IDENTITY",
+    "technical_uid": {
+      "sid": 65534,
+      "tsid": 20,
+      "onid": 70,
+      "namespace": 235405312,
+      "service_type": 1
+    },
+    "reviewed_cohort_checkpoint": "a4e720da5de29824a810e93be2c805f17816af6c"
   }
 ]

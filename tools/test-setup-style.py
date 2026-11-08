@@ -87,11 +87,37 @@ class SetupStyleTests(unittest.TestCase):
                 visit(child, scope)
 
         visit(ast.parse(CURRENT))
-        self.assertEqual(counts, [1] * len(expected), list(zip(
-            [r['scope'] for r in ledger], counts)))
+        # TEST77 changed four legacy Prime Time guards. The old entries
+        # remain historical records; verify their approved successor patterns
+        # explicitly instead of requiring obsolete AST nodes to still exist.
+        evolved = {
+            3: "if default_geometry and 'picServiceEventProgressbar=' in line and 'fieldMargins=' not in line:",
+            9: "if in_default_channel_screen and 'render=\"g17ShowExtraEpg\"' in line:",
+            11: "in_default_channel_screen = default_geometry",
+            12: "if in_default_channel_screen and '</screen>' in line:",
+        }
+        for index, record in enumerate(ledger):
+            if index in evolved:
+                self.assertEqual(counts[index], 0, record['scope'])
+                self.assertEqual(CURRENT.count(evolved[index]), 1, (index, evolved[index]))
+            else:
+                self.assertEqual(counts[index], 1, (index, record['scope']))
         # A stale ledger record must not silently remove protection.
         for record in ledger:
             self.assertEqual(record['before'], '')
+
+    def test_release_1072_iptv_caid_and_localization_are_fingerprint_guarded(self):
+        # All five receiver-approved code paths must remain in the payload.
+        # The complete AST fingerprint test below detects any unreviewed edit.
+        required = (
+            'av.getResolutionX(0)',
+            'av.getResolutionY(0)',
+            'self.warderCaidScrollTimer.start(220, True)',
+            'loop[offset:] + loop[:offset]',
+            'manifest.get("changelog_i18n", {})',
+        )
+        for statement in required:
+            self.assertEqual(CURRENT.count(statement), 1, statement)
 
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])

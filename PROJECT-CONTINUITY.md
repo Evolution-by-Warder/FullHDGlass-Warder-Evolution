@@ -352,3 +352,11 @@ Physical TV visual parity is NOT yet confirmed. Production feeds, including the 
 ## Stable activation 2026-11-03
 
 FullHDGlass 1.0.65 published as a normal release; public IPK and checksum verified. Main metadata updated. Runtime updater branch activation is recorded separately after verification. Earlier TEST publishing pause is superseded by the owner’s explicit stable-release request.
+
+## 2026-11-08 — 1.0.71-test61 to stable 1.0.72: updater feed routing incident
+
+Receiver evidence: on 1.0.71-test61, manual update check incorrectly showed “Máš aktuálnu verziu, nie je potrebná aktualizácia” although production update-production.json already offered 1.0.72. Root cause confirmed in both setupGlass17/plugin.py::updatechckact and warderAutoUpdate.py::selected_url: presence of '-test' in installed version selects warder-modernization-work/update-test.json, not main/update-production.json. The TEST feed was still 1.0.69, therefore no upgrade was offered. Version comparison itself correctly orders 1.0.72 after 1.0.71-test61.
+
+Immediate mitigation: changed warder-modernization-work/update-test.json to the already-published stable 1.0.72 package URL and matching SHA256, with 10 localized change descriptions; commit b1fa58ba89bbc8381540cd09a6cf2a53316826d5. Production feed was unchanged. After a full receiver reboot, the owner confirmed the update was offered and the box was restarting to install it. Do not claim post-restart installed version verification until confirmed separately.
+
+FOLLOW-UP REQUIRED BEFORE NEXT RELEASE: fix both the startup/background checker and manual checker so a test build compares both authorized test and stable feeds and offers the highest applicable newer release, with safe precedence for a newer TEST and deterministic stable promotion, keeping approved URL allowlists, SHA256 validation, localization, and package install safeguards. Add regression tests for 1.0.71-test61 -> stable 1.0.72 (including startup and manual paths), older test feed, stable -> stable, test -> newer test, and malformed/unavailable feeds. Keep automatic check non-blocking. Never rely on updating the test feed manually as the permanent fix.
