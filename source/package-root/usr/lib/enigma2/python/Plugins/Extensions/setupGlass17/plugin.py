@@ -8037,7 +8037,13 @@ class setupGlass17ScreenSetup(Screen, ConfigListScreen):
 			new_version = str(manifest.get("version", "")).strip()
 			package_url = str(manifest.get("package_url", "")).strip()
 			sha256 = str(manifest.get("sha256", "")).strip().lower()
-			changelog = str(manifest.get("changelog", "")).strip()
+			changelog = manifest.get("changelog", "")
+			# Prefer release notes in the Enigma2 system language.
+			translations = manifest.get("changelog_i18n", {})
+			if isinstance(translations, dict):
+				lang = str(config.osd.language.value).replace("-", "_").split("_")[0].lower()
+				changelog = translations.get(lang) or translations.get("en") or changelog
+			changelog = str(changelog).strip()
 			if not new_version:
 				raise ValueError("missing version")
 			official_prefixes = (
