@@ -7,7 +7,7 @@
 - Deväť variantov každej stanice je bajtovou kópiou existujúceho schváleného donora z42°E. Vizuálne skontrolované všetky tri pozadia. Kanal7 používa domáci donor CB20, nie AVRUPA/C579. TV8/SID912 ostáva pre rozdiel artworku otvorené.
 - Lokálne PASS: SHA256/CRC, rozmery, alfa, presné PNG, 12 408 pôvodných členov a pôvodné ZIP prefixy zachované; všetkých18 CANAL+ archívov nezmenených. Validátor manifestu a test inštalačnej funkcie1.0.74 PASS. Bez testu fyzického prijímača.
 - Základ `7923bfd4f8639d15b4705c9354da7b5ee2fcd14a`; Zor/NOW karanténa trvá. RADIO CLASSICA TV má pri čerstvom zdroji rozpor ONID/TSID, preto sa nevyraďuje podľa staršieho cache.
-- Report `reports/vhannibal-followup-20261106/scope-batch-20261108-03.json`; vzdialené overenie nasleduje po commite. Bez produkčného merge, feedu, IPK a rádia.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261108-03.json`; payload commit `3c475292375b234d7db68055d344ebc38525486d`; spätné overenie PASS: 65 častí, 229 317 090 bajtov, 9 zostavených ZIPov zhodných bajt po bajte; manifest, SHA256SUMS a štyri registre tiež zhodné. Úplný dôkaz `scope-batch-20261108-03-remote-verification.json`. Bez produkčného merge, feedu, IPK a rádia.
 
 ### Dávka 02 – karanténa po zistení rozporu identity – 8. 11. 2026
 
