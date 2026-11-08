@@ -3,8 +3,8 @@
   "manifest_validator": "PASS",
   "receiver_ref": "12247acc20f699606f6d40f3783e4162b92674b9",
   "receiver_installer_ast_sha256": "c8aa0dac6f923961e1e0e3ebd2a071f17eedf5dbf12264464e91c928dc167447",
-  "installer_archives": 63,
-  "installed_new_pngs": 144,
+  "installer_archives": 72,
+  "installed_new_pngs": 153,
   "valid_unrelated_user_png_preserved_in_every_test": true,
   "protected_canal_packages_sha256_crc": [
     {
@@ -262,47 +262,47 @@
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-220x132-black-1f0b684da0d82545.zip",
+      "filename": "warder-282e-220x132-black-ee9c732268fa79e0.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-220x132-transparent-18f3eb5fcfe9b344.zip",
+      "filename": "warder-282e-220x132-transparent-17b704326f511cfb.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-220x132-white-0e71311d0babf959.zip",
+      "filename": "warder-282e-220x132-white-113380a7d8704eeb.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-400x240-black-8fdc45e29a74bc63.zip",
+      "filename": "warder-282e-400x240-black-fe9b58dc9440af06.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-400x240-transparent-f807dc56f0d1c555.zip",
+      "filename": "warder-282e-400x240-transparent-b4547a97470d44ca.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-400x240-white-c0ff8afd4dec8390.zip",
+      "filename": "warder-282e-400x240-white-a6d1ff4589d4ba35.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-50x30-black-eb19600a677855b5.zip",
+      "filename": "warder-282e-50x30-black-534c804b91292f01.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-50x30-transparent-284ccee463450fca.zip",
+      "filename": "warder-282e-50x30-transparent-fba76682f1e64a0e.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
     {
-      "filename": "warder-282e-50x30-white-a1e83fa455380238.zip",
+      "filename": "warder-282e-50x30-white-87c77ea794b02486.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     },
@@ -393,6 +393,51 @@
     },
     {
       "filename": "warder-150w-50x30-white-1f39a09d4023f362.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-black-ee9c732268fa79e0.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-transparent-17b704326f511cfb.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-220x132-white-113380a7d8704eeb.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-black-fe9b58dc9440af06.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-transparent-b4547a97470d44ca.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-400x240-white-a6d1ff4589d4ba35.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-black-534c804b91292f01.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-transparent-fba76682f1e64a0e.zip",
+      "selected_pngs_installed": 1,
+      "valid_unrelated_user_png_preserved": true
+    },
+    {
+      "filename": "warder-282e-50x30-white-87c77ea794b02486.zip",
       "selected_pngs_installed": 1,
       "valid_unrelated_user_png_preserved": true
     }

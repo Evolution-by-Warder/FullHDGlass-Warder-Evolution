@@ -1254,8 +1254,10 @@
           "pixel_digest": "da9f2c5d8cd96751021fb015a7fcac8467ffcb625e1b25f190a1533bf0b9e58e",
           "reuse_candidates": [],
           "existing_valid_slots": [],
-          "action": "HOLD_NO_SAFE_COPY",
-          "reason": "No verified same-edition approved donor; retain source and technical tuple for identity/artwork review."
+          "action": "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK",
+          "reason": "Focused published-artwork search found the identical Sky Sports Box Office HD edition under SID1035/TSID2003/ONID2. Current source has SID1035/TSID2024/ONID2 at12168V. All nine approved donor PNG bytes copied unchanged. No artwork rendering.",
+          "physical_valid_slots_after_candidate": 9,
+          "donor": "1_0_19_40B_7D3_2_11A0000_0_0_0"
         },
         {
           "reference": "1_0_19_40C_7E8_2_11A0000_0_0_0",
@@ -2370,17 +2372,17 @@
     "expanded_source_counts": {
       "source_union": 14856,
       "current_tv_in_source_cohort": 10460,
-      "covered_9_valid_candidate": 10336,
-      "technical_open": 124,
+      "covered_9_valid_candidate": 10337,
+      "technical_open": 123,
       "original_cohort_open": 104,
-      "new_delta_technical_open": 20,
+      "new_delta_technical_open": 19,
       "out_of_scope_including14new_radio": 2722,
       "dated_exact_departures": 5,
       "historical_without_exact_match": 1669
     },
     "delta_counts": {
-      "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK": 13,
-      "HOLD_NO_SAFE_COPY": 20,
+      "FIXED_IN_PR50_EXISTING_APPROVED_ARTWORK": 14,
+      "HOLD_NO_SAFE_COPY": 19,
       "ALREADY_COVERED_9_NO_CHANGE": 1,
       "RADIO_OUT_OF_SCOPE_NO_PNG_WORK": 14
     },
@@ -2391,6 +2393,24 @@
       "current104open_exact_rows": 101,
       "open_rows_absent_not_declared_departed": 3,
       "changed_programme_names_in_exact_rows": 0
+    },
+    "focused_approved_artwork_search": {
+      "published_nonradio_transparent_220_artworks_compared": 2638,
+      "target_references": 9,
+      "method": "Cropped RGB and DCT shortlist only; visual identity and full nine physical donor checks are required, never automatic score-based aliasing.",
+      "safe_reuse_found": [
+        "1_0_19_40B_7E8_2_11A0000_0_0_0"
+      ],
+      "other_targets": "SIS Racing/Betfred require artwork approval; STARZPLAY Movies cannot borrow Cricket/Comedy/Action;1TV Iraq,AL-KAFEL andEL JUMHURIA have no proven identical approved donor in searched scope.",
+      "evidence": [
+        "sky-boxoffice-batch-20261108.json",
+        "approved-donor-search-20261108.json"
+      ],
+      "sources": [
+        "https://www.sky.com/help/articles/sky-box-office",
+        "https://www.lyngsat.com/muxes/Astra-2F_UK_12168-V.html",
+        "https://channelpedia.yavdr.com/gen/DVB-S/S28.2E/LNBSetupHelperTable.html"
+      ]
     }
   }
 }

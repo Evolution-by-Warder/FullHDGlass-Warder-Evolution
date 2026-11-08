@@ -1,5 +1,19 @@
 # Vhannibal – pokračovanie po PR #47
 
+## Najnovší overený výsledok – 8.11.2026, pokračovanie PR #50
+
+- **Tento beh:17nových opravených referencií,153doplnených PNG,63jedinečných zmenených ZIPov. PR #50spolu:23referencií,204PNG,99ZIPov.** Žiadne zlúčenie ani publikácia.
+- Pôvodný front120:9opravených,3doložené odchody,4dátové služby mimoTV,**104otvorených**. Rozdiel48nových zdrojových referencií:14opravenýchTV,1už úplne pokrytáTV,14rádiových mimo rozsahu bez úprav PNG,**19blokovanýchTV**. Spolu **123technicky otvorených**, nie pôvodných111: front sa rozšíril o nové dostupné zdroje.
+- Známy zdrojový súbor14856:10460aktuálnychTV (10337má deväť platných variantov v kandidátovi,123otvorených),2722mimo rozsahu,5dátovaných odchodov,1669historických bez presnej aktuálnej zhody. Technické pokrytie nepotvrdzuje grafickú správnosť celého katalógu ani neuzatvára širší MASTER V9audit.
+- Nový bezpečný donor z cieleného hľadania:SkySportsBoxOfficeHD, SID1035,TSID2024,ONID2,12168V. Už schválená rovnaká HDgrafika podTSID2003 má fyzicky všetkých9variantov. Doplnilo sa9bitových kópií do existujúcich282EZIPov, ktoré už boli v druhej dávke zmenené. Počet jedinečnýchZIPov sa preto nezvýšil. Všetky pôvodné členy aj predchádzajúce TNTdoplnenia sú zachované.
+- Hotové balíkové commity: [`20aa8c6`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/20aa8c68c8e9c4b55a6ce1a9a3d1b441d4d464c9) a [`19809be`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/19809becb8fd8cde4abed18535994ed471b2318b). Oba sú vzdialene overené vrátane nahraných binárnych častí; ďalší checkpoint soSkyopravou je na tej istej vetvePR50. Presný finálnySHA je v PR a záverečnom overovacom zápise.
+- Pri porovnaní63archívov pred týmto behom zostalo **126295pôvodných členov bitovo identických**. Dodatočný Skykrok zachoval aj17715členov priebežných282EZIPov; tento priebežný počet sa nepripočítava k jedinečným pôvodným členom. Všetkých18CANAL+SK/CZbalíkov je nezmenených.
+- Kontroly:SHA256častí aarchívov,CRC,žiadne duplicitné členy,rozmery/alfa,zhoda sdonorom,zachovanie pôvodných členov,manifestový validátor PASS. Finálny inštalátor stabilného1.0.72 prešiel72inštalačnými prípadmi pre153novýchPNG,vrátane opakovaného282Eoverenia poSkyoprave; pri každom zachoval platný používateľskýPNG. Nie je to test fyzického prijímača. StavGitHubActions sa uvádza samostatne.
+- [Grafiky na samostatné schválenie](ARTWORK_APPROVAL.md):45jedinečných kontrolnýchPNG pre6referencií –BloombergHT2,SISSP/SISRacing1,BetfredTV1–3. Sú mimoZIPov a stále medzi otvorenými. Bez schválenia sa nesmú vložiť.
+- Blokácie nového rozdielu:7Antena sTSID10vs0;4technickéEutelsatnázvy;2číslované služby;2UNKNOWNRUSSIA;ELJUMHURIA aAL-KAFEL konfliktné artworky;STARZPLAYMovies a1TVIraq bez rovnakého schváleného donora. V pôvodnom fronte zostávajú nejasné/technické identity,pending grafiky,FUNBOXHD/UHD a2chránenéTV5MONDE; presný stav každej referencie je v existujúcich registroch.
+- Ďalší krok:schváliť konkrétne grafiky zprehľadu,potom ich fyzicky vložiť do existujúcej vetvy aotestovať; nezávisle doložiť zostávajúce identity aAntenaTSID. Pred prípadným merge znovu overiť main amesačnýKuukaudenalias. Skin1.0.72,aktualizátor arádio sa nemenili. Produkčné zlúčenie,publikácia aIPK vyžadujú samostatný súhlas.
+
+
 Produkčný základ je commit [`fd0a57d56d04e03d5e4560d718595fa5aa28e255`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/fd0a57d56d04e03d5e4560d718595fa5aa28e255) po schválenom zlúčení PR #47. [Záznam opakovanej kontroly #47](pr47-recheck.json) obsahuje výsledky ZIPov a hashe všetkých 18 chránených balíkov CANAL+ SK/CZ.
 
 ## Mezzo SD
