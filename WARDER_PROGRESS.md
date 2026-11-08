@@ -5,7 +5,7 @@
 - **1 TV referencia / 9 PNG / 9 ZIPov / 0 technických výnimiek**. Zostáva **106 = 87 pôvodných + 19 delta**. PR spolu **37 TV referencií / 330 PNG / 99 jedinečných ZIPov**.
 - Presný SID7/TSID8135/ONID702 na26°E/12380H je v pomenovanom multiplexe FunBox UHD vysielaný v HD; Fast&FunBox je samostatný SID3. Existujúci schválený donor FunBox UHD zo16°E/SID610/TSID50200/ONID366; značka vizuálne porovnaná s oficiálnym SPI logom. Pôvodný servisný názov FUNBOX HD a referencia zachované.
 - Deväť PNG bajtovo skopírovaných, žiadne renderovanie. Lokálne SHA256/CRC/rozmery/alfa PASS, 17 934 pôvodných členov ZIPov a pôvodné ZIP prefixy zachované.18 CANAL+ balíkov nezmenených. Validátor manifestu a inštalačná funkcia1.0.74 PASS; fyzický prijímač netestovaný.
-- Report `reports/vhannibal-followup-20261106/scope-batch-20261108-05.json`. Vzdialený audit nasleduje po uložení payloadu. Produkcia a rádio bez zmien.
+- Report `reports/vhannibal-followup-20261106/scope-batch-20261108-05.json`. Payload commit `4a779afb9528508629b5d64680585113b2250cf6`; vzdialený audit PASS: 113 častí / 307 603 286 bajtov, všetkých 9 ZIPov zhodných bajt po bajte; SHA256, CRC, 9 PNG, manifest, SHA256SUMS a 4 registre overené. Úplný report `scope-batch-20261108-05-remote-verification.json`. Produkcia a rádio bez zmien.
 
 ### Dávka 04 – preukázaný profesionálny feed EBU – 8. 11. 2026
 
@@ -208,7 +208,16 @@ Kontrola živých vetiev po uložení: FullHDGlass main stále `12247acc20f69960
 - Kandidát prešiel produkčným validátorom a skutočnou inštalačnou metódou prijímača na 69 archívoch / 198 PNG; kontrolované boli SHA256, CRC, plné referencie, rozmery a zachovanie nesúvisiacich používateľských súborov. Nové grafiky, merge aj publikovanie stále čakajú na schválenie. Warder Radio a rádiové picony sa nemenili.
 - Ďalší krok: revízia uložených V9 hárkov, explicitných konfliktov a kanonického TV5MONDE; až potom vlastníkom schválený produkčný merge. Zdrojový checkpoint je zachovaný súkromne aj pre opakovanie po zmene upstreamu.
 
-### Ďalší presný krok po dávke04
+### Historický ďalší krok po dávke04
 
 - 107 zostávajúcich prípadov ostáva blokovaných dôkazom identity, schváleným donorom alebo presnou klasifikáciou. Nové zistenia uložené v `identity-evidence-20261107.json` → `continuation_20261108.followup_after_batch03` a v príslušných riadkoch `remaining-review.json`.
 - Priorita: schválený domáci TV8 Turkey donor; overenie konfliktu SID900 Zor/NOW; aktuálna transportná tabuľka Antena TSID10/0. Neopakovať dávky03/04 ani uzavretú záchranu šiestich schválených referencií. TV5MONDE a18 CANAL+ balíkov chránené. Nové artworky vyžadujú schválenie.
+
+
+### Pokračovanie po dávke05 – uložený prieskum, nie ďalšie opravy
+
+- Zostáva **106 otvorených (87 pôvodných + 19 delta)**. Nové dôkazy pre 40 referencií sú v `identity-evidence-20261107.json` → `continuation_20261108.followup_after_batch05`; príslušné riadky registrov aktualizované. Žiadna ďalšia referencia sa tým neuzatvára.
+- TV8: oficiálny pôvodný PNG 91×80 uložený v reporte ako **neschválený výskumný podklad**, mimo inštalačných balíkov. Cielené porovnanie nového cieľa s 11 584 už uloženými grafikami nenašlo prijateľného donora medzi vizuálne overenými 24 výsledkami; nejde o dôkaz neexistencie donora. Súbor `tv8-focused-donor-search-20261108.json` uchováva referencie a SHA256.
+- SES Demo na66°E má už presnejší identifikačný podklad; potrebuje schváleného donora rovnakej edície. Dve45°E referencie majú ONID1/0 konflikt. DSNS historické testy nepreukazujú aktuálnu dátovú klasifikáciu. BFBS oficiálny zoznam čísel kanálov nie je tabuľka SID; Quadrille57°E nemožno preniesť na75°E.
+- UNKNOWN RUSSIA sa podľa čerstvých záznamov7.11. vrátila; staršie oznámenie o odchode nepoužiť na vyradenie. AntenaTSID10/0, Zor/NOW, TV5MONDE a ďalšie blokácie ostávajú chránené.
+- Ďalší konkrétny krok: získať schválený domáci TV8 alebo SES Demo HD donor; presnú aktuálnu transportnú tabuľku Antena a BFBS75°E. Nové grafiky pripraviť oddelene na schválenie, žiadne domyslené aliasy. Produkčný merge nie je povolený.

@@ -2025,7 +2025,21 @@
           "reuse_candidates": [],
           "existing_valid_slots": [],
           "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor."
+          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor.",
+          "followup_after_batch05": {
+            "references": [
+              "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+              "1_0_1_43D8_7D6C_42E_1A40000_0_0_0"
+            ],
+            "decision": "HOLD_APPROVED_ARTWORK_NOT_DEPARTED",
+            "finding": "Unknown Russia / Neizvestnaya Rossiya: fresh7Nov records show return at11727V SID17318/ONID1070/TSID60101 VPID1218/APID1318 and11012H SID17368 VPID1268/APID1368. Old1Nov departure must not close these current references. No approved same-edition donor established.",
+            "sources": [
+              "https://en.kingofsat.net/index.php/arabic/detail-unknownrussia",
+              "https://www.frocus.net/main.php?id=23612&lng=en&pag=tp&rzd=tvkanal&sp=42&tp_id=1680",
+              "https://www.lyngsat.com/muxes/Turksat-3A_East_11012-H.html"
+            ],
+            "checked": "2026-11-08"
+          }
         },
         {
           "reference": "1_0_1_43D8_7D6C_42E_1A40000_0_0_0",
@@ -2048,7 +2062,21 @@
           "reuse_candidates": [],
           "existing_valid_slots": [],
           "action": "HOLD_NO_SAFE_COPY",
-          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor."
+          "reason": "Unresolved service label. No confirmed channel identity or approved same-edition donor.",
+          "followup_after_batch05": {
+            "references": [
+              "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+              "1_0_1_43D8_7D6C_42E_1A40000_0_0_0"
+            ],
+            "decision": "HOLD_APPROVED_ARTWORK_NOT_DEPARTED",
+            "finding": "Unknown Russia / Neizvestnaya Rossiya: fresh7Nov records show return at11727V SID17318/ONID1070/TSID60101 VPID1218/APID1318 and11012H SID17368 VPID1268/APID1368. Old1Nov departure must not close these current references. No approved same-edition donor established.",
+            "sources": [
+              "https://en.kingofsat.net/index.php/arabic/detail-unknownrussia",
+              "https://www.frocus.net/main.php?id=23612&lng=en&pag=tp&rzd=tvkanal&sp=42&tp_id=1680",
+              "https://www.lyngsat.com/muxes/Turksat-3A_East_11012-H.html"
+            ],
+            "checked": "2026-11-08"
+          }
         },
         {
           "reference": "1_0_1_7A76_410_1_C00000_0_0_0",
@@ -2754,6 +2782,139 @@
       "total_tv": 37,
       "total_png": 330,
       "total_unique_zips": 99
+    },
+    "followup_after_batch05": {
+      "findings": [
+        {
+          "references": [
+            "1_0_16_390_20D_73_2080000_0_0_0"
+          ],
+          "decision": "HOLD_NO_APPROVED_DOMESTIC_DONOR",
+          "finding": "Official domestic TV8 original is 91x80 RGBA, SHA256157ff4d408c41c85eded1a91b5309a849c2a599f76dbb7cbf54dbcc7fba7bae2. Focused new-target comparison against 11584 cached unique TV graphics: top24 visually inspected, no acceptable match. Similarity ranking is not identity proof or exhaustive proof of absence. International and red-circle8 donors rejected. Official source is research only, not approved Warder artwork.",
+          "sources": [
+            "https://www.tv8.com.tr/sayfa-kunye",
+            "https://img.tv8.com.tr/s/template/v2/img/tv8-logo.png"
+          ],
+          "checked": "2026-11-08"
+        },
+        {
+          "references": [
+            "1_0_1_1_1_1_294AB51_0_0_0"
+          ],
+          "decision": "HOLD_APPROVED_SAME_EDITION_DONOR",
+          "finding": "66E11089V SID1/TSID1/ONID1 identified as SES Demo by LyngSat and Morpheus, VPID2064/APID2068. FEC differs between listings. Existing SES Demo SD on4.8E cannot be presumed identical edition. Demo TV is not automatically Data.",
+          "sources": [
+            "https://www.lyngsat.com/Intelsat-17.html",
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=66"
+          ],
+          "checked": "2026-11-08"
+        },
+        {
+          "references": [
+            "1_0_1_1_1_1_1C2AD49_0_0_0",
+            "1_0_1_1_1_1_1C2B0E8_0_0_0"
+          ],
+          "decision": "HOLD_ONID_CONFLICT_AND_DONOR",
+          "finding": "45E11593V/12520V: Morpheus SES DEMO HD 2025 SID1/TSID1/ONID1 VPID2064/APID2068; KingOfSat has ONID0. No safe copy across conflicting network identity or SD/HD editions.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=45",
+            "https://en.kingofsat.tv/tv-45.0E"
+          ],
+          "checked": "2026-11-08"
+        },
+        {
+          "references": [
+            "1_0_16_1_C_2C_300000_0_0_0",
+            "1_0_16_1_C_2C_EB0000_0_0_0",
+            "1_0_16_2_C_2C_300000_0_0_0",
+            "1_0_16_2_C_2C_EB0000_0_0_0",
+            "1_0_16_3_C_2C_EB0000_0_0_0",
+            "1_0_16_4_C_2C_300000_0_0_0",
+            "1_0_16_4_C_2C_EB0000_0_0_0",
+            "1_0_16_5_C_2C_300000_0_0_0",
+            "1_0_16_5_C_2C_EB0000_0_0_0",
+            "1_0_16_6_C_2C_300000_0_0_0",
+            "1_0_16_6_C_2C_EB0000_0_0_0",
+            "1_0_16_7_C_2C_300000_0_0_0",
+            "1_0_16_7_C_2C_EB0000_0_0_0",
+            "1_0_16_8_C_2C_300000_0_0_0",
+            "1_0_16_8_C_2C_EB0000_0_0_0",
+            "1_0_16_9_C_2C_300000_0_0_0",
+            "1_0_16_9_C_2C_EB0000_0_0_0",
+            "1_0_16_A_C_2C_300000_0_0_0",
+            "1_0_16_A_C_2C_EB0000_0_0_0",
+            "1_0_16_B_C_2C_300000_0_0_0",
+            "1_0_16_B_C_2C_EB0000_0_0_0",
+            "1_0_16_C_C_2C_300000_0_0_0",
+            "1_0_16_C_C_2C_EB0000_0_0_0"
+          ],
+          "decision": "HOLD_CURRENT_CLASSIFICATION",
+          "finding": "Historical ciefp first-hand reports identify DSNS T2MI test labels at4.8E12073H and23.5E12285V PID4097. 2023/2024 reports and absence of picture do not independently classify all current SID1-12/TSID12/ONID44 services. Emergency-service name alone is not Data evidence.",
+          "sources": [
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=35&thread%2F305-ciefpsettings-e1-e2%2F=",
+            "https://satelitskiforum.com/sf/forum/index.php?pageNo=38&thread%2F305-ciefpsettings-e1-e2%2F="
+          ],
+          "checked": "2026-11-08"
+        },
+        {
+          "references": [
+            "1_0_16_1FAF_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB0_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB1_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB2_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB3_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB4_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB7_3_11_2EE0000_0_0_0",
+            "1_0_16_1FB8_3_11_2EE0000_0_0_0",
+            "1_0_16_2218_3_11_2EE0000_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_75E_SERVICE_TABLE",
+          "finding": "Official BFBS confirms75E11787H23333 but channel numbering is not DVB SID. LyngSat12726H ONID22/TSID8 SID8605+ differs from target11787H ONID17/TSID3 SID8111+. Quadrille8728 Data at57E3798R has same numeric IDs but different orbital/frequency binding. No extrapolation to75E.",
+          "sources": [
+            "https://www.bfbs.com/ABS2A",
+            "https://www.lyngsat.com/ABS-2-2A.html",
+            "https://cz.kingofsat.net/data-57E"
+          ],
+          "checked": "2026-11-08"
+        },
+        {
+          "references": [
+            "1_0_1F_1_0_1_46AB8F_0_0_0",
+            "1_0_1_1_1000_0_46ADAF_0_0_0"
+          ],
+          "decision": "HOLD_EXACT_FEED_IDENTITY",
+          "finding": "7E scan absence does not prove departure. 11695V3333 feed listing lacks exact tuple. Official G7 ITA99 feed document binds16E11135.83, not7E11151; cannot classify target using it.",
+          "sources": [
+            "https://ftp.morpheus883.altervista.org/srv.php/?chart=7",
+            "https://www.lyngsat.com/Eutelsat-7C.html",
+            "https://www.g7italy.it/wp-content/uploads/Dati-satellitari-Ita-98-99-Vertice-G7.pdf"
+          ],
+          "checked": "2026-11-08"
+        },
+        {
+          "references": [
+            "1_0_1_43A6_EAC5_42E_1A40000_0_0_0",
+            "1_0_1_43D8_7D6C_42E_1A40000_0_0_0"
+          ],
+          "decision": "HOLD_APPROVED_ARTWORK_NOT_DEPARTED",
+          "finding": "Unknown Russia / Neizvestnaya Rossiya: fresh7Nov records show return at11727V SID17318/ONID1070/TSID60101 VPID1218/APID1318 and11012H SID17368 VPID1268/APID1368. Old1Nov departure must not close these current references. No approved same-edition donor established.",
+          "sources": [
+            "https://en.kingofsat.net/index.php/arabic/detail-unknownrussia",
+            "https://www.frocus.net/main.php?id=23612&lng=en&pag=tp&rzd=tvkanal&sp=42&tp_id=1680",
+            "https://www.lyngsat.com/muxes/Turksat-3A_East_11012-H.html"
+          ],
+          "checked": "2026-11-08"
+        }
+      ],
+      "closed_references": 0,
+      "remaining": 106,
+      "next_steps": [
+        "Obtain approved domestic TV8 donor or submit a new artwork separately; official91x80 source retained unchanged.",
+        "Resolve AntenaTSID10/0 using current transport evidence.",
+        "SES Demo HD identity partly narrowed; verify exact approved same-edition donor.",
+        "Obtain exact75E11787H service table before BFBS/Quadrille classification.",
+        "Keep TV5MONDE, Zor/NOW and disputed identities protected."
+      ]
     }
   }
 }
