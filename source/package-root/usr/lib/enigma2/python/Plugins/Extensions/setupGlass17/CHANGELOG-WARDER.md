@@ -1,3 +1,11 @@
+## 1.0.73 — 08.11.2026
+
+- **OpenATV:** Dlhé názvy programov v predvolenom výbere staníc sa bezpečne skracujú pred indikátorom; vybraný dlhý názov sa postupne roluje vo svojom poli.
+- **Odozva:** Znížený počet prekreslení pri stojacom texte, rolovanie aktívneho názvu zostáva plynulé; testy na GigaBlue OpenATV 7.6 a 8.1.
+- **Indikátory:** Zachované farebné progressbary, percentá a zostávajúci čas bez grafických záplat.
+- **OpenPLi 9.2:** Obnovený prázdny predvolený zoznam staníc použitím natívneho vykresľovania OpenPLi. Rolovanie na OpenPLi nie je súčasťou tejto zmeny.
+- **Kompatibilita:** Zachované picony, nastavenia fontov, PIG, Prime Time a ďalšie výbery; bez zásahov do systémovej Enigma2. Po inštalácii reštartovať GUI.
+
 ## 1.0.72 — 08.11.2026
 
 - IPTV: obnovené zisťovanie rozlíšenia pri nedostupných metadátach služby pomocou údajov dekodéra.
