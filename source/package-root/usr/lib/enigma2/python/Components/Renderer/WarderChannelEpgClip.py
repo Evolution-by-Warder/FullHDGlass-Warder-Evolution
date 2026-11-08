@@ -677,4 +677,27 @@ class WarderChannelEpgClip(Renderer):
             if hasattr(self, '_perf_tick'):
                 self._perf_tick((monotonic() - started) * 1000.0)
             if self.instance:
-                self._timer.start(55, True)
+                # TEST10: retain the original 55 ms motion during active
+                # focused-title scrolling, but avoid repainting all visible
+                # rows 18x/sec while the text is stationary. The native
+                # scroll position is derived from wall time, so slow/fast
+                # timer transitions cannot change the displayed title.
+                active = False
+                try:
+                    age = time() - self._scroll_started
+                    # Selected overflow is cached per actual current row.
+                    selected = self._scroll_selected
+                    component = self._component
+                    if component is not None and selected is not None:
+                        rows = component.getList()
+                        top = component.instance.getTopIndex()
+                        row = rows[selected] if rows and 0 <= selected < len(rows) else None
+                        if row is not None:
+                            center = __import__("enigma").eServiceCenter.getInstance()
+                            name, title = self._name_and_event(center, row)
+                            geometry_key = getattr(self, '_row_geometry_key', None)
+                            cached = self._row_fit_cache.get((name, title, geometry_key))
+                            active = bool(cached and cached[2] > 0 and age >= 1.2)
+                except (AttributeError, RuntimeError, TypeError, ValueError, IndexError):
+                    active = True
+                self._timer.start(55 if active else 130, True)
