@@ -171,13 +171,7 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5; do
             if gh api "repos/$GITHUB_REPOSITORY/contents/update-production.json" -H 'Accept: application/vnd.github.raw+json' | grep -q '"version": "1.0.73"'; then
-              gh api "repos/$GITHUB_REPOSITORY/contents/packages/enigma2-plugin-skins-fullhdglass_1.0.73_all.ipk" --jq '.size' | grep -Eq '^[1-9][0-9]+
-              exit 0
-            fi
-            sleep 5
-          done
-          exit 1
-
+              gh api "repos/$GITHUB_REPOSITORY/contents/packages/enigma2-plugin-skins-fullhdglass_1.0.73_all.ipk" --jq '.size' | grep -Eq '^[1-9][0-9]+$'
               echo 'Production feed and package verified at 1.0.73'
               exit 0
             fi
