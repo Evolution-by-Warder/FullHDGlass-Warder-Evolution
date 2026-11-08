@@ -7,7 +7,7 @@
 - **2 dátové výnimky / 0 nových PNG / 0 ZIPov**. Celkový výsledok PR ostáva **29 opravených TV referencií / 258 PNG / 99 ZIPov**.
 - Opravených aj šesť zastaraných boolean príznakov `remaining_current_technical` pri už dokončenej schválenej dávke. Ich artworky a rozhodnutia sa nemenia; nejde o nové opravy piconov.
 - Zachovaných 120 riadkov, všetky pôvodné zoznamy chýbajúcich variantov a 19 delta holdov. DMDU_T, BFBS SID8016, Quadrille 75°E a ASSOCIATION MATERIEL zostávajú otvorené.
-- Iba dokumentácia a register; produkcia, rádio a grafiky bez zmeny. Základ `6f5f7ebf8e51aa0faab7ae5ba9464f5b2f68c4f0`; spätné overenie nasleduje po zápise.
+- Iba dokumentácia a register; produkcia, rádio a grafiky bez zmeny. Základ `6f5f7ebf8e51aa0faab7ae5ba9464f5b2f68c4f0`; **Spätné overenie PASS:** commit `6f2ddcd47862a2511f2b811f0a87ba11ba5306bc`, všetky 4 zmenené súbory načítané z GitHubu a obsahovo presne zhodné. Git blob SHA: register `78a02de2cb6457f44a08ad888ecc938071295569`, identity evidence `db1c3490a6a2ae3b3f2b55205aa47311132f03e5`, batch report `3645b8cdf3482dec7e92284cfec86f03280b1ffc`.
 
 ### Spätné overenie zachránenej dávky dokončené – 8. 11. 2026
 
