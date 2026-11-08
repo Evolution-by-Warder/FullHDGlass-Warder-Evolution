@@ -1,3 +1,9 @@
+FullHDGlass 1.0.72 — 08.11.2026
+Opravené zobrazovanie rozlíšenia IPTV aj pri streamoch, pri ktorých sa predtým zobrazovalo --- × ---.
+Infobar 76: plynulé rolovanie CAID/SID/VPID údajov vo vyhradenom priestore bez prekrývania farebných indikátorov, mierne zrýchlené na 220 ms.
+Popis zmien pri aktualizácii sa zobrazuje v jazyku systému Enigma2, ak je preklad dostupný.
+Predchádzajúce funkcie a používateľské nastavenia zostávajú zachované. Po aktualizácii reštartujte GUI.
+
 FullHDGlass 1.0.69 — 05.11.2026
 Nový výber zdroja piconov v zozname staníc: predvolené Systémové nastavenie obnoví pôvodné vyhľadávanie podľa image.
 Preferovať 50×30 zostáva voliteľné, s náhradou zo spoločnej sady. Uložte a reštartujte GUI.
