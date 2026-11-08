@@ -4,8 +4,6 @@
   "tree": "82031d63f6c9493fa91b5a9587a020093faea4e8",
   "expected_tree_entries_verified": 1068,
   "changed_paths": 1068,
-  "new_zip_tail_paths_downloaded": 103,
-  "new_zip_tail_bytes": 15188989,
   "protected_canal_tree_paths_changed": 0,
   "radio_tree_paths_changed": 0,
   "unrelated_current_main_files_changed": 0,
@@ -525,5 +523,8 @@
       "sha256": "9552f8aeb1df75297522d4f2f009c13d9f10f0ce705e5f14fdd2ccf4a83de8b9",
       "bytes": 28060
     }
-  ]
+  ],
+  "uploaded_files_downloaded": 103,
+  "uploaded_bytes_downloaded": 15188989,
+  "new_zip_tail_paths_downloaded": 45
 }

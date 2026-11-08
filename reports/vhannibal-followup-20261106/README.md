@@ -1,5 +1,14 @@
 # Vhannibal – pokračovanie po PR #47
 
+Záverečné vzdialené overenie 8. 11. 2026: balíkový commit [`d5cbb323770fdbf9c67ed4b58c8a4290fade1740`](https://github.com/Evolution-by-Warder/FullHDGlass-Warder-Evolution/commit/d5cbb323770fdbf9c67ed4b58c8a4290fade1740), strom `c16255a9b0d41b40f705935578e0a5643a866e96`. Overených **1 164 očakávaných ciest**; všetkých 20 nových súborov poslednej dávky (z toho 9 binárnych koncových častí ZIPov), spolu 4 685 517 bajtov, bolo z GitHubu stiahnutých a bitovo porovnaných. Predchádzajúca dávka `19809be` má overených 1 068 ciest a všetkých 103 nahraných súborov (15 188 989 bajtov). Súhrn je v `remote-verification-20261108.json → continuation_20261108`; staršie overenia zostávajú zachované.
+
+**Finálny stav tohto behu: 17 nových opráv / 153 PNG / 63 jedinečných ZIPov. Celý PR #50: 23 opráv / 204 PNG / 99 ZIPov. Otvorených: 123 (104 pôvodných + 19 nových).** Šesť referencií čaká na konkrétne grafické schválenie v `ARTWORK_APPROVAL.md`; ostatné majú technické alebo identitné blokácie v existujúcich registroch. Štyri preukázané dátové služby nie sú vykázané ako opravené picony.
+
+Kontrola živých vetiev po uložení: FullHDGlass main stále `12247acc20f699606f6d40f3783e4162b92674b9`, PiconHub main stále `8180aa0df6e185efad120338bc53ca04bc5e492a`. GitHub pre balíkový commit nevrátil žiadny PR-triggered Actions beh; úspech GitHub CI sa netvrdí. Lokálne regresie publikácie a izolované kontroly skutočného inštalátora prešli. Žiadny fyzický prijímač sa netestoval. Skin 1.0.72, aktualizátor, rádio a všetkých 18 CANAL+ SK/CZ balíkov zostali zachované. PR #50 zostáva nezlúčený.
+
+**Presný ďalší krok:** schválenie uloženého prehľadu BloombergHT a SIS/Betfred; následne vložiť odsúhlasené deviatky do tej istej vetvy a overiť ich. Nezávisle doložiť Antena TSID 10 oproti 0 a zostávajúce nejasné identity. Pred produkčným merge znovu načítať main a preveriť mesačný Kuukauden alias. Zlúčenie, publikovanie a IPK vyžadujú samostatný súhlas. Tento pracovný beh je ukončený; po odovzdaní nepokračuje na pozadí.
+
+
 ## Najnovší overený výsledok – 8.11.2026, pokračovanie PR #50
 
 - **Tento beh:17nových opravených referencií,153doplnených PNG,63jedinečných zmenených ZIPov. PR #50spolu:23referencií,204PNG,99ZIPov.** Žiadne zlúčenie ani publikácia.

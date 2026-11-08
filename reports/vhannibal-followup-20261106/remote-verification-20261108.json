@@ -145,5 +145,147 @@
       "sha256": "e9a4dbca87a72e30223b7187ff8f1ad5b0a21ba7069d18ebc69541dac1cad191",
       "bytes": 24000
     }
-  ]
+  ],
+  "continuation_20261108": {
+    "status": "PASS",
+    "base_main": "12247acc20f699606f6d40f3783e4162b92674b9",
+    "piconhub_main": "8180aa0df6e185efad120338bc53ca04bc5e492a",
+    "package_commit": "d5cbb323770fdbf9c67ed4b58c8a4290fade1740",
+    "final_batch": {
+      "status": "PASS",
+      "commit": "d5cbb323770fdbf9c67ed4b58c8a4290fade1740",
+      "tree": "c16255a9b0d41b40f705935578e0a5643a866e96",
+      "expected_tree_entries_verified": 1164,
+      "changed_paths": 1164,
+      "protected_canal_tree_paths_changed": 0,
+      "radio_tree_paths_changed": 0,
+      "unrelated_current_main_files_changed": 0,
+      "checks": [
+        {
+          "path": "assets/warder/downloads/picons/channels/manifest.json",
+          "sha256": "1517fadbe7ab3c41780fb32415a1e291ad506703b2971e9bf74cb5699ecff620",
+          "bytes": 2107440
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/SHA256SUMS",
+          "sha256": "bcb137f54553c5d004f98f787c11f4110f3164ec143baa6c66ffa36485375a85",
+          "bytes": 796253
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-400x240-transparent-b4547a97470d44ca.zip.part12",
+          "sha256": "edcb5aef82505f6af5c7602838da777faf051bd0574783e8b26d109960ac0589",
+          "bytes": 177235
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-50x30-white-87c77ea794b02486.zip.part04",
+          "sha256": "67db8a664c8afceb570fa5b155b661f68fb4013e6e071af0c1db5dc22c36d8d9",
+          "bytes": 160227
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-50x30-black-534c804b91292f01.zip.part04",
+          "sha256": "5feef9ba83e68de8d1267ee0ef42545406fec479ddc81158ae1b2e5e71c8c02a",
+          "bytes": 160144
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-50x30-transparent-fba76682f1e64a0e.zip.part04",
+          "sha256": "330c8aeb2c23acf1cfb9e790b4212bb6aa1aea818ded46988077f301ea383652",
+          "bytes": 159987
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-220x132-white-113380a7d8704eeb.zip.part11",
+          "sha256": "6a61ae2954f1490281c4774a0dbe99d2379e08e6ad8fb4b58cf28f4ce9753aaf",
+          "bytes": 197937
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-220x132-black-ee9c732268fa79e0.zip.part13",
+          "sha256": "19f0bfc9d1ee5ebaab9f033f34be12e2ed73ccbe3d00c4d30a687e23aa3fcb10",
+          "bytes": 195152
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-400x240-white-a6d1ff4589d4ba35.zip.part15",
+          "sha256": "6694f34ff45fe4ee3090b385e093d6a3f62ce89daa8913751ac9947a55004cb2",
+          "bytes": 180694
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-220x132-transparent-17b704326f511cfb.zip.part07",
+          "sha256": "acfbaa0b93ad8613ea6b76b222d808a3775d03efe95c4bda680553038bba1442",
+          "bytes": 163555
+        },
+        {
+          "path": "assets/warder/downloads/picons/channels/warder-282e-400x240-black-fe9b58dc9440af06.zip.part13",
+          "sha256": "a5010e93dd288272563629bb62a5ae5e9944e8f48a1e6b261ddd71ccdabf39a6",
+          "bytes": 178844
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/README.md",
+          "sha256": "61be2588ae2a867cdc15470bf9e052e7e282c6e34801bfb78f40e0094a4238b3",
+          "bytes": 15958
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/identity-evidence-20261107.json",
+          "sha256": "a817ba19e3d3e32b4f078d2c003ed5dcaef40cd51c0dad00f94fe82e8d8252b7",
+          "bytes": 85935
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/approved-donor-search-20261108.json",
+          "sha256": "ac42194e611c0f42fb7f80a4c8e8e680123d002df27747ff3561655792e0e88e",
+          "bytes": 11661
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/sky-boxoffice-batch-20261108.json",
+          "sha256": "8b7b12889a45bb75ea92d45695a4beb048c1c79b7ff6c1e825b6d7a12475201e",
+          "bytes": 10468
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/repair-sky-boxoffice-20261108.py",
+          "sha256": "52345e4e29143d5a9e6e1861db50c630cc47370193bc973de73497b65b763278",
+          "bytes": 8302
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/verify-continuation-install-20261108.py",
+          "sha256": "5c86be10b6e55530e2d0ad525ff5cd257ccd3a1b1f4ebe8e1613aa23f4dc4d4b",
+          "bytes": 3215
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/continuation-install-checks-20261108.json",
+          "sha256": "247925e4a5c58ac9c932c77cbd835a6673111ec85bdbb60de74d10b4eaab7609",
+          "bytes": 15598
+        },
+        {
+          "path": "reports/vhannibal-followup-20261106/delta-remote-verification-20261108.json",
+          "sha256": "09b907ba2497bf2f05a4657d971b82b7e1a25bb5a6161d789b435303017c8bc7",
+          "bytes": 25335
+        },
+        {
+          "path": "WARDER_PROGRESS.md",
+          "sha256": "fe13593fc896b96f16df8075465d999d324c1a8d743602f702f0e13abcbb6f6a",
+          "bytes": 31577
+        }
+      ],
+      "uploaded_files_downloaded": 20,
+      "uploaded_bytes_downloaded": 4685517,
+      "new_zip_tail_paths_downloaded": 9
+    },
+    "this_run": {
+      "repaired_references": 17,
+      "added_png_entries": 153,
+      "unique_changed_zips": 63,
+      "original_members_preserved": 126295
+    },
+    "whole_pr50": {
+      "repaired_references": 23,
+      "added_png_entries": 204,
+      "unique_changed_zips": 99
+    },
+    "technical_open": {
+      "original_cohort": 104,
+      "new_source_delta": 19,
+      "total": 123
+    },
+    "protected_canal_packages_unchanged": 18,
+    "radio_changes": 0,
+    "production_merged": false,
+    "github_pull_request_workflow_runs_returned": 0,
+    "hardware_receiver_tested": false
+  }
 }
