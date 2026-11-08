@@ -1,8 +1,21 @@
 FullHDGlass 1.0.72 — 08.11.2026
-Fixed IPTV video resolution detection using decoder fallback when service metadata is missing.
-InfoBar 76: CAID/SID/VPID text scrolls seamlessly within its reserved space without overlapping colored indicators, with slightly faster 220 ms steps.
-Update notifications now show release changes in the Enigma2 system language where translations are available.
-Previous features and user settings are preserved. Restart the GUI after updating.
+Improved IPTV resolution detection for streams with missing service metadata.
+Added decoder-based width fallback when the standard value is unavailable.
+Added decoder-based height fallback when the standard value is unavailable.
+Preserved original resolution reading for streams with valid metadata.
+Displayed decoded dimensions without fixed resolution presets.
+Preserved p/i information when available.
+Maintained the original DVB resolution processing.
+Corrected CAID text overlap with colored indicators in InfoBar 76.
+Reserved a 1020-pixel area for the CAID information line.
+Enabled scrolling for long CAID descriptions instead of losing their trailing data.
+Kept full CAID, SID and VPID details accessible in the scrolling text.
+Added wraparound repetition with a short separator.
+Removed the previous long empty end-of-cycle interval.
+Slightly accelerated the scrolling interval to 220 ms.
+Kept CAID layout changes limited to InfoBar 76.
+Localized update notes according to the Enigma2 system language where available, with English fallback.
+Retained previous Prime Time, EPG and 9.50 migration fixes, and existing user settings. Restart the GUI after updating.
 
 FullHDGlass 1.0.69 — 05.11.2026
 New channel-list picon source setting: System setting is the default and restores the original image lookup.
