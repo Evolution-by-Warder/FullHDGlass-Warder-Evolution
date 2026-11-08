@@ -107,6 +107,9 @@ class WarderChannelEpgClip(Renderer):
         self._glyph_width_cache = {}
         # TEST6: reusable exact pixel paint plans (not raster approximations).
         self._progress_paint_cache = {}
+        self._bar_canvas = None
+        self._bar_last = None
+        self._perf_bar_skips = 0
         self._perf_bar_plan_hits = 0
         self._perf_bar_plan_misses = 0
         self._perf_text_measure_calls = 0
@@ -130,14 +133,15 @@ class WarderChannelEpgClip(Renderer):
             count = self._perf_ticks
             if count > 0:
                 with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
-                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d bar_plan_hits=%d bar_plan_misses=%d mode=%s\n' % (
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d bar_plan_hits=%d bar_plan_misses=%d bar_skips=%d split_canvas=%d mode=%s\n' % (
                         now - self._perf_since, count, self._perf_elapsed_ms / count,
                         self._perf_worst_ms, self._perf_over_20ms,
                         self._perf_row_changes, self._perf_name_calls,
                         self._perf_progress_calls, self._epg_cache_hits,
                         self._epg_cache_misses, self._perf_text_measure_calls,
                         self._perf_text_cache_hits, self._perf_bar_plan_hits,
-                        self._perf_bar_plan_misses, str(self._progress_mode())))
+                        self._perf_bar_plan_misses, self._perf_bar_skips,
+                        int(self._bar_canvas is not None), str(self._progress_mode())))
             self._perf_since = now
             self._perf_ticks = 0
             self._perf_elapsed_ms = 0.0
@@ -152,6 +156,7 @@ class WarderChannelEpgClip(Renderer):
             self._perf_text_cache_hits = 0
             self._perf_bar_plan_hits = 0
             self._perf_bar_plan_misses = 0
+            self._perf_bar_skips = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -199,10 +204,33 @@ class WarderChannelEpgClip(Renderer):
             self._glyph_width_cache.clear()
         if hasattr(self, '_epg_snapshots'):
             self._epg_snapshots.clear()
+        # TEST8: independent transparent child canvas for progress bars.
+        # On unsupported Enigma2 versions the original combined painter
+        # remains active without touching the approved XML or layout.
+        try:
+            self._bar_canvas = eCanvas(instance)
+            self._bar_canvas.setSize(instance.size())
+            self._bar_canvas.clear(self._transparent)
+            self._bar_canvas.show()
+        except (NameError, AttributeError, TypeError, RuntimeError):
+            self._bar_canvas = None
+        self._bar_last = None
         self._timer.start(55, True)
+
+    def _clear_bar_canvas(self):
+        child = getattr(self, '_bar_canvas', None)
+        if child is not None:
+            try:
+                child.clear(self._transparent)
+            except (AttributeError, RuntimeError, TypeError):
+                pass
+        self._bar_last = None
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
+        if hasattr(self, '_clear_bar_canvas'):
+            self._clear_bar_canvas()
+        self._bar_canvas = None
         if hasattr(self, '_row_fit_cache'):
             self._row_fit_cache.clear()
         if hasattr(self, '_glyph_width_cache'):
@@ -506,20 +534,37 @@ class WarderChannelEpgClip(Renderer):
             return False
         self._diag("native_rows_ready", "mode=%s visible=%d fitted=%d width=%d bar=%d barWidth=%d" %
                    (mode, available_rows, len(drawing), width, bar_left, bar_width))
-        signature = (mode, top, selected, row_height, width, height, tuple(drawing), tuple(progress_bars))
-        if signature == self._last:
+        # Full native painting is the fallback; with a working child canvas,
+        # progress bars are repainted ONLY when their visible pixels change.
+        split = getattr(self, '_bar_canvas', None) is not None
+        bar_signature = (mode, top, row_height, width, height, tuple(progress_bars))
+        normal_setting = config.plugins.setupGlass17.par109.value
+        selected_setting = config.plugins.setupGlass17.par110.value
+        text_signature = (mode, top, selected, row_height, width, height,
+                          normal_setting, selected_setting, tuple(drawing))
+        signature = (text_signature, None if split else bar_signature)
+        text_dirty = signature != self._last
+        bar_dirty = split and bar_signature != getattr(self, '_bar_last', None)
+        if not text_dirty and not bar_dirty:
             return True
-        normal = parseColor(config.plugins.setupGlass17.par109.value)
-        highlighted = parseColor(config.plugins.setupGlass17.par110.value)
-        self.instance.clear(self._transparent)
-        for x, y, w, h, value, is_selected, progress in drawing:
+        if text_dirty:
+            normal = parseColor(normal_setting)
+            highlighted = parseColor(selected_setting)
+            self.instance.clear(self._transparent)
+        for x, y, w, h, value, is_selected, progress in (drawing if text_dirty else ()):
             # Native C++ must already have stopped rendering celServiceInfo.
             # Paint only our own fitted letters; never black-mask native rows
             # or repaint the indicator that belongs to the native list.
             self.instance.writeText(eRect(x, y, w, h), highlighted if is_selected else normal,
                                     self._transparent, font, value,
                                     RT_HALIGN_LEFT | RT_VALIGN_CENTER)
-        if progress_bars:
+        target = self._bar_canvas if split else self.instance
+        if bar_dirty:
+            target.clear(self._transparent)
+        if split and not bar_dirty and progress_bars:
+            if hasattr(self, '_perf_bar_skips'):
+                self._perf_bar_skips += 1
+        if progress_bars and (not split or bar_dirty):
             # The exact eight-segment gradient, frame width, rectangles and
             # source colors remain identical to TEST5. Only geometry and
             # parseColor conversion are reused across rows/timer frames.
@@ -565,12 +610,12 @@ class WarderChannelEpgClip(Renderer):
                     paint_cache[key] = plan
                 elif hasattr(self, '_perf_bar_plan_hits'):
                     self._perf_bar_plan_hits += 1
-                self.instance.fillRect(eRect(bx, by, bw, 2), border)
-                self.instance.fillRect(eRect(bx, by + bh - 2, bw, 2), border)
-                self.instance.fillRect(eRect(bx, by + 2, 2, bh - 4), border)
-                self.instance.fillRect(eRect(bx + bw - 2, by + 2, 2, bh - 4), border)
+                target.fillRect(eRect(bx, by, bw, 2), border)
+                target.fillRect(eRect(bx, by + bh - 2, bw, 2), border)
+                target.fillRect(eRect(bx, by + 2, 2, bh - 4), border)
+                target.fillRect(eRect(bx + bw - 2, by + 2, 2, bh - 4), border)
                 for dx, dy, pw, ph, color in plan:
-                    self.instance.fillRect(eRect(bx + dx, by + dy, pw, ph), color)
+                    target.fillRect(eRect(bx + dx, by + dy, pw, ph), color)
         # Receiver visual probe: 16x6 magenta marker at the list's top-left.
         # Enabled ONLY through a diagnostic skin attribute in TEST60.
         if self._warder_test_marker:
@@ -579,6 +624,8 @@ class WarderChannelEpgClip(Renderer):
             self.instance.fillRect(eRect(925, 14, 24, 14), parseColor("#00ff00ff"))
             self._diag("canvas_test_marker_drawn")
         self._last = signature
+        if split:
+            self._bar_last = bar_signature
         self._diag("canvas_painted")
         return True
 
@@ -605,12 +652,16 @@ class WarderChannelEpgClip(Renderer):
                     self._glyph_width_cache.clear()
                 self._native_disable_unsupported = False
                 self._last = None
+                if hasattr(self, '_clear_bar_canvas'):
+                    self._clear_bar_canvas()
             # Unsupported views must remain completely native; never
             # toggle celServiceInfo on every timer tick for those modes.
             if self._progress_mode() is None:
                 had_overlay = self._native_hidden or self._last is not None
                 if had_overlay:
                     self.instance.clear(self._transparent)
+                    if hasattr(self, '_clear_bar_canvas'):
+                        self._clear_bar_canvas()
                 self._last = None
                 self._restore_native()
                 if had_overlay:
@@ -640,6 +691,8 @@ class WarderChannelEpgClip(Renderer):
                 self._diag("native_event_disable_unsupported", type(exc).__name__)
                 self._native_disable_unsupported = True
                 self.instance.clear(self._transparent)
+                if hasattr(self, '_clear_bar_canvas'):
+                    self._clear_bar_canvas()
                 self._last = None
                 self._restore_native()
                 self._component = component
@@ -659,6 +712,8 @@ class WarderChannelEpgClip(Renderer):
                 had_overlay = self._native_hidden or self._last is not None
                 if had_overlay:
                     self.instance.clear(self._transparent)
+                    if hasattr(self, '_clear_bar_canvas'):
+                        self._clear_bar_canvas()
                 self._last = None
                 self._restore_native()
                 # Invalidate once on mode transition, never at every 55ms tick.
@@ -673,6 +728,8 @@ class WarderChannelEpgClip(Renderer):
             self._restore_native()
             if self.instance:
                 self.instance.clear(self._transparent)
+                if hasattr(self, '_clear_bar_canvas'):
+                    self._clear_bar_canvas()
         finally:
             if hasattr(self, '_perf_tick'):
                 self._perf_tick((monotonic() - started) * 1000.0)
