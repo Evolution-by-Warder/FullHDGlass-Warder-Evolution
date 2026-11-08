@@ -540,8 +540,13 @@ class WarderChannelEpgClip(Renderer):
         bar_signature = (mode, top, row_height, width, height, tuple(progress_bars))
         normal_setting = config.plugins.setupGlass17.par109.value
         selected_setting = config.plugins.setupGlass17.par110.value
+        # Fractions are bar-only pixels in split mode. Otherwise retain the
+        # original joint signature so fallback repaints bars when they move.
+        text_content = (tuple((x, y, w, h, value, is_selected)
+                              for x, y, w, h, value, is_selected, fraction in drawing)
+                        if split else tuple(drawing))
         text_signature = (mode, top, selected, row_height, width, height,
-                          normal_setting, selected_setting, tuple(drawing))
+                          normal_setting, selected_setting, text_content)
         signature = (text_signature, None if split else bar_signature)
         text_dirty = signature != self._last
         bar_dirty = split and bar_signature != getattr(self, '_bar_last', None)
