@@ -93,6 +93,30 @@ class SetupStyleTests(unittest.TestCase):
         for record in ledger:
             self.assertEqual(record['before'], '')
 
+    def test_release_1072_iptv_caid_and_localization_are_fingerprint_guarded(self):
+        # The new baseline is allowed only for the receiver-approved TEST61
+        # implementation. Any modification to these code paths must again
+        # invalidate the exact AST fingerprint.
+        required = (
+            'av.getResolutionX(0)',
+            'av.getResolutionY(0)',
+            'self.warderCaidScrollTimer.start(220, True)',
+            'loop[offset:] + loop[:offset]',
+            'manifest.get("changelog_i18n", {})',
+        )
+        for statement in required:
+            self.assertIn(statement, CURRENT)
+        for old, new in (
+            ('av.getResolutionX(0)', 'av.getResolutionX(1)'),
+            ('av.getResolutionY(0)', 'av.getResolutionY(1)'),
+            ('self.warderCaidScrollTimer.start(220, True)', 'self.warderCaidScrollTimer.start(20, True)'),
+            ('loop[offset:] + loop[:offset]', 'loop[offset:]'),
+            ('manifest.get("changelog_i18n", {})', 'manifest.get("changelog", {})'),
+        ):
+            modified = CURRENT.replace(old, new, 1)
+            self.assertNotEqual(modified, CURRENT)
+            self.assertNotEqual(style.normalized(ast.parse(modified)), BASELINE['logic_sha256'])
+
     def test_configuration_actions_callbacks_and_controller_logic_are_unchanged(self):
         self.assertEqual(style.normalized(ast.parse(CURRENT)),BASELINE['logic_sha256'])
 
