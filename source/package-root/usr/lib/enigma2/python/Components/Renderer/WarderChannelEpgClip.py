@@ -482,12 +482,14 @@ class WarderChannelEpgClip(Renderer):
                     self._scroll_started = time()
                 self._scroll_identity = current_identity
                 if overflow:
-                    # Pause at the start, scroll at a glyph-aligned 2px/55ms
-                    # clock, pause at the end and repeat from the beginning.
+                    # Show the beginning for 1.2s, then scroll at a
+                    # glyph-aligned 2px/55ms clock. Pause on the complete
+                    # suffix before returning to the start. Avoid the old
+                    # extra ~3-second hold *after* the initial wait.
                     age = max(0.0, time() - getattr(self, '_scroll_started', time()) - 1.2)
                     pixel_clock = int(age * 1000.0 / 55.0) * 2
-                    journey = overflow + 220
-                    position = min(overflow, max(0, (pixel_clock % journey) - 110))
+                    journey = overflow + 90
+                    position = min(overflow, pixel_clock % journey)
             # Other rows remain statically fitted within their own field.
             fitted = (first_frame if position == 0 else
                       scroll_title_window(title, remaining, measure, position))
