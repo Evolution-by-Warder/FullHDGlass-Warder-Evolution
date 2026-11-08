@@ -460,6 +460,8 @@ class WarderChannelEpgClip(Renderer):
         return True
 
     def refresh(self):
+        # Local import also supports isolated AST-method regression tests.
+        from time import monotonic
         started = monotonic()
         try:
             if not self.instance or not self._label:
