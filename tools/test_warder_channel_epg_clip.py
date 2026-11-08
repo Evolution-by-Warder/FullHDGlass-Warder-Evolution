@@ -588,22 +588,18 @@ class ClippedEventTests(unittest.TestCase):
         self.assertTrue(target._warder_test_marker)
         self.assertEqual(target.skinAttributes, [("size", "1065,842")])
 
-    def test_diagnostics_are_bounded_and_fail_open(self):
-        import tempfile
-        with tempfile.TemporaryDirectory() as d:
-            logfile = Path(d) / "diagnostics.log"
-            instance = types.SimpleNamespace(_diag_seen=set())
-            def fake_open(filename, mode):
-                self.assertEqual(mode, "a")
-                return logfile.open("a", encoding="utf-8")
-            fn = method("_diag")
-            with patch.dict(fn.__globals__, {"open": fake_open}):
-                for i in range(40):
-                    fn(instance, "code%d" % i, "no event titles")
-            lines = logfile.read_text().splitlines()
-            self.assertEqual(len(lines), 32)
-            self.assertTrue(lines[0].startswith("code0 "))
-            self.assertTrue(lines[-1].startswith("code31 "))
+    def test_obsolete_test59_diagnostics_do_not_write_files(self):
+        # TEST5 replaces the obsolete TEST59 status file with a no-op.
+        # Time-series performance sampling still has its own TEST3 logger.
+        import builtins
+        instance = types.SimpleNamespace(_diag_seen=set())
+        def forbidden_open(*args, **kwargs):
+            raise AssertionError("Obsolete TEST59 logger attempted to write")
+        fn = method("_diag")
+        with patch.dict(fn.__globals__, {"open": forbidden_open}):
+            for i in range(40):
+                fn(instance, "code%d" % i, "no event titles")
+        self.assertNotIn("warder-epg-clip-test59.log", RENDERER.read_text(encoding="utf-8"))
 
     def test_renderer_is_fail_open_and_default_only(self):
         content = RENDERER.read_text(encoding="utf-8")

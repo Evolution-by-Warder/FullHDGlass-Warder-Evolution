@@ -101,18 +101,17 @@ class WarderChannelEpgClip(Renderer):
         self._epg_snapshots = {}
         self._epg_cache_hits = 0
         self._epg_cache_misses = 0
+        # TEST5: static title/geometry and glyph width measurements.
+        # Neither cache stores channel references or paints pixels.
+        self._row_fit_cache = {}
+        self._glyph_width_cache = {}
+        self._perf_text_measure_calls = 0
+        self._perf_text_cache_hits = 0
 
     def _diag(self, key, details=""):
-        # TEST59 only: bounded, local status events; never include EPG titles.
-        # Silently skip unavailable/readonly /tmp; diagnosis must not crash GUI.
-        try:
-            if key in self._diag_seen or len(self._diag_seen) >= 32:
-                return
-            self._diag_seen.add(key)
-            with open("/tmp/warder-epg-clip-test59.log", "a") as output:
-                output.write("%s %s\n" % (key, details))
-        except (OSError, AttributeError, TypeError, ValueError):
-            pass
+        # Retained as a no-op for compatibility with diagnostic call sites.
+        # TEST59 startup traces are obsolete; do not create a second log.
+        pass
 
     def _perf_tick(self, elapsed_ms):
         try:
@@ -127,12 +126,13 @@ class WarderChannelEpgClip(Renderer):
             count = self._perf_ticks
             if count > 0:
                 with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
-                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d mode=%s\n' % (
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d measure_calls=%d text_cache_hits=%d mode=%s\n' % (
                         now - self._perf_since, count, self._perf_elapsed_ms / count,
                         self._perf_worst_ms, self._perf_over_20ms,
                         self._perf_row_changes, self._perf_name_calls,
                         self._perf_progress_calls, self._epg_cache_hits,
-                        self._epg_cache_misses, str(self._progress_mode())))
+                        self._epg_cache_misses, self._perf_text_measure_calls,
+                        self._perf_text_cache_hits, str(self._progress_mode())))
             self._perf_since = now
             self._perf_ticks = 0
             self._perf_elapsed_ms = 0.0
@@ -143,6 +143,8 @@ class WarderChannelEpgClip(Renderer):
             self._perf_progress_calls = 0
             self._epg_cache_hits = 0
             self._epg_cache_misses = 0
+            self._perf_text_measure_calls = 0
+            self._perf_text_cache_hits = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -184,12 +186,20 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        if hasattr(self, '_row_fit_cache'):
+            self._row_fit_cache.clear()
+        if hasattr(self, '_glyph_width_cache'):
+            self._glyph_width_cache.clear()
         if hasattr(self, '_epg_snapshots'):
             self._epg_snapshots.clear()
         self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
+        if hasattr(self, '_row_fit_cache'):
+            self._row_fit_cache.clear()
+        if hasattr(self, '_glyph_width_cache'):
+            self._glyph_width_cache.clear()
         if hasattr(self, '_epg_snapshots'):
             self._epg_snapshots.clear()
         self._restore_native()
@@ -377,6 +387,19 @@ class WarderChannelEpgClip(Renderer):
         name_font = component.ServiceNameFont
         self._label.setFont(font)
         center = eServiceCenter.getInstance()
+        # Invalidate geometrical measurements whenever a style/geometry
+        # property changes; color changes are applied at painting time.
+        geometry_key = (mode, width, height, row_height, text_end, left_shift,
+                        int(component.listMarginLeft), int(component.itemsDistances),
+                        str(config.usage.servicelist_picon_downsize.value),
+                        str(config.usage.servicelist_picon_ratio.value),
+                        id(font), id(name_font))
+        if getattr(self, '_row_geometry_key', None) != geometry_key:
+            if hasattr(self, '_row_fit_cache'):
+                self._row_fit_cache.clear()
+            if hasattr(self, '_glyph_width_cache'):
+                self._glyph_width_cache.clear()
+            self._row_geometry_key = geometry_key
         drawing = []
         # One progress lookup per visible service: reuse it for the
         # selected-row text and for the original progress indicator.
@@ -390,24 +413,55 @@ class WarderChannelEpgClip(Renderer):
             name, title = self._name_and_event(center, ref)
             if not title:
                 continue
-            # Service names remain native; use the image's actual name font.
-            self._label.setFont(name_font)
-            self._label.setText(name)
-            name_width = self._label.calculateSize().width()
-            # The legacy row reserves its number/picon column before the name.
-            picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
-                              int(config.usage.servicelist_picon_ratio.value) / 100)
-            start = max(0, int(component.listMarginLeft) + picon_width +
-                        2 * int(component.itemsDistances) + name_width + left_shift)
-            end = text_end
-            remaining = end - start
+            # Stable rows retain their measured name/title geometry across
+            # timer ticks and rapid selection changes. The source snapshot
+            # supplies new text on EPG changes, automatically changing the key.
+            row_cache = getattr(self, '_row_fit_cache', None)
+            glyph_cache = getattr(self, '_glyph_width_cache', None)
+            row_key = (name, title, geometry_key)
+            cached_row = row_cache.get(row_key) if row_cache is not None else None
+            if cached_row is None:
+                self._label.setFont(name_font)
+                self._label.setText(name)
+                name_width = self._label.calculateSize().width()
+                if hasattr(self, '_perf_text_measure_calls'):
+                    self._perf_text_measure_calls += 1
+                picon_width = int((row_height + 2 * int(config.usage.servicelist_picon_downsize.value)) *
+                                  int(config.usage.servicelist_picon_ratio.value) / 100)
+                start = max(0, int(component.listMarginLeft) + picon_width +
+                            2 * int(component.itemsDistances) + name_width + left_shift)
+                remaining = text_end - start
+            else:
+                start, remaining, overflow, first_frame = cached_row
+                if hasattr(self, '_perf_text_cache_hits'):
+                    self._perf_text_cache_hits += 1
             if remaining <= 0:
                 continue
             self._label.setFont(font)
             def measure(text):
+                if glyph_cache is not None:
+                    key = (title, text)
+                    found = glyph_cache.get(key)
+                    if found is not None:
+                        if hasattr(self, '_perf_text_cache_hits'):
+                            self._perf_text_cache_hits += 1
+                        return found
                 self._label.setText(text)
-                return self._label.calculateSize().width()
-            overflow = max(0, measure(title) - remaining)
+                result = self._label.calculateSize().width()
+                if hasattr(self, '_perf_text_measure_calls'):
+                    self._perf_text_measure_calls += 1
+                if glyph_cache is not None:
+                    if len(glyph_cache) >= 512:
+                        glyph_cache.clear()
+                    glyph_cache[(title, text)] = result
+                return result
+            if cached_row is None:
+                overflow = max(0, measure(title) - remaining)
+                first_frame = scroll_title_window(title, remaining, measure, 0)
+                if row_cache is not None:
+                    if len(row_cache) >= 128:
+                        row_cache.clear()
+                    row_cache[row_key] = (start, remaining, overflow, first_frame)
             # Pause at both ends; replay the whole title from its beginning.
             # 2px per 55ms virtual motion, with safe glyph-aligned painting.
             journey = overflow + 220
@@ -415,7 +469,8 @@ class WarderChannelEpgClip(Renderer):
             # ellipsized and stable even while the timer refreshes the canvas.
             position = (min(overflow, max(0, (pixel_clock % journey) - 110))
                         if overflow and index == selected else 0)
-            fitted = scroll_title_window(title, remaining, measure, position)
+            fitted = (first_frame if position == 0 else
+                      scroll_title_window(title, remaining, measure, position))
             if fitted:
                 fraction = self._progress_fraction(center, ref)
                 fractions[row_index] = fraction
@@ -513,6 +568,10 @@ class WarderChannelEpgClip(Renderer):
                 self._component = component
                 if hasattr(self, '_epg_snapshots'):
                     self._epg_snapshots.clear()
+                if hasattr(self, '_row_fit_cache'):
+                    self._row_fit_cache.clear()
+                if hasattr(self, '_glyph_width_cache'):
+                    self._glyph_width_cache.clear()
                 self._native_disable_unsupported = False
                 self._last = None
             # Unsupported views must remain completely native; never
