@@ -2,7 +2,7 @@ name: CAID seamless marquee TEST61 IPK (artifact only)
 on:
   push:
     branches:
-      - fix/caid-marquee-infobar76-test61-20261108
+      - fix/caid-marquee-seamless-test61-20261108
     paths:
       - '.github/workflows/caid-marquee-test61.yml'
       - 'source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/plugin.py'
