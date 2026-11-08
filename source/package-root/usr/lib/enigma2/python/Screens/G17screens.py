@@ -7748,7 +7748,7 @@ g17_extraScreen["76"] = """
       <convert type="g17ConditionalShowHide">Blink</convert>
     </widget> 
 
-    <widget name="ecmLineInfo" position="300,998" size="1320,30" font="Prive4;17" noWrap="1" halign="left" transparent="1" backgroundColor="background" foregroundColor="un99bad6" zPosition="5" />
+    <widget name="ecmLineInfo" position="300,998" size="850,30" font="Prive4;17" noWrap="1" halign="left" transparent="1" backgroundColor="background" foregroundColor="un99bad6" zPosition="5" />
     
     <eLabel text="Snr:dB" font="Prive4;16" position="443,1033" size="105,30" foregroundColor="#6cbcf0" backgroundColor="background" transparent="1" />
     <widget source="session.FrontendStatus" render="Label" position="506,1033" size="90,30" font="Prive4;16" transparent="1" backgroundColor="background" zPosition="5" foregroundColor="#6cbcf0">
