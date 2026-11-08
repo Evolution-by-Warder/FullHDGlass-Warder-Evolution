@@ -1,3 +1,16 @@
+FullHDGlass 1.0.73 — 08.11.2026
+ChannelSelection: fixed long EPG titles overlapping right-hand progress indicators on OpenATV.
+Selected long programme titles now scroll within their reserved text area, revealing the complete name without covering the progressbar.
+Other programme titles remain static and safely shortened.
+Reduced unnecessary redraw frequency when the selected title is stationary, preserving fast scrolling for long titles.
+Preserved the existing selected-channel highlight, service picons, original fonts and font-size settings.
+Kept colored progressbars, percentage indicators and remaining-time modes in their designated columns.
+Fixed the blank default channel list on OpenPLi 9.2 by retaining the native OpenPLi renderer instead of using the OpenATV-only overlay.
+Preserved native OpenPLi progressbars and its existing channel-list behavior; OpenPLi does not receive the OpenATV-only title marquee.
+Retained the working PIG layouts, Prime Time separator and six-event detail panel.
+Preserved PluginBrowser geometry and the approved top-edge correction.
+Validated on GigaBlue with OpenATV 7.6 and 8.1 and OpenPLi 9.2; restart the GUI after updating.
+
 FullHDGlass 1.0.72 — 08.11.2026
 Improved IPTV resolution detection for streams with missing service metadata.
 Added decoder-based width fallback when the standard value is unavailable.
