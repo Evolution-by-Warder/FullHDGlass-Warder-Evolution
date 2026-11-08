@@ -685,7 +685,7 @@ class WarderChannelEpgClip(Renderer):
                 # rows 18x/sec while the text is stationary. The native
                 # scroll position is derived from wall time, so slow/fast
                 # timer transitions cannot change the displayed title.
-                age = time() - self._scroll_started
+                age = time() - getattr(self, '_scroll_started', time())
                 active = bool(getattr(self, '_focused_title_overflow', False)
                               and age >= 1.2)
                 self._timer.start(55 if active else 130, True)
