@@ -1,0 +1,96 @@
+name: ChannelSelection 1.0.73-test7 IPK (artifact only)
+on:
+  push:
+    branches:
+      - perf/channelselection-idle-refresh-test7
+    paths:
+      - .github/workflows/channel-selection-idle-test7.yml
+      - source/package-root/usr/lib/enigma2/python/Components/Renderer/WarderChannelEpgClip.py
+      - tools/test_channel_selection_epg_performance.py
+      - tools/test_channel_selection_snapshot_cache.py
+      - tools/test_channel_selection_text_measure_cache.py
+      - tools/test_channel_selection_progress_paint_cache.py
+      - tools/test_channel_selection_idle_refresh.py
+      - tools/test_warder_channel_epg_clip.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-receiver-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            source
+            tools/build-release-ipk.py
+            tools/sync_header_version.py
+            tools/test_channel_selection_epg_performance.py
+            tools/test_channel_selection_snapshot_cache.py
+            tools/test_channel_selection_text_measure_cache.py
+            tools/test_channel_selection_progress_paint_cache.py
+            tools/test_channel_selection_idle_refresh.py
+            tools/test_warder_channel_epg_clip.py
+            tools/test-pluginbrowser-top-edge.py
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate EPG performance and existing renderer behavior
+        run: |
+          python3 tools/test_warder_channel_epg_clip.py -q
+          python3 tools/test_channel_selection_epg_performance.py -q
+          python3 tools/test_channel_selection_snapshot_cache.py -q
+          python3 tools/test_channel_selection_text_measure_cache.py -q
+          python3 tools/test_channel_selection_progress_paint_cache.py -q
+          python3 tools/test_channel_selection_idle_refresh.py -q
+          python3 tools/test-pluginbrowser-top-edge.py
+      - name: Stage test version without altering committed production metadata
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          v=Path('source/package-root/usr/lib/enigma2/python/Plugins/Extensions/setupGlass17/version')
+          assert v.read_text().strip() == '1.0.72'
+          v.write_text('1.0.73-test7\n')
+          c=Path('source/control/control')
+          original=c.read_text()
+          assert original.count('Version: 1.0.72-1')==1
+          c.write_text(original.replace('Version: 1.0.72-1','Version: 1.0.73-test7-1'))
+          PY
+          python3 tools/sync_header_version.py
+          python3 tools/sync_header_version.py --check
+      - name: Build isolated IPK and verify archive integrity
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import importlib.util, pathlib, subprocess, tempfile, hashlib
+          root=pathlib.Path.cwd()
+          spec=importlib.util.spec_from_file_location('builder',root/'tools/build-release-ipk.py')
+          builder=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(builder)
+          name='enigma2-plugin-skins-fullhdglass_1.0.73-test7_all.ipk'
+          output=root/'packages/test'/name
+          output.parent.mkdir(parents=True,exist_ok=True)
+          with tempfile.TemporaryDirectory() as folder:
+              work=pathlib.Path(folder)
+              (work/'debian-binary').write_bytes(b'2.0\n')
+              builder.archive(root/'source/control',work/'control.tar.gz')
+              builder.archive(root/'source/package-root',work/'data.tar.gz',payload=True)
+              subprocess.run(['ar','rcsD',str(output),'debian-binary','control.tar.gz','data.tar.gz'],cwd=work,check=True)
+          sha=hashlib.sha256(output.read_bytes()).hexdigest()
+          (output.parent/(name+'.sha256')).write_text(sha+'  '+name+'\n')
+          print('TEST IPK:',name,'size:',output.stat().st_size,'SHA256:',sha)
+          PY
+          test "$(ar t packages/test/enigma2-plugin-skins-fullhdglass_1.0.73-test7_all.ipk | paste -sd' ' -)" = "debian-binary control.tar.gz data.tar.gz"
+          cd packages/test
+          sha256sum -c enigma2-plugin-skins-fullhdglass_1.0.73-test7_all.ipk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FullHDGlass-ChannelSelection-1.0.73-test7
+          path: |
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.73-test7_all.ipk
+            packages/test/enigma2-plugin-skins-fullhdglass_1.0.73-test7_all.ipk.sha256
+          retention-days: 14
+          if-no-files-found: error
