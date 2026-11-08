@@ -98,6 +98,9 @@ class WarderChannelEpgClip(Renderer):
         self._perf_last_row = None
         self._perf_name_calls = 0
         self._perf_progress_calls = 0
+        self._epg_snapshots = {}
+        self._epg_cache_hits = 0
+        self._epg_cache_misses = 0
 
     def _diag(self, key, details=""):
         # TEST59 only: bounded, local status events; never include EPG titles.
@@ -124,11 +127,12 @@ class WarderChannelEpgClip(Renderer):
             count = self._perf_ticks
             if count > 0:
                 with open('/tmp/warder-channelselection-perf-test3.log', 'a') as report:
-                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d mode=%s\n' % (
+                    report.write('uptime_window_s=%.1f ticks=%d mean_ms=%.3f max_ms=%.3f over20ms=%d selections=%d name_epg_calls=%d progress_epg_calls=%d cache_hits=%d cache_misses=%d mode=%s\n' % (
                         now - self._perf_since, count, self._perf_elapsed_ms / count,
                         self._perf_worst_ms, self._perf_over_20ms,
                         self._perf_row_changes, self._perf_name_calls,
-                        self._perf_progress_calls, str(self._progress_mode())))
+                        self._perf_progress_calls, self._epg_cache_hits,
+                        self._epg_cache_misses, str(self._progress_mode())))
             self._perf_since = now
             self._perf_ticks = 0
             self._perf_elapsed_ms = 0.0
@@ -137,6 +141,8 @@ class WarderChannelEpgClip(Renderer):
             self._perf_row_changes = 0
             self._perf_name_calls = 0
             self._perf_progress_calls = 0
+            self._epg_cache_hits = 0
+            self._epg_cache_misses = 0
         except (OSError, AttributeError, TypeError, ValueError):
             pass
 
@@ -178,10 +184,12 @@ class WarderChannelEpgClip(Renderer):
         self._scroll_started = time()
         self._scroll_selected = None
         self._scroll_mode = None
+        self._epg_snapshots.clear()
         self._timer.start(55, True)
 
     def preWidgetRemove(self, instance):
         self._timer.stop()
+        self._epg_snapshots.clear()
         self._restore_native()
         self._label = None
 
@@ -189,6 +197,7 @@ class WarderChannelEpgClip(Renderer):
         if self.instance:
             self._last = None
             self._scroll_started = time()
+            self._epg_snapshots.clear()
             self.refresh()
 
     def _restore_native(self):
@@ -229,24 +238,49 @@ class WarderChannelEpgClip(Renderer):
             self._diag("native_lookup_error", "%s" % type(exc).__name__)
             return None
 
-    def _name_and_event(self, center, ref):
-        self._perf_name_calls += 1
+    def _event_snapshot(self, center, ref):
+        """Keep a short-lived service/EPG snapshot shared by title and bar.
+
+        The GUI still refreshes/scrolls every 55ms, but the native service
+        center is consulted at most once per service per one-second TTL.
+        A fresh event is loaded on the next second, screen rebuild or source
+        change. Never cache indefinitely, and keep memory bounded.
+        """
         try:
-            if ref.flags & 7:  # marker/directory and non-service entries
-                return "", ""
+            if ref.flags & 7:
+                return ("", "", None)
+            key = ref.toString()
+            now = monotonic()
+            cached = self._epg_snapshots.get(key)
+            if cached is not None and now - cached[0] < 1.0:
+                self._epg_cache_hits += 1
+                return cached[1]
             info = center.info(ref)
             if info is None:
-                return "", ""
-            name = info.getName(ref) or ""
-            event = info.getEvent(ref)
-            return name, (event.getEventName() or "") if event else ""
-        except (AttributeError, RuntimeError, TypeError):
-            return "", ""
+                snapshot = ("", "", None)
+            else:
+                event = info.getEvent(ref)
+                snapshot = (info.getName(ref) or "",
+                            (event.getEventName() or "") if event else "", event)
+            if len(self._epg_snapshots) >= 96:
+                # The visible list is usually <= 30. Bound long browsing
+                # sessions without affecting currently visible rows.
+                self._epg_snapshots.clear()
+            self._epg_snapshots[key] = (now, snapshot)
+            self._epg_cache_misses += 1
+            return snapshot
+        except (AttributeError, RuntimeError, TypeError, ValueError):
+            return ("", "", None)
+
+    def _name_and_event(self, center, ref):
+        self._perf_name_calls += 1
+        name, title, event = self._event_snapshot(center, ref)
+        return name, title
 
     def _progress_fraction(self, center, ref):
         self._perf_progress_calls += 1
         try:
-            event = center.info(ref).getEvent(ref)
+            name, title, event = self._event_snapshot(center, ref)
             if event is None:
                 return None
             duration = int(event.getDuration())
@@ -474,6 +508,7 @@ class WarderChannelEpgClip(Renderer):
             if component is not self._component:
                 self._restore_native()
                 self._component = component
+                self._epg_snapshots.clear()
                 self._native_disable_unsupported = False
                 self._last = None
             # Unsupported views must remain completely native; never
